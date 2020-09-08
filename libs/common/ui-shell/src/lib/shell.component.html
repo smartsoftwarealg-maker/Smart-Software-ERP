@@ -1,0 +1,139 @@
+<div #shellDiv class="sidenav-container">
+
+    <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
+        <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
+            <div [dir]="langSrv.dir" class="shell-side-nav">
+
+                <div class="brand mat-elevation-z6">
+                    <img class="brand-icon" width="56px" height="56px" src="./assets/logo.png">
+                    <div class="app-name">
+                        {{shellSrv.applicationTitle}}
+                    </div>
+                </div>
+
+                <mat-tree [dataSource]="shellSrv.sideNavDataSource" [treeControl]="treeControl" class="side-nav-tree">
+                    <!-- This is the tree node template for leaf nodes -->
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                        <li class="mat-tree-node b-primary selectable-tree-item" [routerLink]="node.route">
+                            <!-- use a disabled button to provide padding for tree leaf -->
+                            <button mat-icon-button disabled></button>
+                            <div class="nav-tree-icon">
+                                <i *ngIf="node.icon" [class]="node.icon"></i>
+                            </div>
+                            <span class="margin-start-8" translate>{{node.name}}</span>
+                        </li>
+                    </mat-tree-node>
+                    <!-- This is the tree node template for expandable nodes -->
+                    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                        <li>
+                            <div class="mat-tree-node b-primary selectable-tree-item" matTreeNodeToggle>
+                                <button mat-icon-button>
+                                    <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+                                </button>
+                                <div class="nav-tree-icon">
+                                    <i *ngIf="node.icon" [class]="node.icon"></i>
+                                </div>
+                                <span class="margin-start-8" translate>{{node.name}}</span>
+                            </div>
+                            <ul [class.side-nav-tree-invisible]="!treeControl.isExpanded(node)" class="b-primary">
+                                <ng-container matTreeNodeOutlet></ng-container>
+                            </ul>
+                        </li>
+                    </mat-nested-tree-node>
+                </mat-tree>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div #toolbar class="b-primary shell-toolbar" [dir]="langSrv.dir">
+
+                <div class="toolbar-inner">
+                    <button mat-icon-button (click)="navBar.toggle()">
+                        <i class="far fa-bars"></i>
+                    </button>
+
+                    <button *ngIf="shellSrv.hasGoBackFn" mat-icon-button
+                        (click)="toolbar.classList.remove('smll-search-mode')" class="exit-search-btn">
+                        <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
+                        <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
+                    </button>
+
+                    <button *ngIf="shellSrv.hasGoBackFn" mat-icon-button (click)="shellSrv.goBack()"
+                        class="hidden-during-search larger-than-500">
+                        <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
+                        <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>
+                    </button>
+
+                    <div class="shell-title" translate>{{shellSrv.shellTitle}}</div>
+
+                    <button mat-icon-button *ngIf="shellSrv.hasSearch" class="small-only smll-search-button"
+                        (click)="toolbar.classList.add('smll-search-mode')"
+                        matTooltip="{{shellSrv.searchInputTitle | translate}}">
+                        <i class="far fa-search"></i>
+                    </button>
+
+                    <div class="ss-form-field large-only" *ngIf="shellSrv.hasSearch">
+                        <mat-form-field floatLabel="always">
+                            <mat-label translate>{{shellSrv.searchInputTitle}}</mat-label>
+                            <input [formControl]="shellSrv.searchFormControl" matInput type="text">
+                        </mat-form-field>
+                    </div>
+
+                    <ng-container *ngFor="let b of shellSrv.buttons">
+                        <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
+                            (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
+                            [class.large-only]="b.disabled || !b.keepOnToolbar">
+                            <i [class]="b.icon"></i>
+                        </button>
+                    </ng-container>
+
+                    <button #trigger="matMenuTrigger" [matMenuTriggerFor]="menu" mat-icon-button>
+                        <i class="fas fa-caret-down"></i>
+                        <!--i class="far fa-ellipsis-v"></i-->
+                    </button>
+                </div>
+
+            </div>
+            <!--app-nav-bar (menuToggle)="navBar.toggle()"></app-nav-bar-->
+            <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error" #routerContainer>
+                <ng-content></ng-content>
+                <div class="b-b-app-bar static-container-bottom-padding"></div>
+            </div>
+            <div *ngIf="shellSrv.loading" class="b-b-app-bar loading-spinner-container">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="shellSrv.error" class="b-b-app-bar loading-spinner-container">
+                <i class="fas fa-exclamation-circle fa-10x f-warn"></i>
+                <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <mat-menu #menu="matMenu" style="overflow: hidden">
+        <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
+            <ng-container *ngFor="let b of shellSrv.buttons">
+                <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item small-only"
+                    [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                    (click)="b.click(); trigger.closeMenu();">
+                    <div class="icon">
+                        <i [class]="b.icon"></i>
+                    </div>
+                    <span class="text" translate>{{b.label}}</span>
+                </button>
+            </ng-container>
+
+            <button type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
+                <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
+                <span class="text" translate>LANGUAGE_SETTINGS</span>
+            </button>
+            <button type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
+                <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
+                <span class="text" translate>THEME_SETTINGS</span>
+            </button>
+            <button type="button" mat-menu-item class="settings-item" (click)="logoutBtn.click()">
+                <ss-logout class="icon" (click)="$event.stopPropagation()" #logoutBtn></ss-logout>
+                <span class="text" translate>LOGOUT</span>
+            </button>
+        </div>
+    </mat-menu>
+
+</div>

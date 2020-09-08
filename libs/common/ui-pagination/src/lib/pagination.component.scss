@@ -1,0 +1,51 @@
+
+:host {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    min-width: 320px;
+    width: 320px;
+    max-width: 320px;
+
+    height: 48px;
+    line-height: 48px;
+    border-radius: 8px;
+}
+
+.pagination-buttons {
+    flex: 160px 0 0;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    overflow: hidden;
+}
+
+.pagination-config {
+    flex: 160px 0 0;
+    width: 160px;
+    height: 48px;
+    line-height: 48px;
+    overflow: hidden;
+}
+
+.page-input {
+    text-align: center;
+    height: 20px;
+    width: 60px;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.conf-text {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}

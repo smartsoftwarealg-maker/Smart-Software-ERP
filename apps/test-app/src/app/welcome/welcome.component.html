@@ -1,0 +1,11 @@
+
+<h3 class="f-primary">Test Welcome Page</h3>
+
+<strong>Links:</strong>
+<br>
+<ng-container *ngFor="let l of links">
+    <br>
+    <a [routerLink]="l">
+        {{l}}
+    </a>
+</ng-container>

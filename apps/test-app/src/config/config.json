@@ -1,0 +1,14 @@
+{
+    "version": "2.0",
+    "info": "Config format was changed, contact Muaaz (muaaz.h.is@gmail.com) for help",
+    "info2": "You can Still use the old format, it will work.",
+    "protocol": "http://",
+    "defaultUrl": "127.0.0.1:81",
+    "urlRules": [
+        {
+            "frontend": "?",
+            "backend": "?:81",
+            "comment": "BackEnd is same as FrontEend, but with port 81"
+        }
+    ]
+}

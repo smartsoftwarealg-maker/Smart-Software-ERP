@@ -1,0 +1,69 @@
+
+:host {
+    display: flex;
+    min-width: 320px;
+    min-height: 200px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 16px;
+    min-width: 310px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .mat-form-field {
+        width: 90%;
+    }
+
+    .login-failed {
+        min-height: 20px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .buttons {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon-buttons {
+            width: 88px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+import { Component } from "@angular/core";
+import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ArticleService, Article } from '@ss/stock/api-article';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
+import { StockLookups, Mark, Vat } from '@ss/stock/api-lookup';
+import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
+
+@Component({
+    selector: 'ss-article-detail',
+    styleUrls: ['./article-detail.component.scss'],
+    templateUrl: './article-detail.component.html'
+})
+export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
+
+    marks: Mark[];
+    vats: Vat[];
+
+    constructor(
+        public articleSrv: ArticleService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public formBuilder: FormBuilder,
+        public stockLookupsSrv: StockLookups) {
+            super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_ARTICLE');
+    }
+
+    public preload(): Observable<any> {
+        return this.stockLookupsSrv.getMarks()
+            .pipe(
+                tap(x => this.marks = x),
+                switchMap(() => this.stockLookupsSrv.getVats()),
+                tap(x => this.vats = x),
+            );
+    }
+
+    public setupForm(a: Article) {
+        // Make sure to update the template if you edit the configuration here
+        return this.formBuilder.group({
+            accountno: [a.accountno],
+            description2: [a.description2, Validators.required],
+            id: [a.id],
+            mark: [a.mark],
+            price: [a.price, Validators.compose([Validators.required, Validators.min(0.01)])],
+            reference: [a.reference, Validators.required],
+            appCode: [a.appCode],
+            vat: [a.vat]
+        });
+    }
+
+}

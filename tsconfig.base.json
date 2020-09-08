@@ -15,7 +15,29 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
+      "@ss/common/api-base-entity": [
+        "libs/common/api-base-entity/src/index.ts"
+      ],
+      "@ss/common/ui-center-select": [
+        "libs/common/ui-center-select/src/index.ts"
+      ],
+      "@ss/common/ui-error-handler": [
+        "libs/common/ui-error-handler/src/index.ts"
+      ],
+      "@ss/common/ui-lang": ["libs/common/ui-lang/src/index.ts"],
+      "@ss/common/ui-login": ["libs/common/ui-login/src/index.ts"],
+      "@ss/common/ui-logout": ["libs/common/ui-logout/src/index.ts"],
+      "@ss/common/ui-pagination": ["libs/common/ui-pagination/src/index.ts"],
+      "@ss/common/ui-shell": ["libs/common/ui-shell/src/index.ts"],
+      "@ss/common/ui-theme": ["libs/common/ui-theme/src/index.ts"],
+      "@ss/stock/api-article": ["libs/stock/api-article/src/index.ts"],
+      "@ss/stock/api-lookup": ["libs/stock/api-lookup/src/index.ts"],
+      "@ss/stock/assets": ["libs/stock/assets/src/index.ts"],
+      "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
+      "@ss/stock/ui-mark": ["libs/stock/ui-mark/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,0 +1,14 @@
+{
+    "REFERENCE": "مرجع",
+    "DESCRIPTION": "الوصف",
+    "PRICE": "السعر",
+    "VAT": "الضريبة",
+    "MARK": "النوع",
+    "ACCOUNTNO": "رقم الحساب",
+    "ARTICLES": "السلع",
+    "EDIT_ARTICLE": "تعديل سلعة",
+    "MARKS": "العلامات",
+    "EDIT_MARK": "تعديل علامة",
+    "LOOKUPS": "القوائم",
+    "INVENTORY": "المخزون"
+}

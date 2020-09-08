@@ -1,0 +1,14 @@
+{
+    "REFERENCE": "Reference",
+    "DESCRIPTION": "Description",
+    "PRICE": "Price",
+    "VAT": "V.A.T",
+    "MARK": "Mark",
+    "ACCOUNTNO": "Account No.",
+    "ARTICLES": "Articles",
+    "EDIT_ARTICLE": "Edit article",
+    "MARKS": "Marks",
+    "EDIT_MARK": "Edit mark",
+    "LOOKUPS": "Lookup lists",
+    "INVENTORY": "Inventory"
+}

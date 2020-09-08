@@ -1,0 +1,44 @@
+<form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+    <div style="height: 16px"></div>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_REFERENCE</mat-label>
+        <input matInput formControlName="reference" type="text" required>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_DESCRIPTION</mat-label>
+        <input matInput formControlName="description2" type="text" required>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_PRICE</mat-label>
+        <input matInput formControlName="price" type="number" min="0.01" required>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_VAT</mat-label>
+        <mat-select formControlName="vat">
+            <mat-option [value]="null"></mat-option>
+            <mat-option *ngFor="let v of vats" [value]="v.id">
+                {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_MARK</mat-label>
+        <mat-select formControlName="mark">
+            <mat-option *ngFor="let m of marks" [value]="m.id">
+                {{m.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>STOCK_ACCOUNTNO</mat-label>
+        <input matInput formControlName="accountno">
+    </mat-form-field>
+
+</form>
