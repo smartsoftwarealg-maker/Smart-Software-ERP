@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     templateUrl: './mark-detail.component.html',
     styleUrls: ['./mark-detail.component.scss']
 })
-export class MarkDetailCompnent extends BaseEntityDetailComponent<Mark> {
+export class MarkDetailComponent extends BaseEntityDetailComponent<Mark> {
 
     constructor(
         public markSrv: MarkService,
