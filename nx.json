@@ -1,82 +1,78 @@
 {
-    "npmScope": "ss",
-    "affected": {
-        "defaultBase": "master"
+  "npmScope": "ss",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "implicitDependencies": {
-        "angular.json": "*",
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        "tsconfig.base.json": "*",
-        "tslint.json": "*",
-        "nx.json": "*"
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/workspace/tasks-runners/default",
-            "options": {
-                "cacheableOperations": [
-                    "build",
-                    "lint",
-                    "test",
-                    "e2e"
-                ]
-            }
-        }
-    },
-    "projects": {
-        "common-api-common": {
-            "tags": []
-        },
-        "common-api-base-entity": {
-            "tags": []
-        },
-        "common-ui-center-select": {
-            "tags": []
-        },
-        "common-ui-error-handler": {
-            "tags": []
-        },
-        "common-ui-lang": {
-            "tags": []
-        },
-        "common-ui-login": {
-            "tags": []
-        },
-        "common-ui-logout": {
-            "tags": []
-        },
-        "common-ui-pagination": {
-            "tags": []
-        },
-        "common-ui-shell": {
-            "tags": []
-        },
-        "common-ui-theme": {
-            "tags": []
-        },
-        "stock-api-article": {
-            "tags": []
-        },
-        "stock-api-lookup": {
-            "tags": []
-        },
-        "stock-assets": {
-            "tags": []
-        },
-        "stock-ui-article": {
-            "tags": []
-        },
-        "stock-ui-mark": {
-            "tags": []
-        },
-        "test-app": {
-            "tags": [],
-            "implicitDependencies": [
-                "stock-assets"
-            ]
-        }
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
+  },
+  "projects": {
+    "common-api-common": {
+      "tags": []
+    },
+    "common-api-base-entity": {
+      "tags": []
+    },
+    "common-ui-center-select": {
+      "tags": []
+    },
+    "common-ui-error-handler": {
+      "tags": []
+    },
+    "common-ui-lang": {
+      "tags": []
+    },
+    "common-ui-login": {
+      "tags": []
+    },
+    "common-ui-logout": {
+      "tags": []
+    },
+    "common-ui-pagination": {
+      "tags": []
+    },
+    "common-ui-shell": {
+      "tags": []
+    },
+    "common-ui-theme": {
+      "tags": []
+    },
+    "stock-api-article": {
+      "tags": []
+    },
+    "stock-api-lookup": {
+      "tags": []
+    },
+    "stock-assets": {
+      "tags": []
+    },
+    "stock-ui-article": {
+      "tags": []
+    },
+    "stock-ui-mark": {
+      "tags": []
+    },
+    "test-app": {
+      "tags": [],
+      "implicitDependencies": ["stock-assets"]
+    },
+    "stock-ui-vat": {
+      "tags": []
+    }
+  }
 }

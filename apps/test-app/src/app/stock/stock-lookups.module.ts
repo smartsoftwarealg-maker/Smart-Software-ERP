@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { STOCK_MARK_URL } from '../constants';
+import { STOCK_MARK_URL} from '../constants';
 import { INDEX_PAGE_URL, DETAIL_URL, LIST_URL } from '@ss/common/api-common';
-import { MarkListComponent, MarkDetailCompnent, StockUiMarkModule } from '@ss/stock/ui-mark';
+import { MarkListComponent, MarkDetailComponent, StockUiMarkModule } from '@ss/stock/ui-mark';
+import {ABS_INDEX_URL} from '@ss/common/api-common';
 
 const routes: Routes = [
     {
@@ -14,13 +15,13 @@ const routes: Routes = [
             },
             {
                 path: DETAIL_URL,
-                component: MarkDetailCompnent
+                component: MarkDetailComponent
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    { path: '', redirectTo: '/' + INDEX_PAGE_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: '/' + INDEX_PAGE_URL, pathMatch: 'full' }
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 
 @NgModule({

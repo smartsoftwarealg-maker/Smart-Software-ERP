@@ -8,7 +8,13 @@ import { MarkDetailComponent } from './mark-detail.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-    imports: [CommonModule, MaterialModule, RouterModule, UiLangModule, UiPaginationModule],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule,
+        UiLangModule,
+        UiPaginationModule
+    ],
     declarations: [
         MarkListComponent,
         MarkDetailComponent

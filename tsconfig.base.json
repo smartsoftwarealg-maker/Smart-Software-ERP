@@ -36,7 +36,8 @@
       "@ss/stock/api-lookup": ["libs/stock/api-lookup/src/index.ts"],
       "@ss/stock/assets": ["libs/stock/assets/src/index.ts"],
       "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
-      "@ss/stock/ui-mark": ["libs/stock/ui-mark/src/index.ts"]
+      "@ss/stock/ui-mark": ["libs/stock/ui-mark/src/index.ts"],
+      "@ss/stock/ui-vat": ["libs/stock/ui-vat/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,27 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { UiCenterSelectModule } from '@ss/common/ui-center-select';
-import { UiThemeModule } from '@ss/common/ui-theme';
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { UiLoginModule } from '@ss/common/ui-login';
-import { HttpClientModule } from '@angular/common/http';
-import { LanguageService, UiLangModule } from '@ss/common/ui-lang';
-import { Routes } from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { CanActivateService, INDEX_PAGE_URL } from '@ss/common/api-common';
-import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { UiShellModule } from '@ss/common/ui-shell';
-import { STOCK_APP_URL } from './constants';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {UiCenterSelectModule} from '@ss/common/ui-center-select';
+import {UiThemeModule} from '@ss/common/ui-theme';
+import {AppComponent} from './app.component';
+import {RouterModule} from '@angular/router';
+import {UiLoginModule} from '@ss/common/ui-login';
+import {HttpClientModule} from '@angular/common/http';
+import {LanguageService, UiLangModule} from '@ss/common/ui-lang';
+import {Routes} from '@angular/router';
+import {WelcomeComponent} from './welcome/welcome.component';
+import {CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
+import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
+import {ShellComponent, UiShellModule} from '@ss/common/ui-shell';
+import {STOCK_APP_URL} from './constants';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
-    { path: INDEX_PAGE_URL, component: WelcomeComponent, canActivate: [CanActivateService] },
     {
-        path: STOCK_APP_URL, loadChildren: () => import('./stock/stock.module').then(m => m.StockModule)
+        path: MAIN_PAGE_URL,
+        component: ShellComponent,
+        children: [
+            {path: INDEX_PAGE_URL, component: WelcomeComponent, canActivate: [CanActivateService]},
+            {
+                path: STOCK_APP_URL, loadChildren: () => import('./stock/stock.module').then(m => m.StockModule)
+            },
+            {path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full'}
+        ]
     },
-    { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
+    {path: '', redirectTo: LOGIN_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: LOGIN_URL, pathMatch: 'full'}
 ];
 
 @NgModule({

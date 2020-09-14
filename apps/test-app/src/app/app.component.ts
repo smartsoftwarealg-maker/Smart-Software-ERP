@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software ERP');
-        this.shellSrv.sideNavDataSource.data = [stockNavTree];
+        this.shellSrv.setSideNavDataSource([stockNavTree]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)

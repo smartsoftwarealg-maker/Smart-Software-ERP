@@ -95,7 +95,7 @@
             </div>
             <!--app-nav-bar (menuToggle)="navBar.toggle()"></app-nav-bar-->
             <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error" #routerContainer>
-                <ng-content></ng-content>
+                <router-outlet></router-outlet>
                 <div class="b-b-app-bar static-container-bottom-padding"></div>
             </div>
             <div *ngIf="shellSrv.loading" class="b-b-app-bar loading-spinner-container">

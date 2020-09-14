@@ -5,7 +5,7 @@ import {catchError, flatMap, map, switchMap, tap} from 'rxjs/operators';
 import {UserService} from './user.service';
 import {Agent, Person} from './models';
 import {DecService} from './dec.service';
-import {CENTER_SELECT_URL, LOGIN_URL, INDEX_PAGE_URL} from './constants';
+import {CENTER_SELECT_URL, LOGIN_URL, INDEX_PAGE_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
 
 export enum LicenseErrorType {
@@ -319,7 +319,7 @@ export class LoginService {
 
     public skipLogin(): void {
         if (this.isLoggedIn) {
-            this.router.navigate(['/' + INDEX_PAGE_URL]);
+            this.router.navigate([ABS_INDEX_URL]);
         }
     }
 }

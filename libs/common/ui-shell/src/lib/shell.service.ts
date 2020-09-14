@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { LanguageService } from '@ss/common/ui-lang';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
@@ -28,6 +28,7 @@ export interface SideNavNode {
 export class ShellService {
 
     protected showToolbarFn: () => void = null;
+    protected updatePending = false;
     protected updateShellFn: () => void = null;
     protected subscription: Subscription;
     //
@@ -42,9 +43,9 @@ export class ShellService {
     //
     protected isLoading = false;
     protected isError = false;
-    private retryCallback: () => void;
+    protected retryCallback: () => void;
     // side nav data
-    public readonly sideNavDataSource = new MatTreeNestedDataSource<SideNavNode>();
+    protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
 
     constructor(public langSrv: LanguageService, public router: Router) {
     }
@@ -74,6 +75,18 @@ export class ShellService {
 
     public get error(): boolean {
         return this.isError;
+    }
+
+    /* SIDE NAV */
+
+    public get sideNavDataSource(): MatTreeNestedDataSource<SideNavNode> {
+        return this.sideNavDataSrc;
+    }
+
+    public setSideNavDataSource(tree: SideNavNode[]) {
+        console.log('setSideNavDataSource');
+        this.sideNavDataSrc.data = tree;
+        this.updateShell();
     }
 
     /* GO BACK */
@@ -190,6 +203,7 @@ export class ShellService {
         this.updateShell();
     }
 
+    // noinspection JSUnusedGlobalSymbols
     public setButtonVisible(button: ToolbarButton, visible: boolean): void {
         button.visible = visible;
         this.updateShell();
@@ -208,11 +222,17 @@ export class ShellService {
     public updateShell(): void {
         if (this.updateShellFn) {
             this.updateShellFn();
+        } else {
+            this.updatePending = true;
         }
     }
 
     public setUpdateShellFn(fn: () => void): void {
         this.updateShellFn = fn;
+        if (this.updatePending) {
+            this.updateShell();
+        }
+        console.log('setUpdateShellFn');
     }
 
     public setShowToolbarFn(fn: () => void): void {

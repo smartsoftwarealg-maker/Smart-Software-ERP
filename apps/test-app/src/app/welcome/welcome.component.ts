@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
-// import { INDEX_PAGE_URL } from '@ss/common/api-common';
 import { ABS_STOCK_ARTICLES_URL, ABS_STOCK_MARKS_URL } from '../constants';
 
 @Component({
@@ -9,10 +8,6 @@ import { ABS_STOCK_ARTICLES_URL, ABS_STOCK_MARKS_URL } from '../constants';
     styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
-
-    // public static DEFAULT_URL = '/' + [
-    //     INDEX_PAGE_URL
-    // ].join('/');
 
     readonly allLinks: string[] = [
         ABS_STOCK_MARKS_URL,
