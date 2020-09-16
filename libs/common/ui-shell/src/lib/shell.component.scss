@@ -36,8 +36,14 @@
 }
 
 .shell-side-nav {
+    overflow: hidden;
     height: 100%;
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .static-container {
@@ -223,6 +229,10 @@
 }
 
 .brand {
+    flex-basis: 64px;
+    flex-grow: 0;
+    flex-shrink: 0;
+
     width: 100%;
     font-weight: bold;
     font-size: 120%;
@@ -260,9 +270,28 @@
     }
 }
 
-.side-nav-tree {
+.side-nav-tree-container {
     margin-top: 16px;
+    max-width: 100%;
     width: 100%;
+    overflow: auto;
+
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.side-nav-tree {
+    width: 100%;
+    overflow: auto;
+    flex-basis: 100%;
+    flex-shrink: 1;
+    flex-grow: 1;
 }
 
 .side-nav-tree-invisible {

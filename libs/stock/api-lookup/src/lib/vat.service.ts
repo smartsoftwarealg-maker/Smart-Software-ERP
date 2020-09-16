@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BaseEntityService, HttpService } from '@ss/common/api-common';
+import { HttpService } from '@ss/common/api-common';
 import { VATS_URL, Vat } from './lookups-api';
+import { BaseEntityService } from '@ss/common/api-base-entity';
 
 @Injectable({
     providedIn: 'root'

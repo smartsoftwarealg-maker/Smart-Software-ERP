@@ -84,7 +84,6 @@ export class ShellService {
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
-        console.log('setSideNavDataSource');
         this.sideNavDataSrc.data = tree;
         this.updateShell();
     }
@@ -232,7 +231,6 @@ export class ShellService {
         if (this.updatePending) {
             this.updateShell();
         }
-        console.log('setUpdateShellFn');
     }
 
     public setShowToolbarFn(fn: () => void): void {

@@ -64,16 +64,23 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         this.lastScroll = s;
-    }
+    };
 
     showToolbar = () => {
         this.shellDiv.nativeElement.classList.remove('hidden-toolbar');
-    }
+    };
 
     hideToolbar = () => {
         this.shellDiv.nativeElement.classList.add('hidden-toolbar');
-    }
+    };
 
     hasChild = (_: number, node: SideNavNode) => !!node.children && node.children.length > 0;
 
+    scrollTo(x: any): void {
+        console.log(x.currentTarget);
+        x.currentTarget.scrollIntoView({
+            inline: 'center',
+            behavior: 'smooth'
+        });
+    }
 }

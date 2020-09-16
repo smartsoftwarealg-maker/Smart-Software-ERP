@@ -1,4 +1,10 @@
-import {LOOKUPS_URL, STOCK_ARTICLE_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_ARTICLES_URL} from '../constants';
+import {
+    LOOKUPS_URL,
+    STOCK_ARTICLE_URL,
+    ABS_STOCK_MARKS_URL,
+    ABS_STOCK_ARTICLES_URL,
+    ABS_STOCK_VAT_URL
+} from '../constants';
 import {
     LIST_URL,
     DETAIL_URL,
@@ -47,6 +53,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'STOCK_MARKS',
                     icon: 'fas fa-copyright',
                     route: ABS_STOCK_MARKS_URL
+                },
+                {
+                    name: 'STOCK_VAT',
+                    icon: 'fas fa-percentage',
+                    route: ABS_STOCK_VAT_URL
                 }
             ]
         },
