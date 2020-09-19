@@ -73,6 +73,12 @@
     },
     "stock-ui-vat": {
       "tags": []
+    },
+    "stock-ui-class": {
+      "tags": []
+    },
+    "stock-ui-subclass": {
+      "tags": []
     }
   }
 }

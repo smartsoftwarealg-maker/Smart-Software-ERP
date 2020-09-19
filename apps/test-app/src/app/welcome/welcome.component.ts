@@ -1,6 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
-import {ABS_STOCK_ARTICLES_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_VAT_URL} from '../constants';
+import {
+    ABS_STOCK_ARTICLES_URL,
+    ABS_STOCK_CLASSES_URL,
+    ABS_STOCK_MARKS_URL,
+    ABS_STOCK_SUBCLASSES_URL,
+    ABS_STOCK_VAT_URL
+} from '../constants';
 
 @Component({
     selector: 'ss-welcome',
@@ -12,6 +18,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     readonly allLinks: string[] = [
         ABS_STOCK_VAT_URL,
         ABS_STOCK_MARKS_URL,
+        ABS_STOCK_CLASSES_URL,
+        ABS_STOCK_SUBCLASSES_URL,
         ABS_STOCK_ARTICLES_URL
     ];
 

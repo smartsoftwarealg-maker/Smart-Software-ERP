@@ -1,9 +1,9 @@
 import {
     LOOKUPS_URL,
-    STOCK_ARTICLE_URL,
+    STOCK_ARTICLES_URL,
     ABS_STOCK_MARKS_URL,
     ABS_STOCK_ARTICLES_URL,
-    ABS_STOCK_VAT_URL
+    ABS_STOCK_VAT_URL, ABS_STOCK_CLASSES_URL, ABS_STOCK_SUBCLASSES_URL
 } from '../constants';
 import {
     LIST_URL,
@@ -17,7 +17,7 @@ import { SideNavNode } from '@ss/common/ui-shell';
 
 export const routes: Routes = [
     {
-        path: STOCK_ARTICLE_URL,
+        path: STOCK_ARTICLES_URL,
         children: [
             {
                 path: LIST_URL,
@@ -47,12 +47,22 @@ export const stockNavTree: SideNavNode = {
     children: [
         {
             name: 'STOCK_LOOKUPS',
-            icon: 'fas fa-file',
+            icon: 'fas fa-clipboard-list',
             children: [
                 {
                     name: 'STOCK_MARKS',
                     icon: 'fas fa-copyright',
                     route: ABS_STOCK_MARKS_URL
+                },
+                {
+                    name: 'STOCK_CLASSES',
+                    icon: 'fas fa-copyright',
+                    route: ABS_STOCK_CLASSES_URL
+                },
+                {
+                    name: 'STOCK_SUBCLASSES',
+                    icon: 'fas fa-copyright',
+                    route: ABS_STOCK_SUBCLASSES_URL
                 },
                 {
                     name: 'STOCK_VAT',

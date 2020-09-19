@@ -11,5 +11,9 @@
     "EDIT_MARK": "Modifier marque",
     "LOOKUPS": "Listes",
     "INVENTORY": "Inventaire",
-    "PERCENTAGE": "Pourcentage"
+    "PERCENTAGE": "Pourcentage",
+    "CLASSES": "Classes",
+    "EDIT_CLASS": "Modifier classe",
+    "SUBCLASSES": "Sous-classes",
+    "EDIT_SUBCLASS": "Modifier Sous-class"
 }
