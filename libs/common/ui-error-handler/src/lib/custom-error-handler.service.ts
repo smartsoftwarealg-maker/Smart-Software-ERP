@@ -29,7 +29,7 @@ export class CustomErrorHandlerService {
             ? 0
             : err.status;
 
-        this.message = err == null || err.message == null || (err.status === 0 && err.url != null)
+        this.message = err == null || err.message == null
             ? this.langSrv.translate('CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)})
             : err.message;
 

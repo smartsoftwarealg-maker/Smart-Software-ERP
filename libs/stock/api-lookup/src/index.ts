@@ -4,3 +4,5 @@ export * from './lib/mark.service';
 export * from './lib/vat.service';
 export * from './lib/class.service';
 export * from './lib/subclass.service';
+export * from './lib/store-name.service';
+export * from './lib/unit.service';

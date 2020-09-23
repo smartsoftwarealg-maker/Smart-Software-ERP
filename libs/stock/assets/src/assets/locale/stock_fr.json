@@ -15,5 +15,9 @@
     "CLASSES": "Classes",
     "EDIT_CLASS": "Modifier classe",
     "SUBCLASSES": "Sous-classes",
-    "EDIT_SUBCLASS": "Modifier Sous-class"
+    "EDIT_SUBCLASS": "Modifier Sous-class",
+    "STORE_NAMES": "Magasins",
+    "EDIT_STORE_NAME": "Modifier nom magasin",
+    "UNITS": "Unités",
+    "EDIT_UNIT": "Modifier unité"
 }

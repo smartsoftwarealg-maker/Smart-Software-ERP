@@ -15,5 +15,9 @@
     "CLASSES": "الفئات",
     "EDIT_CLASS": "تعديل فئة",
     "SUBCLASSES": "الفئات الفرعية",
-    "EDIT_SUBCLASS": "تعديل فئة فرعية"
+    "EDIT_SUBCLASS": "تعديل فئة فرعية",
+    "STORE_NAMES": "المخازن",
+    "EDIT_STORE_NAME": "تعديل مخزن",
+    "UNITS": "Unités",
+    "EDIT_UNIT": "Modifier unité"
 }

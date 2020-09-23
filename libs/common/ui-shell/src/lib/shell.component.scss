@@ -11,7 +11,7 @@
 
 @media (max-width: 799px) {
     .shell-side-nav {
-        width: 240px;
+        width: 280px;
     }
 
     .large-only {
@@ -21,7 +21,7 @@
 
 @media (min-width: 799px) {
     .shell-side-nav {
-        width: 220px;
+        width: 260px;
     }
 
     .small-only {
@@ -303,7 +303,7 @@
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
-    width: 100%;
+    min-width: 100%;
 }
 
 .selectable-tree-item {

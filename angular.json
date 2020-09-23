@@ -678,6 +678,70 @@
           "style": "scss"
         }
       }
+    },
+    "stock-ui-store-name": {
+      "projectType": "library",
+      "root": "libs/stock/ui-store-name",
+      "sourceRoot": "libs/stock/ui-store-name/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stock/ui-store-name/tsconfig.lib.json",
+              "libs/stock/ui-store-name/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-store-name/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stock/ui-store-name/jest.config.js",
+            "tsConfig": "libs/stock/ui-store-name/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stock/ui-store-name/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stock-ui-unit": {
+      "projectType": "library",
+      "root": "libs/stock/ui-unit",
+      "sourceRoot": "libs/stock/ui-unit/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stock/ui-unit/tsconfig.lib.json",
+              "libs/stock/ui-unit/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-unit/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stock/ui-unit/jest.config.js",
+            "tsConfig": "libs/stock/ui-unit/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/stock/ui-unit/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

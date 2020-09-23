@@ -3,7 +3,7 @@ import { HttpService } from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
-import { stockNavTree } from './stock/routes';
+import {stockNavTree} from './stock/side-nav-tree';
 
 @Component({
     selector: 'ss-root',

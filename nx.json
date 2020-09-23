@@ -79,6 +79,12 @@
     },
     "stock-ui-subclass": {
       "tags": []
+    },
+    "stock-ui-store-name": {
+      "tags": []
+    },
+    "stock-ui-unit": {
+      "tags": []
     }
   }
 }
