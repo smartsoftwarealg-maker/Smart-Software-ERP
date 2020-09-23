@@ -1,12 +1,13 @@
-import { Component } from "@angular/core";
-import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ArticleService, Article } from '@ss/stock/api-article';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
-import { StockLookups, Mark, Vat } from '@ss/stock/api-lookup';
-import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
+import {Component} from "@angular/core";
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ArticleService, Article} from '@ss/stock/api-article';
+import {ActivatedRoute} from '@angular/router';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {FormBuilder, Validators} from '@angular/forms';
+import {StockLookupsService, Mark} from '@ss/stock/api-lookup';
+import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {LookupsService, Vat} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-article-detail',
@@ -24,15 +25,16 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
-        public stockLookupsSrv: StockLookups) {
-            super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_ARTICLE');
+        public lookupsSrv: LookupsService,
+        public stockLookupsSrv: StockLookupsService) {
+        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_ARTICLE');
     }
 
     public preload(): Observable<any> {
         return this.stockLookupsSrv.getMarks()
             .pipe(
                 tap(x => this.marks = x),
-                switchMap(() => this.stockLookupsSrv.getVats()),
+                switchMap(() => this.lookupsSrv.getVats()),
                 tap(x => this.vats = x),
             );
     }

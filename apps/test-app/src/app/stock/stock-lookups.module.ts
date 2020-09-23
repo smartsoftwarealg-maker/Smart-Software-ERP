@@ -8,16 +8,21 @@ import {
     STOCK_VAT_URL
 } from '../constants';
 import {DETAIL_URL, LIST_URL} from '@ss/common/api-common';
-import {MarkListComponent, MarkDetailComponent, StockUiMarkModule} from '@ss/stock/ui-mark';
-import {UnitListComponent, UnitDetailComponent, StockUiUnitModule} from '@ss/stock/ui-unit';
 import {ABS_INDEX_URL} from '@ss/common/api-common';
-import {VatDetailComponent, VatListComponent, StockUiVatModule} from '@ss/stock/ui-vat';
-import {ClassDetailComponent, ClassListComponent} from '@ss/stock/ui-class';
-import {SubclassDetailComponent, SubclassListComponent} from '@ss/stock/ui-subclass';
-import {StoreNameDetailComponent, StoreNameListComponent} from '@ss/stock/ui-store-name';
-import {StockUiClassModule} from '@ss/stock/ui-class';
-import {StockUiSubclassModule} from '@ss/stock/ui-subclass';
-
+import {
+    StoreNameListComponent,
+    StoreNameDetailComponent,
+    MarkListComponent,
+    MarkDetailComponent,
+    UnitListComponent,
+    UnitDetailComponent,
+    SubclassListComponent,
+    SubclassDetailComponent,
+    ClassListComponent,
+    ClassDetailComponent,
+    StockUiLookupModule
+} from '@ss/stock/ui-lookup';
+import {CommonUiLookupModule, VatDetailComponent, VatListComponent} from '@ss/common/ui-lookup';
 
 const routes: Routes = [
     {
@@ -110,11 +115,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        StockUiMarkModule,
-        StockUiVatModule,
-        StockUiClassModule,
-        StockUiSubclassModule,
-        StockUiUnitModule,
+        StockUiLookupModule,
+        CommonUiLookupModule,
         RouterModule.forChild(routes)
     ]
 })

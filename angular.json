@@ -449,38 +449,6 @@
         }
       }
     },
-    "stock-ui-mark": {
-      "projectType": "library",
-      "root": "libs/stock/ui-mark",
-      "sourceRoot": "libs/stock/ui-mark/src",
-      "prefix": "ss",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/stock/ui-mark/tsconfig.lib.json",
-              "libs/stock/ui-mark/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-mark/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stock/ui-mark/jest.config.js",
-            "tsConfig": "libs/stock/ui-mark/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-mark/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "test-app": {
       "projectType": "application",
       "schematics": {
@@ -583,29 +551,29 @@
         }
       }
     },
-    "stock-ui-vat": {
+    "stock-ui-lookup": {
       "projectType": "library",
-      "root": "libs/stock/ui-vat",
-      "sourceRoot": "libs/stock/ui-vat/src",
+      "root": "libs/stock/ui-lookup",
+      "sourceRoot": "libs/stock/ui-lookup/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-vat/tsconfig.lib.json",
-              "libs/stock/ui-vat/tsconfig.spec.json"
+              "libs/stock/ui-lookup/tsconfig.lib.json",
+              "libs/stock/ui-lookup/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-vat/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-lookup/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/ui-vat/jest.config.js",
-            "tsConfig": "libs/stock/ui-vat/tsconfig.spec.json",
+            "jestConfig": "libs/stock/ui-lookup/jest.config.js",
+            "tsConfig": "libs/stock/ui-lookup/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-vat/src/test-setup.ts"
+            "setupFile": "libs/stock/ui-lookup/src/test-setup.ts"
           }
         }
       },
@@ -615,29 +583,29 @@
         }
       }
     },
-    "stock-ui-class": {
+    "payroll-api-lookup": {
       "projectType": "library",
-      "root": "libs/stock/ui-class",
-      "sourceRoot": "libs/stock/ui-class/src",
+      "root": "libs/payroll/api-lookup",
+      "sourceRoot": "libs/payroll/api-lookup/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-class/tsconfig.lib.json",
-              "libs/stock/ui-class/tsconfig.spec.json"
+              "libs/payroll/api-lookup/tsconfig.lib.json",
+              "libs/payroll/api-lookup/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-class/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/payroll/api-lookup/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/ui-class/jest.config.js",
-            "tsConfig": "libs/stock/ui-class/tsconfig.spec.json",
+            "jestConfig": "libs/payroll/api-lookup/jest.config.js",
+            "tsConfig": "libs/payroll/api-lookup/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-class/src/test-setup.ts"
+            "setupFile": "libs/payroll/api-lookup/src/test-setup.ts"
           }
         }
       },
@@ -647,29 +615,29 @@
         }
       }
     },
-    "stock-ui-subclass": {
+    "common-api-lookup": {
       "projectType": "library",
-      "root": "libs/stock/ui-subclass",
-      "sourceRoot": "libs/stock/ui-subclass/src",
+      "root": "libs/common/api-lookup",
+      "sourceRoot": "libs/common/api-lookup/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-subclass/tsconfig.lib.json",
-              "libs/stock/ui-subclass/tsconfig.spec.json"
+              "libs/common/api-lookup/tsconfig.lib.json",
+              "libs/common/api-lookup/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-subclass/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/common/api-lookup/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/ui-subclass/jest.config.js",
-            "tsConfig": "libs/stock/ui-subclass/tsconfig.spec.json",
+            "jestConfig": "libs/common/api-lookup/jest.config.js",
+            "tsConfig": "libs/common/api-lookup/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-subclass/src/test-setup.ts"
+            "setupFile": "libs/common/api-lookup/src/test-setup.ts"
           }
         }
       },
@@ -679,61 +647,29 @@
         }
       }
     },
-    "stock-ui-store-name": {
+    "common-ui-lookup": {
       "projectType": "library",
-      "root": "libs/stock/ui-store-name",
-      "sourceRoot": "libs/stock/ui-store-name/src",
+      "root": "libs/common/ui-lookup",
+      "sourceRoot": "libs/common/ui-lookup/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-store-name/tsconfig.lib.json",
-              "libs/stock/ui-store-name/tsconfig.spec.json"
+              "libs/common/ui-lookup/tsconfig.lib.json",
+              "libs/common/ui-lookup/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-store-name/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-lookup/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/ui-store-name/jest.config.js",
-            "tsConfig": "libs/stock/ui-store-name/tsconfig.spec.json",
+            "jestConfig": "libs/common/ui-lookup/jest.config.js",
+            "tsConfig": "libs/common/ui-lookup/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-store-name/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "stock-ui-unit": {
-      "projectType": "library",
-      "root": "libs/stock/ui-unit",
-      "sourceRoot": "libs/stock/ui-unit/src",
-      "prefix": "ss",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/stock/ui-unit/tsconfig.lib.json",
-              "libs/stock/ui-unit/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-unit/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/stock/ui-unit/jest.config.js",
-            "tsConfig": "libs/stock/ui-unit/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-unit/src/test-setup.ts"
+            "setupFile": "libs/common/ui-lookup/src/test-setup.ts"
           }
         }
       },

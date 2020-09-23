@@ -36,12 +36,10 @@
       "@ss/stock/api-lookup": ["libs/stock/api-lookup/src/index.ts"],
       "@ss/stock/assets": ["libs/stock/assets/src/index.ts"],
       "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
-      "@ss/stock/ui-mark": ["libs/stock/ui-mark/src/index.ts"],
-      "@ss/stock/ui-vat": ["libs/stock/ui-vat/src/index.ts"],
-      "@ss/stock/ui-class": ["libs/stock/ui-class/src/index.ts"],
-      "@ss/stock/ui-subclass": ["libs/stock/ui-subclass/src/index.ts"],
-      "@ss/stock/ui-store-name": ["libs/stock/ui-store-name/src/index.ts"],
-      "@ss/stock/ui-unit": ["libs/stock/ui-unit/src/index.ts"]
+      "@ss/stock/ui-lookup": ["libs/stock/ui-lookup/src/index.ts"],
+      "@ss/payroll/api-lookup": ["libs/payroll/api-lookup/src/index.ts"],
+      "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
+      "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

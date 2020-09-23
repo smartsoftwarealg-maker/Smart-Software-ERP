@@ -1,11 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ShellService, ToolbarButton, SnackBarService } from '@ss/common/ui-shell';
+import { Component, } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
-import { StockLookups, Mark, Vat } from '@ss/stock/api-lookup';
+import { StockLookupsService, Mark } from '@ss/stock/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { Observable } from 'rxjs';
+import {LookupsService, Vat} from "@ss/common/api-lookup";
 
 
 @Component({
@@ -33,7 +34,8 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public stockLookupsSrv: StockLookups) {
+        public stockLookupsSrv: StockLookupsService,
+        public lookupsSrv: LookupsService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, 'STOCK_ARTICLES');
     }
 
@@ -41,7 +43,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         return this.stockLookupsSrv.getMarks()
             .pipe(
                 tap(x => this.onMarksLoaded(x)),
-                switchMap(() => this.stockLookupsSrv.getVats()),
+                switchMap(() => this.lookupsSrv.getVats()),
                 tap(x => this.onVatsLoaded(x))
             );
     }

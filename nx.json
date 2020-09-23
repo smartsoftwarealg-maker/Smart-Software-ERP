@@ -64,26 +64,20 @@
     "stock-ui-article": {
       "tags": []
     },
-    "stock-ui-mark": {
-      "tags": []
-    },
     "test-app": {
       "tags": [],
       "implicitDependencies": ["stock-assets"]
     },
-    "stock-ui-vat": {
+    "stock-ui-lookup": {
       "tags": []
     },
-    "stock-ui-class": {
+    "payroll-api-lookup": {
       "tags": []
     },
-    "stock-ui-subclass": {
+    "common-api-lookup": {
       "tags": []
     },
-    "stock-ui-store-name": {
-      "tags": []
-    },
-    "stock-ui-unit": {
+    "common-ui-lookup": {
       "tags": []
     }
   }
