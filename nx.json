@@ -79,6 +79,9 @@
     },
     "common-ui-lookup": {
       "tags": []
+    },
+    "payroll-ui-lookup": {
+      "tags": []
     }
   }
 }

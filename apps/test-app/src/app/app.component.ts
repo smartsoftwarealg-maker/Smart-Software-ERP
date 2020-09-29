@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpService } from '@ss/common/api-common';
-import { switchMap } from 'rxjs/operators';
-import { LanguageService } from '@ss/common/ui-lang';
-import { ShellService } from '@ss/common/ui-shell';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from '@ss/common/api-common';
+import {switchMap} from 'rxjs/operators';
+import {LanguageService} from '@ss/common/ui-lang';
+import {ShellService} from '@ss/common/ui-shell';
 import {stockNavTree} from './stock/side-nav-tree';
+import {payrollNavTree} from "./payroll/side-nav-tree";
 
 @Component({
     selector: 'ss-root',
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software ERP');
-        this.shellSrv.setSideNavDataSource([stockNavTree]);
+        this.shellSrv.setSideNavDataSource([stockNavTree, payrollNavTree]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)

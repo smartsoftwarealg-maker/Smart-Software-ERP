@@ -1,123 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {
-    STOCK_CLASSES_URL,
-    STOCK_MARKS_URL,
-    STOCK_STORE_NAMES_URL,
-    STOCK_SUBCLASSES_URL, STOCK_UNITS_URL,
-    STOCK_VAT_URL
-} from '../constants';
-import {DETAIL_URL, LIST_URL} from '@ss/common/api-common';
-import {ABS_INDEX_URL} from '@ss/common/api-common';
-import {
-    StoreNameListComponent,
-    StoreNameDetailComponent,
-    MarkListComponent,
-    MarkDetailComponent,
-    UnitListComponent,
-    UnitDetailComponent,
-    SubclassListComponent,
-    SubclassDetailComponent,
-    ClassListComponent,
-    ClassDetailComponent,
     StockUiLookupModule
 } from '@ss/stock/ui-lookup';
-import {CommonUiLookupModule, VatDetailComponent, VatListComponent} from '@ss/common/ui-lookup';
-
-const routes: Routes = [
-    {
-        path: STOCK_STORE_NAMES_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: StoreNameListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: StoreNameDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_UNITS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: UnitListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: UnitDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_MARKS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: MarkListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: MarkDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_CLASSES_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ClassListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: ClassDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_SUBCLASSES_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: SubclassListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: SubclassDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_VAT_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: VatListComponent
-            },
-            {
-                path: DETAIL_URL,
-                component: VatDetailComponent
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-];
+import {CommonUiLookupModule} from '@ss/common/ui-lookup';
+import {lookupRoutes} from './routes';
 
 @NgModule({
     imports: [
         StockUiLookupModule,
         CommonUiLookupModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(lookupRoutes)
     ]
 })
 export class StockLookupsModule {

@@ -1,0 +1,26 @@
+import { Component } from '@angular/core';
+import { EducationLevel, EducationLevelService } from '@ss/payroll/api-lookup';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+
+
+@Component({
+    selector: 'ss-education-level-list',
+    styleUrls: ['./education-level-list.component.scss'],
+    templateUrl: './education-level-list.component.html'
+})
+export class EducationLevelListComponent extends BaseEntityListComponent<EducationLevel> {
+
+    displayedColumns = ['description'];
+
+    constructor(
+        public educationLevelSrv: EducationLevelService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router) {
+        super(educationLevelSrv, shellSrv, snackBarSrv, route, router, 'PAYROLL_EDUCATION_LEVEL');
+    }
+
+}

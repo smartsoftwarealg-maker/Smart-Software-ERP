@@ -20,7 +20,7 @@ export class VatListComponent extends BaseEntityListComponent<Vat> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router) {
-        super(vatSrv, shellSrv, snackBarSrv, route, router, 'STOCK_VAT');
+        super(vatSrv, shellSrv, snackBarSrv, route, router, 'VATS');
     }
 
 }

@@ -1,7 +1,7 @@
-import {Injectable, OnDestroy, OnInit} from "@angular/core";
-import {Observable, of} from "rxjs";
-import {tap} from "rxjs/operators";
-import {HttpService} from "@ss/common/api-common";
+import {Injectable, OnDestroy, OnInit} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {HttpService} from '@ss/common/api-common';
 
 export interface LookupCache {
     expireTime: number;

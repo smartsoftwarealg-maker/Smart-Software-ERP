@@ -12,7 +12,7 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
 import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
 import {ShellComponent, UiShellModule} from '@ss/common/ui-shell';
-import {STOCK_APP_URL} from './constants';
+import {STOCK_APP_URL, PAYROLL_APP_URL} from './constants';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
@@ -23,6 +23,9 @@ const routes: Routes = [
             {path: INDEX_PAGE_URL, component: WelcomeComponent, canActivate: [CanActivateService]},
             {
                 path: STOCK_APP_URL, loadChildren: () => import('./stock/stock.module').then(m => m.StockModule)
+            },
+            {
+                path: PAYROLL_APP_URL, loadChildren: () => import('./payroll/payroll.module').then(m => m.PayrollModule)
             },
             {path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full'},
             {path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full'}

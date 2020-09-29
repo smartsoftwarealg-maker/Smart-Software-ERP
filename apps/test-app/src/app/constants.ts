@@ -1,11 +1,13 @@
-// common
 import {MAIN_PAGE_URL} from '@ss/common/api-common';
 
+// common
 export const LOOKUPS_URL = 'lookups';
 
-// Stock
-
+// apps
 export const STOCK_APP_URL = 'stock';
+export const PAYROLL_APP_URL = 'payroll';
+
+// Stock
 export const STOCK_ARTICLES_URL = 'articles';
 export const STOCK_VAT_URL = 'vat';
 export const STOCK_MARKS_URL = 'marks';
@@ -14,7 +16,18 @@ export const STOCK_SUBCLASSES_URL = 'subclasses';
 export const STOCK_STORE_NAMES_URL = 'storeNames';
 export const STOCK_UNITS_URL = 'units';
 
-// FULL URLS
+// Payroll
+export const PAYROLL_CATEGORIES_URL = 'categories';
+export const PAYROLL_DIPLOMAS_URL = 'diplomas';
+export const PAYROLL_EDUCATION_LEVELS_URL = 'educationLevels';
+export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
+export const PAYROLL_POSTS_URL = 'posts';
+
+// #############
+// # FULL URLS #
+// #############
+
+// stock
 export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_MARKS_URL].join('/');
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
@@ -22,3 +35,10 @@ export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK
 export const ABS_STOCK_VAT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_VAT_URL].join('/');
 export const ABS_STOCK_STORE_NAMES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_STORE_NAMES_URL].join('/');
 export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_UNITS_URL].join('/');
+
+// payroll
+export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');
+export const ABS_PAYROLL_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_DIPLOMAS_URL].join('/');
+export const ABS_PAYROLL_EDUCATION_LEVELS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_EDUCATION_LEVELS_URL].join('/');
+export const ABS_PAYROLL_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_MARITAL_STATUS_URL].join('/');
+export const ABS_PAYROLL_POSTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_POSTS_URL].join('/');

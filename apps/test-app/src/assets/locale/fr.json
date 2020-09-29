@@ -57,5 +57,9 @@
     "C_C_SELECT_COMPANY": "Entreprises",
     "C_C_SELECT_CENTER": "Centres",
 
-    "CONNECTION_FAILED": "La connexion au serveur '$backend$' a échoué"
+    "CONNECTION_FAILED": "La connexion au serveur '$backend$' a échoué",
+
+
+
+    "LOOKUPS": "Listes"
 }

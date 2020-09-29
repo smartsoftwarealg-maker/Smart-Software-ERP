@@ -39,7 +39,8 @@
       "@ss/stock/ui-lookup": ["libs/stock/ui-lookup/src/index.ts"],
       "@ss/payroll/api-lookup": ["libs/payroll/api-lookup/src/index.ts"],
       "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
-      "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"]
+      "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
+      "@ss/payroll/ui-lookup": ["libs/payroll/ui-lookup/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

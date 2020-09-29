@@ -14,7 +14,7 @@ export const stockNavTree: SideNavNode = {
     icon: 'fas fa-warehouse-alt',
     children: [
         {
-            name: 'STOCK_LOOKUPS',
+            name: 'LOOKUPS',
             icon: 'fas fa-clipboard-list',
             children: [
                 {

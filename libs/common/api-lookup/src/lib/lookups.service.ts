@@ -1,7 +1,11 @@
-import {LookupsCacheService} from '@ss/common/api-lookup';
+import {LookupsCacheService} from './lookups-cache.service';
 import {Vat, VATS_URL} from './lookups-api';
 import {Observable} from 'rxjs';
+import {Injectable} from "@angular/core";
 
+@Injectable({
+    providedIn: 'root'
+})
 export class LookupsService {
 
     constructor(private lookupCacheSrv: LookupsCacheService) {

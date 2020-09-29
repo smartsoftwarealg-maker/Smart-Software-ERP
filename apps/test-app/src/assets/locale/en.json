@@ -57,5 +57,9 @@
     "C_C_SELECT_COMPANY": "Companies",
     "C_C_SELECT_CENTER": "Centers",
 
-    "CONNECTION_FAILED": "Connection to backend server '$backend$' failed"
+    "CONNECTION_FAILED": "Connection to backend server '$backend$' failed",
+
+
+
+    "LOOKUPS": "Lookup lists"
 }

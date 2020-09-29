@@ -58,5 +58,8 @@
     "C_C_SELECT_COMPANY": "الشـركات",
     "C_C_SELECT_CENTER": "المراكـز",
 
-    "CONNECTION_FAILED": "فشل الإتصال بالخادم\n$backend$"
+    "CONNECTION_FAILED": "فشل الإتصال بالخادم\n$backend$",
+
+
+    "LOOKUPS": "القوائم"
 }
