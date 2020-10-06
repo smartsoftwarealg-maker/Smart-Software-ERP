@@ -7,8 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'ss-unit-detail',
-    templateUrl: './unit-detail.component.html',
-    styleUrls: ['./unit-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class UnitDetailComponent extends BaseEntityDetailComponent<Unit> {
 

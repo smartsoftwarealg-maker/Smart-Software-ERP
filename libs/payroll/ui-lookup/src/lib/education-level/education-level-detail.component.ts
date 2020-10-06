@@ -8,8 +8,8 @@ import {EducationLevel, EducationLevelService} from "@ss/payroll/api-lookup";
 
 @Component({
     selector: 'ss-education-level-detail',
-    templateUrl: './education-level-detail.component.html',
-    styleUrls: ['./education-level-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class EducationLevelDetailComponent extends BaseEntityDetailComponent<EducationLevel> {
 

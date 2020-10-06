@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'ss-subclass-detail',
-    templateUrl: './subclass-detail.component.html',
-    styleUrls: ['./subclass-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass> {
 

@@ -8,8 +8,8 @@ import {MaritalStatus, MaritalStatusService} from "@ss/payroll/api-lookup";
 
 @Component({
     selector: 'ss-marital-status-detail',
-    templateUrl: './marital-status-detail.component.html',
-    styleUrls: ['./marital-status-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class MaritalStatusDetailComponent extends BaseEntityDetailComponent<MaritalStatus> {
 

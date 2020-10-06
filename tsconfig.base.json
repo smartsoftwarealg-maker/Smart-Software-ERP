@@ -40,7 +40,9 @@
       "@ss/payroll/api-lookup": ["libs/payroll/api-lookup/src/index.ts"],
       "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
       "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
-      "@ss/payroll/ui-lookup": ["libs/payroll/ui-lookup/src/index.ts"]
+      "@ss/payroll/ui-lookup": ["libs/payroll/ui-lookup/src/index.ts"],
+      "@ss/payroll/assets": ["libs/payroll/assets/src/index.ts"],
+      "@ss/common/assets": ["libs/common/assets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

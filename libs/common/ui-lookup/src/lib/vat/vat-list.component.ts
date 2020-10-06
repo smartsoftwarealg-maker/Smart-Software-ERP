@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-vat-list',
-    styleUrls: ['./vat-list.component.scss'],
-    templateUrl: './vat-list.component.html'
+    templateUrl: './vat-list.component.html',
+    styleUrls: ['./vat-list.component.scss']
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {
 
@@ -20,7 +20,7 @@ export class VatListComponent extends BaseEntityListComponent<Vat> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router) {
-        super(vatSrv, shellSrv, snackBarSrv, route, router, 'VATS');
+        super(vatSrv, shellSrv, snackBarSrv, route, router, 'COMMON_VATS');
     }
 
 }

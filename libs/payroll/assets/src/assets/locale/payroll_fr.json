@@ -1,0 +1,12 @@
+{
+    "POSTS": "Postes",
+    "CATEGORIES": "Catégories",
+    "DIPLOMAS": "Diplômes",
+    "EDUCATION_LEVELS": "Niveaux d'éducation",
+    "MARITAL_STATUS": "État civil",
+    "DESCRIPTION": "Description",
+    "EDIT_CATEGORY": "Modifier catégorie",
+    "EDIT_DIPLOMA": "Modifier le diplôme",
+    "EDIT_EDUCATION_LEVEL": "Modifier le niveau d'éducation",
+    "EDIT_MARITAL_STATUS": "Modifier l'état civil"
+}

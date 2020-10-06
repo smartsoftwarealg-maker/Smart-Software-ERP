@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+import {Component} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {Wilaya, WilayaService} from "@ss/common/api-lookup";
 
 
 @Component({
     selector: 'ss-wilaya-list',
-    styleUrls: ['./wilaya-list.component.scss'],
-    templateUrl: './wilaya-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
 
@@ -20,7 +20,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router) {
-        super(wilayaSrv, shellSrv, snackBarSrv, route, router, 'WILAYAS');
+        super(wilayaSrv, shellSrv, snackBarSrv, route, router, 'COMMON_WILAYAS');
     }
 
 }

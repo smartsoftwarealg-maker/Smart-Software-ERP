@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-mark-list',
-    styleUrls: ['./mark-list.component.scss'],
-    templateUrl: './mark-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class MarkListComponent extends BaseEntityListComponent<Mark> {
 

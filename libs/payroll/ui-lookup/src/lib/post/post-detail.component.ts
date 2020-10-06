@@ -8,8 +8,8 @@ import {Post, PostService} from "@ss/payroll/api-lookup";
 
 @Component({
     selector: 'ss-post-detail',
-    templateUrl: './post-detail.component.html',
-    styleUrls: ['./post-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
 

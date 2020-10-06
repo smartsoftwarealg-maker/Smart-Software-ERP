@@ -8,8 +8,8 @@ import {Category, CategoryService} from "@ss/payroll/api-lookup";
 
 @Component({
     selector: 'ss-category-detail',
-    templateUrl: './category-detail.component.html',
-    styleUrls: ['./category-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class CategoryDetailComponent extends BaseEntityDetailComponent<Category> {
 

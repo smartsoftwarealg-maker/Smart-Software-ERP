@@ -8,8 +8,8 @@ import {Diploma, DiplomaService} from "@ss/payroll/api-lookup";
 
 @Component({
     selector: 'ss-diploma-detail',
-    templateUrl: './diploma-detail.component.html',
-    styleUrls: ['./diploma-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class DiplomaDetailComponent extends BaseEntityDetailComponent<Diploma> {
 

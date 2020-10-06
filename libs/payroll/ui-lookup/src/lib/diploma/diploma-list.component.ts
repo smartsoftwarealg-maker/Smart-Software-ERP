@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-diploma-list',
-    styleUrls: ['./diploma-list.component.scss'],
-    templateUrl: './diploma-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class DiplomaListComponent extends BaseEntityListComponent<Diploma> {
 

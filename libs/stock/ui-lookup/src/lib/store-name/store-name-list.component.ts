@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-store-name-list',
-    styleUrls: ['./store-name-list.component.scss'],
-    templateUrl: './store-name-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class StoreNameListComponent extends BaseEntityListComponent<StoreName> {
 

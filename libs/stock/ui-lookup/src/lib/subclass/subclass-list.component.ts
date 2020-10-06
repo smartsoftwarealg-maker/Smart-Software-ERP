@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-subclass-list',
-    styleUrls: ['./subclass-list.component.scss'],
-    templateUrl: './subclass-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
 

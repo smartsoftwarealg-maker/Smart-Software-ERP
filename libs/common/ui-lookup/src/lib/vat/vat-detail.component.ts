@@ -19,7 +19,7 @@ export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder) {
-        super(vatSrv, shellSrv, snackBarSrv, route, formBuilder, 'EDIT_VAT');
+        super(vatSrv, shellSrv, snackBarSrv, route, formBuilder, 'COMMON_EDIT_VAT');
     }
 
     public setupForm(e: Vat): FormGroup {

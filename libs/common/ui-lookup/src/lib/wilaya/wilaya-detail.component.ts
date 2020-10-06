@@ -8,8 +8,8 @@ import {Wilaya, WilayaService} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-wilaya-detail',
-    templateUrl: './wilaya-detail.component.html',
-    styleUrls: ['./wilaya-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
 
@@ -19,7 +19,7 @@ export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder) {
-            super(wilayaSrv, shellSrv, snackBarSrv, route, formBuilder, 'EDIT_WILAYA');
+            super(wilayaSrv, shellSrv, snackBarSrv, route, formBuilder, 'COMMON_EDIT_WILAYA');
     }
 
     public setupForm(e: Wilaya): FormGroup {

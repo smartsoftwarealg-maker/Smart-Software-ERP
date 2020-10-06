@@ -7,8 +7,8 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-education-level-list',
-    styleUrls: ['./education-level-list.component.scss'],
-    templateUrl: './education-level-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class EducationLevelListComponent extends BaseEntityListComponent<EducationLevel> {
 
@@ -20,7 +20,7 @@ export class EducationLevelListComponent extends BaseEntityListComponent<Educati
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router) {
-        super(educationLevelSrv, shellSrv, snackBarSrv, route, router, 'PAYROLL_EDUCATION_LEVEL');
+        super(educationLevelSrv, shellSrv, snackBarSrv, route, router, 'PAYROLL_EDUCATION_LEVELS');
     }
 
 }

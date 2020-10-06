@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'ss-mark-detail',
-    templateUrl: './mark-detail.component.html',
-    styleUrls: ['./mark-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class MarkDetailComponent extends BaseEntityDetailComponent<Mark> {
 

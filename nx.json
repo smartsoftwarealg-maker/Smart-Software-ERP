@@ -64,9 +64,9 @@
     "stock-ui-article": {
       "tags": []
     },
-    "test-app": {
+    "erp": {
       "tags": [],
-      "implicitDependencies": ["stock-assets"]
+      "implicitDependencies": ["common-assets", "stock-assets", "payroll-assets"]
     },
     "stock-ui-lookup": {
       "tags": []
@@ -81,6 +81,12 @@
       "tags": []
     },
     "payroll-ui-lookup": {
+      "tags": []
+    },
+    "payroll-assets": {
+      "tags": []
+    },
+    "common-assets": {
       "tags": []
     }
   }

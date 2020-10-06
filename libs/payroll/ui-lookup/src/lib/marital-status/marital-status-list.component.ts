@@ -7,8 +7,8 @@ import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-marital-status-list',
-    styleUrls: ['./marital-status-list.component.scss'],
-    templateUrl: './marital-status-list.component.html'
+    templateUrl: '../base-templates/list-template.html',
+    styleUrls: ['../base-templates/list-template.scss']
 })
 export class MaritalStatusListComponent extends BaseEntityListComponent<MaritalStatus> {
 

@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'ss-store-name-detail',
-    templateUrl: './store-name-detail.component.html',
-    styleUrls: ['./store-name-detail.component.scss']
+    templateUrl: '../base-templates/detail-template.html',
+    styleUrls: ['../base-templates/detail-template.scss']
 })
 export class StoreNameDetailComponent extends BaseEntityDetailComponent<StoreName> {
 
