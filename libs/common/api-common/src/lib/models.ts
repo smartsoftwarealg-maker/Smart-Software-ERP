@@ -54,38 +54,6 @@ export interface DocRight {
     right: Right;
 }
 
-export interface PaymentInfo {
-    center: number;
-    document: number;
-    number: number;
-    checkInfo: number;
-    agentId: number;
-}
-
-export interface Lookup {
-    id: number;
-    description?: string;
-}
-
-export interface Ledger {
-    id: number;
-    center: number;
-    document: number;
-    number: number;
-    date: string;
-    accountno: string;
-    customerCode: string;
-    balance: number;
-    reference: string;
-    fileId: number;
-    valueId: number;
-    balanceSign: number;
-    purchasePrice: number;
-    checkInfo: number;
-    ledgerType: number;
-    description: string;
-}
-
 export interface Agent {
     id: number;
     code: string;
@@ -108,35 +76,29 @@ export interface Company {
     descriptionAr: string;
 }
 
-export interface CostCenter {
-    id: number;
-    code: string;
-    description: string;
-    groupId: number;
-}
-
-export interface CostCenterGroup {
-    id: number;
-    description: string;
-}
-
-export interface Debt {
-    description?: string;
-    document: number;
-    number: number;
-    date?: string;
-    balance?: number;
-    balanceSign: number;
-}
 
 export interface Person {
     id: number;
-    customCode?: string;
-    address?: { address?: string; mobile?: string; };
-    birthInfo: { firstName: string; lastName: string; birthDate: string; birthPlace?: string; };
+    customCode: string;
+    birthInfo: {
+        firstName: string;
+        lastName: string;
+        birthDate: string;
+        birthPlace: string;
+        father: string;
+        mother: string;
+        sex: 1 | 2;
+    };
+    address: { address: string; wilaya: number };
     maritalStatus: number;
     mservice: number;
-    nationality: string;
+    nationality: number;
+    educationalLevel: number;
+    retirementDate: string;
+    diploma: number;
     ssNumber: string;
+    mutualNumber: string;
     license?: string;
 }
+
+

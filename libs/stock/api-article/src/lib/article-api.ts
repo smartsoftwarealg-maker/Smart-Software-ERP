@@ -10,4 +10,4 @@ export interface Article {
     accountno: string;
     price: number;
     appCode: number;
-};
+}

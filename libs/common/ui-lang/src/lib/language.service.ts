@@ -1,19 +1,68 @@
 import {Injectable} from '@angular/core';
 import {forkJoin, Observable, of, Subject} from 'rxjs';
-import {catchError, map, share, switchMap} from 'rxjs/operators';
+import {map, share, switchMap} from 'rxjs/operators';
 import {Direction} from '@angular/cdk/bidi';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {
+    dateToDmyStr,
+    dateToYmdStr,
+    dateStrToDmy,
+    dateStrToYmd,
+    isString,
+    removeTimeForDateStr
+} from "@ss/common/api-common";
+
+function formatFullName(first: string, last: string) {
+    return (first == null ? '' : first) + (last == null ? '' : (' ' + last));
+}
+
+function formatFullNameWeird(first: string, last: string) {
+    return (last == null ? '' : last) + (first == null ? '' : (' ' + first));
+}
+
+function formatMediumName(first: string, last: string) {
+    return (first == null || first.length < 1 ? '' : first.substring(0, 1)) + (last == null ? '' : (' ' + last));
+}
 
 export interface Language {
     code: string;
     dir: string;
     name: string;
+    formatDate: (d: Date) => string;
+    formatDateStr: (d: string) => string;
+    formatFullName: (first: string, family: string) => string;
+    formatMediumName: (first: string, family: string) => string;
+    // todo: add support for datetime
 }
 
 export const SUPPORTED_LANGUAGES: Language[] = [
-    {code: 'ar', dir: 'rtl', name: 'العربية'},
-    {code: 'en', dir: 'ltr', name: 'English'},
-    {code: 'fr', dir: 'ltr', name: 'Français'}
+    {
+        code: 'ar',
+        dir: 'rtl',
+        name: 'العربية',
+        formatDate: dateToYmdStr,
+        formatDateStr: dateStrToYmd,
+        formatFullName: formatFullName,
+        formatMediumName: formatMediumName
+    },
+    {
+        code: 'en',
+        dir: 'ltr',
+        name: 'English',
+        formatDate: dateToYmdStr,
+        formatDateStr: dateStrToYmd,
+        formatFullName: formatFullName,
+        formatMediumName: formatMediumName
+    },
+    {
+        code: 'fr',
+        dir: 'ltr',
+        name: 'Français',
+        formatDate: dateToDmyStr,
+        formatDateStr: dateStrToDmy,
+        formatFullName: formatFullNameWeird,
+        formatMediumName: formatMediumName
+    }
 ];
 
 export const DEFAULT_LANGUAGE: Language = SUPPORTED_LANGUAGES[2];
@@ -69,6 +118,8 @@ export class LanguageService {
         '.padding-end-32 { padding-left: 32px !important; } ' +
         '.padding-end-40 { padding-left: 40px !important; } ' +
         '.padding-end-48 { padding-left: 48px !important; } ' +
+        //
+        '.abs-end-0 { left: 0; }' +
         // right only, fixing mat shit
         '.mat-step-icon { margin-left: 12px !important; margin-right: 0 !important; } ' +
         '.mat-stepper-vertical-line::before { left: unset !important; right: 0 !important; } ' +
@@ -112,10 +163,12 @@ export class LanguageService {
         '.padding-end-24 { padding-right: 24px !important; } ' +
         '.padding-end-32 { padding-right: 32px !important; } ' +
         '.padding-end-40 { padding-right: 40px !important; } ' +
-        '.padding-end-48 { padding-right: 48px !important; } ';
+        '.padding-end-48 { padding-right: 48px !important; } ' +
+        //
+        '.abs-end-0 { right: 0; }';
 
     public rtl = true;
-    public currentLanguage;
+    private currentLanguage: Language;
     private sources: Source[] = [];
     private data: { [code: string]: { [key: string]: string; }; } = {};
     private changeSubject = new Subject<string>();
@@ -141,14 +194,14 @@ export class LanguageService {
     }
 
     private load(src: Source): Observable<boolean> {
-        if (this.currentLanguage == null || src.loaded[this.currentLanguage]) {
+        if (this.currentLanguage == null || src.loaded[this.currentLanguage.code]) {
             return of(false);
         }
-        return this.httpClient.get(src.uri + this.currentLanguage + '.json')
+        return this.httpClient.get(src.uri + this.currentLanguage.code + '.json')
             .pipe(
                 share(),
                 map((conf: { [key: string]: string; }) => {
-                    src.loaded[this.currentLanguage] = true;
+                    src.loaded[this.currentLanguage.code] = true;
                     this.pushData(conf, src.prefix);
                     return true;
                 })
@@ -162,17 +215,17 @@ export class LanguageService {
     }
 
     private pushData(segment: { [key: string]: string; }, prefix: string) {
-        let lang = this.data[this.currentLanguage];
+        let lang = this.data[this.currentLanguage.code];
         if (lang == null) {
             lang = {};
-            this.data[this.currentLanguage] = lang;
+            this.data[this.currentLanguage.code] = lang;
         }
         for (const key in segment) {
             if (segment.hasOwnProperty(key)) {
                 lang[prefix + key] = segment[key];
             }
         }
-        this.changeSubject.next(this.currentLanguage);
+        this.changeSubject.next(this.currentLanguage.code);
     }
 
     public addSource(uri: string, prefix: string): void {
@@ -186,7 +239,11 @@ export class LanguageService {
     }
 
     public setLanguage(code: string): Observable<void> {
-        this.currentLanguage = code;
+        const L = SUPPORTED_LANGUAGES.filter(l => l.code === code)[0];
+        if (!L) {
+            throw new Error('Unknown language code "' + code + '"');
+        }
+        this.currentLanguage = L;
         localStorage.setItem(LanguageService.LOCAL_STORAGE_KEY, code);
         this.updateDirection(code);
         return this.loadMissing()
@@ -206,7 +263,7 @@ export class LanguageService {
         if (key == null || key === '') {
             return '';
         }
-        const langData = this.data[this.currentLanguage];
+        const langData = this.data[this.currentLanguage.code];
         if (langData != null) {
             let val = langData[key];
             if (val != null) {
@@ -224,6 +281,29 @@ export class LanguageService {
         }
         return key;
     }
+
+    public formatDate(d: Date | string): string {
+        if (d == null || this.currentLanguage == null) {
+            return null;
+        }
+        if (d instanceof Date) {
+            return this.currentLanguage.formatDate(d);
+        }
+        if (isString(d)) {
+            return this.currentLanguage.formatDateStr(removeTimeForDateStr(d));
+        }
+        throw new Error('Can only format Date or string');
+    }
+
+    public formatFullName(first: string, last: string): string {
+        return this.currentLanguage == null ? null : this.currentLanguage.formatFullName(first, last);
+    }
+
+    public formatMediumName(first: string, last: string): string {
+        return this.currentLanguage == null ? null : this.currentLanguage.formatMediumName(first, last);
+    }
+
+    // privates
 
     private addStyleClass(code: string): void {
         if (LanguageService.style == null) {

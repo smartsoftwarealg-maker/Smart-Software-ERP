@@ -1,5 +1,5 @@
 import {LookupsCacheService} from './lookups-cache.service';
-import {Vat, VATS_URL} from './lookups-api';
+import {Vat, VATS_URL, Wilaya, WILAYAS_URL} from './lookups-api';
 import {Observable} from 'rxjs';
 import {Injectable} from "@angular/core";
 
@@ -13,6 +13,10 @@ export class LookupsService {
 
     public getVats(): Observable<Vat[]> {
         return this.lookupCacheSrv.load<Vat>(VATS_URL, 'vats');
+    }
+
+    public getWilaya(): Observable<Wilaya[]> {
+        return this.lookupCacheSrv.load<Wilaya>(WILAYAS_URL, 'wilayas');
     }
 
 }

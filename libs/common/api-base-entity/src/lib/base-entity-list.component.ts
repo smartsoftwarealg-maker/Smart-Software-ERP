@@ -1,21 +1,21 @@
-import { BaseEntityService } from './base-entity.service';
-import { ShellService, ToolbarButton, SnackBarService } from '@ss/common/ui-shell';
-import { Router, ActivatedRoute } from '@angular/router';
-import { PaginationModel } from '@ss/common/ui-pagination';
-import { OnInit, OnDestroy, Component, Directive } from '@angular/core';
-import { DETAIL_URL } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {BaseEntityService} from './base-entity.service';
+import {ShellService, ToolbarButton, SnackBarService} from '@ss/common/ui-shell';
+import {Router, ActivatedRoute} from '@angular/router';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {OnInit, OnDestroy, Directive} from '@angular/core';
+import {DETAIL_URL} from '@ss/common/api-common';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
 
     constructor(public entitySrv: BaseEntityService<T>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public title: string) {
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public router: Router,
+                public title: string) {
     }
 
     //
@@ -27,7 +27,9 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         disabled: false,
         visible: true,
         keepOnToolbar: false,
-        click: () => { this.refresh(); }
+        click: () => {
+            this.refresh();
+        }
     };
     public addButton: ToolbarButton = {
         icon: 'fas fa-plus',
@@ -59,6 +61,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     //
     public data: T[] = [];
     public selected = 0;
+
     //
 
     public ngOnInit() {
@@ -85,6 +88,8 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public refresh() {
+        this.releaseResources();
+        this.data = [];
         this.shellSrv.setLoading(true);
         this.select(0);
         const a = this.preload();
@@ -106,13 +111,21 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         );
     }
 
+    public processLoadedData(data: T[]): T[] {
+        return data;
+    }
+
     public finishLoading(data: T[]) {
-        this.data = data;
+        this.data = this.processLoadedData(data);
         this.shellSrv.setLoading(false);
     }
 
     public ngOnDestroy() {
+        this.releaseResources();
         this.shellSrv.reset();
+    }
+
+    public releaseResources() {
     }
 
     public select(id: number): void {
@@ -137,7 +150,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         const params = {
             id: id
         };
-        this.router.navigate(['../' + DETAIL_URL], { relativeTo: this.route, queryParams: params })
+        this.router.navigate(['../' + DETAIL_URL], {relativeTo: this.route, queryParams: params})
             .then();
     }
 

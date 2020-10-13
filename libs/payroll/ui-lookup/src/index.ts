@@ -14,3 +14,9 @@ export * from './lib/diploma/diploma-list.component';
 
 export * from './lib/category/category-detail.component';
 export * from './lib/category/category-list.component';
+
+export * from './lib/nationality/nationality-detail.component';
+export * from './lib/nationality/nationality-list.component'
+
+export * from './lib/service/service-detail.component';
+export * from './lib/service/service-list.component';

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpEvent, HttpHeaders, HttpParams} from '@angular/common/http';
-import {HttpResponse} from '@angular/common/http';
 import {map, share} from 'rxjs/operators';
 import {of} from 'rxjs';
 
@@ -19,7 +18,6 @@ export class HttpService {
     static getHeaders() {
         return new HttpHeaders(
             {
-                'Content-Type': 'application/json',
                 Authorization: this.getAuthToken() || ''
             }
         );
@@ -79,6 +77,22 @@ export class HttpService {
             }));
     }
 
+    public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
+        if (this.baseUrl == null || url == null) {
+            throw new Error('Invalid URL');
+        }
+        return this
+            .httpClient
+            .get(this.baseUrl + url,
+                {
+                    headers: HttpService.getHeaders(),
+                    observe: 'response',
+                    responseType: 'blob',
+                    params: httpParams
+                }
+            ).pipe(map(ress => ress.body));
+    }
+
     public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
@@ -88,7 +102,8 @@ export class HttpService {
             .get<T>(this.baseUrl + url,
                 {
                     headers: HttpService.getHeaders(),
-                    observe: 'response', params: httpParams
+                    observe: 'response',
+                    params: httpParams
                 }
             ).pipe(map(ress => ress.body));
     }
@@ -130,17 +145,6 @@ export class HttpService {
     public doLogin2(url, data): Observable<{ jwt: string }> {
         const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
         return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, {headers: httpHeaders});
-    }
-
-    // noinspection JSUnusedGlobalSymbols
-    public getBlob(url): Observable<HttpResponse<Blob>> {
-        return this.httpClient.get(this.baseUrl + url,
-            {
-                responseType: 'blob',
-                observe: 'response',
-                headers: new HttpHeaders()
-                    .set('Authorization', this.getAuthToken())
-            });
     }
 
     // noinspection JSUnusedGlobalSymbols

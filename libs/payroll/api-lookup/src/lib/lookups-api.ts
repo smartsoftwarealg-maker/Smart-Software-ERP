@@ -5,6 +5,7 @@ export const EDUCATION_LEVEL_URL = '/educlevels';
 export const DIPLOMAS_URL = '/diplomas';
 export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/categories';
+export const SERVICES_URL = '/services';
 
 export class MaritalStatus {
     id: number;
@@ -36,4 +37,19 @@ export class Category {
     description: string;
 }
 
+export class Service {
+    id: number;
+    description: string;
+}
 
+export class MilitaryServiceState {
+    id: number;
+    description: string;
+}
+
+export const MILITARY_SERVICE_STATES: MilitaryServiceState[] = [
+    {id: 0, description: 'PAYROLL_MSRV_FREEMAN'},
+    {id: 1, description: 'PAYROLL_MSRV_ENSLAVED'},
+    {id: 2, description: 'PAYROLL_MSRV_EXEMPTED'},
+    {id: 3, description: 'PAYROLL_MSRV_UNFIT'}
+];

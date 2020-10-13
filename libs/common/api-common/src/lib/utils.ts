@@ -97,12 +97,46 @@ export function strToDateTime(s: string) {
 }
 
 
+export function dateStrToDmy(s: string) {
+    // assume it is a correct date of the format dmy or ymd
+    if (s == null) {
+        return null;
+    }
+    try {
+        parse4Digits(s, [0]);
+        return ymdToDmy(s);
+    } catch (e) {
+        return s;
+    }
+}
+
+export function dateStrToYmd(s: string) {
+    // assume it is a correct date of the format dmy or ymd
+    if (s == null) {
+        return null;
+    }
+    try {
+        parse4Digits(s, [0]);
+        return s;
+    } catch (e) {
+        return dmyToYmd(s);
+    }
+}
+
 export function dateToDmyStr(date: Date) {
     return pad2(date.getDate())
         + '-'
         + pad2(date.getMonth() + 1)
         + '-'
         + pad4(date.getFullYear());
+}
+
+export function dateToYmdStr(date: Date) {
+    return pad4(date.getFullYear())
+        + '-'
+        + pad2(date.getMonth() + 1)
+        + '-'
+        + pad2(date.getDate());
 }
 
 export function strToDate(str: string) {
@@ -113,6 +147,16 @@ export function strToDate(str: string) {
         date.setSeconds(0);
     }
     return date;
+}
+
+// removes time from a date string ex: yyyy-MM-dd HH:mm:ss becomes yyyy-MM-dd
+export function removeTimeForDateStr(s: string) {
+    if (s == null) {
+        return null;
+    }
+    const r = s.trim();
+    const i = r.indexOf(' ');
+    return i > 0 ? r.substring(0, i) : r;
 }
 
 export function isString(value) {

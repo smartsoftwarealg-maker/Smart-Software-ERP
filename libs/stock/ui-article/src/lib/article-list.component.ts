@@ -8,7 +8,6 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { Observable } from 'rxjs';
 import {LookupsService, Vat} from "@ss/common/api-lookup";
 
-
 @Component({
     selector: 'ss-article-list',
     styleUrls: ['./article-list.component.scss'],
