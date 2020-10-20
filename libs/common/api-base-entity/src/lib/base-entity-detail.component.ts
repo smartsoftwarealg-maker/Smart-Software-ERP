@@ -8,6 +8,8 @@ import { switchMap } from 'rxjs/operators';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
+
+    private queryId: number;
     public form: FormGroup = null;
 
     public saveButton: ToolbarButton = {
@@ -26,6 +28,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public title: string) {
+    }
+
+    public get id() {
+        return this.queryId;
     }
 
     public ngOnInit() {
@@ -51,7 +57,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         const a = this.preload();
         const b = this.route.queryParams
             .pipe(
-                switchMap(p => this.loadEntity(p.id))
+                switchMap(p => {
+                    this.queryId = p.id;
+                    return this.loadEntity(p.id);
+                })
             );
         const c = a == null
             ? b
@@ -76,7 +85,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             this.shellSrv.goBack();
             return of(null);
         }
-        if (id == 0) {
+        if (id === 0) {
             const a: any = {
                 id: 0
             };
@@ -96,7 +105,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             return;
         }
         const val: T = this.form.value;
-        const obs: Observable<any> = val.id == 0 ? this.entitySrv.add(val) : this.entitySrv.update(val);
+        const obs: Observable<any> = val.id === 0 ? this.entitySrv.add(val) : this.entitySrv.update(val);
         // todo: update the url param 'id' here when adding
         this.shellSrv.setLoading(true);
         obs.subscribe(() => {

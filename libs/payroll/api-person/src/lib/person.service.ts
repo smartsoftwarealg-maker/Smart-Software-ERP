@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class PersonService extends BaseEntityService<Person> {
+export class  PersonService extends BaseEntityService<Person> {
 
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, PERSONS_URL);
@@ -17,4 +17,7 @@ export class PersonService extends BaseEntityService<Person> {
         return this.httpSrv.getBlob(PERSONS_URL + '/' + id + PERSONS_PHOTO_URL);
     }
 
+    public getPhotoUrl(id: number): string {
+        return id && id > 0 ? (PERSONS_URL + '/' + id + PERSONS_PHOTO_URL) : null;
+    }
 }

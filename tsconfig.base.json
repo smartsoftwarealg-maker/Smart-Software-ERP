@@ -44,7 +44,8 @@
       "@ss/payroll/assets": ["libs/payroll/assets/src/index.ts"],
       "@ss/common/assets": ["libs/common/assets/src/index.ts"],
       "@ss/payroll/api-person": ["libs/payroll/api-person/src/index.ts"],
-      "@ss/payroll/ui-person": ["libs/payroll/ui-person/src/index.ts"]
+      "@ss/payroll/ui-person": ["libs/payroll/ui-person/src/index.ts"],
+      "@ss/common/ui-image-input": ["libs/common/ui-image-input/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

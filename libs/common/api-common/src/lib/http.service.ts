@@ -160,7 +160,9 @@ export class HttpService {
             );
     }
 
-    public upload(url: string, fd: FormData): Observable<HttpEvent<any>> {
+    public uploadBlob(url: string, formName: string, blob: Blob): Observable<HttpEvent<any>> {
+        const fd: FormData = new FormData();
+        fd.append(name, blob);
         const extraHeaders = {
             Authorization: this.getAuthToken()
         };

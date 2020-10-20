@@ -1,146 +1,106 @@
 {
-    "npmScope": "ss",
-    "affected": {
-        "defaultBase": "master"
+  "npmScope": "ss",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "implicitDependencies": {
-        "angular.json": "*",
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        "tsconfig.base.json": "*",
-        "tslint.json": "*",
-        "nx.json": "*"
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/workspace/tasks-runners/default",
-            "options": {
-                "cacheableOperations": [
-                    "build",
-                    "lint",
-                    "test",
-                    "e2e"
-                ]
-            }
-        }
-    },
-    "projects": {
-        "common-api-common": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-api-base-entity": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-ui-center-select": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-error-handler": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-lang": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-login": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-logout": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-pagination": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-shell": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-theme": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "stock-api-article": {
-            "tags": []
-        },
-        "stock-api-lookup": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "stock-assets": {
-            "tags": []
-        },
-        "stock-ui-article": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "erp": {
-            "tags": [],
-            "implicitDependencies": [
-                "common-assets",
-                "stock-assets",
-                "payroll-assets"
-            ]
-        },
-        "stock-ui-lookup": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "payroll-api-lookup": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-api-lookup": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-ui-lookup": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "payroll-ui-lookup": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "payroll-assets": {
-            "tags": []
-        },
-        "common-assets": {
-            "tags": []
-        },
-        "payroll-api-person": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "payroll-ui-person": {
-            "tags": [
-                "type:ui"
-            ]
-        }
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
+  },
+  "projects": {
+    "common-api-common": {
+      "tags": ["type:api"]
+    },
+    "common-api-base-entity": {
+      "tags": ["type:api"]
+    },
+    "common-ui-center-select": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-error-handler": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-lang": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-login": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-logout": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-pagination": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-shell": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-theme": {
+      "tags": ["type:ui"]
+    },
+    "stock-api-article": {
+      "tags": []
+    },
+    "stock-api-lookup": {
+      "tags": ["type:api"]
+    },
+    "stock-assets": {
+      "tags": []
+    },
+    "stock-ui-article": {
+      "tags": ["type:ui"]
+    },
+    "erp": {
+      "tags": [],
+      "implicitDependencies": [
+        "common-assets",
+        "stock-assets",
+        "payroll-assets"
+      ]
+    },
+    "stock-ui-lookup": {
+      "tags": ["type:ui"]
+    },
+    "payroll-api-lookup": {
+      "tags": ["type:api"]
+    },
+    "common-api-lookup": {
+      "tags": ["type:api"]
+    },
+    "common-ui-lookup": {
+      "tags": ["type:ui"]
+    },
+    "payroll-ui-lookup": {
+      "tags": ["type:ui"]
+    },
+    "payroll-assets": {
+      "tags": []
+    },
+    "common-assets": {
+      "tags": []
+    },
+    "payroll-api-person": {
+      "tags": ["type:api"]
+    },
+    "payroll-ui-person": {
+      "tags": ["type:ui"]
+    },
+    "common-ui-image-input": {
+      "tags": []
+    }
+  }
 }
