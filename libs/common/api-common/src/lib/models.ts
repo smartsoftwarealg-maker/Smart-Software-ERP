@@ -1,5 +1,6 @@
 import {Center} from "@ss/common/api-center";
 
+
 export interface AccessRight {
     id: number;
     center: number;
