@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 
 export class BaseEntityService<T> {
 
-    private _parentId: number
+    private parentId: number
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
     }
@@ -41,16 +41,16 @@ export class BaseEntityService<T> {
         return this.httpSrv.put(this.getUrl(), a);
     }
 
-    set parentId(value: number) {
-        this._parentId = value;
+    setParentId(id: number):void {
+        this.parentId = id;
     }
 
     protected getUrl(): string {
 
-        if (this.parentUrl && !this._parentId) {
+        if (this.parentUrl && !this.parentId) {
             throw Error("No parent id was given !")
         }
 
-        return this.parentUrl ? `${this.parentUrl}/${this._parentId}${this.url}` : this.url;
+        return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;
     }
 }
