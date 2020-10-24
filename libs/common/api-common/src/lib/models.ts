@@ -1,3 +1,4 @@
+import {Center} from "@ss/common/api-center";
 
 export interface AccessRight {
     id: number;
@@ -96,17 +97,6 @@ export interface Agent {
     license?: string;
 }
 
-export interface Center {
-    id: number;
-    description: string;
-}
-
-export interface Company {
-    id: number;
-    description: string;
-    address: string;
-    descriptionAr: string;
-}
 
 export interface CostCenter {
     id: number;
