@@ -12,7 +12,8 @@ import {EducationLevelListComponent} from "./education-level/education-level-lis
 import {EducationLevelDetailComponent} from "./education-level/education-level-detail.component";
 import {DiplomaListComponent} from "./diploma/diploma-list.component";
 import {DiplomaDetailComponent} from "./diploma/diploma-detail.component";
-import {CategoryDetailComponent, CategoryListComponent} from "@ss/payroll/ui-lookup";
+import {CategoryDetailComponent} from './category/category-detail.component';
+import {CategoryListComponent} from './category/category-list.component';
 
 @NgModule({
     imports: [

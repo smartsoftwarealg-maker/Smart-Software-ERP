@@ -1,11 +1,14 @@
-import { map } from 'rxjs/operators';
-import { HttpService } from '@ss/common/api-common';
-import { PaginationModel } from '@ss/common/ui-pagination';
-import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
+import {HttpService} from '@ss/common/api-common';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {Observable} from 'rxjs';
 
 export class BaseEntityService<T> {
 
-    constructor(protected httpSrv: HttpService, protected url: string) {}
+    private parentId: number
+
+    constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
+    }
 
     public getPage(pageModel: PaginationModel, filter?: string, sortBy?: string): Observable<T[]> {
         return this.getList(pageModel.page - 1, pageModel.pageSize, filter, sortBy)
@@ -17,24 +20,37 @@ export class BaseEntityService<T> {
             );
     }
 
-    public getList(page: number, pageSize: number, filter?: string, sortBy?: string): Observable<{itemCount: number, body: T[]}> {
-        return this.httpSrv.getData<T>(this.url, page, pageSize, filter, sortBy);
+    public getList(page: number, pageSize: number, filter?: string, sortBy?: string): Observable<{ itemCount: number, body: T[] }> {
+        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy);
     }
 
     public get(id: number): Observable<T> {
-        return this.httpSrv.get(this.url + '/' + id);
+        return this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
     public remove(id: number): Observable<void> {
-        return this.httpSrv.remove(this.url + '/' + id);
+        return this.httpSrv.remove(this.getUrl() + '/' + id);
     }
 
     public add(a: T): Observable<number> {
-        return this.httpSrv.post(this.url, a)
+        return this.httpSrv.post(this.getUrl(), a)
             .pipe(map(id => +id));
     }
 
     public update(a: T): Observable<void> {
-        return this.httpSrv.put(this.url, a);
+        return this.httpSrv.put(this.getUrl(), a);
+    }
+
+    setParentId(id: number):void {
+        this.parentId = id;
+    }
+
+    protected getUrl(): string {
+
+        if (this.parentUrl && !this.parentId) {
+            throw Error("No parent id was given !")
+        }
+
+        return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;
     }
 }

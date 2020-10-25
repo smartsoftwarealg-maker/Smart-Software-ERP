@@ -66,7 +66,11 @@
     },
     "erp": {
       "tags": [],
-      "implicitDependencies": ["common-assets", "stock-assets", "payroll-assets"]
+      "implicitDependencies": [
+        "common-assets",
+        "stock-assets",
+        "payroll-assets"
+      ]
     },
     "stock-ui-lookup": {
       "tags": []
@@ -87,6 +91,9 @@
       "tags": []
     },
     "common-assets": {
+      "tags": []
+    },
+    "common-api-center": {
       "tags": []
     }
   }
