@@ -48,5 +48,7 @@
     "SETTINGS":"Paramètres",
 
     "USERNAME": "Utilisateur",
-    "PASSWORD": "Mot de passe"
+    "PASSWORD": "Mot de passe",
+
+    "MAX_FILE_SIZE_1MB": "Taille maximale du fichier 1 Mo"
 }

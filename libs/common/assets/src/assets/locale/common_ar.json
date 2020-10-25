@@ -48,5 +48,7 @@
     "SETTINGS":"الضبط",
 
     "USERNAME": "المستعمل",
-    "PASSWORD": "كلمة المرور"
+    "PASSWORD": "كلمة المرور",
+
+    "MAX_FILE_SIZE_1MB": "أقصى حجم للملف 1مغ"
 }

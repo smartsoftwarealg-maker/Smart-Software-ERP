@@ -100,9 +100,15 @@
       "tags": ["type:ui"]
     },
     "common-ui-image-input": {
-        "tags": []
+      "tags": []
     },
     "common-api-center": {
+      "tags": []
+    },
+    "logistics-api-agent": {
+      "tags": []
+    },
+    "logistics-ui-agent": {
       "tags": []
     }
   }

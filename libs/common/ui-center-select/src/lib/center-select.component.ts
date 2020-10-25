@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CentersService } from './centers.service';
-import { Router } from '@angular/router';
-import { UserService, INDEX_PAGE_URL } from '@ss/common/api-common';
-import { switchMap } from 'rxjs/operators';
-import { PROFILE_PAGE_URL } from '@ss/common/api-common';
-import { Center, Company } from '@ss/common/api-center';
-import { MatStepper } from '@angular/material/stepper';
-import { LoginService } from '@ss/common/api-common';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {CentersService} from './centers.service';
+import {Router} from '@angular/router';
+import {UserService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {switchMap} from 'rxjs/operators';
+import {PROFILE_PAGE_URL} from '@ss/common/api-common';
+import {Center, Company} from '@ss/common/api-center';
+import {MatStepper} from '@angular/material/stepper';
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -26,12 +26,12 @@ export class CenterSelectComponent implements OnInit {
     loading = false;
     loadingCenters = false;
 
-    @ViewChild('stepper', { static: false }) stepper: MatStepper;
+    @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
     constructor(private ccListSrv: CentersService,
-        private loginSrv: LoginService,
-        private router: Router,
-        private userService: UserService) {
+                private loginSrv: LoginService,
+                private router: Router,
+                private userService: UserService) {
     }
 
     ngOnInit() {
@@ -40,16 +40,15 @@ export class CenterSelectComponent implements OnInit {
         this.loading = true;
         this.ccListSrv.getCompanyList()
             .subscribe(r => {
-                this.companyList = r;
-                if (this.companyList.length === 1) {
-                    this.selectCompany(this.companyList[0].id);
-                    // } else {
+                    this.companyList = r;
+                    if (this.companyList.length === 1) {
+                        this.selectCompany(this.companyList[0].id);
+                    }
                     this.endLoading();
+                }, err => {
+                    this.endLoading();
+                    throw err;
                 }
-            }, err => {
-                this.endLoading();
-                throw err;
-            }
             );
     }
 
@@ -66,19 +65,19 @@ export class CenterSelectComponent implements OnInit {
             // this.loading = true;
             this.loadingCenters = true;
             this.ccListSrv.getCenterList(company).subscribe(r => {
-                this.centerList = r;
-                this.loadingCenters = false;
-                if (this.centerList.length === 1) {
-                    this.selectCenter(this.centerList[0].id);
-                    this.onDone();
-                    // } else {
-                    //     this.endLoading();
+                    this.centerList = r;
+                    this.loadingCenters = false;
+                    if (this.centerList.length === 1) {
+                        this.selectCenter(this.centerList[0].id);
+                        this.onDone();
+                        // } else {
+                        //     this.endLoading();
+                    }
+                }, err => {
+                    //     // this.endLoading();
+                    this.loadingCenters = false;
+                    throw err;
                 }
-            }, err => {
-                //     // this.endLoading();
-                this.loadingCenters = false;
-                throw err;
-            }
             );
         } else {
             this.selectedCompanyName = null;
@@ -96,15 +95,15 @@ export class CenterSelectComponent implements OnInit {
                 .centerLogin(this.selectedCenter)
                 .pipe(switchMap(() => this.userService.load()))
                 .subscribe(() => {
-                    // this.endLoading(); // don't show shit, because we are leaving anyway
-                    const dest = this.userService.context && this.userService.context.pwdExpired
-                        ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
-                    this.router.navigate(['/' + dest]).then(() => {
-                    });
-                }, err => {
-                    this.endLoading();
-                    throw err;
-                }
+                        // this.endLoading(); // don't show shit, because we are leaving anyway
+                        const dest = this.userService.context && this.userService.context.pwdExpired
+                            ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
+                        this.router.navigate(['/' + dest]).then(() => {
+                        });
+                    }, err => {
+                        this.endLoading();
+                        throw err;
+                    }
                 );
         }
     }
