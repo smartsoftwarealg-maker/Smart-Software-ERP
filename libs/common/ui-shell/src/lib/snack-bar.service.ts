@@ -33,13 +33,13 @@ export class SnackBarService {
     }
 
     public showSuccessMessage() {
-        return this.showMessage('SUCCESS', false, false);
+        return this.showMessage('COMMON_SUCCESS', false, false);
     }
 
     public showFailureMessage(error?: Error | string) {
         // todo: use the error this parameter
         console.log('Failure Error', error);
-        return this.showMessage('FAILURE', false, true);
+        return this.showMessage('COMMON_FAILURE', false, true);
     }
 
     public showResult(obsrv: Observable<any>): void {

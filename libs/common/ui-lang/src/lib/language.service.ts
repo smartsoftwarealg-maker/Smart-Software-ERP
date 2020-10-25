@@ -119,6 +119,7 @@ export class LanguageService {
         '.padding-end-40 { padding-left: 40px !important; } ' +
         '.padding-end-48 { padding-left: 48px !important; } ' +
         //
+        '.abs-start-0 { right: 0; }' +
         '.abs-end-0 { left: 0; }' +
         // right only, fixing mat shit
         '.mat-step-icon { margin-left: 12px !important; margin-right: 0 !important; } ' +
@@ -165,6 +166,7 @@ export class LanguageService {
         '.padding-end-40 { padding-right: 40px !important; } ' +
         '.padding-end-48 { padding-right: 48px !important; } ' +
         //
+        '.abs-start-0 { left: 0; }' +
         '.abs-end-0 { right: 0; }';
 
     public rtl = true;

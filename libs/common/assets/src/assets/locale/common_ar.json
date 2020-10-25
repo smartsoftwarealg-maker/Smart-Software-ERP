@@ -2,5 +2,51 @@
     "VATS": "الضريبة المضافة",
     "EDIT_VAT": "تعديل ق.ض.م",
     "WILAYAS": "الولايات",
-    "EDIT_WILAYA": "تعديل ولاية"
+    "EDIT_WILAYA": "تعديل ولاية",
+
+    "PER_PAGE": "$page$ \\ صفحة",
+
+    "SUCCESS": "تمت العملية بنجاح",
+    "FAILURE": "فشلت العملية",
+
+    "SAVE": "حفظ",
+    "CLOSE": "إغلاق",
+    "CONFIRM_DELETE_RECORD": "أمتأكد أنك تريد الحذف؟",
+    "CONFIRM_DONT_SAVE": "أتريد الخروج دون حفظ؟",
+    "CONFIRMATION": "تأكيد",
+    "YES": "نعم",
+    "NO": "لا",
+    "WORK_IN_PROGRESS": "قيد التطوير",
+    "SEARCH": "بحث",
+    "REFRESH": "تحديث",
+    "ADD": "إضافة",
+    "EDIT_SELECTED": "تعديل المحدد",
+    "DEL_SELECTED": "حذف المحدد",
+    "FIELD_REQUIRED": "هذا الحقل مطلوب",
+    "APPLY": "تطبيق",
+    "NEXT": "التالي",
+    "PREVIOUS": "السابق",
+
+    "THEME_SETTINGS": "السمات",
+    "LANGUAGE_SETTINGS": "اللغة",
+    "LOGOUT": "تسجيل الخروج",
+    "ERROR": "خطأ",
+    "LOGIN": "دخول",
+    "LOGIN_WRONG_USERNAME_PASSWORD": "معطيات غير صالحة",
+    "LOGIN_LICENSE": "الرخصة",
+    "LOGIN_INVALID_LICENSE": "رخصة غير صالحة",
+
+    "SELECT_COMPANY": "الشـركات",
+    "SELECT_CENTER": "المراكـز",
+
+    "CONNECTION_FAILED": "فشل الإتصال بالخادم\n$backend$",
+
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+
+    "LOOKUPS": "القوائم",
+    "SETTINGS":"الضبط",
+
+    "USERNAME": "المستعمل",
+    "PASSWORD": "كلمة المرور"
 }

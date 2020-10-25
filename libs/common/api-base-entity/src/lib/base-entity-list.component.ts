@@ -23,7 +23,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     //
     public refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
-        label: 'REFRESH',
+        label: 'COMMON_REFRESH',
         disabled: false,
         visible: true,
         keepOnToolbar: false,
@@ -33,7 +33,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     };
     public addButton: ToolbarButton = {
         icon: 'fas fa-plus',
-        label: 'ADD',
+        label: 'COMMON_ADD',
         disabled: false,
         visible: true,
         keepOnToolbar: false,
@@ -41,7 +41,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     };
     public editButton: ToolbarButton = {
         icon: 'fas fa-pen',
-        label: 'EDIT_SELECTED',
+        label: 'COMMON_EDIT_SELECTED',
         disabled: true,
         visible: true,
         keepOnToolbar: false,
@@ -49,7 +49,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     };
     public deleteButton: ToolbarButton = {
         icon: 'fas fa-trash-alt',
-        label: 'DEL_SELECTED',
+        label: 'COMMON_DEL_SELECTED',
         disabled: true,
         visible: true,
         keepOnToolbar: false,
@@ -67,7 +67,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     public ngOnInit() {
         this.shellSrv.setTilte(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
         this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();

@@ -1,65 +1,11 @@
 {
     "SMART_ERP": "Smart ERP",
-    "USERNAME": "المستعمل",
-    "PASSWORD": "كلمة المرور",
     "MAIN_MENU": "الواجهة الرئيسية",
     "ABOUT": "عن البرنامج",
     "PAYROLL":"المرتبات",
     "ACCOUNTING":"المحاسبة",
     "STOCK":"المخزون",
     "HOTEL":"الفندق",
-    "SETTINGS":"الضبط",
-    "SUCCESS": "تمت العملية بنجاح",
-    "FAILURE": "فشلت العملية",
-
-
-
-   
-   
-   
-    "PER_PAGE": "$page$ \\ صفحة",
-    "FIRST_PAGE": "الأولى",
-    "LAST_PAGE": "الأخيرة",
-    "TOTAL_PAGES": "عدد الصفحات: $pages$",
-
-
-
-   
-   
-    "SAVE": "حفظ",
-    "CLOSE": "إغلاق",
-    "CONFIRM_DELETE_RECORD": "أمتأكد أنك تريد الحذف؟",
-    "CONFIRM_DONT_SAVE": "أتريد الخروج دون حفظ؟",
-    "CONFIRMATION": "تأكيد",
-    "YES": "نعم",
-    "NO": "لا",
-    "WORK_IN_PROGRESS": "قيد التطوير",
-    "SEARCH": "بحث",
-    "REFRESH": "تحديث",
-    "ADD": "إضافة",
-    "EDIT_SELECTED": "تعديل المحدد",
-    "DEL_SELECTED": "حذف المحدد",
-    "FIELD_REQUIRED": "هذا الحقل مطلوب",
-    "APPLY": "تطبيق",
-    "NEXT": "التالي",
-    "PREVIOUS": "السابق",
-    "STAMP": "الطابع الضريبي",
-    "THEME_SETTINGS": "السمات",
-    "LANGUAGE_SETTINGS": "اللغة",
-    "LOGOUT": "تسجيل الخروج",
     "MEDIC": "العيادة",
-    "ERROR": "خطأ",
-
-    "LOGIN": "دخول",
-    "LOGIN_WRONG_USERNAME_PASSWORD": "معطيات غير صالحة",
-    "LOGIN_LICENSE": "الرخصة",
-    "LOGIN_INVALID_LICENSE": "رخصة غير صالحة",
-
-    "C_C_SELECT_COMPANY": "الشـركات",
-    "C_C_SELECT_CENTER": "المراكـز",
-
-    "CONNECTION_FAILED": "فشل الإتصال بالخادم\n$backend$",
-
-
-    "LOOKUPS": "القوائم"
+    "STAMP": "الطابع الضريبي"
 }

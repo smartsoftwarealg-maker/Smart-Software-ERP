@@ -7,6 +7,7 @@ import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {BaseEntityDetailComponent} from "@ss/common/api-base-entity";
 import {ImageModel} from "@ss/common/ui-image-input";
 import {HttpService} from "@ss/common/api-common";
+import {LanguageService} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-person-detail',

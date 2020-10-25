@@ -38,6 +38,6 @@
 <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false"
     #perPageMenu="matMenu">
     <div mat-menu-item *ngFor="let o of pageSizes" (click)="model.pageSize = o" [translate]="{page: o}">
-        {{perPageLabel}}
+        COMMON_PER_PAGE
     </div>
 </mat-menu>

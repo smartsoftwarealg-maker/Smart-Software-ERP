@@ -16,7 +16,7 @@ export const payrollNavTree: SideNavNode = {
     icon: 'fas fa-users',
     children: [
         {
-            name: 'LOOKUPS',
+            name: 'COMMON_LOOKUPS',
             icon: 'fas fa-clipboard-list',
             children: [
                 {

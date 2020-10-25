@@ -1,65 +1,11 @@
 {
     "SMART_ERP": "Smart ERP",
-    "USERNAME": "Utilisateur",
-    "PASSWORD": "Mot de passe",
     "MAIN_MENU": "Menu principal",
     "ABOUT": "Information",
     "PAYROLL":"Paie",
     "ACCOUNTING":"Comptabilité",
     "STOCK":"Stock",
     "HOTEL":"Hôtel",
-    "SETTINGS":"Paramètres",
-    "SUCCESS": "Opération réussie",
-    "FAILURE": "L'opération a échoué",
-
-
-
-
-
-
-    "PER_PAGE":"$page$ / page",
-    "FIRST_PAGE": "Première",
-    "LAST_PAGE": "Dernière",
-    "TOTAL_PAGES": "$pages$ page(s)",
-
-
-
-
-
-    "SAVE": "Enregistrer",
-    "CLOSE": "Fermer",
-    "CONFIRM_DELETE_RECORD": "Êtes-vous sûr de vouloir supprimer?",
-    "CONFIRM_DONT_SAVE": "Fermer sans enregistrer?",
-    "CONFIRMATION": "Confirmation",
-    "YES": "Oui",
-    "NO": "Non",
-    "WORK_IN_PROGRESS": "Travaux en cours",
-    "SEARCH": "Rechercher",
-    "REFRESH": "Rafraîchir",
-    "ADD": "Ajouter",
-    "EDIT_SELECTED": "Modifier sélectionnée",
-    "DEL_SELECTED": "Supprimer sélectionnée",
-    "FIELD_REQUIRED": "Ce champ est requis",
-    "APPLY": "Appliquer",
-    "NEXT": "Prochain",
-    "PREVIOUS": "Précédent",
-    "STAMP": "Timbre",
-    "THEME_SETTINGS": "Thèmes",
-    "LANGUAGE_SETTINGS": "Langue",
-    "LOGOUT": "Déconnexion",
     "MEDIC": "Clinique",
-    "ERROR": "Erreur",
-    "LOGIN": "S'identifier",
-    "LOGIN_WRONG_USERNAME_PASSWORD": "Les informations d'identification invalides",
-    "LOGIN_LICENSE": "Licence",
-    "LOGIN_INVALID_LICENSE": "Licence invalide",
-
-    "C_C_SELECT_COMPANY": "Entreprises",
-    "C_C_SELECT_CENTER": "Centres",
-
-    "CONNECTION_FAILED": "La connexion au serveur '$backend$' a échoué",
-
-
-
-    "LOOKUPS": "Listes"
+    "STAMP": "Timbre"
 }

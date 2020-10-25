@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
 import {PostDetailComponent} from './post/post-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {RouterModule} from '@angular/router';
@@ -18,6 +19,7 @@ import {NationalityDetailComponent} from './nationality/nationality-detail.compo
 import {NationalityListComponent} from './nationality/nationality-list.component';
 import {ServiceListComponent} from "./service/service-list.component";
 import {ServiceDetailComponent} from "./service/service-detail.component";
+
 
 @NgModule({
     imports: [

@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Center, UserInfo, DocRight, Right, Role, User, UserContext } from './models';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs';
-import { HttpService } from './http.service';
+import {Injectable} from '@angular/core';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {UserInfo, DocRight, Right, Role, User, UserContext} from './models';
+import {Center} from "@ss/common/api-center";
+import {of} from 'rxjs';
+import {Observable} from 'rxjs';
+import {HttpService} from './http.service';
 
 interface Severe {
     severe: boolean;
@@ -14,7 +15,7 @@ interface Severe {
 })
 export class UserService {
     private readonly EMPTY_USER: UserInfo = {
-        user: { id: 0, description: null, fullName: null, manager: false, blocked: false },
+        user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
         centers: [],
         roles: []
     };
@@ -43,9 +44,9 @@ export class UserService {
                         .httpSrv
                         .get<UserContext>(`/agents/${res.agentId}`)
                         .pipe(tap(next => {
-                            res.fullName = next['denomination'];
-                            res.pwdExpired = next && next.pwdExpired;
-                        }),
+                                res.fullName = next['denomination'];
+                                res.pwdExpired = next && next.pwdExpired;
+                            }),
                             map(() => res));
                 } else {
                     if (res.personId) {
@@ -79,9 +80,9 @@ export class UserService {
             .get<User>('/cuser')
             .pipe(switchMap(res => this.getUserById(res.id)))
             .pipe(tap((res: UserInfo) => {
-                this.userInfo = res;
-                localStorage.setItem('cuser', JSON.stringify(res));
-            }),
+                    this.userInfo = res;
+                    localStorage.setItem('cuser', JSON.stringify(res));
+                }),
                 switchMap(res => this.httpSrv.get<Severe>('/rights/severe')))
             .pipe(tap(res => this.severe = res.severe),
                 switchMap(res => this.httpSrv.get<DocRight[]>('/rights')))

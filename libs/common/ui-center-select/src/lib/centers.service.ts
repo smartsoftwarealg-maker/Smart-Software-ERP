@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Center, Company } from '@ss/common/api-common';
+import { Center, Company } from '@ss/common/api-center';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({
