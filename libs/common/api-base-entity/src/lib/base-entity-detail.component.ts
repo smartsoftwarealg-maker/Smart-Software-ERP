@@ -14,7 +14,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
-        label: 'SAVE',
+        label: 'COMMON_SAVE',
         disabled: false,
         visible: true,
         keepOnToolbar: true, // save button is too important to hide

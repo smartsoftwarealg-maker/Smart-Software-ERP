@@ -29,13 +29,13 @@ export class CustomErrorHandlerService {
             : err.status;
 
         this.message = err == null || err.message == null
-            ? this.langSrv.translate('CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)})
+            ? this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)})
             : err.message;
 
         this.statusText =
             err == null || err.status == null || err.statusText
                 || (err.status < 300 && 199 < err.status) == null
-                ? 'ERROR'
+                ? 'COMMON_ERROR'
                 : err.statusText;
 
         this.errorSet = true;

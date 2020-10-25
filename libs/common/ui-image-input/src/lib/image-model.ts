@@ -23,6 +23,7 @@ export class ImageModel {
     onUpdate: () => void;
 
     constructor(protected httpSrv: HttpService) {
+        this.enabled = true;
     }
 
     public get isLoading() {

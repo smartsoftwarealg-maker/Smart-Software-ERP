@@ -2,5 +2,51 @@
     "VATS": "VATs",
     "EDIT_VAT": "Edit VAT",
     "WILAYAS": "Wilayasً",
-    "EDIT_WILAYA": "Wilaya"
+    "EDIT_WILAYA": "Wilaya",
+
+    "PER_PAGE":"$page$ / page",
+
+    "SUCCESS": "Operation Successful",
+    "FAILURE": "Operation Failed",
+
+    "SAVE": "Save",
+    "CLOSE": "Close",
+    "CONFIRM_DELETE_RECORD": "Are you sure you want to delete?",
+    "CONFIRM_DONT_SAVE": "Quit without saving?",
+    "CONFIRMATION": "Confirmation",
+    "YES": "Yes",
+    "NO": "No",
+    "WORK_IN_PROGRESS": "Work in Progress",
+    "SEARCH": "Search",
+    "REFRESH": "Refresh",
+    "ADD": "Add",
+    "EDIT_SELECTED": "Edit selected",
+    "DEL_SELECTED": "Delete selected",
+    "FIELD_REQUIRED": "This field is required",
+    "APPLY": "Apply",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous",
+
+    "THEME_SETTINGS": "Themes",
+    "LANGUAGE_SETTINGS": "Language",
+    "LOGOUT": "Logout",
+    "ERROR": "Error",
+    "LOGIN": "Login",
+    "LOGIN_WRONG_USERNAME_PASSWORD": "Invalid credentials",
+    "LOGIN_LICENSE": "License",
+    "LOGIN_INVALID_LICENSE": "Invalid license",
+
+    "SELECT_COMPANY": "Companies",
+    "SELECT_CENTER": "Centers",
+
+    "CONNECTION_FAILED": "Connection to backend server '$backend$' failed",
+
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+
+    "LOOKUPS": "Lookup lists",
+    "SETTINGS":"Settings",
+
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
 }

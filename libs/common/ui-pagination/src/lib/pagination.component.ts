@@ -157,8 +157,6 @@ export class PaginationComponent implements OnInit {
     @Input()
     minContainerWidth: number = null;
 
-    perPageLabel = 'PER_PAGE';
-
     ngOnInit(): void {
         const f = (evt: KeyboardEvent) => {
             const key = evt.key.toUpperCase();

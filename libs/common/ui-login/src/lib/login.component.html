@@ -4,26 +4,26 @@
     <form *ngIf="!loading" novalidate [formGroup]="form">
         <div class="card mat-elevation-z8 b-b-card">
             <mat-form-field floatLabel="always">
-                <mat-label translate>USERNAME</mat-label>
+                <mat-label translate>COMMON_USERNAME</mat-label>
                 <i class="fas fa-user margin-end-8" matPrefix></i>
                 <input formControlName="user" name="username" autofocus matInput required>
             </mat-form-field>
 
             <mat-form-field floatLabel="always">
-                <mat-label translate>PASSWORD</mat-label>
+                <mat-label translate>COMMON_PASSWORD</mat-label>
                 <i class="fas fa-lock margin-end-8" matPrefix></i>
                 <input formControlName="pass" name="password" matInput type="password">
             </mat-form-field>
 
             <mat-form-field *ngIf="loginSrv.licenseErrorType">
-                <mat-label translate>LOGIN_LICENSE</mat-label>
+                <mat-label translate>COMMON_LOGIN_LICENSE</mat-label>
                 <i class="fas fa-key margin-end-8" matPrefix></i>
                 <input matInput type="text" autocomplete="off" formControlName="license" name="license" />
-                <mat-hint align="start"><strong class="mat-error" translate>LOGIN_INVALID_LICENSE</strong></mat-hint>
+                <mat-hint align="start"><strong class="mat-error" translate>COMMON_LOGIN_INVALID_LICENSE</strong></mat-hint>
             </mat-form-field>
 
             <div *ngIf="loginSrv.wrongData" class="mat-error login-failed">
-                <strong translate>LOGIN_WRONG_USERNAME_PASSWORD</strong>
+                <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
             </div>
 
             <div class="buttons">
@@ -34,7 +34,7 @@
                 </div>
 
                 <button mat-raised-button [disabled]="updating || !form.valid" color="primary" (click)="onSubmit()">
-                    <span translate>LOGIN</span>
+                    <span translate>COMMON_LOGIN</span>
                 </button>
             </div>
 

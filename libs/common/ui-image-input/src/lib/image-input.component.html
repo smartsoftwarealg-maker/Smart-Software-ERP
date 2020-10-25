@@ -1,3 +1,18 @@
-<div [style.width]="width" [style.height]="height" class="b-b-background img-container">
+<div #container class="b-b-background img-container" [matMenuTriggerFor]="menu">
+    <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
     <img [src]="safeUrl" [alt]="alt">
+    <div class="disable-panel" *ngIf="disabled"></div>
 </div>
+
+<mat-menu [xPosition]="langSrv.rtl ? 'after' : 'before'" yPosition="below" overlapTrigger="false" #menu="matMenu">
+    <button (click)="fileInput.click()" type="button" mat-menu-item class="img-menu-item">
+        <i class="fas fa-pen img-menu-icon"></i>
+        <span class="img-menu-text" translate>COMMON_EDIT</span>
+    </button>
+    <button type="button" mat-menu-item class="img-menu-item" (click)="deleteImage()">
+        <i class="fas fa-trash-alt img-menu-icon"></i>
+        <span class="img-menu-text" translate>COMMON_DELETE</span>
+    </button>
+</mat-menu>
+
+<input [formControl]="fileInputControl" style="display: none" #fileInput id="file-upload" type="file"/>
