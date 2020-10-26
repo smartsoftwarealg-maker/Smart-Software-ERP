@@ -22,6 +22,16 @@ import {DiplomaDetailComponent} from './diploma/diploma-detail.component';
 import {DiplomaListComponent} from './diploma/diploma-list.component';
 import {PostDetailComponent} from './post/post-detail.component';
 import {PostListComponent} from './post/post-list.component';
+import {UnitListComponent} from './unit/unit-list.component';
+import {UnitDetailComponent} from './unit/unit-detail.component';
+import {MarkListComponent} from './mark/mark-list.component';
+import {MarkDetailComponent} from './mark/mark-detail.component';
+import {SubclassListComponent} from './subclass/subclass-list.component';
+import {SubclassDetailComponent} from './subclass/subclass-detail.component';
+import {ClassListComponent} from './class/class-list.component';
+import {ClassDetailComponent} from './class/class-detail.component';
+import {StoreNameListComponent} from './store-name/store-name-list.component';
+import {StoreNameDetailComponent} from './store-name/store-name-detail.component';
 
 @NgModule({
     imports: [
@@ -56,7 +66,18 @@ import {PostListComponent} from './post/post-list.component';
         NationalityListComponent,
 
         ServiceListComponent,
-        ServiceDetailComponent
+        ServiceDetailComponent,
+
+        UnitListComponent,
+        UnitDetailComponent,
+        MarkListComponent,
+        MarkDetailComponent,
+        SubclassListComponent,
+        SubclassDetailComponent,
+        ClassListComponent,
+        ClassDetailComponent,
+        StoreNameListComponent,
+        StoreNameDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -83,7 +104,19 @@ import {PostListComponent} from './post/post-list.component';
         NationalityListComponent,
 
         ServiceListComponent,
-        ServiceDetailComponent
+        ServiceDetailComponent,
+
+
+        UnitListComponent,
+        UnitDetailComponent,
+        MarkListComponent,
+        MarkDetailComponent,
+        SubclassListComponent,
+        SubclassDetailComponent,
+        ClassListComponent,
+        ClassDetailComponent,
+        StoreNameListComponent,
+        StoreNameDetailComponent
     ]
 })
 export class CommonUiLookupModule {

@@ -9,6 +9,12 @@ export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/categories';
 export const SERVICES_URL = '/services';
 
+export const MARKS_URL = '/articles/marks';
+export const CLASSES_URL = '/articles/classes';
+export const SUBCLASSES_URL = '/articles/subclasses';
+export const STORE_NAMES_URL = '/articles/storenames';
+export const UNITS_URL = '/units'; // todo: add to backend because it is missing
+
 
 export interface Wilaya {
     id: number;
@@ -66,3 +72,30 @@ export const MILITARY_SERVICE_STATES: MilitaryServiceState[] = [
     {id: 2, description: 'PAYROLL_MSRV_EXEMPTED'},
     {id: 3, description: 'PAYROLL_MSRV_UNFIT'}
 ];
+
+
+export interface Mark {
+    id: number;
+    description: string;
+}
+
+export interface Class {
+    id: number;
+    description: string;
+}
+
+export interface Subclass {
+    id: number;
+    description: string;
+}
+
+export interface StoreName {
+    id: number;
+    description: string;
+}
+
+export interface Unit {
+    id: number;
+    description: string;
+}
+

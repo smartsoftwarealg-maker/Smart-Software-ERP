@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
-import {StockLookupsService, Mark} from '@ss/stock/api-lookup';
+import {Mark} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Vat} from "@ss/common/api-lookup";
 
@@ -25,13 +25,12 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
-        public lookupsSrv: LookupsService,
-        public stockLookupsSrv: StockLookupsService) {
+        public lookupsSrv: LookupsService) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_ARTICLE');
     }
 
     public preload(): Observable<any> {
-        return this.stockLookupsSrv.getMarks()
+        return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.marks = x),
                 switchMap(() => this.lookupsSrv.getVats()),

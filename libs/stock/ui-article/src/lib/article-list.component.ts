@@ -2,7 +2,7 @@ import { Component, } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
-import { StockLookupsService, Mark } from '@ss/stock/api-lookup';
+import { Mark } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { Observable } from 'rxjs';
@@ -33,13 +33,12 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public stockLookupsSrv: StockLookupsService,
         public lookupsSrv: LookupsService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, 'STOCK_ARTICLES');
     }
 
     preload(): Observable<any> {
-        return this.stockLookupsSrv.getMarks()
+        return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.onMarksLoaded(x)),
                 switchMap(() => this.lookupsSrv.getVats()),

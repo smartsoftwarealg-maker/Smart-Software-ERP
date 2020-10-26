@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Class, ClassService } from '@ss/stock/api-lookup';
+import { Class, ClassService } from '@ss/common/api-lookup';
 import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';

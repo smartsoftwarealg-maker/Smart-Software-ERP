@@ -386,41 +386,6 @@
                 }
             }
         },
-        "stock-api-lookup": {
-            "projectType": "library",
-            "root": "libs/stock/api-lookup",
-            "sourceRoot": "libs/stock/api-lookup/src",
-            "prefix": "ss",
-            "architect": {
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "libs/stock/api-lookup/tsconfig.lib.json",
-                            "libs/stock/api-lookup/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!libs/stock/api-lookup/**/*"
-                        ]
-                    }
-                },
-                "test": {
-                    "builder": "@nrwl/jest:jest",
-                    "options": {
-                        "jestConfig": "libs/stock/api-lookup/jest.config.js",
-                        "tsConfig": "libs/stock/api-lookup/tsconfig.spec.json",
-                        "passWithNoTests": true,
-                        "setupFile": "libs/stock/api-lookup/src/test-setup.ts"
-                    }
-                }
-            },
-            "schematics": {
-                "@nrwl/angular:component": {
-                    "style": "scss"
-                }
-            }
-        },
         "stock-assets": {
             "projectType": "library",
             "root": "libs/stock/assets",
@@ -596,41 +561,6 @@
                         "passWithNoTests": true,
                         "setupFile": "apps/erp/src/test-setup.ts"
                     }
-                }
-            }
-        },
-        "stock-ui-lookup": {
-            "projectType": "library",
-            "root": "libs/stock/ui-lookup",
-            "sourceRoot": "libs/stock/ui-lookup/src",
-            "prefix": "ss",
-            "architect": {
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "libs/stock/ui-lookup/tsconfig.lib.json",
-                            "libs/stock/ui-lookup/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!libs/stock/ui-lookup/**/*"
-                        ]
-                    }
-                },
-                "test": {
-                    "builder": "@nrwl/jest:jest",
-                    "options": {
-                        "jestConfig": "libs/stock/ui-lookup/jest.config.js",
-                        "tsConfig": "libs/stock/ui-lookup/tsconfig.spec.json",
-                        "passWithNoTests": true,
-                        "setupFile": "libs/stock/ui-lookup/src/test-setup.ts"
-                    }
-                }
-            },
-            "schematics": {
-                "@nrwl/angular:component": {
-                    "style": "scss"
                 }
             }
         },

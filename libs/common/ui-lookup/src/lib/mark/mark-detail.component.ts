@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subclass, SubclassService } from '@ss/stock/api-lookup';
+import { Mark, MarkService } from '@ss/common/api-lookup';
 import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -7,22 +7,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
-    selector: 'ss-subclass-detail',
+    selector: 'ss-mark-detail',
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss']
 })
-export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass> {
+export class MarkDetailComponent extends BaseEntityDetailComponent<Mark> {
 
     constructor(
-        public subclassSrv: SubclassService,
+        public markSrv: MarkService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder) {
-            super(subclassSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_SUBCLASS');
+            super(markSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_MARK');
     }
 
-    public setupForm(e: Subclass): FormGroup {
+    public setupForm(e: Mark): FormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

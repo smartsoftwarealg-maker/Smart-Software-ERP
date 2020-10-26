@@ -55,9 +55,6 @@
     "stock-api-article": {
       "tags": []
     },
-    "stock-api-lookup": {
-      "tags": ["type:api"]
-    },
     "stock-assets": {
       "tags": []
     },
@@ -71,9 +68,6 @@
         "stock-assets",
         "payroll-assets"
       ]
-    },
-    "stock-ui-lookup": {
-      "tags": ["type:ui"]
     },
     "common-api-lookup": {
       "tags": ["type:api"]

@@ -1,8 +1,10 @@
 import {LookupsCacheService} from './lookups-cache.service';
-import {Vat, VATS_URL, Wilaya, WILAYAS_URL} from './lookups-api';
 import {Observable, of} from 'rxjs';
 import {Injectable} from "@angular/core";
 import {
+    Mark, MARKS_URL,
+    Vat, VATS_URL,
+    Wilaya, WILAYAS_URL,
     CATEGORIES_URL,
     Category,
     Diploma,
@@ -67,5 +69,9 @@ export class LookupsService {
 
     public getMilitaryServiceStates(): Observable<MilitaryServiceState[]> {
         return of(MILITARY_SERVICE_STATES);
+    }
+
+    public getMarks(): Observable<Mark[]> {
+        return this.lookupCacheSrv.load<Mark>(MARKS_URL, 'marks');
     }
 }

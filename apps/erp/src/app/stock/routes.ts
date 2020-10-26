@@ -27,7 +27,7 @@ import {
     SubclassDetailComponent,
     ClassListComponent,
     ClassDetailComponent,
-} from '@ss/stock/ui-lookup';
+} from '@ss/common/ui-lookup';
 import {VatDetailComponent, VatListComponent} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
