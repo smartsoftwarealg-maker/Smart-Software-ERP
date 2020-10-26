@@ -56,15 +56,6 @@ export interface DocRight {
     right: Right;
 }
 
-export interface Agent {
-    id: number;
-    code: string;
-    agentType: number;
-    denomination: string;
-    address: { address: string, mobile?: string, phone?: string, fax?: string, city?: number };
-    blocked: boolean;
-    license?: string;
-}
 
 
 

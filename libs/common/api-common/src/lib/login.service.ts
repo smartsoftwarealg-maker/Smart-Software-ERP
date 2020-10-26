@@ -3,10 +3,11 @@ import {Observable, of, from} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError, flatMap, map, switchMap, tap} from 'rxjs/operators';
 import {UserService} from './user.service';
-import {Agent, Person} from './models';
+import {Person} from './models';
 import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, LOGIN_URL, INDEX_PAGE_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
+import {Agent} from "@ss/logistics/api-agent";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
