@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EducationLevel, EducationLevelService} from "@ss/payroll/api-lookup";
+import {EducationLevel, EducationLevelService} from "@ss/common/api-lookup";
 
 
 @Component({

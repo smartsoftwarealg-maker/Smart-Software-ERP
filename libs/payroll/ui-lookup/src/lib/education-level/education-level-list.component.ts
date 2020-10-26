@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EducationLevel, EducationLevelService } from '@ss/payroll/api-lookup';
+import { EducationLevel, EducationLevelService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';

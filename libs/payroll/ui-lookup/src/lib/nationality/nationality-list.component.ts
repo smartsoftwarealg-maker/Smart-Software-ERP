@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Nationality, NationalityService } from '@ss/payroll/api-lookup';
+import { Nationality, NationalityService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';

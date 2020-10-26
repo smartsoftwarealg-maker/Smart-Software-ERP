@@ -75,9 +75,6 @@
     "stock-ui-lookup": {
       "tags": ["type:ui"]
     },
-    "payroll-api-lookup": {
-      "tags": ["type:api"]
-    },
     "common-api-lookup": {
       "tags": ["type:api"]
     },

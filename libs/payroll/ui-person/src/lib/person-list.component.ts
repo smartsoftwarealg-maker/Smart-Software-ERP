@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PayrollLookupsService} from '@ss/payroll/api-lookup';
 import {Person as IPerson, PersonService} from '@ss/payroll/api-person';
 import {Observable} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
@@ -53,20 +52,19 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         public route: ActivatedRoute,
         public router: Router,
         public lookupsSrv: LookupsService,
-        public payrollLookupsSrv: PayrollLookupsService,
         public langSrv: LanguageService,
         public domSanitizer: DomSanitizer) {
         super(personSrv, shellSrv, snackBarSrv, route, router, 'PAYROLL_EMPLOYEES_LIST');
     }
 
     preload(): Observable<any> {
-        return this.payrollLookupsSrv.getMaritalStatuses()
+        return this.lookupsSrv.getMaritalStatuses()
             .pipe(
                 tap(x => {
                     this.maritalStatus = this.onLookupLoaded(x);
                 }),
 
-                switchMap(() => this.payrollLookupsSrv.getNationalities()),
+                switchMap(() => this.lookupsSrv.getNationalities()),
                 tap(x => {
                     this.nationalities = this.onLookupLoaded(x);
                 }),
@@ -76,7 +74,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
                     this.wilayas = this.onLookupLoaded(x);
                 }),
 
-                switchMap(() => this.payrollLookupsSrv.getMilitaryServiceStates()),
+                switchMap(() => this.lookupsSrv.getMilitaryServiceStates()),
                 tap(x => {
                     this.militaryServiceStates = this.onLookupLoaded(x);
                 }),
