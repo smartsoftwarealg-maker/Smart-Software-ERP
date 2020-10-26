@@ -81,9 +81,6 @@
     "common-ui-lookup": {
       "tags": ["type:ui"]
     },
-    "payroll-ui-lookup": {
-      "tags": ["type:ui"]
-    },
     "payroll-assets": {
       "tags": []
     },

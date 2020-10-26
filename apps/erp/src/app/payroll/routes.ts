@@ -28,10 +28,10 @@ import {
     PostListComponent,
     ServiceListComponent,
     ServiceDetailComponent
-} from '@ss/payroll/ui-lookup';
+} from '@ss/common/ui-lookup';
 import {DETAIL_URL} from '@ss/common/api-common';
 import {WilayaListComponent, WilayaDetailComponent} from '@ss/common/ui-lookup';
-import {NationalityDetailComponent, NationalityListComponent} from '@ss/payroll/ui-lookup';
+import {NationalityDetailComponent, NationalityListComponent} from '@ss/common/ui-lookup';
 import {PersonListComponent, PersonDetailComponent} from '@ss/payroll/ui-person';
 
 export const mainRoutes: Routes = [
