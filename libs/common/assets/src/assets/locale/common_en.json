@@ -50,5 +50,6 @@
     "USERNAME": "Username",
     "PASSWORD": "Password",
 
-    "MAX_FILE_SIZE_1MB": "Max file size 1MB"
+    "MAX_FILE_SIZE_1MB": "Max file size 1MB",
+    "NOT_AN_IMAGE": "This is not a valid image file"
 }

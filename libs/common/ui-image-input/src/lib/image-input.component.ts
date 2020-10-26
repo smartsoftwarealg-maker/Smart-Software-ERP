@@ -2,9 +2,6 @@ import {AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Rende
 import {ImageModel} from './image-model';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {LanguageService} from '@ss/common/ui-lang';
-import {FormControl} from '@angular/forms';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'ss-image-input',
@@ -15,9 +12,6 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
 
     @ViewChild('container', {static: true}) container: ElementRef;
     @ViewChild('fileInput', {static: true}) fileInput: ElementRef;
-
-    fileInputControl: FormControl = new FormControl();
-    private fileInputControlSubscription: Subscription;
 
     private cachedWidth: string;
     private cachedHeight: string;
@@ -74,20 +68,16 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     ngOnInit(): void {
-        this.fileInputControlSubscription = this.fileInputControl
-            .valueChanges.pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(e => {
-                const list: FileList = this.fileInput.nativeElement.files;
-                if (list && list.length > 0) {
-                    const f = list.item(0);
-                    if (f) {
-                        this.onFileSelect(f);
-                    }
+        this.fileInput.nativeElement.onchange = () => {
+            const list: FileList = this.fileInput.nativeElement.files;
+            if (list && list.length > 0) {
+                const f = list.item(0);
+                if (f) {
+                    this.onFileSelect(f);
                 }
-                this.fileInput.nativeElement.files = null;
-            });
+            }
+            this.fileInput.nativeElement.files = null;
+        };
     }
 
     ngOnDestroy(): void {
@@ -95,9 +85,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
             this.model.onUpdate = null;
         }
         this.releaseResources();
-        if (this.fileInputControlSubscription) {
-            this.fileInputControlSubscription.unsubscribe();
-        }
+        this.fileInput.nativeElement.onchange = null;
     }
 
     public releaseResources(): void {
@@ -130,7 +118,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
             this.url = URL.createObjectURL(blob);
             this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(this.url);
         }
-    }
+    };
 
     deleteImage(): void {
         if (this.model) {
@@ -144,14 +132,17 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
         if (e.size > 1048576) {
             throw new Error(this.langSrv.translate('COMMON_MAX_FILE_SIZE_1MB'));
         }
-        if (e.name) {
-            throw new Error("Invalid File Name");
+        if (!e.name) {
+            throw new Error("Invalid file name");
         }
         const lowName = e.name.toLowerCase();
         if (lowName.endsWith('.png') || lowName.endsWith('.jpg') || lowName.endsWith('.jpeg') || lowName.endsWith('.bmp')) {
-
+            if (this.model) {
+                this.model.setImageBlob(e, true);
+            }
+        } else {
+            throw new Error(this.langSrv.translate('COMMON_NOT_AN_IMAGE'));
         }
-        console.log(e.name)
     }
 
 }
