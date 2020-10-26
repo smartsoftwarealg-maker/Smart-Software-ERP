@@ -1,1 +1,2 @@
-export * from './lib/logistics-api-agent.module';
+export * from "./lib/agent-api";
+export * from "./lib/agent.service";

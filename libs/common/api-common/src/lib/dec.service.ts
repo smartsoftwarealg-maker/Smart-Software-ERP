@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Agent} from './models';
 import {Person} from './models';
 import {HttpService} from './http.service';
+import {Agent} from "@ss/logistics/api-agent";
 
 @Injectable({
     providedIn: 'root'
