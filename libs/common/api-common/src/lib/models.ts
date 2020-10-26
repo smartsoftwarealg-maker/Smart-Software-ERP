@@ -56,6 +56,21 @@ export interface DocRight {
     right: Right;
 }
 
+export interface Agent {
+    id: number;
+    customerCode: string;
+    denomination: string;
+    code: string;
+    address: string;
+    denominationAr: string;
+    addressAr: string;
+
+   /**
+     * @deprecated This field doesn't exist in the backend; it will be removed
+     */
+    license: string // FIXME:: remove this field
+
+}
 
 
 
