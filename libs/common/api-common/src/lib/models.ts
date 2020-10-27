@@ -1,5 +1,8 @@
-import {Center} from "@ss/common/api-center";
 
+export interface Center {
+    id: number;
+    description: string;
+}
 
 export interface AccessRight {
     id: number;

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {UserInfo, DocRight, Right, Role, User, UserContext} from './models';
-import {Center} from "@ss/common/api-center";
+import {Center} from './models';
 import {of} from 'rxjs';
 import {Observable} from 'rxjs';
 import {HttpService} from './http.service';
