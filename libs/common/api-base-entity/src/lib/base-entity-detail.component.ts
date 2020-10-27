@@ -58,8 +58,8 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         const b = this.route.queryParams
             .pipe(
                 switchMap(p => {
-                    this.queryId = p.id;
-                    return this.loadEntity(p.id);
+                    this.queryId = +p.id;
+                    return this.loadEntity(this.queryId);
                 })
             );
         const c = a == null
