@@ -16,35 +16,30 @@
     padding-left: 16px;
 }
 
-.mat-column-reference {
-    flex: 200px 0 0;
+.mat-column-customerCode {
+    flex: 140px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-description2 {
+.mat-column-denomination {
     flex: 300px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-price {
-    flex: 70px 0 0;
+.mat-column-agentType {
+    flex: 150px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-vat {
-    flex: 50px 0 0;
+.mat-column-address {
+    flex: 300px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-mark {
-    flex: 100px 0 0;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
 
 .pagination-container {
 
@@ -52,6 +47,6 @@
         left: 0;
         right: 0;
         position: sticky;
-        margin: auto;        
+        margin: auto;
     }
 }

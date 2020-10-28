@@ -1,34 +1,33 @@
 import {
+    COMMON_VAT_URL,
     LOOKUPS_URL,
+    STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
     STOCK_CLASSES_URL,
     STOCK_MARKS_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
-    STOCK_UNITS_URL,
-    COMMON_VAT_URL
+    STOCK_UNITS_URL
 } from '../constants';
-import {
-    LIST_URL,
-    DETAIL_URL,
-    CanActivateService,
-    ABS_INDEX_URL
-} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from '@ss/common/api-common';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {Routes} from '@angular/router';
 import {
-    StoreNameListComponent,
-    StoreNameDetailComponent,
-    MarkListComponent,
-    MarkDetailComponent,
-    UnitListComponent,
-    UnitDetailComponent,
-    SubclassListComponent,
-    SubclassDetailComponent,
-    ClassListComponent,
     ClassDetailComponent,
+    ClassListComponent,
+    MarkDetailComponent,
+    MarkListComponent,
+    StoreNameDetailComponent,
+    StoreNameListComponent,
+    SubclassDetailComponent,
+    SubclassListComponent,
+    UnitDetailComponent,
+    UnitListComponent,
+    VatDetailComponent,
+    VatListComponent,
 } from '@ss/common/ui-lookup';
-import {VatDetailComponent, VatListComponent} from '@ss/common/ui-lookup';
+import {AgentDetailComponent, AgentListComponent} from "@ss/logistics/ui-agent";
+
 
 export const mainRoutes: Routes = [
     {
@@ -42,6 +41,23 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: ArticleDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_AGENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: AgentDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
