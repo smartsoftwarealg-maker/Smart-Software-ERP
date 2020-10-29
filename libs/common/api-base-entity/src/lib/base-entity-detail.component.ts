@@ -106,7 +106,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         if (!this.form.valid) {
             return;
         }
-        const val: T = this.form.value;
+        const val: T = this.readForm();
         const obs: Observable<any> = val.id === 0 ? this.entitySrv.add(val) : this.entitySrv.update(val);
         // todo: update the url param 'id' here when adding
         this.shellSrv.setLoading(true);
@@ -118,6 +118,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             this.shellSrv.setLoading(false);
             throw err;
         })
+    }
+
+    public readForm(): T {
+        return this.form.value;
     }
 
     public abstract setupForm(e: T): FormGroup;

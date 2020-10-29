@@ -49,4 +49,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
         });
     }
 
+    public readForm(): Person {
+        return this.form.value;
+    }
 }
