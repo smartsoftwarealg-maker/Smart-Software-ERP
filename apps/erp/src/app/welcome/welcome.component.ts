@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShellService } from '@ss/common/ui-shell';
-import {
-    ABS_STOCK_ARTICLES_URL,
-    ABS_STOCK_CLASSES_URL,
-    ABS_STOCK_MARKS_URL,
-    ABS_STOCK_SUBCLASSES_URL,
-    ABS_STOCK_VAT_URL
-} from '../constants';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ShellService, SideNavNode} from '@ss/common/ui-shell';
+import {LanguageService} from "@ss/common/ui-lang";
+
+interface NavNode {
+    icon: string[];
+    name: string[];
+    route: string;
+}
 
 @Component({
     selector: 'ss-welcome',
@@ -15,30 +15,51 @@ import {
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    readonly allLinks: string[] = [
-        ABS_STOCK_VAT_URL,
-        ABS_STOCK_MARKS_URL,
-        ABS_STOCK_CLASSES_URL,
-        ABS_STOCK_SUBCLASSES_URL,
-        ABS_STOCK_ARTICLES_URL
-    ];
+    links: NavNode[] = [];
 
-    links: string[] = this.allLinks;
-
-    constructor(private shellSrv: ShellService) { }
+    constructor(private shellSrv: ShellService, public langSrv: LanguageService) {
+    }
 
     ngOnInit(): void {
-        this.shellSrv.setTilte('TEST_APP');
+        this.shellSrv.setTilte('SMART_ERP');
         this.shellSrv.enableSearch(
-            'Search Urls',
+            'SEARCH_APP',
             e => e.subscribe(
                 f => {
-                    const lowF = f.toLowerCase();
-                    this.links = this.allLinks.filter(a => a.toLowerCase().indexOf(lowF) > -1);
+                    const lowF = f ? f.toLowerCase().trim() : null;
+                    if (f && f.length) {
+                        const flatTree: NavNode[] = this.flattenNodes(this.shellSrv.sideNavDataSource.data, [], []);
+                        this.links = flatTree.filter(n => n.name.join(', ').toLowerCase().indexOf(lowF) >= 0);
+                    } else {
+                        this.links = [];
+                    }
                 },
                 err => console.error(err)
             )
         );
+    }
+
+    flattenNode(node: SideNavNode, parentName: string[], parentIcon: string[]): NavNode[] {
+        if (node) {
+            const result: NavNode = {
+                icon: parentIcon.concat(node.icon),
+                name: parentName.concat(this.langSrv.translate(node.name)),
+                route: node.route
+            };
+            let arr: NavNode[] = [result];
+            if (node.children && node.children.length) {
+                arr = arr.concat(...this.flattenNodes(node.children, result.name, result.icon));
+            }
+            return arr;
+        }
+        return [];
+    }
+
+    flattenNodes(nodes: SideNavNode[], parentName: string[], parentIcon: string[]): NavNode[] {
+        if (nodes && nodes.length) {
+            return [].concat(...nodes.map(n => this.flattenNode(n, parentName, parentIcon)));
+        }
+        return [];
     }
 
     ngOnDestroy(): void {

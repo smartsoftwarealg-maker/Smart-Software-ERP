@@ -1,6 +1,16 @@
 
 :host {
     display: block;
+    max-width: 700px;
+    margin: auto;
+    height: 100%;
+    font-size: 125%;
+}
+
+h2 {
     text-align: center;
-    font-size: 200%;
+}
+
+.link-line {
+    margin-top: 16px;
 }

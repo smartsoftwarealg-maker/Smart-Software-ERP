@@ -1,11 +1,20 @@
-
-<h3 class="f-primary">Test Welcome Page</h3>
-
-<strong>Links:</strong>
+<h2 class="f-primary" translate>SMART_ERP</h2>
 <br>
-<ng-container *ngFor="let l of links">
-    <br>
-    <a [routerLink]="l">
-        {{l}}
+<div class="link-line" *ngFor="let l of links">
+    <a *ngIf="l.route" [routerLink]="l.route">
+        <ng-container *ngFor="let n of l.name; let i = index">
+            <i *ngIf="langSrv.rtl" class="far fa-arrow-alt-left"></i>
+            <i *ngIf="!langSrv.rtl" class="far fa-arrow-alt-right"></i>
+            <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon[i]"></i>
+            {{n}}
+        </ng-container>
     </a>
-</ng-container>
+    <strong *ngIf="!l.route">
+        <ng-container *ngFor="let n of l.name; let i = index">
+            <i *ngIf="langSrv.rtl" class="far fa-arrow-alt-left"></i>
+            <i *ngIf="!langSrv.rtl" class="far fa-arrow-alt-right"></i>
+            <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon[i]"></i>
+            {{n}}
+        </ng-container>
+    </strong>
+</div>
