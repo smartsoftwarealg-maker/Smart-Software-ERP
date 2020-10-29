@@ -18,5 +18,8 @@
     "STORE_NAMES": "Stores",
     "EDIT_STORE_NAME": "Edit store",
     "UNITS": "Units",
-    "EDIT_UNIT": "Edit unit"
+    "EDIT_UNIT": "Edit unit",
+    "FILE": "File",
+    "AGENT": "Agent",
+    "EDIT_AGENT": "Edit agent"
 }

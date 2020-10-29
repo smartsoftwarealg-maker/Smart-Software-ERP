@@ -18,5 +18,9 @@
     "STORE_NAMES": "Magasins",
     "EDIT_STORE_NAME": "Modifier nom magasin",
     "UNITS": "Unités",
-    "EDIT_UNIT": "Modifier unité"
+    "EDIT_UNIT": "Modifier unité",
+    "FILE": "Dossier",
+    "AGENT": "Agent",
+    "EDIT_AGENT": "Modifier l'agent"
+
 }

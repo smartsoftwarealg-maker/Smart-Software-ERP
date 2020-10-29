@@ -44,7 +44,8 @@
       "@ss/common/ui-image-input": ["libs/common/ui-image-input/src/index.ts"],
       "@ss/common/api-center": ["libs/common/api-center/src/index.ts"],
       "@ss/logistics/api-agent": ["libs/logistics/api-agent/src/index.ts"],
-      "@ss/logistics/ui-agent": ["libs/logistics/ui-agent/src/index.ts"]
+      "@ss/logistics/ui-agent": ["libs/logistics/ui-agent/src/index.ts"],
+      "@ss/logistics/assets": ["libs/logistics/assets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

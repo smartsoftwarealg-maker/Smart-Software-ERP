@@ -18,5 +18,9 @@
     "STORE_NAMES": "المخازن",
     "EDIT_STORE_NAME": "تعديل مخزن",
     "UNITS": "الوحدات",
-    "EDIT_UNIT": "تعديل وحدة"
+    "EDIT_UNIT": "تعديل وحدة",
+    "FILE": "الملف",
+    "AGENT": "العملاء",
+    "EDIT_AGENT": "تعديل العميل"
+
 }
