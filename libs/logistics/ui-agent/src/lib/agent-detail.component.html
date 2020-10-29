@@ -1,44 +1,301 @@
 <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
-
     <div style="height: 16px"></div>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_REFERENCE</mat-label>
-        <input matInput formControlName="reference" type="text" required>
-    </mat-form-field>
+    <mat-accordion>
+        <mat-expansion-panel expanded="true" hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_GENERAL
+                </mat-panel-title>
+            </mat-expansion-panel-header>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_DESCRIPTION</mat-label>
-        <input matInput formControlName="description2" type="text" required>
-    </mat-form-field>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_PRICE</mat-label>
-        <input matInput formControlName="price" type="number" min="0.01" required>
-    </mat-form-field>
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DENOMINATION</mat-label>
+                <input matInput formControlName="denomination" type="text" required>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_VAT</mat-label>
-        <mat-select formControlName="vat">
-            <mat-option [value]="null"></mat-option>
-            <mat-option *ngFor="let v of vats" [value]="v.id">
-                {{v.value == null ? '0.00' : v.value.toFixed(2)}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+                <mat-error
+                    *ngIf="form.controls['denomination'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                </mat-error>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_MARK</mat-label>
-        <mat-select formControlName="mark">
-            <mat-option *ngFor="let m of marks" [value]="m.id">
-                {{m.description}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+            </mat-form-field>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>STOCK_ACCOUNTNO</mat-label>
-        <input matInput formControlName="accountno">
-    </mat-form-field>
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
+                <input matInput formControlName="customerCode" type="text" required>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
+                <mat-select formControlName="agentType" required>
+                    <mat-option *ngFor="let v of agentTypes" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+                <mat-error
+                    *ngIf="form.controls['agentType'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                <mat-select formControlName="currency">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of currencies" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_PRICE</mat-label>
+                <input matInput formControlName="price" type="number" step="0.01">
+            </mat-form-field>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_LATIN
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_PHONE</mat-label>
+                <input matInput formControlName="phone" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_MOBILE</mat-label>
+                <input matInput formControlName="mobile" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_FAX</mat-label>
+                <input matInput formControlName="fax" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_EMAIL</mat-label>
+                <input matInput formControlName="email" type="email">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_WEBSITE</mat-label>
+                <input matInput formControlName="website" type="text">
+            </mat-form-field>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
+                <mat-error
+                    *ngIf="form.controls['isInternal'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                </mat-error>
+            </div>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
+                <mat-select formControlName="activity">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of activities" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
+                <mat-select formControlName="companyType">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of companyTypes" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+            </div>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
+                <input matInput formControlName="blockingReason" type="text">
+            </mat-form-field>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
+            </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_FISCAL
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_COMM_REGISTER</mat-label>
+                <input matInput formControlName="commRegister" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_FISCAL_ID</mat-label>
+                <input matInput formControlName="fiscalID" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
+                <input matInput formControlName="articleNo" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_NIS</mat-label>
+                <input matInput formControlName="nis" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_NIF</mat-label>
+                <input matInput formControlName="nif" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_TIN</mat-label>
+                <input matInput formControlName="tin" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
+                <input matInput formControlName="checkDueDays" type="number" step="1">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_PAY_MODE</mat-label>
+                <mat-select formControlName="payMode">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of payModes" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="taxPayable"  translate>LOGISTICS_TAX_PAYABLE</mat-checkbox>
+            </div>
+
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="stampPayable"  translate>LOGISTICS_STAMP_PAYABLE</mat-checkbox>
+            </div>
+
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CAPITAL</mat-label>
+                <input matInput formControlName="capital" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_BANK</mat-label>
+                <input matInput formControlName="bank" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_BANK_ACCOUNT</mat-label>
+                <input matInput formControlName="bankAccount" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_SWIFT</mat-label>
+                <input matInput formControlName="swift" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DEBT_LIMIT</mat-label>
+                <input matInput formControlName="debtLimit" type="number" step="0.01">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DEBT_TERM</mat-label>
+                <input matInput formControlName="debtTerm" type="number" step="0.01">
+            </mat-form-field>
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_CONTACT
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS</mat-label>
+                <input matInput formControlName="address" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS2</mat-label>
+                <input matInput formControlName="address2" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CITY</mat-label>
+                <mat-select formControlName="city">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of cities" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_COUNTRY</mat-label>
+                <mat-select formControlName="country">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of countries" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CONTACT</mat-label>
+                <input matInput formControlName="contact" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_INFO</mat-label>
+                <input matInput formControlName="info" type="text">
+            </mat-form-field>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_ARABIC
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DENOMINATION_AR</mat-label>
+                <input matInput formControlName="denominationAr" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS_AR</mat-label>
+                <input matInput formControlName="addressAr" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS2_AR</mat-label>
+                <input matInput formControlName="address2Ar" type="text">
+            </mat-form-field>
+
+        </mat-expansion-panel>
+
+    </mat-accordion>
 
 </form>

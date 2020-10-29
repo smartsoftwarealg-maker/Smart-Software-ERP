@@ -16,6 +16,6 @@ export class CentersService {
 
     public getCenterList(company: number): Observable<Center[]> {
         const id = company || 0;
-        return this.httpSrv.get<Company[]>(`/companies/${id}/publicCenters`);
+        return this.httpSrv.get<Company[]>(`/login/${id}/publicCenters`);
     }
 }

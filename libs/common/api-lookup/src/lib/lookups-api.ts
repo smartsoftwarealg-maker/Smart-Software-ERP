@@ -14,6 +14,13 @@ export const CLASSES_URL = '/articles/classes';
 export const SUBCLASSES_URL = '/articles/subclasses';
 export const STORE_NAMES_URL = '/articles/storenames';
 export const UNITS_URL = '/units'; // todo: add to backend because it is missing
+export const AGENT_TYPE_URL = "/lookups/agents";
+export const CITY_URL = "/lookups/cities";
+export const COUNTRY_URL = "/lookups/countries";
+export const CURRENCY_URL = "/lookups/currencies";
+export const COMPANY_TYPE_URL = "/lookups/companies";
+export const PAY_MODE_URL = "/lookups/paymodes";
+export const ACTIVITY_URL = "/lookups/activities";
 
 
 export interface Wilaya {
@@ -95,6 +102,41 @@ export interface StoreName {
 }
 
 export interface Unit {
+    id: number;
+    description: string;
+}
+
+export interface AgentType {
+    id: number;
+    description: string;
+}
+
+export interface City {
+    id: number;
+    description: string;
+}
+
+export interface Country {
+    id: number;
+    description: string;
+}
+
+export interface Currency {
+    id: number;
+    description: string;
+}
+
+export interface CompanyType {
+    id: number;
+    description: string;
+}
+
+export interface PayMode {
+    id: number;
+    description: string;
+}
+
+export interface Activity {
     id: number;
     description: string;
 }

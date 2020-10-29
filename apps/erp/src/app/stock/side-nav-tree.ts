@@ -4,7 +4,7 @@ import {
     ABS_STOCK_VAT_URL,
     ABS_STOCK_CLASSES_URL,
     ABS_STOCK_SUBCLASSES_URL,
-    ABS_STOCK_STORE_NAMES_URL, ABS_STOCK_UNITS_URL
+    ABS_STOCK_STORE_NAMES_URL, ABS_STOCK_UNITS_URL, ABS_STOCK_AGENT_URL
 } from '../constants';
 import { SideNavNode } from '@ss/common/ui-shell';
 
@@ -57,6 +57,17 @@ export const stockNavTree: SideNavNode = {
                     name: 'STOCK_ARTICLES',
                     icon: 'fas fa-box',
                     route: ABS_STOCK_ARTICLES_URL
+                }
+            ]
+        },
+        {
+            name: 'STOCK_FILE',
+            icon: 'fas fa-folder',
+            children: [
+                {
+                    name: 'STOCK_AGENT',
+                    icon: 'fas fa-user',
+                    route: ABS_STOCK_AGENT_URL
                 }
             ]
         }

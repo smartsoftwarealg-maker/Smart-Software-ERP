@@ -1,23 +1,34 @@
 import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AgentService, Agent} from '@ss/logistics/api-agent';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {LookupsService} from "@ss/common/api-lookup";
+import {AgentType, LookupsService} from "@ss/common/api-lookup";
+import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
+import {Agent, AgentService} from "@ss/logistics/api-agent";
 
 @Component({
-    selector: 'ss-article-list',
-    styleUrls: ['./article-list.component.scss'],
-    templateUrl: './article-list.component.html'
+    selector: 'ss-agent-list',
+    styleUrls: ['./agent-list.component.scss'],
+    templateUrl: './agent-list.component.html'
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
+
+    agentTypes: { [id: number]: string; };
 
     displayedColumns = [
         'customerCode',
         'denomination',
-        'fiscalID',
-        'articleNo'
+        'agentType',
+        'address'
     ];
+
+    preload(): Observable<any> {
+        return this.lookupsSrv.getAgentTypes()
+            .pipe(
+                tap(x => this.onAgentTypesLoaded(x))
+            );
+    }
 
 
     constructor(
@@ -27,8 +38,16 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public route: ActivatedRoute,
         public router: Router,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, router, 'STOCK_ARTICLES');
+        super(agentService, shellSrv, snackBarSrv, route, router, 'LOGISTICS_AGENTS');
     }
 
 
+    private onAgentTypesLoaded(data: AgentType[]) {
+        this.agentTypes = data.reduce(
+            (total, currentValue) => {
+                total[currentValue.id] = currentValue.description;
+                return total
+            }, {}
+        );
+    }
 }

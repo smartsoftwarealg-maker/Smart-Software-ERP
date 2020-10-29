@@ -98,6 +98,9 @@
     },
     "logistics-ui-agent": {
       "tags": []
+    },
+    "logistics-assets": {
+      "tags": []
     }
   }
 }

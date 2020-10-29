@@ -1,49 +1,39 @@
 <mat-table mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="reference">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+    <ng-container matColumnDef="customerCode">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.reference}}
+            {{e.customerCode}}
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="description2">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
+    <ng-container matColumnDef="denomination">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DENOMINATION</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.description2}}
+            {{e.denomination}}
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
-        <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-            {{(e.price == null ? '' : e.price.toFixed(2.0))}}
-        </mat-cell>
-    </ng-container>
 
-    <ng-container matColumnDef="vat">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
-        <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-            {{vats[e.vat] == null ? '' : vats[e.vat].toFixed(2)}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="mark">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
+    <ng-container matColumnDef="agentType">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_AGENT_TYPE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{marks[e.mark]}}
+            {{agentTypes[e.agentType]}}
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="accountno">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_ACCOUNTNO</mat-header-cell>
+    <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ADDRESS</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.accountno}}
+            {{e.address}}
         </mat-cell>
     </ng-container>
+
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
 <div class="pagination-container b-b-background">
