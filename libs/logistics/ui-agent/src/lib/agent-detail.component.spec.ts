@@ -4,7 +4,7 @@ import {Agent} from "@ss/logistics/api-agent";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpService, MaterialModule} from "@ss/common/api-common";
-import {LanguageService, UiLangModule} from "@ss/common/ui-lang";
+import {LanguageService, CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LookupTestService} from "../test/lookup-test.service";
@@ -73,7 +73,7 @@ describe("AgentDetailComponent", () => {
             imports: [
                 CommonModule,
                 MaterialModule,
-                UiLangModule,
+                CommonUiLangModule,
                 UiPaginationModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
