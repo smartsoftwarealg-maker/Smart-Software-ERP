@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {UiLoginModule} from '@ss/common/ui-login';
 import {HttpClientModule} from '@angular/common/http';
-import {LanguageService, UiLangModule} from '@ss/common/ui-lang';
+import {LanguageService, CommonUiLangModule} from '@ss/common/ui-lang';
 import {Routes} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
@@ -49,7 +49,7 @@ const routes: Routes = [
         UiThemeModule,
         UiErrorHandlerModule,
         UiShellModule,
-        UiLangModule,
+        CommonUiLangModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule

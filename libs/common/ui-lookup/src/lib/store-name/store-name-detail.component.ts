@@ -4,6 +4,7 @@ import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<StoreNam
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-            super(storeNameSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_STORE_NAME');
+            super(storeNameSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_STORE_NAME');
     }
 
     public setupForm(e: StoreName): FormGroup {

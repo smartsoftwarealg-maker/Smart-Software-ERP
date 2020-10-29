@@ -4,6 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MaritalStatus, MaritalStatusService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class MaritalStatusDetailComponent extends BaseEntityDetailComponent<Mari
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-        super(maritalStatusSrv, shellSrv, snackBarSrv, route, formBuilder, 'PAYROLL_EDIT_MARITAL_STATUS');
+        super(maritalStatusSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_MARITAL_STATUS');
     }
 
     public setupForm(e: MaritalStatus): FormGroup {

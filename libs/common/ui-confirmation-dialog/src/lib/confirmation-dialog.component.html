@@ -1,0 +1,22 @@
+<div class="conf-dlg-title b-warn" translate>
+    {{title}}
+</div>
+<mat-dialog-content style="display: block">
+
+    <div style="width: 100%">
+
+        <p *ngIf="message" translate>{{message}}</p>
+
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions style="display: block">
+    <button type="button" class="margin-end-8 float-end" mat-raised-button
+            (click)="no()" color="primary" translate>
+        COMMON_NO
+    </button>
+    <button type="button" class="margin-end-8 float-end" mat-raised-button
+            (click)="yes()" color="warn" translate>
+        COMMON_YES
+    </button>
+</mat-dialog-actions>

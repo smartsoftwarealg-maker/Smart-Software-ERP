@@ -1,10 +1,11 @@
-import { Directive, OnDestroy, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { ToolbarButton, ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
-import { BaseEntityService } from './base-entity.service';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import {Directive, OnDestroy, OnInit} from "@angular/core";
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {ToolbarButton, ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {BaseEntityService} from './base-entity.service';
+import {Observable, of} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -27,6 +28,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
+        public confirmationSrv: ConfirmationDialogService,
         public title: string) {
     }
 

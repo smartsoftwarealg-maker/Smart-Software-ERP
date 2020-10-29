@@ -6,6 +6,7 @@ import {OnInit, OnDestroy, Directive} from '@angular/core';
 import {DETAIL_URL} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -15,6 +16,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
                 public router: Router,
+                public confirmationSrv: ConfirmationDialogService,
                 public title: string) {
     }
 
@@ -155,24 +157,29 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public deleteSelected(): void {
-        if (this.selected && this.selected > 0) {
-            const a = this.data.filter(a => a.id === this.selected)[0];
-            if (a && a.id) {
-                this.shellSrv.setLoading(true);
-                this.entitySrv.remove(a.id)
-                    .subscribe(
-                        () => {
-                            this.snackBarSrv.showSuccessMessage();
-                            this.refresh();
-                        },
-                        err => {
-                            this.snackBarSrv.showFailureMessage();
-                            this.shellSrv.setLoading(false);
-                            throw err;
+        this.confirmationSrv.confirmDelete()
+            .subscribe(b => {
+                if (b) {
+                    if (this.selected && this.selected > 0) {
+                        const a = this.data.filter(x => x.id === this.selected)[0];
+                        if (a && a.id) {
+                            this.shellSrv.setLoading(true);
+                            this.entitySrv.remove(a.id)
+                                .subscribe(
+                                    () => {
+                                        this.snackBarSrv.showSuccessMessage();
+                                        this.refresh();
+                                    },
+                                    err => {
+                                        this.snackBarSrv.showFailureMessage();
+                                        this.shellSrv.setLoading(false);
+                                        throw err;
+                                    }
+                                );
                         }
-                    );
-            }
-        }
+                    }
+                }
+            })
     }
 
 }

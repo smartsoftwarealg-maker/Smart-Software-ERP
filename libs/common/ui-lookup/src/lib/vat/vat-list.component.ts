@@ -3,6 +3,7 @@ import { Vat, VatService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -19,8 +20,9 @@ export class VatListComponent extends BaseEntityListComponent<Vat> {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public router: Router) {
-        super(vatSrv, shellSrv, snackBarSrv, route, router, 'COMMON_VATS');
+        super(vatSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_VATS');
     }
 
 }

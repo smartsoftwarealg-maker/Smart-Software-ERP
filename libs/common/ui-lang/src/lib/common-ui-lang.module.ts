@@ -23,4 +23,4 @@ import { TranslatePipe } from './translate.pipe';
         TranslatePipe
     ]
 })
-export class UiLangModule { }
+export class CommonUiLangModule { }

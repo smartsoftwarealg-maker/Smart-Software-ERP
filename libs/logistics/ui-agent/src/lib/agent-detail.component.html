@@ -15,7 +15,7 @@
                 <input matInput formControlName="denomination" type="text" required>
 
                 <mat-error
-                    *ngIf="form.controls['denomination'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                    *ngIf="form.controls['denomination'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
 
             </mat-form-field>
@@ -33,7 +33,7 @@
                     </mat-option>
                 </mat-select>
                 <mat-error
-                    *ngIf="form.controls['agentType'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                    *ngIf="form.controls['agentType'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
 
@@ -89,7 +89,7 @@
             <div class="default-50 sm-100">
                 <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
                 <mat-error
-                    *ngIf="form.controls['isInternal'].invalid" translate>LOGISTICS_FIELD_REQUIRED
+                    *ngIf="form.controls['isInternal'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </div>
 

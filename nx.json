@@ -101,6 +101,9 @@
     },
     "logistics-assets": {
       "tags": []
+    },
+    "common-ui-confirmation-dialog": {
+      "tags": []
     }
   }
 }

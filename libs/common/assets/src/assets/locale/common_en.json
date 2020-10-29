@@ -1,4 +1,5 @@
 {
+    "DESCRIPTION": "Description",
     "VATS": "VATs",
     "EDIT_VAT": "Edit VAT",
     "WILAYAS": "Wilayasً",
@@ -10,7 +11,6 @@
     "FAILURE": "Operation Failed",
 
     "SAVE": "Save",
-    "CLOSE": "Close",
     "CONFIRM_DELETE_RECORD": "Are you sure you want to delete?",
     "CONFIRM_DONT_SAVE": "Quit without saving?",
     "CONFIRMATION": "Confirmation",

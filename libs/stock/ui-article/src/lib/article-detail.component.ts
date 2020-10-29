@@ -8,6 +8,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Mark} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Vat} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 @Component({
     selector: 'ss-article-detail',
@@ -25,8 +26,9 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
+        public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_ARTICLE');
+        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
     }
 
     public preload(): Observable<any> {

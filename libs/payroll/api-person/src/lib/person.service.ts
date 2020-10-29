@@ -18,6 +18,6 @@ export class  PersonService extends BaseEntityService<Person> {
     }
 
     public getPhotoUrl(id: number): string {
-        return id && id > 0 ? (PERSONS_URL + '/' + id + PERSONS_PHOTO_URL) : null;
+        return id != null && id > 0 ? (PERSONS_URL + '/' + id + PERSONS_PHOTO_URL) : null;
     }
 }

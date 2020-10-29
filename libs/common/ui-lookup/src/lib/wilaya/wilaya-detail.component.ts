@@ -4,6 +4,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Wilaya, WilayaService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-            super(wilayaSrv, shellSrv, snackBarSrv, route, formBuilder, 'COMMON_EDIT_WILAYA');
+            super(wilayaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_WILAYA');
     }
 
     public setupForm(e: Wilaya): FormGroup {

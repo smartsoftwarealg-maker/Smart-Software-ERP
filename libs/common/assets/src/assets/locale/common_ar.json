@@ -1,4 +1,5 @@
 {
+    "DESCRIPTION": "الوصف",
     "VATS": "الضريبة المضافة",
     "EDIT_VAT": "تعديل ق.ض.م",
     "WILAYAS": "الولايات",
@@ -10,7 +11,6 @@
     "FAILURE": "فشلت العملية",
 
     "SAVE": "حفظ",
-    "CLOSE": "إغلاق",
     "CONFIRM_DELETE_RECORD": "أمتأكد أنك تريد الحذف؟",
     "CONFIRM_DONT_SAVE": "أتريد الخروج دون حفظ؟",
     "CONFIRMATION": "تأكيد",

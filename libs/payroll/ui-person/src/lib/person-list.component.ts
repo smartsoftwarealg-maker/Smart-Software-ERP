@@ -8,6 +8,7 @@ import {switchMap, tap} from "rxjs/operators";
 import {LookupsService} from "@ss/common/api-lookup";
 import {LanguageService} from "@ss/common/ui-lang";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 interface Lookup {
     id: number;
@@ -53,8 +54,9 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         public router: Router,
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
+        public confirmationSrv: ConfirmationDialogService,
         public domSanitizer: DomSanitizer) {
-        super(personSrv, shellSrv, snackBarSrv, route, router, 'PAYROLL_EMPLOYEES_LIST');
+        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_LIST');
     }
 
     preload(): Observable<any> {

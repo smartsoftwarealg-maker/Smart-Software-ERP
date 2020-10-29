@@ -4,6 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Nationality, NationalityService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class NationalityDetailComponent extends BaseEntityDetailComponent<Nation
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-        super(nationalitySrv, shellSrv, snackBarSrv, route, formBuilder, 'EDIT_NATIONALITY');
+        super(nationalitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EDIT_NATIONALITY');
     }
 
     public setupForm(e: Nationality): FormGroup {

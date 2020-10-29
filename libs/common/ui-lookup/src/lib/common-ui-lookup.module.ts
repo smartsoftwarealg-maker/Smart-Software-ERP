@@ -4,7 +4,7 @@ import {VatDetailComponent} from './vat/vat-detail.component';
 import {VatListComponent} from './vat/vat-list.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {RouterModule} from '@angular/router';
-import {UiLangModule} from '@ss/common/ui-lang';
+import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {WilayaDetailComponent} from './wilaya/wilaya-detail.component';
 import {WilayaListComponent} from './wilaya/wilaya-list.component';
@@ -32,14 +32,16 @@ import {ClassListComponent} from './class/class-list.component';
 import {ClassDetailComponent} from './class/class-detail.component';
 import {StoreNameListComponent} from './store-name/store-name-list.component';
 import {StoreNameDetailComponent} from './store-name/store-name-detail.component';
+import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
         RouterModule,
-        UiLangModule,
-        UiPaginationModule
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule
     ],
     declarations: [
         VatListComponent,

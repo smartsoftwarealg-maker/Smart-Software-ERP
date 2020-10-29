@@ -7,6 +7,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {AgentType, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -30,8 +31,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
+        public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, formBuilder, 'STOCK_EDIT_AGENT');
+        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT');
     }
 
     public preload(): Observable<any> {

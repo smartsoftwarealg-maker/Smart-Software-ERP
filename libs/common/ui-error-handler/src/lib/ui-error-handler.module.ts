@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MessageComponent as ErrorMessageComponent } from './error-message.component';
 import { CustomErrorHandler } from './custom-error-handler';
 import {MatButtonModule} from '@angular/material/button';
-import { UiLangModule } from '@ss/common/ui-lang';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 
 @NgModule({
     imports: [
         CommonModule,
         MatButtonModule,
-        UiLangModule
+        CommonUiLangModule
     ],
     declarations: [ErrorMessageComponent],
     exports: [ErrorMessageComponent],

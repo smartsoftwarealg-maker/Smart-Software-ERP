@@ -3,6 +3,7 @@ import { Subclass, SubclassService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
 @Component({
@@ -19,8 +20,9 @@ export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
         public router: Router) {
-        super(subclassSrv, shellSrv, snackBarSrv, route, router, 'STOCK_SUBCLASSES');
+        super(subclassSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_SUBCLASSES');
     }
 
 }

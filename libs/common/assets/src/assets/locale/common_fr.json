@@ -1,4 +1,5 @@
 {
+    "DESCRIPTION": "Description",
     "VATS": "TVA",
     "EDIT_VAT": "Modifier TVA",
     "WILAYAS": "Wilayas",
@@ -10,7 +11,6 @@
     "FAILURE": "L'opération a échoué",
 
     "SAVE": "Enregistrer",
-    "CLOSE": "Fermer",
     "CONFIRM_DELETE_RECORD": "Êtes-vous sûr de vouloir supprimer?",
     "CONFIRM_DONT_SAVE": "Fermer sans enregistrer?",
     "CONFIRMATION": "Confirmation",

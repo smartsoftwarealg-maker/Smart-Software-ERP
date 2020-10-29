@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { LOGIN_URL } from '@ss/common/api-common';
 import { Routes, RouterModule } from '@angular/router';
-import { UiLangModule } from '@ss/common/ui-lang';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiThemeModule } from '@ss/common/ui-theme';
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         MaterialModule,
-        UiLangModule,
+        CommonUiLangModule,
         UiThemeModule,
         RouterModule.forChild(routes)
     ],
