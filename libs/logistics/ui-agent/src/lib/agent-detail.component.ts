@@ -57,7 +57,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
-            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(12)])],
+            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(18)])],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
             code: [a.code],

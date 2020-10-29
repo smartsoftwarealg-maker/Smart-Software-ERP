@@ -39,7 +39,6 @@ export interface Agent {
     debtTerm: number;
     payMode: number;
     checkDueDays: number;
-    activities: string;
     activity: number;
     recordBlocked: boolean;
     blockingReason: string;
