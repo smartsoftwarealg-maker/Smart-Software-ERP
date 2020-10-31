@@ -4,13 +4,16 @@
     <mat-accordion>
         <mat-expansion-panel expanded="true" hideToggle>
             <mat-expansion-panel-header>
-                <mat-panel-title translate>
+                <mat-panel-title translate
+                                 [class.f-warn]="form.touched &&
+                                 (form.controls['denomination'].invalid ||
+                                  form.controls['agentType'].invalid)">
                     LOGISTICS_GENERAL
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="denomination" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_DENOMINATION</mat-label>
                 <input matInput formControlName="denomination" type="text" required>
 
@@ -20,12 +23,15 @@
 
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="customerCode" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
                 <input matInput formControlName="customerCode" type="text" required>
+                <mat-error
+                    *ngIf="form.controls['customerCode'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="agentType" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
                 <mat-select formControlName="agentType" required>
                     <mat-option *ngFor="let v of agentTypes" [value]="v.id">
@@ -56,7 +62,7 @@
 
         <mat-expansion-panel>
             <mat-expansion-panel-header>
-                <mat-panel-title translate>
+                <mat-panel-title translate [class.f-warn]="form.controls['email'].invalid">
                     LOGISTICS_LATIN
                 </mat-panel-title>
             </mat-expansion-panel-header>
@@ -76,9 +82,12 @@
                 <input matInput formControlName="fax" type="text">
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="email" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EMAIL</mat-label>
                 <input matInput formControlName="email" type="email">
+                <mat-error
+                    *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field  class="default-50 sm-100">
@@ -88,9 +97,6 @@
 
             <div class="default-50 sm-100">
                 <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
-                <mat-error
-                    *ngIf="form.controls['isInternal'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
             </div>
 
             <mat-form-field  class="default-50 sm-100">

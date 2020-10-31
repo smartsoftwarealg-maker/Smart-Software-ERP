@@ -4,7 +4,7 @@ import {Agent} from "@ss/logistics/api-agent";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpService, MaterialModule} from "@ss/common/api-common";
-import {LanguageService, UiLangModule} from "@ss/common/ui-lang";
+import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LookupTestService} from "../test/lookup-test.service";
@@ -12,13 +12,17 @@ import {LookupsService} from "@ss/common/api-lookup";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {LanguageTestService} from "../test/language-test.service";
 import {HttpTestService} from "../test/http-test.service";
+import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
+import {HarnessLoader} from "@angular/cdk/testing";
+import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
+import {MatSelectHarness} from "@angular/material/select/testing";
 
 describe("AgentDetailComponent", () => {
 
     let component: AgentDetailComponent;
     let fixture: ComponentFixture<AgentDetailComponent>;
     let formTemplate: HTMLElement;
-
+    let loader: HarnessLoader;
     let agent: Agent = {
         activity: 1,
         address: "Agent first address",
@@ -58,7 +62,7 @@ describe("AgentDetailComponent", () => {
         price: 51.06,
         recordBlocked: true,
         stampPayable: true,
-        subcontractor: false,
+        subcontractor: true,
         swift: "swift 01",
         taxPayable: true,
         tin: "tin",
@@ -73,7 +77,7 @@ describe("AgentDetailComponent", () => {
             imports: [
                 CommonModule,
                 MaterialModule,
-                UiLangModule,
+                CommonUiLangModule,
                 UiPaginationModule,
                 ReactiveFormsModule,
                 RouterTestingModule,
@@ -90,12 +94,13 @@ describe("AgentDetailComponent", () => {
 
         component = fixture.componentInstance; // BannerComponent test instance
 
+        loader = TestbedHarnessEnvironment.loader(fixture);
+
         component.form = component.setupForm({} as Agent)
 
         fixture.detectChanges();
 
         formTemplate = fixture.nativeElement.querySelector('form');
-
         component.preload().subscribe()
 
     });
@@ -137,35 +142,167 @@ describe("AgentDetailComponent", () => {
         expect(formTemplate).not.toBeNull()
     });
 
-    it('form invalid when empty', () => {
-        expect(component.form.valid).toBeFalsy();
-    });
 
     it('customerCode field validity', () => {
         let customerCode = component.form.controls['customerCode'];
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
         expect(customerCode.valid).toBeFalsy();
+
+        let formField = formTemplate.querySelector("#customerCode");
+        expect(formField.querySelector("mat-error")).not.toBeNull()
     });
 
     it('denomination field validity', () => {
         let denomination = component.form.controls['denomination'];
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
         expect(denomination.valid).toBeFalsy();
+
+        let formField = formTemplate.querySelector("#denomination");
+        expect(formField.querySelector("mat-error")).not.toBeNull()
     });
 
     it('agentType field validity', () => {
         let agentType = component.form.controls['agentType'];
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
         expect(agentType.valid).toBeFalsy();
+
+        let formField = formTemplate.querySelector("#agentType");
+        expect(formField.querySelector("mat-error")).not.toBeNull()
+    });
+
+
+    it('email field validity', () => {
+        let email = component.form.controls['email'];
+        // valid when empty
+        expect(email.valid).toBeTruthy();
+
+        // invalid email
+        email.setValue("invalidemail")
+        expect(email.valid).toBeFalsy();
+
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
+        let formField = formTemplate.querySelector("#email");
+        expect(formField.querySelector("mat-error")).not.toBeNull()
+
+        // a valid email
+        email.setValue("invalid@email")
+        expect(email.valid).toBeTruthy();
+
+
+    });
+
+    it('mat-expansion-title should have a warn class when the panel contains a invalid field ', () => {
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
+        let hasTitleWarnClass = formTemplate.querySelector("mat-error")
+            .closest("mat-expansion-panel")
+            .querySelector("mat-panel-title")
+            .classList.contains("f-warn");
+
+        expect(hasTitleWarnClass).toBeTruthy()
     });
 
     it('submitting a form emits a agent', () => {
         expect(component.form.valid).toBeFalsy();
 
         component.form.setValue(agent)
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
 
         expect(component.form.valid).toBeTruthy();
 
         expect(agent).toStrictEqual(component.form.value);
     });
 
+    it('should update all fields', async () => {
+        component.form.setValue(agent)
+
+        formTemplate
+            .querySelectorAll("[type='text'],[type='email']")
+            .forEach((x: HTMLInputElement) => {
+                x.value = "updated";
+                x.dispatchEvent(new Event('input'));
+            })
+
+        formTemplate
+            .querySelectorAll("[type='number']")
+            .forEach((x: HTMLInputElement) => {
+                x.value = "-999";
+                x.dispatchEvent(new Event('input'));
+            })
+
+        fixture.detectChanges()
+
+        const checkboxHarnesses = await loader.getAllHarnesses(MatCheckboxHarness);
+        for (const x of checkboxHarnesses) {
+            await x.uncheck()
+        }
+
+        const selectHarnesses = await loader.getAllHarnesses(MatSelectHarness);
+        for (const x of selectHarnesses) {
+            await x.open();
+            let options = await x.getOptions();
+            await options[options.length - 1].click()
+            await x.close()
+        }
+        fixture.detectChanges()
+
+        let newAgent = {
+            "activity": 5,
+            "address": "updated",
+            "address2": "updated",
+            "address2Ar": "updated",
+            "addressAr": "updated",
+            "agentType": 3,
+            "articleNo": "updated",
+            "bank": "updated",
+            "bankAccount": "updated",
+            "blockingReason": "updated",
+            "capital": "updated",
+            "checkDueDays": -999,
+            "city": 5,
+            "code": "2",
+            "commRegister": "updated",
+            "companyType": 18,
+            "contact": "updated",
+            "country": 4,
+            "currency": 5,
+            "customerCode": "updated",
+            "debtLimit": -999,
+            "debtTerm": -999,
+            "denomination": "updated",
+            "denominationAr": "updated",
+            "email": "updated",
+            "fax": "updated",
+            "fiscalID": "updated",
+            "id": 1,
+            "info": "updated",
+            "isInternal": false,
+            "mobile": "updated",
+            "nif": "updated",
+            "nis": "updated",
+            "payMode": 4,
+            "phone": "updated",
+            "price": -999,
+            "recordBlocked": false,
+            "stampPayable": false,
+            "subcontractor": false,
+            "swift": "updated",
+            "taxPayable": false,
+            "tin": "updated",
+            "website": "updated",
+        }
+        expect(component.form.value).toStrictEqual(newAgent);
+    });
 
 
 });

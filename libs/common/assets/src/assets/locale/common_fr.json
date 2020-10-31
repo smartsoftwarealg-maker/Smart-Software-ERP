@@ -23,6 +23,7 @@
     "EDIT_SELECTED": "Modifier sélectionnée",
     "DEL_SELECTED": "Supprimer sélectionnée",
     "FIELD_REQUIRED": "Ce champ est requis",
+    "EMAIL_INVALID": "Cette adresse email est invalide",
     "APPLY": "Appliquer",
     "NEXT": "Prochain",
     "PREVIOUS": "Précédent",

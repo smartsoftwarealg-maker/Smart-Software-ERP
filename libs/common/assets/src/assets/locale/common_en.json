@@ -23,6 +23,7 @@
     "EDIT_SELECTED": "Edit selected",
     "DEL_SELECTED": "Delete selected",
     "FIELD_REQUIRED": "This field is required",
+    "EMAIL_INVALID": "This email is invalid",
     "APPLY": "Apply",
     "NEXT": "Next",
     "PREVIOUS": "Previous",
