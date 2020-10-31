@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LanguageService } from '@ss/common/ui-lang';
+import {isString} from "@ss/common/api-common";
 
 @Injectable({
     providedIn: 'root'
@@ -23,14 +24,13 @@ export class CustomErrorHandlerService {
 
     // todo: Push error into a queue instead of keeping the last one only
     public setError(err: HttpErrorResponse | any) {
-
         this.status = err == null || err.status == null
             ? 0
             : err.status;
 
         this.message = err == null || err.message == null
             ? this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)})
-            : err.message;
+            : (err.error && isString(err.error) ? err.error : err.message);
 
         this.statusText =
             err == null || err.status == null || err.statusText
