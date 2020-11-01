@@ -4,7 +4,6 @@ import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpService, MaterialModule} from "@ss/common/api-common";
-import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {RouterTestingModule} from "@angular/router/testing";
 import {LookupTestService} from "../test/lookup-test.service";
@@ -18,6 +17,7 @@ import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
 import {MatSelectHarness} from "@angular/material/select/testing";
 import {MatExpansionPanelHarness} from "@angular/material/expansion/testing";
 import {AgentTestService} from "../test/agent-test.service";
+import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
 
 describe("AgentDetailComponent", () => {
 
