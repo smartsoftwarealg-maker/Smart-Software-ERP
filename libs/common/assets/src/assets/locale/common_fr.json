@@ -52,5 +52,7 @@
     "PASSWORD": "Mot de passe",
 
     "MAX_FILE_SIZE_1MB": "Taille maximale du fichier 1Mo",
-    "NOT_AN_IMAGE": "Ce n'est pas un fichier image valide"
+    "NOT_AN_IMAGE": "Ce n'est pas un fichier image valide",
+
+    "FORM_NOT_VALID": "Le formulaire n'est pas valide"
 }

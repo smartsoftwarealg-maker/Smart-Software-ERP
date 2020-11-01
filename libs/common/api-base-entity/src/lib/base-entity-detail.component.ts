@@ -104,6 +104,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public save() {
         this.form.markAllAsTouched();
         if (!this.form.valid) {
+            this.snackBarSrv.showMessage('COMMON_FORM_NOT_VALID', false, false);
             return;
         }
         const val: T = this.readForm();
