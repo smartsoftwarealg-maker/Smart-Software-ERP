@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {UserInfo, DocRight, Right, Role, User, UserContext} from './models';
-import {Center} from './models';
-import {of} from 'rxjs';
-import {Observable} from 'rxjs';
+import {Center, DocRight, Right, User, UserContext, UserInfo} from './models';
+import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
 
 interface Severe {
@@ -30,6 +28,12 @@ export class UserService {
         if (user) {
             this.userInfo = JSON.parse(user) as UserInfo;
         }
+    }
+
+    load(): Observable<any> {
+        return this.getContext()
+            .pipe(tap(res => this.context = res),
+                switchMap(res => res.userId ? this.loadUserRights() : of(true)));
     }
 
     private getContext(): Observable<UserContext> {
@@ -94,14 +98,21 @@ export class UserService {
             }));
     }
 
-    load(): Observable<any> {
-        return this.getContext()
-            .pipe(tap(res => this.context = res),
-                switchMap(res => res.userId ? this.loadUserRights() : of(true)));
-    }
-
     canUserPass(component: string): boolean {
         return this.getRights(component).read;
+    }
+
+
+    canUserAdd(component: string): boolean {
+        return this.getRights(component).create;
+    }
+
+    canUserEdit(component: string): boolean {
+        return this.getRights(component).edit;
+    }
+
+    canUserDelete(component: string): boolean {
+        return this.getRights(component).del;
     }
 
     private getDefault(): Right {
@@ -121,21 +132,6 @@ export class UserService {
         return this.rightsMap.get(component) || this.getDefault();
     }
 
-    getUserRights(component: string): Right {
-        return this.getRights(component);
-    }
-
-    canUserAdd(component: string): boolean {
-        return this.getRights(component).create;
-    }
-
-    canUserEdit(component: string): boolean {
-        return this.getRights(component).edit;
-    }
-
-    UserRights(component: string): Right {
-        return this.getRights(component);
-    }
 
     /**
      * Called by logout() in LoginService
@@ -147,21 +143,6 @@ export class UserService {
         this.rightsMap.clear();
     }
 
-    getUserList(page: number, size: number, cb: (cnt: number) => void, filter?: string, sort?: string): Observable<UserInfo[]> {
-        const page0 = Math.max(0, page - 1);
-        // const strFilter = filter ? `&filter=${filter}` : '';
-        // const strSort = sort ? `&sort=${sort}` : '';
-        // const url = `/users?page=${page0}-${size}${strFilter}${strSort}`;
-        const url = '/users';
-        return this.httpSrv
-            .getData<UserInfo>(url, page0, size, filter, sort)
-            .pipe(map(a => {
-                cb(a.itemCount);
-                return a.body;
-            }));
-        //            this.httpSrv
-        //                .get<UserInfo[]>(url).pipe(tap(res => cb(this.httpSrv.itemCount)));
-    }
 
     getUserById(id: number): Observable<UserInfo> {
         const nId = id || 0;
@@ -170,20 +151,6 @@ export class UserService {
             of(this.EMPTY_USER);
     }
 
-    save(userInfo: UserInfo): Observable<number> {
-        return userInfo.user.id ?
-            this.httpSrv.put('/users', userInfo) :
-            this.httpSrv.post('/users', userInfo);
-    }
-
-    getRoleList(): Observable<Role[]> {
-        return this.httpSrv.get<Role[]>('/roles');
-    }
-
-    getCenterList(): Observable<Center[]> {
-        const company = this.context ? this.context.company : 1;
-        return this.httpSrv.get<Center[]>(`/companies/${company}/centers`);
-    }
 
     get isLoggedIn(): boolean {
         return this.userInfo &&
@@ -191,7 +158,4 @@ export class UserService {
             this.userInfo.user.id != null;
     }
 
-    ctx(): Observable<object> {
-        return this.httpSrv.get<object>('/ctx').pipe(map(res => res['ctx']));
-    }
 }

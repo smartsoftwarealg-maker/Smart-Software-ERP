@@ -22,13 +22,10 @@ export class CanActivateService implements CanActivate {
         state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-//        const url = this.getResolvedUrl(route);
-//        console.log('trying to access: ' + url);
-
         if (this.loginSrv.isLoggedIn) {
             return this.canRead(route);
         }
-        // const auth = localStorage.getItem('auth_token') != null;
+
         const auth = this.httpSrv.getAuthToken() != null;
         if (auth) {
             return this.loginSrv
@@ -44,30 +41,17 @@ export class CanActivateService implements CanActivate {
 
     private canRead(route: ActivatedRouteSnapshot): boolean {
         const entity = route.data.entity;
-        if (entity) {
-            const rights = this.userSrv.getRights(entity);
-            if (!rights.read) {
-                return false;
-            }
+
+        if (entity && !this.userSrv.canUserPass(entity)) {
+            return false;
         }
+
         if (this.userSrv.context && this.userSrv.context.pwdExpired) {
             this.router.navigate(['/' + PROFILE_PAGE_URL]).then();
             return false;
         }
+
         return true;
     }
-
-
-    /*
-    private getResolvedUrl(route: ActivatedRouteSnapshot): string {
-        let url = route.pathFromRoot
-            .map(v => v.url.map(segment => segment.toString()).join('/'))
-            .join('/');
-        while (url.indexOf('//') > -1) {
-            url = url.replace('//', '/');
-        }
-        return url;
-    }
-    */
 
 }

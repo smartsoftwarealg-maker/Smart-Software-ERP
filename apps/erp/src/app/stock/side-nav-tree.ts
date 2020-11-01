@@ -1,18 +1,31 @@
 import {
-    ABS_STOCK_MARKS_URL,
+    ABS_STOCK_AGENT_URL,
     ABS_STOCK_ARTICLES_URL,
-    ABS_STOCK_VAT_URL,
     ABS_STOCK_CLASSES_URL,
+    ABS_STOCK_MARKS_URL,
+    ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
-    ABS_STOCK_STORE_NAMES_URL, ABS_STOCK_UNITS_URL, ABS_STOCK_AGENT_URL
+    ABS_STOCK_UNITS_URL,
+    ABS_STOCK_VAT_URL
 } from '../constants';
-import { SideNavNode } from '@ss/common/ui-shell';
+import {SideNavNode} from '@ss/common/ui-shell';
 
 
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',
     icon: 'fas fa-warehouse-alt',
     children: [
+        {
+            name: 'STOCK_FILE',
+            icon: 'fas fa-folder',
+            children: [
+                {
+                    name: 'STOCK_AGENT',
+                    icon: 'fas fa-user',
+                    route: ABS_STOCK_AGENT_URL
+                }
+            ]
+        },
         {
             name: 'COMMON_LOOKUPS',
             icon: 'fas fa-clipboard-list',
@@ -60,16 +73,5 @@ export const stockNavTree: SideNavNode = {
                 }
             ]
         },
-        {
-            name: 'STOCK_FILE',
-            icon: 'fas fa-folder',
-            children: [
-                {
-                    name: 'STOCK_AGENT',
-                    icon: 'fas fa-user',
-                    route: ABS_STOCK_AGENT_URL
-                }
-            ]
-        }
     ]
 };

@@ -91,7 +91,7 @@
         align-items: center;
         flex-wrap: nowrap;
         justify-content: flex-start;
-    
+
         .shell-title {
             flex-grow: 1;
             flex-shrink: 1;
@@ -242,7 +242,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    
+
 
     .brand-icon {
         margin: 3px;
@@ -297,7 +297,7 @@
 .side-nav-tree-invisible {
     display: none;
 }
-  
+
 .side-nav-tree ul,
 .side-nav-tree li {
     margin-top: 0;
@@ -317,6 +317,11 @@
     line-height: 40px;
     text-align: center;
     font-size: 150%;
+}
+
+
+:focus{
+    outline: none;
 }
 
 /*.side-nav-separator {

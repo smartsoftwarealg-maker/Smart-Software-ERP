@@ -32,7 +32,7 @@ import {
     PayMode,
     Post,
     POSTS_URL,
-    Price,
+    Price, AGENT_PRICES_URL,
     Service,
     SERVICES_URL,
     Vat,
@@ -121,9 +121,8 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Activity>(ACTIVITY_URL, "activities");
     }
 
-    public getPrices(id: number): Observable<Price[]> {
-        return this.lookupCacheSrv.load<Price>(ACTIVITY_URL.replace(":id", id.toString()),
-            "prices");
+    public getPrices(): Observable<Price[]> {
+        return this.lookupCacheSrv.load<Price>(AGENT_PRICES_URL, "agentprices");
     }
 
 }
