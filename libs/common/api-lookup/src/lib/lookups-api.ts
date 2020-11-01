@@ -21,6 +21,7 @@ export const CURRENCY_URL = "/lookups/currencies";
 export const COMPANY_TYPE_URL = "/lookups/companies";
 export const PAY_MODE_URL = "/lookups/paymodes";
 export const ACTIVITY_URL = "/lookups/activities";
+export const PRICES_URL = `/centers/:id/prices`;
 
 
 export interface Wilaya {
@@ -137,6 +138,11 @@ export interface PayMode {
 }
 
 export interface Activity {
+    id: number;
+    description: string;
+}
+
+export interface Price {
     id: number;
     description: string;
 }

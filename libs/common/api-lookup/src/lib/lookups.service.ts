@@ -2,40 +2,43 @@ import {LookupsCacheService} from './lookups-cache.service';
 import {Observable, of} from 'rxjs';
 import {Injectable} from "@angular/core";
 import {
-    Mark,
-    MARKS_URL,
-    Vat,
-    VATS_URL,
-    Wilaya,
-    WILAYAS_URL,
+    Activity,
+    ACTIVITY_URL,
+    AGENT_TYPE_URL,
+    AgentType,
     CATEGORIES_URL,
     Category,
+    City,
+    CITY_URL,
+    COMPANY_TYPE_URL,
+    CompanyType,
+    Country,
+    COUNTRY_URL,
+    Currency,
+    CURRENCY_URL,
     Diploma,
     DIPLOMAS_URL,
     EDUCATION_LEVEL_URL,
     EducationLevel,
     MARITAL_STATUS_URL,
     MaritalStatus,
+    Mark,
+    MARKS_URL,
     MILITARY_SERVICE_STATES,
     MilitaryServiceState,
     NATIONALITIES_URL,
     Nationality,
+    PAY_MODE_URL,
+    PayMode,
     Post,
     POSTS_URL,
+    Price,
     Service,
     SERVICES_URL,
-    AgentType,
-    AGENT_TYPE_URL,
-    City,
-    CITY_URL,
-    Country,
-    COUNTRY_URL,
-    CompanyType,
-    Currency,
-    COMPANY_TYPE_URL,
-    CURRENCY_URL,
-    PayMode,
-    PAY_MODE_URL, Activity, ACTIVITY_URL
+    Vat,
+    VATS_URL,
+    Wilaya,
+    WILAYAS_URL
 } from './lookups-api';
 
 @Injectable({
@@ -116,6 +119,11 @@ export class LookupsService {
 
     public getActivities(): Observable<Activity[]> {
         return this.lookupCacheSrv.load<Activity>(ACTIVITY_URL, "activities");
+    }
+
+    public getPrices(id: number): Observable<Price[]> {
+        return this.lookupCacheSrv.load<Price>(ACTIVITY_URL.replace(":id", id.toString()),
+            "prices");
     }
 
 }

@@ -1,6 +1,6 @@
 import {AgentDetailComponent} from "@ss/logistics/ui-agent";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Agent} from "@ss/logistics/api-agent";
+import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {HttpService, MaterialModule} from "@ss/common/api-common";
@@ -16,6 +16,8 @@ import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
 import {MatSelectHarness} from "@angular/material/select/testing";
+import {MatExpansionPanelHarness} from "@angular/material/expansion/testing";
+import {AgentTestService} from "../test/agent-test.service";
 
 describe("AgentDetailComponent", () => {
 
@@ -59,7 +61,7 @@ describe("AgentDetailComponent", () => {
         nis: "nif",
         payMode: 1,
         phone: "0317618956",
-        price: 51.06,
+        price: 1,
         recordBlocked: true,
         stampPayable: true,
         subcontractor: true,
@@ -86,7 +88,8 @@ describe("AgentDetailComponent", () => {
             providers: [
                 {provide: HttpService, useClass: HttpTestService},
                 {provide: LookupsService, useClass: LookupTestService},
-                {provide: LanguageService, useClass: LanguageTestService}
+                {provide: LanguageService, useClass: LanguageTestService},
+                {provide: AgentService, useClass: AgentTestService}
             ]
         });
 
@@ -96,11 +99,12 @@ describe("AgentDetailComponent", () => {
 
         loader = TestbedHarnessEnvironment.loader(fixture);
 
-        component.form = component.setupForm({} as Agent)
+        component.form = component.setupForm(agent)
 
         fixture.detectChanges();
 
         formTemplate = fixture.nativeElement.querySelector('form');
+
         component.preload().subscribe()
 
     });
@@ -134,6 +138,11 @@ describe("AgentDetailComponent", () => {
         expect(component.currencies.length).toBe(5)
     });
 
+    it('should load price table', () => {
+        expect(component.prices.length).toBe(6)
+    });
+
+
     it("should create an instance for form", () => {
         expect(component.form).not.toBeNull()
     });
@@ -144,40 +153,29 @@ describe("AgentDetailComponent", () => {
 
 
     it('customerCode field validity', () => {
-        let customerCode = component.form.controls['customerCode'];
-        component.form.markAllAsTouched()
-        fixture.detectChanges()
-
-        expect(customerCode.valid).toBeFalsy();
-
-        let formField = formTemplate.querySelector("#customerCode");
-        expect(formField.querySelector("mat-error")).not.toBeNull()
+        requiredFieldTest("customerCode")
     });
 
-    it('denomination field validity', () => {
-        let denomination = component.form.controls['denomination'];
-        component.form.markAllAsTouched()
-        fixture.detectChanges()
+    it('currency field validity', () => {
+        requiredFieldTest("currency")
+    });
 
-        expect(denomination.valid).toBeFalsy();
-
-        let formField = formTemplate.querySelector("#denomination");
-        expect(formField.querySelector("mat-error")).not.toBeNull()
+    it('price field validity', () => {
+        requiredFieldTest("price")
     });
 
     it('agentType field validity', () => {
-        let agentType = component.form.controls['agentType'];
-        component.form.markAllAsTouched()
-        fixture.detectChanges()
+        requiredFieldTest("agentType")
+    });
 
-        expect(agentType.valid).toBeFalsy();
-
-        let formField = formTemplate.querySelector("#agentType");
-        expect(formField.querySelector("mat-error")).not.toBeNull()
+    it('denomination field validity', () => {
+        requiredFieldTest("denomination")
     });
 
 
     it('email field validity', () => {
+
+
         let email = component.form.controls['email'];
         // valid when empty
         expect(email.valid).toBeTruthy();
@@ -192,6 +190,12 @@ describe("AgentDetailComponent", () => {
         let formField = formTemplate.querySelector("#email");
         expect(formField.querySelector("mat-error")).not.toBeNull()
 
+        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+            .classList.contains("b-warn-expansion-panel");
+
+        expect(hasHeaderWarnClass).toBeTruthy();
+
+
         // a valid email
         email.setValue("invalid@email")
         expect(email.valid).toBeTruthy();
@@ -199,32 +203,8 @@ describe("AgentDetailComponent", () => {
 
     });
 
-    it('mat-expansion-title should have a warn class when the panel contains a invalid field ', () => {
-        component.form.markAllAsTouched()
-        fixture.detectChanges()
-
-        let hasTitleWarnClass = formTemplate.querySelector("mat-error")
-            .closest("mat-expansion-panel")
-            .querySelector("mat-panel-title")
-            .classList.contains("f-warn");
-
-        expect(hasTitleWarnClass).toBeTruthy()
-    });
-
-    it('submitting a form emits a agent', () => {
-        expect(component.form.valid).toBeFalsy();
-
-        component.form.setValue(agent)
-        component.form.markAllAsTouched()
-        fixture.detectChanges()
-
-        expect(component.form.valid).toBeTruthy();
-
-        expect(agent).toStrictEqual(component.form.value);
-    });
 
     it('should update all fields', async () => {
-        component.form.setValue(agent)
 
         formTemplate
             .querySelectorAll("[type='text'],[type='email']")
@@ -292,7 +272,7 @@ describe("AgentDetailComponent", () => {
             "nis": "updated",
             "payMode": 4,
             "phone": "updated",
-            "price": -999,
+            "price": 6,
             "recordBlocked": false,
             "stampPayable": false,
             "subcontractor": false,
@@ -303,6 +283,39 @@ describe("AgentDetailComponent", () => {
         }
         expect(component.form.value).toStrictEqual(newAgent);
     });
+
+    it("should add primary color to expanded panel", async () => {
+        let panels = await loader.getAllHarnesses(MatExpansionPanelHarness);
+        for (const panel of panels) {
+            await panel.expand();
+            const host = await panel.host();
+            const hasClass = await host.hasClass("b-primary-expansion-panel");
+            expect(hasClass).toBeTruthy();
+        }
+    })
+
+    function requiredFieldTest(name) {
+        let field = component.form.controls[name];
+
+        expect(field.valid).toBeTruthy();
+
+        field.setValue(null)
+
+        expect(field.valid).toBeFalsy();
+
+
+        component.form.markAllAsTouched()
+        fixture.detectChanges()
+
+        let formField = formTemplate.querySelector(`#${name}`);
+        expect(formField.querySelector("mat-error")).not.toBeNull()
+
+        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+            .classList.contains("b-warn-expansion-panel");
+
+        expect(hasHeaderWarnClass).toBeTruthy();
+
+    }
 
 
 });

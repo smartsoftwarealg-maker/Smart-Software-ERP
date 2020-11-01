@@ -144,13 +144,13 @@ $ss-green: (
 
     .f-b-status-bar { color: map-get($background, status-bar); }
     .b-b-status-bar { background-color: map-get($background, status-bar); }
-    
+
     .f-b-app-bar { color: map-get($background, app-bar); }
     .b-b-app-bar { background-color: map-get($background, app-bar); }
-    
+
     .f-b-background { color: map-get($background, background); }
     .b-b-background { background-color: map-get($background, background); }
-    
+
     .f-b-hover { color: map-get($background, hover); }
     .b-b-hover { background-color: map-get($background, hover); }
 
@@ -160,73 +160,73 @@ $ss-green: (
             background-color: rgba($color: #829dc5, $alpha: 0.25);
         }
     }
-    
+
     .f-b-card { color: map-get($background, card); }
     .b-b-card { background-color: map-get($background, card); }
-    
+
     .f-b-dialog { color: map-get($background, dialog); }
     .b-b-dialog { background-color: map-get($background, dialog); }
-    
+
     .f-b-disabled-btn { color: map-get($background, disabled-button); }
     .b-b-disabled-btn { background-color: map-get($background, disabled-button); }
-    
+
     .f-b-raised-btn { color: map-get($background, raised-button); }
     .b-b-raised-btn { background-color: map-get($background, raised-button); }
-    
+
     .f-b-focused-btn { color: map-get($background, focused-button); }
     .b-b-focused-btn { background-color: map-get($background, focused-button); }
-    
+
     .f-b-selected-btn { color: map-get($background, selected-button); }
     .b-b-selected-btn { background-color: map-get($background, selected-button); }
     .selected {
         // background-color: map-get($background, selected-button);
         background-color: rgba($color: #5555FF, $alpha: 0.3) !important;
     }
-    
+
     .f-b-selected-disabled-btn { color: map-get($background, selected-disabled-button); }
     .b-b-selected-disabled-btn { background-color: map-get($background, selected-disabled-button); }
-    
+
     .f-b-disabled-btn-tgl { color: map-get($background, disabled-button-toggle); }
     .b-b-disabled-btn-tgl { background-color: map-get($background, disabled-button-toggle); }
-    
+
     .f-b-unselected-chip { color: map-get($background, unselected-chip); }
     .b-b-unselected-chip { background-color: map-get($background, unselected-chip); }
-    
+
     .f-b-disabled-list-opt { color: map-get($background, disabled-list-option); }
     .b-b-disabled-list-opt { background-color: map-get($background, disabled-list-option); }
-    
+
     .f-b-tooltip { color: map-get($background, tooltip); }
     .b-b-tooltip { background-color: map-get($background, tooltip); }
 
     // foreground
-    
+
     .f-f-base { color: map-get($foreground, base); }
     .b-f-base { background-color: map-get($foreground, base); }
-    
+
     .f-f-divider { color: map-get($foreground, divider); }
     .b-f-divider { background-color: map-get($foreground, divider); }
-    
+
     .f-f-disabled { color: map-get($foreground, disabled); }
     .b-f-disabled { background-color: map-get($foreground, disabled); }
-    
+
     .f-f-disabled-btn { color: map-get($foreground, disabled-button); }
     .b-f-disabled-btn { background-color: map-get($foreground, disabled-button); }
-    
+
     .f-f-text { color: map-get($foreground, disabled-text); }
     .b-f-text { background-color: map-get($foreground, disabled-text); }
-    
+
     .f-f-elevation { color: map-get($foreground, elevation); }
     .b-f-elevation { background-color: map-get($foreground, elevation); }
-    
+
     .f-f-hint-text { color: map-get($foreground, hint-text); }
     .b-f-hint-text { background-color: map-get($foreground, hint-text); }
-    
+
     .f-f-secondary-text { color: map-get($foreground, secondary-text); }
     .b-f-secondary-text { background-color: map-get($foreground, secondary-text); }
-    
+
     .f-f-icon { color: map-get($foreground, icon); }
     .b-f-icon { background-color: map-get($foreground, icon); }
-    
+
     .f-f-text { color: map-get($foreground, text); }
     .b-f-text { background-color: map-get($foreground, text); }
 
@@ -304,13 +304,20 @@ $theme-1-warn:    mat-palette($mat-red);
 
         @include angular-material-color($reverse-theme-p);
 
-        background-color: map-get($theme-1-primary, default);
-        color: map-get($reverse-color-p, default);
+        background-color: map-get($theme-1-primary, default) !important;
+        color: map-get($reverse-color-p, default) !important;
 
         // override mat-tree background to fix a bug
         .mat-tree {
             background-color: map-get($theme-1-primary, default);
         }
+    }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
     }
 
     .b-accent {
@@ -319,8 +326,8 @@ $theme-1-warn:    mat-palette($mat-red);
 
         @include angular-material-color($reverse-theme-a);
 
-        background-color: map-get($theme-1-accent, default);
-        color: map-get($reverse-color-a, default);
+        background-color: map-get($theme-1-accent, default)!important;
+        color: map-get($reverse-color-a, default) !important;
     }
 
     .b-warn {
@@ -329,10 +336,15 @@ $theme-1-warn:    mat-palette($mat-red);
 
         @include angular-material-color($reverse-theme-w);
 
-        background-color: map-get($theme-1-warn, default);
-        color: map-get($reverse-color-w, default);
+        background-color: map-get($theme-1-warn, default) !important;
+        color: map-get($reverse-color-w, default) !important;
     }
-
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
+    }
 }
 
 $theme-2-primary: mat-palette($mat-indigo);

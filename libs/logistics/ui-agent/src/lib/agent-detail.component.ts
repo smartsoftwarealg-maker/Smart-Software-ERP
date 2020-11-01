@@ -8,6 +8,9 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {AgentType, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {MatExpansionPanel} from "@angular/material/expansion";
+import {UserService} from "@ss/common/api-common";
+
 
 
 @Component({
@@ -17,6 +20,7 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
 
+
     agentTypes: AgentType[];
     companyTypes: CompanyType[];
     cities: City[];
@@ -24,6 +28,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     currencies: Currency[];
     payModes: PayMode[];
     activities: PayMode[];
+    prices: PayMode[];
+
 
     constructor(
         public agentService: AgentService,
@@ -32,6 +38,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
+        public centerService: UserService,
         public lookupsSrv: LookupsService) {
         super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT');
     }
@@ -51,7 +58,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 switchMap(() => this.lookupsSrv.getPayModes()),
                 tap(x => this.payModes = x),
                 switchMap(() => this.lookupsSrv.getActivities()),
-                tap(x => this.activities = x)
+                tap(x => this.activities = x),
+                switchMap(() => this.lookupsSrv.getPrices()),
+                tap(x => this.prices = x)
             );
     }
 
@@ -72,13 +81,13 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             fax: [a.fax],
             contact: [a.contact],
             info: [a.info],
-            currency: [a.currency],
+            currency: [a.currency, Validators.required],
             taxPayable: [a.taxPayable],
             commRegister: [a.commRegister],
             fiscalID: [a.fiscalID],
             articleNo: [a.articleNo],
             stampPayable: [a.stampPayable],
-            price: [a.price],
+            price: [a.price, Validators.required],
             denominationAr: [a.denominationAr],
             addressAr: [a.addressAr],
             address2Ar: [a.address2Ar],
@@ -103,5 +112,41 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             tin: [a.tin]
         });
     }
+
+    public isGeneralSectionInvalid(): boolean {
+        return this.form.touched &&
+            (this.form.controls['denomination'].invalid ||
+                this.form.controls['customerCode'].invalid ||
+                this.form.controls['price'].invalid ||
+                this.form.controls['currency'].invalid ||
+                this.form.controls['agentType'].invalid)
+    }
+
+    public isLatinSectionInvalid(): boolean {
+        return this.form.touched && this.form.controls['email'].invalid;
+    }
+
+    public isSectionInvalid(section): boolean {
+        if (section == "general")
+            return this.isGeneralSectionInvalid();
+        else if (section == "latin")
+            return this.isLatinSectionInvalid();
+        else
+            return false;
+    }
+
+    public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
+        // if invalid return warning class
+        if (this.isSectionInvalid(section)) {
+            return "b-warn-expansion-panel";
+        }
+
+        // if expanded return primary background class
+        if (panel.expanded)
+            return "b-primary-expansion-panel"
+        else
+            return "";
+    }
+
 
 }

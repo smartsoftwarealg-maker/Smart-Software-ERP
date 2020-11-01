@@ -7,7 +7,7 @@ import {
     Country, Currency,
     LookupsCacheService,
     LookupsService,
-    PayMode
+    PayMode, Price
 } from "@ss/common/api-lookup";
 import {Observable, of} from "rxjs";
 
@@ -381,6 +381,35 @@ export class LookupTestService extends LookupsService {
                 "id": 5,
                 "description": "currency 05"
             },
+        ])
+    }
+
+    getPrices(): Observable<Price[]> {
+        return of([
+            {
+                "id": 1,
+                "description": "price 01",
+            },
+            {
+                "id": 2,
+                "description": "price 02",
+            },
+            {
+                "id": 3,
+                "description": "price 03",
+            },
+            {
+                "id": 4,
+                "description": "price 04"
+            },
+            {
+                "id": 5,
+                "description": "price 05"
+            },
+            {
+                "id": 6,
+                "description": "price 05"
+            }
         ])
     }
 }
