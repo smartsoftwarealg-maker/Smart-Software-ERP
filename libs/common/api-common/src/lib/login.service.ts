@@ -5,7 +5,7 @@ import {catchError, flatMap, map, switchMap, tap} from 'rxjs/operators';
 import {UserService} from './user.service';
 import {Agent, Person} from './models';
 import {DecService} from './dec.service';
-import {CENTER_SELECT_URL, LOGIN_URL, INDEX_PAGE_URL, ABS_INDEX_URL} from './constants';
+import {CENTER_SELECT_URL, LOGIN_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
 
 export enum LicenseErrorType {
@@ -101,7 +101,7 @@ export class LoginService {
     public centerLogin(center: number): Observable<string> {
         return this
             .httpSrv
-            .get<string>('/clogin/' + center)
+            .put('/clogin/' + center)
             .pipe(tap<string>(res => {
                 this.httpSrv.updateAuthToken(res);
                 // localStorage.setItem('auth_token', res);
