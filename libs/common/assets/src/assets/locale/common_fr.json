@@ -24,6 +24,8 @@
     "DEL_SELECTED": "Supprimer sélectionnée",
     "FIELD_REQUIRED": "Ce champ est requis",
     "EMAIL_INVALID": "Cette adresse email est invalide",
+    "URL_INVALID": "Cette URL n'est pas valide",
+    "INTEGER_INVALID": "Ce n'est pas un entier",
     "APPLY": "Appliquer",
     "NEXT": "Prochain",
     "PREVIOUS": "Précédent",

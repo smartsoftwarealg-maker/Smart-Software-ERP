@@ -48,5 +48,6 @@
     "LATIN": "Latin",
     "ARABIC": "Arabic",
     "FISCAL": "Fiscal",
-    "STAMP": "Stamp"
+    "STAMP": "Stamp",
+    "CREATION_TIME": "Creation time"
 }
