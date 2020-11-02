@@ -5,7 +5,6 @@ export interface Agent {
     customerCode: string;
     isInternal: boolean;
     denomination: string;
-    code: string;
     address: string;
     address2: string;
     city: number;
@@ -26,7 +25,7 @@ export interface Agent {
     addressAr: string;
     address2Ar: string;
     capital: string;
-    bank: string;
+    bank: number;
     bankAccount: string;
     swift: string;
     agentType: number;
@@ -43,7 +42,7 @@ export interface Agent {
     recordBlocked: boolean;
     blockingReason: string;
     subcontractor: boolean;
-    creationTime: number;
+    creationTime: string;
     tin: string;
 
     /**

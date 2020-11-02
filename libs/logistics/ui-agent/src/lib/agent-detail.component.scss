@@ -17,6 +17,7 @@ mat-expansion-panel {
     &.mat-expanded mat-expansion-panel-header {
         border-width: 0 0 1px 0;
         border-style: dotted;
+        margin-bottom: 20px;
     }
 
 }

@@ -5,12 +5,12 @@ import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {AgentType, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
+import {AgentType, Bank, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
 import {UserService} from "@ss/common/api-common";
-
+import {FormValidators} from "../../../../common/api-common/src/lib/FormValidators";
 
 
 @Component({
@@ -29,6 +29,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     payModes: PayMode[];
     activities: PayMode[];
     prices: PayMode[];
+    banks: Bank[];
 
 
     constructor(
@@ -60,18 +61,21 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 switchMap(() => this.lookupsSrv.getActivities()),
                 tap(x => this.activities = x),
                 switchMap(() => this.lookupsSrv.getPrices()),
-                tap(x => this.prices = x)
+                tap(x => this.prices = x),
+                switchMap(() => this.lookupsSrv.getBanks()),
+                tap(x => this.banks = x)
             );
     }
 
     public setupForm(a: Agent) {
+        const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
+
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
             customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(18)])],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
-            code: [a.code],
             address: [a.address],
             address2: [a.address2],
             city: [a.city],
@@ -98,18 +102,19 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             agentType: [a.agentType, Validators.required],
             companyType: [a.companyType],
             email: [a.email, Validators.email],
-            website: [a.website],
+            website: [a.website, Validators.pattern(urlRegExp)],
             nis: [a.nis],
             nif: [a.nif],
             debtLimit: [a.debtLimit],
-            debtTerm: [a.debtTerm],
+            debtTerm: [a.debtTerm, FormValidators.integerValidator],
             payMode: [a.payMode],
-            checkDueDays: [a.checkDueDays],
+            checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
             activity: [a.activity],
             recordBlocked: [a.recordBlocked],
             blockingReason: [a.blockingReason],
             subcontractor: [a.subcontractor],
-            tin: [a.tin]
+            tin: [a.tin],
+            creationTime: [a.creationTime]
         });
     }
 
@@ -123,16 +128,28 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     }
 
     public isLatinSectionInvalid(): boolean {
-        return this.form.touched && this.form.controls['email'].invalid;
+        return this.form.touched &&
+            (this.form.controls['email'].invalid ||
+                this.form.controls["website"].invalid);
+    }
+
+    public isFiscalSectionInvalid(): boolean {
+        return this.form.touched &&
+            (this.form.controls['checkDueDays'].invalid ||
+                this.form.controls["debtTerm"].invalid);
     }
 
     public isSectionInvalid(section): boolean {
-        if (section == "general")
-            return this.isGeneralSectionInvalid();
-        else if (section == "latin")
-            return this.isLatinSectionInvalid();
-        else
-            return false;
+        switch (section) {
+            case "general":
+                return this.isGeneralSectionInvalid();
+            case "latin":
+                return this.isLatinSectionInvalid();
+            case "fiscal":
+                return this.isFiscalSectionInvalid();
+            default:
+                return false;
+        }
     }
 
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
