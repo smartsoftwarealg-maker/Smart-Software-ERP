@@ -10,7 +10,7 @@ import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
 import {UserService} from "@ss/common/api-common";
-import {FormValidators} from "../../../../common/api-common/src/lib/FormValidators";
+import {FormValidators} from "@ss/common/api-common";
 
 
 @Component({

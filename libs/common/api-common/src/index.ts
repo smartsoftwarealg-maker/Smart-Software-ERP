@@ -6,3 +6,4 @@ export * from './lib/login.service';
 export * from './lib/can-activte.service';
 export * from './lib/http.service';
 export * from './lib/material.module';
+export * from './lib/FormValidators';
