@@ -9,8 +9,7 @@ import {AgentType, Bank, City, CompanyType, Country, Currency, LookupsService, P
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
-import {UserService} from "@ss/common/api-common";
-import {FormValidators} from "@ss/common/api-common";
+import {FormValidators, UserService} from "@ss/common/api-common";
 
 
 @Component({
@@ -73,7 +72,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
-            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(18)])],
+            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(14)])],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
             address: [a.address],
@@ -114,7 +113,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             blockingReason: [a.blockingReason],
             subcontractor: [a.subcontractor],
             tin: [a.tin],
-            creationTime: [a.creationTime]
+            creationTime: {value: a.creationTime, disabled: true, readonly: true}
         });
     }
 

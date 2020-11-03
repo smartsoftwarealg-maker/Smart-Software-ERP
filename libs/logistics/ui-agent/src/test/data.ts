@@ -63,3 +63,21 @@ export const UPDATED_AGENT = {
     "website": "updated",
     "creationTime": "2020-09-26 13:09:08",
 }
+
+export const ADDED_DELETED_AGENT = {
+    "id": 0,
+    "customerCode": "someCustom",
+    "isInternal": false,
+    "denomination": "someDenomination",
+    "city": 1,
+    "phone": "",
+    "currency": 146,
+    "taxPayable": false,
+    "stampPayable": false,
+    "price": 0,
+    "agentType": 0,
+    "checkDueDays": 38,
+    "recordBlocked": false,
+    "subcontractor": false,
+    "creationTime": "2020-09-26 13:09:08"
+} as Agent;
