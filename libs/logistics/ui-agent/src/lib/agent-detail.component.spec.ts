@@ -14,7 +14,7 @@ import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
 import {TestUtilsSpec} from "../test/test-utils.spec";
 import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
 import {MatSelectHarness} from "@angular/material/select/testing";
-import {DB_AGENT, UPDATED_AGENT} from "../test/data";
+import {ADDED_DELETED_AGENT, DB_AGENT, UPDATED_AGENT} from "../test/data";
 import {MatExpansionPanelHarness} from "@angular/material/expansion/testing";
 
 describe("AgentDetailComponent", () => {
@@ -147,6 +147,11 @@ describe("AgentDetailComponent", () => {
         TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "customerCode")
     });
 
+    it('should check that customerCode is less than maxLength', () => {
+        component.form = component.setupForm(DB_AGENT);
+        TestUtilsSpec.shouldBeInvalidWhenPassMaxLength(fixture, component.form, "customerCode", 14)
+    });
+
     it('should check that denomination is required', () => {
         component.form = component.setupForm(DB_AGENT);
         TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "denomination")
@@ -251,6 +256,17 @@ describe("AgentDetailComponent", () => {
     });
 
 
+    it('should add and delete an agent', done => {
+        component.entitySrv.add(ADDED_DELETED_AGENT)
+            .subscribe(x => {
+                expect(x).not.toBeNaN();
+                component.entitySrv.remove(x)
+                    .subscribe((d: { count: number }) => {
+                        expect(d.count).toEqual(1)
+                        done();
+                    })
+            });
+    })
 });
 
 

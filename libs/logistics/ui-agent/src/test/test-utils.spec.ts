@@ -18,6 +18,19 @@ export class TestUtilsSpec {
         TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
+    static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<AgentDetailComponent>,
+                                            form: FormGroup,
+                                            name: string,
+                                            maxLength: number): void {
+        let field = form.controls[name];
+
+
+        field.setValue(Array(maxLength + 1).fill("e").reduce((t, c) => t + c, ""))
+        expect(field.valid).toBeFalsy();
+        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+    }
+
+
     static shouldCheckInvalidValues(fixture, form, name, invalidValues: any, validValues: any) {
         let field = form.controls[name];
 
