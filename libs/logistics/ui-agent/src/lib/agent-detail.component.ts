@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {AgentType, Bank, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
@@ -66,6 +66,22 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             );
     }
 
+
+    finishLoading(e: Agent) {
+        super.finishLoading(e);
+        this.form.controls["recordBlocked"]
+            .valueChanges
+            .subscribe(x => {
+                if (x) {
+                    this.form.controls["blockingReason"].disable();
+                    this.form.controls["blockingReason"].setValue("");
+                } else {
+                    this.form.controls["blockingReason"].enable()
+                }
+
+            });
+    }
+
     public setupForm(a: Agent) {
         const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
@@ -110,26 +126,28 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
             activity: [a.activity],
             recordBlocked: [a.recordBlocked],
-            blockingReason: [a.blockingReason],
+            blockingReason: {value: a.blockingReason, disabled: a.recordBlocked},
             subcontractor: [a.subcontractor],
             tin: [a.tin],
-            creationTime: {value: a.creationTime, disabled: true, readonly: true}
+            creationTime: {value: a.creationTime, disabled: true}
+
         });
     }
 
+    public isTouchedAndInvalid(control: AbstractControl): boolean {
+        return control.invalid && control.touched;
+    }
+
     public isGeneralSectionInvalid(): boolean {
-        return this.form.touched &&
-            (this.form.controls['denomination'].invalid ||
-                this.form.controls['customerCode'].invalid ||
-                this.form.controls['price'].invalid ||
-                this.form.controls['currency'].invalid ||
-                this.form.controls['agentType'].invalid)
+        return this.isTouchedAndInvalid(this.form.controls['denomination']) ||
+            this.isTouchedAndInvalid(this.form.controls['customerCode']) ||
+            this.isTouchedAndInvalid(this.form.controls['price']) ||
+            this.isTouchedAndInvalid(this.form.controls['currency']) ||
+            this.isTouchedAndInvalid(this.form.controls['agentType'])
     }
 
     public isLatinSectionInvalid(): boolean {
-        return this.form.touched &&
-            (this.form.controls['email'].invalid ||
-                this.form.controls["website"].invalid);
+        return this.isTouchedAndInvalid(this.form.controls['email']) || this.isTouchedAndInvalid(this.form.controls["website"]);
     }
 
     public isFiscalSectionInvalid(): boolean {

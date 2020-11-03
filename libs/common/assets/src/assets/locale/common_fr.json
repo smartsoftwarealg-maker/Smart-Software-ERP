@@ -23,6 +23,7 @@
     "EDIT_SELECTED": "Modifier sélectionnée",
     "DEL_SELECTED": "Supprimer sélectionnée",
     "FIELD_REQUIRED": "Ce champ est requis",
+    "FIELD_MAX_LENGTH": "La longueur maximale est de $maxLen$",
     "EMAIL_INVALID": "Cette adresse email est invalide",
     "URL_INVALID": "Cette URL n'est pas valide",
     "INTEGER_INVALID": "Ce n'est pas un entier",

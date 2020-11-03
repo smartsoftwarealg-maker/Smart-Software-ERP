@@ -23,6 +23,7 @@
     "EDIT_SELECTED": "تعديل المحدد",
     "DEL_SELECTED": "حذف المحدد",
     "FIELD_REQUIRED": "هذا الحقل مطلوب",
+    "FIELD_MAX_LENGTH": "أقصى عدد مسموح به هو $maxLen$ حرفا",
     "EMAIL_INVALID": "عنوان البريد الذي أدخلته خاطئ",
     "URL_INVALID": "عنوان الموقع الذي أدخلته خاطئ",
     "INTEGER_INVALID": "القيمة التي أدخلتها ليست عددا صحيحا",

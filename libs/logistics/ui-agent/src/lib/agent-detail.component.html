@@ -25,8 +25,10 @@
                 <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
                 <input matInput formControlName="customerCode" type="text" required>
                 <mat-error
-                    *ngIf="form.controls['customerCode'].invalid" translate>COMMON_FIELD_REQUIRED
+                    *ngIf="form.controls['customerCode'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
+                <mat-error
+                    *ngIf="form.controls['customerCode'].hasError('maxlength')" [translate]="{maxLen: 14}">COMMON_FIELD_MAX_LENGTH</mat-error>
             </mat-form-field>
 
             <mat-form-field id="agentType" class="default-50 sm-100">
@@ -101,8 +103,7 @@
             <mat-form-field id="email" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EMAIL</mat-label>
                 <input matInput formControlName="email" type="email">
-                <mat-error
-                    *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
                 </mat-error>
             </mat-form-field>
 
@@ -140,12 +141,12 @@
 
 
             <div class="default-50 sm-100">
-                <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
             </div>
 
             <mat-form-field  class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
-                <input matInput formControlName="blockingReason" type="text">
+                <input matInput formControlName="blockingReason"  type="text">
             </mat-form-field>
 
             <div class="default-50 sm-100">

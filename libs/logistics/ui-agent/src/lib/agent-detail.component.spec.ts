@@ -16,6 +16,7 @@ import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
 import {MatSelectHarness} from "@angular/material/select/testing";
 import {ADDED_DELETED_AGENT, DB_AGENT, UPDATED_AGENT} from "../test/data";
 import {MatExpansionPanelHarness} from "@angular/material/expansion/testing";
+import {MatInputHarness} from "@angular/material/input/testing";
 
 describe("AgentDetailComponent", () => {
 
@@ -207,23 +208,24 @@ describe("AgentDetailComponent", () => {
         component.preload().subscribe(async () => {
             component.form = component.setupForm(DB_AGENT);
             fixture.detectChanges()
-            const formTemplate = fixture.nativeElement.querySelector("form");
 
-            formTemplate
-                .querySelectorAll("[type='text'],[type='email']")
-                .forEach((x: HTMLInputElement) => {
-                    x.value = "updated";
-                    x.dispatchEvent(new Event('input'));
-                })
+            const inputs = await loader.getAllHarnesses(MatInputHarness)
 
-            formTemplate
-                .querySelectorAll("[type='number']")
-                .forEach((x: HTMLInputElement) => {
-                    x.value = "-999";
-                    x.dispatchEvent(new Event('input'));
-                })
+            for (const input of inputs) {
+                const type: string = await input.getType();
+                const disabled = await input.isDisabled();
+                const host = await input.host();
+                const name = await host.getAttribute("formControlName");
 
-            fixture.detectChanges()
+                if (!disabled && (type === "text" || type === "email")) {
+                    await input.setValue("updated");
+                } else if (type === "number") {
+                    await input.setValue("999")
+                } else {
+                    await input.setValue(UPDATED_AGENT[name])
+                }
+
+            }
 
             const checkboxHarnesses = await loader.getAllHarnesses(MatCheckboxHarness);
             for (const x of checkboxHarnesses) {
@@ -244,6 +246,7 @@ describe("AgentDetailComponent", () => {
                 .subscribe(updated => {
                     component.entitySrv.get(component.form.value.id)
                         .subscribe(loaded => {
+                            delete loaded["creationTime"];
                             expect(loaded).toStrictEqual(component.form.value)
                             component.entitySrv.update(DB_AGENT)
                                 .subscribe(d => {
@@ -268,56 +271,4 @@ describe("AgentDetailComponent", () => {
             });
     })
 });
-
-
-/*
-
-
-
-
-
-
-
-       function invalidValueFieldTest(name, invalidValue: any, validValue: any) {
-           let field = component.form.controls[name];
-           // valid when empty
-           expect(field.valid).toBeTruthy();
-
-           if (invalidValue instanceof Array) {
-               invalidValue.forEach(x => {
-                   field.setValue(x);
-                   expect(field.valid).toBeFalsy();
-                   displayErrorMessageUnderFieldTest(name);
-               })
-           } else {
-               field.setValue(invalidValue);
-               expect(field.valid).toBeFalsy();
-               displayErrorMessageUnderFieldTest(name);
-           }
-
-
-           // a valid email
-           if (validValue instanceof Array) {
-               validValue.forEach(x => {
-                   field.setValue(x)
-                   expect(field.valid).toBeTruthy();
-               })
-           }
-
-       }
-
-       function displayErrorMessageUnderFieldTest(name) {
-           component.form.markAllAsTouched()
-           fixture.detectChanges()
-
-           let formField = formTemplate.querySelector(`#${name}`);
-           expect(formField.querySelector("mat-error")).not.toBeNull()
-
-           let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
-               .classList.contains("b-warn-expansion-panel");
-
-           expect(hasHeaderWarnClass).toBeTruthy();
-
-       }
-   */
 

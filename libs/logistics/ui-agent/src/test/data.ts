@@ -30,7 +30,7 @@ export const UPDATED_AGENT = {
     "bankAccount": "updated",
     "blockingReason": "updated",
     "capital": "updated",
-    "checkDueDays": -999,
+    "checkDueDays": 999,
     "city": 1,
     "commRegister": "updated",
     "companyType": 18,
@@ -38,8 +38,8 @@ export const UPDATED_AGENT = {
     "country": 2,
     "currency": 145,
     "customerCode": "updated",
-    "debtLimit": -999,
-    "debtTerm": -999,
+    "debtLimit": 999,
+    "debtTerm": 999,
     "denomination": "updated",
     "denominationAr": "updated",
     "email": "updated",
@@ -61,7 +61,9 @@ export const UPDATED_AGENT = {
     "taxPayable": false,
     "tin": "updated",
     "website": "updated",
+/*
     "creationTime": "2020-09-26 13:09:08",
+*/
 }
 
 export const ADDED_DELETED_AGENT = {
