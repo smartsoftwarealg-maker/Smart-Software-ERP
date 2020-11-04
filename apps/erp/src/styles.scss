@@ -134,6 +134,7 @@ $ss-green: (
     }
     .mat-header-cell {
         color: mat-contrast($primary, 100);
+        font-weight: bolder;
     }
 
     // defaults
