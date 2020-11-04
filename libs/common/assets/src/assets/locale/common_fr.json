@@ -57,5 +57,18 @@
     "MAX_FILE_SIZE_1MB": "Taille maximale du fichier 1Mo",
     "NOT_AN_IMAGE": "Ce n'est pas un fichier image valide",
 
-    "FORM_NOT_VALID": "Le formulaire n'est pas valide"
+    "FORM_NOT_VALID": "Le formulaire n'est pas valide",
+
+    "VAT": "TVA",
+    "MARK": "Marque",
+    "MARKS": "Marques",
+    "EDIT_MARK": "Modifier marque",
+    "UNITS": "Unités",
+    "EDIT_UNIT": "Modifier unité",
+    "CLASSES": "Classes",
+    "EDIT_CLASS": "Modifier classe",
+    "SUBCLASSES": "Sous-classes",
+    "EDIT_SUBCLASS": "Modifier Sous-class",
+    "STORE_NAMES": "Magasins",
+    "EDIT_STORE_NAME": "Modifier nom magasin"
 }

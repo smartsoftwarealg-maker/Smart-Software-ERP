@@ -2,25 +2,10 @@
     "REFERENCE": "مرجع",
     "DESCRIPTION": "الوصف",
     "PRICE": "السعر",
-    "VAT": "الضريبة",
-    "MARK": "النوع",
     "ACCOUNTNO": "رقم الحساب",
     "ARTICLES": "السلع",
     "EDIT_ARTICLE": "تعديل سلعة",
-    "MARKS": "العلامات",
-    "EDIT_MARK": "تعديل علامة",
     "INVENTORY": "المخزون",
     "PERCENTAGE": "النسبة",
-    "CLASSES": "الطبقات",
-    "EDIT_CLASS": "تعديل طبقة",
-    "SUBCLASSES": "الطبقات الفرعية",
-    "EDIT_SUBCLASS": "تعديل طبقة فرعية",
-    "STORE_NAMES": "المخازن",
-    "EDIT_STORE_NAME": "تعديل مخزن",
-    "UNITS": "الوحدات",
-    "EDIT_UNIT": "تعديل وحدة",
-    "FILE": "الملف",
-    "AGENT": "العملاء",
-    "EDIT_AGENT": "تعديل العميل"
-
+    "FILE": "الملف"
 }

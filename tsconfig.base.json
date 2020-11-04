@@ -48,7 +48,11 @@
       "@ss/logistics/assets": ["libs/logistics/assets/src/index.ts"],
       "@ss/common/ui-confirmation-dialog": [
         "libs/common/ui-confirmation-dialog/src/index.ts"
-      ]
+      ],
+      "@ss/common/api-bank": ["libs/common/api-bank/src/index.ts"],
+      "@ss/common/api-price": ["libs/common/api-price/src/index.ts"],
+      "@ss/common/ui-price": ["libs/common/ui-price/src/index.ts"],
+      "@ss/common/ui-bank": ["libs/common/ui-bank/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

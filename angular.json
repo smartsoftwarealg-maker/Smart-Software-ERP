@@ -923,6 +923,134 @@
           "style": "scss"
         }
       }
+    },
+    "common-api-bank": {
+      "projectType": "library",
+      "root": "libs/common/api-bank",
+      "sourceRoot": "libs/common/api-bank/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/api-bank/tsconfig.lib.json",
+              "libs/common/api-bank/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/api-bank/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/api-bank/jest.config.js",
+            "tsConfig": "libs/common/api-bank/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/api-bank/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "common-api-price": {
+      "projectType": "library",
+      "root": "libs/common/api-price",
+      "sourceRoot": "libs/common/api-price/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/api-price/tsconfig.lib.json",
+              "libs/common/api-price/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/api-price/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/api-price/jest.config.js",
+            "tsConfig": "libs/common/api-price/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/api-price/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "common-ui-price": {
+      "projectType": "library",
+      "root": "libs/common/ui-price",
+      "sourceRoot": "libs/common/ui-price/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui-price/tsconfig.lib.json",
+              "libs/common/ui-price/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui-price/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui-price/jest.config.js",
+            "tsConfig": "libs/common/ui-price/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/ui-price/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "common-ui-bank": {
+      "projectType": "library",
+      "root": "libs/common/ui-bank",
+      "sourceRoot": "libs/common/ui-bank/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui-bank/tsconfig.lib.json",
+              "libs/common/ui-bank/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/ui-bank/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/common/ui-bank/jest.config.js",
+            "tsConfig": "libs/common/ui-bank/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/common/ui-bank/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

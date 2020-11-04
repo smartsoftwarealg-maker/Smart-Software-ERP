@@ -5,7 +5,18 @@ import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {AgentType, Bank, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
+import {
+    Activity,
+    AgentType,
+    Bank,
+    City,
+    CompanyType,
+    Country,
+    Currency,
+    LookupsService,
+    PayMode,
+    Price
+} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
@@ -26,8 +37,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     countries: Country[];
     currencies: Currency[];
     payModes: PayMode[];
-    activities: PayMode[];
-    prices: PayMode[];
+    activities: Activity[];
+    prices: Price[];
     banks: Bank[];
 
 
@@ -40,7 +51,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public confirmationSrv: ConfirmationDialogService,
         public centerService: UserService,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT');
+        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
     }
 
     public preload(): Observable<any> {

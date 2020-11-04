@@ -104,6 +104,18 @@
     },
     "common-ui-confirmation-dialog": {
       "tags": []
+    },
+    "common-api-bank": {
+      "tags": []
+    },
+    "common-api-price": {
+      "tags": []
+    },
+    "common-ui-price": {
+      "tags": []
+    },
+    "common-ui-bank": {
+      "tags": []
     }
   }
 }

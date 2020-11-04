@@ -1,0 +1,55 @@
+import {Component} from '@angular/core';
+import {AgentType, AgentTypeService} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+
+@Component({
+    selector: 'ss-agent-type-list',
+    templateUrl: './base-templates/list-template.html',
+    styleUrls: ['./base-templates/list-template.scss']
+})
+export class AgentTypeListComponent extends BaseEntityListComponent<AgentType> {
+
+    displayedColumns = ['description'];
+
+    constructor(
+        public agentTypeSrv: AgentTypeService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
+        public router: Router) {
+        super(agentTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_AGENT_TYPES');
+    }
+
+}
+
+
+@Component({
+    selector: 'ss-agent-type-detail',
+    templateUrl: './base-templates/detail-template.html',
+    styleUrls: ['./base-templates/detail-template.scss']
+})
+export class AgentTypeDetailComponent extends BaseEntityDetailComponent<AgentType> {
+
+    constructor(
+        public agentTypeServ: AgentTypeService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
+        public formBuilder: FormBuilder) {
+        super(agentTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_AGENT_TYPE');
+    }
+
+    public setupForm(e: AgentType): FormGroup {
+        return this.formBuilder.group({
+            id: e.id,
+            description: [e.description, Validators.required]
+        });
+    }
+}

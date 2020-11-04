@@ -20,32 +20,32 @@ export const payrollNavTree: SideNavNode = {
             icon: 'fas fa-clipboard-list',
             children: [
                 {
-                    name: 'PAYROLL_POSTS',
+                    name: 'COMMON_POSTS',
                     icon: 'fas fa-chair-office',
                     route: ABS_PAYROLL_POSTS_URL
                 },
                 {
-                    name: 'PAYROLL_DIPLOMAS',
+                    name: 'COMMON_DIPLOMAS',
                     icon: 'fas fa-file-certificate',
                     route: ABS_PAYROLL_DIPLOMAS_URL
                 },
                 {
-                    name: 'PAYROLL_EDUCATION_LEVELS',
+                    name: 'COMMON_EDUCATION_LEVELS',
                     icon: 'fas fa-graduation-cap',
                     route: ABS_PAYROLL_EDUCATION_LEVELS_URL
                 },
                 {
-                    name: 'PAYROLL_MARITAL_STATUS',
+                    name: 'COMMON_MARITAL_STATUS',
                     icon: 'fas fa-rings-wedding',
                     route: ABS_PAYROLL_MARITAL_STATUS_URL
                 },
                 {
-                    name: 'PAYROLL_CATEGORIES',
+                    name: 'COMMON_CATEGORIES',
                     icon: 'fas fa-shapes',
                     route: ABS_PAYROLL_CATEGORIES_URL
                 },
                 {
-                    name: 'PAYROLL_SERVICES',
+                    name: 'COMMON_SERVICES',
                     icon: 'fas fa-shapes',
                     route: ABS_PAYROLL_SERVICES_URL
                 },
@@ -55,7 +55,7 @@ export const payrollNavTree: SideNavNode = {
                     route: ABS_PAYROLL_WILAYAS_URL
                 },
                 {
-                    name: 'PAYROLL_NATIONALITIES',
+                    name: 'COMMON_NATIONALITIES',
                     icon: 'fas fa-flag',
                     route: ABS_PAYROLL_NATIONALITIES_URL
                 }
