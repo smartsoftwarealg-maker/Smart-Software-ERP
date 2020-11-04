@@ -49,5 +49,7 @@
     "ARABIC": "Arabic",
     "FISCAL": "Fiscal",
     "STAMP": "Stamp",
-    "CREATION_TIME": "Creation time"
+    "CREATION_TIME": "Creation time",
+    "AGENT": "Agent",
+    "EDIT_AGENT": "Edit agent"
 }

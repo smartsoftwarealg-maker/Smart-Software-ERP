@@ -49,5 +49,7 @@
     "ARABIC": "Arabe",
     "FISCAL": "Fiscal",
     "STAMP": "Timbre",
-    "CREATION_TIME": "Temps de creation"
+    "CREATION_TIME": "Temps de creation",
+    "AGENT": "Agent",
+    "EDIT_AGENT": "Modifier l'agent"
 }

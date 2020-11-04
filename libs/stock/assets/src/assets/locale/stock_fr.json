@@ -2,25 +2,10 @@
     "REFERENCE": "Référence",
     "DESCRIPTION": "Description",
     "PRICE": "Prix",
-    "VAT": "TVA",
-    "MARK": "Marque",
     "ACCOUNTNO": "Account No.",
     "ARTICLES": "Articles",
     "EDIT_ARTICLE": "Modifier l'article",
-    "MARKS": "Marques",
-    "EDIT_MARK": "Modifier marque",
     "INVENTORY": "Inventaire",
     "PERCENTAGE": "Pourcentage",
-    "CLASSES": "Classes",
-    "EDIT_CLASS": "Modifier classe",
-    "SUBCLASSES": "Sous-classes",
-    "EDIT_SUBCLASS": "Modifier Sous-class",
-    "STORE_NAMES": "Magasins",
-    "EDIT_STORE_NAME": "Modifier nom magasin",
-    "UNITS": "Unités",
-    "EDIT_UNIT": "Modifier unité",
-    "FILE": "Dossier",
-    "AGENT": "Agent",
-    "EDIT_AGENT": "Modifier l'agent"
-
+    "FILE": "Dossier"
 }

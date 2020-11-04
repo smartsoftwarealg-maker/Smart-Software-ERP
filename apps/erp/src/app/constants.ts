@@ -8,17 +8,25 @@ export const STOCK_APP_URL = 'stock';
 export const PAYROLL_APP_URL = 'payroll';
 
 // common
-export const COMMON_VAT_URL = 'vat';
+export const STOCK_VAT_URL = 'vat';
 export const COMMON_WILAYAS_URL = 'wilayas';
 
 // Stock
 export const STOCK_ARTICLES_URL = 'articles';
 export const STOCK_AGENT_URL = 'agents';
+
 export const STOCK_MARKS_URL = 'marks';
 export const STOCK_CLASSES_URL = 'classes';
 export const STOCK_SUBCLASSES_URL = 'subclasses';
 export const STOCK_STORE_NAMES_URL = 'storeNames';
 export const STOCK_UNITS_URL = 'units';
+export const STOCK_AGENT_TYPE_URL = 'agentTypes';
+export const STOCK_COMPANY_TYPE_URL = 'companyTypes';
+export const STOCK_ACTIVITY_URL = 'activities';
+export const STOCK_CURRENCY_URL = 'currencies';
+export const STOCK_CITY_URL = 'cities';
+export const STOCK_COUNTRY_URL = 'countries';
+export const STOCK_PAY_MODE_URL = 'payModes';
 
 // Payroll
 export const PAYROLL_CATEGORIES_URL = 'categories';
@@ -40,9 +48,17 @@ export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUP
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_URL].join('/');
 export const ABS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_URL].join('/');
-export const ABS_STOCK_VAT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, COMMON_VAT_URL].join('/');
+export const ABS_STOCK_VAT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_VAT_URL].join('/');
 export const ABS_STOCK_STORE_NAMES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_STORE_NAMES_URL].join('/');
 export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_UNITS_URL].join('/');
+export const ABS_STOCK_AGENT_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_AGENT_TYPE_URL].join('/');
+export const ABS_STOCK_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COMPANY_TYPE_URL].join('/');
+export const ABS_STOCK_CITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CITY_URL].join('/');
+export const ABS_STOCK_COUNTRY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COUNTRY_URL].join('/');
+export const ABS_STOCK_ACTIVITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_ACTIVITY_URL].join('/');
+export const ABS_STOCK_PAY_MODE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_PAY_MODE_URL].join('/');
+export const ABS_STOCK_CURRENCY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CURRENCY_URL].join('/');
+
 
 // payroll
 export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');
