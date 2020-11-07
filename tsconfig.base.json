@@ -46,13 +46,18 @@
       "@ss/logistics/api-agent": ["libs/logistics/api-agent/src/index.ts"],
       "@ss/logistics/ui-agent": ["libs/logistics/ui-agent/src/index.ts"],
       "@ss/logistics/assets": ["libs/logistics/assets/src/index.ts"],
+      "@ss/logistics/api-agent-price": ["libs/logistics/api-agent-price/src/index.ts"],
+      "@ss/logistics/ui-agent-price": ["libs/logistics/ui-agent-price/src/index.ts"],
       "@ss/common/ui-confirmation-dialog": [
         "libs/common/ui-confirmation-dialog/src/index.ts"
       ],
-      "@ss/common/api-bank": ["libs/common/api-bank/src/index.ts"],
-      "@ss/common/api-price": ["libs/common/api-price/src/index.ts"],
-      "@ss/common/ui-price": ["libs/common/ui-price/src/index.ts"],
-      "@ss/common/ui-bank": ["libs/common/ui-bank/src/index.ts"]
+      "@ss/administration/api-bank": [
+        "libs/administration/api-bank/src/index.ts"
+      ],
+      "@ss/administration/ui-bank": [
+        "libs/administration/ui-bank/src/index.ts"
+      ],
+      "@ss/administration/assets": ["libs/administration/assets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,5 +1,5 @@
 import {
-    ABS_STOCK_ACTIVITY,
+    ABS_STOCK_ACTIVITY, ABS_STOCK_AGENT_PRICE_URL,
     ABS_STOCK_AGENT_TYPE,
     ABS_STOCK_AGENT_URL,
     ABS_STOCK_ARTICLES_URL,
@@ -30,6 +30,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'LOGISTICS_AGENT',
                     icon: 'fas fa-user',
                     route: ABS_STOCK_AGENT_URL
+                },
+                {
+                    name: 'LOGISTICS_AGENT_PRICE',
+                    icon: 'fas fa-dollar-sign',
+                    route: ABS_STOCK_AGENT_PRICE_URL
                 }
             ]
         },

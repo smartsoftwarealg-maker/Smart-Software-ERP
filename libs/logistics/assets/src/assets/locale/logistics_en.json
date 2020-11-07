@@ -51,5 +51,9 @@
     "STAMP": "Stamp",
     "CREATION_TIME": "Creation time",
     "AGENT": "Agent",
-    "EDIT_AGENT": "Edit agent"
+    "EDIT_AGENT": "Edit agent",
+    "AGENT_PRICE": "Agent price",
+    "EDIT_AGENT_PRICE": "Edit agent price",
+    "DESCRIPTION_AR": "Description ar",
+    "DESCRIPTION": "Description"
 }

@@ -4,6 +4,7 @@ import {MAIN_PAGE_URL} from '@ss/common/api-common';
 export const LOOKUPS_URL = 'lookups';
 
 // apps
+export const ADMINISTRATION_APP_URL = 'administration';
 export const STOCK_APP_URL = 'stock';
 export const PAYROLL_APP_URL = 'payroll';
 
@@ -11,9 +12,14 @@ export const PAYROLL_APP_URL = 'payroll';
 export const STOCK_VAT_URL = 'vat';
 export const COMMON_WILAYAS_URL = 'wilayas';
 
+// Administration
+export const ADMINISTRATION_BANK_URL = 'banks';
+
+
 // Stock
 export const STOCK_ARTICLES_URL = 'articles';
 export const STOCK_AGENT_URL = 'agents';
+export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 
 export const STOCK_MARKS_URL = 'marks';
 export const STOCK_CLASSES_URL = 'classes';
@@ -42,12 +48,17 @@ export const PAYROLL_PERSONS_URL = 'persons';
 // # FULL URLS #
 // #############
 
+// administration
+export const ABS_ADMINISTRATION_BANK_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_BANK_URL].join('/');
+
+
 // stock
 export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_MARKS_URL].join('/');
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_URL].join('/');
 export const ABS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_URL].join('/');
+export const ABS_STOCK_AGENT_PRICE_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_PRICE_URL].join('/');
 export const ABS_STOCK_VAT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_VAT_URL].join('/');
 export const ABS_STOCK_STORE_NAMES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_STORE_NAMES_URL].join('/');
 export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_UNITS_URL].join('/');

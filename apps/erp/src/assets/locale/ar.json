@@ -7,5 +7,6 @@
     "STOCK":"المخزون",
     "HOTEL":"الفندق",
     "MEDIC": "العيادة",
-    "SEARCH_APP": "الوصول السريع"
+    "SEARCH_APP": "الوصول السريع",
+    "ADMINISTRATION": "الإدارة"
 }

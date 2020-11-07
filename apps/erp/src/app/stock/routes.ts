@@ -1,6 +1,7 @@
 import {
     LOOKUPS_URL,
     STOCK_ACTIVITY_URL,
+    STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_TYPE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
@@ -48,6 +49,7 @@ import {
     VatListComponent,
 } from '@ss/common/ui-lookup';
 import {AgentDetailComponent, AgentListComponent} from "@ss/logistics/ui-agent";
+import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
 
 
 export const mainRoutes: Routes = [
@@ -79,6 +81,23 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: AgentDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_AGENT_PRICE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentPriceListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: AgentPriceDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

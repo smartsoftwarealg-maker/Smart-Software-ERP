@@ -51,5 +51,9 @@
     "STAMP": "الطابع الضريبي",
     "CREATION_TIME": "تاريخ الإنشاء",
     "AGENT": "العملاء",
-    "EDIT_AGENT": "تعديل العميل"
+    "EDIT_AGENT": "تعديل العميل",
+    "AGENT_PRICE": "أسعار العميل",
+    "EDIT_AGENT_PRICE": "تعديل أسعار العميل",
+    "DESCRIPTION_AR": "الوصف باللغة العربية",
+    "DESCRIPTION": "الوصف"
 }

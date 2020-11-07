@@ -7,20 +7,20 @@ import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {
     Activity,
+    AgentPrice,
     AgentType,
-    Bank,
     City,
     CompanyType,
     Country,
     Currency,
     LookupsService,
-    PayMode,
-    Price
+    PayMode
 } from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
 import {FormValidators, UserService} from "@ss/common/api-common";
+import {Bank} from "@ss/administration/api-bank";
 
 
 @Component({
@@ -38,7 +38,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     currencies: Currency[];
     payModes: PayMode[];
     activities: Activity[];
-    prices: Price[];
+    prices: AgentPrice[];
     banks: Bank[];
 
 

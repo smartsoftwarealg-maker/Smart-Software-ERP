@@ -460,6 +460,11 @@
                 "glob": "**/*",
                 "input": "libs/logistics/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/administration/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/erp/src/styles.scss"],
@@ -924,29 +929,32 @@
         }
       }
     },
-    "common-api-bank": {
+    "administration-api-bank": {
       "projectType": "library",
-      "root": "libs/common/api-bank",
-      "sourceRoot": "libs/common/api-bank/src",
+      "root": "libs/administration/api-bank",
+      "sourceRoot": "libs/administration/api-bank/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/common/api-bank/tsconfig.lib.json",
-              "libs/common/api-bank/tsconfig.spec.json"
+              "libs/administration/api-bank/tsconfig.lib.json",
+              "libs/administration/api-bank/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/api-bank/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/api-bank/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/common/api-bank/jest.config.js",
-            "tsConfig": "libs/common/api-bank/tsconfig.spec.json",
+            "jestConfig": "libs/administration/api-bank/jest.config.js",
+            "tsConfig": "libs/administration/api-bank/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/common/api-bank/src/test-setup.ts"
+            "setupFile": "libs/administration/api-bank/src/test-setup.ts"
           }
         }
       },
@@ -956,29 +964,29 @@
         }
       }
     },
-    "common-api-price": {
+    "logistics-api-agent-price": {
       "projectType": "library",
-      "root": "libs/common/api-price",
-      "sourceRoot": "libs/common/api-price/src",
+      "root": "libs/logistics/api-agent-price",
+      "sourceRoot": "libs/logistics/api-agent-price/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/common/api-price/tsconfig.lib.json",
-              "libs/common/api-price/tsconfig.spec.json"
+              "libs/logistics/api-agent-price/tsconfig.lib.json",
+              "libs/logistics/api-agent-price/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/api-price/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-agent-price/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/common/api-price/jest.config.js",
-            "tsConfig": "libs/common/api-price/tsconfig.spec.json",
+            "jestConfig": "libs/logistics/api-agent-price/jest.config.js",
+            "tsConfig": "libs/logistics/api-agent-price/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/common/api-price/src/test-setup.ts"
+            "setupFile": "libs/logistics/api-agent-price/src/test-setup.ts"
           }
         }
       },
@@ -988,29 +996,29 @@
         }
       }
     },
-    "common-ui-price": {
+    "logistics-ui-agent-price": {
       "projectType": "library",
-      "root": "libs/common/ui-price",
-      "sourceRoot": "libs/common/ui-price/src",
+      "root": "libs/logistics/ui-agent-price",
+      "sourceRoot": "libs/logistics/ui-agent-price/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/common/ui-price/tsconfig.lib.json",
-              "libs/common/ui-price/tsconfig.spec.json"
+              "libs/logistics/ui-agent-price/tsconfig.lib.json",
+              "libs/logistics/ui-agent-price/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/ui-price/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-agent-price/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/common/ui-price/jest.config.js",
-            "tsConfig": "libs/common/ui-price/tsconfig.spec.json",
+            "jestConfig": "libs/logistics/ui-agent-price/jest.config.js",
+            "tsConfig": "libs/logistics/ui-agent-price/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/common/ui-price/src/test-setup.ts"
+            "setupFile": "libs/logistics/ui-agent-price/src/test-setup.ts"
           }
         }
       },
@@ -1020,29 +1028,67 @@
         }
       }
     },
-    "common-ui-bank": {
+    "administration-ui-bank": {
       "projectType": "library",
-      "root": "libs/common/ui-bank",
-      "sourceRoot": "libs/common/ui-bank/src",
+      "root": "libs/administration/ui-bank",
+      "sourceRoot": "libs/administration/ui-bank/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/common/ui-bank/tsconfig.lib.json",
-              "libs/common/ui-bank/tsconfig.spec.json"
+              "libs/administration/ui-bank/tsconfig.lib.json",
+              "libs/administration/ui-bank/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/ui-bank/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/ui-bank/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/common/ui-bank/jest.config.js",
-            "tsConfig": "libs/common/ui-bank/tsconfig.spec.json",
+            "jestConfig": "libs/administration/ui-bank/jest.config.js",
+            "tsConfig": "libs/administration/ui-bank/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/common/ui-bank/src/test-setup.ts"
+            "setupFile": "libs/administration/ui-bank/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "administration-assets": {
+      "projectType": "library",
+      "root": "libs/administration/assets",
+      "sourceRoot": "libs/administration/assets/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/administration/assets/tsconfig.lib.json",
+              "libs/administration/assets/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/assets/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/administration/assets/jest.config.js",
+            "tsConfig": "libs/administration/assets/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/administration/assets/src/test-setup.ts"
           }
         }
       },

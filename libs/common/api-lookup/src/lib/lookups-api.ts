@@ -21,8 +21,8 @@ export const CURRENCY_URL = "/lookups/currencies";
 export const COMPANY_TYPE_URL = "/lookups/companies";
 export const PAY_MODE_URL = "/lookups/paymodes";
 export const ACTIVITY_URL = "/lookups/activities";
-export const AGENT_PRICES_URL = `/agentprices`;
-export const BANKS_URL = `/banks`;
+export const BANKS_URL = '/banks';
+export const AGENT_PRICES_URL = '/inventory/agentprices';
 
 
 export interface Wilaya {
@@ -143,13 +143,16 @@ export interface Activity {
     description: string;
 }
 
-export interface Price {
-    id: number;
-    description: string;
-}
-
 export interface Bank {
     id: number;
     description: string;
 }
+
+export interface AgentPrice {
+    id: number;
+    centerId: number;
+    description: string;
+    descriptionAr: string;
+}
+
 
