@@ -1,0 +1,96 @@
+
+<div class="tree-container" *ngIf="treeControl">
+    <mat-tree [dataSource]="treeDataSource" [treeControl]="treeControl">
+
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <!--loading-->
+            <mat-spinner class="mat-spinner-ltr" *ngIf="node.isLoading"></mat-spinner>
+
+            <!--displaying-->
+            <cdk-virtual-scroll-viewport *ngIf="!node.isLoading && node.centers.length > 0"
+                                         class="centers-container-viewport"
+                                         itemSize="50"
+                                         (scrolledIndexChange)="onScrollChange($event,node)">
+                <mat-nav-list dense>
+                    <mat-list-item *cdkVirtualFor="let center of node.centers" class="center-item selectable"
+                                   (click)="select(center,'center')"
+                                   [class.selected]="center == selectedCenter">
+                        <i matListIcon
+                           class="{{langSrv.rtl ? 'fas fa-arrow-circle-left' : 'fas fa-arrow-circle-right'}}"></i>
+                        <h4 matLine> {{center.description}} </h4>
+                    </mat-list-item>
+                </mat-nav-list>
+            </cdk-virtual-scroll-viewport>
+
+            <!--no data-->
+            <p class="no-data mat-small" translate *ngIf="!node.isLoading && node.centers.length === 0">
+                <i class="fas fa-exclamation-circle"></i>
+                ADMINISTRATION_NO_RESULT</p>
+
+        </mat-tree-node>
+
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+                       (click)="select(node.company,'company')"
+                       class="selectable"
+                       [class.selected]="node.company == selectedCompany">
+
+            <button mat-icon-button [attr.aria-label]="'Toggle ' + node.company.id" matTreeNodeToggle>
+                <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+            </button>
+
+            <div class="node-text">
+                {{node.company.description}}
+            </div>
+        </mat-tree-node>
+    </mat-tree>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="companyPagination"></ss-pagination>
+    </div>
+</div>
+<div class="details-card">
+    <mat-card [class.b-primary]="selectedCompany!==null">
+        <mat-card-header>
+            <mat-card-title translate>
+                ADMINISTRATION_COMPANY
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <tr>
+                <th translate>ADMINISTRATION_DESCRIPTION</th>
+                <td class="spacer"> :</td>
+                <td>{{selectedCompany ? selectedCompany.description : ''}}</td>
+            </tr>
+            <tr>
+                <th translate>ADMINISTRATION_ADDRESS</th>
+                <td class="spacer"> :</td>
+                <td>{{selectedCompany ? selectedCompany.address : ''}}</td>
+            </tr>
+        </mat-card-content>
+    </mat-card>
+    <mat-card [class.b-primary]="selectedCenter!==null">
+        <mat-card-header>
+            <mat-card-title translate>
+                ADMINISTRATION_CENTER
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <th translate>ADMINISTRATION_DESCRIPTION</th>
+                    <td class="spacer"> :</td>
+                    <td>{{selectedCenter ? selectedCenter.description : ''}}</td>
+                </tr>
+                <tr>
+                    <th translate>ADMINISTRATION_ABBREVIATION</th>
+                    <td class="spacer"> :</td>
+                    <td>{{selectedCenter ? selectedCenter.abbreviation : ''}}</td>
+                </tr>
+                <tr>
+                    <th translate>ADMINISTRATION_ADDRESS</th>
+                    <td class="spacer"> :</td>
+                    <td>{{selectedCenter ? selectedCenter.address : ''}}</td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

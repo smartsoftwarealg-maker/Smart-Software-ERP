@@ -64,11 +64,11 @@
     "erp": {
       "tags": [],
       "implicitDependencies": [
-          "common-assets",
-          "stock-assets",
-          "payroll-assets",
-          "logistics-assets",
-          "administration-assets"
+        "common-assets",
+        "stock-assets",
+        "payroll-assets",
+        "logistics-assets",
+        "administration-assets"
       ]
     },
     "common-api-lookup": {
@@ -92,7 +92,7 @@
     "common-ui-image-input": {
       "tags": []
     },
-    "common-api-center": {
+    "administration-api-center": {
       "tags": []
     },
     "logistics-api-agent": {
@@ -104,23 +104,29 @@
     "logistics-assets": {
       "tags": []
     },
-      "logistics-api-agent-price": {
-          "tags": []
-      },
-      "logistics-ui-agent-price": {
-          "tags": []
-      },
-      "common-ui-confirmation-dialog": {
-          "tags": []
-      },
-      "administration-api-bank": {
-          "tags": []
-      },
-      "administration-ui-bank": {
-          "tags": []
-      },
-      "administration-assets": {
-          "tags": []
-      }
+    "logistics-api-agent-price": {
+      "tags": []
+    },
+    "logistics-ui-agent-price": {
+      "tags": []
+    },
+    "common-ui-confirmation-dialog": {
+      "tags": []
+    },
+    "administration-api-bank": {
+      "tags": []
+    },
+    "administration-ui-bank": {
+      "tags": []
+    },
+    "administration-assets": {
+      "tags": []
+    },
+    "administration-api-company": {
+      "tags": []
+    },
+    "administration-ui-company-center": {
+      "tags": []
+    }
   }
 }

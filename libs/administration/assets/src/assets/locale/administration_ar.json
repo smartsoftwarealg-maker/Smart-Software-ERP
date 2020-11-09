@@ -2,5 +2,14 @@
     "BANK": "ألبنك",
     "EDIT_BANK": "تعديل بنك",
     "CODE": "رمز البنك",
-    "DESCRIPTION": "اسم البنك"
+    "DESCRIPTION": "اسم البنك",
+    "COMPANY": "الشركة",
+    "CENTER": "المركز",
+    "NO_RESULT": "لم يتم العثور على أي نتيجة",
+    "ADDRESS": "العنوان",
+    "ABBREVIATION": "الإختصار",
+    "ADD_COMPANY": "إضافة شركة",
+    "ADD_CENTER": "إضافة مركز",
+    "EDIT_COMPANY": "تعديل شركة",
+    "EDIT_CENTER": "تعديل مركز"
 }

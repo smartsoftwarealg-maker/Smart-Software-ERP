@@ -13,6 +13,8 @@ export const STOCK_VAT_URL = 'vat';
 export const COMMON_WILAYAS_URL = 'wilayas';
 
 // Administration
+export const ADMINISTRATION_COMPANY_URL = 'companies';
+export const ADMINISTRATION_CENTER_URL = 'centers';
 export const ADMINISTRATION_BANK_URL = 'banks';
 
 
@@ -49,6 +51,8 @@ export const PAYROLL_PERSONS_URL = 'persons';
 // #############
 
 // administration
+export const ABS_ADMINISTRATION_COMPANY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_COMPANY_URL].join('/');
+export const ABS_ADMINISTRATION_CENTER_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_CENTER_URL].join('/');
 export const ABS_ADMINISTRATION_BANK_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_BANK_URL].join('/');
 
 

@@ -2,5 +2,14 @@
     "BANK": "Bank",
     "EDIT_BANK": "Edit bank",
     "CODE": "Code",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "COMPANY": "Company",
+    "CENTER": "Center",
+    "NO_RESULT": "No results found",
+    "ADDRESS": "Address",
+    "ABBREVIATION": "Abbreviation",
+    "ADD_COMPANY": "Add new company",
+    "ADD_CENTER": "Add new center",
+    "EDIT_COMPANY": "Edit company",
+    "EDIT_CENTER": "Edit center"
 }

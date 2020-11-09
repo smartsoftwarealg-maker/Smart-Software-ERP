@@ -1,3 +1,9 @@
+export interface Company {
+    id: number;
+    description: string;
+    address: string;
+    descriptionAr: string;
+}
 
 export interface Center {
     id: number;
