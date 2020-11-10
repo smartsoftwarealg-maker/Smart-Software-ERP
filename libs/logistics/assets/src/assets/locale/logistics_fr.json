@@ -48,5 +48,12 @@
     "LATIN": "Latin",
     "ARABIC": "Arabe",
     "FISCAL": "Fiscal",
-    "STAMP": "Timbre"
+    "STAMP": "Timbre",
+    "CREATION_TIME": "Temps de creation",
+    "AGENT": "Agent",
+    "EDIT_AGENT": "Modifier l'agent",
+    "AGENT_PRICE": "Prix de l'agent",
+    "EDIT_AGENT_PRICE": "Modifier le prix de l'agent",
+    "DESCRIPTION_AR": "Description ar",
+    "DESCRIPTION": "Description"
 }

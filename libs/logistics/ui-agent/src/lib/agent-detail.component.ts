@@ -3,14 +3,24 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {AgentType, City, CompanyType, Country, Currency, LookupsService, PayMode} from "@ss/common/api-lookup";
+import {
+    Activity,
+    AgentPrice,
+    AgentType,
+    City,
+    CompanyType,
+    Country,
+    Currency,
+    LookupsService,
+    PayMode
+} from "@ss/common/api-lookup";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {MatExpansionPanel} from "@angular/material/expansion";
-import {UserService} from "@ss/common/api-common";
-
+import {FormValidators, UserService} from "@ss/common/api-common";
+import {Bank} from "@ss/administration/api-bank";
 
 
 @Component({
@@ -27,8 +37,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     countries: Country[];
     currencies: Currency[];
     payModes: PayMode[];
-    activities: PayMode[];
-    prices: PayMode[];
+    activities: Activity[];
+    prices: AgentPrice[];
+    banks: Bank[];
 
 
     constructor(
@@ -40,7 +51,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public confirmationSrv: ConfirmationDialogService,
         public centerService: UserService,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT');
+        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
     }
 
     public preload(): Observable<any> {
@@ -60,18 +71,37 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 switchMap(() => this.lookupsSrv.getActivities()),
                 tap(x => this.activities = x),
                 switchMap(() => this.lookupsSrv.getPrices()),
-                tap(x => this.prices = x)
+                tap(x => this.prices = x),
+                switchMap(() => this.lookupsSrv.getBanks()),
+                tap(x => this.banks = x)
             );
     }
 
+
+    finishLoading(e: Agent) {
+        super.finishLoading(e);
+        this.form.controls["recordBlocked"]
+            .valueChanges
+            .subscribe(x => {
+                if (x) {
+                    this.form.controls["blockingReason"].disable();
+                    this.form.controls["blockingReason"].setValue("");
+                } else {
+                    this.form.controls["blockingReason"].enable()
+                }
+
+            });
+    }
+
     public setupForm(a: Agent) {
+        const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
+
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
-            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(18)])],
+            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(14)])],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
-            code: [a.code],
             address: [a.address],
             address2: [a.address2],
             city: [a.city],
@@ -98,41 +128,56 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             agentType: [a.agentType, Validators.required],
             companyType: [a.companyType],
             email: [a.email, Validators.email],
-            website: [a.website],
+            website: [a.website, Validators.pattern(urlRegExp)],
             nis: [a.nis],
             nif: [a.nif],
             debtLimit: [a.debtLimit],
-            debtTerm: [a.debtTerm],
+            debtTerm: [a.debtTerm, FormValidators.integerValidator],
             payMode: [a.payMode],
-            checkDueDays: [a.checkDueDays],
+            checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
             activity: [a.activity],
             recordBlocked: [a.recordBlocked],
-            blockingReason: [a.blockingReason],
+            blockingReason: {value: a.blockingReason, disabled: a.recordBlocked},
             subcontractor: [a.subcontractor],
-            tin: [a.tin]
+            tin: [a.tin],
+            creationTime: {value: a.creationTime, disabled: true}
+
         });
     }
 
+    public isTouchedAndInvalid(control: AbstractControl): boolean {
+        return control.invalid && control.touched;
+    }
+
     public isGeneralSectionInvalid(): boolean {
-        return this.form.touched &&
-            (this.form.controls['denomination'].invalid ||
-                this.form.controls['customerCode'].invalid ||
-                this.form.controls['price'].invalid ||
-                this.form.controls['currency'].invalid ||
-                this.form.controls['agentType'].invalid)
+        return this.isTouchedAndInvalid(this.form.controls['denomination']) ||
+            this.isTouchedAndInvalid(this.form.controls['customerCode']) ||
+            this.isTouchedAndInvalid(this.form.controls['price']) ||
+            this.isTouchedAndInvalid(this.form.controls['currency']) ||
+            this.isTouchedAndInvalid(this.form.controls['agentType'])
     }
 
     public isLatinSectionInvalid(): boolean {
-        return this.form.touched && this.form.controls['email'].invalid;
+        return this.isTouchedAndInvalid(this.form.controls['email']) || this.isTouchedAndInvalid(this.form.controls["website"]);
+    }
+
+    public isFiscalSectionInvalid(): boolean {
+        return this.form.touched &&
+            (this.form.controls['checkDueDays'].invalid ||
+                this.form.controls["debtTerm"].invalid);
     }
 
     public isSectionInvalid(section): boolean {
-        if (section == "general")
-            return this.isGeneralSectionInvalid();
-        else if (section == "latin")
-            return this.isLatinSectionInvalid();
-        else
-            return false;
+        switch (section) {
+            case "general":
+                return this.isGeneralSectionInvalid();
+            case "latin":
+                return this.isLatinSectionInvalid();
+            case "fiscal":
+                return this.isFiscalSectionInvalid();
+            default:
+                return false;
+        }
     }
 
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {

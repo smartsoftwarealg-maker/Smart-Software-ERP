@@ -25,8 +25,10 @@
                 <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
                 <input matInput formControlName="customerCode" type="text" required>
                 <mat-error
-                    *ngIf="form.controls['customerCode'].invalid" translate>COMMON_FIELD_REQUIRED
+                    *ngIf="form.controls['customerCode'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
+                <mat-error
+                    *ngIf="form.controls['customerCode'].hasError('maxlength')" [translate]="{maxLen: 14}">COMMON_FIELD_MAX_LENGTH</mat-error>
             </mat-form-field>
 
             <mat-form-field id="agentType" class="default-50 sm-100">
@@ -68,6 +70,11 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
+                <input matInput formControlName="creationTime" type="text">
+            </mat-form-field>
+
 
         </mat-expansion-panel>
 
@@ -96,14 +103,16 @@
             <mat-form-field id="email" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EMAIL</mat-label>
                 <input matInput formControlName="email" type="email">
-                <mat-error
-                    *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="website" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_WEBSITE</mat-label>
                 <input matInput formControlName="website" type="text">
+                <mat-error
+                    *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
+                </mat-error>
             </mat-form-field>
 
             <div class="default-50 sm-100">
@@ -132,12 +141,12 @@
 
 
             <div class="default-50 sm-100">
-                <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
             </div>
 
             <mat-form-field  class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
-                <input matInput formControlName="blockingReason" type="text">
+                <input matInput formControlName="blockingReason"  type="text">
             </mat-form-field>
 
             <div class="default-50 sm-100">
@@ -182,9 +191,13 @@
                 <input matInput formControlName="tin" type="text">
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field id="checkDueDays" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
                 <input matInput formControlName="checkDueDays" type="number" step="1">
+                <mat-error
+                    *ngIf="form.controls['checkDueDays'].invalid" translate>COMMON_INTEGER_INVALID
+                </mat-error>
+
             </mat-form-field>
 
             <mat-form-field  class="default-50 sm-100">
@@ -212,10 +225,16 @@
                 <input matInput formControlName="capital" type="text">
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_BANK</mat-label>
-                <input matInput formControlName="bank" type="text">
+                <mat-select formControlName="bank">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of banks" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
+
 
             <mat-form-field  class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_BANK_ACCOUNT</mat-label>
@@ -232,9 +251,14 @@
                 <input matInput formControlName="debtLimit" type="number" step="0.01">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field id="debtTerm" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_DEBT_TERM</mat-label>
                 <input matInput formControlName="debtTerm" type="number" step="0.01">
+                <mat-error
+                    *ngIf="form.controls['debtTerm'].invalid" translate>COMMON_INTEGER_INVALID
+                </mat-error>
+
+
             </mat-form-field>
 
 

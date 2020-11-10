@@ -134,6 +134,7 @@ $ss-green: (
     }
     .mat-header-cell {
         color: mat-contrast($primary, 100);
+        font-weight: bolder;
     }
 
     // defaults
@@ -389,6 +390,14 @@ $theme-2-warn:    mat-palette($mat-red);
             background-color: map-get($theme-2-primary, default);
         }
     }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
 
     .b-accent {
         $reverse-theme-a: mat-dark-theme($theme-2-primary, mat-palette($ss-white), $theme-2-warn);
@@ -408,6 +417,12 @@ $theme-2-warn:    mat-palette($mat-red);
 
         background-color: map-get($theme-2-warn, default);
         color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
     }
 
 }
@@ -454,6 +469,14 @@ $theme-3-warn:    mat-palette($mat-red);
             background-color: map-get($theme-3-primary, default);
         }
     }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
 
     .b-accent {
         $reverse-theme-a: mat-light-theme($theme-3-primary, mat-palette($ss-black), $theme-3-warn);
@@ -473,6 +496,12 @@ $theme-3-warn:    mat-palette($mat-red);
 
         background-color: map-get($theme-3-warn, default);
         color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
     }
 
 }
@@ -518,6 +547,14 @@ $theme-4-warn:    mat-palette($mat-red);
             background-color: map-get($theme-4-primary, default);
         }
     }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
 
     .b-accent {
         $reverse-theme-a: mat-light-theme($theme-4-primary, mat-palette($ss-black), $theme-4-warn);
@@ -537,6 +574,12 @@ $theme-4-warn:    mat-palette($mat-red);
 
         background-color: map-get($theme-4-warn, default);
         color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
     }
 
 }

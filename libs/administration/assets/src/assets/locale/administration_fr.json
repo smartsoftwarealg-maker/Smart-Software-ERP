@@ -1,0 +1,15 @@
+{
+    "BANK": "Banque",
+    "EDIT_BANK": "Modifier la banque",
+    "CODE": "Code",
+    "DESCRIPTION": "Description",
+    "COMPANY": "Entreprise",
+    "CENTER": "Centre",
+    "NO_RESULT": "Aucun résultat trouvé",
+    "ADDRESS": "Adresse",
+    "ABBREVIATION": "Abréviation",
+    "ADD_COMPANY": "Ajouter une entreprise",
+    "ADD_CENTER": "Ajouter un centre",
+    "EDIT_COMPANY": "Modifier une entreprise",
+    "EDIT_CENTER": "Modifier un centre"
+}

@@ -4,8 +4,11 @@ import {Injectable} from "@angular/core";
 import {
     Activity,
     ACTIVITY_URL,
+    AGENT_PRICES_URL,
     AGENT_TYPE_URL,
     AgentType,
+    Bank,
+    BANKS_URL,
     CATEGORIES_URL,
     Category,
     City,
@@ -32,13 +35,13 @@ import {
     PayMode,
     Post,
     POSTS_URL,
-    Price, AGENT_PRICES_URL,
+    AgentPrice,
     Service,
     SERVICES_URL,
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL
+    WILAYAS_URL,
 } from './lookups-api';
 
 @Injectable({
@@ -121,8 +124,12 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Activity>(ACTIVITY_URL, "activities");
     }
 
-    public getPrices(): Observable<Price[]> {
-        return this.lookupCacheSrv.load<Price>(AGENT_PRICES_URL, "agentprices");
+    public getPrices(): Observable<AgentPrice[]> {
+        return this.lookupCacheSrv.load<AgentPrice>(AGENT_PRICES_URL, "agentprices");
+    }
+
+    public getBanks(): Observable<Bank[]> {
+        return this.lookupCacheSrv.load<Bank>(BANKS_URL, "banks");
     }
 
 }

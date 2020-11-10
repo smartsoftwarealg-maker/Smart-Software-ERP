@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {UserService, INDEX_PAGE_URL} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {PROFILE_PAGE_URL} from '@ss/common/api-common';
-import {Center, Company} from '@ss/common/api-center';
+import {Center, Company} from '@ss/common/api-common';
 import {MatStepper} from '@angular/material/stepper';
 import {LoginService} from '@ss/common/api-common';
 

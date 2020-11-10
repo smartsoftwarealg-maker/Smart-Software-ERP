@@ -28,13 +28,13 @@ export class BaseEntityService<T> {
         return this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
-    public remove(id: number): Observable<void> {
+    public remove(id: number): Observable<any> {
         return this.httpSrv.remove(this.getUrl() + '/' + id);
     }
 
     public add(a: T): Observable<number> {
         return this.httpSrv.post(this.getUrl(), a)
-            .pipe(map(id => +id));
+            .pipe(map((res: { id: number }) => res.id));
     }
 
     public update(a: T): Observable<void> {

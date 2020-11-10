@@ -23,7 +23,10 @@
     "EDIT_SELECTED": "تعديل المحدد",
     "DEL_SELECTED": "حذف المحدد",
     "FIELD_REQUIRED": "هذا الحقل مطلوب",
-    "EMAIL_INVALID": "عنوان البريد هذا خاطئ",
+    "FIELD_MAX_LENGTH": "أقصى عدد مسموح به هو $maxLen$ حرفا",
+    "EMAIL_INVALID": "عنوان البريد الذي أدخلته خاطئ",
+    "URL_INVALID": "عنوان الموقع الذي أدخلته خاطئ",
+    "INTEGER_INVALID": "القيمة التي أدخلتها ليست عددا صحيحا",
     "APPLY": "تطبيق",
     "NEXT": "التالي",
     "PREVIOUS": "السابق",
@@ -54,5 +57,18 @@
     "MAX_FILE_SIZE_1MB": "أقصى حجم للملف 1مغ",
     "NOT_AN_IMAGE": "هذا الملف ليس صورة صالحة",
 
-    "FORM_NOT_VALID": "الإستمارة غير صالحة"
+    "FORM_NOT_VALID": "الإستمارة غير صالحة",
+
+    "VAT": "الضريبة",
+    "MARK": "النوع",
+    "MARKS": "العلامات",
+    "EDIT_MARK": "تعديل علامة",
+    "UNITS": "الوحدات",
+    "EDIT_UNIT": "تعديل وحدة",
+    "CLASSES": "الطبقات",
+    "EDIT_CLASS": "تعديل طبقة",
+    "SUBCLASSES": "الطبقات الفرعية",
+    "EDIT_SUBCLASS": "تعديل طبقة فرعية",
+    "STORE_NAMES": "المخازن",
+    "EDIT_STORE_NAME": "تعديل مخزن"
 }

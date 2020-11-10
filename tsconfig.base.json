@@ -42,12 +42,33 @@
       "@ss/payroll/api-person": ["libs/payroll/api-person/src/index.ts"],
       "@ss/payroll/ui-person": ["libs/payroll/ui-person/src/index.ts"],
       "@ss/common/ui-image-input": ["libs/common/ui-image-input/src/index.ts"],
-      "@ss/common/api-center": ["libs/common/api-center/src/index.ts"],
+      "@ss/administration/api-center": [
+        "libs/administration/api-center/src/index.ts"
+      ],
       "@ss/logistics/api-agent": ["libs/logistics/api-agent/src/index.ts"],
       "@ss/logistics/ui-agent": ["libs/logistics/ui-agent/src/index.ts"],
       "@ss/logistics/assets": ["libs/logistics/assets/src/index.ts"],
+      "@ss/logistics/api-agent-price": [
+        "libs/logistics/api-agent-price/src/index.ts"
+      ],
+      "@ss/logistics/ui-agent-price": [
+        "libs/logistics/ui-agent-price/src/index.ts"
+      ],
       "@ss/common/ui-confirmation-dialog": [
         "libs/common/ui-confirmation-dialog/src/index.ts"
+      ],
+      "@ss/administration/api-bank": [
+        "libs/administration/api-bank/src/index.ts"
+      ],
+      "@ss/administration/ui-bank": [
+        "libs/administration/ui-bank/src/index.ts"
+      ],
+      "@ss/administration/assets": ["libs/administration/assets/src/index.ts"],
+      "@ss/administration/api-company": [
+        "libs/administration/api-company/src/index.ts"
+      ],
+      "@ss/administration/ui-company-center": [
+        "libs/administration/ui-company-center/src/index.ts"
       ]
     }
   },

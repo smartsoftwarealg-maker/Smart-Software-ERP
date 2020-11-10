@@ -7,5 +7,6 @@
     "STOCK":"Stock",
     "HOTEL":"Hôtel",
     "MEDIC": "Clinique",
-    "SEARCH_APP": "Accès rapide"
+    "SEARCH_APP": "Accès rapide",
+    "ADMINISTRATION": "Administration"
 }

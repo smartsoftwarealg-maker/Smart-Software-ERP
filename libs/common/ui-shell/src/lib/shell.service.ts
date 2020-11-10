@@ -1,18 +1,28 @@
-import { Injectable } from "@angular/core";
-import { LanguageService } from '@ss/common/ui-lang';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+import {Injectable} from "@angular/core";
+import {LanguageService} from '@ss/common/ui-lang';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
+
 
 export interface ToolbarButton {
+    icon: string;
+    label: string;
+    click?: () => void;
+    disabled: boolean;
+    visible: boolean;
+    keepOnToolbar: boolean;
+    menuItems?: MenuItem[];
+}
+
+export interface MenuItem {
     icon: string;
     label: string;
     click: () => void;
     disabled: boolean;
     visible: boolean;
-    keepOnToolbar: boolean;
 }
 
 export interface SideNavNode {
@@ -148,7 +158,7 @@ export class ShellService {
 
     /**
      * Adds search functionality the title-bar without extra screen space (call ONCE per component, and do not call in it's children)
-     * 
+     *
      * @param inputLabel the title of the search input
      * @param subFn a function that subscribes to an observable, this observable sends search terms
      */

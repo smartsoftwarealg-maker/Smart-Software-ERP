@@ -1,8 +1,8 @@
 import {BaseEntityService} from './base-entity.service';
-import {ShellService, ToolbarButton, SnackBarService} from '@ss/common/ui-shell';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/ui-pagination';
-import {OnInit, OnDestroy, Directive} from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {DETAIL_URL} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
