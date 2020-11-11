@@ -47,13 +47,18 @@
 
     "EDIT": "Edit",
     "DELETE": "Delete",
+
     "LOOKUPS": "Lookup lists",
     "SETTINGS": "Settings",
+
     "USERNAME": "Username",
     "PASSWORD": "Password",
+
     "MAX_FILE_SIZE_1MB": "Max file size 1MB",
     "NOT_AN_IMAGE": "This is not a valid image file",
+
     "FORM_NOT_VALID": "The form is not valid",
+
     "VAT": "V.A.T",
     "MARK": "Mark",
     "MARKS": "Marks",
@@ -66,6 +71,7 @@
     "EDIT_SUBCLASS": "Edit subclass",
     "STORE_NAMES": "Stores",
     "EDIT_STORE_NAME": "Edit store",
+
     "AGENT_TYPES": "Agent types",
     "EDIT_AGENT_TYPE": "Edit agent type",
     "COMPANY_TYPES": "Company types",
@@ -79,5 +85,13 @@
     "PAY_MODES": "Pay modes",
     "EDIT_PAY_MODE": "Edit pay mode",
     "CURRENCIES": "Currencies",
-    "EDIT_CURRENCY": "Edit currency"
+    "EDIT_CURRENCY": "Edit currency",
+
+    "POSTS": "Posts",
+    "CATEGORIES": "Categories",
+    "DIPLOMAS": "Diplomas",
+    "EDUCATION_LEVELS": "Education levels",
+    "MARITAL_STATUS": "Marital status",
+    "SERVICES": "Services",
+    "NATIONALITIES": "Nationalities"
 }

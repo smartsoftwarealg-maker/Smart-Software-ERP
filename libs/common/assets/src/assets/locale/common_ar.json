@@ -70,5 +70,28 @@
     "SUBCLASSES": "الطبقات الفرعية",
     "EDIT_SUBCLASS": "تعديل طبقة فرعية",
     "STORE_NAMES": "المخازن",
-    "EDIT_STORE_NAME": "تعديل مخزن"
+    "EDIT_STORE_NAME": "تعديل مخزن",
+
+    "AGENT_TYPES": "أنواع العميل",
+    "EDIT_AGENT_TYPE": "نوع العميل",
+    "COMPANY_TYPES": "أنواع الشركات",
+    "EDIT_COMPANY_TYPE": "تعديل نوع الشركة",
+    "CITIES": "المدن",
+    "EDIT_CITY": "تعديل مدينة",
+    "COUNTRIES": "البلدان",
+    "EDIT_COUNTRY": "تعديل بلد",
+    "ACTIVITIES": "النشاطات",
+    "EDIT_ACTIVITY": "تعديل النشاط",
+    "PAY_MODES": "أنواع الدفع",
+    "EDIT_PAY_MODE": "تعديل نوع الدفع",
+    "CURRENCIES": "العملات",
+    "EDIT_CURRENCY": "تعديل العملة",
+
+    "POSTS": "الوظائف",
+    "CATEGORIES": "الفئات",
+    "DIPLOMAS": "الشهادات",
+    "EDUCATION_LEVELS": "المستويات الدراسية",
+    "MARITAL_STATUS": "الحالة الإجتماعية",
+    "SERVICES": "الخدمات",
+    "NATIONALITIES": "الجنسيات"
 }

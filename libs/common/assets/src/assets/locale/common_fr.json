@@ -70,5 +70,28 @@
     "SUBCLASSES": "Sous-classes",
     "EDIT_SUBCLASS": "Modifier Sous-class",
     "STORE_NAMES": "Magasins",
-    "EDIT_STORE_NAME": "Modifier nom magasin"
+    "EDIT_STORE_NAME": "Modifier nom magasin",
+
+    "AGENT_TYPES": "Types d'agents",
+    "EDIT_AGENT_TYPE": "Modifier le type d'agent",
+    "COMPANY_TYPES": "Types d'entreprises",
+    "EDIT_COMPANY_TYPE": "Modifier type de société",
+    "CITIES": "Villes",
+    "EDIT_CITY": "Modifier ville",
+    "COUNTRIES": "Les pays",
+    "EDIT_COUNTRY": "Modifier pays",
+    "ACTIVITIES": "Activités",
+    "EDIT_ACTIVITY": "Modifier l'activité",
+    "PAY_MODES": "Modes de paiement",
+    "EDIT_PAY_MODE": "Modifier mode paiement",
+    "CURRENCIES": "Devises",
+    "EDIT_CURRENCY": "Modifier devise",
+
+    "POSTS": "Postes",
+    "CATEGORIES": "Catégories",
+    "DIPLOMAS": "Diplômes",
+    "EDUCATION_LEVELS": "Niveaux d'éducation",
+    "MARITAL_STATUS": "État civil",
+    "NATIONALITIES": "Nationalités",
+    "SERVICES": "Services"
 }
