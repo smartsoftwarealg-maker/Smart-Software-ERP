@@ -2,11 +2,7 @@ import {ADMINISTRATION_BANK_URL, ADMINISTRATION_COMPANY_URL, LOOKUPS_URL,} from 
 import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from "@ss/administration/ui-bank";
-import {
-    CenterDetailComponent,
-    CompanyCenterTreeComponent,
-    CompanyDetailComponent
-} from "../../../../../libs/administration/ui-company-center/src";
+import {CompanyDetailComponent, CompanyListComponent} from "@ss/administration/ui-company";
 
 
 export const mainRoutes: Routes = [
@@ -36,17 +32,12 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CompanyCenterTreeComponent,
-                canActivate: [CanActivateService],
-            },
-            {
-                path: `company-${DETAIL_URL}`,
-                component: CompanyDetailComponent,
+                component: CompanyListComponent,
                 canActivate: [CanActivateService]
             },
             {
-                path: `center-${DETAIL_URL}`,
-                component: CenterDetailComponent,
+                path: DETAIL_URL,
+                component: CompanyDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

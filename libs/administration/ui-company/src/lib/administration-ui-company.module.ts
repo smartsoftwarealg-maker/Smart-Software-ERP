@@ -5,9 +5,8 @@ import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
-import {CompanyCenterTreeComponent} from "./company-center-tree.component";
 import {CompanyDetailComponent} from "./company-detail.component";
-import {CenterDetailComponent} from "./center-detail.component";
+import {CompanyListComponent} from "./company-list.component";
 
 
 @NgModule({
@@ -19,7 +18,7 @@ import {CenterDetailComponent} from "./center-detail.component";
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule
     ],
-    declarations: [CompanyCenterTreeComponent, CompanyDetailComponent,CenterDetailComponent],
+    declarations: [CompanyListComponent, CompanyDetailComponent],
     exports: []
 })
-export class AdministrationUiCompanyCenterModule {}
+export class AdministrationUiCompanyModule {}

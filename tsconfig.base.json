@@ -67,8 +67,11 @@
       "@ss/administration/api-company": [
         "libs/administration/api-company/src/index.ts"
       ],
-      "@ss/administration/ui-company-center": [
-        "libs/administration/ui-company-center/src/index.ts"
+      "@ss/administration/ui-company": [
+        "libs/administration/ui-company/src/index.ts"
+      ],
+      "@ss/administration/ui-center": [
+        "libs/administration/ui-center/src/index.ts"
       ]
     }
   },

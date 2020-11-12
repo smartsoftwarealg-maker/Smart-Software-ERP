@@ -1142,32 +1142,67 @@
         }
       }
     },
-    "administration-ui-company-center": {
+    "administration-ui-company": {
       "projectType": "library",
-      "root": "libs/administration/ui-company-center",
-      "sourceRoot": "libs/administration/ui-company-center/src",
+      "root": "libs/administration/ui-company",
+      "sourceRoot": "libs/administration/ui-company/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/administration/ui-company-center/tsconfig.lib.json",
-              "libs/administration/ui-company-center/tsconfig.spec.json"
+              "libs/administration/ui-company/tsconfig.lib.json",
+              "libs/administration/ui-company/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/administration/ui-company-center/**/*"
+              "!libs/administration/ui-company/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/administration/ui-company-center/jest.config.js",
-            "tsConfig": "libs/administration/ui-company-center/tsconfig.spec.json",
+            "jestConfig": "libs/administration/ui-company/jest.config.js",
+            "tsConfig": "libs/administration/ui-company/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/administration/ui-company-center/src/test-setup.ts"
+            "setupFile": "libs/administration/ui-company/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "administration-ui-center": {
+      "projectType": "library",
+      "root": "libs/administration/ui-center",
+      "sourceRoot": "libs/administration/ui-center/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/administration/ui-center/tsconfig.lib.json",
+              "libs/administration/ui-center/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/ui-center/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/administration/ui-center/jest.config.js",
+            "tsConfig": "libs/administration/ui-center/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/administration/ui-center/src/test-setup.ts"
           }
         }
       },

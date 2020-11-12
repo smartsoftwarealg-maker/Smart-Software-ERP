@@ -125,7 +125,10 @@
     "administration-api-company": {
       "tags": []
     },
-    "administration-ui-company-center": {
+    "administration-ui-company": {
+      "tags": []
+    },
+    "administration-ui-center": {
       "tags": []
     }
   }
