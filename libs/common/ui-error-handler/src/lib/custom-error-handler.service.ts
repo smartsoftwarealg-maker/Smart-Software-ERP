@@ -28,9 +28,16 @@ export class CustomErrorHandlerService {
             ? 0
             : err.status;
 
-        this.message = err == null || err.message == null
-            ? this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)})
-            : (err.error && isString(err.error) ? err.error : err.message);
+        if (err) {
+            if (err.error) {
+                this.message = isString(err.error) ? err.error : err.error.exception;
+            }
+        }
+        if (!this.message) {
+                this.message = err.message
+                    ? err.message
+                    : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
+        }
 
         this.statusText =
             err == null || err.status == null || err.statusText
