@@ -72,7 +72,11 @@
       ],
       "@ss/administration/ui-center": [
         "libs/administration/ui-center/src/index.ts"
-      ]
+      ],
+      "@ss/administration/api-smtp": [
+        "libs/administration/api-smtp/src/index.ts"
+      ],
+      "@ss/administration/ui-smtp": ["libs/administration/ui-smtp/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

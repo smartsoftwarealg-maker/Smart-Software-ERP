@@ -130,6 +130,12 @@
     },
     "administration-ui-center": {
       "tags": []
+    },
+    "administration-api-smtp": {
+      "tags": []
+    },
+    "administration-ui-smtp": {
+      "tags": []
     }
   }
 }

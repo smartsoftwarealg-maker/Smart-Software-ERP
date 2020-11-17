@@ -41,5 +41,11 @@
     "BANK_RIB": "بنك RIB",
     "FUNDS": "الأموال",
     "PAYROLL" : "الرواتب",
-    "Diverse": "أخرى"
+    "Diverse": "أخرى",
+    "DOMAIN": "النطاق",
+    "PROPERTY": "الإسم",
+    "PROPERTY_VALUE": "القيمة",
+    "SMTP": "SMTP",
+    "EDIT_SMTP": "Edit SMTP"
+
 }

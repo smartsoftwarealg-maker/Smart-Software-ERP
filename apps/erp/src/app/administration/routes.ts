@@ -1,7 +1,7 @@
 import {
     ADMINISTRATION_BANK_URL,
     ADMINISTRATION_CENTER_URL,
-    ADMINISTRATION_COMPANY_URL,
+    ADMINISTRATION_COMPANY_URL, ADMINISTRATION_SMTP_URL,
     LOOKUPS_URL,
 } from '../constants';
 import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from '@ss/common/api-common';
@@ -9,6 +9,8 @@ import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from "@ss/administration/ui-bank";
 import {CompanyDetailComponent, CompanyListComponent} from "@ss/administration/ui-company";
 import {CenterDetailComponent, CenterListComponent} from "@ss/administration/ui-center";
+import {SmtpListComponent} from "@ss/administration/ui-smtp";
+import {SmtpDetailComponent} from "@ss/administration/ui-smtp";
 
 
 export const mainRoutes: Routes = [
@@ -27,6 +29,23 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: BankDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: ADMINISTRATION_SMTP_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SmtpListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: SmtpDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
