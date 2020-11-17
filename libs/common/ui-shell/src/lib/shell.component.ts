@@ -19,7 +19,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
     public lastScroll = 0;
     // side nav
     treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
-  
+
 
     constructor(public langSrv: LanguageService, public shellSrv: ShellService, protected cdRef: ChangeDetectorRef) { }
 
@@ -53,6 +53,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     scrolled = () => {
+/*
         const s = this.routerContainer.nativeElement.scrollTop;
         if (s > 0 && s >= this.lastScroll) {
             if (!this.showSideNav) {
@@ -64,6 +65,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
             }
         }
         this.lastScroll = s;
+*/
     };
 
     showToolbar = () => {

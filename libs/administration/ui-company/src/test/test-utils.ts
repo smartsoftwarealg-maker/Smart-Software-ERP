@@ -1,8 +1,9 @@
 import {FormGroup} from "@angular/forms";
 import {ComponentFixture} from "@angular/core/testing";
 import {CompanyDetailComponent} from "@ss/administration/ui-company";
+import {expect} from '@jest/globals'
 
-export class TestUtilsSpec {
+export class TestUtils {
 
     static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<CompanyDetailComponent>,
                                     form: FormGroup,
@@ -15,30 +16,27 @@ export class TestUtilsSpec {
 
         expect(field.valid).toBeFalsy();
 
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name);
     }
 
-    static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<CompanyDetailComponent>,
-                                            form: FormGroup,
-                                            name: string,
-                                            maxLength: number): void {
-        let field = form.controls[name];
-
-
-        field.setValue(Array(maxLength + 1).fill("e").reduce((t, c) => t + c, ""))
-        expect(field.valid).toBeFalsy();
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
-    }
 
     static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<CompanyDetailComponent>, form: FormGroup, name: string) {
         form.markAllAsTouched()
         fixture.detectChanges()
-        TestUtilsSpec.shouldDisplayErrorMessage(fixture.nativeElement, name)
+        TestUtils.shouldDisplayErrorMessage(fixture.nativeElement, name)
+        TestUtils.shouldHighlightParentPanel(fixture.nativeElement, name);
     }
 
     static shouldDisplayErrorMessage(template, name) {
         let formField = template.querySelector(`#${name}`);
         expect(formField.querySelector("mat-error")).not.toBeNull()
+    }
+
+    static shouldHighlightParentPanel(template, name) {
+        let formField = template.querySelector(`#${name}`);
+        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+            .classList.contains("b-warn-expansion-panel");
+        expect(hasHeaderWarnClass).toBeTruthy();
     }
 
 }

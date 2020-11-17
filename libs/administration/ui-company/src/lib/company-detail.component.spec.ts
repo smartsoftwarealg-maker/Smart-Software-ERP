@@ -10,7 +10,7 @@ import {HttpTestService} from "../test/http-test.service";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
-import {TestUtilsSpec} from "../test/test-utils.spec";
+import {TestUtils} from '../test/test-utils';
 import {ADDED_DELETED_COMPANY, DB_COMPANY, UPDATED_COMPANY} from "../test/data";
 import {MatInputHarness} from "@angular/material/input/testing";
 import {CompanyDetailComponent} from "@ss/administration/ui-company";
@@ -80,12 +80,12 @@ describe("CompanyDetailComponent", () => {
 
     it('should check that description is required', () => {
         component.form = component.setupForm(DB_COMPANY as Company);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "description")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "description")
     });
 
     it('should check that address1 is required', () => {
         component.form = component.setupForm(DB_COMPANY as Company);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "address1")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "address1")
     });
 
 
@@ -98,6 +98,13 @@ describe("CompanyDetailComponent", () => {
         for (const input of inputs) {
             const type: string = await input.getType();
             const host = await input.host();
+
+            if (type === "text") {
+                await input.setValue("upd");
+            } else {
+                await input.setValue("999");
+            }
+
             await input.setValue("updt");
         }
 

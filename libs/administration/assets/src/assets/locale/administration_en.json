@@ -32,5 +32,14 @@
     "MAIN": "Main",
     "FISCAL": "Fiscal",
     "CONTACT": "Contact",
-    "ARABIC": "Arabic"
+    "ARABIC": "Arabic",
+    "SEVERE": "Revoke rights when not specified",
+    "PAY_MONTH": "Pay month",
+    "MONTH_VALIDATED": "Month validated",
+    "ACTIVITY": "Activity",
+    "ACTIVITY_CODE": "Activity code",
+    "BANK_RIB": "Bank R.I.B",
+    "FUNDS": "Funds",
+    "PAYROLL": "Payroll",
+    "DIVERSE": "Diverse"
 }

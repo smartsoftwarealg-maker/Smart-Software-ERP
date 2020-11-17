@@ -49,7 +49,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public centerService: UserService,
         public lookupsSrv: LookupsService) {
         super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
     }

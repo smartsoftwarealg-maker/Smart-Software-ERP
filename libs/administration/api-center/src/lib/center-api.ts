@@ -23,6 +23,7 @@ export interface Center {
     nif: string;
     nis: string;
     phone: string;
+    email: string;
     addressAr: string;
     fundId: number;
     severe: boolean;

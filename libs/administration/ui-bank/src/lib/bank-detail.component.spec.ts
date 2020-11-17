@@ -10,11 +10,10 @@ import {HttpTestService} from "../test/http-test.service";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
-import {TestUtilsSpec} from "../test/test-utils.spec";
+import {TestUtils} from "../test/test-utils";
 import {ADDED_DELETED_BANK, DB_BANK, UPDATED_BANK} from "../test/data";
 import {MatInputHarness} from "@angular/material/input/testing";
 import {BankDetailComponent} from "@ss/administration/ui-bank";
-import {DB_AGENT} from "../../../../logistics/ui-agent/src/test/data";
 
 describe("BankDetailComponent", () => {
 
@@ -80,12 +79,12 @@ describe("BankDetailComponent", () => {
 
     it('should check that description is required', () => {
         component.form = component.setupForm(DB_BANK);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "description")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "description")
     });
 
     it('should check that code is less than maxLength', () => {
         component.form = component.setupForm(DB_BANK);
-        TestUtilsSpec.shouldBeInvalidWhenPassMaxLength(fixture, component.form, "code", 4)
+        TestUtils.shouldBeInvalidWhenPassMaxLength(fixture, component.form, "code", 4)
     });
 
     it('should update all fields in view and save them', async done => {

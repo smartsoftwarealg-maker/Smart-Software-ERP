@@ -2,11 +2,13 @@
 :host {
     display: block;
     margin: auto;
-    width: 846px;
+    width: 100%;
+    max-width: 846px;
 }
 
 .main-table {
-    width: 846px;
+    width: 100%;
+    max-width: 846px;
     min-height: 320px;
 }
 
@@ -20,24 +22,38 @@
     flex: 300px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
+    @media (max-width: 846px) {
+        flex: 30% 0 0;
+    }
 }
 
 .mat-column-company2 {
     flex: 150px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
+
+    @media (max-width: 846px) {
+        flex: 20% 0 0;
+    }
+
 }
 
 .mat-column-company3 {
     flex: 150px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
+    @media (max-width: 846px) {
+        flex: 20% 0 0;
+    }
 }
 
 .mat-column-address {
     flex: 150px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
+    @media (max-width: 846px) {
+        flex: 30% 0 0;
+    }
 }
 
 

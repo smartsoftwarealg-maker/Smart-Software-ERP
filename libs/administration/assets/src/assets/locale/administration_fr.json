@@ -32,5 +32,14 @@
     "MAIN": "Principale",
     "FISCAL": "Fiscale",
     "CONTACT": "Contact",
-    "ARABIC": "Arabe"
+    "ARABIC": "Arabe",
+    "SEVERE": "Strict",
+    "PAY_MONTH": "Mois de paie",
+    "MONTH_VALIDATED": "Mois validé",
+    "ACTIVITY": "Activité",
+    "ACTIVITY_CODE": "Code d'activité",
+    "BANK_RIB": "Banque R.I.B",
+    "FUNDS": "Fonds",
+    "PAYROLL": "Paie",
+    "DIVERSE": "Diverse"
 }

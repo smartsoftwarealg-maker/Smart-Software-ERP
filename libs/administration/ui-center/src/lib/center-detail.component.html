@@ -1,0 +1,219 @@
+<div class="container">
+    <form *ngIf="form != null" novalidate [formGroup]="form">
+
+        <mat-accordion>
+            <mat-expansion-panel #mainPanel expanded="true"
+                                 [class]="getPanelHeaderClass('main',mainPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_MAIN
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field id="description" class="default-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required>
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="address" class="default-50 sm-100">
+                    <mat-label [translate]="{addr:''}">ADMINISTRATION_ADDRESS</mat-label>
+                    <input matInput formControlName="address" type="text" required>
+                    <mat-error *ngIf="form.controls['address'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+
+                <div id="group" class="default-50 sm-100">
+                    <mat-checkbox formControlName="isPublic" translate>ADMINISTRATION_IS_GROUP</mat-checkbox>
+                </div>
+
+
+
+                <mat-form-field id="activity" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_ACTIVITY</mat-label>
+                    <input matInput formControlName="activity" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="activityCode" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_ACTIVITY_CODE</mat-label>
+                    <input matInput formControlName="activityCode" type="text">
+                </mat-form-field>
+                <mat-form-field id="abbreviation" class="default-20 sm-20">
+                    <mat-label translate>ADMINISTRATION_ABBREVIATION</mat-label>
+                    <input matInput formControlName="abbreviation" type="text">
+                    <mat-error *ngIf="form.controls['abbreviation'].invalid" [translate]="{maxLen: 1}">
+                        COMMON_FIELD_MAX_LENGTH
+                    </mat-error>
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel #contactPanel [class]="getPanelHeaderClass('contact',contactPanel)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_CONTACT
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_PHONE</mat-label>
+                    <input matInput formControlName="phone" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_FAX</mat-label>
+                    <input matInput formControlName="fax" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="email" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_EMAIL</mat-label>
+                    <input matInput formControlName="email" type="email">
+                    <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                    </mat-error>
+                </mat-form-field>
+
+
+            </mat-expansion-panel>
+
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_FISCAL
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_FISCAL_ID</mat-label>
+                    <input matInput formControlName="fiscalId" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_ARTICLE_NO</mat-label>
+                    <input matInput formControlName="articleNo" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_NIS</mat-label>
+                    <input matInput formControlName="nis" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_NIF</mat-label>
+                    <input matInput formControlName="nif" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_BANK</mat-label>
+                    <mat-select formControlName="bank">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let v of banks" [value]="v.id">
+                            {{v ? v.description : ''}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_BANK_ACCOUNT</mat-label>
+                    <input matInput formControlName="bankAccount" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_BANK_RIB</mat-label>
+                    <input matInput formControlName="bankRib" type="text">
+                </mat-form-field>
+
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_COMM_REGISTER</mat-label>
+                    <input matInput formControlName="commReg" type="text">
+                </mat-form-field>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_ARABIC
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field id="descriptionAr" class="default-50 sm-50">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION_AR</mat-label>
+                    <input matInput formControlName="descriptionAr" type="text">
+                </mat-form-field>
+
+                <mat-form-field id="addressAr" class="default-50 sm-100">
+                    <mat-label [translate]="{addr:''}">ADMINISTRATION_ADDRESS_AR</mat-label>
+                    <input matInput formControlName="addressAr" type="text">
+                </mat-form-field>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_PAYROLL
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field id="ssNumber" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_SS_NUMBER</mat-label>
+                    <input matInput formControlName="ssNumber" type="text">
+                </mat-form-field>
+
+
+
+                <mat-form-field id="payMonth" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_PAY_MONTH</mat-label>
+                    <input matInput formControlName="payMonth" type="number">
+                </mat-form-field>
+
+
+                <div id="monthValidated" class="default-50 sm-100">
+                    <mat-checkbox formControlName="monthValidated" translate>ADMINISTRATION_MONTH_VALIDATED
+                    </mat-checkbox>
+                </div>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_FUNDS</mat-label>
+                    <mat-select formControlName="fundId">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let v of funds" [value]="v.id">
+                            {{v ? v.description : ''}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_DIVERSE
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div id="severe" class="default-50 sm-100">
+                    <mat-checkbox formControlName="severe" translate>ADMINISTRATION_SEVERE</mat-checkbox>
+                </div>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_LOGO</mat-label>
+                    <input matInput formControlName="logo" type="text">
+                </mat-form-field>
+
+
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </form>
+</div>

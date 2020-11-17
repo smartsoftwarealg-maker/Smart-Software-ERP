@@ -21,6 +21,7 @@ export const CURRENCY_URL = "/lookups/currencies";
 export const COMPANY_TYPE_URL = "/lookups/companies";
 export const PAY_MODE_URL = "/lookups/paymodes";
 export const ACTIVITY_URL = "/lookups/activities";
+export const FUNDS_URL = '/lookups/funds';
 export const BANKS_URL = '/banks';
 export const AGENT_PRICES_URL = '/inventory/agentprices';
 
@@ -155,4 +156,7 @@ export interface AgentPrice {
     descriptionAr: string;
 }
 
-
+export interface Fund {
+    id: number;
+    description: string;
+}

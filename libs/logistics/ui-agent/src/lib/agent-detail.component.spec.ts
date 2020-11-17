@@ -11,7 +11,7 @@ import {HttpTestService} from "../test/http-test.service";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {CommonUiLangModule, LanguageService} from "@ss/common/ui-lang";
-import {TestUtilsSpec} from "../test/test-utils.spec";
+import {TestUtils} from "../test/test-utils";
 import {MatCheckboxHarness} from "@angular/material/checkbox/testing";
 import {MatSelectHarness} from "@angular/material/select/testing";
 import {ADDED_DELETED_AGENT, DB_AGENT, UPDATED_AGENT} from "../test/data";
@@ -145,52 +145,52 @@ describe("AgentDetailComponent", () => {
 
     it('should check that customerCode is required', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "customerCode")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "customerCode")
     });
 
     it('should check that customerCode is less than maxLength', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenPassMaxLength(fixture, component.form, "customerCode", 14)
+        TestUtils.shouldBeInvalidWhenPassMaxLength(fixture, component.form, "customerCode", 14)
     });
 
     it('should check that denomination is required', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "denomination")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "denomination")
     });
 
     it('should check that price is required', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "price")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "price")
     });
 
     it('should check that agentType is required', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "agentType")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "agentType")
     });
 
     it('should check that currency is required', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldBeInvalidWhenEmpty(fixture, component.form, "currency")
+        TestUtils.shouldBeInvalidWhenEmpty(fixture, component.form, "currency")
     });
 
     it('should check that email is valid', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldCheckInvalidValues(fixture, component.form, "email", "invalidEmail", "test@test.com")
+        TestUtils.shouldCheckInvalidValues(fixture, component.form, "email", "invalidEmail", "test@test.com")
     });
 
     it('should check that checkDueDays is valid', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldCheckInvalidValues(fixture, component.form, "checkDueDays", 1.36, 5)
+        TestUtils.shouldCheckInvalidValues(fixture, component.form, "checkDueDays", 1.36, 5)
     });
 
     it('should check that debtTerm is valid', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldCheckInvalidValues(fixture, component.form, "debtTerm", 13.36, 10)
+        TestUtils.shouldCheckInvalidValues(fixture, component.form, "debtTerm", 13.36, 10)
     });
 
     it('should check that website is valid', () => {
         component.form = component.setupForm(DB_AGENT);
-        TestUtilsSpec.shouldCheckInvalidValues(fixture, component.form, "website", "invalidwebsite", "valid.org")
+        TestUtils.shouldCheckInvalidValues(fixture, component.form, "website", "invalidwebsite", "valid.org")
     });
 
     it("should add primary color to expanded panel", async () => {

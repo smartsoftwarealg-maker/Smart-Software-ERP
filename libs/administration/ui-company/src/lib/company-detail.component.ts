@@ -25,7 +25,6 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public centerService: UserService,
         public lookupsSrv: LookupsService) {
         super(companyService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_COMPANY');
     }

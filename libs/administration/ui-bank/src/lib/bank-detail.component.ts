@@ -5,7 +5,6 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {UserService} from "@ss/common/api-common";
 import {Bank, BankService} from "@ss/administration/api-bank";
 
 
@@ -24,7 +23,6 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public centerService: UserService,
         public lookupsSrv: LookupsService) {
         super(bankService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
     }

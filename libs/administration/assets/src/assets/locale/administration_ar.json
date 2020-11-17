@@ -32,5 +32,14 @@
     "MAIN": "المعلومات الأساسية",
     "FISCAL": "المالية",
     "CONTACT": "الإتصال",
-    "ARABIC": "العربية"
+    "ARABIC": "العربية",
+    "SEVERE": "سحب الصلاحيات إذا لم يتم تحديدها",
+    "PAY_MONTH": "شهر الدفع",
+    "MONTH_VALIDATED": "الشهر محقق",
+    "ACTIVITY": "النشاط",
+    "ACTIVITY_CODE": "رمز النشاط",
+    "BANK_RIB": "بنك RIB",
+    "FUNDS": "الأموال",
+    "PAYROLL" : "الرواتب",
+    "Diverse": "أخرى"
 }

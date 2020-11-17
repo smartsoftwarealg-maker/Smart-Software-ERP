@@ -30,18 +30,11 @@
 
             <mat-form-field id="company2" class="default-50 sm-100">
                 <mat-label [translate]="{company:2}">ADMINISTRATION_COMPANY_NUMBER</mat-label>
-                <input matInput formControlName="company2" type="text" required>
+                <input matInput formControlName="company2" type="text">
             </mat-form-field>
 
 
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="isGroup" translate>ADMINISTRATION_IS_GROUP</mat-checkbox>
-            </div>
 
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="headquarters" translate>ADMINISTRATION_HEADQUARTERS
-                </mat-checkbox>
-            </div>
 
             <mat-form-field id="ssNumber" class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_SS_NUMBER</mat-label>
@@ -129,16 +122,12 @@
                 <input matInput formControlName="capital" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ADMINISTRATION_LOGO</mat-label>
-                <input matInput formControlName="logo" type="text">
-            </mat-form-field>
-
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_COMM_REGISTER</mat-label>
                 <input matInput formControlName="commRegister" type="text">
             </mat-form-field>
+
 
 
         </mat-expansion-panel>
@@ -172,5 +161,32 @@
             </mat-form-field>
 
         </mat-expansion-panel>
+
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ADMINISTRATION_DIVERSE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="isGroup" translate>ADMINISTRATION_IS_GROUP</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="headquarters" translate>ADMINISTRATION_HEADQUARTERS
+                </mat-checkbox>
+            </div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_LOGO</mat-label>
+                <input matInput formControlName="logo" type="text">
+            </mat-form-field>
+
+
+        </mat-expansion-panel>
+
+
     </mat-accordion>
 </form>

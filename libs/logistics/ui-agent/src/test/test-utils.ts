@@ -1,8 +1,9 @@
 import {FormGroup} from "@angular/forms";
 import {ComponentFixture} from "@angular/core/testing";
 import {AgentDetailComponent} from "@ss/logistics/ui-agent";
+import {expect} from '@jest/globals'
 
-export class TestUtilsSpec {
+export class TestUtils {
 
     static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<AgentDetailComponent>,
                                     form: FormGroup,
@@ -15,7 +16,7 @@ export class TestUtilsSpec {
 
         expect(field.valid).toBeFalsy();
 
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
     static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<AgentDetailComponent>,
@@ -27,7 +28,7 @@ export class TestUtilsSpec {
 
         field.setValue(Array(maxLength + 1).fill("e").reduce((t, c) => t + c, ""))
         expect(field.valid).toBeFalsy();
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
 
@@ -39,13 +40,13 @@ export class TestUtilsSpec {
             invalidValues.forEach(x => {
                 field.setValue(x);
                 expect(field.valid).toBeFalsy();
-                TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+                TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
             })
 
         } else {
             field.setValue(invalidValues);
             expect(field.valid).toBeFalsy();
-            TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+            TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
         }
 
         if (validValues instanceof Array) {
@@ -63,8 +64,8 @@ export class TestUtilsSpec {
     static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<AgentDetailComponent>, form: FormGroup, name: string) {
         form.markAllAsTouched()
         fixture.detectChanges()
-        TestUtilsSpec.shouldDisplayErrorMessage(fixture.nativeElement, name)
-        TestUtilsSpec.shouldHighlightParentPanel(fixture.nativeElement, name)
+        TestUtils.shouldDisplayErrorMessage(fixture.nativeElement, name)
+        TestUtils.shouldHighlightParentPanel(fixture.nativeElement, name)
     }
 
     static shouldDisplayErrorMessage(template, name) {

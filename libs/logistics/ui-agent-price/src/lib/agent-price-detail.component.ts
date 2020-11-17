@@ -24,7 +24,6 @@ export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPr
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public centerService: UserService,
         public lookupsSrv: LookupsService) {
         super(agentPriceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT_PRICE');
     }

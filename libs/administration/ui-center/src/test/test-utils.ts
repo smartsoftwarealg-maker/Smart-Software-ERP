@@ -1,0 +1,42 @@
+import {FormGroup} from "@angular/forms";
+import {ComponentFixture} from "@angular/core/testing";
+import {CenterDetailComponent} from "@ss/administration/ui-center";
+import {expect} from '@jest/globals'
+
+export class TestUtils {
+
+    static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<CenterDetailComponent>,
+                                    form: FormGroup,
+                                    name: string): void {
+        let field = form.controls[name];
+
+        expect(field.valid).toBeTruthy();
+
+        field.setValue(null)
+
+        expect(field.valid).toBeFalsy();
+
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name);
+    }
+
+
+    static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<CenterDetailComponent>, form: FormGroup, name: string) {
+        form.markAllAsTouched()
+        fixture.detectChanges()
+        TestUtils.shouldDisplayErrorMessage(fixture.nativeElement, name)
+        TestUtils.shouldHighlightParentPanel(fixture.nativeElement, name);
+    }
+
+    static shouldDisplayErrorMessage(template, name) {
+        let formField = template.querySelector(`#${name}`);
+        expect(formField.querySelector("mat-error")).not.toBeNull()
+    }
+
+    static shouldHighlightParentPanel(template, name) {
+        let formField = template.querySelector(`#${name}`);
+        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+            .classList.contains("b-warn-expansion-panel");
+        expect(hasHeaderWarnClass).toBeTruthy();
+    }
+
+}

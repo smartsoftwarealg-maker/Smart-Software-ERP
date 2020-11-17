@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 600px;
+    min-width: 320px;
+    padding-top: 24px;
+    max-height: 100%;
+}
+.container{
+    overflow: auto;
+    height: 100%;
+}
+mat-expansion-panel {
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+
+    &:last-child{
+        border-width: 1px 1px 1px 1px;
+    }
+
+    &.mat-expanded mat-expansion-panel-header {
+        border-width: 0 0 1px 0;
+        border-style: dotted;
+        margin-bottom: 20px;
+    }
+
+}

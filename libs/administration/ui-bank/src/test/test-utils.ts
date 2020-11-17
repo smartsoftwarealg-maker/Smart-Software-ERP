@@ -1,8 +1,9 @@
 import {FormGroup} from "@angular/forms";
 import {ComponentFixture} from "@angular/core/testing";
 import {BankDetailComponent} from "@ss/administration/ui-bank";
+import {expect} from '@jest/globals'
 
-export class TestUtilsSpec {
+export class TestUtils {
 
     static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<BankDetailComponent>,
                                     form: FormGroup,
@@ -15,7 +16,7 @@ export class TestUtilsSpec {
 
         expect(field.valid).toBeFalsy();
 
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
     static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<BankDetailComponent>,
@@ -27,13 +28,13 @@ export class TestUtilsSpec {
 
         field.setValue(Array(maxLength + 1).fill("e").reduce((t, c) => t + c, ""))
         expect(field.valid).toBeFalsy();
-        TestUtilsSpec.shouldCheckViewChangesWhenInvalid(fixture, form, name)
+        TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
     static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<BankDetailComponent>, form: FormGroup, name: string) {
         form.markAllAsTouched()
         fixture.detectChanges()
-        TestUtilsSpec.shouldDisplayErrorMessage(fixture.nativeElement, name)
+        TestUtils.shouldDisplayErrorMessage(fixture.nativeElement, name)
     }
 
     static shouldDisplayErrorMessage(template, name) {

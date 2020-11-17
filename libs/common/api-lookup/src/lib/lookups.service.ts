@@ -41,7 +41,7 @@ import {
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL,
+    WILAYAS_URL, Fund, FUNDS_URL,
 } from './lookups-api';
 
 @Injectable({
@@ -130,6 +130,10 @@ export class LookupsService {
 
     public getBanks(): Observable<Bank[]> {
         return this.lookupCacheSrv.load<Bank>(BANKS_URL, "banks");
+    }
+
+    public getFunds(): Observable<Fund[]> {
+        return this.lookupCacheSrv.load<Fund>(FUNDS_URL, "funds");
     }
 
 }
