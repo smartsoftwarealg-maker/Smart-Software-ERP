@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, Afte
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
+import { User, UserContext, UserService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shell',
@@ -20,13 +21,16 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
     // side nav
     treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
 
+    currentUser: UserContext;
 
-    constructor(public langSrv: LanguageService, public shellSrv: ShellService, protected cdRef: ChangeDetectorRef) { }
+    constructor(public langSrv: LanguageService, public shellSrv: ShellService, protected cdRef: ChangeDetectorRef, protected usersSrv: UserService) { }
 
     ngOnInit() {
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.shellSrv.setUpdateShellFn(() => this.cdRef.detectChanges());
         this.check();
+        this.usersSrv.load()
+            .subscribe(() => this.currentUser = this.usersSrv.context);
     }
 
     ngOnDestroy() {
