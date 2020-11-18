@@ -5,7 +5,8 @@
     "WILAYAS": "Wilayasً",
     "EDIT_WILAYA": "Wilaya",
 
-    "PER_PAGE":"$page$ / page",
+    "PER_PAGE":"Items per page:",
+    "GO":"GO",
 
     "SUCCESS": "Operation Successful",
     "FAILURE": "Operation Failed",

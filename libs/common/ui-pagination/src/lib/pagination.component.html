@@ -1,43 +1,56 @@
-<div class="pagination-config">
-    <input #pageInput type="text" type="number" class="page-input margin-start-4 b-b-background f-f-text" (keyup.enter)="onGoToPage()">
-    <a [matMenuTriggerFor]="perPageMenu" class="margin-start-8 conf-text">{{' / ' + lastPage}}</a>
+<div class="container">
+    <div class="row">
+        <div class="pagination-buttons b-b-background f-f-text">
 
-    <button mat-icon-button type="button" color="" *ngIf="langSrv.rtl"
-        (click)="onGoToPage()">
-        <i class="fas fa-chevron-circle-left"></i>
-    </button>
-    <button mat-icon-button type="button" color="" *ngIf="!langSrv.rtl"
-        (click)="onGoToPage()">
-        <i class="fas fa-chevron-circle-right"></i>
-    </button>
 
+            <button mat-icon-button class="nav-btn" type="button" style="float: right"
+                    (click)="onRightPlusButtonClick()"
+                    [disabled]="isRightButtonDisabled()">
+                <i class="fas fa-chevron-double-right"></i>
+            </button>
+
+            <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftPlusButtonClick()"
+                    [disabled]="isLeftButtonDisabled()">
+                <i class="fas fa-chevron-double-left"></i>
+            </button>
+
+            <span class="margin-start-8 conf-text">{{model.page + ' / ' + lastPage}}</span>
+
+
+            <button mat-icon-button class="nav-btn" type="button" style="float: right" (click)="onRightButtonClick()"
+                    [disabled]="isRightButtonDisabled()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftButtonClick()"
+                    [disabled]="isLeftButtonDisabled()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+        </div>
+        <div class="page-size-button-container">
+            <button mat-stroked-button color="primary" class="nav-btn" [matMenuTriggerFor]="perPageMenu">
+                {{model.pageSize}}
+            </button>
+        </div>
+        <div class="go-to-page">
+
+            <input #pageInput matInput type="text" type="number" class="page-input margin-start-4 b-b-background f-f-text"
+                   (keyup.enter)="onGoToPage()">
+
+            <button mat-flat-button type="button" color="primary"
+                    (click)="onGoToPage()" translate>
+                COMMON_GO
+            </button>
+
+
+        </div>
+
+    </div>
 </div>
-
-<div class="pagination-buttons b-b-background f-f-text">
-    <button mat-icon-button class="nav-btn" type="button" style="float: right" (click)="onRightPlusButtonClick()"
-        [disabled]="isRightButtonDisabled()">
-        <i class="fas fa-chevron-double-right"></i>
-    </button>
-
-    <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftPlusButtonClick()"
-        [disabled]="isLeftButtonDisabled()">
-        <i class="fas fa-chevron-double-left"></i>
-    </button>
-
-    <button mat-icon-button class="nav-btn" type="button" style="float: right" (click)="onRightButtonClick()"
-        [disabled]="isRightButtonDisabled()">
-        <i class="fas fa-chevron-right"></i>
-    </button>
-
-    <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftButtonClick()"
-        [disabled]="isLeftButtonDisabled()">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-</div>
-
 <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false"
-    #perPageMenu="matMenu">
-    <div mat-menu-item *ngFor="let o of pageSizes" (click)="model.pageSize = o" [translate]="{page: o}">
-        COMMON_PER_PAGE
+          #perPageMenu="matMenu">
+    <div mat-menu-item *ngFor="let o of pageSizes" (click)="model.pageSize = o">
+        {{o}}
     </div>
 </mat-menu>

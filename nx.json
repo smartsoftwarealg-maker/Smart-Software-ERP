@@ -136,6 +136,12 @@
     },
     "administration-ui-smtp": {
       "tags": []
+    },
+    "logistics-api-cost-center": {
+      "tags": []
+    },
+    "logistics-ui-cost-center": {
+      "tags": []
     }
   }
 }

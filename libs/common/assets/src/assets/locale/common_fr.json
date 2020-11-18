@@ -5,7 +5,8 @@
     "WILAYAS": "Wilayas",
     "EDIT_WILAYA": "Modifier wilaya",
 
-    "PER_PAGE":"$page$ / page",
+    "PER_PAGE":"Résultats par page",
+    "GO":"Aller",
 
     "SUCCESS": "Opération réussie",
     "FAILURE": "L'opération a échoué",

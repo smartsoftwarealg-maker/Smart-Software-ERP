@@ -1281,6 +1281,76 @@
           "style": "scss"
         }
       }
+    },
+    "logistics-api-cost-center": {
+      "projectType": "library",
+      "root": "libs/logistics/api-cost-center",
+      "sourceRoot": "libs/logistics/api-cost-center/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-cost-center/tsconfig.lib.json",
+              "libs/logistics/api-cost-center/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-cost-center/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logistics/api-cost-center/jest.config.js",
+            "tsConfig": "libs/logistics/api-cost-center/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/logistics/api-cost-center/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "logistics-ui-cost-center": {
+      "projectType": "library",
+      "root": "libs/logistics/ui-cost-center",
+      "sourceRoot": "libs/logistics/ui-cost-center/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/ui-cost-center/tsconfig.lib.json",
+              "libs/logistics/ui-cost-center/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/ui-cost-center/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logistics/ui-cost-center/jest.config.js",
+            "tsConfig": "libs/logistics/ui-cost-center/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/logistics/ui-cost-center/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
