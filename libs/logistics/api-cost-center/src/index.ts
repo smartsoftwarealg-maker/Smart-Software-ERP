@@ -1,1 +1,2 @@
-export * from './lib/logistics-api-cost-center.module';
+export * from './lib/cost-center-api';
+export * from './lib/cost-center.service';

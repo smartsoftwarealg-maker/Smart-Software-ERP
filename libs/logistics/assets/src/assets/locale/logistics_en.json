@@ -55,5 +55,8 @@
     "AGENT_PRICE": "Agent price",
     "EDIT_AGENT_PRICE": "Edit agent price",
     "DESCRIPTION_AR": "Description ar",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "COST_CENTER": "Cost center",
+    "EDIT_COST_CENTER": "Edit Cost center",
+    "GROUP": "Group"
 }
