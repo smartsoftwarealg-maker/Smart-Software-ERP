@@ -41,5 +41,12 @@
     "BANK_RIB": "Banque R.I.B",
     "FUNDS": "Fonds",
     "PAYROLL": "Paie",
-    "DIVERSE": "Diverse"
+    "DIVERSE": "Diverse",
+    "DOMAIN": "Domaine",
+    "PROPERTY": "Propriété",
+    "PROPERTY_VALUE": "Valeur de la propriété",
+    "SMTP": "SMTP",
+    "EDIT_SMTP": "Edit SMTP"
+
+
 }

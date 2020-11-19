@@ -41,5 +41,10 @@
     "BANK_RIB": "Bank R.I.B",
     "FUNDS": "Funds",
     "PAYROLL": "Payroll",
-    "DIVERSE": "Diverse"
+    "DIVERSE": "Diverse",
+    "DOMAIN": "Domain",
+    "PROPERTY": "Property",
+    "PROPERTY_VALUE": "Property value",
+    "SMTP": "SMTP",
+    "EDIT_SMTP": "Edit SMTP"
 }

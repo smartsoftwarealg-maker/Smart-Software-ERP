@@ -1,41 +1,52 @@
 
 :host {
-    overflow: hidden;
-    display: flex;
     flex-direction: row;
     align-items: center;
-
-    min-width: 320px;
-    width: 320px;
-    max-width: 320px;
-
     height: 48px;
+    width: 320px;
+    text-align: center;
     line-height: 48px;
     border-radius: 8px;
 }
+.container{
+    text-align: center;
+    width: 100%;
+}
+
+.row{
+    margin: 0 8px;
+    display: inline-block;
+}
+.go-to-page,
+.page-size-button-container {
+    display: inline-block;
+    text-align: center;
+    button{
+        margin: 4px;
+    }
+}
 
 .pagination-buttons {
-    flex: 160px 0 0;
-    width: 160px;
+    width: 200px;
     height: 40px;
+    margin: auto;
+    display: inline-block;
+    clear: both;
     line-height: 40px;
     padding-top: 4px;
     padding-bottom: 4px;
-    overflow: hidden;
 }
 
 .pagination-config {
-    flex: 160px 0 0;
-    width: 160px;
+    display: inline-block;
     height: 48px;
     line-height: 48px;
-    overflow: hidden;
 }
 
 .page-input {
     text-align: center;
     height: 20px;
-    width: 60px;
+    width: 30px;
     overflow: hidden;
     margin-top: 4px;
     margin-bottom: 4px;

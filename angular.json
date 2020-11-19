@@ -1211,6 +1211,146 @@
           "style": "scss"
         }
       }
+    },
+    "administration-api-smtp": {
+      "projectType": "library",
+      "root": "libs/administration/api-smtp",
+      "sourceRoot": "libs/administration/api-smtp/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/administration/api-smtp/tsconfig.lib.json",
+              "libs/administration/api-smtp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/api-smtp/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/administration/api-smtp/jest.config.js",
+            "tsConfig": "libs/administration/api-smtp/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/administration/api-smtp/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "administration-ui-smtp": {
+      "projectType": "library",
+      "root": "libs/administration/ui-smtp",
+      "sourceRoot": "libs/administration/ui-smtp/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/administration/ui-smtp/tsconfig.lib.json",
+              "libs/administration/ui-smtp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/ui-smtp/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/administration/ui-smtp/jest.config.js",
+            "tsConfig": "libs/administration/ui-smtp/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/administration/ui-smtp/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "logistics-api-cost-center": {
+      "projectType": "library",
+      "root": "libs/logistics/api-cost-center",
+      "sourceRoot": "libs/logistics/api-cost-center/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-cost-center/tsconfig.lib.json",
+              "libs/logistics/api-cost-center/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-cost-center/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logistics/api-cost-center/jest.config.js",
+            "tsConfig": "libs/logistics/api-cost-center/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/logistics/api-cost-center/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "logistics-ui-cost-center": {
+      "projectType": "library",
+      "root": "libs/logistics/ui-cost-center",
+      "sourceRoot": "libs/logistics/ui-cost-center/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/ui-cost-center/tsconfig.lib.json",
+              "libs/logistics/ui-cost-center/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/ui-cost-center/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/logistics/ui-cost-center/jest.config.js",
+            "tsConfig": "libs/logistics/ui-cost-center/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/logistics/ui-cost-center/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
