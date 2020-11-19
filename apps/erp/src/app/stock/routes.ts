@@ -8,6 +8,7 @@ import {
     STOCK_CITY_URL,
     STOCK_CLASSES_URL,
     STOCK_COMPANY_TYPE_URL,
+    STOCK_COST_CENTER_URL,
     STOCK_COUNTRY_URL,
     STOCK_CURRENCY_URL,
     STOCK_MARKS_URL,
@@ -50,6 +51,8 @@ import {
 } from '@ss/common/ui-lookup';
 import {AgentDetailComponent, AgentListComponent} from "@ss/logistics/ui-agent";
 import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
+import {CostCenterListComponent} from "@ss/logistics/ui-cost-center";
+import {CostCenterDetailComponent} from "@ss/logistics/ui-cost-center";
 
 
 export const mainRoutes: Routes = [
@@ -98,6 +101,23 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: AgentPriceDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_COST_CENTER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CostCenterListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: CostCenterDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

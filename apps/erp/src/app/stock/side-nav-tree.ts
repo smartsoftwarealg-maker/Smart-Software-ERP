@@ -5,7 +5,7 @@ import {
     ABS_STOCK_ARTICLES_URL,
     ABS_STOCK_CITY,
     ABS_STOCK_CLASSES_URL,
-    ABS_STOCK_COMPANY_TYPE,
+    ABS_STOCK_COMPANY_TYPE, ABS_STOCK_COST_CENTER_URL,
     ABS_STOCK_COUNTRY,
     ABS_STOCK_CURRENCY,
     ABS_STOCK_MARKS_URL,
@@ -35,6 +35,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'LOGISTICS_AGENT_PRICE',
                     icon: 'fas fa-dollar-sign',
                     route: ABS_STOCK_AGENT_PRICE_URL
+                },
+                {
+                    name: 'LOGISTICS_COST_CENTER',
+                    icon: 'fas fa-building',
+                    route: ABS_STOCK_COST_CENTER_URL
                 }
             ]
         },

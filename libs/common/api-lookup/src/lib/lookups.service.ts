@@ -41,7 +41,7 @@ import {
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL, Fund, FUNDS_URL,
+    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup,
 } from './lookups-api';
 
 @Injectable({
@@ -134,6 +134,10 @@ export class LookupsService {
 
     public getFunds(): Observable<Fund[]> {
         return this.lookupCacheSrv.load<Fund>(FUNDS_URL, "funds");
+    }
+
+    public getCCGroups(): Observable<CCGroup[]> {
+        return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, "cc_groups");
     }
 
 }

@@ -30,12 +30,9 @@ export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice>
     }
 
     public ngOnInit() {
-        this.shellSrv.setTilte(this.title);
-        this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        this.shellSrv.setButtons([this.refreshButton, this.editButton]);
-        this.pagination.onChange = () => this.refresh();
-        this.refresh();
+        this.addButton.visible = false;
+        this.deleteButton.visible = false;
+        super.ngOnInit();
     }
 
 }

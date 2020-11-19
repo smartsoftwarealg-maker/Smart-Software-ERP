@@ -55,5 +55,9 @@
     "AGENT_PRICE": "أسعار العميل",
     "EDIT_AGENT_PRICE": "تعديل أسعار العميل",
     "DESCRIPTION_AR": "الوصف باللغة العربية",
-    "DESCRIPTION": "الوصف"
+    "DESCRIPTION": "الوصف",
+    "COST_CENTER": "تكاليف المركز",
+    "EDIT_COST_CENTER": "تعديل تكاليف المركز",
+    "GROUP": "المجموعة"
+
 }

@@ -84,6 +84,18 @@
       ],
       "@ss/logistics/ui-cost-center": [
         "libs/logistics/ui-cost-center/src/index.ts"
+      ],
+      "@ss/stock/api-inventory-entry": [
+        "libs/stock/api-inventory-entry/src/index.ts"
+      ],
+      "@ss/stock/ui-inventory-entry": [
+        "libs/stock/ui-inventory-entry/src/index.ts"
+      ],
+      "@ss/stock/ui-inventory-exit": [
+        "libs/stock/ui-inventory-exit/src/index.ts"
+      ],
+      "@ss/stock/api-inventory-exit": [
+        "libs/stock/api-inventory-exit/src/index.ts"
       ]
     }
   },

@@ -55,5 +55,8 @@
     "AGENT_PRICE": "Prix de l'agent",
     "EDIT_AGENT_PRICE": "Modifier le prix de l'agent",
     "DESCRIPTION_AR": "Description ar",
-    "DESCRIPTION": "Description"
+    "DESCRIPTION": "Description",
+    "COST_CENTER": "Centre de coûts",
+    "EDIT_COST_CENTER": "Modifier le centre de coûts",
+    "GROUP": "Groupe"
 }

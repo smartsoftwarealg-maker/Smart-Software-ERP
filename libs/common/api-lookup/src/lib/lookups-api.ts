@@ -25,6 +25,7 @@ export const ACTIVITY_URL = "/lookups/activities";
 export const FUNDS_URL = '/lookups/funds';
 export const BANKS_URL = '/banks';
 export const AGENT_PRICES_URL = '/inventory/agentprices';
+export const CC_GROUP_URL = '/lookups/ccenter_groups';
 
 
 export interface Wilaya {
@@ -158,6 +159,11 @@ export interface AgentPrice {
 }
 
 export interface Fund {
+    id: number;
+    description: string;
+}
+
+export interface CCGroup {
     id: number;
     description: string;
 }
