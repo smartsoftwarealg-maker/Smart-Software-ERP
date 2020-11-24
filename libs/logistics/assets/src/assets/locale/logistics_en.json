@@ -58,5 +58,14 @@
     "DESCRIPTION": "Description",
     "COST_CENTER": "Cost center",
     "EDIT_COST_CENTER": "Edit Cost center",
-    "GROUP": "Group"
+    "GROUP": "Group",
+    "ACC_TYPE": "Account type",
+    "ANALYZED": "Analyzed",
+    "ACCOUNT_NO": "Account No",
+    "BALANCE_CONSTRAINT": "Balance constraint",
+    "SUMMARY_LEVEL": "Summary level",
+    "BUDGET_ACCOUNT": "Budget account",
+    "TREASURY_ACCOUNT": "Treasury account",
+    "ACCOUNTS": "Account",
+    "EDIT_ACCOUNT": "Edit account"
 }

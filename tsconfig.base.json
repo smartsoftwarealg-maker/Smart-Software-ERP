@@ -96,7 +96,10 @@
       ],
       "@ss/stock/api-inventory-exit": [
         "libs/stock/api-inventory-exit/src/index.ts"
-      ]
+      ],
+      "@ss/logistics/api-account": ["libs/logistics/api-account/src/index.ts"],
+      "@ss/logistics/ui-account": ["libs/logistics/ui-account/src/index.ts"],
+      "@ss/common/ui-datepicker": ["libs/common/ui-datepicker/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,58 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="accountNo" class="value">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <input matInput formControlName="accountNo" type="text" required>
+                <mat-error *ngIf="form.controls['accountNo'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="description" class="value">
+                <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="descriptionِAr" class="value">
+                <mat-label translate>LOGISTICS_DESCRIPTION_AR</mat-label>
+                <input matInput formControlName="descriptionAr" type="text">
+            </mat-form-field>
+
+            <mat-form-field id="balanceConstraint" class="value">
+                <mat-label translate>LOGISTICS_BALANCE_CONSTRAINT</mat-label>
+                <input matInput formControlName="balanceConstraint" type="number">
+            </mat-form-field>
+
+
+            <mat-form-field class="value">
+                <mat-label translate>LOGISTICS_ACC_TYPE</mat-label>
+                <mat-select formControlName="accType">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of accountTypes" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="value">
+                <mat-checkbox formControlName="analyzed" translate>LOGISTICS_ANALYZED</mat-checkbox>
+            </div>
+
+            <div class="value">
+                <mat-checkbox formControlName="summaryLevel" translate>LOGISTICS_SUMMARY_LEVEL</mat-checkbox>
+            </div>
+
+            <div class="value">
+                <mat-checkbox formControlName="budgetAccount" translate>LOGISTICS_BUDGET_ACCOUNT</mat-checkbox>
+            </div>
+
+            <div class="value">
+                <mat-checkbox formControlName="treasuryAccount" translate>LOGISTICS_TREASURY_ACCOUNT</mat-checkbox>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

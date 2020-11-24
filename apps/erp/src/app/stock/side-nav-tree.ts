@@ -1,13 +1,17 @@
 import {
-    ABS_STOCK_ACTIVITY, ABS_STOCK_AGENT_PRICE_URL,
+    ABS_STOCK_ACCOUNT_URL,
+    ABS_STOCK_ACTIVITY,
+    ABS_STOCK_AGENT_PRICE_URL,
     ABS_STOCK_AGENT_TYPE,
     ABS_STOCK_AGENT_URL,
     ABS_STOCK_ARTICLES_URL,
     ABS_STOCK_CITY,
     ABS_STOCK_CLASSES_URL,
-    ABS_STOCK_COMPANY_TYPE, ABS_STOCK_COST_CENTER_URL,
+    ABS_STOCK_COMPANY_TYPE,
+    ABS_STOCK_COST_CENTER_URL,
     ABS_STOCK_COUNTRY,
     ABS_STOCK_CURRENCY,
+    ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_MARKS_URL,
     ABS_STOCK_PAY_MODE,
     ABS_STOCK_STORE_NAMES_URL,
@@ -30,6 +34,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'LOGISTICS_AGENT',
                     icon: 'fas fa-user',
                     route: ABS_STOCK_AGENT_URL
+                },
+                {
+                    name: 'LOGISTICS_ACCOUNTS',
+                    icon: 'fas fa-user-circle',
+                    route: ABS_STOCK_ACCOUNT_URL
                 },
                 {
                     name: 'LOGISTICS_AGENT_PRICE',
@@ -122,6 +131,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'STOCK_ARTICLES',
                     icon: 'fas fa-box',
                     route: ABS_STOCK_ARTICLES_URL
+                },
+                {
+                    name: 'STOCK_INVENTORY_ENTRY',
+                    icon: 'fas fa-keyboard',
+                    route: ABS_STOCK_INVENTORY_ENTRY_URL
                 }
             ]
         },

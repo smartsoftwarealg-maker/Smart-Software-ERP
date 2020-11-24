@@ -1,0 +1,41 @@
+<mat-table mat-table [dataSource]="data" class="main-table">
+
+    <ng-container matColumnDef="accountNo">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.accountNo}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.description}}
+        </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="accType">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACC_TYPE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{accountTypes[e.accType]}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="analyzed">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ANALYZED</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            <mat-checkbox disabled="true" [checked]="e.analyzed">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

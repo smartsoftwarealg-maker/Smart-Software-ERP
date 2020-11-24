@@ -1,0 +1,13 @@
+<div class="container">
+    <mat-form-field>
+        <mat-label>
+            <ng-content></ng-content>
+        </mat-label>
+        <input (blur)="markAsTouched()" #element [disabled]="pOff" matInput
+               [matDatepicker]="datePicker" [min]="pMin" [value]="pDate" [max]="pMax"
+               (dateChange)="onDateOnlyChanged($event.value)" [required]="required">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+
+</div>

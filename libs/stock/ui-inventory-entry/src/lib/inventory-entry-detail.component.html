@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="number" class="value">
+                <mat-label translate>STOCK_NUMBER</mat-label>
+                <input matInput formControlName="number" type="number" required>
+                <mat-error *ngIf="form.controls.number.invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+
+            <ss-date-picker class="value" formControlName="date">
+                <span translate>STOCK_DATE</span>
+            </ss-date-picker>
+
+
+            <mat-form-field id="reference" class="value">
+                <mat-label translate>STOCK_REFERENCE</mat-label>
+                <input matInput formControlName="number" type="text">
+            </mat-form-field>
+
+            <ss-date-picker class="value" formControlName="referenceDocDate">
+                <span translate>STOCK_REFERENCE_DOC_DATE</span>
+            </ss-date-picker>
+
+
+        </form>
+    </mat-card-content>
+</mat-card>
+

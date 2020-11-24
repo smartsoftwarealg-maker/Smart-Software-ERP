@@ -58,6 +58,14 @@
     "DESCRIPTION": "الوصف",
     "COST_CENTER": "تكاليف المركز",
     "EDIT_COST_CENTER": "تعديل تكاليف المركز",
-    "GROUP": "المجموعة"
-
+    "GROUP": "المجموعة",
+    "ACC_TYPE": "نوع الحساب",
+    "ANALYZED": "معالج",
+    "ACCOUNT_NO": "رقم الحساب",
+    "BALANCE_CONSTRAINT": "قيد الحساب",
+    "SUMMARY_LEVEL": "مستوى الملخص",
+    "BUDGET_ACCOUNT": "حساب الميزانية",
+    "TREASURY_ACCOUNT": "حساب الخزينة",
+    "ACCOUNTS": "الحساب",
+    "EDIT_ACCOUNT": "تعديل الحساب"
 }

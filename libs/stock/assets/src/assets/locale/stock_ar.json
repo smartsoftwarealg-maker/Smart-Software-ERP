@@ -4,8 +4,13 @@
     "PRICE": "السعر",
     "ACCOUNTNO": "رقم الحساب",
     "ARTICLES": "السلع",
+    "INVENTORY_ENTRY": "إدخال المخزون",
     "EDIT_ARTICLE": "تعديل سلعة",
     "INVENTORY": "المخزون",
     "PERCENTAGE": "النسبة",
-    "FILE": "الملف"
+    "FILE": "الملف",
+    "DATE": "التاريخ",
+    "REFERENCE_DOC_DATE": "تاريخ الرمز",
+    "NUMBER": "الرقم",
+    "DEALER": "البائع"
 }

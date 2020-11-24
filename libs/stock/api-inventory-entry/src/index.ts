@@ -1,1 +1,2 @@
-export * from './lib/stock-api-inventory-entry.module';
+export * from './lib/inventory-entry.service';
+export * from './lib/inventory-entry-api';

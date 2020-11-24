@@ -1,0 +1,16 @@
+
+:host {
+    width: 100%;
+    display: inline-block;
+}
+
+.container {
+    width: 100%;
+    display: inline-block;
+
+    input,
+    mat-form-field {
+        width: 100% !important;
+    }
+}
+

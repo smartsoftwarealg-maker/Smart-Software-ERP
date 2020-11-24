@@ -154,6 +154,15 @@
     },
     "stock-api-inventory-exit": {
       "tags": []
+    },
+    "logistics-api-account": {
+      "tags": []
+    },
+    "logistics-ui-account": {
+      "tags": []
+    },
+    "common-ui-datepicker": {
+      "tags": []
     }
   }
 }

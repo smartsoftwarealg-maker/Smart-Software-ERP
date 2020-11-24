@@ -1,5 +1,5 @@
 import {
-    LOOKUPS_URL,
+    LOOKUPS_URL, STOCK_ACCOUNT_URL,
     STOCK_ACTIVITY_URL,
     STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_TYPE_URL,
@@ -11,6 +11,7 @@ import {
     STOCK_COST_CENTER_URL,
     STOCK_COUNTRY_URL,
     STOCK_CURRENCY_URL,
+    STOCK_INVENTORY_ENTRY_URL,
     STOCK_MARKS_URL,
     STOCK_PAY_MODE_URL,
     STOCK_STORE_NAMES_URL,
@@ -50,9 +51,10 @@ import {
     VatListComponent,
 } from '@ss/common/ui-lookup';
 import {AgentDetailComponent, AgentListComponent} from "@ss/logistics/ui-agent";
+import {AccountDetailComponent, AccountListComponent} from "@ss/logistics/ui-account";
 import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
-import {CostCenterListComponent} from "@ss/logistics/ui-cost-center";
-import {CostCenterDetailComponent} from "@ss/logistics/ui-cost-center";
+import {CostCenterDetailComponent, CostCenterListComponent} from "@ss/logistics/ui-cost-center";
+import {InventoryEntryDetailComponent, InventoryEntryListComponent} from "@ss/stock/ui-inventory-entry";
 
 
 export const mainRoutes: Routes = [
@@ -74,6 +76,23 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: STOCK_INVENTORY_ENTRY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryEntryListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: InventoryEntryDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
         path: STOCK_AGENT_URL,
         children: [
             {
@@ -84,6 +103,23 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: AgentDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AccountListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: AccountDetailComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

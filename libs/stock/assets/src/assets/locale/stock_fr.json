@@ -4,8 +4,13 @@
     "PRICE": "Prix",
     "ACCOUNTNO": "Account No.",
     "ARTICLES": "Articles",
+    "INVENTORY_ENTRY": "Bon d' entrée ",
     "EDIT_ARTICLE": "Modifier l'article",
     "INVENTORY": "Inventaire",
     "PERCENTAGE": "Pourcentage",
-    "FILE": "Dossier"
+    "FILE": "Dossier",
+    "DATE": "Date",
+    "REFERENCE_DOC_DATE": "Date de référence",
+    "NUMBER": "Nombre",
+    "DEALER": "Marchand"
 }

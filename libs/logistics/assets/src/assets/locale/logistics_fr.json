@@ -58,5 +58,14 @@
     "DESCRIPTION": "Description",
     "COST_CENTER": "Centre de coûts",
     "EDIT_COST_CENTER": "Modifier le centre de coûts",
-    "GROUP": "Groupe"
+    "GROUP": "Groupe",
+    "ACC_TYPE": "Type de compte",
+    "ANALYZED": "ANALYSÉ",
+    "ACCOUNT_NO": "N°COMPTE",
+    "BALANCE_CONSTRAINT": "Contrainte d'équilibre",
+    "SUMMARY_LEVEL": "Niveau résumé",
+    "BUDGET_ACCOUNT": "Compte budgétaire",
+    "TREASURY_ACCOUNT": "Compte du Trésor",
+    "ACCOUNTS": "Compte",
+    "EDIT_ACCOUNT": "Modifier le compte"
 }
