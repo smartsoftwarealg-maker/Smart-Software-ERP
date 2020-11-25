@@ -94,5 +94,7 @@
     "EDUCATION_LEVELS": "Niveaux d'éducation",
     "MARITAL_STATUS": "État civil",
     "NATIONALITIES": "Nationalités",
-    "SERVICES": "Services"
+    "SERVICES": "Services",
+
+    "NO_MATCH": "Pas de correspondance"
 }

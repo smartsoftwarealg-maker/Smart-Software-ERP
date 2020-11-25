@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {Center, DocRight, Right, User, UserContext, UserInfo} from './models';
+import {DocRight, Right, User, UserContext, UserInfo} from './models';
 import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
 
@@ -12,6 +12,8 @@ interface Severe {
     providedIn: 'root'
 })
 export class UserService {
+
+
     private readonly EMPTY_USER: UserInfo = {
         user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
         centers: [],
@@ -23,7 +25,7 @@ export class UserService {
     public context: UserContext = null;
     public itemCount = 0;
 
-    constructor(private httpSrv: HttpService) {
+    constructor(protected httpSrv: HttpService) {
         const user = localStorage.getItem('cuser');
         if (user) {
             this.userInfo = JSON.parse(user) as UserInfo;

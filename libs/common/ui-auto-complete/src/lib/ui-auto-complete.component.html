@@ -1,0 +1,22 @@
+<form class="input-container" [formGroup]="container" [attr.aria-labelledby]="_formField?.getLabelId()">
+
+
+    <input type="text"
+           #search
+           formControlName="search"
+           [matAutocomplete]="auto">
+
+
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith"
+                      (opened)="panelOpened()"
+                      (closed)="panelClosed()"
+                      (optionSelected)="changeValue($event.option.value.id);isAnyOptionSelected=true">
+        <mat-option *ngFor="let option of data" [value]="option">`
+            {{option[descriptionFieldName]}}
+        </mat-option>
+        <mat-option *ngIf="!match" disabled="disabled" value="null">
+            <span translate>COMMON_NO_MATCH</span>
+        </mat-option>
+    </mat-autocomplete>
+
+</form>

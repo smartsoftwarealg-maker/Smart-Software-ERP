@@ -2,8 +2,9 @@ import {map} from 'rxjs/operators';
 import {HttpService} from '@ss/common/api-common';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
+import {AutoCompleteService} from "@ss/common/ui-auto-complete";
 
-export class BaseEntityService<T> {
+export class BaseEntityService<T> implements AutoCompleteService<T> {
 
     private parentId: number
 

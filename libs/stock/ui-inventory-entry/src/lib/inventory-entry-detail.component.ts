@@ -8,6 +8,8 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryEntry, InventoryEntryService} from "@ss/stock/api-inventory-entry";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
+import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {User, UserService} from "@ss/common/api-users";
 
 
 @Component({
@@ -18,6 +20,7 @@ import {tap} from "rxjs/operators";
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<InventoryEntry> {
 
     public groups: CCGroup[];
+    public dealerAutoCompleteModel = new AutoCompleteModel<User>(this.usersService)
 
     constructor(
         public inventoryEntryService: InventoryEntryService,
@@ -26,6 +29,7 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
+        public usersService: UserService,
         public lookupsSrv: LookupsService) {
         super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT_PRICE');
     }
@@ -46,8 +50,16 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer]
+            dealer: [b.dealer, Validators.required]
         });
     }
 
+
+    finishLoading(e: InventoryEntry) {
+        super.finishLoading(e);
+        this.form.controls.dealer.valueChanges
+            .subscribe(x => {
+                console.log(x);
+            });
+    }
 }

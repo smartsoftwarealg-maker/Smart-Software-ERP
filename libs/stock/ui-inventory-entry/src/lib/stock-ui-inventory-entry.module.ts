@@ -8,7 +8,8 @@ import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {RouterModule} from "@angular/router";
-import {CommonUiDatepickerModule, DatePickerComponent} from "@ss/common/ui-datepicker";
+import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
+import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import {CommonUiDatepickerModule, DatePickerComponent} from "@ss/common/ui-datep
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
-        CommonUiDatepickerModule
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
     ],
     declarations: [
         InventoryEntryListComponent,

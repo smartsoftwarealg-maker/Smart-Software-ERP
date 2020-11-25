@@ -94,5 +94,7 @@
     "EDUCATION_LEVELS": "المستويات الدراسية",
     "MARITAL_STATUS": "الحالة الإجتماعية",
     "SERVICES": "الخدمات",
-    "NATIONALITIES": "الجنسيات"
+    "NATIONALITIES": "الجنسيات",
+
+    "NO_MATCH": "لا توجد نتائج"
 }

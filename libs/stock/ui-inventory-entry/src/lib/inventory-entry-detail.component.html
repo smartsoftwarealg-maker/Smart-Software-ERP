@@ -24,6 +24,20 @@
                 <span translate>STOCK_REFERENCE_DOC_DATE</span>
             </ss-date-picker>
 
+            <mat-form-field class="value">
+                <mat-label translate>STOCK_DEALER</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="dealerAutoCompleteModel"
+                                  formControlName="dealer"></ss-auto-complete>
+                <mat-error
+                    *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error
+                    *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+
+            </mat-form-field>
 
         </form>
     </mat-card-content>

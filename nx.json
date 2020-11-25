@@ -163,6 +163,12 @@
     },
     "common-ui-datepicker": {
       "tags": []
+    },
+    "common-ui-auto-complete": {
+      "tags": []
+    },
+    "common-api-users": {
+      "tags": []
     }
   }
 }

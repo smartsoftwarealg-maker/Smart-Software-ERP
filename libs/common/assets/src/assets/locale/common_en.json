@@ -94,5 +94,7 @@
     "EDUCATION_LEVELS": "Education levels",
     "MARITAL_STATUS": "Marital status",
     "SERVICES": "Services",
-    "NATIONALITIES": "Nationalities"
+    "NATIONALITIES": "Nationalities",
+
+    "NO_MATCH": "No matches"
 }
