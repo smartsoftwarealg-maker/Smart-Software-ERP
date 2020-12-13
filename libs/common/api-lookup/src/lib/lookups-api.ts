@@ -1,8 +1,9 @@
 
-export const WILAYAS_URL = '/wilayas';
 export const VATS_URL = '/vats';
-export const MARITAL_STATUS_URL = '/mstatus';
-export const NATIONALITIES_URL = '/nationalities';
+export const MARITAL_STATUS_URL = '/lookups/marital_status';
+export const WILAYAS_URL = '/lookups/wilayas';
+export const NATIONALITIES_URL = '/lookups/nationalities';
+
 export const EDUCATION_LEVEL_URL = '/educlevels';
 export const DIPLOMAS_URL = '/diplomas';
 export const POSTS_URL = '/posts';

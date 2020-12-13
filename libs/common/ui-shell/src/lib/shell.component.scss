@@ -31,7 +31,7 @@
 
 @media (max-width: 500px) {
     .larger-than-500 {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -322,6 +322,34 @@
 
 :focus{
     outline: none;
+}
+
+.toolbar-username {
+    height: 40px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    .user-icon {
+        width: 25px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .user-name {
+        font-weight: bold;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
 }
 
 /*.side-nav-separator {

@@ -111,10 +111,17 @@
 
                     </ng-container>
 
-                    <button #trigger="matMenuTrigger" [matMenuTriggerFor]="menu" mat-icon-button>
+                    <button mat-icon-button #trigger="matMenuTrigger" [matMenuTriggerFor]="menu">
                         <i class="fas fa-caret-down"></i>
-                        <!--i class="far fa-ellipsis-v"></i-->
                     </button>
+
+                    <div class="toolbar-username margin-end-8 large-only">
+                        <div class="user-icon">
+                            <i class="fas fa-user-alt"></i>
+                        </div>
+                        <div class="user-name margin-start-4">{{currentUser ? currentUser.fullName : ''}}</div>
+                    </div>
+
                 </div>
 
             </div>
@@ -136,7 +143,6 @@
     <mat-menu #menu="matMenu" style="overflow: hidden">
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
             <ng-container *ngFor="let b of shellSrv.buttons">
-
 
                 <ng-template [ngIf]="b.menuItems">
                     <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item small-only"
@@ -173,6 +179,17 @@
 
             </ng-container>
 
+            <mat-divider *ngIf="shellSrv.buttons.length"></mat-divider>
+
+            <button type="button" mat-menu-item class="settings-item small-only">
+                <div class="icon">
+                    <i class="fas fa-user-alt"></i>
+                </div>
+                <span class="text" style="font-weight: bold;" translate>{{currentUser ? currentUser.fullName : ''}}</span>
+            </button>
+
+            <mat-divider class="small-only"></mat-divider>
+            
             <button type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
                 <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
                 <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
