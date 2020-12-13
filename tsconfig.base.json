@@ -103,7 +103,43 @@
       "@ss/common/ui-auto-complete": [
         "libs/common/ui-auto-complete/src/index.ts"
       ],
-      "@ss/common/api-users": ["libs/common/api-users/src/index.ts"]
+      "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
+      "@ss/stock/api-inventory-entry-lines": [
+        "libs/stock/api-inventory-entry-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-inventory-entry-lines": [
+        "libs/stock/ui-inventory-entry-lines/src/index.ts"
+      ],
+      "@ss/stock/api-inventory-exit-lines": [
+        "libs/stock/api-inventory-exit-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-inventory-exit-lines": [
+        "libs/stock/ui-inventory-exit-lines/src/index.ts"
+      ],
+      "@ss/stock/api-consumption": ["libs/stock/api-consumption/src/index.ts"],
+      "@ss/stock/api-consumption-lines": [
+        "libs/stock/api-consumption-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-consumption-lines": [
+        "libs/stock/ui-consumption-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-consumption": ["libs/stock/ui-consumption/src/index.ts"],
+      "@ss/stock/api-inventory": ["libs/stock/api-inventory/src/index.ts"],
+      "@ss/stock/ui-inventory": ["libs/stock/ui-inventory/src/index.ts"],
+      "@ss/stock/ui-reception": ["libs/stock/ui-reception/src/index.ts"],
+      "@ss/stock/api-reception": ["libs/stock/api-reception/src/index.ts"],
+      "@ss/stock/api-reception-lines": [
+        "libs/stock/api-reception-lines/src/index.ts"
+      ],
+      "@ss/stock/api-inventory-lines": [
+        "libs/stock/api-inventory-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-inventory-lines": [
+        "libs/stock/ui-inventory-lines/src/index.ts"
+      ],
+      "@ss/stock/ui-reception-lines": [
+        "libs/stock/ui-reception-lines/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

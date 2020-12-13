@@ -1,5 +1,6 @@
 import {
-    LOOKUPS_URL, STOCK_ACCOUNT_URL,
+    LOOKUPS_URL,
+    STOCK_ACCOUNT_URL,
     STOCK_ACTIVITY_URL,
     STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_TYPE_URL,
@@ -7,19 +8,21 @@ import {
     STOCK_ARTICLES_URL,
     STOCK_CITY_URL,
     STOCK_CLASSES_URL,
-    STOCK_COMPANY_TYPE_URL,
+    STOCK_COMPANY_TYPE_URL, STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
     STOCK_COUNTRY_URL,
     STOCK_CURRENCY_URL,
-    STOCK_INVENTORY_ENTRY_URL,
+    STOCK_INVENTORY_ENTRY_URL, STOCK_INVENTORY_EXIT_URL,
     STOCK_MARKS_URL,
     STOCK_PAY_MODE_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL
+    STOCK_VAT_URL,
+    STOCK_INVENTORY_URL,
+    STOCK_RECEPTION_URL
 } from '../constants';
-import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {Routes} from '@angular/router';
 import {
@@ -55,6 +58,15 @@ import {AccountDetailComponent, AccountListComponent} from "@ss/logistics/ui-acc
 import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
 import {CostCenterDetailComponent, CostCenterListComponent} from "@ss/logistics/ui-cost-center";
 import {InventoryEntryDetailComponent, InventoryEntryListComponent} from "@ss/stock/ui-inventory-entry";
+import {InventoryEntryLinesDetailComponent, InventoryEntryLinesListComponent} from "@ss/stock/ui-inventory-entry-lines";
+import {InventoryExitDetailComponent, InventoryExitListComponent} from "@ss/stock/ui-inventory-exit";
+import {InventoryExitLinesDetailComponent, InventoryExitLinesListComponent} from "@ss/stock/ui-inventory-exit-lines";
+import {ConsumptionDetailComponent, ConsumptionListComponent} from "@ss/stock/ui-consumption";
+import {ConsumptionLinesDetailComponent, ConsumptionLinesListComponent} from "@ss/stock/ui-consumption-lines";
+import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inventory";
+import {InventoryLinesDetailComponent, InventoryLinesListComponent} from "@ss/stock/ui-inventory-lines";
+import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
+import {ReceptionLinesDetailComponent, ReceptionLinesListComponent} from "@ss/stock/ui-reception-lines";
 
 
 export const mainRoutes: Routes = [
@@ -84,9 +96,137 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
+                path: LINES_DETAIL_URL,
+                component: InventoryEntryLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
                 path: DETAIL_URL,
                 component: InventoryEntryDetailComponent,
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: '',
+                        component: InventoryEntryLinesListComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_INVENTORY_EXIT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryExitListComponent,
                 canActivate: [CanActivateService]
+            },
+            {
+                path: LINES_DETAIL_URL,
+                component: InventoryExitLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: InventoryExitDetailComponent,
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: '',
+                        component: InventoryExitLinesListComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_CONSUMPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ConsumptionListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: LINES_DETAIL_URL,
+                component: ConsumptionLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: ConsumptionDetailComponent,
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: '',
+                        component: ConsumptionLinesListComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_INVENTORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: LINES_DETAIL_URL,
+                component: InventoryLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: InventoryDetailComponent,
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: '',
+                        component: InventoryLinesListComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_RECEPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ReceptionListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: LINES_DETAIL_URL,
+                component: ReceptionLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: DETAIL_URL,
+                component: ReceptionDetailComponent,
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: '',
+                        component: ReceptionLinesListComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

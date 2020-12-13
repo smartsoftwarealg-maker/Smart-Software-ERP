@@ -31,7 +31,7 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
         public lookupsSrv: LookupsService) {
-        super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_AGENT_PRICE');
+        super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_ENTRY');
     }
 
 
@@ -44,6 +44,8 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
+            document: [0],
+            center: [0],
             date: [b.date, Validators.required],
             number: [b.number, Validators.required],
             reference: [b.reference],
@@ -54,12 +56,4 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
         });
     }
 
-
-    finishLoading(e: InventoryEntry) {
-        super.finishLoading(e);
-        this.form.controls.dealer.valueChanges
-            .subscribe(x => {
-                console.log(x);
-            });
-    }
 }

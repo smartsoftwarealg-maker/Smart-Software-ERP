@@ -5,6 +5,9 @@
     "ACCOUNTNO": "Account No.",
     "ARTICLES": "Articles",
     "INVENTORY_ENTRY": "Inventory entry",
+    "EDIT_INVENTORY_ENTRY": "Edit inventory entry",
+    "INVENTORY_EXIT": "Inventory exit",
+    "EDIT_INVENTORY_EXIT": "Edit inventory exit",
     "EDIT_ARTICLE": "Edit article",
     "INVENTORY": "Inventory",
     "PERCENTAGE": "Percentage",
@@ -12,5 +15,17 @@
     "DATE": "Date",
     "REFERENCE_DOC_DATE": "Reference date",
     "NUMBER": "Number",
-    "DEALER": "Dealer"
+    "DEALER": "Dealer",
+    "HEADER": "Header",
+    "FOOTER": "Footer",
+    "STORE": "Store",
+    "POSITION": "Position",
+    "OBSERVATION": "Observation",
+    "QTY_SATISFIED": "Qty rec.",
+    "EDIT_INVENTORY_LINES_ENTRY": "Edit inventory entry lines",
+    "EDIT_INVENTORY_LINES_EXIT": "Edit inventory exit lines",
+    "ARTICLE": "Article",
+    "CONSUMPTION": "Consumption",
+    "EDIT_CONSUMPTION": "Edit Consumption",
+    "SUPPLIER": "Supplier"
 }

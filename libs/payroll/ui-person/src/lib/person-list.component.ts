@@ -3,7 +3,7 @@ import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Person as IPerson, PersonService} from '@ss/payroll/api-person';
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
 import {LookupsService} from "@ss/common/api-lookup";
 import {LanguageService} from "@ss/common/ui-lang";
@@ -89,8 +89,8 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         return map;
     }
 
-    public processLoadedData(data: Person[]): Person[] {
-        return data.map(p => {
+    public processLoadedData(data: Person[]): Observable<Person[]> {
+        return of(data.map(p => {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
             p.birthInfo.birthDate = this.langSrv.formatDate(p.birthInfo.birthDate);
@@ -113,10 +113,9 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
                             throw err;
                         }
                     }
-
                 );
             return p;
-        });
+        }));
     }
 
     public releaseResources(): void {

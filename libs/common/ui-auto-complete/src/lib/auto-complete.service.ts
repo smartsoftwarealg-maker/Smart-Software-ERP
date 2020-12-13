@@ -6,4 +6,6 @@ export interface AutoCompleteService<T> {
 
     get(id: number): Observable<T>;
 
+    getByFilter(filterBy: string, value: string): Observable<T>;
+
 }

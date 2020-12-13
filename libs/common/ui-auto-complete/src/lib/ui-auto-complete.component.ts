@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     Component,
     ElementRef,
     HostBinding,
@@ -14,18 +15,18 @@ import {
 import {
     AbstractControl,
     ControlValueAccessor,
-    FormBuilder,
     FormGroup,
     NgControl,
-    ValidationErrors
+    ValidationErrors,
+    Validator,
 } from "@angular/forms";
 import {MAT_FORM_FIELD, MatFormField, MatFormFieldControl} from "@angular/material/form-field";
-import {coerceBooleanProperty} from "@angular/cdk/coercion";
 import {Subject} from "rxjs";
 import {AutoCompleteModel} from './auto-complete-model';
 import {FocusMonitor} from "@angular/cdk/a11y";
 import {debounceTime} from "rxjs/operators";
 import {MatAutocompleteTrigger} from "@angular/material/autocomplete";
+import {coerceBooleanProperty} from "@angular/cdk/coercion";
 
 
 @Component({
@@ -39,10 +40,16 @@ import {MatAutocompleteTrigger} from "@angular/material/autocomplete";
         '[id]': 'id'
     }
 })
-export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, MatFormFieldControl<any>, OnDestroy {
+export class UiAutoCompleteComponent implements OnInit, AfterViewInit, Validator, ControlValueAccessor, MatFormFieldControl<any>, OnDestroy {
+
+    static nextId = 0;
+    id = `ss-auto-complete-${UiAutoCompleteComponent.nextId++}`;
 
 
-    data: any[];
+    @ViewChild('form') form: FormGroup;
+
+    @ViewChild(MatAutocompleteTrigger) autoComplete: MatAutocompleteTrigger;
+
 
     @Input()
     model: AutoCompleteModel<any>;
@@ -51,26 +58,13 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
     descriptionFieldName: string = 'description';
 
     @Input()
-    idFieldName: string = 'id';
+    idOrFilterFieldName: string = 'id';
 
-    static nextId = 0;
+    @Input()
+    filterParam: string = 'find';
 
-    isAnyOptionSelected = false;
-
-    //
-
-    container: FormGroup;
-    @ViewChild('search') searchInput: HTMLInputElement;
-    @ViewChild(MatAutocompleteTrigger) matAutocomplete: MatAutocompleteTrigger;
-
-
-    stateChanges = new Subject<void>();
-    searchChanges = new Subject<string>();
-    focused = false;
-    controlType = 'ss-autocomplete';
-    id = `ss-auto-complete-${UiAutoCompleteComponent.nextId++}`;
-
-    match = true;
+    @Input()
+    replaceIdWithFilter = false;
 
     @Input()
     get placeholder(): string {
@@ -103,28 +97,32 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
 
     set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
-        this.searchInput.disabled = this._disabled;
+        this._disabled ? this.form.disable() : this.form.enable();
         this.stateChanges.next();
     }
 
     private _disabled = false;
 
-
     @Input()
-    get value(): any {
-        return this._value;
-    }
+    value: any;
 
-    set value(id: any) {
-        this._value = id;
-        this.stateChanges.next();
-    }
+    descriptionValue: any;
+
 
     get errorState(): boolean {
         return this.ngControl.errors !== null && !!this.ngControl.touched;
     }
 
-    private _value: any;
+    stateChanges: Subject<void> = new Subject<void>();
+    userAriaDescribedBy: string;
+
+
+    data: any[] = [];
+    searchChanges = new Subject<string>();
+    focused = false;
+    controlType = 'ss-autocomplete';
+    isAnyOptionSelected;
+    noMatchFound: boolean = false;
 
     onChange = (_: any) => {
     };
@@ -132,11 +130,13 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
     onTouched = () => {
     };
 
-    displayWith = (value: any) => value ? value[this.descriptionFieldName] : null;
+    onValidator = () => {
+        console.log("test");
+    }
 
 
     get empty() {
-        return !this.container.value.search;
+        return !this.form || !this.form.value.search;
     }
 
     @HostBinding('class.floating')
@@ -144,16 +144,17 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
         return this.focused || !this.empty;
     }
 
+    @HostListener('keyup')
+    onSearchChange(noMatchFound$event: KeyboardEvent): void {
+        this.searchChanges.next(this.form.value.search);
+        this.stateChanges.next();
+    }
 
-    constructor(public formBuilder: FormBuilder,
-                public focusMonitor: FocusMonitor,
+
+    constructor(public focusMonitor: FocusMonitor,
                 protected elementRef: ElementRef<HTMLElement>,
                 @Optional() @Inject(MAT_FORM_FIELD) public _formField: MatFormField,
                 @Optional() @Self() public ngControl: NgControl) {
-
-        this.container = this.formBuilder.group({
-            search: [],
-        });
 
         this.ngControl.valueAccessor = this;
 
@@ -168,60 +169,49 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
     }
 
 
-    @HostListener('keyup', ['$event'])
-    handleKeyboardEvent($event: KeyboardEvent) {
-        this.searchChanges.next(this.container.value.search);
-    }
-
     ngOnInit(): void {
         this.ngControl.control.setValidators([this.validate.bind(this)]);
-        this.ngControl.control.updateValueAndValidity();
+    }
+
+    ngAfterViewInit(): void {
         this.listenToSearch();
     }
 
-
     listenToSearch(): void {
-        this.searchChanges.pipe(debounceTime(400)).subscribe((search: string) => {
+        this.searchChanges.pipe(debounceTime(10)).subscribe((search: string) => {
 
-            this.isAnyOptionSelected = false;
+            this.value = null;
+            this.onChange(null);
 
             this.loadData(search).subscribe(loadedData => {
-
                 this.data = loadedData;
+                const fullMatch = this.findFullMatch(search);
 
-                this.handleEmptyData();
+                if (this.data.length === 0) {
+                    this.noMatchFound = true;
+                } else {
+                    this.noMatchFound = false;
+                    if (fullMatch !== null) {
+                        this.changeValue(fullMatch[this.idOrFilterFieldName]);
+                        this.autoComplete.closePanel();
+                    } else {
+                        this.autoComplete.openPanel();
+                    }
+                }
 
-                this.handleFullMatch(search);
+
             });
 
         });
-
     }
 
-
-    private handleEmptyData() {
-        if (this.data.length === 0) {
-            this.match = false;
-        }
-    }
-
-
-    private handleFullMatch(search): void {
-        const fullMatch = this.findFullMatch(search);
-        if (fullMatch !== null) {
-            this.changeValue(fullMatch[this.idFieldName]);
-            this.isAnyOptionSelected = true;
-            this.matAutocomplete.closePanel();
-        }
-    }
 
     findFullMatch(search): {} {
-        const index = this.data.findIndex(x => x[this.descriptionFieldName] === search)
+        const index = this.data.length == 1 ? this.data.findIndex(x => x[this.descriptionFieldName] === search) : -1;
         return index > -1 ? this.data[index] : null;
     }
 
     private loadData(search: string) {
-        this.match = true;
         return this.model.getDataByFilter(search)
     }
 
@@ -234,53 +224,50 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
         this.onTouched = fn;
     }
 
+    registerOnValidatorChange(fn: () => void): void {
+        this.onValidator = fn;
+    }
+
+
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
 
 
-    writeValue(id: any): void {
-        this.value = id;
-        this.displayDescription(id);
+    writeValue(idOrFilter: any): void {
+        if (idOrFilter) {
+            this.value = idOrFilter;
+            this.displayDescription(idOrFilter);
+        }
     }
 
 
-    private displayDescription(id: any): void {
-        if (id != null) {
-            this.model.getById(id)
-                .subscribe(x => this.searchFormControl.setValue(x[this.descriptionFieldName]))
-        }
+    private displayDescription(value: any): void {
+        const ob = this.replaceIdWithFilter ? this.model.getByFilter(this.filterParam, value) : this.model.getById(value);
+        ob.subscribe(x => {
+            console.log(x);
+            this.descriptionValue = x[this.descriptionFieldName];
+        });
     }
 
     get searchFormControl() {
-        return this.container.controls.search;
+        return this.form.controls.search;
     }
 
-    changeValue(id): void {
-        this.value = id;
-        this.onChange(id);
+    changeValue(value): void {
+        const index = this.data.findIndex(x => x[this.idOrFilterFieldName] === value);
+        this.value = value
+        this.descriptionValue = this.data[index][this.descriptionFieldName];
+        this.onChange(this.value);
     }
 
-    panelClosed() {
-        if (!this.isAnyOptionSelected) {
-            // canceled
-            this.changeValue(null);
-        }
-    }
-
-    panelOpened() {
-        this.isAnyOptionSelected = this.findFullMatch(this.container.value.search) != null;
-    }
 
     setDescribedByIds(ids: string[]) {
         const controlElement = this.elementRef.nativeElement
-            .querySelector('.input-container')!;
+            .querySelector('input')!;
         controlElement.setAttribute('aria-describedby', ids.join(' '));
     }
 
-    onContainerClick() {
-        this.focusMonitor.focusVia(this.searchInput, 'program');
-    }
 
 
     static ngAcceptInputType_disabled: boolean | string | null | undefined;
@@ -296,15 +283,19 @@ export class UiAutoCompleteComponent implements OnInit, ControlValueAccessor, Ma
     }
 
     validate(control: AbstractControl): ValidationErrors | null {
-        if (this.empty && this.required) {
+        if (!this.descriptionValue && this.value === null && this.required) {
             return {required: {valid: false}};
         }
 
-        if (this.value === null && !this.empty) {
+        if (this.descriptionValue && this.value === null) {
             return {validOption: {valid: false}}
         }
 
         return null;
+    }
+
+
+    onContainerClick(event: MouseEvent): void {
     }
 
 }

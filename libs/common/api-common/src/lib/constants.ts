@@ -7,6 +7,10 @@ export const LOGIN_URL = 'login';
 export const LIST_URL = 'list';
 export const DETAIL_URL = 'detail';
 
+
+export const LINES_DETAIL_URL = 'lines';
+
+
 export const CENTER_SELECT_URL = 'cclogin';
 
 // FULL URLS

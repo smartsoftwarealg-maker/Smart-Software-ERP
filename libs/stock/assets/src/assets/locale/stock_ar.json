@@ -5,6 +5,9 @@
     "ACCOUNTNO": "رقم الحساب",
     "ARTICLES": "السلع",
     "INVENTORY_ENTRY": "إدخال المخزون",
+    "EDIT_INVENTORY_ENTRY": "تعديل إدخال المخزون",
+    "INVENTORY_EXIT": "إخراج المخزون",
+    "EDIT_INVENTORY_EXIT": "تعديل إخراج المخزون",
     "EDIT_ARTICLE": "تعديل سلعة",
     "INVENTORY": "المخزون",
     "PERCENTAGE": "النسبة",
@@ -12,5 +15,18 @@
     "DATE": "التاريخ",
     "REFERENCE_DOC_DATE": "تاريخ الرمز",
     "NUMBER": "الرقم",
-    "DEALER": "البائع"
+    "DEALER": "البائع",
+    "HEADER": "الرأس",
+    "FOOTER": "التذيل",
+    "STORE": "المتجر",
+    "POSITION": "الرتبة",
+    "OBSERVATION": "الوصف",
+    "QTY_SATISFIED": "الكمية المستلمة",
+    "EDIT_INVENTORY_LINES_ENTRY": "تعديل تفاصيل إدخال المخزون",
+    "EDIT_INVENTORY_LINES_EXIT": "تعديل تفاصيل إخراج المخزون",
+    "ARTICLE": "السلعة",
+    "CONSUMPTION": "استهلاك",
+    "EDIT_CONSUMPTION": "تعديل الاستهلاك",
+    "SUPPLIER": "المورد"
+
 }

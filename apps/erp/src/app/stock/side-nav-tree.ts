@@ -12,6 +12,10 @@ import {
     ABS_STOCK_COUNTRY,
     ABS_STOCK_CURRENCY,
     ABS_STOCK_INVENTORY_ENTRY_URL,
+    ABS_STOCK_INVENTORY_EXIT_URL,
+    ABS_STOCK_CONSUMPTION_URL,
+    ABS_STOCK_RECEPTION_URL,
+    ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_MARKS_URL,
     ABS_STOCK_PAY_MODE,
     ABS_STOCK_STORE_NAMES_URL,
@@ -136,6 +140,26 @@ export const stockNavTree: SideNavNode = {
                     name: 'STOCK_INVENTORY_ENTRY',
                     icon: 'fas fa-keyboard',
                     route: ABS_STOCK_INVENTORY_ENTRY_URL
+                },
+                {
+                    name: 'STOCK_INVENTORY_EXIT',
+                    icon: 'fas fa-keyboard',
+                    route: ABS_STOCK_INVENTORY_EXIT_URL
+                },
+                {
+                    name: 'STOCK_CONSUMPTION',
+                    icon: 'fas fa-keyboard',
+                    route: ABS_STOCK_CONSUMPTION_URL
+                },
+                {
+                    name: 'STOCK_INVENTORY',
+                    icon: 'fas fa-keyboard',
+                    route: ABS_STOCK_INVENTORY_URL
+                },
+                {
+                    name: 'STOCK_RECEPTION',
+                    icon: 'fas fa-keyboard',
+                    route: ABS_STOCK_RECEPTION_URL
                 }
             ]
         },

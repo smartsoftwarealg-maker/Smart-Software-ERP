@@ -1,20 +1,27 @@
-<form class="input-container" [formGroup]="container" [attr.aria-labelledby]="_formField?.getLabelId()">
+<form class="input-container" #form="ngForm" [attr.aria-labelledby]="_formField?.getLabelId()">
 
 
     <input type="text"
-           #search
-           formControlName="search"
+           name="search"
+           autocomplete="off"
+           [(ngModel)]="descriptionValue"
+           [required]="required"
+           [disabled]="disabled">
+
+    <input type="text"
+           class="hidden-input"
+           name="autoCompleteValue"
+           [(ngModel)]="value"
+           [required]="required"
+           [disabled]="disabled"
            [matAutocomplete]="auto">
 
-
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith"
-                      (opened)="panelOpened()"
-                      (closed)="panelClosed()"
-                      (optionSelected)="changeValue($event.option.value.id);isAnyOptionSelected=true">
-        <mat-option *ngFor="let option of data" [value]="option">`
+    <mat-autocomplete #auto="matAutocomplete"
+                      (optionSelected)="changeValue($event.option.value)">
+        <mat-option *ngFor="let option of data" [value]="option[idOrFilterFieldName]">
             {{option[descriptionFieldName]}}
         </mat-option>
-        <mat-option *ngIf="!match" disabled="disabled" value="null">
+        <mat-option *ngIf="noMatchFound" disabled="disabled" value="null">
             <span translate>COMMON_NO_MATCH</span>
         </mat-option>
     </mat-autocomplete>

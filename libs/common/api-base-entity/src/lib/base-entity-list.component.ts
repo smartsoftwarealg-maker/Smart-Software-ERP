@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {DETAIL_URL} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 
@@ -113,13 +113,16 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         );
     }
 
-    public processLoadedData(data: T[]): T[] {
-        return data;
+    public processLoadedData(data: T[]): Observable<T[]> {
+        return of(data);
     }
 
     public finishLoading(data: T[]) {
-        this.data = this.processLoadedData(data);
-        this.shellSrv.setLoading(false);
+        this.processLoadedData(data)
+            .subscribe(x => {
+                this.data = x;
+                this.shellSrv.setLoading(false);
+            });
     }
 
     public ngOnDestroy() {

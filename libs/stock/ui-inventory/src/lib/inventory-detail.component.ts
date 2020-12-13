@@ -1,0 +1,59 @@
+import {Component} from "@angular/core";
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, Validators} from '@angular/forms';
+import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {CCGroup, LookupsService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {Inventory, InventoryService} from "@ss/stock/api-inventory";
+import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
+import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {User, UserService} from "@ss/common/api-users";
+
+
+@Component({
+    selector: 'ss-inventory-detail',
+    styleUrls: ['./inventory-detail.component.scss'],
+    templateUrl: './inventory-detail.component.html'
+})
+export class InventoryDetailComponent extends BaseEntityDetailComponent<Inventory> {
+
+    public groups: CCGroup[];
+    public dealerAutoCompleteModel = new AutoCompleteModel<User>(this.usersService)
+
+    constructor(
+        public inventoryService: InventoryService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public formBuilder: FormBuilder,
+        public confirmationSrv: ConfirmationDialogService,
+        public usersService: UserService,
+        public lookupsSrv: LookupsService) {
+        super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_inventory');
+    }
+
+
+    preload(): Observable<any> {
+        return this.lookupsSrv.getCCGroups()
+            .pipe(tap(x => this.groups = x))
+    }
+
+    public setupForm(b: Inventory) {
+        // Make sure to update the template if you edit the configuration here
+        return this.formBuilder.group({
+            id: [b.id],
+            document: [0],
+            center: [0],
+            date: [b.date, Validators.required],
+            number: [b.number, Validators.required],
+            reference: [b.reference],
+            referenceDocDate: [b.referenceDocDate],
+            header: [b.header],
+            footer: [b.footer],
+            dealer: [b.dealer, Validators.required],
+        });
+    }
+
+}

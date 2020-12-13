@@ -169,6 +169,54 @@
     },
     "common-api-users": {
       "tags": []
+    },
+    "stock-api-inventory-entry-lines": {
+      "tags": []
+    },
+    "stock-ui-inventory-entry-lines": {
+      "tags": []
+    },
+    "stock-api-inventory-exit-lines": {
+      "tags": []
+    },
+    "stock-ui-inventory-exit-lines": {
+      "tags": []
+    },
+    "stock-api-consumption": {
+      "tags": []
+    },
+    "stock-api-consumption-lines": {
+      "tags": []
+    },
+    "stock-ui-consumption-lines": {
+      "tags": []
+    },
+    "stock-ui-consumption": {
+      "tags": []
+    },
+    "stock-api-inventory": {
+      "tags": []
+    },
+    "stock-ui-inventory": {
+      "tags": []
+    },
+    "stock-ui-reception": {
+      "tags": []
+    },
+    "stock-api-reception": {
+      "tags": []
+    },
+    "stock-api-reception-lines": {
+      "tags": []
+    },
+    "stock-api-inventory-lines": {
+      "tags": []
+    },
+    "stock-ui-inventory-lines": {
+      "tags": []
+    },
+    "stock-ui-reception-lines": {
+      "tags": []
     }
   }
 }

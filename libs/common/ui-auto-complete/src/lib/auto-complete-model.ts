@@ -22,5 +22,8 @@ export class AutoCompleteModel<T> {
         return this.entityService.get(id);
     }
 
+    getByFilter(filterBy: string, value: string): Observable<any> {
+        return this.entityService.getByFilter(filterBy, value);
+    }
 
 }

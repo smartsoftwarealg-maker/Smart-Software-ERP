@@ -4,9 +4,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryEntry, InventoryEntryService} from "@ss/stock/api-inventory-entry";
+import {User, UserService} from "@ss/common/api-users";
+import {switchMap, tap} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {tap} from "rxjs/operators";
+import {LanguageService} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-inventory-entry-list',
@@ -16,7 +17,7 @@ import {tap} from "rxjs/operators";
 export class InventoryEntryListComponent extends BaseEntityListComponent<InventoryEntry> {
 
 
-    public ccGroups: { [id: number]: string; };
+    public dealers: { [id: number]: string; };
 
     displayedColumns = [
         'number',
@@ -33,22 +34,29 @@ export class InventoryEntryListComponent extends BaseEntityListComponent<Invento
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public lookupSrv: LookupsService,
+        public usersService: UserService,
+        public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService) {
         super(inventoryEntrySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_INVENTORY_ENTRY');
     }
 
 
-
-    preload(): Observable<any> {
-        return this.lookupSrv.getCCGroups()
-            .pipe(
-                tap(x => this.onCCGroupsLoaded(x)),
-            );
+    processLoadedData(data: InventoryEntry[]): Observable<InventoryEntry[]> {
+        return this.usersService.getAll(data.map(x => x.dealer))
+            .pipe(tap(x => this.onDealersLoaded(x)))
+            .pipe(switchMap(() => {
+                const parsedData = data.map(x => {
+                    x.date = this.langServ.formatDate(x.date);
+                    x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
+                    return x;
+                });
+                return super.processLoadedData(parsedData);
+            }))
     }
 
-    onCCGroupsLoaded(data: CCGroup[]): void {
-        this.ccGroups = {};
-        data.forEach(m => this.ccGroups[m.id] = m.description);
+    onDealersLoaded(data: User[]): void {
+        this.dealers = {};
+        data.forEach(m => this.dealers[m.id] = m.fullName);
     }
+
 }

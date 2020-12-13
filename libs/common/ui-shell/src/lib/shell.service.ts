@@ -105,9 +105,9 @@ export class ShellService {
         this.updateShell();
     }
 
-    public setGoBackPath(path: string, relativeActivatedRoute: ActivatedRoute) {
+    public setGoBackPath(path: string, relativeActivatedRoute: ActivatedRoute, params?: any) {
         this.setGoBackFn(() => {
-            this.router.navigate([path], { relativeTo: relativeActivatedRoute })
+            this.router.navigate([path], {relativeTo: relativeActivatedRoute, queryParams: params})
                 .then()
         });
     }
