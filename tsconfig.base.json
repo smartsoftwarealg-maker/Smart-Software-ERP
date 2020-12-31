@@ -139,7 +139,12 @@
       ],
       "@ss/stock/ui-reception-lines": [
         "libs/stock/ui-reception-lines/src/index.ts"
-      ]
+      ],
+      "@ss/stock/ui-circulation": ["libs/stock/ui-circulation/src/index.ts"],
+      "@ss/stock/api-circulation": ["libs/stock/api-circulation/src/index.ts"],
+      "@ss/stock/api-card": ["libs/stock/api-card/src/index.ts"],
+      "@ss/stock/ui-card": ["libs/stock/ui-card/src/index.ts"],
+      "@ss/api-article-store": ["libs/api-article-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

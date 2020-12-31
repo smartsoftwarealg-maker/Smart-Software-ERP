@@ -38,7 +38,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         public lookupsSrv: LookupsService) {
         super(inventoryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY'
+            'STOCK_EDIT_INVENTORY_LINES'
         );
     }
 

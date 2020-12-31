@@ -217,6 +217,21 @@
     },
     "stock-ui-reception-lines": {
       "tags": []
+    },
+    "stock-ui-circulation": {
+      "tags": []
+    },
+    "stock-api-circulation": {
+      "tags": []
+    },
+    "stock-api-card": {
+      "tags": []
+    },
+    "stock-ui-card": {
+      "tags": []
+    },
+    "api-article-store": {
+      "tags": []
     }
   }
 }

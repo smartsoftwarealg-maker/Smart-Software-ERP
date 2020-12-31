@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -18,7 +18,7 @@ import {DETAIL_URL} from "@ss/common/api-common";
     styleUrls: ['./consumption-lines-detail.component.scss'],
     templateUrl: './consumption-lines-detail.component.html'
 })
-export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLines> {
+export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLines> implements OnInit {
 
 
     parentId: number;
@@ -27,7 +27,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
     storeAutoCompleteModel: AutoCompleteModel<StoreName> = new AutoCompleteModel<StoreName>(this.storeNameSrv);
 
     constructor(
-        public ConsumptionLinesService: ConsumptionLinesService,
+        public consumptionLinesService: ConsumptionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -36,9 +36,9 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         public articleSrv: ArticleService,
         public storeNameSrv: StoreNameService,
         public lookupsSrv: LookupsService) {
-        super(ConsumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
+        super(consumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY'
+            'STOCK_EDIT_CONSUMPTION_LINES'
         );
     }
 
@@ -48,7 +48,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.ConsumptionLinesService.setParentId(this.parentId);
+                    this.consumptionLinesService.setParentId(this.parentId);
                     return p;
                 })
             );

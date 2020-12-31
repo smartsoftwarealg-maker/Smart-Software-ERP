@@ -8,19 +8,21 @@ import {
     STOCK_ARTICLES_URL,
     STOCK_CITY_URL,
     STOCK_CLASSES_URL,
-    STOCK_COMPANY_TYPE_URL, STOCK_CONSUMPTION_URL,
+    STOCK_COMPANY_TYPE_URL,
+    STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
     STOCK_COUNTRY_URL,
     STOCK_CURRENCY_URL,
-    STOCK_INVENTORY_ENTRY_URL, STOCK_INVENTORY_EXIT_URL,
+    STOCK_INVENTORY_ENTRY_URL,
+    STOCK_INVENTORY_EXIT_URL,
+    STOCK_INVENTORY_URL,
     STOCK_MARKS_URL,
     STOCK_PAY_MODE_URL,
+    STOCK_RECEPTION_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL,
-    STOCK_INVENTORY_URL,
-    STOCK_RECEPTION_URL
+    STOCK_VAT_URL
 } from '../constants';
 import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
@@ -67,6 +69,8 @@ import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inv
 import {InventoryLinesDetailComponent, InventoryLinesListComponent} from "@ss/stock/ui-inventory-lines";
 import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
 import {ReceptionLinesDetailComponent, ReceptionLinesListComponent} from "@ss/stock/ui-reception-lines";
+import {CirculationComponent} from "@ss/stock/ui-circulation";
+import {CardComponent} from "@ss/stock/ui-card";
 
 
 export const mainRoutes: Routes = [
@@ -81,7 +85,29 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: ArticleDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: 'circulations',
+                        component: CirculationComponent,
+                        canActivate: [CanActivateService]
+                    },
+                    {
+                        path: 'cards',
+                        component: CardComponent,
+                        canActivate: [CanActivateService]
+                    },
+                    {
+                        path: '',
+                        redirectTo: 'circulations',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: '**',
+                        redirectTo: 'circulations',
+                        pathMatch: 'full'
+                    }
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

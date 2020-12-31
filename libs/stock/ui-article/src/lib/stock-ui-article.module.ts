@@ -6,6 +6,8 @@ import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ArticleDetailComponent} from './article-detail.component';
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
+import {RouterModule} from "@angular/router";
+import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 
 @NgModule({
     imports: [
@@ -13,7 +15,9 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
         MaterialModule,
         CommonUiLangModule,
         UiPaginationModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiAutoCompleteModule
     ],
     exports: [ArticleListComponent, ArticleDetailComponent],
     declarations: [ArticleListComponent, ArticleDetailComponent]

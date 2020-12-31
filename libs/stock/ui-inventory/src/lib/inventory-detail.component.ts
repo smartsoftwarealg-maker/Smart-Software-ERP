@@ -31,7 +31,7 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Inventor
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
         public lookupsSrv: LookupsService) {
-        super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_inventory');
+        super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY');
     }
 
 

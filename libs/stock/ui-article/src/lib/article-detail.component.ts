@@ -1,24 +1,29 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ArticleService, Article} from '@ss/stock/api-article';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {FormBuilder, Validators} from '@angular/forms';
-import {Mark} from '@ss/common/api-lookup';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Mark, StoreName} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Vat} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {ArticleStoreService} from "../../../api-article-store/src";
 
 @Component({
     selector: 'ss-article-detail',
     styleUrls: ['./article-detail.component.scss'],
     templateUrl: './article-detail.component.html'
 })
-export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
+export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
 
     marks: Mark[];
     vats: Vat[];
+    storeAutoCompleteModel: AutoCompleteModel<StoreName> = new AutoCompleteModel<StoreName>(this.storeSrv);
+    selectedStore: number;
+    storeForm: FormGroup;
 
     constructor(
         public articleSrv: ArticleService,
@@ -27,9 +32,12 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        public router: Router,
+        public storeSrv: ArticleStoreService) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
     }
+
 
     public preload(): Observable<any> {
         return this.lookupsSrv.getMarks()
@@ -38,6 +46,19 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
                 switchMap(() => this.lookupsSrv.getVats()),
                 tap(x => this.vats = x),
             );
+    }
+
+
+    loadEntity(id: number): Observable<Article> {
+        this.initStoreForm(id);
+        return super.loadEntity(id);
+    }
+
+    initStoreForm(articleId: number) {
+        this.storeSrv.setParentId(articleId); // set the article for the store
+        this.storeForm = new FormGroup({
+            store: new FormControl(+this.route.snapshot.queryParamMap.get('store'))
+        });
     }
 
     public setupForm(a: Article) {
@@ -54,4 +75,13 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> {
         });
     }
 
+    updateStoreId(id: number): void {
+        this.router.navigate(
+            [],
+            {
+                relativeTo: this.route,
+                queryParams: {store: id},
+                queryParamsHandling: 'merge', // remove to replace all query params by provided
+            });
+    }
 }

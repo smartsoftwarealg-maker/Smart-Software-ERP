@@ -131,7 +131,6 @@ export class UiAutoCompleteComponent implements OnInit, AfterViewInit, Validator
     };
 
     onValidator = () => {
-        console.log("test");
     }
 
 

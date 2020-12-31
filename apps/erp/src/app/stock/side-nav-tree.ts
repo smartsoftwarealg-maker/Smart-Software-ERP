@@ -138,27 +138,27 @@ export const stockNavTree: SideNavNode = {
                 },
                 {
                     name: 'STOCK_INVENTORY_ENTRY',
-                    icon: 'fas fa-keyboard',
+                    icon: 'fas fa-file',
                     route: ABS_STOCK_INVENTORY_ENTRY_URL
                 },
                 {
                     name: 'STOCK_INVENTORY_EXIT',
-                    icon: 'fas fa-keyboard',
+                    icon: 'fas fa-file',
                     route: ABS_STOCK_INVENTORY_EXIT_URL
                 },
                 {
                     name: 'STOCK_CONSUMPTION',
-                    icon: 'fas fa-keyboard',
+                    icon: 'fas fa-file',
                     route: ABS_STOCK_CONSUMPTION_URL
                 },
                 {
                     name: 'STOCK_INVENTORY',
-                    icon: 'fas fa-keyboard',
+                    icon: 'fas fa-file',
                     route: ABS_STOCK_INVENTORY_URL
                 },
                 {
                     name: 'STOCK_RECEPTION',
-                    icon: 'fas fa-keyboard',
+                    icon: 'fas fa-file',
                     route: ABS_STOCK_RECEPTION_URL
                 }
             ]

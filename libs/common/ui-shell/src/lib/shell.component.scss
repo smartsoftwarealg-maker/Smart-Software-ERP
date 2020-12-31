@@ -209,7 +209,10 @@
 }
 
 .hidden {
-    display: none !important;
+    visibility: hidden !important;
+    overflow: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
 }
 
 .loading-spinner-container {
@@ -335,7 +338,7 @@
     display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    
+
     .user-icon {
         width: 25px;
         height: 40px;

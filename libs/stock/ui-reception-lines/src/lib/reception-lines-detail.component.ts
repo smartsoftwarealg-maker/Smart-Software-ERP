@@ -38,7 +38,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
         public lookupsSrv: LookupsService) {
         super(ReceptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY'
+            'STOCK_EDIT_RECEPTION_LINES'
         );
     }
 
