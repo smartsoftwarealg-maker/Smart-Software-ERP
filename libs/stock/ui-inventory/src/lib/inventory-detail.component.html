@@ -9,20 +9,20 @@
                 </mat-error>
             </mat-form-field>
 
-
-            <ss-date-picker class="default-50 sm-100" formControlName="date">
-                <span translate>STOCK_DATE</span>
-            </ss-date-picker>
-
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_DATE</mat-label>
+                <ss-date-picker formControlName="date"></ss-date-picker>
+            </mat-form-field>
 
             <mat-form-field id="reference" class="default-50 sm-100">
                 <mat-label translate>STOCK_REFERENCE</mat-label>
                 <input matInput formControlName="reference" type="text">
             </mat-form-field>
 
-            <ss-date-picker class="default-50 sm-100" formControlName="referenceDocDate">
-                <span translate>STOCK_REFERENCE_DOC_DATE</span>
-            </ss-date-picker>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
+                <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
+            </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>STOCK_DEALER</mat-label>
