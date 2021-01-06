@@ -1,6 +1,6 @@
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {AutoCompleteService} from "./auto-complete.service";
+import {AutoCompleteService} from "@ss/common/api-base-entity";
 
 
 export class AutoCompleteModel<T> {

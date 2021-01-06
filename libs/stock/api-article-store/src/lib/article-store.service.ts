@@ -17,6 +17,6 @@ export class ArticleStoreService extends BaseEntityExtendedService<ArticleStore>
 
 
     get(id: number): Observable<ArticleStore> {
-        return this.httpSrv.get(ARTICLE_STORE_URL + '/' + id);
+        return this.httpSrv.get('/lots' + '/' + id);
     }
 }

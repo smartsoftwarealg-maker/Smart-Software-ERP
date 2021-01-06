@@ -1,19 +1,15 @@
-<form class="input-container" #form="ngForm" [attr.aria-labelledby]="_formField?.getLabelId()">
+<form class="input-container" [formGroup]="form" [attr.aria-labelledby]="_formField?.getLabelId()">
 
 
     <input type="text"
            name="search"
            autocomplete="off"
-           [(ngModel)]="descriptionValue"
-           [required]="required"
-           [disabled]="disabled">
+           formControlName="descriptionValue">
 
     <input type="text"
            class="hidden-input"
            name="autoCompleteValue"
-           [(ngModel)]="value"
-           [required]="required"
-           [disabled]="disabled"
+           formControlName="value"
            [matAutocomplete]="auto">
 
     <mat-autocomplete #auto="matAutocomplete"

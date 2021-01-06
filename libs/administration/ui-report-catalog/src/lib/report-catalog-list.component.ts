@@ -1,0 +1,109 @@
+import {Component, OnInit,} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
+import {Observable} from "rxjs";
+import {ReportAppsService} from "@ss/administration/api-reports";
+import {switchMap, tap} from "rxjs/operators";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpParams} from "@angular/common/http";
+import {DETAIL_URL} from "@ss/common/api-common";
+
+@Component({
+    selector: 'ss-report-catalog-list',
+    styleUrls: ['./report-catalog-list.component.scss'],
+    templateUrl: './report-catalog-list.component.html'
+})
+export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
+
+    appsList: string[];
+    app!: string;
+
+    appForm = new FormGroup({
+        selectedApp: new FormControl(null, Validators.required)
+    });
+
+    displayedColumns = [
+        'description',
+        'filename'
+    ];
+
+
+    constructor(
+        public reportCatalogService: ReportCatalogService,
+        public reportService: ReportAppsService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService) {
+        super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'ADMINISTRATION_REPORT_CATALOG');
+    }
+
+
+    ngOnInit(): void {
+        this.shellSrv.setTilte(this.title);
+        this.shellSrv.setGoBackPath('../..', this.route);
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        this.pagination.onChange = () => this.refresh();
+
+        this.updateAddButtonStatus();
+
+        this.loadApps();
+
+
+        this.appForm.valueChanges.subscribe(x => {
+            this.setSelectedApp(x.selectedApp);
+        });
+
+    }
+
+
+    loadApps(): void {
+
+        this.reportService.getApps().subscribe(x => {
+
+            this.appsList = x;
+
+            this.readAppFromQueryParam();
+
+        });
+    }
+
+    readAppFromQueryParam() {
+        this.route.queryParams.subscribe(x => {
+            if (x && x.app) {
+                this.setSelectedApp(x.app);
+                this.appForm.controls.selectedApp.patchValue(this.app);
+                this.appForm.updateValueAndValidity();
+            }
+        });
+    }
+
+    setSelectedApp(app: any) {
+        this.app = app;
+        this.updateAddButtonStatus();
+        this.refresh();
+    }
+
+    updateAddButtonStatus() {
+        this.shellSrv.setButtonEnabled(this.addButton, !!this.app);
+    }
+
+    getPage(): Observable<ReportsCatalog[]> {
+        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy, new HttpParams().set('base', this.app));
+    }
+
+
+    showDetail(id: number) {
+        const params = {
+            id: id,
+            app: this.app
+        };
+        this.router.navigate(['../' + DETAIL_URL], {relativeTo: this.route, queryParams: params})
+            .then();
+    }
+}

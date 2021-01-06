@@ -95,11 +95,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.shellSrv.setLoading(true);
         this.select(0);
         const a = this.preload();
-        const b = this.entitySrv.getPage(
-            this.pagination,
-            this.filter,
-            this.sortBy
-        );
+        const b = this.getPage();
         const c: Observable<T[]> = a == null
             ? b
             : a.pipe(switchMap(() => b));
@@ -111,6 +107,11 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
                 throw err;
             }
         );
+    }
+
+    // this is created so we can override the service call whenever we want
+    public getPage() {
+        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy);
     }
 
     public processLoadedData(data: T[]): Observable<T[]> {

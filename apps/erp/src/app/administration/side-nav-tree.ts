@@ -2,7 +2,7 @@ import {SideNavNode} from '@ss/common/ui-shell';
 import {
     ABS_ADMINISTRATION_BANK_URL,
     ABS_ADMINISTRATION_CENTER_URL,
-    ABS_ADMINISTRATION_COMPANY_URL,
+    ABS_ADMINISTRATION_COMPANY_URL, ABS_ADMINISTRATION_REPORT_CATALOG,
     ABS_ADMINISTRATION_SMTP_URL
 } from "../constants";
 
@@ -29,6 +29,11 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_SMTP',
             icon: 'fas fa-server',
             route: ABS_ADMINISTRATION_SMTP_URL
+        },
+        {
+            name: 'ADMINISTRATION_REPORT_CATALOG',
+            icon: 'fas fa-server',
+            route: ABS_ADMINISTRATION_REPORT_CATALOG
         }
     ]
 };

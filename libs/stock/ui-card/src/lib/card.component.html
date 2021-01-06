@@ -1,4 +1,4 @@
-<ng-container *ngIf="parentId">
+<ng-container>
     <mat-table mat-table [dataSource]="data" class="main-table">
 
 
@@ -60,7 +60,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
     <div class="pagination-container b-b-background">

@@ -3,8 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Circulation, CIRCULATION_URL} from "./circulation-api";
 import {ARTICLES_URL} from "@ss/stock/api-article";
-import {Observable} from "rxjs";
-import {ARTICLE_STORE_URL} from "../../../api-article-store/src";
+import {ARTICLE_STORE_URL} from "@ss/stock/api-article-store";
 
 
 @Injectable({

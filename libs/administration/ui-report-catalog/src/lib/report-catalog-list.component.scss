@@ -1,0 +1,58 @@
+
+:host {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 846px;
+}
+
+.main-table {
+    width: 100%;
+    max-width: 846px;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-description {
+    flex: 300px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    @media (max-width: 846px) {
+        flex: 30% 0 0;
+    }
+}
+
+.mat-column-filename {
+    flex: 450px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+
+    @media (max-width: 846px) {
+        flex: 20% 0 0;
+    }
+
+}
+
+.app-select p{
+    display: inline-block;
+}
+
+.app-select mat-form-field{
+    width: 300px;
+    margin: 0 16px;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

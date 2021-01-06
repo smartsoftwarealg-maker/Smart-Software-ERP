@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UiAutoCompleteComponent} from './ui-auto-complete.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatInputModule} from "@angular/material/input";
@@ -18,7 +18,7 @@ import {CommonUiLangModule} from "@ss/common/ui-lang";
         MatInputModule
     ],
     declarations: [UiAutoCompleteComponent],
-    exports: [UiAutoCompleteComponent]
+    exports: [UiAutoCompleteComponent],
 })
 export class CommonUiAutoCompleteModule {
 }

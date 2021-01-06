@@ -10,7 +10,7 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Vat} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {ArticleStoreService} from "../../../api-article-store/src";
+import {ArticleStoreService} from "@ss/stock/api-article-store";
 
 @Component({
     selector: 'ss-article-detail',

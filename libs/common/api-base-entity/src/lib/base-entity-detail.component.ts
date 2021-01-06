@@ -57,13 +57,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public load() {
         this.shellSrv.setLoading(true);
         const a = this.preload();
-        const b = this.route.queryParams
-            .pipe(
-                switchMap(p => {
-                    this.queryId = +p.id;
-                    return this.loadEntity(this.queryId);
-                })
-            );
+        const b = this.getQueryParam();
         const c = a == null
             ? b
             : a.pipe(
@@ -80,6 +74,20 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                 throw e;
             }
         );
+    }
+
+    public getQueryParam(): Observable<any> {
+        return this.route.queryParams
+            .pipe(
+                switchMap(p => {
+                    this.assignQueryParams(p);
+                    return this.loadEntity(this.queryId);
+                })
+            );
+    }
+
+    public assignQueryParams(p: any) {
+        this.queryId = +p.id;
     }
 
     public loadEntity(id: number): Observable<T> {

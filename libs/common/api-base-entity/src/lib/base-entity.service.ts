@@ -2,8 +2,8 @@ import {map} from 'rxjs/operators';
 import {HttpService} from '@ss/common/api-common';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
-import {AutoCompleteService} from "@ss/common/ui-auto-complete";
 import {HttpParams} from "@angular/common/http";
+import {AutoCompleteService} from "./auto-complete.service";
 
 export class BaseEntityService<T> implements AutoCompleteService<T> {
 
@@ -12,8 +12,8 @@ export class BaseEntityService<T> implements AutoCompleteService<T> {
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
     }
 
-    public getPage(pageModel: PaginationModel, filter?: string, sortBy?: string): Observable<T[]> {
-        return this.getList(pageModel.page - 1, pageModel.pageSize, filter, sortBy)
+    public getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<T[]> {
+        return this.getList(pageModel.page - 1, pageModel.pageSize, filter, sortBy, extraPrams)
             .pipe(
                 map(data => {
                     pageModel.elementCount = data.itemCount;
@@ -22,8 +22,8 @@ export class BaseEntityService<T> implements AutoCompleteService<T> {
             );
     }
 
-    public getList(page: number, pageSize: number, filter?: string, sortBy?: string): Observable<{ itemCount: number, body: T[] }> {
-        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy);
+    public getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
+        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
     }
 
     public get(id: number): Observable<T> {
@@ -43,7 +43,7 @@ export class BaseEntityService<T> implements AutoCompleteService<T> {
         return this.httpSrv.put(this.getUrl(), a);
     }
 
-    setParentId(id: number):void {
+    setParentId(id: number): void {
         this.parentId = id;
     }
 

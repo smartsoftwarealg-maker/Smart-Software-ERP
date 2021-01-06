@@ -232,6 +232,15 @@
     },
     "api-article-store": {
       "tags": []
+    },
+    "api-report-catalog": {
+      "tags": []
+    },
+    "ui-report-catalog": {
+      "tags": []
+    },
+    "api-reports": {
+      "tags": []
     }
   }
 }
