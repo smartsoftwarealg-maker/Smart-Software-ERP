@@ -10,8 +10,8 @@
                 <ng-template #personPhoto>
                     <img [src]="e.photoSafeUrl">
                 </ng-template>
-                <i *ngIf="e.birthInfo.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
-                <i *ngIf="e.birthInfo.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
+                <i *ngIf="e.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
+                <i *ngIf="e.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
             </div>
         </mat-cell>
     </ng-container>
@@ -33,28 +33,28 @@
     <ng-container matColumnDef="birth">
         <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTHINFO</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.birthInfo.birthDate}}
+            {{e.birthDate}}
             <br>
-            {{e.birthInfo.birthPlace}}
+            {{e.birthPlace}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="address">
         <mat-header-cell *matHeaderCellDef translate>PAYROLL_ADDRESS</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.address.address}}
+            {{e.address}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="wilaya">
         <mat-header-cell *matHeaderCellDef translate>PAYROLL_WILAYA</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{wilayas[e.address.wilaya]}}
+            {{wilayas[e.wilaya]}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="maritalStatus">
-        <mat-header-cell *matHeaderCellDef translate>PAYROLL_MARITAL_STATUS</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef translate>COMMON_MARITAL_STATUS</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{maritalStatus[e.maritalStatus]}}
         </mat-cell>

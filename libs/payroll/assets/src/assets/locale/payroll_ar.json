@@ -19,5 +19,9 @@
     "MSRV_UNFIT":"غير مؤهل",
     "EMPLOYEES": "الموظفون",
     "EMPLOYEES_LIST": "قائمة الموظفين",
-    "EDIT_EMPLOYEE": "تعديل موظف"
+    "EDIT_EMPLOYEE": "تعديل موظف",
+    "FIRST_NAME": "الإسم",
+    "LAST_NAME": "اللقب",
+    "BIRTH_DATE": "تاريخ الميلاد",
+    "BIRTH_PLACE": "مكان الميلاد"
 }

@@ -19,5 +19,9 @@
     "MSRV_UNFIT":"Unfit",
     "EMPLOYEES": "Employees",
     "EMPLOYEES_LIST": "Employee list",
-    "EDIT_EMPLOYEE": "Edit employee"
+    "EDIT_EMPLOYEE": "Edit employee",
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+    "BIRTH_DATE": "Birth date",
+    "BIRTH_PLACE": "Birth place"
 }

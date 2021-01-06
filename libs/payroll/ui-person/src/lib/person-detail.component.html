@@ -1,10 +1,65 @@
 <div style="height: 16px"></div>
 
-<ss-image-input width="160px" height="200px" [ImageModel]="imageModel">
-</ss-image-input>
-
 <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
     <div style="height: 16px"></div>
+
+    <mat-accordion>
+        <mat-expansion-panel #birthinfoPanel expanded="true" [class]="getPanelHeaderClass('birthinfo', birthinfoPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_BIRTHINFO
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="birthinfo-card">
+                <ss-image-input width="160px" height="200px" [ImageModel]="imageModel">
+                </ss-image-input>
+
+                <div class="birthinfo-fields">
+                    <mat-form-field id="firstName" class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_FIRST_NAME</mat-label>
+                        <input matInput formControlName="firstName" type="text" maxlength="64" required>
+                        <mat-error *ngIf="form.controls.firstName.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        <mat-error *ngIf="form.controls.firstName.hasError('maxlength')" [translate]="{maxLen: 64}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field id="lastName" class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_LAST_NAME</mat-label>
+                        <input matInput formControlName="lastName" type="text" maxlength="64" required>
+                        <mat-error *ngIf="form.controls.lastName.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        <mat-error *ngIf="form.controls.lastName.hasError('maxlength')" [translate]="{maxLen: 64}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field id="birthDate" class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
+                        <ss-date-picker required="true" formControlName="birthDate"></ss-date-picker>
+                        <mat-error *ngIf="form.controls.birthDate.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <!--mat-form-field id="birthDate" class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
+                        <input matInput formControlName="birthDate" type="text" maxlength="64" required>
+                        <mat-error *ngIf="form.controls.birthDate.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        <mat-error *ngIf="form.controls.birthDate.hasError('maxlength')" [translate]="{maxLen: 64}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    </mat-form-field-->
+
+                    <mat-form-field id="birthPlace" class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_BIRTH_PLACE</mat-label>
+                        <input matInput formControlName="birthPlace" type="text" maxlength="64" required>
+                        <mat-error *ngIf="form.controls.birthPlace.hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+                        <mat-error *ngIf="form.controls.birthPlace.hasError('maxlength')" [translate]="{maxLen: 64}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #secondaryInfoPanel [class]="getPanelHeaderClass('secondaryInfo', secondaryInfoPanel)">
+
+        </mat-expansion-panel>
+
+    </mat-accordion>
 
 </form>

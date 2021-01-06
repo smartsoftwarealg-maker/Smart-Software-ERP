@@ -86,15 +86,13 @@ export interface Agent {
 export interface Person {
     id: number;
     customCode: string;
-    birthInfo: {
-        firstName: string;
-        lastName: string;
-        birthDate: string;
-        birthPlace: string;
-        father: string;
-        mother: string;
-        sex: 1 | 2;
-    };
+    firstName: string;
+    lastName: string;
+    birthDate: string;
+    birthPlace: string;
+    father: string;
+    mother: string;
+    sex: 1 | 2;
     address: { address: string; wilaya: number };
     maritalStatus: number;
     mservice: number;

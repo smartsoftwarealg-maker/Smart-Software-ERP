@@ -128,6 +128,13 @@ $ss-green: (
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
+    // icons
+    .ng-invalid.ng-touched {
+        .warn-when-invalid {
+            color: map-get($warn, text);;
+        }
+    }
+        
     // custom styles
     .mat-header-row {
         background-color: map-get($primary, 100);

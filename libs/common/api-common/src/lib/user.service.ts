@@ -61,9 +61,9 @@ export class UserService {
                             .httpSrv
                             .get<Object>(`/persons/${res.personId}`)
                             .pipe(tap(next => {
-                                res.fullName = next['birthInfo']['firstName'] +
+                                res.fullName = next['firstName'] +
                                     ' ' +
-                                    next['birthInfo']['lastName'];
+                                    next['lastName'];
                             }), map(_ => res));
                     } else {
                         if (res.userId) {

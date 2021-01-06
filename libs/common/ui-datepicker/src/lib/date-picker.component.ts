@@ -1,227 +1,191 @@
-import {Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild} from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import {
-    AbstractControl,
     ControlValueAccessor,
-    NG_VALIDATORS,
-    NG_VALUE_ACCESSOR,
-    ValidationErrors,
-    Validator
+    NgControl,
+    Validators
 } from '@angular/forms';
-import {dateToYmdStr, isString, strToDate} from "@ss/common/api-common";
+import { MatFormFieldControl } from '@angular/material/form-field';
+import { isString, strToDate } from "@ss/common/api-common";
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'ss-date-picker',
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss'],
     providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DatePickerComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => DatePickerComponent),
-            multi: true,
-        }
+        { provide: MatFormFieldControl, useExisting: DatePickerComponent }
     ]
 })
-export class DatePickerComponent implements ControlValueAccessor, Validator {
+export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
 
-    pMin: Date;
-    pMax: Date;
-    pDate: Date;
-    pOff = false;
-    private propagateChange = this.defaultPropagateChange;
-    private onTouched = this.defaultPropagateChange;
-    value: Date;
-    pValidYears: number[];
+    @ViewChild('textField', { static: true }) textField: ElementRef;
 
-    isEmpty = true;
-    isValid = true;
-
-    wasTouched = false;
-
-    @ViewChild('element', {static: false}) element: ElementRef;
-
-    @Output() dateStrChanged = new EventEmitter<string>();
-    @Output() dateChanged = new EventEmitter<Date>();
-
-    @Input()
-    required: boolean;
-
-    @Input()
-    name: string;
-
-
-    private propagateValidationChange: () => void = () => this.validate(null);
-
-    @Input()
-    set minDate(d: Date) {
-        this.pMin = d;
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set maxDate(d: Date) {
-        this.pMax = d;
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set validYears(n: number[]) {
-        this.pValidYears = n;
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set minDateStr(d: string) {
-        this.pMin = strToDate(d);
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set maxDateStr(d: string) {
-        this.pMax = strToDate(d);
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set dateStr(dateStr: string) {
-        this.pDate = strToDate(dateStr);
-        this.value = this.pDate;
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set date(date: Date) {
-        this.pDate = date;
-        this.value = this.pDate;
-        this.testValidity();
-        this.propagateValidationChange();
-    }
-
-    @Input()
-    set disabled(b: boolean) {
-        this.pOff = b;
-        this.propagateValidationChange();
-    }
-
-    markAsTouched() {
-        this.onTouched();
-        this.wasTouched = true;
-        this.propagateValidationChange();
-    }
-
-    onDateOnlyChanged(date: Date) {
-        date.setHours(this.getHours());
-        date.setMinutes(this.getMinutes());
-        date.setSeconds(0);
-        this.onDateChanged(date);
-    }
-
-    onDateChanged(date: Date) {
-        // this.pDate = date;
-        let str: string;
-        str = dateToYmdStr(date);
-        this.isEmpty = str == null;
-        this.value = date;
-        this.testValidity();
-        this.propagateChange(str);
-        this.dateStrChanged.emit(str);
-        this.dateChanged.emit(date);
-        this.propagateValidationChange();
-    }
-
-    getHours(): number {
-        return this.value ? this.value.getHours() : null;
-    }
-
-    getMinutes(): number {
-        return this.value ? this.value.getMinutes() : null;
-    }
-
-    onHoursChanged(event) {
-        let n = event.target.value;
-        if (isString(n)) {
-            n = +n;
+    constructor(
+        @Optional() @Self() public ngControl: NgControl,
+        private fm: FocusMonitor,
+        private elRef: ElementRef<HTMLElement>
+    ) {
+        if (this.ngControl != null) {
+            // Setting the value accessor directly (instead of using
+            // the providers) to avoid running into a circular import.
+            this.ngControl.valueAccessor = this;
         }
-        if (Number.isNaN(n)) {
-            n = 0;
-            event.target.value = 0;
-        } else if (n < 0) {
-            n = 0;
-            event.target.value = 0;
-        } else if (n > 23) {
-            n = 23;
-            event.target.value = 23;
-        }
-        if (!this.value) {
-            this.value = new Date();
-            this.value.setHours(n);
-            this.onDateChanged(this.value);
-        } else {
-            if (this.value.getHours() !== n) {
-                this.value.setHours(n);
-                this.onDateChanged(this.value);
+        fm.monitor(elRef.nativeElement, true).subscribe(origin => {
+            if (this.focused && !origin) {
+                if (this.textField.nativeElement.value) {
+                    if (!strToDate(this.textField.nativeElement.value)) {
+                        this.textField.nativeElement.value = null;
+                    }
+                }
+                this.onTouched();
             }
+            this.isFocused = !!origin;
+            this.stateChanges.next();
+        });
+    }
+
+    onChange: (date: Date) => void = this.noop;
+    onTouched: () => void = this.noop;
+
+    /** The value of the control. */
+    date: Date;
+
+    get value(): Date | null {
+        return this.date;
+    }
+
+    @Input()
+    set value(v: Date) {
+        // todo: add support for strings like '1430-01-01'
+        this.date = v;
+        if (this.ngControl && this.ngControl.control) {
+            this.ngControl.control.setErrors(null);
+        }
+        this.stateChanges.next();
+        this.onChange(this.date);
+    }
+
+    static nextId = 0;
+
+    /**
+     * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
+     * needs to run change detection.
+     */
+    readonly stateChanges = new Subject<void>();
+    /** The element ID for this control. */
+    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
+
+    /** The placeholder for this control. */
+    pPlaceholder: string;
+
+    @Input()
+    set placeholder(t: string) {
+        this.pPlaceholder = t;
+    }
+
+    get placeholder(): string {
+        return this.pPlaceholder;
+    }
+
+    /** Whether the control is focused. */
+    isFocused: boolean = false;
+
+    get focused() { return this.isFocused; }
+
+    /** Whether the control is empty. */
+    get empty(): boolean {
+        return !this.date;
+    }
+
+    /** Whether the `MatFormField` label should try to float. */
+    //    @HostBinding('class.floating')
+    get shouldLabelFloat() {
+        return this.focused || !this.empty;
+    }
+
+    /** Whether the control is required. */
+    isRequired = false;
+
+    get required(): boolean {
+        return this.isRequired;
+    };
+
+    @Input()
+    set required(b: boolean) {
+        this.isRequired = b;
+        this.stateChanges.next();
+    }
+
+    /** Whether the control is disabled. */
+
+    get disabled(): boolean { return this.isDisabled; }
+
+    @Input()
+    set disabled(value: boolean) {
+        this.isDisabled = coerceBooleanProperty(value);
+        this.stateChanges.next();
+    }
+
+    isDisabled: boolean;
+
+    lastErrorState = false;
+
+    /** Whether the control is in an error state. */
+    errorState = false;
+    lastErrorState = false;
+
+    /**
+     * An optional name for the control type that can be used to distinguish `mat-form-field` elements
+     * based on their control type. The form field will add a class,
+     * `mat-form-field-type-{{controlType}}` to its root element.
+     */
+    readonly controlType: 'datepicker';
+    /**
+     * Whether the input is currently in an autofilled state. If property is not present on the
+     * control it is assumed to be false.
+     */
+    readonly autofilled = false;
+    /**
+     * Value of `aria-describedby` that should be merged with the described-by ids
+     * which are set by the form-field.
+     */
+    @Input('aria-describedby') userAriaDescribedBy: string;
+
+    /** Sets the list of element IDs that currently describe this control. */
+    setDescribedByIds(ids: string[]) {
+    }
+
+    /** Handles a click on the control's container. */
+    onContainerClick(event: MouseEvent) {
+        if ((event.target as Element).tagName.toLowerCase() != 'input') {
+            this.elRef.nativeElement.querySelector('input').focus();
         }
     }
 
-    onMinutesChanged(event) {
-        let n = event.target.value;
-        if (isString(n)) {
-            n = +n;
-        }
-        if (Number.isNaN(n)) {
-            n = 0;
-            event.target.value = 0;
-        } else if (n < 0) {
-            n = 0;
-            event.target.value = 0;
-        } else if (n > 59) {
-            n = 59;
-            event.target.value = 59;
-        }
-        if (!this.value) {
-            this.value = new Date();
-            this.value.setMinutes(n);
-            this.onDateChanged(this.value);
-        } else {
-            if (this.value.getMinutes() !== n) {
-                this.value.setMinutes(n);
-                this.onDateChanged(this.value);
-            }
-        }
+    onDateChanged(d: Date) {
+        this.value = d;
+        this.onChange(d);
     }
 
-    testValidity(): void {
-        if (!this.pValidYears || this.value == null) {
-            this.isValid = true;
+    // value accessor
+    writeValue(obj: any): void {
+        if (obj == null) {
+            this.value = null;
         } else {
-            const year = this.value.getFullYear();
-            this.isValid = this.pValidYears.filter(y => y === year).length !== 0;
-            if (!this.isValid) {
-                return;
+            if (isString(obj)) {
+                this.value = strToDate(obj);
+            } else if (obj instanceof Date) {
+                this.value = obj;
+            } else {
+                this.value = null;
             }
-        }
-        if (this.pMin && this.value && this.value.getTime() < this.pMin.getTime()) {
-            this.isValid = false;
-            return;
-        }
-        if (this.pMax && this.value && this.pMax.getTime() < this.value.getTime()) {
-            this.isValid = false;
         }
     }
 
     registerOnChange(fn: any): void {
-        this.propagateChange = fn;
+        this.onChange = fn;
     }
 
     registerOnTouched(fn: any): void {
@@ -229,62 +193,30 @@ export class DatePickerComponent implements ControlValueAccessor, Validator {
     }
 
     setDisabledState(isDisabled: boolean): void {
-        this.pOff = isDisabled;
+        this.disabled = isDisabled;
     }
 
-    writeValue(obj: any): void {
-        if (obj == null) {
-            this.isEmpty = true;
-        } else {
-            if (obj instanceof Date) {
-                this.pDate = obj;
-                this.isEmpty = false;
-            } else { // must be a string
-                const str: string = obj + '';
-                this.pDate = strToDate(str);
-                this.isEmpty = this.pDate == null;
+    // other
+
+    noop(x?: any) { }
+
+    // life cycles bullshit
+    ngDoCheck(): void {
+        if (this.ngControl) {
+            this.errorState = this.ngControl.invalid && this.ngControl.touched;
+            if (this.lastErrorState != this.errorState) {
+                this.stateChanges.next();
+                this.lastErrorState = this.errorState;
             }
         }
-        this.value = this.pDate;
-        this.testValidity();
-        this.propagateValidationChange();
     }
 
-    defaultPropagateChange(_?: any) {
+    ngOnInit() {
     }
 
-    registerOnValidatorChange(fn: () => void): void {
-        this.propagateValidationChange = fn;
+    ngOnDestroy() {
+        this.stateChanges.complete();
+        this.fm.stopMonitoring(this.elRef.nativeElement);
     }
-
-    validate(control: AbstractControl): ValidationErrors {
-        if ((this.isEmpty && this.required)) {
-            return {
-                required: {valid: false}
-            };
-        }
-        this.testValidity();
-        if (!this.isValid) {
-            return {
-                range: {valid: false}
-            };
-        }
-        // if (control) {
-        //     control.setErrors(null);
-        // }
-        return null;
-    }
-
-    /*
-        patchValue(value: any, options?: Object): void {
-            this.writeValue(value);
-        }
-        reset(value?: any, options?: Object): void {
-            this.writeValue(value);
-        }
-        setValue(value: any, options?: Object): void {
-            this.writeValue(value);
-        }
-    */
 
 }

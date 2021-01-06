@@ -19,5 +19,9 @@
     "MSRV_UNFIT": "Inapte",
     "EMPLOYEES": "Employés",
     "EMPLOYEES_LIST": "Liste des employés",
-    "EDIT_EMPLOYEE": "Modifier employé"
+    "EDIT_EMPLOYEE": "Modifier employé",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom",
+    "BIRTH_DATE": "Date de naissance",
+    "BIRTH_PLACE": "Lieu de naissance"
 }

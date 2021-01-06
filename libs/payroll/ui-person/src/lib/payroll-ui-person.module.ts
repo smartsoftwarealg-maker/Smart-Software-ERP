@@ -7,6 +7,7 @@ import {PersonListComponent} from './person-list.component';
 import {PersonDetailComponent} from './person-detail.component';
 import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker'
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         CommonUiLangModule,
         CommonUiImageInputModule,
         UiPaginationModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule
     ],
     exports: [PersonListComponent, PersonDetailComponent],
     declarations: [PersonListComponent, PersonDetailComponent]

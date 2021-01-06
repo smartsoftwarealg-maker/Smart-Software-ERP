@@ -8,6 +8,22 @@
 }
 
 ss-image-input {
-    display: block;
-    margin: auto;
+    margin: 8px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.birthinfo-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    .birthinfo-fields {
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
 }
