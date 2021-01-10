@@ -1,0 +1,8 @@
+<ng-container *ngIf="model">
+    <input type="text" matInput [formControl]="autoControl" [matAutocomplete]="auto" [required]="required">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
+        <mat-option *ngFor="let option of model.options" [value]="option">
+            {{model.toString(option)}}
+        </mat-option>
+    </mat-autocomplete>
+</ng-container>

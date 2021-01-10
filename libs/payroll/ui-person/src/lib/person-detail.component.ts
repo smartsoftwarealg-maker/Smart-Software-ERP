@@ -1,14 +1,15 @@
-import {Component} from '@angular/core';
-import {Person, PersonService} from '@ss/payroll/api-person';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {HttpService} from '@ss/common/api-common';
-import {LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { Component } from '@angular/core';
+import { Person, PersonService } from '@ss/payroll/api-person';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
+import { ImageModel } from '@ss/common/ui-image-input';
+import { HttpService } from '@ss/common/api-common';
+import { LookupsService, Nationality, NationalityService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-person-detail',
@@ -18,6 +19,7 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
 
     imageModel: ImageModel;
+    nationalityModel: DefaultAutoCompleteModel<Nationality>;
 
     constructor(
         public personSrv: PersonService,
@@ -30,6 +32,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
         public lookupSrv: LookupsService) {
         super(personSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
+        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv))
     }
 
     public setupForm(p: Person) {
@@ -45,7 +48,8 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
             father: p.father,
             mother: p.mother,
             address: p.address,
-            wilaya: p.wilaya
+            wilaya: p.wilaya,
+            nationality: [p.nationality, Validators.required]
         });
     }
 

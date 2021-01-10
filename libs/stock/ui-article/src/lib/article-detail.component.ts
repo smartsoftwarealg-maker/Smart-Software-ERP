@@ -1,16 +1,16 @@
-import {Component, OnInit} from "@angular/core";
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ArticleService, Article} from '@ss/stock/api-article';
-import {ActivatedRoute, Router} from '@angular/router';
-import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Mark, StoreName} from '@ss/common/api-lookup';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, Vat} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {ArticleStoreService} from "@ss/stock/api-article-store";
+import { Component, OnInit } from "@angular/core";
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ArticleService, Article } from '@ss/stock/api-article';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Mark, StoreName } from '@ss/common/api-lookup';
+import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
+import { LookupsService, Vat } from "@ss/common/api-lookup";
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { ArticleStoreService } from "@ss/stock/api-article-store";
 
 @Component({
     selector: 'ss-article-detail',
@@ -21,7 +21,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     marks: Mark[];
     vats: Vat[];
-    storeAutoCompleteModel: AutoCompleteModel<StoreName> = new AutoCompleteModel<StoreName>(this.storeSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
     selectedStore: number;
     storeForm: FormGroup;
 
@@ -80,7 +80,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             [],
             {
                 relativeTo: this.route,
-                queryParams: {store: id},
+                queryParams: { store: id },
                 queryParamsHandling: 'merge', // remove to replace all query params by provided
             });
     }

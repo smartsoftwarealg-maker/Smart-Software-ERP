@@ -129,7 +129,7 @@ $ss-green: (
     $foreground: map-get($theme, foreground);
 
     // icons
-    .ng-invalid.ng-touched {
+    .mat-form-field.ng-invalid.ng-touched {
         .warn-when-invalid {
             color: map-get($warn, text);;
         }

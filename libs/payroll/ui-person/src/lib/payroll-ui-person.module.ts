@@ -7,7 +7,8 @@ import {PersonListComponent} from './person-list.component';
 import {PersonDetailComponent} from './person-detail.component';
 import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
-import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker'
+import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker'
         CommonUiImageInputModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule
     ],
     exports: [PersonListComponent, PersonDetailComponent],
     declarations: [PersonListComponent, PersonDetailComponent]

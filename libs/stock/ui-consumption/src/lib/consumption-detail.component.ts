@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Consumption, ConsumptionService} from "@ss/stock/api-consumption";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
-import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 
@@ -21,8 +21,9 @@ import {Agent, AgentService} from "@ss/logistics/api-agent";
 export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consumption> {
 
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new AutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new AutoCompleteModel<Agent>(this.agentService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    // fixme: use a model that shows both the agent-code and the denomination
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
 
     constructor(
         public consumptionService: ConsumptionService,

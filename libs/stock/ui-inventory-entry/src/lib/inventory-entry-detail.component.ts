@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryEntry, InventoryEntryService} from "@ss/stock/api-inventory-entry";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
-import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 
 
@@ -20,7 +20,7 @@ import {User, UserService} from "@ss/common/api-users";
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<InventoryEntry> {
 
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new AutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
     constructor(
         public inventoryEntryService: InventoryEntryService,

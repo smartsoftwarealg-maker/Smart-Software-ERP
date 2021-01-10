@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryEntryLines, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
-import {AutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
 
@@ -23,8 +23,8 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
 
     parentId: number;
 
-    articleAutoCompleteModel: AutoCompleteModel<Article> = new AutoCompleteModel<Article>(this.articleSrv);
-    storeAutoCompleteModel: AutoCompleteModel<StoreName> = new AutoCompleteModel<StoreName>(this.storeNameSrv);
+    articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
 
     constructor(
         public InventoryEntryLinesService: InventoryEntryLinesService,

@@ -1,29 +1,45 @@
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
-import {AutoCompleteService} from "@ss/common/api-base-entity";
+import { Observable, of } from "rxjs";
+import { BaseEntityService } from "@ss/common/api-base-entity";
+import { map } from 'rxjs/operators';
 
+export type Id = number | string;
 
-export class AutoCompleteModel<T> {
+export interface AutoCompleteModel<T> {
 
-    entityService: AutoCompleteService<T>;
-    pageSize = 5;
+    valueOf: (T) => Id;
+    toString: (T) => string;
+    getById: (Id) => Observable<T>;
+    filter: (string) => Observable<T[]>;
 
-    constructor(enitityService: AutoCompleteService<T>) {
-        this.entityService = enitityService;
+    options: T[];
+    cache: T;
+
+}
+
+export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
+
+    public options: T[];
+    public cache: T;
+
+    constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {
     }
 
+    valueOf = x => x ? x[this.idField] : null;
 
-    getDataByFilter(filter: string): Observable<any> {
-        return this.entityService.getList(0, this.pageSize, filter)
-            .pipe(map(x => x.body));
-    }
+    toString = x => x ? x[this.descriptionField] : null;
 
-    getById(id: number): Observable<any> {
-        return this.entityService.get(id);
-    }
+    getById = id => id ? this.entitySrv.get(id) : of(null);
 
-    getByFilter(filterBy: string, value: string): Observable<any> {
-        return this.entityService.getByFilter(filterBy, value);
-    }
+    filter = filter => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => x.body));
 
+}
+
+export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
+    valueOf = t => null;
+    toString = t => null;
+    getById = t => of(null);
+    filter = f => of([]);
+
+    options = [];
+    cache: null;
 }

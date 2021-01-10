@@ -57,11 +57,15 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     @Input()
-    set value(v: Date) {
-        // todo: add support for strings like '1430-01-01'
-        this.date = v;
-        if (this.ngControl && this.ngControl.control) {
-            this.ngControl.control.setErrors(null);
+    set value(obj: Date) {
+        if (obj == null) {
+            this.date = null;
+        } else if (isString(obj)) {
+            this.date = strToDate(obj as any);
+        } else if (obj instanceof Date) {
+            this.date = obj;
+        } else {
+            this.date = null;
         }
         this.stateChanges.next();
         this.onChange(this.date);
@@ -83,6 +87,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     @Input()
     set placeholder(t: string) {
         this.pPlaceholder = t;
+        this.stateChanges.next();
     }
 
     get placeholder(): string {
@@ -130,8 +135,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     isDisabled: boolean;
 
-    lastErrorState = false;
-
     /** Whether the control is in an error state. */
     errorState = false;
     lastErrorState = false;
@@ -171,17 +174,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     // value accessor
     writeValue(obj: any): void {
-        if (obj == null) {
-            this.value = null;
-        } else {
-            if (isString(obj)) {
-                this.value = strToDate(obj);
-            } else if (obj instanceof Date) {
-                this.value = obj;
-            } else {
-                this.value = null;
-            }
-        }
+        this.value = obj;
     }
 
     registerOnChange(fn: any): void {

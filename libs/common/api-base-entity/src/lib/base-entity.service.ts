@@ -3,9 +3,8 @@ import {HttpService} from '@ss/common/api-common';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
 import {HttpParams} from "@angular/common/http";
-import {AutoCompleteService} from "./auto-complete.service";
 
-export class BaseEntityService<T> implements AutoCompleteService<T> {
+export class BaseEntityService<T> {
 
     private parentId: number
 
@@ -56,8 +55,4 @@ export class BaseEntityService<T> implements AutoCompleteService<T> {
         return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;
     }
 
-    getByFilter(filterBy: string, value: string): Observable<T> {
-        const param = new HttpParams().set(filterBy, value);
-        return this.httpSrv.get(this.getUrl(), param);
-    }
 }
