@@ -2451,7 +2451,10 @@
               "libs/common/api-report-param/tsconfig.lib.json",
               "libs/common/api-report-param/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/common/api-report-param/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/api-report-param/**/*"
+            ]
           }
         },
         "test": {
@@ -2459,6 +2462,35 @@
           "outputs": ["coverage/libs/common/api-report-param"],
           "options": {
             "jestConfig": "libs/common/api-report-param/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-ui-report-param": {
+      "projectType": "library",
+      "root": "libs/common/ui-report-param",
+      "sourceRoot": "libs/common/ui-report-param/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/ui-report-param/tsconfig.lib.json",
+              "libs/common/ui-report-param/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/common/ui-report-param/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/ui-report-param"],
+          "options": {
+            "jestConfig": "libs/common/ui-report-param/jest.config.js",
             "passWithNoTests": true
           }
         }

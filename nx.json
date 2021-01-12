@@ -244,6 +244,9 @@
     },
     "api-report-param": {
       "tags": []
+    },
+    "common-ui-report-param": {
+      "tags": []
     }
   }
 }
