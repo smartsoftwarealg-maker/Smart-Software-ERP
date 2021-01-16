@@ -10,6 +10,7 @@ export interface AutoCompleteModel<T> {
     toString: (T) => string;
     getById: (Id) => Observable<T>;
     filter: (string) => Observable<T[]>;
+    isPerfectMatch(T, string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
 
     options: T[];
     cache: T;
@@ -32,6 +33,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     filter = filter => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => x.body));
 
+    isPerfectMatch = (obj, filter) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
 }
 
 export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
@@ -39,6 +41,7 @@ export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
     toString = t => null;
     getById = t => of(null);
     filter = f => of([]);
+    isPerfectMatch = (o, f) => false;
 
     options = [];
     cache: null;

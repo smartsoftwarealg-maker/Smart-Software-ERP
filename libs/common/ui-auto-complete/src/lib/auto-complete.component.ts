@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
+import { Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NgControl } from "@angular/forms";
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
@@ -54,6 +54,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     //
     @Input()
     model: AutoCompleteModel<any>;
+    lastFilterValue: string;
 
     get value(): Id {
         return this.selected;
@@ -64,8 +65,13 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.setValue(selected, true);
     }
 
+    setAutoControlValue(a: Object): void {
+        this.autoControl.setValue(a);
+        this.lastFilterValue = this.model.toString(a);
+        this.stateChanges.next();
+    }
+
     setValue(v: Id, fireOnChange: boolean) {
-        console.log('setValue ' + v);
         if (!!this.model && !!v) {
             // possibilites:
             // the value is null
@@ -77,23 +83,23 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 if (fireOnChange) {
                     this.onChange(this.selected);
                 }
-                this.autoControl.setValue(null);
+                // this.autoControl.setValue(null);
+                this.setAutoControlValue(null);
             } else if (this.model.valueOf(this.model.cache) === v) {
-                console.log('setValue taking string from cache');
                 this.selected = v;
-                this.autoControl.setValue(this.model.cache);
+                // this.autoControl.setValue(this.model.cache);
+                this.setAutoControlValue(this.model.cache);
                 this.model.options = [this.model.cache];
                 if (fireOnChange) {
                     this.onChange(this.selected);
                 }
             } else if (this.displayValueFromOptions(v)) {
-                console.log('setValue taking string from options');
                 if (fireOnChange) {
                     this.onChange(this.selected);
                 }
             } else {
-                console.log('setValue loading value by id');
-                this.autoControl.setValue(null);
+                // this.autoControl.setValue(null);
+                this.setAutoControlValue(null);
                 this.loadValue(v, () => {
                     if (fireOnChange) {
                         this.onChange(this.selected);
@@ -101,7 +107,6 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 });
             }
         } else {
-            console.log('setValue (model is null) OR (value is null)');
             this.selected = null;
             if (fireOnChange) {
                 this.onChange(this.selected);
@@ -117,7 +122,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.model.cache = e[0];
                 this.selected = v;
                 this.model.options = e;
-                this.autoControl.setValue(e[0]);
+                // this.autoControl.setValue(e[0]);
+                this.setAutoControlValue(e[0]);
                 return true;
             }
         }
@@ -130,11 +136,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             this.model
                 .getById(value)
                 .subscribe(e => {
-                    console.log('loaded =', e);
                     this.model.cache = e;
                     this.model.options = [e];
                     this.selected = value;
-                    this.autoControl.setValue(e);
+                    // this.autoControl.setValue(e);
+                    this.setAutoControlValue(e);
                     runnable();
                     this.loading = false;
                 }, e => {
@@ -233,25 +239,35 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     ngOnInit() {
         this.filterSub = this.autoControl.valueChanges.pipe(
             filter(txt => isString(txt)),
+            debounceTime(300),
             filter(txt => txt !== this.model.toString(this.model.cache)), // break the loop.
-            tap(() => {
+            distinctUntilChanged((a, b) => {
+                return a === b && b === this.lastFilterValue;
+            }),
+            tap(f => {
+                //this.lastFilterValue = f;
                 this.model.cache = null;
                 this.model.options = [];
                 this.setValue(null, true);
-                this.stateChanges.next();
             }),
-            debounceTime(300),
-            distinctUntilChanged(),
             switchMap(txt => {
                 if (this.loading) {
                     throw new Error("Was loading already");
                 }
-                console.log('filter = ' + txt);
                 this.loading = true;
-                return txt == null ? of([]) : this.model.filter(txt);
+                return txt == null ? of([]) : this.model.filter(txt).pipe(
+                    tap(options => {
+                        this.model.options = options;
+                        if (options.length == 1) {
+                            if (this.model.isPerfectMatch(options[0], txt)) {
+                                this.setValue(this.model.valueOf(options[0]), true);
+                            }
+                        }
+                    })
+                );
             })
         ).subscribe(
-            options => { this.model.options = options; this.loading = false; },
+            () => { this.loading = false; },
             err => { this.model.options = []; this.loading = false; throw err; }
         );
     }
@@ -264,11 +280,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     // auto compelete crap
 
-//    getByValue(i: Id) {
-//        return !!this.model && !!this.model.options
-//            ? this.model.options.filter(x => this.model.valueOf(x) === i)[0]
-//            : null;
-//    }
+    //    getByValue(i: Id) {
+    //        return !!this.model && !!this.model.options
+    //            ? this.model.options.filter(x => this.model.valueOf(x) === i)[0]
+    //            : null;
+    //    }
 
     displayFn = x => {
         return this.model ? this.model.toString(x) : null
@@ -276,6 +292,19 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     optionSelected(event: MatAutocompleteSelectedEvent) {
         this.setValue(this.model.valueOf(event.option.value), true);
+    }
+
+    isInputInvalid(): boolean {
+        return !this.loading && !!this.autoControl.value && this.selected == null;
+    }
+
+    clearInput(): void {
+        this.setValue(null, true);
+        this.setAutoControlValue(null);
+    }
+
+    hasNoMatch(): boolean {
+        return !this.loading && this.model.options && this.model.options.length == 0;
     }
 }
 
