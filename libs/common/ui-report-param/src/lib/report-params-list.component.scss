@@ -1,0 +1,76 @@
+
+:host {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+.main-table {
+    width: 978px;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-reference {
+    flex: 200px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description2 {
+    flex: 300px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-price {
+    flex: 70px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-vat {
+    flex: 50px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-mark {
+    flex: 100px 0 0;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.tree-invisible {
+    display: none;
+}
+
+.tree-container{
+    width: 360px;
+}
+
+.tree ul,
+.tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+.tree .tree-leaf{
+    padding: 8px;
+    cursor: pointer;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

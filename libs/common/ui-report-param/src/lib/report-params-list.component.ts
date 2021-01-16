@@ -1,0 +1,83 @@
+import {Component, OnInit,} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LookupsService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {NestedTreeControl} from "@angular/cdk/tree";
+import {ReportTreeService} from "@ss/common/api-reports";
+import {MatTreeNestedDataSource} from "@angular/material/tree";
+import {LanguageService} from "@ss/common/ui-lang";
+import {BaseEntityListComponent} from "@ss/common/api-base-entity";
+import {ReportParams, ReportParamsService} from "@ss/common/api-report-param";
+import {Observable} from "rxjs";
+import {ReportsCatalog} from "@ss/administration/api-report-catalog";
+import {HttpParams} from "@angular/common/http";
+
+@Component({
+    selector: 'ss-article-list',
+    styleUrls: ['./report-params-list.component.scss'],
+    templateUrl: './report-params-list.component.html'
+})
+export class ReportParamsListComponent extends BaseEntityListComponent<ReportParams> implements OnInit {
+
+    displayedColumns = [
+        'name',
+        'typeName',
+        'description',
+        'valueString',
+        'valueList'
+    ];
+
+    reportTree: MatTreeNestedDataSource<any> = new MatTreeNestedDataSource();
+    treeControl = new NestedTreeControl<any>(node => node.list);
+    selectedReport: string;
+    app: string;
+
+    hasChild = (_: number, node: any) => !!node && node.list.length > 0;
+
+
+    constructor(
+        public reportsService: ReportTreeService,
+        public reportParamService: ReportParamsService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public lookupsSrv: LookupsService,
+        public langSrv: LanguageService) {
+        super(reportParamService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_REPORTS_PARAMS')
+    }
+
+    ngOnInit(): void {
+        this.shellSrv.setTilte(this.title);
+        this.shellSrv.setGoBackPath('../..', this.route);
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        this.pagination.onChange = () => this.refresh();
+
+        this.route.data.subscribe(res => {
+            this.loadReportTree(res.reportBase);
+            this.app = res.app;
+        });
+    }
+
+    loadReportTree(app: string) {
+        this.reportsService.getReportsTree(app).subscribe((res: any) => {
+            this.reportTree.data = res.list;
+        });
+    }
+
+    getPage(): Observable<ReportParams[]> {
+        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
+            new HttpParams().set('report', this.selectedReport)
+                .set('app', this.app)
+        );
+    }
+
+
+    reportSelect(name: string) {
+        this.selectedReport = name;
+        this.refresh();
+    }
+}

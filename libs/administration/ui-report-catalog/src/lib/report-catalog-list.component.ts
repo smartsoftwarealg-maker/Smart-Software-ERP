@@ -5,7 +5,7 @@ import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {Observable} from "rxjs";
-import {ReportAppsService} from "@ss/administration/api-reports";
+import {ReportAppsService} from "@ss/common/api-reports";
 import {switchMap, tap} from "rxjs/operators";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpParams} from "@angular/common/http";

@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {FormValidators, LIST_URL} from "@ss/common/api-common";
-import {ReportListService} from "@ss/administration/api-reports";
+import {ReportListService} from "@ss/common/api-reports";
 
 
 @Component({

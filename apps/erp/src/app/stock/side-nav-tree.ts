@@ -21,7 +21,7 @@ import {
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL
+    ABS_STOCK_VAT_URL, ABS_COMMON_REPORT_PARAMS
 } from '../constants';
 import {SideNavNode} from '@ss/common/ui-shell';
 
@@ -53,6 +53,11 @@ export const stockNavTree: SideNavNode = {
                     name: 'LOGISTICS_COST_CENTER',
                     icon: 'fas fa-building',
                     route: ABS_STOCK_COST_CENTER_URL
+                },
+                {
+                    name: 'COMMON_REPORT_PARAMS',
+                    icon: 'fas fa-report',
+                    route: ABS_COMMON_REPORT_PARAMS
                 }
             ]
         },

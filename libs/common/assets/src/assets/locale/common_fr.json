@@ -96,5 +96,7 @@
     "NATIONALITIES": "Nationalités",
     "SERVICES": "Services",
 
-    "NO_MATCH": "Pas de correspondance"
+    "NO_MATCH": "Pas de correspondance",
+
+    "REPORTS": "Rapports"
 }
