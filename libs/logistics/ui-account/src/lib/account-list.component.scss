@@ -17,25 +17,25 @@
 }
 
 .mat-column-accountNo {
-    flex: 140px 0 0;
+    flex: 120px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-description {
-    flex: 300px 0 0;
+    flex: 280px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-accType {
-    flex: 150px 0 0;
+    flex: 120px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-analyzed {
-    flex: 150px 0 0;
+.mat-column-analyzed .mat-column-customerCode {
+    flex: 100px 0 0;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

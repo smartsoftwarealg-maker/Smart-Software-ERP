@@ -153,7 +153,13 @@
       "@ss/administration/ui-report-catalog": [
         "libs/administration/ui-report-catalog/src/index.ts"
       ],
-      "@ss/administration/api-reports": ["libs/administration/api-reports/src/index.ts"]
+      "@ss/administration/api-reports": [
+        "libs/administration/api-reports/src/index.ts"
+      ],
+      "@ss/common/api-report-param": [
+        "libs/common/api-report-param/src/index.ts"
+      ],
+      "@ss/common/ui-report-param": ["libs/common/ui-report-param/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
