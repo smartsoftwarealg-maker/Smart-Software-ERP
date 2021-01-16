@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
+import { Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NgControl } from "@angular/forms";
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
@@ -68,6 +68,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     setAutoControlValue(a: Object): void {
         this.autoControl.setValue(a);
         this.lastFilterValue = this.model.toString(a);
+        this.stateChanges.next();
     }
 
     setValue(v: Id, fireOnChange: boolean) {
@@ -291,6 +292,19 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     optionSelected(event: MatAutocompleteSelectedEvent) {
         this.setValue(this.model.valueOf(event.option.value), true);
+    }
+
+    isInputInvalid(): boolean {
+        return !this.loading && !!this.autoControl.value && this.selected == null;
+    }
+
+    clearInput(): void {
+        this.setValue(null, true);
+        this.setAutoControlValue(null);
+    }
+
+    hasNoMatch(): boolean {
+        return !this.loading && this.model.options && this.model.options.length == 0;
     }
 }
 

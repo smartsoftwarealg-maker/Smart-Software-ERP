@@ -1,8 +1,13 @@
 <ng-container *ngIf="model">
-    <input type="text" matInput [formControl]="autoControl" [matAutocomplete]="auto" [required]="required">
+    <input type="text" class="warn-when-invalid" matInput [formControl]="autoControl" [matAutocomplete]="auto" [required]="required">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
         <mat-option *ngFor="let option of model.options" [value]="option">
             {{model.toString(option)}}
         </mat-option>
+        <mat-option *ngIf="hasNoMatch()" [disabled]="true">
+            <span translate>COMMON_NO_MATCH</span>
+        </mat-option>
     </mat-autocomplete>
+    <i *ngIf="loading" class="ss-suffix-button abs-end-0 fa-spin warn-when-invalid far fa-spinner"></i>
+    <i *ngIf="isInputInvalid()" (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon"></i>
 </ng-container>
