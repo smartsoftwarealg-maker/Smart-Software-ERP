@@ -10,6 +10,7 @@ export interface Account {
     descriptionAr: string;
     balanceConstraint: number;
     summaryLevel: boolean;
+    customerCode: boolean;
     budgetAccount: boolean;
     treasuryAccount: boolean;
     journalId: number

@@ -23,7 +23,8 @@ export class AccountListComponent extends BaseEntityListComponent<Account> {
         'accountNo',
         'description',
         'accType',
-        'analyzed'
+        'analyzed',
+        'customerCode'
     ];
 
     constructor(

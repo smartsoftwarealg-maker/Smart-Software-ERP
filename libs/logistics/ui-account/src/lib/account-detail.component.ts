@@ -53,6 +53,7 @@ export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
             descriptionAr: [a.descriptionAr],
             balanceConstraint: [a.balanceConstraint],
             summaryLevel: [a.summaryLevel],
+            customerCode: [a.customerCode],
             budgetAccount: [a.budgetAccount],
             treasuryAccount: [a.treasuryAccount],
             journalId: [a.journalId]
