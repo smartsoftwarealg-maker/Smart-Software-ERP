@@ -98,5 +98,9 @@
 
     "NO_MATCH": "No matches",
 
-    "REPORTS": "Reports"
+    "REPORTS": "Reports",
+    "VALUE_STRING": "Value strings",
+    "VALUE_LIST": "Value list",
+    "NAME": "Name",
+    "REPORT_PARAMS": "Report params"
 }

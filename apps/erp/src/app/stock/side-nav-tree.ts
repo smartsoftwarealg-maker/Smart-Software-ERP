@@ -56,7 +56,7 @@ export const stockNavTree: SideNavNode = {
                 },
                 {
                     name: 'COMMON_REPORT_PARAMS',
-                    icon: 'fas fa-report',
+                    icon: 'fas fa-file-chart-line',
                     route: ABS_COMMON_REPORT_PARAMS
                 }
             ]

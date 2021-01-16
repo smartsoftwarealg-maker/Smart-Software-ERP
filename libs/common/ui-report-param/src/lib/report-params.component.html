@@ -1,0 +1,77 @@
+<mat-card class="tree-container">
+    <mat-card-header>
+        <b mat-card-title translate>COMMON_REPORTS</b>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <mat-tree class="tree" [dataSource]="reportTree" [treeControl]="treeControl">
+            <!-- This is the tree node template for leaf nodes -->
+
+            <mat-nested-tree-node *matTreeNodeDef="let node">
+                <li class="tree-leaf" [class.selected]="selectedReport == node.name" (click)="reportSelect(node.name)">
+                    {{node.name}}
+                </li>
+                <mat-divider></mat-divider>
+            </mat-nested-tree-node>
+
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <li>
+                    <button mat-icon-button matTreeNodeToggle>
+                        <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+                    </button>
+                    {{node.name}}
+                    <mat-divider></mat-divider>
+
+                    <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </ul>
+                </li>
+                <mat-divider></mat-divider>
+            </mat-nested-tree-node>
+        </mat-tree>
+    </mat-card-content>
+</mat-card>
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.name}}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valueString">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE_STRING</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.valueString}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valueList">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE_LIST</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.valueList}}
+            </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+</div>

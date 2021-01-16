@@ -32,7 +32,7 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'ADMINISTRATION_REPORT_CATALOG',
-            icon: 'fas fa-server',
+            icon: 'fas fa-books',
             route: ABS_ADMINISTRATION_REPORT_CATALOG
         }
     ]

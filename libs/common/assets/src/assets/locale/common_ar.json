@@ -98,5 +98,9 @@
 
     "NO_MATCH": "لا توجد نتائج",
 
-    "REPORTS": "التقارير"
+    "REPORTS": "التقارير",
+    "VALUE_STRING": "القيمة",
+    "VALUE_LIST": "القيم",
+    "NAME": "الاسم",
+    "REPORT_PARAMS": "Paramètres de rapport"
 }

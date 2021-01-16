@@ -10,19 +10,17 @@ import {LanguageService} from "@ss/common/ui-lang";
 import {BaseEntityListComponent} from "@ss/common/api-base-entity";
 import {ReportParams, ReportParamsService} from "@ss/common/api-report-param";
 import {Observable} from "rxjs";
-import {ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {HttpParams} from "@angular/common/http";
 
 @Component({
-    selector: 'ss-article-list',
-    styleUrls: ['./report-params-list.component.scss'],
-    templateUrl: './report-params-list.component.html'
+    selector: 'ss-report-params',
+    styleUrls: ['./report-params.component.scss'],
+    templateUrl: './report-params.component.html'
 })
-export class ReportParamsListComponent extends BaseEntityListComponent<ReportParams> implements OnInit {
+export class ReportParamsComponent extends BaseEntityListComponent<ReportParams> implements OnInit {
 
     displayedColumns = [
         'name',
-        'typeName',
         'description',
         'valueString',
         'valueList'
@@ -46,14 +44,14 @@ export class ReportParamsListComponent extends BaseEntityListComponent<ReportPar
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService) {
-        super(reportParamService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_REPORTS_PARAMS')
+        super(reportParamService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_REPORT_PARAMS')
     }
 
     ngOnInit(): void {
         this.shellSrv.setTilte(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        this.shellSrv.setButtons([this.refreshButton]);
         this.pagination.onChange = () => this.refresh();
 
         this.route.data.subscribe(res => {

@@ -98,5 +98,9 @@
 
     "NO_MATCH": "Pas de correspondance",
 
-    "REPORTS": "Rapports"
+    "REPORTS": "Rapports",
+    "VALUE_STRING": "Chaînes de valeur",
+    "VALUE_LIST": "Liste de valeurs",
+    "NAME": "Nom",
+    "REPORT_PARAMS": "متغيرات التقرير"
 }
