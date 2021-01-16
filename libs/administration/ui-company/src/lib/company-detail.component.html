@@ -79,7 +79,7 @@
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel>
+        <mat-expansion-panel #fiscalPanel [class]="getPanelHeaderClass('fiscal',fiscalPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ADMINISTRATION_FISCAL
@@ -132,7 +132,7 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel>
+        <mat-expansion-panel #arabicPanel [class]="getPanelHeaderClass('arabic',arabicPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ADMINISTRATION_ARABIC
@@ -163,7 +163,7 @@
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel>
+        <mat-expansion-panel #diversePanel [class]="getPanelHeaderClass('diverse',diversePanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ADMINISTRATION_DIVERSE
