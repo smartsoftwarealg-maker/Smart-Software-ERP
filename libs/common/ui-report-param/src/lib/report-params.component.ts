@@ -12,6 +12,13 @@ import {ReportParams, ReportParamsService} from "@ss/common/api-report-param";
 import {Observable} from "rxjs";
 import {HttpParams} from "@angular/common/http";
 
+
+interface ReportNode {
+    name: string;
+    list: [];
+    parent: '';
+}
+
 @Component({
     selector: 'ss-report-params',
     styleUrls: ['./report-params.component.scss'],
@@ -26,9 +33,9 @@ export class ReportParamsComponent extends BaseEntityListComponent<ReportParams>
         'valueList'
     ];
 
-    reportTree: MatTreeNestedDataSource<any> = new MatTreeNestedDataSource();
+    reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     treeControl = new NestedTreeControl<any>(node => node.list);
-    selectedReport: string;
+    selectedReport: ReportNode;
     app: string;
 
     hasChild = (_: number, node: any) => !!node && node.list.length > 0;
@@ -62,20 +69,28 @@ export class ReportParamsComponent extends BaseEntityListComponent<ReportParams>
 
     loadReportTree(app: string) {
         this.reportsService.getReportsTree(app).subscribe((res: any) => {
-            this.reportTree.data = res.list;
+            this.reportTree.data = this.parseTree(res.list, '');
+        });
+    }
+
+    parseTree(tree, parent): ReportNode[] {
+        return tree.map(x => {
+            if (x.list.length > 0) x.list = this.parseTree(x.list, `${parent}/${x.name}`);
+            x.parent = parent;
+            return x;
         });
     }
 
     getPage(): Observable<ReportParams[]> {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
-            new HttpParams().set('report', this.selectedReport)
+            new HttpParams().set('report', `${this.selectedReport.parent}/${this.selectedReport.name}`)
                 .set('app', this.app)
         );
     }
 
 
-    reportSelect(name: string) {
-        this.selectedReport = name;
+    reportSelect(reportNode: ReportNode) {
+        this.selectedReport = reportNode;
         this.refresh();
     }
 }
