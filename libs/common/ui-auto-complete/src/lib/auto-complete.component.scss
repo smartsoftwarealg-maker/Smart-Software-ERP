@@ -2,3 +2,15 @@
 :host {
     display: inline-block;
 }
+
+.ss-suffix-button {
+    position: absolute;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+}
