@@ -46,5 +46,9 @@
     "PROPERTY": "Property",
     "PROPERTY_VALUE": "Property value",
     "SMTP": "SMTP",
-    "EDIT_SMTP": "Edit SMTP"
+    "EDIT_SMTP": "Edit SMTP",
+    "SELECT_APP": "Select an application",
+    "FILENAME": "Filename",
+    "EDIT_REPORT_CATALOG": "Edit report catalog",
+    "REPORT_CATALOG": "Report catalog"
 }

@@ -96,5 +96,11 @@
     "SERVICES": "الخدمات",
     "NATIONALITIES": "الجنسيات",
 
-    "NO_MATCH": "لا توجد نتائج"
+    "NO_MATCH": "لا توجد نتائج",
+
+    "REPORTS": "التقارير",
+    "VALUE_STRING": "القيمة",
+    "VALUE_LIST": "القيم",
+    "NAME": "الاسم",
+    "REPORT_PARAMS": "Paramètres de rapport"
 }

@@ -2411,28 +2411,28 @@
     },
     "api-reports": {
       "projectType": "library",
-      "root": "libs/administration/api-reports",
-      "sourceRoot": "libs/administration/api-reports/src",
+      "root": "libs/common/api-reports",
+      "sourceRoot": "libs/common/api-reports/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/administration/api-reports/tsconfig.lib.json",
-              "libs/administration/api-reports/tsconfig.spec.json"
+              "libs/common/api-reports/tsconfig.lib.json",
+              "libs/common/api-reports/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/administration/api-reports/**/*"
+              "!libs/common/api-reports/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/administration/api-reports"],
+          "outputs": ["coverage/libs/common/api-reports"],
           "options": {
-            "jestConfig": "libs/administration/api-reports/jest.config.js",
+            "jestConfig": "libs/common/api-reports/jest.config.js",
             "passWithNoTests": true
           }
         }

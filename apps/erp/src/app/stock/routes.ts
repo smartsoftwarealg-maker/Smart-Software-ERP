@@ -1,4 +1,5 @@
 import {
+    COMMON_REPORT_PARAMS_URL,
     LOOKUPS_URL,
     STOCK_ACCOUNT_URL,
     STOCK_ACTIVITY_URL,
@@ -71,6 +72,7 @@ import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-rec
 import {ReceptionLinesDetailComponent, ReceptionLinesListComponent} from "@ss/stock/ui-reception-lines";
 import {CirculationComponent} from "@ss/stock/ui-circulation";
 import {CardComponent} from "@ss/stock/ui-card";
+import {ReportParamsComponent} from "@ss/common/ui-report-param";
 
 
 export const mainRoutes: Routes = [
@@ -320,6 +322,19 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: CostCenterDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: COMMON_REPORT_PARAMS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: {reportBase: 'syscom', app: 'syscom'},
+                component: ReportParamsComponent,
                 canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

@@ -46,6 +46,9 @@
     "PROPERTY": "الإسم",
     "PROPERTY_VALUE": "القيمة",
     "SMTP": "SMTP",
-    "EDIT_SMTP": "Edit SMTP"
-
+    "EDIT_SMTP": "تعديل SMTP",
+    "SELECT_APP": "اختر تطبيق",
+    "FILENAME": "الملفآ",
+    "EDIT_REPORT_CATALOG": "تحرير كتالوج التقرير",
+    "REPORT_CATALOG": "كتالوج التقارير"
 }

@@ -96,5 +96,11 @@
     "SERVICES": "Services",
     "NATIONALITIES": "Nationalities",
 
-    "NO_MATCH": "No matches"
+    "NO_MATCH": "No matches",
+
+    "REPORTS": "Reports",
+    "VALUE_STRING": "Value strings",
+    "VALUE_LIST": "Value list",
+    "NAME": "Name",
+    "REPORT_PARAMS": "Report params"
 }
