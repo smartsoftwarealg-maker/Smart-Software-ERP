@@ -102,5 +102,6 @@
     "VALUE_STRING": "القيمة",
     "VALUE_LIST": "القيم",
     "NAME": "الاسم",
-    "REPORT_PARAMS": "Paramètres de rapport"
+    "REPORT_PARAMS": "Paramètres de rapport",
+    "CUSTOMER_CODE": "رمز الزبون"
 }
