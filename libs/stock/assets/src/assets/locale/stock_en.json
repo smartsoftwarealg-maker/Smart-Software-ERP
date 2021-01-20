@@ -47,5 +47,7 @@
     "CARD": "Card",
     "STOCK": "Stock",
     "VALUE": "Value",
-    "SEARCH": "Search"
+    "SEARCH": "Search",
+    "VAT": "TVA",
+    "MARK": "Marque"
 }

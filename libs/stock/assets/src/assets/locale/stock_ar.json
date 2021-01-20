@@ -47,5 +47,7 @@
     "CARD": "البطاقة",
     "STOCK": "المخزون",
     "VALUE": "القيمة",
-    "SEARCH": "بحث"
+    "SEARCH": "بحث",
+    "STOCK_VAT": "الضريبة",
+    "STOCK_MARK": "الصنف"
 }
