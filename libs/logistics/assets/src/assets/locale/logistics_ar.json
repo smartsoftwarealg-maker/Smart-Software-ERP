@@ -67,5 +67,6 @@
     "BUDGET_ACCOUNT": "حساب الميزانية",
     "TREASURY_ACCOUNT": "حساب الخزينة",
     "ACCOUNTS": "الحساب",
-    "EDIT_ACCOUNT": "تعديل الحساب"
+    "EDIT_ACCOUNT": "تعديل الحساب",
+    "CUSTOMER_CODE": "رمز الزبون"
 }

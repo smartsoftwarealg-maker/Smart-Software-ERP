@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
@@ -10,7 +10,7 @@ import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
     styleUrls: ['./agent-price-list.component.scss'],
     templateUrl: './agent-price-list.component.html'
 })
-export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> {
+export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> implements OnInit {
 
 
     displayedColumns = [
