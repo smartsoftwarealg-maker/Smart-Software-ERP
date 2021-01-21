@@ -8,6 +8,6 @@ export interface Article {
     mark: number;
     vat: number;
     accountno: string;
-    price: number;
+    price1: number;
     appCode: number;
 }
