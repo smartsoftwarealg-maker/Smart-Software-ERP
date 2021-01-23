@@ -35,7 +35,7 @@ export class BaseEntityService<T> {
      */
     public get(id: number | string): Observable<T> {
         return isString(id) ?
-            this.httpSrv.get(this.getUrl() + '/?find=' + id) :
+            this.httpSrv.get(this.getUrl() + '?find=' + id) :
             this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
