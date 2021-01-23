@@ -1,6 +1,6 @@
-import { Observable, of } from "rxjs";
-import { BaseEntityService } from "@ss/common/api-base-entity";
-import { map } from 'rxjs/operators';
+import {Observable, of} from "rxjs";
+import {BaseEntityService} from "@ss/common/api-base-entity";
+import {map} from 'rxjs/operators';
 
 export type Id = number | string;
 
@@ -10,10 +10,12 @@ export interface AutoCompleteModel<T> {
     toString: (T) => string;
     getById: (Id) => Observable<T>;
     filter: (string) => Observable<T[]>;
-    isPerfectMatch(T, string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
-
     options: T[];
     cache: T;
+
+
+    isPerfectMatch(T, string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
+
 
 }
 
@@ -37,12 +39,13 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 }
 
 export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
+    options = [];
+    cache: null;
+
     valueOf = t => null;
     toString = t => null;
     getById = t => of(null);
     filter = f => of([]);
     isPerfectMatch = (o, f) => false;
 
-    options = [];
-    cache: null;
 }
