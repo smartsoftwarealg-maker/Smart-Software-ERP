@@ -72,20 +72,13 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     setValue(v: Id, fireOnChange: boolean) {
+        console.log('ah ha! ' + v);
         if (!!this.model && !!v) {
             // possibilites:
-            // the value is null
             // the value is in cache
             // the value is in options
             // the value does not exist
-            if (v == null) {
-                this.selected = null;
-                if (fireOnChange) {
-                    this.onChange(this.selected);
-                }
-                // this.autoControl.setValue(null);
-                this.setAutoControlValue(null);
-            } else if (this.model.valueOf(this.model.cache) === v) {
+            if (this.model.valueOf(this.model.cache) === v) {
                 this.selected = v;
                 // this.autoControl.setValue(this.model.cache);
                 this.setAutoControlValue(this.model.cache);
@@ -109,7 +102,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         } else {
             this.selected = null;
             if (fireOnChange) {
-                this.onChange(this.selected);
+                this.onChange(null);
             }
         }
         this.stateChanges.next();
@@ -131,11 +124,14 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     loadValue(value: Id, runnable: () => void) {
+        console.log('1');
         if (this.model) {
+            console.log('2');
             this.loading = true;
             this.model
                 .getById(value)
                 .subscribe(e => {
+                    console.log(e);
                     this.model.cache = e;
                     this.model.options = [e];
                     this.selected = value;
