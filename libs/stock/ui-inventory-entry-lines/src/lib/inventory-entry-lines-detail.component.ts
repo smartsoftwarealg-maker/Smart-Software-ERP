@@ -23,11 +23,11 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
 
     parentId: number;
 
-    articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv);
+    articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
 
     constructor(
-        public InventoryEntryLinesService: InventoryEntryLinesService,
+        public inventoryEntryLinesService: InventoryEntryLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -36,7 +36,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
         public articleSrv: ArticleService,
         public storeNameSrv: StoreNameService,
         public lookupsSrv: LookupsService) {
-        super(InventoryEntryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
+        super(inventoryEntryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
             'STOCK_EDIT_INVENTORY_LINES_ENTRY'
         );
@@ -48,7 +48,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.InventoryEntryLinesService.setParentId(this.parentId);
+                    this.inventoryEntryLinesService.setParentId(this.parentId);
                     return p;
                 })
             );

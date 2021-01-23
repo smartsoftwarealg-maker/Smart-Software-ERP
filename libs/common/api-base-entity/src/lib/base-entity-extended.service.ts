@@ -1,4 +1,4 @@
-import {HttpService} from '@ss/common/api-common';
+import {HttpService, isString} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {BaseEntityService} from "./base-entity.service";
 import {HttpParams} from "@angular/common/http";
@@ -19,13 +19,4 @@ export class BaseEntityExtendedService<T> extends BaseEntityService<T> {
         }
     }
 
-    /**
-     * id is a string for the moment but could be ported to int in the future.
-     * @param id
-     */
-    public get(id: number | string): Observable<T> {
-        return typeof id === 'string' ?
-        this.httpSrv.get(this.getUrl() + '/?find=' + id) :
-            this.httpSrv.get(this.getUrl() + '/' + id);
-    }
 }

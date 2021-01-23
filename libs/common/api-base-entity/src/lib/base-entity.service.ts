@@ -1,5 +1,5 @@
 import {map} from 'rxjs/operators';
-import {HttpService} from '@ss/common/api-common';
+import {HttpService, isString} from '@ss/common/api-common';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
 import {HttpParams} from "@angular/common/http";
@@ -24,9 +24,19 @@ export class BaseEntityService<T> {
     public getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
         return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
     }
+    //
+    // public get(id: number): Observable<T> {
+    //     return this.httpSrv.get(this.getUrl() + '/' + id);
+    // }
 
-    public get(id: number): Observable<T> {
-        return this.httpSrv.get(this.getUrl() + '/' + id);
+    /**
+     * id is a string for the moment but could be ported to int in the future.
+     * @param id
+     */
+    public get(id: number | string): Observable<T> {
+        return isString(id) ?
+            this.httpSrv.get(this.getUrl() + '/?find=' + id) :
+            this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
     public remove(id: number): Observable<any> {
