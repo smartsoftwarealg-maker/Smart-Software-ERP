@@ -72,7 +72,6 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     setValue(v: Id, fireOnChange: boolean) {
-        console.log('ah ha! ' + v);
         if (!!this.model && !!v) {
             // possibilites:
             // the value is in cache
@@ -124,14 +123,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     loadValue(value: Id, runnable: () => void) {
-        console.log('1');
         if (this.model) {
-            console.log('2');
             this.loading = true;
             this.model
                 .getById(value)
                 .subscribe(e => {
-                    console.log(e);
                     this.model.cache = e;
                     this.model.options = [e];
                     this.selected = value;
