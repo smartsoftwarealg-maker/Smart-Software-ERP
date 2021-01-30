@@ -3,11 +3,13 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Card, CardService} from "@ss/stock/api-card";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LanguageService} from "@ss/common/ui-lang";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {StoreName} from "@ss/common/api-lookup";
+import {FormControl, FormGroup} from "@angular/forms";
+import {ArticleStoreService} from "@ss/stock/api-article-store";
 
 @Component({
     selector: 'ss-card',
@@ -16,6 +18,11 @@ import {LanguageService} from "@ss/common/ui-lang";
 })
 export class CardComponent implements OnInit {
 
+    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
+    selectedStore: number;
+    storeForm: FormGroup = new FormGroup({
+        store : new FormControl()
+    });
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -43,6 +50,7 @@ export class CardComponent implements OnInit {
                 public router: Router,
                 public articleSrv: ArticleService,
                 public langServ: LanguageService,
+                public storeSrv: ArticleStoreService,
                 public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -50,9 +58,9 @@ export class CardComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
             const articleId = +x.id;
-            const storeId = +x.store;
-            if (articleId && storeId) {
-                this.cardSrv.setParentsIds(articleId, storeId);
+            this.storeSrv.setParentId(articleId);
+            if (articleId && this.selectedStore) {
+                this.cardSrv.setParentsIds(articleId, this.selectedStore);
                 this.loadCard();
             }
         });

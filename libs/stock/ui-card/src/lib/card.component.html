@@ -1,3 +1,32 @@
+<mat-card>
+    <ng-container [formGroup]="storeForm">
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>STOCK_STORE</mat-label>
+            <ss-auto-complete matInput
+                              required
+                              [model]="storeAutoCompleteModel"
+                              formControlName="store"></ss-auto-complete>
+            <mat-error
+                *ngIf="storeForm.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+            <mat-error
+                *ngIf="storeForm.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-mini-fab
+                [disabled]="storeForm.value.store == null"
+                [matTooltip]="'STOCK_SEARCH'|translate"
+                (click)="loadCard()">
+
+            <i class="fas fa-search"></i>
+
+        </button>
+
+    </ng-container>
+
+</mat-card>
+
 <ng-container>
     <mat-table mat-table [dataSource]="data" class="main-table">
 

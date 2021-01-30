@@ -57,9 +57,9 @@
             </mat-form-field>
 
 
-            <mat-form-field id="price1" class="default-50 sm-100">
+            <mat-form-field id="price" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_PRICE</mat-label>
-                <mat-select formControlName="price1" required>
+                <mat-select formControlName="price" required>
                     <mat-option [value]="null"></mat-option>
                     <mat-option *ngFor="let v of prices" [value]="v.id">
                         {{v ? v.description : ''}}

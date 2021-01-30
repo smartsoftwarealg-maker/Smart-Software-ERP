@@ -46,11 +46,13 @@ export class CirculationComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            const articleId = +x.id;
-            const storeId = +x.store;
-            if (articleId && storeId) {
-                this.circulationSrv.setParentsIds(articleId, storeId);
+            if (+x.id) {
+                this.circulationSrv.setParentId(+x.id);
                 this.loadCirculation();
+            }
+
+            if (x.refrence) {
+                this.circulationSrv.
             }
         });
     }
@@ -58,7 +60,7 @@ export class CirculationComponent implements OnInit {
 
     loadCirculation() {
         this.shellSrv.setLoading(true);
-        this.circulationSrv.getPage(this.pagination)
+        this.circulationSrv.getPage(this.pagination,null,null,t)
             .subscribe((x: Circulation[]) => {
                 this.data = x.map(y => {
                     y.date = this.langServ.formatDate(y.date);
