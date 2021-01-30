@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
@@ -31,6 +31,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public router: Router,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
@@ -58,6 +59,16 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
     ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+    }
+
+
+    finishLoading(e: InventoryLines) {
+        this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: {reference: e.reference},
+            queryParamsHandling: 'merge'
+        }).then();
+        super.finishLoading(e);
     }
 
     public setupForm(b: InventoryLines) {

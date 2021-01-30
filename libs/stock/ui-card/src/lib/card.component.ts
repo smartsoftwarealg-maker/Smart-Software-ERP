@@ -19,16 +19,16 @@ import {ArticleStoreService} from "@ss/stock/api-article-store";
 export class CardComponent implements OnInit {
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
-    selectedStore: number;
+
     storeForm: FormGroup = new FormGroup({
-        store : new FormControl()
+        store: new FormControl()
     });
 
     //
     public readonly pagination = PaginationModel.newInstance();
 
 
-    parentId: number;
+    articleId: number;
     data: Card[];
 
     displayedColumns = [
@@ -57,26 +57,26 @@ export class CardComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            const articleId = +x.id;
-            this.storeSrv.setParentId(articleId);
-            if (articleId && this.selectedStore) {
-                this.cardSrv.setParentsIds(articleId, this.selectedStore);
-                this.loadCard();
-            }
+            this.articleId = +x.id;
+            this.storeSrv.setParentId(this.articleId);
         });
     }
 
 
     loadCard() {
-        this.shellSrv.setLoading(true);
-        this.cardSrv.getPage(this.pagination)
-            .subscribe((x: Card[]) => {
-                this.data = x.map(y => {
-                    y.date = this.langServ.formatDate(y.date);
-                    return y;
+        if (this.storeForm.valid) {
+            this.shellSrv.setLoading(true);
+            this.cardSrv.setParentsIds(this.articleId, this.storeForm.value.store)
+            this.cardSrv.getPage(this.pagination)
+                .subscribe((x: Card[]) => {
+                    this.data = x.map(y => {
+                        y.date = this.langServ.formatDate(y.date);
+                        return y;
+                    });
+                    this.shellSrv.setLoading(false);
                 });
-                this.shellSrv.setLoading(false);
-            });
+
+        }
     }
 
 

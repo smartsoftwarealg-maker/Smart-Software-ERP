@@ -19,7 +19,7 @@ export class CirculationService extends BaseEntityService<Circulation> {
     }
 
     loadByReference(paginator: PaginationModel, filter, sortBy, reference): Observable<Circulation[]> {
-        return this.httpSrv.getData(`${ARTICLES_URL}/${CIRCULATION_URL}`,
+        return this.httpSrv.getData(`${ARTICLES_URL}${CIRCULATION_URL}`,
             paginator.page,
             paginator.pageSize,
             filter,
