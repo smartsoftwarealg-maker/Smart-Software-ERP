@@ -52,7 +52,7 @@ export class CirculationComponent implements OnInit {
             }
 
             if (x.refrence) {
-                this.circulationSrv.
+                this.circulationSrv.loadByReference(this.pagination, null, null, x.refrence);
             }
         });
     }
@@ -60,7 +60,7 @@ export class CirculationComponent implements OnInit {
 
     loadCirculation() {
         this.shellSrv.setLoading(true);
-        this.circulationSrv.getPage(this.pagination,null,null,t)
+        this.circulationSrv.getPage(this.pagination, null, null, null)
             .subscribe((x: Circulation[]) => {
                 this.data = x.map(y => {
                     y.date = this.langServ.formatDate(y.date);
