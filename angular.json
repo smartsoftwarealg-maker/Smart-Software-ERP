@@ -2493,7 +2493,7 @@
         }
       }
     },
-    "api-totals": {
+    "stock-api-totals": {
       "projectType": "library",
       "root": "libs/stock/api-totals",
       "sourceRoot": "libs/stock/api-totals/src",
@@ -2547,6 +2547,7 @@
     }
   },
   "cli": {
+    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007",
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
