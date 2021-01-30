@@ -161,7 +161,15 @@
         "libs/common/ui-report-param/src/index.ts"
       ],
       "@ss/stock/api-totals": ["libs/stock/api-totals/src/index.ts"],
-      "@ss/stock/ui-totals": ["libs/stock/ui-totals/src/index.ts"]
+      "@ss/stock/ui-totals": ["libs/stock/ui-totals/src/index.ts"],
+      "@ss/sales/api-delivery-lines": [
+        "libs/sales/api-delivery-lines/src/index.ts"
+      ],
+      "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
+      "@ss/sales/ui-delivery": ["libs/sales/ui-delivery/src/index.ts"],
+      "@ss/sales/ui-delivery-lines": [
+        "libs/sales/ui-delivery-lines/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
