@@ -4,22 +4,47 @@ export const PERSONS_PHOTO_URL = '/photo';
 
 export interface Person {
     id: number;
-    customCode: string;
+
     firstName: string;
     lastName: string;
+
+    firstNameAr: string;
+    lastNameAr: string;
+
     birthDate: string;
     birthPlace: string;
+    birthPlaceAr: string;
+
     father: string;
     mother: string;
-    sex: 1 | 2;
-    address: string;
-    wilaya: number;
-    maritalStatus: number;
-    mservice: number;
+
+    fatherAr: string;
+    motherAr: string;
+
     nationality: number;
-    educationalLevel: number;
+
+    email: string;
+    phone: string;
+    mobile: string;
     retirementDate: string;
+
+    address1: string;
+    address1Ar: string;
+    ​
+    sex: 1 | 2;
+
+    confidential: boolean;
+    ss_Number: string;
+    by_rule: boolean;
+    customCode: string;
+    maritalStatus: number;
+
+
+
+    // things that may have changed
+//    wilaya: number; // was removed??
+    mservice: number;
+    educationalLevel: number;
     diploma: number;
-    ssNumber: string;
     mutualNumber: string;
 }
