@@ -6,6 +6,7 @@ import {Circulation, CirculationService} from "@ss/stock/api-circulation";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LanguageService} from "@ss/common/ui-lang";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'ss-circulation',
@@ -46,26 +47,32 @@ export class CirculationComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            const articleId = +x.id;
-            const storeId = +x.store;
-            if (articleId && storeId) {
-                this.circulationSrv.setParentsIds(articleId, storeId);
-                this.loadCirculation();
+            // if no reference found go for id
+            if (x.reference || +x.id) {
+                const loader: Observable<Circulation[]> = x.reference ? this.loadByReference(x.reference) : this.loadById(+x.id);
+                this.load(loader);
             }
         });
     }
 
+    loadById(id: number): Observable<Circulation[]> {
+        this.circulationSrv.setParentId(id);
+        return this.circulationSrv.getPage(this.pagination, null, null, null);
+    }
 
-    loadCirculation() {
+    loadByReference(reference: string) {
+        return this.circulationSrv.loadByReference(this.pagination, null, null, reference);
+    }
+
+    load(observable: Observable<Circulation[]>) {
         this.shellSrv.setLoading(true);
-        this.circulationSrv.getPage(this.pagination)
-            .subscribe((x: Circulation[]) => {
-                this.data = x.map(y => {
-                    y.date = this.langServ.formatDate(y.date);
-                    return y;
-                });
-                this.shellSrv.setLoading(false);
+        observable.subscribe((x: Circulation[]) => {
+            this.data = x.map(y => {
+                y.date = this.langServ.formatDate(y.date);
+                return y;
             });
+            this.shellSrv.setLoading(false);
+        });
     }
 
 

@@ -1,0 +1,74 @@
+
+:host {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 1624px;
+    width: 100%;
+}
+
+.main-table {
+    width: 100%;
+    max-width: 1624px;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+
+.mat-column-document {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-store {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-date {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-qty {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-price {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-number {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-customer {
+    flex: 150px 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

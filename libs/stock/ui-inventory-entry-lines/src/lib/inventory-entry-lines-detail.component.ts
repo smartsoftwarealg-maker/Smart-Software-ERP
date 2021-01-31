@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
@@ -11,6 +11,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
+import {InventoryLines} from "@ss/stock/api-inventory-lines";
 
 
 @Component({
@@ -31,6 +32,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public router: Router,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
@@ -58,6 +60,15 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
     ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+    }
+
+    finishLoading(e: InventoryLines) {
+        this.router.navigate([], {
+            relativeTo: this.route,
+            queryParams: {reference: e.reference},
+            queryParamsHandling: 'merge'
+        }).then();
+        super.finishLoading(e);
     }
 
     public setupForm(b: InventoryEntryLines) {

@@ -2422,10 +2422,7 @@
               "libs/common/api-reports/tsconfig.lib.json",
               "libs/common/api-reports/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-reports/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/api-reports/**/*"]
           }
         },
         "test": {
@@ -2491,6 +2488,58 @@
           "outputs": ["coverage/libs/common/ui-report-param"],
           "options": {
             "jestConfig": "libs/common/ui-report-param/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-totals": {
+      "projectType": "library",
+      "root": "libs/stock/api-totals",
+      "sourceRoot": "libs/stock/api-totals/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stock/api-totals/tsconfig.lib.json",
+              "libs/stock/api-totals/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stock/api-totals/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/stock/api-totals"],
+          "options": {
+            "jestConfig": "libs/stock/api-totals/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "stock-ui-totals": {
+      "projectType": "library",
+      "root": "libs/stock/ui-totals",
+      "sourceRoot": "libs/stock/ui-totals/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stock/ui-totals/tsconfig.lib.json",
+              "libs/stock/ui-totals/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-totals/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/stock/ui-totals"],
+          "options": {
+            "jestConfig": "libs/stock/ui-totals/jest.config.js",
             "passWithNoTests": true
           }
         }

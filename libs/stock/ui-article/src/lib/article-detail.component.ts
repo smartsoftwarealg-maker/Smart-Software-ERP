@@ -4,7 +4,7 @@ import { ArticleService, Article } from '@ss/stock/api-article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Mark, StoreName } from '@ss/common/api-lookup';
 import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
 import { LookupsService, Vat } from "@ss/common/api-lookup";
@@ -21,9 +21,6 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     marks: Mark[];
     vats: Vat[];
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
-    selectedStore: number;
-    storeForm: FormGroup;
 
     constructor(
         public articleSrv: ArticleService,
@@ -33,8 +30,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        public router: Router,
-        public storeSrv: ArticleStoreService) {
+        public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
     }
 
@@ -50,15 +46,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
 
     loadEntity(id: number): Observable<Article> {
-        this.initStoreForm(id);
         return super.loadEntity(id);
-    }
-
-    initStoreForm(articleId: number) {
-        this.storeSrv.setParentId(articleId); // set the article for the store
-        this.storeForm = new FormGroup({
-            store: new FormControl(+this.route.snapshot.queryParamMap.get('store'))
-        });
     }
 
     public setupForm(a: Article) {
@@ -75,13 +63,4 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         });
     }
 
-    updateStoreId(id: number): void {
-        this.router.navigate(
-            [],
-            {
-                relativeTo: this.route,
-                queryParams: { store: id },
-                queryParamsHandling: 'merge', // remove to replace all query params by provided
-            });
-    }
 }

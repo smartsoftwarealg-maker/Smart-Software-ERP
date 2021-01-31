@@ -247,6 +247,12 @@
     },
     "common-ui-report-param": {
       "tags": []
+    },
+    "stock-api-totals": {
+      "tags": []
+    },
+    "stock-ui-totals": {
+      "tags": []
     }
   }
 }

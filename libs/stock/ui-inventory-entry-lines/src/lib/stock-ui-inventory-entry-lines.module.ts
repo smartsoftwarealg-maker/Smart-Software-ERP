@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
         MaterialModule,
         CommonUiLangModule,
         UiPaginationModule,
+        RouterModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,

@@ -3,11 +3,13 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Card, CardService} from "@ss/stock/api-card";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LanguageService} from "@ss/common/ui-lang";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {StoreName} from "@ss/common/api-lookup";
+import {FormControl, FormGroup} from "@angular/forms";
+import {ArticleStoreService} from "@ss/stock/api-article-store";
 
 @Component({
     selector: 'ss-card',
@@ -16,12 +18,17 @@ import {LanguageService} from "@ss/common/ui-lang";
 })
 export class CardComponent implements OnInit {
 
+    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
+
+    storeForm: FormGroup = new FormGroup({
+        store: new FormControl()
+    });
 
     //
     public readonly pagination = PaginationModel.newInstance();
 
 
-    parentId: number;
+    articleId: number;
     data: Card[];
 
     displayedColumns = [
@@ -43,32 +50,33 @@ export class CardComponent implements OnInit {
                 public router: Router,
                 public articleSrv: ArticleService,
                 public langServ: LanguageService,
+                public storeSrv: ArticleStoreService,
                 public confirmationSrv: ConfirmationDialogService) {
     }
 
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            const articleId = +x.id;
-            const storeId = +x.store;
-            if (articleId && storeId) {
-                this.cardSrv.setParentsIds(articleId, storeId);
-                this.loadCard();
-            }
+            this.articleId = +x.id;
+            this.storeSrv.setParentId(this.articleId);
         });
     }
 
 
     loadCard() {
-        this.shellSrv.setLoading(true);
-        this.cardSrv.getPage(this.pagination)
-            .subscribe((x: Card[]) => {
-                this.data = x.map(y => {
-                    y.date = this.langServ.formatDate(y.date);
-                    return y;
+        if (this.storeForm.valid) {
+            this.shellSrv.setLoading(true);
+            this.cardSrv.setParentsIds(this.articleId, this.storeForm.value.store)
+            this.cardSrv.getPage(this.pagination)
+                .subscribe((x: Card[]) => {
+                    this.data = x.map(y => {
+                        y.date = this.langServ.formatDate(y.date);
+                        return y;
+                    });
+                    this.shellSrv.setLoading(false);
                 });
-                this.shellSrv.setLoading(false);
-            });
+
+        }
     }
 
 

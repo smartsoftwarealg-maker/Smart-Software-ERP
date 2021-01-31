@@ -20,3 +20,12 @@ mat-card {
     margin: auto;
 }
 
+#report-area.mat-card {
+    margin: 0 0 16px 0 !important;
+    padding: 0 !important;
+}
+
+#report-area.mat-card mat-card-content {
+    margin: 0 !important;
+}
+

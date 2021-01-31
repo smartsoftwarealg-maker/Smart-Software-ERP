@@ -3,7 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {ARTICLES_URL} from "@ss/stock/api-article";
 import {Card, CARD_URL} from "./card-api";
-import {ARTICLE_STORE_URL} from "@ss/stock/api-article-store";
+import {ARTICLE_LOTS_URL, ARTICLE_STORE_URL} from "@ss/stock/api-article-store";
 
 
 @Injectable({
