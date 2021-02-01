@@ -93,7 +93,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         return of(data.map(p => {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
-            console.log(p);
             p.birthDate = this.langSrv.formatDate(p.birthDate);
             p.retirementDate = this.langSrv.formatDate(p.birthDate);
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
