@@ -2493,7 +2493,7 @@
         }
       }
     },
-    "api-totals": {
+    "stock-api-totals": {
       "projectType": "library",
       "root": "libs/stock/api-totals",
       "sourceRoot": "libs/stock/api-totals/src",
