@@ -465,6 +465,11 @@
                 "glob": "**/*",
                 "input": "libs/administration/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/sales/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/erp/src/styles.scss"],
@@ -2493,7 +2498,7 @@
         }
       }
     },
-    "api-totals": {
+    "stock-api-totals": {
       "projectType": "library",
       "root": "libs/stock/api-totals",
       "sourceRoot": "libs/stock/api-totals/src",
@@ -2650,6 +2655,32 @@
           "outputs": ["coverage/libs/sales/ui-delivery-lines"],
           "options": {
             "jestConfig": "libs/sales/ui-delivery-lines/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-assets": {
+      "projectType": "library",
+      "root": "libs/sales/assets",
+      "sourceRoot": "libs/sales/assets/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/assets/tsconfig.lib.json",
+              "libs/sales/assets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/assets/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/assets"],
+          "options": {
+            "jestConfig": "libs/sales/assets/jest.config.js",
             "passWithNoTests": true
           }
         }

@@ -52,7 +52,8 @@
                 <button mat-icon-button (click)="edit()">
                     <span class="fas fa-pen"></span>
                 </button>
-                <button mat-icon-button (click)="deleteSelected()">
+                <button mat-icon-button (click)="deleteSelected()"
+                        *ngIf="e.qtySatisfied < 0.001">
                     <span class="fas fa-trash-alt"></span>
                 </button>
             </mat-cell>
@@ -60,7 +61,7 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 

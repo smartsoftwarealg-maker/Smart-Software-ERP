@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -18,8 +18,8 @@ import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
     styleUrls: ['./delivery-lines-detail.component.scss'],
     templateUrl: './delivery-lines-detail.component.html'
 })
-export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> {
-
+export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {
+   private line: DeliveryLine = null;
 
     parentId: number;
 
@@ -61,11 +61,12 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
     }
 
     public setupForm(b: DeliveryLine) {
+        this.line = b;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
             transacId: [this.parentId],
-            reference: [b.reference],
+            reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
             sourceDoc: [b.sourceDoc],
             store: [b.store],
             qtyOrdered: [b.qtyOrdered],
@@ -75,10 +76,44 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
             price: [b.price],
             observation: [b.observation],
             footerMemo: [b.footerMemo],
-            position: [b.position],
-            pprice: [b.pprice],
+            position: [{ value: b.position || 0, disabled: true }],
         });
     }
 
+    private fillObject(from, to) {
+        for (const key in from) {
+            if (from.hasOwnProperty(key)) {
+                if (Object.prototype.toString.call(from[key]) === '[object Object]') {
+                    if (!to.hasOwnProperty(key)) {
+                        to[key] = {};
+                    }
+                    this.fillObject(from[key], to[key]);
+                }
+                else if (!to.hasOwnProperty(key)) {
+                    to[key] = from[key];
+                }
+            }
+        }
+    }
 
+    finishLoading(e: DeliveryLine) {
+        super.finishLoading(e);
+        this.form.get('qtySatisfied').valueChanges.subscribe(next => {
+            if (typeof next === 'number') {
+                if (next > 0.0 && this.line.reference) {
+                    this.form.get('reference').disable();
+                    this.form.get('store').disable();
+                } else {
+                    this.form.get('reference').enable();
+                    this.form.get('store').enable();
+                }
+            }
+        })
+    }
+
+    readForm(): DeliveryLine {
+        const form =  super.readForm();
+        this.fillObject(this.line, form)
+        return form;
+    }
 }

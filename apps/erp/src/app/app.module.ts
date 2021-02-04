@@ -70,6 +70,7 @@ export class AppModule {
         langSrv.addSource('assets/locale/stock_', 'STOCK_');
         langSrv.addSource('assets/locale/payroll_', 'PAYROLL_');
         langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/sales_', 'SALES_');
         langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
     }
 

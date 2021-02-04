@@ -1,4 +1,4 @@
-export const SALES_DELIVERY_URL = "/delivery";
+export const DELIVERY_URL = "/delivery";
 
 export interface Delivery {
     id: number;

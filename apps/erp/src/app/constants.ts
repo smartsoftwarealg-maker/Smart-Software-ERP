@@ -47,6 +47,9 @@ export const STOCK_CITY_URL = 'cities';
 export const STOCK_COUNTRY_URL = 'countries';
 export const STOCK_PAY_MODE_URL = 'payModes';
 
+// Sales
+export const SALES_DELIVERY_URL = 'delivery';
+
 // Payroll
 export const PAYROLL_CATEGORIES_URL = 'categories';
 export const PAYROLL_SERVICES_URL = 'services';
@@ -106,3 +109,7 @@ export const ABS_PAYROLL_WILAYAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LO
 export const ABS_PAYROLL_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_NATIONALITIES_URL].join('/');
 export const ABS_PAYROLL_SERVICES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SERVICES_URL].join('/');
 export const ABS_PAYROLL_PERSONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL].join('/');
+
+
+// sales
+export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

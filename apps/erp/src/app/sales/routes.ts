@@ -1,14 +1,14 @@
-import {
-    COMMON_REPORT_PARAMS_URL,
-    LOOKUPS_URL,
+import { SALES_DELIVERY_URL,
 } from '../constants';
 
 import {Routes} from '@angular/router';
-import {SALES_DELIVERY_URL} from "../../../../../libs/sales/api-delivery/src";
-import {DeliveryDetailComponent, DeliveryListComponent} from "../../../../../libs/sales/ui-delivery/src";
-import {TotalComponent} from "../../../../../libs/stock/ui-totals/src";
-import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from "../../../../../libs/common/api-common/src";
-import {DeliveryLinesListComponent} from "../../../../../libs/sales/ui-delivery-lines/src";
+import {DeliveryDetailComponent, DeliveryListComponent} from "@ss/sales/ui-delivery";
+import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
+import {DeliveryLinesDetailComponent, DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
+import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
+import {TotalComponent} from "@ss/stock/ui-totals";
+import {DELIVERY_URL} from "../../../../../libs/sales/api-delivery/src";
+import {InventoryEntryLinesDetailComponent} from "../../../../../libs/stock/ui-inventory-entry-lines/src";
 
 
 export const mainRoutes: Routes = [
@@ -19,6 +19,24 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: DeliveryListComponent,
                 canActivate: [CanActivateService],
+                children: [
+                    {
+                        path: 'totals',
+                        data: {documentURL: DELIVERY_URL},
+                        component: TotalComponent,
+                        canActivate: [CanActivateService]
+                    },
+                    {
+                        path: '**',
+                        redirectTo: 'totals',
+                        pathMatch: 'full'
+                    }
+                ]
+            },
+            {
+                path: LINES_DETAIL_URL,
+                component: DeliveryLinesDetailComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: DETAIL_URL,

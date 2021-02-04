@@ -60,7 +60,4 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
         this.dealers = {};
         data.forEach(m => this.dealers[m.id] = m.fullName);
     }
-
-
-
 }

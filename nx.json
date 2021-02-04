@@ -37,7 +37,8 @@
         "stock-assets",
         "payroll-assets",
         "logistics-assets",
-        "administration-assets"
+        "administration-assets",
+        "sales-assets"
       ]
     },
     "common-api-lookup": { "tags": ["type:api"] },
@@ -102,6 +103,7 @@
     "stock-api-totals": { "tags": [] },
     "stock-ui-totals": { "tags": [] },
     "sales-api-delivery-lines": { "tags": [] },
-    "sales-api-delivery": { "tags": [] }
+    "sales-api-delivery": { "tags": [] },
+    "sales-assets": { "tags": [] }
   }
 }

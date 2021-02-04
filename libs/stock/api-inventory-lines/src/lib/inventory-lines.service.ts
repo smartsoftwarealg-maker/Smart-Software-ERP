@@ -11,7 +11,7 @@ import {INVENTORY_URL} from "@ss/stock/api-inventory";
 export class InventoryLinesService extends BaseEntityService<InventoryLine> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, INVENTORY_LINES_URL,INVENTORY_URL);
+        super(httpSrv, INVENTORY_LINES_URL, INVENTORY_URL);
     }
 
 }

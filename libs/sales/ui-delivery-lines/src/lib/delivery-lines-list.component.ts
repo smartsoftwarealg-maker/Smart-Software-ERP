@@ -22,7 +22,7 @@ export class DeliveryLinesListComponent implements OnInit {
 
     parentId: number;
     data: DeliveryLine[];
-    selected: number;
+    selectedId: number;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -48,7 +48,6 @@ export class DeliveryLinesListComponent implements OnInit {
         public storeNamesSrv: StoreNameService,
         public confirmationSrv: ConfirmationDialogService) {
     }
-
 
     ngOnInit() {
         this.getCurrentDeliveryId().subscribe(x => {
@@ -90,15 +89,14 @@ export class DeliveryLinesListComponent implements OnInit {
     }
 
     select(id: number): void {
-        this.selected = id;
+        this.selectedId = id;
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
-                if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (b && this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.deliveryLinesSrv.remove(a.id)
@@ -114,14 +112,13 @@ export class DeliveryLinesListComponent implements OnInit {
                                     }
                                 );
                         }
-                    }
                 }
             })
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 

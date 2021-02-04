@@ -74,11 +74,11 @@ import {CirculationComponent} from "@ss/stock/ui-circulation";
 import {CardComponent} from "@ss/stock/ui-card";
 import {ReportParamsComponent} from "@ss/common/ui-report-param";
 import {TotalComponent} from "@ss/stock/ui-totals";
-import {INVENTORY_ENTRY_URL} from "../../../../../libs/stock/api-inventory-entry/src";
-import {INVENTORY_EXIT_URL} from "../../../../../libs/stock/api-inventory-exit/src";
-import {CONSUMPTION_URL} from "../../../../../libs/stock/api-consumption/src";
-import {INVENTORY_URL} from "../../../../../libs/stock/api-inventory/src";
-import {RECEPTION_URL} from "../../../../../libs/stock/api-reception/src";
+import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
+import {INVENTORY_EXIT_URL} from "@ss/stock/api-inventory-exit";
+import {CONSUMPTION_URL} from "@ss/stock/api-consumption";
+import {INVENTORY_URL} from "@ss/stock/api-inventory";
+import {RECEPTION_URL} from "@ss/stock/api-reception";
 
 
 export const mainRoutes: Routes = [
