@@ -7,8 +7,7 @@ import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_UR
 import {DeliveryLinesDetailComponent, DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
 import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
 import {TotalComponent} from "@ss/stock/ui-totals";
-import {DELIVERY_URL} from "../../../../../libs/sales/api-delivery/src";
-import {InventoryEntryLinesDetailComponent} from "../../../../../libs/stock/ui-inventory-entry-lines/src";
+import {DELIVERY_URL} from "@ss/sales/api-delivery";
 
 
 export const mainRoutes: Routes = [
