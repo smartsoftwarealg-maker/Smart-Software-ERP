@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -18,7 +18,7 @@ import {DETAIL_URL} from "@ss/common/api-common";
     styleUrls: ['./inventory-lines-detail.component.scss'],
     templateUrl: './inventory-lines-detail.component.html'
 })
-export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLine> {
+export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLine> implements OnInit {
 
 
     parentId: number;
@@ -61,9 +61,8 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
     }
 
-<<<<<<< HEAD
 
-    finishLoading(e: InventoryLines) {
+    finishLoading(e: InventoryLine) {
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},
@@ -72,10 +71,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         super.finishLoading(e);
     }
 
-    public setupForm(b: InventoryLines) {
-=======
     public setupForm(b: InventoryLine) {
->>>>>>> sales-feature
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
