@@ -23,5 +23,22 @@
     "FIRST_NAME": "Prénom",
     "LAST_NAME": "Nom",
     "BIRTH_DATE": "Date de naissance",
-    "BIRTH_PLACE": "Lieu de naissance"
+    "BIRTH_PLACE": "Lieu de naissance",
+    "MALE": "Mâle",
+    "FEMALE": "Femelle",
+    "FATHER": "Père",
+    "MOTHER": "Mère",
+    "SOCIAL_INFO": "Informations sociales",
+    "PID": "Matricule",
+    "EMAIL": "Email",
+    "PHONE": "N° Téléphone",
+    "MOBILE": "N° Portable",
+    "SS_NUMBER": "N° Sécurité sociale",
+    "RETIREMENT_DATE": "Date de retraite",
+    "ARABIC_INFO": "Informations en Arabe",
+    "FIRST_NAME_AR": "Prénom (Arabe)",
+    "LAST_NAME_AR": "Nom (Arabe)",
+    "FATHER_AR": "Père (Arabe)",
+    "MOTHER_AR": "Mère (Arabe)",
+    "BIRTH_PLACE_AR": "Lieu de naissance (Arabe)"
 }

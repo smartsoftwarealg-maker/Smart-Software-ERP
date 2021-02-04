@@ -23,5 +23,22 @@
     "FIRST_NAME": "الإسم",
     "LAST_NAME": "اللقب",
     "BIRTH_DATE": "تاريخ الميلاد",
-    "BIRTH_PLACE": "مكان الميلاد"
+    "BIRTH_PLACE": "مكان الميلاد",
+    "MALE": "ذكر",
+    "FEMALE": "أنثى",
+    "FATHER": "الأب",
+    "MOTHER": "الأم",
+    "SOCIAL_INFO": "المعلومات الإجتماعية",
+    "PID": "الرقم",
+    "EMAIL": "البريد",
+    "PHONE": "الهاتف",
+    "MOBILE": "الهاتف المحمول",
+    "SS_NUMBER": "رقم الضمان",
+    "RETIREMENT_DATE": "تاريخ التقاعد",
+    "ARABIC_INFO": "المعلومات بالعربية",
+    "FIRST_NAME_AR": "",
+    "LAST_NAME_AR": "",
+    "FATHER_AR": "",
+    "MOTHER_AR": "",
+    "BIRTH_PLACE_AR": ""
 }
