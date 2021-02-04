@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryLines, InventoryLinesService} from "@ss/stock/api-inventory-lines";
+import {InventoryLine, InventoryLinesService} from "@ss/stock/api-inventory-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
@@ -18,7 +18,7 @@ import {DETAIL_URL} from "@ss/common/api-common";
     styleUrls: ['./inventory-lines-detail.component.scss'],
     templateUrl: './inventory-lines-detail.component.html'
 })
-export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLines> {
+export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLine> {
 
 
     parentId: number;
@@ -61,6 +61,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
     }
 
+<<<<<<< HEAD
 
     finishLoading(e: InventoryLines) {
         this.router.navigate([], {
@@ -72,6 +73,9 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
     }
 
     public setupForm(b: InventoryLines) {
+=======
+    public setupForm(b: InventoryLine) {
+>>>>>>> sales-feature
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

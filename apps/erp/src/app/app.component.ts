@@ -6,6 +6,7 @@ import {ShellService} from '@ss/common/ui-shell';
 import {stockNavTree} from './stock/side-nav-tree';
 import {payrollNavTree} from "./payroll/side-nav-tree";
 import {administrationNavTree} from "./administration/side-nav-tree";
+import {salesNavTree} from "./sales/side-nav-tree";
 
 @Component({
     selector: 'ss-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software ERP');
-        this.shellSrv.setSideNavDataSource([administrationNavTree, stockNavTree, payrollNavTree]);
+        this.shellSrv.setSideNavDataSource([administrationNavTree, stockNavTree, salesNavTree, payrollNavTree]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)
