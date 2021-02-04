@@ -47,7 +47,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
             document: [0],
             center: [0],
             date: [b.date, Validators.required],
-            number: [b.number, Validators.required],
+            number: [{ value: b.number, disabled: true }, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
