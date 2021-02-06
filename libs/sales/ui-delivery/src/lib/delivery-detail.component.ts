@@ -10,6 +10,8 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
+import {LoginService} from "@ss/common/api-common";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -30,7 +32,8 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private loginService: LoginService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
 
@@ -42,17 +45,24 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
 
     public setupForm(b: Delivery) {
         // Make sure to update the template if you edit the configuration here
+        if (!b.id) {
+            b.id = 0;
+            b.userID = this.loginService.userSrv.userInfo.user.id;
+            b.dealer = b.userID;
+            b.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
+        }
+        const isManager = this.loginService.userSrv.userInfo.user.manager;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
             center: [0],
             date: [b.date, Validators.required],
-            number: [{ value: b.number, disabled: true }, Validators.required],
+            number: [b.number, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer, Validators.required],
+            dealer: [{ value: b.dealer, disabled: !isManager }, Validators.required],
         });
     }
 

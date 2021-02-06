@@ -80,7 +80,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
         });
     }
 
-    private fillObject(from, to) {
+    protected fillObject(from, to) {
         for (const key in from) {
             if (from.hasOwnProperty(key)) {
                 if (Object.prototype.toString.call(from[key]) === '[object Object]') {
