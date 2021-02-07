@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ShellService, SideNavNode} from '@ss/common/ui-shell';
 import {LanguageService} from "@ss/common/ui-lang";
+import { Router } from '@angular/router';
 
 interface NavNode {
     icon: string[];
@@ -19,7 +20,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     display: SideNavNode[];
     historyStack: SideNavNode[] = [];
 
-    constructor(private shellSrv: ShellService, public langSrv: LanguageService) {
+    constructor(private shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
     }
 
     ngOnInit(): void {
@@ -47,8 +48,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             this.historyStack.push(node);
             this.display = node.children;
             this.shellSrv.setGoBackFn(() => this.goUp());
-        } else {
-            // do some shit here
+        } else if (!!node.route) {
+            this.router.navigateByUrl(node.route);
         }
     }
 
