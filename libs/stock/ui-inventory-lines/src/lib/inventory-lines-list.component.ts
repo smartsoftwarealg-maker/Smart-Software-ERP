@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryLines, InventoryLinesService} from "@ss/stock/api-inventory-lines";
+import {InventoryLine, InventoryLinesService} from "@ss/stock/api-inventory-lines";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
@@ -21,7 +21,7 @@ export class InventoryLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: InventoryLines[];
+    data: InventoryLine[];
     selected: number;
 
     articles: { [reference: string]: string; } = {};

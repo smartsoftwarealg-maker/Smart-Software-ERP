@@ -465,6 +465,11 @@
                 "glob": "**/*",
                 "input": "libs/administration/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/sales/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/erp/src/styles.scss"],
@@ -2544,9 +2549,146 @@
           }
         }
       }
+    },
+    "sales-api-delivery-lines": {
+      "projectType": "library",
+      "root": "libs/sales/api-delivery-lines",
+      "sourceRoot": "libs/sales/api-delivery-lines/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/api-delivery-lines/tsconfig.lib.json",
+              "libs/sales/api-delivery-lines/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sales/api-delivery-lines/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/api-delivery-lines"],
+          "options": {
+            "jestConfig": "libs/sales/api-delivery-lines/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-api-delivery": {
+      "projectType": "library",
+      "root": "libs/sales/api-delivery",
+      "sourceRoot": "libs/sales/api-delivery/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/api-delivery/tsconfig.lib.json",
+              "libs/sales/api-delivery/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/api-delivery/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/api-delivery"],
+          "options": {
+            "jestConfig": "libs/sales/api-delivery/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-ui-delivery": {
+      "projectType": "library",
+      "root": "libs/sales/ui-delivery",
+      "sourceRoot": "libs/sales/ui-delivery/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/ui-delivery/tsconfig.lib.json",
+              "libs/sales/ui-delivery/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-delivery/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/ui-delivery"],
+          "options": {
+            "jestConfig": "libs/sales/ui-delivery/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-ui-delivery-lines": {
+      "projectType": "library",
+      "root": "libs/sales/ui-delivery-lines",
+      "sourceRoot": "libs/sales/ui-delivery-lines/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/ui-delivery-lines/tsconfig.lib.json",
+              "libs/sales/ui-delivery-lines/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sales/ui-delivery-lines/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/ui-delivery-lines"],
+          "options": {
+            "jestConfig": "libs/sales/ui-delivery-lines/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-assets": {
+      "projectType": "library",
+      "root": "libs/sales/assets",
+      "sourceRoot": "libs/sales/assets/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/assets/tsconfig.lib.json",
+              "libs/sales/assets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/assets/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/assets"],
+          "options": {
+            "jestConfig": "libs/sales/assets/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
+    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007",
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {

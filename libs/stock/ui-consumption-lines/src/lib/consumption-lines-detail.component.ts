@@ -11,7 +11,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
-import {InventoryLines} from "@ss/stock/api-inventory-lines";
+import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 
 @Component({
@@ -62,7 +62,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
     }
 
-    finishLoading(e: InventoryLines) {
+    finishLoading(e: InventoryLine) {
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},

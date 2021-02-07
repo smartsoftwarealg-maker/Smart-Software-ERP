@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ShellService, SideNavNode} from '@ss/common/ui-shell';
 import {LanguageService} from "@ss/common/ui-lang";
+import { Router } from '@angular/router';
 
 interface NavNode {
     icon: string[];
@@ -15,12 +16,16 @@ interface NavNode {
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    links: NavNode[] = [];
+    navData: SideNavNode[];
+    display: SideNavNode[];
+    historyStack: SideNavNode[] = [];
 
-    constructor(private shellSrv: ShellService, public langSrv: LanguageService) {
+    constructor(private shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
     }
 
     ngOnInit(): void {
+        this.navData = this.shellSrv.sideNavDataSource.data;
+        this.display = this.navData;
         this.shellSrv.setTilte('SMART_ERP');
         this.shellSrv.enableSearch(
             'SEARCH_APP',
@@ -28,10 +33,9 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                 f => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
-                        const flatTree: NavNode[] = this.flattenNodes(this.shellSrv.sideNavDataSource.data, [], []);
-                        this.links = flatTree.filter(n => n.name.join(', ').toLowerCase().indexOf(lowF) >= 0);
+                        // todo: implement filter here
                     } else {
-                        this.links = [];
+                        this.display = this.navData;
                     }
                 },
                 err => console.error(err)
@@ -39,27 +43,27 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         );
     }
 
-    flattenNode(node: SideNavNode, parentName: string[], parentIcon: string[]): NavNode[] {
-        if (node) {
-            const result: NavNode = {
-                icon: parentIcon.concat(node.icon),
-                name: parentName.concat(this.langSrv.translate(node.name)),
-                route: node.route
-            };
-            let arr: NavNode[] = [result];
-            if (node.children && node.children.length) {
-                arr = arr.concat(...this.flattenNodes(node.children, result.name, result.icon));
-            }
-            return arr;
+    onClick(node: SideNavNode): void {
+        if (node.children) {
+            this.historyStack.push(node);
+            this.display = node.children;
+            this.shellSrv.setGoBackFn(() => this.goUp());
+        } else if (!!node.route) {
+            this.router.navigateByUrl(node.route);
         }
-        return [];
     }
 
-    flattenNodes(nodes: SideNavNode[], parentName: string[], parentIcon: string[]): NavNode[] {
-        if (nodes && nodes.length) {
-            return [].concat(...nodes.map(n => this.flattenNode(n, parentName, parentIcon)));
+    goUp(): void {
+        if (this.historyStack.length) {
+            if (this.historyStack.length > 1) {
+                this.display = this.historyStack[this.historyStack.length - 2].children;
+            } else {
+                this.display = this.navData;
+            }
+            this.historyStack.splice(this.historyStack.length - 1);
+        } else {
+            this.shellSrv.setGoBackFn(null);
         }
-        return [];
     }
 
     ngOnDestroy(): void {
