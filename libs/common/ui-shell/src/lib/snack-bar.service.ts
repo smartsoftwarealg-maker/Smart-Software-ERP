@@ -23,8 +23,8 @@ export class SnackBarService {
         this.config.panelClass = ['b-primary'];
         this.errorConfig.panelClass = ['b-warn'];
 
-        this.config.horizontalPosition = 'end';
-        this.errorConfig.horizontalPosition = 'end';
+        this.config.horizontalPosition = 'center';
+        this.errorConfig.horizontalPosition = 'center';
     }
 
     public showMessage(msg: string, skipTranslation: boolean = false, isError = false): MatSnackBarRef<SimpleSnackBar> {
