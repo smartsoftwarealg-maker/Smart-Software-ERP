@@ -8,6 +8,7 @@ import {DeliveryLinesDetailComponent, DeliveryLinesListComponent} from "@ss/sale
 import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
 import {TotalComponent} from "@ss/stock/ui-totals";
 import {DELIVERY_URL} from "@ss/sales/api-delivery";
+import {CirculationComponent} from "../../../../../libs/stock/ui-circulation/src";
 
 
 export const mainRoutes: Routes = [
@@ -21,15 +22,10 @@ export const mainRoutes: Routes = [
                 children: [
                     {
                         path: 'totals',
-                        data: {documentURL: DELIVERY_URL},
+                        data: { documentURL: DELIVERY_URL },
                         component: TotalComponent,
                         canActivate: [CanActivateService]
                     },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
-                    }
                 ]
             },
             {
@@ -45,7 +41,21 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: DeliveryLinesListComponent,
-                        canActivate: [CanActivateService]
+                        canActivate: [CanActivateService],
+                        children: [
+                            {
+                                path: 'totals',
+                                data: { documentURL: "" },
+                                component: TotalComponent,
+                                canActivate: [CanActivateService]
+                            },
+                            {
+                                path: 'circulation',
+                                data: { documentURL: "" },
+                                component: CirculationComponent,
+                                canActivate: [CanActivateService]
+                            },
+                        ]
                     }
                 ]
             },

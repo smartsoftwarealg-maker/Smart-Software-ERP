@@ -205,3 +205,18 @@ function pad4(n: number): string {
     return (n < 10 ? '000' : (n < 100 ? '00' : (n < 1000 ? '0' : ''))) + n;
 }
 
+export function fillObject(from, to) {
+    for (const key in from) {
+        if (from.hasOwnProperty(key)) {
+            if (Object.prototype.toString.call(from[key]) === '[object Object]') {
+                if (!to.hasOwnProperty(key)) {
+                    to[key] = {};
+                }
+                this.fillObject(from[key], to[key]);
+            }
+            else if (!to.hasOwnProperty(key)) {
+                to[key] = from[key];
+            }
+        }
+    }
+}

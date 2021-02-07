@@ -94,6 +94,11 @@ export class HttpService {
     }
 
     public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        const URL = this.baseUrl + url;
+        console.log('***********************URL', URL);
+        if (URL.endsWith("NaN")) {
+            throw new Error('Invalid URL');
+        }
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }

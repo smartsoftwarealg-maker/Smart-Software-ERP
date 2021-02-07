@@ -81,7 +81,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             .pipe(
                 switchMap(p => {
                     this.assignQueryParams(p);
-                    return this.loadEntity(this.queryId);
+                    return this.loadEntity(this.queryId || 0);
                 })
             );
     }

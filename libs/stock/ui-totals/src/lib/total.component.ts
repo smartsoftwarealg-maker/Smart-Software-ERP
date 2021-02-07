@@ -42,10 +42,8 @@ export class TotalComponent implements OnInit {
             .subscribe(([data, param]) => {
                 const documentId = +param.selected;
                 const documentUrl = data.documentURL;
-                console.log(documentId);
-                console.log(documentUrl);
                 if (documentId && documentUrl) {
-                    this.totalSrv.setParentsIds(documentId, documentUrl);
+                    this.totalSrv.setParentsIds(documentId || 0, documentUrl);
                     this.loadTotal();
                 }
             });
@@ -55,11 +53,11 @@ export class TotalComponent implements OnInit {
     loadTotal() {
         this.shellSrv.setLoading(true);
         this.totalSrv.getPage(this.pagination)
-            .subscribe((x: Total[]) => {
-                this.data = x;
-                this.shellSrv.setLoading(false);
-            });
+            .subscribe((x: Total[]) =>
+                {
+                    this.data = x;
+                    this.shellSrv.setLoading(false);
+                },
+                err => this.shellSrv.setLoading(false));
     }
-
-
 }

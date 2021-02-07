@@ -102,5 +102,6 @@
     "VALUE_STRING": "Value strings",
     "VALUE_LIST": "Value list",
     "NAME": "Name",
-    "REPORT_PARAMS": "Report params"
+    "REPORT_PARAMS": "Report params",
+    "INFO": "Info."
 }

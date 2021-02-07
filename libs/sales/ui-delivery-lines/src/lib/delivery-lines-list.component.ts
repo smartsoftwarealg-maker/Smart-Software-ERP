@@ -23,6 +23,7 @@ export class DeliveryLinesListComponent implements OnInit {
     parentId: number;
     data: DeliveryLine[];
     selectedId: number;
+    selectedRow: DeliveryLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -88,10 +89,10 @@ export class DeliveryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(id: number): void {
-        this.selectedId = id;
+    select(row: DeliveryLine) {
+        this.selectedRow = row;
+        this.selectedId = row? row.id : 0;
     }
-
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {

@@ -63,6 +63,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     //
     public data: T[] = [];
     public selected = 0;
+    public selectedRow: T = null;
 
     //
 
@@ -134,6 +135,11 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     public releaseResources() {
     }
 
+    public selectRow(row: T) {
+        this.selectedRow = row;
+        const id = row? row.id || 0 : 0;
+        this.select(id)
+    }
     public select(id: number): void {
         if (id === this.selected) {
             this.selected = null;
