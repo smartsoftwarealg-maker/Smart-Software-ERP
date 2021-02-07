@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -11,7 +11,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
-import {InventoryLines} from "@ss/stock/api-inventory-lines";
+import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 
 @Component({
@@ -19,7 +19,7 @@ import {InventoryLines} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./reception-lines-detail.component.scss'],
     templateUrl: './reception-lines-detail.component.html'
 })
-export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLines> {
+export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLines> implements OnInit {
 
 
     parentId: number;
@@ -28,7 +28,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
 
     constructor(
-        public ReceptionLinesService: ReceptionLinesService,
+        public receptionLinesService: ReceptionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public router: Router,
@@ -38,7 +38,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
         public articleSrv: ArticleService,
         public storeNameSrv: StoreNameService,
         public lookupsSrv: LookupsService) {
-        super(ReceptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
+        super(receptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
             'STOCK_EDIT_RECEPTION_LINES'
         );
@@ -50,7 +50,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.ReceptionLinesService.setParentId(this.parentId);
+                    this.receptionLinesService.setParentId(this.parentId);
                     return p;
                 })
             );
@@ -62,7 +62,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
     }
 
-    finishLoading(e: InventoryLines) {
+    finishLoading(e: InventoryLine) {
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},

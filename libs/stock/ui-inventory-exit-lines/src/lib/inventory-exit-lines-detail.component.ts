@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -11,7 +11,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
-import {InventoryLines} from "@ss/stock/api-inventory-lines";
+import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 
 @Component({
@@ -19,7 +19,7 @@ import {InventoryLines} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./inventory-exit-lines-detail.component.scss'],
     templateUrl: './inventory-exit-lines-detail.component.html'
 })
-export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLines> {
+export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLines> implements OnInit {
 
 
     parentId: number;
@@ -62,7 +62,7 @@ export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent
         this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
     }
 
-    finishLoading(e: InventoryLines) {
+    finishLoading(e: InventoryLine) {
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},
