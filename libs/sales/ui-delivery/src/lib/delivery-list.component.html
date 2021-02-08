@@ -49,11 +49,10 @@
 </div>
 
 <mat-card>
-    test
     <ss-doc-info [agentId]="selectedRow?.agent"
                  [showAgent]="true"
                  [showDocument]="true"
+                 [reference]="selectedRow?.reference"
                  [documentId]="selectedRow?.id">
-
     </ss-doc-info>
 </mat-card>

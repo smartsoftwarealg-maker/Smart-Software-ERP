@@ -4,16 +4,15 @@
         <button mat-button [matMenuTriggerFor]="agentMenu" translate>LOGISTICS_AGENT</button>
         <mat-menu #agentMenu="matMenu" yPosition="above">
             <button mat-menu-item *ngFor="let e of AGENT_URLS" translate
-                    [routerLink]="e.url">{{ e.description }}</button>
+                    [routerLink]="e.url"
+                    (click)="select(e)">{{ e.description }}</button>
         </mat-menu>
     </div>
     <div *ngIf="showDocument">
         <button mat-button [matMenuTriggerFor]="documentMenu" translate>LOGISTICS_DOCUMENT</button>
         <mat-menu #documentMenu="matMenu" yPosition="above">
             <button mat-menu-item *ngFor="let e of DOCUMENT_URLS" translate
-                    [routerLink]="e.url"
-                    [queryParams]="{selected: documentId, id: documentId}"
-                    (click)="title = e.description">{{ e.description }}</button>
+                    (click)="select(e)">{{ e.description }}</button>
         </mat-menu>
     </div>
 
@@ -21,7 +20,9 @@
         <button mat-button [matMenuTriggerFor]="articleMenu" translate>LOGISTICS_ARTICLE</button>
         <mat-menu #articleMenu="matMenu" yPosition="above">
             <button mat-menu-item *ngFor="let e of ARTICLE_URLS" translate
-                    [routerLink]="e.url"  (click)="title = e.description">{{ e.description }}</button>
+                    [routerLink]="e.url"
+                    [queryParams]="{find: reference}"
+                    (click)="select(e)">{{ e.description }}</button>
         </mat-menu>
     </div>
     <span class="title" translate> {{ title }} </span>

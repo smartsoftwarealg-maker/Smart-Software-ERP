@@ -11,6 +11,7 @@ import {RouterModule} from "@angular/router";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
+import {SalesUiDeliveryLinesModule} from "@ss/sales/ui-delivery-lines";
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
         RouterModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule
+        LogisticsUiDocInfoModule,
+        SalesUiDeliveryLinesModule
     ],
     declarations: [
         DeliveryListComponent,

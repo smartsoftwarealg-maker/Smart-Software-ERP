@@ -40,10 +40,10 @@ export class TotalComponent implements OnInit {
     ngOnInit() {
         combineLatest([this.route.data, this.route.queryParams])
             .subscribe(([data, param]) => {
-                const documentId = +param.selected;
+                const documentId = +param.id;
                 const documentUrl = data.documentURL;
-                if (documentId && documentUrl) {
-                    this.totalSrv.setParentsIds(documentId || 0, documentUrl);
+                if (documentId) {
+                    this.totalSrv.setParentsIds(documentId, documentUrl);
                     this.loadTotal();
                 }
             });

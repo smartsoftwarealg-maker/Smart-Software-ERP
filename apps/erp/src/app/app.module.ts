@@ -51,11 +51,7 @@ const routes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(routes, {
-            enableTracing: false,
-            errorHandler: e => {
-            console.log('**********************', e);
-            throw e;
-            } }),
+            enableTracing: true }),
         // Smart Software modules
         UiThemeModule,
         UiErrorHandlerModule,
