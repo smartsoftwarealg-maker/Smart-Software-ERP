@@ -128,7 +128,7 @@ export class DeliveryLinesListComponent implements OnInit {
             parent: this.parentId,
             id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
+        this.router.navigate([LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
             .then();
     }
 

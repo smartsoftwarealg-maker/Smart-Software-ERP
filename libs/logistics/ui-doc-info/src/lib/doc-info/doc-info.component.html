@@ -3,9 +3,7 @@
     <div *ngIf="showAgent">
         <button mat-button [matMenuTriggerFor]="agentMenu" translate>LOGISTICS_AGENT</button>
         <mat-menu #agentMenu="matMenu" yPosition="above">
-            <button mat-menu-item *ngFor="let e of AGENT_URLS" translate
-                    [routerLink]="e.url"
-                    (click)="select(e)">{{ e.description }}</button>
+            <button mat-menu-item *ngFor="let e of AGENT_URLS" translate (click)="select(e)">{{ e.description }}</button>
         </mat-menu>
     </div>
     <div *ngIf="showDocument">
@@ -19,10 +17,7 @@
     <div *ngIf="showArticle">
         <button mat-button [matMenuTriggerFor]="articleMenu" translate>LOGISTICS_ARTICLE</button>
         <mat-menu #articleMenu="matMenu" yPosition="above">
-            <button mat-menu-item *ngFor="let e of ARTICLE_URLS" translate
-                    [routerLink]="e.url"
-                    [queryParams]="{find: reference}"
-                    (click)="select(e)">{{ e.description }}</button>
+            <button mat-menu-item *ngFor="let e of ARTICLE_URLS" translate (click)="select(e)">{{ e.description }}</button>
         </mat-menu>
     </div>
     <span class="title" translate> {{ title }} </span>
