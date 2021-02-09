@@ -1,10 +1,9 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import { Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
 import {
     ControlValueAccessor,
-    NgControl,
-    Validators
+    NgControl
 } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { isString, strToDate } from "@ss/common/api-common";
