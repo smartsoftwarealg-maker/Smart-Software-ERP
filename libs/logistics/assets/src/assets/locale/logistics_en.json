@@ -67,5 +67,13 @@
     "BUDGET_ACCOUNT": "Budget account",
     "TREASURY_ACCOUNT": "Treasury account",
     "ACCOUNTS": "Account",
-    "EDIT_ACCOUNT": "Edit account"
+    "HEADER": "Header",
+    "FOOTER": "Footer",
+    "EDIT_ACCOUNT": "Edit account",
+    "QTY_SATISFIED": "Qty Satisfied",
+    "ARTICLE": "Article",
+    "ARTICLES": "Articles",
+    "PRICE": "Price",
+    "DOCUMENT": "Document",
+    "TOTAL": "Total"
 }

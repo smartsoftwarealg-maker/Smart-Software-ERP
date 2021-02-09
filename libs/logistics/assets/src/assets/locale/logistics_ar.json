@@ -68,5 +68,13 @@
     "TREASURY_ACCOUNT": "حساب الخزينة",
     "ACCOUNTS": "الحساب",
     "EDIT_ACCOUNT": "تعديل الحساب",
-    "CUSTOMER_CODE": "رمز الزبون"
+    "HEADER": "الرأس",
+    "FOOTER": "التذيل",
+    "CUSTOMER_CODE": "رمز الزبون",
+    "QTY_SATISFIED": "الكمية المستلمة",
+    "ARTICLE": "السلعة",
+    "ARTICLES": "السلع",
+    "PRICE": "السعر",
+    "DOCUMENT": "الوثيقة",
+    "TOTAL": "المجموع"
 }

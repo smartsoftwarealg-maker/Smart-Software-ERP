@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DETAIL_URL} from "@ss/common/api-common";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
-
+import { fillObject } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -80,21 +80,6 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
         });
     }
 
-    protected fillObject(from, to) {
-        for (const key in from) {
-            if (from.hasOwnProperty(key)) {
-                if (Object.prototype.toString.call(from[key]) === '[object Object]') {
-                    if (!to.hasOwnProperty(key)) {
-                        to[key] = {};
-                    }
-                    this.fillObject(from[key], to[key]);
-                }
-                else if (!to.hasOwnProperty(key)) {
-                    to[key] = from[key];
-                }
-            }
-        }
-    }
 
     finishLoading(e: DeliveryLine) {
         super.finishLoading(e);
@@ -113,7 +98,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
 
     readForm(): DeliveryLine {
         const form =  super.readForm();
-        this.fillObject(this.line, form)
+        fillObject(this.line, form)
         return form;
     }
 }

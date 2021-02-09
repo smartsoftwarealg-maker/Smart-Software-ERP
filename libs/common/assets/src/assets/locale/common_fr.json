@@ -102,5 +102,6 @@
     "VALUE_STRING": "Chaînes de valeur",
     "VALUE_LIST": "Liste de valeurs",
     "NAME": "Nom",
-    "REPORT_PARAMS": "paramètres de l'etat"
+    "REPORT_PARAMS": "paramètres de l'etat",
+    "INFO": "Info."
 }

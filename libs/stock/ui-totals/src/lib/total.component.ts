@@ -40,11 +40,9 @@ export class TotalComponent implements OnInit {
     ngOnInit() {
         combineLatest([this.route.data, this.route.queryParams])
             .subscribe(([data, param]) => {
-                const documentId = +param.selected;
+                const documentId = +param.id;
                 const documentUrl = data.documentURL;
-                console.log(documentId);
-                console.log(documentUrl);
-                if (documentId && documentUrl) {
+                if (documentId) {
                     this.totalSrv.setParentsIds(documentId, documentUrl);
                     this.loadTotal();
                 }
@@ -55,11 +53,11 @@ export class TotalComponent implements OnInit {
     loadTotal() {
         this.shellSrv.setLoading(true);
         this.totalSrv.getPage(this.pagination)
-            .subscribe((x: Total[]) => {
-                this.data = x;
-                this.shellSrv.setLoading(false);
-            });
+            .subscribe((x: Total[]) =>
+                {
+                    this.data = x;
+                    this.shellSrv.setLoading(false);
+                },
+                err => this.shellSrv.setLoading(false));
     }
-
-
 }

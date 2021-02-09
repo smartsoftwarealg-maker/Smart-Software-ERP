@@ -104,6 +104,7 @@
     "stock-ui-totals": { "tags": [] },
     "sales-api-delivery-lines": { "tags": [] },
     "sales-api-delivery": { "tags": [] },
-    "sales-assets": { "tags": [] }
+    "sales-assets": { "tags": [] },
+    "logistics-ui-doc-info": { "tags": [] }
   }
 }

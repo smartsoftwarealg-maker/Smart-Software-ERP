@@ -1,35 +1,28 @@
-import { SALES_DELIVERY_URL,
-} from '../constants';
 
 import {Routes} from '@angular/router';
 import {DeliveryDetailComponent, DeliveryListComponent} from "@ss/sales/ui-delivery";
 import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
-import {DeliveryLinesDetailComponent, DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
-import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
+import {DeliveryLinesDetailComponent} from "@ss/sales/ui-delivery-lines";
 import {TotalComponent} from "@ss/stock/ui-totals";
-import {DELIVERY_URL} from "@ss/sales/api-delivery";
+import {CirculationComponent} from "@ss/stock/ui-circulation";
 
+export const lookupRoutes: Routes = []
 
 export const mainRoutes: Routes = [
     {
-        path: SALES_DELIVERY_URL,
+        path: 'delivery',
         children: [
             {
-                path: LIST_URL,
+                path: 'list',
                 component: DeliveryListComponent,
                 canActivate: [CanActivateService],
                 children: [
                     {
                         path: 'totals',
-                        data: {documentURL: DELIVERY_URL},
+                        data: { documentURL: '/delivery' },
                         component: TotalComponent,
                         canActivate: [CanActivateService]
                     },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
-                    }
                 ]
             },
             {
@@ -43,10 +36,17 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 children: [
                     {
-                        path: '',
-                        component: DeliveryLinesListComponent,
+                        path: 'totals',
+                        data: { documentURL: "/delivery" },
+                        component: TotalComponent,
                         canActivate: [CanActivateService]
-                    }
+                    },
+                    {
+                        path: 'circulation',
+                        data: { documentURL: "/articles/circulation" },
+                        component: CirculationComponent,
+                        canActivate: [CanActivateService]
+                    },
                 ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

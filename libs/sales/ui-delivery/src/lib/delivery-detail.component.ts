@@ -10,7 +10,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
-import {LoginService} from "@ss/common/api-common";
+import {fillObject, LoginService} from "@ss/common/api-common";
 import {DatePipe} from "@angular/common";
 
 
@@ -20,7 +20,8 @@ import {DatePipe} from "@angular/common";
     templateUrl: './delivery-detail.component.html'
 })
 export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery> {
-
+    private delivery: Delivery = null;
+    public isManager = false;
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
@@ -47,11 +48,13 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
+            b.number = 0;
             b.userID = this.loginService.userSrv.userInfo.user.id;
             b.dealer = b.userID;
             b.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
         }
-        const isManager = this.loginService.userSrv.userInfo.user.manager;
+        this.delivery = b;
+        this.isManager = this.loginService.userSrv.userInfo.user.manager;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
@@ -62,8 +65,12 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [{ value: b.dealer, disabled: !isManager }, Validators.required],
+            dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
         });
     }
-
+    readForm(): Delivery {
+        const form =  super.readForm();
+        fillObject(this.delivery, form)
+        return form;
+    }
 }

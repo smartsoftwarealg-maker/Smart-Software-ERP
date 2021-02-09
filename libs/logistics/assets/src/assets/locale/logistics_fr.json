@@ -67,5 +67,13 @@
     "BUDGET_ACCOUNT": "Compte budgétaire",
     "TREASURY_ACCOUNT": "Compte du Trésor",
     "ACCOUNTS": "Compte",
-    "EDIT_ACCOUNT": "Modifier le compte"
+    "HEADER": "Entête",
+    "FOOTER": "Bas de page",
+    "EDIT_ACCOUNT": "Modifier le compte",
+    "QTY_SATISFIED": "Qté sat.",
+    "ARTICLE": "Article",
+    "ARTICLES": "Articles",
+    "PRICE": "Prix",
+    "DOCUMENT": "Document",
+    "TOTAL": "Total"
 }

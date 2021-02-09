@@ -170,7 +170,8 @@
       "@ss/sales/ui-delivery-lines": [
         "libs/sales/ui-delivery-lines/src/index.ts"
       ],
-      "@ss/sales/assets": ["libs/sales/assets/src/index.ts"]
+      "@ss/sales/assets": ["libs/sales/assets/src/index.ts"],
+      "@ss/logistics/ui-doc-info": ["libs/logistics/ui-doc-info/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
