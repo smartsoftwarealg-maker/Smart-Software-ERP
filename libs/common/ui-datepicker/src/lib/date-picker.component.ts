@@ -167,6 +167,15 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
     }
 
+    onKeyUp(txt: string): void {
+        // 1-1-2000 is an example of the shortest valid date (8 chars)
+        if (txt && txt.length > 8) {
+            const value: Date = strToDate(txt);
+            this.onChange(value);
+            this.stateChanges.next();
+        }
+    }
+
     onDateChanged(d: Date) {
         this.value = d;
         this.onChange(d);
