@@ -45,8 +45,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
-    onChange: (date: Date) => void = this.noop;
-    onTouched: () => void = this.noop;
+    noopx = (x?: any) => { }
+    onChange: (date: Date) => void = this.noopx;
+    onTouched: () => void = this.noopx;
 
     /** The value of the control. */
     date: Date;
@@ -57,16 +58,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     @Input()
     set value(obj: Date) {
-        if (obj == null) {
-            this.date = null;
-        } else if (isString(obj)) {
-            this.date = strToDate(obj as any);
-        } else if (obj instanceof Date) {
-            this.date = obj;
-        } else {
-            this.date = null;
-        }
-        this.stateChanges.next();
+        this.writeValue(obj);
         this.onChange(this.date);
     }
 
@@ -168,24 +160,35 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     onKeyUp(txt: string): void {
         // 1-1-2000 is an example of the shortest valid date (8 chars)
+        let value: Date = null;
         if (txt && txt.length > 8) {
-            const value: Date = strToDate(txt);
-            this.onChange(value);
-            this.stateChanges.next();
+            value = strToDate(txt);
         }
+        this.onChange(value);
+        this.stateChanges.next();
     }
 
     onDateChanged(d: Date) {
-        this.value = d;
+        this.writeValue(d);
         this.onChange(d);
     }
 
     // value accessor
     writeValue(obj: any): void {
-        this.value = obj;
+        if (obj == null) {
+            this.date = null;
+        } else if (isString(obj)) {
+            this.date = strToDate(obj as any);
+        } else if (obj instanceof Date) {
+            this.date = obj;
+        } else {
+            this.date = null;
+        }
+        this.stateChanges.next();
     }
 
     registerOnChange(fn: any): void {
+        console.log('setting on change ' + fn);
         this.onChange = fn;
     }
 
@@ -196,10 +199,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
-
-    // other
-
-    noop(x?: any) { }
 
     // life cycles bullshit
     ngDoCheck(): void {
