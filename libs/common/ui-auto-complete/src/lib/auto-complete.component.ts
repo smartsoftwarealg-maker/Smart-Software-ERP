@@ -179,6 +179,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     @Input()
     set disabled(value: boolean) {
         this.isDisabled = coerceBooleanProperty(value);
+        if (this.isDisabled) {
+            this.autoControl.disable();
+        } else {
+            this.autoControl.enable();
+        }
         this.stateChanges.next();
     }
 

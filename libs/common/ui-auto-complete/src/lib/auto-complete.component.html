@@ -1,6 +1,6 @@
 <ng-container *ngIf="model">
     <input type="text" class="warn-when-invalid" matInput [formControl]="autoControl" [matAutocomplete]="auto" [required]="required">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="optionSelected($event)" panelWidth="null">
         <mat-option *ngFor="let option of model.options" [value]="option">
             {{model.toString(option)}}
         </mat-option>
