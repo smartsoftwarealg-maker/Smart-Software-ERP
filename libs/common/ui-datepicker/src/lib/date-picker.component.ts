@@ -188,7 +188,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     registerOnChange(fn: any): void {
-        console.log('setting on change ' + fn);
         this.onChange = fn;
     }
 
