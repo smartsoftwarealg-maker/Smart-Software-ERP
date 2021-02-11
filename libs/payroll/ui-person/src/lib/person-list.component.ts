@@ -35,7 +35,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         'fullname',
         'birth',
         'address',
-        'wilaya',
         'maritalStatus',
         'nationality',
         'mservice'
@@ -43,7 +42,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
 
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
-    wilayas: { [id: number]: string; };
     militaryServiceStates: { [id: number]: string; };
 
     constructor(
@@ -69,11 +67,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
                 switchMap(() => this.lookupsSrv.getNationalities()),
                 tap(x => {
                     this.nationalities = this.onLookupLoaded(x);
-                }),
-
-                switchMap(() => this.lookupsSrv.getWilaya()),
-                tap(x => {
-                    this.wilayas = this.onLookupLoaded(x);
                 }),
 
                 switchMap(() => this.lookupsSrv.getMilitaryServiceStates()),
@@ -109,7 +102,9 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
                         }
                     },
                     err => {
-                        if (err.status !== 404) {
+                        if (err.status === 404) {
+                            p.photoUrl = 'NotFound';
+                        } else {
                             throw err;
                         }
                     }
