@@ -13,9 +13,6 @@ import {combineLatest} from "rxjs";
     templateUrl: './total.component.html'
 })
 export class TotalComponent implements OnInit {
-
-
-    //
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -49,15 +46,8 @@ export class TotalComponent implements OnInit {
             });
     }
 
-
     loadTotal() {
-        this.shellSrv.setLoading(true);
         this.totalSrv.getPage(this.pagination)
-            .subscribe((x: Total[]) =>
-                {
-                    this.data = x;
-                    this.shellSrv.setLoading(false);
-                },
-                err => this.shellSrv.setLoading(false));
+            .subscribe((x: Total[]) => this.data = x);
     }
 }

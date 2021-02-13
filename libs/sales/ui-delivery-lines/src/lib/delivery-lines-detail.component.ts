@@ -74,6 +74,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
             qtyInvoiced: [b.qtyInvoiced],
             qtyReturned: [b.qtyReturned],
             price: [b.price],
+            vat: [b.vat],
             observation: [b.observation],
             footerMemo: [b.footerMemo],
             position: [{ value: b.position || 0, disabled: true }],

@@ -50,8 +50,7 @@ const routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(routes, {
-            enableTracing: false }),
+        RouterModule.forRoot(routes, { enableTracing: false }),
         // Smart Software modules
         UiThemeModule,
         UiErrorHandlerModule,

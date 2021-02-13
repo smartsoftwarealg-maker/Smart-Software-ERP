@@ -14,9 +14,6 @@ import {Observable} from "rxjs";
     templateUrl: './circulation.component.html'
 })
 export class CirculationComponent implements OnInit {
-
-
-    //
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -49,7 +46,7 @@ export class CirculationComponent implements OnInit {
         this.route.queryParams.subscribe(x => {
             // if no reference found go for id
             if (x.reference || +x.id) {
-                const loader: Observable<Circulation[]> = x.reference ? this.loadByReference(x.reference) : this.loadById(+x.id);
+                const loader: Observable<Circulation[]> = x.find ? this.loadByReference(x.find) : this.loadById(+x.id);
                 this.load(loader);
             }
         });
@@ -65,15 +62,6 @@ export class CirculationComponent implements OnInit {
     }
 
     load(observable: Observable<Circulation[]>) {
-        this.shellSrv.setLoading(true);
-        observable.subscribe((x: Circulation[]) => {
-            this.data = x.map(y => {
-                y.date = this.langServ.formatDate(y.date);
-                return y;
-            });
-            this.shellSrv.setLoading(false);
-        });
+         observable.subscribe((x: Circulation[]) => this.data = x);
     }
-
-
 }

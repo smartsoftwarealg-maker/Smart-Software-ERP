@@ -12,6 +12,7 @@ export interface DeliveryLine {
     qtyInvoiced: number;
     qtyReturned: number;
     price: number;
+    vat?: number,
     observation: string;
     footerMemo: string;
     position: number;

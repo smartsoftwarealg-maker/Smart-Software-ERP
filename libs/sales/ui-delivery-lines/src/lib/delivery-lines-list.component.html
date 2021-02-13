@@ -73,8 +73,8 @@
         <ss-doc-info [showAgent]="true"
                      [showDocument]="true"
                      [showArticle]="true"
-                     [storeId]="selectedRow?.store"
-                     [documentId]="selectedRow?.transacId">
+                     [documentId]="selectedRow?.transacId"
+                     [reference]="{ reference: selectedRow?.reference, storeId: selectedRow?.store }">
         </ss-doc-info>
     </mat-card>
 </ng-container>

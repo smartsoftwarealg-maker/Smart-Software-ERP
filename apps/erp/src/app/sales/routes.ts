@@ -50,7 +50,7 @@ export const mainRoutes: Routes = [
                 ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            {path: '**', redirectTo: ABS_INDEX_URL}
         ]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

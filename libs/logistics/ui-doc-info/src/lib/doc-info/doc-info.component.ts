@@ -25,10 +25,10 @@ interface Entry {
 export class DocInfoComponent implements OnInit {
     private selectedEntry: Entry;
     public title = "";
-    @Input() documentId = 0;
-    @Input() agentId = 0;
-    @Input() storeId = 0;
-    @Input() reference: string = null;
+    private documentId_ = 0;
+    private agentId_ = 0;
+    private storeId_ = 0;
+    private reference_ : string = null;
     @Input() showArticle = false;
     @Input() showAgent = true;
     @Input() showDocument = true;
@@ -39,11 +39,31 @@ export class DocInfoComponent implements OnInit {
 
     public AGENT_URLS: Entry[] = [];
     public DOCUMENT_URLS: Entry[] = [
-        {url: "./totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
+        {url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
     ];
     public ARTICLE_URLS: Entry[] = [
-        {url: "./circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
+        {url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
     ];
+
+    @Input() set documentId(id: number) {
+        this.documentId_ = id;
+        this.navigate();
+    }
+
+    @Input() set agentId(id: number) {
+        this.agentId_ = id;
+        if (this.selectedEntry && this.selectedEntry.type === TYPE.AGENT) {
+            this.navigate();
+        }
+    }
+    @Input() set reference(obj: { reference: string, storeId: number }) {
+        const inp = obj || {};
+        this.reference_ = inp['reference'];
+        this.storeId_ = inp['storeId'];
+        if (this.selectedEntry && this.selectedEntry.type === TYPE.ARTICLE) {
+            this.navigate();
+        }
+    }
 
     ngOnInit(): void {
     }
@@ -58,18 +78,18 @@ export class DocInfoComponent implements OnInit {
         if (this.selectedEntry != null) {
             this.router.navigate([this.selectedEntry.url], {
                 relativeTo: this.route,
-                queryParams: this.getQueryParams(),
-                queryParamsHandling: 'preserve'
+                queryParamsHandling: 'merge',
+                queryParams: this.getQueryParams()
             });
         }
     }
 
     private getQueryParams(): object {
         const types = {
-            [TYPE.AGENT]: {id: this.agentId},
-            [TYPE.ARTICLE]: {find: this.reference},
-            [TYPE.DOCUMENT]: {id: this.documentId}
+            [TYPE.AGENT]: {id: this.agentId_ || 0 },
+            [TYPE.DOCUMENT]: { id: this.documentId_ || 0 },
+            [TYPE.ARTICLE]: { find: this.reference_ || '' },
         }
-        return types[this.selectedEntry?.type] || {}
+        return types[this.selectedEntry?.type || 0] || {}
     }
 }
