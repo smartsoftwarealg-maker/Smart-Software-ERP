@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 /**
  * Generate command:
  * nx g component doc-info --path=libs/logistics/ui-doc-info/src/lib  --project=ui-doc-info     --module=logistics-ui-doc-info
+ * nx g @nrwl/angular:lib api-sales-order  --directory sales --dry-run
  */
 enum TYPE {
     AGENT = 1,

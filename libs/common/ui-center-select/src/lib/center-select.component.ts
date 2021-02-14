@@ -30,8 +30,7 @@ export class CenterSelectComponent implements OnInit {
 
     constructor(private ccListSrv: CentersService,
                 private loginSrv: LoginService,
-                private router: Router,
-                private userService: UserService) {
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -93,10 +92,10 @@ export class CenterSelectComponent implements OnInit {
             this.loading = true;
             this.loginSrv
                 .centerLogin(this.selectedCenter)
-                .pipe(switchMap(() => this.userService.load()))
+                .pipe(switchMap(() => this.loginSrv.loadUser()))
                 .subscribe(() => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
-                        const dest = this.userService.context && this.userService.context.pwdExpired
+                        const dest = this.loginSrv.context && this.loginSrv.context.pwdExpired
                             ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
                         this.router.navigate(['/' + dest]).then(() => {
                         });

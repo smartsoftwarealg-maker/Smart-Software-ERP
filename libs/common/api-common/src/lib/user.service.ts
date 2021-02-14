@@ -12,8 +12,6 @@ interface Severe {
     providedIn: 'root'
 })
 export class UserService {
-
-
     private readonly EMPTY_USER: UserInfo = {
         user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
         centers: [],
@@ -100,21 +98,21 @@ export class UserService {
             }));
     }
 
-    canUserPass(component: string): boolean {
-        return this.getRights(component).read;
+    canUserPass_(component: string): boolean {
+        return this.getUserRights(component).read;
     }
 
 
-    canUserAdd(component: string): boolean {
-        return this.getRights(component).create;
+    canUserAdd_(component: string): boolean {
+        return this.getUserRights(component).create;
     }
 
-    canUserEdit(component: string): boolean {
-        return this.getRights(component).edit;
+    canUserEdit_(component: string): boolean {
+        return this.getUserRights(component).edit;
     }
 
-    canUserDelete(component: string): boolean {
-        return this.getRights(component).del;
+    canUserDelete_(component: string): boolean {
+        return this.getUserRights(component).del;
     }
 
     private getDefault(): Right {
@@ -127,7 +125,7 @@ export class UserService {
         };
     }
 
-    getRights(component: string): Right {
+    getUserRights(component: string): Right {
         if (!component) {
             return this.getDefault();
         }
@@ -159,5 +157,4 @@ export class UserService {
             this.userInfo.user &&
             this.userInfo.user.id != null;
     }
-
 }

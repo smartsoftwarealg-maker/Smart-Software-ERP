@@ -14,8 +14,7 @@ import { UrlTree } from '@angular/router';
 export class CanActivateService implements CanActivate {
     constructor(public router: Router,
         protected httpSrv: HttpService,
-        private loginSrv: LoginService,
-        private userSrv: UserService) {
+        private loginSrv: LoginService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot,
@@ -42,11 +41,11 @@ export class CanActivateService implements CanActivate {
     private canRead(route: ActivatedRouteSnapshot): boolean {
         const entity = route.data.entity;
 
-        if (entity && !this.userSrv.canUserPass(entity)) {
+        if (entity && !this.loginSrv.canUserPass(entity)) {
             return false;
         }
 
-        if (this.userSrv.context && this.userSrv.context.pwdExpired) {
+        if (this.loginSrv.context && this.loginSrv.context.pwdExpired) {
             this.router.navigate(['/' + PROFILE_PAGE_URL]).then();
             return false;
         }
