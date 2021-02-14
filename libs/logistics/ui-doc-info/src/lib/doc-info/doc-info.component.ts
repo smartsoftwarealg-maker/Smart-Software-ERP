@@ -39,10 +39,10 @@ export class DocInfoComponent implements OnInit {
 
     public AGENT_URLS: Entry[] = [];
     public DOCUMENT_URLS: Entry[] = [
-        {url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
+        { url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
     ];
     public ARTICLE_URLS: Entry[] = [
-        {url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
+        { url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
     ];
 
     @Input() set documentId(id: number) {

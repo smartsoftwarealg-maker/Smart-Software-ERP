@@ -19,13 +19,14 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
 
 
     public dealers: { [id: number]: string; };
+    public agents: { [id: number]: string; } = {};
 
     displayedColumns = [
         'number',
         'date',
+        'agent',
         'reference',
         'referenceDocDate',
-        'dealer'
     ];
 
 
@@ -44,9 +45,10 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
 
 
     processLoadedData(data: Delivery[]): Observable<Delivery[]> {
-        return this.usersService.getAll(data.map(x => x.dealer))
-            .pipe(tap(x => this.onDealersLoaded(x)))
-            .pipe(switchMap(() => {
+        return this.agentService.getByIDList(data.map(x => x.agent))
+            .pipe(
+                tap(x => x.forEach(e => this.agents[e.id] = e.denomination)),
+                switchMap(() => {
                 const parsedData = data.map(x => {
                     x.date = this.langServ.formatDate(x.date);
                     x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);

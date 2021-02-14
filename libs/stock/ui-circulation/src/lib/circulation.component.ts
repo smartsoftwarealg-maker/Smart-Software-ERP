@@ -32,7 +32,7 @@ export class CirculationComponent implements OnInit {
 
 
     constructor(public circulationSrv: CirculationService,
-                public shellSrv: ShellService,
+                // public shellSrv: ShellService,
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
                 public router: Router,

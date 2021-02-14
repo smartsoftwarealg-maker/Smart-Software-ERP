@@ -79,7 +79,6 @@ export class DeliveryLinesListComponent implements OnInit {
     }
 
     loadRelatedTables(data): Observable<any> {
-
         const storesIds = this.data.map(x => x.store);
         const articleReferences = this.data.map(x => x.reference);
 

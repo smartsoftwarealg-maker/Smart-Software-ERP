@@ -12,6 +12,7 @@ import {User, UserService} from "@ss/common/api-users";
 import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
 import {fillObject, LoginService} from "@ss/common/api-common";
 import {DatePipe} from "@angular/common";
+import {Agent, AgentService} from "@ss/logistics/api-agent";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
     public isManager = false;
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
 
     constructor(
         public deliveryService: DeliveryService,
@@ -34,6 +36,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
         public lookupsSrv: LookupsService,
+        private agentService: AgentService,
         private loginService: LoginService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
@@ -66,6 +69,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
             header: [b.header],
             footer: [b.footer],
             dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
+            agent: [b.agent, Validators.required],
         });
     }
     readForm(): Delivery {

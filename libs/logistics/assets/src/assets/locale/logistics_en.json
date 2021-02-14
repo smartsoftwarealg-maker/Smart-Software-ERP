@@ -75,5 +75,6 @@
     "ARTICLES": "Articles",
     "PRICE": "Price",
     "DOCUMENT": "Document",
-    "TOTAL": "Total"
+    "TOTAL": "Total",
+    "CUSTOMER": "Customer"
 }

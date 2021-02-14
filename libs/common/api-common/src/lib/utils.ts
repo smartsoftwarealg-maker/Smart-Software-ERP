@@ -208,7 +208,7 @@ function pad4(n: number): string {
 export function fillObject(from, to) {
     for (const key in from) {
         if (from.hasOwnProperty(key)) {
-            if (Object.prototype.toString.call(from[key]) === '[object Object]') {
+            if (from[key] instanceof Object) {
                 if (!to.hasOwnProperty(key)) {
                     to[key] = {};
                 }
