@@ -10,6 +10,9 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {RouterModule} from "@angular/router";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {StockApiConsumptionLinesModule} from "../../../api-consumption-lines/src/lib/stock-api-consumption-lines.module";
+import {StockUiConsumptionLinesModule} from "@ss/stock/ui-consumption-lines";
+import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 
 @NgModule({
     imports: [
@@ -20,6 +23,8 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
+        StockUiConsumptionLinesModule,
+        LogisticsUiDocInfoModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule
     ],

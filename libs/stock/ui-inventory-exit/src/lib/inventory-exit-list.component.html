@@ -39,8 +39,7 @@
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-             routerLink="totals"   [queryParams]="{selected:row.id}"
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
              *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
@@ -48,16 +47,12 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<mat-card id="report-area">
-    <nav mat-tab-nav-bar mat-align-tabs="start">
-
-        <a mat-tab-link [active]="rl2.isActive"
-           routerLink="totals" routerLinkActive #rl2="routerLinkActive" [queryParams]="{selected:selected}"
-           translate>STOCK_TOTALS
-        </a>
-
-    </nav>
-    <mat-card-content>
-        <router-outlet></router-outlet>
-    </mat-card-content>
+<mat-card>
+    <ss-doc-info [agentId]="selectedRow?.agent"
+                 [showAgent]="true"
+                 [showDocument]="true"
+                 [reference]="selectedRow?.reference"
+                 [documentId]="selectedRow?.id">
+    </ss-doc-info>
 </mat-card>
+

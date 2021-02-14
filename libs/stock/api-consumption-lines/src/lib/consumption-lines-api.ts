@@ -1,6 +1,6 @@
 export const CONSUMPTION_LINES_URL = "/detail";
 
-export interface ConsumptionLines {
+export interface ConsumptionLine {
     id: number;
     transacId: number;
     reference: string;

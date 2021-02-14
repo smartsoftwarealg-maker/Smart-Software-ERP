@@ -10,6 +10,8 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {RouterModule} from "@angular/router";
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {StockUiinventoryLinesModule} from "@ss/stock/ui-inventory-lines";
+import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 
 @NgModule({
     imports: [
@@ -20,6 +22,8 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
+        StockUiinventoryLinesModule,
+        LogisticsUiDocInfoModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule
     ],

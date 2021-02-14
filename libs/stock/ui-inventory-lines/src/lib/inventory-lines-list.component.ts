@@ -23,6 +23,7 @@ export class InventoryLinesListComponent implements OnInit {
     parentId: number;
     data: InventoryLine[];
     selected: number;
+    selectedRow: InventoryLine;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -55,8 +56,8 @@ export class InventoryLinesListComponent implements OnInit {
             if (x) {
                 this.parentId = x;
                 this.inventoryLinesSrv.setParentId(x);
-                this.loadinventoryLines();
-                this.pagination.onChange = () => this.loadinventoryLines();
+                this.loadInventoryLines();
+                this.pagination.onChange = () => this.loadInventoryLines();
             }
         });
     }
@@ -66,7 +67,7 @@ export class InventoryLinesListComponent implements OnInit {
         return this.route.queryParams.pipe(map(p => +p.id))
     }
 
-    loadinventoryLines() {
+    loadInventoryLines() {
         this.shellSrv.setLoading(true);
         this.inventoryLinesSrv.getPage(this.pagination, null, null)
             .subscribe(x => {
@@ -89,8 +90,9 @@ export class InventoryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(id: number): void {
-        this.selected = id;
+    select(inventoryLine: InventoryLine): void {
+        this.selected = inventoryLine.id;
+        this.selectedRow = inventoryLine;
     }
 
     public deleteSelected(): void {
@@ -105,7 +107,7 @@ export class InventoryLinesListComponent implements OnInit {
                                 .subscribe(
                                     () => {
                                         this.snackBarSrv.showSuccessMessage();
-                                        this.loadinventoryLines();
+                                        this.loadInventoryLines();
                                     },
                                     err => {
                                         this.snackBarSrv.showFailureMessage();
