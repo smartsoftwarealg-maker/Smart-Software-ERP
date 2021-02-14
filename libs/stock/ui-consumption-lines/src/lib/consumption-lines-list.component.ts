@@ -2,13 +2,14 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ConsumptionLines, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
+import {ConsumptionLine, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {DeliveryLine} from "@ss/sales/api-delivery-lines";
 
 @Component({
     selector: 'ss-consumption-lines-list',
@@ -21,8 +22,9 @@ export class ConsumptionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: ConsumptionLines[];
-    selected: number;
+    data: ConsumptionLine[];
+    selectedId: number;
+    selectedRow: ConsumptionLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -89,16 +91,17 @@ export class ConsumptionLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(id: number): void {
-        this.selected = id;
+    select(row: ConsumptionLine) {
+        this.selectedRow = row;
+        this.selectedId = row? row.id : 0;
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.consumptionLinesSrv.remove(a.id)
@@ -120,8 +123,8 @@ export class ConsumptionLinesListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 
@@ -130,7 +133,7 @@ export class ConsumptionLinesListComponent implements OnInit {
             parent: this.parentId,
             id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
+        this.router.navigate(['./' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
             .then();
     }
 

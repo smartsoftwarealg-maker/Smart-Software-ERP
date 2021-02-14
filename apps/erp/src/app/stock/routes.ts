@@ -61,15 +61,15 @@ import {AccountDetailComponent, AccountListComponent} from "@ss/logistics/ui-acc
 import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
 import {CostCenterDetailComponent, CostCenterListComponent} from "@ss/logistics/ui-cost-center";
 import {InventoryEntryDetailComponent, InventoryEntryListComponent} from "@ss/stock/ui-inventory-entry";
-import {InventoryEntryLinesDetailComponent, InventoryEntryLinesListComponent} from "@ss/stock/ui-inventory-entry-lines";
+import {InventoryEntryLinesDetailComponent} from "@ss/stock/ui-inventory-entry-lines";
 import {InventoryExitDetailComponent, InventoryExitListComponent} from "@ss/stock/ui-inventory-exit";
-import {InventoryExitLinesDetailComponent, InventoryExitLinesListComponent} from "@ss/stock/ui-inventory-exit-lines";
+import {InventoryExitLinesDetailComponent} from "@ss/stock/ui-inventory-exit-lines";
 import {ConsumptionDetailComponent, ConsumptionListComponent} from "@ss/stock/ui-consumption";
-import {ConsumptionLinesDetailComponent, ConsumptionLinesListComponent} from "@ss/stock/ui-consumption-lines";
+import {ConsumptionLinesDetailComponent} from "@ss/stock/ui-consumption-lines";
 import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inventory";
-import {InventoryLinesDetailComponent, InventoryLinesListComponent} from "@ss/stock/ui-inventory-lines";
+import {InventoryLinesDetailComponent} from "@ss/stock/ui-inventory-lines";
 import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
-import {ReceptionLinesDetailComponent, ReceptionLinesListComponent} from "@ss/stock/ui-reception-lines";
+import {ReceptionLinesDetailComponent} from "@ss/stock/ui-reception-lines";
 import {CirculationComponent} from "@ss/stock/ui-circulation";
 import {CardComponent} from "@ss/stock/ui-card";
 import {ReportParamsComponent} from "@ss/common/ui-report-param";
@@ -134,11 +134,6 @@ export const mainRoutes: Routes = [
                         data: {documentURL: INVENTORY_ENTRY_URL},
                         component: TotalComponent,
                         canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
                     }
                 ]
             },
@@ -162,14 +157,7 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: InventoryEntryDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: '',
-                        component: InventoryEntryLinesListComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -188,11 +176,6 @@ export const mainRoutes: Routes = [
                         data: {documentURL: INVENTORY_EXIT_URL},
                         component: TotalComponent,
                         canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
                     }
                 ]
             },
@@ -216,14 +199,7 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: InventoryExitDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: '',
-                        component: InventoryExitLinesListComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -242,11 +218,6 @@ export const mainRoutes: Routes = [
                         data: {documentURL: CONSUMPTION_URL},
                         component: TotalComponent,
                         canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
                     }
                 ]
             },
@@ -254,18 +225,6 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL,
                 component: ConsumptionLinesDetailComponent,
                 canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulation',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulation',
-                        pathMatch: 'full'
-                    }
-                ]
             },
             {
                 path: DETAIL_URL,
@@ -273,10 +232,17 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 children: [
                     {
-                        path: '',
-                        component: ConsumptionLinesListComponent,
+                        path: 'totals',
+                        data: { documentURL: CONSUMPTION_URL },
+                        component: TotalComponent,
                         canActivate: [CanActivateService]
-                    }
+                    },
+                    {
+                        path: 'circulation',
+                        data: { documentURL: "/articles/circulation" },
+                        component: CirculationComponent,
+                        canActivate: [CanActivateService]
+                    },
                 ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -296,11 +262,6 @@ export const mainRoutes: Routes = [
                         data: {documentURL: INVENTORY_URL},
                         component: TotalComponent,
                         canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
                     }
                 ]
             },
@@ -325,13 +286,6 @@ export const mainRoutes: Routes = [
                 path: DETAIL_URL,
                 component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: '',
-                        component: InventoryLinesListComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -350,11 +304,6 @@ export const mainRoutes: Routes = [
                         data: {documentURL: RECEPTION_URL},
                         component: TotalComponent,
                         canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'totals',
-                        pathMatch: 'full'
                     }
                 ]
             },
@@ -378,14 +327,7 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: ReceptionDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: '',
-                        component: ReceptionLinesListComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ConsumptionLines, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
+import {ConsumptionLine, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
@@ -19,7 +19,7 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./consumption-lines-detail.component.scss'],
     templateUrl: './consumption-lines-detail.component.html'
 })
-export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLines> implements OnInit {
+export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLine> implements OnInit {
 
 
     parentId: number;
@@ -71,7 +71,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         super.finishLoading(e);
     }
 
-    public setupForm(b: ConsumptionLines) {
+    public setupForm(b: ConsumptionLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

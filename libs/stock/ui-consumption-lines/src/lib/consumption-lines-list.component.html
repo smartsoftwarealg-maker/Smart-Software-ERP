@@ -60,12 +60,21 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
+
+    <mat-card>
+        <ss-doc-info [showAgent]="true"
+                     [showDocument]="true"
+                     [showArticle]="true"
+                     [documentId]="selectedRow?.transacId"
+                     [reference]="{ reference: selectedRow?.reference, storeId: selectedRow?.store }">
+        </ss-doc-info>
+    </mat-card>
 
 </ng-container>
