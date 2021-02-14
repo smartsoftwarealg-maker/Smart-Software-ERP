@@ -1,7 +1,7 @@
-import {AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {ImageModel} from './image-model';
-import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import {LanguageService} from '@ss/common/ui-lang';
+import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ImageModel } from './image-model';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { LanguageService } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-image-input',
@@ -10,8 +10,8 @@ import {LanguageService} from '@ss/common/ui-lang';
 })
 export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit {
 
-    @ViewChild('container', {static: true}) container: ElementRef;
-    @ViewChild('fileInput', {static: true}) fileInput: ElementRef;
+    // @ViewChild('container', {static: true}) container: ElementRef;
+    @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
     private cachedWidth: string;
     private cachedHeight: string;
@@ -21,7 +21,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     public url: string;
     public safeUrl: SafeUrl;
 
-    constructor(public langSrv: LanguageService, private sanitizer: DomSanitizer, private renderer: Renderer2) {
+    constructor(private ref: ElementRef, public langSrv: LanguageService, private sanitizer: DomSanitizer, private renderer: Renderer2) {
     }
 
     @Input()
@@ -47,7 +47,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     ngAfterContentInit(): void {
-        this.renderer.addClass(this.container.nativeElement.parentElement, 'mat-elevation-z10');
+        //this.renderer.addClass(this.ref.nativeElement, 'mat-elevation-z10');
         this.updateSize();
     }
 
@@ -65,6 +65,10 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
 
     get disabled() {
         return this.model && !this.model.enabled;
+    }
+
+    get readOnly() {
+        return this.model && this.model.readOnly;
     }
 
     ngOnInit(): void {
@@ -97,14 +101,12 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     public updateSize(): void {
-        if (this.container) {
-            const e = this.container.nativeElement.parentElement;
-            if (this.cachedWidth) {
-                this.renderer.setStyle(e, 'width', this.cachedWidth);
-            }
-            if (this.cachedHeight) {
-                this.renderer.setStyle(e, 'height', this.cachedHeight);
-            }
+        const e = this.ref.nativeElement;
+        if (this.cachedWidth) {
+            this.renderer.setStyle(e, 'width', this.cachedWidth);
+        }
+        if (this.cachedHeight) {
+            this.renderer.setStyle(e, 'height', this.cachedHeight);
         }
     }
 

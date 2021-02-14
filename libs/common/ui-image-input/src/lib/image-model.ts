@@ -15,12 +15,14 @@ export class ImageModel {
     private operation: Operation;
     //
     public enabled: boolean;
+    public readOnly: boolean;
     private loading;
 
     onUpdate: () => void;
 
     constructor(protected httpSrv: HttpService) {
         this.enabled = true;
+        this.readOnly = false;
     }
 
     public get isLoading() {

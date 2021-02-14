@@ -9,6 +9,8 @@ import {LookupsService} from "@ss/common/api-lookup";
 import {LanguageService} from "@ss/common/ui-lang";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { ImageModel } from '@ss/common/ui-image-input';
+import { HttpService } from '@ss/common/api-common';
 
 interface Lookup {
     id: number;
@@ -18,8 +20,7 @@ interface Lookup {
 // frontend only
 interface Person extends IPerson {
     fullName: string;
-    photoUrl?: string;
-    photoSafeUrl?: SafeUrl | string;
+    imageModel: ImageModel;
 }
 
 @Component({
@@ -53,7 +54,8 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
-        public domSanitizer: DomSanitizer) {
+        public domSanitizer: DomSanitizer,
+        public httpSrv: HttpService) {
         super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_LIST');
     }
 
@@ -89,36 +91,14 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
             p.birthDate = this.langSrv.formatDate(p.birthDate);
             p.retirementDate = this.langSrv.formatDate(p.birthDate);
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
-            p.photoUrl = 'loading';
-            this.personSrv.loadPhoto(p.id)
-                .subscribe(
-                    img => {
-                        if (img != null && img.size > 0) {
-                            p.photoUrl = URL.createObjectURL(img);
-                            p.photoSafeUrl = this.domSanitizer.bypassSecurityTrustUrl(p.photoUrl);
-                        } else {
-                            p.photoUrl = null;
-                            p.photoSafeUrl = '/assets/payroll-images/photo-placeholder-128.png';
-                        }
-                    },
-                    err => {
-                        if (err.status === 404) {
-                            p.photoUrl = 'NotFound';
-                        } else {
-                            throw err;
-                        }
-                    }
-                );
+            p.imageModel = new ImageModel(this.httpSrv);
+            p.imageModel.readOnly = true;
+            p.imageModel.setImageUrl(this.personSrv.getPhotoUrl(p.id), false);
             return p;
         }));
     }
 
     public releaseResources(): void {
-        if (this.data != null) {
-            this.data
-                .filter((a: Person) => a != null && a.photoUrl && a.photoUrl !== 'loading')
-                .forEach((a: Person) => URL.revokeObjectURL(a.photoUrl));
-        }
     }
 
 }
