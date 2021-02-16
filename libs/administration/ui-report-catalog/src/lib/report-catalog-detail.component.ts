@@ -7,6 +7,8 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {FormValidators, LIST_URL} from "@ss/common/api-common";
 import {ReportListService} from "@ss/common/api-reports";
+import {tap} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -33,8 +35,10 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
 
     ngOnInit(): void {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../' + LIST_URL, this.route, {app: this.app});
+        this.getAppName().subscribe(none => {
+            super.ngOnInit();
+            this.shellSrv.setGoBackPath('../' + LIST_URL, this.route, {app: this.app});
+        });
     }
 
 
@@ -45,19 +49,15 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         });
     }
 
-    log($log){
+    log($log) {
         console.log($log);
     }
 
-    // todo: this is no longer called. so someone needs to manually load query params and call this
-    assignQueryParams(p: any) {
-        if (!p.app) {
-            this.shellSrv.goBack();
-        } else {
-            // todo: I broke this, someone fix it -muaaz
-            //super.assignQueryParams(p); // this was only setting the id from 'p' like this: this.id = p.id;
-            this.app = p.app
-        }
+    getAppName(): Observable<any> {
+        return this.route.queryParams.pipe(tap((p: any) => {
+            if (!p.app) this.shellSrv.goBack();
+            else this.app = p.app;
+        }));
     }
 
     public setupForm(b: ReportsCatalog) {

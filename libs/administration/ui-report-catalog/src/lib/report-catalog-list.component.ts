@@ -98,10 +98,9 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
 
     showDetail(id: number) {
         const params = {
-            id: id,
             app: this.app
         };
-        this.router.navigate(['../' + id], {relativeTo: this.route, queryParams: params})
+        this.router.navigate(['./' + id], {relativeTo: this.route, queryParams: params})
             .then();
     }
 }

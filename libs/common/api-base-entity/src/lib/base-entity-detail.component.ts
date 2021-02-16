@@ -68,11 +68,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                 if (entity) {
                     this.finishLoading(entity);
                 }
-                sub.unsubscribe();
             },
             error => {
                 this.shellSrv.showRetry(() => this.load());
-                sub.unsubscribe();
                 throw error;
             }
         );
