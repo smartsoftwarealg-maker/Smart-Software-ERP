@@ -25,7 +25,7 @@ import {
     STOCK_UNITS_URL,
     STOCK_VAT_URL
 } from '../constants';
-import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {Routes} from '@angular/router';
 import {
@@ -91,7 +91,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ArticleDetailComponent,
                 canActivate: [CanActivateService],
                 children: [
@@ -155,7 +155,7 @@ export const mainRoutes: Routes = [
                 ]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: InventoryEntryDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -197,7 +197,7 @@ export const mainRoutes: Routes = [
                 ]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: InventoryExitDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -227,7 +227,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ConsumptionDetailComponent,
                 canActivate: [CanActivateService],
                 children: [
@@ -283,7 +283,7 @@ export const mainRoutes: Routes = [
                 ]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
             },
@@ -325,7 +325,7 @@ export const mainRoutes: Routes = [
                 ]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ReceptionDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -342,7 +342,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: AgentDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -359,7 +359,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: AccountDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -376,7 +376,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: AgentPriceDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -393,7 +393,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CostCenterDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -431,7 +431,7 @@ export const lookupRoutes: Routes = [
                 component: StoreNameListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: StoreNameDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -445,7 +445,7 @@ export const lookupRoutes: Routes = [
                 component: UnitListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: UnitDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -459,7 +459,7 @@ export const lookupRoutes: Routes = [
                 component: MarkListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: MarkDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -473,7 +473,7 @@ export const lookupRoutes: Routes = [
                 component: ClassListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ClassDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -487,7 +487,7 @@ export const lookupRoutes: Routes = [
                 component: SubclassListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: SubclassDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -501,7 +501,7 @@ export const lookupRoutes: Routes = [
                 component: VatListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: VatDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -515,7 +515,7 @@ export const lookupRoutes: Routes = [
                 component: AgentTypeListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: AgentTypeDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -529,7 +529,7 @@ export const lookupRoutes: Routes = [
                 component: CompanyTypeListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CompanyTypeDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -543,7 +543,7 @@ export const lookupRoutes: Routes = [
                 component: PayModeListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: PayModeDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -557,7 +557,7 @@ export const lookupRoutes: Routes = [
                 component: CityListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CityDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -571,7 +571,7 @@ export const lookupRoutes: Routes = [
                 component: CurrencyListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CurrencyDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -585,7 +585,7 @@ export const lookupRoutes: Routes = [
                 component: CountryListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CountryDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -599,7 +599,7 @@ export const lookupRoutes: Routes = [
                 component: ActivityListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ActivityDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}

@@ -57,7 +57,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public load() {
         this.shellSrv.setLoading(true);
         const a = this.preload();
-        const b = this.getQueryParam();
+        const b = this.getRouteParam();
         const c = a == null
             ? b
             : a.pipe(
@@ -78,20 +78,19 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         );
     }
 
-    private getQueryParam(): Observable<any> {
-        return this.route.queryParams
+    private getRouteParam(): Observable<any> {
+        return this.route.params
             .pipe(
-                take(1),
                 switchMap(p => {
-                    this.assignQueryParams(p);
+                    this.queryId = +p.id;
                     return this.loadEntity(this.queryId || 0);
                 })
             );
     }
 
-    public assignQueryParams(p: any) {
-        this.queryId = +p.id;
-    }
+    //public assignQueryParams(p: any) {
+    //    this.queryId = +p.id;
+    //}
 
     public loadEntity(id: number): Observable<T> {
         if (id == null) {
@@ -125,7 +124,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         }
         const val: T = this.readForm();
         let obs: Observable<any> = val.id === 0
-            ? this.entitySrv.add(val).pipe(tap(i => { val.id = i; this.shellSrv.setQueryParams(this.route, { id: i }); }))
+            ? this.entitySrv.add(val).pipe(tap(i => { val.id = i; /* todo: navigate to the correct route using the new id*/ }))
             : this.entitySrv.update(val);
         obs = obs.pipe(switchMap(() => this.uploadAttachements(val.id)));
         this.shellSrv.setLoading(true);

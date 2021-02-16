@@ -10,7 +10,6 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {DETAIL_URL} from "@ss/common/api-common";
 
 
 @Component({
@@ -58,7 +57,8 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+        // FIXME: i may have broken this too. -MuaazH
+        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
     }
 
 

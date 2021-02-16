@@ -1,7 +1,7 @@
 
 import {Routes} from '@angular/router';
 import {DeliveryDetailComponent, DeliveryListComponent} from "@ss/sales/ui-delivery";
-import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
 import {DeliveryLinesDetailComponent} from "@ss/sales/ui-delivery-lines";
 import {TotalComponent} from "@ss/stock/ui-totals";
 import {CirculationComponent} from "@ss/stock/ui-circulation";
@@ -31,7 +31,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: DeliveryDetailComponent,
                 canActivate: [CanActivateService],
                 children: [

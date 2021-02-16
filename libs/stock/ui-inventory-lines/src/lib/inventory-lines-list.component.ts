@@ -64,7 +64,7 @@ export class InventoryLinesListComponent implements OnInit {
 
 
     getCurrentinventoryId(): Observable<number> {
-        return this.route.queryParams.pipe(map(p => +p.id))
+        return this.route.params.pipe(map(p => +p.id))
     }
 
     loadInventoryLines() {

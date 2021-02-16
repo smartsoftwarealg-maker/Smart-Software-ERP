@@ -59,7 +59,8 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+        // FIXME: there are 1000 copies of this line, I broke them all. -MuaazH
+        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
     }
 
     finishLoading(e: InventoryLine) {

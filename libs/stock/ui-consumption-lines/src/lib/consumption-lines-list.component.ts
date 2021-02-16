@@ -65,7 +65,7 @@ export class ConsumptionLinesListComponent implements OnInit {
 
 
     getCurrentConsumptionId(): Observable<number> {
-        return this.route.queryParams.pipe(map(p => +p.id))
+        return this.route.params.pipe(map(p => +p.id))
     }
 
     loadConsumptionLines() {
