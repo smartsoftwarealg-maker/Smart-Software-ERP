@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable, of, from} from 'rxjs';
 import {Router} from '@angular/router';
-import {catchError, flatMap, map, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {UserService} from './user.service';
-import {Agent, Person} from './models';
+import {Agent, Person, Right, User, UserInfo} from './models';
 import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, LOGIN_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
@@ -24,6 +24,7 @@ export interface PersonResponse {
 export class LoginService {
     public agent: Agent = null;
     public person: Person = null;
+    public user: User;
     public hasPassword = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
@@ -42,34 +43,21 @@ export class LoginService {
         return this.loggedIn;
     }
 
-    set tryAgentLogin(bValue: boolean) {
-        this.tryAgent = bValue;
-    }
-
-    set tryPersonLogin(bValue: boolean) {
-        this.tryPerson = bValue;
-    }
-
     // todo: fix auto login
     public reLogin(): Observable<boolean> {
         return this.httpSrv
             .init()
-            .pipe(flatMap(_ =>
-                this.httpSrv.get<any>('/relogin')
-                    .pipe(
-                        tap(res2 => this.loginFromStorage()),
-                        catchError(err => {
-                            return of(false);
-                        }),
-                        switchMap(res => this.userSrv.load()),
-                        map(res => {
-                            const failure: boolean = !this.agent && !this.person && !this.loggedIn;
-                            if (failure) {
-                                this.router.navigate(['/login']);
-                            }
-                            return !failure;
-                        })
-                    )));
+            .pipe(switchMap(_ => this.httpSrv.get<any>('/relogin')),
+                  tap(_ => this.loginFromStorage()),
+                  catchError(err => of(false)),
+                  switchMap(res => this.userSrv.load()),
+                  map(res => {
+                        const failure: boolean = !this.agent && !this.person && !this.loggedIn;
+                        if (failure) {
+                            this.router.navigate(['/login']);
+                        }
+                        return !failure;
+                    }));
     }
 
     public isUserLogin(): boolean {
@@ -90,7 +78,6 @@ export class LoginService {
             .httpSrv
             .put(`/agents/${agent.id}/select`)
             .subscribe(res => {
-                // localStorage.setItem('auth_token', res['payload']);
                 this.httpSrv.updateAuthToken(res.payload);
                 this.agent = agent;
                 localStorage.setItem('agent', JSON.stringify(this.agent));
@@ -149,6 +136,7 @@ export class LoginService {
                             this.licenseErrorType = LicenseErrorType.UserLicense;
                             this.wrongData = false;
                         }
+                        this.user = usr;
                         return usr;
                     }));
             }))
@@ -321,5 +309,37 @@ export class LoginService {
         if (this.isLoggedIn) {
             this.router.navigate([ABS_INDEX_URL]);
         }
+    }
+
+    get userInfo(): UserInfo {
+        return this.userSrv.userInfo;
+    }
+
+    getRights(component: string): Right {
+        return this.userSrv.getUserRights(component);
+    }
+
+    canUserPass(component: string): boolean {
+        return this.userSrv.canUserPass_(component);
+    }
+
+
+    canUserAdd(component: string): boolean {
+        return this.userSrv.canUserAdd_(component);
+    }
+
+    canUserEdit(component: string): boolean {
+        return this.userSrv.canUserEdit_(component);
+    }
+
+    canUserDelete(component: string): boolean {
+        return this.userSrv.canUserDelete_(component);
+    }
+    get context() {
+        return this.userSrv.context;
+    }
+
+    loadUser(): Observable<any> {
+        return this.userSrv.load();
     }
 }

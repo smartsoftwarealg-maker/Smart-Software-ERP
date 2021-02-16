@@ -22,7 +22,6 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
 
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
-    pid: number;
     maritalStatuses: MaritalStatus[];
 
     constructor(
@@ -49,9 +48,10 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
     public setupForm(p: Person) {
         this.imageModel.setImageUrl(this.personSrv.getPhotoUrl(this.id), false);
         // Make sure to update the template if you edit the configuration here
-        this.pid = p.id;
+        if (!p.id) {
+            p.sex = 1;
+        }
         return this.formBuilder.group({
-
             // birth info
             id: p.id,
             firstName: [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
@@ -141,4 +141,10 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
     public readForm(): Person {
         return this.form.value;
     }
+
+    uploadAttachements(id: number): Observable<any> {
+        this.imageModel.setBackendUrl(this.personSrv.getPhotoUrl(id));
+        return this.imageModel.submit('file');
+    }
+
 }
