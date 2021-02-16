@@ -158,10 +158,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public showDetail(id: number): void {
-//        const params = {
-//            id: id
-//        };
-        this.router.navigate(['../' + id], {relativeTo: this.route})
+        this.router.navigate([id], {relativeTo: this.route})
             .then();
     }
 
