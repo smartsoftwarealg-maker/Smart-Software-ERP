@@ -70,15 +70,7 @@ import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inv
 import {InventoryLinesDetailComponent} from "@ss/stock/ui-inventory-lines";
 import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
 import {ReceptionLinesDetailComponent} from "@ss/stock/ui-reception-lines";
-import {CirculationComponent} from "@ss/stock/ui-circulation";
-import {CardComponent} from "@ss/stock/ui-card";
 import {ReportParamsComponent} from "@ss/common/ui-report-param";
-import {TotalComponent} from "@ss/stock/ui-totals";
-import {INVENTORY_ENTRY_URL} from "@ss/stock/api-inventory-entry";
-import {INVENTORY_EXIT_URL} from "@ss/stock/api-inventory-exit";
-import {CONSUMPTION_URL} from "@ss/stock/api-consumption";
-import {INVENTORY_URL} from "@ss/stock/api-inventory";
-import {RECEPTION_URL} from "@ss/stock/api-reception";
 
 
 export const mainRoutes: Routes = [
@@ -93,29 +85,7 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: ArticleDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulations',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: 'cards',
-                        component: CardComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '',
-                        redirectTo: 'circulations',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulations',
-                        pathMatch: 'full'
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -127,32 +97,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryEntryListComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: {documentURL: INVENTORY_ENTRY_URL},
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: LINES_DETAIL_URL,
                 component: InventoryEntryLinesDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulation',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulation',
-                        pathMatch: 'full'
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: DETAIL_URL,
@@ -169,32 +119,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryExitListComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: {documentURL: INVENTORY_EXIT_URL},
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: LINES_DETAIL_URL,
                 component: InventoryExitLinesDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulation',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulation',
-                        pathMatch: 'full'
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: DETAIL_URL,
@@ -211,15 +141,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ConsumptionListComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: {documentURL: CONSUMPTION_URL},
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: LINES_DETAIL_URL,
@@ -229,21 +151,7 @@ export const mainRoutes: Routes = [
             {
                 path: DETAIL_URL,
                 component: ConsumptionDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: { documentURL: CONSUMPTION_URL },
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: 'circulation',
-                        data: { documentURL: "/articles/circulation" },
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                ]
+                canActivate: [CanActivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -255,32 +163,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryListComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: {documentURL: INVENTORY_URL},
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: LINES_DETAIL_URL,
                 component: InventoryLinesDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulation',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulation',
-                        pathMatch: 'full'
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: DETAIL_URL,
@@ -297,32 +185,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ReceptionListComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: {documentURL: RECEPTION_URL},
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: LINES_DETAIL_URL,
                 component: ReceptionLinesDetailComponent,
-                canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'circulation',
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: '**',
-                        redirectTo: 'circulation',
-                        pathMatch: 'full'
-                    }
-                ]
+                canActivate: [CanActivateService]
             },
             {
                 path: DETAIL_URL,

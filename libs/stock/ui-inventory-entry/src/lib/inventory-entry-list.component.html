@@ -49,9 +49,9 @@
 
 <mat-card>
     <ss-doc-info [agentId]="selectedRow?.agent"
-                 [showAgent]="true"
+                 [showAgent]="false"
                  [showDocument]="true"
                  [reference]="selectedRow?.reference"
-                 [documentId]="selectedRow?.id">
+                 [document]="{id:selectedRow?.id, documentURL:'/correctionIn'}">
     </ss-doc-info>
 </mat-card>

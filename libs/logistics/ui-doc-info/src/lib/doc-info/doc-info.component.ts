@@ -23,12 +23,13 @@ interface Entry {
     styleUrls: ['./doc-info.component.scss']
 })
 export class DocInfoComponent implements OnInit {
+
     private selectedEntry: Entry;
     public title = "";
-    private documentId_ = 0;
+    private document_ = {id: 0, documentURL: ''};
     private agentId_ = 0;
     private storeId_ = 0;
-    private reference_ : string = null;
+    private reference_: string = null;
     @Input() showArticle = false;
     @Input() showAgent = true;
     @Input() showDocument = true;
@@ -39,14 +40,14 @@ export class DocInfoComponent implements OnInit {
 
     public AGENT_URLS: Entry[] = [];
     public DOCUMENT_URLS: Entry[] = [
-        { url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
+        {url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
     ];
     public ARTICLE_URLS: Entry[] = [
-        { url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
+        {url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
     ];
 
-    @Input() set documentId(id: number) {
-        this.documentId_ = id;
+    @Input() set document(doc: { id: number, documentURL: string }) {
+        this.document_ = doc;
         this.navigate();
     }
 
@@ -56,6 +57,7 @@ export class DocInfoComponent implements OnInit {
             this.navigate();
         }
     }
+
     @Input() set reference(obj: { reference: string, storeId: number }) {
         const inp = obj || {};
         this.reference_ = inp['reference'];
@@ -86,9 +88,9 @@ export class DocInfoComponent implements OnInit {
 
     private getQueryParams(): object {
         const types = {
-            [TYPE.AGENT]: {id: this.agentId_ || 0 },
-            [TYPE.DOCUMENT]: { id: this.documentId_ || 0 },
-            [TYPE.ARTICLE]: { find: this.reference_ || '' },
+            [TYPE.AGENT]: {DIAgentId: this.agentId_ || 0},
+            [TYPE.DOCUMENT]: {DIDocId: this.document_.id || 0},
+            [TYPE.ARTICLE]: {DIReference: this.reference_ || ''},
         }
         return types[this.selectedEntry?.type || 0] || {}
     }

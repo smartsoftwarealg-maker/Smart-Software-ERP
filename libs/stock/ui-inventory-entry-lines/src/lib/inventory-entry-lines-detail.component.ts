@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryEntryLines, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
+import {InventoryEntryLine, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
@@ -19,10 +19,12 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./inventory-entry-lines-detail.component.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html'
 })
-export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<InventoryEntryLines> implements OnInit {
+export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<InventoryEntryLine> implements OnInit {
 
 
     parentId: number;
+
+    selectedRow : InventoryEntryLine
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
@@ -68,10 +70,11 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
             queryParams: {reference: e.reference},
             queryParamsHandling: 'merge'
         }).then();
+        this.selectedRow = e;
         super.finishLoading(e);
     }
 
-    public setupForm(b: InventoryEntryLines) {
+    public setupForm(b: InventoryEntryLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

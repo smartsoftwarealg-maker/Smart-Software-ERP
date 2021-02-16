@@ -13,6 +13,7 @@ import {combineLatest} from "rxjs";
     templateUrl: './total.component.html'
 })
 export class TotalComponent implements OnInit {
+
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -38,11 +39,13 @@ export class TotalComponent implements OnInit {
         combineLatest([this.route.data, this.route.queryParams])
             .subscribe(([data, param]) => {
                 const documentId = +param.id;
-                const documentUrl = data.documentURL;
+                const documentURL = param.documentURL;
+
                 if (documentId) {
-                    this.totalSrv.setParentsIds(documentId, documentUrl);
+                    this.totalSrv.setParentsIds(documentId, documentURL);
                     this.loadTotal();
                 }
+
             });
     }
 

@@ -37,10 +37,10 @@
         </mat-cell>
     </ng-container>
 
-
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
              *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
 </mat-table>
 
 <div class="pagination-container b-b-background">
@@ -52,7 +52,7 @@
                  [showAgent]="true"
                  [showDocument]="true"
                  [reference]="selectedRow?.reference"
-                 [documentId]="selectedRow?.id">
+                 [document]="{id:selectedRow?.id, documentURL:'/correctionOut'}">
     </ss-doc-info>
 </mat-card>
 

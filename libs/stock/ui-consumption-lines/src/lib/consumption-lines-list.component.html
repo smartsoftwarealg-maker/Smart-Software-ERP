@@ -72,7 +72,7 @@
         <ss-doc-info [showAgent]="true"
                      [showDocument]="true"
                      [showArticle]="true"
-                     [documentId]="selectedRow?.transacId"
+                     [document]="{id:selectedRow?.transacId, documentURL:'/consumption'}"
                      [reference]="{ reference: selectedRow?.reference, storeId: selectedRow?.store }">
         </ss-doc-info>
     </mat-card>

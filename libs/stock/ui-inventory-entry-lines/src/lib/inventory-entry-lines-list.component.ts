@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryEntryLines, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
+import {InventoryEntryLine, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
@@ -21,7 +21,8 @@ export class InventoryEntryLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: InventoryEntryLines[];
+    data: InventoryEntryLine[];
+    selectedRow: InventoryEntryLine;
     selected: number;
 
     articles: { [reference: string]: string; } = {};
@@ -89,6 +90,11 @@ export class InventoryEntryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
+    selectRow(row : InventoryEntryLine): void {
+        this.selectedRow = row;
+        this.selected = row.id;
+    }
+
     select(id: number): void {
         this.selected = id;
     }
@@ -130,7 +136,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
             parent: this.parentId,
             id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
+        this.router.navigate(['./' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
             .then();
     }
 
