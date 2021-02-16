@@ -20,7 +20,6 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
 })
 export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLines> implements OnInit {
 
-
     parentId: number;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
