@@ -10,7 +10,6 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {DETAIL_URL} from "@ss/common/api-common";
 import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 
