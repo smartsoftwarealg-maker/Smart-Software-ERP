@@ -2,11 +2,11 @@
 :host {
     display: block;
     margin: auto;
-    width: 1172px;
+    width: 1066px;
 }
 
 .main-table {
-    width: 1172px;
+    width: 1166px;
     min-height: 320px;
 }
 
@@ -72,12 +72,6 @@
 
 .mat-column-address {
     flex: 0 0 200px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-wilaya {
-    flex: 0 0 90px;
     padding-right: 8px;
     padding-left: 8px;
 }

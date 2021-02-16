@@ -1,6 +1,6 @@
-import {HttpService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
-import {map, switchMap, takeLast, tap} from "rxjs/operators";
+import { HttpService } from '@ss/common/api-common';
+import { Observable, of } from 'rxjs';
+import { map, switchMap, take, takeLast, tap } from "rxjs/operators";
 
 enum Operation {
     none,
@@ -8,9 +8,6 @@ enum Operation {
     remove
 }
 
-/**
- *  YOU MUST CALL releaseResources() WHEN DONE WITH ImageModel
- */
 export class ImageModel {
     public imageUrl: string;
     //
@@ -18,12 +15,14 @@ export class ImageModel {
     private operation: Operation;
     //
     public enabled: boolean;
+    public readOnly: boolean;
     private loading;
 
     onUpdate: () => void;
 
     constructor(protected httpSrv: HttpService) {
         this.enabled = true;
+        this.readOnly = false;
     }
 
     public get isLoading() {
@@ -42,31 +41,46 @@ export class ImageModel {
             // this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(this.url);
             this.operation = uploadOnSave ? Operation.upload : Operation.none;
         } else {
-            // Redundant just in case operation is not reset in the method releaseResources
+            // Redundant just in case
             this.operation = Operation.none;
         }
         this.updateView();
     }
 
+    /**
+     * Used to load the image for the first time, or to change its source, or when a new file is selected
+     * @param backendUrl the source of the image, or the destination to which the image will be uploaded
+     * @param uploadOnSave should this image be uploaded when the submit method is called?
+     */
     public setImageUrl(backendUrl: string, uploadOnSave: boolean = false): void {
         this.clear();
         this.imageUrl = backendUrl;
         if (backendUrl) {
             this.loading = true;
             this.httpSrv.getBlob(backendUrl)
-                .subscribe(b => {
-                        this.setImageBlob(b, uploadOnSave);
+                .subscribe(
+                    blob => {
+                        this.setImageBlob(blob, uploadOnSave);
                         this.loading = false;
                     },
                     err => {
                         // todo: show an indication to the user that an error occurred
                         this.loading = false;
-                        throw err;
+                        if (err.status != 404) {
+                            throw err;
+                        }
                     }
                 );
         } else {
             this.updateView();
         }
+    }
+
+    /** 
+     * used to update the url without changing anything else in the model
+     */
+    public setBackendUrl(backendUrl: string): void {
+        this.imageUrl = backendUrl;
     }
 
     public deleteImage(): void {
@@ -86,18 +100,13 @@ export class ImageModel {
                 break;
             case Operation.upload:
                 if (this.imageUrl && this.blob && this.blob.size > 0) {
-                    return (
-                        this.httpSrv.uploadBlob(this.imageUrl, formName, this.blob)
-                            .pipe(
-                                tap(e => console.log(e)), // todo: report upload progress here
-                            )
-                    ).pipe(
-                        takeLast(1),
-                        switchMap(() => {
-                            this.operation = Operation.none;
-                            return of(true);
-                        })
-                    );
+                    return this.httpSrv.uploadBlob(this.imageUrl, formName, this.blob)
+                        .pipe(
+                            switchMap(() => {
+                                this.operation = Operation.none;
+                                return of(true);
+                            })
+                        );
                 }
                 break;
         }

@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {LanguageService} from '@ss/common/ui-lang';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { Injectable } from "@angular/core";
+import { LanguageService } from '@ss/common/ui-lang';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 
 export interface ToolbarButton {
@@ -107,7 +107,7 @@ export class ShellService {
 
     public setGoBackPath(path: string, relativeActivatedRoute: ActivatedRoute, params?: any) {
         this.setGoBackFn(() => {
-            this.router.navigate([path], {relativeTo: relativeActivatedRoute, queryParams: params})
+            this.router.navigate([path], { relativeTo: relativeActivatedRoute, queryParams: params })
                 .then()
         });
     }
@@ -245,5 +245,15 @@ export class ShellService {
 
     public setShowToolbarFn(fn: () => void): void {
         this.showToolbarFn = fn;
+    }
+
+    public setQueryParams(activatedRoute: ActivatedRoute, params: any): void {
+        this.router.navigate(
+            [],
+            {
+                relativeTo: activatedRoute,
+                queryParams: params,
+                queryParamsHandling: 'merge', // remove to replace all query params by provided
+            });
     }
 }

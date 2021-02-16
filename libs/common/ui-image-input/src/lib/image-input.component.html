@@ -1,4 +1,8 @@
-<div #container class="b-b-background img-container" [matMenuTriggerFor]="menu">
+<div *ngIf="!disabled && !readOnly" class="b-b-background img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
+    <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
+    <img [src]="safeUrl" [alt]="alt">
+</div>
+<div *ngIf="disabled || readOnly" class="b-b-background img-container mat-elevation-z6">
     <i *ngIf="!safeUrl" style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
     <img [src]="safeUrl" [alt]="alt">
     <div class="disable-panel" *ngIf="disabled"></div>

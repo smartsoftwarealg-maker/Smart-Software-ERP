@@ -1,11 +1,11 @@
-import {Directive, OnDestroy, OnInit} from "@angular/core";
-import {FormGroup, FormBuilder} from '@angular/forms';
-import {ToolbarButton, ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {BaseEntityService} from './base-entity.service';
-import {Observable, of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { Directive, OnDestroy, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ToolbarButton, ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import { BaseEntityService } from './base-entity.service';
+import { Observable, of } from 'rxjs';
+import { switchMap, take, takeLast, tap } from 'rxjs/operators';
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -63,22 +63,25 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             : a.pipe(
                 switchMap(() => b)
             );
-        c.subscribe(
-            n => {
-                if (n) {
-                    this.finishLoading(n);
+        const sub = c.subscribe(
+            entity => {
+                if (entity) {
+                    this.finishLoading(entity);
                 }
+                sub.unsubscribe();
             },
-            e => {
+            error => {
                 this.shellSrv.showRetry(() => this.load());
-                throw e;
+                sub.unsubscribe();
+                throw error;
             }
         );
     }
 
-    public getQueryParam(): Observable<any> {
+    private getQueryParam(): Observable<any> {
         return this.route.queryParams
             .pipe(
+                take(1),
                 switchMap(p => {
                     this.assignQueryParams(p);
                     return this.loadEntity(this.queryId || 0);
@@ -109,6 +112,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         this.form = this.setupForm(e);
     }
 
+    /** called with the new id to allow to upload attachement to this object */
+    public uploadAttachements(id: number): Observable<any> {
+        return of(null);
+    }
+
     public save() {
         this.form.markAllAsTouched();
         if (!this.form.valid) {
@@ -116,11 +124,14 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             return;
         }
         const val: T = this.readForm();
-        const obs: Observable<any> = val.id === 0 ? this.entitySrv.add(val) : this.entitySrv.update(val);
-        // todo: update the url param 'id' here when adding
+        let obs: Observable<any> = val.id === 0
+            ? this.entitySrv.add(val).pipe(tap(i => { val.id = i; this.shellSrv.setQueryParams(this.route, { id: i }); }))
+            : this.entitySrv.update(val);
+        obs = obs.pipe(switchMap(() => this.uploadAttachements(val.id)));
         this.shellSrv.setLoading(true);
         obs.subscribe(() => {
-            this.shellSrv.goBack();
+            this.shellSrv.setLoading(false);
+            //this.shellSrv.goBack();
             this.snackBarSrv.showSuccessMessage();
         }, err => {
             this.snackBarSrv.showFailureMessage();

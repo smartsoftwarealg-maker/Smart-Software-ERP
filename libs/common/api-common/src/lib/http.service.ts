@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpEvent, HttpHeaders, HttpParams} from '@angular/common/http';
-import {map, share} from 'rxjs/operators';
+import {HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent} from '@angular/common/http';
+import {catchError, filter, last, map, share, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 
 const AUTH_TOKEN = 'auth_token';
@@ -164,9 +164,9 @@ export class HttpService {
             );
     }
 
-    public uploadBlob(url: string, formName: string, blob: Blob): Observable<HttpEvent<any>> {
+    public uploadBlob(url: string, formName: string, blob: Blob): Observable<any> {
         const fd: FormData = new FormData();
-        fd.append(name, blob);
+        fd.append(formName, blob);
         const extraHeaders = {
             Authorization: this.getAuthToken()
         };
@@ -176,7 +176,16 @@ export class HttpService {
                 reportProgress: true,
                 headers: extraHeaders,
                 observe: 'events'
-            });
+            })
+            .pipe(
+                catchError(e => {throw e;}),
+                filter((e: HttpEvent<any>) => e.type === HttpEventType.UploadProgress),
+                tap((e: HttpProgressEvent) => {
+                    // todo: show some ui bullshit instead of this
+                    console.log('upload ' + (e.loaded * 100 / e.total) + '%');
+                }),
+                last()
+            );
     }
 
     // noinspection JSMethodCanBeStatic
