@@ -4,7 +4,7 @@ import {
     ADMINISTRATION_COMPANY_URL, ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_SMTP_URL,
     LOOKUPS_URL,
 } from '../constants';
-import {ABS_INDEX_URL, CanActivateService, DETAIL_URL, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from "@ss/administration/ui-bank";
 import {CompanyDetailComponent, CompanyListComponent} from "@ss/administration/ui-company";
@@ -27,7 +27,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: BankDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -44,7 +44,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: SmtpDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -61,7 +61,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CompanyDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -78,7 +78,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CenterDetailComponent,
                 canActivate: [CanActivateService]
             },
@@ -95,7 +95,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ReportCatalogDetailComponent,
                 canActivate: [CanActivateService]
             },

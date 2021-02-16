@@ -43,11 +43,14 @@ export class CirculationComponent implements OnInit {
 
 
     ngOnInit() {
-        this.route.queryParams.subscribe(x => {
+        this.route.params.subscribe(x => {
             // if no reference found go for id
             if (x.reference || +x.id) {
                 const loader: Observable<Circulation[]> = x.find ? this.loadByReference(x.find) : this.loadById(+x.id);
                 this.load(loader);
+            } else {
+                // todo: remove dumbshit jokes from code
+                throw new Error('I could not find an id or a ref, plz fix me');
             }
         });
     }

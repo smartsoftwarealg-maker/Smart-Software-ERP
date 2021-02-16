@@ -29,7 +29,6 @@ import {
     ServiceListComponent,
     ServiceDetailComponent
 } from '@ss/common/ui-lookup';
-import {DETAIL_URL} from '@ss/common/api-common';
 import {WilayaListComponent, WilayaDetailComponent} from '@ss/common/ui-lookup';
 import {NationalityDetailComponent, NationalityListComponent} from '@ss/common/ui-lookup';
 import {PersonListComponent, PersonDetailComponent} from '@ss/payroll/ui-person';
@@ -47,7 +46,7 @@ export const mainRoutes: Routes = [
                 component: PersonListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: PersonDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -66,7 +65,7 @@ export const lookupRoutes: Routes = [
                 component: ServiceListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: ServiceDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -80,7 +79,7 @@ export const lookupRoutes: Routes = [
                 component: CategoryListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: CategoryDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -94,7 +93,7 @@ export const lookupRoutes: Routes = [
                 component: DiplomaListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: DiplomaDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -108,7 +107,7 @@ export const lookupRoutes: Routes = [
                 component: EducationLevelListComponent
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: EducationLevelDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -122,7 +121,7 @@ export const lookupRoutes: Routes = [
                 component: MaritalStatusListComponent,
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: MaritalStatusDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -136,7 +135,7 @@ export const lookupRoutes: Routes = [
                 component: PostListComponent,
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: PostDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -150,7 +149,7 @@ export const lookupRoutes: Routes = [
                 component: WilayaListComponent,
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: WilayaDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -164,7 +163,7 @@ export const lookupRoutes: Routes = [
                 component: NationalityListComponent,
             },
             {
-                path: DETAIL_URL,
+                path: ':id',
                 component: NationalityDetailComponent
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}

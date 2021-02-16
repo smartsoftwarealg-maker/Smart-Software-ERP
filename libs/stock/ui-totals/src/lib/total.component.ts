@@ -36,7 +36,7 @@ export class TotalComponent implements OnInit {
 
 
     ngOnInit() {
-        combineLatest([this.route.data, this.route.queryParams])
+        combineLatest([this.route.data, this.route.params])
             .subscribe(([data, param]) => {
                 const documentId = +param.id;
                 const documentURL = param.documentURL;

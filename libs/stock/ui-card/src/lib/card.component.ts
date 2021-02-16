@@ -56,7 +56,7 @@ export class CardComponent implements OnInit {
 
 
     ngOnInit() {
-        this.route.queryParams.subscribe(x => {
+        this.route.params.subscribe(x => {
             this.articleId = +x.id;
             this.storeSrv.setParentId(this.articleId);
         });

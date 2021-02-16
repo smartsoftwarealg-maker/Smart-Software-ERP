@@ -49,11 +49,13 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         console.log($log);
     }
 
+    // todo: this is no longer called. so someone needs to manually load query params and call this
     assignQueryParams(p: any) {
         if (!p.app) {
             this.shellSrv.goBack();
         } else {
-            super.assignQueryParams(p);
+            // todo: I broke this, someone fix it -muaaz
+            //super.assignQueryParams(p); // this was only setting the id from 'p' like this: this.id = p.id;
             this.app = p.app
         }
     }
