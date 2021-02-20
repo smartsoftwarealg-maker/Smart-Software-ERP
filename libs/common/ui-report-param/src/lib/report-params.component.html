@@ -59,10 +59,9 @@
         <ng-container matColumnDef="valueList">
             <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE_LIST</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.valueList}}
+                {{parseValueList(e.valueList)}}
             </mat-cell>
         </ng-container>
-
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

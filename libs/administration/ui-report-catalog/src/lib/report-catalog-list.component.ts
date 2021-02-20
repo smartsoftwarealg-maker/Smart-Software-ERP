@@ -6,10 +6,8 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {Observable} from "rxjs";
 import {ReportAppsService} from "@ss/common/api-reports";
-import {switchMap, tap} from "rxjs/operators";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpParams} from "@angular/common/http";
-import {DETAIL_URL} from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -100,10 +98,9 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
 
     showDetail(id: number) {
         const params = {
-            id: id,
             app: this.app
         };
-        this.router.navigate(['../' + DETAIL_URL], {relativeTo: this.route, queryParams: params})
+        this.router.navigate(['./' + id], {relativeTo: this.route, queryParams: params})
             .then();
     }
 }

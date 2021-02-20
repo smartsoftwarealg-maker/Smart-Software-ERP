@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Circulation, CirculationService} from "@ss/stock/api-circulation";
+import {Circulation, CirculationService} from "@ss/logistics/api-circulation";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LanguageService} from "@ss/common/ui-lang";
@@ -45,9 +45,13 @@ export class CirculationComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
             // if no reference found go for id
-            if (x.reference || +x.id) {
-                const loader: Observable<Circulation[]> = x.find ? this.loadByReference(x.find) : this.loadById(+x.id);
+            if (x.articleReference || +x.articleId) {
+                const loader: Observable<Circulation[]> = x.articleReference ?
+                    this.loadByReference(x.articleReference)
+                    : this.loadById(+x.articleId);
                 this.load(loader);
+            } else {
+                throw new Error('I could not find an id or a ref, plz fix me');
             }
         });
     }

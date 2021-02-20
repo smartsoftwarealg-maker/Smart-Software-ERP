@@ -93,4 +93,8 @@ export class ReportParamsComponent extends BaseEntityListComponent<ReportParams>
         this.selectedReport = reportNode;
         this.refresh();
     }
+
+    parseValueList(valueList) {
+        return valueList?.map(x=>x.description).join(' ');
+    }
 }

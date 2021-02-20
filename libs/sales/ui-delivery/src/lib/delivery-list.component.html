@@ -38,7 +38,6 @@
     </ng-container>
 
 
-
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
              *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -49,9 +48,12 @@
 </div>
 
 <mat-card>
-    <ss-doc-info [showAgent]="true"
-                 [showDocument]="true"
-                 [agentId]="selectedRow?.agent"
-                 [document]="{id:selectedRow?.id, documentURL:'/delivery'}">
+    <ss-doc-info
+        [displayedGroups]="['agent','document']"
+        [params]="{
+            agentId: selectedRow?.agent,
+            documentId: selectedRow?.id,
+            documentURL:'/delivery'
+        }">
     </ss-doc-info>
 </mat-card>

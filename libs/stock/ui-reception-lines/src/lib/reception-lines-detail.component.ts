@@ -10,7 +10,6 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {DETAIL_URL} from "@ss/common/api-common";
 import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 
@@ -20,7 +19,6 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
     templateUrl: './reception-lines-detail.component.html'
 })
 export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLines> implements OnInit {
-
 
     parentId: number;
 
@@ -59,7 +57,8 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+        // FIXME: there are 1000 copies of this line, I broke them all. -MuaazH
+        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
     }
 
     finishLoading(e: InventoryLine) {

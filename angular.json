@@ -2208,29 +2208,29 @@
         }
       }
     },
-    "stock-ui-circulation": {
+    "logistics-ui-circulation": {
       "projectType": "library",
-      "root": "libs/stock/ui-circulation",
-      "sourceRoot": "libs/stock/ui-circulation/src",
+      "root": "libs/logistics/ui-circulation",
+      "sourceRoot": "libs/logistics/ui-circulation/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-circulation/tsconfig.lib.json",
-              "libs/stock/ui-circulation/tsconfig.spec.json"
+              "libs/logistics/ui-circulation/tsconfig.lib.json",
+              "libs/logistics/ui-circulation/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-circulation/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-circulation/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/ui-circulation/jest.config.js",
-            "tsConfig": "libs/stock/ui-circulation/tsconfig.spec.json",
+            "jestConfig": "libs/logistics/ui-circulation/jest.config.js",
+            "tsConfig": "libs/logistics/ui-circulation/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/ui-circulation/src/test-setup.ts"
+            "setupFile": "libs/logistics/ui-circulation/src/test-setup.ts"
           }
         }
       },
@@ -2240,32 +2240,32 @@
         }
       }
     },
-    "stock-api-circulation": {
+    "logistics-api-circulation": {
       "projectType": "library",
-      "root": "libs/stock/api-circulation",
-      "sourceRoot": "libs/stock/api-circulation/src",
+      "root": "libs/logistics/api-circulation",
+      "sourceRoot": "libs/logistics/api-circulation/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/api-circulation/tsconfig.lib.json",
-              "libs/stock/api-circulation/tsconfig.spec.json"
+              "libs/logistics/api-circulation/tsconfig.lib.json",
+              "libs/logistics/api-circulation/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/stock/api-circulation/**/*"
+              "!libs/logistics/api-circulation/**/*"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/stock/api-circulation/jest.config.js",
-            "tsConfig": "libs/stock/api-circulation/tsconfig.spec.json",
+            "jestConfig": "libs/logistics/api-circulation/jest.config.js",
+            "tsConfig": "libs/logistics/api-circulation/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/stock/api-circulation/src/test-setup.ts"
+            "setupFile": "libs/logistics/api-circulation/src/test-setup.ts"
           }
         }
       },
@@ -2498,53 +2498,53 @@
         }
       }
     },
-    "stock-api-totals": {
+    "logistics-api-totals": {
       "projectType": "library",
-      "root": "libs/stock/api-totals",
-      "sourceRoot": "libs/stock/api-totals/src",
+      "root": "libs/logistics/api-totals",
+      "sourceRoot": "libs/logistics/api-totals/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/api-totals/tsconfig.lib.json",
-              "libs/stock/api-totals/tsconfig.spec.json"
+              "libs/logistics/api-totals/tsconfig.lib.json",
+              "libs/logistics/api-totals/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/api-totals/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-totals/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/stock/api-totals"],
+          "outputs": ["coverage/libs/logistics/api-totals"],
           "options": {
-            "jestConfig": "libs/stock/api-totals/jest.config.js",
+            "jestConfig": "libs/logistics/api-totals/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "stock-ui-totals": {
+    "logistics-ui-totals": {
       "projectType": "library",
-      "root": "libs/stock/ui-totals",
-      "sourceRoot": "libs/stock/ui-totals/src",
+      "root": "libs/logistics/ui-totals",
+      "sourceRoot": "libs/logistics/ui-totals/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-totals/tsconfig.lib.json",
-              "libs/stock/ui-totals/tsconfig.spec.json"
+              "libs/logistics/ui-totals/tsconfig.lib.json",
+              "libs/logistics/ui-totals/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-totals/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-totals/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/stock/ui-totals"],
+          "outputs": ["coverage/libs/logistics/ui-totals"],
           "options": {
-            "jestConfig": "libs/stock/ui-totals/jest.config.js",
+            "jestConfig": "libs/logistics/ui-totals/jest.config.js",
             "passWithNoTests": true
           }
         }

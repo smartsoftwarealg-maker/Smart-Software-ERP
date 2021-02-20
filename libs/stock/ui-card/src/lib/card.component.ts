@@ -29,6 +29,8 @@ export class CardComponent implements OnInit {
 
 
     articleId: number;
+    storeId: number;
+    useStoreForm: boolean = false;
     data: Card[];
 
     displayedColumns = [
@@ -57,26 +59,34 @@ export class CardComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            this.articleId = +x.id;
+            this.articleId = +x.articleId
             this.storeSrv.setParentId(this.articleId);
+
+            if (+x.articleStoreId) {
+                this.storeId = x.articleStoreId
+                this.loadCard();
+            }
+
+            this.useStoreForm = !!x.articleUseStoreSearch;
+
         });
     }
 
 
     loadCard() {
-        if (this.storeForm.valid) {
-            this.shellSrv.setLoading(true);
-            this.cardSrv.setParentsIds(this.articleId, this.storeForm.value.store)
-            this.cardSrv.getPage(this.pagination)
-                .subscribe((x: Card[]) => {
-                    this.data = x.map(y => {
-                        y.date = this.langServ.formatDate(y.date);
-                        return y;
-                    });
-                    this.shellSrv.setLoading(false);
-                });
+        if (this.useStoreForm && this.storeForm.valid) this.storeId = this.storeForm.value.store;
 
-        }
+        this.shellSrv.setLoading(true);
+        this.cardSrv.setParentsIds(this.articleId, this.storeId)
+        this.cardSrv.getPage(this.pagination)
+            .subscribe((x: Card[]) => {
+                this.data = x.map(y => {
+                    y.date = this.langServ.formatDate(y.date);
+                    return y;
+                });
+                this.shellSrv.setLoading(false);
+            });
+
     }
 
 

@@ -1,5 +1,5 @@
 <mat-card>
-    <ng-container [formGroup]="storeForm">
+    <ng-container *ngIf="useStoreForm" [formGroup]="storeForm">
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>STOCK_STORE</mat-label>
             <ss-auto-complete matInput

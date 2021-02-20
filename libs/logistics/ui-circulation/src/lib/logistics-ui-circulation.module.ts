@@ -8,7 +8,6 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {CirculationComponent} from "./circulation.component";
-import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -29,5 +28,5 @@ import {RouterModule} from "@angular/router";
         CirculationComponent
     ]
 })
-export class StockUiCirculationModule {
+export class LogisticsUiCirculationModule {
 }

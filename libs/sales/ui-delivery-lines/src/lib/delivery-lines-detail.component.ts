@@ -9,7 +9,6 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {DETAIL_URL} from "@ss/common/api-common";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import { fillObject } from "@ss/common/api-common";
 
@@ -57,7 +56,8 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackPath('../' + DETAIL_URL, this.route, {id: this.parentId});
+        // FIXME: I may have broken this. -MuaazH
+        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
     }
 
     public setupForm(b: DeliveryLine) {

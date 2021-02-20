@@ -3,7 +3,6 @@ import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell'
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {DETAIL_URL} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -159,10 +158,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public showDetail(id: number): void {
-        const params = {
-            id: id
-        };
-        this.router.navigate(['../' + DETAIL_URL], {relativeTo: this.route, queryParams: params})
+        this.router.navigate([id], {relativeTo: this.route})
             .then();
     }
 

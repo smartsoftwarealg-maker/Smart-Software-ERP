@@ -63,7 +63,7 @@ export class ReceptionLinesListComponent implements OnInit {
 
 
     getCurrentReceptionId(): Observable<number> {
-        return this.route.queryParams.pipe(map(p => +p.id))
+        return this.route.params.pipe(map(p => +p.id))
     }
 
     loadReceptionLines() {
