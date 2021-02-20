@@ -21,7 +21,7 @@ export class DocInfoComponent {
     @Input() set params(params: any) {
         const providedParams = Object.keys(params);
         const notAllRequiredParamsExist = this.entries_
-            .filter(x => this.displayedGroups.includes(x.category))
+            .filter(x => this.displayedGroups.includes(x.group))
             .map(x => x.entries).reduce((t, x) => t.concat(x), [])
             .map(x => x.paramsProvided(providedParams))
             .some(x => !x);
@@ -34,9 +34,9 @@ export class DocInfoComponent {
 
     public selectedEntry: any;
     private params_: any;
-    private entries_: { category: string, description: string, entries: Entry[] }[] = [
+    private entries_: { group: string, description: string, entries: Entry[] }[] = [
         {
-            category: 'article',
+            group: 'article',
             description: 'LOGISTICS_ARTICLE',
             entries: [
                 {
@@ -56,7 +56,7 @@ export class DocInfoComponent {
             ]
         },
         {
-            category: 'document',
+            group: 'document',
             description: 'LOGISTICS_DOCUMENT',
             entries: [
                 {
@@ -75,7 +75,7 @@ export class DocInfoComponent {
     }
 
     getDisplayedEntries(): any {
-        return this.entries_.filter(x => this.displayedGroups.includes(x.category));
+        return this.entries_.filter(x => this.displayedGroups.includes(x.group));
     }
 
     select(e): void {
