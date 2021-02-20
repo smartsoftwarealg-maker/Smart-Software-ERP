@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'stock-ui-totals',
+  displayName: 'logistics-ui-circulation',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/stock/ui-totals',
+  coverageDirectory: '../../../coverage/libs/logistics/ui-circulation',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

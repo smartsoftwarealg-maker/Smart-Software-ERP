@@ -19,8 +19,6 @@ import { AutoCompleteModel, Id } from './auto-complete-model';
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
 
-    static nextId = 0;
-
     constructor(
         @Optional() @Self() public ngControl: NgControl,
         private fm: FocusMonitor,
@@ -37,6 +35,60 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         });
     }
 
+    get value(): Id {
+        return this.selected;
+    }
+
+    @Input()
+    set value(selected: Id) {
+        this.setValue(selected, true);
+    }
+
+    @Input()
+    set placeholder(t: string) {
+        this.pPlaceholder = t;
+        this.stateChanges.next();
+    }
+
+    get placeholder(): string {
+        return this.pPlaceholder;
+    }
+
+    get focused() { return this.isFocused; }
+
+    get empty(): boolean {
+        return !this.autoControl.value;
+    }
+
+    get shouldLabelFloat() {
+        return this.focused || !this.empty;
+    }
+
+    get required(): boolean {
+        return this.isRequired;
+    };
+
+    @Input()
+    set required(b: boolean) {
+        this.isRequired = b;
+        this.stateChanges.next();
+    }
+
+    get disabled(): boolean { return this.isDisabled; }
+
+    @Input()
+    set disabled(value: boolean) {
+        this.isDisabled = coerceBooleanProperty(value);
+        if (this.isDisabled) {
+            this.autoControl.disable();
+        } else {
+            this.autoControl.enable();
+        }
+        this.stateChanges.next();
+    }
+
+    static nextId = 0;
+
     readonly stateChanges = new Subject<void>();
     autoControl: FormControl = new FormControl();
     filterSub: Subscription;
@@ -47,7 +99,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     pPlaceholder: string;
     readonly controlType: 'ssAutoComplete';
     readonly autofilled = false;
-    isFocused: boolean = false;
+    isFocused = false;
     isDisabled: boolean;
     selected: Id;
     loading = false;
@@ -56,14 +108,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     model: AutoCompleteModel<any>;
     lastFilterValue: string;
 
-    get value(): Id {
-        return this.selected;
-    }
-
-    @Input()
-    set value(selected: Id) {
-        this.setValue(selected, true);
-    }
+    @Input('aria-describedby') userAriaDescribedBy: string;
 
     setAutoControlValue(a: Object): void {
         this.autoControl.setValue(a);
@@ -143,51 +188,6 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             throw new Error('Auto complete model is null');
         }
     }
-
-    @Input()
-    set placeholder(t: string) {
-        this.pPlaceholder = t;
-        this.stateChanges.next();
-    }
-
-    get placeholder(): string {
-        return this.pPlaceholder;
-    }
-
-    get focused() { return this.isFocused; }
-
-    get empty(): boolean {
-        return !this.autoControl.value;
-    }
-
-    get shouldLabelFloat() {
-        return this.focused || !this.empty;
-    }
-
-    get required(): boolean {
-        return this.isRequired;
-    };
-
-    @Input()
-    set required(b: boolean) {
-        this.isRequired = b;
-        this.stateChanges.next();
-    }
-
-    get disabled(): boolean { return this.isDisabled; }
-
-    @Input()
-    set disabled(value: boolean) {
-        this.isDisabled = coerceBooleanProperty(value);
-        if (this.isDisabled) {
-            this.autoControl.disable();
-        } else {
-            this.autoControl.enable();
-        }
-        this.stateChanges.next();
-    }
-
-    @Input('aria-describedby') userAriaDescribedBy: string;
 
     setDescribedByIds(ids: string[]) {
     }

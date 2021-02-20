@@ -3,8 +3,8 @@ import {Routes} from '@angular/router';
 import {DeliveryDetailComponent, DeliveryListComponent} from "@ss/sales/ui-delivery";
 import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
 import {DeliveryLinesDetailComponent} from "@ss/sales/ui-delivery-lines";
-import {TotalComponent} from "@ss/stock/ui-totals";
-import {CirculationComponent} from "@ss/stock/ui-circulation";
+import {TotalComponent} from "@ss/logistics/ui-totals";
+import {CirculationComponent} from "@ss/logistics/ui-circulation";
 
 export const lookupRoutes: Routes = []
 

@@ -48,10 +48,13 @@
 </div>
 
 <mat-card>
-    <ss-doc-info [agentId]="selectedRow?.agent"
-                 [showAgent]="false"
-                 [showDocument]="true"
-                 [reference]="selectedRow?.reference"
-                 [document]="{id:selectedRow?.id, documentURL:'/correctionIn'}">
+    <ss-doc-info
+        [displayedGroups]="['article', 'document']"
+        [params]="{
+            documentId: selectedRow?.id,
+            documentURL:'/correctionIn',
+            articleReference: selectedRow?.reference
+        }">
     </ss-doc-info>
+
 </mat-card>

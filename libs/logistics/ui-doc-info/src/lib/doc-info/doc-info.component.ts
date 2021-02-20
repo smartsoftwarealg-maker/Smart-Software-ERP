@@ -1,21 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
-/**
- * Generate command:
- * nx g component doc-info --path=libs/logistics/ui-doc-info/src/lib  --project=ui-doc-info     --module=logistics-ui-doc-info
- * nx g @nrwl/angular:lib api-sales-order  --directory sales --dry-run
- */
-enum TYPE {
-    AGENT = 1,
-    DOCUMENT,
-    ARTICLE
-}
-
 interface Entry {
-    url: string;
-    description: string;
-    type: TYPE;
+    name: string,
+    description: string,
+    url: string,
+    paramsProvided: (x: string[]) => boolean
 }
 
 @Component({
@@ -23,76 +13,85 @@ interface Entry {
     templateUrl: './doc-info.component.html',
     styleUrls: ['./doc-info.component.scss']
 })
-export class DocInfoComponent implements OnInit {
 
-    private selectedEntry: Entry;
-    public title = "";
-    private document_ = {id: 0, documentURL: ''};
-    private agentId_ = 0;
-    private storeId_ = 0;
-    private reference_: string = null;
-    @Input() showArticle = false;
-    @Input() showAgent = true;
-    @Input() showDocument = true;
+export class DocInfoComponent {
+
+    @Input() displayedGroups;
+
+    @Input() set params(params: any) {
+        const providedParams = Object.keys(params);
+        const notAllRequiredParamsExist = this.entries_
+            .filter(x => this.displayedGroups.includes(x.category))
+            .map(x => x.entries).reduce((t, x) => t.concat(x), [])
+            .map(x => x.paramsProvided(providedParams))
+            .some(x => !x);
+        if (notAllRequiredParamsExist) {
+            throw Error('Some params are messing !');
+        }
+
+        this.params_ = params;
+    }
+
+    public selectedEntry: any;
+    private params_: any;
+    private entries_: { category: string, description: string, entries: Entry[] }[] = [
+        {
+            category: 'article',
+            description: 'LOGISTICS_ARTICLE',
+            entries: [
+                {
+                    name: 'circulation',
+                    description: 'LOGISTICS_CIRCULATION',
+                    url: 'circulation',
+                    paramsProvided: (p: string[]) => p.includes('articleId') || p.includes('articleReference')
+                },
+                {
+                    name: 'card',
+                    description: 'LOGISTICS_CARD',
+                    url: 'card',
+                    paramsProvided: (p: string[]) =>
+                        (p.includes('articleId') || p.includes('articleReference')) &&
+                        (p.includes('articleStoreId') || p.includes('articleUseStoreSearch'))
+                }
+            ]
+        },
+        {
+            category: 'document',
+            description: 'LOGISTICS_DOCUMENT',
+            entries: [
+                {
+                    name: 'totals',
+                    description: 'LOGISTICS_TOTAL',
+                    url: 'totals',
+                    paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
+                }
+            ],
+        }
+    ];
+
 
     constructor(private router: Router,
                 private route: ActivatedRoute) {
     }
 
-    public AGENT_URLS: Entry[] = [];
-    public DOCUMENT_URLS: Entry[] = [
-        {url: "totals", description: "LOGISTICS_TOTAL", type: TYPE.DOCUMENT},
-    ];
-    public ARTICLE_URLS: Entry[] = [
-        {url: "circulation", description: "LOGISTICS_CIRCULATION", type: TYPE.ARTICLE},
-    ];
+    getDisplayedEntries(): any {
+        return this.entries_.filter(x => this.displayedGroups.includes(x.category));
+    }
 
-    @Input() set document(doc: { id: number, documentURL: string }) {
-        this.document_ = doc;
+    select(e): void {
+        this.selectedEntry = e;
         this.navigate();
     }
 
-    @Input() set agentId(id: number) {
-        this.agentId_ = id;
-        if (this.selectedEntry && this.selectedEntry.type === TYPE.AGENT) {
-            this.navigate();
-        }
-    }
-
-    @Input() set reference(obj: { reference: string, storeId: number }) {
-        const inp = obj || {};
-        this.reference_ = inp['reference'];
-        this.storeId_ = inp['storeId'];
-        if (this.selectedEntry && this.selectedEntry.type === TYPE.ARTICLE) {
-            this.navigate();
-        }
-    }
-
-    ngOnInit(): void {
-    }
-
-    select(entry: Entry) {
-        this.selectedEntry = entry;
-        this.title = entry.description;
-        this.navigate();
-    }
-
-    navigate() {
+    navigate(): void {
         if (this.selectedEntry != null) {
             this.router.navigate([this.selectedEntry.url], {
                 relativeTo: this.route,
                 queryParamsHandling: 'merge',
-                queryParams: this.getQueryParams()
+                queryParams: this.params_
             });
         }
     }
 
-    private getQueryParams(): object {
-        const types = {
-            [TYPE.AGENT]: {DIAgentId: this.agentId_ || 0},
-            [TYPE.DOCUMENT]: {DIDocId: this.document_.id || 0},
-            [TYPE.ARTICLE]: {DIReference: this.reference_ || ''},
-        }
-        return types[this.selectedEntry?.type || 0] || {}
-    }
+
 }

@@ -1,16 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ArticleService, Article } from '@ss/stock/api-article';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Mark, StoreName } from '@ss/common/api-lookup';
-import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
-import { LookupsService, Vat } from "@ss/common/api-lookup";
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
-import { ArticleStoreService } from "@ss/stock/api-article-store";
+import {Component, OnInit} from "@angular/core";
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {ActivatedRoute, Router} from '@angular/router';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {FormBuilder, Validators} from '@angular/forms';
+import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
+import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 @Component({
     selector: 'ss-article-detail',
@@ -21,6 +18,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     marks: Mark[];
     vats: Vat[];
+    selectedRow: Article;
 
     constructor(
         public articleSrv: ArticleService,
@@ -45,8 +43,9 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     }
 
 
-    loadEntity(id: number): Observable<Article> {
-        return super.loadEntity(id);
+    finishLoading(e: Article) {
+        super.finishLoading(e);
+        this.selectedRow = e;
     }
 
     public setupForm(a: Article) {

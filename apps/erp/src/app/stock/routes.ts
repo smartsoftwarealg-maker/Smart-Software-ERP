@@ -71,6 +71,7 @@ import {InventoryLinesDetailComponent} from "@ss/stock/ui-inventory-lines";
 import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
 import {ReceptionLinesDetailComponent} from "@ss/stock/ui-reception-lines";
 import {ReportParamsComponent} from "@ss/common/ui-report-param";
+import {docInfoRoutes} from "../administration/routes";
 
 
 export const mainRoutes: Routes = [
@@ -80,12 +81,14 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ArticleDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

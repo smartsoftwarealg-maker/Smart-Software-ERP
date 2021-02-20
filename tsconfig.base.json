@@ -140,8 +140,8 @@
       "@ss/stock/ui-reception-lines": [
         "libs/stock/ui-reception-lines/src/index.ts"
       ],
-      "@ss/stock/ui-circulation": ["libs/stock/ui-circulation/src/index.ts"],
-      "@ss/stock/api-circulation": ["libs/stock/api-circulation/src/index.ts"],
+      "@ss/logistics/ui-circulation": ["libs/logistics/ui-circulation/src/index.ts"],
+      "@ss/logistics/api-circulation": ["libs/logistics/api-circulation/src/index.ts"],
       "@ss/stock/api-card": ["libs/stock/api-card/src/index.ts"],
       "@ss/stock/ui-card": ["libs/stock/ui-card/src/index.ts"],
       "@ss/stock/api-article-store": [
@@ -160,8 +160,8 @@
       "@ss/common/ui-report-param": [
         "libs/common/ui-report-param/src/index.ts"
       ],
-      "@ss/stock/api-totals": ["libs/stock/api-totals/src/index.ts"],
-      "@ss/stock/ui-totals": ["libs/stock/ui-totals/src/index.ts"],
+      "@ss/logistics/api-totals": ["libs/logistics/api-totals/src/index.ts"],
+      "@ss/logistics/ui-totals": ["libs/logistics/ui-totals/src/index.ts"],
       "@ss/sales/api-delivery-lines": [
         "libs/sales/api-delivery-lines/src/index.ts"
       ],

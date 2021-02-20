@@ -54,11 +54,15 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 <mat-card>
-    <ss-doc-info [agentId]="selectedRow?.agent"
-                 [showAgent]="true"
-                 [showDocument]="true"
-                 [reference]="selectedRow?.reference"
-                 [document]="{id:selectedRow?.id, documentURL:'/consumption'}">
+    <ss-doc-info
+        [displayedGroups]="['article','agent','document']"
+        [params]="{
+            agentId: selectedRow?.agent,
+            documentId: selectedRow?.id,
+            documentURL:'/consumption',
+            articleReference: selectedRow?.reference
+        }">
     </ss-doc-info>
+
 </mat-card>
 

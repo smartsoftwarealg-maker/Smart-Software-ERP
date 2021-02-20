@@ -28,5 +28,5 @@ import {TotalComponent} from "./total.component";
         TotalComponent
     ]
 })
-export class StockUiTotalModule {
+export class LogisticsUiTotalModule {
 }

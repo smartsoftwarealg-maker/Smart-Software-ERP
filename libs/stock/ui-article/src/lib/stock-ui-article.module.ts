@@ -8,6 +8,7 @@ import {ArticleDetailComponent} from './article-detail.component';
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {RouterModule} from "@angular/router";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
         CommonUiLangModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule,
         RouterModule,
         CommonUiAutoCompleteModule
     ],

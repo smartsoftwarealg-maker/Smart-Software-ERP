@@ -8,7 +8,7 @@ export class TestUtils {
     static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<CenterDetailComponent>,
                                     form: FormGroup,
                                     name: string): void {
-        let field = form.controls[name];
+        const field = form.controls[name];
 
         expect(field.valid).toBeTruthy();
 
@@ -28,13 +28,13 @@ export class TestUtils {
     }
 
     static shouldDisplayErrorMessage(template, name) {
-        let formField = template.querySelector(`#${name}`);
+        const formField = template.querySelector(`#${name}`);
         expect(formField.querySelector("mat-error")).not.toBeNull()
     }
 
     static shouldHighlightParentPanel(template, name) {
-        let formField = template.querySelector(`#${name}`);
-        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+        const formField = template.querySelector(`#${name}`);
+        const hasHeaderWarnClass = formField.closest("mat-expansion-panel")
             .classList.contains("b-warn-expansion-panel");
         expect(hasHeaderWarnClass).toBeTruthy();
     }

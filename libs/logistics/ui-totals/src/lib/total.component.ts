@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
-import {Total, TotalService} from "@ss/stock/api-totals";
 import {combineLatest} from "rxjs";
+import {Total, TotalService} from "@ss/logistics/api-totals";
 
 @Component({
     selector: 'ss-total',

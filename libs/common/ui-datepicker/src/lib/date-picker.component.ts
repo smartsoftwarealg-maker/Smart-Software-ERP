@@ -19,8 +19,6 @@ import { Subject } from 'rxjs';
 })
 export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, OnInit, OnDestroy, ControlValueAccessor {
 
-    @ViewChild('textField', { static: true }) textField: ElementRef;
-
     constructor(
         @Optional() @Self() public ngControl: NgControl,
         private fm: FocusMonitor,
@@ -45,13 +43,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
-    noopx = (x?: any) => { }
-    onChange: (date: Date) => void = this.noopx;
-    onTouched: () => void = this.noopx;
-
-    /** The value of the control. */
-    date: Date;
-
     get value(): Date | null {
         return this.date;
     }
@@ -62,19 +53,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.onChange(this.date);
     }
 
-    static nextId = 0;
-
-    /**
-     * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
-     * needs to run change detection.
-     */
-    readonly stateChanges = new Subject<void>();
-    /** The element ID for this control. */
-    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
-
-    /** The placeholder for this control. */
-    pPlaceholder: string;
-
     @Input()
     set placeholder(t: string) {
         this.pPlaceholder = t;
@@ -84,9 +62,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     get placeholder(): string {
         return this.pPlaceholder;
     }
-
-    /** Whether the control is focused. */
-    isFocused: boolean = false;
 
     get focused() { return this.isFocused; }
 
@@ -100,9 +75,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     get shouldLabelFloat() {
         return this.focused || !this.empty;
     }
-
-    /** Whether the control is required. */
-    isRequired = false;
 
     get required(): boolean {
         return this.isRequired;
@@ -123,6 +95,34 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.isDisabled = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+
+    static nextId = 0;
+
+    noopx = (x?: any) => { };
+
+    @ViewChild('textField', { static: true }) textField: ElementRef;
+    onChange: (date: Date) => void = this.noopx;
+    onTouched: () => void = this.noopx;
+
+    /** The value of the control. */
+    date: Date;
+
+    /**
+     * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
+     * needs to run change detection.
+     */
+    readonly stateChanges = new Subject<void>();
+    /** The element ID for this control. */
+    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
+
+    /** The placeholder for this control. */
+    pPlaceholder: string;
+
+    /** Whether the control is focused. */
+    isFocused = false;
+
+    /** Whether the control is required. */
+    isRequired = false;
 
     isDisabled: boolean;
 
@@ -147,13 +147,14 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
      */
     @Input('aria-describedby') userAriaDescribedBy: string;
 
+
     /** Sets the list of element IDs that currently describe this control. */
     setDescribedByIds(ids: string[]) {
     }
 
     /** Handles a click on the control's container. */
     onContainerClick(event: MouseEvent) {
-        if ((event.target as Element).tagName.toLowerCase() != 'input') {
+        if ((event.target as Element).tagName.toLowerCase() !== 'input') {
             this.elRef.nativeElement.querySelector('input').focus();
         }
     }
@@ -203,7 +204,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     ngDoCheck(): void {
         if (this.ngControl) {
             this.errorState = this.ngControl.invalid && this.ngControl.touched;
-            if (this.lastErrorState != this.errorState) {
+            if (this.lastErrorState !== this.errorState) {
                 this.stateChanges.next();
                 this.lastErrorState = this.errorState;
             }

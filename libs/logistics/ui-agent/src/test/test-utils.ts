@@ -8,7 +8,7 @@ export class TestUtils {
     static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<AgentDetailComponent>,
                                     form: FormGroup,
                                     name: string): void {
-        let field = form.controls[name];
+        const field = form.controls[name];
 
         expect(field.valid).toBeTruthy();
 
@@ -23,7 +23,7 @@ export class TestUtils {
                                             form: FormGroup,
                                             name: string,
                                             maxLength: number): void {
-        let field = form.controls[name];
+        const field = form.controls[name];
 
 
         field.setValue(Array(maxLength + 1).fill("e").reduce((t, c) => t + c, ""))
@@ -33,7 +33,7 @@ export class TestUtils {
 
 
     static shouldCheckInvalidValues(fixture, form, name, invalidValues: any, validValues: any) {
-        let field = form.controls[name];
+        const field = form.controls[name];
 
         if (invalidValues instanceof Array) {
 
@@ -69,13 +69,13 @@ export class TestUtils {
     }
 
     static shouldDisplayErrorMessage(template, name) {
-        let formField = template.querySelector(`#${name}`);
+        const formField = template.querySelector(`#${name}`);
         expect(formField.querySelector("mat-error")).not.toBeNull()
     }
 
     static shouldHighlightParentPanel(template, name) {
-        let formField = template.querySelector(`#${name}`);
-        let hasHeaderWarnClass = formField.closest("mat-expansion-panel")
+        const formField = template.querySelector(`#${name}`);
+        const hasHeaderWarnClass = formField.closest("mat-expansion-panel")
             .classList.contains("b-warn-expansion-panel");
         expect(hasHeaderWarnClass).toBeTruthy();
     }
