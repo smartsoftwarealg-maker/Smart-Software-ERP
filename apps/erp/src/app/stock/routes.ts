@@ -100,17 +100,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryEntryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL,
+                path: LINES_DETAIL_URL + '/:id',
                 component: InventoryEntryLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryEntryDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -122,17 +125,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryExitListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL,
+                path: LINES_DETAIL_URL + '/:id',
                 component: InventoryExitLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryExitDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -144,17 +150,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ConsumptionListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL,
                 component: ConsumptionLinesDetailComponent,
                 canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ConsumptionDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

@@ -5,6 +5,7 @@ import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from "@ss
 import {DeliveryLinesDetailComponent} from "@ss/sales/ui-delivery-lines";
 import {TotalComponent} from "@ss/logistics/ui-totals";
 import {CirculationComponent} from "@ss/logistics/ui-circulation";
+import {docInfoRoutes} from "../administration/routes";
 
 export const lookupRoutes: Routes = []
 
@@ -16,14 +17,7 @@ export const mainRoutes: Routes = [
                 path: 'list',
                 component: DeliveryListComponent,
                 canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: { documentURL: '/delivery' },
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    },
-                ]
+                children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL,
@@ -34,20 +28,7 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: DeliveryDetailComponent,
                 canActivate: [CanActivateService],
-                children: [
-                    {
-                        path: 'totals',
-                        data: { documentURL: "/delivery" },
-                        component: TotalComponent,
-                        canActivate: [CanActivateService]
-                    },
-                    {
-                        path: 'circulation',
-                        data: { documentURL: "/articles/circulation" },
-                        component: CirculationComponent,
-                        canActivate: [CanActivateService]
-                    },
-                ]
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL}

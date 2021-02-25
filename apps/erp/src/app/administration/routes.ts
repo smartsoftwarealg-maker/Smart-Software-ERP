@@ -15,7 +15,9 @@ import {SmtpDetailComponent, SmtpListComponent} from "@ss/administration/ui-smtp
 import {ReportCatalogDetailComponent, ReportCatalogListComponent} from "@ss/administration/ui-report-catalog";
 import {TotalComponent} from "@ss/logistics/ui-totals";
 import {CirculationComponent} from "@ss/logistics/ui-circulation";
-import {CardComponent} from "../../../../../libs/stock/ui-card/src";
+import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
+import {CardComponent} from "@ss/logistics/ui-card";
+import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
 
 export const mainRoutes: Routes = [
     {
@@ -128,5 +130,13 @@ export const docInfoRoutes: Routes = [
     {
         path: 'card',
         component: CardComponent
+    },
+    {
+        path: 'agent-balance',
+        component: AgentBalanceComponent
+    },
+    {
+        path: 'agent-debts',
+        component: AgentDebtsComponent
     }
 ];

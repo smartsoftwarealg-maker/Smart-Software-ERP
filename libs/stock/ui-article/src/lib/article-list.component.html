@@ -43,20 +43,17 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<mat-card id="doc-info">
-    <mat-card-content>
-        <ss-doc-info *ngIf="selectedRow" [displayedGroups]="['article']"
-                     [params]="{
+<ss-doc-info *ngIf="selected" [displayedGroups]="['article']"
+             [params]="{
                          articleId: selectedRow?.id,
                          articleUseStoreSearch : true
                      }">
-        </ss-doc-info>
-    </mat-card-content>
-</mat-card>
+</ss-doc-info>

@@ -30,6 +30,7 @@ export class DocInfoComponent {
         }
 
         this.params_ = params;
+        this.navigate();
     }
 
     public selectedEntry: any;
@@ -64,6 +65,24 @@ export class DocInfoComponent {
                     description: 'LOGISTICS_TOTAL',
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
+                }
+            ],
+        },
+        {
+            group: 'agent',
+            description: 'LOGISTICS_AGENT',
+            entries: [
+                {
+                    name: 'balance',
+                    description: 'LOGISTICS_AGENT_BALANCE',
+                    url: 'agent-balance',
+                    paramsProvided: (p: string[]) => p.includes('agentId')
+                },
+                {
+                    name: 'debts',
+                    description: 'LOGISTICS_AGENT_DEBTS',
+                    url: 'agent-debts',
+                    paramsProvided: (p: string[]) => p.includes('agentId')
                 }
             ],
         }
