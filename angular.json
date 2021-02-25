@@ -2221,7 +2221,10 @@
               "libs/logistics/ui-circulation/tsconfig.lib.json",
               "libs/logistics/ui-circulation/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/logistics/ui-circulation/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/ui-circulation/**/*"
+            ]
           }
         },
         "test": {
@@ -2275,53 +2278,53 @@
         }
       }
     },
-    "stock-api-card": {
+    "logistics-api-card": {
       "projectType": "library",
-      "root": "libs/stock/api-card",
-      "sourceRoot": "libs/stock/api-card/src",
+      "root": "libs/logistics/api-card",
+      "sourceRoot": "libs/logistics/api-card/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/api-card/tsconfig.lib.json",
-              "libs/stock/api-card/tsconfig.spec.json"
+              "libs/logistics/api-card/tsconfig.lib.json",
+              "libs/logistics/api-card/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/api-card/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-card/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/stock/api-card"],
+          "outputs": ["coverage/libs/logistics/api-card"],
           "options": {
-            "jestConfig": "libs/stock/api-card/jest.config.js",
+            "jestConfig": "libs/logistics/api-card/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "stock-ui-card": {
+    "logistics-ui-card": {
       "projectType": "library",
-      "root": "libs/stock/ui-card",
-      "sourceRoot": "libs/stock/ui-card/src",
+      "root": "libs/logistics/ui-card",
+      "sourceRoot": "libs/logistics/ui-card/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/stock/ui-card/tsconfig.lib.json",
-              "libs/stock/ui-card/tsconfig.spec.json"
+              "libs/logistics/ui-card/tsconfig.lib.json",
+              "libs/logistics/ui-card/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/stock/ui-card/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-card/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/stock/ui-card"],
+          "outputs": ["coverage/libs/logistics/ui-card"],
           "options": {
-            "jestConfig": "libs/stock/ui-card/jest.config.js",
+            "jestConfig": "libs/logistics/ui-card/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -2710,6 +2713,122 @@
           "outputs": ["coverage/libs/logistics/ui-doc-info"],
           "options": {
             "jestConfig": "libs/logistics/ui-doc-info/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-api-agent-balance": {
+      "projectType": "library",
+      "root": "libs/logistics/api-agent-balance",
+      "sourceRoot": "libs/logistics/api-agent-balance/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-agent-balance/tsconfig.lib.json",
+              "libs/logistics/api-agent-balance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-agent-balance/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/api-agent-balance"],
+          "options": {
+            "jestConfig": "libs/logistics/api-agent-balance/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-ui-agent-balance": {
+      "projectType": "library",
+      "root": "libs/logistics/ui-agent-balance",
+      "sourceRoot": "libs/logistics/ui-agent-balance/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/ui-agent-balance/tsconfig.lib.json",
+              "libs/logistics/ui-agent-balance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/ui-agent-balance/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/ui-agent-balance"],
+          "options": {
+            "jestConfig": "libs/logistics/ui-agent-balance/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-ui-agent-debts": {
+      "projectType": "library",
+      "root": "libs/logistics/ui-agent-debts",
+      "sourceRoot": "libs/logistics/ui-agent-debts/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/ui-agent-debts/tsconfig.lib.json",
+              "libs/logistics/ui-agent-debts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/ui-agent-debts/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/ui-agent-debts"],
+          "options": {
+            "jestConfig": "libs/logistics/ui-agent-debts/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-api-agent-debts": {
+      "projectType": "library",
+      "root": "libs/logistics/api-agent-debts",
+      "sourceRoot": "libs/logistics/api-agent-debts/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-agent-debts/tsconfig.lib.json",
+              "libs/logistics/api-agent-debts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-agent-debts/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/api-agent-debts"],
+          "options": {
+            "jestConfig": "libs/logistics/api-agent-debts/jest.config.js",
             "passWithNoTests": true
           }
         }

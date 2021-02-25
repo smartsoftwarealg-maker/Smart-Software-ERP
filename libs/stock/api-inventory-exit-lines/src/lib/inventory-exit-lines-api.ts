@@ -1,6 +1,6 @@
 export const INVENTORY_EXIT_LINES_URL = "/detail";
 
-export interface InventoryExitLines {
+export interface InventoryExitLine {
     id: number;
     transacId: number;
     reference: string;

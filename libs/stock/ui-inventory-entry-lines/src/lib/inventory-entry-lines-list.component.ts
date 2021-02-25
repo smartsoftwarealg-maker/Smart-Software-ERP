@@ -90,7 +90,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    selectRow(row : InventoryEntryLine): void {
+    selectRow(row: InventoryEntryLine): void {
         this.selectedRow = row;
         this.selected = row.id;
     }
@@ -133,11 +133,13 @@ export class InventoryEntryLinesListComponent implements OnInit {
 
     public showDetail(id: number): void {
         const params = {
-            parent: this.parentId,
-            id: id
+            parent: this.parentId
         };
-        this.router.navigate(['./' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
-            .then();
+
+        this.router.navigate(
+            ['./' + LINES_DETAIL_URL + '/' + id],
+            {relativeTo: this.route.parent, queryParams: params}
+        ).then();
     }
 
 

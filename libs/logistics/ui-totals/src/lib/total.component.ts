@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
-import {combineLatest} from "rxjs";
 import {Total, TotalService} from "@ss/logistics/api-totals";
 
 @Component({
@@ -36,17 +35,16 @@ export class TotalComponent implements OnInit {
 
 
     ngOnInit() {
-        combineLatest([this.route.data, this.route.params])
-            .subscribe(([data, param]) => {
-                const documentId = +param.id;
-                const documentURL = param.documentURL;
+        this.route.queryParams.subscribe(param => {
+            const documentId = +param.documentId;
+            const documentURL = param.documentURL;
 
-                if (documentId) {
-                    this.totalSrv.setParentsIds(documentId, documentURL);
-                    this.loadTotal();
-                }
+            if (documentId) {
+                this.totalSrv.setParentsIds(documentId, documentURL);
+                this.loadTotal();
+            }
 
-            });
+        });
     }
 
     loadTotal() {

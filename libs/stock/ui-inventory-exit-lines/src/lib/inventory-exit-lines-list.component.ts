@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryExitLines, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
+import {InventoryExitLine, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
@@ -21,8 +21,9 @@ export class InventoryExitLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: InventoryExitLines[];
+    data: InventoryExitLine[];
     selected: number;
+    selectedRow: InventoryExitLine;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -89,8 +90,9 @@ export class InventoryExitLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(id: number): void {
-        this.selected = id;
+    selectRow(row: InventoryExitLine): void {
+        this.selectedRow = row;
+        this.selected = row.id;
     }
 
     public deleteSelected(): void {
@@ -128,10 +130,11 @@ export class InventoryExitLinesListComponent implements OnInit {
     public showDetail(id: number): void {
         const params = {
             parent: this.parentId,
-            id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
-            .then();
+        this.router.navigate(['./' + LINES_DETAIL_URL + '/' + id], {
+            relativeTo: this.route.parent,
+            queryParams: params
+        }).then();
     }
 
 

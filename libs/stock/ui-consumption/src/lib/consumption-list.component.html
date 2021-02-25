@@ -53,16 +53,14 @@
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
-<mat-card>
-    <ss-doc-info
-        [displayedGroups]="['article','agent','document']"
-        [params]="{
-            agentId: selectedRow?.agent,
+
+<ss-doc-info
+    *ngIf="selected"
+    [displayedGroups]="['document','agent']"
+    [params]="{
             documentId: selectedRow?.id,
             documentURL:'/consumption',
-            articleReference: selectedRow?.reference
+            agentId : selectedRow.agent
         }">
-    </ss-doc-info>
-
-</mat-card>
+</ss-doc-info>
 

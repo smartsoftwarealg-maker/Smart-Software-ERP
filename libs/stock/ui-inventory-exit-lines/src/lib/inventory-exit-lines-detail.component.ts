@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryExitLines, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
+import {InventoryExitLine, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
@@ -18,10 +18,11 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./inventory-exit-lines-detail.component.scss'],
     templateUrl: './inventory-exit-lines-detail.component.html'
 })
-export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLines> implements OnInit {
+export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLine> implements OnInit {
 
 
     parentId: number;
+    selectedRow: InventoryExitLine;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
@@ -58,21 +59,16 @@ export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: also this one, I broke it too. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route, {id: this.parentId});
     }
 
     finishLoading(e: InventoryLine) {
-        this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: {reference: e.reference},
-            queryParamsHandling: 'merge'
-        }).then();
         super.finishLoading(e);
+        this.selectedRow = e;
     }
 
 
-    public setupForm(b: InventoryExitLines) {
+    public setupForm(b: InventoryExitLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

@@ -60,12 +60,24 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
+
+    <ss-doc-info
+        *ngIf="selected"
+        [displayedGroups]="['article', 'document']"
+        [params]="{
+            documentId: selectedRow?.transacId,
+            documentURL:'/correctionIn',
+            articleReference: selectedRow?.reference,
+            articleStoreId: selectedRow?.store
+        }">
+    </ss-doc-info>
+
 
 </ng-container>

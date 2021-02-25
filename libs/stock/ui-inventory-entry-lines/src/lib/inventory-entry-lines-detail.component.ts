@@ -23,7 +23,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
 
     parentId: number;
 
-    selectedRow : InventoryEntryLine
+    selectedRow: InventoryEntryLine
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
@@ -51,7 +51,8 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.inventoryEntryLinesService.setParentId(this.parentId);
+                    this.inventoryEntryLinesService.setParentId(+this.parentId);
+                    console.log(p);
                     return p;
                 })
             );
@@ -60,16 +61,10 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: I borke this one too, i think. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     finishLoading(e: InventoryLine) {
-        this.router.navigate([], {
-            relativeTo: this.route,
-            queryParams: {reference: e.reference},
-            queryParamsHandling: 'merge'
-        }).then();
         this.selectedRow = e;
         super.finishLoading(e);
     }

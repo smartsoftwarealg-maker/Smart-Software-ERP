@@ -46,13 +46,9 @@
         </form>
     </mat-card-content>
 </mat-card>
-<mat-card id="doc-info">
-    <mat-card-content>
-        <ss-doc-info [displayedGroups]="['article']"
-                     [params]="{
+<ss-doc-info [displayedGroups]="['article']"
+             [params]="{
                          articleId: selectedRow?.id,
                          articleUseStoreSearch : true
                      }">
-        </ss-doc-info>
-    </mat-card-content>
-</mat-card>
+</ss-doc-info>

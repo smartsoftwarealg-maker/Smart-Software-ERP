@@ -69,15 +69,14 @@
     </mat-card-content>
 </mat-card>
 
-<mat-card>
-    <ss-doc-info
-        [displayedGroups]="['article', 'document']"
-        [params]="{
+<ss-doc-info
+    *ngIf="selectedRow"
+    [displayedGroups]="['article', 'document']"
+    [params]="{
             documentId: selectedRow?.transacId,
             documentURL:'/correctionIn',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">
-    </ss-doc-info>
+</ss-doc-info>
 
-</mat-card>
