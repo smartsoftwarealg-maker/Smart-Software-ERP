@@ -56,8 +56,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: I may have broken this. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     public setupForm(b: DeliveryLine) {
