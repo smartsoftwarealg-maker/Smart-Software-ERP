@@ -52,7 +52,6 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
                 tap(p => {
                     this.parentId = +p.parent;
                     this.inventoryEntryLinesService.setParentId(+this.parentId);
-                    console.log(p);
                     return p;
                 })
             );

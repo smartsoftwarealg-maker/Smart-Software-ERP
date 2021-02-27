@@ -69,12 +69,14 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <mat-card>
-        <ss-doc-info [showAgent]="true"
-                     [showDocument]="true"
-                     [showArticle]="true"
-                     [document]="{id:selectedRow?.transacId, documentURL:'/delivery'}"
-                     [reference]="{ reference: selectedRow?.reference, storeId: selectedRow?.store }">
-        </ss-doc-info>
-    </mat-card>
+    <ss-doc-info
+        [displayedGroups]="['article','document']"
+        [params]="{
+            documentId: selectedRow?.transacId,
+            documentURL:'/delivery',
+            articleReference: selectedRow?.reference,
+            articleStoreId: selectedRow?.store
+        }">
+    </ss-doc-info>
+
 </ng-container>

@@ -90,28 +90,29 @@ export class DeliveryLinesListComponent implements OnInit {
 
     select(row: DeliveryLine) {
         this.selectedRow = row;
-        this.selectedId = row? row.id : 0;
+        this.selectedId = row ? row.id : 0;
     }
+
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
-                    if (b && this.selectedId && this.selectedId > 0) {
-                        const a = this.data.filter(x => x.id === this.selectedId)[0];
-                        if (a && a.id) {
-                            this.shellSrv.setLoading(true);
-                            this.deliveryLinesSrv.remove(a.id)
-                                .subscribe(
-                                    () => {
-                                        this.snackBarSrv.showSuccessMessage();
-                                        this.loadDeliveryLines();
-                                    },
-                                    err => {
-                                        this.snackBarSrv.showFailureMessage();
-                                        this.shellSrv.setLoading(false);
-                                        throw err;
-                                    }
-                                );
-                        }
+                if (b && this.selectedId && this.selectedId > 0) {
+                    const a = this.data.filter(x => x.id === this.selectedId)[0];
+                    if (a && a.id) {
+                        this.shellSrv.setLoading(true);
+                        this.deliveryLinesSrv.remove(a.id)
+                            .subscribe(
+                                () => {
+                                    this.snackBarSrv.showSuccessMessage();
+                                    this.loadDeliveryLines();
+                                },
+                                err => {
+                                    this.snackBarSrv.showFailureMessage();
+                                    this.shellSrv.setLoading(false);
+                                    throw err;
+                                }
+                            );
+                    }
                 }
             })
     }
@@ -124,11 +125,12 @@ export class DeliveryLinesListComponent implements OnInit {
 
     public showDetail(id: number): void {
         const params = {
-            parent: this.parentId,
-            id: id
+            parent: this.parentId
         };
-        this.router.navigate([LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
-            .then();
+        this.router.navigate(
+            ['./' + LINES_DETAIL_URL + '/' + id],
+            {relativeTo: this.route.parent, queryParams: params}
+        ).then();
     }
 
 
