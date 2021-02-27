@@ -5,7 +5,7 @@
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.credit}}
+                {{e.credit.toFixed(2)}}
             </mat-cell>
         </ng-container>
 
@@ -13,7 +13,7 @@
         <ng-container matColumnDef="totalCredit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.totalCredit}}
+                {{e.totalCredit.toFixed(2)}}
             </mat-cell>
         </ng-container>
 
@@ -21,7 +21,7 @@
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.debit}}
+                {{e.debit.toFixed(2)}}
             </mat-cell>
         </ng-container>
 
@@ -29,7 +29,7 @@
         <ng-container matColumnDef="totalDebit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.totalDebit}}
+                {{e.totalDebit.toFixed(2)}}
             </mat-cell>
         </ng-container>
 

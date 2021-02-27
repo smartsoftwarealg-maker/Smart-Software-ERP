@@ -55,14 +55,14 @@
         <ng-container matColumnDef="qtyIn">
             <mat-header-cell *matHeaderCellDef translate>STOCK_QTY_IN</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.qtyIn }}
+                {{ e.qtyIn.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="qtyOut">
             <mat-header-cell *matHeaderCellDef translate>STOCK_QTY_OUT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.qtyOut }}
+                {{ e.qtyOut.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
@@ -77,14 +77,14 @@
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.price }}
+                {{ e.price.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="value">
             <mat-header-cell *matHeaderCellDef translate>STOCK_VALUE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.value }}
+                {{ e.value.toFixed(2) }}
             </mat-cell>
         </ng-container>
 
