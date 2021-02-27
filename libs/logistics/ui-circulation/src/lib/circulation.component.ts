@@ -1,5 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Circulation, CirculationService} from "@ss/logistics/api-circulation";
@@ -14,10 +14,14 @@ import {Observable} from "rxjs";
     templateUrl: './circulation.component.html'
 })
 export class CirculationComponent implements OnInit {
+
     public readonly pagination = PaginationModel.newInstance();
 
 
     data: Circulation[];
+    articleReference: string;
+    articleId: number;
+
 
     displayedColumns = [
         "document",
@@ -45,15 +49,23 @@ export class CirculationComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
             // if no reference found go for id
-            if (x.articleReference || +x.articleId) {
-                const loader: Observable<Circulation[]> = x.articleReference ?
-                    this.loadByReference(x.articleReference)
-                    : this.loadById(+x.articleId);
-                this.load(loader);
-            } else {
-                throw new Error('I could not find an id or a ref, plz fix me');
-            }
+            this.articleReference = x.articleReference;
+            this.articleId = +x.articleId;
+            this.loadCirculation();
         });
+
+        this.pagination.onChange = () => this.loadCirculation();
+    }
+
+    loadCirculation() {
+        if (this.articleReference || this.articleId) {
+            const loader: Observable<Circulation[]> = this.articleReference ?
+                this.loadByReference(this.articleReference)
+                : this.loadById(this.articleId);
+            this.load(loader);
+        } else {
+            throw new Error('I could not find an id or a ref, plz fix me');
+        }
     }
 
     loadById(id: number): Observable<Circulation[]> {
@@ -66,6 +78,6 @@ export class CirculationComponent implements OnInit {
     }
 
     load(observable: Observable<Circulation[]>) {
-         observable.subscribe((x: Circulation[]) => this.data = x);
+        observable.subscribe((x: Circulation[]) => this.data = x);
     }
 }

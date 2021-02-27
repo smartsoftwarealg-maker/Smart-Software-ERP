@@ -42,6 +42,7 @@ export class TotalComponent implements OnInit {
             if (documentId) {
                 this.totalSrv.setParentsIds(documentId, documentURL);
                 this.loadTotal();
+                this.pagination.onChange = () => this.loadTotal();
             }
 
         });

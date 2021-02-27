@@ -65,12 +65,13 @@ export class CardComponent implements OnInit {
             this.articleReference = x.articleReference;
             this.useStoreForm = !!x.articleUseStoreSearch
 
-            if (!this.useStoreForm){
+            if (!this.useStoreForm) {
                 this.loadCard();
-            }else{
+            } else {
                 this.storeSrv.setParentId(this.articleId);
             }
 
+            this.pagination.onChange = () => this.loadCard();
 
         });
 
