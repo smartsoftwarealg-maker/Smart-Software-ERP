@@ -10,8 +10,7 @@ import {AgentBalance, AgentBalanceService} from "@ss/logistics/api-agent-balance
     styleUrls: ['./agent-balance.component.scss'],
     templateUrl: './agent-balance.component.html'
 })
-export class AgentBalanceComponent implements OnInit{
-
+export class AgentBalanceComponent implements OnInit {
 
 
     public readonly pagination = PaginationModel.newInstance();
@@ -20,7 +19,9 @@ export class AgentBalanceComponent implements OnInit{
     data: AgentBalance[];
 
     displayedColumns = [
-        "description"
+        "document",
+        "debit",
+        "credit"
     ];
 
 
