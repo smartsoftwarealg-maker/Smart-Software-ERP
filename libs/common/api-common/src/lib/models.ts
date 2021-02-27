@@ -98,7 +98,6 @@ export interface Person {
     mservice: number;
     nationality: number;
     educationalLevel: number;
-    retirementDate: string;
     diploma: number;
     ssNumber: string;
     mutualNumber: string;

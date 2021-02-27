@@ -26,7 +26,6 @@ export interface Person {
     email: string;
     phone: string;
     mobile: string;
-    retirementDate: string;
 
     address1: string;
     address1Ar: string;

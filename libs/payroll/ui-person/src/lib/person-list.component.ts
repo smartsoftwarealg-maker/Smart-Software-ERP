@@ -36,9 +36,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         'fullname',
         'birth',
         'address',
-        'maritalStatus',
-        'nationality',
-        'mservice'
+        'maritalStatus'
     ];
 
     maritalStatus: { [id: number]: string; };
@@ -74,7 +72,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
                 switchMap(() => this.lookupsSrv.getMilitaryServiceStates()),
                 tap(x => {
                     this.militaryServiceStates = this.onLookupLoaded(x);
-                }),
+                })
             );
     }
 
@@ -89,7 +87,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
             p.birthDate = this.langSrv.formatDate(p.birthDate);
-            p.retirementDate = this.langSrv.formatDate(p.birthDate);
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
