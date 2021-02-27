@@ -19,7 +19,6 @@
     "FISCAL_ID": "Fiscal id",
     "ARTICLE_NO": "Article No",
     "STAMP_PAYABLE": "Stamp payable ",
-    "PRICE": "Price",
     "DENOMINATION_AR": "Denomination ar",
     "ADDRESS_AR": "Address ar",
     "ADDRESS2_AR": "Address 2 ar",
@@ -76,5 +75,10 @@
     "PRICE": "Price",
     "DOCUMENT": "Document",
     "TOTAL": "Total",
-    "CUSTOMER": "Customer"
+    "CUSTOMER": "Customer",
+    "PPRICE": "PPrice",
+    "DATE": "Date",
+    "NUMBER": "Number",
+    "QTY": "Qty",
+    "STORE": "Store"
 }
