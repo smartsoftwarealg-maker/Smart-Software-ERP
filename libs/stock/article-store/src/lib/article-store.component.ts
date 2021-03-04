@@ -22,7 +22,6 @@ export class ArticleStoreComponent implements OnInit {
     lots: { [id: number]: string; };
     storeForm: FormGroup = new FormGroup({
         storeId: new FormControl(),
-        stock: new FormControl(),
         referenceId: new FormControl(),
         reference: new FormControl(),
         id: new FormControl()
@@ -55,7 +54,6 @@ export class ArticleStoreComponent implements OnInit {
         this.pagination.onChange = () => this.loadArticleStore();
         this.storeForm.setValue({
             storeId: null,
-            stock: 0.00,
             referenceId: this.article.id,
             reference: this.article.reference,
             id: 0
