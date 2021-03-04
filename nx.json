@@ -109,6 +109,9 @@
     "logistics-api-agent-balance": { "tags": [] },
     "logistics-ui-agent-balance": { "tags": [] },
     "logistics-ui-agent-debts": { "tags": [] },
-    "logistics-api-agent-debts": { "tags": [] }
+    "logistics-api-agent-debts": { "tags": [] },
+    "sales-api-sales-order": { "tags": [] },
+    "sales-ui-sales-order": { "tags": [] },
+    "sales-ui-order-lines": { "tags": [] }
   }
 }

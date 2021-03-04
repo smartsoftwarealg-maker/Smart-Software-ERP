@@ -2833,6 +2833,87 @@
           }
         }
       }
+    },
+    "sales-api-sales-order": {
+      "projectType": "library",
+      "root": "libs/sales/api-sales-order",
+      "sourceRoot": "libs/sales/api-sales-order/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/api-sales-order/tsconfig.lib.json",
+              "libs/sales/api-sales-order/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sales/api-sales-order/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/api-sales-order"],
+          "options": {
+            "jestConfig": "libs/sales/api-sales-order/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-ui-sales-order": {
+      "projectType": "library",
+      "root": "libs/sales/ui-sales-order",
+      "sourceRoot": "libs/sales/ui-sales-order/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/ui-sales-order/tsconfig.lib.json",
+              "libs/sales/ui-sales-order/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-sales-order/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/ui-sales-order"],
+          "options": {
+            "jestConfig": "libs/sales/ui-sales-order/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-ui-order-lines": {
+      "projectType": "library",
+      "root": "libs/sales/ui-order-lines",
+      "sourceRoot": "libs/sales/ui-order-lines/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/ui-order-lines/tsconfig.lib.json",
+              "libs/sales/ui-order-lines/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-order-lines/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/ui-order-lines"],
+          "options": {
+            "jestConfig": "libs/sales/ui-order-lines/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
