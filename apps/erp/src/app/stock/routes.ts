@@ -154,7 +154,7 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL,
+                path: LINES_DETAIL_URL + "/:id",
                 component: ConsumptionLinesDetailComponent,
                 canActivate: [CanActivateService],
                 children: docInfoRoutes
@@ -175,17 +175,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL,
+                path: LINES_DETAIL_URL + "/:id",
                 component: InventoryLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -197,17 +200,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ReceptionListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL,
+                path: LINES_DETAIL_URL + "/:id",
                 component: ReceptionLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ReceptionDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

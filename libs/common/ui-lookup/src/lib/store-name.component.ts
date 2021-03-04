@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StoreName, StoreNameService } from '@ss/common/api-lookup';
+import { Lot, LotsService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
@@ -12,12 +12,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
-export class StoreNameListComponent extends BaseEntityListComponent<StoreName> {
+export class StoreNameListComponent extends BaseEntityListComponent<Lot> {
 
     displayedColumns = ['description'];
 
     constructor(
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -35,10 +35,10 @@ export class StoreNameListComponent extends BaseEntityListComponent<StoreName> {
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })
-export class StoreNameDetailComponent extends BaseEntityDetailComponent<StoreName> {
+export class StoreNameDetailComponent extends BaseEntityDetailComponent<Lot> {
 
     constructor(
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -47,7 +47,7 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<StoreNam
         super(storeNameSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_STORE_NAME');
     }
 
-    public setupForm(e: StoreName): FormGroup {
+    public setupForm(e: Lot): FormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

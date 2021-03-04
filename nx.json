@@ -109,6 +109,7 @@
     "logistics-api-agent-balance": { "tags": [] },
     "logistics-ui-agent-balance": { "tags": [] },
     "logistics-ui-agent-debts": { "tags": [] },
-    "logistics-api-agent-debts": { "tags": [] }
+    "logistics-api-agent-debts": { "tags": [] },
+    "stock-article-store": { "tags": [] }
   }
 }

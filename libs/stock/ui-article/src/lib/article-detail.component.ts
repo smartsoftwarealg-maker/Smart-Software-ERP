@@ -4,10 +4,11 @@ import {Article, ArticleService} from '@ss/stock/api-article';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {FormBuilder, Validators} from '@angular/forms';
-import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {LookupsService, Mark, Lot, LotsService, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-article-detail',
