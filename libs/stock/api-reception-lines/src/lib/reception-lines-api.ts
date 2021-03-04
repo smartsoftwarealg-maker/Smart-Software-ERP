@@ -1,6 +1,6 @@
 export const RECEPTION_LINES_URL = "/detail";
 
-export interface ReceptionLines {
+export interface ReceptionLine {
     id: number;
     transacId: number;
     reference: string;

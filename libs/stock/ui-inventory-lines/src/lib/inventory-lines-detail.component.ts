@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryLine, InventoryLinesService} from "@ss/stock/api-inventory-lines";
 import {Observable} from "rxjs";
@@ -21,9 +21,9 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
 
 
     parentId: number;
-
+    selectedRow : InventoryLine;
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public inventoryLinesService: InventoryLinesService,
@@ -34,7 +34,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(inventoryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
@@ -58,7 +58,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
     ngOnInit() {
         super.ngOnInit();
         // FIXME: i may have broken this too. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
 
@@ -72,6 +72,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
     }
 
     public setupForm(b: InventoryLine) {
+        this.selectedRow = b;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

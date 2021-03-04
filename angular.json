@@ -2833,6 +2833,32 @@
           }
         }
       }
+    },
+    "stock-article-store": {
+      "projectType": "library",
+      "root": "libs/stock/article-store",
+      "sourceRoot": "libs/stock/article-store/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/stock/article-store/tsconfig.lib.json",
+              "libs/stock/article-store/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stock/article-store/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/stock/article-store"],
+          "options": {
+            "jestConfig": "libs/stock/article-store/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
