@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import { fillObject } from "@ss/common/api-common";
-import {SalesOrderLinesService} from "../../../api-sales-order/src/lib/sales-order-lines.service";
+import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -24,7 +24,7 @@ export class OrderLinesDetailComponent extends BaseEntityDetailComponent<Deliver
     parentId: number;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public orderLinesService: SalesOrderLinesService,
@@ -34,7 +34,7 @@ export class OrderLinesDetailComponent extends BaseEntityDetailComponent<Deliver
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(orderLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
             'SALES_EDIT_ORDER_LINES'

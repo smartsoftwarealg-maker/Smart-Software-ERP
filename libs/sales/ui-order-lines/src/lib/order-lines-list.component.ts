@@ -7,9 +7,9 @@ import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import { Lot, LotsService } from "@ss/common/api-lookup";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
-import {SalesOrderLinesService} from "../../../api-sales-order/src/lib/sales-order-lines.service";
+import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -46,7 +46,7 @@ export class OrderLinesListComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public articleSrv: ArticleService,
-        public storeNamesSrv: StoreNameService,
+        public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -143,7 +143,7 @@ export class OrderLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: StoreName[]) {
+    private onStoresLoaded(data: Lot[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ConsumptionLine, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
 import {Observable} from "rxjs";
@@ -22,9 +22,10 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
 
 
     parentId: number;
+    selectedRow: any;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public consumptionLinesService: ConsumptionLinesService,
@@ -35,7 +36,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(consumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
@@ -58,11 +59,11 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: Again? I may have also broken this too, -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     finishLoading(e: InventoryLine) {
+        this.selectedRow = e;
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},

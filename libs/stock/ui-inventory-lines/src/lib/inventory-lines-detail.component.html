@@ -69,16 +69,14 @@
     </mat-card-content>
 </mat-card>
 
-<mat-card id="report-area">
-    <nav mat-tab-nav-bar mat-align-tabs="start">
+<ss-doc-info
+    *ngIf="selectedRow"
+    [displayedGroups]="['article', 'document']"
+    [params]="{
+            documentId: selectedRow?.transacId,
+            documentURL:'/inventory',
+            articleReference: selectedRow?.reference,
+            articleStoreId: selectedRow?.store
+        }">
+</ss-doc-info>
 
-        <a mat-tab-link [active]="rl1.isActive"
-           routerLink="circulations" routerLinkActive #rl1="routerLinkActive" queryParamsHandling="preserve"
-           translate>STOCK_CIRCULATION
-        </a>
-
-    </nav>
-    <mat-card-content>
-        <router-outlet></router-outlet>
-    </mat-card-content>
-</mat-card>

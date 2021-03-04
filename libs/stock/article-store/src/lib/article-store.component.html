@@ -1,0 +1,57 @@
+<mat-card>
+    <ng-container [formGroup]="storeForm">
+        <mat-form-field class="default-33 sm-100">
+            <mat-label translate>STOCK_STORE</mat-label>
+            <ss-auto-complete matInput
+                              required
+                              [model]="storeAutoCompleteModel"
+                              formControlName="storeId"></ss-auto-complete>
+            <mat-error
+                *ngIf="storeForm.controls['storeId'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+            <mat-error
+                *ngIf="storeForm.controls['storeId'].hasError('validOption')" translate>COMMON_NO_MATCH
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-mini-fab
+                [disabled]="storeForm.valid == null"
+                [matTooltip]="'ADD_TO_STOCK'|translate"
+                (click)="addStore()">
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+    </ng-container>
+
+</mat-card>
+
+<ng-container *ngIf="lots">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+
+        <ng-container matColumnDef="storeId">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{lots[e.storeId]}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="stock">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_STOCK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.stock.toFixed(2) }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+</ng-container>

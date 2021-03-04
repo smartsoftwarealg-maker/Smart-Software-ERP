@@ -2,13 +2,13 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ReceptionLines, ReceptionLinesService} from "@ss/stock/api-reception-lines";
+import {ReceptionLine, ReceptionLinesService} from "@ss/stock/api-reception-lines";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {Lot, LotsService} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-reception-lines-list',
@@ -21,8 +21,9 @@ export class ReceptionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: ReceptionLines[];
-    selected: number;
+    data: ReceptionLine[];
+    selectedId: number;
+    selectedRow: ReceptionLine
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -45,7 +46,7 @@ export class ReceptionLinesListComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public articleSrv: ArticleService,
-        public storeNamesSrv: StoreNameService,
+        public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -89,16 +90,17 @@ export class ReceptionLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(id: number): void {
-        this.selected = id;
+    select(receptionLine: ReceptionLine): void {
+        this.selectedId = receptionLine.id;
+        this.selectedRow = receptionLine;
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.receptionLinesSrv.remove(a.id)
@@ -120,8 +122,8 @@ export class ReceptionLinesListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 
@@ -130,7 +132,7 @@ export class ReceptionLinesListComponent implements OnInit {
             parent: this.parentId,
             id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
+        this.router.navigate(['./' + LINES_DETAIL_URL + '/' + id], {relativeTo: this.route.parent, queryParams: params})
             .then();
     }
 
@@ -144,7 +146,7 @@ export class ReceptionLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: StoreName[]) {
+    private onStoresLoaded(data: Lot[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

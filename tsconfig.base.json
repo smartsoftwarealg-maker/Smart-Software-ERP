@@ -190,7 +190,8 @@
       ],
       "@ss/sales/api-sales-order": ["libs/sales/api-sales-order/src/index.ts"],
       "@ss/sales/ui-sales-order": ["libs/sales/ui-sales-order/src/index.ts"],
-      "@ss/sales/ui-order-lines": ["libs/sales/ui-order-lines/src/index.ts"]
+      "@ss/sales/ui-order-lines": ["libs/sales/ui-order-lines/src/index.ts"],
+      "@ss/stock/article-store": ["libs/stock/article-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

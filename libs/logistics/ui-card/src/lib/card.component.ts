@@ -7,9 +7,9 @@ import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LanguageService} from "@ss/common/ui-lang";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {StoreName} from "@ss/common/api-lookup";
+import {Lot} from "@ss/common/api-lookup";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ArticleStoreService} from "@ss/stock/api-article-store";
+import {ArticleLotsService} from "@ss/stock/api-article-store";
 
 @Component({
     selector: 'ss-card',
@@ -18,7 +18,7 @@ import {ArticleStoreService} from "@ss/stock/api-article-store";
 })
 export class CardComponent implements OnInit {
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeSrv);
 
     storeForm: FormGroup = new FormGroup({
         store: new FormControl()
@@ -53,7 +53,7 @@ export class CardComponent implements OnInit {
                 public router: Router,
                 public articleSrv: ArticleService,
                 public langServ: LanguageService,
-                public storeSrv: ArticleStoreService,
+                public storeSrv: ArticleLotsService,
                 public confirmationSrv: ConfirmationDialogService) {
     }
 

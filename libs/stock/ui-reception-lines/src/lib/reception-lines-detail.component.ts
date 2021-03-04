@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ReceptionLines, ReceptionLinesService} from "@ss/stock/api-reception-lines";
+import {ReceptionLine, ReceptionLinesService} from "@ss/stock/api-reception-lines";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
@@ -18,12 +18,12 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
     styleUrls: ['./reception-lines-detail.component.scss'],
     templateUrl: './reception-lines-detail.component.html'
 })
-export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLines> implements OnInit {
+export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<ReceptionLine> implements OnInit {
 
     parentId: number;
-
+    selectedRow: ReceptionLine;
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public receptionLinesService: ReceptionLinesService,
@@ -34,7 +34,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(receptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
@@ -57,11 +57,11 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: there are 1000 copies of this line, I broke them all. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     finishLoading(e: InventoryLine) {
+        this.selectedRow = e;
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},
@@ -70,7 +70,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Rec
         super.finishLoading(e);
     }
 
-    public setupForm(b: ReceptionLines) {
+    public setupForm(b: ReceptionLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

@@ -112,6 +112,7 @@
     "logistics-api-agent-debts": { "tags": [] },
     "sales-api-sales-order": { "tags": [] },
     "sales-ui-sales-order": { "tags": [] },
-    "sales-ui-order-lines": { "tags": [] }
+    "sales-ui-order-lines": { "tags": [] },
+    "stock-article-store": { "tags": [] }
   }
 }
