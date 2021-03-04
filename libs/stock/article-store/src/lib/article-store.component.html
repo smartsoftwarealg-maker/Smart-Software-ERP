@@ -13,16 +13,7 @@
                 *ngIf="storeForm.controls['storeId'].hasError('validOption')" translate>COMMON_NO_MATCH
             </mat-error>
         </mat-form-field>
-        <mat-form-field class="default-33 sm-100">
-            <mat-label translate>STOCK_STOCK</mat-label>
-            <input matInput formControlName="stock" type="number" step="0.01"  required>
-            <mat-error
-                *ngIf="storeForm.controls['stock'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
 
-        <input type="number" hidden="hidden" formControlName="referenceId" required>
-        <input type="text"  hidden="hidden" formControlName="reference" required>
         <button mat-mini-fab
                 [disabled]="storeForm.valid == null"
                 [matTooltip]="'ADD_TO_STOCK'|translate"
