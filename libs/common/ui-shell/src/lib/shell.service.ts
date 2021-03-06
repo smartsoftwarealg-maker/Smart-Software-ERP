@@ -206,6 +206,11 @@ export class ShellService {
         this.buttons = buttons;
         this.updateShell();
     }
+	
+	public addButton(btn: ToolbarButton): void {
+        this.buttons.push(btn);
+        this.updateShell();
+	}
 
     public setButtonEnabled(button: ToolbarButton, enabled: boolean): void {
         button.disabled = !enabled;
