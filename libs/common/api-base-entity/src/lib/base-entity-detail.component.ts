@@ -37,7 +37,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     public ngOnInit() {
-        this.shellSrv.setTilte(this.title); // set title save as list
+        this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.saveButton]);
         this.load();

@@ -1,5 +1,5 @@
-import {Component,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, OnInit,} from '@angular/core';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -15,7 +15,16 @@ import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
     styleUrls: ['./delivery-list.component.scss'],
     templateUrl: './delivery-list.component.html'
 })
-export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
+export class DeliveryListComponent extends BaseEntityListComponent<Delivery> implements OnInit {
+
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: false,
+        label: "LOGISTICS_IMPORT_DOCUMENT",
+        visible: true,
+        click: () => this.importDocument(),
+    }
 
 
     public dealers: { [id: number]: string; };
@@ -43,6 +52,9 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_DELIVERY');
     }
 
+    private importDocument() {
+        console.log('Importing document');
+    }
 
     processLoadedData(data: Delivery[]): Observable<Delivery[]> {
         return this.agentService.getByIDList(data.map(x => x.agent))
@@ -61,5 +73,10 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
     onDealersLoaded(data: User[]): void {
         this.dealers = {};
         data.forEach(m => this.dealers[m.id] = m.fullName);
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importBtn);
     }
 }
