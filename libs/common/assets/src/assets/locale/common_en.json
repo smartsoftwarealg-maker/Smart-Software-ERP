@@ -103,5 +103,7 @@
     "VALUE_LIST": "Value list",
     "NAME": "Name",
     "REPORT_PARAMS": "Report params",
-    "INFO": "Info."
+    "INFO": "Info.",
+    "CANCEL": "Cancel",
+    "IMPORT": "Import"
 }

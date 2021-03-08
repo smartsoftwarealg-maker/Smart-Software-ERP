@@ -80,5 +80,6 @@
     "DATE": "Date",
     "NUMBER": "Number",
     "QTY": "Qty",
-    "STORE": "Store"
+    "STORE": "Store",
+    "IMPORT_DOCUMENT": "Import a document"
 }
