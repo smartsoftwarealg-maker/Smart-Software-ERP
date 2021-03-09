@@ -7,7 +7,7 @@ import {Observable, of} from "rxjs";
 import {switchMap, tap} from "rxjs/operators";
 import {LookupsService} from "@ss/common/api-lookup";
 import {LanguageService} from "@ss/common/ui-lang";
-import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService } from '@ss/common/api-common';

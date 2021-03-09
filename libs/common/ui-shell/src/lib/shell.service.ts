@@ -156,6 +156,15 @@ export class ShellService {
         return this.searchControl;
     }
 
+    public disableSearch() {
+        this.searchControl = null;
+        this.searchInputLabel = null;
+        if (this.subscription != null) {
+            this.subscription.unsubscribe();
+            this.subscription = null;
+        }
+    }
+
     /**
      * Adds search functionality the title-bar without extra screen space (call ONCE per component, and do not call in it's children)
      *
@@ -187,12 +196,7 @@ export class ShellService {
     public reset(): void {
         this.title = null;
         this.goBackFn = null;
-        this.searchControl = null;
-        this.searchInputLabel = null;
-        if (this.subscription != null) {
-            this.subscription.unsubscribe();
-            this.subscription = null;
-        }
+        this.disableSearch();
         this.buttons = [];
         this.isLoading = false;
         this.isError = false;
