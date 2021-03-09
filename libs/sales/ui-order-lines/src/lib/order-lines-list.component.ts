@@ -10,9 +10,6 @@ import {Article, ArticleService} from "@ss/stock/api-article";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
 import {Lot, LotsService} from "@ss/common/api-lookup";
-import { Lot, LotsService } from "@ss/common/api-lookup";
-import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
-import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
 
 @Component({
   selector: 'ss-order-lines-list',

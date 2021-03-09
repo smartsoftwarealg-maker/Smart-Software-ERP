@@ -107,7 +107,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
             const dialogRef = this.dialog.open(DocImportComponent, {
                 width: '70%',
                 height: '55%',
-                data: {documentList: [{id: 1025, description: 'SALES_SALES_ORDER'}], agentId: agentId}
+                data: { documentList: [{id: 1025, description: 'SALES_ORDER' }], agentId: agentId}
             });
 
             dialogRef.afterClosed().subscribe(result => {
