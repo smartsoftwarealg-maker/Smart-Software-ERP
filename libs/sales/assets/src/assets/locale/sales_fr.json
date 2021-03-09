@@ -2,5 +2,6 @@
     "EDIT_DELIVERY": "Modification livraison",
     "SALES": "Vente",
     "DELIVERY": "Livraison",
-    "EDIT_DELIVERY_LINES": "Modifcation lines Livraison"
+    "EDIT_DELIVERY_LINES": "Modifcation lines Livraison",
+    "ORDER": "Bon de commande"
 }

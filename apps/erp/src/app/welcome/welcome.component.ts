@@ -26,7 +26,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.navData = this.shellSrv.sideNavDataSource.data;
         this.display = this.navData;
-        this.shellSrv.setTilte('SMART_ERP');
+        this.shellSrv.setTitle('SMART_ERP');
         this.shellSrv.enableSearch(
             'SEARCH_APP',
             e => e.subscribe(

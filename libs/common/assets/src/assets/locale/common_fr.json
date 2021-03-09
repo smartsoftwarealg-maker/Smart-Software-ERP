@@ -99,9 +99,11 @@
     "NO_MATCH": "Pas de correspondance",
 
     "REPORTS": "Rapports",
-    "VALUE_STRING": "Chaînes de valeur",
+    "VALUE_STRING": "Chaînes de valeur",Close
     "VALUE_LIST": "Liste de valeurs",
     "NAME": "Nom",
     "REPORT_PARAMS": "paramètres de l'etat",
-    "INFO": "Info."
+    "INFO": "Info.",
+    "CANCEL": "Annuler",
+    "IMPORT": "Importer"
 }

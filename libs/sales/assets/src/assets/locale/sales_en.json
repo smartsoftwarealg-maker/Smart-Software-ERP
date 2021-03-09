@@ -2,5 +2,6 @@
     "EDIT_DELIVERY": "Edit delivery",
     "SALES": "Sales",
     "DELIVERY": "Delivery",
-    "EDIT_DELIVERY_LINES": "Edit delivery lines"
+    "EDIT_DELIVERY_LINES": "Edit delivery lines",
+    "ORDER": "Sales order"
 }

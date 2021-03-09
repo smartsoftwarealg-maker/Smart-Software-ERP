@@ -1,5 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
@@ -37,7 +37,6 @@ export class DeliveryLinesListComponent implements OnInit {
         'price',
         'controls'
     ];
-
 
     constructor(
         public deliveryLinesSrv: DeliveryLinesService,

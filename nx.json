@@ -113,6 +113,7 @@
     "sales-api-sales-order": { "tags": [] },
     "sales-ui-sales-order": { "tags": [] },
     "sales-ui-order-lines": { "tags": [] },
-    "stock-article-store": { "tags": [] }
+    "stock-article-store": { "tags": [] },
+    "logistics-ui-doc-import": { "tags": [] }
   }
 }

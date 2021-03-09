@@ -77,5 +77,6 @@
     "PRICE": "السعر",
     "DOCUMENT": "الوثيقة",
     "TOTAL": "المجموع",
-    "CUSTOMER": "الوبون"
+    "CUSTOMER": "الوبون",
+    "IMPORT_DOCUMENT": "قم باستيراد مستند"
 }

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 5px;
+}
+.list {
+    flex-grow: 1;
+}
+
+.ctrl {
+  display: flex;
+  justify-content: space-between;
+}
