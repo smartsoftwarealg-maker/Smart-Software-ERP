@@ -222,11 +222,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     onTouched = () => {
     };
 
-    // Life cycles (birth, spreading currption in the land, death, hell)
+    // Life cycles (birth, spreading corruption in the land, death, hell)
     ngDoCheck(): void {
         if (this.ngControl) {
             this.errorState = this.ngControl.invalid && this.ngControl.touched;
-            if (this.lastErrorState != this.errorState) {
+            if (this.lastErrorState !== this.errorState) {
                 this.stateChanges.next();
                 this.lastErrorState = this.errorState;
             }
@@ -255,7 +255,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 return txt == null ? of([]) : this.model.filter(txt).pipe(
                     tap(options => {
                         this.model.options = options;
-                        if (options.length == 1) {
+                        if (options.length === 1) {
                             if (this.model.isPerfectMatch(options[0], txt)) {
                                 this.setValue(this.model.valueOf(options[0]), true);
                             }

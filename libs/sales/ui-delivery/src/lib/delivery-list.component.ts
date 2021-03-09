@@ -1,5 +1,5 @@
-import {Component,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, OnInit,} from '@angular/core';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -16,7 +16,6 @@ import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
     templateUrl: './delivery-list.component.html'
 })
 export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
-
 
     public dealers: { [id: number]: string; };
     public agents: { [id: number]: string; } = {};
@@ -42,7 +41,6 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
         public confirmationSrv: ConfirmationDialogService) {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_DELIVERY');
     }
-
 
     processLoadedData(data: Delivery[]): Observable<Delivery[]> {
         return this.agentService.getByIDList(data.map(x => x.agent))

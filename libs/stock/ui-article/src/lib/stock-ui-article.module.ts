@@ -9,6 +9,7 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {RouterModule} from "@angular/router";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
+import {StockUiArticleStoreModule} from "@ss/stock/article-store";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
         CommonUiLangModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
+        StockUiArticleStoreModule,
         LogisticsUiDocInfoModule,
         RouterModule,
         CommonUiAutoCompleteModule

@@ -22,9 +22,7 @@ import { OrderLinesListComponent } from './order-lines-list.component';
             CommonUiAutoCompleteModule,
             LogisticsUiDocInfoModule
           ],
-  declarations: [OrderLinesDetailComponent,
-                 OrderLinesListComponent],
-  exports: [OrderLinesDetailComponent,
-            OrderLinesListComponent]
+  declarations: [OrderLinesDetailComponent, OrderLinesListComponent],
+  exports: [OrderLinesDetailComponent, OrderLinesListComponent]
 })
 export class SalesUiOrderLinesModule {}

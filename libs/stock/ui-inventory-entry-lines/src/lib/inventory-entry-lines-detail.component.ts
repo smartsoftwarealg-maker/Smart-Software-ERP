@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {InventoryEntryLine, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
 import {Observable} from "rxjs";
@@ -26,7 +26,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
     selectedRow: InventoryEntryLine
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public inventoryEntryLinesService: InventoryEntryLinesService,
@@ -37,7 +37,7 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(inventoryEntryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 

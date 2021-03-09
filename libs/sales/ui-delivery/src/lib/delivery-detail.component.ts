@@ -1,18 +1,21 @@
-import {Component} from "@angular/core";
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, OnInit, ViewChild} from "@angular/core";
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {CCGroup, LookupsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import {tap, switchMap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
 import {fillObject, LoginService} from "@ss/common/api-common";
 import {DatePipe} from "@angular/common";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
+import {MatDialog} from "@angular/material/dialog";
+import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
+import {DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
 
 
 @Component({
@@ -20,12 +23,23 @@ import {Agent, AgentService} from "@ss/logistics/api-agent";
     styleUrls: ['./delivery-detail.component.scss'],
     templateUrl: './delivery-detail.component.html'
 })
-export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery> {
+export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery> implements OnInit {
+    @ViewChild(DeliveryLinesListComponent) detail: DeliveryLinesListComponent;
+
     private delivery: Delivery = null;
     public isManager = false;
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: false,
+        label: "LOGISTICS_IMPORT_DOCUMENT",
+        visible: true,
+        click: () => this.importDocument(),
+    }
+
 
     constructor(
         public deliveryService: DeliveryService,
@@ -37,14 +51,22 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         public usersService: UserService,
         public lookupsSrv: LookupsService,
         private agentService: AgentService,
-        private loginService: LoginService) {
+        private loginService: LoginService,
+        private dialog: MatDialog,
+        private docImportService: DocImportService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
+
 
 
     preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importBtn);
     }
 
     public setupForm(b: Delivery) {
@@ -58,6 +80,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         }
         this.delivery = b;
         this.isManager = this.loginService.userSrv.userInfo.user.manager;
+        this.importBtn.disabled = b.agent == null || b.agent === undefined;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
@@ -76,5 +99,28 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         const form =  super.readForm();
         fillObject(this.delivery, form)
         return form;
+    }
+
+    private importDocument() {
+        if (!this.importBtn.disabled) {
+            const agentId = this.form.controls['agent'].value;
+            const dialogRef = this.dialog.open(DocImportComponent, {
+                width: '70%',
+                height: '55%',
+                data: {documentList: [{id: 1025, description: 'SALES_SALES_ORDER'}], agentId: agentId}
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result && result['document']  && result['number']) {
+                    const document = result['document'];
+                    const number   = result['number'];
+                    this.docImportService
+                        .importDoc(document, number, this.delivery.id)
+                        .pipe(tap(_ => this.detail.loadDeliveryLines()))
+                        .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                                   err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
+                }
+            });
+        }
     }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
@@ -7,7 +7,7 @@ import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {Lot, LotsService} from "@ss/common/api-lookup";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 
 @Component({
@@ -38,7 +38,6 @@ export class DeliveryLinesListComponent implements OnInit {
         'controls'
     ];
 
-
     constructor(
         public deliveryLinesSrv: DeliveryLinesService,
         public shellSrv: ShellService,
@@ -46,7 +45,7 @@ export class DeliveryLinesListComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public articleSrv: ArticleService,
-        public storeNamesSrv: StoreNameService,
+        public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -143,7 +142,7 @@ export class DeliveryLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: StoreName[]) {
+    private onStoresLoaded(data: Lot[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;
