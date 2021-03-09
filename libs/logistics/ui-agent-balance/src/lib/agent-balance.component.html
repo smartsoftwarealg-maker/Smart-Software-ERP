@@ -2,10 +2,24 @@
     <mat-table mat-table [dataSource]="data" class="main-table">
 
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+        <ng-container matColumnDef="document">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description}}
+                {{e.document}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="debit">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.debit}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="credit">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.credit}}
             </mat-cell>
         </ng-container>
 

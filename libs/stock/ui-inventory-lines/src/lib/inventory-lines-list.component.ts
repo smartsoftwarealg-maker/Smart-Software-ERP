@@ -8,7 +8,7 @@ import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {Lot, LotsService} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-inventory-lines-list',
@@ -22,7 +22,7 @@ export class InventoryLinesListComponent implements OnInit {
 
     parentId: number;
     data: InventoryLine[];
-    selected: number;
+    selectedId: number;
     selectedRow: InventoryLine;
 
     articles: { [reference: string]: string; } = {};
@@ -46,7 +46,7 @@ export class InventoryLinesListComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public articleSrv: ArticleService,
-        public storeNamesSrv: StoreNameService,
+        public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -91,7 +91,7 @@ export class InventoryLinesListComponent implements OnInit {
     }
 
     select(inventoryLine: InventoryLine): void {
-        this.selected = inventoryLine.id;
+        this.selectedId = inventoryLine.id;
         this.selectedRow = inventoryLine;
     }
 
@@ -99,8 +99,8 @@ export class InventoryLinesListComponent implements OnInit {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.inventoryLinesSrv.remove(a.id)
@@ -122,8 +122,8 @@ export class InventoryLinesListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 
@@ -132,7 +132,7 @@ export class InventoryLinesListComponent implements OnInit {
             parent: this.parentId,
             id: id
         };
-        this.router.navigate(['../' + LINES_DETAIL_URL], {relativeTo: this.route.parent, queryParams: params})
+        this.router.navigate(['./' + LINES_DETAIL_URL + '/' + id], {relativeTo: this.route.parent, queryParams: params})
             .then();
     }
 
@@ -146,7 +146,7 @@ export class InventoryLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: StoreName[]) {
+    private onStoresLoaded(data: Lot[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

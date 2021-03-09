@@ -8,7 +8,7 @@ import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LotsService, Lot} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
@@ -23,7 +23,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
     parentId: number;
     data: InventoryEntryLine[];
     selectedRow: InventoryEntryLine;
-    selected: number;
+    selectedId: number;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -46,7 +46,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
         public route: ActivatedRoute,
         public router: Router,
         public articleSrv: ArticleService,
-        public storeNamesSrv: StoreNameService,
+        public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -92,19 +92,19 @@ export class InventoryEntryLinesListComponent implements OnInit {
 
     selectRow(row: InventoryEntryLine): void {
         this.selectedRow = row;
-        this.selected = row.id;
+        this.selectedId = row.id;
     }
 
     select(id: number): void {
-        this.selected = id;
+        this.selectedId = id;
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.inventoryEntryLinesSrv.remove(a.id)
@@ -126,8 +126,8 @@ export class InventoryEntryLinesListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 
@@ -152,7 +152,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: StoreName[]) {
+    private onStoresLoaded(data: Lot[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

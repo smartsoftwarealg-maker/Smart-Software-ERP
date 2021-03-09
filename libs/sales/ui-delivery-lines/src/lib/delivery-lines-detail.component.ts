@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, StoreName, StoreNameService} from "@ss/common/api-lookup";
+import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
@@ -23,7 +23,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
     parentId: number;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<StoreName> = new DefaultAutoCompleteModel<StoreName>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
         public deliveryLinesService: DeliveryLinesService,
@@ -33,7 +33,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
-        public storeNameSrv: StoreNameService,
+        public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
         super(deliveryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
@@ -56,8 +56,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
 
     ngOnInit() {
         super.ngOnInit();
-        // FIXME: I may have broken this. -MuaazH
-        this.shellSrv.setGoBackPath('..', this.route, {id: this.parentId});
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     public setupForm(b: DeliveryLine) {

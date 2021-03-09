@@ -54,13 +54,13 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<mat-card>
-    <ss-doc-info
-        [displayedGroups]="['article', 'document']"
-        [params]="{
+<ss-doc-info
+    *ngIf="selected"
+    [displayedGroups]="['document','agent']"
+    [params]="{
             documentId: selectedRow?.id,
             documentURL:'/reception',
-            articleReference: selectedRow?.reference
+            agentId : selectedRow.agent
         }">
-    </ss-doc-info>
-</mat-card>
+</ss-doc-info>
+

@@ -10,8 +10,7 @@ import {AgentDebts, AgentDebtsService} from "@ss/logistics/api-agent-debts";
     styleUrls: ['./agent-debts.component.scss'],
     templateUrl: './agent-debts.component.html'
 })
-export class AgentDebtsComponent implements OnInit{
-
+export class AgentDebtsComponent implements OnInit {
 
 
     public readonly pagination = PaginationModel.newInstance();
@@ -20,7 +19,10 @@ export class AgentDebtsComponent implements OnInit{
     data: AgentDebts[];
 
     displayedColumns = [
-        "description"
+        'totalDebit',
+        'totalCredit',
+        'debit',
+        'credit'
     ];
 
 
