@@ -7,6 +7,7 @@ import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {RouterModule} from "@angular/router";
+import {DocImportService} from "@ss/logistics/ui-doc-import";
 
 @NgModule({
     imports: [

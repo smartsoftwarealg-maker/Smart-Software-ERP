@@ -136,7 +136,7 @@ export class ShellService {
         return this.title;
     }
 
-    public setTilte(t: string): void {
+    public setTitle(t: string): void {
         this.title = t;
         this.updateShell();
     }

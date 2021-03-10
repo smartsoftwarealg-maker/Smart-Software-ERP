@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-form-field appearance="fill" >
+        <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
+        <mat-select matNativeControl required [formControl]="document">
+            <mat-option *ngFor="let d of documentList" value="{{ d.id }}">{{ d.description | translate}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="list">
+        <mat-table mat-table [dataSource]="importList" class="main-table">
+
+
+            <ng-container matColumnDef="number">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.number}}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.date | date: 'dd-MM-yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.reference }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="refDate">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.refDate }}
+                </mat-cell>
+            </ng-container>
+
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+    </div>
+    <div class="ctrl">
+    <button mat-raised-button color="primary" (click)="close()"  translate>COMMON_IMPORT</button>
+    <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
+    </div>
+</div>

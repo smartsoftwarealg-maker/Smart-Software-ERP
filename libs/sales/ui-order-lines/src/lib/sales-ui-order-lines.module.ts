@@ -13,7 +13,6 @@ import { OrderLinesListComponent } from './order-lines-list.component';
 
 @NgModule({
   imports: [CommonModule,
-            CommonModule,
             MaterialModule,
             CommonUiLangModule,
             UiPaginationModule,

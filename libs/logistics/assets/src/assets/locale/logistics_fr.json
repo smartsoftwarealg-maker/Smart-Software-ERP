@@ -76,5 +76,6 @@
     "PRICE": "Prix",
     "DOCUMENT": "Document",
     "TOTAL": "Total",
-    "CUSTOMER": "Client"
+    "CUSTOMER": "Client",
+    "IMPORT_DOCUMENT": "Importer un document"
 }

@@ -7,9 +7,9 @@ import {map, switchMap, tap} from "rxjs/operators";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import { Lot, LotsService } from "@ss/common/api-lookup";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
+import {Lot, LotsService} from "@ss/common/api-lookup";
 
 @Component({
   selector: 'ss-order-lines-list',
