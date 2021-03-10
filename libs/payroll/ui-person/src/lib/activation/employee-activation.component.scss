@@ -7,23 +7,12 @@
     overflow: hidden;
 }
 
-.table-container {
+.child-container {
     width: 100%;
     display: block;
     margin: auto;
     max-width: 644px;
-    overflow: auto;
-}
-
-.main-table {
-    width: 644px;
-    min-height: 320px;
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
+    overflow: hidden;
 }
 
 .person-info {
@@ -57,12 +46,12 @@
         display: inline-block;
 
         .line {
-    
             position: relative;
-            height: 48px;
-            line-height: 48px;
+            height: 64px;
+            line-height: 64px;
             padding-right: 16px;
             padding-left: 16px;
+            font-size: 125%;
     
             .line-label {
                 padding-right: 18px;
@@ -80,41 +69,3 @@
 
 }
 
-.mat-column-hireDate {
-    flex: 0 0 100;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-suspensionDate {
-    flex: 0 0 100;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-suspended {
-    flex: 0 0 100px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-employmentType {
-    flex: 0 0 164px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-inConflict {
-    flex: 0 0 100px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.pagination-container {
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-    }
-}

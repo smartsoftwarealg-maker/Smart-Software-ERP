@@ -16,49 +16,6 @@
     </div>
 </div>
 
-<div class="table-container">
-    <mat-table mat-table [dataSource]="data" class="main-table">
-        
-        <ng-container matColumnDef="suspensionDate" style="justify-content: center">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">PAYROLL_SUSP_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.suspensionDate}}
-            </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="hireDate" style="justify-content: center">
-            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">PAYROLL_HIRE_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.hireDate}}
-            </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="suspended">
-            <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>PAYROLL_SUSPENDED</mat-header-cell>
-            <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.suspended" class="fas fa-check"></i>
-            </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="employmentType">
-            <mat-header-cell *matHeaderCellDef translate>PAYROLL_EMPLOYMENT_TYPE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.employmentType}}
-            </mat-cell>
-        </ng-container>
-    
-        <ng-container matColumnDef="inConflict">
-            <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>PAYROLL_IN_CONFLICT</mat-header-cell>
-            <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.inConflict" class="fas fa-check"></i>
-            </mat-cell>
-        </ng-container>
-    
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div>
-
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+<div class="child-container">
+    <router-outlet></router-outlet>
 </div>

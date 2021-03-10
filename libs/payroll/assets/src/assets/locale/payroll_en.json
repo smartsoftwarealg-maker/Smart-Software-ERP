@@ -46,7 +46,8 @@
     "HIRE_DATE": "Hire date",
     "SUSPENDED": "Suspended",
     "EMPLOYMENT_TYPE": "Employment type",
-    "IN_CONFLICT": "En conflit",
+    "IN_CONFLICT": "In conflict",
     "ACTIVATE_EMP": "Activate",
-    "DEACTIVATE_EMP": "Deactivate"
+    "DEACTIVATE_EMP": "Deactivate",
+    "SUSP_DATE": "Suspension date"
 }

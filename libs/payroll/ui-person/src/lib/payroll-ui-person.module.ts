@@ -10,6 +10,9 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import { EmployeeActivationComponent } from './activation/employee-activation.component';
+import { EmployeeActivationHistoryComponent } from './activation/employee-activation-history.component';
+import { Router, RouterModule } from '@angular/router';
+import { EmployeeActivationFormComponent } from './activation/employee-activation-form.component';
 
 @NgModule({
     imports: [
@@ -20,10 +23,23 @@ import { EmployeeActivationComponent } from './activation/employee-activation.co
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        RouterModule
     ],
-    exports: [PersonListComponent, PersonDetailComponent, EmployeeActivationComponent],
-    declarations: [PersonListComponent, PersonDetailComponent, EmployeeActivationComponent]
+    exports: [
+        PersonListComponent,
+        PersonDetailComponent,
+        EmployeeActivationComponent,
+        EmployeeActivationHistoryComponent,
+        EmployeeActivationFormComponent
+    ],
+    declarations: [
+        PersonListComponent,
+        PersonDetailComponent,
+        EmployeeActivationComponent,
+        EmployeeActivationHistoryComponent,
+        EmployeeActivationFormComponent
+    ]
 })
 export class PayrollUiPersonModule {
 }

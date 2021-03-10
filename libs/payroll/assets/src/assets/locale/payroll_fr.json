@@ -48,5 +48,6 @@
     "EMPLOYMENT_TYPE": "Type d'emploi",
     "IN_CONFLICT": "En conflit",
     "ACTIVATE_EMP": "Activer",
-    "DEACTIVATE_EMP": "Désactiver"
+    "DEACTIVATE_EMP": "Désactiver",
+    "SUSP_DATE": "Suspension date"
 }

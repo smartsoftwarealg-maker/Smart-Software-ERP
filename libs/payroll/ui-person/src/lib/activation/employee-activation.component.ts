@@ -1,60 +1,57 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
-import { HttpService, Person as IPerson } from '@ss/common/api-common';
+import { HttpService } from '@ss/common/api-common';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { EmployeeActivation, EmployeeActivationService, PersonService } from '@ss/payroll/api-person';
+import { EmployeeActivation, EmployeeActivationService, PersonService, Person as IPerson } from '@ss/payroll/api-person';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
+import { EmployeeActivationUIService } from './employee-activation-ui.service';
+import { ACTIVATION_URL, DEACTIVATION_URL } from '../constants';
 
 // frontend only
 interface Person extends IPerson {
-    fullName: string;
+    fullName?: string;
 }
 
 @Component({
     selector: 'ss-employee-activation',
     templateUrl: './employee-activation.component.html',
-    styleUrls: ['./employee-activation.component.scss']
+    styleUrls: ['./employee-activation.component.scss'],
+    providers: [EmployeeActivationUIService]
 })
 export class EmployeeActivationComponent extends BaseEntityListComponent<EmployeeActivation> implements OnInit {
 
-    activateButton: ToolbarButton = {
+    public activateButton: ToolbarButton = {
         disabled: false,
         keepOnToolbar: false,
         label: 'PAYROLL_ACTIVATE_EMP',
         icon: 'fas fa-play',
-        visible: true,
-        click: () => this.activateEmployee(),
+        visible: false,
+        click: () => this.activateEmployee()
     };
 
-    deactivateButton: ToolbarButton = {
+    public deactivateButton: ToolbarButton = {
         disabled: false,
         keepOnToolbar: false,
         label: 'PAYROLL_DEACTIVATE_EMP',
         icon: 'fas fa-pause',
-        visible: true,
-        click: () => this.deactivateEmployee(),
+        visible: false,
+        click: () => this.deactivateEmployee()
     };
 
-    public displayedColumns = [
-        'hireDate',
-        'employmentType',
-        'suspended',
-        'suspensionDate',
-        'inConflict'
-    ];
-
-    personId: number;
-    person: Person;
-    imageModel: ImageModel;
+    public personId: number;
+    public person: Person;
+    public lastLine: EmployeeActivation;
+    public imageModel: ImageModel;
 
     constructor(
         public employeeActivationSrv: EmployeeActivationService,
+        public uiSrv: EmployeeActivationUIService,
         public personSrv: PersonService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -70,6 +67,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     }
 
     ngOnInit() {
+        this.uiSrv.instance = this;
         this.route.params.subscribe(params => {
             this.personId = +params.id;
             this.imageModel.setImageUrl(this.personSrv.getPhotoUrl(this.personId));
@@ -86,21 +84,34 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         this.shellSrv.setButtonEnabled(this.addButton, false);
         this.shellSrv.setButtonVisible(this.editButton, false);
         this.shellSrv.setButtonEnabled(this.editButton, false);
+        this.shellSrv.setGoBackPathByUrl('..');
         this.shellSrv.disableSearch();
-        this.shellSrv.setButtons([this.activateButton, this.deactivateButton]);
+        this.shellSrv.setButtons([this.refreshButton, this.activateButton, this.deactivateButton]);
     }
 
     public preload(): Observable<any> {
+        if (!this.personId) {
+            return of(null);
+        }
         return this.personSrv.get(this.personId)
-            .pipe(tap(p => {
-                this.person = p;
-                this.person.birthDate = this.langSrv.formatDate(p.birthDate);
-                this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
-            }));
+            .pipe(
+                tap(p => {
+                    this.person = p;
+                    this.person.birthDate = this.langSrv.formatDate(p.birthDate);
+                    this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
+                }),
+                switchMap(() => this.pagination.page === 1 ? of(null) : this.employeeActivationSrv.getList(0, 1)),
+                tap(list => this.lastLine = !!list ? list[0] : null)
+            );
     }
 
     public processLoadedData(data: EmployeeActivation[]): Observable<EmployeeActivation[]> {
-        const active = data.length > 0 && data[0].activityStatus == 0;
+        if (this.pagination.page === 1) {
+            this.lastLine = data.length > 0
+                ? data[0]
+                : null;
+        }
+        const active = this.lastLine && this.lastLine.activityStatus == 0;
         this.activateButton.disabled = active;
         this.deactivateButton.disabled = !active;
         this.shellSrv.updateShell();
@@ -113,10 +124,19 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     }
 
     public activateEmployee() {
-
+        this.refresh();
+        this.router.navigate(['../' + ACTIVATION_URL], { relativeTo: this.route })
+            .then();
     }
 
     public deactivateEmployee() {
+        this.router.navigate(['../' + DEACTIVATION_URL], { relativeTo: this.route })
+            .then();
     }
 
+    public showActivationButtons(visible: boolean): void {
+        this.activateButton.visible = visible;
+        this.deactivateButton.visible = !visible;
+        this.shellSrv.updateShell();
+    }
 }

@@ -112,6 +112,13 @@ export class ShellService {
         });
     }
 
+    public setGoBackPathByUrl(path: string) {
+        this.setGoBackFn(() => {
+            this.router.navigateByUrl(path)
+                .then()
+        });
+    }
+
     public goBack(): void {
         if (this.hasGoBackFn) {
             this.isError = false;
@@ -210,11 +217,18 @@ export class ShellService {
         this.buttons = buttons;
         this.updateShell();
     }
-	
-	public addButton(btn: ToolbarButton): void {
+
+    public addButton(btn: ToolbarButton): void {
         this.buttons.push(btn);
         this.updateShell();
-	}
+    }
+
+    public removeButton(buttonLabel: string): void {
+        this.buttons = this.buttons == null
+            ? null
+            : this.buttons.filter(b => b.label !== buttonLabel);
+        this.updateShell();
+    }
 
     public setButtonEnabled(button: ToolbarButton, enabled: boolean): void {
         button.disabled = !enabled;

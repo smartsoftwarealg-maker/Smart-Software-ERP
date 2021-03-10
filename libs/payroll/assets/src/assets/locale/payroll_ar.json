@@ -48,5 +48,6 @@
     "EMPLOYMENT_TYPE": "نوع التوظيف",
     "IN_CONFLICT": "حدث خلاف",
     "ACTIVATE_EMP": "تنشيط",
-    "DEACTIVATE_EMP": "تعطيل"
+    "DEACTIVATE_EMP": "تعطيل",
+    "SUSP_DATE": "تاريخ التعليق"
 }
