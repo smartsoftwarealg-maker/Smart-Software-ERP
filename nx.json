@@ -114,6 +114,8 @@
     "sales-ui-sales-order": { "tags": [] },
     "sales-ui-order-lines": { "tags": [] },
     "stock-article-store": { "tags": [] },
-    "logistics-ui-doc-import": { "tags": [] }
+    "logistics-ui-doc-import": { "tags": [] },
+    "sales-ui-invoice": { "tags": [] },
+    "sales-api-invoice": { "tags": [] }
   }
 }
