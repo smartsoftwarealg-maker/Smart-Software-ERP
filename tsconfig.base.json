@@ -194,7 +194,9 @@
       "@ss/stock/article-store": ["libs/stock/article-store/src/index.ts"],
       "@ss/logistics/ui-doc-import": [
         "libs/logistics/ui-doc-import/src/index.ts"
-      ]
+      ],
+      "@ss/sales/ui-invoice": ["libs/sales/ui-invoice/src/index.ts"],
+      "@ss/sales/api-invoice": ["libs/sales/api-invoice/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
