@@ -6,10 +6,37 @@ import {docInfoRoutes} from "../administration/routes";
 import {OrderListComponent} from '@ss/sales/ui-sales-order';
 import {OrderDetailComponent} from '@ss/sales/ui-sales-order';
 import {OrderLinesDetailComponent} from '@ss/sales/ui-order-lines';
+import {InvoiceListComponent} from "@ss/sales/ui-invoice";
+import {InvoiceLinesDetailComponent} from "@ss/sales/ui-invoice";
+import {InvoiceDetailComponent} from "@ss/sales/ui-invoice";
 
 export const lookupRoutes: Routes = []
 
 export const mainRoutes: Routes = [
+    {
+        path: 'invoice',
+        children: [
+            {
+                path: LIST_URL,
+                component: InvoiceListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: InvoiceLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: InvoiceDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL}
+        ]
+    },
     {
         path: 'delivery',
         children: [

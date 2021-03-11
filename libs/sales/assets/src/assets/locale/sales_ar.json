@@ -3,5 +3,9 @@
     "SALES": "المبيعات",
     "DELIVERY": "التسليم",
     "EDIT_DELIVERY_LINES": "تحديث أسطر التسليم",
-    "ORDER": "طلب البيع"
+    "ORDER": "طلب البيع",
+    "INVOICE": "الفاتورة",
+    "EDIT_INVOICE": "تحديث الفاتورة",
+    "EDIT_ORDER": "تحديث الطلب",
+    "EDIT_INVOICE_LINES": "تحديث أسطر الفاتورة"
 }
