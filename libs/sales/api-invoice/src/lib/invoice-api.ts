@@ -1,6 +1,6 @@
-export const ORDER_URL = "/sales-order";
+export const INVOICE_URL = '/invoice';
 
-export interface Order {
+export interface Invoice {
     id: number;
     center: number;
     document: number;

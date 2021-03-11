@@ -196,7 +196,13 @@
         "libs/logistics/ui-doc-import/src/index.ts"
       ],
       "@ss/sales/ui-invoice": ["libs/sales/ui-invoice/src/index.ts"],
-      "@ss/sales/api-invoice": ["libs/sales/api-invoice/src/index.ts"]
+      "@ss/sales/api-invoice": ["libs/sales/api-invoice/src/index.ts"],
+      "@ss/sales/ui-invoice-cancellation": [
+        "libs/sales/ui-invoice-cancellation/src/index.ts"
+      ],
+      "@ss/sales/api-invoice-cancellation": [
+        "libs/sales/api-invoice-cancellation/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
