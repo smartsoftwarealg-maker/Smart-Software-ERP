@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
-
 export interface ToolbarButton {
     icon: string;
     label: string;
@@ -30,12 +29,33 @@ export interface SideNavNode {
     name: string;
     route?: string;
     children?: SideNavNode[];
+    backgroundColor?: string;
 }
+
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShellService {
+
+    backgroundColors: string[] = [
+        '#FF396B', //     red
+        '#F58231', //     orange
+        '#FFE119', //     yellow
+        '#BFEF45', //     lime
+        '#3CB44B', //     green
+        '#BB9999', //     light brown
+        '#A677FF', //     purple
+        '#42D4F4', //     cyan
+        '#F032E6', //     megenta
+        '#FABED4', //     pink
+        '#FFD8B1', //     apricot
+        '#FFFAC8', //     beige
+        '#AAFFC3', //     mint
+        '#DCBEFF', //     lavender
+        '#7C99FF' //      blue
+    ];
 
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
@@ -95,8 +115,35 @@ export class ShellService {
 
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.sideNavDataSrc.data = tree;
+        this.generateNavColors(tree);
         this.updateShell();
     }
+
+    private generateNavColors(tree: SideNavNode[]): void {
+        if (tree == null) return;
+        tree.forEach(node => {
+            node.backgroundColor = this.backgroundColors[
+                this.hashString(node.name, this.backgroundColors.length)
+            ];
+            this.generateNavColors(node.children);
+        })
+    }
+
+    private hashString(text: string, range: number) {
+        if (text == null) return -1;
+        const len = text.length;
+        if (len === 0) return 0;
+        let hash = 0;
+        for (let i = 0; i < len; i++) {
+            let chr = text.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+            hash += chr;
+        }
+        hash += len;
+        if (hash < 0) hash = -hash;
+        return hash % range;
+    };
 
     /* GO BACK */
 
