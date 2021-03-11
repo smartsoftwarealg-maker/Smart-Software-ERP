@@ -3025,6 +3025,64 @@
           }
         }
       }
+    },
+    "sales-ui-invoice-cancellation": {
+      "projectType": "library",
+      "root": "libs/sales/ui-invoice-cancellation",
+      "sourceRoot": "libs/sales/ui-invoice-cancellation/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/ui-invoice-cancellation/tsconfig.lib.json",
+              "libs/sales/ui-invoice-cancellation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sales/ui-invoice-cancellation/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/ui-invoice-cancellation"],
+          "options": {
+            "jestConfig": "libs/sales/ui-invoice-cancellation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "sales-api-invoice-cancellation": {
+      "projectType": "library",
+      "root": "libs/sales/api-invoice-cancellation",
+      "sourceRoot": "libs/sales/api-invoice-cancellation/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sales/api-invoice-cancellation/tsconfig.lib.json",
+              "libs/sales/api-invoice-cancellation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/sales/api-invoice-cancellation/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/sales/api-invoice-cancellation"],
+          "options": {
+            "jestConfig": "libs/sales/api-invoice-cancellation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

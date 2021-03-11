@@ -116,6 +116,8 @@
     "stock-article-store": { "tags": [] },
     "logistics-ui-doc-import": { "tags": [] },
     "sales-ui-invoice": { "tags": [] },
-    "sales-api-invoice": { "tags": [] }
+    "sales-api-invoice": { "tags": [] },
+    "sales-ui-invoice-cancellation": { "tags": [] },
+    "sales-api-invoice-cancellation": { "tags": [] }
   }
 }
