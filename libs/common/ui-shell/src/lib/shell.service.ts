@@ -40,21 +40,11 @@ export interface SideNavNode {
 export class ShellService {
 
     backgroundColors: string[] = [
-        '#FF396B', //     red
-        '#F58231', //     orange
-        '#FFE119', //     yellow
-        '#BFEF45', //     lime
-        '#3CB44B', //     green
-        '#BB9999', //     light brown
-        '#A677FF', //     purple
-        '#42D4F4', //     cyan
-        '#F032E6', //     megenta
-        '#FABED4', //     pink
-        '#FFD8B1', //     apricot
-        '#FFFAC8', //     beige
-        '#AAFFC3', //     mint
-        '#DCBEFF', //     lavender
-        '#7C99FF' //      blue
+        '#d88f64', '#757875', '#7579a0',
+        '#767aa1', '#c9c07e', '#cc718d',
+        '#a95c5c', '#9d623e', '#75799f',
+        '#80aac1', '#6a6c6a', '#73769c',
+        '#238c8f', '#d17e4c', '#6e3333'
     ];
 
     protected showToolbarFn: () => void = null;
