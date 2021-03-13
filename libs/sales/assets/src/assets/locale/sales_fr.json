@@ -7,5 +7,7 @@
     "INVOICE": "Facture",
     "EDIT_INVOICE": "Modification facture",
     "EDIT_ORDER": "Modification commande",
-    "EDIT_INVOICE_LINES": "Modification detail facture"
+    "EDIT_INVOICE_LINES": "Modification detail facture",
+    "INVOICE_CANCELLATION": "Avoir sur facture",
+    "EDIT_INVOICE_CANCEL": "Modification avoir/facture"
 }

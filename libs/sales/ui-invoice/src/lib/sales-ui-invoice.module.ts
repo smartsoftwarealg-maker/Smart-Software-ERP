@@ -17,7 +17,8 @@ import {InvoiceLinesDetailComponent} from "./invoice-lines-detail.component";
 import {InvoiceLinesListComponent} from "./invoice-lines-list.component";
 
 @NgModule({
-  imports: [CommonModule,
+  imports: [
+      CommonModule,
       MaterialModule,
       CommonUiLangModule,
       UiPaginationModule,
