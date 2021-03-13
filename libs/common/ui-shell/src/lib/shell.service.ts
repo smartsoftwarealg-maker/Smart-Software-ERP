@@ -159,6 +159,7 @@ export class ShellService {
     public goBack(): void {
         if (this.hasGoBackFn) {
             this.isError = false;
+            this.isLoading = false;
             this.goBackFn();
         }
     }
