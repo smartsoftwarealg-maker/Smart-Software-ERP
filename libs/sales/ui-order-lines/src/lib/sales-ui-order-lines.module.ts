@@ -10,6 +10,7 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 import { OrderLinesListComponent } from './order-lines-list.component';
+import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({
   imports: [CommonModule,
@@ -20,7 +21,8 @@ import { OrderLinesListComponent } from './order-lines-list.component';
             CommonUiConfirmationDialogModule,
             CommonUiDatepickerModule,
             CommonUiAutoCompleteModule,
-            LogisticsUiDocInfoModule
+            LogisticsUiDocInfoModule,
+            LogisticsUiStockInfoModule
           ],
   declarations: [OrderLinesDetailComponent, OrderLinesListComponent],
   exports: [OrderLinesDetailComponent, OrderLinesListComponent]

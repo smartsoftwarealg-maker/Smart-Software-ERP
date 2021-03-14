@@ -10,6 +10,7 @@ import {RouterModule} from "@angular/router";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 import {StockUiArticleStoreModule} from "@ss/stock/article-store";
+import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {StockUiArticleStoreModule} from "@ss/stock/article-store";
         StockUiArticleStoreModule,
         LogisticsUiDocInfoModule,
         RouterModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        LogisticsUiStockInfoModule
     ],
     exports: [ArticleListComponent, ArticleDetailComponent],
     declarations: [ArticleListComponent, ArticleDetailComponent]

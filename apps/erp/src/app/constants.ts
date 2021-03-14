@@ -50,6 +50,8 @@ export const STOCK_PAY_MODE_URL = 'payModes';
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
 export const SALES_INVOICE_URL = 'invoice';
+export const SALES_INVOICE_CANCEL_URL = 'cinvoice';
+export const SALES_DELIVERY_CANCEL_URL = 'cdelivery';
 export const SALES_ORDER_URL = 'order';
 
 // Payroll
@@ -117,5 +119,7 @@ export const ABS_PAYROLL_PERSONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
 export const ABS_SALES_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_INVOICE_URL].join('/');
+export const ABS_SALES_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_INVOICE_CANCEL_URL].join('/');
+export const ABS_SALES_DELIVERY_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_CANCEL_URL].join('/');
 export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_URL].join('/');
 

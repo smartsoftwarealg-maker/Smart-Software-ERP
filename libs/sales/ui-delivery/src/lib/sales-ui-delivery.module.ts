@@ -13,6 +13,7 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 import {SalesUiDeliveryLinesModule} from "@ss/sales/ui-delivery-lines";
 import {LogisticsUiDocImportModule} from "@ss/logistics/ui-doc-import";
+import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {LogisticsUiDocImportModule} from "@ss/logistics/ui-doc-import";
         CommonUiAutoCompleteModule,
         LogisticsUiDocInfoModule,
         SalesUiDeliveryLinesModule,
-        LogisticsUiDocImportModule
+        LogisticsUiDocImportModule,
+        LogisticsUiStockInfoModule
     ],
     declarations: [
         DeliveryListComponent,

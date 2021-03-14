@@ -9,10 +9,68 @@ import {OrderLinesDetailComponent} from '@ss/sales/ui-order-lines';
 import {InvoiceListComponent} from "@ss/sales/ui-invoice";
 import {InvoiceLinesDetailComponent} from "@ss/sales/ui-invoice";
 import {InvoiceDetailComponent} from "@ss/sales/ui-invoice";
+import {
+    InvoiceCancellationDetailComponent,
+    InvoiceCancellationLinesDetailComponent,
+    InvoiceCancellationListComponent
+} from "@ss/sales/ui-invoice-cancellation";
+import {
+    DeliveryCancellationDetailComponent,
+    DeliveryCancellationLinesDetailComponent,
+    DeliveryCancellationListComponent
+} from "@ss/sales/ui-delivery-cancellation";
 
 export const lookupRoutes: Routes = []
 
 export const mainRoutes: Routes = [
+    {
+        path: 'cdelivery',
+        children: [
+            {
+                path: LIST_URL,
+                component: DeliveryCancellationListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: DeliveryCancellationLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DeliveryCancellationDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL}
+        ]
+    },
+    {
+        path: 'cinvoice',
+        children: [
+            {
+                path: LIST_URL,
+                component: InvoiceCancellationListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: InvoiceCancellationLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: InvoiceCancellationDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL}
+        ]
+    },
     {
         path: 'invoice',
         children: [

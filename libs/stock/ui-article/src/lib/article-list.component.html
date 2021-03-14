@@ -54,6 +54,7 @@
 <ss-doc-info *ngIf="selected" [displayedGroups]="['article']"
              [params]="{
                          articleId: selectedRow?.id,
-                         articleUseStoreSearch : true
+                         articleUseStoreSearch : true,
+                         articleReference: selectedRow?.reference
                      }">
 </ss-doc-info>

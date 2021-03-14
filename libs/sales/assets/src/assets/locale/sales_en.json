@@ -7,5 +7,10 @@
     "INVOICE": "Invoice",
     "EDIT_INVOICE": "Edit invoice",
     "EDIT_ORDER": "Edit order",
-    "EDIT_INVOICE_LINES": "Edit invoice lines"
+    "EDIT_INVOICE_LINES": "Edit invoice lines",
+    "INVOICE_CANCELLATION": "Invoice cancellation",
+    "EDIT_INVOICE_CANCEL": "Edit invoice cancellation",
+    "DELIVERY_CANCELLATION": "Delivery cancellation",
+    "EDIT_DELIVERY_CANCEL": "Edit cancellation",
+    "EDIT_CANCELLATION_LINES": "Edit cancellation lines"
 }

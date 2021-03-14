@@ -7,5 +7,10 @@
     "INVOICE": "الفاتورة",
     "EDIT_INVOICE": "تحديث الفاتورة",
     "EDIT_ORDER": "تحديث الطلب",
-    "EDIT_INVOICE_LINES": "تحديث أسطر الفاتورة"
+    "EDIT_INVOICE_LINES": "تحديث أسطر الفاتورة",
+    "INVOICE_CANCELLATION": "إلغاء الفاتورة",
+    "EDIT_INVOICE_CANCEL": "تحديث الإلغاء",
+    "DELIVERY_CANCELLATION": "إلغاء التسليم",
+    "EDIT_DELIVERY_CANCEL": "تحديث الإلغاء",
+    "EDIT_CANCELLATION_LINES": "تحديث أسطر الإلغاء"
 }
