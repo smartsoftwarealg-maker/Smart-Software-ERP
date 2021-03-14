@@ -18,7 +18,7 @@ import {
     DeliveryCancellationDetailComponent,
     DeliveryCancellationLinesDetailComponent,
     DeliveryCancellationListComponent
-} from "../../../../../libs/sales/ui-delivery-cancellation/src";
+} from "@ss/sales/ui-delivery-cancellation";
 
 export const lookupRoutes: Routes = []
 

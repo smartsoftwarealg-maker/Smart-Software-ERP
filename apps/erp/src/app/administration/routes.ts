@@ -18,7 +18,7 @@ import {CirculationComponent} from "@ss/logistics/ui-circulation";
 import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
 import {CardComponent} from "@ss/logistics/ui-card";
 import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
-import {UiStockInfoComponent} from "../../../../../libs/logistics/ui-stock-info/src/lib/ui-stock-info.component";
+import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
 
 export const mainRoutes: Routes = [
     {
