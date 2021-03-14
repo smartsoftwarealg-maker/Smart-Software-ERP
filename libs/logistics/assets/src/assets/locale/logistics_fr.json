@@ -80,5 +80,10 @@
     "IMPORT_DOCUMENT": "Importer un document",
     "CIRCULATION": "Mouvement",
     "CARD": "Fiche de stock",
-    "STOCK": "Stock"
+    "STOCK": "Stock",
+    "VF": "Total H.T",
+    "DISCOUNT": "Remise",
+    "NET_VF": "Net H.T",
+    "FTT": "Total T.T.C",
+    "VAT_19": "TVA 19%"
 }
