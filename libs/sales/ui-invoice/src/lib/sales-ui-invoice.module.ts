@@ -15,6 +15,7 @@ import {InvoiceListComponent} from "./invoice-list.component";
 import {InvoiceDetailComponent} from "./invoice-detail.component";
 import {InvoiceLinesDetailComponent} from "./invoice-lines-detail.component";
 import {InvoiceLinesListComponent} from "./invoice-lines-list.component";
+import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {InvoiceLinesListComponent} from "./invoice-lines-list.component";
       CommonUiDatepickerModule,
       CommonUiAutoCompleteModule,
       LogisticsUiDocInfoModule,
-      LogisticsUiDocImportModule
+      LogisticsUiDocImportModule,
+      LogisticsUiStockInfoModule
   ],
  declarations: [
      InvoiceListComponent,

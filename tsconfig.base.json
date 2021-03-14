@@ -202,6 +202,9 @@
       ],
       "@ss/sales/api-invoice-cancellation": [
         "libs/sales/api-invoice-cancellation/src/index.ts"
+      ],
+      "@ss/logistics/ui-stock-info": [
+        "libs/logistics/ui-stock-info/src/index.ts"
       ]
     }
   },

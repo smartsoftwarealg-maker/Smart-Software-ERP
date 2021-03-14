@@ -78,5 +78,8 @@
     "DOCUMENT": "الوثيقة",
     "TOTAL": "المجموع",
     "CUSTOMER": "الوبون",
-    "IMPORT_DOCUMENT": "قم باستيراد مستند"
+    "IMPORT_DOCUMENT": "قم باستيراد مستند",
+    "CIRCULATION": "الدوران",
+    "CARD": "بطاقة المخزن",
+    "STOCK": "المخزون"
 }

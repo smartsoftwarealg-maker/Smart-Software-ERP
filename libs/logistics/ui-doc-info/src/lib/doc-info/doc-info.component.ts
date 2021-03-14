@@ -37,26 +37,6 @@ export class DocInfoComponent {
     private params_: any;
     private entries_: { group: string, description: string, entries: Entry[] }[] = [
         {
-            group: 'article',
-            description: 'LOGISTICS_ARTICLE',
-            entries: [
-                {
-                    name: 'circulation',
-                    description: 'LOGISTICS_CIRCULATION',
-                    url: 'circulation',
-                    paramsProvided: (p: string[]) => p.includes('articleId') || p.includes('articleReference')
-                },
-                {
-                    name: 'card',
-                    description: 'LOGISTICS_CARD',
-                    url: 'card',
-                    paramsProvided: (p: string[]) =>
-                        (p.includes('articleId') || p.includes('articleReference')) &&
-                        (p.includes('articleStoreId') || p.includes('articleUseStoreSearch'))
-                }
-            ]
-        },
-        {
             group: 'document',
             description: 'LOGISTICS_DOCUMENT',
             entries: [
@@ -85,7 +65,33 @@ export class DocInfoComponent {
                     paramsProvided: (p: string[]) => p.includes('agentId')
                 }
             ],
-        }
+        },
+        {
+            group: 'article',
+            description: 'LOGISTICS_ARTICLE',
+            entries: [
+                {
+                    name: 'circulation',
+                    description: 'LOGISTICS_CIRCULATION',
+                    url: 'circulation',
+                    paramsProvided: (p: string[]) => p.includes('articleId') || p.includes('articleReference')
+                },
+                {
+                    name: 'card',
+                    description: 'LOGISTICS_CARD',
+                    url: 'card',
+                    paramsProvided: (p: string[]) =>
+                        (p.includes('articleId') || p.includes('articleReference')) &&
+                        (p.includes('articleStoreId') || p.includes('articleUseStoreSearch'))
+                },
+                {
+                    name: 'stock',
+                    description: 'LOGISTICS_STOCK',
+                    url: 'stock',
+                    paramsProvided: (p: string[]) => p.includes('articleReference')
+                },
+            ]
+        },
     ];
 
 

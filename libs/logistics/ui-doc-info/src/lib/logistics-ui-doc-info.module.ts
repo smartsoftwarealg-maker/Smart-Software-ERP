@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {RouterModule} from "@angular/router";
 import {DocImportService} from "@ss/logistics/ui-doc-import";
+import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {DocImportService} from "@ss/logistics/ui-doc-import";
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        LogisticsUiStockInfoModule
     ],
     exports: [DocInfoComponent],
     declarations: [DocInfoComponent]
