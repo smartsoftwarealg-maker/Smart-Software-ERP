@@ -205,6 +205,12 @@
       ],
       "@ss/logistics/ui-stock-info": [
         "libs/logistics/ui-stock-info/src/index.ts"
+      ],
+      "@ss/sales/ui-delivery-cancellation": [
+        "libs/sales/ui-delivery-cancellation/src/index.ts"
+      ],
+      "@ss/sales/api-delivery-cancellation": [
+        "libs/sales/api-delivery-cancellation/src/index.ts"
       ]
     }
   },

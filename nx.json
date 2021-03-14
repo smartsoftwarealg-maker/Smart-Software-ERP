@@ -119,6 +119,8 @@
     "sales-api-invoice": { "tags": [] },
     "sales-ui-invoice-cancellation": { "tags": [] },
     "sales-api-invoice-cancellation": { "tags": [] },
-    "logistics-ui-stock-info": { "tags": [] }
+    "logistics-ui-stock-info": { "tags": [] },
+    "sales-ui-delivery-cancellation": { "tags": [] },
+    "sales-api-delivery-cancellation": { "tags": [] }
   }
 }
