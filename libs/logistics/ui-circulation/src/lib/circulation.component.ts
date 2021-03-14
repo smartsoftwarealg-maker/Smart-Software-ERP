@@ -36,14 +36,11 @@ export class CirculationComponent implements OnInit {
 
 
     constructor(public circulationSrv: CirculationService,
-                // public shellSrv: ShellService,
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
                 public router: Router,
-                public articleSrv: ArticleService,
-                public langServ: LanguageService,
-                public confirmationSrv: ConfirmationDialogService) {
-    }
+                // public articleSrv: ArticleService,
+                public langServ: LanguageService) {}
 
 
     ngOnInit() {

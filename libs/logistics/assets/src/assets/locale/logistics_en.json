@@ -81,5 +81,8 @@
     "NUMBER": "Number",
     "QTY": "Qty",
     "STORE": "Store",
-    "IMPORT_DOCUMENT": "Import a document"
+    "IMPORT_DOCUMENT": "Import a document",
+    "CIRCULATION": "Circulation",
+    "CARD": "Inventory card",
+    "STOCK": "Stock"
 }

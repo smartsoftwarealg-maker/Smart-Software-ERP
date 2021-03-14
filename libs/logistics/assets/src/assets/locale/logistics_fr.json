@@ -77,5 +77,8 @@
     "DOCUMENT": "Document",
     "TOTAL": "Total",
     "CUSTOMER": "Client",
-    "IMPORT_DOCUMENT": "Importer un document"
+    "IMPORT_DOCUMENT": "Importer un document",
+    "CIRCULATION": "Mouvement",
+    "CARD": "Fiche de stock",
+    "STOCK": "Stock"
 }
