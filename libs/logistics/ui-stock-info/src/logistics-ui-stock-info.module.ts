@@ -7,7 +7,6 @@ import {UiPaginationModule} from "@ss/common/ui-pagination";
 import {RouterModule} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
-import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
     imports: [
