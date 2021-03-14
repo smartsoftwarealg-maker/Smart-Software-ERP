@@ -14,10 +14,39 @@ import {
     InvoiceCancellationLinesDetailComponent,
     InvoiceCancellationListComponent
 } from "@ss/sales/ui-invoice-cancellation";
+import {
+    DeliveryCancellationDetailComponent,
+    DeliveryCancellationLinesDetailComponent,
+    DeliveryCancellationListComponent
+} from "../../../../../libs/sales/ui-delivery-cancellation/src";
 
 export const lookupRoutes: Routes = []
 
 export const mainRoutes: Routes = [
+    {
+        path: 'cdelivery',
+        children: [
+            {
+                path: LIST_URL,
+                component: DeliveryCancellationListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: DeliveryCancellationLinesDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DeliveryCancellationDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL}
+        ]
+    },
     {
         path: 'cinvoice',
         children: [

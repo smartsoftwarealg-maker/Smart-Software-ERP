@@ -9,5 +9,8 @@
     "EDIT_ORDER": "Modification commande",
     "EDIT_INVOICE_LINES": "Modification detail facture",
     "INVOICE_CANCELLATION": "Avoir sur facture",
-    "EDIT_INVOICE_CANCEL": "Modification avoir/facture"
+    "EDIT_INVOICE_CANCEL": "Modification avoir/facture",
+    "DELIVERY_CANCELLATION": "Avoir sul BL",
+    "EDIT_DELIVERY_CANCEL": "Modification annulation",
+    "EDIT_CANCELLATION_LINES": "Modification detail annulation"
 }

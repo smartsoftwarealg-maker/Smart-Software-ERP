@@ -12,7 +12,7 @@ import {DeliveryLine} from "@ss/sales/api-delivery-lines";
 import {InvoiceLinesService} from "@ss/sales/api-invoice";
 
 @Component({
-    selector: 'ss-delivery-lines-list',
+    selector: 'ss-invoice-lines-list',
     templateUrl: './invoice-lines-list.component.html',
     styleUrls: ['./invoice-lines-list.component.scss']
 })
