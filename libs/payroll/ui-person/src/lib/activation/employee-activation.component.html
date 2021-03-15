@@ -4,7 +4,7 @@
     </div>
 
     <ss-image-input width="160px" height="200px" [ImageModel]="imageModel" style="display: inline-block;"></ss-image-input>
-    <div class="lines">
+    <div class="lines" *ngIf="person">
         <div class="line">
             <span class="line-label f-f-hint-text" translate>PAYROLL_FULLNAME</span>
             {{person.fullName}}
@@ -12,6 +12,14 @@
         <div class="line">
             <span class="line-label f-f-hint-text" translate>PAYROLL_BIRTH_DATE</span>
             {{person.birthDate}}
+        </div>
+        <div class="line f-primary" *ngIf="isActive()">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_ACTIVE_SINCE</span>
+            {{lastLine.hireDate}}
+        </div>
+        <div class="line f-warn" *ngIf="isInactive()">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_INACTIVE_SINCE</span>
+            {{lastLine.suspensionDate}}
         </div>
     </div>
 </div>

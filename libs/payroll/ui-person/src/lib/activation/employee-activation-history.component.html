@@ -33,7 +33,7 @@
                 PAYROLL_EMPLOYMENT_TYPE
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.employmentType}}
+                {{uiSrv.instance.employmentTypes[e.employmentType]}}
             </mat-cell>
         </ng-container>
 
@@ -53,6 +53,6 @@
 
 </div>
 
-<div class="pagination-container b-b-background">
+<!--div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="uiSrv.instance.pagination"></ss-pagination>
-</div>
+</div-->

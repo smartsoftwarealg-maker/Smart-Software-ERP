@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { LookupsService } from '@ss/common/api-lookup';
+import { LookupsService, EmploymentType } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { LanguageService } from '@ss/common/ui-lang';
@@ -48,6 +48,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     public person: Person;
     public lastLine: EmployeeActivation;
     public imageModel: ImageModel;
+    public employmentTypes: { [id: number]: string; };
 
     constructor(
         public employeeActivationSrv: EmployeeActivationService,
@@ -64,6 +65,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         super(employeeActivationSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_ACTIVATION');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
+        this.pagination.pageSize = 50; // todo: make this unlimited in backend
     }
 
     ngOnInit() {
@@ -82,11 +84,9 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         this.shellSrv.setButtonEnabled(this.deleteButton, false);
         this.shellSrv.setButtonVisible(this.addButton, false);
         this.shellSrv.setButtonEnabled(this.addButton, false);
-        this.shellSrv.setButtonVisible(this.editButton, false);
-        this.shellSrv.setButtonEnabled(this.editButton, false);
         this.shellSrv.setGoBackPathByUrl('..');
         this.shellSrv.disableSearch();
-        this.shellSrv.setButtons([this.refreshButton, this.activateButton, this.deactivateButton]);
+        this.shellSrv.setButtons([this.refreshButton, this.activateButton, this.deactivateButton, this.editButton]);
     }
 
     public preload(): Observable<any> {
@@ -100,18 +100,35 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
                     this.person.birthDate = this.langSrv.formatDate(p.birthDate);
                     this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
                 }),
-                switchMap(() => this.pagination.page === 1 ? of(null) : this.employeeActivationSrv.getList(0, 1)),
-                tap(list => this.lastLine = !!list ? list[0] : null)
+                switchMap(() => this.lookupsSrv.getEmployementTypes()),
+                tap(list => this.onEmploymentTypesLoaded(list))
             );
+
+    }
+
+    onEmploymentTypesLoaded(data: EmploymentType[]): void {
+        this.employmentTypes = data.reduce(
+            (total, currentValue) => {
+                total[currentValue.id] = currentValue.description;
+                return total
+            }, {}
+        );
+    }
+
+    isActive(): boolean {
+        return this.lastLine && this.lastLine.activityStatus == 0;
+    }
+
+    isInactive(): boolean {
+        return this.lastLine && this.lastLine.activityStatus != 0;
     }
 
     public processLoadedData(data: EmployeeActivation[]): Observable<EmployeeActivation[]> {
-        if (this.pagination.page === 1) {
-            this.lastLine = data.length > 0
-                ? data[0]
-                : null;
-        }
-        const active = this.lastLine && this.lastLine.activityStatus == 0;
+        // FIXME: depends on the result of the backend ordered by activityStatus
+        this.lastLine = data.length > 0
+            ? (data[0].activityStatus === 0? data[0] : data[data.length - 1])
+            : null;
+        const active = this.isActive();
         this.activateButton.disabled = active;
         this.deactivateButton.disabled = !active;
         this.shellSrv.updateShell();
@@ -123,20 +140,25 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         }));
     }
 
-    public activateEmployee() {
-        this.refresh();
-        this.router.navigate(['../' + ACTIVATION_URL], { relativeTo: this.route })
-            .then();
+    public activateEmployee(id: number = 0) {
+        this.refresh(() => {
+            this.router.navigate([ACTIVATION_URL], { relativeTo: this.route })
+                .then();
+        });
     }
 
-    public deactivateEmployee() {
-        this.router.navigate(['../' + DEACTIVATION_URL], { relativeTo: this.route })
-            .then();
+    public deactivateEmployee(id: number = 0) {
+        this.refresh(() => {
+            this.router.navigate([DEACTIVATION_URL], { relativeTo: this.route })
+                .then();
+        });
     }
 
     public showActivationButtons(visible: boolean): void {
         this.activateButton.visible = visible;
-        this.deactivateButton.visible = !visible;
+        this.deactivateButton.visible = visible;
+        this.refreshButton.visible = visible;
+        this.editButton.visible = visible;
         this.shellSrv.updateShell();
     }
 }

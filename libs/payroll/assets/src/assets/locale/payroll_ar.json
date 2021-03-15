@@ -49,5 +49,8 @@
     "IN_CONFLICT": "حدث خلاف",
     "ACTIVATE_EMP": "تنشيط",
     "DEACTIVATE_EMP": "تعطيل",
-    "SUSP_DATE": "تاريخ التعليق"
+    "SUSP_DATE": "تاريخ التعليق",
+    "ALREADY_ACTIVE": "الموظف نشط بالفعل",
+    "ACTIVE_SINCE": "نشط منذ",
+    "INACTIVE_SINCE": "عاطل منذ"
 }

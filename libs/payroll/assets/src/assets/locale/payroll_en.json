@@ -49,5 +49,8 @@
     "IN_CONFLICT": "In conflict",
     "ACTIVATE_EMP": "Activate",
     "DEACTIVATE_EMP": "Deactivate",
-    "SUSP_DATE": "Suspension date"
+    "SUSP_DATE": "Suspension date",
+    "ALREADY_ACTIVE": "Employee already active",
+    "ACTIVE_SINCE": "Active since",
+    "INACTIVE_SINCE": "Inactive since"
 }

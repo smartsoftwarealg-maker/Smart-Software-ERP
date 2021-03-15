@@ -52,9 +52,9 @@ export interface Person {
 
 export class EmployeeActivation {
     id: number;
+    center: number;
     empId: number;
     activityStatus: number;
-    center: number;
     hireDate: string;
     suspended: boolean;
     suspensionDate: string;

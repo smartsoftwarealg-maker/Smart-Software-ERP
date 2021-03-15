@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 
-
-
 @Component({
     selector: 'ss-emp-act-history',
     templateUrl: './employee-activation-history.component.html',
