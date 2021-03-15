@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LanguageService } from '@ss/common/ui-lang';
+import { strTakeUntil } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -150,8 +151,13 @@ export class ShellService {
     }
 
     public setGoBackPathByUrl(path: string) {
+        let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
+        if (!url.endsWith('/')) {
+            url += '/';
+        }
+        url += path;
         this.setGoBackFn(() => {
-            this.router.navigateByUrl(path)
+            this.router.navigateByUrl(url)
                 .then()
         });
     }
@@ -257,6 +263,9 @@ export class ShellService {
     }
 
     public addButton(btn: ToolbarButton): void {
+        if (this.buttons == null) {
+            this.buttons = [];
+        }
         this.buttons.push(btn);
         this.updateShell();
     }
@@ -292,6 +301,7 @@ export class ShellService {
     public updateShell(): void {
         if (this.updateShellFn) {
             this.updateShellFn();
+            this.updatePending = false;
         } else {
             this.updatePending = true;
         }

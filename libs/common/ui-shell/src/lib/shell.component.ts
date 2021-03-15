@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -9,7 +9,7 @@ import { User, UserContext, UserService } from '@ss/common/api-common';
     templateUrl: './shell.component.html',
     styleUrls: ['./shell.component.scss']
 })
-export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
 
     // todo: disable all buttons on toolbar when loading
 
@@ -26,8 +26,8 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
     constructor(public langSrv: LanguageService, public shellSrv: ShellService, protected cdRef: ChangeDetectorRef, protected usersSrv: UserService) { }
 
     ngOnInit() {
+        this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
-        this.shellSrv.setUpdateShellFn(() => this.cdRef.detectChanges());
         this.check();
         this.usersSrv.load()
             .subscribe(() => this.currentUser = this.usersSrv.context);
@@ -41,6 +41,10 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit {
     ngAfterViewInit() {
         this.routerContainer.nativeElement.onscroll = this.scrolled;
         this.lastScroll = this.routerContainer.nativeElement.scrollTop;
+    }
+
+    ngAfterViewChecked() {
+        this.shellSrv.setUpdateShellFn(() => this.cdRef.detectChanges());
     }
 
     @HostListener('window:resize', ['$event'])

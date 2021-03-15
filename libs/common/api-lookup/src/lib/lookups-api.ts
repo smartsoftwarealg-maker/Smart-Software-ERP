@@ -9,6 +9,7 @@ export const DIPLOMAS_URL = '/diplomas';
 export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/categories';
 export const SERVICES_URL = '/services';
+export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 
 export const MARKS_URL = '/lookups/marks';
 export const CLASSES_URL = '/lookups/classes';
@@ -164,6 +165,11 @@ export interface Fund {
 }
 
 export interface CCGroup {
+    id: number;
+    description: string;
+}
+
+export interface EmploymentType {
     id: number;
     description: string;
 }

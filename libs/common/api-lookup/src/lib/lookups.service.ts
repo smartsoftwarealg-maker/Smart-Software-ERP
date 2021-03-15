@@ -41,7 +41,7 @@ import {
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup,
+    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup, EmploymentType, EMPLOYMENT_TYPE_URL,
 } from './lookups-api';
 
 @Injectable({
@@ -140,4 +140,7 @@ export class LookupsService {
         return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, "cc_groups");
     }
 
+    public getEmployementTypes(): Observable<EmploymentType[]> {
+        return this.lookupCacheSrv.load<EmploymentType>(EMPLOYMENT_TYPE_URL, 'employmentTypes');
+    }
 }
