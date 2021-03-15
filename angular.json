@@ -470,6 +470,11 @@
                 "glob": "**/*",
                 "input": "libs/sales/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/purchases/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/erp/src/styles.scss"],
@@ -3166,6 +3171,32 @@
           "outputs": ["coverage/libs/sales/api-delivery-cancellation"],
           "options": {
             "jestConfig": "libs/sales/api-delivery-cancellation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "purchases-assets": {
+      "projectType": "library",
+      "root": "libs/purchases/assets",
+      "sourceRoot": "libs/purchases/assets/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/purchases/assets/tsconfig.lib.json",
+              "libs/purchases/assets/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/purchases/assets/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/purchases/assets"],
+          "options": {
+            "jestConfig": "libs/purchases/assets/jest.config.js",
             "passWithNoTests": true
           }
         }

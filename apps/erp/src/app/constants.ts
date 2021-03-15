@@ -8,6 +8,7 @@ export const ADMINISTRATION_APP_URL = 'administration';
 export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
 export const PAYROLL_APP_URL = 'payroll';
+export const PURCHASES_APP_URL = 'purchases';
 
 // common
 export const STOCK_VAT_URL = 'vat';
