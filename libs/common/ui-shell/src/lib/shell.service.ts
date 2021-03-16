@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LanguageService } from '@ss/common/ui-lang';
-import { strTakeUntil } from '@ss/common/api-common';
+import { strTakeUntil, strDropEndUntil } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -150,15 +150,30 @@ export class ShellService {
         });
     }
 
-    public setGoBackPathByUrl(path: string) {
+    /**
+     * Navigates by relative url, this method is a work around
+     * since angular router cannot handle the '..' to go to parent
+     * @param path 
+     */
+    public setGoBackPathByRelativeUrl(path: string) {
         let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
-        if (!url.endsWith('/')) {
-            url += '/';
+        if (url.endsWith('/')) {
+            url = url.substring(0, url.length - 1);
         }
-        url += path;
+        let relative = path;
+        while (relative.startsWith('..')) {
+            relative = relative.substring(2);
+            url = strDropEndUntil(url, '/');
+            if (relative.length === 0) { break; }
+            if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path);}
+            relative = relative.substring(1);
+        }
+        url += (relative.length ? '/' : '') + relative;
         this.setGoBackFn(() => {
+            console.log('going to url ' + url);
             this.router.navigateByUrl(url)
                 .then()
+                .catch(e => console.log(e));
         });
     }
 
