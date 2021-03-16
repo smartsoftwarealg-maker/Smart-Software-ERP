@@ -84,7 +84,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         this.shellSrv.setButtonEnabled(this.deleteButton, false);
         this.shellSrv.setButtonVisible(this.addButton, false);
         this.shellSrv.setButtonEnabled(this.addButton, false);
-        this.shellSrv.setGoBackPathByUrl('..');
+        this.shellSrv.setGoBackPathByRelativeUrl('..');
         this.shellSrv.disableSearch();
         this.shellSrv.setButtons([this.refreshButton, this.activateButton, this.deactivateButton, this.editButton]);
     }
