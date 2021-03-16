@@ -220,3 +220,15 @@ export function fillObject(from, to) {
         }
     }
 }
+
+export function strTakeUntil(txt: string, token: string) {
+    if (txt == null) return null;
+    const i = txt.indexOf(token);
+    return i > -1 ? txt.substring(0, i) : txt;
+}
+
+export function strDropEndUntil(txt: string, token: string) {
+    if (txt == null) return null;
+    const i = txt.lastIndexOf(token);
+    return i > -1 ? txt.substring(0, i) : txt;
+}

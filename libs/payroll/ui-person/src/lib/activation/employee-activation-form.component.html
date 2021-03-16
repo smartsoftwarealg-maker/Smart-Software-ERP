@@ -1,0 +1,22 @@
+<div style="height: 16px"></div>
+
+<form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_HIRE_DATE</mat-label>
+        <ss-date-picker required="true" formControlName="hireDate"></ss-date-picker>
+        <mat-error *ngIf="form.controls.hireDate.hasError('hireDate')" translate>
+            COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
+        <mat-select formControlName="employmentType" required>
+            <mat-option *ngFor="let v of employmentTypes" [value]="v.id">
+                {{v.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</form>
+<div style="height: 16px"></div>

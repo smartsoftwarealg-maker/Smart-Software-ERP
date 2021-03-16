@@ -94,16 +94,16 @@ export class HttpService {
     }
 
     public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
-        const URL = this.baseUrl + url;
-        if (URL.endsWith("NaN")) {
-            throw new Error('Invalid URL');
-        }
         if (this.baseUrl == null || url == null) {
-            throw new Error('Invalid URL');
+            throw new Error('Invalid URL: ' + this.baseUrl + url);
+        }
+        const fullURL = this.baseUrl + url;
+        if (fullURL.endsWith("NaN")) {
+            throw new Error('Invalid URI: ' + url);
         }
         return this
             .httpClient
-            .get<T>(this.baseUrl + url,
+            .get<T>(fullURL,
                 {
                     headers: HttpService.getHeaders(),
                     observe: 'response',

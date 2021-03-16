@@ -64,6 +64,7 @@ export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
 export const PAYROLL_POSTS_URL = 'posts';
 export const PAYROLL_NATIONALITIES_URL = 'nationalities';
 export const PAYROLL_PERSONS_URL = 'persons';
+export const PAYROLL_PERSONS_ACTIVATION = 'activation';
 
 // #############
 // # FULL URLS #

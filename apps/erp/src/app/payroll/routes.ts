@@ -8,13 +8,14 @@ import {
     COMMON_WILAYAS_URL,
     PAYROLL_NATIONALITIES_URL,
     PAYROLL_SERVICES_URL,
-    PAYROLL_PERSONS_URL
+    PAYROLL_PERSONS_URL,
+    PAYROLL_PERSONS_ACTIVATION
 } from '../constants';
 import {
-    ABS_INDEX_URL
+    ABS_INDEX_URL, CanActivateService
 } from '@ss/common/api-common';
-import {Routes} from '@angular/router';
-import {LIST_URL} from '@ss/common/api-common';
+import { Routes } from '@angular/router';
+import { LIST_URL } from '@ss/common/api-common';
 import {
     CategoryListComponent,
     CategoryDetailComponent,
@@ -29,9 +30,9 @@ import {
     ServiceListComponent,
     ServiceDetailComponent
 } from '@ss/common/ui-lookup';
-import {WilayaListComponent, WilayaDetailComponent} from '@ss/common/ui-lookup';
-import {NationalityDetailComponent, NationalityListComponent} from '@ss/common/ui-lookup';
-import {PersonListComponent, PersonDetailComponent} from '@ss/payroll/ui-person';
+import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
+import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
+import { PersonListComponent, PersonDetailComponent, EmployeeActivationComponent } from '@ss/payroll/ui-person';
 
 export const mainRoutes: Routes = [
     {
@@ -43,17 +44,24 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: PersonListComponent
+                component: PersonListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: PAYROLL_PERSONS_ACTIVATION,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-person').then(m => m.EmployeeActivationModule),
             },
             {
                 path: ':id',
-                component: PersonDetailComponent
+                component: PersonDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL }
         ]
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL }
 ];
 
 export const lookupRoutes: Routes = [
@@ -62,13 +70,15 @@ export const lookupRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ServiceListComponent
+                component: ServiceListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: ServiceDetailComponent
+                component: ServiceDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -76,13 +86,15 @@ export const lookupRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CategoryListComponent
+                component: CategoryListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: CategoryDetailComponent
+                component: CategoryDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -90,13 +102,15 @@ export const lookupRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: DiplomaListComponent
+                component: DiplomaListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: DiplomaDetailComponent
+                component: DiplomaDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -104,13 +118,15 @@ export const lookupRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: EducationLevelListComponent
+                component: EducationLevelListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: EducationLevelDetailComponent
+                component: EducationLevelDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -119,12 +135,14 @@ export const lookupRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MaritalStatusListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: MaritalStatusDetailComponent
+                component: MaritalStatusDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -133,12 +151,14 @@ export const lookupRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PostListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: PostDetailComponent
+                component: PostDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -147,12 +167,14 @@ export const lookupRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: WilayaListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: WilayaDetailComponent
+                component: WilayaDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -161,14 +183,16 @@ export const lookupRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: NationalityListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: NationalityDetailComponent
+                component: NationalityDetailComponent,
+                canActivate: [CanActivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];

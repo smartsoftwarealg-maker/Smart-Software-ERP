@@ -1,6 +1,8 @@
 
 export const PERSONS_URL = '/persons';
 export const PERSONS_PHOTO_URL = '/photo';
+export const ACTIVATION_PARENT_URL = '/persons';
+export const ACTIVATION_CHILD_URL = '/activations';
 
 export interface Person {
     id: number;
@@ -26,7 +28,6 @@ export interface Person {
     email: string;
     phone: string;
     mobile: string;
-    retirementDate: string;
 
     address1: string;
     address1Ar: string;
@@ -47,4 +48,16 @@ export interface Person {
     educationalLevel: number;
     diploma: number;
     mutualNumber: string;
+}
+
+export class EmployeeActivation {
+    id: number;
+    center: number;
+    empId: number;
+    activityStatus: number;
+    hireDate: string;
+    suspended: boolean;
+    suspensionDate: string;
+    employmentType: number;
+    inConflict: boolean;
 }

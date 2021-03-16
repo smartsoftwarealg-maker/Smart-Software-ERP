@@ -17,6 +17,7 @@ export * from './lib/post.service';
 export * from './lib/service.service';
 export * from './lib/vat.service';
 export * from './lib/wilaya.service';
+export * from './lib/employment-type.service'
 
 export * from './lib/mark.service';
 export * from './lib/class.service';

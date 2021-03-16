@@ -1,13 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ShellService, SideNavNode} from '@ss/common/ui-shell';
-import {LanguageService} from "@ss/common/ui-lang";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ShellService, SideNavNode } from '@ss/common/ui-shell';
+import { LanguageService } from "@ss/common/ui-lang";
 import { Router } from '@angular/router';
+import { WelcomeService } from './welcome.service';
 
-interface NavNode {
-    icon: string[];
-    name: string[];
-    route: string;
-}
 
 @Component({
     selector: 'ss-welcome',
@@ -16,16 +12,15 @@ interface NavNode {
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    navData: SideNavNode[];
-    display: SideNavNode[];
-    historyStack: SideNavNode[] = [];
-
-    constructor(private shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
+    constructor(public srv: WelcomeService, public shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
     }
 
     ngOnInit(): void {
-        this.navData = this.shellSrv.sideNavDataSource.data;
-        this.display = this.navData;
+        if (this.srv.navData == null) {
+            this.srv.navData = this.shellSrv.sideNavDataSource.data;
+            this.srv.display = this.srv.navData;
+        }
+        this.updateGobackButton();
         this.shellSrv.setTitle('SMART_ERP');
         this.shellSrv.enableSearch(
             'SEARCH_APP',
@@ -34,8 +29,9 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
                         // todo: implement filter here
+                        alert('Filter is NOT IMPLEMENTED YET');
                     } else {
-                        this.display = this.navData;
+                        this.srv.display = this.srv.navData;
                     }
                 },
                 err => console.error(err)
@@ -45,23 +41,26 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
     onClick(node: SideNavNode): void {
         if (node.children) {
-            this.historyStack.push(node);
-            this.display = node.children;
-            this.shellSrv.setGoBackFn(() => this.goUp());
+            this.srv.historyStack.push(node);
+            this.srv.display = node.children;
+            this.updateGobackButton();
         } else if (!!node.route) {
             this.router.navigateByUrl(node.route);
         }
     }
 
+    updateGobackButton() {
+        this.shellSrv.setGoBackFn(this.srv.historyStack.length > 0 ? () => this.goUp() : null);
+    }
+
     goUp(): void {
-        if (this.historyStack.length) {
-            if (this.historyStack.length > 1) {
-                this.display = this.historyStack[this.historyStack.length - 2].children;
-            } else {
-                this.display = this.navData;
-            }
-            this.historyStack.splice(this.historyStack.length - 1);
+        if (this.srv.historyStack.length > 1) {
+            this.srv.display = this.srv.historyStack[this.srv.historyStack.length - 2].children;
         } else {
+            this.srv.display = this.srv.navData;
+        }
+        this.srv.historyStack.splice(this.srv.historyStack.length - 1);
+        if (!this.srv.historyStack.length) {
             this.shellSrv.setGoBackFn(null);
         }
     }
@@ -69,5 +68,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.shellSrv.reset();
     }
+
+
 
 }

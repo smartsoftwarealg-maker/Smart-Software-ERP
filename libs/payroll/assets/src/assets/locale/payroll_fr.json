@@ -40,5 +40,17 @@
     "LAST_NAME_AR": "Nom (Arabe)",
     "FATHER_AR": "Père (Arabe)",
     "MOTHER_AR": "Mère (Arabe)",
-    "BIRTH_PLACE_AR": "Lieu de naissance (Arabe)"
+    "BIRTH_PLACE_AR": "Lieu de naissance (Arabe)",
+    "EMPLOYEES_ACTIVATION": "Activation des employés",
+    "EMPLOYEE": "Employé",
+    "HIRE_DATE": "Date d'embauche",
+    "SUSPENDED": "Suspendu",
+    "EMPLOYMENT_TYPE": "Type d'emploi",
+    "IN_CONFLICT": "En conflit",
+    "ACTIVATE_EMP": "Activer",
+    "DEACTIVATE_EMP": "Désactiver",
+    "SUSP_DATE": "Suspension date",
+    "ALREADY_ACTIVE": "Employé déjà actif",
+    "ACTIVE_SINCE": "Actif depuis",
+    "INACTIVE_SINCE": "Inactif depuis"
 }

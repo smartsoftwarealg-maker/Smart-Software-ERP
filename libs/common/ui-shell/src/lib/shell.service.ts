@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { LanguageService } from '@ss/common/ui-lang';
+import { strTakeUntil, strDropEndUntil } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-
 
 export interface ToolbarButton {
     icon: string;
@@ -30,12 +30,23 @@ export interface SideNavNode {
     name: string;
     route?: string;
     children?: SideNavNode[];
+    backgroundColor?: string;
 }
+
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class ShellService {
+
+    backgroundColors: string[] = [
+        '#d88f64', '#757875', '#7579a0',
+        '#767aa1', '#c9c07e', '#cc718d',
+        '#a95c5c', '#9d623e', '#75799f',
+        '#80aac1', '#6a6c6a', '#73769c',
+        '#238c8f', '#d17e4c', '#6e3333'
+    ];
 
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
@@ -95,8 +106,35 @@ export class ShellService {
 
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.sideNavDataSrc.data = tree;
+        this.generateNavColors(tree);
         this.updateShell();
     }
+
+    private generateNavColors(tree: SideNavNode[]): void {
+        if (tree == null) return;
+        tree.forEach(node => {
+            node.backgroundColor = this.backgroundColors[
+                this.hashString(node.name, this.backgroundColors.length)
+            ];
+            this.generateNavColors(node.children);
+        })
+    }
+
+    private hashString(text: string, range: number) {
+        if (text == null) return -1;
+        const len = text.length;
+        if (len === 0) return 0;
+        let hash = 0;
+        for (let i = 0; i < len; i++) {
+            let chr = text.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+            hash += chr;
+        }
+        hash += len;
+        if (hash < 0) hash = -hash;
+        return hash % range;
+    };
 
     /* GO BACK */
 
@@ -112,9 +150,37 @@ export class ShellService {
         });
     }
 
+    /**
+     * Navigates by relative url, this method is a work around
+     * since angular router cannot handle the '..' to go to parent
+     * @param path 
+     */
+    public setGoBackPathByRelativeUrl(path: string) {
+        let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
+        if (url.endsWith('/')) {
+            url = url.substring(0, url.length - 1);
+        }
+        let relative = path;
+        while (relative.startsWith('..')) {
+            relative = relative.substring(2);
+            url = strDropEndUntil(url, '/');
+            if (relative.length === 0) { break; }
+            if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path);}
+            relative = relative.substring(1);
+        }
+        url += (relative.length ? '/' : '') + relative;
+        this.setGoBackFn(() => {
+            console.log('going to url ' + url);
+            this.router.navigateByUrl(url)
+                .then()
+                .catch(e => console.log(e));
+        });
+    }
+
     public goBack(): void {
         if (this.hasGoBackFn) {
             this.isError = false;
+            this.isLoading = false;
             this.goBackFn();
         }
     }
@@ -156,6 +222,15 @@ export class ShellService {
         return this.searchControl;
     }
 
+    public disableSearch() {
+        this.searchControl = null;
+        this.searchInputLabel = null;
+        if (this.subscription != null) {
+            this.subscription.unsubscribe();
+            this.subscription = null;
+        }
+    }
+
     /**
      * Adds search functionality the title-bar without extra screen space (call ONCE per component, and do not call in it's children)
      *
@@ -187,12 +262,7 @@ export class ShellService {
     public reset(): void {
         this.title = null;
         this.goBackFn = null;
-        this.searchControl = null;
-        this.searchInputLabel = null;
-        if (this.subscription != null) {
-            this.subscription.unsubscribe();
-            this.subscription = null;
-        }
+        this.disableSearch();
         this.buttons = [];
         this.isLoading = false;
         this.isError = false;
@@ -206,11 +276,21 @@ export class ShellService {
         this.buttons = buttons;
         this.updateShell();
     }
-	
-	public addButton(btn: ToolbarButton): void {
+
+    public addButton(btn: ToolbarButton): void {
+        if (this.buttons == null) {
+            this.buttons = [];
+        }
         this.buttons.push(btn);
         this.updateShell();
-	}
+    }
+
+    public removeButton(buttonLabel: string): void {
+        this.buttons = this.buttons == null
+            ? null
+            : this.buttons.filter(b => b.label !== buttonLabel);
+        this.updateShell();
+    }
 
     public setButtonEnabled(button: ToolbarButton, enabled: boolean): void {
         button.disabled = !enabled;
@@ -236,6 +316,7 @@ export class ShellService {
     public updateShell(): void {
         if (this.updateShellFn) {
             this.updateShellFn();
+            this.updatePending = false;
         } else {
             this.updatePending = true;
         }

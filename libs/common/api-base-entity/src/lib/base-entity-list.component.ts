@@ -1,22 +1,22 @@
-import {BaseEntityService} from './base-entity.service';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PaginationModel} from '@ss/common/ui-pagination';
-import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import { BaseEntityService } from './base-entity.service';
+import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PaginationModel } from '@ss/common/ui-pagination';
+import { Directive, OnDestroy, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
 
     constructor(public entitySrv: BaseEntityService<T>,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public confirmationSrv: ConfirmationDialogService,
-                public title: string) {
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public title: string) {
     }
 
     //
@@ -89,7 +89,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         return null;
     }
 
-    public refresh() {
+    public refresh(callback?: () => void) {
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(true);
@@ -100,7 +100,12 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
             ? b
             : a.pipe(switchMap(() => b));
         c.subscribe(
-            data => this.finishLoading(data),
+            data => {
+                this.finishLoading(data);
+                if (callback) {
+                    callback();
+                }
+            },
             err => {
                 this.data = []; // clear everything;
                 this.shellSrv.setLoading(false); // stop the animation
@@ -136,7 +141,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
 
     public selectRow(row: T) {
         this.selectedRow = row;
-        const id = row? row.id || 0 : 0;
+        const id = row ? row.id || 0 : 0;
         this.select(id)
     }
     public select(id: number): void {
@@ -158,7 +163,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public showDetail(id: number): void {
-        this.router.navigate([id], {relativeTo: this.route})
+        this.router.navigate([id], { relativeTo: this.route })
             .then();
     }
 

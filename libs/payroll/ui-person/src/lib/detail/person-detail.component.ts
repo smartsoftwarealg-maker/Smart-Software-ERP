@@ -69,7 +69,6 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
             mobile: [p.mobile, Validators.maxLength(32)],
             ss_Number: [p.ss_Number, Validators.compose([Validators.required, Validators.maxLength(32)])],
             maritalStatus: p.maritalStatus,
-            retirementDate: p.retirementDate,
             // arabic info
             firstNameAr: [p.firstNameAr, Validators.maxLength(64)],
             lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
@@ -100,8 +99,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
             this.isControlValid(this.form.controls.phone) &&
             this.isControlValid(this.form.controls.mobile) &&
             this.isControlValid(this.form.controls.ss_Number) &&
-            this.isControlValid(this.form.controls.maritalStatus) &&
-            this.isControlValid(this.form.controls.retirementDate);
+            this.isControlValid(this.form.controls.maritalStatus);
     }
 
     public isArabicInfoPanelValid(): boolean {

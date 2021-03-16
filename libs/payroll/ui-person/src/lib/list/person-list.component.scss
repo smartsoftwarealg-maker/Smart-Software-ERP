@@ -2,11 +2,11 @@
 :host {
     display: block;
     margin: auto;
-    width: 1066px;
+    width: 954px;
 }
 
 .main-table {
-    width: 1166px;
+    width: 954px;
     min-height: 320px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .mat-column-fullname {
-    flex: 0 0 140px;
+    flex: 0 0 200px;
     padding-right: 8px;
     padding-left: 8px;
 }
@@ -71,7 +71,7 @@
 }
 
 .mat-column-address {
-    flex: 0 0 200px;
+    flex: 0 0 240px;
     padding-right: 8px;
     padding-left: 8px;
 }
@@ -81,19 +81,6 @@
     padding-right: 8px;
     padding-left: 8px;
 }
-
-.mat-column-nationality {
-    flex: 0 0 90px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-mservice {
-    flex: 0 0 90px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
 
 
 .pagination-container {
