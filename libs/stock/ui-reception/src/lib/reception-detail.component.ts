@@ -22,7 +22,7 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Receptio
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService)
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
 
     constructor(
         public receptionService: ReceptionService,
