@@ -81,6 +81,7 @@ h2 {
 .app-card {
     margin-top: 16px;
     border-radius: 16px;
+    overflow: hidden;
     cursor: pointer;
 
     display: inline-flex;
@@ -105,6 +106,11 @@ h2 {
         padding: 0;
         flex-grow: 1;
         flex-shrink: 1;
+
+        span {
+            display: inline-block;
+            line-height: 20px;
+        }
     }
 
 }
