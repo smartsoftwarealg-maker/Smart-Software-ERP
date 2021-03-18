@@ -41,7 +41,8 @@
     "FATHER_AR": "الأب",
     "MOTHER_AR": "الأم",
     "BIRTH_PLACE_AR": "مكان الميلاد",
-    "EMPLOYEES_ACTIVATION": "تنشيط/إيقاف",
+    "EMPLOYEE_ACTIVATION": "تنشيط",
+    "EMPLOYEE_DEACTIVATION": "إيقاف",
     "EMPLOYEE": "الموظف",
     "HIRE_DATE": "تاريخ التوظيف",
     "SUSPENDED": "مفصول",
@@ -52,5 +53,10 @@
     "SUSP_DATE": "تاريخ التعليق",
     "ALREADY_ACTIVE": "الموظف نشط بالفعل",
     "ACTIVE_SINCE": "نشط منذ",
-    "INACTIVE_SINCE": "عاطل منذ"
+    "INACTIVE_SINCE": "عاطل منذ",
+    "SUSPENSION_REASON": "سبب التعليق",
+    "EMPLOYEE_ACTIVATION_SUSPENSION": "تفعيل / تعليق الموظف",
+    "ACTIVITY_HISTORY": "سجل النشاط",
+    "FROM_TO": "من - إلى",
+    "TODAY": "اليوم"
 }

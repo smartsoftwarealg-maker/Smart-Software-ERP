@@ -1,3 +1,6 @@
+<div class="b-b-disabled-btn card-title" translate>
+    PAYROLL_ACTIVITY_HISTORY
+</div>
 <div class="table-container">
     <mat-table mat-table [dataSource]="uiSrv.instance.data" class="main-table">
 
@@ -24,7 +27,7 @@
                 PAYROLL_SUSPENDED
             </mat-header-cell>
             <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.suspended" class="fas fa-check"></i>
+                <i *ngIf="e.suspended" class="fas fa-times"></i>
             </mat-cell>
         </ng-container>
 
@@ -37,12 +40,21 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="suspensionReason">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_SUSPENSION_REASON
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{uiSrv.instance.suspensionReasons[e.suspensionReason]}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="inConflict">
             <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>
                 PAYROLL_IN_CONFLICT
             </mat-header-cell>
             <mat-cell style="justify-content: center" *matCellDef="let e">
-                <i *ngIf="e.inConflict" class="fas fa-check"></i>
+                <i *ngIf="e.inConflict" class="fas fa-times"></i>
             </mat-cell>
         </ng-container>
 

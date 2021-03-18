@@ -7,7 +7,8 @@ import {
     ABS_PAYROLL_POSTS_URL,
     ABS_PAYROLL_SERVICES_URL,
     ABS_PAYROLL_WILAYAS_URL,
-    ABS_PAYROLL_PERSONS_URL
+    ABS_PAYROLL_PERSONS_URL,
+    ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL
 } from '../constants';
 import {SideNavNode} from '@ss/common/ui-shell';
 
@@ -63,12 +64,17 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_EMPLOYEES',
-            icon: 'fas fa-user-friends',
+            icon: 'far fa-user-hard-hat',
             children: [
                 {
                     name: 'PAYROLL_EMPLOYEES_LIST',
                     icon: 'fas fa-list-ol',
                     route: ABS_PAYROLL_PERSONS_URL
+                },
+                {
+                    name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
+                    icon: 'fas fa-play',
+                    route: ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL
                 }
             ]
         }

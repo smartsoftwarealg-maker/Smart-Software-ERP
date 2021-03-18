@@ -1,0 +1,30 @@
+<div class="b-b-disabled-btn card-title" translate>
+    PAYROLL_EMPLOYEE_DEACTIVATION
+</div>
+<div style="height: 16px"></div>
+
+<form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_HIRE_DATE</mat-label>
+        <ss-date-picker formControlName="hireDate"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
+        <mat-select formControlName="employmentType" required>
+            <mat-option *ngFor="let v of employmentTypes" [value]="v.id">
+                {{v.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="default-50 sm-100" style="height: 64.8px; line-height: 64.8px;">
+        <mat-checkbox formControlName="suspended" translate>PAYROLL_SUSPENDED</mat-checkbox>
+    </div>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_SUSP_DATE</mat-label>
+        <ss-date-picker formControlName="suspensionDate"></ss-date-picker>
+    </mat-form-field>
+</form>
+<div style="height: 16px"></div>

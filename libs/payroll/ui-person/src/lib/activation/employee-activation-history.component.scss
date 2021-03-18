@@ -13,12 +13,21 @@
     width: 100%;
     display: block;
     margin: auto;
-    max-width: 644px;
+    max-width: 824px;
     overflow: auto;
 }
 
+.card-title {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-weight: bold;
+}
+
 .main-table {
-    width: 644px;
+    width: 824px;
     min-height: 320px;
 }
 
@@ -41,6 +50,12 @@
 }
 
 .mat-column-employmentType {
+    flex: 0 0 164px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-suspensionReason {
     flex: 0 0 164px;
     padding-right: 8px;
     padding-left: 8px;

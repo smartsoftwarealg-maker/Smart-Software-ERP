@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { LookupsService, EmploymentType } from '@ss/common/api-lookup';
+import { LookupsService, EmploymentType, SuspensionReason } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { LanguageService } from '@ss/common/ui-lang';
@@ -49,6 +49,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     public lastLine: EmployeeActivation;
     public imageModel: ImageModel;
     public employmentTypes: { [id: number]: string; };
+    public suspensionReasons: { [id: number]: string; };
 
     constructor(
         public employeeActivationSrv: EmployeeActivationService,
@@ -62,7 +63,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService) {
-        super(employeeActivationSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_ACTIVATION');
+        super(employeeActivationSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend
@@ -100,14 +101,25 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
                     this.person.birthDate = this.langSrv.formatDate(p.birthDate);
                     this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
                 }),
-                switchMap(() => this.lookupsSrv.getEmployementTypes()),
-                tap(list => this.onEmploymentTypesLoaded(list))
+                switchMap(() => this.lookupsSrv.getEmploymentTypes()),
+                tap(list => this.onEmploymentTypesLoaded(list)),
+                switchMap(() => this.lookupsSrv.getSuspensionReason()),
+                tap(list => this.onSuspensionReasonLoaded(list))
             );
 
     }
 
     onEmploymentTypesLoaded(data: EmploymentType[]): void {
         this.employmentTypes = data.reduce(
+            (total, currentValue) => {
+                total[currentValue.id] = currentValue.description;
+                return total
+            }, {}
+        );
+    }
+
+    onSuspensionReasonLoaded(data: SuspensionReason[]): void {
+        this.suspensionReasons = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;
                 return total
@@ -124,10 +136,9 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     }
 
     public processLoadedData(data: EmployeeActivation[]): Observable<EmployeeActivation[]> {
-        // FIXME: depends on the result of the backend ordered by activityStatus
-        this.lastLine = data.length > 0
-            ? (data[0].activityStatus === 0? data[0] : data[data.length - 1])
-            : null;
+        // todo: sort data by date and find error in hireDates and suspensionDates and
+        // tell the user that they are an idiot
+        this.lastLine = data[data.length - 1];
         const active = this.isActive();
         this.activateButton.disabled = active;
         this.deactivateButton.disabled = !active;

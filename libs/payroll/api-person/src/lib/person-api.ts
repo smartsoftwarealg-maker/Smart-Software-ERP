@@ -58,6 +58,7 @@ export class EmployeeActivation {
     hireDate: string;
     suspended: boolean;
     suspensionDate: string;
+    suspensionReason: number;
     employmentType: number;
     inConflict: boolean;
 }

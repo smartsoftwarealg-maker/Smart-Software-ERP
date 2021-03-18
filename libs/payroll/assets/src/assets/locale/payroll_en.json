@@ -41,7 +41,8 @@
     "FATHER_AR": "Father (Arabic)",
     "MOTHER_AR": "Mother (Arabic)",
     "BIRTH_PLACE_AR": "Birth place (Arabic)",
-    "EMPLOYEES_ACTIVATION": "Employee activation",
+    "EMPLOYEE_ACTIVATION": "Employee activation",
+    "EMPLOYEE_DEACTIVATION": "Employee deactivation",
     "EMPLOYEE": "Employee",
     "HIRE_DATE": "Hire date",
     "SUSPENDED": "Suspended",
@@ -52,5 +53,10 @@
     "SUSP_DATE": "Suspension date",
     "ALREADY_ACTIVE": "Employee already active",
     "ACTIVE_SINCE": "Active since",
-    "INACTIVE_SINCE": "Inactive since"
+    "INACTIVE_SINCE": "Inactive since",
+    "SUSPENSION_REASON": "Suspension reason",
+    "EMPLOYEE_ACTIVATION_SUSPENSION": "Employee activation/suspension",
+    "ACTIVITY_HISTORY": "Activity history",
+    "FROM_TO": "From - To",
+    "TODAY": "Today"
 }
