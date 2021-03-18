@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent} from '@angular/common/http';
-import {catchError, filter, last, map, share, tap} from 'rxjs/operators';
+import {catchError, filter, last, map, share, tap, first} from 'rxjs/operators';
 import {of} from 'rxjs';
 
 const AUTH_TOKEN = 'auth_token';
@@ -33,7 +33,7 @@ export class HttpService {
         }
         return this.httpClient.get('./config/config.json')
             .pipe(
-                share(),
+                // removed share(), as it was a resource leak.
                 map(conf => {
                     this.load(conf);
                     return true;

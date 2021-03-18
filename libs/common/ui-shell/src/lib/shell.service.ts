@@ -156,21 +156,20 @@ export class ShellService {
      * @param path 
      */
     public setGoBackPathByRelativeUrl(path: string) {
-        let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
-        if (url.endsWith('/')) {
-            url = url.substring(0, url.length - 1);
-        }
-        let relative = path;
-        while (relative.startsWith('..')) {
-            relative = relative.substring(2);
-            url = strDropEndUntil(url, '/');
-            if (relative.length === 0) { break; }
-            if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path);}
-            relative = relative.substring(1);
-        }
-        url += (relative.length ? '/' : '') + relative;
         this.setGoBackFn(() => {
-            console.log('going to url ' + url);
+            let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
+            if (url.endsWith('/')) {
+                url = url.substring(0, url.length - 1);
+            }
+            let relative = path;
+            while (relative.startsWith('..')) {
+                relative = relative.substring(2);
+                url = strDropEndUntil(url, '/');
+                if (relative.length === 0) { break; }
+                if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path); }
+                relative = relative.substring(1);
+            }
+            url += (relative.length ? '/' : '') + relative;
             this.router.navigateByUrl(url)
                 .then()
                 .catch(e => console.log(e));

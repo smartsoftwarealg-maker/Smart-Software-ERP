@@ -265,6 +265,9 @@ export class LanguageService {
         if (key == null || key === '') {
             return '';
         }
+        if (this.currentLanguage == null) {
+            return key;
+        }
         const langData = this.data[this.currentLanguage.code];
         if (langData != null) {
             let val = langData[key];

@@ -173,3 +173,8 @@ export interface EmploymentType {
     id: number;
     description: string;
 }
+
+export interface SuspensionReason {
+    id: number;
+    description: string;
+}

@@ -41,7 +41,7 @@ import {
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup, EmploymentType, EMPLOYMENT_TYPE_URL,
+    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup, EmploymentType, EMPLOYMENT_TYPE_URL, SuspensionReason,
 } from './lookups-api';
 
 @Injectable({
@@ -140,7 +140,13 @@ export class LookupsService {
         return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, "cc_groups");
     }
 
-    public getEmployementTypes(): Observable<EmploymentType[]> {
+    public getEmploymentTypes(): Observable<EmploymentType[]> {
         return this.lookupCacheSrv.load<EmploymentType>(EMPLOYMENT_TYPE_URL, 'employmentTypes');
+    }
+
+    public getSuspensionReason(): Observable<SuspensionReason[]> {
+        // todo: implement this
+        return of([]);
+        // return this.lookupCacheSrv.load<EmploymentType>(SUSPENSION_REASON_URL, 'suspensionReason');
     }
 }

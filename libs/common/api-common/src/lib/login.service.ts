@@ -45,6 +45,7 @@ export class LoginService {
 
     // todo: fix auto login
     public reLogin(): Observable<boolean> {
+        // FIXME: should not call httpSrv.init() as it should only be called in app.component
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.httpSrv.get<any>('/relogin')),
