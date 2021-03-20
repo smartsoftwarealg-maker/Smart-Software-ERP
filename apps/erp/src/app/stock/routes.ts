@@ -19,7 +19,6 @@ import {
     STOCK_INVENTORY_URL,
     STOCK_MARKS_URL,
     STOCK_PAY_MODE_URL,
-    STOCK_RECEPTION_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
@@ -68,8 +67,6 @@ import {ConsumptionDetailComponent, ConsumptionListComponent} from "@ss/stock/ui
 import {ConsumptionLinesDetailComponent} from "@ss/stock/ui-consumption-lines";
 import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inventory";
 import {InventoryLinesDetailComponent} from "@ss/stock/ui-inventory-lines";
-import {ReceptionDetailComponent, ReceptionListComponent} from "@ss/stock/ui-reception";
-import {ReceptionLinesDetailComponent} from "@ss/stock/ui-reception-lines";
 import {ReportParamsComponent} from "@ss/common/ui-report-param";
 import {docInfoRoutes} from "../administration/routes";
 
@@ -187,31 +184,6 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: InventoryDetailComponent,
-                canActivate: [CanActivateService],
-                children: docInfoRoutes
-            },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_RECEPTION_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ReceptionListComponent,
-                canActivate: [CanActivateService],
-                children: docInfoRoutes
-            },
-            {
-                path: LINES_DETAIL_URL + "/:id",
-                component: ReceptionLinesDetailComponent,
-                canActivate: [CanActivateService],
-                children: docInfoRoutes
-            },
-            {
-                path: ':id',
-                component: ReceptionDetailComponent,
                 canActivate: [CanActivateService],
                 children: docInfoRoutes
             },
