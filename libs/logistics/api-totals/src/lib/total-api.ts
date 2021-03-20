@@ -1,6 +1,7 @@
 export const TOTAL_URL = "/total";
 
 export interface Total {
-    description: string
+    description: string;
+    value: string;
 }
 

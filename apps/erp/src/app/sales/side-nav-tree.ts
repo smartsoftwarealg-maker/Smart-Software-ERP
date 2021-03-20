@@ -11,7 +11,7 @@ import {
 
 export const salesNavTree: SideNavNode = {
     name: 'SALES',
-    icon: 'fas fa-warehouse-alt',
+    icon: 'fas fa-truck',
     children: [
         {
             name: 'SALES_ORDER',
