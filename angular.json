@@ -3201,6 +3201,151 @@
           }
         }
       }
+    },
+    "purchases-api-purchase-order": {
+      "projectType": "library",
+      "root": "libs/purchases/api-purchase-order",
+      "sourceRoot": "libs/purchases/api-purchase-order/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/purchases/api-purchase-order/tsconfig.lib.json",
+              "libs/purchases/api-purchase-order/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/purchases/api-purchase-order/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/purchases/api-purchase-order"],
+          "options": {
+            "jestConfig": "libs/purchases/api-purchase-order/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "purchases-api-reception": {
+      "projectType": "library",
+      "root": "libs/purchases/api-reception",
+      "sourceRoot": "libs/purchases/api-reception/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/purchases/api-reception/tsconfig.lib.json",
+              "libs/purchases/api-reception/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/purchases/api-reception/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/purchases/api-reception"],
+          "options": {
+            "jestConfig": "libs/purchases/api-reception/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "purchases-ui-purchase-order": {
+      "projectType": "library",
+      "root": "libs/purchases/ui-purchase-order",
+      "sourceRoot": "libs/purchases/ui-purchase-order/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/purchases/ui-purchase-order/tsconfig.lib.json",
+              "libs/purchases/ui-purchase-order/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/purchases/ui-purchase-order/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/purchases/ui-purchase-order"],
+          "options": {
+            "jestConfig": "libs/purchases/ui-purchase-order/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "purchases-ui-reception": {
+      "projectType": "library",
+      "root": "libs/purchases/ui-reception",
+      "sourceRoot": "libs/purchases/ui-reception/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/purchases/ui-reception/tsconfig.lib.json",
+              "libs/purchases/ui-reception/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/purchases/ui-reception/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/purchases/ui-reception"],
+          "options": {
+            "jestConfig": "libs/purchases/ui-reception/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-api-transaction": {
+      "projectType": "library",
+      "root": "libs/logistics/api-transaction",
+      "sourceRoot": "libs/logistics/api-transaction/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-transaction/tsconfig.lib.json",
+              "libs/logistics/api-transaction/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-transaction/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/api-transaction"],
+          "options": {
+            "jestConfig": "libs/logistics/api-transaction/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

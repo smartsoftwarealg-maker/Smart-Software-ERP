@@ -122,6 +122,11 @@
     "logistics-ui-stock-info": { "tags": [] },
     "sales-ui-delivery-cancellation": { "tags": [] },
     "sales-api-delivery-cancellation": { "tags": [] },
-    "purchases-assets": { "tags": [] }
+    "purchases-assets": { "tags": [] },
+    "purchases-api-purchase-order": { "tags": [] },
+    "purchases-api-reception": { "tags": [] },
+    "purchases-ui-purchase-order": { "tags": [] },
+    "purchases-ui-reception": { "tags": [] },
+    "logistics-api-transaction": { "tags": [] }
   }
 }

@@ -14,7 +14,6 @@ import {
     ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_INVENTORY_EXIT_URL,
     ABS_STOCK_CONSUMPTION_URL,
-    ABS_STOCK_RECEPTION_URL,
     ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_MARKS_URL,
     ABS_STOCK_PAY_MODE,
@@ -161,11 +160,6 @@ export const stockNavTree: SideNavNode = {
                     icon: 'fas fa-file',
                     route: ABS_STOCK_INVENTORY_URL
                 },
-                {
-                    name: 'STOCK_RECEPTION',
-                    icon: 'fas fa-file',
-                    route: ABS_STOCK_RECEPTION_URL
-                }
             ]
         },
     ]
