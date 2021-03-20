@@ -33,14 +33,14 @@
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.price.toFixed(2) }}
+                {{ e.price.toFixed(2)  | number: '0.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="pprice">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PPRICE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.pprice.toFixed(2) }}
+                {{ e.pprice.toFixed(2)  | number: '0.2-2'}}
             </mat-cell>
         </ng-container>
 
