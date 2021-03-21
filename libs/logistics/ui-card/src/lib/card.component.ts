@@ -31,7 +31,7 @@ export class CardComponent implements OnInit {
     articleId: number;
     storeId: number;
     articleReference: string;
-    useStoreForm: boolean = false;
+    useStoreForm = false;
     data: Card[];
 
     displayedColumns = [
@@ -81,9 +81,7 @@ export class CardComponent implements OnInit {
 
     loadCard() {
         if (this.useStoreForm && this.storeForm.valid) this.storeId = this.storeForm.value.store;
-
-
-        this.shellSrv.setLoading(true);
+        this.shellSrv.setLoading(false);
 
         const loadObserver = this.articleId ?
             this.cardSrv.loadByArticleId(this.pagination, this.storeId, this.articleId) :

@@ -47,9 +47,3 @@
     </mat-card-content>
 </mat-card>
 <ss-article-store *ngIf="selectedRow && selectedRow.id !== 0" [article]="selectedRow"></ss-article-store>
-<ss-doc-info [displayedGroups]="['article']"
-             [params]="{
-                         articleId: selectedRow?.id,
-                         articleUseStoreSearch : true
-                     }">
-</ss-doc-info>
