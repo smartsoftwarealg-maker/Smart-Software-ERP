@@ -19,40 +19,40 @@
 }
 
 .mat-column-description {
-    flex: 300px 0 0;
+    flex: 0 0 300px;
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 846px) {
-        flex: 30% 0 0;
+        flex: 0 0 30%;
     }
 }
 
 .mat-column-company2 {
-    flex: 150px 0 0;
+    flex:  0 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 
     @media (max-width: 846px) {
-        flex: 20% 0 0;
+        flex: 0 0 20%;
     }
 
 }
 
 .mat-column-company3 {
-    flex: 150px 0 0;
+    flex:  0 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 846px) {
-        flex: 20% 0 0;
+        flex: 0 0 20%;
     }
 }
 
 .mat-column-address {
-    flex: 150px 0 0;
+    flex:  0 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 846px) {
-        flex: 30% 0 0;
+        flex: 0 0 30%;
     }
 }
 
