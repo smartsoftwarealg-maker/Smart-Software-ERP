@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ToolbarButton, ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { EmploymentType, EmploymentTypeService, LookupsService } from '@ss/common/api-lookup';
+import { EmploymentType, EmploymentTypeService, LookupsService, SuspensionReason } from '@ss/common/api-lookup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
@@ -19,9 +19,10 @@ import { tap, switchMap, map } from 'rxjs/operators';
 })
 export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
     
-    private id: number;
     employmentTypes: EmploymentType[];
+    suspensionReasons: SuspensionReason[];
     public form: FormGroup = null;
+    public entity: EmployeeActivation;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -47,7 +48,6 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const parent: EmployeeActivationComponent = this.uiSrv.instance;
         parent.showActivationButtons(false);
-        this.id = 0;
         this.employeeActivationSrv.setParentId(parent.personId);
         this.shellSrv.addButton(this.saveButton);
         this.init();
@@ -71,7 +71,9 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
         return this.lookupsSrv.getEmploymentTypes()
             .pipe(
                 tap(types => this.employmentTypes = types),
-                switchMap(() => this.getNewAndVerify())
+                switchMap(() => this.lookupsSrv.getSuspensionReasons()),
+                tap(reasons => this.suspensionReasons = reasons),
+                switchMap(() => this.getNewAndVerify()),
             );
     }
 
@@ -88,7 +90,7 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
     }
 
     setupForm(a: EmployeeActivation) {
-        this.id = a.id;
+        this.entity = a;
         a.suspensionDate = dateToYmdStr(new Date());
         a.suspended = true;
         a.inConflict = false; // default is false
@@ -100,7 +102,7 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
             hireDate: a.hireDate,
             suspended: a.suspended,
             suspensionDate: [a.suspensionDate, Validators.required],
-            suspensionReason: a.suspensionReason,
+            suspensionReason: [a.suspensionReason, Validators.required],
             employmentType: a.employmentType,
             inConflict: a.inConflict
         });
@@ -119,7 +121,11 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
         }
         const val: EmployeeActivation = this.form.value;
         //
-        val.id = this.id;
+        val.suspended = true;
+        val.id = this.entity.id;
+        val.hireDate = this.entity.hireDate;
+        val.employmentType = this.entity.employmentType;
+        val.activityStatus = this.entity.activityStatus;
         this.shellSrv.setLoading(true);
         this.employeeActivationSrv.update(val).subscribe(() => {
             this.snackBarSrv.showSuccessMessage();

@@ -15,6 +15,7 @@ import { Router, RouterModule } from '@angular/router';
 import { EmployeeActivationFormComponent } from './activation/employee-activation-form.component';
 import { EmployeeDeactivationFormComponent } from './activation/employee-deactivation-form.component';
 import { EmployeeListComponent } from './activation/employee-list.component';
+import { EmployeeActivationDetailComponent } from './activation/employee-activation-detail.component';
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { EmployeeListComponent } from './activation/employee-list.component';
         EmployeeActivationHistoryComponent,
         EmployeeDeactivationFormComponent,
         EmployeeActivationFormComponent,
-        EmployeeListComponent
+        EmployeeListComponent,
+        EmployeeActivationDetailComponent
     ],
     declarations: [
         PersonListComponent,
@@ -44,7 +46,8 @@ import { EmployeeListComponent } from './activation/employee-list.component';
         EmployeeActivationHistoryComponent,
         EmployeeDeactivationFormComponent,
         EmployeeActivationFormComponent,
-        EmployeeListComponent
+        EmployeeListComponent,
+        EmployeeActivationDetailComponent
     ]
 })
 export class PayrollUiPersonModule {

@@ -1,10 +1,4 @@
 {
-    "EDIT_CATEGORY": "Modifier catégorie",
-    "EDIT_DIPLOMA": "Modifier le diplôme",
-    "EDIT_EDUCATION_LEVEL": "Modifier le niveau d'éducation",
-    "EDIT_MARITAL_STATUS": "Modifier l'état civil",
-    "EDIT_NATIONALITY": "Modifier nationalité",
-    "EDIT_SERVICE": "Modifier service",
     "PHOTO": "Photo",
     "ID": "Matricule",
     "FULLNAME": "Nom et prénom",
@@ -58,5 +52,6 @@
     "EMPLOYEE_ACTIVATION_SUSPENSION": "Activation/suspension employés ",
     "ACTIVITY_HISTORY": "Historique d'activité",
     "FROM_TO": "Du - Au",
-    "TODAY": "Aujourd'hui"
+    "TODAY": "Aujourd'hui",
+    "EDIT_EMPLOYEE_ACTIVATION": "Modifier activation d'employé"
 }

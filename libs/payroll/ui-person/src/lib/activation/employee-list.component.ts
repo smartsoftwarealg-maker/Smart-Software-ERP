@@ -70,7 +70,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
         return this.lookupsSrv.getEmploymentTypes()
             .pipe(
                 tap(list => this.employmentTypes = this.lookupListToMap(list)),
-                switchMap(() => this.lookupsSrv.getSuspensionReason()),
+                switchMap(() => this.lookupsSrv.getSuspensionReasons()),
                 tap(list => this.suspensionReasons = this.lookupListToMap(list))
             );
     }

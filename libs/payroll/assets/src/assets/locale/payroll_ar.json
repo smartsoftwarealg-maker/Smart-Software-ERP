@@ -1,10 +1,4 @@
 {
-    "EDIT_CATEGORY": "تعديل فئة",
-    "EDIT_DIPLOMA": "تعديل شهادة",
-    "EDIT_EDUCATION_LEVEL": "تعديل مستوى دراسي",
-    "EDIT_MARITAL_STATUS": "تعديل حالة اجتماعية",
-    "EDIT_NATIONALITY": "تعديل جنسية",
-    "EDIT_SERVICE": "تعديل الخدمة",
     "PHOTO": "الصورة",
     "ID": "رقم التسجيل",
     "FULLNAME": "الإسم الكامل",
@@ -58,5 +52,6 @@
     "EMPLOYEE_ACTIVATION_SUSPENSION": "تفعيل / تعليق الموظف",
     "ACTIVITY_HISTORY": "سجل النشاط",
     "FROM_TO": "من - إلى",
-    "TODAY": "اليوم"
+    "TODAY": "اليوم",
+    "EDIT_EMPLOYEE_ACTIVATION": "تعديل تفعيل الموظف"
 }

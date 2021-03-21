@@ -11,7 +11,7 @@
 
     <mat-form-field floatLabel="always" class="default-50 sm-100">
         <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
-        <mat-select formControlName="employmentType" required>
+        <mat-select formControlName="employmentType">
             <mat-option *ngFor="let v of employmentTypes" [value]="v.id">
                 {{v.description}}
             </mat-option>
@@ -22,9 +22,23 @@
         <mat-checkbox formControlName="suspended" translate>PAYROLL_SUSPENDED</mat-checkbox>
     </div>
 
+    <div class="default-50 sm-100" style="height: 64.8px; line-height: 64.8px;">
+        <mat-checkbox formControlName="inConflict" translate>PAYROLL_IN_CONFLICT</mat-checkbox>
+    </div>
+
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>PAYROLL_SUSP_DATE</mat-label>
-        <ss-date-picker formControlName="suspensionDate"></ss-date-picker>
+        <ss-date-picker required="true" formControlName="suspensionDate"></ss-date-picker>
     </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_SUSPENSION_REASON</mat-label>
+        <mat-select formControlName="suspensionReason" required>
+            <mat-option *ngFor="let v of suspensionReasons" [value]="v.id">
+                {{v.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
 </form>
 <div style="height: 16px"></div>

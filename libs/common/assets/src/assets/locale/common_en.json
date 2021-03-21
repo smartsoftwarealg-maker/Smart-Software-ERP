@@ -105,5 +105,11 @@
     "REPORT_PARAMS": "Report params",
     "INFO": "Info.",
     "CANCEL": "Cancel",
-    "IMPORT": "Import"
+    "IMPORT": "Import",
+    "EDIT_CATEGORY": "Edit category",
+    "EDIT_DIPLOMA": "Edit diploma",
+    "EDIT_EDUCATION_LEVEL": "Edit education level",
+    "EDIT_MARITAL_STATUS": "Edit marital status",
+    "EDIT_NATIONALITY": "Edit nationality",
+    "EDIT_SERVICE": "Edit service"
 }

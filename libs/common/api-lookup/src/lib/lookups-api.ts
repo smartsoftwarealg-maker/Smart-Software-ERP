@@ -10,6 +10,7 @@ export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/categories';
 export const SERVICES_URL = '/services';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
+export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
 
 export const MARKS_URL = '/lookups/marks';
 export const CLASSES_URL = '/lookups/classes';

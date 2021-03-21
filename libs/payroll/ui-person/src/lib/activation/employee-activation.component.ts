@@ -103,7 +103,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
                 }),
                 switchMap(() => this.lookupsSrv.getEmploymentTypes()),
                 tap(list => this.onEmploymentTypesLoaded(list)),
-                switchMap(() => this.lookupsSrv.getSuspensionReason()),
+                switchMap(() => this.lookupsSrv.getSuspensionReasons()),
                 tap(list => this.onSuspensionReasonLoaded(list))
             );
 

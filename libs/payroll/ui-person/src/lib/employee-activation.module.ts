@@ -8,6 +8,7 @@ import { EmployeeActivationFormComponent } from './activation/employee-activatio
 import { LIST_URL, RedirectToParentComponent } from '@ss/common/api-common';
 import { EmployeeDeactivationFormComponent } from './activation/employee-deactivation-form.component';
 import { EmployeeListComponent } from './activation/employee-list.component';
+import { EmployeeActivationDetailComponent } from './activation/employee-activation-detail.component';
 
 @NgModule({
     imports: [
@@ -32,6 +33,10 @@ import { EmployeeListComponent } from './activation/employee-list.component';
                     {
                         path: DEACTIVATION_URL,
                         component: EmployeeDeactivationFormComponent
+                    },
+                    {
+                        path: ':id',
+                        component: EmployeeActivationDetailComponent
                     },
                     { path: '**', redirectTo: ACTIVITY_HISTORY_URL }
                 ]
