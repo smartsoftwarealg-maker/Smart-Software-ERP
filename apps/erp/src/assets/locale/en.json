@@ -9,5 +9,6 @@
     "MEDIC": "Clinic",
     "SALES": "Sales",
     "SEARCH_APP": "Quick access",
-    "ADMINISTRATION": "Administration"
+    "ADMINISTRATION": "Administration",
+    "PURCHASES": "Purchases"
 }

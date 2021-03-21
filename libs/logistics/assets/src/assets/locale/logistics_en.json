@@ -89,5 +89,9 @@
     "DISCOUNT": "Discount",
     "NET_VF": "Net VF",
     "FTT": "FTT",
-    "VAT_19": "VAT 19%"
+    "VAT_19.0": "VAT 19%",
+    "AGENT_BALANCE": "Balance",
+    "DEBIT": "Debit",
+    "CREDIT": "Credit",
+    "AGENT_DEBTS": "Debts"
 }

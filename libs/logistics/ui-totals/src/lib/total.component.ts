@@ -5,6 +5,7 @@ import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ArticleService} from "@ss/stock/api-article";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {Total, TotalService} from "@ss/logistics/api-totals";
+import {LanguageService} from "@ss/common/ui-lang";
 
 @Component({
     selector: 'ss-total',
@@ -30,6 +31,7 @@ export class TotalComponent implements OnInit {
                 public route: ActivatedRoute,
                 public router: Router,
                 public articleSrv: ArticleService,
+                public langSrv: LanguageService,
                 public confirmationSrv: ConfirmationDialogService) {
     }
 
@@ -50,6 +52,6 @@ export class TotalComponent implements OnInit {
 
     loadTotal() {
         this.totalSrv.getPage(this.pagination)
-            .subscribe((x: Total[]) => this.data = x);
+            .subscribe((list: Total[]) => this.data = list.map(e => ({ description: this.langSrv.translate(e.description), value: e.value }) ));
     }
 }

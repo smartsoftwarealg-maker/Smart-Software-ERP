@@ -205,6 +205,21 @@
       ],
       "@ss/sales/api-delivery-cancellation": [
         "libs/sales/api-delivery-cancellation/src/index.ts"
+      ],
+      "@ss/purchases/api-purchase-order": [
+        "libs/purchases/api-purchase-order/src/index.ts"
+      ],
+      "@ss/purchases/api-reception": [
+        "libs/purchases/api-reception/src/index.ts"
+      ],
+      "@ss/purchases/ui-purchase-order": [
+        "libs/purchases/ui-purchase-order/src/index.ts"
+      ],
+      "@ss/purchases/ui-reception": [
+        "libs/purchases/ui-reception/src/index.ts"
+      ],
+      "@ss/logistics/api-transaction": [
+        "libs/logistics/api-transaction/src/index.ts"
       ]
     }
   },
