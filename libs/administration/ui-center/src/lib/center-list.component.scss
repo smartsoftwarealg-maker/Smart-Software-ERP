@@ -19,21 +19,21 @@
 }
 
 .mat-column-description {
-    flex: 300px 0 0;
+    flex: 0 0 300px;
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 830px) {
-        flex: 50%;
+        flex: 0 0 50%;
     }
 }
 
 
 .mat-column-address {
-    flex: 400px 0 0;
+    flex: 0 0 400px;
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 830px) {
-        flex: 50%;
+        flex: 0 0 50%;
     }
 }
 
