@@ -9,6 +9,7 @@ import {PaginationModel} from "@ss/common/ui-pagination";
 import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {LotsService, Lot} from "@ss/common/api-lookup";
+import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
@@ -16,6 +17,7 @@ import {LotsService, Lot} from "@ss/common/api-lookup";
     templateUrl: './inventory-entry-lines-list.component.html'
 })
 export class InventoryEntryLinesListComponent implements OnInit {
+    private isHandset: Observable<BreakpointState> = null;
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -28,7 +30,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
 
-    displayedColumns = [
+    private readonly LONG = [
         'position',
         'store',
         'reference',
@@ -37,17 +39,27 @@ export class InventoryEntryLinesListComponent implements OnInit {
         'price',
         'controls'
     ];
+    private readonly SHORT = [
+        'position',
+        'description',
+        'qtySatisfied',
+        'price',
+        'controls'
+    ];
+    displayedColumns = this.LONG;
 
 
     constructor(
         public inventoryEntryLinesSrv: InventoryEntryLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public articleSrv: ArticleService,
-        public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public readonly route: ActivatedRoute,
+        public readonly router: Router,
+        public readonly articleSrv: ArticleService,
+        public readonly storeNamesSrv: LotsService,
+        public confirmationSrv: ConfirmationDialogService,
+        private breakPointObs: BreakpointObserver) {
+        this.isHandset = this.breakPointObs.observe(['(max-width: 800px)']);
     }
 
 
@@ -60,6 +72,8 @@ export class InventoryEntryLinesListComponent implements OnInit {
                 this.pagination.onChange = () => this.loadInventoryEntryLines();
             }
         });
+
+        this.isHandset.subscribe(state => this.displayedColumns = state.matches ? this.SHORT : this.LONG);
     }
 
 

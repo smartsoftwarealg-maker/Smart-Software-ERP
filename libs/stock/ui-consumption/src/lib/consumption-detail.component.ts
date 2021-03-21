@@ -11,6 +11,7 @@ import {tap} from "rxjs/operators";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {User, UserService} from "@ss/common/api-users";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
+import {LoginService} from "@ss/common/api-common";
 
 
 @Component({
@@ -34,7 +35,8 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
         public agentService: AgentService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        public readonly loginSrv: LoginService) {
         super(consumptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_CONSUMPTION');
     }
 
@@ -50,13 +52,13 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
             id: [b.id],
             document: [0],
             center: [0],
-            date: [b.date, Validators.required],
-            number: [b.number, Validators.required],
+            date: [b.date || new Date(), Validators.required],
+            number: [b.number || 0, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer, Validators.required],
+            dealer: [b.dealer || this.loginSrv.userInfo.user.id, Validators.required],
             agent: [b.agent, Validators.required]
         });
     }

@@ -155,11 +155,11 @@ export const stockNavTree: SideNavNode = {
                     icon: 'fas fa-file',
                     route: ABS_STOCK_CONSUMPTION_URL
                 },
-                {
-                    name: 'STOCK_INVENTORY',
-                    icon: 'fas fa-file',
-                    route: ABS_STOCK_INVENTORY_URL
-                },
+                // {
+                //     name: 'STOCK_INVENTORY',
+                //     icon: 'fas fa-file',
+                //     route: ABS_STOCK_INVENTORY_URL
+                // },
             ]
         },
     ]
