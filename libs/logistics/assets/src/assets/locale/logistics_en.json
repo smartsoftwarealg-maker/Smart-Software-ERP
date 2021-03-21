@@ -93,5 +93,7 @@
     "AGENT_BALANCE": "Balance",
     "DEBIT": "Debit",
     "CREDIT": "Credit",
-    "AGENT_DEBTS": "Debts"
+    "AGENT_DEBTS": "Debts",
+    "QTY_ORDERED": "Quantity Ordered",
+    "VAT": "VAT"
 }
