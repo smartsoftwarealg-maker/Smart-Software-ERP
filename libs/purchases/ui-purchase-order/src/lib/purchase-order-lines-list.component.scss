@@ -22,7 +22,7 @@
 
 
 .mat-column-position {
-    flex: 1 1 50px;
+    flex: 0 1 50px;
     padding-right: 4px !important;
     padding-left: 4px !important;
 }
@@ -40,7 +40,7 @@
 }
 
 .mat-column-description {
-    flex: 1 1 100px;
+    flex: 1 1 auto;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

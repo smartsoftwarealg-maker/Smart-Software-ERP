@@ -89,5 +89,7 @@
     "AGENT_BALANCE": "Solde",
     "DEBIT": "Debit",
     "CREDIT": "Credit",
-    "AGENT_DEBTS": "Creances"
+    "AGENT_DEBTS": "Creances",
+    "QTY_ORDERED": "Quantité commandée",
+    "VAT": "TVA"
 }

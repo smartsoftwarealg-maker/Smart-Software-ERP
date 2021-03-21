@@ -90,5 +90,7 @@
     "AGENT_BALANCE": "الرصيد",
     "DEBIT": "دائن",
     "CREDIT": "مدين",
-    "AGENT_DEBTS": "الديون"
+    "AGENT_DEBTS": "الديون",
+    "QTY_ORDERED": "الكمية المطلوبة",
+    "VAT": "الضريبة"
 }
