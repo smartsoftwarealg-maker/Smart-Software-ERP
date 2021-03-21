@@ -105,5 +105,11 @@
     "REPORT_PARAMS": "متغيرات التقرير",
     "INFO": "معلومات",
     "CANCEL": "إلغاء",
-    "IMPORT": "استيراد"
+    "IMPORT": "استيراد",
+    "EDIT_CATEGORY": "تعديل فئة",
+    "EDIT_DIPLOMA": "تعديل شهادة",
+    "EDIT_EDUCATION_LEVEL": "تعديل مستوى دراسي",
+    "EDIT_MARITAL_STATUS": "تعديل حالة اجتماعية",
+    "EDIT_NATIONALITY": "تعديل جنسية",
+    "EDIT_SERVICE": "تعديل الخدمة"
 }

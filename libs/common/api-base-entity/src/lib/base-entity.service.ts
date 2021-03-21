@@ -6,7 +6,7 @@ import {HttpParams} from "@angular/common/http";
 
 export class BaseEntityService<T> {
 
-    protected parentId: number
+    protected parentId: number;
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
     }

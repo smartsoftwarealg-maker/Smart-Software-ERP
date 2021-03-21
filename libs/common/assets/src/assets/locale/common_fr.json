@@ -105,5 +105,11 @@
     "REPORT_PARAMS": "paramètres de l'etat",
     "INFO": "Info.",
     "CANCEL": "Annuler",
-    "IMPORT": "Importer"
+    "IMPORT": "Importer",
+    "EDIT_CATEGORY": "Modifier catégorie",
+    "EDIT_DIPLOMA": "Modifier le diplôme",
+    "EDIT_EDUCATION_LEVEL": "Modifier le niveau d'éducation",
+    "EDIT_MARITAL_STATUS": "Modifier l'état civil",
+    "EDIT_NATIONALITY": "Modifier nationalité",
+    "EDIT_SERVICE": "Modifier service"
 }

@@ -68,7 +68,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     }
 
     load(): Observable<EmployeeActivation> {
-        return this.lookupsSrv.getEmployementTypes()
+        return this.lookupsSrv.getEmploymentTypes()
             .pipe(
                 tap(types => this.employmentTypes = types),
                 switchMap(() => this.getNewAndVerify())
@@ -76,10 +76,10 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     }
 
     getNewAndVerify() {
-        return this.employeeActivationSrv.getList(0, 1)
+        return this.employeeActivationSrv.getLast()
             .pipe(
-                tap(list => {
-                    if (list.itemCount > 0 && list.body[0].activityStatus === 0) {
+                tap(x => {
+                    if (!!x && x.activityStatus === 0) {
                         this.shellSrv.goBack();
                         this.snackBarSrv.showFailureMessage('PAYROLL_ALREADY_ACTIVE');
                     }
@@ -92,6 +92,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
                     hireDate: dateToYmdStr(new Date()),
                     id: 0,
                     inConflict: false,
+                    suspensionReason: null,
                     suspended: false,
                     suspensionDate: null
                 }))

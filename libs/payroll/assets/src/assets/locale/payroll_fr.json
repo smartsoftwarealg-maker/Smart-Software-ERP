@@ -1,10 +1,4 @@
 {
-    "EDIT_CATEGORY": "Modifier catégorie",
-    "EDIT_DIPLOMA": "Modifier le diplôme",
-    "EDIT_EDUCATION_LEVEL": "Modifier le niveau d'éducation",
-    "EDIT_MARITAL_STATUS": "Modifier l'état civil",
-    "EDIT_NATIONALITY": "Modifier nationalité",
-    "EDIT_SERVICE": "Modifier service",
     "PHOTO": "Photo",
     "ID": "Matricule",
     "FULLNAME": "Nom et prénom",
@@ -41,7 +35,8 @@
     "FATHER_AR": "Père (Arabe)",
     "MOTHER_AR": "Mère (Arabe)",
     "BIRTH_PLACE_AR": "Lieu de naissance (Arabe)",
-    "EMPLOYEES_ACTIVATION": "Activation des employés",
+    "EMPLOYEE_ACTIVATION": "Activation d'employé",
+    "EMPLOYEE_DEACTIVATION": "Deactivation d'employé",
     "EMPLOYEE": "Employé",
     "HIRE_DATE": "Date d'embauche",
     "SUSPENDED": "Suspendu",
@@ -52,5 +47,11 @@
     "SUSP_DATE": "Suspension date",
     "ALREADY_ACTIVE": "Employé déjà actif",
     "ACTIVE_SINCE": "Actif depuis",
-    "INACTIVE_SINCE": "Inactif depuis"
+    "INACTIVE_SINCE": "Inactif depuis",
+    "SUSPENSION_REASON": "Raison de la suspension",
+    "EMPLOYEE_ACTIVATION_SUSPENSION": "Activation/suspension employés ",
+    "ACTIVITY_HISTORY": "Historique d'activité",
+    "FROM_TO": "Du - Au",
+    "TODAY": "Aujourd'hui",
+    "EDIT_EMPLOYEE_ACTIVATION": "Modifier activation d'employé"
 }

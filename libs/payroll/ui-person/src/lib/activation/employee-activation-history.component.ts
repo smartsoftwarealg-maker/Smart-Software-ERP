@@ -13,6 +13,7 @@ export class EmployeeActivationHistoryComponent implements OnInit, OnDestroy {
         'employmentType',
         'suspended',
         'suspensionDate',
+        'suspensionReason',
         'inConflict'
     ];
 
