@@ -48,19 +48,19 @@ mat-table {
 
 
 .mat-column-position {
-    flex: 50px 1 0;
+    flex: 1 0 50px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-store {
-    flex: 100px 1 1;
+    flex: 1 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-reference {
-    flex: 90px 1 1;
+    flex: 1 1 90px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -72,25 +72,25 @@ mat-table {
 }
 
 .mat-column-qtySatisfied {
-    flex: 100px 1 0;
+    flex: 1 0 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-qtyOrdered  {
-    flex: 100px 1 0;
+    flex: 1 0 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-price {
-    flex: 100px 1 0;
+    flex: 1 0 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-controls {
-    flex: 55px 0 1;
+    flex: 0 1 55px;
     padding-left: 0px;
 }
 
