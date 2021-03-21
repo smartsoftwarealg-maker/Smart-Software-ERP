@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart Software ERP');
+        this.shellSrv.setApplicationTitle('Smart Software ERP  (pre-Alpha)');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             stockNavTree,
