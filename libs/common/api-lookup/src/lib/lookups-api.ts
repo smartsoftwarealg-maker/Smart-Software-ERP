@@ -4,11 +4,11 @@ export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const WILAYAS_URL = '/lookups/wilayas';
 export const NATIONALITIES_URL = '/lookups/nationalities';
 
-export const EDUCATION_LEVEL_URL = '/educlevels';
-export const DIPLOMAS_URL = '/diplomas';
+export const EDUCATION_LEVEL_URL = '/lookups/educationlevels';
+export const DIPLOMAS_URL = '/lookups/diplomas';
 export const POSTS_URL = '/posts';
-export const CATEGORIES_URL = '/categories';
-export const SERVICES_URL = '/services';
+export const CATEGORIES_URL = '/lookups/categories';
+export const SERVICES_URL = '/lookups/services';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
 
