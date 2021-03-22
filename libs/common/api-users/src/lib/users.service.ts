@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {User, USER_URL} from './user-api';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -13,4 +14,7 @@ export class UserService extends BaseEntityExtendedService<User> {
         super(httpSrv, USER_URL);
     }
 
+    public updatePassword(user: User): Observable<{ count: number } > {
+        return this.httpSrv.post('/password', user);
+    }
 }

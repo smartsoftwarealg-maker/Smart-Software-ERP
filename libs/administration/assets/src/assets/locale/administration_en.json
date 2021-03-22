@@ -50,5 +50,15 @@
     "SELECT_APP": "Select an application",
     "FILENAME": "Filename",
     "EDIT_REPORT_CATALOG": "Edit report catalog",
-    "REPORT_CATALOG": "Report catalog"
+    "REPORT_CATALOG": "Report catalog",
+    "COMPANIES": "Companies",
+    "CENTERS": "Centers",
+    "BANKS": "Banks",
+    "USERS": "Users",
+    "USERNAME": "User name",
+    "MANAGER": "Admin",
+    "BLOCKED": "Blocked",
+    "FULLNAME": "Full name",
+    "UPDATE_PASSWORD": "Update password",
+    "PASSWORD": "Password"
 }

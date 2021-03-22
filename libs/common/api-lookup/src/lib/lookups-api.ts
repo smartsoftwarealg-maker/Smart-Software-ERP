@@ -105,6 +105,7 @@ export interface Subclass {
 
 export interface Lot {
     id: number;
+    storeId?: number;
     description: string;
 }
 

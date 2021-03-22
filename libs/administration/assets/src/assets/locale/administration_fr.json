@@ -50,5 +50,15 @@
     "SELECT_APP": "Sélectionnez une application",
     "FILENAME": "Nom de fichier",
     "EDIT_REPORT_CATALOG": "Modifier le catalogue de rapports",
-    "REPORT_CATALOG": "Catalogue de rapports"
+    "REPORT_CATALOG": "Catalogue de rapports",
+    "COMPANIES": "Entreprises",
+    "CENTERS": "Centres",
+    "BANKS": "Banques",
+    "USERS": "Utilisateurs",
+    "USERNAME": "Nom d'utilisateur",
+    "MANAGER": "Admin",
+    "BLOCKED": "Bloqué",
+    "FULLNAME": "Nom complet",
+    "UPDATE_PASSWORD": "Mettre à jour le mot de passe",
+    "PASSWORD": "Mot de passe"
 }
