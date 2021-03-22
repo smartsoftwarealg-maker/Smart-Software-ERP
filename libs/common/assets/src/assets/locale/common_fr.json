@@ -49,7 +49,7 @@
     "EDIT": "Éditer",
     "DELETE": "Supprimer",
 
-    "LOOKUPS": "Listes",
+    "LOOKUPS": "Tables",
     "SETTINGS":"Paramètres",
 
     "USERNAME": "Utilisateur",
@@ -92,7 +92,7 @@
     "CATEGORIES": "Catégories",
     "DIPLOMAS": "Diplômes",
     "EDUCATION_LEVELS": "Niveaux d'éducation",
-    "MARITAL_STATUS": "État civil",
+    "MARITAL_STATUS": "Situations familiales",
     "NATIONALITIES": "Nationalités",
     "SERVICES": "Services",
 
