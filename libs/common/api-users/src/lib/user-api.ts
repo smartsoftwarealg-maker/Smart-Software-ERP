@@ -6,6 +6,7 @@ export interface User {
     fullName: string;
     manager: boolean;
     blocked: boolean;
+    password?: string;
     androidLicense?: string;
 }
 

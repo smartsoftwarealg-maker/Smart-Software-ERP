@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+            <mat-form-field id="description" class="value">
+                <mat-label translate>ADMINISTRATION_USERNAME</mat-label>
+                <input matInput formControlName="description" type="text" autofocus required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="fullName" class="value">
+                <mat-label translate>ADMINISTRATION_FULLNAME</mat-label>
+                <input matInput formControlName="fullName" type="text" maxlength="40">
+                <mat-error *ngIf="form.controls['fullName'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            </mat-form-field>
+
+            <div id="manager" class="default-100 sm-100">
+                <mat-checkbox formControlName="manager" translate>ADMINISTRATION_MANAGER</mat-checkbox>
+            </div>
+
+            <div id="blocked" class="default-100 sm-100">
+                <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+            </div>
+
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="validId">
+    <fieldset>
+        <legend><span translate>ADMINISTRATION_UPDATE_PASSWORD</span>:</legend>
+        <mat-form-field class="value">
+            <mat-label translate>ADMINISTRATION_PASSWORD</mat-label>
+            <input matInput [formControl]="pwd1" type="password" maxlength="40">
+        </mat-form-field>
+        <mat-form-field class="value">
+            <mat-label translate>CONFIRMATION</mat-label>
+            <input matInput [formControl]="pwd2" type="password" maxlength="40">
+        </mat-form-field>
+
+        <div class="button-div">
+            <button mat-raised-button color="primary" translate
+                    [disabled]="pwd1.value != pwd2.value"
+                    (click)="updatePassword()">UPDATE</button>
+        </div>
+    </fieldset>
+</mat-card>

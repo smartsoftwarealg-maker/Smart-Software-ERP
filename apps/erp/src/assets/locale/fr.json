@@ -10,5 +10,7 @@
     "SALES": "Ventes",
     "SEARCH_APP": "Accès rapide",
     "ADMINISTRATION": "Administration",
-    "PURCHASES": "Achat"
+    "PURCHASES": "Achat",
+    "UPDATE": "Mettre à jour",
+    "CONFIRMATION": "Confirmation"
 }

@@ -220,6 +220,12 @@
       ],
       "@ss/logistics/api-transaction": [
         "libs/logistics/api-transaction/src/index.ts"
+      ],
+      "@ss/administration/ui-user": [
+        "libs/administration/ui-user/src/index.ts"
+      ],
+      "@ss/administration/api-user": [
+        "libs/administration/api-user/src/index.ts"
       ]
     }
   },

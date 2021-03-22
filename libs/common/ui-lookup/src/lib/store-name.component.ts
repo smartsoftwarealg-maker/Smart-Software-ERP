@@ -50,7 +50,8 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Lot> {
     public setupForm(e: Lot): FormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            storeId: [e.storeId]
         });
     }
 }

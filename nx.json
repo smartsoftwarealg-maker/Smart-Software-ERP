@@ -127,6 +127,8 @@
     "purchases-api-reception": { "tags": [] },
     "purchases-ui-purchase-order": { "tags": [] },
     "purchases-ui-reception": { "tags": [] },
-    "logistics-api-transaction": { "tags": [] }
+    "logistics-api-transaction": { "tags": [] },
+    "administration-ui-user": { "tags": [] },
+    "administration-api-user": { "tags": [] }
   }
 }

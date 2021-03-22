@@ -50,5 +50,15 @@
     "SELECT_APP": "اختر تطبيق",
     "FILENAME": "الملفآ",
     "EDIT_REPORT_CATALOG": "تحرير كتالوج التقرير",
-    "REPORT_CATALOG": "كتالوج التقارير"
+    "REPORT_CATALOG": "كتالوج التقارير",
+    "COMPANIES": "الشركات",
+    "CENTERS": "المراكز",
+    "BANKS": "المصارف",
+    "USERS": "المستخدمون",
+    "USERNAME": "اسم المستخدم",
+    "MANAGER": "مسؤول",
+    "BLOCKED": "ممنوع",
+    "FULLNAME": "الاسم الكامل",
+    "UPDATE_PASSWORD": "تغيير كلمة السر",
+    "PASSWORD": "كلمة السر"
 }
