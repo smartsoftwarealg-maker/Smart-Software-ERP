@@ -12,7 +12,7 @@ import {Lot, LotsService} from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-consumption-lines-list',
-    styleUrls: ['./consumption-lines-list.component.scss'],
+    styleUrls: ['./consumption-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './consumption-lines-list.component.html'
 })
 export class ConsumptionLinesListComponent implements OnInit {

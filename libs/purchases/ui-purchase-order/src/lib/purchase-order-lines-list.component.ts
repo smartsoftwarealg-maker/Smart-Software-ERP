@@ -14,7 +14,7 @@ import {PurchaseOrderLinesService} from "@ss/purchases/api-purchase-order";
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './purchase-order-lines-list.component.html',
-  styleUrls: ['./purchase-order-lines-list.component.scss']
+  styleUrls: ['./purchase-order-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss']
 })
 export class PurchaseOrderLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();

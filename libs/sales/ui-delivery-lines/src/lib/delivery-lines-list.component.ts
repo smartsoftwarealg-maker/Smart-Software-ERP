@@ -12,7 +12,7 @@ import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 
 @Component({
     selector: 'ss-delivery-lines-list',
-    styleUrls: ['./delivery-lines-list.component.scss'],
+    styleUrls: ['./delivery-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './delivery-lines-list.component.html'
 })
 export class DeliveryLinesListComponent implements OnInit {

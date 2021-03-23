@@ -14,7 +14,7 @@ import {Lot, LotsService} from "@ss/common/api-lookup";
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './order-lines-list.component.html',
-  styleUrls: ['./order-lines-list.component.scss']
+  styleUrls: ['./order-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss']
 })
 export class OrderLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
