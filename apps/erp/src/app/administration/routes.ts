@@ -19,7 +19,7 @@ import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
 import {CardComponent} from "@ss/logistics/ui-card";
 import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
 import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
-import {UserDetailComponent, UserListComponent} from "../../../../../libs/administration/ui-user/src";
+import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
 
 export const mainRoutes: Routes = [
     {
