@@ -8,3 +8,4 @@ export * from './lib/http.service';
 export * from './lib/material.module';
 export * from './lib/FormValidators';
 export * from './lib/redirect-to-parent.component';
+export * from './lib/can-deactivate.service';

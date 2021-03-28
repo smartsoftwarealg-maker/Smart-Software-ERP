@@ -24,7 +24,7 @@ import {
     STOCK_UNITS_URL,
     STOCK_VAT_URL
 } from '../constants';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {Routes} from '@angular/router';
 import {
@@ -85,6 +85,7 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: ArticleDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -104,12 +105,14 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryEntryLinesDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryEntryDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -129,12 +132,14 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryExitLinesDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryExitDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -160,6 +165,7 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: ConsumptionDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -179,12 +185,14 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + "/:id",
                 component: InventoryLinesDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -202,7 +210,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AgentDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -219,7 +228,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AccountDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -236,7 +246,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AgentPriceDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -253,7 +264,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CostCenterDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -290,7 +302,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: StoreNameDetailComponent
+                component: StoreNameDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -304,7 +318,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: UnitDetailComponent
+                component: UnitDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -318,7 +334,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: MarkDetailComponent
+                component: MarkDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -332,7 +350,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: ClassDetailComponent
+                component: ClassDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -346,7 +366,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: SubclassDetailComponent
+                component: SubclassDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -360,7 +382,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: VatDetailComponent
+                component: VatDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -374,7 +398,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: AgentTypeDetailComponent
+                component: AgentTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -388,7 +414,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: CompanyTypeDetailComponent
+                component: CompanyTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -402,7 +430,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: PayModeDetailComponent
+                component: PayModeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -416,7 +446,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: CityDetailComponent
+                component: CityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -430,7 +462,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: CurrencyDetailComponent
+                component: CurrencyDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -444,7 +478,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: CountryDetailComponent
+                component: CountryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -458,7 +494,9 @@ export const lookupRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: ActivityDetailComponent
+                component: ActivityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
