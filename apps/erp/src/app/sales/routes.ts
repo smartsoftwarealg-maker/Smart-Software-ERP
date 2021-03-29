@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {DeliveryDetailComponent, DeliveryListComponent} from '@ss/sales/ui-delivery';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {DeliveryLinesDetailComponent} from '@ss/sales/ui-delivery-lines';
 import {docInfoRoutes} from "../administration/routes";
 import {OrderListComponent} from '@ss/sales/ui-sales-order';
@@ -35,12 +35,14 @@ export const mainRoutes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryCancellationLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {
                 path: ':id',
                 component: DeliveryCancellationDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -65,6 +67,7 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: InvoiceCancellationDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -83,12 +86,14 @@ export const mainRoutes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InvoiceLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {
                 path: ':id',
                 component: InvoiceDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -107,12 +112,14 @@ export const mainRoutes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {
                 path: ':id',
                 component: DeliveryDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -130,12 +137,14 @@ export const mainRoutes: Routes = [
           {
               path: LINES_DETAIL_URL + '/:id',
               component: OrderLinesDetailComponent,
-              canActivate: [CanActivateService]
+              canActivate: [CanActivateService],
+              canDeactivate: [CanDeactivateService]
           },
           {
               path: ':id',
               component: OrderDetailComponent,
               canActivate: [CanActivateService],
+              canDeactivate: [CanDeactivateService],
               children: docInfoRoutes
           },
           {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

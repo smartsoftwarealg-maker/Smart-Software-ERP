@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL} from "@ss/common/api-common";
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from "@ss/common/api-common";
 import {docInfoRoutes} from "../administration/routes";
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
@@ -28,6 +28,7 @@ export const routes: Routes = [
                 path: ':id',
                 component: PurchaseOrderDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -46,7 +47,8 @@ export const routes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: ReceptionLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {
                 path: ':id',

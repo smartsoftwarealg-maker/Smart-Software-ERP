@@ -6,7 +6,7 @@ import {
     ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
     LOOKUPS_URL,
 } from '../constants';
-import {ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from "@ss/administration/ui-bank";
 import {CompanyDetailComponent, CompanyListComponent} from "@ss/administration/ui-company";
@@ -19,7 +19,7 @@ import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
 import {CardComponent} from "@ss/logistics/ui-card";
 import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
 import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
-import {UserDetailComponent, UserListComponent} from "../../../../../libs/administration/ui-user/src";
+import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
 
 export const mainRoutes: Routes = [
     {
@@ -37,7 +37,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: BankDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -54,7 +55,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SmtpDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -71,7 +73,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CompanyDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -88,7 +91,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: UserDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
         ]
     },
@@ -103,7 +107,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CenterDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -120,7 +125,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ReportCatalogDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
