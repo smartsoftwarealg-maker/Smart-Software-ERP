@@ -19,13 +19,8 @@ import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
 import {CardComponent} from "@ss/logistics/ui-card";
 import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
 import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
-<<<<<<< HEAD
-import {UserDetailComponent, UserListComponent} from "../../../../../libs/administration/ui-user/src";
-import {PostDetailComponent, PostListComponent} from "../../../../../libs/common/ui-lookup/src";
-import {RoleDetailComponent, RoleListComponent} from "../../../../../libs/common/ui-lookup/src/lib/role.component";
-=======
 import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
->>>>>>> 070be6a24dc69422f107d95a648fcceb7146ac20
+import {RoleListComponent, RoleDetailComponent} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
     {
