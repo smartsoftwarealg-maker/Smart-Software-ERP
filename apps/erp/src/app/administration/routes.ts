@@ -2,9 +2,9 @@ import {
     ADMINISTRATION_BANK_URL,
     ADMINISTRATION_CENTER_URL,
     ADMINISTRATION_COMPANY_URL,
-    ADMINISTRATION_REPORT_CATALOG_URL,
+    ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
     ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
-    LOOKUPS_URL,
+    LOOKUPS_URL, PAYROLL_POSTS_URL,
 } from '../constants';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -20,6 +20,8 @@ import {CardComponent} from "@ss/logistics/ui-card";
 import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
 import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
 import {UserDetailComponent, UserListComponent} from "../../../../../libs/administration/ui-user/src";
+import {PostDetailComponent, PostListComponent} from "../../../../../libs/common/ui-lookup/src";
+import {RoleDetailComponent, RoleListComponent} from "../../../../../libs/common/ui-lookup/src/lib/role.component";
 
 export const mainRoutes: Routes = [
     {
@@ -124,6 +126,22 @@ export const mainRoutes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: ADMINISTRATION_ROLE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: RoleListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: RoleDetailComponent,
+                canActivate: [CanActivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

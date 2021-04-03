@@ -24,4 +24,5 @@ export * from './lib/class.service';
 export * from './lib/subclass.service';
 export * from './lib/lots.service';
 export * from './lib/unit.service';
+export * from './lib/role.service';
 
