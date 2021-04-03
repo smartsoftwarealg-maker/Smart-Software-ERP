@@ -229,6 +229,9 @@
       ],
       "@ss/payroll/ui-employee-activation": [
         "libs/payroll/ui-employee-activation/src/index.ts"
+      ],
+      "@ss/administration/ui-roles": [
+        "libs/administration/ui-roles/src/index.ts"
       ]
     }
   },

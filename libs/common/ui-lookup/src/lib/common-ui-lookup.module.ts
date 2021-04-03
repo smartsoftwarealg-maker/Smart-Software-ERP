@@ -27,6 +27,7 @@ import {CityListComponent, CityDetailComponent} from "./city.component";
 import {CountryListComponent, CountryDetailComponent} from "./country.component";
 import {CurrencyListComponent, CurrencyDetailComponent} from "./currency.component";
 import {ActivityDetailComponent, ActivityListComponent} from "./activity.component";
+import {RoleDetailComponent, RoleListComponent} from "./role.component";
 
 @NgModule({
     imports: [
@@ -87,8 +88,9 @@ import {ActivityDetailComponent, ActivityListComponent} from "./activity.compone
         CurrencyListComponent,
         CurrencyDetailComponent,
         ActivityListComponent,
-        ActivityDetailComponent
-
+        ActivityDetailComponent,
+        RoleListComponent,
+        RoleDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -141,7 +143,9 @@ import {ActivityDetailComponent, ActivityListComponent} from "./activity.compone
         CurrencyListComponent,
         CurrencyDetailComponent,
         ActivityListComponent,
-        ActivityDetailComponent
+        ActivityDetailComponent,
+        RoleListComponent,
+        RoleDetailComponent
     ]
 })
 export class CommonUiLookupModule {

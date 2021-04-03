@@ -11,5 +11,4 @@ export class CityService extends BaseEntityService<City> {
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, CITY_URL);
     }
-
 }

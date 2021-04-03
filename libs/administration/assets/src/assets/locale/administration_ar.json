@@ -60,5 +60,7 @@
     "BLOCKED": "ممنوع",
     "FULLNAME": "الاسم الكامل",
     "UPDATE_PASSWORD": "تغيير كلمة السر",
-    "PASSWORD": "كلمة السر"
+    "PASSWORD": "كلمة السر",
+    "ROLES": "الوظائف",
+    "ROLE": "الوظيفة"
 }

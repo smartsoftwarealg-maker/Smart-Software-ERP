@@ -60,5 +60,7 @@
     "BLOCKED": "Bloqué",
     "FULLNAME": "Nom complet",
     "UPDATE_PASSWORD": "Mettre à jour le mot de passe",
-    "PASSWORD": "Mot de passe"
+    "PASSWORD": "Mot de passe",
+    "ROLES": "Roles",
+    "ROLE": "Role"
 }

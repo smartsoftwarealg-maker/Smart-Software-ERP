@@ -3433,6 +3433,37 @@
           }
         }
       }
+    },
+    "administration-ui-roles": {
+      "projectType": "library",
+      "root": "libs/administration/ui-roles",
+      "sourceRoot": "libs/administration/ui-roles/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/administration/ui-roles/tsconfig.lib.json",
+              "libs/administration/ui-roles/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/administration/ui-roles/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/administration/ui-roles"],
+          "options": {
+            "jestConfig": "libs/administration/ui-roles/jest.config.js",
+
+
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
 import {UserListComponent} from "./user-list.component";
 import {UserDetailComponent} from "./user-detail.component";
+import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import {UserDetailComponent} from "./user-detail.component";
         MaterialModule,
         CommonUiLangModule,
         UiPaginationModule,
+        CommonUiAutoCompleteModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule
     ],

@@ -43,7 +43,72 @@
         <div class="button-div">
             <button mat-raised-button color="primary" translate
                     [disabled]="pwd1.value != pwd2.value"
-                    (click)="updatePassword()">UPDATE</button>
+                    (click)="updatePassword()">UPDATE
+            </button>
         </div>
     </fieldset>
 </mat-card>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="openedPanel = 0">
+        <mat-expansion-panel-header>
+            <mat-panel-title [class.opened]="openedPanel == 0">
+                <panel translate>ADMINISTRATION_ROLES</panel>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="list-container">
+            <mat-selection-list color="primary" multiple="false"
+            (selectionChange)="roleSelectionChanged($event)">
+                <mat-list-option *ngFor="let role of userRoles"
+                                 [value]="role.id"> {{ role.description }} </mat-list-option>
+            </mat-selection-list>
+        </div>
+        <div class="role-ctrl">
+            <button mat-mini-fab color="accent"
+            [disabled]="roleAC.value == null"
+            (click)="addRole()"><i class="fas fa-plus-circle"></i></button>
+
+
+            <mat-form-field >
+                <mat-label translate>ADMINISTRATION_ROLE</mat-label>
+                <ss-auto-complete matInput
+                                  #roleAC
+                                  [formControl]="roleCtrl"
+                                  [model]="roleAutoComplete">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab color="warn" [disabled]="selectedRole < 1" (click)="deleteRole()"><i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="openedPanel = 1">
+        <mat-expansion-panel-header>
+            <mat-panel-title [class.opened]="openedPanel == 1">
+                <panel translate>ADMINISTRATION_CENTERS</panel>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="list-container">
+            <mat-selection-list color="primary" multiple="false"
+                                (selectionChange)="centerSelectionChanged($event)">
+                <mat-list-option *ngFor="let center of userCenters"
+                                 [value]="center.id"> {{ center.description }} </mat-list-option>
+            </mat-selection-list>
+        </div>
+        <div class="role-ctrl">
+            <button mat-mini-fab color="accent"
+                    [disabled]="centerAC.value == null"
+                    (click)="addCenter()"><i class="fas fa-plus-circle"></i></button>
+
+            <mat-form-field >
+                <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                <ss-auto-complete matInput
+                                  #centerAC
+                                  [formControl]="centerCtrl"
+                                  [model]="centerAutoComplete">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab color="warn" [disabled]="selectedCenter < 1" (click)="deleteCenter()"><i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

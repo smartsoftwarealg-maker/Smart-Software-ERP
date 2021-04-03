@@ -32,8 +32,7 @@ import {
 } from '@ss/common/ui-lookup';
 import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
-import { PersonListComponent, PersonDetailComponent} from '@ss/payroll/ui-person';
-import { NgModule } from '@angular/core';
+import { PersonListComponent, PersonDetailComponent } from '@ss/payroll/ui-person';
 
 export const mainRoutes: Routes = [
     {
