@@ -129,6 +129,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         obs.subscribe(() => {
             this.shellSrv.setLoading(false);
             //this.shellSrv.goBack();
+            this.form.markAsUntouched();
             this.snackBarSrv.showSuccessMessage();
         }, err => {
             this.snackBarSrv.showFailureMessage();

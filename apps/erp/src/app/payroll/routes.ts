@@ -50,7 +50,7 @@ export const mainRoutes: Routes = [
             {
                 path: PAYROLL_PERSONS_ACTIVATION,
                 canActivate: [CanActivateService],
-                loadChildren: () => import('@ss/payroll/ui-person').then(m => m.EmployeeActivationModule),
+                loadChildren: () => import('@ss/payroll/ui-employee-activation').then(m => m.PayrollUiEmployeeActivationModule),
             },
             {
                 path: ':id',

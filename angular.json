@@ -3405,6 +3405,35 @@
         }
       }
     },
+    "payroll-ui-employee-activation": {
+      "projectType": "library",
+      "root": "libs/payroll/ui-employee-activation",
+      "sourceRoot": "libs/payroll/ui-employee-activation/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/payroll/ui-employee-activation/tsconfig.lib.json",
+              "libs/payroll/ui-employee-activation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/payroll/ui-employee-activation/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/payroll/ui-employee-activation"],
+          "options": {
+            "jestConfig": "libs/payroll/ui-employee-activation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "administration-ui-roles": {
       "projectType": "library",
       "root": "libs/administration/ui-roles",
@@ -3429,6 +3458,8 @@
           "outputs": ["coverage/libs/administration/ui-roles"],
           "options": {
             "jestConfig": "libs/administration/ui-roles/jest.config.js",
+
+
             "passWithNoTests": true
           }
         }
