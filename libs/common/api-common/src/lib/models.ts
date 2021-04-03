@@ -60,6 +60,20 @@ export interface Role {
     description: string;
 }
 
+export interface UserRole {
+    id: number;
+    userId: number;
+    roleId: number;
+    description?: string;
+}
+
+export interface UserCenter {
+    id: number;
+    userId: number;
+    centerId: number;
+    description?: string;
+}
+
 export interface DocRight {
     document: string;
     right: Right;

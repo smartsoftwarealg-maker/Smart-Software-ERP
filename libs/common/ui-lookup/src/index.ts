@@ -43,4 +43,5 @@ export * from './lib/activity.component';
 
 export * from './lib/pay-modes.component';
 
+export * from './lib/role.component';
 

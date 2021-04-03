@@ -226,6 +226,9 @@
       ],
       "@ss/administration/api-user": [
         "libs/administration/api-user/src/index.ts"
+      ],
+      "@ss/administration/ui-roles": [
+        "libs/administration/ui-roles/src/index.ts"
       ]
     }
   },
