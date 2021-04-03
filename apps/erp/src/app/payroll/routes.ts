@@ -12,7 +12,7 @@ import {
     PAYROLL_PERSONS_ACTIVATION
 } from '../constants';
 import {
-    ABS_INDEX_URL, CanActivateService
+    ABS_INDEX_URL, CanActivateService, CanDeactivateService
 } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import { LIST_URL } from '@ss/common/api-common';
@@ -55,7 +55,8 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: PersonDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL }
         ]
@@ -76,7 +77,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: ServiceDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -92,7 +94,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: CategoryDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -108,7 +111,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: DiplomaDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -124,7 +128,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: EducationLevelDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -140,7 +145,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: MaritalStatusDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -156,7 +162,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: PostDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -172,7 +179,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: WilayaDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -188,7 +196,8 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: NationalityDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
