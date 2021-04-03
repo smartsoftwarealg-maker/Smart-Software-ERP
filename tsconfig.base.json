@@ -226,6 +226,9 @@
       ],
       "@ss/administration/api-user": [
         "libs/administration/api-user/src/index.ts"
+      ],
+      "@ss/payroll/ui-employee-activation": [
+        "libs/payroll/ui-employee-activation/src/index.ts"
       ]
     }
   },

@@ -32,7 +32,8 @@ import {
 } from '@ss/common/ui-lookup';
 import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
-import { PersonListComponent, PersonDetailComponent, EmployeeActivationComponent } from '@ss/payroll/ui-person';
+import { PersonListComponent, PersonDetailComponent} from '@ss/payroll/ui-person';
+import { NgModule } from '@angular/core';
 
 export const mainRoutes: Routes = [
     {
@@ -50,7 +51,7 @@ export const mainRoutes: Routes = [
             {
                 path: PAYROLL_PERSONS_ACTIVATION,
                 canActivate: [CanActivateService],
-                loadChildren: () => import('@ss/payroll/ui-person').then(m => m.EmployeeActivationModule),
+                loadChildren: () => import('@ss/payroll/ui-employee-activation').then(m => m.PayrollUiEmployeeActivationModule),
             },
             {
                 path: ':id',
