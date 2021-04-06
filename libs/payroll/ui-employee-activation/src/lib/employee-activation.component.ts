@@ -11,7 +11,7 @@ import { EmployeeActivation, EmployeeActivationService, PersonService, Person as
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ACTIVATION_URL, DEACTIVATION_URL } from '../constants';
+import { ACTIVATION_URL, DEACTIVATION_URL } from './constants';
 
 // frontend only
 interface Person extends IPerson {
