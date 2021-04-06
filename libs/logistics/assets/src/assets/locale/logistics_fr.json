@@ -91,5 +91,7 @@
     "CREDIT": "Credit",
     "AGENT_DEBTS": "Creances",
     "QTY_ORDERED": "Quantité commandée",
-    "VAT": "TVA"
+    "VAT": "TVA",
+    "SUPPLIER": "Fournisseuse",
+    "PAY_METHOD": "Mode de paiement"
 }

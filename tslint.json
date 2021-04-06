@@ -15,6 +15,7 @@
         "deprecation": {
             "severity": "warn"
         },
+        "quotemark": [true, "single", "avoid-escape", "avoid-template"],
         "forin": true,
         "import-blacklist": [
             true,

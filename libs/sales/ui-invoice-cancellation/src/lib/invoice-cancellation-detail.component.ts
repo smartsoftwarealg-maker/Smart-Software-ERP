@@ -1,22 +1,23 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
-import {fillObject, LoginService} from "@ss/common/api-common";
-import {DatePipe} from "@angular/common";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {MatDialog} from "@angular/material/dialog";
-import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
-import {InvoiceCancellationLinesListComponent} from "./invoice-cancellation-lines-list.component";
-import {CInvoice} from "@ss/sales/api-invoice-cancellation";
-import {InvoiceCancellationService} from "@ss/sales/api-invoice-cancellation";
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {fillObject, LoginService} from '@ss/common/api-common';
+import {DatePipe} from '@angular/common';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {MatDialog} from '@angular/material/dialog';
+import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import {InvoiceCancellationLinesListComponent} from './invoice-cancellation-lines-list.component';
+import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 
 @Component({
@@ -24,19 +25,20 @@ import {InvoiceCancellationService} from "@ss/sales/api-invoice-cancellation";
     styleUrls: ['./invoice-cancellation-detail.component.scss'],
     templateUrl: './invoice-cancellation-detail.component.html'
 })
-export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponent<CInvoice> implements OnInit {
+export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(InvoiceCancellationLinesListComponent) detail: InvoiceCancellationLinesListComponent;
 
-    private invoice: CInvoice = null;
+    private invoice: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
         keepOnToolbar: false,
-        label: "LOGISTICS_IMPORT_DOCUMENT",
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),
     }
@@ -54,7 +56,8 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
         private agentService: AgentService,
         private loginService: LoginService,
         private dialog: MatDialog,
-        private docImportService: DocImportService) {
+        private docImportService: DocImportService,
+        private payMethodSrv: PayMethodService) {
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE_CANCEL');
     }
 
@@ -70,14 +73,14 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: CInvoice) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
             b.number = 0;
             b.userID = this.loginService.userSrv.userInfo.user.id;
             b.dealer = b.userID;
-            b.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
+            b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.invoice = b;
         this.isManager = this.loginService.userSrv.userInfo.user.manager;
@@ -89,6 +92,7 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
             date: [b.date, Validators.required],
             number: [b.number, Validators.required],
             reference: [b.reference],
+            payMethod: [b.payMethod, Validators.required],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
@@ -96,7 +100,7 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
             agent: [b.agent, Validators.required],
         });
     }
-    readForm(): CInvoice {
+    readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.invoice, form)
         return form;

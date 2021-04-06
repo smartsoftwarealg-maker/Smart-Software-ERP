@@ -36,7 +36,6 @@ import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
         DeliveryDetailComponent,
     ],
     exports: [
-        DeliveryListComponent,
         DeliveryDetailComponent
     ]
 })

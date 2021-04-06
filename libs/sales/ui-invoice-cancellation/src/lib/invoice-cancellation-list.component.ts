@@ -2,22 +2,22 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
-import {AgentService} from "@ss/logistics/api-agent";
-import {Delivery} from "@ss/sales/api-delivery";
-import {InvoiceService} from "@ss/sales/api-invoice";
-import {InvoiceCancellationService} from "@ss/sales/api-invoice-cancellation";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
+import {AgentService} from '@ss/logistics/api-agent';
+import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-list',
     styleUrls: ['./invoice-cancellation-list.component.scss'],
     templateUrl: './invoice-cancellation-list.component.html'
 })
-export class InvoiceCancellationListComponent extends BaseEntityListComponent<Delivery> {
+export class InvoiceCancellationListComponent extends BaseEntityListComponent<Transaction> {
 
         public dealers: { [id: number]: string; };
         public agents: { [id: number]: string; } = {};
@@ -26,6 +26,7 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<De
             'number',
             'date',
             'agent',
+            'payMethod',
             'reference',
             'referenceDocDate',
         ];
@@ -40,11 +41,12 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<De
             public usersService: UserService,
             public agentService: AgentService,
             public langServ: LanguageService,
-            public confirmationSrv: ConfirmationDialogService) {
+            public confirmationSrv: ConfirmationDialogService,
+            private payMethodSrv: PayMethodService) {
             super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_INVOICE_CANCELLATION');
         }
 
-        processLoadedData(data: Delivery[]): Observable<Delivery[]> {
+        processLoadedData(data: Transaction[]): Observable<Transaction[]> {
             return this.agentService.getByIDList(data.map(x => x.agent))
                 .pipe(
                     tap(x => x.forEach(e => this.agents[e.id] = e.denomination)),
@@ -62,4 +64,8 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<De
             this.dealers = {};
             data.forEach(m => this.dealers[m.id] = m.fullName);
         }
+
+    payModeDescription(id: number) {
+        return this.payMethodSrv.getMethodDescription(id);
+    }
 }

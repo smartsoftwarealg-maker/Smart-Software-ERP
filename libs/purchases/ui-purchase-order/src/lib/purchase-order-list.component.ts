@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
-import {AgentService} from "@ss/logistics/api-agent";
-import {Transaction} from "@ss/logistics/api-transaction";
-import {PurchaseOrderService} from "@ss/purchases/api-purchase-order";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
+import {AgentService} from '@ss/logistics/api-agent';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
-  selector: 'ss-ui-order',
-  templateUrl: './purchase-order-list.component.html',
-  styleUrls: ['./purchase-order-list.component.scss']
+    selector: 'ss-ui-order',
+    templateUrl: './purchase-order-list.component.html',
+    styleUrls: ['./purchase-order-list.component.scss']
 })
 export class PurchaseOrderListComponent extends BaseEntityListComponent<Transaction> {
     public dealers: { [id: number]: string; };
@@ -24,6 +25,7 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
         'number',
         'date',
         'agent',
+        'payMethod',
         'reference',
         'referenceDocDate',
     ];
@@ -38,7 +40,8 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
         public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public confirmationSrv: ConfirmationDialogService,
+        private payMethodSrv: PayMethodService) {
         super(orderService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PURCHASES_PURCHASE_ORDER');
     }
 
@@ -60,5 +63,9 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
     onDealersLoaded(data: User[]): void {
         this.dealers = {};
         data.forEach(m => this.dealers[m.id] = m.fullName);
+    }
+
+    payModeDescription(id: number) {
+        return this.payMethodSrv.getMethodDescription(id);
     }
 }

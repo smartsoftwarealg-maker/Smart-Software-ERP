@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BaseEntityExtendedService, BaseEntityService} from "@ss/common/api-base-entity";
-import {Delivery, DELIVERY_URL} from "@ss/sales/api-delivery";
+import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
 import {HttpService} from "@ss/common/api-common";
 import {ORDER_URL} from "./sales-order-api";
 import {DELIVERY_LINE_URL, DeliveryLine} from "@ss/sales/api-delivery-lines";

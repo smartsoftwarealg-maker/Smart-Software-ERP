@@ -1,18 +1,19 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {Transaction} from "@ss/logistics/api-transaction";
-import {ReceptionService} from "@ss/purchases/api-reception";
-import {LoginService} from "@ss/common/api-common";
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {ReceptionService} from '@ss/purchases/api-reception';
+import {LoginService} from '@ss/common/api-common';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(
         public receptionService: ReceptionService,
@@ -36,7 +38,8 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
         public usersService: UserService,
         public agentService: AgentService,
         public lookupsSrv: LookupsService,
-        public readonly loginSrv: LoginService) {
+        public readonly loginSrv: LoginService,
+        private payMethodSrv: PayMethodService) {
         super(receptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_RECEPTION');
     }
 
@@ -55,6 +58,7 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
             date: [b.date || new Date(), Validators.required],
             number: [b.number, Validators.required],
             reference: [b.reference],
+            payMethod: [b.payMethod, Validators.required],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
