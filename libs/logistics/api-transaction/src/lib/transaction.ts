@@ -11,6 +11,7 @@ export interface Transaction {
     footer: string;
     reference: string;
     referenceDocDate: string;
+    payMethod: number;
     locked: string;
     creationTime: string;
 }

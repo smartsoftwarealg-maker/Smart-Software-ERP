@@ -12,6 +12,22 @@
                 <ss-date-picker formControlName="date"></ss-date-picker>
             </mat-form-field>
 
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_PAY_METHOD</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="payModeAutoCompleteModel"
+                                  formControlName="payMethod"></ss-auto-complete>
+                <mat-error
+                    *ngIf="form.controls['payMethod'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error
+                    *ngIf="form.controls['payMethod'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+
+            </mat-form-field>
+
             <mat-form-field id="reference" class="default-50 sm-100">
                 <mat-label translate>STOCK_REFERENCE</mat-label>
                 <input matInput formControlName="reference" type="text">
@@ -38,7 +54,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_SUPPLIER</mat-label>
+                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
                                   required
                                   descriptionFieldName="denomination"

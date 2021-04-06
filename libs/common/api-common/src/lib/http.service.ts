@@ -98,7 +98,7 @@ export class HttpService {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
-        if (fullURL.endsWith("NaN")) {
+        if (fullURL.endsWith('NaN')) {
             throw new Error('Invalid URI: ' + url);
         }
         return this

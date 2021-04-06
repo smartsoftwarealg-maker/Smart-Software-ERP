@@ -1,44 +1,47 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {User, UserService} from '@ss/common/api-users';
 import {fillObject, LoginService} from '@ss/common/api-common';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {Transaction} from "@ss/logistics/api-transaction";
-import {PurchaseOrderService} from "@ss/purchases/api-purchase-order";
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
-  selector: 'ss-ui-order-detail',
-  templateUrl: './purchase-order-detail.component.html',
-  styleUrls: ['./purchase-order-detail.component.scss']
+    selector: 'ss-ui-order-detail',
+    templateUrl: './purchase-order-detail.component.html',
+    styleUrls: ['./purchase-order-detail.component.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
     private order: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
 
-  constructor(        public orderService: PurchaseOrderService,
-                      public shellSrv: ShellService,
-                      public snackBarSrv: SnackBarService,
-                      public route: ActivatedRoute,
-                      public formBuilder: FormBuilder,
-                      public confirmationSrv: ConfirmationDialogService,
-                      public usersService: UserService,
-                      public lookupsSrv: LookupsService,
-                      private agentService: AgentService,
-                      private loginService: LoginService) {
-      super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
-  }
+    constructor(public orderService: PurchaseOrderService,
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public formBuilder: FormBuilder,
+                public confirmationSrv: ConfirmationDialogService,
+                public usersService: UserService,
+                public lookupsSrv: LookupsService,
+                private agentService: AgentService,
+                private loginService: LoginService,
+                private payMethodSrv: PayMethodService) {
+        super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
+    }
 
     preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
@@ -52,7 +55,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             form.number = 0;
             form.userID = this.loginService.userSrv.userInfo.user.id;
             form.dealer = form.userID;
-            form.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
+            form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.order = form;
         this.isManager = this.loginService.userSrv.userInfo.user.manager;
@@ -64,14 +67,16 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             number: [form.number, Validators.required],
             reference: [form.reference],
             referenceDocDate: [form.referenceDocDate],
+            payMethod: [form.payMethod, Validators.required],
             header: [form.header],
             footer: [form.footer],
-            dealer: [{ value: form.dealer, disabled: !this.isManager }, Validators.required],
+            dealer: [{value: form.dealer, disabled: !this.isManager}, Validators.required],
             agent: [form.agent, Validators.required],
         });
     }
+
     readForm(): Transaction {
-        const form =  super.readForm();
+        const form = super.readForm();
         fillObject(this.order, form)
         return form;
     }

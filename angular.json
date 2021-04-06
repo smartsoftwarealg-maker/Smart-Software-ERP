@@ -3458,8 +3458,35 @@
           "outputs": ["coverage/libs/administration/ui-roles"],
           "options": {
             "jestConfig": "libs/administration/ui-roles/jest.config.js",
-
-
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-api-logistics-common": {
+      "projectType": "library",
+      "root": "libs/logistics/api-logistics-common",
+      "sourceRoot": "libs/logistics/api-logistics-common/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/logistics/api-logistics-common/tsconfig.lib.json",
+              "libs/logistics/api-logistics-common/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/logistics/api-logistics-common/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/api-logistics-common"],
+          "options": {
+            "jestConfig": "libs/logistics/api-logistics-common/jest.config.js",
             "passWithNoTests": true
           }
         }

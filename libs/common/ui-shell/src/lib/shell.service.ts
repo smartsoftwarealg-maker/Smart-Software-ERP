@@ -153,7 +153,7 @@ export class ShellService {
     /**
      * Navigates by relative url, this method is a work around
      * since angular router cannot handle the '..' to go to parent
-     * @param path 
+     * @param path
      */
     public setGoBackPathByRelativeUrl(path: string) {
         this.setGoBackFn(() => {

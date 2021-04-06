@@ -1,21 +1,23 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
-import {fillObject, LoginService} from "@ss/common/api-common";
-import {DatePipe} from "@angular/common";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {MatDialog} from "@angular/material/dialog";
-import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
-import {Invoice, InvoiceService} from "@ss/sales/api-invoice";
-import {InvoiceLinesListComponent} from "./invoice-lines-list.component";
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {fillObject, LoginService} from '@ss/common/api-common';
+import {DatePipe} from '@angular/common';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {MatDialog} from '@angular/material/dialog';
+import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import {InvoiceService} from '@ss/sales/api-invoice';
+import {InvoiceLinesListComponent} from './invoice-lines-list.component';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 
 @Component({
@@ -23,19 +25,21 @@ import {InvoiceLinesListComponent} from "./invoice-lines-list.component";
     styleUrls: ['./invoice-detail.component.scss'],
     templateUrl: './invoice-detail.component.html'
 })
-export class InvoiceDetailComponent extends BaseEntityDetailComponent<Invoice> implements OnInit {
+export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(InvoiceLinesListComponent) detail: InvoiceLinesListComponent;
 
-    private invoice: Invoice = null;
+    private invoice: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
         keepOnToolbar: false,
-        label: "LOGISTICS_IMPORT_DOCUMENT",
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),
     }
@@ -53,7 +57,8 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Invoice> i
         private agentService: AgentService,
         private loginService: LoginService,
         private dialog: MatDialog,
-        private docImportService: DocImportService) {
+        private docImportService: DocImportService,
+        private payMethodSrv: PayMethodService) {
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
     }
 
@@ -69,14 +74,14 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Invoice> i
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: Invoice) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
             b.number = 0;
             b.userID = this.loginService.userSrv.userInfo.user.id;
             b.dealer = b.userID;
-            b.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
+            b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.invoice = b;
         this.isManager = this.loginService.userSrv.userInfo.user.manager;
@@ -89,13 +94,14 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Invoice> i
             number: [b.number, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
+            payMethod: [b.payMethod, Validators.required],
             header: [b.header],
             footer: [b.footer],
             dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
             agent: [b.agent, Validators.required],
         });
     }
-    readForm(): Invoice {
+    readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.invoice, form)
         return form;

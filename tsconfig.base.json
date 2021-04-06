@@ -232,6 +232,9 @@
       ],
       "@ss/administration/ui-roles": [
         "libs/administration/ui-roles/src/index.ts"
+      ],
+      "@ss/logistics/api-logistics-common": [
+        "libs/logistics/api-logistics-common/src/index.ts"
       ]
     }
   },

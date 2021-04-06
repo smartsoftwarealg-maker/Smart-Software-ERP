@@ -1,21 +1,23 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap, switchMap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
-import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
-import {fillObject, LoginService} from "@ss/common/api-common";
-import {DatePipe} from "@angular/common";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {MatDialog} from "@angular/material/dialog";
-import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
-import {DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap, switchMap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {DeliveryService} from '@ss/sales/api-delivery';
+import {fillObject, LoginService} from '@ss/common/api-common';
+import {DatePipe} from '@angular/common';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {MatDialog} from '@angular/material/dialog';
+import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 
 @Component({
@@ -23,19 +25,22 @@ import {DeliveryLinesListComponent} from "@ss/sales/ui-delivery-lines";
     styleUrls: ['./delivery-detail.component.scss'],
     templateUrl: './delivery-detail.component.html'
 })
-export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery> implements OnInit {
+export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(DeliveryLinesListComponent) detail: DeliveryLinesListComponent;
 
-    private delivery: Delivery = null;
+    private delivery: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
+
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
         keepOnToolbar: false,
-        label: "LOGISTICS_IMPORT_DOCUMENT",
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),
     }
@@ -53,7 +58,8 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         private agentService: AgentService,
         private loginService: LoginService,
         private dialog: MatDialog,
-        private docImportService: DocImportService) {
+        private docImportService: DocImportService,
+        private payMethodSrv: PayMethodService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
 
@@ -69,14 +75,14 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: Delivery) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
             b.number = 0;
             b.userID = this.loginService.userSrv.userInfo.user.id;
             b.dealer = b.userID;
-            b.date = new DatePipe("en").transform(new Date(), "dd/MM/yyyy");
+            b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.delivery = b;
         this.isManager = this.loginService.userSrv.userInfo.user.manager;
@@ -90,12 +96,13 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Delivery>
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
+            payMethod: [b.payMethod, Validators.required],
             footer: [b.footer],
             dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
             agent: [b.agent, Validators.required],
         });
     }
-    readForm(): Delivery {
+    readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.delivery, form)
         return form;

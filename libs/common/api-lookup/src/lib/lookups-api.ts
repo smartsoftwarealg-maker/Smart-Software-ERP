@@ -1,3 +1,5 @@
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
+import {User} from '@ss/common/api-users';
 
 export const VATS_URL = '/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
@@ -17,13 +19,13 @@ export const CLASSES_URL = '/lookups/classes';
 export const SUBCLASSES_URL = '/lookups/subclasses';
 export const LOTS_URL = '/lots';
 export const UNITS_URL = '/lookups/units';
-export const AGENT_TYPE_URL = "/lookups/agents";
-export const CITY_URL = "/lookups/cities";
-export const COUNTRY_URL = "/lookups/countries";
-export const CURRENCY_URL = "/lookups/currencies";
-export const COMPANY_TYPE_URL = "/lookups/companies";
-export const PAY_MODE_URL = "/lookups/paymodes";
-export const ACTIVITY_URL = "/lookups/activities";
+export const AGENT_TYPE_URL = '/lookups/agents';
+export const CITY_URL = '/lookups/cities';
+export const COUNTRY_URL = '/lookups/countries';
+export const CURRENCY_URL = '/lookups/currencies';
+export const COMPANY_TYPE_URL = '/lookups/companies';
+export const PAY_MODE_URL = '/lookups/paymodes';
+export const ACTIVITY_URL = '/lookups/activities';
 export const FUNDS_URL = '/lookups/funds';
 export const BANKS_URL = '/banks';
 export const AGENT_PRICES_URL = '/inventory/agentprices';
@@ -142,6 +144,13 @@ export interface CompanyType {
 export interface PayMode {
     id: number;
     description: string;
+}
+
+export interface PayMethod {
+    id: number;
+    description: string;
+    payMode: number;
+    modeDescription?: string;
 }
 
 export interface Activity {

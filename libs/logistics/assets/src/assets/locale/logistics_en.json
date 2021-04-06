@@ -95,5 +95,7 @@
     "CREDIT": "Credit",
     "AGENT_DEBTS": "Debts",
     "QTY_ORDERED": "Quantity Ordered",
-    "VAT": "VAT"
+    "VAT": "VAT",
+    "PAY_METHOD": "Pay method",
+    "SUPPLIER": "Supplier"
 }

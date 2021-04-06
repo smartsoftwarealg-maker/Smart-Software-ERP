@@ -130,6 +130,7 @@
     "logistics-api-transaction": { "tags": [] },
     "administration-ui-user": { "tags": [] },
     "administration-api-user": { "tags": [] },
+    "logistics-api-logistics-common": { "tags": [] },
     "payroll-ui-employee-activation": { "tags": [] },
     "administration-ui-roles": { "tags": [] }
   }

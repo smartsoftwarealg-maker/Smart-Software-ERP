@@ -23,6 +23,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="payMethod">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ payModeDescription(e.payMethod) }}
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="referenceDocDate">
         <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
         <mat-cell *matCellDef="let e">
@@ -31,7 +38,7 @@
     </ng-container>
 
     <ng-container matColumnDef="agent">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{ agents[e.agent] }}
         </mat-cell>

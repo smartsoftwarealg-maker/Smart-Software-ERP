@@ -8,6 +8,12 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="payMethod">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ payModeDescription(e.payMethod) }}
+        </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef translate>STOCK_DATE</mat-header-cell>

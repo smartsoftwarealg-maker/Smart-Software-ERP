@@ -2,14 +2,15 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ReceptionService} from "@ss/purchases/api-reception";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {Transaction} from "@ss/logistics/api-transaction";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {ReceptionService} from '@ss/purchases/api-reception';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-reception-list',
@@ -25,10 +26,11 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
     displayedColumns = [
         'number',
         'date',
+        'agent',
+        'payMethod',
         'reference',
         'referenceDocDate',
-        'dealer',
-        'agent'
+        'dealer'
     ];
 
 
@@ -41,7 +43,8 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public confirmationSrv: ConfirmationDialogService,
+        private payMethodSrv: PayMethodService) {
         super(receptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_RECEPTION');
     }
 
@@ -71,4 +74,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         data.forEach(m => this.agents[m.id] = m.denomination);
     }
 
+    payModeDescription(id: number) {
+        return this.payMethodSrv.getMethodDescription(id);
+    }
 }

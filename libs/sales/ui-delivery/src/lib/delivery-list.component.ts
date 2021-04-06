@@ -2,20 +2,22 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {Delivery, DeliveryService} from "@ss/sales/api-delivery";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
+import {AgentService} from '@ss/logistics/api-agent';
+import {DeliveryService} from '@ss/sales/api-delivery';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-list',
     styleUrls: ['./delivery-list.component.scss'],
     templateUrl: './delivery-list.component.html'
 })
-export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
+export class DeliveryListComponent extends BaseEntityListComponent<Transaction> {
 
     public dealers: { [id: number]: string; };
     public agents: { [id: number]: string; } = {};
@@ -24,6 +26,7 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
         'number',
         'date',
         'agent',
+        'payMethod',
         'reference',
         'referenceDocDate',
     ];
@@ -38,11 +41,12 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
         public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public confirmationSrv: ConfirmationDialogService,
+        private payMethodSrv: PayMethodService) {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_DELIVERY');
     }
 
-    processLoadedData(data: Delivery[]): Observable<Delivery[]> {
+    processLoadedData(data: Transaction[]): Observable<Transaction[]> {
         return this.agentService.getByIDList(data.map(x => x.agent))
             .pipe(
                 tap(x => x.forEach(e => this.agents[e.id] = e.denomination)),
@@ -59,5 +63,8 @@ export class DeliveryListComponent extends BaseEntityListComponent<Delivery> {
     onDealersLoaded(data: User[]): void {
         this.dealers = {};
         data.forEach(m => this.dealers[m.id] = m.fullName);
+    }
+    payModeDescription(id: number) {
+        return this.payMethodSrv.getMethodDescription(id);
     }
 }
