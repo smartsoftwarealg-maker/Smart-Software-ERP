@@ -4,23 +4,28 @@ import {
     ADMINISTRATION_COMPANY_URL,
     ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
     ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
-    LOOKUPS_URL, PAYROLL_POSTS_URL,
+    LOOKUPS_URL, PAYROLL_POSTS_URL, STOCK_COUNTRY_URL,
 } from '../constants';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
-import {BankDetailComponent, BankListComponent} from "@ss/administration/ui-bank";
-import {CompanyDetailComponent, CompanyListComponent} from "@ss/administration/ui-company";
-import {CenterDetailComponent, CenterListComponent} from "@ss/administration/ui-center";
-import {SmtpDetailComponent, SmtpListComponent} from "@ss/administration/ui-smtp";
-import {ReportCatalogDetailComponent, ReportCatalogListComponent} from "@ss/administration/ui-report-catalog";
-import {TotalComponent} from "@ss/logistics/ui-totals";
-import {CirculationComponent} from "@ss/logistics/ui-circulation";
-import {AgentBalanceComponent} from "@ss/logistics/ui-agent-balance";
-import {CardComponent} from "@ss/logistics/ui-card";
-import {AgentDebtsComponent} from "@ss/logistics/ui-agent-debts";
-import {UiStockInfoComponent} from "@ss/logistics/ui-stock-info";
+import {BankDetailComponent, BankListComponent} from '@ss/administration/ui-bank';
+import {CompanyDetailComponent, CompanyListComponent} from '@ss/administration/ui-company';
+import {CenterDetailComponent, CenterListComponent} from '@ss/administration/ui-center';
+import {SmtpDetailComponent, SmtpListComponent} from '@ss/administration/ui-smtp';
+import {ReportCatalogDetailComponent, ReportCatalogListComponent} from '@ss/administration/ui-report-catalog';
+import {TotalComponent} from '@ss/logistics/ui-totals';
+import {CirculationComponent} from '@ss/logistics/ui-circulation';
+import {AgentBalanceComponent} from '@ss/logistics/ui-agent-balance';
+import {CardComponent} from '@ss/logistics/ui-card';
+import {AgentDebtsComponent} from '@ss/logistics/ui-agent-debts';
+import {UiStockInfoComponent} from '@ss/logistics/ui-stock-info';
 import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
-import {RoleListComponent, RoleDetailComponent} from '@ss/common/ui-lookup';
+import {
+    RoleListComponent,
+    RoleDetailComponent,
+    CountryListComponent,
+    CountryDetailComponent
+} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
     {
@@ -43,6 +48,22 @@ export const mainRoutes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_COUNTRY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CountryListComponent
+            },
+            {
+                path: ':id',
+                component: CountryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
     {

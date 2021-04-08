@@ -93,5 +93,6 @@
     "QTY_ORDERED": "Quantité commandée",
     "VAT": "TVA",
     "SUPPLIER": "Fournisseuse",
-    "PAY_METHOD": "Mode de paiement"
+    "PAY_METHOD": "Mode de paiement",
+    "MODE": "Mode"
 }

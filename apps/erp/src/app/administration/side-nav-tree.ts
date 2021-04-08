@@ -3,8 +3,8 @@ import {
     ABS_ADMINISTRATION_BANK_URL,
     ABS_ADMINISTRATION_CENTER_URL,
     ABS_ADMINISTRATION_COMPANY_URL, ABS_ADMINISTRATION_REPORT_CATALOG, ABS_ADMINISTRATION_ROLE_URL,
-    ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL
-} from "../constants";
+    ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL, ABS_ADMIN_COUNTRY, ABS_ADMINISTRATION_CITY
+} from '../constants';
 
 export const administrationNavTree: SideNavNode = {
     name: 'ADMINISTRATION',
@@ -24,6 +24,16 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_ROLES',
             icon: 'fas fa-user',
             route: ABS_ADMINISTRATION_ROLE_URL
+        },
+        {
+            name: 'COMMON_CITIES',
+            icon: 'fas fa-city',
+            route: ABS_ADMINISTRATION_CITY
+        },
+        {
+            name: 'COMMON_COUNTRIES',
+            icon: 'fas fa-flag',
+            route: ABS_ADMIN_COUNTRY
         },
         {
             name: 'ADMINISTRATION_USERS',

@@ -1,5 +1,6 @@
 {
     "DESCRIPTION": "Description",
+    "DESCRIPTION_AR": "Description (ar)",
     "VATS": "VATs",
     "EDIT_VAT": "Edit VAT",
     "WILAYAS": "Wilayas",
@@ -111,5 +112,6 @@
     "EDIT_EDUCATION_LEVEL": "Edit education level",
     "EDIT_MARITAL_STATUS": "Edit marital status",
     "EDIT_NATIONALITY": "Edit nationality",
-    "EDIT_SERVICE": "Edit service"
+    "EDIT_SERVICE": "Edit service",
+    "LOGISTICS-ADMINISTRATION": "Logistics administration"
 }

@@ -97,5 +97,6 @@
     "QTY_ORDERED": "Quantity Ordered",
     "VAT": "VAT",
     "PAY_METHOD": "Pay method",
-    "SUPPLIER": "Supplier"
+    "SUPPLIER": "Supplier",
+    "MODE": "Mode"
 }

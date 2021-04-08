@@ -235,6 +235,9 @@
       ],
       "@ss/logistics/api-logistics-common": [
         "libs/logistics/api-logistics-common/src/index.ts"
+      ],
+      "@ss/logistics/ui-pay-method": [
+        "libs/logistics/ui-pay-method/src/index.ts"
       ]
     }
   },

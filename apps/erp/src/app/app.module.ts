@@ -11,7 +11,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL } from '@ss/common/api-common';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
-import { ADMINISTRATION_APP_URL, PAYROLL_APP_URL, PURCHASES_APP_URL, SALES_APP_URL, STOCK_APP_URL } from './constants';
+import {
+    ADMINISTRATION_APP_URL,
+    LOGISTICS_APP_URL,
+    PAYROLL_APP_URL,
+    PURCHASES_APP_URL,
+    SALES_APP_URL,
+    STOCK_APP_URL
+} from './constants';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
@@ -43,6 +50,10 @@ const routes: Routes = [
             {
                 path: PURCHASES_APP_URL,
                 loadChildren: () => import('./purchases/purchases.module').then(m => m.PurchasesModule)
+            },
+            {
+                path: LOGISTICS_APP_URL,
+                loadChildren: () => import('./logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

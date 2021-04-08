@@ -5,18 +5,18 @@ import {
     ABS_STOCK_AGENT_TYPE,
     ABS_STOCK_AGENT_URL,
     ABS_STOCK_ARTICLES_URL,
-    ABS_STOCK_CITY,
+    ABS_ADMINISTRATION_CITY,
     ABS_STOCK_CLASSES_URL,
     ABS_STOCK_COMPANY_TYPE,
     ABS_STOCK_COST_CENTER_URL,
-    ABS_STOCK_COUNTRY,
+    ABS_ADMIN_COUNTRY,
     ABS_STOCK_CURRENCY,
     ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_INVENTORY_EXIT_URL,
     ABS_STOCK_CONSUMPTION_URL,
     ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_MARKS_URL,
-    ABS_STOCK_PAY_MODE,
+    ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
@@ -99,36 +99,6 @@ export const stockNavTree: SideNavNode = {
                     icon: 'fas fa-user',
                     route: ABS_STOCK_AGENT_TYPE
                 },
-                {
-                    name: 'COMMON_COMPANY_TYPES',
-                    icon: 'fas fa-building',
-                    route: ABS_STOCK_COMPANY_TYPE
-                },
-                {
-                    name: 'COMMON_ACTIVITIES',
-                    icon: 'fab fa-app-store-ios',
-                    route: ABS_STOCK_ACTIVITY
-                },
-                {
-                    name: 'COMMON_PAY_MODES',
-                    icon: 'fas fa-money-check-edit',
-                    route: ABS_STOCK_PAY_MODE
-                },
-                {
-                    name: 'COMMON_CURRENCIES',
-                    icon: 'fas fa-coins',
-                    route: ABS_STOCK_CURRENCY
-                },
-                {
-                    name: 'COMMON_CITIES',
-                    icon: 'fas fa-city',
-                    route: ABS_STOCK_CITY
-                },
-                {
-                    name: 'COMMON_COUNTRIES',
-                    icon: 'fas fa-flag',
-                    route: ABS_STOCK_COUNTRY
-                }
             ]
         },
         {
