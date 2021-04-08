@@ -1,5 +1,6 @@
 {
     "DESCRIPTION": "الوصف",
+    "DESCRIPTION_AR": "(ع) الوصف",
     "VATS": "الضريبة المضافة",
     "EDIT_VAT": "تعديل ق.ض.م",
     "WILAYAS": "الولايات",
@@ -111,5 +112,6 @@
     "EDIT_EDUCATION_LEVEL": "تعديل مستوى دراسي",
     "EDIT_MARITAL_STATUS": "تعديل حالة اجتماعية",
     "EDIT_NATIONALITY": "تعديل جنسية",
-    "EDIT_SERVICE": "تعديل الخدمة"
+    "EDIT_SERVICE": "تعديل الخدمة",
+    "LOGISTICS-ADMINISTRATION": "إدارة الإمدادات"
 }

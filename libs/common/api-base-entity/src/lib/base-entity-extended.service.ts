@@ -18,5 +18,4 @@ export class BaseEntityExtendedService<T> extends BaseEntityService<T> {
             return of([]);
         }
     }
-
 }

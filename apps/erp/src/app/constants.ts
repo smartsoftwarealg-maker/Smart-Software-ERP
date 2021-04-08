@@ -9,6 +9,7 @@ export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
 export const PAYROLL_APP_URL = 'payroll';
 export const PURCHASES_APP_URL = 'purchases';
+export const LOGISTICS_APP_URL = 'logistics';
 
 // common
 export const STOCK_VAT_URL = 'vat';
@@ -49,7 +50,7 @@ export const STOCK_ACTIVITY_URL = 'activities';
 export const STOCK_CURRENCY_URL = 'currencies';
 export const STOCK_CITY_URL = 'cities';
 export const STOCK_COUNTRY_URL = 'countries';
-export const STOCK_PAY_MODE_URL = 'payModes';
+export const LOGISTICS_PAY_METHOD_URL = 'mpay';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -104,12 +105,13 @@ export const ABS_STOCK_STORE_NAMES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LO
 export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_UNITS_URL].join('/');
 export const ABS_STOCK_AGENT_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_AGENT_TYPE_URL].join('/');
 export const ABS_STOCK_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COMPANY_TYPE_URL].join('/');
-export const ABS_STOCK_CITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CITY_URL].join('/');
-export const ABS_STOCK_COUNTRY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COUNTRY_URL].join('/');
+export const ABS_ADMINISTRATION_CITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CITY_URL].join('/');
+export const ABS_ADMIN_COUNTRY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COUNTRY_URL].join('/');
 export const ABS_STOCK_ACTIVITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_ACTIVITY_URL].join('/');
-export const ABS_STOCK_PAY_MODE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_PAY_MODE_URL].join('/');
 export const ABS_STOCK_CURRENCY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CURRENCY_URL].join('/');
 
+//Logistics
+export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 
 // payroll
 export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');
@@ -129,4 +131,5 @@ export const ABS_SALES_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_
 export const ABS_SALES_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_INVOICE_CANCEL_URL].join('/');
 export const ABS_SALES_DELIVERY_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_CANCEL_URL].join('/');
 export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_URL].join('/');
+
 

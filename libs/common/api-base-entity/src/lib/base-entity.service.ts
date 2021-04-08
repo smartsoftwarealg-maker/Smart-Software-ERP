@@ -2,7 +2,7 @@ import {map} from 'rxjs/operators';
 import {HttpService, isString} from '@ss/common/api-common';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
-import {HttpParams} from "@angular/common/http";
+import {HttpParams} from '@angular/common/http';
 
 export class BaseEntityService<T> {
 

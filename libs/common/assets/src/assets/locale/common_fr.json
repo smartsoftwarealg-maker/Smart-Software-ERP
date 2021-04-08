@@ -1,5 +1,6 @@
 {
     "DESCRIPTION": "Description",
+    "DESCRIPTION_AR": "Description (ar)",
     "VATS": "TVA",
     "EDIT_VAT": "Modifier TVA",
     "WILAYAS": "Wilayas",
@@ -111,5 +112,6 @@
     "EDIT_EDUCATION_LEVEL": "Modifier le niveau d'éducation",
     "EDIT_MARITAL_STATUS": "Modifier l'état civil",
     "EDIT_NATIONALITY": "Modifier nationalité",
-    "EDIT_SERVICE": "Modifier service"
+    "EDIT_SERVICE": "Modifier service",
+    "LOGISTICS-ADMINISTRATION": "Administration logistique"
 }

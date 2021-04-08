@@ -18,7 +18,6 @@ import {
     STOCK_INVENTORY_EXIT_URL,
     STOCK_INVENTORY_URL,
     STOCK_MARKS_URL,
-    STOCK_PAY_MODE_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
@@ -415,22 +414,6 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: CompanyTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_PAY_MODE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: PayModeListComponent
-            },
-            {
-                path: ':id',
-                component: PayModeDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

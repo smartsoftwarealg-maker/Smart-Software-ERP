@@ -129,6 +129,7 @@ export interface City {
 export interface Country {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface Currency {

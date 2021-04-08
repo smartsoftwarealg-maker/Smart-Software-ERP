@@ -49,7 +49,8 @@ export class CountryDetailComponent extends BaseEntityDetailComponent<Country> {
     public setupForm(e: Country): FormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr, Validators.required]
         });
     }
 }
