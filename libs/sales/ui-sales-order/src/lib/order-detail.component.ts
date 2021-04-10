@@ -70,6 +70,9 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             referenceDocDate: [form.referenceDocDate],
             header: [form.header],
             footer: [form.footer],
+            discountDescription: [form.discountDescription],
+            fixedDiscount: [form.fixedDiscount || 0.0],
+            fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             dealer: [{ value: form.dealer, disabled: !this.isManager }, Validators.required],
             agent: [form.agent, Validators.required],
         });

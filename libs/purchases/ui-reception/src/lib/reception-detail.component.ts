@@ -62,6 +62,9 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
+            discountDescription: [b.discountDescription],
+            fixedDiscount: [b.fixedDiscount || 0.0],
+            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
             dealer: [b.dealer || this.loginSrv.userInfo.user.id, Validators.required],
             agent: [b.agent, Validators.required]
         });

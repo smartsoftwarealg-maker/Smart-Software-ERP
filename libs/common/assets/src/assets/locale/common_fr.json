@@ -113,5 +113,6 @@
     "EDIT_MARITAL_STATUS": "Modifier l'état civil",
     "EDIT_NATIONALITY": "Modifier nationalité",
     "EDIT_SERVICE": "Modifier service",
-    "LOGISTICS-ADMINISTRATION": "Administration logistique"
+    "LOGISTICS-ADMINISTRATION": "Administration logistique",
+    "MEMO": "Memo"
 }

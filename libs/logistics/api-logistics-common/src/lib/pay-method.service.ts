@@ -29,7 +29,7 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
                 }))
                 .subscribe(res => {
                     this._payMethods = res;
-                    this._payMethods.forEach(e => e.modeDescription = this._payModes[e.id]);
+                    this._payMethods.forEach(e => e.modeDescription = this._payModes.get(e.id));
                     console.log(res);
                 });
         }
@@ -52,7 +52,7 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
     }
 
     getModeDescription(id: number): string {
-        return this._payModes[id];
+        return this._payModes.get(id);
     }
 
     getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<PayMethod[]> {

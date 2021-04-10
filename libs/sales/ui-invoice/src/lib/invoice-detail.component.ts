@@ -97,6 +97,9 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transactio
             payMethod: [b.payMethod, Validators.required],
             header: [b.header],
             footer: [b.footer],
+            discountDescription: [b.discountDescription],
+            fixedDiscount: [b.fixedDiscount || 0.0],
+            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
             dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
             agent: [b.agent, Validators.required],
         });

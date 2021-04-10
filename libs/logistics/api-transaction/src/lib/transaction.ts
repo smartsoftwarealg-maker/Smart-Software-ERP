@@ -14,4 +14,7 @@ export interface Transaction {
     payMethod: number;
     locked: string;
     creationTime: string;
+    discountDescription?: string;
+    fixedDiscount?: number;
+    fixedDiscountVAT?: number;
 }
