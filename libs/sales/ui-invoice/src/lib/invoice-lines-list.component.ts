@@ -1,15 +1,15 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
-import {DeliveryLine} from "@ss/sales/api-delivery-lines";
-import {InvoiceLinesService} from "@ss/sales/api-invoice";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Lot, LotsService} from '@ss/common/api-lookup';
+import {DeliveryLine} from '@ss/sales/api-delivery-lines';
+import {InvoiceLinesService} from '@ss/sales/api-invoice';
 
 @Component({
     selector: 'ss-invoice-lines-list',

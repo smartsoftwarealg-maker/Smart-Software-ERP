@@ -15,7 +15,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 @Component({
     selector: 'ss-delivery-cancellation-list',
     templateUrl: './delivery-cancellation-list.component.html',
-    styleUrls: ['./delivery-cancellation-list.component.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class DeliveryCancellationListComponent extends BaseEntityListComponent<Transaction> {
     public dealers: { [id: number]: string; };
