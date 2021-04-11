@@ -15,7 +15,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 @Component({
   selector: 'ss-ui-order',
   templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  styleUrls: ['./order-list.component.scss', '../../../../common/assets/src/assets/transac-list.scss']
 })
 export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
     public dealers: { [id: number]: string; };
