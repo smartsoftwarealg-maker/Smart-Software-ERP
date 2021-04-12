@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {CCGroup, Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
@@ -28,6 +28,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
 
     constructor(public orderService: PurchaseOrderService,
                 public shellSrv: ShellService,
@@ -39,7 +40,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 public lookupsSrv: LookupsService,
                 private agentService: AgentService,
                 private loginService: LoginService,
-                private payMethodSrv: PayMethodService) {
+                private payMethodSrv: PayMethodService,
+                private currencySrv: CurrencyService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
 
@@ -73,6 +75,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             discountDescription: [form.discountDescription],
             fixedDiscount: [form.fixedDiscount || 0.0],
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
+            currency: [form.currency || 10, Validators.required],
+            currencyRate: [form.currencyRate || 1],
             dealer: [{value: form.dealer, disabled: !this.isManager}, Validators.required],
             agent: [form.agent, Validators.required],
         });
