@@ -95,5 +95,6 @@
     "VAT": "الضريبة",
     "SUPPLIER": "المورد",
     "PAY_METHOD": "طريقة الدفع",
-    "MODE": ""
+    "MODE": "النوع",
+    "EXCHANGE_RATE": "سعر الصرف"
 }

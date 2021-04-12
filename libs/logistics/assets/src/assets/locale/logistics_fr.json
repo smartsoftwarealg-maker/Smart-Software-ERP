@@ -94,5 +94,6 @@
     "VAT": "TVA",
     "SUPPLIER": "Fournisseuse",
     "PAY_METHOD": "Mode de paiement",
-    "MODE": "Mode"
+    "MODE": "Mode",
+    "EXCHANGE_RATE": "Taux conversion"
 }

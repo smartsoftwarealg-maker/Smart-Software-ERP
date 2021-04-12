@@ -30,7 +30,6 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
                 .subscribe(res => {
                     this._payMethods = res;
                     this._payMethods.forEach(e => e.modeDescription = this._payModes.get(e.id));
-                    console.log(res);
                 });
         }
     }

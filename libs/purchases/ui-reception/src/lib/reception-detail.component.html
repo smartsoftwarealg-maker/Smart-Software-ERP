@@ -102,6 +102,30 @@
                         <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
                     </mat-form-field>
                 </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span translate>LOGISTICS_CURRENCY</span>
+                    </ng-template>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                        <ss-auto-complete matInput
+                                          required
+                                          [model]="currencyCompleteModel"
+                                          formControlName="currency"></ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['currency'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                        <mat-error
+                            *ngIf="form.controls['currency'].hasError('validOption')" translate>COMMON_NO_MATCH
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field id="currencyRate" class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
+                        <input type="number" matInput formControlName="currencyRate" >
+                    </mat-form-field>
+                </mat-tab>
             </mat-tab-group>
         </form>
     </mat-card-content>

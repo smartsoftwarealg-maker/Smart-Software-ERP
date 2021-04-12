@@ -98,5 +98,6 @@
     "VAT": "VAT",
     "PAY_METHOD": "Pay method",
     "SUPPLIER": "Supplier",
-    "MODE": "Mode"
+    "MODE": "Mode",
+    "EXCHANGE_RATE": "Exchange rate"
 }

@@ -17,4 +17,6 @@ export interface Transaction {
     discountDescription?: string;
     fixedDiscount?: number;
     fixedDiscountVAT?: number;
+    currency?: number;
+    currencyRate: number
 }
