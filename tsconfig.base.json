@@ -238,7 +238,8 @@
       ],
       "@ss/logistics/ui-pay-method": [
         "libs/logistics/ui-pay-method/src/index.ts"
-      ]
+      ],
+      "@ss/logistics/ui-options": ["libs/logistics/ui-options/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

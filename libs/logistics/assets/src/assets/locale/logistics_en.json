@@ -99,5 +99,10 @@
     "PAY_METHOD": "Pay method",
     "SUPPLIER": "Supplier",
     "MODE": "Mode",
-    "EXCHANGE_RATE": "Exchange rate"
+    "EXCHANGE_RATE": "Exchange rate",
+    "MAIN_STORE": "Main store",
+    "EVAL_PRICE": "Evaluation price",
+    "INVENTORY_DATE": "Inventory date",
+    "FIFO": "FIFO",
+    "AWP": "A.W.P"
 }

@@ -114,5 +114,7 @@
     "EDIT_NATIONALITY": "Edit nationality",
     "EDIT_SERVICE": "Edit service",
     "LOGISTICS-ADMINISTRATION": "Logistics administration",
-    "MEMO": "Memo"
+    "MEMO": "Memo",
+    "EDIT_OPTION": "Edit option",
+    "OPTIONS": "Options"
 }

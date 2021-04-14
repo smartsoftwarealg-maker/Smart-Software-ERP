@@ -76,7 +76,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         );
     }
 
-    private getRouteParam(): Observable<any> {
+    protected getRouteParam(): Observable<any> {
         return this.route.params
             .pipe(
                 switchMap(p => {

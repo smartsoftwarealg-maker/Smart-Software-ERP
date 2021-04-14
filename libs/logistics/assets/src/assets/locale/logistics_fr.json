@@ -95,5 +95,10 @@
     "SUPPLIER": "Fournisseuse",
     "PAY_METHOD": "Mode de paiement",
     "MODE": "Mode",
-    "EXCHANGE_RATE": "Taux conversion"
+    "EXCHANGE_RATE": "Taux conversion",
+    "MAIN_STORE": "Magasin principal",
+    "EVAL_PRICE": "Prix evaludation stock",
+    "INVENTORY_DATE": "Date inventaire",
+    "FIFO": "FIFO",
+    "AWP": "PMP"
 }

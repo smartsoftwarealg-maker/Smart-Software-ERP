@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="eval_price" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
+                <mat-select formControlName="eval_price" required >
+                    <mat-option [value]="1">AWP</mat-option>
+                    <mat-option [value]="2">FIFO</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['eval_price'].invalid" translate>COMMON_FIELD_REQUIRED </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="storeAutoCompleteModel"
+                                  formControlName="mainStore"></ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_INVENTORY_DATE</mat-label>
+                <ss-date-picker formControlName="inventory_date"></ss-date-picker>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>

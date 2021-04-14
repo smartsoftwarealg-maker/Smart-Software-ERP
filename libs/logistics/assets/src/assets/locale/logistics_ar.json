@@ -96,5 +96,10 @@
     "SUPPLIER": "المورد",
     "PAY_METHOD": "طريقة الدفع",
     "MODE": "النوع",
-    "EXCHANGE_RATE": "سعر الصرف"
+    "EXCHANGE_RATE": "سعر الصرف",
+    "MAIN_STORE": "المخزن الرئيس",
+    "EVAL_PRICE": "سعر حساب المخزون",
+    "INVENTORY_DATE": "تاريخ الجرد",
+    "FIFO": "اﻷسبق فالأسبق",
+    "AWP": "السعر المتوسط"
 }
