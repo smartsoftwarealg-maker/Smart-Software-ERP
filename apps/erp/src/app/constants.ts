@@ -51,6 +51,7 @@ export const STOCK_CURRENCY_URL = 'currencies';
 export const STOCK_CITY_URL = 'cities';
 export const STOCK_COUNTRY_URL = 'countries';
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
+export const LOGISTICS_OPTION_URL = 'options';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -110,8 +111,10 @@ export const ABS_ADMIN_COUNTRY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_UR
 export const ABS_STOCK_ACTIVITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_ACTIVITY_URL].join('/');
 export const ABS_STOCK_CURRENCY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CURRENCY_URL].join('/');
 
+
 //Logistics
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
+export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
 
 // payroll
 export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');

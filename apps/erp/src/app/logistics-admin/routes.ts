@@ -1,15 +1,8 @@
-import {
-    ADMINISTRATION_BANK_URL,
-    ADMINISTRATION_CENTER_URL,
-    ADMINISTRATION_COMPANY_URL,
-    ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
-    ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL, LOGISTICS_PAY_METHOD_URL,
-    LOOKUPS_URL, PAYROLL_POSTS_URL, STOCK_COUNTRY_URL,
-} from '../constants';
+import {LOGISTICS_OPTION_URL, LOGISTICS_PAY_METHOD_URL, LOOKUPS_URL,} from '../constants';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
-import {PayModeDetailComponent, PayModeListComponent} from '@ss/common/ui-lookup';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
+import {OptionsDetailComponent} from '@ss/logistics/ui-options';
 
 export const mainRoutes: Routes = [
     {
@@ -31,6 +24,12 @@ export const mainRoutes: Routes = [
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
+    },
+    {
+        path: LOGISTICS_OPTION_URL,
+        component: OptionsDetailComponent,
+        canActivate: [CanActivateService],
+        canDeactivate: [CanDeactivateService]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

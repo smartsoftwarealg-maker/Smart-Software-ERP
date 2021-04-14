@@ -1,0 +1,47 @@
+export class Option {
+    id: number;
+    mainStore: number;
+    passingClient: number;
+    salesPrice1Factor: number;
+    salesPrice2Factor: number;
+    salesPrice3Factor: number;
+    calculateSalesPrices: boolean;
+    monitorClientCredit: boolean;
+    monitorUnitCredit: boolean;
+    fiscalDataRequired: boolean;
+    discountManagement: boolean;
+    discountThreshold1: number;
+    discountThreshold2: number;
+    discountThreshold3: number;
+    discountRate1: number;
+    discountRate2: number;
+    discountRate3: number;
+    ownDocumentsOnly: boolean;
+    defaultCurrency: number;
+    autoSelectStore: boolean;
+    checkPrices: boolean;
+    checkOrderedQty: boolean;
+    inventory_date: Date;
+    inventory_year: number;
+    disallow_non_stocked_order: boolean;
+    lock_printed_documents: boolean;
+    uses_units: boolean;
+    arbitrary_uninvoicing: boolean;
+    uses_lots: boolean;
+    art_accno_required: boolean;
+    two_step_reception: boolean;
+    check_chron_order: boolean;
+    SalesPrice4Factor: number;
+    SalesPrice5Factor: number;
+    generate_GL: boolean;
+    block_new_lots: boolean;
+    severe: boolean;
+    eval_price: number;
+    allow_dupl_ref: boolean;
+    service_invoice_only: boolean;
+    require_invoice_cost_center: boolean;
+    current_year: number;
+    hide_purch_price: boolean;
+    count_year: number;
+    raw_store
+}

@@ -7,7 +7,7 @@ import {
     ABS_STOCK_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL
+    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS
 } from '../constants';
 
 export const logAdminNavTree: SideNavNode = {
@@ -48,6 +48,11 @@ export const logAdminNavTree: SideNavNode = {
             name: 'COMMON_CURRENCIES',
             icon: 'fas fa-coins',
             route: ABS_STOCK_CURRENCY
+        },
+        {
+            name: 'COMMON_OPTIONS',
+            icon: 'fas fa-coins',
+            route: ABS_LOGISTICS_OPTIONS
         },
     ]
 };

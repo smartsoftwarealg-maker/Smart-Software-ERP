@@ -133,6 +133,7 @@
     "logistics-api-logistics-common": { "tags": [] },
     "payroll-ui-employee-activation": { "tags": [] },
     "administration-ui-roles": { "tags": [] },
-    "logistics-ui-pay-method": { "tags": [] }
+    "logistics-ui-pay-method": { "tags": [] },
+    "logistics-ui-options": { "tags": [] }
   }
 }
