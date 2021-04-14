@@ -1,12 +1,11 @@
-import {SideNavNode} from "@ss/common/ui-shell";
-import {DELIVERY_URL} from "@ss/sales/api-delivery";
+import {SideNavNode} from '@ss/common/ui-shell';
 import {
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL
-} from "../constants";
+} from '../constants';
 
 
 export const salesNavTree: SideNavNode = {

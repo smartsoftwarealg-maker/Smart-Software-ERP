@@ -54,20 +54,20 @@ import {
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
-import {AgentDetailComponent, AgentListComponent} from "@ss/logistics/ui-agent";
-import {AccountDetailComponent, AccountListComponent} from "@ss/logistics/ui-account";
-import {AgentPriceDetailComponent, AgentPriceListComponent} from "@ss/logistics/ui-agent-price";
-import {CostCenterDetailComponent, CostCenterListComponent} from "@ss/logistics/ui-cost-center";
-import {InventoryEntryDetailComponent, InventoryEntryListComponent} from "@ss/stock/ui-inventory-entry";
-import {InventoryEntryLinesDetailComponent} from "@ss/stock/ui-inventory-entry-lines";
-import {InventoryExitDetailComponent, InventoryExitListComponent} from "@ss/stock/ui-inventory-exit";
-import {InventoryExitLinesDetailComponent} from "@ss/stock/ui-inventory-exit-lines";
-import {ConsumptionDetailComponent, ConsumptionListComponent} from "@ss/stock/ui-consumption";
-import {ConsumptionLinesDetailComponent} from "@ss/stock/ui-consumption-lines";
-import {InventoryDetailComponent, InventoryListComponent} from "@ss/stock/ui-inventory";
-import {InventoryLinesDetailComponent} from "@ss/stock/ui-inventory-lines";
-import {ReportParamsComponent} from "@ss/common/ui-report-param";
-import {docInfoRoutes} from "../administration/routes";
+import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
+import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
+import {AgentPriceDetailComponent, AgentPriceListComponent} from '@ss/logistics/ui-agent-price';
+import {CostCenterDetailComponent, CostCenterListComponent} from '@ss/logistics/ui-cost-center';
+import {InventoryEntryDetailComponent, InventoryEntryListComponent} from '@ss/stock/ui-inventory-entry';
+import {InventoryEntryLinesDetailComponent} from '@ss/stock/ui-inventory-entry-lines';
+import {InventoryExitDetailComponent, InventoryExitListComponent} from '@ss/stock/ui-inventory-exit';
+import {InventoryExitLinesDetailComponent} from '@ss/stock/ui-inventory-exit-lines';
+import {ConsumptionDetailComponent, ConsumptionListComponent} from '@ss/stock/ui-consumption';
+import {ConsumptionLinesDetailComponent} from '@ss/stock/ui-consumption-lines';
+import {InventoryDetailComponent, InventoryListComponent} from '@ss/stock/ui-inventory';
+import {InventoryLinesDetailComponent} from '@ss/stock/ui-inventory-lines';
+import {ReportParamsComponent} from '@ss/common/ui-report-param';
+import {docInfoRoutes} from '../administration/routes';
 
 
 export const mainRoutes: Routes = [
@@ -155,7 +155,7 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + "/:id",
+                path: LINES_DETAIL_URL + '/:id',
                 component: ConsumptionLinesDetailComponent,
                 canActivate: [CanActivateService],
                 children: docInfoRoutes
@@ -181,7 +181,7 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + "/:id",
+                path: LINES_DETAIL_URL + '/:id',
                 component: InventoryLinesDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],

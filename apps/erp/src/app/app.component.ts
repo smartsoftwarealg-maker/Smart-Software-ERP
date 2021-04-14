@@ -8,7 +8,7 @@ import {payrollNavTree} from './payroll/side-nav-tree';
 import {administrationNavTree} from './administration/side-nav-tree';
 import {salesNavTree} from './sales/side-nav-tree';
 import {purchasesNavTree} from './purchases/side-nav-tree';
-import {logAdminNavTree} from "./logistics-admin/side-nav-tree";
+import {logAdminNavTree} from './logistics-admin/side-nav-tree';
 
 @Component({
     selector: 'ss-root',

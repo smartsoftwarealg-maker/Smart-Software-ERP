@@ -1,13 +1,13 @@
 import {Routes} from '@angular/router';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from "@ss/common/api-common";
-import {docInfoRoutes} from "../administration/routes";
+import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
+import {docInfoRoutes} from '../administration/routes';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
-} from "@ss/purchases/ui-purchase-order";
-import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from "../constants";
-import {ReceptionLinesDetailComponent, ReceptionListComponent} from "@ss/purchases/ui-reception";
-import {ReceptionDetailComponent} from "@ss/purchases/ui-reception";
+} from '@ss/purchases/ui-purchase-order';
+import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../constants';
+import {ReceptionLinesDetailComponent, ReceptionListComponent} from '@ss/purchases/ui-reception';
+import {ReceptionDetailComponent} from '@ss/purchases/ui-reception';
 
 export const routes: Routes = [
     {

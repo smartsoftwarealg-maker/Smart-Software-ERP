@@ -2,23 +2,23 @@ import {Routes} from '@angular/router';
 import {DeliveryDetailComponent, DeliveryListComponent} from '@ss/sales/ui-delivery';
 import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {DeliveryLinesDetailComponent} from '@ss/sales/ui-delivery-lines';
-import {docInfoRoutes} from "../administration/routes";
+import {docInfoRoutes} from '../administration/routes';
 import {OrderListComponent} from '@ss/sales/ui-sales-order';
 import {OrderDetailComponent} from '@ss/sales/ui-sales-order';
 import {OrderLinesDetailComponent} from '@ss/sales/ui-order-lines';
-import {InvoiceListComponent} from "@ss/sales/ui-invoice";
-import {InvoiceLinesDetailComponent} from "@ss/sales/ui-invoice";
-import {InvoiceDetailComponent} from "@ss/sales/ui-invoice";
+import {InvoiceListComponent} from '@ss/sales/ui-invoice';
+import {InvoiceLinesDetailComponent} from '@ss/sales/ui-invoice';
+import {InvoiceDetailComponent} from '@ss/sales/ui-invoice';
 import {
     InvoiceCancellationDetailComponent,
     InvoiceCancellationLinesDetailComponent,
     InvoiceCancellationListComponent
-} from "@ss/sales/ui-invoice-cancellation";
+} from '@ss/sales/ui-invoice-cancellation';
 import {
     DeliveryCancellationDetailComponent,
     DeliveryCancellationLinesDetailComponent,
     DeliveryCancellationListComponent
-} from "@ss/sales/ui-delivery-cancellation";
+} from '@ss/sales/ui-delivery-cancellation';
 
 export const lookupRoutes: Routes = []
 
