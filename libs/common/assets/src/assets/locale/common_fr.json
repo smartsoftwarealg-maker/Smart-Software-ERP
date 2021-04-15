@@ -116,5 +116,9 @@
     "LOGISTICS-ADMINISTRATION": "Administration logistique",
     "MEMO": "Memo",
     "EDIT_OPTION": "Modification option",
-    "OPTIONS": "Options"
+    "OPTIONS": "Options",
+    "SUSPENSION_REASONS": "Motifs de suspension",
+    "EDIT_SUSPENSION_REASON": "Modifier motif de suspension ",
+    "EMPLOYMENT_TYPES": "Types d'emploi",
+    "EDIT_EMPLOYMENT_TYPE": "Modifier type d'emploi "
 }

@@ -8,7 +8,9 @@ import {
     ABS_PAYROLL_SERVICES_URL,
     ABS_PAYROLL_WILAYAS_URL,
     ABS_PAYROLL_PERSONS_URL,
-    ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL
+    ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL,
+    ABS_PAYROLL_EMPLOYMENT_TYPE_URL,
+    ABS_PAYROLL_SUSPENSION_REASON_URL
 } from '../constants';
 import {SideNavNode} from '@ss/common/ui-shell';
 
@@ -20,6 +22,16 @@ export const payrollNavTree: SideNavNode = {
             name: 'COMMON_LOOKUPS',
             icon: 'fas fa-clipboard-list',
             children: [
+                {
+                    name: 'COMMON_EMPLOYMENT_TYPES',
+                    icon: 'fas fa-chair-office',
+                    route: ABS_PAYROLL_EMPLOYMENT_TYPE_URL
+                },
+                {
+                    name: 'COMMON_SUSPENSION_REASONS',
+                    icon: 'fas fa-chair-office',
+                    route: ABS_PAYROLL_SUSPENSION_REASON_URL
+                },
                 {
                     name: 'COMMON_POSTS',
                     icon: 'fas fa-chair-office',

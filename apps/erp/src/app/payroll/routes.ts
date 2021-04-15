@@ -9,7 +9,9 @@ import {
     PAYROLL_NATIONALITIES_URL,
     PAYROLL_SERVICES_URL,
     PAYROLL_PERSONS_URL,
-    PAYROLL_PERSONS_ACTIVATION
+    PAYROLL_PERSONS_ACTIVATION,
+    PAYROLL_EMPLOYMENT_TYPE_URL,
+    PAYROLL_SUSPENSION_REASON_URL
 } from '../constants';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
@@ -33,6 +35,8 @@ import {
 import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
 import { PersonListComponent, PersonDetailComponent } from '@ss/payroll/ui-person';
+import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from 'libs/common/ui-lookup/src/lib/employment-type.component';
+import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from 'libs/common/ui-lookup/src/lib/suspension-reason.component';
 
 export const mainRoutes: Routes = [
     {
@@ -66,6 +70,40 @@ export const mainRoutes: Routes = [
 ];
 
 export const lookupRoutes: Routes = [
+    {
+        path: PAYROLL_EMPLOYMENT_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: EmploymentTypeListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: EmploymentTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAYROLL_SUSPENSION_REASON_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SuspensionReasonListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SuspensionReasonDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: PAYROLL_SERVICES_URL,
         children: [
