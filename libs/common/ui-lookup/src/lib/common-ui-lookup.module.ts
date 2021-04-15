@@ -28,6 +28,8 @@ import {CountryListComponent, CountryDetailComponent} from "./country.component"
 import {CurrencyListComponent, CurrencyDetailComponent} from "./currency.component";
 import {ActivityDetailComponent, ActivityListComponent} from "./activity.component";
 import {RoleDetailComponent, RoleListComponent} from "./role.component";
+import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './employment-type.component';
+import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './suspension-reason.component';
 
 @NgModule({
     imports: [
@@ -90,7 +92,11 @@ import {RoleDetailComponent, RoleListComponent} from "./role.component";
         ActivityListComponent,
         ActivityDetailComponent,
         RoleListComponent,
-        RoleDetailComponent
+        RoleDetailComponent,
+        EmploymentTypeListComponent,
+        EmploymentTypeDetailComponent,
+        SuspensionReasonListComponent,
+        SuspensionReasonDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -145,7 +151,11 @@ import {RoleDetailComponent, RoleListComponent} from "./role.component";
         ActivityListComponent,
         ActivityDetailComponent,
         RoleListComponent,
-        RoleDetailComponent
+        RoleDetailComponent,
+        EmploymentTypeListComponent,
+        EmploymentTypeDetailComponent,
+        SuspensionReasonListComponent,
+        SuspensionReasonDetailComponent
     ]
 })
 export class CommonUiLookupModule {
