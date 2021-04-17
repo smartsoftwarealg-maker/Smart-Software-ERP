@@ -24,7 +24,7 @@ export const payrollNavTree: SideNavNode = {
             children: [
                 {
                     name: 'COMMON_EMPLOYMENT_TYPES',
-                    icon: 'fas fa-chair-office',
+                    icon: 'fas fa-business-time',
                     route: ABS_PAYROLL_EMPLOYMENT_TYPE_URL
                 },
                 {

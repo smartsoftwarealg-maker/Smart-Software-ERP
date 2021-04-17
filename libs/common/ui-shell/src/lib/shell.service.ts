@@ -7,13 +7,19 @@ import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 
+export enum KeepOnToolbar {
+    ALWAYS = 1, // replaces true in old version
+    NEVER = 2,
+    DYNAMIC = 3 // on large screens only
+}
+
 export interface ToolbarButton {
     icon: string;
     label: string;
     click?: () => void;
     disabled: boolean;
     visible: boolean;
-    keepOnToolbar: boolean;
+    keepOnToolbar: KeepOnToolbar; // used to be boolean, true -> ALWAYS, false -> DYNAMIC
     menuItems?: MenuItem[];
 }
 
@@ -41,16 +47,16 @@ export interface SideNavNode {
 export class ShellService {
 
     backgroundColors: string[] = [
-        '#d88f64', '#806570', '#75a079',
-        '#767ae1', '#c9c07e', '#cc718d',
-        '#a95c5c', '#9d623e', '#75799f',
+        '#d88f64', '#806570', '#610B6E',
+        '#0B6121', '#21610B', '#4B610B',
         '#709ab1', '#6a6c6a', '#73769c',
         '#238c8f', '#d17e4c', '#6e3333',
-        '#2E2E2E', '#610B38', '#610B6E',
         '#4C0B5F', '#210B61', '#0B2161',
         '#0B3861', '#0B615E', '#0B6138',
-        '#0B6121', '#21610B', '#4B610B',
-        '#5E610B', '#61380B', '#610B0B'
+        '#767ae1', '#c9c07e', '#cc718d',
+        '#a95c5c', '#9d623e', '#75799f',
+        '#2E2E2E', '#610B38', '#5E610B',
+        '#61380B', '#610B0B', '#75a079'
     ];
 
     protected showToolbarFn: () => void = null;
@@ -138,7 +144,6 @@ export class ShellService {
         }
         hash += len * 7841; // a prime
         if (hash < 0) hash = -hash;
-        console.log(text + ' = ' + hash);
         return hash % range;
     };
 
@@ -156,30 +161,32 @@ export class ShellService {
         });
     }
 
+    public navigateByRelativeUrl(path: string): void {
+        let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
+        if (url.endsWith('/')) {
+            url = url.substring(0, url.length - 1);
+        }
+        let relative = path;
+        while (relative.startsWith('..')) {
+            relative = relative.substring(2);
+            url = strDropEndUntil(url, '/');
+            if (relative.length === 0) { break; }
+            if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path); }
+            relative = relative.substring(1);
+        }
+        url += (relative.length ? '/' : '') + relative;
+        this.router.navigateByUrl(url)
+            .then()
+            .catch(e => console.log(e));
+    }
+
     /**
      * Navigates by relative url, this method is a work around
      * since angular router cannot handle the '..' to go to parent
      * @param path
      */
     public setGoBackPathByRelativeUrl(path: string) {
-        this.setGoBackFn(() => {
-            let url = strTakeUntil(strTakeUntil(this.router.url, '?'), '#');
-            if (url.endsWith('/')) {
-                url = url.substring(0, url.length - 1);
-            }
-            let relative = path;
-            while (relative.startsWith('..')) {
-                relative = relative.substring(2);
-                url = strDropEndUntil(url, '/');
-                if (relative.length === 0) { break; }
-                if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path); }
-                relative = relative.substring(1);
-            }
-            url += (relative.length ? '/' : '') + relative;
-            this.router.navigateByUrl(url)
-                .then()
-                .catch(e => console.log(e));
-        });
+        this.setGoBackFn(() => this.navigateByRelativeUrl(path));
     }
 
     public goBack(): void {

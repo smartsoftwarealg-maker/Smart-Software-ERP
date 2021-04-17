@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
@@ -39,7 +39,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),

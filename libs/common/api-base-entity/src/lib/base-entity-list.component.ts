@@ -1,5 +1,5 @@
 import { BaseEntityService } from './base-entity.service';
-import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationModel } from '@ss/common/ui-pagination';
 import { Directive, OnDestroy, OnInit } from '@angular/core';
@@ -27,7 +27,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         label: 'COMMON_REFRESH',
         disabled: false,
         visible: true,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => {
             this.refresh();
         }
@@ -37,7 +37,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         label: 'COMMON_ADD',
         disabled: false,
         visible: true,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.showDetail(0)
     };
     public editButton: ToolbarButton = {
@@ -45,7 +45,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         label: 'COMMON_EDIT_SELECTED',
         disabled: true,
         visible: true,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.edit()
     };
     public deleteButton: ToolbarButton = {
@@ -53,7 +53,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         label: 'COMMON_DEL_SELECTED',
         disabled: true,
         visible: true,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.deleteSelected()
     };
     //
@@ -144,6 +144,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         const id = row ? row.id || 0 : 0;
         this.select(id)
     }
+
     public select(id: number): void {
         if (id === this.selected) {
             this.selected = null;
@@ -152,8 +153,13 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
         const itemControlsOn = this.selected != null && this.selected > 0;
-        this.shellSrv.setButtonEnabled(this.editButton, itemControlsOn);
-        this.shellSrv.setButtonEnabled(this.deleteButton, itemControlsOn);
+        // to avoid calling up shellUpdate twice, i will replace the next 2 lines with a better code
+        // this.shellSrv.setButtonEnabled(this.editButton, itemControlsOn);
+        // this.shellSrv.setButtonEnabled(this.deleteButton, itemControlsOn);
+        // this removes calling updateShell twice
+        this.editButton.disabled = !itemControlsOn;
+        this.deleteButton.disabled = !itemControlsOn;
+        this.shellSrv.updateShell();
     }
 
     public edit() {
