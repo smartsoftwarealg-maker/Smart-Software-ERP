@@ -6,12 +6,12 @@ import { LookupsService, EmploymentType, SuspensionReason } from '@ss/common/api
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { LanguageService } from '@ss/common/ui-lang';
-import { ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
 import { EmployeeActivation, EmployeeActivationService, PersonService, Person as IPerson } from '@ss/payroll/api-person';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ACTIVATION_URL, DEACTIVATION_URL } from './constants';
+import { ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-person';
 
 // frontend only
 interface Person extends IPerson {
@@ -28,7 +28,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     public activateButton: ToolbarButton = {
         disabled: false,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'PAYROLL_ACTIVATE_EMP',
         icon: 'fas fa-play',
         visible: false,
@@ -37,7 +37,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     public deactivateButton: ToolbarButton = {
         disabled: false,
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'PAYROLL_DEACTIVATE_EMP',
         icon: 'fas fa-pause',
         visible: false,

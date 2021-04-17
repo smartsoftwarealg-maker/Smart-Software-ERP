@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Person as IPerson, PersonService} from '@ss/payroll/api-person';
-import {Observable, of} from "rxjs";
-import {switchMap, tap} from "rxjs/operators";
-import {LookupsService} from "@ss/common/api-lookup";
-import {LanguageService} from "@ss/common/ui-lang";
-import {DomSanitizer} from "@angular/platform-browser";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import { Component, OnInit } from '@angular/core';
+import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Person as IPerson, PersonService } from '@ss/payroll/api-person';
+import { Observable, of } from "rxjs";
+import { switchMap, tap } from "rxjs/operators";
+import { LookupsService } from "@ss/common/api-lookup";
+import { LanguageService } from "@ss/common/ui-lang";
+import { DomSanitizer } from "@angular/platform-browser";
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService } from '@ss/common/api-common';
+import { ACTIVATION_LIST_URL } from '@ss/payroll/api-person';
 
 interface Lookup {
     id: number;
@@ -28,7 +29,7 @@ interface Person extends IPerson {
     styleUrls: ['./person-list.component.scss'],
     templateUrl: './person-list.component.html'
 })
-export class PersonListComponent extends BaseEntityListComponent<IPerson> {
+export class PersonListComponent extends BaseEntityListComponent<IPerson> implements OnInit {
 
     public displayedColumns = [
         'photo',
@@ -38,6 +39,14 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         'address',
         'maritalStatus'
     ];
+
+    gotoActivationButton: ToolbarButton = {
+        disabled: true,
+        visible: true,
+        icon: 'fas fa-play',
+        keepOnToolbar: KeepOnToolbar.NEVER,
+        label: 'PAYROLL_EMP_ACTIVATION_SUSPENSION'
+    };
 
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
@@ -55,6 +64,17 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> {
         public domSanitizer: DomSanitizer,
         public httpSrv: HttpService) {
         super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_LIST');
+    }
+
+    ngOnInit(): void {
+        super.ngOnInit();
+        this.gotoActivationButton.click = () => this.shellSrv.navigateByRelativeUrl(ACTIVATION_LIST_URL + '/' + this.selected);
+        this.shellSrv.addButton(this.gotoActivationButton);
+    }
+
+    public select(id: number): void {
+        this.gotoActivationButton.disabled = id == null || id < 1;
+        super.select(id);
     }
 
     preload(): Observable<any> {

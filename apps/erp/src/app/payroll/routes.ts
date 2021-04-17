@@ -9,7 +9,7 @@ import {
     PAYROLL_NATIONALITIES_URL,
     PAYROLL_SERVICES_URL,
     PAYROLL_PERSONS_URL,
-    PAYROLL_PERSONS_ACTIVATION,
+    PAYROLL_PERSONS_ACTIVATION_URL,
     PAYROLL_EMPLOYMENT_TYPE_URL,
     PAYROLL_SUSPENSION_REASON_URL
 } from '../constants';
@@ -52,7 +52,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: PAYROLL_PERSONS_ACTIVATION,
+                path: PAYROLL_PERSONS_ACTIVATION_URL,
                 canActivate: [CanActivateService],
                 loadChildren: () => import('@ss/payroll/ui-employee-activation').then(m => m.PayrollUiEmployeeActivationModule),
             },
