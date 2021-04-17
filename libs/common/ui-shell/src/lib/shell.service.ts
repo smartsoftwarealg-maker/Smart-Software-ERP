@@ -41,17 +41,16 @@ export interface SideNavNode {
 export class ShellService {
 
     backgroundColors: string[] = [
-        '#606a6c', '#903e62', '#336033',
-        '#d0648f', '#707578', '#7Fa079',
-        '#70a17a', '#c07ec0', '#dE4c7e',
-        '#c08d71', '#7F9c76', '#33336e',
-        '#a05c5c', '#7F9f79', '#2E8f8c',
-
-        '#d88f64', '#757875', '#7579a0',
-        '#767aa1', '#c9c07e', '#cc718d',
-        '#a95c5c', '#9d623e', '#75799f',
-        '#709ab1', '#6a6c6a', '#73769c',
-        '#238c8f', '#d17e4c', '#6e3333'
+                '#d88f64', '#806570', '#75a079',
+                '#767ae1', '#c9c07e', '#cc718d',
+                '#a95c5c', '#9d623e', '#75799f',
+                '#709ab1', '#6a6c6a', '#73769c',
+                '#238c8f', '#d17e4c', '#6e3333',
+        '#2E2E2E', '#610B38', '#610B6E',
+        '#4C0B5F', '#210B61', '#0B2161',
+        '#0B3861', '#0B615E', '#0B6138',
+        '#0B6121', '#21610B', '#4B610B',
+        '#5E610B', '#61380B', '#610B0B'
     ];
 
     protected showToolbarFn: () => void = null;
@@ -132,13 +131,14 @@ export class ShellService {
         if (len === 0) return 0;
         let hash = 0;
         for (let i = 0; i < len; i++) {
-            let chr = text.charCodeAt(i);
+            let chr = text.charCodeAt(i) * 7907; // a prime
             hash = ((hash << 5) - (hash + chr)) + chr;
             hash |= 0; // Convert to 32bit integer
-            hash += chr;
+            hash -= chr * 7919; // a prime
         }
-        hash += len;
+        hash += len * 7841; // a prime
         if (hash < 0) hash = -hash;
+        console.log(text + ' = ' + hash);
         return hash % range;
     };
 
