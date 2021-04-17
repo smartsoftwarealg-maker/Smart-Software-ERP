@@ -10,6 +10,8 @@ export interface AutoCompleteModel<T> {
     toString: (T) => string;
     getById: (Id) => Observable<T>;
     filter: (string) => Observable<T[]>;
+    onObjectSelected?: (any) => void; // call for changes done by the user only
+    onValueChanged?: (T) => void; // called when the value changes
     options: T[];
     cache: T;
 
