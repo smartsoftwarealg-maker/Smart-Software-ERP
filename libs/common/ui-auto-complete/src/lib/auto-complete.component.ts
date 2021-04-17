@@ -116,6 +116,18 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.stateChanges.next();
     }
 
+    callModelSelectEvent(obj: any) {
+        if (this.model && this.model.onObjectSelected) {
+            this.model.onObjectSelected(obj);
+        }
+    }
+
+    callModelValueChange(id: Id) {
+        if (this.model && this.model.onValueChanged) {
+            this.model.onObjectSelected(id);
+        }
+    }
+
     setValue(v: Id, fireOnChange: boolean) {
         if (!!this.model && !!v) {
             // possibilites:
@@ -129,10 +141,12 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.model.options = [this.model.cache];
                 if (fireOnChange) {
                     this.onChange(this.selected);
+                    this.callModelValueChange(this.selected);
                 }
             } else if (this.displayValueFromOptions(v)) {
                 if (fireOnChange) {
                     this.onChange(this.selected);
+                    this.callModelValueChange(this.selected);
                 }
             } else {
                 // this.autoControl.setValue(null);
@@ -140,6 +154,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.loadValue(v, () => {
                     if (fireOnChange) {
                         this.onChange(this.selected);
+                        this.callModelValueChange(this.selected);
                     }
                 });
             }
@@ -147,6 +162,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             this.selected = null;
             if (fireOnChange) {
                 this.onChange(null);
+                this.callModelValueChange(null);
             }
         }
         this.stateChanges.next();
@@ -258,6 +274,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                         if (options.length === 1) {
                             if (this.model.isPerfectMatch(options[0], txt)) {
                                 this.setValue(this.model.valueOf(options[0]), true);
+                                this.callModelSelectEvent(options[0]);
                             }
                         }
                     })
@@ -288,7 +305,9 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     };
 
     optionSelected(event: MatAutocompleteSelectedEvent) {
-        this.setValue(this.model.valueOf(event.option.value), true);
+        const obj = this.model.valueOf(event.option.value);
+        this.setValue(obj, true);
+        this.callModelSelectEvent(obj);
     }
 
     isInputInvalid(): boolean {
