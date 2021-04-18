@@ -50,6 +50,7 @@
     "INACTIVE_SINCE": "Inactive since",
     "SUSPENSION_REASON": "Suspension reason",
     "EMPLOYEE_ACTIVATION_SUSPENSION": "Employee activation/suspension",
+    "EMP_ACTIVATION_SUSPENSION": "Activation/suspension",
     "ACTIVITY_HISTORY": "Activity history",
     "FROM_TO": "From - To",
     "TODAY": "Today",

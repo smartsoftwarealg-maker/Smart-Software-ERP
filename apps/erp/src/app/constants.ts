@@ -1,4 +1,5 @@
 import {MAIN_PAGE_URL} from '@ss/common/api-common';
+import {ACTIVATION_LIST_URL as activationListUrl} from '@ss/payroll/api-person';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -69,7 +70,7 @@ export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
 export const PAYROLL_POSTS_URL = 'posts';
 export const PAYROLL_NATIONALITIES_URL = 'nationalities';
 export const PAYROLL_PERSONS_URL = 'persons';
-export const PAYROLL_PERSONS_ACTIVATION = 'activation';
+export const PAYROLL_PERSONS_ACTIVATION_URL = activationListUrl;
 export const PAYROLL_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const PAYROLL_SUSPENSION_REASON_URL = 'suspensionReason';
 
@@ -128,7 +129,7 @@ export const ABS_PAYROLL_WILAYAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LO
 export const ABS_PAYROLL_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_NATIONALITIES_URL].join('/');
 export const ABS_PAYROLL_SERVICES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SERVICES_URL].join('/');
 export const ABS_PAYROLL_PERSONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL].join('/');
-export const ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL, PAYROLL_PERSONS_ACTIVATION].join('/');
+export const ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL, PAYROLL_PERSONS_ACTIVATION_URL].join('/');
 export const ABS_PAYROLL_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_EMPLOYMENT_TYPE_URL].join('/');
 export const ABS_PAYROLL_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SUSPENSION_REASON_URL].join('/');
 

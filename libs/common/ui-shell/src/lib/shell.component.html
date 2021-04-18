@@ -82,33 +82,34 @@
                     </div>
 
                     <ng-container *ngFor="let b of shellSrv.buttons">
-                        <ng-template [ngIf]="b.menuItems">
-                            <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
-                                    [matMenuTriggerFor]="menu"
-                                    [disabled]="b.disabled"
-                                    class="hidden-during-search"
-                                    [class.large-only]="b.disabled || !b.keepOnToolbar">
-                                <i [class]="b.icon"></i>
-                            </button>
-                            <mat-menu #menu>
-                                <ng-container *ngFor="let mt of b.menuItems">
-                                    <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
-                                            [disabled]="mt.disabled">
-                                        <i [class]="mt.icon"></i>
-
-                                        {{mt.label | translate}}
-                                    </button>
-                                </ng-container>
-                            </mat-menu>
-                        </ng-template>
-                        <ng-template [ngIf]="!b.menuItems">
-                            <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
-                                    (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
-                                    [class.large-only]="b.disabled || !b.keepOnToolbar">
-                                <i [class]="b.icon"></i>
-                            </button>
-                        </ng-template>
-
+                        <ng-container *ngIf="b.keepOnToolbar != 2">
+                            <ng-template [ngIf]="b.menuItems">
+                                <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
+                                        [matMenuTriggerFor]="menu"
+                                        [disabled]="b.disabled"
+                                        class="hidden-during-search"
+                                        [class.large-only]="b.disabled || b.keepOnToolbar != 1">
+                                    <i [class]="b.icon"></i>
+                                </button>
+                                <mat-menu #menu>
+                                    <ng-container *ngFor="let mt of b.menuItems">
+                                        <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
+                                                [disabled]="mt.disabled">
+                                            <i [class]="mt.icon"></i>
+    
+                                            {{mt.label | translate}}
+                                        </button>
+                                    </ng-container>
+                                </mat-menu>
+                            </ng-template>
+                            <ng-template [ngIf]="!b.menuItems">
+                                <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
+                                        (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
+                                        [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
+                                    <i [class]="b.icon"></i>
+                                </button>
+                            </ng-template>
+                        </ng-container>
                     </ng-container>
 
                     <button mat-icon-button #trigger="matMenuTrigger" [matMenuTriggerFor]="menu">
@@ -145,7 +146,7 @@
             <ng-container *ngFor="let b of shellSrv.buttons">
 
                 <ng-template [ngIf]="b.menuItems">
-                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item small-only"
+                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
                             [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
                             [matMenuTriggerFor]="menu">
                         <div class="icon">
@@ -165,7 +166,7 @@
                 </ng-template>
 
                 <ng-template [ngIf]="!b.menuItems">
-                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item small-only"
+                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
                             [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
                             (click)="b.click(); trigger.closeMenu();">
                         <div class="icon">

@@ -4,7 +4,7 @@ import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {User, UserService} from '@ss/common/api-users';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -37,7 +37,7 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
-        keepOnToolbar: false,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),

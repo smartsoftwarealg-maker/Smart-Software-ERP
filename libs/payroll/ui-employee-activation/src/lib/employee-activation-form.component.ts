@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ShellService, ToolbarButton, SnackBarService } from '@ss/common/ui-shell';
+import { ShellService, ToolbarButton, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
 import { ActivatedRoute } from '@angular/router';
@@ -28,7 +28,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
         label: 'COMMON_SAVE',
         disabled: false,
         visible: true,
-        keepOnToolbar: true, // save button is too important to hide
+        keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
         click: () => this.save()
     };
 
