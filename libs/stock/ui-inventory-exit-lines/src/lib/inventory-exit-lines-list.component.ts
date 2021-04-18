@@ -1,18 +1,19 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryExitLine, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryExitLine, InventoryExitLinesService} from '@ss/stock/api-inventory-exit-lines';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Lot, LotsService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-inventory-exit-lines-list',
-    styleUrls: ['./inventory-exit-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['./inventory-exit-lines-list.component.scss',
+                '../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './inventory-exit-lines-list.component.html'
 })
 export class InventoryExitLinesListComponent implements OnInit {
@@ -22,7 +23,7 @@ export class InventoryExitLinesListComponent implements OnInit {
 
     parentId: number;
     data: InventoryExitLine[];
-    selected: number;
+    selectedId: number;
     selectedRow: InventoryExitLine;
 
     articles: { [reference: string]: string; } = {};
@@ -35,7 +36,6 @@ export class InventoryExitLinesListComponent implements OnInit {
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
 
@@ -92,15 +92,15 @@ export class InventoryExitLinesListComponent implements OnInit {
 
     selectRow(row: InventoryExitLine): void {
         this.selectedRow = row;
-        this.selected = row.id;
+        this.selectedId = row.id;
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
+                    if (this.selectedId && this.selectedId > 0) {
+                        const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.inventoryExitLinesSrv.remove(a.id)
@@ -122,8 +122,8 @@ export class InventoryExitLinesListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId) {
+            this.showDetail(this.selectedId);
         }
     }
 

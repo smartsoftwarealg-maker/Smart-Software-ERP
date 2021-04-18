@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NgControl } from "@angular/forms";
+import { ControlValueAccessor, FormControl, FormGroup, NgControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { isString } from '@ss/common/api-common';
@@ -124,7 +124,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     callModelValueChange(id: Id) {
         if (this.model && this.model.onValueChanged) {
-            this.model.onObjectSelected(id);
+            this.model.onValueChanged(id);
         }
     }
 
@@ -171,7 +171,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     displayValueFromOptions(v: Id): boolean {
         if (this.model && this.model.options) {
             const e = this.model.options.filter(o => this.model.valueOf(o) === v);
-            if (e.length == 1) {
+            if (e.length === 1) {
                 this.model.cache = e[0];
                 this.selected = v;
                 this.model.options = e;
@@ -265,7 +265,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             }),
             switchMap(txt => {
                 if (this.loading) {
-                    throw new Error("Was loading already");
+                    throw new Error('Was loading already');
                 }
                 this.loading = true;
                 return txt == null ? of([]) : this.model.filter(txt).pipe(

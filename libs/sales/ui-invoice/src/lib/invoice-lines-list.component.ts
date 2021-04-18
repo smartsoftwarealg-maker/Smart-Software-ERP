@@ -37,7 +37,6 @@ export class InvoiceLinesListComponent implements OnInit {
         'qtyOrdered',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
     constructor(

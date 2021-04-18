@@ -35,7 +35,6 @@ export class InventoryLinesListComponent implements OnInit {
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
 

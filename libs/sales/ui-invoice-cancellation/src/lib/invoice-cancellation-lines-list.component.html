@@ -1,6 +1,19 @@
 <ng-container *ngIf="parentId">
-    <button class="add-button" mat-mini-fab color="primary" (click)="showDetail(0)"><span class="fas fa-plus"></span>
-    </button>
+    <div class="add-button">
+        <button mat-mini-fab color="primary" (click)="showDetail(0)">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab (click)="edit()"
+                [disabled]="!selectedId"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab (click)="deleteSelected()"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    </div>
     <div class="main-table" >
         <mat-table mat-table [dataSource]="data" >
 

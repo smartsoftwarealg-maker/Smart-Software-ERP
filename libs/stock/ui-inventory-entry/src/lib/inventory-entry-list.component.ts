@@ -2,12 +2,12 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryEntry, InventoryEntryService} from "@ss/stock/api-inventory-entry";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryEntry, InventoryEntryService} from '@ss/stock/api-inventory-entry';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inventory-entry-list',
