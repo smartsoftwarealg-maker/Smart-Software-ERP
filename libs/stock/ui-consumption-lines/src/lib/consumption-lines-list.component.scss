@@ -1,83 +1,65 @@
 
-:host {
-    display: block;
-    margin: auto;
-    position: relative;
-    max-width: 836px;
-    width: 100%;
-    padding-top: 24px;
-}
+//:host {
+//    display: block;
+//    margin: auto;
+//    position: relative;
+//    max-width: 836px;
+//    width: 100%;
+//    padding-top: 24px;
+//}
 
-.main-table {
-    width: 100%;
-    max-width: 836px;
-    min-height: 320px;
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
-
-.mat-column-position {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-store {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-reference {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-description {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-qtySatisfied {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-price {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-controls {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-
-.add-button {
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.pagination-container {
-
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-    }
-}
+//.main-table {
+//    width: 100%;
+//    max-width: 836px;
+//    min-height: 320px;
+//}
+//
+//// keep the material design specs
+//.mat-row, .mat-header-row {
+//    padding-right: 16px;
+//    padding-left: 16px;
+//}
+//
+//
+//.mat-column-position {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-store {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-reference {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-description {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-qtySatisfied {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-price {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//
+//.mat-column-controls {
+//    flex: 1 1 100px;
+//    padding-right: 8px !important;
+//    padding-left: 8px !important;
+//}
+//

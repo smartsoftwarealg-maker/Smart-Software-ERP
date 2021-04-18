@@ -1,6 +1,17 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    padding-top: 30px;
+}
+
 .main-table {
     display: block;
-    width: 100%;
+    min-width: 100%;
+    min-height: 200px;
     overflow-x: auto;
     .mat-table {
         width: 100%;
@@ -24,4 +35,14 @@
         overflow: hidden;
         vertical-align: middle;
     }
+}
+
+.add-button {
+    display: flex;
+    position: absolute;
+    z-index: 999;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
 }

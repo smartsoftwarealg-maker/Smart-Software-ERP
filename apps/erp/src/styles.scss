@@ -134,10 +134,10 @@ $ss-green: (
             color: map-get($warn, text);;
         }
     }
-        
+
     // custom styles
     .mat-header-row {
-        background-color: map-get($primary, 100);
+        background-color: map-get($primary, 300);
     }
     .mat-header-cell {
         color: mat-contrast($primary, 100);

@@ -1,5 +1,5 @@
-import {Observable, of} from "rxjs";
-import {BaseEntityService} from "@ss/common/api-base-entity";
+import {Observable, of} from 'rxjs';
+import {BaseEntityService} from '@ss/common/api-base-entity';
 import {map} from 'rxjs/operators';
 
 export type Id = number | string;

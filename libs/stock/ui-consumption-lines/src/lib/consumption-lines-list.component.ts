@@ -1,18 +1,18 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ConsumptionLine, ConsumptionLinesService} from "@ss/stock/api-consumption-lines";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {ConsumptionLine, ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Lot, LotsService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-consumption-lines-list',
-    styleUrls: ['./consumption-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './consumption-lines-list.component.html'
 })
 export class ConsumptionLinesListComponent implements OnInit {
@@ -35,7 +35,6 @@ export class ConsumptionLinesListComponent implements OnInit {
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
 

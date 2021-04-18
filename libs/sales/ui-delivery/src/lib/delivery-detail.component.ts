@@ -22,7 +22,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-detail',
-    styleUrls: ['./delivery-detail.component.scss', '../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: [ '../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './delivery-detail.component.html'
 })
 export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {

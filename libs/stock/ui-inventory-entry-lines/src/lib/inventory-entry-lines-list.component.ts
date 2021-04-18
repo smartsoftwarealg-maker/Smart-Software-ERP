@@ -1,19 +1,19 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryEntryLine, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {LotsService, Lot} from "@ss/common/api-lookup";
-import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryEntryLine, InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {LotsService, Lot} from '@ss/common/api-lookup';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
-    styleUrls: ['./inventory-entry-lines-list.component.scss'],
+    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './inventory-entry-lines-list.component.html'
 })
 export class InventoryEntryLinesListComponent implements OnInit {
@@ -37,14 +37,12 @@ export class InventoryEntryLinesListComponent implements OnInit {
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
     private readonly SHORT = [
         'position',
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
     displayedColumns = this.LONG;
 

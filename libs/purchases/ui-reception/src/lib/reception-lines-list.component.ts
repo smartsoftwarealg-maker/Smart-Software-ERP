@@ -1,19 +1,19 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
-import {Transaction, TransactionLine} from "@ss/logistics/api-transaction";
-import {ReceptionLinesService} from "@ss/purchases/api-reception";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Lot, LotsService} from '@ss/common/api-lookup';
+import {Transaction, TransactionLine} from '@ss/logistics/api-transaction';
+import {ReceptionLinesService} from '@ss/purchases/api-reception';
 
 @Component({
     selector: 'ss-reception-lines-list',
-    styleUrls: ['./reception-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: [ '../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './reception-lines-list.component.html'
 })
 export class ReceptionLinesListComponent implements OnInit {
@@ -36,7 +36,6 @@ export class ReceptionLinesListComponent implements OnInit {
         'description',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
 

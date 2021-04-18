@@ -37,7 +37,6 @@ export class InvoiceCancellationLinesListComponent implements OnInit {
         'qtyOrdered',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
     constructor(

@@ -35,7 +35,6 @@ export class OrderLinesListComponent implements OnInit {
         'qtyOrdered',
         'qtySatisfied',
         'price',
-        'controls'
     ];
 
 
