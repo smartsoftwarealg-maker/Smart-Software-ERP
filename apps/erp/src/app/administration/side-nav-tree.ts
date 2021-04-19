@@ -1,9 +1,9 @@
-import {SideNavNode} from '@ss/common/ui-shell';
+import { SideNavNode } from '@ss/common/ui-shell';
 import {
     ABS_ADMINISTRATION_BANK_URL,
     ABS_ADMINISTRATION_CENTER_URL,
     ABS_ADMINISTRATION_COMPANY_URL, ABS_ADMINISTRATION_REPORT_CATALOG, ABS_ADMINISTRATION_ROLE_URL,
-    ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL, ABS_ADMINISTRATION_COUNTRY, ABS_ADMINISTRATION_CITY
+    ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL, ABS_ADMINISTRATION_COUNTRY_URL, ABS_ADMINISTRATION_CITY_URL, ABS_ADMINISTRATION_WILAYA_URL
 } from '../constants';
 
 export const administrationNavTree: SideNavNode = {
@@ -28,12 +28,17 @@ export const administrationNavTree: SideNavNode = {
         {
             name: 'COMMON_CITIES',
             icon: 'fas fa-city',
-            route: ABS_ADMINISTRATION_CITY
+            route: ABS_ADMINISTRATION_CITY_URL
+        },
+        {
+            name: 'COMMON_WILAYAS',
+            icon: 'fas fa-city', // fixme: change the icon so it won't match city
+            route: ABS_ADMINISTRATION_WILAYA_URL
         },
         {
             name: 'COMMON_COUNTRIES',
             icon: 'fas fa-flag',
-            route: ABS_ADMINISTRATION_COUNTRY
+            route: ABS_ADMINISTRATION_COUNTRY_URL
         },
         {
             name: 'ADMINISTRATION_USERS',

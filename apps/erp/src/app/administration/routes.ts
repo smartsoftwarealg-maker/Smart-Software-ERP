@@ -4,7 +4,7 @@ import {
     ADMINISTRATION_COMPANY_URL,
     ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
     ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
-    LOOKUPS_URL, PAYROLL_POSTS_URL, ADMINISTRATION_CITY_URL, ADMINISTRATION_COUNTRY_URL,
+    ADMINISTRATION_CITY_URL, ADMINISTRATION_COUNTRY_URL, ADMINISTRATION_WILAYA_URL,
 } from '../constants';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -13,11 +13,6 @@ import {CompanyDetailComponent, CompanyListComponent} from '@ss/administration/u
 import {CenterDetailComponent, CenterListComponent} from '@ss/administration/ui-center';
 import {SmtpDetailComponent, SmtpListComponent} from '@ss/administration/ui-smtp';
 import {ReportCatalogDetailComponent, ReportCatalogListComponent} from '@ss/administration/ui-report-catalog';
-import {TotalComponent} from '@ss/logistics/ui-totals';
-import {CirculationComponent} from '@ss/logistics/ui-circulation';
-import {AgentBalanceComponent} from '@ss/logistics/ui-agent-balance';
-import {CardComponent} from '@ss/logistics/ui-card';
-import {AgentDebtsComponent} from '@ss/logistics/ui-agent-debts';
 import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
 import {
     RoleListComponent,
@@ -25,14 +20,17 @@ import {
     CountryListComponent,
     CountryDetailComponent,
     CityListComponent,
-    CityDetailComponent
+    CityDetailComponent,
+    WilayaListComponent,
+    WilayaDetailComponent
 } from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
-    {
-        path: LOOKUPS_URL,
-        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
-    },
+//    // NOT USED
+//    {
+//        path: LOOKUPS_URL,
+//        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
+//    },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [
@@ -171,11 +169,6 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-];
-
-export const lookupRoutes: Routes = [
     {
         path: ADMINISTRATION_CITY_URL,
         children: [
@@ -192,6 +185,28 @@ export const lookupRoutes: Routes = [
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
+    {
+        path: ADMINISTRATION_WILAYA_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WilayaListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: WilayaDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];
+
+//export const lookupRoutes: Routes = [
+//    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
+//    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+//];

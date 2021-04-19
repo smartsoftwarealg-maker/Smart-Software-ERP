@@ -1,26 +1,19 @@
 import {
     ABS_STOCK_ACCOUNT_URL,
-    ABS_STOCK_ACTIVITY,
     ABS_STOCK_AGENT_PRICE_URL,
     ABS_STOCK_AGENT_TYPE,
     ABS_STOCK_AGENT_URL,
     ABS_STOCK_ARTICLES_URL,
-    ABS_ADMINISTRATION_CITY,
     ABS_STOCK_CLASSES_URL,
-    ABS_STOCK_COMPANY_TYPE,
     ABS_STOCK_COST_CENTER_URL,
-    ABS_ADMINISTRATION_COUNTRY,
-    ABS_STOCK_CURRENCY,
     ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_INVENTORY_EXIT_URL,
     ABS_STOCK_CONSUMPTION_URL,
-    ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_MARKS_URL,
-    ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_COMMON_REPORT_PARAMS
+    ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS
 } from '../constants';
 import {SideNavNode} from '@ss/common/ui-shell';
 
@@ -56,7 +49,7 @@ export const stockNavTree: SideNavNode = {
                 {
                     name: 'COMMON_REPORT_PARAMS',
                     icon: 'fas fa-file-chart-line',
-                    route: ABS_COMMON_REPORT_PARAMS
+                    route: ABS_STOCK_REPORT_PARAMS
                 }
             ]
         },
