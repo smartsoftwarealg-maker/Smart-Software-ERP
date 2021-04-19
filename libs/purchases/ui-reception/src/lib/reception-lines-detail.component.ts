@@ -15,7 +15,7 @@ import {ReceptionLinesService} from "@ss/purchases/api-reception";
 
 @Component({
     selector: 'ss-reception-lines-detail',
-    styleUrls: ['./reception-lines-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './reception-lines-detail.component.html'
 })
 export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {

@@ -1,15 +1,4 @@
-
-:host {
-    display: block;
-    margin: auto;
-    width: 978px;
-}
-
-.main-table {
-    width: 100%;
-    flex-grow: 2;
-    margin: 0 ;
-}
+@import "../../../../common/assets/src/assets/main-container";
 
 // keep the material design specs
 .mat-row, .mat-header-row {
@@ -45,30 +34,4 @@
     flex: 0 0 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
-}
-
-.pagination-container {
-    flex-grow: 0;
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-    }
-}
-.doc-info {
-    flex-grow: 1;
-}
-.container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-    width: 100%;
-    min-height: 100%;
-    height: 100%;
-    gap: 5px;
-    background: #3FFF49;
-    overflow: auto;
 }

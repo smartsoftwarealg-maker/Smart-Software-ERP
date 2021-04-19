@@ -3,20 +3,20 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import { fillObject } from "@ss/common/api-common";
-import {TransactionLine} from "@ss/logistics/api-transaction";
-import {PurchaseOrderLinesService} from "@ss/purchases/api-purchase-order";
+import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import { fillObject } from '@ss/common/api-common';
+import {TransactionLine} from '@ss/logistics/api-transaction';
+import {PurchaseOrderLinesService} from '@ss/purchases/api-purchase-order';
 
 @Component({
   selector: 'ss-order-lines-detail',
+  styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
   templateUrl: './purchase-order-lines-detail.component.html',
-  styleUrls: ['./purchase-order-lines-detail.component.scss']
 })
 export class PurchaseOrderLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
     private line: TransactionLine = null;

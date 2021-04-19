@@ -1,4 +1,6 @@
-    <mat-table mat-table [dataSource]="data" class="main-table">
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
@@ -46,6 +48,7 @@
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
+    </div>
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
@@ -59,3 +62,4 @@
                          articleReference: selectedRow?.reference
                      }">
     </ss-doc-info>
+</div>

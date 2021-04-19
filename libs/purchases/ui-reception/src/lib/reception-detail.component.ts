@@ -18,8 +18,8 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-reception-detail',
-    styleUrls: ['./reception-detail.component.scss'],
-    templateUrl: './reception-detail.component.html'
+    templateUrl: './reception-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> {
 

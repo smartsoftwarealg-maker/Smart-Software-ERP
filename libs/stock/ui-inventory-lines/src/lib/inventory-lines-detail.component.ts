@@ -14,8 +14,8 @@ import {Article, ArticleService} from "@ss/stock/api-article";
 
 @Component({
     selector: 'ss-inventory-lines-detail',
-    styleUrls: ['./inventory-lines-detail.component.scss'],
-    templateUrl: './inventory-lines-detail.component.html'
+    templateUrl: './inventory-lines-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLine> implements OnInit {
 

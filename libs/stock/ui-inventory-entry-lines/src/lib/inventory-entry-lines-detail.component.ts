@@ -1,21 +1,21 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryEntryLine, InventoryEntryLinesService} from "@ss/stock/api-inventory-entry-lines";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {InventoryLine} from "@ss/stock/api-inventory-lines";
+import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryEntryLine, InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {InventoryLine} from '@ss/stock/api-inventory-lines';
 
 
 @Component({
     selector: 'ss-inventory-entry-lines-detail',
-    styleUrls: ['./inventory-entry-lines-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html'
 })
 export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<InventoryEntryLine> implements OnInit {

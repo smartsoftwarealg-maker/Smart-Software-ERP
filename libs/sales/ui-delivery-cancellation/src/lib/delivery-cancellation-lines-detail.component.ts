@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from "@ss/common/api-base-entity";
-import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {fillObject} from "@ss/common/api-common";
+import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {DeliveryLine, DeliveryLinesService} from '@ss/sales/api-delivery-lines';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {fillObject} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-delivery-cancellation-lines-detail',
   templateUrl: './delivery-cancellation-lines-detail.component.html',
-  styleUrls: ['./delivery-cancellation-lines-detail.component.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class DeliveryCancellationLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {
     private line: DeliveryLine = null;

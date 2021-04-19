@@ -11,8 +11,8 @@ import {LanguageService} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inventory-entry-list',
-    styleUrls: ['./inventory-entry-list.component.scss'],
-    templateUrl: './inventory-entry-list.component.html'
+    templateUrl: './inventory-entry-list.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class InventoryEntryListComponent extends BaseEntityListComponent<InventoryEntry> {
 

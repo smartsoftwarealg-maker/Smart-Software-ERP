@@ -16,8 +16,8 @@ import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-
 
 @Component({
     selector: 'ss-consumption-lines-detail',
-    styleUrls: ['./consumption-lines-detail.component.scss'],
-    templateUrl: './consumption-lines-detail.component.html'
+    templateUrl: './consumption-lines-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLine> implements OnInit, OnDestroy {
 

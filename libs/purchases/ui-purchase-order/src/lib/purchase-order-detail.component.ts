@@ -19,7 +19,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 @Component({
     selector: 'ss-ui-order-detail',
     templateUrl: './purchase-order-detail.component.html',
-    styleUrls: ['./purchase-order-detail.component.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
     private order: Transaction = null;
