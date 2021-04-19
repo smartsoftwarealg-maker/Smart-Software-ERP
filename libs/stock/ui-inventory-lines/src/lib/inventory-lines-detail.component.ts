@@ -1,15 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryLine, InventoryLinesService} from "@ss/stock/api-inventory-lines";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
+import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -17,11 +18,11 @@ import {Article, ArticleService} from "@ss/stock/api-article";
     templateUrl: './inventory-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<InventoryLine> implements OnInit {
+export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
 
 
     parentId: number;
-    selectedRow : InventoryLine;
+    selectedRow : TransactionLine;
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
@@ -62,7 +63,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
     }
 
 
-    finishLoading(e: InventoryLine) {
+    finishLoading(e: TransactionLine) {
         this.router.navigate([], {
             relativeTo: this.route,
             queryParams: {reference: e.reference},
@@ -71,7 +72,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Inv
         super.finishLoading(e);
     }
 
-    public setupForm(b: InventoryLine) {
+    public setupForm(b: TransactionLine) {
         this.selectedRow = b;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({

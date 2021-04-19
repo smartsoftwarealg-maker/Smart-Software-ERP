@@ -10,8 +10,8 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {InventoryLine} from '@ss/stock/api-inventory-lines';
 import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-logistics-common';
+import {TransactionLine} from "@ss/logistics/api-transaction";
 
 
 @Component({
@@ -79,7 +79,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         super.ngOnDestroy();
     }
 
-    finishLoading(e: InventoryLine) {
+    finishLoading(e: TransactionLine) {
         this.selectedRow = e;
         this.router.navigate([], {
             relativeTo: this.route,

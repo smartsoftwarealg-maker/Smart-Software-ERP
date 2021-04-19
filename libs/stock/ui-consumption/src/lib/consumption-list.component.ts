@@ -24,10 +24,10 @@ export class ConsumptionListComponent extends BaseEntityListComponent<Consumptio
     displayedColumns = [
         'number',
         'date',
+        'agent',
         'reference',
         'referenceDocDate',
-        'dealer',
-        'agent'
+        'dealer'
     ];
 
 

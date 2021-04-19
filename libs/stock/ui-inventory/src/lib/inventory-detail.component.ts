@@ -1,15 +1,16 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Inventory, InventoryService} from "@ss/stock/api-inventory";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
+import {CCGroup, LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryService} from '@ss/stock/api-inventory';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {Transaction} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -17,7 +18,7 @@ import {User, UserService} from "@ss/common/api-users";
     styleUrls: ['./inventory-detail.component.scss'],
     templateUrl: './inventory-detail.component.html'
 })
-export class InventoryDetailComponent extends BaseEntityDetailComponent<Inventory> {
+export class InventoryDetailComponent extends BaseEntityDetailComponent<Transaction> {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
@@ -40,7 +41,7 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Inventor
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(b: Inventory) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

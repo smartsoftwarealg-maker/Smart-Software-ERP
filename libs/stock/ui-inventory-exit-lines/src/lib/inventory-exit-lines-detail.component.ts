@@ -1,16 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, Lot, LotsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryExitLine, InventoryExitLinesService} from "@ss/stock/api-inventory-exit-lines";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {InventoryLine} from "@ss/stock/api-inventory-lines";
+import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryExitLine, InventoryExitLinesService} from '@ss/stock/api-inventory-exit-lines';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {TransactionLine} from "@ss/logistics/api-transaction";
 
 
 @Component({
@@ -62,7 +62,7 @@ export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route, {id: this.parentId});
     }
 
-    finishLoading(e: InventoryLine) {
+    finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         this.selectedRow = e;
     }

@@ -1,14 +1,15 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryLine, InventoryLinesService} from "@ss/stock/api-inventory-lines";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Lot, LotsService} from '@ss/common/api-lookup';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-lines-list',
@@ -21,9 +22,9 @@ export class InventoryLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: InventoryLine[];
+    data: TransactionLine[] = [];
     selectedId: number;
-    selectedRow: InventoryLine;
+    selectedRow: TransactionLine;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -89,7 +90,7 @@ export class InventoryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(inventoryLine: InventoryLine): void {
+    select(inventoryLine: TransactionLine): void {
         this.selectedId = inventoryLine.id;
         this.selectedRow = inventoryLine;
     }
