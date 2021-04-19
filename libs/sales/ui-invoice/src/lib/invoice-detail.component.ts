@@ -22,8 +22,8 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-invoice-detail',
-    styleUrls: ['./invoice-detail.component.scss'],
-    templateUrl: './invoice-detail.component.html'
+    templateUrl: './invoice-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(InvoiceLinesListComponent) detail: InvoiceLinesListComponent;
