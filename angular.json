@@ -3629,36 +3629,10 @@
           }
         }
       }
-    },
-    "exchange-e2e": {
-      "root": "apps/exchange-e2e",
-      "sourceRoot": "apps/exchange-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/exchange-e2e/cypress.json",
-            "tsConfig": "apps/exchange-e2e/tsconfig.e2e.json",
-            "devServerTarget": "exchange:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "exchange:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/exchange-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
     }
   },
   "cli": {
-    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007",
+    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007-poop",
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
