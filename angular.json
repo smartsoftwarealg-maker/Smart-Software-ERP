@@ -3559,7 +3559,13 @@
             "aot": true,
             "assets": [
               "apps/exchange/src/favicon.ico",
-              "apps/exchange/src/assets"
+              "apps/exchange/src/assets",
+              "apps/erp/src/config",
+              {
+                "glob": "**/*",
+                "input": "libs/common/assets/src/assets",
+                "output": "assets"
+              }
             ],
             "styles": ["apps/exchange/src/styles.scss"],
             "scripts": []
