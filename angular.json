@@ -3632,7 +3632,7 @@
     }
   },
   "cli": {
-    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007",
+    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007-poop",
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
