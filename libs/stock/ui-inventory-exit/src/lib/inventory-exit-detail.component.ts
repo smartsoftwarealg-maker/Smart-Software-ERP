@@ -14,7 +14,7 @@ import {User, UserService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-inventory-exit-detail',
-    styleUrls: ['./inventory-exit-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-exit-detail.component.html'
 })
 export class InventoryExitDetailComponent extends BaseEntityDetailComponent<InventoryExit> {

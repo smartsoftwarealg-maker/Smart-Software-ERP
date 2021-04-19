@@ -1,23 +1,23 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Consumption, ConsumptionService} from "@ss/stock/api-consumption";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {User, UserService} from "@ss/common/api-users";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {LoginService} from "@ss/common/api-common";
+import {CCGroup, LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Consumption, ConsumptionService} from '@ss/stock/api-consumption';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {User, UserService} from '@ss/common/api-users';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {LoginService} from '@ss/common/api-common';
 
 
 @Component({
     selector: 'ss-consumption-detail',
-    styleUrls: ['./consumption-detail.component.scss'],
-    templateUrl: './consumption-detail.component.html'
+    templateUrl: './consumption-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consumption> {
 

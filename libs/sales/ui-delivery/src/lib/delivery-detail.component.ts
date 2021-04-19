@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
@@ -22,7 +22,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-detail',
-    styleUrls: [ '../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: [ '../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './delivery-detail.component.html'
 })
 export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {

@@ -14,8 +14,8 @@ import { fillObject } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
-    styleUrls: ['./delivery-lines-detail.component.scss'],
-    templateUrl: './delivery-lines-detail.component.html'
+    templateUrl: './delivery-lines-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {
    private line: DeliveryLine = null;

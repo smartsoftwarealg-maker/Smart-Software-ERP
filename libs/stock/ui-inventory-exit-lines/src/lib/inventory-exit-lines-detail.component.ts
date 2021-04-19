@@ -15,8 +15,8 @@ import {InventoryLine} from "@ss/stock/api-inventory-lines";
 
 @Component({
     selector: 'ss-inventory-exit-lines-detail',
-    styleUrls: ['./inventory-exit-lines-detail.component.scss'],
-    templateUrl: './inventory-exit-lines-detail.component.html'
+    templateUrl: './inventory-exit-lines-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLine> implements OnInit {
 

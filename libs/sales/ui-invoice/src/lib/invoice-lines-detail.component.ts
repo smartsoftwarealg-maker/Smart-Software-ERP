@@ -15,7 +15,7 @@ import {InvoiceLinesService} from "@ss/sales/api-invoice";
 
 @Component({
     selector: 'ss-invoice-lines-detail',
-    styleUrls: ['./invoice-lines-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './invoice-lines-detail.component.html'
 })
 export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {

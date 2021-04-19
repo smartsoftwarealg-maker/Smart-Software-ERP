@@ -14,7 +14,7 @@ import {User, UserService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-inventory-entry-detail',
-    styleUrls: ['./inventory-entry-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<InventoryEntry> {

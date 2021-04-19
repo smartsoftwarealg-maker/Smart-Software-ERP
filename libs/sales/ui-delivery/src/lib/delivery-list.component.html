@@ -18,6 +18,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="payMethod">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -25,13 +32,6 @@
             </mat-cell>
         </ng-container>
 
-
-        <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.reference }}
-            </mat-cell>
-        </ng-container>
 
         <ng-container matColumnDef="referenceDocDate">
             <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>

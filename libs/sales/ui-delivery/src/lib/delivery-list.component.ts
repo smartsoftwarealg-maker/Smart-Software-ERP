@@ -14,8 +14,8 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-list',
+    templateUrl: './delivery-list.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
-    templateUrl: './delivery-list.component.html'
 })
 export class DeliveryListComponent extends BaseEntityListComponent<Transaction> {
 

@@ -2,16 +2,16 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {InventoryExit, InventoryExitService} from "@ss/stock/api-inventory-exit";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryExit, InventoryExitService} from '@ss/stock/api-inventory-exit';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-inventory-exit-list',
-    styleUrls: ['./inventory-exit-list.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './inventory-exit-list.component.html'
 })
 export class InventoryExitListComponent extends BaseEntityListComponent<InventoryExit> {
