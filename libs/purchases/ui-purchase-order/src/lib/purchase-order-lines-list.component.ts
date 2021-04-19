@@ -20,7 +20,7 @@ export class PurchaseOrderLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: TransactionLine[];
+    data: TransactionLine[] = [];
     selectedId: number;
     selectedRow: TransactionLine = null;
 

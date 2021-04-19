@@ -39,7 +39,7 @@
         </ng-container>
 
         <ng-container matColumnDef="agent">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CONSUMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ agents[e.agent] }}
             </mat-cell>
@@ -56,7 +56,8 @@
     </div>
 
     <ss-doc-info
-        [displayedGroups]="['document','agent']"
+        *ngIf="selected"
+        [displayedGroups]="['document']"
         [params]="{
             documentId: selectedRow?.id,
             documentURL:'/consumption',

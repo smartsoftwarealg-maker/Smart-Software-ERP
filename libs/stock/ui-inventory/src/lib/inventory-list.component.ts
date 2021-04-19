@@ -2,21 +2,21 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Inventory, InventoryService} from "@ss/stock/api-inventory";
-import {User, UserService} from "@ss/common/api-users";
-import {switchMap, tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LanguageService} from "@ss/common/ui-lang";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {InventoryService} from '@ss/stock/api-inventory';
+import {User, UserService} from '@ss/common/api-users';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {LanguageService} from '@ss/common/ui-lang';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Transaction} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-list',
     styleUrls: ['./inventory-list.component.scss'],
     templateUrl: './inventory-list.component.html'
 })
-export class InventoryListComponent extends BaseEntityListComponent<Inventory> {
-
+export class InventoryListComponent extends BaseEntityListComponent<Transaction> {
 
     public dealers: { [id: number]: string; };
 
@@ -43,7 +43,7 @@ export class InventoryListComponent extends BaseEntityListComponent<Inventory> {
     }
 
 
-    processLoadedData(data: Inventory[]): Observable<Inventory[]> {
+    processLoadedData(data: Transaction[]): Observable<Transaction[]> {
         return this.usersService.getAll(data.map(x => x.dealer))
             .pipe(tap(x => this.onDealersLoaded(x)))
             .pipe(switchMap(() => {

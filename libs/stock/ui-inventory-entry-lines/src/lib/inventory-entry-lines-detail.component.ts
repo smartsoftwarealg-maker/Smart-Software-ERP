@@ -5,12 +5,12 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {InventoryEntryLine, InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
+import {InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {InventoryLine} from '@ss/stock/api-inventory-lines';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -18,12 +18,12 @@ import {InventoryLine} from '@ss/stock/api-inventory-lines';
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html'
 })
-export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<InventoryEntryLine> implements OnInit {
+export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
 
 
     parentId: number;
 
-    selectedRow: InventoryEntryLine
+    selectedRow: TransactionLine;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
@@ -63,12 +63,12 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
-    finishLoading(e: InventoryLine) {
+    finishLoading(e: TransactionLine) {
         this.selectedRow = e;
         super.finishLoading(e);
     }
 
-    public setupForm(b: InventoryEntryLine) {
+    public setupForm(b: TransactionLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
