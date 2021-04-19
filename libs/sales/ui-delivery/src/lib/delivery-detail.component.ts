@@ -22,8 +22,8 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @Component({
     selector: 'ss-delivery-detail',
-    styleUrls: [ '../../../../common/assets/src/assets/transac-detail.scss'],
-    templateUrl: './delivery-detail.component.html'
+    templateUrl: './delivery-detail.component.html',
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(DeliveryLinesListComponent) detail: DeliveryLinesListComponent;
