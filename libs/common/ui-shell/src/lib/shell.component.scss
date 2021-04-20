@@ -122,8 +122,6 @@
 
 
 
-
-
 .nav-bar-settings-menu {
     display: flex;
     flex-direction: column;
@@ -311,6 +309,7 @@
 
 .selectable-tree-item {
     cursor: pointer;
+    user-select: none;
 }
 
 .nav-tree-icon {

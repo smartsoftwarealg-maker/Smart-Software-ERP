@@ -48,16 +48,17 @@ export class ShellService {
 
     backgroundColors: string[] = [
         '#d88f64', '#806570', '#610B6E',
-        '#0B6121', '#21610B', '#4B610B',
-        '#709ab1', '#6a6c6a', '#73769c',
+        '#0B7121', '#21610B', '#6a6c6a',
+        '#505aa0', '#6B510B', '#73769c',
         '#238c8f', '#d17e4c', '#6e3333',
         '#4C0B5F', '#210B61', '#0B2161',
-        '#0B3861', '#0B615E', '#0B6138',
+        '#0B3861', '#2E2E2E', '#0B5138',
         '#767ae1', '#c9c07e', '#cc718d',
         '#a95c5c', '#9d623e', '#75799f',
-        '#2E2E2E', '#610B38', '#5E610B',
+        '#0B615E', '#610B38', '#5E710B',
         '#61380B', '#610B0B', '#75a079'
     ];
+    private lastHash = -1;
 
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
@@ -127,8 +128,10 @@ export class ShellService {
             node.backgroundColor = this.backgroundColors[
                 this.hashString(node.name, this.backgroundColors.length)
             ];
+        });
+        tree.forEach(node => {
             this.generateNavColors(node.children);
-        })
+        });
     }
 
     private hashString(text: string, range: number) {
@@ -144,7 +147,12 @@ export class ShellService {
         }
         hash += len * 7841; // a prime
         if (hash < 0) hash = -hash;
-        return hash % range;
+        let hashResult = hash % range;
+        if (hashResult == this.lastHash) {
+            hashResult = (hashResult + 1) % range;
+        }
+        this.lastHash = hashResult;
+        return hashResult;
     };
 
     /* GO BACK */

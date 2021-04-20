@@ -1,5 +1,5 @@
 <h2 class="f-primary">
-    <span translate *ngIf="srv.historyStack.length == 0">SMART_ERP</span>
+    <span translate *ngIf="srv.historyStack.length == 0">{{shellSrv.applicationTitle}}</span>
     <ng-container *ngFor="let n of srv.historyStack">
         <i [class]="langSrv.rtl ? 'fas fa-caret-left margin-end-8' : 'fas fa-caret-right margin-end-8'"></i>
         <span class="margin-end-16" translate>{{n.name}}</span>
