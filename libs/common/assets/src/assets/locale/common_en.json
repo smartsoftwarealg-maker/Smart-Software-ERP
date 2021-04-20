@@ -120,5 +120,6 @@
     "SUSPENSION_REASONS": "Suspension reasons",
     "EDIT_SUSPENSION_REASON": "Edit suspension reason",
     "EMPLOYMENT_TYPES": "Employment types",
-    "EDIT_EMPLOYMENT_TYPE": "Edit employment type"
+    "EDIT_EMPLOYMENT_TYPE": "Edit employment type",
+    "FILE": "File"
 }

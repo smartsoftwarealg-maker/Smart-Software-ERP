@@ -23,7 +23,7 @@ export const stockNavTree: SideNavNode = {
     icon: 'fas fa-warehouse-alt',
     children: [
         {
-            name: 'STOCK_FILE',
+            name: 'COMMON_FILE',
             icon: 'fas fa-folder',
             children: [
                 {

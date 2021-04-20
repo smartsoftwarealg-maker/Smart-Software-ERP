@@ -4,6 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
 import { administrationNavTree } from './administration/side-nav-tree';
+import { fileNavTree, exchangeNavTree } from './exchange/side-nav-tree';
 
 @Component({
     selector: 'ss-root',
@@ -20,7 +21,9 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Currency Exchange (pre-Alpha)');
         this.shellSrv.setSideNavDataSource([
-            administrationNavTree
+            administrationNavTree,
+            fileNavTree,
+            exchangeNavTree
         ]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))

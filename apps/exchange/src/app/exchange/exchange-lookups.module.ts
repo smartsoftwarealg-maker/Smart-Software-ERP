@@ -9,5 +9,5 @@ import {CommonUiLookupModule} from '@ss/common/ui-lookup';
         RouterModule.forChild(lookupRoutes)
     ]
 })
-export class AdministrationLookupsModule {
+export class ExchangeLookupsModule {
 }
