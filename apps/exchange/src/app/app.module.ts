@@ -12,13 +12,8 @@ import { CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL } from '@s
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import {
-    ADMINISTRATION_APP_URL,
-    LOGISTICS_APP_URL,
-    PAYROLL_APP_URL,
-    PURCHASES_APP_URL,
-    SALES_APP_URL,
-    STOCK_APP_URL
-} from './constants';
+    ADMINISTRATION_APP_URL
+} from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [

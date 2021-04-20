@@ -21,7 +21,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             this.srv.display = this.srv.navData;
         }
         this.updateGobackButton();
-        this.shellSrv.setTitle('SMART_ERP');
+        this.shellSrv.setTitle(this.shellSrv.applicationTitle);
         this.shellSrv.enableSearch(
             'SEARCH_APP',
             e => e.subscribe(

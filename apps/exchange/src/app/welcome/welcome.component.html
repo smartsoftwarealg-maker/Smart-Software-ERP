@@ -1,0 +1,19 @@
+<h2 class="f-primary">
+    <span translate *ngIf="srv.historyStack.length == 0">{{shellSrv.applicationTitle}}</span>
+    <ng-container *ngFor="let n of srv.historyStack">
+        <i [class]="langSrv.rtl ? 'fas fa-caret-left margin-end-8' : 'fas fa-caret-right margin-end-8'"></i>
+        <span class="margin-end-16" translate>{{n.name}}</span>
+    </ng-container>
+</h2>
+<div class="main-view">
+    <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
+    <div *ngFor="let l of srv.display" class="app-card" (click)="onClick(l)">
+        <div class="img" [style.backgroundColor]="l.backgroundColor">
+            <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
+        </div>
+        <div class="txt">
+            <span translate>{{l.name}}</span>
+        </div>
+    </div>
+    <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
+</div>

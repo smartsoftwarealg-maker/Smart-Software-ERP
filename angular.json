@@ -3565,6 +3565,11 @@
                 "glob": "**/*",
                 "input": "libs/common/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/administration/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/exchange/src/styles.scss"],

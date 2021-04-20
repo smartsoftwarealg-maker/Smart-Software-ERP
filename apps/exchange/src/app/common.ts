@@ -1,5 +1,5 @@
-import {MAIN_PAGE_URL} from '@ss/common/api-common';
-import {ACTIVATION_LIST_URL as activationListUrl} from '@ss/payroll/api-person';
+import { MAIN_PAGE_URL } from '@ss/common/api-common';
+
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -20,8 +20,7 @@ export const ADMINISTRATION_SMTP_URL = 'smtps';
 export const ADMINISTRATION_REPORT_CATALOG_URL = 'report-catalog';
 export const ADMINISTRATION_CITY_URL = 'cities';
 export const ADMINISTRATION_COUNTRY_URL = 'countries';
-export const ADMINISTRATION_WILAYAS_URL = 'wilayas';
-
+export const ADMINISTRATION_WILAYA_URL = 'wilayas';
 
 
 // #############
@@ -36,6 +35,10 @@ export const ABS_ADMINISTRATION_CENTER_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATIO
 export const ABS_ADMINISTRATION_BANK_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_BANK_URL].join('/');
 export const ABS_ADMINISTRATION_SMTP_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_SMTP_URL].join('/');
 export const ABS_ADMINISTRATION_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_REPORT_CATALOG_URL].join('/');
-export const ABS_ADMINISTRATION_CITY = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOOKUPS_URL, ADMINISTRATION_CITY_URL].join('/');
-export const ABS_ADMINISTRATION_COUNTRY = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOOKUPS_URL, ADMINISTRATION_COUNTRY_URL].join('/');
+export const ABS_ADMINISTRATION_CITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_CITY_URL].join('/');
+export const ABS_ADMINISTRATION_COUNTRY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_COUNTRY_URL].join('/');
+export const ABS_ADMINISTRATION_WILAYA_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_WILAYA_URL].join('/');
 
+// ######################################
+// #            Other things            #
+// ######################################
