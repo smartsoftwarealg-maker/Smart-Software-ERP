@@ -1,0 +1,14 @@
+{
+    "version": "2.0",
+    "info": "Config format was changed, contact Muaaz (muaaz.h.is@gmail.com) for help",
+    "info2": "You can Still use the old format, it will work.",
+    "protocol": "http://",
+    "defaultUrl": "localhost:8080",
+    "urlRules": [
+        {
+            "frontend": "?",
+            "backend": "192.168.8.200:9999",
+            "comment": "BackEnd is same as FrontEend, but with port 9999"
+        }
+    ]
+}

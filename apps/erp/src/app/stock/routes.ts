@@ -7,12 +7,10 @@ import {
     STOCK_AGENT_TYPE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
-    STOCK_CITY_URL,
     STOCK_CLASSES_URL,
     STOCK_COMPANY_TYPE_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
-    STOCK_COUNTRY_URL,
     STOCK_CURRENCY_URL,
     STOCK_INVENTORY_ENTRY_URL,
     STOCK_INVENTORY_EXIT_URL,
@@ -21,30 +19,25 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL
-} from '../constants';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
-import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
-import {Routes} from '@angular/router';
+    STOCK_VAT_URL,
+    docInfoRoutes
+} from '../common';
+import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
+import { Routes } from '@angular/router';
 import {
     ActivityDetailComponent,
     ActivityListComponent,
     AgentTypeDetailComponent,
     AgentTypeListComponent,
-    CityDetailComponent,
-    CityListComponent,
     ClassDetailComponent,
     ClassListComponent,
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
-    CountryDetailComponent,
-    CountryListComponent,
     CurrencyDetailComponent,
     CurrencyListComponent,
     MarkDetailComponent,
     MarkListComponent,
-    PayModeDetailComponent,
-    PayModeListComponent,
     StoreNameDetailComponent,
     StoreNameListComponent,
     SubclassDetailComponent,
@@ -54,20 +47,28 @@ import {
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
-import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
-import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
-import {AgentPriceDetailComponent, AgentPriceListComponent} from '@ss/logistics/ui-agent-price';
-import {CostCenterDetailComponent, CostCenterListComponent} from '@ss/logistics/ui-cost-center';
-import {InventoryEntryDetailComponent, InventoryEntryListComponent} from '@ss/stock/ui-inventory-entry';
-import {InventoryEntryLinesDetailComponent} from '@ss/stock/ui-inventory-entry-lines';
-import {InventoryExitDetailComponent, InventoryExitListComponent} from '@ss/stock/ui-inventory-exit';
-import {InventoryExitLinesDetailComponent} from '@ss/stock/ui-inventory-exit-lines';
-import {ConsumptionDetailComponent, ConsumptionListComponent} from '@ss/stock/ui-consumption';
-import {ConsumptionLinesDetailComponent} from '@ss/stock/ui-consumption-lines';
-import {InventoryDetailComponent, InventoryListComponent} from '@ss/stock/ui-inventory';
-import {InventoryLinesDetailComponent} from '@ss/stock/ui-inventory-lines';
-import {ReportParamsComponent} from '@ss/common/ui-report-param';
-import {docInfoRoutes} from '../administration/routes';
+import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
+import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
+import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
+import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
+import { InventoryEntryDetailComponent, InventoryEntryListComponent } from '@ss/stock/ui-inventory-entry';
+import { InventoryEntryLinesDetailComponent } from '@ss/stock/ui-inventory-entry-lines';
+import { InventoryExitDetailComponent, InventoryExitListComponent } from '@ss/stock/ui-inventory-exit';
+import { InventoryExitLinesDetailComponent } from '@ss/stock/ui-inventory-exit-lines';
+import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/ui-consumption';
+import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines';
+import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
+import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
+import { ReportParamsComponent } from '@ss/common/ui-report-param';
+import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
+import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import { CardComponent } from '@ss/logistics/ui-card';
+import { TotalComponent } from '@ss/logistics/ui-totals';
+import { CirculationComponent } from '@ss/logistics/ui-circulation';
+
+
+
 
 
 export const mainRoutes: Routes = [
@@ -87,8 +88,8 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -114,8 +115,8 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -141,8 +142,8 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -167,8 +168,8 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -194,8 +195,8 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -212,8 +213,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -230,8 +231,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -248,8 +249,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -266,8 +267,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -275,20 +276,20 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                data: {reportBase: 'syscom', app: 'syscom'},
+                data: { reportBase: 'syscom', app: 'syscom' },
                 component: ReportParamsComponent,
                 canActivate: [CanActivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./stock-lookups.module').then(m => m.StockLookupsModule)
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 
 export const lookupRoutes: Routes = [
@@ -305,7 +306,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -321,7 +322,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -337,7 +338,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -353,7 +354,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -369,7 +370,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -385,7 +386,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -401,7 +402,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -417,23 +418,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_CITY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CityListComponent
-            },
-            {
-                path: ':id',
-                component: CityDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -449,23 +434,7 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
-        ]
-    },
-    {
-        path: STOCK_COUNTRY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CountryListComponent
-            },
-            {
-                path: ':id',
-                component: CountryDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -481,9 +450,10 @@ export const lookupRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
+

@@ -6,12 +6,11 @@ import {
     ABS_PAYROLL_NATIONALITIES_URL,
     ABS_PAYROLL_POSTS_URL,
     ABS_PAYROLL_SERVICES_URL,
-    ABS_PAYROLL_WILAYAS_URL,
     ABS_PAYROLL_PERSONS_URL,
     ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL,
     ABS_PAYROLL_EMPLOYMENT_TYPE_URL,
     ABS_PAYROLL_SUSPENSION_REASON_URL
-} from '../constants';
+} from '../common';
 import {SideNavNode} from '@ss/common/ui-shell';
 
 export const payrollNavTree: SideNavNode = {
@@ -61,11 +60,6 @@ export const payrollNavTree: SideNavNode = {
                     name: 'COMMON_SERVICES',
                     icon: 'fas fa-shapes',
                     route: ABS_PAYROLL_SERVICES_URL
-                },
-                {
-                    name: 'COMMON_WILAYAS',
-                    icon: 'fas fa-route-interstate',
-                    route: ABS_PAYROLL_WILAYAS_URL
                 },
                 {
                     name: 'COMMON_NATIONALITIES',

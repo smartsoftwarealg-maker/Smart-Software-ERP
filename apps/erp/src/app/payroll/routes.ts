@@ -5,14 +5,13 @@ import {
     PAYROLL_EDUCATION_LEVELS_URL,
     PAYROLL_MARITAL_STATUS_URL,
     PAYROLL_POSTS_URL,
-    COMMON_WILAYAS_URL,
     PAYROLL_NATIONALITIES_URL,
     PAYROLL_SERVICES_URL,
     PAYROLL_PERSONS_URL,
     PAYROLL_PERSONS_ACTIVATION_URL,
     PAYROLL_EMPLOYMENT_TYPE_URL,
     PAYROLL_SUSPENSION_REASON_URL
-} from '../constants';
+} from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
 } from '@ss/common/api-common';
@@ -200,23 +199,6 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: PostDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: COMMON_WILAYAS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: WilayaListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: WilayaDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

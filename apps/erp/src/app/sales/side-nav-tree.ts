@@ -5,7 +5,7 @@ import {
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL
-} from '../constants';
+} from '../common';
 
 
 export const salesNavTree: SideNavNode = {
