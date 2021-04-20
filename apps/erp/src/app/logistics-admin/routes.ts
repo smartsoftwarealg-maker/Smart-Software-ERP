@@ -1,4 +1,4 @@
-import {LOGISTICS_OPTION_URL, LOGISTICS_PAY_METHOD_URL, LOOKUPS_URL,} from '../constants';
+import {LOGISTICS_OPTION_URL, LOGISTICS_PAY_METHOD_URL, LOOKUPS_URL,} from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';

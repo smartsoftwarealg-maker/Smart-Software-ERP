@@ -11,7 +11,7 @@ import {
     PAYROLL_PERSONS_ACTIVATION_URL,
     PAYROLL_EMPLOYMENT_TYPE_URL,
     PAYROLL_SUSPENSION_REASON_URL
-} from '../constants';
+} from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
 } from '@ss/common/api-common';

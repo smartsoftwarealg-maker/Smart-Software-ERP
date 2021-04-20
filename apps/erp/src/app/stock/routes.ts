@@ -19,8 +19,9 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL
-} from '../constants';
+    STOCK_VAT_URL,
+    docInfoRoutes
+} from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
@@ -67,32 +68,7 @@ import { TotalComponent } from '@ss/logistics/ui-totals';
 import { CirculationComponent } from '@ss/logistics/ui-circulation';
 
 
-export const docInfoRoutes: Routes = [
-    {
-        path: 'totals',
-        component: TotalComponent
-    },
-    {
-        path: 'circulation',
-        component: CirculationComponent
-    },
-    {
-        path: 'stock',
-        component: UiStockInfoComponent
-    },
-    {
-        path: 'card',
-        component: CardComponent
-    },
-    {
-        path: 'agent-balance',
-        component: AgentBalanceComponent
-    },
-    {
-        path: 'agent-debts',
-        component: AgentDebtsComponent
-    }
-];
+
 
 
 export const mainRoutes: Routes = [

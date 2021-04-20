@@ -1,5 +1,12 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
 import { ACTIVATION_LIST_URL as activationListUrl } from '@ss/payroll/api-person';
+import { Routes } from '@angular/router';
+import { TotalComponent } from '@ss/logistics/ui-totals';
+import { CirculationComponent } from '@ss/logistics/ui-circulation';
+import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
+import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
+import { CardComponent } from '@ss/logistics/ui-card';
+import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -145,3 +152,45 @@ export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_OR
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
 
+
+
+
+
+
+
+
+
+
+
+
+
+// ######################################
+// #            Other things            #
+// ######################################
+
+export const docInfoRoutes: Routes = [
+    {
+        path: 'totals',
+        component: TotalComponent
+    },
+    {
+        path: 'circulation',
+        component: CirculationComponent
+    },
+    {
+        path: 'stock',
+        component: UiStockInfoComponent
+    },
+    {
+        path: 'card',
+        component: CardComponent
+    },
+    {
+        path: 'agent-balance',
+        component: AgentBalanceComponent
+    },
+    {
+        path: 'agent-debts',
+        component: AgentDebtsComponent
+    }
+];

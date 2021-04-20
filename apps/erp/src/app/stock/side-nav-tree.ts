@@ -14,7 +14,7 @@ import {
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
     ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS
-} from '../constants';
+} from '../common';
 import {SideNavNode} from '@ss/common/ui-shell';
 
 

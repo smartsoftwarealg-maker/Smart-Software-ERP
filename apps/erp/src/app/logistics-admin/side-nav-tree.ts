@@ -8,7 +8,7 @@ import {
     ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_UNITS_URL,
     ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS
-} from '../constants';
+} from '../common';
 
 export const logAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',

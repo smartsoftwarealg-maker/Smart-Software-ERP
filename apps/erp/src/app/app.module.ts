@@ -18,7 +18,7 @@ import {
     PURCHASES_APP_URL,
     SALES_APP_URL,
     STOCK_APP_URL
-} from './constants';
+} from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [

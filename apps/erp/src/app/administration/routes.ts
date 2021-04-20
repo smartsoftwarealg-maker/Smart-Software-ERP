@@ -5,7 +5,7 @@ import {
     ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
     ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
     ADMINISTRATION_CITY_URL, ADMINISTRATION_COUNTRY_URL, ADMINISTRATION_WILAYA_URL,
-} from '../constants';
+} from '../common';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from '@ss/administration/ui-bank';
