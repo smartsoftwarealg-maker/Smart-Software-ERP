@@ -3560,7 +3560,7 @@
             "assets": [
               "apps/exchange/src/favicon.ico",
               "apps/exchange/src/assets",
-              "apps/erp/src/config",
+              "apps/exchange/src/config",
               {
                 "glob": "**/*",
                 "input": "libs/common/assets/src/assets",
