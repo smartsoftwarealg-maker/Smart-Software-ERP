@@ -1,0 +1,29 @@
+.mat-column-denomination {
+    flex: 1 0 auto;
+    min-width: 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-type {
+    flex: 1 0 150px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-excDate {
+    flex: 0 0 100px;
+    max-width: 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-debit, .mat-column-credit {
+    flex: 1 0 120px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+

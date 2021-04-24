@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {Agent, AGENT_URL} from "./agent-api";
-import {Observable} from "rxjs";
+import {Agent, AGENT_URL} from './agent-api';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -15,6 +15,6 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
     }
 
     getByIDList(ids: Array<number>): Observable<Agent[]> {
-        return this.httpSrv.get<Agent[]>('/agents?ids=' + ids.join(","));
+        return this.httpSrv.get<Agent[]>('/agents?ids=' + ids.join(','));
     }
 }

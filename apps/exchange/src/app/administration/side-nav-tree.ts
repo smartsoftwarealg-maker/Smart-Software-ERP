@@ -2,8 +2,14 @@ import { SideNavNode } from '@ss/common/ui-shell';
 import {
     ABS_ADMINISTRATION_BANK_URL,
     ABS_ADMINISTRATION_CENTER_URL,
-    ABS_ADMINISTRATION_COMPANY_URL, ABS_ADMINISTRATION_REPORT_CATALOG, ABS_ADMINISTRATION_ROLE_URL,
-    ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL, ABS_ADMINISTRATION_COUNTRY_URL, ABS_ADMINISTRATION_CITY_URL, ABS_ADMINISTRATION_WILAYA_URL
+    ABS_ADMINISTRATION_COMPANY_URL,
+    ABS_ADMINISTRATION_REPORT_CATALOG,
+    ABS_ADMINISTRATION_ROLE_URL,
+    ABS_ADMINISTRATION_USER_URL,
+    ABS_ADMINISTRATION_COUNTRY_URL,
+    ABS_ADMINISTRATION_CITY_URL,
+    ABS_ADMINISTRATION_WILAYA_URL,
+    ABS_EXCHANGE_AGENT_URL, ABS_EXCHANGE_DEPOSIT_TYPE_URL
 } from '../common';
 
 export const administrationNavTree: SideNavNode = {
@@ -30,11 +36,11 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-city',
             route: ABS_ADMINISTRATION_CITY_URL
         },
-        {
-            name: 'COMMON_WILAYAS',
-            icon: 'fas fa-route-interstate',
-            route: ABS_ADMINISTRATION_WILAYA_URL
-        },
+        // {
+        //     name: 'COMMON_WILAYAS',
+        //     icon: 'fas fa-route-interstate',
+        //     route: ABS_ADMINISTRATION_WILAYA_URL
+        // },
         {
             name: 'COMMON_COUNTRIES',
             icon: 'fas fa-flag',
@@ -45,16 +51,11 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_ADMINISTRATION_USER_URL
         },
-        {
-            name: 'ADMINISTRATION_BANKS',
-            icon: 'fas fa-university',
-            route: ABS_ADMINISTRATION_BANK_URL
-        },
-        {
-            name: 'ADMINISTRATION_SMTP',
-            icon: 'fas fa-server',
-            route: ABS_ADMINISTRATION_SMTP_URL
-        },
+        // {
+        //     name: 'ADMINISTRATION_BANKS',
+        //     icon: 'fas fa-university',
+        //     route: ABS_ADMINISTRATION_BANK_URL
+        // },
         {
             name: 'ADMINISTRATION_REPORT_CATALOG',
             icon: 'fas fa-books',

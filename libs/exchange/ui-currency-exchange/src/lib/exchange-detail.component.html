@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="excDate" class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="excDate"></ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="agentAutoCompleteModel"
+                                  formControlName="customerId"></ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_TYPE</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="typeAutoCompleteModel"
+                                  formControlName="depositType"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls.excDate.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="currencyAutoCompleteModel"
+                                  formControlName="currencyId"></ss-auto-complete>
+            </mat-form-field>
+
+
+            <span class="default-50 sm-100"></span>
+            <mat-form-field id="debit" class="default-50 sm-100">
+                <mat-label translate>COMMON_DEBIT</mat-label>
+                <input matInput formControlName="debit"
+                       type="number"
+                       step="0.00001" required
+                       (change)="onDebitChange($event)"
+                       #debit>
+                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="credit" class="default-50 sm-100">
+                <mat-label translate>COMMON_CREDIT</mat-label>
+                <input matInput formControlName="credit"
+                       type="number"
+                       step="0.00001"
+                       (change)="onCreditChange($event)"
+                       required #credit>
+                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>

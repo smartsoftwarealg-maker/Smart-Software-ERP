@@ -3570,6 +3570,16 @@
                 "glob": "**/*",
                 "input": "libs/administration/assets/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/logistics/assets/src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "libs/exchange/assets/src/assets",
+                "output": "assets"
               }
             ],
             "styles": ["apps/exchange/src/styles.scss"],
@@ -3636,6 +3646,131 @@
           "outputs": ["coverage/apps/exchange"],
           "options": {
             "jestConfig": "apps/exchange/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "logistics-ui-currency": {
+      "projectType": "library",
+      "root": "libs/logistics/ui-currency",
+      "sourceRoot": "libs/logistics/ui-currency/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/logistics/ui-currency/src/**/*.ts",
+              "libs/logistics/ui-currency/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logistics/ui-currency"],
+          "options": {
+            "jestConfig": "libs/logistics/ui-currency/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exchange-ui-currency-exchange": {
+      "projectType": "library",
+      "root": "libs/exchange/ui-currency-exchange",
+      "sourceRoot": "libs/exchange/ui-currency-exchange/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/exchange/ui-currency-exchange/src/**/*.ts",
+              "libs/exchange/ui-currency-exchange/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exchange/ui-currency-exchange"],
+          "options": {
+            "jestConfig": "libs/exchange/ui-currency-exchange/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exchange-api-currency-exchange": {
+      "projectType": "library",
+      "root": "libs/exchange/api-currency-exchange",
+      "sourceRoot": "libs/exchange/api-currency-exchange/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/exchange/api-currency-exchange/src/**/*.ts",
+              "libs/exchange/api-currency-exchange/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exchange/api-currency-exchange"],
+          "options": {
+            "jestConfig": "libs/exchange/api-currency-exchange/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exchange-ui-deposit-type": {
+      "projectType": "library",
+      "root": "libs/exchange/ui-deposit-type",
+      "sourceRoot": "libs/exchange/ui-deposit-type/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/exchange/ui-deposit-type/src/**/*.ts",
+              "libs/exchange/ui-deposit-type/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exchange/ui-deposit-type"],
+          "options": {
+            "jestConfig": "libs/exchange/ui-deposit-type/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "exchange-assets": {
+      "projectType": "library",
+      "root": "libs/exchange/assets",
+      "sourceRoot": "libs/exchange/assets/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/exchange/assets/src/**/*.ts",
+              "libs/exchange/assets/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exchange/assets"],
+          "options": {
+            "jestConfig": "libs/exchange/assets/jest.config.js",
             "passWithNoTests": true
           }
         }

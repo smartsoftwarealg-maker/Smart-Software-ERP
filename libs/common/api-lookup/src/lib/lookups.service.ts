@@ -1,6 +1,6 @@
 import {LookupsCacheService} from './lookups-cache.service';
 import {Observable, of} from 'rxjs';
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 import {
     Activity,
     ACTIVITY_URL,
@@ -97,47 +97,47 @@ export class LookupsService {
     }
 
     public getAgentTypes(): Observable<AgentType[]> {
-        return this.lookupCacheSrv.load<AgentType>(AGENT_TYPE_URL, "agentTypes");
+        return this.lookupCacheSrv.load<AgentType>(AGENT_TYPE_URL, 'agentTypes');
     }
 
     public getCities(): Observable<City[]> {
-        return this.lookupCacheSrv.load<City>(CITY_URL, "cities");
+        return this.lookupCacheSrv.load<City>(CITY_URL, 'cities');
     }
 
     public getCountries(): Observable<Country[]> {
-        return this.lookupCacheSrv.load<Country>(COUNTRY_URL, "countries");
+        return this.lookupCacheSrv.load<Country>(COUNTRY_URL, 'countries');
     }
 
     public getCompanyTypes(): Observable<CompanyType[]> {
-        return this.lookupCacheSrv.load<CompanyType>(COMPANY_TYPE_URL, "companyTypes");
+        return this.lookupCacheSrv.load<CompanyType>(COMPANY_TYPE_URL, 'companyTypes');
     }
 
     public getCurrencies(): Observable<Currency[]> {
-        return this.lookupCacheSrv.load<Currency>(CURRENCY_URL, "currencies");
+        return this.lookupCacheSrv.load<Currency>(CURRENCY_URL, 'currencies');
     }
 
     public getPayModes(): Observable<PayMode[]> {
-        return this.lookupCacheSrv.load<PayMode>(PAY_MODE_URL, "payModes");
+        return this.lookupCacheSrv.load<PayMode>(PAY_MODE_URL, 'payModes');
     }
 
     public getActivities(): Observable<Activity[]> {
-        return this.lookupCacheSrv.load<Activity>(ACTIVITY_URL, "activities");
+        return this.lookupCacheSrv.load<Activity>(ACTIVITY_URL, 'activities');
     }
 
     public getPrices(): Observable<AgentPrice[]> {
-        return this.lookupCacheSrv.load<AgentPrice>(AGENT_PRICES_URL, "agentprices");
+        return this.lookupCacheSrv.load<AgentPrice>(AGENT_PRICES_URL, 'agentprices');
     }
 
     public getBanks(): Observable<Bank[]> {
-        return this.lookupCacheSrv.load<Bank>(BANKS_URL, "banks");
+        return this.lookupCacheSrv.load<Bank>(BANKS_URL, 'banks');
     }
 
     public getFunds(): Observable<Fund[]> {
-        return this.lookupCacheSrv.load<Fund>(FUNDS_URL, "funds");
+        return this.lookupCacheSrv.load<Fund>(FUNDS_URL, 'funds');
     }
 
     public getCCGroups(): Observable<CCGroup[]> {
-        return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, "cc_groups");
+        return this.lookupCacheSrv.load<CCGroup>(CC_GROUP_URL, 'cc_groups');
     }
 
     public getEmploymentTypes(): Observable<EmploymentType[]> {

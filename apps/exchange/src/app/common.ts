@@ -3,6 +3,7 @@ import { MAIN_PAGE_URL } from '@ss/common/api-common';
 
 // common
 export const LOOKUPS_URL = 'lookups';
+export const EXCHANGE_APP_URL = 'exchange';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -42,3 +43,13 @@ export const ABS_ADMINISTRATION_WILAYA_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATIO
 // ######################################
 // #            Other things            #
 // ######################################
+// exchange
+export const EXCHANGE_AGENT_URL = 'agents';
+export const EXCHANGE_CURRENCY_URL = 'currencies';
+export const EXCHANGE_EXCHANGE_URL = 'exchanges';
+export const EXCHANGE_DEPOSIT_TYPE_URL = 'deposit_types';
+export const ABS_EXCHANGE_AGENT_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_AGENT_URL].join('/');
+export const ABS_EXCHANGE_CURRENCY_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_CURRENCY_URL].join('/');
+export const ABS_EXCHANGE_EXCHANGE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_EXCHANGE_URL].join('/');
+export const ABS_EXCHANGE_DEPOSIT_TYPE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_DEPOSIT_TYPE_URL].join('/');
+

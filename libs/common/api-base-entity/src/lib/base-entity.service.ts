@@ -58,7 +58,7 @@ export class BaseEntityService<T> {
 
     protected getUrl(): string {
         if (this.parentUrl && !this.parentId) {
-            throw Error("No parent id was given !")
+            throw Error('No parent id was given !')
         }
 
         return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;

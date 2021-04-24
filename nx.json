@@ -135,6 +135,11 @@
     "administration-ui-roles": { "tags": [] },
     "logistics-ui-pay-method": { "tags": [] },
     "logistics-ui-options": { "tags": [] },
-    "exchange": { "tags": [] }
+    "exchange": { "tags": [] },
+    "logistics-ui-currency": { "tags": [] },
+    "exchange-ui-currency-exchange": { "tags": [] },
+    "exchange-api-currency-exchange": { "tags": [] },
+    "exchange-ui-deposit-type": { "tags": [] },
+    "exchange-assets": { "tags": [] }
   }
 }

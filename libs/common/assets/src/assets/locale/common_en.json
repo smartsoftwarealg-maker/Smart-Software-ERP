@@ -121,5 +121,8 @@
     "EDIT_SUSPENSION_REASON": "Edit suspension reason",
     "EMPLOYMENT_TYPES": "Employment types",
     "EDIT_EMPLOYMENT_TYPE": "Edit employment type",
-    "FILE": "File"
+    "DATE": "Date",
+    "FILE": "File",
+    "DEBIT": "Debit",
+    "CREDIT": "Credit"
 }
