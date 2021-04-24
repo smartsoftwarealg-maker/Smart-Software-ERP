@@ -22,15 +22,14 @@ export const UNITS_URL = '/lookups/units';
 export const AGENT_TYPE_URL = '/lookups/agents';
 export const CITY_URL = '/lookups/cities';
 export const COUNTRY_URL = '/lookups/countries';
-export const CURRENCY_URL = '/lookups/currencies';
+export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
 export const FUNDS_URL = '/lookups/funds';
 export const BANKS_URL = '/banks';
-export const AGENT_PRICES_URL = '/inventory/agentprices';
+export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';
-
 
 export interface Wilaya {
     id: number;
@@ -135,6 +134,9 @@ export interface Country {
 export interface Currency {
     id: number;
     description: string;
+    code?: string;
+    descriptionAr?: string;
+    exchangeRate?: number;
 }
 
 export interface CompanyType {

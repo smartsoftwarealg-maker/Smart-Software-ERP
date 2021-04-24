@@ -12,7 +12,7 @@ import { CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL } from '@s
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import {
-    ADMINISTRATION_APP_URL
+    ADMINISTRATION_APP_URL, EXCHANGE_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,6 +29,10 @@ const routes: Routes = [
             {
                 path: ADMINISTRATION_APP_URL,
                 loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
+            },
+            {
+                path: EXCHANGE_APP_URL,
+                loadChildren: () => import('./exchange/exchange.module').then(m => m.ExchangeModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
@@ -64,7 +68,9 @@ export class AppModule {
     constructor(private langSrv: LanguageService) {
         langSrv.addSource('assets/locale/', '');
         langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
+        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
         langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/exchange_', 'EXCHANGE_');
     }
 
 }

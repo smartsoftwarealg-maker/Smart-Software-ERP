@@ -121,5 +121,8 @@
     "EDIT_SUSPENSION_REASON": "تعديل سبب التعليق",
     "EMPLOYMENT_TYPES": "أنواع التوظيف",
     "EDIT_EMPLOYMENT_TYPE": "تعديل نوع الوظيفة ",
-    "FILE": "الملف"
+    "DATE": "التاريخ",
+    "FILE": "الملف",
+    "DEBIT": "دائن",
+    "CREDIT": "مدين"
 }

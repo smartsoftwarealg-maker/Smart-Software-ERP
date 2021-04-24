@@ -2,9 +2,15 @@ import {
     ADMINISTRATION_BANK_URL,
     ADMINISTRATION_CENTER_URL,
     ADMINISTRATION_COMPANY_URL,
-    ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
-    ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
-    ADMINISTRATION_CITY_URL, ADMINISTRATION_COUNTRY_URL, ADMINISTRATION_WILAYA_URL,
+    ADMINISTRATION_REPORT_CATALOG_URL,
+    ADMINISTRATION_ROLE_URL,
+    ADMINISTRATION_SMTP_URL,
+    ADMINISTRATION_USER_URL,
+    ADMINISTRATION_CITY_URL,
+    ADMINISTRATION_COUNTRY_URL,
+    ADMINISTRATION_WILAYA_URL,
+    EXCHANGE_CURRENCY_URL,
+    EXCHANGE_DEPOSIT_TYPE_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -24,13 +30,9 @@ import {
     WilayaListComponent,
     WilayaDetailComponent
 } from '@ss/common/ui-lookup';
+import {DepositTypeListComponent, DepositTypeDetailComponent} from '@ss/exchange/ui-deposit-type';
 
 export const mainRoutes: Routes = [
-//    // NOT USED
-//    {
-//        path: LOOKUPS_URL,
-//        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
-//    },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [

@@ -7,8 +7,8 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "192.168.8.200:9999",
-            "comment": "BackEnd is same as FrontEend, but with port 9999"
+            "backend": "localhost:8080",
+            "comment": "BackEnd is same as FrontEnd, but with port 9999"
         }
     ]
 }

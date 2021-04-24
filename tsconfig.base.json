@@ -239,7 +239,18 @@
       "@ss/logistics/ui-pay-method": [
         "libs/logistics/ui-pay-method/src/index.ts"
       ],
-      "@ss/logistics/ui-options": ["libs/logistics/ui-options/src/index.ts"]
+      "@ss/logistics/ui-options": ["libs/logistics/ui-options/src/index.ts"],
+      "@ss/logistics/ui-currency": ["libs/logistics/ui-currency/src/index.ts"],
+      "@ss/exchange/ui-currency-exchange": [
+        "libs/exchange/ui-currency-exchange/src/index.ts"
+      ],
+      "@ss/exchange/api-currency-exchange": [
+        "libs/exchange/api-currency-exchange/src/index.ts"
+      ],
+      "@ss/exchange/ui-deposit-type": [
+        "libs/exchange/ui-deposit-type/src/index.ts"
+      ],
+      "@ss/exchange/assets": ["libs/exchange/assets/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
