@@ -1,0 +1,33 @@
+.title {
+    margin-left: auto;
+}
+
+#doc-info.mat-card {
+    width: 100%;
+    margin: 0 0 16px 0 !important;
+    padding: 0 !important;
+}
+
+
+#doc-info.mat-card mat-card-content {
+    margin: 0 !important;
+}
+
+mat-toolbar {
+    font-size: small;
+    padding: 0px;
+}
+
+.active {
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+
+a {
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #101010;
+}

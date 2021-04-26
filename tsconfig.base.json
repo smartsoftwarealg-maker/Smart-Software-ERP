@@ -250,7 +250,8 @@
       "@ss/exchange/ui-deposit-type": [
         "libs/exchange/ui-deposit-type/src/index.ts"
       ],
-      "@ss/exchange/assets": ["libs/exchange/assets/src/index.ts"]
+      "@ss/exchange/assets": ["libs/exchange/assets/src/index.ts"],
+      "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

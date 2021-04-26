@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+    <a [routerLink]="['history']"
+       [queryParams]="{ id: selectedId }"
+       class="f-primary-contrast"
+       routerLinkActive="active"
+       #history><span translate>EXCHANGE_HISTORY</span></a>
+    <a [routerLink]="['balance']" [queryParams]="{ id: selectedId }" class="f-primary-contrast" routerLinkActive="active"><span translate>EXCHANGE_BALANCE</span></a>
+</mat-toolbar>
+<router-outlet></router-outlet>
