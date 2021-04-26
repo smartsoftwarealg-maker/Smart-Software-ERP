@@ -1,8 +1,8 @@
 import {
     EXCHANGE_AGENT_URL,
-    EXCHANGE_APP_URL,
+    EXCHANGE_APP_URL, EXCHANGE_BALANCE_URL,
     EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
-    EXCHANGE_EXCHANGE_URL,
+    EXCHANGE_EXCHANGE_URL, EXCHANGE_HISTORY_URL,
     LOOKUPS_URL
 } from '../common';
 import { Routes } from '@angular/router';
@@ -11,6 +11,8 @@ import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
 import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
 import {DepositTypeDetailComponent, DepositTypeListComponent} from "@ss/exchange/ui-deposit-type";
+import {BalanceComponent} from "../../../../../libs/exchange/ui-info/src/lib/ui-balance/balance.component";
+import {HistoryComponent} from "../../../../../libs/exchange/ui-info/src/lib/ui-history/history.component";
 
 export const mainRoutes: Routes = [
     {
@@ -77,6 +79,10 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ExchangeListComponent,
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                ],
                 canActivate: [CanActivateService]
             },
             {

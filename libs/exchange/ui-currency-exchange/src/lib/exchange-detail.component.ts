@@ -10,7 +10,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 
 @Component({
-    selector: 'ss-cost-center-detail',
+    selector: 'ss-exchange-detail',
     styleUrls: ['./exchange-detail.component.scss'],
     templateUrl: './exchange-detail.component.html'
 })

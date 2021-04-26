@@ -140,6 +140,7 @@
     "exchange-ui-currency-exchange": { "tags": [] },
     "exchange-api-currency-exchange": { "tags": [] },
     "exchange-ui-deposit-type": { "tags": [] },
-    "exchange-assets": { "tags": [] }
+    "exchange-assets": { "tags": [] },
+    "exchange-ui-info": { "tags": [] }
   }
 }

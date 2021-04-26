@@ -18,6 +18,7 @@ import {AgentService} from '@ss/logistics/api-agent';
 export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
 
     agents = new Map<number, string>();
+    selectedAgent = 0;
 
     displayedColumns = [
         'excDate',
@@ -49,9 +50,13 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
                       return this.depositTypeSrv.getList(0, 50);
                   }),
                 switchMap(res => {
-                    console.log('data', data);
                     data.forEach(d => d.typeDescription = res.body.find(e => e.id === d.depositType)?.description);
                     return super.processLoadedData(data);
                 }));
+    }
+
+    selectRow(e: Exchange) {
+        this.selectedAgent = e? e.customerId || 0 : 0;
+        super.select(e? e.id || 0 : 0)
     }
 }

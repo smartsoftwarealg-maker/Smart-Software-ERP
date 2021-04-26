@@ -10,6 +10,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
 import {ExchangeListComponent} from './exchange-list.component';
 import {ExchangeDetailComponent} from './exchange-detail.component';
+import {ExchangeUiInfoModule} from "@ss/exchange/ui-info";
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import {ExchangeDetailComponent} from './exchange-detail.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        ExchangeUiInfoModule
     ],
 
     declarations: [
