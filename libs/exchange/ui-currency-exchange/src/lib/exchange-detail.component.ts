@@ -3,11 +3,12 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
+import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyExchangeService, DepositType, DepositTypeService, Exchange} from '@ss/exchange/api-currency-exchange';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-exchange-detail',
@@ -23,6 +24,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
     constructor(
         private agentService: AgentService,
         private typeSrv: DepositTypeService,
+        private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public exchangeService: CurrencyExchangeService,
         public shellSrv: ShellService,
@@ -47,8 +49,8 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
-            debit: [{ value: debit,   disabled: b.amount < 0.000001 }, Validators.required],
-            credit: [{ value: credit, disabled: b.amount > 0.000001 }, Validators.required]
+            debit: [{value: debit, disabled: b.amount < 0.000001}, Validators.required],
+            credit: [{value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });
     }
 
@@ -64,15 +66,17 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         const value = event.target['value'] || 0;
         if (value > 0.0) {
             this.form.controls[ctrl].setValue(0);
-            this.form.controls[ctrl].disable({ onlySelf: true, emitEvent: false });
+            this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
         } else {
             this.form.controls[ctrl].enable();
         }
     }
 
-  readForm(): Exchange {
-      const  value = super.readForm();
-      value.amount = value['debit'] || 0 - value['credit'] || 0;
-      return value;
-  }
+    readForm(): Exchange {
+        const value = super.readForm();
+        value.amount = value['debit'] || 0 - value['credit'] || 0;
+        value.userId = this.loginSrv.user.id;
+        value.centerId = this.loginSrv.context.center;
+        return value;
+    }
 }

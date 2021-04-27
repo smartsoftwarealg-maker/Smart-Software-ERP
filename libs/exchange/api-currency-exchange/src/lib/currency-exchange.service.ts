@@ -13,6 +13,8 @@ export interface Exchange {
     description?: string;
     currencyId: number;
     amount: number;
+    userId: number;
+    centerId: number;
     creationTime: string;
     denomination?: string;
     typeDescription?: string;
