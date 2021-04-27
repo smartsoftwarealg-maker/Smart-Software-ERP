@@ -50,7 +50,7 @@ export class CountryDetailComponent extends BaseEntityDetailComponent<Country> {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
-            descriptionAr: [e.descriptionAr, Validators.required]
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

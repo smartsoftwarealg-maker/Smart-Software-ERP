@@ -8,6 +8,7 @@ import {Observable} from "rxjs";
 import {ReportAppsService} from "@ss/common/api-reports";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpParams} from "@angular/common/http";
+import {tap} from "rxjs/operators";
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -28,7 +29,6 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         'filename'
     ];
 
-
     constructor(
         public reportCatalogService: ReportCatalogService,
         public reportService: ReportAppsService,
@@ -38,6 +38,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public router: Router,
         public confirmationSrv: ConfirmationDialogService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'ADMINISTRATION_REPORT_CATALOG');
+        this.pagination.pageSize = 5;
     }
 
 
@@ -52,22 +53,20 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
 
         this.loadApps();
 
-
         this.appForm.valueChanges.subscribe(x => {
             this.setSelectedApp(x.selectedApp);
         });
-
     }
 
+   processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
+       return super.processLoadedData(data)
+           .pipe(tap(list => list.forEach(c => console.log(c))));
+   }
 
     loadApps(): void {
-
         this.reportService.getApps().subscribe(x => {
-
             this.appsList = x;
-
             this.readAppFromQueryParam();
-
         });
     }
 
