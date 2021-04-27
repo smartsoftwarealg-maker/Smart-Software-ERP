@@ -3,5 +3,6 @@
     "CURRENCY_EXCHANGE": "Currency exchange",
     "EDIT_EXCHANGE": "Edit exchange",
     "HISTORY": "History",
-    "BALANCE": "Balance"
+    "BALANCE": "Balance",
+    "DEPOSIT_TYPES": "Deposit methods"
 }

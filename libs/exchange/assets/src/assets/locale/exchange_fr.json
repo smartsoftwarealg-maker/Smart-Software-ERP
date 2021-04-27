@@ -3,5 +3,6 @@
     "CURRENCY_EXCHANGE": "Échange de devises",
     "EDIT_EXCHANGE": "Modification Échange",
     "HISTORY": "Historique",
-    "BALANCE": "Solde"
+    "BALANCE": "Solde",
+    "DEPOSIT_TYPES": "Méthodes de dépôt"
 }

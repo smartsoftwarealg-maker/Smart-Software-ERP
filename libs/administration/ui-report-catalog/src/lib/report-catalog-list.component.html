@@ -1,32 +1,36 @@
-<mat-card [formGroup]="appForm" class="app-select">
-    <p translate>ADMINISTRATION_SELECT_APP</p>
-    <mat-form-field>
-        <mat-select formControlName="selectedApp" id="selectedApp">
-            <mat-option *ngFor="let app of appsList" [value]="app">{{app}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-</mat-card>
-<mat-table mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.description}}
-        </mat-cell>
-    </ng-container>
+<div class="main-container">
+    <mat-card [formGroup]="appForm" class="app-select">
+        <p translate>ADMINISTRATION_SELECT_APP</p>
+        <mat-form-field>
+            <mat-select formControlName="selectedApp" id="selectedApp">
+                <mat-option *ngFor="let app of appsList" [value]="app">{{ app }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card>
+    <div class="table-container">
+        <mat-table class="main-table" mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="filename">
-        <mat-header-cell *matHeaderCellDef [translate]="{company: 2}">ADMINISTRATION_FILENAME</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.filename}}
-        </mat-cell>
-    </ng-container>
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-             *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+            <ng-container matColumnDef="filename">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.filename}}
+                </mat-cell>
+            </ng-container>
 
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
 </div>
