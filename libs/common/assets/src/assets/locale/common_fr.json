@@ -122,7 +122,8 @@
     "EMPLOYMENT_TYPES": "Types d'emploi",
     "EDIT_EMPLOYMENT_TYPE": "Modifier type d'emploi",
     "DATE": "Date",
-    "FILE": "Dossier",
+    "FILE": "Fichier",
     "DEBIT": "Debit",
-    "CREDIT": "Credit"
+    "CREDIT": "Credit",
+    "ROLES": "Roles"
 }

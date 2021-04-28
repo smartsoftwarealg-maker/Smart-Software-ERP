@@ -62,5 +62,6 @@
     "UPDATE_PASSWORD": "تغيير كلمة السر",
     "PASSWORD": "كلمة السر",
     "ROLES": "الوظائف",
-    "ROLE": "الوظيفة"
+    "ROLE": "الوظيفة",
+    "RESPONSIBLE": "مسؤول"
 }

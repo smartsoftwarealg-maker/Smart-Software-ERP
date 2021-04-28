@@ -24,7 +24,7 @@ export class RoleListComponent extends BaseEntityListComponent<Role> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public router: Router) {
-        super(roleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_ACTIVITIES');
+        super(roleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_ROLES');
     }
 
 }
@@ -44,7 +44,7 @@ export class RoleDetailComponent extends BaseEntityDetailComponent<Role> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-        super(roleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_ACTIVITY');
+        super(roleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_ROLES');
     }
 
     public setupForm(e: Activity): FormGroup {

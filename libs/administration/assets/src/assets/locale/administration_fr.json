@@ -33,7 +33,7 @@
     "FISCAL": "Fiscale",
     "CONTACT": "Contact",
     "ARABIC": "Arabe",
-    "SEVERE": "Strict",
+    "SEVERE": "Révoquer les droits lorsqu'ils ne sont pas spécifiés",
     "PAY_MONTH": "Mois de paie",
     "MONTH_VALIDATED": "Mois validé",
     "ACTIVITY": "Activité",
@@ -62,5 +62,6 @@
     "UPDATE_PASSWORD": "Mettre à jour le mot de passe",
     "PASSWORD": "Mot de passe",
     "ROLES": "Roles",
-    "ROLE": "Role"
+    "ROLE": "Role",
+    "RESPONSIBLE": "Responsable"
 }

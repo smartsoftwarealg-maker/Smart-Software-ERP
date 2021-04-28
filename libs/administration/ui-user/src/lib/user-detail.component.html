@@ -14,11 +14,15 @@
                 </mat-error>
             </mat-form-field>
 
-            <div id="manager" class="default-100 sm-100">
+            <div id="manager" class="default-100 sm-100" *ngIf="isManager">
                 <mat-checkbox formControlName="manager" translate>ADMINISTRATION_MANAGER</mat-checkbox>
             </div>
 
-            <div id="blocked" class="default-100 sm-100">
+            <div id="responsible" class="default-100 sm-100" *ngIf="isManager">
+                <mat-checkbox formControlName="responsible" translate>ADMINISTRATION_RESPONSIBLE</mat-checkbox>
+            </div>
+
+            <div id="blocked" class="default-100 sm-100" *ngIf="isManager">
                 <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
             </div>
 
