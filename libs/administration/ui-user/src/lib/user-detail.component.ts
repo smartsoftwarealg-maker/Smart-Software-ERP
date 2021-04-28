@@ -24,6 +24,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     pwd2 = new FormControl();
     validId = false;
     openedPanel = -1;
+    isManager = false;
 
 
     roleList: Role[] = [];
@@ -53,6 +54,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         private loginSrv: LoginService,
         private centerSrv: CenterService) {
         super(userSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        this.isManager = loginSrv.userSrv.userInfo.user.manager;
     }
 
 
@@ -83,6 +85,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             fullName: [b.fullName, Validators.required],
             description: [b.description, Validators.required],
             manager: [b.manager || false],
+            responsible: [b.responsible || false],
             blocked: [b.blocked || false]
         });
     }

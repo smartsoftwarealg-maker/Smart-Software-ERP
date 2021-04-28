@@ -124,5 +124,6 @@
     "DATE": "Date",
     "FILE": "File",
     "DEBIT": "Debit",
-    "CREDIT": "Credit"
+    "CREDIT": "Credit",
+    "ROLES": "Roles"
 }

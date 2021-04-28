@@ -62,5 +62,6 @@
     "UPDATE_PASSWORD": "Update password",
     "PASSWORD": "Password",
     "ROLES": "Roles",
-    "ROLE": "Role"
+    "ROLE": "Role",
+    "RESPONSIBLE": "Responsible"
 }

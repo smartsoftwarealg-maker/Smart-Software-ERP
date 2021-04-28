@@ -1,40 +1,53 @@
-<mat-table mat-table [dataSource]="data" class="main-table">
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_USERNAME</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.description}}
-        </mat-cell>
-    </ng-container>
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_USERNAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
 
-    <ng-container matColumnDef="fullName">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FULLNAME</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.fullName}}
-        </mat-cell>
-    </ng-container>
+            <ng-container matColumnDef="fullName">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FULLNAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.fullName}}
+                </mat-cell>
+            </ng-container>
 
-    <ng-container matColumnDef="manager">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_MANAGER</mat-header-cell>
-        <mat-cell *matCellDef="let e">
+            <ng-container matColumnDef="manager">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_MANAGER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
 
-            <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true" [checked]="e.manager"></mat-checkbox>
-        </mat-cell>
-    </ng-container>
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.manager"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
 
-    <ng-container matColumnDef="blocked">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_BLOCKED</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true" [checked]="e.blocked"></mat-checkbox>
-        </mat-cell>
-    </ng-container>
+            <ng-container matColumnDef="responsible">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_RESPONSIBLE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.responsible"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="blocked">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_BLOCKED</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.blocked"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-             *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
-
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
 </div>
