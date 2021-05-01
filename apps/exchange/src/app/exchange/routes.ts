@@ -2,17 +2,16 @@ import {
     EXCHANGE_AGENT_URL,
     EXCHANGE_APP_URL, EXCHANGE_BALANCE_URL,
     EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
-    EXCHANGE_EXCHANGE_URL, EXCHANGE_HISTORY_URL,
+    EXCHANGE_DEPOSIT_URL, EXCHANGE_HISTORY_URL,
     LOOKUPS_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
-import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
-import {DepositTypeDetailComponent, DepositTypeListComponent} from "@ss/exchange/ui-deposit-type";
-import {BalanceComponent} from "../../../../../libs/exchange/ui-info/src/lib/ui-balance/balance.component";
-import {HistoryComponent} from "../../../../../libs/exchange/ui-info/src/lib/ui-history/history.component";
+import {DepositDetailComponent, DepositListComponent} from '@ss/exchange/ui-currency-deposit';
+import {DepositTypeDetailComponent, DepositTypeListComponent} from '@ss/exchange/ui-deposit-type';
+import {BalanceComponent, HistoryComponent} from '@ss/exchange/ui-info';
 
 export const mainRoutes: Routes = [
     {
@@ -74,11 +73,11 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: EXCHANGE_EXCHANGE_URL,
+        path: EXCHANGE_DEPOSIT_URL,
         children: [
             {
                 path: LIST_URL,
-                component: ExchangeListComponent,
+                component: DepositListComponent,
                 children: [
                     { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
                     { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
@@ -87,7 +86,7 @@ export const mainRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: ExchangeDetailComponent,
+                component: DepositDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

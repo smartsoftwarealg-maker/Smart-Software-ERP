@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'exchange-api-currency-exchange',
+  displayName: 'exchange-ui-currency-deposit',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/libs/exchange/api-currency-exchange',
+  coverageDirectory: '../../../coverage/libs/exchange/ui-currency-deposit',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

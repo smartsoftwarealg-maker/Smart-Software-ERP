@@ -4,5 +4,8 @@
     "EDIT_EXCHANGE": "Edit exchange",
     "HISTORY": "History",
     "BALANCE": "Balance",
-    "DEPOSIT_TYPES": "Deposit methods"
+    "DEPOSIT_TYPES": "Deposit methods",
+    "CURRENCY_DEPOSIT": "Currency deposit",
+    "DEPOSIT": "Deposit",
+    "WITHDRAWAL": "Withdrawal"
 }

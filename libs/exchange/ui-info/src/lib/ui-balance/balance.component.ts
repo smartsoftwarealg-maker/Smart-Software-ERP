@@ -6,12 +6,9 @@ import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {LanguageService} from '@ss/common/ui-lang';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Lot} from '@ss/common/api-lookup';
-import {FormControl, FormGroup} from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
-import {Balance, CurrencyExchangeService, History} from '@ss/exchange/api-currency-exchange';
 import {switchMap} from 'rxjs/operators';
+import {Balance, CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
 
 @Component({
     selector: 'ss-card',
@@ -31,7 +28,7 @@ export class BalanceComponent implements OnInit {
     ];
 
 
-    constructor(public exchangeSrv: CurrencyExchangeService,
+    constructor(public exchangeSrv: CurrencyDepositService,
                 public shellSrv: ShellService,
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
