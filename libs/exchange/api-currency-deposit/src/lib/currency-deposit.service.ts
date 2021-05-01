@@ -3,7 +3,7 @@ import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 
-export const EXCHANGE_EXCHANGE_URL = '/deposits';
+export const EXCHANGE_DEPOSIT_URL = '/deposits';
 
 export interface Deposit {
     id: number;
@@ -43,7 +43,7 @@ export interface Balance {
 export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, EXCHANGE_EXCHANGE_URL);
+        super(httpSrv, EXCHANGE_DEPOSIT_URL);
     }
 
     getHistory(id: number, page: number, limit: number): Observable<History[]> {

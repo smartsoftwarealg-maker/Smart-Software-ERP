@@ -38,9 +38,8 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         public router: Router,
         public lookupSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'Currency Deposit ');
+        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
     }
-
 
     processLoadedData(data: Deposit[]): Observable<Deposit[]> {
         return this.agentService

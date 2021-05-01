@@ -1,0 +1,64 @@
+<div class="main-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+
+        <ng-container matColumnDef="exchDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.exchDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="agentId">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.denomination }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="purchCurrency">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_PURCHASE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.purchCurrDescrip }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount  | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="soldCurrency">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_SALES</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.soldCurrDescrip }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="exchRate">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_EXCHANGE_RATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.exchRate  | number: '1.5-5' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="memo">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.memo }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
+

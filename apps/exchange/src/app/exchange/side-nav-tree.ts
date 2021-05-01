@@ -3,7 +3,7 @@ import {
     ABS_EXCHANGE_AGENT_URL,
     ABS_EXCHANGE_CURRENCY_URL,
     ABS_EXCHANGE_DEPOSIT_TYPE_URL,
-    ABS_EXCHANGE_DEPOSIT_URL
+    ABS_EXCHANGE_DEPOSIT_URL, ABS_EXCHANGE_EXCHANGE_URL
 } from '../common';
 
 export const fileNavTree: SideNavNode = {
@@ -34,8 +34,13 @@ export const exchangeNavTree: SideNavNode = {
     children: [
         {
             name: 'EXCHANGE_CURRENCY_DEPOSIT',
-            icon: 'fas fa-cash-register',
+            icon: 'fas fa-money-check-alt',
             route: ABS_EXCHANGE_DEPOSIT_URL
+        },
+        {
+            name: 'EXCHANGE_CURRENCY_EXCHANGE',
+            icon: 'fas fa-cash-register',
+            route: ABS_EXCHANGE_EXCHANGE_URL
         },
     ]
 };

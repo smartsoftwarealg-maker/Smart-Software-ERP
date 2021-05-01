@@ -1,6 +1,6 @@
 import {
     EXCHANGE_AGENT_URL,
-    EXCHANGE_APP_URL, EXCHANGE_BALANCE_URL,
+    EXCHANGE_EXCHANGE_URL, EXCHANGE_BALANCE_URL,
     EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
     EXCHANGE_DEPOSIT_URL, EXCHANGE_HISTORY_URL,
     LOOKUPS_URL
@@ -12,12 +12,32 @@ import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-c
 import {DepositDetailComponent, DepositListComponent} from '@ss/exchange/ui-currency-deposit';
 import {DepositTypeDetailComponent, DepositTypeListComponent} from '@ss/exchange/ui-deposit-type';
 import {BalanceComponent, HistoryComponent} from '@ss/exchange/ui-info';
+import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
 
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./exchange-lookups.module').then(m => m.ExchangeLookupsModule)
     },
+    {
+        path: EXCHANGE_EXCHANGE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ExchangeListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: ExchangeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+
     {
         path: EXCHANGE_AGENT_URL,
         children: [

@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="excDate" class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="exchDate"></ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="agentAutoCompleteModel"
+                                  formControlName="agentId"></ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_PURCHASE</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="purchaseAutoCompleteModel"
+                                  formControlName="purchCurrency"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_SALES</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="salesAutoCompleteModel"
+                                  formControlName="soldCurrency"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="memo" type="text">
+            </mat-form-field>
+
+
+            <span class="default-50 sm-100"></span>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_AMOUNT</mat-label>
+                <input matInput formControlName="amount"
+                       type="number"
+                       step="0.00001"
+                       required #credit>
+                <mat-error *ngIf="form.controls.amount.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_EXCHANGE_RATE</mat-label>
+                <input matInput formControlName="exchRate"
+                       type="number"
+                       step="0.00001"
+                       required #credit>
+                <mat-error *ngIf="form.controls.exchRate.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>
