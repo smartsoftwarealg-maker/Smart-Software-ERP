@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {switchMap} from 'rxjs/operators';
-import {CurrencyExchangeService, History} from '@ss/exchange/api-currency-exchange';
+import {CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit';
 
 @Component({
     selector: 'ss-card',
@@ -30,7 +30,7 @@ export class HistoryComponent implements OnInit {
     ];
 
 
-    constructor(public exchangeSrv: CurrencyExchangeService,
+    constructor(public exchangeSrv: CurrencyDepositService,
                 public shellSrv: ShellService,
                 public route: ActivatedRoute,
                 public router: Router,

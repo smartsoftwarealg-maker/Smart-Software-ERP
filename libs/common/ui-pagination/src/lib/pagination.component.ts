@@ -24,7 +24,7 @@ export abstract class PaginationModel {
 
     public static newInstance(conf?: { page: number, pageSize: number, elementCount: number }): PaginationModel {
         const c = conf == null
-            ? { page: 1, pageSize: 10, elementCount: 0 }
+            ? { page: 1, pageSize: 5, elementCount: 0 }
             : conf;
         return new ExtendedPaginationModel(c.page, c.pageSize, c.elementCount);
     }

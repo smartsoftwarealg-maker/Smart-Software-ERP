@@ -3676,51 +3676,51 @@
         }
       }
     },
-    "exchange-ui-currency-exchange": {
+    "exchange-ui-currency-deposit": {
       "projectType": "library",
-      "root": "libs/exchange/ui-currency-exchange",
-      "sourceRoot": "libs/exchange/ui-currency-exchange/src",
+      "root": "libs/exchange/ui-currency-deposit",
+      "sourceRoot": "libs/exchange/ui-currency-deposit/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/exchange/ui-currency-exchange/src/**/*.ts",
-              "libs/exchange/ui-currency-exchange/src/**/*.html"
+              "libs/exchange/ui-currency-deposit/src/**/*.ts",
+              "libs/exchange/ui-currency-deposit/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/exchange/ui-currency-exchange"],
+          "outputs": ["coverage/libs/exchange/ui-currency-deposit"],
           "options": {
-            "jestConfig": "libs/exchange/ui-currency-exchange/jest.config.js",
+            "jestConfig": "libs/exchange/ui-currency-deposit/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "exchange-api-currency-exchange": {
+    "exchange-api-currency-deposit": {
       "projectType": "library",
-      "root": "libs/exchange/api-currency-exchange",
-      "sourceRoot": "libs/exchange/api-currency-exchange/src",
+      "root": "libs/exchange/api-currency-deposit",
+      "sourceRoot": "libs/exchange/api-currency-deposit/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/exchange/api-currency-exchange/src/**/*.ts",
-              "libs/exchange/api-currency-exchange/src/**/*.html"
+              "libs/exchange/api-currency-deposit/src/**/*.ts",
+              "libs/exchange/api-currency-deposit/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/exchange/api-currency-exchange"],
+          "outputs": ["coverage/libs/exchange/api-currency-deposit"],
           "options": {
-            "jestConfig": "libs/exchange/api-currency-exchange/jest.config.js",
+            "jestConfig": "libs/exchange/api-currency-deposit/jest.config.js",
             "passWithNoTests": true
           }
         }

@@ -4,5 +4,8 @@
     "EDIT_EXCHANGE": "تحديث المداولة",
     "HISTORY": "السجلات",
     "BALANCE": "الرصيد",
-    "DEPOSIT_TYPES": "طرق الإيداع"
+    "DEPOSIT_TYPES": "طرق الإيداع",
+    "CURRENCY_DEPOSIT": "ايداع العملات",
+    "DEPOSIT": "ايداع",
+    "WITHDRAWAL": "سحب"
 }

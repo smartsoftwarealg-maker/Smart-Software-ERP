@@ -241,11 +241,11 @@
       ],
       "@ss/logistics/ui-options": ["libs/logistics/ui-options/src/index.ts"],
       "@ss/logistics/ui-currency": ["libs/logistics/ui-currency/src/index.ts"],
-      "@ss/exchange/ui-currency-exchange": [
-        "libs/exchange/ui-currency-exchange/src/index.ts"
+      "@ss/exchange/ui-currency-deposit": [
+        "libs/exchange/ui-currency-deposit/src/index.ts"
       ],
-      "@ss/exchange/api-currency-exchange": [
-        "libs/exchange/api-currency-exchange/src/index.ts"
+      "@ss/exchange/api-currency-deposit": [
+        "libs/exchange/api-currency-deposit/src/index.ts"
       ],
       "@ss/exchange/ui-deposit-type": [
         "libs/exchange/ui-deposit-type/src/index.ts"

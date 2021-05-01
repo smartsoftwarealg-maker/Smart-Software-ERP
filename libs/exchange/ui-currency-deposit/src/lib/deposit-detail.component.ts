@@ -5,17 +5,17 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {CurrencyExchangeService, DepositType, DepositTypeService, Exchange} from '@ss/exchange/api-currency-exchange';
+import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-exchange-detail',
-    styleUrls: ['./exchange-detail.component.scss'],
-    templateUrl: './exchange-detail.component.html'
+    selector: 'ss-deposit-detail',
+    styleUrls: ['./deposit-detail.component.scss'],
+    templateUrl: './deposit-detail.component.html'
 })
-export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange> {
+export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
     public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
@@ -26,18 +26,18 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         private typeSrv: DepositTypeService,
         private loginSrv: LoginService,
         private currencySrv: CurrencyService,
-        public exchangeService: CurrencyExchangeService,
+        public exchangeService: CurrencyDepositService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_EDIT_EXCHANGE');
+        super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
     }
 
 
-    public setupForm(b: Exchange) {
+    public setupForm(b: Deposit) {
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
 
@@ -72,10 +72,10 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         }
     }
 
-    readForm(): Exchange {
+    readForm(): Deposit {
         const value = super.readForm();
         value.amount = value['debit'] || 0 - value['credit'] || 0;
-        value.userId = this.loginSrv.user.id;
+        value.userId = this.loginSrv.context.userId;
         value.centerId = this.loginSrv.context.center;
         return value;
     }

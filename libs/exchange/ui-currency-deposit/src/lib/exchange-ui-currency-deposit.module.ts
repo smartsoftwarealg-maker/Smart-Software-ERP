@@ -7,10 +7,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
-import {ExchangeListComponent} from './exchange-list.component';
-import {ExchangeDetailComponent} from './exchange-detail.component';
-import {ExchangeUiInfoModule} from "@ss/exchange/ui-info";
+import {DepositListComponent} from './deposit-list.component';
+import {DepositDetailComponent} from './deposit-detail.component';
+import {ExchangeUiInfoModule} from '@ss/exchange/ui-info';
 
 @NgModule({
     imports: [
@@ -26,13 +25,13 @@ import {ExchangeUiInfoModule} from "@ss/exchange/ui-info";
     ],
 
     declarations: [
-        ExchangeListComponent,
-        ExchangeDetailComponent
+        DepositListComponent,
+        DepositDetailComponent
     ],
 
     exports: [
-        ExchangeListComponent,
-        ExchangeDetailComponent
+        DepositListComponent,
+        DepositDetailComponent
     ]
 })
-export class ExchangeUiCurrencyExchangeModule {}
+export class ExchangeUiCurrencyDepositModule {}

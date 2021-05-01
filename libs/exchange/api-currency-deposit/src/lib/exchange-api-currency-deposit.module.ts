@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CurrencyExchangeService} from './currency-exchange.service';
+import {CurrencyDepositService} from './currency-deposit.service';
 
 @NgModule({
   imports: [CommonModule],
 })
-export class ExchangeApiCurrencyExchangeModule {}
+export class ExchangeApiCurrencyDepositModule {}

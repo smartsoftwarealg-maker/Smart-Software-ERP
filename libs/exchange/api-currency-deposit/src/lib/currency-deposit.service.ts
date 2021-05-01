@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
-export const EXCHANGE_EXCHANGE_URL = '/exchanges';
+export const EXCHANGE_EXCHANGE_URL = '/deposits';
 
-export interface Exchange {
+export interface Deposit {
     id: number;
     customerId: number;
     excDate: Date;
@@ -40,7 +40,7 @@ export interface Balance {
 @Injectable({
   providedIn: 'root'
 })
-export class CurrencyExchangeService extends BaseEntityExtendedService<Exchange> {
+export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
 
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, EXCHANGE_EXCHANGE_URL);

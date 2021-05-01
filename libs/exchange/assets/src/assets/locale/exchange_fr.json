@@ -4,5 +4,8 @@
     "EDIT_EXCHANGE": "Modification Échange",
     "HISTORY": "Historique",
     "BALANCE": "Solde",
-    "DEPOSIT_TYPES": "Méthodes de dépôt"
+    "DEPOSIT_TYPES": "Méthodes de dépôt",
+    "CURRENCY_DEPOSIT": "Dépôt de devises",
+    "DEPOSIT": "Dépôt",
+    "WITHDRAWAL": "Retrait",
 }

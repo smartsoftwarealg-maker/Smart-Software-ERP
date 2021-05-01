@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DepositType, DepositTypeService} from '@ss/exchange/api-currency-exchange';
+import {DepositType, DepositTypeService} from '@ss/exchange/api-currency-deposit';
 
 
 @Component({
