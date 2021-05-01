@@ -5,6 +5,7 @@ import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
 import { administrationNavTree } from './administration/side-nav-tree';
 import { fileNavTree, exchangeNavTree } from './exchange/side-nav-tree';
+import {CurrencyService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-root',
@@ -15,7 +16,10 @@ export class AppComponent implements OnInit {
 
     loaded = false;
 
-    constructor(private httpSrv: HttpService, public shellSrv: ShellService, public langSrv: LanguageService) {
+    constructor(private httpSrv: HttpService,
+                public shellSrv: ShellService,
+                public langSrv: LanguageService,
+                private currencySrv: CurrencyService) {
     }
 
     ngOnInit() {
@@ -26,7 +30,8 @@ export class AppComponent implements OnInit {
             exchangeNavTree
         ]);
         this.httpSrv.init()
-            .pipe(switchMap(() => this.langSrv.init()))
+            .pipe(switchMap(() => this.langSrv.init()),
+                  switchMap(_ => this.currencySrv.load()))
             .subscribe(() => this.loaded = true)
     }
 

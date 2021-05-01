@@ -251,7 +251,13 @@
         "libs/exchange/ui-deposit-type/src/index.ts"
       ],
       "@ss/exchange/assets": ["libs/exchange/assets/src/index.ts"],
-      "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"]
+      "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"],
+      "@ss/exchange/api-currency-exchange": [
+        "libs/exchange/api-currency-exchange/src/index.ts"
+      ],
+      "@ss/exchange/ui-currency-exchange": [
+        "libs/exchange/ui-currency-exchange/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

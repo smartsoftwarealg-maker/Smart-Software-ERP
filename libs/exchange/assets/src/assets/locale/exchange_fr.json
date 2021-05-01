@@ -8,4 +8,7 @@
     "CURRENCY_DEPOSIT": "Dépôt de devises",
     "DEPOSIT": "Dépôt",
     "WITHDRAWAL": "Retrait",
+    "AMOUNT": "Montant",
+    "PURCHASE": "Achat",
+    "SALES": "Vente"
 }
