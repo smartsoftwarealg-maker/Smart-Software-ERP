@@ -5,10 +5,11 @@
     "HISTORY": "History",
     "BALANCE": "Balance",
     "DEPOSIT_TYPES": "Deposit methods",
-    "CURRENCY_DEPOSIT": "Currency deposit",
+    "CURRENCY_DEPOSIT": "Currency deposit/withdrawal",
     "DEPOSIT": "Deposit",
     "WITHDRAWAL": "Withdrawal",
     "AMOUNT": "Amount",
     "PURCHASE": "Purchase",
-    "SALES": "Sales"
+    "SALES": "Sales",
+    "WITHDRAWN_CURRENCY": "Withdrawn currency"
 }

@@ -5,10 +5,11 @@
     "HISTORY": "السجلات",
     "BALANCE": "الرصيد",
     "DEPOSIT_TYPES": "طرق الإيداع",
-    "CURRENCY_DEPOSIT": "ايداع العملات",
+    "CURRENCY_DEPOSIT": "ايداع و سحب العملات",
     "DEPOSIT": "ايداع",
     "WITHDRAWAL": "سحب",
     "AMOUNT": "المبلغ",
     "PURCHASE": "الشراء",
-    "SALES": "البيع"
+    "SALES": "البيع",
+    "WITHDRAWN_CURRENCY": "العملة المسحوبة"
 }
