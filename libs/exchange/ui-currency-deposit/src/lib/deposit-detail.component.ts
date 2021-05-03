@@ -19,6 +19,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
     public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
 
     constructor(
@@ -49,6 +50,8 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
+            soldCurrencyId: [b.soldCurrencyId],
+            exchangeRate: [b.exchangeRate],
             debit: [{value: debit, disabled: b.amount < 0.000001}, Validators.required],
             credit: [{value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });

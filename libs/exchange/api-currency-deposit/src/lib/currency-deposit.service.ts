@@ -15,6 +15,8 @@ export interface Deposit {
     amount: number;
     userId: number;
     centerId: number;
+    soldCurrencyId?: number;
+    exchangeRate?:number;
     creationTime: string;
     denomination?: string;
     typeDescription?: string;
