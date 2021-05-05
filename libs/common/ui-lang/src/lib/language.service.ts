@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
-import {forkJoin, Observable, of, Subject} from 'rxjs';
-import {map, share, switchMap} from 'rxjs/operators';
-import {Direction} from '@angular/cdk/bidi';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { forkJoin, Observable, of, Subject } from 'rxjs';
+import { map, share, switchMap, tap } from 'rxjs/operators';
+import { Direction } from '@angular/cdk/bidi';
+import { HttpClient } from '@angular/common/http';
 import {
     dateToDmyStr,
     dateToYmdStr,
     dateStrToDmy,
     dateStrToYmd,
     isString,
-    removeTimeForDateStr
+    removeTimeForDateStr,
+    AppConfigService
 } from "@ss/common/api-common";
 
 function formatFullName(first: string, last: string) {
@@ -35,7 +36,7 @@ export interface Language {
     // todo: add support for datetime
 }
 
-export const SUPPORTED_LANGUAGES: Language[] = [
+const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
     {
         code: 'ar',
         dir: 'rtl',
@@ -65,12 +66,21 @@ export const SUPPORTED_LANGUAGES: Language[] = [
     }
 ];
 
-export const DEFAULT_LANGUAGE: Language = SUPPORTED_LANGUAGES[2];
+const DEFAULT_LANGUAGE = DEFAULT_SUPPORTED_LANGUAGES[2].code;
 
 interface Source {
     uri: string;
     prefix: string;
     loaded: { [code: string]: boolean; };
+}
+
+interface LanguageConfig {
+    code: string;
+    dir: 'ltr' | 'rtl';
+    name: string;
+    dateFormat: 'default' | 'fr';
+    personFullNameFormat: 'default' | 'fr';
+    useBrowserLanguage: boolean;
 }
 
 @Injectable({
@@ -170,6 +180,8 @@ export class LanguageService {
         '.abs-end-0 { right: 0; }';
 
     public rtl = true;
+    public languages: Language[];
+    public defaultLanguage: string;
     private currentLanguage: Language;
     private sources: Source[] = [];
     private data: { [code: string]: { [key: string]: string; }; } = {};
@@ -183,16 +195,96 @@ export class LanguageService {
         return this.rtl ? 'rtl' : 'ltr';
     }
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private appConfigSrv: AppConfigService, private httpClient: HttpClient) {
+        this.languages = DEFAULT_SUPPORTED_LANGUAGES;
+        this.defaultLanguage = DEFAULT_LANGUAGE;
     }
 
     public init(): Observable<void> {
-        let code = localStorage.getItem(LanguageService.LOCAL_STORAGE_KEY);
+        return this.appConfigSrv.getConfig().pipe(
+            switchMap(conf => this.setLanguage(this.parseConfig(conf)))
+        );
+    }
+
+    /**
+     * parses the config to read any language related settings
+     * @param conf confing set on the server
+     * @returns the default language code
+     */
+    private parseConfig(conf: any): string {
+        // reset
+        this.languages = DEFAULT_SUPPORTED_LANGUAGES;
+        this.defaultLanguage = DEFAULT_LANGUAGE;
+        // parse default
+        if (conf.defaultLanguage) {
+            this.defaultLanguage = conf.defaultLanguage;
+        }
+        // parse language list
+        if (conf.languages != null && conf.languages instanceof Array && conf.languages.length > 0) {
+            this.languages = conf.languages.map(l => this.parseLangConfig(l as LanguageConfig));
+        }
+        if (typeof conf.useBrowserLanguage == 'boolean' && conf.useBrowserLanguage) {
+            // update default language to browser default
+            let browserLang = navigator.language;
+            if (browserLang) {
+                if (browserLang.length > 2) {
+                    browserLang = browserLang.substring(0, 2);
+                }
+                browserLang = this.validCodeOrNull(browserLang);
+                if (browserLang) {
+                    this.defaultLanguage = browserLang;
+                }
+            }
+        }
+        // select default language
+        let code = this.validCodeOrNull(localStorage.getItem(LanguageService.LOCAL_STORAGE_KEY));
         if (!code) {
-            code = DEFAULT_LANGUAGE.code;
+            code = this.validCodeOrNull(this.defaultLanguage);
+        }
+        if (!code) {
+            code = this.validCodeOrNull(DEFAULT_LANGUAGE);
+        }
+        if (!code) {
+            code = this.languages[0].code;
         }
         this.addStyleClass(code);
-        return this.setLanguage(code);
+        return code;
+    }
+
+    private parseLangConfig(conf: LanguageConfig): Language {
+        if (!conf.code) {
+            throw new Error("Invalid Config, Language code cannot be null or empty");
+        }
+        if (!conf.name) {
+            throw new Error("Invalid Config, Language name cannot be null or empty");
+        }
+        if (conf.dir !== 'rtl' && conf.dir !== 'ltr') {
+            throw new Error("Invalid Config, Language direction must be 'rtl' or 'ltr'");
+        }
+        let lang: Language = {
+            name: conf.name,
+            code: conf.code,
+            dir: conf.dir,
+            formatDate: dateToYmdStr,
+            formatDateStr: dateStrToYmd,
+            formatFullName: formatFullName,
+            formatMediumName: formatMediumName
+        };
+        if (conf.dateFormat === 'fr') {
+            lang.formatDate = dateToDmyStr;
+            lang.formatDateStr = dateStrToDmy;
+        }
+        if (conf.personFullNameFormat === 'fr') {
+            lang.formatFullName = formatFullNameWeird;
+            lang.formatMediumName = formatMediumName;
+        }
+        return lang;
+    }
+
+    private validCodeOrNull(code: string): string {
+        if (!code) return null;
+        let lang = this.languages.filter(l => l.code === code);
+        return lang.length > 0 ? lang[0].code : null;
     }
 
     private load(src: Source): Observable<boolean> {
@@ -201,7 +293,6 @@ export class LanguageService {
         }
         return this.httpClient.get(src.uri + this.currentLanguage.code + '.json')
             .pipe(
-                share(),
                 map((conf: { [key: string]: string; }) => {
                     src.loaded[this.currentLanguage.code] = true;
                     this.pushData(conf, src.prefix);
@@ -232,7 +323,7 @@ export class LanguageService {
 
     public addSource(uri: string, prefix: string): void {
         if (this.sources.filter(s => s.uri === uri).length === 0) {
-            const src: Source = {uri, loaded: {}, prefix};
+            const src: Source = { uri, loaded: {}, prefix };
             this.sources.push(src);
             this.load(src).subscribe(
             );
@@ -241,7 +332,7 @@ export class LanguageService {
     }
 
     public setLanguage(code: string): Observable<void> {
-        const L = SUPPORTED_LANGUAGES.filter(l => l.code === code)[0];
+        const L = this.languages.filter(l => l.code === code)[0];
         if (!L) {
             throw new Error('Unknown language code "' + code + '"');
         }
@@ -320,8 +411,15 @@ export class LanguageService {
     }
 
     private updateDirection(code: string): void {
-        const a = SUPPORTED_LANGUAGES.filter(l => l.code === code);
-        const dir = a.length !== 1 ? DEFAULT_LANGUAGE.dir : a[0].dir;
+        let validCode = this.validCodeOrNull(code);
+        if (validCode == null) {
+            validCode = this.defaultLanguage;
+        }
+        const a = this.languages.filter(l => l.code === validCode);
+        if (a.length !== 1) {
+            throw new Error('Unknown language code "' + code + '"');
+        }
+        const dir = a[0].dir;
         if (dir === 'ltr') {
             LanguageService.style.innerHTML = this.LTR_STYLE;
             this.rtl = false;

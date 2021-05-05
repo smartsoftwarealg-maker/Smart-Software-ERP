@@ -30,6 +30,6 @@ export class AppComponent implements OnInit {
         ]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
-            .subscribe(() => this.loaded = true)
+            .subscribe(() => this.loaded = true);
     }
 }

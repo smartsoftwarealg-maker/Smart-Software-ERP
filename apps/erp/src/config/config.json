@@ -1,14 +1,56 @@
 {
-    "version": "2.0",
-    "info": "Config format was changed, contact Muaaz (muaaz.h.is@gmail.com) for help",
-    "info2": "You can Still use the old format, it will work.",
+    "comments": [
+        "Config format was changed, contact Muaaz (muaaz.h.is@gmail.com) for help",
+        "You can Still use the old format, it will work.",
+        "        ",
+        "URL Rules examples: ",
+        "        frontend: ?",
+        "        backend:  ?:9999",
+        "    BackEnd is same as FrontEnd, but with port 9999",
+        "        ",
+        "        frontend  ?:8080",
+        "        backend   ?:9998",
+        "    BackEnd is same as FrontEnd if the frontend is on port 8080, but with port 9998"
+    ],
+    "version": "3.0",
     "protocol": "http://",
-    "defaultUrl": "localhost:8080",
-    "urlRulesX": [
+    "defaultUrl": "192.168.8.200:8080",
+    "urlRules": [
         {
             "frontend": "?",
-            "backend": "?:81",
-            "comment": "BackEnd is same as FrontEend, but with port 81"
+            "backend": "192.168.8.200:9999"
+        }
+    ],
+    "useBrowserLanguage": true,
+    "defaultLanguage": "ar",
+    "languages": [
+        {
+            "code": "ar",
+            "dir": "rtl",
+            "name": "العربية",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "en",
+            "dir": "ltr",
+            "name": "English",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "fr",
+            "dir": "ltr",
+            "name": "Français",
+            "dateFormat": "fr",
+            "personFullNameFormat": "fr"
+        },
+        {
+            "code": "tr",
+            "dir": "ltr",
+            "name": "Türkçe",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
         }
     ]
 }

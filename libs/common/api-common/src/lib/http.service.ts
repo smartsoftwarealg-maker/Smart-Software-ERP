@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent} from '@angular/common/http';
-import {catchError, filter, last, map, share, tap, first} from 'rxjs/operators';
-import {of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent } from '@angular/common/http';
+import { catchError, filter, last, map, share, tap, first } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { AppConfigService } from './app-config.service';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -12,7 +13,7 @@ const AUTH_TOKEN = 'auth_token';
 export class HttpService {
     public baseUrl: string;
 
-    constructor(public httpClient: HttpClient) {
+    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
     }
 
     static getHeaders() {
@@ -31,7 +32,8 @@ export class HttpService {
         if (this.baseUrl) {
             return of(false);
         }
-        return this.httpClient.get('./config/config.json')
+        // return this.httpClient.get('./config/config.json')
+        return this.appConfigSrv.getConfig()
             .pipe(
                 // removed share(), as it was a resource leak.
                 map(conf => {
@@ -73,7 +75,7 @@ export class HttpService {
             ).pipe(map(ress => {
                 const cr = ress.headers.get('Content-Range');
                 const cnt = cr ? +cr.split('/')[1] : 0;
-                return {itemCount: cnt, body: ress.body};
+                return { itemCount: cnt, body: ress.body };
             }));
     }
 
@@ -117,7 +119,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {headers: HttpService.getHeaders()});
+                { headers: HttpService.getHeaders() });
     }
 
     public put(url: string, data?): Observable<any> {
@@ -125,7 +127,7 @@ export class HttpService {
             .httpClient
             .put(this.baseUrl + url,
                 data,
-                {headers: HttpService.getHeaders()});
+                { headers: HttpService.getHeaders() });
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -138,17 +140,17 @@ export class HttpService {
         return this
             .httpClient
             .delete(this.baseUrl + url,
-                {headers: HttpService.getHeaders()});
+                { headers: HttpService.getHeaders() });
     }
 
     public doLogin(url, data): Observable<string> {
-        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.httpClient.post<string>(this.baseUrl + url, data, {headers: httpHeaders});
+        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.httpClient.post<string>(this.baseUrl + url, data, { headers: httpHeaders });
     }
 
     public doLogin2(url, data): Observable<{ jwt: string }> {
-        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, {headers: httpHeaders});
+        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, { headers: httpHeaders });
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -160,7 +162,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'arraybuffer', headers: httpHeaders}
+                { responseType: 'arraybuffer', headers: httpHeaders }
             );
     }
 
@@ -178,7 +180,7 @@ export class HttpService {
                 observe: 'events'
             })
             .pipe(
-                catchError(e => {throw e;}),
+                catchError(e => { throw e; }),
                 filter((e: HttpEvent<any>) => e.type === HttpEventType.UploadProgress),
                 tap((e: HttpProgressEvent) => {
                     // todo: show some ui bullshit instead of this
