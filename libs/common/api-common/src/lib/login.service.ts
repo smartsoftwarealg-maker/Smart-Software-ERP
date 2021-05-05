@@ -7,6 +7,7 @@ import {Agent, Person, Right, User, UserInfo} from './models';
 import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, LOGIN_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
+import {AppContextService} from './app-context.service';
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -36,7 +37,8 @@ export class LoginService {
     constructor(private httpSrv: HttpService,
                 public userSrv: UserService,
                 private decSrv: DecService,
-                public router: Router) {
+                public router: Router,
+                private contextSrv: AppContextService) {
     }
 
     get isLoggedIn(): boolean {
@@ -52,7 +54,7 @@ export class LoginService {
                   tap(_ => this.loginFromStorage()),
                   catchError(err => of(false)),
                   switchMap(res => this.userSrv.load()),
-                  map(res => {
+                  map(_ => {
                         const failure: boolean = !this.agent && !this.person && !this.loggedIn;
                         if (failure) {
                             this.router.navigate(['/login']);
@@ -82,7 +84,7 @@ export class LoginService {
                 this.httpSrv.updateAuthToken(res.payload);
                 this.agent = agent;
                 localStorage.setItem('agent', JSON.stringify(this.agent));
-                this.userSrv.context.agentId = agent.id;
+                this.contextSrv.context.agentId = agent.id;
             });
     }
 
@@ -336,9 +338,7 @@ export class LoginService {
     canUserDelete(component: string): boolean {
         return this.userSrv.canUserDelete_(component);
     }
-    get context() {
-        return this.userSrv.context;
-    }
+
 
     loadUser(): Observable<any> {
         return this.userSrv.load();

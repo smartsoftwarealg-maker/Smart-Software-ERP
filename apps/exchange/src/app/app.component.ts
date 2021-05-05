@@ -18,8 +18,7 @@ export class AppComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
                 public shellSrv: ShellService,
-                public langSrv: LanguageService,
-                private currencySrv: CurrencyService) {
+                public langSrv: LanguageService) {
     }
 
     ngOnInit() {
@@ -30,9 +29,7 @@ export class AppComponent implements OnInit {
             exchangeNavTree
         ]);
         this.httpSrv.init()
-            .pipe(switchMap(() => this.langSrv.init()),
-                  switchMap(_ => this.currencySrv.load()))
+            .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)
     }
-
 }

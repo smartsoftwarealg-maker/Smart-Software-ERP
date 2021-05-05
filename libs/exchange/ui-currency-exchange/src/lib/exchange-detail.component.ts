@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
+import {AppContextService, LoginService} from '@ss/common/api-common';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
 
 @Component({
@@ -33,7 +33,8 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
     }
 
@@ -54,8 +55,8 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
 
     readForm(): Exchange {
         const value = super.readForm();
-        value.userId = this.loginSrv.context.userId;
-        value.centerId = this.loginSrv.context.center;
+        value.userId = this.contextSrv.context.userId;
+        value.centerId = this.contextSrv.context.center;
         return value;
     }
 }

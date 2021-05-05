@@ -3,6 +3,7 @@ import {map, switchMap, tap} from 'rxjs/operators';
 import {DocRight, Right, User, UserContext, UserInfo} from './models';
 import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
+import {AppContextService} from './app-context.service';
 
 interface Severe {
     severe: boolean;
@@ -20,10 +21,10 @@ export class UserService {
     private rightsMap: Map<string, Right> = new Map<string, Right>();
     private severe = false;
     public userInfo: UserInfo = null;
-    public context: UserContext = null;
     public itemCount = 0;
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected httpSrv: HttpService,
+                private contextSrv: AppContextService) {
         const user = localStorage.getItem('cuser');
         if (user) {
             this.userInfo = JSON.parse(user) as UserInfo;
@@ -31,9 +32,9 @@ export class UserService {
     }
 
     load(): Observable<any> {
-        return this.getContext()
-            .pipe(tap(res => this.context = res),
-                switchMap(res => res.userId ? this.loadUserRights() : of(true)));
+        return this.contextSrv
+            .getContext()
+            .pipe(switchMap(res => res.userId ? this.loadUserRights() : of(true)));
     }
 
     private getContext(): Observable<UserContext> {
@@ -138,7 +139,7 @@ export class UserService {
      */
     clear() {
         this.userInfo = null;
-        this.context = null;
+        this.contextSrv.clear();
         // localStorage.clear();
         this.rightsMap.clear();
     }

@@ -1,15 +1,15 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {Bank, Fund, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {UserService} from "@ss/common/api-common";
-import {Center, CenterService} from "@ss/administration/api-center";
-import {MatExpansionPanel} from "@angular/material/expansion";
-import {Observable} from "rxjs";
-import {switchMap, tap} from "rxjs/operators";
+import {Bank, Fund, LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {AppContextService, UserService} from '@ss/common/api-common';
+import {Center, CenterService} from '@ss/administration/api-center';
+import {MatExpansionPanel} from '@angular/material/expansion';
+import {Observable} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
 
 
 @Component({
@@ -30,20 +30,20 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private contextSrv: AppContextService) {
         super(centerService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_CENTER');
     }
 
 
     preload(): Observable<any> {
-        this.centerService.setParentId(this.usersService.context.company)
+        this.centerService.setParentId(this.contextSrv.context.company)
         return this.lookupsSrv.getFunds()
             .pipe(tap(x => this.funds = x))
             .pipe(switchMap(() => this.lookupsSrv.getBanks()))
             .pipe(tap(x => {
                 this.banks = x
             }));
-
     }
 
     public setupForm(b: Center) {
@@ -98,9 +98,9 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
 
     public isSectionInvalid(section): boolean {
         switch (section) {
-            case "main":
+            case 'main':
                 return this.isMainSectionInvalid();
-            case "contact":
+            case 'contact':
                 return this.isContactSectionInvalid();
             default:
                 return false;
@@ -110,14 +110,14 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (this.isSectionInvalid(section)) {
-            return "b-warn-expansion-panel";
+            return 'b-warn-expansion-panel';
         }
 
         // if expanded return primary background class
         if (panel.expanded)
-            return "b-primary-expansion-panel"
+            return 'b-primary-expansion-panel'
         else
-            return "";
+            return '';
     }
 
 

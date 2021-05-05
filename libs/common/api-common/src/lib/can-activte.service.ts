@@ -7,14 +7,16 @@ import { UserService } from './user.service';
 import { HttpService } from './http.service';
 import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';
+import {AppContextService} from './app-context.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CanActivateService implements CanActivate {
     constructor(public router: Router,
-        protected httpSrv: HttpService,
-        private loginSrv: LoginService) {
+                protected httpSrv: HttpService,
+                private loginSrv: LoginService,
+                private contextSrv: AppContextService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot,
@@ -45,7 +47,9 @@ export class CanActivateService implements CanActivate {
             return false;
         }
 
-        if (this.loginSrv.context && this.loginSrv.context.pwdExpired) {
+        if (this.contextSrv &&
+            this.contextSrv.context &&
+            this.contextSrv.context.pwdExpired) {
             this.router.navigate(['/' + PROFILE_PAGE_URL]).then();
             return false;
         }

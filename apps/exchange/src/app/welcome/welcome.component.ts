@@ -3,6 +3,7 @@ import { ShellService, SideNavNode } from '@ss/common/ui-shell';
 import { LanguageService } from '@ss/common/ui-lang';
 import { Router } from '@angular/router';
 import { WelcomeService } from './welcome.service';
+import {CurrencyService} from "@ss/common/api-lookup";
 
 
 @Component({
@@ -12,7 +13,11 @@ import { WelcomeService } from './welcome.service';
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    constructor(public srv: WelcomeService, public shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
+    constructor(public srv: WelcomeService,
+                public shellSrv: ShellService,
+                private router: Router,
+                public langSrv: LanguageService,
+                private currencySrv: CurrencyService) {
     }
 
     ngOnInit(): void {
@@ -37,6 +42,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                 err => console.error(err)
             )
         );
+        this.currencySrv.load().subscribe(res => res);
     }
 
     onClick(node: SideNavNode): void {
@@ -44,7 +50,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             this.srv.historyStack.push(node);
             this.srv.display = node.children;
             this.updateGobackButton();
-        } else if (!!node.route) {
+        } else if (!node.route) {
             this.router.navigateByUrl(node.route);
         }
     }
@@ -68,7 +74,4 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.shellSrv.reset();
     }
-
-
-
 }

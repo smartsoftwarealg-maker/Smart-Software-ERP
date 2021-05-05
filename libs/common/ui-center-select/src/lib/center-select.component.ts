@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CentersService} from './centers.service';
 import {Router} from '@angular/router';
-import {UserService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {UserService, INDEX_PAGE_URL, AppContextService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {PROFILE_PAGE_URL} from '@ss/common/api-common';
 import {Center, Company} from '@ss/common/api-common';
@@ -30,7 +30,8 @@ export class CenterSelectComponent implements OnInit {
 
     constructor(private ccListSrv: CentersService,
                 private loginSrv: LoginService,
-                private router: Router) {
+                private router: Router,
+                private contextSrv: AppContextService) {
     }
 
     ngOnInit() {
@@ -95,7 +96,7 @@ export class CenterSelectComponent implements OnInit {
                 .pipe(switchMap(() => this.loginSrv.loadUser()))
                 .subscribe(() => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
-                        const dest = this.loginSrv.context && this.loginSrv.context.pwdExpired
+                        const dest = this.contextSrv.context && this.contextSrv.context.pwdExpired
                             ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
                         this.router.navigate(['/' + dest]).then(() => {
                         });
@@ -118,5 +119,4 @@ export class CenterSelectComponent implements OnInit {
             this.centerList = [];
         }
     }
-
 }
