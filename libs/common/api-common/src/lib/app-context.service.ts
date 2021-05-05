@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpService, UserContext} from '@ss/common/api-common';
+import {HttpService, User, UserContext} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
-import {tap, switchMap} from 'rxjs/operators';
+import {tap, switchMap, map} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -10,21 +10,50 @@ import {tap, switchMap} from 'rxjs/operators';
 export class AppContextService {
     private _context: UserContext = null;
 
-    constructor(private httpSrv: HttpService) {
-    }
+    constructor(private httpSrv: HttpService) {}
 
     get context() {
         return this._context;
     }
 
-    getContext(): Observable<UserContext> {
+    load(): Observable<UserContext> {
+        const agentObs = this.httpSrv
+            .get<UserContext>(`/agents/${this._context.agentId}`)
+            .pipe(tap(next => {
+                    this._context.fullName = next['denomination'];
+                    this._context.pwdExpired = next && next.pwdExpired;
+                }),
+                switchMap(res => of(this._context)));
+        const personObs = this.httpSrv
+            .get<Object>(`/persons/${this._context.personId}`)
+            .pipe(tap(next => {
+                this._context.fullName = next['firstName'] +
+                    ' ' +
+                    next['lastName'];
+            }),
+                switchMap(res => of(this._context)));
+
+        const userObs = this.httpSrv
+            .get<User>(`/login/users/${this._context.userId}`)
+            .pipe(tap((next: User) => {
+                this._context.fullName = next.fullName;
+            }),
+            switchMap(res => of(this._context)));
+
         return this.httpSrv
             .get<UserContext>('/context')
             .pipe(switchMap(res => {
                 this._context = res;
-                return of(res);
-            }));
+                this._context.manager = !this._context.agentId && !this._context.personId;
+                return this.httpSrv.get<{  severe: boolean }>('/rights/severe');
+            }),
+            switchMap(res => {
+                this._context.severe = res.severe;
+                return of(this._context);
+            }),
+            switchMap(res => res.agentId? agentObs : res.personId? personObs : userObs));
     }
+
 
     clear() {
         this._context = null;

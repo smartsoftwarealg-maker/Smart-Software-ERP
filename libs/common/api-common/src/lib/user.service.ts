@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {map, switchMap, tap} from 'rxjs/operators';
-import {DocRight, Right, User, UserContext, UserInfo} from './models';
+import {switchMap, tap} from 'rxjs/operators';
+import {DocRight, Right, User, UserInfo} from './models';
 import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
@@ -31,55 +31,13 @@ export class UserService {
         }
     }
 
-    load(): Observable<any> {
-        return this.contextSrv
-            .getContext()
-            .pipe(switchMap(res => res.userId ? this.loadUserRights() : of(true)));
-    }
+    // load(): Observable<any> {
+    //     return this.contextSrv
+    //         .getContext()
+    //         .pipe(switchMap(res => res.userId ? this.loadUserRights() : of(true)));
+    // }
 
-    private getContext(): Observable<UserContext> {
-        return this
-            .httpSrv
-            .get<UserContext>('/context')
-            .pipe(switchMap(res => {
-                let obs: Observable<UserContext> = null;
-                if (res.agentId) {
-                    res.manager = false;
-                    obs = this
-                        .httpSrv
-                        .get<UserContext>(`/agents/${res.agentId}`)
-                        .pipe(tap(next => {
-                                res.fullName = next['denomination'];
-                                res.pwdExpired = next && next.pwdExpired;
-                            }),
-                            map(() => res));
-                } else {
-                    if (res.personId) {
-                        res.manager = false;
-                        obs = this
-                            .httpSrv
-                            .get<Object>(`/persons/${res.personId}`)
-                            .pipe(tap(next => {
-                                res.fullName = next['firstName'] +
-                                    ' ' +
-                                    next['lastName'];
-                            }), map(_ => res));
-                    } else {
-                        if (res.userId) {
-                            obs = this
-                                .httpSrv
-                                .get<User>(`/login/users/${res.userId}`)
-                                .pipe(tap((next: User) => {
-                                    res.fullName = next.fullName;
-                                }), map(_ => res));
-                        }
-                    }
-                }
-                return obs;
-            }));
-    }
-
-    private loadUserRights(): Observable<any> {
+    public load(): Observable<UserInfo> {
         return this
             .httpSrv
             .get<User>('/cuser')
@@ -87,22 +45,12 @@ export class UserService {
             .pipe(tap((res: UserInfo) => {
                     this.userInfo = res;
                     localStorage.setItem('cuser', JSON.stringify(res));
-                }),
-                switchMap(res => this.httpSrv.get<Severe>('/rights/severe')))
-            .pipe(tap(res => this.severe = res.severe),
-                switchMap(res => this.httpSrv.get<DocRight[]>('/rights')))
-            .pipe(tap(res => {
-                this.rightsMap = res.reduce((m, e) => {
-                    m.set(e.document, e.right);
-                    return m;
-                }, new Map<string, Right>());
-            }));
+                }));
     }
 
     canUserPass_(component: string): boolean {
         return this.getUserRights(component).read;
     }
-
 
     canUserAdd_(component: string): boolean {
         return this.getUserRights(component).create;
@@ -132,8 +80,6 @@ export class UserService {
         }
         return this.rightsMap.get(component) || this.getDefault();
     }
-
-
     /**
      * Called by logout() in LoginService
      */
@@ -151,7 +97,6 @@ export class UserService {
             this.httpSrv.get<UserInfo>(`/users/${nId}/info`) :
             of(this.EMPTY_USER);
     }
-
 
     get isLoggedIn(): boolean {
         return this.userInfo &&

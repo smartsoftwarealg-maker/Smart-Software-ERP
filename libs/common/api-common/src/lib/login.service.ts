@@ -8,6 +8,7 @@ import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, LOGIN_URL, ABS_INDEX_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
+import {AccessRightsService} from './access-rights.service';
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -35,10 +36,11 @@ export class LoginService {
     private tryPerson = true;
 
     constructor(private httpSrv: HttpService,
-                public userSrv: UserService,
+                public  userSrv: UserService,
                 private decSrv: DecService,
                 public router: Router,
-                private contextSrv: AppContextService) {
+                private contextSrv: AppContextService,
+                private accessRightsSrv: AccessRightsService) {
     }
 
     get isLoggedIn(): boolean {
@@ -53,7 +55,9 @@ export class LoginService {
             .pipe(switchMap(_ => this.httpSrv.get<any>('/relogin')),
                   tap(_ => this.loginFromStorage()),
                   catchError(err => of(false)),
-                  switchMap(res => this.userSrv.load()),
+                  switchMap(_ => this.userSrv.load()),
+                  switchMap(_ => this.contextSrv.load()),
+                  switchMap(_ => this.accessRightsSrv.load()),
                   map(_ => {
                         const failure: boolean = !this.agent && !this.person && !this.loggedIn;
                         if (failure) {
