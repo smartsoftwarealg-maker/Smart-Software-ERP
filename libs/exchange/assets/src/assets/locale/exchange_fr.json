@@ -5,10 +5,11 @@
     "HISTORY": "Historique",
     "BALANCE": "Solde",
     "DEPOSIT_TYPES": "Méthodes de dépôt",
-    "CURRENCY_DEPOSIT": "Dépôt de devises",
+    "CURRENCY_DEPOSIT": "Dépôt & Retrait de devises",
     "DEPOSIT": "Dépôt",
     "WITHDRAWAL": "Retrait",
     "AMOUNT": "Montant",
     "PURCHASE": "Achat",
-    "SALES": "Vente"
+    "SALES": "Vente",
+    "WITHDRAWN_CURRENCY": "Monnaie retirée"
 }

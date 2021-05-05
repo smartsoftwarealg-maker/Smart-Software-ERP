@@ -61,6 +61,17 @@
                 <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_WITHDRAWN_CURRENCY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="soldAutoCompleteModel"
+                                  formControlName="soldCurrencyId"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field id="exchangeRate" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
+                <input type="number" matInput formControlName="exchangeRate" >
+            </mat-form-field>
 
         </form>
     </mat-card-content>
