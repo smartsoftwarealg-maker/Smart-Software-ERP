@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {LanguageService, SUPPORTED_LANGUAGES} from './language.service';
+import {LanguageService} from './language.service';
 import {MatMenuTrigger} from '@angular/material/menu';
 
 @Component({
@@ -8,8 +8,6 @@ import {MatMenuTrigger} from '@angular/material/menu';
     styleUrls: ['./language-select.component.scss']
 })
 export class LanguageSelectComponent {
-
-    public languages = SUPPORTED_LANGUAGES;
 
     @ViewChild('trigger', {static: false}) trigger: MatMenuTrigger;
 

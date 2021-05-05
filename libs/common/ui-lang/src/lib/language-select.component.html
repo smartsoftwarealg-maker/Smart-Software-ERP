@@ -3,7 +3,7 @@
     <i class="fas fa-globe"></i>
   </button>
   <mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
-    <div mat-menu-item *ngFor="let l of languages" (click)="selectLocale(l.code)" style="text-align: center; width: 140px">
+    <div mat-menu-item *ngFor="let l of langSrv.languages" (click)="selectLocale(l.code)" style="text-align: center; width: 140px">
       {{l.name}}
     </div>
   </mat-menu>
