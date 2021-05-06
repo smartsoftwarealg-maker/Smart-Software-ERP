@@ -50,7 +50,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             this.srv.historyStack.push(node);
             this.srv.display = node.children;
             this.updateGobackButton();
-        } else if (!node.route) {
+        } else if (!!node.route) {
             this.router.navigateByUrl(node.route);
         }
     }
