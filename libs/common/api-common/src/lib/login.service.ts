@@ -345,6 +345,9 @@ export class LoginService {
 
 
     loadUser(): Observable<any> {
-        return this.userSrv.load();
+        return this.userSrv
+            .load()
+            .pipe(switchMap(res => this.contextSrv.load()),
+                switchMap(res => this.accessRightsSrv.load()));
     }
 }

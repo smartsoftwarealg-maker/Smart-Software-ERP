@@ -1,4 +1,4 @@
-<div #shellDiv class="sidenav-container">
+<div #shellDiv class="sidenav-container" >
 
     <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
         <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
@@ -186,7 +186,7 @@
                 <div class="icon">
                     <i class="fas fa-user-alt"></i>
                 </div>
-                <span class="text" style="font-weight: bold;" translate>{{contextSrv ? contextSrv.context.fullName : ''}}</span>
+                <span class="text" style="font-weight: bold;" translate>{{contextSrv.context ? contextSrv.context.fullName : ''}}</span>
             </button>
 
             <mat-divider class="small-only"></mat-divider>
