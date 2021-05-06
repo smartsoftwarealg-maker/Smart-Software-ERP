@@ -14,7 +14,7 @@
     ],
     "version": "3.0",
     "protocol": "http://",
-    "defaultUrl": "192.168.8.200:8080",
+    "defaultUrl": "192.168.8.200:9999",
     "urlRules": [
         {
             "frontend": "?",

@@ -1,0 +1,15 @@
+{
+    "TYPE": "Type",
+    "CURRENCY_EXCHANGE": "Döviz degisimi",
+    "EDIT_EXCHANGE": "Degisimi düzenleyin",
+    "HISTORY": "Tarih",
+    "BALANCE": "Denge",
+    "DEPOSIT_TYPES": "Para yatirma yöntemleri",
+    "CURRENCY_DEPOSIT": "Para yatirma / çekme",
+    "DEPOSIT": "Depozito",
+    "WITHDRAWAL": "Para çekme",
+    "AMOUNT": "Miktar",
+    "PURCHASE": "Satin alma",
+    "SALES": "Satis",
+    "WITHDRAWN_CURRENCY": "Çekilmis para birimi"
+}
