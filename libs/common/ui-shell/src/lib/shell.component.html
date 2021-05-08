@@ -1,4 +1,4 @@
-<div #shellDiv class="sidenav-container">
+<div #shellDiv class="sidenav-container" >
 
     <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
         <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
@@ -96,7 +96,7 @@
                                         <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
                                                 [disabled]="mt.disabled">
                                             <i [class]="mt.icon"></i>
-    
+
                                             {{mt.label | translate}}
                                         </button>
                                     </ng-container>
@@ -120,7 +120,7 @@
                         <div class="user-icon">
                             <i class="fas fa-user-alt"></i>
                         </div>
-                        <div class="user-name margin-start-4">{{currentUser ? currentUser.fullName : ''}}</div>
+                        <div class="user-name margin-start-4">{{contextSrv ? contextSrv.context.fullName : ''}}</div>
                     </div>
 
                 </div>
@@ -186,7 +186,7 @@
                 <div class="icon">
                     <i class="fas fa-user-alt"></i>
                 </div>
-                <span class="text" style="font-weight: bold;" translate>{{currentUser ? currentUser.fullName : ''}}</span>
+                <span class="text" style="font-weight: bold;" translate>{{contextSrv.context ? contextSrv.context.fullName : ''}}</span>
             </button>
 
             <mat-divider class="small-only"></mat-divider>

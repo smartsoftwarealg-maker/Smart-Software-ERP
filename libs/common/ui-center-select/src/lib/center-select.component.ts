@@ -1,12 +1,18 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {CentersService} from './centers.service';
 import {Router} from '@angular/router';
-import {UserService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {
+    AppContextService,
+    Center,
+    Company,
+    INDEX_PAGE_URL,
+    LoginService,
+    PROFILE_PAGE_URL
+} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
-import {PROFILE_PAGE_URL} from '@ss/common/api-common';
-import {Center, Company} from '@ss/common/api-common';
 import {MatStepper} from '@angular/material/stepper';
-import {LoginService} from '@ss/common/api-common';
+import {AccessRightsService} from '../../../api-common/src/lib/access-rights.service';
+import {UserService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -30,7 +36,10 @@ export class CenterSelectComponent implements OnInit {
 
     constructor(private ccListSrv: CentersService,
                 private loginSrv: LoginService,
-                private router: Router) {
+                private router: Router,
+                private userSrv: UserService,
+                private accessRightsSrv: AccessRightsService,
+                private contextSrv: AppContextService) {
     }
 
     ngOnInit() {
@@ -92,10 +101,12 @@ export class CenterSelectComponent implements OnInit {
             this.loading = true;
             this.loginSrv
                 .centerLogin(this.selectedCenter)
-                .pipe(switchMap(() => this.loginSrv.loadUser()))
+                .pipe(switchMap(() => this.loginSrv.loadUser()),
+                      switchMap(_ => this.contextSrv.load()),
+                      switchMap(_ => this.accessRightsSrv.load()))
                 .subscribe(() => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
-                        const dest = this.loginSrv.context && this.loginSrv.context.pwdExpired
+                        const dest = this.contextSrv.context && this.contextSrv.context.pwdExpired
                             ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
                         this.router.navigate(['/' + dest]).then(() => {
                         });
@@ -118,5 +129,4 @@ export class CenterSelectComponent implements OnInit {
             this.centerList = [];
         }
     }
-
 }

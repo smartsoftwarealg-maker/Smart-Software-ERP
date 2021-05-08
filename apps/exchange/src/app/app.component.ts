@@ -32,5 +32,4 @@ export class AppComponent implements OnInit {
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true);
     }
-
 }
