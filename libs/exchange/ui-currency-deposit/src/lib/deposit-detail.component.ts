@@ -36,6 +36,8 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
+        this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
+        this.soldAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
     }
 
 
@@ -43,7 +45,6 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
         this.customerId = b.customerId;
-
         return this.formBuilder.group({
             id: [b.id],
             customerId: [b.customerId, Validators.required],
@@ -54,7 +55,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             amount: [b.amount],
             soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
             exchangeRate: [{ value: b.exchangeRate || 1, disabled: b.amount < 0.0 }],
-            soldAmount: [{ value: b.amount > 0.0? b.amount * (b.exchangeRate | 1) : 0.0, disabled: true }],
+            soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount).toFixed(5) : 0.0, disabled: true }],
             debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
             credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });
@@ -75,6 +76,9 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
             this.form.controls['soldAmount']?.enable();
             this.form.controls['exchangeRate']?.enable();
+            const soldAmount = this.form.controls['exchangeRate'].value *
+                (this.form.controls['debit'].value - this.form.controls['credit'].value);
+            this.form.controls['soldAmount'].setValue(soldAmount);
         } else {
             this.form.controls[ctrl].enable();
             this.form.controls['soldAmount']?.disable({onlySelf: true, emitEvent: false});
@@ -88,5 +92,14 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
         return value;
+    }
+
+    onCurrencyChange() {
+        const withdrawn = this.currencyAutoCompleteModel.cache;
+        const sold      = this.soldAutoCompleteModel.cache;
+        if (withdrawn && sold) {
+            const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
+            this.form.controls['exchangeRate'].setValue(value.toFixed(5));
+        }
     }
 }

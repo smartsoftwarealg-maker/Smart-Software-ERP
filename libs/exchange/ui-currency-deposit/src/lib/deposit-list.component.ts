@@ -21,8 +21,8 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     selectedAgent = 0;
 
     displayedColumns = [
-        'excDate',
         'denomination',
+        'excDate',
         'type',
         'credit',
         'debit',

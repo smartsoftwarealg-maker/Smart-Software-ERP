@@ -1,105 +1,37 @@
-
-:host {
-    display: block;
-    margin: auto;
-    position: relative;
-    max-width: 1624px;
-    width: 100%;
-    padding-top: 24px;
-}
+@import '../../../../../common/assets/src/assets/main-container';
 
 
-.main-table {
-    display: block;
-    width: 100%;
-    //overflow-x: auto;
-    //.mat-table {
-    //    width: 100%;
-    //    max-width: 100%;
-    //    display: table;
-    //    border-collapse: collapse;
-    //    margin: 0px;
-    //}
-    //.mat-row,
-    //.mat-header-row {
-    //    display: table-row;
-    //}
-    //.mat-cell,
-    //.mat-header-cell {
-    //    word-wrap: initial;
-    //    display: table-cell;
-    //    padding: 0px 5px;
-    //    line-break: unset;
-    //    width: auto;
-    //    white-space: nowrap;
-    //    overflow: hidden;
-    //    vertical-align: middle;
-    //}
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
-
-.mat-column-document {
-    flex: 1 2 100px;
+.mat-column-customer {
+    flex: 3 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-stock {
+.mat-column-excDate {
+    flex: 1 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.mat-column-excType {
+    flex: 0 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description {
+    flex: 1 0 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-debit .mat-column-debit {
     flex: 1 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-
-.mat-column-date {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-
-.mat-column-qtyOut {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-qtyIn {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-price {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-number {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-
-.mat-column-center {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-value {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
 
 .pagination-container {
     ss-pagination {
