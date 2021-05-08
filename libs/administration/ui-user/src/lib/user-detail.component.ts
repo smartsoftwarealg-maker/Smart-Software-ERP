@@ -1,17 +1,17 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService, RoleService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {LookupsService, RoleService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {User, UserService} from '@ss/common/api-users';
-import {Center, LoginService, Role, UserCenter, UserRole} from "@ss/common/api-common";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {CenterService} from "@ss/administration/api-center";
-import {switchMap} from "rxjs/operators";
-import {MatSelectionListChange} from "@angular/material/list";
-import {of} from "rxjs";
+import {AppContextService, Center, LoginService, Role, UserCenter, UserRole} from '@ss/common/api-common';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {CenterService} from '@ss/administration/api-center';
+import {switchMap} from 'rxjs/operators';
+import {MatSelectionListChange} from '@angular/material/list';
+import {of} from 'rxjs';
 
 
 @Component({
@@ -52,7 +52,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public lookupsSrv: LookupsService,
         private roleServ: RoleService,
         private loginSrv: LoginService,
-        private centerSrv: CenterService) {
+        private centerSrv: CenterService,
+        private contextSrv: AppContextService) {
         super(userSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
         this.isManager = loginSrv.userSrv.userInfo.user.manager;
     }
@@ -68,7 +69,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             .pipe(
                 switchMap(res => {
                     this.roleList = res['body'];
-                    this.centerSrv.setParentId(this.loginSrv.context.company);
+                    this.centerSrv.setParentId(this.contextSrv.context.company);
                     return this.centerSrv.getList(0, 50)
                 }),
                 switchMap(res => {

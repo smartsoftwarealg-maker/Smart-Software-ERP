@@ -3,6 +3,9 @@ import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { User, UserContext, UserService } from '@ss/common/api-common';
+import {AppContextService} from '../../../api-common/src/lib/app-context.service';
+import {switchMap} from 'rxjs/operators';
+import {AccessRightsService} from '../../../api-common/src/lib/access-rights.service';
 
 @Component({
     selector: 'ss-shell',
@@ -21,16 +24,21 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     // side nav
     treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
 
-    currentUser: UserContext;
-
-    constructor(public langSrv: LanguageService, public shellSrv: ShellService, protected cdRef: ChangeDetectorRef, protected usersSrv: UserService) { }
+    constructor(public langSrv: LanguageService,
+                public shellSrv: ShellService,
+                protected cdRef: ChangeDetectorRef,
+                protected usersSrv: UserService,
+                private rightsSrv: AccessRightsService,
+                public contextSrv: AppContextService) { }
 
     ngOnInit() {
         this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.check();
-        this.usersSrv.load()
-            .subscribe(() => this.currentUser = this.usersSrv.context);
+        // this.usersSrv.load()
+        //     .pipe(switchMap(res => this.contextSrv.load()),
+        //          switchMap(res => this.rightsSrv.load()))
+        //     .subscribe(() => this.showSideNav = true);
     }
 
     ngOnDestroy() {

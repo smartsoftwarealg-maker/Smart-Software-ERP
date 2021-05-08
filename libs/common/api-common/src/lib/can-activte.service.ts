@@ -7,14 +7,18 @@ import { UserService } from './user.service';
 import { HttpService } from './http.service';
 import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';
+import {AppContextService} from './app-context.service';
+import {AccessRightsService} from './access-rights.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CanActivateService implements CanActivate {
     constructor(public router: Router,
-        protected httpSrv: HttpService,
-        private loginSrv: LoginService) {
+                protected httpSrv: HttpService,
+                private loginSrv: LoginService,
+                private accessRightsSrv: AccessRightsService,
+                private contextSrv: AppContextService) {
     }
 
     canActivate(route: ActivatedRouteSnapshot,
@@ -41,11 +45,13 @@ export class CanActivateService implements CanActivate {
     private canRead(route: ActivatedRouteSnapshot): boolean {
         const entity = route.data.entity;
 
-        if (entity && !this.loginSrv.canUserPass(entity)) {
+        if (entity && !this.accessRightsSrv.canUserPass(entity)) {
             return false;
         }
 
-        if (this.loginSrv.context && this.loginSrv.context.pwdExpired) {
+        if (this.contextSrv &&
+            this.contextSrv.context &&
+            this.contextSrv.context.pwdExpired) {
             this.router.navigate(['/' + PROFILE_PAGE_URL]).then();
             return false;
         }

@@ -43,7 +43,6 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             )
         );
         this.currencySrv.load().subscribe(res => res);
-
     }
 
     onClick(node: SideNavNode): void {
@@ -75,7 +74,4 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.shellSrv.reset();
     }
-
-
-
 }

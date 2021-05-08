@@ -10,5 +10,37 @@
             "backend": "192.168.8.200:9999",
             "comment": "BackEnd is same as FrontEnd, but with port 9999"
         }
+    ],
+    "useBrowserLanguage": true,
+    "defaultLanguage": "ar",
+    "languages": [
+        {
+            "code": "ar",
+            "dir": "rtl",
+            "name": "العربية",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "en",
+            "dir": "ltr",
+            "name": "English",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "fr",
+            "dir": "ltr",
+            "name": "Français",
+            "dateFormat": "fr",
+            "personFullNameFormat": "fr"
+        },
+        {
+            "code": "tr",
+            "dir": "ltr",
+            "name": "Türkçe",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        }
     ]
 }

@@ -1,15 +1,15 @@
 {
-    "TYPE": "Type",
-    "CURRENCY_EXCHANGE": "D�viz degisimi",
-    "EDIT_EXCHANGE": "Degisimi d�zenleyin",
-    "HISTORY": "Tarih",
-    "BALANCE": "Denge",
-    "DEPOSIT_TYPES": "Para yatirma y�ntemleri",
-    "CURRENCY_DEPOSIT": "Para yatirma / �ekme",
-    "DEPOSIT": "Depozito",
-    "WITHDRAWAL": "Para �ekme",
-    "AMOUNT": "Miktar",
-    "PURCHASE": "Satin alma",
-    "SALES": "Satis",
-    "WITHDRAWN_CURRENCY": "�ekilmis para birimi"
+    "TYPE":               "Tür",
+    "CURRENCY_EXCHANGE":  "Döviz değişimi",
+    "EDIT_EXCHANGE":      "Değişimi düzenle",
+    "HISTORY":            "Tarih",
+    "BALANCE":            "Denge",
+    "DEPOSIT_TYPES":      "Para yatırma yöntemleri",
+    "CURRENCY_DEPOSIT":   "Para yatırma / çekme",
+    "DEPOSIT":            "Depozito",
+    "WITHDRAWAL":         "Para çekme",
+    "AMOUNT":             "Miktar",
+    "PURCHASE":           "Satın alma",
+    "SALES":              "Satış",
+    "WITHDRAWN_CURRENCY": "Çekilmiş para birimi"
 }
