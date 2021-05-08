@@ -1,0 +1,15 @@
+{
+    "TYPE":               "Tür",
+    "CURRENCY_EXCHANGE":  "Döviz değişimi",
+    "EDIT_EXCHANGE":      "Değişimi düzenle",
+    "HISTORY":            "Tarih",
+    "BALANCE":            "Denge",
+    "DEPOSIT_TYPES":      "Para yatırma yöntemleri",
+    "CURRENCY_DEPOSIT":   "Para yatırma / çekme",
+    "DEPOSIT":            "Depozito",
+    "WITHDRAWAL":         "Para çekme",
+    "AMOUNT":             "Miktar",
+    "PURCHASE":           "Satın alma",
+    "SALES":              "Satış",
+    "WITHDRAWN_CURRENCY": "Çekilmiş para birimi"
+}
