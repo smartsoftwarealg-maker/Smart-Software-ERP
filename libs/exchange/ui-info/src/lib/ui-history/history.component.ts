@@ -21,12 +21,12 @@ export class HistoryComponent implements OnInit {
 
 
     displayedColumns = [
-        'excDate',
         'customer',
+        'excDate',
         'excType',
         'description',
-        'debit',
         'credit',
+        'debit',
     ];
 
 

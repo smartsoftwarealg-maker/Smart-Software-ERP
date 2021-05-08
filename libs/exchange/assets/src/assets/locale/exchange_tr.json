@@ -11,5 +11,6 @@
     "AMOUNT":             "Miktar",
     "PURCHASE":           "Satın alma",
     "SALES":              "Satış",
-    "WITHDRAWN_CURRENCY": "Çekilmiş para birimi"
+    "WITHDRAWN_CURRENCY": "Çekilmiş para birimi",
+    "SOLD_AMOUNT":        "Geri çekilen miktar"
 }

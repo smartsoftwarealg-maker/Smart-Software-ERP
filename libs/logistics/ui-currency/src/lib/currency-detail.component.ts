@@ -26,7 +26,7 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(currencyService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT_PRICE');
+        super(currencyService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
     }
 
 

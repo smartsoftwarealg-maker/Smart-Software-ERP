@@ -11,5 +11,6 @@
     "AMOUNT": "المبلغ",
     "PURCHASE": "الشراء",
     "SALES": "البيع",
-    "WITHDRAWN_CURRENCY": "العملة المسحوبة"
+    "WITHDRAWN_CURRENCY": "العملة المسحوبة",
+    "SOLD_AMOUNT": "المبلغ المسحوب"
 }

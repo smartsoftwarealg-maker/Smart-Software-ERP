@@ -20,7 +20,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-
+    public customerId = 0;
 
     constructor(
         private agentService: AgentService,
@@ -36,13 +36,15 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
+        this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
+        this.soldAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
     }
 
 
     public setupForm(b: Deposit) {
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
-
+        this.customerId = b.customerId;
         return this.formBuilder.group({
             id: [b.id],
             customerId: [b.customerId, Validators.required],
@@ -51,10 +53,11 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
-            soldCurrencyId: [b.soldCurrencyId],
-            exchangeRate: [b.exchangeRate],
-            debit: [{value: debit, disabled: b.amount < 0.000001}, Validators.required],
-            credit: [{value: credit, disabled: b.amount > 0.000001}, Validators.required]
+            soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
+            exchangeRate: [{ value: b.exchangeRate || 1, disabled: b.amount < 0.0 }],
+            soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount).toFixed(5) : 0.0, disabled: true }],
+            debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
+            credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });
     }
 
@@ -71,8 +74,15 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         if (value > 0.0) {
             this.form.controls[ctrl].setValue(0);
             this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
+            this.form.controls['soldAmount']?.enable();
+            this.form.controls['exchangeRate']?.enable();
+            const soldAmount = this.form.controls['exchangeRate'].value *
+                (this.form.controls['debit'].value - this.form.controls['credit'].value);
+            this.form.controls['soldAmount'].setValue(soldAmount);
         } else {
             this.form.controls[ctrl].enable();
+            this.form.controls['soldAmount']?.disable({onlySelf: true, emitEvent: false});
+            this.form.controls['exchangeRate']?.disable({onlySelf: true, emitEvent: false});
         }
     }
 
@@ -82,5 +92,14 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
         return value;
+    }
+
+    onCurrencyChange() {
+        const withdrawn = this.currencyAutoCompleteModel.cache;
+        const sold      = this.soldAutoCompleteModel.cache;
+        if (withdrawn && sold) {
+            const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
+            this.form.controls['exchangeRate'].setValue(value.toFixed(5));
+        }
     }
 }

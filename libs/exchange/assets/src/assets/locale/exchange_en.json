@@ -11,5 +11,6 @@
     "AMOUNT": "Amount",
     "PURCHASE": "Purchase",
     "SALES": "Sales",
-    "WITHDRAWN_CURRENCY": "Withdrawn currency"
+    "WITHDRAWN_CURRENCY": "Withdrawn currency",
+    "SOLD_AMOUNT": "Withdrawn amount"
 }

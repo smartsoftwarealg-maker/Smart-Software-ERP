@@ -36,6 +36,8 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
+        this.purchaseAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
+        this.salesAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
     }
 
     public setupForm(b: Exchange) {
@@ -48,6 +50,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
             soldCurrency: [b.soldCurrency],
             memo: [b.memo],
             exchRate: [b.exchRate, Validators.required],
+            soldAmount: [{ value: (b.exchRate * b.amount).toFixed(5), disabled: true }],
             // credit: [{value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });
     }
@@ -58,5 +61,21 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
         return value;
+    }
+
+    onChange() {
+        const rate = this.form.controls['exchRate'].value;
+        const amount = this.form.controls['amount'].value;
+        const value = (rate * amount).toFixed(5);
+        this.form.controls['soldAmount'].setValue(value, {onlySelf: true, emitEvents: false})
+    }
+
+    onCurrencyChange() {
+        const withdrawn = this.purchaseAutoCompleteModel.cache;
+        const sold      = this.salesAutoCompleteModel.cache;
+        if (withdrawn && sold) {
+            const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
+            this.form.controls['exchRate']?.setValue(value.toFixed(5));
+        }
     }
 }

@@ -43,7 +43,7 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-        super(currencySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_CURRENCY');
+        super(currencySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
     }
 
     public setupForm(e: Currency): FormGroup {
