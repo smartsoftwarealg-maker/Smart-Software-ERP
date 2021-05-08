@@ -6,7 +6,7 @@ import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-p
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { EmployeeActivationComponent } from './employee-activation.component';
-import { UserService, dateStrToYmd, dateToYmdStr } from '@ss/common/api-common';
+import { dateToYmdStr, AppContextService } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { EmploymentTypeService, LookupsService, EmploymentType } from '@ss/common/api-lookup';
@@ -39,7 +39,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
-        public userSrv: UserService,
+        public appContextSrv: AppContextService,
         public lookupsSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
     }
@@ -87,7 +87,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
                 switchMap(() => of({
                     activityStatus: 0,
                     empId: this.uiSrv.instance.personId,
-                    center: this.userSrv.context.center,
+                    center: this.appContextSrv.context.center,
                     employmentType: null,
                     hireDate: dateToYmdStr(new Date()),
                     id: 0,
