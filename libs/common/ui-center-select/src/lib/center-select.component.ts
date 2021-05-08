@@ -11,6 +11,8 @@ import {
 } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
+import {AccessRightsService} from '../../../api-common/src/lib/access-rights.service';
+import {UserService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -35,6 +37,8 @@ export class CenterSelectComponent implements OnInit {
     constructor(private ccListSrv: CentersService,
                 private loginSrv: LoginService,
                 private router: Router,
+                private userSrv: UserService,
+                private accessRightsSrv: AccessRightsService,
                 private contextSrv: AppContextService) {
     }
 
@@ -97,7 +101,9 @@ export class CenterSelectComponent implements OnInit {
             this.loading = true;
             this.loginSrv
                 .centerLogin(this.selectedCenter)
-                .pipe(switchMap(() => this.loginSrv.loadUser()))
+                .pipe(switchMap(() => this.loginSrv.loadUser()),
+                      switchMap(_ => this.contextSrv.load()),
+                      switchMap(_ => this.accessRightsSrv.load()))
                 .subscribe(() => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
                         const dest = this.contextSrv.context && this.contextSrv.context.pwdExpired

@@ -18,13 +18,11 @@ export class UserService {
         centers: [],
         roles: []
     };
-    private rightsMap: Map<string, Right> = new Map<string, Right>();
     private severe = false;
     public userInfo: UserInfo = null;
     public itemCount = 0;
 
-    constructor(protected httpSrv: HttpService,
-                private contextSrv: AppContextService) {
+    constructor(protected httpSrv: HttpService) {
         const user = localStorage.getItem('cuser');
         if (user) {
             this.userInfo = JSON.parse(user) as UserInfo;
@@ -48,46 +46,19 @@ export class UserService {
                 }));
     }
 
-    canUserPass_(component: string): boolean {
-        return this.getUserRights(component).read;
-    }
 
-    canUserAdd_(component: string): boolean {
-        return this.getUserRights(component).create;
-    }
 
-    canUserEdit_(component: string): boolean {
-        return this.getUserRights(component).edit;
-    }
-
-    canUserDelete_(component: string): boolean {
-        return this.getUserRights(component).del;
-    }
-
-    private getDefault(): Right {
-        const manager = this.userInfo && this.userInfo.user.manager;
-        return {
-            read: manager || !this.severe,
-            create: manager || !this.severe,
-            edit: manager || !this.severe,
-            del: manager || !this.severe
-        };
-    }
-
-    getUserRights(component: string): Right {
-        if (!component) {
-            return this.getDefault();
-        }
-        return this.rightsMap.get(component) || this.getDefault();
-    }
-    /**
-     * Called by logout() in LoginService
-     */
+    // getUserRights(component: string): Right {
+    //     if (!component) {
+    //         return this.getDefault();
+    //     }
+    //     return this.rightsMap.get(component) || this.getDefault();
+    // }
+    // /**
+    //  * Called by logout() in LoginService
+    //  */
     clear() {
         this.userInfo = null;
-        this.contextSrv.clear();
-        // localStorage.clear();
-        this.rightsMap.clear();
     }
 
 

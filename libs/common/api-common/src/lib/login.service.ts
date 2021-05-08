@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, from} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {UserService} from './user.service';
-import {Agent, Person, Right, User, UserInfo} from './models';
+import {Agent, Person, User, UserInfo} from './models';
 import {DecService} from './dec.service';
-import {CENTER_SELECT_URL, LOGIN_URL, ABS_INDEX_URL} from './constants';
+import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
 import {AccessRightsService} from './access-rights.service';
@@ -30,13 +30,12 @@ export class LoginService {
     public hasPassword = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
-    private bUserLogin = false;
     private loggedIn = false;
     private tryAgent = true;
     private tryPerson = true;
 
     constructor(private httpSrv: HttpService,
-                public  userSrv: UserService,
+                public userSrv: UserService,
                 private decSrv: DecService,
                 public router: Router,
                 private contextSrv: AppContextService,
@@ -53,22 +52,22 @@ export class LoginService {
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.httpSrv.get<any>('/relogin')),
-                  tap(_ => this.loginFromStorage()),
-                  catchError(err => of(false)),
-                  switchMap(_ => this.userSrv.load()),
-                  switchMap(_ => this.contextSrv.load()),
-                  switchMap(_ => this.accessRightsSrv.load()),
-                  map(_ => {
-                        const failure: boolean = !this.agent && !this.person && !this.loggedIn;
-                        if (failure) {
-                            this.router.navigate(['/login']);
-                        }
-                        return !failure;
-                    }));
+                tap(_ => this.loginFromStorage()),
+                catchError(err => of(false)),
+                switchMap(_ => this.userSrv.load()),
+                switchMap(_ => this.contextSrv.load()),
+                switchMap(_ => this.accessRightsSrv.load()),
+                map(_ => {
+                    const failure: boolean = !this.agent && !this.person && !this.loggedIn;
+                    if (failure) {
+                        this.router.navigate(['/login']);
+                    }
+                    return !failure;
+                }));
     }
 
     public isUserLogin(): boolean {
-        return this.bUserLogin;
+        return this.user != null;
     }
 
     public isAgentLogin(): boolean {
@@ -96,10 +95,7 @@ export class LoginService {
         return this
             .httpSrv
             .put('/clogin/' + center)
-            .pipe(tap<string>(res => {
-                this.httpSrv.updateAuthToken(res);
-                // localStorage.setItem('auth_token', res);
-            }));
+            .pipe(tap<string>(res => this.httpSrv.updateAuthToken(res)));
     }
 
     public logout() {
@@ -108,9 +104,14 @@ export class LoginService {
                 if (fulfilled) {
                     this.loggedIn = false;
                     this.hasPassword = false;
-                    this.bUserLogin = false;
                     this.agent = null;
+                    this.person = null;
+                    this.user = null;
                     this.userSrv.clear();
+                    this.contextSrv.clear();
+                    // localStorage.clear();
+                    this.accessRightsSrv.clear();
+
                     localStorage.removeItem('auth_token');
                 }
             });
@@ -119,13 +120,11 @@ export class LoginService {
     public loginFromStorage() {
         this.loggedIn = true;
         this.hasPassword = 'true' === localStorage.getItem('has-pwd');
-        this.bUserLogin = 'true' === localStorage.getItem('userInfo-login');
         this.loadAgentFromStorage();
         this.loadPersonFromStorage();
     }
 
     public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
-        this.bUserLogin = false;
         this.loggedIn = false;
         this.wrongData = false;
         this.licenseErrorType = null;
@@ -149,7 +148,6 @@ export class LoginService {
             }))
             .subscribe(res => {
                 if (!this.licenseErrorType) {
-                    this.bUserLogin = true;
                     this.loggedIn = true;
                     localStorage.setItem('userInfo-login', 'true');
                     this.hasPassword = user.password !== '';
@@ -322,32 +320,7 @@ export class LoginService {
         return this.userSrv.userInfo;
     }
 
-    getRights(component: string): Right {
-        return this.userSrv.getUserRights(component);
-    }
-
-    canUserPass(component: string): boolean {
-        return this.userSrv.canUserPass_(component);
-    }
-
-
-    canUserAdd(component: string): boolean {
-        return this.userSrv.canUserAdd_(component);
-    }
-
-    canUserEdit(component: string): boolean {
-        return this.userSrv.canUserEdit_(component);
-    }
-
-    canUserDelete(component: string): boolean {
-        return this.userSrv.canUserDelete_(component);
-    }
-
-
     loadUser(): Observable<any> {
-        return this.userSrv
-            .load()
-            .pipe(switchMap(res => this.contextSrv.load()),
-                switchMap(res => this.accessRightsSrv.load()));
+        return this.userSrv.load();
     }
 }
