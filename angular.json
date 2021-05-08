@@ -3551,7 +3551,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/exchange",
+            "outputPath": "dist/apps/exc",
             "index": "apps/exchange/src/index.html",
             "main": "apps/exchange/src/main.ts",
             "polyfills": "apps/exchange/src/polyfills.ts",

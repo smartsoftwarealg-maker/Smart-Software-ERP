@@ -3,7 +3,7 @@ import { DocRight, Right } from './models';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {AppContextService} from '@ss/common/api-common';
+import {AppContextService} from './app-context.service';
 
 @Injectable({
     providedIn: 'root'

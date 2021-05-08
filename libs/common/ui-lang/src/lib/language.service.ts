@@ -11,7 +11,7 @@ import {
     isString,
     removeTimeForDateStr,
     AppConfigService
-} from "@ss/common/api-common";
+} from '@ss/common/api-common';
 
 function formatFullName(first: string, last: string) {
     return (first == null ? '' : first) + (last == null ? '' : (' ' + last));
