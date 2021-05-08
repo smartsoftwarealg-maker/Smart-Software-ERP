@@ -25,8 +25,8 @@ export class HistoryComponent implements OnInit {
         'customer',
         'excType',
         'description',
-        'debit',
         'credit',
+        'debit',
     ];
 
 

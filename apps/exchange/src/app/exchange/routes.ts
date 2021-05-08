@@ -108,7 +108,11 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: DepositDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                ]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

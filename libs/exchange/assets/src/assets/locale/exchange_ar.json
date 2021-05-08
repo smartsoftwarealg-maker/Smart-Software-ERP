@@ -6,10 +6,11 @@
     "BALANCE": "الرصيد",
     "DEPOSIT_TYPES": "طرق الإيداع",
     "CURRENCY_DEPOSIT": "ايداع و سحب العملات",
-    "DEPOSIT": "ايداع",co
+    "DEPOSIT": "ايداع",
     "WITHDRAWAL": "سحب",
     "AMOUNT": "المبلغ",
     "PURCHASE": "الشراء",
     "SALES": "البيع",
-    "WITHDRAWN_CURRENCY": "العملة المسحوبة"
+    "WITHDRAWN_CURRENCY": "العملة المسحوبة",
+    "SOLD_AMOUNT": "المبلغ المسحوب"
 }

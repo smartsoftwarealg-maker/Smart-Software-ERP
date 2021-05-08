@@ -8,7 +8,7 @@
         </ng-container>
 
         <ng-container matColumnDef="debit">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.debit  | number: '1.5-5' }}
             </mat-cell>
@@ -16,9 +16,16 @@
 
 
         <ng-container matColumnDef="credit">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_DEPOSIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.credit  | number: '1.5-5' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="balance">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_BALANCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.credit - e.debit  | number: '1.5-5' }}
             </mat-cell>
         </ng-container>
 

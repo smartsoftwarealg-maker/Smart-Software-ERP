@@ -23,8 +23,9 @@ export class BalanceComponent implements OnInit {
 
     displayedColumns = [
         'currency',
+        'credit',
         'debit',
-        'credit'
+        'balance',
     ];
 
 
