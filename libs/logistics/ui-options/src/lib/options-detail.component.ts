@@ -1,16 +1,15 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {Observable, of} from 'rxjs';
-import {FormBuilder, RequiredValidator, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, Lot, LotsService, PayMethod, PayMode, PayModeService} from '@ss/common/api-lookup';
-import {Account, ACCOUNT_TYPES, AccountService} from '@ss/logistics/api-account';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Option} from './option.class';
 import {OptionService} from './option.service';
-import {LoginService} from '@ss/common/api-common';
+import {AppContextService} from '@ss/common/api-common';
 
 
 @Component({
@@ -30,13 +29,13 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private storeNameSrv: LotsService,
-        private loginSrv: LoginService) {
+        private appContextSrv: AppContextService) {
         super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OPTION');
     }
 
     public setupForm(a: Option) {
         return this.formBuilder.group({
-            id: [this.loginSrv.context.center],
+            id: [this.appContextSrv.context.center],
             eval_price: [a.eval_price || 1, Validators.required],
             mainStore: [a.mainStore],
             inventory_date: [a.inventory_date, Validators.required]
@@ -44,6 +43,6 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
     }
 
     loadEntity(id: number): Observable<Option> {
-        return super.loadEntity(this.loginSrv.context.center);
+        return super.loadEntity(this.appContextSrv.context.center);
     }
 }
