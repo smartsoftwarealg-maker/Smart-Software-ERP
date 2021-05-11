@@ -14,11 +14,11 @@
     ],
     "version": "3.0",
     "protocol": "http://",
-    "defaultUrl": "192.168.8.200:9999",
+    "defaultUrl": "192.168.8.160:8080",
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "192.168.8.200:9999"
+            "backend": "192.168.8.160:8080"
         }
     ],
     "useBrowserLanguage": true,

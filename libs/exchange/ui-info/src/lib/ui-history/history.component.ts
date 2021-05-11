@@ -7,7 +7,7 @@ import {switchMap} from 'rxjs/operators';
 import {CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit';
 
 @Component({
-    selector: 'ss-card',
+    selector: 'ss-history',
     styleUrls: ['./history.component.scss'],
     templateUrl: './history.component.html'
 })
@@ -27,14 +27,12 @@ export class HistoryComponent implements OnInit {
         'description',
         'credit',
         'debit',
+        'currency',
     ];
 
 
-    constructor(public exchangeSrv: CurrencyDepositService,
-                public shellSrv: ShellService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public confirmationSrv: ConfirmationDialogService) {}
+    constructor(
+                public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {}
 
 
     ngOnInit() {
@@ -46,5 +44,4 @@ export class HistoryComponent implements OnInit {
                 return this.exchangeSrv.getHistory(this.agentId, this.pagination.page - 1, this.pagination.pageSize);
             })).subscribe( res => this.data = res);
     }
-
 }

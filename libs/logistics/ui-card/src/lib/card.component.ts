@@ -1,15 +1,15 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Card, CardService} from "@ss/logistics/api-card";
-import {ArticleService} from "@ss/stock/api-article";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LanguageService} from "@ss/common/ui-lang";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Lot} from "@ss/common/api-lookup";
-import {FormControl, FormGroup} from "@angular/forms";
-import {ArticleLotsService} from "@ss/stock/api-article-store";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Card, CardService} from '@ss/logistics/api-card';
+import {ArticleService} from '@ss/stock/api-article';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {LanguageService} from '@ss/common/ui-lang';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Lot} from '@ss/common/api-lookup';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ArticleLotsService} from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-card',
@@ -35,14 +35,14 @@ export class CardComponent implements OnInit {
     data: Card[];
 
     displayedColumns = [
-        "document",
-        "number",
-        "date",
-        "qtyIn",
-        "qtyOut",
-        "price",
-        "stock",
-        "value"
+        'document',
+        'number',
+        'date',
+        'qtyIn',
+        'qtyOut',
+        'price',
+        'stock',
+        'value'
     ];
 
 

@@ -44,7 +44,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         return this.formBuilder.group({
             id: [b.id],
             agentId: [b.agentId, Validators.required],
-            exchDate: [b.exchDate, Validators.required],
+            exchDate: [b.exchDate || new Date(), Validators.required],
             purchCurrency: [b.purchCurrency],
             amount: [b.amount, Validators.required],
             soldCurrency: [b.soldCurrency],

@@ -45,9 +45,10 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
 
 
     processLoadedData(data: Exchange[]): Observable<Exchange[]> {
-        return this.agentService
-            .getByIDList(data.map(x => x.agentId))
-            .pipe(switchMap(res => {
+        return this.currencySrv
+            .load()
+            .pipe(switchMap(_ => this.agentService.getByIDList(data.map(x => x.agentId))),
+                  switchMap(res => {
                       data.forEach(d => {
                           d.denomination = res.find(e => e.id == d.agentId)?.denomination;
                           d.purchCurrDescrip = this.currencySrv.currencyList.find(e => e.id === d.purchCurrency)?.description;

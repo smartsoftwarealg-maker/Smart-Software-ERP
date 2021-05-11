@@ -3,7 +3,7 @@ import {
     EXCHANGE_EXCHANGE_URL, EXCHANGE_BALANCE_URL,
     EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
     EXCHANGE_DEPOSIT_URL, EXCHANGE_HISTORY_URL,
-    LOOKUPS_URL
+    LOOKUPS_URL, EXCHANGE_CBALANCE_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
@@ -11,7 +11,7 @@ import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
 import {DepositDetailComponent, DepositListComponent} from '@ss/exchange/ui-currency-deposit';
 import {DepositTypeDetailComponent, DepositTypeListComponent} from '@ss/exchange/ui-deposit-type';
-import {BalanceComponent, HistoryComponent} from '@ss/exchange/ui-info';
+import {BalanceComponent, CbalanceComponent, HistoryComponent} from '@ss/exchange/ui-info';
 import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
 
 export const mainRoutes: Routes = [
@@ -101,6 +101,7 @@ export const mainRoutes: Routes = [
                 children: [
                     { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
                     { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
                 ],
                 canActivate: [CanActivateService]
             },
@@ -112,6 +113,7 @@ export const mainRoutes: Routes = [
                 children: [
                     { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
                     { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
                 ]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },

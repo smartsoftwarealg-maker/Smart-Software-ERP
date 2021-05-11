@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {CurrencyDepositService, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
@@ -26,10 +26,12 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         'type',
         'credit',
         'debit',
+        'currency'
     ];
 
     constructor(
         private depositTypeSrv: DepositTypeService,
+        private currencySrv: CurrencyService,
         public exchangeSrv: CurrencyDepositService,
         public agentService: AgentService,
         public shellSrv: ShellService,
@@ -42,10 +44,14 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     }
 
     processLoadedData(data: Deposit[]): Observable<Deposit[]> {
-        return this.agentService
-            .getByIDList(data.map(x => x.customerId))
-            .pipe(switchMap(res => {
-                      data.forEach(d => d.denomination = res.find(e => e.id == d.customerId)?.denomination);
+        return this.currencySrv
+            .load()
+            .pipe(switchMap(_ => this.agentService.getByIDList(data.map(x => x.customerId))),
+                switchMap(res => {
+                      data.forEach(d => {
+                          d.denomination = res.find(e => e.id == d.customerId)?.denomination;
+                          d.currencyDescription = this.currencySrv.currencyList.find(e => e.id === d.currencyId)?.description;
+                      });
                       return this.depositTypeSrv.getList(0, 50);
                   }),
                 switchMap(res => {

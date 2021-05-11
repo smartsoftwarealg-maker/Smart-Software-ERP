@@ -125,5 +125,6 @@
     "FILE": "الملف",
     "DEBIT": "دائن",
     "CREDIT": "مدين",
-    "ROLES": "الوظائف"
+    "ROLES": "الوظائف",
+    "CONSOLIDATED": "مدمج"
 }

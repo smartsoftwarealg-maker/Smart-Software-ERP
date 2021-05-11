@@ -10,12 +10,12 @@ import {DepositType, DepositTypeService} from '@ss/exchange/api-currency-deposit
 
 @Component({
     selector: 'ss-deposit-type-list',
-    templateUrl: '../../../../common/ui-lookup/src/lib/base-templates/list-template.html',
-    styleUrls: ['../../../../common/ui-lookup/src/lib/base-templates/list-template.scss']
+    templateUrl: './list-template.html',
+    styleUrls: ['./list-template.scss']
 })
 export class DepositTypeListComponent extends BaseEntityListComponent<DepositType> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'commissioned'];
 
     constructor(
         public depositTypeSrv: DepositTypeService,
@@ -25,15 +25,15 @@ export class DepositTypeListComponent extends BaseEntityListComponent<DepositTyp
         public confirmationSrv: ConfirmationDialogService,
         public router: Router) {
         super(depositTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_DEPOSIT_TYPES');
+        this.pagination.pageSize = 20;
     }
-
 }
 
 
 @Component({
     selector: 'ss-deposit-type-detail',
-    templateUrl: '../../../../common/ui-lookup/src/lib/base-templates/detail-template.html',
-    styleUrls: ['../../../../common/ui-lookup/src/lib/base-templates/detail-template.scss']
+    templateUrl: './detail-template.html',
+    styleUrls: ['./detail-template.scss']
 })
 export class DepositTypeDetailComponent extends BaseEntityDetailComponent<DepositType> {
 
@@ -44,13 +44,14 @@ export class DepositTypeDetailComponent extends BaseEntityDetailComponent<Deposi
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: FormBuilder) {
-        super(depositTypeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_EDIT_TYPE');
+        super(depositTypeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_DEPOSIT_TYPES');
     }
 
-    public setupForm(e: City): FormGroup {
+    public setupForm(e: DepositType): FormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            commissioned: [e.commissioned, Validators.required]
         });
     }
 }

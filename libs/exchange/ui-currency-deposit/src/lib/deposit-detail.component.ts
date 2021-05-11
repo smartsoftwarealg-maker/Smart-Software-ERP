@@ -7,7 +7,7 @@ import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService, AppContextService} from '@ss/common/api-common';
 
 @Component({
@@ -16,7 +16,7 @@ import {LoginService, AppContextService} from '@ss/common/api-common';
     templateUrl: './deposit-detail.component.html'
 })
 export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public agentAutoCompleteModel = new AgentLookupModel(this.agentService);
     public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
@@ -38,6 +38,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
         this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
         this.soldAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
+        this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
     }
 
 
@@ -45,14 +46,23 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
         this.customerId = b.customerId;
+        if (b.depositType) {
+            this.typeAutoCompleteModel
+                .getById(b.depositType)
+                .subscribe(res => {
+                    this.typeAutoCompleteModel.cache = res;
+                    this.onTypeChange();
+                });
+        }
         return this.formBuilder.group({
             id: [b.id],
             customerId: [b.customerId, Validators.required],
-            excDate: [b.excDate, Validators.required],
+            excDate: [b.excDate || new Date(), Validators.required],
             depositType: [b.depositType],
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
+            commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
             exchangeRate: [{ value: b.exchangeRate || 1, disabled: b.amount < 0.0 }],
             soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount).toFixed(5) : 0.0, disabled: true }],
@@ -94,12 +104,22 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         return value;
     }
 
-    onCurrencyChange() {
+    private onCurrencyChange() {
         const withdrawn = this.currencyAutoCompleteModel.cache;
         const sold      = this.soldAutoCompleteModel.cache;
         if (withdrawn && sold) {
             const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
             this.form.controls['exchangeRate'].setValue(value.toFixed(5));
+        }
+    }
+
+    private onTypeChange() {
+        const dType = this.typeAutoCompleteModel.cache;
+        if (dType && dType.commissioned) {
+            this.form.controls['commission'].enable({ onlySelf: true, emitEvent: false });
+        } else {
+            this.form.controls['commission'].disable({ onlySelf: true, emitEvent: false });
+            this.form.controls['commission'].setValue(0.0, { onlySelf: true, emitEvent: false });
         }
     }
 }

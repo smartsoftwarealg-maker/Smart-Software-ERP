@@ -5,5 +5,6 @@
        routerLinkActive="active"
        #history><span translate>EXCHANGE_HISTORY</span></a>
     <a [routerLink]="['balance']" [queryParams]="{ id: selectedId }" class="f-primary-contrast" routerLinkActive="active"><span translate>EXCHANGE_BALANCE</span></a>
+    <a [routerLink]="['cbalance']" [queryParams]="{ id: selectedId }" class="f-primary-contrast" routerLinkActive="active"><span translate>COMMON_CONSOLIDATED</span></a>
 </mat-toolbar>
 <router-outlet></router-outlet>

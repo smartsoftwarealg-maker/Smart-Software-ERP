@@ -50,6 +50,7 @@ export const EXCHANGE_DEPOSIT_URL = 'deposits';
 export const EXCHANGE_EXCHANGE_URL = 'exchanges';
 export const EXCHANGE_HISTORY_URL = 'history';
 export const EXCHANGE_BALANCE_URL = 'balance';
+export const EXCHANGE_CBALANCE_URL = 'cbalance';
 export const EXCHANGE_DEPOSIT_TYPE_URL = 'deposit_types';
 export const ABS_EXCHANGE_AGENT_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_AGENT_URL].join('/');
 export const ABS_EXCHANGE_CURRENCY_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_CURRENCY_URL].join('/');

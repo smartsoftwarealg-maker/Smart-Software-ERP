@@ -42,7 +42,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                 err => console.error(err)
             )
         );
-        this.currencySrv.load().subscribe(res => res);
+        this.currencySrv.load().subscribe(res => console.log(res));
     }
 
     onClick(node: SideNavNode): void {
