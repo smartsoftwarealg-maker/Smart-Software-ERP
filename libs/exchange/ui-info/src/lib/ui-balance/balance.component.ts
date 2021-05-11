@@ -11,7 +11,7 @@ import {switchMap} from 'rxjs/operators';
 import {Balance, CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
 
 @Component({
-    selector: 'ss-card',
+    selector: 'ss-balance',
     styleUrls: ['./balance.component.scss'],
     templateUrl: './balance.component.html'
 })
@@ -29,16 +29,7 @@ export class BalanceComponent implements OnInit {
     ];
 
 
-    constructor(public exchangeSrv: CurrencyDepositService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public articleSrv: ArticleService,
-                public langServ: LanguageService,
-                public storeSrv: ArticleLotsService,
-                public confirmationSrv: ConfirmationDialogService) {
-    }
+    constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {}
 
 
     ngOnInit() {

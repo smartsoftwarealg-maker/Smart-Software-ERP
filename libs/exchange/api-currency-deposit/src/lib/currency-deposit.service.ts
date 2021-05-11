@@ -19,7 +19,9 @@ export interface Deposit {
     exchangeRate?:number;
     creationTime: string;
     denomination?: string;
+    commission?: number;
     typeDescription?: string;
+    currencyDescription?: string;
 }
 
 export interface History {
@@ -39,6 +41,11 @@ export interface Balance {
     credit:   number;
 }
 
+export interface CBalance {
+    currency: string;
+    amount:    number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -56,5 +63,10 @@ export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
     getBalance(id: number, page: number, limit: number): Observable<Balance[]> {
         const url = `/exchanges/balance?id=${id}&page=${page}-${limit}`;
         return this.httpSrv.get<Balance[]>(url);
+    }
+
+    getCBalance(id: number, page: number, limit: number): Observable<CBalance[]> {
+        const url = `/exchanges/cbalance?id=${id}`;
+        return this.httpSrv.get<CBalance[]>(url);
     }
 }

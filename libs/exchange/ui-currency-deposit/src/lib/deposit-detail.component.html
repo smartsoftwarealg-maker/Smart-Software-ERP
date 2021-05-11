@@ -39,8 +39,14 @@
                                   formControlName="currencyId"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-form-field id="commission" class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_COMMISSION</mat-label>
+                <input matInput formControlName="commission"
+                       type="number"
+                       step="0.01">
+                <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
 
-            <span class="default-50 sm-100"></span>
             <mat-form-field id="credit" class="default-50 sm-100">
                 <mat-label translate>EXCHANGE_DEPOSIT</mat-label>
                 <input matInput formControlName="credit"

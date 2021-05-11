@@ -15,7 +15,7 @@ export class CurrencyService extends BaseEntityService<Currency> {
         super(httpSrv, CURRENCY_URL);
     }
 
-    get currencyList() {
+    get currencyList(): Currency[] {
         return this._currencyList;
     }
 
@@ -23,6 +23,7 @@ export class CurrencyService extends BaseEntityService<Currency> {
         return (this._currencyList.length === 0)?
             this.httpSrv
                 .get<Currency[]>(CURRENCY_URL)
-                .pipe(tap(res => this._currencyList = res)) : of(this._currencyList);
+                .pipe(tap(res => this._currencyList = res)) :
+            of(this._currencyList);
     }
 }

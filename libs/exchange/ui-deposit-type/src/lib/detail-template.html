@@ -1,0 +1,9 @@
+<form *ngIf="form != null" novalidate [formGroup]="form">
+    <mat-form-field class="value">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required autofocus>
+    </mat-form-field>
+    <div id="blocked" class="value" >
+        <mat-checkbox formControlName="commissioned" translate>EXCHANGE_COMMISSIONED</mat-checkbox>
+    </div>
+</form>

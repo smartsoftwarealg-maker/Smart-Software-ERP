@@ -24,6 +24,7 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
         public confirmationSrv: ConfirmationDialogService,
         public router: Router) {
         super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_CURRENCIES');
+        this.pagination.pageSize = 20;
     }
 
 }

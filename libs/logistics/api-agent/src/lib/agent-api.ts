@@ -1,4 +1,4 @@
-export const AGENT_URL = "/agents";
+export const AGENT_URL = '/agents';
 
 export interface Agent {
     id: number;

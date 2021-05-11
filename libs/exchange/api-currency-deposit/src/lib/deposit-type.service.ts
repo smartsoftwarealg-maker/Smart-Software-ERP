@@ -7,6 +7,7 @@ export interface DepositType {
     id: number;
     description: string;
     descriptionAr: string;
+    commissioned: boolean;
 }
 
 @Injectable({
@@ -16,6 +17,6 @@ export interface DepositType {
 export class DepositTypeService extends BaseEntityExtendedService<DepositType> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, '/lookups/deposit_types');
+        super(httpSrv, '/deptypes');
     }
 }

@@ -10,6 +10,7 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {BalanceComponent} from './ui-balance/balance.component';
 import {HistoryComponent} from './ui-history/history.component';
+import {CbalanceComponent} from './ui-cbalance/cbalance.component';
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import {HistoryComponent} from './ui-history/history.component';
     declarations: [
         ExcDocInfoComponent,
         BalanceComponent,
+        CbalanceComponent,
         HistoryComponent],
     exports: [ExcDocInfoComponent]
 })

@@ -30,5 +30,6 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
         public lookupSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
         super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'LOGISTICS_CURRENCIES');
+        this.pagination.pageSize = 20;
     }
 }
