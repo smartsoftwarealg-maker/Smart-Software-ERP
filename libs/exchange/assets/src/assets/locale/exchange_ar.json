@@ -12,5 +12,7 @@
     "PURCHASE": "الشراء",
     "SALES": "البيع",
     "WITHDRAWN_CURRENCY": "العملة المسحوبة",
-    "SOLD_AMOUNT": "المبلغ المسحوب"
+    "SOLD_AMOUNT": "المبلغ المسحوب",
+    "COMMISSIONED": "ذو عمولة",
+    "COMMISSION": "عمولة"
 }

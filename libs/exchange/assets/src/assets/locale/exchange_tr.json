@@ -12,5 +12,7 @@
     "PURCHASE":           "Satın alma",
     "SALES":              "Satış",
     "WITHDRAWN_CURRENCY": "Çekilmiş para birimi",
-    "SOLD_AMOUNT":        "Geri çekilen miktar"
+    "SOLD_AMOUNT":        "Geri çekilen miktar",
+    "COMMISSIONED":       "",
+    "COMMISSION":          "komisyon"
 }
