@@ -12,5 +12,7 @@
     "PURCHASE": "Achat",
     "SALES": "Vente",
     "WITHDRAWN_CURRENCY": "Monnaie retirée",
-    "SOLD_AMOUNT": "Montant retiré"
+    "SOLD_AMOUNT": "Montant retiré",
+    "COMMISSIONED": "Commissionable",
+    "COMMISSION": "Commission"
 }
