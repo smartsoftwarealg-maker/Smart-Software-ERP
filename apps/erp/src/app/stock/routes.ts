@@ -47,7 +47,7 @@ import {
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
-import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
+import {MiniAgentDetailComponent, AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
@@ -60,16 +60,6 @@ import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines'
 import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportParamsComponent } from '@ss/common/ui-report-param';
-import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
-import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { CardComponent } from '@ss/logistics/ui-card';
-import { TotalComponent } from '@ss/logistics/ui-totals';
-import { CirculationComponent } from '@ss/logistics/ui-circulation';
-
-
-
-
 
 export const mainRoutes: Routes = [
     {
