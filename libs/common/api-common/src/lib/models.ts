@@ -84,9 +84,9 @@ export interface Agent {
     customerCode: string;
     denomination: string;
     code: string;
-    address: string;
-    denominationAr: string;
-    addressAr: string;
+    address?: string;
+    denominationAr?: string;
+    addressAr?: string;
 
    /**
      * @deprecated This field doesn't exist in the backend; it will be removed

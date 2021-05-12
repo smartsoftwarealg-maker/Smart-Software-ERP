@@ -5,49 +5,49 @@ export interface Agent {
     customerCode: string;
     isInternal: boolean;
     denomination: string;
-    address: string;
-    address2: string;
-    city: number;
-    country: number;
-    phone: string;
-    mobile: string;
-    fax: string;
-    contact: string;
-    info: string;
-    currency: number;
+    address?: string;
+    address2?: string;
+    city?: number;
+    country?: number;
+    phone?: string;
+    mobile?: string;
+    fax?: string;
+    contact?: string;
+    info?: string;
+    currency?: number;
     taxPayable: boolean;
-    commRegister: string;
-    fiscalID: string;
-    articleNo: string;
-    stampPayable: boolean;
+    commRegister?: string;
+    fiscalID?: string;
+    articleNo?: string;
+    stampPayable?: boolean;
     price: number;
-    denominationAr: string;
-    addressAr: string;
-    address2Ar: string;
-    capital: string;
-    bank: number;
-    bankAccount: string;
-    swift: string;
-    agentType: number;
-    companyType: number;
-    email: string;
-    website: string;
-    nis: string;
-    nif: string;
-    debtLimit: number;
-    debtTerm: number;
-    payMode: number;
-    checkDueDays: number;
-    activity: number;
-    recordBlocked: boolean;
-    blockingReason: string;
-    subcontractor: boolean;
+    denominationAr?: string;
+    addressAr?: string;
+    address2Ar?: string;
+    capital?: string;
+    bank?: number;
+    bankAccount?: string;
+    swift?: string;
+    agentType?: number;
+    companyType?: number;
+    email?: string;
+    website?: string;
+    nis?: string;
+    nif?: string;
+    debtLimit?: number;
+    debtTerm?: number;
+    payMode?: number;
+    checkDueDays?: number;
+    activity?: number;
+    recordBlocked?: boolean;
+    blockingReason?: string;
+    subcontractor?: boolean;
     creationTime: string;
-    tin: string;
+    tin?: string;
 
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */
-    license: string // FIXME:: remove this field
+    license?: string // FIXME:: remove this field
 }
 

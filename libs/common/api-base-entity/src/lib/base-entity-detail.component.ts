@@ -110,7 +110,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     /** called with the new id to allow to upload attachement to this object */
-    public uploadAttachements(id: number): Observable<any> {
+    public uploadAttachments(id: number): Observable<any> {
         return of(null);
     }
 
@@ -123,9 +123,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         const val: T = this.readForm();
         val.id = this.queryId;
         let obs: Observable<any> = val.id === 0
-            ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; /* todo: navigate to the correct route using the new id*/ }))
+            ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; val.id = i; /* todo: navigate to the correct route using the new id*/ }))
             : this.entitySrv.update(val);
-        obs = obs.pipe(switchMap(() => this.uploadAttachements(val.id)));
+        obs = obs.pipe(switchMap(() => this.uploadAttachments(val.id)));
         this.shellSrv.setLoading(true);
         obs.subscribe(() => {
             this.shellSrv.setLoading(false);

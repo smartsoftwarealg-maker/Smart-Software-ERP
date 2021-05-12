@@ -140,7 +140,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
         return this.form.value;
     }
 
-    uploadAttachements(id: number): Observable<any> {
+    uploadAttachments(id: number): Observable<any> {
         this.imageModel.setBackendUrl(this.personSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }

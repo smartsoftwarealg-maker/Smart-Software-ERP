@@ -1,11 +1,11 @@
 import {FormGroup} from "@angular/forms";
 import {ComponentFixture} from "@angular/core/testing";
-import {AgentDetailComponent} from "@ss/logistics/ui-agent";
+import {MiniAgentDetailComponent} from "@ss/logistics/ui-agent";
 import {expect} from '@jest/globals'
 
 export class TestUtils {
 
-    static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<AgentDetailComponent>,
+    static shouldBeInvalidWhenEmpty(fixture: ComponentFixture<MiniAgentDetailComponent>,
                                     form: FormGroup,
                                     name: string): void {
         const field = form.controls[name];
@@ -19,7 +19,7 @@ export class TestUtils {
         TestUtils.shouldCheckViewChangesWhenInvalid(fixture, form, name)
     }
 
-    static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<AgentDetailComponent>,
+    static shouldBeInvalidWhenPassMaxLength(fixture: ComponentFixture<MiniAgentDetailComponent>,
                                             form: FormGroup,
                                             name: string,
                                             maxLength: number): void {
@@ -61,7 +61,7 @@ export class TestUtils {
     }
 
 
-    static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<AgentDetailComponent>, form: FormGroup, name: string) {
+    static shouldCheckViewChangesWhenInvalid(fixture: ComponentFixture<MiniAgentDetailComponent>, form: FormGroup, name: string) {
         form.markAllAsTouched()
         fixture.detectChanges()
         TestUtils.shouldDisplayErrorMessage(fixture.nativeElement, name)

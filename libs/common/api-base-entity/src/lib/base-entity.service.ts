@@ -8,8 +8,7 @@ export class BaseEntityService<T> {
 
     protected parentId: number;
 
-    constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
-    }
+    constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {}
 
     public getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<T[]> {
         return this.getList(pageModel.page - 1, pageModel.pageSize, filter, sortBy, extraPrams)

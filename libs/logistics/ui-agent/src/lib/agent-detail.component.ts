@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
@@ -15,12 +15,12 @@ import {
     Currency,
     LookupsService,
     PayMode
-} from "@ss/common/api-lookup";
-import {Agent, AgentService} from "@ss/logistics/api-agent";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {MatExpansionPanel} from "@angular/material/expansion";
-import {FormValidators, UserService} from "@ss/common/api-common";
-import {Bank} from "@ss/administration/api-bank";
+} from '@ss/common/api-lookup';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {MatExpansionPanel} from '@angular/material/expansion';
+import {FormValidators, UserService} from '@ss/common/api-common';
+import {Bank} from '@ss/administration/api-bank';
 
 
 @Component({
@@ -29,8 +29,6 @@ import {Bank} from "@ss/administration/api-bank";
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
-
-
     agentTypes: AgentType[];
     companyTypes: CompanyType[];
     cities: City[];
@@ -79,14 +77,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
 
     finishLoading(e: Agent) {
         super.finishLoading(e);
-        this.form.controls["recordBlocked"]
+        this.form.controls['recordBlocked']
             .valueChanges
             .subscribe(x => {
                 if (x) {
-                    this.form.controls["blockingReason"].disable();
-                    this.form.controls["blockingReason"].setValue("");
+                    this.form.controls['blockingReason'].disable();
+                    this.form.controls['blockingReason'].setValue('');
                 } else {
-                    this.form.controls["blockingReason"].enable()
+                    this.form.controls['blockingReason'].enable()
                 }
 
             });
@@ -98,7 +96,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
-            customerCode: [a.customerCode, Validators.compose([Validators.required, Validators.maxLength(14)])],
+            customerCode: [a.customerCode, Validators.compose([Validators.maxLength(14)])],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
             address: [a.address],
@@ -110,13 +108,13 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             fax: [a.fax],
             contact: [a.contact],
             info: [a.info],
-            currency: [a.currency, Validators.required],
+            currency: [a.currency],
             taxPayable: [a.taxPayable],
             commRegister: [a.commRegister],
             fiscalID: [a.fiscalID],
             articleNo: [a.articleNo],
             stampPayable: [a.stampPayable],
-            price: [a.price, Validators.required],
+            price: [a.price],
             denominationAr: [a.denominationAr],
             addressAr: [a.addressAr],
             address2Ar: [a.address2Ar],
@@ -124,7 +122,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             bank: [a.bank],
             bankAccount: [a.bankAccount],
             swift: [a.swift],
-            agentType: [a.agentType, Validators.required],
+            agentType: [a.agentType],
             companyType: [a.companyType],
             email: [a.email, Validators.email],
             website: [a.website, Validators.pattern(urlRegExp)],
@@ -157,22 +155,22 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     }
 
     public isLatinSectionInvalid(): boolean {
-        return this.isTouchedAndInvalid(this.form.controls['email']) || this.isTouchedAndInvalid(this.form.controls["website"]);
+        return this.isTouchedAndInvalid(this.form.controls['email']) || this.isTouchedAndInvalid(this.form.controls['website']);
     }
 
     public isFiscalSectionInvalid(): boolean {
         return this.form.touched &&
             (this.form.controls['checkDueDays'].invalid ||
-                this.form.controls["debtTerm"].invalid);
+                this.form.controls['debtTerm'].invalid);
     }
 
     public isSectionInvalid(section): boolean {
         switch (section) {
-            case "general":
+            case 'general':
                 return this.isGeneralSectionInvalid();
-            case "latin":
+            case 'latin':
                 return this.isLatinSectionInvalid();
-            case "fiscal":
+            case 'fiscal':
                 return this.isFiscalSectionInvalid();
             default:
                 return false;
@@ -182,15 +180,33 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (this.isSectionInvalid(section)) {
-            return "b-warn-expansion-panel";
+            return 'b-warn-expansion-panel';
         }
 
         // if expanded return primary background class
         if (panel.expanded)
-            return "b-primary-expansion-panel"
+            return 'b-primary-expansion-panel'
         else
-            return "";
+            return '';
     }
 
+    readForm(): Agent {
+        const a = super.readForm();
+        a.price = a.price || 1;
+        a.agentType = a.agentType || 0;
+        a.currency = a.currency || this.currencies[0].id;
+        return a;
+    }
 
+    uploadAttachments(id: number): Observable<any> {
+        return this.agentService
+            .get(id)
+            .pipe(tap(agent => {
+                this.form.controls['price'].setValue(agent.price);
+                this.form.controls['agentType'].setValue(agent.agentType);
+                this.form.controls['currency'].setValue(agent.currency);
+                this.form.controls['customerCode'].setValue(agent.customerCode);
+                this.form.controls['creationTime'].setValue(agent.creationTime);
+            }));
+    }
 }

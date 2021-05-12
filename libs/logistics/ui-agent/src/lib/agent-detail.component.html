@@ -23,7 +23,7 @@
 
             <mat-form-field id="customerCode" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER_CODE</mat-label>
-                <input matInput formControlName="customerCode" type="text" required>
+                <input matInput formControlName="customerCode" type="text" >
                 <mat-error
                     *ngIf="form.controls['customerCode'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
