@@ -3,13 +3,18 @@ import {
     EXCHANGE_EXCHANGE_URL, EXCHANGE_BALANCE_URL,
     EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
     EXCHANGE_DEPOSIT_URL, EXCHANGE_HISTORY_URL,
-    LOOKUPS_URL, EXCHANGE_CBALANCE_URL
+    LOOKUPS_URL, EXCHANGE_CBALANCE_URL, EXCHANGE_COMMISSION_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {MiniAgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
-import {DepositDetailComponent, DepositListComponent} from '@ss/exchange/ui-currency-deposit';
+import {
+    CashCommissionDetailComponent,
+    CashCommissionListComponent,
+    DepositDetailComponent,
+    DepositListComponent
+} from '@ss/exchange/ui-currency-deposit';
 import {DepositTypeDetailComponent, DepositTypeListComponent} from '@ss/exchange/ui-deposit-type';
 import {BalanceComponent, CbalanceComponent, HistoryComponent} from '@ss/exchange/ui-info';
 import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
@@ -108,6 +113,34 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DepositDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
+                ]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: EXCHANGE_COMMISSION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CashCommissionListComponent,
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
+                ],
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: CashCommissionDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: [

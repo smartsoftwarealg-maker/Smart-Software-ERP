@@ -14,5 +14,6 @@
     "WITHDRAWN_CURRENCY": "Çekilmiş para birimi",
     "SOLD_AMOUNT":        "Geri çekilen miktar",
     "COMMISSIONED":       "",
-    "COMMISSION":          "komisyon"
+    "COMMISSION":          "komisyon",
+    "COMMISSIONS":         "komisyonlar"
 }

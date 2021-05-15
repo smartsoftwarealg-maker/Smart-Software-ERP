@@ -34,7 +34,7 @@
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ (e.amount > 0.0 ? e.amount : 0.0) | number: '1.2-2' }}
+                {{ (e.amount > 0.0 ? e.amount : 0.0) + (e.commission || 0)| number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
