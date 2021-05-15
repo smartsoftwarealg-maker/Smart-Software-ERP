@@ -14,5 +14,6 @@
     "WITHDRAWN_CURRENCY": "العملة المسحوبة",
     "SOLD_AMOUNT": "المبلغ المسحوب",
     "COMMISSIONED": "ذو عمولة",
-    "COMMISSION": "عمولة"
+    "COMMISSION": "عمولة",
+    "COMMISSIONS": "عمولات"
 }

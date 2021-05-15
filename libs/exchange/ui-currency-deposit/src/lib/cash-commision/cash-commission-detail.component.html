@@ -1,0 +1,58 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form != null" novalidate [formGroup]="form">
+
+            <mat-form-field id="excDate" class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="excDate"></ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="agentAutoCompleteModel"
+                                  formControlName="customerId"></ss-auto-complete>
+                <mat-error *ngIf="form.controls.customerId.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_TYPE</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="typeAutoCompleteModel"
+                                  formControlName="depositType"></ss-auto-complete>
+                <mat-error *ngIf="form.controls.depositType.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls.description.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                <ss-auto-complete matInput
+                                  required
+                                  [model]="currencyAutoCompleteModel"
+                                  formControlName="currencyId"></ss-auto-complete>
+                <mat-error *ngIf="form.controls.currencyId.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="commission" class="default-50 sm-100">
+                <mat-label translate>EXCHANGE_COMMISSION</mat-label>
+                <input matInput formControlName="commission"
+                       type="number"
+                       step="0.01"
+                       required>
+                <mat-error *ngIf="form.controls.commission.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+
+        </form>
+    </mat-card-content>
+</mat-card>
+<ss-exc-doc-info [selectedId]="customerId" ></ss-exc-doc-info>

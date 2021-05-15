@@ -14,5 +14,6 @@
     "WITHDRAWN_CURRENCY": "Withdrawn currency",
     "SOLD_AMOUNT": "Withdrawn amount",
     "COMMISSIONED": "Commissionable",
-    "COMMISSION": "Commission"
+    "COMMISSION": "Commission",
+    "COMMISSIONS": "Commissions"
 }
