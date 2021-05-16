@@ -15,5 +15,6 @@
     "SOLD_AMOUNT":        "Geri çekilen miktar",
     "COMMISSIONED":       "",
     "COMMISSION":          "komisyon",
-    "COMMISSIONS":         "komisyonlar"
+    "COMMISSIONS":         "komisyonlar",
+    "RATE":                "Puanla"
 }
