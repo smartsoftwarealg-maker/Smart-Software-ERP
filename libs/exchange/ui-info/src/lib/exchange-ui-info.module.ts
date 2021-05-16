@@ -11,6 +11,7 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {BalanceComponent} from './ui-balance/balance.component';
 import {HistoryComponent} from './ui-history/history.component';
 import {CbalanceComponent} from './ui-cbalance/cbalance.component';
+import {CommissionComponent} from './ui-commission/commission.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,9 @@ import {CbalanceComponent} from './ui-cbalance/cbalance.component';
         ExcDocInfoComponent,
         BalanceComponent,
         CbalanceComponent,
-        HistoryComponent],
+        HistoryComponent,
+        CommissionComponent
+    ],
     exports: [ExcDocInfoComponent]
 })
 export class ExchangeUiInfoModule {}

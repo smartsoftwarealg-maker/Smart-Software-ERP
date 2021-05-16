@@ -1,0 +1,37 @@
+    <div class="scrollable">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="withdrawal">
+                <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.withdrawal | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="commission">
+                <mat-header-cell *matHeaderCellDef translate>EXCHANGE_COMMISSION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.commission | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rate">
+                <mat-header-cell *matHeaderCellDef translate>EXCHANGE_RATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.rate  | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>

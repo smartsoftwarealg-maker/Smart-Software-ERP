@@ -15,5 +15,6 @@
     "SOLD_AMOUNT": "Montant retiré",
     "COMMISSIONED": "Commissionable",
     "COMMISSION": "Commission",
-    "COMMISSIONS": "Commissions"
+    "COMMISSIONS": "Commissions",
+    "RATE": "Taux"
 }

@@ -1,0 +1,47 @@
+@import '../../../../../common/assets/src/assets/main-container';
+
+
+.mat-column-customer {
+    flex: 3 0 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-excDate {
+    flex: 1 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.mat-column-excType {
+    flex: 0 1 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description {
+    flex: 1 0 auto;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-debit .mat-column-debit {
+    flex: 1 1 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.scrollable {
+  overflow-x: auto;
+}
