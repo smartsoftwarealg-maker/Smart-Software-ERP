@@ -37,6 +37,7 @@ export interface History {
 
 export interface Commission {
     description: string;
+    currency: string;
     withdrawal: number;
     commission: number;
     rate: number;
@@ -67,9 +68,9 @@ export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
         return this.httpSrv.get<History[]>(url);
     }
 
-    getCommissions(id: number, page: number, limit: number): Observable<History[]> {
+    getCommissions(id: number, page: number, limit: number): Observable<Commission[]> {
         const url = `/exchanges/commissions?id=${id}&page=${page}-${limit}`;
-        return this.httpSrv.get<History[]>(url);
+        return this.httpSrv.get<Commission[]>(url);
     }
 
     getBalance(id: number, page: number, limit: number): Observable<Balance[]> {

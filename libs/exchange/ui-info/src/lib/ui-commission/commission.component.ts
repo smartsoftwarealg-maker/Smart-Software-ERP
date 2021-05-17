@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {switchMap} from 'rxjs/operators';
-import {CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit';
+import {Commission, CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit';
 
 @Component({
     selector: 'ss-commissions',
@@ -14,12 +14,13 @@ import {CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit
 export class CommissionComponent implements OnInit {
 
     agentId = 0;
-    data: History[] = [];
+    data: Commission[] = [];
 
     public readonly pagination = PaginationModel.newInstance();
 
     displayedColumns = [
         'description',
+        'currency',
         'withdrawal',
         'commission',
         'rate'
