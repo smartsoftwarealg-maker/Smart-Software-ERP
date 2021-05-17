@@ -50,7 +50,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
             soldCurrency: [b.soldCurrency],
             memo: [b.memo],
             exchRate: [b.exchRate, Validators.required],
-            soldAmount: [{ value: (b.exchRate * b.amount).toFixed(5), disabled: true }],
+            soldAmount: [{ value: (b.exchRate * b.amount), disabled: true }],
             // credit: [{value: credit, disabled: b.amount > 0.000001}, Validators.required]
         });
     }
@@ -66,7 +66,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
     onChange() {
         const rate = this.form.controls['exchRate'].value;
         const amount = this.form.controls['amount'].value;
-        const value = (rate * amount).toFixed(5);
+        const value = (rate * amount);
         this.form.controls['soldAmount'].setValue(value, {onlySelf: true, emitEvents: false})
     }
 
@@ -75,7 +75,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         const sold      = this.salesAutoCompleteModel.cache;
         if (withdrawn && sold) {
             const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
-            this.form.controls['exchRate']?.setValue(value.toFixed(5));
+            this.form.controls['exchRate']?.setValue(value);
         }
     }
 }

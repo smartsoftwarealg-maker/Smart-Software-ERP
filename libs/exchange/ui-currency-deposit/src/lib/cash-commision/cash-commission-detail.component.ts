@@ -102,14 +102,6 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         return value;
     }
 
-    // private onCurrencyChange() {
-    //     const withdrawn = this.currencyAutoCompleteModel.cache;
-    //     const sold      = this.soldAutoCompleteModel.cache;
-    //     if (withdrawn && sold) {
-    //         const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
-    //         this.form.controls['exchangeRate'].setValue(value.toFixed(5));
-    //     }
-    // }
 
     private onTypeChange() {
         const dType = this.typeAutoCompleteModel.cache;

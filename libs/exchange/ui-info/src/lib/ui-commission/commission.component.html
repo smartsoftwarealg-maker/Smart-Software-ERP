@@ -7,6 +7,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="currency">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CURRENCY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.currency }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="withdrawal">
                 <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
                 <mat-cell *matCellDef="let e">
