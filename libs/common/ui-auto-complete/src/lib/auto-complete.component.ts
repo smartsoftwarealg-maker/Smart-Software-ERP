@@ -103,6 +103,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     isDisabled: boolean;
     selected: Id;
     loading = false;
+    counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
     //
     @Input()
     model: AutoCompleteModel<any>;
@@ -264,17 +265,21 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.setValue(null, true);
             }),
             switchMap(txt => {
-                if (this.loading) {
-                    throw new Error('Was loading already');
-                }
+                this.counter++;
+                const id = this.counter;
+                // if (this.loading) {
+                //    throw new Error('Was loading already');
+                //}
                 this.loading = true;
                 return txt == null ? of([]) : this.model.filter(txt).pipe(
                     tap(options => {
-                        this.model.options = options;
-                        if (options.length === 1) {
-                            if (this.model.isPerfectMatch(options[0], txt)) {
-                                this.setValue(this.model.valueOf(options[0]), true);
-                                this.callModelSelectEvent(options[0]);
+                        if (id == this.counter) {
+                            this.model.options = options;
+                            if (options.length === 1) {
+                                if (this.model.isPerfectMatch(options[0], txt)) {
+                                    this.setValue(this.model.valueOf(options[0]), true);
+                                    this.callModelSelectEvent(options[0]);
+                                }
                             }
                         }
                     })
