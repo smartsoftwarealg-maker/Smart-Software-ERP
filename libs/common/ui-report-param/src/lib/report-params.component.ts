@@ -1,16 +1,16 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {NestedTreeControl} from "@angular/cdk/tree";
-import {ReportTreeService} from "@ss/common/api-reports";
-import {MatTreeNestedDataSource} from "@angular/material/tree";
-import {LanguageService} from "@ss/common/ui-lang";
-import {BaseEntityListComponent} from "@ss/common/api-base-entity";
-import {ReportParams, ReportParamsService} from "@ss/common/api-report-param";
-import {Observable} from "rxjs";
-import {HttpParams} from "@angular/common/http";
+import {LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {ReportTreeService} from '@ss/common/api-reports';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
+import {LanguageService} from '@ss/common/ui-lang';
+import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {ReportParams, ReportParamsService} from '@ss/common/api-report-param';
+import {Observable} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
 
 
 interface ReportNode {
