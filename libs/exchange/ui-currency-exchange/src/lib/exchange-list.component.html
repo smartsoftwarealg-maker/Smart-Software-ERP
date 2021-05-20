@@ -26,7 +26,7 @@
 
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-cell *matCellDef="let e"  class="f-primary number" >
                 {{ e.amount  | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
@@ -41,7 +41,14 @@
         <ng-container matColumnDef="exchRate">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_EXCHANGE_RATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.exchRate  | number: '1.2-2' }}
+                {{ e.exchRate  | number: '1.4-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="soldAmount">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_SOLD_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e" class="f-warn number">
+                {{ e.exchRate * e.amount | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 

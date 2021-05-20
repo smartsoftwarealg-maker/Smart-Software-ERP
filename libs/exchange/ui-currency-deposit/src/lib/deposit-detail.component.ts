@@ -64,7 +64,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             amount: [b.amount],
             commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
-            exchangeRate: [{ value: b.exchangeRate || 1, disabled: b.amount < 0.0 }],
+            exchangeRate: [{ value: b.exchangeRate || 1, disabled: true }],
             soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount) : 0.0, disabled: true }],
             debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
             credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
@@ -84,16 +84,16 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         if (value > 0.0) {
             this.form.controls[ctrl].setValue(0);
             this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
-            this.form.controls['soldAmount']?.enable();
-            this.form.controls['exchangeRate']?.enable();
-            const soldAmount = this.form.controls['exchangeRate'].value *
-                (this.form.controls['debit'].value - this.form.controls['credit'].value);
-            this.form.controls['soldAmount'].setValue(soldAmount);
+            // this.form.controls['soldAmount']?.enable();
+            // this.form.controls['exchangeRate']?.enable();
         } else {
             this.form.controls[ctrl].enable();
-            this.form.controls['soldAmount']?.disable({onlySelf: true, emitEvent: false});
-            this.form.controls['exchangeRate']?.disable({onlySelf: true, emitEvent: false});
+            // this.form.controls['soldAmount']?.disable({onlySelf: true, emitEvent: false});
+            // this.form.controls['exchangeRate']?.disable({onlySelf: true, emitEvent: false});
         }
+        const soldAmount = this.form.controls['exchangeRate'].value *
+            (this.form.controls['debit'].value - this.form.controls['credit'].value);
+        this.form.controls['soldAmount'].setValue(soldAmount.toFixed(2));
     }
 
     readForm(): Deposit {
@@ -109,8 +109,17 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         const sold      = this.soldAutoCompleteModel.cache;
         if (withdrawn && sold) {
             const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
-            this.form.controls['exchangeRate'].setValue(value);
+            this.form.controls['exchangeRate'].setValue(value.toFixed(5));
         }
+        const soldAmount = this.form.controls['exchangeRate'].value *
+            (this.form.controls['debit'].value - this.form.controls['credit'].value);
+        this.form.controls['soldAmount'].setValue(soldAmount.toFixed(2));
+    }
+
+    onRateChange() {
+        const soldAmount = this.form.controls['exchangeRate'].value *
+            (this.form.controls['debit'].value - this.form.controls['credit'].value);
+        this.form.controls['soldAmount'].setValue(soldAmount.toFixed(2));
     }
 
     private onTypeChange() {

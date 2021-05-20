@@ -13,7 +13,14 @@
     padding-left: 8px !important;
 }
 
-.mat-column-amount .mat-column-exchRate {
+.mat-column-amount {
+    flex: 0 0 100px;
+    max-width: 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-exchRate {
     flex: 0 0 100px;
     max-width: 120px;
     padding-right: 8px !important;
@@ -26,5 +33,3 @@
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
-
-

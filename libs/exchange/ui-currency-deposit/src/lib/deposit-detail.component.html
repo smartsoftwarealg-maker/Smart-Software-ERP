@@ -51,7 +51,7 @@
                 <mat-label translate>EXCHANGE_DEPOSIT</mat-label>
                 <input matInput formControlName="credit"
                        type="number"
-                       step="0.00001"
+                       step="1"
                        (change)="onCreditChange($event)"
                        required #credit>
                 <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -61,7 +61,7 @@
                 <mat-label translate>EXCHANGE_WITHDRAWAL</mat-label>
                 <input matInput formControlName="debit"
                        type="number"
-                       step="0.00001" required
+                       step="1" required
                        (change)="onDebitChange($event)"
                        #debit>
                 <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -76,7 +76,9 @@
 
             <mat-form-field id="exchangeRate" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
-                <input type="number" matInput formControlName="exchangeRate" >
+                <input type="number" matInput formControlName="exchangeRate"
+                       step="0.00001"
+                       (change)="onRateChange()">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
