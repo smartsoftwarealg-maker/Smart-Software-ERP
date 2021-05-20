@@ -1,0 +1,39 @@
+<div class="main-container">
+    <div class="table-container max-100">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+            <ng-container matColumnDef="code">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.code }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="denomination">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+                <mat-cell *matCellDef="let e" class="denomination">
+                    {{e.denomination }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="currency">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CURRENCY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.currency }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
+                <mat-cell *matCellDef="let e" [ngClass]="e.amount>0? 'number f-primary' : 'number f-warn'">
+                    {{ e.amount  | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

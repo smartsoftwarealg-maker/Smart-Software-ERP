@@ -10,6 +10,13 @@
         </ng-container>
 
 
+        <ng-container matColumnDef="customerCode">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="denomination">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -33,14 +40,14 @@
 
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-cell *matCellDef="let e" class="f-warn number">
                 {{ (e.amount > 0.0 ? e.amount : 0.0) + (e.commission || 0)| number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_DEPOSIT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-cell *matCellDef="let e" class="f-primary number">
                 {{ (e.amount < 0.0 ? -e.amount : 0.0) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>

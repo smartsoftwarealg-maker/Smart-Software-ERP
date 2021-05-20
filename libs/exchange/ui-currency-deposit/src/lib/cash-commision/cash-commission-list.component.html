@@ -10,6 +10,13 @@
         </ng-container>
 
 
+        <ng-container matColumnDef="customerCode">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="denomination">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -33,7 +40,7 @@
 
         <ng-container matColumnDef="commission">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_COMMISSION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-cell *matCellDef="let e" class="number f-warn">
                 {{ (e.commission) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>

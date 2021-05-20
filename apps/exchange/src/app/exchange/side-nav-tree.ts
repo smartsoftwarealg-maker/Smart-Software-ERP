@@ -3,7 +3,7 @@ import {
     ABS_EXCHANGE_AGENT_URL, ABS_EXCHANGE_COMMISSION_URL,
     ABS_EXCHANGE_CURRENCY_URL,
     ABS_EXCHANGE_DEPOSIT_TYPE_URL,
-    ABS_EXCHANGE_DEPOSIT_URL, ABS_EXCHANGE_EXCHANGE_URL
+    ABS_EXCHANGE_DEPOSIT_URL, ABS_EXCHANGE_EXCHANGE_URL, ABS_EXCHANGE_GLOBAL_BALANCE_URL
 } from '../common';
 
 export const fileNavTree: SideNavNode = {
@@ -46,6 +46,11 @@ export const exchangeNavTree: SideNavNode = {
             name: 'EXCHANGE_CURRENCY_EXCHANGE',
             icon: 'fas fa-cash-register',
             route: ABS_EXCHANGE_EXCHANGE_URL
+        },
+        {
+            name: 'EXCHANGE_GLOBAL_BALANCE',
+            icon: 'fas fa-balance-scale',
+            route: ABS_EXCHANGE_GLOBAL_BALANCE_URL
         },
     ]
 };

@@ -12,6 +12,7 @@ import {BalanceComponent} from './ui-balance/balance.component';
 import {HistoryComponent} from './ui-history/history.component';
 import {CbalanceComponent} from './ui-cbalance/cbalance.component';
 import {CommissionComponent} from './ui-commission/commission.component';
+import {GlobalBalanceComponent} from "./ui-global-balance/global-balance.component";
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import {CommissionComponent} from './ui-commission/commission.component';
         BalanceComponent,
         CbalanceComponent,
         HistoryComponent,
-        CommissionComponent
+        CommissionComponent,
+        GlobalBalanceComponent
     ],
     exports: [ExcDocInfoComponent]
 })

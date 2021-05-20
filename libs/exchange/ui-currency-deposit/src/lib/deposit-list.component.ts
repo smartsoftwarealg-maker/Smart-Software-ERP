@@ -21,6 +21,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     selectedAgent = 0;
 
     displayedColumns = [
+        'customerCode',
         'denomination',
         'excDate',
         'type',
@@ -38,7 +39,6 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public lookupSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
         super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
     }
@@ -49,7 +49,9 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
             .pipe(switchMap(_ => this.agentService.getByIDList(data.map(x => x.customerId))),
                 switchMap(res => {
                       data.forEach(d => {
-                          d.denomination = res.find(e => e.id == d.customerId)?.denomination;
+                          const agent = res.find(e => e.id == d.customerId);
+                          d.denomination = agent?.denomination;
+                          d.customerCode = agent?.customerCode;
                           d.currencyDescription = this.currencySrv.currencyList.find(e => e.id === d.currencyId)?.description;
                       });
                       return this.depositTypeSrv.getList(0, 50);

@@ -1,0 +1,43 @@
+
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+
+.mat-column-code {
+    flex: 1 1 120px;
+    min-width: 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-denomination {
+    flex: 1 0 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.denomination {
+    text-align: start;
+}
+
+.mat-column-currency {
+    flex: 0 0 120px;
+    min-width: 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-amount {
+    flex: 0 0 100px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.max-100 {
+    max-height: 100% !important;
+}

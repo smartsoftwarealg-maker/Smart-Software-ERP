@@ -16,5 +16,6 @@
     "COMMISSIONED": "Commissionable",
     "COMMISSION": "Commission",
     "COMMISSIONS": "Commissions",
-    "RATE": "Rate"
+    "RATE": "Rate",
+    "GLOBAL_BALANCE": "Global balance report"
 }

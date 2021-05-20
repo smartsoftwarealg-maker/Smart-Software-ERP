@@ -27,6 +27,7 @@ export class CashCommissionListComponent extends BaseEntityListComponent<Deposit
 
     displayedColumns = [
         'denomination',
+        'customerCode',
         'excDate',
         'type',
         'commission',
@@ -53,7 +54,9 @@ export class CashCommissionListComponent extends BaseEntityListComponent<Deposit
             .pipe(switchMap(_ => this.agentService.getByIDList(data.map(x => x.customerId))),
                 switchMap(res => {
                       data.forEach(d => {
-                          d.denomination = res.find(e => e.id == d.customerId)?.denomination;
+                          const agent = res.find(e => e.id == d.customerId);
+                          d.denomination = agent?.denomination;
+                          d.customerCode = agent?.customerCode;
                           d.currencyDescription = this.currencySrv.currencyList.find(e => e.id === d.currencyId)?.description;
                       });
                       return this.depositTypeSrv.getList(0, 50);
