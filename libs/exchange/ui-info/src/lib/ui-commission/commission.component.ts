@@ -19,8 +19,8 @@ export class CommissionComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     displayedColumns = [
-        'description',
         'currency',
+        'description',
         'withdrawal',
         'commission',
         'rate'

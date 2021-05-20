@@ -27,6 +27,7 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
         'amount',
         'soldCurrency',
         'exchRate',
+        'soldAmount',
         'memo'
     ];
 

@@ -4,6 +4,7 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 
 export const EXCHANGE_DEPOSIT_URL = '/deposits';
+export const EXCHANGE_GBALANCE_URL = '/exchanges/gbalance?id=0';
 
 export interface Deposit {
     id: number;
@@ -19,6 +20,7 @@ export interface Deposit {
     exchangeRate?:number;
     creationTime: string;
     denomination?: string;
+    customerCode?: string;
     commission?: number;
     typeDescription?: string;
     currencyDescription?: string;
@@ -54,6 +56,14 @@ export interface CBalance {
     amount:    number;
 }
 
+export interface GBalance {
+    code?: string;
+    denomination?: string;
+    currency: string;
+    amount:    number;
+    id: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -81,5 +91,10 @@ export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
     getCBalance(id: number, page: number, limit: number): Observable<CBalance[]> {
         const url = `/exchanges/cbalance?id=${id}`;
         return this.httpSrv.get<CBalance[]>(url);
+    }
+
+    getGBalance(page: number, limit: number): Observable<GBalance[]> {
+        const url = `/exchanges/gbalance?id=0&page=${page}-${limit}`;
+        return this.httpSrv.get<GBalance[]>(url);
     }
 }
