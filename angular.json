@@ -3866,7 +3866,16 @@
             "polyfills": "apps/hotel/src/polyfills.ts",
             "tsConfig": "apps/hotel/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/hotel/src/favicon.ico", "apps/hotel/src/assets"],
+            "assets": [
+              "apps/hotel/src/favicon.ico",
+              "apps/hotel/src/assets",
+              "apps/erp/src/config",
+              {
+                "glob": "**/*",
+                "input": "libs/common/assets/src/assets",
+                "output": "assets"
+              }
+            ],
             "styles": ["apps/hotel/src/styles.scss"],
             "scripts": []
           },
