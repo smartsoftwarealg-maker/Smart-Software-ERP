@@ -126,5 +126,8 @@
     "DEBIT": "Debit",
     "CREDIT": "Credit",
     "ROLES": "Roles",
-    "CONSOLIDATED": "Consolidated"
+    "CONSOLIDATED": "Consolidated",
+    "VIEW_REPORT": "View report",
+    "TYPE": "Type",
+    "REPORTS": "Reports"
 }

@@ -1,26 +1,18 @@
-
-:host {
-    display: inline-block;
-    margin: auto;
-    width: 100%;
+.main-container {
+    display: flex;
+    height: 90%;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.table-container{
-    display: inline-block;
-    width: 645px;
+.table-container {
+    flex-grow: 1;
+    min-height: 250px;
 }
 
 .main-table {
     width: 100%;
     height: 100%;
-    min-height: 320px;
-}
-
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
 }
 
 .mat-column-name {
@@ -52,10 +44,10 @@
     display: none;
 }
 
-.tree-container{
-    vertical-align: top;
-    display: inline-block;
-    width: 360px;
+.tree-container {
+    flex-grow: 2;
+    overflow-y: auto;
+    min-width: 400px;
 }
 
 .tree ul,
@@ -77,4 +69,15 @@
         position: sticky;
         margin: auto;
     }
+}
+
+.out {
+    height: 100%;
+    width: 100%;
+}
+
+.close-btn {
+    position: fixed;
+    right: 25px;
+    top: 130px;
 }
