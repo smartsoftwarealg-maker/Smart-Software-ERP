@@ -122,6 +122,14 @@ export class HttpService {
                 { headers: HttpService.getHeaders() });
     }
 
+    public postHTML(url: string, data?): Observable<any> {
+        return this
+            .httpClient
+            .post(this.baseUrl + url,
+                data,
+                {responseType: 'text', headers: HttpService.getHeaders() });
+    }
+
     public put(url: string, data?): Observable<any> {
         return this
             .httpClient
