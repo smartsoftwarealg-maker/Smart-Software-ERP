@@ -193,6 +193,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParams> i
 
     ngOnDestroy(): void {
         this.releasePdf();
+        this.shellSrv.reset();
     }
 
     createList(): ParamValue[] {

@@ -143,7 +143,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ReportCatalogListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { app: 'exchange' }
             },
             {
                 path: ':id',

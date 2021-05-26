@@ -8,6 +8,7 @@
 .table-container {
     flex-grow: 1;
     min-height: 250px;
+    padding: 0 10px;
 }
 
 .main-table {
@@ -80,4 +81,8 @@
     position: fixed;
     right: 25px;
     top: 130px;
+}
+
+button span {
+    padding-left: 10px;
 }
