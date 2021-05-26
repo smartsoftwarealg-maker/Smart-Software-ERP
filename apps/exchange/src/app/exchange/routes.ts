@@ -1,9 +1,17 @@
 import {
     EXCHANGE_AGENT_URL,
-    EXCHANGE_EXCHANGE_URL, EXCHANGE_BALANCE_URL,
-    EXCHANGE_CURRENCY_URL, EXCHANGE_DEPOSIT_TYPE_URL,
-    EXCHANGE_DEPOSIT_URL, EXCHANGE_HISTORY_URL,
-    LOOKUPS_URL, EXCHANGE_CBALANCE_URL, EXCHANGE_COMMISSION_URL, EXCHANGE_COMMISSIONS_URL, EXCHANGE_GLOBAL_BALANCE_URL
+    EXCHANGE_EXCHANGE_URL,
+    EXCHANGE_BALANCE_URL,
+    EXCHANGE_CURRENCY_URL,
+    EXCHANGE_DEPOSIT_TYPE_URL,
+    EXCHANGE_DEPOSIT_URL,
+    EXCHANGE_HISTORY_URL,
+    LOOKUPS_URL,
+    EXCHANGE_CBALANCE_URL,
+    EXCHANGE_COMMISSION_URL,
+    EXCHANGE_COMMISSIONS_URL,
+    EXCHANGE_GLOBAL_BALANCE_URL,
+    COMMON_REPORT_PARAMS_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
@@ -24,6 +32,7 @@ import {
     HistoryComponent
 } from '@ss/exchange/ui-info';
 import {ExchangeDetailComponent, ExchangeListComponent} from '@ss/exchange/ui-currency-exchange';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {
@@ -80,6 +89,19 @@ export const mainRoutes: Routes = [
                 component: CurrencyDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: COMMON_REPORT_PARAMS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: { reportBase: 'exchange', app: 'exchange' },
+                component: ReportViewComponent,
+                canActivate: [CanActivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

@@ -2,13 +2,13 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
-import {Observable} from "rxjs";
-import {ReportAppsService} from "@ss/common/api-reports";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpParams} from "@angular/common/http";
-import {tap} from "rxjs/operators";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
+import {Observable} from 'rxjs';
+import {ReportAppsService} from '@ss/common/api-reports';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {HttpParams} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -38,7 +38,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public router: Router,
         public confirmationSrv: ConfirmationDialogService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'ADMINISTRATION_REPORT_CATALOG');
-        this.pagination.pageSize = 5;
+        this.pagination.pageSize = 20;
     }
 
 
@@ -51,16 +51,16 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
 
         this.updateAddButtonStatus();
 
-        this.loadApps();
-
-        this.appForm.valueChanges.subscribe(x => {
-            this.setSelectedApp(x.selectedApp);
-        });
+        // this.loadApps();
+        //
+        // this.appForm.valueChanges.subscribe(x => {
+        //     this.setSelectedApp(x.selectedApp);
+        // });
+        this.route.data.subscribe(res => this.setSelectedApp(res['app']));
     }
 
    processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
-       return super.processLoadedData(data)
-           .pipe(tap(list => list.forEach(c => console.log(c))));
+       return super.processLoadedData(data);
    }
 
     loadApps(): void {

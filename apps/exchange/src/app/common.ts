@@ -1,4 +1,5 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
+import {STOCK_APP_URL} from "../../../erp/src/app/common";
 
 
 // common
@@ -62,4 +63,5 @@ export const ABS_EXCHANGE_COMMISSION_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_UR
 export const ABS_EXCHANGE_EXCHANGE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_EXCHANGE_URL].join('/');
 export const ABS_EXCHANGE_GLOBAL_BALANCE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_GLOBAL_BALANCE_URL].join('/');
 export const ABS_EXCHANGE_DEPOSIT_TYPE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_DEPOSIT_TYPE_URL].join('/');
+export const ABS_EXCHANGE_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, COMMON_REPORT_PARAMS_URL].join('/');
 
