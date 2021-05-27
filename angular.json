@@ -3869,7 +3869,7 @@
             "assets": [
               "apps/hotel/src/favicon.ico",
               "apps/hotel/src/assets",
-              "apps/erp/src/config",
+              "apps/hotel/src/config",
               {
                 "glob": "**/*",
                 "input": "libs/common/assets/src/assets",
