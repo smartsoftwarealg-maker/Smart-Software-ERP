@@ -110,5 +110,8 @@
     "DEBIT":                         "Borç",
     "CREDIT":                        "Kredi",
     "ROLES":                         "Roller",
-    "CONSOLIDATED":                  "Konsolide"
+    "CONSOLIDATED":                  "Konsolide",
+    "VIEW_REPORT":                   "Raporu görüntüle",
+    "TYPE":                          "Tür",
+    "REPORTS":                       "Raporlar"
 }

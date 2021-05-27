@@ -59,7 +59,7 @@ import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/
 import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines';
 import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
-import { ReportParamsComponent } from '@ss/common/ui-report-param';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {
@@ -267,7 +267,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 data: { reportBase: 'syscom', app: 'syscom' },
-                component: ReportParamsComponent,
+                component: ReportViewComponent,
                 canActivate: [CanActivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
-import {Observable} from "rxjs";
-import {REPORTS_TREE_URL} from "./report-api";
-import {HttpParams} from "@angular/common/http";
+import {Observable} from 'rxjs';
+import {REPORTS_TREE_URL} from './report-api';
+import {HttpParams} from '@angular/common/http';
 
 
 @Injectable({

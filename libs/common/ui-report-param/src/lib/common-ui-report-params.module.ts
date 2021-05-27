@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ReportParamsComponent} from './report-params.component';
+import {ReportViewComponent} from './report-view.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
-import {RouterModule} from "@angular/router";
-import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
+import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+import {RouterModule} from '@angular/router';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {CommonUiDatepickerModule, DatePickerComponent} from '@ss/common/ui-datepicker';
 
 @NgModule({
     imports: [
@@ -16,10 +17,11 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
         RouterModule,
+        CommonUiDatepickerModule,
         CommonUiAutoCompleteModule
     ],
-    exports: [ReportParamsComponent],
-    declarations: [ReportParamsComponent]
+    exports: [ReportViewComponent],
+    declarations: [ReportViewComponent]
 })
 export class CommonUiReportParamsModule {
 }

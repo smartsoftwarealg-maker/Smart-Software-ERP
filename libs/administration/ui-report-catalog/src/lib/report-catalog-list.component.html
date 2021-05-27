@@ -1,13 +1,5 @@
 
 <div class="main-container">
-    <mat-card [formGroup]="appForm" class="app-select">
-        <p translate>ADMINISTRATION_SELECT_APP</p>
-        <mat-form-field>
-            <mat-select formControlName="selectedApp" id="selectedApp">
-                <mat-option *ngFor="let app of appsList" [value]="app">{{ app }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-card>
     <div class="table-container">
         <mat-table class="main-table" mat-table [dataSource]="data" class="main-table">
 

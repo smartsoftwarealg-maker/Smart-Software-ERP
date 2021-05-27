@@ -126,5 +126,8 @@
     "DEBIT": "دائن",
     "CREDIT": "مدين",
     "ROLES": "الوظائف",
-    "CONSOLIDATED": "مدمج"
+    "CONSOLIDATED": "مدمج",
+    "VIEW_REPORT": "عرض التقرير",
+    "TYPE": "النوع",
+    "REPORTS": "التقارير"
 }
