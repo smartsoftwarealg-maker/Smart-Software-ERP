@@ -1,22 +1,24 @@
-import { BaseEntityService } from './base-entity.service';
-import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PaginationModel } from '@ss/common/ui-pagination';
-import { Directive, OnDestroy, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {BaseEntityService} from './base-entity.service';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PaginationModel} from '@ss/common/ui-pagination';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
 
     constructor(public entitySrv: BaseEntityService<T>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public title: string) {
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public router: Router,
+                public confirmationSrv: ConfirmationDialogService,
+                public defReportSrv: DefaultReportService,
+                public title: string) {
     }
 
     //
@@ -56,6 +58,24 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.deleteSelected()
     };
+
+    public defReportButton: ToolbarButton = {
+        icon: 'fas fa-folders',
+        label: 'COMMON_DEFAULT_REPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.selectReport()
+    };
+
+    public viewReportButton: ToolbarButton = {
+        icon: 'fas fa-print',
+        label: 'COMMON_VIEW_REPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.viewReport()
+    };
     //
     public filter: string;
     public sortBy: string;
@@ -70,7 +90,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        this.shellSrv.setButtons([this.defReportButton, this.viewReportButton, this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
     }
@@ -159,6 +179,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         // this removes calling updateShell twice
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
+        this.viewReportButton.disabled = !itemControlsOn;
         this.shellSrv.updateShell();
     }
 
@@ -171,6 +192,35 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     public showDetail(id: number): void {
         this.router.navigate([id], { relativeTo: this.route })
             .then();
+    }
+
+    private selectReport() {
+        this.defReportSrv
+            .open(this.shellSrv.getApp(), this.constructor.name)
+            .subscribe(res => {
+                if (typeof res === 'string') {
+                    this.defReportSrv
+                        .setUserReport(this.constructor.name, res)
+                        .subscribe(resp => {
+                            if (typeof resp['count'] === 'number') {
+                                if (resp['count'] > 0) {
+                                    this.snackBarSrv.showSuccessMessage();
+                                }
+                            }
+                        })
+                }
+            });
+    }
+
+    private viewReport() {
+        this.defReportSrv
+            .viewReport(this.constructor.name, this.selected)
+            .subscribe(res => {
+                const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+                window.open(fileURL, '_blank');
+            }, err => {
+                console.log('**********error', err.message);
+            });
     }
 
     public deleteSelected(): void {
@@ -198,5 +248,4 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
                 }
             })
     }
-
 }

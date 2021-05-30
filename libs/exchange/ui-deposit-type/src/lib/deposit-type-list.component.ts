@@ -6,6 +6,7 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DepositType, DepositTypeService} from '@ss/exchange/api-currency-deposit';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class DepositTypeListComponent extends BaseEntityListComponent<DepositTyp
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public router: Router) {
-        super(depositTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_DEPOSIT_TYPES');
+        super(depositTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'EXCHANGE_DEPOSIT_TYPES');
         this.pagination.pageSize = 20;
     }
 }

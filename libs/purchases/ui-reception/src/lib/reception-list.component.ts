@@ -11,6 +11,7 @@ import {LanguageService} from '@ss/common/ui-lang';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-reception-list',
@@ -44,8 +45,9 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         private payMethodSrv: PayMethodService) {
-        super(receptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_RECEPTION');
+        super(receptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_RECEPTION');
     }
 
 

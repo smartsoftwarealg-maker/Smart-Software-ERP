@@ -3,8 +3,9 @@ import { Unit, UnitService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class UnitListComponent extends BaseEntityListComponent<Unit> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public router: Router) {
-        super(unitSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_UNITS');
+        super(unitSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_UNITS');
     }
 
 }

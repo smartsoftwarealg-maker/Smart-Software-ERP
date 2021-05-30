@@ -12,6 +12,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService } from '@ss/common/api-common';
 import { ACTIVATION_LIST_URL } from '@ss/payroll/api-person';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 interface Lookup {
     id: number;
@@ -61,9 +62,9 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> implem
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
-        public domSanitizer: DomSanitizer,
+        public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEES_LIST');
+        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEES_LIST');
     }
 
     ngOnInit(): void {

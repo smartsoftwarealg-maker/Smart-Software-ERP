@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-agent-price-list',
@@ -25,8 +26,9 @@ export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice>
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(agentPriceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'LOGISTICS_AGENT_PRICE');
+        super(agentPriceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_AGENT_PRICE');
     }
 
     public ngOnInit() {

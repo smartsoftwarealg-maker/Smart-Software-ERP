@@ -1,15 +1,25 @@
 import {Injectable} from '@angular/core';
-import {ReportParams, REPORT_PARAMS_URL} from './report-params-api';
+import {ReportParam, REPORT_PARAMS_URL, ReportViewData} from './report-params-api';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class ReportParamsService extends BaseEntityService<ReportParams> {
+export class ReportParamsService extends BaseEntityService<ReportParam> {
 
     constructor(public httpSrv: HttpService) {
         super(httpSrv, REPORT_PARAMS_URL);
+    }
+
+    viewHTML(data: ReportViewData): Observable<any> {
+        return this.httpSrv.postHTML('/reports/view', data);
+        // this.reportService.httpSrv.postBlob('/reports/view', data);
+    }
+
+    viewPDF(data: ReportViewData): Observable<any> {
+        return this.httpSrv.postBlob('/reports/view', data);
     }
 }

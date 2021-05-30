@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public router: Router) {
-        super(postSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_POSTS');
+        super(postSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_POSTS');
     }
 
 }

@@ -129,5 +129,6 @@
     "CONSOLIDATED": "مدمج",
     "VIEW_REPORT": "عرض التقرير",
     "TYPE": "النوع",
-    "REPORTS": "التقارير"
+    "REPORTS": "التقارير",
+    "DEFAULT_REPORT": "حدد التقرير الافتراضي"
 }

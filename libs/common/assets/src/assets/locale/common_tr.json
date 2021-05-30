@@ -113,5 +113,6 @@
     "CONSOLIDATED":                  "Konsolide",
     "VIEW_REPORT":                   "Raporu görüntüle",
     "TYPE":                          "Tür",
-    "REPORTS":                       "Raporlar"
+    "REPORTS":                       "Raporlar",
+    "DEFAULT_REPORT":                 "Varsayılan raporu seçin"
 }
