@@ -44,13 +44,6 @@
             "name": "Français",
             "dateFormat": "fr",
             "personFullNameFormat": "fr"
-        },
-        {
-            "code": "tr",
-            "dir": "ltr",
-            "name": "Türkçe",
-            "dateFormat": "default",
-            "personFullNameFormat": "default"
         }
     ]
 }
