@@ -140,7 +140,7 @@ export class ShellService {
         if (len === 0) return 0;
         let hash = 0;
         for (let i = 0; i < len; i++) {
-            let chr = text.charCodeAt(i) * 7907; // a prime
+            const chr = text.charCodeAt(i) * 7907; // a prime
             hash = ((hash << 5) - (hash + chr)) + chr;
             hash |= 0; // Convert to 32bit integer
             hash -= chr * 7919; // a prime
@@ -167,6 +167,11 @@ export class ShellService {
             this.router.navigate([path], { relativeTo: relativeActivatedRoute, queryParams: params })
                 .then()
         });
+    }
+
+    public getApp() {
+        const url = this.router.url.substring(5);
+        return url.substring(0, url.indexOf('/'));
     }
 
     public navigateByRelativeUrl(path: string): void {

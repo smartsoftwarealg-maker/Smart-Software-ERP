@@ -11,6 +11,7 @@ import {AgentService} from '@ss/logistics/api-agent';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-delivery-list',
@@ -42,8 +43,9 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<Tr
             public agentService: AgentService,
             public langServ: LanguageService,
             public confirmationSrv: ConfirmationDialogService,
+            public defReportSrv: DefaultReportService,
             private payMethodSrv: PayMethodService) {
-            super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_INVOICE_CANCELLATION');
+            super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'SALES_INVOICE_CANCELLATION');
         }
 
         processLoadedData(data: Transaction[]): Observable<Transaction[]> {

@@ -3,8 +3,9 @@ import {CompanyType, CompanyTypeService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class CompanyTypeListComponent extends BaseEntityListComponent<CompanyTyp
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public router: Router) {
-        super(companyTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_COMPANY_TYPES');
+        super(companyTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_COMPANY_TYPES');
     }
 
 }

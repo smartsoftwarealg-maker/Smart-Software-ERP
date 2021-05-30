@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Company, CompanyService} from "@ss/administration/api-company";
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-company-list',
@@ -26,8 +27,9 @@ export class CompanyListComponent extends BaseEntityListComponent<Company> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(companySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'ADMINISTRATION_COMPANY');
+        super(companySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_COMPANY');
     }
 
 

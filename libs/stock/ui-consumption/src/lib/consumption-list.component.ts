@@ -9,6 +9,7 @@ import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {LanguageService} from '@ss/common/ui-lang';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-consumption-list',
@@ -40,8 +41,9 @@ export class ConsumptionListComponent extends BaseEntityListComponent<Consumptio
         public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(consumptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_CONSUMPTION');
+        super(consumptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_CONSUMPTION');
     }
 
 

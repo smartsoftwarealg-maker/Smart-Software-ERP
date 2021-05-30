@@ -129,5 +129,6 @@
     "CONSOLIDATED": "Consolidated",
     "VIEW_REPORT": "View report",
     "TYPE": "Type",
-    "REPORTS": "Reports"
+    "REPORTS": "Reports",
+    "DEFAULT_REPORT": "Select default report"
 }

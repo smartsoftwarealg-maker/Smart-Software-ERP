@@ -11,6 +11,7 @@ import {AgentService} from '@ss/logistics/api-agent';
 import {DeliveryService} from '@ss/sales/api-delivery';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-delivery-list',
@@ -42,8 +43,9 @@ export class DeliveryListComponent extends BaseEntityListComponent<Transaction> 
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         private payMethodSrv: PayMethodService) {
-        super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_DELIVERY');
+        super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'SALES_DELIVERY');
     }
 
     processLoadedData(data: Transaction[]): Observable<Transaction[]> {

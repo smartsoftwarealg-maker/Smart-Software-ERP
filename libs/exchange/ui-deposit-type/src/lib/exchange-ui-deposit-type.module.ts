@@ -7,7 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {DepositTypeDetailComponent, DepositTypeListComponent} from './deposit-type.component';
+import {DepositTypeDetailComponent, DepositTypeListComponent} from './deposit-type-list.component';
 
 @NgModule({
     imports: [

@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {LanguageService} from '@ss/common/ui-lang';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-inventory-list',
@@ -38,8 +39,9 @@ export class InventoryListComponent extends BaseEntityListComponent<Transaction>
         public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_INVENTORY');
+        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_INVENTORY');
     }
 
 

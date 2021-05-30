@@ -8,6 +8,7 @@ import {CurrencyDepositService, DepositTypeService, Deposit} from '@ss/exchange/
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-deposit-list',
@@ -39,8 +40,9 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
+        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
     }
 
     processLoadedData(data: Deposit[]): Observable<Deposit[]> {

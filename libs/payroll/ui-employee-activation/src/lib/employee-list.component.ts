@@ -3,14 +3,15 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person as IPerson, PersonService, EmployeeActivationService } from '@ss/payroll/api-person';
-import { Observable, of } from "rxjs";
-import { switchMap, tap } from "rxjs/operators";
-import { LookupsService } from "@ss/common/api-lookup";
-import { LanguageService } from "@ss/common/ui-lang";
-import { DomSanitizer } from "@angular/platform-browser";
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { Observable, of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { LookupsService } from '@ss/common/api-lookup';
+import { LanguageService } from '@ss/common/ui-lang';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService } from '@ss/common/api-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 interface Lookup {
     id: number;
@@ -61,9 +62,9 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
-        public domSanitizer: DomSanitizer,
+        public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
+        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
     }
 
     public preload(): Observable<any> {

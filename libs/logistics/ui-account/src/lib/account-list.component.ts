@@ -7,6 +7,7 @@ import {Observable, of} from "rxjs";
 import {Account, AccountService} from "@ss/logistics/api-account";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ACCOUNT_TYPES} from "@ss/logistics/api-account";
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-account-list',
@@ -34,8 +35,9 @@ export class AccountListComponent extends BaseEntityListComponent<Account> {
         public route: ActivatedRoute,
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
-        super(accountService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'LOGISTICS_ACCOUNTS');
+        super(accountService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_ACCOUNTS');
     }
 
     preload(): Observable<any> {
