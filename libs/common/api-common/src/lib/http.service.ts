@@ -13,8 +13,7 @@ const AUTH_TOKEN = 'auth_token';
 export class HttpService {
     public baseUrl: string;
 
-    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
-    }
+    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {}
 
     static getHeaders() {
         return new HttpHeaders(
@@ -26,6 +25,10 @@ export class HttpService {
 
     static getAuthToken(): string {
         return localStorage.getItem(AUTH_TOKEN);
+    }
+
+    static setAuthToken(token: string) {
+        return localStorage.setItem(AUTH_TOKEN, token);
     }
 
     public init(): Observable<any> {
