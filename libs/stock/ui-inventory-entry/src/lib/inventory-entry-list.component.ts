@@ -8,6 +8,7 @@ import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {LanguageService} from '@ss/common/ui-lang';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-inventory-entry-list',
@@ -36,8 +37,9 @@ export class InventoryEntryListComponent extends BaseEntityListComponent<Invento
         public router: Router,
         public usersService: UserService,
         public langServ: LanguageService,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(inventoryEntrySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_INVENTORY_ENTRY');
+        super(inventoryEntrySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_INVENTORY_ENTRY');
     }
 
 

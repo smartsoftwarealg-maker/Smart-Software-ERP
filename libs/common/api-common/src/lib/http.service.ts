@@ -162,7 +162,7 @@ export class HttpService {
     }
 
     // noinspection JSUnusedGlobalSymbols
-    public postBlob(url: string, data?) {
+    public postBlob(url: string, data?): Observable<ArrayBuffer> {
         const httpHeaders = new HttpHeaders()
             .set('Authorization', this.getAuthToken());
 
@@ -173,6 +173,7 @@ export class HttpService {
                 { responseType: 'arraybuffer', headers: httpHeaders }
             );
     }
+
 
     public uploadBlob(url: string, formName: string, blob: Blob): Observable<any> {
         const fd: FormData = new FormData();

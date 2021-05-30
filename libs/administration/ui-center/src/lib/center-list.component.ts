@@ -6,6 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Center, CenterService} from '@ss/administration/api-center';
 import {AppContextService, UserService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-center-list',
@@ -29,8 +30,9 @@ export class CenterListComponent extends BaseEntityListComponent<Center> {
         public router: Router,
         public userSrv: UserService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         private contextSrv: AppContextService) {
-        super(centerSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'ADMINISTRATION_CENTER');
+        super(centerSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_CENTER');
     }
 
 

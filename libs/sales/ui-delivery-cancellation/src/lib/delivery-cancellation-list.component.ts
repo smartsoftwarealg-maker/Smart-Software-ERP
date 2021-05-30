@@ -11,6 +11,7 @@ import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-delivery-cancellation-list',
@@ -40,8 +41,9 @@ export class DeliveryCancellationListComponent extends BaseEntityListComponent<T
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         private payMethodSrv: PayMethodService) {
-        super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'SALES_DELIVERY_CANCELLATION');
+        super(deliverySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'SALES_DELIVERY_CANCELLATION');
     }
 
     processLoadedData(data: Transaction[]): Observable<Transaction[]> {

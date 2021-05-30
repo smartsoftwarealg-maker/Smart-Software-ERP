@@ -13,6 +13,7 @@ import {
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-commission-list',
@@ -43,9 +44,9 @@ export class CashCommissionListComponent extends BaseEntityListComponent<Deposit
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public lookupSrv: LookupsService,
+        public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(commissionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'EXCHANGE_COMMISSIONS');
+        super(commissionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'EXCHANGE_COMMISSIONS');
     }
 
     processLoadedData(data: Deposit[]): Observable<Deposit[]> {

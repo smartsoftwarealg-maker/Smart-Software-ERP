@@ -8,7 +8,7 @@ import {ReportTreeService} from '@ss/common/api-reports';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {LanguageService} from '@ss/common/ui-lang';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ReportParams, ReportParamsService} from '@ss/common/api-report-param';
+import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-report-param';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -18,23 +18,15 @@ import {saveAs} from 'file-saver';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {File} from '@ionic-native/file/ngx';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
-interface ReportNode {
-    name: string;
-    list: [];
-    parent: '';
-}
-interface ParamValue {
-    name: string;
-    value: string | boolean | number | Date;
-}
 
 @Component({
     selector: 'ss-report-params',
     styleUrls: ['./report-view.component.scss'],
     templateUrl: './report-view.component.html'
 })
-export class ReportViewComponent extends BaseEntityListComponent<ReportParams> implements OnInit, OnDestroy {
+export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
@@ -75,8 +67,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParams> i
         public lookupsSrv: LookupsService,
         private sanitizer: DomSanitizer,
         public langSrv: LanguageService,
+        public defReportSrv: DefaultReportService,
         private deviceService: DeviceDetectorService) {
-        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_REPORTS')
+        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_REPORTS')
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
@@ -108,7 +101,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParams> i
         });
     }
 
-    getPage(): Observable<ReportParams[]> {
+    getPage(): Observable<ReportParam[]> {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
             new HttpParams().set('report', `${this.selectedReport.parent}/${this.selectedReport.name}`)
                 .set('app', this.app)
@@ -141,15 +134,14 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParams> i
         this.releasePdf();
         this.htmlSrc = null;
         this.generating = true;
-        const data = {
-            'app': this.app + this.selectedReport.parent,
-            'rType': this.form.value.reportType,
-            'fileName': this.selectedReport.name.replace('.jasper', ''),
-            'paramList': this.createList()
+        const data: ReportViewData = {
+            app:       this.app + this.selectedReport.parent,
+            rType:     this.form.value.reportType,
+            fileName:  this.selectedReport.name.replace('.jasper', ''),
+            paramList: this.createList()
         };
         const obs = (this.form.value.reportType === 'HTML') ?
-            this.reportService.httpSrv.postHTML('/reports/view', data) :
-            this.reportService.httpSrv.postBlob('/reports/view', data);
+            this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
        obs.pipe(map(res => {
             if (this.form.value.reportType === 'HTML') {
@@ -197,11 +189,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParams> i
     }
 
     createList(): ParamValue[] {
-        const list: ParamValue[] = [];
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                return {name: p.name, value: this.form.controls[p.name].value}
+                return { name: p.name, value: this.form.controls[p.name].value }
             });
     }
 

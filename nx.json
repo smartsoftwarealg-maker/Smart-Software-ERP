@@ -1,433 +1,150 @@
 {
-    "npmScope": "ss",
-    "affected": {
-        "defaultBase": "master"
-    },
-    "implicitDependencies": {
-        "angular.json": "*",
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        "tsconfig.base.json": "*",
-        "tslint.json": "*",
-        "nx.json": "*"
-    },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/workspace/tasks-runners/default",
-            "options": {
-                "cacheableOperations": [
-                    "build",
-                    "lint",
-                    "test",
-                    "e2e"
-                ]
-            }
-        }
-    },
-    "projects": {
-        "common-api-common": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-api-base-entity": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-ui-center-select": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "sales-ui-delivery-lines": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "sales-ui-delivery": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-error-handler": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-lang": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-login": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-logout": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-pagination": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-shell": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-theme": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "stock-api-article": {
-            "tags": []
-        },
-        "stock-assets": {
-            "tags": []
-        },
-        "stock-ui-article": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "erp": {
-            "tags": [],
-            "implicitDependencies": [
-                "common-assets",
-                "stock-assets",
-                "payroll-assets",
-                "logistics-assets",
-                "administration-assets",
-                "sales-assets"
-            ]
-        },
-        "common-api-lookup": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "common-ui-lookup": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "payroll-assets": {
-            "tags": []
-        },
-        "common-assets": {
-            "tags": []
-        },
-        "payroll-api-person": {
-            "tags": [
-                "type:api"
-            ]
-        },
-        "payroll-ui-person": {
-            "tags": [
-                "type:ui"
-            ]
-        },
-        "common-ui-image-input": {
-            "tags": []
-        },
-        "administration-api-center": {
-            "tags": []
-        },
-        "logistics-api-agent": {
-            "tags": []
-        },
-        "logistics-ui-agent": {
-            "tags": []
-        },
-        "logistics-assets": {
-            "tags": []
-        },
-        "logistics-api-agent-price": {
-            "tags": []
-        },
-        "logistics-ui-agent-price": {
-            "tags": []
-        },
-        "common-ui-confirmation-dialog": {
-            "tags": []
-        },
-        "administration-api-bank": {
-            "tags": []
-        },
-        "administration-ui-bank": {
-            "tags": []
-        },
-        "administration-assets": {
-            "tags": []
-        },
-        "administration-api-company": {
-            "tags": []
-        },
-        "administration-ui-company": {
-            "tags": []
-        },
-        "administration-ui-center": {
-            "tags": []
-        },
-        "administration-api-smtp": {
-            "tags": []
-        },
-        "administration-ui-smtp": {
-            "tags": []
-        },
-        "logistics-api-cost-center": {
-            "tags": []
-        },
-        "logistics-ui-cost-center": {
-            "tags": []
-        },
-        "stock-api-inventory-entry": {
-            "tags": []
-        },
-        "stock-ui-inventory-entry": {
-            "tags": []
-        },
-        "stock-ui-inventory-exit": {
-            "tags": []
-        },
-        "stock-api-inventory-exit": {
-            "tags": []
-        },
-        "logistics-api-account": {
-            "tags": []
-        },
-        "logistics-ui-account": {
-            "tags": []
-        },
-        "common-ui-datepicker": {
-            "tags": []
-        },
-        "common-ui-auto-complete": {
-            "tags": []
-        },
-        "common-api-users": {
-            "tags": []
-        },
-        "stock-api-inventory-entry-lines": {
-            "tags": []
-        },
-        "stock-ui-inventory-entry-lines": {
-            "tags": []
-        },
-        "stock-api-inventory-exit-lines": {
-            "tags": []
-        },
-        "stock-ui-inventory-exit-lines": {
-            "tags": []
-        },
-        "stock-api-consumption": {
-            "tags": []
-        },
-        "stock-api-consumption-lines": {
-            "tags": []
-        },
-        "stock-ui-consumption-lines": {
-            "tags": []
-        },
-        "stock-ui-consumption": {
-            "tags": []
-        },
-        "stock-api-inventory": {
-            "tags": []
-        },
-        "stock-ui-inventory": {
-            "tags": []
-        },
-        "stock-ui-reception": {
-            "tags": []
-        },
-        "stock-api-reception": {
-            "tags": []
-        },
-        "stock-api-reception-lines": {
-            "tags": []
-        },
-        "stock-api-inventory-lines": {
-            "tags": []
-        },
-        "stock-ui-inventory-lines": {
-            "tags": []
-        },
-        "stock-ui-reception-lines": {
-            "tags": []
-        },
-        "logistics-ui-circulation": {
-            "tags": []
-        },
-        "logistics-api-circulation": {
-            "tags": []
-        },
-        "logistics-api-card": {
-            "tags": []
-        },
-        "logistics-ui-card": {
-            "tags": []
-        },
-        "api-article-store": {
-            "tags": []
-        },
-        "api-report-catalog": {
-            "tags": []
-        },
-        "ui-report-catalog": {
-            "tags": []
-        },
-        "api-reports": {
-            "tags": []
-        },
-        "api-report-param": {
-            "tags": []
-        },
-        "common-ui-report-param": {
-            "tags": []
-        },
-        "logistics-api-totals": {
-            "tags": []
-        },
-        "logistics-ui-totals": {
-            "tags": []
-        },
-        "sales-api-delivery-lines": {
-            "tags": []
-        },
-        "sales-api-delivery": {
-            "tags": []
-        },
-        "sales-assets": {
-            "tags": []
-        },
-        "logistics-ui-doc-info": {
-            "tags": []
-        },
-        "logistics-api-agent-balance": {
-            "tags": []
-        },
-        "logistics-ui-agent-balance": {
-            "tags": []
-        },
-        "logistics-ui-agent-debts": {
-            "tags": []
-        },
-        "logistics-api-agent-debts": {
-            "tags": []
-        },
-        "sales-api-sales-order": {
-            "tags": []
-        },
-        "sales-ui-sales-order": {
-            "tags": []
-        },
-        "sales-ui-order-lines": {
-            "tags": []
-        },
-        "stock-article-store": {
-            "tags": []
-        },
-        "logistics-ui-doc-import": {
-            "tags": []
-        },
-        "sales-ui-invoice": {
-            "tags": []
-        },
-        "sales-api-invoice": {
-            "tags": []
-        },
-        "sales-ui-invoice-cancellation": {
-            "tags": []
-        },
-        "sales-api-invoice-cancellation": {
-            "tags": []
-        },
-        "logistics-ui-stock-info": {
-            "tags": []
-        },
-        "sales-ui-delivery-cancellation": {
-            "tags": []
-        },
-        "sales-api-delivery-cancellation": {
-            "tags": []
-        },
-        "purchases-assets": {
-            "tags": []
-        },
-        "purchases-api-purchase-order": {
-            "tags": []
-        },
-        "purchases-api-reception": {
-            "tags": []
-        },
-        "purchases-ui-purchase-order": {
-            "tags": []
-        },
-        "purchases-ui-reception": {
-            "tags": []
-        },
-        "logistics-api-transaction": {
-            "tags": []
-        },
-        "administration-ui-user": {
-            "tags": []
-        },
-        "administration-api-user": {
-            "tags": []
-        },
-        "logistics-api-logistics-common": {
-            "tags": []
-        },
-        "payroll-ui-employee-activation": {
-            "tags": []
-        },
-        "administration-ui-roles": {
-            "tags": []
-        },
-        "logistics-ui-pay-method": {
-            "tags": []
-        },
-        "logistics-ui-options": {
-            "tags": []
-        },
-        "exchange": {
-            "tags": []
-        },
-        "logistics-ui-currency": {
-            "tags": []
-        },
-        "exchange-ui-currency-deposit": {
-            "tags": []
-        },
-        "exchange-api-currency-deposit": {
-            "tags": []
-        },
-        "exchange-ui-deposit-type": {
-            "tags": []
-        },
-        "exchange-assets": {
-            "tags": []
-        },
-        "exchange-ui-info": {
-            "tags": []
-        },
-        "exchange-api-currency-exchange": {
-            "tags": []
-        },
-        "exchange-ui-currency-exchange": {
-            "tags": []
-        },
-        "hotel": {
-            "tags": []
-        }
+  "npmScope": "ss",
+  "affected": { "defaultBase": "master" },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
+  },
+  "projects": {
+    "common-api-common": { "tags": ["type:api"] },
+    "common-api-base-entity": { "tags": ["type:api"] },
+    "common-ui-center-select": { "tags": ["type:ui"] },
+    "sales-ui-delivery-lines": { "tags": ["type:ui"] },
+    "sales-ui-delivery": { "tags": ["type:ui"] },
+    "common-ui-error-handler": { "tags": ["type:ui"] },
+    "common-ui-lang": { "tags": ["type:ui"] },
+    "common-ui-login": { "tags": ["type:ui"] },
+    "common-ui-logout": { "tags": ["type:ui"] },
+    "common-ui-pagination": { "tags": ["type:ui"] },
+    "common-ui-shell": { "tags": ["type:ui"] },
+    "common-ui-theme": { "tags": ["type:ui"] },
+    "stock-api-article": { "tags": [] },
+    "stock-assets": { "tags": [] },
+    "stock-ui-article": { "tags": ["type:ui"] },
+    "erp": {
+      "tags": [],
+      "implicitDependencies": [
+        "common-assets",
+        "stock-assets",
+        "payroll-assets",
+        "logistics-assets",
+        "administration-assets",
+        "sales-assets"
+      ]
+    },
+    "common-api-lookup": { "tags": ["type:api"] },
+    "common-ui-lookup": { "tags": ["type:ui"] },
+    "payroll-assets": { "tags": [] },
+    "common-assets": { "tags": [] },
+    "payroll-api-person": { "tags": ["type:api"] },
+    "payroll-ui-person": { "tags": ["type:ui"] },
+    "common-ui-image-input": { "tags": [] },
+    "administration-api-center": { "tags": [] },
+    "logistics-api-agent": { "tags": [] },
+    "logistics-ui-agent": { "tags": [] },
+    "logistics-assets": { "tags": [] },
+    "logistics-api-agent-price": { "tags": [] },
+    "logistics-ui-agent-price": { "tags": [] },
+    "common-ui-confirmation-dialog": { "tags": [] },
+    "administration-api-bank": { "tags": [] },
+    "administration-ui-bank": { "tags": [] },
+    "administration-assets": { "tags": [] },
+    "administration-api-company": { "tags": [] },
+    "administration-ui-company": { "tags": [] },
+    "administration-ui-center": { "tags": [] },
+    "administration-api-smtp": { "tags": [] },
+    "administration-ui-smtp": { "tags": [] },
+    "logistics-api-cost-center": { "tags": [] },
+    "logistics-ui-cost-center": { "tags": [] },
+    "stock-api-inventory-entry": { "tags": [] },
+    "stock-ui-inventory-entry": { "tags": [] },
+    "stock-ui-inventory-exit": { "tags": [] },
+    "stock-api-inventory-exit": { "tags": [] },
+    "logistics-api-account": { "tags": [] },
+    "logistics-ui-account": { "tags": [] },
+    "common-ui-datepicker": { "tags": [] },
+    "common-ui-auto-complete": { "tags": [] },
+    "common-api-users": { "tags": [] },
+    "stock-api-inventory-entry-lines": { "tags": [] },
+    "stock-ui-inventory-entry-lines": { "tags": [] },
+    "stock-api-inventory-exit-lines": { "tags": [] },
+    "stock-ui-inventory-exit-lines": { "tags": [] },
+    "stock-api-consumption": { "tags": [] },
+    "stock-api-consumption-lines": { "tags": [] },
+    "stock-ui-consumption-lines": { "tags": [] },
+    "stock-ui-consumption": { "tags": [] },
+    "stock-api-inventory": { "tags": [] },
+    "stock-ui-inventory": { "tags": [] },
+    "stock-ui-reception": { "tags": [] },
+    "stock-api-reception": { "tags": [] },
+    "stock-api-reception-lines": { "tags": [] },
+    "stock-api-inventory-lines": { "tags": [] },
+    "stock-ui-inventory-lines": { "tags": [] },
+    "stock-ui-reception-lines": { "tags": [] },
+    "logistics-ui-circulation": { "tags": [] },
+    "logistics-api-circulation": { "tags": [] },
+    "logistics-api-card": { "tags": [] },
+    "logistics-ui-card": { "tags": [] },
+    "api-article-store": { "tags": [] },
+    "api-report-catalog": { "tags": [] },
+    "ui-report-catalog": { "tags": [] },
+    "api-reports": { "tags": [] },
+    "api-report-param": { "tags": [] },
+    "common-ui-report-param": { "tags": [] },
+    "logistics-api-totals": { "tags": [] },
+    "logistics-ui-totals": { "tags": [] },
+    "sales-api-delivery-lines": { "tags": [] },
+    "sales-api-delivery": { "tags": [] },
+    "sales-assets": { "tags": [] },
+    "logistics-ui-doc-info": { "tags": [] },
+    "logistics-api-agent-balance": { "tags": [] },
+    "logistics-ui-agent-balance": { "tags": [] },
+    "logistics-ui-agent-debts": { "tags": [] },
+    "logistics-api-agent-debts": { "tags": [] },
+    "sales-api-sales-order": { "tags": [] },
+    "sales-ui-sales-order": { "tags": [] },
+    "sales-ui-order-lines": { "tags": [] },
+    "stock-article-store": { "tags": [] },
+    "logistics-ui-doc-import": { "tags": [] },
+    "sales-ui-invoice": { "tags": [] },
+    "sales-api-invoice": { "tags": [] },
+    "sales-ui-invoice-cancellation": { "tags": [] },
+    "sales-api-invoice-cancellation": { "tags": [] },
+    "logistics-ui-stock-info": { "tags": [] },
+    "sales-ui-delivery-cancellation": { "tags": [] },
+    "sales-api-delivery-cancellation": { "tags": [] },
+    "purchases-assets": { "tags": [] },
+    "purchases-api-purchase-order": { "tags": [] },
+    "purchases-api-reception": { "tags": [] },
+    "purchases-ui-purchase-order": { "tags": [] },
+    "purchases-ui-reception": { "tags": [] },
+    "logistics-api-transaction": { "tags": [] },
+    "administration-ui-user": { "tags": [] },
+    "administration-api-user": { "tags": [] },
+    "logistics-api-logistics-common": { "tags": [] },
+    "payroll-ui-employee-activation": { "tags": [] },
+    "administration-ui-roles": { "tags": [] },
+    "logistics-ui-pay-method": { "tags": [] },
+    "logistics-ui-options": { "tags": [] },
+    "exchange": { "tags": [] },
+    "logistics-ui-currency": { "tags": [] },
+    "exchange-ui-currency-deposit": { "tags": [] },
+    "exchange-api-currency-deposit": { "tags": [] },
+    "exchange-ui-deposit-type": { "tags": [] },
+    "exchange-assets": { "tags": [] },
+    "exchange-ui-info": { "tags": [] },
+    "exchange-api-currency-exchange": { "tags": [] },
+    "exchange-ui-currency-exchange": { "tags": [] },
+    "hotel": { "tags": [] },
+    "common-ui-default-report-component": { "tags": [] }
+  }
 }

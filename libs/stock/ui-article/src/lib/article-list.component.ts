@@ -8,6 +8,7 @@ import { BaseEntityListComponent } from '@ss/common/api-base-entity';
 import { Observable } from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-article-list',
@@ -35,8 +36,9 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         public route: ActivatedRoute,
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'STOCK_ARTICLES');
+        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_ARTICLES');
     }
 
     preload(): Observable<any> {

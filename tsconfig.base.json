@@ -257,6 +257,9 @@
       ],
       "@ss/exchange/ui-currency-exchange": [
         "libs/exchange/ui-currency-exchange/src/index.ts"
+      ],
+      "@ss/common/ui-default-report-component": [
+        "libs/common/ui-default-report-component/src/index.ts"
       ]
     }
   },

@@ -129,5 +129,6 @@
     "CONSOLIDATED": "Consolidés",
     "VIEW_REPORT": "Voir le rapport",
     "TYPE": "Type",
-    "REPORTS": "Etats"
+    "REPORTS": "Etats",
+    "DEFAULT_REPORT": "Sélectionnez le rapport par défaut"
 }

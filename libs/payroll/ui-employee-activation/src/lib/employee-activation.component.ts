@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 import { ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-person';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 // frontend only
 interface Person extends IPerson {
@@ -62,8 +63,9 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(employeeActivationSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
+        super(employeeActivationSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend

@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
 import {Agent, AgentService} from "@ss/logistics/api-agent";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-agent-list',
@@ -39,8 +40,9 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public route: ActivatedRoute,
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'LOGISTICS_AGENTS');
+        super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_AGENTS');
     }
 
 

@@ -3,9 +3,10 @@ import {Activity, ActivityService, RoleService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Role} from "@ss/common/api-common";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Role} from '@ss/common/api-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class RoleListComponent extends BaseEntityListComponent<Role> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         public router: Router) {
-        super(roleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, 'COMMON_ROLES');
+        super(roleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_ROLES');
     }
 
 }

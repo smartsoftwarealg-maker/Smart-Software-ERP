@@ -10,6 +10,7 @@ import {
 } from '@ss/exchange/api-currency-deposit';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {AgentService} from '@ss/logistics/api-agent';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-global-balance',
@@ -36,6 +37,7 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance>{
                 public snackBarSrv: SnackBarService,
                 public router: Router,
                 public route: ActivatedRoute,
+                public defReportSrv: DefaultReportService,
                 public confirmationSrv: ConfirmationDialogService) {
         super(exchangeSrv,
             shellSrv,
@@ -43,6 +45,7 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance>{
             route,
             router,
             confirmationSrv,
+            defReportSrv,
             'EXCHANGE_GLOBAL_BALANCE');
 
     }

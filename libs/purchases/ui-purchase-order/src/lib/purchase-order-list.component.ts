@@ -11,6 +11,7 @@ import {AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
     selector: 'ss-ui-order',
@@ -41,8 +42,9 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
         private payMethodSrv: PayMethodService) {
-        super(orderService, shellSrv, snackBarSrv, route, router, confirmationSrv, 'PURCHASES_PURCHASE_ORDER');
+        super(orderService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PURCHASES_PURCHASE_ORDER');
     }
 
 
