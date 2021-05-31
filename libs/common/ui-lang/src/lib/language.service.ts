@@ -10,7 +10,7 @@ import {
     dateStrToYmd,
     isString,
     removeTimeForDateStr,
-    AppConfigService
+    AppConfigService, HttpService, AppContextService
 } from '@ss/common/api-common';
 
 function formatFullName(first: string, last: string) {
@@ -195,7 +195,10 @@ export class LanguageService {
         return this.rtl ? 'rtl' : 'ltr';
     }
 
-    constructor(private appConfigSrv: AppConfigService, private httpClient: HttpClient) {
+    constructor(private appConfigSrv: AppConfigService,
+                private httpClient: HttpClient,
+                private httpSrv: HttpService,
+                private ctxSrv: AppContextService) {
         this.languages = DEFAULT_SUPPORTED_LANGUAGES;
         this.defaultLanguage = DEFAULT_LANGUAGE;
     }
@@ -332,15 +335,23 @@ export class LanguageService {
     }
 
     public setLanguage(code: string): Observable<void> {
-        const L = this.languages.filter(l => l.code === code)[0];
-        if (!L) {
+        const lang = this.languages.filter(l => l.code === code)[0];
+        if (!lang) {
             throw new Error('Unknown language code "' + code + '"');
         }
-        this.currentLanguage = L;
+        this.currentLanguage = lang;
         localStorage.setItem(LanguageService.LOCAL_STORAGE_KEY, code);
         this.updateDirection(code);
         return this.loadMissing()
             .pipe(
+                switchMap(_ => this.ctxSrv?.context?.userId ?
+                    this.httpSrv.put('/lang',{ lang: lang.code }) : of({})),
+                tap(token => {
+                    console.log(token['payload']);
+                    if (token && token['payload']) {
+                        this.httpSrv.updateAuthToken(token['payload']);
+                    }
+                }),
                 switchMap(() => {
                     this.changeSubject.next(code);
                     return of(null);

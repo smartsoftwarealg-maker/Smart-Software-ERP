@@ -144,7 +144,14 @@
     "exchange-ui-info": { "tags": [] },
     "exchange-api-currency-exchange": { "tags": [] },
     "exchange-ui-currency-exchange": { "tags": [] },
-    "hotel": { "tags": [] },
+    "hotel": {
+        "tags": [],
+        "implicitDependencies": [
+          "common-assets",
+          "logistics-assets",
+          "administration-assets"
+        ]
+      },
     "common-ui-default-report-component": { "tags": [] }
   }
 }
