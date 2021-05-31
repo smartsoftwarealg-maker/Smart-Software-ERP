@@ -64,7 +64,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             amount: [b.amount],
             commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [{ value: b.soldCurrencyId, disabled: b.amount < 0.0}],
-            exchangeRate: [{ value: b.exchangeRate || 1, disabled: true }],
+            exchangeRate: [b.exchangeRate || 1 ],
             soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount) : 0.0, disabled: true }],
             debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
             credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
@@ -109,7 +109,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         const sold      = this.soldAutoCompleteModel.cache;
         if (withdrawn && sold) {
             const value = sold.exchangeRate / (withdrawn.exchangeRate || 1.0);
-            this.form.controls['exchangeRate'].setValue(value.toFixed(5));
+            this.form.controls['exchangeRate'].setValue(+value.toFixed(4));
         }
         const soldAmount = this.form.controls['exchangeRate'].value *
             (this.form.controls['debit'].value - this.form.controls['credit'].value);
