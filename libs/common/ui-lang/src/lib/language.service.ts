@@ -223,7 +223,7 @@ export class LanguageService {
         if (conf.languages != null && conf.languages instanceof Array && conf.languages.length > 0) {
             this.languages = conf.languages.map(l => this.parseLangConfig(l as LanguageConfig));
         }
-        if (typeof conf.useBrowserLanguage == 'boolean' && conf.useBrowserLanguage) {
+        if (typeof conf.useBrowserLanguage === 'boolean' && conf.useBrowserLanguage) {
             // update default language to browser default
             let browserLang = navigator.language;
             if (browserLang) {
@@ -253,15 +253,15 @@ export class LanguageService {
 
     private parseLangConfig(conf: LanguageConfig): Language {
         if (!conf.code) {
-            throw new Error("Invalid Config, Language code cannot be null or empty");
+            throw new Error('Invalid Config, Language code cannot be null or empty');
         }
         if (!conf.name) {
-            throw new Error("Invalid Config, Language name cannot be null or empty");
+            throw new Error('Invalid Config, Language name cannot be null or empty');
         }
         if (conf.dir !== 'rtl' && conf.dir !== 'ltr') {
             throw new Error("Invalid Config, Language direction must be 'rtl' or 'ltr'");
         }
-        let lang: Language = {
+        const lang: Language = {
             name: conf.name,
             code: conf.code,
             dir: conf.dir,
@@ -283,7 +283,7 @@ export class LanguageService {
 
     private validCodeOrNull(code: string): string {
         if (!code) return null;
-        let lang = this.languages.filter(l => l.code === code);
+        const lang = this.languages.filter(l => l.code === code);
         return lang.length > 0 ? lang[0].code : null;
     }
 

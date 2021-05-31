@@ -114,5 +114,8 @@
     "VIEW_REPORT":                   "Raporu görüntüle",
     "TYPE":                          "Tür",
     "REPORTS":                       "Raporlar",
-    "DEFAULT_REPORT":                 "Varsayılan raporu seçin"
+    "DEFAULT_REPORT":                "Varsayılan raporu seçin",
+    "SELECT":                        "Seçiniz",
+    "CANCEL":                        "iptal etmek",
+    "FILENAME":                      "Dosya adı"
 }

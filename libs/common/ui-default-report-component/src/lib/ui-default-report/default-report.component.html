@@ -3,7 +3,7 @@
         <div class="main-container" >
             <div class="ctrl-container">
                 <mat-form-field floatLabel="always" class="default-100 sm-100">
-                    <mat-label translate>ADMINISTRATION_FILENAME</mat-label>
+                    <mat-label translate>COMMON_FILENAME</mat-label>
                     <input type="text" matInput [formControl]="filename" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let option of reportList" [value]="option">{{option}}</mat-option>
