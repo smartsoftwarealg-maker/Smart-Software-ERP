@@ -6,7 +6,7 @@ import {
     NgControl
 } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { isString, strToDate } from "@ss/common/api-common";
+import { isString, strToDate, removeTimeForDateStr, dateToYmdStr } from "@ss/common/api-common";
 import { Subject } from 'rxjs';
 
 @Component({
@@ -43,8 +43,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
-    get value(): Date | null {
-        return this.date;
+    get value() {
+        return this.toOutputFormat(this.date);
     }
 
     @Input()
@@ -52,6 +52,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.writeValue(obj);
         this.onChange(this.date);
     }
+
+    @Input()
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @Input()
     set placeholder(t: string) {
@@ -101,7 +104,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     noopx = (x?: any) => { };
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
-    onChange: (date: Date) => void = this.noopx;
+    onChange: (date: any) => void = this.noopx;
     onTouched: () => void = this.noopx;
 
     /** The value of the control. */
@@ -185,11 +188,17 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         } else {
             this.date = null;
         }
+        const outForm = this.toOutputFormat(obj);
+        if (obj !== outForm) {
+            this.onChange(outForm);
+        }
         this.stateChanges.next();
     }
 
     registerOnChange(fn: any): void {
-        this.onChange = fn;
+        this.onChange = obj => {
+            fn(this.toOutputFormat(obj));
+        };
     }
 
     registerOnTouched(fn: any): void {
@@ -219,4 +228,22 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.fm.stopMonitoring(this.elRef.nativeElement);
     }
 
+    toOutputFormat(obj: any): any {
+        if (obj == null) {
+            return null;
+        }
+        if (this.outputFormat === 'dateStr') {
+            if (isString(obj)) {
+                return removeTimeForDateStr(obj);
+            }
+            return removeTimeForDateStr(dateToYmdStr(obj));
+        }
+        if (this.outputFormat === 'dateObject') {
+            if (isString(obj)) {
+                return strToDate(obj);
+            }
+            return obj;
+        }
+        throw new Error('DatePicker does not know outputFormat: ' + this.outputFormat);
+    }
 }
