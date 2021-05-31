@@ -130,5 +130,8 @@
     "VIEW_REPORT": "عرض التقرير",
     "TYPE": "النوع",
     "REPORTS": "التقارير",
-    "DEFAULT_REPORT": "حدد التقرير الافتراضي"
+    "DEFAULT_REPORT": "حدد التقرير الافتراضي",
+    "SELECT": "اختيار",
+    "CANCEL": "الغاء",
+    "FILENAME": "اسم الملف"
 }

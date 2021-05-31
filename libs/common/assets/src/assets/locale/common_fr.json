@@ -130,5 +130,8 @@
     "VIEW_REPORT": "Voir le rapport",
     "TYPE": "Type",
     "REPORTS": "Etats",
-    "DEFAULT_REPORT": "Sélectionnez le rapport par défaut"
+    "DEFAULT_REPORT": "Sélectionnez le rapport par défaut",
+    "SELECT": "Sélectionner",
+    "CANCEL": "Annuler",
+    "FILENAME": "Nom de fichier"
 }

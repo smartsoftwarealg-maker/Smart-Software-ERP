@@ -130,5 +130,8 @@
     "VIEW_REPORT": "View report",
     "TYPE": "Type",
     "REPORTS": "Reports",
-    "DEFAULT_REPORT": "Select default report"
+    "DEFAULT_REPORT": "Select default report",
+    "SELECT": "Select",
+    "CANCEL": "Cancel",
+    "FILENAME": "File name"
 }
