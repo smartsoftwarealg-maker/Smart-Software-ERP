@@ -11,7 +11,7 @@ import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService, AppContextService} from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-deposit-detail',
+    selector: 'ss-commission-detail',
     styleUrls: ['./cash-commission-detail.component.scss'],
     templateUrl: './cash-commission-detail.component.html'
 })

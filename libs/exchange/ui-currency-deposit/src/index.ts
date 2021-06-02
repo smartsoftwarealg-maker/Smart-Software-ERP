@@ -3,4 +3,7 @@ export * from './lib/deposit-detail.component';
 export * from './lib/deposit-list.component';
 export * from './lib/cash-commision/cash-commission-list.component';
 export * from './lib/cash-commision/cash-commission-detail.component';
+export * from './lib/currency-transfer/currency-transfer-list.component';
+export * from './lib/currency-transfer/currency-transfer-detail.component';
+
 

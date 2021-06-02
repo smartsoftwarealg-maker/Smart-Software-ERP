@@ -16,5 +16,7 @@
     "COMMISSION":          "komisyon",
     "COMMISSIONS":         "komisyonlar",
     "RATE":                "Puanla",
-    "GLOBAL_BALANCE":      "Global denge raporu"
+    "GLOBAL_BALANCE":      "Global denge raporu",
+    "TRANSFERS":           "döviz transferleri",
+    "DEST_AMOUNT":         "Aktarılan miktar"
 }

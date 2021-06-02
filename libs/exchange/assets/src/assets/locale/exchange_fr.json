@@ -16,5 +16,7 @@
     "COMMISSION": "Commission",
     "COMMISSIONS": "Commissions",
     "RATE": "Taux",
-    "GLOBAL_BALANCE": "Rapport sur le bilan global"
+    "GLOBAL_BALANCE": "Rapport sur le bilan global",
+    "TRANSFERS": "Transferts de devises",
+    "DEST_AMOUNT": "Montant transféré"
 }

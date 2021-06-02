@@ -10,8 +10,10 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {DepositListComponent} from './deposit-list.component';
 import {DepositDetailComponent} from './deposit-detail.component';
 import {ExchangeUiInfoModule} from '@ss/exchange/ui-info';
-import {CashCommissionListComponent} from "./cash-commision/cash-commission-list.component";
-import {CashCommissionDetailComponent} from "./cash-commision/cash-commission-detail.component";
+import {CashCommissionListComponent} from './cash-commision/cash-commission-list.component';
+import {CashCommissionDetailComponent} from './cash-commision/cash-commission-detail.component';
+import {CurrencyTransferListComponent} from "./currency-transfer/currency-transfer-list.component";
+import {CurrencyTransferDetailComponent} from "./currency-transfer/currency-transfer-detail.component";
 
 @NgModule({
     imports: [
@@ -30,14 +32,18 @@ import {CashCommissionDetailComponent} from "./cash-commision/cash-commission-de
         DepositListComponent,
         DepositDetailComponent,
         CashCommissionListComponent,
-        CashCommissionDetailComponent
+        CashCommissionDetailComponent,
+        CurrencyTransferListComponent,
+        CurrencyTransferDetailComponent
     ],
 
     exports: [
         DepositListComponent,
         DepositDetailComponent,
         CashCommissionListComponent,
-        CashCommissionDetailComponent
+        CashCommissionDetailComponent,
+        CurrencyTransferListComponent,
+        CurrencyTransferDetailComponent
     ]
 })
 export class ExchangeUiCurrencyDepositModule {}

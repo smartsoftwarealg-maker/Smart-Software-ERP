@@ -133,5 +133,7 @@
     "DEFAULT_REPORT": "Sélectionnez le rapport par défaut",
     "SELECT": "Sélectionner",
     "CANCEL": "Annuler",
-    "FILENAME": "Nom de fichier"
+    "FILENAME": "Nom de fichier",
+    "FROM": "Du",
+    "TO": "Au"
 }

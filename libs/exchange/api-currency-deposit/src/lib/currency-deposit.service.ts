@@ -24,6 +24,7 @@ export interface Deposit {
     commission?: number;
     typeDescription?: string;
     currencyDescription?: string;
+    soldCurrencyDescription?: string;
 }
 
 export interface History {
