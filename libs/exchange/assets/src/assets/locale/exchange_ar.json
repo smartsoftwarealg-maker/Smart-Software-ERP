@@ -16,5 +16,7 @@
     "COMMISSION": "عمولة",
     "COMMISSIONS": "عمولات",
     "RATE": "النسبة",
-    "GLOBAL_BALANCE": "تقرير الميزانية العامة"
+    "GLOBAL_BALANCE": "تقرير الميزانية العامة",
+    "TRANSFERS": "تحويل العملات",
+    "DEST_AMOUNT": "المبلغ المحولة"
 }

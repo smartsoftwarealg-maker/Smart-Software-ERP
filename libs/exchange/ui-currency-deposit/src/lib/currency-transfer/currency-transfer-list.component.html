@@ -1,0 +1,58 @@
+<div class="main-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+
+        <ng-container matColumnDef="excDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.excDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="customerCode">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.customerCode }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="denomination">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.denomination }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="currency">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.currencyDescription }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="soldCurrencyId">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.soldCurrencyDescription }}
+            </mat-cell>an
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+    <ss-exc-doc-info [selectedId]="selectedAgent" class="doc-info"></ss-exc-doc-info>
+</div>
+

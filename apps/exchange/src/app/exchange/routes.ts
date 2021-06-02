@@ -11,7 +11,7 @@ import {
     EXCHANGE_COMMISSION_URL,
     EXCHANGE_COMMISSIONS_URL,
     EXCHANGE_GLOBAL_BALANCE_URL,
-    COMMON_REPORT_PARAMS_URL
+    COMMON_REPORT_PARAMS_URL, EXCHANGE_TRANSFER_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
@@ -19,7 +19,7 @@ import {MiniAgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-age
 import {CurrencyDetailComponent, CurrencyListComponent} from '@ss/logistics/ui-currency';
 import {
     CashCommissionDetailComponent,
-    CashCommissionListComponent,
+    CashCommissionListComponent, CurrencyTransferDetailComponent, CurrencyTransferListComponent,
     DepositDetailComponent,
     DepositListComponent
 } from '@ss/exchange/ui-currency-deposit';
@@ -189,6 +189,37 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
+    {
+        path: EXCHANGE_TRANSFER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CurrencyTransferListComponent,
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
+                    { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
+                ],
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: CurrencyTransferDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: EXCHANGE_HISTORY_URL, component: HistoryComponent },
+                    { path: EXCHANGE_BALANCE_URL, component: BalanceComponent },
+                    { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
+                    { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
+                ]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

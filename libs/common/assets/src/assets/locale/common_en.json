@@ -133,5 +133,7 @@
     "DEFAULT_REPORT": "Select default report",
     "SELECT": "Select",
     "CANCEL": "Cancel",
-    "FILENAME": "File name"
+    "FILENAME": "File name",
+    "FROM": "From",
+    "TO": "To"
 }

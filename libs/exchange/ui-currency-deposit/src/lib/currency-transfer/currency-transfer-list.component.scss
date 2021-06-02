@@ -1,0 +1,42 @@
+.mat-column-denomination {
+    flex: 1 0 auto;
+    min-width: 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-customerCode {
+    flex: 0 0 90px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-type {
+    flex: 1 1 150px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-excDate {
+    flex: 0 2 100px;
+    min-width: 90px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-currency .mat-column-soldCurrencyId {
+    flex: 0 2 150px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-amount {
+    flex: 1 0 120px;
+    min-width: 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+

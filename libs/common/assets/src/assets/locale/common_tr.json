@@ -117,5 +117,7 @@
     "DEFAULT_REPORT":                "Varsayılan raporu seçin",
     "SELECT":                        "Seçiniz",
     "CANCEL":                        "iptal etmek",
-    "FILENAME":                      "Dosya adı"
+    "FILENAME":                      "Dosya adı",
+    "FROM":                          "Itibaren",
+    "TO":                            "İçin"
 }
