@@ -82,7 +82,6 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
         value.sourceId = this.sourceId;
-        console.log('**********************************', value);
         return value;
     }
 
