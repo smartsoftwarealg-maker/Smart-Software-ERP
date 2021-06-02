@@ -260,7 +260,8 @@
       ],
       "@ss/common/ui-default-report-component": [
         "libs/common/ui-default-report-component/src/index.ts"
-      ]
+      ],
+      "@ss/hotel/api-room": ["libs/hotel/api-room/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
