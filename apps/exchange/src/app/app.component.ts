@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Currency Exchange (pre-Alpha)');
+        this.shellSrv.setApplicationTitle('Currency Exchange, Ver.: 0.0.1 Beta');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             fileNavTree,
