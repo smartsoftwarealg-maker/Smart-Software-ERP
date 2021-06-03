@@ -72,7 +72,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
             commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [b.soldCurrencyId],
             exchangeRate: [b.exchangeRate || 1 ],
-            soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount) : 0.0, disabled: true }],
+            soldAmount: [{ value: b.amount > 0.0? (((b.exchangeRate || 1) * b.amount).toFixed(2)) : 0.0, disabled: true }],
         });
     }
 
