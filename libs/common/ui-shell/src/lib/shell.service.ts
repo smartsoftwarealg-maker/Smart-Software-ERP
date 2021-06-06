@@ -112,6 +112,36 @@ export class ShellService {
 
     /* SIDE NAV */
 
+    public getMenuItems(): string[] {
+        if (!this.sideNavDataSrc.data) {
+            return null;
+        }
+        let app = this.getApp();
+        if (!app) {
+            return null;
+        }
+        app = app.toUpperCase() + '_';
+        const list: string[] = [];
+        this.getMenuItemsR({
+            icon: null,
+            name: null,
+            children: this.sideNavDataSrc.data
+        }, app, list);
+        return list;
+    }
+
+    getMenuItemsR(n: SideNavNode, prefix: string, output: string[]) {
+        if (!n) {
+            return;
+        }
+        if (n.route) {
+            output.push(prefix + n.name);
+        }
+        if (n.children) {
+            n.children.forEach(c => this.getMenuItemsR(c, prefix, output));
+        }
+    }
+
     public get sideNavDataSource(): MatTreeNestedDataSource<SideNavNode> {
         return this.sideNavDataSrc;
     }
@@ -170,7 +200,11 @@ export class ShellService {
     }
 
     public getApp() {
-        const url = this.router.url.substring(5);
+        let url = this.router.url;
+        if (!url.startsWith('/app/')) {
+            return null;
+        }
+        url = url.substring(5);
         return url.substring(0, url.indexOf('/'));
     }
 
