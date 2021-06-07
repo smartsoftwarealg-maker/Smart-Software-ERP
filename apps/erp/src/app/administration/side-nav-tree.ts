@@ -6,9 +6,12 @@ import {
     ABS_ADMINISTRATION_SMTP_URL, ABS_ADMINISTRATION_USER_URL, ABS_ADMINISTRATION_COUNTRY_URL, ABS_ADMINISTRATION_CITY_URL, ABS_ADMINISTRATION_WILAYA_URL
 } from '../common';
 
+export const APP_NAME = 'ADMIN';
+
 export const administrationNavTree: SideNavNode = {
     name: 'ADMINISTRATION',
     icon: 'fas fa-cog',
+    app: APP_NAME,
     children: [
         {
             name: 'ADMINISTRATION_COMPANIES',

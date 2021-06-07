@@ -11,9 +11,12 @@ import {
     ABS_EXCHANGE_TRANSFER_URL
 } from '../common';
 
+export const APP_NAME = 'EXCHANGE';
+
 export const fileNavTree: SideNavNode = {
     name: 'COMMON_FILE',
     icon: 'fas fa-file',
+    app: APP_NAME,
     children: [
         {
             name: 'LOGISTICS_AGENT',
@@ -36,6 +39,7 @@ export const fileNavTree: SideNavNode = {
 export const exchangeNavTree: SideNavNode = {
     name: 'EXCHANGE',
     icon: 'fas fa-coins',
+    app: APP_NAME,
     children: [
         {
             name: 'EXCHANGE_CURRENCY_DEPOSIT',

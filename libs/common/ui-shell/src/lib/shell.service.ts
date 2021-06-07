@@ -35,6 +35,7 @@ export interface SideNavNode {
     icon: string;
     name: string;
     route?: string;
+    app?: string; // Set it on the root, it will be copied to children Set on root only
     children?: SideNavNode[];
     backgroundColor?: string;
 }
@@ -116,29 +117,24 @@ export class ShellService {
         if (!this.sideNavDataSrc.data) {
             return null;
         }
-        let app = this.getApp();
-        if (!app) {
-            return null;
-        }
-        app = app.toUpperCase() + '_';
         const list: string[] = [];
         this.getMenuItemsR({
             icon: null,
             name: null,
             children: this.sideNavDataSrc.data
-        }, app, list);
+        }, list);
         return list;
     }
 
-    getMenuItemsR(n: SideNavNode, prefix: string, output: string[]) {
+    getMenuItemsR(n: SideNavNode, output: string[]) {
         if (!n) {
             return;
         }
         if (n.route) {
-            output.push(prefix + n.name);
+            output.push((n.app + '_' + n.name).toUpperCase());
         }
         if (n.children) {
-            n.children.forEach(c => this.getMenuItemsR(c, prefix, output));
+            n.children.forEach(c => this.getMenuItemsR(c, output));
         }
     }
 
@@ -147,9 +143,28 @@ export class ShellService {
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
+        const errors = tree.filter(n => !!n.app);
+        if (errors.length) {
+            throw new Error(
+                'SideNavNode.app is not set for node with name ' + errors[0].name + ', you must set app value' +
+                ' before calling shellSrv.setSideNavDataSource. Contact Muaaz for more info.'
+            );
+        }
+        tree.forEach(n => this.propogateAppNameToChildren(n));
         this.sideNavDataSrc.data = tree;
         this.generateNavColors(tree);
         this.updateShell();
+    }
+
+    private propogateAppNameToChildren(node: SideNavNode) {
+        if (node.children) {
+            node.children.forEach(n => {
+                if (!!n.app) {
+                    n.app = node.app;
+                }
+                this.propogateAppNameToChildren(n);
+            })
+        }
     }
 
     private generateNavColors(tree: SideNavNode[]): void {
