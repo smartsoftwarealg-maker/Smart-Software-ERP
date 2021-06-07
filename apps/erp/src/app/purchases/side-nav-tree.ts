@@ -1,12 +1,9 @@
 import {SideNavNode} from '@ss/common/ui-shell';
 import {ABS_PURCHASE_ORDER_URL, ABS_PURCHASE_RECEPTION_URL} from '../common';
 
-export const APP_NAME = 'PURCHASES';
-
 export const purchasesNavTree: SideNavNode = {
     name: 'PURCHASES',
     icon: 'fas fa-shopping-basket',
-    app: APP_NAME,
     children: [
         {
             name: 'PURCHASES_PURCHASE_ORDER',

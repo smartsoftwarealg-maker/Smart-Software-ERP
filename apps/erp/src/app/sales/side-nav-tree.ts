@@ -7,12 +7,9 @@ import {
     ABS_SALES_ORDER_URL
 } from '../common';
 
-export const APP_NAME = 'SALES';
-
 export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
-    app: APP_NAME,
     children: [
         {
             name: 'SALES_ORDER',

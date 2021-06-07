@@ -13,12 +13,9 @@ import {
 } from '../common';
 import {SideNavNode} from '@ss/common/ui-shell';
 
-export const APP_NAME = 'PAYROLL';
-
 export const payrollNavTree: SideNavNode = {
     name: 'PAYROLL',
     icon: 'fas fa-users',
-    app: APP_NAME,
     children: [
         {
             name: 'COMMON_LOOKUPS',
