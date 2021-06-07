@@ -10,12 +10,9 @@ import {
     ABS_ADMINISTRATION_CITY_URL,
 } from '../common';
 
-export const APP_NAME = 'Exchange';
-
 export const administrationNavTree: SideNavNode = {
     name: 'ADMINISTRATION',
     icon: 'fas fa-cog',
-    app: APP_NAME,
     children: [
         {
             name: 'ADMINISTRATION_COMPANIES',
