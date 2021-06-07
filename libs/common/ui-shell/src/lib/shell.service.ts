@@ -143,7 +143,7 @@ export class ShellService {
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
-        const errors = tree.filter(n => !!n.app);
+        const errors = tree.filter(n => !n.app);
         if (errors.length) {
             throw new Error(
                 'SideNavNode.app is not set for node with name ' + errors[0].name + ', you must set app value' +
