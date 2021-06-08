@@ -36,6 +36,7 @@ export interface SideNavNode {
     name: string;
     route?: string;
     app?: string; // Set it on the root, it will be copied to children Set on root only
+    accessRights?: string[];
     children?: SideNavNode[];
     backgroundColor?: string;
 }
