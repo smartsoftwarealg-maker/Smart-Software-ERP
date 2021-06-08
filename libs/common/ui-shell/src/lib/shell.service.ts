@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { LanguageService } from '@ss/common/ui-lang';
 import { strTakeUntil, strDropEndUntil } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';

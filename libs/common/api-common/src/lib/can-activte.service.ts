@@ -8,7 +8,7 @@ import { HttpService } from './http.service';
 import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';
 import {AppContextService} from './app-context.service';
-import {AccessRightsService} from './access-rights.service';
+import {UserRightsService} from './user-rights.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +17,7 @@ export class CanActivateService implements CanActivate {
     constructor(public router: Router,
                 protected httpSrv: HttpService,
                 private loginSrv: LoginService,
-                private accessRightsSrv: AccessRightsService,
+                private accessRightsSrv: UserRightsService,
                 private contextSrv: AppContextService) {
     }
 

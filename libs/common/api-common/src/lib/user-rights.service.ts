@@ -9,7 +9,7 @@ import {AppContextService} from './app-context.service';
     providedIn: 'root'
 })
 
-export class AccessRightsService {
+export class UserRightsService {
     private rightsMap: Map<string, Right> = new Map<string, Right>();
 
     constructor(private httpSrv: HttpService,

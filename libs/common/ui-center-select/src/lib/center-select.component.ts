@@ -11,7 +11,7 @@ import {
 } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
-import {AccessRightsService} from '../../../api-common/src/lib/access-rights.service';
+import {UserRightsService} from '../../../api-common/src/lib/user-rights.service';
 import {UserService} from '@ss/common/api-users';
 
 @Component({
@@ -38,7 +38,7 @@ export class CenterSelectComponent implements OnInit {
                 private loginSrv: LoginService,
                 private router: Router,
                 private userSrv: UserService,
-                private accessRightsSrv: AccessRightsService,
+                private accessRightsSrv: UserRightsService,
                 private contextSrv: AppContextService) {
     }
 

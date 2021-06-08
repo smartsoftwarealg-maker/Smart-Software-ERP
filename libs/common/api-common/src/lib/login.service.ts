@@ -8,7 +8,7 @@ import {DecService} from './dec.service';
 import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
-import {AccessRightsService} from './access-rights.service';
+import {UserRightsService} from './user-rights.service';
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -39,7 +39,7 @@ export class LoginService {
                 private decSrv: DecService,
                 public router: Router,
                 private contextSrv: AppContextService,
-                private accessRightsSrv: AccessRightsService) {
+                private accessRightsSrv: UserRightsService) {
     }
 
     get isLoggedIn(): boolean {

@@ -135,5 +135,8 @@
     "CANCEL": "Annuler",
     "FILENAME": "Nom de fichier",
     "FROM": "Du",
-    "TO": "Au"
+    "TO": "Au",
+    "ACCESS_RIGHTS": "Des droits d'accès",
+    "READ": "Lire",
+    "WRITE": "Créer"
 }

@@ -11,6 +11,7 @@ export const DIPLOMAS_URL = '/lookups/diplomas';
 export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/lookups/categories';
 export const SERVICES_URL = '/lookups/services';
+export const FORMS_URL = '/lookups/forms';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
 
@@ -27,6 +28,7 @@ export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
 export const FUNDS_URL = '/lookups/funds';
+export const ROLES_URL = '/roles';
 export const BANKS_URL = '/banks';
 export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';

@@ -1,5 +1,60 @@
 {
   "version": 1,
+  "cli": {
+    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007-poop",
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "common-api-common",
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "common-api-common": {
       "projectType": "library",
@@ -3979,61 +4034,56 @@
           }
         }
       }
+    },
+    "common-ui-access-rights": {
+      "projectType": "library",
+      "root": "libs/common/ui-access-rights",
+      "sourceRoot": "libs/common/ui-access-rights/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common/ui-access-rights/src/**/*.ts",
+              "libs/common/ui-access-rights/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/ui-access-rights"],
+          "options": {
+            "jestConfig": "libs/common/ui-access-rights/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-api-access-rights": {
+      "projectType": "library",
+      "root": "libs/common/api-access-rights",
+      "sourceRoot": "libs/common/api-access-rights/src",
+      "prefix": "ss",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/api-access-rights"],
+          "options": {
+            "jestConfig": "libs/common/api-access-rights/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common/api-access-rights/src/**/*.ts",
+              "libs/common/api-access-rights/src/**/*.html"
+            ]
+          }
+        }
+      }
     }
-  },
-  "cli": {
-    "analytics": "99810ce4-1673-465e-8663-8f41c76b7007-poop",
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/workspace": {
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/cypress": {
-      "cypress-project": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/node": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/nest": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/express": {
-      "application": {
-        "linter": "tslint"
-      },
-      "library": {
-        "linter": "tslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "common-api-common"
+  }
 }

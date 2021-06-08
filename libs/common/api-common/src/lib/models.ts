@@ -12,10 +12,15 @@ export interface Center {
 
 export interface AccessRight {
     id: number;
-    center: number;
+    centerId: number;
     roleId: number;
     document: number;
-    rights: Right;
+    rights: number;
+    roleName?: string;
+    read?: boolean;
+    write?: boolean;
+    edit?: boolean;
+    delete?: boolean;
 }
 
 export interface User {

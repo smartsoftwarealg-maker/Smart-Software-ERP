@@ -41,8 +41,19 @@ import {
     Vat,
     VATS_URL,
     Wilaya,
-    WILAYAS_URL, Fund, FUNDS_URL, CC_GROUP_URL, CCGroup, EmploymentType, EMPLOYMENT_TYPE_URL, SuspensionReason, SUSPENSION_REASON_URL,
+    WILAYAS_URL,
+    Fund,
+    FUNDS_URL,
+    CC_GROUP_URL,
+    CCGroup,
+    EmploymentType,
+    EMPLOYMENT_TYPE_URL,
+    SuspensionReason,
+    SUSPENSION_REASON_URL,
+    FORMS_URL, ROLES_URL,
 } from './lookups-api';
+import {Lookup} from "@ss/logistics/ui-doc-import";
+import {Role} from "@ss/common/api-common";
 
 @Injectable({
     providedIn: 'root'
@@ -78,6 +89,10 @@ export class LookupsService {
 
     public getServices(): Observable<Service[]> {
         return this.lookupCacheSrv.load<Service>(SERVICES_URL, 'services');
+    }
+
+    public getForms(): Observable<Lookup[]> {
+        return this.lookupCacheSrv.load<Service>(FORMS_URL, 'forms');
     }
 
     public getCategories(): Observable<Category[]> {
@@ -134,6 +149,10 @@ export class LookupsService {
 
     public getFunds(): Observable<Fund[]> {
         return this.lookupCacheSrv.load<Fund>(FUNDS_URL, 'funds');
+    }
+
+    public getRoles(): Observable<Role[]> {
+        return this.lookupCacheSrv.load<Fund>(ROLES_URL, 'roles');
     }
 
     public getCCGroups(): Observable<CCGroup[]> {
