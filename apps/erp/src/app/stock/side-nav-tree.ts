@@ -17,7 +17,6 @@ import {
 } from '../common';
 import {SideNavNode} from '@ss/common/ui-shell';
 
-
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',
     icon: 'fas fa-warehouse-alt',

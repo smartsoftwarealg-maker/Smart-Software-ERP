@@ -402,6 +402,9 @@
       "tags": []
     },
     "common-api-access-rights": {
+        "tags": []
+    },
+    "hotel-api-room": {
       "tags": []
     }
   }

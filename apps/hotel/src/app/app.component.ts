@@ -20,10 +20,14 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software Hotel (pre-Alpha)');
+        const appName = 'HOTEL';
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             logAdminNavTree
-        ]);
+        ].map(n => {
+            n.app = appName;
+            return n;
+        }));
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)
