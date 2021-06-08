@@ -7,7 +7,6 @@ import {
     ABS_SALES_ORDER_URL
 } from '../common';
 
-
 export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',

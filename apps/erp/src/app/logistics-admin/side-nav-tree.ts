@@ -13,6 +13,7 @@ import {
 export const logAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',
     icon: 'fas fa-users-cog',
+    app: 'LOGISTICS', // todo: Change me
     children: [
         {
             name: 'COMMON_UNITS',
