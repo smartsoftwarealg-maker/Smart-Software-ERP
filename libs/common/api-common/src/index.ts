@@ -11,4 +11,4 @@ export * from './lib/redirect-to-parent.component';
 export * from './lib/can-deactivate.service';
 export * from './lib/app-context.service';
 export * from './lib/app-config.service';
-export * from './lib/access-rights.service';
+export * from './lib/user-rights.service';

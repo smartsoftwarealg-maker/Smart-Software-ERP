@@ -2,10 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, Afte
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { User, UserContext, UserService } from '@ss/common/api-common';
-import {AppContextService} from '../../../api-common/src/lib/app-context.service';
-import {switchMap} from 'rxjs/operators';
-import {AccessRightsService} from '../../../api-common/src/lib/access-rights.service';
+import {AppContextService, User, UserRightsService, UserService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shell',
@@ -28,7 +25,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
                 public shellSrv: ShellService,
                 protected cdRef: ChangeDetectorRef,
                 protected usersSrv: UserService,
-                private rightsSrv: AccessRightsService,
+                private rightsSrv: UserRightsService,
                 public contextSrv: AppContextService) { }
 
     ngOnInit() {

@@ -7,7 +7,7 @@ import {
     ABS_ADMINISTRATION_ROLE_URL,
     ABS_ADMINISTRATION_USER_URL,
     ABS_ADMINISTRATION_COUNTRY_URL,
-    ABS_ADMINISTRATION_CITY_URL,
+    ABS_ADMINISTRATION_CITY_URL, ABS_ADMINISTRATION_ACCESS_RIGHTS_URL,
 } from '../common';
 
 export const administrationNavTree: SideNavNode = {
@@ -48,6 +48,11 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_USERS',
             icon: 'fas fa-user',
             route: ABS_ADMINISTRATION_USER_URL
+        },
+        {
+            name: 'COMMON_ACCESS_RIGHTS',
+            icon: 'fas fa-hand-paper',
+            route: ABS_ADMINISTRATION_ACCESS_RIGHTS_URL
         },
         // {
         //     name: 'ADMINISTRATION_BANKS',

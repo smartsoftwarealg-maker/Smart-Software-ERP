@@ -1,18 +1,17 @@
 import {
+    ADMINISTRATION_ACCCESSRIGHTS_URL,
     ADMINISTRATION_BANK_URL,
     ADMINISTRATION_CENTER_URL,
+    ADMINISTRATION_CITY_URL,
     ADMINISTRATION_COMPANY_URL,
+    ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_REPORT_CATALOG_URL,
     ADMINISTRATION_ROLE_URL,
     ADMINISTRATION_SMTP_URL,
     ADMINISTRATION_USER_URL,
-    ADMINISTRATION_CITY_URL,
-    ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_WILAYA_URL,
-    EXCHANGE_CURRENCY_URL,
-    EXCHANGE_DEPOSIT_TYPE_URL,
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {BankDetailComponent, BankListComponent} from '@ss/administration/ui-bank';
 import {CompanyDetailComponent, CompanyListComponent} from '@ss/administration/ui-company';
@@ -21,16 +20,16 @@ import {SmtpDetailComponent, SmtpListComponent} from '@ss/administration/ui-smtp
 import {ReportCatalogDetailComponent, ReportCatalogListComponent} from '@ss/administration/ui-report-catalog';
 import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
 import {
-    RoleListComponent,
-    RoleDetailComponent,
-    CountryListComponent,
-    CountryDetailComponent,
-    CityListComponent,
     CityDetailComponent,
-    WilayaListComponent,
-    WilayaDetailComponent
+    CityListComponent,
+    CountryDetailComponent,
+    CountryListComponent,
+    RoleDetailComponent,
+    RoleListComponent,
+    WilayaDetailComponent,
+    WilayaListComponent
 } from '@ss/common/ui-lookup';
-import {DepositTypeListComponent, DepositTypeDetailComponent} from '@ss/exchange/ui-deposit-type';
+import {AccessRightsListComponent} from "@ss/common/ui-access-rights";
 
 export const mainRoutes: Routes = [
     {
@@ -102,6 +101,11 @@ export const mainRoutes: Routes = [
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
+    },
+    {
+        path: ADMINISTRATION_ACCCESSRIGHTS_URL,
+        component: AccessRightsListComponent,
+        canActivate: [CanActivateService]
     },
     {
         path: ADMINISTRATION_USER_URL,

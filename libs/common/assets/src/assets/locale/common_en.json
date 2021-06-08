@@ -135,5 +135,8 @@
     "CANCEL": "Cancel",
     "FILENAME": "File name",
     "FROM": "From",
-    "TO": "To"
+    "TO": "To",
+    "ACCESS_RIGHTS": "Access rights",
+    "READ": "Read",
+    "WRITE": "Create"
 }

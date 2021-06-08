@@ -398,6 +398,12 @@
     "common-ui-default-report-component": {
       "tags": []
     },
+    "common-ui-access-rights": {
+      "tags": []
+    },
+    "common-api-access-rights": {
+        "tags": []
+    },
     "hotel-api-room": {
       "tags": []
     }

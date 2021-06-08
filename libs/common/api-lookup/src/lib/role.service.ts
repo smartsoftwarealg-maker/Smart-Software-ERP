@@ -10,5 +10,4 @@ export class RoleService extends BaseEntityService<Role> {
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, '/roles');
     }
-
 }

@@ -261,6 +261,12 @@
       "@ss/common/ui-default-report-component": [
         "libs/common/ui-default-report-component/src/index.ts"
       ],
+      "@ss/common/ui-access-rights": [
+        "libs/common/ui-access-rights/src/index.ts"
+      ],
+      "@ss/common/api-access-rights": [
+        "libs/common/api-access-rights/src/index.ts"
+      ],
       "@ss/hotel/api-room": ["libs/hotel/api-room/src/index.ts"]
     }
   },

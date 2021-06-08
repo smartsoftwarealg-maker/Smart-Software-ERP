@@ -4035,17 +4035,42 @@
         }
       }
     },
-    "hotel-api-room": {
+    "common-ui-access-rights": {
       "projectType": "library",
-      "root": "libs/hotel/api-room",
-      "sourceRoot": "libs/hotel/api-room/src",
+      "root": "libs/common/ui-access-rights",
+      "sourceRoot": "libs/common/ui-access-rights/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common/ui-access-rights/src/**/*.ts",
+              "libs/common/ui-access-rights/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/ui-access-rights"],
+          "options": {
+            "jestConfig": "libs/common/ui-access-rights/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-api-access-rights": {
+      "projectType": "library",
+      "root": "libs/common/api-access-rights",
+      "sourceRoot": "libs/common/api-access-rights/src",
       "prefix": "ss",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/hotel/api-room"],
+          "outputs": ["coverage/libs/common/api-access-rights"],
           "options": {
-            "jestConfig": "libs/hotel/api-room/jest.config.js",
+            "jestConfig": "libs/common/api-access-rights/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -4053,8 +4078,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/hotel/api-room/src/**/*.ts",
-              "libs/hotel/api-room/src/**/*.html"
+              "libs/common/api-access-rights/src/**/*.ts",
+              "libs/common/api-access-rights/src/**/*.html"
             ]
           }
         }
