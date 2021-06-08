@@ -25,6 +25,7 @@ export interface Deposit {
     typeDescription?: string;
     currencyDescription?: string;
     soldCurrencyDescription?: string;
+    sourceId?: number;
 }
 
 export interface History {

@@ -27,6 +27,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public soldAutoCompleteModel     = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public customerId = 0;
+    private sourceId: number = null;
 
     constructor(
         private agentService: AgentService,
@@ -50,6 +51,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
 
     public setupForm(b: Deposit) {
         this.customerId = b.customerId;
+        this.sourceId = b.sourceId;
         if (b.depositType) {
             this.typeAutoCompleteModel
                 .getById(b.depositType)
@@ -60,6 +62,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         }
         return this.formBuilder.group({
             id: [b.id],
+            sourceId: [b.sourceId],
             customerId: [b.customerId, Validators.required],
             excDate: [b.excDate || new Date(), Validators.required],
             depositType: [b.depositType],
@@ -69,7 +72,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
             commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [b.soldCurrencyId],
             exchangeRate: [b.exchangeRate || 1 ],
-            soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount) : 0.0, disabled: true }],
+            soldAmount: [{ value: b.amount > 0.0? (((b.exchangeRate || 1) * b.amount).toFixed(2)) : 0.0, disabled: true }],
         });
     }
 
@@ -78,6 +81,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         const value = super.readForm();
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
+        value.sourceId = this.sourceId;
         return value;
     }
 

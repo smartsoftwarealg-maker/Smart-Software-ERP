@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-@media (max-width: 799px) {
+@media (max-width: 499px) {
     .shell-side-nav {
         width: 280px;
     }
@@ -19,7 +19,7 @@
     }
 }
 
-@media (min-width: 799px) {
+@media (min-width: 500px) {
     .shell-side-nav {
         width: 260px;
     }

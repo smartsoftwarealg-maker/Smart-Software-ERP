@@ -53,7 +53,7 @@ export class DepositTypeDetailComponent extends BaseEntityDetailComponent<Deposi
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
-            commissioned: [e.commissioned, Validators.required]
+            commissioned: [e.commissioned || false]
         });
     }
 }
