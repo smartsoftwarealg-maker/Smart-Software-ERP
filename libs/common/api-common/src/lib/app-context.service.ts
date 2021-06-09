@@ -21,7 +21,7 @@ export class AppContextService {
     load(): Observable<UserContext> {
         return this.httpSrv
             .get<UserContext>('/context')
-            .pipe(switchMap(res => {
+            .pipe(switchMap((res: UserContext) => {
                 this._context = res;
                 this._context.manager = !this._context.agentId && !this._context.personId;
                 return this.httpSrv.get<{ severe: boolean }>('/rights/severe');
