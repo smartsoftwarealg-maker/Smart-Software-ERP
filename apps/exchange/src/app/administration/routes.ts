@@ -7,7 +7,7 @@ import {
     ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_REPORT_CATALOG_URL,
     ADMINISTRATION_ROLE_URL,
-    ADMINISTRATION_SMTP_URL,
+    ADMINISTRATION_SMTP_URL, ADMINISTRATION_TRACEABILITY_URL,
     ADMINISTRATION_USER_URL,
     ADMINISTRATION_WILAYA_URL,
 } from '../common';
@@ -30,6 +30,7 @@ import {
     WilayaListComponent
 } from '@ss/common/ui-lookup';
 import {AccessRightsListComponent} from "@ss/common/ui-access-rights";
+import {TraceabilityComponent} from "@ss/common/ui-traceability";
 
 export const mainRoutes: Routes = [
     {
@@ -105,6 +106,11 @@ export const mainRoutes: Routes = [
     {
         path: ADMINISTRATION_ACCCESSRIGHTS_URL,
         component: AccessRightsListComponent,
+        canActivate: [CanActivateService]
+    },
+    {
+        path: ADMINISTRATION_TRACEABILITY_URL,
+        component: TraceabilityComponent,
         canActivate: [CanActivateService]
     },
     {

@@ -13,7 +13,6 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 })
 export class BankListComponent extends BaseEntityListComponent<Bank> {
 
-
     displayedColumns = [
         'description',
         'code'

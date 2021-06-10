@@ -131,12 +131,16 @@ export function dateToDmyStr(date: Date) {
         + pad4(date.getFullYear());
 }
 
-export function dateToYmdStr(date: Date) {
-    return pad4(date.getFullYear())
-        + '-'
-        + pad2(date.getMonth() + 1)
-        + '-'
-        + pad2(date.getDate());
+export function dateToYmdStr(date: Date | string): string {
+    if (typeof date === 'string'  || date instanceof String) {
+        return <string>date;
+    } else {
+        return pad4(date.getFullYear())
+            + '-'
+            + pad2(date.getMonth() + 1)
+            + '-'
+            + pad2(date.getDate());
+    }
 }
 
 export function strToDate(str: string) {

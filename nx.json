@@ -402,9 +402,12 @@
       "tags": []
     },
     "common-api-access-rights": {
-        "tags": []
+      "tags": []
     },
     "hotel-api-room": {
+      "tags": []
+    },
+    "common-ui-traceability": {
       "tags": []
     }
   }
