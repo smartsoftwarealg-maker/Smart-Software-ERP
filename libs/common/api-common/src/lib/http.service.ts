@@ -56,14 +56,14 @@ export class HttpService {
         return this.baseUrl;
     }
 
-    public getData<T>(url: string, page: number, size: number, filter?: string, sortBy?: string, params?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
+    public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
         let httpParams = (params == null ? new HttpParams() : params)
             .set('page', `${page}-${size}`);
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
-        if (filter) {
-            httpParams = httpParams.set('filter', filter);
+        if (filterStr) {
+            httpParams = httpParams.set('filter', filterStr);
         }
         if (sortBy) {
             httpParams = httpParams.set('sort', sortBy);

@@ -267,7 +267,8 @@
       "@ss/common/api-access-rights": [
         "libs/common/api-access-rights/src/index.ts"
       ],
-      "@ss/hotel/api-room": ["libs/hotel/api-room/src/index.ts"]
+      "@ss/hotel/api-room": ["libs/hotel/api-room/src/index.ts"],
+      "@ss/common/ui-traceability": ["libs/common/ui-traceability/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

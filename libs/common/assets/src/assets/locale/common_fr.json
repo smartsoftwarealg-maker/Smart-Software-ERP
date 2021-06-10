@@ -138,5 +138,6 @@
     "TO": "Au",
     "ACCESS_RIGHTS": "Des droits d'accès",
     "READ": "Lire",
-    "WRITE": "Créer"
+    "WRITE": "Créer",
+    "TRACEABILITY": "traçabilité"
 }
