@@ -24,12 +24,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software ERP  (pre-Alpha)');
-        administrationNavTree.app = 'ADMINISTRATION';
-        logAdminNavTree.app = 'ERP';
-        purchasesNavTree.app = 'PURCHASES';
-        stockNavTree.app = 'STOCK';
-        salesNavTree.app = 'PURCHASES';
-        payrollNavTree.app = 'PAYROLL';
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             logAdminNavTree,

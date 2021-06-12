@@ -236,3 +236,9 @@ export function strDropEndUntil(txt: string, token: string) {
     const i = txt.lastIndexOf(token);
     return i > -1 ? txt.substring(0, i) : txt;
 }
+
+export function strDropUntil(txt: string, token: string) {
+    if (txt == null) return null;
+    const i = txt.indexOf(token);
+    return i > -1 ? txt.substring(i) : '';
+}
