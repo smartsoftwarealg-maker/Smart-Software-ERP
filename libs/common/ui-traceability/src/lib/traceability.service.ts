@@ -35,8 +35,8 @@ export class TraceabilityService {
 
     constructor(private httpSrv: HttpService, private shellSrv: ShellService) {}
 
-    getSchemaMap(): Observable<SchemaMap[]> {
-        const params = new HttpParams().set('app', 'EXCHANGE');
+    getSchemaMap(application: string): Observable<SchemaMap[]> {
+        const params = new HttpParams().set('app', application);
         return this.httpSrv
             .get<SchemaMap[]>('/logging/map', params);
     }
@@ -50,5 +50,9 @@ export class TraceabilityService {
         const url = this.URLs[Math.min(2, Math.max(type - 1, 0))];
         return this.httpSrv.getData(url, page, size, '', '', params);
         //return this.httpSrv.get<string[]>(url, params);
+    }
+
+    getApps(): Observable<{ apps: string[] }> {
+        return this.httpSrv.get('/logging/apps');
     }
 }

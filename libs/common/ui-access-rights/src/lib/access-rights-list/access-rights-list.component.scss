@@ -1,17 +1,37 @@
 .main-container {
-    width: 90%;
-    height: 100%;
-    max-width: 900px;
+    width: 100%;
+    height: 96%;
+    max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 20px;
+    padding: 5px;
+    grid-template-rows: 70px auto;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "applications rights"
+        "entities     rights";
 }
 
+@media (max-width: 500px) {
+    .main-container {
+        grid-template-areas:
+            "applications"
+            "entities"
+            "rights";
+        grid-template-rows: 64px 1fr 2fr;
+        grid-template-columns: auto;
+    }
+}
+
+.apps {
+    grid-area: applications;
+}
 .table-container {
     display: flex;
     flex-direction: column;
     flex-grow: 3;
+    grid-area: rights;
 }
 
 .editor-container {
@@ -45,8 +65,11 @@
 }
 
 .list-container {
-    min-width: 150px;
+    min-width: 120px;
     flex-grow: 1;
+    height: 100%;
+    overflow: auto;
+    grid-area: entities;
 }
 // keep the material design specs
 .mat-row, .mat-header-row {

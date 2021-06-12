@@ -218,8 +218,6 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
                 window.open(fileURL, '_blank');
-            }, err => {
-                console.log('**********error', err.message);
             });
     }
 

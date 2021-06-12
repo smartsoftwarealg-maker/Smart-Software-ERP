@@ -10,8 +10,8 @@
             <ss-date-picker formControlName="toDate"></ss-date-picker>
         </mat-form-field>
 
-        <mat-radio-group aria-label="Select log type" formControlName="options">
-            <mat-radio-button value="1" [checked]="form.controls['options']?.value ===  1" translate > COMMON_WRITE</mat-radio-button>
+        <mat-radio-group aria-label="Select log type" formControlName="options" (change)="refresh()">
+            <mat-radio-button value="1" [checked]="form.controls['options']?.value ===  1" translate> COMMON_WRITE</mat-radio-button>
             <mat-radio-button value="2" [checked]="form.controls['options']?.value ===  2" translate>COMMON_EDIT</mat-radio-button>
             <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3"translate>COMMON_DELETE</mat-radio-button>
         </mat-radio-group>
@@ -55,5 +55,15 @@
 <!--            <li *ngFor="let col of displayedColumns; let i = index"> {{ col }}  </li>-->
 <!--        </ul>-->
     </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label><span translate>COMMON_SELECT_APP</span></mat-label>
+        <mat-select (selectionChange)="setApp($event)">
+            <mat-option *ngFor="let app of apps" [value]="app">
+                {{ app }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
     <ss-pagination class="pager" [paginationModel]="pagination"></ss-pagination>
 </div>

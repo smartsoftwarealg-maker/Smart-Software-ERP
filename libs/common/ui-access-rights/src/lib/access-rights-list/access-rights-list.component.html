@@ -1,5 +1,16 @@
 <div class="main-container">
+    <div class="apps">
+        <mat-form-field appearance="fill">
+            <mat-label><span translate>COMMON_SELECT_APP</span></mat-label>
+            <mat-select (selectionChange)="setApp($event)">
+                <mat-option *ngFor="let app of apps" [value]="app">
+                    <spn translate> COMMON_{{ app }} </spn>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
     <div class="list-container" *ngIf="menuItems !== null">
+
         <mat-list>
             <mat-list-item
                 *ngFor="let item of menuItems"

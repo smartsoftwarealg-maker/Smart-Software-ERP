@@ -27,6 +27,6 @@ export class UserListComponent extends BaseEntityListComponent<User> {
         public router: Router,
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_BANK');
+        super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_USERS');
     }
 }

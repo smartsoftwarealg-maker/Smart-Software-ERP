@@ -139,5 +139,14 @@
     "ACCESS_RIGHTS": "حقوق الوصول",
     "READ": "يقرأ",
     "WRITE": "يكتب",
-    "TRACEABILITY": "التتبع"
+    "TRACEABILITY": "التتبع",
+    "SELECT_APP": "اختر تطبيقا",
+    "EXCHANGE": "تحويل العملات",
+    "HRMASTER": "الموارد البشرية",
+    "COMMON": "المرافق المشتركة",
+    "LOGISTICS": "خدمات الدعم",
+    "STOCK": "المخزون",
+    "INVENTORY": "المخزون",
+    "SALES": "المبيعات",
+    "PURCHASES": "المشتريات"
 }
