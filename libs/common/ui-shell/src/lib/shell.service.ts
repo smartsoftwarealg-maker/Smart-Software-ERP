@@ -131,7 +131,7 @@ export class ShellService {
             return;
         }
         if (n.route) {
-            output.push((n.app + '_' + n.name).toUpperCase());
+            output.push((n.name).toUpperCase());
         }
         if (n.children) {
             n.children.forEach(c => this.getMenuItemsR(c, output));
