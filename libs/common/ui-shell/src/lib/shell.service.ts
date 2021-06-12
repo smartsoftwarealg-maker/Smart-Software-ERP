@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LanguageService } from '@ss/common/ui-lang';
-import { strTakeUntil, strDropEndUntil } from '@ss/common/api-common';
+import { strTakeUntil, strDropEndUntil, strDropUntil } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -35,7 +35,7 @@ export interface SideNavNode {
     icon: string;
     name: string;
     route?: string;
-    app?: string; // Set it on the root, it will be copied to children Set on root only
+    accessRights?: string[];
     children?: SideNavNode[];
     backgroundColor?: string;
 }
@@ -126,12 +126,12 @@ export class ShellService {
         return list;
     }
 
-    getMenuItemsR(n: SideNavNode, output: string[]) {
+    private getMenuItemsR(n: SideNavNode, output: string[]) {
         if (!n) {
             return;
         }
         if (n.route) {
-            output.push((n.app + '_' + n.name).toUpperCase());
+            output.push((n.name).toUpperCase());
         }
         if (n.children) {
             n.children.forEach(c => this.getMenuItemsR(c, output));
@@ -150,21 +150,9 @@ export class ShellService {
                 ' before calling shellSrv.setSideNavDataSource. Contact Muaaz for more info.'
             );
         }
-        tree.forEach(n => this.propogateAppNameToChildren(n));
         this.sideNavDataSrc.data = tree;
         this.generateNavColors(tree);
         this.updateShell();
-    }
-
-    private propogateAppNameToChildren(node: SideNavNode) {
-        if (node.children) {
-            node.children.forEach(n => {
-                if (!!n.app) {
-                    n.app = node.app;
-                }
-                this.propogateAppNameToChildren(n);
-            })
-        }
     }
 
     private generateNavColors(tree: SideNavNode[]): void {
@@ -215,12 +203,7 @@ export class ShellService {
     }
 
     public getApp() {
-        let url = this.router.url;
-        if (!url.startsWith('/app/')) {
-            return null;
-        }
-        url = url.substring(5);
-        return url.substring(0, url.indexOf('/'));
+        return strTakeUntil(strTakeUntil(strDropUntil(this.router.url, '/app/'), '?'), '#');
     }
 
     public navigateByRelativeUrl(path: string): void {

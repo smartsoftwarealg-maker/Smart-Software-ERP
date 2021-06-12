@@ -17,7 +17,7 @@ export class UserRightsService {
 
     public load(): Observable<DocRight[]> {
         return this.httpSrv.get<DocRight[]>('/rights')
-            .pipe(tap(res => {
+            .pipe(tap((res: DocRight[]) => {
                 this.rightsMap = res.reduce((m, e) => {
                     m.set(e.document, e.right);
                     return m;
@@ -28,6 +28,7 @@ export class UserRightsService {
     get rights(): Map<string, Right> {
         return this.rightsMap;
     }
+
     canUserPass(component: string): boolean {
         return this.getUserRights(component).read;
     }
