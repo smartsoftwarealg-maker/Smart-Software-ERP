@@ -122,5 +122,6 @@
     "TO":                            "İçin",
     "ACCESS_RIGHTS":                 "Erişim hakları",
     "READ":                          "oku",
-    "WRITE":                        "Oluşturmak"
+    "WRITE":                         "Oluşturmak",
+    "TRACEABILITY":                  "izlenebilirlik"
 }

@@ -131,12 +131,16 @@ export function dateToDmyStr(date: Date) {
         + pad4(date.getFullYear());
 }
 
-export function dateToYmdStr(date: Date) {
-    return pad4(date.getFullYear())
-        + '-'
-        + pad2(date.getMonth() + 1)
-        + '-'
-        + pad2(date.getDate());
+export function dateToYmdStr(date: Date | string): string {
+    if (typeof date === 'string'  || date instanceof String) {
+        return <string>date;
+    } else {
+        return pad4(date.getFullYear())
+            + '-'
+            + pad2(date.getMonth() + 1)
+            + '-'
+            + pad2(date.getDate());
+    }
 }
 
 export function strToDate(str: string) {
@@ -231,4 +235,10 @@ export function strDropEndUntil(txt: string, token: string) {
     if (txt == null) return null;
     const i = txt.lastIndexOf(token);
     return i > -1 ? txt.substring(0, i) : txt;
+}
+
+export function strDropUntil(txt: string, token: string) {
+    if (txt == null) return null;
+    const i = txt.indexOf(token);
+    return i > -1 ? txt.substring(i) : '';
 }

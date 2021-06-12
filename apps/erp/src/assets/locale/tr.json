@@ -1,5 +1,5 @@
 {
-    "MAIN_MENU": "Ana menü",
+    "MAIN_MENU": "Ana menÃ¼",
     "ABOUT": "hakkinda",
     "PAYROLL":"Maas bordrosu",
     "ACCOUNTING":"Muhasebe",
@@ -8,8 +8,8 @@
     "MEDIC": "Klinik",
     "SALES": "Satis",
     "SEARCH_APP": "Hizli erisim",
-    "ADMINISTRATION": "Yönetim",
+    "ADMINISTRATION": "YÃ¶netim",
     "PURCHASES": "Alimlar",
-    "UPDATE": "Güncelleme",
+    "UPDATE": "GÃ¼ncelleme",
     "CONFIRMATION": "Onayla"
 }
