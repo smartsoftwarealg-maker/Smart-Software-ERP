@@ -35,6 +35,7 @@ export interface SideNavNode {
     icon: string;
     name: string;
     route?: string;
+    accessRights?: string[];
     children?: SideNavNode[];
     backgroundColor?: string;
 }
