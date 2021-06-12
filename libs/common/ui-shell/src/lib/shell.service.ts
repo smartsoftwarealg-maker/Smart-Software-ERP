@@ -143,13 +143,6 @@ export class ShellService {
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
-        const errors = tree.filter(n => !n.app);
-        if (errors.length) {
-            throw new Error(
-                'SideNavNode.app is not set for node with name ' + errors[0].name + ', you must set app value' +
-                ' before calling shellSrv.setSideNavDataSource. Contact Muaaz for more info.'
-            );
-        }
         this.sideNavDataSrc.data = tree;
         this.generateNavColors(tree);
         this.updateShell();
