@@ -123,5 +123,14 @@
     "ACCESS_RIGHTS":                 "Erişim hakları",
     "READ":                          "oku",
     "WRITE":                         "Oluşturmak",
-    "TRACEABILITY":                  "izlenebilirlik"
+    "TRACEABILITY":                  "izlenebilirlik",
+    "SELECT_APP":                    "Bir uygulama seçin",
+    "EXCHANGE":                      "Currency exchange",
+    "HRMASTER":                      "HR Master",
+    "COMMON":                        "Ortak yardımcı programlar",
+    "LOGISTICS":                     "Lojistik",
+    "STOCK":                         "Stok",
+    "SALES":                         "Satış",
+    "INVENTORY":                     "Satış",
+    "PURCHASES":                     "satın almalar"
 }

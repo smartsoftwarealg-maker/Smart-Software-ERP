@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PaginationModel} from "@ss/common/ui-pagination";
 import {ShellService} from "@ss/common/ui-shell";
+import {switchMap} from "rxjs/operators";
 
 
 /** Flat node with expandable and level information */
 interface LogFlatNode {
+    level: number;
     expandable: boolean;
     name: string;
-    level: number;
     schema?: Schema;
 }
 
@@ -23,6 +24,7 @@ interface LogFlatNode {
 })
 export class TraceabilityComponent implements OnInit {
     selectedId = 0;
+    application = '';
     data: string[][] = [];
     displayedColumns: string[] = [];
     form = new FormGroup({
@@ -31,6 +33,7 @@ export class TraceabilityComponent implements OnInit {
         toDate: new FormControl(new Date())
     });
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
+    apps: string[] = [];
     treeControl = new FlatTreeControl<LogFlatNode>(
         node => node.level,
         node => node.expandable
@@ -43,31 +46,27 @@ export class TraceabilityComponent implements OnInit {
             schema: node.schema
         };
     };
-    treeFlattener = new MatTreeFlattener(
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    treeFlattener =
+        new MatTreeFlattener(
         this._transformer,
         node => node.level,
         node => node.expandable,
         node => node.children
     );
+    // eslint-disable-next-line @typescript-eslint/member-ordering
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+
 
     constructor(private traceSrv: TraceabilityService, private shellSrv: ShellService) { }
 
     ngOnInit(): void {
         this.traceSrv
-            .getSchemaMap()
-            .subscribe(res => {
-                const nodes: LogNode[] = res.map(e => {
-                    const children: LogNode[] = e.schemas.map(f => {
-                        const fNode: LogNode = {application: f.description, schema: f};
-                        return fNode;
-                    });
-                    return {application: e.application, children: children};
-                })
-                this.dataSource.data = nodes;
-            });
+            .getApps()
+            .subscribe(res => this.apps = res['apps'] || []);
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');
+        this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
     hasChild = (_: number, node: LogFlatNode) => node.level == 0;
@@ -79,7 +78,7 @@ export class TraceabilityComponent implements OnInit {
         this.refresh();
     }
 
-    private refresh() {
+    public refresh() {
         this.traceSrv.getDetails(
             this.form.controls['fromDate'].value,
             this.form.controls['toDate']?.value,
@@ -90,8 +89,21 @@ export class TraceabilityComponent implements OnInit {
             .subscribe(res => {
                 this.data = res.body.map(e => e.split('`'));
                 this.pagination.elementCount = res.itemCount;
-                console.log('ic', res.itemCount);
             });
     }
 
+    setApp(app: any) {
+        this.application = app['value'];
+        this.traceSrv.getSchemaMap(this.application)
+            .subscribe(res => {
+                const nodes: LogNode[] = res.map(e => {
+                    const children: LogNode[] = e.schemas.map(f => {
+                        const fNode: LogNode = {application: f.description, schema: f};
+                        return fNode;
+                    });
+                    return {application: e.application, children: children};
+                })
+                this.dataSource.data = nodes;
+            });
+    }
 }

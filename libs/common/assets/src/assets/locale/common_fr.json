@@ -135,9 +135,18 @@
     "CANCEL": "Annuler",
     "FILENAME": "Nom de fichier",
     "FROM": "Du",
-    "TO": "Au",
+    "TO": "Au",Stock
     "ACCESS_RIGHTS": "Des droits d'accès",
     "READ": "Lire",
     "WRITE": "Créer",
-    "TRACEABILITY": "traçabilité"
+    "TRACEABILITY": "traçabilité",
+    "SELECT_APP": "Sélectionnez une candidature",
+    "EXCHANGE": "Currency exchange",
+    "HRMASTER": "HR Master",
+    "COMMON": "Utilitaires communs",
+    "LOGISTICS": "Logistique",
+    "STOCK": "Stok",
+    "INVENTORY": "Stok",
+    "SALES": "Ventes",
+    "PURCHASES": "Achats"
 }

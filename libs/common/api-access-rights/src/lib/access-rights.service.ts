@@ -17,8 +17,8 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
         super(httpSrv, ACCESS_RIGHTS_URL);
     }
 
-    getEntities(): Observable<string[]> {
-        const params = new HttpParams().set('app', 'exchange'); // this.shellSrv.getApp()
+    getEntities(app: string): Observable<string[]> {
+        const params = new HttpParams().set('app', app);
         const url = '/entities';
         return this.httpSrv
             .get<{ entities: string[] }>(url, params)
@@ -28,5 +28,9 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
     saveRights(r: AccessRight, form: string): Observable<any> {
         const url = `/accessrights?form=${form}`;
         return r.id? this.httpSrv.put(url, r) : this.httpSrv.post(url, r);
+    }
+
+    getApps(): Observable<{ apps: string[] }> {
+        return this.httpSrv.get('/logging/apps');
     }
 }

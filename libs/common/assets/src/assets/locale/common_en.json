@@ -139,5 +139,14 @@
     "ACCESS_RIGHTS": "Access rights",
     "READ": "Read",
     "WRITE": "Create",
-    "TRACEABILITY": "Traceability"
+    "TRACEABILITY": "Traceability",
+    "SELECT_APP": "Select an application",
+    "EXCHANGE": "Currency exchange",
+    "HRMASTER": "HR Master",
+    "COMMON": "Common utilities",
+    "LOGISTICS": "Logistics",
+    "STOCK": "Inventory",
+    "INVENTORY": "Inventory",
+    "SALES": "Sales",
+    "PURCHASES": "Purchases"
 }

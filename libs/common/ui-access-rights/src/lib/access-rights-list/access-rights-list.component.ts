@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent, BaseEntityListComponent} from "@ss/common/api-base-entity";
-import {DepositType, DepositTypeService} from "@ss/exchange/api-currency-deposit";
-import {AccessRight, AppContextService, Role, UserRightsService} from "@ss/common/api-common";
+import {Component} from '@angular/core';
+import {BaseEntityListComponent} from "@ss/common/api-base-entity";
+import {AccessRight, AppContextService, Role} from "@ss/common/api-common";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from "@ss/common/ui-default-report-component";
 import {AccessRightsService} from "@ss/common/api-access-rights";
-import {AgentLookupModel} from "@ss/logistics/api-agent";
 import {LookupsService, RoleService} from "@ss/common/api-lookup";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {switchMap} from "rxjs/operators";
-import {Lookup} from "@ss/logistics/ui-doc-import";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'ss-access-rights',
@@ -23,6 +20,8 @@ import {Observable, of} from "rxjs";
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
 
+    apps: string[] = [];
+    application = '';
     menuItems: string[] = [];
     roleList: Role[] = [];
     selectedItem = '';
@@ -55,14 +54,14 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
 
     ngOnInit() {
         super.ngOnInit();
-        this.rightsSrv
-            .getEntities()
-            .pipe(switchMap(res => {
-                this.menuItems = res;
-                return this.lookupSrv.getRoles();
-            }))
+        this.lookupSrv.getRoles()
+            .pipe(
+                switchMap(res => {
+                    this.roleList = res;
+                    return this.rightsSrv.getApps();
+                }))
             .subscribe(res => {
-                this.roleList = res;
+                this.apps = this.apps = res['apps'] || [];
             });
 
         this.editButton.icon = 'fas fa-save';
@@ -147,5 +146,12 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             d.delete = ((d.rights || 0) & 8) === 8;
         });
         return super.processLoadedData(data);
+    }
+
+    setApp(app: { value: string }) {
+        this.application = app['value'];
+        this.rightsSrv
+            .getEntities(this.application)
+            .subscribe(res => this.menuItems = res);
     }
 }
