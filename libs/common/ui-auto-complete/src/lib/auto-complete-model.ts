@@ -22,8 +22,6 @@ export interface AutoCompleteModel<T> {
 }
 
 export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
-    onValueChanged = null;
-    onObjectSelected = null;
 
     public options: T[];
     public cache: T;
@@ -31,6 +29,9 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {
     }
+
+    onValueChanged = (e: Id) => {};
+    onObjectSelected = (e: Id) => {};
 
     valueOf = x => x ? x[this.idField] : null;
 
