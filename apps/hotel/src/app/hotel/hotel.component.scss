@@ -1,0 +1,111 @@
+@import "~@angular/material/theming";
+
+:host {
+    display: block;
+    margin-bottom: 32px;
+}
+
+.hotel-main-container {
+    display: block;
+    width: 98%;
+    margin: auto;
+    max-width: 1200px;
+    overflow: hidden;
+    user-select: none;
+    .apps-section {
+        //@include mat-elevation(1);
+        width: 94%;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        padding: 8px;
+        //margin-top: 32px;
+        border-radius: 32px;
+        user-select: none;
+        .section-title {
+            text-align: start;
+            font-weight: bold;
+            display: block;
+        }
+        .section-apps {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: space-around;
+            justify-content: center;
+            user-select: none;
+
+            .app-card {
+                @include mat-elevation(1);
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-content: center;
+                justify-content: flex-start;
+                transition: width 0.5s;
+                width: 23%;
+                margin-right: 1%;
+                margin-left: 1%;
+                height: 64px;
+                //line-height: 64px;
+                border-radius: 16px;
+                margin-top: 12px;
+                cursor: pointer;
+                user-select: none;
+                overflow: hidden;
+
+                .app-icon {
+                    display: inline-block;
+                    margin: 8px;
+                    width: 48px;
+                    height: 32px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    text-align: center;
+                    user-select: none;
+                    overflow: hidden;
+                    border-radius: 12px;
+                }
+
+                .app-name {
+                    display: inline-block;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    user-select: none;
+                    overflow: hidden;
+                    a {
+                        height: 64px;
+                        display: table-cell;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            .app-card:hover {
+                @include mat-elevation(8);
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .app-card {
+        width: 31% !important;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+    .app-card {
+        width: 48% !important;
+    }
+}
+
+@media (max-width: 401px) {
+    .app-card {
+        width: 70% !important;
+        min-width: 260px;
+    }
+}

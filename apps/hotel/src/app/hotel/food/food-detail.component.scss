@@ -1,0 +1,65 @@
+
+:host {
+    display: block;
+    max-width: 480px;
+    margin: 4px auto;
+}
+
+.container {
+    width: 96%;
+    height: 96%;
+    min-height: 100px;
+    padding: 2%;
+}
+
+.reference {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.description2 {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.foodType {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.price {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.vat {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.accountno {
+    display: inline-block;
+    width: 47%;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.dlg-title {
+    height: 64px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    line-height: 64px;
+    font-weight: bold;
+}
