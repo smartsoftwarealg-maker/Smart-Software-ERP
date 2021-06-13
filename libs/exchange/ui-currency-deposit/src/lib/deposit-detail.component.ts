@@ -16,10 +16,10 @@ import {LoginService, AppContextService} from '@ss/common/api-common';
     templateUrl: './deposit-detail.component.html'
 })
 export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
-    public agentAutoCompleteModel = new AgentLookupModel(this.agentService);
-    public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
+    public agentAutoCompleteModel    = new AgentLookupModel(this.agentService);
+    public typeAutoCompleteModel     = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-    public soldAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public soldAutoCompleteModel     = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public customerId = 0;
 
     constructor(
@@ -36,9 +36,10 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
-        this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
-        this.soldAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
-        this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
+        this.currencyAutoCompleteModel.onValueChanged = value => this.onCurrencyChange();
+        this.soldAutoCompleteModel.onValueChanged = value => this.onCurrencyChange();
+        this.typeAutoCompleteModel.onValueChanged = value => this.onTypeChange();
+        this.typeAutoCompleteModel.filterLoadedData = x => x.filter(e => e.id === 1 || e.id === 2);
     }
 
 

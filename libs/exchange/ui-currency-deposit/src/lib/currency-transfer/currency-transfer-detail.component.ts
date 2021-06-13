@@ -6,7 +6,6 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
-    CurrencyDepositService,
     DepositType,
     DepositTypeService,
     Deposit,
@@ -46,6 +45,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
         this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
         this.soldAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
+        this.typeAutoCompleteModel.filterLoadedData = x => x.filter(e => e.id === 3);
     }
 
 
@@ -65,13 +65,13 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
             sourceId: [b.sourceId],
             customerId: [b.customerId, Validators.required],
             excDate: [b.excDate || new Date(), Validators.required],
-            depositType: [b.depositType],
+            depositType: [{ value: b.depositType || 3, disabled: true } ],
             description: [b.description],
             currencyId: [b.currencyId],
             amount: [b.amount],
             commission: [{ value: b.commission, disabled: false }],
             soldCurrencyId: [b.soldCurrencyId],
-            exchangeRate: [b.exchangeRate || 1 ],
+            exchangeRate: [ b.exchangeRate? +b.exchangeRate.toFixed(5) || 1 : 1],
             soldAmount: [{ value: b.amount > 0.0? (((b.exchangeRate || 1) * b.amount).toFixed(2)) : 0.0, disabled: true }],
         });
     }
@@ -82,6 +82,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         value.userId = this.contextSrv.context.userId;
         value.centerId = this.contextSrv.context.center;
         value.sourceId = this.sourceId;
+        value.depositType = 3;
         return value;
     }
 
