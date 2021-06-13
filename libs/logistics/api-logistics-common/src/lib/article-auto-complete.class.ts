@@ -11,7 +11,7 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
         super(articleSrv, 'reference', 'description2');
     }
 
-    onValueChanged(art: string) {
+    onValueChanged = (art: string) => {
         this.evenEmitter.emit(art);
     }
 }
@@ -23,7 +23,7 @@ export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
         super(storeNameSrv);
     }
 
-    onValueChanged(id: number) {
+    onValueChanged = (id: number) => {
         this.evenEmitter.emit(id);
     }
 }
