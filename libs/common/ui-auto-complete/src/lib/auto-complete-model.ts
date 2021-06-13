@@ -22,9 +22,12 @@ export interface AutoCompleteModel<T> {
 }
 
 export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
+    onValueChanged = null;
+    onObjectSelected = null;
 
     public options: T[];
     public cache: T;
+    public filterLoadedData = (x: T[]) => x;
 
     constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {
     }
@@ -35,7 +38,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     getById = id => id ? this.entitySrv.get(id) : of(null);
 
-    filter = filter => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => x.body));
+    filter = filter => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
 
     isPerfectMatch = (obj, filter) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
 }

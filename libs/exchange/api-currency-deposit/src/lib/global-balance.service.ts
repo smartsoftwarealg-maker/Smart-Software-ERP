@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
-import {EXCHANGE_DEPOSIT_URL, EXCHANGE_GBALANCE_URL, GBalance} from './currency-deposit.service';
+import {EXCHANGE_GBALANCE_URL, GBalance} from "./models";
 
 
 @Injectable({
