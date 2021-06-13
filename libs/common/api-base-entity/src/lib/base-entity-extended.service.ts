@@ -1,10 +1,9 @@
 import {HttpService, isString} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
-import {BaseEntityService} from "./base-entity.service";
-import {HttpParams} from "@angular/common/http";
+import {BaseEntityService} from './base-entity.service';
+import {HttpParams} from '@angular/common/http';
 
 export class BaseEntityExtendedService<T> extends BaseEntityService<T> {
-
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
         super(httpSrv, url, parentUrl);

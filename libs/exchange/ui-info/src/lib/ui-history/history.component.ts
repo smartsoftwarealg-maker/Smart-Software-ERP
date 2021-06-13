@@ -1,10 +1,8 @@
 import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {switchMap} from 'rxjs/operators';
-import {CurrencyDepositService, History} from '@ss/exchange/api-currency-deposit';
+import {CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
 
 @Component({
     selector: 'ss-history',

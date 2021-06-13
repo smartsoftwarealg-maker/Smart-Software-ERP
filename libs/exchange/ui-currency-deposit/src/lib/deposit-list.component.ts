@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
@@ -67,5 +67,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     selectRow(e: Deposit) {
         this.selectedAgent = e? e.customerId || 0 : 0;
         super.select(e? e.id || 0 : 0)
+        this.editButton.disabled = !e || !e.id || e.isTransfer;
+        this.deleteButton.disabled = !e || !e.id || e.isTransfer;
     }
 }

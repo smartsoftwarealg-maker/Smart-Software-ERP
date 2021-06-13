@@ -36,7 +36,8 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_COMMISSIONS');
-        this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
+        this.typeAutoCompleteModel.onValueChanged = value => this.onTypeChange();
+        this.typeAutoCompleteModel.filterLoadedData = x => x.filter(e => e.id === 1);
     }
 
 

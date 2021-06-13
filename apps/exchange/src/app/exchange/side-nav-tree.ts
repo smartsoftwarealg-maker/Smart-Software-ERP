@@ -20,11 +20,11 @@ export const fileNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_EXCHANGE_AGENT_URL
         },
-        {
-            name: 'EXCHANGE_DEPOSIT_TYPES',
-            icon: 'fas fa-server',
-            route: ABS_EXCHANGE_DEPOSIT_TYPE_URL
-        },
+        // {
+        //     name: 'EXCHANGE_DEPOSIT_TYPES',
+        //     icon: 'fas fa-server',
+        //     route: ABS_EXCHANGE_DEPOSIT_TYPE_URL
+        // },
         {
             name: 'LOGISTICS_CURRENCIES',
             icon: 'fas fa-euro-sign',
