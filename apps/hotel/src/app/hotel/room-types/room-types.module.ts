@@ -1,26 +1,24 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule} from 'smart-shared';
-import {NavService} from '../../common/nav.service';
-import {RoomTypesListComponent} from './room-types-list.component';
-import {RoomTypesDetailComponent} from './room-types-detail.component';
-import {VersionService} from '../../common/version.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from '../../common/material.module';
-import {HttpClientModule} from '@angular/common/http';
-import {UiPaginationModule} from '@ss/common/ui-pagination';
-import {ListToolbarModule} from '../../common/list-toolbar/list-toolbar.module';
-import {SaveBarModule} from '../../common/save-bar/save-bar.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule } from 'smart-shared';
+import { RoomTypesListComponent } from './room-types-list.component';
+import { RoomTypesDetailComponent } from './room-types-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@ss/common/api-common';
+import { HttpClientModule } from '@angular/common/http';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
+import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 
 const routes: Routes = [
     {
         path: '',
         component: RoomTypesListComponent,
-        data: {entity: null},
+        data: { entity: null },
         canActivate: [CanActivateService]
     },
-    {path: '**', redirectTo: '', pathMatch: 'full'}, // not found
+    { path: '**', redirectTo: '', pathMatch: 'full' }, // not found
 ];
 
 @NgModule({
@@ -51,11 +49,7 @@ const routes: Routes = [
     ]
 })
 export class RoomTypesModule {
-    constructor(private navSrv: NavService,
-                private verSrv: VersionService,
-                private langSrv: LanguageService) {
-        const TAG = 'RoomTypesModule';
-        navSrv.setChildren(TAG, routes);
+    constructor(private langSrv: LanguageService) {
         langSrv.addSource('/assets/locale/hotel/room-types/', 'HTL_RT_');
     }
 }

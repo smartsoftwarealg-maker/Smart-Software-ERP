@@ -2,13 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule} from 'smart-shared';
-import {NavService} from '../../common/nav.service';
 import {FoyerArticlesListComponent} from './foyer-articles-list.component';
-import {VersionService} from '../../common/version.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from '../../common/material.module';
+import { MaterialModule } from '@ss/common/api-common';
 import {HttpClientModule} from '@angular/common/http';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {ListToolbarModule} from '../../common/list-toolbar/list-toolbar.module';
 import {SaveBarModule} from '../../common/save-bar/save-bar.module';
 import {AutoCompleteModule} from '../../common/auto-complete/auto-complete.module';
@@ -61,11 +59,7 @@ const routes: Routes = [
     ]
 })
 export class FoyerArticlesModule {
-    constructor(private navSrv: NavService,
-                private verSrv: VersionService,
-                private langSrv: LanguageService) {
-        const TAG = 'FoyerArticlesModule';
-        navSrv.setChildren(TAG, routes);
+    constructor(private langSrv: LanguageService) {
         langSrv.addSource('/assets/locale/hotel/foyer-articles/', 'HTL_FA_');
     }
 }

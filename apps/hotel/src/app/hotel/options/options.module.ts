@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OptionsComponent} from './options.component';
 import {CommonModule} from '@angular/common';
-import {MaterialModule} from '../../common/material.module';
+import { MaterialModule } from '@ss/common/api-common';
 import {SmartCommonModule, LoadingSpinnerModule, LanguageService} from 'smart-shared';
 import {FormsModule} from '@angular/forms';
 

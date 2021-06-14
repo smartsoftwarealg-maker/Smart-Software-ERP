@@ -2,13 +2,11 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule} from 'smart-shared';
-import {NavService} from '../../common/nav.service';
 import {BookingMethodsListComponent} from './booking-methods-list.component';
-import {VersionService} from '../../common/version.service';
-import {MaterialModule} from '../../common/material.module';
+import { MaterialModule } from '@ss/common/api-common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {ListToolbarModule} from '../../common/list-toolbar/list-toolbar.module';
 import {SaveBarModule} from '../../common/save-bar/save-bar.module';
 import {BookingMethodsDetailComponent} from './booking-methods-detail.component';
@@ -52,11 +50,7 @@ const routes: Routes = [
     ]
 })
 export class BookingMethodsModule {
-    constructor(private navSrv: NavService,
-                private verSrv: VersionService,
-                private langSrv: LanguageService) {
-        const TAG = 'BookingMethodsModule';
-        navSrv.setChildren(TAG, routes);
+    constructor(private langSrv: LanguageService) {
         langSrv.addSource('/assets/locale/hotel/booking-methods/', 'HTL_BM_');
     }
 }
