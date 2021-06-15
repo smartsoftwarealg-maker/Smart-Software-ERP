@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {LoginModule, SmartCommonModule} from 'smart-shared';
-import {MaterialModule} from '../common/material.module';
+import { MaterialModule } from '@ss/common/api-common';
 import {defaultMenu, HotelComponent, routes} from './hotel.component';
 import {
     LanguageService,
