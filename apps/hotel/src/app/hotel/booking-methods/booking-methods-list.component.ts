@@ -7,7 +7,7 @@ import {AbstractEntityList} from '../../common/base-classes/abstract-entity-list
 import {BookingMethod} from '../hotel-api';
 import {deepCopy} from 'smart-shared';
 import {BookingMethodsDetailComponent} from './booking-methods-detail.component';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 
 const bookingMethodsUrl = '/hotels/bookingTypes';
 

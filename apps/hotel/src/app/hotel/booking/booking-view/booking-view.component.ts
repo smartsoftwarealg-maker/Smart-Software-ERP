@@ -3,7 +3,7 @@ import {BookingService} from '../booking.service';
 import {dateToStr, LoadingState, strToDateTime} from '../../../common/util';
 import {Booking, Room} from '../../hotel-api';
 import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../../common/pagination/pagination.component';
 import {Observable, Subscription} from 'rxjs';
 import {HttpService} from 'smart-shared';
 import {NotificationsComponent} from './notifications/notifications.component';

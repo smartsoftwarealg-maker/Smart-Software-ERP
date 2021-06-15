@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService, Agent} from 'smart-shared';
 import {Observable, of} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 import {PaymentMethod} from '../hotel-api';
 import {Vat} from '../../common/vat/vat-api';
 import {HotelOptions} from '../options/options';

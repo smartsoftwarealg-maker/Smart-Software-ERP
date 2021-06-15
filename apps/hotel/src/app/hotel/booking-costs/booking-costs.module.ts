@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule} from 'smart-shared';
+import {NavService} from '../../common/nav.service';
+
 import {BookingCostsComponent} from './booking-costs.component';
 
 const routes: Routes = [
@@ -31,7 +33,10 @@ const routes: Routes = [
     ]
 })
 export class BookingCostsModule {
-    constructor(private langSrv: LanguageService) {
+    constructor(private navSrv: NavService,
+                private langSrv: LanguageService) {
+        const TAG = 'BookingCostsModule';
+        navSrv.setChildren(TAG, routes);
         langSrv.addSource('/assets/locale/hotel/booking-costs/', 'HTL_BCT_');
     }
 }

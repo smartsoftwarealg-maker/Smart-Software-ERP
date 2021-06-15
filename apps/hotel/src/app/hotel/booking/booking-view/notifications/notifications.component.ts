@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {HttpService, LanguageService} from 'smart-shared';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../../../common/pagination/pagination.component';
 
 enum NotificationType {
     GUEST_OVERSTAYED = 1,

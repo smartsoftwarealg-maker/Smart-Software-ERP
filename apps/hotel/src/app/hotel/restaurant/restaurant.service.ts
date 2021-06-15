@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from 'smart-shared';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 import {Observable, of} from 'rxjs';
 import {Agent} from 'smart-shared';
 import {map, switchMap, tap} from 'rxjs/operators';

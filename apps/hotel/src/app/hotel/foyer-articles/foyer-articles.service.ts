@@ -3,7 +3,7 @@ import {HttpService} from 'smart-shared';
 import {Vat} from '../../common/vat/vat-api';
 import {Observable, of} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 import {FoyerArticle} from '../hotel-api';
 
 const vatsUrl = '/articles/vats';

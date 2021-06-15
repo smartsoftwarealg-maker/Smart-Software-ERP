@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Room, RoomOption, RoomState, RoomType} from '../hotel-api';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {HttpService} from '@ss/common/api-common';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {HttpService} from 'smart-shared';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 
 const roomTypesUrl = '/hotels/roomTypes';
 const roomStatesUrl = '/hotels/roomStates';

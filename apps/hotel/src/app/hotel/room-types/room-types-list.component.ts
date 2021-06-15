@@ -6,7 +6,7 @@ import {SnackBarService} from '../../common/snack-bar.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {HttpService, UserService, LanguageService, deepCopy} from 'smart-shared';
 import {RoomTypesDetailComponent} from './room-types-detail.component';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 
 const roomTypesUrl = '/hotels/roomTypes';
 

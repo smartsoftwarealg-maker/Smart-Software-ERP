@@ -1,76 +1,123 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { UiCenterSelectModule } from '@ss/common/ui-center-select';
-import { UiThemeModule } from '@ss/common/ui-theme';
-import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
-import { UiLoginModule } from '@ss/common/ui-login';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonUiLangModule, LanguageService } from '@ss/common/ui-lang';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL } from '@ss/common/api-common';
-import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
-import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {Router, RouterModule, Routes} from '@angular/router';
+import {MaterialModule} from './common/material.module';
 import {
-    ADMINISTRATION_APP_URL,
-    LOGISTICS_APP_URL
-} from './common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+    ThemeModule,
+    LoadingSpinnerModule,
+    SmartCommonModule,
+    LanguageModule,
+    FatalErrorModule,
+    CenterSelectModule,
+    ErrorHandlerModule,
+    CustomErrorHandler,
+    CanActivateService,
+    LoginModule,
+    LanguageService,
+    LOGIN_URL,
+    MAIN_PAGE_URL,
+} from 'smart-shared';
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NavService} from './common/nav.service';
+import {HttpClientModule} from '@angular/common/http';
+import {ConfirmationDialogModule} from './common/confirmation-dialog/confirmation-dialog.module';
+
+export interface Application {
+    name: string;
+    image: string;
+    path: string;
+    // todo: add access rights?
+}
+
+export const accountingApp: Application = {
+    name: 'ACCOUNTING',
+    image: '/assets/img/app_accounting.png',
+    path: 'accounting'
+};
+
+export const payrollApp: Application = {
+    name: 'PAYROLL',
+    image: '/assets/img/app_payroll.png',
+    path: 'payroll'
+};
+
+export const stockApp: Application = {
+    name: 'STOCK',
+    image: '/assets/img/app_stock.png',
+    path: 'stock',
+};
+
+export const medicApp: Application = {
+    name: 'MEDIC',
+    image: '/assets/img/app_medic.png',
+    path: 'medic',
+};
+
+export const hotelApp: Application = {
+    name: 'HOTEL',
+    image: '/assets/img/app_hotel.png',
+    path: 'hotel'
+};
+
+export const applications: Application[] = [
+    accountingApp,
+    stockApp,
+    payrollApp,
+    hotelApp,
+    medicApp
+];
 
 const routes: Routes = [
     {
         path: MAIN_PAGE_URL,
-        component: ShellComponent,
-        children: [
-            {
-                path: INDEX_PAGE_URL,
-                component: WelcomeComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ADMINISTRATION_APP_URL,
-                loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
-            },
-            {
-                path: LOGISTICS_APP_URL,
-                loadChildren: () => import('./logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
-            },
-            { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
-        ]
+        data: {title: 'MAIN_MENU', entity: null, moduleName: 'IndexModule'},
+        loadChildren: () => import('./index/index.module').then(m => m.IndexModule),
+        canActivate: [CanActivateService]
     },
-    { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
+    {
+        path: hotelApp.path,
+        data: {title: hotelApp.name, entity: null, moduleName: 'HotelModule'},
+        loadChildren: () => import('./hotel/hotel.module').then(m => m.HotelModule)
+    },
+    {path: '', redirectTo: MAIN_PAGE_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: LOGIN_URL, pathMatch: 'full'}, // not found
 ];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        WelcomeComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        RouterModule.forRoot(routes, { enableTracing: false }),
-        // Smart Software modules
-        UiThemeModule,
-        UiErrorHandlerModule,
-        UiShellModule,
-        CommonUiLangModule,
-        // modules with routes
-        UiLoginModule,
-        UiCenterSelectModule
-    ],
-    bootstrap: [AppComponent],
+    declarations:
+        [
+            AppComponent
+        ],
+    imports:
+        [
+            // node_modules
+            BrowserModule,
+            BrowserAnimationsModule,
+            MaterialModule,
+            HttpClientModule,
+            ConfirmationDialogModule,
+            // smart-lib
+            ThemeModule,
+            SmartCommonModule,
+            LoadingSpinnerModule,
+            LanguageModule,
+            FatalErrorModule,
+            LoginModule,
+            CenterSelectModule,
+            ErrorHandlerModule,
+            RouterModule.forRoot(routes, {enableTracing: false}),
+        ],
+    providers:
+        [
+            {provide: ErrorHandler, useClass: CustomErrorHandler},
+            DeviceDetectorService
+        ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
-
-    constructor(private langSrv: LanguageService) {
-        langSrv.addSource('assets/locale/', '');
-        langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
-        langSrv.addSource('assets/locale/common_', 'COMMON_');
-        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
+    constructor(private router: Router, private langSrv: LanguageService) {
+        langSrv.addSource('/assets/locale/', '');
     }
-
 }

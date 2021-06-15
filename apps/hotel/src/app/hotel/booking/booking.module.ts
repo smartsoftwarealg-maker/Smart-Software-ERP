@@ -9,10 +9,12 @@ import {
     FatalErrorModule,
     LoadingSpinnerModule
 } from 'smart-shared';
+import {NavService} from '../../common/nav.service';
 import {BookingViewComponent} from './booking-view/booking-view.component';
+
 import {BookingService} from './booking.service';
-import { MaterialModule } from '@ss/common/api-common';
-import {UiPaginationModule} from '@ss/common/ui-pagination';
+import {MaterialModule} from '../../common/material.module';
+import {PaginationModule} from '../../common/pagination/pagination.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BookingThComponent} from './booking-view/table/header.component';
 import {TimelineComponent} from './booking-view/table/timeline.component';
@@ -52,7 +54,7 @@ const routes: Routes = [
         AutoCompleteModule,
         FatalErrorModule,
         LoadingSpinnerModule,
-        UiPaginationModule,
+        PaginationModule,
         FormsModule,
         ReactiveFormsModule,
         SmartCommonModule,
@@ -79,7 +81,10 @@ const routes: Routes = [
     ]
 })
 export class BookingModule {
-    constructor(private langSrv: LanguageService) {
+    constructor(private navSrv: NavService,
+                private langSrv: LanguageService) {
+        const TAG = 'BookingModule';
+        navSrv.setChildren(TAG, routes);
         langSrv.addSource('/assets/locale/hotel/booking/', 'HTL_BK_');
     }
 }

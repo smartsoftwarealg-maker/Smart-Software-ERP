@@ -4,7 +4,7 @@ import {Vat} from '../../common/vat/vat-api';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {Food, FoodType} from '../hotel-api';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '../../common/pagination/pagination.component';
 
 const vatsUrl = '/articles/vats';
 const foodTypesUrl = '/articles/foodTypes';
