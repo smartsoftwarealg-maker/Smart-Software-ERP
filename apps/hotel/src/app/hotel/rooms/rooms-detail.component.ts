@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '../../common/confirmation-dialog/confirmation-dialog.service';
 import {Room} from '../hotel-api';
 import {Observable, of} from 'rxjs';
-import {HttpService, isNumber, isString, UserService} from 'smart-shared';
 import {RoomsService} from './rooms.service';
 import {AbstractEntityView} from '../../common/base-classes/abstract-entity-view';
 import {BackendDataSource} from '../../common/base-classes/backend-data-source';
@@ -11,6 +10,9 @@ import {SnackBarService} from '../../common/snack-bar.service';
 import {switchMap} from 'rxjs/operators';
 import {ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {LoadingState} from '../../common/util';
+import { HttpService } from '@ss/common/api-common';
+import { isNumber, isString } from 'util';
+import { UserService } from '../../smart-lib/components/login/user.service';
 
 const roomsUrl = '/hotels/rooms';
 

@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {SmartCommonModule, CanActivateService, LanguageService, FatalErrorModule, LoadingSpinnerModule} from 'smart-shared';
 import {NavService} from '../../common/nav.service';
 import {RoomsListComponent} from './rooms-list.component';
 
@@ -13,6 +12,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {SaveBarModule} from '../../common/save-bar/save-bar.module';
 import {TagInputModule} from '../../common/tag-input/tag-input.module';
 import {RoomsService} from './rooms.service';
+import { LanguageService, CommonUiLangModule } from '@ss/common/ui-lang';
+import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
+import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
+import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
 
 const routes: Routes = [
     {
@@ -38,6 +42,7 @@ const routes: Routes = [
         FatalErrorModule,
         ListToolbarModule,
         LoadingSpinnerModule,
+        CommonUiLangModule,
         MaterialModule,
         PaginationModule,
         ReactiveFormsModule,

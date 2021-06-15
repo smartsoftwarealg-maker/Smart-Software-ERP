@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Room, RoomOption, RoomState, RoomType} from '../hotel-api';
-import {Observable, of} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
-import {HttpService} from 'smart-shared';
-import {PaginationModel} from '../../common/pagination/pagination.component';
+import { Injectable } from '@angular/core';
+import { Room, RoomOption, RoomState, RoomType } from '../hotel-api';
+import { Observable, of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { PaginationModel } from '../../common/pagination/pagination.component';
+import { HttpService } from '@ss/common/api-common';
 
 const roomTypesUrl = '/hotels/roomTypes';
 const roomStatesUrl = '/hotels/roomStates';
@@ -45,19 +45,19 @@ export class RoomsService {
         this.roomOptions = null;
         return this.httpSrv.getData<RoomState[]>(roomStatesUrl, 0, 49)
             .pipe(
-                tap(states => {
+                tap((states: RoomState[]) => {
                     this.roomStates = {};
                     states.forEach(s => this.roomStates[s.id] = s.description);
                     this.roomStatesArray = states;
                 }),
                 switchMap(() => this.httpSrv.getData<RoomType[]>(roomTypesUrl, 0, 49)),
-                tap(types => {
+                tap((types: RoomType[]) => {
                     this.roomTypes = {};
                     types.forEach(t => this.roomTypes[t.id] = t.description);
                     this.roomTypesArray = types;
                 }),
                 switchMap(() => this.httpSrv.getData<RoomOption[]>(roomOptionsUrl, 0, 49)),
-                tap(options => {
+                tap((options: RoomOption[]) => {
                     this.roomOptions = {};
                     options.forEach(t => this.roomOptions[t.id] = t.description);
                     this.roomOptionsArray = options;

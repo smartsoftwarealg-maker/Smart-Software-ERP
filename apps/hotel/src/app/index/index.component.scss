@@ -1,0 +1,56 @@
+@import "~@angular/material/theming";
+
+:host {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.apps-supper-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    .apps-container {
+        //@include mat-elevation(6);
+        max-width: 640px;
+        padding: 16px;
+        border-radius: 16px;
+        margin: auto;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: center;
+
+        .app {
+            user-select: none;
+            cursor: pointer;
+            width: 22%;
+            padding: 1%;
+            overflow: hidden;
+
+            .app-icon {
+                user-select: none;
+                width: 100%;
+            }
+
+            .app-name {
+                user-select: none;
+                text-align: center;
+                height: 32px;
+                width: 100%;
+                overflow: hidden;
+            }
+        }
+
+        .app:hover {
+            @include mat-elevation(6);
+            border-radius: 10px;
+            //width: 26%;
+        }
+    }
+}
+

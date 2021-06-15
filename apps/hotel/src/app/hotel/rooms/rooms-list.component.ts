@@ -3,10 +3,13 @@ import {AbstractEntityList} from '../../common/base-classes/abstract-entity-list
 import {Room} from '../hotel-api';
 import {BackendDataSource} from '../../common/base-classes/backend-data-source';
 import {SnackBarService} from '../../common/snack-bar.service';
-import {HttpService, UserService, LanguageService, deepCopy} from 'smart-shared';
 import {Observable} from 'rxjs';
 import {RoomsService} from './rooms.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { HttpService } from '@ss/common/api-common';
+import { UserService } from '../../smart-lib/components/login/user.service';
+import { LanguageService } from '@ss/common/ui-lang';
+import { deepCopy } from '../../smart-lib/common/util';
 
 const roomsUrl = '/hotels/rooms';
 
