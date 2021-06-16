@@ -55,9 +55,9 @@ export interface UserInfo {
 
 export interface Right {
     read: boolean;
-    create: boolean;
+    write: boolean;
     edit: boolean;
-    del: boolean;
+    delete: boolean;
 }
 
 export interface Role {
@@ -81,7 +81,11 @@ export interface UserCenter {
 
 export interface DocRight {
     document: string;
-    right: Right;
+    rights: number;
+    read: boolean;
+    write: boolean;
+    edit: boolean;
+    delete: boolean;
 }
 
 export interface Agent {

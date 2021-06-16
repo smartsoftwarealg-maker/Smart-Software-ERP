@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '@ss/common/api-common';
+import {HttpService, UserRightsService} from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
@@ -18,18 +18,22 @@ export class AppComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
                 public shellSrv: ShellService,
-                public langSrv: LanguageService) {
+                public langSrv: LanguageService,
+                private rightSrv: UserRightsService) {
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.1 Beta');
-        this.shellSrv.setSideNavDataSource([
-            administrationNavTree,
-            fileNavTree,
-            exchangeNavTree
-        ]);
+        this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');
         this.httpSrv.init()
-            .pipe(switchMap(() => this.langSrv.init()))
-            .subscribe(() => this.loaded = true);
+            .pipe(switchMap(() => this.langSrv.init()),
+                  switchMap(() => this.rightSrv.load()))
+            .subscribe(() => {
+                this.shellSrv.setSideNavDataSource([
+                    administrationNavTree,
+                    fileNavTree,
+                    exchangeNavTree
+                ]);
+                this.loaded = true;
+            });
     }
 }

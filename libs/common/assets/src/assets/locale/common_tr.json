@@ -132,5 +132,7 @@
     "STOCK":                         "Stok",
     "SALES":                         "Satış",
     "INVENTORY":                     "Satış",
-    "PURCHASES":                     "satın almalar"
+    "PURCHASES":                     "satın almalar",
+    "REPORTING":                     "Raporlama",
+    "ACCOUNTING":                    "Genel muhasebe"
 }

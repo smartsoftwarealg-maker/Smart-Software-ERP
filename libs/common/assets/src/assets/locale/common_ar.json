@@ -148,5 +148,7 @@
     "STOCK": "المخزون",
     "INVENTORY": "المخزون",
     "SALES": "المبيعات",
-    "PURCHASES": "المشتريات"
+    "PURCHASES": "المشتريات",
+    "REPORTING": "لبتقارير",
+    "ACCOUNTING": "المحاسبة العامة"
 }
