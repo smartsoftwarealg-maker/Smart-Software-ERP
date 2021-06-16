@@ -1,0 +1,57 @@
+
+:host {
+    //position: absolute;
+    //top: 0;
+    //right: 0;
+    //left: 0;
+    display: block;
+    min-height: 48px;
+    height: 48px;
+    max-height: 48px;
+    line-height: 48px;
+    overflow: hidden;
+}
+
+.nav-bar-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    min-height: 48px;
+    height: 48px;
+    max-height: 48px;
+    line-height: 48px;
+    overflow: hidden;
+}
+
+button {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.nav-bar-settings-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+
+    .settings-item {
+        cursor: pointer;
+
+        flex: 40px;
+        line-height: 40px;
+        width: 140px;
+        user-select: none;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+
+        .text {
+            user-select: none;
+        }
+    }
+}

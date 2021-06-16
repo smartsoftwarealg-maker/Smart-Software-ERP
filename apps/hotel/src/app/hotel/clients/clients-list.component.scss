@@ -1,0 +1,106 @@
+
+$table-width: 860px;
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: auto;
+}
+
+.main-container {
+    margin: auto;
+    max-width: $table-width;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.main-list-container {
+    overflow: hidden;
+    flex: 1 1 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .main-list-container-2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        .mat-table {
+            border-radius: 8px;
+            overflow: auto;
+            display: block;
+            min-height: 304px;
+            mat-row {
+                width: $table-width;
+            }
+            mat-header-row {
+                width: $table-width;
+            }
+        }
+
+        .paginator {
+            flex: 0 0 64px;
+        }
+    }
+
+}
+
+mat-header-cell {
+    //justify-content: center;
+    font-weight: bold;
+}
+
+.mat-column-code {
+    flex: 0 0 60px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-denomination {
+    flex: 0 0 240px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-mobile {
+    flex: 0 0 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-address {
+    flex: 0 0 240px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-phone-fax {
+    flex: 0 0 120px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: center;
+}
+
+.align-cell-right {
+    justify-content: flex-end;
+    direction: ltr;
+}
+
+.align-cell-center {
+    justify-content: center;
+}
+
+.blocked {
+    text-decoration: line-through;
+}

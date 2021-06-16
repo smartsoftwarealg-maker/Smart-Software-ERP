@@ -4085,31 +4085,6 @@
         }
       }
     },
-    "hotel-api-room": {
-      "projectType": "library",
-      "root": "libs/hotel/api-room",
-      "sourceRoot": "libs/hotel/api-room/src",
-      "prefix": "ss",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/hotel/api-room"],
-          "options": {
-            "jestConfig": "libs/hotel/api-room/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/hotel/api-room/src/**/*.ts",
-              "libs/hotel/api-room/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
     "common-ui-traceability": {
       "projectType": "library",
       "root": "libs/common/ui-traceability",

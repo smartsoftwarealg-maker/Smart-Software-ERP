@@ -1,0 +1,58 @@
+@import "~@angular/material/theming";
+
+input {
+  display: none;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+:host {
+  margin: 10px;
+  display: inline-block;
+}
+
+.image-input-card {
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.image-input-footer {
+  position: absolute;
+  bottom: 0;
+  height: 56px;
+  right: 0;
+  left: 0;
+}
+
+// used to make a square div
+.square-div {
+  position: relative;
+  width: 100%;
+}
+
+// used to make a square div
+.square-div:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+// used to make a square div
+.square-div-child {
+  position: absolute;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  max-height: 100%;
+}

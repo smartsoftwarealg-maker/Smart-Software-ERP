@@ -36,5 +36,6 @@
     "THEME_SETTINGS": "Themes",
     "LANGUAGE_SETTINGS": "Language",
     "LOGOUT": "Logout",
-    "MEDIC": "Clinic"
+    "MEDIC": "Clinic",
+    "SEARCH_APP": "Quick access"
 }

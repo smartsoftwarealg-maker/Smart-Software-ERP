@@ -1,0 +1,60 @@
+<div class="main-container">
+    <app-list-toolbar
+            (filterChange)="setFilter($event)"
+            (refresh)="refresh()"
+            (add)="showAdd()"
+            (edit)="showEdit()"
+            [removeVisible]="false"
+            [editDisabled]="!selectedId"
+            [right]="accessRight"
+    >
+    </app-list-toolbar>
+    <div class="main-list-container mat-elevation-z10">
+        <ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
+        <ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
+        <div *ngIf="loadingState == 'C'" class="main-list-container-2">
+            <mat-table matSort matSortActive="{{sort.active}}" matSortDirection="{{sort.direction}}"
+                       (matSortChange)="sortData($event)" [dataSource]="data">
+
+                <ng-container matColumnDef="invoiceNumber">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>
+                        HTL_RST_INVOICE_NUMBER
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let s">{{ s.invoiceNumber }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>HTL_RST_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let s">
+                        {{ s.time }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="client">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>HTL_RST_CLIENT</mat-header-cell>
+                    <mat-cell *matCellDef="let s">
+                        {{ s.agentName }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef translate>HTL_RST_TOTAL</mat-header-cell>
+                    <mat-cell class="table-number-cell" *matCellDef="let s">
+                        {{ s.total.toFixed(2) }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true">
+                </mat-header-row>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;"
+                         (click)="select(row.service.id)" class="selectable"
+                         [class.selectable-active]="row.service.id == selectedId">
+                </mat-row>
+
+            </mat-table>
+            <app-pagination class="paginator" [paginationModel]="paginationModel">
+            </app-pagination>
+        </div>
+    </div>
+</div>

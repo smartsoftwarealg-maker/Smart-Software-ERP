@@ -1,0 +1,23 @@
+<div class="dlg-title theme-background-accent" translate>
+    HTL_BM_DETAIL
+</div>
+<div class="container theme-background">
+    <form novalidate [formGroup]="form">
+
+        <mat-form-field class="description">
+            <mat-label translate>HTL_BM_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text">
+        </mat-form-field>
+
+        <mat-checkbox formControlName="confirmed" class="confirmed" translate>
+            HTL_BM_CONFIRMED
+        </mat-checkbox>
+
+    </form>
+
+    <app-save-bar
+            (save)="save()"
+            (cancel)="close(true)"
+            [saveDisabled]="!form.valid">
+    </app-save-bar>
+</div>

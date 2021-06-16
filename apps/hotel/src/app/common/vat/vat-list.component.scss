@@ -1,0 +1,71 @@
+
+$table-width: 320px;
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: auto;
+}
+
+.main-container {
+    margin: auto;
+    max-width: $table-width;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.main-list-container {
+    overflow: hidden;
+    flex: 1 1 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .main-list-container-2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        .mat-table {
+            border-radius: 8px;
+            overflow: auto;
+            display: block;
+            min-height: 304px;
+            mat-row {
+                width: $table-width;
+            }
+            mat-header-row {
+                width: $table-width;
+            }
+        }
+
+        .paginator {
+            flex: 0 0 64px;
+        }
+    }
+
+}
+
+mat-header-cell {
+    justify-content: center;
+    font-weight: bold;
+}
+
+.right-align-col {
+    justify-content: flex-end;
+    direction: ltr;
+}
+
+.mat-column-value {
+    flex: 0 0 272px;
+}

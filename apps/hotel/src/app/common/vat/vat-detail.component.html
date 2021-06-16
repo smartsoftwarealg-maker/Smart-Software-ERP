@@ -1,0 +1,17 @@
+<div class="dlg-title theme-background-accent" translate>
+    VAT_DETAIL
+</div>
+<div class="container theme-background">
+    <form novalidate [formGroup]="form">
+        <mat-form-field class="value">
+            <mat-label translate>VAT_PERCENT</mat-label>
+            <input matInput formControlName="value" type="number">
+        </mat-form-field>
+    </form>
+
+    <app-save-bar
+            (save)="save()"
+            (cancel)="close(true)"
+            [saveDisabled]="!form.valid">
+    </app-save-bar>
+</div>
