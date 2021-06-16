@@ -135,7 +135,7 @@
     "CANCEL": "Annuler",
     "FILENAME": "Nom de fichier",
     "FROM": "Du",
-    "TO": "Au",Stock
+    "TO": "Au",
     "ACCESS_RIGHTS": "Des droits d'accès",
     "READ": "Lire",
     "WRITE": "Créer",
@@ -148,5 +148,7 @@
     "STOCK": "Stok",
     "INVENTORY": "Stok",
     "SALES": "Ventes",
-    "PURCHASES": "Achats"
+    "PURCHASES": "Achats",
+    "REPORTING": "Etats",
+    "ACCOUNTING": "Comptabilité general"
 }

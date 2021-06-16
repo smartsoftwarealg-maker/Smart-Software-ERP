@@ -31,6 +31,6 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
     }
 
     getApps(): Observable<{ apps: string[] }> {
-        return this.httpSrv.get('/logging/apps');
+        return this.httpSrv.get('/modules');
     }
 }
