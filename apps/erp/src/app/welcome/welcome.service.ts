@@ -6,8 +6,12 @@ import { SideNavNode } from '@ss/common/ui-shell';
 })
 export class WelcomeService {
 
-    public navData: SideNavNode[];
     public display: SideNavNode[];
     public historyStack: SideNavNode[] = [];
 
+    public reset(nav: SideNavNode[]) {
+        this.display = nav;
+        this.historyStack = [];
+
+    }
 }
