@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LanguageService } from '@ss/common/ui-lang';
-import { strTakeUntil, strDropEndUntil, strDropUntil } from '@ss/common/api-common';
+import {strTakeUntil, strDropEndUntil, strDropUntil, UserRightsService} from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -81,8 +81,7 @@ export class ShellService {
     // side nav data
     protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
 
-    constructor(public langSrv: LanguageService, public router: Router) {
-    }
+    constructor(public langSrv: LanguageService, public router: Router, rightsSrv: UserRightsService) {}
 
     /* LOADING */
 

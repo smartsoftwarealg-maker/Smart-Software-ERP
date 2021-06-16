@@ -1,9 +1,14 @@
-import { Injectable } from '@angular/core';
-import { DocRight, Right } from './models';
-import { HttpService } from './http.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {DocRight, Right} from './models';
+import {HttpService} from './http.service';
+import {Observable} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
 import {AppContextService} from './app-context.service';
+
+interface Lookup {
+    id: number;
+    description: string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -11,18 +16,22 @@ import {AppContextService} from './app-context.service';
 
 export class UserRightsService {
     private rightsMap: Map<string, Right> = new Map<string, Right>();
+    private forms: Lookup[] = [];
 
-    constructor(private httpSrv: HttpService,
-                private contextSrv: AppContextService) { }
+    constructor(private httpSrv: HttpService, private contextSrv: AppContextService) { }
 
     public load(): Observable<DocRight[]> {
-        return this.httpSrv.get<DocRight[]>('/rights')
-            .pipe(tap((res: DocRight[]) => {
-                this.rightsMap = res.reduce((m, e) => {
-                    m.set(e.document, e.right);
-                    return m;
-                }, new Map<string, Right>());
-            }));
+        return this.httpSrv.get<Lookup[]>('/lookups/forms')
+            .pipe(switchMap(res => {
+                    this.forms = res;
+                    return this.httpSrv.get<DocRight[]>('/rights')
+                }),
+                tap((res: DocRight[]) => {
+                    this.rightsMap = res.reduce((m, e) => {
+                        m.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete});
+                        return m;
+                    }, new Map<string, Right>());
+                }));
     }
 
     get rights(): Map<string, Right> {
@@ -34,7 +43,7 @@ export class UserRightsService {
     }
 
     canUserAdd(component: string): boolean {
-        return this.getUserRights(component).create;
+        return this.getUserRights(component).write;
     }
 
     canUserEdit(component: string): boolean {
@@ -42,7 +51,7 @@ export class UserRightsService {
     }
 
     canUserDelete(component: string): boolean {
-        return this.getUserRights(component).del;
+        return this.getUserRights(component).delete;
     }
 
     getUserRights(component: string): Right {
@@ -57,9 +66,9 @@ export class UserRightsService {
         const severe = this.contextSrv.context.severe;
         return {
             read: manager || !severe,
-            create: manager || !severe,
+            write: manager || !severe,
             edit: manager || !severe,
-            del: manager || !severe
+            delete: manager || !severe
         };
     }
 

@@ -148,5 +148,7 @@
     "STOCK": "Inventory",
     "INVENTORY": "Inventory",
     "SALES": "Sales",
-    "PURCHASES": "Purchases"
+    "PURCHASES": "Purchases",
+    "REPORTING": "Reporting",
+    "ACCOUNTING": "General accounting"
 }
