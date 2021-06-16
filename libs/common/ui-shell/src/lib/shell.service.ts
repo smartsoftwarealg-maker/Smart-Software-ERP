@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LanguageService } from '@ss/common/ui-lang';
-import {strTakeUntil, strDropEndUntil, strDropUntil, UserRightsService} from '@ss/common/api-common';
+import { strTakeUntil, strDropEndUntil, strDropUntil, UserRightsService, Right } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -35,6 +35,7 @@ export interface SideNavNode {
     icon: string;
     name: string;
     route?: string;
+    visible?: boolean;
     accessRights?: string[];
     children?: SideNavNode[];
     backgroundColor?: string;
@@ -80,8 +81,9 @@ export class ShellService {
     protected retryCallback: () => void;
     // side nav data
     protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
+    public navData: SideNavNode[] = [];
 
-    constructor(public langSrv: LanguageService, public router: Router, rightsSrv: UserRightsService) {}
+    constructor(public langSrv: LanguageService, public router: Router, private rightsSrv: UserRightsService) { }
 
     /* LOADING */
 
@@ -111,6 +113,36 @@ export class ShellService {
     }
 
     /* SIDE NAV */
+
+    public filterSideNav(rights: Map<string, Right>): void {
+        this.setSideNavVisibility(this.navData, rights);
+        this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
+    }
+
+    private filterSideNavByVisibility(tree: SideNavNode[]): SideNavNode[] {
+        if (tree == null) {
+            return null;
+        }
+        return tree.filter(i => i.visible)
+                .map(i => {
+                    i.children = this.filterSideNavByVisibility(i.children);
+                    return i;
+                })
+    }
+
+    private setSideNavVisibility(tree: SideNavNode[], rights: Map<string, Right>): void {
+        if (tree == null) {
+            return null;
+        }
+        // MUST use for each, MUST NOT change reference of array
+        tree.forEach(i => i.visible = false);
+        tree.filter(i => !i.accessRights || i.accessRights.map(r => !!rights.get(r) && rights.get(r).read).reduce((a, b) => a && b, true))
+            // MUST use for each, MUST NOT change reference of array
+            .forEach(i => {
+                i.visible = true;
+                this.setSideNavVisibility(i.children, rights);
+            });
+    }
 
     public getMenuItems(): string[] {
         if (!this.sideNavDataSrc.data) {
@@ -142,7 +174,8 @@ export class ShellService {
     }
 
     public setSideNavDataSource(tree: SideNavNode[]) {
-        this.sideNavDataSrc.data = tree;
+        this.navData = tree;
+        this.sideNavDataSrc.data = [];
         this.generateNavColors(tree);
         this.updateShell();
     }
