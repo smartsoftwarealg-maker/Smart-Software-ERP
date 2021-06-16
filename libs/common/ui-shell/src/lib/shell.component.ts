@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, Afte
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import {AppContextService, User, UserRightsService, UserService} from '@ss/common/api-common';
+import { AppContextService, User, UserRightsService, UserService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shell',
@@ -22,11 +22,11 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
 
     constructor(public langSrv: LanguageService,
-                public shellSrv: ShellService,
-                protected cdRef: ChangeDetectorRef,
-                protected usersSrv: UserService,
-                private rightsSrv: UserRightsService,
-                public contextSrv: AppContextService) { }
+        public shellSrv: ShellService,
+        protected cdRef: ChangeDetectorRef,
+        protected usersSrv: UserService,
+        private rightsSrv: UserRightsService,
+        public contextSrv: AppContextService) { }
 
     ngOnInit() {
         this.shellSrv.setUpdateShellFn(null);
@@ -36,6 +36,10 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         //     .pipe(switchMap(res => this.contextSrv.load()),
         //          switchMap(res => this.rightsSrv.load()))
         //     .subscribe(() => this.showSideNav = true);
+        this.rightsSrv.load()
+            .subscribe(() => {
+                this.shellSrv.filterSideNav(this.rightsSrv.rights);
+            })
     }
 
     ngOnDestroy() {
@@ -66,19 +70,19 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     }
 
     scrolled = () => {
-/*
-        const s = this.routerContainer.nativeElement.scrollTop;
-        if (s > 0 && s >= this.lastScroll) {
-            if (!this.showSideNav) {
-                this.hideToolbar();
-            }
-        } else {
-            if (s + 10 < this.lastScroll) {
-                this.showToolbar();
-            }
-        }
-        this.lastScroll = s;
-*/
+        /*
+                const s = this.routerContainer.nativeElement.scrollTop;
+                if (s > 0 && s >= this.lastScroll) {
+                    if (!this.showSideNav) {
+                        this.hideToolbar();
+                    }
+                } else {
+                    if (s + 10 < this.lastScroll) {
+                        this.showToolbar();
+                    }
+                }
+                this.lastScroll = s;
+        */
     };
 
     showToolbar = () => {
