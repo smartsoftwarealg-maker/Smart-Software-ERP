@@ -65,8 +65,8 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     }
 
     selectRow(e: Deposit) {
+        super.selectRow(e);
         this.selectedAgent = e? e.customerId || 0 : 0;
-        super.select(e? e.id || 0 : 0)
         this.editButton.disabled = !e || !e.id || e.isTransfer;
         this.deleteButton.disabled = !e || !e.id || e.isTransfer;
     }

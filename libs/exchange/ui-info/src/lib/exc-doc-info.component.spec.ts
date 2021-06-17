@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExcDocInfoComponent } from './exc-doc-info.component';
 
-describe('DocInfoComponent', () => {
+describe('EmailSenderComponent', () => {
   let component: ExcDocInfoComponent;
   let fixture: ComponentFixture<ExcDocInfoComponent>;
 

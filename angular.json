@@ -3667,6 +3667,33 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/exchange/src/environments/environment.ts",
+                  "with": "apps/exchange/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
@@ -3678,6 +3705,9 @@
           "configurations": {
             "production": {
               "browserTarget": "exchange:build:production"
+            },
+            "development": {
+              "browserTarget": "exchange:build:development"
             }
           }
         },

@@ -5,7 +5,7 @@ import {SnackBarService} from '@ss/common/ui-shell';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ReportListService} from '@ss/common/api-reports';
-import {ReportCatalog} from "@ss/common/api-report-param";
+import {ReportCatalog} from '@ss/common/api-report-param';
 
 @Component({
   selector: 'ss-ui-default-report',
@@ -38,9 +38,6 @@ export class DefaultReportComponent implements OnInit {
 
  onUpdate() {
       const name = this.filename.value;
-      if (name != null && name.startsWith('.')) {
-         console.log(name);
-      }
       this.dialogRef.close(name);
   }
 }

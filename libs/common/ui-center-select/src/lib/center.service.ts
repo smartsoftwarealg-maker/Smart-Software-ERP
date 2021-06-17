@@ -5,7 +5,7 @@ import {Center, Company, HttpService} from '@ss/common/api-common';
 @Injectable({
     providedIn: 'root'
 })
-export class CentersService {
+export class CenterService {
     constructor(private httpSrv: HttpService) {
     }
 
@@ -17,4 +17,5 @@ export class CentersService {
         const id = company || 0;
         return this.httpSrv.get<Company[]>(`/login/${id}/publicCenters`);
     }
+
 }

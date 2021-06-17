@@ -45,7 +45,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ExchangeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: "Exchange" }
             },
             {
                 path: ':id',
@@ -64,7 +65,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: "Agent" }
             },
             {
                 path: ':id',
@@ -141,7 +143,8 @@ export const mainRoutes: Routes = [
                     { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
                     { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
                 ],
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: "Deposit" }
             },
             {
                 path: ':id',
@@ -171,7 +174,8 @@ export const mainRoutes: Routes = [
                     { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
                     { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
                 ],
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: "Commission" }
             },
             {
                 path: ':id',
@@ -201,7 +205,8 @@ export const mainRoutes: Routes = [
                     { path: EXCHANGE_CBALANCE_URL, component: CbalanceComponent },
                     { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
                 ],
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: "Transfer" }
             },
             {
                 path: ':id',

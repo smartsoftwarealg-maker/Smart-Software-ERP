@@ -134,5 +134,10 @@
     "INVENTORY":                     "Satış",
     "PURCHASES":                     "satın almalar",
     "REPORTING":                     "Raporlama",
-    "ACCOUNTING":                    "Genel muhasebe"
+    "ACCOUNTING":                    "Genel muhasebe",
+    "SEND":                          "gönder",
+    "SUBJECT":                       "konu",
+    "MESSAGE":                       "İleti",
+    "EMAIL_REPORT":                  "Bir raporu e-postayla gönder",
+    "EMAIL_SENT":                    "Rapor başarıyla e-postayla gönderildi"
 }
