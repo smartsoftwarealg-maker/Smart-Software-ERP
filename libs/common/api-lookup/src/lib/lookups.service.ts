@@ -91,9 +91,6 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Service>(SERVICES_URL, 'services');
     }
 
-    public getForms(): Observable<Lookup[]> {
-        return this.lookupCacheSrv.load<Service>(FORMS_URL, 'forms');
-    }
 
     public getCategories(): Observable<Category[]> {
         return this.lookupCacheSrv.load<Category>(CATEGORIES_URL, 'categories');

@@ -1,0 +1,36 @@
+    <form [formGroup]="form" class="main_container">
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_FROM</mat-label>
+            <input matInput formControlName="from" type="email">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_TO</mat-label>
+            <input matInput formControlName="to" type="email">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_PASSWORD</mat-label>
+            <input matInput formControlName="password" type="password">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_SUBJECT</mat-label>
+            <input matInput formControlName="subject" type="text">
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label translate>COMMON_MESSAGE</mat-label>
+            <textarea matInput formControlName="message" type="text" rows="3"></textarea>
+        </mat-form-field>
+
+        <div class="btn-container">
+            <button mat-raised-button color="accent" (click)="onClose()"><span translate>COMMON_CANCEL</span>
+            </button>
+            <button mat-raised-button color="primary" (click)="onSubmit()"><span translate>COMMON_SEND</span>
+            </button>
+        </div>
+
+    </form>
+
+

@@ -150,5 +150,10 @@
     "SALES": "Ventes",
     "PURCHASES": "Achats",
     "REPORTING": "Etats",
-    "ACCOUNTING": "Comptabilité general"
+    "ACCOUNTING": "Comptabilité general",
+    "SEND": "Envoyer",
+    "SUBJECT": "Sujet",
+    "MESSAGE": "Message",
+    "EMAIL_REPORT": "Envoyer un rapport par e-mail",
+    "EMAIL_SENT": "Rapport envoyé avec succès"
 }

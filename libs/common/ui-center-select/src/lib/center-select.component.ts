@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {CentersService} from './centers.service';
+import {CenterService} from './center.service';
 import {Router} from '@angular/router';
 import {
     AppContextService,
@@ -34,7 +34,7 @@ export class CenterSelectComponent implements OnInit {
 
     @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
-    constructor(private ccListSrv: CentersService,
+    constructor(private ccListSrv: CenterService,
                 private loginSrv: LoginService,
                 private router: Router,
                 private userSrv: UserService,

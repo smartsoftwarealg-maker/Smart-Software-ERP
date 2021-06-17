@@ -21,7 +21,8 @@ export interface Deposit {
     currencyDescription?: string;
     soldCurrencyDescription?: string;
     sourceId?: number;
-    isTransfer?: boolean
+    isTransfer?: boolean;
+    email?: string;
 }
 
 export interface History {

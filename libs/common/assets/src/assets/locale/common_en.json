@@ -150,5 +150,10 @@
     "SALES": "Sales",
     "PURCHASES": "Purchases",
     "REPORTING": "Reporting",
-    "ACCOUNTING": "General accounting"
+    "ACCOUNTING": "General accounting",
+    "SEND": "Send",
+    "SUBJECT": "Subject",
+    "MESSAGE": "Message",
+    "EMAIL_REPORT": "Email a report",
+    "EMAIL_SENT": "Report successfully emailed"
 }

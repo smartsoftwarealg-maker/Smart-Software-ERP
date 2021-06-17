@@ -32,7 +32,7 @@ export class ConfirmationDialogService {
         config.width = '400px';
         config.maxWidth = '100%';
         config.data = {
-            title: translateTitle ? this.langSrv.translate(title) : title,
+            subject: translateTitle ? this.langSrv.translate(title) : title,
             message: translateMessage ? this.langSrv.translate(message) : message,
         };
         return this.matDialog.open(ConfirmationDialogComponent, config).afterClosed();
