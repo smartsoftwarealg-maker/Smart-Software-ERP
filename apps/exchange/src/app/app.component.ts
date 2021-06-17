@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService, UserRightsService} from '@ss/common/api-common';
+import { HttpService, UserRightsService } from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
 import { administrationNavTree } from './administration/side-nav-tree';
 import { fileNavTree, exchangeNavTree } from './exchange/side-nav-tree';
-import {CurrencyService} from '@ss/common/api-lookup';
+import { CurrencyService } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-root',
@@ -17,16 +17,14 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     constructor(private httpSrv: HttpService,
-                public shellSrv: ShellService,
-                public langSrv: LanguageService,
-                private rightSrv: UserRightsService) {
+        public shellSrv: ShellService,
+        public langSrv: LanguageService) {
     }
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');
         this.httpSrv.init()
-            .pipe(switchMap(() => this.langSrv.init()),
-                  switchMap(() => this.rightSrv.load()))
+            .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => {
                 this.shellSrv.setSideNavDataSource([
                     administrationNavTree,

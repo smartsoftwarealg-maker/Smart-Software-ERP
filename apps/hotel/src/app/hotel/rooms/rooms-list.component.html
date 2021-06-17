@@ -1,0 +1,81 @@
+<div class="main-container">
+    <app-list-toolbar
+            (filterChange)="setFilter($event)"
+            (refresh)="refresh()"
+            (remove)="removeSelected()"
+            (add)="showAddForm()"
+            (edit)="showEditForm()"
+            [removeDisabled]="!selectedId"
+            [editDisabled]="!selectedId"
+            [right]="accessRight"
+    >
+    </app-list-toolbar>
+    <div class="main-list-container mat-elevation-z10">
+        <ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
+        <ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
+        <div *ngIf="loadingState == 'C'" class="main-list-container-2">
+                <mat-table matSort matSortActive="{{sort.active}}" matSortDirection="{{sort.direction}}" (matSortChange)="sortData($event)" [dataSource]="data">
+
+                    <ng-container matColumnDef="number">
+                        <mat-header-cell class="theme-background-accent" *matHeaderCellDef mat-sort-header translate>
+                            HTL_RM_NUMBER
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let r" class="center-cell-content">
+                            {{r.number}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="roomType">
+                        <mat-header-cell class="theme-background-accent" *matHeaderCellDef mat-sort-header translate>
+                            HTL_RM_TYPE
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let r">
+                            {{getRoomType(r)}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="bedCount">
+                        <mat-header-cell class="theme-background-accent" *matHeaderCellDef mat-sort-header translate>
+                            HTL_RM_BED_COUNT
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let r" class="center-cell-content">
+                            {{r.bedCount}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="state">
+                        <mat-header-cell class="theme-background-accent" *matHeaderCellDef mat-sort-header translate>
+                            HTL_RM_STATE
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let r" translate>
+                            {{getRoomState(r)}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="options">
+                        <mat-header-cell class="theme-background-accent" *matHeaderCellDef mat-sort-header translate>
+                            HTL_RM_OPTIONS
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let r">
+                            <mat-chip-list style="margin: 4px;">
+                                <ng-container *ngFor="let o of r.options">
+                                    <mat-chip (click)="select(r.id)" class="tiny-chips">{{roomsSrv.roomOptions[o]}}</mat-chip>
+                                </ng-container>
+                            </mat-chip-list>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true">
+                    </mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"
+                             (click)="select(row.id)" class="selectable"
+                             [class.selectable-active]="row.id == selectedId">
+                    </mat-row>
+
+                </mat-table>
+            <app-pagination class="paginator" [paginationModel]="paginationModel">
+            </app-pagination>
+        </div>
+    </div>
+</div>

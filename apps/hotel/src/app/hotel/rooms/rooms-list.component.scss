@@ -1,0 +1,106 @@
+
+$table-width: 820px;
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: auto;
+}
+
+.main-container {
+    margin: auto;
+    max-width: $table-width;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.main-list-container {
+    overflow: hidden;
+    flex: 1 1 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .main-list-container-2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        .mat-table {
+            border-radius: 8px;
+            overflow: auto;
+            display: block;
+            min-height: 304px;
+            mat-row {
+                width: $table-width;
+            }
+            mat-header-row {
+                width: $table-width;
+            }
+        }
+
+        .paginator {
+            flex: 0 0 64px;
+        }
+    }
+
+}
+
+mat-header-cell {
+    justify-content: center;
+    font-weight: bold;
+}
+
+.tiny-chips {
+    font-size: 75%;
+    margin: 0;
+    padding: 2px 8px;
+    height: 20px;
+    min-height: 0;
+    user-select: none;
+}
+
+.center-cell-content {
+    justify-content: center;
+    direction: ltr;
+}
+
+.mat-column-number {
+    flex: 0 0 80px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-roomType {
+    flex: 0 0 132px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-bedCount {
+    flex: 0 0 60px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-state {
+    flex: 0 0 132px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-options {
+    flex: 0 0 376px;
+    padding-right: 4px;
+    padding-left: 4px;
+}

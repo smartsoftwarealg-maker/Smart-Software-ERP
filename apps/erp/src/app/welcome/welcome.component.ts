@@ -16,9 +16,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        if (this.srv.navData == null) {
-            this.srv.navData = this.shellSrv.sideNavDataSource.data;
-            this.srv.display = this.srv.navData;
+        if (this.srv.display == null) {
+            this.srv.display = this.shellSrv.navData;
         }
         this.updateGobackButton();
         this.shellSrv.setTitle(this.shellSrv.applicationTitle);
@@ -31,7 +30,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                         // todo: implement filter here
                         alert('Filter is NOT IMPLEMENTED YET');
                     } else {
-                        this.srv.display = this.srv.navData;
+                        this.srv.display = this.shellSrv.navData;
                     }
                 },
                 err => console.error(err)
@@ -57,7 +56,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         if (this.srv.historyStack.length > 1) {
             this.srv.display = this.srv.historyStack[this.srv.historyStack.length - 2].children;
         } else {
-            this.srv.display = this.srv.navData;
+            this.srv.display = this.shellSrv.navData;
         }
         this.srv.historyStack.splice(this.srv.historyStack.length - 1);
         if (!this.srv.historyStack.length) {

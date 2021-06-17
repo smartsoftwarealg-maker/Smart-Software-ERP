@@ -404,9 +404,6 @@
     "common-api-access-rights": {
       "tags": []
     },
-    "hotel-api-room": {
-      "tags": []
-    },
     "common-ui-traceability": {
       "tags": []
     }

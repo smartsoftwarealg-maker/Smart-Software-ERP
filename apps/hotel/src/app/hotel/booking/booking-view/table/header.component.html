@@ -1,0 +1,18 @@
+<div class="day-line-super-container mat-elevation-z10">
+    <!--row title-->
+    <div class="day-line-a-day">
+        <div class="day-line-a-day-inner-header"></div>
+    </div>
+
+    <!--row cells-->
+    <div *ngFor="let d of days, let i = index"
+         class="day-line-a-day"
+         [style.backgroundColor]="getCellColor(i)">
+
+        <!--head-->
+        <div class="day-line-a-day-inner-header">
+            {{ d | date:'dd/MM' }}
+        </div>
+
+    </div>
+</div>

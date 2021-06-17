@@ -1,0 +1,22 @@
+<div class="dlg-title theme-background-accent" translate>
+    CCENTER_DETAIL
+</div>
+<div class="container theme-background">
+    <form novalidate [formGroup]="form">
+        <mat-form-field class="code">
+            <mat-label translate>CCENTER_CODE</mat-label>
+            <input matInput formControlName="code" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="description">
+            <mat-label translate>CCENTER_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text">
+        </mat-form-field>
+    </form>
+
+    <app-save-bar
+            (save)="save()"
+            (cancel)="close(true)"
+            [saveDisabled]="!form.valid">
+    </app-save-bar>
+</div>

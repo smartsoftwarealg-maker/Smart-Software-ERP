@@ -1,0 +1,83 @@
+<div class="main-container">
+    <app-list-toolbar
+            (filterChange)="setFilter($event)"
+            (refresh)="refresh()"
+            (remove)="removeSelected()"
+            (add)="showAddForm()"
+            (edit)="showEditForm()"
+            [removeDisabled]="!selectedId"
+            [editDisabled]="!selectedId"
+            [right]="accessRight"
+    >
+    </app-list-toolbar>
+    <div class="main-list-container mat-elevation-z10">
+        <ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
+        <ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
+        <div *ngIf="loadingState == 'C'" class="main-list-container-2">
+            <mat-table matSort matSortActive="{{sort.active}}" matSortDirection="{{sort.direction}}"
+                       (matSortChange)="sortData($event)" [dataSource]="data">
+
+                <ng-container matColumnDef="code">
+                    <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8 align-cell-center" *matHeaderCellDef
+                                     mat-sort-header translate>
+                        HTL_CLT_CODE
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8" [ngClass]="{'blocked': x.blocked}">
+                        {{ x.code }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="denomination">
+                    <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef
+                                     mat-sort-header translate>
+                        HTL_CLT_DENOMINATION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8" [ngClass]="{'blocked': x.blocked}">
+                        {{ x.denomination }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="mobile">
+                    <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef
+                                     mat-sort-header translate>
+                        HTL_CLT_MOBILE
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                        {{ x.address.mobile }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="phone-fax">
+                    <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef
+                                     mat-sort-header translate>
+                        HTL_CLT_PHONE_FAX
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8 ">
+                        {{ x.address.phone }} / {{ x.address.fax }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef
+                                     mat-sort-header translate>
+                        HTL_CLT_ADDRESS
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8 ">
+                        {{ x.address.address }}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true">
+                </mat-header-row>
+
+                <mat-row *matRowDef="let row; columns: displayedColumns;"
+                         (click)="select(row.id)" class="selectable"
+                         [class.selectable-active]="row.id == selectedId">
+                </mat-row>
+            </mat-table>
+
+            <app-pagination class="paginator" [paginationModel]="paginationModel"></app-pagination>
+        </div>
+    </div>
+</div>
+

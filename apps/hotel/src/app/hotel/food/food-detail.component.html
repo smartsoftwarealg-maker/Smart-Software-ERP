@@ -1,0 +1,62 @@
+<div class="dlg-title theme-background-accent" translate>
+    HTL_FOD_DETAIL
+</div>
+
+<ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
+<ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
+<div *ngIf="loadingState == 'C'" class="container theme-background">
+
+    <form novalidate [formGroup]="form">
+
+        <app-image-input #imageInput
+                         style="width: 160px; display: block; margin: auto"
+                         [parentUrl]="'/articles/'"
+                         [childUrl]="'/image'"
+                         [parentId]="id">
+        </app-image-input>
+
+        <mat-form-field class="reference">
+            <mat-label translate>HTL_FOD_REFERENCE</mat-label>
+            <input matInput formControlName="reference" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="description2">
+            <mat-label translate>HTL_FOD_DESCRIPTION</mat-label>
+            <input matInput formControlName="description2" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="foodType">
+            <mat-label translate>HTL_FOD_FOOD_TYPE</mat-label>
+            <mat-select formControlName="foodType">
+                <mat-option *ngFor="let c of foodSrv.foodTypes" [value]="c.id">{{ c.description }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="price">
+            <mat-label translate>HTL_FOD_PRICE</mat-label>
+            <input matInput formControlName="price" type="number">
+        </mat-form-field>
+
+        <mat-form-field class="vat">
+            <mat-label translate>HTL_FOD_VAT</mat-label>
+            <mat-select formControlName="vat">
+                <mat-option *ngFor="let c of foodSrv.vats" [value]="c.id">{{ c.value + '%' }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <app-auto-complete [model]="accountsACModel" formControlName="accountno" class="accountno">
+            <span translate>HTL_FOD_ACCOUNTNO</span>
+        </app-auto-complete>
+
+<!--        <mat-form-field class="accountno">-->
+<!--            <mat-label translate>HTL_FOD_ACCOUNTNO</mat-label>-->
+<!--            <input matInput formControlName="accountno" type="text">-->
+<!--        </mat-form-field>-->
+    </form>
+
+    <app-save-bar
+            (save)="saveFood()"
+            (cancel)="close(true)"
+            [saveDisabled]="!form.valid">
+    </app-save-bar>
+</div>
