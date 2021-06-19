@@ -267,14 +267,7 @@
       "@ss/common/api-access-rights": [
         "libs/common/api-access-rights/src/index.ts"
       ],
-<<<<<<< HEAD
-      "@ss/hotel/api-room": ["libs/hotel/api-room/src/index.ts"],
-      "@ss/common/ui-traceability": [
-        "libs/common/ui-traceability/src/index.ts"
-      ]
-=======
       "@ss/common/ui-traceability": ["libs/common/ui-traceability/src/index.ts"]
->>>>>>> 4e3a283cb7dd0cb266db30e48e6f7a77930cad3d
     }
   },
   "exclude": ["node_modules", "tmp"]
