@@ -45,7 +45,7 @@ export class DefaultReportService {
     viewReport(form: string, id: number): Observable<any> {
         const params = new HttpParams()
             .set('form', form)
-            .set('id', '' + id)
+            .set('id', id + '')
             .set('type', 'PDF');
         return this.httpSrv
             .getBlob('/reports/view', params);
