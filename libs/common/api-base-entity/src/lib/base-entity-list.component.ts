@@ -1,6 +1,6 @@
 import {BaseEntityService} from './base-entity.service';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
@@ -180,10 +180,8 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     }
 
     public select(id: number): void {
-        if (id === this.selected) {
-            this.selected = null;
-        } else {
-            this.selected = id;
+        this.selected = id;
+        if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
         const itemControlsOn = this.selected != null && this.selected > 0;
