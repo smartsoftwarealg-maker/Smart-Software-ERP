@@ -174,7 +174,8 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CityListComponent
+                component: CityListComponent,
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
