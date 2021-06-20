@@ -1,25 +1,25 @@
-import {BaseEntityService} from './base-entity.service';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router, RouterStateSnapshot} from '@angular/router';
-import {PaginationModel} from '@ss/common/ui-pagination';
-import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { BaseEntityService } from './base-entity.service';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
+import { PaginationModel } from '@ss/common/ui-pagination';
+import { Directive, OnDestroy, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
-    private _form: string  = null;
+    private reportForm: string = null;
 
     constructor(public entitySrv: BaseEntityService<T>,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public confirmationSrv: ConfirmationDialogService,
-                public defReportSrv: DefaultReportService,
-                public title: string) {
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
+        public title: string) {
     }
 
     //
@@ -63,7 +63,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     public defReportButton: ToolbarButton = {
         icon: 'fas fa-folders',
         label: 'COMMON_DEFAULT_REPORT',
-        disabled: !this._form,
+        disabled: false, // always false
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.selectReport()
@@ -97,10 +97,14 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     //
 
     public ngOnInit() {
-        this.route.data.subscribe(res => {
-            this._form = res['form'];
-            this.defReportButton.disabled = !this._form;
-        });
+        //this.route.data.subscribe(res => {
+        //    this._form = res['form'];
+        //    this.defReportButton.disabled = !this._form;
+        //});
+        const node = this.shellSrv.getNavNodeByRouter(this.router);
+        this.reportForm = node ? node.accessRights : null;
+        this.defReportButton.visible = !!this.reportForm;
+        //
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
@@ -208,11 +212,11 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
 
     private selectReport() {
         this.defReportSrv
-            .open('exchange', this._form)
+            .open('exchange', this.reportForm)
             .subscribe(res => {
                 if (typeof res === 'string') {
                     this.defReportSrv
-                        .setUserReport(this._form, res)
+                        .setUserReport(this.reportForm, res)
                         .subscribe(resp => {
                             if (typeof resp['count'] === 'number') {
                                 if (resp['count'] > 0) {
@@ -226,7 +230,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
 
     private viewReport() {
         this.defReportSrv
-            .viewReport(this._form, this.selected)
+            .viewReport(this.reportForm, this.selected)
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
                 window.open(fileURL, '_blank');
@@ -237,27 +241,27 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.defReportSrv
             .currentCompany()
             .pipe(switchMap(comp => this.defReportSrv.openEmailDlg(comp['email'], this.selectedRow['email'])),
-                  switchMap(res => {
-                if (res && res['from'] && res['to']) {
-                    const pwd = res['password'] || '';
-                    const subject = res['subject'] || '';
-                    const message = res['message'] || '';
-                    return this.defReportSrv.emailReport(
-                        'exchange',
-                        this.selected,
-                        this._form,
-                        res['from'],
-                        res['to'],
-                        pwd,
-                        subject,
-                        message);
-                }
-                return of([]);
-            })).subscribe(res => {
-                if (!res) {
-                    this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
-                }
-            });
+                switchMap(res => {
+                    if (res && res['from'] && res['to']) {
+                        const pwd = res['password'] || '';
+                        const subject = res['subject'] || '';
+                        const message = res['message'] || '';
+                        return this.defReportSrv.emailReport(
+                            'exchange',
+                            this.selected,
+                            this.reportForm,
+                            res['from'],
+                            res['to'],
+                            pwd,
+                            subject,
+                            message);
+                    }
+                    return of([]);
+                })).subscribe(res => {
+                    if (!res) {
+                        this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
+                    }
+                });
     }
 
     public deleteSelected(): void {

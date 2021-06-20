@@ -36,7 +36,7 @@ export interface SideNavNode {
     name: string;
     route?: string;
     visible?: boolean;
-    accessRights?: string[];
+    accessRights?: string;
     children?: SideNavNode[];
     backgroundColor?: string;
 }
@@ -152,8 +152,7 @@ export class ShellService {
             return null;
         }
         // MUST use for each, MUST NOT change reference of array
-        tree.forEach(i => i.visible = false);
-        tree.filter(i => !i.accessRights || i.accessRights.map(r => this.rightsSrv.canUserPass(r)).reduce((a, b) => a && b, true))
+        tree.filter(r => !r.accessRights || this.rightsSrv.canUserPass(r.accessRights))
             // MUST use for each, MUST NOT change reference of array
             .forEach(i => {
                 i.visible = true;
