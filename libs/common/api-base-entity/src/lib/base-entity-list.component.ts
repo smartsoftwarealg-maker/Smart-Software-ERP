@@ -1,6 +1,6 @@
 import {BaseEntityService} from './base-entity.service';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterStateSnapshot} from '@angular/router';
 import {PaginationModel} from '@ss/common/ui-pagination';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
@@ -106,7 +106,6 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
         this.shellSrv.setButtons([this.defReportButton, this.viewReportButton, this.emailReportButton, this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
-        this.refresh();
     }
 
     public setFilter(fltr: string): void {

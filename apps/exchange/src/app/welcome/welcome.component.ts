@@ -37,8 +37,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
                     } else {
                         this.srv.display = this.shellSrv.navData;
                     }
-                },
-                err => console.error(err)
+                }
             )
         );
         this.currencySrv.load().subscribe(res => res);

@@ -114,8 +114,25 @@ export class ShellService {
 
     /* SIDE NAV */
 
+    public getNavNodeByRouter(router: Router): SideNavNode {
+        const url = router.routerState.snapshot.url;
+        return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+    }
+
+    private getNavNodeByUrl(url: string, node: SideNavNode): SideNavNode {
+        if (!node) {
+            return null;
+        }
+        if (node.route === url) {
+            return node;
+        }
+        return !node.children
+            ? null
+            : node.children.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
+    }
+
     public filterSideNav(rights: Map<string, Right>): void {
-        this.setSideNavVisibility(this.navData, rights);
+        this.setSideNavVisibility(this.navData);
         this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
     }
 
@@ -124,23 +141,23 @@ export class ShellService {
             return null;
         }
         return tree.filter(i => i.visible)
-                .map(i => {
-                    i.children = this.filterSideNavByVisibility(i.children);
-                    return i;
-                })
+            .map(i => {
+                i.children = this.filterSideNavByVisibility(i.children);
+                return i;
+            })
     }
 
-    private setSideNavVisibility(tree: SideNavNode[], rights: Map<string, Right>): void {
+    private setSideNavVisibility(tree: SideNavNode[]): void {
         if (tree == null) {
             return null;
         }
         // MUST use for each, MUST NOT change reference of array
         tree.forEach(i => i.visible = false);
-        tree.filter(i => !i.accessRights || i.accessRights.map(r => !!rights.get(r) && rights.get(r).read).reduce((a, b) => a && b, true))
+        tree.filter(i => !i.accessRights || i.accessRights.map(r => this.rightsSrv.canUserPass(r)).reduce((a, b) => a && b, true))
             // MUST use for each, MUST NOT change reference of array
             .forEach(i => {
                 i.visible = true;
-                this.setSideNavVisibility(i.children, rights);
+                this.setSideNavVisibility(i.children);
             });
     }
 
