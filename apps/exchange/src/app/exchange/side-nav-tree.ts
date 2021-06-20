@@ -41,25 +41,25 @@ export const exchangeNavTree: SideNavNode = {
             name: 'EXCHANGE_CURRENCY_DEPOSIT',
             icon: 'fas fa-money-check-alt',
             route: ABS_EXCHANGE_DEPOSIT_URL,
-            accessRights: ['Deposit']
+            accessRights: 'Deposit'
         },
         {
             name: 'EXCHANGE_TRANSFERS',
             icon: 'fas fa-balance-scale-left',
             route: ABS_EXCHANGE_TRANSFER_URL,
-            accessRights: ['Transfer']
+            accessRights: 'Transfer'
         },
         {
             name: 'EXCHANGE_COMMISSIONS',
             icon: 'fas fa-funnel-dollar',
             route: ABS_EXCHANGE_COMMISSION_URL,
-            accessRights: ['Commission']
+            accessRights: 'Commission'
         },
         {
             name: 'EXCHANGE_CURRENCY_EXCHANGE',
             icon: 'fas fa-cash-register',
             route: ABS_EXCHANGE_EXCHANGE_URL,
-            accessRights: ['Exchange']
+            accessRights: 'Exchange'
         },
         {
             name: 'EXCHANGE_GLOBAL_BALANCE',
