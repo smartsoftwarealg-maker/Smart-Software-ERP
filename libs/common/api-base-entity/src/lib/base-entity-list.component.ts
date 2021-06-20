@@ -110,6 +110,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
         this.shellSrv.setButtons([this.defReportButton, this.viewReportButton, this.emailReportButton, this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
+        this.refresh();
     }
 
     public setFilter(fltr: string): void {
