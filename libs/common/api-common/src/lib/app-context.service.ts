@@ -10,56 +10,60 @@ import { switchMap, tap } from 'rxjs/operators';
 })
 
 export class AppContextService {
-    private _context: UserContext = null;
+    private pContext: UserContext = null;
 
     constructor(private httpSrv: HttpService) { }
 
     get context() {
-        return this._context;
+        return this.pContext;
+    }
+
+    get loaded() {
+        return this.pContext != null;
     }
 
     load(): Observable<UserContext> {
         return this.httpSrv
             .get<UserContext>('/context')
             .pipe(switchMap((res: UserContext) => {
-                this._context = res;
-                this._context.manager = !this._context.agentId && !this._context.personId;
+                this.pContext = res;
+                this.pContext.manager = !this.pContext.agentId && !this.pContext.personId;
                 return this.httpSrv.get<{ severe: boolean }>('/rights/severe');
             }),
-                switchMap(res => {
-                    this._context.severe = res.severe;
-                    return of(this._context);
+                switchMap((res: any) => {
+                    this.pContext.severe = res.severe;
+                    return of(this.pContext);
                 }),
-                switchMap(res => {
+                switchMap((res: any) => {
                     const agentObs = this.httpSrv
-                        .get<UserContext>(`/agents/${this._context.agentId}`)
-                        .pipe(tap(next => {
-                            this._context.fullName = next['denomination'];
-                            this._context.pwdExpired = next && next.pwdExpired;
+                        .get<UserContext>(`/agents/${this.pContext.agentId}`)
+                        .pipe(tap((next: any) => {
+                            this.pContext.fullName = next['denomination'];
+                            this.pContext.pwdExpired = next && next.pwdExpired;
                         }),
-                            switchMap(_ => of(this._context)));
+                            switchMap(_ => of(this.pContext)));
                     const personObs = this.httpSrv
-                        .get<Object>(`/persons/${this._context.personId}`)
+                        .get<Object>(`/persons/${this.pContext.personId}`)
                         .pipe(tap(next => {
-                            this._context.fullName = next['firstName'] +
+                            this.pContext.fullName = next['firstName'] +
                                 ' ' +
                                 next['lastName'];
                         }),
-                            switchMap(_ => of(this._context)));
+                            switchMap(_ => of(this.pContext)));
 
                     const userObs = this.httpSrv
-                        .get<User>(`/login/users/${this._context.userId}`)
+                        .get<User>(`/login/users/${this.pContext.userId}`)
                         .pipe(tap((next: User) => {
-                            this._context.fullName = next.fullName;
+                            this.pContext.fullName = next.fullName;
                         }),
-                            switchMap(_ => of(this._context)));
+                            switchMap(_ => of(this.pContext)));
                     return res.agentId ? agentObs : res.personId ? personObs : userObs;
                 }),
-                switchMap(_ => of(this._context)));
+                switchMap(_ => of(this.pContext)));
     }
 
 
     clear() {
-        this._context = null;
+        this.pContext = null;
     }
 }
