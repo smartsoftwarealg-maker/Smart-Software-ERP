@@ -32,7 +32,7 @@ export class SnackBarService {
 
     public showFailureMessage(error?: Error | string) {
         // todo: use the error this parameter
-        console.log(error);
+        //console.log(error);
         return this.showMessage('FAILURE', false, true);
     }
 
