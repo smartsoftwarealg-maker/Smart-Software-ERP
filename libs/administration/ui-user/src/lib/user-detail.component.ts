@@ -54,7 +54,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         private loginSrv: LoginService,
         private centerSrv: CenterService,
         private contextSrv: AppContextService) {
-        super(userSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(userSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
         this.isManager = loginSrv.userSrv.userInfo.user.manager;
     }
 
