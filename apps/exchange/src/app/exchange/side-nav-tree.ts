@@ -18,7 +18,8 @@ export const fileNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: ABS_EXCHANGE_AGENT_URL
+            route: ABS_EXCHANGE_AGENT_URL,
+            accessRights: 'Agent'
         },
         // {
         //     name: 'EXCHANGE_DEPOSIT_TYPES',
@@ -28,7 +29,8 @@ export const fileNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_CURRENCIES',
             icon: 'fas fa-euro-sign',
-            route: ABS_EXCHANGE_CURRENCY_URL
+            route: ABS_EXCHANGE_CURRENCY_URL,
+            accessRights: 'Currency'
         },
     ]
 };
@@ -53,7 +55,7 @@ export const exchangeNavTree: SideNavNode = {
             name: 'EXCHANGE_COMMISSIONS',
             icon: 'fas fa-funnel-dollar',
             route: ABS_EXCHANGE_COMMISSION_URL,
-            accessRights: 'Commission'
+            accessRights: 'Deposit'
         },
         {
             name: 'EXCHANGE_CURRENCY_EXCHANGE',

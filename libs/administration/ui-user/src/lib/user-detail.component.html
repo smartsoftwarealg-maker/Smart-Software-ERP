@@ -54,7 +54,7 @@
 </mat-card>
 
 <mat-accordion>
-    <mat-expansion-panel (opened)="openedPanel = 0">
+    <mat-expansion-panel (opened)="openedPanel = 0" *ngIf="isManager">
         <mat-expansion-panel-header>
             <mat-panel-title [class.opened]="openedPanel == 0">
                 <panel translate>ADMINISTRATION_ROLES</panel>
@@ -85,7 +85,7 @@
             </button>
         </div>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="openedPanel = 1">
+    <mat-expansion-panel (opened)="openedPanel = 1" *ngIf="isManager">
         <mat-expansion-panel-header>
             <mat-panel-title [class.opened]="openedPanel == 1">
                 <panel translate>ADMINISTRATION_CENTERS</panel>

@@ -152,7 +152,7 @@ export class ShellService {
             return null;
         }
         // MUST use for each, MUST NOT change reference of array
-        tree.filter(r => !r.accessRights || this.rightsSrv.canUserPass(r.accessRights))
+        tree.filter(r => r.accessRights == null || this.rightsSrv.canUserPass(r.accessRights))
             // MUST use for each, MUST NOT change reference of array
             .forEach(i => {
                 i.visible = true;
@@ -215,7 +215,9 @@ export class ShellService {
         let hash = 0;
         for (let i = 0; i < len; i++) {
             const chr = text.charCodeAt(i) * 7907; // a prime
+            // tslint:disable-next-line:no-bitwise
             hash = ((hash << 5) - (hash + chr)) + chr;
+            // tslint:disable-next-line:no-bitwise
             hash |= 0; // Convert to 32bit integer
             hash -= chr * 7919; // a prime
         }
