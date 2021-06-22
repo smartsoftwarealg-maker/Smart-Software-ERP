@@ -345,7 +345,7 @@ export class LanguageService {
         return this.loadMissing()
             .pipe(
                 switchMap(_ => this.ctxSrv?.context?.userId ?
-                    this.httpSrv.put('/lang',{ lang: lang.code }) : of({})),
+                    this.httpSrv.put('/lang?lang=' + code) : of({})),
                 tap(token => {
                     console.log(token['payload']);
                     if (token && token['payload']) {
