@@ -9,21 +9,21 @@ import {Observable, of} from 'rxjs';
     providedIn: 'root'
 })
 export class CurrencyService extends BaseEntityService<Currency> {
-    private _currencyList: Currency[] = [];
+    private currencies: Currency[] = [];
 
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, CURRENCY_URL);
     }
 
     get currencyList(): Currency[] {
-        return this._currencyList;
+        return this.currencies;
     }
 
     load(): Observable<Currency[]> {
-        return (this._currencyList.length === 0)?
+        return (this.currencies.length === 0)?
             this.httpSrv
                 .get<Currency[]>(CURRENCY_URL)
-                .pipe(tap(res => this._currencyList = res)) :
-            of(this._currencyList);
+                .pipe(tap((res: Currency[]) => this.currencies = res)) :
+            of(this.currencies);
     }
 }
