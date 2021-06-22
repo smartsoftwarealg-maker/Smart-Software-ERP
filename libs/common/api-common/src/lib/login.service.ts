@@ -9,6 +9,7 @@ import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
 import {UserRightsService} from './user-rights.service';
+import {MainPageService} from './main-page.service';
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -39,7 +40,8 @@ export class LoginService {
                 private decSrv: DecService,
                 public router: Router,
                 private contextSrv: AppContextService,
-                private accessRightsSrv: UserRightsService) {
+                private rightsSrv: UserRightsService,
+                private mainPageSrv: MainPageService) {
     }
 
     get isLoggedIn(): boolean {
@@ -56,7 +58,7 @@ export class LoginService {
                 catchError(err => of(false)),
                 switchMap(_ => this.userSrv.load()),
                 switchMap(_ => this.contextSrv.load()),
-                switchMap(_ => this.accessRightsSrv.load()),
+                switchMap(_ => this.rightsSrv.load()),
                 map(_ => {
                     const failure: boolean = !this.agent && !this.person && !this.loggedIn;
                     if (failure) {
@@ -110,8 +112,8 @@ export class LoginService {
                     this.userSrv.clear();
                     this.contextSrv.clear();
                     // localStorage.clear();
-                    this.accessRightsSrv.clear();
-
+                    this.rightsSrv.clear();
+                    this.mainPageSrv.clear();
                     localStorage.removeItem('auth_token');
                 }
             });

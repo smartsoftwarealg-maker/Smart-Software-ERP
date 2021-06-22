@@ -131,7 +131,7 @@ export class ShellService {
             : node.children.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
     }
 
-    public filterSideNav(rights: Map<string, Right>): void {
+    public filterSideNav(): void {
         this.setSideNavVisibility(this.navData);
         this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
     }
@@ -142,8 +142,12 @@ export class ShellService {
         }
         return tree.filter(i => i.visible)
             .map(i => {
-                i.children = this.filterSideNavByVisibility(i.children);
-                return i;
+                const clone: any = {};
+                for (let p in i) {
+                    clone[p] = i[p];
+                }
+                clone.children = this.filterSideNavByVisibility(i.children);
+                return clone;
             })
     }
 
@@ -152,12 +156,10 @@ export class ShellService {
             return null;
         }
         // MUST use for each, MUST NOT change reference of array
-        tree.filter(r => r.accessRights == null || this.rightsSrv.canUserPass(r.accessRights))
-            // MUST use for each, MUST NOT change reference of array
-            .forEach(i => {
-                i.visible = true;
-                this.setSideNavVisibility(i.children);
-            });
+        tree.forEach(r => {
+            r.visible = !r.accessRights || this.rightsSrv.canUserPass(r.accessRights);
+            this.setSideNavVisibility(r.children);
+        });
     }
 
     public getMenuItems(): string[] {

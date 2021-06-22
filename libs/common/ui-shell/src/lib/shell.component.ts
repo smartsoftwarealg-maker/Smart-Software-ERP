@@ -38,7 +38,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         //     .subscribe(() => this.showSideNav = true);
         this.rightsSrv.load()
             .subscribe(() => {
-                this.shellSrv.filterSideNav(this.rightsSrv.rights);
+                this.shellSrv.filterSideNav();
             })
     }
 

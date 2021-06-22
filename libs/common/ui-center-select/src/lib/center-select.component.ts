@@ -38,7 +38,7 @@ export class CenterSelectComponent implements OnInit {
                 private loginSrv: LoginService,
                 private router: Router,
                 private userSrv: UserService,
-                private accessRightsSrv: UserRightsService,
+                private rightsSrv: UserRightsService,
                 private contextSrv: AppContextService) {
     }
 
@@ -103,7 +103,7 @@ export class CenterSelectComponent implements OnInit {
                 .centerLogin(this.selectedCenter)
                 .pipe(switchMap(() => this.loginSrv.loadUser()),
                       switchMap(_ => this.contextSrv.load()),
-                      switchMap(_ => this.accessRightsSrv.load()))
+                      switchMap(_ => this.rightsSrv.load()))
                 .subscribe(() => {
                         // this.endLoading(); // don't show shit, because we are leaving anyway
                         const dest = this.contextSrv.context && this.contextSrv.context.pwdExpired
