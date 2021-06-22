@@ -362,6 +362,9 @@
             ],
             "@ss/common/ui-traceability": [
                 "libs/common/ui-traceability/src/index.ts"
+            ],
+            "@ss/common/ui-main-page": [
+                "libs/common/ui-main-page/src/index.ts"
             ]
         }
     },
