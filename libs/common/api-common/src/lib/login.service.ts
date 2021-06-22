@@ -9,7 +9,7 @@ import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
 import {UserRightsService} from './user-rights.service';
-import {MainPageService} from '@ss/common/ui-main-page';
+import {MainPageService} from './main-page.service';
 
 export enum LicenseErrorType {
     UserLicense = 1000,

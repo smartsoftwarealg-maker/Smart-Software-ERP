@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
 import { LanguageService } from '@ss/common/ui-lang';
 import { Router } from '@angular/router';
-import { MainPageService } from './main-page.service';
+import { MainPageService } from '@ss/common/api-common';
 
 
 @Component({

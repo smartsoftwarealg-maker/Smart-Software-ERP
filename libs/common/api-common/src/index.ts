@@ -12,3 +12,4 @@ export * from './lib/can-deactivate.service';
 export * from './lib/app-context.service';
 export * from './lib/app-config.service';
 export * from './lib/user-rights.service';
+export * from './lib/main-page.service';
