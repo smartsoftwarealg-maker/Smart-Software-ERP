@@ -3639,37 +3639,6 @@
                 }
             }
         },
-        "administration-api-user": {
-            "projectType": "library",
-            "root": "libs/administration/api-user",
-            "sourceRoot": "libs/administration/api-user/src",
-            "prefix": "ss",
-            "architect": {
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "libs/administration/api-user/tsconfig.lib.json",
-                            "libs/administration/api-user/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**",
-                            "!libs/administration/api-user/**/*"
-                        ]
-                    }
-                },
-                "test": {
-                    "builder": "@nrwl/jest:jest",
-                    "outputs": [
-                        "coverage/libs/administration/api-user"
-                    ],
-                    "options": {
-                        "jestConfig": "libs/administration/api-user/jest.config.js",
-                        "passWithNoTests": true
-                    }
-                }
-            }
-        },
         "payroll-ui-employee-activation": {
             "projectType": "library",
             "root": "libs/payroll/ui-employee-activation",
