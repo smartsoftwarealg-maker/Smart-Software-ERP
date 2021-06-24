@@ -5,7 +5,6 @@ import { CENTER_SELECT_URL, CanActivateService } from '@ss/common/api-common';
 import { CenterSelectComponent } from './center-select.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import {CommonUiLoadingSpinnerModule} from '@ss/common/ui-loading-spinner';
 
 const routes: Routes = [
     {
@@ -20,7 +19,6 @@ const routes: Routes = [
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiLoadingSpinnerModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

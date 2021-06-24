@@ -11,11 +11,7 @@ export * from './lib/can-deactivate.service';
 export * from './lib/app-context.service';
 export * from './lib/app-config.service';
 export * from './lib/user-rights.service';
-<<<<<<< HEAD
 export * from './lib/user-api';
 export * from './lib/language.service';
 export * from './lib/user.service';
-
-=======
 export * from './lib/main-page.service';
->>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487

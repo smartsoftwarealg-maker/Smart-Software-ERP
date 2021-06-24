@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -13,7 +13,7 @@ import {AgentPriceService} from '@ss/logistics/api-agent-price';
     styleUrls: ['./agent-price-detail.component.scss'],
     templateUrl: './agent-price-detail.component.html'
 })
-export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPrice> {
+export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPrice> implements OnInit {
 
 
     constructor(
@@ -41,5 +41,4 @@ export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPr
             descriptionAr: [b.descriptionAr],
         });
     }
-
 }

@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "experimentalDecorators": true,
     "outDir": "../../../dist/out-tsc",
     "target": "es2015",
     "declaration": true,
