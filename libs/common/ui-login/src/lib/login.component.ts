@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
         this.loading = true;
         if (this.loginSrv.customerLogin) {
             this.loginSrv.agentLogin(this.user, this.isPhone, this.onLoadingFinished);
-            console.log('form submitted');
         } else {
             this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
         }

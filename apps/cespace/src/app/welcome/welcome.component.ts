@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import { WelcomeService } from './welcome.service';
 import {CurrencyService} from "@ss/common/api-lookup";
-import {LanguageService} from "@ss/common/api-common";
+import {LanguageService, MainPageService} from "@ss/common/api-common";
 
 
 @Component({
@@ -13,7 +12,7 @@ import {LanguageService} from "@ss/common/api-common";
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    constructor(public srv: WelcomeService,
+    constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
                 private router: Router,
                 public langSrv: LanguageService,
@@ -48,7 +47,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
             this.srv.historyStack.push(node);
             this.srv.display = node.children;
             this.updateGobackButton();
-        } else if (!!node.route) {
+        } else if (node.route) {
             this.router.navigateByUrl(node.route);
         }
     }

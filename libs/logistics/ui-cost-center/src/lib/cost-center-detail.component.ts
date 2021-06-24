@@ -1,13 +1,13 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {CCGroup, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {CostCenter, CostCenterService} from "@ss/logistics/api-cost-center";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
+import {CCGroup, LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {CostCenter, CostCenterService} from '@ss/logistics/api-cost-center';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 
 @Component({

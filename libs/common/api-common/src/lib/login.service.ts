@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
-import {Agent, LoginInfo, Person, User, UserInfo} from './models';
+import {Agent, AppContext, LoginInfo, Person, User, UserInfo} from './models';
 import {DecService} from './dec.service';
-import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
+import {ABS_INDEX_URL, CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {AppContextService} from './app-context.service';
 import {UserRightsService} from './user-rights.service';
@@ -27,12 +27,13 @@ export class LoginService {
     private _userInfo: UserInfo = null;
     public agent: Agent = null;
     public person: Person = null;
-    public user: User;
+    public user: User = null;
+    public appCtx: AppContext = null;
     public hasPassword = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
     private loggedIn = false;
-    private tryAgent = true;
+    private tryAgent = false;
     private tryPerson = true;
     private _customerLogin = false;
 
@@ -135,7 +136,8 @@ export class LoginService {
             .doLogin('/login', user)
             .pipe(switchMap((info: LoginInfo) => {
                 this.httpSrv.updateAuthToken(info.jwt);
-                // localStorage.setItem('auth_token', jwt);
+                HttpService.setAuthToken(info.jwt);
+                this.appCtx = info.ctx;
                 return this.httpSrv
                     .get<any>('/cuser') //User login
                     .pipe(tap((usr) => {
@@ -155,33 +157,18 @@ export class LoginService {
                         localStorage.setItem('userInfo-login', 'true');
                         this.hasPassword = user.password !== '';
                         localStorage.setItem('has-pwd', this.hasPassword + '');
-                        this.router.navigate(['/' + CENTER_SELECT_URL]);
+                        const url = CENTER_SELECT_URL;
+                        this.router.navigate(['/' + url]);
                     }
                     if (onFinish != null) {
                         onFinish();
                     }
                 },
                 error: err => {
-                    if (err.status === 401) {
-                        localStorage.setItem('userInfo-login', 'false');
-                        this.wrongData = !this.licenseErrorType;
-                        if (this.licenseErrorType) {
-                            if (onFinish != null) {
-                                onFinish();
-                            }
-                        } else if (this.tryAgent) {
-                            this.agentLogin(user, isAndroid, onFinish);
-                        } else if (this.tryPerson) {
-                            // this.personLogin(user, isAndroid, onFinish);
-                        } else if (onFinish != null) {
-                            onFinish();
-                        }
-                    } else {
-                        if (onFinish != null) {
-                            onFinish();
-                        }
-                        throw err;
+                    if (onFinish != null) {
+                        onFinish();
                     }
+                    this.wrongData = true;
                 }
             });
     }
@@ -214,9 +201,13 @@ export class LoginService {
         this.wrongData = false;
         this.httpSrv
             .doLogin('/customers/login', user)
-            // .pipe(tap(jwt => localStorage.setItem('auth_token', jwt)),
+            //.pipe(tap(jwt => localStorage.setItem('auth_token', jwt)),
             .pipe(
-                tap(info => this.httpSrv.updateAuthToken(info.jwt))
+                tap(info => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                })
             ).subscribe({
                 next:
                     (info: LoginInfo) => {
@@ -229,7 +220,7 @@ export class LoginService {
                         };
                         localStorage.setItem('agent', JSON.stringify(this.agent));
                         localStorage.setItem('has-pwd', this.hasPassword + '');
-                        const url = CENTER_SELECT_URL;
+                        const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + url]);
                         this.loggedIn = true;
                         this.hasPassword = user.password !== '';
@@ -242,11 +233,7 @@ export class LoginService {
                         if (onFinish != null) {
                             onFinish();
                         }
-                        if (err.status === 401) {
-                            this.wrongData = !this.licenseErrorType;
-                        } else {
-                            throw err;
-                        }
+                        this.wrongData = true;
                     }
             }
         );
