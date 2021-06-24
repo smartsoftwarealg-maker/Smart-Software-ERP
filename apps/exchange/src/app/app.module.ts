@@ -6,15 +6,21 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UiLoginModule } from '@ss/common/ui-login';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
+=======
+import { CommonUiLangModule, LanguageService } from '@ss/common/ui-lang';
+import { CanActivateService, INDEX_PAGE_URL, LOGIN_URL, MAIN_PAGE_URL } from '@ss/common/api-common';
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import {
     ADMINISTRATION_APP_URL, EXCHANGE_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
 
 const routes: Routes = [
     {
@@ -23,7 +29,7 @@ const routes: Routes = [
         children: [
             {
                 path: INDEX_PAGE_URL,
-                component: WelcomeComponent,
+                component: MainPageComponent,
                 canActivate: [CanActivateService]
             },
             {
@@ -44,8 +50,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent,
-        WelcomeComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -57,6 +62,7 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
+        CommonUiMainPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule

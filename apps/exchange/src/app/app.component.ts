@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import {HttpService, LanguageService, UserRightsService} from '@ss/common/api-common';
+=======
+import { HttpService, UserRightsService, CanActivateService } from '@ss/common/api-common';
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487
 import { switchMap } from 'rxjs/operators';
 import { ShellService } from '@ss/common/ui-shell';
 import { administrationNavTree } from './administration/side-nav-tree';
@@ -16,10 +20,13 @@ export class AppComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
         public shellSrv: ShellService,
-        public langSrv: LanguageService) {
+        public langSrv: LanguageService,
+        public currencySrv: CurrencyService,
+        public canActivateSrv: CanActivateService) {
     }
 
     ngOnInit() {
+        this.canActivateSrv.requireLoading(() => this.currencySrv.load());
         this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))

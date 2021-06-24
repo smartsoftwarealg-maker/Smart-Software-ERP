@@ -15,7 +15,7 @@
     "version": "3.0",
     "protocol": "http://",
     "defaultUrl": "localhost:8080",
-    "urlRules0": [
+    "urlRules": [
         {
             "frontend": "?",
             "backend": "192.168.8.200:9999"

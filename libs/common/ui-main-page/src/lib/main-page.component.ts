@@ -1,25 +1,36 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
+<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
 import { WelcomeService } from './welcome.service';
 import {LanguageService} from '@ss/common/api-common';
+=======
+import { MainPageService } from '@ss/common/api-common';
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
 
 
 @Component({
-    selector: 'ss-welcome',
-    templateUrl: './welcome.component.html',
-    styleUrls: ['./welcome.component.scss']
+    selector: 'ss-main-page',
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.scss']
 })
-export class WelcomeComponent implements OnInit, OnDestroy {
+export class MainPageComponent implements OnInit, OnDestroy {
 
+<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
     constructor(public srv: WelcomeService,
                 public shellSrv: ShellService,
                 private router: Router,
                 public langSrv: LanguageService) {
+=======
+    constructor(public srv: MainPageService,
+        public shellSrv: ShellService,
+        private router: Router,
+        public langSrv: LanguageService) {
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
     }
 
     ngOnInit(): void {
-        if (this.srv.display == null) {
+        if (!this.srv.display) {
             this.srv.display = this.shellSrv.navData;
         }
         this.updateGobackButton();
@@ -27,7 +38,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         this.shellSrv.enableSearch(
             'SEARCH_APP',
             e => e.subscribe(
-                f => {
+                (f: string) => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
                         // todo: implement filter here
@@ -69,7 +80,4 @@ export class WelcomeComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.shellSrv.reset();
     }
-
-
-
 }
