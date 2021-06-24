@@ -381,9 +381,6 @@
         "administration-ui-user": {
             "tags": []
         },
-        "administration-api-user": {
-            "tags": []
-        },
         "logistics-api-logistics-common": {
             "tags": []
         },
