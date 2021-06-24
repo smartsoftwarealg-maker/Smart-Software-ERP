@@ -7,7 +7,7 @@ import {
     Company,
     INDEX_PAGE_URL,
     LoginService,
-    PROFILE_PAGE_URL
+    PROFILE_PAGE_URL, UserService
 } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
@@ -36,12 +36,9 @@ export class CenterSelectComponent implements OnInit {
     constructor(private ccListSrv: CenterService,
                 private loginSrv: LoginService,
                 private router: Router,
-<<<<<<< HEAD
                 private accessRightsSrv: UserRightsService,
-=======
                 private userSrv: UserService,
                 private rightsSrv: UserRightsService,
->>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487
                 private contextSrv: AppContextService) {
     }
 

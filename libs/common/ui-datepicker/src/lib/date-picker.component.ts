@@ -6,7 +6,7 @@ import {
     NgControl
 } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { isString, strToDate, removeTimeForDateStr, dateToYmdStr } from "@ss/common/api-common";
+import { isString, strToDate, removeTimeForDateStr, dateToYmdStr } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -24,6 +24,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         private fm: FocusMonitor,
         private elRef: ElementRef<HTMLElement>
     ) {
+        this.onChange = this.nop;
+        this.onTouched = this.nop;
         if (this.ngControl != null) {
             // Setting the value accessor directly (instead of using
             // the providers) to avoid running into a circular import.
@@ -52,9 +54,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.writeValue(obj);
         this.onChange(this.date);
     }
-
-    @Input()
-    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @Input()
     set placeholder(t: string) {
@@ -98,27 +97,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.isDisabled = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
-
     static nextId = 0;
-
-    noopx = (x?: any) => { };
-
-    @ViewChild('textField', { static: true }) textField: ElementRef;
-    onChange: (date: any) => void = this.noopx;
-    onTouched: () => void = this.noopx;
-
-    /** The value of the control. */
-    date: Date;
-
-    /**
-     * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
-     * needs to run change detection.
-     */
-    readonly stateChanges = new Subject<void>();
-    /** The element ID for this control. */
-    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
-
-    /** The placeholder for this control. */
+    onChange: (date: any) => void;
+    onTouched: () => void;
     pPlaceholder: string;
 
     /** Whether the control is focused. */
@@ -133,6 +114,26 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     errorState = false;
     lastErrorState = false;
 
+    @Input()
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+
+    @ViewChild('textField', { static: true }) textField: ElementRef;
+
+
+
+    /** The value of the control. */
+    date: Date;
+
+    /**
+     * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
+     * needs to run change detection.
+     */
+    readonly stateChanges = new Subject<void>();
+    /** The element ID for this control. */
+    @HostBinding() readonly id = `ss-date-picker-${DatePickerComponent.nextId++}`;
+
+    /** The placeholder for this control. */
+
     /**
      * An optional name for the control type that can be used to distinguish `mat-form-field` elements
      * based on their control type. The form field will add a class,
@@ -144,11 +145,14 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
      * control it is assumed to be false.
      */
     readonly autofilled = false;
+
     /**
      * Value of `aria-describedby` that should be merged with the described-by ids
      * which are set by the form-field.
      */
-    @Input('aria-describedby') userAriaDescribedBy: string;
+    // @Input('aria-describedby') userAriaDescribedBy: string;
+
+    nop = (x?: any) => { };
 
 
     /** Sets the list of element IDs that currently describe this control. */

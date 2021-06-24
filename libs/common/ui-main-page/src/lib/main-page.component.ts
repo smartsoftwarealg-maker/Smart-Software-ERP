@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
-import { WelcomeService } from './welcome.service';
 import {LanguageService} from '@ss/common/api-common';
-=======
 import { MainPageService } from '@ss/common/api-common';
->>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
 
 
 @Component({
@@ -15,18 +11,10 @@ import { MainPageService } from '@ss/common/api-common';
     styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit, OnDestroy {
-
-<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
-    constructor(public srv: WelcomeService,
+    constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
                 private router: Router,
                 public langSrv: LanguageService) {
-=======
-    constructor(public srv: MainPageService,
-        public shellSrv: ShellService,
-        private router: Router,
-        public langSrv: LanguageService) {
->>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
     }
 
     ngOnInit(): void {
@@ -56,7 +44,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
             this.srv.historyStack.push(node);
             this.srv.display = node.children;
             this.updateGobackButton();
-        } else if (!!node.route) {
+        } else if (node.route) {
             this.router.navigateByUrl(node.route);
         }
     }
