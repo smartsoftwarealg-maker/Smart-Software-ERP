@@ -14,9 +14,9 @@ export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
         super(httpSrv, EXCHANGE_DEPOSIT_URL);
     }
 
-    getHistory(id: number, page: number, limit: number): Observable<History[]> {
+    getHistory(id: number, page: number, limit: number): Observable<{ itemCount: number, body: History[] }> {
         const url = `/exchanges/history?id=${id}&page=${page}-${limit}`;
-        return this.httpSrv.get<History[]>(url);
+        return this.httpSrv.getData<History>(url, page, limit);
     }
 
     getCommissions(id: number, page: number, limit: number): Observable<Commission[]> {

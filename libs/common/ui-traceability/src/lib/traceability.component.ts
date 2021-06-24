@@ -3,7 +3,7 @@ import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {FormControl, FormGroup} from "@angular/forms";
-import {PaginationModel} from "@ss/common/ui-pagination";
+import {PaginationModel} from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
 

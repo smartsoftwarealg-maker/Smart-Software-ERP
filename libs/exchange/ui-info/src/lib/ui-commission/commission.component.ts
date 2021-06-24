@@ -1,6 +1,6 @@
 import {Component, OnInit,} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {Commission, CurrencyDepositService} from '@ss/exchange/api-currency-deposit';
 

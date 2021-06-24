@@ -2,10 +2,10 @@ import { Directive, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToolbarButton, ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
-import { BaseEntityService } from './base-entity.service';
 import { Observable, of } from 'rxjs';
 import { switchMap, take, takeLast, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {

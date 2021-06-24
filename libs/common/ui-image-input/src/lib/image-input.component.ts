@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { LanguageService } from '@ss/common/ui-lang';
+import {LanguageService} from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-image-input',
@@ -21,7 +21,10 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     public url: string;
     public safeUrl: SafeUrl;
 
-    constructor(private ref: ElementRef, public langSrv: LanguageService, private sanitizer: DomSanitizer, private renderer: Renderer2) {
+    constructor(private ref: ElementRef,
+                public langSrv: LanguageService,
+                private sanitizer: DomSanitizer,
+                private renderer: Renderer2) {
     }
 
     @Input()

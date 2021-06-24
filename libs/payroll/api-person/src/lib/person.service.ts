@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Person, PERSONS_PHOTO_URL, PERSONS_URL} from './person-api';
-import {HttpService} from '@ss/common/api-common';
-import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
+import {BaseEntityService} from '@ss/common/api-base-entity';
+import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
     providedIn: 'root'

@@ -9,6 +9,7 @@ import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {LoginService} from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-deposit-list',
@@ -32,6 +33,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     ];
 
     constructor(
+        private loginSrv: LoginService,
         private depositTypeSrv: DepositTypeService,
         private currencySrv: CurrencyService,
         public exchangeSrv: CurrencyDepositService,
@@ -69,5 +71,12 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         this.selectedAgent = e? e.customerId || 0 : 0;
         this.editButton.disabled = !e || !e.id || e.isTransfer;
         this.deleteButton.disabled = !e || !e.id || e.isTransfer;
+    }
+
+    ngOnInit() {
+        this.editButton.visible = this.loginSrv.userInfo?.user.id > 0;
+        this.addButton.visible = this.loginSrv.userInfo?.user.id > 0;
+        this.deleteButton.visible = this.loginSrv.userInfo?.user.id > 0;
+        super.ngOnInit();
     }
 }

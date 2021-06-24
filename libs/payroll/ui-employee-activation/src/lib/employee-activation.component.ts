@@ -1,11 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseEntityListComponent } from '@ss/common/api-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {HttpService, LanguageService} from '@ss/common/api-common';
 import { LookupsService, EmploymentType, SuspensionReason } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
-import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
 import { EmployeeActivation, EmployeeActivationService, PersonService, Person as IPerson } from '@ss/payroll/api-person';
 import { Observable, of } from 'rxjs';

@@ -9,8 +9,9 @@ import {InventoryService} from '@ss/stock/api-inventory';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {User, UserService} from '@ss/common/api-users';
 import {Transaction} from '@ss/logistics/api-transaction';
+import {User} from '@ss/common/api-common';
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Transact
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserService,
+        public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY');
     }

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 
 export const EXCHANGE_EXCHANGE_URL = '/exchanges';
 

@@ -3,7 +3,7 @@
         <mat-form-field class="default-33 sm-100">
             <mat-label translate>STOCK_STORE</mat-label>
             <ss-auto-complete matInput
-                              required
+                              [required]="true"
                               [model]="storeAutoCompleteModel"
                               formControlName="storeId"></ss-auto-complete>
             <mat-error

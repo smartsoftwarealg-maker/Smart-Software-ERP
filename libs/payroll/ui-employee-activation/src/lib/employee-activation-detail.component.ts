@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
 import { ActivatedRoute } from '@angular/router';
-import { UserService, dateToYmdStr } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { EmployeeActivationComponent } from './employee-activation.component';
 import { Observable, of } from 'rxjs';
@@ -18,7 +17,7 @@ import { tap, switchMap, map } from 'rxjs/operators';
     styleUrls: ['./employee-activation-detail.component.scss']
 })
 export class EmployeeActivationDetailComponent implements OnInit, OnDestroy {
-    
+
     employmentTypes: EmploymentType[];
     suspensionReasons: SuspensionReason[];
     public form: FormGroup = null;
@@ -40,7 +39,6 @@ export class EmployeeActivationDetailComponent implements OnInit, OnDestroy {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
-        public userSrv: UserService,
         public lookupsSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
     }

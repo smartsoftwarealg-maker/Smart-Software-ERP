@@ -11,7 +11,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="agentAutoCompleteModel"
                                   formControlName="customerId"></ss-auto-complete>
                 <mat-error *ngIf="form.controls.customerId.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -21,7 +21,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="typeAutoCompleteModel"
                                   formControlName="depositType"></ss-auto-complete>
                 <mat-error *ngIf="form.controls.depositType.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -36,7 +36,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CURRENCY</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="currencyAutoCompleteModel"
                                   formControlName="currencyId"></ss-auto-complete>
                 <mat-error *ngIf="form.controls.currencyId.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>

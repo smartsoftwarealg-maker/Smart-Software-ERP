@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+import {HttpService, LanguageService, UserRightsService} from '@ss/common/api-common';
+=======
 import { HttpService, UserRightsService, CanActivateService } from '@ss/common/api-common';
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487
 import { switchMap } from 'rxjs/operators';
-import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService } from '@ss/common/ui-shell';
 import { administrationNavTree } from './administration/side-nav-tree';
 import { fileNavTree, exchangeNavTree } from './exchange/side-nav-tree';
-import { CurrencyService } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-root',

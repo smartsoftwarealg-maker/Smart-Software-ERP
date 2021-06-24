@@ -4,7 +4,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Circulation, CIRCULATION_URL} from "./circulation-api";
 import {ARTICLES_URL} from "@ss/stock/api-article";
 import {Observable} from "rxjs";
-import {PaginationModel} from "@ss/common/ui-pagination";
+import {PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from "@angular/common/http";
 import {map} from "rxjs/operators";
 

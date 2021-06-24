@@ -8,9 +8,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap, switchMap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {User, UserService} from '@ss/common/api-users';
 import {DeliveryService} from '@ss/sales/api-delivery';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,6 +17,7 @@ import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import'
 import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -53,7 +53,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserService,
+        public usersService: UserListService,
         public lookupsSrv: LookupsService,
         private agentService: AgentService,
         private loginService: LoginService,
@@ -80,12 +80,12 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
         if (!b.id) {
             b.id = 0;
             b.number = 0;
-            b.userID = this.loginService.userSrv.userInfo.user.id;
+            b.userID = this.loginService.userInfo.user.id;
             b.dealer = b.userID;
             b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.delivery = b;
-        this.isManager = this.loginService.userSrv.userInfo.user.manager;
+        this.isManager = this.loginService.userInfo.user.manager;
         this.importBtn.disabled = b.agent == null || b.agent === undefined;
         return this.formBuilder.group({
             id: [b.id],

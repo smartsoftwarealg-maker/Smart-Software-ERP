@@ -8,12 +8,12 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {User, UserService} from '@ss/common/api-users';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
-import {LoginService} from '@ss/common/api-common';
+import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {UserListService} from "@ss/common/api-users";
 
 
 @Component({
@@ -36,7 +36,7 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserService,
+        public usersService: UserListService,
         public agentService: AgentService,
         public lookupsSrv: LookupsService,
         public readonly loginSrv: LoginService,

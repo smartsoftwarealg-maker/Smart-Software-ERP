@@ -4,10 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -47,7 +46,7 @@ export class InventoryListComponent extends BaseEntityListComponent<Transaction>
 
     processLoadedData(data: Transaction[]): Observable<Transaction[]> {
         return this.usersService.getAll(data.map(x => x.dealer))
-            .pipe(tap(x => this.onDealersLoaded(x)))
+            .pipe(tap((x:any) => this.onDealersLoaded(x)))
             .pipe(switchMap(() => {
                 const parsedData = data.map(x => {
                     x.date = this.langServ.formatDate(x.date);

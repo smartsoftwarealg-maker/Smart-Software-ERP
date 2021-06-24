@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToolbarButton, ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { EmploymentType, EmploymentTypeService, LookupsService, SuspensionReason } from '@ss/common/api-lookup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
 import { ActivatedRoute } from '@angular/router';
-import { UserService, dateToYmdStr } from '@ss/common/api-common';
+import { dateToYmdStr } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { EmployeeActivationComponent } from './employee-activation.component';
 import { Observable, of } from 'rxjs';
@@ -18,7 +18,7 @@ import { tap, switchMap, map } from 'rxjs/operators';
     styleUrls: ['./employee-deactivation-form.component.scss']
 })
 export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
-    
+
     employmentTypes: EmploymentType[];
     suspensionReasons: SuspensionReason[];
     public form: FormGroup = null;
@@ -40,7 +40,6 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
-        public userSrv: UserService,
         public lookupsSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService) {
     }

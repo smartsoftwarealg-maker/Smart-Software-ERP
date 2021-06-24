@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
-import {HttpService} from "@ss/common/api-common";
-import {PURCHASE_DETAIL, PURCHASE_URL} from "./reception-api";
-import {TransactionLine} from "@ss/logistics/api-transaction";
+import {HttpService} from '@ss/common/api-common';
+import {PURCHASE_DETAIL, PURCHASE_URL} from './reception-api';
+import {TransactionLine} from '@ss/logistics/api-transaction';
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 
 @Injectable({
   providedIn: 'root'

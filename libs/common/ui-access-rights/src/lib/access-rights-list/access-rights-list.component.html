@@ -4,7 +4,7 @@
             <mat-label><span translate>COMMON_SELECT_APP</span></mat-label>
             <mat-select (selectionChange)="setApp($event)">
                 <mat-option *ngFor="let app of apps" [value]="app">
-                    <spn translate> COMMON_{{ app }} </spn>
+                    <span translate> COMMON_{{ app }} </span>
                 </mat-option>
             </mat-select>
         </mat-form-field>

@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
-import { LanguageService } from '@ss/common/ui-lang';
 import { Router } from '@angular/router';
+<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
+import { WelcomeService } from './welcome.service';
+import {LanguageService} from '@ss/common/api-common';
+=======
 import { MainPageService } from '@ss/common/api-common';
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
 
 
 @Component({
@@ -12,10 +16,17 @@ import { MainPageService } from '@ss/common/api-common';
 })
 export class MainPageComponent implements OnInit, OnDestroy {
 
+<<<<<<< HEAD:apps/erp/src/app/welcome/welcome.component.ts
+    constructor(public srv: WelcomeService,
+                public shellSrv: ShellService,
+                private router: Router,
+                public langSrv: LanguageService) {
+=======
     constructor(public srv: MainPageService,
         public shellSrv: ShellService,
         private router: Router,
         public langSrv: LanguageService) {
+>>>>>>> c79d908ccc496b1b65980d75de07aca1af7a7487:libs/common/ui-main-page/src/lib/main-page.component.ts
     }
 
     ngOnInit(): void {

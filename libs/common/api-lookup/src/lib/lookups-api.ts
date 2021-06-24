@@ -1,6 +1,3 @@
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {User} from '@ss/common/api-users';
-
 export const VATS_URL = '/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const WILAYAS_URL = '/lookups/wilayas';

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
-import { LanguageService } from '@ss/common/ui-lang';
 import { ShellService, SideNavNode } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { AppContextService, User, UserRightsService, UserService } from '@ss/common/api-common';
+import {AppContextService, LanguageService, UserRightsService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shell',
@@ -24,7 +23,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     constructor(public langSrv: LanguageService,
         public shellSrv: ShellService,
         protected cdRef: ChangeDetectorRef,
-        protected usersSrv: UserService,
         private rightsSrv: UserRightsService,
         public contextSrv: AppContextService) { }
 

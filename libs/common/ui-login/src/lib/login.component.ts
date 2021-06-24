@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService, LicenseErrorType } from '@ss/common/api-common';
+import {LoginService, LicenseErrorType, ABS_INDEX_URL} from '@ss/common/api-common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { finalize } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'ss-login',
@@ -19,7 +20,10 @@ export class LoginComponent implements OnInit {
     loading = false;
     updating = false;
 
-    constructor(private loginSrv: LoginService, private formBuilder: FormBuilder, protected deviceSrv: DeviceDetectorService) {
+    constructor(public loginSrv: LoginService,
+                private formBuilder: FormBuilder,
+                public router: Router,
+                protected deviceSrv: DeviceDetectorService) {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
         this.isPhone = this.deviceSrv.isMobile() || this.deviceSrv.isTablet() || os === 'android' || os === 'ios';
     }
@@ -39,7 +43,9 @@ export class LoginComponent implements OnInit {
                 this.user = {username: '', password: ''};
             }
         }
-        this.loginSrv.skipLogin();
+        if (this.loginSrv.isLoggedIn) {
+            this.router.navigate([ABS_INDEX_URL]).then();
+        }
     }
 
     public onSubmit() {
@@ -48,44 +54,13 @@ export class LoginComponent implements OnInit {
         this.user.password = tmp.pass;
         //
         this.loading = true;
-        if (this.license && this.loginSrv.licenseErrorType) {
-            if (this.loginSrv.licenseErrorType === LicenseErrorType.UserLicense) {
-                this.updating = true;
-                this.loginSrv
-                    .updateUserLicense(this.license)
-                    .pipe(finalize(() => this.updating = false))
-                    .subscribe(() => {
-                        this.updating = false;
-                        this.license = null;
-                        this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
-                    });
-            } else {
-                if (this.loginSrv.licenseErrorType === LicenseErrorType.PersonLicense) {
-                    this.updating = true;
-                    this.loginSrv
-                        .updatePersonLicense(this.license)
-                        .pipe(finalize(() => this.updating = false))
-                        .subscribe(() => {
-                            this.updating = false;
-                            this.license = null;
-                            this.loginSrv.personLogin(this.user, this.isPhone, this.onLoadingFinished);
-                        });
-                } else if (this.loginSrv.licenseErrorType === LicenseErrorType.AgentLicense) {
-                    this.updating = true;
-                    this.loginSrv
-                        .updateAgentLicense(this.license)
-                        .pipe(finalize(() => this.updating = false))
-                        .subscribe(() => {
-                            this.updating = false;
-                            this.license = null;
-                            this.loginSrv.agentLogin(this.user, this.isPhone, this.onLoadingFinished);
-                        });
-                }
-            }
+        if (this.loginSrv.customerLogin) {
+            this.loginSrv.agentLogin(this.user, this.isPhone, this.onLoadingFinished);
+            console.log('form submitted');
         } else {
             this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
-            localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
         }
+        localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
     }
 
     onLoadingFinished = () => {

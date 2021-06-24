@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { MARITAL_STATUS_URL, MaritalStatus } from './lookups-api';
-import { BaseEntityService } from '@ss/common/api-base-entity';
+import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Injectable({
     providedIn: 'root'

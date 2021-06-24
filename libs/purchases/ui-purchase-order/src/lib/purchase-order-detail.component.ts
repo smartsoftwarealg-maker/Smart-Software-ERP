@@ -8,13 +8,13 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {User, UserService} from '@ss/common/api-users';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {UserListService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-ui-order-detail',
@@ -36,7 +36,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 public route: ActivatedRoute,
                 public formBuilder: FormBuilder,
                 public confirmationSrv: ConfirmationDialogService,
-                public usersService: UserService,
+                public usersService: UserListService,
                 public lookupsSrv: LookupsService,
                 private agentService: AgentService,
                 private loginService: LoginService,
@@ -55,12 +55,12 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         if (!form.id) {
             form.id = 0;
             form.number = 0;
-            form.userID = this.loginService.userSrv.userInfo.user.id;
+            form.userID = this.loginService.userInfo.user.id;
             form.dealer = form.userID;
             form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.order = form;
-        this.isManager = this.loginService.userSrv.userInfo.user.manager;
+        this.isManager = this.loginService.userInfo.user.manager;
         return this.formBuilder.group({
             id: [form.id],
             document: [0],

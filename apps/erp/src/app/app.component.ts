@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
 import {stockNavTree} from './stock/side-nav-tree';
 import {payrollNavTree} from './payroll/side-nav-tree';

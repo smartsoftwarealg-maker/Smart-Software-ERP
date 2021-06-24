@@ -4,10 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Consumption, ConsumptionService} from '@ss/stock/api-consumption';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
@@ -49,9 +48,9 @@ export class ConsumptionListComponent extends BaseEntityListComponent<Consumptio
 
     processLoadedData(data: Consumption[]): Observable<Consumption[]> {
         return this.usersService.getAll(data.map(x => x.dealer))
-            .pipe(tap(x => this.onDealersLoaded(x)))
+            .pipe(tap((x:any) => this.onDealersLoaded(x)))
             .pipe(switchMap(() => this.agentService.getAll(data.map(x => x.agent))))
-            .pipe(tap(x => this.onAgentsLoaded(x)))
+            .pipe(tap((x:any) => this.onAgentsLoaded(x)))
             .pipe(switchMap(() => {
                 const parsedData = data.map(x => {
                     x.date = this.langServ.formatDate(x.date);

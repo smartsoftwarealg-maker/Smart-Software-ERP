@@ -4,7 +4,7 @@ import {PayMethod, PayMode} from '@ss/common/api-lookup';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable} from 'rxjs';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
 
 export const MPAY_URL = '/mpay';

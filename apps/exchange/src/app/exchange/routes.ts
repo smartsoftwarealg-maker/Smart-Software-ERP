@@ -23,7 +23,6 @@ import {
     DepositDetailComponent,
     DepositListComponent
 } from '@ss/exchange/ui-currency-deposit';
-import {DepositTypeDetailComponent, DepositTypeListComponent} from '@ss/exchange/ui-deposit-type';
 import {
     BalanceComponent,
     CbalanceComponent,
@@ -107,24 +106,6 @@ export const mainRoutes: Routes = [
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: EXCHANGE_DEPOSIT_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: DepositTypeListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: DepositTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {

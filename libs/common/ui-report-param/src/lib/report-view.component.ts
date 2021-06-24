@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {ReportTreeService} from '@ss/common/api-reports';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-report-param';
 import {Observable} from 'rxjs';
@@ -65,7 +65,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         // private file: File,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private sanitizer: DomSanitizer,
+        public sanitizer: DomSanitizer,
         public langSrv: LanguageService,
         public defReportSrv: DefaultReportService,
         private deviceService: DeviceDetectorService) {

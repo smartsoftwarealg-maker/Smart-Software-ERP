@@ -1,13 +1,12 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {UserService} from "@ss/common/api-common";
-import {Company, CompanyService} from "@ss/administration/api-company";
-import {MatExpansionPanel} from "@angular/material/expansion";
+import {LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Company, CompanyService} from '@ss/administration/api-company';
+import {MatExpansionPanel} from '@angular/material/expansion';
 
 
 @Component({
@@ -76,15 +75,15 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 
     public isContactSectionInvalid(): boolean {
         return this.isTouchedAndInvalid(this.form.controls['email']) ||
-            this.isTouchedAndInvalid(this.form.controls["website"]);
+            this.isTouchedAndInvalid(this.form.controls['website']);
     }
 
 
     public isSectionInvalid(section): boolean {
         switch (section) {
-            case "main":
+            case 'main':
                 return this.isMainSectionInvalid();
-            case "contact":
+            case 'contact':
                 return this.isContactSectionInvalid();
             default:
                 return false;
@@ -94,14 +93,14 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (this.isSectionInvalid(section)) {
-            return "b-warn-expansion-panel";
+            return 'b-warn-expansion-panel';
         }
 
         // if expanded return primary background class
         if (panel.expanded)
-            return "b-primary-expansion-panel"
+            return 'b-primary-expansion-panel'
         else
-            return "";
+            return '';
     }
 
 

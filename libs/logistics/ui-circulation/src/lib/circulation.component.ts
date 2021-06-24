@@ -4,8 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Circulation, CirculationService} from "@ss/logistics/api-circulation";
 import {ArticleService} from "@ss/stock/api-article";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {LanguageService} from "@ss/common/ui-lang";
+import {PaginationModel} from '@ss/common/api-common';
+import {LanguageService} from '@ss/common/api-common';
 import {Observable} from "rxjs";
 
 @Component({

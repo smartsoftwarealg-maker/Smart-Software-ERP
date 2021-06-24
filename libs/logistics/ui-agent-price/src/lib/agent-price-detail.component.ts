@@ -1,12 +1,11 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
-import {AgentPrice, LookupsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {UserService} from "@ss/common/api-common";
-import {AgentPriceService} from "@ss/logistics/api-agent-price";
+import {AgentPrice, LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {AgentPriceService} from '@ss/logistics/api-agent-price';
 
 
 @Component({

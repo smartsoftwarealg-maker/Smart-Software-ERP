@@ -4,11 +4,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryExit, InventoryExitService} from '@ss/stock/api-inventory-exit';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {User} from '@ss/common/api-common';
+import {UserListService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-inventory-exit-list',
@@ -35,7 +36,7 @@ export class InventoryExitListComponent extends BaseEntityListComponent<Inventor
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public usersService: UserService,
+        public usersService: UserListService,
         public langServ: LanguageService,
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {

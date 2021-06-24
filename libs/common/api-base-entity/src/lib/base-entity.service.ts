@@ -1,8 +1,7 @@
 import {map} from 'rxjs/operators';
-import {HttpService, isString} from '@ss/common/api-common';
-import {PaginationModel} from '@ss/common/ui-pagination';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import {HttpService, isString, PaginationModel} from "@ss/common/api-common";
 
 export class BaseEntityService<T> {
 
@@ -48,7 +47,7 @@ export class BaseEntityService<T> {
     }
 
     public save(a: T): Observable<number> {
-        return a['id'] ? this.update(a) : this.add(a);
+        return (a as any).id ? this.update(a) : this.add(a);
     }
 
     public update(a: T): Observable<number> {
@@ -68,5 +67,4 @@ export class BaseEntityService<T> {
 
         return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;
     }
-
 }

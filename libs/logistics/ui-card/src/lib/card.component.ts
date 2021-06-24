@@ -4,12 +4,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/stock/api-article';
-import {PaginationModel} from '@ss/common/ui-pagination';
-import {LanguageService} from '@ss/common/ui-lang';
+import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Lot} from '@ss/common/api-lookup';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-card',

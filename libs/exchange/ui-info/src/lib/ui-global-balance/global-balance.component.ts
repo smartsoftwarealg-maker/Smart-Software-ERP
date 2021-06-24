@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {
     GBalance,
@@ -18,7 +18,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
                 '../../../../../common/assets/src/assets/main-container.scss'],
     templateUrl: './global-balance.component.html'
 })
-export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance>{
+export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
     agentId = 0;
     data: GBalance[] = [];
 
@@ -51,17 +51,17 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance>{
     }
 
 
-    ngOnInit() {
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
-        super.ngOnInit();
-        this.pagination.pageSize = 5;
-        this.route
-            .queryParams
-            .pipe(switchMap(params => {
-                this.agentId = +params.id || 0;
-                return this.exchangeSrv.getGBalance(this.pagination.page - 1, this.pagination.pageSize);
-            })).subscribe( res => this.data = res);
-    }
+    // ngOnInit() {
+    //     this.editButton.visible = false;
+    //     this.addButton.visible = false;
+    //     this.deleteButton.visible = false;
+    //     super.ngOnInit();
+    //     this.pagination.pageSize = 5;
+    //     this.route
+    //         .queryParams
+    //         .pipe(switchMap(params => {
+    //             this.agentId = +params.id || 0;
+    //             return this.exchangeSrv.getGBalance(this.pagination.page - 1, this.pagination.pageSize);
+    //         })).subscribe( res => this.data = res);
+    // }
 }

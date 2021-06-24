@@ -9,7 +9,8 @@ import {InventoryEntry, InventoryEntryService} from '@ss/stock/api-inventory-ent
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {User, UserService} from '@ss/common/api-users';
+import {User} from '@ss/common/api-common';
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Inv
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserService,
+        public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_ENTRY');
     }

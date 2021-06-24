@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ConfirmationDialogComponent} from './confirmation-dialog.component';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService} from '@ss/common/api-common';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
-export interface ConfirmationResult {
-    result: boolean;
-    reason: string;
-    checkbox: boolean;
-}
 
 @Injectable({
     providedIn: 'root'

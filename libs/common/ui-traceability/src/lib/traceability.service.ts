@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BaseEntityService} from "@ss/common/api-base-entity";
 import {dateStrToDmy, dateToYmdStr, HttpService} from "@ss/common/api-common";
 import {ShellService} from "@ss/common/ui-shell";
 import {Observable, of} from 'rxjs';
 import {HttpParams} from "@angular/common/http";
-import {map} from "rxjs/operators";
 
 
 export interface LogNode {

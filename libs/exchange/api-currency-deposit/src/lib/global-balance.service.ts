@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {EXCHANGE_GBALANCE_URL, GBalance} from "./models";
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
+import {HttpService} from '@ss/common/api-common';
 
 
 @Injectable({

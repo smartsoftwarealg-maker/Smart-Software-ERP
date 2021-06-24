@@ -5,7 +5,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
 import {Observable} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/ui-pagination';
+import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {Lot, LotsService} from '@ss/common/api-lookup';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { User } from './models';
-import { UserContext } from './models';
+import { AppContext } from './models';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { switchMap, tap } from 'rxjs/operators';
 })
 
 export class AppContextService {
-    private pContext: UserContext = null;
+    private pContext: AppContext = null;
 
     constructor(private httpSrv: HttpService) { }
 
@@ -22,10 +22,10 @@ export class AppContextService {
         return this.pContext != null;
     }
 
-    load(): Observable<UserContext> {
+    load(): Observable<AppContext> {
         return this.httpSrv
-            .get<UserContext>('/context')
-            .pipe(switchMap((res: UserContext) => {
+            .get<AppContext>('/context')
+            .pipe(switchMap((res: AppContext) => {
                 this.pContext = res;
                 this.pContext.manager = !this.pContext.agentId && !this.pContext.personId;
                 return this.httpSrv.get<{ severe: boolean }>('/rights/severe');
@@ -36,7 +36,7 @@ export class AppContextService {
                 }),
                 switchMap((res: any) => {
                     const agentObs = this.httpSrv
-                        .get<UserContext>(`/agents/${this.pContext.agentId}`)
+                        .get<AppContext>(`/agents/${this.pContext.agentId}`)
                         .pipe(tap((next: any) => {
                             this.pContext.fullName = next['denomination'];
                             this.pContext.pwdExpired = next && next.pwdExpired;
