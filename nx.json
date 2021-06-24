@@ -437,6 +437,13 @@
         "common-ui-access-rights": {
             "tags": []
         },
+        "cespace": {
+            "tags": []
+        },
+        "cespace-e2e": {
+            "tags": [],
+            "implicitDependencies": ["cespace"]
+        },
         "common-api-access-rights": {
             "tags": []
         },

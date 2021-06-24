@@ -1,5 +1,4 @@
 <div class="cc-container">
-    <ss-loading-spinner *ngIf="loading"></ss-loading-spinner>
     <mat-vertical-stepper [ngClass]="{'hidden-stepper': loading}" (selectionChange)="onStepSelectionChanged($event)" [linear]="true" class="stepper locale-dir" #stepper>
         <ng-template matStepperIcon="edit" let-index="index">
             {{index + 1}}
@@ -27,7 +26,6 @@
             <ng-template matStepLabel>
                 <span style="user-select: none" translate>COMMON_SELECT_CENTER</span>
             </ng-template>
-            <ss-loading-spinner *ngIf="loadingCenters"></ss-loading-spinner>
             <div *ngIf="!loadingCenters">
                 <mat-form-field style="width: 90%">
                     <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">

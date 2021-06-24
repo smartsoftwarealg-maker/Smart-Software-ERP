@@ -157,8 +157,8 @@ export class LoginService {
                         localStorage.setItem('userInfo-login', 'true');
                         this.hasPassword = user.password !== '';
                         localStorage.setItem('has-pwd', this.hasPassword + '');
-                        const url = CENTER_SELECT_URL;
-                        this.router.navigate(['/' + url]);
+                        const url = this.appCtx.center? INDEX_PAGE_URL: CENTER_SELECT_URL;
+                        this.router.navigate(['/' + CENTER_SELECT_URL]);
                     }
                     if (onFinish != null) {
                         onFinish();
@@ -221,7 +221,7 @@ export class LoginService {
                         localStorage.setItem('agent', JSON.stringify(this.agent));
                         localStorage.setItem('has-pwd', this.hasPassword + '');
                         const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-                        this.router.navigate(['/' + url]);
+                        this.router.navigate(['/' + CENTER_SELECT_URL]);
                         this.loggedIn = true;
                         this.hasPassword = user.password !== '';
                         if (onFinish != null) {
