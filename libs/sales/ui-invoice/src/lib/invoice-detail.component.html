@@ -27,7 +27,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="agentAutoCompleteModel"
                                   formControlName="agent"></ss-auto-complete>
 <!--                <mat-error-->
@@ -41,7 +41,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_PAY_METHOD</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="payModeAutoCompleteModel"
                                   formControlName="payMethod"></ss-auto-complete>
                 <mat-error
@@ -56,7 +56,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>STOCK_DEALER</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="dealerAutoCompleteModel"
                                   formControlName="dealer"></ss-auto-complete>
                 <mat-error

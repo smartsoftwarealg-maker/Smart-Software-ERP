@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
-import {HttpService} from "@ss/common/api-common";
-import {DELIVERY_CANCELLATION_URL} from "./delivery-cancellation-api";
-import {DELIVERY_LINE_URL, DeliveryLine} from "@ss/sales/api-delivery-lines";
+import {HttpService} from '@ss/common/api-common';
+import {DELIVERY_CANCELLATION_URL} from './delivery-cancellation-api';
+import {DELIVERY_LINE_URL, DeliveryLine} from '@ss/sales/api-delivery-lines';
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 
 @Injectable({
   providedIn: 'root'

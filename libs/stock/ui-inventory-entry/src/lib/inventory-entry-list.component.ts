@@ -4,10 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntry, InventoryEntryService} from '@ss/stock/api-inventory-entry';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({
@@ -45,7 +44,7 @@ export class InventoryEntryListComponent extends BaseEntityListComponent<Invento
 
     processLoadedData(data: InventoryEntry[]): Observable<InventoryEntry[]> {
         return this.usersService.getAll(data.map(x => x.dealer))
-            .pipe(tap(x => this.onDealersLoaded(x)))
+            .pipe(tap((x: any) => this.onDealersLoaded(x)))
             .pipe(switchMap(() => {
                 const parsedData = data.map(x => {
                     x.date = this.langServ.formatDate(x.date);

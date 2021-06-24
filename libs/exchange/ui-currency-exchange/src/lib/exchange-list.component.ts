@@ -5,7 +5,7 @@ import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {Observable} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -39,7 +39,6 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public lookupSrv: LookupsService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         private currencySrv: CurrencyService) {

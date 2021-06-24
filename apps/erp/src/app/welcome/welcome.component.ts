@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
-import { LanguageService } from '@ss/common/ui-lang';
 import { Router } from '@angular/router';
 import { WelcomeService } from './welcome.service';
+import {LanguageService} from '@ss/common/api-common';
 
 
 @Component({
@@ -12,7 +12,10 @@ import { WelcomeService } from './welcome.service';
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-    constructor(public srv: WelcomeService, public shellSrv: ShellService, private router: Router, public langSrv: LanguageService) {
+    constructor(public srv: WelcomeService,
+                public shellSrv: ShellService,
+                private router: Router,
+                public langSrv: LanguageService) {
     }
 
     ngOnInit(): void {

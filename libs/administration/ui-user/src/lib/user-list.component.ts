@@ -3,9 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {User, UserService} from '@ss/common/api-users';
-import {LoginService} from '@ss/common/api-common';
+import {LoginService, User} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {UserListService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-bank-list',
@@ -14,14 +14,14 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 })
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {
     isManager = false;
-    displayedColumns = this.loginSrv.userSrv.userInfo.user.manager?
+    displayedColumns = this.loginSrv.userInfo.user.manager?
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
         ['description', 'fullName',];
 
 
     constructor(
         private loginSrv: LoginService,
-        public userSrv: UserService,
+        public userSrv: UserListService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -29,7 +29,7 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
         super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.userSrv.userInfo.user.manager;
+        this.isManager = loginSrv.userInfo.user.manager;
     }
 
 

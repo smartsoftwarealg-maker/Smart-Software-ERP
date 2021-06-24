@@ -3,15 +3,15 @@ import { Person, PersonService } from '@ss/payroll/api-person';
 import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { BaseEntityDetailComponent } from '@ss/common/api-base-entity';
 import { ImageModel } from '@ss/common/ui-image-input';
-import { HttpService } from '@ss/common/api-common';
 import { LookupsService, MaritalStatus, Nationality, NationalityService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {HttpService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-person-detail',
@@ -126,7 +126,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
     public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (!this.isSectionValid(section)) {
-            return "b-warn-expansion-panel";
+            return 'b-warn-expansion-panel';
         }
 
         // if expanded return primary background class

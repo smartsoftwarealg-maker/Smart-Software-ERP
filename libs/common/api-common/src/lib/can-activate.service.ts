@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { Observable, of } from 'rxjs';
 import { LoginService } from './login.service';
 import { map, catchError } from 'rxjs/operators';
-import { UserService } from './user.service';
 import { HttpService } from './http.service';
 import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';

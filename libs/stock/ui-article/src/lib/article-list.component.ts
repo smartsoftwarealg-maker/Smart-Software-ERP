@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
 import { Mark } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
-import { BaseEntityListComponent } from '@ss/common/api-base-entity';
+import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import { Observable } from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';

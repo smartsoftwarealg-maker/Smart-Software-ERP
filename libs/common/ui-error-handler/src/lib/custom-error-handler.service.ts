@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { LanguageService } from '@ss/common/ui-lang';
-import {isString} from "@ss/common/api-common";
+import {isString, LanguageService} from '@ss/common/api-common';
 
 @Injectable({
     providedIn: 'root'
@@ -64,7 +63,7 @@ export class CustomErrorHandlerService {
 
     private serverFromUrl(urlStr: string) {
         const url = new URL(urlStr);
-        return url.protocol + "//" + (url.hostname || url.host) + ':' + url.port;
+        return url.protocol + '//' + (url.hostname || url.host) + ':' + url.port;
     }
 
 }

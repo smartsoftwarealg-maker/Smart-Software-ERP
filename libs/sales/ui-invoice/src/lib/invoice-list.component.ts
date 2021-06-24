@@ -3,10 +3,9 @@ import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell'
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {InvoiceService} from '@ss/sales/api-invoice';
 import {Transaction} from '@ss/logistics/api-transaction';

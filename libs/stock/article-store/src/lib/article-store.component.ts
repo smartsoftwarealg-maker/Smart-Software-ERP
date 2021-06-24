@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Article} from "@ss/stock/api-article";
-import {PaginationModel} from "@ss/common/ui-pagination";
+import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {Lot, LotsService} from "@ss/common/api-lookup";
 import {FormControl, FormGroup} from "@angular/forms";

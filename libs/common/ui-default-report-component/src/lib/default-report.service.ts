@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService} from '@ss/common/api-common';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Observable, of} from 'rxjs';
 import {DefaultReportComponent} from './ui-default-report/default-report.component';
@@ -18,7 +18,7 @@ export class DefaultReportService {
                 private matDialog: MatDialog,
                 private httpSrv: HttpService) {}
 
-    public open(app: string, form: string): Observable<boolean> {
+    public open(app: string, form: string): Observable<any> {
         const config = new MatDialogConfig();
         config.disableClose = true;
         config.height = '400px';
@@ -73,7 +73,7 @@ export class DefaultReportService {
     }
 
 
-    setUserReport(form: string, report: string): Observable<number> {
+    setUserReport(form: string, report: string): Observable<{ count: number }> {
         return this.httpSrv.post('/reports', { form: form, report: report});
     }
 

@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {User, UserService} from '@ss/common/api-users';
 import {AgentService} from '@ss/logistics/api-agent';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
 import {Observable} from 'rxjs';
@@ -37,7 +36,7 @@ export class DeliveryCancellationListComponent extends BaseEntityListComponent<T
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public usersService: UserService,
+        // public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,

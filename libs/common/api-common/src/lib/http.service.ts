@@ -4,6 +4,7 @@ import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProg
 import { catchError, filter, last, map, share, tap, first } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AppConfigService } from './app-config.service';
+import { LoginInfo } from './models';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -154,15 +155,15 @@ export class HttpService {
                 { headers: HttpService.getHeaders() });
     }
 
-    public doLogin(url, data): Observable<string> {
+    public doLogin(url, data): Observable<LoginInfo> {
         const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.httpClient.post<string>(this.baseUrl + url, data, { headers: httpHeaders });
+        return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, { headers: httpHeaders });
     }
 
-    public doLogin2(url, data): Observable<{ jwt: string }> {
-        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, { headers: httpHeaders });
-    }
+    // public doLogin2(url, data): Observable<{ jwt: string }> {
+    //     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+    //     return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, { headers: httpHeaders });
+    // }
 
     // noinspection JSUnusedGlobalSymbols
     public postBlob(url: string, data?): Observable<ArrayBuffer> {

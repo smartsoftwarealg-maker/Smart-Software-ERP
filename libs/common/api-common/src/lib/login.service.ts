@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
-import {UserService} from './user.service';
-import {Agent, Person, User, UserInfo} from './models';
+import {Agent, LoginInfo, Person, User, UserInfo} from './models';
 import {DecService} from './dec.service';
 import {ABS_INDEX_URL, CENTER_SELECT_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
@@ -16,14 +15,15 @@ export enum LicenseErrorType {
     PersonLicense = 3000
 }
 
-export interface PersonResponse {
-    person: Person;
-}
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
+    private readonly EMPTY_USER: UserInfo = {
+        user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
+    };
+    private _userInfo: UserInfo = null;
     public agent: Agent = null;
     public person: Person = null;
     public user: User;
@@ -33,9 +33,9 @@ export class LoginService {
     private loggedIn = false;
     private tryAgent = true;
     private tryPerson = true;
+    private _customerLogin = false;
 
     constructor(private httpSrv: HttpService,
-                public userSrv: UserService,
                 private decSrv: DecService,
                 public router: Router,
                 private contextSrv: AppContextService,
@@ -54,7 +54,7 @@ export class LoginService {
             .pipe(switchMap(_ => this.httpSrv.get<any>('/relogin')),
                 tap(_ => this.loginFromStorage()),
                 catchError(err => of(false)),
-                switchMap(_ => this.userSrv.load()),
+                switchMap(_ => this.loadUser()),
                 switchMap(_ => this.contextSrv.load()),
                 switchMap(_ => this.accessRightsSrv.load()),
                 map(_ => {
@@ -107,7 +107,7 @@ export class LoginService {
                     this.agent = null;
                     this.person = null;
                     this.user = null;
-                    this.userSrv.clear();
+                    this._userInfo = this.EMPTY_USER;
                     this.contextSrv.clear();
                     // localStorage.clear();
                     this.accessRightsSrv.clear();
@@ -131,11 +131,11 @@ export class LoginService {
         this
             .httpSrv
             .doLogin('/login', user)
-            .pipe(switchMap((jwt: string) => {
-                this.httpSrv.updateAuthToken(jwt);
+            .pipe(switchMap((info: LoginInfo) => {
+                this.httpSrv.updateAuthToken(info.jwt);
                 // localStorage.setItem('auth_token', jwt);
                 return this.httpSrv
-                    .get<any>('/cuser')
+                    .get<any>('/cuser') //User login
                     .pipe(tap((usr) => {
                         const valid = !isAndroid || this.decSrv.isValidLicense(usr.androidLicense, usr.description);
                         if (!valid) {
@@ -146,37 +146,40 @@ export class LoginService {
                         return usr;
                     }));
             }))
-            .subscribe(res => {
-                if (!this.licenseErrorType) {
-                    this.loggedIn = true;
-                    localStorage.setItem('userInfo-login', 'true');
-                    this.hasPassword = user.password !== '';
-                    localStorage.setItem('has-pwd', this.hasPassword + '');
-                    this.router.navigate(['/' + CENTER_SELECT_URL]);
-                }
-                if (onFinish != null) {
-                    onFinish();
-                }
-            }, err => {
-                if (err.status === 401) {
-                    localStorage.setItem('userInfo-login', 'false');
-                    this.wrongData = !this.licenseErrorType;
-                    if (this.licenseErrorType) {
-                        if (onFinish != null) {
-                            onFinish();
-                        }
-                    } else if (this.tryAgent) {
-                        this.agentLogin(user, isAndroid, onFinish);
-                    } else if (this.tryPerson) {
-                        this.personLogin(user, isAndroid, onFinish);
-                    } else if (onFinish != null) {
-                        onFinish();
+            .subscribe({
+                next: res => {
+                    if (!this.licenseErrorType) {
+                        this.loggedIn = true;
+                        localStorage.setItem('userInfo-login', 'true');
+                        this.hasPassword = user.password !== '';
+                        localStorage.setItem('has-pwd', this.hasPassword + '');
+                        this.router.navigate(['/' + CENTER_SELECT_URL]);
                     }
-                } else {
                     if (onFinish != null) {
                         onFinish();
                     }
-                    throw err;
+                },
+                error: err => {
+                    if (err.status === 401) {
+                        localStorage.setItem('userInfo-login', 'false');
+                        this.wrongData = !this.licenseErrorType;
+                        if (this.licenseErrorType) {
+                            if (onFinish != null) {
+                                onFinish();
+                            }
+                        } else if (this.tryAgent) {
+                            this.agentLogin(user, isAndroid, onFinish);
+                        } else if (this.tryPerson) {
+                            // this.personLogin(user, isAndroid, onFinish);
+                        } else if (onFinish != null) {
+                            onFinish();
+                        }
+                    } else {
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                        throw err;
+                    }
                 }
             });
     }
@@ -208,95 +211,45 @@ export class LoginService {
         this.licenseErrorType = null;
         this.wrongData = false;
         this.httpSrv
-            .doLogin('/agents/login', user)
+            .doLogin('/customers/login', user)
             // .pipe(tap(jwt => localStorage.setItem('auth_token', jwt)),
             .pipe(
-                tap(jwt => this.httpSrv.updateAuthToken(jwt)),
-                switchMap(jwt =>
-                    this.httpSrv
-                        .get<Agent>('/agents/name')
-                        .pipe(tap((agent: Agent) => {
-                            const valid = !isAndroid || this.decSrv.isValidLicense(agent.license, agent.code);
-                            if (!valid) {
-                                this.licenseErrorType = LicenseErrorType.AgentLicense;
-                                this.wrongData = false;
-                            }
-                        }))
-                )
-            ).subscribe((agent: Agent) => {
-                if (!this.licenseErrorType) {
-                    this.agent = agent;
-                    localStorage.setItem('agent', JSON.stringify(this.agent));
-                    this.hasPassword = user.password !== '';
-                    localStorage.setItem('has-pwd', this.hasPassword + '');
-                    this.loggedIn = true;
-                    this.router.navigate(['/' + CENTER_SELECT_URL]);
-                }
-                if (onFinish != null) {
-                    onFinish();
-                }
-            }, err => {
-                if (onFinish != null) {
-                    onFinish();
-                }
-                if (err.status === 401) {
-                    this.wrongData = !this.licenseErrorType;
-                } else {
-                    throw err;
-                }
-            }
-        );
-    }
-
-    public personLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
-        this.httpSrv
-            .doLogin2('/persons/login', user)
-            // .pipe(tap(res => localStorage.setItem('auth_token', res.jwt)),
-            .pipe(
-                tap(res => this.httpSrv.updateAuthToken(res.jwt)),
-                switchMap(res =>
-                    this.httpSrv
-                        .get<PersonResponse>('/persons/current')
-                        .pipe(map(person => person.person))
-                )
-            ).subscribe((person: Person) => {
-                if (person) {
-                    const isValid = !isAndroid || this.decSrv.isValidLicense(person.license, person.customCode);
-                    if (isValid) {
-                        this.person = person;
-                        localStorage.setItem('person', JSON.stringify(this.person));
-                        this.hasPassword = user.password !== '';
-                        this.loggedIn = true;
+                tap(info => this.httpSrv.updateAuthToken(info.jwt))
+            ).subscribe({
+                next:
+                    (info: LoginInfo) => {
+                        this.httpSrv.updateAuthToken(info.jwt);
+                        const ctx = info.ctx;
+                        this.agent = {
+                            id: ctx?.agentId,
+                            customerCode: ctx?.userName,
+                            denomination: ctx?.fullName,
+                        };
+                        localStorage.setItem('agent', JSON.stringify(this.agent));
                         localStorage.setItem('has-pwd', this.hasPassword + '');
-                        this.router.navigate(['/' + CENTER_SELECT_URL]);
-                    } else {
-                        this.licenseErrorType = LicenseErrorType.PersonLicense;
-                        this.wrongData = false;
+                        const url = CENTER_SELECT_URL;
+                        this.router.navigate(['/' + url]);
+                        this.loggedIn = true;
+                        this.hasPassword = user.password !== '';
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                    },
+                error:
+                    err => {
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                        if (err.status === 401) {
+                            this.wrongData = !this.licenseErrorType;
+                        } else {
+                            throw err;
+                        }
                     }
-                }
-                if (onFinish != null) {
-                    onFinish();
-                }
-            }, err => {
-                if (onFinish != null) {
-                    onFinish();
-                }
-                if (err.status === 401) {
-                    this.wrongData = !this.licenseErrorType;
-                } else {
-                    throw  err;
-                }
             }
         );
     }
 
-    public updateUserLicense(license: string): Observable<number> {
-        return this.httpSrv.put('/users/license', {license});
-    }
-
-    public updatePersonLicense(license: string): Observable<number> {
-        return this.httpSrv.put('/persons/license', {license});
-    }
 
     public updateAgentLicense(license: string): Observable<number> {
         return this.httpSrv.put('/agents/license', {license});
@@ -306,21 +259,34 @@ export class LoginService {
         return this.httpSrv.put('/persons/mobile', {mobile: license});
     }
 
-    public updateAgentMobile(license: string): Observable<number> {
-        return this.httpSrv.put('/agents/mobile', {mobile: license});
-    }
-
-    public skipLogin(): void {
-        if (this.isLoggedIn) {
-            this.router.navigate([ABS_INDEX_URL]);
-        }
-    }
 
     get userInfo(): UserInfo {
-        return this.userSrv.userInfo;
+        return this._userInfo;
     }
 
-    loadUser(): Observable<any> {
-        return this.userSrv.load();
+    getUserById(id: number): Observable<UserInfo> {
+        const nId = id || 0;
+        return id ?
+            this.httpSrv.get<UserInfo>(`/users/${nId}/info`) :
+            of(this.EMPTY_USER);
+    }
+
+    loadUser(): Observable<UserInfo> {
+            return this
+                .httpSrv
+                .get<User>('/cuser')
+                .pipe(switchMap(res => this.getUserById(res.id)))
+                .pipe(tap((res: UserInfo) => {
+                        this._userInfo = res;
+                        localStorage.setItem('cuser', JSON.stringify(res));
+                    }));
+    }
+
+    get customerLogin() {
+        return this._customerLogin;
+    }
+
+    set customerLogin(value: boolean) {
+        this._customerLogin = value;
     }
 }

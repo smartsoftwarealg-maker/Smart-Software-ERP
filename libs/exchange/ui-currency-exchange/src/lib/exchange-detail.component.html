@@ -11,7 +11,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="agentAutoCompleteModel"
                                   formControlName="agentId">
                 </ss-auto-complete>
@@ -20,7 +20,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>EXCHANGE_PURCHASE</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="purchaseAutoCompleteModel"
                                   formControlName="purchCurrency"></ss-auto-complete>
             </mat-form-field>
@@ -28,7 +28,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>EXCHANGE_SALES</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="salesAutoCompleteModel"
                                   formControlName="soldCurrency"></ss-auto-complete>
             </mat-form-field>

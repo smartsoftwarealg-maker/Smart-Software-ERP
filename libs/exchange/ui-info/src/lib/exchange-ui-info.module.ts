@@ -7,7 +7,6 @@ import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
-import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {BalanceComponent} from './ui-balance/balance.component';
 import {HistoryComponent} from './ui-history/history.component';
 import {CbalanceComponent} from './ui-cbalance/cbalance.component';
@@ -22,8 +21,7 @@ import {GlobalBalanceComponent} from "./ui-global-balance/global-balance.compone
         UiPaginationModule,
         RouterModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        LogisticsUiStockInfoModule
+        CommonUiConfirmationDialogModule
     ],
     declarations: [
         ExcDocInfoComponent,

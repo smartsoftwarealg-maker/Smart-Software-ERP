@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpEvent, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map, share} from 'rxjs/operators';
+import {LoginInfo} from '@ss/common/api-common';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -12,7 +13,7 @@ export class HttpTestService {
     public baseUrl: string;
 
     constructor(public httpClient: HttpClient) {
-        this.baseUrl = "http://localhost:8080";
+        this.baseUrl = 'http://localhost:8080';
     }
 
     static getHeaders() {
@@ -24,7 +25,7 @@ export class HttpTestService {
     }
 
     static getAuthToken(): string {
-        return "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NQZXJpb2QiOjEsImNlbnRlciI6MCwicGF5TW9udGgiOjAsInNldmVyZSI6ZmFsc2UsImlkIjoxLCJtYW5hZ2VyIjpmYWxzZSwiYWNjWWVhciI6MCwiYWNjRmlsZSI6MCwidXNlck5hbWUiOiJtYW5hZ2VyIiwibG9nZ2luZ1RpbWUiOjE1OTc0ODA2OTcyOTR9.0wOhL4r97oxNzR_SnOFnQp6Lf4geYsPpQM_AxyXCBsk";
+        return 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NQZXJpb2QiOjEsImNlbnRlciI6MCwicGF5TW9udGgiOjAsInNldmVyZSI6ZmFsc2UsImlkIjoxLCJtYW5hZ2VyIjpmYWxzZSwiYWNjWWVhciI6MCwiYWNjRmlsZSI6MCwidXNlck5hbWUiOiJtYW5hZ2VyIiwibG9nZ2luZ1RpbWUiOjE1OTc0ODA2OTcyOTR9.0wOhL4r97oxNzR_SnOFnQp6Lf4geYsPpQM_AxyXCBsk';
     }
 
     public init(): Observable<any> {
@@ -137,15 +138,15 @@ export class HttpTestService {
                 {headers: HttpTestService.getHeaders()});
     }
 
-    public doLogin(url, data): Observable<string> {
+    public doLogin(url, data): Observable<LoginInfo> {
         const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.httpClient.post<string>(this.baseUrl + url, data, {headers: httpHeaders});
+        return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, {headers: httpHeaders});
     }
 
-    public doLogin2(url, data): Observable<{ jwt: string }> {
-        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, {headers: httpHeaders});
-    }
+    // public doLogin2(url, data): Observable<{ jwt: string }> {
+    //     const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    //     return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, {headers: httpHeaders});
+    // }
 
     // noinspection JSUnusedGlobalSymbols
     public postBlob(url: string, data?) {
@@ -162,7 +163,7 @@ export class HttpTestService {
 
     public uploadBlob(url: string, formName: string, blob: Blob): Observable<HttpEvent<any>> {
         const fd: FormData = new FormData();
-        fd.append(name, blob);
+        fd.append('', blob);
         const extraHeaders = {
             Authorization: this.getAuthToken()
         };

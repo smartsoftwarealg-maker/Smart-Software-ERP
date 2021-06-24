@@ -11,7 +11,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_STORE</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="storeAutoCompleteModel"
                                   formControlName="store"></ss-auto-complete>
                 <mat-error
@@ -25,7 +25,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ARTICLE</mat-label>
                 <ss-auto-complete matInput
-                                  required
+                                  [required]="true"
                                   [model]="articleAutoCompleteModel"
                                   formControlName="reference">
                 </ss-auto-complete>

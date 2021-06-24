@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PaginationModel} from "@ss/common/ui-pagination";
+import {PaginationModel} from '@ss/common/api-common';
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";

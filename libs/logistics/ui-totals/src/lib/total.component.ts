@@ -1,11 +1,11 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ArticleService} from "@ss/stock/api-article";
-import {PaginationModel} from "@ss/common/ui-pagination";
-import {Total, TotalService} from "@ss/logistics/api-totals";
-import {LanguageService} from "@ss/common/ui-lang";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {ArticleService} from '@ss/stock/api-article';
+import {PaginationModel} from '@ss/common/api-common';
+import {Total, TotalService} from '@ss/logistics/api-totals';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-total',
@@ -20,8 +20,8 @@ export class TotalComponent implements OnInit {
     data: Total[];
 
     displayedColumns = [
-        "description",
-        "value",
+        'description',
+        'value',
     ];
 
 

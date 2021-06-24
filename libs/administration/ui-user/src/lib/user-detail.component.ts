@@ -5,13 +5,20 @@ import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {User, UserService} from '@ss/common/api-users';
-import {AppContextService, Center, LoginService, Role, UserCenter, UserRole} from '@ss/common/api-common';
+import {
+    AppContextService,
+    LoginService,
+    Role,
+    User,
+    UserCenter,
+    UserRole, UserService
+} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CenterService} from '@ss/administration/api-center';
 import {switchMap} from 'rxjs/operators';
 import {MatSelectionListChange} from '@angular/material/list';
 import {of} from 'rxjs';
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -43,6 +50,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     private curUser: User;
 
     constructor(
+        private userListSrv: UserListService,
         private userSrv: UserService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -54,8 +62,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         private loginSrv: LoginService,
         private centerSrv: CenterService,
         private contextSrv: AppContextService) {
-        super(userSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.userSrv.userInfo.user.manager;
+        super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
+        this.isManager = loginSrv.userInfo.user.manager;
     }
 
 
@@ -76,7 +84,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                     this.centerList = res['body'];
                     return this.userSrv.loadCenters(b.id);
                 }),
-                switchMap(res => {
+                switchMap((res: any) => {
                     this.loadUserCenters(res);
                     return this.userSrv.loadRoles(b.id);
                 })).subscribe(res => this.loadUserRoles(res));

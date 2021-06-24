@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { LanguageService } from '@ss/common/ui-lang';
-import { strTakeUntil, strDropEndUntil, strDropUntil, UserRightsService, Right } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
+import {
+    LanguageService,
+    Right,
+    strDropEndUntil,
+    strDropUntil,
+    strTakeUntil,
+    UserRightsService
+} from '@ss/common/api-common';
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version
@@ -224,7 +230,7 @@ export class ShellService {
         hash += len * 7841; // a prime
         if (hash < 0) hash = -hash;
         let hashResult = hash % range;
-        if (hashResult == this.lastHash) {
+        if (hashResult === this.lastHash) {
             hashResult = (hashResult + 1) % range;
         }
         this.lastHash = hashResult;

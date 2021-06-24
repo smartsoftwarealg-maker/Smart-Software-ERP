@@ -11,8 +11,7 @@ import {
 } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
-import {UserRightsService} from '../../../api-common/src/lib/user-rights.service';
-import {UserService} from '@ss/common/api-users';
+import {UserRightsService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -37,7 +36,6 @@ export class CenterSelectComponent implements OnInit {
     constructor(private ccListSrv: CenterService,
                 private loginSrv: LoginService,
                 private router: Router,
-                private userSrv: UserService,
                 private accessRightsSrv: UserRightsService,
                 private contextSrv: AppContextService) {
     }
@@ -47,15 +45,18 @@ export class CenterSelectComponent implements OnInit {
 
         this.loading = true;
         this.ccListSrv.getCompanyList()
-            .subscribe(r => {
-                    this.companyList = r;
-                    if (this.companyList.length === 1) {
-                        this.selectCompany(this.companyList[0].id);
+            .subscribe({
+                    next: r => {
+                        this.companyList = r;
+                        if (this.companyList.length === 1) {
+                            this.selectCompany(this.companyList[0].id);
+                        }
+                        this.endLoading();
+                    },
+                    error: err => {
+                        this.endLoading();
+                        throw err;
                     }
-                    this.endLoading();
-                }, err => {
-                    this.endLoading();
-                    throw err;
                 }
             );
     }
@@ -72,19 +73,20 @@ export class CenterSelectComponent implements OnInit {
             });
             // this.loading = true;
             this.loadingCenters = true;
-            this.ccListSrv.getCenterList(company).subscribe(r => {
-                    this.centerList = r;
-                    this.loadingCenters = false;
-                    if (this.centerList.length === 1) {
-                        this.selectCenter(this.centerList[0].id);
-                        this.onDone();
-                        // } else {
-                        //     this.endLoading();
+            this.ccListSrv.getCenterList(company)
+                .subscribe({
+                    next: r => {
+                        this.centerList = r;
+                        this.loadingCenters = false;
+                        if (this.centerList.length === 1) {
+                            this.selectCenter(this.centerList[0].id);
+                            this.onDone();
+                        }
+                    },
+                    error: err => {
+                        this.loadingCenters = false;
+                        throw err;
                     }
-                }, err => {
-                    //     // this.endLoading();
-                    this.loadingCenters = false;
-                    throw err;
                 }
             );
         } else {

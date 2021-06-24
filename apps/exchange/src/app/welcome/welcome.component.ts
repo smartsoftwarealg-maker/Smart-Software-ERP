@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShellService, SideNavNode } from '@ss/common/ui-shell';
-import { LanguageService } from '@ss/common/ui-lang';
 import { Router } from '@angular/router';
 import { WelcomeService } from './welcome.service';
 import {CurrencyService} from "@ss/common/api-lookup";
+import {LanguageService} from "@ss/common/api-common";
 
 
 @Component({

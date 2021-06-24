@@ -5,11 +5,12 @@ import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {Bank, Fund, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AppContextService, UserService} from '@ss/common/api-common';
+import {AppContextService} from '@ss/common/api-common';
 import {Center, CenterService} from '@ss/administration/api-center';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserService,
+        public usersService: UserListService,
         public lookupsSrv: LookupsService,
         private contextSrv: AppContextService) {
         super(centerService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_CENTER');

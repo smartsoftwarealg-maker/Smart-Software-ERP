@@ -19,7 +19,7 @@ import {
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {FormValidators, UserService} from '@ss/common/api-common';
+import {FormValidators} from '@ss/common/api-common';
 import {Bank} from '@ss/administration/api-bank';
 
 

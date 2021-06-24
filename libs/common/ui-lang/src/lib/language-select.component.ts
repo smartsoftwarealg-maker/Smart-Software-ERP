@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {LanguageService} from './language.service';
+import {LanguageService} from '../../../api-common/src/lib/language.service';
 import {MatMenuTrigger} from '@angular/material/menu';
 
 @Component({

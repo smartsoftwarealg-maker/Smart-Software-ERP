@@ -3,10 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/api-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {User, UserService} from '@ss/common/api-users';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/ui-lang';
+import {LanguageService, User} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
@@ -38,7 +37,7 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public usersService: UserService,
+        // public usersService: UserService,
         public agentService: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,

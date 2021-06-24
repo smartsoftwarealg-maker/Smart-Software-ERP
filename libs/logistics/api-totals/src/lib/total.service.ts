@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
+import {Total, TOTAL_URL} from './total-api';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Total, TOTAL_URL} from "./total-api";
-import {ARTICLES_URL} from "@ss/stock/api-article";
-import {ARTICLE_LOTS_URL} from "@ss/stock/api-article-store";
 
 
 @Injectable({

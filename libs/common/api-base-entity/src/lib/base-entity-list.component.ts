@@ -1,15 +1,15 @@
-import { BaseEntityService } from './base-entity.service';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
-import { PaginationModel } from '@ss/common/ui-pagination';
-import { Directive, OnDestroy, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PaginationModel} from '@ss/common/api-common';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {BaseEntityService} from "./base-entity.service";
 
 @Directive()
-export class BaseEntityListComponent<T extends { id: number }> implements OnInit, OnDestroy {
+export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
     private reportForm: string = null;
 
     constructor(public entitySrv: BaseEntityService<T>,
@@ -81,7 +81,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     public emailReportButton: ToolbarButton = {
         icon: 'fas fa-at',
         label: 'COMMON_EMAIL_REPORT',
-        disabled: false,
+        disabled: true,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.emailReport()
@@ -97,17 +97,13 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     //
 
     public ngOnInit() {
-        //this.route.data.subscribe(res => {
-        //    this._form = res['form'];
-        //    this.defReportButton.disabled = !this._form;
-        //});
         const node = this.shellSrv.getNavNodeByRouter(this.router);
         this.reportForm = node ? node.accessRights : null;
         this.defReportButton.visible = !!this.reportForm;
         //
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.setFilter(f)));
         this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.defReportButton, this.viewReportButton, this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
@@ -174,6 +170,7 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
         this.shellSrv.reset();
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     public releaseResources() {
     }
 
@@ -219,10 +216,8 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
                     this.defReportSrv
                         .setUserReport(this.reportForm, res)
                         .subscribe(resp => {
-                            if (typeof resp['count'] === 'number') {
-                                if (resp['count'] > 0) {
-                                    this.snackBarSrv.showSuccessMessage();
-                                }
+                            if (resp.count > 0) {
+                                this.snackBarSrv.showSuccessMessage();
                             }
                         })
                 }
@@ -241,8 +236,8 @@ export class BaseEntityListComponent<T extends { id: number }> implements OnInit
     private emailReport() {
         this.defReportSrv
             .currentCompany()
-            .pipe(switchMap(comp => this.defReportSrv.openEmailDlg(comp['email'], this.selectedRow['email'])),
-                switchMap(res => {
+            .pipe(switchMap((comp: any) => this.defReportSrv.openEmailDlg(comp['email'], this.selectedRow['email'])),
+                switchMap((res: any) => {
                     if (res && res['from'] && res['to']) {
                         const pwd = res['password'] || '';
                         const subject = res['subject'] || '';
