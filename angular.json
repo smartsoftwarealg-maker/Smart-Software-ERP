@@ -91,6 +91,170 @@
                 }
             }
         },
+        "cespace": {
+            "projectType": "application",
+            "root": "apps/cespace",
+            "sourceRoot": "apps/cespace/src",
+            "prefix": "ss",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/cespace",
+                        "index": "apps/cespace/src/index.html",
+                        "main": "apps/cespace/src/main.ts",
+                        "polyfills": "apps/cespace/src/polyfills.ts",
+                        "tsConfig": "apps/cespace/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "apps/cespace/src/favicon.ico",
+                            "apps/cespace/src/assets",
+                            "apps/cespace/src/config",
+                            {
+                                "glob": "**/*",
+                                "input": "libs/common/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/logistics/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/administration/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/exchange/assets/src/assets",
+                                "output": "assets"
+                            }
+                        ],
+                        "styles": ["apps/cespace/src/styles.scss"],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/cespace/src/environments/environment.ts",
+                                    "with": "apps/cespace/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "cespace:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "cespace:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "cespace:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/cespace/src/**/*.ts",
+                            "apps/cespace/src/**/*.html"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/apps/cespace"],
+                    "options": {
+                        "jestConfig": "apps/cespace/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "cespace-e2e": {
+            "root": "apps/cespace-e2e",
+            "sourceRoot": "apps/cespace-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/cespace-e2e/cypress.json",
+                        "tsConfig": "apps/cespace-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "cespace:serve:development"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "cespace:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["apps/cespace-e2e/**/*.{js,ts}"]
+                    }
+                }
+            }
+        },
+        "common-api-access-rights": {
+            "projectType": "library",
+            "root": "libs/common/api-access-rights",
+            "sourceRoot": "libs/common/api-access-rights/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/common/api-access-rights"],
+                    "options": {
+                        "jestConfig": "libs/common/api-access-rights/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/common/api-access-rights/src/**/*.ts",
+                            "libs/common/api-access-rights/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "common-api-base-entity": {
             "projectType": "library",
             "root": "libs/common/api-base-entity",
@@ -595,6 +759,34 @@
                                     "maximumError": "10kb"
                                 }
                             ]
+                        },
+                        "development": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/erp/src/environments/environment.ts",
+                                    "with": "apps/erp/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": false,
+                            "outputHashing": "all",
+                            "sourceMap": true,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": false,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "15mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "15kb"
+                                }
+                            ]
                         }
                     }
                 },
@@ -606,6 +798,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "erp:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "erp:build:development"
                         }
                     }
                 },
@@ -4223,6 +4418,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "hotel:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "hotel:build:development"
                         }
                     }
                 },
