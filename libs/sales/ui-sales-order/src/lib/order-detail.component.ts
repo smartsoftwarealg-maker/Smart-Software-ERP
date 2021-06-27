@@ -53,12 +53,12 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         if (!form.id) {
             form.id = 0;
             form.number = 0;
-            form.userID = this.loginService.userInfo.user.id;
+            form.userID = this.loginService.appCtx.id;
             form.dealer = form.userID;
             form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.order = form;
-        this.isManager = this.loginService.userInfo.user.manager;
+        this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({
             id: [form.id],
             document: [0],

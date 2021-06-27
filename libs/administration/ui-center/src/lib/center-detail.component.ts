@@ -5,12 +5,12 @@ import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {Bank, Fund, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AppContextService} from '@ss/common/api-common';
 import {Center, CenterService} from '@ss/administration/api-center';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {UserListService} from '@ss/common/api-users';
+import {LoginService} from '@ss/common/api-common';
 
 
 @Component({
@@ -24,6 +24,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
     public banks: Bank[];
 
     constructor(
+        private loginSrv: LoginService,
         public centerService: CenterService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -31,14 +32,13 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
-        public lookupsSrv: LookupsService,
-        private contextSrv: AppContextService) {
+        public lookupsSrv: LookupsService) {
         super(centerService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_CENTER');
     }
 
 
     preload(): Observable<any> {
-        this.centerService.setParentId(this.contextSrv.context.company)
+        this.centerService.setParentId(this.loginSrv.appCtx?.company)
         return this.lookupsSrv.getFunds()
             .pipe(tap(x => this.funds = x))
             .pipe(switchMap(() => this.lookupsSrv.getBanks()))

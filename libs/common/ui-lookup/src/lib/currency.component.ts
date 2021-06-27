@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Currency, CurrencyService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -37,7 +37,7 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })
-export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> {
+export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> implements OnInit {
 
     constructor(
         public currencySrv: CurrencyService,
@@ -54,5 +54,10 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
             id: e.id,
             description: [e.description, Validators.required]
         });
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
     }
 }

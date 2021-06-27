@@ -1,5 +1,5 @@
-import { SideNavNode } from '@ss/common/ui-shell';
 import {
+    ABS_CUSTOMER_PROFILE,
     ABS_EXCHANGE_AGENT_URL,
     ABS_EXCHANGE_COMMISSION_URL,
     ABS_EXCHANGE_CURRENCY_URL,
@@ -10,35 +10,10 @@ import {
     ABS_EXCHANGE_REPORT_PARAMS,
     ABS_EXCHANGE_TRANSFER_URL
 } from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
-// export const fileNavTree: SideNavNode = {
-//     name: 'COMMON_FILE',
-//     icon: 'fas fa-file',
-//     children: [
-//         {
-//             name: 'LOGISTICS_AGENT',
-//             icon: 'fas fa-user',
-//             route: ABS_EXCHANGE_AGENT_URL,
-//             accessRights: 'Agent'
-//         },
-//         // {
-//         //     name: 'EXCHANGE_DEPOSIT_TYPES',
-//         //     icon: 'fas fa-server',
-//         //     route: ABS_EXCHANGE_DEPOSIT_TYPE_URL
-//         // },
-//         {
-//             name: 'LOGISTICS_CURRENCIES',
-//             icon: 'fas fa-euro-sign',
-//             route: ABS_EXCHANGE_CURRENCY_URL,
-//             accessRights: 'Currency'
-//         },
-//     ]
-// };
-
-export const exchangeNavTree: SideNavNode = {
-    name: 'EXCHANGE',
-    icon: 'fas fa-coins',
-    children: [
+export const exchangeNavTree: SideNavNode[] =
+    [
         {
             name: 'EXCHANGE_CURRENCY_DEPOSIT',
             icon: 'fas fa-money-check-alt',
@@ -53,6 +28,10 @@ export const exchangeNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-file-chart-line',
             route: ABS_EXCHANGE_REPORT_PARAMS
+        },
+        {
+            name: 'COMMON_PROFILE',
+            icon: 'fas fa-file-chart-line',
+            route: ABS_CUSTOMER_PROFILE
         }
-    ]
-};
+    ];

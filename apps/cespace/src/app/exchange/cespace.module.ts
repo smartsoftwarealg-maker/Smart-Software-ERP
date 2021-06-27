@@ -7,4 +7,4 @@ import { mainRoutes } from './routes';
         RouterModule.forChild(mainRoutes)
     ]
 })
-export class ExchangeModule {}
+export class CespaceModule {}

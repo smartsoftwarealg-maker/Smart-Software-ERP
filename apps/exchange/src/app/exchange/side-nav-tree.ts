@@ -1,4 +1,3 @@
-import { SideNavNode } from '@ss/common/ui-shell';
 import {
     ABS_EXCHANGE_AGENT_URL,
     ABS_EXCHANGE_COMMISSION_URL,
@@ -10,6 +9,7 @@ import {
     ABS_EXCHANGE_REPORT_PARAMS,
     ABS_EXCHANGE_TRANSFER_URL
 } from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const fileNavTree: SideNavNode = {
     name: 'COMMON_FILE',

@@ -74,9 +74,10 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     }
 
     ngOnInit() {
-        this.editButton.visible = this.loginSrv.userInfo?.user.id > 0;
-        this.addButton.visible = this.loginSrv.userInfo?.user.id > 0;
-        this.deleteButton.visible = this.loginSrv.userInfo?.user.id > 0;
+        const validUser = this.loginSrv.appCtx?.id > 0;
+        this.editButton.visible   = validUser;
+        this.addButton.visible    = validUser;
+        this.deleteButton.visible = validUser;
         super.ngOnInit();
     }
 }

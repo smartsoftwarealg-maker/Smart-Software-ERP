@@ -58,9 +58,8 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer || this.loginSrv.userInfo.user.id, Validators.required],
+            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
             agent: [b.agent, Validators.required]
         });
     }
-
 }

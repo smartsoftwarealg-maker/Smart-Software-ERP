@@ -73,4 +73,9 @@ export class CurrencyTransferListComponent extends BaseEntityListComponent<Depos
         this.selectedAgent = e? e.customerId || 0 : 0;
         super.select(e? e.id || 0 : 0)
     }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
+    }
 }

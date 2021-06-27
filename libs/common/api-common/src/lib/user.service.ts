@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpService} from './http.service';
-import {Role, User, UserCenter, UserRole} from './models';
+import {Password, User, UserCenter, UserRole} from './models';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class UserService {
 
     constructor(protected httpSrv: HttpService) {}
 
-    public updatePassword(user: User): Observable<{ count: number } > {
+    public updatePassword(user: Password): Observable<{ count: number } > {
         return this.httpSrv.post('/password', user);
     }
 

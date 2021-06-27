@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {CenterService} from './center.service';
 import {Router} from '@angular/router';
 import {
-    AppContextService,
     Center,
     Company,
     INDEX_PAGE_URL,
@@ -38,8 +37,7 @@ export class CenterSelectComponent implements OnInit {
                 private router: Router,
                 private accessRightsSrv: UserRightsService,
                 private userSrv: UserService,
-                private rightsSrv: UserRightsService,
-                private contextSrv: AppContextService) {
+                private rightsSrv: UserRightsService) {
     }
 
     ngOnInit() {
@@ -105,18 +103,17 @@ export class CenterSelectComponent implements OnInit {
             this.loading = true;
             this.loginSrv
                 .centerLogin(this.selectedCenter)
-                .pipe(switchMap(() => this.loginSrv.loadUser()),
-                      switchMap(_ => this.contextSrv.load()),
-                      switchMap(_ => this.rightsSrv.load()))
-                .subscribe(() => {
-                        // this.endLoading(); // don't show shit, because we are leaving anyway
-                        const dest = this.contextSrv.context && this.contextSrv.context.pwdExpired
-                            ? PROFILE_PAGE_URL : INDEX_PAGE_URL;
-                        this.router.navigate(['/' + dest]).then(() => {
-                        });
-                    }, err => {
-                        this.endLoading();
-                        throw err;
+                .pipe(switchMap(_ => this.rightsSrv.load()))
+                .subscribe({
+                        next: () => {
+                            // this.endLoading(); // don't show shit, because we are leaving anyway
+                            const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;
+                            this.router.navigate(['/' + dest]).then(() => {
+                            });
+                        }, error: err => {
+                            this.endLoading();
+                            throw err;
+                        }
                     }
                 );
         }

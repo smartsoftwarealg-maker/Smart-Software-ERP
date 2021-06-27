@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 import {takeUntil } from 'rxjs/operators';
 import {BaseDirective} from './internal/base-directive';
-import {LanguageService} from '../../../api-common/src/lib/language.service';
+import {LanguageService} from '@ss/common/api-common';
 
 @Directive({
     // tslint:disable-next-line:directive-selector

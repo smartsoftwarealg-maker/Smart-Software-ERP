@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, HostListener, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
-import { ShellService, SideNavNode } from './shell.service';
+import { ShellService } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import {AppContextService, LanguageService, UserRightsService} from '@ss/common/api-common';
+import {LanguageService, LoginService, SideNavNode} from '@ss/common/api-common';
+import {UserRightsService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-shell',
@@ -20,20 +21,17 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     // side nav
     treeControl = new NestedTreeControl<SideNavNode>(node => node.children);
 
-    constructor(public langSrv: LanguageService,
+    constructor(
+        public loginSrv: LoginService,
+        public langSrv: LanguageService,
         public shellSrv: ShellService,
         protected cdRef: ChangeDetectorRef,
-        private rightsSrv: UserRightsService,
-        public contextSrv: AppContextService) { }
+        private rightsSrv: UserRightsService) { }
 
     ngOnInit() {
         this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.check();
-        // this.usersSrv.load()
-        //     .pipe(switchMap(res => this.contextSrv.load()),
-        //          switchMap(res => this.rightsSrv.load()))
-        //     .subscribe(() => this.showSideNav = true);
         this.rightsSrv.load()
             .subscribe(() => {
                 this.shellSrv.filterSideNav();

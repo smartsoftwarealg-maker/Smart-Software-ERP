@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {Currency, CURRENCY_URL} from './lookups-api';
 //import {BaseEntityService} from '@ss/common/api-base-entity';
-import {tap} from 'rxjs/operators';
+import {shareReplay, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 
@@ -21,10 +21,9 @@ export class CurrencyService extends BaseEntityService<Currency> {
     }
 
     load(): Observable<Currency[]> {
-        return (this.currencies.length === 0)?
-            this.httpSrv
+        return this.httpSrv
                 .get<Currency[]>(CURRENCY_URL)
-                .pipe(tap((res: Currency[]) => this.currencies = res)) :
-            of(this.currencies);
+                .pipe(tap((res: Currency[]) => this.currencies = res),
+                      shareReplay());
     }
 }

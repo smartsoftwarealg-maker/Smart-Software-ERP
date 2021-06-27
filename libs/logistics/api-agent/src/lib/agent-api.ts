@@ -3,7 +3,7 @@ export const AGENT_URL = '/agents';
 export interface Agent {
     id: number;
     customerCode: string;
-    isInternal: boolean;
+    isInternal?: boolean;
     denomination: string;
     address?: string;
     address2?: string;
@@ -15,7 +15,7 @@ export interface Agent {
     contact?: string;
     info?: string;
     currency?: number;
-    taxPayable: boolean;
+    taxPayable?: boolean;
     commRegister?: string;
     fiscalID?: string;
     articleNo?: string;
@@ -42,9 +42,9 @@ export interface Agent {
     recordBlocked?: boolean;
     blockingReason?: string;
     subcontractor?: boolean;
-    creationTime: string;
+    creationTime?: string;
     tin?: string;
-
+    password?: string;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

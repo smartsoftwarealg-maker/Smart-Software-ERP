@@ -13,7 +13,7 @@ import {
 } from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {LoginService, AppContextService} from '@ss/common/api-common';
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-transfer-detail',
@@ -39,8 +39,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private contextSrv: AppContextService) {
+        public lookupsSrv: LookupsService) {
         super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_TRANSFERS');
         this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
         this.currencyAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
@@ -79,8 +78,8 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
 
     readForm(): Deposit {
         const value = super.readForm();
-        value.userId = this.contextSrv.context.userId;
-        value.centerId = this.contextSrv.context.center;
+        value.userId = this.loginSrv.appCtx.id;
+        value.centerId = this.loginSrv.appCtx.center;
         value.sourceId = this.sourceId;
         value.depositType = 3;
         return value;
@@ -120,5 +119,10 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         const soldAmount = this.form.controls['exchangeRate'].value *
                            this.form.controls['amount'].value;
         this.form.controls['soldAmount'].setValue(+soldAmount.toFixed(2));
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
     }
 }

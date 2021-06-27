@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent } from '@angular/common/http';
-import { catchError, filter, last, map, share, tap, first } from 'rxjs/operators';
+import { catchError, filter, last, map, tap} from 'rxjs/operators';
 import { of } from 'rxjs';
-import { AppConfigService } from './app-config.service';
 import { LoginInfo } from './models';
+import {AppConfigService} from './app-config.service';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -32,7 +32,7 @@ export class HttpService {
         return localStorage.setItem(AUTH_TOKEN, token);
     }
 
-    public init(): Observable<any> {
+    public init(): Observable<boolean> {
         if (this.baseUrl) {
             return of(false);
         }
@@ -100,6 +100,9 @@ export class HttpService {
     }
 
     public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
+        if (this.baseUrl === undefined) {
+            this.baseUrl = '';
+        }
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
@@ -246,6 +249,10 @@ export class HttpService {
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic
     public updateAuthToken(token: string): void {
+        localStorage.setItem(AUTH_TOKEN, token);
+    }
+
+    public removeAuthToken(token: string): void {
         localStorage.setItem(AUTH_TOKEN, token);
     }
 

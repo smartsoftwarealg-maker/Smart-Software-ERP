@@ -14,7 +14,7 @@ import {UserListService} from '@ss/common/api-users';
 })
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {
     isManager = false;
-    displayedColumns = this.loginSrv.userInfo.user.manager?
+    displayedColumns = this.loginSrv.appCtx.manager?
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
         ['description', 'fullName',];
 
@@ -29,9 +29,8 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
         super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.userInfo.user.manager;
+        this.isManager = loginSrv.appCtx.manager;
     }
-
 
     ngOnInit() {
         if (!this.isManager) {

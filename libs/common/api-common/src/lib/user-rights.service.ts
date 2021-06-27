@@ -3,7 +3,7 @@ import {DocRight, Right} from './models';
 import {HttpService} from './http.service';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {AppContextService} from './app-context.service';
+import {LoginService} from './login.service';
 
 interface Lookup {
     id: number;
@@ -18,7 +18,7 @@ export class UserRightsService {
     private rightsMap: Map<string, Right> = new Map<string, Right>();
     private forms: Lookup[] = [];
 
-    constructor(private httpSrv: HttpService, private contextSrv: AppContextService) { }
+    constructor(private httpSrv: HttpService, private loginSrv: LoginService) { }
 
     public load(): Observable<DocRight[]> {
         return this.httpSrv.get<Lookup[]>('/lookups/forms')
@@ -62,8 +62,8 @@ export class UserRightsService {
     }
 
     private getDefault(): Right {
-        const manager = this.contextSrv.context.manager;
-        const severe = this.contextSrv.context.severe;
+        const manager = this.loginSrv?.appCtx?.manager;
+        const severe = this.loginSrv?.appCtx?.severe;
         return {
             read: manager || !severe,
             write: manager || !severe,

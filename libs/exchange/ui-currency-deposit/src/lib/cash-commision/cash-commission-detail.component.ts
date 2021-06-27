@@ -8,7 +8,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {LoginService, AppContextService} from '@ss/common/api-common';
+import {LoginService} from '@ss/common/api-common';
+import {concatMap} from "rxjs/operators";
 
 @Component({
     selector: 'ss-commission-detail',
@@ -33,8 +34,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private contextSrv: AppContextService) {
+        public lookupsSrv: LookupsService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_COMMISSIONS');
         this.typeAutoCompleteModel.onValueChanged = value => this.onTypeChange();
         this.typeAutoCompleteModel.filterLoadedData = x => x.filter(e => e.id === 1);
@@ -42,6 +42,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
 
 
     public setupForm(b: Deposit) {
+        console.log('&^^^^^^^^^^^^^^^^', this.loginSrv.appCtx);
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
         this.customerId = b.customerId;
@@ -98,8 +99,9 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
     readForm(): Deposit {
         const value = super.readForm();
         value.amount = 0;
-        value.userId = this.contextSrv.context.userId;
-        value.centerId = this.contextSrv.context.center;
+        console.log('^^^^^^^^^^^^^^^^^', this.loginSrv.appCtx.id);
+        value.userId = this.loginSrv.appCtx.id;
+        value.centerId = this.loginSrv.appCtx.center;
         return value;
     }
 
@@ -112,5 +114,12 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
             this.form.controls['commission'].disable({ onlySelf: true, emitEvent: false });
             this.form.controls['commission'].setValue(0.0, { onlySelf: true, emitEvent: false });
         }
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load()
+            .pipe(concatMap(_ => this.loginSrv.reload())).subscribe();
+        ;
     }
 }

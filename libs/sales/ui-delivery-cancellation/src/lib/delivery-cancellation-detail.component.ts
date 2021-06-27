@@ -78,12 +78,12 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
         if (!b.id) {
             b.id = 0;
             b.number = 0;
-            b.userID = this.loginService.userInfo.user.id;
+            b.userID = this.loginService.appCtx.id;
             b.dealer = b.userID;
             b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.delivery = b;
-        this.isManager = this.loginService.userInfo.user.manager;
+        this.isManager = this.loginService.appCtx.manager;
         this.importBtn.disabled = b.agent == null || b.agent === undefined;
         return this.formBuilder.group({
             id: [b.id],

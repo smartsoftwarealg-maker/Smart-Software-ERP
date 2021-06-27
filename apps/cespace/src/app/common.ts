@@ -11,6 +11,7 @@ export const ADMINISTRATION_APP_URL = 'administration';
 
 // common
 export const COMMON_REPORT_PARAMS_URL = 'report-params';
+export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -70,4 +71,5 @@ export const ABS_EXCHANGE_EXCHANGE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL,
 export const ABS_EXCHANGE_GLOBAL_BALANCE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_GLOBAL_BALANCE_URL].join('/');
 export const ABS_EXCHANGE_DEPOSIT_TYPE_URL = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, EXCHANGE_DEPOSIT_TYPE_URL].join('/');
 export const ABS_EXCHANGE_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, COMMON_REPORT_PARAMS_URL].join('/');
+export const ABS_CUSTOMER_PROFILE = '/' + [MAIN_PAGE_URL, EXCHANGE_APP_URL, COMMON_CUSTOMER_PROFILE_URL].join('/');
 

@@ -1,5 +1,3 @@
-import {SideNavNode} from '@ss/common/ui-shell';
-
 import {
     ABS_STOCK_ACTIVITY,
     ABS_STOCK_AGENT_TYPE,
@@ -9,6 +7,7 @@ import {
     ABS_STOCK_UNITS_URL,
     ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS
 } from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const logAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',

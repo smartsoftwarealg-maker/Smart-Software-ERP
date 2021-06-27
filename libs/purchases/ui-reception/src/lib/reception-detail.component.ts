@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -13,7 +13,7 @@ import {Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {UserListService} from "@ss/common/api-users";
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -21,7 +21,7 @@ import {UserListService} from "@ss/common/api-users";
     templateUrl: './reception-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> {
+export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
@@ -67,11 +67,15 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
             discountDescription: [form.discountDescription],
             fixedDiscount: [form.fixedDiscount || 0.0],
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
-            dealer: [form.dealer || this.loginSrv.userInfo.user.id, Validators.required],
+            dealer: [form.dealer || this.loginSrv.appCtx.id, Validators.required],
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
             agent: [form.agent, Validators.required]
         });
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
+    }
 }

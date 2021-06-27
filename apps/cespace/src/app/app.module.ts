@@ -7,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { UiLoginModule } from '@ss/common/ui-login';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { WelcomeComponent } from './welcome/welcome.component';
 import {
     CanActivateService,
     INDEX_PAGE_URL,
@@ -22,6 +21,7 @@ import {
     ADMINISTRATION_APP_URL, EXCHANGE_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
 
 const routes: Routes = [
     {
@@ -30,16 +30,12 @@ const routes: Routes = [
         children: [
             {
                 path: INDEX_PAGE_URL,
-                component: WelcomeComponent,
+                component: MainPageComponent,
                 canActivate: [CanActivateService]
             },
             {
-                path: ADMINISTRATION_APP_URL,
-                loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
-            },
-            {
                 path: EXCHANGE_APP_URL,
-                loadChildren: () => import('./exchange/exchange.module').then(m => m.ExchangeModule)
+                loadChildren: () => import('./exchange/cespace.module').then(m => m.CespaceModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
@@ -51,8 +47,7 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent,
-        WelcomeComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -64,6 +59,7 @@ const routes: Routes = [
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
+        CommonUiMainPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule

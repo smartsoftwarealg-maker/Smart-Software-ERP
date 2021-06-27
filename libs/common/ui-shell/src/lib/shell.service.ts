@@ -6,7 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
     LanguageService,
-    Right,
+    SideNavNode,
     strDropEndUntil,
     strDropUntil,
     strTakeUntil,
@@ -35,16 +35,6 @@ export interface MenuItem {
     click: () => void;
     disabled: boolean;
     visible: boolean;
-}
-
-export interface SideNavNode {
-    icon: string;
-    name: string;
-    route?: string;
-    visible?: boolean;
-    accessRights?: string;
-    children?: SideNavNode[];
-    backgroundColor?: string;
 }
 
 
@@ -149,7 +139,7 @@ export class ShellService {
         return tree.filter(i => i.visible)
             .map(i => {
                 const clone: any = {};
-                for (let p in i) {
+                for (const p in i) {
                     clone[p] = i[p];
                 }
                 clone.children = this.filterSideNavByVisibility(i.children);
