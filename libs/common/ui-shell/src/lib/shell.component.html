@@ -120,7 +120,7 @@
                         <div class="user-icon">
                             <i class="fas fa-user-alt"></i>
                         </div>
-                        <div class="user-name margin-start-4">{{contextSrv.context? contextSrv.context.fullName : ''}}</div>
+                        <div class="user-name margin-start-4">{{loginSrv.appCtx?.fullName}}</div>
                     </div>
 
                 </div>
@@ -176,8 +176,6 @@
                     </button>
                 </ng-template>
 
-
-
             </ng-container>
 
             <mat-divider *ngIf="shellSrv.buttons.length"></mat-divider>
@@ -186,7 +184,7 @@
                 <div class="icon">
                     <i class="fas fa-user-alt"></i>
                 </div>
-                <span class="text" style="font-weight: bold;" translate>{{contextSrv.context ? contextSrv.context.fullName : ''}}</span>
+                <span class="text" style="font-weight: bold;" translate>{{loginSrv.appCtx?.fullName}}</span>
             </button>
 
             <mat-divider class="small-only"></mat-divider>

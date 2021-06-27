@@ -1,5 +1,5 @@
-import {SideNavNode} from '@ss/common/ui-shell';
 import {ABS_PURCHASE_ORDER_URL, ABS_PURCHASE_RECEPTION_URL} from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const purchasesNavTree: SideNavNode = {
     name: 'PURCHASES',

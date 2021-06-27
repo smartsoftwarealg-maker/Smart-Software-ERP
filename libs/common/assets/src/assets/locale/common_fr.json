@@ -155,5 +155,6 @@
     "SUBJECT": "Sujet",
     "MESSAGE": "Message",
     "EMAIL_REPORT": "Envoyer un rapport par e-mail",
-    "EMAIL_SENT": "Rapport envoyé avec succès"
+    "EMAIL_SENT": "Rapport envoyé avec succès",
+    "PROFILE": "Profil personnel"
 }

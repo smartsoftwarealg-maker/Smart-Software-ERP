@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {LanguageService} from '../../../api-common/src/lib/language.service';
 import {MatMenuTrigger} from '@angular/material/menu';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-language-select',
@@ -15,8 +15,7 @@ export class LanguageSelectComponent {
     }
 
     selectLocale(language: string): void {
-        this.langSrv.setLanguage(language)
-            .subscribe();
+        this.langSrv.setLanguage(language).subscribe();
     }
 
     public click(): void {

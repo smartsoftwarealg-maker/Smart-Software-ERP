@@ -16,14 +16,14 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
 
 
     constructor(
-        public currencyService: CurrencyService,
+        public currencySrv: CurrencyService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(currencyService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
+        super(currencySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
     }
 
 
@@ -38,4 +38,8 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
         });
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
+    }
 }

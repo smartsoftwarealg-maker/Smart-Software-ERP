@@ -64,4 +64,9 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
         this.selectedAgent = e? e.agentId || 0 : 0;
         super.select(e? e.id || 0 : 0)
     }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
+    }
 }

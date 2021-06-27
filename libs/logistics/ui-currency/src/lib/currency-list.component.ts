@@ -5,7 +5,6 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from "@ss/common/api-base-entity";
-//import {BaseEntityListComponent} from "@ss/common/api-base-entity";
 
 @Component({
     selector: 'ss-cost-center-list',
@@ -31,5 +30,10 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
         public confirmationSrv: ConfirmationDialogService) {
         super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_CURRENCIES');
         this.pagination.pageSize = 20;
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
     }
 }

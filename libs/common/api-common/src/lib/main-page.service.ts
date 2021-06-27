@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
-import { SideNavNode } from '@ss/common/ui-shell';
+
+export interface SideNavNode {
+    icon: string;
+    name: string;
+    route?: string;
+    visible?: boolean;
+    accessRights?: string;
+    children?: SideNavNode[];
+    backgroundColor?: string;
+}
 
 @Injectable({
     providedIn: 'root'

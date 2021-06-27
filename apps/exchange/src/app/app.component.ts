@@ -18,12 +18,10 @@ export class AppComponent implements OnInit {
     constructor(private httpSrv: HttpService,
         public shellSrv: ShellService,
         public langSrv: LanguageService,
-        public currencySrv: CurrencyService,
         public canActivateSrv: CanActivateService) {
     }
 
     ngOnInit() {
-        this.canActivateSrv.requireLoading(() => this.currencySrv.load());
         this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))

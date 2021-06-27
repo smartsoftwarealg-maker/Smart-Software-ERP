@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Agent, Person} from './models';
+import {Person} from './models';
 import {HttpService} from './http.service';
 
 @Injectable({
@@ -73,11 +73,11 @@ export class DecService {
             .put(`/persons/${person.id}/license`, {license: license});
     }
 
-    public saveAgentLicense(license: string, agent: Agent): Observable<number> {
-        if (!this.isValidLicense(license, agent.code)) {
-            throw new Error('INVALID_LICENSE');
-        }
-        return this.http
-            .put(`/persons/${agent.id}/license`, {license: license});
-    }
+    // public saveAgentLicense(license: string, agent: Agent): Observable<number> {
+    //     if (!this.isValidLicense(license, agent.customerCode)) {
+    //         throw new Error('INVALID_LICENSE');
+    //     }
+    //     return this.http
+    //         .put(`/persons/${agent.id}/license`, {license: license});
+    // }
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LoginService} from '@ss/common/api-common';
+import {LoginService, UserRightsService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-logout',
@@ -7,11 +7,13 @@ import {LoginService} from '@ss/common/api-common';
     styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent {
-    constructor(public loginSrv: LoginService) {
+    constructor(private loginSrv: LoginService, private rightsSrv: UserRightsService) {
     }
 
     logout() {
-        this.loginSrv.logout();
+        this.loginSrv
+            .logout()
+            .then(() => this.rightsSrv.clear());
     }
 
     public click(): void {

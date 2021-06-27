@@ -6,7 +6,6 @@ import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
-    AppContextService,
     LoginService,
     Role,
     User,
@@ -60,10 +59,9 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public lookupsSrv: LookupsService,
         private roleServ: RoleService,
         private loginSrv: LoginService,
-        private centerSrv: CenterService,
-        private contextSrv: AppContextService) {
+        private centerSrv: CenterService) {
         super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.userInfo.user.manager;
+        this.isManager = loginSrv.appCtx?.manager;
     }
 
 
@@ -77,7 +75,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             .pipe(
                 switchMap(res => {
                     this.roleList = res['body'];
-                    this.centerSrv.setParentId(this.contextSrv.context.company);
+                    this.centerSrv.setParentId(this.loginSrv.appCtx?.company);
                     return this.centerSrv.getList(0, 50)
                 }),
                 switchMap(res => {
@@ -104,7 +102,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         if (this.pwd1.value === this.pwd2.value && this.curUser != null) {
             this.curUser.password = this.pwd1.value;
             this.userSrv
-                .updatePassword(this.curUser)
+                .updatePassword( { id: this.loginSrv.appCtx.id, password: this.pwd1.value })
                 .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }

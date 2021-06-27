@@ -8,6 +8,7 @@ import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.component';
+import {CustomerProfileComponent} from "./ui-customer-profile/customer-profile.component";
 
 @NgModule({
     imports: [
@@ -18,8 +19,15 @@ import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.compon
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule
     ],
-    declarations: [AgentListComponent, AgentDetailComponent, MiniAgentDetailComponent],
-    exports: [AgentListComponent, AgentDetailComponent]
+    declarations: [
+        AgentListComponent,
+        AgentDetailComponent,
+        MiniAgentDetailComponent,
+        CustomerProfileComponent
+    ],
+    exports: [AgentListComponent,
+              AgentDetailComponent,
+              CustomerProfileComponent]
 })
 export class LogisticsUiAgentModule {
 }

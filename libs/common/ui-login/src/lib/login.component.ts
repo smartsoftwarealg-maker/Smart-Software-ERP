@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
         } else {
             this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
         }
+        console.log(this.loginSrv.isAgentLogin())
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
     }
 

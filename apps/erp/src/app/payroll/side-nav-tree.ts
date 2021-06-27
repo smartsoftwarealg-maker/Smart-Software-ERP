@@ -11,7 +11,7 @@ import {
     ABS_PAYROLL_EMPLOYMENT_TYPE_URL,
     ABS_PAYROLL_SUSPENSION_REASON_URL
 } from '../common';
-import {SideNavNode} from '@ss/common/ui-shell';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const payrollNavTree: SideNavNode = {
     name: 'PAYROLL',

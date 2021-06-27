@@ -1,7 +1,7 @@
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {HttpService, isString, PaginationModel} from "@ss/common/api-common";
+import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
 
 export class BaseEntityService<T> {
 

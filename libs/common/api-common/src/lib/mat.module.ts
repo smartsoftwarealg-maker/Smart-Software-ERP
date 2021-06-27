@@ -44,7 +44,7 @@ import { Injectable } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NativeDateAdapter, DateAdapter } from '@angular/material/core';
-import { dateToDmyStr, strToDate } from './utils';
+import {dateToDmyStr, strToDate} from './utils';
 
 @Injectable()
 export class AppDateAdapter extends NativeDateAdapter {

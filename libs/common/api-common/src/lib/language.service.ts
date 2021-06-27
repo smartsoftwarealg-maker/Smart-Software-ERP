@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, of, Subject } from 'rxjs';
-import { map, share, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { Direction } from '@angular/cdk/bidi';
 import { HttpClient } from '@angular/common/http';
-import {
-    dateToDmyStr,
-    dateToYmdStr,
-    dateStrToDmy,
-    dateStrToYmd,
-    isString,
-    removeTimeForDateStr,
-    AppConfigService, HttpService, AppContextService
-} from '@ss/common/api-common';
+import { dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
+import { AppConfigService } from './app-config.service';
+import {HttpService} from './http.service';
+import {LoginService} from './login.service';
 
 function formatFullName(first: string, last: string) {
     return (first == null ? '' : first) + (last == null ? '' : (' ' + last));
@@ -197,8 +192,8 @@ export class LanguageService {
 
     constructor(private appConfigSrv: AppConfigService,
                 private httpClient: HttpClient,
-                private httpSrv: HttpService,
-                private ctxSrv: AppContextService) {
+                private loginSrv: LoginService,
+                private httpSrv: HttpService) {
         this.languages = DEFAULT_SUPPORTED_LANGUAGES;
         this.defaultLanguage = DEFAULT_LANGUAGE;
     }
@@ -344,13 +339,7 @@ export class LanguageService {
         this.updateDirection(code);
         return this.loadMissing()
             .pipe(
-                switchMap(_ => this.ctxSrv?.context?.userId ?
-                    this.httpSrv.put('/lang?lang=' + code) : of({})),
-                tap(token => {
-                    if (token && token['payload']) {
-                        this.httpSrv.updateAuthToken(token['payload']);
-                    }
-                }),
+                switchMap(_ => this.loginSrv.setLanguage(code)),
                 switchMap(() => {
                     this.changeSubject.next(code);
                     return of(null);

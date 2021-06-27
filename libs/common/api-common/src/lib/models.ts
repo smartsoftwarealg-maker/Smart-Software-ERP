@@ -23,6 +23,11 @@ export interface AccessRight {
     delete?: boolean;
 }
 
+export interface Password {
+    id: number,
+    password: string;
+}
+
 export interface User {
     id: number;
     description: string;
@@ -36,7 +41,7 @@ export interface User {
 
 
 export interface AppContext {
-    userId: number;
+    id: number;
     userName: string;
     manager: boolean;
     company: number;
@@ -46,8 +51,9 @@ export interface AppContext {
     personId: number;
     agentId: number;
     fullName?: string;
-    blocked: boolean;
-    pwdExpired: boolean;
+    blocked?: boolean;
+    pwdExpired?: boolean;
+    hasPassword?: boolean;
 }
 
 export interface LoginInfo {
@@ -92,21 +98,6 @@ export interface DocRight {
     write: boolean;
     edit: boolean;
     delete: boolean;
-}
-
-export interface Agent {
-    id: number;
-    customerCode: string;
-    denomination: string;
-    code?: string;
-    address?: string;
-    denominationAr?: string;
-    addressAr?: string;
-   /**
-     * @deprecated This field doesn't exist in the backend; it will be removed
-     */
-    license?: string // FIXME:: remove this field
-
 }
 
 

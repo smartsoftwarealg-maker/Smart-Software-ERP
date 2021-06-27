@@ -1,4 +1,3 @@
-import {SideNavNode} from '@ss/common/ui-shell';
 import {
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
@@ -6,6 +5,7 @@ import {
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL
 } from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const salesNavTree: SideNavNode = {
     name: 'SALES',

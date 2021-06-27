@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Option} from './option.class';
 import {OptionService} from './option.service';
-import {AppContextService} from '@ss/common/api-common';
+import {LoginService} from "@ss/common/api-common";
 
 
 @Component({
@@ -21,6 +21,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
 
     constructor(
+        private loginSrv: LoginService,
         public optionSrv: OptionService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -28,14 +29,13 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private storeNameSrv: LotsService,
-        private appContextSrv: AppContextService) {
+        private storeNameSrv: LotsService) {
         super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OPTION');
     }
 
     public setupForm(a: Option) {
         return this.formBuilder.group({
-            id: [this.appContextSrv.context.center],
+            id: [this.loginSrv.appCtx.center],
             eval_price: [a.eval_price || 1, Validators.required],
             mainStore: [a.mainStore],
             inventory_date: [a.inventory_date, Validators.required]
@@ -43,6 +43,6 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
     }
 
     loadEntity(id: number): Observable<Option> {
-        return super.loadEntity(this.appContextSrv.context.center);
+        return super.loadEntity(this.loginSrv.appCtx.center);
     }
 }

@@ -1,4 +1,3 @@
-import { SideNavNode } from '@ss/common/ui-shell';
 import {
     ABS_ADMINISTRATION_BANK_URL,
     ABS_ADMINISTRATION_CENTER_URL,
@@ -9,6 +8,7 @@ import {
     ABS_ADMINISTRATION_COUNTRY_URL,
     ABS_ADMINISTRATION_CITY_URL, ABS_ADMINISTRATION_ACCESS_RIGHTS_URL, ABS_ADMINISTRATION_TRACEABILITY_URL,
 } from '../common';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const administrationNavTree: SideNavNode = {
     name: 'ADMINISTRATION',

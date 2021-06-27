@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ShellService, ToolbarButton, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
-import { ActivatedRoute } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { EmployeeActivationComponent } from './employee-activation.component';
-import { dateToYmdStr, AppContextService } from '@ss/common/api-common';
-import { Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { EmploymentTypeService, LookupsService, EmploymentType } from '@ss/common/api-lookup';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {EmployeeActivationUIService} from './employee-activation-ui.service';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EmployeeActivation, EmployeeActivationService} from '@ss/payroll/api-person';
+import {ActivatedRoute} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {EmployeeActivationComponent} from './employee-activation.component';
+import {dateToYmdStr, LoginService} from '@ss/common/api-common';
+import {Observable, of} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
+import {EmploymentType, EmploymentTypeService, LookupsService} from '@ss/common/api-lookup';
 
 
 @Component({
@@ -33,16 +33,15 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     };
 
     constructor(public uiSrv: EmployeeActivationUIService,
-        public shellSrv: ShellService,
-        public employeeActivationSrv: EmployeeActivationService,
-        public employmentTypeSrv: EmploymentTypeService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public appContextSrv: AppContextService,
-        public lookupsSrv: LookupsService,
-        public confirmationSrv: ConfirmationDialogService) {
-    }
+                public shellSrv: ShellService,
+                public employeeActivationSrv: EmployeeActivationService,
+                public employmentTypeSrv: EmploymentTypeService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public formBuilder: FormBuilder,
+                public lookupsSrv: LookupsService,
+                public confirmationSrv: ConfirmationDialogService,
+                private loginSrv: LoginService) {}
 
     ngOnInit(): void {
         const parent: EmployeeActivationComponent = this.uiSrv.instance;
@@ -87,7 +86,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
                 switchMap(() => of({
                     activityStatus: 0,
                     empId: this.uiSrv.instance.personId,
-                    center: this.appContextSrv.context.center,
+                    center: this.loginSrv.appCtx.center,
                     employmentType: null,
                     hireDate: dateToYmdStr(new Date()),
                     id: 0,
@@ -127,17 +126,19 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
         val.inConflict = false;
         //
         val.id = this.id;
-        let obs: Observable<any> = this.id === 0
+        const obs: Observable<any> = this.id === 0
             ? this.employeeActivationSrv.add(val).pipe(tap(i => { this.id = i; }))
             : this.employeeActivationSrv.update(val);
         this.shellSrv.setLoading(true);
-        obs.subscribe(() => {
-            this.snackBarSrv.showSuccessMessage();
-            this.uiSrv.instance.refresh();
-        }, err => {
-            this.snackBarSrv.showFailureMessage();
-            this.shellSrv.setLoading(false);
-            throw err;
+        obs.subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+                this.uiSrv.instance.refresh();
+            }, error: err => {
+                this.snackBarSrv.showFailureMessage();
+                this.shellSrv.setLoading(false);
+                throw err;
+            }
         })
     }
 

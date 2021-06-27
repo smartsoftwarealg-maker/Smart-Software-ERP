@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShellService, SideNavNode } from '@ss/common/ui-shell';
+import { ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import {LanguageService} from '@ss/common/api-common';
+import {LanguageService, SideNavNode} from '@ss/common/api-common';
 import { MainPageService } from '@ss/common/api-common';
 
 

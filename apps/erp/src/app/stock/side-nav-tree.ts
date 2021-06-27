@@ -15,7 +15,7 @@ import {
     ABS_STOCK_UNITS_URL,
     ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS
 } from '../common';
-import {SideNavNode} from '@ss/common/ui-shell';
+import {SideNavNode} from '@ss/common/api-common';
 
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',

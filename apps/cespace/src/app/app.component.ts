@@ -23,9 +23,7 @@ export class AppComponent implements OnInit {
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => {
-                this.shellSrv.setSideNavDataSource([
-                    exchangeNavTree
-                ]);
+                this.shellSrv.setSideNavDataSource(exchangeNavTree);
                 this.loaded = true;
             });
     }

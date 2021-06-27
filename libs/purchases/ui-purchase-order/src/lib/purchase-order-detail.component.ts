@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -21,7 +21,7 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './purchase-order-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
+export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     private order: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
@@ -55,12 +55,12 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         if (!form.id) {
             form.id = 0;
             form.number = 0;
-            form.userID = this.loginService.userInfo.user.id;
+            form.userID = this.loginService.appCtx.id;
             form.dealer = form.userID;
             form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.order = form;
-        this.isManager = this.loginService.userInfo.user.manager;
+        this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
@@ -88,4 +88,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         return form;
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.currencySrv.load().subscribe();
+    }
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AccessRight, AppContextService, Role} from "@ss/common/api-common";
+import {AccessRight, LoginService, Role} from "@ss/common/api-common";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -30,6 +30,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
 
     constructor(
+        private loginSrv: LoginService,
         public rightsSrv: AccessRightsService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -37,7 +38,6 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public router: Router,
-        private contextSrv: AppContextService,
         private lookupSrv: LookupsService,
         public formBuilder: FormBuilder,
         private roleSrv: RoleService) {
@@ -73,7 +73,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         if (this.selectedItem) {
             const r = {
                 id: this.selectedRow?.id || 0,
-                centerId: this.contextSrv.context.center,
+                centerId: this.loginSrv.appCtx.center,
                 roleId: this.form.controls['roles'].value || 0,
                 document: 0,
                 rights: (this.form.controls['canRead'].value || 0) +
