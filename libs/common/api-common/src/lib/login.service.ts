@@ -141,6 +141,9 @@ export class LoginService {
                 },
                 error: err => {
                     this.wrongData = true;
+                    if (onFinish != null) {
+                        onFinish();
+                    }
                 },
                 complete: () => {
                     if (onFinish != null) {

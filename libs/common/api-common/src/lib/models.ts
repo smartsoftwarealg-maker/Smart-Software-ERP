@@ -24,7 +24,9 @@ export interface AccessRight {
 }
 
 export interface Password {
-    id: number,
+    id: number;
+    agentId?: number;
+    personId?: number;
     password: string;
 }
 

@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
 import {
     Activity,
@@ -19,7 +19,7 @@ import {
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {FormValidators} from '@ss/common/api-common';
+import {FormValidators, LoginService} from '@ss/common/api-common';
 import {Bank} from '@ss/administration/api-bank';
 
 
@@ -29,6 +29,8 @@ import {Bank} from '@ss/administration/api-bank';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
+    pwd1 = new FormControl();
+    pwd2 = new FormControl();
     agentTypes: AgentType[];
     companyTypes: CompanyType[];
     cities: City[];
@@ -41,14 +43,15 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
 
 
     constructor(
-        public agentService: AgentService,
+        private loginSrv: LoginService,
+        public agentSrv: AgentService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
+        super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
     }
 
     public preload(): Observable<any> {
@@ -138,7 +141,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             subcontractor: [a.subcontractor],
             tin: [a.tin],
             creationTime: {value: a.creationTime, disabled: true}
-
         });
     }
 
@@ -199,7 +201,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     }
 
     uploadAttachments(id: number): Observable<any> {
-        return this.agentService
+        return this.agentSrv
             .get(id)
             .pipe(tap(agent => {
                 this.form.controls['price'].setValue(agent.price);
@@ -208,5 +210,13 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 this.form.controls['customerCode'].setValue(agent.customerCode);
                 this.form.controls['creationTime'].setValue(agent.creationTime);
             }));
+    }
+
+    updatePassword() {
+        if (this.pwd1.value === this.pwd2.value ) {
+            this.agentSrv
+                .updatePassword({id: this.loginSrv.appCtx.id, agentId: this.form.controls['id'].value, password: this.pwd2.value })
+                .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
+        }
     }
 }
