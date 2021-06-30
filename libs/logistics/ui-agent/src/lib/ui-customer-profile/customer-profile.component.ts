@@ -3,6 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'ss-ui-customer-profile',
@@ -17,12 +18,14 @@ export class CustomerProfileComponent implements OnInit {
 
   constructor(private shellSrv: ShellService,
               private loginSrv: LoginService,
+              public route: ActivatedRoute,
               private fb: FormBuilder,
               public snackBarSrv: SnackBarService,
               private agentSrv: AgentService) { }
 
   ngOnInit(): void {
       this.shellSrv.setTitle('COMMON_PROFILE');
+      this.shellSrv.setGoBackPath('..', this.route);
       this.agentSrv
           .currentCustomer()
           .subscribe(agent => {
