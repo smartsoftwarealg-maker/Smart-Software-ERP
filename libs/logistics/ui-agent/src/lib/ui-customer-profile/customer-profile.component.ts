@@ -44,7 +44,7 @@ export class CustomerProfileComponent implements OnInit {
       if (this.pwd1.value === this.pwd2.value && this.agent != null) {
           this.agent.password = this.pwd1.value;
           this.agentSrv
-              .updatePassword({ id: this.loginSrv.appCtx.agentId, password: this.agent.password})
+              .updatePassword({ id: 0, agentId: this.loginSrv.appCtx.agentId, password: this.agent.password })
               .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
       }
   }

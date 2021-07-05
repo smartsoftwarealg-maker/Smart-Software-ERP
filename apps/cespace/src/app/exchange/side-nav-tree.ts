@@ -18,6 +18,7 @@ export const exchangeNavTree: SideNavNode[] =
             name: 'EXCHANGE_CURRENCY_DEPOSIT',
             icon: 'fas fa-money-check-alt',
             route: ABS_EXCHANGE_DEPOSIT_URL,
+            accessRights: 'Deposit'
         },
         // {
         //     name: 'EXCHANGE_GLOBAL_BALANCE',

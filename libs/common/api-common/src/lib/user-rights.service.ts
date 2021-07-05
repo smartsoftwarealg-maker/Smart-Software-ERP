@@ -63,12 +63,12 @@ export class UserRightsService {
 
     private getDefault(): Right {
         const manager = this.loginSrv?.appCtx?.manager;
-        const severe = this.loginSrv?.appCtx?.severe;
+        const severe = this.loginSrv?.appCtx?.severe && this.loginSrv.appCtx.id > 0;
         return {
-            read: manager || !severe,
-            write: manager || !severe,
-            edit: manager || !severe,
-            delete: manager || !severe
+            read:   manager || !severe || this.loginSrv.appCtx.agentId > 0,
+            write:  (manager || !severe) && !this.loginSrv.appCtx.agentId,
+            edit:   (manager || !severe) && !this.loginSrv.appCtx.agentId,
+            delete: (manager || !severe) && !this.loginSrv.appCtx.agentId
         };
     }
 

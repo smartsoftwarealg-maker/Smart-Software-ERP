@@ -2,9 +2,15 @@ import {
     ADMINISTRATION_BANK_URL,
     ADMINISTRATION_CENTER_URL,
     ADMINISTRATION_COMPANY_URL,
-    ADMINISTRATION_REPORT_CATALOG_URL, ADMINISTRATION_ROLE_URL,
-    ADMINISTRATION_SMTP_URL, ADMINISTRATION_USER_URL,
-    ADMINISTRATION_CITY_URL, ADMINISTRATION_COUNTRY_URL, ADMINISTRATION_WILAYA_URL,
+    ADMINISTRATION_REPORT_CATALOG_URL,
+    ADMINISTRATION_ROLE_URL,
+    ADMINISTRATION_SMTP_URL,
+    ADMINISTRATION_USER_URL,
+    ADMINISTRATION_CITY_URL,
+    ADMINISTRATION_COUNTRY_URL,
+    ADMINISTRATION_WILAYA_URL,
+    ADMINISTRATION_ACCCESSRIGHTS_URL,
+    ADMINISTRATION_TRACEABILITY_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -24,6 +30,8 @@ import {
     WilayaListComponent,
     WilayaDetailComponent
 } from '@ss/common/ui-lookup';
+import {AccessRightsListComponent} from '@ss/common/ui-access-rights';
+import {TraceabilityComponent} from '@ss/common/ui-traceability';
 
 export const mainRoutes: Routes = [
 //    // NOT USED
@@ -64,6 +72,16 @@ export const mainRoutes: Routes = [
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
+    },
+    {
+        path: ADMINISTRATION_ACCCESSRIGHTS_URL,
+        component: AccessRightsListComponent,
+        canActivate: [CanActivateService]
+    },
+    {
+        path: ADMINISTRATION_TRACEABILITY_URL,
+        component: TraceabilityComponent,
+        canActivate: [CanActivateService]
     },
     {
         path: ADMINISTRATION_SMTP_URL,
