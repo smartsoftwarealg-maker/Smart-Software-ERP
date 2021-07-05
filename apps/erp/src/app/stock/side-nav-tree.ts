@@ -81,16 +81,16 @@ export const stockNavTree: SideNavNode = {
                     icon: 'fas fa-folder-tree',
                     route: ABS_STOCK_SUBCLASSES_URL
                 },
-                {
-                    name: 'COMMON_VAT',
-                    icon: 'fas fa-percentage',
-                    route: ABS_STOCK_VAT_URL
-                },
-                {
-                    name: 'COMMON_AGENT_TYPES',
-                    icon: 'fas fa-user',
-                    route: ABS_STOCK_AGENT_TYPE
-                },
+                // {
+                //     name: 'COMMON_VAT',
+                //     icon: 'fas fa-percentage',
+                //     route: ABS_STOCK_VAT_URL
+                // },
+                // {
+                //     name: 'COMMON_AGENT_TYPES',
+                //     icon: 'fas fa-user',
+                //     route: ABS_STOCK_AGENT_TYPE
+                // },
             ]
         },
         {

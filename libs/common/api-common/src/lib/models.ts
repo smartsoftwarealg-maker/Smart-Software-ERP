@@ -49,9 +49,9 @@ export interface AppContext {
     company: number;
     center: number;
     severe: boolean;
-    payMonth: number;
-    personId: number;
-    agentId: number;
+    payMonth?: number;
+    personId?: number;
+    agentId?: number;
     fullName?: string;
     blocked?: boolean;
     pwdExpired?: boolean;

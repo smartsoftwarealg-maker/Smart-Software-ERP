@@ -13,21 +13,24 @@ export const logAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',
     icon: 'fas fa-users-cog',
     children: [
-        {
-            name: 'COMMON_UNITS',
-            icon: 'fas fa-balance-scale-right',
-            route: ABS_STOCK_UNITS_URL
-        },
+        // {
+        //     name: 'COMMON_UNITS',
+        //     icon: 'fas fa-balance-scale-right',
+        //     route: ABS_STOCK_UNITS_URL,
+        //     accessRights: 'Unit'
+        // },
         {
             name: 'COMMON_VAT',
             icon: 'fas fa-percentage',
-            route: ABS_STOCK_VAT_URL
+            route: ABS_STOCK_VAT_URL,
+            accessRights: 'VAT'
         },
-        {
-            name: 'COMMON_AGENT_TYPES',
-            icon: 'fas fa-user',
-            route: ABS_STOCK_AGENT_TYPE
-        },
+        // {
+        //     name: 'COMMON_AGENT_TYPES',
+        //     icon: 'fas fa-user',
+        //     route: ABS_STOCK_AGENT_TYPE,
+        //     accessRights: 'AgentType'
+        // },
         {
             name: 'COMMON_COMPANY_TYPES',
             icon: 'fas fa-building',
@@ -36,22 +39,26 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
-            route: ABS_STOCK_ACTIVITY
+            route: ABS_STOCK_ACTIVITY,
+            accessRights: 'Activity'
         },
         {
             name: 'LOGISTICS_PAY_METHOD',
             icon: 'fas fa-money-check-edit',
-            route: ABS_LOGISTICS_PAY_METHOD
+            route: ABS_LOGISTICS_PAY_METHOD,
+            accessRights: 'MPay'
         },
         {
             name: 'COMMON_CURRENCIES',
             icon: 'fas fa-coins',
-            route: ABS_STOCK_CURRENCY
+            route: ABS_STOCK_CURRENCY,
+            accessRights: 'Currency'
         },
         {
             name: 'COMMON_OPTIONS',
             icon: 'fas fa-coins',
-            route: ABS_LOGISTICS_OPTIONS
+            route: ABS_LOGISTICS_OPTIONS,
+            accessRights: 'Option'
         },
     ]
 };

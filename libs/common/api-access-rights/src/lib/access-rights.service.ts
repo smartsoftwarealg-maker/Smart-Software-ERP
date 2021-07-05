@@ -13,7 +13,7 @@ export const ACCESS_RIGHTS_URL = '/accessrights';
 })
 export class AccessRightsService extends BaseEntityExtendedService<AccessRight> {
 
-    constructor(protected httpSrv: HttpService, private shellSrv: ShellService) {
+    constructor(protected httpSrv: HttpService) {
         super(httpSrv, ACCESS_RIGHTS_URL);
     }
 

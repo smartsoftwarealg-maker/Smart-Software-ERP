@@ -98,8 +98,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     public ngOnInit() {
         const node = this.shellSrv.getNavNodeByRouter(this.router);
-        this.reportForm = node ? node.accessRights : null;
-        this.defReportButton.visible = !!this.reportForm;
+        this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
+        this.defReportButton.visible = this.reportForm != null;
+        this.viewReportButton.visible = this.reportForm != null;
         //
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
