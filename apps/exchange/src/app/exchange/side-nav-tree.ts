@@ -16,7 +16,7 @@ export const fileNavTree: SideNavNode = {
     icon: 'fas fa-file',
     children: [
         {
-            name: 'LOGISTICS_AGENT',
+            name: 'LOGISTICS_CUSTOMER',
             icon: 'fas fa-user',
             route: ABS_EXCHANGE_AGENT_URL,
             accessRights: 'Agent'
