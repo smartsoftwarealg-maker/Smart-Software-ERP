@@ -1881,6 +1881,31 @@
         }
       }
     },
+    "exchange-ui-idiot-page": {
+      "projectType": "library",
+      "root": "libs/exchange/ui-idiot-page",
+      "sourceRoot": "libs/exchange/ui-idiot-page/src",
+      "prefix": "ss",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/exchange/ui-idiot-page"],
+          "options": {
+            "jestConfig": "libs/exchange/ui-idiot-page/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/exchange/ui-idiot-page/src/**/*.ts",
+              "libs/exchange/ui-idiot-page/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "exchange-ui-info": {
       "projectType": "library",
       "root": "libs/exchange/ui-info",
