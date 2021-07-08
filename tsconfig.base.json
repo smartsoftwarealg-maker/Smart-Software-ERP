@@ -119,6 +119,9 @@
       "@ss/exchange/ui-deposit-type": [
         "libs/exchange/ui-deposit-type/src/index.ts"
       ],
+      "@ss/exchange/ui-idiot-page": [
+        "libs/exchange/ui-idiot-page/src/index.ts"
+      ],
       "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"],
       "@ss/logistics/api-account": ["libs/logistics/api-account/src/index.ts"],
       "@ss/logistics/api-agent": ["libs/logistics/api-agent/src/index.ts"],

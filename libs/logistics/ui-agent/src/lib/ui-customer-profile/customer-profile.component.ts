@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ss-ui-customer-profile',
