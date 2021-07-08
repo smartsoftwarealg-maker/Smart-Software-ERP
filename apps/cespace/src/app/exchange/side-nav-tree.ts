@@ -30,9 +30,9 @@ export const exchangeNavTree: SideNavNode[] =
         //     icon: 'fas fa-file-chart-line',
         //     route: ABS_EXCHANGE_REPORT_PARAMS
         // },
-        // {
-        //     name: 'COMMON_PROFILE',
-        //     icon: 'fas fa-file-chart-line',
-        //     route: ABS_CUSTOMER_PROFILE
-        // }
+        {
+            name: 'COMMON_PROFILE',
+            icon: 'fas fa-file-chart-line',
+            route: ABS_CUSTOMER_PROFILE
+        }
     ];
