@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ReportParamsService, ReportViewData} from "@ss/common/api-report-param";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {ReportParamsService, ReportViewData} from "@ss/common/api-reports";
+import {ShellService} from "@ss/common/ui-shell";
 
 @Component({
   selector: 'ss-idiot-page',
@@ -11,6 +12,7 @@ export class IdiotPageComponent implements OnInit {
     htmlSrc: SafeHtml = null;
 
   constructor(private reportService: ReportParamsService,
+              private shellSrv: ShellService,
               public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class IdiotPageComponent implements OnInit {
             fileName:  'Historique_Client.jasper',
             paramList: []
         };
+      this.shellSrv.setGoBackPathByRelativeUrl('..');
         this.reportService
             .viewHTML(data)
             .subscribe(res => this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res));

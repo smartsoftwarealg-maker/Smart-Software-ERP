@@ -148,6 +148,7 @@ export class ShellService {
         return tree.filter(i => i.visible)
             .map(i => {
                 const clone: any = {};
+                // tslint:disable-next-line:forin
                 for (const p in i) {
                     clone[p] = i[p];
                 }
