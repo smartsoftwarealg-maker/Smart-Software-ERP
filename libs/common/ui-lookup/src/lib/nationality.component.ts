@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 
 @Component({

@@ -8,7 +8,7 @@ import {
     GBalance,
     GlobalBalanceService
 } from '@ss/exchange/api-currency-deposit';
-import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 

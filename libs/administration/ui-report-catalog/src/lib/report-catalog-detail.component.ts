@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
 import {FormValidators, LIST_URL} from "@ss/common/api-common";

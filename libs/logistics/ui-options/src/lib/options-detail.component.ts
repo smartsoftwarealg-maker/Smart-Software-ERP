@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Lot, LotsService, PayMethod, PayMode, PayModeService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';

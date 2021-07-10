@@ -16,7 +16,6 @@ export class ReportParamsService extends BaseEntityService<ReportParam> {
 
     viewHTML(data: ReportViewData): Observable<any> {
         return this.httpSrv.postHTML('/reports/view', data);
-        // this.reportService.httpSrv.postBlob('/reports/view', data);
     }
 
     viewPDF(data: ReportViewData): Observable<any> {

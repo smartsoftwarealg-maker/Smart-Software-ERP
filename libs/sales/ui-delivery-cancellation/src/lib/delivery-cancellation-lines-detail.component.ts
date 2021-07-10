@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {DeliveryLine, DeliveryLinesService} from '@ss/sales/api-delivery-lines';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';

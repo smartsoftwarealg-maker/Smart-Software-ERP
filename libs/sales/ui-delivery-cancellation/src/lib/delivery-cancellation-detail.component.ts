@@ -15,7 +15,7 @@ import {tap} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import {DeliveryCancellationLinesListComponent} from './delivery-cancellation-lines-list.component';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from "@ss/common/api-users";

@@ -10,7 +10,7 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {HttpService} from '@ss/common/api-common';
 
 @Component({

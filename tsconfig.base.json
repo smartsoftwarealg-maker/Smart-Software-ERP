@@ -64,9 +64,6 @@
       ],
       "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
       "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
-      "@ss/common/api-report-param": [
-        "libs/common/api-report-param/src/index.ts"
-      ],
       "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
       "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
       "@ss/common/ui-access-rights": [
@@ -75,6 +72,7 @@
       "@ss/common/ui-auto-complete": [
         "libs/common/ui-auto-complete/src/index.ts"
       ],
+      "@ss/common/ui-base-entity": ["libs/common/ui-base-entity/src/index.ts"],
       "@ss/common/ui-center-select": [
         "libs/common/ui-center-select/src/index.ts"
       ],

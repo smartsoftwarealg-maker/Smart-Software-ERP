@@ -6,7 +6,7 @@ import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityService} from "./base-entity.service";
+import {BaseEntityService} from "@ss/common/api-base-entity";
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
