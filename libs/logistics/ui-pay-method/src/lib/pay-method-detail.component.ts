@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {FormBuilder} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, PayMethod, PayMode, PayModeService} from "@ss/common/api-lookup";
 import {Account, ACCOUNT_TYPES, AccountService} from "@ss/logistics/api-account";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";

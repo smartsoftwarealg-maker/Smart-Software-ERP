@@ -111,7 +111,16 @@ export class ShellService {
     /* SIDE NAV */
 
     public getNavNodeByRouter(router: Router): SideNavNode {
-        const url = router.routerState.snapshot.url;
+        // const url = router.routerState.snapshot.url;
+        const url = '/' +
+            this.router
+                .routerState
+                .snapshot
+                .url
+                .split('/')
+                .filter(e => e !== '')
+                .splice(0, 3)
+                .join('/');
         return this.navData.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
     }
 

@@ -3,7 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {REPORTS_LIST_URL} from './report-api';
 import {HttpParams} from '@angular/common/http';
-import {ReportCatalog} from '@ss/common/api-report-param';
+import {ReportCatalog} from './report-params-api';
 
 
 @Injectable({

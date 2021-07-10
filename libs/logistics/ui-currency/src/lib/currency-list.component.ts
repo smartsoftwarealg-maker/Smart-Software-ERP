@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityListComponent} from "@ss/common/api-base-entity";
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
     selector: 'ss-cost-center-list',

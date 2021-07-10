@@ -5,8 +5,8 @@ import {Observable, of} from 'rxjs';
 import {DefaultReportComponent} from './ui-default-report/default-report.component';
 import {HttpParams} from '@angular/common/http';
 import {Company, HttpService} from '@ss/common/api-common';
-import {EmailSenderComponent} from "./ui-email-sender/email-sender.component";
-import {tap} from "rxjs/operators";
+import {EmailSenderComponent} from './ui-email-sender/email-sender.component';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'

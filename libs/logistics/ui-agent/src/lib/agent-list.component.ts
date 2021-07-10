@@ -7,8 +7,8 @@ import {tap} from 'rxjs/operators';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityListComponent} from '@ss/common/api-base-entity';
-//import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+//import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
     selector: 'ss-agent-list',

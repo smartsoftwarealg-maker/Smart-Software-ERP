@@ -10,7 +10,7 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {switchMap} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {BaseEntityListComponent} from "@ss/common/api-base-entity";
+import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 
 @Component({
   selector: 'ss-access-rights',

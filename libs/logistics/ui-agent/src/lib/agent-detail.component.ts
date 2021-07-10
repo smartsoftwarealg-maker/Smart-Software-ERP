@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/api-base-entity';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     Activity,
     AgentPrice,

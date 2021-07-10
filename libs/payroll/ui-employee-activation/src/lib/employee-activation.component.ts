@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {HttpService, LanguageService} from '@ss/common/api-common';
 import { LookupsService, EmploymentType, SuspensionReason } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';

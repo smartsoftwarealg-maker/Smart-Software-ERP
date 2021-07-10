@@ -1,7 +1,7 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/api-base-entity';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';

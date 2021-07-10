@@ -487,35 +487,6 @@
         }
       }
     },
-    "api-report-param": {
-      "projectType": "library",
-      "root": "libs/common/api-report-param",
-      "sourceRoot": "libs/common/api-report-param/src",
-      "prefix": "ss",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/common/api-report-param/tsconfig.lib.json",
-              "libs/common/api-report-param/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-report-param/**/*"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/common/api-report-param"],
-          "options": {
-            "jestConfig": "libs/common/api-report-param/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "api-reports": {
       "projectType": "library",
       "root": "libs/common/api-reports",
@@ -926,6 +897,31 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "common-ui-base-entity": {
+      "projectType": "library",
+      "root": "libs/common/ui-base-entity",
+      "sourceRoot": "libs/common/ui-base-entity/src",
+      "prefix": "ss",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/ui-base-entity"],
+          "options": {
+            "jestConfig": "libs/common/ui-base-entity/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common/ui-base-entity/src/**/*.ts",
+              "libs/common/ui-base-entity/src/**/*.html"
+            ]
+          }
         }
       }
     },

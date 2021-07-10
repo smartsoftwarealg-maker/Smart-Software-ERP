@@ -61,9 +61,6 @@
     "api-report-catalog": {
       "tags": []
     },
-    "api-report-param": {
-      "tags": []
-    },
     "api-reports": {
       "tags": []
     },
@@ -96,6 +93,9 @@
       "tags": []
     },
     "common-ui-auto-complete": {
+      "tags": []
+    },
+    "common-ui-base-entity": {
       "tags": []
     },
     "common-ui-center-select": {
