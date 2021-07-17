@@ -1,0 +1,171 @@
+
+:host {
+    margin: auto;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bk-title {
+    width: 100%;
+    flex: 64px 0 0;
+
+    .inner {
+        display: block;
+        height: 64px;
+        padding-right: 8px;
+        padding-left: 8px;
+        border-radius: 8px;
+        margin: 8px 8px 16px;
+        line-height: 64px;
+        font-weight: bold;
+
+        .color {
+            margin-top: 12px;
+        }
+
+        .text {
+            line-height: 64px;
+        }
+    }
+}
+
+.bk-details {
+    display: block;
+    width: 100%;
+    flex: 100% 1 1;
+    overflow: auto;
+
+    .inner {
+        margin-right: 8px;
+        margin-left: 8px;
+        overflow: hidden;
+    }
+}
+
+.save-bar {
+    flex: 56px 0 0;
+    height: 56px;
+    width: 90%;
+    margin: 8px auto;
+    border-radius: 12px;
+}
+
+.invoice-title {
+    margin-top: 16px;
+    height: 32px;
+    position: relative;
+    width: 100%;
+
+    .line-div {
+        position: absolute;
+        top: 0;
+        right: 4px;
+        left: 4px;
+        height: 50%;
+        .line {
+            border-bottom: 1px solid;
+            display: block;
+            max-width: 500px;
+            height: 100%;
+            margin: auto;
+        }
+    }
+
+    .text-div {
+        line-height: 32px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        .text {
+            display: block;
+            max-width: 500px;
+            line-height: 32px;
+            height: 32px;
+            margin: auto;
+        }
+    }
+}
+
+.bk-dtl-invoice {
+    //font-size: 12px;
+    margin-top: 32px;
+    width: 100%;
+
+    .row {
+        overflow: hidden;
+        display: block;
+        height: 32px;
+        max-height: 32px;
+        line-height: 32px;
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        border-bottom: 1px solid #aaa;
+
+        .description {
+            overflow: hidden;
+            display: inline-block;
+            width: 59%;
+            margin-right: 1%;
+            height: 32px;
+            max-height: 32px;
+            line-height: 32px;
+
+            .checkbox {
+                width: 20px;
+                height: 32px;
+            }
+        }
+
+        .description2 {
+            @extend .description;
+            line-height: 16px;
+
+            .checkbox {
+                margin-top: 6px;
+                width: 20px;
+                height: 32px;
+            }
+
+            .txt {
+                display: inline-block;
+                height: 16px;
+            }
+        }
+
+        .description-header {
+            @extend .description;
+            font-weight: bold;
+        }
+
+        .amount {
+            overflow: hidden;
+            display: inline-block;
+            text-align: right;
+            width: 39%;
+            height: 32px;
+            max-height: 32px;
+            line-height: 32px;
+        }
+
+        .amount-header {
+            @extend .amount;
+            font-weight: bold;
+        }
+    }
+
+    .invoice-bar {
+        height: 64px;
+        line-height: 64px;
+        max-width: 500px;
+        margin: 4px auto;
+    }
+}

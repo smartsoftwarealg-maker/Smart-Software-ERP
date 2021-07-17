@@ -1,0 +1,39 @@
+<div class="center-of-button" matBadgeColor="warn"
+     [matBadge]="rOptions.length ? (rOptions.length + '') : null"
+     [matBadgePosition]="langSrv.rtl ? 'above before' : 'above after'">
+</div>
+<button type="button"
+        matTooltip="{{'HTL_BK_ROOM_OPTIONS' | translate}}"
+        #trigger="matMenuTrigger"
+        [matMenuTriggerFor]="optionsMenu"
+        mat-icon-button>
+    <i class="fas fa-filter"></i>
+</button>
+
+<mat-menu overlapTrigger="false" xPosition="after" yPosition="below" #optionsMenu="matMenu">
+    <div class="options-menu" (click)="$event.stopPropagation()">
+        <div class="room-options-title" translate>HTL_BK_ROOM_OPTIONS</div>
+        <div class="option-checkboxes">
+            <mat-checkbox *ngFor="let opt of bookingSrv.roomOptionsArray"
+                          color="primary"
+                          class="options-menu-row"
+                          [checked]="checkedOptions[opt.id]"
+                          (change)="setOption(opt.id, $event.checked)">
+                {{opt.description}}
+            </mat-checkbox>
+        </div>
+        <div class="menu-buttons">
+            <button style="margin: 4px;" class="margin-end-8"
+                    color="primary" matTooltip="{{'APPLY' | translate}}"
+                    mat-mini-fab type="button" (click)="applyChanges()">
+                <i class="fas fa-check"></i>
+            </button>
+
+            <button matTooltip="{{ 'CLOSE' | translate }}"
+                    color="" type="button" class="margin-end-8" (click)="close()" mat-mini-fab>
+                <i class="fas fa-times"></i>
+            </button>
+
+        </div>
+    </div>
+</mat-menu>

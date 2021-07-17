@@ -31,7 +31,7 @@ export interface Language {
     // todo: add support for datetime
 }
 
-const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
+export const DEFAULT_SUPPORTED_LANGUAGES: Language[] = [
     {
         code: 'ar',
         dir: 'rtl',

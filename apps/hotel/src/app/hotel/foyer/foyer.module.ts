@@ -1,0 +1,68 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { NavService } from '../../common/nav.service';
+import { FoyerListComponent } from './foyer-list.component';
+import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
+import { PaginationModule } from '../../common/pagination/pagination.module';
+import { AutoCompleteModule } from '../../common/auto-complete/auto-complete.module';
+import { ImageInputModule } from '../../common/image-input/image-input.module';
+import { SaveBarModule } from '../../common/save-bar/save-bar.module';
+import { FoyerService } from './foyer-service';
+import { CanDeactivateService, FoyerDetailComponent } from './foyer-detail.component';
+import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
+import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
+import { LanguageService } from '@ss/common/api-common';
+import { MaterialModule } from '../../smart-lib/components/material.module';
+
+const routes: Routes = [
+    {
+        path: '',
+        component: FoyerListComponent,
+        data: { entity: null },
+        canActivate: [CanActivateService]
+    },
+    {
+        path: ':id',
+        component: FoyerDetailComponent,
+        data: { entity: null },
+        canActivate: [CanActivateService],
+        canDeactivate: [CanDeactivateService]
+    },
+    { path: '**', redirectTo: '', pathMatch: 'full' }, // not found
+];
+
+
+@NgModule({
+    imports: [
+        CommonModule,
+        SmartCommonModule,
+        MaterialModule,
+        FatalErrorModule,
+        LoadingSpinnerModule,
+        ListToolbarModule,
+        PaginationModule,
+        AutoCompleteModule,
+        ImageInputModule,
+        RouterModule.forChild(routes),
+        SaveBarModule
+    ],
+    declarations: [
+        FoyerListComponent,
+        FoyerDetailComponent
+    ],
+    providers: [
+        FoyerService,
+        CanDeactivateService
+    ]
+})
+export class FoyerModule {
+    constructor(private navSrv: NavService,
+        private langSrv: LanguageService) {
+        const TAG = 'FoyerModule';
+        navSrv.setChildren(TAG, routes);
+        langSrv.addSource('/assets/locale/hotel/foyer/', 'HTL_FOY_');
+    }
+}

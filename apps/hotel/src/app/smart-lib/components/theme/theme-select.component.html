@@ -1,0 +1,12 @@
+<div class="theme-select-button">
+  <ss-color-select
+    #colorPicker="colorSelect"
+    class="theme-select-button"
+    [columnsCount]="2"
+    [useIconOnly]="true"
+    [selectedColor]="selectedColor"
+    [colors]="themes"
+    [classKey]="'backgroundClass'"
+    (change)="selectTheme($event)">
+  </ss-color-select>
+</div>

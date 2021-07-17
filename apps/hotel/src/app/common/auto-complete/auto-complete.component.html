@@ -1,0 +1,23 @@
+<mat-form-field class="ac-container">
+    <mat-label style="display: inline-block">
+        <ng-content *ngIf="loadingState == 'C'"></ng-content>
+        <span *ngIf="loadingState == 'L'" translate>LOADING</span>
+        <span *ngIf="loadingState == 'E'" translate>ERROR</span>
+    </mat-label>
+    <input *ngIf="!required"
+            [formControl]="control"
+           (blur)="onLeave()"
+           matInput
+           [matAutocomplete]="strictAC">
+    <input *ngIf="required"
+           [formControl]="control"
+           (blur)="onLeave()"
+           matInput
+           [matAutocomplete]="strictAC"
+           required>
+    <mat-autocomplete #strictAC="matAutocomplete" [displayWith]="toStringFn" [autoActiveFirstOption]="true">
+        <mat-option *ngFor="let option of options" [value]="toStringFn(option)" (onSelectionChange)="select(option)">
+            {{ toStringFn(option) }}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
