@@ -1,0 +1,21 @@
+<span  class="error-title mat-h4" *ngIf="error.statusText">
+    <i class="fas fa-exclamation-triangle mat-48"></i>
+    {{error.statusText}}</span>
+<mat-dialog-content>
+    <span  class="error-title mat-h4" *ngIf="error.status==-100">
+        <mat-icon class="mat-48">error</mat-icon>
+        ERR_CONNECTION_REFUSED OR INTERNAL SERVER ERROR.
+    </span>
+  <div>
+    <h2>{{error['message'] ? error['message'] : 'ERR_CONNECTION_REFUSED OR INTERNAL SERVER ERROR'}}</h2>
+    <p class="error-msg">{{error['error'] ?  error['error'] : ''}}</p>
+    <!--<p>{{error['selectedURL'] ? "Url : " + error['selectedURL'] : ''}}</p>-->
+    <!--<p>{{error.status ? "Status : " + error.status : ''}}</p>-->
+    <p>{{error.statusText ? "StatusText : " + error.statusText : ''}}</p>
+    <p>{{error['detail'] ? "Detail : " + error['detail'] : ''}}</p>
+  </div>
+</mat-dialog-content>
+
+<div mat-dialog-actions>
+  <button class="float-end" mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1" translate>CANCEL</button>
+</div>

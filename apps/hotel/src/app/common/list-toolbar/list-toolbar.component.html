@@ -1,0 +1,20 @@
+<div class="theme-background-primary list-toolbar">
+    <mat-form-field class="search-field margin-start-8">
+        <mat-label translate>SEARCH</mat-label>
+        <input [formControl]="searchControl" matInput type="text">
+    </mat-form-field>
+    <button *ngIf="refreshVisible" [disabled]="refreshDisabled" matTooltip="{{ 'REFRESH' | translate }}"
+            (click)="onRefresh()" mat-icon-button>
+        <i class="fas fa-sync-alt"></i>
+    </button>
+    <button *ngIf="addVisible && right.create" [disabled]="addDisabled" matTooltip="{{ 'ADD' | translate }}" (click)="onAdd()" mat-icon-button>
+        <i class="fas fa-plus"></i>
+    </button>
+    <button *ngIf="editVisible && right.edit" [disabled]="editDisabled" matTooltip="{{ 'EDIT_SELECTED' | translate }}" (click)="onEdit()" mat-icon-button>
+        <i class="fas fa-edit"></i>
+    </button>
+    <button *ngIf="removeVisible && right.del" [disabled]="removeDisabled" matTooltip="{{ 'DEL_SELECTED' | translate }}" (click)="onRemove()" mat-icon-button>
+        <i class="fas fa-trash-alt"></i>
+    </button>
+    <ng-content></ng-content>
+</div>

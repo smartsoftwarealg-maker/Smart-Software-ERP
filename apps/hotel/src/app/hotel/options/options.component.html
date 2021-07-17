@@ -1,0 +1,58 @@
+<ss-loading-spinner *ngIf="isLoading"></ss-loading-spinner>
+<!-- todo: add error check -->
+<div class="htl-options" *ngIf="!isLoading">
+    <div class="options-form">
+
+        <mat-form-field class="sm-100 md-50 lg-33 xl-33 xxl-33">
+            <mat-label translate>HTL_OPT_ROOM_VAT</mat-label>
+            <mat-select name="roomVat"
+                        id="roomVat"
+                        [(ngModel)]="record.roomVat" required>
+                <mat-option *ngFor="let vat of vats" [value]="vat.id">{{ vat.value }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="sm-100 md-50 lg-33 xl-33 xxl-33">
+            <mat-label translate>HTL_OPT_ROOM_TAX
+            </mat-label>
+            <input matInput
+                   [(ngModel)]="record.roomTax"
+                   name="roomTax"
+                   id="roomTax"
+                   type="number"
+                   min="0"
+                   max="999999"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field class="sm-100 md-50 lg-33 xl-33 xxl-33">
+            <mat-label translate>HTL_OPT_GYM_VAT
+            </mat-label>
+            <mat-select id="gymVat"
+                        [(ngModel)]="record.gymVat"
+                        required>
+                <mat-option *ngFor="let vat of vats" [value]="vat.id">{{ vat.value }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="sm-100 md-50 lg-33 xl-33 xxl-33">
+            <mat-label translate>HTL_OPT_GYM_COST</mat-label>
+            <input matInput
+                   [(ngModel)]="record.gymCost"
+                   name="gymCost"
+                   id="gymCost"
+                   type="number"
+                   min="0"
+                   max="999999"
+                   required>
+        </mat-form-field>
+
+        <div class="options-footer">
+            <button mat-mini-fab class="float-end margin-end-16"
+                    (click)="submit()" color="primary">
+                <i class="fas fa-save"></i>
+            </button>
+        </div>
+    </div>
+
+</div>

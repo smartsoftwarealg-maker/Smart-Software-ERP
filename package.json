@@ -44,6 +44,7 @@
     "@ionic-native/file-opener": "^5.33.1",
     "@nrwl/angular": "^12.4.0",
     "file-saver": "^2.0.5",
+    "ng2-file-upload": "^1.4.0",
     "ngx-device-detector": "^2.1.1",
     "rxjs": "~7.1.0",
     "tslib": "^2.3.0",

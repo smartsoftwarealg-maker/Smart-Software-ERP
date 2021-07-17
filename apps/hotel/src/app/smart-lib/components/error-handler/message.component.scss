@@ -1,0 +1,17 @@
+@mixin mat-message-theme-color($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  .error-title {
+    color: mat-color($warn);
+    mat-icon {
+      vertical-align: middle;
+    }
+  }
+
+}
+
+.error-msg {
+  font-size: 1.2em;
+  font-weight: bolder;
+  color: red;
+}

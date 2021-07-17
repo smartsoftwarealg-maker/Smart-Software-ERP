@@ -1,0 +1,36 @@
+<div class="app-side-nav-container locale-dir theme-background-primary">
+    <mat-tree [dataSource]="navSrv.dataSource" [treeControl]="navSrv.treeControl" class="nav-tree theme-background-primary">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" class="mat-menu-item nav-item" matTreeNodeToggle>
+            <div class="nav-vertical-line float-start"></div>
+            <div [routerLink]="node.path" (click)="emitCloseSideNav()" class="mat-tree-node padding-start-48">
+                <a [class.nav-item-active]="isActive(node)" translate>{{node.title}}</a>
+            </div>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+            <div>
+                <div [routerLink]="node.path" (click)="emitCloseSideNav()" class="nav-item mat-tree-node mat-menu-item">
+                    <div class="nav-vertical-line float-start"></div>
+                    <button mat-icon-button matTreeNodeToggle (click)="$event.stopPropagation()" class="margin-end-8">
+                            <span *ngIf="navSrv.treeControl.isExpanded(node)">
+                                <i class="fas fa-caret-down"></i>
+                            </span>
+                            <span *ngIf="!navSrv.treeControl.isExpanded(node)">
+                                <span *ngIf="langSrv.rtl">
+                                    <i class="fas fa-caret-left"></i>
+                                </span>
+                                <span *ngIf="!langSrv.rtl">
+                                    <i class="fas fa-caret-right"></i>
+                                </span>
+                            </span>
+                    </button>
+                    <a [class.nav-item-active]="isActive(node)" translate>{{node.title}}</a>
+                </div>
+                <div class="margin-start-32" [class.nav-hidden-tree]="!navSrv.treeControl.isExpanded(node)">
+                    <ng-container matTreeNodeOutlet></ng-container>
+                </div>
+            </div>
+        </mat-nested-tree-node>
+    </mat-tree>
+</div>
