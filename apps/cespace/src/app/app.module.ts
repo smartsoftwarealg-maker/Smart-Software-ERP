@@ -22,6 +22,7 @@ import {
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
+import {ExchangeUiIdiotPageModule} from "@ss/exchange/ui-idiot-page";
 
 const routes: Routes = [
     {
@@ -60,6 +61,7 @@ const routes: Routes = [
         UiShellModule,
         CommonUiLangModule,
         CommonUiMainPageModule,
+        ExchangeUiIdiotPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule
