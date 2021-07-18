@@ -167,7 +167,8 @@ export class LoginService {
             ).subscribe({
                 next:
                     (info: LoginInfo) => {
-                        const ctx = info.ctx;
+                        this.httpSrv.updateAuthToken(info.jwt);
+                        this.appCtx = info.ctx;
                         const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
                         if (onFinish != null) {
@@ -180,6 +181,7 @@ export class LoginService {
                         if (onFinish != null) {
                             onFinish();
                         }
+                        throw err;
                     },
                 complete: () => {
                     if (onFinish != null) {
