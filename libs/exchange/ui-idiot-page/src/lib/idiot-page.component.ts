@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {ReportParamsService, ReportViewData} from "@ss/common/api-reports";
 import {ShellService} from "@ss/common/ui-shell";
+import {AdmobClass} from '@ss/common/api-admob';
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'ss-idiot-page',
@@ -13,6 +15,7 @@ export class IdiotPageComponent implements OnInit {
 
   constructor(private reportService: ReportParamsService,
               private shellSrv: ShellService,
+              private deviceSrv: DeviceDetectorService,
               public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -28,4 +31,5 @@ export class IdiotPageComponent implements OnInit {
             .viewHTML(data)
             .subscribe(res => this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res));
     }
+
 }

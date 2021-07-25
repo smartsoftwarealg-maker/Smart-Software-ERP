@@ -357,9 +357,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/administration/ui-roles"
-          ],
+          "outputs": ["coverage/libs/administration/ui-roles"],
           "options": {
             "jestConfig": "libs/administration/ui-roles/jest.config.js",
             "passWithNoTests": true
@@ -423,9 +421,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/administration/ui-user"
-          ],
+          "outputs": ["coverage/libs/administration/ui-user"],
           "options": {
             "jestConfig": "libs/administration/ui-user/jest.config.js",
             "passWithNoTests": true
@@ -454,9 +450,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/stock/api-article-store"
-          ],
+          "outputs": ["coverage/libs/stock/api-article-store"],
           "options": {
             "jestConfig": "libs/stock/api-article-store/jest.config.js",
             "passWithNoTests": true
@@ -485,9 +479,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/administration/api-report-catalog"
-          ],
+          "outputs": ["coverage/libs/administration/api-report-catalog"],
           "options": {
             "jestConfig": "libs/administration/api-report-catalog/jest.config.js",
             "passWithNoTests": true
@@ -508,17 +500,12 @@
               "libs/common/api-reports/tsconfig.lib.json",
               "libs/common/api-reports/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-reports/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/api-reports/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/api-reports"
-          ],
+          "outputs": ["coverage/libs/common/api-reports"],
           "options": {
             "jestConfig": "libs/common/api-reports/jest.config.js",
             "passWithNoTests": true
@@ -566,9 +553,7 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "apps/cespace/src/styles.scss"
-            ],
+            "styles": ["apps/cespace/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -633,9 +618,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/cespace"
-          ],
+          "outputs": ["coverage/apps/cespace"],
           "options": {
             "jestConfig": "apps/cespace/jest.config.js",
             "passWithNoTests": true
@@ -745,9 +728,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/cespace-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/cespace-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -760,9 +741,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/api-access-rights"
-          ],
+          "outputs": ["coverage/libs/common/api-access-rights"],
           "options": {
             "jestConfig": "libs/common/api-access-rights/jest.config.js",
             "passWithNoTests": true
@@ -827,10 +806,7 @@
               "libs/common/api-common/tsconfig.lib.json",
               "libs/common/api-common/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-common/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/api-common/**/*"]
           }
         },
         "test": {
@@ -862,10 +838,7 @@
               "libs/common/api-lookup/tsconfig.lib.json",
               "libs/common/api-lookup/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-lookup/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/api-lookup/**/*"]
           }
         },
         "test": {
@@ -897,10 +870,7 @@
               "libs/common/api-users/tsconfig.lib.json",
               "libs/common/api-users/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/api-users/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/api-users/**/*"]
           }
         },
         "test": {
@@ -932,10 +902,7 @@
               "libs/common/assets/tsconfig.lib.json",
               "libs/common/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/assets/**/*"]
           }
         },
         "test": {
@@ -971,9 +938,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-access-rights"
-          ],
+          "outputs": ["coverage/libs/common/ui-access-rights"],
           "options": {
             "jestConfig": "libs/common/ui-access-rights/jest.config.js",
             "passWithNoTests": true
@@ -1024,9 +989,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-base-entity"
-          ],
+          "outputs": ["coverage/libs/common/ui-base-entity"],
           "options": {
             "jestConfig": "libs/common/ui-base-entity/jest.config.js",
             "passWithNoTests": true
@@ -1126,10 +1089,7 @@
               "libs/common/ui-datepicker/tsconfig.lib.json",
               "libs/common/ui-datepicker/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-datepicker/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-datepicker/**/*"]
           }
         },
         "test": {
@@ -1165,9 +1125,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-default-report-component"
-          ],
+          "outputs": ["coverage/libs/common/ui-default-report-component"],
           "options": {
             "jestConfig": "libs/common/ui-default-report-component/jest.config.js",
             "passWithNoTests": true
@@ -1258,10 +1216,7 @@
               "libs/common/ui-lang/tsconfig.lib.json",
               "libs/common/ui-lang/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-lang/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-lang/**/*"]
           }
         },
         "test": {
@@ -1293,10 +1248,7 @@
               "libs/common/ui-login/tsconfig.lib.json",
               "libs/common/ui-login/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-login/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-login/**/*"]
           }
         },
         "test": {
@@ -1328,10 +1280,7 @@
               "libs/common/ui-logout/tsconfig.lib.json",
               "libs/common/ui-logout/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-logout/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-logout/**/*"]
           }
         },
         "test": {
@@ -1363,10 +1312,7 @@
               "libs/common/ui-lookup/tsconfig.lib.json",
               "libs/common/ui-lookup/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-lookup/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-lookup/**/*"]
           }
         },
         "test": {
@@ -1393,9 +1339,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-main-page"
-          ],
+          "outputs": ["coverage/libs/common/ui-main-page"],
           "options": {
             "jestConfig": "libs/common/ui-main-page/jest.config.js",
             "passWithNoTests": true
@@ -1425,10 +1369,7 @@
               "libs/common/ui-pagination/tsconfig.lib.json",
               "libs/common/ui-pagination/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-pagination/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-pagination/**/*"]
           }
         },
         "test": {
@@ -1468,9 +1409,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-report-param"
-          ],
+          "outputs": ["coverage/libs/common/ui-report-param"],
           "options": {
             "jestConfig": "libs/common/ui-report-param/jest.config.js",
             "passWithNoTests": true
@@ -1491,10 +1430,7 @@
               "libs/common/ui-shell/tsconfig.lib.json",
               "libs/common/ui-shell/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-shell/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-shell/**/*"]
           }
         },
         "test": {
@@ -1526,10 +1462,7 @@
               "libs/common/ui-theme/tsconfig.lib.json",
               "libs/common/ui-theme/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/common/ui-theme/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/common/ui-theme/**/*"]
           }
         },
         "test": {
@@ -1556,9 +1489,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/common/ui-traceability"
-          ],
+          "outputs": ["coverage/libs/common/ui-traceability"],
           "options": {
             "jestConfig": "libs/common/ui-traceability/jest.config.js",
             "passWithNoTests": true
@@ -1635,9 +1566,7 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "apps/erp/src/styles.scss"
-            ],
+            "styles": ["apps/erp/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1726,10 +1655,7 @@
               "apps/erp/tsconfig.app.json",
               "apps/erp/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/erp/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/erp/**/*"]
           }
         },
         "test": {
@@ -1783,9 +1709,7 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "apps/exchange/src/styles.scss"
-            ],
+            "styles": ["apps/exchange/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1876,9 +1800,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/exchange"
-          ],
+          "outputs": ["coverage/apps/exchange"],
           "options": {
             "jestConfig": "apps/exchange/jest.config.js",
             "passWithNoTests": true
@@ -1903,9 +1825,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/api-currency-deposit"
-          ],
+          "outputs": ["coverage/libs/exchange/api-currency-deposit"],
           "options": {
             "jestConfig": "libs/exchange/api-currency-deposit/jest.config.js",
             "passWithNoTests": true
@@ -1930,9 +1850,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/api-currency-exchange"
-          ],
+          "outputs": ["coverage/libs/exchange/api-currency-exchange"],
           "options": {
             "jestConfig": "libs/exchange/api-currency-exchange/jest.config.js",
             "passWithNoTests": true
@@ -1957,9 +1875,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/assets"
-          ],
+          "outputs": ["coverage/libs/exchange/assets"],
           "options": {
             "jestConfig": "libs/exchange/assets/jest.config.js",
             "passWithNoTests": true
@@ -1984,9 +1900,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/ui-currency-deposit"
-          ],
+          "outputs": ["coverage/libs/exchange/ui-currency-deposit"],
           "options": {
             "jestConfig": "libs/exchange/ui-currency-deposit/jest.config.js",
             "passWithNoTests": true
@@ -2011,9 +1925,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/ui-currency-exchange"
-          ],
+          "outputs": ["coverage/libs/exchange/ui-currency-exchange"],
           "options": {
             "jestConfig": "libs/exchange/ui-currency-exchange/jest.config.js",
             "passWithNoTests": true
@@ -2038,9 +1950,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/ui-deposit-type"
-          ],
+          "outputs": ["coverage/libs/exchange/ui-deposit-type"],
           "options": {
             "jestConfig": "libs/exchange/ui-deposit-type/jest.config.js",
             "passWithNoTests": true
@@ -2056,9 +1966,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/ui-idiot-page"
-          ],
+          "outputs": ["coverage/libs/exchange/ui-idiot-page"],
           "options": {
             "jestConfig": "libs/exchange/ui-idiot-page/jest.config.js",
             "passWithNoTests": true
@@ -2092,9 +2000,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/exchange/ui-info"
-          ],
+          "outputs": ["coverage/libs/exchange/ui-info"],
           "options": {
             "jestConfig": "libs/exchange/ui-info/jest.config.js",
             "passWithNoTests": true
@@ -2137,9 +2043,7 @@
                 "output": "assets"
               }
             ],
-            "styles": [
-              "apps/hotel/src/styles.scss"
-            ],
+            "styles": ["apps/hotel/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -2203,9 +2107,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/hotel"
-          ],
+          "outputs": ["coverage/apps/hotel"],
           "options": {
             "jestConfig": "apps/hotel/jest.config.js",
             "passWithNoTests": true
@@ -2261,10 +2163,7 @@
               "libs/logistics/api-agent/tsconfig.lib.json",
               "libs/logistics/api-agent/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/api-agent/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-agent/**/*"]
           }
         },
         "test": {
@@ -2304,9 +2203,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-agent-balance"
-          ],
+          "outputs": ["coverage/libs/logistics/api-agent-balance"],
           "options": {
             "jestConfig": "libs/logistics/api-agent-balance/jest.config.js",
             "passWithNoTests": true
@@ -2335,9 +2232,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-agent-debts"
-          ],
+          "outputs": ["coverage/libs/logistics/api-agent-debts"],
           "options": {
             "jestConfig": "libs/logistics/api-agent-debts/jest.config.js",
             "passWithNoTests": true
@@ -2393,17 +2288,12 @@
               "libs/logistics/api-card/tsconfig.lib.json",
               "libs/logistics/api-card/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/api-card/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-card/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-card"
-          ],
+          "outputs": ["coverage/libs/logistics/api-card"],
           "options": {
             "jestConfig": "libs/logistics/api-card/jest.config.js",
             "passWithNoTests": true
@@ -2502,9 +2392,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-logistics-common"
-          ],
+          "outputs": ["coverage/libs/logistics/api-logistics-common"],
           "options": {
             "jestConfig": "libs/logistics/api-logistics-common/jest.config.js",
             "passWithNoTests": true
@@ -2525,17 +2413,12 @@
               "libs/logistics/api-totals/tsconfig.lib.json",
               "libs/logistics/api-totals/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/api-totals/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/api-totals/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-totals"
-          ],
+          "outputs": ["coverage/libs/logistics/api-totals"],
           "options": {
             "jestConfig": "libs/logistics/api-totals/jest.config.js",
             "passWithNoTests": true
@@ -2564,9 +2447,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/api-transaction"
-          ],
+          "outputs": ["coverage/libs/logistics/api-transaction"],
           "options": {
             "jestConfig": "libs/logistics/api-transaction/jest.config.js",
             "passWithNoTests": true
@@ -2587,10 +2468,7 @@
               "libs/logistics/assets/tsconfig.lib.json",
               "libs/logistics/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/assets/**/*"]
           }
         },
         "test": {
@@ -2622,10 +2500,7 @@
               "libs/logistics/ui-account/tsconfig.lib.json",
               "libs/logistics/ui-account/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/ui-account/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-account/**/*"]
           }
         },
         "test": {
@@ -2657,10 +2532,7 @@
               "libs/logistics/ui-agent/tsconfig.lib.json",
               "libs/logistics/ui-agent/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/ui-agent/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-agent/**/*"]
           }
         },
         "test": {
@@ -2700,9 +2572,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-agent-balance"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-agent-balance"],
           "options": {
             "jestConfig": "libs/logistics/ui-agent-balance/jest.config.js",
             "passWithNoTests": true
@@ -2731,9 +2601,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-agent-debts"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-agent-debts"],
           "options": {
             "jestConfig": "libs/logistics/ui-agent-debts/jest.config.js",
             "passWithNoTests": true
@@ -2789,17 +2657,12 @@
               "libs/logistics/ui-card/tsconfig.lib.json",
               "libs/logistics/ui-card/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/ui-card/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-card/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-card"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-card"],
           "options": {
             "jestConfig": "libs/logistics/ui-card/jest.config.js",
             "passWithNoTests": true
@@ -2894,9 +2757,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-currency"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-currency"],
           "options": {
             "jestConfig": "libs/logistics/ui-currency/jest.config.js",
             "passWithNoTests": true
@@ -2925,9 +2786,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-doc-import"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-doc-import"],
           "options": {
             "jestConfig": "libs/logistics/ui-doc-import/jest.config.js",
             "passWithNoTests": true
@@ -2956,9 +2815,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-doc-info"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-doc-info"],
           "options": {
             "jestConfig": "libs/logistics/ui-doc-info/jest.config.js",
             "passWithNoTests": true
@@ -2983,9 +2840,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-options"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-options"],
           "options": {
             "jestConfig": "libs/logistics/ui-options/jest.config.js",
             "passWithNoTests": true
@@ -3010,9 +2865,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-pay-method"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-pay-method"],
           "options": {
             "jestConfig": "libs/logistics/ui-pay-method/jest.config.js",
             "passWithNoTests": true
@@ -3041,9 +2894,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-stock-info"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-stock-info"],
           "options": {
             "jestConfig": "libs/logistics/ui-stock-info/jest.config.js",
             "passWithNoTests": true
@@ -3064,17 +2915,12 @@
               "libs/logistics/ui-totals/tsconfig.lib.json",
               "libs/logistics/ui-totals/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/logistics/ui-totals/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/logistics/ui-totals/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/logistics/ui-totals"
-          ],
+          "outputs": ["coverage/libs/logistics/ui-totals"],
           "options": {
             "jestConfig": "libs/logistics/ui-totals/jest.config.js",
             "passWithNoTests": true
@@ -3095,10 +2941,7 @@
               "libs/payroll/api-person/tsconfig.lib.json",
               "libs/payroll/api-person/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/payroll/api-person/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/payroll/api-person/**/*"]
           }
         },
         "test": {
@@ -3130,10 +2973,7 @@
               "libs/payroll/assets/tsconfig.lib.json",
               "libs/payroll/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/payroll/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/payroll/assets/**/*"]
           }
         },
         "test": {
@@ -3173,9 +3013,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/payroll/ui-employee-activation"
-          ],
+          "outputs": ["coverage/libs/payroll/ui-employee-activation"],
           "options": {
             "jestConfig": "libs/payroll/ui-employee-activation/jest.config.js",
             "passWithNoTests": true
@@ -3196,10 +3034,7 @@
               "libs/payroll/ui-person/tsconfig.lib.json",
               "libs/payroll/ui-person/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/payroll/ui-person/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/payroll/ui-person/**/*"]
           }
         },
         "test": {
@@ -3239,9 +3074,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/purchases/api-purchase-order"
-          ],
+          "outputs": ["coverage/libs/purchases/api-purchase-order"],
           "options": {
             "jestConfig": "libs/purchases/api-purchase-order/jest.config.js",
             "passWithNoTests": true
@@ -3270,9 +3103,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/purchases/api-reception"
-          ],
+          "outputs": ["coverage/libs/purchases/api-reception"],
           "options": {
             "jestConfig": "libs/purchases/api-reception/jest.config.js",
             "passWithNoTests": true
@@ -3293,17 +3124,12 @@
               "libs/purchases/assets/tsconfig.lib.json",
               "libs/purchases/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/purchases/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/purchases/assets/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/purchases/assets"
-          ],
+          "outputs": ["coverage/libs/purchases/assets"],
           "options": {
             "jestConfig": "libs/purchases/assets/jest.config.js",
             "passWithNoTests": true
@@ -3332,9 +3158,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/purchases/ui-purchase-order"
-          ],
+          "outputs": ["coverage/libs/purchases/ui-purchase-order"],
           "options": {
             "jestConfig": "libs/purchases/ui-purchase-order/jest.config.js",
             "passWithNoTests": true
@@ -3363,9 +3187,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/purchases/ui-reception"
-          ],
+          "outputs": ["coverage/libs/purchases/ui-reception"],
           "options": {
             "jestConfig": "libs/purchases/ui-reception/jest.config.js",
             "passWithNoTests": true
@@ -3386,17 +3208,12 @@
               "libs/sales/api-delivery/tsconfig.lib.json",
               "libs/sales/api-delivery/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/api-delivery/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/api-delivery/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-delivery"
-          ],
+          "outputs": ["coverage/libs/sales/api-delivery"],
           "options": {
             "jestConfig": "libs/sales/api-delivery/jest.config.js",
             "passWithNoTests": true
@@ -3425,9 +3242,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-delivery-cancellation"
-          ],
+          "outputs": ["coverage/libs/sales/api-delivery-cancellation"],
           "options": {
             "jestConfig": "libs/sales/api-delivery-cancellation/jest.config.js",
             "passWithNoTests": true
@@ -3456,9 +3271,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-delivery-lines"
-          ],
+          "outputs": ["coverage/libs/sales/api-delivery-lines"],
           "options": {
             "jestConfig": "libs/sales/api-delivery-lines/jest.config.js",
             "passWithNoTests": true
@@ -3479,17 +3292,12 @@
               "libs/sales/api-invoice/tsconfig.lib.json",
               "libs/sales/api-invoice/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/api-invoice/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/api-invoice/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-invoice"
-          ],
+          "outputs": ["coverage/libs/sales/api-invoice"],
           "options": {
             "jestConfig": "libs/sales/api-invoice/jest.config.js",
             "passWithNoTests": true
@@ -3518,9 +3326,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-invoice-cancellation"
-          ],
+          "outputs": ["coverage/libs/sales/api-invoice-cancellation"],
           "options": {
             "jestConfig": "libs/sales/api-invoice-cancellation/jest.config.js",
             "passWithNoTests": true
@@ -3549,9 +3355,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/api-sales-order"
-          ],
+          "outputs": ["coverage/libs/sales/api-sales-order"],
           "options": {
             "jestConfig": "libs/sales/api-sales-order/jest.config.js",
             "passWithNoTests": true
@@ -3572,17 +3376,12 @@
               "libs/sales/assets/tsconfig.lib.json",
               "libs/sales/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/assets/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/assets"
-          ],
+          "outputs": ["coverage/libs/sales/assets"],
           "options": {
             "jestConfig": "libs/sales/assets/jest.config.js",
             "passWithNoTests": true
@@ -3603,17 +3402,12 @@
               "libs/sales/ui-delivery/tsconfig.lib.json",
               "libs/sales/ui-delivery/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/ui-delivery/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-delivery/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-delivery"
-          ],
+          "outputs": ["coverage/libs/sales/ui-delivery"],
           "options": {
             "jestConfig": "libs/sales/ui-delivery/jest.config.js",
             "passWithNoTests": true
@@ -3642,9 +3436,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-delivery-cancellation"
-          ],
+          "outputs": ["coverage/libs/sales/ui-delivery-cancellation"],
           "options": {
             "jestConfig": "libs/sales/ui-delivery-cancellation/jest.config.js",
             "passWithNoTests": true
@@ -3673,9 +3465,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-delivery-lines"
-          ],
+          "outputs": ["coverage/libs/sales/ui-delivery-lines"],
           "options": {
             "jestConfig": "libs/sales/ui-delivery-lines/jest.config.js",
             "passWithNoTests": true
@@ -3696,17 +3486,12 @@
               "libs/sales/ui-invoice/tsconfig.lib.json",
               "libs/sales/ui-invoice/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/ui-invoice/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-invoice/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-invoice"
-          ],
+          "outputs": ["coverage/libs/sales/ui-invoice"],
           "options": {
             "jestConfig": "libs/sales/ui-invoice/jest.config.js",
             "passWithNoTests": true
@@ -3735,9 +3520,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-invoice-cancellation"
-          ],
+          "outputs": ["coverage/libs/sales/ui-invoice-cancellation"],
           "options": {
             "jestConfig": "libs/sales/ui-invoice-cancellation/jest.config.js",
             "passWithNoTests": true
@@ -3758,22 +3541,15 @@
               "libs/sales/ui-order-lines/tsconfig.lib.json",
               "libs/sales/ui-order-lines/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/ui-order-lines/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-order-lines/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-order-lines"
-          ],
+          "outputs": ["coverage/libs/sales/ui-order-lines"],
           "options": {
             "jestConfig": "libs/sales/ui-order-lines/jest.config.js",
-            "outputs": [
-              "coverage/libs/stock/article-store"
-            ],
+            "outputs": ["coverage/libs/stock/article-store"],
             "options": {
               "jestConfig": "libs/stock/article-store/jest.config.js",
               "passWithNoTests": true
@@ -3795,17 +3571,12 @@
               "libs/sales/ui-sales-order/tsconfig.lib.json",
               "libs/sales/ui-sales-order/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/sales/ui-sales-order/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/sales/ui-sales-order/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/sales/ui-sales-order"
-          ],
+          "outputs": ["coverage/libs/sales/ui-sales-order"],
           "options": {
             "jestConfig": "libs/sales/ui-sales-order/jest.config.js",
             "passWithNoTests": true
@@ -3826,10 +3597,7 @@
               "libs/stock/api-article/tsconfig.lib.json",
               "libs/stock/api-article/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/api-article/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/api-article/**/*"]
           }
         },
         "test": {
@@ -3931,10 +3699,7 @@
               "libs/stock/api-inventory/tsconfig.lib.json",
               "libs/stock/api-inventory/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/api-inventory/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/api-inventory/**/*"]
           }
         },
         "test": {
@@ -4141,10 +3906,7 @@
               "libs/stock/api-reception/tsconfig.lib.json",
               "libs/stock/api-reception/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/api-reception/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/api-reception/**/*"]
           }
         },
         "test": {
@@ -4211,17 +3973,12 @@
               "libs/stock/article-store/tsconfig.lib.json",
               "libs/stock/article-store/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/article-store/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/article-store/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/stock/article-store"
-          ],
+          "outputs": ["coverage/libs/stock/article-store"],
           "options": {
             "jestConfig": "libs/stock/article-store/jest.config.js",
             "passWithNoTests": true
@@ -4242,10 +3999,7 @@
               "libs/stock/assets/tsconfig.lib.json",
               "libs/stock/assets/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/assets/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/assets/**/*"]
           }
         }
       },
@@ -4268,10 +4022,7 @@
               "libs/stock/ui-article/tsconfig.lib.json",
               "libs/stock/ui-article/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/ui-article/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-article/**/*"]
           }
         },
         "test": {
@@ -4303,10 +4054,7 @@
               "libs/stock/ui-consumption/tsconfig.lib.json",
               "libs/stock/ui-consumption/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/ui-consumption/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-consumption/**/*"]
           }
         },
         "test": {
@@ -4373,10 +4121,7 @@
               "libs/stock/ui-inventory/tsconfig.lib.json",
               "libs/stock/ui-inventory/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/ui-inventory/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-inventory/**/*"]
           }
         },
         "test": {
@@ -4583,10 +4328,7 @@
               "libs/stock/ui-reception/tsconfig.lib.json",
               "libs/stock/ui-reception/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/stock/ui-reception/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/stock/ui-reception/**/*"]
           }
         },
         "test": {
@@ -4661,11 +4403,34 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/administration/ui-report-catalog"
-          ],
+          "outputs": ["coverage/libs/administration/ui-report-catalog"],
           "options": {
             "jestConfig": "libs/administration/ui-report-catalog/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "common-api-admob": {
+      "projectType": "library",
+      "root": "libs/common/api-admob",
+      "sourceRoot": "libs/common/api-admob/src",
+      "prefix": "ss",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/common/api-admob/src/**/*.ts",
+              "libs/common/api-admob/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/api-admob"],
+          "options": {
+            "jestConfig": "libs/common/api-admob/jest.config.js",
             "passWithNoTests": true
           }
         }
