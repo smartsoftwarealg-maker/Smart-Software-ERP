@@ -1,2 +1,7 @@
-<div [innerHTML]="htmlSrc" class="html-report">
-</div>
+<div  *ngIf="htmlSrc !== null; else spinner" [innerHTML]="htmlSrc" class="html-report"> </div>
+
+<ng-template #spinner >
+    <div class="spinner_div">
+    <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

@@ -24,7 +24,7 @@ import {
 } from '@ss/exchange/ui-info';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
-import {IdiotPageComponent} from "../../../../../libs/exchange/ui-idiot-page/src/lib/idiot-page.component";
+import {IdiotPageComponent} from "@ss/exchange/ui-idiot-page";
 
 export const mainRoutes: Routes = [
     {

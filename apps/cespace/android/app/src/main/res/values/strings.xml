@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">smart-cespace</string>
+    <string name="title_activity_main">smart-cespace</string>
+    <string name="package_name">com.smartsoftware.cespace</string>
+    <string name="custom_url_scheme">com.smartsoftware.cespace</string>
+    <string name="admob_app_id">ca-app-pub-3388839794730339~2054549902</string>
+</resources>

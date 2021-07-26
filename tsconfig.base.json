@@ -272,7 +272,8 @@
       "@ss/stock/ui-reception": ["libs/stock/ui-reception/src/index.ts"],
       "@ss/stock/ui-reception-lines": [
         "libs/stock/ui-reception-lines/src/index.ts"
-      ]
+      ],
+      "@ss/common/api-admob": ["libs/common/api-admob/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
