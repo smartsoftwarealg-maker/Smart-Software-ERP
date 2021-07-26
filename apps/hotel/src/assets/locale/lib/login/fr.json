@@ -1,0 +1,8 @@
+{
+  "LOGIN": "S'identifier",
+  "USERNAME": "Nom d'utilisateur",
+  "PASSWORD": "Mot de passe",
+  "LICENSE": "Licence",
+  "INVALID_LICENSE": "Licence invalide",
+  "WRONG_USERNAME_PASSWORD":"Nom d'utilisateur ou mot de passe incorrect"
+}

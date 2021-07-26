@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ConfirmationDialogService} from '../../common/confirmation-dialog/confirmation-dialog.service';
 import {RoomType} from '../hotel-api';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-room-types-detail',

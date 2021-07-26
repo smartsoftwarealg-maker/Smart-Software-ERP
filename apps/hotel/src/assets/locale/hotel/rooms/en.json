@@ -1,0 +1,8 @@
+{
+    "NUMBER": "Room No.",
+    "TYPE": "Room Type",
+    "BED_COUNT": "Bed count",
+    "STATE": "Room state",
+    "OPTIONS": "Room Options",
+    "DETAIL": "Add/Edit a Room"
+}

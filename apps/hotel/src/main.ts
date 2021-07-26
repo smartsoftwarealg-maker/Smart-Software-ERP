@@ -8,6 +8,18 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+
+
+/***************************************************************************************************
+ * Zone JS is required by default for Angular itself.
+ */
+import 'zone.js/dist/zone';  // Included with Angular CLI.
+
+
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+
+import 'hammerjs';

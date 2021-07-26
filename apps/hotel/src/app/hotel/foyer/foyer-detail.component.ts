@@ -278,9 +278,9 @@ export class FoyerDetailComponent extends AbstractEntityView<FullService, Backen
         this.agentBookings = [];
         if (this.record.service.agent != null) {
             if (this.record.service.bookingId) {
-                this.httpSrv.getData<Room[]>(roomsByBookingUrl + '/' + this.record.service.bookingId, 0, 49)
+                this.httpSrv.getData<Room>(roomsByBookingUrl + '/' + this.record.service.bookingId, 0, 49)
                     .subscribe(rs => {
-                        this.agentBookings = [{id: -this.record.service.bookingId, rooms: rs.map(r => r.number).join(', ')}];
+                        this.agentBookings = [{id: -this.record.service.bookingId, rooms: rs.body.map(r => r.number).join(', ')}];
                     });
             } else {
                 const today = dateTimeToStr(new Date());

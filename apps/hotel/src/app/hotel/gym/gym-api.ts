@@ -27,7 +27,7 @@ export class AgentACModel extends AutoCompleteModel<Agent, number> {
 
     filter(filter: string): Observable<Agent[]> {
         return this.httpSrv.getData<Agent>(agentsUrl, 0, 5, filter)
-            .pipe(map((r: { body: [] }) => r.body));
+            .pipe(map((r: { body: [], itemCount: number }) => r.body));
     }
 
     filterArray(filter: string, objects: Agent[]): Agent[] {

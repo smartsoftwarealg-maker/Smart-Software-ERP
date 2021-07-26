@@ -3,7 +3,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { LanguageService, DEFAULT_SUPPORTED_LANGUAGES } from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-language-select',
+    selector: 'ss-language-select-old',
     templateUrl: './language-select.component.html',
     styleUrls: ['./language-select.component.scss']
 })

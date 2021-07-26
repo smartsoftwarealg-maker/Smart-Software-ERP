@@ -75,13 +75,13 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    private get0<T>(url: string, httpParams?: HttpParams): Observable<T> {
+    private get0<T>(url: string, httpParams?: HttpParams): Observable<{ body: T[], itemCount: number }> {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
         return this
             .httpClient
-            .get<T>(this.baseUrl + url,
+            .get<T[]>(this.baseUrl + url,
                 {
                     headers: HttpService.getHeaders(),
                     observe: 'response', params: httpParams
@@ -99,17 +99,17 @@ export class HttpService {
     //     .subscribe(res => this.baseUrl = res['baseUrl']);
     // }
 
-    public sget<T>(url: string, selector: string, httpParams?: HttpParams): Observable<T> {
-        return this
-            .httpClient
-            .get<T>(this.baseUrl + url,
-                { headers: HttpService.getHeaders(), observe: 'response', params: httpParams })
-            .pipe(map(ress => {
-                const cr = ress.headers.get('Content-Range');
-                this.itemCount = cr ? +cr.split('/')[1] : 0;
-                return ress.body[selector];
-            }));
-    }
+    //public sget<T>(url: string, selector: string, httpParams?: HttpParams): Observable<T> {
+    //    return this
+    //        .httpClient
+    //        .get<T>(this.baseUrl + url,
+    //            { headers: HttpService.getHeaders(), observe: 'response', params: httpParams })
+    //        .pipe(map(ress => {
+    //            const cr = ress.headers.get('Content-Range');
+    //            this.itemCount = cr ? +cr.split('/')[1] : 0;
+    //            return ress.body[selector];
+    //        }));
+    //}
 
     public post(url: string, data?): Observable<any> {
         return this

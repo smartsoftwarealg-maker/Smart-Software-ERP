@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ConfirmationDialogService} from '../../common/confirmation-dialog/confirmation-dialog.service';
-import {FoodType} from '../hotel-api';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
+import { FoodType } from '../hotel-api';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-food-categories-detail',
@@ -22,12 +22,12 @@ export class FoodCategoriesDetailComponent implements OnInit {
     ngOnInit() {
         const rec: FoodType = this.data.record;
         this.form = this.formBuilder.group({
-                id: [rec.id],
-                description: [
-                    rec.description,
-                    Validators.compose([Validators.required, Validators.maxLength(32)])
-                ]
-            }
+            id: [rec.id],
+            description: [
+                rec.description,
+                Validators.compose([Validators.required, Validators.maxLength(32)])
+            ]
+        }
         );
     }
 
