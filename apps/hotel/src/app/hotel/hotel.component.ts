@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Route, Routes } from '@angular/router';
 import { BasicShellComponent } from '../common/basic-shell/basic-shell.component';
+import { LanguageService } from '@ss/common/api-common';
 
 @Component({
     selector: 'app-hotel-main',

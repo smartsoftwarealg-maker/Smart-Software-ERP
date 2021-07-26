@@ -41,16 +41,14 @@ export const applications: Application[] = [
 const routes: Routes = [
     {
         path: MAIN_PAGE_URL,
-        data: { title: 'MAIN_MENU', entity: null, moduleName: 'IndexModule' },
-        loadChildren: () => import('./index/index.module').then(m => m.IndexModule),
-        canActivate: [CanActivateService]
+        redirectTo: LOGIN_URL
     },
     {
         path: hotelApp.path,
         data: { title: hotelApp.name, entity: null, moduleName: 'HotelModule' },
         loadChildren: () => import('./hotel/hotel.module').then(m => m.HotelModule)
     },
-    { path: '', redirectTo: MAIN_PAGE_URL, pathMatch: 'full' },
+    { path: '', redirectTo: hotelApp.path, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }, // not found
 ];
 

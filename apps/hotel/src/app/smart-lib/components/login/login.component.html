@@ -21,7 +21,7 @@
             <mat-form-field class="login-form-field" *ngIf="loginSrv.licenseErrorType">
                 <mat-placeholder translate>LOGIN_LICENSE</mat-placeholder>
                 <i class="fas fa-key margin-end-8" matPrefix></i>
-                <input matInput type="text" autocomplete="off" name="license" [(ngModel)]="">
+                <input matInput type="text" autocomplete="off" name="license" [(ngModel)]="license">
                 <mat-hint align="start" class="mat-error"><strong translate>LOGIN_INVALID_LICENSE</strong></mat-hint>
             </mat-form-field>
 
@@ -44,11 +44,11 @@
                         class="float-start margin-start-8"
                         style="margin-top: 4px; margin-bottom: 4px;"
                 ></ss-theme-select>
-                <ss-language-select
+                <ss-language-select-old
                         class="float-start margin-start-8"
                         style="margin-top: 4px; margin-bottom: 4px;"
                 >
-                </ss-language-select>
+                </ss-language-select-old>
             </div>
 
         </form>

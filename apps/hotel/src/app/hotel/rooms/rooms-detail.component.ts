@@ -12,6 +12,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, Router, RouterSt
 import { LoadingState } from '../../common/util';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { isNumber, isString } from '@ss/common/api-common';
 
 const roomsUrl = '/hotels/rooms';
 

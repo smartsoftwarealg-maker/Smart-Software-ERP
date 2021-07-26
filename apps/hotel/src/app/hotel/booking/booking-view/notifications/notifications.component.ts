@@ -126,7 +126,7 @@ export class NotificationsComponent {
         // todo: display "Loading Spinner" or some other shit while loading
         this.notifications = [];
         this.lastRefresh = Date.now() + this.refreshDelay;
-        this.httpSrv.getData<any[]>(this.notificationsUrl, this.paginationModel.page - 1, this.paginationModel.pageSize)
+        this.httpSrv.getData<any>(this.notificationsUrl, this.paginationModel.page - 1, this.paginationModel.pageSize)
             .subscribe(result => {
                 this.notifications = result.body.map(n => this.toNotification(n));
                 const c = result.itemCount;

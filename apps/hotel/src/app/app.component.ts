@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { LoadingState } from './common/util';
 import { LanguageService } from '@ss/common/api-common';
 import { HttpService } from './smart-lib/common/http.service';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',

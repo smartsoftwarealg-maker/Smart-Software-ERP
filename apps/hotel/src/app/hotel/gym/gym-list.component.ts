@@ -9,6 +9,8 @@ import { GymService } from './gym-service';
 import { ymdToDmy } from '../../common/util';
 import { UserService } from '../../smart-lib/components/login/user.service';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { deepCopy } from '../../smart-lib/common/util';
+import { LanguageService } from '@ss/common/api-common';
 
 const payModeCash = 66;
 

@@ -63,15 +63,15 @@ export class FoyerService {
         if (page === 0) {
             return this.httpSrv.getData<Food>(foyerArticlesUrl, 0, defaultPageSize)
                 .pipe(
-                    tap((a: { body: Food[] }) => this.articles = a.body),
-                    switchMap((a: { itemCount: number }) => this.loadArticles(1, a.itemCount))
+                    tap((a: { body: Food[], itemCount: number }) => this.articles = a.body),
+                    switchMap((a: { body: Food[], itemCount: number }) => this.loadArticles(1, a.itemCount))
                 );
         }
         if (this.articles.length < totalCount) {
             return this.httpSrv.getData<Food>(foyerArticlesUrl, page, defaultPageSize)
                 .pipe(
-                    tap((food: { body: Food[] }) => this.articles.push(...food.body)),
-                    switchMap((a: { itemCount: number }) => this.loadArticles(page + 1, a.itemCount))
+                    tap((food: { body: Food[], itemCount: number }) => this.articles.push(...food.body)),
+                    switchMap((a: { body: Food[], itemCount: number }) => this.loadArticles(page + 1, a.itemCount))
                 );
         }
         return of(null);

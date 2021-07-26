@@ -52,7 +52,7 @@ export class ClientsDetailComponent extends AbstractEntityView<Agent, BackendDat
                         id: 0,
                         agentType: 0,
                         denomination: null,
-                        address: { address: null, city: null, fax: null, mobile: null, phone: name },
+                        address: { address: null, city: null, fax: null, mobile: null, phone: null },
                         code: null,
                         license: null,
                         blocked: false

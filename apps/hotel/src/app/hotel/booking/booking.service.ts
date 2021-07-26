@@ -7,6 +7,7 @@ import { Vat } from '../../common/vat/vat-api';
 import { AutoCompleteModel } from '../../common/auto-complete/auto-complete-model';
 import { HotelOptions } from '../options/options';
 import { HttpService } from '../../smart-lib/common/http.service';
+import { isNumber } from '@ss/common/api-common';
 
 export interface DetailParameters {
     id?: number;
@@ -48,7 +49,7 @@ const fullBookingUrl = '/hotels/fullBooking';
 // const agentsUrl = '/agents';
 
 function filterRooms(httpSrv: HttpService, page: number, pageSize: number,
-    filter?: string, type?: number, options?: number[], agentId?: number): Observable<Room[]> {
+    filter?: string, type?: number, options?: number[], agentId?: number): Observable<{ body: Room[], itemCount: number }> {
     let filterStr = '';
     if (filter != null) {
         filterStr += filter;
@@ -62,8 +63,7 @@ function filterRooms(httpSrv: HttpService, page: number, pageSize: number,
     if (agentId != null && agentId > 0) {
         filterStr += '&agent' + agentId;
     }
-    return httpSrv.getData<Room>(roomsUrl, page, pageSize, filterStr)
-        .pipe(map((r: { body: Room[] }) => r.body));
+    return httpSrv.getData<Room>(roomsUrl, page, pageSize, filterStr);
 }
 
 @Injectable()
@@ -145,16 +145,16 @@ export class BookingService {
         this.roomsCache = {};
         return this.load(reload)
             .pipe(
-                switchMap(() => this.httpSrv.getData<Vat[]>(vatsUrl, 0, 49)),
-                tap((vats: {body: Vat[]}) => this.vats = vats.body),
-                switchMap(() => this.httpSrv.getData<PaymentMethod[]>(payMethodsUrl, 0, 49)),
-                tap((methods: {body: PaymentMethod[]}) => this.paymentMethods = methods.body),
-                switchMap(() => this.httpSrv.getData<ChargingCost[]>(chargingCostsUrl, 0, 49)),
-                tap((costs: {body: ChargingCost[]}) => this.chargingCosts = costs.body),
-                switchMap(() => this.httpSrv.getData<BookingState[]>(bookingStatesUrl, 0, 49)),
-                tap((states: {body: BookingState[]}) => this.bookingStates = states.body),
-                switchMap(() => this.httpSrv.getData<BookingMethod[]>(bookingMethodsUrl, 0, 49)),
-                tap((methods: {body: BookingMethod[]}) => this.bookingMethods = methods.body),
+                switchMap(() => this.httpSrv.getData<Vat>(vatsUrl, 0, 49)),
+                tap((vats: { body: Vat[] }) => this.vats = vats.body),
+                switchMap(() => this.httpSrv.getData<PaymentMethod>(payMethodsUrl, 0, 49)),
+                tap((methods: { body: PaymentMethod[] }) => this.paymentMethods = methods.body),
+                switchMap(() => this.httpSrv.getData<ChargingCost>(chargingCostsUrl, 0, 49)),
+                tap((costs: { body: ChargingCost[] }) => this.chargingCosts = costs.body),
+                switchMap(() => this.httpSrv.getData<BookingState>(bookingStatesUrl, 0, 49)),
+                tap((states: { body: BookingState[] }) => this.bookingStates = states.body),
+                switchMap(() => this.httpSrv.getData<BookingMethod>(bookingMethodsUrl, 0, 49)),
+                tap((methods: { body: BookingMethod[] }) => this.bookingMethods = methods.body),
                 switchMap(() => this.httpSrv.get<HotelOptions>(hotelOptionsUrl)),
                 tap((options: HotelOptions) => {
                     this.hotelOptions = options;
@@ -208,7 +208,8 @@ export class RoomACModel extends AutoCompleteModel<Room, number> {
     filter(filter: string): Observable<Room[]> {
         const options = this.options && this.options.length > 0 ? this.options : null;
         const type = !this.roomType || this.roomType < 0 ? null : this.roomType;
-        return filterRooms(this.httpSrv, 0, 5, filter, type, options);
+        return filterRooms(this.httpSrv, 0, 5, filter, type, options)
+            .pipe(map(r => r.body));
     }
 
     filterArray(filter: string, objects: Room[]): Room[] {
