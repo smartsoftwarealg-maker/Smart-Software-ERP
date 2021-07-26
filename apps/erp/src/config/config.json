@@ -14,11 +14,11 @@
     ],
     "version": "3.0",
     "protocol": "http://",
-    "defaultUrl": "localhost:8080",
+    "defaultUrl": "192.168.8.160:8080",
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "localhost:8080"
+            "backend": "192.168.8.160:8080"
         }
     ],
     "useBrowserLanguage": true,
