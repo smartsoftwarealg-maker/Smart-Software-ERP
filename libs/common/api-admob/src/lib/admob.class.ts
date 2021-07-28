@@ -24,7 +24,7 @@ export class AdmobClass {
             adSize: BannerAdSize.BANNER,
             position: BannerAdPosition.BOTTOM_CENTER,
             margin: 0,
-            isTesting: false
+            isTesting: true
             // npa: true
         };
         AdMob.showBanner(options);

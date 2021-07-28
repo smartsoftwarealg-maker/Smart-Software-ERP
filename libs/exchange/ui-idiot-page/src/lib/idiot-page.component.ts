@@ -31,5 +31,4 @@ export class IdiotPageComponent implements OnInit {
             .viewHTML(data)
             .subscribe(res => this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res));
     }
-
 }
