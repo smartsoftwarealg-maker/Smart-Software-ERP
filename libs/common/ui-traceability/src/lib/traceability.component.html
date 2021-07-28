@@ -40,7 +40,7 @@
         <mat-table mat-table [dataSource]="data" class="main-table">
             <ng-container *ngFor="let col of displayedColumns; let i = index" matColumnDef="{{ col }}">
                 <mat-header-cell *matHeaderCellDef> {{ col }} </mat-header-cell>
-                <mat-cell *matCellDef="let e">
+                <mat-cell *matCellDef="let e" >
                     {{e[i]}}
                 </mat-cell>
             </ng-container>
