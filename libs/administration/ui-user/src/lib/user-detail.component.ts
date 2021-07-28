@@ -102,7 +102,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         if (this.pwd1.value === this.pwd2.value && this.curUser != null) {
             this.curUser.password = this.pwd1.value;
             this.userSrv
-                .updatePassword( { id: this.loginSrv.appCtx.id, password: this.pwd1.value })
+                .updatePassword( { id: this.curUser.id, password: this.pwd1.value })
                 .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
