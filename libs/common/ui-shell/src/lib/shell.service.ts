@@ -43,6 +43,7 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
+    private _application = '';
 
     backgroundColors: string[] = [
         '#d88f64', '#806570', '#610B6E',
@@ -254,7 +255,7 @@ export class ShellService {
     }
 
     public getApp() {
-        return strTakeUntil(strTakeUntil(strDropUntil(this.router.url, '/app/'), '?'), '#');
+        return this.router.url.split('/')[2]; // strTakeUntil(strTakeUntil(strDropUntil(this.router.url, '/app/'), '?'), '#');
     }
 
     public navigateByRelativeUrl(path: string): void {
@@ -449,5 +450,11 @@ export class ShellService {
                 queryParams: params,
                 queryParamsHandling: 'merge', // remove to replace all query params by provided
             });
+    }
+    get application() {
+        return this._application;
+    }
+    set application(str: string) {
+        this._application = str;
     }
 }

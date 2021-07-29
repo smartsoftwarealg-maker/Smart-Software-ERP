@@ -45,11 +45,6 @@ export const stockNavTree: SideNavNode = {
                     icon: 'fas fa-building',
                     route: ABS_STOCK_COST_CENTER_URL
                 },
-                {
-                    name: 'COMMON_REPORT_PARAMS',
-                    icon: 'fas fa-file-chart-line',
-                    route: ABS_STOCK_REPORT_PARAMS
-                }
             ]
         },
         {
@@ -100,22 +95,26 @@ export const stockNavTree: SideNavNode = {
                 {
                     name: 'STOCK_ARTICLES',
                     icon: 'fas fa-box',
-                    route: ABS_STOCK_ARTICLES_URL
+                    route: ABS_STOCK_ARTICLES_URL,
+                    accessRights: 'Article'
                 },
                 {
                     name: 'STOCK_INVENTORY_ENTRY',
                     icon: 'fas fa-truck-moving',
-                    route: ABS_STOCK_INVENTORY_ENTRY_URL
+                    route: ABS_STOCK_INVENTORY_ENTRY_URL,
+                    accessRights: 'InventoryIn'
                 },
                 {
                     name: 'STOCK_INVENTORY_EXIT',
                     icon: 'fas fa-dolly-flatbed',
-                    route: ABS_STOCK_INVENTORY_EXIT_URL
+                    route: ABS_STOCK_INVENTORY_EXIT_URL,
+                    accessRights: 'InventoryOut'
                 },
                 {
                     name: 'STOCK_CONSUMPTION',
                     icon: 'fas fa-gas-pump',
-                    route: ABS_STOCK_CONSUMPTION_URL
+                    route: ABS_STOCK_CONSUMPTION_URL,
+                    accessRights: 'Consumption'
                 },
                 // {
                 //     name: 'STOCK_INVENTORY',

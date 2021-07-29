@@ -210,8 +210,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     private selectReport() {
+        console.log('app', this.shellSrv.getApp());
         this.defReportSrv
-            .open('exchange', this.reportForm)
+            .open(this.shellSrv.getApp(), this.reportForm)
             .subscribe(res => {
                 if (typeof res === 'string') {
                     this.defReportSrv
@@ -286,4 +287,5 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                 }
             })
     }
+
 }

@@ -266,7 +266,7 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                data: { reportBase: 'syscom', app: 'syscom' },
+                data: { reportBase: 'syscom'},
                 component: ReportViewComponent,
                 canActivate: [CanActivateService]
             },

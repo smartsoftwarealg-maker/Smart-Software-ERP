@@ -63,5 +63,6 @@
     "PASSWORD":            "Parola",
     "ROLES":               "Roller",
     "ROLE":                "Rol",
-    "RESPONSIBLE":         "Sorumluluk sahibi"
+    "RESPONSIBLE":         "Sorumluluk sahibi",
+    "APPLICATION": "Application"
 }
