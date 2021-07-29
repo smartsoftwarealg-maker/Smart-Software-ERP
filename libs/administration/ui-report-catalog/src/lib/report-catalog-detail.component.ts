@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
 import {FormValidators, LIST_URL} from '@ss/common/api-common';
-import {ReportListService} from '@ss/common/api-reports';
+import {ReportAppsService, ReportListService} from '@ss/common/api-reports';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {TraceabilityService} from '@ss/common/ui-traceability';
@@ -25,6 +25,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
     constructor(
         private traceSrv: TraceabilityService,
+        private reportService: ReportAppsService,
         public reportCatalogService: ReportCatalogService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -37,10 +38,10 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
 
     ngOnInit(): void {
-        this.traceSrv
+        this.reportService
             .getApps()
             .pipe(switchMap(res => {
-                this.applications = res.apps.map(e => e.toLowerCase());
+                this.applications = res.map(e => e.toLowerCase());
                 return this.getAppName();
             }))
             .subscribe(none => {

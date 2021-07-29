@@ -12,5 +12,4 @@ export class ReportCatalogService extends BaseEntityService<ReportsCatalog> {
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, REPORTS_CATALOG);
     }
-
 }
