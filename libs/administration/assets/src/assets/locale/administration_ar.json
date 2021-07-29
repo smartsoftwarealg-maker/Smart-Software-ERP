@@ -63,5 +63,6 @@
     "PASSWORD": "كلمة السر",
     "ROLES": "الوظائف",
     "ROLE": "الوظيفة",
-    "RESPONSIBLE": "مسؤول"
+    "RESPONSIBLE": "مسؤول",
+    "APPLICATION": "التطبيق"
 }

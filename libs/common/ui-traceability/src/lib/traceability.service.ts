@@ -31,7 +31,7 @@ export interface SchemaMap {
 export class TraceabilityService {
     private URLs = ['/logging/writes', '/logging/updates', '/logging/deletes' ];
 
-    constructor(private httpSrv: HttpService, private shellSrv: ShellService) {}
+    constructor(private httpSrv: HttpService) {}
 
     getSchemaMap(application: string): Observable<SchemaMap[]> {
         const params = new HttpParams().set('app', application);
