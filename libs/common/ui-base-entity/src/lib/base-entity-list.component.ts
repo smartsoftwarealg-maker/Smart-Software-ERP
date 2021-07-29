@@ -134,17 +134,19 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         const c: Observable<T[]> = a == null
             ? b
             : a.pipe(switchMap(() => b));
-        c.subscribe(
-            data => {
-                this.finishLoading(data);
-                if (callback) {
-                    callback();
+        c.subscribe({
+                next:
+                    data => {
+                        this.finishLoading(data);
+                        if (callback) {
+                            callback();
+                        }
+                    },
+                error: err => {
+                    this.data = []; // clear everything;
+                    this.shellSrv.setLoading(false); // stop the animation
+                    throw err;
                 }
-            },
-            err => {
-                this.data = []; // clear everything;
-                this.shellSrv.setLoading(false); // stop the animation
-                throw err;
             }
         );
     }

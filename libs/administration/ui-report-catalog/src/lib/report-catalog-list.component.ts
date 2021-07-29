@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {ReportAppsService} from '@ss/common/api-reports';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -16,11 +17,9 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 })
 export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
 
-    appsList: string[];
+    applications: string[];
+    applicationsCtrl = new FormControl();
 
-    appForm = new FormGroup({
-        selectedApp: new FormControl(null, Validators.required)
-    });
 
     displayedColumns = [
         'description',
@@ -37,45 +36,39 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_REPORT_CATALOG');
-        this.pagination.pageSize = 20;
+        this.pagination.pageSize = 10;
     }
-
 
     ngOnInit(): void {
-        this.shellSrv.setTitle(this.title);
-        this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        super.ngOnInit();
+        // this.shellSrv.setTitle(this.title);
+        // this.shellSrv.setGoBackPath('../..', this.route);
+        // this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        // this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
-    }
-
-   processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
-       return super.processLoadedData(data);
-   }
-
-    loadApps(): void {
         this.reportService.getApps().subscribe(x => {
-            this.appsList = x;
-            this.readAppFromQueryParam();
+            this.applications = x;
         });
     }
 
-    readAppFromQueryParam() {
-        this.route.queryParams.subscribe(x => {
-            if (x && x.app) {
-                this.appForm.updateValueAndValidity();
-            }
-        });
+    processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
+        return super.processLoadedData(data);
     }
+
+    // readAppFromQueryParam() {
+    //     this.route.queryParams.subscribe(x => {
+    //         if (x && x.app) {
+    //             this.appForm.updateValueAndValidity();
+    //         }
+    //     });
+    // }
 
 
     getPage(): Observable<ReportsCatalog[]> {
+        const params = new HttpParams().set('base', this.applicationsCtrl.value);
         return this.entitySrv
-            .getPage(this.pagination,
-                this.filter,
-                this.sortBy);
+            .getPage(this.pagination, this.filter, this.sortBy, params);
     }
-
 
     showDetail(id: number) {
         this.router.navigate(['./' + id], {relativeTo: this.route}).then();
