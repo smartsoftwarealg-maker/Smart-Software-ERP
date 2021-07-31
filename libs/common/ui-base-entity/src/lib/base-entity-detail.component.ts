@@ -36,6 +36,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return this.queryId;
     }
 
+    public set id(value: number) {
+        this.queryId = value;
+    }
+
     public ngOnInit() {
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
