@@ -43,6 +43,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
     }
 
     loadEntity(id: number): Observable<Option> {
-        return super.loadEntity(this.loginSrv.appCtx.center);
+        this.id = this.loginSrv.appCtx.center;
+        return super.loadEntity(this.id);
     }
 }

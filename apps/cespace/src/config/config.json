@@ -13,12 +13,12 @@
         "    BackEnd is same as FrontEnd if the frontend is on port 8080, but with port 9998"
     ],
     "version": "3.0",
-    "protocol": "http://",
-    "defaultUrl": "192.168.8.160:8080",
+    "protocol": "https://",
+    "defaultUrl": "192.168.8.160:4430",
     "urlRules0": [
         {
             "frontend": "?",
-            "backend": "192.168.8.160:8080"
+            "backend": "192.168.8.160:4430"
         }
     ],
     "useBrowserLanguage": true,
