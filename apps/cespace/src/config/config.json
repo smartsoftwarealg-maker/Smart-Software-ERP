@@ -14,11 +14,11 @@
     ],
     "version": "3.0",
     "protocol": "https://",
-    "defaultUrl": "192.168.8.160:4430",
+    "defaultUrl": "81.214.74.50:4430",
     "urlRules0": [
         {
             "frontend": "?",
-            "backend": "192.168.8.160:4430"
+            "backend": "81.214.74.50:4430"
         }
     ],
     "useBrowserLanguage": true,
