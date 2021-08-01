@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Route, Routes } from '@angular/router';
 import { BasicShellComponent } from '../common/basic-shell/basic-shell.component';
 import { LanguageService } from '@ss/common/api-common';
+import { CanActivateService } from '../smart-lib/components/login/can-activte.service';
 
 @Component({
     selector: 'app-hotel-main',
@@ -28,7 +29,11 @@ interface Menu extends Route {
     children: SubModule[];
 }
 
-const mainRoute: Route = { path: '', component: HotelComponent };
+const mainRoute: Route = {
+    path: '',
+    component: HotelComponent,
+    canActivate: [ CanActivateService ]
+};
 
 const settingsRoute: SubModule = {
     path: 'settings',

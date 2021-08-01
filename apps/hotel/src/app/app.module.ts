@@ -8,7 +8,6 @@ import { NavService } from './common/nav.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationDialogModule } from './common/confirmation-dialog/confirmation-dialog.module';
 import { MAIN_PAGE_URL, LOGIN_URL } from './smart-lib/components/login/login-constants';
-import { CanActivateService } from './smart-lib/components/login/can-activte.service';
 import { ThemeModule } from './smart-lib/components/theme/theme.module';
 import { SmartCommonModule } from './smart-lib/common/smart-common.module';
 import { LoadingSpinnerModule } from './smart-lib/components/loading-spinner/loading-spinner.module';
@@ -41,14 +40,14 @@ export const applications: Application[] = [
 const routes: Routes = [
     {
         path: MAIN_PAGE_URL,
-        redirectTo: LOGIN_URL
+        redirectTo: hotelApp.path
     },
     {
         path: hotelApp.path,
         data: { title: hotelApp.name, entity: null, moduleName: 'HotelModule' },
         loadChildren: () => import('./hotel/hotel.module').then(m => m.HotelModule)
     },
-    { path: '', redirectTo: hotelApp.path, pathMatch: 'full' },
+    { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }, // not found
 ];
 
