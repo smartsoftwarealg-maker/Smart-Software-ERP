@@ -224,11 +224,10 @@ export class HttpService {
                 this.baseUrl = conf.baseUrl; // backward compatibility shit (microsoft is shit)
             }
         }
-        console.log('Backend: ', this.baseUrl);
+//        console.log('Backend: ', this.baseUrl);
     }
 
     public updateAuthToken(token: string): void {
-        console.log('auth token updated to ', token);
         localStorage.setItem(AUTH_TOKEN, token);
     }
 
