@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
             AdmobClass
                 .initialize()
                 .then(AdmobClass.banner)
-                .then(() => {});
+                .then(() => {
+                    console.log('Initialized MobAd')
+                });
         }
     }
 

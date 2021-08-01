@@ -4,6 +4,7 @@ export interface ReportsCatalog {
     id: number;
     description: string;
     filename: string;
+    application: string;
 }
 
 

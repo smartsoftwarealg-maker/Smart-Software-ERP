@@ -1,14 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ReportCatalogService, ReportsCatalog} from "@ss/administration/api-report-catalog";
-import {FormValidators, LIST_URL} from "@ss/common/api-common";
-import {ReportListService} from "@ss/common/api-reports";
-import {tap} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
+import {FormValidators, LIST_URL} from '@ss/common/api-common';
+import {ReportAppsService, ReportListService} from '@ss/common/api-reports';
+import {switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {TraceabilityService} from '@ss/common/ui-traceability';
+import {MatSelectChange} from '@angular/material/select';
 
 
 @Component({
@@ -17,12 +19,13 @@ import {Observable} from "rxjs";
     templateUrl: './report-catalog-detail.component.html'
 })
 export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<ReportsCatalog> implements OnInit {
-
     app: string;
-    reportList: [] = [];
-
+    reportList: string[] = [];
+    applications: string[] = [];
 
     constructor(
+        private traceSrv: TraceabilityService,
+        private reportService: ReportAppsService,
         public reportCatalogService: ReportCatalogService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -35,10 +38,16 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
 
     ngOnInit(): void {
-        this.getAppName().subscribe(none => {
-            super.ngOnInit();
-            this.shellSrv.setGoBackPath('../' + LIST_URL, this.route, {app: this.app});
-        });
+        this.reportService
+            .getApps()
+            .pipe(switchMap(res => {
+                this.applications = res.map(e => e.toLowerCase());
+                return this.getAppName();
+            }))
+            .subscribe(none => {
+                super.ngOnInit();
+                this.shellSrv.setGoBackPath('../' + LIST_URL, this.route, {app: this.app});
+            });
     }
 
 
@@ -49,9 +58,6 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         });
     }
 
-    log($log) {
-        console.log($log);
-    }
 
     getAppName(): Observable<any> {
         return this.route.queryParams.pipe(tap((p: any) => {
@@ -61,12 +67,17 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
     }
 
     public setupForm(b: ReportsCatalog) {
-
         return this.formBuilder.group({
             id: [b.id],
+            application:[null, Validators.required],
             description: [b.description, Validators.required],
-            filename: [b.filename, Validators.compose([Validators.required, FormValidators.autoCompleteValidator(this.reportList)])]
+            filename: [b.filename, Validators.compose([Validators.required])]
         });
     }
 
+    public selectApp(event: MatSelectChange) {
+        this.reportListsService.getListByApp(event.value.toLowerCase()).subscribe((res: string[]) => {
+            this.reportList = res;
+        });
+    }
 }

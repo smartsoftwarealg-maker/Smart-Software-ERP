@@ -1,5 +1,14 @@
 
 <div class="main-container">
+    <mat-form-field appearance="fill" class="default-100 sm-100">
+        <mat-label translate>ADMINISTRATION_APPLICATION</mat-label>
+        <mat-select [formControl]="applicationsCtrl" (selectionChange)="refresh()">
+            <mat-option *ngFor="let app of applications" [value]="app">
+                {{ app }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
     <div class="table-container">
         <mat-table class="main-table" mat-table [dataSource]="data" class="main-table">
 

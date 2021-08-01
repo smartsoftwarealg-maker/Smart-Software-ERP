@@ -7,7 +7,7 @@ export class FormValidators {
         return control.value && !Number.isInteger(control.value) ? {'integerInvalid': true} : null;
     }
 
-    static autoCompleteValidator(list: []): ValidatorFn {
+    static autoCompleteValidator(list: any[]): ValidatorFn {
         return (control: AbstractControl) => {
             // @ts-ignore
             return control.value != null && !list.includes(control.value) ? {'validOption': true} : null;

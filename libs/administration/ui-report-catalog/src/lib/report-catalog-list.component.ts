@@ -7,9 +7,8 @@ import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-repor
 import {Observable} from 'rxjs';
 import {ReportAppsService} from '@ss/common/api-reports';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpParams} from '@angular/common/http';
-import {tap} from 'rxjs/operators';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -18,12 +17,9 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 })
 export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
 
-    appsList: string[];
-    app!: string;
+    applications: string[];
+    applicationsCtrl = new FormControl();
 
-    appForm = new FormGroup({
-        selectedApp: new FormControl(null, Validators.required)
-    });
 
     displayedColumns = [
         'description',
@@ -40,68 +36,41 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_REPORT_CATALOG');
-        this.pagination.pageSize = 20;
+        this.pagination.pageSize = 10;
     }
-
 
     ngOnInit(): void {
-        this.shellSrv.setTitle(this.title);
-        this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        super.ngOnInit();
+        // this.shellSrv.setTitle(this.title);
+        // this.shellSrv.setGoBackPath('../..', this.route);
+        // this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
+        // this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
         this.pagination.onChange = () => this.refresh();
-
-        this.updateAddButtonStatus();
-
-        // this.loadApps();
-        //
-        // this.appForm.valueChanges.subscribe(x => {
-        //     this.setSelectedApp(x.selectedApp);
-        // });
-        this.route.data.subscribe(res => this.setSelectedApp(res['app']));
-    }
-
-   processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
-       return super.processLoadedData(data);
-   }
-
-    loadApps(): void {
         this.reportService.getApps().subscribe(x => {
-            this.appsList = x;
-            this.readAppFromQueryParam();
+            this.applications = x;
         });
     }
 
-    readAppFromQueryParam() {
-        this.route.queryParams.subscribe(x => {
-            if (x && x.app) {
-                this.setSelectedApp(x.app);
-                this.appForm.controls.selectedApp.patchValue(this.app);
-                this.appForm.updateValueAndValidity();
-            }
-        });
+    processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
+        return super.processLoadedData(data);
     }
 
-    setSelectedApp(app: any) {
-        this.app = app;
-        this.updateAddButtonStatus();
-        this.refresh();
-    }
+    // readAppFromQueryParam() {
+    //     this.route.queryParams.subscribe(x => {
+    //         if (x && x.app) {
+    //             this.appForm.updateValueAndValidity();
+    //         }
+    //     });
+    // }
 
-    updateAddButtonStatus() {
-        this.shellSrv.setButtonEnabled(this.addButton, !!this.app);
-    }
 
     getPage(): Observable<ReportsCatalog[]> {
-        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy, new HttpParams().set('base', this.app));
+        const params = new HttpParams().set('base', this.applicationsCtrl.value);
+        return this.entitySrv
+            .getPage(this.pagination, this.filter, this.sortBy, params);
     }
 
-
     showDetail(id: number) {
-        const params = {
-            app: this.app
-        };
-        this.router.navigate(['./' + id], {relativeTo: this.route, queryParams: params})
-            .then();
+        this.router.navigate(['./' + id], {relativeTo: this.route}).then();
     }
 }

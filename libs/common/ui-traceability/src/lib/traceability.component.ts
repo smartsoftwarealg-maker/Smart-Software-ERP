@@ -10,10 +10,10 @@ import {switchMap} from "rxjs/operators";
 
 /** Flat node with expandable and level information */
 interface LogFlatNode {
-    level: number;
     expandable: boolean;
     name: string;
-    schema?: Schema;
+    level: number;
+    schema: Schema;
 }
 
 

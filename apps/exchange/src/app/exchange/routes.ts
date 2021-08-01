@@ -100,7 +100,7 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                data: { reportBase: 'exchange', app: 'exchange' },
+                data: { reportBase: 'exchange'},
                 component: ReportViewComponent,
                 canActivate: [CanActivateService]
             },

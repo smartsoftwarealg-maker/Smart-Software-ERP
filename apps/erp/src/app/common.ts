@@ -57,6 +57,7 @@ export const STOCK_AGENT_TYPE_URL = 'agentTypes';
 export const STOCK_COMPANY_TYPE_URL = 'companyTypes';
 export const STOCK_ACTIVITY_URL = 'activities';
 export const STOCK_CURRENCY_URL = 'currencies';
+export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
@@ -125,6 +126,7 @@ export const ABS_STOCK_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKU
 export const ABS_STOCK_ACTIVITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_ACTIVITY_URL].join('/');
 export const ABS_STOCK_CURRENCY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CURRENCY_URL].join('/');
 export const ABS_STOCK_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_REPORT_PARAMS_URL].join('/');
+export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORT_CATALOG_URL].join('/');
 
 
 //Logistics

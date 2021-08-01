@@ -63,5 +63,6 @@
     "PASSWORD": "Password",
     "ROLES": "Roles",
     "ROLE": "Role",
-    "RESPONSIBLE": "Responsible"
+    "RESPONSIBLE": "Responsible",
+    "APPLICATION": "Application"
 }
