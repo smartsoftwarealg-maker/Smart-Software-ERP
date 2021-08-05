@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {catchError, switchMap, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
@@ -32,14 +32,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     pwd1 = new FormControl();
     pwd2 = new FormControl();
     agentTypes: AgentType[];
-    companyTypes: CompanyType[];
-    cities: City[];
-    countries: Country[];
-    currencies: Currency[];
-    payModes: PayMode[];
-    activities: Activity[];
-    prices: AgentPrice[];
-    banks: Bank[];
+    companyTypes: CompanyType[] = [];
+    cities: City[] = [];
+    countries: Country[] = [];
+    currencies: Currency[] = [];
+    payModes: PayMode[] = [];
+    activities: Activity[] = [];
+    prices: AgentPrice[] = [];
+    banks: Bank[] = [];
 
 
     constructor(
@@ -55,7 +55,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     }
 
     public preload(): Observable<any> {
-        return this.lookupsSrv.getAgentTypes()
+        return this.lookupsSrv
+            .getAgentTypes()
             .pipe(
                 tap(x => this.agentTypes = x),
                 switchMap(() => this.lookupsSrv.getCities()),
@@ -71,6 +72,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 switchMap(() => this.lookupsSrv.getActivities()),
                 tap(x => this.activities = x),
                 switchMap(() => this.lookupsSrv.getPrices()),
+                catchError(e => of([])),
                 tap(x => this.prices = x),
                 switchMap(() => this.lookupsSrv.getBanks()),
                 tap(x => this.banks = x)

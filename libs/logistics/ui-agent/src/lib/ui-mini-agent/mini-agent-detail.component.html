@@ -32,20 +32,95 @@
             </mat-form-field>
 
 
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+            </div>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
+                <input matInput formControlName="blockingReason"  type="text">
+            </mat-form-field>
+
             <mat-form-field floatLabel="always" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
                 <input matInput formControlName="creationTime" type="text">
             </mat-form-field>
 
-
         </mat-expansion-panel>
 
-        <mat-expansion-panel #latinPanel [class]="getPanelHeaderClass('latin',latinPanel)">
+<!--        <mat-expansion-panel #latinPanel [class]="getPanelHeaderClass('latin',latinPanel)">-->
+<!--            <mat-expansion-panel-header>-->
+<!--                <mat-panel-title translate>-->
+<!--                    LOGISTICS_LATIN-->
+<!--                </mat-panel-title>-->
+<!--            </mat-expansion-panel-header>-->
+
+<!--            <div class="default-50 sm-100">-->
+<!--                <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>-->
+<!--            </div>-->
+
+<!--            <mat-form-field  class="default-50 sm-100">-->
+<!--                <mat-label translate>LOGISTICS_ACTIVITY</mat-label>-->
+<!--                <mat-select formControlName="activity">-->
+<!--                    <mat-option [value]="null"></mat-option>-->
+<!--                    <mat-option *ngFor="let v of activities" [value]="v.id">-->
+<!--                        {{v ? v.description : ''}}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
+
+<!--            <mat-form-field  class="default-50 sm-100">-->
+<!--                <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>-->
+<!--                <mat-select formControlName="companyType">-->
+<!--                    <mat-option [value]="null"></mat-option>-->
+<!--                    <mat-option *ngFor="let v of companyTypes" [value]="v.id">-->
+<!--                        {{v ? v.description : ''}}-->
+<!--                    </mat-option>-->
+<!--                </mat-select>-->
+<!--            </mat-form-field>-->
+
+<!--            <div class="default-50 sm-100">-->
+<!--                <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>-->
+<!--            </div>-->
+
+<!--        </mat-expansion-panel>-->
+
+        <mat-expansion-panel #contactPanel [class]="getPanelHeaderClass('contact',contactPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
-                    LOGISTICS_LATIN
+                    LOGISTICS_CONTACT
                 </mat-panel-title>
             </mat-expansion-panel-header>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS</mat-label>
+                <input matInput formControlName="address" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ADDRESS2</mat-label>
+                <input matInput formControlName="address2" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CITY</mat-label>
+                <mat-select formControlName="city">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of cities" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_COUNTRY</mat-label>
+                <mat-select formControlName="country">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of countries" [value]="v.id">
+                        {{v ? v.description : ''}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_PHONE</mat-label>
@@ -77,43 +152,16 @@
                 </mat-error>
             </mat-form-field>
 
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
-            </div>
 
             <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
-                <mat-select formControlName="activity">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of activities" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
+                <mat-label translate>LOGISTICS_CONTACT</mat-label>
+                <input matInput formControlName="contact" type="text">
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
-                <mat-select formControlName="companyType">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of companyTypes" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_INFO</mat-label>
+                <input matInput formControlName="info" type="text">
             </mat-form-field>
-
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
-            </div>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
-                <input matInput formControlName="blockingReason"  type="text">
-            </mat-form-field>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
-            </div>
 
         </mat-expansion-panel>
 
@@ -226,55 +274,6 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel #contactPanel [class]="getPanelHeaderClass('contact',contactPanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    LOGISTICS_CONTACT
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ADDRESS</mat-label>
-                <input matInput formControlName="address" type="text">
-            </mat-form-field>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ADDRESS2</mat-label>
-                <input matInput formControlName="address2" type="text">
-            </mat-form-field>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CITY</mat-label>
-                <mat-select formControlName="city">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of cities" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_COUNTRY</mat-label>
-                <mat-select formControlName="country">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of countries" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CONTACT</mat-label>
-                <input matInput formControlName="contact" type="text">
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_INFO</mat-label>
-                <input matInput formControlName="info" type="text">
-            </mat-form-field>
-
-        </mat-expansion-panel>
 
         <mat-expansion-panel #arabicPanel [class]="getPanelHeaderClass('arabic', arabicPanel)">
             <mat-expansion-panel-header>

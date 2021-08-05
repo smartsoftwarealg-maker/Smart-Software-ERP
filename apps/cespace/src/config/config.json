@@ -14,11 +14,11 @@
     ],
     "version": "3.0",
     "protocol": "https://",
-    "defaultUrl": "81.214.74.50:4430",
+    "defaultUrl": "ihsan.hopto.org:4430",
     "urlRules0": [
         {
             "frontend": "?",
-            "backend": "81.214.74.50:4430"
+            "backend": "ihsan.hopto.org:4430"
         }
     ],
     "useBrowserLanguage": true,
