@@ -32,14 +32,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
     pwd1 = new FormControl();
     pwd2 = new FormControl();
     agentTypes: AgentType[];
-    companyTypes: CompanyType[];
-    cities: City[];
-    countries: Country[];
-    currencies: Currency[];
-    payModes: PayMode[];
-    activities: Activity[];
-    prices: AgentPrice[];
-    banks: Bank[];
+    companyTypes: CompanyType[] = [];
+    cities: City[] = [];
+    countries: Country[] = [];
+    currencies: Currency[] = [];
+    payModes: PayMode[] = [];
+    activities: Activity[] = [];
+    prices: AgentPrice[] = [];
+    banks: Bank[] = [];
 
 
     constructor(
