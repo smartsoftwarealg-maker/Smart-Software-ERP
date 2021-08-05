@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {AgentDetailComponent} from '../agent-detail.component';
+import {Observable} from "rxjs";
+import {catchError, switchMap, tap} from "rxjs/operators";
 
 
 @Component({
