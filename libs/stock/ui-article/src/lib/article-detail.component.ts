@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {LookupsService, Mark, Lot, LotsService, Vat} from '@ss/common/api-lookup';
+import {LookupsService, Mark, Store, LotsService, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";

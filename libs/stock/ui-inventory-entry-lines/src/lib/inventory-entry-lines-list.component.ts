@@ -8,7 +8,7 @@ import {map, switchMap, tap} from 'rxjs/operators';
 //import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {LotsService, Lot} from '@ss/common/api-lookup';
+import {LotsService, Store} from '@ss/common/api-lookup';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {TransactionLine} from '@ss/logistics/api-transaction';
 
@@ -165,7 +165,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: Lot[]) {
+    private onStoresLoaded(data: Store[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

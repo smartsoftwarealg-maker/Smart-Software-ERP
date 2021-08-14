@@ -1,13 +1,13 @@
 import {Component, Input, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Article} from "@ss/stock/api-article";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Article} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Lot, LotsService} from "@ss/common/api-lookup";
-import {FormControl, FormGroup} from "@angular/forms";
-import {ArticleLot, ArticleStoresService} from "@ss/stock/api-article-store";
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Store, LotsService} from '@ss/common/api-lookup';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ArticleLot, ArticleStoresService} from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-article-store',
@@ -18,7 +18,7 @@ export class ArticleStoreComponent implements OnInit {
 
     @Input() article!: Article;
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
     lots: { [id: number]: string; };
     storeForm: FormGroup = new FormGroup({
         storeId: new FormControl(),
@@ -34,8 +34,8 @@ export class ArticleStoreComponent implements OnInit {
     data: ArticleLot[];
 
     displayedColumns = [
-        "storeId",
-        "stock"
+        'storeId',
+        'stock'
     ];
 
 
@@ -65,7 +65,7 @@ export class ArticleStoreComponent implements OnInit {
     loadArticleStore() {
         this.articleStoreSrv.getPage(this.pagination).subscribe((x: ArticleLot[]) => {
             const ids = x.map(x => x.id);
-            this.lotsService.getAll(ids).subscribe((s: Lot[]) => {
+            this.lotsService.getAll(ids).subscribe((s: Store[]) => {
                 this.lots = s.reduce(
                     (total, currentValue) => {
                         total[currentValue.id] = currentValue.description;

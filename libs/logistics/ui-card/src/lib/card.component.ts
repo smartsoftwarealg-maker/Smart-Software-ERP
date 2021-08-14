@@ -6,7 +6,7 @@ import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Lot} from '@ss/common/api-lookup';
+import {Store} from '@ss/common/api-lookup';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {LanguageService} from '@ss/common/api-common';
@@ -18,7 +18,7 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class CardComponent implements OnInit {
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeSrv);
 
     storeForm: FormGroup = new FormGroup({
         store: new FormControl()
