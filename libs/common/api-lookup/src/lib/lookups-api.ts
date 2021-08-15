@@ -103,9 +103,9 @@ export interface Subclass {
     description: string;
 }
 
-export interface Lot {
+export interface Store {
     id: number;
-    storeId?: number;
+    centerId?: number;
     description: string;
 }
 

@@ -8,7 +8,7 @@ import {map, switchMap, tap} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {Lot, LotsService} from '@ss/common/api-lookup';
+import {Store, LotsService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-consumption-lines-list',
@@ -144,7 +144,7 @@ export class ConsumptionLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: Lot[]) {
+    private onStoresLoaded(data: Store[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

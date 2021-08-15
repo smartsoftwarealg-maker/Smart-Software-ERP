@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
 import {Observable} from 'rxjs';
@@ -24,7 +24,7 @@ export class InventoryLinesDetailComponent extends BaseEntityDetailComponent<Tra
     parentId: number;
     selectedRow : TransactionLine;
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
         public inventoryLinesService: InventoryLinesService,

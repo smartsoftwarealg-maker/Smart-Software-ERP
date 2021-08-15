@@ -9,7 +9,7 @@ import {LINES_DETAIL_URL} from "@ss/common/api-common";
 import {Article, ArticleService} from "@ss/stock/api-article";
 import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {Store, LotsService} from "@ss/common/api-lookup";
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -142,7 +142,7 @@ export class OrderLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: Lot[]) {
+    private onStoresLoaded(data: Store[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

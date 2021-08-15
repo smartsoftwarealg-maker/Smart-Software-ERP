@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {DeliveryLine, DeliveryLinesService} from '@ss/sales/api-delivery-lines';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
@@ -23,7 +23,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseEntityDetailCo
     parentId: number;
 
     articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
         public deliveryLinesService: DeliveryLinesService,

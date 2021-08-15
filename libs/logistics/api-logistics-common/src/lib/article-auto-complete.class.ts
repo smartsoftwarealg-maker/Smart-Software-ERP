@@ -1,7 +1,7 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {EventEmitter} from '@angular/core';
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {Store, LotsService} from "@ss/common/api-lookup";
 
 
 export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> {
@@ -16,7 +16,7 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
     }
 }
 
-export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Lot> {
+export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Store> {
     readonly evenEmitter = new EventEmitter<number>();
 
     constructor(public storeNameSrv: LotsService) {

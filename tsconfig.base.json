@@ -59,6 +59,7 @@
       "@ss/common/api-access-rights": [
         "libs/common/api-access-rights/src/index.ts"
       ],
+      "@ss/common/api-admob": ["libs/common/api-admob/src/index.ts"],
       "@ss/common/api-base-entity": [
         "libs/common/api-base-entity/src/index.ts"
       ],
@@ -273,7 +274,7 @@
       "@ss/stock/ui-reception-lines": [
         "libs/stock/ui-reception-lines/src/index.ts"
       ],
-      "@ss/common/api-admob": ["libs/common/api-admob/src/index.ts"]
+      "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
