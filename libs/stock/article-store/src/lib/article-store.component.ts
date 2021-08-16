@@ -5,9 +5,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Store, LotsService} from '@ss/common/api-lookup';
+import {LotsService, Store} from '@ss/common/api-lookup';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ArticleLot, ArticleStoresService} from '@ss/stock/api-article-store';
+import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-article-store',
@@ -30,9 +30,8 @@ export class ArticleStoreComponent implements OnInit {
     //
     public readonly pagination = PaginationModel.newInstance();
 
-
-    data: ArticleLot[];
-
+    data: ArticleStore[];
+    selectedStore: ArticleStore = null;
     displayedColumns = [
         'storeId',
         'stock'
@@ -61,10 +60,9 @@ export class ArticleStoreComponent implements OnInit {
         this.loadArticleStore();
     }
 
-
     loadArticleStore() {
-        this.articleStoreSrv.getPage(this.pagination).subscribe((x: ArticleLot[]) => {
-            const ids = x.map(x => x.id);
+        this.articleStoreSrv.getPage(this.pagination).subscribe((x: ArticleStore[]) => {
+            const ids = x.map(_ => _.id);
             this.lotsService.getAll(ids).subscribe((s: Store[]) => {
                 this.lots = s.reduce(
                     (total, currentValue) => {
@@ -78,18 +76,34 @@ export class ArticleStoreComponent implements OnInit {
 
     }
 
+
     addStore() {
         this.articleStoreSrv.add(this.storeForm.value)
-            .subscribe(
-                res => {
+            .subscribe({
+                next: res => {
                     this.snackBarSrv.showSuccessMessage();
                 },
-                err => {
+                error: err => {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 },
-                ()=>{
+                complete: () => {
                     this.loadArticleStore();
-                })
+                }
+            })
+    }
+
+    selectStore(store: ArticleStore) {
+        this.selectedStore = store;
+        this.storeForm.controls['storeId'].patchValue(store.storeId, { onlySelf: true });
+    }
+
+    removeStore() {
+        if (this.selectedStore) {
+            this.articleStoreSrv
+                .remove(this.selectedStore.id)
+                .subscribe(res => this.snackBarSrv.showSuccessMessage())
+            this.data = this.data.filter(e => e.id !== this.selectedStore.id)
+        }
     }
 }
