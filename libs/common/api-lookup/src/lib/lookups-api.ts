@@ -105,7 +105,7 @@ export interface Subclass {
 
 export interface Store {
     id: number;
-    centerId?: number;
+    centerId: number;
     description: string;
 }
 
