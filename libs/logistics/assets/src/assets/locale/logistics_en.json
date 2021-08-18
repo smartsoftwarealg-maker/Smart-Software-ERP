@@ -104,5 +104,6 @@
     "EVAL_PRICE": "Evaluation price",
     "INVENTORY_DATE": "Inventory date",
     "FIFO": "FIFO",
-    "AWP": "A.W.P"
+    "AWP": "A.W.P",
+    "CONSUMER": "Consumer"
 }

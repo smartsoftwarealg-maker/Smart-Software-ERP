@@ -101,5 +101,6 @@
     "EVAL_PRICE": "Prix evaludation stock",
     "INVENTORY_DATE": "Date inventaire",
     "FIFO": "FIFO",
-    "AWP": "PMP"
+    "AWP": "PMP",
+    "CONSUMER": "Consomateur"
 }

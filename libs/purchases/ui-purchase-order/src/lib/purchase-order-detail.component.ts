@@ -41,6 +41,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 private agentService: AgentService,
                 private loginService: LoginService,
                 private payMethodSrv: PayMethodService,
+                private loginSrv: LoginService,
                 private currencySrv: CurrencyService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
@@ -77,7 +78,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
-            dealer: [{value: form.dealer, disabled: !this.isManager}, Validators.required],
+            dealer: [{value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager}, Validators.required],
             agent: [form.agent, Validators.required],
         });
     }

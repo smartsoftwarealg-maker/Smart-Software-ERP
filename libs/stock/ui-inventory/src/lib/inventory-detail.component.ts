@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Transaction} from '@ss/logistics/api-transaction';
-import {User} from '@ss/common/api-common';
+import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 
 
@@ -25,6 +25,8 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Transact
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
     constructor(
+        private langSrv: LanguageService,
+        private loginSrv: LoginService,
         public inventoryService: InventoryService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -48,13 +50,13 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Transact
             id: [b.id],
             document: [0],
             center: [0],
-            date: [b.date, Validators.required],
+            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
             number: [b.number, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer, Validators.required],
+            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
         });
     }
 

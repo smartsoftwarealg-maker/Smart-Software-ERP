@@ -95,7 +95,7 @@ export const stockNavTree: SideNavNode = {
                     name: 'STOCK_STORE_ASSIGNMENT',
                     icon: 'fas fa-pallet',
                     route: ABS_STORE_ASSIGNMENT_URL,
-                    accessRights: 'ArticleStore'
+                    accessRights: 'Store'
                 },
                 {
                     name: 'STOCK_ARTICLES',
