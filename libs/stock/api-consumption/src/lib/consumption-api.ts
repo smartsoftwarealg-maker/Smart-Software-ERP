@@ -1,4 +1,4 @@
-export const CONSUMPTION_URL = "/consumption";
+export const CONSUMPTION_URL = '/consumption';
 
 export interface Consumption {
     id: number;

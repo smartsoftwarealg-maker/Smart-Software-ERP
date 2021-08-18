@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {LoginService, User} from '@ss/common/api-common';
+import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 
 
@@ -27,6 +27,7 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
 
     constructor(
+        private langSrv: LanguageService,
         public consumptionService: ConsumptionService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -52,14 +53,15 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
             id: [b.id],
             document: [0],
             center: [0],
-            date: [b.date || new Date(), Validators.required],
+            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
             number: [b.number || 0, Validators.required],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
             dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
-            agent: [b.agent, Validators.required]
+            agent: [b.agent, Validators.required],
+            userID: [this.loginSrv.appCtx.id]
         });
     }
 }
