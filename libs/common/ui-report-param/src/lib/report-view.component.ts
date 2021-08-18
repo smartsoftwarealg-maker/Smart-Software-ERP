@@ -83,7 +83,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
         this.route.data.subscribe(res => {
             this.loadReportTree(res.reportBase);
-            this.app = res.app;
+            this.app = res.reportBase;
         });
     }
 
