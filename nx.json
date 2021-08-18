@@ -387,6 +387,9 @@
     "stock-ui-article": {
       "tags": ["type:ui"]
     },
+    "stock-ui-article-store-assignment": {
+      "tags": []
+    },
     "stock-ui-consumption": {
       "tags": []
     },

@@ -4,10 +4,14 @@
             <ng-container *ngFor="let entryGroup of getDisplayedEntries()">
 
                 <ng-container *ngIf="entryGroup.entries.length>0">
-                    <button mat-button [matMenuTriggerFor]="agentMenu" translate>{{entryGroup.description}}</button>
+                    <button mat-button [matMenuTriggerFor]="agentMenu">
+                        <i class="fas fa-bars"></i>
+                        <span class="space" translate>{{entryGroup.description}}</span>
+                    </button>
                     <mat-menu #agentMenu="matMenu" yPosition="above">
                         <button mat-menu-item *ngFor="let e of entryGroup.entries" translate
-                                (click)="select(e)">{{ e.description }}</button>
+                                (click)="select(e)">{{ e.description }}
+                        </button>
                     </mat-menu>
                 </ng-container>
 

@@ -16,7 +16,7 @@ import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
 })
 export class ArticleStoreComponent implements OnInit {
 
-    @Input() article!: Article;
+    article_!: Article;
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
     lots: { [id: number]: string; };
@@ -49,19 +49,27 @@ export class ArticleStoreComponent implements OnInit {
 
 
     ngOnInit() {
-        this.articleStoreSrv.setParentId(this.article.id);
+        this.articleStoreSrv.setParentId(this.article_.id);
         this.pagination.onChange = () => this.loadArticleStore();
         this.storeForm.setValue({
             storeId: null,
-            referenceId: this.article.id,
-            reference: this.article.reference,
+            referenceId: this.article_.id,
+            reference: this.article_.reference,
             id: 0
         });
         this.loadArticleStore();
     }
 
+    @Input() set article(article: Article) {
+        this.article_ = article;
+        this.selectStore(null);
+        this.ngOnInit();
+    }
+
     loadArticleStore() {
-        this.articleStoreSrv.getPage(this.pagination).subscribe((x: ArticleStore[]) => {
+        this.articleStoreSrv
+            .getPage(this.pagination)
+            .subscribe((x: ArticleStore[]) => {
             const ids = x.map(_ => _.id);
             this.lotsService.getAll(ids).subscribe((s: Store[]) => {
                 this.lots = s.reduce(
@@ -95,7 +103,8 @@ export class ArticleStoreComponent implements OnInit {
 
     selectStore(store: ArticleStore) {
         this.selectedStore = store;
-        this.storeForm.controls['storeId'].patchValue(store.storeId, { onlySelf: true });
+        this.storeForm.controls['storeId'].setValue(store?.storeId, { onlySelf: true });
+        this.storeForm.get('storeId').setErrors(null);
     }
 
     removeStore() {

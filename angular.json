@@ -4097,6 +4097,31 @@
         }
       }
     },
+    "stock-ui-article-store-assignment": {
+      "projectType": "library",
+      "root": "libs/stock/ui-article-store-assignment",
+      "sourceRoot": "libs/stock/ui-article-store-assignment/src",
+      "prefix": "ss",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/stock/ui-article-store-assignment"],
+          "options": {
+            "jestConfig": "libs/stock/ui-article-store-assignment/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stock/ui-article-store-assignment/src/**/*.ts",
+              "libs/stock/ui-article-store-assignment/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "stock-ui-consumption": {
       "projectType": "library",
       "root": "libs/stock/ui-consumption",
