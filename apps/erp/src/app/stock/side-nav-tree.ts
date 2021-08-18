@@ -12,7 +12,7 @@ import {
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS, ABS_STOCK_STORES_URL
+    ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS, ABS_STOCK_STORES_URL, ABS_STORE_ASSIGNMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -90,6 +90,12 @@ export const stockNavTree: SideNavNode = {
                     name: 'COMMON_STORE_NAMES',
                     icon: 'fas fa-warehouse',
                     route: ABS_STOCK_STORE_NAMES_URL
+                },
+                {
+                    name: 'STOCK_STORE_ASSIGNMENT',
+                    icon: 'fas fa-pallet',
+                    route: ABS_STORE_ASSIGNMENT_URL,
+                    accessRights: 'ArticleStore'
                 },
                 {
                     name: 'STOCK_ARTICLES',

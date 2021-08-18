@@ -40,6 +40,7 @@ export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
 // Stock
 export const STOCK_VAT_URL = 'vat';
 export const STOCK_ARTICLES_URL = 'articles';
+export const STOCK_ARTICLES_STORE_URL = 'articlestores';
 export const STOCK_INVENTORY_ENTRY_URL = 'inventory-entries';
 export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
 export const STOCK_CONSUMPTION_URL = 'consumptions';
@@ -111,6 +112,7 @@ export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_URL].join('/');
+export const ABS_STORE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_STORE_URL].join('/');
 export const ABS_STOCK_STORES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_STORES_URL].join('/');
 export const ABS_STOCK_INVENTORY_ENTRY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_ENTRY_URL].join('/');
 export const ABS_STOCK_INVENTORY_EXIT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_EXIT_URL].join('/');

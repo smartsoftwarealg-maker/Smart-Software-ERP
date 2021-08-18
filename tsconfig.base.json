@@ -250,6 +250,9 @@
       ],
       "@ss/stock/article-store": ["libs/stock/article-store/src/index.ts"],
       "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
+      "@ss/stock/ui-article-store-assignment": [
+        "libs/stock/ui-article-store-assignment/src/index.ts"
+      ],
       "@ss/stock/ui-consumption": ["libs/stock/ui-consumption/src/index.ts"],
       "@ss/stock/ui-consumption-lines": [
         "libs/stock/ui-consumption-lines/src/index.ts"
