@@ -5,7 +5,7 @@ import {
     ABS_STOCK_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS
+    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS, ABS_STOCK_AGENT_URL, LOGISTICS_STOCK_AGENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -19,6 +19,11 @@ export const logAdminNavTree: SideNavNode = {
         //     route: ABS_STOCK_UNITS_URL,
         //     accessRights: 'Unit'
         // },
+        {
+            name: 'LOGISTICS_AGENT',
+            icon: 'fas fa-user',
+            route: LOGISTICS_STOCK_AGENT_URL
+        },
         {
             name: 'COMMON_VAT',
             icon: 'fas fa-percentage',

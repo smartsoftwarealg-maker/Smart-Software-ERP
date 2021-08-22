@@ -90,9 +90,9 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number, Validators.required],
+            number: [b.number || 0],
             reference: [b.reference],
             payMethod: [b.payMethod, Validators.required],
             referenceDocDate: [b.referenceDocDate],

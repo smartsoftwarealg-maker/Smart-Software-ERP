@@ -46,6 +46,7 @@ export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
 export const STOCK_CONSUMPTION_URL = 'consumptions';
 export const STOCK_INVENTORY_URL = 'inventorys';
 export const STOCK_AGENT_URL = 'agents';
+export const LOGISTICS_AGENT_URL = 'agents';
 export const STOCK_ACCOUNT_URL = 'accounts';
 export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 export const STOCK_COST_CENTER_URL = 'cost-centers';
@@ -136,6 +137,7 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 //Logistics
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
+export const LOGISTICS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_URL].join('/');
 
 // payroll
 export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');

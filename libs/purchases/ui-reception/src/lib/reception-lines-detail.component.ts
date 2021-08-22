@@ -1,16 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Store, LotsService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {TransactionLine} from "@ss/logistics/api-transaction";
-import {ReceptionLinesService} from "@ss/purchases/api-reception";
+import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
+import {TransactionLine} from '@ss/logistics/api-transaction';
+import {ReceptionLinesService} from '@ss/purchases/api-reception';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Tra
 
     parentId: number;
     selectedRow: TransactionLine;
-    articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
+    articleAutoCompleteModel  = new ArticleAutocompleteModel(this.articleSrv);
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(

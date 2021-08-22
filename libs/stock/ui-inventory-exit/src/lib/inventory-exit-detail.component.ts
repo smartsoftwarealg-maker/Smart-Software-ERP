@@ -48,9 +48,9 @@ export class InventoryExitDetailComponent extends BaseEntityDetailComponent<Inve
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number, Validators.required],
+            number: [b.number || 0],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],

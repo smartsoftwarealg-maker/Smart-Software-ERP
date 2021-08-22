@@ -5,13 +5,14 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Consumption, ConsumptionService} from '@ss/stock/api-consumption';
+import {ConsumptionService} from '@ss/stock/api-consumption';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
+import {Transaction} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -19,12 +20,12 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './consumption-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consumption> {
+export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transaction> {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     // fixme: use a model that shows both the agent-code and the denomination
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
 
     constructor(
         private langSrv: LanguageService,
@@ -35,7 +36,7 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
-        public agentService: AgentService,
+        public consumerSrv: ConsumerService,
         public lookupsSrv: LookupsService,
         public readonly loginSrv: LoginService) {
         super(consumptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_CONSUMPTION');
@@ -47,14 +48,14 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Consum
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(b: Consumption) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number || 0, Validators.required],
+            number: [b.number || 0],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
