@@ -12,8 +12,7 @@ import {Store, LotsService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-inventory-exit-lines-list',
-    styleUrls: ['./inventory-exit-lines-list.component.scss',
-                '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './inventory-exit-lines-list.component.html'
 })
 export class InventoryExitLinesListComponent implements OnInit {

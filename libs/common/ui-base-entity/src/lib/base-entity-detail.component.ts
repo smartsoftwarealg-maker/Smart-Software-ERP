@@ -1,10 +1,10 @@
-import { Directive, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { ToolbarButton, ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { switchMap, take, takeLast, tap } from 'rxjs/operators';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {Observable, of} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Directive()
@@ -131,15 +131,18 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             : this.entitySrv.update(val);
         obs = obs.pipe(switchMap(() => this.uploadAttachments(val.id)));
         this.shellSrv.setLoading(true);
-        obs.subscribe(() => {
-            this.shellSrv.setLoading(false);
-            this.shellSrv.goBack();
-            this.form.markAsUntouched();
-            this.snackBarSrv.showSuccessMessage();
-        }, err => {
-            this.snackBarSrv.showFailureMessage();
-            this.shellSrv.setLoading(false);
-            throw err;
+        obs.subscribe({
+            next: () => {
+                this.shellSrv.setLoading(false);
+                this.shellSrv.goBack();
+                this.form.markAsUntouched();
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                this.shellSrv.setLoading(false);
+                throw err;
+            }
         })
     }
 

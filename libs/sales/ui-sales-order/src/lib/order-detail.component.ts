@@ -63,9 +63,9 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [form.date, Validators.required],
-            number: [form.number, Validators.required],
+            number: [form.number],
             payMethod: [form.payMethod, Validators.required],
             reference: [form.reference],
             referenceDocDate: [form.referenceDocDate],

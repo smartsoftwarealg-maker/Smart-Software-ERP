@@ -1,6 +1,6 @@
 export interface Transaction {
     id: number;
-    center: number;
+    centerId: number;
     document: number;
     number: number;
     date: string;

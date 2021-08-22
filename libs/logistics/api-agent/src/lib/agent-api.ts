@@ -1,4 +1,7 @@
 export const AGENT_URL = '/agents';
+export const CUSTOMER_URL = '/customers';
+export const CONSUMER_URL = '/consumers';
+export const SUPPLIER_URL = '/suppliers';
 
 export interface Agent {
     id: number;
