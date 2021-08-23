@@ -4,7 +4,7 @@ import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Article, ArticleService} from "@ss/stock/api-article";
-import {Lot, LotsService} from "@ss/common/api-lookup";
+import {Store, LotsService} from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Observable} from "rxjs";
 import {map, switchMap, tap} from "rxjs/operators";
@@ -140,7 +140,7 @@ export class DeliveryCancellationLinesListComponent implements OnInit {
         );
     }
 
-    private onStoresLoaded(data: Lot[]) {
+    private onStoresLoaded(data: Store[]) {
         this.stores = data.reduce(
             (total, currentValue) => {
                 total[currentValue.id] = currentValue.description;

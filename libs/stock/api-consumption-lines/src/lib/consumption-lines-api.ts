@@ -1,4 +1,3 @@
-export const CONSUMPTION_LINES_URL = "/detail";
 
 export interface ConsumptionLine {
     id: number;

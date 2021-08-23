@@ -15,12 +15,18 @@
         </mat-form-field>
 
         <button mat-mini-fab
-                [disabled]="storeForm.valid == null"
+                color="primary"
+                [disabled]="storeForm.controls['storeId'].value == null"
                 [matTooltip]="'ADD_TO_STOCK'|translate"
                 (click)="addStore()">
-
             <i class="fas fa-plus"></i>
+        </button>
 
+        <button mat-mini-fab
+                [disabled]="selectedStore == null"
+                [matTooltip]="'COMMON_DELETE'|translate"
+                (click)="removeStore()">
+            <i class="fas fa-trash-alt"></i>
         </button>
 
     </ng-container>
@@ -29,7 +35,6 @@
 
 <ng-container *ngIf="lots">
     <mat-table mat-table [dataSource]="data" class="main-table">
-
 
         <ng-container matColumnDef="storeId">
             <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
@@ -47,7 +52,7 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" class="selectable" (click)="selectStore(row)"></mat-row>
     </mat-table>
 
     <div class="pagination-container b-b-background">

@@ -20,7 +20,7 @@ import {
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
     STOCK_VAT_URL,
-    docInfoRoutes
+    docInfoRoutes, STOCK_STORES_URL, STOCK_ARTICLES_STORE_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -60,8 +60,15 @@ import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines'
 import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
+import {ArticleStoreComponent} from '@ss/stock/article-store';
+import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
 
 export const mainRoutes: Routes = [
+    {
+        path: STOCK_ARTICLES_STORE_URL,
+        component: ArticleStoreAssignmentComponent,
+        canActivate: [CanActivateService],
+    },
     {
         path: STOCK_ARTICLES_URL,
         children: [

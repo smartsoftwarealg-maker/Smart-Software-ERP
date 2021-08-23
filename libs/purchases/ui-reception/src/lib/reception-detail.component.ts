@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
@@ -24,8 +24,8 @@ import {UserListService} from '@ss/common/api-users';
 export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
 
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
 
@@ -36,8 +36,8 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
-        public agentService: AgentService,
+        public usersSrv: UserListService,
+        public supplierSrv: SupplierService,
         public lookupsSrv: LookupsService,
         public readonly loginSrv: LoginService,
         private payMethodSrv: PayMethodService,
@@ -56,9 +56,9 @@ export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transact
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [form.date || new Date(), Validators.required],
-            number: [form.number, Validators.required],
+            number: [form.number],
             reference: [form.reference],
             payMethod: [form.payMethod, Validators.required],
             referenceDocDate: [form.referenceDocDate],

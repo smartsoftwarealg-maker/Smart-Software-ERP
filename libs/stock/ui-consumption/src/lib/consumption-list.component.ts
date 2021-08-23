@@ -3,19 +3,20 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Consumption, ConsumptionService} from '@ss/stock/api-consumption';
+import {ConsumptionService} from '@ss/stock/api-consumption';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {Transaction} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-consumption-list',
     styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './consumption-list.component.html'
 })
-export class ConsumptionListComponent extends BaseEntityListComponent<Consumption> {
+export class ConsumptionListComponent extends BaseEntityListComponent<Transaction> {
 
 
     public dealers: { [id: number]: string; };
@@ -46,7 +47,7 @@ export class ConsumptionListComponent extends BaseEntityListComponent<Consumptio
     }
 
 
-    processLoadedData(data: Consumption[]): Observable<Consumption[]> {
+    processLoadedData(data: Transaction[]): Observable<Transaction[]> {
         return this.usersService.getAll(data.map(x => x.dealer))
             .pipe(tap((x:any) => this.onDealersLoaded(x)))
             .pipe(switchMap(() => this.agentService.getAll(data.map(x => x.agent))))

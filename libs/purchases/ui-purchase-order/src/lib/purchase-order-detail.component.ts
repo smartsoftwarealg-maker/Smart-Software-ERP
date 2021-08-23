@@ -10,7 +10,7 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -27,7 +27,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
     public groups: CCGroup[];
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
 
     constructor(public orderService: PurchaseOrderService,
@@ -38,9 +38,10 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 public confirmationSrv: ConfirmationDialogService,
                 public usersService: UserListService,
                 public lookupsSrv: LookupsService,
-                private agentService: AgentService,
+                private supplierSrv: SupplierService,
                 private loginService: LoginService,
                 private payMethodSrv: PayMethodService,
+                private loginSrv: LoginService,
                 private currencySrv: CurrencyService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
@@ -64,9 +65,9 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [form.date, Validators.required],
-            number: [form.number, Validators.required],
+            number: [form.number],
             reference: [form.reference],
             referenceDocDate: [form.referenceDocDate],
             payMethod: [form.payMethod, Validators.required],
@@ -77,7 +78,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
-            dealer: [{value: form.dealer, disabled: !this.isManager}, Validators.required],
+            dealer: [{value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager}, Validators.required],
             agent: [form.agent, Validators.required],
         });
     }

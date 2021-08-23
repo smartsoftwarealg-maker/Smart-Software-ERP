@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 import {tap, switchMap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DeliveryService} from '@ss/sales/api-delivery';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
+import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
@@ -47,6 +47,8 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
 
 
     constructor(
+        private langSrv: LanguageService,
+        private loginSrv: LoginService,
         public deliveryService: DeliveryService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -90,9 +92,9 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            center: [0],
-            date: [b.date, Validators.required],
-            number: [b.number, Validators.required],
+            centerId: [0],
+            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+            number: [b.number || 0],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
@@ -101,7 +103,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
             fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
-            dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
+            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [b.agent, Validators.required],
         });
     }

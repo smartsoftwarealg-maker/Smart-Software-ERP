@@ -7,7 +7,7 @@ import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
+import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {Observable} from 'rxjs';
@@ -45,6 +45,8 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
 
 
     constructor(
+        private langSrv: LanguageService,
+        private loginSrv: LoginService,
         public deliveryService: DeliveryCancellationService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -88,9 +90,9 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            center: [0],
-            date: [b.date, Validators.required],
-            number: [b.number, Validators.required],
+            centerId: [0],
+            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+            number: [b.number || 0],
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             payMethod: [b.payMethod, Validators.required],
@@ -99,7 +101,7 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
             fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
-            dealer: [{ value: b.dealer, disabled: !this.isManager }, Validators.required],
+            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [b.agent, Validators.required],
         });
     }

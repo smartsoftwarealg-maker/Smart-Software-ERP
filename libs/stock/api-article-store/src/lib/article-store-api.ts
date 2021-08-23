@@ -1,5 +1,5 @@
-export const ARTICLE_LOTS_URL = "/lots";
-export const ARTICLE_STORE_URL = "/stores";
+export const ARTICLE_LOTS_URL = '/lots';
+export const ARTICLE_STORE_URL = '/stores';
 
 export interface ArticleLot {
     id: number;

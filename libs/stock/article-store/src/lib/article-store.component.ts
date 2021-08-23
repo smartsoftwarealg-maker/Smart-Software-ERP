@@ -1,13 +1,13 @@
 import {Component, Input, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Article} from "@ss/stock/api-article";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Article} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Lot, LotsService} from "@ss/common/api-lookup";
-import {FormControl, FormGroup} from "@angular/forms";
-import {ArticleLot, ArticleStoresService} from "@ss/stock/api-article-store";
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {LotsService, Store} from '@ss/common/api-lookup';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
 
 @Component({
     selector: 'ss-article-store',
@@ -16,9 +16,9 @@ import {ArticleLot, ArticleStoresService} from "@ss/stock/api-article-store";
 })
 export class ArticleStoreComponent implements OnInit {
 
-    @Input() article!: Article;
+    article_!: Article;
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
     lots: { [id: number]: string; };
     storeForm: FormGroup = new FormGroup({
         storeId: new FormControl(),
@@ -30,12 +30,11 @@ export class ArticleStoreComponent implements OnInit {
     //
     public readonly pagination = PaginationModel.newInstance();
 
-
-    data: ArticleLot[];
-
+    data: ArticleStore[];
+    selectedStore: ArticleStore = null;
     displayedColumns = [
-        "storeId",
-        "stock"
+        'storeId',
+        'stock'
     ];
 
 
@@ -50,22 +49,29 @@ export class ArticleStoreComponent implements OnInit {
 
 
     ngOnInit() {
-        this.articleStoreSrv.setParentId(this.article.id);
+        this.articleStoreSrv.setParentId(this.article_.id);
         this.pagination.onChange = () => this.loadArticleStore();
         this.storeForm.setValue({
             storeId: null,
-            referenceId: this.article.id,
-            reference: this.article.reference,
+            referenceId: this.article_.id,
+            reference: this.article_.reference,
             id: 0
         });
         this.loadArticleStore();
     }
 
+    @Input() set article(article: Article) {
+        this.article_ = article;
+        this.selectStore(null);
+        this.ngOnInit();
+    }
 
     loadArticleStore() {
-        this.articleStoreSrv.getPage(this.pagination).subscribe((x: ArticleLot[]) => {
-            const ids = x.map(x => x.id);
-            this.lotsService.getAll(ids).subscribe((s: Lot[]) => {
+        this.articleStoreSrv
+            .getPage(this.pagination)
+            .subscribe((x: ArticleStore[]) => {
+            const ids = x.map(_ => _.id);
+            this.lotsService.getAll(ids).subscribe((s: Store[]) => {
                 this.lots = s.reduce(
                     (total, currentValue) => {
                         total[currentValue.id] = currentValue.description;
@@ -78,18 +84,35 @@ export class ArticleStoreComponent implements OnInit {
 
     }
 
+
     addStore() {
         this.articleStoreSrv.add(this.storeForm.value)
-            .subscribe(
-                res => {
+            .subscribe({
+                next: res => {
                     this.snackBarSrv.showSuccessMessage();
                 },
-                err => {
+                error: err => {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 },
-                ()=>{
+                complete: () => {
                     this.loadArticleStore();
-                })
+                }
+            })
+    }
+
+    selectStore(store: ArticleStore) {
+        this.selectedStore = store;
+        this.storeForm.controls['storeId'].setValue(store?.storeId, { onlySelf: true });
+        this.storeForm.get('storeId').setErrors(null);
+    }
+
+    removeStore() {
+        if (this.selectedStore) {
+            this.articleStoreSrv
+                .remove(this.selectedStore.id)
+                .subscribe(res => this.snackBarSrv.showSuccessMessage())
+            this.data = this.data.filter(e => e.id !== this.selectedStore.id)
+        }
     }
 }

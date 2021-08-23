@@ -39,6 +39,7 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
                       public lookupsSrv: LookupsService,
                       private agentService: AgentService,
                       private loginService: LoginService,
+                      private loginSrv: LoginService,
                       private payMethodSrv: PayMethodService) {
       super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
   }
@@ -62,9 +63,9 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            center: [0],
+            centerId: [0],
             date: [form.date, Validators.required],
-            number: [form.number, Validators.required],
+            number: [form.number],
             payMethod: [form.payMethod, Validators.required],
             reference: [form.reference],
             referenceDocDate: [form.referenceDocDate],
@@ -73,7 +74,7 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             discountDescription: [form.discountDescription],
             fixedDiscount: [form.fixedDiscount || 0.0],
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
-            dealer: [{ value: form.dealer, disabled: !this.isManager }, Validators.required],
+            dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [form.agent, Validators.required],
         });
     }

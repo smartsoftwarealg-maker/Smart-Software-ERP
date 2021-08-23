@@ -104,5 +104,6 @@
     "EVAL_PRICE":         "Değerlendirme fiyatı",
     "INVENTORY_DATE":     "Envanter tarihi",
     "FIFO":               "FIFO",
-    "AWP":                "A.W.P"
+    "AWP":                "A.W.P",
+    "CONSUMER":           "Consumer"
 }

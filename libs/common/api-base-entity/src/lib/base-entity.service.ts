@@ -42,7 +42,8 @@ export class BaseEntityService<T> {
     }
 
     public add(a: T): Observable<number> {
-        return this.httpSrv.post(this.getUrl(), a)
+        return this.httpSrv
+            .post(this.getUrl(), a)
             .pipe(map((res: { id: number }) => res.id));
     }
 

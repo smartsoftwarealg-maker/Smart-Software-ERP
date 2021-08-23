@@ -40,7 +40,7 @@
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.amount }}
+                {{ e.amount | number: '1.2-4'}}
             </mat-cell>
         </ng-container>
 

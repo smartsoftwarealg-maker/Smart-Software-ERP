@@ -3,12 +3,12 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Lot, LotsService} from '@ss/common/api-lookup';
+import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleService} from '@ss/stock/api-article';
+import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import {DeliveryLine} from '@ss/sales/api-delivery-lines';
 import { fillObject } from '@ss/common/api-common';
 import {InvoiceLinesService} from '@ss/sales/api-invoice';
@@ -23,8 +23,8 @@ export class InvoiceCancellationLinesDetailComponent extends BaseEntityDetailCom
 
     parentId: number;
 
-    articleAutoCompleteModel: DefaultAutoCompleteModel<Article> = new DefaultAutoCompleteModel<Article>(this.articleSrv, 'reference', 'description2');
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    articleAutoCompleteModel  = new ArticleAutocompleteModel(this.articleSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
         public invoiceLinesService: InvoiceLinesService,
