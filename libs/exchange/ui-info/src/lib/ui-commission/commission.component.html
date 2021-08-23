@@ -17,21 +17,21 @@
             <ng-container matColumnDef="withdrawal">
                 <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.withdrawal | number: '1.2-2' }}
+                    {{ e.withdrawal | number: '1.2-4' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="commission">
                 <mat-header-cell *matHeaderCellDef translate>EXCHANGE_COMMISSION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.commission | number: '1.2-2' }}
+                    {{ e.commission | number: '1.2-4' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="rate">
                 <mat-header-cell *matHeaderCellDef translate>EXCHANGE_RATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.rate  | number: '1.2-2' }}
+                    {{ e.rate  | number: '1.2-4' }}
                 </mat-cell>
             </ng-container>
 

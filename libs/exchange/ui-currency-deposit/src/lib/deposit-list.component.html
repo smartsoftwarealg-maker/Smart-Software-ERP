@@ -40,14 +40,14 @@
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_WITHDRAWAL</mat-header-cell>
             <mat-cell *matCellDef="let e" class="f-warn number">
-                {{ (e.amount > 0.0 ? e.amount : 0.0) + (e.commission || 0)| number: '1.2-2' }}
+                {{ (e.amount > 0.0 ? e.amount : 0.0) + (e.commission || 0)| number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_DEPOSIT</mat-header-cell>
             <mat-cell *matCellDef="let e" class="f-primary number">
-                {{ (e.amount < 0.0 ? -e.amount : 0.0) | number: '1.2-2' }}
+                {{ (e.amount < 0.0 ? -e.amount : 0.0) | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
