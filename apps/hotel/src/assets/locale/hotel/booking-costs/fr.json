@@ -1,2 +1,5 @@
 {
+    "ROOMTYPE": "Type de chambre",
+    "COSTRATE": "Coût/nuit",
+    "DESCRIPTION": "Description"
 }

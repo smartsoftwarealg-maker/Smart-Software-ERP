@@ -204,7 +204,7 @@ export class RestaurantDetailComponent extends AbstractEntityView<FullService, B
                 return {
                     description: this.restSrv.foodIndex[d.articleId].description2,
                     qty: d.qty,
-                    amount: d.qty.toFixed(0) + ' � ' + d.price.toFixed(2),
+                    amount: d.qty.toFixed(0) + ' x ' + d.price.toFixed(2),
                     articleId: d.articleId
                 };
             }),
@@ -355,6 +355,15 @@ export class RestaurantDetailComponent extends AbstractEntityView<FullService, B
             }
         } else {
             this.savingState = LoadingState.COMPLETE;
+        }
+    }
+
+    public save(obj: FullService, callback?: (success: boolean) => void): void {
+        const id = obj.service.id;
+        if ((id && this.accessRight.edit) || (!id && this.accessRight.create)) {
+            this.subscribeAndReport(this.dataSrc.save(obj), callback);
+        } else {
+            // todo: throw access denied error here
         }
     }
 

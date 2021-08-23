@@ -1,0 +1,33 @@
+<div class="dlg-title theme-background-accent" translate>
+    HTL_BM_DETAIL
+</div>
+<div class="container theme-background">
+    <form novalidate [formGroup]="form">
+
+        <mat-form-field class="description">
+            <mat-label translate>HTL_BCT_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="roomType">
+            <mat-label translate>HTL_BCT_ROOMTYPE</mat-label>
+            <mat-select formControlName="roomType">
+                <mat-option *ngFor="let v of roomTypes" [value]="v.id">
+                    {{v ? v.description : ''}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="costRate">
+            <mat-label translate>HTL_BCT_COSTRATE</mat-label>
+            <input matInput formControlName="costRate" type="number">
+        </mat-form-field>
+
+    </form>
+
+    <app-save-bar
+            (save)="save()"
+            (cancel)="close(true)"
+            [saveDisabled]="!form.valid">
+    </app-save-bar>
+</div>

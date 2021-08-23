@@ -455,6 +455,7 @@ export class BookingDetailComponent implements OnInit, OnDestroy {
 
     // save
     save(): void {
+        this.record.booking.color = this.colors[this.selectedColor].intVal;
         if (!this.isValid()) {
             return;
         }

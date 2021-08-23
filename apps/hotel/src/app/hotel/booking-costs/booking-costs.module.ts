@@ -2,18 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NavService } from '../../common/nav.service';
-
-import { BookingCostsComponent } from './booking-costs.component';
-import { LanguageService } from '@ss/common/api-common';
-import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
-import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
-import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { PaginationModule } from '../../common/pagination/pagination.module';
+import { ListToolbarModule } from '../../common/list-toolbar/list-toolbar.module';
+import { SaveBarModule } from '../../common/save-bar/save-bar.module';
 import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
+import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
+import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner/loading-spinner.module';
+import { FatalErrorModule } from '../../smart-lib/components/fatal-error/fatal-error.module';
+import { LanguageService } from '@ss/common/api-common';
+import { MaterialModule } from '../../smart-lib/components/material.module';
+import { BookingCostListComponent } from './booking-costs-list.component';
+import { BookingCostDetailComponent } from './booking-costs-detail.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: BookingCostsComponent,
+        component: BookingCostListComponent,
         data: { entity: null },
         canActivate: [CanActivateService]
     },
@@ -24,16 +30,25 @@ const routes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        HttpClientModule,
         SmartCommonModule,
-        FatalErrorModule,
+        PaginationModule,
         LoadingSpinnerModule,
+        FatalErrorModule,
+        ListToolbarModule,
+        SaveBarModule,
         RouterModule.forChild(routes)
     ],
     declarations: [
-        BookingCostsComponent
+        BookingCostListComponent,
+        BookingCostDetailComponent
     ],
     exports: [
-        BookingCostsComponent
+        BookingCostListComponent,
+        BookingCostDetailComponent
     ]
 })
 export class BookingCostsModule {

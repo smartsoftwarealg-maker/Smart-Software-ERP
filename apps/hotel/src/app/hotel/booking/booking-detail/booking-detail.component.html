@@ -8,6 +8,7 @@
                     class="margin-start-8 float-start color"
                     [colorKey]="'textVal'"
                     [selectedColor]="selectedColor"
+                    (change)="selectedColor = $event"
                     [colors]="colors"
                     [columnsCount]="3">
             </ss-color-select>

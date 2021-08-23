@@ -18,7 +18,6 @@ export class CanActivateService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-        console.log('Testing...');
         if (this.loginSrv.isLoggedIn) {
             return this.canRead(route);
         }
@@ -29,7 +28,6 @@ export class CanActivateService implements CanActivate {
                 .reLogin()
                 .pipe(map(res => res && this.canRead(route)));
         }
-        console.log('Not logged in');
         this.router.navigate(['/' + LOGIN_URL]);
         return false;
     }

@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ConfirmationDialogService} from '../../common/confirmation-dialog/confirmation-dialog.service';
-import {BookingMethod} from '../hotel-api';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
+import { BookingMethod } from '../hotel-api';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -22,13 +22,13 @@ export class BookingMethodsDetailComponent implements OnInit {
     ngOnInit() {
         const rec: BookingMethod = this.data.record;
         this.form = this.formBuilder.group({
-                id: [rec.id],
-                description: [
-                    rec.description,
-                    Validators.compose([Validators.required, Validators.maxLength(64)])
-                ],
-                confirmed: [rec.confirmed]
-            }
+            id: [rec.id],
+            description: [
+                rec.description,
+                Validators.compose([Validators.required, Validators.maxLength(64)])
+            ],
+            confirmed: [rec.confirmed]
+        }
         );
     }
 

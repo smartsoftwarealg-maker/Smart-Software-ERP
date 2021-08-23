@@ -76,11 +76,9 @@ export class FullServiceDataSource extends BackendDataSource<DisplayableService>
         }
         return id > 0
             ? this.httpSrv.put(this.url, obj).pipe(map(() => true))
-            : this.httpSrv.post(this.url, obj).pipe(map(newId => {
-                if (isString(newId)) {
-                    newId = +newId;
-                }
-                (obj as any).id = newId;
+            : this.httpSrv.post(this.url, obj).pipe(map((result: {id: number}) => {
+                obj.service.id = result.id;
+                console.log('Saving shit ' + obj.service.id);
                 return true;
             }));
     }
