@@ -40,8 +40,8 @@ export class CardComponent implements OnInit {
         'date',
         'qtyIn',
         'qtyOut',
-        'price',
         'stock',
+        'price',
         'value'
     ];
 
