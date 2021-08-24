@@ -1,18 +1,7 @@
-
-:host {
-    display: block;
-    margin: auto;
-    position: relative;
-    max-width: 1624px;
-    width: 100%;
-}
+@import "../../../../common/assets/src/assets/main-container";
 
 
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
+
 
 
 .mat-column-document {
@@ -74,34 +63,3 @@
     }
 }
 
-.main-table {
-    width: 100%;
-}
-
-//.main-table {
-//    display: block;
-//    width: 100%;
-//    overflow-x: auto;
-//    .mat-table {
-//        width: 100%;
-//        max-width: 100%;
-//        display: table;
-//        border-collapse: collapse;
-//        margin: 0px;
-//    }
-//    .mat-row,
-//    .mat-header-row {
-//        display: table-row;
-//    }
-//    .mat-cell,
-//    .mat-header-cell {
-//        word-wrap: initial;
-//        display: table-cell;
-//        padding: 0px 5px;
-//        line-break: unset;
-//        width: auto;
-//        white-space: nowrap;
-//        overflow: hidden;
-//        vertical-align: middle;
-//    }
-//}

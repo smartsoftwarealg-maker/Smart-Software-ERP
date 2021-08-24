@@ -20,8 +20,8 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
     displayedColumns = [
         'reference',
         'description2',
-        'price',
-        'vat',
+        // 'price',
+        // 'vat',
         'mark',
     ];
 
@@ -44,8 +44,8 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
         return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.onMarksLoaded(x)),
-                switchMap(() => this.lookupsSrv.getVats()),
-                tap(x => this.onVatsLoaded(x))
+                // switchMap(() => this.lookupsSrv.getVats()),
+                // tap(x => this.onVatsLoaded(x))
             );
     }
 
@@ -54,9 +54,9 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
         data.forEach(m => this.marks[m.id] = m.description);
     }
 
-    onVatsLoaded(data: Vat[]) {
-        this.vats = {};
-        data.forEach(m => this.vats[m.id] = m.value);
-    }
+    // onVatsLoaded(data: Vat[]) {
+    //     this.vats = {};
+    //     data.forEach(m => this.vats[m.id] = m.value);
+    // }
 
 }
