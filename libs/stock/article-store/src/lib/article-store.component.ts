@@ -45,12 +45,12 @@ export class ArticleStoreComponent implements OnInit {
                 public articleStoreSrv: ArticleStoresService,
                 public lotsService: LotsService,
                 public confirmationSrv: ConfirmationDialogService) {
+        this.pagination.onChange = () => this.loadArticleStore();
     }
 
 
     ngOnInit() {
         this.articleStoreSrv.setParentId(this.article_.id);
-        this.pagination.onChange = () => this.loadArticleStore();
         this.storeForm.setValue({
             storeId: null,
             referenceId: this.article_.id,

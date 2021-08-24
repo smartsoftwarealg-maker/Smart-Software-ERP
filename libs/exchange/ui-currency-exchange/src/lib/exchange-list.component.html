@@ -27,7 +27,7 @@
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e"  class="f-primary number" >
-                {{ e.amount  | number: '1.2-2' }}
+                {{ e.amount  | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
@@ -48,7 +48,7 @@
         <ng-container matColumnDef="soldAmount">
             <mat-header-cell *matHeaderCellDef translate>EXCHANGE_SOLD_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e" class="f-warn number">
-                {{ e.exchRate * e.amount | number: '1.2-2' }}
+                {{ e.exchRate * e.amount | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
