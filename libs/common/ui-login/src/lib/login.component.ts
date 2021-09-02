@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {LoginService, LicenseErrorType, ABS_INDEX_URL} from '@ss/common/api-common';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { finalize } from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
+import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
 
 @Component({
@@ -54,10 +53,14 @@ export class LoginComponent implements OnInit {
         this.user.password = tmp.pass;
         //
         this.loading = true;
-        if (this.loginSrv.customerLogin) {
+        if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
             this.loginSrv.agentLogin(this.user, this.isPhone, this.onLoadingFinished);
         } else {
-            this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
+            if (this.loginSrv.customerLogin === LoginType.USER) {
+                this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
+            } else {
+                this.loginSrv.userOrCustomerLogin(this.user, this.isPhone, this.onLoadingFinished);
+            }
         }
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));
     }
