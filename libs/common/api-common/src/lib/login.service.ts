@@ -18,6 +18,13 @@ export enum LicenseErrorType {
 const APP_CTX = 'APP_CTX';
 const AUTH_TOKEN = 'auth_token';
 
+export enum LoginType {
+    USER = 1,
+    CUSTOMER,
+    BOTH
+}
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -28,8 +35,7 @@ export class LoginService {
     public appCtx: AppContext = null;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
-    private _customerLogin = false;
-
+    private _customerLogin:LoginType  = LoginType.USER;
     constructor(private httpSrv: HttpService,
                 private decSrv: DecService,
                 public router: Router,
@@ -153,6 +159,30 @@ export class LoginService {
             });
     }
 
+    public userOrCustomerLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
+        this.wrongData = false;
+        this.licenseErrorType = null;
+        this
+            .httpSrv
+            .doLogin('/login', user)
+            .subscribe({
+                next: (info: LoginInfo) => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                    if (!this.licenseErrorType) {
+                        const url = this.appCtx.center? INDEX_PAGE_URL: CENTER_SELECT_URL;
+                        this.router.navigate(['/' + CENTER_SELECT_URL]);
+                    }
+                },
+                error: err => this.agentLogin(user, isAndroid, onFinish),
+                complete: () => {
+                    if (onFinish != null) {
+                        onFinish();
+                    }
+                }
+            });
+    }
+
 
     public agentLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.licenseErrorType = null;
@@ -209,11 +239,11 @@ export class LoginService {
     }
 
 
-    get customerLogin() {
+    get customerLogin(): LoginType {
         return this._customerLogin;
     }
 
-    set customerLogin(value: boolean) {
+    set customerLogin(value: LoginType) {
         this._customerLogin = value;
     }
 }

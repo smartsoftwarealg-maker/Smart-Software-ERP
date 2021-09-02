@@ -25,6 +25,7 @@ import {
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {IdiotPageComponent} from "@ss/exchange/ui-idiot-page";
+import {CustomerSessionService} from "../../../../../libs/common/api-common/src/lib/customer-session.service";
 
 export const mainRoutes: Routes = [
     {
@@ -35,7 +36,7 @@ export const mainRoutes: Routes = [
     {
         path: COMMON_CUSTOMER_PROFILE_URL,
         component: CustomerProfileComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CustomerSessionService, CanActivateService],
     },
     {
         path: COMMON_REPORT_PARAMS_URL,
