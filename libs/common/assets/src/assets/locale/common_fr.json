@@ -156,5 +156,6 @@
     "MESSAGE": "Message",
     "EMAIL_REPORT": "Envoyer un rapport par e-mail",
     "EMAIL_SENT": "Rapport envoyé avec succès",
-    "PROFILE": "Profil personnel"
+    "PROFILE": "Profil personnel",
+    "SAVE_REQUIRED": "Enregistrement requis"
 }

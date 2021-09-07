@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -29,6 +29,7 @@ export class InvoiceLinesListComponent implements OnInit {
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
 
+
     displayedColumns = [
         'position',
         'store',
@@ -38,6 +39,7 @@ export class InvoiceLinesListComponent implements OnInit {
         'qtySatisfied',
         'price',
     ];
+    private _updated = false;
 
     constructor(
         public invoiceLinesSrv: InvoiceLinesService,
@@ -152,4 +154,7 @@ export class InvoiceLinesListComponent implements OnInit {
         );
     }
 
+    get updated() {
+        return this._updated;
+    }
 }
