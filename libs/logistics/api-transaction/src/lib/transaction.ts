@@ -18,5 +18,6 @@ export interface Transaction {
     fixedDiscount?: number;
     fixedDiscountVAT?: number;
     currency?: number;
-    currencyRate: number
+    currencyRate: number,
+    dirty: boolean
 }

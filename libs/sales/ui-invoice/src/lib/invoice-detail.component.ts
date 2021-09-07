@@ -1,11 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
@@ -15,9 +14,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {InvoiceService} from '@ss/sales/api-invoice';
 import {InvoiceLinesListComponent} from './invoice-lines-list.component';
-import {Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionComponent, Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {UserListService} from "@ss/common/api-users";
+import {UserListService} from '@ss/common/api-users';
 
 
 @Component({
@@ -25,7 +24,7 @@ import {UserListService} from "@ss/common/api-users";
     templateUrl: './invoice-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+export class InvoiceDetailComponent extends BaseTransactionComponent implements OnInit {
     @ViewChild(InvoiceLinesListComponent) detail: InvoiceLinesListComponent;
 
     private invoice: Transaction = null;
@@ -44,7 +43,6 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transactio
         click: () => this.importDocument(),
     }
 
-
     constructor(
         private langSrv: LanguageService,
         private loginSrv: LoginService,
@@ -54,8 +52,8 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transactio
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
-        public lookupsSrv: LookupsService,
+        private usersService: UserListService,
+        private lookupsSrv: LookupsService,
         private agentService: AgentService,
         private loginService: LoginService,
         private dialog: MatDialog,
@@ -63,7 +61,6 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transactio
         private payMethodSrv: PayMethodService) {
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
     }
-
 
 
     preload(): Observable<any> {
@@ -129,8 +126,10 @@ export class InvoiceDetailComponent extends BaseEntityDetailComponent<Transactio
                     this.docImportService
                         .importDoc(document, number, this.invoice.id)
                         .pipe(tap(_ => this.detail.loadInvoiceLines()))
-                        .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                                   err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
+                        .subscribe({
+                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                        });
                 }
             });
         }

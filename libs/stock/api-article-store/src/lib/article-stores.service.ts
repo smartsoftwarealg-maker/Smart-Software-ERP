@@ -13,6 +13,4 @@ export class ArticleStoresService extends BaseEntityExtendedService<ArticleStore
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, ARTICLE_STORE_URL, ARTICLES_URL);
     }
-
-
 }

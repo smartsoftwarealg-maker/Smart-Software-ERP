@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService, LanguageService} from '@ss/common/api-common';
+import {HttpService, LanguageService, LoginService, SideNavNode} from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { ShellService } from '@ss/common/ui-shell';
 import { exchangeNavTree } from './exchange/side-nav-tree';
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
                 private shellSrv: ShellService,
+                private loginSrv: LoginService,
                 private deviceSrv: DeviceDetectorService,
                 public langSrv: LanguageService) {
         if (this.deviceSrv.isMobile()) {
