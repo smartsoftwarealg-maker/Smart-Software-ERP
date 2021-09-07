@@ -37,5 +37,13 @@
     "LANGUAGE_SETTINGS": "Language",
     "LOGOUT": "Logout",
     "MEDIC": "Clinic",
-    "SEARCH_APP": "Quick access"
+    "SEARCH_APP": "Quick access",
+    "SELECT_DIR": "Directory",
+    "SELECT_REPORT": "Report",
+    "PAY_METHOD": "Payment method",
+    "PAY_AMOUNT": "Amount",
+    "PAY_CHECKNO": "Check NO.",
+    "DATE": "Date",
+    "PAY_BANK": "Bank",
+    "CHECK_DATE": "Check date"
 }

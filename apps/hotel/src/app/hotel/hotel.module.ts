@@ -10,6 +10,7 @@ import { LoginModule } from '../smart-lib/components/login/login.module';
 import { SmartCommonModule } from '../smart-lib/common/smart-common.module';
 import { MaterialModule } from '../smart-lib/components/material.module';
 import { LanguageService } from '@ss/common/api-common';
+import { ReportsModule } from '../smart-lib/components/reports/reports.module'
 
 @NgModule({
     imports:
@@ -21,6 +22,7 @@ import { LanguageService } from '@ss/common/api-common';
             SmartCommonModule,
             CommonUiLangModule,
             BasicShellModule,
+            ReportsModule,
             RouterModule.forChild(routes)
         ],
     declarations:

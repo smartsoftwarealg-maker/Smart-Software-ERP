@@ -55,7 +55,7 @@ export class BookingCostListComponent extends AbstractEntityList<ChargingCost, B
 
     showAddForm(): void {
         if (this.accessRight.create) {
-            this.edit({ id: 0, description: null, costRate: null, roomType: null, toString: null });
+            this.edit({ id: 0, description: null, costRate: null, roomType: null, asString: null });
         }
     }
 

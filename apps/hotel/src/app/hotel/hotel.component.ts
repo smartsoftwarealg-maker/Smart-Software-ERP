@@ -3,6 +3,7 @@ import { Route, Routes } from '@angular/router';
 import { BasicShellComponent } from '../common/basic-shell/basic-shell.component';
 import { LanguageService } from '@ss/common/api-common';
 import { CanActivateService } from '../smart-lib/components/login/can-activte.service';
+import { ReportViewComponent } from '../smart-lib/components/reports/report-view/report-view.component';
 
 @Component({
     selector: 'app-hotel-main',
@@ -56,19 +57,19 @@ const guestsRoute: SubModule = {
 const costCenterRoute: SubModule = {
     path: 'costCenters',
     loadChildren: () => import('../common/cost-center/cost-center.module').then(m => m.CostCenterModule),
-    data: { title: 'HTL_COST_CENTERS', entity: null, image: 'fas fa-code-branch', moduleName: 'WorkInProgressModule' }
+    data: { title: 'HTL_COST_CENTERS', entity: null, image: 'fas fa-code-branch', moduleName: 'CostCenterModule' }
 };
 
 const paymentsRoute: SubModule = {
     path: 'payments',
-//    loadChildren: () => import('../work-in-progress/work-in-progress.module').then(m => m.WorkInProgressModule),
-    data: { title: 'HTL_PAYMENTS', entity: null, image: 'fas fa-cash-register', moduleName: 'WorkInProgressModule' }
+    loadChildren: () => import('./payments/payments.module').then(m => m.PaymentModule),
+    data: { title: 'HTL_PAYMENTS', entity: null, image: 'fas fa-cash-register', moduleName: 'PaymentModule' }
 };
 
 const reportsRoute: SubModule = {
     path: 'reports',
-//    loadChildren: () => import('../work-in-progress/work-in-progress.module').then(m => m.WorkInProgressModule),
-    data: { title: 'HTL_REPORTS', entity: null, image: 'fas fa-chart-pie', moduleName: 'WorkInProgressModule' }
+    component: ReportViewComponent,
+    data: { title: 'HTL_REPORTS', entity: null, image: 'fas fa-chart-pie', moduleName: 'ReportViewComponent' }
 };
 
 const roomsRoute: SubModule = {

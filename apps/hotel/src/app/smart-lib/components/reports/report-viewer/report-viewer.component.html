@@ -1,0 +1,12 @@
+<div class="report-viewer-container">
+  <div class="title theme-background-accent" translate>VIEWER</div>
+  <div *ngIf="!pdfSrc" class="report"></div>
+  <object *ngIf="pdfSrc" class="report" [data]="pdfSrc | safe" type="application/pdf" width="100%">
+  </object>
+  <div class="close-button">
+    <button type="button" mat-raised-button color="primary"
+            (click)="dialogRef.close(null)"><span translate>CLOSE</span>
+    </button>
+  </div>
+</div>
+

@@ -1,0 +1,27 @@
+<div class="report-selector-title theme-background-accent" translate>REPORT_SELECTOR</div>
+<mat-dialog-content>
+  <div>
+    <mat-list>
+      <mat-list-item *ngFor="let item of records"
+                     [ngClass]="{'active-list-item': selectedRecord && selectedRecord.id == item.id}"
+                     (click)="onSelect(item)"
+                     class="list-item">
+        {{ item.description }}
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <app-pagination [paginationModel]="pModel"></app-pagination>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions style="display: block">
+  &nbsp;&nbsp;
+  <button mat-raised-button
+          style="float: right; margin-left: 8px"
+          (click)="selectReport()"
+          color="primary"><span translate>SELECT</span>
+  </button>
+  <button type="button" mat-raised-button style="float: right"
+          (click)="dialogRef.close(null)"><span translate>CANCEL</span>
+  </button>
+</mat-dialog-actions>
