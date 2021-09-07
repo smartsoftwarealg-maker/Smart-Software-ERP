@@ -54,6 +54,7 @@ export const routes: Routes = [
                 path: ':id',
                 component: ReceptionDetailComponent,
                 canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

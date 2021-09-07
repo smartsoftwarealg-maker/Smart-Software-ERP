@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
-import {Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionComponent, Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -21,7 +21,7 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './reception-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class ReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+export class ReceptionDetailComponent extends BaseTransactionComponent implements OnInit {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
