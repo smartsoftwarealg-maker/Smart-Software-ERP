@@ -103,7 +103,7 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
             amount: this.record.amount,
             date: [this.record.date],
             payMethod: [this.record.payMethod, Validators.required],
-            bankId: [this.record.bankId, Validators.required],
+            bankId: this.record.bankId,
             checkBank: this.record.checkBank,
             document: this.record.document,
             checkDate: this.record.checkDate,
