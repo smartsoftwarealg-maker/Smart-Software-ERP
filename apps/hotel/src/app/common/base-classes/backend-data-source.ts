@@ -17,6 +17,10 @@ export class BackendDataSource<T> extends AbstractDataSource<T> {
         this.filter = filter;
     }
 
+    public setUrl(u: string) {
+        this.url = u;
+    }
+
     public refresh(page: number, pageSize: number): Observable<{ data: T[], itemCount: number }> {
         if (this.url == null) {
             return of({ data: [], itemCount: 0 });

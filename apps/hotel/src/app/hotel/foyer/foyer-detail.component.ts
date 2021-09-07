@@ -194,7 +194,7 @@ export class FoyerDetailComponent extends AbstractEntityView<FullService, Backen
                 return {
                     description: this.foyerSrv.articlesIndex[d.articleId].description2,
                     qty: d.qty,
-                    amount: d.qty.toFixed(0) + ' � ' + d.price.toFixed(2),
+                    amount: d.qty.toFixed(0) + ' x ' + d.price.toFixed(2),
                     articleId: d.articleId
                 };
             }),
@@ -332,6 +332,7 @@ export class FoyerDetailComponent extends AbstractEntityView<FullService, Backen
             const saveCallback = success => {
                 if (success) {
                     this.saved = true;
+                    this.record.service.id = record.service.id;
                     this.record.invoiceNumber = record.invoiceNumber;
                     this.record.service.bookingId = record.service.bookingId;
                     this.record.service.invoiceId = record.service.invoiceId;

@@ -1,0 +1,112 @@
+<div class="report-grid" *ngIf="!leftPaneHidden; else report">
+    <div class="select" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+
+        <div class="f-w" *ngIf="!generating">
+            <mat-form-field class="f-w" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                <mat-select [(ngModel)]="selectedDir" [disabled]="generating"
+                    [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }" (ngModelChange)="logIt($event)"
+                    placeholder="{{'SELECT_DIR' | translate:lang}}">
+                    <mat-option *ngFor="let dir of dirList" [value]="dir">{{dir.name === '.' ? appName : dir.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="f-w" *ngIf="!generating">
+            <mat-form-field class="f-w">
+                <mat-select [(ngModel)]="selectedReport" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }"
+                    (ngModelChange)="onReportSelect()" [disabled]="generating"
+                    placeholder="{{'SELECT_REPORT' | translate:lang}}">
+                    <mat-option *ngFor="let rep of selectedDir['files']" [value]="selectedDir['name'] +'/'+ rep">
+                        {{ rep }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="params" *ngIf="!leftPaneHidden">
+        <form *ngIf="selectedReport && params" #form="ngForm" (submit)="generateReport()" class="f-h">
+
+            <div class="rep-spinner" *ngIf="generating; else rbody">
+                <mat-spinner></mat-spinner>
+            </div>
+            <ng-template #rbody>
+                <div *ngFor="let pr of getDateParams()" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                    <mat-form-field style="max-width: 130px">
+                        <input matInput [matDatepicker]="paramDatePicker"
+                            [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }" [disabled]="generating"
+                            [style.waiting]="generating" placeholder="{{pr.description}}" name="{{ pr.name }}"
+                            [(ngModel)]="pr.value">
+                        <mat-datepicker-toggle matSuffix [for]="paramDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #paramDatePicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div *ngFor="let pr of getInputsParams()" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                    <mat-form-field disabled="generating" style="max-width: 160px">
+                        <mat-placeholder>{{pr.description}}</mat-placeholder>
+                        <input matInput [type]="pr.typeName" [disabled]="generating" [(ngModel)]="pr.value"
+                            name="{{pr.name}}">
+                    </mat-form-field>
+                </div>
+
+                <div *ngFor="let pr of getSelectParams()" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                    <mat-form-field style="max-width: 260px">
+                        <mat-select [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }"
+                            placeholder="{{pr.description}}" [disabled]="generating" [(ngModel)]="pr.value"
+                            name="{{pr.name}}">
+                            <mat-option *ngFor="let it of pr.valueList" [value]="it.id">
+                                {{it.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div *ngFor="let pr of getBooleanParams()" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                    <div class="mar-left-20">
+                        <mat-checkbox [(ngModel)]="pr.value" name="{{pr.name}}" [disabled]="generating">
+                            {{pr.description}}
+                        </mat-checkbox>
+                    </div>
+                </div>
+
+                <div [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
+                    <button class="pad-20-l" type="submit" mat-raised-button color="primary" name="submit"
+                        [disabled]="generating">
+                        <span l10nTranslate>GENERATE</span>
+                    </button>
+
+                    <mat-form-field class="pad-20-l" style="max-width: 80px;">
+                        <mat-placeholder translate>TYPE</mat-placeholder>
+                        <mat-select [(ngModel)]="reportType" name="rtype">
+                            <mat-option [value]="'HTML'"> HTML </mat-option>
+                            <mat-option [value]="'PDF'"> PDF </mat-option>
+                            <mat-option [value]="'EXCEL'"> Excel </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </ng-template>
+        </form>
+    </div>
+</div>
+
+<ng-template #report>
+    <div class="spinner" *ngIf="generating; else content">
+        <mat-spinner></mat-spinner>
+    </div>
+    <ng-template #content>
+        <div class="out">
+            <iframe *ngIf="reportType == 'PDF'" [src]="pdfSrc| safe" style="display: block; border: none;" height="100%" width="100%">
+                This browser does not support PDFs. Please download the PDF to view it:
+            </iframe>
+            <div *ngIf="reportType == 'HTML'" [innerHTML]="htmlSrc" class="html-report"
+                style="display: block; height: 100vh; width: 100vw;">
+            </div>
+        </div>
+    </ng-template>
+</ng-template>
+
+<button *ngIf="leftPaneHidden" mat-mini-fab class="close-btn" (click)="showLeftPane()" color="warn">
+    <i class="fas fa-times"></i>
+</button>

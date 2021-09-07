@@ -37,5 +37,13 @@
     "LANGUAGE_SETTINGS": "اللغة",
     "LOGOUT": "تسجيل الخروج",
     "MEDIC": "العيادة",
-    "SEARCH_APP": "الوصول السريع"
+    "SEARCH_APP": "الوصول السريع",
+    "SELECT_DIR": "المجلد",
+    "SELECT_REPORT": "التقرير",
+    "PAY_METHOD": "طريقة الدفع",
+    "PAY_AMOUNT": "الملبغ",
+    "PAY_CHECKNO": "رقم الصك",
+    "DATE": "التاريخ",
+    "PAY_BANK": "البنك",
+    "CHECK_DATE": "تاريخ الصك"
 }

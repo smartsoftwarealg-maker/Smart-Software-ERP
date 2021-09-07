@@ -1,0 +1,109 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  //background-color: orange;
+}
+
+.f-w {
+    width: 100%;
+}
+
+.f-h {
+    height: 100%;
+}
+
+.report-grid {
+  display: grid;
+  grid-gap: 5px;
+  padding: 5px;
+  height: 90%;
+  width: 90%;
+  max-width: 370px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "select"
+                       "params";
+}
+
+.out {
+  //background-color: aquamarine;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.select {
+  grid-area: select;
+  max-width: 98%;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.params {
+  padding-right: 3%;
+  padding-left: 3%;
+  grid-area: params;
+}
+
+.report-container {
+  grid-area: out;
+}
+
+.spinner {
+  width:  100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-w {
+  width:  95%;
+  max-width: 95%;
+  margin: auto;
+}
+
+.mar-left-20 {
+  margin-left: 25px;
+}
+
+.close-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+}
+
+.generate-panel {
+  display: flex;
+}
+
+.pad-20-l {
+  padding-left: 20px;
+}
+
+.rep-spinner {
+  align-content: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.rep-spinner mat-spinner {
+  height: 120px;
+}
+
+.f-h {
+  height: 100%;
+}
+
+.html-report {
+}

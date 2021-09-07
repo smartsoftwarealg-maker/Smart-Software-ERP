@@ -111,12 +111,13 @@ export class HttpService {
     //        }));
     //}
 
-    public post(url: string, data?): Observable<any> {
+    public post(url: string, data: any): Observable<any> {
         return this
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders() });
+                { headers: HttpService.getHeaders()}
+            );
     }
 
     public put(url: string, data?): Observable<any> {
@@ -173,6 +174,19 @@ export class HttpService {
             );
     }
 
+    public postHTML(url: string, data?) {
+        const httpHeaders = new HttpHeaders()
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Authorization', this.getAuthToken());
+
+        return this
+            .httpClient
+            .post(this.baseUrl + url,
+                data,
+                { responseType: 'text', headers: httpHeaders }
+            );
+    }
+
     public upload(url: string, fd: FormData): Observable<HttpEvent<any>> {
         const extraHeaders = {
             'Access-Control-Allow-Origin': '*',
@@ -224,7 +238,7 @@ export class HttpService {
                 this.baseUrl = conf.baseUrl; // backward compatibility shit (microsoft is shit)
             }
         }
-//        console.log('Backend: ', this.baseUrl);
+        //        console.log('Backend: ', this.baseUrl);
     }
 
     public updateAuthToken(token: string): void {
