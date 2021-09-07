@@ -44,5 +44,6 @@
     "PAY_AMOUNT": "Montant",
     "PAY_CHECKNO": "N° de chèque",
     "DATE": "Date",
-    "PAY_BANK": "Banque"
+    "PAY_BANK": "Banque",
+    "CHECK_DATE": "Date chèque"
 }
