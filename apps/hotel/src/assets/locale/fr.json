@@ -37,5 +37,13 @@
     "LANGUAGE_SETTINGS": "Langue",
     "LOGOUT": "Déconnexion",
     "MEDIC": "Clinique",
-    "SEARCH_APP": "Accès rapide"
+    "SEARCH_APP": "Accès rapide",
+    "SELECT_DIR": "Dossier",
+    "SELECT_REPORT": "Etat",
+    "PAY_METHOD": "Mode de paiement",
+    "PAY_AMOUNT": "Montant",
+    "PAY_CHECKNO": "N° de chèque",
+    "DATE": "Date",
+    "PAY_BANK": "Banque",
+    "CHECK_DATE": "Date chèque"
 }

@@ -1,0 +1,113 @@
+<div class="main-container">
+    <div class="clients-table-container">
+        <app-list-toolbar (filterChange)="setFilter($event)" (refresh)="refreshClients()" [removeVisible]="false"
+            [right]="accessRight" [addVisible]="false" [editVisible]="false"></app-list-toolbar>
+        <div class="main-list-container mat-elevation-z10">
+            <ss-loading-spinner *ngIf="parentLoadingState == 'L'"></ss-loading-spinner>
+            <ss-fatal-error *ngIf="parentLoadingState == 'E'"></ss-fatal-error>
+            <div *ngIf="parentLoadingState == 'C'" class="main-list-container-2">
+                <mat-table matSort matSortActive="{{sort.active}}" matSortDirection="{{sort.direction}}"
+                    (matSortChange)="sortData($event)" [dataSource]="paySrv.clients">
+
+                    <ng-container matColumnDef="code">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8 align-cell-center" *matHeaderCellDef mat-sort-header translate>
+                            HTL_CLT_CODE
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8"
+                            [ngClass]="{'blocked': x.blocked}">
+                            {{ x.code }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="denomination">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            HTL_CLT_DENOMINATION
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8"
+                            [ngClass]="{'blocked': x.blocked}">
+                            {{ x.denomination }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="agentDisplayedColumns; sticky: true">
+                    </mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: agentDisplayedColumns;" (click)="selectParent(row.id)"
+                        class="selectable" [class.selectable-active]="row.id == paySrv.parentId">
+                    </mat-row>
+                </mat-table>
+
+                <app-pagination class="paginator" [paginationModel]="clientSrv.pagination"></app-pagination>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="paySrv.parentId" class="pay-table-container">
+        <app-list-toolbar (filterChange)="setFilter($event)" (refresh)="refresh()" (remove)="removeSelected()" (add)="showAddForm()" (edit)="showEditForm()" [removeDisabled]="!selectedId" [editDisabled]="!selectedId" [right]="accessRight">
+        </app-list-toolbar>
+        <div class="main-list-container mat-elevation-z10">
+            <ss-loading-spinner *ngIf="loadingState == 'L'"></ss-loading-spinner>
+            <ss-fatal-error *ngIf="loadingState == 'E'"></ss-fatal-error>
+            <div *ngIf="loadingState == 'C'" class="main-list-container-2">
+                <mat-table matSort matSortActive="{{sort.active}}" matSortDirection="{{sort.direction}}"
+                    (matSortChange)="sortData($event)" [dataSource]="data">
+
+                    <ng-container matColumnDef="payMethod">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            PAY_METHOD
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                            {{ paySrv.payMethodsIndex[x.payMethod] }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="amount">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            PAY_AMOUNT
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                            {{ x.amount.toFixed(2) }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="checkNumb">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            PAY_CHECKNO
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                            {{ x.checkNumb }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="date">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            DATE
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                            {{ x.date }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="bank">
+                        <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
+                            PAY_BANK
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
+                            {{ paySrv.banksIndex[x.bankId] }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true">
+                    </mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="select(row.id)"
+                        class="selectable" [class.selectable-active]="row.id == selectedId">
+                    </mat-row>
+                </mat-table>
+
+                <app-pagination class="paginator" [paginationModel]="paginationModel"></app-pagination>
+            </div>
+        </div>
+
+    </div>
+</div>

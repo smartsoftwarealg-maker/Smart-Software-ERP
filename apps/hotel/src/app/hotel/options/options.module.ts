@@ -7,9 +7,14 @@ import { LoadingSpinnerModule } from '../../smart-lib/components/loading-spinner
 import { SmartCommonModule } from '../../smart-lib/common/smart-common.module';
 import { LanguageService } from '@ss/common/api-common';
 import { MaterialModule } from '../../smart-lib/components/material.module';
+import { CanActivateService } from '../../smart-lib/components/login/can-activte.service';
 
 const routes: Routes = [
-    { path: '', component: OptionsComponent },
+    {
+        path: '',
+        component: OptionsComponent,
+        canActivate: [CanActivateService]
+    },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

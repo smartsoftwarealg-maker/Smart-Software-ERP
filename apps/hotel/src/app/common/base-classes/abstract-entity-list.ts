@@ -43,19 +43,13 @@ export class AbstractEntityList<T, S extends AbstractDataSource<T>> extends Abst
         } else {
             observable = observable.pipe(switchMap(() => getDataObservable));
         }
-        const sub = observable.subscribe(r => {
+        observable.subscribe(r => {
             this.data = r.data;
             this.paginationModel.elementCount = r.itemCount;
             this.afterLoading();
             this.loadingState = LoadingState.COMPLETE;
-            if (sub) {
-                sub.unsubscribe();
-            }
         }, e => {
             this.loadingState = LoadingState.ERROR;
-            if (sub) {
-                sub.unsubscribe();
-            }
             throw e;
         });
     }

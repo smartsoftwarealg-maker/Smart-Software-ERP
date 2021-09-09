@@ -104,7 +104,7 @@ export interface ChargingCost {
     roomType: number;
     description: string;
     costRate: number;
-    toString: string; // frontend only
+    asString: string; // frontend only
 }
 
 export interface BookingState {

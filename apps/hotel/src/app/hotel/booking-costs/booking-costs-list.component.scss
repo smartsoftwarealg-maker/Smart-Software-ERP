@@ -1,0 +1,87 @@
+
+$table-width: 456px;
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: auto;
+}
+
+.main-container {
+    margin: auto;
+    max-width: $table-width;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.main-list-container {
+    overflow: hidden;
+    flex: 1 1 100%;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .main-list-container-2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        .mat-table {
+            border-radius: 8px;
+            overflow: auto;
+            display: block;
+            min-height: 304px;
+            mat-row {
+                width: $table-width;
+            }
+            mat-header-row {
+                width: $table-width;
+            }
+        }
+
+        .paginator {
+            flex: 0 0 64px;
+        }
+    }
+
+}
+
+.center-cell-content {
+    justify-content: center;
+    direction: ltr;
+}
+
+mat-header-cell {
+    justify-content: center;
+    font-weight: bold;
+}
+
+.mat-column-description {
+    flex: 0 0 208px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-roomType {
+    flex: 0 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-costRate {
+    flex: 0 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    justify-content: right;
+}
+

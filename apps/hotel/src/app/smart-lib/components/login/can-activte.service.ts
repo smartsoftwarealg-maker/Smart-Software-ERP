@@ -18,7 +18,6 @@ export class CanActivateService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-        console.log('Testing...');
         if (this.loginSrv.isLoggedIn) {
             return this.canRead(route);
         }
@@ -29,28 +28,22 @@ export class CanActivateService implements CanActivate {
                 .reLogin()
                 .pipe(map(res => res && this.canRead(route)));
         }
-        console.log('Not logged in');
         this.router.navigate(['/' + LOGIN_URL]);
         return false;
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {
-        console.log('uhm... password expired?');
         if (this.userSrv.context && this.userSrv.context.pwdExpired) {
             this.router.navigate(['/' + PROFILE_PAGE_URL]);
-            console.log()
             return false;
         }
         const entity = route.data.entity;
-        console.log('entity = ' + entity);
         if (entity) {
             const rights = this.userSrv.getRights(entity);
             if (!rights.read) {
-                console.log('this fool can\'t read shit');
                 return false;
             }
         }
-        console.log('This fool can read');
         return true;
     }
 }
