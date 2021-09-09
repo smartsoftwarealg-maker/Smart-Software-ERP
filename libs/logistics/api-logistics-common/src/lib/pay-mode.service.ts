@@ -10,6 +10,6 @@ import {HttpService} from '@ss/common/api-common';
 export class PayModeService extends BaseEntityExtendedService<PayMode> {
 
   constructor(protected httpSrv: HttpService) {
-      super(httpSrv, '/paymodes');
+      super(httpSrv, '/lookups/paymodes');
   }
 }

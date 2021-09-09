@@ -68,6 +68,7 @@ export const PURCHASE_ORDER_URL = 'porders';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
+export const LOGISTICS_PAYMENTS_URL = 'payments';
 export const LOGISTICS_OPTION_URL = 'options';
 
 // Sales
@@ -135,6 +136,7 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 
 
 //Logistics
+export const ABS_LOGISTICS_PAYMENTS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
 export const LOGISTICS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_URL].join('/');

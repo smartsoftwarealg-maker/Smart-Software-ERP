@@ -26,13 +26,6 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         'address'
     ];
 
-    preload(): Observable<any> {
-        return this.lookupsSrv.getAgentTypes()
-            .pipe(
-                tap(x => this.onAgentTypesLoaded(x))
-            );
-    }
-
 
     constructor(
         public agentService: AgentService,
@@ -44,6 +37,13 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
         super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_AGENTS');
+    }
+
+    preload(): Observable<any> {
+        return this.lookupsSrv.getAgentTypes()
+            .pipe(
+                tap(x => this.onAgentTypesLoaded(x))
+            );
     }
 
 

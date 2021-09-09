@@ -102,5 +102,7 @@
     "INVENTORY_DATE": "Date inventaire",
     "FIFO": "FIFO",
     "AWP": "PMP",
-    "CONSUMER": "Consomateur"
+    "CONSUMER": "Consomateur",
+    "PAYMENTS": "Paiements",
+    "AGENCY": "Agence"
 }

@@ -105,5 +105,6 @@
     "INVENTORY_DATE":     "Envanter tarihi",
     "FIFO":               "FIFO",
     "AWP":                "A.W.P",
-    "CONSUMER":           "Consumer"
+    "CONSUMER":           "Consumer",
+    "PAYMENTS": ""
 }
