@@ -105,5 +105,7 @@
     "INVENTORY_DATE": "Inventory date",
     "FIFO": "FIFO",
     "AWP": "A.W.P",
-    "CONSUMER": "Consumer"
+    "CONSUMER": "Consumer",
+    "PAYMENTS": "Payments",
+    "AGENCY": "Agency"
 }

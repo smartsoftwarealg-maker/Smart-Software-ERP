@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Account, ACCOUNT_URL} from "./account-api";
+import {Account, ACCOUNT_URL} from './account-api';
 
 
 @Injectable({
