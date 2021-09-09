@@ -43,6 +43,7 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
     }
 
     ngOnInit(): void {
+        this.dataSrc.setUrl(agentsUrl + '/' + this.getParentIdFromRoute() + paymentsUrl);
         const entity = this.paySrv.getActiveEntity();
         //
         const observable: Observable<any> = this.paySrv.load();
@@ -54,7 +55,7 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
                         id: 0,
                         amount: null,
                         agent: this.getParentIdFromRoute(),
-                        center: null,
+                        center: this.userSrv.context.center,
                         date: null,
                         payMethod: null,
                         bankId: null,
@@ -70,7 +71,6 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
                 );
             } else {
                 const i = this.getIdFromRoute();
-                this.dataSrc.setUrl(agentsUrl + '/' + this.getParentIdFromRoute() + paymentsUrl);
                 observable.pipe(
                     switchMap(() => this.dataSrc.getById(i))
                 ).subscribe(
