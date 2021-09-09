@@ -5,7 +5,7 @@ import {
     ABS_STOCK_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS, ABS_STOCK_AGENT_URL, LOGISTICS_STOCK_AGENT_URL
+    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS, ABS_STOCK_AGENT_URL, LOGISTICS_STOCK_AGENT_URL, ABS_LOGISTICS_PAYMENTS
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -58,6 +58,12 @@ export const logAdminNavTree: SideNavNode = {
             icon: 'fas fa-coins',
             route: ABS_STOCK_CURRENCY,
             accessRights: 'Currency'
+        },
+        {
+            name: 'LOGTISTICS_PAYMENTS',
+            icon: 'fas fa-coins',
+            route: ABS_LOGISTICS_PAYMENTS,
+            accessRights: 'Payment'
         },
         {
             name: 'COMMON_OPTIONS',

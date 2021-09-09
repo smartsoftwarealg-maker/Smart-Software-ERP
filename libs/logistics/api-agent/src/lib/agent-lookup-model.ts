@@ -1,5 +1,6 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {Agent} from './agent-api';
+import {AgentService} from './agent.service';
 
 export class AgentLookupModel extends DefaultAutoCompleteModel<Agent> {
     constructor(private agentService: AgentService) {

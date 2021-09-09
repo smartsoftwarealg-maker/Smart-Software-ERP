@@ -1,4 +1,4 @@
-export const ACCOUNT_URL = "/accounts";
+export const ACCOUNT_URL = '/accounts';
 
 export interface Account {
     id: number;
