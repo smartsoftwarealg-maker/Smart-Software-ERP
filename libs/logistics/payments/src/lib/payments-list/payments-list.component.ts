@@ -35,7 +35,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
-        super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_PAYMENTS');
+        super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PAYMENTS');
     }
 
     processLoadedData(data: Payment[]): Observable<Payment[]> {

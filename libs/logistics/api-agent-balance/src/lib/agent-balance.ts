@@ -1,8 +1,9 @@
-export const BALANCE_URL = "/balance";
+export const BALANCE_URL = '/balance';
 
 export interface AgentBalance {
     id: number;
-    document: string;
+    totalDebit: number;
+    totalCredit: number;
     debit: number;
     credit: number;
 }

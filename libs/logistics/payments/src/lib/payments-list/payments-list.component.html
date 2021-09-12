@@ -26,14 +26,14 @@
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.amount > 0.0 ? e.amount : 0.0}}
+                {{ (e.amount > 0.0 ? e.amount : 0.0) | number: '1.2-2'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.amount < 0.0 ? e.amount : 0.0}}
+                {{ (e.amount < 0.0 ? e.amount : 0.0)  | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
