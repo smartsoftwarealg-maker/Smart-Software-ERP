@@ -2089,7 +2089,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/apps/hotel",
+                        "outputPath": "dist/apps/htl",
                         "index": "apps/hotel/src/index.html",
                         "main": "apps/hotel/src/main.ts",
                         "polyfills": "apps/hotel/src/polyfills.ts",
