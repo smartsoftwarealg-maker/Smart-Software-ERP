@@ -59,9 +59,9 @@ export class AbstractEntityView<T, S extends AbstractDataSource<T>> {
     public save(obj: T, callback?: (success: boolean) => void): void {
         const id = (obj as any).id;
         if ((id && this.accessRight.edit) || (!id && this.accessRight.create)) {
-            console.log('going to save');
             this.subscribeAndReport(this.dataSrc.save(obj), callback);
         } else {
+            console.log("access denied");
             // todo: throw access denied error here
         }
     }
