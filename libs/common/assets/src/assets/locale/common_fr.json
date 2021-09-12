@@ -157,5 +157,7 @@
     "EMAIL_REPORT": "Envoyer un rapport par e-mail",
     "EMAIL_SENT": "Rapport envoyé avec succès",
     "PROFILE": "Profil personnel",
-    "SAVE_REQUIRED": "Enregistrement requis"
+    "SAVE_REQUIRED": "Enregistrement requis",
+    "FINANCE": "Finance",
+    "PAYMENTS": "Paiements"
 }

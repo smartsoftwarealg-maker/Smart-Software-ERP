@@ -2,34 +2,34 @@
     <mat-table mat-table [dataSource]="data" class="main-table">
 
 
-        <ng-container matColumnDef="document">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
+        <ng-container matColumnDef="totalDebit">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.document}}
+                {{e.totalDebit | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="totalCredit">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.totalCredit | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.debit}}
+                {{e.debit | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CREDIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.credit}}
+                {{e.credit | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
-
-        <ng-container matColumnDef="value">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.value}}
-            </mat-cell>
-        </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

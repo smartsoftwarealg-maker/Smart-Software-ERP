@@ -1,9 +1,9 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
-import {AgentBalance, AgentBalanceService} from "@ss/logistics/api-agent-balance";
+import {AgentBalance, AgentBalanceService} from '@ss/logistics/api-agent-balance';
 
 @Component({
     selector: 'ss-agent-balance',
@@ -19,9 +19,10 @@ export class AgentBalanceComponent implements OnInit {
     data: AgentBalance[];
 
     displayedColumns = [
-        "document",
-        "debit",
-        "credit"
+        'totalDebit',
+        'totalCredit',
+        'debit',
+        'credit'
     ];
 
 
