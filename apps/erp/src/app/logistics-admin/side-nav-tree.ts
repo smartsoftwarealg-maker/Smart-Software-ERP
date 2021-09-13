@@ -60,12 +60,6 @@ export const logAdminNavTree: SideNavNode = {
             accessRights: 'Currency'
         },
         {
-            name: 'LOGTISTICS_PAYMENTS',
-            icon: 'fas fa-coins',
-            route: ABS_LOGISTICS_PAYMENTS,
-            accessRights: 'Payment'
-        },
-        {
             name: 'COMMON_OPTIONS',
             icon: 'fas fa-coins',
             route: ABS_LOGISTICS_OPTIONS,
