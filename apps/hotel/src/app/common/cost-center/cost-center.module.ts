@@ -54,7 +54,7 @@ const routes: Routes = [
 })
 export class CostCenterModule {
     constructor(private langSrv: LanguageService) {
-        langSrv.addSource('/assets/locale/lib/cost-center/', 'CCENTER_');
+        langSrv.addSource('assets/locale/lib/cost-center/', 'CCENTER_');
     }
 }
 

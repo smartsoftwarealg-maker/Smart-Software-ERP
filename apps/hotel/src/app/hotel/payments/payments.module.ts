@@ -75,6 +75,6 @@ export class PaymentModule {
     constructor(private navSrv: NavService, private langSrv: LanguageService) {
         const TAG = 'PaymentModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/clients/', 'HTL_CLT_');
+        langSrv.addSource('assets/locale/hotel/clients/', 'HTL_CLT_');
     }
 }

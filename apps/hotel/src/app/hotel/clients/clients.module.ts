@@ -66,6 +66,6 @@ export class ClientsModule {
         private langSrv: LanguageService) {
         const TAG = 'ClientsModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/clients/', 'HTL_CLT_');
+        langSrv.addSource('assets/locale/hotel/clients/', 'HTL_CLT_');
     }
 }

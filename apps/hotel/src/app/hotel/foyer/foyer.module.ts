@@ -63,6 +63,6 @@ export class FoyerModule {
         private langSrv: LanguageService) {
         const TAG = 'FoyerModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/foyer/', 'HTL_FOY_');
+        langSrv.addSource('assets/locale/hotel/foyer/', 'HTL_FOY_');
     }
 }

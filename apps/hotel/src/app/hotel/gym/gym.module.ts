@@ -75,6 +75,6 @@ export class GymModule {
         private langSrv: LanguageService) {
         const TAG = 'GymModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/gym/', 'HTL_GYM_');
+        langSrv.addSource('assets/locale/hotel/gym/', 'HTL_GYM_');
     }
 }

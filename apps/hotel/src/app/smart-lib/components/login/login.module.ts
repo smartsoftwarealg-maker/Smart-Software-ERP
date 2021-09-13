@@ -53,6 +53,6 @@ const routes: Routes = [
 
 export class LoginModule {
     constructor(private langSrv: LanguageService) {
-        langSrv.addSource('/assets/locale/lib/login/', 'LOGIN_');
+        langSrv.addSource('assets/locale/lib/login/', 'LOGIN_');
     }
 }
