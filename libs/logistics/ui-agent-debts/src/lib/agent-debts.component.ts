@@ -12,8 +12,6 @@ import {HttpParams} from '@angular/common/http';
     templateUrl: './agent-debts.component.html'
 })
 export class AgentDebtsComponent implements OnInit {
-    @Input() withCompensation = true
-
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -34,14 +32,13 @@ export class AgentDebtsComponent implements OnInit {
                 public confirmationSrv: ConfirmationDialogService) {
     }
 
-
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
             const agentId = +param.agentId;
-
+            const compensated = param['compensated'];
+            const params = new HttpParams().set('compensated', compensated);
             if (agentId) {
                 this.agentDebtsSrv.setParentId(agentId);
-                const params = new HttpParams().set('compensated', this.withCompensation);
                 this.agentDebtsSrv.getPage(this.pagination, null, null, params)
                     .subscribe((x: AgentDebts[]) => this.data = x);
             }

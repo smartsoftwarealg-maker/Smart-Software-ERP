@@ -103,5 +103,6 @@
     "FIFO": "FIFO",
     "AWP": "PMP",
     "CONSUMER": "Consomateur",
-    "AGENCY": "Agence"
+    "AGENCY": "Agence",
+    "RAW_AGENT_DEBTS": "Dettes (sans compensation)"
 }

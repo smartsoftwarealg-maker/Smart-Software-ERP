@@ -106,5 +106,6 @@
     "FIFO":               "FIFO",
     "AWP":                "A.W.P",
     "CONSUMER":           "Consumer",
-    "PAYMENTS": "",
+    "PAYMENTS":            "",
+    "RAW_AGENT_DEBTS":     ""
 }
