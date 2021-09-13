@@ -141,6 +141,7 @@
     "EMAIL_REPORT":                  "Bir raporu e-postayla gönder",
     "EMAIL_SENT":                    "Rapor başarıyla e-postayla gönderildi",
     "PROFILE":                       "Kişisel profil",
-    "SAVE_REQUIRED":                "Kaydetme gerekli",
-    "FINANCE": ""
+    "SAVE_REQUIRED":                 "Kaydetme gerekli"
+    "FINANCE":                       "",
+    "PAYMENTS":                      ""
 }

@@ -167,16 +167,6 @@ export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, P
 
 
 
-
-
-
-
-
-
-
-
-
-
 // ######################################
 // #            Other things            #
 // ######################################

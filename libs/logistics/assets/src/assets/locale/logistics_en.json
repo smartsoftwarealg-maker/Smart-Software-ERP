@@ -106,5 +106,6 @@
     "FIFO": "FIFO",
     "AWP": "A.W.P",
     "CONSUMER": "Consumer",
-    "AGENCY": "Agency"
+    "AGENCY": "Agency",
+    "RAW_AGENT_DEBTS": "Debts (without compensation)"
 }

@@ -63,6 +63,12 @@ export class DocInfoComponent {
                     description: 'LOGISTICS_AGENT_DEBTS',
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
+                },
+                {
+                    name: 'debts_2',
+                    description: 'LOGISTICS_RAW_AGENT_DEBTS',
+                    url: 'agent-debts',
+                    paramsProvided: (p: string[]) => p.includes('agentId')
                 }
             ],
         },
@@ -110,6 +116,8 @@ export class DocInfoComponent {
 
     navigate(): void {
         if (this.selectedEntry != null) {
+            delete this.params_['compensated'];
+            this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
             this.router.navigate([this.selectedEntry.url], {
                 relativeTo: this.route,
                 queryParamsHandling: 'merge',
