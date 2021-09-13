@@ -29,7 +29,7 @@ export interface Application {
 
 export const hotelApp: Application = {
     name: 'HOTEL',
-    image: '/assets/img/app_hotel.png',
+    image: 'assets/img/app_hotel.png',
     path: 'hotel'
 };
 
@@ -86,6 +86,6 @@ export class AppModule {
     constructor(private navSrv: NavService,
         private router: Router, private langSrv: LanguageService) {
         navSrv.init(routes, router);
-        langSrv.addSource('/assets/locale/', '');
+        langSrv.addSource('assets/locale/', '');
     }
 }

@@ -82,6 +82,6 @@ export class BookingModule {
         private langSrv: LanguageService) {
         const TAG = 'BookingModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/booking/', 'HTL_BK_');
+        langSrv.addSource('assets/locale/hotel/booking/', 'HTL_BK_');
     }
 }

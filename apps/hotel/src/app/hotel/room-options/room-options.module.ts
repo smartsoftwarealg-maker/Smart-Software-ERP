@@ -58,6 +58,6 @@ export class RoomOptionsModule {
         private langSrv: LanguageService) {
         const TAG = 'RoomOptionsModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/room-options/', 'HTL_RO_');
+        langSrv.addSource('assets/locale/hotel/room-options/', 'HTL_RO_');
     }
 }

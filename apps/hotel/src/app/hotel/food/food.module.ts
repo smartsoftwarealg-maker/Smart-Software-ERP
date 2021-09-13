@@ -67,6 +67,6 @@ export class FoodModule {
         private langSrv: LanguageService) {
         const TAG = 'FoodModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/food/', 'HTL_FOD_');
+        langSrv.addSource('assets/locale/hotel/food/', 'HTL_FOD_');
     }
 }

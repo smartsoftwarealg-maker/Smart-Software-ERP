@@ -56,6 +56,6 @@ export class BookingCostsModule {
         private langSrv: LanguageService) {
         const TAG = 'BookingCostsModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/booking-costs/', 'HTL_BCT_');
+        langSrv.addSource('assets/locale/hotel/booking-costs/', 'HTL_BCT_');
     }
 }

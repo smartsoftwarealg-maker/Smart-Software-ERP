@@ -54,6 +54,6 @@ const routes: Routes = [
 })
 export class VatModule {
     constructor(private langSrv: LanguageService) {
-        langSrv.addSource('/assets/locale/lib/vat/', 'VAT_');
+        langSrv.addSource('assets/locale/lib/vat/', 'VAT_');
     }
 }

@@ -33,6 +33,6 @@ const routes: Routes = [
 })
 export class OptionsModule {
     constructor(private langSrv: LanguageService) {
-        langSrv.addSource('/assets/locale/hotel/options/', 'HTL_OPT_');
+        langSrv.addSource('assets/locale/hotel/options/', 'HTL_OPT_');
     }
 }

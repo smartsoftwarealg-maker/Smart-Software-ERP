@@ -64,6 +64,6 @@ export class RestaurantModule {
         private langSrv: LanguageService) {
         const TAG = 'RestaurantModule';
         navSrv.setChildren(TAG, routes);
-        langSrv.addSource('/assets/locale/hotel/restaurant/', 'HTL_RST_');
+        langSrv.addSource('assets/locale/hotel/restaurant/', 'HTL_RST_');
     }
 }

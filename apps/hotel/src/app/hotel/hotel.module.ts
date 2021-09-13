@@ -36,6 +36,6 @@ export class HotelModule {
         private langSrv: LanguageService) {
         const TAG = 'HotelModule';
         navSrv.setChildren(TAG, defaultMenu);
-        langSrv.addSource('/assets/locale/hotel/', 'HTL_');
+        langSrv.addSource('assets/locale/hotel/', 'HTL_');
     }
 }

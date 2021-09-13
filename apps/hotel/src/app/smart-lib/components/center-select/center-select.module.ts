@@ -40,6 +40,6 @@ const routes: Routes = [
 })
 export class CenterSelectModule {
     constructor(private langSrv: LanguageService) {
-        langSrv.addSource('/assets/locale/lib/center-select/', 'C_C_');
+        langSrv.addSource('assets/locale/lib/center-select/', 'C_C_');
     }
 }
