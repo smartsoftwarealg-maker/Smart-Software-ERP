@@ -29,14 +29,28 @@ export class MainPageComponent implements OnInit, OnDestroy {
                 (f: string) => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
-                        // todo: implement filter here
-                        alert('Filter is NOT IMPLEMENTED YET');
+                        this.srv.searchResult = [];
+                        const words = lowF.split(' ');
+                        this.srv.display.forEach(t => this.searchTree(t, words, this.srv.searchResult));
                     } else {
-                        this.srv.display = this.shellSrv.navData;
+                        this.srv.searchResult = null;
                     }
                 }
             )
         );
+    }
+
+    searchTree(tree: SideNavNode, searchWords: string[], result: SideNavNode[]) {
+        if (!tree) {
+            return;
+        }
+        const nodeName = this.langSrv.translate(tree.name).toLowerCase();
+        if (searchWords.map(w => nodeName.indexOf(w) > -1).reduce((a, b) => a && b, true)) {
+            result.push(tree);
+        }
+        if (tree.children) {
+            tree.children.forEach(c => this.searchTree(c, searchWords, result));
+        }
     }
 
     onClick(node: SideNavNode): void {

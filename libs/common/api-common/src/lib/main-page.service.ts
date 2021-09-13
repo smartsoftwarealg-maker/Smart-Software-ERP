@@ -15,6 +15,7 @@ export interface SideNavNode {
 })
 export class MainPageService {
 
+    public searchResult: SideNavNode[] = null;
     public display: SideNavNode[] = null;
     public historyStack: SideNavNode[] = [];
 

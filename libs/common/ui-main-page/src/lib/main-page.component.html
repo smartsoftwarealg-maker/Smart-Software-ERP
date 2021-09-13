@@ -7,15 +7,29 @@
 </h2>
 <div class="main-view">
     <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
-    <ng-container *ngFor="let l of srv.display">
-        <div *ngIf="l.visible" class="app-card" (click)="onClick(l)">
-            <div class="img" [style.backgroundColor]="l.backgroundColor">
-                <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
+    <ng-container *ngIf="!srv.searchResult">
+        <ng-container *ngFor="let l of srv.display">
+            <div *ngIf="l.visible" class="app-card" (click)="onClick(l)">
+                <div class="img" [style.backgroundColor]="l.backgroundColor">
+                    <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
+                </div>
+                <div class="txt">
+                    <span translate>{{l.name}}</span>
+                </div>
             </div>
-            <div class="txt">
-                <span translate>{{l.name}}</span>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="srv.searchResult">
+        <ng-container *ngFor="let l of srv.searchResult">
+            <div *ngIf="l.visible" class="app-card" (click)="onClick(l)">
+                <div class="img" [style.backgroundColor]="l.backgroundColor">
+                    <i style="margin-right: 8px; margin-left: 8px" [class]="l.icon"></i>
+                </div>
+                <div class="txt">
+                    <span translate>{{l.name}}</span>
+                </div>
             </div>
-        </div>
+        </ng-container>
     </ng-container>
     <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
 </div>
