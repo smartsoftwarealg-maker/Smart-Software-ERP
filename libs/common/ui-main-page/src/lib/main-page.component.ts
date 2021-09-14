@@ -11,6 +11,9 @@ import { MainPageService } from '@ss/common/api-common';
     styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit, OnDestroy {
+
+    public searchResult: SideNavNode[] = null;
+    
     constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
                 private router: Router,
@@ -29,14 +32,15 @@ export class MainPageComponent implements OnInit, OnDestroy {
                 (f: string) => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
-                        this.srv.searchResult = [];
+                        this.searchResult = [];
                         const words = lowF.split(' ');
-                        this.srv.display.forEach(t => this.searchTree(t, words, this.srv.searchResult));
+                        this.srv.display.forEach(t => this.searchTree(t, words, this.searchResult));
                     } else {
-                        this.srv.searchResult = null;
+                        this.searchResult = null;
                     }
                 }
-            )
+            ),
+            true // focus the search field for this component
         );
     }
 
@@ -61,6 +65,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
         } else if (node.route) {
             this.router.navigateByUrl(node.route);
         }
+        this.clearSearch();
     }
 
     updateGobackButton() {
@@ -77,6 +82,14 @@ export class MainPageComponent implements OnInit, OnDestroy {
         if (!this.srv.historyStack.length) {
             this.shellSrv.setGoBackFn(null);
         }
+        this.clearSearch();
+    }
+
+    clearSearch(): void {
+        if (this.shellSrv.searchFormControl) {
+            this.shellSrv.searchFormControl.setValue(null);
+        }
+        this.searchResult = null;
     }
 
     ngOnDestroy(): void {
