@@ -69,6 +69,7 @@ export class ShellService {
     //
     protected goBackFn: () => void = null;
     protected searchControl: FormControl;
+    public focusSearchField: boolean;
     protected searchInputLabel: string;
     //
     buttons: ToolbarButton[] = [];
@@ -333,6 +334,7 @@ export class ShellService {
 
     public disableSearch() {
         this.searchControl = null;
+        this.focusSearchField = false;
         this.searchInputLabel = null;
         if (this.subscription != null) {
             this.subscription.unsubscribe();
@@ -346,7 +348,7 @@ export class ShellService {
      * @param inputLabel the title of the search input
      * @param subFn a function that subscribes to an observable, this observable sends search terms
      */
-    public enableSearch(inputLabel: string, subFn: (Observable) => Subscription): void {
+    public enableSearch(inputLabel: string, subFn: (Observable) => Subscription, focusField: boolean = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
             alert(
@@ -362,6 +364,7 @@ export class ShellService {
             );
             this.updateShell();
         }
+        this.focusSearchField = focusField;
     }
 
     /**
