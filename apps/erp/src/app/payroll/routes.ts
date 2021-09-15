@@ -7,10 +7,11 @@ import {
     PAYROLL_POSTS_URL,
     PAYROLL_NATIONALITIES_URL,
     PAYROLL_SERVICES_URL,
-    PAYROLL_PERSONS_URL,
-    PAYROLL_PERSONS_ACTIVATION_URL,
+    PAYROLL_EMPLOYEES_URL,
+    PAYROLL_EMPLOYEE_ACTIVATION_URL,
     PAYROLL_EMPLOYMENT_TYPE_URL,
-    PAYROLL_SUSPENSION_REASON_URL
+    PAYROLL_SUSPENSION_REASON_URL,
+    PAYROLL_CAREER_URL
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
@@ -33,7 +34,7 @@ import {
 } from '@ss/common/ui-lookup';
 import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
-import { PersonListComponent, PersonDetailComponent } from '@ss/payroll/ui-person';
+import { EmployeeListComponent, EmployeeDetailComponent } from '@ss/payroll/ui-employee';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from 'libs/common/ui-lookup/src/lib/employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from 'libs/common/ui-lookup/src/lib/suspension-reason.component';
 
@@ -43,21 +44,26 @@ export const mainRoutes: Routes = [
         loadChildren: () => import('./payroll-lookups.module').then(m => m.PayrollLookupsModule)
     },
     {
-        path: PAYROLL_PERSONS_URL,
+        path: PAYROLL_EMPLOYEES_URL,
         children: [
             {
                 path: LIST_URL,
-                component: PersonListComponent,
+                component: EmployeeListComponent,
                 canActivate: [CanActivateService]
             },
             {
-                path: PAYROLL_PERSONS_ACTIVATION_URL,
+                path: PAYROLL_EMPLOYEE_ACTIVATION_URL,
                 canActivate: [CanActivateService],
                 loadChildren: () => import('@ss/payroll/ui-employee-activation').then(m => m.PayrollUiEmployeeActivationModule),
             },
             {
+                path: PAYROLL_CAREER_URL,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-employee-career').then(m => m.PayrollUiEmployeeCareerModule),
+            },
+            {
                 path: ':id',
-                component: PersonDetailComponent,
+                component: EmployeeDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

@@ -1,5 +1,5 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
-import { ACTIVATION_LIST_URL as activationListUrl } from '@ss/payroll/api-person';
+import { ACTIVATION_LIST_URL as activationListUrl } from '@ss/payroll/api-employee';
 import { Routes } from '@angular/router';
 import { TotalComponent } from '@ss/logistics/ui-totals';
 import { CirculationComponent } from '@ss/logistics/ui-circulation';
@@ -86,10 +86,11 @@ export const PAYROLL_EDUCATION_LEVELS_URL = 'educationLevels';
 export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
 export const PAYROLL_POSTS_URL = 'posts';
 export const PAYROLL_NATIONALITIES_URL = 'nationalities';
-export const PAYROLL_PERSONS_URL = 'persons';
-export const PAYROLL_PERSONS_ACTIVATION_URL = activationListUrl;
+export const PAYROLL_EMPLOYEES_URL = 'employees';
+export const PAYROLL_EMPLOYEE_ACTIVATION_URL = activationListUrl;
 export const PAYROLL_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const PAYROLL_SUSPENSION_REASON_URL = 'suspensionReason';
+export const PAYROLL_CAREER_URL = 'career';
 
 // #############
 // # FULL URLS #
@@ -149,10 +150,11 @@ export const ABS_PAYROLL_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_
 export const ABS_PAYROLL_POSTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_POSTS_URL].join('/');
 export const ABS_PAYROLL_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_NATIONALITIES_URL].join('/');
 export const ABS_PAYROLL_SERVICES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SERVICES_URL].join('/');
-export const ABS_PAYROLL_PERSONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL].join('/');
-export const ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_PERSONS_URL, PAYROLL_PERSONS_ACTIVATION_URL].join('/');
+export const ABS_PAYROLL_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL].join('/');
+export const ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL, PAYROLL_EMPLOYEE_ACTIVATION_URL].join('/');
 export const ABS_PAYROLL_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_EMPLOYMENT_TYPE_URL].join('/');
 export const ABS_PAYROLL_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SUSPENSION_REASON_URL].join('/');
+export const ABS_PAYROLL_CAREER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL, PAYROLL_CAREER_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

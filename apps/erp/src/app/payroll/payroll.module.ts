@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { mainRoutes } from './routes';
-import {PayrollUiPersonModule} from '@ss/payroll/ui-person';
+import {PayrollUiEmployeeModule} from '@ss/payroll/ui-employee';
 
 @NgModule({
     imports: [
-        PayrollUiPersonModule,
+        PayrollUiEmployeeModule,
         RouterModule.forChild(mainRoutes)
     ]
 })
