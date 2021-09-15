@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Person as IPerson, PersonService, EmployeeActivationService } from '@ss/payroll/api-person';
+import { Employee as IEmployee, EmployeeService, EmployeeActivationService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
@@ -17,7 +17,7 @@ interface Lookup {
 }
 
 // frontend only
-interface Person extends IPerson {
+interface Employee extends IEmployee {
     fullName: string;
     imageModel: ImageModel;
     // turns false when loading is done
@@ -31,11 +31,11 @@ interface Person extends IPerson {
 }
 
 @Component({
-    selector: 'ss-employee-list',
+    selector: 'ss-employee-list-activation',
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html'
 })
-export class EmployeeListComponent extends BaseEntityListComponent<IPerson> implements OnInit {
+export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
 
     public displayedColumns = [
         'photo',
@@ -51,7 +51,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
     suspensionReasons: { [id: number]: string; };
 
     constructor(
-        public personSrv: PersonService,
+        public employeeSrv: EmployeeService,
         public employeeActivationSrv: EmployeeActivationService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -62,7 +62,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
+        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
     }
 
     public preload(): Observable<any> {
@@ -80,7 +80,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
         return map;
     }
 
-    public processLoadedData(data: Person[]): Observable<Person[]> {
+    public processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(data.map(p => {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
@@ -88,7 +88,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IPerson> impl
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
-            p.imageModel.setImageUrl(this.personSrv.getPhotoUrl(p.id), false);
+            p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             p.loading = true;
             this.employeeActivationSrv.setParentId(p.id);
             // incase of error, keep displaying the loading animation

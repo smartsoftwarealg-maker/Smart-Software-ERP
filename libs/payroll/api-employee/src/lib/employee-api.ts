@@ -1,10 +1,14 @@
 
-export const PERSONS_URL = '/persons';
-export const PERSONS_PHOTO_URL = '/photo';
+export const EMPLOYEES_URL = '/persons';
+export const EMPLOYEE_PHOTO_URL = '/photo';
+
 export const ACTIVATION_PARENT_URL = '/persons';
 export const ACTIVATION_CHILD_URL = '/activations';
 
-export interface Person {
+export const CAREER_PARENT_URL = '/persons';
+export const CAREER_CHILD_URL = '/career';
+
+export interface Employee {
     id: number;
 
     firstName: string;
@@ -61,4 +65,10 @@ export class EmployeeActivation {
     suspensionReason: number;
     employmentType: number;
     inConflict: boolean;
+}
+
+export class Career {
+    id: number;
+    employee: number;
+    post: number;
 }

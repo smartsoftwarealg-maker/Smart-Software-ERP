@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {HttpService, LanguageService} from '@ss/common/api-common';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { HttpService, LanguageService } from '@ss/common/api-common';
 import { LookupsService, EmploymentType, SuspensionReason } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
-import { EmployeeActivation, EmployeeActivationService, PersonService, Person as IPerson } from '@ss/payroll/api-person';
+import { EmployeeActivation, EmployeeActivationService, EmployeeService, Employee as IEmployee } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-person';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-employee';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 // frontend only
-interface Person extends IPerson {
+interface Employee extends IEmployee {
     fullName?: string;
 }
 
@@ -45,7 +45,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     };
 
     public personId: number;
-    public person: Person;
+    public person: Employee;
     public lastLine: EmployeeActivation;
     public imageModel: ImageModel;
     public employmentTypes: { [id: number]: string; };
@@ -54,7 +54,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
     constructor(
         public employeeActivationSrv: EmployeeActivationService,
         public uiSrv: EmployeeActivationUIService,
-        public personSrv: PersonService,
+        public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -74,7 +74,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         this.uiSrv.instance = this;
         this.route.params.subscribe(params => {
             this.personId = +params.id;
-            this.imageModel.setImageUrl(this.personSrv.getPhotoUrl(this.personId));
+            this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.personId));
             this.employeeActivationSrv.setParentId(this.personId);
             super.ngOnInit();
             this.initView();
@@ -95,9 +95,9 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         if (!this.personId) {
             return of(null);
         }
-        return this.personSrv.get(this.personId)
+        return this.employeeSrv.get(this.personId)
             .pipe(
-                tap(p => {
+                tap((p: Employee) => {
                     this.person = p;
                     this.person.birthDate = this.langSrv.formatDate(p.birthDate);
                     this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
@@ -107,7 +107,6 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
                 switchMap(() => this.lookupsSrv.getSuspensionReasons()),
                 tap(list => this.onSuspensionReasonLoaded(list))
             );
-
     }
 
     onEmploymentTypesLoaded(data: EmploymentType[]): void {

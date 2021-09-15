@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Person, PersonService } from '@ss/payroll/api-person';
+import { Employee, EmployeeService } from '@ss/payroll/api-employee';
 import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -10,22 +10,22 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {HttpService} from '@ss/common/api-common';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { HttpService } from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-person-detail',
-    styleUrls: ['./person-detail.component.scss'],
-    templateUrl: './person-detail.component.html'
+    selector: 'ss-employee-detail',
+    styleUrls: ['./employee-detail.component.scss'],
+    templateUrl: './employee-detail.component.html'
 })
-export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
+export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
 
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     maritalStatuses: MaritalStatus[];
 
     constructor(
-        public personSrv: PersonService,
+        public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -33,7 +33,7 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(personSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
+        super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
         this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv))
     }
@@ -45,8 +45,8 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
             );
     }
 
-    public setupForm(p: Person) {
-        this.imageModel.setImageUrl(this.personSrv.getPhotoUrl(this.id), false);
+    public setupForm(p: Employee) {
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         // Make sure to update the template if you edit the configuration here
         if (!p.id) {
             p.sex = 1;
@@ -104,10 +104,10 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
 
     public isArabicInfoPanelValid(): boolean {
         return this.isControlValid(this.form.controls.firstNameAr) &&
-        this.isControlValid(this.form.controls.lastNameAr) &&
-        this.isControlValid(this.form.controls.birthPlaceAr) &&
-        this.isControlValid(this.form.controls.fatherAr) &&
-        this.isControlValid(this.form.controls.motherAr);
+            this.isControlValid(this.form.controls.lastNameAr) &&
+            this.isControlValid(this.form.controls.birthPlaceAr) &&
+            this.isControlValid(this.form.controls.fatherAr) &&
+            this.isControlValid(this.form.controls.motherAr);
     }
 
     public isSectionValid(section: string): boolean {
@@ -136,12 +136,12 @@ export class PersonDetailComponent extends BaseEntityDetailComponent<Person> {
             return '';
     }
 
-    public readForm(): Person {
+    public readForm(): Employee {
         return this.form.value;
     }
 
     uploadAttachments(id: number): Observable<any> {
-        this.imageModel.setBackendUrl(this.personSrv.getPhotoUrl(id));
+        this.imageModel.setBackendUrl(this.employeeSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }
 

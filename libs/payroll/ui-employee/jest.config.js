@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'payroll-ui-person',
+  name: 'payroll-ui-employee',
   preset: '../../../jest.config.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -12,7 +12,7 @@ module.exports = {
       ],
     },
   },
-  coverageDirectory: '../../../coverage/libs/payroll/ui-person',
+  coverageDirectory: '../../../coverage/libs/payroll/ui-employee',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

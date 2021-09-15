@@ -196,8 +196,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;
-        this.shellSrv.updateShell();
         this.emailReportButton.disabled = !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
+        this.shellSrv.updateShell();
     }
 
     public edit() {

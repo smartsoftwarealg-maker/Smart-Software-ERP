@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Person as IPerson, PersonService } from '@ss/payroll/api-person';
+import { Employee as IEmployee, EmployeeService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
-import {HttpService, LanguageService} from '@ss/common/api-common';
-import { ACTIVATION_LIST_URL } from '@ss/payroll/api-person';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { HttpService, LanguageService } from '@ss/common/api-common';
+import { ACTIVATION_LIST_URL } from '@ss/payroll/api-employee';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 interface Lookup {
     id: number;
@@ -18,17 +18,17 @@ interface Lookup {
 }
 
 // frontend only
-interface Person extends IPerson {
+interface Employee extends IEmployee {
     fullName: string;
     imageModel: ImageModel;
 }
 
 @Component({
-    selector: 'ss-person-list',
-    styleUrls: ['./person-list.component.scss'],
-    templateUrl: './person-list.component.html'
+    selector: 'ss-employee-list',
+    styleUrls: ['./employee-list.component.scss'],
+    templateUrl: './employee-list.component.html'
 })
-export class PersonListComponent extends BaseEntityListComponent<IPerson> implements OnInit {
+export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
 
     public displayedColumns = [
         'photo',
@@ -52,7 +52,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> implem
     militaryServiceStates: { [id: number]: string; };
 
     constructor(
-        public personSrv: PersonService,
+        public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -62,7 +62,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> implem
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(personSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEES_LIST');
+        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEES_LIST');
     }
 
     ngOnInit(): void {
@@ -101,7 +101,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> implem
         return map;
     }
 
-    public processLoadedData(data: Person[]): Observable<Person[]> {
+    public processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(data.map(p => {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
@@ -109,7 +109,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPerson> implem
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
-            p.imageModel.setImageUrl(this.personSrv.getPhotoUrl(p.id), false);
+            p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             return p;
         }));
     }

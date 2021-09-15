@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ACTIVITY_HISTORY_URL, ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-person';
+import { ACTIVITY_HISTORY_URL, ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-employee';
 import { RedirectToParentComponent, CanActivateService, CanDeactivateService, MaterialModule } from '@ss/common/api-common';
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeDeactivationFormComponent } from './employee-deactivation-form.component';
