@@ -66,9 +66,9 @@ export class UserRightsService {
         const severe = this.loginSrv?.appCtx?.severe && this.loginSrv.appCtx.id > 0;
         return {
             read:   manager || !severe || this.loginSrv.appCtx.agentId > 0,
-            write:  (manager || !severe) && !this.loginSrv.appCtx.agentId,
-            edit:   (manager || !severe) && !this.loginSrv.appCtx.agentId,
-            delete: (manager || !severe) && !this.loginSrv.appCtx.agentId
+            write:  (manager || !severe) && this.loginSrv.appCtx && !this.loginSrv.appCtx.agentId,
+            edit:   (manager || !severe) && this.loginSrv.appCtx && !this.loginSrv.appCtx.agentId,
+            delete: (manager || !severe) && this.loginSrv.appCtx && !this.loginSrv.appCtx.agentId
         };
     }
 

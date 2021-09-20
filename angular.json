@@ -2238,6 +2238,56 @@
         }
       }
     },
+    "logistics-api-common": {
+            "projectType": "library",
+            "root": "libs/logistics/api-common",
+            "sourceRoot": "libs/logistics/api-common/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/api-common"],
+                    "options": {
+                        "jestConfig": "libs/logistics/api-common/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/api-common/src/**/*.ts",
+                            "libs/logistics/api-common/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+    "logistics-payment-compensation": {
+            "projectType": "library",
+            "root": "libs/logistics/payment-compensation",
+            "sourceRoot": "libs/logistics/payment-compensation/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/payment-compensation"],
+                    "options": {
+                        "jestConfig": "libs/logistics/payment-compensation/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/payment-compensation/src/**/*.ts",
+                            "libs/logistics/payment-compensation/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
     "logistics-api-agent-balance": {
       "projectType": "library",
       "root": "libs/logistics/api-agent-balance",
@@ -3009,29 +3059,29 @@
         }
       }
     },
-    "payroll-api-person": {
+    "payroll-api-employee": {
       "projectType": "library",
-      "root": "libs/payroll/api-person",
-      "sourceRoot": "libs/payroll/api-person/src",
+      "root": "libs/payroll/api-employee",
+      "sourceRoot": "libs/payroll/api-employee/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/payroll/api-person/tsconfig.lib.json",
-              "libs/payroll/api-person/tsconfig.spec.json"
+              "libs/payroll/api-employee/tsconfig.lib.json",
+              "libs/payroll/api-employee/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/payroll/api-person/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/payroll/api-employee/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/payroll/api-person/jest.config.js",
-            "tsConfig": "libs/payroll/api-person/tsconfig.spec.json",
+            "jestConfig": "libs/payroll/api-employee/jest.config.js",
+            "tsConfig": "libs/payroll/api-employee/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/payroll/api-person/src/test-setup.ts"
+            "setupFile": "libs/payroll/api-employee/src/test-setup.ts"
           }
         }
       },
@@ -3127,29 +3177,29 @@
         }
       }
     },
-    "payroll-ui-person": {
+    "payroll-ui-employee": {
       "projectType": "library",
-      "root": "libs/payroll/ui-person",
-      "sourceRoot": "libs/payroll/ui-person/src",
+      "root": "libs/payroll/ui-employee",
+      "sourceRoot": "libs/payroll/ui-employee/src",
       "prefix": "ss",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/payroll/ui-person/tsconfig.lib.json",
-              "libs/payroll/ui-person/tsconfig.spec.json"
+              "libs/payroll/ui-employee/tsconfig.lib.json",
+              "libs/payroll/ui-employee/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/payroll/ui-person/**/*"]
+            "exclude": ["**/node_modules/**", "!libs/payroll/ui-employee/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/payroll/ui-person/jest.config.js",
-            "tsConfig": "libs/payroll/ui-person/tsconfig.spec.json",
+            "jestConfig": "libs/payroll/ui-employee/jest.config.js",
+            "tsConfig": "libs/payroll/ui-employee/tsconfig.spec.json",
             "passWithNoTests": true,
-            "setupFile": "libs/payroll/ui-person/src/test-setup.ts"
+            "setupFile": "libs/payroll/ui-employee/src/test-setup.ts"
           }
         }
       },

@@ -1,17 +1,16 @@
 import {Component} from '@angular/core';
 import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
-import {Payment} from "../services/payment.class";
-import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
 import {LoginService} from "@ss/common/api-common";
-import {LookupsService} from "@ss/common/api-lookup";
+import {LookupsService, PayModeService} from "@ss/common/api-lookup";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {PaymentsDetailService} from "../services/payments-detail.service";
-import {PayModeService} from "../../../../api-logistics-common/src/lib/pay-mode.service";
 import {BankService} from "@ss/administration/api-bank";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {Payment} from "@ss/logistics/api-common";
+import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
 
 @Component({
   selector: 'ss-payments-detail',
@@ -35,7 +34,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(paymentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PAYMENTS');
+        super(paymentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PAYMENTS');
     }
 
     setupForm(a: Payment): FormGroup {

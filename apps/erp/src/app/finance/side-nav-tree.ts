@@ -1,5 +1,6 @@
 import {
-    ABS_LOGISTICS_PAYMENTS
+    ABS_FINANCE_COMPENSATIONS,
+    ABS_FINANCE_PAYMENTS
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -10,8 +11,14 @@ export const financeNavTree: SideNavNode = {
         {
             name: 'COMMON_PAYMENTS',
             icon: 'fas fa-coins',
-            route: ABS_LOGISTICS_PAYMENTS,
+            route: ABS_FINANCE_PAYMENTS,
             accessRights: 'Payment'
+        },
+        {
+            name: 'LOGISTICS_PAYMENT_COMPENSATION',
+            icon: 'fas fa-coins',
+            route: ABS_FINANCE_COMPENSATIONS,
+            accessRights: 'Accounting'
         },
     ]
 };

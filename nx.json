@@ -279,7 +279,7 @@
     "logistics-ui-totals": {
       "tags": []
     },
-    "payroll-api-person": {
+    "payroll-api-employee": {
       "tags": ["type:api"]
     },
     "payroll-assets": {
@@ -291,7 +291,7 @@
     "payroll-ui-employee-career": {
       "tags": []
     },
-    "payroll-ui-person": {
+    "payroll-ui-employee": {
       "tags": ["type:ui"]
     },
     "purchases-api-purchase-order": {
@@ -431,6 +431,12 @@
     },
     "ui-report-catalog": {
       "tags": []
+    },
+    "logistics-payment-compensation": {
+        "tags": []
+    },
+    "logistics-api-common": {
+        "tags": []
     }
   }
 }

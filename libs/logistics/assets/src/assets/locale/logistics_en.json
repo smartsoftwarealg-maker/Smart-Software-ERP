@@ -107,5 +107,6 @@
     "AWP": "A.W.P",
     "CONSUMER": "Consumer",
     "AGENCY": "Agency",
-    "RAW_AGENT_DEBTS": "Debts (without compensation)"
+    "RAW_AGENT_DEBTS": "Debts (without compensation)",
+    "PAYMENT_COMPENSATION": "Payment compensations"
 }

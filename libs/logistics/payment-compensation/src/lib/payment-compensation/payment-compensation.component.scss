@@ -1,0 +1,48 @@
+
+.container {
+    display: grid;
+    grid-gap: 10px;
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 60px 1fr 64px;
+    grid-template-areas: "date     customer"
+                         "payments debts"
+                         "cancel    make";
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 60px 1fr 1fr 64px 64px;
+        grid-template-areas:
+                         "date"
+                         "customer"
+                         "payments"
+                         "debts"
+                         "cancel"
+                         "make";
+
+    }
+}
+
+.date {
+    grid-area: date;
+    max-width: 220px;
+}
+.customer {
+    grid-area: customer;
+}
+.payments {
+    grid-area: payments;
+}
+.debts {
+    grid-area: debts;
+}
+.cancel {
+    grid-area: cancel;
+    justify-self: start;
+}
+.make {
+    grid-area: make;
+    justify-self: end;
+}

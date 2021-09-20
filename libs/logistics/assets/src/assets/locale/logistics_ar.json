@@ -105,5 +105,6 @@
     "AWP": "السعر المتوسط",
     "CONSUMER": "المستهلك",
     "AGENCY": "وكالة",
-    "RAW_AGENT_DEBTS": "الديون (بدون تعويض)"
+    "RAW_AGENT_DEBTS": "الديون (بدون تعويض)",
+    "PAYMENT_COMPENSATION": "المدفوعات"
 }
