@@ -431,6 +431,12 @@
     },
     "ui-report-catalog": {
       "tags": []
+    },
+    "logistics-payment-compensation": {
+        "tags": []
+    },
+    "logistics-api-common": {
+        "tags": []
     }
   }
 }

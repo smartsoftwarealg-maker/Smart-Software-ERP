@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
-import {Payment} from "../services/payment.class";
-import {AgentService} from "@ss/logistics/api-agent";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -9,6 +7,8 @@ import {DefaultReportService} from "@ss/common/ui-default-report-component";
 import {LookupsService} from "@ss/common/api-lookup";
 import {PaymentsListService} from "../services/payments-list.service";
 import {map, Observable} from "rxjs";
+import {Payment} from "@ss/logistics/api-common";
+import {AgentService} from "@ss/logistics/api-agent";
 
 @Component({
   selector: 'ss-payments-list',

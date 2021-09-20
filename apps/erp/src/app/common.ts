@@ -16,6 +16,7 @@ export const ADMINISTRATION_APP_URL = 'administration';
 export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
 export const PAYROLL_APP_URL = 'payroll';
+export const FINANCE_APP_URL = 'finance';
 export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
 
@@ -69,6 +70,7 @@ export const PURCHASE_ORDER_URL = 'porders';
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
 export const LOGISTICS_PAYMENTS_URL = 'payments';
+export const LOGISTICS_COMPENSATION_URL = 'compensations';
 export const LOGISTICS_OPTION_URL = 'options';
 
 // Sales
@@ -137,10 +139,13 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 
 
 //Logistics
-export const ABS_LOGISTICS_PAYMENTS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
 export const LOGISTICS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_URL].join('/');
+
+//Finance
+export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
+export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
 
 // payroll
 export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');

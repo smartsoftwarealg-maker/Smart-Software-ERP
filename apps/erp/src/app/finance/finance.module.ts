@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { mainRoutes } from './routes';
+import { financeRoutes } from './routes';
 
 @NgModule({
     imports: [
-        RouterModule.forChild(mainRoutes)
+        RouterModule.forChild(financeRoutes)
     ]
 })
-export class FinanceModule {
-}
+export class FinanceModule {}

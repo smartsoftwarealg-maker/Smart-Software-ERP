@@ -1,0 +1,63 @@
+<div class="container">
+    <mat-form-field class="date">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker [formControl]="date"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field class="customer">
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="agentAutoCompleteModel"
+                          [formControl]="agent">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="payments">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node"
+                       matTreeNodePadding
+                       class="selectable"
+                       (click)="selectPayment(node)"
+                       [class.selected]="node.id === selectedPayment?.id">
+            <!-- use a disabled button to provide padding for tree leaf -->
+            <button mat-icon-button disabled></button>
+            {{ node.description }}: {{ node.amount | number: '1.2-2'}}
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild"
+                       matTreeNodePadding
+                       class="selectable"
+                       (click)="selectPayment(node)"
+                       [class.selected]="node.id === selectedPayment?.id">
+            <button mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'Toggle ' + node.name">
+                {{treeControl.isExpanded(node) ? '-' : '+'}}
+            </button>
+            {{ node.description }}: {{ node.amount | number: '1.2-2'}}
+        </mat-tree-node>
+    </mat-tree>
+    <mat-list role="list" class="debts">
+        <mat-list-item role="listitem"
+                       class="selectable"
+                       *ngFor="let d of debts"
+                       (click)="selectDebt(d)"
+                       [class.selected]="d?.id === selectedDebt?.id">
+            {{ d?.document }}: {{ d?.balance | number: '1.2-2' }}
+        </mat-list-item>
+    </mat-list>
+    <div class="cancel">
+        <button mat-raised-button
+                color="accent"
+                (click)="cancelPayments()"
+                [disabled]="!selectedPayment || selectedPayment?.level === 0"> LOGISTICS_CANCEL_PAYMENT<span
+            translate></span></button>
+    </div>
+    <div class="make">
+        <button mat-raised-button
+                color="primary"
+                (click)="makePayment()"
+                [disabled]="!selectedDebt || !selectedPayment || selectedPayment?.level !== 0"><span translate>LOGISTICS_MAKE_PAYMENT</span>
+        </button>
+    </div>
+</div>
