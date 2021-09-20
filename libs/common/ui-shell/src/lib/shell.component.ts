@@ -50,6 +50,13 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
 
     ngAfterViewChecked() {
         this.shellSrv.setUpdateShellFn(() => this.cdRef.detectChanges());
+        if (this.shellSrv.focusSearchField) {
+            const field = document.getElementById('shellSearchField');
+            if (field) {
+                field.focus();
+                this.shellSrv.focusSearchField = false;
+            }
+        }
     }
 
     @HostListener('window:resize', ['$event'])

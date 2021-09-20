@@ -77,7 +77,7 @@
                     <div class="ss-form-field large-only" *ngIf="shellSrv.hasSearch">
                         <mat-form-field floatLabel="always">
                             <mat-label translate>{{shellSrv.searchInputTitle}}</mat-label>
-                            <input [formControl]="shellSrv.searchFormControl" matInput type="text">
+                            <input [formControl]="shellSrv.searchFormControl" matInput type="text" id="shellSearchField">
                         </mat-form-field>
                     </div>
 

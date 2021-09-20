@@ -29,8 +29,11 @@ h2 {
             i { font-size: 2.3em; }
         }
         .txt {
-            height: 32px;
-            line-height: 32px;
+            height: 48px;
+            line-height: 48px;
+            span {
+                line-height: 16px;
+            }
         }
     }
     .app-card:hover .img i {
@@ -49,6 +52,10 @@ h2 {
         .txt {
             height: 48px;
             line-height: 48px;
+            span {
+                display: inline-block;
+                line-height: 16px;
+            }
         }
     }
     .app-card:hover .img i {
@@ -65,8 +72,11 @@ h2 {
             i { font-size: 3.5em; }
         }
         .txt {
-            height: 48px;
-            line-height: 48px;
+            height: 60px;
+            line-height: 60px;
+            span {
+                line-height: 20px;
+            }
         }
     }
     .app-card:hover .img i {
@@ -109,7 +119,6 @@ h2 {
 
         span {
             display: inline-block;
-            line-height: 20px;
         }
     }
 

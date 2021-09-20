@@ -11,6 +11,9 @@ import { MainPageService } from '@ss/common/api-common';
     styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit, OnDestroy {
+
+    public searchResult: SideNavNode[] = null;
+    
     constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
                 private router: Router,
@@ -29,14 +32,29 @@ export class MainPageComponent implements OnInit, OnDestroy {
                 (f: string) => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
-                        // todo: implement filter here
-                        alert('Filter is NOT IMPLEMENTED YET');
+                        this.searchResult = [];
+                        const words = lowF.split(' ');
+                        this.srv.display.forEach(t => this.searchTree(t, words, this.searchResult));
                     } else {
-                        this.srv.display = this.shellSrv.navData;
+                        this.searchResult = null;
                     }
                 }
-            )
+            ),
+            true // focus the search field for this component
         );
+    }
+
+    searchTree(tree: SideNavNode, searchWords: string[], result: SideNavNode[]) {
+        if (!tree) {
+            return;
+        }
+        const nodeName = this.langSrv.translate(tree.name).toLowerCase();
+        if (searchWords.map(w => nodeName.indexOf(w) > -1).reduce((a, b) => a && b, true)) {
+            result.push(tree);
+        }
+        if (tree.children) {
+            tree.children.forEach(c => this.searchTree(c, searchWords, result));
+        }
     }
 
     onClick(node: SideNavNode): void {
@@ -47,6 +65,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
         } else if (node.route) {
             this.router.navigateByUrl(node.route);
         }
+        this.clearSearch();
     }
 
     updateGobackButton() {
@@ -63,6 +82,14 @@ export class MainPageComponent implements OnInit, OnDestroy {
         if (!this.srv.historyStack.length) {
             this.shellSrv.setGoBackFn(null);
         }
+        this.clearSearch();
+    }
+
+    clearSearch(): void {
+        if (this.shellSrv.searchFormControl) {
+            this.shellSrv.searchFormControl.setValue(null);
+        }
+        this.searchResult = null;
     }
 
     ngOnDestroy(): void {
