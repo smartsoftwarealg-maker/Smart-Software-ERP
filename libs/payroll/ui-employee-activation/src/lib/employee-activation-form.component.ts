@@ -1,15 +1,15 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {EmployeeActivationUIService} from './employee-activation-ui.service';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EmployeeActivation, EmployeeActivationService} from '@ss/payroll/api-person';
-import {ActivatedRoute} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {EmployeeActivationComponent} from './employee-activation.component';
-import {dateToYmdStr, LoginService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
-import {EmploymentType, EmploymentTypeService, LookupsService} from '@ss/common/api-lookup';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { EmployeeActivationUIService } from './employee-activation-ui.service';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmployeeActivation, EmployeeActivationService } from '@ss/payroll/api-employee';
+import { ActivatedRoute } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { EmployeeActivationComponent } from './employee-activation.component';
+import { dateToYmdStr, LoginService } from '@ss/common/api-common';
+import { Observable, of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { EmploymentType, EmploymentTypeService, LookupsService } from '@ss/common/api-lookup';
 
 
 @Component({
@@ -33,15 +33,15 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     };
 
     constructor(public uiSrv: EmployeeActivationUIService,
-                public shellSrv: ShellService,
-                public employeeActivationSrv: EmployeeActivationService,
-                public employmentTypeSrv: EmploymentTypeService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: FormBuilder,
-                public lookupsSrv: LookupsService,
-                public confirmationSrv: ConfirmationDialogService,
-                private loginSrv: LoginService) {}
+        public shellSrv: ShellService,
+        public employeeActivationSrv: EmployeeActivationService,
+        public employmentTypeSrv: EmploymentTypeService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public formBuilder: FormBuilder,
+        public lookupsSrv: LookupsService,
+        public confirmationSrv: ConfirmationDialogService,
+        private loginSrv: LoginService) { }
 
     ngOnInit(): void {
         const parent: EmployeeActivationComponent = this.uiSrv.instance;

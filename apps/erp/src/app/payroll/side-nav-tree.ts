@@ -6,10 +6,11 @@ import {
     ABS_PAYROLL_NATIONALITIES_URL,
     ABS_PAYROLL_POSTS_URL,
     ABS_PAYROLL_SERVICES_URL,
-    ABS_PAYROLL_PERSONS_URL,
+    ABS_PAYROLL_EMPLOYEES_URL,
     ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL,
     ABS_PAYROLL_EMPLOYMENT_TYPE_URL,
-    ABS_PAYROLL_SUSPENSION_REASON_URL
+    ABS_PAYROLL_SUSPENSION_REASON_URL,
+    ABS_PAYROLL_CAREER_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -28,7 +29,7 @@ export const payrollNavTree: SideNavNode = {
                 },
                 {
                     name: 'COMMON_SUSPENSION_REASONS',
-                    icon: 'fas fa-chair-office',
+                    icon: 'fas fa-user-times',
                     route: ABS_PAYROLL_SUSPENSION_REASON_URL
                 },
                 {
@@ -75,12 +76,17 @@ export const payrollNavTree: SideNavNode = {
                 {
                     name: 'PAYROLL_EMPLOYEES_LIST',
                     icon: 'fas fa-list-ol',
-                    route: ABS_PAYROLL_PERSONS_URL
+                    route: ABS_PAYROLL_EMPLOYEES_URL
                 },
                 {
                     name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
                     icon: 'fas fa-play',
                     route: ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL
+                },
+                {
+                    name: 'PAYROLL_CAREER',
+                    icon: 'fas fa-user-hard-hat',
+                    route: ABS_PAYROLL_CAREER_URL
                 }
             ]
         }

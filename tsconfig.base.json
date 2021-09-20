@@ -211,12 +211,12 @@
             "@ss/logistics/ui-totals": [
                 "libs/logistics/ui-totals/src/index.ts"
             ],
-            "@ss/payroll/api-person": ["libs/payroll/api-person/src/index.ts"],
+            "@ss/payroll/api-employee": ["libs/payroll/api-employee/src/index.ts"],
             "@ss/payroll/ui-employee-career": ["libs/payroll/ui-employee-career/src/index.ts"],
             "@ss/payroll/ui-employee-activation": [
                 "libs/payroll/ui-employee-activation/src/index.ts"
             ],
-            "@ss/payroll/ui-person": ["libs/payroll/ui-person/src/index.ts"],
+            "@ss/payroll/ui-employee": ["libs/payroll/ui-employee/src/index.ts"],
             "@ss/purchases/api-purchase-order": [
                 "libs/purchases/api-purchase-order/src/index.ts"
             ],

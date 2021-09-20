@@ -3,7 +3,7 @@ import { ToolbarButton, ShellService, SnackBarService, KeepOnToolbar } from '@ss
 import { EmploymentType, EmploymentTypeService, LookupsService, SuspensionReason } from '@ss/common/api-lookup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-person';
+import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { ActivatedRoute } from '@angular/router';
 import { dateToYmdStr } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
