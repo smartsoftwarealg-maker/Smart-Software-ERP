@@ -107,5 +107,6 @@
     "AWP":                "A.W.P",
     "CONSUMER":           "Consumer",
     "PAYMENTS":            "",
-    "RAW_AGENT_DEBTS":     ""
+    "RAW_AGENT_DEBTS":     "",
+    "PAYMENT_COMPENSATION": ""
 }

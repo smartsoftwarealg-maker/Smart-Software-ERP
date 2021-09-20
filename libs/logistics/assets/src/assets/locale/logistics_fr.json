@@ -104,5 +104,6 @@
     "AWP": "PMP",
     "CONSUMER": "Consomateur",
     "AGENCY": "Agence",
-    "RAW_AGENT_DEBTS": "Dettes (sans compensation)"
+    "RAW_AGENT_DEBTS": "Dettes (sans compensation)",
+    "PAYMENT_COMPENSATION": "Indemnités de paiement"
 }

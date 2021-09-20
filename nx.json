@@ -216,6 +216,9 @@
         "logistics-api-circulation": {
             "tags": []
         },
+        "logistics-api-common": {
+            "tags": []
+        },
         "logistics-api-cost-center": {
             "tags": []
         },
@@ -229,6 +232,9 @@
             "tags": []
         },
         "logistics-assets": {
+            "tags": []
+        },
+        "logistics-payment-compensation": {
             "tags": []
         },
         "logistics-payments": {

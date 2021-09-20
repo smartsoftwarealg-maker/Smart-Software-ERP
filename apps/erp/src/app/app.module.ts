@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import {
-    ADMINISTRATION_APP_URL,
+    ADMINISTRATION_APP_URL, FINANCE_APP_URL,
     LOGISTICS_APP_URL,
     PAYROLL_APP_URL,
     PURCHASES_APP_URL,
@@ -46,6 +46,10 @@ const routes: Routes = [
             {
                 path: PAYROLL_APP_URL,
                 loadChildren: () => import('./payroll/payroll.module').then(m => m.PayrollModule)
+            },
+            {
+                path: FINANCE_APP_URL,
+                loadChildren: () => import('./finance/finance.module').then(m => m.FinanceModule)
             },
             {
                 path: PURCHASES_APP_URL,

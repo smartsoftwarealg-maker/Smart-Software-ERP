@@ -1,9 +1,7 @@
 import {
     LOGISTICS_AGENT_URL,
     LOGISTICS_OPTION_URL,
-    LOGISTICS_PAY_METHOD_URL, LOGISTICS_PAYMENTS_URL,
-    LOOKUPS_URL,
-    STOCK_AGENT_URL,
+    LOGISTICS_PAY_METHOD_URL, LOOKUPS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -56,24 +54,6 @@ export const mainRoutes: Routes = [
         component: OptionsDetailComponent,
         canActivate: [CanActivateService],
         canDeactivate: [CanDeactivateService]
-    },
-    {
-        path: LOGISTICS_PAYMENTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: PaymentsListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: PaymentsDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

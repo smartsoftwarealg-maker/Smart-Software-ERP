@@ -151,6 +151,9 @@
             "@ss/logistics/api-circulation": [
                 "libs/logistics/api-circulation/src/index.ts"
             ],
+            "@ss/logistics/api-common": [
+                "libs/logistics/api-common/src/index.ts"
+            ],
             "@ss/logistics/api-cost-center": [
                 "libs/logistics/api-cost-center/src/index.ts"
             ],
@@ -162,6 +165,9 @@
             ],
             "@ss/logistics/api-transaction": [
                 "libs/logistics/api-transaction/src/index.ts"
+            ],
+            "@ss/logistics/payment-compensation": [
+                "libs/logistics/payment-compensation/src/index.ts"
             ],
             "@ss/logistics/payments": ["libs/logistics/payments/src/index.ts"],
             "@ss/logistics/ui-account": [

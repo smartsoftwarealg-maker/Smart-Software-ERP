@@ -2441,6 +2441,31 @@
                 }
             }
         },
+        "logistics-api-common": {
+            "projectType": "library",
+            "root": "libs/logistics/api-common",
+            "sourceRoot": "libs/logistics/api-common/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/api-common"],
+                    "options": {
+                        "jestConfig": "libs/logistics/api-common/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/api-common/src/**/*.ts",
+                            "libs/logistics/api-common/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "logistics-api-cost-center": {
             "projectType": "library",
             "root": "libs/logistics/api-cost-center",
@@ -2595,6 +2620,31 @@
             "schematics": {
                 "@nrwl/angular:component": {
                     "style": "scss"
+                }
+            }
+        },
+        "logistics-payment-compensation": {
+            "projectType": "library",
+            "root": "libs/logistics/payment-compensation",
+            "sourceRoot": "libs/logistics/payment-compensation/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/payment-compensation"],
+                    "options": {
+                        "jestConfig": "libs/logistics/payment-compensation/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/payment-compensation/src/**/*.ts",
+                            "libs/logistics/payment-compensation/src/**/*.html"
+                        ]
+                    }
                 }
             }
         },

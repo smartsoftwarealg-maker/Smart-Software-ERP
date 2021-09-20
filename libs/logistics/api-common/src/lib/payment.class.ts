@@ -20,3 +20,23 @@ export interface Payment {
     credit?: number;
     denomination?: string;
 }
+
+export interface Accounting {
+    id: number,
+    payRef: number;
+    checkInfo?: number;
+    accountno?: number;
+    date?:  Date;
+    journalno?: number;
+    description?: string;
+    balance: number;
+    userId?: number;
+    creationDate: Date
+}
+
+export interface Debt {
+    id: number;
+    document: string;
+    balance: number;
+}
+

@@ -14,7 +14,7 @@ import { PaymentService } from './payment.service';
 import { Payment, paymentsUrl, agentsUrl } from './payment-api';
 
 @Component({
-    selector: 'app-payment-list',
+    selector: 'ss-app-payment-list',
     styleUrls: ['./payment-list.component.scss'],
     templateUrl: './payment-list.component.html'
 })
@@ -27,17 +27,17 @@ export class PaymentListComponent extends AbstractEntityList<Payment, BackendDat
     clientDataSrc: BackendDataSource<Agent>;
 
     constructor(public httpSrv: HttpService,
-        public userSrv: UserService,
-        public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
-        public router: Router,
-        public activatedRoute: ActivatedRoute,
-        public clientSrv: ClientsService,
-        public paySrv: PaymentService) {
-        // entity: null
-        super(new BackendDataSource(httpSrv, null), userSrv.getRights('payments'), snackBarSrv, paySrv.pagination);
-        this.clientSrv.pagination.onChange = () => this.refreshClients();
-        this.clientDataSrc = new BackendDataSource<Agent>(httpSrv, agentsUrl);
+                public userSrv: UserService,
+                public langSrv: LanguageService,
+                public snackBarSrv: SnackBarService,
+                public router: Router,
+                public activatedRoute: ActivatedRoute,
+                public clientSrv: ClientsService,
+                public paySrv: PaymentService) {
+                // entity: null
+                super(new BackendDataSource(httpSrv, null), userSrv.getRights('payments'), snackBarSrv, paySrv.pagination);
+                this.clientSrv.pagination.onChange = () => this.refreshClients();
+                this.clientDataSrc = new BackendDataSource<Agent>(httpSrv, agentsUrl);
     }
 
     ngOnInit(): void {
