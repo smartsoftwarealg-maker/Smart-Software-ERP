@@ -23,6 +23,7 @@ export interface Deposit {
     sourceId?: number;
     isTransfer?: boolean;
     email?: string;
+    withdrawn: boolean;
 }
 
 export interface History {

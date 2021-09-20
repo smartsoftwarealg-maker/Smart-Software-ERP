@@ -18,5 +18,7 @@
     "RATE": "Taux",
     "GLOBAL_BALANCE": "Rapport sur le bilan global",
     "TRANSFERS": "Transferts de devises client",
-    "DEST_AMOUNT": "Montant transféré"
+    "DEST_AMOUNT": "Montant transféré",
+    "WITHDRAWN": "transféré",
+    "W":         "T"
 }

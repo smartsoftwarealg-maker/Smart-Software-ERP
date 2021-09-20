@@ -7,7 +7,7 @@ import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 
 @Component({
@@ -67,7 +67,8 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
             exchangeRate: [b.exchangeRate || 1 ],
             soldAmount: [{ value: b.amount > 0.0? ((b.exchangeRate || 1) * b.amount) : 0.0, disabled: true }],
             debit: [{ value: debit, disabled: b.amount < 0.000001}, Validators.required],
-            credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required]
+            credit: [{ value: credit, disabled: b.amount > 0.000001}, Validators.required],
+            withdrawn: [b.withdrawn]
         });
     }
 
