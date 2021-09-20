@@ -51,6 +51,14 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="withdrawn">
+            <mat-header-cell *matHeaderCellDef translate>EXCHANGE_W</mat-header-cell>
+            <mat-cell *matCellDef="let e" class="f-primary number">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.withdrawn"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable"
