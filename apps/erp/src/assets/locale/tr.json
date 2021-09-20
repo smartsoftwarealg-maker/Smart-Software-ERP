@@ -11,5 +11,17 @@
     "ADMINISTRATION": "Yönetim",
     "PURCHASES": "Alimlar",
     "UPDATE": "Güncelleme",
-    "CONFIRMATION": "Onayla"
+    "CONFIRMATION": "Onayla",
+    "MONTH_1": "Ocak",
+    "MONTH_2": "Şubat",
+    "MONTH_3": "Mart",
+    "MONTH_4": "Nisan",
+    "MONTH_5": "Mayıs",
+    "MONTH_6": "Haziran",
+    "MONTH_7": "Temmuz",
+    "MONTH_8": "Ağustos",
+    "MONTH_9": "Eylül",
+    "MONTH_10": "Ekim",
+    "MONTH_11": "Kasım",
+    "MONTH_12": "Aralık"
 }

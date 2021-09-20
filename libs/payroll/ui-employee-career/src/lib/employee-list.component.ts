@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee as IEmployee, EmployeeService, EmployeeActivationService } from '@ss/payroll/api-employee';
+import { Employee as IEmployee, EmployeeService, Career, CareerService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { tap, switchMap } from 'rxjs/operators';
 
 interface Lookup {
     id: number;
@@ -21,12 +22,8 @@ interface Employee extends IEmployee {
     imageModel: ImageModel;
     // turns false when loading is done
     loading: boolean;
-    //
-    suspended: boolean;
-    from: string;
-    to: string;
-    suspensionReason: number;
-    employmentType: number;
+    // career
+    career: Career;
 }
 
 @Component({
@@ -40,12 +37,14 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         'photo',
         'id',
         'fullname',
-        'date'
+        'post',
+        'date',
+        'payMonth'
     ];
 
     constructor(
         public employeeSrv: EmployeeService,
-        public employeeActivationSrv: EmployeeActivationService,
+        public careerSrv: CareerService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -55,11 +54,22 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION');
+        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_CAREER');
     }
 
+    posts: { [id: number]: string; };
+    divisions: { [id: number]: string; };
+    departments: { [id: number]: string; };
+    service: { [id: number]: string; };
+
     public preload(): Observable<any> {
-        return null;
+        this.posts = {};
+        return this.lookupsSrv.getPosts()
+            .pipe(
+                tap(posts => this.posts = this.lookupListToMap(posts))
+                //,
+                //switchMap(() => this.lookupsSrv.getDepartments)
+            );
     }
 
     lookupListToMap(data: Lookup[]): { [id: number]: string; } {
@@ -77,22 +87,23 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             p.loading = true;
-            this.employeeActivationSrv.setParentId(p.id);
+            this.careerSrv.setParentId(p.id);
             // incase of error, keep displaying the loading animation
-            this.employeeActivationSrv.getLast()
-                .subscribe(x => {
-                    p.loading = false;
-                    p.employmentType = !!x ? x.employmentType : 0;
-                    p.suspensionReason = !!x ? x.suspensionReason : 0;
-                    p.from = !!x ? this.langSrv.formatDate(x.hireDate) : null;
-                    p.to = !!x ? this.langSrv.formatDate(x.suspensionDate) : null;
-                    if (!!x && p.to == null) {
-                        p.to = this.langSrv.translate('PAYROLL_TODAY');
+            this.careerSrv.getLast()
+                .subscribe((x: Career) => {
+                    p.career = x;
+                    if (p.career) {
+                        p.career.from_date = this.langSrv.formatDate(p.career.from_date);
+                        p.career.to_date = this.langSrv.formatDate(p.career.to_date);
                     }
-                    p.suspended = !x || x.activityStatus !== 0;
-                })
+                    p.loading = false;
+                });
             return p;
         }));
+    }
+
+    payMonth(c: Career): string {
+        return c && c.paymonth ? (this.langSrv.translate('MONTH_' + (c.paymonth % 100)) + ' ' +  Math.floor(c.paymonth/100)) : null;
     }
 
     ngOnInit(): void {

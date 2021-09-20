@@ -37,44 +37,30 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let e" style="justify-content: center; text-align: center">
             <i *ngIf="e.loading" class="fas fa-spinner fa-spin"></i>
-            <span *ngIf="!e.loading" style="display: inline-block;">
-                {{e.from}} {{e.to}}
+            <span *ngIf="!e.loading && e.career" style="display: inline-block;">
+                {{e.career.from_date}} {{e.career.to_date}}
             </span>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="suspended">
-        <mat-header-cell style="justify-content: center" *matHeaderCellDef translate>
-            PAYROLL_SUSPENDED
+    <ng-container matColumnDef="payMonth">
+        <mat-header-cell *matHeaderCellDef style="justify-content: center; text-align: center" translate>PAYROLL_PAYMONTH
         </mat-header-cell>
-        <mat-cell style="justify-content: center" *matCellDef="let e">
+        <mat-cell *matCellDef="let e" style="justify-content: center; text-align: center">
             <i *ngIf="e.loading" class="fas fa-spinner fa-spin"></i>
-            <span *ngIf="!e.loading" style="display: inline-block;">
-                <i *ngIf="e.suspended" class="fas fa-times"></i>
+            <span *ngIf="!e.loading && e.career" style="display: inline-block;">
+                {{payMonth(e.career)}}
             </span>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="employmentType">
-        <mat-header-cell *matHeaderCellDef translate>
-            PAYROLL_EMPLOYMENT_TYPE
+    <ng-container matColumnDef="post">
+        <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST
         </mat-header-cell>
         <mat-cell *matCellDef="let e">
             <i *ngIf="e.loading" class="fas fa-spinner fa-spin"></i>
-            <span *ngIf="!e.loading" style="display: inline-block;">
-                {{employmentTypes[e.employmentType]}}
-            </span>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="suspensionReason">
-        <mat-header-cell *matHeaderCellDef translate>
-            PAYROLL_SUSPENSION_REASON
-        </mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            <i *ngIf="e.loading" class="fas fa-spinner fa-spin"></i>
-            <span *ngIf="!e.loading" style="display: inline-block;">
-                {{suspensionReasons[e.suspensionReason]}}
+            <span *ngIf="!e.loading && e.career" style="display: inline-block;">
+                {{posts[e.career.post]}}
             </span>
         </mat-cell>
     </ng-container>
