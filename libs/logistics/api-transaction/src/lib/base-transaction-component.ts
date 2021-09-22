@@ -1,15 +1,12 @@
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Transaction} from '@ss/logistics/api-transaction';
-import {InvoiceService} from '@ss/sales/api-invoice';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {UserListService} from '@ss/common/api-users';
-import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {Transaction} from './transaction';
 
 export abstract class BaseTransactionComponent extends BaseEntityDetailComponent<Transaction> {
     constructor(public invoiceService: BaseEntityService<Transaction>,
@@ -23,7 +20,6 @@ export abstract class BaseTransactionComponent extends BaseEntityDetailComponent
     }
 
     canDeactivate(): Observable<boolean> {
-        console.log('calling canDeactivate', this.id);
         return this.id === 0 ?
             of(true) :
             this.invoiceService

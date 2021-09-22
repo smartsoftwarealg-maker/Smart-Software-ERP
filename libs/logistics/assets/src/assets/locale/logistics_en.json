@@ -108,5 +108,7 @@
     "CONSUMER": "Consumer",
     "AGENCY": "Agency",
     "RAW_AGENT_DEBTS": "Debts (without compensation)",
-    "PAYMENT_COMPENSATION": "Payment compensations"
+    "PAYMENT_COMPENSATION": "Payment compensations",
+    "MAKE_PAYMENT": "Make payment",
+    "CANCEL_PAYMENT": "Cancel payment"
 }
