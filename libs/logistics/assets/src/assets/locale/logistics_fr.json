@@ -105,5 +105,7 @@
     "CONSUMER": "Consomateur",
     "AGENCY": "Agence",
     "RAW_AGENT_DEBTS": "Dettes (sans compensation)",
-    "PAYMENT_COMPENSATION": "Indemnités de paiement"
+    "PAYMENT_COMPENSATION": "Indemnités de paiement",
+    "MAKE_PAYMENT": "Effectuer le paiement",
+    "CANCEL_PAYMENT": "Annuler le paiement"
 }
