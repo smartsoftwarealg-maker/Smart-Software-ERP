@@ -15,7 +15,7 @@
     <p>{{error['detail'] ? "Detail : " + error['detail'] : ''}}</p>
   </div>
 </mat-dialog-content>
-
+<div> {{ error | json }}</div>
 <div mat-dialog-actions>
   <button class="float-end" mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1" translate>CANCEL</button>
 </div>
