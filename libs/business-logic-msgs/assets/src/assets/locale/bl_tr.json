@@ -1,0 +1,21 @@
+{
+    "REFERENCE_NOT_FOUND":                  "Belirtilen mağazada referans bulunamadı",
+    "NEGATIVE_BALANCE":                     "Negatif denge",
+    "MISSING_COMMISSION":                   "Eksik komisyon tutarı",
+    "RECORD_NOT_FOUND":                     "Kayıt bulunamadı",
+    "MISSING_TRANSFER_INFO":                "Eksik aktarım bilgisi",
+    "SAME_CURRENCY_TRANSFER":               "Aynı para birimi transferi. Lütfen farklı para birimleri",
+    "MISSING_AGENT_ACCOUNTNO":              "Eksik hesap numarası",
+    "CUSTOMER_NOT_FOUND":                   "Müşteri bulunamadı",
+    "INVALID_DATA":                         "Geçersiz veri belirtildi",
+    "MISSING_STORE":                        "Belirtilen mağaza mevcut değil",
+    "UNAVAILABLE_INVENTORY":                "Kullanılamayan envanter",
+    "UNAVAILABLE_INSTANT_INVENTORY":        "Kullanılamıyor anlık envanter. Lütfen giriş tarihlerini doğrulayın",
+    "REFERENCE_MISMATCH":                   "Referans uyuşmazlığı. Referans yanlışlıkla değiştirildi.",
+    "STORE_MISMATCH":                       "Mağaza uyuşmazlığı. Mağaza yanlışlıkla değiştirildi.",
+    "ORDER_EXCEEDED":                       "Oder miktarı aşıldı",
+    "QTY_STILL_SATISFIED":                  "Miktar hala tatmin edici. Güncellemeye izin verilmiyor.",
+    "REPORT_NOT_FOUND":                     "Rapor bulunamadı.",
+    "MISSING_SMTP_CONFIGURATION":           "Eksik smtp yapılandırması",
+    "MISSING_COMPANY_EMAIL":                "Eksik şirket e-postası."
+}

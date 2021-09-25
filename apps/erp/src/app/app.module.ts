@@ -99,6 +99,7 @@ export class AppModule {
         langSrv.addSource('assets/locale/sales_', 'SALES_');
         langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
         langSrv.addSource('assets/locale/purchases_', 'PURCHASES_');
+        langSrv.addSource('assets/locale/bl_', 'BL_');
     }
 
 }
