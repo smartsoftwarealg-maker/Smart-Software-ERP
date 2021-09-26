@@ -1,9 +1,9 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Lookup} from "../lookup";
-import {ImportInfo} from "../import-info";
-import {DocImportService} from "../doc-import.service";
-import {FormControl} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Lookup} from '../lookup';
+import {ImportInfo} from '../import-info';
+import {DocImportService} from '../doc-import.service';
+import {FormControl} from '@angular/forms';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 
 @Component({
@@ -25,7 +25,6 @@ export class DocImportComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], agentId?: number }) {
       this.documentList = data.documentList;
       this.agentId = data.agentId;
-      console.log('agentId', this.agentId);
   }
 
   ngOnInit(): void {

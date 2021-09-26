@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -14,6 +14,10 @@ import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
+import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
+import {InvoiceLinesListComponent} from "@ss/sales/ui-invoice";
+import {ReceptionLinesListComponent} from "./reception-lines-list.component";
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -22,12 +26,23 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionDetailComponent extends BaseTransactionComponent implements OnInit {
+    @ViewChild(ReceptionLinesListComponent) detail: ReceptionLinesListComponent;
 
+    private reception: Transaction = null;
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
+
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importDocument(),
+    }
 
     constructor(
         public receptionService: ReceptionService,
@@ -41,6 +56,8 @@ export class ReceptionDetailComponent extends BaseTransactionComponent implement
         public lookupsSrv: LookupsService,
         public readonly loginSrv: LoginService,
         private payMethodSrv: PayMethodService,
+        private dialog: MatDialog,
+        private docImportService: DocImportService,
         private currencySrv: CurrencyService) {
         super(receptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_RECEPTION');
     }
@@ -53,6 +70,8 @@ export class ReceptionDetailComponent extends BaseTransactionComponent implement
 
     public setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
+        this.reception = form;
+        this.importBtn.disabled = form.agent == null || form.agent === undefined;
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
@@ -77,5 +96,32 @@ export class ReceptionDetailComponent extends BaseTransactionComponent implement
     ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
+        this.shellSrv.addButton(this.importBtn);
+    }
+
+    private importDocument() {
+        if (!this.importBtn.disabled) {
+            const agentId = this.form.controls['agent'].value;
+            const dialogRef = this.dialog.open(DocImportComponent, {
+                width: '70%',
+                height: '55%',
+                data: { documentList: [ { id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }],
+                        agentId: agentId}
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result && result['document']  && result['number']) {
+                    const document = result['document'];
+                    const number   = result['number'];
+                    this.docImportService
+                        .importDoc(document, number, this.reception.id)
+                        .pipe(tap(_ => this.detail.loadDetailLines()))
+                        .subscribe({
+                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                        });
+                }
+            });
+        }
     }
 }

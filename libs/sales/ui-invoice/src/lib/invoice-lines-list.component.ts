@@ -8,8 +8,8 @@ import {map, switchMap, tap} from 'rxjs/operators';
 import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {Store, LotsService} from '@ss/common/api-lookup';
-import {DeliveryLine} from '@ss/sales/api-delivery-lines';
 import {InvoiceLinesService} from '@ss/sales/api-invoice';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-invoice-lines-list',
@@ -22,9 +22,9 @@ export class InvoiceLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: DeliveryLine[];
+    data: TransactionLine[];
     selectedId: number;
-    selectedRow: DeliveryLine = null;
+    selectedRow: TransactionLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -90,7 +90,7 @@ export class InvoiceLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(row: DeliveryLine) {
+    select(row: TransactionLine) {
         this.selectedRow = row;
         this.selectedId = row ? row.id : 0;
     }

@@ -107,5 +107,6 @@
     "RAW_AGENT_DEBTS": "Dettes (sans compensation)",
     "PAYMENT_COMPENSATION": "Indemnités de paiement",
     "MAKE_PAYMENT": "Effectuer le paiement",
-    "CANCEL_PAYMENT": "Annuler le paiement"
+    "CANCEL_PAYMENT": "Annuler le paiement",
+    "PURCHASE_ORDER": "Bon de commande"
 }

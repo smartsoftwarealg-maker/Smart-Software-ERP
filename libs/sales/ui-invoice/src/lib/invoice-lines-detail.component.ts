@@ -9,17 +9,17 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {DeliveryLine} from '@ss/sales/api-delivery-lines';
 import { fillObject } from '@ss/common/api-common';
 import {InvoiceLinesService} from '@ss/sales/api-invoice';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './invoice-lines-detail.component.html'
 })
-export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {
-   private line: DeliveryLine = null;
+export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
+   private line: TransactionLine = null;
 
     parentId: number;
 
@@ -60,7 +60,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Deliv
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
-    public setupForm(b: DeliveryLine) {
+    public setupForm(b: TransactionLine) {
         this.line = b;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
@@ -82,7 +82,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Deliv
     }
 
 
-    finishLoading(e: DeliveryLine) {
+    finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         this.form.get('qtySatisfied').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
@@ -97,7 +97,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Deliv
         })
     }
 
-    readForm(): DeliveryLine {
+    readForm(): TransactionLine {
         const form =  super.readForm();
         fillObject(this.line, form)
         return form;
