@@ -108,5 +108,6 @@
     "RAW_AGENT_DEBTS": "الديون (بدون تعويض)",
     "PAYMENT_COMPENSATION": "المدفوعات",
     "MAKE_PAYMENT": "الدفع",
-    "CANCEL_PAYMENT": "إلغاء الدفع"
+    "CANCEL_PAYMENT": "إلغاء الدفع",
+    "PURCHASE_ORDER": "أمر شراء"
 }

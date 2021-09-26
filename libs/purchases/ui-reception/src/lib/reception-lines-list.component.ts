@@ -10,24 +10,19 @@ import {Article, ArticleService} from '@ss/stock/api-article';
 import {Store, LotsService} from '@ss/common/api-lookup';
 import {Transaction, TransactionLine} from '@ss/logistics/api-transaction';
 import {ReceptionLinesService} from '@ss/purchases/api-reception';
+import {DocImportingDocument} from '@ss/logistics/api-common';
 
 @Component({
     selector: 'ss-reception-lines-list',
     styleUrls: [ '../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './reception-lines-list.component.html'
 })
-export class ReceptionLinesListComponent implements OnInit {
-
-    //
-    public readonly pagination = PaginationModel.newInstance();
+export class ReceptionLinesListComponent extends DocImportingDocument implements OnInit {
 
     parentId: number;
-    data: TransactionLine[] = [];
     selectedId: number;
     selectedRow: TransactionLine
 
-    articles: { [reference: string]: string; } = {};
-    stores: { [id: number]: string; } = {};
 
     displayedColumns = [
         'position',
@@ -48,6 +43,7 @@ export class ReceptionLinesListComponent implements OnInit {
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
+        super(shellSrv, storeNamesSrv, articleSrv, receptionLinesSrv)
     }
 
 
@@ -104,15 +100,17 @@ export class ReceptionLinesListComponent implements OnInit {
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.receptionLinesSrv.remove(a.id)
-                                .subscribe(
-                                    () => {
-                                        this.snackBarSrv.showSuccessMessage();
-                                        this.loadReceptionLines();
-                                    },
-                                    err => {
-                                        this.snackBarSrv.showFailureMessage();
-                                        this.shellSrv.setLoading(false);
-                                        throw err;
+                                .subscribe({
+                                        next:
+                                            () => {
+                                                this.snackBarSrv.showSuccessMessage();
+                                                this.loadReceptionLines();
+                                            },
+                                        error: err => {
+                                            this.snackBarSrv.showFailureMessage();
+                                            this.shellSrv.setLoading(false);
+                                            throw err;
+                                        }
                                     }
                                 );
                         }
@@ -137,22 +135,21 @@ export class ReceptionLinesListComponent implements OnInit {
     }
 
 
-    private onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce(
-            (total, currentValue) => {
-                total[currentValue.reference] = currentValue.description2;
-                return total
-            }, {}
-        );
-    }
-
-    private onStoresLoaded(data: Store[]) {
-        this.stores = data.reduce(
-            (total, currentValue) => {
-                total[currentValue.id] = currentValue.description;
-                return total
-            }, {}
-        );
-    }
-
+    // private onArticlesLoaded(data: Article[]) {
+    //     this.articles = data.reduce(
+    //         (total, currentValue) => {
+    //             total[currentValue.reference] = currentValue.description2;
+    //             return total
+    //         }, {}
+    //     );
+    // }
+    //
+    // private onStoresLoaded(data: Store[]) {
+    //     this.stores = data.reduce(
+    //         (total, currentValue) => {
+    //             total[currentValue.id] = currentValue.description;
+    //             return total
+    //         }, {}
+    //     );
+    // }
 }

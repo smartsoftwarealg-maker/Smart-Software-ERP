@@ -109,6 +109,7 @@
     "PAYMENTS":             "",
     "RAW_AGENT_DEBTS":      "",
     "PAYMENT_COMPENSATION": "",
-    "MAKE_PAYMENT": "",
-    "CANCEL_PAYMENT": ""
+    "MAKE_PAYMENT":         "",
+    "CANCEL_PAYMENT":       "",
+    "PURCHASE_ORDER":       ""
 }

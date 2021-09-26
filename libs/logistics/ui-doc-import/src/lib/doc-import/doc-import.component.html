@@ -2,12 +2,11 @@
     <mat-form-field appearance="fill" >
         <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
         <mat-select matNativeControl required [formControl]="document">
-            <mat-option *ngFor="let d of documentList" value="{{ d.id }}">{{ d.description | translate}}</mat-option>
+            <mat-option *ngFor="let d of documentList" value="{{ d.id }}">{{ d.description | translate }}</mat-option>
         </mat-select>
     </mat-form-field>
     <div class="list">
         <mat-table mat-table [dataSource]="importList" class="main-table">
-
 
             <ng-container matColumnDef="number">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_NUMBER</mat-header-cell>
@@ -15,7 +14,6 @@
                     {{e.number}}
                 </mat-cell>
             </ng-container>
-
 
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
@@ -37,7 +35,6 @@
                     {{ e.refDate }}
                 </mat-cell>
             </ng-container>
-
 
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>

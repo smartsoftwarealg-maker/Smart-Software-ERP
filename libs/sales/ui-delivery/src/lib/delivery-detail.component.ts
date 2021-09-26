@@ -14,10 +14,10 @@ import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
+import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
 
 
 @Component({
@@ -64,8 +64,6 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
         private payMethodSrv: PayMethodService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
-
-
 
     preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
@@ -129,8 +127,10 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
                     this.docImportService
                         .importDoc(document, number, this.delivery.id)
                         .pipe(tap(_ => this.detail.loadDeliveryLines()))
-                        .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                                   err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
+                        .subscribe({
+                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                        })
                 }
             });
         }
