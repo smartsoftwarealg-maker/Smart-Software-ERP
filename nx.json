@@ -22,6 +22,9 @@
         }
     },
     "projects": {
+        "accounting-api-accounts": {
+            "tags": []
+        },
         "administration-api-bank": {
             "tags": []
         },

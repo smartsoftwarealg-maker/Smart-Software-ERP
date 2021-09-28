@@ -13,7 +13,7 @@ export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
 
 export const MARKS_URL = '/lookups/marks';
-export const CLASSES_URL = '/lookups/classes';
+export const CLASSES_URL = '/classes';
 export const SUBCLASSES_URL = '/lookups/subclasses';
 export const LOTS_URL = '/lots';
 export const UNITS_URL = '/lookups/units';
@@ -96,6 +96,8 @@ export interface Mark {
 export interface Class {
     id: number;
     description: string;
+    accountId?: number;
+    accountName?: string;
 }
 
 export interface Subclass {

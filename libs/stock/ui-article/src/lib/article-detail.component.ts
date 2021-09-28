@@ -5,9 +5,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
-import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
+import {ClassService, LookupsService, Mark, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-article-detail',
@@ -15,6 +16,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
     templateUrl: './article-detail.component.html'
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
+    classLookup = new DefaultAutoCompleteModel(this.classSrv);
 
     marks: Mark[];
     vats: Vat[];
@@ -28,6 +30,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
+        private classSrv: ClassService,
         public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
     }
@@ -55,11 +58,11 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             description2: [a.description2, Validators.required],
             id: [a.id],
             mark: [a.mark],
+            klass: [a.klass],
             price1: [a.price1, Validators.compose([Validators.required, Validators.min(0.01)])],
             reference: [a.reference, Validators.required],
             appCode: [a.appCode],
             vat: [a.vat]
         });
     }
-
 }

@@ -7,29 +7,30 @@ import {RouterModule} from '@angular/router';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
-import {PostListComponent, PostDetailComponent} from "./post.component";
-import {MaritalStatusListComponent, MaritalStatusDetailComponent} from "./marital-status.component";
-import {SubclassListComponent, SubclassDetailComponent} from "./subclass.component";
-import {StoreNameListComponent, StoreNameDetailComponent} from "./store-name.component";
-import {WilayaListComponent, WilayaDetailComponent} from "./wilaya.component";
-import {ServiceListComponent, ServiceDetailComponent} from "./service.component";
-import {DiplomaListComponent, DiplomaDetailComponent} from "./diploma.component";
-import {CategoryListComponent, CategoryDetailComponent} from "./category.component";
-import {NationalityListComponent, NationalityDetailComponent} from "./nationality.component";
-import {ClassListComponent, ClassDetailComponent} from "./class.component";
-import {UnitListComponent, UnitDetailComponent} from "./unit.component";
-import {MarkListComponent, MarkDetailComponent} from "./mark.component";
-import {EducationLevelListComponent, EducationLevelDetailComponent} from "./education-level.component";
-import {AgentTypeDetailComponent, AgentTypeListComponent} from "./agent-type.component";
-import {CompanyTypeListComponent, CompanyTypeDetailComponent} from "./company-type.component";
-import {PayModeDetailComponent, PayModeListComponent} from "./pay-modes.component";
-import {CityListComponent, CityDetailComponent} from "./city.component";
-import {CountryListComponent, CountryDetailComponent} from "./country.component";
-import {CurrencyListComponent, CurrencyDetailComponent} from "./currency.component";
-import {ActivityDetailComponent, ActivityListComponent} from "./activity.component";
-import {RoleDetailComponent, RoleListComponent} from "./role.component";
+import {PostListComponent, PostDetailComponent} from './post.component';
+import {MaritalStatusListComponent, MaritalStatusDetailComponent} from './marital-status.component';
+import {SubclassListComponent, SubclassDetailComponent} from './subclass.component';
+import {StoreNameListComponent, StoreNameDetailComponent} from './store-name.component';
+import {WilayaListComponent, WilayaDetailComponent} from './wilaya.component';
+import {ServiceListComponent, ServiceDetailComponent} from './service.component';
+import {DiplomaListComponent, DiplomaDetailComponent} from './diploma.component';
+import {CategoryListComponent, CategoryDetailComponent} from './category.component';
+import {NationalityListComponent, NationalityDetailComponent} from './nationality.component';
+import {ClassListComponent, ClassDetailComponent} from './class.component';
+import {UnitListComponent, UnitDetailComponent} from './unit.component';
+import {MarkListComponent, MarkDetailComponent} from './mark.component';
+import {EducationLevelListComponent, EducationLevelDetailComponent} from './education-level.component';
+import {AgentTypeDetailComponent, AgentTypeListComponent} from './agent-type.component';
+import {CompanyTypeListComponent, CompanyTypeDetailComponent} from './company-type.component';
+import {PayModeDetailComponent, PayModeListComponent} from './pay-modes.component';
+import {CityListComponent, CityDetailComponent} from './city.component';
+import {CountryListComponent, CountryDetailComponent} from './country.component';
+import {CurrencyListComponent, CurrencyDetailComponent} from './currency.component';
+import {ActivityDetailComponent, ActivityListComponent} from './activity.component';
+import {RoleDetailComponent, RoleListComponent} from './role.component';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './suspension-reason.component';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from '
         RouterModule,
         CommonUiLangModule,
         UiPaginationModule,
+        CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule
     ],
     declarations: [
@@ -158,5 +160,4 @@ import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from '
         SuspensionReasonDetailComponent
     ]
 })
-export class CommonUiLookupModule {
-}
+export class CommonUiLookupModule {}

@@ -1,2 +1,3 @@
+export * from './lib/models';
 export * from './lib/account-api';
 export * from './lib/account.service';

@@ -17,5 +17,6 @@
     "QTY_STILL_SATISFIED":                  "Miktar hala tatmin edici. Güncellemeye izin verilmiyor.",
     "REPORT_NOT_FOUND":                     "Rapor bulunamadı.",
     "MISSING_SMTP_CONFIGURATION":           "Eksik smtp yapılandırması",
-    "MISSING_COMPANY_EMAIL":                "Eksik şirket e-postası."
+    "MISSING_COMPANY_EMAIL":                "Eksik şirket e-postası.",
+    "MISSING_ACCOUNT":                      "Missing account number"
 }

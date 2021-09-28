@@ -2,12 +2,11 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {LookupsService} from "@ss/common/api-lookup";
-import {Observable, of} from "rxjs";
-import {Account, AccountService} from "@ss/logistics/api-account";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {ACCOUNT_TYPES} from "@ss/logistics/api-account";
+import {LookupsService} from '@ss/common/api-lookup';
+import {Observable, of} from 'rxjs';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {Account, ACCOUNT_TYPES, AccountService} from '@ss/accounting/api-accounts';
 
 @Component({
     selector: 'ss-account-list',
