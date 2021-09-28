@@ -18,5 +18,6 @@
     "QTY_STILL_SATISFIED":          "الكمية لا تزال مستوفاة. لا يسمح بالتحديث.",
     "REPORT_NOT_FOUND":             "التقرير غير موجود.",
     "MISSING_SMTP_CONFIGURATION":   "تكوين SMTP مفقود" ,
-    "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود"
+    "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
+    "MISSING_ACCOUNT":              "رقم الحساب مفقود"
 }

@@ -6,6 +6,7 @@ export interface Article {
     reference: string;
     description2: string;
     mark: number;
+    klass: number;
     vat: number;
     accountno: string;
     price1: number;

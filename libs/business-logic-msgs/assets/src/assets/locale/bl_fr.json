@@ -17,5 +17,6 @@
     "QTY_STILL_SATISFIED":                "Quantité toujours satisfaite. Aucune mise à jour autorisée.",
     "REPORT_NOT_FOUND":                   "Rapport introuvable.",
     "MISSING_SMTP_CONFIGURATION":         "Configuration smtp manquante",
-    "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant."
+    "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
+    "MISSING_ACCOUNT":                    "Numéro de compte manquant"
 }

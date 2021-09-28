@@ -1,5 +1,6 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleService} from '@ss/stock/api-article';
+import {Article} from './article-api';
+import {ArticleService} from './article.service';
 
 export class ArticleAutocompleteModel extends DefaultAutoCompleteModel<Article> {
   constructor(public articleSrv: ArticleService) {

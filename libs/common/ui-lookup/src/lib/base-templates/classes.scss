@@ -1,0 +1,48 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+    height: 90%;
+}
+
+.main-table {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+    font-weight: bolder;
+}
+.mat-header-cell {
+    font-weight: bolder;
+    font-size: medium;
+}
+.mat-column-description {
+    flex: 0 0 350px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-accountId {
+    flex: 0 0 250px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.pagination-container {
+    flex-grow: 0;
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
