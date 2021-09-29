@@ -1,0 +1,23 @@
+{
+    "REFERENCE_NOT_FOUND":          "المرجع غير موجود",
+    "NEGATIVE_BALANCE":             "المرجع غير موجود في المتجر المحدد" ,
+    "MISSING_COMMISSION":           "الرصيد السلبي",
+    "RECORD_NOT_FOUND":             "مبلغ العمولة مفقود",
+    "MISSING_TRANSFER_INFO":        "لم يتم العثور على السجل",
+    "MISSING_COMMISSION":           "معلومات التحويل مفقودة" ,
+    "SAME_CURRENCY_TRANSFER":       "تحويل العملة نفسها. من فضلك ، عملات مختلفة" ,
+    "MISSING_AGENT_ACCOUNTNO":      "رقم الحساب مفقود" ,
+    "CUSTOMER_NOT_FOUND":           "العميل غير موجود" ,
+    "INVALID_DATA":                 "البيانات المحددة غير صالحة" ,
+    "MISSING_STORE":                "المخزن المحدد غير موجود" ,
+    "UNAVAILABLE_INVENTORY":        "مخزون غير متوفر",
+    "UNAVAILABLE_INSTANT_INVENTORY":"جرد فوري غير متوفر. من فضلك ، تحقق من تواريخ الإدخال" ,
+    "REFERENCE_MISMATCH":           "عدم تطابق المرجع. تم تعديل المرجع عن طريق الخطأ.",
+    "STORE_MISMATCH":               "عدم تطابق المتجر. تم تعديل المتجر عن طريق الخطأ.",
+    "ORDER_EXCEEDED":               "كمية أودر تجاوزت" ,
+    "QTY_STILL_SATISFIED":          "الكمية لا تزال مستوفاة. لا يسمح بالتحديث.",
+    "REPORT_NOT_FOUND":             "التقرير غير موجود.",
+    "MISSING_SMTP_CONFIGURATION":   "تكوين SMTP مفقود" ,
+    "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
+    "MISSING_ACCOUNT":              "رقم الحساب مفقود"
+}

@@ -17,6 +17,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@ss/accounting/api-accounts": [
+                "libs/accounting/api-accounts/src/index.ts"
+            ],
             "@ss/administration/api-bank": [
                 "libs/administration/api-bank/src/index.ts"
             ],
@@ -55,6 +58,9 @@
             ],
             "@ss/administration/ui-user": [
                 "libs/administration/ui-user/src/index.ts"
+            ],
+            "@ss/business-logic-msgs/assets": [
+                "libs/business-logic-msgs/assets/src/index.ts"
             ],
             "@ss/common/api-access-rights": [
                 "libs/common/api-access-rights/src/index.ts"
@@ -211,12 +217,18 @@
             "@ss/logistics/ui-totals": [
                 "libs/logistics/ui-totals/src/index.ts"
             ],
-            "@ss/payroll/api-employee": ["libs/payroll/api-employee/src/index.ts"],
-            "@ss/payroll/ui-employee-career": ["libs/payroll/ui-employee-career/src/index.ts"],
+            "@ss/payroll/api-employee": [
+                "libs/payroll/api-employee/src/index.ts"
+            ],
+            "@ss/payroll/ui-employee": [
+                "libs/payroll/ui-employee/src/index.ts"
+            ],
             "@ss/payroll/ui-employee-activation": [
                 "libs/payroll/ui-employee-activation/src/index.ts"
             ],
-            "@ss/payroll/ui-employee": ["libs/payroll/ui-employee/src/index.ts"],
+            "@ss/payroll/ui-employee-career": [
+                "libs/payroll/ui-employee-career/src/index.ts"
+            ],
             "@ss/purchases/api-purchase-order": [
                 "libs/purchases/api-purchase-order/src/index.ts"
             ],

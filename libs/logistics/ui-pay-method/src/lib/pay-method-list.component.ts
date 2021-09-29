@@ -3,13 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, PayMethod, PayMode, PayModeService} from '@ss/common/api-lookup';
-import {Observable, of} from 'rxjs';
-import {Account, AccountService} from '@ss/logistics/api-account';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ACCOUNT_TYPES} from '@ss/logistics/api-account';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {tap} from 'rxjs/operators';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 @Component({

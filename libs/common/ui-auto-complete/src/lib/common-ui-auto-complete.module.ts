@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {UiAutoCompleteComponent} from './auto-complete.component';
-import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from "@angular/forms";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {MatInputModule} from "@angular/material/input";
-import {CommonUiLangModule} from "@ss/common/ui-lang";
+import {FormsModule, NG_VALIDATORS, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {CommonUiLangModule} from '@ss/common/ui-lang';
 
 @NgModule({
     imports: [

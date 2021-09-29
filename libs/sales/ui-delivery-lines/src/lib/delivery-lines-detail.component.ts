@@ -9,16 +9,17 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {DeliveryLine, DeliveryLinesService} from '@ss/sales/api-delivery-lines';
+import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
 import { fillObject } from '@ss/common/api-common';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
     templateUrl: './delivery-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<DeliveryLine> implements OnInit {
-   private line: DeliveryLine = null;
+export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
+   private line: TransactionLine = null;
 
     parentId: number;
 
@@ -59,7 +60,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
-    public setupForm(b: DeliveryLine) {
+    public setupForm(b: TransactionLine) {
         this.line = b;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
@@ -81,7 +82,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
     }
 
 
-    finishLoading(e: DeliveryLine) {
+    finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         this.form.get('qtySatisfied').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
@@ -96,7 +97,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Deli
         })
     }
 
-    readForm(): DeliveryLine {
+    readForm(): TransactionLine {
         const form =  super.readForm();
         fillObject(this.line, form)
         return form;

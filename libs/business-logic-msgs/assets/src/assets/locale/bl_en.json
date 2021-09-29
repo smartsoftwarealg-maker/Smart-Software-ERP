@@ -1,0 +1,22 @@
+{
+    "REFERENCE_NOT_FOUND":           "Reference not found in the specified store",
+    "NEGATIVE_BALANCE":              "Negative balance",
+    "MISSING_COMMISSION":            "Missing commission amount",
+    "RECORD_NOT_FOUND":              "Record not found",
+    "MISSING_TRANSFER_INFO":         "Missing transfer information",
+    "SAME_CURRENCY_TRANSFER":        "Same currency transfer. Please, different currencies",
+    "MISSING_AGENT_ACCOUNTNO":       "Missing account number",
+    "CUSTOMER_NOT_FOUND":            "Customer not found",
+    "INVALID_DATA":                  "Invalid data specified",
+    "MISSING_STORE":                 "The specified store does not exist",
+    "UNAVAILABLE_INVENTORY":         "Unavailable inventory",
+    "UNAVAILABLE_INSTANT_INVENTORY": "Unavailable instant inventory. Please, verify entry dates",
+    "REFERENCE_MISMATCH":            "Reference mismatch. The reference was mistakenly modified.",
+    "STORE_MISMATCH":                "Store mismatch. The store was mistakenly modified.",
+    "ORDER_EXCEEDED":                "Oder quantity exceeded",
+    "QTY_STILL_SATISFIED":           "Quantity still satisfied. No update allowed.",
+    "REPORT_NOT_FOUND":              "Report not found.",
+    "MISSING_SMTP_CONFIGURATION":    "Missing smtp configuration",
+    "MISSING_COMPANY_EMAIL":         "Missing company email.",
+    "MISSING_ACCOUNT":               "Missing account number"
+}

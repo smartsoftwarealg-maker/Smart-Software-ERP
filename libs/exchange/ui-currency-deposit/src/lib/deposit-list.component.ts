@@ -29,7 +29,8 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         'type',
         'credit',
         'debit',
-        'currency'
+        'currency',
+        'withdrawn'
     ];
 
     constructor(

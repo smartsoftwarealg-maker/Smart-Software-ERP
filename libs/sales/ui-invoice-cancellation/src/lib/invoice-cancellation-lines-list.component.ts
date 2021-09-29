@@ -1,15 +1,15 @@
 import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {Store, LotsService} from "@ss/common/api-lookup";
-import {DeliveryLine} from "@ss/sales/api-delivery-lines";
-import {InvoiceLinesService} from "@ss/sales/api-invoice";
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {Store, LotsService} from '@ss/common/api-lookup';
+import {InvoiceLinesService} from '@ss/sales/api-invoice';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-invoice-cancel-lines-list',
@@ -22,9 +22,9 @@ export class InvoiceCancellationLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: DeliveryLine[];
+    data: TransactionLine[];
     selectedId: number;
-    selectedRow: DeliveryLine = null;
+    selectedRow: TransactionLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -88,7 +88,7 @@ export class InvoiceCancellationLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(row: DeliveryLine) {
+    select(row: TransactionLine) {
         this.selectedRow = row;
         this.selectedId = row ? row.id : 0;
     }

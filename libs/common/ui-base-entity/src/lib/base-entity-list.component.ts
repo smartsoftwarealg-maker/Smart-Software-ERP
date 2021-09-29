@@ -82,7 +82,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         icon: 'fas fa-at',
         label: 'COMMON_EMAIL_REPORT',
         disabled: true,
-        visible: true,
+        visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.emailReport()
     };

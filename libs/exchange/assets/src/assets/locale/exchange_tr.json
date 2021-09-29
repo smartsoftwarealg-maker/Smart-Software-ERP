@@ -18,5 +18,7 @@
     "RATE":                "Puanla",
     "GLOBAL_BALANCE":      "Global denge raporu",
     "TRANSFERS":           "Müşteri para birimi transferleri",
-    "DEST_AMOUNT":         "Aktarılan miktar"
+    "DEST_AMOUNT":         "Aktarılan miktar",
+    "WITHDRAWN":           "geri çekildi",
+    "W":                   "ç"
 }

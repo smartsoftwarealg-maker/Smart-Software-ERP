@@ -8,7 +8,8 @@ import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {Store, LotsService} from '@ss/common/api-lookup';
-import {DeliveryLine, DeliveryLinesService} from '@ss/sales/api-delivery-lines';
+import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-delivery-lines-list',
@@ -21,9 +22,9 @@ export class DeliveryLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: DeliveryLine[];
+    data: TransactionLine[];
     selectedId: number;
-    selectedRow: DeliveryLine = null;
+    selectedRow: TransactionLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -38,7 +39,7 @@ export class DeliveryLinesListComponent implements OnInit {
     ];
 
     constructor(
-        public deliveryLinesSrv: DeliveryLinesService,
+        public TransactionLinesSrv: DeliveryLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -52,7 +53,7 @@ export class DeliveryLinesListComponent implements OnInit {
         this.getCurrentDeliveryId().subscribe(x => {
             if (x) {
                 this.parentId = x;
-                this.deliveryLinesSrv.setParentId(x);
+                this.TransactionLinesSrv.setParentId(x);
                 this.loadDeliveryLines();
                 this.pagination.onChange = () => this.loadDeliveryLines();
             }
@@ -66,7 +67,7 @@ export class DeliveryLinesListComponent implements OnInit {
 
     loadDeliveryLines() {
         this.shellSrv.setLoading(true);
-        this.deliveryLinesSrv.getPage(this.pagination, null, null)
+        this.TransactionLinesSrv.getPage(this.pagination, null, null)
             .subscribe(x => {
                 this.data = x;
                 this.loadRelatedTables(this.data)
@@ -86,7 +87,7 @@ export class DeliveryLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(row: DeliveryLine) {
+    select(row: TransactionLine) {
         this.selectedRow = row;
         this.selectedId = row ? row.id : 0;
     }
@@ -98,7 +99,7 @@ export class DeliveryLinesListComponent implements OnInit {
                     const a = this.data.filter(x => x.id === this.selectedId)[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);
-                        this.deliveryLinesSrv.remove(a.id)
+                        this.TransactionLinesSrv.remove(a.id)
                             .subscribe(
                                 () => {
                                     this.snackBarSrv.showSuccessMessage();
@@ -149,5 +150,4 @@ export class DeliveryLinesListComponent implements OnInit {
             }, {}
         );
     }
-
 }

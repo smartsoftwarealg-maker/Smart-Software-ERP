@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Observable} from "rxjs";
-import {map, switchMap, tap} from "rxjs/operators";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL} from "@ss/common/api-common";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {DeliveryLine, DeliveryLinesService} from "@ss/sales/api-delivery-lines";
-import {SalesOrderLinesService} from "@ss/sales/api-sales-order";
-import {Store, LotsService} from "@ss/common/api-lookup";
+import {LINES_DETAIL_URL} from '@ss/common/api-common';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {SalesOrderLinesService} from '@ss/sales/api-sales-order';
+import {Store, LotsService} from '@ss/common/api-lookup';
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './order-lines-list.component.html',
-  styleUrls: ['./order-lines-list.component.scss', '../../../../common/ui-theme/src/lib/common-css.scss']
+  styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss']
 })
 export class OrderLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     parentId: number;
-    data: DeliveryLine[];
+    data: TransactionLine[];
     selectedId: number;
-    selectedRow: DeliveryLine = null;
+    selectedRow: TransactionLine = null;
 
     articles: { [reference: string]: string; } = {};
     stores: { [id: number]: string; } = {};
@@ -87,7 +87,7 @@ export class OrderLinesListComponent implements OnInit {
             .pipe(tap(art => this.onArticlesLoaded(art)))
     }
 
-    select(row: DeliveryLine) {
+    select(row: TransactionLine) {
         this.selectedRow = row;
         this.selectedId = row ? row.id : 0;
     }

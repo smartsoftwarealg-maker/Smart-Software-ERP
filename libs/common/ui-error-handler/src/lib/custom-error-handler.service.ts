@@ -27,9 +27,11 @@ export class CustomErrorHandlerService {
             ? 0
             : err.status;
 
+        // Business logic exception has this type: { code: string, params: string[] }
         if (err) {
             if (err.error) {
-                this.message = isString(err.error) ? err.error : err.error.exception;
+                this.message = isString(err.error.code) ? this.langSrv.translate('BL_' +  err.error.code) :
+                    isString(err.error) ? err.error : err.error.exception;
             }
         }
         if (!this.message) {

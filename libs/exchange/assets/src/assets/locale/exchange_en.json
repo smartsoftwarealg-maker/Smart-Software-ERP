@@ -18,5 +18,7 @@
     "RATE": "Rate",
     "GLOBAL_BALANCE": "Global balance report",
     "TRANSFERS": "Customer currency transfers",
-    "DEST_AMOUNT": "Transferred amount"
+    "DEST_AMOUNT": "Transferred amount",
+    "WITHDRAWN": "Withdrawn",
+    "W":         "W"
 }

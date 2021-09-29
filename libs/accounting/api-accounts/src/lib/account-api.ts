@@ -1,4 +1,5 @@
 export const ACCOUNT_URL = '/accounts';
+export const GENACCOUNT_URL = '/genaccounts';
 
 export interface Account {
     id: number;
@@ -16,6 +17,15 @@ export interface Account {
     journalId: number
 }
 
+export interface GenerationAccount {
+    id: number;
+    account: string,
+    stock?: string;
+    consumption?: string;
+    accType?: string;
+    purchase?: string;
+    description?: string;
+}
 
 export const ACCOUNT_TYPES = {
     1: 'DEBITOR',

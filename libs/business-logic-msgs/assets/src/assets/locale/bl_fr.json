@@ -1,0 +1,22 @@
+{
+    "REFERENCE_NOT_FOUND":                "Référence introuvable dans le magasin spécifié",
+    "NEGATIVE_BALANCE":                   "Solde négatif",
+    "MISSING_COMMISSION":                 "Montant de la commission manquant",
+    "RECORD_NOT_FOUND":                   "Enregistrement non trouvé",
+    "MISSING_TRANSFER_INFO":              "Informations de transfert manquantes",
+    "SAME_CURRENCY_TRANSFER":             "Même transfert de devise. S'il vous plaît, différentes devises",
+    "MISSING_AGENT_ACCOUNTNO":            "Numéro de compte manquant",
+    "CUSTOMER_NOT_FOUND":                 "Client non trouvé",
+    "INVALID_DATA":                       "Données non valides spécifiées",
+    "MISSING_STORE":                      "Le magasin spécifié n'existe pas",
+    "UNAVAILABLE_INVENTORY":              "Inventaire indisponible",
+    "UNAVAILABLE_INSTANT_INVENTORY":      "Inventaire instantané indisponible. Veuillez vérifier les dates d'entrée",
+    "REFERENCE_MISMATCH":                 "Incompatibilité de référence. La référence a été modifiée par erreur.",
+    "STORE_MISMATCH":                     "Discordance de magasin. Le magasin a été modifié par erreur.",
+    "ORDER_EXCEEDED":                     "Quantité de commande dépassée",
+    "QTY_STILL_SATISFIED":                "Quantité toujours satisfaite. Aucune mise à jour autorisée.",
+    "REPORT_NOT_FOUND":                   "Rapport introuvable.",
+    "MISSING_SMTP_CONFIGURATION":         "Configuration smtp manquante",
+    "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
+    "MISSING_ACCOUNT":                    "Numéro de compte manquant"
+}

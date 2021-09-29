@@ -38,9 +38,16 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>STOCK_ACCOUNTNO</mat-label>
-                <input matInput formControlName="accountno">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_CLASS</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="classLookup"
+                                  formControlName="klass">
+                </ss-auto-complete>
+                <mat-error
+                    *ngIf="form.controls['klass'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
             </mat-form-field>
 
         </form>

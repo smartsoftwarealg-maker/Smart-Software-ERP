@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -78,8 +78,8 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Tra
             reference: [b.reference],
             sourceDoc: [b.sourceDoc],
             store: [b.store],
-            qtyOrdered: [b.qtyOrdered || 0.0],
-            qtySatisfied: [b.qtySatisfied || 0.0],
+            qtyOrdered: [{ value: b.qtyOrdered || 0.0, disabled: false }],
+            qtySatisfied: [b.qtySatisfied || 0.0, Validators.required],
             qtyInvoiced: [b.qtyInvoiced || 0.0],
             qtyReturned: [b.qtyReturned || 0.0],
             price: [b.price || 0.0],
@@ -90,6 +90,4 @@ export class ReceptionLinesDetailComponent extends BaseEntityDetailComponent<Tra
             pprice: [b.pprice],
         });
     }
-
-
 }
