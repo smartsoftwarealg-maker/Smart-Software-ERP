@@ -73,6 +73,7 @@ export class ShellService {
     protected searchInputLabel: string;
     //
     buttons: ToolbarButton[] = [];
+    appButtons: ToolbarButton[] = [];
     //
     protected isLoading = false;
     protected isError = false;
@@ -332,13 +333,16 @@ export class ShellService {
         return this.searchControl;
     }
 
-    public disableSearch() {
+    public disableSearch(updateShell: boolean = true) {
         this.searchControl = null;
         this.focusSearchField = false;
         this.searchInputLabel = null;
         if (this.subscription != null) {
             this.subscription.unsubscribe();
             this.subscription = null;
+        }
+        if (updateShell) {
+            this.updateShell();
         }
     }
 
@@ -374,7 +378,7 @@ export class ShellService {
     public reset(): void {
         this.title = null;
         this.goBackFn = null;
-        this.disableSearch();
+        this.disableSearch(false);
         this.buttons = [];
         this.isLoading = false;
         this.isError = false;
@@ -384,6 +388,11 @@ export class ShellService {
     /**
      * Custom buttons
      */
+    public setAppButtons(buttons: ToolbarButton[]): void {
+        this.appButtons = buttons;
+        this.updateShell();
+    }
+
     public setButtons(buttons: ToolbarButton[]): void {
         this.buttons = buttons;
         this.updateShell();

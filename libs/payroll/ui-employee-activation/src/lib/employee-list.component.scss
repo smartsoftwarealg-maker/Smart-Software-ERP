@@ -3,11 +3,19 @@
     display: block;
     margin: auto;
     width: 1028px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.main-table {
-    width: 1028px;
-    min-height: 320px;
+.main-table-scroll {
+    overflow: auto;
+    margin: hidden;
+    max-width: 100%;
+
+    .main-table {
+        width: 1028px;
+        min-height: 320px;
+    }
 }
 
 // keep the material design specs

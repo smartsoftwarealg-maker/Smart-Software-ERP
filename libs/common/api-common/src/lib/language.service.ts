@@ -398,6 +398,13 @@ export class LanguageService {
         return this.currentLanguage == null ? null : this.currentLanguage.formatMediumName(first, last);
     }
 
+    public formatPaymonth(paymonth: number): string {
+        if (!paymonth || paymonth <= 0) {
+            return '';
+        }
+        return this.translate('MONTH_' + (paymonth % 100)) + ' ' +  Math.floor(paymonth/100);
+    }
+
     // privates
 
     private addStyleClass(code: string): void {

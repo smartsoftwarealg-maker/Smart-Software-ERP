@@ -53,7 +53,15 @@
     "EMP_ACTIVATION_SUSPENSION": "تفعيل / تعليق",
     "ACTIVITY_HISTORY": "سجل النشاط",
     "FROM_TO": "من - إلى",
+    "FROM": "من",
+    "TO": "إلى",
     "TODAY": "اليوم",
     "EDIT_EMPLOYEE_ACTIVATION": "تعديل تفعيل الموظف",
-    "CAREER": "السيرة المهنية"
+    "CAREER": "السيرة المهنية",
+    "DIVISION": "القطاع",
+    "DEPARTMENT": "القسم",
+    "SERVICE": "الخدمة",
+    "PAYMONTH": "الشهر",
+    "POST": "المنصب",
+    "EMPLOYEE_CAREER_OVERVIEW": "المسيرة المهنية"
 }
