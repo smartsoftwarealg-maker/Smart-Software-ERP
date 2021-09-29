@@ -53,7 +53,15 @@
     "EMP_ACTIVATION_SUSPENSION": "Aktivasyon / askiya alma",
     "ACTIVITY_HISTORY": "Aktivite geçmisi",
     "FROM_TO": "Nereden - Nereye",
+    "FROM": "Nereden",
+    "TO": "Nereye",
     "TODAY": "Bugün",
     "EDIT_EMPLOYEE_ACTIVATION": "Çalisan aktivasyonunu düzenleyin",
-    "CAREER": "Kariyer"
+    "CAREER": "Kariyer",
+    "DIVISION": "Division",
+    "DEPARTMENT": "Département",
+    "SERVICE": "Service",
+    "PAYMONTH": "Month",
+    "POST": "Post",
+    "EMPLOYEE_CAREER_OVERVIEW": "Kariyere genel bakış"
 }

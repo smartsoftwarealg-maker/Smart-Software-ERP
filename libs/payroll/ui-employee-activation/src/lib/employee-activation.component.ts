@@ -68,10 +68,10 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend
+        uiSrv.instance = this;
     }
 
     ngOnInit() {
-        this.uiSrv.instance = this;
         this.route.params.subscribe(params => {
             this.personId = +params.id;
             this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.personId));

@@ -53,7 +53,15 @@
     "EMP_ACTIVATION_SUSPENSION": "Activation/suspension",
     "ACTIVITY_HISTORY": "Activity history",
     "FROM_TO": "From - To",
+    "FROM": "From",
+    "TO": "To",
     "TODAY": "Today",
     "EDIT_EMPLOYEE_ACTIVATION": "Edit employee activation",
-    "CAREER": "Career"
+    "CAREER": "Career",
+    "DIVISION": "Division",
+    "DEPARTMENT": "Department",
+    "SERVICE": "Service",
+    "PAYMONTH": "Month",
+    "POST": "Post",
+    "EMPLOYEE_CAREER_OVERVIEW": "Career overview"
 }

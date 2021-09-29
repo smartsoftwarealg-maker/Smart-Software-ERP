@@ -180,6 +180,43 @@
 
             <mat-divider *ngIf="shellSrv.buttons.length"></mat-divider>
 
+            <ng-container *ngFor="let b of shellSrv.appButtons">
+
+                <ng-template [ngIf]="b.menuItems">
+                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
+                            [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                            [matMenuTriggerFor]="menu">
+                        <div class="icon">
+                            <i [class]="b.icon"></i>
+                        </div>
+                        <span class="text" translate>{{b.label}}</span>
+                    </button>
+                    <mat-menu #menu>
+                        <ng-container *ngFor="let mt of b.menuItems">
+                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); trigger.closeMenu();"
+                                    [disabled]="mt.disabled">
+                                <i [class]="mt.icon"></i>
+                                {{mt.label | translate}}
+                            </button>
+                        </ng-container>
+                    </mat-menu>
+                </ng-template>
+
+                <ng-template [ngIf]="!b.menuItems">
+                    <button type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
+                            [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                            (click)="b.click(); trigger.closeMenu();">
+                        <div class="icon">
+                            <i [class]="b.icon"></i>
+                        </div>
+                        <span class="text" translate>{{b.label}}</span>
+                    </button>
+                </ng-template>
+
+            </ng-container>
+
+            <mat-divider *ngIf="shellSrv.appButtons.length"></mat-divider>
+
             <button type="button" mat-menu-item class="settings-item small-only">
                 <div class="icon">
                     <i class="fas fa-user-alt"></i>

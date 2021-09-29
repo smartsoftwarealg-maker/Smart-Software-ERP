@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
-export class CareerService extends BaseEntityService<Career> {
+export class EmployeeCareerService extends BaseEntityService<Career> {
 
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, CAREER_CHILD_URL, CAREER_PARENT_URL);

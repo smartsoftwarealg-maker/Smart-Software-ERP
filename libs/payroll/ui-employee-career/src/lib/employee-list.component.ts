@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee as IEmployee, EmployeeService, Career, CareerService } from '@ss/payroll/api-employee';
+import { Employee as IEmployee, EmployeeService, Career, EmployeeCareerService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -39,12 +39,15 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         'fullname',
         'post',
         'date',
-        'payMonth'
+        'payMonth',
+        'division',
+        'department',
+        'service'
     ];
 
     constructor(
         public employeeSrv: EmployeeService,
-        public careerSrv: CareerService,
+        public empCareerSrv: EmployeeCareerService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -60,15 +63,19 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
     posts: { [id: number]: string; };
     divisions: { [id: number]: string; };
     departments: { [id: number]: string; };
-    service: { [id: number]: string; };
+    services: { [id: number]: string; };
 
     public preload(): Observable<any> {
         this.posts = {};
         return this.lookupsSrv.getPosts()
             .pipe(
-                tap(posts => this.posts = this.lookupListToMap(posts))
-                //,
-                //switchMap(() => this.lookupsSrv.getDepartments)
+                tap(posts => this.posts = this.lookupListToMap(posts)),
+                switchMap(() => this.lookupsSrv.getDepartments()),
+                tap(list => this.departments = this.lookupListToMap(list)),
+                switchMap(() => this.lookupsSrv.getDivisions()),
+                tap(list => this.divisions = this.lookupListToMap(list)),
+                switchMap(() => this.lookupsSrv.getServices()),
+                tap(list => this.services = this.lookupListToMap(list))
             );
     }
 
@@ -87,9 +94,9 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             p.loading = true;
-            this.careerSrv.setParentId(p.id);
+            this.empCareerSrv.setParentId(p.id);
             // incase of error, keep displaying the loading animation
-            this.careerSrv.getLast()
+            this.empCareerSrv.getLast()
                 .subscribe((x: Career) => {
                     p.career = x;
                     if (p.career) {
@@ -103,7 +110,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
     }
 
     payMonth(c: Career): string {
-        return c && c.paymonth ? (this.langSrv.translate('MONTH_' + (c.paymonth % 100)) + ' ' +  Math.floor(c.paymonth/100)) : null;
+        return c && c.paymonth ? this.langSrv.formatPaymonth(c.paymonth) : null;
     }
 
     ngOnInit(): void {

@@ -104,10 +104,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         //
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.setFilter(f)));
+        this.enableSearch();
         this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.defReportButton, this.viewReportButton, this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
+    }
+
+    public enableSearch(): void {
+        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.setFilter(f)));
     }
 
     public setFilter(fltr: string): void {

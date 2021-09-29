@@ -1,0 +1,29 @@
+<div *ngIf="person" class="person-info">
+    <div class="b-b-disabled-btn card-title" translate>
+        PAYROLL_EMPLOYEE
+    </div>
+
+    <ss-image-input width="160px" height="200px" [ImageModel]="imageModel" style="display: inline-block;"></ss-image-input>
+    <div class="lines" *ngIf="person">
+        <div class="line">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_FULLNAME</span>
+            {{person.fullName}}
+        </div>
+        <div class="line" *ngIf="lastLine">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_POST</span>
+            {{posts[lastLine.post]}}
+        </div>
+        <div class="line line-date margin-end-8" *ngIf="lastLine">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_FROM</span>
+            {{lastLine.from_date}}
+        </div>
+        <div class="line line-date margin-end-8" *ngIf="lastLine">
+            <span class="line-label f-f-hint-text" translate>PAYROLL_TO</span>
+            {{lastLine.to_date}}
+        </div>
+    </div>
+</div>
+
+<div class="child-container">
+    <router-outlet></router-outlet>
+</div>

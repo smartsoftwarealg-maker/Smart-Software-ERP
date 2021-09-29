@@ -9,6 +9,8 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
+import { EmployeeCareerOverviewComponent } from './empolyee-career-overview.component';
+import { EmployeeCareerHistoryComponent } from './employee-career-history.component';
 
 @NgModule({
     imports: [
@@ -25,11 +27,23 @@ import { RouterModule } from '@angular/router';
                 path: '',
                 component: EmployeeListComponent
             },
+            {
+                path: ':id',
+                component: EmployeeCareerOverviewComponent,
+                children: [
+                    {
+                        path: '',
+                        component: EmployeeCareerHistoryComponent
+                    }
+                ]
+            },
             { path: '**', redirectTo: '' }
         ])
     ],
     declarations: [
-        EmployeeListComponent
+        EmployeeListComponent,
+        EmployeeCareerOverviewComponent,
+        EmployeeCareerHistoryComponent
     ]
 })
 export class PayrollUiEmployeeCareerModule { }

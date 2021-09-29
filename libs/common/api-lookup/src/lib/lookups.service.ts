@@ -1,6 +1,6 @@
-import {LookupsCacheService} from './lookups-cache.service';
-import {Observable, of} from 'rxjs';
-import {Injectable} from '@angular/core';
+import { LookupsCacheService } from './lookups-cache.service';
+import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
 import {
     Activity,
     ACTIVITY_URL,
@@ -50,10 +50,9 @@ import {
     EMPLOYMENT_TYPE_URL,
     SuspensionReason,
     SUSPENSION_REASON_URL,
-    FORMS_URL, ROLES_URL,
+    FORMS_URL, ROLES_URL, Department, DEPARTMENTS_URL, Division, DIVISIONS_URL,
 } from './lookups-api';
-import {Lookup} from "@ss/logistics/ui-doc-import";
-import {Role} from "@ss/common/api-common";
+import { Role } from "@ss/common/api-common";
 
 @Injectable({
     providedIn: 'root'
@@ -90,7 +89,6 @@ export class LookupsService {
     public getServices(): Observable<Service[]> {
         return this.lookupCacheSrv.load<Service>(SERVICES_URL, 'services');
     }
-
 
     public getCategories(): Observable<Category[]> {
         return this.lookupCacheSrv.load<Category>(CATEGORIES_URL, 'categories');
@@ -163,4 +161,13 @@ export class LookupsService {
     public getSuspensionReasons(): Observable<SuspensionReason[]> {
         return this.lookupCacheSrv.load<EmploymentType>(SUSPENSION_REASON_URL, 'suspensionReason');
     }
+
+    public getDepartments(): Observable<Department[]> {
+        return this.lookupCacheSrv.load<Department>(DEPARTMENTS_URL, 'departments')
+    }
+
+    public getDivisions(): Observable<Division[]> {
+        return this.lookupCacheSrv.load<Division>(DIVISIONS_URL, 'divisions')
+    }
+
 }

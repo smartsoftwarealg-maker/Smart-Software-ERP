@@ -11,6 +11,8 @@ export const SERVICES_URL = '/lookups/services';
 export const FORMS_URL = '/lookups/forms';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
+export const DEPARTMENTS_URL = '/lookups/departments';
+export const DIVISIONS_URL = '/lookups/superdepartments';
 
 export const MARKS_URL = '/lookups/marks';
 export const CLASSES_URL = '/classes';
@@ -190,6 +192,16 @@ export interface EmploymentType {
 }
 
 export interface SuspensionReason {
+    id: number;
+    description: string;
+}
+
+export interface Department {
+    id: number;
+    description: string;
+}
+
+export interface Division {
     id: number;
     description: string;
 }
