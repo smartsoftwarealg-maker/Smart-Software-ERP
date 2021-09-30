@@ -56,6 +56,7 @@ export interface AppContext {
     blocked?: boolean;
     pwdExpired?: boolean;
     hasPassword?: boolean;
+    params: { param: string; value: string };
 }
 
 export interface LoginInfo {

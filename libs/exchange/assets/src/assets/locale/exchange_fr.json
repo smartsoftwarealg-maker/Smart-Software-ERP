@@ -20,5 +20,6 @@
     "TRANSFERS": "Transferts de devises client",
     "DEST_AMOUNT": "Montant transféré",
     "WITHDRAWN": "transféré",
-    "W":         "T"
+    "W":         "T",
+    "NOT_WITHDRAWN": "Non retiré"
 }

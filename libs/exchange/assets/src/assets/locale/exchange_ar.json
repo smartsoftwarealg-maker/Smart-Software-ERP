@@ -20,5 +20,6 @@
     "TRANSFERS": "تحويل عملات الزبائن",
     "DEST_AMOUNT": "المبلغ المحولة",
     "WITHDRAWN": "مسحوب",
-    "W":                   "م"
+    "W":                   "م",
+    "NOT_WITHDRAWN": ""
 }
