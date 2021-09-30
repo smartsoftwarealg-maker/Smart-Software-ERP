@@ -246,4 +246,12 @@ export class LoginService {
     set customerLogin(value: LoginType) {
         this._customerLogin = value;
     }
+
+    updateAuthToken(jwt: string) {
+        this.httpSrv.updateAuthToken(jwt);
+    }
+
+    getAppParam(key: string): string {
+        return this.appCtx?.params[key];
+    }
 }

@@ -20,5 +20,6 @@
     "TRANSFERS": "Customer currency transfers",
     "DEST_AMOUNT": "Transferred amount",
     "WITHDRAWN": "Withdrawn",
-    "W":         "W"
+    "W":         "W",
+    "NOT_WITHDRAWN": "Not withdrawn"
 }
