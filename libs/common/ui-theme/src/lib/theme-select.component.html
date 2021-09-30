@@ -2,7 +2,7 @@
     <i class=" fas fa-palette"></i>
 </button>
 
-<mat-menu [xPosition]="langSrv.rtl ? 'after' : 'before'" yPosition="below" overlapTrigger="false" #menu="matMenu">
+<mat-menu [xPosition]="langSrv.rtl ? 'before' : 'after'" yPosition="below" overlapTrigger="false" #menu="matMenu">
     <div class="themes-menu">
         <div mat-menu-item *ngFor="let t of themes" class="theme-button {{t}}-bg " (click)="setTheme(t)">
             <div class="{{t}}-bg-p bg-p"></div>
