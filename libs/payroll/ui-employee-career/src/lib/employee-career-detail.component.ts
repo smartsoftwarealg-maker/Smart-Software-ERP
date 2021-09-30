@@ -4,23 +4,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeCareerService, Career } from '@ss/payroll/api-employee';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { dateToYmdStr, LoginService } from '@ss/common/api-common';
+import { LoginService } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { EmploymentType, EmploymentTypeService, LookupsService } from '@ss/common/api-lookup';
+import { Post, LookupsService, Department, Division, Service } from '@ss/common/api-lookup';
 import { EmployeeCareerUIService } from './employee-career-ui.service';
 import { EmployeeCareerOverviewComponent } from './empolyee-career-overview.component';
 
 
 @Component({
-    selector: 'ss-emp-act-form',
-    templateUrl: './employee-activation-form.component.html',
-    styleUrls: ['./employee-activation-form.component.scss']
+    selector: 'ss-emp-career-form',
+    templateUrl: './employee-career-detail.component.html',
+    styleUrls: ['./employee-career-detail.component.scss']
 })
-export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
+export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
 
-    private id: number;
-    employmentTypes: EmploymentType[];
+    id: number;
+    posts: Post[] = [];
+    departments: Department[] = [];
+    divisions: Division[] = [];
+    services: Service[] = [];
+
     public form: FormGroup = null;
 
     public saveButton: ToolbarButton = {
@@ -35,7 +39,6 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     constructor(public uiSrv: EmployeeCareerUIService,
         public shellSrv: ShellService,
         public empCareerSrv: EmployeeCareerService,
-        public employmentTypeSrv: EmploymentTypeService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
@@ -59,7 +62,8 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
                 obj => {
                     this.setupForm(obj);
                     this.shellSrv.setLoading(false);
-                }, err => {
+                },
+                err => {
                     this.shellSrv.showRetry(() => this.init())
                     throw err;
                 }
@@ -67,30 +71,57 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     }
 
     load(): Observable<Career> {
-        return this.lookupsSrv.getPosts()
+        return this.route.params
             .pipe(
-                tap(posts => this.posts = this.lookupListToMap(posts)),
+                tap(params => this.id = +params.id),
+                switchMap(() => this.lookupsSrv.getPosts()),
+                tap(posts => this.posts = posts),
                 switchMap(() => this.lookupsSrv.getDepartments()),
-                tap(list => this.departments = this.lookupListToMap(list)),
+                tap(list => this.departments = list),
                 switchMap(() => this.lookupsSrv.getDivisions()),
-                tap(list => this.divisions = this.lookupListToMap(list)),
+                tap(list => this.divisions = list),
                 switchMap(() => this.lookupsSrv.getServices()),
-                tap(list => this.services = this.lookupListToMap(list)),
-                switchMap(() => this.empCareerSrv.get(???))
-            );
+                tap(list => this.services = list),
+                switchMap(() => this.id
+                    ? this.empCareerSrv.get(this.id) // parentID is set in the parent component
+                    : of(this.newCareer())
+                )
+            ) as Observable<Career>; // dumb compiler
+    }
+
+    newCareer(): Career {
+        return {
+            id: null,
+            employee: this.uiSrv.instance.personId,
+            paymonth: null,
+            post: null,
+            division: null,
+            department: null,
+            service: null,
+            salary_grid: null,
+            prof_category: null,
+            salary_rank: null,
+            from_date: null,
+            to_date: null,
+            trial_period: null
+        };
     }
 
     setupForm(a: Career) {
         this.form = this.formBuilder.group({
             id: a.id,
-            center: a.center,
-            empId: a.empId,
-            activityStatus: a.activityStatus,
-            hireDate: [a.hireDate, Validators.required],
-            suspended: a.suspended,
-            suspensionDate: a.suspensionDate,
-            employmentType: [a.employmentType, Validators.required],
-            inConflict: a.inConflict
+            employee: a.employee,
+            paymonth: [a.paymonth, Validators.required],
+            post: [a.post, Validators.required],
+            division: a.division,
+            department: a.department,
+            service: a.service,
+            salary_grid: a.salary_grid,
+            prof_category: [a.prof_category],
+            salary_rank: a.salary_rank,
+            from_date: [a.from_date, Validators.required],
+            to_date: a.to_date,
+            trial_period: [a.trial_period, Validators.required]
         });
     }
 

@@ -63,5 +63,6 @@
     "SERVICE": "الخدمة",
     "PAYMONTH": "الشهر",
     "POST": "المنصب",
-    "EMPLOYEE_CAREER_OVERVIEW": "المسيرة المهنية"
+    "EMPLOYEE_CAREER_OVERVIEW": "المسيرة المهنية",
+    "EMPLOYEE_CAREER_DETAIL": "تعديل المسيرة المهنية"
 }

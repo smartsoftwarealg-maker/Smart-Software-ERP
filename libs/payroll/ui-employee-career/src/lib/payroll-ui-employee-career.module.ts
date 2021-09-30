@@ -11,6 +11,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { EmployeeCareerOverviewComponent } from './empolyee-career-overview.component';
 import { EmployeeCareerHistoryComponent } from './employee-career-history.component';
+import { EmployeeCareerDetailComponent } from './employee-career-detail.component';
 
 @NgModule({
     imports: [
@@ -34,6 +35,10 @@ import { EmployeeCareerHistoryComponent } from './employee-career-history.compon
                     {
                         path: '',
                         component: EmployeeCareerHistoryComponent
+                    },
+                    {
+                        path: ':id',
+                        component: EmployeeCareerDetailComponent
                     }
                 ]
             },
@@ -43,7 +48,8 @@ import { EmployeeCareerHistoryComponent } from './employee-career-history.compon
     declarations: [
         EmployeeListComponent,
         EmployeeCareerOverviewComponent,
-        EmployeeCareerHistoryComponent
+        EmployeeCareerHistoryComponent,
+        EmployeeCareerDetailComponent
     ]
 })
 export class PayrollUiEmployeeCareerModule { }
