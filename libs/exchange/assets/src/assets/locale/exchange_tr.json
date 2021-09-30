@@ -20,5 +20,6 @@
     "TRANSFERS":           "Müşteri para birimi transferleri",
     "DEST_AMOUNT":         "Aktarılan miktar",
     "WITHDRAWN":           "geri çekildi",
-    "W":                   "ç"
+    "W":                   "ç",
+    "NOT_WITHDRAWN":           "geri çekilmedi"
 }

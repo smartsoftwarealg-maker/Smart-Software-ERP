@@ -159,5 +159,6 @@
     "PROFILE": "Personal profile",
     "SAVE_REQUIRED": "Form is dirty. Saving required",
     "FINANCE": "Finance",
-    "PAYMENTS": "Payments"
+    "PAYMENTS": "Payments",
+    "ALL": "All"
 }

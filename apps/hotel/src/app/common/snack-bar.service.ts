@@ -27,7 +27,7 @@ export class SnackBarService {
     }
 
     public showSuccessMessage() {
-        return this.showMessage('SUCCESS', false, false);
+        return this.showMessage('COMMON_SUCCESS', false, false);
     }
 
     public showFailureMessage(error?: Error | string) {

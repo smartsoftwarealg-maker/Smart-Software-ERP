@@ -143,5 +143,6 @@
     "PROFILE":                       "Kişisel profil",
     "SAVE_REQUIRED":                 "Kaydetme gerekli"
     "FINANCE":                       "",
-    "PAYMENTS":                      ""
+    "PAYMENTS":                      "Tüm",
+    "ALL": ""
 }
