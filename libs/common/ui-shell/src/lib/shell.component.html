@@ -144,36 +144,37 @@
     <mat-menu #menu="matMenu" style="overflow: hidden">
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
             <ng-container *ngFor="let b of shellSrv.buttons">
-
-                <ng-template [ngIf]="b.menuItems">
-                    <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
-                        <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
-                            <i [class]="b.icon"></i>
+                <ng-container *ngIf="b.visible">
+                    <ng-template [ngIf]="b.menuItems">
+                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()" [class.small-only]="b.keepOnToolbar != 2">
+                            <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
+                                <i [class]="b.icon"></i>
+                            </div>
+                            <span class="text" translate>{{b.label}}</span>
                         </div>
-                        <span class="text" translate>{{b.label}}</span>
-                    </div>
-                    <mat-menu #menu>
-                        <ng-container *ngFor="let mt of b.menuItems">
-                            <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                                    [disabled]="mt.disabled">
-                                <i [class]="mt.icon"></i>
-                                {{mt.label | translate}}
-                            </button>
-                        </ng-container>
-                    </mat-menu>
-                </ng-template>
+                        <mat-menu #menu>
+                            <ng-container *ngFor="let mt of b.menuItems">
+                                <button *ngIf="mt.visible" mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                        [disabled]="mt.disabled">
+                                    <i [class]="mt.icon"></i>
+                                    {{mt.label | translate}}
+                                </button>
+                            </ng-container>
+                        </mat-menu>
+                    </ng-template>
 
-                <ng-template [ngIf]="!b.menuItems">
-                    <div type="button" mat-menu-item *ngIf="b.visible" class="settings-item"
-                            [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                            (click)="b.click(); menuTrigger.closeMenu();">
-                        <div class="icon">
-                            <i [class]="b.icon"></i>
+                    <ng-template [ngIf]="!b.menuItems">
+                        <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
+                                [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                                (click)="b.click(); menuTrigger.closeMenu();">
+                            <div class="icon">
+                                <i [class]="b.icon"></i>
+                            </div>
+                            <span class="text" translate>{{b.label}}</span>
                         </div>
-                        <span class="text" translate>{{b.label}}</span>
-                    </div>
-                </ng-template>
+                    </ng-template>
 
+                </ng-container>
             </ng-container>
 
             <mat-divider *ngIf="shellSrv.buttons.length"></mat-divider>
