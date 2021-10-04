@@ -66,5 +66,9 @@
     "EMPLOYEE_CAREER_OVERVIEW": "Aperçu de carrière",
     "EMPLOYEE_CAREER_DETAIL": "Modifier la carrière de l'employé",
     "MONTH": "Mois",
-    "YEAR": "Année"
+    "YEAR": "Année",
+    "CATEGORY": "Catégorie",
+    "SALARY_GRID": "Grille des salaire",
+    "TRIAL_PERIOD": "Période d'essai",
+    "SALARY_RANK": "Échelon"
 }
