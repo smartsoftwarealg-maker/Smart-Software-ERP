@@ -9,7 +9,7 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService } from '@ss/common/api-common';
-import { ACTIVATION_LIST_URL } from '@ss/payroll/api-employee';
+import { ACTIVATION_LIST_URL, CAREER_URL } from '@ss/payroll/api-employee';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 interface Lookup {
@@ -47,6 +47,14 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         label: 'PAYROLL_EMP_ACTIVATION_SUSPENSION'
     };
 
+    gotoCareerButton: ToolbarButton = {
+        disabled: true,
+        visible: true,
+        icon: 'far fa-id-card-alt',
+        keepOnToolbar: KeepOnToolbar.NEVER,
+        label: 'PAYROLL_EMPLOYEE_CAREER_OVERVIEW'
+    }
+
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
     militaryServiceStates: { [id: number]: string; };
@@ -68,11 +76,15 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
     ngOnInit(): void {
         super.ngOnInit();
         this.gotoActivationButton.click = () => this.shellSrv.navigateByRelativeUrl(ACTIVATION_LIST_URL + '/' + this.selected);
+        this.gotoCareerButton.click = () => this.shellSrv.navigateByRelativeUrl(CAREER_URL + '/' + this.selected);
         this.shellSrv.addButton(this.gotoActivationButton);
+        this.shellSrv.addButton(this.gotoCareerButton);
     }
 
     public select(id: number): void {
-        this.gotoActivationButton.disabled = id == null || id < 1;
+        const disableControls = id == null || id < 1;
+        this.gotoActivationButton.disabled = disableControls;
+        this.gotoCareerButton.disabled = disableControls;
         super.select(id);
     }
 

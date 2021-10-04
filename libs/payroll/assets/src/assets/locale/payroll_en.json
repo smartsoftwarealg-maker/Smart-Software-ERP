@@ -63,5 +63,12 @@
     "SERVICE": "Service",
     "PAYMONTH": "Month",
     "POST": "Post",
-    "EMPLOYEE_CAREER_OVERVIEW": "Career overview"
+    "EMPLOYEE_CAREER_OVERVIEW": "Career overview",
+    "EMPLOYEE_CAREER_DETAIL": "Edit employee career",
+    "MONTH": "Month",
+    "YEAR": "Year",
+    "CATEGORY": "Category",
+    "SALARY_GRID": "Salary grid",
+    "TRIAL_PERIOD": "Trial period",
+    "SALARY_RANK": "Salary rank"
 }

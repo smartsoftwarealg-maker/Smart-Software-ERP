@@ -63,5 +63,12 @@
     "SERVICE": "الخدمة",
     "PAYMONTH": "الشهر",
     "POST": "المنصب",
-    "EMPLOYEE_CAREER_OVERVIEW": "المسيرة المهنية"
+    "EMPLOYEE_CAREER_OVERVIEW": "المسيرة المهنية",
+    "EMPLOYEE_CAREER_DETAIL": "تعديل المسيرة المهنية",
+    "MONTH": "الشهر",
+    "YEAR": "السنة",
+    "CATEGORY": "الفئة",
+    "SALARY_GRID": "شبكة المرتب",
+    "TRIAL_PERIOD": "الفترة التجريبية",
+    "SALARY_RANK": "رتبة المرتب"
 }
