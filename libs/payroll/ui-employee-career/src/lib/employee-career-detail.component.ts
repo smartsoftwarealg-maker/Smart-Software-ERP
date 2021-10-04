@@ -7,7 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { Post, LookupsService, Department, Division, Service } from '@ss/common/api-lookup';
+import { Post, LookupsService, Department, Division, Service, Category } from '@ss/common/api-lookup';
 import { EmployeeCareerUIService } from './employee-career-ui.service';
 import { EmployeeCareerOverviewComponent } from './empolyee-career-overview.component';
 
@@ -24,6 +24,7 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
     departments: Department[] = [];
     divisions: Division[] = [];
     services: Service[] = [];
+    categories: Category[] = [];
 
     public form: FormGroup = null;
 
@@ -82,6 +83,8 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
                 tap(list => this.divisions = list),
                 switchMap(() => this.lookupsSrv.getServices()),
                 tap(list => this.services = list),
+                switchMap(() => this.lookupsSrv.getCategories()),
+                tap(list => this.categories = list),
                 switchMap(() => this.id
                     ? this.empCareerSrv.get(this.id) // parentID is set in the parent component
                     : of(this.newCareer())
@@ -111,13 +114,14 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
         this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee,
-            paymonth: [a.paymonth, Validators.required],
+            paymonthY: [Math.floor(a.paymonth / 100), Validators.required],
+            paymonthM: [a.paymonth % 100, Validators.required],
             post: [a.post, Validators.required],
             division: a.division,
             department: a.department,
             service: a.service,
             salary_grid: a.salary_grid,
-            prof_category: [a.prof_category],
+            prof_category: a.prof_category,
             salary_rank: a.salary_rank,
             from_date: [a.from_date, Validators.required],
             to_date: a.to_date,
@@ -131,7 +135,11 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
-        const val: Career = this.form.value;
+        const formVal = this.form.value;
+        const val: Career = formVal;
+        val.paymonth = formVal.paymonthY * 100 + formVal.paymonthM;
+        delete formVal.paymonthY;
+        delete formVal.paymonthM;
         //
         val.id = this.id;
         const obs: Observable<any> = this.id === 0

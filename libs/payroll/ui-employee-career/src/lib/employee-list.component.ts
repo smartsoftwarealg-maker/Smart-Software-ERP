@@ -58,6 +58,8 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_CAREER');
+        this.editButton.label = 'PAYROLL_EMPLOYEE_CAREER_OVERVIEW';
+        this.editButton.icon = 'far fa-id-card-alt';
     }
 
     posts: { [id: number]: string; };
