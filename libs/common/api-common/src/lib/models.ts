@@ -41,7 +41,6 @@ export interface User {
     androidLicense?: string;
 }
 
-
 export interface AppContext {
     id: number;
     userName: string;
@@ -56,7 +55,7 @@ export interface AppContext {
     blocked?: boolean;
     pwdExpired?: boolean;
     hasPassword?: boolean;
-    params: { param: string; value: string };
+    params: Map<string, string>;
 }
 
 export interface LoginInfo {

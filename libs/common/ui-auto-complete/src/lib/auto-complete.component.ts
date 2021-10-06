@@ -305,7 +305,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     //            : null;
     //    }
 
-    displayFn = x => {
+    displayFn = (x: any) => {
         return this.model ? this.model.toString(x) : null
     };
 

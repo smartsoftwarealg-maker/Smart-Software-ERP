@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
-import {Circulation, CIRCULATION_URL} from '@ss/logistics/api-circulation';
 import {ARTICLES_URL} from '@ss/stock/api-article';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-// import {BaseEntityService} from '@ss/common/api-base-entity';;
+// import {BaseEntityService} from '@ss/common/api-base-entity';
 import {STOCK_INFO_URL, StockInfo} from './src/lib/stock-info';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
@@ -19,14 +18,14 @@ export class StockInfoService extends BaseEntityService<StockInfo> {
       super(httpSrv, STOCK_INFO_URL, ARTICLES_URL);
   }
 
-    load(paginator: PaginationModel, filter, sortBy, reference): Observable<StockInfo[]> {
-        return this.httpSrv.getData(`${ARTICLES_URL}${STOCK_INFO_URL}`,
+    load(paginator: PaginationModel, filter: string | null, sortBy: string | null, reference: string): Observable<StockInfo[]> {
+        return this.httpSrv.getData<StockInfo>(`${ARTICLES_URL}${STOCK_INFO_URL}`,
             paginator.page  - 1,
             paginator.pageSize,
             filter,
             sortBy,
-            new HttpParams().set('find', reference)).pipe(
-            map((data: { itemCount: number, body: StockInfo[] }) => {
+            new HttpParams().set('find', reference))
+            .pipe(map((data: { itemCount: number, body: StockInfo[] }) => {
                 paginator.elementCount = data.itemCount;
                 return data.body;
             })

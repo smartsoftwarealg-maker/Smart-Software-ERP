@@ -1,4 +1,4 @@
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {DefaultAutoCompleteModel, Id} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {EventEmitter} from '@angular/core';
 import {Store, LotsService} from '@ss/common/api-lookup';

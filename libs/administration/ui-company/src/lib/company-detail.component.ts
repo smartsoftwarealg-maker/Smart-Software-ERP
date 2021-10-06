@@ -79,7 +79,7 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
     }
 
 
-    public isSectionInvalid(section): boolean {
+    public isSectionInvalid(section: string): boolean {
         switch (section) {
             case 'main':
                 return this.isMainSectionInvalid();
@@ -90,7 +90,7 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
         }
     }
 
-    public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
+    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (this.isSectionInvalid(section)) {
             return 'b-warn-expansion-panel';

@@ -1,0 +1,75 @@
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+
+import {AppComponent} from './app.component';
+import {RouterModule, Routes} from '@angular/router';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {HttpClientModule} from "@angular/common/http";
+import {UiThemeModule} from "@ss/common/ui-theme";
+import {UiErrorHandlerModule} from "@ss/common/ui-error-handler";
+import {ShellComponent, UiShellModule} from "@ss/common/ui-shell";
+import {CommonUiLangModule} from "@ss/common/ui-lang";
+import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
+import {UiLoginModule} from "@ss/common/ui-login";
+import {UiCenterSelectModule} from "@ss/common/ui-center-select";
+import {ADMINISTRATION_APP_URL} from './common';
+import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from "@ss/common/api-common";
+import {FINANCE_APP_URL} from "../../../erp/src/app/common";
+
+const routes: Routes = [
+    {
+        path: MAIN_PAGE_URL,
+        component: ShellComponent,
+        children: [
+            {
+                path: INDEX_PAGE_URL,
+                component: MainPageComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: FINANCE_APP_URL,
+                loadChildren: () => import('./patients/patients.module').then(m => m.PatientsModule)
+            },
+            {
+                path: FINANCE_APP_URL,
+                loadChildren: () => import('./finance/finance.module').then(m => m.FinanceModule)
+            },
+            {
+                path: ADMINISTRATION_APP_URL,
+                loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+            },
+            { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
+        ]
+    },
+    {path: '', redirectTo: LOGIN_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: LOGIN_URL, pathMatch: 'full'}
+]
+
+@NgModule({
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+        UiThemeModule,
+        UiErrorHandlerModule,
+        UiShellModule,
+        CommonUiLangModule,
+        CommonUiMainPageModule,
+        UiLoginModule,
+        UiCenterSelectModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+})
+export class AppModule {
+    constructor(private langSrv: LanguageService) {
+        langSrv.addSource('assets/locale/', '');
+        langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
+        langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/bl_', 'BL_');
+    }
+
+}

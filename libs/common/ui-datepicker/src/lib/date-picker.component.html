@@ -1,6 +1,11 @@
-<input #textField class="warn-when-invalid" style="text-align: center;" #element [disabled]="isDisabled" matInput [matDatepicker]="datePicker"
-       [value]="date" (keyup)="onKeyUp($event.target['value'])" (dateChange)="onDateChanged($event.value)" [required]="isRequired">
-<button class="toggleButton abs-end-0" type="button" [disabled]="isDisabled" mat-icon-button datepicker-toggle (click)="datePicker.open()">
+<input #textField class="warn-when-invalid" style="text-align: center;" #element [disabled]="isDisabled" matInput
+       [matDatepicker]="datePicker"
+       [value]="date"
+       (keyup)="onKeyUp($event)"
+       (dateChange)="onDateChanged($event.value)"
+       [required]="isRequired">
+<button class="toggleButton abs-end-0" type="button" [disabled]="isDisabled" mat-icon-button datepicker-toggle
+        (click)="datePicker.open()">
     <i class="warn-when-invalid far fa-calendar-alt"></i>
- </button>
+</button>
 <mat-datepicker #datePicker></mat-datepicker>

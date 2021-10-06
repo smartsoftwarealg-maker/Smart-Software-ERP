@@ -13,7 +13,7 @@ import { MainPageService } from '@ss/common/api-common';
 export class MainPageComponent implements OnInit, OnDestroy {
 
     public searchResult: SideNavNode[] = null;
-    
+
     constructor(public srv: MainPageService,
                 public shellSrv: ShellService,
                 private router: Router,
@@ -40,7 +40,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
                     }
                 }
             ),
-            true // focus the search field for this component
+            false // focus the search field for this component
         );
     }
 
