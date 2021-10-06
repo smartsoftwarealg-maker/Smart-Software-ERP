@@ -71,15 +71,15 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
 
     edit() {
         if (this.selectedItem) {
-            const r = {
+            const r: AccessRight = {
                 id: this.selectedRow?.id || 0,
                 centerId: this.loginSrv.appCtx.center,
                 roleId: this.form.controls['roles'].value || 0,
                 document: 0,
                 rights: (this.form.controls['canRead'].value || 0) +
-                    (this.form.controls['canWrite'].value || 0) * 2 +
-                    (this.form.controls['canEdit'].value || 0) * 4 +
-                    (this.form.controls['canDelete'].value || 0) * 8,
+                        (this.form.controls['canWrite'].value || 0) * 2 +
+                        (this.form.controls['canEdit'].value || 0) * 4 +
+                        (this.form.controls['canDelete'].value || 0) * 8,
             };
             this.rightsSrv
                 .saveRights(r, this.selectedItem)

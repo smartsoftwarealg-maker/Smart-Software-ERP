@@ -84,7 +84,7 @@ interface LanguageConfig {
 export class LanguageService {
 
     private static readonly LOCAL_STORAGE_KEY = 'localeCode';
-    private static style = null;
+    private static style: HTMLElement  = null;
     private readonly RTL_STYLE =
         '.locale-dir { direction: rtl; } ' +
         '.cdk-overlay-pane { direction: rtl !important; } ' +
@@ -219,7 +219,7 @@ export class LanguageService {
         }
         // parse language list
         if (conf.languages != null && conf.languages instanceof Array && conf.languages.length > 0) {
-            this.languages = conf.languages.map(l => this.parseLangConfig(l as LanguageConfig));
+            this.languages = conf.languages.map((l: LanguageConfig) => this.parseLangConfig(l as LanguageConfig));
         }
         if (typeof conf.useBrowserLanguage === 'boolean' && conf.useBrowserLanguage) {
             // update default language to browser default
@@ -289,7 +289,8 @@ export class LanguageService {
         if (this.currentLanguage == null || src.loaded[this.currentLanguage.code]) {
             return of(false);
         }
-        return this.httpClient.get(src.uri + this.currentLanguage.code + '.json')
+        return this.httpClient
+            .get<{ [key: string]: string; }>(src.uri + this.currentLanguage.code + '.json')
             .pipe(
                 map((conf: { [key: string]: string; }) => {
                     src.loaded[this.currentLanguage.code] = true;
@@ -410,7 +411,7 @@ export class LanguageService {
     private addStyleClass(code: string): void {
         if (LanguageService.style == null) {
             LanguageService.style = document.createElement('style');
-            LanguageService.style.type = 'text/css';
+            // LanguageService.style.type = 'text/css';
             this.updateDirection(code);
             document.getElementsByTagName('head')[0].appendChild(LanguageService.style);
         }

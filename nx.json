@@ -291,6 +291,13 @@
         "logistics-ui-totals": {
             "tags": []
         },
+        "patients": {
+            "tags": []
+        },
+        "patients-e2e": {
+            "tags": [],
+            "implicitDependencies": ["patients"]
+        },
         "payroll-api-employee": {
             "tags": ["type:api"]
         },

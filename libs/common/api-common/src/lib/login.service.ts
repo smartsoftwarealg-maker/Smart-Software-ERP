@@ -8,6 +8,7 @@ import {CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
 import {UserRightsService} from './user-rights.service';
 import {MainPageService} from './main-page.service';
+import {getKeyValue} from "./utils";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -251,7 +252,8 @@ export class LoginService {
         this.httpSrv.updateAuthToken(jwt);
     }
 
+
     getAppParam(key: string): string {
-        return this.appCtx?.params[key];
+        return this.appCtx?.params?.get(key);
     }
 }
