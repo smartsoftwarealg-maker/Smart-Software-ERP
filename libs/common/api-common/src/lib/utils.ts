@@ -163,16 +163,17 @@ export function removeTimeForDateStr(s: string) {
     return i > 0 ? r.substring(0, i) : r;
 }
 
-export function isString(value) {
+export function isString(value: any): boolean {
     return typeof value === 'string' || value instanceof String;
 }
 
-export function isNumber(value) {
+export function isNumber(value: any): boolean {
     return typeof value === 'number' || value instanceof Number;
 }
 
 const ZERO_ASCII = 48;
 const NINE_ASCII = 57;
+
 function parse4Digits(str: string, posHolder: number[]): number {
     let N = 0;
     for (let i = 0; i < 4; i++) {
@@ -184,6 +185,7 @@ function parse4Digits(str: string, posHolder: number[]): number {
     }
     return N;
 }
+
 function parse2Digits(str: string, posHolder: number[]): number {
     let code = str.charCodeAt(posHolder[0]);
     assertTrue(isDigit(code));
@@ -197,6 +199,7 @@ function parse2Digits(str: string, posHolder: number[]): number {
     }
     return N;
 }
+
 function isDigit(c: number): boolean {
     return ZERO_ASCII <= c && c <= NINE_ASCII;
 }
@@ -209,14 +212,14 @@ function pad4(n: number): string {
     return (n < 10 ? '000' : (n < 100 ? '00' : (n < 1000 ? '0' : ''))) + n;
 }
 
-export function fillObject(from, to) {
+export function fillObject(from: any, to: any): any {
     for (const key in from) {
         if (from.hasOwnProperty(key)) {
             if (from[key] instanceof Object) {
                 if (!to.hasOwnProperty(key)) {
                     to[key] = {};
                 }
-                this.fillObject(from[key], to[key]);
+                fillObject(from[key], to[key]);
             }
             else if (!to.hasOwnProperty(key)) {
                 to[key] = from[key];
@@ -242,3 +245,5 @@ export function strDropUntil(txt: string, token: string) {
     const i = txt.indexOf(token);
     return i > -1 ? txt.substring(i) : '';
 }
+
+export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];

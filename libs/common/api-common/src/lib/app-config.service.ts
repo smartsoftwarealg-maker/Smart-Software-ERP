@@ -8,7 +8,7 @@ import { Observable, Subject, of } from 'rxjs';
 export class AppConfigService {
 
     private subject = new Subject<any>();
-    private config = null;
+    private config: {} = null;
 
     constructor(private httpClient: HttpClient) {
         this.httpClient.get('./config/config.json')

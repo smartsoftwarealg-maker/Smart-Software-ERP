@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
@@ -12,6 +12,7 @@ import {
     strTakeUntil,
     UserRightsService
 } from '@ss/common/api-common';
+import * as _ from 'lodash';
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version
@@ -150,11 +151,7 @@ export class ShellService {
         }
         return tree.filter(i => i.visible)
             .map(i => {
-                const clone: any = {};
-                // tslint:disable-next-line:forin
-                for (const p in i) {
-                    clone[p] = i[p];
-                }
+                const clone: SideNavNode = _.cloneDeep(i);
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
             })
@@ -352,7 +349,7 @@ export class ShellService {
      * @param inputLabel the title of the search input
      * @param subFn a function that subscribes to an observable, this observable sends search terms
      */
-    public enableSearch(inputLabel: string, subFn: (Observable) => Subscription, focusField: boolean = false): void {
+    public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField: boolean = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
             alert(
@@ -361,10 +358,10 @@ export class ShellService {
         } else {
             this.searchControl = new FormControl();
             this.subscription = subFn(
-                this.searchControl.valueChanges.pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                )
+                this.searchControl
+                    .valueChanges
+                    .pipe(debounceTime(300),
+                    distinctUntilChanged())
             );
             this.updateShell();
         }

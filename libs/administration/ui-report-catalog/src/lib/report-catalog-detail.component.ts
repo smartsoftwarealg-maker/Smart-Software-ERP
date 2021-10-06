@@ -5,7 +5,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
-import {FormValidators, LIST_URL} from '@ss/common/api-common';
+import {LIST_URL} from '@ss/common/api-common';
 import {ReportAppsService, ReportListService} from '@ss/common/api-reports';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -52,7 +52,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
 
     finishLoading(e: ReportsCatalog) {
-        this.reportListsService.getListByApp(this.app).subscribe((res: []) => {
+        this.reportListsService.getListByApp(this.app).subscribe((res: string[]) => {
             this.reportList = res;
             super.finishLoading(e);
         });

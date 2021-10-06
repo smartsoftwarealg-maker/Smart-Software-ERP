@@ -1,8 +1,5 @@
-import {
-    ABS_FINANCE_COMPENSATIONS,
-    ABS_FINANCE_PAYMENTS
-} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
+import {ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_PAYMENTS} from '../common';
 
 export const financeNavTree: SideNavNode = {
         name: 'COMMON_FINANCE',

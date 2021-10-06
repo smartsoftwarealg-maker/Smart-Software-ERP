@@ -7,5 +7,5 @@ export class ArticleAutocompleteModel extends DefaultAutoCompleteModel<Article> 
       super(articleSrv, 'reference', 'description2');
   }
 
-    toString = x => x ?  `${x[this.idField]} ${x[this.descriptionField]}` : null;
+    toString = (x:any) => x ?  `${x[this.idField]} ${x[this.descriptionField]}` : null;
 }

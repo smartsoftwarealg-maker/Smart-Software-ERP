@@ -11,7 +11,7 @@ import {exchangeNavTree, fileNavTree} from './exchange/side-nav-tree';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    loaded = false;
+    loaded = true;
     private optionsButton: ToolbarButton = null;
     private TITLES = new Map([
         ['1', 'COMMON_ALL'],
@@ -71,7 +71,6 @@ export class AppComponent implements OnInit {
         this.shellSrv.setAppButtons([optionsButton]);
         this.optionsButton = optionsButton;
     }
-
 
     private selectType(aType: number) {
         this.httpSrv

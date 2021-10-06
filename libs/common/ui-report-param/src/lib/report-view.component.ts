@@ -13,7 +13,7 @@ import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {saveAs} from 'file-saver';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -93,7 +93,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         });
     }
 
-    parseTree(tree, parent): ReportNode[] {
+    parseTree(tree: any[], parent: any): ReportNode[] {
         return tree.map(x => {
             if (x.list.length > 0) x.list = this.parseTree(x.list, `${parent}/${x.name}`);
             x.parent = (x.parent || '') + (parent || '');
@@ -116,7 +116,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.form = null;
         this.selectedReport = reportNode;
         this.refresh(() => {
-            const cc =  { };
+            const cc: any = {};
 
             this.data.forEach(e =>  {
                 cc[e.name] = new FormControl(e.valueString);
@@ -126,7 +126,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         });
     }
 
-    parseValueList(valueList) {
+    parseValueList(valueList: { description: string }[]) {
         return valueList?.map(x=>x.description).join(' ');
     }
 

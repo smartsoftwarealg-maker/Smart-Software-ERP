@@ -1,7 +1,7 @@
 @echo off
 cls
-nx serve erp --host 0.0.0.0 --aot --disable-host-check
-
+# nx serve erp --host 0.0.0.0 --aot --disable-host-check
+# nx generate @nrwl/angular:app myapp
 # npx nx g @nrwl/angular:lib api-angular-order --directory common --dry-run
 # npx nx g @nrwl/angular:service sales-order --path libs/sales/api-sales-order/src/lib --dry-run
 # npx nx g @nrwl/angular:class sales-order-api --path libs/sales/api-sales-order/src/lib

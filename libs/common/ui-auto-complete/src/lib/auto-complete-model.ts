@@ -6,19 +6,17 @@ export type Id = number | string;
 
 export interface AutoCompleteModel<T> {
 
-    valueOf: (T) => Id;
-    toString: (T) => string;
-    getById: (Id) => Observable<T>;
-    filter: (string) => Observable<T[]>;
-    onObjectSelected?: (any) => void; // call for changes done by the user only
-    onValueChanged?: (T) => void; // called when the value changes
+    valueOf: (a: T) => Id;
+    toString: (a:T) => string;
+    getById: (a: Id) => Observable<T>;
+    filter: (a: string) => Observable<T[]>;
+    onObjectSelected?: (a: T) => void; // call for changes done by the user only
+    onValueChanged?: (a: Id) => void; // called when the value changes
     options: T[];
     cache: T;
 
 
-    isPerfectMatch(T, string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
-
-
+    isPerfectMatch(a: T, b: string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
 }
 
 export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
@@ -31,27 +29,26 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     }
 
     onValueChanged = (e: Id) => {};
-    onObjectSelected = (e: Id) => {};
+    onObjectSelected = (e: T) => {};
 
-    valueOf = x => x ? x[this.idField] : null;
+    valueOf = (x:any) => x ? x[this.idField] : null;
 
-    toString = x => x ? x[this.descriptionField] : null;
+    toString = (x:any) => x ? x[this.descriptionField] : null;
 
-    getById = id => id ? this.entitySrv.get(id) : of(null);
+    getById = (id: Id) => id ? this.entitySrv.get(id) : of(null);
 
-    filter = filter => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
+    filter = (filter: string) => this.entitySrv.getList(0, 5, filter, this.descriptionField).pipe(map(x => this.filterLoadedData(x.body)));
 
-    isPerfectMatch = (obj, filter) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
+    isPerfectMatch = (obj: any, filter: string) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
 }
 
 export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
-    options = [];
+    options: number[] = [];
     cache: null;
 
-    valueOf = t => null;
-    toString = t => null;
-    getById = t => of(null);
-    filter = f => of([]);
-    isPerfectMatch = (o, f) => false;
-
+    valueOf = (t: number) => <Id>null;
+    toString = (t: Id) => <string>null;
+    getById = (t: Id) => of(<number>null);
+    filter = (a: string) => of(<number[]>[]);
+    isPerfectMatch = (o: number, f: string) => false;
 }

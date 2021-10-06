@@ -14,10 +14,8 @@ import { LoadingState } from '../../common/util';
 import { switchMap } from 'rxjs/operators';
 import { isString } from '@ss/common/api-common';
 
-
-
 @Component({
-    selector: 'app-payment-detail',
+    selector: 'ss-payment-detail',
     styleUrls: ['./payment-detail.component.scss'],
     templateUrl: './payment-detail.component.html'
 })

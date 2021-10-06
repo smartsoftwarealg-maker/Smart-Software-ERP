@@ -121,7 +121,7 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?): Observable<any> {
+    public post(url: string, data?: any | null): Observable<any> {
         return this
             .httpClient
             .post(this.baseUrl + url,
@@ -129,7 +129,7 @@ export class HttpService {
                 { headers: HttpService.getHeaders() });
     }
 
-    public postHTML(url: string, data?): Observable<any> {
+    public postHTML(url: string, data?: any | null): Observable<any> {
         return this
             .httpClient
             .post(this.baseUrl + url,
@@ -137,7 +137,7 @@ export class HttpService {
                 {responseType: 'text', headers: HttpService.getHeaders() });
     }
 
-    public put(url: string, data?): Observable<any> {
+    public put(url: string, data?: any | null): Observable<any> {
         return this
             .httpClient
             .put(this.baseUrl + url,
@@ -158,7 +158,7 @@ export class HttpService {
                 { headers: HttpService.getHeaders() });
     }
 
-    public doLogin(url, data): Observable<LoginInfo> {
+    public doLogin(url: string, data: any | null): Observable<LoginInfo> {
         const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, { headers: httpHeaders });
     }
@@ -169,7 +169,7 @@ export class HttpService {
     // }
 
     // noinspection JSUnusedGlobalSymbols
-    public postBlob(url: string, data?): Observable<ArrayBuffer> {
+    public postBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
         const httpHeaders = new HttpHeaders()
             .set('Authorization', this.getAuthToken());
 
@@ -196,8 +196,7 @@ export class HttpService {
                 observe: 'events'
             })
             .pipe(
-                catchError(e => { throw e; }),
-                filter((e: HttpEvent<any>) => e.type === HttpEventType.UploadProgress),
+                filter((e: any) => (e as HttpProgressEvent) && (e as HttpProgressEvent).type === HttpEventType.UploadProgress),
                 tap((e: HttpProgressEvent) => {
                     // todo: show some ui bullshit instead of this
                     console.log('upload ' + (e.loaded * 100 / e.total) + '%');
