@@ -5,13 +5,10 @@
     "EDIT_VAT": "تعديل ق.ض.م",
     "WILAYAS": "الولايات",
     "EDIT_WILAYA": "تعديل ولاية",
-
     "PER_PAGE": "نتائج في الصفحة:",
-    "GO":"اذهب",
-
+    "GO": "اذهب",
     "SUCCESS": "تمت العملية بنجاح",
     "FAILURE": "فشلت العملية",
-
     "SAVE": "حفظ",
     "CONFIRM_DELETE_RECORD": "أمتأكد أنك تريد الحذف؟",
     "CONFIRM_DONT_SAVE": "أتريد الخروج دون حفظ؟",
@@ -32,7 +29,6 @@
     "APPLY": "تطبيق",
     "NEXT": "التالي",
     "PREVIOUS": "السابق",
-
     "THEME_SETTINGS": "السمات",
     "LANGUAGE_SETTINGS": "اللغة",
     "LOGOUT": "تسجيل الخروج",
@@ -41,26 +37,18 @@
     "LOGIN_WRONG_USERNAME_PASSWORD": "معطيات غير صالحة",
     "LOGIN_LICENSE": "الرخصة",
     "LOGIN_INVALID_LICENSE": "رخصة غير صالحة",
-
     "SELECT_COMPANY": "الشـركات",
     "SELECT_CENTER": "المراكـز",
-
     "CONNECTION_FAILED": "فشل الإتصال بالخادم\n$backend$",
-
     "EDIT": "تعديل",
     "DELETE": "حذف",
-
     "LOOKUPS": "الجداول",
-    "SETTINGS":"الضبط",
-
+    "SETTINGS": "الضبط",
     "USERNAME": "المستعمل",
     "PASSWORD": "كلمة المرور",
-
     "MAX_FILE_SIZE_1MB": "أقصى حجم للملف 1مغ",
     "NOT_AN_IMAGE": "هذا الملف ليس صورة صالحة",
-
     "FORM_NOT_VALID": "الإستمارة غير صالحة",
-
     "VAT": "الضريبة",
     "MARK": "النوع",
     "MARKS": "العلامات",
@@ -73,7 +61,6 @@
     "EDIT_SUBCLASS": "تعديل طبقة فرعية",
     "STORE_NAMES": "المخازن",
     "EDIT_STORE_NAME": "تعديل مخزن",
-
     "AGENT_TYPES": "أنواع العميل",
     "EDIT_AGENT_TYPE": "نوع العميل",
     "COMPANY_TYPES": "أنواع الشركات",
@@ -88,7 +75,6 @@
     "EDIT_PAY_MODE": "تعديل نوع الدفع",
     "CURRENCIES": "العملات",
     "EDIT_CURRENCY": "تعديل العملة",
-
     "POSTS": "الوظائف",
     "CATEGORIES": "الفئات",
     "DIPLOMAS": "الشهادات",
@@ -96,9 +82,7 @@
     "MARITAL_STATUS": "الحالة الإجتماعية",
     "SERVICES": "الخدمات",
     "NATIONALITIES": "الجنسيات",
-
     "NO_MATCH": "لا توجد نتائج",
-
     "REPORTS": "التقارير",
     "VALUE_STRING": "القيمة",
     "VALUE_LIST": "القيم",
@@ -129,10 +113,8 @@
     "CONSOLIDATED": "مدمج",
     "VIEW_REPORT": "عرض التقرير",
     "TYPE": "النوع",
-    "REPORTS": "التقارير",
     "DEFAULT_REPORT": "حدد التقرير الافتراضي",
     "SELECT": "اختيار",
-    "CANCEL": "الغاء",
     "FILENAME": "اسم الملف",
     "FROM": "من",
     "TO": "إلى",
@@ -160,5 +142,9 @@
     "SAVE_REQUIRED": "الحفظ مطلوب",
     "FINANCE": "التمويل",
     "PAYMENTS": "المدفوعات",
-    "ALL": "كل"
+    "ALL": "كل",
+    "DEPARTMENTS": "الأقسام",
+    "DIVISIONS": "القطاعات",
+    "EDIT_DEPARTMENT": "تعديل قسم",
+    "EDIT_DIVISION": "تعديل قطاع"
 }

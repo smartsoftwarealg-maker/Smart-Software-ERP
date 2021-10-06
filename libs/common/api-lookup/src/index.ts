@@ -25,4 +25,5 @@ export * from './lib/subclass.service';
 export * from './lib/lots.service';
 export * from './lib/unit.service';
 export * from './lib/role.service';
-
+export * from './lib/division.service';
+export * from './lib/department.service';

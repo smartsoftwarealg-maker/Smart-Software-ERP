@@ -113,10 +113,8 @@
     "CONSOLIDATED":                  "Konsolide",
     "VIEW_REPORT":                   "Raporu görüntüle",
     "TYPE":                          "Tür",
-    "REPORTS":                       "Raporlar",
     "DEFAULT_REPORT":                "Varsayılan raporu seçin",
     "SELECT":                        "Seçiniz",
-    "CANCEL":                        "iptal etmek",
     "FILENAME":                      "Dosya adı",
     "FROM":                          "Itibaren",
     "TO":                            "İçin",
@@ -141,8 +139,12 @@
     "EMAIL_REPORT":                  "Bir raporu e-postayla gönder",
     "EMAIL_SENT":                    "Rapor başarıyla e-postayla gönderildi",
     "PROFILE":                       "Kişisel profil",
-    "SAVE_REQUIRED":                 "Kaydetme gerekli"
-    "FINANCE":                       "",
+    "SAVE_REQUIRED":                 "Kaydetme gerekli",
+    "FINANCE":                       "Finans",
     "PAYMENTS":                      "Tüm",
-    "ALL": ""
+    "ALL":                           "HERŞEY",
+    "DEPARTMENTS":                   "",
+    "DIVISIONS":                     "",
+    "EDIT_DEPARTMENT":               "",
+    "EDIT_DIVISION":                 ""
 }

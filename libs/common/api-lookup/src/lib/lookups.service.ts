@@ -50,7 +50,12 @@ import {
     EMPLOYMENT_TYPE_URL,
     SuspensionReason,
     SUSPENSION_REASON_URL,
-    FORMS_URL, ROLES_URL, Department, DEPARTMENTS_URL, Division, DIVISIONS_URL,
+    FORMS_URL,
+    ROLES_URL,
+    Department,
+    DEPARTMENTS_URL,
+    Division,
+    DIVISIONS_URL
 } from './lookups-api';
 import { Role } from "@ss/common/api-common";
 

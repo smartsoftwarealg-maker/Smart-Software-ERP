@@ -77,8 +77,13 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         super.ngOnInit();
         this.gotoActivationButton.click = () => this.shellSrv.navigateByRelativeUrl(ACTIVATION_LIST_URL + '/' + this.selected);
         this.gotoCareerButton.click = () => this.shellSrv.navigateByRelativeUrl(CAREER_URL + '/' + this.selected);
-        this.shellSrv.addButton(this.gotoActivationButton);
-        this.shellSrv.addButton(this.gotoCareerButton);
+        this.route.data.subscribe(data => {
+            if (data?.payrollButtons) {
+                this.shellSrv.addButton(this.gotoActivationButton);
+                this.shellSrv.addButton(this.gotoCareerButton);
+            }
+        })
+
     }
 
     public select(id: number): void {
