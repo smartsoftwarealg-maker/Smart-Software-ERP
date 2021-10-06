@@ -5,13 +5,10 @@
     "EDIT_VAT": "Modifier TVA",
     "WILAYAS": "Wilayas",
     "EDIT_WILAYA": "Modifier wilaya",
-
-    "PER_PAGE":"Résultats par page",
-    "GO":"Aller",
-
+    "PER_PAGE": "Résultats par page",
+    "GO": "Aller",
     "SUCCESS": "Opération réussie",
     "FAILURE": "L'opération a échoué",
-
     "SAVE": "Enregistrer",
     "CONFIRM_DELETE_RECORD": "Êtes-vous sûr de vouloir supprimer?",
     "CONFIRM_DONT_SAVE": "Fermer sans enregistrer?",
@@ -32,7 +29,6 @@
     "APPLY": "Appliquer",
     "NEXT": "Prochain",
     "PREVIOUS": "Précédent",
-
     "THEME_SETTINGS": "Thèmes",
     "LANGUAGE_SETTINGS": "Langue",
     "LOGOUT": "Déconnexion",
@@ -41,26 +37,18 @@
     "LOGIN_WRONG_USERNAME_PASSWORD": "Les informations d'identification invalides",
     "LOGIN_LICENSE": "Licence",
     "LOGIN_INVALID_LICENSE": "Licence invalide",
-
     "SELECT_COMPANY": "Entreprises",
     "SELECT_CENTER": "Centres",
-
     "CONNECTION_FAILED": "La connexion au serveur '$backend$' a échoué",
-
     "EDIT": "Éditer",
     "DELETE": "Supprimer",
-
     "LOOKUPS": "Tables",
-    "SETTINGS":"Paramètres",
-
+    "SETTINGS": "Paramètres",
     "USERNAME": "Utilisateur",
     "PASSWORD": "Mot de passe",
-
     "MAX_FILE_SIZE_1MB": "Taille maximale du fichier 1Mo",
     "NOT_AN_IMAGE": "Ce n'est pas un fichier image valide",
-
     "FORM_NOT_VALID": "Le formulaire n'est pas valide",
-
     "VAT": "TVA",
     "MARK": "Marque",
     "MARKS": "Marques",
@@ -73,7 +61,6 @@
     "EDIT_SUBCLASS": "Modifier Sous-class",
     "STORE_NAMES": "Magasins",
     "EDIT_STORE_NAME": "Modifier nom magasin",
-
     "AGENT_TYPES": "Types d'agents",
     "EDIT_AGENT_TYPE": "Modifier le type d'agent",
     "COMPANY_TYPES": "Types d'entreprises",
@@ -88,7 +75,6 @@
     "EDIT_PAY_MODE": "Modifier mode paiement",
     "CURRENCIES": "Devises",
     "EDIT_CURRENCY": "Modifier devise",
-
     "POSTS": "Postes",
     "CATEGORIES": "Catégories",
     "DIPLOMAS": "Diplômes",
@@ -96,9 +82,7 @@
     "MARITAL_STATUS": "Situations familiales",
     "NATIONALITIES": "Nationalités",
     "SERVICES": "Services",
-
     "NO_MATCH": "Pas de correspondance",
-
     "REPORTS": "Rapports",
     "VALUE_STRING": "Chaînes de valeur",
     "VALUE_LIST": "Liste de valeurs",
@@ -129,10 +113,8 @@
     "CONSOLIDATED": "Consolidés",
     "VIEW_REPORT": "Voir le rapport",
     "TYPE": "Type",
-    "REPORTS": "Etats",
     "DEFAULT_REPORT": "Sélectionnez le rapport par défaut",
     "SELECT": "Sélectionner",
-    "CANCEL": "Annuler",
     "FILENAME": "Nom de fichier",
     "FROM": "Du",
     "TO": "Au",
@@ -160,5 +142,9 @@
     "SAVE_REQUIRED": "Enregistrement requis",
     "FINANCE": "Finance",
     "PAYMENTS": "Paiements",
-    "ALL": "Tout"
+    "ALL": "Tout",
+    "DEPARTMENTS": "Départements",
+    "DIVISIONS": "Divisions",
+    "EDIT_DEPARTMENT": "Modifier département ",
+    "EDIT_DIVISION": "Modifier division"
 }

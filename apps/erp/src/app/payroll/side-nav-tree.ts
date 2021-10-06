@@ -10,7 +10,9 @@ import {
     ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL,
     ABS_PAYROLL_EMPLOYMENT_TYPE_URL,
     ABS_PAYROLL_SUSPENSION_REASON_URL,
-    ABS_PAYROLL_CAREER_URL
+    ABS_PAYROLL_CAREER_URL,
+    ABS_PAYROLL_DEPARTMENTS_URL,
+    ABS_PAYROLL_DIVISIONS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -56,6 +58,16 @@ export const payrollNavTree: SideNavNode = {
                     name: 'COMMON_CATEGORIES',
                     icon: 'fas fa-shapes',
                     route: ABS_PAYROLL_CATEGORIES_URL
+                },
+                {
+                    name: 'COMMON_DIVISIONS',
+                    icon: 'fas fa-puzzle-piece',
+                    route: ABS_PAYROLL_DIVISIONS_URL
+                },
+                {
+                    name: 'COMMON_DEPARTMENTS',
+                    icon: 'far fa-building',
+                    route: ABS_PAYROLL_DEPARTMENTS_URL
                 },
                 {
                     name: 'COMMON_SERVICES',

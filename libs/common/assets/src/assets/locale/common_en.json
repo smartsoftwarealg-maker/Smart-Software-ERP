@@ -5,13 +5,10 @@
     "EDIT_VAT": "Edit VAT",
     "WILAYAS": "Wilayas",
     "EDIT_WILAYA": "Wilaya",
-
-    "PER_PAGE":"Items per page:",
-    "GO":"GO",
-
+    "PER_PAGE": "Items per page:",
+    "GO": "GO",
     "SUCCESS": "Operation Successful",
     "FAILURE": "Operation Failed",
-
     "SAVE": "Save",
     "CONFIRM_DELETE_RECORD": "Are you sure you want to delete?",
     "CONFIRM_DONT_SAVE": "Quit without saving?",
@@ -32,7 +29,6 @@
     "APPLY": "Apply",
     "NEXT": "Next",
     "PREVIOUS": "Previous",
-
     "THEME_SETTINGS": "Themes",
     "LANGUAGE_SETTINGS": "Language",
     "LOGOUT": "Logout",
@@ -41,26 +37,18 @@
     "LOGIN_WRONG_USERNAME_PASSWORD": "Invalid credentials",
     "LOGIN_LICENSE": "License",
     "LOGIN_INVALID_LICENSE": "Invalid license",
-
     "SELECT_COMPANY": "Companies",
     "SELECT_CENTER": "Centers",
-
     "CONNECTION_FAILED": "Connection to backend server '$backend$' failed",
-
     "EDIT": "Edit",
     "DELETE": "Delete",
-
     "LOOKUPS": "Tables",
     "SETTINGS": "Settings",
-
     "USERNAME": "Username",
     "PASSWORD": "Password",
-
     "MAX_FILE_SIZE_1MB": "Max file size 1MB",
     "NOT_AN_IMAGE": "This is not a valid image file",
-
     "FORM_NOT_VALID": "The form is not valid",
-
     "VAT": "V.A.T",
     "MARK": "Mark",
     "MARKS": "Marks",
@@ -73,7 +61,6 @@
     "EDIT_SUBCLASS": "Edit subclass",
     "STORE_NAMES": "Stores",
     "EDIT_STORE_NAME": "Edit store",
-
     "AGENT_TYPES": "Agent types",
     "EDIT_AGENT_TYPE": "Edit agent type",
     "COMPANY_TYPES": "Company types",
@@ -88,7 +75,6 @@
     "EDIT_PAY_MODE": "Edit pay mode",
     "CURRENCIES": "Currencies",
     "EDIT_CURRENCY": "Edit currency",
-
     "POSTS": "Posts",
     "CATEGORIES": "Categories",
     "DIPLOMAS": "Diplomas",
@@ -96,9 +82,7 @@
     "MARITAL_STATUS": "Marital status",
     "SERVICES": "Services",
     "NATIONALITIES": "Nationalities",
-
     "NO_MATCH": "No matches",
-
     "REPORTS": "Reports",
     "VALUE_STRING": "Value strings",
     "VALUE_LIST": "Value list",
@@ -129,10 +113,8 @@
     "CONSOLIDATED": "Consolidated",
     "VIEW_REPORT": "View report",
     "TYPE": "Type",
-    "REPORTS": "Reports",
     "DEFAULT_REPORT": "Select default report",
     "SELECT": "Select",
-    "CANCEL": "Cancel",
     "FILENAME": "File name",
     "FROM": "From",
     "TO": "To",
@@ -160,5 +142,9 @@
     "SAVE_REQUIRED": "Form is dirty. Saving required",
     "FINANCE": "Finance",
     "PAYMENTS": "Payments",
-    "ALL": "All"
+    "ALL": "All",
+    "DEPARTMENTS": "Departments",
+    "DIVISIONS": "Divisions",
+    "EDIT_DEPARTMENT": "Edit department",
+    "EDIT_DIVISION": "Edit division"
 }

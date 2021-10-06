@@ -11,7 +11,9 @@ import {
     PAYROLL_EMPLOYEE_ACTIVATION_URL,
     PAYROLL_EMPLOYMENT_TYPE_URL,
     PAYROLL_SUSPENSION_REASON_URL,
-    PAYROLL_CAREER_URL
+    PAYROLL_CAREER_URL,
+    PAYROLL_DEPARTMENTS_URL,
+    PAYROLL_DIVISIONS_URL
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
@@ -37,6 +39,8 @@ import { NationalityDetailComponent, NationalityListComponent } from '@ss/common
 import { EmployeeListComponent, EmployeeDetailComponent } from '@ss/payroll/ui-employee';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from 'libs/common/ui-lookup/src/lib/employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from 'libs/common/ui-lookup/src/lib/suspension-reason.component';
+import { DepartmentListComponent, DepartmentDetailComponent } from 'libs/common/ui-lookup/src/lib/department.component';
+import { DivisionListComponent, DivisionDetailComponent } from 'libs/common/ui-lookup/src/lib/division.component';
 
 export const mainRoutes: Routes = [
     {
@@ -49,7 +53,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { payrollButtons: true }
             },
             {
                 path: PAYROLL_EMPLOYEE_ACTIVATION_URL,
@@ -222,6 +227,40 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: NationalityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAYROLL_DEPARTMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DepartmentListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DepartmentDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAYROLL_DIVISIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DivisionListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DivisionDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
