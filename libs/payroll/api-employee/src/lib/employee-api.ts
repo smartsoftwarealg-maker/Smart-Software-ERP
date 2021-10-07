@@ -35,7 +35,7 @@ export interface Employee {
 
     address1: string;
     address1Ar: string;
-    ​
+
     sex: 1 | 2;
 
     confidential: boolean;
@@ -47,7 +47,7 @@ export interface Employee {
 
 
     // things that may have changed
-//    wilaya: number; // was removed??
+    //    wilaya: number; // was removed??
     mservice: number;
     educationalLevel: number;
     diploma: number;
@@ -82,4 +82,15 @@ export class Career {
     from_date: string;
     to_date: string;
     trial_period: number;
+}
+
+export class Contract {
+    id: number;
+    centerId: number;
+    employee: number;
+    number: number;
+    recordNumber: string;
+    salary_rank: number;
+    trial_period: number;
+    confirmed: false
 }
