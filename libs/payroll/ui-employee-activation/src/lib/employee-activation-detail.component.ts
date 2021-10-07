@@ -92,7 +92,7 @@ export class EmployeeActivationDetailComponent implements OnInit, OnDestroy {
         this.entity = a;
         this.form = this.formBuilder.group({
             id: a.id,
-            center: a.center,
+            centerId: a.centerId,
             empId: a.empId,
             activityStatus: a.activityStatus,
             hireDate: a.hireDate,
