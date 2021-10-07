@@ -56,7 +56,7 @@ export interface Employee {
 
 export class EmployeeActivation {
     id: number;
-    center: number;
+    centerId: number;
     empId: number;
     activityStatus: number;
     hireDate: string;
