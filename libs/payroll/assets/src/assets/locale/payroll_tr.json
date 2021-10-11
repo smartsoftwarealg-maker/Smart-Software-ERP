@@ -70,5 +70,7 @@
     "CATEGORY": "Kategori",
     "SALARY_GRID": "maaş tablosu",
     "TRIAL_PERIOD": "Deneme süresi",
-    "SALARY_RANK": "Adım"
+    "SALARY_RANK": "Adım",
+    "CONTRACTS": "Sözleşmeler",
+    "EMPLOYEE_CONTRACTS": "Çalışan sözleşmeleri"
 }

@@ -13,3 +13,4 @@ export * from './lib/user.service';
 export * from './lib/main-page.service';
 export * from './lib/language.service';
 export * from './lib/utils';
+export * from './lib/customer-session.service';

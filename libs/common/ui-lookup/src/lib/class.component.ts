@@ -7,13 +7,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable} from 'rxjs';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {
-    AccountAutocompleteModel,
-    AccountService,
     GenerationAccountAutocompleteModel
 } from '@ss/accounting/api-accounts';
-import {GenerationAccountService} from "../../../../accounting/api-accounts/src/lib/generation-account.service";
+import {GenerationAccountService} from '@ss/accounting/api-accounts';
 
 
 @Component({
@@ -36,7 +33,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_CLASSES');
     }
 
-    override processLoadedData(data: Class[]): Observable<Class[]> {
+    processLoadedData(data: Class[]): Observable<Class[]> {
         return this.classSrv.reload(data);
     }
 }

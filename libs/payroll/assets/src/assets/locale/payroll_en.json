@@ -70,5 +70,7 @@
     "CATEGORY": "Category",
     "SALARY_GRID": "Salary grid",
     "TRIAL_PERIOD": "Trial period",
-    "SALARY_RANK": "Salary rank"
+    "SALARY_RANK": "Salary rank",
+    "CONTRACTS": "Contracts",
+    "EMPLOYEE_CONTRACTS": "Employee contracts"
 }

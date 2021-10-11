@@ -8,6 +8,9 @@ export const ACTIVATION_CHILD_URL = '/activations';
 export const CAREER_PARENT_URL = '/persons';
 export const CAREER_CHILD_URL = '/careers';
 
+export const CONTRACT_PARENT_URL = '/persons';
+export const CONTRACT_CHILD_URL = '/contracts';
+
 export interface Employee {
     id: number;
 
@@ -88,9 +91,26 @@ export class Contract {
     id: number;
     centerId: number;
     employee: number;
-    number: number;
+    number: string;
+    info: string;
     recordNumber: string;
+    date: string;
+    related_contract: number;
+    fromdate: string;
+    todate: string;
+    salarygrid: number;
     salary_rank: number;
+    basesalary: number;
+    notes: string;
+    motive: number;
+    post: number;
+    department: number;
+    service: number;
+    division: number;
+    cost_center: number;
+    ctype: number;
+    valid_date: string;
+    project: number;
     trial_period: number;
-    confirmed: false
+    confirmed: boolean;
 }

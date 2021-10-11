@@ -70,5 +70,7 @@
     "CATEGORY": "Catégorie",
     "SALARY_GRID": "Grille des salaire",
     "TRIAL_PERIOD": "Période d'essai",
-    "SALARY_RANK": "Échelon"
+    "SALARY_RANK": "Échelon",
+    "CONTRACTS": "Contrats",
+    "EMPLOYEE_CONTRACTS": "Contrats d'employés"
 }
