@@ -123,7 +123,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         }
     }
 
-    public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
+    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (!this.isSectionValid(section)) {
             return 'b-warn-expansion-panel';

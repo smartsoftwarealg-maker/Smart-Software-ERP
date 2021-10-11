@@ -31,7 +31,7 @@ import { RoleDetailComponent, RoleListComponent } from './role.component';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './suspension-reason.component';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { DivisionListComponent } from './division.component';
+import {DivisionDetailComponent, DivisionListComponent} from './division.component';
 import { DepartmentDetailComponent, DepartmentListComponent } from './department.component';
 
 @NgModule({
@@ -102,6 +102,7 @@ import { DepartmentDetailComponent, DepartmentListComponent } from './department
         SuspensionReasonListComponent,
         SuspensionReasonDetailComponent,
         DivisionListComponent,
+        DivisionDetailComponent,
         DiplomaDetailComponent,
         DepartmentDetailComponent,
         DepartmentListComponent

@@ -146,5 +146,6 @@
     "DEPARTMENTS": "Départements",
     "DIVISIONS": "Divisions",
     "EDIT_DEPARTMENT": "Modifier département ",
-    "EDIT_DIVISION": "Modifier division"
+    "EDIT_DIVISION": "Modifier division",
+    "PATIENTS": "Les patients"
 }
