@@ -111,7 +111,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     onEmploymentTypesLoaded(data: EmploymentType[]): void {
         this.employmentTypes = data.reduce(
-            (total, currentValue) => {
+            (total: { [id: number]: string; }, currentValue) => {
                 total[currentValue.id] = currentValue.description;
                 return total
             }, {}
@@ -120,7 +120,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     onSuspensionReasonLoaded(data: SuspensionReason[]): void {
         this.suspensionReasons = data.reduce(
-            (total, currentValue) => {
+            (total: { [id: number]: string; }, currentValue) => {
                 total[currentValue.id] = currentValue.description;
                 return total
             }, {}

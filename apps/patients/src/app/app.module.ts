@@ -12,9 +12,9 @@ import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {CommonUiMainPageModule, MainPageComponent} from "@ss/common/ui-main-page";
 import {UiLoginModule} from "@ss/common/ui-login";
 import {UiCenterSelectModule} from "@ss/common/ui-center-select";
-import {ADMINISTRATION_APP_URL} from './common';
+import {ADMINISTRATION_APP_URL, FINANCE_APP_URL, PATIENTS_APP_URL} from './common';
 import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from "@ss/common/api-common";
-import {FINANCE_APP_URL} from "../../../erp/src/app/common";
+import {LogisticsUiAgentModule} from "@ss/logistics/ui-agent";
 
 const routes: Routes = [
     {
@@ -27,7 +27,7 @@ const routes: Routes = [
                 canActivate: [CanActivateService]
             },
             {
-                path: FINANCE_APP_URL,
+                path: PATIENTS_APP_URL,
                 loadChildren: () => import('./patients/patients.module').then(m => m.PatientsModule)
             },
             {
@@ -52,14 +52,16 @@ const routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
+        RouterModule.forRoot(routes, { enableTracing: false }),
+        // Smart Software modules
         UiThemeModule,
         UiErrorHandlerModule,
         UiShellModule,
         CommonUiLangModule,
         CommonUiMainPageModule,
         UiLoginModule,
-        UiCenterSelectModule
+        UiCenterSelectModule,
+        LogisticsUiAgentModule
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -69,6 +71,9 @@ export class AppModule {
         langSrv.addSource('assets/locale/', '');
         langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
         langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/patients_', 'PATIENTS_');
+        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
+        langSrv.addSource('assets/locale/payroll_', 'PAYROLL_');
         langSrv.addSource('assets/locale/bl_', 'BL_');
     }
 

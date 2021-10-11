@@ -167,7 +167,7 @@ export class InventoryEntryLinesListComponent implements OnInit {
 
     private onStoresLoaded(data: Store[]) {
         this.stores = data.reduce(
-            (total, currentValue) => {
+            (total: { [id: number]: string; }, currentValue) => {
                 total[currentValue.id] = currentValue.description;
                 return total
             }, {}

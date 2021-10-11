@@ -73,7 +73,7 @@ export class ArticleStoreComponent implements OnInit {
             const ids = x.map(_ => _.id);
             this.lotsService.getAll(ids).subscribe((s: Store[]) => {
                 this.lots = s.reduce(
-                    (total, currentValue) => {
+                    (total: { [id: number]: string; }, currentValue) => {
                         total[currentValue.id] = currentValue.description;
                         return total
                     }, {}
