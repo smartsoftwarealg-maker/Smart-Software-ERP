@@ -50,6 +50,9 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             canEdit: new FormControl(false),
             canDelete: new FormControl(false)
         });
+        this.editButton.icon = 'fas fa-save';
+        this.editButton.label = 'COMMON_SAVE';
+        this.editButton.disabled = !this.selectedItem;
     }
 
     ngOnInit() {
@@ -63,10 +66,6 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             .subscribe(res => {
                 this.apps = this.apps = res['apps'] || [];
             });
-
-        this.editButton.icon = 'fas fa-save';
-        this.editButton.label = 'COMMON_SAVE';
-        this.editButton.disabled = !this.selectedItem;
     }
 
     edit() {

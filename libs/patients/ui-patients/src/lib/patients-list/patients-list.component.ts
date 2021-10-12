@@ -35,7 +35,7 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
-        super(patientService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PATIENTS_PATIENTS');
+        super(patientService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PATIENTS');
     }
 
     preload(): Observable<any> {
