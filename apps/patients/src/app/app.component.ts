@@ -19,7 +19,7 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.1.0');
+        this.shellSrv.setApplicationTitle('Patients Management, V0.1.0');
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => {

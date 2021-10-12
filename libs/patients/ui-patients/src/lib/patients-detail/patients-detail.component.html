@@ -44,20 +44,6 @@
             </mat-form-field>
 
 
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
-            </div>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
-                <input matInput formControlName="blockingReason"  type="text">
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
-                <input matInput formControlName="creationTime" type="text">
-            </mat-form-field>
-
         </mat-expansion-panel>
 
         <mat-expansion-panel #arabicPanel [class]="getPanelHeaderClass('arabic', arabicPanel)">
@@ -138,6 +124,29 @@
 
         </mat-expansion-panel>
 
+        <mat-expansion-panel #infoPanel expanded="false"
+                             [class]="getPanelHeaderClass('info', infoPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_INFO
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
+            </div>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
+                <input matInput formControlName="blockingReason"  type="text">
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
+                <input matInput formControlName="creationTime" type="text">
+            </mat-form-field>
+
+        </mat-expansion-panel>
 
 <!--        <mat-expansion-panel #passwordPanel [class]="getPanelHeaderClass('password', passwordPanel)">-->
 <!--            <mat-expansion-panel-header>-->
