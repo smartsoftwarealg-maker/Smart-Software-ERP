@@ -36,6 +36,13 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
         super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PAYMENTS');
+
+            this.route.data.subscribe(data => {
+                    if (data['url']) {
+                        this.paymentSrv.setURL(data['url']);
+                    }
+                }
+            );
     }
 
     processLoadedData(data: Payment[]): Observable<Payment[]> {

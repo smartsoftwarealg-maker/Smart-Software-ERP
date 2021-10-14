@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
 import {LoginService} from "@ss/common/api-common";
 import {LookupsService, PayModeService} from "@ss/common/api-lookup";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Data, Params} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {PaymentsDetailService} from "../services/payments-detail.service";
@@ -37,7 +37,17 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         super(paymentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PAYMENTS');
     }
 
+    private updateAgentURL() {
+        this.route.data
+            .subscribe(data => {
+                if (data['agents']) {
+                    this.agentService.setURL(data['agents']);
+                }
+            })
+    }
+
     setupForm(a: Payment): FormGroup {
+        this.updateAgentURL();
         const db = a.amount > 0.0 ? a.amount : 0.0;
         const cr = a.amount < 0.0 ? -a.amount : 0.0;
         return this.formBuilder.group({
@@ -83,4 +93,5 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             this.form.controls[ctrl].enable();
         }
      }
+
 }

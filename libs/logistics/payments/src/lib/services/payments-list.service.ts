@@ -11,4 +11,8 @@ export class PaymentsListService extends BaseEntityService<Payment>{
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, PAYMENT_URL);
     }
+
+    getURL() {
+        return super.getUrl();
+    }
 }

@@ -68,4 +68,8 @@ export class BaseEntityService<T> {
 
         return this.parentUrl ? `${this.parentUrl}/${this.parentId}${this.url}` : this.url;
     }
+
+    setURL(url: string) {
+        this.url = url;
+    }
 }
