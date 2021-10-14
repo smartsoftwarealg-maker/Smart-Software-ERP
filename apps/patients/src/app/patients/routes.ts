@@ -13,24 +13,24 @@ export const mainRoutes: Routes = [
         path: LOOKUPS_URL,
         loadChildren: () => import('./exchange-lookups.module').then(m => m.ExchangeLookupsModule)
     },
-    {
-        path: LOGISTICS_PAYMENTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: PaymentsListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: PaymentsDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
-    },
+    // {
+    //     path: LOGISTICS_PAYMENTS_URL,
+    //     children: [
+    //         {
+    //             path: LIST_URL,
+    //             component: PaymentsListComponent,
+    //             canActivate: [CanActivateService]
+    //         },
+    //         {
+    //             path: ':id',
+    //             component: PaymentsDetailComponent,
+    //             canActivate: [CanActivateService],
+    //             canDeactivate: [CanDeactivateService]
+    //         },
+    //         { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+    //         { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+    //     ]
+    // },
     {
         path: COMMON_REPORT_PARAMS_URL,
         children: [

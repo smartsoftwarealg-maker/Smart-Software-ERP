@@ -16,7 +16,8 @@ export const financeRoutes: Routes = [
                 path: ':id',
                 component: PaymentsDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                data: { agents: '/patients' }
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

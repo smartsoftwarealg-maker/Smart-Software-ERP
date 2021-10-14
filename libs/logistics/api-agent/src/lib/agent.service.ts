@@ -20,6 +20,10 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
         return this.httpSrv.get<Agent[]>('/agents?ids=' + ids.join(','));
     }
 
+    setURL(url: string) {
+        super.url = url;
+    }
+
     currentCustomer(): Observable<Agent> {
         return this.httpSrv.get<Agent>('/ccustomer');
     }
