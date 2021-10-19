@@ -60,64 +60,51 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
                 tap(x => this.agentTypes = x),
                 switchMap(() => this.lookupsSrv.getCities()),
                 tap(x => this.cities = x),
-                switchMap(() => this.lookupsSrv.getCountries()),
-                tap(x => this.countries = x),
-                switchMap(() => this.lookupsSrv.getCompanyTypes()),
-                tap(x => this.companyTypes = x),
-                switchMap(() => this.lookupsSrv.getCurrencies()),
-                tap(x => this.currencies = x),
-                switchMap(() => this.lookupsSrv.getPayModes()),
-                tap(x => this.payModes = x),
-                switchMap(() => this.lookupsSrv.getActivities()),
-                tap(x => this.activities = x),
-                switchMap(() => this.lookupsSrv.getPrices()),
-                catchError(e => of([])),
-                tap(x => this.prices = x),
-                switchMap(() => this.lookupsSrv.getBanks()),
-                tap(x => this.banks = x)
+                // switchMap(() => this.lookupsSrv.getCountries()),
+                // tap(x => this.countries = x),
+                // switchMap(() => this.lookupsSrv.getCompanyTypes()),
+                // tap(x => this.companyTypes = x),
+                // switchMap(() => this.lookupsSrv.getCurrencies()),
+                // tap(x => this.currencies = x),
+                // switchMap(() => this.lookupsSrv.getPayModes()),
+                // tap(x => this.payModes = x),
+                // switchMap(() => this.lookupsSrv.getActivities()),
+                // tap(x => this.activities = x),
+                // switchMap(() => this.lookupsSrv.getPrices()),
+                // catchError(e => of([])),
+                // tap(x => this.prices = x),
+                // switchMap(() => this.lookupsSrv.getBanks()),
+                // tap(x => this.banks = x)
             );
     }
 
-
-    finishLoading(e: Patient) {
-        super.finishLoading(e);
-        this.form.controls['recordBlocked']
-            .valueChanges
-            .subscribe(x => {
-                if (x) {
-                    this.form.controls['blockingReason'].disable();
-                    this.form.controls['blockingReason'].setValue('');
-                } else {
-                    this.form.controls['blockingReason'].enable()
-                }
-
-            });
-    }
-
     public setupForm(a: Patient) {
-
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
+            patientId: [a.patientId],
             firstName: [a.firstName],
             lastName: [a.lastName],
-            birthDate: [a.birthDate],
-            birthPlace: [a.birthPlace],
             firstNameAr: [a.firstNameAr],
             lastNameAr: [a.lastNameAr],
-            address: [a.address],
+            birthDate: [a.birthDate],
+            birthPlace: [a.birthPlace],
+            sex: [a.sex + ''],
             city: [a.city],
-            country: [a.country],
+            address: [a.address],
             phone: [a.phone],
-            mobile: [a.mobile],
-            fax: [a.fax],
-            currency: [a.currency],
-            addressAr: [a.addressAr],
-            agentType: [a.agentType],
-            email: [a.email, Validators.email],
-            recordBlocked: [a.recordBlocked],
-            blockingReason: {value: a.blockingReason, disabled: a.recordBlocked},
-            creationTime: {value: a.creationTime, disabled: true}
+            ssNumber: [a.ssNumber],
+            profession: [a.profession],
+            maritalStatus: [a.maritalStatus],
+            childCount: [a.childCount],
+            isDAS: [a.isDAS],
+            educationLevel: [a.educationLevel],
+            workingSpouse: [a.workingSpouse],
+            lodgingType: [a.lodgingType],
+            spouseProfession: [a.spouseProfession],
+            spouseLastName: [a.spouseLastName],
+            spouseFirstName: [a.spouseFirstName],
+            hasVehicle: [a.hasVehicle],
         });
     }
 
@@ -162,18 +149,9 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
 
     readForm(): Patient {
         const a = super.readForm();
-        a.agentType = a.agentType || 0;
-        a.currency = a.currency || this.currencies[0].id;
+        a.centerId = this.loginSrv.appCtx.center;
+        a.sex = +this.form.controls['sex'].value;
         return a;
-    }
-
-    uploadAttachments(id: number): Observable<any> {
-        return this.patientSrv
-            .get(id)
-            .pipe(tap(agent => {
-                this.form.controls['currency'].setValue(agent.currency);
-                this.form.controls['creationTime'].setValue(agent.creationTime);
-            }));
     }
 
     updatePassword() {

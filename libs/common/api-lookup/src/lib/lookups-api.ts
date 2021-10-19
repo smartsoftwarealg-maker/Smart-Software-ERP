@@ -126,6 +126,9 @@ export interface AgentType {
 export interface City {
     id: number;
     description: string;
+    postalCode?: string;
+    descriptionAr?: string;
+    wilaya?: number;
 }
 
 export interface Country {

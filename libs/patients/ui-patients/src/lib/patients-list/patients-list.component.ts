@@ -22,7 +22,7 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
         'lastName',
         'firstName',
         'birthDate',
-        'address'
+        'birthPlace'
     ];
 
 
