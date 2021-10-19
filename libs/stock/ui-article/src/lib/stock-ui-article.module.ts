@@ -5,12 +5,13 @@ import {MaterialModule} from '@ss/common/api-common';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ArticleDetailComponent} from './article-detail.component';
-import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialog";
-import {RouterModule} from "@angular/router";
-import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
-import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
-import {StockUiArticleStoreModule} from "@ss/stock/article-store";
-import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
+import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+import {RouterModule} from '@angular/router';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+import {StockUiArticleStoreModule} from '@ss/stock/article-store';
+import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
         StockUiArticleStoreModule,
         LogisticsUiDocInfoModule,
         RouterModule,
+        CommonUiImageInputModule,
         CommonUiAutoCompleteModule,
         LogisticsUiStockInfoModule
     ],
