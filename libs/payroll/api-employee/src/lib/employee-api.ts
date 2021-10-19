@@ -35,7 +35,6 @@ export interface Employee {
 
     address1: string;
     address1Ar: string;
-    ​
     sex: 1 | 2;
 
     confidential: boolean;

@@ -2,6 +2,16 @@
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table">
 
+            <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>STOCK_IMAGE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <div class="person-photo">
+                        <ss-image-input width="60px" height="76px" [ImageModel]="e.imageModel" style="display: inline-block;">
+                        </ss-image-input>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">

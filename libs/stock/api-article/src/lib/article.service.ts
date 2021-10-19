@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Article, ARTICLES_URL} from './article-api';
+import {Article, ARTICLE_IMAGE_URL, ARTICLES_URL} from './article-api';
 import {Observable, of} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
@@ -20,5 +20,8 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         }
         const url = `/pprice?find=${ref}&storeId=${storeId}&transacId=${transacId}`;
         return this.httpSrv.get<{ price: number }>(url);
+    }
+    public getPhotoUrl(id: number): string {
+        return id != null && id > 0 ? (ARTICLES_URL + '/' + id + ARTICLE_IMAGE_URL) : null;
     }
 }

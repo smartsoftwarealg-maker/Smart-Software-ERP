@@ -19,14 +19,14 @@
                     <ss-image-input width="160px" height="200px" [ImageModel]="imageModel" style="display: inline-block;">
                     </ss-image-input>
                     <div class="default-100" style="text-align: center;">
-                        <strong><span translate>PAYROLL_PID</span>: {{pid}}</strong>
+                        <strong><span translate>PAYROLL_PID</span>: {{ pid }}</strong>
                     </div>
                 </div>
 
                 <div class="birthinfo-fields">
 
                     <div class="default-100" style="height: 16px;"></div>
-    
+
                     <mat-form-field id="firstName" class="default-50 sm-100">
                         <mat-label translate>PAYROLL_FIRST_NAME</mat-label>
                         <input matInput formControlName="firstName" type="text" maxlength="64" required>
@@ -110,7 +110,7 @@
                     PAYROLL_SOCIAL_INFO
                 </mat-panel-title>
             </mat-expansion-panel-header>
-    
+
             <div class="default-100" style="height: 16px;"></div>
 
             <mat-form-field id="address1" class="default-50 sm-100">

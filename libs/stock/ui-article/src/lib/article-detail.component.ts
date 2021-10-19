@@ -8,7 +8,9 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {ClassService, LookupsService, Mark, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {ImageModel} from '@ss/common/ui-image-input';
+import {HttpService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-article-detail',
@@ -16,6 +18,8 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
     templateUrl: './article-detail.component.html'
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
+    imageModel: ImageModel;
+    aid = 0;
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
 
     marks: Mark[];
@@ -31,8 +35,10 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private classSrv: ClassService,
+        public httpSrv: HttpService,
         public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
+        this.imageModel = new ImageModel(this.httpSrv);
     }
 
 
@@ -53,6 +59,8 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     public setupForm(a: Article) {
         // Make sure to update the template if you edit the configuration here
+        this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
+        this.aid = a.id;
         return this.formBuilder.group({
             accountno: [a.accountno],
             description2: [a.description2, Validators.required],
@@ -64,5 +72,10 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             appCode: [a.appCode],
             vat: [a.vat]
         });
+    }
+
+    uploadAttachments(id: number): Observable<any> {
+        this.imageModel.setBackendUrl(this.articleSrv.getPhotoUrl(id));
+        return this.imageModel.submit('file');
     }
 }

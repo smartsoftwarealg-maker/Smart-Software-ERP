@@ -48,5 +48,6 @@
     "VAT": "TVA",
     "MARK": "Marque",
     "TOTALS": "Totals",
-    "STORE_ASSIGNMENT": "Store assignment"
+    "STORE_ASSIGNMENT": "Store assignment",
+    "CLASS": "Classe"
 }
