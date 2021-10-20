@@ -17,7 +17,12 @@
         "default": {
             "runner": "@nrwl/workspace/tasks-runners/default",
             "options": {
-                "cacheableOperations": ["build", "lint", "test", "e2e"]
+                "cacheableOperations": [
+                    "build",
+                    "lint",
+                    "test",
+                    "e2e"
+                ]
             }
         }
     },
@@ -75,7 +80,9 @@
         },
         "cespace-e2e": {
             "tags": [],
-            "implicitDependencies": ["cespace"]
+            "implicitDependencies": [
+                "cespace"
+            ]
         },
         "common-api-access-rights": {
             "tags": []
@@ -84,13 +91,19 @@
             "tags": []
         },
         "common-api-base-entity": {
-            "tags": ["type:api"]
+            "tags": [
+                "type:api"
+            ]
         },
         "common-api-common": {
-            "tags": ["type:api"]
+            "tags": [
+                "type:api"
+            ]
         },
         "common-api-lookup": {
-            "tags": ["type:api"]
+            "tags": [
+                "type:api"
+            ]
         },
         "common-api-users": {
             "tags": []
@@ -108,7 +121,9 @@
             "tags": []
         },
         "common-ui-center-select": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-confirmation-dialog": {
             "tags": []
@@ -120,37 +135,53 @@
             "tags": []
         },
         "common-ui-error-handler": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-image-input": {
             "tags": []
         },
         "common-ui-lang": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-login": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-logout": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-lookup": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-main-page": {
             "tags": []
         },
         "common-ui-pagination": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-report-param": {
             "tags": []
         },
         "common-ui-shell": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-theme": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "common-ui-traceability": {
             "tags": []
@@ -308,22 +339,28 @@
         },
         "patients-e2e": {
             "tags": [],
-            "implicitDependencies": ["patients"]
+            "implicitDependencies": [
+                "patients"
+            ]
         },
         "patients-ui-patients": {
             "tags": []
         },
         "payroll-api-employee": {
-            "tags": ["type:api"]
+            "tags": [
+                "type:api"
+            ]
         },
         "payroll-assets": {
             "tags": []
         },
-        "payroll-employee-contract": {
+        "payroll-ui-employee-contract": {
             "tags": []
         },
         "payroll-ui-employee": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "payroll-ui-employee-activation": {
             "tags": []
@@ -368,13 +405,17 @@
             "tags": []
         },
         "sales-ui-delivery": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "sales-ui-delivery-cancellation": {
             "tags": []
         },
         "sales-ui-delivery-lines": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "sales-ui-invoice": {
             "tags": []
@@ -428,7 +469,9 @@
             "tags": []
         },
         "stock-ui-article": {
-            "tags": ["type:ui"]
+            "tags": [
+                "type:ui"
+            ]
         },
         "stock-ui-article-store-assignment": {
             "tags": []

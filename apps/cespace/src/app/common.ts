@@ -1,5 +1,4 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
-import {STOCK_APP_URL} from "../../../erp/src/app/common";
 
 
 // common
