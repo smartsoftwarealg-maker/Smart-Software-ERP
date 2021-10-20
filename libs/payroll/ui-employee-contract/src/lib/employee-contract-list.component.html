@@ -1,5 +1,5 @@
 <div class="b-b-disabled-btn card-title" translate>
-    PAYROLL_ACTIVITY_HISTORY
+    PAYROLL_EMPLOYEE_CONTRACTS
 </div>
 <div class="table-container">
     <mat-table mat-table [dataSource]="uiSrv.instance.data" class="main-table">
@@ -22,12 +22,111 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.date}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valid_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_VALID_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.valid_date}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="number" style="justify-content: center; text-align: center">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                 PAYROLL_NUMBER
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
                 {{e.number}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="recordNumber" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_REC_NUMBER
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.recordNumber}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="salarygrid">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_SALARY_GRID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.salarygrid}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="salary_rank">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_SALARY_RANK
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.salary_rank}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="basesalary">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_BASESALARY
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.basesalary?.toFixed(2)}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="notes">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_NOTES
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.notes}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="motive">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_MOTIVE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.motive}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cost_center">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_COST_CENTER
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.cost_center}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="confirmed" style="justify-content: center; text-align: center;">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_CONFIRMED
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                <mat-checkbox (click)="$event.preventDefault()" [disableRipple]="true" [checked]='e.confirmed'></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="trial_period">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_TRIAL_PERIOD
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.trial_period}}
             </mat-cell>
         </ng-container>
 

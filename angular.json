@@ -3322,17 +3322,17 @@
         }
       }
     },
-    "payroll-employee-contract": {
+    "payroll-ui-employee-contract": {
       "projectType": "library",
       "root": "libs/payroll/employee-contract",
-      "sourceRoot": "libs/payroll/employee-contract/src",
+      "sourceRoot": "libs/payroll/ui-employee-contract/src",
       "prefix": "ss",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/payroll/employee-contract"],
+          "outputs": ["coverage/libs/payroll/ui-employee-contract"],
           "options": {
-            "jestConfig": "libs/payroll/employee-contract/jest.config.js",
+            "jestConfig": "libs/payroll/ui-employee-contract/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -3340,8 +3340,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/payroll/employee-contract/src/**/*.ts",
-              "libs/payroll/employee-contract/src/**/*.html"
+              "libs/payroll/ui-employee-contract/src/**/*.ts",
+              "libs/payroll/ui-employee-contract/src/**/*.html"
             ]
           }
         }

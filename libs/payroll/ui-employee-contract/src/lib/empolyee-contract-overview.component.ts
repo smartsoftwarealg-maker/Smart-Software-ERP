@@ -52,7 +52,7 @@ export class EmployeeContractOverviewComponent extends BaseEntityListComponent<C
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService) {
-        super(empContractSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_CONTRACT_OVERVIEW');
+        super(empContractSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_CONTRACTS_OVERVIEW');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend

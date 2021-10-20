@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeContractListComponent } from './employee-contract-list.component';
 import { EmployeeContractOverviewComponent } from './empolyee-contract-overview.component';
+import { EmployeeContractDetailComponent } from './employee-contract-detail.component';
 
 @NgModule({
     imports: [
@@ -35,10 +36,10 @@ import { EmployeeContractOverviewComponent } from './empolyee-contract-overview.
                         path: '',
                         component: EmployeeContractListComponent
                     },
-                /*    {
+                    {
                         path: ':id',
                         component: EmployeeContractDetailComponent
-                    }*/
+                    }
                 ]
             },
             { path: '**', redirectTo: '' }

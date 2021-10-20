@@ -72,5 +72,14 @@
     "TRIAL_PERIOD": "Période d'essai",
     "SALARY_RANK": "Échelon",
     "CONTRACTS": "Contrats",
-    "EMPLOYEE_CONTRACTS": "Contrats d'employés"
+    "EMPLOYEE_CONTRACTS": "Contrats d'employés",
+    "CONFIRMED":"Confirmé",
+    "COST_CENTER":"Centre de coûts",
+    "MOTIVE":"Motif",
+    "NOTES":"Remarques",
+    "BASE_SALARY":"Salaire de base",
+    "REC_NUMBER":"N° d'enregistrement",
+    "DATE":"Date",
+    "VALID_DATE":"Date valide",
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Aperçu des contrats"
 }

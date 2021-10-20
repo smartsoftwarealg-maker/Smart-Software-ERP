@@ -73,6 +73,10 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
 
     ngOnInit(): void {
         super.ngOnInit();
+        this.addButton.visible = false;
+        this.addButton.disabled = true;
+        this.deleteButton.visible = false;
+        this.deleteButton.disabled = true;
         this.shellSrv.updateShell();
     }
 }

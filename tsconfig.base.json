@@ -190,8 +190,8 @@
       ],
       "@ss/logistics/ui-totals": ["libs/logistics/ui-totals/src/index.ts"],
       "@ss/payroll/api-employee": ["libs/payroll/api-employee/src/index.ts"],
-      "@ss/payroll/employee-contract": [
-        "libs/payroll/employee-contract/src/index.ts"
+      "@ss/payroll/ui-employee-contract": [
+        "libs/payroll/ui-employee-contract/src/index.ts"
       ],
       "@ss/payroll/ui-employee": ["libs/payroll/ui-employee/src/index.ts"],
       "@ss/payroll/ui-employee-activation": [

@@ -1,5 +1,5 @@
 
-$table_width: 1020px;
+$table_width: 2560px;
 
 :host {
     display: inline-block;
@@ -46,8 +46,74 @@ $table_width: 1020px;
     padding-left: 8px;
 }
 
+.mat-column-date {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-valid_date {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
 .mat-column-number {
     flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-recordNumber {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-salarygrid {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-salary_rank {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-basesalary {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-notes {
+    flex: 0 0 240px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-motive {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-cost_center {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-confirmed {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-trial_period {
+    flex: 0 0 100px;
     padding-right: 8px;
     padding-left: 8px;
 }
