@@ -7,18 +7,15 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable} from 'rxjs';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {
-    AccountAutocompleteModel,
-    AccountService,
     GenerationAccountAutocompleteModel
 } from '@ss/accounting/api-accounts';
-import {GenerationAccountService} from "../../../../accounting/api-accounts/src/lib/generation-account.service";
+import {GenerationAccountService} from '../../../../accounting/api-accounts/src/lib/generation-account.service';
 
 
 @Component({
     selector: 'ss-class-list',
-    templateUrl: './base-templates/list-template.html',
+    templateUrl: './base-templates/class-list.component.html',
     styleUrls: ['./base-templates/classes.scss']
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {

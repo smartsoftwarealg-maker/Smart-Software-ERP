@@ -16,7 +16,7 @@ import { ServiceListComponent, ServiceDetailComponent } from './service.componen
 import { DiplomaListComponent, DiplomaDetailComponent } from './diploma.component';
 import { CategoryListComponent, CategoryDetailComponent } from './category.component';
 import { NationalityListComponent, NationalityDetailComponent } from './nationality.component';
-import { ClassListComponent, ClassDetailComponent } from './class.component';
+import { ClassListComponent, ClassDetailComponent } from './class-list.component';
 import { UnitListComponent, UnitDetailComponent } from './unit.component';
 import { MarkListComponent, MarkDetailComponent } from './mark.component';
 import { EducationLevelListComponent, EducationLevelDetailComponent } from './education-level.component';

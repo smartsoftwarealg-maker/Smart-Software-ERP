@@ -2,22 +2,20 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
+import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {BaseTransactionComponent, Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
-import {DocImportComponent, DocImportService} from "@ss/logistics/ui-doc-import";
-import {InvoiceLinesListComponent} from "@ss/sales/ui-invoice";
-import {ReceptionLinesListComponent} from "./reception-lines-list.component";
-import {MatDialog} from "@angular/material/dialog";
+import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import {ReceptionLinesListComponent} from './reception-lines-list.component';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
