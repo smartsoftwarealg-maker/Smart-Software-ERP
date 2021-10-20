@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
-import {Circulation, CirculationService} from "@ss/logistics/api-circulation";
-import {SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ArticleService} from "@ss/stock/api-article";
+import {Circulation, CirculationService} from '@ss/logistics/api-circulation';
+import {SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ArticleService} from '@ss/stock/api-article';
 import {LanguageService} from '@ss/common/api-common';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {StockInfoService} from "../../stock-info.service";
-import {Observable} from "rxjs";
-import {StockInfo} from "./stock-info";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {StockInfoService} from '../../stock-info.service';
+import {Observable} from 'rxjs';
+import {StockInfo} from './stock-info';
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -21,11 +21,11 @@ export class UiStockInfoComponent implements OnInit {
     articleReference: string;
 
     displayedColumns = [
-        "store",
-        "stock",
-        "price1",
-        "price2",
-        "price3"
+        'store',
+        'stock',
+        'price1',
+        'price2',
+        'price3'
     ];
 
   constructor(public stockSrv: StockInfoService,

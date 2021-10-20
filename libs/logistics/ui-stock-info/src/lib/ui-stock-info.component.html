@@ -1,48 +1,47 @@
-<ng-container>
-    <mat-table mat-table [dataSource]="data" class="main-table">
+<div class="main-container">
+    <div class="table-div">
+        <mat-table mat-table [dataSource]="data" class="main-table">
 
+            <ng-container matColumnDef="store">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_STORE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.store}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="store">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_STORE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.store}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="stock">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_STOCK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.stock | number : '1.2-2'}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="stock">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_STOCK</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.stock | number : '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="price1">
+                <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_PRICE</span> 1</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.price1 | number : '1.2-2'}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="price1">
-            <mat-header-cell *matHeaderCellDef ><span translate>LOGISTICS_PRICE</span> 1</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.price1 | number : '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="price2">
+                <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_PRICE</span> 2</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.price2 | number : '1.2-2'}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="price2">
-            <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_PRICE</span> 2</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.price2 | number : '1.2-2'}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="price3">
+                <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_PRICE</span> 3</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.price3 | number : '1.2-2'}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="price3">
-            <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_PRICE</span> 3</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.price3 | number : '1.2-2'}}
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
-
-</ng-container>
+</div>

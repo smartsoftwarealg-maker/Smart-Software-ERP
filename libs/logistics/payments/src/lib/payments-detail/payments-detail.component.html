@@ -47,13 +47,13 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DUE_DAYS</mat-label>
+                <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
                 <input matInput formControlName="dueDays" type="number" step="1" required>
                 <mat-error *ngIf="form.controls.dueDays.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field id="number" class="default-50 sm-100">
-                <mat-label translate>STOCK_NUMBER</mat-label>
+                <mat-label translate>LOGISTICS_NUMBER</mat-label>
                 <input matInput formControlName="number" type="text">
                 <mat-error *ngIf="form.controls.number.invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
@@ -78,7 +78,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_AGENCY</mat-label>
+                <mat-label translate>LOGISTICS_AGENCY</mat-label>
                 <input matInput formControlName="bank" type="text">
                 <mat-error *ngIf="form.controls.bank.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>

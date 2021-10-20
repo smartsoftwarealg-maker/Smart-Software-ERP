@@ -5,10 +5,12 @@ import { ArticleService, Article } from '@ss/stock/api-article';
 import { Mark } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {ImageModel} from '@ss/common/ui-image-input';
+import {HttpService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-article-list',
@@ -18,6 +20,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 export class ArticleListComponent extends BaseEntityListComponent<Article> {
 
     displayedColumns = [
+        'image',
         'reference',
         'description2',
         'price',
@@ -37,7 +40,8 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        public httpSrv: HttpService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_ARTICLES');
     }
 
@@ -60,4 +64,12 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> {
         data.forEach(m => this.vats[m.id] = m.value);
     }
 
+    processLoadedData(data: Article[]): Observable<Article[]> {
+        data.forEach(p => {
+            p.imageModel = new ImageModel(this.httpSrv);
+            p.imageModel.readOnly = true;
+            p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
+        })
+        return of(data);
+    }
 }

@@ -168,7 +168,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 this.form.controls['debtTerm'].invalid);
     }
 
-    public isSectionInvalid(section): boolean {
+    public isSectionInvalid(section: string): boolean {
         switch (section) {
             case 'general':
                 return this.isGeneralSectionInvalid();
@@ -181,7 +181,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         }
     }
 
-    public getPanelHeaderClass(section, panel: MatExpansionPanel): string {
+    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
         // if invalid return warning class
         if (this.isSectionInvalid(section)) {
             return 'b-warn-expansion-panel';

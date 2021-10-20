@@ -1,16 +1,19 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
-import {FINANCE_APP_URL} from "../../../erp/src/app/common";
 
 
 // common
+export const COMMON_REPORT_PARAMS_URL = 'report-params';
 export const LOOKUPS_URL = 'lookups';
-export const PATIENTS_APP_URL = 'exchange';
+export const PATIENTS_APP_URL = 'patients';
+
+// Patients
+export const PATIENTS_PATIENTS_URL = 'agents';
+export const PATIENTS_PAYMENTS_URL = 'payments';
+export const FINANCE_APP_URL = 'finance';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
 
-// common
-export const COMMON_REPORT_PARAMS_URL = 'report-params';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -25,6 +28,7 @@ export const ADMINISTRATION_REPORT_CATALOG_URL = 'report-catalog';
 export const ADMINISTRATION_CITY_URL = 'cities';
 export const ADMINISTRATION_COUNTRY_URL = 'countries';
 export const ADMINISTRATION_WILAYA_URL = 'wilayas';
+export const PATIENTS_AGENT_URL = 'agents';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
@@ -51,13 +55,11 @@ export const ABS_ADMINISTRATION_CITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_
 export const ABS_ADMINISTRATION_COUNTRY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_COUNTRY_URL].join('/');
 export const ABS_ADMINISTRATION_WILAYA_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_WILAYA_URL].join('/');
 export const ABS_PATIENTS_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, PATIENTS_APP_URL, COMMON_REPORT_PARAMS_URL].join('/');
-
-//Finance
-export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
+export const ABS_FINANCE_APP_URL = '/' + [MAIN_PAGE_URL, PATIENTS_APP_URL, FINANCE_APP_URL].join('/');
+export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PATIENTS_PAYMENTS_URL].join('/');
+export const ABS_PATIENTS_PATIENTS = '/' + [MAIN_PAGE_URL, PATIENTS_APP_URL, PATIENTS_PATIENTS_URL].join('/');
 
 // ######################################
 // #            Other things            #
 // ######################################
-// exchange
-export const PATIENTS_PAYMENTS_URL = 'payments';
 

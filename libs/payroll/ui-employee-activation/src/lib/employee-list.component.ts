@@ -88,7 +88,6 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
-            p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             p.loading = true;
             this.employeeActivationSrv.setParentId(p.id);
             // incase of error, keep displaying the loading animation

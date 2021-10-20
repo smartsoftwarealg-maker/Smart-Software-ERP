@@ -1,15 +1,7 @@
 
-:host {
-    display: block;
-    margin: auto;
-    position: relative;
-    max-width: 1624px;
-    width: 100%;
-    padding-top: 24px;
-}
-
 .main-table {
     width: 100%;
+    height: 100%;
     max-width: 1624px;
     min-height: 320px;
 }
@@ -80,4 +72,9 @@
         position: sticky;
         margin: auto;
     }
+}
+
+mat-card {
+    background: #829dc5;
+    height: 100%;
 }
