@@ -155,6 +155,9 @@
         "common-ui-traceability": {
             "tags": []
         },
+        "cspace": {
+            "tags": []
+        },
         "erp": {
             "tags": [],
             "implicitDependencies": [
