@@ -15,7 +15,7 @@ import {GenerationAccountService} from '@ss/accounting/api-accounts';
 
 @Component({
     selector: 'ss-class-list',
-    templateUrl: './base-templates/list-template.html',
+    templateUrl: './base-templates/class-list.component.html',
     styleUrls: ['./base-templates/classes.scss']
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {
@@ -77,5 +77,4 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
             accountId: [e.accountId]
         });
     }
-
 }

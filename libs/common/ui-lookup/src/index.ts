@@ -23,7 +23,7 @@ export * from './lib/unit.component';
 
 export * from './lib/mark.component';
 
-export * from './lib/class.component';
+export * from './lib/class-list.component';
 
 export * from './lib/subclass.component';
 

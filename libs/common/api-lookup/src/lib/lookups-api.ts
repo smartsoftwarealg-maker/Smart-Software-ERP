@@ -20,7 +20,7 @@ export const SUBCLASSES_URL = '/lookups/subclasses';
 export const LOTS_URL = '/lots';
 export const UNITS_URL = '/lookups/units';
 export const AGENT_TYPE_URL = '/lookups/agents';
-export const CITY_URL = '/lookups/cities';
+export const CITY_URL = '/cities';
 export const COUNTRY_URL = '/lookups/countries';
 export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
@@ -129,6 +129,7 @@ export interface City {
     postalCode?: string;
     descriptionAr?: string;
     wilaya?: number;
+    wilayaDescr?: string;
 }
 
 export interface Country {

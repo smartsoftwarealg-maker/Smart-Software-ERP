@@ -29,16 +29,16 @@ export const administrationNavTree: SideNavNode = {
             accessRights: 'Role'
         },
         {
-            name: 'COMMON_CITIES',
-            icon: 'fas fa-city',
-            route: ABS_ADMINISTRATION_CITY_URL,
-            accessRights: 'City'
-        },
-        {
             name: 'COMMON_WILAYAS',
             icon: 'fas fa-route-interstate',
             route: ABS_ADMINISTRATION_WILAYA_URL,
             accessRights: 'Wilaya'
+        },
+        {
+            name: 'COMMON_CITIES',
+            icon: 'fas fa-city',
+            route: ABS_ADMINISTRATION_CITY_URL,
+            accessRights: 'City'
         },
         {
             name: 'COMMON_COUNTRIES',
