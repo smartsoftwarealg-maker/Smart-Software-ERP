@@ -25,7 +25,7 @@ import {
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
 import {IdiotPageComponent} from "@ss/exchange/ui-idiot-page";
-import {CustomerSessionService} from "../../../../../libs/common/api-common/src/lib/customer-session.service";
+import {CustomerSessionService} from '@ss/common/api-common';
 
 export const mainRoutes: Routes = [
     {

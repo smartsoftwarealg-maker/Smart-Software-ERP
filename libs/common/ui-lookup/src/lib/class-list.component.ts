@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import {
     GenerationAccountAutocompleteModel
 } from '@ss/accounting/api-accounts';
-import {GenerationAccountService} from '../../../../accounting/api-accounts/src/lib/generation-account.service';
+import {GenerationAccountService} from '@ss/accounting/api-accounts';
 
 
 @Component({
@@ -33,7 +33,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_CLASSES');
     }
 
-    override processLoadedData(data: Class[]): Observable<Class[]> {
+    processLoadedData(data: Class[]): Observable<Class[]> {
         return this.classSrv.reload(data);
     }
 }
@@ -77,5 +77,4 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
             accountId: [e.accountId]
         });
     }
-
 }

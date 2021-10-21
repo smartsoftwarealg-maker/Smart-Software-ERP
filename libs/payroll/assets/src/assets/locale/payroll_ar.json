@@ -70,5 +70,16 @@
     "CATEGORY": "الفئة",
     "SALARY_GRID": "شبكة المرتب",
     "TRIAL_PERIOD": "الفترة التجريبية",
-    "SALARY_RANK": "رتبة المرتب"
+    "SALARY_RANK": "رتبة المرتب",
+    "CONTRACTS": "العقود",
+    "EMPLOYEE_CONTRACTS": "عقود الموظف",
+    "CONFIRMED":"مؤكد",
+    "COST_CENTER":"مركز التكلفة",
+    "MOTIVE":"الدافع",
+    "NOTES":"ملاحظات",
+    "BASE_SALARY":"الأجر القاعدي",
+    "REC_NUMBER":"رقم السجل",
+    "DATE":"التاريخ",
+    "VALID_DATE":"تاريخ الصلاحية",
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"عقود الموظف"
 }

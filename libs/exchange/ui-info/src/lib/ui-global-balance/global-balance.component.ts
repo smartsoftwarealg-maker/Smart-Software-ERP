@@ -3,7 +3,6 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
-import {switchMap} from 'rxjs/operators';
 import {
     GBalance,
     GlobalBalanceService

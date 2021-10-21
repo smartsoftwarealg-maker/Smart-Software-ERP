@@ -86,7 +86,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
                 switchMap(() => of({
                     activityStatus: 0,
                     empId: this.uiSrv.instance.personId,
-                    center: this.loginSrv.appCtx.center,
+                    centerId: this.loginSrv.appCtx.center,
                     employmentType: null,
                     hireDate: dateToYmdStr(new Date()),
                     id: 0,
@@ -101,7 +101,7 @@ export class EmployeeActivationFormComponent implements OnInit, OnDestroy {
     setupForm(a: EmployeeActivation) {
         this.form = this.formBuilder.group({
             id: a.id,
-            center: a.center,
+            centerId: a.centerId,
             empId: a.empId,
             activityStatus: a.activityStatus,
             hireDate: [a.hireDate, Validators.required],

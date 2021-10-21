@@ -13,7 +13,8 @@ import {
     PAYROLL_SUSPENSION_REASON_URL,
     PAYROLL_CAREER_URL,
     PAYROLL_DEPARTMENTS_URL,
-    PAYROLL_DIVISIONS_URL
+    PAYROLL_DIVISIONS_URL,
+    PAYROLL_CONTRACTS_URL
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
@@ -65,6 +66,11 @@ export const mainRoutes: Routes = [
                 path: PAYROLL_CAREER_URL,
                 canActivate: [CanActivateService],
                 loadChildren: () => import('@ss/payroll/ui-employee-career').then(m => m.PayrollUiEmployeeCareerModule),
+            },
+            {
+                path: PAYROLL_CONTRACTS_URL,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-employee-contract').then(m => m.PayrollUiEmployeeContractModule),
             },
             {
                 path: ':id',

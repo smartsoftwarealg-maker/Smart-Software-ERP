@@ -12,7 +12,8 @@ import {
     ABS_PAYROLL_SUSPENSION_REASON_URL,
     ABS_PAYROLL_CAREER_URL,
     ABS_PAYROLL_DEPARTMENTS_URL,
-    ABS_PAYROLL_DIVISIONS_URL
+    ABS_PAYROLL_DIVISIONS_URL,
+    ABS_PAYROLL_CONTRACTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -99,6 +100,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'PAYROLL_CAREER',
                     icon: 'fas fa-user-hard-hat',
                     route: ABS_PAYROLL_CAREER_URL
+                },
+                {
+                    name: 'PAYROLL_CONTRACTS',
+                    icon: 'fas fa-file-signature',
+                    route: ABS_PAYROLL_CONTRACTS_URL
                 }
             ]
         }
