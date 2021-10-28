@@ -64,12 +64,12 @@
 }
 
 mat-card-actions {
-    display: flex;
-    gap: 4px;
-    height: 48px;
-    align-items: center;
-    flex-flow: row nowrap;
-    padding: 0 4px;
+    div {
+        display: flex;
+        padding-left: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
 .filler {
