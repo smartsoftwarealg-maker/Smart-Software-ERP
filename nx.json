@@ -388,6 +388,9 @@
         "sales-ui-order-lines": {
             "tags": []
         },
+        "sales-ui-proforma": {
+            "tags": []
+        },
         "sales-ui-sales-order": {
             "tags": []
         },

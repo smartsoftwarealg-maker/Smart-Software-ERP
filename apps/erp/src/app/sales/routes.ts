@@ -19,6 +19,8 @@ import {
     DeliveryCancellationLinesDetailComponent,
     DeliveryCancellationListComponent
 } from '@ss/sales/ui-delivery-cancellation';
+import {ProformaDetailComponent, ProformaListComponent} from "../../../../../libs/sales/ui-proforma/src";
+import {ProformaLinesDetailComponent} from "../../../../../libs/sales/ui-proforma/src/lib/proforma-lines-detail/proforma-lines-detail.component";
 
 export const lookupRoutes: Routes = []
 
@@ -144,6 +146,32 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: OrderDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL }
+        ]
+    },
+    {
+        path: 'proforma',
+        children: [
+            {
+                path: LIST_URL,
+                component: ProformaListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: ProformaLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {
+                path: ':id',
+                component: ProformaDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes

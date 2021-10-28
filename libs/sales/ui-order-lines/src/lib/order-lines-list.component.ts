@@ -134,12 +134,7 @@ export class OrderLinesListComponent implements OnInit {
 
 
     private onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce(
-            (total, currentValue) => {
-                total[currentValue.reference] = currentValue.description2;
-                return total
-            }, {}
-        );
+        data.forEach(l => this.articles[l.reference] = l.description2)
     }
 
     private onStoresLoaded(data: Store[]) {

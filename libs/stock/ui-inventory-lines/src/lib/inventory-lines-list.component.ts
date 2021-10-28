@@ -138,7 +138,7 @@ export class InventoryLinesListComponent implements OnInit {
 
 
     private onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce(
+        this.articles = data.reduce( //TODO: Refactor
             (total, currentValue) => {
                 total[currentValue.reference] = currentValue.description2;
                 return total

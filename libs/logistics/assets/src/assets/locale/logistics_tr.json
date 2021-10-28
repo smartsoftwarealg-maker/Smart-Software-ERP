@@ -118,5 +118,6 @@
     "SHOPPING":             "",
     "AMOUNT":               "",
     "REMOVE_FROM_CART":     "",
-    "AMOUNT_EXCEEDED":      ""
+    "AMOUNT_EXCEEDED":      "",
+    "PROFORMA":             ""
 }

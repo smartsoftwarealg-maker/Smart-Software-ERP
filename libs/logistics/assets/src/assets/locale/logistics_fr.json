@@ -116,5 +116,6 @@
     "AMOUNT": "Montant",
     "REMOVE_FROM_CART": "Retirer du panier",
     "REMOVE_ONE_FROM_CART": "Supprimer un",
-    "AMOUNT_EXCEEDED": "Montant autorisé dépassé"
+    "AMOUNT_EXCEEDED": "Montant autorisé dépassé",
+    "PROFORMA": "Facture proforma"
 }

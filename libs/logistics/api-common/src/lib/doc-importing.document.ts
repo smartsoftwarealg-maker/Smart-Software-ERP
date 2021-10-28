@@ -51,7 +51,7 @@ export class DocImportingDocument {
     }
 
     protected onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce(
+        this.articles = data.reduce( //TODO: Refactor
             (total: { [reference: string]: string }, currentValue: Article) => {
                 total[currentValue.reference] = currentValue.description2;
                 return total
