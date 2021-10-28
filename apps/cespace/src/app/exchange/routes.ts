@@ -3,15 +3,12 @@ import {
     EXCHANGE_DEPOSIT_URL,
     EXCHANGE_HISTORY_URL,
     EXCHANGE_CBALANCE_URL,
-    EXCHANGE_COMMISSION_URL,
     EXCHANGE_COMMISSIONS_URL,
     COMMON_REPORT_PARAMS_URL, EXCHANGE_TRANSFER_URL, COMMON_CUSTOMER_PROFILE_URL
 } from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
-    CashCommissionDetailComponent,
-    CashCommissionListComponent, CurrencyTransferDetailComponent, CurrencyTransferListComponent,
     DepositDetailComponent,
     DepositListComponent
 } from '@ss/exchange/ui-currency-deposit';
@@ -19,7 +16,6 @@ import {
     BalanceComponent,
     CbalanceComponent,
     CommissionComponent,
-    GlobalBalanceComponent,
     HistoryComponent
 } from '@ss/exchange/ui-info';
 import {ReportViewComponent} from '@ss/common/ui-report-param';

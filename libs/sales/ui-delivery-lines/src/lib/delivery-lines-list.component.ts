@@ -70,14 +70,14 @@ export class DeliveryLinesListComponent implements OnInit {
         this.TransactionLinesSrv.getPage(this.pagination, null, null)
             .subscribe(x => {
                 this.data = x;
-                this.loadRelatedTables(this.data)
+                this.loadRelatedTables()
                     .subscribe(none => {
                         this.shellSrv.setLoading(false);
                     })
             });
     }
 
-    loadRelatedTables(data): Observable<any> {
+    loadRelatedTables(): Observable<any> {
         const storesIds = this.data.map(x => x.store);
         const articleReferences = this.data.map(x => x.reference);
 
@@ -134,12 +134,7 @@ export class DeliveryLinesListComponent implements OnInit {
 
 
     private onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce(
-            (total, currentValue) => {
-                total[currentValue.reference] = currentValue.description2;
-                return total
-            }, {}
-        );
+        data.forEach(e => this.articles[e.reference] = e.description2);
     }
 
     private onStoresLoaded(data: Store[]) {

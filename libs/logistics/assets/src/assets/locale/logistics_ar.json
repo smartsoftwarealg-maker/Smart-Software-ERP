@@ -109,5 +109,13 @@
     "PAYMENT_COMPENSATION": "المدفوعات",
     "MAKE_PAYMENT": "الدفع",
     "CANCEL_PAYMENT": "إلغاء الدفع",
-    "PURCHASE_ORDER": "أمر شراء"
+    "PURCHASE_ORDER": "أمر شراء",
+    "ADD_TO_CART": "أضف إلى السلة",
+    "SHOPPING_CART": "عربة التسوق",
+    "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به",
+    "SHOPPING": "التسوق",
+    "AMOUNT": "المبلغ",
+    "REMOVE_FROM_CART": "إزالة الكل",
+    "REMOVE_ONE_FROM_CART": "إزالة واحد",
+    "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به"
 }

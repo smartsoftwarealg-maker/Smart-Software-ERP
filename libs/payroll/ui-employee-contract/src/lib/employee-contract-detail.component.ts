@@ -93,21 +93,7 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
     }
 
     newContract(): Contract {
-        return {
-            id: null,
-            employee: this.uiSrv.instance.personId,
-            paymonth: null,
-            post: null,
-            division: null,
-            department: null,
-            service: null,
-            salary_grid: null,
-            prof_category: null,
-            salary_rank: null,
-            from_date: null,
-            to_date: null,
-            trial_period: null
-        };
+        return null;
     }
 
     setupForm(a: Contract) {
@@ -120,11 +106,9 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
             division: a.division,
             department: a.department,
             service: a.service,
-            salary_grid: a.salary_grid,
-            prof_category: a.prof_category,
             salary_rank: a.salary_rank,
-            from_date: [a.from_date, Validators.required],
-            to_date: a.to_date,
+            fromdate: [a.fromdate, Validators.required],
+            todate: a.todate,
             trial_period: [a.trial_period, Validators.required]
         });
     }

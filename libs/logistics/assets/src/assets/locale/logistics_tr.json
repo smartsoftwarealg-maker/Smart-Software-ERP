@@ -111,5 +111,12 @@
     "PAYMENT_COMPENSATION": "",
     "MAKE_PAYMENT":         "",
     "CANCEL_PAYMENT":       "",
-    "PURCHASE_ORDER":       ""
+    "PURCHASE_ORDER":       "",
+    "ADD_TO_CART":          "",
+    "SHOPPING_CART":        "",
+    "AMOUNT_EXCEEDED":      "",
+    "SHOPPING":             "",
+    "AMOUNT":               "",
+    "REMOVE_FROM_CART":     "",
+    "AMOUNT_EXCEEDED":      ""
 }

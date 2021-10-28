@@ -148,5 +148,10 @@
     "DIVISIONS": "القطاعات",
     "EDIT_DEPARTMENT": "تعديل قسم",
     "EDIT_DIVISION": "تعديل قطاع",
-    "PATIENTS": "المرضى"
+    "PATIENTS": "المرضى",
+    "AD": "دج",
+    "CONFIRMED": "مؤكد",
+    "NOT_CONFIRMED": "غير مؤكد",
+    "CONFIRM": "انقر للتأكيد",
+    "UNCONFIRM": "انقر لإلغاء التاكيد"
 }

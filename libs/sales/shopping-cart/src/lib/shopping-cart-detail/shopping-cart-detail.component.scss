@@ -1,0 +1,22 @@
+
+table {
+    width: 100%;
+}
+tr {
+    text-align: center;
+}
+
+mat-card-footer {
+    div {
+        width: 96%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+}
+
+.confirmation {
+    display: flex;
+    gap: 10px;
+}
