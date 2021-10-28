@@ -3,7 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
-// import {logAdminNavTree} from './logistics-admin/side-nav-tree';
+import {cSpaceNavTree} from "./cspace/side-nav-tree";
 
 @Component({
     selector: 'ss-root',
@@ -19,12 +19,11 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Customer Space (pre-Alpha)');
-        this.shellSrv.setSideNavDataSource([
-            //logAdminNavTree
-        ]);
+        this.shellSrv.setSideNavDataSource(
+            cSpaceNavTree
+        );
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()))
             .subscribe(() => this.loaded = true)
     }
-
 }

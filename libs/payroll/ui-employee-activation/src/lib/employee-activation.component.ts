@@ -111,7 +111,7 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     onEmploymentTypesLoaded(data: EmploymentType[]): void {
         this.employmentTypes = data.reduce(
-            (total: { [id: number]: string; }, currentValue) => {
+            (total: { [id: number]: string; }, currentValue: EmploymentType ) => {
                 total[currentValue.id] = currentValue.description;
                 return total
             }, {}

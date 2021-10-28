@@ -108,5 +108,13 @@
     "PAYMENT_COMPENSATION": "Indemnités de paiement",
     "MAKE_PAYMENT": "Effectuer le paiement",
     "CANCEL_PAYMENT": "Annuler le paiement",
-    "PURCHASE_ORDER": "Bon de commande"
+    "PURCHASE_ORDER": "Bon de commande",
+    "ADD_TO_CART": "Ajouter au panier",
+    "SHOPPING_CART": "Panier",
+    "AMOUNT_EXCEEDED": "Montant autorisé dépassé",
+    "SHOPPING": "Shopping",
+    "AMOUNT": "Montant",
+    "REMOVE_FROM_CART": "Retirer du panier",
+    "REMOVE_ONE_FROM_CART": "Supprimer un",
+    "AMOUNT_EXCEEDED": "Montant autorisé dépassé"
 }

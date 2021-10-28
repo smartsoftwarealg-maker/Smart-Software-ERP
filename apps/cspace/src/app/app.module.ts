@@ -8,11 +8,20 @@ import { UiLoginModule } from '@ss/common/ui-login';
 import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
-// import { LOGISTICS_APP_URL } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
-import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
+import {
+    CanActivateService,
+    INDEX_PAGE_URL,
+    LanguageService,
+    LOGIN_URL, LoginService,
+    LoginType,
+    MAIN_PAGE_URL
+} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
+import {COMMON_CUSTOMER_PROFILE_URL, CSPACE_APP_URL} from "./common";
+import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
+import {ExchangeUiIdiotPageModule} from "@ss/exchange/ui-idiot-page";
 
 const routes: Routes = [
     {
@@ -24,10 +33,15 @@ const routes: Routes = [
                 component: MainPageComponent,
                 canActivate: [CanActivateService]
             },
-            //{
-            //    path: LOGISTICS_APP_URL,
-            //    loadChildren: () => import('./logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
-            //},
+            {
+                path: COMMON_CUSTOMER_PROFILE_URL,
+                component: CustomerProfileComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+               path: CSPACE_APP_URL,
+               loadChildren: () => import('./cspace/cspace.module').then(m => m.CspaceModule)
+            },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
         ]
@@ -51,6 +65,7 @@ const routes: Routes = [
         UiShellModule,
         CommonUiLangModule,
         CommonUiMainPageModule,
+        ExchangeUiIdiotPageModule,
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule
@@ -59,9 +74,11 @@ const routes: Routes = [
 })
 export class AppModule {
 
-    constructor(private langSrv: LanguageService) {
+    constructor(private langSrv: LanguageService, private loginSrv: LoginService) {
+        this.loginSrv.customerLogin = LoginType.BOTH;
         langSrv.addSource('assets/locale/', '');
         langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
+        langSrv.addSource('assets/locale/common_', 'COMMON_');
     }
-
 }

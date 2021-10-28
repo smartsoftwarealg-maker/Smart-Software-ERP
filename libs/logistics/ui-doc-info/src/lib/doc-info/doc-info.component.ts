@@ -16,7 +16,7 @@ interface Entry {
 
 export class DocInfoComponent {
 
-    @Input() displayedGroups;
+    @Input() displayedGroups: string[] = [];
 
     @Input() set params(params: any) {
         const providedParams = Object.keys(params);
@@ -109,7 +109,7 @@ export class DocInfoComponent {
         return this.entries_.filter(x => this.displayedGroups.includes(x.group));
     }
 
-    select(e): void {
+    select(e: any): void {
         this.selectedEntry = e;
         this.navigate();
     }

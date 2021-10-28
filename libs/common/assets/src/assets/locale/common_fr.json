@@ -148,5 +148,10 @@
     "DIVISIONS": "Divisions",
     "EDIT_DEPARTMENT": "Modifier département ",
     "EDIT_DIVISION": "Modifier division",
-    "PATIENTS": "Les patients"
+    "PATIENTS": "Les patients",
+    "AD": "DA",
+    "CONFIRMED": "Confirmé",
+    "NOT_CONFIRMED": "Pas confirmé",
+    "CONFIRM": "Cliquez pour confirmer",
+    "UNCONFIRM": "Click to cancel confirmation"
 }

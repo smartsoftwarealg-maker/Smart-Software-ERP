@@ -24,4 +24,8 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
     public getPhotoUrl(id: number): string {
         return id != null && id > 0 ? (ARTICLES_URL + '/' + id + ARTICLE_IMAGE_URL) : null;
     }
+
+    setUrl(url: string) {
+        this.url = url;
+    }
 }

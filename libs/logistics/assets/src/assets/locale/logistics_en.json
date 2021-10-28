@@ -111,5 +111,13 @@
     "PAYMENT_COMPENSATION": "Payment compensations",
     "MAKE_PAYMENT": "Make payment",
     "CANCEL_PAYMENT": "Cancel payment",
-    "PURCHASE_ORDER": "Purchase order"
+    "PURCHASE_ORDER": "Purchase order",
+    "ADD_TO_CART": "Add to cart",
+    "SHOPPING_CART": "Shopping cart",
+    "AMOUNT_EXCEEDED": "Allowed amount exceeded",
+    "SHOPPING": "Shopping",
+    "AMOUNT": "Amount",
+    "REMOVE_ONE_FROM_CART": "Remove one",
+    "REMOVE_FROM_CART": "Remove from cart",
+    "AMOUNT_EXCEEDED": "Allowed amount exceeded"
 }

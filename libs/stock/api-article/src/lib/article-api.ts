@@ -1,6 +1,7 @@
-import {ImageModel} from "@ss/common/ui-image-input";
+import {ImageModel} from '@ss/common/ui-image-input';
 
 export const ARTICLES_URL = '/articles';
+export const AVAILABLE_ARTICLES_URL = '/articles/available';
 export const ARTICLE_IMAGE_URL = '/image';
 
 export interface Article {
@@ -14,4 +15,5 @@ export interface Article {
     price1: number;
     appCode: number;
     imageModel?: ImageModel;
+    markDescrip?: string;
 }

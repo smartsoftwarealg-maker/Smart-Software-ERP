@@ -89,6 +89,7 @@ export class Career {
 
 export class Contract {
     id: number;
+    paymonth: number;
     centerId: number;
     employee: number;
     number: string;

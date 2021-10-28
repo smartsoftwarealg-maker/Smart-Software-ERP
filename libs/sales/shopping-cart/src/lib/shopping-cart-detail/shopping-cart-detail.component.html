@@ -1,0 +1,95 @@
+<div class="main-container">
+    <div class="cart">
+        <div>
+            <span translate>LOGISTICS_TOTAL</span>:
+            <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
+            <span translate>COMMON_AD</span>
+        </div>
+        <div *ngIf="data[0]?.dirty; else notConfirmed" class="confirmation f-warn">
+
+            <button mat-raised-button
+                    color="warn"
+                    (click)="confirm(true)"
+                    [matTooltip]="langSrv.translate('COMMON_CONFIRM')">
+                <span translate>COMMON_NOT_CONFIRMED</span> &nbsp;
+                <i class="fas fa-check-square"></i></button>
+        </div>
+        <ng-template #notConfirmed>
+            <div class="confirmation f-warn">
+                <button mat-raised-button
+                        color="accent"
+                        (click)="confirm(false)"
+                        [matTooltip]="langSrv.translate('COMMON_UNCONFIRM')">
+                    <span translate>COMMON_CONFIRMED</span>  &nbsp;
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+        </ng-template>
+        <button mat-raised-button
+                color="primary"
+                [matTooltip]="langSrv.translate('LOGISTICS_SHOPPING')"
+                routerLink="../cart">
+            <i class="fal fa-shopping-cart"></i>
+        </button>
+    </div>
+    <div class="data">
+        <mat-card class="card" *ngFor="let a of data">
+            <mat-card-header>
+                <mat-card-title>{{ a.reference }}</mat-card-title>
+                <mat-card-subtitle> {{ a.description }}  </mat-card-subtitle>
+            </mat-card-header>
+            <ss-image-input mat-card-medium-image width="100%" height="220px" [ImageModel]="a.imageModel"
+                            style="display: inline-block;">
+            </ss-image-input>
+            <mat-card-content>
+                <span translate>COMMON_MARK</span>: <span class="bolder">{{ a.mark }}</span>
+            </mat-card-content>
+            <mat-card-actions>
+                <table>
+                    <tr>
+                        <th class="b-primary">
+                            <spn translate>LOGISTICS_PRICE</spn>
+                            (<span class="bolder" translate>COMMON_AD</span>)
+                        </th>
+                        <th class="b-primary">
+                            <spn translate>LOGISTICS_QTY</spn>
+                        </th>
+                        <th class="b-primary">
+                            <spn translate>LOGISTICS_AMOUNT</spn>
+                            (<span class="bolder" translate>COMMON_AD</span>)
+                        </th>
+                    </tr>
+                    <tr class="f-accent">
+                        <td><span class="bolder"> {{ a.price | number: '1.2-2'}}</span>
+
+                        </td>
+                        <td><span class="bolder"> {{ a.qty | number: '1.0-2'}}</span>
+                        </td>
+                        <td><span class="bolder"> {{ a.qty * a.price | number: '1.2-2'}}</span>
+
+                        </td>
+                    </tr>
+                </table>
+
+            </mat-card-actions>
+            <mat-card-footer>
+                <div>
+                    <button mat-raised-button
+                            color="primary"
+                            [disabled]="a.qty < 2"
+                            (click)="removeOneFromCart(a)"
+                            translate>LOGISTICS_REMOVE_ONE_FROM_CART
+                    </button>
+                    <button mat-raised-button
+                            color="primary"
+                            (click)="removeFromCart(a)"
+                            translate>LOGISTICS_REMOVE_FROM_CART
+                    </button>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
