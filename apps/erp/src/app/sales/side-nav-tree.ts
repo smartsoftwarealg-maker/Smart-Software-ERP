@@ -7,7 +7,7 @@ import {
     ABS_SALES_DELIVERY_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
-    ABS_SALES_ORDER_URL
+    ABS_SALES_ORDER_URL, ABS_SALES_PROFORMA_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -15,6 +15,11 @@ export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
     children: [
+        {
+            name: 'LOGISTICS_PROFORMA',
+            icon: 'fas fa-quote-right',
+            route: ABS_SALES_PROFORMA_URL
+        },
         {
             name: 'SALES_ORDER',
             icon: 'fas fa-cart-plus',

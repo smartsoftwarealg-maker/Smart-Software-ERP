@@ -119,5 +119,6 @@
     "AMOUNT": "Amount",
     "REMOVE_ONE_FROM_CART": "Remove one",
     "REMOVE_FROM_CART": "Remove from cart",
-    "AMOUNT_EXCEEDED": "Allowed amount exceeded"
+    "AMOUNT_EXCEEDED": "Allowed amount exceeded",
+    "PROFORMA": "Proforma invoice"
 }

@@ -35,26 +35,23 @@
     <div class="data">
         <mat-card class="card" *ngFor="let a of data">
             <mat-card-header>
-                <mat-card-title>{{ a.reference }}</mat-card-title>
-                <mat-card-subtitle> {{ a.description }}  </mat-card-subtitle>
+                <mat-card-title>{{ a.description }}</mat-card-title>
+                <mat-card-subtitle> <span translate>COMMON_MARK</span>: <span class="bolder">{{ a.mark }}</span>  </mat-card-subtitle>
             </mat-card-header>
             <ss-image-input mat-card-medium-image width="100%" height="220px" [ImageModel]="a.imageModel"
                             style="display: inline-block;">
             </ss-image-input>
             <mat-card-content>
-                <span translate>COMMON_MARK</span>: <span class="bolder">{{ a.mark }}</span>
-            </mat-card-content>
-            <mat-card-actions>
                 <table>
                     <tr>
-                        <th class="b-primary">
+                        <th>
                             <spn translate>LOGISTICS_PRICE</spn>
                             (<span class="bolder" translate>COMMON_AD</span>)
                         </th>
-                        <th class="b-primary">
+                        <th>
                             <spn translate>LOGISTICS_QTY</spn>
                         </th>
-                        <th class="b-primary">
+                        <th>
                             <spn translate>LOGISTICS_AMOUNT</spn>
                             (<span class="bolder" translate>COMMON_AD</span>)
                         </th>
@@ -70,9 +67,8 @@
                         </td>
                     </tr>
                 </table>
-
-            </mat-card-actions>
-            <mat-card-footer>
+            </mat-card-content>
+            <mat-card-actions>
                 <div>
                     <button mat-raised-button
                             color="primary"
@@ -86,7 +82,8 @@
                             translate>LOGISTICS_REMOVE_FROM_CART
                     </button>
                 </div>
-            </mat-card-footer>
+
+            </mat-card-actions>
         </mat-card>
     </div>
     <div class="pagination-container b-b-background">

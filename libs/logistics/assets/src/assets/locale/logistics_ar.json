@@ -117,5 +117,6 @@
     "AMOUNT": "المبلغ",
     "REMOVE_FROM_CART": "إزالة الكل",
     "REMOVE_ONE_FROM_CART": "إزالة واحد",
-    "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به"
+    "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به",
+    "PROFORMA": "الفاتورة الأولية"
 }
