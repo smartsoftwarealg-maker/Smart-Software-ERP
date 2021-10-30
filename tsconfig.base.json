@@ -251,6 +251,9 @@
             "@ss/purchases/ui-purchase-order": [
                 "libs/purchases/ui-purchase-order/src/index.ts"
             ],
+            "@ss/purchases/ui-quotation": [
+                "libs/purchases/ui-quotation/src/index.ts"
+            ],
             "@ss/purchases/ui-reception": [
                 "libs/purchases/ui-reception/src/index.ts"
             ],
@@ -288,6 +291,9 @@
             "@ss/sales/ui-proforma": ["libs/sales/ui-proforma/src/index.ts"],
             "@ss/sales/ui-sales-order": [
                 "libs/sales/ui-sales-order/src/index.ts"
+            ],
+            "@ss/sales/ui-transactionlines": [
+                "libs/sales/ui-transactionlines/src/index.ts"
             ],
             "@ss/stock/api-article": ["libs/stock/api-article/src/index.ts"],
             "@ss/stock/api-article-store": [

@@ -3844,6 +3844,31 @@
                 }
             }
         },
+        "purchases-ui-quotation": {
+            "projectType": "library",
+            "root": "libs/purchases/ui-quotation",
+            "sourceRoot": "libs/purchases/ui-quotation/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/purchases/ui-quotation"],
+                    "options": {
+                        "jestConfig": "libs/purchases/ui-quotation/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/purchases/ui-quotation/src/**/*.ts",
+                            "libs/purchases/ui-quotation/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "purchases-ui-reception": {
             "projectType": "library",
             "root": "libs/purchases/ui-reception",
@@ -4331,6 +4356,31 @@
                     "options": {
                         "jestConfig": "libs/sales/ui-sales-order/jest.config.js",
                         "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "sales-ui-transactionlines": {
+            "projectType": "library",
+            "root": "libs/sales/ui-transactionlines",
+            "sourceRoot": "libs/sales/ui-transactionlines/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/sales/ui-transactionlines"],
+                    "options": {
+                        "jestConfig": "libs/sales/ui-transactionlines/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/sales/ui-transactionlines/src/**/*.ts",
+                            "libs/sales/ui-transactionlines/src/**/*.html"
+                        ]
                     }
                 }
             }

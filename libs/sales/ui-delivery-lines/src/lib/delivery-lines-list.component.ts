@@ -8,8 +8,7 @@ import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {Store, LotsService} from '@ss/common/api-lookup';
-import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-delivery-lines-list',
@@ -39,7 +38,7 @@ export class DeliveryLinesListComponent implements OnInit {
     ];
 
     constructor(
-        public TransactionLinesSrv: DeliveryLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -53,7 +52,7 @@ export class DeliveryLinesListComponent implements OnInit {
         this.getCurrentDeliveryId().subscribe(x => {
             if (x) {
                 this.parentId = x;
-                this.TransactionLinesSrv.setParentId(x);
+                this.detailSrv.setParentId(x);
                 this.loadDeliveryLines();
                 this.pagination.onChange = () => this.loadDeliveryLines();
             }
@@ -67,7 +66,7 @@ export class DeliveryLinesListComponent implements OnInit {
 
     loadDeliveryLines() {
         this.shellSrv.setLoading(true);
-        this.TransactionLinesSrv.getPage(this.pagination, null, null)
+        this.detailSrv.getPage(this.pagination, null, null)
             .subscribe(x => {
                 this.data = x;
                 this.loadRelatedTables()
@@ -99,7 +98,7 @@ export class DeliveryLinesListComponent implements OnInit {
                     const a = this.data.filter(x => x.id === this.selectedId)[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);
-                        this.TransactionLinesSrv.remove(a.id)
+                        this.detailSrv.remove(a.id)
                             .subscribe(
                                 () => {
                                     this.snackBarSrv.showSuccessMessage();

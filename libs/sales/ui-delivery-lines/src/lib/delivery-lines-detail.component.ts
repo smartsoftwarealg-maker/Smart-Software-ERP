@@ -8,10 +8,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
+import {ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import { fillObject } from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -27,7 +26,7 @@ export class DeliveryLinesDetailComponent extends BaseEntityDetailComponent<Tran
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public deliveryLinesService: DeliveryLinesService,
+        public deliveryLinesService: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

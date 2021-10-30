@@ -66,6 +66,7 @@ export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
 export const PURCHASE_ORDER_URL = 'porders';
+export const PURCHASE_QUOTATION_URL = 'offers';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
@@ -187,6 +188,7 @@ export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
+export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
 
 
 

@@ -4,12 +4,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
-import {Transaction, TransactionLine} from '@ss/logistics/api-transaction';
-import {ReceptionLinesService} from '@ss/purchases/api-reception';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 import {DocImportingDocument} from '@ss/logistics/api-common';
 
 @Component({
@@ -35,7 +33,7 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
 
 
     constructor(
-        public receptionLinesSrv: ReceptionLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -43,7 +41,7 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(shellSrv, storeNamesSrv, articleSrv, receptionLinesSrv)
+        super(shellSrv, storeNamesSrv, articleSrv, detailSrv)
     }
 
 
@@ -51,7 +49,7 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
         this.getCurrentReceptionId().subscribe(x => {
             if (x) {
                 this.parentId = x;
-                this.receptionLinesSrv.setParentId(x);
+                this.detailSrv.setParentId(x);
                 this.loadReceptionLines();
                 this.pagination.onChange = () => this.loadReceptionLines();
             }
@@ -65,7 +63,7 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
 
     loadReceptionLines() {
         this.shellSrv.setLoading(true);
-        this.receptionLinesSrv.getPage(this.pagination, null, null)
+        this.detailSrv.getPage(this.pagination, null, null)
             .subscribe(x => {
                 this.data = x;
                 this.loadRelatedTables(this.data)
@@ -99,7 +97,7 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
                         const a = this.data.filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
-                            this.receptionLinesSrv.remove(a.id)
+                            this.detailSrv.remove(a.id)
                                 .subscribe({
                                         next:
                                             () => {

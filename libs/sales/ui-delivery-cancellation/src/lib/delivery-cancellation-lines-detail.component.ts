@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
@@ -11,7 +10,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {fillObject} from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-delivery-cancellation-lines-detail',
@@ -27,7 +26,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseEntityDetailCo
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public deliveryLinesService: DeliveryLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -36,10 +35,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseEntityDetailCo
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
-        super(deliveryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
-
-            'SALES_EDIT_CANCELLATION_LINES'
-        );
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,'SALES_EDIT_CANCELLATION_LINES');
     }
 
 
@@ -48,7 +44,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseEntityDetailCo
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.deliveryLinesService.setParentId(this.parentId);
+                    this.detailSrv.setParentId(this.parentId);
                     return p;
                 })
             );

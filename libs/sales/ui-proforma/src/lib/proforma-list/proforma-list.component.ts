@@ -5,7 +5,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {LanguageService, User, UserService} from '@ss/common/api-common';
+import {LanguageService, User} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -32,7 +32,7 @@ export class ProformaListComponent  extends BaseEntityListComponent<Transaction>
 
 
     constructor(
-        public orderService: SalesProformaService,
+        public proformaSrv: SalesProformaService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -43,7 +43,7 @@ export class ProformaListComponent  extends BaseEntityListComponent<Transaction>
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         private payMethodSrv: PayMethodService) {
-        super(orderService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_PROFORMA');
+        super(proformaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_PROFORMA');
     }
 
 
