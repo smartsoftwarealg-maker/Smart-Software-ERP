@@ -18,6 +18,9 @@ export interface Transaction {
     fixedDiscount?: number;
     fixedDiscountVAT?: number;
     currency?: number;
-    currencyRate: number,
-    dirty: boolean
+    currencyRate: number;
+    dirty: boolean;
+    dealerName?: string;
+    agentName?: string;
+    payMethodName?: string;
 }

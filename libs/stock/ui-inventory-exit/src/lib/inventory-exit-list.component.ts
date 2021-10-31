@@ -1,26 +1,20 @@
 import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {InventoryExit, InventoryExitService} from '@ss/stock/api-inventory-exit';
-import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {LanguageService} from '@ss/common/api-common';
+import {InventoryExitService} from '@ss/stock/api-inventory-exit';
+import {LanguageService, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
+import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
+import {AgentService} from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-inventory-exit-list',
     styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './inventory-exit-list.component.html'
 })
-export class InventoryExitListComponent extends BaseEntityListComponent<InventoryExit> {
-
-
-    public dealers: { [id: number]: string; };
-
+export class InventoryExitListComponent extends BaseTransactionListComponent {
     displayedColumns = [
         'number',
         'date',
@@ -36,30 +30,12 @@ export class InventoryExitListComponent extends BaseEntityListComponent<Inventor
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
+        public userSrv: UserService,
+        public agentSrv: AgentService,
         public usersService: UserListService,
         public langServ: LanguageService,
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(inventoryExitSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_INVENTORY_EXIT');
+        super(inventoryExitSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, null, 'STOCK_INVENTORY_EXIT');
     }
-
-
-    processLoadedData(data: InventoryExit[]): Observable<InventoryExit[]> {
-        return this.usersService.getAll(data.map(x => x.dealer))
-            .pipe(tap(x => this.onDealersLoaded(x)))
-            .pipe(switchMap(() => {
-                const parsedData = data.map(x => {
-                    x.date = this.langServ.formatDate(x.date);
-                    x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
-                    return x;
-                });
-                return super.processLoadedData(parsedData);
-            }))
-    }
-
-    onDealersLoaded(data: User[]): void {
-        this.dealers = {};
-        data.forEach(m => this.dealers[m.id] = m.fullName);
-    }
-
 }

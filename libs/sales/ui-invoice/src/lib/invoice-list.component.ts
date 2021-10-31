@@ -1,27 +1,20 @@
 import {Component} from '@angular/core';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {LanguageService, User, UserService} from '@ss/common/api-common';
+import {LanguageService, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {InvoiceService} from '@ss/sales/api-invoice';
-import {Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
 
 @Component({
     selector: 'ss-delivery-list',
     styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './invoice-list.component.html'
 })
-export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
-
-    public dealers: { [id: number]: string; };
-    public agents: { [id: number]: string; } = {};
-
+export class InvoiceListComponent extends BaseTransactionListComponent {
     displayedColumns = [
         'number',
         'date',
@@ -38,33 +31,15 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public usersService: UserService,
-        public agentService: AgentService,
+        public usersSrv: UserService,
+        public agentServ: AgentService,
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        private payMethodSrv: PayMethodService) {
-        super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'SALES_INVOICE');
+        public payMethodSrv: PayMethodService) {
+        super(invoiceSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_INVOICE');
     }
 
-    processLoadedData(data: Transaction[]): Observable<Transaction[]> {
-        return this.agentService.getByIDList(data.map(x => x.agent))
-            .pipe(
-                tap(x => x.forEach(e => this.agents[e.id] = e.denomination)),
-                switchMap(() => {
-                const parsedData = data.map(x => {
-                    x.date = this.langServ.formatDate(x.date);
-                    x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
-                    return x;
-                });
-                return super.processLoadedData(parsedData);
-            }));
-    }
-
-    onDealersLoaded(data: User[]): void {
-        this.dealers = {};
-        data.forEach(m => this.dealers[m.id] = m.fullName);
-    }
 
     payModeDescription(id: number) {
         return this.payMethodSrv.getMethodDescription(id);

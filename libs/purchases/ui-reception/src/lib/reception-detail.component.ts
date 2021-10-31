@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {BaseTransactionComponent, Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -23,7 +23,7 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './reception-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class ReceptionDetailComponent extends BaseTransactionComponent implements OnInit {
+export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     @ViewChild(ReceptionLinesListComponent) detail: ReceptionLinesListComponent;
 
     private reception: Transaction = null;
