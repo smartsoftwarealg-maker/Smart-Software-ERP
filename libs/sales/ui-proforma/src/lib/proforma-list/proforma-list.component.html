@@ -13,7 +13,7 @@
         <ng-container matColumnDef="payMethod">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ payModeDescription(e.payMethod) }}
+                {{ e.payMethodName }}
             </mat-cell>
         </ng-container>
 
@@ -57,11 +57,12 @@
     </div>
 
     <ss-doc-info
+        class="doc-info"
         [displayedGroups]="['agent','document']"
         [params]="{
             agentId: selectedRow?.agent,
             documentId: selectedRow?.id,
-            documentURL:'/delivery'
+            documentURL:'/proforma'
         }">
     </ss-doc-info>
 

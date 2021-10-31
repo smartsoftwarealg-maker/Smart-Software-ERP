@@ -343,6 +343,9 @@
         "purchases-ui-purchase-order": {
             "tags": []
         },
+        "purchases-ui-quotation": {
+            "tags": []
+        },
         "purchases-ui-reception": {
             "tags": []
         },
@@ -392,6 +395,9 @@
             "tags": []
         },
         "sales-ui-sales-order": {
+            "tags": []
+        },
+        "sales-ui-transactionlines": {
             "tags": []
         },
         "stock-api-article": {

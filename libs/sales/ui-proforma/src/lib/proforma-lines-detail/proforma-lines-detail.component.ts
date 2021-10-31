@@ -10,8 +10,7 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import { fillObject } from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
-import {ProformaLinesService} from "../proforma-lines.service";
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-proforma-lines-detail',
@@ -27,7 +26,7 @@ export class ProformaLinesDetailComponent extends BaseEntityDetailComponent<Tran
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public proformaLinesService: ProformaLinesService,
+        public proformaLinesService: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

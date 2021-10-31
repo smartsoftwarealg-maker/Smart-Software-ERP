@@ -8,7 +8,7 @@ import {map, tap} from 'rxjs/operators';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 
-export abstract class BaseTransactionComponent extends BaseEntityDetailComponent<Transaction> {
+export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> {
     constructor(public invoiceService: BaseEntityService<Transaction>,
                 public shellSrv: ShellService,
                 public snackBarSrv: SnackBarService,

@@ -1,3 +1,12 @@
+.main-container {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+}
 
 .pagination-container {
     flex: 0 0 auto;
@@ -11,15 +20,6 @@
 }
 
 
-.main-container {
-    height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1100px;
-    display: flex;
-    flex-direction: column;
-    align-content: stretch;
-}
 
 .doc-info {
     height: 100%;
@@ -30,7 +30,7 @@
 }
 
 .main-table {
-    display: block;
+    flex: 1 1 50%;
     width: 100%;
     overflow-x: auto;
     height: 100%;

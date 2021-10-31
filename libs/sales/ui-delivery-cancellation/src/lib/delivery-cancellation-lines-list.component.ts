@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
-import {DeliveryLinesService} from '@ss/sales/api-delivery-lines';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Article, ArticleService} from '@ss/stock/api-article';
@@ -9,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-delivery-cancellation-lines-list',
@@ -38,7 +37,7 @@ export class DeliveryCancellationLinesListComponent implements OnInit {
     ];
 
     constructor(
-        public deliveryLinesSrv: DeliveryLinesService,
+        public deliveryLinesSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

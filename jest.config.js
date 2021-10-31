@@ -6,5 +6,5 @@ module.exports = {
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
     coverageReporters: ['html'],
-    projects: '<rootDir>/libs/sales/ui-proforma',
+    projects: '<rootDir>/libs/purchases/ui-quotation',
 };

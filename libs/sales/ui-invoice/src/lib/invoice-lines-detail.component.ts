@@ -11,7 +11,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import { fillObject } from '@ss/common/api-common';
 import {InvoiceLinesService} from '@ss/sales/api-invoice';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -27,7 +27,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Trans
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public invoiceLinesService: InvoiceLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -36,7 +36,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Trans
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
-        super(invoiceLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
 
             'SALES_EDIT_INVOICE_LINES'
         );
@@ -48,7 +48,7 @@ export class InvoiceLinesDetailComponent extends BaseEntityDetailComponent<Trans
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.invoiceLinesService.setParentId(this.parentId);
+                    this.detailSrv.setParentId(this.parentId);
                     return p;
                 })
             );

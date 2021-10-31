@@ -5,12 +5,13 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {InventoryExit, InventoryExitService} from '@ss/stock/api-inventory-exit';
+import {InventoryExitService} from '@ss/stock/api-inventory-exit';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
+import {Transaction} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -18,7 +19,7 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-exit-detail.component.html'
 })
-export class InventoryExitDetailComponent extends BaseEntityDetailComponent<InventoryExit> {
+export class InventoryExitDetailComponent extends BaseEntityDetailComponent<Transaction> {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
@@ -43,7 +44,7 @@ export class InventoryExitDetailComponent extends BaseEntityDetailComponent<Inve
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(b: InventoryExit) {
+    public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

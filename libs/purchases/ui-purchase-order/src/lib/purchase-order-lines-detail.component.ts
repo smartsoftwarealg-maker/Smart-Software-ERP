@@ -10,8 +10,7 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import { fillObject } from '@ss/common/api-common';
-import {TransactionLine} from '@ss/logistics/api-transaction';
-import {PurchaseOrderLinesService} from '@ss/purchases/api-purchase-order';
+import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -27,7 +26,7 @@ export class PurchaseOrderLinesDetailComponent extends BaseEntityDetailComponent
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public orderLinesService: PurchaseOrderLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -36,9 +35,7 @@ export class PurchaseOrderLinesDetailComponent extends BaseEntityDetailComponent
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
-        super(orderLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
-            'PURCHASES_EDIT_ORDER_LINES'
-        );
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,'PURCHASES_EDIT_ORDER_LINES');
     }
 
     preload(): Observable<any> {
@@ -46,7 +43,7 @@ export class PurchaseOrderLinesDetailComponent extends BaseEntityDetailComponent
             .pipe(
                 tap(p => {
                     this.parentId = +p.parent;
-                    this.orderLinesService.setParentId(this.parentId);
+                    this.detailSrv.setParentId(this.parentId);
                     return p;
                 })
             );

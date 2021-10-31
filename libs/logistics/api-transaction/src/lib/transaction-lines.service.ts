@@ -6,9 +6,9 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
 @Injectable({
     providedIn: 'root'
 })
-export class ProformaLinesService extends BaseEntityExtendedService<TransactionLine> {
+export class TransactionLinesService extends BaseEntityExtendedService<TransactionLine> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv,  '/detail', '/proforma');
+        super(httpSrv,  '/detail', '/transactions');
     }
 }

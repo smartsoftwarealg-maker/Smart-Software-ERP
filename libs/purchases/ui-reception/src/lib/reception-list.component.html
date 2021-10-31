@@ -13,7 +13,7 @@
             <ng-container matColumnDef="payMethod">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ payModeDescription(e.payMethod) }}
+                    {{ e.payMethodName }}
                 </mat-cell>
             </ng-container>
 
@@ -42,7 +42,7 @@
             <ng-container matColumnDef="dealer">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_DEALER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ dealers[e.dealer] }}
+                    {{ e.dealerName }}
                 </mat-cell>
             </ng-container>
 
@@ -63,8 +63,8 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="doc-info">
         <ss-doc-info
+            class="doc-info"
             *ngIf="selected"
             [displayedGroups]="['document','agent']"
             [params]="{
@@ -73,5 +73,4 @@
             agentId : selectedRow.agent
         }">
         </ss-doc-info>
-    </div>
 </div>
