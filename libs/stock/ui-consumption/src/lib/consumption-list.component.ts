@@ -6,7 +6,7 @@ import {ConsumptionService} from '@ss/stock/api-consumption';
 import {LanguageService, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
+import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-consumption-list',

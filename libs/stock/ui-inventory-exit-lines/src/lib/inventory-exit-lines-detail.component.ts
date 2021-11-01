@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {InventoryExitLine, InventoryExitLinesService} from '@ss/stock/api-inventory-exit-lines';
+import {InventoryExitLinesService} from '@ss/stock/api-inventory-exit-lines';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -18,11 +18,11 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
     templateUrl: './inventory-exit-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<InventoryExitLine> implements OnInit {
+export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
 
 
     parentId: number;
-    selectedRow: InventoryExitLine;
+    selectedRow: TransactionLine;
 
     articleAutoCompleteModel  = new ArticleAutocompleteModel(this.articleSrv);
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
@@ -68,7 +68,7 @@ export class InventoryExitLinesDetailComponent extends BaseEntityDetailComponent
     }
 
 
-    public setupForm(b: InventoryExitLine) {
+    public setupForm(b: TransactionLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

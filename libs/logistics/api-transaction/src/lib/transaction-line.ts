@@ -14,4 +14,6 @@ export interface TransactionLine {
     footerMemo: string;
     position: number;
     pprice: number;
+    storeName?: string;
+    refDescription?: string;
 }

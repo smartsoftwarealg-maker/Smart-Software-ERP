@@ -2,9 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
-import {CCGroup, Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
@@ -27,7 +26,6 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
     @ViewChild(ReceptionLinesListComponent) detail: ReceptionLinesListComponent;
 
     private reception: Transaction = null;
-    public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
@@ -60,11 +58,6 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         super(receptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_RECEPTION');
     }
 
-
-    preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
-    }
 
     public setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here

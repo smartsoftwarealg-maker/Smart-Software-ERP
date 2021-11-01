@@ -1,19 +1,2 @@
-export const INVENTORY_EXIT_LINES_URL = "/detail";
-
-export interface InventoryExitLine {
-    id: number;
-    transacId: number;
-    reference: string;
-    sourceDoc: number;
-    store: number;
-    qtyOrdered: number;
-    qtySatisfied: number;
-    qtyInvoiced: number;
-    qtyReturned: number;
-    price: number;
-    observation: string;
-    footerMemo: string;
-    position: number;
-    pprice: number;
-}
+export const INVENTORY_EXIT_LINES_URL = '/detail';
 

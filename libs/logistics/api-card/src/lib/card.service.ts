@@ -28,7 +28,7 @@ export class CardService extends BaseEntityService<Card> {
     loadByArticleReference(pagination: PaginationModel, storeId: number, articleReference: string): Observable<Card[]> {
         this.cardUrl = `${ARTICLES_URL}${this.url}`;
         const params = new HttpParams()
-            .set('store', storeId.toString())
+            .set('store', (storeId || 0).toString())
             .set('reference', articleReference);
         return this.getPage(pagination, null, null, params)
     }

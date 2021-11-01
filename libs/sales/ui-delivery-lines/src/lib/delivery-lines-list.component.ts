@@ -8,25 +8,18 @@ import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {Store, LotsService} from '@ss/common/api-lookup';
-import {TransactionLine, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesListComponent,
+    TransactionLine,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-delivery-lines-list',
     styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './delivery-lines-list.component.html'
 })
-export class DeliveryLinesListComponent implements OnInit {
-
-    //
-    public readonly pagination = PaginationModel.newInstance();
-
-    parentId: number;
-    data: TransactionLine[];
-    selectedId: number;
-    selectedRow: TransactionLine = null;
-
-    articles: { [reference: string]: string; } = {};
-    stores: { [id: number]: string; } = {};
+export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
     displayedColumns = [
         'position',
@@ -46,102 +39,10 @@ export class DeliveryLinesListComponent implements OnInit {
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
+        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
 
     ngOnInit() {
-        this.getCurrentDeliveryId().subscribe(x => {
-            if (x) {
-                this.parentId = x;
-                this.detailSrv.setParentId(x);
-                this.loadDeliveryLines();
-                this.pagination.onChange = () => this.loadDeliveryLines();
-            }
-        });
-    }
-
-
-    getCurrentDeliveryId(): Observable<number> {
-        return this.route.params.pipe(map(p => +p.id))
-    }
-
-    loadDeliveryLines() {
-        this.shellSrv.setLoading(true);
-        this.detailSrv.getPage(this.pagination, null, null)
-            .subscribe(x => {
-                this.data = x;
-                this.loadRelatedTables()
-                    .subscribe(none => {
-                        this.shellSrv.setLoading(false);
-                    })
-            });
-    }
-
-    loadRelatedTables(): Observable<any> {
-        const storesIds = this.data.map(x => x.store);
-        const articleReferences = this.data.map(x => x.reference);
-
-        return this.storeNamesSrv.getAll(storesIds)
-            .pipe(tap(st => this.onStoresLoaded(st)))
-            .pipe(switchMap(x => this.articleSrv.getAll(articleReferences, 'reference')))
-            .pipe(tap(art => this.onArticlesLoaded(art)))
-    }
-
-    select(row: TransactionLine) {
-        this.selectedRow = row;
-        this.selectedId = row ? row.id : 0;
-    }
-
-    public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b && this.selectedId && this.selectedId > 0) {
-                    const a = this.data.filter(x => x.id === this.selectedId)[0];
-                    if (a && a.id) {
-                        this.shellSrv.setLoading(true);
-                        this.detailSrv.remove(a.id)
-                            .subscribe(
-                                () => {
-                                    this.snackBarSrv.showSuccessMessage();
-                                    this.loadDeliveryLines();
-                                },
-                                err => {
-                                    this.snackBarSrv.showFailureMessage();
-                                    this.shellSrv.setLoading(false);
-                                    throw err;
-                                }
-                            );
-                    }
-                }
-            })
-    }
-
-    edit() {
-        if (this.selectedId) {
-            this.showDetail(this.selectedId);
-        }
-    }
-
-    public showDetail(id: number): void {
-        const params = {
-            parent: this.parentId
-        };
-        this.router.navigate(
-            ['./' + LINES_DETAIL_URL + '/' + id],
-            {relativeTo: this.route.parent, queryParams: params}
-        ).then();
-    }
-
-
-    private onArticlesLoaded(data: Article[]) {
-        data.forEach(e => this.articles[e.reference] = e.description2);
-    }
-
-    private onStoresLoaded(data: Store[]) {
-        this.stores = data.reduce(
-            (total: { [id: number]: string; }, currentValue) => {
-                total[currentValue.id] = currentValue.description;
-                return total
-            }, {}
-        );
+        super.onInit();
     }
 }

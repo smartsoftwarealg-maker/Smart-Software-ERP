@@ -12,7 +12,7 @@ import {
     QuotationDetailComponent,
     QuotationLinesDetailComponent,
     QuotationListComponent
-} from '../../../../../libs/purchases/ui-quotation/src';
+} from '@ss/purchases/ui-quotation';
 
 export const routes: Routes = [
     {

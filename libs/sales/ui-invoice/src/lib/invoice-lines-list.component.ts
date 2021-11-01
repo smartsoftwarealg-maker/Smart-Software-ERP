@@ -2,33 +2,17 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
-//import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
 import {InvoiceLinesService} from '@ss/sales/api-invoice';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-invoice-lines-list',
     templateUrl: './invoice-lines-list.component.html',
-    styleUrls: ['./invoice-lines-list.component.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
-export class InvoiceLinesListComponent implements OnInit {
-
-    //
-    public readonly pagination = PaginationModel.newInstance();
-
-    parentId: number;
-    data: TransactionLine[];
-    selectedId: number;
-    selectedRow: TransactionLine = null;
-
-    articles: { [reference: string]: string; } = {};
-    stores: { [id: number]: string; } = {};
-
+export class InvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
     displayedColumns = [
         'position',
@@ -39,10 +23,9 @@ export class InvoiceLinesListComponent implements OnInit {
         'qtySatisfied',
         'price',
     ];
-    private _updated = false;
 
     constructor(
-        public invoiceLinesSrv: InvoiceLinesService,
+        public detailSrv: InvoiceLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -50,111 +33,10 @@ export class InvoiceLinesListComponent implements OnInit {
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
+        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
 
     ngOnInit() {
-        this.getCurrentInvoiceId().subscribe(x => {
-            if (x) {
-                this.parentId = x;
-                this.invoiceLinesSrv.setParentId(x);
-                this.loadInvoiceLines();
-                this.pagination.onChange = () => this.loadInvoiceLines();
-            }
-        });
-    }
-
-
-    getCurrentInvoiceId(): Observable<number> {
-        return this.route.params.pipe(map(p => +p.id))
-    }
-
-    loadInvoiceLines() {
-        this.shellSrv.setLoading(true);
-        this.invoiceLinesSrv.getPage(this.pagination, null, null)
-            .subscribe(x => {
-                this.data = x;
-                this.loadRelatedTables(this.data)
-                    .subscribe(none => {
-                        this.shellSrv.setLoading(false);
-                    })
-            });
-    }
-
-    loadRelatedTables(data): Observable<any> {
-        const storesIds = this.data.map(x => x.store);
-        const articleReferences = this.data.map(x => x.reference);
-
-        return this.storeNamesSrv.getAll(storesIds)
-            .pipe(tap(st => this.onStoresLoaded(st)))
-            .pipe(switchMap(x => this.articleSrv.getAll(articleReferences, 'reference')))
-            .pipe(tap(art => this.onArticlesLoaded(art)))
-    }
-
-    select(row: TransactionLine) {
-        this.selectedRow = row;
-        this.selectedId = row ? row.id : 0;
-    }
-
-    public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b && this.selectedId && this.selectedId > 0) {
-                    const a = this.data.filter(x => x.id === this.selectedId)[0];
-                    if (a && a.id) {
-                        this.shellSrv.setLoading(true);
-                        this.invoiceLinesSrv.remove(a.id)
-                            .subscribe(
-                                () => {
-                                    this.snackBarSrv.showSuccessMessage();
-                                    this.loadInvoiceLines();
-                                },
-                                err => {
-                                    this.snackBarSrv.showFailureMessage();
-                                    this.shellSrv.setLoading(false);
-                                    throw err;
-                                }
-                            );
-                    }
-                }
-            })
-    }
-
-    edit() {
-        if (this.selectedId) {
-            this.showDetail(this.selectedId);
-        }
-    }
-
-    public showDetail(id: number): void {
-        const params = {
-            parent: this.parentId
-        };
-        this.router.navigate(
-            ['./' + LINES_DETAIL_URL + '/' + id],
-            {relativeTo: this.route.parent, queryParams: params}
-        ).then();
-    }
-
-
-    private onArticlesLoaded(data: Article[]) {
-        this.articles = data.reduce( //TODO: Refactor
-            (total, currentValue) => {
-                total[currentValue.reference] = currentValue.description2;
-                return total
-            }, {}
-        );
-    }
-
-    private onStoresLoaded(data: Store[]) {
-        this.stores = data.reduce(
-            (total: { [id: number]: string; }, currentValue) => {
-                total[currentValue.id] = currentValue.description;
-                return total
-            }, {}
-        );
-    }
-
-    get updated() {
-        return this._updated;
+        super.onInit();
     }
 }

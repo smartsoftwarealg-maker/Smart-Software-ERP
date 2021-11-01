@@ -4,16 +4,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
 import {ArticleService} from '@ss/stock/api-article';
-import {LotsService, Store} from '@ss/common/api-lookup';
-import {BaseTransactionlineComponent} from '@ss/sales/ui-transactionlines';
-import {TransactionLinesService} from "@ss/logistics/api-transaction";
+import {LotsService} from '@ss/common/api-lookup';
+import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-proforma-list',
     templateUrl: './proforma-lines-list.component.html',
     styleUrls: ['../../../../../common/ui-theme/src/lib/common-css.scss']
 })
-export class ProformaLinesListComponent extends BaseTransactionlineComponent implements OnInit {
+export class ProformaLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     displayedColumns = [

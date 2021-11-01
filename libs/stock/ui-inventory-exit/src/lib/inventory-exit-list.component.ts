@@ -6,7 +6,7 @@ import {InventoryExitService} from '@ss/stock/api-inventory-exit';
 import {LanguageService, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
+import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 import {AgentService} from '@ss/logistics/api-agent';
 
 @Component({

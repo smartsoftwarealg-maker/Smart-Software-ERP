@@ -1,4 +1,4 @@
-<form *ngIf="form != null" novalidate [formGroup]="form">
+<form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field class="value">
         <mat-label translate>STOCK_PERCENTAGE</mat-label>
         <input matInput style="text-align: right" formControlName="value" type="number" max="100" min="0" autofocus>

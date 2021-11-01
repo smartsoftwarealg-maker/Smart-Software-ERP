@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of} from 'rxjs';
+import {Observable, of, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
@@ -125,7 +125,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.invoice.id)
-                        .pipe(tap(_ => this.detail.loadInvoiceLines()))
+                        .pipe(switchMap(_ => this.detail.loadDetailLines()))
                         .subscribe({
                             next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
                             error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)

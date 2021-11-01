@@ -29,7 +29,7 @@
         <ng-container matColumnDef="store">
             <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ stores[e.store] }}
+                {{ e.storeName }}
             </mat-cell>
         </ng-container>
 
@@ -43,7 +43,7 @@
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ articles[e.reference] }}
+                {{ e.refDescription }}
             </mat-cell>
         </ng-container>
 
@@ -62,7 +62,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectRow(row)"
+        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <div class="pagination-container b-b-background">
