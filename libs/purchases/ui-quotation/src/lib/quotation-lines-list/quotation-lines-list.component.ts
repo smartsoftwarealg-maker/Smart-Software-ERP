@@ -5,15 +5,14 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService, Store} from '@ss/common/api-lookup';
-import {BaseTransactionlineComponent} from '@ss/sales/ui-transactionlines';
-import {TransactionLinesService} from "@ss/logistics/api-transaction";
+import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-quotation-lines-list',
     templateUrl: './quotation-lines-list.component.html',
     styleUrls: ['../../../../../common/ui-theme/src/lib/common-css.scss']
 })
-export class QuotationLinesListComponent extends BaseTransactionlineComponent implements OnInit {
+export class QuotationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
     displayedColumns = [

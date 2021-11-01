@@ -7,7 +7,7 @@ import {AgentService} from '@ss/logistics/api-agent';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
+import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-ui-order',

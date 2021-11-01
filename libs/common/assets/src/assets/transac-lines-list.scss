@@ -1,0 +1,115 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 836px;
+    width: 100%;
+    padding-top: 24px;
+    min-height: 95%;
+}
+
+
+.main-table {
+    width: 100%;
+    flex: 1 0 59%;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    .mat-table {
+        width: 100%;
+        max-width: 100%;
+        display: table;
+        border-collapse: collapse;
+        margin: 0px;
+    }
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 0px 5px;
+        line-break: unset;
+        width: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+}
+.doc-info {
+    flex: 1 1 40%;
+}
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+
+.mat-column-position {
+    flex: 1 0 50px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-store {
+    flex: 1 1 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-reference {
+    flex: 1 1 90px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description {
+    flex: auto 1 1;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-qtySatisfied {
+    flex: 1 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-qtyOrdered  {
+    flex: 1 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-price {
+    flex: 1 0 100px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-controls {
+    flex: 0 1 55px;
+    padding-left: 0px;
+}
+
+
+.add-button {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination-container {
+    flex: 0 1 1%;
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

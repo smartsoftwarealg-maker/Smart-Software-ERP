@@ -5,7 +5,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
 import {LanguageService, User, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseTransactionListComponent} from '../../../../logistics/api-transaction/src/lib/base-transaction-list.component';
+import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 import {AgentService} from '@ss/logistics/api-agent';
 
 @Component({

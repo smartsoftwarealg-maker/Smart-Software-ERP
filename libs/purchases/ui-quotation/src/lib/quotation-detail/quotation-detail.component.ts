@@ -5,12 +5,10 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
-import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
+import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
@@ -19,11 +17,10 @@ import {PurchaseQuotationService} from '../purchase-quotation.service';
 @Component({
     selector: 'ss-proforma-detail',
     templateUrl: './quotation-detail.component.html',
-    styleUrls: ['./quotation-detail.component.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class QuotationDetailComponent extends BaseEntityDetailComponent<Transaction> {
     public isManager = false;
-    public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
@@ -42,11 +39,6 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
                 private loginSrv: LoginService,
                 private payMethodSrv: PayMethodService) {
         super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PROFORMA');
-    }
-
-    preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
     }
 
     public setupForm(form: Transaction) {

@@ -3,11 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, LookupsService} from '@ss/common/api-lookup';
+import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
@@ -21,7 +19,6 @@ import {Transaction} from '@ss/logistics/api-transaction';
 })
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Transaction> {
 
-    public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
     constructor(
@@ -38,11 +35,6 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
         super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_ENTRY');
     }
 
-
-    preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
-    }
 
     public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here

@@ -19,7 +19,7 @@ import {SalesProformaService} from "../sales-proforma.service";
 @Component({
     selector: 'ss-proforma-detail',
     templateUrl: './proforma-detail.component.html',
-    styleUrls: ['./proforma-detail.component.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ProformaDetailComponent extends BaseEntityDetailComponent<Transaction> {
     private transac: Transaction = null;
@@ -29,18 +29,18 @@ export class ProformaDetailComponent extends BaseEntityDetailComponent<Transacti
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
-    constructor(        public proformaSrv: SalesProformaService,
-                        public shellSrv: ShellService,
-                        public snackBarSrv: SnackBarService,
-                        public route: ActivatedRoute,
-                        public formBuilder: FormBuilder,
-                        public confirmationSrv: ConfirmationDialogService,
-                        public usersService: UserListService,
-                        public lookupsSrv: LookupsService,
-                        private agentService: AgentService,
-                        private loginService: LoginService,
-                        private loginSrv: LoginService,
-                        private payMethodSrv: PayMethodService) {
+    constructor(public proformaSrv: SalesProformaService,
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public formBuilder: FormBuilder,
+                public confirmationSrv: ConfirmationDialogService,
+                public usersService: UserListService,
+                public lookupsSrv: LookupsService,
+                private agentService: AgentService,
+                private loginService: LoginService,
+                private loginSrv: LoginService,
+                private payMethodSrv: PayMethodService) {
         super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PROFORMA');
     }
 

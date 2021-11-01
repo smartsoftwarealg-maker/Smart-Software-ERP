@@ -1,4 +1,4 @@
-<form *ngIf="form != null" novalidate [formGroup]="form">
+<form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_DESCRIPTION</mat-label>
         <input matInput formControlName="description" type="text" required autofocus>

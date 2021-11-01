@@ -34,5 +34,12 @@ import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
       QuotationLinesListComponent,
       QuotationListComponent
     ],
+
+    exports: [
+      QuotationDetailComponent,
+      QuotationLinesDetailComponent,
+      QuotationLinesListComponent,
+      QuotationListComponent
+    ],
 })
 export class PurchasesUiQuotationModule {}

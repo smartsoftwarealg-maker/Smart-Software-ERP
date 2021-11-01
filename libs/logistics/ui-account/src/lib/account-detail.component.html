@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form != null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
 
             <mat-form-field id="accountNo" class="value">
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>

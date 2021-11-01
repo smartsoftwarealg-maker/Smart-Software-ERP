@@ -1,4 +1,4 @@
-export const CARD_URL = "/card";
+export const CARD_URL = '/card';
 
 export interface Card {
     document: string,
