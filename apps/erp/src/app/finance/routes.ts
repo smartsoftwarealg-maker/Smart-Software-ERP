@@ -2,7 +2,7 @@ import {
     LOGISTICS_PAYMENTS_URL,
     LOGISTICS_COMPENSATION_URL,
     LOGISTICS_SPAYMENTS_URL,
-    LOGISTICS_CPAYMENTS_URL
+    LOGISTICS_CPAYMENTS_URL, LOGISTICS_SCOMPENSATION_URL, LOGISTICS_CCOMPENSATION_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -10,6 +10,16 @@ import {PaymentsListComponent, PaymentsDetailComponent} from '@ss/logistics/paym
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 
 export const financeRoutes: Routes = [
+    {
+        path: LOGISTICS_CCOMPENSATION_URL,
+        component: PaymentCompensationComponent,
+            data: { agents: '/customers' }
+    },
+    {
+        path: LOGISTICS_SCOMPENSATION_URL,
+        component: PaymentCompensationComponent,
+        data: { agents: '/suppliers' }
+    },
     {
         path: LOGISTICS_COMPENSATION_URL,
         component: PaymentCompensationComponent

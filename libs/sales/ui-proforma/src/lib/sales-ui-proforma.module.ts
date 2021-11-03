@@ -34,5 +34,12 @@ import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
       ProformaLinesDetailComponent,
       ProformaLinesListComponent
     ],
+
+    exports: [
+      ProformaListComponent,
+      ProformaDetailComponent,
+      ProformaLinesDetailComponent,
+      ProformaLinesListComponent
+    ],
 })
 export class SalesUiProformaModule {}

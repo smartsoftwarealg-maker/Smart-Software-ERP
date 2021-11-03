@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PaymentCompensationComponent } from './payment-compensation/payment-compensation.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PaymentCompensationComponent} from './payment-compensation/payment-compensation.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
@@ -8,9 +8,11 @@ import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
     imports: [CommonModule,
+        DragDropModule,
         MaterialModule,
         CommonUiLangModule,
         UiPaginationModule,
@@ -20,12 +22,13 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
         CommonUiConfirmationDialogModule],
 
     declarations: [
-      PaymentCompensationComponent
+        PaymentCompensationComponent
     ],
 
     exports: [
-      PaymentCompensationComponent
+        PaymentCompensationComponent
     ],
 
 })
-export class LogisticsPaymentCompensationModule {}
+export class LogisticsPaymentCompensationModule {
+}
