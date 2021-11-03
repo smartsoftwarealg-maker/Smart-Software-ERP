@@ -19,8 +19,8 @@ import {
     DeliveryCancellationLinesDetailComponent,
     DeliveryCancellationListComponent
 } from '@ss/sales/ui-delivery-cancellation';
-import {ProformaDetailComponent, ProformaListComponent} from "../../../../../libs/sales/ui-proforma/src";
-import {ProformaLinesDetailComponent} from "../../../../../libs/sales/ui-proforma/src/lib/proforma-lines-detail/proforma-lines-detail.component";
+
+import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListComponent} from '@ss/sales/ui-proforma';
 
 export const lookupRoutes: Routes = []
 

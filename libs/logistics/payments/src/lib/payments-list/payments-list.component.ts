@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,10 +11,10 @@ import {Payment} from "@ss/logistics/api-common";
 import {AgentService} from "@ss/logistics/api-agent";
 
 @Component({
-  selector: 'ss-payments-list',
-  templateUrl: './payments-list.component.html',
-  styleUrls: ['./payments-list.component.scss',
-              '../../../../../common/assets/src/assets/main-container.scss']
+    selector: 'ss-payments-list',
+    templateUrl: './payments-list.component.html',
+    styleUrls: ['./payments-list.component.scss',
+        '../../../../../common/assets/src/assets/main-container.scss']
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     displayedColumns = [
@@ -37,12 +37,14 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         public lookupsSrv: LookupsService) {
         super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PAYMENTS');
 
-            this.route.data.subscribe(data => {
-                    if (data['url']) {
-                        this.paymentSrv.setURL(data['url']);
-                    }
+        this.route.data.subscribe(data => {
+                if (data['url']) {
+                    this.paymentSrv.setURL(data['url']);
                 }
-            );
+                if (data['agents']) {
+                    this.agentSrv.setURL(data['url']);
+                }
+            });
     }
 
     processLoadedData(data: Payment[]): Observable<Payment[]> {

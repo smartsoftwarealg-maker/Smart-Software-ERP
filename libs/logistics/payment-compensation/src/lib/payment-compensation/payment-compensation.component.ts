@@ -7,12 +7,13 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {map, Observable, of, switchMap} from "rxjs";
 import {LanguageService} from "@ss/common/api-common";
 import {Accounting, Debt, Payment} from "@ss/logistics/api-common";
-
+import {ActivatedRoute} from "@angular/router";
 
 interface FlatPaymentNode {
     expandable: boolean;
     description: string;
     amount: number;
+    paidAmount: number;
     level: number;
     id: number;
     docId?: number;
@@ -32,6 +33,11 @@ interface PaymentTree {
     styleUrls: ['./payment-compensation.component.scss']
 })
 export class PaymentCompensationComponent implements OnInit {
+    private AGENT    = 'LOGISTICS_AGENT';
+    private CUSTOMER = 'LOGISTICS_CUSTOMER';
+    private SUPPLIER = 'LOGISTICS_SUPPLIER';
+
+    public partner = this.AGENT;
 
     debts: Debt[] = [];
     selectedPayment: FlatPaymentNode = null;
@@ -40,9 +46,7 @@ export class PaymentCompensationComponent implements OnInit {
     agent = new FormControl();
     date = new FormControl(new Date())
 
-    treeControl = new FlatTreeControl<FlatPaymentNode>(
-        node => node.level, node => node.expandable);
-
+    treeControl = new FlatTreeControl<FlatPaymentNode>(node => node.level, node => node.expandable);
 
     treeFlattener = new MatTreeFlattener<PaymentTree, FlatPaymentNode, FlatPaymentNode>(
         (node: PaymentTree, level: number) => {
@@ -51,6 +55,8 @@ export class PaymentCompensationComponent implements OnInit {
                 description: node.description,
                 level: level,
                 amount: node.amount,
+                paidAmount: node.children && node.children.length > 0?
+                            node.children.map(e => e.amount).reduce((a, b) => a + b): 0.0,
                 id: node.id
             };
         },
@@ -63,7 +69,8 @@ export class PaymentCompensationComponent implements OnInit {
 
     constructor(private shellSrv: ShellService,
                 private agentSrv: AgentService,
-                public snackBarSrv: SnackBarService,
+                private snackBarSrv: SnackBarService,
+                private route: ActivatedRoute,
                 private langSrv: LanguageService) {
         this.agentAutoCompleteModel.onValueChanged = value => this.onAgentChange(value);
     }
@@ -71,6 +78,14 @@ export class PaymentCompensationComponent implements OnInit {
     ngOnInit() {
         this.shellSrv.setTitle('LOGISTICS_PAYMENT_COMPENSATION');
         this.shellSrv.setGoBackPathByRelativeUrl('..');
+        this.route.data.subscribe(data => {
+            if (data['agents']) {
+                const name = data['agents'];
+                this.agentSrv.setURL(name);
+                this.partner = (name === '/customers')? this.CUSTOMER :
+                               (name === '/suppliers')? this.SUPPLIER : this.AGENT;
+            }
+        });
     }
 
     private paymentToTree(res: Payment[]): PaymentTree[] {
@@ -132,7 +147,6 @@ export class PaymentCompensationComponent implements OnInit {
     }
 
     makePayment() {
-        console.log(this.selectedDebt);
         if (this.selectedPayment && this.selectedDebt && this.selectedDebt.id) {
             const date = this.date.value || new Date();
             this.agentSrv
@@ -145,6 +159,7 @@ export class PaymentCompensationComponent implements OnInit {
                         return this.dataObs(this.agentAutoCompleteModel.cache?.id)
                     } else {
                         this.snackBarSrv.showFailureMessage();
+                        this.selectedPayment = null;
                         return of(this.dataSource.data);
                     }
                 }))
@@ -153,7 +168,6 @@ export class PaymentCompensationComponent implements OnInit {
     }
 
     cancelPayments() {
-        console.log(this.selectedPayment);
         if (this.selectedPayment && this.selectedPayment?.id && this.selectedPayment.level > 0) {
             this.agentSrv
                 .cancelPayment(this.selectedPayment?.id)
@@ -170,5 +184,50 @@ export class PaymentCompensationComponent implements OnInit {
                 }))
                 .subscribe(res => this.dataSource.data = res);
         }
+    }
+
+    // paymentDropped(data: CdkDragDrop<Payment>) {
+    //     const elem = document.elementFromPoint(data.dropPoint.x, data.dropPoint.y);
+    //     console.log('paym', elem.getAttribute('id'), data.dropPoint);
+    // }
+    //
+    // debtDropped(data: CdkDragDrop<Debt>) {
+    //     const elem = document.elementFromPoint(data.dropPoint.x, data.dropPoint.y);
+    //     console.log('debt', elem.getAttribute('id'), data.dropPoint);
+    // }
+
+    onDebtDrop(event: DragEvent, paymentId: number) {
+        event.preventDefault();
+        const debtId = +event.dataTransfer.getData("text");
+        const debt = this.debts.find(d => d.id === debtId);
+        this.selectedDebt = debt;
+        this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === paymentId);
+        if (this.selectedPayment.level == 0) {
+            this.makePayment();
+        }
+    }
+
+    onPaymentDrop(event: DragEvent) {
+        event.preventDefault();
+        const id = +event.dataTransfer.getData("text");
+        this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === id);
+        this.cancelPayments();
+        // console.log('drop payment: ', id);
+    }
+
+    onOver(event: DragEvent) {
+        event.preventDefault();
+    }
+
+    onOverChild(event: DragEvent, id: number) {
+        this.selectedPayment = null;
+        const pymnt = this.treeControl.dataNodes.find(n => n.id === id);
+        if (pymnt && pymnt.level === 0) {
+            event.preventDefault();
+        }
+    }
+
+    onStart(event: DragEvent, id: string) {
+        event.dataTransfer.setData("text", id);
     }
 }
