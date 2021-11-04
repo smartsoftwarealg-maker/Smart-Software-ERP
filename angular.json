@@ -1658,6 +1658,11 @@
                                 "glob": "**/*",
                                 "input": "libs/logistics/assets/src/assets",
                                 "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/administration/assets/src/assets",
+                                "output": "assets"
                             }
                         ],
                         "styles": ["apps/cspace/src/styles.scss"],

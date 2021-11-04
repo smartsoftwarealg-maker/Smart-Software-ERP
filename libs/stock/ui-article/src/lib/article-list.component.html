@@ -3,7 +3,7 @@
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="image">
-                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>STOCK_IMAGE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <div class="person-photo">
                         <ss-image-input width="60px" height="76px" [ImageModel]="e.imageModel" style="display: inline-block;">
@@ -13,21 +13,21 @@
             </ng-container>
 
             <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.reference}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description2">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description2}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                     {{(e.price == null ? '' : e.price.toFixed(2.0))}}
                 </mat-cell>

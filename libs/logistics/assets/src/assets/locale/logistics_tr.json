@@ -119,5 +119,10 @@
     "AMOUNT":               "",
     "REMOVE_FROM_CART":     "",
     "AMOUNT_EXCEEDED":      "",
-    "PROFORMA":             ""
+    "PROFORMA":             "",
+    "IMAGE":                "",
+    "ADD_ONE":              "",
+    "REMOVE_ONE":           "",
+    "REMOVE_ALL":           "",
+    "ACTIONS":              ""
 }

@@ -118,5 +118,15 @@
     "REMOVE_FROM_CART": "إزالة الكل",
     "REMOVE_ONE_FROM_CART": "إزالة واحد",
     "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به",
-    "PROFORMA": "الفاتورة الأولية"
+    "QTY": "الكمية",
+    "PRICE": "السعر",
+    "TOTAL": "المجموع",
+    "PROFORMA": "الفاتورة الأولية",
+    "REFERENCE": "مرجع",
+    "IMAGE": "الصورة",
+    "DESCRIPTION": "الوصف",
+    "ADD_ONE": "أضف واحدا",
+    "REMOVE_ONE": "احذف واحدا",
+    "REMOVE_ALL": "احذف الكل",
+    "ACTIONS": "التحكم"
 }

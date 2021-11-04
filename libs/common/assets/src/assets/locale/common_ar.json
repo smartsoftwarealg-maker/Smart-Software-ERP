@@ -153,5 +153,6 @@
     "CONFIRMED": "مؤكد",
     "NOT_CONFIRMED": "غير مؤكد",
     "CONFIRM": "انقر للتأكيد",
-    "UNCONFIRM": "انقر لإلغاء التاكيد"
+    "UNCONFIRM": "انقر لإلغاء التاكيد",
+    "STATUS": "الحالة"
 }
