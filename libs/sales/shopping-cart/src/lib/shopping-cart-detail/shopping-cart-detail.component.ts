@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpService, LanguageService, LoginService, PaginationModel} from "@ss/common/api-common";
 import {Cart, Cartline} from "../cartline";
 import {LookupsService, MarkService} from "@ss/common/api-lookup";
@@ -8,9 +8,10 @@ import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from "@ss/common/ui-default-report-component";
-import {Observable, of, switchMap, tap} from 'rxjs';
+import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
 import {ImageModel} from "@ss/common/ui-image-input";
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
+import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 
 @Component({
   selector: 'ss-shopping-cart-detail',
@@ -18,9 +19,28 @@ import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
   styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart.component.scss']
 })
 export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartline> {
+    private subscription: Subscription = null;
+    private isHandset: Observable<BreakpointState> = null;
     public readonly pagination = PaginationModel.newInstance();
     public cartTotal = 0.0;
     public lastItem: Cartline = null;
+    public isSmallScreen = false;
+
+    private LONG = [
+        'image',
+        'reference',
+        'description2',
+        'qty',
+        'price',
+        'total',
+        'actions',
+    ];
+    private SHORT = [
+        'description2',
+        'qty',
+        'price',
+    ];
+    displayedColumns = this.LONG;
 
     constructor(
         private markSrv: MarkService,
@@ -35,8 +55,10 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
         public langSrv: LanguageService,
-        private loginSrv: LoginService,) {
+        private loginSrv: LoginService,
+        private breakPointObs: BreakpointObserver) {
         super(cartSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_SHOPPING');
+        this.isHandset = this.breakPointObs.observe(['(max-width: 700px)']);
     }
 
     processLoadedData(data: Cartline[]): Observable<Cartline[]> {
@@ -54,6 +76,10 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
     ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
+        this.isHandset.subscribe(state => {
+            this.isSmallScreen = state.matches;
+            this.displayedColumns =  this.isSmallScreen? this.SHORT : this.LONG;
+        });
     }
 
     removeFromCart(item: Cartline) {
@@ -72,16 +98,16 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         }
     }
 
-    removeOneFromCart(item: Cartline) {
-        if (item != null && item.qty > 1) {
+    addToCart(item: Cartline, qty: number) {
+        if (item != null && item.qty + qty > 0) {
             this.cartSrv
-                .removeOneItem(item)
+                .addQty(item, qty)
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
                         this.data.filter(e => e.id !== item.id);
-                        item.qty -= 1;
-                        this.cartTotal -= item.qty * item.price;
+                        item.qty += qty;
+                        this.cartTotal += qty * item.price;
                     } else {
                         this.snackBarSrv.showFailureMessage();
                     }
@@ -111,6 +137,13 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                         this.snackBarSrv.showFailureMessage();
                     }
                 });
+        }
+    }
+
+    ngOnDestroy(): void {
+        super.ngOnDestroy();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
         }
     }
 }

@@ -33,14 +33,14 @@
         </ng-container>
 
         <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.reference }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.refDescription }}
             </mat-cell>
@@ -61,7 +61,7 @@
         </ng-container>
 
         <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.price | number : '1.2-2'}}
             </mat-cell>

@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="cart">
+    <fieldset class="cart">
         <div>
             <span translate>LOGISTICS_TOTAL</span>:
             <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
@@ -12,26 +12,27 @@
         <button mat-raised-button color="primary" translate routerLink="../cartdetail">
             <i class="fas fa-shopping-cart"></i>
         </button>
-    </div>
+    </fieldset>
     <div class="data">
         <mat-card class="card" *ngFor="let a of data">
-            <mat-card-header>
-                <mat-card-title>
-                    {{ a.description2 }}
-                </mat-card-title>
-                <mat-card-subtitle><span translate>COMMON_MARK</span>: <span>{{ a.markDescrip }}</span>
-                </mat-card-subtitle>
-            </mat-card-header>
             <ss-image-input mat-card-medium-image width="100%" height="250px" [ImageModel]="a.imageModel"
                             style="display: inline-block;">
             </ss-image-input>
             <mat-card-content>
-                <div>
-                    <spn translate>LOGISTICS_PRICE</spn>
-                    :
-                    <span class="bolder"> {{ a.price1 | number: '1.2-2'}}</span>
-                    <span class="bolder" translate>COMMON_AD</span>
-                </div>
+
+                <ul class="info">
+                    <li>
+                         {{ a.description2 }}
+                    </li>
+                    <li>
+                        <span class="badge" translate>COMMON_MARK</span> {{ a.markDescrip }}
+                    </li>
+                    <li>
+                        <span class="badge" translate>LOGISTICS_PRICE</span>
+                        <span class="bolder"> {{ a.price1 | number: '1.2-2'}}</span>
+                        <span class="bolder" translate>COMMON_AD</span>
+                    </li>
+                </ul>
             </mat-card-content>
             <mat-card-actions>
                 <div>
@@ -39,8 +40,9 @@
                     <button mat-raised-button
                             disabled="{{ cartTotal > 1000000.0 }}"
                             color="primary"
-                            (click)="addToCart(a)"
-                            translate>LOGISTICS_ADD_TO_CART
+                            (click)="addToCart(a)">
+                        <i class="fas fa-cart-plus"></i> &nbsp;
+                        <span class="bolder" translate>LOGISTICS_ADD_TO_CART</span>
                     </button>
                 </div>
             </mat-card-actions>

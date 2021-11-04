@@ -149,7 +149,8 @@
     "EDIT_DEPARTMENT":               "",
     "EDIT_DIVISION":                 "",
     "AD":                            "AD",
-    "CONFIRMED":                       "",
-    "CONFIRM": "",
-    "UNCONFIRM": ""
+    "CONFIRMED":                      "",
+    "CONFIRM":                        "",
+    "UNCONFIRM":                      "",
+    "STATUS":                         ""
 }

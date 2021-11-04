@@ -25,13 +25,13 @@ export class ShoppingCartService extends BaseEntityExtendedService<Cartline> {
         return this.httpSrv.remove(`/cartlines/${item.id}`);
     }
 
-    removeOneItem(item: Cartline): Observable<{ count: number }> {
+    addQty(item: Cartline, qty: number): Observable<{ count: number }> {
         const newItem: Cartline = {
             id: item.id,
             cartId: item.cartId,
             reference: item.reference,
             description: item.description,
-            qty: item.qty - 1,
+            qty: item.qty + qty,
             price: item.price,
             dirty: false
         };

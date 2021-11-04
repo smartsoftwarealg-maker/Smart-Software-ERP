@@ -153,5 +153,6 @@
     "CONFIRMED": "Confirmed",
     "NOT_CONFIRMED": "Not confirmed",
     "CONFIRM": "Click to confirm",
-    "UNCONFIRM": "Click to cancel confirmation"
+    "UNCONFIRM": "Click to cancel confirmation",
+    "STATUS": "Status"
 }

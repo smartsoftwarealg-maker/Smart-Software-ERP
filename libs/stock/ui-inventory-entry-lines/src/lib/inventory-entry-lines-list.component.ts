@@ -1,9 +1,9 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnDestroy, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 //import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
@@ -17,7 +17,8 @@ import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/
     styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
     templateUrl: './inventory-entry-lines-list.component.html'
 })
-export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
+export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    private subscription: Subscription = null;
     private isHandset: Observable<BreakpointState> = null;
     private readonly LONG = [
         'position',
@@ -50,8 +51,16 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
         this.isHandset = this.breakPointObs.observe(['(max-width: 800px)']);
     }
 
+    ngOnDestroy(): void {
+        super.ngOnDestroy();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+
     ngOnInit() {
         super.onInit();
         this.isHandset.subscribe(state => this.displayedColumns = state.matches ? this.SHORT : this.LONG);
     }
+
 }
