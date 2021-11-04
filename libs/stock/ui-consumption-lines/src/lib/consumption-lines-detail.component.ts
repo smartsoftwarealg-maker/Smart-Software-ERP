@@ -59,16 +59,21 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
 
         this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
             this.articleSrv
-                .getPPrice(art, this.form.controls['store'].value, this.parentId)
-                .subscribe(res => this.form.controls['price'].setValue(res.price),
-                            err => this.form.controls['price'].setValue(0.0))
+                .getPPrice(<string>art, this.form.controls['store'].value, this.parentId)
+                .subscribe({
+                    next: res => this.form.controls['price'].setValue(res.price),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                })
         });
 
-        this.storeAutoCompleteModel.evenEmitter.subscribe(id => {
+        this.storeAutoCompleteModel
+            .evenEmitter.subscribe(id => {
             this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, id, this.parentId)
-                .subscribe(res => this.form.controls['price'].setValue(res.price),
-                            err => this.form.controls['price'].setValue(0.0))
+                .getPPrice(this.form.controls['reference'].value, <number>id, this.parentId)
+                .subscribe({
+                    next: res => this.form.controls['price'].setValue(res.price),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                })
         });
     }
 

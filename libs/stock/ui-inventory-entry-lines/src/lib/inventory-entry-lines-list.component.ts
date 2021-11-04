@@ -52,7 +52,6 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
     }
 
     ngOnDestroy(): void {
-        super.ngOnDestroy();
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
