@@ -64,7 +64,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         icon: 'fas fa-folders',
         label: 'COMMON_DEFAULT_REPORT',
         disabled: false, // always false
-        visible: true,
+        visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.selectReport()
     };
@@ -105,7 +105,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.defReportButton, this.viewReportButton, this.emailReportButton]);
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton, this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
     }

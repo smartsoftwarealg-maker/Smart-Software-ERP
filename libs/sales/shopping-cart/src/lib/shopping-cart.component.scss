@@ -29,17 +29,21 @@
     gap: 5px;
 }
 
+.qty {
+    max-width: 50px;
+}
 .data {
     padding: 5px;
     width: 98%;
     height: 100%;
     margin: 0 auto;
     flex-grow: 1;
-    gap: 10px;
+    gap: 40px;
     display: flex;
     flex-flow: row wrap;
     overflow: auto;
     align-content: flex-start;
+    justify-content: center;
 }
 
 .card {

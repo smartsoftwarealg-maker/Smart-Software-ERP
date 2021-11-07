@@ -11,6 +11,7 @@ import {ImageModel} from '@ss/common/ui-image-input';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {ShoppingCartService} from "./shopping-cart.service";
 import {Cartline} from "./cartline";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'ss-shopping-cart',
@@ -59,12 +60,12 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
     }
 
-    addToCart(article: Article) {
+    addToCart(article: Article, qty: number) {
         this.lastItem = {
             id: 0,
             cartId: 0,
             reference: article.reference,
-            qty: 1.0,
+            qty: qty,
             price: article.price1,
             description: article.description2,
             dirty: false

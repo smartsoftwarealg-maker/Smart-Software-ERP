@@ -1,13 +1,13 @@
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, zip} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {TransactionLine} from '@ss/logistics/api-transaction';
 import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
+import {TransactionLine} from './transaction-line';
 
 export class BaseTransactionLinesListComponent {
     parentId: number;

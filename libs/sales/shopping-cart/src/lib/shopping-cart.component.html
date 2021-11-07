@@ -37,10 +37,11 @@
             <mat-card-actions>
                 <div>
                     <span class="filler"></span>
+                    <input #qtyInput type="number" class="qty" value="1" >
                     <button mat-raised-button
                             disabled="{{ cartTotal > 1000000.0 }}"
                             color="primary"
-                            (click)="addToCart(a)">
+                            (click)="addToCart(a, +qtyInput.value)">
                         <i class="fas fa-cart-plus"></i> &nbsp;
                         <span class="bolder" translate>LOGISTICS_ADD_TO_CART</span>
                     </button>
