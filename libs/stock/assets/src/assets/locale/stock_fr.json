@@ -46,5 +46,6 @@
     "MARK": "Marque",
     "TOTALS": "Totaux",
     "STORE_ASSIGNMENT": "Affectation du magasin",
-    "CLASS": "Classe"
+    "CLASS": "Classe",
+    "UNIT": "Unité"
 }

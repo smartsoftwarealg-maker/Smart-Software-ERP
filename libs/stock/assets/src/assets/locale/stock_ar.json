@@ -46,5 +46,6 @@
     "STOCK_MARK": "الصنف",
     "TOTALS": "المجاميع",
     "STORE_ASSIGNMENT": "توزيع المخازن",
-    "CLASS": "فئة"
+    "CLASS": "فئة",
+    "UNIT": "الوحدة"
 }

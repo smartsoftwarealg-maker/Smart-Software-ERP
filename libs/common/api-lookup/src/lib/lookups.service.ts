@@ -55,9 +55,9 @@ import {
     Department,
     DEPARTMENTS_URL,
     Division,
-    DIVISIONS_URL
+    DIVISIONS_URL, Unit, UNIT_URL
 } from './lookups-api';
-import { Role } from "@ss/common/api-common";
+import { Role } from '@ss/common/api-common';
 
 @Injectable({
     providedIn: 'root'
@@ -109,6 +109,10 @@ export class LookupsService {
 
     public getMarks(): Observable<Mark[]> {
         return this.lookupCacheSrv.load<Mark>(MARKS_URL, 'marks');
+    }
+
+    public getUnits(): Observable<Unit[]> {
+        return this.lookupCacheSrv.load<Mark>(UNIT_URL, 'units');
     }
 
     public getAgentTypes(): Observable<AgentType[]> {

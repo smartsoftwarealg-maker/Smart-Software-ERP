@@ -14,6 +14,9 @@ export interface Article {
     accountno: string;
     price1: number;
     appCode: number;
+    salesUnit: number;
     imageModel?: ImageModel;
     markDescrip?: string;
+    unitDescrip?: string;
+    vatValue?: number;
 }

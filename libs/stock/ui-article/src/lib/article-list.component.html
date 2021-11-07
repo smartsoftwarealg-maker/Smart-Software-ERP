@@ -36,21 +36,21 @@
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                    {{vats[e.vat] == null ? '' : vats[e.vat].toFixed(2)}}
+                    {{ e.vatValue | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="mark">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{marks[e.mark]}}
+                    {{e.markDescrip}}
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_ACCOUNTNO</mat-header-cell>
+            <ng-container matColumnDef="unit">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_UNIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.accountno}}
+                    {{e.unitDescrip}}
                 </mat-cell>
             </ng-container>
 
@@ -66,10 +66,9 @@
     <ss-doc-info
         class="doc-info"
         *ngIf="selected" [displayedGroups]="['article']"
-        [params]="{
-                         articleId: selectedRow?.id,
-                         articleUseStoreSearch : true,
-                         articleReference: selectedRow?.reference
-                     }">
+        [params]="{ articleId: selectedRow?.id,
+                    articleUseStoreSearch : true,
+                    articleReference: selectedRow?.reference
+                  }">
     </ss-doc-info>
 </div>
