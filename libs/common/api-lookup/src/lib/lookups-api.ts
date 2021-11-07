@@ -15,6 +15,7 @@ export const DEPARTMENTS_URL = '/lookups/departments';
 export const DIVISIONS_URL = '/lookups/superdepartments';
 
 export const MARKS_URL = '/lookups/marks';
+export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
 export const SUBCLASSES_URL = '/lookups/subclasses';
 export const LOTS_URL = '/lots';

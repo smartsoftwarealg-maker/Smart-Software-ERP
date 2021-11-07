@@ -3,9 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, zip} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ClassService, LookupsService, Mark, Vat} from '@ss/common/api-lookup';
+import {ClassService, LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -24,6 +24,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     marks: Mark[];
     vats: Vat[];
+    units: Unit[];
     selectedRow: Article;
 
     constructor(
@@ -43,14 +44,15 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
 
     public preload(): Observable<any> {
-        return this.lookupsSrv.getMarks()
-            .pipe(
-                tap(x => this.marks = x),
-                switchMap(() => this.lookupsSrv.getVats()),
-                tap(x => this.vats = x),
-            );
+        return zip(this.lookupsSrv.getMarks(),
+            this.lookupsSrv.getUnits(),
+            this.lookupsSrv.getVats())
+            .pipe(tap(res => {
+                this.marks = res[0];
+                this.units = res[1];
+                this.vats = res[2];
+            }));
     }
-
 
     finishLoading(e: Article) {
         super.finishLoading(e);
@@ -62,11 +64,11 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
         this.aid = a.id;
         return this.formBuilder.group({
-            accountno: [a.accountno],
             description2: [a.description2, Validators.required],
             id: [a.id],
             mark: [a.mark],
             klass: [a.klass],
+            salesUnit: [a.salesUnit],
             price1: [a.price1, Validators.compose([Validators.required, Validators.min(0.01)])],
             reference: [a.reference, Validators.required],
             appCode: [a.appCode],

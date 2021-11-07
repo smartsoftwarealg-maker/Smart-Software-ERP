@@ -58,6 +58,15 @@
                         </mat-error>
                     </mat-form-field>
 
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>STOCK_UNIT</mat-label>
+                        <mat-select formControlName="salesUnit">
+                            <mat-option *ngFor="let m of units" [value]="m.id">
+                                {{m.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
                 </form>
             </div>
         </mat-card-content>
