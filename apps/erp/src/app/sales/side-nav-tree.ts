@@ -18,32 +18,38 @@ export const salesNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_PROFORMA',
             icon: 'fas fa-quote-right',
-            route: ABS_SALES_PROFORMA_URL
+            route: ABS_SALES_PROFORMA_URL,
+            accessRights: 'Proforma'
         },
         {
             name: 'SALES_ORDER',
             icon: 'fas fa-cart-plus',
-            route: ABS_SALES_ORDER_URL
+            route: ABS_SALES_ORDER_URL,
+            accessRights: 'SOrder'
         },
         {
             name: 'SALES_DELIVERY',
             icon: 'fas fa-file',
-            route: ABS_SALES_DELIVERY_URL
+            route: ABS_SALES_DELIVERY_URL,
+            accessRights: 'Delivery'
         },
         {
             name: 'SALES_INVOICE',
             icon: 'fas fa-file-invoice',
-            route: ABS_SALES_INVOICE_URL
+            route: ABS_SALES_INVOICE_URL,
+            accessRights: 'Invoice'
         },
         {
             name: 'SALES_DELIVERY_CANCELLATION',
             icon: 'fas fa-undo-alt',
-            route: ABS_SALES_DELIVERY_CANCEL_URL
+            route: ABS_SALES_DELIVERY_CANCEL_URL,
+            accessRights: 'CDelivery'
         },
         {
             name: 'SALES_INVOICE_CANCELLATION',
             icon: 'fas fa-phone-slash',
-            route: ABS_SALES_INVOICE_CANCEL_URL
+            route: ABS_SALES_INVOICE_CANCEL_URL,
+            accessRights: 'CInvoice'
         },
         {
             name: 'COMMON_PAYMENTS',
