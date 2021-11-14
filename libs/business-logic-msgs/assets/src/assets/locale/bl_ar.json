@@ -19,5 +19,6 @@
     "REPORT_NOT_FOUND":             "التقرير غير موجود.",
     "MISSING_SMTP_CONFIGURATION":   "تكوين SMTP مفقود" ,
     "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
-    "MISSING_ACCOUNT":              "رقم الحساب مفقود"
+    "MISSING_ACCOUNT":              "رقم الحساب مفقود",
+    "STOCKED_ITEM":              "عنصر مخزن"
 }

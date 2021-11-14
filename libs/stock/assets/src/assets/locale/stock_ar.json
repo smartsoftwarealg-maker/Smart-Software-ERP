@@ -47,5 +47,6 @@
     "TOTALS": "المجاميع",
     "STORE_ASSIGNMENT": "توزيع المخازن",
     "CLASS": "فئة",
-    "UNIT": "الوحدة"
+    "UNIT": "الوحدة",
+    "NON_STOCKED": "لا يخزن"
 }
