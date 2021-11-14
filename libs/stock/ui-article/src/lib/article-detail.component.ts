@@ -72,6 +72,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             price1: [a.price1, Validators.compose([Validators.required, Validators.min(0.01)])],
             reference: [a.reference, Validators.required],
             appCode: [a.appCode],
+            notForSale: [a.notForSale || false, Validators.required],
             vat: [a.vat]
         });
     }

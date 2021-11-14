@@ -19,4 +19,5 @@ export interface Article {
     markDescrip?: string;
     unitDescrip?: string;
     vatValue?: number;
+    notForSale: boolean;
 }

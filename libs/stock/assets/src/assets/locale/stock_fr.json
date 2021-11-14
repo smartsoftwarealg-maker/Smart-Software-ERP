@@ -47,5 +47,6 @@
     "TOTALS": "Totaux",
     "STORE_ASSIGNMENT": "Affectation du magasin",
     "CLASS": "Classe",
-    "UNIT": "Unité"
+    "UNIT": "Unité",
+    "NON_STOCKED": "Non stocké"
 }
