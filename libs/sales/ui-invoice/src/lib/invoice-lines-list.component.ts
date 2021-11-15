@@ -22,6 +22,7 @@ export class InvoiceLinesListComponent extends BaseTransactionLinesListComponent
         'qtyOrdered',
         'qtySatisfied',
         'price',
+        'vat',
     ];
 
     constructor(

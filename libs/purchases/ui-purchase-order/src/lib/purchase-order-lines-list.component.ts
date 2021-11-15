@@ -29,6 +29,7 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
         'qtyOrdered',
         'qtySatisfied',
         'price',
+        'vat',
     ];
 
     constructor(

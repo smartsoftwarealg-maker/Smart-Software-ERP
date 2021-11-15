@@ -23,6 +23,7 @@ export class ProformaLinesListComponent extends BaseTransactionLinesListComponen
         'qtyOrdered',
         'qtySatisfied',
         'price',
+        'vat',
     ];
 
 

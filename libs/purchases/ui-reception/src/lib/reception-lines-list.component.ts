@@ -27,6 +27,7 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
         'description',
         'qtySatisfied',
         'price',
+        'vat',
     ];
 
 
