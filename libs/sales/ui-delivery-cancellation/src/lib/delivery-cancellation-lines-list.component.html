@@ -67,6 +67,12 @@
                         {{ e.price | number : '1.2-2'}}
                     </mat-cell>
                 </ng-container>
+                <ng-container matColumnDef="vat">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.vat | number : '1.2-2'}}
+                    </mat-cell>
+                </ng-container>
 
                 <ng-container matColumnDef="controls">
                     <mat-header-cell *matHeaderCellDef></mat-header-cell>
