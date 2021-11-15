@@ -1,5 +1,5 @@
-<div class="main-container">
 
+<div class="main-container">
     <mat-card>
         <mat-card-content>
             <form *ngIf="form !== null" novalidate [formGroup]="form">
@@ -55,7 +55,6 @@
 
                 </mat-form-field>
 
-
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_DEALER</mat-label>
                     <ss-auto-complete matInput
@@ -109,5 +108,6 @@
             </form>
         </mat-card-content>
     </mat-card>
+
     <ss-proforma-list class="detail-list"></ss-proforma-list>
 </div>

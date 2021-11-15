@@ -18,7 +18,7 @@ import {
 @Component({
     selector: 'ss-invoice-cancel-lines-list',
     templateUrl: './invoice-cancellation-lines-list.component.html',
-    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class InvoiceCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 

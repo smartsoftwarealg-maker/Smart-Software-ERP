@@ -14,7 +14,7 @@ import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
-    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './inventory-entry-lines-list.component.html'
 })
 export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {

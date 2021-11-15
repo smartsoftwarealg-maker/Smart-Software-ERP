@@ -10,7 +10,7 @@ import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/lo
 @Component({
     selector: 'ss-quotation-lines-list',
     templateUrl: './quotation-lines-list.component.html',
-    styleUrls: ['../../../../../common/ui-theme/src/lib/common-css.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class QuotationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();

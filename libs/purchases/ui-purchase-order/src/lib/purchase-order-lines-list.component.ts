@@ -17,7 +17,7 @@ import {
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './purchase-order-lines-list.component.html',
-  styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
 

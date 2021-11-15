@@ -10,7 +10,7 @@ import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/lo
 @Component({
     selector: 'ss-proforma-list',
     templateUrl: './proforma-lines-list.component.html',
-    styleUrls: ['../../../../../common/ui-theme/src/lib/common-css.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class ProformaLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
