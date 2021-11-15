@@ -9,7 +9,7 @@ import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-consumption-lines-list',
-    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './consumption-lines-list.component.html'
 })
 export class ConsumptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {

@@ -1,16 +1,35 @@
+.add-button {
+    display: flex;
+    position: absolute;
+    z-index: 999;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+}
+
 .main-container {
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin: 5px auto;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    padding-top: 20px;
     align-items: stretch;
 }
+
 .table-div {
     flex-grow: 1;
     height: 100%;
+    min-height: 200px;
 }
+
 .pagination-container {
     flex-grow: 0;
 }
+
 .main-table {
     display: table;
     min-width: 100%;

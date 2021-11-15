@@ -9,7 +9,7 @@ import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/lo
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './order-lines-list.component.html',
-  styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class OrderLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

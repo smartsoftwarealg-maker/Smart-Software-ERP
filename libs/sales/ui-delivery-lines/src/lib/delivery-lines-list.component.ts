@@ -16,7 +16,7 @@ import {
 
 @Component({
     selector: 'ss-delivery-lines-list',
-    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './delivery-lines-list.component.html'
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

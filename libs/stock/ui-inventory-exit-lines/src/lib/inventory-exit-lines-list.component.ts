@@ -9,7 +9,7 @@ import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-exit-lines-list',
-    styleUrls: ['../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './inventory-exit-lines-list.component.html'
 })
 export class InventoryExitLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {

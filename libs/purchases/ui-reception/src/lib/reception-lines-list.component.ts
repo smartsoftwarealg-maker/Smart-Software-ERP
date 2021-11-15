@@ -15,7 +15,7 @@ import {
 
 @Component({
     selector: 'ss-reception-lines-list',
-    styleUrls: [ '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './reception-lines-list.component.html'
 })
 export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
