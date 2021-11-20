@@ -12,7 +12,11 @@ import {
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_STOCK_REPORT_PARAMS, ABS_STOCK_STORES_URL, ABS_STORE_ASSIGNMENT_URL
+    ABS_STOCK_VAT_URL,
+    ABS_STOCK_REPORT_PARAMS,
+    ABS_STOCK_STORES_URL,
+    ABS_STORE_ASSIGNMENT_URL,
+    ABS_INVENTORY_ANOMALIES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -121,11 +125,11 @@ export const stockNavTree: SideNavNode = {
                     route: ABS_STOCK_CONSUMPTION_URL,
                     accessRights: 'Consumption'
                 },
-                // {
-                //     name: 'STOCK_INVENTORY',
-                //     icon: 'fas fa-file',
-                //     route: ABS_STOCK_INVENTORY_URL
-                // },
+                {
+                    name: 'STOCK_ANOMALIES',
+                    icon: 'fas fa-file',
+                    route: ABS_INVENTORY_ANOMALIES_URL
+                },
             ]
         },
     ]

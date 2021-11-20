@@ -48,5 +48,10 @@
     "STORE_ASSIGNMENT": "توزيع المخازن",
     "CLASS": "فئة",
     "UNIT": "الوحدة",
-    "NON_STOCKED": "لا يخزن"
+    "NON_STOCKED": "لا يخزن",
+    "ANOMALIES": "فروق المخزون",
+    "COMPUTED_STOCK": "الكمية المحسوب",
+    "ACTUAL_STOCK": "الكمية الحالية",
+    "DIFFERENCE": "الفرق",
+    "FIX": "تصحيح الفروق"
 }

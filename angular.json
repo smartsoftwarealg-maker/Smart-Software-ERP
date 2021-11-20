@@ -4997,6 +4997,31 @@
                 }
             }
         },
+        "stock-ui-inventory-anomalies": {
+            "projectType": "library",
+            "root": "libs/stock/ui-inventory-anomalies",
+            "sourceRoot": "libs/stock/ui-inventory-anomalies/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/stock/ui-inventory-anomalies"],
+                    "options": {
+                        "jestConfig": "libs/stock/ui-inventory-anomalies/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/stock/ui-inventory-anomalies/src/**/*.ts",
+                            "libs/stock/ui-inventory-anomalies/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "stock-ui-inventory-entry": {
             "projectType": "library",
             "root": "libs/stock/ui-inventory-entry",
