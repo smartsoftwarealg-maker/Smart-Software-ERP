@@ -76,13 +76,15 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [form.agent, Validators.required],
-            locked: [form.locked || false, Validators.required]
+            locked: [form.locked || false, Validators.required],
+            dirty: [!form.dirty || false, Validators.required]
         });
     }
+
     readForm(): Transaction {
         const form =  super.readForm();
-        fillObject(this.order, form)
+        fillObject(this.order, form);
+        form.dirty = !form.dirty;
         return form;
     }
-
 }

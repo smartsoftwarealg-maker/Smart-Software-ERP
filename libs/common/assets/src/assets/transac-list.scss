@@ -4,12 +4,14 @@
     flex: 0 0 90px;
     padding-right: 8px !important;
     padding-left: 8px !important;
+    max-width: 120px;
 }
 
-.mat-column-date {
-    flex: 0 0 100px;
+.mat-column-date, .mat-column-locked,  .mat-column-dirty {
+    flex: 0 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
+    max-width: 120px;
 }
 
 
