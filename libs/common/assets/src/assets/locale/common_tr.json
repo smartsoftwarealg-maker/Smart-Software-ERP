@@ -152,5 +152,7 @@
     "CONFIRMED":                      "",
     "CONFIRM":                        "",
     "UNCONFIRM":                      "",
-    "STATUS":                         ""
+    "STATUS":                         "",
+    "VALIDATED":                      "",
+    "LOCKED": ""
 }
