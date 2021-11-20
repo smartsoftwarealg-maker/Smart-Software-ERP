@@ -154,5 +154,7 @@
     "NOT_CONFIRMED": "غير مؤكد",
     "CONFIRM": "انقر للتأكيد",
     "UNCONFIRM": "انقر لإلغاء التاكيد",
-    "STATUS": "الحالة"
+    "STATUS": "الحالة",
+    "VALIDATED": "محققة",
+    "LOCKED": "مغلق"
 }

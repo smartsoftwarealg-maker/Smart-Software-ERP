@@ -20,8 +20,8 @@ export class OrderListComponent  extends BaseTransactionListComponent {
         'date',
         'agent',
         'payMethod',
-        'reference',
-        'referenceDocDate',
+        'dirty',
+        'locked'
     ];
 
     constructor(

@@ -154,5 +154,7 @@
     "NOT_CONFIRMED": "Not confirmed",
     "CONFIRM": "Click to confirm",
     "UNCONFIRM": "Click to cancel confirmation",
-    "STATUS": "Status"
+    "STATUS": "Status",
+    "VALIDATED": "Validated",
+    "LOCKED": "Locked"
 }
