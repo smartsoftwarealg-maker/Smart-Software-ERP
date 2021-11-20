@@ -48,5 +48,10 @@
     "STORE_ASSIGNMENT": "Affectation du magasin",
     "CLASS": "Classe",
     "UNIT": "Unité",
-    "NON_STOCKED": "Non stocké"
+    "NON_STOCKED": "Non stocké",
+    "ANOMALIES": "Anomalies de stock",
+    "COMPUTED_STOCK": "Calculé",
+    "ACTUAL_STOCK": "Actuel",
+    "DIFFERENCE": "Difference",
+    "FIX": "Corriger les anomalies"
 }

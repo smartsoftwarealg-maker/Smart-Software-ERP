@@ -1,5 +1,4 @@
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Transaction} from '@ss/logistics/api-transaction';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,6 +10,7 @@ import {Observable, of, zip} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {PayMethod} from '@ss/common/api-lookup';
+import {Transaction} from './transaction';
 
 export abstract class BaseTransactionListComponent extends BaseEntityListComponent<Transaction> {
     public dealers: { [id: number]: string; }  = {};

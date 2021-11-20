@@ -343,6 +343,9 @@
                 "libs/stock/ui-consumption-lines/src/index.ts"
             ],
             "@ss/stock/ui-inventory": ["libs/stock/ui-inventory/src/index.ts"],
+            "@ss/stock/ui-inventory-anomalies": [
+                "libs/stock/ui-inventory-anomalies/src/index.ts"
+            ],
             "@ss/stock/ui-inventory-entry": [
                 "libs/stock/ui-inventory-entry/src/index.ts"
             ],

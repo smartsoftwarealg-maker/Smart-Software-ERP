@@ -454,6 +454,9 @@
         "stock-ui-inventory": {
             "tags": []
         },
+        "stock-ui-inventory-anomalies": {
+            "tags": []
+        },
         "stock-ui-inventory-entry": {
             "tags": []
         },

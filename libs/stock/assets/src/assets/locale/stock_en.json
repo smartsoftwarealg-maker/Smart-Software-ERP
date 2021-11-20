@@ -47,7 +47,12 @@
     "MARK": "Marque",
     "TOTALS": "Totals",
     "STORE_ASSIGNMENT": "Store assignment",
-    "CLASS": "Classe",
+    "CLASS": "Class",
     "UNIT": "Unit",
-    "NON_STOCKED": "Non stocked"
+    "NON_STOCKED": "Non stocked",
+    "ANOMALIES": "Stock anomalies",
+    "COMPUTED_STOCK": "Computed",
+    "ACTUAL_STOCK": "Actual",
+    "DIFFERENCE": "Difference",
+    "FIX": "Fix anomalies"
 }
