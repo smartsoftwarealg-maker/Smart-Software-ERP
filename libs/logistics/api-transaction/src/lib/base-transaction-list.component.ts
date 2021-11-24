@@ -13,9 +13,6 @@ import {PayMethod} from '@ss/common/api-lookup';
 import {Transaction} from './transaction';
 
 export abstract class BaseTransactionListComponent extends BaseEntityListComponent<Transaction> {
-    public dealers: { [id: number]: string; }  = {};
-    public agents: { [id: number]: string; }   = {};
-
     protected constructor(
         public listSrv: BaseEntityService<Transaction>,
         public shellSrv: ShellService,
@@ -30,7 +27,6 @@ export abstract class BaseTransactionListComponent extends BaseEntityListCompone
         public payMethodSrv: PayMethodService,
         title: string) {
         super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, title);
-        this.dealers = {};
     }
 
     processLoadedData(data: Transaction[]): Observable<Transaction[]> {
