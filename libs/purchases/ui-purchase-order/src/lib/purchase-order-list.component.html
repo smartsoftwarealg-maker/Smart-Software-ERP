@@ -42,14 +42,14 @@
             <ng-container matColumnDef="dealer">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_DEALER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ dealers[e.dealer] }}
+                    {{ e.dealerName }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="agent">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ agents[e.agent] }}
+                    {{ e.agentName }}
                 </mat-cell>
             </ng-container>
 
