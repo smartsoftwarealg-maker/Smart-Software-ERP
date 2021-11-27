@@ -68,16 +68,3 @@
         </form>
     </mat-card-content>
 </mat-card>
-
-<ss-doc-info
-    class="doc-info"
-    *ngIf="selectedRow"
-    [displayedGroups]="['article', 'document']"
-    [params]="{
-            documentId: selectedRow?.transacId,
-            documentURL:'/inventory',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
-        }">
-</ss-doc-info>
-

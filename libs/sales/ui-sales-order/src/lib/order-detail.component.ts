@@ -19,7 +19,7 @@ import {UserListService} from '@ss/common/api-users';
 @Component({
   selector: 'ss-ui-order-detail',
   templateUrl: './order-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
+  styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
     private order: Transaction = null;

@@ -29,5 +29,8 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
     declarations: [
         InventoryAnomaliesComponent
     ],
+    exports: [
+        InventoryAnomaliesComponent
+    ]
 })
 export class StockUiInventoryAnomaliesModule {}

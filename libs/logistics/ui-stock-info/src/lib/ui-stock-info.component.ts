@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 import {StockInfo} from './stock-info';
 
 @Component({
-  selector: 'ss-order-lines-detail',
+  selector: 'ss-stock-info',
   templateUrl: './ui-stock-info.component.html',
   styleUrls: ['./ui-stock-info.component.scss']
 })
