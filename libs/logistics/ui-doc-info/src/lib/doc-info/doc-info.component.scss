@@ -3,18 +3,20 @@
     max-width: 40%;
     padding-right: 5px;
 }
-#doc-info.mat-card {
-    width: 900px;
-    height: 90%;
+#doc-info {
+    height: 100%;
     margin: 0 auto;
 }
 
 
 #doc-info.mat-card mat-card-content {
     margin: 0 !important;
-    height: calc(100% - 64px);
+    height: calc(100% - 0px);
+    padding: 0px;
 }
-
+mat-card {
+    padding: 0;
+}
 .space {
     padding-left: 10px;
 }

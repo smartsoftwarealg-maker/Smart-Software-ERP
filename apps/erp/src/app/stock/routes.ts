@@ -61,7 +61,7 @@ import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-i
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
-import {InventoryAnomaliesComponent} from '../../../../../libs/stock/ui-inventory-anomalies/src';
+import {InventoryAnomaliesComponent} from '@ss/stock/ui-inventory-anomalies';
 
 export const mainRoutes: Routes = [
     {
@@ -86,6 +86,33 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ArticleDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: STOCK_INVENTORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: InventoryLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes

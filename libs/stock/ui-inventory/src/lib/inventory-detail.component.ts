@@ -13,7 +13,7 @@ import {UserListService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-inventory-detail',
-    styleUrls: ['./inventory-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-detail.component.html'
 })
 export class InventoryDetailComponent extends BaseEntityDetailComponent<Transaction> {

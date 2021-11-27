@@ -10,7 +10,7 @@ import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-list',
-    styleUrls: ['./inventory-list.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './inventory-list.component.html'
 })
 export class InventoryListComponent extends BaseTransactionListComponent {

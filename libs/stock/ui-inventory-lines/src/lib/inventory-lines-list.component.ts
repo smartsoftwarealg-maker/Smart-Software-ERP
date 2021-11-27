@@ -13,7 +13,7 @@ import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/
 
 @Component({
     selector: 'ss-inventory-lines-list',
-    styleUrls: ['./inventory-lines-list.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './inventory-lines-list.component.html'
 })
 export class InventoryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
