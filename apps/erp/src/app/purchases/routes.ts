@@ -27,7 +27,8 @@ export const routes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: QuotationLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -52,7 +53,8 @@ export const routes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: PurchaseOrderLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -78,7 +80,8 @@ export const routes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: ReceptionLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',

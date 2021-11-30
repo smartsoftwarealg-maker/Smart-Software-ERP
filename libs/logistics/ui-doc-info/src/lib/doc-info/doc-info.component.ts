@@ -26,7 +26,7 @@ export class DocInfoComponent {
             .map(x => x.paramsProvided(providedParams))
             .some(x => !x);
         if (notAllRequiredParamsExist) {
-            throw Error('Some params are messing !');
+            // throw Error('Some params are messing !');
         }
 
         this.params_ = params;

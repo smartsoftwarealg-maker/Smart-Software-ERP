@@ -46,7 +46,6 @@ export class TotalComponent implements OnInit {
                 this.loadTotal();
                 this.pagination.onChange = () => this.loadTotal();
             }
-
         });
     }
 

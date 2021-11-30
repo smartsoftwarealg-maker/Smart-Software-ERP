@@ -12,5 +12,6 @@
     "EDIT_INVOICE_CANCEL": "Modification avoir/facture",
     "DELIVERY_CANCELLATION": "Avoir sul BL",
     "EDIT_DELIVERY_CANCEL": "Modification annulation",
-    "EDIT_CANCELLATION_LINES": "Modification detail annulation"
+    "EDIT_CANCELLATION_LINES": "Modification detail annulation",
+    "EDIT_ORDER_LINES": "Modification detail commande"
 }

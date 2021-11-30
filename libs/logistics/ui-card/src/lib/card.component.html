@@ -1,5 +1,5 @@
 <div class="main-container">
-    <mat-card *ngIf="useStoreForm">
+    <div *ngIf="useStoreForm">
         <ng-container [formGroup]="storeForm">
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>STOCK_STORE</mat-label>
@@ -26,7 +26,7 @@
 
         </ng-container>
 
-    </mat-card>
+    </div>
 
     <ng-container>
         <div class="scrollable">

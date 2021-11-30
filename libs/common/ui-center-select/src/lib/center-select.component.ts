@@ -4,8 +4,7 @@ import {Router} from '@angular/router';
 import {
     Center,
     Company,
-    INDEX_PAGE_URL,
-    LoginService,
+    INDEX_PAGE_URL, LoginService,
     PROFILE_PAGE_URL, UserService
 } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';

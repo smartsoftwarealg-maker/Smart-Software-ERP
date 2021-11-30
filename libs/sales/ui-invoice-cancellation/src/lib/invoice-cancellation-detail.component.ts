@@ -120,8 +120,10 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
                     this.docImportService
                         .importDoc(document, number, this.invoice.id)
                         .pipe(tap(_ => this.detail.loadDetailLines()))
-                        .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                                   err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
+                        .subscribe({
+                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                        });
                 }
             });
         }
