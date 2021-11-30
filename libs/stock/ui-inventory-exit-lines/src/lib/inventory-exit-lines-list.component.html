@@ -1,6 +1,5 @@
-<div *ngIf="parentId" class="main-container">
-
-<div class="add-button">
+<div class="main-container" *ngIf="parentId">
+    <div class="add-button">
         <button mat-mini-fab color="primary" (click)="showDetail(0)">
             <span class="fas fa-plus"></span>
         </button>
@@ -15,6 +14,7 @@
             <span class="fas fa-trash-alt"></span>
         </button>
     </div>
+
     <mat-table mat-table [dataSource]="data" class="main-table">
 
 
@@ -60,9 +60,21 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="controls">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <button mat-icon-button (click)="edit()">
+                    <span class="fas fa-pen"></span>
+                </button>
+                <button mat-icon-button (click)="deleteSelected()">
+                    <span class="fas fa-trash-alt"></span>
+                </button>
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="selectRow(row)"
+        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
@@ -70,17 +82,17 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <ss-doc-info
-        class="doc-info"
-        *ngIf="selectedId"
-        [displayedGroups]="['article', 'document']"
-        [params]="{
+</div>
+
+
+<ss-doc-info
+    class="doc-info"
+    *ngIf="selectedId"
+    [displayedGroups]="['article', 'document']"
+    [params]="{
             documentId: selectedRow?.transacId,
-            documentURL:'/correctionOut',
+            documentURL:'/inventory',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">
-    </ss-doc-info>
-
-
-</div>
+</ss-doc-info>

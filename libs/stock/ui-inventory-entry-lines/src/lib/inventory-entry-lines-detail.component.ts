@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {TransactionLine} from '@ss/logistics/api-transaction';
+import {ArticleService} from '@ss/stock/api-article';
+import {
+    BaseTransactionLinesDetailComponent,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
+import {LoginService} from '@ss/common/api-common';
 
 
 @Component({
@@ -18,18 +17,9 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html'
 })
-export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit {
-
-
-    parentId: number;
-
-    selectedRow: TransactionLine;
-
-    articleAutoCompleteModel  = new ArticleAutocompleteModel(this.articleSrv);
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
-
+export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
-        public inventoryEntryLinesService: InventoryEntryLinesService,
+        public inventoryLinesService: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -39,52 +29,25 @@ export class InventoryEntryLinesDetailComponent extends BaseEntityDetailComponen
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService) {
-        super(inventoryEntryLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,
-
+        super(inventoryLinesService,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            articleSrv,
+            storeNameSrv,
+            lookupsSrv,
             'STOCK_EDIT_INVENTORY_LINES_ENTRY'
         );
     }
 
 
-    preload(): Observable<any> {
-        return this.route.queryParams
-            .pipe(
-                tap(p => {
-                    this.parentId = +p.parent;
-                    this.inventoryEntryLinesService.setParentId(+this.parentId);
-                    return p;
-                })
-            );
-    }
-
-
     ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
+        super.onInit();
     }
 
-    finishLoading(e: TransactionLine) {
-        this.selectedRow = e;
-        super.finishLoading(e);
-    }
-
-    public setupForm(b: TransactionLine) {
-        // Make sure to update the template if you edit the configuration here
-        return this.formBuilder.group({
-            id: [b.id],
-            transacId: [this.parentId],
-            reference: [b.reference],
-            sourceDoc: [b.sourceDoc],
-            store: [b.store],
-            qtyOrdered: [b.qtyOrdered],
-            qtySatisfied: [b.qtySatisfied],
-            qtyInvoiced: [b.qtyInvoiced],
-            qtyReturned: [b.qtyReturned],
-            price: [b.price],
-            observation: [b.observation],
-            footerMemo: [b.footerMemo],
-            position: [b.position],
-            pprice: [b.pprice],
-        });
+    ngOnDestroy() {
+        super.onDestroy();
     }
 }

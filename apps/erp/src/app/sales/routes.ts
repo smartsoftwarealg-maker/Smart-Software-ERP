@@ -38,7 +38,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryCancellationLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -63,7 +64,8 @@ export const mainRoutes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InvoiceCancellationLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -89,7 +91,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: InvoiceLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -115,7 +118,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -141,7 +145,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: OrderLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -167,7 +172,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: ProformaLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',

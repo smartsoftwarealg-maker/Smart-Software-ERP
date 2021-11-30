@@ -4,3 +4,4 @@ export * from './lib/base-transaction-detail-component';
 export * from './lib/transaction-lines.service';
 export * from './lib/base-transaction-lines-list.component';
 export * from './lib/base-transaction-list.component';
+export * from './lib/base-transaction-lines-detail.component';

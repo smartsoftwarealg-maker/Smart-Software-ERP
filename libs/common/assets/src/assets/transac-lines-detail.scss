@@ -1,3 +1,14 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    gap: 20px;
+}
+
 mat-card {
     width: 90%;
     max-width: 800px;
@@ -5,10 +16,11 @@ mat-card {
     mat-card-content {
         margin-top: 24px;
     }
+    flex: 0 0 auto;
 }
 
-.value {
-    width: 260px;
-    display: block;
-    margin: auto;
+ss-doc-info {
+    width: 100%;
+    flex: 0 1 auto;
+    align-self: stretch;
 }
