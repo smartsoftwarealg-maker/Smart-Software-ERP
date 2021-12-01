@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -50,6 +50,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public router: Router,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         private usersService: UserListService,
@@ -59,7 +60,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         private dialog: MatDialog,
         private docImportService: DocImportService,
         private payMethodSrv: PayMethodService) {
-        super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
+        super(invoiceService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
     }
 
 

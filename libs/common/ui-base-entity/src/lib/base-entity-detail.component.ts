@@ -153,11 +153,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public abstract setupForm(e: T): FormGroup;
 
     // use CanDeactivateService, it will look for this function and call it
-    public canDeactivate() {
+    public canDeactivate(): Observable<boolean> {
         if (this.form != null && this.form.touched) {
             return this.confirmationSrv.confirmDontSave();
         }
-        return true;
+        return of(true);
     }
 
 }
