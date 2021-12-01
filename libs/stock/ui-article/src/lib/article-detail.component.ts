@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {ActivatedRoute, Router} from '@angular/router';
-import {switchMap, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {Observable, zip} from 'rxjs';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ClassService, LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
