@@ -8,7 +8,7 @@ import { UiLoginModule } from '@ss/common/ui-login';
 import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
-import { LOGISTICS_APP_URL } from './common';
+import { ADMINISTRATION_APP_URL, LOGISTICS_APP_URL } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
 import { CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL } from '@ss/common/api-common';
@@ -23,6 +23,10 @@ const routes: Routes = [
                 path: INDEX_PAGE_URL,
                 component: MainPageComponent,
                 canActivate: [CanActivateService]
+            },
+            {
+                path: ADMINISTRATION_APP_URL,
+                loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
             },
             {
                 path: LOGISTICS_APP_URL,

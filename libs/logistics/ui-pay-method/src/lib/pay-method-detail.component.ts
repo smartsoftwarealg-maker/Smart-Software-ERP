@@ -16,7 +16,7 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
 })
 export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMethod> {
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMode>(this.payModeSrv)
-    private curPayMethod = null;
+    private curPayMethod: any = null;
 
 
     constructor(

@@ -48,7 +48,6 @@ export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
 export const STOCK_CONSUMPTION_URL = 'consumptions';
 export const STOCK_INVENTORY_URL = 'inventory';
 export const STOCK_AGENT_URL = 'agents';
-export const LOGISTICS_AGENT_URL = 'agents';
 export const STOCK_ACCOUNT_URL = 'accounts';
 export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 export const STOCK_COST_CENTER_URL = 'cost-centers';
@@ -78,6 +77,7 @@ export const LOGISTICS_COMPENSATION_URL = 'compensations';
 export const LOGISTICS_SCOMPENSATION_URL = 'scompensations';
 export const LOGISTICS_CCOMPENSATION_URL = 'ccompensations';
 export const LOGISTICS_OPTION_URL = 'options';
+export const LOGISTICS_AGENT_URL = 'agents';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
