@@ -15,6 +15,12 @@
     overflow-x: auto;
 }
 
+.mat-column-reference, .mat-column-mark {
+    flex: 1 1 100px;
+    min-width: 100px;
+}
+
+
 .pagination-container {
     flex: 0 0 auto;
     ss-pagination {
@@ -37,7 +43,7 @@
 }
 
 .main-table {
-    width: 750px;
+    width: 950px;
     margin: 0 auto;
     height: 100%;
     min-height: 200px;
