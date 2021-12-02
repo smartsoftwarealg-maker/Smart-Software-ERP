@@ -400,6 +400,13 @@
         "sales-ui-transactionlines": {
             "tags": []
         },
+        "scheduled": {
+            "tags": []
+        },
+        "scheduled-e2e": {
+            "tags": [],
+            "implicitDependencies": ["scheduled"]
+        },
         "stock-api-article": {
             "tags": []
         },
