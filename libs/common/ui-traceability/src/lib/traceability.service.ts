@@ -29,6 +29,8 @@ export interface SchemaMap {
   providedIn: 'root'
 })
 export class TraceabilityService {
+    fromDate = new Date();
+    toDate   = new Date();
     private URLs = ['/logging/writes', '/logging/updates', '/logging/deletes' ];
 
     constructor(private httpSrv: HttpService) {}

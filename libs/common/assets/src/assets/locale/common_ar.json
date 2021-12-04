@@ -156,5 +156,13 @@
     "UNCONFIRM": "انقر لإلغاء التاكيد",
     "STATUS": "الحالة",
     "VALIDATED": "محققة",
-    "LOCKED": "مغلق"
+    "LOCKED": "مغلق",
+    "AGENT": "الشركاء",
+    "ARTICLE": "البضائع",
+    "CUR_EXCHANGE": "الصرف",
+    "EXCHANGE": "الصرف",
+    "HRCOMMON": "الموارد البشرية المشتركة",
+    "HRMASTER": "الموارد البشرية ",
+    "INVENTORY": "المخزون",
+    "PERSONS": "الموظفون"
 }
