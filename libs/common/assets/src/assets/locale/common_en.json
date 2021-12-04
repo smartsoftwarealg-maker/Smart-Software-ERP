@@ -156,5 +156,13 @@
     "UNCONFIRM": "Click to cancel confirmation",
     "STATUS": "Status",
     "VALIDATED": "Validated",
-    "LOCKED": "Locked"
+    "LOCKED": "Locked",
+    "AGENT": "Partners",
+    "ARTICLE": "Article",
+    "CUR_EXCHANGE": "Currency exchange",
+    "EXCHANGE": "Currency exchange",
+    "HRCOMMON": "HRMaster common",
+    "HRMASTER": "HRMaster",
+    "INVENTORY": "Inventory",
+    "PERSONS": "Personnel"
 }
