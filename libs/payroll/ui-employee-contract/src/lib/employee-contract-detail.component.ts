@@ -93,20 +93,51 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
     }
 
     newContract(): Contract {
-        return null;
+        return {
+            id: 0,
+            centerId: this.loginSrv.appCtx.center,
+            number: null,
+            info: null,
+            basesalary: null,
+            employee: this.uiSrv.instance.personId,
+            confirmed: false,
+            cost_center: null,
+            ctype: null,
+            date: null,
+            department: null,
+            division: null,
+            fromdate: null,
+            todate: null,
+            motive: null,
+            notes: null,
+            post: null,
+            project: null,
+            recordNumber: null,
+            related_contract: null,
+            salary_rank: null,
+            salarygrid: null,
+            service: null,
+            trial_period: null,
+            valid_date: null
+        };
     }
 
     setupForm(a: Contract) {
         this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee,
-            paymonthY: [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM: [a.paymonth % 100, Validators.required],
+            centerId: a.centerId,
+            number: [a.number, Validators.required],
+            info: a.info,
             post: [a.post, Validators.required],
+            recordNumber: [a.recordNumber],
+            date: a.date,
+            valid_date: a.valid_date,
             division: a.division,
             department: a.department,
             service: a.service,
             salary_rank: a.salary_rank,
+            salarygrid: a.salarygrid,
             fromdate: [a.fromdate, Validators.required],
             todate: a.todate,
             trial_period: [a.trial_period, Validators.required]
@@ -121,9 +152,6 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
         }
         const formVal = this.form.value;
         const val: Contract = formVal;
-        val.paymonth = formVal.paymonthY * 100 + formVal.paymonthM;
-        delete formVal.paymonthY;
-        delete formVal.paymonthM;
         //
         val.id = this.id;
         const obs: Observable<any> = this.id === 0

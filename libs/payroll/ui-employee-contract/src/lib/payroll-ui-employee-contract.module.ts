@@ -48,7 +48,8 @@ import { EmployeeContractDetailComponent } from './employee-contract-detail.comp
     declarations: [
         EmployeeListComponent,
         EmployeeContractOverviewComponent,
-        EmployeeContractListComponent
+        EmployeeContractListComponent,
+        EmployeeContractDetailComponent
     ],
     exports: [
 
