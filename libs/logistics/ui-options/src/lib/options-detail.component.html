@@ -4,9 +4,8 @@
 
             <mat-form-field id="eval_price" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
-                <mat-select formControlName="eval_price" required >
-                    <mat-option [value]="1" translate>LOGISTICS_FIFO</mat-option>
-                    <mat-option [value]="2" translate>LOGISTICS_AWP</mat-option>
+                <mat-select formControlName="eval_price" required>
+                    <mat-option *ngFor="let f of evalPriceOptions" [value]="f.id" translate>{{f.name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="form.controls['eval_price'].invalid" translate>COMMON_FIELD_REQUIRED </mat-error>
             </mat-form-field>
