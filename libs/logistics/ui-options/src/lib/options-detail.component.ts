@@ -11,6 +11,10 @@ import {Option} from './option.class';
 import {OptionService} from './option.service';
 import {LoginService} from "@ss/common/api-common";
 
+interface EvalPrice {
+    id: any,
+    name: string
+}
 
 @Component({
     selector: 'ss-account-detail',
@@ -18,6 +22,11 @@ import {LoginService} from "@ss/common/api-common";
     templateUrl: './options-detail.component.html'
 })
 export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
+    evalPriceOptions: EvalPrice[] = [
+        {id: 1, name: 'LOGISTICS_FIFO'},
+        {id: 2, name: 'LOGISTICS_AWP'}
+    ]
+
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(

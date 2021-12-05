@@ -154,5 +154,13 @@
     "UNCONFIRM":                      "",
     "STATUS":                         "",
     "VALIDATED":                      "",
-    "LOCKED": ""
+    "LOCKED":                         "",
+    "AGENT": "",
+    "ARTICLE": "",
+    "CUR_EXCHANGE": "",
+    "EXCHANGE": "",
+    "HRCOMMON": "",
+    "HRMASTER": "",
+    "INVENTORY": "",
+    "PERSONS": ""
 }

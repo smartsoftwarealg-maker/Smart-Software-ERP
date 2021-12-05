@@ -43,5 +43,5 @@ export class Option {
     current_year: number;
     hide_purch_price: boolean;
     count_year: number;
-    raw_store
+    raw_store: number;
 }

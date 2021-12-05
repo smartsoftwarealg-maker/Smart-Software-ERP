@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpService, LanguageService, loginSrv, PaginationModel} from "@ss/common/api-common";
+import {HttpService, LanguageService, LoginService, PaginationModel} from "@ss/common/api-common";
 import {Cart, Cartline} from "../cartline";
 import {LookupsService, MarkService} from "@ss/common/api-lookup";
 import {ShoppingCartService} from "../shopping-cart.service";

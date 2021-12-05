@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -45,6 +45,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public router: Router,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersSrv: UserListService,
@@ -55,7 +56,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         private dialog: MatDialog,
         private docImportService: DocImportService,
         private currencySrv: CurrencyService) {
-        super(receptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_RECEPTION');
+        super(receptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, 'STOCK_EDIT_RECEPTION');
     }
 
 
