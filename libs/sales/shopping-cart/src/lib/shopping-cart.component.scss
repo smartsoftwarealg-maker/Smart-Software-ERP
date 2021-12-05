@@ -118,18 +118,20 @@ fieldset {
 @media (max-width: 600px) {
     .cart {
         flex-grow: 0;
-        font-size: 1.1em;
-        width: 92%;
-        margin: 0 auto;
+        font-size: 0.8em;
+        width: 100%;
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         align-items: stretch;
         justify-items: stretch;
-        padding: 5px;
+        padding: 2px;
     }
     .cart_filler {
         display: none;
+    }
+    fieldset {
+        min-width: 140px;
     }
 }
 
@@ -162,6 +164,10 @@ fieldset {
     height: 2.5em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
+}
+
+.description {
+    background-color: #ccc;
 }
 
 ul li:first-child {

@@ -1,9 +1,9 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {FormControl, FormGroup} from "@angular/forms";
-import {PaginationModel} from '@ss/common/api-common';
+import {LanguageService, PaginationModel} from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
 
@@ -22,15 +22,15 @@ interface LogFlatNode {
     templateUrl: './traceability.component.html',
     styleUrls: ['./traceability.component.scss']
 })
-export class TraceabilityComponent implements OnInit {
+export class TraceabilityComponent implements OnInit, OnDestroy {
     selectedId = 0;
     application = '';
     data: string[][] = [];
     displayedColumns: string[] = [];
     form = new FormGroup({
         options: new FormControl(1),
-        fromDate: new FormControl(new Date()),
-        toDate: new FormControl(new Date())
+        fromDate: new FormControl(this.traceSrv.fromDate),
+        toDate: new FormControl(this.traceSrv.toDate)
     });
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
     apps: string[] = [];
@@ -41,7 +41,7 @@ export class TraceabilityComponent implements OnInit {
     private _transformer = (node: LogNode, level: number) => {
         return {
             expandable: level == 0,
-            name: node.application,
+            name: `${node.application} ${node.schema?.schemaVersion || ''} ${(node.schema?.creationDate.substring(0, 10)) || ''}`,
             level: level,
             schema: node.schema
         };
@@ -58,7 +58,9 @@ export class TraceabilityComponent implements OnInit {
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 
-    constructor(private traceSrv: TraceabilityService, private shellSrv: ShellService) { }
+    constructor(private traceSrv: TraceabilityService,
+                private shellSrv: ShellService,
+                public langSrv: LanguageService) { }
 
     ngOnInit(): void {
         this.traceSrv
@@ -67,6 +69,11 @@ export class TraceabilityComponent implements OnInit {
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');
         this.shellSrv.setGoBackPathByRelativeUrl('..');
+    }
+
+    ngOnDestroy() {
+        this.traceSrv.fromDate = this.form.controls['fromDate'].value;
+        this.traceSrv.toDate = this.form.controls['toDate'].value;
     }
 
     hasChild = (_: number, node: LogFlatNode) => node.level == 0;
