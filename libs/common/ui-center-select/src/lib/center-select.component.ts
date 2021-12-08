@@ -34,7 +34,6 @@ export class CenterSelectComponent implements OnInit {
     constructor(private ccListSrv: CenterService,
                 private loginSrv: LoginService,
                 private router: Router,
-                private accessRightsSrv: UserRightsService,
                 private userSrv: UserService,
                 private rightsSrv: UserRightsService) {
     }

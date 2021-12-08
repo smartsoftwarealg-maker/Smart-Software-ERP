@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpService, Role} from "@ss/common/api-common";
+import {HttpService, Role} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Injectable({
@@ -8,6 +8,6 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 export class RoleService extends BaseEntityService<Role> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, '/roles');
+        super(httpSrv, '/lookups/roles');
     }
 }

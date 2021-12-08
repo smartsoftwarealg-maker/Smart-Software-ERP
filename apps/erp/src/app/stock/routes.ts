@@ -47,7 +47,7 @@ import {
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
-import {MiniAgentDetailComponent, AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
+import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
@@ -234,7 +234,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: 'Agent' }
             },
             {
                 path: ':id',

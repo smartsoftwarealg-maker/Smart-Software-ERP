@@ -1,11 +1,11 @@
 
-export interface AccessRight {
-    id: number;
-    center: number;
-    roleId: number;
-    document: number;
-    rights: Right;
-}
+// export interface AccessRight {
+//     id: number;
+//     center: number;
+//     roleId: number;
+//     document: number;
+//     rights: Right;
+// }
 
 export interface User {
     id: number;

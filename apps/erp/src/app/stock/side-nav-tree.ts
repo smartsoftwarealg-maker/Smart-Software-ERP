@@ -31,22 +31,26 @@ export const stockNavTree: SideNavNode = {
                 {
                     name: 'LOGISTICS_AGENT',
                     icon: 'fas fa-user',
-                    route: ABS_STOCK_AGENT_URL
+                    route: ABS_STOCK_AGENT_URL,
+                    accessRights: 'Agent'
                 },
                 {
                     name: 'LOGISTICS_ACCOUNTS',
                     icon: 'fas fa-user-circle',
-                    route: ABS_STOCK_ACCOUNT_URL
+                    route: ABS_STOCK_ACCOUNT_URL,
+                    accessRights: 'Account'
                 },
                 {
                     name: 'LOGISTICS_AGENT_PRICE',
                     icon: 'fas fa-dollar-sign',
-                    route: ABS_STOCK_AGENT_PRICE_URL
+                    route: ABS_STOCK_AGENT_PRICE_URL,
+                    accessRights: 'AgentPrice'
                 },
                 {
                     name: 'LOGISTICS_COST_CENTER',
                     icon: 'fas fa-building',
-                    route: ABS_STOCK_COST_CENTER_URL
+                    route: ABS_STOCK_COST_CENTER_URL,
+                    accessRights: 'CostCenter'
                 },
             ]
         },
@@ -57,22 +61,26 @@ export const stockNavTree: SideNavNode = {
                 {
                     name: 'COMMON_MARKS',
                     icon: 'fas fa-copyright',
-                    route: ABS_STOCK_MARKS_URL
+                    route: ABS_STOCK_MARKS_URL,
+                    accessRights: 'Mark'
                 },
                 {
                     name: 'COMMON_UNITS',
                     icon: 'fas fa-balance-scale-right',
-                    route: ABS_STOCK_UNITS_URL
+                    route: ABS_STOCK_UNITS_URL,
+                    accessRights: 'Unit'
                 },
                 {
                     name: 'COMMON_CLASSES',
                     icon: 'fas fa-shapes',
-                    route: ABS_STOCK_CLASSES_URL
+                    route: ABS_STOCK_CLASSES_URL,
+                    accessRights: 'Klass'
                 },
                 {
                     name: 'COMMON_SUBCLASSES',
                     icon: 'fas fa-folder-tree',
-                    route: ABS_STOCK_SUBCLASSES_URL
+                    route: ABS_STOCK_SUBCLASSES_URL,
+                    accessRights: 'Subclass'
                 },
                 // {
                 //     name: 'COMMON_VAT',
@@ -93,7 +101,8 @@ export const stockNavTree: SideNavNode = {
                 {
                     name: 'COMMON_STORE_NAMES',
                     icon: 'fas fa-warehouse',
-                    route: ABS_STOCK_STORE_NAMES_URL
+                    route: ABS_STOCK_STORE_NAMES_URL,
+                    accessRights: 'StoreName'
                 },
                 {
                     name: 'STOCK_STORE_ASSIGNMENT',
