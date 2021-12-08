@@ -5,7 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
-    LanguageService,
+    LanguageService, Right,
     SideNavNode,
     strDropEndUntil,
     strDropUntil,
@@ -164,6 +164,7 @@ export class ShellService {
         // MUST use for each, MUST NOT change reference of array
         tree.forEach(r => {
             r.visible = !r.accessRights || this.rightsSrv.canUserPass(r.accessRights);
+            // console.log(r.accessRights, this.rightsSrv.getUserRights(r.accessRights) )
             this.setSideNavVisibility(r.children);
         });
     }
@@ -465,5 +466,9 @@ export class ShellService {
     }
     set application(str: string) {
         this._application = str;
+    }
+
+    getRights(component: string): Right {
+        return this.rightsSrv.getUserRights(component);
     }
 }

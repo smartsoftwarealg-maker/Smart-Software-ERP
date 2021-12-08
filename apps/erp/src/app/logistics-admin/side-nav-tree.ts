@@ -22,7 +22,8 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: LOGISTICS_STOCK_AGENT_URL
+            route: LOGISTICS_STOCK_AGENT_URL,
+            accessRights: 'Agent'
         },
         {
             name: 'COMMON_VAT',

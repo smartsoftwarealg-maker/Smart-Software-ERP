@@ -13,17 +13,20 @@ export const purchasesNavTree: SideNavNode = {
         {
             name: 'PURCHASES_QUOTATION',
             icon: 'fas fa-quote-left',
-            route: ABS_PURCHASE_QUOTATION_URL
+            route: ABS_PURCHASE_QUOTATION_URL,
+            accessRights: 'SOffer'
         },
         {
             name: 'PURCHASES_PURCHASE_ORDER',
             icon: 'fas fa-money-check-alt',
-            route: ABS_PURCHASE_ORDER_URL
+            route: ABS_PURCHASE_ORDER_URL,
+            accessRights: 'POrder'
         },
         {
             name: 'PURCHASES_RECEPTION',
             icon: 'fas fa-cart-arrow-down',
-            route: ABS_PURCHASE_RECEPTION_URL
+            route: ABS_PURCHASE_RECEPTION_URL,
+            accessRights: 'Reception'
         },
         {
             name: 'COMMON_PAYMENTS',
