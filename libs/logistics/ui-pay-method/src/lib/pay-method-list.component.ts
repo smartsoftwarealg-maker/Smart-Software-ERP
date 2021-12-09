@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -7,6 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {Observable, switchMap, tap} from "rxjs";
 
 @Component({
     selector: 'ss-account-list',
@@ -37,13 +38,10 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
         super(payMethodSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_PAY_METHOD');
     }
 
-    // processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {
-    //     return super.processLoadedData(data)
-    //         .pipe(tap(res => res.filter(e => e.modeDescription == undefined || e.modeDescription == null)
-    //             .forEach(e => e.modeDescription = this.payMethodSrv.getModeDescription(e.id))));
-    // }
-
-    getModeDescription(id: number): string {
-        return this.payMethodSrv.getModeDescription(id);
+    processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {
+        return this.payMethodSrv
+            .getModes()
+            .pipe(tap(res => data.forEach(m => m.modeDescription = res.find(pm => pm.id === m.payMode)?.description)),
+                switchMap(_ => super.processLoadedData(data)));
     }
 }
