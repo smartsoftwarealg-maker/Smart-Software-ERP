@@ -53,5 +53,6 @@
     "COMPUTED_STOCK": "Calculé",
     "ACTUAL_STOCK": "Actuel",
     "DIFFERENCE": "Difference",
-    "FIX": "Corriger les anomalies"
+    "FIX": "Corriger les anomalies",
+    "PERCENTAGE":  "Percentage"
 }
