@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from '@ss/common/api-common';
+import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {PayMethod, PayMode} from '@ss/common/api-lookup';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable} from 'rxjs';
-import {PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
 
 export const MPAY_URL = '/mpay';
@@ -20,18 +19,19 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
         super(httpSrv, MPAY_URL);
     }
 
+    getModes(): Observable<PayMode[]> {
+        return this.httpSrv.get<PayMode[]>('/lookups/paymodes');
+    }
     load() {
-        if (this._payModes.size === 0) {
-            this.httpSrv.get<PayMode[]>('/lookups/paymodes')
-                .pipe(switchMap(res => {
-                    res.forEach(e => this._payModes.set(e.id, e.description));
-                    return this.httpSrv.get<PayMethod[]>(MPAY_URL)
-                }))
-                .subscribe(res => {
-                    this._payMethods = res;
-                    this._payMethods.forEach(e => e.modeDescription = this._payModes.get(e.id));
-                });
-        }
+        this.httpSrv.get<PayMode[]>('/lookups/paymodes')
+            .pipe(switchMap(res => {
+                res.forEach(e => this._payModes.set(e.id, e.description));
+                return this.httpSrv.get<PayMethod[]>(MPAY_URL)
+            }))
+            .subscribe(res => {
+                this._payMethods = res;
+                this._payMethods.forEach(e => e.modeDescription = this._payModes.get(e.id));
+            });
     }
 
     get payModes() {
@@ -46,16 +46,16 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
         return id == null ? null : this._payMethods.find(e => e.id === id);
     }
 
-    getMethodDescription(id: number) {
-        return id == null ? null : this._payMethods.find(e => e.id === id)?.description;
-    }
+    // getMethodDescription(id: number) {
+    //     return id == null ? null : this._payMethods.find(e => e.id === id)?.description;
+    // }
 
     getModeDescription(id: number): string {
         return this._payModes.get(id);
     }
 
-    getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<PayMethod[]> {
-        return super.getPage(pageModel, filter, sortBy, extraPrams)
-            .pipe(tap(res => res.forEach(e => e['modeDescription'] = this.getMethodDescription(e.id))));
-    }
+    // getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<PayMethod[]> {
+    //     return super.getPage(pageModel, filter, sortBy, extraPrams)
+    //         .pipe(tap(res => res.forEach(e => e['modeDescription'] = this.getMethodDescription(e.payMode))));
+    // }
 }
