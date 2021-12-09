@@ -12,9 +12,6 @@ import {
     ABS_STOCK_STORE_NAMES_URL,
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL,
-    ABS_STOCK_REPORT_PARAMS,
-    ABS_STOCK_STORES_URL,
     ABS_STORE_ASSIGNMENT_URL,
     ABS_INVENTORY_ANOMALIES_URL, ABS_STOCK_INVENTORY_URL
 } from '../common';
@@ -82,16 +79,6 @@ export const stockNavTree: SideNavNode = {
                     route: ABS_STOCK_SUBCLASSES_URL,
                     accessRights: 'Subclass'
                 },
-                // {
-                //     name: 'COMMON_VAT',
-                //     icon: 'fas fa-percentage',
-                //     route: ABS_STOCK_VAT_URL
-                // },
-                // {
-                //     name: 'COMMON_AGENT_TYPES',
-                //     icon: 'fas fa-user',
-                //     route: ABS_STOCK_AGENT_TYPE
-                // },
             ]
         },
         {
