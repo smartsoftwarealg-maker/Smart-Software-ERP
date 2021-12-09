@@ -101,6 +101,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
+
         const rights = !node || !node.accessRights? {
             read: true,
             write: true,
@@ -111,7 +112,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;
         this.deleteButton.visible = rights.delete;
-        //
+
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();

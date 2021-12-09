@@ -45,6 +45,15 @@ export class LoginService {
         return this.appCtx != null && (this.appCtx.id !== null || this.appCtx.agentId != null || this.appCtx.personId != null);
     }
 
+    public loadContext(): Observable<LoginInfo> {
+        return this.httpSrv.get<LoginInfo>('/relogin')
+            .pipe(
+                tap((info: LoginInfo) => {
+                    this.appCtx = info.ctx;
+                    this.httpSrv.updateAuthToken(info.jwt);
+                }));
+    }
+
     // todo: fix auto login
     public reLogin(): Observable<boolean> {
         return this.httpSrv
@@ -84,19 +93,6 @@ export class LoginService {
                     map(info => this.appCtx));
 
     }
-
-    // public select(agent: Agent): void {
-    //     this.agent = null;
-    //     this
-    //         .httpSrv
-    //         .put(`/agents/${agent.id}/select`)
-    //         .subscribe(res => {
-    //             this.httpSrv.updateAuthToken(res.payload);
-    //             this.agent = agent;
-    //             localStorage.setItem('agent', JSON.stringify(this.agent));
-    //             this.contextSrv.context.agentId = agent.id;
-    //         });
-    // }
 
     public centerLogin(center: number): Observable<LoginInfo> {
         return this
