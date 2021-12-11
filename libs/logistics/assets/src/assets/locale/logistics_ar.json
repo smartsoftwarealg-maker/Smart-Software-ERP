@@ -128,5 +128,8 @@
     "ADD_ONE": "أضف واحدا",
     "REMOVE_ONE": "احذف واحدا",
     "REMOVE_ALL": "احذف الكل",
-    "ACTIONS": "التحكم"
+    "ACTIONS": "التحكم",
+    "SCHEDULED_SALES": "المبيعات المبرمجة",
+    "CATEGORY": "فئة",
+    "APPROVAL": "موافقة"
 }

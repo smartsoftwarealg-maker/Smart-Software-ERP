@@ -48,6 +48,9 @@ export interface Agent {
     creationTime?: string;
     tin?: string;
     password?: string;
+    postalCode?: string;
+    approval?: string;
+    category?: number;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

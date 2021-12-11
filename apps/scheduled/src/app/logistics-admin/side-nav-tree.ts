@@ -13,7 +13,7 @@ import {
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_LOGISTICS_ACTIVITY,
+    ABS_LOGISTICS_ACTIVITY, ABS_LOGISTICS_CATEGORY,
     ABS_LOGISTICS_COMPANY_TYPE, ABS_LOGISTICS_CURRENCY,
     ABS_LOGISTICS_VAT_URL
 } from "../../../../erp/src/app/common";
@@ -61,6 +61,12 @@ export const logAdminNavTree: SideNavNode = {
             icon: 'fas fa-coins',
             route: ABS_LOGISTICS_CURRENCY,
             accessRights: 'Currency'
+        },
+        {
+            name: 'COMMON_CATEGORIES',
+            icon: 'fas fa-users-class',
+            route: ABS_LOGISTICS_CATEGORY,
+            accessRights: 'SalesCategory'
         },
     ]
 };

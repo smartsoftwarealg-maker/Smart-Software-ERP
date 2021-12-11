@@ -128,5 +128,8 @@
     "ADD_ONE": "ِAdd one",
     "REMOVE_ONE": "Remove one",
     "REMOVE_ALL": "Remove all",
-    "ACTIONS": "ِActions"
+    "ACTIONS": "ِActions",
+    "SCHEDULED_SALES": "Scheduled sales",
+    "CATEGORY": "Category",
+    "APPROVAL": "Approval"
 }
