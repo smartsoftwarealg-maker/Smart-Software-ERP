@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {catchError, switchMap, tap} from 'rxjs/operators';
@@ -21,6 +21,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, LoginService} from '@ss/common/api-common';
 import {Bank} from '@ss/administration/api-bank';
+import {Lookup} from '@ss/logistics/ui-doc-import';
 
 
 @Component({
@@ -28,19 +29,20 @@ import {Bank} from '@ss/administration/api-bank';
     styleUrls: ['./agent-detail.component.scss'],
     templateUrl: './agent-detail.component.html'
 })
-export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
+export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit  {
+    isSales = this.route.snapshot.data['sales'];
     pwd1 = new FormControl();
     pwd2 = new FormControl();
     agentTypes: AgentType[];
     companyTypes: CompanyType[] = [];
     cities: City[] = [];
+    categories: Lookup[] = [];
     countries: Country[] = [];
     currencies: Currency[] = [];
     payModes: PayMode[] = [];
     activities: Activity[] = [];
     prices: AgentPrice[] = [];
     banks: Bank[] = [];
-
 
     constructor(
         private loginSrv: LoginService,
@@ -52,6 +54,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
+        // this.isSales = this.route.snapshot.data['sales'];
     }
 
     public preload(): Observable<any> {
@@ -75,10 +78,11 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 catchError(e => of([])),
                 tap(x => this.prices = x),
                 switchMap(() => this.lookupsSrv.getBanks()),
-                tap(x => this.banks = x)
+                tap(x => this.banks = x),
+                switchMap(_ => this.lookupsSrv.getSalesCategories()),
+                tap(x => this.categories = x)
             );
     }
-
 
     finishLoading(e: Agent) {
         super.finishLoading(e);
@@ -141,6 +145,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
             recordBlocked: [a.recordBlocked],
             blockingReason: {value: a.blockingReason, disabled: a.recordBlocked},
             subcontractor: [a.subcontractor],
+            postalCode: [a.postalCode],
+            approval: [a.approval],
+            category: [a.category],
             tin: [a.tin],
             creationTime: {value: a.creationTime, disabled: true}
         });
@@ -221,4 +228,4 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> {
                 .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
-}
+ }
