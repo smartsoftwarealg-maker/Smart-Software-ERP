@@ -41,7 +41,4 @@ export class InvoiceCancellationListComponent extends BaseTransactionListCompone
             super(invoiceSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_INVOICE_CANCELLATION');
         }
 
-    payModeDescription(id: number) {
-        return this.payMethodSrv.getMethodDescription(id);
-    }
 }

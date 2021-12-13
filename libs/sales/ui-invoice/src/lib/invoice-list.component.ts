@@ -40,8 +40,4 @@ export class InvoiceListComponent extends BaseTransactionListComponent {
         super(invoiceSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_INVOICE');
     }
 
-
-    payModeDescription(id: number) {
-        return this.payMethodSrv.getMethodDescription(id);
-    }
 }
