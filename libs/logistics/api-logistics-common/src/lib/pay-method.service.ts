@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpService, PaginationModel} from '@ss/common/api-common';
+import {HttpService} from '@ss/common/api-common';
 import {PayMethod, PayMode} from '@ss/common/api-lookup';
-import {switchMap, tap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable} from 'rxjs';
-import {HttpParams} from '@angular/common/http';
 
 export const MPAY_URL = '/mpay';
 
@@ -53,9 +52,4 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
     getModeDescription(id: number): string {
         return this._payModes.get(id);
     }
-
-    // getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<PayMethod[]> {
-    //     return super.getPage(pageModel, filter, sortBy, extraPrams)
-    //         .pipe(tap(res => res.forEach(e => e['modeDescription'] = this.getMethodDescription(e.payMode))));
-    // }
 }

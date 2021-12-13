@@ -38,8 +38,4 @@ export class DeliveryCancellationListComponent extends BaseTransactionListCompon
         public payMethodSrv: PayMethodService) {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_DELIVERY_CANCELLATION');
     }
-
-    payModeDescription(id: number) {
-        return this.payMethodSrv.getMethodDescription(id);
-    }
 }
