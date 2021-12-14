@@ -164,5 +164,8 @@
     "HRCOMMON": "الموارد البشرية المشتركة",
     "HRMASTER": "الموارد البشرية ",
     "INVENTORY": "المخزون",
-    "PERSONS": "الموظفون"
+    "PERSONS": "الموظفون",
+    "DASHBOARD": "لوحة القيادة",
+    "DASHBOARD_QUERY": "استفسا لوحة القيادة",
+    "DASHBOARD_QUERIES": "استفسارات لوحة القيادة"
 }

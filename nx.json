@@ -158,6 +158,9 @@
         "cspace": {
             "tags": []
         },
+        "dashboard": {
+            "tags": []
+        },
         "erp": {
             "tags": [],
             "implicitDependencies": [

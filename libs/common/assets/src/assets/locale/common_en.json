@@ -164,5 +164,8 @@
     "HRCOMMON": "HRMaster common",
     "HRMASTER": "HRMaster",
     "INVENTORY": "Inventory",
-    "PERSONS": "Personnel"
+    "PERSONS": "Personnel",
+    "DASHBOARD": "Dashboard",
+    "DASHBOARD_QUERIES": "Dashboard queries",
+    "DASHBOARD_QUERY": "Dashboard query"
 }

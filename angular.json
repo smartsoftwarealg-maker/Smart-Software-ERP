@@ -1738,6 +1738,31 @@
                 }
             }
         },
+        "dashboard": {
+            "projectType": "library",
+            "root": "libs/dashboard",
+            "sourceRoot": "libs/dashboard/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/dashboard"],
+                    "options": {
+                        "jestConfig": "libs/dashboard/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/dashboard/src/**/*.ts",
+                            "libs/dashboard/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "erp": {
             "projectType": "application",
             "schematics": {
