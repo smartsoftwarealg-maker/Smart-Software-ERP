@@ -33,6 +33,7 @@ import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from '
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import {DivisionDetailComponent, DivisionListComponent} from './division.component';
 import { DepartmentDetailComponent, DepartmentListComponent } from './department.component';
+import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.category.component";
 
 @NgModule({
     imports: [
@@ -95,6 +96,8 @@ import { DepartmentDetailComponent, DepartmentListComponent } from './department
         CurrencyDetailComponent,
         ActivityListComponent,
         ActivityDetailComponent,
+        SalesCategoryListComponent,
+        SalesCategoryDetailComponent,
         RoleListComponent,
         RoleDetailComponent,
         EmploymentTypeListComponent,

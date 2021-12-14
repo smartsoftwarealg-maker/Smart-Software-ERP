@@ -6,9 +6,7 @@ import {AppContext, LoginInfo, UserInfo} from './models';
 import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
-import {UserRightsService} from './user-rights.service';
 import {MainPageService} from './main-page.service';
-import {getKeyValue} from "./utils";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -45,6 +43,15 @@ export class LoginService {
 
     get isLoggedIn(): boolean {
         return this.appCtx != null && (this.appCtx.id !== null || this.appCtx.agentId != null || this.appCtx.personId != null);
+    }
+
+    public loadContext(): Observable<LoginInfo> {
+        return this.httpSrv.get<LoginInfo>('/relogin')
+            .pipe(
+                tap((info: LoginInfo) => {
+                    this.appCtx = info.ctx;
+                    this.httpSrv.updateAuthToken(info.jwt);
+                }));
     }
 
     // todo: fix auto login
@@ -86,19 +93,6 @@ export class LoginService {
                     map(info => this.appCtx));
 
     }
-
-    // public select(agent: Agent): void {
-    //     this.agent = null;
-    //     this
-    //         .httpSrv
-    //         .put(`/agents/${agent.id}/select`)
-    //         .subscribe(res => {
-    //             this.httpSrv.updateAuthToken(res.payload);
-    //             this.agent = agent;
-    //             localStorage.setItem('agent', JSON.stringify(this.agent));
-    //             this.contextSrv.context.agentId = agent.id;
-    //         });
-    // }
 
     public centerLogin(center: number): Observable<LoginInfo> {
         return this

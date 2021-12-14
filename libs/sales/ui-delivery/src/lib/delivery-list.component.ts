@@ -39,27 +39,4 @@ export class DeliveryListComponent extends BaseTransactionListComponent {
         public payMethodSrv: PayMethodService) {
         super(deliverySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_DELIVERY');
     }
-
-    // processLoadedData(data: Transaction[]): Observable<Transaction[]> {
-    //     return this.agentSrv.getByIDList(data.map(x => x.agent))
-    //         .pipe(
-    //             tap(x => x.forEach(e => this.agents[e.id] = e.denomination)),
-    //             switchMap(() => {
-    //             const parsedData = data.map(x => {
-    //                 x.date = this.langServ.formatDate(x.date);
-    //                 x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
-    //                 return x;
-    //             });
-    //             return super.processLoadedData(parsedData);
-    //         }));
-    // }
-    //
-    // onDealersLoaded(data: User[]): void {
-    //     this.dealers = {};
-    //     data.forEach(m => this.dealers[m.id] = m.fullName);
-    // }
-
-    payModeDescription(id: number) {
-        return this.payMethodSrv.getMethodDescription(id);
-    }
 }

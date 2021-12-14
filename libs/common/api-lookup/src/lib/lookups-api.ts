@@ -28,8 +28,10 @@ export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
 export const FUNDS_URL = '/lookups/funds';
-export const ROLES_URL = '/roles';
+export const ROLES_URL = '/lookups/roles';
 export const BANKS_URL = '/banks';
+export const SALES_CATEGORY_URL = '/lookups/sales_categories';
+export const CATEGORY_URL = '/lookups/categories';
 export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';
 

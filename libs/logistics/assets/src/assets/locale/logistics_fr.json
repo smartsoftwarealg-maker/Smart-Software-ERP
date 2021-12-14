@@ -127,5 +127,8 @@
     "ADD_ONE": "Ajoute un",
     "REMOVE_ONE": "Supprimer un",
     "REMOVE_ALL": "Enlever tout",
-    "ACTIONS": "ِActions"
+    "ACTIONS": "ِActions",
+    "SCHEDULED_SALES": "Ventes programmées",
+    "CATEGORY": "Catégorie",
+    "APPROVAL": "Agrément"
 }

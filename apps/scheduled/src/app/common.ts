@@ -14,6 +14,12 @@ export const PAYROLL_APP_URL = 'payroll';
 export const FINANCE_APP_URL = 'finance';
 export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
+export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
+export const LOGISTICS_ACTIVITY_URL = 'activities';
+export const LOGISTICS_CATEGORY_URL = 'sales-categories';
+export const LOGISTICS_AGENT_TYPE_URL = 'agentTypes';
+export const LOGISTICS_CURRENCY_URL = 'currencies';
+export const LOGISTICS_VAT_URL = 'vat';
 
 // common
 export const COMMON_REPORT_PARAMS_URL = 'report-params';

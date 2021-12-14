@@ -2,16 +2,16 @@ import {
     COMMON_REPORT_PARAMS_URL,
     LOOKUPS_URL,
     STOCK_ACCOUNT_URL,
-    STOCK_ACTIVITY_URL,
+    LOGISTICS_ACTIVITY_URL,
     STOCK_AGENT_PRICE_URL,
-    STOCK_AGENT_TYPE_URL,
+    LOGISTICS_AGENT_TYPE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
     STOCK_CLASSES_URL,
-    STOCK_COMPANY_TYPE_URL,
+    LOGISTICS_COMPANY_TYPE_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
-    STOCK_CURRENCY_URL,
+    LOGISTICS_CURRENCY_URL,
     STOCK_INVENTORY_ENTRY_URL,
     STOCK_INVENTORY_EXIT_URL,
     STOCK_INVENTORY_URL,
@@ -19,7 +19,7 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL,
+    LOGISTICS_VAT_URL,
     docInfoRoutes, STOCK_STORES_URL, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
@@ -47,7 +47,7 @@ import {
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
-import {MiniAgentDetailComponent, AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
+import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
@@ -234,7 +234,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: 'Agent' }
             },
             {
                 path: ':id',
@@ -402,87 +403,5 @@ export const lookupRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {
-        path: STOCK_VAT_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: VatListComponent
-            },
-            {
-                path: ':id',
-                component: VatDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_AGENT_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: AgentTypeListComponent
-            },
-            {
-                path: ':id',
-                component: AgentTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_COMPANY_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CompanyTypeListComponent
-            },
-            {
-                path: ':id',
-                component: CompanyTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_CURRENCY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CurrencyListComponent
-            },
-            {
-                path: ':id',
-                component: CurrencyDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_ACTIVITY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ActivityListComponent
-            },
-            {
-                path: ':id',
-                component: ActivityDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 

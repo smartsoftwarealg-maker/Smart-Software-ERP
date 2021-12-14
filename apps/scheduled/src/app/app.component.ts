@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService} from '@ss/common/api-common';
+import {HttpService, LoginService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
@@ -15,7 +15,10 @@ export class AppComponent implements OnInit {
 
     loaded = false;
 
-    constructor(private httpSrv: HttpService, public shellSrv: ShellService, public langSrv: LanguageService) {
+    constructor(private httpSrv: HttpService,
+                private shellSrv: ShellService,
+                public langSrv: LanguageService,
+                private loginSrv: LoginService) {
     }
 
     ngOnInit() {
@@ -24,8 +27,10 @@ export class AppComponent implements OnInit {
             administrationNavTree,
             logAdminNavTree
         ]);
-        this.httpSrv.init()
-            .pipe(switchMap(() => this.langSrv.init()))
+        this.httpSrv
+            .init()
+            .pipe(switchMap(() => this.langSrv.init()),
+                  switchMap(_ => this.loginSrv.reload()))
             .subscribe(() => this.loaded = true)
     }
 
