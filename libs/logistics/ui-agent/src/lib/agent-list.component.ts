@@ -46,7 +46,6 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
             );
     }
 
-
     private onAgentTypesLoaded(data: AgentType[]) {
         this.agentTypes = data.reduce(
             (total: { [id: number]: string; }, currentValue) => {

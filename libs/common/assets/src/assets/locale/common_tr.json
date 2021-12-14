@@ -155,12 +155,15 @@
     "STATUS":                         "",
     "VALIDATED":                      "",
     "LOCKED":                         "",
-    "AGENT": "",
-    "ARTICLE": "",
-    "CUR_EXCHANGE": "",
-    "EXCHANGE": "",
-    "HRCOMMON": "",
-    "HRMASTER": "",
-    "INVENTORY": "",
-    "PERSONS": ""
+    "AGENT":                          "",
+    "ARTICLE":                        "",
+    "CUR_EXCHANGE":                   "",
+    "EXCHANGE":                       "",
+    "HRCOMMON":                       "",
+    "HRMASTER":                       "",
+    "INVENTORY":                      "",
+    "PERSONS":                        "",
+    "DASHBOARD":                      "",
+    "DASHBOARD_QUERIES":              "",
+    "DASHBOARD_QUERY":                ""
 }

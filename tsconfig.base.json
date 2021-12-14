@@ -118,6 +118,7 @@
             "@ss/common/ui-traceability": [
                 "libs/common/ui-traceability/src/index.ts"
             ],
+            "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/exchange/api-currency-deposit": [
                 "libs/exchange/api-currency-deposit/src/index.ts"
             ],

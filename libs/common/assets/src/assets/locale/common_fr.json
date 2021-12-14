@@ -164,5 +164,8 @@
     "HRCOMMON": "HRMaster common",
     "HRMASTER": "HRMaster",
     "INVENTORY": "Stock",
-    "PERSONS": "Personnel"
+    "PERSONS": "Personnel",
+    "DASHBOARD": "Tableau de bord",
+    "DASHBOARD_QUERIES": "Requêtes du tableau de bord",
+    "DASHBOARD_QUERY": "Requête du tableau de bord"
 }
