@@ -2,16 +2,12 @@ import {
     COMMON_REPORT_PARAMS_URL,
     LOOKUPS_URL,
     STOCK_ACCOUNT_URL,
-    LOGISTICS_ACTIVITY_URL,
     STOCK_AGENT_PRICE_URL,
-    LOGISTICS_AGENT_TYPE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
     STOCK_CLASSES_URL,
-    LOGISTICS_COMPANY_TYPE_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
-    LOGISTICS_CURRENCY_URL,
     STOCK_INVENTORY_ENTRY_URL,
     STOCK_INVENTORY_EXIT_URL,
     STOCK_INVENTORY_URL,
@@ -19,23 +15,14 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    LOGISTICS_VAT_URL,
-    docInfoRoutes, STOCK_STORES_URL, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL
+    docInfoRoutes, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
 import {
-    ActivityDetailComponent,
-    ActivityListComponent,
-    AgentTypeDetailComponent,
-    AgentTypeListComponent,
     ClassDetailComponent,
     ClassListComponent,
-    CompanyTypeDetailComponent,
-    CompanyTypeListComponent,
-    CurrencyDetailComponent,
-    CurrencyListComponent,
     MarkDetailComponent,
     MarkListComponent,
     StoreNameDetailComponent,
@@ -44,8 +31,6 @@ import {
     SubclassListComponent,
     UnitDetailComponent,
     UnitListComponent,
-    VatDetailComponent,
-    VatListComponent,
 } from '@ss/common/ui-lookup';
 import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';

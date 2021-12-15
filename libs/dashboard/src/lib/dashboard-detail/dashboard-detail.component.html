@@ -1,0 +1,23 @@
+<form *ngIf="form" novalidate [formGroup]="form" >
+
+
+    <mat-form-field class="description">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required>
+
+        <mat-error
+            *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
+        <textarea matInput formControlName="query" type="text" rows="40"></textarea>
+        <mat-error
+            *ngIf="form.controls['query'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+
+</form>

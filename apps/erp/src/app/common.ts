@@ -16,6 +16,7 @@ export const LOOKUPS_URL = 'lookups';
 export const ADMINISTRATION_APP_URL = 'administration';
 export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
+export const DASHBOARD_APP_URL = 'dashboard';
 export const PAYROLL_APP_URL = 'payroll';
 export const FINANCE_APP_URL = 'finance';
 export const PURCHASES_APP_URL = 'purchases';
@@ -105,6 +106,10 @@ export const PAYROLL_CONTRACTS_URL = 'contracts';
 export const PAYROLL_DIVISIONS_URL = 'divisions';
 export const PAYROLL_DEPARTMENTS_URL = 'departments'
 
+//Dashboard
+export const DASHBOARD_QUERY_URL = 'queries'
+export const DASHBOARD_URL       = 'dashbaord'
+
 // #############
 // # FULL URLS #
 // #############
@@ -193,6 +198,10 @@ export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
 export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
+
+//dashboard
+export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_DASHBOARD_QUERY_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_QUERY_URL].join('/');
 
 
 
