@@ -128,7 +128,7 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
             employee: a.employee,
             centerId: a.centerId,
             number: [a.number, Validators.required],
-            info: a.info,
+//            info: a.info,
             post: [a.post, Validators.required],
             recordNumber: [a.recordNumber],
             date: a.date,
@@ -140,7 +140,15 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
             salarygrid: a.salarygrid,
             fromdate: [a.fromdate, Validators.required],
             todate: a.todate,
-            trial_period: [a.trial_period, Validators.required]
+            trial_period: [a.trial_period, Validators.required],
+            related_contract: a.related_contract,
+            basesalary: a.basesalary,
+            notes: a.notes,
+            motive: a.motive,
+            cost_center: a.cost_center,
+            type: a.ctype,
+            project: a.project,
+            confirmed: a.confirmed
         });
     }
 
@@ -167,7 +175,7 @@ export class EmployeeContractDetailComponent implements OnInit, OnDestroy {
                 this.shellSrv.setLoading(false);
                 throw err;
             }
-        })
+        });
     }
 
     ngOnDestroy(): void {

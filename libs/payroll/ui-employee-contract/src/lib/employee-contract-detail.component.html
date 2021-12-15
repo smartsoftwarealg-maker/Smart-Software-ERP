@@ -6,6 +6,22 @@
 
 <div class="form-container">
     <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_CONTRACT_NUMBER</mat-label>
+            <input matInput required [maxLength]="20" formControlName="number">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_CONTRACT_RECORD_NUMBER</mat-label>
+            <input matInput [maxLength]="20" formControlName="recordNumber">
+        </mat-form-field>
+
+        <!--mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_CONTRACT_INFO</mat-label>
+            <input matInput [maxLength]="48" formControlName="info">
+        </mat-form-field-->
+
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_FROM</mat-label>
             <ss-date-picker required="true" formControlName="fromdate"></ss-date-picker>
@@ -20,16 +36,6 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_CONTRACT_NUMBER</mat-label>
-            <input matInput required [maxLength]="20" formControlName="number">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_CONTRACT_INFO</mat-label>
-            <input matInput [maxLength]="48" formControlName="info">
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_DATE</mat-label>
             <ss-date-picker formControlName="date"></ss-date-picker>
         </mat-form-field>
@@ -37,11 +43,6 @@
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_VALID_DATE</mat-label>
             <ss-date-picker formControlName="valid_date"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_CONTRACT_RECORD_NUMBER</mat-label>
-            <input matInput [maxLength]="20" formControlName="recordNumber">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -81,6 +82,11 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_BASE_SALARY</mat-label>
+            <input matInput formControlName="basesalary" type="number" style="text-align: center;">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_SALARY_RANK</mat-label>
             <input matInput formControlName="salary_rank" type="number" style="text-align: center;">
         </mat-form-field>
@@ -93,6 +99,16 @@
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_TRIAL_PERIOD</mat-label>
             <input matInput formControlName="trial_period" type="number" style="text-align: center;">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_NOTES</mat-label>
+            <input matInput [maxLength]="96" formControlName="notes">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_MOTIVE</mat-label>
+            <input matInput [maxLength]="96" formControlName="motive">
         </mat-form-field>
     </form>
 </div>
