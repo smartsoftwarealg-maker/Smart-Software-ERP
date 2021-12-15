@@ -86,11 +86,19 @@ export class LoginService {
         return  (this.appCtx)? of (this.appCtx) :
             this.httpSrv
                 .get<LoginInfo>('/ctx')
-                .pipe(tap(info => {
+                .pipe(
+                    tap(info => {
                         this.httpSrv.updateAuthToken(info.jwt);
                         this.appCtx = info.ctx;
                     }),
-                    map(info => this.appCtx));
+                    map(() => this.appCtx),
+                    catchError(err => {
+                        if (err.status != 401) {
+                            throw err;
+                        }
+                        return of (null);
+                    })
+                );
 
     }
 
