@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
-import {DashboardServiceService} from '../dashboard-service.service';
+import {DashboardService} from '../dashboard.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -18,7 +18,7 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
         'description',
     ];
 
-  constructor(public dashboardSrv: DashboardServiceService,
+  constructor(public dashboardSrv: DashboardService,
               public shellSrv: ShellService,
               public snackBarSrv: SnackBarService,
               public route: ActivatedRoute,
