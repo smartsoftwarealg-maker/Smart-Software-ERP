@@ -3,6 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
+import {hrNavTree} from './hr/side-nav-tree';
 import {stockNavTree} from './stock/side-nav-tree';
 import {payrollNavTree} from './payroll/side-nav-tree';
 import {administrationNavTree} from './administration/side-nav-tree';
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
             purchasesNavTree,
             stockNavTree,
             salesNavTree,
+            hrNavTree,
             payrollNavTree,
             financeNavTree
         ]);
