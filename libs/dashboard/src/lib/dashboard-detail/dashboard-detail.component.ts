@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
-import {DashboardServiceService} from '../dashboard-service.service';
+import {DashboardService} from '../dashboard.service';
 import {AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -16,7 +16,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 })
 export class DashboardDetailComponent  extends BaseEntityDetailComponent<Dashboard> implements OnInit {
 
-  constructor(public dashboardSrv: DashboardServiceService,
+  constructor(public dashboardSrv: DashboardService,
               public agentSrv: AgentService,
               public shellSrv: ShellService,
               public snackBarSrv: SnackBarService,

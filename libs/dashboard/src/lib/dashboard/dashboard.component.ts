@@ -1,15 +1,92 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {DashboardService} from '../dashboard.service';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {Dashboard} from '../dashboard';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {LookupsService} from '@ss/common/api-lookup';
+import {switchMap, tap} from 'rxjs';
+import {LanguageService, PaginationModel} from '@ss/common/api-common';
+import {FormControl} from '@angular/forms';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import {Id} from '@ss/common/ui-auto-complete';
 
 @Component({
-  selector: 'ss-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'ss-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
+    headers: string[] = ['test'];
+    dashboardData: any[][] = [['test']];
+    queries: string[] = [];
+    detailPagination = PaginationModel.newInstance();
+    fromDate    = new FormControl(new Date(0));
+    toDate      = new FormControl(new Date());
+    agentLookup = new AgentLookupModel(this.agentSrv);
+    selectedAgentId: Id = '';
+    tableWidth = '800px';
 
-  constructor() { }
+    constructor(public dashboardSrv: DashboardService,
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public router: Router,
+                public confirmationSrv: ConfirmationDialogService,
+                public defReportSrv: DefaultReportService,
+                public lookupsSrv: LookupsService,
+                private agentSrv: AgentService,
+                private langSrv: LanguageService) {
+        super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_DASHBOARD_QUERIES');
+        this.detailPagination.onChange = () => this.updatePage();
+        this.agentLookup.onValueChanged = (id: Id) => this.selectedAgentId = id;
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit() {
+        super.ngOnInit();
+        this.editButton.visible = false;
+        this.addButton.visible = false;
+        this.deleteButton.visible = false;
+    }
 
+    select(id: number) {
+        super.select(id);
+        this.headers = [];
+        this.dashboardData = [];
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const agentId = this.selectedAgentId? this.selectedAgentId.toString : null;
+        if (id) {
+            this.dashboardSrv
+                .getHeaders(id)
+                .pipe(tap(res => {
+                    this.headers = res.headers;
+                    this.tableWidth = (100 * this.headers.length) + 'px';
+                    }),
+                      switchMap(_ => this.dashboardSrv.getData(id,
+                          this.detailPagination.page,
+                          this.detailPagination.pageSize,
+                          from,
+                          to,
+                          agentId)))
+                .subscribe(res => {
+                    this.dashboardData = res.body;
+                    this.detailPagination.elementCount = res.itemCount;
+                });
+        }
+    }
+
+    private updatePage() {
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const id = this.selectedAgentId? this.selectedAgentId.toString : null;
+        this.dashboardSrv
+            .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, id)
+            .subscribe(res => {
+                this.dashboardData = res.body;
+                this.detailPagination.elementCount = res.itemCount;
+            });
+    }
 }

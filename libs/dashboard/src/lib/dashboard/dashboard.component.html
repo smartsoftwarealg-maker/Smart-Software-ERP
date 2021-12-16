@@ -1,1 +1,57 @@
-<p>dashboard works!</p>
+<div class="main-container">
+    <div class="ctrl">
+        <mat-form-field class="date__picker">
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker [formControl]="fromDate"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="date__picker">
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker [formControl]="toDate"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="agentLookup"></ss-auto-complete>
+        </mat-form-field>
+
+    </div>
+    <div class="list-container">
+        <mat-list>
+            <mat-list-item *ngFor="let row of data"
+                           [class.selected]="row.id === selected"
+                           (click)="select(row.id)"
+                           class="selectable">
+                {{ row.description }}
+            </mat-list-item>
+        </mat-list>
+
+    </div>
+    <div class="pagination-container b-b-background page1">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+    <div class="detail" *ngIf="headers && headers.length > 0 && dashboardData.length > 0">
+        <mat-table mat-table [dataSource]="dashboardData" class="main-table" [class.min-with]="tableWidth">
+            <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
+                <mat-header-cell *matHeaderCellDef> {{ h }} </mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e[i] }}
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+            <mat-row class="selectable"
+                     *matRowDef="let row; columns: headers;">
+            </mat-row>
+        </mat-table>
+
+    </div>
+    <div class="pagination-container b-b-background page2">
+        <ss-pagination [paginationModel]="detailPagination"></ss-pagination>
+    </div>
+
+</div>
