@@ -89,7 +89,6 @@ export class Career {
 
 export class Contract {
     id: number;
-    paymonth: number;
     centerId: number;
     employee: number;
     number: string;
@@ -99,12 +98,12 @@ export class Contract {
     related_contract: number;
     fromdate: string;
     todate: string;
+    post: number;
     salarygrid: number;
     salary_rank: number;
     basesalary: number;
     notes: string;
     motive: number;
-    post: number;
     department: number;
     service: number;
     division: number;
