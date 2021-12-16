@@ -26,12 +26,9 @@ export class UserRightsService {
                     this.forms = res;
                     return this.httpSrv.get<DocRight[]>('/rights')
                 }),
-                tap((res: DocRight[]) => {
-                    this.rightsMap = res.reduce((m, e) => {
-                        m.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete});
-                        return m;
-                    }, new Map<string, Right>());
-                }));
+                tap((res: DocRight[]) =>
+                    res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete}))
+                ));
     }
 
     get rights(): Map<string, Right> {

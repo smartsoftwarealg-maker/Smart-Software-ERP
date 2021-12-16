@@ -1,4 +1,4 @@
-<div class="container">
+<div class="form_container">
     <div class="log__type b-accent" [formGroup]="form">
         <mat-form-field class="date__picker">
             <mat-label translate>COMMON_FROM</mat-label>
@@ -33,7 +33,7 @@
                     [attr.aria-label]="'Toggle ' + node.name">
                 {{treeControl.isExpanded(node) ? '-' : '+'}}
             </button>
-            {{node.name}}
+            <span translate>{{ 'COMMON_' + node.name }} </span>
         </mat-tree-node>
     </mat-tree>
     <div class="detail" *ngIf="displayedColumns.length > 0 && data.length > 0">
@@ -51,16 +51,13 @@
                      *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
         </mat-table>
-<!--        <ul>-->
-<!--            <li *ngFor="let col of displayedColumns; let i = index"> {{ col }}  </li>-->
-<!--        </ul>-->
     </div>
 
     <mat-form-field appearance="fill">
         <mat-label><span translate>COMMON_SELECT_APP</span></mat-label>
         <mat-select (selectionChange)="setApp($event)">
             <mat-option *ngFor="let app of apps" [value]="app">
-                {{ app }}
+                {{ langSrv.translate('COMMON_' + app) }}
             </mat-option>
         </mat-select>
     </mat-form-field>

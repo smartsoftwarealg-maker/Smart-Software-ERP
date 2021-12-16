@@ -10,7 +10,7 @@
     <ng-container matColumnDef="mode">
         <mat-header-cell *matHeaderCellDef translate>LOGISTICS_MODE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{ getModeDescription(e.payMode) }}
+            {{ e.modeDescription }}
         </mat-cell>
     </ng-container>
 

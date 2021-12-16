@@ -1,6 +1,4 @@
 {
-    "REFERENCE": "Reference",
-    "DESCRIPTION": "Description",
     "PRICE": "Price",
     "ACCOUNTNO": "Account No.",
     "ARTICLES": "Articles",
@@ -48,5 +46,14 @@
     "VAT": "TVA",
     "MARK": "Marque",
     "TOTALS": "Totals",
-    "STORE_ASSIGNMENT": "Store assignment"
+    "STORE_ASSIGNMENT": "Store assignment",
+    "CLASS": "Class",
+    "UNIT": "Unit",
+    "NON_STOCKED": "Non stocked",
+    "ANOMALIES": "Stock anomalies",
+    "COMPUTED_STOCK": "Computed",
+    "ACTUAL_STOCK": "Actual",
+    "DIFFERENCE": "Difference",
+    "FIX": "Fix anomalies",
+    "PERCENTAGE":  "Percentage"
 }

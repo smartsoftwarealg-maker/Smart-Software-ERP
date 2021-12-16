@@ -5,13 +5,12 @@ import {FormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ConsumptionLine, ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
+import {ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-logistics-common';
-import {TransactionLine} from "@ss/logistics/api-transaction";
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -19,7 +18,7 @@ import {TransactionLine} from "@ss/logistics/api-transaction";
     templateUrl: './consumption-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<ConsumptionLine> implements OnInit, OnDestroy {
+export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit, OnDestroy {
 
     parentId: number;
     selectedRow: any;
@@ -60,16 +59,21 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
 
         this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
             this.articleSrv
-                .getPPrice(art, this.form.controls['store'].value, this.parentId)
-                .subscribe(res => this.form.controls['price'].setValue(res.price),
-                            err => this.form.controls['price'].setValue(0.0))
+                .getPPrice(<string>art, this.form.controls['store'].value, this.parentId)
+                .subscribe({
+                    next: res => this.form.controls['price'].setValue(res.price),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                })
         });
 
-        this.storeAutoCompleteModel.evenEmitter.subscribe(id => {
+        this.storeAutoCompleteModel
+            .evenEmitter.subscribe(id => {
             this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, id, this.parentId)
-                .subscribe(res => this.form.controls['price'].setValue(res.price),
-                            err => this.form.controls['price'].setValue(0.0))
+                .getPPrice(this.form.controls['reference'].value, <number>id, this.parentId)
+                .subscribe({
+                    next: res => this.form.controls['price'].setValue(res.price),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                })
         });
     }
 
@@ -89,7 +93,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<C
         super.finishLoading(e);
     }
 
-    public setupForm(b: ConsumptionLine) {
+    public setupForm(b: TransactionLine) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

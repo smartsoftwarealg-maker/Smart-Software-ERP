@@ -2,45 +2,59 @@
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table">
 
+            <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <div class="person-photo">
+                        <ss-image-input
+                            width="60px"
+                            height="76px"
+                            [ImageModel]="e.imageModel"
+                            style="display: inline-block;">
+                        </ss-image-input>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.reference}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description2">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description2}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                    {{(e.price == null ? '' : e.price.toFixed(2.0))}}
+                    {{ e.price1 | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="vat">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                    {{vats[e.vat] == null ? '' : vats[e.vat].toFixed(2)}}
+                    {{ e.vatValue | number: '1.2-2' }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="mark">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_MARK</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{marks[e.mark]}}
+                    {{e.markDescrip}}
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_ACCOUNTNO</mat-header-cell>
+            <ng-container matColumnDef="unit">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_UNIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.accountno}}
+                    {{e.unitDescrip}}
                 </mat-cell>
             </ng-container>
 
@@ -56,10 +70,9 @@
     <ss-doc-info
         class="doc-info"
         *ngIf="selected" [displayedGroups]="['article']"
-        [params]="{
-                         articleId: selectedRow?.id,
-                         articleUseStoreSearch : true,
-                         articleReference: selectedRow?.reference
-                     }">
+        [params]="{ articleId: selectedRow?.id,
+                    articleUseStoreSearch : true,
+                    articleReference: selectedRow?.reference
+                  }">
     </ss-doc-info>
 </div>

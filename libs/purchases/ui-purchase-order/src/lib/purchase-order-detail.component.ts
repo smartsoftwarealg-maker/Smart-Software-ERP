@@ -10,7 +10,7 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
-import {Agent, AgentService, SupplierService} from '@ss/logistics/api-agent';
+import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';

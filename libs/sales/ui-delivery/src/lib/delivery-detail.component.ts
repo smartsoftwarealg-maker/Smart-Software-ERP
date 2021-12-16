@@ -126,7 +126,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.delivery.id)
-                        .pipe(tap(_ => this.detail.loadDeliveryLines()))
+                        .pipe(tap(_ => this.detail.loadDetailLines()))
                         .subscribe({
                             next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
                             error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)

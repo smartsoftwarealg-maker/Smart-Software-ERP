@@ -7,7 +7,7 @@ import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
 import {concatMap} from "rxjs/operators";
 

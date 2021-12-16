@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Center, UserInfo, DocRight, Right, Role, User, UserContext } from '../../common/models';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs';
-import { HttpService } from '../../../smart-lib/common/http.service';
+import {Injectable} from '@angular/core';
+import {map, switchMap, tap} from 'rxjs/operators';
+import {Center, DocRight, Right, Role, User, UserContext, UserInfo} from '../../common/models';
+import {Observable, of} from 'rxjs';
+import {HttpService} from '../../../smart-lib/common/http.service';
 
 interface Severe {
     severe: boolean;
@@ -52,7 +51,7 @@ export class UserService {
                         res.manager = false;
                         obs = this
                             .httpSrv
-                            .get<Object>(`/persons/${res.personId}`)
+                            .get<any>(`/persons/${res.personId}`)
                             .pipe(tap(next => {
                                 res.fullName = next['birthInfo']['firstName'] +
                                     ' ' +
@@ -77,20 +76,20 @@ export class UserService {
         return this
             .httpSrv
             .get<User>('/cuser')
-            .pipe(switchMap(res => this.getUserById(res.id)))
-            .pipe(tap((res: UserInfo) => {
-                this.userInfo = res;
-                localStorage.setItem('cuser', JSON.stringify(res));
-            }),
-                switchMap(res => this.httpSrv.get<Severe>('/rights/severe')))
-            .pipe(tap(res => this.severe = res.severe),
-                switchMap(res => this.httpSrv.get<DocRight[]>('/rights')))
-            .pipe(tap(res => {
-                this.rightsMap = res.reduce((m, e) => {
-                    m.set(e.document, e.right);
-                    return m;
-                }, new Map<string, Right>());
-            }));
+            .pipe(switchMap(res => this.getUserById(res.id)),
+                tap((res: UserInfo) => {
+                    this.userInfo = res;
+                    localStorage.setItem('cuser', JSON.stringify(res));
+                }),
+                switchMap(res => this.httpSrv.get<Severe>('/rights/severe')),
+                tap(res => this.severe = res.severe),
+                switchMap(res => this.httpSrv.get<DocRight[]>('/rights')),
+                tap(res => {
+                    this.rightsMap = res.reduce((m, e) => {
+                        m.set(e.document, e.right);
+                        return m;
+                    }, new Map<string, Right>());
+                }));
     }
 
     load(): Observable<any> {
@@ -173,7 +172,7 @@ export class UserService {
     }
 
     getRoleList(): Observable<Role[]> {
-        return this.httpSrv.get<Role[]>('/roles');
+        return this.httpSrv.get<Role[]>('/lookups/roles');
     }
 
     getCenterList(): Observable<Center[]> {
@@ -187,7 +186,7 @@ export class UserService {
             this.userInfo.user.id != null;
     }
 
-    ctx(): Observable<object> {
-        return this.httpSrv.get<object>('/ctx').pipe(map(res => res['ctx']));
+    ctx(): Observable<any> {
+        return this.httpSrv.get<any>('/ctx').pipe(map(res => res['ctx']));
     }
 }

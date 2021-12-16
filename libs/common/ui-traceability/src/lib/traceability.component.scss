@@ -1,5 +1,5 @@
 
-.container {
+.form_container {
     height: calc(100% - 20px);
     max-height: 90%;
     display: grid;
@@ -10,9 +10,10 @@
                          "apps     detail"
                          "schemas  detail"
                          "schemas  pager"  ;
+
 }
 @media (max-width: 500px) {
-    .container {
+    .form_container {
         grid-template-columns: auto;
         grid-template-rows: repeat(5, auto);
         gap: 5px;

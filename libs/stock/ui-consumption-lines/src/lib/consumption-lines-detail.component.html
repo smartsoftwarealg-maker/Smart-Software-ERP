@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form != null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
 
             <mat-form-field id="position" class="default-50 sm-100">
                 <mat-label translate>STOCK_POSITION</mat-label>
@@ -46,7 +46,7 @@
             </mat-form-field>
 
             <mat-form-field id="price" class="default-50 sm-100">
-                <mat-label translate>STOCK_PRICE</mat-label>
+                <mat-label translate>LOGISTICS_PRICE</mat-label>
                 <input matInput formControlName="price" type="number" step=".01" >
                 <mat-error
                     *ngIf="form.controls['price'].hasError('required')" translate>COMMON_FIELD_REQUIRED
@@ -70,6 +70,7 @@
 </mat-card>
 
 <ss-doc-info
+    class="doc-info"
     *ngIf="selectedRow"
     [displayedGroups]="['article', 'document']"
     [params]="{

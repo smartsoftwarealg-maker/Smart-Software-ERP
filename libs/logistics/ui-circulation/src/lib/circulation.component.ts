@@ -1,12 +1,10 @@
 import {Component, OnInit,} from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Circulation, CirculationService} from "@ss/logistics/api-circulation";
-import {ArticleService} from "@ss/stock/api-article";
+import {Circulation, CirculationService} from '@ss/logistics/api-circulation';
 import {PaginationModel} from '@ss/common/api-common';
 import {LanguageService} from '@ss/common/api-common';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'ss-circulation',
@@ -24,14 +22,14 @@ export class CirculationComponent implements OnInit {
 
 
     displayedColumns = [
-        "document",
-        "number",
-        "date",
-        "qty",
-        "price",
-        "pprice",
-        "customer",
-        "store"
+        'document',
+        'number',
+        'date',
+        'qty',
+        'price',
+        'pprice',
+        'customer',
+        'store'
     ];
 
 

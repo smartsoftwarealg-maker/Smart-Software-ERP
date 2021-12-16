@@ -7,13 +7,20 @@
 }
 
 .mat-column-reference {
-    flex: 0 0 200px;
+    flex: 0 1 120px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
+.mat-column-image {
+    flex: 0 1 80px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    max-width: 80px;
+}
+
 .mat-column-description2 {
-    flex: 0 0 300px;
+    flex: 1 0 350px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -35,3 +42,4 @@
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
+

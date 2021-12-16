@@ -1,11 +1,15 @@
 import {
-    ABS_STOCK_ACTIVITY,
+    ABS_LOGISTICS_ACTIVITY,
     ABS_STOCK_AGENT_TYPE,
-    ABS_STOCK_COMPANY_TYPE,
-    ABS_STOCK_CURRENCY,
+    ABS_LOGISTICS_COMPANY_TYPE,
+    ABS_LOGISTICS_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
     ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL, ABS_LOGISTICS_OPTIONS, ABS_STOCK_AGENT_URL, LOGISTICS_STOCK_AGENT_URL, ABS_FINANCE_PAYMENTS
+    ABS_LOGISTICS_OPTIONS,
+    ABS_STOCK_AGENT_URL,
+    LOGISTICS_STOCK_AGENT_URL,
+    ABS_FINANCE_PAYMENTS,
+    ABS_LOGISTICS_VAT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -22,29 +26,24 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: LOGISTICS_STOCK_AGENT_URL
+            route: LOGISTICS_STOCK_AGENT_URL,
+            accessRights: 'Agent'
         },
         {
             name: 'COMMON_VAT',
             icon: 'fas fa-percentage',
-            route: ABS_STOCK_VAT_URL,
+            route: ABS_LOGISTICS_VAT_URL,
             accessRights: 'VAT'
         },
-        // {
-        //     name: 'COMMON_AGENT_TYPES',
-        //     icon: 'fas fa-user',
-        //     route: ABS_STOCK_AGENT_TYPE,
-        //     accessRights: 'AgentType'
-        // },
         {
             name: 'COMMON_COMPANY_TYPES',
             icon: 'fas fa-building',
-            route: ABS_STOCK_COMPANY_TYPE
+            route: ABS_LOGISTICS_COMPANY_TYPE
         },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
-            route: ABS_STOCK_ACTIVITY,
+            route: ABS_LOGISTICS_ACTIVITY,
             accessRights: 'Activity'
         },
         {
@@ -56,7 +55,7 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'COMMON_CURRENCIES',
             icon: 'fas fa-coins',
-            route: ABS_STOCK_CURRENCY,
+            route: ABS_LOGISTICS_CURRENCY,
             accessRights: 'Currency'
         },
         {

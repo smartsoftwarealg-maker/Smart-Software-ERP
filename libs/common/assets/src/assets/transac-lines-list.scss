@@ -1,0 +1,76 @@
+.table-div {
+    height: 60%;
+    min-width: 100%;
+    min-height: 200px;
+    overflow-x: auto;
+}
+.main-table {
+    min-width: 870px;
+    height: 100%;
+}
+.main-container {
+    position: relative;
+    padding-top: 24px;
+    min-height: 50%;
+    height: 50%;
+}
+
+.doc-info {
+    flex: 1 1 40%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.mat-column-position {
+    flex: 0 1 50px;
+    width: auto;
+    max-width: 50px;
+}
+
+.mat-column-store {
+    flex: 1 1 140px;
+    min-width: 140px;
+}
+
+
+.mat-column-reference {
+    flex: 1 1 100px;
+    min-width: 100px;
+}
+
+.mat-column-description {
+    flex: 2 0 auto;
+    min-width: 200px;
+}
+
+.mat-column-qtySatisfied, .mat-column-qtyOrdered, .mat-column-price, .mat-column-vat  {
+    flex: 1 0 80px;
+    justify-content: flex-end;
+}
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.75em;
+}
+
+.add-button {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pagination-container {
+    flex: 0 1 1%;
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

@@ -16,7 +16,7 @@ interface Entry {
 
 export class DocInfoComponent {
 
-    @Input() displayedGroups;
+    @Input() displayedGroups: string[] = [];
 
     @Input() set params(params: any) {
         const providedParams = Object.keys(params);
@@ -26,7 +26,7 @@ export class DocInfoComponent {
             .map(x => x.paramsProvided(providedParams))
             .some(x => !x);
         if (notAllRequiredParamsExist) {
-            throw Error('Some params are messing !');
+            // throw Error('Some params are messing !');
         }
 
         this.params_ = params;
@@ -109,7 +109,7 @@ export class DocInfoComponent {
         return this.entries_.filter(x => this.displayedGroups.includes(x.group));
     }
 
-    select(e): void {
+    select(e: any): void {
         this.selectedEntry = e;
         this.navigate();
     }

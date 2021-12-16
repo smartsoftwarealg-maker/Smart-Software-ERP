@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {AccessRight, HttpService, UserCenter, UserRole} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
-import {ShellService} from '@ss/common/ui-shell';
 import {HttpParams} from '@angular/common/http';
 import {map} from "rxjs/operators";
 

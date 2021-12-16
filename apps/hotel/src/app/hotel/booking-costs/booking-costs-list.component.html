@@ -48,7 +48,7 @@
 
                 <mat-row *matRowDef="let row; columns: displayedColumns;"
                          (click)="select(row.id)" class="selectable"
-                         [class.selectable-active]="row.id == selectedId">
+                         [class.selectable-active]="row.id === selectedId">
                 </mat-row>
             </mat-table>
 

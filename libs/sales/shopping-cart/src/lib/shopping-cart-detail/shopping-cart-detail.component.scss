@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.top-actions {
+    display: flex;
+    justify-content: center;
+    flex-grow: 0;
+    max-width: 40%;
+}
+.confirmation {
+    display: flex;
+    gap: 10px;
+}
+
+.mat-column-actions {
+    min-width: 140px;
+    padding: 0 5px;
+}
+
+.mat-column-qty {
+    max-width: 50px;
+}
+
+.mat-column-price {
+    max-width: 90px;
+}

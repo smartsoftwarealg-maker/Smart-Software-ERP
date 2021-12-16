@@ -1,7 +1,4 @@
 {
-    "REFERENCE": "مرجع",
-    "DESCRIPTION": "الوصف",
-    "PRICE": "السعر",
     "ACCOUNTNO": "رقم الحساب",
     "ARTICLES": "السلع",
     "INVENTORY_ENTRY": "إدخال المخزون",
@@ -33,7 +30,6 @@
     "QTY_ORDERED": "الكمية المطلوبة",
     "ARTICLE": "السلعة",
     "DOCUMENT": "وثيقة",
-    "QTY": "الكمية",
     "QTY_IN": "الكمية الداخلة",
     "QTY_OUT": "الكمية الخارجة",
     "PPRICE": "سعر الشراء",
@@ -49,5 +45,14 @@
     "STOCK_VAT": "الضريبة",
     "STOCK_MARK": "الصنف",
     "TOTALS": "المجاميع",
-    "STORE_ASSIGNMENT": "توزيع المخازن"
+    "STORE_ASSIGNMENT": "توزيع المخازن",
+    "CLASS": "فئة",
+    "UNIT": "الوحدة",
+    "NON_STOCKED": "لا يخزن",
+    "ANOMALIES": "فروق المخزون",
+    "COMPUTED_STOCK": "الكمية المحسوب",
+    "ACTUAL_STOCK": "الكمية الحالية",
+    "DIFFERENCE": "الفرق",
+    "FIX": "تصحيح الفروق",
+    "PERCENTAGE":  "النسبة المئوية"
 }

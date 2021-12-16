@@ -1,69 +1,71 @@
-<mat-card>
-    <mat-card-content>
-        <form *ngIf="form != null" novalidate [formGroup]="form">
+<div class="main-container">
+    <mat-card>
+        <mat-card-content>
+            <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field id="number" class="default-50 sm-100">
-                <mat-label translate>STOCK_NUMBER</mat-label>
-                <input matInput formControlName="number" type="number" readonly>
-            </mat-form-field>
+                <mat-form-field id="number" class="default-50 sm-100">
+                    <mat-label translate>STOCK_NUMBER</mat-label>
+                    <input matInput formControlName="number" type="number" readonly>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="date"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field id="reference" class="default-50 sm-100">
-                <mat-label translate>STOCK_REFERENCE</mat-label>
-                <input matInput formControlName="reference" type="text">
-            </mat-form-field>
+                <mat-form-field id="reference" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text">
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
-                <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
+                    <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CONSUMER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  descriptionFieldName="denomination"
-                                  [model]="agentAutoCompleteModel"
-                                  formControlName="agent"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CONSUMER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      descriptionFieldName="denomination"
+                                      [model]="agentAutoCompleteModel"
+                                      formControlName="agent"></ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH
+                    </mat-error>
 
-            </mat-form-field>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_DEALER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="dealerAutoCompleteModel"
-                                  formControlName="dealer"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_DEALER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="dealerAutoCompleteModel"
+                                      formControlName="dealer"></ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
+                    </mat-error>
 
-            </mat-form-field>
+                </mat-form-field>
 
-            <mat-form-field id="header" class="default-50 sm-100">
-                <mat-label translate>STOCK_HEADER</mat-label>
-                <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
-            </mat-form-field>
+                <mat-form-field id="header" class="default-50 sm-100">
+                    <mat-label translate>STOCK_HEADER</mat-label>
+                    <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
 
-            <mat-form-field id="footer" class="default-50 sm-100">
-                <mat-label translate>STOCK_FOOTER</mat-label>
-                <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
-            </mat-form-field>
-        </form>
-    </mat-card-content>
-</mat-card>
+                <mat-form-field id="footer" class="default-50 sm-100">
+                    <mat-label translate>STOCK_FOOTER</mat-label>
+                    <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+    </mat-card>
 
-<ss-consumption-lines-list></ss-consumption-lines-list>
+    <ss-consumption-lines-list></ss-consumption-lines-list>
+</div>

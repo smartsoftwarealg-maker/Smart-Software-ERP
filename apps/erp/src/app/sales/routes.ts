@@ -20,6 +20,8 @@ import {
     DeliveryCancellationListComponent
 } from '@ss/sales/ui-delivery-cancellation';
 
+import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListComponent} from '@ss/sales/ui-proforma';
+
 export const lookupRoutes: Routes = []
 
 export const mainRoutes: Routes = [
@@ -36,7 +38,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryCancellationLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -61,7 +64,8 @@ export const mainRoutes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InvoiceCancellationLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -87,7 +91,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: InvoiceLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -113,7 +118,8 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: DeliveryLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -139,11 +145,39 @@ export const mainRoutes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: OrderLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: OrderDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL }
+        ]
+    },
+    {
+        path: 'proforma',
+        children: [
+            {
+                path: LIST_URL,
+                component: ProformaListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: ProformaLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ProformaDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes

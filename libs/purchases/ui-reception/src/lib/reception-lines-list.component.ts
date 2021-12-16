@@ -4,25 +4,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
 import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
-import {Transaction, TransactionLine} from '@ss/logistics/api-transaction';
-import {ReceptionLinesService} from '@ss/purchases/api-reception';
-import {DocImportingDocument} from '@ss/logistics/api-common';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
+import {
+    BaseTransactionLinesListComponent,
+    TransactionLine,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-reception-lines-list',
-    styleUrls: [ '../../../../common/ui-theme/src/lib/common-css.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './reception-lines-list.component.html'
 })
-export class ReceptionLinesListComponent extends DocImportingDocument implements OnInit {
-
-    parentId: number;
-    selectedId: number;
-    selectedRow: TransactionLine
-
+export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
 
     displayedColumns = [
         'position',
@@ -31,11 +27,12 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
         'description',
         'qtySatisfied',
         'price',
+        'vat',
     ];
 
 
     constructor(
-        public receptionLinesSrv: ReceptionLinesService,
+        public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -43,113 +40,10 @@ export class ReceptionLinesListComponent extends DocImportingDocument implements
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
-        super(shellSrv, storeNamesSrv, articleSrv, receptionLinesSrv)
+        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
-
 
     ngOnInit() {
-        this.getCurrentReceptionId().subscribe(x => {
-            if (x) {
-                this.parentId = x;
-                this.receptionLinesSrv.setParentId(x);
-                this.loadReceptionLines();
-                this.pagination.onChange = () => this.loadReceptionLines();
-            }
-        });
+        super.onInit();
     }
-
-
-    getCurrentReceptionId(): Observable<number> {
-        return this.route.params.pipe(map(p => +p.id))
-    }
-
-    loadReceptionLines() {
-        this.shellSrv.setLoading(true);
-        this.receptionLinesSrv.getPage(this.pagination, null, null)
-            .subscribe(x => {
-                this.data = x;
-                this.loadRelatedTables(this.data)
-                    .subscribe(none => {
-                        this.shellSrv.setLoading(false);
-                    })
-            });
-    }
-
-    loadRelatedTables(data): Observable<any> {
-
-        const storesIds = this.data.map(x => x.store);
-        const articleReferences = this.data.map(x => x.reference);
-
-        return this.storeNamesSrv.getAll(storesIds)
-            .pipe(tap(st => this.onStoresLoaded(st)))
-            .pipe(switchMap(x => this.articleSrv.getAll(articleReferences, 'reference')))
-            .pipe(tap(art => this.onArticlesLoaded(art)))
-    }
-
-    select(receptionLine: TransactionLine): void {
-        this.selectedId = receptionLine.id;
-        this.selectedRow = receptionLine;
-    }
-
-    public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b) {
-                    if (this.selectedId && this.selectedId > 0) {
-                        const a = this.data.filter(x => x.id === this.selectedId)[0];
-                        if (a && a.id) {
-                            this.shellSrv.setLoading(true);
-                            this.receptionLinesSrv.remove(a.id)
-                                .subscribe({
-                                        next:
-                                            () => {
-                                                this.snackBarSrv.showSuccessMessage();
-                                                this.loadReceptionLines();
-                                            },
-                                        error: err => {
-                                            this.snackBarSrv.showFailureMessage();
-                                            this.shellSrv.setLoading(false);
-                                            throw err;
-                                        }
-                                    }
-                                );
-                        }
-                    }
-                }
-            })
-    }
-
-    edit() {
-        if (this.selectedId) {
-            this.showDetail(this.selectedId);
-        }
-    }
-
-    public showDetail(id: number): void {
-        const params = {
-            parent: this.parentId,
-            id: id
-        };
-        this.router.navigate(['./' + LINES_DETAIL_URL + '/' + id], {relativeTo: this.route.parent, queryParams: params})
-            .then();
-    }
-
-
-    // private onArticlesLoaded(data: Article[]) {
-    //     this.articles = data.reduce(
-    //         (total, currentValue) => {
-    //             total[currentValue.reference] = currentValue.description2;
-    //             return total
-    //         }, {}
-    //     );
-    // }
-    //
-    // private onStoresLoaded(data: Store[]) {
-    //     this.stores = data.reduce(
-    //         (total, currentValue) => {
-    //             total[currentValue.id] = currentValue.description;
-    //             return total
-    //         }, {}
-    //     );
-    // }
 }

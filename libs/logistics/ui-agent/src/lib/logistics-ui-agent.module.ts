@@ -23,11 +23,14 @@ import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.c
         AgentListComponent,
         AgentDetailComponent,
         MiniAgentDetailComponent,
-        CustomerProfileComponent
+        CustomerProfileComponent,
     ],
-    exports: [AgentListComponent,
-              AgentDetailComponent,
-              CustomerProfileComponent]
+    exports: [
+        AgentListComponent,
+        AgentDetailComponent,
+        MiniAgentDetailComponent,
+        CustomerProfileComponent,
+    ]
 })
 export class LogisticsUiAgentModule {
 }

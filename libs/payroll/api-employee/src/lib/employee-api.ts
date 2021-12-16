@@ -8,6 +8,9 @@ export const ACTIVATION_CHILD_URL = '/activations';
 export const CAREER_PARENT_URL = '/persons';
 export const CAREER_CHILD_URL = '/careers';
 
+export const CONTRACT_PARENT_URL = '/persons';
+export const CONTRACT_CHILD_URL = '/contracts';
+
 export interface Employee {
     id: number;
 
@@ -35,7 +38,7 @@ export interface Employee {
 
     address1: string;
     address1Ar: string;
-    ​
+
     sex: 1 | 2;
 
     confidential: boolean;
@@ -47,7 +50,7 @@ export interface Employee {
 
 
     // things that may have changed
-//    wilaya: number; // was removed??
+    //    wilaya: number; // was removed??
     mservice: number;
     educationalLevel: number;
     diploma: number;
@@ -56,7 +59,7 @@ export interface Employee {
 
 export class EmployeeActivation {
     id: number;
-    center: number;
+    centerId: number;
     empId: number;
     activityStatus: number;
     hireDate: string;
@@ -82,4 +85,32 @@ export class Career {
     from_date: string;
     to_date: string;
     trial_period: number;
+}
+
+export class Contract {
+    id: number;
+    centerId: number;
+    employee: number;
+    number: string;
+    info: string;
+    recordNumber: string;
+    date: string;
+    related_contract: number;
+    fromdate: string;
+    todate: string;
+    post: number;
+    salarygrid: number;
+    salary_rank: number;
+    basesalary: number;
+    notes: string;
+    motive: number;
+    department: number;
+    service: number;
+    division: number;
+    cost_center: number;
+    ctype: number;
+    valid_date: string;
+    project: number;
+    trial_period: number;
+    confirmed: boolean;
 }

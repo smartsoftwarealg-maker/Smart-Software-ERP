@@ -55,9 +55,9 @@ import {
     Department,
     DEPARTMENTS_URL,
     Division,
-    DIVISIONS_URL
+    DIVISIONS_URL, Unit, UNIT_URL, CATEGORY_URL, SALES_CATEGORY_URL
 } from './lookups-api';
-import { Role } from "@ss/common/api-common";
+import { Role } from '@ss/common/api-common';
 
 @Injectable({
     providedIn: 'root'
@@ -111,6 +111,10 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Mark>(MARKS_URL, 'marks');
     }
 
+    public getUnits(): Observable<Unit[]> {
+        return this.lookupCacheSrv.load<Mark>(UNIT_URL, 'units');
+    }
+
     public getAgentTypes(): Observable<AgentType[]> {
         return this.lookupCacheSrv.load<AgentType>(AGENT_TYPE_URL, 'agentTypes');
     }
@@ -146,6 +150,11 @@ export class LookupsService {
     public getBanks(): Observable<Bank[]> {
         return this.lookupCacheSrv.load<Bank>(BANKS_URL, 'banks');
     }
+
+    public getSalesCategories(): Observable<Bank[]> {
+        return this.lookupCacheSrv.load<Category>(SALES_CATEGORY_URL, 'sales-categories');
+    }
+
 
     public getFunds(): Observable<Fund[]> {
         return this.lookupCacheSrv.load<Fund>(FUNDS_URL, 'funds');

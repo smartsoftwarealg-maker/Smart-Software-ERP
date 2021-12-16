@@ -15,20 +15,23 @@ export const DEPARTMENTS_URL = '/lookups/departments';
 export const DIVISIONS_URL = '/lookups/superdepartments';
 
 export const MARKS_URL = '/lookups/marks';
+export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
 export const SUBCLASSES_URL = '/lookups/subclasses';
 export const LOTS_URL = '/lots';
 export const UNITS_URL = '/lookups/units';
 export const AGENT_TYPE_URL = '/lookups/agents';
-export const CITY_URL = '/lookups/cities';
+export const CITY_URL = '/cities';
 export const COUNTRY_URL = '/lookups/countries';
 export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
 export const FUNDS_URL = '/lookups/funds';
-export const ROLES_URL = '/roles';
+export const ROLES_URL = '/lookups/roles';
 export const BANKS_URL = '/banks';
+export const SALES_CATEGORY_URL = '/lookups/sales_categories';
+export const CATEGORY_URL = '/lookups/categories';
 export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';
 
@@ -126,6 +129,10 @@ export interface AgentType {
 export interface City {
     id: number;
     description: string;
+    postalCode?: string;
+    descriptionAr?: string;
+    wilaya?: number;
+    wilayaDescr?: string;
 }
 
 export interface Country {

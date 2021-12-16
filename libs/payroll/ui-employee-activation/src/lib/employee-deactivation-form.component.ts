@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { ActivatedRoute } from '@angular/router';
-import { dateToYmdStr } from '@ss/common/api-common';
+import { dateToYmdStr, dateStrToYmd } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { EmployeeActivationComponent } from './employee-activation.component';
 import { Observable, of } from 'rxjs';
@@ -95,7 +95,7 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
         a.inConflict = false; // default is false
         this.form = this.formBuilder.group({
             id: a.id,
-            center: a.center,
+            centerId: a.centerId,
             empId: a.empId,
             activityStatus: a.activityStatus,
             hireDate: a.hireDate,
@@ -122,7 +122,8 @@ export class EmployeeDeactivationFormComponent implements OnInit, OnDestroy {
         //
         val.suspended = true;
         val.id = this.entity.id;
-        val.hireDate = this.entity.hireDate;
+        val.centerId = this.entity.centerId;
+        val.hireDate = dateStrToYmd(this.entity.hireDate);
         val.employmentType = this.entity.employmentType;
         val.activityStatus = this.entity.activityStatus;
         this.shellSrv.setLoading(true);

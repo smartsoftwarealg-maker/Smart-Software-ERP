@@ -18,5 +18,6 @@
     "REPORT_NOT_FOUND":              "Report not found.",
     "MISSING_SMTP_CONFIGURATION":    "Missing smtp configuration",
     "MISSING_COMPANY_EMAIL":         "Missing company email.",
-    "MISSING_ACCOUNT":               "Missing account number"
+    "MISSING_ACCOUNT":               "Missing account number",
+    "STOCKED_ITEM":               "Stockable item. Non stockable cannot be checked."
 }

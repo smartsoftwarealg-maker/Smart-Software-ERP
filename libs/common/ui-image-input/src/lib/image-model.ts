@@ -1,6 +1,6 @@
 import { HttpService } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, take, takeLast, tap } from "rxjs/operators";
+import { map, switchMap } from 'rxjs/operators';
 
 enum Operation {
     none,
@@ -14,9 +14,9 @@ export class ImageModel {
     private blob: Blob;
     private operation: Operation;
     //
-    public enabled: boolean;
-    public readOnly: boolean;
-    private loading;
+    public  enabled: boolean;
+    public  readOnly: boolean;
+    private loading = false;
 
     onUpdate: () => void;
 
@@ -76,7 +76,7 @@ export class ImageModel {
         }
     }
 
-    /** 
+    /**
      * used to update the url without changing anything else in the model
      */
     public setBackendUrl(backendUrl: string): void {

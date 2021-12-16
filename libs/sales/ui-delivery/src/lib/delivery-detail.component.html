@@ -1,112 +1,114 @@
-<mat-card>
-    <mat-card-content>
-        <form *ngIf="form != null" novalidate [formGroup]="form">
+<div class="main-container">
+    <mat-card>
+        <mat-card-content>
+            <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field id="number" class="default-25 sm-100">
-                <mat-label translate>STOCK_NUMBER</mat-label>
-                <input matInput formControlName="number" type="number" required readonly>
-                <mat-error *ngIf="form.controls.number.invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-            </mat-form-field>
+                <mat-form-field id="number" class="default-25 sm-100">
+                    <mat-label translate>STOCK_NUMBER</mat-label>
+                    <input matInput formControlName="number" type="number" required readonly>
+                    <mat-error *ngIf="form.controls.number.invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="default-25 sm-100">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-25 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="date"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field id="reference" class="default-25 sm-100">
-                <mat-label translate>STOCK_REFERENCE</mat-label>
-                <input matInput formControlName="reference" type="text">
-            </mat-form-field>
+                <mat-form-field id="reference" class="default-25 sm-100">
+                    <mat-label translate>LOGISTICS_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text">
+                </mat-form-field>
 
-            <mat-form-field class="default-25 sm-100">
-                <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
-                <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
-            </mat-form-field>
+                <mat-form-field class="default-25 sm-100">
+                    <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
+                    <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="agentAutoCompleteModel"
-                                  formControlName="agent"></ss-auto-complete>
-<!--                <mat-error-->
-<!--                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-<!--                </mat-error>-->
-<!--                <mat-error-->
-<!--                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-<!--                </mat-error>-->
-            </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="agentAutoCompleteModel"
+                                      formControlName="agent"></ss-auto-complete>
+                    <!--                <mat-error-->
+                    <!--                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
+                    <!--                </mat-error>-->
+                    <!--                <mat-error-->
+                    <!--                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH-->
+                    <!--                </mat-error>-->
+                </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_PAY_METHOD</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="payModeAutoCompleteModel"
-                                  formControlName="payMethod"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['payMethod'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['payMethod'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PAY_METHOD</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="payModeAutoCompleteModel"
+                                      formControlName="payMethod"></ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['payMethod'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.controls['payMethod'].hasError('validOption')" translate>COMMON_NO_MATCH
+                    </mat-error>
 
-            </mat-form-field>
-
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_DEALER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="dealerAutoCompleteModel"
-                                  formControlName="dealer"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
-
-            </mat-form-field>
+                </mat-form-field>
 
 
-            <div class="default-50 sm-100"></div>
-            <mat-tab-group>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        <span translate>LOGISTICS_DISCOUNT</span>
-                    </ng-template>
-                    <mat-form-field id="discountDescription" class="default-50 sm-100">
-                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                        <textarea matInput formControlName="discountDescription"></textarea>
-                    </mat-form-field>
-                    <mat-form-field id="fixedDiscount" class="default-25 sm-50">
-                        <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
-                        <input matInput formControlName="fixedDiscount" type="number" >
-                    </mat-form-field>
-                    <mat-form-field id="fixedDiscountVAT" class="default-25 sm-50">
-                        <mat-label translate>LOGISTICS_VAT</mat-label>
-                        <input matInput formControlName="fixedDiscountVAT" type="number" >
-                    </mat-form-field>
-                </mat-tab>
-                <mat-tab>
-                    <ng-template mat-tab-label>
-                        <span translate>COMMON_MEMO</span>
-                    </ng-template>
-                    <mat-form-field id="header" class="default-50 sm-100">
-                        <mat-label translate>STOCK_HEADER</mat-label>
-                        <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
-                    </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_DEALER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="dealerAutoCompleteModel"
+                                      formControlName="dealer"></ss-auto-complete>
+                    <mat-error
+                        *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                    <mat-error
+                        *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
+                    </mat-error>
 
-                    <mat-form-field id="footer" class="default-50 sm-100">
-                        <mat-label translate>STOCK_FOOTER</mat-label>
-                        <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
-                    </mat-form-field>
-                </mat-tab>
-            </mat-tab-group>
+                </mat-form-field>
 
-        </form>
-    </mat-card-content>
-</mat-card>
 
-<ss-delivery-lines-list></ss-delivery-lines-list>
+                <div class="default-50 sm-100"></div>
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <span translate>LOGISTICS_DISCOUNT</span>
+                        </ng-template>
+                        <mat-form-field id="discountDescription" class="default-50 sm-100">
+                            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                            <textarea matInput formControlName="discountDescription"></textarea>
+                        </mat-form-field>
+                        <mat-form-field id="fixedDiscount" class="default-25 sm-50">
+                            <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                            <input matInput formControlName="fixedDiscount" type="number">
+                        </mat-form-field>
+                        <mat-form-field id="fixedDiscountVAT" class="default-25 sm-50">
+                            <mat-label translate>LOGISTICS_VAT</mat-label>
+                            <input matInput formControlName="fixedDiscountVAT" type="number">
+                        </mat-form-field>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <span translate>COMMON_MEMO</span>
+                        </ng-template>
+                        <mat-form-field id="header" class="default-50 sm-100">
+                            <mat-label translate>STOCK_HEADER</mat-label>
+                            <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field id="footer" class="default-50 sm-100">
+                            <mat-label translate>STOCK_FOOTER</mat-label>
+                            <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
+                        </mat-form-field>
+                    </mat-tab>
+                </mat-tab-group>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <ss-delivery-lines-list class="detail-list"></ss-delivery-lines-list>
+</div>

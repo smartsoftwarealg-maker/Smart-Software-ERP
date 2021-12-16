@@ -8,7 +8,7 @@
     line-height: 48px;
     border-radius: 8px;
 }
-.container{
+.form_container{
     text-align: center;
     width: 100%;
 }
@@ -27,7 +27,7 @@
 }
 
 .pagination-buttons {
-    width: 220px;
+    width: 260px;
     height: 40px;
     margin: auto;
     display: inline-block;
@@ -35,6 +35,7 @@
     line-height: 40px;
     padding-top: 4px;
     padding-bottom: 4px;
+    font-size: small;
 }
 
 .pagination-config {

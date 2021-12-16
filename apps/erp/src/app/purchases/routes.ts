@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
-import {docInfoRoutes} from '../common';
+import {docInfoRoutes, PURCHASE_QUOTATION_URL} from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -8,8 +8,39 @@ import {
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
 import {ReceptionLinesDetailComponent, ReceptionListComponent} from '@ss/purchases/ui-reception';
 import {ReceptionDetailComponent} from '@ss/purchases/ui-reception';
+import {
+    QuotationDetailComponent,
+    QuotationLinesDetailComponent,
+    QuotationListComponent
+} from '@ss/purchases/ui-quotation';
 
 export const routes: Routes = [
+    {
+        path: PURCHASE_QUOTATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: QuotationListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: QuotationLinesDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: QuotationDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
     {
         path: PURCHASE_ORDER_URL,
         children: [
@@ -22,7 +53,8 @@ export const routes: Routes = [
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: PurchaseOrderLinesDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -48,7 +80,8 @@ export const routes: Routes = [
                 path: LINES_DETAIL_URL + '/:id',
                 component: ReceptionLinesDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
             {
                 path: ':id',

@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of} from 'rxjs';
+import {Observable, of, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
@@ -14,7 +14,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {InvoiceService} from '@ss/sales/api-invoice';
 import {InvoiceLinesListComponent} from './invoice-lines-list.component';
-import {BaseTransactionComponent, Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
 
@@ -24,7 +24,7 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './invoice-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class InvoiceDetailComponent extends BaseTransactionComponent implements OnInit {
+export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     @ViewChild(InvoiceLinesListComponent) detail: InvoiceLinesListComponent;
 
     private invoice: Transaction = null;
@@ -50,6 +50,7 @@ export class InvoiceDetailComponent extends BaseTransactionComponent implements 
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
+        public router: Router,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         private usersService: UserListService,
@@ -59,7 +60,7 @@ export class InvoiceDetailComponent extends BaseTransactionComponent implements 
         private dialog: MatDialog,
         private docImportService: DocImportService,
         private payMethodSrv: PayMethodService) {
-        super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
+        super(invoiceService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE');
     }
 
 
@@ -125,7 +126,7 @@ export class InvoiceDetailComponent extends BaseTransactionComponent implements 
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.invoice.id)
-                        .pipe(tap(_ => this.detail.loadInvoiceLines()))
+                        .pipe(switchMap(_ => this.detail.loadDetailLines()))
                         .subscribe({
                             next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
                             error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)

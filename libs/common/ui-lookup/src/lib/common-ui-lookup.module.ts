@@ -16,7 +16,7 @@ import { ServiceListComponent, ServiceDetailComponent } from './service.componen
 import { DiplomaListComponent, DiplomaDetailComponent } from './diploma.component';
 import { CategoryListComponent, CategoryDetailComponent } from './category.component';
 import { NationalityListComponent, NationalityDetailComponent } from './nationality.component';
-import { ClassListComponent, ClassDetailComponent } from './class.component';
+import { ClassListComponent, ClassDetailComponent } from './class-list.component';
 import { UnitListComponent, UnitDetailComponent } from './unit.component';
 import { MarkListComponent, MarkDetailComponent } from './mark.component';
 import { EducationLevelListComponent, EducationLevelDetailComponent } from './education-level.component';
@@ -31,8 +31,9 @@ import { RoleDetailComponent, RoleListComponent } from './role.component';
 import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './employment-type.component';
 import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './suspension-reason.component';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import { DivisionListComponent } from './division.component';
+import {DivisionDetailComponent, DivisionListComponent} from './division.component';
 import { DepartmentDetailComponent, DepartmentListComponent } from './department.component';
+import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.category.component";
 
 @NgModule({
     imports: [
@@ -95,6 +96,8 @@ import { DepartmentDetailComponent, DepartmentListComponent } from './department
         CurrencyDetailComponent,
         ActivityListComponent,
         ActivityDetailComponent,
+        SalesCategoryListComponent,
+        SalesCategoryDetailComponent,
         RoleListComponent,
         RoleDetailComponent,
         EmploymentTypeListComponent,
@@ -102,6 +105,7 @@ import { DepartmentDetailComponent, DepartmentListComponent } from './department
         SuspensionReasonListComponent,
         SuspensionReasonDetailComponent,
         DivisionListComponent,
+        DivisionDetailComponent,
         DiplomaDetailComponent,
         DepartmentDetailComponent,
         DepartmentListComponent

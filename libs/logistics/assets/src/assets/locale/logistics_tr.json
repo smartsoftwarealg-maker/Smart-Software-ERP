@@ -111,5 +111,21 @@
     "PAYMENT_COMPENSATION": "",
     "MAKE_PAYMENT":         "",
     "CANCEL_PAYMENT":       "",
-    "PURCHASE_ORDER":       ""
+    "PURCHASE_ORDER":       "",
+    "ADD_TO_CART":          "",
+    "SHOPPING_CART":        "",
+    "AMOUNT_EXCEEDED":      "",
+    "SHOPPING":             "",
+    "AMOUNT":               "",
+    "REMOVE_FROM_CART":     "",
+    "AMOUNT_EXCEEDED":      "",
+    "PROFORMA":             "",
+    "IMAGE":                "",
+    "ADD_ONE":              "",
+    "REMOVE_ONE":           "",
+    "REMOVE_ALL":           "",
+    "ACTIONS":              "",
+    "SCHEDULED_SALES":      "",
+    "CATEGORY":             "",
+    "APPROVAL":             ""
 }

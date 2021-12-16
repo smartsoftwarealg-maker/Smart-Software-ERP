@@ -1,18 +1,25 @@
 .title {
     margin-left: auto;
+    max-width: 40%;
+    padding-right: 5px;
+    font-weight: bolder;
+    font-size: 0.5em;
 }
-
-#doc-info.mat-card {
-    width: 100%;
-    margin: 0 0 16px 0 !important;
-    padding: 0 !important;
+#doc-info {
+    height: 100%;
+    margin: 0 auto;
 }
 
 
 #doc-info.mat-card mat-card-content {
     margin: 0 !important;
+    height: calc(100% - 0px);
+    padding: 0px;
 }
-
+mat-card {
+    padding: 0;
+}
 .space {
     padding-left: 10px;
 }
+

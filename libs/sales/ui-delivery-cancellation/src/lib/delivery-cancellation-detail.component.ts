@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {InvoiceCancellationLinesListComponent} from '@ss/sales/ui-invoice-cancellation';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
@@ -18,12 +17,12 @@ import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
-import {UserListService} from "@ss/common/api-users";
+import {UserListService} from '@ss/common/api-users';
 
 @Component({
   selector: 'ss-delivery-cancellation-detail',
   templateUrl: './delivery-cancellation-detail.component.html',
-  styleUrls: ['./delivery-cancellation-detail.component.scss']
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class DeliveryCancellationDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     @ViewChild(DeliveryCancellationLinesListComponent) detail: DeliveryCancellationLinesListComponent;
@@ -127,7 +126,7 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.delivery.id)
-                        .pipe(tap(_ => this.detail.loadCancellationLines()))
+                        .pipe(tap(_ => this.detail.loadDetailLines()))
                         .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
                             err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
                 }

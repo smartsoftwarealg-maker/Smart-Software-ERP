@@ -1,0 +1,154 @@
+<div class="main-container">
+    <div class="cart">
+        <fieldset>
+            <legend translate>LOGISTICS_TOTAL</legend>
+            <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
+            <span translate>COMMON_AD</span>
+        </fieldset>
+
+        <fieldset >
+            <legend translate>COMMON_STATUS</legend>
+            <div *ngIf="data[0]?.dirty; else notConfirmed" class="confirmation f-warn">
+                <button mat-raised-button
+                        color="warn"
+                        (click)="confirm(true)"
+                        [matTooltip]="langSrv.translate('COMMON_CONFIRM')">
+                    <span translate>COMMON_NOT_CONFIRMED</span> &nbsp;
+                    <i class="fas fa-check-square"></i>
+                </button>
+            </div>
+
+            <ng-template #notConfirmed>
+                <div class="confirmation f-warn">
+                    <button mat-raised-button
+                            color="accent"
+                            (click)="confirm(false)"
+                            [matTooltip]="langSrv.translate('COMMON_UNCONFIRM')">
+                        <span translate>COMMON_CONFIRMED</span> &nbsp;
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+            </ng-template>
+        </fieldset>
+
+        <fieldset class="top-actions" *ngIf="isSmallScreen">
+            <legend translate>LOGISTICS_ACTIONS</legend>
+            <button mat-mini-fab
+                    color="primary"
+                    (click)="addToCart(selectedRow, 1)"
+                    [matTooltip]="langSrv.translate('LOGISTICS_ADD_ONE')">
+                <i class="fas fa-plus-square"></i>
+            </button> &nbsp;
+            <button mat-mini-fab
+                    color="accent"
+                    (click)="addToCart(selectedRow, -1)"
+                    [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ONE')">
+                <i class="fas fa-minus-square"></i>
+            </button> &nbsp;
+            <button mat-mini-fab
+                    color="warn"
+                    (click)="removeFromCart(selectedRow)"
+                    [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ALL')">
+                <i class="fas fa-times"></i>
+            </button>
+        </fieldset>
+
+        <fieldset>
+            <legend translate>LOGISTICS_SHOPPING</legend>
+            <button mat-raised-button
+                    color="primary"
+                    [matTooltip]="langSrv.translate('LOGISTICS_SHOPPING')"
+                    routerLink="../cart">
+                <i class="fal fa-shopping-cart"></i>
+            </button>
+        </fieldset>
+
+    </div>
+
+
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
+                </mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <div class="person-photo">
+                        <ss-image-input width="60px" height="76px" [ImageModel]="e.imageModel"
+                                        style="display: inline-block;">
+                        </ss-image-input>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.reference}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description2">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="qty">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    {{ e.qty | number: '1.0-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    {{ e.price | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="total">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_TOTAL</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    {{ e.qty * e.price | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACTIONS</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    <button mat-mini-fab
+                            color="primary"
+                            (click)="addToCart(e, 1)"
+                            [matTooltip]="langSrv.translate('LOGISTICS_ADD_ONE')">
+                        <i class="fas fa-plus-square"></i>
+                    </button> &nbsp;
+                    <button mat-mini-fab
+                            color="accent"
+                            (click)="addToCart(e, -1)"
+                            [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ONE')">
+                        <i class="fas fa-minus-square"></i>
+                    </button> &nbsp;
+                    <button mat-mini-fab
+                            color="warn"
+                            (click)="removeFromCart(e)"
+                            [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ALL')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

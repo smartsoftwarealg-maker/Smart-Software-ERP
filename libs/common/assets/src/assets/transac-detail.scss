@@ -1,6 +1,21 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 5px;
+    padding: 5px;
+}
+
 mat-card {
-    width: 80%;
-    max-width: 800px;
     margin: 5px auto;
     padding: 10px 0px;
+    flex: 0 0 auto;
+}
+
+.detail-list {
+    flex: 1 1 auto;
+    height: 100%;
 }

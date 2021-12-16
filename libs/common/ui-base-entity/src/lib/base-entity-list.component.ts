@@ -1,6 +1,6 @@
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PaginationModel} from '@ss/common/api-common';
+import {PaginationModel, Right} from '@ss/common/api-common';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -64,7 +64,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         icon: 'fas fa-folders',
         label: 'COMMON_DEFAULT_REPORT',
         disabled: false, // always false
-        visible: true,
+        visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.selectReport()
     };
@@ -101,11 +101,22 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
-        //
+
+        const rights = !node || !node.accessRights? {
+            read: true,
+            write: true,
+            edit: true,
+            delete: true
+        } as Right : this.shellSrv.getRights(node.accessRights);
+
+        this.editButton.visible = rights.edit;
+        this.addButton.visible = rights.write;
+        this.deleteButton.visible = rights.delete;
+
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.defReportButton, this.viewReportButton, this.emailReportButton]);
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton, this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
     }

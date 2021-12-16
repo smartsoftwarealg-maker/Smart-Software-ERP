@@ -18,7 +18,7 @@
         </ng-container>
 
         <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.reference }}
             </mat-cell>
@@ -34,14 +34,14 @@
         <ng-container matColumnDef="dealer">
             <mat-header-cell *matHeaderCellDef translate>STOCK_DEALER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ dealers[e.dealer] }}
+                {{ e.dealerName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="agent">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CONSUMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ agents[e.agent] }}
+                {{ e.agentName }}
             </mat-cell>
         </ng-container>
 
@@ -56,6 +56,7 @@
     </div>
 
     <ss-doc-info
+        class="doc-info"
         *ngIf="selected"
         [displayedGroups]="['document']"
         [params]="{

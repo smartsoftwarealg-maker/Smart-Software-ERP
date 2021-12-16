@@ -2,16 +2,12 @@ import {
     COMMON_REPORT_PARAMS_URL,
     LOOKUPS_URL,
     STOCK_ACCOUNT_URL,
-    STOCK_ACTIVITY_URL,
     STOCK_AGENT_PRICE_URL,
-    STOCK_AGENT_TYPE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
     STOCK_CLASSES_URL,
-    STOCK_COMPANY_TYPE_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
-    STOCK_CURRENCY_URL,
     STOCK_INVENTORY_ENTRY_URL,
     STOCK_INVENTORY_EXIT_URL,
     STOCK_INVENTORY_URL,
@@ -19,23 +15,14 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    STOCK_VAT_URL,
-    docInfoRoutes, STOCK_STORES_URL, STOCK_ARTICLES_STORE_URL
+    docInfoRoutes, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
 import {
-    ActivityDetailComponent,
-    ActivityListComponent,
-    AgentTypeDetailComponent,
-    AgentTypeListComponent,
     ClassDetailComponent,
     ClassListComponent,
-    CompanyTypeDetailComponent,
-    CompanyTypeListComponent,
-    CurrencyDetailComponent,
-    CurrencyListComponent,
     MarkDetailComponent,
     MarkListComponent,
     StoreNameDetailComponent,
@@ -44,10 +31,8 @@ import {
     SubclassListComponent,
     UnitDetailComponent,
     UnitListComponent,
-    VatDetailComponent,
-    VatListComponent,
 } from '@ss/common/ui-lookup';
-import {MiniAgentDetailComponent, AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
+import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
@@ -60,10 +45,15 @@ import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines'
 import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
-import {ArticleStoreComponent} from '@ss/stock/article-store';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
+import {InventoryAnomaliesComponent} from '@ss/stock/ui-inventory-anomalies';
 
 export const mainRoutes: Routes = [
+    {
+        path: STOCK_ANOMALY_URL,
+        component: InventoryAnomaliesComponent,
+        canActivate: [CanActivateService],
+    },
     {
         path: STOCK_ARTICLES_STORE_URL,
         component: ArticleStoreAssignmentComponent,
@@ -81,6 +71,33 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ArticleDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: STOCK_INVENTORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: InventoryLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: InventoryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
@@ -202,7 +219,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: { form: 'Agent' }
             },
             {
                 path: ':id',
@@ -370,87 +388,5 @@ export const lookupRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {
-        path: STOCK_VAT_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: VatListComponent
-            },
-            {
-                path: ':id',
-                component: VatDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_AGENT_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: AgentTypeListComponent
-            },
-            {
-                path: ':id',
-                component: AgentTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_COMPANY_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CompanyTypeListComponent
-            },
-            {
-                path: ':id',
-                component: CompanyTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_CURRENCY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: CurrencyListComponent
-            },
-            {
-                path: ':id',
-                component: CurrencyDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: STOCK_ACTIVITY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ActivityListComponent
-            },
-            {
-                path: ':id',
-                component: ActivityDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 

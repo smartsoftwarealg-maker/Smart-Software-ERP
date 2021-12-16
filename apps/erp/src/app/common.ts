@@ -7,6 +7,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import {LOGISTICS_CATEGORY_URL} from "../../../scheduled/src/app/common";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -15,6 +16,7 @@ export const LOOKUPS_URL = 'lookups';
 export const ADMINISTRATION_APP_URL = 'administration';
 export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
+export const DASHBOARD_APP_URL = 'dashboard';
 export const PAYROLL_APP_URL = 'payroll';
 export const HR_APP_URL = 'hr';
 export const FINANCE_APP_URL = 'finance';
@@ -40,15 +42,15 @@ export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
 
 
 // Stock
-export const STOCK_VAT_URL = 'vat';
+export const LOGISTICS_VAT_URL = 'vat';
 export const STOCK_ARTICLES_URL = 'articles';
 export const STOCK_ARTICLES_STORE_URL = 'articlestores';
+export const STOCK_ANOMALY_URL = 'anomalies';
 export const STOCK_INVENTORY_ENTRY_URL = 'inventory-entries';
 export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
 export const STOCK_CONSUMPTION_URL = 'consumptions';
-export const STOCK_INVENTORY_URL = 'inventorys';
+export const STOCK_INVENTORY_URL = 'inventory';
 export const STOCK_AGENT_URL = 'agents';
-export const LOGISTICS_AGENT_URL = 'agents';
 export const STOCK_ACCOUNT_URL = 'accounts';
 export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 export const STOCK_COST_CENTER_URL = 'cost-centers';
@@ -58,21 +60,27 @@ export const STOCK_SUBCLASSES_URL = 'subclasses';
 export const STOCK_STORE_NAMES_URL = 'storeNames';
 export const STOCK_STORES_URL = 'stores';
 export const STOCK_UNITS_URL = 'units';
-export const STOCK_AGENT_TYPE_URL = 'agentTypes';
-export const STOCK_COMPANY_TYPE_URL = 'companyTypes';
-export const STOCK_ACTIVITY_URL = 'activities';
-export const STOCK_CURRENCY_URL = 'currencies';
+export const LOGISTICS_AGENT_TYPE_URL = 'agentTypes';
+export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
+export const LOGISTICS_ACTIVITY_URL = 'activities';
+export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
 export const PURCHASE_ORDER_URL = 'porders';
+export const PURCHASE_QUOTATION_URL = 'offers';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
 export const LOGISTICS_PAYMENTS_URL = 'payments';
+export const LOGISTICS_SPAYMENTS_URL = 'spayments';
+export const LOGISTICS_CPAYMENTS_URL = 'cpayments';
 export const LOGISTICS_COMPENSATION_URL = 'compensations';
+export const LOGISTICS_SCOMPENSATION_URL = 'scompensations';
+export const LOGISTICS_CCOMPENSATION_URL = 'ccompensations';
 export const LOGISTICS_OPTION_URL = 'options';
+export const LOGISTICS_AGENT_URL = 'agents';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -80,6 +88,7 @@ export const SALES_INVOICE_URL = 'invoice';
 export const SALES_INVOICE_CANCEL_URL = 'cinvoice';
 export const SALES_DELIVERY_CANCEL_URL = 'cdelivery';
 export const SALES_ORDER_URL = 'order';
+export const SALES_PROFORMA_URL = 'proforma';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -96,6 +105,12 @@ export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
 export const HR_CAREER_URL = 'career';
 export const HR_DIVISIONS_URL = 'divisions';
 export const HR_DEPARTMENTS_URL = 'departments'
+
+// Payroll
+
+//Dashboard
+export const DASHBOARD_QUERY_URL = 'queries'
+export const DASHBOARD_URL       = 'dashbaord'
 
 // #############
 // # FULL URLS #
@@ -123,20 +138,17 @@ export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK
 export const ABS_STORE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_STORE_URL].join('/');
 export const ABS_STOCK_STORES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_STORES_URL].join('/');
 export const ABS_STOCK_INVENTORY_ENTRY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_ENTRY_URL].join('/');
+export const ABS_STOCK_INVENTORY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_URL].join('/');
 export const ABS_STOCK_INVENTORY_EXIT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_EXIT_URL].join('/');
 export const ABS_STOCK_CONSUMPTION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_CONSUMPTION_URL].join('/');
-export const ABS_STOCK_INVENTORY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_URL].join('/');
+export const ABS_INVENTORY_ANOMALIES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ANOMALY_URL].join('/');
 export const ABS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_URL].join('/');
 export const ABS_STOCK_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ACCOUNT_URL].join('/');
 export const ABS_STOCK_AGENT_PRICE_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_PRICE_URL].join('/');
 export const ABS_STOCK_COST_CENTER_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_COST_CENTER_URL].join('/');
-export const ABS_STOCK_VAT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_VAT_URL].join('/');
 export const ABS_STOCK_STORE_NAMES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_STORE_NAMES_URL].join('/');
 export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_UNITS_URL].join('/');
-export const ABS_STOCK_AGENT_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_AGENT_TYPE_URL].join('/');
-export const ABS_STOCK_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_COMPANY_TYPE_URL].join('/');
-export const ABS_STOCK_ACTIVITY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_ACTIVITY_URL].join('/');
-export const ABS_STOCK_CURRENCY = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CURRENCY_URL].join('/');
+export const ABS_STOCK_AGENT_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, LOGISTICS_AGENT_TYPE_URL].join('/');
 export const ABS_STOCK_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_REPORT_PARAMS_URL].join('/');
 export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORT_CATALOG_URL].join('/');
 
@@ -145,10 +157,19 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
 export const LOGISTICS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_URL].join('/');
+export const ABS_LOGISTICS_VAT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_VAT_URL].join('/');
+export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL,  LOGISTICS_COMPANY_TYPE_URL].join('/');
+export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
+export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
+export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
 
 //Finance
+export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
+export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
+export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
+export const ABS_FINANCE_CCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
 
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_CATEGORIES_URL].join('/');
@@ -166,16 +187,24 @@ export const ABS_HR_CAREER_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_
 export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIVISIONS_URL].join('/');
 export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DEPARTMENTS_URL].join('/');
 
+// payroll
+
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
 export const ABS_SALES_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_INVOICE_URL].join('/');
 export const ABS_SALES_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_INVOICE_CANCEL_URL].join('/');
 export const ABS_SALES_DELIVERY_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_CANCEL_URL].join('/');
 export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_URL].join('/');
+export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PROFORMA_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
+export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
+
+//dashboard
+export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_DASHBOARD_QUERY_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_QUERY_URL].join('/');
 
 
 

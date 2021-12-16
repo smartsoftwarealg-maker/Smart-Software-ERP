@@ -19,7 +19,7 @@ import {UserListService} from '@ss/common/api-users';
 @Component({
   selector: 'ss-ui-order-detail',
   templateUrl: './order-detail.component.html',
-  styleUrls: ['./order-detail.component.scss']
+  styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
     private order: Transaction = null;
@@ -29,20 +29,20 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
-  constructor(        public orderService: SalesOrderService,
-                      public shellSrv: ShellService,
-                      public snackBarSrv: SnackBarService,
-                      public route: ActivatedRoute,
-                      public formBuilder: FormBuilder,
-                      public confirmationSrv: ConfirmationDialogService,
-                      public usersService: UserListService,
-                      public lookupsSrv: LookupsService,
-                      private agentService: AgentService,
-                      private loginService: LoginService,
-                      private loginSrv: LoginService,
-                      private payMethodSrv: PayMethodService) {
-      super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
-  }
+    constructor(public orderService: SalesOrderService,
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public formBuilder: FormBuilder,
+                public confirmationSrv: ConfirmationDialogService,
+                public usersService: UserListService,
+                public lookupsSrv: LookupsService,
+                private agentService: AgentService,
+                private loginService: LoginService,
+                private loginSrv: LoginService,
+                private payMethodSrv: PayMethodService) {
+        super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
+    }
 
     preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
@@ -76,12 +76,15 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [form.agent, Validators.required],
+            locked: [form.locked || false, Validators.required],
+            dirty: [!form.dirty || false, Validators.required]
         });
     }
+
     readForm(): Transaction {
         const form =  super.readForm();
-        fillObject(this.order, form)
+        fillObject(this.order, form);
+        form.dirty = !form.dirty;
         return form;
     }
-
 }

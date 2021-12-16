@@ -3,9 +3,8 @@ import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar } from '@ss/
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
@@ -22,7 +21,7 @@ import {UserListService} from '@ss/common/api-users';
 
 @Component({
     selector: 'ss-invoice-detail',
-    styleUrls: ['./invoice-cancellation-detail.component.scss'],
+    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './invoice-cancellation-detail.component.html'
 })
 export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
@@ -30,7 +29,6 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
 
     private invoice: Transaction = null;
     public isManager = false;
-    public groups: CCGroup[];
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
@@ -63,12 +61,6 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_INVOICE_CANCEL');
     }
 
-
-
-    preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
-    }
 
     ngOnInit() {
         super.ngOnInit();
@@ -127,9 +119,11 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.invoice.id)
-                        .pipe(tap(_ => this.detail.loadInvoiceLines()))
-                        .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                                   err => this.snackBarSrv.showMessage('COMMON_FAILURE', true))
+                        .pipe(tap(_ => this.detail.loadDetailLines()))
+                        .subscribe({
+                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
+                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                        });
                 }
             });
         }

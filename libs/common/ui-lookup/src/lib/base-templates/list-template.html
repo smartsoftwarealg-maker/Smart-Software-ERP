@@ -1,4 +1,4 @@
-<div class="container">
+<div class="form_container">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="description">
@@ -8,10 +8,10 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="accountId">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_ACCOUNTNO</mat-header-cell>
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.accountName}}
+                {{e.descriptionAr}}
             </mat-cell>
         </ng-container>
 

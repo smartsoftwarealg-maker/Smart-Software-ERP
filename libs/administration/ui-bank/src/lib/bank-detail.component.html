@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form != null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
             <mat-form-field id="code" class="value">
                 <mat-label translate>ADMINISTRATION_CODE</mat-label>
                 <input matInput formControlName="code" type="text" autofocus maxlength="4">

@@ -1,4 +1,4 @@
-<ng-container *ngIf="parentId">
+<div class="main-container" *ngIf="parentId">
     <div class="add-button">
         <button mat-mini-fab color="primary" (click)="showDetail(0)">
             <span class="fas fa-plus"></span>
@@ -28,21 +28,21 @@
         <ng-container matColumnDef="store">
             <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ stores[e.store] }}
+                {{ e.storeName }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.reference }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ articles[e.reference] }}
+                {{ e.refDescription }}
             </mat-cell>
         </ng-container>
 
@@ -54,7 +54,7 @@
         </ng-container>
 
         <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef translate>STOCK_PRICE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.price | number : '1.2-2'}}
             </mat-cell>
@@ -74,7 +74,7 @@
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
+        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
@@ -82,10 +82,11 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-</ng-container>
+</div>
 
 
 <ss-doc-info
+    class="doc-info"
     *ngIf="selectedId"
     [displayedGroups]="['article', 'document']"
     [params]="{

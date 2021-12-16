@@ -1,7 +1,4 @@
 {
-    "REFERENCE": "Référence",
-    "DESCRIPTION": "Description",
-    "PRICE": "Prix",
     "ACCOUNTNO": "Account No.",
     "ARTICLES": "Articles",
     "INVENTORY_ENTRY": "Bon d' entrée ",
@@ -33,7 +30,6 @@
     "QTY_ORDERED": "Qté Cmd.",
     "ARTICLE": "Article",
     "DOCUMENT": "Document",
-    "QTY": "Qté",
     "QTY_IN": "Qté entrant",
     "QTY_OUT": "Qté exportée",
     "PPRICE": "PPrice",
@@ -49,5 +45,14 @@
     "VAT": "TVA",
     "MARK": "Marque",
     "TOTALS": "Totaux",
-    "STORE_ASSIGNMENT": "Affectation du magasin"
+    "STORE_ASSIGNMENT": "Affectation du magasin",
+    "CLASS": "Classe",
+    "UNIT": "Unité",
+    "NON_STOCKED": "Non stocké",
+    "ANOMALIES": "Anomalies de stock",
+    "COMPUTED_STOCK": "Calculé",
+    "ACTUAL_STOCK": "Actuel",
+    "DIFFERENCE": "Difference",
+    "FIX": "Corriger les anomalies",
+    "PERCENTAGE":  "Percentage"
 }
