@@ -18,6 +18,7 @@ export const STOCK_APP_URL = 'stock';
 export const SALES_APP_URL = 'sales';
 export const DASHBOARD_APP_URL = 'dashboard';
 export const PAYROLL_APP_URL = 'payroll';
+export const HR_APP_URL = 'hr';
 export const FINANCE_APP_URL = 'finance';
 export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
@@ -89,22 +90,23 @@ export const SALES_DELIVERY_CANCEL_URL = 'cdelivery';
 export const SALES_ORDER_URL = 'order';
 export const SALES_PROFORMA_URL = 'proforma';
 
+// HR
+export const HR_CATEGORIES_URL = 'categories';
+export const HR_SERVICES_URL = 'services';
+export const HR_DIPLOMAS_URL = 'diplomas';
+export const HR_EDUCATION_LEVELS_URL = 'educationLevels';
+export const HR_MARITAL_STATUS_URL = 'maritalStatus';
+export const HR_POSTS_URL = 'posts';
+export const HR_NATIONALITIES_URL = 'nationalities';
+export const HR_EMPLOYEES_URL = 'employees';
+export const HR_EMPLOYEE_ACTIVATION_URL = activationListUrl;
+export const HR_EMPLOYMENT_TYPE_URL = 'employmentType';
+export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
+export const HR_CAREER_URL = 'career';
+export const HR_DIVISIONS_URL = 'divisions';
+export const HR_DEPARTMENTS_URL = 'departments'
+
 // Payroll
-export const PAYROLL_CATEGORIES_URL = 'categories';
-export const PAYROLL_SERVICES_URL = 'services';
-export const PAYROLL_DIPLOMAS_URL = 'diplomas';
-export const PAYROLL_EDUCATION_LEVELS_URL = 'educationLevels';
-export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
-export const PAYROLL_POSTS_URL = 'posts';
-export const PAYROLL_NATIONALITIES_URL = 'nationalities';
-export const PAYROLL_EMPLOYEES_URL = 'employees';
-export const PAYROLL_EMPLOYEE_ACTIVATION_URL = activationListUrl;
-export const PAYROLL_EMPLOYMENT_TYPE_URL = 'employmentType';
-export const PAYROLL_SUSPENSION_REASON_URL = 'suspensionReason';
-export const PAYROLL_CAREER_URL = 'career';
-export const PAYROLL_CONTRACTS_URL = 'contracts';
-export const PAYROLL_DIVISIONS_URL = 'divisions';
-export const PAYROLL_DEPARTMENTS_URL = 'departments'
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'
@@ -169,22 +171,23 @@ export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, 
 export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_CCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
 
+// HR
+export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_CATEGORIES_URL].join('/');
+export const ABS_HR_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIPLOMAS_URL].join('/');
+export const ABS_HR_EDUCATION_LEVELS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_EDUCATION_LEVELS_URL].join('/');
+export const ABS_HR_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_MARITAL_STATUS_URL].join('/');
+export const ABS_HR_POSTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_POSTS_URL].join('/');
+export const ABS_HR_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_NATIONALITIES_URL].join('/');
+export const ABS_HR_SERVICES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SERVICES_URL].join('/');
+export const ABS_HR_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL].join('/');
+export const ABS_HR_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL, HR_EMPLOYEE_ACTIVATION_URL].join('/');
+export const ABS_HR_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_EMPLOYMENT_TYPE_URL].join('/');
+export const ABS_HR_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SUSPENSION_REASON_URL].join('/');
+export const ABS_HR_CAREER_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL, HR_CAREER_URL].join('/');
+export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIVISIONS_URL].join('/');
+export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DEPARTMENTS_URL].join('/');
+
 // payroll
-export const ABS_PAYROLL_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_CATEGORIES_URL].join('/');
-export const ABS_PAYROLL_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_DIPLOMAS_URL].join('/');
-export const ABS_PAYROLL_EDUCATION_LEVELS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_EDUCATION_LEVELS_URL].join('/');
-export const ABS_PAYROLL_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_MARITAL_STATUS_URL].join('/');
-export const ABS_PAYROLL_POSTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_POSTS_URL].join('/');
-export const ABS_PAYROLL_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_NATIONALITIES_URL].join('/');
-export const ABS_PAYROLL_SERVICES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SERVICES_URL].join('/');
-export const ABS_PAYROLL_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL].join('/');
-export const ABS_PAYROLL_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL, PAYROLL_EMPLOYEE_ACTIVATION_URL].join('/');
-export const ABS_PAYROLL_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_EMPLOYMENT_TYPE_URL].join('/');
-export const ABS_PAYROLL_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_SUSPENSION_REASON_URL].join('/');
-export const ABS_PAYROLL_CAREER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL, PAYROLL_CAREER_URL].join('/');
-export const ABS_PAYROLL_CONTRACTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_EMPLOYEES_URL, PAYROLL_CONTRACTS_URL].join('/');
-export const ABS_PAYROLL_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_DIVISIONS_URL].join('/');
-export const ABS_PAYROLL_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, LOOKUPS_URL, PAYROLL_DEPARTMENTS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

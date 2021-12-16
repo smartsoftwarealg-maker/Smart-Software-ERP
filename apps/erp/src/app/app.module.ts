@@ -12,6 +12,7 @@ import {
     ADMINISTRATION_APP_URL, DASHBOARD_APP_URL, FINANCE_APP_URL,
     LOGISTICS_APP_URL,
     PAYROLL_APP_URL,
+    HR_APP_URL,
     PURCHASES_APP_URL,
     SALES_APP_URL,
     STOCK_APP_URL
@@ -46,6 +47,10 @@ const routes: Routes = [
             {
                 path: PAYROLL_APP_URL,
                 loadChildren: () => import('./payroll/payroll.module').then(m => m.PayrollModule)
+            },
+            {
+                path: HR_APP_URL,
+                loadChildren: () => import('./hr/hr.module').then(m => m.HRlModule)
             },
             {
                 path: DASHBOARD_APP_URL,
