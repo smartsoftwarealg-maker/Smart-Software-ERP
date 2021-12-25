@@ -23,8 +23,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     dashboardData: any[][] = [['test']];
     queries: string[] = [];
     detailPagination = PaginationModel.newInstance();
-    fromDate    = new FormControl(new Date(0));
+    time = new Date().getTime();
     toDate      = new FormControl(new Date());
+    fromDate    = new FormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
     agentLookup = new AgentLookupModel(this.agentSrv);
     selectedAgentId: Id = '';
     tableWidth = '800px';
@@ -59,6 +60,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const to = this.langSrv.formatDate(this.toDate.value);
         const agentId = this.selectedAgentId? this.selectedAgentId.toString : null;
         if (id) {
+            this.shellSrv.setLoading(true);
             this.dashboardSrv
                 .getHeaders(id)
                 .pipe(tap(res => {
@@ -71,9 +73,16 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                           from,
                           to,
                           agentId)))
-                .subscribe(res => {
-                    this.dashboardData = res.body;
-                    this.detailPagination.elementCount = res.itemCount;
+                .subscribe({
+                    next: res => {
+                        this.dashboardData = res.body;
+                        this.detailPagination.elementCount = res.itemCount;
+                        this.shellSrv.setLoading(false);
+                    },
+                    error: err => {
+                        this.shellSrv.setLoading(false);
+                        throw err;
+                    }
                 });
         }
     }
@@ -82,11 +91,18 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
         const id = this.selectedAgentId? this.selectedAgentId.toString : null;
+        this.shellSrv.setLoading(true);
         this.dashboardSrv
             .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, id)
-            .subscribe(res => {
-                this.dashboardData = res.body;
-                this.detailPagination.elementCount = res.itemCount;
+            .subscribe({
+                next: res => {
+                    this.dashboardData = res.body;
+                    this.detailPagination.elementCount = res.itemCount;
+                    this.shellSrv.setLoading(false);
+                }, error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
             });
     }
 }
