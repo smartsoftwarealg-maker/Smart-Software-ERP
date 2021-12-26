@@ -47,6 +47,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> {
             id: [this.loginSrv.appCtx.center],
             eval_price: [a.eval_price || 1, Validators.required],
             mainStore: [a.mainStore],
+            generate_GL: [a.generate_GL],
             inventory_date: [a.inventory_date, Validators.required]
         });
     }

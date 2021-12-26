@@ -1,4 +1,4 @@
-export const AGENT_PRICES_URL = '/inventory/agentprices';
+export const AGENT_PRICES_URL = '/logistics/prices';
 
 
 export interface AgentPrice {

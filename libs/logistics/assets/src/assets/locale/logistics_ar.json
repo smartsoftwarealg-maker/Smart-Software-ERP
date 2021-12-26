@@ -131,5 +131,7 @@
     "ACTIONS": "التحكم",
     "SCHEDULED_SALES": "المبيعات المبرمجة",
     "CATEGORY": "فئة",
-    "APPROVAL": "موافقة"
+    "APPROVAL": "موافقة",
+    "GENERATE_GL": "توليد قيود محاسبية",
+    "IS_PUBLIC":  "عمومي"
 }

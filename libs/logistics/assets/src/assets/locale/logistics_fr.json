@@ -130,5 +130,7 @@
     "ACTIONS": "ِActions",
     "SCHEDULED_SALES": "Ventes programmées",
     "CATEGORY": "Catégorie",
-    "APPROVAL": "Agrément"
+    "APPROVAL": "Agrément",
+    "GENERATE_GL": "Générer des écritures comptables",
+    "IS_PUBLIC":  "Publique"
 }
