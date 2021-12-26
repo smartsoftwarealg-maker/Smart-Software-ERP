@@ -127,5 +127,7 @@
     "ACTIONS":              "",
     "SCHEDULED_SALES":      "",
     "CATEGORY":             "",
-    "APPROVAL":             ""
+    "APPROVAL":             "",
+    "GENERATE_GL":          "",
+    "IS_PUBLIC":            ""
 }

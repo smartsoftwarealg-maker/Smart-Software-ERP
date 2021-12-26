@@ -1,5 +1,5 @@
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
 
@@ -32,9 +32,10 @@ export class BaseEntityService<T> {
      * @param id
      */
     public get(id: number | string): Observable<T> {
-        return isString(id) ?
-            this.httpSrv.get(this.getUrl() + '?find=' + id) :
-            this.httpSrv.get(this.getUrl() + '/' + id);
+        return id < 1 || id === '-1' ? of(null) :
+            isString(id) ?
+                this.httpSrv.get(this.getUrl() + '?find=' + id) :
+                this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
     public remove(id: number): Observable<any> {
