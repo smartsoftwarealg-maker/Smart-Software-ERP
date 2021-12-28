@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, User} from '@ss/common/api-common';
+import {LoginService, PaginatorPersistenceService, User} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {UserListService} from '@ss/common/api-users';
 
@@ -27,8 +27,9 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         public route: ActivatedRoute,
         public router: Router,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_USERS');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_USERS');
         this.isManager = loginSrv.appCtx.manager;
     }
 

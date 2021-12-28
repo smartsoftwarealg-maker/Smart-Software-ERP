@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentService} from '@ss/logistics/api-agent';
-import {LanguageService, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -35,7 +35,8 @@ export class DeliveryCancellationListComponent extends BaseTransactionListCompon
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService) {
-        super(deliverySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_DELIVERY_CANCELLATION');
+        public payMethodSrv: PayMethodService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(deliverySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'SALES_DELIVERY_CANCELLATION');
     }
 }

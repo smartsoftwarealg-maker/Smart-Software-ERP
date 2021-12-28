@@ -9,6 +9,7 @@ import {ReportAppsService} from '@ss/common/api-reports';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {HttpParams} from '@angular/common/http';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-report-catalog-list',
@@ -34,8 +35,9 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public route: ActivatedRoute,
         public router: Router,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'ADMINISTRATION_REPORT_CATALOG');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_REPORT_CATALOG');
         this.pagination.pageSize = 10;
     }
 

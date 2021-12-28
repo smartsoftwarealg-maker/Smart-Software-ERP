@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AccessRight, LoginService, Role} from "@ss/common/api-common";
+import {AccessRight, LoginService, PaginatorPersistenceService, Role} from "@ss/common/api-common";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -40,8 +40,9 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public router: Router,
         private lookupSrv: LookupsService,
         public formBuilder: FormBuilder,
-        private roleSrv: RoleService) {
-        super(rightsSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_ACCESS_RIGHTS');
+        private roleSrv: RoleService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(rightsSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
         this.form = new FormGroup({
             roles: new FormControl(),

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, User, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -35,7 +35,8 @@ export class QuotationListComponent  extends BaseTransactionListComponent {
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService) {
-        super(quotationSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'PURCHASES_QUOTATION');
+        public payMethodSrv: PayMethodService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(quotationSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'PURCHASES_QUOTATION');
     }
 }

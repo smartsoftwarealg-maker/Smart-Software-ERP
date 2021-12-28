@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable, of, map} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
@@ -27,8 +28,9 @@ export class CityListComponent extends BaseEntityListComponent<City> {
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public router: Router,
-        private wilayaSrv: WilayaService) {
-        super(citySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_CITIES');
+        private wilayaSrv: WilayaService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(citySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CITIES');
     }
 
     processLoadedData(data: City[]): Observable<City[]> {

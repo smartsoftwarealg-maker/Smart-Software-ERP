@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class VatListComponent extends BaseEntityListComponent<Vat> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public router: Router) {
-        super(vatSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_VATS');
+        public router: Router,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(vatSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_VATS');
     }
 
 }

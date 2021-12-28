@@ -5,6 +5,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {Bank, BankService} from "@ss/administration/api-bank";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-bank-list',
@@ -26,8 +27,9 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
         public route: ActivatedRoute,
         public router: Router,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(bankSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv,'ADMINISTRATION_BANK');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(bankSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_BANK');
     }
 
 

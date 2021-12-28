@@ -6,6 +6,7 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
@@ -24,8 +25,9 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public router: Router) {
-        super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_CURRENCIES');
+        public router: Router,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CURRENCIES');
         this.pagination.pageSize = 20;
     }
 

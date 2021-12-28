@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ConsumptionService} from '@ss/stock/api-consumption';
-import {LanguageService, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
@@ -34,7 +34,8 @@ export class ConsumptionListComponent extends BaseTransactionListComponent {
         public agentSrv: AgentService,
         public langServ: LanguageService,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(consumptionSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentSrv, langServ, confirmationSrv, defReportSrv, null, 'STOCK_CONSUMPTION');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(consumptionSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentSrv, langServ, confirmationSrv, defReportSrv, null, pagPersistSrv, 'STOCK_CONSUMPTION');
     }
 }

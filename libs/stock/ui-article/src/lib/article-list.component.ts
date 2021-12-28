@@ -9,7 +9,7 @@ import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ImageModel} from '@ss/common/ui-image-input';
-import {HttpService} from '@ss/common/api-common';
+import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-article-list',
@@ -41,8 +41,9 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public httpSrv: HttpService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_ARTICLES');
+        public httpSrv: HttpService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ARTICLES');
     }
 
     processLoadedData(data: Article[]): Observable<Article[]> {

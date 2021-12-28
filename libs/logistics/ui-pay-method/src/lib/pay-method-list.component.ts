@@ -8,6 +8,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable, switchMap, tap} from "rxjs";
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-account-list',
@@ -34,8 +35,9 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public defReportSrv: DefaultReportService,
-        private payModeSrv: PayModeService) {
-        super(payMethodSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_PAY_METHOD');
+        private payModeSrv: PayModeService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(payMethodSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_PAY_METHOD');
     }
 
     processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -37,8 +37,9 @@ export class InvoiceCancellationListComponent extends BaseTransactionListCompone
             public langServ: LanguageService,
             public confirmationSrv: ConfirmationDialogService,
             public defReportSrv: DefaultReportService,
-            public payMethodSrv: PayMethodService) {
-            super(invoiceSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'SALES_INVOICE_CANCELLATION');
+            public payMethodSrv: PayMethodService,
+            public pagPersistSrv: PaginatorPersistenceService) {
+            super(invoiceSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'SALES_INVOICE_CANCELLATION');
         }
 
 }

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
@@ -35,7 +35,8 @@ export class PurchaseOrderListComponent extends BaseTransactionListComponent {
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService) {
-        super(orderSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'PURCHASES_PURCHASE_ORDER');
+        public payMethodSrv: PayMethodService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(orderSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'PURCHASES_PURCHASE_ORDER');
     }
 }

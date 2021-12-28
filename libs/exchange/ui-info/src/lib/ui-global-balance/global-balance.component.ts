@@ -2,7 +2,7 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginationModel} from '@ss/common/api-common';
+import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {
     GBalance,
     GlobalBalanceService
@@ -37,7 +37,8 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
                 public router: Router,
                 public route: ActivatedRoute,
                 public defReportSrv: DefaultReportService,
-                public confirmationSrv: ConfirmationDialogService) {
+                public confirmationSrv: ConfirmationDialogService,
+                public pagPersistSrv: PaginatorPersistenceService) {
         super(exchangeSrv,
             shellSrv,
             snackBarSrv,
@@ -45,6 +46,7 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
             router,
             confirmationSrv,
             defReportSrv,
+            pagPersistSrv,
             'EXCHANGE_GLOBAL_BALANCE');
 
     }
