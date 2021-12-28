@@ -1,9 +1,18 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_HR_CATEGORIES_URL, ABS_HR_DEPARTMENTS_URL,
-    ABS_HR_DIPLOMAS_URL, ABS_HR_DIVISIONS_URL, ABS_HR_EDUCATION_LEVELS_URL,
-    ABS_HR_EMPLOYMENT_TYPE_URL, ABS_HR_MARITAL_STATUS_URL, ABS_HR_NATIONALITIES_URL,
-    ABS_HR_POSTS_URL, ABS_HR_SERVICES_URL,
+    ABS_HR_CAREER_URL,
+    ABS_HR_CATEGORIES_URL,
+    ABS_HR_DEPARTMENTS_URL,
+    ABS_HR_DIPLOMAS_URL,
+    ABS_HR_DIVISIONS_URL,
+    ABS_HR_EDUCATION_LEVELS_URL,
+    ABS_HR_EMPLOYEE_ACTIVATION_URL,
+    ABS_HR_EMPLOYEES_URL,
+    ABS_HR_EMPLOYMENT_TYPE_URL,
+    ABS_HR_MARITAL_STATUS_URL,
+    ABS_HR_NATIONALITIES_URL,
+    ABS_HR_POSTS_URL,
+    ABS_HR_SERVICES_URL,
     ABS_HR_SUSPENSION_REASON_URL
 } from '../common';
 
@@ -69,6 +78,27 @@ export const payrollNavTree: SideNavNode = {
                     name: 'COMMON_NATIONALITIES',
                     icon: 'fas fa-flag',
                     route: ABS_HR_NATIONALITIES_URL
+                }
+            ]
+        },
+        {
+            name: 'PAYROLL_EMPLOYEES',
+            icon: 'far fa-user-hard-hat',
+            children: [
+                {
+                    name: 'PAYROLL_EMPLOYEES_LIST',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_HR_EMPLOYEES_URL
+                },
+                {
+                    name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
+                    icon: 'fas fa-play',
+                    route: ABS_HR_EMPLOYEE_ACTIVATION_URL
+                },
+                {
+                    name: 'PAYROLL_CAREER',
+                    icon: 'fas fa-user-hard-hat',
+                    route: ABS_HR_CAREER_URL
                 }
             ]
         }
