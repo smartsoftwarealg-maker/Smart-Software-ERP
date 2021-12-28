@@ -32,15 +32,18 @@ import {
     PostDetailComponent,
     PostListComponent,
     ServiceListComponent,
-    ServiceDetailComponent
+    ServiceDetailComponent,
+    EmploymentTypeListComponent,
+    EmploymentTypeDetailComponent,
+    SuspensionReasonListComponent,
+    SuspensionReasonDetailComponent, DepartmentListComponent, DepartmentDetailComponent
 } from '@ss/common/ui-lookup';
-import { WilayaListComponent, WilayaDetailComponent } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
 import { EmployeeListComponent, EmployeeDetailComponent } from '@ss/payroll/ui-employee';
-import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from 'libs/common/ui-lookup/src/lib/employment-type.component';
-import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from 'libs/common/ui-lookup/src/lib/suspension-reason.component';
-import { DepartmentListComponent, DepartmentDetailComponent } from 'libs/common/ui-lookup/src/lib/department.component';
-import { DivisionListComponent, DivisionDetailComponent } from 'libs/common/ui-lookup/src/lib/division.component';
+import {
+    DivisionDetailComponent,
+    DivisionListComponent
+} from '../../../../../libs/common/ui-lookup/src/lib/division.component';
 
 export const mainRoutes: Routes = [
     {
