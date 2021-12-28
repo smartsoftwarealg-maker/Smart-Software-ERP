@@ -7,6 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AnomalyService} from './anomaly.service';
 import {tap} from 'rxjs';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-inventory-anomalies',
@@ -39,8 +40,9 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         public route: ActivatedRoute,
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService) {
-        super(anomalySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'STOCK_ANOMALIES');
+        public defReportSrv: DefaultReportService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(anomalySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ANOMALIES');
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.editButton.visible = false;

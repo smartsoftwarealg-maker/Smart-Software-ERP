@@ -1,6 +1,6 @@
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PaginationModel, Right} from '@ss/common/api-common';
+import {PaginationModel, PaginatorPersistenceService, Right} from '@ss/common/api-common';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
@@ -19,7 +19,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
+        public pagPersistSrv: PaginatorPersistenceService,
         public title: string) {
+        this.pagination.copyModel(pagPersistSrv.get(title));
     }
 
     //
@@ -186,6 +188,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public ngOnDestroy() {
         this.releaseResources();
         this.shellSrv.reset();
+        this.pagPersistSrv.set(this.title, this.pagination);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

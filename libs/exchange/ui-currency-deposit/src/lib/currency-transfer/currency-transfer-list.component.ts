@@ -14,6 +14,7 @@ import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-transfer-list',
@@ -45,8 +46,9 @@ export class CurrencyTransferListComponent extends BaseEntityListComponent<Depos
         public route: ActivatedRoute,
         public router: Router,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(transferSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'EXCHANGE_TRANSFERS');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(transferSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'EXCHANGE_TRANSFERS');
     }
 
     processLoadedData(data: Deposit[]): Observable<Deposit[]> {

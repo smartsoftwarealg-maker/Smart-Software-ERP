@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-dashboard-list',
@@ -25,7 +26,8 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
               public router: Router,
               public confirmationSrv: ConfirmationDialogService,
               public defReportSrv: DefaultReportService,
-              public lookupsSrv: LookupsService) {
-      super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_DASHBOARD_QUERIES');
+              public lookupsSrv: LookupsService,
+              public pagPersistSrv: PaginatorPersistenceService) {
+      super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_DASHBOARD_QUERIES');
   }
 }

@@ -11,6 +11,7 @@ import {
     GenerationAccountAutocompleteModel
 } from '@ss/accounting/api-accounts';
 import {GenerationAccountService} from '@ss/accounting/api-accounts';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
@@ -29,8 +30,9 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public router: Router) {
-        super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_CLASSES');
+        public router: Router,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_CLASSES');
     }
 
     processLoadedData(data: Class[]): Observable<Class[]> {

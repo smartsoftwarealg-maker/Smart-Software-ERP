@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, User, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
 import {AgentService} from '@ss/logistics/api-agent';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {SalesProformaService} from "../sales-proforma.service";
-import {BaseTransactionListComponent} from "../../../../../logistics/api-transaction/src/lib/base-transaction-list.component";
+import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-proforma',
@@ -35,7 +35,8 @@ export class ProformaListComponent  extends BaseTransactionListComponent {
         public langServ: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService) {
-        super(proformaSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, 'LOGISTICS_PROFORMA');
+        public payMethodSrv: PayMethodService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(proformaSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'LOGISTICS_PROFORMA');
     }
 }

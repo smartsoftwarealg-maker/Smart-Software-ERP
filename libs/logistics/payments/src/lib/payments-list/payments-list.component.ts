@@ -9,6 +9,7 @@ import {PaymentsListService} from "../services/payments-list.service";
 import {map, Observable} from "rxjs";
 import {Payment} from "@ss/logistics/api-common";
 import {AgentService} from "@ss/logistics/api-agent";
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-payments-list',
@@ -34,8 +35,9 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public lookupsSrv: LookupsService) {
-        super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PAYMENTS');
+        public lookupsSrv: LookupsService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_PAYMENTS');
 
         this.route.data.subscribe(data => {
                 if (data['url']) {

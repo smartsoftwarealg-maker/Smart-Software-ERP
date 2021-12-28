@@ -9,6 +9,7 @@ import {switchMap} from 'rxjs/operators';
 import {AgentService} from '@ss/logistics/api-agent';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-exchange-list',
@@ -41,8 +42,9 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        private currencySrv: CurrencyService) {
-        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'EXCHANGE_CURRENCY_EXCHANGE');
+        private currencySrv: CurrencyService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'EXCHANGE_CURRENCY_EXCHANGE');
     }
 
 

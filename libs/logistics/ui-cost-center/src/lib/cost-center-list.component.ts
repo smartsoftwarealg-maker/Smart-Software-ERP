@@ -8,6 +8,7 @@ import {Observable} from "rxjs";
 import {CCGroup, LookupsService} from "@ss/common/api-lookup";
 import {tap} from "rxjs/operators";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-cost-center-list',
@@ -34,8 +35,9 @@ export class CostCenterListComponent extends BaseEntityListComponent<CostCenter>
         public router: Router,
         public lookupSrv: LookupsService,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(costCenterSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_COST_CENTER');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(costCenterSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_COST_CENTER');
     }
 
 

@@ -8,6 +8,7 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 //import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
@@ -35,8 +36,9 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public router: Router,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public lookupsSrv: LookupsService) {
-        super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_AGENTS');
+        public lookupsSrv: LookupsService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_AGENTS');
     }
 
     preload(): Observable<any> {

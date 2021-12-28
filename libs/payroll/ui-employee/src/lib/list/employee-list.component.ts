@@ -8,7 +8,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
-import { HttpService, LanguageService } from '@ss/common/api-common';
+import {HttpService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import { ACTIVATION_LIST_URL, CAREER_URL } from '@ss/payroll/api-employee';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
@@ -69,8 +69,9 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public httpSrv: HttpService) {
-        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEES_LIST');
+        public httpSrv: HttpService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
     }
 
     ngOnInit(): void {

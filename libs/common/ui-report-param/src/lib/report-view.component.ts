@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {ReportTreeService} from '@ss/common/api-reports';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {LanguageService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
 import {Observable} from 'rxjs';
@@ -68,8 +68,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         public sanitizer: DomSanitizer,
         public langSrv: LanguageService,
         public defReportSrv: DefaultReportService,
-        private deviceService: DeviceDetectorService) {
-        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_REPORTS')
+        private deviceService: DeviceDetectorService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS')
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }

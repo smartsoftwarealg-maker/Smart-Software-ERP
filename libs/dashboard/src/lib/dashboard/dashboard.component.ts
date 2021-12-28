@@ -8,7 +8,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import {switchMap, tap} from 'rxjs';
-import {LanguageService, PaginationModel} from '@ss/common/api-common';
+import {LanguageService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {Id} from '@ss/common/ui-auto-complete';
@@ -39,8 +39,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 public defReportSrv: DefaultReportService,
                 public lookupsSrv: LookupsService,
                 private agentSrv: AgentService,
-                private langSrv: LanguageService) {
-        super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_DASHBOARD_QUERIES');
+                private langSrv: LanguageService,
+                public pagPersistSrv: PaginatorPersistenceService) {
+        super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();
         this.agentLookup.onValueChanged = (id: Id) => this.selectedAgentId = id;
     }
@@ -58,7 +59,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.dashboardData = [];
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
-        const agentId = this.selectedAgentId? this.selectedAgentId + '' : null;
         if (id) {
             this.shellSrv.setLoading(true);
             this.dashboardSrv
@@ -67,7 +67,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     this.headers = res.headers;
                     this.tableWidth = (res.headers.length * 100) + '';
                 }),
-                      switchMap(_ => this.dashboardSrv.getData(
+                    switchMap(_ => this.dashboardSrv.getData(
                           id,
                           this.detailPagination.page,
                           this.detailPagination.pageSize,

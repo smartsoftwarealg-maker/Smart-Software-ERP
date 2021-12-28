@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
-import {LanguageService, User, UserService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 import {AgentService} from '@ss/logistics/api-agent';
@@ -34,7 +34,8 @@ export class InventoryEntryListComponent extends BaseTransactionListComponent {
         public agentSrv: AgentService,
         public langServ: LanguageService,
         public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService) {
-        super(inventoryEntrySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, null, 'STOCK_INVENTORY_ENTRY');
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(inventoryEntrySrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, null, pagPersistSrv, 'STOCK_INVENTORY_ENTRY');
     }
 }

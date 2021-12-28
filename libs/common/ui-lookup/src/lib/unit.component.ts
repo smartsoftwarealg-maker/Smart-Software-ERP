@@ -7,6 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
@@ -25,8 +26,9 @@ export class UnitListComponent extends BaseEntityListComponent<Unit> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
-        public router: Router) {
-        super(unitSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_UNITS');
+        public router: Router,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(unitSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_UNITS');
     }
 
 }
