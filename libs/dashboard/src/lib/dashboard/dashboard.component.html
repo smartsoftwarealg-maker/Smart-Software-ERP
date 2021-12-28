@@ -34,7 +34,9 @@
     </div>
 
     <div class="detail" *ngIf="headers && headers.length > 0 && dashboardData.length > 0">
-        <mat-table mat-table [dataSource]="dashboardData" class="main-table" [class.min-with]="tableWidth">
+        <mat-table mat-table [dataSource]="dashboardData"
+                   class="main-table"
+                   [ngStyle]="{ 'min-width.px': tableWidth }">
             <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
                 <mat-header-cell *matHeaderCellDef> {{ h }} </mat-header-cell>
                 <mat-cell *matCellDef="let e">

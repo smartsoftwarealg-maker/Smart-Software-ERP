@@ -28,7 +28,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     fromDate    = new FormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
     agentLookup = new AgentLookupModel(this.agentSrv);
     selectedAgentId: Id = '';
-    tableWidth = '800px';
+    tableWidth = '1000';
 
     constructor(public dashboardSrv: DashboardService,
                 public shellSrv: ShellService,
@@ -58,21 +58,22 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.dashboardData = [];
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
-        const agentId = this.selectedAgentId? this.selectedAgentId.toString : null;
+        const agentId = this.selectedAgentId? this.selectedAgentId + '' : null;
         if (id) {
             this.shellSrv.setLoading(true);
             this.dashboardSrv
                 .getHeaders(id)
                 .pipe(tap(res => {
                     this.headers = res.headers;
-                    this.tableWidth = (100 * this.headers.length) + 'px';
-                    }),
-                      switchMap(_ => this.dashboardSrv.getData(id,
+                    this.tableWidth = (res.headers.length * 100) + '';
+                }),
+                      switchMap(_ => this.dashboardSrv.getData(
+                          id,
                           this.detailPagination.page,
                           this.detailPagination.pageSize,
                           from,
                           to,
-                          agentId)))
+                          this.selectedAgentId)))
                 .subscribe({
                     next: res => {
                         this.dashboardData = res.body;
@@ -90,10 +91,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private updatePage() {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
-        const id = this.selectedAgentId? this.selectedAgentId.toString : null;
         this.shellSrv.setLoading(true);
         this.dashboardSrv
-            .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, id)
+            .getData(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId)
             .subscribe({
                 next: res => {
                     this.dashboardData = res.body;
