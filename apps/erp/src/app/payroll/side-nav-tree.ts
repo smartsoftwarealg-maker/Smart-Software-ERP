@@ -95,11 +95,11 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-play',
                     route: ABS_HR_EMPLOYEE_ACTIVATION_URL
                 },
-                {
-                    name: 'PAYROLL_CAREER',
-                    icon: 'fas fa-user-hard-hat',
-                    route: ABS_HR_CAREER_URL
-                }
+                // {
+                //     name: 'PAYROLL_CAREER',
+                //     icon: 'fas fa-user-hard-hat',
+                //     route: ABS_HR_CAREER_URL
+                // }
             ]
         }
     ]
