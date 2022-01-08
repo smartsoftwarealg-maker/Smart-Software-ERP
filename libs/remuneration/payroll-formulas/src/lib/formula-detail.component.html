@@ -1,0 +1,73 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>REMUN_VARIABLE</mat-label>
+                <input matInput formControlName="variable" type="text"  required autofocus>
+                <mat-error *ngIf="form.controls['variable'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <span class="default-50 sm-100"></span>
+
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
+                <input matInput formControlName="descriptionAr" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>COMMON_BASE</mat-label>
+                <input matInput formControlName="base" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>COMMON_RATE</mat-label>
+                <input matInput formControlName="rate" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-100 sm-100">
+                <mat-label translate>COMMON_FORMULA</mat-label>
+                <input matInput formControlName="formula" type="text">
+                <mat-error *ngIf="form.controls['formula'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+                <input matInput formControlName="accountno" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>REMUN_FOLLOWUP</mat-label>
+                <input matInput formControlName="followup_fld" type="text">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Favorite food</mat-label>
+                <mat-select formControlName="val_sign">
+                    <mat-option  [value]="4">
+                        <span translate>REMUN_STRICT_POSITIVE</span>
+                    </mat-option>
+                    <mat-option  [value]="3">
+                        <span translate>REMUN_POSITIVE</span>
+                    </mat-option>
+                    <mat-option  [value]="2">
+                        <span translate>REMUN_NEGATIVE</span>
+                    </mat-option>
+                    <mat-option  [value]="1">
+                        <span translate>REMUN_ANY</span>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
