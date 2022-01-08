@@ -1,6 +1,6 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, PAY_ELEMENT_TYPES_URL, PAY_ELEMENTSINFO_URL, PAY_FORMULAS_URL
+    LOOKUPS_URL, PAY_ELEMENT_TYPES_URL, PAY_ELEMENTSINFO_URL, PAY_FORMULAS_URL, PAY_MONTH_CLOSER
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -9,6 +9,7 @@ import { Routes } from '@angular/router';
 import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remuneration/elementsinfo';
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
 import {FormulaListComponent,FormulaDetailComponent, PAYROLL_FORMULAS_URL} from '@ss/remuneration/payroll-formulas';
+import {MonthCloserComponent} from '../../../../../libs/remuneration/payroll-month/src';
 
 export const mainRoutes: Routes = [
     {
@@ -48,6 +49,11 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: PAY_MONTH_CLOSER,
+        component: MonthCloserComponent,
+        canActivate: [CanActivateService],
     },
     {
         path: PAY_FORMULAS_URL,

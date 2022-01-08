@@ -110,6 +110,8 @@ export const HR_DEPARTMENTS_URL = 'departments'
 export const PAY_ELEMENTSINFO_URL  = 'elementsinfo';
 export const PAY_ELEMENT_TYPES_URL = 'elementtypes';
 export const PAY_FORMULAS_URL      = 'formulas';
+export const PAY_MONTH_CLOSER      = 'close';
+
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'
 export const DASHBOARD_URL       = 'dashbaord'
@@ -193,6 +195,7 @@ export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_
 export const ABS_ELEMENTSINFO_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENTSINFO_URL].join('/');
 export const ABS_ELEMENT_TYPES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENT_TYPES_URL].join('/');
 export const ABS_FORMULAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FORMULAS_URL].join('/');
+export const ABS_MONTH_CLOSER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CLOSER].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

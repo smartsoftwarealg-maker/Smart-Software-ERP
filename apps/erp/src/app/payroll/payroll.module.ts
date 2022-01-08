@@ -5,6 +5,7 @@ import {PayrollUiEmployeeModule} from '@ss/payroll/ui-employee';
 import {RemunerationElementTypesModule} from '@ss/remuneration/element-types';
 import {RemunerationElementsinfoModule} from '@ss/remuneration/elementsinfo';
 import {RemunerationPayrollFormulasModule} from '@ss/remuneration/payroll-formulas';
+import {RemunerationPayrollMonthModule} from '@ss/remuneration/payroll-month';
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import {RemunerationPayrollFormulasModule} from '@ss/remuneration/payroll-formul
         RemunerationElementTypesModule,
         RemunerationElementsinfoModule,
         RemunerationPayrollFormulasModule,
+        RemunerationPayrollMonthModule,
         RouterModule.forChild(mainRoutes)
     ]
 })

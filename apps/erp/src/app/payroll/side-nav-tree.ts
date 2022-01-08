@@ -15,7 +15,7 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL
+    ABS_HR_SUSPENSION_REASON_URL, ABS_MONTH_CLOSER_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -122,6 +122,12 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_FORMULAS',
                     icon: 'fas fa-list-ol',
                     route: ABS_FORMULAS_URL
+                },
+                {
+                    name: 'REMUN_MONTH_CLOSURE',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_CLOSER_URL,
+                    accessRights: 'Closer'
                 },
             ]
         }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {mergeMap, Observable, of} from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, flatMap, map, switchMap, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -58,7 +58,7 @@ export class LoginService {
     public reLogin(): Observable<boolean> {
         return this.httpSrv
             .init()
-            .pipe(flatMap(_ =>
+            .pipe(mergeMap(_ =>
                 this.httpSrv.get<any>('/relogin')
                     .pipe(
                         tap(res2 => this.loginFromStorage()),
@@ -110,6 +110,12 @@ export class LoginService {
                 this.httpSrv.updateAuthToken(res);
                 // localStorage.setItem('auth_token', res);
             }));
+    }
+
+    public setPayrollMonth(month: number): Observable<any> {
+        return this.httpSrv
+            .put('/payroll/month', { 'payMonth': month })
+            .pipe(tap(res => this.httpSrv.updateAuthToken(res)));
     }
 
     public logout() {

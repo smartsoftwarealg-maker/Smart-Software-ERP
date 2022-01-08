@@ -364,6 +364,9 @@
         "remuneration-payroll-formulas": {
             "tags": []
         },
+        "remuneration-payroll-month": {
+            "tags": []
+        },
         "sales-api-delivery": {
             "tags": []
         },
