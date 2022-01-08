@@ -107,7 +107,9 @@ export const HR_DIVISIONS_URL = 'divisions';
 export const HR_DEPARTMENTS_URL = 'departments'
 
 // Payroll
-
+export const PAY_ELEMENTSINFO_URL  = 'elementsinfo';
+export const PAY_ELEMENT_TYPES_URL = 'elementtypes';
+export const PAY_FORMULAS_URL      = 'formulas';
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'
 export const DASHBOARD_URL       = 'dashbaord'
@@ -188,6 +190,9 @@ export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_UR
 export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DEPARTMENTS_URL].join('/');
 
 // payroll
+export const ABS_ELEMENTSINFO_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENTSINFO_URL].join('/');
+export const ABS_ELEMENT_TYPES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENT_TYPES_URL].join('/');
+export const ABS_FORMULAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FORMULAS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

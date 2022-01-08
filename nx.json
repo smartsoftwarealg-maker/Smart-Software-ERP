@@ -352,6 +352,18 @@
         "purchases-ui-reception": {
             "tags": []
         },
+        "remuneration-assets": {
+            "tags": []
+        },
+        "remuneration-element-types": {
+            "tags": []
+        },
+        "remuneration-elementsinfo": {
+            "tags": []
+        },
+        "remuneration-payroll-formulas": {
+            "tags": []
+        },
         "sales-api-delivery": {
             "tags": []
         },

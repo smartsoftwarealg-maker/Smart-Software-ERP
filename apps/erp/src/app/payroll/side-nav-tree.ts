@@ -1,5 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ELEMENT_TYPES_URL,
+    ABS_ELEMENTSINFO_URL, ABS_FORMULAS_URL,
     ABS_HR_CAREER_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_DEPARTMENTS_URL,
@@ -100,6 +102,27 @@ export const payrollNavTree: SideNavNode = {
                 //     icon: 'fas fa-user-hard-hat',
                 //     route: ABS_HR_CAREER_URL
                 // }
+            ]
+        },
+        {
+            name: 'REMUN_REMUNERTION',
+            icon: 'far fa-user-hard-hat',
+            children: [
+                {
+                    name: 'REMUN_ELEMENTSINFO',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_ELEMENTSINFO_URL
+                },
+                {
+                    name: 'REMUN_ELEMENT_TYPES',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_ELEMENT_TYPES_URL
+                },
+                {
+                    name: 'REMUN_FORMULAS',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_FORMULAS_URL
+                },
             ]
         }
     ]

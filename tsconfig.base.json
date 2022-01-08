@@ -258,6 +258,18 @@
             "@ss/purchases/ui-reception": [
                 "libs/purchases/ui-reception/src/index.ts"
             ],
+            "@ss/remuneration/assets": [
+                "libs/remuneration/assets/src/index.ts"
+            ],
+            "@ss/remuneration/element-types": [
+                "libs/remuneration/element-types/src/index.ts"
+            ],
+            "@ss/remuneration/elementsinfo": [
+                "libs/remuneration/elementsinfo/src/index.ts"
+            ],
+            "@ss/remuneration/payroll-formulas": [
+                "libs/remuneration/payroll-formulas/src/index.ts"
+            ],
             "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
             "@ss/sales/api-delivery-cancellation": [
                 "libs/sales/api-delivery-cancellation/src/index.ts"
