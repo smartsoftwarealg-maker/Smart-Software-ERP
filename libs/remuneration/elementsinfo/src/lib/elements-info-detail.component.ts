@@ -25,7 +25,7 @@ export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<Eleme
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMETSINFO');
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMENTSINFO');
     }
 
     setupForm(e: ElementsInfo): FormGroup {

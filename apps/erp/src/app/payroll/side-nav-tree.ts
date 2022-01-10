@@ -105,7 +105,7 @@ export const payrollNavTree: SideNavNode = {
             ]
         },
         {
-            name: 'REMUN_REMUNERTION',
+            name: 'REMUN_REMUNERATION',
             icon: 'far fa-user-hard-hat',
             children: [
                 {

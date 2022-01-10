@@ -46,8 +46,8 @@ export class MonthCancelerComponent implements OnInit {
         let currMonth = 0;
 
         this.confirmationSrv
-            .confirm(this.langSrv.translate('REMUN_MONTH_CLOSURE'),
-                this.langSrv.translate('REMUN_CLOSE_CURRENT_MONTH'),
+            .confirm(this.langSrv.translate('REMUN_MONTH_CANCELLATION'),
+                this.langSrv.translate('REMUN_CANCEL_MONTH') + '?',
                 false,
                 false)
             .pipe(

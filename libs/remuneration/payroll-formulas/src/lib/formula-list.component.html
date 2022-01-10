@@ -54,7 +54,7 @@
             <ng-container matColumnDef=val_sign>
                 <mat-header-cell *matHeaderCellDef translate>COMMON_SIGN</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    <span translate>{{ ['REMUN_ANY', 'REMUN_NEGATIVE', 'REMUN_POSITIVE', 'STRICT_POSITIVE'][+e.val_sign - 1] }} </span>
+                    <span translate>{{ ['COMMON_ANY', 'REMUN_NEGATIVE', 'REMUN_POSITIVE', 'STRICT_POSITIVE'][+e.val_sign - 1] }} </span>
                 </mat-cell>
             </ng-container>
 

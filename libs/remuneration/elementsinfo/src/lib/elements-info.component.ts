@@ -34,7 +34,7 @@ export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo>
         public defReportSrv: DefaultReportService,
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMETSINFO');
+        super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTSINFO');
         this.pagination.pageSize = 15;
     }
 

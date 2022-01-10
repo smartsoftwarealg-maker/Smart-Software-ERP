@@ -47,7 +47,7 @@ export class MonthCloserComponent implements OnInit {
 
       this.confirmationSrv
           .confirm(this.langSrv.translate('REMUN_MONTH_CLOSURE'),
-              this.langSrv.translate('REMUN_CLOSE_CURRENT_MONTH'),
+              this.langSrv.translate('REMUN_CLOSE') + '?',
               false,
               false)
           .pipe(
