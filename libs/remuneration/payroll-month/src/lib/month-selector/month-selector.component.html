@@ -1,0 +1,38 @@
+<mat-card *ngIf="form">
+    <mat-card-content>
+        <form  novalidate [formGroup]="form">
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>COMMON_MONTH</mat-label>
+                <input matInput formControlName="month" type="number"  required autofocus step="1">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>COMMON_YEAR</mat-label>
+                <input matInput formControlName="year" type="number"  required step="1">
+            </mat-form-field>
+
+            <span class="default-100 sm-100"></span>
+            <div class="default-50 sm-100"> <span translate>REMUN_MIN</span>: {{ minMonth}}</div>
+            <div class="default-50 sm-100"> <span translate>REMUN_MAX</span>: {{ maxMonth}}</div>
+            <span class="default-100 sm-100"></span>
+
+            <div *ngIf="!processing" class="default-50 sm-100" >
+                <button mat-raised-button color="primary" type="button" (click)="close()">
+                    {{ 'REMUN_SELECT_MONTH' | translate }}
+                </button>
+            </div>
+
+            <div  *ngIf="!processing" class="default-50 sm-100">
+                <button  mat-button type="button" (click)="cancel()">
+                    {{ 'COMMON_CANCEL' | translate }}
+                </button>
+            </div>
+
+        </form>
+
+        <span class="default-100 sm-100"></span>
+
+        <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+    </mat-card-content>
+</mat-card>
+
+
