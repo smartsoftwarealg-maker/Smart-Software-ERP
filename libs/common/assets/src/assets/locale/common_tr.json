@@ -165,5 +165,6 @@
     "PERSONS":                        "",
     "DASHBOARD":                      "",
     "DASHBOARD_QUERIES":              "",
-    "DASHBOARD_QUERY":                ""
+    "DASHBOARD_QUERY":                "",
+    "EXIT":                           ""
 }

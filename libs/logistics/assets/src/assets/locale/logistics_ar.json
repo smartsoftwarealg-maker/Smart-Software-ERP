@@ -133,5 +133,6 @@
     "CATEGORY": "فئة",
     "APPROVAL": "موافقة",
     "GENERATE_GL": "توليد قيود محاسبية",
-    "IS_PUBLIC":  "عمومي"
+    "IS_PUBLIC":  "عمومي",
+    "DOCUMENT_NUMBERING": "ترقيم الوثائق"
 }

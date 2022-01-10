@@ -133,5 +133,6 @@
     "CATEGORY": "Category",
     "APPROVAL": "Approval",
     "GENERATE_GL": "Generate accounting entries",
-    "IS_PUBLIC":  "Public"
+    "IS_PUBLIC":  "Public",
+    "DOCUMENT_NUMBERING": "Document numbering"
 }

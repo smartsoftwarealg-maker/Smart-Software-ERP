@@ -1799,6 +1799,11 @@
                             },
                             {
                                 "glob": "**/*",
+                                "input": "libs/remuneration/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
                                 "input": "libs/payroll/assets/src/assets",
                                 "output": "assets"
                             },
@@ -2819,6 +2824,31 @@
             "schematics": {
                 "@nrwl/angular:component": {
                     "style": "scss"
+                }
+            }
+        },
+        "logistics-document-numbering": {
+            "projectType": "library",
+            "root": "libs/logistics/document-numbering",
+            "sourceRoot": "libs/logistics/document-numbering/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/document-numbering"],
+                    "options": {
+                        "jestConfig": "libs/logistics/document-numbering/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/document-numbering/src/**/*.ts",
+                            "libs/logistics/document-numbering/src/**/*.html"
+                        ]
+                    }
                 }
             }
         },
@@ -3924,6 +3954,131 @@
                     "options": {
                         "jestConfig": "libs/purchases/ui-reception/jest.config.js",
                         "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "remuneration-assets": {
+            "projectType": "library",
+            "root": "libs/remuneration/assets",
+            "sourceRoot": "libs/remuneration/assets/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/assets"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/assets/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/assets/src/**/*.ts",
+                            "libs/remuneration/assets/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "remuneration-element-types": {
+            "projectType": "library",
+            "root": "libs/remuneration/element-types",
+            "sourceRoot": "libs/remuneration/element-types/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/element-types"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/element-types/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/element-types/src/**/*.ts",
+                            "libs/remuneration/element-types/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "remuneration-elementsinfo": {
+            "projectType": "library",
+            "root": "libs/remuneration/elementsinfo",
+            "sourceRoot": "libs/remuneration/elementsinfo/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/elementsinfo"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/elementsinfo/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/elementsinfo/src/**/*.ts",
+                            "libs/remuneration/elementsinfo/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "remuneration-payroll-formulas": {
+            "projectType": "library",
+            "root": "libs/remuneration/payroll-formulas",
+            "sourceRoot": "libs/remuneration/payroll-formulas/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/payroll-formulas"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/payroll-formulas/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/payroll-formulas/src/**/*.ts",
+                            "libs/remuneration/payroll-formulas/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "remuneration-payroll-month": {
+            "projectType": "library",
+            "root": "libs/remuneration/payroll-month",
+            "sourceRoot": "libs/remuneration/payroll-month/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/payroll-month"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/payroll-month/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/payroll-month/src/**/*.ts",
+                            "libs/remuneration/payroll-month/src/**/*.html"
+                        ]
                     }
                 }
             }

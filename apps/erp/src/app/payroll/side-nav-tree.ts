@@ -1,5 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ELEMENT_TYPES_URL,
+    ABS_ELEMENTSINFO_URL, ABS_FORMULAS_URL,
     ABS_HR_CAREER_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_DEPARTMENTS_URL,
@@ -13,7 +15,7 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL
+    ABS_HR_SUSPENSION_REASON_URL, ABS_MONTH_CANCELER_URL, ABS_MONTH_CLOSER_URL, ABS_MONTH_SELECTOR_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -95,11 +97,49 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-play',
                     route: ABS_HR_EMPLOYEE_ACTIVATION_URL
                 },
+                // {
+                //     name: 'PAYROLL_CAREER',
+                //     icon: 'fas fa-user-hard-hat',
+                //     route: ABS_HR_CAREER_URL
+                // }
+            ]
+        },
+        {
+            name: 'REMUN_REMUNERATION',
+            icon: 'far fa-user-hard-hat',
+            children: [
                 {
-                    name: 'PAYROLL_CAREER',
-                    icon: 'fas fa-user-hard-hat',
-                    route: ABS_HR_CAREER_URL
-                }
+                    name: 'REMUN_MONTH_SELECTION',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_SELECTOR_URL,
+                },
+                {
+                    name: 'REMUN_ELEMENTSINFO',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_ELEMENTSINFO_URL
+                },
+                {
+                    name: 'REMUN_ELEMENT_TYPES',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_ELEMENT_TYPES_URL
+                },
+                {
+                    name: 'REMUN_FORMULAS',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_FORMULAS_URL
+                },
+                {
+                    name: 'REMUN_MONTH_CLOSURE',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_CLOSER_URL,
+                    accessRights: 'Closer'
+                },
+                {
+                    name: 'REMUN_MONTH_CANCELLATION',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_CANCELER_URL,
+                    accessRights: 'Canceler'
+                },
             ]
         }
     ]

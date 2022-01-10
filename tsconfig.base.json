@@ -173,6 +173,9 @@
             "@ss/logistics/api-transaction": [
                 "libs/logistics/api-transaction/src/index.ts"
             ],
+            "@ss/logistics/document-numbering": [
+                "libs/logistics/document-numbering/src/index.ts"
+            ],
             "@ss/logistics/payment-compensation": [
                 "libs/logistics/payment-compensation/src/index.ts"
             ],
@@ -257,6 +260,21 @@
             ],
             "@ss/purchases/ui-reception": [
                 "libs/purchases/ui-reception/src/index.ts"
+            ],
+            "@ss/remuneration/assets": [
+                "libs/remuneration/assets/src/index.ts"
+            ],
+            "@ss/remuneration/element-types": [
+                "libs/remuneration/element-types/src/index.ts"
+            ],
+            "@ss/remuneration/elementsinfo": [
+                "libs/remuneration/elementsinfo/src/index.ts"
+            ],
+            "@ss/remuneration/payroll-formulas": [
+                "libs/remuneration/payroll-formulas/src/index.ts"
+            ],
+            "@ss/remuneration/payroll-month": [
+                "libs/remuneration/payroll-month/src/index.ts"
             ],
             "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
             "@ss/sales/api-delivery-cancellation": [

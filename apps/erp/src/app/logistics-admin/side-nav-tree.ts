@@ -9,7 +9,7 @@ import {
     ABS_STOCK_AGENT_URL,
     LOGISTICS_STOCK_AGENT_URL,
     ABS_FINANCE_PAYMENTS,
-    ABS_LOGISTICS_VAT_URL
+    ABS_LOGISTICS_VAT_URL, LOGISTICS_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -23,6 +23,12 @@ export const logAdminNavTree: SideNavNode = {
         //     route: ABS_STOCK_UNITS_URL,
         //     accessRights: 'Unit'
         // },
+        {
+            name: 'LOGISTICS_DOCUMENT_NUMBERING',
+            icon: 'fas fa-list-ol',
+            route: LOGISTICS_DOCUMENT_URL,
+            accessRights: 'Document'
+        },
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',

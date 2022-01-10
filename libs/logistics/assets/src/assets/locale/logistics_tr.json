@@ -129,5 +129,6 @@
     "CATEGORY":             "",
     "APPROVAL":             "",
     "GENERATE_GL":          "",
-    "IS_PUBLIC":            ""
+    "IS_PUBLIC":            "",
+    "DOCUMENT_NUMBERING":   ""
 }

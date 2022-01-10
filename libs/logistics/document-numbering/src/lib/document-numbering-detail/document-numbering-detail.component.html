@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="documentAutoCompleteModel"
+                                  formControlName="code">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_NUMBER</mat-label>
+                <input matInput formControlName="startNumber" type="number" required>
+                <mat-error *ngIf="form.controls.startNumber.invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_FOOTER</mat-label>
+                <input matInput formControlName="footer" type="text">
+            </mat-form-field>
+
+<!--            <div id="manager" class="default-100 sm-100" *ngIf="isManager">-->
+<!--                <mat-checkbox formControlName="manager" translate>ADMINISTRATION_MANAGER</mat-checkbox>-->
+<!--            </div>-->
+
+        </form>
+    </mat-card-content>
+</mat-card>

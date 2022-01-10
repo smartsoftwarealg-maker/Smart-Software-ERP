@@ -246,6 +246,9 @@
         "logistics-assets": {
             "tags": []
         },
+        "logistics-document-numbering": {
+            "tags": []
+        },
         "logistics-payment-compensation": {
             "tags": []
         },
@@ -350,6 +353,21 @@
             "tags": []
         },
         "purchases-ui-reception": {
+            "tags": []
+        },
+        "remuneration-assets": {
+            "tags": []
+        },
+        "remuneration-element-types": {
+            "tags": []
+        },
+        "remuneration-elementsinfo": {
+            "tags": []
+        },
+        "remuneration-payroll-formulas": {
+            "tags": []
+        },
+        "remuneration-payroll-month": {
             "tags": []
         },
         "sales-api-delivery": {
