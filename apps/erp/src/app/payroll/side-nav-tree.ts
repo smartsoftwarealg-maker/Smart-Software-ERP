@@ -15,7 +15,7 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_MONTH_CLOSER_URL
+    ABS_HR_SUSPENSION_REASON_URL, ABS_MONTH_CANCELER_URL, ABS_MONTH_CLOSER_URL, ABS_MONTH_SELECTOR_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -109,6 +109,11 @@ export const payrollNavTree: SideNavNode = {
             icon: 'far fa-user-hard-hat',
             children: [
                 {
+                    name: 'REMUN_MONTH_SELECTION',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_SELECTOR_URL,
+                },
+                {
                     name: 'REMUN_ELEMENTSINFO',
                     icon: 'fas fa-list-ol',
                     route: ABS_ELEMENTSINFO_URL
@@ -128,6 +133,12 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-list-ol',
                     route: ABS_MONTH_CLOSER_URL,
                     accessRights: 'Closer'
+                },
+                {
+                    name: 'REMUN_MONTH_CANCELLATION',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_MONTH_CANCELER_URL,
+                    accessRights: 'Canceler'
                 },
             ]
         }

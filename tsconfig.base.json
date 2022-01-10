@@ -173,6 +173,9 @@
             "@ss/logistics/api-transaction": [
                 "libs/logistics/api-transaction/src/index.ts"
             ],
+            "@ss/logistics/document-numbering": [
+                "libs/logistics/document-numbering/src/index.ts"
+            ],
             "@ss/logistics/payment-compensation": [
                 "libs/logistics/payment-compensation/src/index.ts"
             ],

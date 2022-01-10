@@ -246,6 +246,9 @@
         "logistics-assets": {
             "tags": []
         },
+        "logistics-document-numbering": {
+            "tags": []
+        },
         "logistics-payment-compensation": {
             "tags": []
         },

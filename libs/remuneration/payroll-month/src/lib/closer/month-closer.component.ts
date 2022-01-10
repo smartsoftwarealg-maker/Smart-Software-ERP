@@ -42,16 +42,25 @@ export class MonthCloserComponent implements OnInit {
   }
 
   close() {
+      let oldMonth = 0;
+      let currMonth = 0;
+
       this.confirmationSrv
           .confirm(this.langSrv.translate('REMUN_MONTH_CLOSURE'),
               this.langSrv.translate('REMUN_CLOSE_CURRENT_MONTH'),
               false,
               false)
-          .pipe(tap(confirmed =>       this.processing = confirmed),
-                switchMap(confirmed => confirmed? this.selectorSrv.close() : of(false)))
+          .pipe(
+              tap(confirmed => this.processing = confirmed),
+              switchMap(_ => this.selectorSrv.maxMonth()),
+              tap(res => oldMonth = res.month),
+              switchMap(confirmed => confirmed ? this.selectorSrv.close() : of(false)),
+              switchMap(_ => this.selectorSrv.maxMonth()),
+              tap(res => currMonth = res.month),
+              switchMap(_ => currMonth > oldMonth? this.selectorSrv.selectMonth(currMonth) : of(0)))
           .subscribe({
-                  next: bool => {
-                      if (bool) {
+                  next: _ => {
+                      if (currMonth > oldMonth) {
                           this.snackBarSrv.showSuccessMessage();
                           this.router.navigate(['../'], {relativeTo: this.activatedRoute});
                       } else {
@@ -64,8 +73,7 @@ export class MonthCloserComponent implements OnInit {
                       throw err;
                   }
               }
-          )
-
+          );
   }
 
     public canDeactivate(): boolean {

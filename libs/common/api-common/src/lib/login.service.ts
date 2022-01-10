@@ -45,6 +45,11 @@ export class LoginService {
         return this.appCtx != null && (this.appCtx.id !== null || this.appCtx.agentId != null || this.appCtx.personId != null);
     }
 
+    public setContext(info: LoginInfo) {
+        this.appCtx = info.ctx;
+        this.httpSrv.updateAuthToken(info.jwt);
+    }
+
     public loadContext(): Observable<LoginInfo> {
         return this.httpSrv.get<LoginInfo>('/relogin')
             .pipe(
@@ -93,13 +98,12 @@ export class LoginService {
                     }),
                     map(() => this.appCtx),
                     catchError(err => {
-                        if (err.status != 401) {
+                        if (err.status !== 401) {
                             throw err;
                         }
                         return of (null);
                     })
                 );
-
     }
 
     public centerLogin(center: number): Observable<LoginInfo> {

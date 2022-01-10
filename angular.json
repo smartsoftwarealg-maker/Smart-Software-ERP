@@ -2827,6 +2827,31 @@
                 }
             }
         },
+        "logistics-document-numbering": {
+            "projectType": "library",
+            "root": "libs/logistics/document-numbering",
+            "sourceRoot": "libs/logistics/document-numbering/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/logistics/document-numbering"],
+                    "options": {
+                        "jestConfig": "libs/logistics/document-numbering/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/logistics/document-numbering/src/**/*.ts",
+                            "libs/logistics/document-numbering/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "logistics-payment-compensation": {
             "projectType": "library",
             "root": "libs/logistics/payment-compensation",

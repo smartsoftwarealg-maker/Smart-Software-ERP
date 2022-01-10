@@ -132,5 +132,6 @@
     "CATEGORY": "Catégorie",
     "APPROVAL": "Agrément",
     "GENERATE_GL": "Générer des écritures comptables",
-    "IS_PUBLIC":  "Publique"
+    "IS_PUBLIC":  "Publique",
+    "DOCUMENT_NUMBERING": "Numérotation des documents"
 }

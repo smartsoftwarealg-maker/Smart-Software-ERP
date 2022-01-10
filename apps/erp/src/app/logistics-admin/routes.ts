@@ -6,7 +6,7 @@ import {
     LOGISTICS_AGENT_TYPE_URL,
     LOGISTICS_COMPANY_TYPE_URL,
     LOGISTICS_CURRENCY_URL,
-    LOGISTICS_VAT_URL
+    LOGISTICS_VAT_URL, LOGISTICS_NUMBERING_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -35,6 +35,10 @@ import {
     VatListComponent,
 } from '@ss/common/ui-lookup';
 import {OptionsDetailComponent} from '@ss/logistics/ui-options';
+import {
+    DocumentNumberingDetailComponent,
+    DocumentNumberingListComponent
+} from '../../../../../libs/logistics/document-numbering/src';
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
@@ -148,6 +152,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_NUMBERING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DocumentNumberingListComponent
+            },
+            {
+                path: ':id',
+                component: DocumentNumberingDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

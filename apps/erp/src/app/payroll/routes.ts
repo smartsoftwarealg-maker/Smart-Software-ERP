@@ -1,6 +1,12 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, PAY_ELEMENT_TYPES_URL, PAY_ELEMENTSINFO_URL, PAY_FORMULAS_URL, PAY_MONTH_CLOSER
+    LOOKUPS_URL,
+    PAY_ELEMENT_TYPES_URL,
+    PAY_ELEMENTSINFO_URL,
+    PAY_FORMULAS_URL,
+    PAY_MONTH_CANCELER,
+    PAY_MONTH_CLOSER,
+    PAY_MONTH_SELECTOR
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -8,8 +14,8 @@ import {
 import { Routes } from '@angular/router';
 import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remuneration/elementsinfo';
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
-import {FormulaListComponent,FormulaDetailComponent, PAYROLL_FORMULAS_URL} from '@ss/remuneration/payroll-formulas';
-import {MonthCloserComponent} from '../../../../../libs/remuneration/payroll-month/src';
+import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
+import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
 
 export const mainRoutes: Routes = [
     {
@@ -53,6 +59,16 @@ export const mainRoutes: Routes = [
     {
         path: PAY_MONTH_CLOSER,
         component: MonthCloserComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: PAY_MONTH_CANCELER,
+        component: MonthCancelerComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: PAY_MONTH_SELECTOR,
+        component: MonthSelectorComponent,
         canActivate: [CanActivateService],
     },
     {
