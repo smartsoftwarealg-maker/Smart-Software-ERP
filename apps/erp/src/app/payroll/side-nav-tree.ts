@@ -106,37 +106,37 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'REMUN_REMUNERATION',
-            icon: 'far fa-user-hard-hat',
+            icon: 'fas fa-money-check-alt',
             children: [
                 {
                     name: 'REMUN_MONTH_SELECTION',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fas fa-calendar-check',
                     route: ABS_MONTH_SELECTOR_URL,
                 },
                 {
                     name: 'REMUN_ELEMENTSINFO',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fab fa-elementor',
                     route: ABS_ELEMENTSINFO_URL
                 },
                 {
                     name: 'REMUN_ELEMENT_TYPES',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fas fa-layer-group',
                     route: ABS_ELEMENT_TYPES_URL
                 },
                 {
                     name: 'REMUN_FORMULAS',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fas fa-function',
                     route: ABS_FORMULAS_URL
                 },
                 {
                     name: 'REMUN_MONTH_CLOSURE',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fas fa-calendar-times',
                     route: ABS_MONTH_CLOSER_URL,
                     accessRights: 'Closer'
                 },
                 {
                     name: 'REMUN_MONTH_CANCELLATION',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fas fa-calendar-week',
                     route: ABS_MONTH_CANCELER_URL,
                     accessRights: 'Canceler'
                 },
