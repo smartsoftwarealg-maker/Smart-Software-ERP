@@ -13,6 +13,7 @@
     "MAX": "Maximum",
     "SELECT_MONTH": "Sélectionnez un mois",
     "FIELD": "Rubrique",
+    "FIELDS": "Rubriques",
     "SPECIAL_FIXED": "Fix special",
     "GRID_COMPUTED": "Fonction de grille",
     "POST_COMPUTED": "Fonction de poste",
@@ -23,5 +24,7 @@
     "FOLLOW_UP": "Rappelle",
     "SIGN": "Signe",
     "CLOSE": "Fermer le mois en cours",
-    "CANCEL_MONTH": "Annuler le mois en cours"
+    "CANCEL_MONTH": "Annuler le mois en cours",
+    "INPUT_FILTERS": "Filtres d'entrée",
+    "SELECTION": "Selection"
 }

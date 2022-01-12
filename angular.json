@@ -4083,6 +4083,31 @@
                 }
             }
         },
+        "remunernation-input-filters": {
+            "projectType": "library",
+            "root": "libs/remunernation/input-filters",
+            "sourceRoot": "libs/remunernation/input-filters/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remunernation/input-filters"],
+                    "options": {
+                        "jestConfig": "libs/remunernation/input-filters/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remunernation/input-filters/src/**/*.ts",
+                            "libs/remunernation/input-filters/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "sales-api-delivery": {
             "projectType": "library",
             "root": "libs/sales/api-delivery",

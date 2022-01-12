@@ -13,6 +13,7 @@
     "MAX": "الأقصى",
     "SELECT_MONTH": "اختر الشهر",
     "FIELD": "العنصر",
+    "FIELDS": "العناصر",
     "SPECIAL_FIXED": "ثابت خاص",
     "GRID_COMPUTED": "مرتبط بالشبكة",
     "POST_COMPUTED": "مرتبط بالمنصب",
@@ -23,5 +24,8 @@
     "FOLLOW_UP": "التابع",
     "SIGN": "الإشارة",
     "CLOSE": "أغلق الشهر الحالي",
-    "CANCEL_MONTH": "إلغاء الشهر الحالي"
+    "CANCEL_MONTH": "إلغاء الشهر الحالي",
+    "INPUT_FILTERS": "مرشحات الإدخال",
+    "SELECTION": "التحديد"
+
 }
