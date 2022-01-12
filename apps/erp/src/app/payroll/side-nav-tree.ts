@@ -1,7 +1,8 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ELEMENT_TYPES_URL,
-    ABS_ELEMENTSINFO_URL, ABS_FORMULAS_URL,
+    ABS_ELEMENTSINFO_URL,
+    ABS_FORMULAS_URL,
     ABS_HR_CAREER_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_DEPARTMENTS_URL,
@@ -15,7 +16,11 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_MONTH_CANCELER_URL, ABS_MONTH_CLOSER_URL, ABS_MONTH_SELECTOR_URL
+    ABS_HR_SUSPENSION_REASON_URL,
+    ABS_INPUT_FILTERS_URL,
+    ABS_MONTH_CANCELER_URL,
+    ABS_MONTH_CLOSER_URL,
+    ABS_MONTH_SELECTOR_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -127,6 +132,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_FORMULAS',
                     icon: 'fas fa-function',
                     route: ABS_FORMULAS_URL
+                },
+                {
+                    name: 'REMUN_INPUT_FILTERS',
+                    icon: 'fas fa-filter',
+                    route: ABS_INPUT_FILTERS_URL
                 },
                 {
                     name: 'REMUN_MONTH_CLOSURE',

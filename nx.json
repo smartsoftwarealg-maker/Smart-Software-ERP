@@ -370,6 +370,9 @@
         "remuneration-payroll-month": {
             "tags": []
         },
+        "remunernation-input-filters": {
+            "tags": []
+        },
         "sales-api-delivery": {
             "tags": []
         },

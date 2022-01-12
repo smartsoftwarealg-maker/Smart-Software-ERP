@@ -13,6 +13,7 @@
     "MAX": "Maximum",
     "SELECT_MONTH": "Select month",
     "FIELD": "Element",
+    "FIELDS": "Elements",
     "SPECIAL_FIXED": "Special fixed",
     "GRID_COMPUTED": "Function of grid",
     "POST_COMPUTED": "Function of post",
@@ -23,5 +24,7 @@
     "FOLLOW_UP": "Follow up",
     "SIGN": "Sign",
     "CLOSE": "Close current month",
-    "CANCEL_MONTH": "Cancel current month"
+    "CANCEL_MONTH": "Cancel current month",
+    "INPUT_FILTERS": "Input filters",
+    "SELECTION": "Selection"
 }

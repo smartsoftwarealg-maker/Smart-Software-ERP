@@ -114,6 +114,8 @@ export const PAY_FORMULAS_URL      = 'formulas';
 export const PAY_MONTH_CLOSER      = 'close';
 export const PAY_MONTH_CANCELER    = 'cancel';
 export const PAY_MONTH_SELECTOR    = 'select';
+export const PAY_INPUT_FILTERS     = 'inputfilters';
+
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'
@@ -202,6 +204,7 @@ export const ABS_FORMULAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FORMU
 export const ABS_MONTH_CLOSER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CLOSER].join('/');
 export const ABS_MONTH_CANCELER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CANCELER].join('/');
 export const ABS_MONTH_SELECTOR_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_SELECTOR].join('/');
+export const ABS_INPUT_FILTERS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_INPUT_FILTERS].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

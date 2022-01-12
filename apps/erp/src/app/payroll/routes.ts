@@ -3,7 +3,7 @@ import {
     LOOKUPS_URL,
     PAY_ELEMENT_TYPES_URL,
     PAY_ELEMENTSINFO_URL,
-    PAY_FORMULAS_URL,
+    PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
     PAY_MONTH_SELECTOR
@@ -16,6 +16,7 @@ import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remunerati
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
 import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
 import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
+import {InputFilterDetailComponent, InputFilterListComponent} from '../../../../../libs/remuneration/input-filters/src';
 
 export const mainRoutes: Routes = [
     {
@@ -82,6 +83,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: FormulaDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_INPUT_FILTERS,
+        children: [
+            {
+                path: LIST_URL,
+                component: InputFilterListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: InputFilterDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
