@@ -26,6 +26,7 @@
     "CLOSE": "أغلق الشهر الحالي",
     "CANCEL_MONTH": "إلغاء الشهر الحالي",
     "INPUT_FILTERS": "مرشحات الإدخال",
-    "SELECTION": "التحديد"
-
+    "SELECTION": "التحديد",
+    "ELEMENTS_ENTRY": "إدخال كشوف المرتبات",
+    "PAY_SLIP": "كشف المرتب"
 }

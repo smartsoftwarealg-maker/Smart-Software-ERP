@@ -276,8 +276,11 @@
             "@ss/remuneration/payroll-month": [
                 "libs/remuneration/payroll-month/src/index.ts"
             ],
-            "@ss/remunernation/input-filters": [
-                "libs/remunernation/input-filters/src/index.ts"
+            "@ss/remuneration/elements-entry": [
+                "libs/remuneration/elements-entry/src/index.ts"
+            ],
+            "@ss/remuneration/input-filters": [
+                "libs/remuneration/input-filters/src/index.ts"
             ],
             "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
             "@ss/sales/api-delivery-cancellation": [

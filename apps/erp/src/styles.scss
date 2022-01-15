@@ -15,6 +15,7 @@ body {
     overflow: hidden;
 }
 
+
 $ss-white: (
         50: #ffffff,
         100: #FDFDFD,
@@ -813,4 +814,5 @@ $theme-4-warn:    mat-palette($mat-red);
         max-width: 98% !important;
         width: 98% !important;
     }
+
 }

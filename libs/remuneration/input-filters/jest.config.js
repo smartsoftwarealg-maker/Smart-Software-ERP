@@ -1,5 +1,5 @@
 module.exports = {
-    displayName: 'remunernation-input-filters',
+    displayName: 'remuneration-input-filters',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
     globals: {
@@ -8,7 +8,7 @@ module.exports = {
             stringifyContentPathRegex: '\\.(html|svg)$',
         },
     },
-    coverageDirectory: '../../../coverage/libs/remunernation/input-filters',
+    coverageDirectory: '../../../coverage/libs/remuneration/input-filters',
     transform: {
         '^.+\\.(ts|js|html)$': 'jest-preset-angular',
     },

@@ -1,0 +1,19 @@
+.container {
+    width: 94%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+mat-radio-button {
+    padding: 8px 20px;
+}
+
+.filter {
+    min-width: 300px;
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+.mode {
+    width: 100%;
+}

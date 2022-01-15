@@ -26,5 +26,7 @@
     "CLOSE": "Close current month",
     "CANCEL_MONTH": "Cancel current month",
     "INPUT_FILTERS": "Input filters",
-    "SELECTION": "Selection"
+    "SELECTION": "Selection",
+    "ELEMENTS_ENTRY": "Payroll input",
+    "PAY_SLIP": "Pay slip"
 }

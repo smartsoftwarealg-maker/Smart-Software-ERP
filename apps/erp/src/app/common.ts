@@ -115,6 +115,7 @@ export const PAY_MONTH_CLOSER      = 'close';
 export const PAY_MONTH_CANCELER    = 'cancel';
 export const PAY_MONTH_SELECTOR    = 'select';
 export const PAY_INPUT_FILTERS     = 'inputfilters';
+export const PAY_ELEMENTS_ENTRY_URL    = 'elementsentry';
 
 
 //Dashboard
@@ -205,6 +206,7 @@ export const ABS_MONTH_CLOSER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_M
 export const ABS_MONTH_CANCELER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CANCELER].join('/');
 export const ABS_MONTH_SELECTOR_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_SELECTOR].join('/');
 export const ABS_INPUT_FILTERS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_INPUT_FILTERS].join('/');
+export const ABS_ELEMENTS_ENTRY_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENTS_ENTRY_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

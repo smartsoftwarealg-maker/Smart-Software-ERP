@@ -4083,17 +4083,17 @@
                 }
             }
         },
-        "remunernation-input-filters": {
+        "remuneration-elements-entry": {
             "projectType": "library",
-            "root": "libs/remunernation/input-filters",
-            "sourceRoot": "libs/remunernation/input-filters/src",
+            "root": "libs/remuneration/elements-entry",
+            "sourceRoot": "libs/remuneration/elements-entry/src",
             "prefix": "ss",
             "architect": {
                 "test": {
                     "builder": "@nrwl/jest:jest",
-                    "outputs": ["coverage/libs/remunernation/input-filters"],
+                    "outputs": ["coverage/libs/remuneration/elements-entry"],
                     "options": {
-                        "jestConfig": "libs/remunernation/input-filters/jest.config.js",
+                        "jestConfig": "libs/remuneration/elements-entry/jest.config.js",
                         "passWithNoTests": true
                     }
                 },
@@ -4101,8 +4101,33 @@
                     "builder": "@nrwl/linter:eslint",
                     "options": {
                         "lintFilePatterns": [
-                            "libs/remunernation/input-filters/src/**/*.ts",
-                            "libs/remunernation/input-filters/src/**/*.html"
+                            "libs/remuneration/elements-entry/src/**/*.ts",
+                            "libs/remuneration/elements-entry/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "remuneration-input-filters": {
+            "projectType": "library",
+            "root": "libs/remuneration/input-filters",
+            "sourceRoot": "libs/remuneration/input-filters/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/input-filters"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/input-filters/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/input-filters/src/**/*.ts",
+                            "libs/remuneration/input-filters/src/**/*.html"
                         ]
                     }
                 }
