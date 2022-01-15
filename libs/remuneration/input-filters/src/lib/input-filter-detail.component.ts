@@ -29,7 +29,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMENTSINFO');
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_INPUT_FILTERS');
     }
 
     public setupForm(e: InputFilter): FormGroup {

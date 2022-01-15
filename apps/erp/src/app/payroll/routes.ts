@@ -1,7 +1,7 @@
 import {
     HR_POSTS_URL,
     LOOKUPS_URL,
-    PAY_ELEMENT_TYPES_URL,
+    PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
@@ -17,6 +17,10 @@ import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remune
 import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
 import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
 import {InputFilterDetailComponent, InputFilterListComponent} from '../../../../../libs/remuneration/input-filters/src';
+import {
+    ElementsEntryDetailComponent,
+    ElementsEntryListComponent
+} from '../../../../../libs/remuneration/elements-entry/src';
 
 export const mainRoutes: Routes = [
     {
@@ -83,6 +87,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: FormulaDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_ELEMENTS_ENTRY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ElementsEntryListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: ElementsEntryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

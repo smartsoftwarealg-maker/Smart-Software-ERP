@@ -16,9 +16,10 @@
 }
 .main-table {
     height: 100%;
-    width: 100%;
+    min-width: 100%;
     margin: 0 auto;
 }
+
 mat-cell, mat-header-cell {
     min-width: 100px;
 }
