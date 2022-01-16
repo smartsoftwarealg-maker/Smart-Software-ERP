@@ -47,3 +47,5 @@ export * from './lib/role.component';
 export * from './lib/department.component';
 export * from './lib/suspension-reason.component';
 export * from './lib/employment-type.component';
+export * from './lib/sales.category.component';
+

@@ -1,6 +1,5 @@
 import {
     LOGISTICS_AGENT_URL, LOGISTICS_CATEGORY_URL,
-    LOGISTICS_OPTION_URL,
     LOGISTICS_PAY_METHOD_URL, LOOKUPS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
@@ -23,15 +22,10 @@ import {
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
     CurrencyDetailComponent,
-    CurrencyListComponent,
+    CurrencyListComponent, SalesCategoryDetailComponent, SalesCategoryListComponent,
     VatDetailComponent,
     VatListComponent
 } from '@ss/common/ui-lookup';
-import {SalesCategoryService} from "@ss/common/api-lookup";
-import {
-    SalesCategoryDetailComponent,
-    SalesCategoryListComponent
-} from "../../../../../libs/common/ui-lookup/src/lib/sales.category.component";
 
 export const mainRoutes: Routes = [
     {

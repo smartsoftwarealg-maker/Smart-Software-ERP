@@ -16,11 +16,8 @@ import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remunerati
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
 import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
 import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
-import {InputFilterDetailComponent, InputFilterListComponent} from '../../../../../libs/remuneration/input-filters/src';
-import {
-    ElementsEntryDetailComponent,
-    ElementsEntryListComponent
-} from '../../../../../libs/remuneration/elements-entry/src';
+import {ElementsEntryDetailComponent, ElementsEntryListComponent} from '@ss/remuneration/elements-entry';
+import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 
 export const mainRoutes: Routes = [
     {
