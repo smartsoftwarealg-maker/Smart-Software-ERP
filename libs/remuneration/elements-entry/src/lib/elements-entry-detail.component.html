@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="filter default-50 sm-100">
+        <mat-form-field appearance="fill">
+            <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
+            <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
+                <mat-option *ngFor="let i of infoSrv.inputFilter" [value]="i.id">
+                    {{ i.description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="mode default-50 sm-100">
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1"
+                              [checked]="infoSrv.selectionMode === 1 "
+                              (click)="setSelectionMode(1)"
+                              translate>REMUN_VARIABLE
+            </mat-radio-button>
+            <mat-radio-button value="2"
+                              [checked]="infoSrv.selectionMode === 2 "
+                              (click)="setSelectionMode(2)"
+                              translate>REMUN_FIXED
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_ID</mat-label>
+            <input matInput formControlName="id" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_POST</mat-label>
+            <input matInput formControlName="post" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_FIRST_NAME</mat-label>
+            <input matInput formControlName="firstName" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_LAST_NAME</mat-label>
+            <input matInput formControlName="lastName" type="text" readonly>
+        </mat-form-field>
+
+        <div formGroupName="elements">
+            <mat-form-field class="default-25 sm-50"
+                            *ngFor="let g of elementsForm.controls; let i = index">
+                <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }} </mat-label>
+                <input matInput formControlName="{{ i }}" type="number">
+            </mat-form-field>
+        </div>
+    </form>
+
+</div>
+
