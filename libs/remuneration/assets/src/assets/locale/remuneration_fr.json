@@ -28,5 +28,6 @@
     "INPUT_FILTERS": "Filtres d'entrée",
     "SELECTION": "Selection",
     "ELEMENTS_ENTRY": "Saisie de la paie",
-    "PAY_SLIP": "Fiche de paie"
+    "PAY_SLIP": "Fiche de paie",
+    "JOURNAL": "Journal"
 }

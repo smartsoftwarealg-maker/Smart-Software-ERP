@@ -9,7 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {RemunerationInputFiltersModule} from '../../../input-filters/src';
+import {RemunerationInputFiltersModule} from '@ss/remuneration/input-filters';
 
 @NgModule({
     imports: [

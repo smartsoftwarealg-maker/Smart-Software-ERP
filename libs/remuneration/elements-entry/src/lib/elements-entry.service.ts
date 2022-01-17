@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {ELine, INPUT_ELEMENTS_URL, PaymentElement} from './elements-entry-api';
+import {ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement} from './elements-entry-api';
 import {HttpService} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
 import {map, Observable, zip} from 'rxjs';
@@ -62,5 +62,9 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     get(id: number | string): Observable<ELine> {
         const params = new HttpParams().set('cols', this.colsString());
         return this.httpSrv.get(this.getUrl() + '/' + id, params);
+    }
+
+    getJournal(): Observable<Journal> {
+        return this.httpSrv.get('/payroll/journal');
     }
 }

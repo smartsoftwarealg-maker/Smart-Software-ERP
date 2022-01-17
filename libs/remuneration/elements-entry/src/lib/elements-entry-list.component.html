@@ -25,7 +25,7 @@
         </mat-radio-group>
     </div>
     <div class="the_tabs">
-        <mat-tab-group dynamicHeight>
+        <mat-tab-group (selectedIndexChange)="onTabChange($event)">
             <mat-tab>
                 <ng-template mat-tab-label>
                     <span translate>REMUN_ELEMENTS_ENTRY</span>
@@ -126,6 +126,45 @@
                         <mat-row class="selectable" *matRowDef="let row; columns: slipColumns;"></mat-row>
                     </mat-table>
                 </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span translate>REMUN_JOURNAL</span>
+                </ng-template>
+                <mat-table mat-table [dataSource]="journalData">
+
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.id }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="firstName">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_FIRST_NAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.firstName}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="lastName">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_FIRST_NAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.lastName }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-contain *ngFor="let h of headers; let i = index;"  matColumnDef = "{{ h }}">
+                        <mat-header-cell *matHeaderCellDef translate>{{ h }}</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.data[i] }}
+                        </mat-cell>
+
+                    </ng-contain>
+
+                    <mat-header-row *matHeaderRowDef="journalColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" *matRowDef="let row; columns: journalColumns;"></mat-row>
+                </mat-table>
             </mat-tab>
         </mat-tab-group>
     </div>

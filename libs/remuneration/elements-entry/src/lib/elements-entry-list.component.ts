@@ -1,15 +1,14 @@
 import {Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ELine, PaymentElement} from './elements-entry-api';
+import {ELine, MJournal, PaymentElement} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsEntryService} from './elements-entry.service';
-import {Observable, of, tap, zip} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {InputFiltersService} from '@ss/remuneration/input-filters';
 import {MatSelectChange} from '@angular/material/select';
 
 
@@ -19,19 +18,19 @@ import {MatSelectChange} from '@angular/material/select';
   styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
-    private FIXED_COLS = [
-        'id',
-        'firstName',
-        'lastName',
-        'post'
-    ];
+    private readonly JOURNAL_IDX = 2;
+    private FIXED_COLS = ['id', 'firstName', 'lastName', 'post'];
+    private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
     tableWidth = 600;
 
     slipColumns      = ['formula', 'description', 'base', 'rate', 'value'];
     displayedColumns = ['id', 'firstName', 'lastName', 'post']
+    journalColumns = this.FIXED_JOURNAL_HEADERS;
 
     paySlip: PaymentElement[] = [];
+    journalData: MJournal[] = [];
+    headers: string[] = [];
 
     constructor(
         public infoSrv: ElementsEntryService,
@@ -56,7 +55,6 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.tableWidth = 600 + 100 * colList.length;
-        console.log(colList, this.infoSrv.dataCols);
         this.displayedColumns = this.FIXED_COLS.concat(colList);
 
         return super.processLoadedData(data);
@@ -84,5 +82,19 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         this.infoSrv.getSlip(id).subscribe(res => {
             this.paySlip = res || [];
         });
+    }
+
+    onTabChange(index: number) {
+        if (this.JOURNAL_IDX === index) {
+            this.infoSrv
+                .getJournal()
+                .subscribe(res => {
+                    this.journalData = res.data;
+                    this.headers = res.headers;
+                    this.journalColumns = this.FIXED_JOURNAL_HEADERS.concat(res.headers);
+
+                    console.log(this.headers);
+                });
+        }
     }
 }

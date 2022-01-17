@@ -28,5 +28,6 @@
     "INPUT_FILTERS": "Input filters",
     "SELECTION": "Selection",
     "ELEMENTS_ENTRY": "Payroll input",
-    "PAY_SLIP": "Pay slip"
+    "PAY_SLIP": "Pay slip",
+    "JOURNAL": "Journal"
 }

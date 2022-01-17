@@ -19,3 +19,15 @@ export interface ELine {
     elements: number[];
     cols?: string;
 }
+
+export interface MJournal {
+    id: number;
+    firstName: string;
+    lastName: string;
+    data: number[];
+}
+
+export interface Journal {
+    headers: string[];
+    data: MJournal[];
+}
