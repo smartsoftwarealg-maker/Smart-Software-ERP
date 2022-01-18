@@ -9,7 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {RemunerationInputFiltersModule} from '../../../input-filters/src';
+import {RemunerationInputFiltersModule} from '@ss/remuneration/input-filters';
+import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {RemunerationInputFiltersModule} from '../../../input-filters/src';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RemunerationInputFiltersModule
+        RemunerationInputFiltersModule,
+        CommonUiImageInputModule
     ],
     declarations: [
       ElementsEntryDetailComponent,
