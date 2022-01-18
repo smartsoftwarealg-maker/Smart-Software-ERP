@@ -48,7 +48,7 @@
 
 .static-container {
     position: absolute;
-    top: 64px;
+    top: 96px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -74,6 +74,62 @@
     overflow: hidden;
 }
 
+.shell-toolbar-2 {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    left: 0;
+    height: 32px;
+    transition: top 750ms;
+    .toolbar-inner {
+        max-width: 1600px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+    
+        .shell-label {
+            height: 32px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: flex-start;
+            flex-grow: 0;
+            flex-shrink: 1;
+        
+            display: inline-flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        
+            .label-icon {
+                width: 25px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        
+            .label-title {
+                height: 32px;
+                line-height: 32px;
+                font-weight: bold;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .label-text {
+                height: 32px;
+                line-height: 32px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+        }
+    }
+}
+
 .shell-toolbar {
     position: absolute;
     top: 0;
@@ -81,9 +137,8 @@
     left: 0;
     height: 64px;
     transition: top 750ms;
-
     .toolbar-inner {
-        max-width: 1300px;
+        max-width: 1600px;
         height: 100%;
         margin: auto;
         display: flex;
@@ -91,7 +146,7 @@
         align-items: center;
         flex-wrap: nowrap;
         justify-content: flex-start;
-
+    
         .shell-title {
             flex-grow: 1;
             flex-shrink: 1;
@@ -331,11 +386,11 @@
 }
 
 .toolbar-username {
-    height: 40px;
+    height: 32px;
     cursor: pointer;
     align-items: center;
     justify-content: flex-start;
-    flex-grow: 1;
+    flex-grow: 0;
     flex-shrink: 1;
 
     display: inline-flex;
@@ -344,7 +399,7 @@
 
     .user-icon {
         width: 25px;
-        height: 40px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -352,9 +407,9 @@
 
     .user-name {
         font-weight: bold;
-        flex-grow: 1;
-        flex-shrink: 1;
-        min-width: 75px;
+//        flex-grow: 1;
+//        flex-shrink: 1;
+//        min-width: 75px;
     }
 
 }
