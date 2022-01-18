@@ -88,6 +88,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
             p.birthDate = this.langSrv.formatDate(p.birthDate);
             p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
             p.imageModel = new ImageModel(this.httpSrv);
+            p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id));
             p.imageModel.readOnly = true;
             p.loading = true;
             this.employeeActivationSrv.setParentId(p.id);

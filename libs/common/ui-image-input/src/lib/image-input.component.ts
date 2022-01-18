@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {LanguageService} from "@ss/common/api-common";
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-image-input',
@@ -138,7 +138,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
             throw new Error(this.langSrv.translate('COMMON_MAX_FILE_SIZE_1MB'));
         }
         if (!e.name) {
-            throw new Error("Invalid file name");
+            throw new Error('Invalid file name');
         }
         const lowName = e.name.toLowerCase();
         if (lowName.endsWith('.png') || lowName.endsWith('.jpg') || lowName.endsWith('.jpeg') || lowName.endsWith('.bmp')) {

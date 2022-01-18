@@ -8,6 +8,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ElementsEntryService} from './elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
+import {ImageModel} from '@ss/common/ui-image-input';
+import {HttpService} from '@ss/common/api-common';
+import {EmployeeService} from '@ss/payroll/api-employee';
 
 @Component({
     selector: 'ss-elements-entry-detail',
@@ -15,6 +18,8 @@ import {MatSelectChange} from '@angular/material/select';
     styleUrls: ['./elements-entry-detail.component.scss', './common-css.scss']
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> {
+    imageModel: ImageModel;
+
     constructor(
         public infoSrv: ElementsEntryService,
         public shellSrv: ShellService,
@@ -22,7 +27,9 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private httpSrv: HttpService,
+        private employeeSrv: EmployeeService,) {
         super(infoSrv,
             shellSrv,
             snackBarSrv,
@@ -30,6 +37,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
             formBuilder,
             confirmationSrv,
             'REMUN_ELEMENTS_ENTRY');
+        this.imageModel = new ImageModel(this.httpSrv);
     }
 
     ngOnInit() {
@@ -38,6 +46,8 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
     }
 
     public setupForm(e: ELine): FormGroup {
+        // this.shellSrv.setLoading(false);
+        this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
         return this.formBuilder.group({
             id: [e.id],
             firstName: [e.firstName || 'first name'],
