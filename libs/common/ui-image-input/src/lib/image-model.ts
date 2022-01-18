@@ -1,6 +1,6 @@
-import { HttpService } from '@ss/common/api-common';
-import { Observable, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import {HttpService} from '@ss/common/api-common';
+import {Observable, of} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
 
 enum Operation {
     none,
@@ -58,19 +58,20 @@ export class ImageModel {
         if (backendUrl) {
             this.loading = true;
             this.httpSrv.getBlob(backendUrl)
-                .subscribe(
-                    blob => {
-                        this.setImageBlob(blob, uploadOnSave);
-                        this.loading = false;
-                    },
-                    err => {
+                .subscribe({
+                    next:
+                        blob => {
+                            this.setImageBlob(blob, uploadOnSave);
+                            this.loading = false;
+                        },
+                    error: err => {
                         // todo: show an indication to the user that an error occurred
                         this.loading = false;
-                        if (err.status != 404) {
+                        if (err.status !== 404) {
                             throw err;
                         }
                     }
-                );
+                });
         } else {
             this.updateView();
         }

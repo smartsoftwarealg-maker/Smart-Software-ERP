@@ -6,6 +6,7 @@ import {HttpParams} from '@angular/common/http';
 import {map, Observable, zip} from 'rxjs';
 import {InputFilter, InputFiltersService} from '@ss/remuneration/input-filters';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
+import {EMPLOYEE_PHOTO_URL, EMPLOYEES_URL} from '@ss/payroll/api-employee';
 
 @Injectable({
   providedIn: 'root'

@@ -1,3 +1,5 @@
+import {ImageModel} from '@ss/common/ui-image-input';
+
 export const INPUT_ELEMENTS_URL = '/payroll/pay-elements';
 
 export interface EData { field: string; value: number }
@@ -18,6 +20,7 @@ export interface ELine {
     post?: string;
     elements: number[];
     cols?: string;
+    imageModel?: ImageModel;
 }
 
 export interface MJournal {

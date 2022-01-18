@@ -10,6 +10,7 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {RemunerationInputFiltersModule} from '@ss/remuneration/input-filters';
+import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {RemunerationInputFiltersModule} from '@ss/remuneration/input-filters';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RemunerationInputFiltersModule
+        RemunerationInputFiltersModule,
+        CommonUiImageInputModule
     ],
     declarations: [
       ElementsEntryDetailComponent,
