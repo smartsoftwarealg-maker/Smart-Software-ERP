@@ -53,9 +53,9 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_SERVICE</mat-label>
-            <mat-select formControlName="service">
-                <mat-option *ngFor="let v of services" [value]="v.id">
+            <mat-label translate>PAYROLL_DIVISION</mat-label>
+            <mat-select formControlName="division">
+                <mat-option *ngFor="let v of divisions" [value]="v.id">
                     {{v.description}}
                 </mat-option>
             </mat-select>
@@ -71,9 +71,9 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_DIVISION</mat-label>
-            <mat-select formControlName="division">
-                <mat-option *ngFor="let v of divisions" [value]="v.id">
+            <mat-label translate>PAYROLL_SERVICE</mat-label>
+            <mat-select formControlName="service">
+                <mat-option *ngFor="let v of services" [value]="v.id">
                     {{v.description}}
                 </mat-option>
             </mat-select>
@@ -96,6 +96,16 @@
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
             <input matInput formControlName="salary_grid" type="number" style="text-align: center;">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_DECISION</mat-label>
+            <input matInput formControlName="decision" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>PAYROLL_DECISION_FROM</mat-label>
+            <ss-date-picker required="true" formControlName="decision_date"></ss-date-picker>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">

@@ -85,6 +85,15 @@ export class Career {
     from_date: string;
     to_date: string;
     trial_period: number;
+    decision: string;
+    decision_date: string;
+
+    // todo: add these fields
+    // motive               : Option[Int] = None,
+    // workshop             : Option[Int] = None,
+    // cost_center          : Option[Int] = None,
+    // qualification        : Option[Int] = None,
+    // responsible          : Option[Long] = None,
 }
 
 export class Contract {
@@ -113,4 +122,18 @@ export class Contract {
     project: number;
     trial_period: number;
     confirmed: boolean;
+}
+
+export class Wife {
+    id: number;
+    employee: number;
+    name: string;
+    name_ar: string;
+    birthdate: string;
+    birthPlace: string;
+    notDivorced: boolean;
+    father: string;
+    father_ar: string;
+    mother: string;
+    mother_ar: string;
 }

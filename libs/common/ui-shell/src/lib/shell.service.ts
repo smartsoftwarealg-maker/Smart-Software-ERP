@@ -20,6 +20,13 @@ export enum KeepOnToolbar {
     DYNAMIC = 3 // on large screens only
 }
 
+export interface ToolbarLabel {
+    icon?: string;
+    title: string;
+    text?: string;
+    click?: () => void;
+}
+
 export interface ToolbarButton {
     icon: string;
     label: string;
@@ -74,6 +81,13 @@ export class ShellService {
     protected searchInputLabel: string;
     //
     buttons: ToolbarButton[] = [];
+    labels: ToolbarLabel[] = [
+        {
+            icon: 'fas fa-exclamation-circle',
+            text: '20/9020',
+            title: 'Month',
+        }
+    ];
     appButtons: ToolbarButton[] = [];
     //
     protected isLoading = false;
@@ -413,6 +427,11 @@ export class ShellService {
 
     public setButtonEnabled(button: ToolbarButton, enabled: boolean): void {
         button.disabled = !enabled;
+        this.updateShell();
+    }
+
+    public setLabels(lables: ToolbarLabel[]): void {
+        this.labels = lables;
         this.updateShell();
     }
 
