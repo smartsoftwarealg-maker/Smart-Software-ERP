@@ -123,8 +123,8 @@
                 <div class="toolbar-inner">
                     <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8">
                         <div *ngIf="n.icon" class="label-icon"><i [class]="n.icon"></i></div>
-                        <div class="label-title margin-start-4">{{n.title}}</div>
-                        <div class="label-text margin-start-4">{{n.text}}</div>
+                        <div *ngIf="n.title" class="label-title margin-start-4">{{n.title}}</div>
+                        <div *ngIf="n.text" class="label-text margin-start-4">{{n.text}}</div>
                     </div>
 
                     <div class="toolbar-username margin-end-8 large-only">

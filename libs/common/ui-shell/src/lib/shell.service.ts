@@ -81,13 +81,7 @@ export class ShellService {
     protected searchInputLabel: string;
     //
     buttons: ToolbarButton[] = [];
-    labels: ToolbarLabel[] = [
-        {
-            icon: 'fas fa-exclamation-circle',
-            text: '20/9020',
-            title: 'Month',
-        }
-    ];
+    labels: ToolbarLabel[] = [];
     appButtons: ToolbarButton[] = [];
     //
     protected isLoading = false;
