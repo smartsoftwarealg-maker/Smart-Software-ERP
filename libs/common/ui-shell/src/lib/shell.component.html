@@ -121,19 +121,18 @@
             </div>
             <div class="b-primary mat-elevation-z6 shell-toolbar-2">
                 <div class="toolbar-inner">
-                    <div class="toolbar-username margin-end-8 large-only">
-                        <div class="user-icon">
-                            <i class="fas fa-user-alt"></i>
-                        </div>
-                        <div class="user-name margin-start-4">{{loginSrv.appCtx?.fullName}}</div>
-                    </div>
-
                     <div *ngFor="let n of shellSrv.labels" class="shell-label margin-end-8">
                         <div *ngIf="n.icon" class="label-icon"><i [class]="n.icon"></i></div>
                         <div class="label-title margin-start-4">{{n.title}}</div>
                         <div class="label-text margin-start-4">{{n.text}}</div>
                     </div>
 
+                    <div class="toolbar-username margin-end-8 large-only">
+                        <div class="user-icon">
+                            <i class="fas fa-user-alt"></i>
+                        </div>
+                        <div class="user-name margin-start-4">{{loginSrv.appCtx?.fullName}}</div>
+                    </div>
                 </div>
             </div>
             <!--app-nav-bar (menuToggle)="navBar.toggle()"></app-nav-bar-->
