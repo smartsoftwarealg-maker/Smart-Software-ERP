@@ -59,7 +59,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     processLoadedData(data: ELine[]): Observable<ELine[]> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
-        this.mainTableWidth = 600 + 120 * colList.length;
+        this.mainTableWidth = 720 + 120 * colList.length;
         this.displayedColumns = this.FIXED_COLS.concat(colList);
 
         const res = data.map(e => {
