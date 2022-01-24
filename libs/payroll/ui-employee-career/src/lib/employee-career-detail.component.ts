@@ -106,7 +106,9 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
             salary_rank: null,
             from_date: null,
             to_date: null,
-            trial_period: null
+            trial_period: null,
+            decision: null,
+            decision_date: null
         };
     }
 
@@ -125,7 +127,9 @@ export class EmployeeCareerDetailComponent implements OnInit, OnDestroy {
             salary_rank: a.salary_rank,
             from_date: [a.from_date, Validators.required],
             to_date: a.to_date,
-            trial_period: [a.trial_period, Validators.required]
+            trial_period: [a.trial_period, Validators.required],
+            decision: a.decision,
+            decision_date: a.decision_date
         });
     }
 
