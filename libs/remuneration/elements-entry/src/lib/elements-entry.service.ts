@@ -6,12 +6,13 @@ import {HttpParams} from '@angular/common/http';
 import {map, Observable, zip} from 'rxjs';
 import {InputFilter, InputFiltersService} from '@ss/remuneration/input-filters';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
-import {EMPLOYEE_PHOTO_URL, EMPLOYEES_URL} from '@ss/payroll/api-employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElementsEntryService extends BaseEntityService<ELine> {
+    readonly VARIABLE_MODE = 1;
+    readonly FIXED_MODE    = 2;
     inputFilter: InputFilter[] = [];
     selectedInput = 5;
     selectionMode = 1;
@@ -42,18 +43,18 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
         }
     }
 
+    public colsList(): string[] {
+        return this.loadDataCols().map(e => e.field);
+    }
+
     loadDataCols(): ElementsInfo[] {
-        const isFixed = (this.selectionMode === 2);
+        const isFixed = (this.selectionMode === this.FIXED_MODE);
         const selection = this.inputFilter.find(e => e.id == this.selectedInput)?.selection || '';
 
         this.dataCols = this.elements
-                .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed)
-                .sort((a, b) => a.description.localeCompare(b.description)) || [];
+            .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed)
+            .sort((a, b) => a.description.localeCompare(b.description)) || [];
         return this.dataCols;
-    }
-
-    public colsList(): string[] {
-        return this.loadDataCols().map(e => e.field);
     }
 
     public colsString(): string {

@@ -32,5 +32,6 @@
     "JOURNAL": "Journal",
     "GAIN": "Gain",
     "DEDUCTION": "Déduction",
-    "NET_PAYMENT": "Net à payer"
+    "NET_PAYMENT": "Net à payer",
+    "FIXED_ELEMENTS": "Éléments fixes"
 }

@@ -2,7 +2,7 @@ import {
     HR_POSTS_URL,
     LOOKUPS_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
-    PAY_ELEMENTSINFO_URL,
+    PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
@@ -18,6 +18,8 @@ import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payr
 import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
 import {ElementsEntryDetailComponent, ElementsEntryListComponent} from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
+import {FixedElementsListComponent} from '../../../../../libs/remuneration/elements-entry/src/lib/fixed-elements/fixed-elements-list.component';
+import {FixedElementsDetailComponent} from '../../../../../libs/remuneration/elements-entry/src/lib/fixed-elements/fixed-elements-detail.component';
 
 export const mainRoutes: Routes = [
     {
@@ -101,6 +103,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ElementsEntryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_FIXED_ELEMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: FixedElementsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: FixedElementsDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
