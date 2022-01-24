@@ -1,0 +1,54 @@
+form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+    padding: 5px;
+    grid-template-areas: "emp-photo emp-id    ."
+                         "emp-photo last-name first-name"
+                         "emp-photo emp-post .          "
+                         "elements  elements elements  ";
+}
+
+.emp-photo {
+    grid-area: emp-photo;
+}
+.emp-post {
+    grid-area: emp-post;
+}
+.em-id {
+    grid-area: emp-id;
+}
+.last-name {
+    grid-area: last-name;
+}
+.first-name {
+    grid-area: first-name;
+}
+.elements {
+    display: flex;
+    gap: 10px;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 98%;
+    padding: 5px;
+    margin: 0 auto;
+    grid-area: elements;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 98%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 10px;
+        grid-template-areas: "emp-photo emp-id "
+                             "emp-photo last-name"
+                             "emp-photo first-name"
+                             "emp-post  emp-post "
+                             "elements  elements ";
+    }
+
+}

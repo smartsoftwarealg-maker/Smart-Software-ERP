@@ -1,0 +1,40 @@
+<div class="container">
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+        <mat-form-field class="emp-id">
+            <mat-label translate>PAYROLL_ID</mat-label>
+            <input matInput formControlName="id" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="emp-post">
+            <mat-label translate>PAYROLL_POST</mat-label>
+            <input matInput formControlName="post" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="first-name">
+            <mat-label translate>PAYROLL_FIRST_NAME</mat-label>
+            <input matInput formControlName="firstName" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="last-name">
+            <mat-label translate>PAYROLL_LAST_NAME</mat-label>
+            <input matInput formControlName="lastName" type="text" readonly>
+        </mat-form-field>
+
+        <div class="emp-photo">
+            <ss-image-input width="160px"
+                            height="200px"
+                            [ImageModel]="imageModel"
+                            style="display: inline-block;">
+            </ss-image-input>
+        </div>
+
+
+        <div formGroupName="elements" class="elements">
+            <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">
+                <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }} </mat-label>
+                <input matInput formControlName="{{ i }}" type="number">
+            </mat-form-field>
+        </div>
+    </form>
+</div>
