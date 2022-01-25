@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Employee, EmployeeService } from '@ss/payroll/api-employee';
-import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -8,10 +8,11 @@ import { LookupsService, MaritalStatus, Nationality, NationalityService } from '
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { Observable } from 'rxjs';
+import {Observable, switchMap, zip} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
+import {FixedElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -23,6 +24,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     maritalStatuses: MaritalStatus[];
+    public elementsForm: FormGroup = null;
 
     constructor(
         public employeeSrv: EmployeeService,
@@ -32,10 +34,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        public infoSrv: FixedElementsEntryService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
-        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv))
+        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv));
     }
 
     public preload(): Observable<any> {
@@ -46,11 +49,20 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public setupForm(p: Employee) {
+        this.infoSrv.load()
+            .pipe(switchMap(_ => this.infoSrv.get(p.id)))
+            .subscribe(res => {
+                this.elementsForm = this.formBuilder.group({
+                    elements: this.formBuilder.array(res.elements)
+                });
+            });
+
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         // Make sure to update the template if you edit the configuration here
         if (!p.id) {
             p.sex = 1;
         }
+
         return this.formBuilder.group({
             // birth info
             id: p.id,
@@ -145,4 +157,26 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return this.imageModel.submit('file');
     }
 
+    get elementsFormArray(): FormArray {
+        return this.elementsForm?.controls['elements'] as FormArray;
+    }
+
+    saveElements() {
+        const line: ELine = { id: this.form.controls['id'].value,
+            firstName: '',
+            lastName: '',
+            elements: this.elementsFormArray.value,
+            cols: this.infoSrv.colsString()
+        };
+
+        this.infoSrv
+            .save(line)
+            .subscribe({
+                next: res => this.snackBarSrv.showSuccessMessage(),
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                }
+            });
+    }
 }

@@ -81,5 +81,6 @@
     "REC_NUMBER":"Record No.",
     "DATE":"Date",
     "VALID_DATE":"Valid Date",
-    "EMPLOYEE_CONTRACTS_OVERVIEW":"Employee contracts overview"
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Employee contracts overview",
+    "FIXED_ELEMENTS": "Fixed elements"
 }

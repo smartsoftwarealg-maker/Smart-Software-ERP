@@ -81,5 +81,6 @@
     "REC_NUMBER":"N° d'enregistrement",
     "DATE":"Date",
     "VALID_DATE":"Date valide",
-    "EMPLOYEE_CONTRACTS_OVERVIEW":"Aperçu des contrats"
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Aperçu des contrats",
+    "FIXED_ELEMENTS": "Éléments fixes"
 }

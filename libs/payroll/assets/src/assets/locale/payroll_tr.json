@@ -81,5 +81,6 @@
     "REC_NUMBER":"Kayıt numarası",
     "DATE":"Tarih",
     "VALID_DATE":"Geçerli tarih",
-    "EMPLOYEE_CONTRACTS_OVERVIEW":"Çalışan sözleşmelerine genel bakış"
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Çalışan sözleşmelerine genel bakış",
+    "FIXED_ELEMENTS": "العناصر الثابتة"
 }

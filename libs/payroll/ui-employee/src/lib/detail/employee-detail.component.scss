@@ -1,9 +1,9 @@
 
 :host {
     display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
+    margin: 0 auto;
+    max-width: 900px;
+    width: 96%;
     min-width: 320px;
 }
 
@@ -26,4 +26,19 @@ ss-image-input {
         flex-grow: 1;
         flex-shrink: 1;
     }
+}
+
+.elements {
+    padding: 16px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+mat-expansion-panel {
+    padding-top: 16px;
+}
+button {
+    margin-top: 16px;
 }
