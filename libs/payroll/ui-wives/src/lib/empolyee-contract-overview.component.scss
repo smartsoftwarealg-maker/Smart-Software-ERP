@@ -1,0 +1,77 @@
+$table_width: 2560px;
+
+:host {
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    width: 100%;
+    overflow: hidden;
+}
+
+.child-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow: hidden;
+}
+
+.person-info {
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    max-width: $table_width;
+    overflow: auto;
+
+    .card-title {
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        height: 48px;
+        line-height: 48px;
+        padding-right: 16px;
+        padding-left: 16px;
+        font-weight: bold;
+    }
+
+    .lines {
+        margin-top: 12px;
+        display: inline-block;
+
+        .line {
+            position: relative;
+            height: 64px;
+            line-height: 64px;
+            padding-right: 16px;
+            padding-left: 16px;
+            font-size: 125%;
+    
+            .line-label {
+                padding-right: 18px;
+                padding-left: 18px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                height: 16px;
+                line-height: 16px;
+                font-size: 80%;
+            }
+        }
+
+        .line-date {
+            display: inline-block;
+            width: 120px;
+        }
+    }
+
+}
+
