@@ -36,6 +36,10 @@ ss-image-input {
     justify-content: space-between;
 }
 
+//.elements mat-form-field {
+//    max-width: 150px;
+//}
+
 mat-expansion-panel {
     padding-top: 16px;
 }
@@ -48,4 +52,11 @@ mat-expansion-panel {
 }
 .filler {
     flex: 2 0 auto;
+}
+
+@media (max-width: 600px) {
+    .elements mat-form-field {
+        max-width: 140px;
+    }
+
 }
