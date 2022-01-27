@@ -35,9 +35,11 @@ export class FixedElementsEntryService extends BaseEntityService<ELine> {
 
 
     loadDataCols(): ElementsInfo[] {
-        this.dataCols = this.elements
-            .filter(e => e.fixed === true)
-            .sort((a, b) => a.description.localeCompare(b.description));
+        if (this.dataCols.length < 2) {
+            this.dataCols = this.elements
+                .filter(e => e.fixed === true)
+                .sort((a, b) => a.description.localeCompare(b.description));
+        }
         return this.dataCols;
     }
 
@@ -50,4 +52,21 @@ export class FixedElementsEntryService extends BaseEntityService<ELine> {
         const params = new HttpParams().set('cols', this.colsString());
         return this.httpSrv.get(this.getUrl() + '/' + id, params);
     }
+
+    generateFromIEP(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/iep`);
+    }
+
+    generateFromOldElements(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/old-elements`);
+    }
+
+    generateFromRank(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/rank`);
+    }
+
+    generateFromPost(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/post`);
+    }
+
 }

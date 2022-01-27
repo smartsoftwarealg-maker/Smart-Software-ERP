@@ -19,7 +19,7 @@
                     <ss-image-input width="160px" height="200px" [ImageModel]="imageModel" style="display: inline-block;">
                     </ss-image-input>
                     <div class="default-100" style="text-align: center;">
-                        <strong><span translate>PAYROLL_PID</span>: {{ pid }}</strong>
+                        <strong><span translate>PAYROLL_PID</span>: {{ id }}</strong>
                     </div>
                 </div>
 
@@ -165,7 +165,6 @@
 
         </mat-expansion-panel>
 
-
         <mat-expansion-panel #arabicInfoPanel [class]="getPanelHeaderClass('arabicInfo', arabicInfoPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
@@ -217,6 +216,44 @@
 
 
         </mat-expansion-panel>
+
+        <mat-expansion-panel #fixedElementsPanel [class]="getPanelHeaderClass('arabicInfo', fixedElementsPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_FIXED_ELEMENTS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="ctrl-div">
+                <button mat-raised-button color="primary" type="button" (click)="saveElements()">
+                    {{ 'COMMON_SAVE' | translate }}
+                </button>
+                <div class="filler"></div>
+                <mat-form-field appearance="fill">
+                    <mat-label translate>PAYROLL_GENERATE_FROM</mat-label>
+                    <mat-select #mode>
+                        <mat-option *ngFor="let g of generationModes" [value]="g.id">
+                            <span translate>  {{g.description}} </span>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="button" (click)="generateFrom(mode.value)">
+                    {{ 'COMMON_GENERATE' | translate }}
+                </button>
+            </div>
+
+            <form *ngIf="elementsForm !== null" novalidate [formGroup]="elementsForm">
+                <div formGroupName="elements" class="elements">
+                    <mat-form-field *ngFor="let g of elementsFormArray.controls; let i = index">
+                        <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }} </mat-label>
+                        <input matInput formControlName="{{ i }}" type="number">
+                    </mat-form-field>
+                </div>
+            </form>
+
+        </mat-expansion-panel>
+
     </mat-accordion>
 
 </form>

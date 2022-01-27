@@ -81,5 +81,12 @@
     "REC_NUMBER":"Record No.",
     "DATE":"Date",
     "VALID_DATE":"Valid Date",
-    "EMPLOYEE_CONTRACTS_OVERVIEW":"Employee contracts overview"
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Employee contracts overview",
+    "FIXED_ELEMENTS": "Fixed elements",
+    "GENERATE_FROM": "Generate from",
+    "IEP": "Seniority Scholarship",
+    "RANK": "Rank",
+    "OLD_ELEMENTS": "Old elements",
+    "GENERATE_ELEMENTS": "Generate new payroll elements?",
+    "NO_CHANGES": "No changes were made"
 }

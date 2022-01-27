@@ -81,5 +81,12 @@
     "REC_NUMBER":"Kayıt numarası",
     "DATE":"Tarih",
     "VALID_DATE":"Geçerli tarih",
-    "EMPLOYEE_CONTRACTS_OVERVIEW":"Çalışan sözleşmelerine genel bakış"
+    "EMPLOYEE_CONTRACTS_OVERVIEW":"Çalışan sözleşmelerine genel bakış",
+    "FIXED_ELEMENTS": "العناصر الثابتة",
+    "GENERATE_FROM": "Generate from",
+    "IEP": "IEP",
+    "RANK": "Rank",
+    "OLD_ELEMENTS": "Old elements",
+    "GENERATE_ELEMENTS": "Generate new payroll elements?",
+    "NO_CHANGES": ""
 }
