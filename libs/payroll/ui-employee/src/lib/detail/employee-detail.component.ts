@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import { Employee, EmployeeService } from '@ss/payroll/api-employee';
-import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ImageModel } from '@ss/common/ui-image-input';
-import { LookupsService, MaritalStatus, Nationality, NationalityService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import {Component} from '@angular/core';
+import {Employee, EmployeeService} from '@ss/payroll/api-employee';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ImageModel} from '@ss/common/ui-image-input';
+import {LookupsService, MaritalStatus, Nationality, NationalityService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {MatExpansionPanel} from '@angular/material/expansion';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {count, Observable, of, switchMap} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {HttpService} from '@ss/common/api-common';
+import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -19,11 +20,20 @@ import { HttpService } from '@ss/common/api-common';
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    readonly PAYROLL_IEP = 1;
+    readonly PAYROLL_OLD_ELEMENTS = 2;
+    readonly PAYROLL_RANK = 3;
+    readonly PAYROLL_POST = 4;
 
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     maritalStatuses: MaritalStatus[];
-
+    public elementsForm: FormGroup = null;
+    generationModes = [ {id: 1, description: 'PAYROLL_IEP'},
+                        {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
+                        {id: 3, description: 'PAYROLL_RANK'},
+                        {id: 4, description: 'PAYROLL_POST'},
+                     ];
     constructor(
         public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
@@ -32,10 +42,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        public infoSrv: FixedElementsEntryService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
-        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv))
+        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv));
     }
 
     public preload(): Observable<any> {
@@ -46,11 +57,24 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public setupForm(p: Employee) {
+        this.infoSrv.load()
+            .pipe(switchMap(_ => this.infoSrv.get(p.id)))
+            .subscribe(res => {
+                const elements = res.elements.length === 0?
+                    this.infoSrv.loadDataCols().map(_ => 0.0) :
+                    res.elements;
+
+                this.elementsForm = this.formBuilder.group({
+                    elements: this.formBuilder.array(elements)
+                });
+            });
+
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         // Make sure to update the template if you edit the configuration here
         if (!p.id) {
             p.sex = 1;
         }
+
         return this.formBuilder.group({
             // birth info
             id: p.id,
@@ -145,4 +169,52 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return this.imageModel.submit('file');
     }
 
+    get elementsFormArray(): FormArray {
+        return this.elementsForm?.controls['elements'] as FormArray;
+    }
+
+    saveElements() {
+        const line: ELine = { id: this.form.controls['id'].value,
+            firstName: '',
+            lastName: '',
+            elements: this.elementsFormArray.value,
+            cols: this.infoSrv.colsString()
+        };
+
+        this.infoSrv
+            .save(line)
+            .subscribe({
+                next: res => this.snackBarSrv.showSuccessMessage(),
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                }
+            });
+    }
+
+    generateFrom(code: number) {
+        const id = this.form.controls['id'].value;
+        this.confirmationSrv
+            .confirm('PAYROLL_ELEMENT_GENERATION',  'PAYROLL_GENERATE_ELEMENTS', true, true)
+            .pipe(switchMap(res =>
+                res ? code === this.PAYROLL_IEP ?
+                    this.infoSrv.generateFromIEP(id) :
+                    code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
+                        code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
+                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({count: -1 }) : of({count: -1 })
+            )).subscribe({
+            next: res => {
+                if (res.count >= 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                } else {
+                    this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
+                }
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            }
+        });
+
+    }
 }

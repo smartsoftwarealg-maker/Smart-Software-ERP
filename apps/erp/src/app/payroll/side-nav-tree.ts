@@ -139,7 +139,7 @@ export const payrollNavTree: SideNavNode = {
                     route: ABS_INPUT_FILTERS_URL
                 },
                 {
-                    name: 'REMUN_FIXED_ELEMENTS',
+                    name: 'PAYROLL_FIXED_ELEMENTS',
                     icon: 'fas fa-address-card',
                     route: ABS_FIXED_ELEMENTS_URL
                 },

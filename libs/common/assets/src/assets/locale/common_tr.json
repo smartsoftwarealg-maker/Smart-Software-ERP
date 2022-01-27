@@ -166,5 +166,6 @@
     "DASHBOARD":                      "",
     "DASHBOARD_QUERIES":              "",
     "DASHBOARD_QUERY":                "",
-    "EXIT":                           ""
+    "EXIT":                           "",
+    "GENERATE":                       "Generate"
 }

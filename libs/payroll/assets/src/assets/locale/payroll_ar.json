@@ -82,4 +82,11 @@
     "DATE":"التاريخ",
     "VALID_DATE":"تاريخ الصلاحية",
     "EMPLOYEE_CONTRACTS_OVERVIEW":"عقود الموظف",
+    "FIXED_ELEMENTS": "العناصر الثابتة",
+    "GENERATE_FROM": "انشئ من العقود",
+    "IEP": "منحة اﻷقدمية",
+    "RANK": "رتبة",
+    "OLD_ELEMENTS": "العناصر القديمة",
+    "GENERATE_ELEMENTS": "إنشاء عناصر كشوف رواتب جديدة؟",
+    "NO_CHANGES": "لم يتم إجراء أية تغييرات"
 }
