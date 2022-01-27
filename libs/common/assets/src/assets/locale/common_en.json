@@ -169,5 +169,6 @@
     "DASHBOARD": "Dashboard",
     "DASHBOARD_QUERIES": "Dashboard queries",
     "DASHBOARD_QUERY": "Dashboard query",
-    "EXIT": "Exit"
+    "EXIT": "Exit",
+    "GENERATE": "Generate"
 }

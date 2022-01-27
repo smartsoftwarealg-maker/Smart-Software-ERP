@@ -82,5 +82,11 @@
     "DATE":"Date",
     "VALID_DATE":"Date valide",
     "EMPLOYEE_CONTRACTS_OVERVIEW":"Aperçu des contrats",
-    "FIXED_ELEMENTS": "Éléments fixes"
+    "FIXED_ELEMENTS": "Éléments fixes",
+    "GENERATE_FROM": "Générer à partir de",
+    "IEP": "IEP",
+    "RANK": "Échelon",
+    "OLD_ELEMENTS": "Éléments anciens",
+    "GENERATE_ELEMENTS": "Générer de nouveaux éléments de paie ?",
+    "NO_CHANGES": "Aucune modification n'a été apportée"
 }

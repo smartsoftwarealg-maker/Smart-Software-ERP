@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import { Employee, EmployeeService } from '@ss/payroll/api-employee';
-import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ImageModel } from '@ss/common/ui-image-input';
-import { LookupsService, MaritalStatus, Nationality, NationalityService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import {Observable, switchMap, zip} from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
-import {FixedElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
+import {Component} from '@angular/core';
+import {Employee, EmployeeService} from '@ss/payroll/api-employee';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ImageModel} from '@ss/common/ui-image-input';
+import {LookupsService, MaritalStatus, Nationality, NationalityService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {MatExpansionPanel} from '@angular/material/expansion';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {count, Observable, of, switchMap} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {HttpService} from '@ss/common/api-common';
+import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -20,12 +20,20 @@ import {FixedElementsEntryService, ELine} from '@ss/remuneration/elements-entry'
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    readonly PAYROLL_IEP = 1;
+    readonly PAYROLL_OLD_ELEMENTS = 2;
+    readonly PAYROLL_RANK = 3;
+    readonly PAYROLL_POST = 4;
 
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     maritalStatuses: MaritalStatus[];
     public elementsForm: FormGroup = null;
-
+    generationModes = [ {id: 1, description: 'PAYROLL_IEP'},
+                        {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
+                        {id: 3, description: 'PAYROLL_RANK'},
+                        {id: 4, description: 'PAYROLL_POST'},
+                     ];
     constructor(
         public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
@@ -52,8 +60,12 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.infoSrv.load()
             .pipe(switchMap(_ => this.infoSrv.get(p.id)))
             .subscribe(res => {
+                const elements = res.elements.length === 0?
+                    this.infoSrv.loadDataCols().map(_ => 0.0) :
+                    res.elements;
+
                 this.elementsForm = this.formBuilder.group({
-                    elements: this.formBuilder.array(res.elements)
+                    elements: this.formBuilder.array(elements)
                 });
             });
 
@@ -178,5 +190,31 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     throw err;
                 }
             });
+    }
+
+    generateFrom(code: number) {
+        const id = this.form.controls['id'].value;
+        this.confirmationSrv
+            .confirm('PAYROLL_ELEMENT_GENERATION',  'PAYROLL_GENERATE_ELEMENTS', true, true)
+            .pipe(switchMap(res =>
+                res ? code === this.PAYROLL_IEP ?
+                    this.infoSrv.generateFromIEP(id) :
+                    code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
+                        code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
+                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({count: -1 }) : of({count: -1 })
+            )).subscribe({
+            next: res => {
+                if (res.count >= 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                } else {
+                    this.snackBarSrv.showMessage('PAYROLL_NO_CHANGES');
+                }
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            }
+        });
+
     }
 }

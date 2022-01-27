@@ -52,4 +52,21 @@ export class FixedElementsEntryService extends BaseEntityService<ELine> {
         const params = new HttpParams().set('cols', this.colsString());
         return this.httpSrv.get(this.getUrl() + '/' + id, params);
     }
+
+    generateFromIEP(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/iep`);
+    }
+
+    generateFromOldElements(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/old-elements`);
+    }
+
+    generateFromRank(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/rank`);
+    }
+
+    generateFromPost(id: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/fix-elements/${id}/post`);
+    }
+
 }

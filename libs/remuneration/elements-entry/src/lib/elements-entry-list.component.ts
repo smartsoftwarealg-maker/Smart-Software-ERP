@@ -25,7 +25,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
     mainTableWidth = 600;
-    slipTableWidth = 450;
+    slipTableWidth = 500;
 
     slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
     displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post']
@@ -97,13 +97,15 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
 
     onTabChange(index: number) {
         if (this.JOURNAL_IDX === index) {
+            this.shellSrv.setLoading(true);
             this.infoSrv
                 .getJournal()
                 .subscribe(res => {
                     this.journalData = res.data;
                     this.headers = res.headers;
                     this.journalColumns = this.FIXED_JOURNAL_HEADERS.concat(res.headers);
-                    this.slipTableWidth = 460 + 120 * res.headers.length;
+                    this.slipTableWidth = 600 + 120 * res.headers.length;
+                    this.shellSrv.setLoading(false);
                 });
         }
     }
