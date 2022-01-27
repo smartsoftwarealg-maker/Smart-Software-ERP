@@ -1,6 +1,7 @@
 import {ImageModel} from '@ss/common/ui-image-input';
 
 export const INPUT_ELEMENTS_URL = '/payroll/pay-elements';
+export const FIXED_ELEMENTS_URL = '/payroll/fix-elements';
 
 export interface EData { field: string; value: number }
 export interface UPData { id: number;  data: EData[] }

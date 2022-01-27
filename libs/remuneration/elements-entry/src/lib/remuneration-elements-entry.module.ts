@@ -11,6 +11,8 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {RemunerationInputFiltersModule} from '@ss/remuneration/input-filters';
 import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
+import { FixedElementsListComponent } from './fixed-elements/fixed-elements-list.component';
+import { FixedElementsDetailComponent } from './fixed-elements/fixed-elements-detail.component';
 
 @NgModule({
     imports: [
@@ -27,7 +29,9 @@ import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
     ],
     declarations: [
       ElementsEntryDetailComponent,
-      ElementsEntryListComponent
+      ElementsEntryListComponent,
+      FixedElementsListComponent,
+      FixedElementsDetailComponent
     ],
 })
 export class RemunerationElementsEntryModule {}
