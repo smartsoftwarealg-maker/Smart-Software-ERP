@@ -1018,6 +1018,31 @@
                 }
             }
         },
+        "common-organizations": {
+            "projectType": "library",
+            "root": "libs/common/organizations",
+            "sourceRoot": "libs/common/organizations/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/common/organizations"],
+                    "options": {
+                        "jestConfig": "libs/common/organizations/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/common/organizations/src/**/*.ts",
+                            "libs/common/organizations/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "common-ui-access-rights": {
             "projectType": "library",
             "root": "libs/common/ui-access-rights",
