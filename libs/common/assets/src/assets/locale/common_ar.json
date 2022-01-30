@@ -170,5 +170,6 @@
     "DASHBOARD_QUERY": "استفسا لوحة القيادة",
     "DASHBOARD_QUERIES": "استفسارات لوحة القيادة",
     "EXIT": "خروج",
-    "GENERATE": "إنشاء"
+    "GENERATE": "إنشاء",
+    "NO_FILE_SELECTED": "لم يتم تحديد ملف حتى الآن"
 }

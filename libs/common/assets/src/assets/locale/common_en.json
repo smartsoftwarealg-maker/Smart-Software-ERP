@@ -170,5 +170,6 @@
     "DASHBOARD_QUERIES": "Dashboard queries",
     "DASHBOARD_QUERY": "Dashboard query",
     "EXIT": "Exit",
-    "GENERATE": "Generate"
+    "GENERATE": "Generate",
+    "NO_FILE_SELECTED": "No file selected yet"
 }

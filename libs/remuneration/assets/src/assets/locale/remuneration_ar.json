@@ -32,5 +32,6 @@
     "JOURNAL": "الدفتر",
     "GAIN": "ربح",
     "DEDUCTION": "مستقطع",
-    "NET_PAYMENT": "صافي الدفع"
+    "NET_PAYMENT": "صافي الدفع",
+    "EXCEL_INJECTION": "حقن العناصر بالمصفوفة"
 }

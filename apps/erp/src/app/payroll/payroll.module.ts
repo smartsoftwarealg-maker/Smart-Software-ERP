@@ -6,6 +6,7 @@ import {RemunerationElementTypesModule} from '@ss/remuneration/element-types';
 import {RemunerationElementsinfoModule} from '@ss/remuneration/elementsinfo';
 import {RemunerationPayrollFormulasModule} from '@ss/remuneration/payroll-formulas';
 import {RemunerationPayrollMonthModule} from '@ss/remuneration/payroll-month';
+import {RemunerationExcelInjectionModule} from '@ss/remuneration/excel-injection';
 
 @NgModule({
     imports: [
@@ -14,6 +15,7 @@ import {RemunerationPayrollMonthModule} from '@ss/remuneration/payroll-month';
         RemunerationElementsinfoModule,
         RemunerationPayrollFormulasModule,
         RemunerationPayrollMonthModule,
+        RemunerationExcelInjectionModule,
         RouterModule.forChild(mainRoutes)
     ]
 })
