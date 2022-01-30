@@ -112,6 +112,7 @@ export const PAY_ELEMENTSINFO_URL  = 'elementsinfo';
 export const PAY_ELEMENT_TYPES_URL = 'elementtypes';
 export const PAY_FORMULAS_URL      = 'formulas';
 export const PAY_MONTH_CLOSER      = 'close';
+export const PAY_XLS_INJECTION     = 'xls-injection';
 export const PAY_MONTH_CANCELER    = 'cancel';
 export const PAY_MONTH_SELECTOR    = 'select';
 export const PAY_INPUT_FILTERS     = 'inputfilters';
@@ -209,6 +210,7 @@ export const ABS_MONTH_SELECTOR_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY
 export const ABS_INPUT_FILTERS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_INPUT_FILTERS].join('/');
 export const ABS_ELEMENTS_ENTRY_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENTS_ENTRY_URL].join('/');
 export const ABS_FIXED_ELEMENTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FIXED_ELEMENTS_URL].join('/');
+export const ABS_EXCEL_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_XLS_INJECTION].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

@@ -167,5 +167,6 @@
     "DASHBOARD_QUERIES":              "",
     "DASHBOARD_QUERY":                "",
     "EXIT":                           "",
-    "GENERATE":                       "Generate"
+    "GENERATE":                       "Generate",
+    "NO_FILE_SELECTED":               ""
 }

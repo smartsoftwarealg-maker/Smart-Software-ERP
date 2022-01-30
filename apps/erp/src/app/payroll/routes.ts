@@ -6,7 +6,7 @@ import {
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR
+    PAY_MONTH_SELECTOR, PAY_XLS_INJECTION
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -16,10 +16,13 @@ import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remunerati
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
 import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
 import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
-import {ElementsEntryDetailComponent, ElementsEntryListComponent} from '@ss/remuneration/elements-entry';
+import {
+    ElementsEntryDetailComponent,
+    ElementsEntryListComponent, FixedElementsDetailComponent,
+    FixedElementsListComponent
+} from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
-import {FixedElementsListComponent} from '../../../../../libs/remuneration/elements-entry/src/lib/fixed-elements/fixed-elements-list.component';
-import {FixedElementsDetailComponent} from '../../../../../libs/remuneration/elements-entry/src/lib/fixed-elements/fixed-elements-detail.component';
+import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 
 export const mainRoutes: Routes = [
     {
@@ -63,6 +66,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_MONTH_CLOSER,
         component: MonthCloserComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: PAY_XLS_INJECTION,
+        component: ExcelInjectionComponent,
         canActivate: [CanActivateService],
     },
     {

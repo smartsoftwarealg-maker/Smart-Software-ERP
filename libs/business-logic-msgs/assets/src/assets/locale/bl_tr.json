@@ -19,5 +19,6 @@
     "MISSING_SMTP_CONFIGURATION":           "Eksik smtp yapılandırması",
     "MISSING_COMPANY_EMAIL":                "Eksik şirket e-postası.",
     "MISSING_ACCOUNT":                      "Missing account number",
-    "STOCKED_ITEM":                      ""
+    "STOCKED_ITEM":                         "",
+    "NOT_CURRENT_MONTH":                    ""
 }

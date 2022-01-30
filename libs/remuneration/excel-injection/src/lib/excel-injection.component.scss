@@ -1,0 +1,37 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.ctrl-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.ctrl-div button {
+    margin-left: 20px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    flex-grow: 1;
+}
+
+.text-area {
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    flex-grow: 2;
+    padding: 10px;
+}

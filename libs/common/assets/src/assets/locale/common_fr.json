@@ -170,5 +170,6 @@
     "DASHBOARD_QUERIES": "Requêtes du tableau de bord",
     "DASHBOARD_QUERY": "Requête du tableau de bord",
     "EXIT": "Sortir",
-    "GENERATE": "Générer"
+    "GENERATE": "Générer",
+    "NO_FILE_SELECTED": "Aucun fichier sélectionné pour le moment"
 }

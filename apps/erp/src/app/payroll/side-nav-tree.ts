@@ -1,7 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
-    ABS_ELEMENTSINFO_URL, ABS_FIXED_ELEMENTS_URL,
+    ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
     ABS_HR_CAREER_URL,
     ABS_HR_CATEGORIES_URL,
@@ -147,6 +147,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_ELEMENTS_ENTRY',
                     icon: 'fas fa-coins',
                     route: ABS_ELEMENTS_ENTRY_URL
+                },
+                {
+                    name: 'REMUN_EXCEL_INJECTION',
+                    icon: 'fas fa-file-excel',
+                    route: ABS_EXCEL_INJECTION_URL
                 },
                 {
                     name: 'REMUN_MONTH_CLOSURE',

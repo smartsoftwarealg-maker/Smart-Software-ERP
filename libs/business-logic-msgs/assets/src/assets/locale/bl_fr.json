@@ -19,5 +19,6 @@
     "MISSING_SMTP_CONFIGURATION":         "Configuration smtp manquante",
     "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
     "MISSING_ACCOUNT":                    "Numéro de compte manquant",
-    "STOCKED_ITEM":                    "Article stockable. Non stockable ne peut pas être vérifié."
+    "STOCKED_ITEM":                       "Article stockable. Non stockable ne peut pas être vérifié.",
+    "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours"
 }

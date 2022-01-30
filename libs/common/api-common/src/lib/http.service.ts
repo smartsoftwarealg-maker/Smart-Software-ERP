@@ -129,6 +129,18 @@ export class HttpService {
                 { headers: HttpService.getHeaders() });
     }
 
+    public upload(url: string, data?: any | null): Observable<any> {
+        return this
+            .httpClient
+            .post(this.baseUrl + url,
+                data,
+                {
+                    headers: HttpService.getHeaders(),
+                    reportProgress: true,
+                    observe: 'events'
+                });
+    }
+
     public postHTML(url: string, data?: any | null): Observable<any> {
         return this
             .httpClient

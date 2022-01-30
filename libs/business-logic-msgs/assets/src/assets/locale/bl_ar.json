@@ -20,5 +20,6 @@
     "MISSING_SMTP_CONFIGURATION":   "تكوين SMTP مفقود" ,
     "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
     "MISSING_ACCOUNT":              "رقم الحساب مفقود",
-    "STOCKED_ITEM":              "عنصر مخزن"
+    "STOCKED_ITEM":                 "عنصر مخزن",
+    "NOT_CURRENT_MONTH":            "الشهر المحدد ليس الشهر الحالي"
 }
