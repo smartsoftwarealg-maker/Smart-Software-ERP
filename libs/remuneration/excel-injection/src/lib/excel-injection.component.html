@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="ctrl-div">
+        <div class="file-upload">
+            <input type="file" class="file-input"
+                   [accept]="requiredFileType"
+                   (change)="onFileSelected($event)" #fileUpload>
+
+            <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+
+            <button mat-mini-fab color="primary"
+                    class="upload-btn"
+                    (click)="fileUpload.click()"
+                    *ngIf="!uploadProgress">
+                <i class="fas fa-paperclip"></i>
+            </button>
+        </div>
+        <div *ngIf="!uploadProgress" >
+            <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                {{ 'COMMON_CANCEL' | translate }}
+            </button>
+        </div>
+    </div>
+
+    <div class="progress">
+
+        <mat-progress-bar class="progress-bar" mode="determinate"
+                          [value]="uploadProgress" *ngIf="uploadProgress">
+
+        </mat-progress-bar>
+
+        <i class="fas fa-upload"
+           (click)="cancelUpload()"
+           *ngIf="uploadProgress"
+           translate> COMMON_CANCEL
+        </i>
+
+    </div>
+
+
+    <textarea cols="30" rows="10" class="text-area" readonly [value]="queryList"></textarea>
+</div>
