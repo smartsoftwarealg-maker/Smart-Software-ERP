@@ -98,9 +98,6 @@
         "common-assets": {
             "tags": []
         },
-        "common-organizations": {
-            "tags": []
-        },
         "common-ui-access-rights": {
             "tags": []
         },
@@ -141,6 +138,9 @@
             "tags": ["type:ui"]
         },
         "common-ui-main-page": {
+            "tags": []
+        },
+        "common-ui-organizations": {
             "tags": []
         },
         "common-ui-pagination": {
@@ -525,6 +525,9 @@
             "tags": []
         },
         "ui-report-catalog": {
+            "tags": []
+        },
+        "web-arch-assets": {
             "tags": []
         }
     }

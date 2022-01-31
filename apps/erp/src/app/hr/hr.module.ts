@@ -9,4 +9,4 @@ import { PayrollUiEmployeeModule } from '@ss/payroll/ui-employee';
         RouterModule.forChild(mainRoutes)
     ]
 })
-export class HRlModule { }
+export class HRModule { }
