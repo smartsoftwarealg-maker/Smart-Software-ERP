@@ -1,5 +1,5 @@
 module.exports = {
-    displayName: 'common-organizations',
+    displayName: 'common-ui-organizations',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
     globals: {
@@ -8,7 +8,7 @@ module.exports = {
             stringifyContentPathRegex: '\\.(html|svg)$',
         },
     },
-    coverageDirectory: '../../../coverage/libs/common/organizations',
+    coverageDirectory: '../../../coverage/libs/common/ui-organizations',
     transform: {
         '^.+\\.(ts|js|html)$': 'jest-preset-angular',
     },
