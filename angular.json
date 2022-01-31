@@ -1470,6 +1470,31 @@
                 }
             }
         },
+        "common-ui-organizations": {
+            "projectType": "library",
+            "root": "libs/common/ui-organizations",
+            "sourceRoot": "libs/common/ui-organizations/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/common/ui-organizations"],
+                    "options": {
+                        "jestConfig": "libs/common/ui-organizations/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/common/ui-organizations/src/**/*.ts",
+                            "libs/common/ui-organizations/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "common-ui-pagination": {
             "projectType": "library",
             "root": "libs/common/ui-pagination",
@@ -1830,6 +1855,11 @@
                             {
                                 "glob": "**/*",
                                 "input": "libs/business-logic-msgs/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/web-arch/assets/src/assets",
                                 "output": "assets"
                             }
                         ],
@@ -5768,6 +5798,31 @@
                     "options": {
                         "jestConfig": "libs/administration/ui-report-catalog/jest.config.js",
                         "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "web-arch-assets": {
+            "projectType": "library",
+            "root": "libs/web-arch/assets",
+            "sourceRoot": "libs/web-arch/assets/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/web-arch/assets"],
+                    "options": {
+                        "jestConfig": "libs/web-arch/assets/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/web-arch/assets/src/**/*.ts",
+                            "libs/web-arch/assets/src/**/*.html"
+                        ]
                     }
                 }
             }

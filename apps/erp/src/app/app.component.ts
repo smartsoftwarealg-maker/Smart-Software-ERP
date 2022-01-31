@@ -12,6 +12,7 @@ import {purchasesNavTree} from './purchases/side-nav-tree';
 import {logAdminNavTree} from './logistics-admin/side-nav-tree';
 import {financeNavTree} from './finance/side-nav-tree';
 import {dashboardNavTree} from './dashboard/side-nav-tree';
+import {webArchNavTree} from './web-arch/side-nav-tree';
 
 @Component({
     selector: 'ss-root',
@@ -38,7 +39,8 @@ export class AppComponent implements OnInit {
             hrNavTree,
             payrollNavTree,
             financeNavTree,
-            dashboardNavTree
+            dashboardNavTree,
+            webArchNavTree
         ]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()),

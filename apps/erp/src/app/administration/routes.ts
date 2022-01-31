@@ -11,6 +11,7 @@ import {
     ADMINISTRATION_WILAYA_URL,
     ADMINISTRATION_ACCCESSRIGHTS_URL,
     ADMINISTRATION_TRACEABILITY_URL,
+    ADMINISTRATION_ORGANIZATIONS_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -32,6 +33,7 @@ import {
 } from '@ss/common/ui-lookup';
 import {AccessRightsListComponent} from '@ss/common/ui-access-rights';
 import {TraceabilityComponent} from '@ss/common/ui-traceability';
+import {OrganizationsComponent} from '@ss/common/ui-organizations';
 
 export const mainRoutes: Routes = [
 //    // NOT USED
@@ -39,6 +41,11 @@ export const mainRoutes: Routes = [
 //        path: LOOKUPS_URL,
 //        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
 //    },
+    {
+        path: ADMINISTRATION_ORGANIZATIONS_URL,
+        component: OrganizationsComponent,
+        canActivate: [CanActivateService]
+    },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [

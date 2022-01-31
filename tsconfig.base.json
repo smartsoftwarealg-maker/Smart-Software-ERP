@@ -107,6 +107,9 @@
             "@ss/common/ui-main-page": [
                 "libs/common/ui-main-page/src/index.ts"
             ],
+            "@ss/common/ui-organizations": [
+                "libs/common/ui-organizations/src/index.ts"
+            ],
             "@ss/common/ui-pagination": [
                 "libs/common/ui-pagination/src/index.ts"
             ],
@@ -397,7 +400,8 @@
             "@ss/stock/ui-reception-lines": [
                 "libs/stock/ui-reception-lines/src/index.ts"
             ],
-            "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"]
+            "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"],
+            "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

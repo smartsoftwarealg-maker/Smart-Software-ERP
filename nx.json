@@ -140,6 +140,9 @@
         "common-ui-main-page": {
             "tags": []
         },
+        "common-ui-organizations": {
+            "tags": []
+        },
         "common-ui-pagination": {
             "tags": ["type:ui"]
         },
@@ -525,6 +528,9 @@
             "tags": []
         },
         "ui-report-catalog": {
+            "tags": []
+        },
+        "web-arch-assets": {
             "tags": []
         }
     }

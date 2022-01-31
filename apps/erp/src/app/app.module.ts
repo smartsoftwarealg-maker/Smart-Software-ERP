@@ -15,7 +15,8 @@ import {
     HR_APP_URL,
     PURCHASES_APP_URL,
     SALES_APP_URL,
-    STOCK_APP_URL
+    STOCK_APP_URL,
+    WEBARCH_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
@@ -50,7 +51,7 @@ const routes: Routes = [
             },
             {
                 path: HR_APP_URL,
-                loadChildren: () => import('./hr/hr.module').then(m => m.HRlModule)
+                loadChildren: () => import('./hr/hr.module').then(m => m.HRModule)
             },
             {
                 path: DASHBOARD_APP_URL,
@@ -67,6 +68,10 @@ const routes: Routes = [
             {
                 path: LOGISTICS_APP_URL,
                 loadChildren: () => import('./logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+            },
+            {
+                path: WEBARCH_APP_URL,
+                loadChildren: () => import('./web-arch/web-arch.module').then(m => m.WebArchModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
@@ -110,5 +115,6 @@ export class AppModule {
         langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
         langSrv.addSource('assets/locale/purchases_', 'PURCHASES_');
         langSrv.addSource('assets/locale/bl_', 'BL_');
+        langSrv.addSource('assets/locale/webarch_', 'WAR_');
     }
 }
