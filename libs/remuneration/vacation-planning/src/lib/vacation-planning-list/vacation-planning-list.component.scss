@@ -1,0 +1,40 @@
+.container {
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-table {
+    width: 100%;
+}
+
+.main-table {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-x: auto;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}
+
+.mat-column-description {
+    flex: 1 0 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-selection {
+    flex: 2 0 200px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
