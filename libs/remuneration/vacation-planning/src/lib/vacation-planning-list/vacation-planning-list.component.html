@@ -1,0 +1,71 @@
+<div class="container">
+
+    <div class="ctrl-div">
+        <mat-form-field class="default-50">
+            <mat-label translate>REMUN_BASE</mat-label>
+            <mat-select (selectionChange)="onPeriod($event)">
+                <mat-option *ngFor="let p of periods" [value]="p">
+                    {{ (p - 1) + ' - ' +  p }}
+                </mat-option>
+            </mat-select>        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>REMUN_RATE</mat-label>
+            <input matInput [formControl]="rate" type="number" step="0.01">
+        </mat-form-field>
+    </div>
+    <div class="main-table">
+        <mat-table mat-table [dataSource]="data">
+
+            <ng-container matColumnDef="employee">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.employee}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_LAST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.lastName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_FIRST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.firstName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="acquired">
+                <mat-header-cell *matHeaderCellDef translate>REMUN_ACQUIRED</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.acquired}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="taken">
+                <mat-header-cell *matHeaderCellDef translate>REMUN_TAKEN</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.acquired - e.taken }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rest">
+                <mat-header-cell *matHeaderCellDef translate>REMUN_REST</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.taken}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+
+            <mat-row class="selectable" [class.selected]="row.id === selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

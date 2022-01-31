@@ -385,6 +385,9 @@
         "remuneration-payroll-month": {
             "tags": []
         },
+        "remuneration-vacation-planning": {
+            "tags": []
+        },
         "sales-api-delivery": {
             "tags": []
         },

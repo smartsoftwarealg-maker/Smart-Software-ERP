@@ -20,7 +20,7 @@ import {
     ABS_INPUT_FILTERS_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL
+    ABS_MONTH_SELECTOR_URL, ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -158,6 +158,12 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-calendar-times',
                     route: ABS_MONTH_CLOSER_URL,
                     accessRights: 'Closer'
+                },
+                {
+                    name: 'REMUN_VACATION_PLANNING',
+                    icon: 'fas fa-calendar-times',
+                    route: ABS_VACATION_PLANNING_URL,
+                    accessRights: 'VPlanning'
                 },
                 {
                     name: 'REMUN_MONTH_CANCELLATION',
