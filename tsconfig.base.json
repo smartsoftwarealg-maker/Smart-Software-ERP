@@ -286,6 +286,9 @@
             "@ss/remuneration/payroll-month": [
                 "libs/remuneration/payroll-month/src/index.ts"
             ],
+            "@ss/remuneration/vacation-planning": [
+                "libs/remuneration/vacation-planning/src/index.ts"
+            ],
             "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
             "@ss/sales/api-delivery-cancellation": [
                 "libs/sales/api-delivery-cancellation/src/index.ts"

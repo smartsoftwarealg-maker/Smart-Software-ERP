@@ -4183,6 +4183,31 @@
                 }
             }
         },
+        "remuneration-vacation-planning": {
+            "projectType": "library",
+            "root": "libs/remuneration/vacation-planning",
+            "sourceRoot": "libs/remuneration/vacation-planning/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/vacation-planning"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/vacation-planning/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/vacation-planning/src/**/*.ts",
+                            "libs/remuneration/vacation-planning/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "sales-api-delivery": {
             "projectType": "library",
             "root": "libs/sales/api-delivery",

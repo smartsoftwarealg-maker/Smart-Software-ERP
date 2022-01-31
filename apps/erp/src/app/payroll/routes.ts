@@ -6,7 +6,7 @@ import {
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_XLS_INJECTION
+    PAY_MONTH_SELECTOR, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -23,6 +23,7 @@ import {
 } from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
+import {VacationPlanningListComponent} from '../../../../../libs/remuneration/vacation-planning/src';
 
 export const mainRoutes: Routes = [
     {
@@ -81,6 +82,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_MONTH_SELECTOR,
         component: MonthSelectorComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: PAY_VACATION_PLANNING,
+        component: VacationPlanningListComponent,
         canActivate: [CanActivateService],
     },
     {
