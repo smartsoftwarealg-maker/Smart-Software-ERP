@@ -71,6 +71,9 @@
             ],
             "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
             "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
+            "@ss/common/api-organizations": [
+                "libs/common/api-organizations/src/index.ts"
+            ],
             "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
             "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
             "@ss/common/ui-access-rights": [
