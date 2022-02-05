@@ -1,0 +1,16 @@
+<div style="height: 64px; padding-right: 8px; padding-left: 8px; line-height: 64px; font-weight: bold" class="theme-background-accent" translate>
+  {{title}}
+</div>
+<mat-dialog-content>
+  <p translate>{{message}}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" mat-raised-button
+          color="primary"
+          (click)="dialogRef.close('no')"
+  >{{ noo }} </button>
+  <button type="button"
+          color="accent"
+          mat-raised-button
+          (click)="dialogRef.close('yes')" >{{ yes }}</button>
+</mat-dialog-actions>

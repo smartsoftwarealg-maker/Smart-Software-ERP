@@ -1,0 +1,17 @@
+<form novalidate [formGroup]="form"
+      *ngIf="loaded"
+      class="theme-background lookup-dtl-container">
+
+  <mat-form-field class="value" style="max-width: 95%; margin-right: 2.5%; margin-left: 2.5%">
+    <mat-placeholder translate>DESCRIPTION</mat-placeholder>
+    <input matInput formControlName="description" >
+  </mat-form-field>
+
+  <ss-form-save-toolbar
+    class="max-700"
+    #fst
+    (cancel)="cancel()"
+    [saveAction]="saveAction">
+  </ss-form-save-toolbar>
+</form>
+

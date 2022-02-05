@@ -1,0 +1,94 @@
+htl {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 10px;
+    height: calc(100% - 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.form__container {
+    height: 100%;
+    max-width: 900px;
+    padding: 10px 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto) 1fr;
+    grid-template-areas: "des des"
+                       "dat agnt"
+                       "rec ."
+                       "imj imj";
+    grid-gap: 10px;
+}
+
+
+.agnt {
+    grid-area: agnt;
+    max-width: 400px;
+}
+
+.rec {
+    grid-area: rec;
+    max-width: 350px;
+}
+
+.des {
+    grid-area: des;
+    max-width: 800px;
+}
+
+.dat {
+    grid-area: dat;
+    justify-self: start;
+}
+
+.typ {
+    grid-area: typ;
+    justify-self: start;
+}
+
+.imj {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    grid-area: imj;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e5d4a1;
+}
+
+.ctr_div {
+    flex-grow: 0;
+    background: #3FFF49;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+@media (max-width: 800px) {
+    .container {
+        grid-template-rows: repeat(4, auto) 1fr;
+        grid-template-areas: "des" "dat" "rec" "agnt" "imj";
+        grid-gap: 10px;
+        height: 90%;
+    }
+
+    .form__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "des" "dat" "agnt" "rec" "imj";
+        grid-template-rows: repeat(4, auto) 1fr;
+    }
+}

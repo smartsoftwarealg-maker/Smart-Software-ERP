@@ -401,7 +401,8 @@
                 "libs/stock/ui-reception-lines/src/index.ts"
             ],
             "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"],
-            "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"]
+            "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
+            "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

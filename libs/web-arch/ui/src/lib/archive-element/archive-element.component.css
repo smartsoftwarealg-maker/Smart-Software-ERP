@@ -1,0 +1,70 @@
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40px 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: "des"
+                         "im"
+                         "info";
+    padding-top: 2px;
+    grid-gap: 10px;
+}
+.thumb-nail {
+}
+.des {
+    grid-area: des;
+    font-weight: bold;
+    overflow: hidden;
+}
+.info {
+  grid-area: info;
+  display: grid;
+  grid-template-columns: 70px auto;
+  grid-template-areas: "ls sv"
+                       "ld dv"
+                       "lc cv";
+  grid-gap: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.im {
+    grid-area: im;
+    font-size: small;
+}
+.ls {
+    grid-area: ls;
+    font-size: small;
+    font-weight: bolder;
+}
+.sv {
+    grid-area: sv;
+    font-size: small;
+}
+
+.ld {
+    grid-area: ld;
+    font-size: small;
+    font-weight: bolder;
+}
+.dv {
+    grid-area: dv;
+    font-size: small;
+}
+
+.lc {
+    grid-area: lc;
+    font-weight: bolder;
+    font-weight: bolder;
+}
+.cv {
+    grid-area: cv;
+    overflow: hidden;
+    font-size: small;
+    overflow: hidden;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}

@@ -1,0 +1,11 @@
+.container {
+  max-width: 500px;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.my-table {
+  flex-grow: 1;
+}

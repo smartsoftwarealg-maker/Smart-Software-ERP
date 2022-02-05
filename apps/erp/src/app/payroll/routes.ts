@@ -23,7 +23,7 @@ import {
 } from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
-import {VacationPlanningListComponent} from '../../../../../libs/remuneration/vacation-planning/src';
+import {VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
 
 export const mainRoutes: Routes = [
     {
