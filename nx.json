@@ -535,6 +535,9 @@
         },
         "web-arch-assets": {
             "tags": []
+        },
+        "web-arch-ui": {
+            "tags": []
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AppContext, HttpService, LoginInfo, LoginService} from '@ss/common/api-common';
-import {map, Observable, switchMap, tap} from 'rxjs';
+import {catchError, map, Observable, switchMap, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
