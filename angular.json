@@ -948,6 +948,31 @@
                 }
             }
         },
+        "common-api-organizations": {
+            "projectType": "library",
+            "root": "libs/common/api-organizations",
+            "sourceRoot": "libs/common/api-organizations/src",
+            "prefix": "ss",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/common/api-organizations"],
+                    "options": {
+                        "jestConfig": "libs/common/api-organizations/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/common/api-organizations/src/**/*.ts",
+                            "libs/common/api-organizations/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
         "common-api-users": {
             "projectType": "library",
             "root": "libs/common/api-users",
