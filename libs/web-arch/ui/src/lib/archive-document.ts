@@ -21,5 +21,6 @@ export interface UPDocInfo{ _id: string;
                            personId?: number;
                            agentId?: number;
                            serviceId?: number;
-                           receiver?: number
+                           receiver?: number;
+                           tags?: string;
                  }

@@ -1,65 +1,38 @@
 import {Component, HostBinding, OnInit, ViewChild} from '@angular/core';
-import {slideToLeft} from '../../animations';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormSaveToolbarComponent, MyHttpService} from 'shared-module';
-import {RoleService} from 'shared-module/app/modules/roles/role.service';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {Tag} from '../tag';
+import {Service, ServiceService} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {TagService} from '../tag-list/tag.service';
 
 @Component({
   selector: 'ss-tag-detail',
   templateUrl: './tag-detail.component.html',
-  styleUrls: ['./tag-detail.component.css'],
-  animations: [slideToLeft]
+  styleUrls: ['./tag-detail.component.css']
 })
-export class TagDetailComponent implements OnInit {
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @ViewChild(FormSaveToolbarComponent) saveToolbar: FormSaveToolbarComponent;
+export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {
 
-  saveAction = this.save.bind(this);
-  loaded = false;
-  public form: FormGroup = null;
-  private id: number = null;
+    constructor(
+        public tagSrv: TagService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
+        public formBuilder: FormBuilder) {
+        super(tagSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'WAR_TAGS');
+    }
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private httpSrv: MyHttpService,
-              private srv: TagService,
-              private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
-    this.loaded = false;
-    this.srv.setDetailCloser(this.cancel.bind(this));
-    this.route.params.pipe(
-      tap(res => this.id = +res['id']),
-      switchMap(() => this.srv.getById(this.id))
-    ).subscribe(res => {
-      this.form = this.fb.group({
-          id: [this.id],
-          description: [res.description]
-        }
-      );
-      this.loaded = true;
-    }, err => {
-      this.cancel();
-      throw err;
-    });
-  }
-
-  save(): Observable<any> {
-    return this.srv.save(this.form.value)
-      .pipe(tap(res => {
-        if (!this.form.value.id) {
-          this.form.value.id = +res;
-        }
-      }));
-  }
-
-  cancel() {
-    this.router.navigate(['..'], {relativeTo: this.route});
-  }
+    public setupForm(e: Tag): FormGroup {
+        return this.formBuilder.group({
+            id: e.id,
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
+        });
+    }
 
 }

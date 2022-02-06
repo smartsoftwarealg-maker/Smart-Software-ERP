@@ -5,6 +5,7 @@ import {map, switchMap, tap} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {Tag} from './tags/tag';
 
 
 @Injectable({
@@ -153,6 +154,10 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
 
   deleteById(id: string): Observable<any> {
     return this.httpSrv.remove(`/warch?id=${id}`);
+  }
+
+  getTagList(): Observable<Tag[]> {
+        return this.httpSrv.get<Tag[]>('/warch/tags');
   }
 
   getArchiveById(id: string): Observable<ArchiveDocument[]> {

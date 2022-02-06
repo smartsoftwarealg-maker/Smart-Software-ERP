@@ -18,22 +18,23 @@ htl {
     padding: 10px 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, auto) 1fr;
-    grid-template-areas: "des des"
-                       "dat agnt"
-                       "rec ."
-                       "imj imj";
+    grid-template-rows: repeat(4, auto) 1fr;
+    grid-template-areas: "des     des"
+                         "dat     tags"
+                         "service tags"
+                         "agent   tags"
+                         "imj     imj";
     grid-gap: 10px;
 }
 
 
-.agnt {
-    grid-area: agnt;
+.agent {
+    grid-area: agent;
     max-width: 400px;
 }
 
-.rec {
-    grid-area: rec;
+.service {
+    grid-area: service;
     max-width: 350px;
 }
 
@@ -46,7 +47,10 @@ htl {
     grid-area: dat;
     justify-self: start;
 }
-
+.tags {
+    grid-area: tags;
+    overflow-y: auto;
+}
 .typ {
     grid-area: typ;
     justify-self: start;
@@ -78,7 +82,7 @@ img {
 @media (max-width: 800px) {
     .container {
         grid-template-rows: repeat(4, auto) 1fr;
-        grid-template-areas: "des" "dat" "rec" "agnt" "imj";
+        grid-template-areas: "des" "dat" "service" "agent" "imj";
         grid-gap: 10px;
         height: 90%;
     }
@@ -86,7 +90,7 @@ img {
     .form__container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-areas: "des" "dat" "agnt" "rec" "imj";
+        grid-template-areas: "des" "dat" "agent" "service" "imj";
         grid-template-rows: repeat(4, auto) 1fr;
     }
 }

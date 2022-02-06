@@ -1,34 +1,26 @@
-<ss-ss-nav-toolbar (change)="onFilter($event)"
-                   (add)="add()"
-                   (refresh)="refresh($event)"
-                   [deleteAction]="deleteAction"
-                   [editVisible]="false"
-                   [deleteEnabled]="selectedId"
-                   [filter]="filter"
-                   [rights]="rights">
-</ss-ss-nav-toolbar>
+<div class="form_container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
-<div class="ss-role-table-container theme-background">
-  <mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource">
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'DESCRIPTION' }}</mat-header-cell>
-      <mat-cell *matCellDef="let cc">{{ (cc.description) }}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id === selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="select(row.id)"
-             [ngClass]="{'active-list-item': row.id == selectedId}"></mat-row>
-
-  </mat-table>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
 </div>
-
-<ss-basic-pagination [model]="{ page: pModel.page,
-                                 pageSize: pModel.pageSize,
-                                 elementsCount: pModel.elementsCount,
-                                 scroll: pModel.scroll }"
-                     (modelChange)="pageChange($event)">
-</ss-basic-pagination>
-
-<router-outlet></router-outlet>
