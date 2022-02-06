@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ArchiveService} from '../archive.service';
 import {switchMap, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
 import {ArchiveDocument, Lookup, UPDocInfo} from '../archive-document';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ServiceService} from '@ss/common/api-lookup';
@@ -11,6 +10,8 @@ import {LanguageService, LoginService} from '@ss/common/api-common';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {ShellService} from '@ss/common/ui-shell';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Tag} from '../tags/tag';
+import {MatSelectionList} from '@angular/material/list';
 
 @Component({
   selector: 'ss-archive-detail',
@@ -18,6 +19,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./archive-detail.component.css']
 })
 export class ArchiveDetailComponent implements OnInit {
+    @ViewChild('tags', { static: false }) selectionList: MatSelectionList;
   form: FormGroup = null;
   private id: string = null;
   public selectedService: number = null;
@@ -28,6 +30,9 @@ export class ArchiveDetailComponent implements OnInit {
   loadingRate = 100;
   agentAutoCompleteModel    = new AgentLookupModel(this.agentSrv);
   serviceAutoCompleteModel    = new DefaultAutoCompleteModel(this.serviceSrv);
+  tagList: Tag[] = [];
+  curTags: Set<string> = new Set<string>();
+
 
   constructor(private service: ArchiveService,
               private router: Router,
@@ -48,9 +53,15 @@ export class ArchiveDetailComponent implements OnInit {
       .paramMap
       .pipe(
         tap(res => this.id = res.get('id')),
+        switchMap(_ => this.service.getTagList()),
+        tap(res => this.tagList = this.tagList = res),
         switchMap(res => this.service.getArchiveById(this.id)))
       .subscribe(next => {
+        this.curTags.clear();
         const res = next && next.length > 0 ? next[0] : {id: 0, metadata: {}} as ArchiveDocument;
+        const docTags: string[] = res.metadata.tags?.split(',') || [];
+        docTags.forEach(e => this.curTags.add(e));
+
         this.imgSrc = res['imgSrc'];
         const date = res.uploadDate ? new Date(Date.parse(res.uploadDate)) : new Date();
         // const data = res.thumbnail;
@@ -68,9 +79,9 @@ export class ArchiveDetailComponent implements OnInit {
           receiver: [res.metadata['receiver']],
           length: [res.length],
           file: [res.filename],
+          tags: [docTags],
           description: [res.metadata['description'], Validators.required]
         });
-
       });
   }
 
@@ -99,7 +110,8 @@ export class ArchiveDetailComponent implements OnInit {
           description: this.form.value.description,
           user: this.loginSrv.appCtx.id,
           agentId: this.form.value.agentId,
-          serviceId: this.form.value.service
+          serviceId: this.form.value.service,
+          tags: this.selectionList.selectedOptions.selected.map(e => e.value).join(',')
       }
       this.service
           .updateMetadata(data)
@@ -202,6 +214,10 @@ export class ArchiveDetailComponent implements OnInit {
       }
     };
     reader.readAsDataURL(this.selectedFile);
+  }
+
+  onSelect(event: any) {
+      console.log('event', event);
   }
 }
 

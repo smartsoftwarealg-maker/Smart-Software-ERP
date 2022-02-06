@@ -129,6 +129,7 @@ export const DASHBOARD_URL       = 'dashbaord'
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
+export const TAG_URL        = 'tags';
 
 
 // #############
@@ -240,6 +241,7 @@ export const ABS_DASHBOARD_QUERY_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, 
 
 // ARCHIVE
 export const ABS_ARCHIVE_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, ARCHIVE_URL].join('/');
+export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join('/');
 
 
 

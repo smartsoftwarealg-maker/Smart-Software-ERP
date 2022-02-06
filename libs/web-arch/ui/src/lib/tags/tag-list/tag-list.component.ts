@@ -1,60 +1,34 @@
 import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
-import {slideToLeft} from '../../animations';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {TranslationService} from 'angular-l10n';
-import {BaseListComponent, GenericDataService, GenericDataSource, MyHttpService, UserService} from 'shared-module';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TagService} from './tag.service';
 import {Tag} from '../tag';
-import {Observable, of} from 'rxjs';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {LookupsService} from '@ss/common/api-lookup';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-tag-list',
   templateUrl: './tag-list.component.html',
-  styleUrls: ['./tag-list.component.css'],
-  animations: [slideToLeft]
+  styleUrls: ['./tag-list.component.css']
 })
-export class TagListComponent extends BaseListComponent<Tag> implements OnInit, OnDestroy {
-  @HostBinding('@routeAnimation') routeAnimation = true;
+
+export class TagListComponent extends BaseEntityListComponent<Tag>  {
 
   public displayedColumns = ['description'];
-  public deleteAction = this.deleteRole.bind(this);
 
-  constructor(protected snackBar: MatSnackBar,
-              protected trans: TranslationService,
-              protected service: UserService,
-              protected route: Router,
-              protected parent: ActivatedRoute,
-              protected http: MyHttpService, protected srv: TagService) {
-    super(snackBar, trans, service, route, parent,
-      new GenericDataSource<Tag>(new GenericDataService<Tag>(http, srv.url))
-    );
-    this.pModel.pageSize = 5;
-  }
-
-  private deleteRole(): Observable<any> {
-    return this.selectedId ? this.srv.removeById(this.selectedId) : of(0);
-  }
-
-  select(id: number): void {
-    super.select(id);
-    this.edit();
-  }
-
-  ngOnInit(): void {
-    super.ngOnInit();
-    this.srv.setListUpdater(this.updateList.bind(this));
-  }
-
-  ngOnDestroy(): void {
-    this.srv.setListUpdater(null);
-  }
-
-  public updateList() {
-    this.refresh(this.filter);
-  }
-
-  public afterPageChange(): void {
-    this.srv.closeDetail();
-  }
+    constructor(
+        public tagSrv: TagService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
+        public lookupsSrv: LookupsService,
+        public pagPersistSrv: PaginatorPersistenceService) {
+        super(tagSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'WAR_TAGS');
+    }
 }

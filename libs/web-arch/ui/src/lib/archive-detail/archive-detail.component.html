@@ -17,20 +17,7 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-
-        <div class="imj" >
-            <img [src]="imgSrc " [alt]="'image'"/>
-        </div>
-
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>WAR_SERVICE</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="serviceAutoCompleteModel"
-                              formControlName="service"></ss-auto-complete>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
+        <mat-form-field class="agent">
             <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
             <ss-auto-complete matInput
                               [required]="true"
@@ -38,27 +25,53 @@
                               formControlName="agentId"></ss-auto-complete>
         </mat-form-field>
 
+        <div class="imj">
+            <img [src]="imgSrc " [alt]="'image'"/>
+        </div>
+
+        <mat-form-field class="service">
+            <mat-label translate>WAR_SERVICE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="serviceAutoCompleteModel"
+                              formControlName="service"></ss-auto-complete>
+        </mat-form-field>
+
+        <fieldset>
+            <legend><span translate>WAR_TAGS</span>:</legend>
+
+            <div class="tags">
+                <mat-selection-list #tags>
+                    <mat-list-option *ngFor="let tag of tagList"
+                                     [selected]="curTags.has(tag.description)"
+                                     [value]="tag.description">
+                        {{ tag.description }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </fieldset>
+
     </form>
 
-    <input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
     <div class="ctr_div">
         <input type="file"
                #fileInput
                style="display: none"
                (change)="onFileSelected($event)">
 
+        <input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
         <mat-progress-bar
             *ngIf="loadingRate < 100"
             mode="determinate" value="{{ loadingRate }}">
         </mat-progress-bar>
-        <button mat-mini-fab (click)="onSave()">
+        <button mat-mini-fab (click)="onSave()" color="primary">
             <i class="fas fa-save"></i>
         </button>
-        <button mat-mini-fab (click)="onCancel()">
+        <button mat-mini-fab (click)="onCancel()" color="accent">
             <i class="fas fa-undo"></i>
         </button>
 
-        <button mat-mini-fab (click)="fileInput.click()">
+        <button mat-mini-fab (click)="fileInput.click()" color="warn">
             <i class="fas fa-upload"></i>
         </button>
     </div>

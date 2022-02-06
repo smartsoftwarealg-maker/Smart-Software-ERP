@@ -1,18 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Tag} from '../tag';
-import {MyHttpService} from 'shared-module';
-import {BaseListServiceService} from '../../base-list-service.service';
+import {BaseEntityService} from '@ss/common/api-base-entity';
+import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TagService extends BaseListServiceService<Tag> {
+export class TagService extends BaseEntityService<Tag> {
 
-  constructor(public http: MyHttpService) {
+  constructor(public http: HttpService) {
     super(http, '/warch/tags');
-  }
-
-  public emptyObject(): Tag {
-    return {id: 0, description: null};
   }
 }

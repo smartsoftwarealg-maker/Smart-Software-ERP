@@ -1,15 +1,11 @@
-<div class="role-dtl-container theme-background">
-  <div class="form-container">
-    <form novalidate [formGroup]="form" *ngIf="loaded">
+<form *ngIf="form !== null" novalidate [formGroup]="form">
+    <mat-form-field class="value">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" required autofocus>
+    </mat-form-field>
 
-      <mat-form-field class="description">
-        <mat-placeholder translate>DESCRIPTION</mat-placeholder>
-        <input matInput formControlName="description" required>
-      </mat-form-field>
-
-    </form>
-  </div>
-
-  <ss-form-save-toolbar (cancel)="cancel()" [saveAction]="saveAction"></ss-form-save-toolbar>
-
-</div>
+    <mat-form-field class="value">
+        <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
+        <input matInput formControlName="descriptionAr" type="text" >
+    </mat-form-field>
+</form>

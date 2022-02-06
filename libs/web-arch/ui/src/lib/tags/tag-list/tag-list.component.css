@@ -1,18 +1,26 @@
 
-:host {
-  display: block;
-  max-width: 320px;
-  width: 100%;
-  margin: auto;
-  height: unset;
+.main-table {
+    width: 320px;
+    min-height: 320px;
+    margin: 0 auto;
 }
 
-.ss-roles-list {
-  display: block;
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
-.ss-role-table-container {
-  display: block;
-  min-height: 303px;
-  overflow: auto;
+.mat-column-description {
+    flex: 0 0 268px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
 }
+
+
+ss-pagination {
+    left: 0;
+    right: 0;
+    position: sticky;
+    margin: auto;
+}
+
