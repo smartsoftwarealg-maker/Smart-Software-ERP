@@ -171,5 +171,6 @@
     "DASHBOARD_QUERY": "Requête du tableau de bord",
     "EXIT": "Sortir",
     "GENERATE": "Générer",
-    "NO_FILE_SELECTED": "Aucun fichier sélectionné pour le moment"
+    "NO_FILE_SELECTED": "Aucun fichier sélectionné pour le moment",
+    "ARCHIVE": "Archive"
 }

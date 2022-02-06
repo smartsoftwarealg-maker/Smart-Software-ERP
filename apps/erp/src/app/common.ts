@@ -7,7 +7,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import {LOGISTICS_CATEGORY_URL} from "../../../scheduled/src/app/common";
+import {LOGISTICS_CATEGORY_URL} from '../../../scheduled/src/app/common';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -127,6 +127,10 @@ export const PAY_FIXED_ELEMENTS_URL = 'fixedelements';
 export const DASHBOARD_QUERY_URL = 'queries'
 export const DASHBOARD_URL       = 'dashbaord'
 
+//Web arch
+export const ARCHIVE_URL    = 'arch';
+
+
 // #############
 // # FULL URLS #
 // #############
@@ -233,6 +237,9 @@ export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_UR
 //dashboard
 export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_DASHBOARD_QUERY_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_QUERY_URL].join('/');
+
+// ARCHIVE
+export const ABS_ARCHIVE_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, ARCHIVE_URL].join('/');
 
 
 

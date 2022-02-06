@@ -44,8 +44,10 @@ export class AppComponent implements OnInit {
         ]);
         this.httpSrv.init()
             .pipe(switchMap(() => this.langSrv.init()),
-                switchMap(_ => this.loginSrv.reload()))
-            .subscribe(() => this.loaded = true)
+                  switchMap(_ => this.loginSrv.reload()))
+            .subscribe({ next: () => this.loaded = true,
+                                 error: () => this.loginSrv.logout()
+                                });
     }
 
 }

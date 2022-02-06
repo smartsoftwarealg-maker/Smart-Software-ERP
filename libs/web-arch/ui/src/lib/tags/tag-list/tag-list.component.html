@@ -1,0 +1,34 @@
+<ss-ss-nav-toolbar (change)="onFilter($event)"
+                   (add)="add()"
+                   (refresh)="refresh($event)"
+                   [deleteAction]="deleteAction"
+                   [editVisible]="false"
+                   [deleteEnabled]="selectedId"
+                   [filter]="filter"
+                   [rights]="rights">
+</ss-ss-nav-toolbar>
+
+<div class="ss-role-table-container theme-background">
+  <mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>{{ 'DESCRIPTION' }}</mat-header-cell>
+      <mat-cell *matCellDef="let cc">{{ (cc.description) }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="select(row.id)"
+             [ngClass]="{'active-list-item': row.id == selectedId}"></mat-row>
+
+  </mat-table>
+</div>
+
+<ss-basic-pagination [model]="{ page: pModel.page,
+                                 pageSize: pModel.pageSize,
+                                 elementsCount: pModel.elementsCount,
+                                 scroll: pModel.scroll }"
+                     (modelChange)="pageChange($event)">
+</ss-basic-pagination>
+
+<router-outlet></router-outlet>
