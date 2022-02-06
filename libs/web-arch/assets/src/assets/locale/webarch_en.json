@@ -100,5 +100,6 @@
   "AGENT": "Agent",
   "TAGS": "Tags",
   "UPDATES_CANCELED": "Updates canceled",
-  "FILENAME": "File name"
+  "FILENAME": "File name",
+    "SERVICE": "Service"
 }

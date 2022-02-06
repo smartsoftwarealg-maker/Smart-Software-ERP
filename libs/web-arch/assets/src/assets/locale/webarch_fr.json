@@ -102,5 +102,6 @@
   "RECEIVER": "Destination",
   "AGENT": "Tiers",
   "TAGS": "Tags",
-  "FILENAME": "Nom de fichier"
+  "FILENAME": "Nom de fichier",
+  "SERVICE": "Service"
 }

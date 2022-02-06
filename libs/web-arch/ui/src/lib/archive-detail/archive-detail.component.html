@@ -5,14 +5,14 @@
           class="form__container">
 
         <mat-form-field class="des">
-            <mat-placeholder translate>DESCRIPTION</mat-placeholder>
+            <mat-placeholder translate>COMMON_DESCRIPTION</mat-placeholder>
             <input matInput type="text" name="fileName" formControlName="description">
         </mat-form-field>
 
 
         <mat-form-field class="dat">
             <input matInput [matDatepicker]="picker" name="docDate" formControlName="docDate">
-            <mat-placeholder translate>DATE</mat-placeholder>
+            <mat-placeholder translate>COMMON_DATE</mat-placeholder>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -23,7 +23,7 @@
         </div>
 
         <mat-form-field class="default-50 sm-100">
-            <mat-label translate>ARCHIVE_SERVICE</mat-label>
+            <mat-label translate>WAR_SERVICE</mat-label>
             <ss-auto-complete matInput
                               [required]="true"
                               [model]="serviceAutoCompleteModel"

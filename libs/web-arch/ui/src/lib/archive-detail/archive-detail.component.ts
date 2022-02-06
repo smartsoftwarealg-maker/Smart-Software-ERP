@@ -103,7 +103,10 @@ export class ArchiveDetailComponent implements OnInit {
       }
       this.service
           .updateMetadata(data)
-          .subscribe(_ => this.openSnackBar('RECORD_SAVED'));
+          .subscribe(_ => {
+              this.openSnackBar('WAR_RECORD_SAVED');
+              this.onCancel();
+          });
   }
 
   private post() {
@@ -115,14 +118,15 @@ export class ArchiveDetailComponent implements OnInit {
       formData.append('description', this.form.value.description);
       formData.append('filename', 'file');
       formData.append('agentId', this.form.value.agentId);
-      formData.append('receiver', this.form.value.service);
+      formData.append('service', this.form.value.service);
       this.loadingRate = 0;
       const date = this.form.value.docDate || new Date();
       this.form.value.docDate = this.formatDate(date);
       this.service
           .upload(formData)
           .subscribe(res => {
-              this.openSnackBar('RECORD_SAVED');
+              this.openSnackBar('WAR_RECORD_SAVED');
+              this.onCancel();
               // this.onCancel(this.id);
               // if (event instanceof HttpResponse || !event) {
               //     if (this.toolBar) {

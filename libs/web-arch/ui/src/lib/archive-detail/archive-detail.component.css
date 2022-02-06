@@ -60,12 +60,10 @@ htl {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #e5d4a1;
 }
 
 .ctr_div {
     flex-grow: 0;
-    background: #3FFF49;
     display: flex;
     justify-content: center;
     gap: 20px;

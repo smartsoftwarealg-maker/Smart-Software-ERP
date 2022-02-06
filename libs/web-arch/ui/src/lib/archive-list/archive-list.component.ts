@@ -50,32 +50,6 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     }
 
 
-    // public load() {
-    //     this.shellSrv.setLoading(true);
-    //     this.selected = null;
-    //     this.data = [];
-    //     this.service
-    //         .getList(this.pagination.page, this.pagination.pageSize, this.searchFld.value)
-    //         .subscribe(res => {
-    //             this.pagination.elementCount = res.itemCount;
-    //             this.data = res.body;
-    //             this.pagination.elementCount = res.itemCount;
-    //             if (res) {
-    //                 this.data.forEach(d => {
-    //                     if (d.thumbnail) {
-    //                         d.imgSrc = 'data:image/jpeg;base64,' + btoa(
-    //                             new Uint8Array(<any>d.thumbnail)
-    //                                 .reduce((acc, byte) => acc + String.fromCharCode(byte), '')
-    //                         );
-    //                         d.thumbnail = null;
-    //                     } else {
-    //                         d.imgSrc = 'assets/img/Dummy.png';
-    //                     }
-    //                 });
-    //             }
-    //             this.shellSrv.setLoading(false);
-    //         });
-    // }
 
     onDelete(id: string) {
         this.confirmationSrv

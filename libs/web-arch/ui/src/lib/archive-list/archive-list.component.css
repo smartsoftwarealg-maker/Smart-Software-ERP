@@ -4,11 +4,26 @@ html {
   padding: 0;
 }
 .container {
-  display: flex;
+  height: 100%;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 5px;
 }
+.pagination-container {
+    margin-top: 10px;
+    flex-grow: 0;
+}
+
+.upload_date {
+    background: #cecece;
+    font-size: 0.8em;
+    padding: 4px;
+}
+
+.upload_date span {
+    font-weight: bolder;
+}
+
 mat-toolbar {
   flex-grow: 0;
 }
