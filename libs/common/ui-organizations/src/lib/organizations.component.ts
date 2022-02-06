@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import { DIVISIONS_URL, Division } from '@ss/common/api-organizations';
+import { DIVISIONS_URL, Division, Service, Department, DEPARTMENTS_URL, SERVICES_URL } from '@ss/common/api-organizations';
+
+interface ChartNode {
+    name: string;
+    type: string;
+    children: ChartNode[];
+}
 
 @Component({
     selector: 'ss-organizations',
@@ -11,34 +17,29 @@ export class OrganizationsComponent implements OnInit {
 
     constructor(private httpSrv: HttpService) { }
 
-    title = '';
-
-    type = 'OrgChart';
-
-    data: any[] = [];
-
-/*    data = [
-        // {v: id, f = text}, parent, tooltip
-        [{ v: 'Mike2', f: 'Mike' }, '', 'The President'],
-        [{ v: 'Jim', f: 'Jim' }, 'Mike2', 'VP'],
-        [{ v: 'ID', f: 'Some nice text' }, 'Mike2', ''],
-        [{ v: 'Bob', f: 'Some nice text 2' }, 'Jim', 'Bob Sponge'],
-        [{ v: 'id2_lol', f: 'text' }, 'Bob', '']
-    ];
-    */
-
-    columnNames = ["Name", "Manager", "Tooltip"];
-
-    options = {
-        allowHtml: true
+    root: ChartNode = {
+        name: 'ROOT',
+        type: '',
+        children: []
     };
-    width = 550;
-    height = 400;
+
 
     ngOnInit() {
+        const divisions = {};
         this.httpSrv.get<Division[]>(DIVISIONS_URL)
             .subscribe((divs: Division[]) => {
-                this.data = divs.map(d => [{v: d.id + '', f: d.description}, '', '']);
+                this.root.children = divs.map(d => this.lookupToChartNode(d));
+            });
+        this.httpSrv.get<Department[]>(DEPARTMENTS_URL[0] + 0 + DEPARTMENTS_URL[1])
+            .subscribe((ds: Department[]) => {
+            });
+        this.httpSrv.get<Service[]>(SERVICES_URL[0] + 0 + SERVICES_URL[1])
+            .subscribe((services: any[]) => {
             });
     }
+
+    lookupToChartNode(l: {description: string}): ChartNode {
+        return {name: l.description, type: '', children: [] };
+    }
+
 }
