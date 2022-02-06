@@ -92,6 +92,9 @@
         "common-api-lookup": {
             "tags": ["type:api"]
         },
+        "common-api-organizations": {
+            "tags": []
+        },
         "common-api-users": {
             "tags": []
         },
