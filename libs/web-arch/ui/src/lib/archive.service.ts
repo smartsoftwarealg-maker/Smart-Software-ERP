@@ -37,6 +37,8 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
             ['mov', this.MOV],
             ['odt', this.ODT],
             ['ods', this.ODS],
+            ['doc', this.WRD],
+            ['docx', this.WRD],
         ]);
 
     constructor(protected httpSrv: HttpService) {
