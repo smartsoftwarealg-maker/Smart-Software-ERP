@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl} from '@angular/forms';
 import {HttpService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ArchiveDocument} from '../archive-document';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -13,11 +13,11 @@ import {Observable, of} from 'rxjs';
 import {saveAs} from 'file-saver';
 
 @Component({
-  selector: 'ss-archive-list',
-  templateUrl: './archive-list.component.html',
-  styleUrls: ['./archive-list.component.css']
+    selector: 'ss-archive-list',
+    templateUrl: './archive-list.component.html',
+    styleUrls: ['./archive-list.component.css']
 })
-export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> {
+export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
     public searchFld = new FormControl();
     rights = {create: true, del: true, edit: true};
 
@@ -43,12 +43,12 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     onEdit(id: string) {
         this.router.navigate(['detail', {id: id}], {relativeTo: this.route}).then();
     }
+
     public edit() {
         if (this.selectedRow._id) {
             this.router.navigate(['detail', {id: this.selectedRow._id}], {relativeTo: this.route}).then();
         }
     }
-
 
 
     onDelete(id: string) {
@@ -67,14 +67,70 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             });
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        const downloadButton: ToolbarButton = {
+            icon: 'fas fa-download',
+            label: 'WAR_DOWNLOAD',
+            disabled: false,
+            visible: true,
+            keepOnToolbar: KeepOnToolbar.DYNAMIC,
+            click: () => {
+                this.download(this.selectedRow?._id);
+            }
+        };
+        this.shellSrv.addButton(downloadButton);
+    }
+
     download(id: string) {
         this.data
             .filter(e => e.filename && e._id === id)
             .forEach(e => this.viewDocument(e));
     }
 
+    processLoadedData(data: ArchiveDocument[]): Observable<ArchiveDocument[]> {
+        data.forEach(d => {
+            if (d.thumbnail && d.thumbnail.length > 100) {
+                d.imgSrc = 'data:image/jpeg;base64,' + btoa(
+                    new Uint8Array(<any>d.thumbnail)
+                        .reduce((acc, byte) => acc + String.fromCharCode(byte), '')
+                );
+                d.thumbnail = null;
+            } else {
+                d.imgSrc = this.service.toBase64FromDoc(d);
+            }
+        });
+        return of(data);
+    }
+
+    public deleteSelected(): void {
+        this.confirmationSrv.confirmDelete()
+            .subscribe(b => {
+                if (b) {
+                    if (this.selected && this.selected > 0) {
+                        const a = this.data.filter(x => x.id === this.selected)[0];
+                        if (a && a.id) {
+                            this.shellSrv.setLoading(true);
+                            this.service.deleteById(a._id)
+                                .subscribe({
+                                    next: () => {
+                                        this.snackBarSrv.showSuccessMessage();
+                                        this.refresh();
+                                    },
+                                    error: err => {
+                                        this.snackBarSrv.showFailureMessage();
+                                        this.shellSrv.setLoading(false);
+                                        throw err;
+                                    }
+                                });
+                        }
+                    }
+                }
+            })
+    }
+
     private getBlob(blob: number[], doc: ArchiveDocument): Blob {
-        const docType = doc.metadata.get('docType')
+       const docType = doc?.metadata['docType'];
         if (docType.indexOf('pdf') >= 0) {
             return this.service.asPDFBlob(blob);
         }
@@ -109,19 +165,10 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     }
 
     private viewDocument(doc: ArchiveDocument) {
-        if (doc.filename.indexOf('jpg') >= 0 ||
-            doc.filename.indexOf('jpeg') >= 0 ||
-            doc.filename.indexOf('png') >= 0) {
-            this.router.navigate(['../viewer', {id: doc.id}], {relativeTo: this.route});
+        const docType = doc.metadata['docType'];
+        if (docType.indexOf('jp') >= 0 || docType.indexOf('png') >= 0) {
+            this.router.navigate(['viewer', {id: doc._id}], {relativeTo: this.route});
         } else {
-            // const blob = this.getBlob(doc);
-            // window.open option
-            // const url = window.URL.createObjectURL(blob);
-            // window.open(url);
-            // File save option
-            // if (blob) {
-            //     saveAs(blob, this.getFileName(doc));
-            // }
             this.service.getImage(doc._id).subscribe(blob => {
                 if (blob) {
                     saveAs(this.getBlob(blob, doc), this.getFileName(doc));
@@ -131,7 +178,8 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     }
 
     private getFileName(doc: ArchiveDocument): string {
-        const docType = doc.metadata.get('docType')
+        const docType = doc.metadata['docType'];
+
         if (docType.indexOf('pdf') >= 0) {
             return 'pdf.pdf';
         }
@@ -163,46 +211,5 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             return 'mov.mov';
         }
         return docType + '.' + docType;
-    }
-
-    processLoadedData(data: ArchiveDocument[]): Observable<ArchiveDocument[]> {
-        data.forEach(d => {
-            if (d.thumbnail) {
-                d.imgSrc = 'data:image/jpeg;base64,' + btoa(
-                    new Uint8Array(<any>d.thumbnail)
-                        .reduce((acc, byte) => acc + String.fromCharCode(byte), '')
-                );
-                d.thumbnail = null;
-            } else {
-                d.imgSrc = 'assets/img/Dummy.png';
-            }
-        });
-        return of(data);
-    }
-
-    public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
-                        if (a && a.id) {
-                            this.shellSrv.setLoading(true);
-                            this.service.deleteById(a._id)
-                                .subscribe({
-                                    next: () => {
-                                        this.snackBarSrv.showSuccessMessage();
-                                        this.refresh();
-                                    },
-                                    error: err => {
-                                            this.snackBarSrv.showFailureMessage();
-                                            this.shellSrv.setLoading(false);
-                                            throw err;
-                                        }
-                                });
-                        }
-                    }
-                }
-            })
     }
 }

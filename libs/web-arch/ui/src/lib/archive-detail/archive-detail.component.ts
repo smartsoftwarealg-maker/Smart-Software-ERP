@@ -62,7 +62,7 @@ export class ArchiveDetailComponent implements OnInit {
         const docTags: string[] = res.metadata.tags?.split(',') || [];
         docTags.forEach(e => this.curTags.add(e));
 
-        this.imgSrc = res['imgSrc'];
+        this.imgSrc = res['imgSrc'] || this.service.toBase64FromDoc(res);
         const date = res.uploadDate ? new Date(Date.parse(res.uploadDate)) : new Date();
         // const data = res.thumbnail;
         this.form = this.fb.group({
@@ -187,7 +187,7 @@ export class ArchiveDetailComponent implements OnInit {
       const docType = idx > 0 ? name.substring(idx + 1) : null;
       if (docType) {
         if (docType.indexOf('pdf') >= 0) {
-          this.imgSrc = ('./assets/img/pdf.png');
+          this.imgSrc = ('./assets/img/Dummy.png');
         } else {
           if (docType.indexOf('doc') >= 0) {
             this.imgSrc = ('./assets/img/word.png');

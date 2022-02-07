@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {ArchiveService} from '../archive.service';
 import {of} from 'rxjs';
+import {ShellService} from '@ss/common/ui-shell';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-archive-viewer',
@@ -10,9 +12,14 @@ import {of} from 'rxjs';
   styleUrls: ['./archive-viewer.component.css']
 })
 export class ArchiveViewerComponent implements OnInit {
-    imgSrc = null;
+    imgSrc: string = null;
+    title = 'WAR_ARCHIVE';
 
-  constructor(private router: Router, private route: ActivatedRoute, private service: ArchiveService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private service: ArchiveService,
+              private shellSrv: ShellService,
+              private langSrv: LanguageService) {
       this.route
         .params
         .pipe(switchMap(params =>
@@ -29,10 +36,13 @@ export class ArchiveViewerComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-  }
 
   close() {
-      this.router.navigate(['../../'], { relativeTo: this.route });
+      this.router.navigate(['../arch'], { relativeTo: this.route });
+  }
+
+  ngOnInit() {
+      this.shellSrv.setGoBackPath('..', this.route);
+      this.shellSrv.setTitle(this.langSrv.translate(this.title));
   }
 }

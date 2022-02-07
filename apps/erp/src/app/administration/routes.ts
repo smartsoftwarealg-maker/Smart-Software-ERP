@@ -33,7 +33,6 @@ import {
 } from '@ss/common/ui-lookup';
 import {AccessRightsListComponent} from '@ss/common/ui-access-rights';
 import {TraceabilityComponent} from '@ss/common/ui-traceability';
-import {OrganizationsComponent} from '@ss/common/ui-organizations';
 
 export const mainRoutes: Routes = [
 //    // NOT USED
@@ -41,11 +40,11 @@ export const mainRoutes: Routes = [
 //        path: LOOKUPS_URL,
 //        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
 //    },
-    {
-        path: ADMINISTRATION_ORGANIZATIONS_URL,
-        component: OrganizationsComponent,
-        canActivate: [CanActivateService]
-    },
+//     {
+//         path: ADMINISTRATION_ORGANIZATIONS_URL,
+//         component: OrganizationsComponent,
+//         canActivate: [CanActivateService]
+//     },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [

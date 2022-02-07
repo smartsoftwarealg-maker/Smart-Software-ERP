@@ -1,9 +1,13 @@
-import {LOOKUPS_URL, PAY_ELEMENT_TYPES_URL, ARCHIVE_URL, TAG_URL} from '../common';
+import {LOOKUPS_URL, PAY_ELEMENT_TYPES_URL, ARCHIVE_URL, TAG_URL, ARCHIVE_VIEWER} from '../common';
 import { Routes } from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
-import {ArchiveListComponent, ArchiveDetailComponent} from '@ss/web-arch/ui';
-import {TagListComponent} from '../../../../../libs/web-arch/ui/src/lib/tags/tag-list/tag-list.component';
-import {TagDetailComponent} from '../../../../../libs/web-arch/ui/src/lib/tags/tag-detail/tag-detail.component';
+import {
+    ArchiveListComponent,
+    ArchiveDetailComponent,
+    TagListComponent,
+    TagDetailComponent,
+    ArchiveViewerComponent
+} from '@ss/web-arch/ui';
 
 export const mainRoutes: Routes = [
     {
@@ -13,6 +17,10 @@ export const mainRoutes: Routes = [
     {
         path: ARCHIVE_URL,
         children: [
+            {
+                path: ARCHIVE_VIEWER,
+                component: ArchiveViewerComponent
+            },
             {
                 path: LIST_URL,
                 component: ArchiveListComponent,

@@ -26,7 +26,7 @@
         </mat-form-field>
 
         <div class="imj">
-            <img [src]="imgSrc " [alt]="'image'"/>
+            <img [src]="imgSrc" [alt]="'image'"/>
         </div>
 
         <mat-form-field class="service">
@@ -37,10 +37,10 @@
                               formControlName="service"></ss-auto-complete>
         </mat-form-field>
 
-        <fieldset>
+        <fieldset class="tags">
             <legend><span translate>WAR_TAGS</span>:</legend>
 
-            <div class="tags">
+            <div >
                 <mat-selection-list #tags>
                     <mat-list-option *ngFor="let tag of tagList"
                                      [selected]="curTags.has(tag.description)"

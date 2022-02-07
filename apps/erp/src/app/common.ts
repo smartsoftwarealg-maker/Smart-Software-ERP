@@ -130,6 +130,7 @@ export const DASHBOARD_URL       = 'dashbaord'
 //Web arch
 export const ARCHIVE_URL    = 'arch';
 export const TAG_URL        = 'tags';
+export const ARCHIVE_VIEWER = 'viewer';
 
 
 // #############
