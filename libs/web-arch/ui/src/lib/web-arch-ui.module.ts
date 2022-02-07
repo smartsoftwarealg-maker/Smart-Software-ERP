@@ -17,6 +17,7 @@ import {ArchiveElementComponent} from './archive-element/archive-element.compone
 import {ReportsModule} from '../../../../../apps/hotel/src/app/smart-lib/components/reports/reports.module';
 import {TagListComponent} from './tags/tag-list/tag-list.component';
 import {TagDetailComponent} from './tags/tag-detail/tag-detail.component';
+import {ArchiveViewerComponent} from './archive-viewer/archive-viewer.component';
 
 @NgModule({
     imports: [CommonModule,
@@ -37,7 +38,8 @@ import {TagDetailComponent} from './tags/tag-detail/tag-detail.component';
         ArchiveDetailComponent,
         ArchiveElementComponent,
         TagListComponent,
-        TagDetailComponent
+        TagDetailComponent,
+        ArchiveViewerComponent
     ]
 })
 export class WebArchUiModule {}

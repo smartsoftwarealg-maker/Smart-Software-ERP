@@ -36,7 +36,9 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
         ReportCatalogComponent,
         ReportCatalogDetailComponent
     ],
-    exports: [],
+    exports: [
+        SafePipe
+    ],
     entryComponents: [
         ReportViewerComponent,
         ReportSelectorComponent

@@ -1,15 +1,5 @@
 <div class="container">
     <div class="img__container">
-        <img *ngIf="imgSrc" [src]="imgSrc | safe"  >
+        <img *ngIf="imgSrc" [src]="imgSrc | safe "  >
     </div>
-  <div class="tbar">
-    <mat-toolbar color="accent">
-       <span>
-            <button mat-button  (click)="close()">
-            <i class="fas fa-undo"></i>
-        </button>
-            <button mat-button (click)="close()" translate>CLOSE</button>
-       </span>
-    </mat-toolbar>
-  </div>
 </div>

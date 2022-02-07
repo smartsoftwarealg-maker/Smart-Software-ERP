@@ -1,9 +1,10 @@
-htl {
+html {
     margin: 0;
     padding: 0;
 }
 
 .container {
+    height: 100%;
     padding: 10px;
     height: calc(100% - 32px);
     display: flex;
@@ -80,17 +81,10 @@ img {
 }
 
 @media (max-width: 800px) {
-    .container {
-        grid-template-rows: repeat(4, auto) 1fr;
-        grid-template-areas: "des" "dat" "service" "agent" "imj";
-        grid-gap: 10px;
-        height: 90%;
-    }
-
     .form__container {
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-areas: "des" "dat" "agent" "service" "imj";
+        grid-template-areas: "des" "dat" "agent" "service" "tags" "imj";
         grid-template-rows: repeat(4, auto) 1fr;
     }
 }
