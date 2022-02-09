@@ -62,6 +62,10 @@ export class BaseEntityService<T> {
         this.parentId = id;
     }
 
+    getParentId() {
+        return this.parentId;
+    }
+
     protected getUrl(): string {
         if (this.parentUrl && this.parentId == null) {
             console.log(this.parentUrl, this.parentId);

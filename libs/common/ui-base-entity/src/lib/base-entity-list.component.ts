@@ -291,17 +291,17 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.entitySrv.remove(a.id)
-                                .subscribe(
-                                    () => {
+                                .subscribe({
+                                    next: () => {
                                         this.snackBarSrv.showSuccessMessage();
                                         this.refresh();
                                     },
-                                    err => {
+                                    error: err => {
                                         this.snackBarSrv.showFailureMessage();
                                         this.shellSrv.setLoading(false);
                                         throw err;
                                     }
-                                );
+                                });
                         }
                     }
                 }

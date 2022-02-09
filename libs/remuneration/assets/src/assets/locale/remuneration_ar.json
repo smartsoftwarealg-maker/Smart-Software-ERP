@@ -35,7 +35,9 @@
     "NET_PAYMENT": "صافي الدفع",
     "EXCEL_INJECTION": "حقن العناصر بالمصفوفة",
     "VACATION_PLANNING": "تخطيط الإجازات",
+    "VACATION": " الإجاز",
     "ACQUIRED": "مكتسب",
     "TAKEN": "مأخوذ",
-    "REST": ""
+    "REST": "",
+    "REFERENCE": "مرجع"
 }
