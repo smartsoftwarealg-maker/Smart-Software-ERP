@@ -169,5 +169,6 @@
     "EXIT":                           "",
     "GENERATE":                       "Generate",
     "NO_FILE_SELECTED":               "",
-    "ARCHIVE": ""
+    "ARCHIVE": "",
+    "UPDATE": ""
 }

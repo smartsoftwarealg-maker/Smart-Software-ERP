@@ -19,6 +19,7 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
     private readonly THIS_YEAR = new Date().getFullYear();
     period  = new FormControl(  this.THIS_YEAR - 1);
     rate    = new FormControl(173.33);
+    defYear = new Date().getFullYear() - 1;
     periods = [
         this.THIS_YEAR - 10,
         this.THIS_YEAR - 9,
@@ -56,5 +57,24 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
 
     onPeriod(event: MatSelectChange) {
         this.infoSrv.year = +event.value;
+        this.refresh();
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.editButton.visible = false;
+        this.addButton.visible = false;
+        this.deleteButton.visible = false;
+    }
+
+    updatePlanning() {
+        this.shellSrv.setLoading(true);
+        this.infoSrv
+            .updatePlanning(this.period.value, this.rate.value)
+            .subscribe(res => {
+                this.refresh();
+                this.shellSrv.setLoading(false);
+                this.snackBarSrv.showSuccessMessage();
+            });
     }
 }
