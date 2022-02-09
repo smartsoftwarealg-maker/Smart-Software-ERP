@@ -34,8 +34,10 @@
     "DEDUCTION": "Deduction",
     "NET_PAYMENT": "Net payment",
     "EXCEL_INJECTION": "Excel injection of elements",
-    "VACATION_PLANNING": "Vacation planning",
+    "VACATION_PLANNING": "Leave planning",
+    "VACATION": "Leave",
     "ACQUIRED": "Acquired",
     "TAKEN": "Taken",
-    "REST": "Remaining"
+    "REST": "Remaining",
+    "REFERENCE": "Reference"
 }

@@ -23,7 +23,9 @@ import {
 } from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
-import {VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
+import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
+import {VacationPlanningDetailListComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail-list/vacation-planning-detail-list.component';
+import {VacationPlanningDetailComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail/vacation-planning-detail.component';
 
 export const mainRoutes: Routes = [
     {
@@ -86,8 +88,29 @@ export const mainRoutes: Routes = [
     },
     {
         path: PAY_VACATION_PLANNING,
-        component: VacationPlanningListComponent,
-        canActivate: [CanActivateService],
+        children: [
+            {
+                path: LIST_URL,
+                component: VacationPlanningListComponent,
+                canActivate: [CanActivateService],
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: 'detail',
+                        children: [
+                            { path: ':id', component: VacationPlanningDetailDetailComponent, canActivate: [CanActivateService] }
+                        ]
+                    },
+                    {
+                        path: '',
+                        component: VacationPlanningDetailComponent,
+                        canActivate: [CanActivateService]
+                    }
+                ]
+            }
+        ]
     },
     {
         path: PAY_FORMULAS_URL,

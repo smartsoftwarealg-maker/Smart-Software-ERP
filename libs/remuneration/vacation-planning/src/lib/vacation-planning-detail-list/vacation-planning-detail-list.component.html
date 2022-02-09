@@ -1,0 +1,48 @@
+<div class="main-table">
+    <mat-table mat-table [dataSource]="data">
+
+        <ng-container matColumnDef="fromDate">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.from_date | date: 'dd-MM-yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toDate">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.to_date | date: 'dd-MM-yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_ADDRESS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.address }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>REMUN_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+
+        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

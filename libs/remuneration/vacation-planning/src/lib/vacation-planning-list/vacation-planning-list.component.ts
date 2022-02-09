@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {VacationPlanningListService} from '../vacation-planning-list.service';
+import {VacationPlanningService} from '../vacation-planning.service';
 import {FormControl} from '@angular/forms';
 import {MatSelectChange} from '@angular/material/select';
 
@@ -43,7 +43,7 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
     ];
 
     constructor(
-        public infoSrv: VacationPlanningListService,
+        public infoSrv: VacationPlanningService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -52,7 +52,7 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_VACATION_PLANNING');
-        this.pagination.pageSize = 5;
+        this.pagination.pageSize = 10;
     }
 
     onPeriod(event: MatSelectChange) {
@@ -62,7 +62,6 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
 
     ngOnInit() {
         super.ngOnInit();
-        this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
     }
@@ -72,7 +71,6 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
         this.infoSrv
             .updatePlanning(this.period.value, this.rate.value)
             .subscribe(res => {
-                this.refresh();
                 this.shellSrv.setLoading(false);
                 this.snackBarSrv.showSuccessMessage();
             });

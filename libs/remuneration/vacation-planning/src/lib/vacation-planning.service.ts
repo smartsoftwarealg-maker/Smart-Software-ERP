@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class VacationPlanningListService extends BaseEntityService<VacationPlanning> {
+export class VacationPlanningService extends BaseEntityService<VacationPlanning> {
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, VACATION_PLANNING_URL, '/payroll/years');
         this.parentId = new Date().getFullYear() - 1;

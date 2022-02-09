@@ -26,19 +26,21 @@
 
 mat-table {
     width: 800px;
+    flex: 1 0 auto;
 }
-
+.pagination-container {
+    flex: 0 0 auto;
+}
 .main-table {
     height: 100%;
     width: 100%;
     flex-grow: 1;
     flex-shrink: 1;
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.pagination-container {
-    flex-grow: 0;
-}
 
 .mat-column-employee {
     flex: 0 0 80px;
@@ -52,3 +54,6 @@ mat-table {
     padding-left: 8px !important;
 }
 
+ss-vacation-planning-detail {
+    flex: 1 0 200px;
+}

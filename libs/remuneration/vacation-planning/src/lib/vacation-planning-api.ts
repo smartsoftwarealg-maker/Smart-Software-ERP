@@ -10,3 +10,14 @@ export class VacationPlanning {
     lastName?: string;
     firstName?: string;
 }
+
+export class VacationPlanningDetail {
+    id: number;
+    from_date?: Date;
+    to_date?: Date;
+    address?: string;
+    vac_type?: number;
+    reference?: number;
+    planning_id: number;
+    description?: string;
+}

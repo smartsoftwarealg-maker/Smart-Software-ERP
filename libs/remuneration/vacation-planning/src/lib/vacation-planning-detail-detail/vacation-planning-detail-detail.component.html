@@ -1,0 +1,43 @@
+<form *ngIf="form" novalidate [formGroup]="form" >
+
+    <mat-form-field appearance="fill" class="default-50 sm-100">
+        <mat-label translate>REMUN_VACATION</mat-label>
+        <mat-select formControlName="vac_type">
+            <mat-option *ngFor="let g of vacationTypes" [value]="g.id">
+                  {{ g.description}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>REMUN_REFERENCE</mat-label>
+        <input matInput formControlName="reference" type="number" >
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_FROM</mat-label>
+        <ss-date-picker required="true" formControlName="from_date"></ss-date-picker>
+        <mat-error *ngIf="form.controls.from_date.hasError('required')" translate>
+            COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_TO</mat-label>
+        <ss-date-picker required="true" formControlName="to_date"></ss-date-picker>
+        <mat-error *ngIf="form.controls.to_date.hasError('required')" translate>
+            COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="default-100 sm-100">
+        <mat-label translate>PAYROLL_ADDRESS</mat-label>
+        <input matInput formControlName="address" type="text" maxlength="150">
+        <mat-error *ngIf="form.controls.address.hasError('maxlength')" [translate]="{maxLen: 64}">
+            COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+    </mat-form-field>
+
+</form>
