@@ -33,6 +33,7 @@ import {
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
+import { OrganizationsComponent } from '@ss/common/ui-organizations';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
