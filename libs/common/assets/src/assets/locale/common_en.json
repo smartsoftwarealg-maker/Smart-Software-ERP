@@ -171,8 +171,8 @@
     "NO_FILE_SELECTED": "No file selected yet",
     "ARCHIVE": "Archive",
     "DIVISION": "Division",
-    "DEPARTMENT": "D�partement",
+    "DEPARTMENT": "Department",
     "SERVICE": "Service",
-    "OFFICE": "Bureau",
-    "EDIT_OFFICE": "Modifier le bureau"
+    "OFFICE": "Office",
+    "EDIT_OFFICE": "Edit office"
 }
