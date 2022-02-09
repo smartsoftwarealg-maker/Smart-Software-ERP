@@ -161,10 +161,7 @@
     "AGENT": "Tiers",
     "ARTICLE": "Articles",
     "CUR_EXCHANGE": "Currency exchange",
-    "EXCHANGE": "Currency exchange",
     "HRCOMMON": "HRMaster common",
-    "HRMASTER": "HRMaster",
-    "INVENTORY": "Stock",
     "PERSONS": "Personnel",
     "DASHBOARD": "Tableau de bord",
     "DASHBOARD_QUERIES": "Requêtes du tableau de bord",
@@ -173,5 +170,10 @@
     "GENERATE": "Générer",
     "NO_FILE_SELECTED": "Aucun fichier sélectionné pour le moment",
     "ARCHIVE": "Archive",
+    "DIVISION": "Division",
+    "DEPARTMENT": "Département",
+    "SERVICE": "Service",
+    "OFFICE": "Bureau",
+    "EDIT_OFFICE": "Modifier le bureau",
     "UPDATE": "Mettre à jour"
 }

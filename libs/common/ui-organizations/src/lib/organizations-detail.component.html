@@ -1,0 +1,28 @@
+<div class="conf-dlg-title b-warn" translate>
+    {{title}}
+</div>
+<mat-dialog-content style="display: block">
+
+    <div style="width: 100%">
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
+                    autofocus>
+                <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+        </form>
+
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions style="display: block">
+    <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="save()" color="primary" translate>
+        <i class="fas fa-save"></i>
+    </button>
+    <button type="button" class="margin-end-8 float-end" mat-mini-fab (click)="close(false)" color="warn" translate>
+        <i class="fas fa-times"></i>
+    </button>
+</mat-dialog-actions>
