@@ -174,5 +174,6 @@
     "DEPARTMENT": "Department",
     "SERVICE": "Service",
     "OFFICE": "Office",
-    "EDIT_OFFICE": "Edit office"
+    "EDIT_OFFICE": "Edit office",
+    "UPDATE": "Update"
 }

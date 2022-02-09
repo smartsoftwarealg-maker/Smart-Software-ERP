@@ -1,4 +1,4 @@
-export const VACATION_PLANNING_URL = '/payroll/vacations';
+export const VACATION_PLANNING_URL = '/vacations';
 
 export class VacationPlanning {
     id: number;

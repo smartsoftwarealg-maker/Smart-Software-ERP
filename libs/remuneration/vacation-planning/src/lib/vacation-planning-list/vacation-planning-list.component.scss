@@ -3,15 +3,29 @@
     padding: 10px;
     box-sizing: border-box;
     height: 100%;
-    width: 80%;
+    width: 98%;
     max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
+.ctrl-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ctrl-div .year {
+    flex-grow: 1;
+    min-width: 120px;
+}
+.ctrl-div button {
+    align-self: center;
+    max-width: 50px;
+}
 
 mat-table {
-    width: 100%;
+    width: 800px;
 }
 
 .main-table {
@@ -26,14 +40,14 @@ mat-table {
     flex-grow: 0;
 }
 
-.mat-column-description {
-    flex: 1 0 150px;
+.mat-column-employee {
+    flex: 0 0 80px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-selection {
-    flex: 2 0 200px;
+.mat-column-lastName .mat-column-firstName {
+    flex: 1 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

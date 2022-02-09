@@ -1,19 +1,28 @@
 <div class="container">
 
     <div class="ctrl-div">
-        <mat-form-field class="default-50">
-            <mat-label translate>REMUN_BASE</mat-label>
-            <mat-select (selectionChange)="onPeriod($event)">
+        <mat-form-field class="default-25  small-50 year">
+            <mat-label translate>PAYROLL_YEAR</mat-label>
+            <mat-select (selectionChange)="onPeriod($event)" [value]="defYear"  [formControl]="period">
                 <mat-option *ngFor="let p of periods" [value]="p">
-                    {{ (p - 1) + ' - ' +  p }}
+                    {{ (p - 1) + ' - ' + p }}
                 </mat-option>
-            </mat-select>        </mat-form-field>
+            </mat-select>
+        </mat-form-field>
 
-        <mat-form-field class="default-50">
+        <mat-form-field class="default-25 small-50" >
             <mat-label translate>REMUN_RATE</mat-label>
             <input matInput [formControl]="rate" type="number" step="0.01">
         </mat-form-field>
+        <button mat-raised-button
+                color="primary"
+                class="default-25  small-50"
+                (click)="updatePlanning()"
+                [matTooltip]="'COMMON_UPDATE'|translate">
+            <i class="fas fa-sync"></i>
+        </button>
     </div>
+
     <div class="main-table">
         <mat-table mat-table [dataSource]="data">
 
@@ -65,6 +74,7 @@
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
+
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
