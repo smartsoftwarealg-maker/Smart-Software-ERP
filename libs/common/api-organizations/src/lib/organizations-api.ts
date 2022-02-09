@@ -4,6 +4,11 @@ export const DEPARTMENTS_URL = ['/organizations/divisions/', '/departments'];
 export const SERVICES_URL    = ['/organizations/departments/', '/services'];
 export const OFFICES_URL     = ['/organizations/services/', '/offices'];
 
+export interface Lookup {
+    id: number;
+    description: string;
+}
+
 export interface Division {
     id: number;
     description: string;
@@ -19,4 +24,10 @@ export interface Service {
     id: number;
     description: string;
     department: number;
+}
+
+export interface Office {
+    id: number;
+    description: string;
+    service: number;
 }

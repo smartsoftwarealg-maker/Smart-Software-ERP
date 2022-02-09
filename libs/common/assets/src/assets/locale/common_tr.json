@@ -169,5 +169,10 @@
     "EXIT":                           "",
     "GENERATE":                       "Generate",
     "NO_FILE_SELECTED":               "",
-    "ARCHIVE": ""
+    "ARCHIVE":                        "",
+    "DIVISION":                       "Division",
+    "DEPARTMENT":                     "Département",
+    "SERVICE":                        "Service",
+    "OFFICE":                         "Bureau",
+    "EDIT_OFFICE":                    "Modifier le bureau"
 }

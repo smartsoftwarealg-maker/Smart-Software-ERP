@@ -172,5 +172,10 @@
     "EXIT": "Exit",
     "GENERATE": "Generate",
     "NO_FILE_SELECTED": "No file selected yet",
-    "ARCHIVE": "Archive"
+    "ARCHIVE": "Archive",
+    "DIVISION": "Division",
+    "DEPARTMENT": "Département",
+    "SERVICE": "Service",
+    "OFFICE": "Bureau",
+    "EDIT_OFFICE": "Modifier le bureau"
 }
