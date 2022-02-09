@@ -13,14 +13,14 @@ import {
     ADMINISTRATION_TRACEABILITY_URL,
     ADMINISTRATION_ORGANIZATIONS_URL,
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
-import {Routes} from '@angular/router';
-import {BankDetailComponent, BankListComponent} from '@ss/administration/ui-bank';
-import {CompanyDetailComponent, CompanyListComponent} from '@ss/administration/ui-company';
-import {CenterDetailComponent, CenterListComponent} from '@ss/administration/ui-center';
-import {SmtpDetailComponent, SmtpListComponent} from '@ss/administration/ui-smtp';
-import {ReportCatalogDetailComponent, ReportCatalogListComponent} from '@ss/administration/ui-report-catalog';
-import {UserDetailComponent, UserListComponent} from '@ss/administration/ui-user';
+import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { Routes } from '@angular/router';
+import { BankDetailComponent, BankListComponent } from '@ss/administration/ui-bank';
+import { CompanyDetailComponent, CompanyListComponent } from '@ss/administration/ui-company';
+import { CenterDetailComponent, CenterListComponent } from '@ss/administration/ui-center';
+import { SmtpDetailComponent, SmtpListComponent } from '@ss/administration/ui-smtp';
+import { ReportCatalogDetailComponent, ReportCatalogListComponent } from '@ss/administration/ui-report-catalog';
+import { UserDetailComponent, UserListComponent } from '@ss/administration/ui-user';
 import {
     RoleListComponent,
     RoleDetailComponent,
@@ -31,20 +31,20 @@ import {
     WilayaListComponent,
     WilayaDetailComponent
 } from '@ss/common/ui-lookup';
-import {AccessRightsListComponent} from '@ss/common/ui-access-rights';
-import {TraceabilityComponent} from '@ss/common/ui-traceability';
+import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
+import { TraceabilityComponent } from '@ss/common/ui-traceability';
 
 export const mainRoutes: Routes = [
-//    // NOT USED
-//    {
-//        path: LOOKUPS_URL,
-//        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
-//    },
-//     {
-//         path: ADMINISTRATION_ORGANIZATIONS_URL,
-//         component: OrganizationsComponent,
-//         canActivate: [CanActivateService]
-//     },
+    //    // NOT USED
+    //    {
+    //        path: LOOKUPS_URL,
+    //        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
+    //    },
+    {
+        path: ADMINISTRATION_ORGANIZATIONS_URL,
+        component: OrganizationsComponent,
+        canActivate: [CanActivateService]
+    },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [
@@ -59,8 +59,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -76,7 +76,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -103,8 +103,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -121,8 +121,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -155,8 +155,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -173,8 +173,8 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -207,7 +207,7 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -227,8 +227,8 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 
 //export const lookupRoutes: Routes = [
