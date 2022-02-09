@@ -172,5 +172,6 @@
     "EXIT": "Sortir",
     "GENERATE": "Générer",
     "NO_FILE_SELECTED": "Aucun fichier sélectionné pour le moment",
-    "ARCHIVE": "Archive"
+    "ARCHIVE": "Archive",
+    "UPDATE": "Mettre à jour"
 }

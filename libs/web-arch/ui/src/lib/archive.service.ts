@@ -45,22 +45,6 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
         super(httpSrv, ARCHIVE_URL);
     }
 
-    private getThumbnailImage(doc: ArchiveDocument, docType: string) {
-        if (doc.thumbnail) {
-            if (docType.indexOf('png') >= 0 ||
-                docType.indexOf('jpeg') >= 0 ||
-                docType.indexOf('jpg') >= 0 ||
-                docType.indexOf('bmp') >= 0 ||
-                docType.indexOf('tif') >= 0 ||
-                docType.indexOf('gif') >= 0) {
-                return this.toBase64(doc.thumbnail);
-            }
-        }
-
-        return null;
-    }
-
-
     public toBase64FromDoc(doc: ArchiveDocument): string {
         const docType: string = doc?.metadata['docType'] || '';
         const ext = docType.substring(docType.lastIndexOf('.') + 1);
@@ -75,6 +59,10 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
         return this.TN_MAP.get(ext);
     }
 
+    asPDFBlob(numb: number[]): Blob {
+        return new Blob([new Uint8Array(numb)], {type: 'application/pdf'});
+    }
+
     // load(page: number,
     //      size: number,
     //      filter: string): Observable<ArchiveDocument[]> {
@@ -86,10 +74,6 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
     //   }
     //   return this.reload();
     // }
-
-    asPDFBlob(numb: number[]): Blob {
-        return new Blob([new Uint8Array(numb)], {type: 'application/pdf'});
-    }
 
     asXLSBlob(numb: number[]): Blob {
         return new Blob([new Uint8Array(numb)], {type: 'application/vnd.ms-excel'});
@@ -160,9 +144,9 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
                                 if (data && res[0]) {
                                     res[0].imgSrc = this.getPlaceHolder(res[0]) ||
                                         'data:image/jpeg;base64,' + btoa(
-                                        new Uint8Array(data)
-                                            .reduce((acc, byte) => acc + String.fromCharCode(byte), '')
-                                    );
+                                            new Uint8Array(data)
+                                                .reduce((acc, byte) => acc + String.fromCharCode(byte), '')
+                                        );
                                     return res;
                                 } else {
                                     return null;
@@ -178,11 +162,6 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
     }
 
 //
-//   get currentCenter() {
-//     return this.center;
-//   }
-
-//
     getImage(id: string): Observable<number[]> {
         const url = `/warch/image?id=${id}`;
         return id ? this
@@ -190,6 +169,15 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
             .get<{ image: any }>(url)
             .pipe(map(res => res.image ? res.image.map((e: string) => +e) : null)) : of(null);
         // new Blob([data], { type: "application/octet-stream" }
+    }
+
+//
+//   get currentCenter() {
+//     return this.center;
+//   }
+
+    updateMetadata(data: UPDocInfo): Observable<any> {
+        return this.httpSrv.put('/warch', data);
     }
 
 //
@@ -204,8 +192,19 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
 //   //                .upload(`/warch`, fd);
 //   // }
 
-    updateMetadata(data: UPDocInfo): Observable<any> {
-        return this.httpSrv.put('/warch', data);
+    private getThumbnailImage(doc: ArchiveDocument, docType: string) {
+        if (doc.thumbnail) {
+            if (docType.indexOf('png') >= 0 ||
+                docType.indexOf('jpeg') >= 0 ||
+                docType.indexOf('jpg') >= 0 ||
+                docType.indexOf('bmp') >= 0 ||
+                docType.indexOf('tif') >= 0 ||
+                docType.indexOf('gif') >= 0) {
+                return this.toBase64(doc.thumbnail);
+            }
+        }
+
+        return null;
     }
 
     private reload(): Observable<ArchiveDocument[]> {

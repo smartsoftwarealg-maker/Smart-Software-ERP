@@ -9,18 +9,20 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class VacationPlanningListService extends BaseEntityService<VacationPlanning> {
-    private year_ = 0;
-
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, VACATION_PLANNING_URL);
+        super(httpSrv, VACATION_PLANNING_URL, '/payroll/years');
+        this.parentId = new Date().getFullYear() - 1;
     }
 
     set year(value: number) {
-        this.year_ = value;
+        this.parentId = value;
     }
 
     getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<VacationPlanning[]> {
-        const params = extraPrams? extraPrams : new HttpParams();
-        return super.getPage(pageModel, filter, sortBy, params.set('period', this.year_));
+        return super.getPage(pageModel, filter, sortBy);
+    }
+
+    updatePlanning(year: number, base: number): Observable<{count: number}> {
+        return this.httpSrv.put(`/payroll/years/${year}?base=${base}`);
     }
 }
