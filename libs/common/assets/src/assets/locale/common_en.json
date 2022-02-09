@@ -161,10 +161,7 @@
     "AGENT": "Partners",
     "ARTICLE": "Article",
     "CUR_EXCHANGE": "Currency exchange",
-    "EXCHANGE": "Currency exchange",
     "HRCOMMON": "HRMaster common",
-    "HRMASTER": "HRMaster",
-    "INVENTORY": "Inventory",
     "PERSONS": "Personnel",
     "DASHBOARD": "Dashboard",
     "DASHBOARD_QUERIES": "Dashboard queries",
@@ -173,5 +170,10 @@
     "GENERATE": "Generate",
     "NO_FILE_SELECTED": "No file selected yet",
     "ARCHIVE": "Archive",
+    "DIVISION": "Division",
+    "DEPARTMENT": "Department",
+    "SERVICE": "Service",
+    "OFFICE": "Office",
+    "EDIT_OFFICE": "Edit office",
     "UPDATE": "Update"
 }
