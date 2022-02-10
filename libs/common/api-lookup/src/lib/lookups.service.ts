@@ -58,6 +58,7 @@ import {
     DIVISIONS_URL, Unit, UNIT_URL, CATEGORY_URL, SALES_CATEGORY_URL
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
+import {Lookup} from '@ss/logistics/ui-doc-import';
 
 @Injectable({
     providedIn: 'root'
@@ -184,4 +185,7 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Division>(DIVISIONS_URL, 'divisions')
     }
 
+    public getTable(url, table: string): Observable<Lookup[]> {
+        return this.lookupCacheSrv.load<Division>(url, table);
+    }
 }
