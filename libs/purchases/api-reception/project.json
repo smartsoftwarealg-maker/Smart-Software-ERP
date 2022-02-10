@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/purchases/api-reception",
+    "sourceRoot": "libs/purchases/api-reception/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/purchases/api-reception/tsconfig.lib.json",
+                    "libs/purchases/api-reception/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/purchases/api-reception/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/purchases/api-reception"],
+            "options": {
+                "jestConfig": "libs/purchases/api-reception/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

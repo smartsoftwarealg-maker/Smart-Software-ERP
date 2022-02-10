@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/api-company",
+    "sourceRoot": "libs/administration/api-company/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/api-company/tsconfig.lib.json",
+                    "libs/administration/api-company/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/api-company/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/administration/api-company/jest.config.js",
+                "tsConfig": "libs/administration/api-company/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/administration/api-company/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

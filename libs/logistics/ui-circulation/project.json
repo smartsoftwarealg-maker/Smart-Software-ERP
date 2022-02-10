@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-circulation",
+    "sourceRoot": "libs/logistics/ui-circulation/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-circulation/tsconfig.lib.json",
+                    "libs/logistics/ui-circulation/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-circulation/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/logistics/ui-circulation/jest.config.js",
+                "tsConfig": "libs/logistics/ui-circulation/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/logistics/ui-circulation/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/api-delivery-cancellation",
+    "sourceRoot": "libs/sales/api-delivery-cancellation/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/api-delivery-cancellation/tsconfig.lib.json",
+                    "libs/sales/api-delivery-cancellation/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/sales/api-delivery-cancellation/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/api-delivery-cancellation"],
+            "options": {
+                "jestConfig": "libs/sales/api-delivery-cancellation/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/ui-store",
+    "sourceRoot": "libs/stock/ui-store/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/stock/ui-store"],
+            "options": {
+                "jestConfig": "libs/stock/ui-store/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/stock/ui-store/src/**/*.ts",
+                    "libs/stock/ui-store/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

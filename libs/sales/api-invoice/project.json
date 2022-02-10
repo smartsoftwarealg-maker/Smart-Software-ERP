@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/api-invoice",
+    "sourceRoot": "libs/sales/api-invoice/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/api-invoice/tsconfig.lib.json",
+                    "libs/sales/api-invoice/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/sales/api-invoice/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/api-invoice"],
+            "options": {
+                "jestConfig": "libs/sales/api-invoice/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

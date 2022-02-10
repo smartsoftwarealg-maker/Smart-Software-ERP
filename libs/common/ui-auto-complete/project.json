@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-auto-complete",
+    "sourceRoot": "libs/common/ui-auto-complete/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/ui-auto-complete/tsconfig.lib.json",
+                    "libs/common/ui-auto-complete/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/common/ui-auto-complete/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/ui-auto-complete/jest.config.js",
+                "tsConfig": "libs/common/ui-auto-complete/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/ui-auto-complete/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

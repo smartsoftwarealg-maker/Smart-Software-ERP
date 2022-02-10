@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/payment-compensation",
+    "sourceRoot": "libs/logistics/payment-compensation/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/payment-compensation"],
+            "options": {
+                "jestConfig": "libs/logistics/payment-compensation/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/logistics/payment-compensation/src/**/*.ts",
+                    "libs/logistics/payment-compensation/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

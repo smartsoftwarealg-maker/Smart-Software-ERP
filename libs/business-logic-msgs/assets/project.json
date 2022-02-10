@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/business-logic-msgs/assets",
+    "sourceRoot": "libs/business-logic-msgs/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/business-logic-msgs/assets"],
+            "options": {
+                "jestConfig": "libs/business-logic-msgs/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/business-logic-msgs/assets/src/**/*.ts",
+                    "libs/business-logic-msgs/assets/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

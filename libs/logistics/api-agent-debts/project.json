@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/api-agent-debts",
+    "sourceRoot": "libs/logistics/api-agent-debts/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/api-agent-debts/tsconfig.lib.json",
+                    "libs/logistics/api-agent-debts/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/api-agent-debts/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/api-agent-debts"],
+            "options": {
+                "jestConfig": "libs/logistics/api-agent-debts/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

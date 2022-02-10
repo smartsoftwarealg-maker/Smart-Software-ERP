@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/common/api-common",
+    "sourceRoot": "libs/common/api-common/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/api-common/tsconfig.lib.json",
+                    "libs/common/api-common/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/common/api-common/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/api-common/jest.config.js",
+                "tsConfig": "libs/common/api-common/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/api-common/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

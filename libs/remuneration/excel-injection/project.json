@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/excel-injection",
+    "sourceRoot": "libs/remuneration/excel-injection/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/excel-injection"],
+            "options": {
+                "jestConfig": "libs/remuneration/excel-injection/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/excel-injection/src/**/*.ts",
+                    "libs/remuneration/excel-injection/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

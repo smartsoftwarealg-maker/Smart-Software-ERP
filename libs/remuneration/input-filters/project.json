@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/input-filters",
+    "sourceRoot": "libs/remuneration/input-filters/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/input-filters"],
+            "options": {
+                "jestConfig": "libs/remuneration/input-filters/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/input-filters/src/**/*.ts",
+                    "libs/remuneration/input-filters/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

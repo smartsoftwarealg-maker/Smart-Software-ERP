@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/ui-smtp",
+    "sourceRoot": "libs/administration/ui-smtp/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/ui-smtp/tsconfig.lib.json",
+                    "libs/administration/ui-smtp/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/ui-smtp/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/administration/ui-smtp/jest.config.js",
+                "tsConfig": "libs/administration/ui-smtp/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/administration/ui-smtp/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

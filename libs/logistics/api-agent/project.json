@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/api-agent",
+    "sourceRoot": "libs/logistics/api-agent/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/api-agent/tsconfig.lib.json",
+                    "libs/logistics/api-agent/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/api-agent/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/logistics/api-agent/jest.config.js",
+                "tsConfig": "libs/logistics/api-agent/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/logistics/api-agent/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

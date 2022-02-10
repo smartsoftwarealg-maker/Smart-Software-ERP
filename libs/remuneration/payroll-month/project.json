@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/payroll-month",
+    "sourceRoot": "libs/remuneration/payroll-month/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/payroll-month"],
+            "options": {
+                "jestConfig": "libs/remuneration/payroll-month/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/payroll-month/src/**/*.ts",
+                    "libs/remuneration/payroll-month/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

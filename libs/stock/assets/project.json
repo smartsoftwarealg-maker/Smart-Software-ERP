@@ -1,0 +1,23 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/assets",
+    "sourceRoot": "libs/stock/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/stock/assets/tsconfig.lib.json",
+                    "libs/stock/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/stock/assets/**/*"]
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

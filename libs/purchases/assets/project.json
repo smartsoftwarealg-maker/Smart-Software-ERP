@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/purchases/assets",
+    "sourceRoot": "libs/purchases/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/purchases/assets/tsconfig.lib.json",
+                    "libs/purchases/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/purchases/assets/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/purchases/assets"],
+            "options": {
+                "jestConfig": "libs/purchases/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

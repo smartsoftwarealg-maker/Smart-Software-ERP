@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-doc-import",
+    "sourceRoot": "libs/logistics/ui-doc-import/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-doc-import/tsconfig.lib.json",
+                    "libs/logistics/ui-doc-import/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-doc-import/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-doc-import"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-doc-import/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

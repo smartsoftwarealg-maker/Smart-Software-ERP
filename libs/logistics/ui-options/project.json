@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-options",
+    "sourceRoot": "libs/logistics/ui-options/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/logistics/ui-options/src/**/*.ts",
+                    "libs/logistics/ui-options/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-options"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-options/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

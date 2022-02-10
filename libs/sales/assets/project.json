@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/assets",
+    "sourceRoot": "libs/sales/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/assets/tsconfig.lib.json",
+                    "libs/sales/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/sales/assets/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/assets"],
+            "options": {
+                "jestConfig": "libs/sales/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

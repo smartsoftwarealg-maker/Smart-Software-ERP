@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/api-transaction",
+    "sourceRoot": "libs/logistics/api-transaction/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/api-transaction/tsconfig.lib.json",
+                    "libs/logistics/api-transaction/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/api-transaction/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/api-transaction"],
+            "options": {
+                "jestConfig": "libs/logistics/api-transaction/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

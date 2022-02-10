@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/exchange/ui-currency-deposit",
+    "sourceRoot": "libs/exchange/ui-currency-deposit/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/exchange/ui-currency-deposit/src/**/*.ts",
+                    "libs/exchange/ui-currency-deposit/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/exchange/ui-currency-deposit"],
+            "options": {
+                "jestConfig": "libs/exchange/ui-currency-deposit/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

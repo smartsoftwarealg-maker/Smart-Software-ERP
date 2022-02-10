@@ -1,0 +1,32 @@
+{
+    "projectType": "library",
+    "root": "libs/common/assets",
+    "sourceRoot": "libs/common/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/assets/tsconfig.lib.json",
+                    "libs/common/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/common/assets/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/assets/jest.config.js",
+                "tsConfig": "libs/common/assets/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/assets/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

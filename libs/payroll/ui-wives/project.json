@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll/ui-wives",
+    "sourceRoot": "libs/payroll/ui-wives/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/payroll/ui-wives"],
+            "options": {
+                "jestConfig": "libs/payroll/ui-wives/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/payroll/ui-wives/src/**/*.ts",
+                    "libs/payroll/ui-wives/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

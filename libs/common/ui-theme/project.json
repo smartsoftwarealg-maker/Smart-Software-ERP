@@ -1,0 +1,32 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-theme",
+    "sourceRoot": "libs/common/ui-theme/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/ui-theme/tsconfig.lib.json",
+                    "libs/common/ui-theme/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/common/ui-theme/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/ui-theme/jest.config.js",
+                "tsConfig": "libs/common/ui-theme/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/ui-theme/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

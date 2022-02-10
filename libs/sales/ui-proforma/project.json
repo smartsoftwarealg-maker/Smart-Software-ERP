@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/ui-proforma",
+    "sourceRoot": "libs/sales/ui-proforma/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/ui-proforma"],
+            "options": {
+                "jestConfig": "libs/sales/ui-proforma/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/sales/ui-proforma/src/**/*.ts",
+                    "libs/sales/ui-proforma/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

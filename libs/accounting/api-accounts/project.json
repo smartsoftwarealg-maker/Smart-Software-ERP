@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/api-accounts",
+    "sourceRoot": "libs/accounting/api-accounts/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/accounting/api-accounts"],
+            "options": {
+                "jestConfig": "libs/accounting/api-accounts/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/accounting/api-accounts/src/**/*.ts",
+                    "libs/accounting/api-accounts/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

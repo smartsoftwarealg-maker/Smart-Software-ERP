@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-image-input",
+    "sourceRoot": "libs/common/ui-image-input/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/ui-image-input/tsconfig.lib.json",
+                    "libs/common/ui-image-input/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/common/ui-image-input/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/ui-image-input/jest.config.js",
+                "tsConfig": "libs/common/ui-image-input/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/ui-image-input/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

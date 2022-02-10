@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/patients/assets",
+    "sourceRoot": "libs/patients/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/patients/assets"],
+            "options": {
+                "jestConfig": "libs/patients/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/patients/assets/src/**/*.ts",
+                    "libs/patients/assets/src/**/*.html"
+                ]
+            }
+        }
+    }
+}
