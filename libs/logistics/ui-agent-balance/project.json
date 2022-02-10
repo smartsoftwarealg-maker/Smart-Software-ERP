@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-agent-balance",
+    "sourceRoot": "libs/logistics/ui-agent-balance/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-agent-balance/tsconfig.lib.json",
+                    "libs/logistics/ui-agent-balance/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-agent-balance/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-agent-balance"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-agent-balance/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

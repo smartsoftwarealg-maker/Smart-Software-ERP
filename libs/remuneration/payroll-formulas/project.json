@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/payroll-formulas",
+    "sourceRoot": "libs/remuneration/payroll-formulas/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/payroll-formulas"],
+            "options": {
+                "jestConfig": "libs/remuneration/payroll-formulas/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/payroll-formulas/src/**/*.ts",
+                    "libs/remuneration/payroll-formulas/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

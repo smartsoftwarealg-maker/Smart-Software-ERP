@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-card",
+    "sourceRoot": "libs/logistics/ui-card/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-card/tsconfig.lib.json",
+                    "libs/logistics/ui-card/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-card/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-card"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-card/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

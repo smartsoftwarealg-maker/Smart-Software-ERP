@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-base-entity",
+    "sourceRoot": "libs/common/ui-base-entity/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/common/ui-base-entity"],
+            "options": {
+                "jestConfig": "libs/common/ui-base-entity/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/common/ui-base-entity/src/**/*.ts",
+                    "libs/common/ui-base-entity/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

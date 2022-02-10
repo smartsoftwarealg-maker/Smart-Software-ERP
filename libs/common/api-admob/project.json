@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/common/api-admob",
+    "sourceRoot": "libs/common/api-admob/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/common/api-admob/src/**/*.ts",
+                    "libs/common/api-admob/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/common/api-admob"],
+            "options": {
+                "jestConfig": "libs/common/api-admob/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

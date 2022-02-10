@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/api-consumption-lines",
+    "sourceRoot": "libs/stock/api-consumption-lines/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/stock/api-consumption-lines/tsconfig.lib.json",
+                    "libs/stock/api-consumption-lines/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/stock/api-consumption-lines/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/stock/api-consumption-lines/jest.config.js",
+                "tsConfig": "libs/stock/api-consumption-lines/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/stock/api-consumption-lines/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

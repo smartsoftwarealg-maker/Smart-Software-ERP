@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-stock-info",
+    "sourceRoot": "libs/logistics/ui-stock-info/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-stock-info/tsconfig.lib.json",
+                    "libs/logistics/ui-stock-info/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-stock-info/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-stock-info"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-stock-info/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

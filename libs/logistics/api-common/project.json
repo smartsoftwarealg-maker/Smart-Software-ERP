@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/api-common",
+    "sourceRoot": "libs/logistics/api-common/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/api-common"],
+            "options": {
+                "jestConfig": "libs/logistics/api-common/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/logistics/api-common/src/**/*.ts",
+                    "libs/logistics/api-common/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

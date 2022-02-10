@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/elementsinfo",
+    "sourceRoot": "libs/remuneration/elementsinfo/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/elementsinfo"],
+            "options": {
+                "jestConfig": "libs/remuneration/elementsinfo/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/elementsinfo/src/**/*.ts",
+                    "libs/remuneration/elementsinfo/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

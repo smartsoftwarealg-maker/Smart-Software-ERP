@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/ui-report-catalog",
+    "sourceRoot": "libs/administration/ui-report-catalog/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/ui-report-catalog/tsconfig.lib.json",
+                    "libs/administration/ui-report-catalog/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/ui-report-catalog/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/administration/ui-report-catalog"],
+            "options": {
+                "jestConfig": "libs/administration/ui-report-catalog/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

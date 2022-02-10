@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/ui-user",
+    "sourceRoot": "libs/administration/ui-user/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/ui-user/tsconfig.lib.json",
+                    "libs/administration/ui-user/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/ui-user/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/administration/ui-user"],
+            "options": {
+                "jestConfig": "libs/administration/ui-user/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

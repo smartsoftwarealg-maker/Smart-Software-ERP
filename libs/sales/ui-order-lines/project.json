@@ -1,0 +1,33 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/ui-order-lines",
+    "sourceRoot": "libs/sales/ui-order-lines/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/ui-order-lines/tsconfig.lib.json",
+                    "libs/sales/ui-order-lines/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/sales/ui-order-lines/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/ui-order-lines"],
+            "options": {
+                "jestConfig": "libs/sales/ui-order-lines/jest.config.js",
+                "outputs": ["coverage/libs/stock/article-store"],
+                "options": {
+                    "jestConfig": "libs/stock/article-store/jest.config.js",
+                    "passWithNoTests": true
+                }
+            }
+        }
+    }
+}

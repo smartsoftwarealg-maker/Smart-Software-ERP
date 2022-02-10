@@ -1,0 +1,134 @@
+{
+    "projectType": "application",
+    "root": "apps/hotel",
+    "sourceRoot": "apps/hotel/src",
+    "prefix": "ss",
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-angular:browser",
+            "options": {
+                "outputPath": "dist/apps/htl",
+                "index": "apps/hotel/src/index.html",
+                "main": "apps/hotel/src/main.ts",
+                "polyfills": "apps/hotel/src/polyfills.ts",
+                "tsConfig": "apps/hotel/tsconfig.app.json",
+                "aot": true,
+                "assets": [
+                    "apps/hotel/src/favicon.ico",
+                    "apps/hotel/src/assets",
+                    "apps/hotel/src/config",
+                    {
+                        "glob": "**/*",
+                        "input": "libs/common/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/logistics/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/administration/assets/src/assets",
+                        "output": "assets"
+                    }
+                ],
+                "styles": ["apps/hotel/src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/hotel/src/environments/environment.ts",
+                            "with": "apps/hotel/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "50mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "development": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/hotel/src/environments/environment.ts",
+                            "with": "apps/hotel/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": false,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": false,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "50mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                }
+            }
+        },
+        "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+                "browserTarget": "hotel:build"
+            },
+            "configurations": {
+                "production": {
+                    "browserTarget": "hotel:build:production"
+                },
+                "development": {
+                    "browserTarget": "hotel:build:development"
+                }
+            }
+        },
+        "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "hotel:build"
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/hotel/src/**/*.ts",
+                    "apps/hotel/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/hotel"],
+            "options": {
+                "jestConfig": "apps/hotel/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

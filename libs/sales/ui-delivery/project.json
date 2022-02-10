@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/ui-delivery",
+    "sourceRoot": "libs/sales/ui-delivery/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/ui-delivery/tsconfig.lib.json",
+                    "libs/sales/ui-delivery/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/sales/ui-delivery/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/ui-delivery"],
+            "options": {
+                "jestConfig": "libs/sales/ui-delivery/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

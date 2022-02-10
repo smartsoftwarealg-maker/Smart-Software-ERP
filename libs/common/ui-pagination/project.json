@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-pagination",
+    "sourceRoot": "libs/common/ui-pagination/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/common/ui-pagination/tsconfig.lib.json",
+                    "libs/common/ui-pagination/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/common/ui-pagination/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/common/ui-pagination/jest.config.js",
+                "tsConfig": "libs/common/ui-pagination/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/common/ui-pagination/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

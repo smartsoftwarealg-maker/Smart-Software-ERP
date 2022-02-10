@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/purchases/ui-quotation",
+    "sourceRoot": "libs/purchases/ui-quotation/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/purchases/ui-quotation"],
+            "options": {
+                "jestConfig": "libs/purchases/ui-quotation/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/purchases/ui-quotation/src/**/*.ts",
+                    "libs/purchases/ui-quotation/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/exchange/assets",
+    "sourceRoot": "libs/exchange/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/exchange/assets/src/**/*.ts",
+                    "libs/exchange/assets/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/exchange/assets"],
+            "options": {
+                "jestConfig": "libs/exchange/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

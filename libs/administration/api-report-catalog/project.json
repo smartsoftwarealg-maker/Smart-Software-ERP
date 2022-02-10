@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/api-report-catalog",
+    "sourceRoot": "libs/administration/api-report-catalog/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/api-report-catalog/tsconfig.lib.json",
+                    "libs/administration/api-report-catalog/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/api-report-catalog/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/administration/api-report-catalog"],
+            "options": {
+                "jestConfig": "libs/administration/api-report-catalog/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

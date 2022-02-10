@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/exchange/ui-info",
+    "sourceRoot": "libs/exchange/ui-info/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/exchange/ui-info/src/**/*.ts",
+                    "libs/exchange/ui-info/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/exchange/ui-info"],
+            "options": {
+                "jestConfig": "libs/exchange/ui-info/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

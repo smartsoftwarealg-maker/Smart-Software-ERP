@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/common/ui-default-report-component",
+    "sourceRoot": "libs/common/ui-default-report-component/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/common/ui-default-report-component/src/**/*.ts",
+                    "libs/common/ui-default-report-component/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/common/ui-default-report-component"],
+            "options": {
+                "jestConfig": "libs/common/ui-default-report-component/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

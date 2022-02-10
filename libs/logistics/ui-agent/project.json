@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/ui-agent",
+    "sourceRoot": "libs/logistics/ui-agent/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-agent/tsconfig.lib.json",
+                    "libs/logistics/ui-agent/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-agent/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/logistics/ui-agent/jest.config.js",
+                "tsConfig": "libs/logistics/ui-agent/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/logistics/ui-agent/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

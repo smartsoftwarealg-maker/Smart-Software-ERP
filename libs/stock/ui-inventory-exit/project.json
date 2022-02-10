@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/ui-inventory-exit",
+    "sourceRoot": "libs/stock/ui-inventory-exit/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/stock/ui-inventory-exit/tsconfig.lib.json",
+                    "libs/stock/ui-inventory-exit/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/stock/ui-inventory-exit/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/stock/ui-inventory-exit/jest.config.js",
+                "tsConfig": "libs/stock/ui-inventory-exit/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/stock/ui-inventory-exit/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

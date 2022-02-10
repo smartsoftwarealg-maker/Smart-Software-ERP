@@ -1,0 +1,180 @@
+{
+    "projectType": "application",
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    },
+    "root": "apps/erp",
+    "sourceRoot": "apps/erp/src",
+    "prefix": "ss",
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-angular:browser",
+            "options": {
+                "outputPath": "dist/apps/erp",
+                "index": "apps/erp/src/index.html",
+                "main": "apps/erp/src/main.ts",
+                "polyfills": "apps/erp/src/polyfills.ts",
+                "tsConfig": "apps/erp/tsconfig.app.json",
+                "aot": true,
+                "assets": [
+                    "apps/erp/src/favicon.ico",
+                    "apps/erp/src/assets",
+                    "apps/erp/src/config",
+                    {
+                        "glob": "**/*",
+                        "input": "libs/common/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/stock/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/remuneration/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/payroll/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/logistics/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/administration/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/sales/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/purchases/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/business-logic-msgs/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/web-arch/assets/src/assets",
+                        "output": "assets"
+                    }
+                ],
+                "styles": ["apps/erp/src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "development": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": false,
+                    "outputHashing": "all",
+                    "sourceMap": true,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": false,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "150mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "150kb"
+                        }
+                    ]
+                }
+            }
+        },
+        "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+                "browserTarget": "erp:build",
+                "host": "localhost",
+                "ssl": false,
+                "sslKey": "./cert.key",
+                "sslCert": "./cert.crt"
+            },
+            "configurations": {
+                "production": {
+                    "browserTarget": "erp:build:production"
+                },
+                "development": {
+                    "browserTarget": "erp:build:development"
+                }
+            }
+        },
+        "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "erp:build"
+            }
+        },
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "apps/erp/tsconfig.app.json",
+                    "apps/erp/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!apps/erp/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "apps/erp/jest.config.js",
+                "tsConfig": "apps/erp/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "apps/erp/src/test-setup.ts"
+            }
+        }
+    }
+}

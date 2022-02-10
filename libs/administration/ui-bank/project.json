@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/ui-bank",
+    "sourceRoot": "libs/administration/ui-bank/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/administration/ui-bank/tsconfig.lib.json",
+                    "libs/administration/ui-bank/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/administration/ui-bank/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/administration/ui-bank/jest.config.js",
+                "tsConfig": "libs/administration/ui-bank/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/administration/ui-bank/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

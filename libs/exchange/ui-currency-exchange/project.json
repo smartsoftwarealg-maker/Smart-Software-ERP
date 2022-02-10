@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/exchange/ui-currency-exchange",
+    "sourceRoot": "libs/exchange/ui-currency-exchange/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/exchange/ui-currency-exchange/src/**/*.ts",
+                    "libs/exchange/ui-currency-exchange/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/exchange/ui-currency-exchange"],
+            "options": {
+                "jestConfig": "libs/exchange/ui-currency-exchange/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

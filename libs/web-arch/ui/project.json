@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/web-arch/ui",
+    "sourceRoot": "libs/web-arch/ui/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/web-arch/ui"],
+            "options": {
+                "jestConfig": "libs/web-arch/ui/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/web-arch/ui/src/**/*.ts",
+                    "libs/web-arch/ui/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

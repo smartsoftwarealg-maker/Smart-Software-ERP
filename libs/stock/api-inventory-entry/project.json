@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/api-inventory-entry",
+    "sourceRoot": "libs/stock/api-inventory-entry/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/stock/api-inventory-entry/tsconfig.lib.json",
+                    "libs/stock/api-inventory-entry/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/stock/api-inventory-entry/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/stock/api-inventory-entry/jest.config.js",
+                "tsConfig": "libs/stock/api-inventory-entry/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/stock/api-inventory-entry/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

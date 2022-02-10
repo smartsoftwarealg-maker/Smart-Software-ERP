@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/stock/api-article-store",
+    "sourceRoot": "libs/stock/api-article-store/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/stock/api-article-store/tsconfig.lib.json",
+                    "libs/stock/api-article-store/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/stock/api-article-store/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/stock/api-article-store"],
+            "options": {
+                "jestConfig": "libs/stock/api-article-store/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

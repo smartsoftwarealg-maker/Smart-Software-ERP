@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/logistics/api-totals",
+    "sourceRoot": "libs/logistics/api-totals/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/api-totals/tsconfig.lib.json",
+                    "libs/logistics/api-totals/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/api-totals/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/api-totals"],
+            "options": {
+                "jestConfig": "libs/logistics/api-totals/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

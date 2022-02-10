@@ -1,0 +1,29 @@
+{
+    "projectType": "library",
+    "root": "libs/sales/api-sales-order",
+    "sourceRoot": "libs/sales/api-sales-order/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/sales/api-sales-order/tsconfig.lib.json",
+                    "libs/sales/api-sales-order/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/sales/api-sales-order/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/sales/api-sales-order"],
+            "options": {
+                "jestConfig": "libs/sales/api-sales-order/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

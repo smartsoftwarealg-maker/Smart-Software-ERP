@@ -1,0 +1,32 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll/assets",
+    "sourceRoot": "libs/payroll/assets/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/payroll/assets/tsconfig.lib.json",
+                    "libs/payroll/assets/tsconfig.spec.json"
+                ],
+                "exclude": ["**/node_modules/**", "!libs/payroll/assets/**/*"]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/payroll/assets/jest.config.js",
+                "tsConfig": "libs/payroll/assets/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/payroll/assets/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

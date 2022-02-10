@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll/ui-employee",
+    "sourceRoot": "libs/payroll/ui-employee/src",
+    "prefix": "ss",
+    "architect": {
+        "lint": {
+            "builder": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/payroll/ui-employee/tsconfig.lib.json",
+                    "libs/payroll/ui-employee/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/payroll/ui-employee/**/*"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/payroll/ui-employee/jest.config.js",
+                "tsConfig": "libs/payroll/ui-employee/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/payroll/ui-employee/src/test-setup.ts"
+            }
+        }
+    },
+    "schematics": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}

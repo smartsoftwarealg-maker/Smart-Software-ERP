@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/patients/api-patient",
+    "sourceRoot": "libs/patients/api-patient/src",
+    "prefix": "ss",
+    "architect": {
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/patients/api-patient"],
+            "options": {
+                "jestConfig": "libs/patients/api-patient/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/patients/api-patient/src/**/*.ts",
+                    "libs/patients/api-patient/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

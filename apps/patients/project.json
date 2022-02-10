@@ -1,0 +1,124 @@
+{
+    "projectType": "application",
+    "root": "apps/patients",
+    "sourceRoot": "apps/patients/src",
+    "prefix": "ss",
+    "architect": {
+        "build": {
+            "builder": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/patients",
+                "index": "apps/patients/src/index.html",
+                "main": "apps/patients/src/main.ts",
+                "polyfills": "apps/patients/src/polyfills.ts",
+                "tsConfig": "apps/patients/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "apps/patients/src/favicon.ico",
+                    "apps/patients/src/assets",
+                    "apps/patients/src/config",
+                    {
+                        "glob": "**/*",
+                        "input": "libs/common/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/administration/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/patients/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/payroll/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/logistics/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/business-logic-msgs/assets/src/assets",
+                        "output": "assets"
+                    }
+                ],
+                "styles": ["apps/patients/src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5mb",
+                            "maximumError": "10mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2mb",
+                            "maximumError": "4mb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/patients/src/environments/environment.ts",
+                            "with": "apps/patients/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "patients:build:production"
+                },
+                "development": {
+                    "browserTarget": "patients:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "patients:build"
+            }
+        },
+        "lint": {
+            "builder": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/patients/src/**/*.ts",
+                    "apps/patients/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "builder": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/patients"],
+            "options": {
+                "jestConfig": "apps/patients/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    }
+}
