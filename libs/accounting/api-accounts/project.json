@@ -3,9 +3,9 @@
     "root": "libs/accounting/api-accounts",
     "sourceRoot": "libs/accounting/api-accounts/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/accounting/api-accounts"],
             "options": {
                 "jestConfig": "libs/accounting/api-accounts/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/accounting/api-accounts/src/**/*.ts",

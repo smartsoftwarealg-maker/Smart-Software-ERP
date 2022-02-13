@@ -1,6 +1,6 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL,
+    LOOKUPS_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
@@ -24,13 +24,18 @@ import {
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
-import {VacationPlanningDetailListComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail-list/vacation-planning-detail-list.component';
-import {VacationPlanningDetailComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail/vacation-planning-detail.component';
+import {EdoComponent} from '@ss/remuneration/edo';
+import {VacationPlanningDetailComponent} from '@ss/remuneration/vacation-planning';
 
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./payroll-lookups.module').then(m => m.PayrollLookupsModule)
+    },
+    {
+        path: PAY_EDO_URL,
+        component: EdoComponent,
+        canActivate: [CanActivateService]
     },
     {
         path: PAY_ELEMENTSINFO_URL,

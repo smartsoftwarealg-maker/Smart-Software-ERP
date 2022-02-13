@@ -3,9 +3,9 @@
     "root": "libs/common/api-lookup",
     "sourceRoot": "libs/common/api-lookup/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/common/api-lookup/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "libs/common/api-lookup/jest.config.js",
                 "tsConfig": "libs/common/api-lookup/tsconfig.spec.json",
@@ -27,7 +27,7 @@
             }
         }
     },
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }

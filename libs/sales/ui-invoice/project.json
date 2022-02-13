@@ -3,9 +3,9 @@
     "root": "libs/sales/ui-invoice",
     "sourceRoot": "libs/sales/ui-invoice/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/sales/ui-invoice/tsconfig.lib.json",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-invoice"],
             "options": {
                 "jestConfig": "libs/sales/ui-invoice/jest.config.js",

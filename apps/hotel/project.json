@@ -3,9 +3,9 @@
     "root": "apps/hotel",
     "sourceRoot": "apps/hotel/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "options": {
                 "outputPath": "dist/apps/htl",
                 "index": "apps/hotel/src/index.html",
@@ -94,7 +94,7 @@
             }
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "options": {
                 "browserTarget": "hotel:build"
             },
@@ -108,13 +108,13 @@
             }
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "hotel:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/hotel/src/**/*.ts",
@@ -123,7 +123,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/hotel"],
             "options": {
                 "jestConfig": "apps/hotel/jest.config.js",

@@ -3,9 +3,9 @@
     "root": "libs/administration/api-report-catalog",
     "sourceRoot": "libs/administration/api-report-catalog/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/administration/api-report-catalog/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/administration/api-report-catalog"],
             "options": {
                 "jestConfig": "libs/administration/api-report-catalog/jest.config.js",

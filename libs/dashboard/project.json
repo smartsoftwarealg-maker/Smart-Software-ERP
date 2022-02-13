@@ -3,9 +3,9 @@
     "root": "libs/dashboard",
     "sourceRoot": "libs/dashboard/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/dashboard"],
             "options": {
                 "jestConfig": "libs/dashboard/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/dashboard/src/**/*.ts",

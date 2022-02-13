@@ -3,9 +3,9 @@
     "root": "libs/sales/ui-delivery-lines",
     "sourceRoot": "libs/sales/ui-delivery-lines/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/sales/ui-delivery-lines/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-delivery-lines"],
             "options": {
                 "jestConfig": "libs/sales/ui-delivery-lines/jest.config.js",

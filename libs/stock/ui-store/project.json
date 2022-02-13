@@ -3,9 +3,9 @@
     "root": "libs/stock/ui-store",
     "sourceRoot": "libs/stock/ui-store/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/stock/ui-store"],
             "options": {
                 "jestConfig": "libs/stock/ui-store/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/stock/ui-store/src/**/*.ts",

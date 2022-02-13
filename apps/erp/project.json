@@ -1,6 +1,6 @@
 {
     "projectType": "application",
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }
@@ -8,9 +8,9 @@
     "root": "apps/erp",
     "sourceRoot": "apps/erp/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "options": {
                 "outputPath": "dist/apps/erp",
                 "index": "apps/erp/src/index.html",
@@ -134,7 +134,7 @@
             }
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "options": {
                 "browserTarget": "erp:build",
                 "host": "localhost",
@@ -152,13 +152,13 @@
             }
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "erp:build"
             }
         },
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "apps/erp/tsconfig.app.json",
@@ -168,7 +168,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "apps/erp/jest.config.js",
                 "tsConfig": "apps/erp/tsconfig.spec.json",

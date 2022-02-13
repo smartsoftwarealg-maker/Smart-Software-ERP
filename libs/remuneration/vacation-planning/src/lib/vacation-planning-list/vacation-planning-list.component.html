@@ -57,14 +57,14 @@
             <ng-container matColumnDef="taken">
                 <mat-header-cell *matHeaderCellDef translate>REMUN_TAKEN</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.acquired - e.taken }}
+                    {{ e.taken }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="rest">
                 <mat-header-cell *matHeaderCellDef translate>REMUN_REST</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.taken}}
+                    {{ e.acquired - e.taken}}
                 </mat-cell>
             </ng-container>
 

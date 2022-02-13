@@ -3,9 +3,9 @@
     "root": "apps/cespace",
     "sourceRoot": "apps/cespace/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "options": {
                 "outputPath": "dist/apps/cespace",
                 "index": "apps/cespace/src/index.html",
@@ -80,7 +80,7 @@
             "defaultConfiguration": "development"
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
                     "browserTarget": "cespace:build:production"
@@ -92,13 +92,13 @@
             "defaultConfiguration": "development"
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "cespace:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/cespace/src/**/*.ts",
@@ -107,7 +107,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/cespace"],
             "options": {
                 "jestConfig": "apps/cespace/jest.config.js",
@@ -115,13 +115,13 @@
             }
         },
         "cap": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "--help"
             }
         },
         "add": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "add",
                 "packageInstall": true
@@ -136,7 +136,7 @@
             }
         },
         "copy": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "copy",
                 "packageInstall": false
@@ -151,7 +151,7 @@
             }
         },
         "open": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "open",
                 "packageInstall": false
@@ -166,7 +166,7 @@
             }
         },
         "sync": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "sync",
                 "packageInstall": true
@@ -181,7 +181,7 @@
             }
         },
         "update": {
-            "builder": "@nxtend/capacitor:cap",
+            "executor": "@nxtend/capacitor:cap",
             "options": {
                 "cmd": "update",
                 "packageInstall": true

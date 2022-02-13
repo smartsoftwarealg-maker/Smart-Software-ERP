@@ -271,6 +271,7 @@
             "@ss/remuneration/assets": [
                 "libs/remuneration/assets/src/index.ts"
             ],
+            "@ss/remuneration/edo": ["libs/remuneration/edo/src/index.ts"],
             "@ss/remuneration/element-types": [
                 "libs/remuneration/element-types/src/index.ts"
             ],

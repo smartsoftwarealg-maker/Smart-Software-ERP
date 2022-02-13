@@ -39,5 +39,9 @@
     "ACQUIRED": "Acquired",
     "TAKEN": "Taken",
     "REST": "Remaining",
-    "REFERENCE": "Reference"
+    "REFERENCE": "Reference",
+    "EDO": "Electronic deposit order (EDO)",
+    "SELECTED_BANKS": "Selected banks",
+    "RECEIVING_BANK": "Receiving bank",
+    "SPECIAL": "Special payroll number"
 }

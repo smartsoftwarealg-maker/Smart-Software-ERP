@@ -3,9 +3,9 @@
     "root": "libs/stock/ui-article-store-assignment",
     "sourceRoot": "libs/stock/ui-article-store-assignment/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/stock/ui-article-store-assignment"],
             "options": {
                 "jestConfig": "libs/stock/ui-article-store-assignment/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/stock/ui-article-store-assignment/src/**/*.ts",
