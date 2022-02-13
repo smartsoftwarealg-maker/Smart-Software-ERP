@@ -3,9 +3,9 @@
     "root": "libs/patients/ui-patients",
     "sourceRoot": "libs/patients/ui-patients/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/patients/ui-patients"],
             "options": {
                 "jestConfig": "libs/patients/ui-patients/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/patients/ui-patients/src/**/*.ts",

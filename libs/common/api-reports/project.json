@@ -3,9 +3,9 @@
     "root": "libs/common/api-reports",
     "sourceRoot": "libs/common/api-reports/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/common/api-reports/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-reports"],
             "options": {
                 "jestConfig": "libs/common/api-reports/jest.config.js",

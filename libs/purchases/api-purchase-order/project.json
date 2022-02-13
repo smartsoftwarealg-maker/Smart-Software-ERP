@@ -3,9 +3,9 @@
     "root": "libs/purchases/api-purchase-order",
     "sourceRoot": "libs/purchases/api-purchase-order/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/purchases/api-purchase-order/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/api-purchase-order"],
             "options": {
                 "jestConfig": "libs/purchases/api-purchase-order/jest.config.js",

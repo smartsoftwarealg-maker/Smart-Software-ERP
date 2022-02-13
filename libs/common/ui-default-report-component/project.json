@@ -3,9 +3,9 @@
     "root": "libs/common/ui-default-report-component",
     "sourceRoot": "libs/common/ui-default-report-component/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/common/ui-default-report-component/src/**/*.ts",
@@ -14,7 +14,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/ui-default-report-component"],
             "options": {
                 "jestConfig": "libs/common/ui-default-report-component/jest.config.js",

@@ -3,9 +3,9 @@
     "root": "libs/common/api-admob",
     "sourceRoot": "libs/common/api-admob/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/common/api-admob/src/**/*.ts",
@@ -14,7 +14,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-admob"],
             "options": {
                 "jestConfig": "libs/common/api-admob/jest.config.js",

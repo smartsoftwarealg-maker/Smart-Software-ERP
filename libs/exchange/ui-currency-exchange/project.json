@@ -3,9 +3,9 @@
     "root": "libs/exchange/ui-currency-exchange",
     "sourceRoot": "libs/exchange/ui-currency-exchange/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/exchange/ui-currency-exchange/src/**/*.ts",
@@ -14,7 +14,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/exchange/ui-currency-exchange"],
             "options": {
                 "jestConfig": "libs/exchange/ui-currency-exchange/jest.config.js",

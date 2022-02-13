@@ -3,9 +3,9 @@
     "root": "libs/logistics/assets",
     "sourceRoot": "libs/logistics/assets/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/assets/tsconfig.lib.json",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "libs/logistics/assets/jest.config.js",
                 "tsConfig": "libs/logistics/assets/tsconfig.spec.json",
@@ -24,7 +24,7 @@
             }
         }
     },
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }

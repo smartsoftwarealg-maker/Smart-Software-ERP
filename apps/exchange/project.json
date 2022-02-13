@@ -3,9 +3,9 @@
     "root": "apps/exchange",
     "sourceRoot": "apps/exchange/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "options": {
                 "outputPath": "dist/apps/exc",
                 "index": "apps/exchange/src/index.html",
@@ -104,7 +104,7 @@
             }
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "options": {
                 "browserTarget": "exchange:build"
             },
@@ -118,13 +118,13 @@
             }
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "exchange:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/exchange/src/**/*.ts",
@@ -133,7 +133,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/exchange"],
             "options": {
                 "jestConfig": "apps/exchange/jest.config.js",

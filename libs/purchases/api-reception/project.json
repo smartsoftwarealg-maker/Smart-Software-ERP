@@ -3,9 +3,9 @@
     "root": "libs/purchases/api-reception",
     "sourceRoot": "libs/purchases/api-reception/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/purchases/api-reception/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/api-reception"],
             "options": {
                 "jestConfig": "libs/purchases/api-reception/jest.config.js",

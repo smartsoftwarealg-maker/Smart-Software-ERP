@@ -3,9 +3,9 @@
     "root": "libs/logistics/ui-stock-info",
     "sourceRoot": "libs/logistics/ui-stock-info/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/ui-stock-info/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-stock-info"],
             "options": {
                 "jestConfig": "libs/logistics/ui-stock-info/jest.config.js",

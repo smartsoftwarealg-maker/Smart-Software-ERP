@@ -3,9 +3,9 @@
     "root": "libs/payroll/employee-contract",
     "sourceRoot": "libs/payroll/ui-employee-contract/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/payroll/ui-employee-contract"],
             "options": {
                 "jestConfig": "libs/payroll/ui-employee-contract/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/payroll/ui-employee-contract/src/**/*.ts",

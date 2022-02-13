@@ -3,9 +3,9 @@
     "root": "libs/stock/article-store",
     "sourceRoot": "libs/stock/article-store/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/stock/article-store/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/stock/article-store"],
             "options": {
                 "jestConfig": "libs/stock/article-store/jest.config.js",

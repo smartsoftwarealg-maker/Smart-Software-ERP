@@ -106,6 +106,7 @@
         "purchases-ui-quotation": "libs/purchases/ui-quotation",
         "purchases-ui-reception": "libs/purchases/ui-reception",
         "remuneration-assets": "libs/remuneration/assets",
+        "remuneration-edo": "libs/remuneration/edo",
         "remuneration-element-types": "libs/remuneration/element-types",
         "remuneration-elements-entry": "libs/remuneration/elements-entry",
         "remuneration-elementsinfo": "libs/remuneration/elementsinfo",
