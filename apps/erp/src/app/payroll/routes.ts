@@ -6,7 +6,7 @@ import {
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
+    PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -26,6 +26,8 @@ import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
 import {EdoComponent} from '@ss/remuneration/edo';
 import {VacationPlanningDetailComponent} from '@ss/remuneration/vacation-planning';
+import {SpecialPayrollListComponent} from '@ss/remuneration/special-payroll';
+import {SpecialPayrollDetailComponent} from '@ss/remuneration/special-payroll';
 
 export const mainRoutes: Routes = [
     {
@@ -48,6 +50,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ElementsInfoDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_SPECIAL_PAYROLL_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SpecialPayrollListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SpecialPayrollDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

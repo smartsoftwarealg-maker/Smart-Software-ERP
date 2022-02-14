@@ -1,0 +1,10 @@
+<form *ngIf="form !== null" novalidate [formGroup]="form" class="container">
+
+    <mat-form-field class="description">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" autofocus required>
+        <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+</form>
+

@@ -293,6 +293,9 @@
             "@ss/remuneration/payroll-month": [
                 "libs/remuneration/payroll-month/src/index.ts"
             ],
+            "@ss/remuneration/special-payroll": [
+                "libs/remuneration/special-payroll/src/index.ts"
+            ],
             "@ss/remuneration/vacation-planning": [
                 "libs/remuneration/vacation-planning/src/index.ts"
             ],

@@ -43,5 +43,6 @@
     "EDO": "الدفع الالكتروني",
     "SELECTED_BANKS": "بنوك مختارة",
     "RECEIVING_BANK": "البنك المستلم",
-    "SPECIAL": "Numéro de paie spécial"
+    "SPECIAL": "رقم الدفع الخاص",
+    "SPECIAL_PAYROLLS": "كشوف المرتبات الخاصة"
 }

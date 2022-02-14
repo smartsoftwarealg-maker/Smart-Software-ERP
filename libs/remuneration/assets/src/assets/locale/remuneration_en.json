@@ -43,5 +43,6 @@
     "EDO": "Electronic deposit order (EDO)",
     "SELECTED_BANKS": "Selected banks",
     "RECEIVING_BANK": "Receiving bank",
-    "SPECIAL": "Special payroll number"
+    "SPECIAL": "Special payroll number",
+    "SPECIAL_PAYROLLS": "Special payrolls"
 }

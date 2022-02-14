@@ -21,7 +21,7 @@ import {
     ABS_INPUT_FILTERS_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_VACATION_PLANNING_URL
+    ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -133,6 +133,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_INPUT_FILTERS',
                     icon: 'fas fa-filter',
                     route: ABS_INPUT_FILTERS_URL
+                },
+                {
+                    name: 'REMUN_SPECIAL_PAYROLLS',
+                    icon: 'fas fa-comments-alt-dollar',
+                    route: ABS_SPECIAL_PAYROLL_URL
                 },
                 {
                     name: 'PAYROLL_FIXED_ELEMENTS',
