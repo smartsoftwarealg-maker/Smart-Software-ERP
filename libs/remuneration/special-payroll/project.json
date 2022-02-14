@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/special-payroll",
+    "sourceRoot": "libs/remuneration/special-payroll/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/special-payroll"],
+            "options": {
+                "jestConfig": "libs/remuneration/special-payroll/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/special-payroll/src/**/*.ts",
+                    "libs/remuneration/special-payroll/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
