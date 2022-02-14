@@ -1,0 +1,113 @@
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ShellService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {BankService} from '@ss/administration/api-bank';
+import {SelectionModel} from '@angular/cdk/collections';
+import {MatSelectionList} from '@angular/material/list';
+import {EdoService} from './edo.service';
+import {saveAs} from 'file-saver';
+import {switchMap, tap} from 'rxjs';
+
+interface Lookup {
+    id: number;
+    description: string;
+}
+
+@Component({
+    selector: 'ss-edo',
+    templateUrl: './edo.component.html',
+    styleUrls: ['./edo.component.scss']
+})
+export class EdoComponent implements OnInit {
+    @ViewChild('blist') blist: MatSelectionList
+    form: FormGroup = null;
+    curYear = new Date().getFullYear();
+    bankList: Lookup[] = [];
+    receivingBanks: Lookup[] = [];
+    selectedBanks = '';
+    edoText: string = '';
+
+    constructor(private shellSrv: ShellService,
+                private edoSrv: EdoService,
+                private route: ActivatedRoute,
+                private formBuilder: FormBuilder,
+                private bankSrv: BankService) {
+
+    }
+
+    ngOnInit(): void {
+        this.bankSrv
+            .getList(0, 1000)
+            .pipe(tap(res => {
+                    this.bankList = res.body;
+                    this.selectedBanks = this.bankList.map(e => e.id).join(',');
+                }),
+                switchMap(_ => this.edoSrv.getCenterBank()),
+                tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
+            .subscribe(res => this.buildForm(res));
+        this.shellSrv.setGoBackPath('../', this.route);
+    }
+
+    generate() {
+        const selection = this.blist.selectedOptions.selected.map(e => e.value);
+        this.shellSrv.setLoading(true);
+        this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
+        console.log(this.form.value)
+        this.edoSrv
+            .generate(this.form.value, selection)
+            .subscribe({
+                next:
+                    res => {
+                        this.edoText = res.join('');
+                        this.shellSrv.setLoading(false);
+                    },
+                error:
+                    err => {
+                        this.shellSrv.setLoading(false);
+                        throw err;
+                    }
+            });
+    }
+
+    save() {
+        const filename = `${this.form.value.month}-${this.form.value.year}.txt`;
+        this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
+        const selection = this.blist.selectedOptions.selected.map(e => e.value);
+        this.shellSrv.setLoading(true);
+        this.edoSrv
+            .generate(this.form.value, selection)
+            .subscribe({
+                next:
+                    res => {
+                        saveAs(new Blob(res), filename)
+                        this.shellSrv.setLoading(false);
+                    },
+                error:
+                    err => {
+                        this.shellSrv.setLoading(false);
+                        throw err;
+                    }
+            });
+    }
+
+    selectBanks(sel: SelectionModel<any>) {
+        this.selectedBanks = sel.selected
+                .map(e => e.value)
+                .join(',');
+    }
+
+    private buildForm(bank: number) {
+        this.form = this.formBuilder.group({
+            month: [1, Validators.required],
+            year: [this.curYear, Validators.required],
+            description: ['', Validators.required],
+            formula: ['c990', Validators.required],
+            bank: [{ value: bank, disabled: true }, Validators.required],
+            date: [new Date(), Validators.required],
+            reference: [1, Validators.required],
+            special: [0],
+            all: [false]
+        });
+    }
+}
