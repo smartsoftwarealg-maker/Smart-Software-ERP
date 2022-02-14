@@ -43,5 +43,6 @@
     "EDO": "Ordre de dépôt électronique (ODE)",
     "SELECTED_BANKS": "Banques sélectionnées",
     "RECEIVING_BANK": "Banque réceptrice",
-    "SPECIAL": "Numéro de paie spécial"
+    "SPECIAL": "Numéro de paie spécial",
+    "SPECIAL_PAYROLLS": "Paies spéciales"
 }
