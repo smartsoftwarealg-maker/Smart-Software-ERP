@@ -1,5 +1,82 @@
 
 :host {
     display: block;
+    padding: 24px;
 }
 
+// style for my custom nodes for this example
+.chart-node {
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 250ms, height 250ms;
+    min-height: 30px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    padding: 8px;
+
+    .name {
+        white-space: nowrap;
+        overflow: hidden;
+        user-select: none;
+        font-weight: bold;
+        text-align: center;
+        flex: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        margin: 0.25em;
+        transition: width 250ms, height 250ms;
+        color: #FEF;
+    }
+
+    .responsible {
+        user-select: none;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+ 
+        .responsible-img {
+            user-select: none;
+            width: 48px;
+            height: 48px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            transition: width 250ms, height 250ms;
+            border-radius: 50%;
+        }
+
+        .responsible-name {
+            user-select: none;
+            text-align: center;
+            flex: 100%;
+            flex-grow: 1;
+            flex-shrink: 1;
+            margin: 0.25em;
+            transition: width 250ms, height 250ms;
+            color: #FEF;
+        }
+    }
+}
+
+// just show the image when the chart is zoomed out
+.ng13-org-chart-zoom-out { // predefined in the library, applyed to show overview
+    .chart-node:not(:hover) {
+        min-height: 0em;
+        padding: 0;
+        img {
+            width: 32px;
+            height: 32px;
+        }
+        .tree-fold-btn {
+            visibility: hidden;
+        }
+        .name {
+            visibility: hidden;
+        }
+        .description {
+            visibility: hidden;
+        }
+    }
+}

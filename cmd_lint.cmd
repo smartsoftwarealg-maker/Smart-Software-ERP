@@ -1,4 +1,4 @@
 @echo off
 cls
-nx lint erp
+nx lint 
 pause

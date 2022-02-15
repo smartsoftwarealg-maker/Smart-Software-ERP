@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll/employee-contract",
+    "sourceRoot": "libs/payroll/ui-employee-contract/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/payroll/ui-employee-contract"],
+            "options": {
+                "jestConfig": "libs/payroll/ui-employee-contract/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/payroll/ui-employee-contract/src/**/*.ts",
+                    "libs/payroll/ui-employee-contract/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

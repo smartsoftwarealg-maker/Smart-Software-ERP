@@ -5,6 +5,7 @@ import { OrgChartModule } from 'angular13-organization-chart';
 import { OrganizationsDetailComponent } from './organizations-detail.component';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { MaterialModule } from '@ss/common/api-common';
         CommonModule,
         CommonUiLangModule,
         OrgChartModule,
-        MaterialModule
+        MaterialModule,
+        CommonUiImageInputModule
     ],
     exports: [OrganizationsComponent]
 })
