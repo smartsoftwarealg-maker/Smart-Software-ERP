@@ -11,13 +11,15 @@
     flex-direction: column;
     align-items: center;
     transition: width 250ms, height 250ms;
-    min-height: 30px;
+    min-width: 32px;
+    min-height: 32px;
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
     padding: 8px;
 
-    .name {
+    .node-name {
+        display: block;
         white-space: nowrap;
         overflow: hidden;
         user-select: none;
@@ -35,7 +37,10 @@
         user-select: none;
         display: flex;
         flex-direction: row;
-        text-align: center;
+        justify-content: center;
+        transition: width 250ms, height 250ms;
+        height: 48px;
+        line-height: 48px;
  
         .responsible-img {
             user-select: none;
@@ -43,7 +48,10 @@
             height: 48px;
             flex-grow: 0;
             flex-shrink: 0;
+            padding: 0;
+            margin: 0;
             transition: width 250ms, height 250ms;
+            overflow: hidden;
             border-radius: 50%;
         }
 
@@ -63,20 +71,25 @@
 // just show the image when the chart is zoomed out
 .ng13-org-chart-zoom-out { // predefined in the library, applyed to show overview
     .chart-node:not(:hover) {
-        min-height: 0em;
         padding: 0;
-        img {
-            width: 32px;
-            height: 32px;
+        .node-name {
+            display: none;
         }
         .tree-fold-btn {
             visibility: hidden;
         }
-        .name {
-            visibility: hidden;
-        }
-        .description {
-            visibility: hidden;
+        .responsible {
+            width: 32px;
+            height: 32px;
+ 
+            .responsible-img {
+                width: 32px;
+                height: 32px;
+            }
+    
+            .responsible-name {
+                display: none;
+            }
         }
     }
 }
