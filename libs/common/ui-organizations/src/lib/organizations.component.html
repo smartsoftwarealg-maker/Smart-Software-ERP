@@ -1,2 +1,20 @@
+<angular-org-chart *ngIf="root" [nodeTemplate]="nodeTemplate" [data]="root" #mainChart="orgChart">
+    <button zoom-button mat-icon-button (click)="mainChart.toggleZoom()">
+        <i class="fas fa-compress"></i>
+    </button>
+</angular-org-chart>
 
-<angular-org-chart id="orgChartId" [data]="root"></angular-org-chart>
+<!-- Node Template -->
+<ng-template #nodeTemplate let-node>
+    <div class="chart-node">
+        <div class="node-name">{{node?.name}}</div>
+        <div *ngIf="node?.responsible" class="responsible">
+            <ss-image-input class="responsible-img" [ImageModel]="node?.imageModel"></ss-image-input>
+            <!--img [src]="node?.image"-->
+            <!--div class="type">{{node?.description}}</div-->
+            <div class="responsible-name">
+                {{people[node?.responsible]}}
+            </div>
+        </div>
+    </div>
+</ng-template>

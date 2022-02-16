@@ -7,23 +7,27 @@ export const OFFICES_URL     = ['/organizations/services/', '/offices'];
 export interface Lookup {
     id: number;
     description: string;
+    responsible: number;
 }
 
 export interface Division {
     id: number;
     description: string;
+    responsible: number;
 }
 
 export interface Department {
     id: number;
     description: string;
     division: number;
+    responsible: number;
 }
 
 export interface Service {
     id: number;
     description: string;
     department: number;
+    responsible: number;
 }
 
 export interface Office {

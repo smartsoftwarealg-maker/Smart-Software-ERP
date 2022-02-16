@@ -7,20 +7,17 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { OrganizationsDetailComponent } from './organizations-detail.component';
-//import { OrgData } from 'angular13-organization-chart';
+import { TreeNode } from 'angular13-organization-chart';
+import { EmployeeService, Employee } from '@ss/payroll/api-employee';
+import { ImageModel } from '@ss/common/ui-image-input';
 
-interface ChartNode {
-    name: string;
-    type: string;
-    cssClass?: string;
-    css?: string;
-    nameCss?: string;
-    typeCss?: string;
-    onClick?: () => void;
-    children: ChartNode[];
-    // custom
+interface OrgTreeNode extends TreeNode {
     id: number;
     parentId: number;
+    name: string;
+    responsible?: number;
+    imageModel?: ImageModel;
+    children: OrgTreeNode[];
 }
 
 enum Level {
@@ -43,16 +40,17 @@ export class OrganizationsComponent implements OnInit {
         private shellSrv: ShellService,
         private matDialog: MatDialog,
         public snackBarSrv: SnackBarService,
+        public personSrv: EmployeeService,
         public confirmationSrv: ConfirmationDialogService,
         private langSrv: LanguageService) { }
 
-    readonly defaultStyle = 'background-color: cyan';
-    readonly textCss = 'color: black';
+    readonly defaultStyle = '';
 
-    root: ChartNode;
+    root: OrgTreeNode;
 
-    selected: ChartNode;
+    selected: OrgTreeNode;
     selectedLevel: Level = Level.None;
+    people: { [key: number]: string} = {};
 
     public addButton: ToolbarButton = {
         icon: 'fas fa-plus',
@@ -98,69 +96,88 @@ export class OrganizationsComponent implements OnInit {
 
     refresh() {
         this.shellSrv.setLoading(true);
+        this.people = {};
         this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
-        this.root = this.lookupToChartNode(0, this.langSrv.translate('ORGANIZATION'), 0, Level.Root);
-        const divisions: { [key: number]: ChartNode; } = {};
-        const departments: { [key: number]: ChartNode; } = {};
-        const services: { [key: number]: ChartNode; } = {};
+        this.root = this.lookupToChartNode(0, this.langSrv.translate('ORGANIZATION'), 0, null, Level.Root);
+        const divisions: { [key: number]: OrgTreeNode; } = {};
+        const departments: { [key: number]: OrgTreeNode; } = {};
+        const services: { [key: number]: OrgTreeNode; } = {};
         this.httpSrv.get<Division[]>(DIVISIONS_URL)
             .pipe(
                 switchMap((divs: Division[]) => {
                     this.root.children = divs.map(d => {
-                        const node = this.lookupToChartNode(d.id, d.description, 0, Level.Division);
+                        const node = this.lookupToChartNode(d.id, d.description, 0, d.responsible, Level.Division);
                         divisions[d.id] = node;
+                        this.loadPersonName(d.responsible);
                         return node;
                     });
                     return this.httpSrv.get<Department[]>(DEPARTMENTS_URL[0] + 0 + DEPARTMENTS_URL[1]);
                 }),
                 switchMap((ds: Department[]) => {
                     ds.forEach(d => {
-                        const node = this.lookupToChartNode(d.id, d.description, d.division, Level.Department);
+                        const node = this.lookupToChartNode(d.id, d.description, d.division, d.responsible, Level.Department);
                         departments[d.id] = node;
                         divisions[d.division].children.push(node);
+                        this.loadPersonName(d.responsible);
                     });
                     return this.httpSrv.get<Service[]>(SERVICES_URL[0] + 0 + SERVICES_URL[1]);
                 }),
                 switchMap((srv: Service[]) => {
                     srv.forEach(s => {
-                        const node = this.lookupToChartNode(s.id, s.description, s.department, Level.Service);
+                        const node = this.lookupToChartNode(s.id, s.description, s.department, s.responsible, Level.Service);
                         services[s.id] = node;
                         departments[s.department].children.push(node);
+                        this.loadPersonName(s.responsible);
                     });
                     return this.httpSrv.get<Office[]>(OFFICES_URL[0] + 0 + OFFICES_URL[1]);
                 })
             ).subscribe((offices: Office[]) => {
                 offices.forEach(o => {
-                    services[o.service].children.push(this.lookupToChartNode(o.id, o.description, o.service, Level.Office));
+                    services[o.service].children.push(this.lookupToChartNode(o.id, o.description, o.service, null, Level.Office));
                 });
                 this.shellSrv.setLoading(false);
             });
     }
 
-    lookupToChartNode(id: number, description: string, parent: number, level: Level): ChartNode {
-        const types = [
-            ' ',
-            'COMMON_DIVISION',
-            'COMMON_DEPARTMENT',
-            'COMMON_SERVICE',
-            'COMMON_OFFICE'
-        ]
-        const node: ChartNode = {
+    loadPersonName(id: number) {
+        if (id) {
+            this.personSrv.get(id)
+                .subscribe((p: Employee) => this.people[p.id] = this.langSrv.formatFullName(p.firstName, p.lastName));
+        }
+    }
+
+    lookupToChartNode(id: number, description: string, parent: number, responsibleId: number, level: Level): OrgTreeNode {
+//        const types = [
+//           ' ',
+//           'COMMON_DIVISION',
+//           'COMMON_DEPARTMENT',
+//           'COMMON_SERVICE',
+//           'COMMON_OFFICE'
+//        ];
+        let imgModel = null;
+        if (responsibleId) {
+            imgModel = new ImageModel(this.httpSrv);
+            imgModel.readOnly = true;
+            imgModel.setImageUrl(this.personSrv.getPhotoUrl(responsibleId), false);
+            console.log(this.httpSrv.baseUrl + this.personSrv.getPhotoUrl(responsibleId));
+        }
+        const node: OrgTreeNode = {
             id: id,
             parentId: parent,
             // chart fields
+            responsible: responsibleId,
             name: description,
-            type: this.langSrv.translate(types[level]),
+//            type: this.langSrv.translate(types[level]),
             css: this.defaultStyle,
-            nameCss: this.textCss,
-            typeCss: this.textCss,
+            imageModel: imgModel,
             children: []
         };
         node.onClick = () => this.select(node, level);
         return node;
     }
 
-    select(node: ChartNode, level: Level) {
+    select(node: OrgTreeNode, level: Level) {
+        console.log(node);
         if (level === this.selectedLevel && this.selected != null && node.id === this.selected.id) {
             this.deselect();
             this.updateUi();
@@ -228,7 +245,7 @@ export class OrganizationsComponent implements OnInit {
     }
 
     public showDetail(create: boolean): void {
-        let lookup: Division | Department | Service | Office = { id: 0, description: '' };
+        let lookup: Division | Department | Service | Office = { id: 0, description: '', responsible: null };
         let title = '';
         let url = '';
         switch (this.selectedLevel) {
@@ -236,7 +253,7 @@ export class OrganizationsComponent implements OnInit {
                 if (create) {
                     title = 'COMMON_EDIT_DIVISION';
                     url = DIVISIONS_URL;
-                    lookup = { id: 0, description: '' };
+                    lookup = { id: 0, description: '', responsible: null };
                 } else {
                     return;
                 }
@@ -245,33 +262,33 @@ export class OrganizationsComponent implements OnInit {
                 if (create) {
                     title = 'COMMON_EDIT_DEPARTMENT';
                     url = DEPARTMENTS_URL[0] + this.selected.id + DEPARTMENTS_URL[1];
-                    lookup = { id: 0, description: '', division: this.selected.id };
+                    lookup = { id: 0, description: '', division: this.selected.id, responsible: null };
                 } else {
                     title = 'COMMON_EDIT_DIVISION';
                     url = DIVISIONS_URL;
-                    lookup = { id: this.selected.id, description: this.selected.name };
+                    lookup = { id: this.selected.id, description: this.selected.name, responsible: this.selected.responsible };
                 }
                 break;
             case Level.Department:
                 if (create) {
                     title = 'COMMON_EDIT_SERVICE';
                     url = SERVICES_URL[0] + this.selected.id + SERVICES_URL[1];
-                    lookup = { id: 0, description: '', department: this.selected.id };
+                    lookup = { id: 0, description: '', department: this.selected.id, responsible: null };
                 } else {
                     title = 'COMMON_EDIT_DEPARTMENT';
                     url = DEPARTMENTS_URL[0] + this.selected.parentId + DEPARTMENTS_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, division: this.selected.parentId };
+                    lookup = { id: this.selected.id, description: this.selected.name, division: this.selected.parentId, responsible: this.selected.responsible };
                 }
                 break;
             case Level.Service:
                 if (create) {
                     title = 'COMMON_EDIT_OFFICE';
                     url = OFFICES_URL[0] + this.selected.id + OFFICES_URL[1];
-                    lookup = { id: 0, description: '', service: this.selected.id };
+                    lookup = { id: 0, description: '', service: this.selected.id, responsible: null };
                 } else {
                     title = 'COMMON_EDIT_SERVICE';
                     url = SERVICES_URL[0] + this.selected.parentId + SERVICES_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, department: this.selected.parentId };
+                    lookup = { id: this.selected.id, description: this.selected.name, department: this.selected.parentId, responsible: this.selected.responsible };
                 }
                 break;
             case Level.Office:
