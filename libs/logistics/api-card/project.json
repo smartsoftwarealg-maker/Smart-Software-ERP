@@ -3,9 +3,9 @@
     "root": "libs/logistics/api-card",
     "sourceRoot": "libs/logistics/api-card/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/api-card/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/api-card"],
             "options": {
                 "jestConfig": "libs/logistics/api-card/jest.config.js",

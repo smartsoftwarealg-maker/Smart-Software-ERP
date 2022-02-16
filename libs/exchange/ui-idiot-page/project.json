@@ -3,9 +3,9 @@
     "root": "libs/exchange/ui-idiot-page",
     "sourceRoot": "libs/exchange/ui-idiot-page/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/exchange/ui-idiot-page"],
             "options": {
                 "jestConfig": "libs/exchange/ui-idiot-page/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/exchange/ui-idiot-page/src/**/*.ts",

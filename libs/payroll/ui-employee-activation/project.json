@@ -3,9 +3,9 @@
     "root": "libs/payroll/ui-employee-activation",
     "sourceRoot": "libs/payroll/ui-employee-activation/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/payroll/ui-employee-activation/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/payroll/ui-employee-activation"],
             "options": {
                 "jestConfig": "libs/payroll/ui-employee-activation/jest.config.js",

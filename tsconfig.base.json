@@ -271,6 +271,7 @@
             "@ss/remuneration/assets": [
                 "libs/remuneration/assets/src/index.ts"
             ],
+            "@ss/remuneration/edo": ["libs/remuneration/edo/src/index.ts"],
             "@ss/remuneration/element-types": [
                 "libs/remuneration/element-types/src/index.ts"
             ],
@@ -291,6 +292,9 @@
             ],
             "@ss/remuneration/payroll-month": [
                 "libs/remuneration/payroll-month/src/index.ts"
+            ],
+            "@ss/remuneration/special-payroll": [
+                "libs/remuneration/special-payroll/src/index.ts"
             ],
             "@ss/remuneration/vacation-planning": [
                 "libs/remuneration/vacation-planning/src/index.ts"

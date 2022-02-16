@@ -3,9 +3,9 @@
     "root": "libs/sales/ui-sales-order",
     "sourceRoot": "libs/sales/ui-sales-order/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/sales/ui-sales-order/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-sales-order"],
             "options": {
                 "jestConfig": "libs/sales/ui-sales-order/jest.config.js",

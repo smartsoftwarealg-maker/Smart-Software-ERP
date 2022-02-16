@@ -3,9 +3,9 @@
     "root": "apps/patients",
     "sourceRoot": "apps/patients/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/patients",
@@ -86,7 +86,7 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
                     "browserTarget": "patients:build:production"
@@ -98,13 +98,13 @@
             "defaultConfiguration": "development"
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "patients:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/patients/src/**/*.ts",
@@ -113,7 +113,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/patients"],
             "options": {
                 "jestConfig": "apps/patients/jest.config.js",

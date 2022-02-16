@@ -3,9 +3,9 @@
     "root": "libs/logistics/api-transaction",
     "sourceRoot": "libs/logistics/api-transaction/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/api-transaction/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/api-transaction"],
             "options": {
                 "jestConfig": "libs/logistics/api-transaction/jest.config.js",

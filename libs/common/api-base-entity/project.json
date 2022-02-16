@@ -3,9 +3,9 @@
     "root": "libs/common/api-base-entity",
     "sourceRoot": "libs/common/api-base-entity/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/common/api-base-entity/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "libs/common/api-base-entity/jest.config.js",
                 "tsConfig": "libs/common/api-base-entity/tsconfig.spec.json",
@@ -27,7 +27,7 @@
             }
         }
     },
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }

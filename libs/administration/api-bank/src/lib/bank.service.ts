@@ -11,5 +11,4 @@ export class BankService extends BaseEntityService<Bank>{
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, BANKS_URL);
     }
-
 }

@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/edo",
+    "sourceRoot": "libs/remuneration/edo/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/edo"],
+            "options": {
+                "jestConfig": "libs/remuneration/edo/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/edo/src/**/*.ts",
+                    "libs/remuneration/edo/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

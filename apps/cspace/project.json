@@ -3,9 +3,9 @@
     "root": "apps/cspace",
     "sourceRoot": "apps/cspace/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/cspace",
@@ -71,7 +71,7 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
                     "browserTarget": "cspace:build:production"
@@ -83,13 +83,13 @@
             "defaultConfiguration": "development"
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "cspace:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/cspace/src/**/*.ts",
@@ -98,7 +98,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/cspace"],
             "options": {
                 "jestConfig": "apps/cspace/jest.config.js",

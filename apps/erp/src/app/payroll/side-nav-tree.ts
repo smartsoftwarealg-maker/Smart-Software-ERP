@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_EDO_URL,
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
     ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
@@ -20,7 +21,7 @@ import {
     ABS_INPUT_FILTERS_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_VACATION_PLANNING_URL
+    ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -134,6 +135,11 @@ export const payrollNavTree: SideNavNode = {
                     route: ABS_INPUT_FILTERS_URL
                 },
                 {
+                    name: 'REMUN_SPECIAL_PAYROLLS',
+                    icon: 'fas fa-comments-alt-dollar',
+                    route: ABS_SPECIAL_PAYROLL_URL
+                },
+                {
                     name: 'PAYROLL_FIXED_ELEMENTS',
                     icon: 'fas fa-address-card',
                     route: ABS_FIXED_ELEMENTS_URL
@@ -147,6 +153,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_EXCEL_INJECTION',
                     icon: 'fas fa-file-excel',
                     route: ABS_EXCEL_INJECTION_URL
+                },
+                {
+                    name: 'REMUN_EDO',
+                    icon: 'fa fa-university',
+                    route: ABS_EDO_URL
                 },
                 {
                     name: 'REMUN_MONTH_CLOSURE',

@@ -1,12 +1,12 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL,
+    LOOKUPS_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
+    PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -24,13 +24,20 @@ import {
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
-import {VacationPlanningDetailListComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail-list/vacation-planning-detail-list.component';
-import {VacationPlanningDetailComponent} from '../../../../../libs/remuneration/vacation-planning/src/lib/vacation-planning-detail/vacation-planning-detail.component';
+import {EdoComponent} from '@ss/remuneration/edo';
+import {VacationPlanningDetailComponent} from '@ss/remuneration/vacation-planning';
+import {SpecialPayrollListComponent} from '@ss/remuneration/special-payroll';
+import {SpecialPayrollDetailComponent} from '@ss/remuneration/special-payroll';
 
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./payroll-lookups.module').then(m => m.PayrollLookupsModule)
+    },
+    {
+        path: PAY_EDO_URL,
+        component: EdoComponent,
+        canActivate: [CanActivateService]
     },
     {
         path: PAY_ELEMENTSINFO_URL,
@@ -43,6 +50,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ElementsInfoDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_SPECIAL_PAYROLL_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SpecialPayrollListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SpecialPayrollDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

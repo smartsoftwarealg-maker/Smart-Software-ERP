@@ -3,9 +3,9 @@
     "root": "apps/scheduled",
     "sourceRoot": "apps/scheduled/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "executor": "@angular-devkit/build-angular:browser",
             "outputs": ["{options.outputPath}"],
             "options": {
                 "outputPath": "dist/apps/scheduled",
@@ -81,7 +81,7 @@
             "defaultConfiguration": "production"
         },
         "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
+            "executor": "@angular-devkit/build-angular:dev-server",
             "configurations": {
                 "production": {
                     "browserTarget": "scheduled:build:production"
@@ -93,13 +93,13 @@
             "defaultConfiguration": "development"
         },
         "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
                 "browserTarget": "scheduled:build"
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/scheduled/src/**/*.ts",
@@ -108,7 +108,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/scheduled"],
             "options": {
                 "jestConfig": "apps/scheduled/jest.config.js",

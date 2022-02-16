@@ -3,9 +3,9 @@
     "root": "libs/administration/ui-smtp",
     "sourceRoot": "libs/administration/ui-smtp/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/administration/ui-smtp/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "libs/administration/ui-smtp/jest.config.js",
                 "tsConfig": "libs/administration/ui-smtp/tsconfig.spec.json",
@@ -27,7 +27,7 @@
             }
         }
     },
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }

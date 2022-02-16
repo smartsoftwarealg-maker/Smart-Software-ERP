@@ -3,9 +3,9 @@
     "root": "libs/logistics/ui-totals",
     "sourceRoot": "libs/logistics/ui-totals/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/ui-totals/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-totals"],
             "options": {
                 "jestConfig": "libs/logistics/ui-totals/jest.config.js",

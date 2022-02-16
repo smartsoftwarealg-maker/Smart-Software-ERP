@@ -39,5 +39,10 @@
     "ACQUIRED": "Acquis",
     "TAKEN": "Pris",
     "REST": "Restant",
-    "REFERENCE": "Reference"
+    "REFERENCE": "Reference",
+    "EDO": "Ordre de dépôt électronique (ODE)",
+    "SELECTED_BANKS": "Banques sélectionnées",
+    "RECEIVING_BANK": "Banque réceptrice",
+    "SPECIAL": "Numéro de paie spécial",
+    "SPECIAL_PAYROLLS": "Paies spéciales"
 }

@@ -3,9 +3,9 @@
     "root": "libs/common/api-access-rights",
     "sourceRoot": "libs/common/api-access-rights/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-access-rights"],
             "options": {
                 "jestConfig": "libs/common/api-access-rights/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/common/api-access-rights/src/**/*.ts",

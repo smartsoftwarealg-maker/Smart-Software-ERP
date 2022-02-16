@@ -3,9 +3,9 @@
     "root": "libs/sales/assets",
     "sourceRoot": "libs/sales/assets/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/sales/assets/tsconfig.lib.json",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/assets"],
             "options": {
                 "jestConfig": "libs/sales/assets/jest.config.js",

@@ -3,9 +3,9 @@
     "root": "libs/common/assets",
     "sourceRoot": "libs/common/assets/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/common/assets/tsconfig.lib.json",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "options": {
                 "jestConfig": "libs/common/assets/jest.config.js",
                 "tsConfig": "libs/common/assets/tsconfig.spec.json",
@@ -24,7 +24,7 @@
             }
         }
     },
-    "schematics": {
+    "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }

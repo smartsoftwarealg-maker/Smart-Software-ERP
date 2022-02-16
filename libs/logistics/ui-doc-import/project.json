@@ -3,9 +3,9 @@
     "root": "libs/logistics/ui-doc-import",
     "sourceRoot": "libs/logistics/ui-doc-import/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/logistics/ui-doc-import/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-doc-import"],
             "options": {
                 "jestConfig": "libs/logistics/ui-doc-import/jest.config.js",

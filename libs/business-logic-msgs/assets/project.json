@@ -3,9 +3,9 @@
     "root": "libs/business-logic-msgs/assets",
     "sourceRoot": "libs/business-logic-msgs/assets/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/business-logic-msgs/assets"],
             "options": {
                 "jestConfig": "libs/business-logic-msgs/assets/jest.config.js",
@@ -13,7 +13,7 @@
             }
         },
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/business-logic-msgs/assets/src/**/*.ts",

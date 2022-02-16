@@ -3,9 +3,9 @@
     "root": "libs/logistics/ui-options",
     "sourceRoot": "libs/logistics/ui-options/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/logistics/ui-options/src/**/*.ts",
@@ -14,7 +14,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-options"],
             "options": {
                 "jestConfig": "libs/logistics/ui-options/jest.config.js",

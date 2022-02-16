@@ -3,9 +3,9 @@
     "root": "libs/purchases/ui-purchase-order",
     "sourceRoot": "libs/purchases/ui-purchase-order/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/purchases/ui-purchase-order/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/ui-purchase-order"],
             "options": {
                 "jestConfig": "libs/purchases/ui-purchase-order/jest.config.js",

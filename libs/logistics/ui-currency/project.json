@@ -3,9 +3,9 @@
     "root": "libs/logistics/ui-currency",
     "sourceRoot": "libs/logistics/ui-currency/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@nrwl/linter:eslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/logistics/ui-currency/src/**/*.ts",
@@ -14,7 +14,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-currency"],
             "options": {
                 "jestConfig": "libs/logistics/ui-currency/jest.config.js",

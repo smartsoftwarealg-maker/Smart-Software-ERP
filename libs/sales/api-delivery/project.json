@@ -3,9 +3,9 @@
     "root": "libs/sales/api-delivery",
     "sourceRoot": "libs/sales/api-delivery/src",
     "prefix": "ss",
-    "architect": {
+    "targets": {
         "lint": {
-            "builder": "@angular-devkit/build-angular:tslint",
+            "executor": "@angular-devkit/build-angular:tslint",
             "options": {
                 "tsConfig": [
                     "libs/sales/api-delivery/tsconfig.lib.json",
@@ -18,7 +18,7 @@
             }
         },
         "test": {
-            "builder": "@nrwl/jest:jest",
+            "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/api-delivery"],
             "options": {
                 "jestConfig": "libs/sales/api-delivery/jest.config.js",

@@ -39,5 +39,10 @@
     "ACQUIRED": "مكتسب",
     "TAKEN": "مأخوذ",
     "REST": "",
-    "REFERENCE": "مرجع"
+    "REFERENCE": "مرجع",
+    "EDO": "الدفع الالكتروني",
+    "SELECTED_BANKS": "بنوك مختارة",
+    "RECEIVING_BANK": "البنك المستلم",
+    "SPECIAL": "رقم الدفع الخاص",
+    "SPECIAL_PAYROLLS": "كشوف المرتبات الخاصة"
 }
