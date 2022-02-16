@@ -97,7 +97,7 @@
         "payroll-ui-employee": "libs/payroll/ui-employee",
         "payroll-ui-employee-activation": "libs/payroll/ui-employee-activation",
         "payroll-ui-employee-career": "libs/payroll/ui-employee-career",
-        "payroll-ui-employee-contract": "libs/payroll/ui-employee-contract",
+        "payroll-ui-employee-contract": "libs/payroll/employee-contract",
         "payroll-ui-wives": "libs/payroll/ui-wives",
         "purchases-api-purchase-order": "libs/purchases/api-purchase-order",
         "purchases-api-reception": "libs/purchases/api-reception",
