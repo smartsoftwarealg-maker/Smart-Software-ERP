@@ -35,3 +35,8 @@ export interface Journal {
     headers: string[];
     data: MJournal[];
 }
+
+export interface PSpecial {
+    paymonth: number;
+    description: string;
+}

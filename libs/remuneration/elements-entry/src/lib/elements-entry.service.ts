@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement} from './elements-entry-api';
+import {ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial} from './elements-entry-api';
 import {HttpService} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
 import {map, Observable, zip} from 'rxjs';
@@ -18,6 +18,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     selectionMode = 1;
     elements: ElementsInfo[] = [];
     dataCols: ElementsInfo[] = [];
+    specialPayroll = false;
 
     constructor(protected httpSrv: HttpService,
                 private inputFilterSrv: InputFiltersService,
@@ -68,5 +69,9 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
 
     getJournal(): Observable<Journal> {
         return this.httpSrv.get('/payroll/journal');
+    }
+
+    getSpecialPayrolls(): Observable<PSpecial[]> {
+        return this.httpSrv.get<PSpecial[]>('/payroll/special-payrolls');
     }
 }

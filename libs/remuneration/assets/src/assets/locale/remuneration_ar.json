@@ -44,5 +44,9 @@
     "SELECTED_BANKS": "بنوك مختارة",
     "RECEIVING_BANK": "البنك المستلم",
     "SPECIAL": "رقم الدفع الخاص",
-    "SPECIAL_PAYROLLS": "كشوف المرتبات الخاصة"
+    "SPECIAL_PAYROLLS": "كشوف المرتبات الخاصة",
+    "GENERATE_ALL": "توليد لجميع الموظفين",
+    "GENERATE_ONE": "توليد للموظف المختار",
+    "DELETE_SELECTED": "حذف للموظف المحدد",
+    "DELETE_ALL": "حذف الكل"
 }
