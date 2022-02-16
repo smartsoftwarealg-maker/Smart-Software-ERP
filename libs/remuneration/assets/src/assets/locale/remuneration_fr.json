@@ -44,5 +44,9 @@
     "SELECTED_BANKS": "Banques sélectionnées",
     "RECEIVING_BANK": "Banque réceptrice",
     "SPECIAL": "Numéro de paie spécial",
-    "SPECIAL_PAYROLLS": "Paies spéciales"
+    "SPECIAL_PAYROLLS": "Paies spéciales",
+    "GENERATE_ALL": "Générer pour tous les employés",
+    "GENERATE_ONE": "Générer pour l'employé sélectionné",
+    "DELETE_SELECTED": "Supprimer pour l'employé sélectionné",
+    "DELETE_ALL": "Supprimer tout"
 }

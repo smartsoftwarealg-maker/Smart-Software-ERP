@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ELine, MJournal, PaymentElement} from './elements-entry-api';
+import {ELine, MJournal, PaymentElement, PSpecial} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsEntryService} from './elements-entry.service';
-import {Observable, of} from 'rxjs';
+import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {MatSelectChange} from '@angular/material/select';
 import {EmployeeService} from '@ss/payroll/api-employee';
@@ -24,7 +24,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
-    mainTableWidth = 600;
+    mainTableWidth = 900;
     slipTableWidth = 500;
 
     slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
@@ -47,7 +47,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         private employeeSrv: EmployeeService,
         private httpSrv: HttpService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 5;
     }
 
     getPage(): Observable<ELine[]> {
@@ -59,7 +59,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     processLoadedData(data: ELine[]): Observable<ELine[]> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
-        this.mainTableWidth = 720 + 120 * colList.length;
+        this.mainTableWidth = 900 + 120 * colList.length;
         this.displayedColumns = this.FIXED_COLS.concat(colList);
 
         const res = data.map(e => {

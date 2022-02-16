@@ -14,7 +14,16 @@ body, html{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: "filter   mode"
+                         "special  ."
                          "the_tabs the_tabs" ;
+}
+
+.special-payroll {
+    grid-area: special;
+    justify-self: stretch;
+    mat-form-field {
+        width: 100%;
+    }
 }
 
 .filter {
@@ -103,9 +112,14 @@ mat-cell {
 
 .mat-column-lastName,
 .mat-column-firstName,
-.mat-column-post {
+ {
     flex: 0 0 100px;
 }
+
+.mat-column-post {
+    flex: 0 0 200px;
+}
+
 .total-cell {
     font-weight: bolder;
 }

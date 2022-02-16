@@ -26,8 +26,10 @@ import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
 import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
 import {EdoComponent} from '@ss/remuneration/edo';
 import {VacationPlanningDetailComponent} from '@ss/remuneration/vacation-planning';
-import {SpecialPayrollListComponent} from '@ss/remuneration/special-payroll';
-import {SpecialPayrollDetailComponent} from '@ss/remuneration/special-payroll';
+import {
+    SpecialPayrollDetailComponent,
+    SpecialPayrollListComponent
+} from '@ss/remuneration/special-payroll';
 
 export const mainRoutes: Routes = [
     {
@@ -159,13 +161,13 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ElementsEntryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
             },
             {
                 path: ':id',
                 component: ElementsEntryDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

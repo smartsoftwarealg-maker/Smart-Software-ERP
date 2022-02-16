@@ -26,7 +26,6 @@ export class MonthSelectorComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
             this.selectorSrv.ctx())

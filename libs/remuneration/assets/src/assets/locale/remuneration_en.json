@@ -44,5 +44,9 @@
     "SELECTED_BANKS": "Selected banks",
     "RECEIVING_BANK": "Receiving bank",
     "SPECIAL": "Special payroll number",
-    "SPECIAL_PAYROLLS": "Special payrolls"
+    "SPECIAL_PAYROLLS": "Special payrolls",
+    "GENERATE_ALL": "Generate for all employees",
+    "GENERATE_ONE": "Generate for the selected employee",
+    "DELETE_SELECTED": "Delete for the selected employee",
+    "DELETE_ALL": "Delete all"
 }
