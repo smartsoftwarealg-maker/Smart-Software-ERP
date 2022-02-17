@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {SnackBarService} from '@ss/common/ui-shell';
-import {of, switchMap, tap, zip} from 'rxjs';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {switchMap, tap, zip} from 'rxjs';
+import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 
 @Component({
   selector: 'ss-month-selector',
@@ -12,6 +13,7 @@ import {of, switchMap, tap, zip} from 'rxjs';
   styleUrls: ['./month-selector.component.scss']
 })
 export class MonthSelectorComponent implements OnInit {
+    specialList: Special[] = [];
     private minMonth = 0;
     private maxMonth = 0;
     form: FormGroup = null;
@@ -22,24 +24,31 @@ export class MonthSelectorComponent implements OnInit {
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService,
-                private snackBarSrv: SnackBarService) {
+                private snackBarSrv: SnackBarService,
+                private specialSrv: SpecialPayrollService,
+                private shellSrv: ShellService) {
     }
 
     ngOnInit(): void {
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
-            this.selectorSrv.ctx())
+            this.selectorSrv.ctx(),
+            this.specialSrv.getList(0, 50))
             .subscribe(res => {
                 this.minMonth  = res[0].month;
                 this.maxMonth  = res[1].month;
                 const min      = +(res[0].month / 100).toFixed(0);
                 const max      = +(res[1].month / 100).toFixed(0);
-                const curYear  = +(res[2].payMonth / 100).toFixed(0);
+                const curYear  = (+(res[2].payMonth / 100) % 10000).toFixed(0);
                 const curMonth = +(res[2].payMonth % 100).toFixed(0);
+                const offset = +(res[2].payMonth / 1_000_000).toFixed(0)
+                this.specialList = res[3].body;
+                this.specialList.push({ id: 0, center: 0, paymonth: 0, description: ''});
                 this.form = this.formBuilder
                     .group({
                         year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
                         month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
+                        offset: [res[2].payMonth, Validators.required]
                     })
             })
     }
@@ -51,9 +60,14 @@ export class MonthSelectorComponent implements OnInit {
     close() {
         const year  = this.form.controls['year'].value;
         const month = this.form.controls['month'].value;
-        const payMonth = year * 100 + month;
-        if (payMonth >= this.minMonth && payMonth <= this.maxMonth) {
-            this.selectorSrv.selectMonth(payMonth)
+        const special = this.form.controls['offset'].value;
+        const payMonth = special && special > 0? special: year * 100 + month;
+        const normalMonth = payMonth % 1000000;
+        if (normalMonth >= this.minMonth && normalMonth <= this.maxMonth) {
+            this.selectorSrv
+                .selectMonth(payMonth)
+                .pipe(switchMap(_ => this.selectorSrv.curMonthLabel()),
+                      tap(title => this.shellSrv.setLabels([{ title: title }])))
                 .subscribe({
                         next: _ => {
                             this.processing = false;
@@ -69,4 +83,6 @@ export class MonthSelectorComponent implements OnInit {
         } else
             this.snackBarSrv.showFailureMessage();
     }
+
+
 }

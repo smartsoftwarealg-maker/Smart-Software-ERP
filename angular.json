@@ -115,6 +115,7 @@
         "remuneration-payroll-formulas": "libs/remuneration/payroll-formulas",
         "remuneration-payroll-month": "libs/remuneration/payroll-month",
         "remuneration-special-payroll": "libs/remuneration/special-payroll",
+        "remuneration-special-payroll-common": "libs/remuneration/special-payroll-common",
         "remuneration-special-payroll-entry": "libs/remuneration/special-payroll-entry",
         "remuneration-vacation-planning": "libs/remuneration/vacation-planning",
         "sales-api-delivery": "libs/sales/api-delivery",

@@ -1,17 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Lookup, Special} from '../special-payroll.class';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {SpecialPayrollService} from '../special-payroll.service';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
 import {map, of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {EmployeeLookupService} from '../employee-lookup.service';
+import {Lookup, Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 
 @Component({
   selector: 'ss-special-payroll-detail',
@@ -53,13 +52,13 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     setupForm(e: Special): FormGroup {
         this.selectorSrv
-            .selectMonth(e.paymonth)
+            .selectMonth(e.paymonth || this.loginSrv.appCtx.payMonth)
             .subscribe();
         this.refresh();
         return this.formBuilder.group({
             id: [e.id || 0],
             center: [this.loginSrv.appCtx.center],
-            paymonth: [e.paymonth],
+            paymonth: [e.paymonth || this.loginSrv.appCtx.payMonth % 1_000_000],
             description: [e.description, Validators.required],
         });
     }
@@ -77,18 +76,19 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     generateAll() {
+        type Response = {itemCount: number, body: ELine[]};
         this.detailSrv
             .generateAll()
             .pipe(tap(_ => this.snackBarSrv.showSuccessMessage()),
                 switchMap(_ => this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize)))
             .subscribe({
                 next:
-                    res => {
+                    (res: Response) => {
                         this.data = res.body;
                         this.pagingModel.elementCount = res.itemCount;
                         this.processing = false;
                     },
-                error: err => {
+                error: (err: Error) => {
                     this.processing = false;
                     throw err
                 }
@@ -120,6 +120,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     generateOne() {
+        type Response = {itemCount: number, body: ELine[]};
         this.processing = true;
         this.detailSrv
             .generateOne(this.employeeLookup.value)
@@ -127,12 +128,12 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
                 switchMap(_ => this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize)))
             .subscribe({
                 next:
-                    res => {
+                    (res: Response) => {
                         this.data = res.body;
                         this.pagingModel.elementCount = res.itemCount;
                         this.processing = false;
                     },
-                error: err => {
+                error: (err: any) => {
                     this.processing = false;
                     throw err
                 }

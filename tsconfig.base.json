@@ -296,6 +296,9 @@
             "@ss/remuneration/special-payroll": [
                 "libs/remuneration/special-payroll/src/index.ts"
             ],
+            "@ss/remuneration/special-payroll-common": [
+                "libs/remuneration/special-payroll-common/src/index.ts"
+            ],
             "@ss/remuneration/special-payroll-entry": [
                 "libs/remuneration/special-payroll-entry/src/index.ts"
             ],
