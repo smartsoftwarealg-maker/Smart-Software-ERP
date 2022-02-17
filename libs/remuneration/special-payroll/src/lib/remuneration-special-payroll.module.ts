@@ -10,6 +10,7 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
+import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-payroll-common';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        RemunerationSpecialPayrollCommonModule
     ],
     declarations: [
       SpecialPayrollListComponent,

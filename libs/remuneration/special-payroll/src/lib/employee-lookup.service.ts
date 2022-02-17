@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {Lookup, SPECIAL_EMPLOYEE_URL} from './special-payroll.class';
 import {HttpService} from '@ss/common/api-common';
+import {Lookup, SPECIAL_EMPLOYEE_URL} from '@ss/remuneration/special-payroll-common';
 
 @Injectable({
   providedIn: 'root'

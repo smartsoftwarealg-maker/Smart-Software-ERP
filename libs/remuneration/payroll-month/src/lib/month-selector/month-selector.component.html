@@ -5,9 +5,19 @@
                 <mat-label translate>COMMON_MONTH</mat-label>
                 <input matInput formControlName="month" type="number"  required autofocus step="1">
             </mat-form-field>
+
             <mat-form-field class="default-50 sm-100" >
                 <mat-label translate>COMMON_YEAR</mat-label>
                 <input matInput formControlName="year" type="number"  required step="1">
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
+                <mat-select formControlName="offset" required>
+                    <mat-option *ngFor="let v of specialList" [value]="v.paymonth">
+                        {{v.description}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
 
             <span class="default-100 sm-100"></span>

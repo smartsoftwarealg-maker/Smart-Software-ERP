@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Special} from '../special-payroll.class';
-import {InputFiltersService} from '@ss/remuneration/input-filters';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {SpecialPayrollService} from '../special-payroll.service';
+import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 
 @Component({
   selector: 'ss-special-payroll-list',

@@ -10,6 +10,7 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import { MonthCancelerComponent } from './month-canceler/month-canceler.component';
 import { MonthSelectorComponent } from './month-selector/month-selector.component';
+import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-payroll-common';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { MonthSelectorComponent } from './month-selector/month-selector.componen
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        RemunerationSpecialPayrollCommonModule
     ],
     declarations: [
       MonthCloserComponent,
