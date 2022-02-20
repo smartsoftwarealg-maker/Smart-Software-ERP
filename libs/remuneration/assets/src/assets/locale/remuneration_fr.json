@@ -48,5 +48,15 @@
     "GENERATE_ALL": "Générer pour tous les employés",
     "GENERATE_ONE": "Générer pour l'employé sélectionné",
     "DELETE_SELECTED": "Supprimer pour l'employé sélectionné",
-    "DELETE_ALL": "Supprimer tout"
+    "DELETE_ALL": "Supprimer tout",
+    "AMENDMENTS": "Rappeles",
+    "DIFFERENCE": "Difference",
+    "DESTINATION": "Destination",
+    "NEW": "Nouvelle",
+    "OLD": "ancien",
+    "PERCENTAGE": "percentage",
+    "LOAD_SPECIAL": "Charger la paie spéciale",
+    "COMPARISON": "Comparaison",
+    "INDIVIDUAL": "Individuel",
+    "COLLECTIVE": "Collective"
 }

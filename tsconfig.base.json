@@ -287,6 +287,12 @@
             "@ss/remuneration/input-filters": [
                 "libs/remuneration/input-filters/src/index.ts"
             ],
+            "@ss/remuneration/paymonth-editor": [
+                "libs/remuneration/paymonth-editor/src/index.ts"
+            ],
+            "@ss/remuneration/payroll-amendment": [
+                "libs/remuneration/payroll-amendment/src/index.ts"
+            ],
             "@ss/remuneration/payroll-formulas": [
                 "libs/remuneration/payroll-formulas/src/index.ts"
             ],

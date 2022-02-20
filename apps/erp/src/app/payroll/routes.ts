@@ -1,6 +1,6 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, PAY_EDO_URL,
+    LOOKUPS_URL, PAY_AMENDMENT_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
@@ -30,6 +30,10 @@ import {
     SpecialPayrollDetailComponent,
     SpecialPayrollListComponent
 } from '@ss/remuneration/special-payroll';
+import {
+    PayrollAmendmentDetailComponent,
+    PayrollAmendmentListComponent
+} from '../../../../../libs/remuneration/payroll-amendment/src';
 
 export const mainRoutes: Routes = [
     {
@@ -166,6 +170,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ElementsEntryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_AMENDMENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PayrollAmendmentListComponent,
+                canActivate: [CanActivateService],
+            },
+            {
+                path: ':id',
+                component: PayrollAmendmentDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
             },

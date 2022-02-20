@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/paymonth-editor",
+    "sourceRoot": "libs/remuneration/paymonth-editor/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/paymonth-editor"],
+            "options": {
+                "jestConfig": "libs/remuneration/paymonth-editor/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/paymonth-editor/src/**/*.ts",
+                    "libs/remuneration/paymonth-editor/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

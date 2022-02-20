@@ -21,9 +21,9 @@ export class CanActivateService implements CanActivate {
         private rightsSrv: UserRightsService) {
     }
 
-
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.reload()),

@@ -1,0 +1,21 @@
+div {
+    display: flex;
+}
+input {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-left: 20px;
+    outline: none;
+    font: inherit;
+    text-align: end;
+    color: currentColor;
+}
+
+span {
+    opacity: 0;
+    transition: opacity 200ms;
+}
+:host.floating span {
+    opacity: 1;
+}

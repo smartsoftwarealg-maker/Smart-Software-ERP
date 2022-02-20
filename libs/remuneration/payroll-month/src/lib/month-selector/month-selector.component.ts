@@ -4,7 +4,7 @@ import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {switchMap, tap, zip} from 'rxjs';
+import {of, switchMap, tap, zip} from 'rxjs';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 
 @Component({
@@ -43,7 +43,7 @@ export class MonthSelectorComponent implements OnInit {
                 const curMonth = +(res[2].payMonth % 100).toFixed(0);
                 const offset = +(res[2].payMonth / 1_000_000).toFixed(0)
                 this.specialList = res[3].body;
-                this.specialList.push({ id: 0, center: 0, paymonth: 0, description: ''});
+                this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: 'REMUN_NORMAL'});
                 this.form = this.formBuilder
                     .group({
                         year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
@@ -57,22 +57,34 @@ export class MonthSelectorComponent implements OnInit {
         this.router.navigate(['../'], { relativeTo: this.activatedRoute });
     }
 
-    close() {
+    select(loadSpecial: boolean) {
         const year  = this.form.controls['year'].value;
         const month = this.form.controls['month'].value;
-        const special = this.form.controls['offset'].value;
+        let special = this.form.controls['offset'].value;
+        console.log(special)
+        if (special % 1_000_000 != year * 100 + month) {
+            special = 0;
+        }
         const payMonth = special && special > 0? special: year * 100 + month;
         const normalMonth = payMonth % 1000000;
         if (normalMonth >= this.minMonth && normalMonth <= this.maxMonth) {
             this.selectorSrv
                 .selectMonth(payMonth)
                 .pipe(switchMap(_ => this.selectorSrv.curMonthLabel()),
-                      tap(title => this.shellSrv.setLabels([{ title: title }])))
+                      tap(title => this.shellSrv.setLabels([{ title: title }])),
+                    switchMap(_ => loadSpecial? this.specialSrv.getList(0, 50): of(0)))
                 .subscribe({
-                        next: _ => {
+                        next: res => {
+                            if (!loadSpecial) {
+                                this.snackBarSrv.showSuccessMessage();
+                                this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+                            } else {
+                                if (typeof res !== 'number') {
+                                    this.specialList = res.body;
+                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: 'REMUN_NORMAL'});
+                                }
+                            }
                             this.processing = false;
-                            this.snackBarSrv.showSuccessMessage();
-                            this.router.navigate(['../'], {relativeTo: this.activatedRoute});
                         },
                         error: err => {
                             this.processing = false;

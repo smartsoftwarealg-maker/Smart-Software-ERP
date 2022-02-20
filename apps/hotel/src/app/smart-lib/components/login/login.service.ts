@@ -69,6 +69,7 @@ export class LoginService {
                         map(res => {
                             const failure: boolean = !this.agent && !this.person && !this.loggedIn;
                             if (failure) {
+                                localStorage.clear();
                                 this.router.navigate(['/login']);
                             }
                             return !failure;

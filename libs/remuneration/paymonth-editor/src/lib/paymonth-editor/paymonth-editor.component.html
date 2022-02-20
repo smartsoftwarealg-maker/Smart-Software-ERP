@@ -1,0 +1,4 @@
+<div role="group" [formGroup]="form" *ngIf="form">
+    <input type="number" matInput class="month" min="1" max="12" formControlName="month" (blur)="onTouched()"> /
+    <input type="number" matInput class="year" min="1900" max="3000" formControlName="year" (blur)="onTouched()">
+</div>

@@ -175,5 +175,7 @@
     "SERVICE": "Service",
     "OFFICE": "Office",
     "EDIT_OFFICE": "Edit office",
-    "UPDATE": "Update"
+    "VALUE": "Value",
+    "UPDATE": "Update",
+    "DELETE_ALL": "Delete all"
 }
