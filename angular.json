@@ -112,6 +112,8 @@
         "remuneration-elementsinfo": "libs/remuneration/elementsinfo",
         "remuneration-excel-injection": "libs/remuneration/excel-injection",
         "remuneration-input-filters": "libs/remuneration/input-filters",
+        "remuneration-paymonth-editor": "libs/remuneration/paymonth-editor",
+        "remuneration-payroll-amendment": "libs/remuneration/payroll-amendment",
         "remuneration-payroll-formulas": "libs/remuneration/payroll-formulas",
         "remuneration-payroll-month": "libs/remuneration/payroll-month",
         "remuneration-special-payroll": "libs/remuneration/special-payroll",

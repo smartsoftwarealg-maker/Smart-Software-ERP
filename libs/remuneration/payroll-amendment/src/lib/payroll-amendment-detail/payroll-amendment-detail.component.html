@@ -1,0 +1,117 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <span translate>REMUN_INDIVIDUAL</span>
+        </ng-template>
+        <mat-card>
+            <mat-card-content>
+                <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="employeeAutoCompleteModel"
+                                          formControlName="employee">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['employee'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>REMUN_FIELD</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="infoLookupModel"
+                                          formControlName="elementId">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['elementId'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_FROM</mat-label>
+<!--                        <input matInput formControlName="application_month" type="number"  required>-->
+                        <ss-paymonth-editor formControlName="application_month" required></ss-paymonth-editor>
+                        <mat-error *ngIf="form.controls['application_month'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100" *ngIf="!form.controls['id'].value">
+                        <mat-label translate>PAYROLL_TO</mat-label>
+<!--                        <input matInput formControlName="to" type="number"  required>-->
+                        <ss-paymonth-editor formControlName="to" required></ss-paymonth-editor>
+                        <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_VALUE</mat-label>
+                        <input matInput formControlName="new_value" type="number"  required>
+                        <mat-error *ngIf="form.controls['new_value'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <div class="default-50 sm-100">
+                        <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>
+                    </div>
+
+
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+    <mat-tab *ngIf="form !== null && !form.controls['id'].value">
+        <ng-template mat-tab-label>
+            <span translate>REMUN_COLLECTIVE</span>
+        </ng-template>
+        <mat-card>
+            <mat-card-content>
+                <form novalidate [formGroup]="form">
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>REMUN_FIELD</mat-label>
+                        <ss-auto-complete matInput
+                                          [required]="true"
+                                          [model]="infoLookupModel"
+                                          formControlName="elementId">
+                        </ss-auto-complete>
+                        <mat-error
+                            *ngIf="form.controls['elementId'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    </mat-form-field>
+
+                    <span class="default-50 sm-100"> </span>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_FROM</mat-label>
+                        <ss-paymonth-editor formControlName="application_month" required></ss-paymonth-editor>
+                        <mat-error *ngIf="form.controls['application_month'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>PAYROLL_TO</mat-label>
+                        <ss-paymonth-editor formControlName="to" required></ss-paymonth-editor>
+                        <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_VALUE</mat-label>
+                        <input matInput formControlName="new_value" type="number"  required>
+                        <mat-error *ngIf="form.controls['new_value'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                    </mat-form-field>
+
+                    <div class="default-50 sm-100">
+                        <mat-checkbox formControlName="percentage" translate>REMUN_PERCENTAGE</mat-checkbox>
+                    </div>
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+
+    </mat-tab>
+</mat-tab-group>
+

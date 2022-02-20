@@ -175,5 +175,7 @@
     "SERVICE": "خدمة",
     "OFFICE": "مكتب",
     "EDIT_OFFICE": "تعديل مكتب",
-    "UPDATE": "تحديث"
+    "VALUE": "القيمة",
+    "UPDATE": "تحديث",
+    "DELETE_ALL": "حذف الكل"
 }

@@ -100,6 +100,10 @@ export class ShellService {
         this.updateShell();
     }
 
+    getLoading(): boolean {
+        return this.isLoading;
+    }
+
     public showRetry(retryCallback: () => void) {
         this.isError = true;
         this.retryCallback = retryCallback;

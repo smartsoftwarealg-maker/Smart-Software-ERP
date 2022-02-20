@@ -48,5 +48,15 @@
     "GENERATE_ALL": "توليد لجميع الموظفين",
     "GENERATE_ONE": "توليد للموظف المختار",
     "DELETE_SELECTED": "حذف للموظف المحدد",
-    "DELETE_ALL": "حذف الكل"
+    "DELETE_ALL": "حذف الكل",
+    "AMENDMENTS": "تعديلات",
+    "DIFFERENCE": "فروق",
+    "DESTINATION": "المستقر",
+    "NEW": " جديد",
+    "OLD": "قديم",
+    "PERCENTAGE": "النسبة المئوية",
+    "LOAD_SPECIAL": "تحميل كشوف المرتبات الخاصة",
+    "COMPARISON": "مقارنة",
+    "INDIVIDUAL": "فردي",
+    "COLLECTIVE": "جماعي"
 }

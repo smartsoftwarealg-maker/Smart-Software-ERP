@@ -1,0 +1,45 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    //background: #e9c43a;
+    height: 100%;
+    width: 98%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.data-table {
+    flex: 2 0 50%;
+    overflow-x: auto;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.comparison {
+    flex: 1 0 50%;
+}
+
+.main-table {
+    width: 100%;
+    min-width: 800px;
+    flex-grow: 1;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}
+
+.mat-column-employee, .mat-column-application_month, .mat-column-percentage {
+    flex: 0 1 90px;
+}
+
+.mat-column-firstName, .mat-column-lastName, .mat-column-new_value {
+    flex: 1 0 110px;
+}
+
+.mat-column-element {
+    flex: 1 0 200px;
+}
+

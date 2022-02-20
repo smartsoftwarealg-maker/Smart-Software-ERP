@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/payroll-amendment",
+    "sourceRoot": "libs/remuneration/payroll-amendment/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/payroll-amendment"],
+            "options": {
+                "jestConfig": "libs/remuneration/payroll-amendment/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/payroll-amendment/src/**/*.ts",
+                    "libs/remuneration/payroll-amendment/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -65,6 +65,9 @@ const routes: Routes = [
         PaymentDetailComponent,
         RedirectToParentComponent,
     ],
+    exports: [
+        PaymentDetailComponent
+    ],
     providers: [
         PaymentService,
         ClientsService,

@@ -175,5 +175,7 @@
     "SERVICE": "Service",
     "OFFICE": "Bureau",
     "EDIT_OFFICE": "Modifier le bureau",
-    "UPDATE": "Mettre à jour"
+    "VALUE": "Valeur",
+    "UPDATE": "Mettre à jour",
+    "DELETE_ALL": "Supprimer tout"
 }

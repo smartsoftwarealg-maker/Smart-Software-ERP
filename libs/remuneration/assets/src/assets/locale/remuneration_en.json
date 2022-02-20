@@ -48,5 +48,15 @@
     "GENERATE_ALL": "Generate for all employees",
     "GENERATE_ONE": "Generate for the selected employee",
     "DELETE_SELECTED": "Delete for the selected employee",
-    "DELETE_ALL": "Delete all"
+    "DELETE_ALL": "Delete all",
+    "AMENDMENTS": "Amendments",
+    "DIFFERENCE": "Difference",
+    "DESTINATION": "Destination",
+    "NEW": "New value",
+    "OLD": "Old",
+    "PERCENTAGE": "Percentage",
+    "LOAD_SPECIAL": "Load special payroll",
+    "COMPARISON": "Comparison",
+    "INDIVIDUAL": "Individual",
+    "COLLECTIVE": "Collective"
 }
