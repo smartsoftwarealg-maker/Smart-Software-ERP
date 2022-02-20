@@ -158,13 +158,12 @@
             }
         },
         "lint": {
-            "executor": "@angular-devkit/build-angular:tslint",
+            "executor": "@nrwl/linter:eslint",
             "options": {
-                "tsConfig": [
-                    "apps/erp/tsconfig.app.json",
-                    "apps/erp/tsconfig.spec.json"
-                ],
-                "exclude": ["**/node_modules/**", "!apps/erp/**/*"]
+                "lintFilePatterns": [
+                    "apps/erp/src/**/*.ts",
+                    "apps/erp/src/**/*.html"
+                ]
             }
         },
         "test": {
