@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/das",
+    "sourceRoot": "libs/remuneration/das/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/das"],
+            "options": {
+                "jestConfig": "libs/remuneration/das/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/das/src/**/*.ts",
+                    "libs/remuneration/das/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
