@@ -122,6 +122,7 @@ export const PAY_MONTH_SELECTOR      = 'select';
 export const PAY_INPUT_FILTERS       = 'inputfilters';
 export const PAY_ELEMENTS_ENTRY_URL  = 'elementsentry';
 export const PAY_AMENDMENT_URL       = 'amendments';
+export const PAY_LOANS_URL           = 'loans';
 export const PAY_FIXED_ELEMENTS_URL  = 'fixedelements';
 export const PAY_EDO_URL             = 'edo';
 
@@ -227,6 +228,7 @@ export const ABS_ELEMENTS_ENTRY_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY
 export const ABS_FIXED_ELEMENTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FIXED_ELEMENTS_URL].join('/');
 export const ABS_EXCEL_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_XLS_INJECTION].join('/');
 export const ABS_AMENDMENT_URL       = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_AMENDMENT_URL].join('/');
+export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_LOANS_URL].join('/');
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
 
 // sales

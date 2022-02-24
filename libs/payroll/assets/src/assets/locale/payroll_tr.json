@@ -88,5 +88,7 @@
     "RANK": "Rank",
     "OLD_ELEMENTS": "Old elements",
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
-    "NO_CHANGES": ""
+    "NO_CHANGES": "",
+    "AMOUNT": "",
+    "TAKEN": ""
 }

@@ -3,7 +3,7 @@ import {
     LOOKUPS_URL, PAY_AMENDMENT_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL, PAY_INPUT_FILTERS,
+    PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
     PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
@@ -33,7 +33,8 @@ import {
 import {
     PayrollAmendmentDetailComponent,
     PayrollAmendmentListComponent
-} from '../../../../../libs/remuneration/payroll-amendment/src';
+} from '@ss/remuneration/payroll-amendment';
+import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 
 export const mainRoutes: Routes = [
     {
@@ -187,6 +188,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: PayrollAmendmentDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_LOANS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LoansListComponent,
+                canActivate: [CanActivateService],
+            },
+            {
+                path: ':id',
+                component: LoansDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
             },

@@ -19,7 +19,7 @@ import {
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
     ABS_HR_SUSPENSION_REASON_URL,
-    ABS_INPUT_FILTERS_URL,
+    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
     ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_VACATION_PLANNING_URL
@@ -159,6 +159,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_AMENDMENTS',
                     icon: 'fas fa-user-edit',
                     route: ABS_AMENDMENT_URL
+                },
+                {
+                    name: 'PAYROLL_LOANS',
+                    icon: 'fas fa-user-edit',
+                    route: ABS_LOANS_URL
                 },
                 {
                     name: 'REMUN_EDO',

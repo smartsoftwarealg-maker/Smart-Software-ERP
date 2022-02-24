@@ -237,6 +237,7 @@
             "@ss/patients/ui-patients": [
                 "libs/patients/ui-patients/src/index.ts"
             ],
+            "@ss/payroll-common": ["libs/payroll-common/src/index.ts"],
             "@ss/payroll/api-employee": [
                 "libs/payroll/api-employee/src/index.ts"
             ],
@@ -287,6 +288,7 @@
             "@ss/remuneration/input-filters": [
                 "libs/remuneration/input-filters/src/index.ts"
             ],
+            "@ss/remuneration/loans": ["libs/remuneration/loans/src/index.ts"],
             "@ss/remuneration/paymonth-editor": [
                 "libs/remuneration/paymonth-editor/src/index.ts"
             ],

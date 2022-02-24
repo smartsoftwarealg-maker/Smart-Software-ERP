@@ -48,7 +48,7 @@ mat-table {
     padding-left: 8px !important;
 }
 
-.mat-column-lastName .mat-column-firstName {
+.mat-column-lastName, .mat-column-firstName {
     flex: 1 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;

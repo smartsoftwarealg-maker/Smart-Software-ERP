@@ -88,5 +88,12 @@
     "RANK": "رتبة",
     "OLD_ELEMENTS": "العناصر القديمة",
     "GENERATE_ELEMENTS": "إنشاء عناصر كشوف رواتب جديدة؟",
-    "NO_CHANGES": "لم يتم إجراء أية تغييرات"
+    "NO_CHANGES": "لم يتم إجراء أية تغييرات",
+    "AMOUNT": "المبلغ",
+    "TAKEN": "مسترد",
+    "MONTH_COUNT": "عدد الأشهر",
+    "CONSUMPTION_MONTH": "شهر الاسترجاع",
+    "DEDUCTION": "الاقتطاع",
+    "REMAINING": "الباقي",
+    "LOANS": "القروض"
 }
