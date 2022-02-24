@@ -58,5 +58,12 @@
     "LOAD_SPECIAL": "Charger la paie spéciale",
     "COMPARISON": "Comparaison",
     "INDIVIDUAL": "Individuel",
-    "COLLECTIVE": "Collective"
+    "COLLECTIVE": "Collective",
+    "EMPLOYER": "Employeur",
+    "DAYS": "Journées",
+    "HOURS": "Heures",
+    "MODE": "Mode",
+    "SS_BASE": "Base SS",
+    "ABSENCE_FORMULA": "Formule d'absence",
+    "FUND": "صندوق التأمين"
 }

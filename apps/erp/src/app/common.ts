@@ -124,6 +124,7 @@ export const PAY_AMENDMENT_URL       = 'amendments';
 export const PAY_LOANS_URL           = 'loans';
 export const PAY_FIXED_ELEMENTS_URL  = 'fixedelements';
 export const PAY_EDO_URL             = 'edo';
+export const PAY_DAS_URL             = 'das';
 
 
 //Dashboard
@@ -228,6 +229,7 @@ export const ABS_EXCEL_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_AMENDMENT_URL       = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_AMENDMENT_URL].join('/');
 export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_LOANS_URL].join('/');
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
+export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

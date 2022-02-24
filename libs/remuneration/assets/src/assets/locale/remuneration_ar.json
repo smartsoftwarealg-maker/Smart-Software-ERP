@@ -58,5 +58,12 @@
     "LOAD_SPECIAL": "تحميل كشوف المرتبات الخاصة",
     "COMPARISON": "مقارنة",
     "INDIVIDUAL": "فردي",
-    "COLLECTIVE": "جماعي"
+    "COLLECTIVE": "جماعي",
+    "EMPLOYER": "الموظِّف",
+    "DAYS": "الأيام",
+    "HOURS": "الساعات",
+    "MODE": "الوضع",
+    "SS_BASE": "قاعدة الضمان",
+    "ABSENCE_FORMULA": "صيغة الغياب",
+    "FUND": "صندوق التأمين"
 }
