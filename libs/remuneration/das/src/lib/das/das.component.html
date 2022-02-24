@@ -1,0 +1,82 @@
+<div class="container">
+    <form *ngIf="form" novalidate [formGroup]="form">
+
+        <mat-form-field class="year">
+            <mat-label translate>PAYROLL_YEAR</mat-label>
+            <input matInput formControlName="year" type="number" [min]="curYear" [max]="curYear" step="1" required>
+            <mat-error *ngIf="form.controls.year.hasError('required')" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>REMUN_FUND</mat-label>
+            <mat-select formControlName="fund">
+                <mat-option *ngFor="let c of funds" [value]="c.id">{{ c.description }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.year.hasError('fund')" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>REMUN_SS_BASE</mat-label>
+            <mat-select formControlName="ssBase">
+                <mat-option *ngFor="let c of bases"
+                            [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.year.hasError('ssBase')" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>REMUN_ABSENCE_FORMULA</mat-label>
+            <mat-select formControlName="absence">
+                <mat-option *ngFor="let c of absences"
+                            [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.year.hasError('absence')" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>REMUN_MODE</mat-label>
+            <mat-select formControlName="modes">
+                <mat-option *ngFor="let c of modes" [value]="c.id"> {{ c.description | translate }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.year.hasError('modes')" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>COMMON_TYPE</mat-label>
+            <mat-select formControlName="periods">
+                <mat-option *ngFor="let c of periods" [value]="c.id"> {{ c.description | translate }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls.year.hasError('periods')" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <div class="btn-group">
+            <button mat-raised-button
+                    type="button"
+                    color="primary"
+                    class="generate"
+                    [disabled]="!form.valid"
+                    (click)="generate()">
+                {{ 'COMMON_GENERATE' | translate }}
+            </button>
+
+            <button mat-raised-button
+                    type="button"
+                    color="primary"
+                    class="save"
+                    [disabled]="!form.valid"
+                    (click)="save()">
+                {{ 'COMMON_SAVE' | translate }}
+            </button>
+        </div>
+    </form>
+    <div class="edo-text">
+        <textarea cols="100"
+                  rows="30"
+                  class="text-area"
+                  readonly
+                  [value]="edoText"></textarea>
+    </div>
+<!--            <pre>{{form?.value | json}}</pre>-->
+</div>

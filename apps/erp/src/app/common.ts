@@ -7,7 +7,6 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import {LOGISTICS_CATEGORY_URL} from '../../../scheduled/src/app/common';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -125,6 +124,7 @@ export const PAY_AMENDMENT_URL       = 'amendments';
 export const PAY_LOANS_URL           = 'loans';
 export const PAY_FIXED_ELEMENTS_URL  = 'fixedelements';
 export const PAY_EDO_URL             = 'edo';
+export const PAY_DAS_URL             = 'das';
 
 
 //Dashboard
@@ -188,7 +188,6 @@ export const ABS_LOGISTICS_VAT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LO
 export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL,  LOGISTICS_COMPANY_TYPE_URL].join('/');
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
-export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
 
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
@@ -230,6 +229,7 @@ export const ABS_EXCEL_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_AMENDMENT_URL       = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_AMENDMENT_URL].join('/');
 export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_LOANS_URL].join('/');
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
+export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

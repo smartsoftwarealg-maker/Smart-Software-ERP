@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL,
+    ABS_AMENDMENT_URL, ABS_DAS_URL,
     ABS_EDO_URL,
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
     ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
@@ -172,7 +172,7 @@ export const payrollNavTree: SideNavNode = {
                 },
                 {
                     name: 'REMUN_MONTH_CLOSURE',
-                    icon: 'fas fa-calendar-times',
+                    icon: 'fas fa-door-closed',
                     route: ABS_MONTH_CLOSER_URL,
                     accessRights: 'Closer'
                 },
@@ -187,6 +187,11 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-calendar-week',
                     route: ABS_MONTH_CANCELER_URL,
                     accessRights: 'Canceler'
+                },
+                {
+                    name: 'REMUN_DAS',
+                    icon: 'fas fa-shield-check',
+                    route: ABS_DAS_URL
                 },
             ]
         }

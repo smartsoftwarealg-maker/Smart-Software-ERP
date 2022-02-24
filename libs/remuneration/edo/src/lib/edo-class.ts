@@ -1,3 +1,5 @@
+export const DAS_URL = '/payroll/das';
+
 export interface EDO {
     month: number;
     year: number;

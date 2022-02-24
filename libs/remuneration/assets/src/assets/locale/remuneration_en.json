@@ -58,5 +58,12 @@
     "LOAD_SPECIAL": "Load special payroll",
     "COMPARISON": "Comparison",
     "INDIVIDUAL": "Individual",
-    "COLLECTIVE": "Collective"
+    "COLLECTIVE": "Collective",
+    "EMPLOYER": "Employer",
+    "DAYS": "Days",
+    "HOURS": "Hours",
+    "MODE": "Mode",
+    "SS_BASE": "S.S Base",
+    "ABSENCE_FORMULA": "Absence formula",
+    "FUND": "Insurance fund"
 }
