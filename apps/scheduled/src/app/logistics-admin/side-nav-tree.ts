@@ -9,14 +9,15 @@ import {
     ABS_LOGISTICS_OPTIONS,
     ABS_STOCK_AGENT_URL,
     LOGISTICS_STOCK_AGENT_URL,
-    ABS_FINANCE_PAYMENTS
+    ABS_FINANCE_PAYMENTS,
+    ABS_LOGISTICS_CATEGORY
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_LOGISTICS_ACTIVITY, ABS_LOGISTICS_CATEGORY,
+    ABS_LOGISTICS_ACTIVITY,
     ABS_LOGISTICS_COMPANY_TYPE, ABS_LOGISTICS_CURRENCY,
     ABS_LOGISTICS_VAT_URL
-} from "../../../../erp/src/app/common";
+} from "../common";
 
 export const logAdminNavTree: SideNavNode = {
     name: 'COMMON_LOGISTICS-ADMINISTRATION',
