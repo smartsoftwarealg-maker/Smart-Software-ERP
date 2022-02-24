@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/loans",
+    "sourceRoot": "libs/remuneration/loans/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/loans"],
+            "options": {
+                "jestConfig": "libs/remuneration/loans/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/loans/src/**/*.ts",
+                    "libs/remuneration/loans/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll-common",
+    "sourceRoot": "libs/payroll-common/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/payroll-common"],
+            "options": {
+                "jestConfig": "libs/payroll-common/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/payroll-common/src/**/*.ts",
+                    "libs/payroll-common/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

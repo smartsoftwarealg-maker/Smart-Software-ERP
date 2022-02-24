@@ -1,6 +1,5 @@
 import { Component} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ElementType} from './element-type';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -10,6 +9,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {ElementTypesService} from './element-types.service';
 import {ElementInfoLookupModel} from './element-info-lookup-model';
 import {HttpService} from '@ss/common/api-common';
+import {ElementType} from '@ss/payroll-common';
 
 @Component({
   selector: 'ss-element-types-detail',

@@ -9,9 +9,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {EmployeeService} from '@ss/payroll/api-employee';
-import {PersonAutocompleteClass} from '../person-autocomplete.class';
 import {ElementInfoLookupModel} from '@ss/remuneration/element-types';
-import {PayrollUtil} from '../../../../payroll-month/src/paymonth-util.class';
+import {PayrollUtil, PersonAutocompleteClass} from '@ss/payroll-common';
 
 @Component({
   selector: 'ss-payroll-amendment-detail',
@@ -56,7 +55,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         const value = this.form.value;
         const range = PayrollUtil.range(value.application_month, value.to);
         delete value.to;
-        const list = range.map(e => <Amendment>{
+        const list = range.map((e: number) => <Amendment>{
             id: value.id,
             center: value.center,
             employee: value.employee,

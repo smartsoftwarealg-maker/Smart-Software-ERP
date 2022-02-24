@@ -88,5 +88,12 @@
     "RANK": "Rank",
     "OLD_ELEMENTS": "Old elements",
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
-    "NO_CHANGES": "No changes were made"
+    "NO_CHANGES": "No changes were made",
+    "AMOUNT": "Amount",
+    "TAKEN": "Taken",
+    "MONTH_COUNT": "No. of months",
+    "CONSUMPTION_MONTH": "Month consumed",
+    "DEDUCTION": "Deduction",
+    "REMAINING": "Remaining",
+    "LOANS": "Loans"
 }
