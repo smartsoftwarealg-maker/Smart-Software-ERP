@@ -65,5 +65,6 @@
     "MODE": "Mode",
     "SS_BASE": "Base SS",
     "ABSENCE_FORMULA": "Formule d'absence",
-    "FUND": "صندوق التأمين"
+    "FUND": "Caisse cotisation",
+    "DAS": "D.A.S"
 }

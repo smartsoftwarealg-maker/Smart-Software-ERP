@@ -1,6 +1,6 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, PAY_AMENDMENT_URL, PAY_DAS_URL, PAY_EDO_URL,
+    LOOKUPS_URL, PAY_AMENDMENT_URL, PAY_CACO_URL, PAY_DAS_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL,
@@ -36,6 +36,7 @@ import {
 } from '@ss/remuneration/payroll-amendment';
 import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 import {DasComponent} from '@ss/remuneration/das';
+import {CacoComponent} from '@ss/remuneration/caco';
 
 export const mainRoutes: Routes = [
     {
@@ -50,6 +51,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_DAS_URL,
         component: DasComponent,
+        canActivate: [CanActivateService]
+    },
+    {
+        path: PAY_CACO_URL,
+        component: CacoComponent,
         canActivate: [CanActivateService]
     },
     {

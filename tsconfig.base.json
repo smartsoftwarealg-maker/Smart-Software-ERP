@@ -272,6 +272,7 @@
             "@ss/remuneration/assets": [
                 "libs/remuneration/assets/src/index.ts"
             ],
+            "@ss/remuneration/caco": ["libs/remuneration/caco/src/index.ts"],
             "@ss/remuneration/das": ["libs/remuneration/das/src/index.ts"],
             "@ss/remuneration/edo": ["libs/remuneration/edo/src/index.ts"],
             "@ss/remuneration/element-types": [
