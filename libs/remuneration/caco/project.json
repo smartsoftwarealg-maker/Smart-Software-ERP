@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/remuneration/caco",
+    "sourceRoot": "libs/remuneration/caco/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/remuneration/caco"],
+            "options": {
+                "jestConfig": "libs/remuneration/caco/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/caco/src/**/*.ts",
+                    "libs/remuneration/caco/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

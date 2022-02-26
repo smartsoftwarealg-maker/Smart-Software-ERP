@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL, ABS_DAS_URL,
+    ABS_AMENDMENT_URL, ABS_CACO_URL, ABS_DAS_URL,
     ABS_EDO_URL,
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
     ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
@@ -192,6 +192,11 @@ export const payrollNavTree: SideNavNode = {
                     name: 'REMUN_DAS',
                     icon: 'fas fa-shield-check',
                     route: ABS_DAS_URL
+                },
+                {
+                    name: 'REMUN_CACO',
+                    icon: 'fas fa-cloud-rain',
+                    route: ABS_CACO_URL
                 },
             ]
         }
