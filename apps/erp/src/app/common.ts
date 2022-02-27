@@ -105,6 +105,7 @@ export const HR_EMPLOYEE_ACTIVATION_URL = activationListUrl;
 export const HR_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
 export const HR_CAREER_URL = 'career';
+export const HR_CONTRACTS_URL = 'contracts';
 export const HR_DIVISIONS_URL = 'divisions';
 export const HR_DEPARTMENTS_URL = 'departments'
 
@@ -211,6 +212,7 @@ export const ABS_HR_EMPLOYEE_ACTIVATION_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, 
 export const ABS_HR_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_EMPLOYMENT_TYPE_URL].join('/');
 export const ABS_HR_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SUSPENSION_REASON_URL].join('/');
 export const ABS_HR_CAREER_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL, HR_CAREER_URL].join('/');
+export const ABS_HR_CONTRACTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL, HR_CONTRACTS_URL].join('/');
 export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIVISIONS_URL].join('/');
 export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DEPARTMENTS_URL].join('/');
 

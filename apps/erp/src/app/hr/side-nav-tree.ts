@@ -11,6 +11,7 @@ import {
     ABS_HR_EMPLOYMENT_TYPE_URL,
     ABS_HR_SUSPENSION_REASON_URL,
     ABS_HR_CAREER_URL,
+    ABS_HR_CONTRACTS_URL,
     ABS_HR_DEPARTMENTS_URL,
     ABS_HR_DIVISIONS_URL
 } from '../common';
@@ -99,6 +100,11 @@ export const hrNavTree: SideNavNode = {
                     name: 'PAYROLL_CAREER',
                     icon: 'fas fa-user-hard-hat',
                     route: ABS_HR_CAREER_URL
+                },
+                {
+                    name: 'PAYROLL_CONTRACTS',
+                    icon: 'fas fa-user-hard-hat',
+                    route: ABS_HR_CONTRACTS_URL
                 }
             ]
         }

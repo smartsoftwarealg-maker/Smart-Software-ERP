@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { HttpService, LanguageService } from '@ss/common/api-common';
+import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -51,8 +51,9 @@ export class EmployeeContractOverviewComponent extends BaseEntityListComponent<C
         public langSrv: LanguageService,
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
+        public pagPersistSrv: PaginatorPersistenceService,
         public httpSrv: HttpService) {
-        super(empContractSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'PAYROLL_EMPLOYEE_CONTRACTS_OVERVIEW');
+        super(empContractSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEE_CONTRACTS_OVERVIEW');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend
