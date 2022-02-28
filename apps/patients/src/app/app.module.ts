@@ -74,6 +74,7 @@ export class AppModule {
         langSrv.addSource('assets/locale/patients_', 'PATIENTS_');
         langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
         langSrv.addSource('assets/locale/payroll_', 'PAYROLL_');
+        langSrv.addSource('assets/locale/missions_', 'MISSIONS_');
         langSrv.addSource('assets/locale/bl_', 'BL_');
     }
 

@@ -145,6 +145,8 @@
                 "libs/exchange/ui-idiot-page/src/index.ts"
             ],
             "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"],
+            "@ss/hr-missions": ["libs/hr-missions/missions/src/index.ts"],
+            "@ss/hr-missions/assets": ["libs/hr-missions/assets/src/index.ts"],
             "@ss/logistics/api-account": [
                 "libs/logistics/api-account/src/index.ts"
             ],

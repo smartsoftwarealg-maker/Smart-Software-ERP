@@ -127,6 +127,11 @@ export const PAY_EDO_URL             = 'edo';
 export const PAY_DAS_URL             = 'das';
 export const PAY_CACO_URL            = 'caco';
 
+//Missions
+export const MISSION_PREPARATION_URL = 'missions';
+
+//Missions
+export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_PREPARATION_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'

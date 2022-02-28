@@ -172,5 +172,10 @@
     "SERVICE":                        "Service",
     "OFFICE":                         "Bureau",
     "EDIT_OFFICE":                    "Modifier le bureau",
-    "UPDATE": ""
+    "UPDATE": "",
+    "NUMBER": "",
+    "VALID": "",
+    "CANCELED": "",
+    "MISSION_DETAIL": "",
+    "MISSION_PREPARATION": ""
 }

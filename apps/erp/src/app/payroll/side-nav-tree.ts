@@ -19,7 +19,7 @@ import {
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
     ABS_HR_SUSPENSION_REASON_URL,
-    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL,
+    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL, ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
     ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_VACATION_PLANNING_URL
@@ -103,6 +103,17 @@ export const payrollNavTree: SideNavNode = {
                     name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
                     icon: 'fas fa-play',
                     route: ABS_HR_EMPLOYEE_ACTIVATION_URL
+                },
+            ]
+        },
+        {
+            name: 'MISSION_MISSIONS',
+            icon: 'far fa-plane-departure',
+            children: [
+                {
+                    name: 'MISSION_MISSION_PREPARATION',
+                    icon: 'fas fa-plane',
+                    route: ABS_MISSION_PREPARATION_URL
                 },
             ]
         },

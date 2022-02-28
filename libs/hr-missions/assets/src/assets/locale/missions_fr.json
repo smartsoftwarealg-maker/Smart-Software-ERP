@@ -1,0 +1,14 @@
+{
+    "MISSIONS": "Missions",
+    "MISSION_PREPARATION": "Préparation des missions",
+    "DESTINATION": "Destination",
+    "ZONE":        "Zone",
+    "DURATION":    "Durée",
+    "DEPARTURE":   "Départ",
+    "COMEBACK":    "Revenir en arrière",
+    "ADVANCEMENT": "Avancement",
+    "TRAJECTORY":  "Trajectoire",
+    "MEALS":       "Repas inclus?",
+    "NIGHTS":      "Nuits comprises ?",
+    "PREPARATION":  "Preparation"
+}
