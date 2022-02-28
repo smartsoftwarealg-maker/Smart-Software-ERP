@@ -1,0 +1,119 @@
+<form *ngIf="form !== null"
+      novalidate
+      [formGroup]="form">
+
+
+    <mat-form-field>
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="number" type="number">
+        <mat-error *ngIf="form.controls['number'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field>
+            <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="employeeAutoCompleteModel"
+                              formControlName="employee"></ss-auto-complete>
+        </mat-form-field>
+        <mat-error *ngIf="form.controls['employee'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </div>
+
+    <mat-form-field>
+        <mat-label translate>MISSION_REFERNCE</mat-label>
+        <input matInput formControlName="reference" type="text">
+        <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>MISSION_DESTINATION
+        </mat-label>
+        <input matInput formControlName="destination" type="text">
+        <mat-error *ngIf="form.controls['destination'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field>
+            <mat-label translate>MISSION_ZONE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="zoneLookup"
+                              formControlName="thezone"></ss-auto-complete>
+        </mat-form-field>
+        <mat-error *ngIf="form.controls['thezone'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </div>
+
+    <mat-form-field>
+        <mat-label translate>PAYROLL_MOTIVE</mat-label>
+        <input matInput formControlName="motive" type="text">
+        <mat-error *ngIf="form.controls['motive'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label translate>MISSION_DURATION</mat-label>
+        <input matInput formControlName="duration" type="text">
+        <mat-error *ngIf="form.controls['duration'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <div>
+        <mat-form-field>
+            <mat-label translate>MISSION_TRANSPORT</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="transportLookup"
+                              formControlName="transport_means"></ss-auto-complete>
+        </mat-form-field>
+        <mat-error *ngIf="form.controls['transport_means'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </div>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="departure" name="departure" formControlName="departure">
+        <mat-placeholder translate>MISSION_DEPARTURE</mat-placeholder>
+        <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>
+        <mat-datepicker #departure></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]="returnback" name="departure" formControlName="returnback">
+        <mat-placeholder translate>MISSION_COMEBACK</mat-placeholder>
+        <mat-datepicker-toggle matSuffix [for]="returnback"></mat-datepicker-toggle>
+        <mat-datepicker #returnback></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>MISSION_ADVANCEMENT</mat-label>
+        <input matInput formControlName="advancement" type="number">
+    </mat-form-field>
+
+    <div>
+        <mat-form-field>
+            <mat-label translate>MISSION_TRAJECTORY</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]=" trajectoryLookup"
+                              formControlName="trajectory"></ss-auto-complete>
+        </mat-form-field>
+        <mat-error *ngIf="form.controls['trajectory'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </div>
+
+    <div class="chk-box">
+        <mat-checkbox formControlName="meals" translate>MISSION_MEALS</mat-checkbox>
+    </div>
+
+    <div class="chk-box">
+        <mat-checkbox formControlName="nights" translate>MISSION_NIGHTS</mat-checkbox>
+    </div>
+
+    <mat-form-field floatLabel="always">
+        <mat-label translate>COMMON_STATUS</mat-label>
+        <mat-select formControlName="mission_status" required>
+            <mat-option [value]="1" translate>MISSION_PREPARATION</mat-option>
+            <mat-option [value]="2" translate>COMMON_VALIDATED</mat-option>
+            <mat-option [value]="3" translate>COMMON_CANCELED</mat-option>
+        </mat-select>
+    </mat-form-field>
+<!--    <pre>{{form.value | json}}</pre>-->
+
+</form>
