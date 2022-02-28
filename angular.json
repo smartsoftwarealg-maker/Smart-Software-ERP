@@ -59,6 +59,7 @@
         "exchange-ui-info": "libs/exchange/ui-info",
         "hotel": "apps/hotel",
         "hr-missions-assets": "libs/hr-missions/assets",
+        "hr-missions-mission-trajectories": "libs/hr-missions/mission-trajectories",
         "logistics-api-agent": "libs/logistics/api-agent",
         "logistics-api-agent-balance": "libs/logistics/api-agent-balance",
         "logistics-api-agent-debts": "libs/logistics/api-agent-debts",

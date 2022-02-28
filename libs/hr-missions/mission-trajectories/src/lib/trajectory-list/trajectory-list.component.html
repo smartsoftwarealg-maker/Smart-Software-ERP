@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="main-table">
+        <mat-table mat-table [dataSource]="data">
+
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e"  >
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="distance">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_DISTANCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.distance}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

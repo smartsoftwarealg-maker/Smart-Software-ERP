@@ -10,5 +10,7 @@
     "TRAJECTORY":  "مسار",
     "MEALS":       "الوجبات مشمولة؟",
     "NIGHTS":      "الليالي متضمنة؟",
-    "PREPARATION":  "تحضير"
+    "PREPARATION":  "تحضير",
+    "DISTANCE":     "مسافه: بعد",
+    "TRAJECTORIES": "المسارات"
 }

@@ -95,5 +95,6 @@
     "CONSUMPTION_MONTH": "Month consumed",
     "DEDUCTION": "Deduction",
     "REMAINING": "Remaining",
-    "LOANS": "Loans"
+    "LOANS": "Loans",
+    "REFERENCE": "Reference"
 }
