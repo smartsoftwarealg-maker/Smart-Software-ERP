@@ -90,5 +90,6 @@
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
     "NO_CHANGES": "",
     "AMOUNT": "",
-    "TAKEN": ""
+    "TAKEN": "",
+    "REFERENCE": ""
 }

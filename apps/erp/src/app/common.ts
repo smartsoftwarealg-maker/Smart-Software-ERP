@@ -109,29 +109,31 @@ export const HR_DIVISIONS_URL = 'divisions';
 export const HR_DEPARTMENTS_URL = 'departments'
 
 // Payroll
-export const PAY_ELEMENTSINFO_URL    = 'elementsinfo';
-export const PAY_SPECIAL_PAYROLL_URL = 'special-payroll';
-export const PAY_ELEMENT_TYPES_URL   = 'elementtypes';
-export const PAY_FORMULAS_URL        = 'formulas';
-export const PAY_MONTH_CLOSER        = 'close';
-export const PAY_VACATION_PLANNING   = 'vac-planning';
-export const PAY_XLS_INJECTION       = 'xls-injection';
-export const PAY_MONTH_CANCELER      = 'cancel';
-export const PAY_MONTH_SELECTOR      = 'select';
-export const PAY_INPUT_FILTERS       = 'inputfilters';
-export const PAY_ELEMENTS_ENTRY_URL  = 'elementsentry';
-export const PAY_AMENDMENT_URL       = 'amendments';
-export const PAY_LOANS_URL           = 'loans';
-export const PAY_FIXED_ELEMENTS_URL  = 'fixedelements';
-export const PAY_EDO_URL             = 'edo';
-export const PAY_DAS_URL             = 'das';
-export const PAY_CACO_URL            = 'caco';
+export const PAY_ELEMENTSINFO_URL     = 'elementsinfo';
+export const PAY_SPECIAL_PAYROLL_URL  = 'special-payroll';
+export const PAY_ELEMENT_TYPES_URL    = 'elementtypes';
+export const PAY_FORMULAS_URL         = 'formulas';
+export const PAY_MONTH_CLOSER         = 'close';
+export const PAY_VACATION_PLANNING    = 'vac-planning';
+export const PAY_XLS_INJECTION        = 'xls-injection';
+export const PAY_MONTH_CANCELER       = 'cancel';
+export const PAY_MONTH_SELECTOR       = 'select';
+export const PAY_INPUT_FILTERS        = 'inputfilters';
+export const PAY_ELEMENTS_ENTRY_URL   = 'elementsentry';
+export const PAY_AMENDMENT_URL        = 'amendments';
+export const PAY_LOANS_URL            = 'loans';
+export const PAY_FIXED_ELEMENTS_URL   = 'fixedelements';
+export const PAY_EDO_URL              = 'edo';
+export const PAY_DAS_URL              = 'das';
+export const PAY_CACO_URL             = 'caco';
 
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
+export const MISSION_TRAJECTORIES = 'trajectories';
 
 //Missions
 export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_PREPARATION_URL].join('/');
+export const ABS_TRAJECTORY_URL          = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_TRAJECTORIES].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries'
