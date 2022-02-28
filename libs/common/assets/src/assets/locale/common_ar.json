@@ -177,5 +177,10 @@
     "EDIT_OFFICE": "تعديل مكتب",
     "VALUE": "القيمة",
     "UPDATE": "تحديث",
-    "DELETE_ALL": "حذف الكل"
+    "DELETE_ALL": "حذف الكل",
+    "NUMBER": "رقم",
+    "VALIDATED":    "محققة",
+    "CANCELED": "ألغيت",
+    "DETAIL":      "تفاصيل المهمة",
+    "MISSION_PREPARATION": "التحضير للبعثة"
 }

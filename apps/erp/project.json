@@ -34,6 +34,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/hr-missions/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/remuneration/assets/src/assets",
                         "output": "assets"
                     },

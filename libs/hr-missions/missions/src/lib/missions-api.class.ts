@@ -1,0 +1,36 @@
+export const MISSIONS_URL = '/payroll/missions';
+export const ZONE_URL = '/lookups/zones';
+export const TRANSPORT_URL = '/lookups/missions_transport';
+export const TRAJECTORY_URL = '/payroll/trajectories';
+
+export interface Trajectory {
+    d: number;
+    description: string;
+    descriptionAr?: string;
+    distance: number;
+}
+
+export interface Mission {
+    id: number;
+    number: number;
+    center: number;
+    employee: number;
+    reference?: string;
+    destination: String;
+    thezone?: number;
+    motive?: string;
+    duration?: string;
+    transport_means?: number;
+    departure?: string;
+    returnback?: string;
+    advancement?: number;
+    trajectory?: number;
+    meals?: boolean;
+    nights?: boolean;
+    mission_status: number;
+    lastName?: string;
+    firstName?: string;
+    zoneName?: string;
+    transportName?: string;
+    trajectoryName?: string;
+}
