@@ -22,7 +22,7 @@ import {
     ABS_INPUT_FILTERS_URL, ABS_LOANS_URL, ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_TRAJECTORY_URL, ABS_VACATION_PLANNING_URL
+    ABS_MONTH_SELECTOR_URL, ABS_SALARY_GRID_URL, ABS_SPECIAL_PAYROLL_URL, ABS_TRAJECTORY_URL, ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -94,6 +94,11 @@ export const payrollNavTree: SideNavNode = {
             name: 'PAYROLL_EMPLOYEES',
             icon: 'far fa-user-hard-hat',
             children: [
+                {
+                    name: 'PAYROLL_SALARY_GRID',
+                    icon: 'fas fa-list-ol',
+                    route: ABS_SALARY_GRID_URL
+                },
                 {
                     name: 'PAYROLL_EMPLOYEES_LIST',
                     icon: 'fas fa-list-ol',

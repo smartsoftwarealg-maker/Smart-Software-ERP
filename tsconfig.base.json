@@ -246,6 +246,9 @@
             "@ss/payroll/api-employee": [
                 "libs/payroll/api-employee/src/index.ts"
             ],
+            "@ss/payroll/salary-grid": [
+                "libs/payroll/salary-grid/src/index.ts"
+            ],
             "@ss/payroll/ui-employee": [
                 "libs/payroll/ui-employee/src/index.ts"
             ],

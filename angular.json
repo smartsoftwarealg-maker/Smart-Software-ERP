@@ -98,6 +98,7 @@
         "payroll-api-employee": "libs/payroll/api-employee",
         "payroll-assets": "libs/payroll/assets",
         "payroll-common": "libs/payroll-common",
+        "payroll-salary-grid": "libs/payroll/salary-grid",
         "payroll-ui-employee": "libs/payroll/ui-employee",
         "payroll-ui-employee-activation": "libs/payroll/ui-employee-activation",
         "payroll-ui-employee-career": "libs/payroll/ui-employee-career",

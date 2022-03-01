@@ -7,6 +7,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import {GRID_URL} from '../../../../libs/payroll/salary-grid/src/lib/grid-api';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -119,6 +120,7 @@ export const PAY_XLS_INJECTION        = 'xls-injection';
 export const PAY_MONTH_CANCELER       = 'cancel';
 export const PAY_MONTH_SELECTOR       = 'select';
 export const PAY_INPUT_FILTERS        = 'inputfilters';
+export const PAY_SALARY_GRID          = 'salary-grid';
 export const PAY_ELEMENTS_ENTRY_URL   = 'elementsentry';
 export const PAY_AMENDMENT_URL        = 'amendments';
 export const PAY_LOANS_URL            = 'loans';
@@ -239,6 +241,7 @@ export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
 export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
+export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
