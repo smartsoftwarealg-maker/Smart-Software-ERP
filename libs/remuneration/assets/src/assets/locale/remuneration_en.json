@@ -66,5 +66,7 @@
     "SS_BASE": "S.S Base",
     "ABSENCE_FORMULA": "Absence formula",
     "FUND": "Insurance fund",
-    "DAS": "D.A.S"
+    "DAS": "D.A.S",
+    "LEAVE_BASE": "Leave base",
+    "CACO_CONTRIBUTION": "CACOBPTH contribution"
 }
