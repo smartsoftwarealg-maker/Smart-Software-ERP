@@ -177,5 +177,10 @@
     "EDIT_OFFICE": "Edit office",
     "VALUE": "Value",
     "UPDATE": "Update",
-    "DELETE_ALL": "Delete all"
+    "NUMBER": "Number",
+    "DELETE_ALL": "Delete all",
+    "VALIDATED": "Validated",
+    "CANCELED": "Canceled",
+    "DETAIL":      "Mission detail",
+    "MISSION_PREPARATION": "Mission prepartion"
 }

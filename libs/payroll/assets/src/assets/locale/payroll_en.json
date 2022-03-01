@@ -96,10 +96,14 @@
     "DEDUCTION": "Deduction",
     "REMAINING": "Remaining",
     "LOANS": "Loans",
+<<<<<<< HEAD
     "EMPLOYEE_WIVES": "Spouses",
     "WIVES_OVERVIEW": "Spouses overview",
     "WIVES": "Spouses",
     "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
     "NAME": "Name",
     "NAME_AR": "Name (Arabic)"
+=======
+    "REFERENCE": "Reference"
+>>>>>>> 18b459d3af509fc3050a2a5d042b4262a13e6cf3
 }

@@ -96,10 +96,14 @@
     "DEDUCTION": "الاقتطاع",
     "REMAINING": "الباقي",
     "LOANS": "القروض",
+<<<<<<< HEAD
     "EMPLOYEE_WIVES": "الأزواج",
     "WIVES_OVERVIEW": "قائمة الأزواج",
     "WIVES": "الأزواج",
     "EMPLOYEE_WIFE_DETAIL": "تفاصيل الزوج",
     "NAME": "الإسم",
     "NAME_AR": "الإسم (بالعربية)"
+=======
+    "REFERENCE": "المرجع"
+>>>>>>> 18b459d3af509fc3050a2a5d042b4262a13e6cf3
 }

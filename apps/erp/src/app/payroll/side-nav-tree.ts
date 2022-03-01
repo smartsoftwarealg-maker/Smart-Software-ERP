@@ -19,10 +19,10 @@ import {
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
     ABS_HR_SUSPENSION_REASON_URL,
-    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL,
+    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL, ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_VACATION_PLANNING_URL
+    ABS_MONTH_SELECTOR_URL, ABS_SPECIAL_PAYROLL_URL, ABS_TRAJECTORY_URL, ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -88,6 +88,22 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-flag',
                     route: ABS_HR_NATIONALITIES_URL
                 }
+            ]
+        },
+        {
+            name: 'MISSION_MISSIONS',
+            icon: 'far fa-plane-departure',
+            children: [
+                {
+                    name: 'MISSION_TRAJECTORIES',
+                    icon: 'far fa-bezier-curve',
+                    route: ABS_TRAJECTORY_URL
+                },
+                {
+                    name: 'MISSION_MISSION_PREPARATION',
+                    icon: 'fas fa-plane',
+                    route: ABS_MISSION_PREPARATION_URL
+                },
             ]
         },
         {

@@ -33,7 +33,7 @@ export class CacoComponent implements OnInit {
                          { id: 2, description: 'REMUN_HOURS'}];
 
     constructor(private shellSrv: ShellService,
-                private dasSrv: CacoService,
+                private cacoSrv: CacoService,
                 private route: ActivatedRoute,
                 private formBuilder: FormBuilder,
                 private elementInfoSrv: ElementsInfoService,
@@ -61,11 +61,11 @@ export class CacoComponent implements OnInit {
     generate() {
         const value = this.form.value;
         this.shellSrv.setLoading(true);
-        this.dasSrv
-            .generate(value.year, value.fund, value.modes, value.periods, value.ssBase, value.absence)
+        this.cacoSrv
+            .generate(value.year, value.fund, value.leaveBase, value.ssBase, value.contribution, value.absence)
             .subscribe({
                 next: res => {
-                    this.edoText = res.data.join('\n');
+                    this.edoText = res.join('\n');
                     this.shellSrv.setLoading(false);
                 },
                 error: err => {
@@ -78,11 +78,12 @@ export class CacoComponent implements OnInit {
     save() {
         const value = this.form.value;
         this.shellSrv.setLoading(true);
-        this.dasSrv
-            .generate(value.year, value.fund, value.modes, value.periods, value.ssBase, value.absence)
+        this.cacoSrv
+            .generate(value.year, value.fund, value.leaveBase, value.ssBase, value.contribution, value.absence)
             .subscribe({
                 next: res => {
-                    saveAs(new Blob(res.data), res.filename)
+                    this.edoText = res.join('\n');
+                    saveAs(new Blob(res), '');
                     this.shellSrv.setLoading(false);
                 },
                 error: err => {
@@ -99,7 +100,8 @@ export class CacoComponent implements OnInit {
             year: [this.curYear, Validators.required],
             ssBase: ['a998', Validators.required],
             absence: ['a037', Validators.required],
-            modes: [1, Validators.required],
+            leaveBase: ['c005', Validators.required],
+            contribution: [null, Validators.required],
             periods: [1, Validators.required]
         });
     }

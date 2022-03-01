@@ -1,0 +1,70 @@
+<div class="form_container">
+    <div class="main-table">
+        <mat-table mat-table [dataSource]="data">
+
+            <ng-container matColumnDef="number">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.number}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_LAST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.lastName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_FIRST_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.firstName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="destination">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_DESTINATION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.destination}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="zoneName">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_ZONE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.zoneName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="duration">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_DURATION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.duration}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="departure">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_DEPARTURE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.departure}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="returnback">
+                <mat-header-cell *matHeaderCellDef translate>MISSION_COMEBACK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.returnback}}
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

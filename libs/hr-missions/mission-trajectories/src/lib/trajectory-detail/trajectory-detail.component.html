@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <mat-form-field id="description" class="default-100">
+                <mat-label translate>MISSION_DESTINATION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="sm-25">
+                <mat-label translate>MISSION_DISTANCE</mat-label>
+                <input matInput formControlName="distance" type="number" autofocus>
+                <mat-error *ngIf="form.controls['distance'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+</mat-card>

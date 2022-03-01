@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/hr-missions/mission-trajectories",
+    "sourceRoot": "libs/hr-missions/mission-trajectories/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/hr-missions/mission-trajectories"],
+            "options": {
+                "jestConfig": "libs/hr-missions/mission-trajectories/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/hr-missions/mission-trajectories/src/**/*.ts",
+                    "libs/hr-missions/mission-trajectories/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -66,5 +66,7 @@
     "SS_BASE": "Base SS",
     "ABSENCE_FORMULA": "Formule d'absence",
     "FUND": "Caisse cotisation",
-    "DAS": "D.A.S"
+    "DAS": "D.A.S",
+    "LEAVE_BASE": "Base ICA",
+    "CACO_CONTRIBUTION": "Contribution CACOBPT"
 }

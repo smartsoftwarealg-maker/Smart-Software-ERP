@@ -1,0 +1,16 @@
+{
+    "MISSIONS": "المهمات",
+    "MISSION_PREPARATION": "تحضير المهمات",
+    "DESTINATION": "المكان المقصود",
+    "ZONE":        "منطقة",
+    "DURATION":    "مدة",
+    "DEPARTURE":   "مقال",
+    "COMEBACK":    "رجوع",
+    "ADVANCEMENT": "النهوض",
+    "TRAJECTORY":  "مسار",
+    "MEALS":       "الوجبات مشمولة؟",
+    "NIGHTS":      "الليالي متضمنة؟",
+    "PREPARATION":  "تحضير",
+    "DISTANCE":     "مسافه: بعد",
+    "TRAJECTORIES": "المسارات"
+}

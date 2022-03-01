@@ -1,0 +1,17 @@
+form {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px;
+}
+
+.chk-box {
+    height: 64px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+}

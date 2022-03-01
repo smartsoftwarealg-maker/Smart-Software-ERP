@@ -1,9 +1,9 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, PAY_AMENDMENT_URL, PAY_CACO_URL, PAY_DAS_URL, PAY_EDO_URL,
+    LOOKUPS_URL, MISSION_PREPARATION_URL, PAY_AMENDMENT_URL, PAY_CACO_URL, PAY_DAS_URL, PAY_EDO_URL,
     PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL,
+    PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL, MISSION_TRAJECTORIES,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
     PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
@@ -37,6 +37,8 @@ import {
 import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 import {DasComponent} from '@ss/remuneration/das';
 import {CacoComponent} from '@ss/remuneration/caco';
+import {MissionPreparationListComponent, MissionPreparationDetailComponent} from '@ss/hr-missions';
+import {TrajectoryListComponent, TrajectoryDetailComponent} from '@ss/hr-missions/mission-trajectories';
 
 export const mainRoutes: Routes = [
     {
@@ -86,6 +88,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SpecialPayrollDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: MISSION_PREPARATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MissionPreparationListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: MissionPreparationDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
@@ -251,6 +270,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: InputFilterDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: MISSION_TRAJECTORIES,
+        children: [
+            {
+                path: LIST_URL,
+                component: TrajectoryListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: TrajectoryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

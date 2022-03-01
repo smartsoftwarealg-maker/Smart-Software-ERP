@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/hr-missions/assets",
+    "sourceRoot": "libs/hr-missions/assets/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/hr-missions/assets"],
+            "options": {
+                "jestConfig": "libs/hr-missions/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/hr-missions/assets/src/**/*.ts",
+                    "libs/hr-missions/assets/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
