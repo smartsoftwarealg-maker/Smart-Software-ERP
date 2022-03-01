@@ -96,7 +96,7 @@ export const payrollNavTree: SideNavNode = {
             children: [
                 {
                     name: 'PAYROLL_SALARY_GRID',
-                    icon: 'fas fa-list-ol',
+                    icon: 'far fa-game-board',
                     route: ABS_SALARY_GRID_URL
                 },
                 {
