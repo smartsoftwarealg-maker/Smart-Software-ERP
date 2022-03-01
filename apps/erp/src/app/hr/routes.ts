@@ -13,6 +13,7 @@ import {
     HR_SUSPENSION_REASON_URL,
     HR_CAREER_URL,
     HR_CONTRACTS_URL,
+    HR_WIVES_URL,
     HR_DEPARTMENTS_URL,
     HR_DIVISIONS_URL
 } from '../common';
@@ -72,6 +73,11 @@ export const mainRoutes: Routes = [
                 path: HR_CONTRACTS_URL,
                 canActivate: [CanActivateService],
                 loadChildren: () => import('@ss/payroll/ui-employee-contract').then(m => m.PayrollUiEmployeeContractModule),
+            },
+            {
+                path: HR_WIVES_URL,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-employee-wives').then(m => m.PayrollUiEmployeeWivesModule),
             },
             {
                 path: ':id',

@@ -90,5 +90,11 @@
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
     "NO_CHANGES": "",
     "AMOUNT": "",
-    "TAKEN": ""
+    "TAKEN": "",
+    "EMPLOYEE_WIVES": "Spouses",
+    "WIVES_OVERVIEW": "Spouses overview",
+    "WIVES": "Spouses",
+    "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
+    "Name": "Name",
+    "NAME_AR": "Name (Arabic)"
 }

@@ -95,5 +95,11 @@
     "CONSUMPTION_MONTH": "Month consumed",
     "DEDUCTION": "Deduction",
     "REMAINING": "Remaining",
-    "LOANS": "Loans"
+    "LOANS": "Loans",
+    "EMPLOYEE_WIVES": "Spouses",
+    "WIVES_OVERVIEW": "Spouses overview",
+    "WIVES": "Spouses",
+    "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
+    "NAME": "Name",
+    "NAME_AR": "Name (Arabic)"
 }

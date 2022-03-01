@@ -12,6 +12,7 @@ import {
     ABS_HR_SUSPENSION_REASON_URL,
     ABS_HR_CAREER_URL,
     ABS_HR_CONTRACTS_URL,
+    ABS_HR_WIVES_URL,
     ABS_HR_DEPARTMENTS_URL,
     ABS_HR_DIVISIONS_URL
 } from '../common';
@@ -103,8 +104,13 @@ export const hrNavTree: SideNavNode = {
                 },
                 {
                     name: 'PAYROLL_CONTRACTS',
-                    icon: 'fas fa-user-hard-hat',
+                    icon: 'fa-solid fa-file-signature',
                     route: ABS_HR_CONTRACTS_URL
+                },
+                {
+                    name: 'PAYROLL_WIVES',
+                    icon: 'fa-solid fa-rings-wedding',
+                    route: ABS_HR_WIVES_URL
                 }
             ]
         }

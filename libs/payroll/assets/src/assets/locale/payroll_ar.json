@@ -95,5 +95,11 @@
     "CONSUMPTION_MONTH": "شهر الاسترجاع",
     "DEDUCTION": "الاقتطاع",
     "REMAINING": "الباقي",
-    "LOANS": "القروض"
+    "LOANS": "القروض",
+    "EMPLOYEE_WIVES": "الأزواج",
+    "WIVES_OVERVIEW": "قائمة الأزواج",
+    "WIVES": "الأزواج",
+    "EMPLOYEE_WIFE_DETAIL": "تفاصيل الزوج",
+    "NAME": "الإسم",
+    "NAME_AR": "الإسم (بالعربية)"
 }

@@ -54,5 +54,5 @@ import { EmployeeWivesDetailComponent } from './employee-wives-detail.component'
     exports: [
     ]
 })
-export class PayrollUiWivesModule {
+export class PayrollUiEmployeeWivesModule {
 }

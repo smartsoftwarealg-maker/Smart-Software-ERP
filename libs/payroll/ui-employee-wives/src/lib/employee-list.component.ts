@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee as IEmployee, EmployeeService, Contract, EmployeeContractService } from '@ss/payroll/api-employee';
+import { Employee as IEmployee, EmployeeService, Wife, EmployeeWivesService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -14,14 +14,13 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
 interface Employee extends IEmployee {
     fullName: string;
     imageModel: ImageModel;
+    wives: string;
     // turns false when loading is done
     loading: boolean;
-    // contracts
-    contracts: string;
 }
 
 @Component({
-    selector: 'ss-employee-list-contract',
+    selector: 'ss-employee-list-wives',
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html'
 })
@@ -31,12 +30,12 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         'photo',
         'id',
         'fullname',
-        'contracts'
+        'wives'
     ];
 
     constructor(
         public employeeSrv: EmployeeService,
-        public empContractSrv: EmployeeContractService,
+        public empWivesSrv: EmployeeWivesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -47,8 +46,8 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'PAYROLL_CONTRACTS');
-        this.editButton.label = 'PAYROLL_EMPLOYEE_CONTRACTS';
+        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'PAYROLL_WIVES');
+        this.editButton.label = 'PAYROLL_EMPLOYEE_WIVES';
         this.editButton.icon = 'fas fa-file-signature';
     }
 
@@ -61,11 +60,11 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
             p.loading = true;
-            this.empContractSrv.setParentId(p.id);
+            this.empWivesSrv.setParentId(p.id);
             // incase of error, keep displaying the loading animation
-            this.empContractSrv.getList(0, 50)
-                .subscribe((res: { itemCount: number, body: Contract[] }) => {
-                    p.contracts = res.body.map(c => c.number).join(',');
+            this.empWivesSrv.getList(0, 50)
+                .subscribe((res: { itemCount: number, body: Wife[] }) => {
+                    p.wives = res.body.filter(x => x.notDivorced).map(c => c.name).join(',');
                     p.loading = false;
                 });
             return p;
