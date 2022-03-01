@@ -96,14 +96,11 @@
     "DEDUCTION": "Deduction",
     "REMAINING": "Reste",
     "LOANS": "Prets",
-<<<<<<< HEAD
     "EMPLOYEE_WIVES": "Conjointes",
     "WIVES_OVERVIEW": "Aperçu des conjointes",
     "WIVES": "Conjointes",
     "EMPLOYEE_WIFE_DETAIL": "Détail des conjointes",
     "NAME": "Prénom",
-    "NAME_AR": "Prénom (Arabe)"
-=======
+    "NAME_AR": "Prénom (Arabe)",
     "REFERENCE": "Reference"
->>>>>>> 18b459d3af509fc3050a2a5d042b4262a13e6cf3
 }
