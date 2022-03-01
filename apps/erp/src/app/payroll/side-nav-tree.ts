@@ -91,22 +91,6 @@ export const payrollNavTree: SideNavNode = {
             ]
         },
         {
-            name: 'PAYROLL_EMPLOYEES',
-            icon: 'far fa-user-hard-hat',
-            children: [
-                {
-                    name: 'PAYROLL_EMPLOYEES_LIST',
-                    icon: 'fas fa-list-ol',
-                    route: ABS_HR_EMPLOYEES_URL
-                },
-                {
-                    name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
-                    icon: 'fas fa-play',
-                    route: ABS_HR_EMPLOYEE_ACTIVATION_URL
-                },
-            ]
-        },
-        {
             name: 'MISSION_MISSIONS',
             icon: 'far fa-plane-departure',
             children: [

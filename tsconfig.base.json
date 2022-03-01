@@ -258,7 +258,7 @@
             "@ss/payroll/ui-employee-contract": [
                 "libs/payroll/ui-employee-contract/src/index.ts"
             ],
-            "@ss/payroll/ui-wives": ["libs/payroll/ui-wives/src/index.ts"],
+            "@ss/payroll/ui-employee-wives": ["libs/payroll/ui-employee-wives/src/index.ts"],
             "@ss/purchases/api-purchase-order": [
                 "libs/purchases/api-purchase-order/src/index.ts"
             ],

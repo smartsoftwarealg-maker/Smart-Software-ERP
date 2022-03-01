@@ -52,7 +52,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     public preload(): Observable<any> {
         return this.lookupsSrv.getMaritalStatuses()
             .pipe(
-                tap(x => this.maritalStatuses = x),
+                tap((x: MaritalStatus[]) => this.maritalStatuses = x),
             );
     }
 
@@ -134,6 +134,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             this.isControlValid(this.form.controls.motherAr);
     }
 
+    public isFixedElementsPanelValid(): boolean {
+        // todo: implement
+        return true;
+    }
+
     public isSectionValid(section: string): boolean {
         switch (section) {
             case 'birthinfo':
@@ -142,6 +147,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                 return this.isSocialInfoPanelValid();
             case 'arabicInfo':
                 return this.isArabicInfoPanelValid();
+            case 'fixedElemnts':
+                return this.isFixedElementsPanelValid();
             default:
                 throw new Error('Unknown section ' + section)
         }

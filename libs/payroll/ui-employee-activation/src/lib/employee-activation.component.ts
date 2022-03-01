@@ -10,7 +10,7 @@ import { EmployeeActivation, EmployeeActivationService, EmployeeService, Employe
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeActivationUIService } from './employee-activation-ui.service';
-import { ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-employee';
+import { ACTIVATION_ROUTE_URL, DEACTIVATION_ROUTE_URL } from '@ss/payroll/api-employee';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 // frontend only
@@ -154,14 +154,14 @@ export class EmployeeActivationComponent extends BaseEntityListComponent<Employe
 
     public activateEmployee(id: number = 0) {
         this.refresh(() => {
-            this.router.navigate([ACTIVATION_URL], { relativeTo: this.route })
+            this.router.navigate([ACTIVATION_ROUTE_URL], { relativeTo: this.route })
                 .then();
         });
     }
 
     public deactivateEmployee(id: number = 0) {
         this.refresh(() => {
-            this.router.navigate([DEACTIVATION_URL], { relativeTo: this.route })
+            this.router.navigate([DEACTIVATION_ROUTE_URL], { relativeTo: this.route })
                 .then();
         });
     }
