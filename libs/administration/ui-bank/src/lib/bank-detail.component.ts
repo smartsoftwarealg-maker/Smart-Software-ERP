@@ -15,8 +15,6 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
     templateUrl: './bank-detail.component.html'
 })
 export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
-
-
     constructor(
         public bankService: BankService,
         public shellSrv: ShellService,

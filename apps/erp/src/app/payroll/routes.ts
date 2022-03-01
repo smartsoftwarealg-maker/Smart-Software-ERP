@@ -6,7 +6,7 @@ import {
     PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL, MISSION_TRAJECTORIES,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION
+    PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION, PAY_SALARY_GRID
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -39,6 +39,7 @@ import {DasComponent} from '@ss/remuneration/das';
 import {CacoComponent} from '@ss/remuneration/caco';
 import {MissionPreparationListComponent, MissionPreparationDetailComponent} from '@ss/hr-missions';
 import {TrajectoryListComponent, TrajectoryDetailComponent} from '@ss/hr-missions/mission-trajectories';
+import {SalaryGridDetailComponent, SalaryGridListComponent} from '@ss/payroll/salary-grid';
 
 export const mainRoutes: Routes = [
     {
@@ -270,6 +271,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: InputFilterDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PAY_SALARY_GRID,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalaryGridListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SalaryGridDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
