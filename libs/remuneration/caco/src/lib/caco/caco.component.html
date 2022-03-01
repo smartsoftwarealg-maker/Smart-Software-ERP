@@ -36,20 +36,24 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label translate>REMUN_MODE</mat-label>
-            <mat-select formControlName="modes">
-                <mat-option *ngFor="let c of modes" [value]="c.id"> {{ c.description | translate }}</mat-option>
+            <mat-label translate>REMUN_LEAVE_BASE</mat-label>
+            <mat-select formControlName="leaveBase">
+                <mat-option *ngFor="let c of bases"
+                            [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('modes')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls.year.hasError('leaveBase')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
+
         <mat-form-field>
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <mat-select formControlName="periods">
-                <mat-option *ngFor="let c of periods" [value]="c.id"> {{ c.description | translate }}</mat-option>
+            <mat-label translate>REMUN_CACO_CONTRIBUTION</mat-label>
+            <mat-select formControlName="contribution">
+                <mat-option *ngFor="let c of bases"
+                            [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('periods')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls.year.hasError('contribution')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
+
 
         <div class="btn-group">
             <button mat-raised-button

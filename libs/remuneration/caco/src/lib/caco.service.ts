@@ -12,21 +12,19 @@ export class CacoService {
 
     generate(year: number,
              fund: number,
-             mode: number,
-             kind: number,
+             leaveBase: string,
              ssBase: string,
-             absence: string,
-             center?: string): Observable<CACO> {
+             contribution: string,
+             absence: string): Observable<string[]> {
 
       const params = new HttpParams()
-          .set('year', year + '')
-          .set('mode', mode === 1? 'r' : 'e')
-          .set('kind', kind === 1? 'M' : 'h')
-          .set('center', center)
-          .set('absence', absence)
-          .set('formula', ssBase)
           .set('fund', fund)
-          .set('all', 'false');
-      return this.httpSrv.get<CACO>(CACO_URL, params);
+          .set('year', year + '')
+          .set('base', leaveBase)
+          .set('ss', ssBase)
+          .set('absence', absence)
+          .set('contribution', contribution);
+
+      return this.httpSrv.get<string[]>(CACO_URL, params);
     }
 }
