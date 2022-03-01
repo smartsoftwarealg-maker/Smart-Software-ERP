@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'payroll-ui-wives',
+  displayName: 'payroll-ui-employee-wives',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/payroll/ui-wives',
+  coverageDirectory: '../../../coverage/libs/payroll/ui-employee-wives',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

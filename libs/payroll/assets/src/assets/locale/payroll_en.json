@@ -97,5 +97,12 @@
     "REMAINING": "Remaining",
     "LOANS": "Loans",
     "REFERENCE": "Reference",
-    "SECTION": "Section"
+    "SECTION": "Section",
+    "EMPLOYEE_WIVES": "Spouses",
+    "WIVES_OVERVIEW": "Spouses overview",
+    "WIVES": "Spouses",
+    "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
+    "NAME": "Name",
+    "NAME_AR": "Name (Arabic)",
+    "REFERENCE": "Reference"
 }

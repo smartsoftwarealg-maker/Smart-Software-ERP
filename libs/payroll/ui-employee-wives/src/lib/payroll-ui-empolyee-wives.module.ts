@@ -9,9 +9,9 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
 import { EmployeeListComponent } from './employee-list.component';
-import { EmployeeWifeListComponent } from './employee-wife-list.component';
-import { EmployeeWifeOverviewComponent } from './empolyee-wife-overview.component';
-import { EmployeeWifeDetailComponent } from './employee-wife-detail.component';
+import { EmployeeWivesListComponent } from './employee-wives-list.component';
+import { EmployeeWivesOverviewComponent } from './empolyee-wives-overview.component';
+import { EmployeeWivesDetailComponent } from './employee-wives-detail.component';
 
 @NgModule({
     imports: [
@@ -30,15 +30,15 @@ import { EmployeeWifeDetailComponent } from './employee-wife-detail.component';
             },
             {
                 path: ':id',
-                component: EmployeeContractOverviewComponent,
+                component: EmployeeWivesOverviewComponent,
                 children: [
                     {
                         path: '',
-                        component: EmployeeContractListComponent
+                        component: EmployeeWivesListComponent
                     },
                     {
                         path: ':id',
-                        component: EmployeeContractDetailComponent
+                        component: EmployeeWivesDetailComponent
                     }
                 ]
             },
@@ -47,12 +47,12 @@ import { EmployeeWifeDetailComponent } from './employee-wife-detail.component';
     ],
     declarations: [
         EmployeeListComponent,
-        EmployeeContractOverviewComponent,
-        EmployeeContractListComponent,
-        EmployeeContractDetailComponent
+        EmployeeWivesOverviewComponent,
+        EmployeeWivesListComponent,
+        EmployeeWivesDetailComponent
     ],
     exports: [
     ]
 })
-export class PayrollUiWivesModule {
+export class PayrollUiEmployeeWivesModule {
 }

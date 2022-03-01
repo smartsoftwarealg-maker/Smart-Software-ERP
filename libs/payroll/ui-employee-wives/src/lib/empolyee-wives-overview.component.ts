@@ -6,11 +6,12 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { EmployeeService, Employee as IEmployee, Wife, EmployeeWivesService } from '@ss/payroll/api-employee';
+import { EmployeeService, Employee as IEmployee, Wife } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { EmployeeWivesListUIService } from './employee-wives-lists-ui.service';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { EmployeeWivesService } from '@ss/payroll/api-employee';
 
 // frontend only
 interface Employee extends IEmployee {
@@ -34,10 +35,6 @@ export class EmployeeWivesOverviewComponent extends BaseEntityListComponent<Wife
     public person: Employee;
     public imageModel: ImageModel;
     //
-    posts: { [id: number]: string; };
-    divisions: { [id: number]: string; };
-    departments: { [id: number]: string; };
-    services: { [id: number]: string; };
 
     constructor(
         public empWivesSrv: EmployeeWivesService,
@@ -53,7 +50,7 @@ export class EmployeeWivesOverviewComponent extends BaseEntityListComponent<Wife
         public defReportSrv: DefaultReportService,
         public pagPersistSrv: PaginatorPersistenceService,
         public httpSrv: HttpService) {
-        super(empWivesSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEE_WIVES_OVERVIEW');
+        super(empWivesSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_WIVES_OVERVIEW');
         this.imageModel = new ImageModel(httpSrv);
         this.imageModel.readOnly = true;
         this.pagination.pageSize = 50; // todo: make this unlimited in backend
@@ -62,7 +59,7 @@ export class EmployeeWivesOverviewComponent extends BaseEntityListComponent<Wife
 
     ngOnInit() {
         this.showListControls(false); // called to avoid 'called enableSearch twice' error
-        this.route.params.subscribe(params => {
+        this.route.params.subscribe((params: any) => {
             this.personId = +params.id;
             this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.personId));
             this.empWivesSrv.setParentId(this.personId);
@@ -88,24 +85,11 @@ export class EmployeeWivesOverviewComponent extends BaseEntityListComponent<Wife
                     this.person.birthDate = this.langSrv.formatDate(p.birthDate);
                     this.person.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
                 }),
-                switchMap(() => this.lookupsSrv.getPosts()),
-                tap(posts => this.posts = this.lookupListToMap(posts)),
-                switchMap(() => this.lookupsSrv.getDepartments()),
-                tap(list => this.departments = this.lookupListToMap(list)),
-                switchMap(() => this.lookupsSrv.getDivisions()),
-                tap(list => this.divisions = this.lookupListToMap(list)),
-                switchMap(() => this.lookupsSrv.getServices()),
-                tap(list => this.services = this.lookupListToMap(list))
             );
     }
 
     processLoadedWife(c: Wife): Wife {
-        if (c) {
-            c.valid_date = this.langSrv.formatDate(c.valid_date);
-            c.fromdate = this.langSrv.formatDate(c.fromdate);
-            c.todate = this.langSrv.formatDate(c.todate);
-            c.date = this.langSrv.formatDate(c.date);
-        }
+        c.birthdate = this.langSrv.formatDate(c.birthdate);
         return c;
     }
 

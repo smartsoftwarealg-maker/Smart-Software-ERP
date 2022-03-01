@@ -92,5 +92,12 @@
     "AMOUNT": "",
     "TAKEN": "",
     "REFERENCE": "",
-    "SECTION": ""
+    "SECTION": "",
+    "EMPLOYEE_WIVES": "Spouses",
+    "WIVES_OVERVIEW": "Spouses overview",
+    "WIVES": "Spouses",
+    "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
+    "Name": "Name",
+    "NAME_AR": "Name (Arabic)",
+    "REFERENCE": ""
 }

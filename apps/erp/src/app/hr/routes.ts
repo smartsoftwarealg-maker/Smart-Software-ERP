@@ -12,6 +12,8 @@ import {
     HR_EMPLOYMENT_TYPE_URL,
     HR_SUSPENSION_REASON_URL,
     HR_CAREER_URL,
+    HR_CONTRACTS_URL,
+    HR_WIVES_URL,
     HR_DEPARTMENTS_URL,
     HR_DIVISIONS_URL
 } from '../common';
@@ -36,14 +38,12 @@ import {
     EmploymentTypeListComponent,
     EmploymentTypeDetailComponent,
     SuspensionReasonListComponent,
-    SuspensionReasonDetailComponent, DepartmentListComponent, DepartmentDetailComponent
+    SuspensionReasonDetailComponent, DepartmentListComponent, DepartmentDetailComponent,
+    DivisionDetailComponent,
+    DivisionListComponent
 } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
 import { EmployeeListComponent, EmployeeDetailComponent } from '@ss/payroll/ui-employee';
-import {
-    DivisionDetailComponent,
-    DivisionListComponent
-} from '../../../../../libs/common/ui-lookup/src/lib/division.component';
 
 export const mainRoutes: Routes = [
     {
@@ -68,6 +68,16 @@ export const mainRoutes: Routes = [
                 path: HR_CAREER_URL,
                 canActivate: [CanActivateService],
                 loadChildren: () => import('@ss/payroll/ui-employee-career').then(m => m.PayrollUiEmployeeCareerModule),
+            },
+            {
+                path: HR_CONTRACTS_URL,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-employee-contract').then(m => m.PayrollUiEmployeeContractModule),
+            },
+            {
+                path: HR_WIVES_URL,
+                canActivate: [CanActivateService],
+                loadChildren: () => import('@ss/payroll/ui-employee-wives').then(m => m.PayrollUiEmployeeWivesModule),
             },
             {
                 path: ':id',

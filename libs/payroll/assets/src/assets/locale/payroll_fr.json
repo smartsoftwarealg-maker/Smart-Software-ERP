@@ -97,5 +97,12 @@
     "REMAINING": "Reste",
     "LOANS": "Prets",
     "REFERENCE": "Reference",
-    "SECTION": "Section"
+    "SECTION": "Section",
+    "EMPLOYEE_WIVES": "Conjointes",
+    "WIVES_OVERVIEW": "Aperçu des conjointes",
+    "WIVES": "Conjointes",
+    "EMPLOYEE_WIFE_DETAIL": "Détail des conjointes",
+    "NAME": "Prénom",
+    "NAME_AR": "Prénom (Arabe)",
+    "REFERENCE": "Reference"
 }

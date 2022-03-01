@@ -11,6 +11,9 @@ export const CAREER_CHILD_URL = '/careers';
 export const CONTRACT_PARENT_URL = '/persons';
 export const CONTRACT_CHILD_URL = '/contracts';
 
+export const WIVES_PARENT_URL = '/persons';
+export const WIVES_CHILD_URL = '/wives';
+
 export interface Employee {
     id: number;
 
@@ -128,12 +131,12 @@ export class Wife {
     id: number;
     employee: number;
     name: string;
-    name_ar: string;
-    birthdate: string;
-    birthPlace: string;
+    name_ar?: string;
+    birthdate?: string;
+    birthPlace?: string;
     notDivorced: boolean;
-    father: string;
-    father_ar: string;
-    mother: string;
-    mother_ar: string;
+    father?: string;
+    father_ar?: string;
+    mother?: string;
+    mother_ar?: string;
 }

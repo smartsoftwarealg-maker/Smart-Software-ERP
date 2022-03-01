@@ -4,3 +4,4 @@ export * from './lib/employee-activation.service';
 export * from './lib/constants';
 export * from './lib/employee-career.service';
 export * from './lib/employee-contract.service';
+export * from './lib/employee-wives.service';

@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ACTIVITY_HISTORY_URL, ACTIVATION_URL, DEACTIVATION_URL } from '@ss/payroll/api-employee';
+import { ACTIVITY_HISTORY_ROUTE_URL, ACTIVATION_ROUTE_URL, DEACTIVATION_ROUTE_URL } from '@ss/payroll/api-employee';
 import { RedirectToParentComponent, CanActivateService, CanDeactivateService, MaterialModule } from '@ss/common/api-common';
 import { EmployeeListComponent } from './employee-list.component';
 import { EmployeeDeactivationFormComponent } from './employee-deactivation-form.component';
@@ -36,17 +36,17 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
                 component: EmployeeActivationComponent,
                 children: [
                     {
-                        path: ACTIVITY_HISTORY_URL,
+                        path: ACTIVITY_HISTORY_ROUTE_URL,
                         component: EmployeeActivationHistoryComponent
                     },
                     {
-                        path: ACTIVATION_URL,
+                        path: ACTIVATION_ROUTE_URL,
                         component: EmployeeActivationFormComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService]
                     },
                     {
-                        path: DEACTIVATION_URL,
+                        path: DEACTIVATION_ROUTE_URL,
                         component: EmployeeDeactivationFormComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService]
@@ -57,7 +57,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService]
                     },
-                    { path: '**', redirectTo: ACTIVITY_HISTORY_URL }
+                    { path: '**', redirectTo: ACTIVITY_HISTORY_ROUTE_URL }
                 ]
             },
             { path: '**', redirectTo: '' }

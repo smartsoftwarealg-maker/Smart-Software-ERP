@@ -97,5 +97,12 @@
     "REMAINING": "الباقي",
     "LOANS": "القروض",
     "REFERENCE": "المرجع",
-    "SECTION": "الجزء"
+    "SECTION": "الجزء",
+    "EMPLOYEE_WIVES": "الأزواج",
+    "WIVES_OVERVIEW": "قائمة الأزواج",
+    "WIVES": "الأزواج",
+    "EMPLOYEE_WIFE_DETAIL": "تفاصيل الزوج",
+    "NAME": "الإسم",
+    "NAME_AR": "الإسم (بالعربية)",
+    "REFERENCE": "المرجع"
 }
