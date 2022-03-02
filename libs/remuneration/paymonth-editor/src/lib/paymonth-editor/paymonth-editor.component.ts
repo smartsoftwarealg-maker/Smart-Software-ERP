@@ -15,7 +15,6 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     focused = false;
     touched = false;
     form: FormGroup = null;
-    paymonth: number = 0;
     stateChanges = new Subject<void>();
     onChangeSubscription: Subscription = null;
     onTouched = () => {};
@@ -31,8 +30,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
                 protected _elementRef: ElementRef<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
                 @Optional() @Self() public ngControl: NgControl) {
         this.form = fb.group({
-            month: [this.paymonth % 100, [Validators.required, Validators.max(12), Validators.min(1)]],
-            year: [+(this.paymonth / 100).toFixed(0), [Validators.required, Validators.max(3000), Validators.min(1900)]],
+            month: [0, [Validators.required, Validators.max(12), Validators.min(1)]],
+            year: [0, [Validators.required, Validators.max(3000), Validators.min(1900)]],
         });
         if (this.ngControl != null) {
             this.ngControl.valueAccessor = this;
@@ -41,10 +40,10 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
 
     writeValue(obj: any): void {
         if (typeof obj === 'number') {
-            this.form.setValue({month: obj % 100, year: +(obj / 100).toFixed(0)});
+            this.value = obj;
         }
     }
-    registerOnChange(fn: any): void {
+    registerOnChange(fn: (v:number) => any): void {
         this.onChangeSubscription = this.form.valueChanges.subscribe(fn);
     }
     registerOnTouched(fn: any): void {
@@ -67,9 +66,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     }
 
     set value(paymonth: number) {
-        this.paymonth = paymonth;
-        this.form.controls['month'].setValue(this.paymonth % 100);
-        this.form.controls['year'].setValue(+(this.paymonth / 100).toFixed(0));
+        this.form.controls['month'].setValue(paymonth % 100);
+        this.form.controls['year'].setValue(+(paymonth / 100).toFixed(0));
     }
 
     @Input()
