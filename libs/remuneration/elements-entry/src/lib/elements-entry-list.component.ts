@@ -5,13 +5,14 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {HttpService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsEntryService} from './elements-entry.service';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {MatSelectChange} from '@angular/material/select';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {ImageModel} from '@ss/common/ui-image-input';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 
 @Component({
@@ -45,7 +46,8 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService,
         private employeeSrv: EmployeeService,
-        private httpSrv: HttpService) {
+        private httpSrv: HttpService,
+        private monthSelectorSrv: PayrollMonthService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
         this.pagination.pageSize = 5;
     }
@@ -76,6 +78,9 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.infoSrv.load();
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => this.editButton.visible = upd);
     }
 
     selectInput(ev: MatSelectChange) {

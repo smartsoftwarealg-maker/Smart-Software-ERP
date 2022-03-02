@@ -54,6 +54,11 @@ export class PayrollMonthService {
             .pipe(map(_ => true));
     }
 
+    isUpdatableMonth(): Observable<boolean> {
+        return this.maxMonth()
+            .pipe(map(res => res.month === this.loginSrv.appCtx.payMonth))
+    }
+
     ctx(): Observable<AppContext> {
         return this
             .httpSrv
