@@ -1,0 +1,140 @@
+<div class="container">
+    <div class="table-div">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="category">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_CATEGORY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.category}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="sec">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_SECTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.sec}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="baseSalary">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 1</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.baseSalary | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base0">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 2</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base0 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base2">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 3</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base2 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base3">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 4</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base3 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base4">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 5</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base4 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base5">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 6</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base5 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base6">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 7</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base6 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base7">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 8</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base7 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base8">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 9</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base8 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base9">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 10</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base9 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base10">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 11</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base10 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base11">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 12</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base11 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base12">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 13</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base12 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base13">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 14</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base13 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base14">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 15</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base14 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="base15">
+                <mat-header-cell *matHeaderCellDef><span translate>PAYROLL_BASE_SALARY</span> 16</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.base15 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
