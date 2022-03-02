@@ -1,0 +1,31 @@
+.container {
+    width: 98%;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-div {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+}
+
+mat-table {
+    width: 2000px;
+}
+
+mat-cell {
+    min-width: 100px;
+    justify-content: flex-end;
+}
+mat-header-cell {
+    min-width: 100px;
+}
+
+.mat-column-category,
+.mat-column-sec {
+    flex: 0 0 70px;
+}

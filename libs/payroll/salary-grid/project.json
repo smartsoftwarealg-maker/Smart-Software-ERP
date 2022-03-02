@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/payroll/salary-grid",
+    "sourceRoot": "libs/payroll/salary-grid/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/payroll/salary-grid"],
+            "options": {
+                "jestConfig": "libs/payroll/salary-grid/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/payroll/salary-grid/src/**/*.ts",
+                    "libs/payroll/salary-grid/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -68,5 +68,6 @@
     "FUND": "Insurance fund",
     "DAS": "D.A.S",
     "LEAVE_BASE": "Leave base",
-    "CACO_CONTRIBUTION": "CACOBPTH contribution"
+    "CACO_CONTRIBUTION": "CACOBPTH contribution",
+    "CACO": "CACOBAPTH D.A.S"
 }
