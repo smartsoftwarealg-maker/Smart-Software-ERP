@@ -256,6 +256,15 @@
 
         </mat-expansion-panel>
 
+        <mat-expansion-panel *ngIf="id" #activationPanel [class]="getPanelHeaderClass('activation', activationPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-emp-act-history [personId]="id"></ss-emp-act-history>
+        </mat-expansion-panel>
     </mat-accordion>
 
 </form>

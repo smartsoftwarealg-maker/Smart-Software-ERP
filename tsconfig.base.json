@@ -252,9 +252,6 @@
             "@ss/payroll/ui-employee": [
                 "libs/payroll/ui-employee/src/index.ts"
             ],
-            "@ss/payroll/ui-employee-activation": [
-                "libs/payroll/ui-employee-activation/src/index.ts"
-            ],
             "@ss/payroll/ui-employee-career": [
                 "libs/payroll/ui-employee-career/src/index.ts"
             ],
