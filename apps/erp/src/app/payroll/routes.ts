@@ -1,12 +1,27 @@
 import {
     HR_POSTS_URL,
-    LOOKUPS_URL, MISSION_PREPARATION_URL, PAY_AMENDMENT_URL, PAY_CACO_URL, PAY_DAS_URL, PAY_EDO_URL,
-    PAY_ELEMENT_TYPES_URL, PAY_ELEMENTS_ENTRY_URL,
-    PAY_ELEMENTSINFO_URL, PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL, PAY_INPUT_FILTERS, PAY_LOANS_URL, MISSION_TRAJECTORIES,
+    LOOKUPS_URL,
+    MISSION_PREPARATION_URL,
+    PAY_AMENDMENT_URL,
+    PAY_CACO_URL,
+    PAY_DAS_URL,
+    PAY_EDO_URL,
+    PAY_ELEMENT_TYPES_URL,
+    PAY_ELEMENTS_ENTRY_URL,
+    PAY_ELEMENTSINFO_URL,
+    PAY_FIXED_ELEMENTS_URL,
+    PAY_FORMULAS_URL,
+    PAY_INPUT_FILTERS,
+    PAY_LOANS_URL,
+    MISSION_TRAJECTORIES,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_SPECIAL_PAYROLL_URL, PAY_VACATION_PLANNING, PAY_XLS_INJECTION, PAY_SALARY_GRID
+    PAY_MONTH_SELECTOR,
+    PAY_SPECIAL_PAYROLL_URL,
+    PAY_VACATION_PLANNING,
+    PAY_XLS_INJECTION,
+    PAY_SALARY_GRID,
+    COMMON_REPORTS_URL
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
@@ -40,6 +55,7 @@ import {CacoComponent} from '@ss/remuneration/caco';
 import {MissionPreparationListComponent, MissionPreparationDetailComponent} from '@ss/hr-missions';
 import {TrajectoryListComponent, TrajectoryDetailComponent} from '@ss/hr-missions/mission-trajectories';
 import {SalaryGridDetailComponent, SalaryGridListComponent} from '@ss/payroll/salary-grid';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {
@@ -309,6 +325,19 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: { reportBase: 'payroll'},
+                component: ReportViewComponent,
+                canActivate: [CanActivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

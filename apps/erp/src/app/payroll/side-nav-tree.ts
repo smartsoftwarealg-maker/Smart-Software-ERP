@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL, ABS_CACO_URL, ABS_DAS_URL,
+    ABS_AMENDMENT_URL, ABS_CACO_URL, ABS_COMMON_REPORTS_URL, ABS_DAS_URL,
     ABS_EDO_URL,
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
     ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
@@ -213,6 +213,12 @@ export const payrollNavTree: SideNavNode = {
                     route: ABS_CACO_URL
                 },
             ]
-        }
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fas fa-calendar-check',
+            route: ABS_COMMON_REPORTS_URL,
+        },
+
     ]
 };

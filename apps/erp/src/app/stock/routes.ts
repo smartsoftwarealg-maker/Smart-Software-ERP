@@ -1,5 +1,5 @@
 import {
-    COMMON_REPORT_PARAMS_URL,
+    COMMON_REPORTS_URL,
     LOOKUPS_URL,
     STOCK_ACCOUNT_URL,
     STOCK_AGENT_PRICE_URL,
@@ -287,7 +287,7 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: COMMON_REPORT_PARAMS_URL,
+        path: COMMON_REPORTS_URL,
         children: [
             {
                 path: LIST_URL,
