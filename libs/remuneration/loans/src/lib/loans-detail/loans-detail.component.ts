@@ -9,7 +9,7 @@ import {LoansService} from '../loans.service';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {PersonAutocompleteClass, LoanTypeService} from '@ss/payroll-common';
+import {PersonAutocompleteClass} from '@ss/payroll-common';
 import {ElementTypesService} from '@ss/remuneration/element-types';
 
 @Component({

@@ -45,7 +45,6 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
     }
 
     public setupForm(b: Mission): FormGroup {
-        console.log(new Date(Date.parse(b.departure || new Date() + '') || 0))
         return this.formBuilder.group({
             id: [b.id],
             number: [b.number],

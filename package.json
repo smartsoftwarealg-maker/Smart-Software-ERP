@@ -44,6 +44,7 @@
         "@ionic-native/core": "^5.36.0",
         "@ionic-native/file": "^5.36.0",
         "@ionic-native/file-opener": "^5.36.0",
+        "@matheo/datepicker": "^13.0.0-beta.1",
         "@nrwl/angular": "^13.8.0",
         "@nxtend/capacitor": "^13.0.0",
         "angular13-organization-chart": "^2.0.0",
