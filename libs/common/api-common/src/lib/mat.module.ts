@@ -24,7 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
@@ -43,9 +43,9 @@ import { Injectable } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NativeDateAdapter, DateAdapter } from '@angular/material/core';
-import {dateToDmyStr, strToDate} from './utils';
+import { dateToDmyStr, strToDate } from './utils';
 import { MatDatepickerModule } from '@matheo/datepicker';
-import { MatNativeDateModule } from '@matheo/datepicker/core';
+import { NativeDateModule } from '@matheo/datepicker/core';
 
 @Injectable()
 export class AppDateAdapter extends NativeDateAdapter {
@@ -89,7 +89,7 @@ export class AppDateAdapter extends NativeDateAdapter {
         MatInputModule,
         MatListModule,
         MatMenuModule,
-        MatNativeDateModule,
+        NativeDateModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
@@ -109,7 +109,21 @@ export class AppDateAdapter extends NativeDateAdapter {
         ScrollingModule
     ],
     providers: [
-        { provide: DateAdapter, useClass: AppDateAdapter },
+        {
+            provide: DateAdapter, useClass: AppDateAdapter,
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: {
+                parse: {
+                    dateInput: ['yyyy/MM/dd HH:mm', 'dd/MM/yyyy HH:mm'],
+                },
+                display: {
+                    dateInput: 'dd/MM/yyyy',
+                    monthYearLabel: 'MMMM yyyy'
+                },
+            },
+        },
     ]
 })
 export class MaterialModule { }
