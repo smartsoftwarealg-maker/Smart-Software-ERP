@@ -6,7 +6,7 @@ import {
     NgControl
 } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { isString, strToDate, removeTimeForDateStr, dateToYmdStr } from '@ss/common/api-common';
+import { isString, strToDate, strToDateTime, removeTimeForDateStr, dateToYmdStr } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -46,7 +46,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     @Input()
-    time: boolean;
+    public time: boolean = false;
 
     get value() {
         return this.toOutputFormat(this.date);
@@ -118,7 +118,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
+    outputFormat: 'dateObject' | 'dateStr' | 'datetimeStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
@@ -174,7 +174,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         // 1-1-2000 is an example of the shortest valid date (8 chars)
         let value: Date = null;
         if (txt && txt.length > 8) {
-            value = strToDate(txt);
+            value = this.time ? strToDateTime(txt) : strToDate(txt);
         }
         this.onChange(value);
         this.stateChanges.next();
@@ -190,7 +190,10 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {
-            this.date = strToDate(obj as any);
+            if (this.time)
+                this.date = strToDateTime(obj as any);
+            else
+                this.date = strToDate(obj as any);
         } else if (obj instanceof Date) {
             this.date = obj;
         } else {
@@ -246,9 +249,15 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             }
             return removeTimeForDateStr(dateToYmdStr(obj));
         }
+        if (this.outputFormat === 'datetimeStr') {
+            if (isString(obj)) {
+                return obj;
+            }
+            return dateToYmdStr(obj);
+        }
         if (this.outputFormat === 'dateObject') {
             if (isString(obj)) {
-                return strToDate(obj);
+                return this.time ? strToDateTime(obj) : strToDate(obj);
             }
             return obj;
         }
