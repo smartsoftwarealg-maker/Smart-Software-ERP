@@ -111,21 +111,19 @@ export class AppDateAdapter extends NativeDateAdapter {
     providers: [
         {
             provide: DateAdapter, useClass: AppDateAdapter,
-        }/*,
+        },
         {
             provide: MAT_DATE_FORMATS,
             useValue: {
                 parse: {
-                    dateInput: ['yyyy/MM/dd', 'dd/MM/yyyy'],
+                    dateInput: ['yyyy/MM/dd HH:mm', 'dd/MM/yyyy HH:mm'],
                 },
                 display: {
                     dateInput: 'dd/MM/yyyy',
-                    monthYearLabel: 'MMMM yyyy',
-                    dateA11yLabel: 'dd/MM/yyyy',
-                    monthYearA11yLabel: 'MMMM yyyy',
+                    monthYearLabel: 'MMMM yyyy'
                 },
             },
-        },*/
+        },
     ]
 })
 export class MaterialModule { }
