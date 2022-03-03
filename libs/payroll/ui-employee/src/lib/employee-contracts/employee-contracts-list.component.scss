@@ -1,0 +1,159 @@
+
+
+$table_width: 2560px;
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow: auto;
+}
+
+.card-title {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-weight: bold;
+}
+
+.main-table {
+    width: $table_width;
+    min-height: 320px;
+}
+
+.mat-column-fromdate {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-todate {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-date {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-valid_date {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-number {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-recordNumber {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-salarygrid {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-salary_rank {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-basesalary {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-notes {
+    flex: 0 0 240px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-motive {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-cost_center {
+    flex: 0 0 120px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-confirmed {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-trial_period {
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-post {
+    flex: 0 0 140px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-division {
+    flex: 0 0 140px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-department {
+    flex: 0 0 140px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-service {
+    flex: 0 0 140px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.buttons {
+    margin: auto;
+    width: 200px;
+    text-align: center;
+}

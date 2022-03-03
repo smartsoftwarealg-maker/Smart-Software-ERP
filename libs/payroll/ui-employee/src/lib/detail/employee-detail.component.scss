@@ -60,3 +60,14 @@ mat-expansion-panel {
     }
 
 }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 5px;
+    padding: 5px;
+}

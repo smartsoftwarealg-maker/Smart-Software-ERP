@@ -9,7 +9,6 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
-import { ACTIVATION_LIST_ROUTE_URL, CAREER_ROUTE_URL, CONTRACTS_ROUTE_URL, WIVES_ROUTE_URL } from '@ss/payroll/api-employee';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 
 interface Lookup {
@@ -39,42 +38,6 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         'maritalStatus'
     ];
 
-    gotoActivationButton: ToolbarButton = {
-        disabled: true,
-        visible: true,
-        icon: 'fas fa-play',
-        keepOnToolbar: KeepOnToolbar.NEVER,
-        label: 'PAYROLL_EMP_ACTIVATION_SUSPENSION',
-        click: () => this.shellSrv.navigateByRelativeUrl(ACTIVATION_LIST_ROUTE_URL + '/' + this.selected)
-    };
-
-    gotoCareerButton: ToolbarButton = {
-        disabled: true,
-        visible: true,
-        icon: 'far fa-id-card-alt',
-        keepOnToolbar: KeepOnToolbar.NEVER,
-        label: 'PAYROLL_EMPLOYEE_CAREER_OVERVIEW',
-        click: () => this.shellSrv.navigateByRelativeUrl(CAREER_ROUTE_URL + '/' + this.selected)
-    }
-
-    gotoContractsButton: ToolbarButton = {
-        disabled: true,
-        visible: true,
-        icon: 'fa-solid fa-file-signature',
-        keepOnToolbar: KeepOnToolbar.NEVER,
-        label: 'PAYROLL_CONTRACTS',
-        click: () => this.shellSrv.navigateByRelativeUrl(CONTRACTS_ROUTE_URL + '/' + this.selected)
-    }
-
-    gotoWivesButton: ToolbarButton = {
-        disabled: true,
-        visible: true,
-        icon: 'fa-solid fa-rings-wedding',
-        keepOnToolbar: KeepOnToolbar.NEVER,
-        label: 'PAYROLL_WIVES',
-        click: () => this.shellSrv.navigateByRelativeUrl(WIVES_ROUTE_URL + '/' + this.selected)
-    }
-
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
     militaryServiceStates: { [id: number]: string; };
@@ -96,23 +59,10 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.route.data.subscribe(data => {
-            if (data?.payrollButtons) {
-                this.shellSrv.addButton(this.gotoActivationButton);
-                this.shellSrv.addButton(this.gotoCareerButton);
-                this.shellSrv.addButton(this.gotoContractsButton);
-                this.shellSrv.addButton(this.gotoWivesButton);
-            }
-        })
-
     }
 
     public select(id: number): void {
         const disableControls = id == null || id < 1;
-        this.gotoActivationButton.disabled = disableControls;
-        this.gotoCareerButton.disabled = disableControls;
-        this.gotoWivesButton.disabled = disableControls;
-        this.gotoContractsButton.disabled = disableControls;
         super.select(id);
     }
 
