@@ -10,6 +10,14 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { RouterModule } from '@angular/router';
+import { EmployeeActivationListComponent } from './employee-activation/employee-activation-list.component';
+import { EmployeeActivationDetailComponent } from './employee-activation/employee-activation-detail.component';
+import { EmployeeCareerDetailComponent } from './employee-career/employee-career-detail.component';
+import { EmployeeCareerListComponent } from './employee-career/employee-career-list.component';
+import { EmployeeContractListComponent } from './employee-contracts/employee-contracts-list.component';
+import { EmployeeContractsDetailComponent } from './employee-contracts/employee-contracts-detail.component';
+import { EmployeeWifeDetailComponent } from './employee-wives/employee-wife-detail.component';
+import { EmployeeWivesListComponent } from './employee-wives/employee-wives-list.component';
 
 @NgModule({
     imports: [
@@ -25,11 +33,22 @@ import { RouterModule } from '@angular/router';
     ],
     exports: [
         EmployeeListComponent,
-        EmployeeDetailComponent
+        EmployeeDetailComponent,
+        EmployeeActivationDetailComponent,
+        EmployeeContractsDetailComponent,
+        EmployeeWifeDetailComponent
     ],
     declarations: [
         EmployeeListComponent,
-        EmployeeDetailComponent
+        EmployeeDetailComponent,
+        EmployeeActivationListComponent,
+        EmployeeActivationDetailComponent,
+        EmployeeCareerListComponent,
+        EmployeeCareerDetailComponent,
+        EmployeeContractListComponent,
+        EmployeeContractsDetailComponent,
+        EmployeeWivesListComponent,
+        EmployeeWifeDetailComponent
     ]
 })
 export class PayrollUiEmployeeModule {

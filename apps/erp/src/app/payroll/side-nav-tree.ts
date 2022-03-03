@@ -5,13 +5,11 @@ import {
     ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
     ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
-    ABS_HR_CAREER_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_DEPARTMENTS_URL,
     ABS_HR_DIPLOMAS_URL,
     ABS_HR_DIVISIONS_URL,
     ABS_HR_EDUCATION_LEVELS_URL,
-    ABS_HR_EMPLOYEE_ACTIVATION_URL,
     ABS_HR_EMPLOYEES_URL,
     ABS_HR_EMPLOYMENT_TYPE_URL,
     ABS_HR_MARITAL_STATUS_URL,
@@ -103,12 +101,7 @@ export const payrollNavTree: SideNavNode = {
                     name: 'PAYROLL_EMPLOYEES_LIST',
                     icon: 'fas fa-list-ol',
                     route: ABS_HR_EMPLOYEES_URL
-                },
-                {
-                    name: 'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION',
-                    icon: 'fas fa-play',
-                    route: ABS_HR_EMPLOYEE_ACTIVATION_URL
-                },
+                }
             ]
         },
         {
