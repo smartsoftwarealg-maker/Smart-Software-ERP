@@ -2,6 +2,10 @@
 
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
+@use '@matheo/datepicker/theming' as datepicker;
+
+$theme-ignore-duplication-warnings: true;
+
 
 body {
     box-sizing: border-box;
@@ -307,6 +311,7 @@ $theme-1-warn:    mat-palette($mat-red);
 
     @include angular-material-theme($theme);
     @include theme-classes($theme);
+    @include datepicker.theme($theme);
 
     .b-primary {
         $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-1-accent, $theme-1-warn);
@@ -384,6 +389,7 @@ $theme-2-warn:    mat-palette($mat-red);
 
     @include angular-material-theme($theme);
     @include theme-classes($theme);
+    @include datepicker.theme($theme);
 
     .b-primary {
         $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-2-accent, $theme-2-warn);
@@ -463,6 +469,7 @@ $theme-3-warn:    mat-palette($mat-red);
 
     @include angular-material-theme($theme);
     @include theme-classes($theme);
+    @include datepicker.theme($theme);
 
     .b-primary {
         $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-3-accent, $theme-3-warn);
@@ -541,6 +548,7 @@ $theme-4-warn:    mat-palette($mat-red);
 
     @include angular-material-theme($theme);
     @include theme-classes($theme);
+    @include datepicker.theme($theme);
 
     .b-primary {
         $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-4-accent, $theme-4-warn);
