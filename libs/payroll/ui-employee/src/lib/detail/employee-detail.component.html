@@ -265,6 +265,38 @@
 
             <ss-emp-act-history [personId]="id"></ss-emp-act-history>
         </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="id" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_CAREER
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-career [personId]="id"></ss-employee-career>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="id" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_CONTRACTS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-contracts [personId]="id"></ss-employee-contracts>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="id" #wivesPanel [class]="getPanelHeaderClass('wives', wivesPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_WIVES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-wives [personId]="id"></ss-employee-wives>
+        </mat-expansion-panel>
+
+
     </mat-accordion>
 
 </form>

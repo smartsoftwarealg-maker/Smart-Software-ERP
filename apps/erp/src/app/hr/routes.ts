@@ -41,8 +41,20 @@ import {
     DivisionListComponent
 } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
-import { EmployeeListComponent, EmployeeDetailComponent, EmployeeActivationDetailComponent } from '@ss/payroll/ui-employee';
-import { ACTIVATION_ROUTE_URL } from '@ss/payroll/api-employee';
+import {
+    EmployeeListComponent,
+    EmployeeDetailComponent,
+    EmployeeActivationDetailComponent,
+    EmployeeCareerDetailComponent,
+    EmployeeContractsDetailComponent,
+    EmployeeWifeDetailComponent
+} from '@ss/payroll/ui-employee';
+import {
+    ACTIVATION_ROUTE_URL,
+    CAREER_ROUTE_URL,
+    CONTRACTS_ROUTE_URL,
+    WIVES_ROUTE_URL
+} from '@ss/payroll/api-employee';
 import { RedirectToParentComponent } from '@ss/common/api-common';
 
 export const mainRoutes: Routes = [
@@ -77,6 +89,51 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeActivationDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: CAREER_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeCareerDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: CONTRACTS_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeContractsDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: WIVES_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeWifeDetailComponent,
                                 canActivate: [CanActivateService],
                                 canDeactivate: [CanDeactivateService]
                             }

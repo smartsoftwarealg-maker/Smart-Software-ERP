@@ -39,7 +39,6 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
             .pipe(
                 switchMap(p => {
                     const parentId = +p.id;
-                    console.log('parentId = ' + parentId);
                     this.employeeActivationSrv.setParentId(parentId);
                     return super.getRouteParam();
                 })

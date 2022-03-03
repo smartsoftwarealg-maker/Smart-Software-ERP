@@ -104,7 +104,6 @@ export class EmployeeActivationListComponent implements OnInit, OnDestroy {
             });
     }
 
-
     public edit() {
         this.showDetail(this.selected);
     }
