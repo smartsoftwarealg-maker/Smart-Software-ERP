@@ -45,6 +45,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
+    @Input()
+    time: boolean;
+
     get value() {
         return this.toOutputFormat(this.date);
     }

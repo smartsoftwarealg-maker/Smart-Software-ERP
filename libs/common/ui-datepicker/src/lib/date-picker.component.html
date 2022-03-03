@@ -8,4 +8,4 @@
         (click)="datePicker.open()">
     <i class="warn-when-invalid far fa-calendar-alt"></i>
 </button>
-<mat-datepicker #datePicker></mat-datepicker>
+<mat-datepicker [type]="time ? 'datetime' : 'date'" #datePicker></mat-datepicker>
