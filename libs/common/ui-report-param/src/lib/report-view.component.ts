@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit,} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {NestedTreeControl} from '@angular/cdk/tree';
+import {BaseTreeControl, NestedTreeControl} from '@angular/cdk/tree';
 import {ReportTreeService} from '@ss/common/api-reports';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
 import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
@@ -27,6 +27,8 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
     templateUrl: './report-view.component.html'
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
+    @ViewChild('tree', { static: false }) tree: MatTree<any>;
+
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
@@ -125,6 +127,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             cc['reportType'] = new FormControl('PDF');
             this.form = new FormGroup(cc);
         });
+        if (this.tree) {
+            this.tree.treeControl.collapseAll();
+        }
     }
 
     parseValueList(valueList: { description: string }[]) {
@@ -193,7 +198,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                return { name: p.name, value: this.form.controls[p.name].value }
+                return { name: p.name, value: '' + this.form.controls[p.name].value }
             });
     }
 

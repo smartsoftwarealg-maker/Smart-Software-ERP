@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AppContext, HttpService, LoginInfo, LoginService} from '@ss/common/api-common';
+import {AppContext, HttpService, LanguageService, LoginInfo, LoginService} from '@ss/common/api-common';
 import {catchError, map, Observable, of, tap} from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,8 @@ import {catchError, map, Observable, of, tap} from 'rxjs';
 export class PayrollMonthService {
 
     constructor(protected httpSrv: HttpService,
-                private loginSrv: LoginService) {}
+                private loginSrv: LoginService,
+                private langSrv: LanguageService) {}
 
     maxMonth(): Observable<{ month: number }> {
         return this.httpSrv.get<{ month: number }>('/payroll/max-month');
@@ -21,7 +22,7 @@ export class PayrollMonthService {
                     const max = res.month;
                     const cur = this.loginSrv.appCtx.payMonth % 1_000_000;
                     const off = +(this.loginSrv.appCtx.payMonth / 1_000_000).toFixed(0);
-                    return `${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} - ${max % 100}/${(max / 100).toFixed(0)}`;
+                    return `${this.langSrv.translate('PAYROLL_MONTH')}: ${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} - ${max % 100}/${(max / 100).toFixed(0)}`;
                 }),
                 catchError(err => of(' ')));
     }

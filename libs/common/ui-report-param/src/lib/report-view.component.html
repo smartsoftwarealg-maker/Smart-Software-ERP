@@ -1,42 +1,51 @@
 <div class="main-container" *ngIf="!leftPaneHidden && !generating; else report">
-    <mat-card class="tree-container">
-        <mat-card-header>
-            <b mat-card-title translate>COMMON_REPORTS</b>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <mat-card-content>
-            <mat-tree class="tree" [dataSource]="reportTree" [treeControl]="treeControl">
-                <!-- This is the tree node template for leaf nodes -->
+    <div class="tree-div">
+        <mat-tree #tree class="tree" [dataSource]="reportTree" [treeControl]="treeControl">
+            <!-- This is the tree node template for leaf nodes -->
 
-                <mat-nested-tree-node *matTreeNodeDef="let node">
-                    <li class="tree-leaf" [class.selected]="selectedReport == node" (click)="reportSelect(node)">
-                        {{ node.name }}
-                    </li>
+            <mat-nested-tree-node *matTreeNodeDef="let node">
+                <li class="tree-leaf"
+                    [class.selected]="selectedReport == node"
+                    (click)="reportSelect(node)">
+                    {{ node.name }}
+                </li>
+                <mat-divider></mat-divider>
+            </mat-nested-tree-node>
+
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <li>
+                    <button mat-icon-button matTreeNodeToggle>
+                        <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+                    </button>
+                    {{node.name}}
                     <mat-divider></mat-divider>
-                </mat-nested-tree-node>
 
-                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                    <li>
-                        <button mat-icon-button matTreeNodeToggle>
-                            <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
-                        </button>
-                        {{node.name}}
-                        <mat-divider></mat-divider>
+                    <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </ul>
+                </li>
+                <mat-divider></mat-divider>
+            </mat-nested-tree-node>
+        </mat-tree>
 
-                        <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
-                            <ng-container matTreeNodeOutlet></ng-container>
-                        </ul>
-                    </li>
-                    <mat-divider></mat-divider>
-                </mat-nested-tree-node>
-            </mat-tree>
-        </mat-card-content>
-    </mat-card>
-    <div class="table-container">
+    </div>
+    <div class="report-name"> {{ selectedReport?.name }}</div>
+    <div class="param-container">
         <form (ngSubmit)="generateReport()" *ngIf="isReady()" [formGroup]="form">
 
             <div *ngFor="let d of data">
-                <mat-form-field *ngIf="d.typeName == 'java.lang.Integer'">
+
+                <mat-form-field *ngIf="d.valueList != null">
+                    <mat-label translate>{{ d.description }}</mat-label>
+                    <mat-select formControlName="{{ d.name }}">
+                        <mat-option *ngFor="let s of d.valueList" [value]="s.id">
+                            {{ s.description }}
+                        </mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+
+                <mat-form-field *ngIf="d.typeName == 'java.lang.Integer' && d.valueList == null">
                     <mat-label translate>{{ d.description }}</mat-label>
                     <input matInput formControlName="{{ d.name }}" type="number">
                     <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED
@@ -56,19 +65,21 @@
                 </mat-form-field>
 
             </div>
-            <mat-form-field>
-                <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
-                <mat-select formControlName="reportType" #reportType>
-                    <mat-option [value]="'HTML'"> HTML</mat-option>
-                    <mat-option [value]="'PDF'"> PDF</mat-option>
-                    <mat-option [value]="'EXCEL'"> Excel</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <div>
-                <button mat-raised-button color="primary" type="submit">
-                    <i class="far fa-file-pdf"></i>
-                    <span translate>COMMON_VIEW_REPORT</span>
-                </button>
+            <div class="btn-div">
+                <mat-form-field>
+                    <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+                    <mat-select formControlName="reportType" #reportType>
+                        <mat-option [value]="'HTML'"> HTML</mat-option>
+                        <mat-option [value]="'PDF'"> PDF</mat-option>
+                        <mat-option [value]="'EXCEL'"> Excel</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <button mat-raised-button color="primary" type="submit">
+                        <i class="far fa-file-pdf"></i>
+                        <span translate>COMMON_VIEW_REPORT</span>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
@@ -80,7 +91,8 @@
     </div>
     <ng-template #content>
         <div class="out">
-            <iframe *ngIf="form.controls['reportType']?.value == 'PDF'" [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfSrc)"
+            <iframe *ngIf="form.controls['reportType']?.value == 'PDF'"
+                    [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfSrc)"
                     style="display: block; border: none;" height="100%" width="100%">
                 This browser does not support PDFs. Please download the PDF to view it:
             </iframe>
