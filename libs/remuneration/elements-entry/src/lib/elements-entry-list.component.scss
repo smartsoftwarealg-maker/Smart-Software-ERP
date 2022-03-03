@@ -35,6 +35,9 @@ body, html{
     grid-area: mode;
 }
 
+.mat-column-photo {
+    flex: 0 0 80px;
+}
 .the_tabs {
     grid-area: the_tabs;
 }
@@ -86,15 +89,13 @@ mat-tab-body-wrapper {
 mat-tab {
     height: 100%;
     padding: 10px;
+    font-size: small;
 }
+
 mat-header-cell {
-    min-width: 100px;
     justify-content: center;
 }
 
-mat-cell {
-    min-width: 120px;
-}
 
 .number-cell {
     justify-content: flex-end;
@@ -106,8 +107,8 @@ mat-cell {
 }
 
 .mat-column-id {
-    flex: 0 1 80px;
-    max-width: 90px;
+    flex: 0 1 70px;
+    max-width: 70px;
 }
 
 .mat-column-lastName,
@@ -117,7 +118,8 @@ mat-cell {
 }
 
 .mat-column-post {
-    flex: 0 0 200px;
+    flex: 0 0 250px;
+    font-size: small;
 }
 
 .total-cell {

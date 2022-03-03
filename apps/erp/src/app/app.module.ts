@@ -98,7 +98,7 @@ const routes: Routes = [
         CommonUiMainPageModule,
         // modules with routes
         UiLoginModule,
-        UiCenterSelectModule
+        UiCenterSelectModule,
     ],
     bootstrap: [AppComponent],
 })
