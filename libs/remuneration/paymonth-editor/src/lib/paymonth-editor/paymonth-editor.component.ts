@@ -49,6 +49,7 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
+
     setDisabledState?(isDisabled: boolean): void {
         if (isDisabled) {
             this.form.disable();

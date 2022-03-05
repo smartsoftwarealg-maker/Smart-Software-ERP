@@ -103,5 +103,10 @@
     "EMPLOYEE_WIFE_DETAIL": "تفاصيل الزوج",
     "NAME": "الإسم",
     "NAME_AR": "الإسم (بالعربية)",
-    "REFERENCE": "المرجع"
+    "REFERENCE": "المرجع",
+    "DIPLOMAS":         "شهادات",
+    "INSTITUTION":     "مؤسسة",
+    "EDUCATION_LEVEL": "مستوى التعليم",
+    "DIPLOMA_SUBJECT": "موضوع",
+    "TRN_PROVIDER": "مزود التدريب"
 }
