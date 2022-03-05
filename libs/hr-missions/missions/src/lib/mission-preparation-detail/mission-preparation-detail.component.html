@@ -68,25 +68,19 @@
         <mat-error *ngIf="form.controls['transport_means'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </div>
 
-    <!--    <mat-form-field>-->
-    <!--        <input matInput [matDatepicker]="departure" name="departure" formControlName="departure">-->
-    <!--        <mat-placeholder translate>MISSION_DEPARTURE</mat-placeholder>-->
-    <!--        <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>-->
-    <!--        <mat-datepicker #departure></mat-datepicker>-->
-    <!--    </mat-form-field>-->
+        <mat-form-field>
+            <input matInput [matDatepicker]="departure" name="departure" formControlName="departure">
+            <mat-placeholder translate>MISSION_DEPARTURE</mat-placeholder>
+            <mat-datepicker-toggle matSuffix [for]="departure"></mat-datepicker-toggle>
+            <mat-datepicker #departure type="datetime" [twelveHour]="false" ></mat-datepicker>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-label translate>MISSION_DEPARTURE</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="departure" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker type="datetime" #picker></mat-datepicker>
-    </mat-form-field>
 
     <mat-form-field>
         <input matInput [matDatepicker]="returnback" name="departure" formControlName="returnback">
         <mat-placeholder translate>MISSION_COMEBACK</mat-placeholder>
         <mat-datepicker-toggle matSuffix [for]="returnback"></mat-datepicker-toggle>
-        <mat-datepicker #returnback></mat-datepicker>
+        <mat-datepicker #returnback type="datetime" [twelveHour]="false" ></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>

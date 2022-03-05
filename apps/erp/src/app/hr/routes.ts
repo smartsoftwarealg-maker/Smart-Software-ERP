@@ -52,10 +52,11 @@ import {
 import {
     ACTIVATION_ROUTE_URL,
     CAREER_ROUTE_URL,
-    CONTRACTS_ROUTE_URL,
+    CONTRACTS_ROUTE_URL, DIPLOMA_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { RedirectToParentComponent } from '@ss/common/api-common';
+import {EmployeeDiplomaDetailComponent} from '../../../../../libs/payroll/ui-employee/src/lib/employee-diplomas/employee-diploma-detail/employee-diploma-detail.component';
 
 export const mainRoutes: Routes = [
     {
@@ -134,6 +135,21 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeWifeDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: DIPLOMA_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeDiplomaDetailComponent,
                                 canActivate: [CanActivateService],
                                 canDeactivate: [CanDeactivateService]
                             }

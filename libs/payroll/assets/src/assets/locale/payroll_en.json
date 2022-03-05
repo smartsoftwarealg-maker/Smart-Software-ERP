@@ -103,5 +103,10 @@
     "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
     "NAME": "Name",
     "NAME_AR": "Name (Arabic)",
-    "REFERENCE": "Reference"
+    "REFERENCE": "Reference",
+    "DIPLOMAS":         "Diplomas",
+    "INSTITUTION":     "Institution",
+    "EDUCATION_LEVEL": "Education level",
+    "DIPLOMA_SUBJECT": "Subject",
+    "TRN_PROVIDER": "Training provider"
 }

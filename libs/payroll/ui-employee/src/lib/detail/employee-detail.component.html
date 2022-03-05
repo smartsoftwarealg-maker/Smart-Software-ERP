@@ -297,6 +297,16 @@
         </mat-expansion-panel>
 
 
+        <mat-expansion-panel *ngIf="id" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_DIPLOMAS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-diploma-list [personId]="id"></ss-employee-diploma-list>
+        </mat-expansion-panel>
+
     </mat-accordion>
 
 </form>
