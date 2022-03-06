@@ -108,5 +108,14 @@
     "INSTITUTION":     "مؤسسة",
     "EDUCATION_LEVEL": "مستوى التعليم",
     "DIPLOMA_SUBJECT": "موضوع",
-    "TRN_PROVIDER": "مزود التدريب"
+    "TRN_PROVIDER": "مزود التدريب",
+    "DAY_COUNT":         "التدريبات",
+    "TRAINING":          "عدد الأيام",
+    "TRAININGS":         "تمرين",
+    "LOCATION":          "موقع",
+    "DIPLOMA":           "شهادة دبلوم",
+    "MISSION_EXPENSES":  "نفقات البعثة" ,
+    "TRAINING_EXPENSES":"نفقات التدريب" ,
+    "EXTRA_EXPENSES":    "نفقات إضافية",
+    "JUDICIAL_FRAME":    "الإطار القضائي"
 }

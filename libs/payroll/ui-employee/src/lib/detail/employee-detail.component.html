@@ -307,6 +307,16 @@
             <ss-employee-diploma-list [personId]="id"></ss-employee-diploma-list>
         </mat-expansion-panel>
 
+        <mat-expansion-panel *ngIf="id" #trainingPanel [class]="getPanelHeaderClass('trainings', trainingPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_TRAININGS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-training-list [personId]="id"></ss-employee-training-list>
+        </mat-expansion-panel>
+
     </mat-accordion>
 
 </form>
