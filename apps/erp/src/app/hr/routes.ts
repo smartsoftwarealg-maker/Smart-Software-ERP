@@ -1,68 +1,78 @@
 import {
-    LOOKUPS_URL,
+    ABS_HR_REPORTS_URL, COMMON_REPORTS_URL,
     HR_CATEGORIES_URL,
+    HR_DEPARTMENTS_URL,
     HR_DIPLOMAS_URL,
+    HR_DIVISIONS_URL,
     HR_EDUCATION_LEVELS_URL,
-    HR_MARITAL_STATUS_URL,
-    HR_POSTS_URL,
-    HR_NATIONALITIES_URL,
-    HR_SERVICES_URL,
     HR_EMPLOYEES_URL,
     HR_EMPLOYMENT_TYPE_URL,
+    HR_MARITAL_STATUS_URL,
+    HR_NATIONALITIES_URL,
+    HR_POSTS_URL,
+    HR_PROFESSIONAL_FAULT_URL,
+    HR_PUNISHMENT_TYPE_URL,
+    HR_SERVICES_URL,
     HR_SUSPENSION_REASON_URL,
-    HR_DEPARTMENTS_URL,
-    HR_DIVISIONS_URL, HR_PROFESSIONAL_FAULT_URL, HR_PUNISHMENT_TYPE_URL
+    LOOKUPS_URL
 } from '../common';
 import {
-    ABS_INDEX_URL, CanActivateService, CanDeactivateService
+    ABS_INDEX_URL,
+    CanActivateService,
+    CanDeactivateService,
+    LIST_URL,
+    RedirectToParentComponent
 } from '@ss/common/api-common';
-import { Routes } from '@angular/router';
-import { LIST_URL } from '@ss/common/api-common';
+import {Routes} from '@angular/router';
 import {
-    CategoryListComponent,
     CategoryDetailComponent,
-    DiplomaListComponent,
-    DiplomaDetailComponent,
-    EducationLevelDetailComponent,
-    EducationLevelListComponent,
-    MaritalStatusDetailComponent,
-    MaritalStatusListComponent,
-    PostDetailComponent,
-    PostListComponent,
-    ServiceListComponent,
-    ServiceDetailComponent,
-    EmploymentTypeListComponent,
-    EmploymentTypeDetailComponent,
-    SuspensionReasonListComponent,
-    SuspensionReasonDetailComponent,
-    DepartmentListComponent,
+    CategoryListComponent,
     DepartmentDetailComponent,
+    DepartmentListComponent,
+    DiplomaDetailComponent,
+    DiplomaListComponent,
     DivisionDetailComponent,
     DivisionListComponent,
-    ProfessionalFaultListComponent,
+    EducationLevelDetailComponent,
+    EducationLevelListComponent,
+    EmploymentTypeDetailComponent,
+    EmploymentTypeListComponent,
+    MaritalStatusDetailComponent,
+    MaritalStatusListComponent,
+    NationalityDetailComponent,
+    NationalityListComponent,
+    PostDetailComponent,
+    PostListComponent,
     ProfessionalFaultDetailComponent,
+    ProfessionalFaultListComponent,
+    PunishmentTypeDetailComponent,
     PunishmentTypeListComponent,
-    PunishmentTypeDetailComponent
+    ServiceDetailComponent,
+    ServiceListComponent,
+    SuspensionReasonDetailComponent,
+    SuspensionReasonListComponent
 } from '@ss/common/ui-lookup';
-import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
 import {
-    EmployeeListComponent,
-    EmployeeDetailComponent,
     EmployeeActivationDetailComponent,
     EmployeeCareerDetailComponent,
     EmployeeContractsDetailComponent,
-    EmployeeWifeDetailComponent,
+    EmployeeDetailComponent,
     EmployeeDiplomaDetailComponent,
+    EmployeeListComponent,
     EmployeeTrainingDetailComponent,
+    EmployeeWifeDetailComponent,
     PunishmentDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
     CAREER_ROUTE_URL,
-    CONTRACTS_ROUTE_URL, DIPLOMA_ROUTE_URL, PUNISHMENT_ROUTE_URL, TRAINING_ROUTE_URL,
+    CONTRACTS_ROUTE_URL,
+    DIPLOMA_ROUTE_URL,
+    PUNISHMENT_ROUTE_URL,
+    TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
-import { RedirectToParentComponent } from '@ss/common/api-common';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {
@@ -195,6 +205,12 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [CanActivateService],
+        data: { reportBase: 'hr'}
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

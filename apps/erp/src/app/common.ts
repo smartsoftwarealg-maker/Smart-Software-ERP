@@ -25,6 +25,7 @@ export const WEBARCH_APP_URL = 'webarch';
 // common
 export const COMMON_REPORTS_URL = 'reports';
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
