@@ -117,5 +117,11 @@
     "MISSION_EXPENSES":  "نفقات البعثة" ,
     "TRAINING_EXPENSES":"نفقات التدريب" ,
     "EXTRA_EXPENSES":    "نفقات إضافية",
-    "JUDICIAL_FRAME":    "الإطار القضائي"
+    "JUDICIAL_FRAME":    "الإطار القضائي",
+    "PUNISHMENT_TYPE":   "نوع العقوبة",
+    "FAULTS":             "خطأ",
+    "FAULT":             "أخطاء",
+    "PUNISHMENT":        "عقاب",
+    "PUNISHMENTS":       "العقوبات",
+    "FAULT_TYPE":        "نوع الخطأ"
 }

@@ -22,6 +22,8 @@ import { EmployeeDiplomaListComponent } from './employee-diplomas/employee-diplo
 import { EmployeeDiplomaDetailComponent } from './employee-diplomas/employee-diploma-detail/employee-diploma-detail.component';
 import { EmployeeTrainingListComponent } from './employee-trainings/employee-training-list/employee-training-list.component';
 import { EmployeeTrainingDetailComponent } from './employee-trainings/employee-training-detail/employee-training-detail.component';
+import { PunishmentListComponent } from './punishments/punishment-list/punishment-list.component';
+import { PunishmentDetailComponent } from './punishments/punishment-detail/punishment-detail.component';
 
 @NgModule({
     imports: [
@@ -56,7 +58,9 @@ import { EmployeeTrainingDetailComponent } from './employee-trainings/employee-t
         EmployeeDiplomaListComponent,
         EmployeeDiplomaDetailComponent,
         EmployeeTrainingListComponent,
-        EmployeeTrainingDetailComponent
+        EmployeeTrainingDetailComponent,
+        PunishmentListComponent,
+        PunishmentDetailComponent
     ]
 })
 export class PayrollUiEmployeeModule {

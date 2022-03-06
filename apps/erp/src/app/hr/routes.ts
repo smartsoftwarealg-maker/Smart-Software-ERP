@@ -11,7 +11,7 @@ import {
     HR_EMPLOYMENT_TYPE_URL,
     HR_SUSPENSION_REASON_URL,
     HR_DEPARTMENTS_URL,
-    HR_DIVISIONS_URL
+    HR_DIVISIONS_URL, HR_PROFESSIONAL_FAULT_URL, HR_PUNISHMENT_TYPE_URL
 } from '../common';
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService
@@ -38,7 +38,11 @@ import {
     DepartmentListComponent,
     DepartmentDetailComponent,
     DivisionDetailComponent,
-    DivisionListComponent
+    DivisionListComponent,
+    ProfessionalFaultListComponent,
+    ProfessionalFaultDetailComponent,
+    PunishmentTypeListComponent,
+    PunishmentTypeDetailComponent
 } from '@ss/common/ui-lookup';
 import { NationalityDetailComponent, NationalityListComponent } from '@ss/common/ui-lookup';
 import {
@@ -47,12 +51,15 @@ import {
     EmployeeActivationDetailComponent,
     EmployeeCareerDetailComponent,
     EmployeeContractsDetailComponent,
-    EmployeeWifeDetailComponent, EmployeeDiplomaDetailComponent, EmployeeTrainingDetailComponent
+    EmployeeWifeDetailComponent,
+    EmployeeDiplomaDetailComponent,
+    EmployeeTrainingDetailComponent,
+    PunishmentDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
     CAREER_ROUTE_URL,
-    CONTRACTS_ROUTE_URL, DIPLOMA_ROUTE_URL, TRAINING_ROUTE_URL,
+    CONTRACTS_ROUTE_URL, DIPLOMA_ROUTE_URL, PUNISHMENT_ROUTE_URL, TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { RedirectToParentComponent } from '@ss/common/api-common';
@@ -168,6 +175,21 @@ export const mainRoutes: Routes = [
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
+                    },
+                    {
+                        path: PUNISHMENT_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: PunishmentDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
                     }
                 ]
             },
@@ -258,6 +280,40 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: DiplomaDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_PROFESSIONAL_FAULT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProfessionalFaultListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: ProfessionalFaultDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_PUNISHMENT_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PunishmentTypeListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: PunishmentTypeDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

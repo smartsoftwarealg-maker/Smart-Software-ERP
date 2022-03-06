@@ -1,0 +1,57 @@
+<form *ngIf="form" novalidate [formGroup]="form" class="form-container">
+
+<!--    <mat-form-field floatLabel="always" class="default-50 sm-100">-->
+<!--        <mat-label translate>PAYROLL_REFERENCE</mat-label>-->
+<!--        <input matInput [maxLength]="12" formControlName="number" type="text">-->
+<!--    </mat-form-field>-->
+
+    <mat-form-field class="default-25 sm-100">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker required="true" formControlName="date"></ss-date-picker>
+        <mat-error *ngIf="form.controls.date?.hasError('required')" translate>
+            COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+    <div class="filler default-25"></div>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_PUNISHMENT_TYPE</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="punishmentTypeAutoCompleteModel"
+                          formControlName="punishmentType"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['punishmentType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_FAULT</mat-label>
+        <input matInput [maxLength]="100" formControlName="fault" type="text" required>
+        <mat-error *ngIf="form.controls['fault'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>PAYROLL_FAULT_TYPE</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="faultAutoCompleteModel"
+                          formControlName="faultType"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['faultType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>PAYROLL_PUNISHMENT</mat-label>
+        <input matInput [maxLength]="100" formControlName="sanction" type="text" required>
+        <mat-error *ngIf="form.controls['sanction'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>COMMON_MEMO</mat-label>
+        <input matInput [maxLength]="100" formControlName="memo" type="text" required>
+        <mat-error *ngIf="form.controls['memo'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+
+</form>
+

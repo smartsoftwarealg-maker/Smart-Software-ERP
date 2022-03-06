@@ -1,0 +1,86 @@
+<div class="buttons">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selected"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selected"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="number" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_NUMBER
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.number}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sanction" >
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_PUNISHMENT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.sanction}}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="typeName">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_TYPE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="faultName">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_FAULT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.faultName}}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="memo">
+            <mat-header-cell *matHeaderCellDef translate>
+                COMMON_MEMO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.memo}}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

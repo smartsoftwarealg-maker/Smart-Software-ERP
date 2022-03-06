@@ -1,9 +1,15 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL, ABS_CACO_URL, ABS_COMMON_REPORTS_URL, ABS_DAS_URL,
+    ABS_AMENDMENT_URL,
+    ABS_CACO_URL,
+    ABS_COMMON_REPORTS_URL,
+    ABS_DAS_URL,
     ABS_EDO_URL,
-    ABS_ELEMENT_TYPES_URL, ABS_ELEMENTS_ENTRY_URL,
-    ABS_ELEMENTSINFO_URL, ABS_EXCEL_INJECTION_URL, ABS_FIXED_ELEMENTS_URL,
+    ABS_ELEMENT_TYPES_URL,
+    ABS_ELEMENTS_ENTRY_URL,
+    ABS_ELEMENTSINFO_URL,
+    ABS_EXCEL_INJECTION_URL,
+    ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
     ABS_HR_CATEGORIES_URL,
     ABS_HR_DEPARTMENTS_URL,
@@ -17,10 +23,17 @@ import {
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
     ABS_HR_SUSPENSION_REASON_URL,
-    ABS_INPUT_FILTERS_URL, ABS_LOANS_URL, ABS_MISSION_PREPARATION_URL,
+    ABS_INPUT_FILTERS_URL,
+    ABS_LOANS_URL,
+    ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_SALARY_GRID_URL, ABS_SPECIAL_PAYROLL_URL, ABS_TRAJECTORY_URL, ABS_VACATION_PLANNING_URL
+    ABS_MONTH_SELECTOR_URL,
+    ABS_PROFESSIONAL_FAULTS_URL, ABS_PUNISHMENT_TYPE_URL,
+    ABS_SALARY_GRID_URL,
+    ABS_SPECIAL_PAYROLL_URL,
+    ABS_TRAJECTORY_URL,
+    ABS_VACATION_PLANNING_URL
 } from '../common';
 
 export const payrollNavTree: SideNavNode = {
@@ -46,16 +59,6 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-chair-office',
                     route: ABS_HR_POSTS_URL
                 },
-                // {
-                //     name: 'COMMON_DIPLOMAS',
-                //     icon: 'fas fa-file-certificate',
-                //     route: ABS_HR_DIPLOMAS_URL
-                // },
-                // {
-                //     name: 'COMMON_EDUCATION_LEVELS',
-                //     icon: 'fas fa-graduation-cap',
-                //     route: ABS_HR_EDUCATION_LEVELS_URL
-                // },
                 {
                     name: 'COMMON_MARITAL_STATUS',
                     icon: 'fas fa-rings-wedding',
