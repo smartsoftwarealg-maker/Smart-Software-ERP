@@ -108,5 +108,14 @@
     "INSTITUTION":     "Institution",
     "EDUCATION_LEVEL": "Niveau d'éducation",
     "DIPLOMA_SUBJECT": "Sujet",
-    "TRN_PROVIDER": "Prestataire de formation"
+    "TRN_PROVIDER": "Prestataire de formation",
+    "TRAININGS":          "Formations",
+    "DAY_COUNT":          "Nombre de jours",
+    "TRAINING":           "Formation",
+    "LOCATION":           "Lieu",
+    "DIPLOMA":            "Diplôme",
+    "MISSION_EXPENSES":   "Frais de mission",
+    "TRAINING_EXPENSES": "Dépenses de formation",
+    "EXTRA_EXPENSES":     "Dépenses supplémentaires",
+    "JUDICIAL_FRAME":     "Cadre judiciaire"
 }

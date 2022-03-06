@@ -14,7 +14,7 @@ import {EmployeeDiplomaService} from '../employee-diploma.service';
   templateUrl: './employee-diploma-list.component.html',
   styleUrls: ['./employee-diploma-list.component.scss']
 })
-export class EmployeeDiplomaListComponent implements OnInit, OnDestroy {
+export class EmployeeDiplomaListComponent implements OnInit {
     @Input()
     set personId(id: number) {
         this.entitySrv.setParentId(id);
@@ -101,8 +101,5 @@ export class EmployeeDiplomaListComponent implements OnInit, OnDestroy {
     public showDetail(id: number) {
         this.router.navigate([DIPLOMA_ROUTE_URL, id], { relativeTo: this.route })
             .then();
-    }
-
-    ngOnDestroy() {
     }
 }

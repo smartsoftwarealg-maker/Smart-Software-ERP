@@ -8,3 +8,5 @@ export * from './lib/employee-wives.service';
 export * from './lib/diploma.service';
 export * from './lib/training_subject.service';
 export * from './lib/education-levels.service';
+export * from './lib/motive.service';
+export * from './lib/judicial-frame.service';
