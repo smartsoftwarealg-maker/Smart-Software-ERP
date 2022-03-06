@@ -117,5 +117,11 @@
     "MISSION_EXPENSES":   "Mission expenses",
     "TRAINING_EXPENSES": "Training expenses",
     "EXTRA_EXPENSES":     "Extra expenses",
-    "JUDICIAL_FRAME":     "Judicial frame"
+    "JUDICIAL_FRAME":     "Judicial frame",
+    "PUNISHMENT_TYPE":    "Punishment type",
+    "FAULT":              "Fault",
+    "FAULTS":              "Faults",
+    "PUNISHMENT":         "Punishment",
+    "PUNISHMENTS":        "Punishments",
+    "FAULT_TYPE":         "Fault type"
 }

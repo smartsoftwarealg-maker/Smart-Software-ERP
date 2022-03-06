@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {EmployeeDiploma} from '../../employee-diplomas/employee-diploma-api';
 import {Training} from '../employee-training';
-import {EmployeeDiplomaService} from '../../employee-diplomas/employee-diploma.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DiplomaService, EducationLevelService, LookupsService} from '@ss/common/api-lookup';
+import {DiplomaService, LookupsService} from '@ss/common/api-lookup';
 import {JudicialFrameService, MotiveService, SubjectService} from '@ss/payroll/api-employee';
-import {SupplierService} from '@ss/logistics/api-agent';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {EmployeeTrainingService} from '../employee-training.service';
@@ -45,7 +42,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             snackBarSrv, route,
             formBuilder,
             confirmationSrv,
-            'PAYROLL_TRAININGS');
+            'PAYROLL_PUNISHMENTS');
     }
 
     protected getRouteParam(): Observable<any> {

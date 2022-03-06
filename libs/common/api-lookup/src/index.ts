@@ -29,3 +29,5 @@ export * from './lib/division.service';
 export * from './lib/department.service';
 export * from './lib/sales-category.service';
 export * from './lib/lookup.class';
+export * from './lib/punishment-type.service';
+export * from './lib/professional-fault.service';

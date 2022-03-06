@@ -10,7 +10,7 @@ import {
     ABS_HR_EMPLOYMENT_TYPE_URL,
     ABS_HR_SUSPENSION_REASON_URL,
     ABS_HR_DEPARTMENTS_URL,
-    ABS_HR_DIVISIONS_URL
+    ABS_HR_DIVISIONS_URL, ABS_PUNISHMENT_TYPE_URL, ABS_PROFESSIONAL_FAULTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -76,7 +76,17 @@ export const hrNavTree: SideNavNode = {
                     name: 'COMMON_NATIONALITIES',
                     icon: 'fas fa-flag',
                     route: ABS_HR_NATIONALITIES_URL
-                }
+                },
+                {
+                    name: 'PAYROLL_PUNISHMENT_TYPE',
+                    icon: 'fas fa-file-certificate',
+                    route: ABS_PUNISHMENT_TYPE_URL
+                },
+                {
+                    name: 'PAYROLL_PUNISHMENTS',
+                    icon: 'fas fa-graduation-cap',
+                    route: ABS_PROFESSIONAL_FAULTS_URL
+                },
             ]
         },
         {

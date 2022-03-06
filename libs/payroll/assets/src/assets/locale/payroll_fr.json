@@ -117,5 +117,11 @@
     "MISSION_EXPENSES":   "Frais de mission",
     "TRAINING_EXPENSES": "Dépenses de formation",
     "EXTRA_EXPENSES":     "Dépenses supplémentaires",
-    "JUDICIAL_FRAME":     "Cadre judiciaire"
+    "JUDICIAL_FRAME":     "Cadre judiciaire",
+    "PUNISHMENT_TYPE":    "Type de punition",
+    "FAULT":              "Faute",
+    "FAULTS":              "Fautes",
+    "PUNISHMENT":         "Châtiment",
+    "PUNISHMENTS":        "Les sanctions",
+    "FAULT_TYPE":         "Type de défaut"
 }

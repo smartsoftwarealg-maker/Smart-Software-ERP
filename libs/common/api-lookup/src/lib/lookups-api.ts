@@ -5,6 +5,8 @@ export const NATIONALITIES_URL = '/lookups/nationalities';
 
 export const EDUCATION_LEVEL_URL = '/lookups/educationlevels';
 export const DIPLOMAS_URL = '/lookups/diplomas';
+export const PUNISHMENT_TYPE_URL = '/lookups/punishmenttypes';
+export const PROFESSIONAL_FAULT_URL = '/lookups/professionalfaults';
 export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/lookups/categories';
 export const SERVICES_URL = '/lookups/services';

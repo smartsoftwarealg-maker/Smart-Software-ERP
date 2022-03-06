@@ -10,3 +10,5 @@ export * from './lib/training_subject.service';
 export * from './lib/education-levels.service';
 export * from './lib/motive.service';
 export * from './lib/judicial-frame.service';
+export * from './lib/professional-fault.service';
+export * from './lib/punishment-type.service';

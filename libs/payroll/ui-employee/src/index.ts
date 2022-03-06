@@ -10,5 +10,8 @@ export * from './lib/employee-trainings/employee-training-detail/employee-traini
 export * from './lib/employee-diplomas/employee-diploma-list/employee-diploma-list.component';
 export * from './lib/employee-diplomas/employee-diploma-detail/employee-diploma-detail.component';
 export * from './lib/employee-trainings/employee-training-detail/employee-training-detail.component';
+export * from './lib/punishments/punishment-list/punishment-list.component';
+export * from './lib/punishments/punishment-detail/punishment-detail.component';
+
 
 
