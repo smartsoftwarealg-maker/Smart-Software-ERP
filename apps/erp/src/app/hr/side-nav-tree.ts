@@ -10,7 +10,11 @@ import {
     ABS_HR_EMPLOYMENT_TYPE_URL,
     ABS_HR_SUSPENSION_REASON_URL,
     ABS_HR_DEPARTMENTS_URL,
-    ABS_HR_DIVISIONS_URL, ABS_PUNISHMENT_TYPE_URL, ABS_PROFESSIONAL_FAULTS_URL
+    ABS_HR_DIVISIONS_URL,
+    ABS_PUNISHMENT_TYPE_URL,
+    ABS_PROFESSIONAL_FAULTS_URL,
+    ABS_COMMON_REPORTS_URL,
+    ABS_HR_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -93,6 +97,11 @@ export const hrNavTree: SideNavNode = {
             name: 'PAYROLL_EMPLOYEES_LIST',
             icon: 'fas fa-list-ol',
             route: ABS_HR_EMPLOYEES_URL
-        }
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fas fa-calendar-check',
+            route: ABS_HR_REPORTS_URL,
+        },
     ]
 };

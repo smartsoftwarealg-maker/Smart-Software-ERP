@@ -1,7 +1,8 @@
 import {
-    HR_POSTS_URL,
+    COMMON_REPORTS_URL,
     LOOKUPS_URL,
     MISSION_PREPARATION_URL,
+    MISSION_TRAJECTORIES,
     PAY_AMENDMENT_URL,
     PAY_CACO_URL,
     PAY_DAS_URL,
@@ -13,47 +14,41 @@ import {
     PAY_FORMULAS_URL,
     PAY_INPUT_FILTERS,
     PAY_LOANS_URL,
-    MISSION_TRAJECTORIES,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
     PAY_MONTH_SELECTOR,
+    PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
-    PAY_XLS_INJECTION,
-    PAY_SALARY_GRID,
-    COMMON_REPORTS_URL
+    PAY_XLS_INJECTION
 } from '../common';
-import {
-    ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL
-} from '@ss/common/api-common';
-import { Routes } from '@angular/router';
+import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {Routes} from '@angular/router';
 import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remuneration/elementsinfo';
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
-import {FormulaListComponent,FormulaDetailComponent} from '@ss/remuneration/payroll-formulas';
-import {MonthCloserComponent, MonthCancelerComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
+import {FormulaDetailComponent, FormulaListComponent} from '@ss/remuneration/payroll-formulas';
+import {MonthCancelerComponent, MonthCloserComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
 import {
     ElementsEntryDetailComponent,
-    ElementsEntryListComponent, FixedElementsDetailComponent,
+    ElementsEntryListComponent,
+    FixedElementsDetailComponent,
     FixedElementsListComponent
 } from '@ss/remuneration/elements-entry';
 import {InputFilterDetailComponent, InputFilterListComponent} from '@ss/remuneration/input-filters';
 import {ExcelInjectionComponent} from '@ss/remuneration/excel-injection';
-import {VacationPlanningDetailDetailComponent, VacationPlanningListComponent} from '@ss/remuneration/vacation-planning';
+import {
+    VacationPlanningDetailComponent,
+    VacationPlanningDetailDetailComponent,
+    VacationPlanningListComponent
+} from '@ss/remuneration/vacation-planning';
 import {EdoComponent} from '@ss/remuneration/edo';
-import {VacationPlanningDetailComponent} from '@ss/remuneration/vacation-planning';
-import {
-    SpecialPayrollDetailComponent,
-    SpecialPayrollListComponent
-} from '@ss/remuneration/special-payroll';
-import {
-    PayrollAmendmentDetailComponent,
-    PayrollAmendmentListComponent
-} from '@ss/remuneration/payroll-amendment';
+import {SpecialPayrollDetailComponent, SpecialPayrollListComponent} from '@ss/remuneration/special-payroll';
+import {PayrollAmendmentDetailComponent, PayrollAmendmentListComponent} from '@ss/remuneration/payroll-amendment';
 import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 import {DasComponent} from '@ss/remuneration/das';
 import {CacoComponent} from '@ss/remuneration/caco';
-import {MissionPreparationListComponent, MissionPreparationDetailComponent} from '@ss/hr-missions';
-import {TrajectoryListComponent, TrajectoryDetailComponent} from '@ss/hr-missions/mission-trajectories';
+import {MissionPreparationDetailComponent, MissionPreparationListComponent} from '@ss/hr-missions';
+import {TrajectoryDetailComponent, TrajectoryListComponent} from '@ss/hr-missions/mission-trajectories';
 import {SalaryGridDetailComponent, SalaryGridListComponent} from '@ss/payroll/salary-grid';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 
@@ -329,16 +324,9 @@ export const mainRoutes: Routes = [
     },
     {
         path: COMMON_REPORTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                data: { reportBase: 'payroll'},
-                component: ReportViewComponent,
-                canActivate: [CanActivateService]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
+        data: {reportBase: 'payroll'},
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }
