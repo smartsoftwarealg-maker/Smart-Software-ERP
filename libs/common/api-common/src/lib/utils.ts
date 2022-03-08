@@ -171,6 +171,10 @@ export function isNumber(value: any): boolean {
     return typeof value === 'number' || value instanceof Number;
 }
 
+export function isDate(value: any): boolean {
+    return value instanceof Date;
+}
+
 const ZERO_ASCII = 48;
 const NINE_ASCII = 57;
 
@@ -204,11 +208,11 @@ function isDigit(c: number): boolean {
     return ZERO_ASCII <= c && c <= NINE_ASCII;
 }
 
-function pad2(n: number): string {
+export function pad2(n: number): string {
     return (n < 10 ? '0' : '') + n;
 }
 
-function pad4(n: number): string {
+export function pad4(n: number): string {
     return (n < 10 ? '000' : (n < 100 ? '00' : (n < 1000 ? '0' : ''))) + n;
 }
 
