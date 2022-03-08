@@ -130,5 +130,8 @@
     "APPROVAL":             "",
     "GENERATE_GL":          "",
     "IS_PUBLIC":            "",
-    "DOCUMENT_NUMBERING":   ""
+    "DOCUMENT_NUMBERING":   "",
+    "INVOICE_DATE":   "",
+    "INVOICE_NUMBER": "",
+    "PAYMENT_ORDERS": ""
 }

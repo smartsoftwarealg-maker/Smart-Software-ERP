@@ -1,0 +1,35 @@
+.main-container {
+    height: 100%;
+    width: 98%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-table {
+    height: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}
+
+mat-table {
+    width: 900px;
+}
+
+.mat-column-ord_number,
+.mat-column-invoice_number,
+.mat-column-invoice_date,
+.mat-column-amount,
+.mat-column-ord_date {
+    flex: 0 1 100px
+}
+
+.mat-column-description,
+.mat-column-supplierName {
+    flex: 0 1 180px
+}

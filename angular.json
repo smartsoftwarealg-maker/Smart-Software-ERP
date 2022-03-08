@@ -103,6 +103,7 @@
         "purchases-api-purchase-order": "libs/purchases/api-purchase-order",
         "purchases-api-reception": "libs/purchases/api-reception",
         "purchases-assets": "libs/purchases/assets",
+        "purchases-payment-orders": "libs/purchases/payment-orders",
         "purchases-ui-purchase-order": "libs/purchases/ui-purchase-order",
         "purchases-ui-quotation": "libs/purchases/ui-quotation",
         "purchases-ui-reception": "libs/purchases/ui-reception",

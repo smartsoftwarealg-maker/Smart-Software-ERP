@@ -133,5 +133,8 @@
     "APPROVAL": "Agrément",
     "GENERATE_GL": "Générer des écritures comptables",
     "IS_PUBLIC":  "Publique",
-    "DOCUMENT_NUMBERING": "Numérotation des documents"
+    "DOCUMENT_NUMBERING": "Numérotation des documents",
+    "INVOICE_DATE":   "Date de facturation",
+    "INVOICE_NUMBER": "Numéro de facture",
+    "PAYMENT_ORDERS": "Ordres de paiement"
 }
