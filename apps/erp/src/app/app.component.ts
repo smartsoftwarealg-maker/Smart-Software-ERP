@@ -14,7 +14,7 @@ import {financeNavTree} from './finance/side-nav-tree';
 import {dashboardNavTree} from './dashboard/side-nav-tree';
 import {webArchNavTree} from './web-arch/side-nav-tree';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {zip} from 'rxjs';
+import {assetsNavTree} from './assets-app/side-nav-tree';
 
 @Component({
     selector: 'ss-root',
@@ -43,7 +43,8 @@ export class AppComponent implements OnInit {
             payrollNavTree,
             financeNavTree,
             dashboardNavTree,
-            webArchNavTree
+            webArchNavTree,
+            assetsNavTree
         ]);
         this.httpSrv
             .init()
