@@ -16,7 +16,8 @@ import {
     PURCHASES_APP_URL,
     SALES_APP_URL,
     STOCK_APP_URL,
-    WEBARCH_APP_URL
+    WEBARCH_APP_URL,
+    ASSETS_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
@@ -72,6 +73,10 @@ const routes: Routes = [
             {
                 path: WEBARCH_APP_URL,
                 loadChildren: () => import('./web-arch/web-arch.module').then(m => m.WebArchModule)
+            },
+            {
+                path: ASSETS_APP_URL,
+                loadChildren: () => import('./assets-app/assets.module').then(m => m.AssetsModule)
             },
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

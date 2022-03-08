@@ -21,6 +21,7 @@ export const FINANCE_APP_URL = 'finance';
 export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
+export const ASSETS_APP_URL = 'assets-app';
 
 // common
 export const COMMON_REPORTS_URL = 'reports';

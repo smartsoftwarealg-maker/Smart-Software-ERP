@@ -2,10 +2,9 @@
 
 /* You can add global styles to this file, and also import other style files */
 @use '@muaazh/datepicker/theming' as datepicker;
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
-$theme-ignore-duplication-warnings: true;
-
+mat.$theme-ignore-duplication-warnings: true;
 
 body {
     box-sizing: border-box;
@@ -36,20 +35,20 @@ $ss-white: (
         A400: #CCCCCC,
         A700: #BBBBBB,
         contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $dark-primary-text,
-            600: $dark-primary-text,
-            700: $dark-primary-text,
-            800: $dark-primary-text,
-            900: $dark-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
+            50: rgba(black, 0.87),
+            100: rgba(black, 0.87),
+            200: rgba(black, 0.87),
+            300: rgba(black, 0.87),
+            400: rgba(black, 0.87),
+            500: rgba(black, 0.87),
+            600: rgba(black, 0.87),
+            700: rgba(black, 0.87),
+            800: rgba(black, 0.87),
+            900: rgba(black, 0.87),
+            A100: rgba(black, 0.87),
+            A200: rgba(black, 0.87),
+            A400: rgba(black, 0.87),
+            A700: rgba(black, 0.87),
         )
 );
 
@@ -69,20 +68,20 @@ $ss-black: (
         A400: #606060,
         A700: #656565,
         contrast: (
-            50: $light-primary-text,
-            100: $light-primary-text,
-            200: $light-primary-text,
-            300: $light-primary-text,
-            400: $light-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $light-primary-text,
-            A200: $light-primary-text,
-            A400: $light-primary-text,
-            A700: $light-primary-text,
+            50: white,
+            100: white,
+            200: white,
+            300: white,
+            400: white,
+            500: white,
+            600: white,
+            700: white,
+            800: white,
+            900: white,
+            A100: white,
+            A200: white,
+            A400: white,
+            A700: white,
         )
 );
 
@@ -102,27 +101,27 @@ $ss-green: (
     A400: #58DD5F,
     A700: #4CDB53,
     contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $dark-primary-text,
-        600: $dark-primary-text,
-        700: $dark-primary-text,
-        800: $dark-primary-text,
-        900: $dark-primary-text,
-        A100: $dark-primary-text,
-        A200: $dark-primary-text,
-        A400: $dark-primary-text,
-        A700: $dark-primary-text,
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: rgba(black, 0.87),
+        A100: rgba(black, 0.87),
+        A200: rgba(black, 0.87),
+        A400: rgba(black, 0.87),
+        A700: rgba(black, 0.87),
     )
 );
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+@include mat.core();
 
 // Use these classes to style your components
 
@@ -146,7 +145,7 @@ $ss-green: (
         background-color: map-get($primary, 300);
     }
     .mat-header-cell {
-        color: mat-contrast($primary, 100);
+        color: mat.get-contrast-color-from-palette($primary, 100);
         font-weight: bolder;
     }
 
@@ -285,9 +284,9 @@ $ss-green: (
 
 }
 
-$theme-1-primary: mat-palette($mat-blue);
-$theme-1-accent:  mat-palette($mat-pink, A200, A100, A400);
-$theme-1-warn:    mat-palette($mat-red);
+$theme-1-primary: mat.define-palette(mat.$blue-palette);
+$theme-1-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme-1-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-1-bg-p {
     background-color: map-get($theme-1-primary, default);
@@ -307,17 +306,29 @@ $theme-1-warn:    mat-palette($mat-red);
 
 .theme-1 {
 
-    $theme: mat-light-theme($theme-1-primary, $theme-1-accent, $theme-1-warn);
+    $theme: mat.define-light-theme((
+        color: (
+            primary: $theme-1-primary,
+            accent: $theme-1-accent,
+            warn: $theme-1-warn
+        )
+    ));
 
-    @include angular-material-theme($theme);
+    @include mat.all-component-themes($theme);
     @include theme-classes($theme);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-1-accent, $theme-1-warn);
+        $reverse-theme-p: mat.define-dark-theme((
+            color: (
+                primary: mat.define-palette($ss-white, 500, 100, 700, 500),
+                accent: $theme-1-accent,
+                warn: $theme-1-warn
+            )
+        ));
         $reverse-color-p: map-get($reverse-theme-p, primary);
 
-        @include angular-material-color($reverse-theme-p);
+        @include mat.all-component-colors($reverse-theme-p);
 
         background-color: map-get($theme-1-primary, default) !important;
         color: map-get($reverse-color-p, default) !important;
@@ -336,20 +347,32 @@ $theme-1-warn:    mat-palette($mat-red);
     }
 
     .b-accent {
-        $reverse-theme-a: mat-dark-theme($theme-1-primary, mat-palette($ss-white), $theme-1-warn);
+        $reverse-theme-a: mat.define-dark-theme((
+            color: (
+                primary: $theme-1-primary,
+                accent: mat.define-palette($ss-white),
+                warn: $theme-1-warn
+            )
+        ));
         $reverse-color-a: map-get($reverse-theme-a, accent);
 
-        @include angular-material-color($reverse-theme-a);
+        @include mat.all-component-colors($reverse-theme-a);
 
         background-color: map-get($theme-1-accent, default)!important;
         color: map-get($reverse-color-a, default) !important;
     }
 
     .b-warn {
-        $reverse-theme-w: mat-dark-theme($theme-1-primary, $theme-1-accent, mat-palette($ss-white));
+        $reverse-theme-w: mat.define-dark-theme((
+            color: (
+                primary: $theme-1-primary,
+                accent: $theme-1-accent,
+                warn: mat.define-palette($ss-white)
+            )
+        ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
 
-        @include angular-material-color($reverse-theme-w);
+        @include mat.all-component-colors($reverse-theme-w);
 
         background-color: map-get($theme-1-warn, default) !important;
         color: map-get($reverse-color-w, default) !important;
@@ -363,9 +386,9 @@ $theme-1-warn:    mat-palette($mat-red);
     }
 }
 
-$theme-2-primary: mat-palette($mat-indigo);
-$theme-2-accent:  mat-palette($mat-orange, 900, 800, A700);
-$theme-2-warn:    mat-palette($mat-red);
+$theme-2-primary: mat.define-palette(mat.$indigo-palette);
+$theme-2-accent:  mat.define-palette(mat.$orange-palette, 900, 800, A700);
+$theme-2-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-2-bg-p {
     background-color: map-get($theme-2-primary, default);
@@ -385,17 +408,29 @@ $theme-2-warn:    mat-palette($mat-red);
 
 .theme-2 {
 
-    $theme: mat-light-theme($theme-2-primary, $theme-2-accent, $theme-2-warn);
+    $theme: mat.define-light-theme((
+        color: (
+            primary: $theme-2-primary,
+            accent: $theme-2-accent,
+            warn: $theme-2-warn
+        )
+    ));
 
-    @include angular-material-theme($theme);
+    @include mat.all-component-themes($theme);
     @include theme-classes($theme);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat-dark-theme(mat-palette($ss-white), $theme-2-accent, $theme-2-warn);
+        $reverse-theme-p: mat.define-dark-theme((
+            color: (
+                primary: mat.define-palette($ss-white),
+                accent: $theme-2-accent,
+                warn: $theme-2-warn
+            )
+        ));
         $reverse-color-p: map-get($reverse-theme-p, primary);
 
-        @include angular-material-color($reverse-theme-p);
+        @include mat.all-component-colors($reverse-theme-p);
 
         background-color: map-get($theme-2-primary, default);
         color: map-get($reverse-color-p, default);
@@ -415,20 +450,32 @@ $theme-2-warn:    mat-palette($mat-red);
 
 
     .b-accent {
-        $reverse-theme-a: mat-dark-theme($theme-2-primary, mat-palette($ss-white), $theme-2-warn);
+        $reverse-theme-a: mat.define-dark-theme((
+            color: (
+                primary: $theme-2-primary,
+                accent: mat.define-palette($ss-white),
+                warn: $theme-2-warn
+            )
+        ));
         $reverse-color-a: map-get($reverse-theme-a, accent);
 
-        @include angular-material-color($reverse-theme-a);
+        @include mat.all-component-colors($reverse-theme-a);
 
         background-color: map-get($theme-2-accent, default);
         color: map-get($reverse-color-a, default);
     }
 
     .b-warn {
-        $reverse-theme-w: mat-dark-theme($theme-2-primary, $theme-2-accent, mat-palette($ss-white));
+        $reverse-theme-w: mat.define-dark-theme((
+            color: (
+                primary: $theme-2-primary,
+                accent: $theme-2-accent,
+                warn: mat.define-palette($ss-white)
+            )
+        ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
 
-        @include angular-material-color($reverse-theme-w);
+        @include mat.all-component-colors($reverse-theme-w);
 
         background-color: map-get($theme-2-warn, default);
         color: map-get($reverse-color-w, default);
@@ -443,9 +490,9 @@ $theme-2-warn:    mat-palette($mat-red);
 }
 
 
-$theme-3-primary: mat-palette($ss-green);
-$theme-3-accent:  mat-palette($mat-lime, 100, 200, 300);
-$theme-3-warn:    mat-palette($mat-red);
+$theme-3-primary: mat.define-palette($ss-green);
+$theme-3-accent:  mat.define-palette(mat.$lime-palette, 100, 200, 300);
+$theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-3-bg-p {
     background-color: map-get($theme-3-primary, default);
@@ -465,17 +512,29 @@ $theme-3-warn:    mat-palette($mat-red);
 
 .theme-3 {
 
-    $theme: mat-dark-theme($theme-3-primary, $theme-3-accent, $theme-3-warn);
+    $theme: mat.define-dark-theme((
+        color: (
+            primary: $theme-3-primary,
+            accent: $theme-3-accent,
+            warn: $theme-3-warn
+        )
+    ));
 
-    @include angular-material-theme($theme);
+    @include mat.all-component-themes($theme);
     @include theme-classes($theme);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-3-accent, $theme-3-warn);
+        $reverse-theme-p: mat.define-light-theme((
+            color: (
+                primary: mat.define-palette($ss-black),
+                accent: $theme-3-accent,
+                warn: $theme-3-warn
+            )
+        ));
         $reverse-color-p: map-get($reverse-theme-p, primary);
 
-        @include angular-material-color($reverse-theme-p);
+        @include mat.all-component-colors($reverse-theme-p);
 
         background-color: map-get($theme-3-primary, default);
         color: map-get($reverse-color-p, default);
@@ -495,20 +554,32 @@ $theme-3-warn:    mat-palette($mat-red);
 
 
     .b-accent {
-        $reverse-theme-a: mat-light-theme($theme-3-primary, mat-palette($ss-black), $theme-3-warn);
+        $reverse-theme-a: mat.define-light-theme((
+            color: (
+                primary: $theme-3-primary,
+                accent: mat.define-palette($ss-black),
+                warn: $theme-3-warn
+            )
+        ));
         $reverse-color-a: map-get($reverse-theme-a, accent);
 
-        @include angular-material-color($reverse-theme-a);
+        @include mat.all-component-colors($reverse-theme-a);
 
         background-color: map-get($theme-3-accent, default);
         color: map-get($reverse-color-a, default);
     }
 
     .b-warn {
-        $reverse-theme-w: mat-light-theme($theme-3-primary, $theme-3-accent, mat-palette($ss-black));
+        $reverse-theme-w: mat.define-light-theme((
+            color: (
+                primary: $theme-3-primary,
+                accent: $theme-3-accent,
+                warn: mat.define-palette($ss-black)
+            )
+        ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
 
-        @include angular-material-color($reverse-theme-w);
+        @include mat.all-component-colors($reverse-theme-w);
 
         background-color: map-get($theme-3-warn, default);
         color: map-get($reverse-color-w, default);
@@ -522,9 +593,9 @@ $theme-3-warn:    mat-palette($mat-red);
 
 }
 
-$theme-4-primary: mat-palette($mat-yellow);
-$theme-4-accent:  mat-palette($mat-orange);
-$theme-4-warn:    mat-palette($mat-red);
+$theme-4-primary: mat.define-palette(mat.$yellow-palette);
+$theme-4-accent:  mat.define-palette(mat.$orange-palette);
+$theme-4-warn:    mat.define-palette(mat.$red-palette);
 
 .theme-4-bg-p {
     background-color: map-get($theme-4-primary, default);
@@ -544,17 +615,29 @@ $theme-4-warn:    mat-palette($mat-red);
 
 .theme-4 {
 
-    $theme: mat-dark-theme($theme-4-primary, $theme-4-accent, $theme-4-warn);
+    $theme: mat.define-dark-theme((
+        color: (
+            primary: $theme-4-primary,
+            accent: $theme-4-accent,
+            warn: $theme-4-warn
+        )
+    ));
 
-    @include angular-material-theme($theme);
+    @include mat.all-component-themes($theme);
     @include theme-classes($theme);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat-light-theme(mat-palette($ss-black), $theme-4-accent, $theme-4-warn);
+        $reverse-theme-p: mat.define-light-theme((
+            color: (
+                primary: mat.define-palette($ss-black),
+                accent: $theme-4-accent,
+                warn: $theme-4-warn
+            )
+        ));
         $reverse-color-p: map-get($reverse-theme-p, primary);
 
-        @include angular-material-color($reverse-theme-p);
+        @include mat.all-component-colors($reverse-theme-p);
 
         background-color: map-get($theme-4-primary, default);
         color: map-get($reverse-color-p, default);
@@ -574,20 +657,32 @@ $theme-4-warn:    mat-palette($mat-red);
 
 
     .b-accent {
-        $reverse-theme-a: mat-light-theme($theme-4-primary, mat-palette($ss-black), $theme-4-warn);
+        $reverse-theme-a: mat.define-light-theme((
+            color: (
+                primary: $theme-4-primary,
+                accent: mat.define-palette($ss-black),
+                warn: $theme-4-warn
+            )
+        ));
         $reverse-color-a: map-get($reverse-theme-a, accent);
 
-        @include angular-material-color($reverse-theme-a);
+        @include mat.all-component-colors($reverse-theme-a);
 
         background-color: map-get($theme-4-accent, default);
         color: map-get($reverse-color-a, default);
     }
 
     .b-warn {
-        $reverse-theme-w: mat-light-theme($theme-4-primary, $theme-4-accent, mat-palette($ss-black));
+        $reverse-theme-w: mat.define-light-theme((
+            color: (
+                primary: $theme-4-primary,
+                accent: $theme-4-accent,
+                warn: mat.define-palette($ss-black)
+            )
+        ));
         $reverse-color-w: map-get($reverse-theme-w, warn);
 
-        @include angular-material-color($reverse-theme-w);
+        @include mat.all-component-colors($reverse-theme-w);
 
         background-color: map-get($theme-4-warn, default);
         color: map-get($reverse-color-w, default);

@@ -14,6 +14,7 @@ import {financeNavTree} from './finance/side-nav-tree';
 import {dashboardNavTree} from './dashboard/side-nav-tree';
 import {webArchNavTree} from './web-arch/side-nav-tree';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import {assetsNavTree} from './assets-app/side-nav-tree';
 import {of, zip} from 'rxjs';
 import {Event, NavigationEnd, Router} from '@angular/router';
 
@@ -45,7 +46,8 @@ export class AppComponent implements OnInit {
             payrollNavTree,
             financeNavTree,
             dashboardNavTree,
-            webArchNavTree
+            webArchNavTree,
+            assetsNavTree
         ]);
         this.httpSrv
             .init()
