@@ -824,3 +824,9 @@ $theme-4-warn:    mat-palette($mat-red);
     }
 
 }
+
+.amount {
+    input {
+        text-align: end;
+    }
+}
