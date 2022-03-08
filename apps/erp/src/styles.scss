@@ -1,7 +1,7 @@
 // todo: make this file shared
 
 /* You can add global styles to this file, and also import other style files */
-@use '@matheo/datepicker/theming' as datepicker;
+@use '@muaazh/datepicker/theming' as datepicker;
 @import '~@angular/material/theming';
 
 $theme-ignore-duplication-warnings: true;

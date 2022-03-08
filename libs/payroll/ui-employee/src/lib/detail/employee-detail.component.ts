@@ -169,7 +169,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public readForm(): Employee {
-        return this.form.value;
+        const e: Employee = this.form.value;
+        console.log(e.birthDate);
+        return e;
     }
 
     uploadAttachments(id: number): Observable<any> {
