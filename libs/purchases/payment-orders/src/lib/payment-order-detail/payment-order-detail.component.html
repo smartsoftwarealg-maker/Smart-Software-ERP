@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="ord_number" type="number" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="ord_date"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="supplierAutoCompleteModel"
+                                  formControlName="agent_id"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_INVOICE_NUMBER</mat-label>
+                <input matInput formControlName="invoice_number" type="text" required>
+                <mat-error *ngIf="form.controls['invoice_number'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-100">
+                <mat-label translate>LOGISTICS_INVOICE_DATE</mat-label>
+                <ss-date-picker formControlName="invoice_date"></ss-date-picker>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

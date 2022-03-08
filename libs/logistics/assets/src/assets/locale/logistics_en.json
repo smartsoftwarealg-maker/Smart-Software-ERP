@@ -134,5 +134,8 @@
     "APPROVAL": "Approval",
     "GENERATE_GL": "Generate accounting entries",
     "IS_PUBLIC":  "Public",
-    "DOCUMENT_NUMBERING": "Document numbering"
+    "DOCUMENT_NUMBERING": "Document numbering",
+    "INVOICE_DATE":   "Invoice date",
+    "INVOICE_NUMBER": "Invoice number",
+    "PAYMENT_ORDERS": "Payment orders"
 }

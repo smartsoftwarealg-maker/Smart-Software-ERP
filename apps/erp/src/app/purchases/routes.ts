@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
-import {docInfoRoutes, PURCHASE_QUOTATION_URL} from '../common';
+import {docInfoRoutes, MISSION_TRAJECTORIES, PAYMENT_ORDER, PURCHASE_QUOTATION_URL} from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -13,6 +13,7 @@ import {
     QuotationLinesDetailComponent,
     QuotationListComponent
 } from '@ss/purchases/ui-quotation';
+import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 
 export const routes: Routes = [
     {

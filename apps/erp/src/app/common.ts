@@ -72,6 +72,7 @@ export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const PURCHASE_RECEPTION_URL = 'receptions';
 export const PURCHASE_ORDER_URL = 'porders';
 export const PURCHASE_QUOTATION_URL = 'offers';
+export const PAYMENT_ORDER = 'payment-orders';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
@@ -202,6 +203,7 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
 export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
+export const ABS_FINANCE_PAYMENT_ORDERS    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
 export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
