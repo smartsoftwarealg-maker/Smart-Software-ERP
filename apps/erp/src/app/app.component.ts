@@ -14,7 +14,8 @@ import {financeNavTree} from './finance/side-nav-tree';
 import {dashboardNavTree} from './dashboard/side-nav-tree';
 import {webArchNavTree} from './web-arch/side-nav-tree';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {zip} from 'rxjs';
+import {of, zip} from 'rxjs';
+import {Event, NavigationEnd, Router} from '@angular/router';
 
 @Component({
     selector: 'ss-root',
@@ -29,7 +30,8 @@ export class AppComponent implements OnInit {
                 private shellSrv: ShellService,
                 private langSrv: LanguageService,
                 private loginSrv: LoginService,
-                private monthSelectorSrv: PayrollMonthService) {}
+                private monthSelectorSrv: PayrollMonthService,
+                private router: Router) {}
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Smart Software ERP  (pre-Alpha)');
@@ -49,11 +51,26 @@ export class AppComponent implements OnInit {
             .init()
             .pipe(switchMap(() => this.langSrv.init()),
                   switchMap(_ => this.loginSrv.reload()),
-                  switchMap(_ =>  this.monthSelectorSrv.curMonthLabel()),
-                  tap(res => this.shellSrv.setLabels([{ title: res }])))
+                  switchMap(_ =>  this.monthSelectorSrv.curMonthLabel()))
             .subscribe({ next:  () => this.loaded = true,
                                   error: () => this.loginSrv.logout()
                                 });
+
+        this.router
+            .events
+            .pipe(tap((event: Event) => {
+                if (event instanceof NavigationEnd) {
+                        console.log(event.url)
+                    if(event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
+                        const obs = this.monthSelectorSrv.curMonthLabel();
+                        //TODO: fix this bad code.
+                        obs.subscribe(str => this.shellSrv.setLabels([{title: str}]));
+                    } else {
+                        this.shellSrv.setLabels([{title: ''}]);
+                    }
+                }
+            }))
+            .subscribe(str => {});
     }
 
 }

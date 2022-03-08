@@ -9,5 +9,4 @@ import {lookupRoutes} from './routes';
         RouterModule.forChild(lookupRoutes)
     ]
 })
-export class PayrollLookupsModule {
-}
+export class PayrollLookupsModule {}
