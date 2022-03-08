@@ -52,7 +52,9 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
 
 
     finishLoading(e: ReportsCatalog) {
-        this.reportListsService.getListByApp(this.app).subscribe((res: string[]) => {
+        this.reportListsService
+            .getListByApp(this.app)
+            .subscribe((res: string[]) => {
             this.reportList = res;
             super.finishLoading(e);
         });
@@ -76,8 +78,11 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
     }
 
     public selectApp(event: MatSelectChange) {
-        this.reportListsService.getListByApp(event.value.toLowerCase()).subscribe((res: string[]) => {
-            this.reportList = res;
-        });
+        this.reportListsService
+            .getListByApp(event.value.toLowerCase())
+            .subscribe((res: string[]) => {
+                console.log(res);
+                this.reportList = res.filter(e => e.indexOf('forms') > 0);
+            });
     }
 }
