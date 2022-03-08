@@ -27,4 +27,6 @@ export * from './lib/suspension-reason.component';
 export * from './lib/employment-type.component';
 export * from './lib/sales.category.component';
 export * from './lib/division.component';
+export * from './lib/professional-fault.component';
+export * from './lib/punishment-type.component';
 

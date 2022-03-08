@@ -1,0 +1,43 @@
+$table_width: 600px;
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow-y: auto;
+}
+mat-table {
+    width: 600px;
+    min-height: 180px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.mat-column-sanction,
+.mat-column-typeName,
+.mat-column-faultName,
+.mat-column-memo {
+    flex: 1 1 120px;
+}
+
+.mat-column-date,
+.mat-column-number {
+    flex: 1 1 90px;
+}

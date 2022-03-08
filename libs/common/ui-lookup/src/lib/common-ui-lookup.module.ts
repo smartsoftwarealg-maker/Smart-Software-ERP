@@ -34,6 +34,11 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import {DivisionDetailComponent, DivisionListComponent} from './division.component';
 import { DepartmentDetailComponent, DepartmentListComponent } from './department.component';
 import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.category.component";
+import {
+    ProfessionalFaultDetailComponent,
+    ProfessionalFaultListComponent
+} from './professional-fault.component';
+import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './punishment-type.component';
 
 @NgModule({
     imports: [
@@ -108,7 +113,11 @@ import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.
         DivisionDetailComponent,
         DiplomaDetailComponent,
         DepartmentDetailComponent,
-        DepartmentListComponent
+        DepartmentListComponent,
+        PunishmentTypeDetailComponent,
+        PunishmentTypeListComponent,
+        ProfessionalFaultListComponent,
+        ProfessionalFaultDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -171,7 +180,11 @@ import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.
         DivisionListComponent,
         DiplomaDetailComponent,
         DepartmentDetailComponent,
-        DepartmentListComponent
+        DepartmentListComponent,
+        PunishmentTypeDetailComponent,
+        PunishmentTypeListComponent,
+        ProfessionalFaultListComponent,
+        ProfessionalFaultDetailComponent
     ]
 })
 export class CommonUiLookupModule { }

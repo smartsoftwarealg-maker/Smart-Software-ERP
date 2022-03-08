@@ -25,6 +25,7 @@ export const WEBARCH_APP_URL = 'webarch';
 // common
 export const COMMON_REPORTS_URL = 'reports';
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -71,6 +72,7 @@ export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const PURCHASE_RECEPTION_URL = 'receptions';
 export const PURCHASE_ORDER_URL = 'porders';
 export const PURCHASE_QUOTATION_URL = 'offers';
+export const PAYMENT_ORDER = 'payment-orders';
 
 // Logistics
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
@@ -96,6 +98,8 @@ export const SALES_PROFORMA_URL = 'proforma';
 export const HR_CATEGORIES_URL = 'categories';
 export const HR_SERVICES_URL = 'services';
 export const HR_DIPLOMAS_URL = 'diplomas';
+export const HR_PROFESSIONAL_FAULT_URL = 'prof-faults';
+export const HR_PUNISHMENT_TYPE_URL = 'punishment-types';
 export const HR_EDUCATION_LEVELS_URL = 'educationLevels';
 export const HR_MARITAL_STATUS_URL = 'maritalStatus';
 export const HR_POSTS_URL = 'posts';
@@ -199,6 +203,7 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
 export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
+export const ABS_FINANCE_PAYMENT_ORDERS    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
 export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
@@ -209,6 +214,8 @@ export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_U
 export const ABS_HR_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIPLOMAS_URL].join('/');
 export const ABS_HR_EDUCATION_LEVELS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_EDUCATION_LEVELS_URL].join('/');
 export const ABS_HR_MARITAL_STATUS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_MARITAL_STATUS_URL].join('/');
+export const ABS_PROFESSIONAL_FAULTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_PROFESSIONAL_FAULT_URL].join('/');
+export const ABS_PUNISHMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_PUNISHMENT_TYPE_URL].join('/');
 export const ABS_HR_POSTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_POSTS_URL].join('/');
 export const ABS_HR_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_NATIONALITIES_URL].join('/');
 export const ABS_HR_SERVICES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SERVICES_URL].join('/');

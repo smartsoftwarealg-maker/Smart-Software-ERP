@@ -134,5 +134,8 @@
     "APPROVAL": "موافقة",
     "GENERATE_GL": "توليد قيود محاسبية",
     "IS_PUBLIC":  "عمومي",
-    "DOCUMENT_NUMBERING": "ترقيم الوثائق"
+    "DOCUMENT_NUMBERING": "ترقيم الوثائق",
+    "INVOICE_DATE":   "تاريخ الفاتورة",
+    "INVOICE_NUMBER": "رقم الفاتورة",
+    "PAYMENT_ORDER": "أوامر الدفع"
 }

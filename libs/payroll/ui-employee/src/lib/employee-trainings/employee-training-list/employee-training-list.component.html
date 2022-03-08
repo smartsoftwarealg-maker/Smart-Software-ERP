@@ -1,0 +1,155 @@
+<div class="buttons">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selected"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selected"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="reference" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_REFERENCE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ref_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.ref_date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="motiveName" >
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_MOTIVE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.motiveName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="from_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_FROM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.from_date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_TO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.to_date | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="diplomaName">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_DIPLOMA
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.diplomaName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="day_count">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_DAY_COUNT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.day_count}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="training">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_TRAINING
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.training}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="trainer">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_INSTITUTION
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.trainer}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_LOCATION
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.location}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="mission_expenses">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_MISSION_EXPENSES
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.mission_expenses | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="trn_expenses">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_TRAINING_EXPENSES
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.trn_expenses | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="extra_expenses">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_EXTRA_EXPENSES
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.trn_expenses | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="judicialName">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_JUDICIAL_FRAME
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.judicialName}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

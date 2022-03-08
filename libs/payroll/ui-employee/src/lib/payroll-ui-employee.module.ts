@@ -18,6 +18,12 @@ import { EmployeeContractListComponent } from './employee-contracts/employee-con
 import { EmployeeContractsDetailComponent } from './employee-contracts/employee-contracts-detail.component';
 import { EmployeeWifeDetailComponent } from './employee-wives/employee-wife-detail.component';
 import { EmployeeWivesListComponent } from './employee-wives/employee-wives-list.component';
+import { EmployeeDiplomaListComponent } from './employee-diplomas/employee-diploma-list/employee-diploma-list.component';
+import { EmployeeDiplomaDetailComponent } from './employee-diplomas/employee-diploma-detail/employee-diploma-detail.component';
+import { EmployeeTrainingListComponent } from './employee-trainings/employee-training-list/employee-training-list.component';
+import { EmployeeTrainingDetailComponent } from './employee-trainings/employee-training-detail/employee-training-detail.component';
+import { PunishmentListComponent } from './punishments/punishment-list/punishment-list.component';
+import { PunishmentDetailComponent } from './punishments/punishment-detail/punishment-detail.component';
 
 @NgModule({
     imports: [
@@ -48,7 +54,13 @@ import { EmployeeWivesListComponent } from './employee-wives/employee-wives-list
         EmployeeContractListComponent,
         EmployeeContractsDetailComponent,
         EmployeeWivesListComponent,
-        EmployeeWifeDetailComponent
+        EmployeeWifeDetailComponent,
+        EmployeeDiplomaListComponent,
+        EmployeeDiplomaDetailComponent,
+        EmployeeTrainingListComponent,
+        EmployeeTrainingDetailComponent,
+        PunishmentListComponent,
+        PunishmentDetailComponent
     ]
 })
 export class PayrollUiEmployeeModule {

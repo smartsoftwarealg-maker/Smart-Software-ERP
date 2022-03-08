@@ -1,0 +1,45 @@
+$table_width: 1020px;
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow-y: auto;
+}
+mat-table {
+    width: 1000px;
+    min-height: 180px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.mat-column-diploma,
+.mat-column-subjectName,
+.mat-column-memo,
+.mat-column-levelName,
+.mat-column-institution {
+    flex: 1 1 110px;
+}
+
+.mat-column-from_date,
+.mat-column-year,
+.mat-column-to_date {
+    flex: 1 1 90px;
+}

@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/purchases/payment-orders",
+    "sourceRoot": "libs/purchases/payment-orders/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/purchases/payment-orders"],
+            "options": {
+                "jestConfig": "libs/purchases/payment-orders/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/purchases/payment-orders/src/**/*.ts",
+                    "libs/purchases/payment-orders/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

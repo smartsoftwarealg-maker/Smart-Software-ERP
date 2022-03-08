@@ -98,5 +98,19 @@
     "EMPLOYEE_WIFE_DETAIL": "Spouses detail",
     "Name": "Name",
     "NAME_AR": "Name (Arabic)",
-    "REFERENCE": ""
+    "REFERENCE": "",
+    "DIPLOMA":         "",
+    "INSTITUTION":     "",
+    "EDUCATION_LEVEL": "",
+    "DIPLOMA_SUBJECT": "",
+    "TRN_PROVIDER": "",
+    "TRAININGS":          "Trainings",
+    "DAY_COUNT":          "Number of days",
+    "TRAINING":           "Training",
+    "LOCATION":           "Location",
+    "DIPLOMA":            "Diploma",
+    "MISSION_EXPENSES":   "Mission expenses",
+    "TRAINING_EXPENSES": "Training expenses",
+    "EXTRA_EXPENSES":     "Extra expenses",
+    "JUDICIAL_FRAME":     "Judicial frame"
 }

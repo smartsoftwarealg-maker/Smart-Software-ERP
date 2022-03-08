@@ -1,0 +1,55 @@
+$table_width: 1020px;
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.table-container {
+    width: 100%;
+    display: block;
+    margin: auto;
+    max-width: $table_width;
+    overflow-y: auto;
+}
+mat-table {
+    width: 1600px;
+    min-height: 180px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.mat-column-diplomaName,
+.mat-column-judicialName,
+.mat-column-motiveName,
+.mat-column-training,
+.mat-column-location,
+.mat-column-trainer {
+    flex: 1 1 120px;
+}
+
+.mat-column-reference,
+.mat-column-day_count,
+.mat-column-ref_date,
+.mat-column-from_date,
+.mat-column-to_date {
+    flex: 1 1 90px;
+}
+
+.mat-column-mission_expenses,
+.mat-column-trn_expenses,
+.mat-column-extra_expenses {
+    flex: 1 1 90px;
+    justify-content: end;
+}
