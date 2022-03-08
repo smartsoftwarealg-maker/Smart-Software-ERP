@@ -12,13 +12,19 @@
                 <ss-date-picker formControlName="ord_date"></ss-date-picker>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100 amount">
+                <mat-label translate>COMMON_AMOUNT</mat-label>
+                <input matInput formControlName="amount" type="number" required>
+                <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required>
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
-
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>

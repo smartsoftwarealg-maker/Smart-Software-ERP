@@ -81,7 +81,6 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         this.reportListsService
             .getListByApp(event.value.toLowerCase())
             .subscribe((res: string[]) => {
-                console.log(res);
                 this.reportList = res.filter(e => e.indexOf('forms') > 0);
             });
     }
