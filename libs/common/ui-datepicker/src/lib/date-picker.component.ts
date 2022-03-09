@@ -6,7 +6,14 @@ import {
     NgControl
 } from '@angular/forms';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { isString, strToDate, strToDateTime, removeTimeForDateStr, dateToYmdStr } from '@ss/common/api-common';
+import {
+    isString,
+    strToDate,
+    strToDateTime,
+    removeTimeForDateStr,
+    dateTimeToYmdStr,
+    dateToYmdStr
+} from '@ss/common/api-common';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -118,7 +125,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     lastErrorState = false;
 
     @Input()
-    outputFormat: 'dateObject' | 'dateStr' | 'datetimeStr' = 'dateStr'; // todo: add 'datetime'
+    outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
@@ -247,13 +254,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             if (isString(obj)) {
                 return removeTimeForDateStr(obj);
             }
-            return removeTimeForDateStr(dateToYmdStr(obj));
-        }
-        if (this.outputFormat === 'datetimeStr') {
-            if (isString(obj)) {
-                return obj;
-            }
-            return dateToYmdStr(obj);
+            return this.time ? dateTimeToYmdStr(obj) : dateToYmdStr(obj);
         }
         if (this.outputFormat === 'dateObject') {
             if (isString(obj)) {

@@ -430,7 +430,7 @@ export class ShellService {
 
     public setLabels(labels: ToolbarLabel[]): void {
         this.labels = labels;
-        console.log(labels);
+        //console.log(labels);
         this.updateShell();
     }
 

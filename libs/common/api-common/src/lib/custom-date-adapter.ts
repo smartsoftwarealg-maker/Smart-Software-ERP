@@ -21,28 +21,46 @@ function isValidDate(y: number, m: number, d: number): boolean {
         1 <= d && d <= getNumDaysInMonth(y, m);
 }
 
-function toNumbers(args: string[]): number[] {
-    return [+args[0], +args[1], +args[2]];
+function isTimeValid(h: number, m: number, s: number) {
+    return 0 <= s && s <= 59
+        && 0 <= m && m <= 59
+        && 0 <= h && h <= 23;
 }
 
 function stringToDate(s: string): Date {
-    if (s.match('^\d+[-\/\.]\d+[-\/\.]\d+$')) {
-        const args = s.match('\d+');
-        if (args.length == 3) {
+    if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+$/g)) {
+        const args = s.match(/\d+/g);
+        if (args[0].length == 4) {
+            const ymd = args.map(k => +k);
+            if (isValidDate(ymd[0], ymd[1], ymd[2])) {
+                return new Date(ymd[0], ymd[1] - 1, ymd[2]);
+            }
+        } else if (args[2].length == 4) {
+            const dmy = args.map(k => +k);
+            if (isValidDate(dmy[2], dmy[1], dmy[0])) {
+                return new Date(dmy[2], dmy[1] - 1, dmy[0]);
+            }
+        }
+    } else if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+$/g) || s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+\:\d+$/g)) {
+        const args = s.match(/\d+/g);
+        if (args.length == 5) {
+            args.push('0');
+        }
+        if (isTimeValid(+args[3], +args[4], +args[5])) {
             if (args[0].length == 4) {
-                const ymd = toNumbers(args);
+                const ymd = args.map(k => +k);
                 if (isValidDate(ymd[0], ymd[1], ymd[2])) {
-                    return new Date(ymd[0], ymd[1] - 1, ymd[2]);
+                    return new Date(ymd[0], ymd[1] - 1, ymd[2], ymd[3], ymd[4], ymd[5]);
                 }
             } else if (args[2].length == 4) {
-                const dmy = toNumbers(args);
+                const dmy = args.map(k => +k);
                 if (isValidDate(dmy[2], dmy[1], dmy[0])) {
-                    return new Date(dmy[2], dmy[1] - 1, dmy[0]);
+                    return new Date(dmy[2], dmy[1] - 1, dmy[0], dmy[3], dmy[4], dmy[5]);
                 }
             }
         }
     }
-    throw new Error("Invalid date '" + s + "'");
+    return null; // invalid date
 }
 
 function toDate(date: Date | string): Date {
@@ -52,7 +70,7 @@ function toDate(date: Date | string): Date {
     if (isDate(date)) {
         return date as Date;
     }
-    throw new Error("Invalid date " + date);
+    return null; // invalid date
 }
 
 @Injectable()
