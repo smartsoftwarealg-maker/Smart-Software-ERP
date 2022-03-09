@@ -40,7 +40,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_BIRTH_DATE</mat-label>
-                <ss-date-picker [time]="true" required="true" formControlName="birthDate"></ss-date-picker>
+                <ss-date-picker required="true" formControlName="birthDate"></ss-date-picker>
                 <mat-error *ngIf="form.controls.birthDate.hasError('required')" translate>
                     COMMON_FIELD_REQUIRED
                 </mat-error>

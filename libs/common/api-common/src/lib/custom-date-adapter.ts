@@ -28,7 +28,6 @@ function isTimeValid(h: number, m: number, s: number) {
 }
 
 function stringToDate(s: string): Date {
-    console.log('stringToDate');
     if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+$/g)) {
         const args = s.match(/\d+/g);
         if (args[0].length == 4) {
