@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
             .events
             .pipe(tap((event: Event) => {
                 if (event instanceof NavigationEnd) {
-                        console.log(event.url)
+                        //console.log(event.url)
                     if(event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
                         const obs = this.monthSelectorSrv.curMonthLabel();
                         //TODO: fix this bad code.
