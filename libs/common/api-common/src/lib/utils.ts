@@ -30,70 +30,67 @@ function assertTrue(b: boolean): void {
 }
 
 
+/** 
+      @param month is not 1-based
+*/
+function getNumDaysInMonth(year: number, month: number): number {
+    // The month is zero based, but the day is not
+    // day ZERO = takes us back to the last month
+    return new Date(year, month, 0).getDate();
+}
+
+/** 
+      @param m: month is not 1-based
+*/
+function isValidDate(y: number, m: number, d: number): boolean {
+    return 1 <= m && m <= 12
+        &&
+        1 <= d && d <= getNumDaysInMonth(y, m);
+}
+
+function isTimeValid(h: number, m: number, s: number) {
+    return 0 <= s && s <= 59
+        && 0 <= m && m <= 59
+        && 0 <= h && h <= 23;
+}
+
 /*
  * This code is long and stupid, I know. But it allows for mistakes like 2018-01/02 to be valid
  */
 export function strToDateTime(s: string) {
-    if (s == null || !isString(s)) {
-        return null;
-    } else {
-        const str = s.trim();
-        try {
-            // smallest format example 0001/1/1 <-- 8 chars
-            assertTrue(str.length >= 8);
-            const pos = [0];
-            // yyyy
-            let ymd = true;
-            let year = 0;
-            let day = 0;
-            try {
-                year = parse4Digits(str, [0]);
-                pos[0] = 4;
-            } catch (e) {
-                day = parse2Digits(str, pos);
-                ymd = false;
+    if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+$/g)) {
+        const args = s.match(/\d+/g);
+        if (args[0].length == 4) {
+            const ymd = args.map(k => +k);
+            if (isValidDate(ymd[0], ymd[1], ymd[2])) {
+                return new Date(ymd[0], ymd[1] - 1, ymd[2]);
             }
-            let separator = str.charAt(pos[0]);
-            assertTrue(separator === '/' || separator === '-');
-            pos[0]++;
-            // mm
-            const month = parse2Digits(str, pos);
-            separator = str.charAt(pos[0]);
-            assertTrue(separator === '/' || separator === '-');
-            pos[0]++;
-            // dd
-            if (ymd) {
-                day = parse2Digits(str, pos);
-            } else {
-                year = parse4Digits(str, pos);
+        } else if (args[2].length == 4) {
+            const dmy = args.map(k => +k);
+            if (isValidDate(dmy[2], dmy[1], dmy[0])) {
+                return new Date(dmy[2], dmy[1] - 1, dmy[0]);
             }
-            if (pos[0] === str.length) {
-                return new Date(year, month - 1, day, 0, 0, 0);
+        }
+    } else if (s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+$/g) || s.match(/^\d+[-\/\.]\d+[-\/\.]\d+ \d+\:\d+\:\d+$/g)) {
+        const args = s.match(/\d+/g);
+        if (args.length == 5) {
+            args.push('0');
+        }
+        if (isTimeValid(+args[3], +args[4], +args[5])) {
+            if (args[0].length == 4) {
+                const ymd = args.map(k => +k);
+                if (isValidDate(ymd[0], ymd[1], ymd[2])) {
+                    return new Date(ymd[0], ymd[1] - 1, ymd[2], ymd[3], ymd[4], ymd[5]);
+                }
+            } else if (args[2].length == 4) {
+                const dmy = args.map(k => +k);
+                if (isValidDate(dmy[2], dmy[1], dmy[0])) {
+                    return new Date(dmy[2], dmy[1] - 1, dmy[0], dmy[3], dmy[4], dmy[5]);
+                }
             }
-            separator = str.charAt(pos[0]);
-            assertTrue(separator === ' ');
-            pos[0]++;
-            // hour
-            const hour = parse2Digits(str, pos);
-            // minute
-            separator = str.charAt(pos[0]);
-            assertTrue(separator === ':');
-            pos[0]++;
-            const minute = parse2Digits(str, pos);
-            if (pos[0] === str.length) {
-                return new Date(year, month - 1, day, hour, minute, 0);
-            }
-            // second
-            separator = str.charAt(pos[0]);
-            assertTrue(separator === ':');
-            pos[0]++;
-            const second = parse2Digits(str, pos);
-            assertTrue(pos[0] === str.length);
-            return new Date(year, month - 1, day, hour, minute, second);
-        } catch (ex) {
-            return null;
         }
     }
+    return null; // invalid date
 }
 
 
