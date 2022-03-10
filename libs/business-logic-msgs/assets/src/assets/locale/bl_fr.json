@@ -20,5 +20,7 @@
     "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
     "MISSING_ACCOUNT":                    "Numéro de compte manquant",
     "STOCKED_ITEM":                       "Article stockable. Non stockable ne peut pas être vérifié.",
-    "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours"
+    "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours",
+    "MONTH_CLOSED":                       "Le mois sélectionné est fermé. Les mises à jour ne sont pas autorisées!",
+    "MISSING_HIRE_DATE":                  "La date de recrutement est manquante."
 }

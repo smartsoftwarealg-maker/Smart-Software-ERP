@@ -123,5 +123,8 @@
     "FAULTS":              "Faults",
     "PUNISHMENT":         "Punishment",
     "PUNISHMENTS":        "Punishments",
-    "FAULT_TYPE":         "Fault type"
+    "FAULT_TYPE":         "Fault type",
+    "DECISION":           "Decision",
+    "STARTING_MONTH":     "Starting month"
+
 }

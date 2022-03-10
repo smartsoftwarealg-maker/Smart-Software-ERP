@@ -21,5 +21,7 @@
     "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
     "MISSING_ACCOUNT":              "رقم الحساب مفقود",
     "STOCKED_ITEM":                 "عنصر مخزن",
-    "NOT_CURRENT_MONTH":            "الشهر المحدد ليس الشهر الحالي"
+    "NOT_CURRENT_MONTH":            "الشهر المحدد ليس الشهر الحالي",
+    "MONTH_CLOSED":                 "الشهر المحدد مغلق. التحديثات غير مسموح بها!",
+    "MISSING_HIRE_DATE":            "تاريخ التوظيف مفقود."
 }

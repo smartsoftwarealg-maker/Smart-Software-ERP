@@ -15,4 +15,5 @@ export interface EmployeeDiploma {
     education_level?: number;
     levelName?: string;
     subjectName?: string;
+    diplomaName?: string;
 }

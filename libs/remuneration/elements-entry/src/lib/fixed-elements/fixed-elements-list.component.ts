@@ -11,6 +11,7 @@ import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {FixedElementsEntryService} from './fixed-elements-entry.service';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
   selector: 'ss-fixed-elements-list',
@@ -35,6 +36,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService,
         private employeeSrv: EmployeeService,
+        private monthSelectorSrv: PayrollMonthService,
         private httpSrv: HttpService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
         this.pagination.pageSize = 15;
@@ -64,6 +66,9 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         super.ngOnInit();
         // this.deleteButton.visible = false;
         this.addButton.visible = false;
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => this.editButton.visible = upd);
     }
 
     preload(): Observable<any> {

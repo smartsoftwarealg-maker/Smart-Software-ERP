@@ -17,12 +17,12 @@
 <div class="table-container">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
-        <ng-container matColumnDef="diploma" style="justify-content: center; text-align: center">
+        <ng-container matColumnDef="diplomaName" style="justify-content: center; text-align: center">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                 PAYROLL_DIPLOMAS
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{langSrv.formatPaymonth(e.diploma)}}
+                {{e.diplomaName}}
             </mat-cell>
         </ng-container>
 

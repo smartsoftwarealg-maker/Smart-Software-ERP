@@ -22,7 +22,7 @@ import {SupplierService} from '@ss/logistics/api-agent';
 export class EmployeeDiplomaDetailComponent extends BaseEntityDetailComponent<EmployeeDiploma> implements OnInit, OnDestroy  {
     educationLevelAutoCompleteModel = new DefaultAutoCompleteModel(this.educationLevelSrv);
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
-    supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv);
+    supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     subjectAutoCompleteModel = new DefaultAutoCompleteModel(this.subjectSrv);
     entity: EmployeeDiploma = null;
 

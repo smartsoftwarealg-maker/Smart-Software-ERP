@@ -123,5 +123,7 @@
     "FAULT":             "أخطاء",
     "PUNISHMENT":        "عقاب",
     "PUNISHMENTS":       "العقوبات",
-    "FAULT_TYPE":        "نوع الخطأ"
+    "FAULT_TYPE":        "نوع الخطأ",
+    "DECISION":          "قرار",
+    "STARTING_MONTH":     "شهر البدء"
 }

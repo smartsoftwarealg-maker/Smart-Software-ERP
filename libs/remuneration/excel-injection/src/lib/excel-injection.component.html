@@ -10,7 +10,7 @@
             <button mat-mini-fab color="primary"
                     class="upload-btn"
                     (click)="fileUpload.click()"
-                    *ngIf="!uploadProgress">
+                    *ngIf="!uploadProgress && updatable">
                 <i class="fas fa-paperclip"></i>
             </button>
         </div>

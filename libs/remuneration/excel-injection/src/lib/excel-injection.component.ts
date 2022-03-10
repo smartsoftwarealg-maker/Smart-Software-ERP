@@ -5,13 +5,15 @@ import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SnackBarService} from '@ss/common/ui-shell';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
   selector: 'ss-excel-injection',
   templateUrl: './excel-injection.component.html',
   styleUrls: ['./excel-injection.component.scss']
 })
-export class ExcelInjectionComponent  {
+export class ExcelInjectionComponent implements OnInit {
+    updatable = false;
 
     @Input()
     requiredFileType = '.xlsx';
@@ -24,7 +26,14 @@ export class ExcelInjectionComponent  {
     constructor(private injectSrv: ExcelInjectionService,
                 private router: Router,
                 public snackBarSrv: SnackBarService,
+                private monthSelectorSrv: PayrollMonthService,
                 private activatedRoute: ActivatedRoute) {
+    }
+
+    ngOnInit(): void {
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => this.updatable = upd);
     }
 
     onFileSelected(event: any) {

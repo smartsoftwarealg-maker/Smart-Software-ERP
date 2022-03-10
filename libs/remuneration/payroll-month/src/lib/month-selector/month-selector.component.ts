@@ -6,6 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {of, switchMap, tap, zip} from 'rxjs';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-month-selector',
@@ -26,6 +27,7 @@ export class MonthSelectorComponent implements OnInit {
                 private confirmationSrv: ConfirmationDialogService,
                 private snackBarSrv: SnackBarService,
                 private specialSrv: SpecialPayrollService,
+                private langSrv: LanguageService,
                 private shellSrv: ShellService) {
     }
 
@@ -43,7 +45,7 @@ export class MonthSelectorComponent implements OnInit {
                 const curMonth = +(res[2].payMonth % 100).toFixed(0);
                 const offset = +(res[2].payMonth / 1_000_000).toFixed(0)
                 this.specialList = res[3].body;
-                this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: 'REMUN_NORMAL'});
+                this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
                 this.form = this.formBuilder
                     .group({
                         year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
@@ -61,7 +63,6 @@ export class MonthSelectorComponent implements OnInit {
         const year  = this.form.controls['year'].value;
         const month = this.form.controls['month'].value;
         let special = this.form.controls['offset'].value;
-        console.log(special)
         if (special % 1_000_000 != year * 100 + month) {
             special = 0;
         }
@@ -81,7 +82,7 @@ export class MonthSelectorComponent implements OnInit {
                             } else {
                                 if (typeof res !== 'number') {
                                     this.specialList = res.body;
-                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: 'REMUN_NORMAL'});
+                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: 'REMUN_NORMAL_PAY'});
                                 }
                             }
                             this.processing = false;

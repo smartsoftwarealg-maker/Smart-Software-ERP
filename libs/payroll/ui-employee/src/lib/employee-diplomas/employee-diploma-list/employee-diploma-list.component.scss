@@ -19,7 +19,7 @@ $table_width: 1020px;
     overflow-y: auto;
 }
 mat-table {
-    width: 1000px;
+    width: 1200px;
     min-height: 180px;
 }
 
@@ -30,7 +30,7 @@ mat-table {
     column-gap: 10px;
 }
 
-.mat-column-diploma,
+.mat-column-diplomaName,
 .mat-column-subjectName,
 .mat-column-memo,
 .mat-column-levelName,

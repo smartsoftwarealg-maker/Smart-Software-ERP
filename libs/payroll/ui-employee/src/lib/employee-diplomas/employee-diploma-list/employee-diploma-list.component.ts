@@ -21,7 +21,7 @@ export class EmployeeDiplomaListComponent implements OnInit {
     }
 
     public displayedColumns = [
-        'diploma',
+        'diplomaName',
         'subjectName',
         // 'diploma_year',
         'memo',
