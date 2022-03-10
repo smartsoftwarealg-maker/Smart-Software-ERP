@@ -22,6 +22,7 @@ export class EmployeeActivationListComponent implements OnInit, OnDestroy {
     }
 
     public displayedColumns = [
+        'centerName',
         'hireDate',
         'employmentType',
         'suspended',

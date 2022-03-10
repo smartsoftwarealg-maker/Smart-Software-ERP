@@ -20,5 +20,7 @@
     "MISSING_COMPANY_EMAIL":         "Missing company email.",
     "MISSING_ACCOUNT":               "Missing account number",
     "STOCKED_ITEM":                  "Storable item. Non storable cannot be checked.",
-    "NOT_CURRENT_MONTH":             "The month selected is not the current month"
+    "NOT_CURRENT_MONTH":             "The month selected is not the current month",
+    "MONTH_CLOSED":                  "The selected month is closed. Updates are not allowed!",
+    "MISSING_HIRE_DATE":             "Hire date is missing."
 }

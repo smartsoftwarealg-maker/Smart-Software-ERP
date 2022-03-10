@@ -1,5 +1,5 @@
 
-$table_width: 856px;
+$table_width: 972px;
 
 :host {
     display: inline-block;
@@ -40,7 +40,8 @@ $table_width: 856px;
     padding-left: 8px;
 }
 
-.mat-column-suspensionDate {
+.mat-column-suspensionDate,
+.mat-column-centerName {
     flex: 0 0 100px;
     padding-right: 8px;
     padding-left: 8px;

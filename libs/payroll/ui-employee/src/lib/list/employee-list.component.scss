@@ -1,14 +1,16 @@
-:host {
-    display: block;
-    margin: auto;
-    width: 954px;
-    max-width: 100%;
-    overflow: hidden;
+.main-container {
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
 }
 
 .main-table-scroll {
+    flex-grow: 1;
     overflow: auto;
-    margin: hidden;
+    margin: 0;
     max-width: 100%;
 
     .main-table {
@@ -91,7 +93,7 @@
 
 
 .pagination-container {
-
+    flex-grow: 0;
     ss-pagination {
         left: 0;
         right: 0;

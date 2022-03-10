@@ -123,5 +123,7 @@
     "FAULTS":              "Fautes",
     "PUNISHMENT":         "Châtiment",
     "PUNISHMENTS":        "Les sanctions",
-    "FAULT_TYPE":         "Type de défaut"
+    "FAULT_TYPE":         "Type de défaut",
+    "DECISION":           "Decision",
+    "STARTING_MONTH":     "Mois de départ"
 }

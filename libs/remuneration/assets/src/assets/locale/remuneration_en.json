@@ -69,5 +69,6 @@
     "DAS": "D.A.S",
     "LEAVE_BASE": "Leave base",
     "CACO_CONTRIBUTION": "CACOBPTH contribution",
-    "CACO": "CACOBAPTH D.A.S"
+    "CACO": "CACOBAPTH D.A.S",
+    "NORMAL_PAY": "Normal payroll"
 }

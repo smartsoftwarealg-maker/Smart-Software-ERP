@@ -71,6 +71,7 @@ export class EmployeeActivation {
     suspensionReason: number;
     employmentType: number;
     inConflict: boolean;
+    centerName?: string;
 }
 
 // [{"id":2432,"employee":1,"paymonth":202101,"post":325,"division":3,"department":4,"service":23,"salary_grid":45,"prof_category":20,"salary_rank":101,"from_date":"2014-01-01 00:00:00","to_date":"2021-02-01 00:00:00","trial_period":0}]

@@ -24,7 +24,7 @@
                 PAYROLL_SUSP_DATE
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.suspensionDate}}
+                {{e.suspensionDate | date: 'dd/MM/yyyy'}}
             </mat-cell>
         </ng-container>
 
@@ -33,7 +33,7 @@
                 PAYROLL_HIRE_DATE
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.hireDate}}
+                {{e.hireDate  | date: 'dd/MM/yyyy'}}
             </mat-cell>
         </ng-container>
 
@@ -61,6 +61,13 @@
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{suspensionReasons[e.suspensionReason]}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="centerName">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CENTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.centerName}}
             </mat-cell>
         </ng-container>
 

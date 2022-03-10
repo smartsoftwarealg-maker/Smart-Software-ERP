@@ -12,5 +12,6 @@
     "NIGHTS":      "Nights included?",
     "PREPARATION":  "Preparation",
     "DISTANCE":     "Distance",
-    "TRAJECTORIES": "Trajectories"
+    "TRAJECTORIES": "Trajectories",
+    "TRANSPORT":    "Transport"
 }
