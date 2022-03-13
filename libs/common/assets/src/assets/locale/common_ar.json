@@ -182,5 +182,10 @@
     "VALIDATED":    "محققة",
     "CANCELED": "ألغيت",
     "DETAIL":      "تفاصيل المهمة",
-    "MISSION_PREPARATION": "التحضير للبعثة"
+    "MISSION_PREPARATION": "التحضير للبعثة",
+    "PAYROLL":      "كشف رواتب",
+    "WEBARCHIVE":   "أرشيف إلكتروني" ,
+    "ORGANIZATION": "منظمة",
+    "ASSETS":       "أصول",
+    "APPLICATIONS": "التطبيقات"
 }

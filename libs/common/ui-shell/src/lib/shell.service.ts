@@ -155,6 +155,7 @@ export class ShellService {
     public filterSideNav(): void {
         this.setSideNavVisibility(this.navData);
         this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
+
     }
 
     private filterSideNavByVisibility(tree: SideNavNode[]): SideNavNode[] {
@@ -175,11 +176,13 @@ export class ShellService {
         }
         // MUST use for each, MUST NOT change reference of array
         tree.forEach(r => {
-            r.visible = !r.accessRights || this.rightsSrv.canUserPass(r.accessRights);
-            // console.log(r.accessRights, this.rightsSrv.getUserRights(r.accessRights) )
             this.setSideNavVisibility(r.children);
+            r.visible = (!r.accessRights ||this.rightsSrv.canUserPass(r.accessRights)) &&
+                (r.children == null || r.children.find(e => e.visible) != null);
         });
+
     }
+
 
     public getMenuItems(): string[] {
         if (!this.sideNavDataSrc.data) {

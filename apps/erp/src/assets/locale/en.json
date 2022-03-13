@@ -25,5 +25,11 @@
     "MONTH_10": "October",
     "MONTH_11": "November",
     "MONTH_12": "December",
-    "ASSETS": "Assets"
+    "ASSETS": "Assets",
+    "PAYMENTS":     "Payments",
+    "LOGISTICS":    "Logistics",
+    "ORGANIZATION": "Organization",
+    "HRMASTER":     "Human Resources",
+    "INVENTORY":    "Inventory",
+    "WEBARCHIVE":   "Electronic archive"
 }

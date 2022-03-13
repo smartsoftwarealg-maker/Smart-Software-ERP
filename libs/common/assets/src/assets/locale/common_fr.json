@@ -182,5 +182,10 @@
     "VALIDED":  "Validé",
     "CANCELED": "Annulé",
     "DETAIL":      "Détail de la mission",
-    "MISSION_PREPARATION": "Préparation des missions"
+    "MISSION_PREPARATION": "Préparation des missions",
+    "PAYROLL":      "Paie",
+    "WEBARCHIVE":   "Archives électroniques",
+    "ORGANIZATION": "Organisation",
+    "ASSETS":       "Actifs",
+    "APPLICATIONS": "Applications"
 }

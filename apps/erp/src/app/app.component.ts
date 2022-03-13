@@ -17,6 +17,7 @@ import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {assetsNavTree} from './assets-app/side-nav-tree';
 import {of, zip} from 'rxjs';
 import {Event, NavigationEnd, Router} from '@angular/router';
+import {AccessRightsService} from '@ss/common/api-access-rights';
 
 @Component({
     selector: 'ss-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
                 private langSrv: LanguageService,
                 private loginSrv: LoginService,
                 private monthSelectorSrv: PayrollMonthService,
+                private rightsSrv: AccessRightsService,
                 private router: Router) {}
 
     ngOnInit() {

@@ -182,5 +182,10 @@
     "VALIDATED": "Validated",
     "CANCELED": "Canceled",
     "DETAIL":      "Mission detail",
-    "MISSION_PREPARATION": "Mission prepartion"
+    "MISSION_PREPARATION": "Mission prepartion",
+    "PAYROLL":      "Payroll",
+    "WEBARCHIVE":   "Electronic Archive",
+    "ORGANIZATION": "Organization",
+    "ASSETS":       "Assets",
+    "APPLICATIONS": "Applications"
 }

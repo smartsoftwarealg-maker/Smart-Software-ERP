@@ -103,5 +103,6 @@ export const hrNavTree: SideNavNode = {
             icon: 'fas fa-calendar-check',
             route: ABS_HR_REPORTS_URL,
         },
-    ]
+    ],
+    accessRights: "HRMASTER"
 };
