@@ -52,6 +52,17 @@
                     </mat-error>
                 </mat-form-field>
 
+                <mat-form-field *ngIf="d.typeName == 'java.lang.Double'">
+                    <mat-label translate>{{ d.description }}</mat-label>
+                    <input matInput formControlName="{{ d.name }}" type="number">
+                    <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <div *ngIf="d.typeName == 'java.lang.Boolean'" class="boolean-param">
+                    <mat-checkbox formControlName="{{ d.name }}" > {{ d.description }}</mat-checkbox>
+                </div>
+
                 <mat-form-field *ngIf="d.typeName == 'java.lang.String'">
                     <mat-label translate>{{ d.description }}</mat-label>
                     <input matInput formControlName="{{ d.name }}" type="text">
