@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AccessRight, HttpService, UserCenter, UserRole} from '@ss/common/api-common';
+import {AccessRight, HttpService} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
@@ -19,9 +19,12 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
     getEntities(app: string): Observable<string[]> {
         const params = new HttpParams().set('app', app);
         const url = '/entities';
-        return this.httpSrv
-            .get<{ entities: string[] }>(url, params)
-            .pipe(map(res => res['entities']));
+        return app === 'APPLICATIONS' ?
+            of(['PAYROLL', 'PAYMENTS','WEBARCHIVE', 'LOGISTICS','ORGANIZATION', 'ACCOUNTING','SALES',
+                      'HRMASTER','PURCHASES', 'INVENTORY','ASSETS']) : //'COMMON', , 'EXCHANGE'
+            this.httpSrv
+                .get<{ entities: string[] }>(url, params)
+                .pipe(map(res => res['entities']));
     }
 
     saveRights(r: AccessRight, form: string): Observable<any> {

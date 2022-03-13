@@ -25,5 +25,11 @@
     "MONTH_10": "أكتوبر",
     "MONTH_11": "نوفمبر",
     "MONTH_12": "ديسمبر",
-    "ASSETS": "الأصول"
+    "ASSETS": "الأصول",
+    "PAYMENTS":     "المدفوعات",
+    "LOGISTICS":    "الخدمات اللوجستية",
+    "ORGANIZATION": "منظمة",
+    "HRMASTER":     "الموارد البشرية",
+    "INVENTORY":    "جرد",
+    "WEBARCHIVE":   "أرشيف إلكتروني"
 }

@@ -44,7 +44,8 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'COMMON_COMPANY_TYPES',
             icon: 'fas fa-building',
-            route: ABS_LOGISTICS_COMPANY_TYPE
+            route: ABS_LOGISTICS_COMPANY_TYPE,
+            accessRights: "Company"
         },
         {
             name: 'COMMON_ACTIVITIES',

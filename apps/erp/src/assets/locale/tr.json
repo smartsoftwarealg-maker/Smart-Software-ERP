@@ -25,5 +25,10 @@
     "MONTH_10": "Ekim",
     "MONTH_11": "Kasım",
     "MONTH_12": "Aralık",
-    "ASSETS": "Les atouts"
+    "ASSETS": "Les atouts",
+    "PAYMENTS":     "",
+    "LOGISTICS":    "",
+    "ORGANIZATION": "",
+    "HRMASTER":     "",
+    "INVENTORY":    ""
 }

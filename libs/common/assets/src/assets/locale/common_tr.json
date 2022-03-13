@@ -177,5 +177,10 @@
     "VALID": "",
     "CANCELED": "",
     "MISSION_DETAIL": "",
-    "MISSION_PREPARATION": ""
+    "MISSION_PREPARATION": "",
+    "PAYROLL":      "",
+    "WEBARCHIVE":   "",
+    "ORGANIZATION": "",
+    "ASSETS":       "",
+    "APPLICATIONS": ""
 }
