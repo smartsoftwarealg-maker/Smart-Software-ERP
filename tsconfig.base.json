@@ -59,9 +59,7 @@
             "@ss/administration/ui-user": [
                 "libs/administration/ui-user/src/index.ts"
             ],
-            "@ss/business-logic-msgs/assets": [
-                "libs/business-logic-msgs/assets/src/index.ts"
-            ],
+            "@ss/assets-component": ["libs/assets-component/src/index.ts"],
             "@ss/common/api-access-rights": [
                 "libs/common/api-access-rights/src/index.ts"
             ],

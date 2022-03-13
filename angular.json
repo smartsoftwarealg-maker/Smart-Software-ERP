@@ -16,6 +16,7 @@
         "api-article-store": "libs/stock/api-article-store",
         "api-report-catalog": "libs/administration/api-report-catalog",
         "api-reports": "libs/common/api-reports",
+        "assets-component": "libs/assets-component",
         "business-logic-msgs-assets": "libs/business-logic-msgs/assets",
         "cespace": "apps/cespace",
         "common-api-access-rights": "libs/common/api-access-rights",

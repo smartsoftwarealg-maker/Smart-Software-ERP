@@ -109,7 +109,7 @@ export const HR_EMPLOYEES_URL = 'employees';
 export const HR_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
 export const HR_DIVISIONS_URL = 'divisions';
-export const HR_DEPARTMENTS_URL = 'departments'
+export const HR_DEPARTMENTS_URL = 'departments';
 
 // Payroll
 export const PAY_ELEMENTSINFO_URL     = 'elementsinfo';
@@ -131,6 +131,9 @@ export const PAY_EDO_URL              = 'edo';
 export const PAY_DAS_URL              = 'das';
 export const PAY_CACO_URL             = 'caco';
 
+// Assets
+export const ASSETS_ASSET_URL         = 'assets';
+
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
@@ -140,8 +143,8 @@ export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL
 export const ABS_TRAJECTORY_URL          = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_TRAJECTORIES].join('/');
 
 //Dashboard
-export const DASHBOARD_QUERY_URL = 'queries'
-export const DASHBOARD_URL       = 'dashbaord'
+export const DASHBOARD_QUERY_URL = 'queries';
+export const DASHBOARD_URL       = 'dashbaord';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -245,6 +248,9 @@ export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
 export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
+
+// Assets
+export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
