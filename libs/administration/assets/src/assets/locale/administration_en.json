@@ -64,5 +64,6 @@
     "ROLES": "Roles",
     "ROLE": "Role",
     "RESPONSIBLE": "Responsible",
-    "APPLICATION": "Application"
+    "APPLICATION": "Application",
+    "ORGANIZATIONS": "Organizations"
 }
