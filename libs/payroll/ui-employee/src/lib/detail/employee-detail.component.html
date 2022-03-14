@@ -219,6 +219,16 @@
 
         </mat-expansion-panel>
 
+        <mat-expansion-panel *ngIf="id" #activationPanel [class]="getPanelHeaderClass('activation', activationPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-emp-act-history [personId]="id"></ss-emp-act-history>
+        </mat-expansion-panel>
+
         <mat-expansion-panel #fixedElementsPanel [class]="getPanelHeaderClass('fixedElemnts', fixedElementsPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
@@ -256,17 +266,7 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #activationPanel [class]="getPanelHeaderClass('activation', activationPanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <ss-emp-act-history [personId]="id"></ss-emp-act-history>
-        </mat-expansion-panel>
-
-        <mat-expansion-panel *ngIf="id" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_CAREER
@@ -276,7 +276,7 @@
             <ss-employee-career [personId]="id"></ss-employee-career>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_CONTRACTS
@@ -286,7 +286,7 @@
             <ss-employee-contracts [personId]="id"></ss-employee-contracts>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #wivesPanel [class]="getPanelHeaderClass('wives', wivesPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #wivesPanel [class]="getPanelHeaderClass('wives', wivesPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_WIVES
@@ -297,7 +297,7 @@
         </mat-expansion-panel>
 
 
-        <mat-expansion-panel *ngIf="id" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_DIPLOMAS
@@ -307,7 +307,7 @@
             <ss-employee-diploma-list [personId]="id"></ss-employee-diploma-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #trainingPanel [class]="getPanelHeaderClass('trainings', trainingPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #trainingPanel [class]="getPanelHeaderClass('training', trainingPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_TRAININGS
@@ -317,7 +317,7 @@
             <ss-employee-training-list [personId]="id"></ss-employee-training-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id" #punishmentPanel [class]="getPanelHeaderClass('trainings', punishmentPanel)">
+        <mat-expansion-panel *ngIf="id && hrMode" #punishmentPanel [class]="getPanelHeaderClass('punishment', punishmentPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_PUNISHMENTS

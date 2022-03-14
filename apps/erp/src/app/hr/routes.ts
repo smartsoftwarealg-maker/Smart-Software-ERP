@@ -1,5 +1,5 @@
 import {
-    ABS_HR_REPORTS_URL, COMMON_REPORTS_URL,
+    COMMON_REPORTS_URL,
     HR_CATEGORIES_URL,
     HR_DEPARTMENTS_URL,
     HR_DIPLOMAS_URL,
@@ -23,7 +23,7 @@ import {
     LIST_URL,
     RedirectToParentComponent
 } from '@ss/common/api-common';
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 import {
     CategoryDetailComponent,
     CategoryListComponent,
@@ -72,7 +72,7 @@ import {
     TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
-import {ReportViewComponent} from '@ss/common/ui-report-param';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {
@@ -95,6 +95,7 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
+                        data: { hrMode: true }
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
@@ -210,7 +211,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
         canActivate: [CanActivateService],
-        data: { reportBase: 'hr'}
+        data: { reportBase: 'hr' }
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }
