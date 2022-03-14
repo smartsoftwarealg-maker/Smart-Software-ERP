@@ -51,8 +51,8 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
-            p.markDescrip = this.marks.find(m => m.id === p.mark)?.description;
-            p.unitDescrip = this.units.find(u => u.id === p.salesUnit)?.description;
+            p.markDescrip = this.marks?.find(m => m.id === p.mark)?.description;
+            p.unitDescrip = this.units?.find(u => u.id === p.salesUnit)?.description;
             p.vatValue = this.vats.find(u => u.id === p.vat)?.value;
         })
         return of(data);

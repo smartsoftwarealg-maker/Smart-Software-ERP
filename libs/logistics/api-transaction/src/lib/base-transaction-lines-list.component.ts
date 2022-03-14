@@ -81,6 +81,7 @@ export class BaseTransactionLinesListComponent {
                                 next: _ => {
                                     this.snackBarSrv.showSuccessMessage();
                                     this.loadDetailLines();
+                                    this.shellSrv.setLoading(false);
                                 },
                                 error: err => {
                                     this.snackBarSrv.showFailureMessage();
