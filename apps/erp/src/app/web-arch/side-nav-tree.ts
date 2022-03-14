@@ -15,5 +15,6 @@ export const webArchNavTree: SideNavNode = {
             icon: 'fas fa-image',
             route: ABS_ARCHIVE_URL
         },
-    ]
+    ],
+    accessRights: 'WEBARCHIVE'
 };

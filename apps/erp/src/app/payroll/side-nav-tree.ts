@@ -47,12 +47,14 @@ export const payrollNavTree: SideNavNode = {
                 {
                     name: 'COMMON_EMPLOYMENT_TYPES',
                     icon: 'fas fa-business-time',
-                    route: ABS_HR_EMPLOYMENT_TYPE_URL
+                    route: ABS_HR_EMPLOYMENT_TYPE_URL,
+                    accessRights: 'EmploymentType'
                 },
                 {
                     name: 'COMMON_SUSPENSION_REASONS',
                     icon: 'fas fa-user-times',
-                    route: ABS_HR_SUSPENSION_REASON_URL
+                    route: ABS_HR_SUSPENSION_REASON_URL,
+                    accessRights: ''
                 },
                 {
                     name: 'COMMON_POSTS',
@@ -223,5 +225,6 @@ export const payrollNavTree: SideNavNode = {
             route: ABS_COMMON_REPORTS_URL,
         },
 
-    ]
+    ],
+    accessRights: 'PAYROLL'
 };

@@ -66,6 +66,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                 }))
             .subscribe(res => {
                 this.apps = this.apps = res['apps'] || [];
+                this.apps.unshift('APPLICATIONS');
             });
     }
 

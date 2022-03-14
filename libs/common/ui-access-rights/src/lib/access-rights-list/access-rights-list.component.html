@@ -10,12 +10,11 @@
         </mat-form-field>
     </div>
     <div class="list-container" *ngIf="menuItems !== null">
-
         <mat-list>
             <mat-list-item
                 *ngFor="let item of menuItems"
                 [ngClass]="{'b-warn': selectedItem === item }"
-                (click)="selectItem(item)"> <span [class.f-primary-contrast]="selectedItem === item"> {{ item }} </span> </mat-list-item>
+                (click)="selectItem(item)"> <span [class.f-primary-contrast]="selectedItem === item"> {{ item | translate }} </span> </mat-list-item>
         </mat-list>
     </div>
     <div class="table-container">
