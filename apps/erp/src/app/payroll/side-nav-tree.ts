@@ -28,7 +28,7 @@ import {
     ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL,
+    ABS_MONTH_SELECTOR_URL, ABS_PAYROLL_EMPLOYEES_URL,
     ABS_PROFESSIONAL_FAULTS_URL, ABS_PUNISHMENT_TYPE_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
@@ -105,7 +105,7 @@ export const payrollNavTree: SideNavNode = {
                 {
                     name: 'PAYROLL_EMPLOYEES_LIST',
                     icon: 'fas fa-list-ol',
-                    route: ABS_HR_EMPLOYEES_URL
+                    route: ABS_PAYROLL_EMPLOYEES_URL
                 }
             ]
         },
