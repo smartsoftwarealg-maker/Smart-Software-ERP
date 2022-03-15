@@ -66,11 +66,21 @@ export class AppComponent implements OnInit {
                 if (event instanceof NavigationEnd) {
                         //console.log(event.url)
                     if(event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
-                        const obs = this.monthSelectorSrv.curMonthLabel();
+                        const obs = zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<any>('/ccenter'));
                         //TODO: fix this bad code.
-                        obs.subscribe(str => this.shellSrv.setLabels([{title: str}]));
+                        obs.subscribe(res => {
+                            const label = `${res[1]['description'] || ''}-  ${res[0]}`;
+                            this.shellSrv.setLabels([{title: label}]);
+                        });
                     } else {
-                        this.shellSrv.setLabels([{title: ''}]);
+                        if (event.url.indexOf('login') < 0) {
+                            this.httpSrv
+                                .get<any>('/ccenter')
+                                .subscribe(res => {
+                                    const label = res['description'] || '';
+                                    this.shellSrv.setLabels([{title: label}]);
+                                });
+                        }
                     }
                 }
             }))
