@@ -129,8 +129,8 @@
     "HRMASTER": "HR Master",
     "COMMON": "Utilitaires communs",
     "LOGISTICS": "Logistique",
-    "STOCK": "Stok",
-    "INVENTORY": "Stok",
+    "STOCK": "Stock",
+    "INVENTORY": "Stock",
     "SALES": "Ventes",
     "PURCHASES": "Achats",
     "REPORTING": "Etats",
@@ -186,6 +186,6 @@
     "PAYROLL":      "Paie",
     "WEBARCHIVE":   "Archives électroniques",
     "ORGANIZATION": "Organisation",
-    "ASSETS":       "Actifs",
+    "ASSETS":       "Immobilisations",
     "APPLICATIONS": "Applications"
 }

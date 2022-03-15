@@ -10,6 +10,7 @@ import {AssetsService} from '../assets.service';
 import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
+import {MatExpansionPanel} from '@angular/material/expansion';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -54,7 +55,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset>{
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.historicValue || 0, Validators.required],
             invoiceNumber: [b.serviceDate],
-            itemCount: [b.itemCount],
+            itemCount: [b.itemCount || 1],
             info: [b.info],
             supplier: [b.supplier],
             originalSupplier: [b.originalSupplier],
@@ -85,6 +86,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset>{
             criticity: [b.criticity],
             startYear: [b.startYear || 0],
         });
+    }
+
+    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
+        // if expanded return primary background class
+        if (panel.expanded)
+            return 'b-primary-expansion-panel';
+        else
+            return '';
     }
 
 }
