@@ -31,5 +31,8 @@
     "ORGANIZATION": "Organisation",
     "HRMASTER":     "Ressources humaines",
     "INVENTORY":    "Inventaire",
-    "WEBARCHIVE":   "Archives électroniques"
+    "WEBARCHIVE":   "Archives électroniques",
+    "LOGISTICS-ADMINISTRATION": "Administration logistique",
+    "FINANCE": "Finance",
+    "DASHBOARD": "Tableau de bord"
 }

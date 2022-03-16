@@ -4,6 +4,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const dashboardNavTree: SideNavNode = {
     name: 'COMMON_DASHBOARD',
     icon: 'fas fa-folder',
+    accessRights: 'DASHBOARD',
     children: [
         {
             name: 'COMMON_DASHBOARD_QUERIES',

@@ -21,7 +21,8 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
         const url = '/entities';
         return app === 'APPLICATIONS' ?
             of(['PAYROLL', 'PAYMENTS','WEBARCHIVE', 'LOGISTICS','ORGANIZATION', 'ACCOUNTING','SALES',
-                      'HRMASTER','PURCHASES', 'INVENTORY','ASSETS']) : //'COMMON', , 'EXCHANGE'
+                      'HRMASTER','PURCHASES', 'INVENTORY','ASSETS', 'ADMINISTRATION',
+                      'DASHBOARD', 'FINANCE', 'LOGISTICS-ADMINISTRATION']) : //'COMMON', , 'EXCHANGE'
             this.httpSrv
                 .get<{ entities: string[] }>(url, params)
                 .pipe(map(res => res['entities']));
