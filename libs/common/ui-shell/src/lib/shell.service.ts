@@ -154,6 +154,7 @@ export class ShellService {
 
     public filterSideNav(): void {
         this.setSideNavVisibility(this.navData);
+        this.setAppSideNavVisibility(this.navData);
         this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
 
     }
@@ -171,17 +172,27 @@ export class ShellService {
     }
 
     private setSideNavVisibility(tree: SideNavNode[]): void {
-        if (tree == null) {
-            return null;
+        if (tree != null) {
+            // MUST use for each, MUST NOT change reference of array
+            tree.forEach(r => {
+                this.setSideNavVisibility(r.children);
+                r.visible = (!r.accessRights || this.rightsSrv.canUserPass(r.accessRights)) &&
+                    (r.children == null || r.children.find(e => e.visible) != null);
+            });
         }
-        // MUST use for each, MUST NOT change reference of array
-        tree.forEach(r => {
-            this.setSideNavVisibility(r.children);
-            r.visible = (!r.accessRights ||this.rightsSrv.canUserPass(r.accessRights)) &&
-                (r.children == null || r.children.find(e => e.visible) != null);
-        });
-
     }
+
+    private setAppSideNavVisibility(tree: SideNavNode[]): void {
+        if (tree != null) {
+            // MUST use for each, MUST NOT change reference of array
+            const userRights = this.rightsSrv.rights;
+            tree.forEach(r => {
+                r.visible = r.accessRights != null &&
+                    (userRights.size == 0 || userRights.get(r.accessRights)?.read === true);
+            });
+        }
+    }
+
 
 
     public getMenuItems(): string[] {

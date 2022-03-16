@@ -128,7 +128,7 @@
     "HRMASTER":                      "HR Master",
     "COMMON":                        "Ortak yardımcı programlar",
     "LOGISTICS":                     "Lojistik",
-    "STOCK":                         "Stok",
+    "STOCK":                         "Stock",
     "SALES":                         "Satış",
     "INVENTORY":                     "Satış",
     "PURCHASES":                     "satın almalar",
@@ -182,5 +182,6 @@
     "WEBARCHIVE":   "",
     "ORGANIZATION": "",
     "ASSETS":       "",
-    "APPLICATIONS": ""
+    "APPLICATIONS": "",
+    "ADMINISTRATION": "Administration"
 }

@@ -1,5 +1,5 @@
 import {
-    COMMON_REPORTS_URL,
+    COMMON_REPORTS_URL, HR_EMPLOYEES_URL,
     LOOKUPS_URL,
     MISSION_PREPARATION_URL,
     MISSION_TRAJECTORIES,
@@ -20,9 +20,15 @@ import {
     PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
-    PAY_XLS_INJECTION
+    PAY_XLS_INJECTION, PAYROLL_EMPLOYEES_URL
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {
+    ABS_INDEX_URL,
+    CanActivateService,
+    CanDeactivateService,
+    LIST_URL,
+    RedirectToParentComponent
+} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remuneration/elementsinfo';
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
@@ -51,6 +57,16 @@ import {MissionPreparationDetailComponent, MissionPreparationListComponent} from
 import {TrajectoryDetailComponent, TrajectoryListComponent} from '@ss/hr-missions/mission-trajectories';
 import {SalaryGridDetailComponent, SalaryGridListComponent} from '@ss/payroll/salary-grid';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {
+    EmployeeActivationDetailComponent, EmployeeCareerDetailComponent, EmployeeContractsDetailComponent,
+    EmployeeDetailComponent, EmployeeDiplomaDetailComponent,
+    EmployeeListComponent, EmployeeTrainingDetailComponent, EmployeeWifeDetailComponent, PunishmentDetailComponent
+} from '../../../../../libs/payroll/ui-employee/src';
+import {
+    ACTIVATION_ROUTE_URL,
+    CAREER_ROUTE_URL,
+    CONTRACTS_ROUTE_URL, DIPLOMA_ROUTE_URL, PUNISHMENT_ROUTE_URL, TRAINING_ROUTE_URL, WIVES_ROUTE_URL
+} from '../../../../../libs/payroll/api-employee/src';
 
 export const mainRoutes: Routes = [
     {
@@ -327,6 +343,134 @@ export const mainRoutes: Routes = [
         data: {reportBase: 'payroll'},
         component: ReportViewComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: PAYROLL_EMPLOYEES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: EmployeeListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: EmployeeDetailComponent,
+                        canActivate: [CanActivateService],
+                        canDeactivate: [CanDeactivateService],
+                        data: { hrMode: false }
+                    },
+                    {
+                        path: ACTIVATION_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeActivationDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: CAREER_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeCareerDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: CONTRACTS_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeContractsDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: WIVES_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeWifeDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: DIPLOMA_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeDiplomaDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: TRAINING_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeTrainingDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: PUNISHMENT_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: PunishmentDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    }
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

@@ -25,11 +25,14 @@
     "MONTH_10": "October",
     "MONTH_11": "November",
     "MONTH_12": "December",
-    "ASSETS": "Les atouts",
+    "ASSETS": "Immobilisations",
     "PAYMENTS":     "Paiements",
     "LOGISTICS":    "Logistique",
     "ORGANIZATION": "Organisation",
     "HRMASTER":     "Ressources humaines",
     "INVENTORY":    "Inventaire",
-    "WEBARCHIVE":   "Archives électroniques"
+    "WEBARCHIVE":   "Archives électroniques",
+    "LOGISTICS-ADMINISTRATION": "Administration logistique",
+    "FINANCE": "Finance",
+    "DASHBOARD": "Tableau de bord"
 }

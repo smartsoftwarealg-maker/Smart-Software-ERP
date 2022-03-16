@@ -120,7 +120,7 @@
     "FILENAME": "Nom de fichier",
     "FROM": "Du",
     "TO": "Au",
-    "ACCESS_RIGHTS": "Des droits d'accès",
+    "ACCESS_RIGHTS": "Droits d'accès",
     "READ": "Lire",
     "WRITE": "Créer",
     "TRACEABILITY": "traçabilité",
@@ -129,8 +129,8 @@
     "HRMASTER": "HR Master",
     "COMMON": "Utilitaires communs",
     "LOGISTICS": "Logistique",
-    "STOCK": "Stok",
-    "INVENTORY": "Stok",
+    "STOCK": "Stock",
+    "INVENTORY": "Stock",
     "SALES": "Ventes",
     "PURCHASES": "Achats",
     "REPORTING": "Etats",
@@ -186,6 +186,7 @@
     "PAYROLL":      "Paie",
     "WEBARCHIVE":   "Archives électroniques",
     "ORGANIZATION": "Organisation",
-    "ASSETS":       "Actifs",
-    "APPLICATIONS": "Applications"
+    "ASSETS":       "Immobilisations",
+    "APPLICATIONS": "Applications",
+    "ADMINISTRATION": "Administration"
 }

@@ -229,7 +229,7 @@
             <ss-emp-act-history [personId]="id"></ss-emp-act-history>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #fixedElementsPanel [class]="getPanelHeaderClass('fixedElemnts', fixedElementsPanel)">
+        <mat-expansion-panel *ngIf="!hrMode" #fixedElementsPanel [class]="getPanelHeaderClass('fixedElemnts', fixedElementsPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_FIXED_ELEMENTS

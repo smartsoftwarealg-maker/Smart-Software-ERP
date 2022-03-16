@@ -8,6 +8,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const purchasesNavTree: SideNavNode = {
     name: 'PURCHASES',
     icon: 'fas fa-shopping-basket',
+    accessRights: 'PURCHASES',
     children: [
         {
             name: 'PURCHASES_QUOTATION',
