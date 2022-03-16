@@ -187,5 +187,6 @@
     "WEBARCHIVE":   "Archives électroniques",
     "ORGANIZATION": "Organisation",
     "ASSETS":       "Immobilisations",
-    "APPLICATIONS": "Applications"
+    "APPLICATIONS": "Applications",
+    "ADMINISTRATION": "Administration"
 }

@@ -2,6 +2,14 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
+            <mat-form-field id="defaultCurrency" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CURRENCY</mat-label>
+                <mat-select formControlName="defaultCurrency" required>
+                    <mat-option *ngFor="let f of currencies" [value]="f.id">{{f.description}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['defaultCurrency'].invalid" translate>COMMON_FIELD_REQUIRED </mat-error>
+            </mat-form-field>
+
             <mat-form-field id="eval_price" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
                 <mat-select formControlName="eval_price" required>

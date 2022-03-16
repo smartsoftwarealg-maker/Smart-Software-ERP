@@ -2,8 +2,9 @@ import {SideNavNode} from '@ss/common/api-common';
 import {ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_PAYMENT_ORDERS, ABS_FINANCE_PAYMENTS} from '../common';
 
 export const financeNavTree: SideNavNode = {
-        name: 'COMMON_FINANCE',
+    name: 'COMMON_FINANCE',
     icon: 'fas fa-users-cog',
+    accessRights: 'FINANCE',
     children: [
         {
             name: 'COMMON_PAYMENTS',

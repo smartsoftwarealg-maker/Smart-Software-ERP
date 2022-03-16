@@ -14,6 +14,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
+    accessRights: null,
     children: [
         {
             name: 'LOGISTICS_PROFORMA',

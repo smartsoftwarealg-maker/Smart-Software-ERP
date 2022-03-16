@@ -20,6 +20,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',
     icon: 'fas fa-warehouse-alt',
+    accessRights: 'INVENTORY',
     children: [
         {
             name: 'COMMON_FILE',

@@ -31,5 +31,8 @@
     "ORGANIZATION": "منظمة",
     "HRMASTER":     "الموارد البشرية",
     "INVENTORY":    "جرد",
-    "WEBARCHIVE":   "أرشيف إلكتروني"
+    "WEBARCHIVE":   "أرشيف إلكتروني",
+    "LOGISTICS-ADMINISTRATION": "إدارة الإمدادات",
+    "FINANCE": "التمويل",
+    "DASHBOARD": "لوحة التحكم"
 }

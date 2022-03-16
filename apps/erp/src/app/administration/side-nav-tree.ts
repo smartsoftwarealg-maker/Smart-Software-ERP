@@ -9,6 +9,7 @@ import {SideNavNode} from '@ss/common/api-common';
 export const administrationNavTree: SideNavNode = {
     name: 'ADMINISTRATION',
     icon: 'fas fa-cog',
+    accessRights: 'ADMINISTRATION',
     children: [
         {
             name: 'ADMINISTRATION_ORGANIZATIONS',
