@@ -4,7 +4,7 @@ import {ExcelInjectionService} from './excel-injection.service';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
@@ -27,6 +27,7 @@ export class ExcelInjectionComponent implements OnInit {
                 private router: Router,
                 public snackBarSrv: SnackBarService,
                 private monthSelectorSrv: PayrollMonthService,
+                private shellSrv: ShellService,
                 private activatedRoute: ActivatedRoute) {
     }
 
@@ -34,6 +35,7 @@ export class ExcelInjectionComponent implements OnInit {
         this.monthSelectorSrv
             .isUpdatableMonth()
             .subscribe(upd => this.updatable = upd);
+        this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
     onFileSelected(event: any) {

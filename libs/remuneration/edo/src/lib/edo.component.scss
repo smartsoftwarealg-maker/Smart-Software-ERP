@@ -65,7 +65,8 @@ form {
 button {
     align-self: center;
     justify-self: end;
-
+    padding: 0 8px;
+    min-width: 80px;
 }
 .bank-list {
     grid-area: list;

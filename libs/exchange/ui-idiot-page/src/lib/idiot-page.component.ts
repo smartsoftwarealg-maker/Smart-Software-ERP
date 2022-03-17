@@ -15,7 +15,6 @@ export class IdiotPageComponent implements OnInit {
 
   constructor(private reportService: ReportParamsService,
               private shellSrv: ShellService,
-              private deviceSrv: DeviceDetectorService,
               public sanitizer: DomSanitizer) { }
 
   ngOnInit() {

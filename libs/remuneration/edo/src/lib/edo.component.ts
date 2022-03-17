@@ -8,6 +8,7 @@ import {MatSelectionList} from '@angular/material/list';
 import {EdoService} from './edo.service';
 import {saveAs} from 'file-saver';
 import {switchMap, tap} from 'rxjs';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 interface Lookup {
     id: number;
@@ -32,6 +33,7 @@ export class EdoComponent implements OnInit {
                 private edoSrv: EdoService,
                 private route: ActivatedRoute,
                 private formBuilder: FormBuilder,
+                private monthSrv: PayrollMonthService,
                 private bankSrv: BankService) {
 
     }
@@ -43,6 +45,9 @@ export class EdoComponent implements OnInit {
                     this.bankList = res.body;
                     this.selectedBanks = this.bankList.map(e => e.id).join(',');
                 }),
+                switchMap(_ => this.monthSrv.maxMonth()),
+                tap(res => this.curYear = +((res.month % 1_000_000)/100).toFixed(0) ),
+                tap(res => console.log(((res.month % 1_000_000)/100).toFixed(0) )),
                 switchMap(_ => this.edoSrv.getCenterBank()),
                 tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));

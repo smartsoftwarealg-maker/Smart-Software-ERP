@@ -38,7 +38,7 @@ import {
 
 export const payrollNavTree: SideNavNode = {
     name: 'PAYROLL',
-    icon: 'fas fa-users',
+    icon: 'fas fa-coins',
     children: [
         {
             name: 'COMMON_LOOKUPS',

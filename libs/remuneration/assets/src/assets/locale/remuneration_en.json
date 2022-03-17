@@ -70,5 +70,7 @@
     "LEAVE_BASE": "Leave base",
     "CACO_CONTRIBUTION": "CACOBPTH contribution",
     "CACO": "CACOBAPTH D.A.S",
-    "NORMAL_PAY": "Normal payroll"
+    "NORMAL_PAY": "Normal payroll",
+    "MIN":        "Minimum value",
+    "MAX":        "Maximum value"
 }
