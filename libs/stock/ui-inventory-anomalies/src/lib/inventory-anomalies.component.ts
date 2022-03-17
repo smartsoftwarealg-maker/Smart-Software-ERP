@@ -66,5 +66,8 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
     ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.fixButton);
+        this.deleteButton.visible = false;
+        this.editButton.visible = false;
+        this.addButton.visible = false;
     }
 }

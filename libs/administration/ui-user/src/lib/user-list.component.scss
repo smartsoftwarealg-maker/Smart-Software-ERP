@@ -17,38 +17,6 @@
     display: block;
 }
 
-.main-table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    height: 100%;
-
-    .mat-table {
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        display: table;
-        border-collapse: collapse;
-        margin: 0px;
-    }
-
-    .mat-row,
-    .mat-header-row {
-        display: table-row;
-    }
-
-    .mat-cell,
-    .mat-header-cell {
-        word-wrap: initial;
-        display: table-cell;
-        padding: 0px 5px;
-        line-break: unset;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        vertical-align: middle;
-    }
-}
 
 .pagination-container {
     flex: 0 0 auto;
@@ -61,25 +29,17 @@
         flex: 0 0 auto;
     }
 }
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
+mat-table {
+    width: 800px;
 }
 
-.mat-column-description {
+.mat-column-description,
+.mat-column-fullName {
     flex: 1 0 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-fullName {
-    flex: 2 0 auto;
-    min-width: 200px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
 
 .mat-column-manager .mat-column-responsible .mat-column-blocked {
     flex: 1 1 80px ;
