@@ -29,14 +29,14 @@ interface Employee extends IEmployee {
 })
 export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
 
-    public displayedColumns = [
+    /*public displayedColumns = [
         'photo',
         'id',
         'fullname',
         'birth',
         'address',
         'maritalStatus'
-    ];
+    ];*/
 
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
@@ -55,6 +55,11 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
+        this.pagination.pageSize = 20;
+    }
+
+    trackByFn(index: number, item: Employee) {
+        return item.id;
     }
 
     ngOnInit(): void {
