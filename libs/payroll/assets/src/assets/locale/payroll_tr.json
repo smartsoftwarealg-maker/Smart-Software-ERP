@@ -99,7 +99,6 @@
     "Name": "Name",
     "NAME_AR": "Name (Arabic)",
     "REFERENCE": "",
-    "DIPLOMA":         "",
     "INSTITUTION":     "",
     "EDUCATION_LEVEL": "",
     "DIPLOMA_SUBJECT": "",
@@ -114,5 +113,6 @@
     "EXTRA_EXPENSES":     "Extra expenses",
     "JUDICIAL_FRAME":     "Judicial frame",
     "DECISION":           "",
-    "STARTING_MONTH":     ""
+    "STARTING_MONTH":     "",
+    "CHILDREN" : ""
 }

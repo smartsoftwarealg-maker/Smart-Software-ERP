@@ -14,6 +14,9 @@ export const CONTRACT_CHILD_URL = '/contracts';
 export const WIVES_PARENT_URL = '/persons';
 export const WIVES_CHILD_URL = '/wives';
 
+export const CHILDREN_PARENT_URL = '/persons';
+export const CHILDREN_CHILD_URL = '/children';
+
 export interface Employee {
     id: number;
 
@@ -140,4 +143,13 @@ export class Wife {
     father_ar?: string;
     mother?: string;
     mother_ar?: string;
+}
+
+export class Child {
+    id: number;
+    employee: number;
+    name: string;
+    sex: 1 | 2;
+    birthDate?: string;
+    birthPlace?: string;
 }

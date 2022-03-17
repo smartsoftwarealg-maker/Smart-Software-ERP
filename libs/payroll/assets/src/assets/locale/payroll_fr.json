@@ -125,5 +125,6 @@
     "PUNISHMENTS":        "Les sanctions",
     "FAULT_TYPE":         "Type de défaut",
     "DECISION":           "Decision",
-    "STARTING_MONTH":     "Mois de départ"
+    "STARTING_MONTH":     "Mois de départ",
+    "CHILDREN" : "Enfants"
 }

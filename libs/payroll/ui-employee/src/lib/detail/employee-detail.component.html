@@ -296,6 +296,15 @@
             <ss-employee-wives [personId]="id"></ss-employee-wives>
         </mat-expansion-panel>
 
+        <mat-expansion-panel *ngIf="id && hrMode" #childrenPanel [class]="getPanelHeaderClass('children', childrenPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PAYROLL_CHILDREN
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-employee-children [personId]="id"></ss-employee-children>
+        </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
             <mat-expansion-panel-header>

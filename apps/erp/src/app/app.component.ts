@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
                             this.shellSrv.setLabels([{title: label}]);
                         });
                     } else {
-                        if (event.url.indexOf('login') < 0) {
+                        if (event.url !== '' && event.url.indexOf('login') < 0) {
                             this.httpSrv
                                 .get<any>('/ccenter')
                                 .subscribe(res => {
