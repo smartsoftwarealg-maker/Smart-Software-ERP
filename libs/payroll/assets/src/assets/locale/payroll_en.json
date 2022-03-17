@@ -125,6 +125,6 @@
     "PUNISHMENTS":        "Punishments",
     "FAULT_TYPE":         "Fault type",
     "DECISION":           "Decision",
-    "STARTING_MONTH":     "Starting month"
-
+    "STARTING_MONTH":     "Starting month",
+    "CHILDREN" : "Children"
 }

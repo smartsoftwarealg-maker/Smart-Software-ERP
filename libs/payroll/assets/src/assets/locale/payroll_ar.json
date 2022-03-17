@@ -125,5 +125,6 @@
     "PUNISHMENTS":       "العقوبات",
     "FAULT_TYPE":        "نوع الخطأ",
     "DECISION":          "قرار",
-    "STARTING_MONTH":     "شهر البدء"
+    "STARTING_MONTH":     "شهر البدء",
+    "CHILDREN" : "الأبناء"
 }

@@ -22,8 +22,10 @@ import { EmployeeDiplomaListComponent } from './employee-diplomas/employee-diplo
 import { EmployeeDiplomaDetailComponent } from './employee-diplomas/employee-diploma-detail/employee-diploma-detail.component';
 import { EmployeeTrainingListComponent } from './employee-trainings/employee-training-list/employee-training-list.component';
 import { EmployeeTrainingDetailComponent } from './employee-trainings/employee-training-detail/employee-training-detail.component';
-import { PunishmentListComponent } from './punishments/punishment-list/punishment-list.component';
-import { PunishmentDetailComponent } from './punishments/punishment-detail/punishment-detail.component';
+import { PunishmentListComponent } from './employee-punishments/punishment-list/punishment-list.component';
+import { PunishmentDetailComponent } from './employee-punishments/punishment-detail/punishment-detail.component';
+import { EmployeeChildrenListComponent } from './employee-children/employee-children-list.component';
+import { EmployeeChildDetailComponent } from './employee-children/employee-child-detail.component';
 
 @NgModule({
     imports: [
@@ -42,7 +44,8 @@ import { PunishmentDetailComponent } from './punishments/punishment-detail/punis
         EmployeeDetailComponent,
         EmployeeActivationDetailComponent,
         EmployeeContractsDetailComponent,
-        EmployeeWifeDetailComponent
+        EmployeeWifeDetailComponent,
+        EmployeeChildDetailComponent
     ],
     declarations: [
         EmployeeListComponent,
@@ -60,7 +63,9 @@ import { PunishmentDetailComponent } from './punishments/punishment-detail/punis
         EmployeeTrainingListComponent,
         EmployeeTrainingDetailComponent,
         PunishmentListComponent,
-        PunishmentDetailComponent
+        PunishmentDetailComponent,
+        EmployeeChildrenListComponent,
+        EmployeeChildDetailComponent
     ]
 })
 export class PayrollUiEmployeeModule {

@@ -5,6 +5,7 @@ export * from './lib/constants';
 export * from './lib/employee-career.service';
 export * from './lib/employee-contract.service';
 export * from './lib/employee-wives.service';
+export * from './lib/employee-children.service';
 export * from './lib/diploma.service';
 export * from './lib/training_subject.service';
 export * from './lib/education-levels.service';
