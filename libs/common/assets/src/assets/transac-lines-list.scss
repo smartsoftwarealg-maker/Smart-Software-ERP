@@ -8,19 +8,22 @@
     min-width: 870px;
     height: 100%;
 }
+
 .main-container {
     position: relative;
     padding-top: 24px;
     min-height: 50%;
-    height: 50%;
+    height: 70%;
 }
 
 .doc-info {
-    flex: 1 1 40%;
+    flex: 1 1 50%;
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    background: #e9b300;
+    min-height: 150px;
 }
 
 
@@ -64,7 +67,10 @@ mat-header-cell {
     left: 50%;
     transform: translateX(-50%);
 }
-
+.table-div {
+    overflow-y: auto;
+    height: 100%;
+}
 .pagination-container {
     flex: 0 1 1%;
     ss-pagination {

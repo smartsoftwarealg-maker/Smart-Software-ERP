@@ -42,7 +42,7 @@ export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCen
             id: [b.id],
             code: [b.code, Validators.required],
             description: [b.description, Validators.required],
-            groupId: [b.groupId, Validators.required],
+            groupId: [b.groupId],
         });
     }
 

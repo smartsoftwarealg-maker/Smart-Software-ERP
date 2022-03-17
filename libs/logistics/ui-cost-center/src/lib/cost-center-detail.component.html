@@ -19,7 +19,7 @@
 
             <mat-form-field class="value">
                 <mat-label translate>LOGISTICS_GROUP</mat-label>
-                <mat-select formControlName="groupId" required>
+                <mat-select formControlName="groupId" >
                     <mat-option [value]="null"></mat-option>
                     <mat-option *ngFor="let v of groups" [value]="v.id">
                         {{v ? v.description : ''}}

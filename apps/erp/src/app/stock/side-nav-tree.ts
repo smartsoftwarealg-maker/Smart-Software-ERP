@@ -83,7 +83,7 @@ export const stockNavTree: SideNavNode = {
             ]
         },
         {
-            name: 'STOCK_INVENTORY',
+            name: 'STOCK',
             icon: 'fas fa-inventory',
             children: [
                 {

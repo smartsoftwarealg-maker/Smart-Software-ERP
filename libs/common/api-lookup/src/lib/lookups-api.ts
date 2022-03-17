@@ -104,6 +104,7 @@ export interface Class {
     id: number;
     description: string;
     accountId?: number;
+    accountno?: string;
     accountName?: string;
 }
 

@@ -21,7 +21,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {
 
-    displayedColumns = ['description', 'accountId'];
+    displayedColumns = ['description', 'accountno'];
 
     constructor(
         public classSrv: ClassService,
@@ -33,6 +33,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_CLASSES');
+        this.pagination.pageSize = 10;
     }
 
     processLoadedData(data: Class[]): Observable<Class[]> {
