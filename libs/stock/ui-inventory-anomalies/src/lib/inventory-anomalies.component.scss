@@ -5,31 +5,6 @@
     overflow-x: auto;
     height: 100%;
     min-height: 200px;
-    .mat-table {
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        display: table;
-        border-collapse: collapse;
-        margin: 0px;
-    }
-
-    .mat-row,
-    .mat-header-row {
-        display: table-row;
-    }
-
-    .mat-cell,
-    .mat-header-cell {
-        word-wrap: initial;
-        display: table-cell;
-        padding: 0px 5px;
-        line-break: unset;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        vertical-align: middle;
-    }
 }
 
 .table-container {
