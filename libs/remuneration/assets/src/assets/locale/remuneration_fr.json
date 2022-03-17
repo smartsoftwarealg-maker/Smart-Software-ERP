@@ -70,5 +70,7 @@
     "LEAVE_BASE": "Base ICA",
     "CACO_CONTRIBUTION": "Contribution CACOBPT",
     "CACO": "D.A.S CACOBAPTH",
-    "NORMAL_PAY": "Paie normale"
+    "NORMAL_PAY": "Paie normale",
+    "MIN":        "Valeur minimum",
+    "MAX":        "Valeur maximum"
 }

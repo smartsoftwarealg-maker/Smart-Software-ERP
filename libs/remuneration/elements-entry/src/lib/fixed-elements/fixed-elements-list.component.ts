@@ -68,7 +68,10 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         this.addButton.visible = false;
         this.monthSelectorSrv
             .isUpdatableMonth()
-            .subscribe(upd => this.editButton.visible = upd);
+            .subscribe(upd => {
+                this.editButton.visible = upd;
+                this.deleteButton.visible = upd;
+            });
     }
 
     preload(): Observable<any> {

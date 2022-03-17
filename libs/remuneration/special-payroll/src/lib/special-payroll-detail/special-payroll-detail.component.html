@@ -8,14 +8,14 @@
         </mat-form-field>
     </form>
 
-    <div class="ctrl-div">
+    <div class="ctrl-div" *ngIf="payrollId">
         <button mat-mini-fab color="primary" translate
                 matTooltip="{{'REMUN_GENERATE_ALL' | translate}}"
                 (click)="generateAll()">
             <i class="fas fa-layer-plus"></i>
         </button>
 
-        <div class="employee-div">
+        <div class="employee-div" *ngIf="payrollId">
             <mat-form-field>
                 <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
                 <ss-auto-complete matInput
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="main-table">
+    <div class="main-table" *ngIf="payrollId">
         <mat-table mat-table [dataSource]="data">
 
             <ng-container matColumnDef="photo">

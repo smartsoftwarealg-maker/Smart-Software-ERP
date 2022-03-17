@@ -24,6 +24,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     displayedColumns = ['id', 'lastName', 'firstName', 'post']
     data: ELine[] = [];
     selected = 0;
+    payrollId = 0;
     pagingModel = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0});
     public employeeAutoCompleteModel = new DefaultAutoCompleteModel<Lookup>(this.employeeSrv);
     constructor(
@@ -51,6 +52,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     setupForm(e: Special): FormGroup {
+        this.payrollId = e?.id;
         this.selectorSrv
             .selectMonth(e.paymonth || this.loginSrv.appCtx.payMonth)
             .subscribe();
