@@ -1,0 +1,35 @@
+<mat-card *ngIf="form">
+    <mat-card-content>
+        <form  novalidate [formGroup]="form">
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PAYROLL_MONTH</mat-label>
+                <input matInput formControlName="month" type="number"  required autofocus readonly>
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100" >
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput formControlName="year" type="number"  required readonly>
+            </mat-form-field>
+
+            <span class="default-100 sm-100"></span>
+
+            <div *ngIf="!processing" class="default-50 sm-100" >
+                <button mat-raised-button color="primary" type="button" (click)="generate()">
+                    {{ 'COMMON_GENERATE' | translate }}
+                </button>
+            </div>
+
+            <div  *ngIf="!processing" class="default-50 sm-100">
+                <button  mat-raised-button color="accent" type="button" (click)="cancel()">
+                    {{ 'COMMON_EXIT' | translate }}
+                </button>
+            </div>
+
+        </form>
+
+        <span class="default-100 sm-100"></span>
+
+        <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
+    </mat-card-content>
+</mat-card>
+
+
