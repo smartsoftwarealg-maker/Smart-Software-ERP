@@ -3,7 +3,7 @@ import {
     LOOKUPS_URL,
     MISSION_PREPARATION_URL,
     MISSION_TRAJECTORIES,
-    PAY_AMENDMENT_URL,
+    PAY_AMENDMENT_URL, PAY_ARCHIVE_GENERATOR,
     PAY_CACO_URL,
     PAY_DAS_URL,
     PAY_EDO_URL,
@@ -33,7 +33,12 @@ import {Routes} from '@angular/router';
 import {ElementsInfoComponent, ElementsInfoDetailComponent} from '@ss/remuneration/elementsinfo';
 import {ElementTypesDetailComponent, ElementTypesListComponent} from '@ss/remuneration/element-types';
 import {FormulaDetailComponent, FormulaListComponent} from '@ss/remuneration/payroll-formulas';
-import {MonthCancelerComponent, MonthCloserComponent, MonthSelectorComponent} from '@ss/remuneration/payroll-month';
+import {
+    ArchiveGeneratorComponent,
+    MonthCancelerComponent,
+    MonthCloserComponent,
+    MonthSelectorComponent
+} from '@ss/remuneration/payroll-month';
 import {
     ElementsEntryDetailComponent,
     ElementsEntryListComponent,
@@ -169,6 +174,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_MONTH_CANCELER,
         component: MonthCancelerComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: PAY_ARCHIVE_GENERATOR,
+        component: ArchiveGeneratorComponent,
         canActivate: [CanActivateService],
     },
     {

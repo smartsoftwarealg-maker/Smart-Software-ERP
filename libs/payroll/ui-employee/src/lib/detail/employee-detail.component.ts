@@ -90,13 +90,13 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             birthPlace: [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
             father: [p.father, Validators.maxLength(64)],
             mother: [p.mother, Validators.maxLength(64)],
-            nationality: [p.nationality, Validators.required],
+            nationality: [p.nationality],
             // social info
             address1: [p.address1, Validators.maxLength(128)],
             email: [p.email, Validators.maxLength(64)],
             phone: [p.phone, Validators.maxLength(32)],
             mobile: [p.mobile, Validators.maxLength(32)],
-            ss_Number: [p.ss_Number, Validators.compose([Validators.required, Validators.maxLength(32)])],
+            ss_Number: [p.ss_Number],
             maritalStatus: p.maritalStatus,
             // arabic info
             firstNameAr: [p.firstNameAr, Validators.maxLength(64)],

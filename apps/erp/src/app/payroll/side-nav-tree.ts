@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL,
+    ABS_AMENDMENT_URL, ABS_ARCHIVE_GENERATOR_URL,
     ABS_CACO_URL,
     ABS_COMMON_REPORTS_URL,
     ABS_DAS_URL,
@@ -200,6 +200,12 @@ export const payrollNavTree: SideNavNode = {
                     icon: 'fas fa-calendar-times',
                     route: ABS_VACATION_PLANNING_URL,
                     accessRights: 'VPlanning'
+                },
+                {
+                    name: 'REMUN_ARCHIVE_GENERATOR',
+                    icon: 'fas fa-cabinet-filing',
+                    route: ABS_ARCHIVE_GENERATOR_URL,
+                    accessRights: 'Canceler'
                 },
                 {
                     name: 'REMUN_MONTH_CANCELLATION',

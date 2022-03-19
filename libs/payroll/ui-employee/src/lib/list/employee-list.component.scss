@@ -81,17 +81,17 @@
     }
 }
 
-/*.main-table-scroll {
+.main-table-scroll {
     flex-grow: 1;
     overflow: auto;
     margin: 0;
     max-width: 100%;
 
     .main-table {
-        width: 954px;
+        width: 1100px;
         min-height: 320px;
     }
-}*/
+}
 
 // keep the material design specs
 //.mat-row, .mat-header-row {
@@ -99,7 +99,6 @@
 //    padding-left: 16px;
 //}
 
-/*
 .person-photo {
     margin: 3px;
     width: 64px;
@@ -176,4 +175,4 @@
         margin: auto;
     }
 }
-*/
+

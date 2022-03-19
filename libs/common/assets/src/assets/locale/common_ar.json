@@ -188,5 +188,7 @@
     "ORGANIZATION": "منظمة",
     "ASSETS":       "أصول",
     "APPLICATIONS": "التطبيقات",
-    "ADMINISTRATION": ""
+    "ADMINISTRATION": "الإدارة",
+    "CARDS": "البطاقات",
+    "LIST":  "قائمة"
 }

@@ -35,7 +35,15 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
         public defReportSrv: DefaultReportService,
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTSINFO');
+        super(listSrv,
+              shellSrv,
+              snackBarSrv,
+              route,
+              router,
+              confirmationSrv,
+              defReportSrv,
+              pagPersistSrv,
+            'REMUN_FORMULAS');
         this.pagination.pageSize = 15;
     }
 }

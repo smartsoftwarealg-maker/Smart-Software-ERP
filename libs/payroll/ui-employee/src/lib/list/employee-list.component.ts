@@ -29,14 +29,14 @@ interface Employee extends IEmployee {
 })
 export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
 
-    /*public displayedColumns = [
-        'photo',
+    public displayedColumns = [
         'id',
         'fullname',
         'birth',
         'address',
-        'maritalStatus'
-    ];*/
+        'maritalStatus',
+        'post'
+    ];
 
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
@@ -55,7 +55,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
-        this.pagination.pageSize = 20;
+        this.pagination.pageSize = 15;
     }
 
     trackByFn(index: number, item: Employee) {

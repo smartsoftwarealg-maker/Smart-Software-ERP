@@ -7,6 +7,7 @@
     "ELEMENTSINFO": "عناصر",
     "ELEMENT_TYPES": "أنواع العناصر",
     "FORMULAS": "الصيغ",
+    "FORMULA": "الصيغة",
     "MONTH_CLOSURE": "إغلاق الشهر",
     "MONTH_CANCELLATION": "إلغاء الشهر",
     "MIN": "الأدنى",
@@ -72,5 +73,8 @@
     "CACO": "تقرير كوكبات",
     "NORMAL_PAY": "كشوف رواتب عادية",
     "MIN":  "الحد الأدنى للقيمة",
-    "MAX":  "القيمة القصوى"
+    "MAX":  "القيمة القصوى",
+    "FOLLOWUP": "التابع",
+    "STRICT_POSITIVE": "أكبر من الصفر",
+    "ARCHIVE_GENERATOR": "منشئ الأرشيف"
 }
