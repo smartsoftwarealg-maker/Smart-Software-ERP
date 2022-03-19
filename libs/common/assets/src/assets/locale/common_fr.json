@@ -188,5 +188,7 @@
     "ORGANIZATION": "Organisation",
     "ASSETS":       "Immobilisations",
     "APPLICATIONS": "Applications",
-    "ADMINISTRATION": "Administration"
+    "ADMINISTRATION": "Administration",
+    "CARDS": "Cartes",
+    "LIST":  "Lister"
 }

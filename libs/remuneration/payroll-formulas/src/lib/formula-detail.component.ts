@@ -24,7 +24,13 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMENTSINFO');
+        super(detailSrv,
+              shellSrv,
+              snackBarSrv,
+              route,
+              formBuilder,
+              confirmationSrv,
+              'REMUN_FORMULAS');
     }
 
     setupForm(e: Formula): FormGroup {

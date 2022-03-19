@@ -6,13 +6,14 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
   selector: 'ss-special-payroll-list',
   templateUrl: './special-payroll-list.component.html',
   styleUrls: ['./special-payroll-list.component.scss']
 })
-export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> {
+export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> implements OnInit {
     displayedColumns = ['description'];
 
     constructor(
@@ -23,10 +24,21 @@ export class SpecialPayrollListComponent extends BaseEntityListComponent<Special
         override confirmationSrv: ConfirmationDialogService,
         override defReportSrv: DefaultReportService,
         override router: Router,
+        private monthSelectorSrv: PayrollMonthService,
         override pagPersistSrv: PaginatorPersistenceService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_SPECIAL_PAYROLLS');
         this.pagination.pageSize = 15;
     }
 
 
+    override ngOnInit(): void {
+        super.ngOnInit();
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => {
+                this.editButton.visible = upd;
+                this.deleteButton.visible = upd;
+                this.addButton.visible = upd;
+            });
+    }
 }

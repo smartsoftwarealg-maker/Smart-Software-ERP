@@ -11,6 +11,7 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import { MonthCancelerComponent } from './month-canceler/month-canceler.component';
 import { MonthSelectorComponent } from './month-selector/month-selector.component';
 import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-payroll-common';
+import { ArchiveGeneratorComponent } from './archive-generator/archive-generator.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-p
     declarations: [
       MonthCloserComponent,
       MonthCancelerComponent,
-      MonthSelectorComponent
+      MonthSelectorComponent,
+      ArchiveGeneratorComponent
     ],
 })
 export class RemunerationPayrollMonthModule {}

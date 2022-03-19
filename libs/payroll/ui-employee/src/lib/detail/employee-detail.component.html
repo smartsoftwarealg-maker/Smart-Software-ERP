@@ -63,7 +63,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>PAYROLL_NATIONALITY</mat-label>
-                <ss-auto-complete [model]="nationalityModel" required="true" formControlName="nationality">
+                <ss-auto-complete [model]="nationalityModel"  formControlName="nationality">
                 </ss-auto-complete>
                 <mat-error *ngIf="form.controls.nationality.hasError('required')" translate>
                     COMMON_FIELD_REQUIRED
@@ -149,7 +149,7 @@
 
             <mat-form-field id="ss_Number" class="default-50 sm-100">
                 <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
-                <input matInput formControlName="ss_Number" type="text" maxlength="32" required>
+                <input matInput formControlName="ss_Number" type="text" maxlength="32">
                 <mat-error *ngIf="form.controls.ss_Number.hasError('maxlength')" [translate]="{maxLen: 32}">
                     COMMON_FIELD_MAX_LENGTH
                 </mat-error>

@@ -104,7 +104,7 @@ export class DasComponent implements OnInit {
             ssBase: ['a998', Validators.required],
             absence: ['a037', Validators.required],
             modes: [1, Validators.required],
-            periods: [1, Validators.required]
+            periods: [2, Validators.required]
         });
     }
 }
