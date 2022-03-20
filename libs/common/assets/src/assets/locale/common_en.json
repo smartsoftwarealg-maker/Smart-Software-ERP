@@ -188,5 +188,7 @@
     "ORGANIZATION": "Organization",
     "ASSETS":       "Assets",
     "APPLICATIONS": "Applications",
-    "ADMINISTRATION": "Administration"
+    "ADMINISTRATION": "Administration",
+    "CARDS": "Cards",
+    "LIST":  "List"
 }

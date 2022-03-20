@@ -7,6 +7,7 @@
     "ELEMENTSINFO": "Rubriques",
     "ELEMENT_TYPES": "Types de rubriques",
     "FORMULAS": "Formules",
+    "FORMULA": "Formule",
     "MONTH_CLOSURE": "Clôture du mois",
     "MONTH_CANCELLATION": "Annulation de mois",
     "MIN": "Minimum",
@@ -70,5 +71,10 @@
     "LEAVE_BASE": "Base ICA",
     "CACO_CONTRIBUTION": "Contribution CACOBPT",
     "CACO": "D.A.S CACOBAPTH",
-    "NORMAL_PAY": "Paie normale"
+    "NORMAL_PAY": "Paie normale",
+    "MIN":        "Valeur minimum",
+    "MAX":        "Valeur maximum",
+    "FOLLOWUP": "Rappel",
+    "STRICT_POSITIVE": "Supérieur à zéro",
+    "ARCHIVE_GENERATOR": "Générateur d'archives"
 }

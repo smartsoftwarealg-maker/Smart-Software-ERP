@@ -10,7 +10,7 @@
 
         <mat-form-field class="year">
             <mat-label translate>PAYROLL_YEAR</mat-label>
-            <input matInput formControlName="year" type="number" [min]="curYear" [max]="curYear" step="1" required>
+            <input matInput formControlName="year" type="number" [min]="curYear - 1" [max]="curYear" step="1" required>
             <mat-error *ngIf="form.controls.year.hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>

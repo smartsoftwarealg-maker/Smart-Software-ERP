@@ -8,6 +8,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {of, switchMap, tap} from 'rxjs';
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
   selector: 'ss-payroll-amendment-list',
@@ -67,7 +68,8 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
                 public override router: Router,
                 public override confirmationSrv: ConfirmationDialogService,
                 public override defReportSrv: DefaultReportService,
-                public override pagPersistSrv: PaginatorPersistenceService) {
+                public override pagPersistSrv: PaginatorPersistenceService,
+                private monthSelectorSrv: PayrollMonthService) {
         super(amendSrv,
             shellSrv,
             snackBarSrv,
@@ -83,8 +85,14 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.deleteAllButton);
-        // this.shellSrv.addButton(this.comparisonButton);
         this.shellSrv.addButton(this.generateButton);
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => {
+                this.editButton.visible = upd;
+                this.deleteButton.visible = upd;
+                this.addButton.visible = upd;
+            });
     }
 
     override refresh(callback?: () => void) {

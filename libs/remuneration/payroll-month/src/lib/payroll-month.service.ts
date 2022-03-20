@@ -22,7 +22,7 @@ export class PayrollMonthService {
                     const max = res.month;
                     const cur = this.loginSrv.appCtx.payMonth % 1_000_000;
                     const off = +(this.loginSrv.appCtx.payMonth / 1_000_000).toFixed(0);
-                    return `${this.langSrv.translate('PAYROLL_MONTH')}: ${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} - ${max % 100}/${(max / 100).toFixed(0)}`;
+                    return `${this.langSrv.translate('PAYROLL_MONTH')}: ${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} / ${max % 100}/${(max / 100).toFixed(0)}`;
                 }),
                 catchError(err => of('')));
     }

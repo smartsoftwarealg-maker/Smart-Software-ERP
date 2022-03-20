@@ -61,6 +61,7 @@ export interface Employee {
     educationalLevel: number;
     diploma: number;
     mutualNumber: string;
+    post?: string;
 }
 
 export class EmployeeActivation {

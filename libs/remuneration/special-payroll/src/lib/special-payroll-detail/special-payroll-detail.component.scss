@@ -2,6 +2,8 @@
     box-sizing: content-box;
     max-width: 900px;
     margin: 0 auto;
+    display: flex;
+    height: 100%;
     flex-direction: column;
 }
 
@@ -10,7 +12,18 @@
     max-width: 400px;
     margin: 0 auto;
 }
-
+.main-table {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+mat-table {
+    height: 100%;
+}
+.pagination-container {
+    flex-grow: 0;
+}
 mat-spinner {
     margin: 45% auto;
 }

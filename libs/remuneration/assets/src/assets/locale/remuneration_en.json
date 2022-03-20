@@ -7,6 +7,7 @@
     "ELEMENTSINFO": "Elements",
     "ELEMENT_TYPES": "Element types",
     "FORMULAS": "Formulas",
+    "FORMULA": "Formula",
     "MONTH_CLOSURE": "Month closure",
     "MONTH_CANCELLATION": "Month cancellation",
     "MIN": "Minimum",
@@ -70,5 +71,10 @@
     "LEAVE_BASE": "Leave base",
     "CACO_CONTRIBUTION": "CACOBPTH contribution",
     "CACO": "CACOBAPTH D.A.S",
-    "NORMAL_PAY": "Normal payroll"
+    "NORMAL_PAY": "Normal payroll",
+    "MIN":        "Minimum value",
+    "MAX":        "Maximum value",
+    "FOLLOWUP": "Follow up",
+    "STRICT_POSITIVE": "Greater than zero",
+    "ARCHIVE_GENERATOR": "Archive generator"
 }

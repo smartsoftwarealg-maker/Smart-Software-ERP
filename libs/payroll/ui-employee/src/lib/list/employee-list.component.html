@@ -1,81 +1,86 @@
 <div class="main-container">
-    <!--div class="main-table-scroll">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>COMMON_CARDS</span>
+            </ng-template>
+            <div class="content">
+                <div *ngFor="let emp of data; trackBy: trackByFn;" class="employee-card selectable mat-elevation-z6" [class.selected]="emp.id == selected" (click)="select(emp.id)">
 
-            <ng-container matColumnDef="photo">
-                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
-                </mat-header-cell>
-                <mat-cell *matCellDef="let e">
                     <div class="person-photo">
-                        <ss-image-input width="80px" height="110px" [ImageModel]="e.imageModel"
-                                        style="display: inline-block;">
+                        <ss-image-input width="120px" height="120px" [ImageModel]="emp.imageModel" style="display: inline-block;">
                         </ss-image-input>
-                        <i *ngIf="e.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
-                        <i *ngIf="e.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
+                        <i *ngIf="emp.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
+                        <i *ngIf="emp.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
                     </div>
-                </mat-cell>
-            </ng-container>
 
-            <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.id}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="fullname">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_FULLNAME</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.fullName}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="birth">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTHINFO</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.birthDate}}
-                    <br>
-                    {{e.birthPlace}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="address">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ADDRESS</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.address1}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="maritalStatus">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_MARITAL_STATUS</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{maritalStatus[e.maritalStatus]}}
-                </mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div-->
-
-    <div class="content">
-        <div *ngFor="let emp of data; trackBy: trackByFn;" class="employee-card selectable mat-elevation-z6" [class.selected]="emp.id == selected" (click)="select(emp.id)">
-
-            <div class="person-photo">
-                <ss-image-input width="120px" height="120px" [ImageModel]="emp.imageModel" style="display: inline-block;">
-                </ss-image-input>
-                <i *ngIf="emp.sex == 1" style="color: #00AAAA" class="abs-end-0 gender-icon fas fa-mars"></i>
-                <i *ngIf="emp.sex == 2" style="color: #ff69b4" class="abs-end-0 gender-icon fas fa-venus"></i>
+                    <div class="employee-details">
+                        <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{emp.id}}</div>
+                        <div style="font-weight: bold;">{{emp.fullName}}</div>
+                        <div style="font-size: 0.7em">{{emp.post}}</div>
+                    </div>
+                </div>
             </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>COMMON_LIST</span>
+            </ng-template>
+            <div class="main-table-scroll">
+                <mat-table mat-table [dataSource]="data" class="main-table">
 
-            <div class="employee-details">
-                <div style="font-style: italic; text-align: center;">{{emp.id}}</div>
-                <div style="font-weight: bold;">{{emp.fullName}}</div>
-                <div>{{emp.birthDate}}</div>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.id}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="fullname">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_FULLNAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.fullName}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="post">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.post}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="birth">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTHINFO</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.birthDate}}
+                            <br>
+                            {{e.birthPlace}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="address">
+                        <mat-header-cell *matHeaderCellDef translate>PAYROLL_ADDRESS</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{e.address1}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="maritalStatus">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_MARITAL_STATUS</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{maritalStatus[e.maritalStatus]}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
             </div>
-        </div>
-    </div>
+        </mat-tab>
+    </mat-tab-group>
+
 
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
