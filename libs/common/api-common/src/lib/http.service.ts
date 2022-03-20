@@ -58,6 +58,9 @@ export class HttpService {
     }
 
     public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
+        if (this.baseUrl === undefined) {
+            throw new Error("HTTP SERVICE NOT READY");
+        }
         let httpParams = (params == null ? new HttpParams() : params)
             .set('page', `${page}-${size}`);
         if (this.baseUrl == null || url == null) {
@@ -101,7 +104,8 @@ export class HttpService {
 
     public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
         if (this.baseUrl === undefined) {
-            this.baseUrl = '';
+        //    this.baseUrl = '';
+            throw new Error("HTTP SERVICE NOT READY");
         }
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
@@ -122,6 +126,9 @@ export class HttpService {
     }
 
     public post(url: string, data?: any | null): Observable<any> {
+        if (this.baseUrl === undefined) {
+                throw new Error("HTTP SERVICE NOT READY");
+        }
         return this
             .httpClient
             .post(this.baseUrl + url,
@@ -130,6 +137,9 @@ export class HttpService {
     }
 
     public upload(url: string, data?: any | null): Observable<any> {
+        if (this.baseUrl === undefined) {
+            throw new Error("HTTP SERVICE NOT READY");
+        }
         return this
             .httpClient
             .post(this.baseUrl + url,
@@ -142,6 +152,9 @@ export class HttpService {
     }
 
     public postHTML(url: string, data?: any | null): Observable<any> {
+        if (this.baseUrl === undefined) {
+            throw new Error("HTTP SERVICE NOT READY");
+        }
         return this
             .httpClient
             .post(this.baseUrl + url,
@@ -150,6 +163,9 @@ export class HttpService {
     }
 
     public put(url: string, data?: any | null): Observable<any> {
+        if (this.baseUrl === undefined) {
+            throw new Error("HTTP SERVICE NOT READY");
+        }
         return this
             .httpClient
             .put(this.baseUrl + url,
