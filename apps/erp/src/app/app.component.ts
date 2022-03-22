@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
                 private router: Router) {}
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart Software ERP  (pre-Alpha)');
+        this.shellSrv.setApplicationTitle('Smart Software ERP. 0.0.1 Beta');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             logAdminNavTree,
@@ -76,7 +76,11 @@ export class AppComponent implements OnInit {
                             this.shellSrv.setLabels([{title: label}]);
                         });
                     } else {
+<<<<<<< HEAD
+                        if (event.url?.indexOf('/app') >= 0) {
+=======
                         if (event.url !== '/' && event.url.indexOf('login') < 0) {
+>>>>>>> c77a3ba7a932215e4ea8d99928fff274b67f396e
                             this.httpSrv
                                 .get<any>('/ccenter')
                                 .subscribe(res => {
