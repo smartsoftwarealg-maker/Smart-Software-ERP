@@ -56,10 +56,13 @@ export class AppComponent implements OnInit {
             .pipe(switchMap(() => this.langSrv.init()),
                   switchMap(_ => this.loginSrv.reload()),
                   switchMap(_ =>  this.monthSelectorSrv.curMonthLabel()))
-            .subscribe({ next:  () => this.loaded = true,
+            .subscribe({ next:  () => this.init(),
                                   error: () => this.loginSrv.logout()
                                 });
+    }
 
+    init() {
+        this.loaded = true;
         this.router
             .events
             .pipe(tap((event: Event) => {
@@ -73,7 +76,11 @@ export class AppComponent implements OnInit {
                             this.shellSrv.setLabels([{title: label}]);
                         });
                     } else {
+<<<<<<< HEAD
                         if (event.url?.indexOf('/app') >= 0) {
+=======
+                        if (event.url !== '/' && event.url.indexOf('login') < 0) {
+>>>>>>> c77a3ba7a932215e4ea8d99928fff274b67f396e
                             this.httpSrv
                                 .get<any>('/ccenter')
                                 .subscribe(res => {
