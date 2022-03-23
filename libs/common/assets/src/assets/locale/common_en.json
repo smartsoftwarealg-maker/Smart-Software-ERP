@@ -190,5 +190,6 @@
     "APPLICATIONS": "Applications",
     "ADMINISTRATION": "Administration",
     "CARDS": "Cards",
-    "LIST":  "List"
+    "LIST":  "List",
+    "CONNECTION_ERROR": "Connection error"
 }

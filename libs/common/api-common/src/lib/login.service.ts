@@ -32,6 +32,7 @@ export class LoginService {
         user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
     };
     public appCtx: AppContext = null;
+    public connectionError = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
     private _customerLogin:LoginType  = LoginType.USER;
@@ -154,7 +155,8 @@ export class LoginService {
                     }
                 },
                 error: err => {
-                    this.wrongData = true;
+                    this.connectionError = err.status === 0;
+                    this.wrongData = !this.connectionError;
                     if (onFinish != null) {
                         onFinish();
                     }
