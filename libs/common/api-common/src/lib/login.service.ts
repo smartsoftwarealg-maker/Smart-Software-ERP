@@ -89,6 +89,7 @@ export class LoginService {
     public reload(): Observable<AppContext> {
         this.httpSrv.init();
         return  (this.appCtx)? of (this.appCtx) :
+            this.httpSrv.getAuthToken()?
             this.httpSrv
                 .get<LoginInfo>('/ctx')
                 .pipe(
@@ -103,7 +104,7 @@ export class LoginService {
                         }
                         return of (null);
                     })
-                );
+                ) : of(null);
     }
 
     public centerLogin(center: number): Observable<LoginInfo> {
@@ -261,5 +262,8 @@ export class LoginService {
 
     getAppParam(key: string): string {
         return this.appCtx?.params?.get(key);
+    }
+    ctx(): Observable<AppContext> {
+        return this.httpSrv.get<any>('/ctx').pipe(map(res => res['ctx']));
     }
 }
