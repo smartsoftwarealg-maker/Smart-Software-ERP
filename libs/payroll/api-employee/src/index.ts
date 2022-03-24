@@ -13,3 +13,4 @@ export * from './lib/motive.service';
 export * from './lib/judicial-frame.service';
 export * from './lib/professional-fault.service';
 export * from './lib/punishment-type.service';
+export * from './lib/employee-languages.service';

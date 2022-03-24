@@ -31,3 +31,6 @@ export * from './lib/sales-category.service';
 export * from './lib/lookup.class';
 export * from './lib/punishment-type.service';
 export * from './lib/professional-fault.service';
+export * from './lib/languages.service';
+export * from './lib/languageLevels.service';
+

@@ -13,6 +13,6 @@ export * from './lib/employee-trainings/employee-training-detail/employee-traini
 export * from './lib/employee-punishments/punishment-list/punishment-list.component';
 export * from './lib/employee-punishments/punishment-detail/punishment-detail.component';
 export * from './lib/employee-children/employee-child-detail.component';
-
+export * from './lib/employee-languages/employee-languages-detail.component';
 
 

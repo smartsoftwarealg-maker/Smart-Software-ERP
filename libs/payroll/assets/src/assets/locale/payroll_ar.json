@@ -126,5 +126,9 @@
     "FAULT_TYPE":        "نوع الخطأ",
     "DECISION":          "قرار",
     "STARTING_MONTH":     "شهر البدء",
-    "CHILDREN" : "الأبناء"
+    "CHILDREN" : "الأبناء",
+    "LANGUAGES": "اللغات",
+    "LANGUAGE": "اللغة",
+    "LANGUAGE_READ_LEVEL": "القراءة",
+    "LANGUAGE_WRITE_LEVEL": "الكتابة"
 }

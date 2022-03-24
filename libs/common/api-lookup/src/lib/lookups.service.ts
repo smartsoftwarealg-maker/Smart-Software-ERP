@@ -55,7 +55,7 @@ import {
     Department,
     DEPARTMENTS_URL,
     Division,
-    DIVISIONS_URL, Unit, UNIT_URL, CATEGORY_URL, SALES_CATEGORY_URL
+    DIVISIONS_URL, Unit, UNIT_URL, CATEGORY_URL, SALES_CATEGORY_URL, Language, LanguageLevel, LANGUAGES_URL, LANGUAGE_LEVELS_URL
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
 import {Lookup} from '@ss/logistics/ui-doc-import';
@@ -186,6 +186,14 @@ export class LookupsService {
     }
 
     public getTable(url, table: string): Observable<Lookup[]> {
-        return this.lookupCacheSrv.load<Division>(url, table);
+        return this.lookupCacheSrv.load<Lookup>(url, table);
+    }
+
+    public getLanguages(): Observable<Language[]> {
+        return this.lookupCacheSrv.load(LANGUAGES_URL, 'languages');
+    }
+
+    public getLanguageLevels(): Observable<LanguageLevel[]> {
+        return this.lookupCacheSrv.load(LANGUAGE_LEVELS_URL, 'languageLevels');
     }
 }
