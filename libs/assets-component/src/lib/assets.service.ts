@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Asset, ASSETS_URL} from './assets-api';
+import {Asset, ASSETS_URL, Depreciation} from './assets-api';
 import {HttpService} from '@ss/common/api-common';
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,5 +11,10 @@ export class AssetsService extends BaseEntityService<Asset>{
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ASSETS_URL);
+    }
+
+    getDepreciation(id: number): Observable<Depreciation[][]> {
+        const aid = id || 0;
+        return this.httpSrv.get<Depreciation[][]>(`/assets/depreciations/${aid}`);
     }
 }

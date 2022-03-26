@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset} from '../assets-api';
+import {Asset, Depreciation} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,10 +17,13 @@ import {MatExpansionPanel} from '@angular/material/expansion';
     templateUrl: './assets-detail.component.html',
     styleUrls: ['./assets-detail.component.scss']
 })
-export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset>{
+export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    accountantDepreciation: Depreciation[] = [];
+    fiscalDepreciation: Depreciation[] = [];
+    depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
 
     constructor(
         public detailSrv: AssetsService,
@@ -38,10 +41,20 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset>{
             snackBarSrv,
             route,
             formBuilder,
-            confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+            confirmationSrv, 'ASSETS');
     }
 
     setupForm(b: Asset): FormGroup {
+        if (b.id) {
+            this.detailSrv
+                .getDepreciation(b.id)
+                .subscribe(res => {
+                    this.accountantDepreciation = res[0] || [];
+                    this.fiscalDepreciation = res[1] || [];
+                });
+        } else {
+            this.accountantDepreciation = this.fiscalDepreciation = [];
+        }
         return this.formBuilder.group({
             id: [b.id],
             reference: [b.reference, [Validators.maxLength(15), Validators.required]],
@@ -54,7 +67,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset>{
             depreciationRate: [b.depreciationRate, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.historicValue || 0, Validators.required],
-            invoiceNumber: [b.serviceDate],
+            invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
             supplier: [b.supplier],

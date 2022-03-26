@@ -1,7 +1,14 @@
-import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
-import { Routes } from '@angular/router';
-import {ASSETS_ASSET_URL} from '../common';
-import {AssetsDetailComponent, AssetsListComponent} from '@ss/assets-component';
+import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {Routes} from '@angular/router';
+import {ASSETS_ASSET_URL, ASSETS_COST_URL, ASSETS_REVALUATION_URL} from '../common';
+import {
+    AssetCostsDetailComponent,
+    AssetCostsListComponent,
+    AssetsDetailComponent,
+    AssetsListComponent,
+    AssetRevaluationListComponent,
+    AssetRevaluationDetailComponent
+} from '@ss/assets-component';
 
 export const mainRoutes: Routes = [
     {
@@ -14,9 +21,44 @@ export const mainRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: AssetsDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                children: [
+                    {
+                        path: '',
+                        component: AssetsDetailComponent,
+                        canActivate: [CanActivateService],
+                        canDeactivate: [CanDeactivateService]
+                    },
+                    {
+                        path: ASSETS_COST_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: AssetCostsListComponent
+                            },
+                            {
+                                path: ':id',
+                                component: AssetCostsDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: ASSETS_REVALUATION_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: AssetRevaluationListComponent
+                            },
+                            {
+                                path: ':id',
+                                component: AssetRevaluationDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    }
+                ]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

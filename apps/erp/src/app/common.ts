@@ -135,7 +135,8 @@ export const PAY_CACO_URL             = 'caco';
 
 // Assets
 export const ASSETS_ASSET_URL         = 'assets';
-
+export const ASSETS_COST_URL          = 'costs'
+export const ASSETS_REVALUATION_URL   = 'revaluations'
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';

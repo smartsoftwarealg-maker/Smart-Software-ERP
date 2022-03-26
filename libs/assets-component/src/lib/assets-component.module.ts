@@ -10,6 +10,10 @@ import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
+import { AssetCostsListComponent } from './asset-costs-list/asset-costs-list.component';
+import { AssetCostsDetailComponent } from './asset-costs-detail/asset-costs-detail.component';
+import { AssetRevaluationListComponent } from './asset-revaluation-list/asset-revaluation-list.component';
+import { AssetRevaluationDetailComponent } from './asset-revaluation-detail/asset-revaluation-detail.component';
 
 @NgModule({
     imports: [
@@ -25,7 +29,11 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
     ],
     declarations: [
         AssetsDetailComponent,
-        AssetsListComponent
+        AssetsListComponent,
+        AssetCostsListComponent,
+        AssetCostsDetailComponent,
+        AssetRevaluationListComponent,
+        AssetRevaluationDetailComponent
     ],
 })
 export class AssetsComponentModule {

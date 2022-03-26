@@ -1,4 +1,7 @@
 export const ASSETS_URL = '/assets';
+export const COST_URL = '/costs';
+export const REVALUATION_URL = '/revaluations';
+
 export interface Asset {
     id: number;
     parent_id?: number;
@@ -47,4 +50,32 @@ export interface Asset {
     old_depreciation: number;
     outof_service: boolean;
     criticity?: number;
+}
+
+export interface Depreciation {
+    year: number;
+    depreciation: number;
+    totalDepreciation: number;
+    remaining: number;
+}
+
+export interface AssetCost {
+    id: number;
+    cost_type: number;
+    invest_id: number;
+    cost_id?: number;
+    amount: number;
+    typeDescription?: string;
+}
+
+export interface AssetRevaluation {
+    id: number;
+    invest_id: number;
+    reval_nature: number;
+    reval_type?: number;
+    deprec_year: number;
+    useful_life: number;
+    amount: number;
+    deprec_rate: number;
+    typeDescription?: string;
 }

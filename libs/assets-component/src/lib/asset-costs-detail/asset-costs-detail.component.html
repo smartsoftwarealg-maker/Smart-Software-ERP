@@ -1,0 +1,33 @@
+<div class="form-container">
+    <form *ngIf="form" novalidate [formGroup]="form" >
+
+        <mat-form-field appearance="fill" class="default-50 sm-100">
+            <mat-label><span translate>COMMON_TYPE</span></mat-label>
+            <mat-select formControlName="cost_type">
+                <mat-option *ngFor="let t of costTypes" [value]="t.id">
+                    <span translate> {{ t.description }} </span>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_TYPE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="costTypeLookup"
+                              formControlName="cost_id">
+            </ss-auto-complete>
+            <mat-error *ngIf="form.controls['cost_type'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['cost_type'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_AMOUNT</mat-label>
+            <input matInput formControlName="amount" type="number" required>
+        </mat-form-field>
+
+<!--                <pre>{{form.value | json}}</pre>-->
+    </form>
+</div>
