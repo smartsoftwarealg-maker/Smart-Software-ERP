@@ -289,5 +289,14 @@
             </mat-expansion-panel-header>
             <ss-asset-revaluation-list [assetId]="id"></ss-asset-revaluation-list>
         </mat-expansion-panel>
+
+        <mat-expansion-panel #bockings expanded="false" [class]="getPanelHeaderClass('bockings', bockings)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ASSET_BLOCKINGS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-asset-blocking-list [assetId]="id"></ss-asset-blocking-list>
+        </mat-expansion-panel>
     </mat-accordion>
 </form>

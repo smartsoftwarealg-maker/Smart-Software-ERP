@@ -1,6 +1,9 @@
 export const ASSETS_URL = '/assets';
 export const COST_URL = '/costs';
+export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
+export const COST_TYPE_URL = '/lookups/invest_costtypes';
+export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 
 export interface Asset {
     id: number;
@@ -78,4 +81,11 @@ export interface AssetRevaluation {
     amount: number;
     deprec_rate: number;
     typeDescription?: string;
+}
+
+export interface Blocking {
+    id: number;
+    investId: number
+    fromDate: Date;
+    toDate: Date;
 }

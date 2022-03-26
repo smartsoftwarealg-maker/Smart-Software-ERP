@@ -14,6 +14,12 @@ import { AssetCostsListComponent } from './asset-costs-list/asset-costs-list.com
 import { AssetCostsDetailComponent } from './asset-costs-detail/asset-costs-detail.component';
 import { AssetRevaluationListComponent } from './asset-revaluation-list/asset-revaluation-list.component';
 import { AssetRevaluationDetailComponent } from './asset-revaluation-detail/asset-revaluation-detail.component';
+import { AssetBlockingDetailComponent } from './asset-blocking-detail/asset-blocking-detail.component';
+import { AssetBlockingListComponent } from './asset-blocking-list/asset-blocking-list.component';
+import { AssetCostTypeListComponent } from './asset-cost-type-list/asset-cost-type-list.component';
+import { AssetCostTypeDetailComponent } from './asset-cost-type-detail/asset-cost-type-detail.component';
+import { AssetRevaluationTypeListComponent } from './asset-revaluation-type-list/asset-revaluation-type-list.component';
+import { AssetRevaluationTypeDetailComponent } from './asset-revaluation-type-detail/asset-revaluation-type-detail.component';
 
 @NgModule({
     imports: [
@@ -33,7 +39,13 @@ import { AssetRevaluationDetailComponent } from './asset-revaluation-detail/asse
         AssetCostsListComponent,
         AssetCostsDetailComponent,
         AssetRevaluationListComponent,
-        AssetRevaluationDetailComponent
+        AssetRevaluationDetailComponent,
+        AssetBlockingDetailComponent,
+        AssetBlockingListComponent,
+        AssetCostTypeListComponent,
+        AssetCostTypeDetailComponent,
+        AssetRevaluationTypeListComponent,
+        AssetRevaluationTypeDetailComponent
     ],
 })
 export class AssetsComponentModule {

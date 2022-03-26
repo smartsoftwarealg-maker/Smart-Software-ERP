@@ -49,7 +49,7 @@ export class AssetRevaluationListComponent implements OnInit {
                 .confirmDelete()
                 .pipe(switchMap(answer => {
                     const a = this.revaluations.filter(x => x.id === this.selected)[0];
-                    return answer && a && a.id ? of({count: 0}) : this.entitySrv.remove(a.id);
+                    return answer && a && a.id ? this.entitySrv.remove(a.id) : of({count: 0});
                 }))
                 .subscribe({
                     next: res => {

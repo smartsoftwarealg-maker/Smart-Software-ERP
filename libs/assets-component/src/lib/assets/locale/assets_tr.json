@@ -22,8 +22,11 @@
     "SALES_PRICE":       "",
     "PURCHASE":          "",
     "NAC":               "",
-    "FISCAL":            "",
-    "ACCOUNTANT":        "",
-    "COSTS":             "",
-    "REVALUATIONS":       ""
+    "FISCAL":             "",
+    "ACCOUNTANT":         "",
+    "COSTS":              "",
+    "REVALUATIONS":       "",
+    "BLOCKINGS":          "",
+    "COST_TYPES":         "",
+    "REVALUATION_TYPES":  ""
 }

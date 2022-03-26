@@ -11,7 +11,7 @@ import {AssetCostsService} from '../asset-costs.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetCostsLookupService} from '../asset-costs-lookup.service';
+import {AssetCostsTypeService} from '../asset-costs-type.service';
 
 @Component({
     selector: 'ss-asset-costs-detail',
@@ -32,7 +32,7 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private costTypeLookupSrv: AssetCostsLookupService) {
+        private costTypeLookupSrv: AssetCostsTypeService) {
         super(assetCostSrv,
               shellSrv,
               snackBarSrv,

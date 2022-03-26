@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetCostsLookupService} from '../asset-costs-lookup.service';
+import {AssetCostsTypeService} from '../asset-costs-type.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {AssetRevaluationService} from '../asset-revaluation.service';

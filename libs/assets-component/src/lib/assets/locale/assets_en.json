@@ -25,5 +25,8 @@
     "FISCAL":            "Fiscal",
     "ACCOUNTANT":        "Accountant",
     "COSTS":             "Costs",
-    "REVALUATIONS":       "Revaluations"
+    "REVALUATIONS":       "Revaluations",
+    "BLOCKINGS":          "Blocking",
+    "COST_TYPES":         "Cost types",
+    "REVALUATION_TYPES":  "Revaluation types"
 }

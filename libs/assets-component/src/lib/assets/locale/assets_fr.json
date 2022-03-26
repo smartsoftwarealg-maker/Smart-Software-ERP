@@ -22,8 +22,11 @@
     "SALES_PRICE":       "Prix de vente",
     "PURCHASE":          "Achat",
     "NAC":               "VNC",
-    "FISCAL":            "Fiscal",
-    "ACCOUNTANT":        "Comptable",
-    "COSTS":             "Couts",
-    "REVALUATIONS":       "Réévaluations"
+    "FISCAL":             "Fiscal",
+    "ACCOUNTANT":         "Comptable",
+    "COSTS":              "Coûts",
+    "REVALUATIONS":       "Réévaluations",
+    "BLOCKINGS":          "Blocage",
+    "COST_TYPES":         "Types de coûts",
+    "REVALUATION_TYPES":  "Types de réévaluation"
 }

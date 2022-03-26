@@ -52,7 +52,9 @@ export class AssetCostsListComponent implements OnInit {
                 .confirmDelete()
                 .pipe(switchMap(answer => {
                     const a = this.fiscalCosts.filter(x => x.id === this.selected)[0];
-                    return answer && a && a.id ? of({count: 0}) : this.entitySrv.remove(a.id);
+                    const b = this.accountantCosts.filter(x => x.id === this.selected)[0];
+                    const c = a || b;
+                    return answer && c != null && c.id != null ? this.entitySrv.remove(c.id) : of({count: 0});
                 }))
                 .subscribe({
                     next: res => {
