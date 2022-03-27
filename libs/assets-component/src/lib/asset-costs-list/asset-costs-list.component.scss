@@ -1,0 +1,31 @@
+.ctrl-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.cost-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mat-column-typeDescription,
+.mat-column-amount {
+    flex: 1 1 100px;
+}
+
+.mat-table {
+    width: 280px;
+}
+
+.mat-subheader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px 0;
+}

@@ -122,5 +122,6 @@ export class AppModule {
         langSrv.addSource('assets/locale/bl_', 'BL_');
         langSrv.addSource('assets/locale/webarch_', 'WAR_');
         langSrv.addSource('assets/locale/missions_', 'MISSION_');
+        langSrv.addSource('assets/locale/assets_', 'ASSET_');
     }
 }

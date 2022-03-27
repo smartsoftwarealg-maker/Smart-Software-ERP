@@ -9,7 +9,7 @@ export class AccountAutocompleteModel extends DefaultAutoCompleteModel<Account> 
         super(accountSrv);
     }
 
-    toString = (x: any) => x ?  `${x['accountno']} ${x[this.descriptionField]}` : null;
+    toString = (x: any) => x ?  `${x['accountNo']} ${x[this.descriptionField]}` : null;
 }
 
 export class GenerationAccountAutocompleteModel extends DefaultAutoCompleteModel<GenerationAccount> {
