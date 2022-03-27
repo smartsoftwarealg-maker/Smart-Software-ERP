@@ -53,6 +53,7 @@ export interface Asset {
     old_depreciation: number;
     outof_service: boolean;
     criticity?: number;
+    accountId?: number;
 }
 
 export interface Depreciation {

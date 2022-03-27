@@ -11,6 +11,7 @@ import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
+import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -18,12 +19,15 @@ import {MatExpansionPanel} from '@angular/material/expansion';
     styleUrls: ['./assets-detail.component.scss']
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
+    private maxReference: string = null;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    accountAutoCompleteModel = new AccountAutocompleteModel(this.accountSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
+
 
     constructor(
         public detailSrv: AssetsService,
@@ -35,6 +39,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
+        private accountSrv: AccountService,
         private loginSrv: LoginService) {
         super(detailSrv,
             shellSrv,
@@ -45,23 +50,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
     }
 
     setupForm(b: Asset): FormGroup {
-        if (b.id) {
-            this.detailSrv
-                .getDepreciation(b.id)
-                .subscribe(res => {
-                    this.accountantDepreciation = res[0] || [];
-                    this.fiscalDepreciation = res[1] || [];
-                });
-        } else {
-            this.accountantDepreciation = this.fiscalDepreciation = [];
-        }
-        return this.formBuilder.group({
+        const today = new Date();
+        const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.maxLength(15), Validators.required]],
-            reference2: [b.reference2, Validators.maxLength(15)],
+            reference: [b.reference, [Validators.maxLength(11), Validators.required]],
+            reference2: [b.reference2 || this.maxReference, Validators.maxLength(11)],
             description: [b.description, Validators.required],
-            acquisitionDate: [b.acquisitionDate, Validators.required],
-            serviceDate: [b.serviceDate, Validators.required],
+            acquisitionDate: [b.acquisitionDate || today, Validators.required],
+            serviceDate: [b.serviceDate || today, Validators.required],
             acquisitionValue: [b.acquisitionValue, Validators.required],
             historicValue: [b.historicValue, Validators.required],
             depreciationRate: [b.depreciationRate, Validators.required],
@@ -79,6 +75,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
             accountno: [b.accountno],
+            accountId: [b.accountId],
             costCenter: [b.costCenter],
             investEnd: [b.investEnd],
             receptionNumber: [b.receptionNumber],
@@ -99,6 +96,25 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             criticity: [b.criticity],
             startYear: [b.startYear || 0],
         });
+        if (b.id) {
+            this.maxReference = b.reference2;
+            this.detailSrv
+                .getDepreciation(b.id)
+                .subscribe(res => {
+                    this.accountantDepreciation = res[0] || [];
+                    this.fiscalDepreciation = res[1] || [];
+                });
+        } else {
+            this.accountantDepreciation = this.fiscalDepreciation = [];
+            this.detailSrv
+                .getMaxReference()
+                .subscribe(res => {
+                    this.maxReference = res.reference;
+                    form.controls['reference2'].setValue(this.maxReference);
+                    form.controls['reference'].setValue(this.maxReference);
+                })
+        }
+        return form;
     }
 
     public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
@@ -108,5 +124,4 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         else
             return '';
     }
-
 }

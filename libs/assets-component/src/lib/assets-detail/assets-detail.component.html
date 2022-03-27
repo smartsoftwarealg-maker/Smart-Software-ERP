@@ -5,7 +5,7 @@
         <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_MAX_LENGTH
         </mat-error>
     </mat-form-field>
-    <mat-form-field id="reference2" class="default-25 sm-50">
+    <mat-form-field id="reference2" class="default-25 sm-50" >
         <mat-label><spna translate>LOGISTICS_REFERENCE</spna> 2</mat-label>
         <input matInput formControlName="reference2" type="text" autofocus maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
@@ -26,11 +26,21 @@
         <mat-error *ngIf="form.controls['barcode'].invalid" translate>COMMON_FIELD_MAX_LENGTH
         </mat-error>
     </mat-form-field>
-    <mat-form-field id="accountno" class="default-50 sm-100">
+
+<!--    <mat-form-field id="accountno" class="default-50 sm-100">-->
+<!--        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
+<!--        <input matInput formControlName="accountno" type="text" required>-->
+<!--        <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
+<!--    </mat-form-field>-->
+
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-        <input matInput formControlName="accountno" type="text" required>
-        <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        <ss-auto-complete matInput
+                          [model]="accountAutoCompleteModel"
+                          formControlName="accountId"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
+
 
     <mat-form-field id="info" class="default-50 sm-100">
         <mat-label translate>COMMON_INFO</mat-label>

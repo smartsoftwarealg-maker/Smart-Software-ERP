@@ -1,3 +1,6 @@
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {AccountService} from './account.service';
+
 export const ACCOUNT_URL = '/accounts';
 export const GENACCOUNT_URL = '/genaccounts';
 

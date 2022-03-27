@@ -17,4 +17,8 @@ export class AssetsService extends BaseEntityService<Asset>{
         const aid = id || 0;
         return this.httpSrv.get<Depreciation[][]>(`/assets/depreciations/${aid}`);
     }
+
+    getMaxReference(): Observable<{reference: string}> {
+        return this.httpSrv.get<{reference: string}> ('/assets/max-reference');
+    }
 }
