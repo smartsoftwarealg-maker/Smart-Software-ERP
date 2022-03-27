@@ -77,7 +77,6 @@
     "ARTICLES": "السلع",
     "PRICE": "السعر",
     "DOCUMENT": "الوثيقة",
-    "TOTAL": "المجموع",
     "CUSTOMER": "الزبون",
     "IMPORT_DOCUMENT": "قم باستيراد مستند",
     "CIRCULATION": "الدوران",
@@ -137,5 +136,6 @@
     "DOCUMENT_NUMBERING": "ترقيم الوثائق",
     "INVOICE_DATE":   "تاريخ الفاتورة",
     "INVOICE_NUMBER": "رقم الفاتورة",
-    "PAYMENT_ORDER": "أوامر الدفع"
+    "PAYMENT_ORDER": "أوامر الدفع",
+    "ORDER_NO":      "رقم الطلب"
 }

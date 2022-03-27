@@ -133,5 +133,6 @@
     "DOCUMENT_NUMBERING":   "",
     "INVOICE_DATE":   "",
     "INVOICE_NUMBER": "",
-    "PAYMENT_ORDERS": ""
+    "PAYMENT_ORDERS": "",
+    "ORDER_NO":      ""
 }

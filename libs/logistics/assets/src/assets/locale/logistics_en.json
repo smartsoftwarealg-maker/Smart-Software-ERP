@@ -121,7 +121,6 @@
     "PROFORMA": "Proforma invoice",
     "PRICE": "Price",
     "QTY": "Qty",
-    "TOTAL": "Total",
     "REFERENCE": "Reference",
     "IMAGE": "Image",
     "DESCRIPTION": "Description",
@@ -137,5 +136,6 @@
     "DOCUMENT_NUMBERING": "Document numbering",
     "INVOICE_DATE":   "Invoice date",
     "INVOICE_NUMBER": "Invoice number",
-    "PAYMENT_ORDERS": "Payment orders"
+    "PAYMENT_ORDERS": "Payment orders",
+    "ORDER_NO":      "Order number"
 }

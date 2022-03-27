@@ -1,0 +1,29 @@
+form {
+    width: 98%;
+    max-width: 1000px;
+    margin: 10px auto;
+}
+
+.depreciation-div {
+    width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.accountant-div, .fiscal-div {
+    width: 45%;
+    overflow-y: auto;
+}
+.mat-column-year {
+    flex: 1 1 80px;
+
+}
+.mat-column-depreciation,
+.mat-column-totalDepreciation,
+.mat-column-remaining
+{
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}

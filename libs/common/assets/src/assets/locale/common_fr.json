@@ -191,5 +191,7 @@
     "ADMINISTRATION": "Administration",
     "CARDS": "Cartes",
     "LIST":  "Liste",
+    "YEAR": "Année",
+    "TOTAL": "Total",
     "CONNECTION_ERROR": "Erreur de connexion"
 }

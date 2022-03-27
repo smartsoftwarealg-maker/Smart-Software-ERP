@@ -38,7 +38,7 @@ export class BaseEntityService<T> {
                 this.httpSrv.get(this.getUrl() + '/' + id);
     }
 
-    public remove(id: number): Observable<any> {
+    public remove(id: number): Observable<{ count: number}> {
         return this.httpSrv.remove(this.getUrl() + '/' + id);
     }
 
