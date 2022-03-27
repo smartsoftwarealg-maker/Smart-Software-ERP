@@ -36,6 +36,8 @@ export const SALES_CATEGORY_URL = '/lookups/sales_categories';
 export const CATEGORY_URL = '/lookups/categories';
 export const AGENT_PRICES_URL = '/logistics/prices';
 export const CC_GROUP_URL = '/lookups/ccenter_groups';
+export const LANGUAGES_URL = '/lookups/languages';
+export const LANGUAGE_LEVELS_URL = '/lookups/language_levels';
 
 export interface Wilaya {
     id: number;
@@ -83,6 +85,16 @@ export class Service {
 }
 
 export class MilitaryServiceState {
+    id: number;
+    description: string;
+}
+
+export class Language {
+    id: number;
+    description: string;
+}
+
+export class LanguageLevel {
     id: number;
     description: string;
 }

@@ -7,4 +7,4 @@ export const CHILDREN_ROUTE_URL = 'children';
 export const DIPLOMA_ROUTE_URL = 'diplomas';
 export const TRAINING_ROUTE_URL = 'trainings';
 export const PUNISHMENT_ROUTE_URL = 'punishments';
-
+export const LANGUAGES_ROUTE_URL = 'languages';

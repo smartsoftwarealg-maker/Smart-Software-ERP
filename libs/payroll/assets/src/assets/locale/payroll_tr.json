@@ -114,5 +114,9 @@
     "JUDICIAL_FRAME":     "Judicial frame",
     "DECISION":           "",
     "STARTING_MONTH":     "",
-    "CHILDREN" : ""
+    "CHILDREN" : "",
+    "LANGUAGES": "Languages",
+    "LANGUAGE": "Language",
+    "LANGUAGE_READ_LEVEL": "Read level",
+    "LANGUAGE_WRITE_LEVEL": "Write level"
 }

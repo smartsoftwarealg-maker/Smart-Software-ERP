@@ -26,6 +26,8 @@ import { PunishmentListComponent } from './employee-punishments/punishment-list/
 import { PunishmentDetailComponent } from './employee-punishments/punishment-detail/punishment-detail.component';
 import { EmployeeChildrenListComponent } from './employee-children/employee-children-list.component';
 import { EmployeeChildDetailComponent } from './employee-children/employee-child-detail.component';
+import { EmployeeLanguagesDetailComponent } from './employee-languages/employee-languages-detail.component';
+import { EmployeeLanguagesListComponent } from './employee-languages/employee-languages-list.component';
 
 @NgModule({
     imports: [
@@ -45,7 +47,8 @@ import { EmployeeChildDetailComponent } from './employee-children/employee-child
         EmployeeActivationDetailComponent,
         EmployeeContractsDetailComponent,
         EmployeeWifeDetailComponent,
-        EmployeeChildDetailComponent
+        EmployeeChildDetailComponent,
+        EmployeeLanguagesDetailComponent,
     ],
     declarations: [
         EmployeeListComponent,
@@ -65,8 +68,10 @@ import { EmployeeChildDetailComponent } from './employee-children/employee-child
         PunishmentListComponent,
         PunishmentDetailComponent,
         EmployeeChildrenListComponent,
-        EmployeeChildDetailComponent
-    ]
+        EmployeeChildDetailComponent,
+        EmployeeLanguagesDetailComponent,
+        EmployeeLanguagesListComponent
+     ]
 })
 export class PayrollUiEmployeeModule {
 }

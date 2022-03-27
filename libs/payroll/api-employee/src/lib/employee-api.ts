@@ -17,6 +17,9 @@ export const WIVES_CHILD_URL = '/wives';
 export const CHILDREN_PARENT_URL = '/persons';
 export const CHILDREN_CHILD_URL = '/children';
 
+export const LANGUAGES_PARENT_URL = '/persons';
+export const LANGUAGES_CHILD_URL = '/languages';
+
 export interface Employee {
     id: number;
 
@@ -153,4 +156,12 @@ export class Child {
     sex: 1 | 2;
     birthDate?: string;
     birthPlace?: string;
+}
+
+export class EmployeeLanguage {
+    id: number;
+    person_id: number;
+    language_id: number;
+    read_level: number;
+    write_level: number;
 }

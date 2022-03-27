@@ -126,5 +126,9 @@
     "FAULT_TYPE":         "Fault type",
     "DECISION":           "Decision",
     "STARTING_MONTH":     "Starting month",
-    "CHILDREN" : "Children"
+    "CHILDREN" : "Children",
+    "LANGUAGES": "Languages",
+    "LANGUAGE": "Language",
+    "LANGUAGE_READ_LEVEL": "Read level",
+    "LANGUAGE_WRITE_LEVEL": "Write level"
 }
