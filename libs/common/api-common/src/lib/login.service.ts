@@ -32,6 +32,7 @@ export class LoginService {
         user: {id: 0, description: null, fullName: null, manager: false, blocked: false},
     };
     public appCtx: AppContext = null;
+    public connectionError = false;
     public wrongData = false;
     public licenseErrorType: LicenseErrorType = null;
     private _customerLogin:LoginType  = LoginType.USER;
@@ -89,6 +90,7 @@ export class LoginService {
     public reload(): Observable<AppContext> {
         this.httpSrv.init();
         return  (this.appCtx)? of (this.appCtx) :
+            this.httpSrv.getAuthToken()?
             this.httpSrv
                 .get<LoginInfo>('/ctx')
                 .pipe(
@@ -103,7 +105,7 @@ export class LoginService {
                         }
                         return of (null);
                     })
-                );
+                ) : of(null);
     }
 
     public centerLogin(center: number): Observable<LoginInfo> {
@@ -153,7 +155,8 @@ export class LoginService {
                     }
                 },
                 error: err => {
-                    this.wrongData = true;
+                    this.connectionError = err.status === 0;
+                    this.wrongData = !this.connectionError;
                     if (onFinish != null) {
                         onFinish();
                     }
@@ -261,5 +264,8 @@ export class LoginService {
 
     getAppParam(key: string): string {
         return this.appCtx?.params?.get(key);
+    }
+    ctx(): Observable<AppContext> {
+        return this.httpSrv.get<any>('/ctx').pipe(map(res => res['ctx']));
     }
 }

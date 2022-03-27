@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService, LoginService} from '@ss/common/api-common';
+import {AppContext, HttpService, LoginService} from '@ss/common/api-common';
 import {switchMap, tap} from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
                 private router: Router) {}
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart Software ERP  (pre-Alpha)');
+        this.shellSrv.setApplicationTitle('Smart Software ERP. 0.0.1 Beta');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             logAdminNavTree,
@@ -53,9 +53,7 @@ export class AppComponent implements OnInit {
         ]);
         this.httpSrv
             .init()
-            .pipe(switchMap(() => this.langSrv.init()),
-                  switchMap(_ => this.loginSrv.reload()),
-                  switchMap(_ =>  this.monthSelectorSrv.curMonthLabel()))
+            .pipe(switchMap(() => this.langSrv.init()))
             .subscribe({ next:  () => this.init(),
                                   error: () => this.loginSrv.logout()
                                 });
@@ -69,14 +67,14 @@ export class AppComponent implements OnInit {
                 if (event instanceof NavigationEnd) {
                         //console.log(event.url)
                     if(event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
-                        const obs = zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<any>('/ccenter'));
+                        const obs = zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<AppContext>('/ccenter'));
                         //TODO: fix this bad code.
                         obs.subscribe(res => {
                             const label = `${res[1]['description'] || ''}-  ${res[0]}`;
                             this.shellSrv.setLabels([{title: label}]);
                         });
                     } else {
-                        if (event.url !== '/' && event.url.indexOf('login') < 0) {
+                        if (event.url?.indexOf('/app') >= 0) {
                             this.httpSrv
                                 .get<any>('/ccenter')
                                 .subscribe(res => {
@@ -89,5 +87,4 @@ export class AppComponent implements OnInit {
             }))
             .subscribe(str => {});
     }
-
 }

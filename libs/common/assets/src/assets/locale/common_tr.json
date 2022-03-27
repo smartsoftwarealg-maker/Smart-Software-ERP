@@ -185,5 +185,6 @@
     "APPLICATIONS": "",
     "ADMINISTRATION": "Administration",
     "CARDS": "",
-    "LIST":  ""
+    "LIST":  "",
+    "CONNECTION_ERROR": ""
 }

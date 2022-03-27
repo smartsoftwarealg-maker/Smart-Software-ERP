@@ -26,6 +26,10 @@
                 <strong translate>COMMON_LOGIN_WRONG_USERNAME_PASSWORD</strong>
             </div>
 
+            <div *ngIf="loginSrv.connectionError" class="mat-error login-failed">
+                <strong translate>COMMON_CONNECTION_ERROR</strong>
+            </div>
+
             <div class="buttons">
 
                 <div class="icon-buttons">
