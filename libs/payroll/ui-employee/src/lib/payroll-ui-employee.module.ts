@@ -28,6 +28,8 @@ import { EmployeeChildrenListComponent } from './employee-children/employee-chil
 import { EmployeeChildDetailComponent } from './employee-children/employee-child-detail.component';
 import { EmployeeLanguagesDetailComponent } from './employee-languages/employee-languages-detail.component';
 import { EmployeeLanguagesListComponent } from './employee-languages/employee-languages-list.component';
+import { EmployeeOldCareerListComponent } from './employee-old-career/employee-old-career-list.component';
+import { EmployeeOldCareerDetailComponent } from './employee-old-career/employee-old-career-detail.component';
 
 @NgModule({
     imports: [
@@ -49,6 +51,7 @@ import { EmployeeLanguagesListComponent } from './employee-languages/employee-la
         EmployeeWifeDetailComponent,
         EmployeeChildDetailComponent,
         EmployeeLanguagesDetailComponent,
+        EmployeeOldCareerDetailComponent
     ],
     declarations: [
         EmployeeListComponent,
@@ -70,7 +73,9 @@ import { EmployeeLanguagesListComponent } from './employee-languages/employee-la
         EmployeeChildrenListComponent,
         EmployeeChildDetailComponent,
         EmployeeLanguagesDetailComponent,
-        EmployeeLanguagesListComponent
+        EmployeeLanguagesListComponent,
+        EmployeeOldCareerListComponent,
+        EmployeeOldCareerDetailComponent
      ]
 })
 export class PayrollUiEmployeeModule {
