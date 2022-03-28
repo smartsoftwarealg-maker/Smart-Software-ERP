@@ -1,0 +1,65 @@
+<div class="buttons">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selected"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selected"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="post">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_POST
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.post}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="rate" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_RATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.rate}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="from_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_FROM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.from_date}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to_date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                PAYROLL_TO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.to_date}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+            *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

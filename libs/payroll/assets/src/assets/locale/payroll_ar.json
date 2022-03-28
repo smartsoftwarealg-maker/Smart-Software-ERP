@@ -130,5 +130,7 @@
     "LANGUAGES": "اللغات",
     "LANGUAGE": "اللغة",
     "LANGUAGE_READ_LEVEL": "القراءة",
-    "LANGUAGE_WRITE_LEVEL": "الكتابة"
+    "LANGUAGE_WRITE_LEVEL": "الكتابة",
+    "OLD_CAREERS": "المسيرة الماضية",
+    "RATE": "النسبة"
 }

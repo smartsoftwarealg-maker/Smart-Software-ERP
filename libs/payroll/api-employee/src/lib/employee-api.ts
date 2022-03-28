@@ -20,6 +20,10 @@ export const CHILDREN_CHILD_URL = '/children';
 export const LANGUAGES_PARENT_URL = '/persons';
 export const LANGUAGES_CHILD_URL = '/languages';
 
+export const OLD_CAREER_PARENT_URL = '/persons';
+export const OLD_CAREER_CHILD_URL = '/oldcareers';
+
+
 export interface Employee {
     id: number;
 
@@ -164,4 +168,14 @@ export class EmployeeLanguage {
     language_id: number;
     read_level: number;
     write_level: number;
+}
+
+export class OldCareer {
+    id: number;
+    employee: number;
+    ctype: 1 | 2; // '1 = In sector, 2 = beyond sector'
+    post: string;
+    from_date: string;
+    to_date: string;
+    rate: number;
 }

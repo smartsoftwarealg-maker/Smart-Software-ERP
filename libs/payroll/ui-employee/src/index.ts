@@ -14,5 +14,5 @@ export * from './lib/employee-punishments/punishment-list/punishment-list.compon
 export * from './lib/employee-punishments/punishment-detail/punishment-detail.component';
 export * from './lib/employee-children/employee-child-detail.component';
 export * from './lib/employee-languages/employee-languages-detail.component';
-
+export * from './lib/employee-old-career/employee-old-career-detail.component';
 

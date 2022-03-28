@@ -130,5 +130,7 @@
     "LANGUAGES": "Langues",
     "LANGUAGE": "Langue",
     "LANGUAGE_READ_LEVEL": "Niveau de lecture",
-    "LANGUAGE_WRITE_LEVEL": "Niveau d'écriture"
+    "LANGUAGE_WRITE_LEVEL": "Niveau d'écriture",
+    "OLD_CAREERS": "Ancienne carrière",
+    "RATE": "Taux"
 }
