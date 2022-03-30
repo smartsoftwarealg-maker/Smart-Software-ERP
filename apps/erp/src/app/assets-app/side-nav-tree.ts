@@ -1,5 +1,11 @@
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_ASSETS_URL, ABS_COST_TYPES, ABS_REVALUATION_TYPES} from '../common';
+import {
+    ABS_ASSETS_REPORTS_URL,
+    ABS_ASSETS_URL,
+    ABS_COMMON_REPORTS_URL,
+    ABS_COST_TYPES,
+    ABS_REVALUATION_TYPES
+} from '../common';
 
 export const assetsNavTree: SideNavNode = {
     name: 'ASSETS',
@@ -20,6 +26,11 @@ export const assetsNavTree: SideNavNode = {
             name: 'COMMON_ASSETS',
             icon: 'fa-solid fa-car-building',
             route: ABS_ASSETS_URL
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fas fa-calendar-check',
+            route: ABS_ASSETS_REPORTS_URL,
         },
     ]
 };
