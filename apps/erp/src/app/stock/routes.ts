@@ -373,6 +373,12 @@ export const lookupRoutes: Routes = [
         ]
     },
     {
+        path: COMMON_REPORTS_URL,
+        data: {reportBase: 'stock'},
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
+    },
+    {
         path: STOCK_SUBCLASSES_URL,
         children: [
             {
