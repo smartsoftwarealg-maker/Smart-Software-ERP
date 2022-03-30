@@ -133,5 +133,7 @@ export class AppModule {
         langSrv.addSource('assets/locale/webarch_', 'WAR_');
         langSrv.addSource('assets/locale/missions_', 'MISSION_');
         langSrv.addSource('assets/locale/assets_', 'ASSET_');
+        langSrv.addSource('assets/locale/treasury_', 'TRS_');
+        langSrv.addSource('assets/locale/accounting_', 'ACC_');
     }
 }
