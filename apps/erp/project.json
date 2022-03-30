@@ -29,6 +29,16 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/accounting/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/treasury/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/stock/assets/src/assets",
                         "output": "assets"
                     },
