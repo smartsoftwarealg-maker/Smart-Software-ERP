@@ -6,7 +6,7 @@ import {
     ASSETS_BLOCKING_URL,
     ASSETS_COST_URL,
     ASSETS_REVALUATION_URL, ASSET_COST_TYPE_URL,
-    PAY_ELEMENT_TYPES_URL, ASSET_REVALUATION_TYPE_URL
+    PAY_ELEMENT_TYPES_URL, ASSET_REVALUATION_TYPE_URL, COMMON_REPORTS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -21,6 +21,7 @@ import {
 } from '@ss/assets-component';
 import {AssetRevaluationTypeDetailComponent} from '../../../../../libs/assets-component/src/lib/asset-revaluation-type-detail/asset-revaluation-type-detail.component';
 import {AssetRevaluationTypeListComponent} from '../../../../../libs/assets-component/src/lib/asset-revaluation-type-list/asset-revaluation-type-list.component';
+import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
 
 export const mainRoutes: Routes = [
     {
@@ -124,7 +125,12 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-
+    {
+        path: COMMON_REPORTS_URL,
+        data: {reportBase: 'assets'},
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
+    },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
