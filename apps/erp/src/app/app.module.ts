@@ -17,7 +17,9 @@ import {
     SALES_APP_URL,
     STOCK_APP_URL,
     WEBARCH_APP_URL,
-    ASSETS_APP_URL
+    ASSETS_APP_URL,
+    ACCOUNTING_APP_URL,
+    TREASURY_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
@@ -33,6 +35,14 @@ const routes: Routes = [
                 path: INDEX_PAGE_URL,
                 component: MainPageComponent,
                 canActivate: [CanActivateService]
+            },
+            {
+                path: ACCOUNTING_APP_URL,
+                loadChildren: () => import('./accounting/accounting.module').then(m => m.AccountingModule)
+            },
+            {
+                path: TREASURY_APP_URL,
+                loadChildren: () => import('./treasury/treasury.module').then(m => m.TreasuryModule)
             },
             {
                 path: STOCK_APP_URL,
@@ -123,5 +133,7 @@ export class AppModule {
         langSrv.addSource('assets/locale/webarch_', 'WAR_');
         langSrv.addSource('assets/locale/missions_', 'MISSION_');
         langSrv.addSource('assets/locale/assets_', 'ASSET_');
+        langSrv.addSource('assets/locale/treasury_', 'TRS_');
+        langSrv.addSource('assets/locale/accounting_', 'ACC_');
     }
 }

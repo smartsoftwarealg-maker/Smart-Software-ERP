@@ -1,0 +1,35 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/assets",
+    "sourceRoot": "libs/accounting/assets/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/accounting/assets/tsconfig.lib.json",
+                    "libs/accounting/assets/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/accounting/assets/**/*"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "options": {
+                "jestConfig": "libs/accounting/assets/jest.config.js",
+                "tsConfig": "libs/accounting/assets/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "libs/accounting/assets/src/test-setup.ts"
+            }
+        }
+    },
+    "generators": {
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    }
+}
