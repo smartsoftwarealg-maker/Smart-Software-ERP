@@ -41,6 +41,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
             router,
             confirmationSrv,
             defReportSrv, pagPersistSrv,
-            'COMMON_ASSETS');
+            'ASSETS');
+        this.pagination.pageSize = 10;
     }
 }

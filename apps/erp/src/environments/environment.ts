@@ -6,6 +6,21 @@ export const environment = {
   production: false,
 };
 
+export const compiledApplications = [
+    'ADMINISTRATION',
+    'COMMON_LOGISTICS-ADMINISTRATION',
+    'PURCHASES',
+    'STOCK',
+    'SALES',
+    'COMMON_FINANCE',
+    'ACCOUNTING',
+    'ASSETS',
+    'TREASURY',
+    'HR',
+    'PAYROLL',
+    'WEBARCH',
+    'COMMON_DASHBOARD'
+];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

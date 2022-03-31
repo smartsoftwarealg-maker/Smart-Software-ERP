@@ -33,6 +33,7 @@
     "INVENTORY":    "Inventory",
     "WEBARCHIVE":   "Electronic archive",
     "LOGISTICS-ADMINISTRATION": "Logistics administration",
-    "FINANCE": "Finance",
-    "DASHBOARD": "Dashboard"
+    "FINANCE":                  "Finance",
+    "DASHBOARD":                "Dashboard",
+    "TREASURY":                 "Treasury"
 }
