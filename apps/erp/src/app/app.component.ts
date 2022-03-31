@@ -20,6 +20,7 @@ import {treasuryNavTree} from './treasury/side-nav.tree';
 import {of, zip} from 'rxjs';
 import {Event, NavigationEnd, Router} from '@angular/router';
 import {AccessRightsService} from '@ss/common/api-access-rights';
+import {compiledApplications} from '../environments/environment';
 
 @Component({
     selector: 'ss-root',
@@ -46,15 +47,15 @@ export class AppComponent implements OnInit {
             purchasesNavTree,
             stockNavTree,
             salesNavTree,
+            financeNavTree,
+            accountingNavTree,
+            assetsNavTree,
+            treasuryNavTree,
             hrNavTree,
             payrollNavTree,
-            financeNavTree,
-            dashboardNavTree,
             webArchNavTree,
-            assetsNavTree,
-            accountingNavTree,
-            treasuryNavTree
-        ]);
+            dashboardNavTree,
+        ].filter(e => compiledApplications.indexOf(e.name) >= 0));
         this.httpSrv
             .init()
             .pipe(switchMap(() => this.langSrv.init()))

@@ -34,5 +34,6 @@
     "WEBARCHIVE":   "Archives électroniques",
     "LOGISTICS-ADMINISTRATION": "Administration logistique",
     "FINANCE": "Finance",
-    "DASHBOARD": "Tableau de bord"
+    "DASHBOARD": "Tableau de bord",
+    "TREASURY":  "Trésorerie"
 }
