@@ -236,7 +236,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <div class="ctrl-div">
+            <div class="ctrl-div" *ngIf="activePersonnel">
                 <button mat-raised-button color="primary" type="button" (click)="saveElements()">
                     {{ 'COMMON_SAVE' | translate }}
                 </button>
@@ -273,7 +273,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-career [personId]="id"></ss-employee-career>
+            <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-career>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode">
@@ -283,7 +283,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-old-career-list [personId]="id"></ss-employee-old-career-list>
+            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-old-career-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
@@ -293,7 +293,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-contracts [personId]="id"></ss-employee-contracts>
+            <ss-employee-contracts [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-contracts>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #wivesPanel [class]="getPanelHeaderClass('wives', wivesPanel)">
@@ -303,7 +303,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-wives [personId]="id"></ss-employee-wives>
+            <ss-employee-wives [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-wives>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #childrenPanel [class]="getPanelHeaderClass('children', childrenPanel)">
@@ -313,7 +313,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-children [personId]="id"></ss-employee-children>
+            <ss-employee-children [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-children>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #diplomaPanel [class]="getPanelHeaderClass('diplomas', diplomaPanel)">
@@ -323,7 +323,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-diploma-list [personId]="id"></ss-employee-diploma-list>
+            <ss-employee-diploma-list [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-diploma-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #trainingPanel [class]="getPanelHeaderClass('training', trainingPanel)">
@@ -333,7 +333,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-training-list [personId]="id"></ss-employee-training-list>
+            <ss-employee-training-list [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-training-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode">
@@ -343,7 +343,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-languages [personId]="id"></ss-employee-languages>
+            <ss-employee-languages [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-languages>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode" #punishmentPanel [class]="getPanelHeaderClass('punishment', punishmentPanel)">
@@ -353,7 +353,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-punishment-list [personId]="id"></ss-punishment-list>
+            <ss-punishment-list [personId]="id" [activePersonnel]="activePersonnel"></ss-punishment-list>
         </mat-expansion-panel>
 
     </mat-accordion>

@@ -22,7 +22,7 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL,
+    ABS_HR_SUSPENSION_REASON_URL, ABS_INACTIVE_HR_EMPLOYEES_URL,
     ABS_INPUT_FILTERS_URL,
     ABS_LOANS_URL,
     ABS_MISSION_PREPARATION_URL,
@@ -103,8 +103,13 @@ export const payrollNavTree: SideNavNode = {
                     route: ABS_SALARY_GRID_URL
                 },
                 {
+                    name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
+                    icon: 'far fa-users-slash',
+                    route: ABS_INACTIVE_HR_EMPLOYEES_URL
+                },
+                {
                     name: 'PAYROLL_EMPLOYEES_LIST',
-                    icon: 'fas fa-list-ol',
+                    icon: 'fad fa-users',
                     route: ABS_PAYROLL_EMPLOYEES_URL
                 }
             ]

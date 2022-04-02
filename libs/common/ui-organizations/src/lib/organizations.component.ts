@@ -10,6 +10,7 @@ import { OrganizationsDetailComponent } from './organizations-detail.component';
 import { TreeNode } from 'angular13-organization-chart';
 import { EmployeeService, Employee } from '@ss/payroll/api-employee';
 import { ImageModel } from '@ss/common/ui-image-input';
+import {ActivatedRoute} from '@angular/router';
 
 interface OrgTreeNode extends TreeNode {
     id: number;
@@ -37,12 +38,13 @@ enum Level {
 export class OrganizationsComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
-        private shellSrv: ShellService,
-        private matDialog: MatDialog,
-        public snackBarSrv: SnackBarService,
-        public personSrv: EmployeeService,
-        public confirmationSrv: ConfirmationDialogService,
-        private langSrv: LanguageService) { }
+                private shellSrv: ShellService,
+                private matDialog: MatDialog,
+                private snackBarSrv: SnackBarService,
+                private personSrv: EmployeeService,
+                private route: ActivatedRoute,
+                private confirmationSrv: ConfirmationDialogService,
+                private langSrv: LanguageService) { }
 
     readonly defaultStyle = '';
 
@@ -92,6 +94,7 @@ export class OrganizationsComponent implements OnInit {
 
     ngOnInit() {
         this.refresh();
+        this.shellSrv.setGoBackPath('..', this.route);
     }
 
     refresh() {
@@ -117,7 +120,7 @@ export class OrganizationsComponent implements OnInit {
                     ds.forEach(d => {
                         const node = this.lookupToChartNode(d.id, d.description, d.division, d.responsible, Level.Department);
                         departments[d.id] = node;
-                        divisions[d.division].children.push(node);
+                        divisions[d.division]?.children.push(node);
                         this.loadPersonName(d.responsible);
                     });
                     return this.httpSrv.get<Service[]>(SERVICES_URL[0] + 0 + SERVICES_URL[1]);
@@ -126,14 +129,14 @@ export class OrganizationsComponent implements OnInit {
                     srv.forEach(s => {
                         const node = this.lookupToChartNode(s.id, s.description, s.department, s.responsible, Level.Service);
                         services[s.id] = node;
-                        departments[s.department].children.push(node);
+                        departments[s.department]?.children.push(node);
                         this.loadPersonName(s.responsible);
                     });
                     return this.httpSrv.get<Office[]>(OFFICES_URL[0] + 0 + OFFICES_URL[1]);
                 })
             ).subscribe((offices: Office[]) => {
                 offices.forEach(o => {
-                    services[o.service].children.push(this.lookupToChartNode(o.id, o.description, o.service, null, Level.Office));
+                    services[o.service]?.children.push(this.lookupToChartNode(o.id, o.description, o.service, null, Level.Office));
                 });
                 this.shellSrv.setLoading(false);
             });

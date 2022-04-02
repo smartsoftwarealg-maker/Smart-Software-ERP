@@ -15,6 +15,15 @@ import {EmployeeDiplomaService} from '../employee-diploma.service';
   styleUrls: ['./employee-diploma-list.component.scss']
 })
 export class EmployeeDiplomaListComponent implements OnInit {
+    private _activePersonnel = true;
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
     @Input()
     set personId(id: number) {
         this.entitySrv.setParentId(id);
