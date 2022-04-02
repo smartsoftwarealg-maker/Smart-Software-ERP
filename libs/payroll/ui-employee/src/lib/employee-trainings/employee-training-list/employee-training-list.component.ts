@@ -15,6 +15,15 @@ import {Training} from '../employee-training';
   styleUrls: ['./employee-training-list.component.scss']
 })
 export class EmployeeTrainingListComponent implements OnInit {
+    private _activePersonnel = true;
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
 
     @Input()
     set personId(id: number) {

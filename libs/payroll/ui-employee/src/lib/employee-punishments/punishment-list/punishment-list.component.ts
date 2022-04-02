@@ -15,6 +15,15 @@ import {PUNISHMENT_ROUTE_URL} from '@ss/payroll/api-employee';
   styleUrls: ['./punishment-list.component.scss']
 })
 export class PunishmentListComponent implements OnInit {
+    private _activePersonnel = true;
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
 
     @Input()
     set personId(id: number) {

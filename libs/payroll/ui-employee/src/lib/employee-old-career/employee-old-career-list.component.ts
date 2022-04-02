@@ -12,21 +12,21 @@ import { PaginationModel, LanguageService } from '@ss/common/api-common';
     styleUrls: ['./employee-old-career-list.component.scss']
 })
 export class EmployeeOldCareerListComponent implements OnInit, OnDestroy {
+    private _activePersonnel = true;
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
 
     @Input()
     set personId(id: number) {
         this.entitySrv.setParentId(id);
     }
 
-    /*
-    id: number;
-    employee: number;
-    ctype: 1 | 2; // '1 = In sector, 2 = beyond sector'
-    post: string;
-    from_date: string;
-    to_date: string;
-    rate: number;
-    */
 
     public displayedColumns = [
         'post',

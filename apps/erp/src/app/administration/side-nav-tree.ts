@@ -55,7 +55,7 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'ADMINISTRATION_USERS',
-            icon: 'fas fa-user',
+            icon: 'fas fa-user-friends',
             route: ABS_ADMINISTRATION_USER_URL,
             accessRights: 'User'
         },
