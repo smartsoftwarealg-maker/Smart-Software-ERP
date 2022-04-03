@@ -20,6 +20,7 @@ import {treasuryNavTree} from './treasury/side-nav.tree';
 import {of, zip} from 'rxjs';
 import {Event, NavigationEnd, Router} from '@angular/router';
 import {AccessRightsService} from '@ss/common/api-access-rights';
+import {organizationsNavTree} from './organizations/side-nav-tree';
 
 @Component({
     selector: 'ss-root',
@@ -53,7 +54,8 @@ export class AppComponent implements OnInit {
             webArchNavTree,
             assetsNavTree,
             accountingNavTree,
-            treasuryNavTree
+            treasuryNavTree,
+            organizationsNavTree
         ]);
         this.httpSrv
             .init()
