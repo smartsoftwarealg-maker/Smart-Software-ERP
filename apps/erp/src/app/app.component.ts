@@ -56,7 +56,6 @@ export class AppComponent implements OnInit {
             payrollNavTree,
             webArchNavTree,
             assetsNavTree,
-            accountingNavTree,
             treasuryNavTree,
             organizationsNavTree,
             dashboardNavTree,
