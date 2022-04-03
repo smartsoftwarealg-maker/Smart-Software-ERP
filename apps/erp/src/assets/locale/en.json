@@ -33,7 +33,8 @@
     "INVENTORY":    "Inventory",
     "WEBARCHIVE":   "Electronic archive",
     "LOGISTICS-ADMINISTRATION": "Logistics administration",
-    "FINANCE": "Finance",
-    "DASHBOARD": "Dashboard",
-    "HR": "HR Management"
+    "HR": "HR Management",
+    "FINANCE":                  "Finance",
+    "DASHBOARD":                "Dashboard",
+    "TREASURY":                 "Treasury"
 }

@@ -1,4 +1,4 @@
-<div class="buttons">
+<div class="buttons" *ngIf="activePersonnel">
     <button mat-mini-fab color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>
@@ -55,7 +55,7 @@
 
         <ng-container matColumnDef="number" style="justify-content: center; text-align: center">
             <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                PAYROLL_NUMBER
+                COMMON_NUMBER
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
                 {{e.number}}

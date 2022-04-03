@@ -23,7 +23,7 @@ export const assetsNavTree: SideNavNode = {
             route: ABS_REVALUATION_TYPES
         },
         {
-            name: 'COMMON_ASSETS',
+            name: 'ASSETS',
             icon: 'fa-solid fa-car-building',
             route: ABS_ASSETS_URL
         },

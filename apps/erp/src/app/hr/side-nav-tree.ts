@@ -14,7 +14,7 @@ import {
     ABS_PUNISHMENT_TYPE_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
     ABS_COMMON_REPORTS_URL,
-    ABS_HR_REPORTS_URL
+    ABS_HR_REPORTS_URL, ABS_INACTIVE_HR_EMPLOYEES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -94,8 +94,13 @@ export const hrNavTree: SideNavNode = {
             ]
         },
         {
+            name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
+            icon: 'far fa-users-slash',
+            route: ABS_INACTIVE_HR_EMPLOYEES_URL
+        },
+        {
             name: 'PAYROLL_EMPLOYEES_LIST',
-            icon: 'fas fa-list-ol',
+            icon: 'fad fa-users',
             route: ABS_HR_EMPLOYEES_URL
         },
         {

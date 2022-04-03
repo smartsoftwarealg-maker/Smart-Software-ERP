@@ -1,5 +1,6 @@
 
 export const EMPLOYEES_URL = '/persons';
+export const INACTIVE_EMPLOYEES_URL = '/inactive-persons';
 export const EMPLOYEE_PHOTO_URL = '/photo';
 
 export const ACTIVATION_PARENT_URL = '/persons';

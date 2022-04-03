@@ -26,6 +26,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PAYROLL_POST = 4;
 
     hrMode = false;
+    activePersonnel = false;
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     public maritalStatuses: MaritalStatus[];
@@ -53,7 +54,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     public preload(): Observable<any> {
         this.route.data.subscribe(data => {
-            this.hrMode = !!data.hrMode
+            this.hrMode = !!data.hrMode;
+            this.activePersonnel = !!data.active;
         });
         return this.lookupsSrv.getMaritalStatuses()
             .pipe(

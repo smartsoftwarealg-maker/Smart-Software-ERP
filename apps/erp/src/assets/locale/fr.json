@@ -35,5 +35,6 @@
     "LOGISTICS-ADMINISTRATION": "Administration logistique",
     "FINANCE": "Finance",
     "DASHBOARD": "Tableau de bord",
-    "HR": "Gestion RH"
+    "HR": "Gestion RH",
+    "TREASURY":  "Trésorerie"
 }

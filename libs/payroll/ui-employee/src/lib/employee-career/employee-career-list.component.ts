@@ -15,6 +15,15 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
     styleUrls: ['./employee-career-list.component.scss']
 })
 export class EmployeeCareerListComponent implements OnInit, OnDestroy {
+    private _activePersonnel = true;
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
 
     @Input()
     set personId(id: number) {

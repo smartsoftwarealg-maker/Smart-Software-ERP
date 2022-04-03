@@ -28,7 +28,7 @@ interface Employee extends IEmployee {
     templateUrl: './employee-list.component.html'
 })
 export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
-
+    activePersonnel = true;
     public displayedColumns = [
         'id',
         'fullname',
@@ -56,6 +56,10 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
         public pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
         this.pagination.pageSize = 15;
+        this.route.data.subscribe(data => {
+            this.activePersonnel = !!data.active
+            this.employeeSrv.setMode(this.activePersonnel);
+        });
     }
 
     trackByFn(index: number, item: Employee) {
@@ -64,6 +68,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
 
     ngOnInit(): void {
         super.ngOnInit();
+        this.shellSrv.setGoBackPath('..', this.route);
     }
 
     public select(id: number): void {
