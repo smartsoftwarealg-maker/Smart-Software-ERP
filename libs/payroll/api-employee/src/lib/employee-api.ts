@@ -24,6 +24,8 @@ export const LANGUAGES_CHILD_URL = '/languages';
 export const OLD_CAREER_PARENT_URL = '/persons';
 export const OLD_CAREER_CHILD_URL = '/oldcareers';
 
+export const DECISION_PARENT_URL = '/persons';
+export const DECISION_CHILD_URL = '/decisions';
 
 export interface Employee {
     id: number;
@@ -72,7 +74,7 @@ export interface Employee {
     post?: string;
 }
 
-export class EmployeeActivation {
+export interface EmployeeActivation {
     id: number;
     centerId: number;
     empId: number;
@@ -87,7 +89,7 @@ export class EmployeeActivation {
 }
 
 // [{"id":2432,"employee":1,"paymonth":202101,"post":325,"division":3,"department":4,"service":23,"salary_grid":45,"prof_category":20,"salary_rank":101,"from_date":"2014-01-01 00:00:00","to_date":"2021-02-01 00:00:00","trial_period":0}]
-export class Career {
+export interface Career {
     id: number;
     employee: number;
     paymonth: number;
@@ -112,7 +114,7 @@ export class Career {
     // responsible          : Option[Long] = None,
 }
 
-export class Contract {
+export interface Contract {
     id: number;
     centerId: number;
     employee: number;
@@ -140,7 +142,7 @@ export class Contract {
     confirmed: boolean;
 }
 
-export class Wife {
+export interface Wife {
     id: number;
     employee: number;
     name: string;
@@ -154,7 +156,7 @@ export class Wife {
     mother_ar?: string;
 }
 
-export class Child {
+export interface Child {
     id: number;
     employee: number;
     name: string;
@@ -163,7 +165,7 @@ export class Child {
     birthPlace?: string;
 }
 
-export class EmployeeLanguage {
+export interface EmployeeLanguage {
     id: number;
     person_id: number;
     language_id: number;
@@ -171,7 +173,7 @@ export class EmployeeLanguage {
     write_level: number;
 }
 
-export class OldCareer {
+export interface OldCareer {
     id: number;
     employee: number;
     ctype: 1 | 2; // '1 = In sector, 2 = beyond sector'
@@ -179,4 +181,16 @@ export class OldCareer {
     from_date: string;
     to_date: string;
     rate: number;
+}
+
+export interface Decision {
+    id: number;
+    centerId: number;
+    employee: number;
+    dec_reference: string;
+    dec_date: string;
+    application_date: string;
+    dec_motive: number;
+    application_period: number;
+    dec_header: string;
 }

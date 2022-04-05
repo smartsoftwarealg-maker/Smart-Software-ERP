@@ -30,6 +30,8 @@ import { EmployeeLanguagesDetailComponent } from './employee-languages/employee-
 import { EmployeeLanguagesListComponent } from './employee-languages/employee-languages-list.component';
 import { EmployeeOldCareerListComponent } from './employee-old-career/employee-old-career-list.component';
 import { EmployeeOldCareerDetailComponent } from './employee-old-career/employee-old-career-detail.component';
+import { EmployeeDecisionDetailComponent } from './employee-decisions/employee-decision-detail.component';
+import { EmployeeDecisionListComponent } from './employee-decisions/employee-decision-list.component';
 
 @NgModule({
     imports: [
@@ -51,7 +53,8 @@ import { EmployeeOldCareerDetailComponent } from './employee-old-career/employee
         EmployeeWifeDetailComponent,
         EmployeeChildDetailComponent,
         EmployeeLanguagesDetailComponent,
-        EmployeeOldCareerDetailComponent
+        EmployeeOldCareerDetailComponent,
+        EmployeeDecisionDetailComponent
     ],
     declarations: [
         EmployeeListComponent,
@@ -75,7 +78,9 @@ import { EmployeeOldCareerDetailComponent } from './employee-old-career/employee
         EmployeeLanguagesDetailComponent,
         EmployeeLanguagesListComponent,
         EmployeeOldCareerListComponent,
-        EmployeeOldCareerDetailComponent
+        EmployeeOldCareerDetailComponent,
+        EmployeeDecisionDetailComponent,
+        EmployeeDecisionListComponent
      ]
 })
 export class PayrollUiEmployeeModule {

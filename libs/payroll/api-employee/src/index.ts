@@ -15,3 +15,4 @@ export * from './lib/professional-fault.service';
 export * from './lib/punishment-type.service';
 export * from './lib/employee-languages.service';
 export * from './lib/employee-old-career.service';
+export * from './lib/employee-decision.service';
