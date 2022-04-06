@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/acc-policies",
+    "sourceRoot": "libs/accounting/acc-policies/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/accounting/acc-policies"],
+            "options": {
+                "jestConfig": "libs/accounting/acc-policies/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/accounting/acc-policies/src/**/*.ts",
+                    "libs/accounting/acc-policies/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -1,0 +1,140 @@
+<form *ngIf="form !== null" novalidate [formGroup]="form">
+    <mat-accordion>
+        <mat-expansion-panel #transactions expanded="false" [class]="getPanelHeaderClass('transactions', transactions)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ACC_TRANSACTIONS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="default-50 sm-100 spacer spacer">
+                <mat-checkbox formControlName="showFolio" translate>ACC_SHOW_FOLIO</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100 spacer spacersm-100 spacer">
+                <mat-checkbox formControlName="analyzeAccounts" translate>ACC_ANALYZE_ACCOUNTS</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100 spacer">
+                <mat-checkbox formControlName="resetPieceNumbers" translate>ACC_RESET_PIECE_NUMBER
+                </mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100 spacer">
+                <mat-checkbox formControlName="showBudget" translate>ACC_MANAGE_BUDGET</mat-checkbox>
+            </div>
+
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_OPENING_JOURNAL</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="openingJournal"></ss-auto-complete>
+            </mat-form-field>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #cashFlow expanded="false" [class]="getPanelHeaderClass('cashFlow', cashFlow)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ACC_CASH_FLOW
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_BANK_ACCOUNTS</mat-label>
+                <input matInput formControlName="bankAccount" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_CASH_ACCOUNTS</mat-label>
+                <input matInput formControlName="cashAccount" type="text">
+            </mat-form-field>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #assets expanded="false" [class]="getPanelHeaderClass('assets', assets)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ASSETS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_ASSET_ACCOUNTS</mat-label>
+                <input matInput formControlName="investAccount" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_ENDOWMENT_ACCOUNTS</mat-label>
+                <input matInput formControlName="assetsAccount" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_DEPRECIATION_ACCOUNTS</mat-label>
+                <input matInput formControlName="depreciationAccount" type="text">
+            </mat-form-field>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #consolidation expanded="false"
+                             [class]="getPanelHeaderClass('consolidation', consolidation)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ACC_CONSOLIDATION
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ACC_HEADQUARTER_ACCOUNTS</mat-label>
+                <input matInput formControlName="headquarterAccounts" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_PROPORTIONAL_ACCOUNTS</mat-label>
+                <input matInput formControlName="proportionalAccounts" type="text">
+            </mat-form-field>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #security expanded="false" [class]="getPanelHeaderClass('security', security)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_SECURITY
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="default-50 sm-100 spacer">
+                <mat-checkbox formControlName="restorable" translate>ACC_RESTORABLE</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100 spacer">
+                <mat-checkbox formControlName="modifyClosedPeriods"
+                              (change)="updateOptionChanged($event)"
+                              translate>ACC_MODIFY_CLOSED_PERIODS
+                </mat-checkbox>
+            </div>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer number">
+                <mat-label translate>ACC_UPDATABLE_PERIODS</mat-label>
+                <input matInput formControlName="openPeriods" type="number" step="1">
+            </mat-form-field>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #financements expanded="false" [class]="getPanelHeaderClass('financements', financements)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ACC_FUNDING
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_FUNDING_ACCOUNT</mat-label>
+                <input matInput formControlName="financialAccount" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_PAYMENT_ACCOUNT</mat-label>
+                <input matInput formControlName="paymentAccount" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_BANK_ACCOUNT</mat-label>
+                <input matInput formControlName="finBankAccount" type="text">
+            </mat-form-field>
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+
+</form>
