@@ -11,10 +11,7 @@
                     "libs/treasury/assets/tsconfig.lib.json",
                     "libs/treasury/assets/tsconfig.spec.json"
                 ],
-                "exclude": [
-                    "**/node_modules/**",
-                    "!libs/treasury/assets/**/*"
-                ]
+                "exclude": ["**/node_modules/**", "!libs/treasury/assets/**/*"]
             }
         },
         "test": {

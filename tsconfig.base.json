@@ -17,6 +17,12 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@ss/accounting/acc-policies": [
+                "libs/accounting/acc-policies/src/index.ts"
+            ],
+            "@ss/accounting/accounting-api": [
+                "libs/accounting/accounting-api/src/index.ts"
+            ],
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
             ],
