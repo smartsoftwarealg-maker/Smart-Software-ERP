@@ -1,0 +1,38 @@
+<div style="height: 16px"></div>
+
+<div class="form-container">
+    <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_REFERENCE</mat-label>
+            <input matInput formControlName="dec_reference" type="text" required>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_DATE</mat-label>
+            <ss-date-picker [required]="true" formControlName="dec_date"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_APPLICATION_DATE</mat-label>
+            <ss-date-picker [required]="true" formControlName="application_date"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_MOTIVE</mat-label>
+            <input matInput formControlName="dec_motive" type="text">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_APPLICATION_PERIOD</mat-label>
+            <input matInput formControlName="application_period" type="number">
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_HEADER</mat-label>
+            <input matInput formControlName="dec_header" type="text">
+        </mat-form-field>
+
+
+    </form>
+</div>

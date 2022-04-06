@@ -64,7 +64,8 @@ import {
     EmployeeChildDetailComponent,
     PunishmentDetailComponent,
     EmployeeLanguagesDetailComponent,
-    EmployeeOldCareerDetailComponent
+    EmployeeOldCareerDetailComponent,
+    EmployeeDecisionDetailComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -76,7 +77,8 @@ import {
     WIVES_ROUTE_URL,
     CHILDREN_ROUTE_URL,
     LANGUAGES_ROUTE_URL,
-    OLD_CAREER_ROUTE_URL
+    OLD_CAREER_ROUTE_URL,
+    DECISION_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { Component } from '@angular/core';
@@ -424,6 +426,21 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeOldCareerDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: DECISION_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeDecisionDetailComponent,
                                 canActivate: [CanActivateService],
                                 canDeactivate: [CanDeactivateService]
                             }

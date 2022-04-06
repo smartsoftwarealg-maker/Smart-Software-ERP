@@ -19,7 +19,8 @@ import {
     WEBARCH_APP_URL,
     ASSETS_APP_URL,
     ACCOUNTING_APP_URL,
-    TREASURY_APP_URL
+    TREASURY_APP_URL,
+    ORGANIZATIONS_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
@@ -35,6 +36,10 @@ const routes: Routes = [
                 path: INDEX_PAGE_URL,
                 component: MainPageComponent,
                 canActivate: [CanActivateService]
+            },
+            {
+                path: ORGANIZATIONS_APP_URL,
+                loadChildren: () => import('./organizations/organizations.module').then(m => m.OrganizationsModule)
             },
             {
                 path: ACCOUNTING_APP_URL,

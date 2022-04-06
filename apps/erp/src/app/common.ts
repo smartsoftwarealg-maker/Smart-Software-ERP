@@ -25,6 +25,7 @@ export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
+export const ORGANIZATIONS_APP_URL = 'organizations';
 
 // common
 export const COMMON_REPORTS_URL = 'reports';
@@ -46,7 +47,9 @@ export const ADMINISTRATION_COUNTRY_URL = 'countries';
 export const ADMINISTRATION_WILAYA_URL = 'wilayas';
 export const ADMINISTRATION_ACCCESSRIGHTS_URL = 'accessrights';
 export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
-export const ADMINISTRATION_ORGANIZATIONS_URL = 'organizations';
+
+// Organizations
+export const ORGANIZATIONS_MAIN_URL = 'organizations';
 
 
 // Stock
@@ -183,7 +186,9 @@ export const ABS_ADMINISTRATION_COUNTRY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATI
 export const ABS_ADMINISTRATION_WILAYA_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_WILAYA_URL].join('/');
 export const ABS_ADMINISTRATION_ACCESS_RIGHTS_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ACCCESSRIGHTS_URL].join('/');
 export const ABS_ADMINISTRATION_TRACEABILITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_TRACEABILITY_URL].join('/');
-export const ABS_ADMINISTRATION_ORGANIZATIONS_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ORGANIZATIONS_URL].join('/');
+
+// Organizations
+export const ABS_ORGANIZATIONS_MAIN_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_MAIN_URL].join('/');
 
 // stock
 export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_MARKS_URL].join('/');
