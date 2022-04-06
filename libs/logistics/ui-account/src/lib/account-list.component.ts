@@ -23,7 +23,7 @@ export class AccountListComponent extends BaseEntityListComponent<Account> {
     displayedColumns = [
         'accountNo',
         'description',
-        'accType',
+        // 'accType',
         'analyzed',
         'customerCode'
     ];

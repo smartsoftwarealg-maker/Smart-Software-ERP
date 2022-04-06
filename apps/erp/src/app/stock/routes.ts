@@ -1,7 +1,7 @@
 import {
     COMMON_REPORTS_URL,
     LOOKUPS_URL,
-    STOCK_ACCOUNT_URL,
+    COMMON_ACCOUNT_URL,
     STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_URL,
     STOCK_ARTICLES_URL,
@@ -233,7 +233,7 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: STOCK_ACCOUNT_URL,
+        path: COMMON_ACCOUNT_URL,
         children: [
             {
                 path: LIST_URL,

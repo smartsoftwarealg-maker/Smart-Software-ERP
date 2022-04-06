@@ -1,14 +1,15 @@
 {
     "version": 2,
     "projects": {
+        "accounting-acc-policies": "libs/accounting/acc-policies",
+        "accounting-accounting-api": "libs/accounting/accounting-api",
         "accounting-api-accounts": "libs/accounting/api-accounts",
+        "accounting-assets": "libs/accounting/assets",
         "administration-api-bank": "libs/administration/api-bank",
         "administration-api-center": "libs/administration/api-center",
         "administration-api-company": "libs/administration/api-company",
         "administration-api-smtp": "libs/administration/api-smtp",
         "administration-assets": "libs/administration/assets",
-        "accounting-assets": "libs/accounting/assets",
-        "treasury-assets": "libs/treasury/assets",
         "administration-ui-bank": "libs/administration/ui-bank",
         "administration-ui-center": "libs/administration/ui-center",
         "administration-ui-company": "libs/administration/ui-company",
@@ -168,6 +169,7 @@
         "stock-ui-inventory-exit-lines": "libs/stock/ui-inventory-exit-lines",
         "stock-ui-inventory-lines": "libs/stock/ui-inventory-lines",
         "stock-ui-store": "libs/stock/ui-store",
+        "treasury-assets": "libs/treasury/assets",
         "ui-report-catalog": "libs/administration/ui-report-catalog",
         "web-arch-assets": "libs/web-arch/assets",
         "web-arch-ui": "libs/web-arch/ui"
