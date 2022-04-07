@@ -14,7 +14,8 @@ import {
     HR_PUNISHMENT_TYPE_URL,
     HR_SERVICES_URL,
     HR_SUSPENSION_REASON_URL,
-    LOOKUPS_URL
+    LOOKUPS_URL,
+    HR_PERSON_LIST_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -65,7 +66,8 @@ import {
     PunishmentDetailComponent,
     EmployeeLanguagesDetailComponent,
     EmployeeOldCareerDetailComponent,
-    EmployeeDecisionDetailComponent
+    EmployeeDecisionDetailComponent,
+    PersonListComponent
 } from '@ss/payroll/ui-employee';
 import {
     ACTIVATION_ROUTE_URL,
@@ -87,6 +89,11 @@ export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./hr-lookups.module').then(m => m.HRLookupsModule)
+    },
+    {
+        path: HR_PERSON_LIST_URL,
+        component: PersonListComponent,
+        canActivate: [CanActivateService],
     },
     {
         path: HR_EMPLOYEES_URL,
