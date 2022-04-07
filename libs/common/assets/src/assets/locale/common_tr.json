@@ -187,5 +187,6 @@
     "CARDS": "",
     "LIST":  "",
     "YEAR": "",
-    "CONNECTION_ERROR": ""
+    "CONNECTION_ERROR": "",
+    "SECURITY":         ""
 }

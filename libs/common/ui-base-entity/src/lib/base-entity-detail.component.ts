@@ -95,7 +95,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     //}
 
     public loadEntity(id: number): Observable<T> {
-        if (id == null) {
+       if (id == null) {
             this.shellSrv.goBack();
             return of(null);
         }

@@ -193,5 +193,6 @@
     "LIST":  "List",
     "YEAR": "Year",
     "TOTAL": "Total",
-    "CONNECTION_ERROR": "Connection error"
+    "CONNECTION_ERROR": "Connection error",
+    "SECURITY":         "Security"
 }

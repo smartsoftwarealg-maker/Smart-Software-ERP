@@ -193,5 +193,6 @@
     "LIST":  "قائمة",
     "YEAR": "السنة",
     "TOTAL": "المجموع",
-    "CONNECTION_ERROR": "خطأ في الإتصال"
+    "CONNECTION_ERROR": "خطأ في الإتصال",
+    "SECURITY":         "حماية"
 }
