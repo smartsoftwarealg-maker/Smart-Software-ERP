@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService, LanguageService } from '@ss/common/api-common';
-import { DIVISIONS_URL, Division, Service, Department, DEPARTMENTS_URL, SERVICES_URL, Office, OFFICES_URL, Lookup } from '@ss/common/api-organizations';
+import { DIVISIONS_URL, Division, Service, Department, DEPARTMENTS_URL, SERVICES_URL, Office, OFFICES_URL, Lookup } from '@ss/organizations/api-organizations';
 import { switchMap } from 'rxjs';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';

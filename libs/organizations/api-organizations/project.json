@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/organizations/api-organizations",
+    "sourceRoot": "libs/organizations/api-organizations/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/organizations/api-organizations"],
+            "options": {
+                "jestConfig": "libs/organizations/api-organizations/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/organizations/api-organizations/src/**/*.ts",
+                    "libs/organizations/api-organizations/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

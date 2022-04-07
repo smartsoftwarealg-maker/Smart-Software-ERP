@@ -30,12 +30,20 @@ interface PersonSummary extends IPersonSummary {
 export class PersonListComponent extends BaseEntityListComponent<IPersonSummary> implements OnInit {
     activePersonnel = true;
     public displayedColumns = [
+        'photo',
         'id',
         'fullname',
         'birth',
-        'address',
+        'post',
+        'department',
+        'service',
         'maritalStatus',
-        'post'
+        'employmentType',
+        'hireDate',
+        'profCategory',
+        'contractType',
+        'categSection',
+        'rank'
     ];
 
     maritalStatus: { [id: number]: string; };
@@ -54,7 +62,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
         public defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(personListSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
+        super(personListSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEE_SUMMARY');
         this.pagination.pageSize = 15;
         this.deleteButton.visible = false;
         this.editButton.visible = false;

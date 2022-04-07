@@ -1,6 +1,6 @@
 import {ABS_INDEX_URL, CanActivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
-import {OrganizationsComponent} from '@ss/common/ui-organizations';
+import {OrganizationsComponent} from '@ss/organizations/ui-organizations';
 import {ORGANIZATIONS_MAIN_URL} from '../common';
 
 export const mainRoutes: Routes = [
