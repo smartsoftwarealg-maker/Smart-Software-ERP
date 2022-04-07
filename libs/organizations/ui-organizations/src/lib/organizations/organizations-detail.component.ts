@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, Injectable } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Lookup } from '@ss/common/api-organizations';
+import { Lookup } from '@ss/organizations/api-organizations';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';

@@ -75,8 +75,8 @@
             ],
             "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
             "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
-            "@ss/common/api-organizations": [
-                "libs/common/api-organizations/src/index.ts"
+            "@ss/organizations/api-organizations": [
+                "libs/organizations/api-organizations/src/index.ts"
             ],
             "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
             "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
@@ -114,8 +114,8 @@
             "@ss/common/ui-main-page": [
                 "libs/common/ui-main-page/src/index.ts"
             ],
-            "@ss/common/ui-organizations": [
-                "libs/common/ui-organizations/src/index.ts"
+            "@ss/organizations/ui-organizations": [
+                "libs/organizations/ui-organizations/src/index.ts"
             ],
             "@ss/common/ui-pagination": [
                 "libs/common/ui-pagination/src/index.ts"

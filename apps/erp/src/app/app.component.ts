@@ -44,20 +44,18 @@ export class AppComponent implements OnInit {
         this.shellSrv.setApplicationTitle('Smart Software ERP. 0.0.1 Beta');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
+            organizationsNavTree,
             logAdminNavTree,
             purchasesNavTree,
             stockNavTree,
             salesNavTree,
             financeNavTree,
-            accountingNavTree,
-            assetsNavTree,
-            treasuryNavTree,
             hrNavTree,
             payrollNavTree,
             webArchNavTree,
+            accountingNavTree,
             assetsNavTree,
             treasuryNavTree,
-            organizationsNavTree,
             dashboardNavTree,
         ].filter(e => compiledApplications.indexOf(e.name) >= 0));
         this.httpSrv

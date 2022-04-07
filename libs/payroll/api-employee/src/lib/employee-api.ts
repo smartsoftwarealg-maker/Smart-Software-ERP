@@ -194,3 +194,22 @@ export interface Decision {
     application_period: number;
     dec_header: string;
 }
+
+export interface PersonSummary {
+    id: number;
+    lastName:  string;
+    firstName: string;
+    birthDate: string;
+    birthPlace: string;
+    sex: string;
+    post: string;
+    department: string;
+    service: string;
+    maritalStatus: string;
+    employmentType: string;
+    hireDate: string;
+    profCategory: string;
+    contractType: string;
+    categSection: string;
+    rank: string;
+}

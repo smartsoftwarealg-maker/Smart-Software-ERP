@@ -1,0 +1,121 @@
+<div class="main-container">
+    <div class="main-table-scroll">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="photo">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
+                </mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <div class="person-photo">
+                        <ss-image-input width="60px" height="76px"
+                                        [ImageModel]="e.imageModel"
+                                        style="display: inline-block;">
+                        </ss-image-input>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.id}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="fullname">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_FULLNAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.fullName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="post">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.post}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="birth">
+                <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTHINFO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.birthDate}}
+                    <br>
+                    {{e.birthPlace}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="department">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DEPARTMENT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.department}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="service">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_SERVICE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.service}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="maritalStatus">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_MARITAL_STATUS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.maritalStatus}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="employmentType">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_EMPLOYMENT_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.employmentType}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="hireDate">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_HIRE_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.hireDate}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="profCategory">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_PROF_Category</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.profCategory}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="contractType">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_CONTRACT_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.contractType}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="categSection">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_CATEGORY_SECTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.categSection}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rank">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_RANK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.rank}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+</div>

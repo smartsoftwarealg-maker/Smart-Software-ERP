@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "root": "libs/organizations/ui-organizations",
+    "sourceRoot": "libs/organizations/ui-organizations/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/organizations/ui-organizations"],
+            "options": {
+                "jestConfig": "libs/organizations/ui-organizations/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/organizations/ui-organizations/src/**/*.ts",
+                    "libs/organizations/ui-organizations/src/**/*.html"
+                ]
+            }
+        }
+    }
+}

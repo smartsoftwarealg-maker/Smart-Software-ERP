@@ -7,6 +7,7 @@ import {
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
     ABS_HR_EMPLOYEES_URL,
+    ABS_HR_PERSON_LIST_URL,
     ABS_HR_EMPLOYMENT_TYPE_URL,
     ABS_HR_SUSPENSION_REASON_URL,
     ABS_HR_DEPARTMENTS_URL,
@@ -102,6 +103,11 @@ export const hrNavTree: SideNavNode = {
             name: 'PAYROLL_EMPLOYEES_LIST',
             icon: 'fad fa-users',
             route: ABS_HR_EMPLOYEES_URL
+        },
+        {
+            name: 'PAYROLL_EMPLOYEE_SUMMARY',
+            icon: 'fa-solid fa-list-ul',
+            route: ABS_HR_PERSON_LIST_URL
         },
         {
             name: 'COMMON_REPORTS',
