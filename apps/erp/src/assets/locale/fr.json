@@ -36,5 +36,6 @@
     "FINANCE": "Finance",
     "DASHBOARD": "Tableau de bord",
     "HR": "Gestion RH",
-    "TREASURY":  "Trésorerie"
+    "TREASURY":  "Trésorerie",
+    "ORGANIZATIONS": "Organisations"
 }

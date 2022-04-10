@@ -36,5 +36,6 @@
     "HR": "HR Management",
     "FINANCE":                  "Finance",
     "DASHBOARD":                "Dashboard",
-    "TREASURY":                 "Treasury"
+    "TREASURY":                 "Treasury",
+    "ORGANIZATIONS": "Organizations"
 }
