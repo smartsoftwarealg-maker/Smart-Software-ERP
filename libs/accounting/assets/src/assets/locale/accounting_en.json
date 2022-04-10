@@ -20,5 +20,7 @@
     "BANK_ACCOUNT":          "Bank account number",
     "RESTORABLE":            "Allow excel injection of transactions",
     "MODIFY_CLOSED_PERIODS": "Allow the modification of closed periods",
-    "UPDATABLE_PERIODS":     "Number of modifiable periods"
+    "UPDATABLE_PERIODS":     "Number of modifiable periods",
+    "DEFAULT_LABEL":         "Default label",
+    "JOURNALS":              "Journals"
 }
