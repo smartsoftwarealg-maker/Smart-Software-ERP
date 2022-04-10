@@ -25,6 +25,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
+    selectedTabIndex = 0;
     mainTableWidth = 900;
     slipTableWidth = 500;
 
@@ -75,12 +76,15 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
 
     ngOnInit() {
         super.ngOnInit();
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
         this.infoSrv.load();
         this.monthSelectorSrv
             .isUpdatableMonth()
-            .subscribe(upd => this.editButton.visible = upd);
+            .subscribe(upd => {
+                this.editButton.visible = upd;
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+                this.shellSrv.updateShell();
+            });
     }
 
     selectInput(ev: MatSelectChange) {
@@ -101,6 +105,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     }
 
     onTabChange(index: number) {
+        this.selectedTabIndex = index;
         if (this.JOURNAL_IDX === index) {
             this.shellSrv.setLoading(true);
             this.infoSrv

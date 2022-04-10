@@ -65,12 +65,13 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
     ngOnInit() {
         super.ngOnInit();
         // this.deleteButton.visible = false;
-        this.addButton.visible = false;
         this.monthSelectorSrv
             .isUpdatableMonth()
             .subscribe(upd => {
                 this.editButton.visible = upd;
                 this.deleteButton.visible = upd;
+                this.addButton.visible = false;
+                this.shellSrv.updateShell();
             });
     }
 
