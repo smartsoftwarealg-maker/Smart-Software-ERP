@@ -19,7 +19,8 @@ export const compiledApplications = [
     'HR',
     'PAYROLL',
     'WEBARCH',
-    'COMMON_DASHBOARD'
+    'COMMON_DASHBOARD',
+    'ORGANIZATIONS'
 ];
 /*
  * For easier debugging in development mode, you can import the following file

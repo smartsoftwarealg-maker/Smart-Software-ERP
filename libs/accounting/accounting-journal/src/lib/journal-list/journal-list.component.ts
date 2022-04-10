@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
+
+@Component({
+  selector: 'ss-journal-list',
+  templateUrl: './journal-list.component.html',
+  styleUrls: ['./journal-list.component.scss']
+})
+export class JournalListComponent extends BaseEntityListComponent<Journal> {
+    displayedColumns = [
+        'description',
+        'abbreviation',
+        'defaultLabel',
+        'centerName',
+        'typeName'
+    ];
+
+
+    constructor(
+        public override  entitySrv: AccJournalsService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'ACC_JOURNALS');
+        this.pagination.pageSize = 10;
+    }
+
+}

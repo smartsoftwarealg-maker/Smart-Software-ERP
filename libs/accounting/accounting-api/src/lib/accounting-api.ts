@@ -1,6 +1,7 @@
 export const ACC_POLICY_URL = '/accounting/acc-policies';
 export const ACC_JOURNALS_URL = '/accounting/journals';
-
+export const ACC_JOURNAL_TYPE_URL = '/lookups/journal_types';
+export const JOURNAL_USER_URL = '/users';
 
 export interface ACCPolicy {
     id: number;
@@ -46,4 +47,13 @@ export interface Journal {
     defaultLabel?: string;
     jType?: number;
     center?: number;
+    centerName?: string;
+    typeName?: string;
+}
+
+export interface JournalUser {
+    id: number;
+    userId: number;
+    journalId: number;
+    userName?: string;
 }

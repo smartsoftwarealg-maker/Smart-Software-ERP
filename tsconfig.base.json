@@ -23,6 +23,9 @@
             "@ss/accounting/accounting-api": [
                 "libs/accounting/accounting-api/src/index.ts"
             ],
+            "@ss/accounting/accounting-journal": [
+                "libs/accounting/accounting-journal/src/index.ts"
+            ],
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
             ],
@@ -75,9 +78,6 @@
             ],
             "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
             "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
-            "@ss/organizations/api-organizations": [
-                "libs/organizations/api-organizations/src/index.ts"
-            ],
             "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
             "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
             "@ss/common/ui-access-rights": [
@@ -113,9 +113,6 @@
             "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
             "@ss/common/ui-main-page": [
                 "libs/common/ui-main-page/src/index.ts"
-            ],
-            "@ss/organizations/ui-organizations": [
-                "libs/organizations/ui-organizations/src/index.ts"
             ],
             "@ss/common/ui-pagination": [
                 "libs/common/ui-pagination/src/index.ts"
@@ -235,6 +232,12 @@
             ],
             "@ss/logistics/ui-totals": [
                 "libs/logistics/ui-totals/src/index.ts"
+            ],
+            "@ss/organizations/api-organizations": [
+                "libs/organizations/api-organizations/src/index.ts"
+            ],
+            "@ss/organizations/ui-organizations": [
+                "libs/organizations/ui-organizations/src/index.ts"
             ],
             "@ss/patients/api-patient": [
                 "libs/patients/api-patient/src/index.ts"
