@@ -1,5 +1,5 @@
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_POLICIES_URL, ABS_STOCK_ACCOUNT_URL} from '../common';
+import {ABS_JOURNALS_URL, ABS_POLICIES_URL, ABS_STOCK_ACCOUNT_URL} from '../common';
 
 
 export const accountingNavTree: SideNavNode = {
@@ -12,6 +12,12 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fas fa-user-circle',
             route: ABS_STOCK_ACCOUNT_URL,
             accessRights: 'Account'
+        },
+        {
+            name: 'ACC_JOURNALS',
+            icon: 'fas fa-user-circle',
+            route: ABS_JOURNALS_URL,
+            accessRights: 'ACCJournal'
         },
         {
             name: 'COMMON_OPTIONS',
