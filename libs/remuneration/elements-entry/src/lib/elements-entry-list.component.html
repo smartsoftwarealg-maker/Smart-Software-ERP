@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="filter" *ngIf="tabGroup.selectedIndex === 0">
+    <div class="filter" *ngIf="selectedTabIndex === 0">
         <mat-form-field appearance="fill">
             <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
             <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
@@ -10,7 +10,7 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="mode" *ngIf="tabGroup.selectedIndex === 0">
+    <div class="mode" *ngIf="selectedTabIndex === 0">
         <mat-radio-group aria-label="Select an option">
             <mat-radio-button value="1"
                               [checked]="infoSrv.selectionMode === 1 "
@@ -25,7 +25,7 @@
         </mat-radio-group>
     </div>
     <div class="the_tabs">
-        <mat-tab-group (selectedIndexChange)="onTabChange($event)" #tabGroup>
+        <mat-tab-group (selectedIndexChange)="onTabChange($event)">
             <mat-tab>
                 <ng-template mat-tab-label>
                     <span translate>REMUN_ELEMENTS_ENTRY</span>
