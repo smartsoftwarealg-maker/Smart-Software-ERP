@@ -6,19 +6,26 @@ import { OrganizationsDetailComponent } from './organizations/organizations-deta
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { DivisionsListComponent } from './divisions/divisions-list.component';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
 
 @NgModule({
     declarations: [
         OrganizationsComponent,
-        OrganizationsDetailComponent
+        OrganizationsDetailComponent,
+        DivisionsListComponent,
     ],
     imports: [
         CommonModule,
         CommonUiLangModule,
         OrgChartModule,
         MaterialModule,
-        CommonUiImageInputModule
+        CommonUiImageInputModule,
+        UiPaginationModule
     ],
-    exports: [OrganizationsComponent]
+    exports: [
+        OrganizationsComponent,
+        DivisionsListComponent
+    ]
 })
 export class CommonUiOrganizationsModule { }
