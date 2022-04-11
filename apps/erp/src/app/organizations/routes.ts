@@ -1,6 +1,6 @@
-import {ABS_INDEX_URL, CanActivateService} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
-import {OrganizationsComponent, DivisionsListComponent} from '@ss/organizations/ui-organizations';
+import {OrganizationsComponent, DivisionsListComponent, DivisionDetailComponent} from '@ss/organizations/ui-organizations';
 import {
     ORGANIZATIONS_CHART_URL,
     ORGANIZATIONS_DEPARTMENTS_URL,
@@ -16,8 +16,20 @@ export const mainRoutes: Routes = [
     },
     {
         path: ORGANIZATIONS_DIVISIONS_URL,
-        component: DivisionsListComponent,
-        canActivate: [CanActivateService]
+        children: [
+            {
+                path: LIST_URL,
+                component: DivisionsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DivisionDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

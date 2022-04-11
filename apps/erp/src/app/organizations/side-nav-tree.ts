@@ -17,7 +17,7 @@ export const organizationsNavTree: SideNavNode = {
             accessRights: 'Organization'
         },
         {
-            name: 'DIVISIONS',
+            name: 'COMMON_DIVISIONS',
             icon: 'fas fa-building',
             route: ABS_ORGANIZATIONS_DIVISIONS_URL,
             accessRights: 'Division'

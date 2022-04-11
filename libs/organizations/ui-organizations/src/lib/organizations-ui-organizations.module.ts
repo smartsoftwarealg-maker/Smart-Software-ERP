@@ -8,12 +8,17 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { DivisionsListComponent } from './divisions/divisions-list.component';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { DivisionDetailComponent } from './divisions/division-detail.component';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { RouterModule } from '@angular/router';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 
 @NgModule({
     declarations: [
         OrganizationsComponent,
         OrganizationsDetailComponent,
         DivisionsListComponent,
+        DivisionDetailComponent
     ],
     imports: [
         CommonModule,
@@ -21,11 +26,16 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
         OrgChartModule,
         MaterialModule,
         CommonUiImageInputModule,
-        UiPaginationModule
+        CommonUiAutoCompleteModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiAutoCompleteModule,
+        RouterModule
     ],
     exports: [
         OrganizationsComponent,
-        DivisionsListComponent
+        DivisionsListComponent,
+        DivisionDetailComponent
     ]
 })
 export class CommonUiOrganizationsModule { }
