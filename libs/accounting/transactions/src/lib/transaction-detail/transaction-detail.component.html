@@ -1,1 +1,21 @@
-<p>transaction-detil works!</p>
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="pieceno" type="text" autofocus maxlength="4">
+                <mat-error *ngIf="form.controls['pieceno'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            </mat-form-field>
+
+            <span class="default-50"></span>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="piecedate" ></ss-date-picker>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

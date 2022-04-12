@@ -77,6 +77,8 @@ export interface ACCTransaction {
     isBudget: boolean;
     decPeriod?: number;
     projectId?: number;
+    debit?: number;
+    credit?: number;
 }
 
 export interface ACCTransactionLine {

@@ -16,7 +16,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 })
 export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
     constructor(
-        public entitySrv: BankService,
+        public override entitySrv: BankService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

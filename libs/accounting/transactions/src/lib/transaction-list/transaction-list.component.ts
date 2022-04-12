@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {AccJournalsService, ACCTransaction, Journal} from '@ss/accounting/accounting-api';
-import {AccTransactionService} from '../../../../accounting-api/src/lib/acc-transaction.service';
+import {AccJournalsService, ACCTransaction, AccTransactionService, Journal} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -16,7 +15,7 @@ import {MatSelectionListChange} from '@angular/material/list';
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnInit {
     journalList: Journal[] = [];
-    displayedColumns = ['pieceno', 'piecedate']
+    displayedColumns = ['pieceno', 'piecedate', 'debit', 'credit']
 
     constructor(
         public override entitySrv: AccTransactionService,
@@ -38,6 +37,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .subscribe(res => this.journalList = res.body);
     }
 
+    override selectRow(row: ACCTransaction) {
+        super.selectRow(row);
+        const id = row.fileId * 10000 + row.oid;
+        this.router.navigate([id], { relativeTo: this.route })
+    }
 
     // addDetail() {
     //     this.router.navigate(['0'], { relativeTo: this.route });

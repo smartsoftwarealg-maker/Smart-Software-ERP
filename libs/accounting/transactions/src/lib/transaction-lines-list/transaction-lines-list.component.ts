@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {AccJournalsService, ACCTransaction, Journal} from '@ss/accounting/accounting-api';
-import {BankService} from '@ss/administration/api-bank';
+import {AccJournalsService, ACCTransaction, AccTransactionService, Journal} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AccTransactionService} from '../../../../accounting-api/src/lib/acc-transaction.service';
 
 @Component({
   selector: 'ss-transaction-lines-list',
