@@ -20,5 +20,13 @@
     "BANK_ACCOUNT":          "Numéro de compte bancaire",
     "RESTORABLE":            "Autoriser l'injection Excel des transactions",
     "MODIFY_CLOSED_PERIODS": "Autoriser la modification des périodes fermées",
-    "UPDATABLE_PERIODS":     "Nombre de périodes modifiables"
+    "UPDATABLE_PERIODS":     "Nombre de périodes modifiables",
+    "DEFAULT_LABEL":         "Libellé par défaut",
+    "JOURNALS":              "Journaux",
+    "FILE_SELECTOR":         "Sélection de dossier",
+    "PERIOD":                "Période",
+    "CLOSED":                "clôturée",
+    "SELECT_FOLDER":         "Choisir le dossier",
+    "FILES":                 "Dossiers"
 }
+

@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/accounting-journal",
+    "sourceRoot": "libs/accounting/accounting-journal/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/accounting/accounting-journal"],
+            "options": {
+                "jestConfig": "libs/accounting/accounting-journal/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/accounting/accounting-journal/src/**/*.ts",
+                    "libs/accounting/accounting-journal/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

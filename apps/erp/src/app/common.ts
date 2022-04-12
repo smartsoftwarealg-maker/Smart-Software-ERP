@@ -173,7 +173,12 @@ export const TAG_URL        = 'tags';
 export const ARCHIVE_VIEWER = 'viewer';
 
 //Accounting
-export const ACC_POLICIES_URL = 'acc-policies';
+export const ACC_POLICIES_URL        = 'acc-policies';
+export const ACC_JOURNALS_URL        = 'journals';
+export const ACC_TRANSACTIONS_URL    = 'transactions';
+export const ACC_FILE_SELECTOR_URL   = 'file-select';
+export const ACC_PERIOD_SELECTOR_URL = 'period-select';
+export const ACC_FILES_URL           = 'acc-files';
 
 // #############
 // # FULL URLS #
@@ -224,6 +229,11 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 
 //Accounting
 export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_POLICIES_URL].join('/');
+export const ABS_ACC_JOURNALS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_JOURNALS_URL].join('/');
+export const ABS_ACC_FILES_URL   = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILES_URL].join('/');
+export const ABS_ACC_TRANSACTIONS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_TRANSACTIONS_URL].join('/');
+export const ABS_ACC_FILE_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILE_SELECTOR_URL].join('/');
+export const ABS_ACC_PERIOD_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PERIOD_SELECTOR_URL].join('/');
 
 
 //Logistics

@@ -1,0 +1,27 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background: #ebce78;
+    display: grid;
+    grid-template-columns: minmax(300px, 25%) 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "journals     detail"
+                         "transactions detail";
+}
+
+.detail {
+    width: 100%;
+    height: 100%;
+    background: #4CFF55;
+    grid-area: detail;
+}
+
+.transactions {
+    grid-area: transactions;
+    background: #e56400;
+}
+
+.journals {
+    grid-area: journals;
+    overflow-y: auto;
+}

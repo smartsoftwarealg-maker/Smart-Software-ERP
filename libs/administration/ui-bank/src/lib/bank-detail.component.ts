@@ -16,14 +16,14 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 })
 export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
     constructor(
-        public bankService: BankService,
+        public entitySrv: BankService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: FormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(bankService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
     }
 
 

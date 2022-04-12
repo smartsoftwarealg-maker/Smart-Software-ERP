@@ -1,0 +1,54 @@
+<div class="container">
+    <mat-form-field floatLabel="always" class="default-50">
+        <mat-label translate>ACC_PERIOD</mat-label>
+        <mat-select [formControl]="accPeriod" required>
+            <mat-option [value]="1" translate>MONTH_1</mat-option>
+            <mat-option [value]="2" translate>MONTH_2</mat-option>
+            <mat-option [value]="3" translate>MONTH_3</mat-option>
+            <mat-option [value]="4" translate>MONTH_4</mat-option>
+            <mat-option [value]="5" translate>MONTH_5</mat-option>
+            <mat-option [value]="6" translate>MONTH_6</mat-option>
+            <mat-option [value]="7" translate>MONTH_7</mat-option>
+            <mat-option [value]="8" translate>MONTH_8</mat-option>
+            <mat-option [value]="9" translate>MONTH_9</mat-option>
+            <mat-option [value]="10" translate>MONTH_10</mat-option>
+            <mat-option [value]="11" translate>MONTH_11</mat-option>
+            <mat-option [value]="12" translate>MONTH_12</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="table-div">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="fileYear">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.fileYear}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="closed">
+                <mat-header-cell *matHeaderCellDef translate>ACC_CLOSED</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.closed"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+</div>

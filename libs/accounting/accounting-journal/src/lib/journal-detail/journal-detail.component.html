@@ -1,0 +1,73 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+                <mat-form-field id="abbreviation" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_CODE</mat-label>
+                    <input matInput formControlName="abbreviation" type="text" autofocus maxlength="4">
+                    <mat-error *ngIf="form.controls['abbreviation'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required>
+                    <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="defaultLabel" class="default-50 sm-100">
+                    <mat-label translate>ACC_DEFAULT_LABEL</mat-label>
+                    <input matInput formControlName="defaultLabel" type="text" required>
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="centerLookup"
+                                      formControlName="center"></ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="typeLookup"
+                                      formControlName="jType">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+
+    <div class="users-div">
+        <div mat-subheader class="b-primary" translate> ADMINISTRATION_USERS </div>
+        <div class="role-ctrl">
+            <button mat-mini-fab color="accent"
+                    [disabled]="centerAC.value == null"
+                    (click)="addUser()"><i class="fas fa-plus-circle"></i></button>
+
+            <mat-form-field class="user-lookup">
+                <mat-label translate>ADMINISTRATION_USERS</mat-label>
+                <ss-auto-complete matInput
+                                  #centerAC
+                                  [formControl]="userCtrl"
+                                  [model]="userAutoComplete">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab color="warn" [disabled]="selectedUser < 1" (click)="deleteUser()"><i
+                class="fas fa-trash-alt"></i></button>
+        </div>
+        <div class="list-container">
+            <mat-selection-list color="primary" multiple="false"
+                                (selectionChange)="userSelectionChanged($event)">
+                <mat-list-option *ngFor="let u of users"
+                                 [value]="u.id"> {{ u.userName }} </mat-list-option>
+            </mat-selection-list>
+        </div>
+
+    </div>
+</div>
