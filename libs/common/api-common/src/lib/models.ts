@@ -55,6 +55,8 @@ export interface AppContext {
     blocked?: boolean;
     pwdExpired?: boolean;
     hasPassword?: boolean;
+    accYear?: number;
+    accPeriod?: number;
     params: Map<string, string>;
 }
 

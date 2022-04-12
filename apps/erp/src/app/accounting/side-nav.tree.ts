@@ -1,5 +1,11 @@
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_JOURNALS_URL, ABS_POLICIES_URL, ABS_STOCK_ACCOUNT_URL} from '../common';
+import {
+    ABS_ACC_FILE_SELECTION_URL, ABS_ACC_FILES_URL,
+    ABS_ACC_JOURNALS_URL, ABS_ACC_PERIOD_SELECTION_URL,
+    ABS_ACC_TRANSACTIONS_URL,
+    ABS_POLICIES_URL,
+    ABS_STOCK_ACCOUNT_URL
+} from '../common';
 
 
 export const accountingNavTree: SideNavNode = {
@@ -8,20 +14,37 @@ export const accountingNavTree: SideNavNode = {
     accessRights: 'ACCOUNTING',
     children: [
         {
+            name: 'ACC_FILES',
+            icon: 'fas fa-folders',
+            route: ABS_ACC_FILES_URL,
+            accessRights: 'ACCJournal'
+        },
+        {
+            name: 'ACC_JOURNALS',
+            icon: 'fas fa-books',
+            route: ABS_ACC_JOURNALS_URL,
+            accessRights: 'ACCJournal'
+        },
+        {
             name: 'LOGISTICS_ACCOUNTS',
             icon: 'fas fa-user-circle',
             route: ABS_STOCK_ACCOUNT_URL,
             accessRights: 'Account'
         },
         {
-            name: 'ACC_JOURNALS',
-            icon: 'fas fa-user-circle',
-            route: ABS_JOURNALS_URL,
-            accessRights: 'ACCJournal'
+            name: 'ACC_FILE_SELECTOR',
+            icon: 'fa-solid fa-folder-open',
+            route: ABS_ACC_FILE_SELECTION_URL
+        },
+        {
+            name: 'ACC_TRANSACTIONS',
+            icon: 'fas fa-calculator',
+            route: ABS_ACC_TRANSACTIONS_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'COMMON_OPTIONS',
-            icon: 'fas fa-user-circle',
+            icon: 'fas fa-tools',
             route: ABS_POLICIES_URL,
             accessRights: 'ACCPolicy'
         },

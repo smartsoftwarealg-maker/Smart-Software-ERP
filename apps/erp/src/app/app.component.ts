@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppContext, HttpService, LoginService } from '@ss/common/api-common';
-import { switchMap, tap } from 'rxjs/operators';
+import {AppContext, HttpService, LoginInfo, LoginService} from '@ss/common/api-common';
+import {map, switchMap, tap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
 import { hrNavTree } from './hr/side-nav-tree';
@@ -71,28 +71,25 @@ export class AppComponent implements OnInit {
         this.loaded = true;
         this.router
             .events
-            .pipe(tap((event: Event) => {
+            .pipe(switchMap((event: Event) => {
                 if (event instanceof NavigationEnd) {
                     //console.log(event.url)
                     if (event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
-                        const obs = zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<AppContext>('/ccenter'));
-                        //TODO: fix this bad code.
-                        obs.subscribe(res => {
-                            const label = `${res[1]['description'] || ''}-  ${res[0]}`;
-                            this.shellSrv.setLabels([{ title: label }]);
-                        });
-                    } else {
-                        if (event.url?.indexOf('/app') >= 0) {
-                            this.httpSrv
+                        return zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<AppContext>('/ccenter'))
+                            .pipe(map(res => `${res[1]['description'] || ''} -  ${res[0]}`));
+                    }
+                    if (event.url?.indexOf('/accounting') >= 0) {
+                        return zip(this.httpSrv.get<AppContext>('/ccenter'), this.httpSrv.get<LoginInfo>('/ctx'))
+                            .pipe(map(res => `${res[0]['description'] || ''}: ${res[1].ctx['accPeriod'] || '' }  / ${res[1].ctx['accYear'] || '' } `));
+                    }
+                    if (event.url?.indexOf('/app') >= 0) {
+                            return this.httpSrv
                                 .get<any>('/ccenter')
-                                .subscribe(res => {
-                                    const label = res['description'] || '';
-                                    this.shellSrv.setLabels([{ title: label }]);
-                                });
+                                .pipe(map(res => res['description'] || ''));
                         }
                     }
-                }
+                return of('');
             }))
-            .subscribe(str => { });
+            .subscribe(str => this.shellSrv.setLabels([{ title: str }]));
     }
 }

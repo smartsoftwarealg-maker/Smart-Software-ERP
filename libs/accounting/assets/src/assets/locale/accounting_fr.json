@@ -22,5 +22,11 @@
     "MODIFY_CLOSED_PERIODS": "Autoriser la modification des périodes fermées",
     "UPDATABLE_PERIODS":     "Nombre de périodes modifiables",
     "DEFAULT_LABEL":         "Libellé par défaut",
-    "JOURNALS":              "Journaux"
+    "JOURNALS":              "Journaux",
+    "FILE_SELECTOR":         "Sélection de dossier",
+    "PERIOD":                "Période",
+    "CLOSED":                "clôturée",
+    "SELECT_FOLDER":         "Choisir le dossier",
+    "FILES":                 "Dossiers"
 }
+

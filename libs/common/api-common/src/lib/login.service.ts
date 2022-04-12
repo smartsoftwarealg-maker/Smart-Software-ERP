@@ -108,6 +108,11 @@ export class LoginService {
                 ) : of(null);
     }
 
+    public updateCtx(info: LoginInfo) {
+        this.httpSrv.updateAuthToken(info.jwt);
+        this.appCtx = info.ctx;
+    }
+
     public centerLogin(center: number): Observable<LoginInfo> {
         return this
             .httpSrv

@@ -21,15 +21,23 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
 
 
     constructor(
-        public entitySrv: BankService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_BANK');
+        public override entitySrv: BankService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(entitySrv,
+              shellSrv,
+              snackBarSrv,
+              route,
+              router,
+              confirmationSrv,
+              defReportSrv,
+              pagPersistSrv,
+            'ADMINISTRATION_BANK');
     }
 
 
