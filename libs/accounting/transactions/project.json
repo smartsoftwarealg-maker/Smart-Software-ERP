@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/transactions",
+    "sourceRoot": "libs/accounting/transactions/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/accounting/transactions"],
+            "options": {
+                "jestConfig": "libs/accounting/transactions/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/accounting/transactions/src/**/*.ts",
+                    "libs/accounting/transactions/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

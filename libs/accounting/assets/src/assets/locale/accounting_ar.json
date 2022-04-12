@@ -22,5 +22,10 @@
     "MODIFY_CLOSED_PERIODS": "السماح بتعديل الفترات المغلقة",
     "UPDATABLE_PERIODS":     "عدد الفترات القابلة للتعديل",
     "DEFAULT_LABEL":         "التسمية الافتراضية",
-    "JOURNALS":              "الدفاتر"
+    "JOURNALS":              "الدفاتر",
+    "FILE_SELECTOR":         "اختيار الملف",
+    "PERIOD":                "فترة",
+    "CLOSED":                "مغلق",
+    "SELECT_FOLDER":         "تحديد ملف" ,
+    "FILES":                 "الملفات"
 }

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {mergeMap, Observable, of} from 'rxjs';
 import { Router } from '@angular/router';
-import { catchError, flatMap, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Agent, User } from '../../common/models';
 import { DecService } from './dec.service';
 import { CENTER_SELECT_URL } from '../center-select/center-select-constants';
 import { LOGIN_URL } from './login-constants';
-import { LoginInfo } from '@ss/common/api-common';
 import { HttpService } from '../../../smart-lib/common/http.service';
 
 export enum LicenseErrorType {

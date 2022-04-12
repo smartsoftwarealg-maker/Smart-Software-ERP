@@ -29,6 +29,9 @@
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
             ],
+            "@ss/accounting/transactions": [
+                "libs/accounting/transactions/src/index.ts"
+            ],
             "@ss/administration/api-bank": [
                 "libs/administration/api-bank/src/index.ts"
             ],
