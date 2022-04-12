@@ -24,7 +24,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     displayedColumns = [
         'description',
-        'division',
+        'service',
         'responsible'
     ];
     services: { [key: number]: string} = {};
@@ -43,12 +43,18 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         public defReportSrv: DefaultReportService,
         public confirmationSrv: ConfirmationDialogService,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(officeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_SERVICES');
+        super(officeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_OFFICES');
     }
 
     ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
+    }
+
+    public preload(): Observable<any> {
+        this.officeSrv.setParentId(0);
+        this.serviceSrv.setParentId(0);
+        return of(null);
     }
 
     public processLoadedData(data: Office[]): Observable<Office[]> {

@@ -9,7 +9,7 @@ import { Department, DEPARTMENTS_URL } from './organizations-api';
 export class DepartmentService extends BaseEntityService<Department> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, DEPARTMENTS_URL[0], DEPARTMENTS_URL[1]);
+        super(httpSrv, DEPARTMENTS_URL[1], DEPARTMENTS_URL[0]);
     }
 
 }

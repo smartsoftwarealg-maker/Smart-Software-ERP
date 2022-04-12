@@ -37,6 +37,7 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
 
     protected getRouteParam(): Observable<any> {
         this.serviceSrv.setParentId(0);
+        this.departementSrv.setParentId(0);
         return of(null);
     }
 
