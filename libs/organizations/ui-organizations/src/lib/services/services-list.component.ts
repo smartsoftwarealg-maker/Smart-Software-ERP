@@ -44,6 +44,7 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
         public confirmationSrv: ConfirmationDialogService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(serviceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_SERVICES');
+        console.log('Preload complete');
     }
 
     ngOnInit(): void {
