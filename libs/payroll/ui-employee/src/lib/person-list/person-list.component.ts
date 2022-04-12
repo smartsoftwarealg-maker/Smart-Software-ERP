@@ -79,7 +79,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
     }
 
     public select(id: number): void {
-        const disableControls = id == null || id < 1;
+        //const disableControls = id == null || id < 1;
         super.select(id);
     }
 

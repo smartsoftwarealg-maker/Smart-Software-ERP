@@ -8,6 +8,7 @@ export const environment = {
 
 export const compiledApplications = [
     'ADMINISTRATION',
+    'ORGANIZATIONS',
     'COMMON_LOGISTICS-ADMINISTRATION',
     'PURCHASES',
     'STOCK',

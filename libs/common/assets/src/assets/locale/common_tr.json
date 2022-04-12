@@ -188,5 +188,6 @@
     "LIST":  "",
     "YEAR": "",
     "CONNECTION_ERROR": "",
-    "SECURITY":         ""
+    "SECURITY":         "",
+    "RESPONSIBLE": ""
 }

@@ -156,7 +156,6 @@
     "CONFIRM": "انقر للتأكيد",
     "UNCONFIRM": "انقر لإلغاء التاكيد",
     "STATUS": "الحالة",
-    "VALIDATED": "محققة",
     "LOCKED": "مغلق",
     "AGENT": "الشركاء",
     "ARTICLE": "البضائع",
@@ -194,5 +193,6 @@
     "YEAR": "السنة",
     "TOTAL": "المجموع",
     "CONNECTION_ERROR": "خطأ في الإتصال",
-    "SECURITY":         "حماية"
+    "SECURITY":         "حماية",
+    "RESPONSIBLE": "المسؤول"
 }
