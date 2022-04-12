@@ -12,13 +12,25 @@ import { DivisionDetailComponent } from './divisions/division-detail.component';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { RouterModule } from '@angular/router';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { DepartmentDetailComponent } from './departments/department-detail.component';
+import { DepartmentsListComponent } from './departments/departments-list.component';
+import { ServiceDetailComponent } from './services/service-detail.component';
+import { ServicesListComponent } from './services/services-list.component';
+import { OfficeDetailComponent } from './offices/office-detail.component';
+import { OfficesListComponent } from './offices/offices-list.component';
 
 @NgModule({
     declarations: [
         OrganizationsComponent,
         OrganizationsDetailComponent,
         DivisionsListComponent,
-        DivisionDetailComponent
+        DivisionDetailComponent,
+        DepartmentDetailComponent,
+        DepartmentsListComponent,
+        ServiceDetailComponent,
+        ServicesListComponent,
+        OfficeDetailComponent,
+        OfficesListComponent
     ],
     imports: [
         CommonModule,
@@ -35,7 +47,13 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
     exports: [
         OrganizationsComponent,
         DivisionsListComponent,
-        DivisionDetailComponent
+        DivisionDetailComponent,
+        DepartmentDetailComponent,
+        DepartmentsListComponent,
+        ServiceDetailComponent,
+        ServicesListComponent,
+        OfficeDetailComponent,
+        OfficesListComponent
     ]
 })
 export class CommonUiOrganizationsModule { }

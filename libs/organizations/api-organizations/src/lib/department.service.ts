@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import { DEPARTMENTS_URL, Department } from './lookups-api';
 import { BaseEntityService } from '@ss/common/api-base-entity';
+import { Department, DEPARTMENTS_URL } from './organizations-api';
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +9,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 export class DepartmentService extends BaseEntityService<Department> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, DEPARTMENTS_URL);
+        super(httpSrv, DEPARTMENTS_URL[0], DEPARTMENTS_URL[1]);
     }
 
 }

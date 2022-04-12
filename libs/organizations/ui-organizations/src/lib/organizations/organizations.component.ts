@@ -298,7 +298,7 @@ export class OrganizationsComponent implements OnInit {
                 if (!create) {
                     title = 'COMMON_EDIT_OFFICE';
                     url = OFFICES_URL[0] + this.selected.parentId + OFFICES_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, service: this.selected.parentId };
+                    lookup = { id: this.selected.id, description: this.selected.name, service: this.selected.parentId, responsible: null };
                 } else {
                     return;
                 }

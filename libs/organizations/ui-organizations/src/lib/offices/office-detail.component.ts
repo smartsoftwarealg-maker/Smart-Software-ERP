@@ -1,0 +1,55 @@
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { HttpService } from '@ss/common/api-common';
+import { Office, OfficeService, ServiceService } from '@ss/organizations/api-organizations';
+import { PersonAutocompleteClass } from '@ss/payroll-common';
+import { EmployeeService } from '@ss/payroll/api-employee';
+import { Observable, of } from 'rxjs';
+
+@Component({
+    selector: 'ss-office-detail',
+    templateUrl: './office-detail.component.html',
+    styleUrls: ['./office-detail.component.scss']
+})
+export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
+
+    public form: FormGroup = null;
+    public saving: boolean = false;
+    public personAutoCompleteModel: PersonAutocompleteClass;
+
+    constructor(
+        public serviceSrv: ServiceService,
+        public officeSrv: OfficeService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public formBuilder: FormBuilder,
+        public httpSrv: HttpService,
+        public confirmationSrv: ConfirmationDialogService,
+        private employeeSrv: EmployeeService) {
+        super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTEMENT');
+        this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
+    }
+
+    protected getRouteParam(): Observable<any> {
+        this.serviceSrv.setParentId(0);
+        return of(null);
+    }
+
+    setupForm(a: Office): FormGroup {
+        return this.form = this.formBuilder.group({
+            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+            service: [a.service, Validators.required],
+            responsible: [a.responsible, Validators.required]
+        });
+    }
+
+    public readForm(): Office {
+        const formVal = this.form.value as Office;
+        return formVal;
+    }
+}

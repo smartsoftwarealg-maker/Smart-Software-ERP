@@ -1,0 +1,47 @@
+
+:host {
+    display: block;
+    margin: auto;
+    width: 660px;
+}
+
+.main-table {
+    width: 660px;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+
+.mat-column-description {
+    flex: 0 0 200px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-division {
+    flex: 0 0 200px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-responsible {
+    flex: 0 0 180px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
