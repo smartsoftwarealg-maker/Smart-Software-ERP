@@ -49,6 +49,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
 
     public ngOnDestroy() {
         this.shellSrv.reset();
+        this.form = null;
     }
 
     /**
@@ -59,6 +60,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     public load() {
+        this.form = null;
         this.shellSrv.setLoading(true);
         const a = this.preload();
         const b = this.getRouteParam();
