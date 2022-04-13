@@ -9,7 +9,7 @@ import { Office, OFFICES_URL } from './organizations-api';
 export class OfficeService extends BaseEntityService<Office> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, OFFICES_URL[0], OFFICES_URL[1]);
+        super(httpSrv, OFFICES_URL[1], OFFICES_URL[0]);
     }
 
 }

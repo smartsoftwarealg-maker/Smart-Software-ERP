@@ -31,16 +31,17 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         private employeeSrv: EmployeeService) {
-        super(departementSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTEMENT');
+        super(departementSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTMENT');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
     protected getRouteParam(): Observable<any> {
         this.departementSrv.setParentId(0);
-        return of(null);
+        return super.getRouteParam();
     }
 
     setupForm(a: Department): FormGroup {
+        console.log(a);
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             division: [a.division, Validators.required],

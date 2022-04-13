@@ -31,13 +31,13 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         private employeeSrv: EmployeeService) {
-        super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTEMENT');
+        super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
     protected getRouteParam(): Observable<any> {
         this.serviceSrv.setParentId(0);
-        return of(null);
+        return super.getRouteParam();
     }
 
     setupForm(a: Office): FormGroup {

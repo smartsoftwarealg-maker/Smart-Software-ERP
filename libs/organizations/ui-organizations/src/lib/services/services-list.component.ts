@@ -24,7 +24,7 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
 
     displayedColumns = [
         'description',
-        'division',
+        'department',
         'responsible'
     ];
     departments: { [key: number]: string} = {};
@@ -44,6 +44,7 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
         public confirmationSrv: ConfirmationDialogService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(serviceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_SERVICES');
+        console.log('Preload complete');
     }
 
     ngOnInit(): void {
@@ -51,9 +52,15 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
+    public preload(): Observable<any> {
+        this.serviceSrv.setParentId(0);
+        this.departmentsSrv.setParentId(0);
+        return of(null);
+    }
+
     public processLoadedData(data: Service[]): Observable<Service[]> {
         this.departments = {};
-        return forkJoin(
+        return data.length == 0 ? of([]) :forkJoin(
                 data.map(d =>
                     d.responsible
                         ? this.employeeSrv.get(d.responsible)

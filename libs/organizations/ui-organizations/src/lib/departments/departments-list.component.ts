@@ -51,9 +51,14 @@ export class DepartmentsListComponent extends BaseEntityListComponent<Department
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
+    public preload(): Observable<any> {
+        this.departmentsSrv.setParentId(0);
+        return of(null);
+    }
+
     public processLoadedData(data: Department[]): Observable<Department[]> {
         this.divisions = {};
-        return forkJoin(
+        return data.length == 0 ? of([]) : forkJoin(
                 data.map(d =>
                     d.responsible
                         ? this.employeeSrv.get(d.responsible)
