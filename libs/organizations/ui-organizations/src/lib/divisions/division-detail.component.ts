@@ -34,17 +34,6 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
-    /*protected getRouteParam(): Observable<any> {
-        return this.route.parent.parent.params
-            .pipe(
-                switchMap(p => {
-                    this.parentId = +p.id;
-                    this.divisionsSrv.setParentId(this.parentId);
-                    return super.getRouteParam();
-                })
-            );
-    }*/
-
     setupForm(a: Division): FormGroup {
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],

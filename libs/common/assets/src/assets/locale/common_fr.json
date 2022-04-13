@@ -195,5 +195,6 @@
     "TOTAL": "Total",
     "CONNECTION_ERROR": "Erreur de connexion",
     "SECURITY":         "Sécurité",
-    "RESPONSIBLE": "Responsable"
+    "RESPONSIBLE": "Responsable",
+    "OFFICES": "Bureau"
 }

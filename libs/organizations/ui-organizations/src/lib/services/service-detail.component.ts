@@ -31,14 +31,14 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         private employeeSrv: EmployeeService) {
-        super(serviceSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTEMENT');
+        super(serviceSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_SERVICE');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
     protected getRouteParam(): Observable<any> {
         this.serviceSrv.setParentId(0);
         this.departementSrv.setParentId(0);
-        return of(null);
+        return super.getRouteParam();
     }
 
     setupForm(a: Service): FormGroup {

@@ -71,6 +71,8 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             entity => {
                 if (entity) {
                     this.finishLoading(entity);
+                } else {
+                    throw new Error("BaseEntityDetail: Entity is null");
                 }
             },
             error => {

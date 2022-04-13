@@ -69,7 +69,6 @@ export class BaseEntityService<T> {
     protected getUrl(): string {
         if (this.parentUrl) {
             if (this.parentId == null) {
-                console.log(this.parentUrl, this.parentId);
                 throw Error('No parent id was given !');
             }
             const parentUrl = this.parentUrl.endsWith('/') ? this.parentUrl : (this.parentUrl + '/');

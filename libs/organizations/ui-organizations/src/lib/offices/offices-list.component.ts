@@ -47,8 +47,9 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
     }
 
     ngOnInit(): void {
-        super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
+        super.ngOnInit();
+        console.log('ngOnInit');
     }
 
     public preload(): Observable<any> {
@@ -59,7 +60,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     public processLoadedData(data: Office[]): Observable<Office[]> {
         this.services = {};
-        return forkJoin(
+        return data.length == 0 ? of(data) : forkJoin(
                 data.map(d =>
                     d.responsible
                         ? this.employeeSrv.get(d.responsible)

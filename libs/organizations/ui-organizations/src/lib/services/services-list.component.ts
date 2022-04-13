@@ -60,7 +60,7 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
 
     public processLoadedData(data: Service[]): Observable<Service[]> {
         this.departments = {};
-        return forkJoin(
+        return data.length == 0 ? of([]) :forkJoin(
                 data.map(d =>
                     d.responsible
                         ? this.employeeSrv.get(d.responsible)

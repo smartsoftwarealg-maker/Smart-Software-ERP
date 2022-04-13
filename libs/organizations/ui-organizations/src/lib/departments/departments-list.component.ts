@@ -58,7 +58,7 @@ export class DepartmentsListComponent extends BaseEntityListComponent<Department
 
     public processLoadedData(data: Department[]): Observable<Department[]> {
         this.divisions = {};
-        return forkJoin(
+        return data.length == 0 ? of([]) : forkJoin(
                 data.map(d =>
                     d.responsible
                         ? this.employeeSrv.get(d.responsible)
