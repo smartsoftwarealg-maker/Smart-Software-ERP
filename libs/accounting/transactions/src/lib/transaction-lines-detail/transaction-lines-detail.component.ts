@@ -63,12 +63,12 @@ export class TransactionLinesDetailComponent {
             };
             return of(a);
         }
-        return this.entitySrv.get(id);
+        return null; //this.entitySrv.get(id); TODO: verify
     }
 
     public finishLoading(e: ACCTransaction) {
         this.shellSrv.setLoading(false);
-        this.form = this.setupForm(e);
+        // this.form = this.setupForm(e);
     }
 
     public load() {
