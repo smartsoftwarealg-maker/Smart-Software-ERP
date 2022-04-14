@@ -194,7 +194,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     // value accessor
     writeValue(obj: any): void {
-        console.log('*****************ob', obj);
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {

@@ -51,7 +51,7 @@
     "FISCAL": "Fiscal",
     "STAMP": "Timbre",
     "CREATION_TIME": "Temps de creation",
-    "AGENT": "Agent",
+    "AGENT": "Tiers",
     "EDIT_AGENT": "Modifier l'agent",
     "AGENT_PRICE": "Prix de l'agent",
     "EDIT_AGENT_PRICE": "Modifier le prix de l'agent",

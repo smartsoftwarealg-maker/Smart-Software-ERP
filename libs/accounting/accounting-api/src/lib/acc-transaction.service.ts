@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
+    ACC_JOURNALS_URL,
     ACC_TRANSACTION_URL,
     ACCTransaction
 } from './accounting-api';
@@ -14,7 +15,7 @@ import {HttpParams} from '@angular/common/http';
 export class AccTransactionService extends BaseEntityService<ACCTransaction> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, ACC_TRANSACTION_URL);
+        super(httpSrv, ACC_TRANSACTION_URL, ACC_JOURNALS_URL);
     }
 
     findByJournal(journalId: number, page: number, pageSize: number): Observable<{ body: ACCTransaction[], itemCount: number }> {

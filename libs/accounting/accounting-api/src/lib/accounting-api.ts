@@ -3,8 +3,9 @@ export const ACC_POLICY_URL       = '/accounting/acc-policies';
 export const ACC_JOURNALS_URL     = '/accounting/journals';
 export const ACC_JOURNAL_TYPE_URL = '/lookups/journal_types';
 export const JOURNAL_USER_URL     = '/users';
-export const ACC_TRANSACTION_URL  = '/accounting/transactions';
+export const ACC_TRANSACTION_URL  = '/transactions';
 export const ACC_DETAIL_URL       = '/detail';
+export const ACC_TRANSACTIONS_URL = '/accounting/transactions';
 export const ACC_CTX_URL          = '/ctx';
 
 export interface ACCPolicy {
@@ -82,6 +83,7 @@ export interface ACCTransaction {
 }
 
 export interface ACCTransactionLine {
+    id: number;
     fileId: number;
     oid: number;
     lineNumber: number;

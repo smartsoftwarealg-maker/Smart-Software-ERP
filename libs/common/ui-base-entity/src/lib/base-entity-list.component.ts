@@ -230,7 +230,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     private selectReport() {
-        console.log('app', this.shellSrv.getApp());
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)
             .subscribe(res => {

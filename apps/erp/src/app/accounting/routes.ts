@@ -98,22 +98,27 @@ export const accRoutes: Routes = [
                 component: TransactionListComponent,
                 children: [
                     {
-                        path: 'detail',
+                        path: ':id',
                         children: [
                             {
-                                path: 'detail',
-                                component: TransactionLinesDetailComponent
+                                path: '',
+                                component: TransactionDetailComponent,
                             },
                             {
-                                path: '',
-                                component: TransactionLinesListComponent,
-                            }
+                                path: 'detail',
+                                children: [
+                                    {
+                                        path: ':id',
+                                        component: TransactionLinesDetailComponent,
+                                    },
+                                    {
+                                        path: '',
+                                        component: TransactionLinesListComponent,
+                                    },
+                                ]
+                            },
                         ]
                     },
-                    {
-                        path: ':id',
-                        component: TransactionDetailComponent,
-                    }
                 ],
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

@@ -6,3 +6,4 @@ export * from './lib/acc-journal-type.service';
 export * from './lib/journal-user.service';
 export * from './lib/acc-file.service';
 export * from './lib/acc-transaction.service';
+export * from './lib/acc-transaction-lines.service';
