@@ -1,1 +1,23 @@
-<p>transaction-lines-detail works!</p>
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="lineNumber" type="text" autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="description" type="text" >
+            </mat-form-field>
+
+        </form>
+
+        <div class="ctrl default-100">
+            <button mat-flat-button color="primary" translate (click)="save()">COMMON_SAVE</button>
+            <button mat-flat-button color="warn" translate (click)="cancel()">COMMON_CANCEL</button>
+        </div>
+    </mat-card-content>
+</mat-card>
+

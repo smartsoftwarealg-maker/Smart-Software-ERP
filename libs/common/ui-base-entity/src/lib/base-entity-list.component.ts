@@ -198,7 +198,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public selectRow(row: T) {
         this.selectedRow = row;
         const id = row ? row.id || 0 : 0;
-        this.select(id)
+        this.select(id);
     }
 
     public select(id: number): void {
@@ -230,7 +230,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     private selectReport() {
-        console.log('app', this.shellSrv.getApp());
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)
             .subscribe(res => {

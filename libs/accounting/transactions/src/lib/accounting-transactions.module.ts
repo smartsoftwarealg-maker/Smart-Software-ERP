@@ -16,6 +16,7 @@ import { FileSelectorComponent } from './file-selector/file-selector.component';
 import { PeriodSelectorComponent } from './period-selector/period-selector.component';
 import { AccFileListComponent } from './acc-file-list/acc-file-list.component';
 import { AccFileDetailComponent } from './acc-file-detail/acc-file-detail.component';
+import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { AccFileDetailComponent } from './acc-file-detail/acc-file-detail.compon
         ReactiveFormsModule,
         CommonUiMainPageModule,
         CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
         CommonUiConfirmationDialogModule
     ],
     declarations: [
