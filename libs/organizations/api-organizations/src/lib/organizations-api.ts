@@ -34,4 +34,5 @@ export interface Office {
     id: number;
     description: string;
     service: number;
+    responsible: number;
 }

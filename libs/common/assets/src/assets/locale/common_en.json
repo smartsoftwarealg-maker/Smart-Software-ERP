@@ -156,7 +156,6 @@
     "CONFIRM": "Click to confirm",
     "UNCONFIRM": "Click to cancel confirmation",
     "STATUS": "Status",
-    "VALIDATED": "Validated",
     "LOCKED": "Locked",
     "AGENT": "Partners",
     "ARTICLE": "Article",
@@ -194,5 +193,7 @@
     "YEAR": "Year",
     "TOTAL": "Total",
     "CONNECTION_ERROR": "Connection error",
-    "SECURITY":         "Security"
+    "SECURITY":         "Security",
+    "RESPONSIBLE": "Responsible",
+    "OFFICES": "Offices"
 }

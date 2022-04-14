@@ -221,9 +221,17 @@ export interface SuspensionReason {
 export interface Department {
     id: number;
     description: string;
+    responsible: number;
 }
 
 export interface Division {
     id: number;
     description: string;
+    responsible: number;
+}
+
+export interface Service {
+    id: number;
+    description: string;
+    responsible: number;
 }
