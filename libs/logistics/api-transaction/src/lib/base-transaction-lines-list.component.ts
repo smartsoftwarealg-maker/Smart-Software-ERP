@@ -76,12 +76,13 @@ export class BaseTransactionLinesListComponent {
                     const a = this.data.filter(x => x.id === this.selectedId)[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);
-                        this.detailSrv.remove(a.id)
+                        this.detailSrv
+                            .remove(a.id)
+                            .pipe(switchMap(_ => this.loadDetailLines()))
                             .subscribe({
                                 next: _ => {
-                                    this.snackBarSrv.showSuccessMessage();
-                                    this.loadDetailLines();
                                     this.shellSrv.setLoading(false);
+                                    this.snackBarSrv.showSuccessMessage();
                                 },
                                 error: err => {
                                     this.snackBarSrv.showFailureMessage();

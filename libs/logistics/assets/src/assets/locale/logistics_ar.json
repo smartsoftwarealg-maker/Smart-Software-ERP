@@ -137,5 +137,6 @@
     "INVOICE_DATE":   "تاريخ الفاتورة",
     "INVOICE_NUMBER": "رقم الفاتورة",
     "PAYMENT_ORDER": "أوامر الدفع",
-    "ORDER_NO":      "رقم الطلب"
+    "ORDER_NO":      "رقم الطلب",
+    "PPRICE":        "سعر المخزون"
 }

@@ -53,7 +53,7 @@
     "CREATION_TIME": "Temps de creation",
     "AGENT": "Tiers",
     "EDIT_AGENT": "Modifier l'agent",
-    "AGENT_PRICE": "Prix de l'agent",
+    "AGENT_PRICE": "Prix de vente",
     "EDIT_AGENT_PRICE": "Modifier le prix de l'agent",
     "DESCRIPTION_AR": "Description ar",
     "DESCRIPTION": "Description",
@@ -62,7 +62,7 @@
     "GROUP": "Groupe",
     "ACC_TYPE": "Type de compte",
     "ANALYZED": "ANALYSÉ",
-    "ACCOUNT_NO": "N°COMPTE",
+    "ACCOUNT_NO": "N°Compte",
     "BALANCE_CONSTRAINT": "Contrainte d'équilibre",
     "SUMMARY_LEVEL": "Niveau résumé",
     "BUDGET_ACCOUNT": "Compte budgétaire",
@@ -93,7 +93,7 @@
     "AGENT_DEBTS": "Creances",
     "QTY_ORDERED": "Quantité commandée",
     "VAT": "TVA",
-    "SUPPLIER": "Fournisseuse",
+    "SUPPLIER": "Fournisseur",
     "PAY_METHOD": "Mode de paiement",
     "MODE": "Mode",
     "EXCHANGE_RATE": "Taux conversion",
@@ -105,7 +105,7 @@
     "CONSUMER": "Consomateur",
     "AGENCY": "Agence",
     "RAW_AGENT_DEBTS": "Dettes (sans compensation)",
-    "PAYMENT_COMPENSATION": "Indemnités de paiement",
+    "PAYMENT_COMPENSATION": "Paiements",
     "MAKE_PAYMENT": "Effectuer le paiement",
     "CANCEL_PAYMENT": "Annuler le paiement",
     "PURCHASE_ORDER": "Bon de commande",
@@ -136,5 +136,6 @@
     "INVOICE_DATE":   "Date de facturation",
     "INVOICE_NUMBER": "Numéro de facture",
     "PAYMENT_ORDERS": "Ordres de paiement",
-    "ORDER_NO":      "Numéro de commande"
+    "ORDER_NO":      "Numéro de commande",
+    "PPRICE":        "Prix stock"
 }

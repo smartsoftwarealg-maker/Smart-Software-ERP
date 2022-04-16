@@ -13,7 +13,6 @@ import {
     QuotationLinesDetailComponent,
     QuotationListComponent
 } from '@ss/purchases/ui-quotation';
-import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 
 export const routes: Routes = [
     {

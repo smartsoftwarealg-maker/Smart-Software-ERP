@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="cart">
         <fieldset>
-            <legend translate>COOMON_TOTAL</legend>
+            <legend translate>COMMON_TOTAL</legend>
             <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
             <span translate>COMMON_AD</span>
         </fieldset>
@@ -111,7 +111,7 @@
 
 
             <ng-container matColumnDef="total">
-                <mat-header-cell *matHeaderCellDef translate>COOMON_TOTAL</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                     {{ e.qty * e.price | number: '1.2-2' }}
                 </mat-cell>

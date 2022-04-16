@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html'
 })
-export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Article> {
+export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Article> implements OnInit {
 
     displayedColumns = [
         'reference',
@@ -54,6 +54,13 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
     onMarksLoaded(data: Mark[]) {
         this.marks = {};
         data.forEach(m => this.marks[m.id] = m.description);
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.deleteButton.visible = false;
+        this.addButton.visible = false;
+        this.editButton.visible = false;
     }
 
     // onVatsLoaded(data: Vat[]) {
