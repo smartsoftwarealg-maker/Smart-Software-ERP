@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ACCTransaction, ACCTransactionLine, AccTransactionLineService} from '@ss/accounting/accounting-api';
+import {ACCTransactionLine, AccTransactionLineService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -52,7 +52,7 @@ export class TransactionLinesDetailComponent {
         this.load();
     }
 
-    public loadEntity(id: number): Observable<ACCTransaction> {
+    public loadEntity(id: number): Observable<ACCTransactionLine> {
         if (id == null) {
             this.shellSrv.goBack();
             return of(null);
@@ -63,10 +63,10 @@ export class TransactionLinesDetailComponent {
             };
             return of(a);
         }
-        return null; //this.entitySrv.get(id); TODO: verify
+        return this.entitySrv.get(id);
     }
 
-    public finishLoading(e: ACCTransaction) {
+    public finishLoading(e: ACCTransactionLine) {
         this.shellSrv.setLoading(false);
         // this.form = this.setupForm(e);
     }

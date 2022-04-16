@@ -75,7 +75,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
             accountno: [b.accountno],
-            accountId: [b.accountId],
+            accountId: [b.accountId, Validators.required],
             costCenter: [b.costCenter],
             investEnd: [b.investEnd],
             receptionNumber: [b.receptionNumber],

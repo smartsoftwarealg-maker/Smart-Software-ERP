@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
@@ -107,10 +107,16 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.reception.id)
-                        .pipe(tap(_ => this.detail.loadDetailLines()))
+                        .pipe(switchMap(_ => this.detail.loadDetailLines()))
                         .subscribe({
-                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                            next: res => {
+                                this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                                this.shellSrv.setLoading(false);
+                            },
+                            error: err => {
+                                this.snackBarSrv.showMessage('COMMON_FAILURE', true);
+                                this.shellSrv.setLoading(false);
+                            }
                         });
                 }
             });

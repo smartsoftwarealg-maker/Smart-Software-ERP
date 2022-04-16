@@ -9,7 +9,7 @@
     "CUSTOMER_NOT_FOUND":                 "Client non trouvé",
     "INVALID_DATA":                       "Données non valides spécifiées",
     "MISSING_STORE":                      "Le magasin spécifié n'existe pas",
-    "UNAVAILABLE_INVENTORY":              "Inventaire indisponible",
+    "UNAVAILABLE_INVENTORY":              "Stock indisponible",
     "UNAVAILABLE_INSTANT_INVENTORY":      "Inventaire instantané indisponible. Veuillez vérifier les dates d'entrée",
     "REFERENCE_MISMATCH":                 "Incompatibilité de référence. La référence a été modifiée par erreur.",
     "STORE_MISMATCH":                     "Discordance de magasin. Le magasin a été modifié par erreur.",
@@ -19,7 +19,8 @@
     "MISSING_SMTP_CONFIGURATION":         "Configuration smtp manquante",
     "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
     "MISSING_ACCOUNT":                    "Numéro de compte manquant",
-    "STOCKED_ITEM":                       "Article stockable. Non stockable ne peut pas être vérifié.",
+    "STOCKED_ITEM":                       "Opération invalide pour un article stocké.",
+    "NON_STOCKED_ITEM":                   "Opération invalide pour un article non stocké.",
     "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours",
     "MONTH_CLOSED":                       "Le mois sélectionné est fermé. Les mises à jour ne sont pas autorisées!",
     "MISSING_HIRE_DATE":                  "La date de recrutement est manquante."

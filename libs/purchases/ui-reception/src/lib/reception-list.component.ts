@@ -1,11 +1,10 @@
 import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {AgentService} from '@ss/logistics/api-agent';
 import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';

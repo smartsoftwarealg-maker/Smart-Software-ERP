@@ -42,7 +42,7 @@ export class DocInfoComponent {
             entries: [
                 {
                     name: 'totals',
-                    description: 'COOMON_TOTAL',
+                    description: 'COMMON_TOTAL',
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
                 }

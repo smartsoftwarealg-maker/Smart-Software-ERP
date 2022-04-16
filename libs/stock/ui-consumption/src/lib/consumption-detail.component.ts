@@ -26,7 +26,7 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     // fixme: use a model that shows both the agent-code and the denomination
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-
+    manager = this.loginSrv.appCtx.manager;
     constructor(
         private langSrv: LanguageService,
         public consumptionService: ConsumptionService,
@@ -60,9 +60,15 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
+            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: this.loginSrv.appCtx.manager}, Validators.required],
             agent: [b.agent, Validators.required],
             userID: [this.loginSrv.appCtx.id]
         });
+    }
+
+    readForm(): Transaction {
+        const value = super.readForm();
+        value.dealer = value.dealer || this.loginSrv.appCtx.id;
+        return value;
     }
 }

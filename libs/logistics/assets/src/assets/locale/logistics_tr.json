@@ -134,5 +134,6 @@
     "INVOICE_DATE":   "",
     "INVOICE_NUMBER": "",
     "PAYMENT_ORDERS": "",
-    "ORDER_NO":      ""
+    "ORDER_NO":      "",
+    "PPRICE":        ""
 }
