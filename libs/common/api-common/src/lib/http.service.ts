@@ -159,7 +159,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'text', headers: HttpService.getHeaders() });
+                {responseType: 'text', headers: HttpService.getHeaders().set('timeout', '600000') });
     }
 
     public put(url: string, data?: any | null): Observable<any> {
@@ -199,7 +199,8 @@ export class HttpService {
     // noinspection JSUnusedGlobalSymbols
     public postBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
         const httpHeaders = new HttpHeaders()
-            .set('Authorization', this.getAuthToken());
+            .set('Authorization', this.getAuthToken())
+            .set('timeout', '600000');
 
         return this
             .httpClient

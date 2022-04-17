@@ -7,11 +7,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
-import {LoginService} from '@ss/common/api-common';
+import {HttpService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -21,7 +22,7 @@ import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accou
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
     private maxReference: string = null;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
-    accountAutoCompleteModel = new AccountAutocompleteModel(this.accountSrv);
+    accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     accountantDepreciation: Depreciation[] = [];
@@ -40,13 +41,15 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
         private accountSrv: AccountService,
-        private loginSrv: LoginService) {
+        private loginSrv: LoginService,
+        private httpSrv: HttpService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
             route,
             formBuilder,
             confirmationSrv, 'ASSETS');
+        this.accountAutoCompleteModel.onObjectSelected = (acc) => this.accountSelected(acc);
     }
 
     setupForm(b: Asset): FormGroup {
@@ -74,7 +77,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             serial_no: [b.serial_no],
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
-            accountno: [b.accountno],
+            accountno: [b.accountno || '21'],
             accountId: [b.accountId, Validators.required],
             costCenter: [b.costCenter],
             investEnd: [b.investEnd],
@@ -124,4 +127,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         else
             return '';
     }
+
+    accountSelected(acc: Account) {
+        // console.log(acc)
+        //this.form.value['accountno'].setValue(acc?.accountNo);
+    }
+
+    // override preload(): Observable<any> {
+    //     return this.httpSrv
+    //
+    // }
 }
