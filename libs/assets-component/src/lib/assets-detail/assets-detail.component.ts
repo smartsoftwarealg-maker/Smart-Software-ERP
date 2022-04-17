@@ -53,14 +53,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         const today = new Date();
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.maxLength(11), Validators.required]],
-            reference2: [b.reference2 || this.maxReference, Validators.maxLength(11)],
+            reference: [b.reference, [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
+            reference2: [b.reference2 || this.maxReference, [Validators.maxLength(5), Validators.required ]],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today, Validators.required],
-            acquisitionValue: [b.acquisitionValue, Validators.required],
+            acquisitionValue: [b.acquisitionValue || 0, Validators.required],
             historicValue: [b.historicValue, Validators.required],
-            depreciationRate: [b.depreciationRate, Validators.required],
+            depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.historicValue || 0, Validators.required],
             invoiceNumber: [b.invoiceNumber],
@@ -89,12 +89,12 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             order_date: [b.order_date],
             office: [b.office],
             sales_price: [b.sales_price],
-            useful_life: [b.useful_life],
+            useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
-            old_depreciation: [b.old_depreciation || 0],
-            outof_service: [b.outof_service],
+            old_depreciation: [b.old_depreciation || 0, Validators.required],
+            outof_service: [b.outof_service || false, Validators.required],
             criticity: [b.criticity],
-            startYear: [b.startYear || 0],
+            startYear: [b.startYear || 0, Validators.required],
         });
         if (b.id) {
             this.maxReference = b.reference2;

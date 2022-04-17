@@ -47,7 +47,6 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
             .params
             .subscribe(p => {
                 this.entitySrv.setParentId(+p['id']);
-                console.log('id', this.entitySrv.getParentId())
                 super.refresh();
             })
     }

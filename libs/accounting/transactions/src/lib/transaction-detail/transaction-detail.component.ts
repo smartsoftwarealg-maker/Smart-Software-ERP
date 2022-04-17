@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {Component} from '@angular/core';
 import {ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -39,11 +38,12 @@ export class TransactionDetailComponent  {
             piecemonth: [e.piecemonth],
             journalno: [e.journalno],
             isBudget: [e.isBudget],
-            fileId: [e.fileId || this.loginSrv.appCtx.accYear],
+            fileId: [e.fileId || this.loginSrv.appCtx?.accYear],
         });
     }
 
      ngOnInit() {
+        this.loginSrv.loadContext();
          this.shellSrv.setGoBackPath('..', this.route);
          this.load();
     }
@@ -69,24 +69,23 @@ export class TransactionDetailComponent  {
 
     public load() {
         this.shellSrv.setLoading(true);
-        const c = this.route.params
+        this.route.params
             .pipe(
                 switchMap(p => {
                     this.id = +p['id'];
                     return this.loadEntity(this.id || 0);
                 })
-            );
-        const sub = c.subscribe(
-            entity => {
+            ).subscribe({
+            next: entity => {
                 if (entity) {
                     this.finishLoading(entity);
                 }
             },
-            error => {
+            error: error => {
                 this.shellSrv.showRetry(() => this.load());
                 throw error;
             }
-        );
+        });
     }
 
     cancel() {
