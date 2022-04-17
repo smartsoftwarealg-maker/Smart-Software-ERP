@@ -47,7 +47,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
     }
 
     processLoadedData(data: Article[]): Observable<Article[]> {
-        data.forEach(p => {
+        data?.forEach(p => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);

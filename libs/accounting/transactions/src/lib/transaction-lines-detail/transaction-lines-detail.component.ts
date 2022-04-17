@@ -68,29 +68,29 @@ export class TransactionLinesDetailComponent {
 
     public finishLoading(e: ACCTransactionLine) {
         this.shellSrv.setLoading(false);
-        // this.form = this.setupForm(e);
+        this.form = this.setupForm(e);
     }
 
     public load() {
         this.shellSrv.setLoading(true);
-        const c = this.route.params
+        this.route.params
             .pipe(
                 switchMap(p => {
                     this.id = +p['id'];
                     return this.loadEntity(this.id || 0);
                 })
-            );
-        const sub = c.subscribe(
-            entity => {
+            ).subscribe({
+            next: entity => {
                 if (entity) {
                     this.finishLoading(entity);
                 }
             },
-            error => {
+            error: error => {
+                this.shellSrv.setLoading(false);
                 this.shellSrv.showRetry(() => this.load());
                 throw error;
             }
-        );
+        });
     }
 
     cancel() {
