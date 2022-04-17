@@ -17,11 +17,12 @@ import {
     AssetRevaluationDetailComponent,
     AssetBlockingListComponent,
     AssetBlockingDetailComponent,
-    AssetCostTypeListComponent, AssetCostTypeDetailComponent
+    AssetCostTypeListComponent,
+    AssetCostTypeDetailComponent,
+    AssetRevaluationTypeDetailComponent,
+    AssetRevaluationTypeListComponent
 } from '@ss/assets-component';
-import {AssetRevaluationTypeDetailComponent} from '../../../../../libs/assets-component/src/lib/asset-revaluation-type-detail/asset-revaluation-type-detail.component';
-import {AssetRevaluationTypeListComponent} from '../../../../../libs/assets-component/src/lib/asset-revaluation-type-list/asset-revaluation-type-list.component';
-import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const mainRoutes: Routes = [
     {

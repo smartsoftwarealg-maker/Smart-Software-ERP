@@ -12,8 +12,6 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
-import {Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'ss-transaction-list',
@@ -246,6 +244,6 @@ export class TransactionListComponent  implements OnInit {
             })
     }
     public showDetail(id: number): void {
-        this.router.navigate([id], { relativeTo: this.route }).then();
+        this.router.navigate([id], { relativeTo: this.route, queryParams: {journal: this.entitySrv.getParentId()} }).then();
     }
 }
