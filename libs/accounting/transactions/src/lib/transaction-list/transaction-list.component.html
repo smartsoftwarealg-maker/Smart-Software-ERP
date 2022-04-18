@@ -20,6 +20,13 @@
                     </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="projectName">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_PROJECT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.projectName}}
+                    </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="piecedate">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
                     <mat-cell *matCellDef="let e">

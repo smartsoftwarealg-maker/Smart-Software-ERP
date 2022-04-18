@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, Output} from '@angular/core';
 import {ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
@@ -15,8 +15,10 @@ import {switchMap, tap} from 'rxjs/operators';
   styleUrls: ['./transaction-detail.component.scss']
 })
 export class TransactionDetailComponent  {
+    journalId = 0;
     public form: FormGroup = null;
     id = 0;
+    projects: Lookup[] = [];
 
     constructor(
         public entitySrv: AccTransactionService,
@@ -31,19 +33,19 @@ export class TransactionDetailComponent  {
     setupForm(e: ACCTransaction): FormGroup {
         return this.formBuilder.group({
             id: [e.fileId * 10000 + e.oid || 0],
-            oid: [e.oid],
+            oid: [e.oid || 0],
             piecedate: [e.piecedate, Validators.required],
-            pieceno: [e.pieceno, Validators.required],
+            pieceno: [e.pieceno || 0, Validators.required],
             folio: [e.folio],
-            piecemonth: [e.piecemonth],
-            journalno: [e.journalno],
+            projectId: [e.projectId],
+            piecemonth: [e.piecemonth || this.loginSrv.appCtx.accPeriod],
+            journalno: [e.journalno || this.journalId],
             isBudget: [e.isBudget],
             fileId: [e.fileId || this.loginSrv.appCtx?.accYear],
         });
     }
 
      ngOnInit() {
-        this.loginSrv.loadContext();
          this.shellSrv.setGoBackPath('..', this.route);
          this.load();
     }
@@ -69,8 +71,14 @@ export class TransactionDetailComponent  {
 
     public load() {
         this.shellSrv.setLoading(true);
-        this.route.params
+        this.route
+            .queryParams
             .pipe(
+                tap(params => this.journalId = +params['journal']),
+                switchMap(_ => this.loginSrv.loadContext()),
+                switchMap(_ => this.entitySrv.getProjects()),
+                tap(res => this.projects = res),
+                switchMap(_ => this.route.params),
                 switchMap(p => {
                     this.id = +p['id'];
                     return this.loadEntity(this.id || 0);
@@ -94,7 +102,6 @@ export class TransactionDetailComponent  {
 
     save() {
         const val = this.form.value;
-        console.log(this.entitySrv.getParentId(), val.journalno, this.entitySrv.getParentId() == +val.journalno)
         if (this.entitySrv.getParentId() == +val.journalno) {
             val.id = this.id;
             let obs: Observable<any> = val.id === 0
@@ -118,4 +125,5 @@ export class TransactionDetailComponent  {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
         }
     }
+
 }

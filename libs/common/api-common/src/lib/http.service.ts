@@ -159,7 +159,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'text', headers: HttpService.getHeaders().set('timeout', '600000') });
+                {responseType: 'text', headers: HttpService.getHeaders().set('timeout', '6000000') });
     }
 
     public put(url: string, data?: any | null): Observable<any> {
@@ -200,7 +200,7 @@ export class HttpService {
     public postBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
         const httpHeaders = new HttpHeaders()
             .set('Authorization', this.getAuthToken())
-            .set('timeout', '600000');
+            .set('timeout', '6000000');
 
         return this
             .httpClient

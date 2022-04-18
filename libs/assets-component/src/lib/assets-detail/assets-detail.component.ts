@@ -56,13 +56,13 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         const today = new Date();
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
+            reference: [b.reference, [Validators.minLength(11),  Validators.required]],
             reference2: [b.reference2 || this.maxReference, [Validators.maxLength(5), Validators.required ]],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today, Validators.required],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
-            historicValue: [b.historicValue, Validators.required],
+            historicValue: [b.historicValue || 0, Validators.required],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.historicValue || 0, Validators.required],
