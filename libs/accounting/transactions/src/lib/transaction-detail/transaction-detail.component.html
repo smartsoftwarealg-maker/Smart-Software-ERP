@@ -19,6 +19,16 @@
                 <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
             </div>
             <span class="default-100 filler" ></span>
+
+            <mat-form-field style="width: 90%">
+                <mat-placeholder translate>ACC_PROJECT</mat-placeholder>
+                <mat-select formControlName="projectId">
+                    <mat-option *ngFor="let p of projects" [value]="p.id">
+                        {{ p.description }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
         </form>
 
         <div class="ctrl default-100">

@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
-    ACC_JOURNALS_URL,
+    ACC_JOURNALS_URL, ACC_PROJECTS_URL,
     ACC_TRANSACTION_URL,
     ACCTransaction
 } from './accounting-api';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import {Lookup} from '@ss/common/api-lookup';
 
 @Injectable({
     providedIn: 'root'
@@ -21,5 +22,9 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
     findByJournal(journalId: number, page: number, pageSize: number): Observable<{ body: ACCTransaction[], itemCount: number }> {
         const params = new HttpParams().set("journal", journalId);
         return this.getList(page - 1, pageSize, null, null, params);
+    }
+
+    getProjects(): Observable<Lookup[]> {
+        return this.httpSrv.get<Lookup[]>(ACC_PROJECTS_URL + '?page=0-50');
     }
 }

@@ -7,6 +7,7 @@ export const ACC_TRANSACTION_URL  = '/transactions';
 export const ACC_DETAIL_URL       = '/detail';
 export const ACC_TRANSACTIONS_URL = '/accounting/transactions';
 export const ACC_CTX_URL          = '/ctx';
+export const ACC_PROJECTS_URL     = '/lookups/acc_projects';
 
 export interface ACCPolicy {
     id: number;
@@ -80,6 +81,7 @@ export interface ACCTransaction {
     projectId?: number;
     debit?: number;
     credit?: number;
+    projectName?: string;
 }
 
 export interface ACCTransactionLine {

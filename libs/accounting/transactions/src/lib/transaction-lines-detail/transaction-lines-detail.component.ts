@@ -73,8 +73,9 @@ export class TransactionLinesDetailComponent {
 
     public load() {
         this.shellSrv.setLoading(true);
-        this.route.params
-            .pipe(
+        this.loginSrv
+            .loadContext()
+            .pipe(switchMap(_ => this.route.params),
                 switchMap(p => {
                     this.id = +p['id'];
                     return this.loadEntity(this.id || 0);
@@ -123,4 +124,5 @@ export class TransactionLinesDetailComponent {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
         }
     }
+
 }

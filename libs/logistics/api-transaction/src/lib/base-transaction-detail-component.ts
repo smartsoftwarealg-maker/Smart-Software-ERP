@@ -2,12 +2,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {
     ActivatedRoute,
-    ChildActivationStart,
-    Event,
-    GuardsCheckEnd,
-    GuardsCheckStart, NavigationStart,
-    Router,
-    RouterEvent
+    Router
 } from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';

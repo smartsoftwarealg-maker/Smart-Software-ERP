@@ -1,24 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {
     AccJournalsService,
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
-    Journal
+    Journal,
 } from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'ss-transaction-list',
   templateUrl: './transaction-list.component.html',
   styleUrls: ['./transaction-list.component.scss']
 })
-export class TransactionListComponent  implements OnInit {
+export class TransactionListComponent  implements OnInit, OnDestroy {
+    private subs: Subscription = null;
     private reportForm: string = null;
     public filter: string = null;
     public sortBy: string = null;
@@ -26,7 +29,7 @@ export class TransactionListComponent  implements OnInit {
     selectedId = 0;
     data: ACCTransaction[] = [];
     journalList: Journal[] = [];
-    displayedColumns = ['pieceno', 'piecedate', 'debit', 'credit'];
+    displayedColumns = ['pieceno', 'piecedate', 'debit', 'credit', 'projectName'];
     pagination = PaginationModel.newInstance();
     public refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
@@ -100,6 +103,21 @@ export class TransactionListComponent  implements OnInit {
             .getList(0, 50)
             .subscribe(res => this.journalList = res.body);
       this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton]);
+      this.subs = this.router
+          .events
+          .pipe(filter(ev => ev instanceof NavigationEnd))
+          .subscribe(event => {
+              if (event instanceof NavigationEnd) {
+                  console.log(event.url);
+                  if (event.url === '/app/accounting/transactions') {
+                      this.transactionSaved();
+                  }
+              }
+          });
+    }
+
+    ngOnDestroy() {
+        this.subs?.unsubscribe();
     }
 
     private showButtons() {
@@ -147,6 +165,15 @@ export class TransactionListComponent  implements OnInit {
     // showDetailDetail() {
     //     this.router.navigate(['detail', 'detail'], { relativeTo: this.route });
     // }
+
+    public transactionSaved() {
+        this.entitySrv
+            .findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize)
+            .subscribe(res => {
+                this.data = res.body;
+                this.pagination.elementCount = res.itemCount;
+            });
+    }
 
     journalSelected(event: MatSelectionListChange) {
         const journalId = event.options[0].value;
