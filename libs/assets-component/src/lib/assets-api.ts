@@ -49,7 +49,6 @@ export interface Asset {
     creation_date?: string;
     investment_type?: number;
     useful_life: number;
-    ecomomic_life?: number;
     old_depreciation: number;
     outof_service: boolean;
     criticity?: number;

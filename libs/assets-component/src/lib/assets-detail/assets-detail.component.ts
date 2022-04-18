@@ -41,8 +41,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
         private accountSrv: AccountService,
-        private loginSrv: LoginService,
-        private httpSrv: HttpService) {
+        private loginSrv: LoginService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -65,7 +64,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             historicValue: [b.historicValue || 0, Validators.required],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
-            vat: [b.historicValue || 0, Validators.required],
+            vat: [b.vat || 0, Validators.required],
             invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
