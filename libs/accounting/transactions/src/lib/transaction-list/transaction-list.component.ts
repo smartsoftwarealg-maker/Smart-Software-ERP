@@ -108,7 +108,6 @@ export class TransactionListComponent  implements OnInit, OnDestroy {
           .pipe(filter(ev => ev instanceof NavigationEnd))
           .subscribe(event => {
               if (event instanceof NavigationEnd) {
-                  console.log(event.url);
                   if (event.url === '/app/accounting/transactions') {
                       this.transactionSaved();
                   }

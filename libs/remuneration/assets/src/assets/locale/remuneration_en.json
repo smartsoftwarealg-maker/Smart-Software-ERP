@@ -76,5 +76,6 @@
     "MAX":        "Maximum value",
     "FOLLOWUP": "Follow up",
     "STRICT_POSITIVE": "Greater than zero",
-    "ARCHIVE_GENERATOR": "Archive generator"
+    "ARCHIVE_GENERATOR": "Archive generator",
+    "LOAN":              "Loan"
 }

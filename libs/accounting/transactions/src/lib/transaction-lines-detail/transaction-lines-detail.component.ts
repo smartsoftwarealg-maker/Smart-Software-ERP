@@ -22,6 +22,8 @@ export class TransactionLinesDetailComponent {
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     public form: FormGroup = null;
     id = 0;
+    transactionId = 0;
+    fileId = 0;
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -39,10 +41,11 @@ export class TransactionLinesDetailComponent {
     setupForm(e: ACCTransactionLine): FormGroup {
         return this.formBuilder.group({
             id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
-            oid: [e.oid],
+            fileId: [e.fileId || this.loginSrv.appCtx.accFile],
+            oid: [e.oid || 0],
             accountNo: [e.accountNo, Validators.required],
             customer: [e.customer, Validators.required],
-            lineNumber: [e.lineNumber],
+            lineNumber: [e.lineNumber || 1],
             c_o_d: [e.c_o_d],
             balance: [e.balance],
             debit: [e.balance > 0? e.balance : 0.0],
@@ -52,7 +55,6 @@ export class TransactionLinesDetailComponent {
             description: [e.description],
             customerId: [e.customerId],
             accountId: [e.accountId],
-            fileId: [e.fileId || this.loginSrv.appCtx.accYear],
         });
     }
 
@@ -87,7 +89,13 @@ export class TransactionLinesDetailComponent {
             .pipe(
                 switchMap(_ => this.route.parent.params),
                 tap(res => console.log('res', res['id'])),
-                tap(p => this.entitySrv.setParentId(+p['id'])),
+                tap(p => {
+                    const id = +p['id'];
+                    this.entitySrv.setParentId(id);
+                    this.transactionId = id % 10000;
+                    this.fileId = +(id / 10000).toFixed(0);
+                    console.log(this.fileId, this.transactionId);
+                }),
                 switchMap(_ => this.route.params),
                 switchMap(p => {
                     this.id = +p['id'];
