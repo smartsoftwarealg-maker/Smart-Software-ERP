@@ -76,5 +76,6 @@
     "MAX":        "Valeur maximum",
     "FOLLOWUP": "Rappel",
     "STRICT_POSITIVE": "Supérieur à zéro",
-    "ARCHIVE_GENERATOR": "Générateur d'archives"
+    "ARCHIVE_GENERATOR": "Générateur d'archives",
+    "LOAN":              "Pret"
 }

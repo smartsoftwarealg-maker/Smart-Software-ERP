@@ -76,5 +76,6 @@
     "MAX":  "القيمة القصوى",
     "FOLLOWUP": "التابع",
     "STRICT_POSITIVE": "أكبر من الصفر",
-    "ARCHIVE_GENERATOR": "منشئ الأرشيف"
+    "ARCHIVE_GENERATOR": "منشئ الأرشيف",
+    "LOAN":              "القرض"
 }
