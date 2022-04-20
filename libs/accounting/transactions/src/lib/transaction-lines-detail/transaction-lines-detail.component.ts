@@ -42,14 +42,14 @@ export class TransactionLinesDetailComponent {
         return this.formBuilder.group({
             id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
-            oid: [e.oid || 0],
+            oid: [e.oid || this.transactionId],
             accountNo: [e.accountNo, Validators.required],
             customer: [e.customer, Validators.required],
             lineNumber: [e.lineNumber || 1],
             c_o_d: [e.c_o_d],
             balance: [e.balance],
-            debit: [e.balance > 0? e.balance : 0.0],
-            credit: [e.balance > 0? -e.balance : 0.0],
+            debit: [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
+            credit: [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
             reference: [e.reference],
             checkNo: [e.checkNo],
             description: [e.description],
@@ -88,13 +88,11 @@ export class TransactionLinesDetailComponent {
             .loadContext()
             .pipe(
                 switchMap(_ => this.route.parent.params),
-                tap(res => console.log('res', res['id'])),
                 tap(p => {
                     const id = +p['id'];
                     this.entitySrv.setParentId(id);
                     this.transactionId = id % 10000;
                     this.fileId = +(id / 10000).toFixed(0);
-                    console.log(this.fileId, this.transactionId);
                 }),
                 switchMap(_ => this.route.params),
                 switchMap(p => {
@@ -120,9 +118,9 @@ export class TransactionLinesDetailComponent {
     }
 
     save() {
-        console.log('**********id', this.entitySrv.getParentId())
+        console.log(this.form.value)
         const val = this.form.value;
-        val.balance = val.debit - val.credit;
+        val.balance = val.debit || 0 - val.credit || 0;
         delete val.debit;
         delete val.credit;
         if (this.entitySrv.getParentId() != null) {
@@ -146,6 +144,23 @@ export class TransactionLinesDetailComponent {
             })
         } else {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
+        }
+    }
+
+    onDebitChange(value: string) {
+        this.onAmountChange(+value, 'credit');
+    }
+
+    onCreditChange(value: string) {
+        this.onAmountChange(+value, 'debit');
+    }
+
+    private onAmountChange(balance: number, ctrl: string) {
+        if (balance > 0.0) {
+            this.form.controls[ctrl].setValue(0);
+            this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
+        } else {
+            this.form.controls[ctrl].enable();
         }
     }
 

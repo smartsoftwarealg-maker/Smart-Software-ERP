@@ -1,12 +1,12 @@
 <form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field id="reference" class="default-25 sm-50">
-        <mat-label translate>LOGISTICS_REFERENCE</mat-label>
+        <mat-label translate>COMMON_REFERENCE</mat-label>
         <input matInput formControlName="reference" type="text" autofocus maxlength="20">
         <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_MAX_LENGTH
         </mat-error>
     </mat-form-field>
     <mat-form-field id="reference2" class="default-25 sm-50" >
-        <mat-label><spna translate>LOGISTICS_REFERENCE</spna> 2</mat-label>
+        <mat-label><spna translate>COMMON_REFERENCE</spna> 2</mat-label>
         <input matInput formControlName="reference2" type="text" autofocus maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>

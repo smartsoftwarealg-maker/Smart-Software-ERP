@@ -27,6 +27,10 @@
     "PERIOD":                "Période",
     "CLOSED":                "clôturée",
     "SELECT_FOLDER":         "Choisir le dossier",
-    "FILES":                 "Dossiers"
+    "FILES":                 "Dossiers",
+    "DEBIT":                 "Débit",
+    "CREDIT":                "Crédit",
+    "PROJECT":               "Projet",
+    "POS":                   "Position"
 }
 
