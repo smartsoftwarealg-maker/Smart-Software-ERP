@@ -192,11 +192,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-<<<<<<< HEAD
                 { responseType: 'text', headers: HttpService.getHeaders({timeout: timeout+''}) });
-=======
-                {responseType: 'text', headers: HttpService.getHeaders() });
->>>>>>> 12cd45fc50d9d9c8574d0bb427b81d85e55aee87
     }
 
     public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
@@ -234,14 +230,7 @@ export class HttpService {
     // }
 
     // noinspection JSUnusedGlobalSymbols
-<<<<<<< HEAD
     public postBlob(url: string, data?: any | null, timeout: number = 600000): Observable<ArrayBuffer> {
-=======
-    public postBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
-        const httpHeaders = new HttpHeaders()
-            .set('Authorization', this.getAuthToken());
-
->>>>>>> 12cd45fc50d9d9c8574d0bb427b81d85e55aee87
         return this
             .httpClient
             .post(this.baseUrl + url,
