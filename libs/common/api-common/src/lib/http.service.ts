@@ -26,7 +26,7 @@ export class HttpService {
             try {
                 const defaultTimeout = 30000;
                 const requestTimeout = +req.headers.get('sstimeout');
-                console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
+                //console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
                 req.headers = req.headers.delete('sstimeout');
 
                 const xhrFactory = this.xhrFactory;
@@ -37,7 +37,8 @@ export class HttpService {
                         alert('ERROR: Failed to patch XhrFactory');
                     } else {
                         xhrFactory.build = function () {
-                            console.log('requestTimeout', requestTimeout);
+                            if (requestTimeout && requestTimeout > 0)
+                                console.log('requestTimeout', requestTimeout);
                             const request = new XMLHttpRequest();
                             request.timeout = requestTimeout || defaultTimeout;
                             return request;
