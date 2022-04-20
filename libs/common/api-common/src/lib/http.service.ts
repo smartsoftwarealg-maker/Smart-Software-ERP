@@ -24,6 +24,10 @@ export class HttpService {
         httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
         httpXhrBackend.prototype.handle = function(req) {
             try {
+                const defaultTimeout = 30000;
+                const timeout = +req.headers.get('ssTimeout') || defaultTimeout;
+                req.headers = req.headers.delete('ssTimeout').delete('sstimeout');
+
                 const xhrFactory = this.xhrFactory;
                 if (xhrFactory == null) {
                     alert('ERROR: Failed to patch HttpXhrBackend');
@@ -34,11 +38,7 @@ export class HttpService {
                         if (!xhrFactory.patched) {
                             xhrFactory.build = function() {
                                 const request = new XMLHttpRequest();
-                                const defaultTimeout = 30000;
-                                request.timeout = +req.headers.get('ssTimeout') || defaultTimeout;
-                                req.headers = req.headers.delete('ssTimeout');
-                                //if (defaultTimeout !== defaultTimeout)
-                                //    console.log('setting timeout to ' + request.timeout);
+                                request.timeout = timeout;
                                 return request;
                             }
                             xhrFactory.patched = true;
