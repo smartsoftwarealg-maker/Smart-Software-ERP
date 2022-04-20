@@ -41,8 +41,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
         private accountSrv: AccountService,
-        private loginSrv: LoginService,
-        private httpSrv: HttpService) {
+        private loginSrv: LoginService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -56,16 +55,16 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         const today = new Date();
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
+            reference: [b.reference, [Validators.minLength(11),  Validators.required]],
             reference2: [b.reference2 || this.maxReference, [Validators.maxLength(5), Validators.required ]],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today, Validators.required],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
-            historicValue: [b.historicValue, Validators.required],
+            historicValue: [b.historicValue || 0, Validators.required],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
-            vat: [b.historicValue || 0, Validators.required],
+            vat: [b.vat || 0, Validators.required],
             invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],

@@ -11,8 +11,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService, Right} from '@ss/common/api-common';
-import {switchMap} from 'rxjs/operators';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-transaction-lines-list',
@@ -20,7 +19,8 @@ import {switchMap} from 'rxjs/operators';
   styleUrls: ['./transaction-lines-list.component.scss']
 })
 export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTransactionLine> implements OnInit {
-    displayedColumns = ['accountNo', 'description', 'reference', 'debit', 'credit'];
+    displayedColumns = ['lineNumber', 'accountNo', 'description', 'customerName', 'reference', 'debit', 'credit'];
+    parentId: number = null;
 
     constructor(
         public override entitySrv: AccTransactionLineService,
@@ -46,7 +46,8 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
         this.route
             .params
             .subscribe(p => {
-                this.entitySrv.setParentId(+p['id']);
+                this.parentId = +p['id'];
+                this.entitySrv.setParentId(this.parentId);
                 super.refresh();
             })
     }

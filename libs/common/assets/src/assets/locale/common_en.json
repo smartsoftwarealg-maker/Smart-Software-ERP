@@ -196,5 +196,6 @@
     "CONNECTION_ERROR": "Connection error",
     "SECURITY":         "Security",
     "RESPONSIBLE": "Responsible",
+    "REFERENCE": "Reference",
     "OFFICES": "Offices"
 }

@@ -2,21 +2,60 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput formControlName="lineNumber" type="text" autofocus>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="accountAutoCompleteModel"
+                                  formControlName="accountId"
+                                  autofocus></ss-auto-complete>
+                <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
-                <mat-label translate>COMMON_NUMBER</mat-label>
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" >
             </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="customerAutoCompleteModel"
+                                  formControlName="customerId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_REFERENCE</mat-label>
+                <input matInput formControlName="reference" type="text" >
+            </mat-form-field>
+
+            <mat-form-field class="default-50" >
+                <mat-label translate>ACC_DEBIT</mat-label>
+                <input #debit matInput  formControlName="debit" type="number" (change)="onDebitChange(debit.value)">
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>ACC_CREDIT</mat-label>
+                <input #credit matInput formControlName="credit" type="number" (change)="onCreditChange(credit.value)">
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_LINE_NUMBER</mat-label>
+                <input matInput formControlName="lineNumber" type="number">
+            </mat-form-field>
+<!--  <pre>{{form.value | json }}</pre>-->
 
         </form>
 
         <div class="ctrl default-100">
-            <button mat-flat-button color="primary" translate (click)="save()">COMMON_SAVE</button>
-            <button mat-flat-button color="warn" translate (click)="cancel()">COMMON_CANCEL</button>
+            <button mat-flat-button color="primary"  (click)="save()">
+                <i class="fas fa-save"></i>
+                <span translate> COMMON_SAVE </span>
+            </button>
+            <button mat-flat-button color="warn" translate (click)="cancel()">
+                <i class="fas fa-redo"></i>
+                <span translate> COMMON_CANCEL </span>
+            </button>
         </div>
     </mat-card-content>
 </mat-card>

@@ -8,6 +8,9 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {AgentService, CustomerService} from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-transaction-lines-detail',
@@ -15,8 +18,12 @@ import {switchMap, tap} from 'rxjs/operators';
     styleUrls: ['./transaction-lines-detail.component.scss']
 })
 export class TransactionLinesDetailComponent {
+    accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
+    customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     public form: FormGroup = null;
     id = 0;
+    transactionId = 0;
+    fileId = 0;
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -26,24 +33,28 @@ export class TransactionLinesDetailComponent {
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
+        private accountSrv: AccountService,
+        private customerSrv: AgentService,
         private loginSrv: LoginService) {
     }
 
     setupForm(e: ACCTransactionLine): FormGroup {
         return this.formBuilder.group({
             id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
-            oid: [e.oid],
+            fileId: [e.fileId || this.loginSrv.appCtx.accFile],
+            oid: [e.oid || this.transactionId],
             accountNo: [e.accountNo, Validators.required],
             customer: [e.customer, Validators.required],
-            lineNumber: [e.lineNumber],
+            lineNumber: [e.lineNumber || 1],
             c_o_d: [e.c_o_d],
             balance: [e.balance],
+            debit: [{ value: e.balance > 0? e.balance : 0.0, disabled: e.balance < 0 }],
+            credit: [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
             reference: [e.reference],
             checkNo: [e.checkNo],
             description: [e.description],
             customerId: [e.customerId],
             accountId: [e.accountId],
-            fileId: [e.fileId || this.loginSrv.appCtx.accYear],
         });
     }
 
@@ -73,8 +84,17 @@ export class TransactionLinesDetailComponent {
 
     public load() {
         this.shellSrv.setLoading(true);
-        this.route.params
+        this.loginSrv
+            .loadContext()
             .pipe(
+                switchMap(_ => this.route.parent.params),
+                tap(p => {
+                    const id = +p['id'];
+                    this.entitySrv.setParentId(id);
+                    this.transactionId = id % 10000;
+                    this.fileId = +(id / 10000).toFixed(0);
+                }),
+                switchMap(_ => this.route.params),
                 switchMap(p => {
                     this.id = +p['id'];
                     return this.loadEntity(this.id || 0);
@@ -98,9 +118,12 @@ export class TransactionLinesDetailComponent {
     }
 
     save() {
+        console.log(this.form.value)
         const val = this.form.value;
-        console.log(this.entitySrv.getParentId(), val.journalno, this.entitySrv.getParentId() == +val.journalno)
-        if (this.entitySrv.getParentId() == +val.journalno) {
+        val.balance = val.debit || 0 - val.credit || 0;
+        delete val.debit;
+        delete val.credit;
+        if (this.entitySrv.getParentId() != null) {
             val.id = this.id;
             let obs: Observable<any> = val.id === 0
                 ? this.entitySrv.add(val).pipe(tap(i => {
@@ -123,4 +146,22 @@ export class TransactionLinesDetailComponent {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
         }
     }
+
+    onDebitChange(value: string) {
+        this.onAmountChange(+value, 'credit');
+    }
+
+    onCreditChange(value: string) {
+        this.onAmountChange(+value, 'debit');
+    }
+
+    private onAmountChange(balance: number, ctrl: string) {
+        if (balance > 0.0) {
+            this.form.controls[ctrl].setValue(0);
+            this.form.controls[ctrl].disable({onlySelf: true, emitEvent: false});
+        } else {
+            this.form.controls[ctrl].enable();
+        }
+    }
+
 }

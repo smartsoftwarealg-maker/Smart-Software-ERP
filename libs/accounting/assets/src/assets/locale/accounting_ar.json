@@ -27,5 +27,9 @@
     "PERIOD":                "فترة",
     "CLOSED":                "مغلق",
     "SELECT_FOLDER":         "تحديد ملف" ,
-    "FILES":                 "الملفات"
+    "FILES":                 "الملفات",
+    "DEBIT":                 "مدين",
+    "CREDIT":                "دائن",
+    "PROJECT":               "مشروع",
+    "POS":                   "الترتيب"
 }

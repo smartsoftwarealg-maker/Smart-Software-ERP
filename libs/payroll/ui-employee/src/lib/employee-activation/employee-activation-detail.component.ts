@@ -8,7 +8,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import {HttpService, LoginService} from '@ss/common/api-common';
 
 
 @Component({
@@ -17,7 +17,7 @@ import { HttpService } from '@ss/common/api-common';
     styleUrls: ['./employee-activation-detail.component.scss']
 })
 export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent<EmployeeActivation> implements OnInit, OnDestroy {
-
+    empId = 0;
     entity: EmployeeActivation;
     employmentTypes: EmploymentType[];
     suspensionReasons: SuspensionReason[];
@@ -30,7 +30,8 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private loginSrv: LoginService) {
         super(employeeActivationSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
     }
 
@@ -38,8 +39,8 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    const parentId = +p.id;
-                    this.employeeActivationSrv.setParentId(parentId);
+                    this.empId = +p.id;
+                    this.employeeActivationSrv.setParentId(this.empId);
                     return super.getRouteParam();
                 })
             );
@@ -49,8 +50,8 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         this.entity = a;
         return this.formBuilder.group({
             id: a.id,
-            centerId: a.centerId,
-            empId: a.empId,
+            centerId: a.centerId || this.loginSrv.appCtx.center,
+            empId: a.empId || this.empId,
             activityStatus: a.activityStatus,
             hireDate: a.hireDate,
             suspended: a.suspended,
@@ -65,6 +66,7 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         return this.lookupsSrv.getEmploymentTypes()
             .pipe(
                 tap((types: any[]) => this.employmentTypes = types),
+                switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(() => this.lookupsSrv.getSuspensionReasons()),
                 tap((reasons: any[]) => this.suspensionReasons = reasons),
             );

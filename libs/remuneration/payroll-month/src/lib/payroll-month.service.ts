@@ -57,7 +57,7 @@ export class PayrollMonthService {
 
     isUpdatableMonth(): Observable<boolean> {
         return this.maxMonth()
-            .pipe(map(res => res.month === this.loginSrv.appCtx.payMonth))
+            .pipe(map(res => res.month === this.loginSrv.appCtx.payMonth % 1000000))
     }
 
     ctx(): Observable<AppContext> {

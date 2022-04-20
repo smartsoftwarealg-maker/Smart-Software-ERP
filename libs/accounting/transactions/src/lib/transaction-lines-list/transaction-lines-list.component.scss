@@ -1,0 +1,56 @@
+.container {
+    box-sizing: content-box;
+    padding: 5px 0;
+    height: calc(100% - 10px);
+    width: 98%;
+    max-width: 98%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    //background: #e56400;
+    //overflow-x: auto;
+}
+
+.table-div {
+    flex-grow: 1;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 750px;
+}
+
+.ctrl-div {
+    display: flex;
+    justify-content: center;
+    column-gap: 16px;
+}
+
+.mat-column-lineNumber {
+    flex: 0 1 90px;
+}
+
+.mat-column-description,
+.mat-column-customerName {
+    flex: 0 1 200px;
+}
+
+.mat-column-debit,
+.mat-column-credit {
+    flex: 0 1 100px;
+}
+
+.mat-column-accountNo,
+.mat-column-reference {
+    flex: 0 1 100px;
+}
+
+
+.mat-column-credit.mat-cell,
+.mat-column-debit.mat-cell {
+    justify-content: right;
+    padding: 0 8px;
+}

@@ -225,10 +225,12 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public showDetail(id: number): void {
-        this.router.navigate([id], { relativeTo: this.route })
-            .then();
+        this.router.navigate([id], { relativeTo: this.route }).then();
     }
 
+    public exit() {
+        this.router.navigate(['../..'], { relativeTo: this.route }).then();
+    }
     private selectReport() {
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)

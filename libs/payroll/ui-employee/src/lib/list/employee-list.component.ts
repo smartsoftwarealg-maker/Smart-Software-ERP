@@ -69,6 +69,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> im
     ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
+        this.addButton.visible = this.activePersonnel;
     }
 
     public select(id: number): void {
