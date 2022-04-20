@@ -19,7 +19,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
   styleUrls: ['./transaction-lines-list.component.scss']
 })
 export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTransactionLine> implements OnInit {
-    displayedColumns = ['accountNo', 'description', 'reference', 'debit', 'credit'];
+    displayedColumns = ['lineNumber', 'accountNo', 'description', 'customerName', 'reference', 'debit', 'credit'];
     parentId: number = null;
 
     constructor(

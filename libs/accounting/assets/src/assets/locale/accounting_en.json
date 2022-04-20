@@ -27,5 +27,9 @@
     "PERIOD":                "Period",
     "CLOSED":                "Closed",
     "SELECT_FOLDER":         "Select file",
-    "FILES":                 "Files"
+    "FILES":                 "Files",
+    "DEBIT":                 "Debit",
+    "CREDIT":                "Credit",
+    "PROJECT":               "Project",
+    "POS":                   "Position"
 }

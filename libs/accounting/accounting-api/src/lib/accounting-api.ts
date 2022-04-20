@@ -104,6 +104,7 @@ export interface ACCTransactionLine {
     empId?: number;
     customerId?: number;
     accountId?: number;
+    customerName?: string;
 }
 
 export interface ACCFile {
