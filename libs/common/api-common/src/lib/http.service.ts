@@ -22,11 +22,12 @@ export class HttpService {
         // patch that shit
         const httpXhrBackend: any = HttpXhrBackend;
         httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
-        httpXhrBackend.prototype.handle = function(req) {
+        httpXhrBackend.prototype.handle = function (req) {
             try {
                 const defaultTimeout = 30000;
-                const timeout = +req.headers.get('ssTimeout') || defaultTimeout;
-                req.headers = req.headers.delete('ssTimeout').delete('sstimeout');
+                const requestTimeout = +req.headers.get('sstimeout');
+                console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
+                req.headers = req.headers.delete('sstimeout');
 
                 const xhrFactory = this.xhrFactory;
                 if (xhrFactory == null) {
@@ -35,13 +36,11 @@ export class HttpService {
                     if (xhrFactory.build == null) {
                         alert('ERROR: Failed to patch XhrFactory');
                     } else {
-                        if (!xhrFactory.patched) {
-                            xhrFactory.build = function() {
-                                const request = new XMLHttpRequest();
-                                request.timeout = timeout;
-                                return request;
-                            }
-                            xhrFactory.patched = true;
+                        xhrFactory.build = function () {
+                            console.log('requestTimeout', requestTimeout);
+                            const request = new XMLHttpRequest();
+                            request.timeout = requestTimeout || defaultTimeout;
+                            return request;
                         }
                     }
                 }
@@ -52,9 +51,9 @@ export class HttpService {
         }
     }
 
-    static getHeaders(headers?: {[name: string]: string}) {
+    static getHeaders(headers?: { [name: string]: string }) {
         return new HttpHeaders(headers || {})
-                .set('Authorization', this.getAuthToken() || '');
+            .set('Authorization', this.getAuthToken() || '');
     }
 
     static getAuthToken(): string {
@@ -109,7 +108,7 @@ export class HttpService {
             .httpClient
             .get<T[]>(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({ssTimeout: (timeout+'')}),
+                    headers: HttpService.getHeaders({ sstimeout: (timeout + '') }),
                     observe: 'response', params: httpParams
                 }
             ).pipe(map(ress => {
@@ -127,7 +126,7 @@ export class HttpService {
             .httpClient
             .get(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({ssTimeout: timeout+''}),
+                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
                     observe: 'response',
                     responseType: 'blob',
                     params: httpParams
@@ -151,7 +150,7 @@ export class HttpService {
             .httpClient
             .get<T>(fullURL,
                 {
-                    headers: HttpService.getHeaders({ssTimeout: timeout+''}),
+                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
                     observe: 'response',
                     params: httpParams
                 }
@@ -166,7 +165,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders({ssTimeout: timeout+''}) });
+                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
     }
 
     public upload(url: string, data?: any | null): Observable<any> {
@@ -192,7 +191,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { responseType: 'text', headers: HttpService.getHeaders({timeout: timeout+''}) });
+                { responseType: 'text', headers: HttpService.getHeaders({ timeout: timeout + '' }) });
     }
 
     public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
@@ -203,7 +202,7 @@ export class HttpService {
             .httpClient
             .put(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders({ssTimeout: timeout+''}) });
+                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -235,7 +234,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { responseType: 'arraybuffer', headers: HttpService.getHeaders({ssTimeout: timeout+''}) }
+                { responseType: 'arraybuffer', headers: HttpService.getHeaders({ sstimeout: timeout + '' }) }
             );
     }
 
