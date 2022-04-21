@@ -22,5 +22,6 @@
     "STOCKED_ITEM":                         "",
     "NOT_CURRENT_MONTH":                    "",
     "MONTH_CLOSED":                         "",
-    "MISSING_HIRE_DATE":                    ""
+    "MISSING_HIRE_DATE":                    "",
+    "SESSION_EXPIRED":                      ""
 }

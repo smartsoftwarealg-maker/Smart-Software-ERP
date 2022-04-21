@@ -37,5 +37,6 @@
     "FINANCE":                  "Finance",
     "DASHBOARD":                "Dashboard",
     "TREASURY":                 "Treasury",
-    "ORGANIZATIONS": "Organizations"
+    "ORGANIZATIONS": "Organizations",
+    "RETRY":         "Retry"
 }

@@ -55,6 +55,11 @@
         </div>
     </div>
     <div class="detail">
+        <mat-radio-group aria-label="Select an option" value="1">
+            <mat-radio-button value="1" (click)="selectMode(1)" translate>COMMON_LIST</mat-radio-button>
+            <mat-radio-button value="2" (click)="selectMode(2)" translate>COMMON_DETAIL</mat-radio-button>
+        </mat-radio-group>
+
         <router-outlet></router-outlet>
     </div>
 </div>

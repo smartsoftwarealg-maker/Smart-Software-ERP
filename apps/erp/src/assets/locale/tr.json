@@ -33,5 +33,6 @@
     "INVENTORY":    "",
     "HR": "Gestion RH",
     "TREASURY":     "",
-    "ORGANIZATIONS": ""
+    "ORGANIZATIONS": "",
+    "RETRY":         ""
 }

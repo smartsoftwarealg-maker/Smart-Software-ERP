@@ -23,5 +23,6 @@
     "NON_STOCKED_ITEM":                   "Opération invalide pour un article non stocké.",
     "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours",
     "MONTH_CLOSED":                       "Le mois sélectionné est fermé. Les mises à jour ne sont pas autorisées!",
-    "MISSING_HIRE_DATE":                  "La date de recrutement est manquante."
+    "MISSING_HIRE_DATE":                  "La date de recrutement est manquante.",
+    "SESSION_EXPIRED":                    "Votre session a expiré. Veuillez vous reconnecter"
 }
