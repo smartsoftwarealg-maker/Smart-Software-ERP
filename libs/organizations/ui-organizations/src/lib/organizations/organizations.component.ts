@@ -162,7 +162,7 @@ export class OrganizationsComponent implements OnInit {
             imgModel = new ImageModel(this.httpSrv);
             imgModel.readOnly = true;
             imgModel.setImageUrl(this.personSrv.getPhotoUrl(responsibleId), false);
-            console.log(this.httpSrv.baseUrl + this.personSrv.getPhotoUrl(responsibleId));
+            //console.log(this.httpSrv.baseUrl + this.personSrv.getPhotoUrl(responsibleId));
         }
         const node: OrgTreeNode = {
             id: id,

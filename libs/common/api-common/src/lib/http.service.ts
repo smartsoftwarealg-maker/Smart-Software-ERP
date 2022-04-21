@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent } from '@angular/common/http';
-import { catchError, filter, last, map, tap} from 'rxjs/operators';
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent, HttpXhrBackend, HttpRequest } from '@angular/common/http';
+import { catchError, filter, last, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LoginInfo } from './models';
-import {AppConfigService} from './app-config.service';
+import { AppConfigService } from './app-config.service';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -14,14 +14,47 @@ const AUTH_TOKEN = 'auth_token';
 export class HttpService {
     public baseUrl: string;
 
-    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {}
+    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
+        this.patchTimeout();
+    }
 
-    static getHeaders() {
-        return new HttpHeaders(
-            {
-                Authorization: this.getAuthToken() || ''
+    private patchTimeout() {
+        // patch that shit
+        const httpXhrBackend: any = HttpXhrBackend;
+        httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
+        httpXhrBackend.prototype.handle = function (req) {
+            try {
+                const defaultTimeout = 30000;
+                const requestTimeout = +req.headers.get('sstimeout');
+                //console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
+                req.headers = req.headers.delete('sstimeout');
+
+                const xhrFactory = this.xhrFactory;
+                if (xhrFactory == null) {
+                    alert('ERROR: Failed to patch HttpXhrBackend');
+                } else {
+                    if (xhrFactory.build == null) {
+                        alert('ERROR: Failed to patch XhrFactory');
+                    } else {
+                        xhrFactory.build = function () {
+                            if (requestTimeout && requestTimeout > 0)
+                                console.log('requestTimeout', requestTimeout);
+                            const request = new XMLHttpRequest();
+                            request.timeout = requestTimeout || defaultTimeout;
+                            return request;
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error(e);
             }
-        );
+            return this.handle2(req);
+        }
+    }
+
+    static getHeaders(headers?: { [name: string]: string }) {
+        return new HttpHeaders(headers || {})
+            .set('Authorization', this.getAuthToken() || '');
     }
 
     static getAuthToken(): string {
@@ -57,7 +90,7 @@ export class HttpService {
         return this.baseUrl;
     }
 
-    public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
+    public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams, timeout: number = 0): Observable<{ itemCount: number, body: T[] }> {
         if (this.baseUrl === undefined) {
             throw new Error("HTTP SERVICE NOT READY");
         }
@@ -76,7 +109,7 @@ export class HttpService {
             .httpClient
             .get<T[]>(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders(),
+                    headers: HttpService.getHeaders({ sstimeout: (timeout + '') }),
                     observe: 'response', params: httpParams
                 }
             ).pipe(map(ress => {
@@ -86,7 +119,7 @@ export class HttpService {
             }));
     }
 
-    public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
+    public getBlob(url: string, httpParams?: HttpParams, timeout: number = 0): Observable<Blob> {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
@@ -94,7 +127,7 @@ export class HttpService {
             .httpClient
             .get(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders(),
+                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
                     observe: 'response',
                     responseType: 'blob',
                     params: httpParams
@@ -102,9 +135,9 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    public get<T>(url: string, httpParams?: HttpParams): Observable<T> {
+    public get<T>(url: string, httpParams?: HttpParams, timeout: number = 0): Observable<T> {
         if (this.baseUrl === undefined) {
-        //    this.baseUrl = '';
+            //    this.baseUrl = '';
             throw new Error("HTTP SERVICE NOT READY");
         }
         if (this.baseUrl == null || url == null) {
@@ -118,22 +151,22 @@ export class HttpService {
             .httpClient
             .get<T>(fullURL,
                 {
-                    headers: HttpService.getHeaders(),
+                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
                     observe: 'response',
                     params: httpParams
                 }
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?: any | null): Observable<any> {
+    public post(url: string, data?: any | null, timeout: number = 0): Observable<any> {
         if (this.baseUrl === undefined) {
-                throw new Error("HTTP SERVICE NOT READY");
+            throw new Error("HTTP SERVICE NOT READY");
         }
         return this
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders() });
+                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
     }
 
     public upload(url: string, data?: any | null): Observable<any> {
@@ -151,7 +184,7 @@ export class HttpService {
                 });
     }
 
-    public postHTML(url: string, data?: any | null): Observable<any> {
+    public postHTML(url: string, data?: any | null, timeout: number = 0): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error("HTTP SERVICE NOT READY");
         }
@@ -159,10 +192,10 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'text', headers: HttpService.getHeaders() });
+                { responseType: 'text', headers: HttpService.getHeaders({ timeout: timeout + '' }) });
     }
 
-    public put(url: string, data?: any | null): Observable<any> {
+    public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error("HTTP SERVICE NOT READY");
         }
@@ -170,7 +203,7 @@ export class HttpService {
             .httpClient
             .put(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders() });
+                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -197,15 +230,12 @@ export class HttpService {
     // }
 
     // noinspection JSUnusedGlobalSymbols
-    public postBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
-        const httpHeaders = new HttpHeaders()
-            .set('Authorization', this.getAuthToken());
-
+    public postBlob(url: string, data?: any | null, timeout: number = 600000): Observable<ArrayBuffer> {
         return this
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { responseType: 'arraybuffer', headers: httpHeaders }
+                { responseType: 'arraybuffer', headers: HttpService.getHeaders({ sstimeout: timeout + '' }) }
             );
     }
 
@@ -213,14 +243,11 @@ export class HttpService {
     public uploadBlob(url: string, formName: string, blob: Blob): Observable<any> {
         const fd: FormData = new FormData();
         fd.append(formName, blob);
-        const extraHeaders = {
-            Authorization: this.getAuthToken()
-        };
         return this
             .httpClient
             .post(this.baseUrl + url, fd, {
                 reportProgress: true,
-                headers: extraHeaders,
+                headers: HttpService.getHeaders(),
                 observe: 'events'
             })
             .pipe(
