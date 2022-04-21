@@ -21,6 +21,9 @@ import {filter} from 'rxjs/operators';
   styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent  implements OnInit, OnDestroy {
+    private LIST_MODE   = 1;
+    private DETAIL_MODE = 2;
+    private mode: 1 | 2 = 1;
     private subs: Subscription = null;
     private reportForm: string = null;
     public filter: string = null;
@@ -102,7 +105,6 @@ export class TransactionListComponent  implements OnInit, OnDestroy {
       this.journalSrv
             .getList(0, 50)
             .subscribe(res => this.journalList = res.body);
-      this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton]);
       this.subs = this.router
           .events
           .pipe(filter(ev => ev instanceof NavigationEnd))
@@ -110,9 +112,23 @@ export class TransactionListComponent  implements OnInit, OnDestroy {
               if (event instanceof NavigationEnd) {
                   if (event.url === '/app/accounting/transactions') {
                       this.transactionSaved();
+                      this.setDefaultButtons();
+                  } else {
+                      if (event.url.indexOf('/detail') > '/app/accounting/transactions'.length) {
+                          this.shellSrv.setButtons([]);
+                          this.shellSrv.updateShell();
+                      } else {
+                          this.setDefaultButtons();
+                      }
                   }
               }
           });
+      this.setDefaultButtons();
+    }
+
+    private setDefaultButtons() {
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton]);
+        this.shellSrv.updateShell();
     }
 
     ngOnDestroy() {
@@ -132,18 +148,29 @@ export class TransactionListComponent  implements OnInit, OnDestroy {
         this.shellSrv.updateShell();
     }
 
+    private navigate() {
+        if (this.selectedId) {
+            this.router
+                .navigate(['.'], {relativeTo: this.route})
+                .then(_ => {
+                    if (this.mode == this.LIST_MODE) {
+                        this.router.navigate([this.selectedId], {relativeTo: this.route});
+                    } else {
+                        this.router.navigate([this.selectedId, 'detail'], {relativeTo: this.route});
+                    }
+                })
+                .then(_ => {
+                    const path = (this.mode == this.LIST_MODE)? '' : '..';
+                    this.shellSrv.setGoBackPath(path, this.route);
+                    this.detailSrv.setParentId(this.selectedId);
+                });
+        }
+    }
     selectRow(row: ACCTransaction) {
         row.id = (row.fileId || 0 ) * 10000 + (row.oid || 0);
         this.selectedRow = row;
         this.selectedId = row ? row.id || 0 : 0;
-        this.detailSrv.setParentId(this.selectedId);
-        this.router
-            .navigate([this.selectedId, 'detail'], { relativeTo: this.route })
-            .then(_ => {
-                this.showButtons();
-                this.shellSrv.setGoBackPath('..', this.route);
-                this.detailSrv.setParentId(this.selectedId);
-            });
+        this.navigate();
     }
 
     edit() {
@@ -271,5 +298,9 @@ export class TransactionListComponent  implements OnInit, OnDestroy {
     }
     public showDetail(id: number): void {
         this.router.navigate([id], { relativeTo: this.route, queryParams: {journal: this.entitySrv.getParentId()} }).then();
+    }
+
+    selectMode(mode: 1 | 2) {
+        this.mode = mode;
     }
 }

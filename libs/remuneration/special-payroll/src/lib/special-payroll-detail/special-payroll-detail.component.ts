@@ -11,6 +11,7 @@ import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {EmployeeLookupService} from '../employee-lookup.service';
 import {Lookup, Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'ss-special-payroll-detail',
@@ -25,6 +26,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     data: ELine[] = [];
     selected = 0;
     payrollId = 0;
+    paymonth = 0;
     pagingModel = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0});
     public employeeAutoCompleteModel = new DefaultAutoCompleteModel<Lookup>(this.employeeSrv);
     constructor(
@@ -43,8 +45,9 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     private refresh() {
+        const params = new HttpParams().set("month", this.paymonth);
         this.entrySrv
-            .getList(this.pagingModel.page - 1, this.pagingModel.pageSize)
+            .getList(this.pagingModel.page - 1, this.pagingModel.pageSize, null, null, params)
             .subscribe(res => {
                 this.data = res.body;
                 this.pagingModel.elementCount = res.itemCount;
@@ -53,6 +56,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     setupForm(e: Special): FormGroup {
         this.payrollId = e?.id;
+        this.paymonth = e?.paymonth || 0;
         this.selectorSrv
             .selectMonth(e.paymonth || this.loginSrv.appCtx.payMonth)
             .subscribe();

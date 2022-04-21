@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
-    AccJournalsService,
-    ACCTransaction,
-    ACCTransactionLine, AccTransactionLineService,
-    AccTransactionService,
-    Journal
+    ACCTransactionLine, AccTransactionLineService
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -48,7 +44,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
             .subscribe(p => {
                 this.parentId = +p['id'];
                 this.entitySrv.setParentId(this.parentId);
-                super.refresh();
+                super.ngOnInit();
             })
     }
 

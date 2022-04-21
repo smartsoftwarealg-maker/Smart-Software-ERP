@@ -14,7 +14,7 @@ import {PayrollMonthService} from '@ss/remuneration/payroll-month';
   styleUrls: ['./special-payroll-list.component.scss']
 })
 export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> implements OnInit {
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'paymonth'];
 
     constructor(
         public infoSrv: SpecialPayrollService,

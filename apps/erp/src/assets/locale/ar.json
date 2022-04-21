@@ -37,5 +37,6 @@
     "DASHBOARD": "لوحة التحكم",
     "HR": "الموارد البشرية",
     "TREASURY": "خزينة",
-    "ORGANIZATIONS": "التنظيم"
+    "ORGANIZATIONS": "التنظيم",
+    "RETRY":         "أعد المحاولة"
 }
