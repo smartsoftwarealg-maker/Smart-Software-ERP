@@ -7,6 +7,7 @@ import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityService} from "@ss/common/api-base-entity";
+import {saveAs} from 'file-saver';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
@@ -88,6 +89,15 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.emailReport()
     };
+
+    public excelButton: ToolbarButton = {
+        icon: 'fas fa-file-excel',
+        label: 'COMMON_EXCEL_EXPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.excel()
+    };
     //
     public filter: string;
     public sortBy: string;
@@ -118,7 +128,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton, this.viewReportButton, this.defReportButton, this.emailReportButton]);
+        this.shellSrv.setButtons([this.refreshButton,
+            this.addButton,
+            this.editButton,
+            this.deleteButton,
+            this.viewReportButton,
+            this.defReportButton,
+            this.excelButton,
+            this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
         this.refresh();
     }
@@ -281,6 +298,12 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                         this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
                     }
                 });
+    }
+
+    public excel() {
+        this.entitySrv
+            .excel()
+            .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
     }
 
     public deleteSelected(): void {
