@@ -22,6 +22,11 @@ export class BaseEntityService<T> {
     public getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
         return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
     }
+
+    public excel(): Observable<Blob> {
+        return this.httpSrv.getBlob(this.getUrl() + '/excel');
+    }
+
     //
     // public get(id: number): Observable<T> {
     //     return this.httpSrv.get(this.getUrl() + '/' + id);

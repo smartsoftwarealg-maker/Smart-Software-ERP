@@ -198,5 +198,6 @@
     "SECURITY":         "Sécurité",
     "RESPONSIBLE": "Responsable",
     "REFERENCE": "Référence",
-    "OFFICES": "Bureau"
+    "OFFICES": "Bureau",
+    "EXCEL_EXPORT": "Exporter vers un fichier excel"
 }

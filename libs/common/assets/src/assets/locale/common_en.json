@@ -197,5 +197,6 @@
     "SECURITY":         "Security",
     "RESPONSIBLE": "Responsible",
     "REFERENCE": "Reference",
-    "OFFICES": "Offices"
+    "OFFICES": "Offices",
+    "EXCEL_EXPORT": "Export to excel file"
 }
