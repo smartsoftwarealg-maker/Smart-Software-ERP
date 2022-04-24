@@ -2,128 +2,85 @@ import {Component, Output} from '@angular/core';
 import {ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 
 @Component({
   selector: 'ss-transaction-detail',
   templateUrl: './transaction-detail.component.html',
   styleUrls: ['./transaction-detail.component.scss']
 })
-export class TransactionDetailComponent  {
-    journalId = 0;
-    public form: FormGroup = null;
-    id = 0;
+export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTransaction> {
+    minDate: Date = new Date();
+    maxDate: Date = new Date();
     projects: Lookup[] = [];
+    journalId = 0;
 
     constructor(
-        public entitySrv: AccTransactionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        private router: Router,
+        public override entitySrv: AccTransactionService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: FormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private loginSrv: LoginService) {  }
+        private loginSrv: LoginService) {
+        super(entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'ACC_TRANSACTIONS');
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.setGoBackFn(null);
+    }
+
+    override preload(): Observable<any> {
+        this.journalId = +this.entitySrv.getParentId();
+        return this.loginSrv.loadContext()
+                .pipe(tap(_ => {
+                        this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
+                        const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
+                        this.maxDate = new Date(nextMonth.getDate() - 1);
+                    }),
+                      switchMap(_ => this.entitySrv.getProjects()),
+                      tap(res => this.projects = res));
+    }
 
     setupForm(e: ACCTransaction): FormGroup {
+        e.journalno = e.journalno || this.journalId;
+        e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
+        e.id = e.fileId * 10000 + (e.oid || 0);
         return this.formBuilder.group({
-            id: [e.fileId * 10000 + e.oid || 0],
+            id: [e.id],
             oid: [e.oid || 0],
-            piecedate: [e.piecedate, Validators.required],
-            pieceno: [e.pieceno || 0, Validators.required],
+            pieceDate: [e.pieceDate, Validators.required],
+            pieceNo: [e.pieceNo || 0, Validators.required],
             folio: [e.folio],
             projectId: [e.projectId],
-            piecemonth: [e.piecemonth || this.loginSrv.appCtx.accPeriod],
+            piecemonth: [e.pieceMonth || this.loginSrv.appCtx.accPeriod],
             journalno: [e.journalno || this.journalId],
             isBudget: [e.isBudget],
-            fileId: [e.fileId || this.loginSrv.appCtx?.accYear],
+            fileId: [e.fileId],
         });
     }
 
-     ngOnInit() {
-         this.shellSrv.setGoBackPath('..', this.route);
-         this.load();
-    }
-
-    public loadEntity(id: number): Observable<ACCTransaction> {
-        if (id == null) {
-            this.shellSrv.goBack();
-            return of(null);
-        }
-        if (id === 0) {
-            const a: any = {
-                id: 0
-            };
-            return of(a);
-        }
-        return this.entitySrv.get(id);
-    }
-
-    public finishLoading(e: ACCTransaction) {
-        this.shellSrv.setLoading(false);
-        this.form = this.setupForm(e);
-    }
-
-    public load() {
-        this.shellSrv.setLoading(true);
-        this.route
-            .queryParams
-            .pipe(
-                tap(params => this.journalId = +params['journal']),
-                switchMap(_ => this.loginSrv.loadContext()),
-                switchMap(_ => this.entitySrv.getProjects()),
-                tap(res => this.projects = res),
-                switchMap(_ => this.route.params),
-                switchMap(p => {
-                    this.id = +p['id'];
-                    return this.loadEntity(this.id || 0);
-                })
-            ).subscribe({
-            next: entity => {
-                if (entity) {
-                    this.finishLoading(entity);
-                }
-            },
-            error: error => {
-                this.shellSrv.showRetry(() => this.load());
-                throw error;
-            }
-        });
-    }
 
     cancel() {
-        this.shellSrv.goBack();
+        this.router.navigate(['/app/accounting/transactions']).then();
     }
 
-    save() {
-        const val = this.form.value;
-        if (this.entitySrv.getParentId() == +val.journalno) {
-            val.id = this.id;
-            let obs: Observable<any> = val.id === 0
-                ? this.entitySrv.add(val).pipe(tap(i => {
-                    this.id = i;
-                    val.id = i;
-                }))
-                : this.entitySrv.update(val);
-            obs.subscribe({
-                next: () => {
-                    this.form.markAsUntouched();
-                    this.snackBarSrv.showSuccessMessage();
-                    this.shellSrv.goBack();
-                },
-                error: err => {
-                    this.snackBarSrv.showFailureMessage();
-                    throw err;
-                }
-            })
-        } else {
-            this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
-        }
+    protected override goBack() {
+        this.cancel();
     }
-
 }

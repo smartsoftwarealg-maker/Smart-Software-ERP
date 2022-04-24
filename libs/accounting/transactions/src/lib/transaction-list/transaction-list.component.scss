@@ -28,15 +28,16 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    //background: aqua;
+    overflow-y: hidden;
 }
 
 .list-div {
     overflow-y: auto;
     height: 100%;
-    max-height: 450px;
+    max-height: 400px;
     flex-grow: 1;
 }
+
 .table-div {
     width: 100%;
     height: 100%;
@@ -48,8 +49,8 @@
     width: 550px;
 }
 
-.mat-column-pieceno,
-.mat-column-piecedate,
+.mat-column-pieceNo,
+.mat-column-pieceDate,
 .mat-column-projectName {
     flex: 1 1 90px;
 }

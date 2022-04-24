@@ -27,5 +27,9 @@
     "PERIOD":                "",
     "CLOSED":                "",
     "SELECT_FOLDER":         "",
-    "FILES":                 ""
+    "FILES":                 "",
+    "TRANSAC_DETAIL":        "",
+    "SHOW_HEADER":           "",
+    "SHOW_DETAIL":       "",
+    "BUDGETABLE":            ""
 }

@@ -5,7 +5,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="accountAutoCompleteModel"
+                                  [model]="accountLookupModel"
                                   formControlName="accountId"
                                   autofocus></ss-auto-complete>
                 <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -19,7 +19,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="customerAutoCompleteModel"
+                                  [model]="customerLookupModel"
                                   formControlName="customerId">
                 </ss-auto-complete>
             </mat-form-field>
@@ -29,6 +29,15 @@
                 <input matInput formControlName="reference" type="text" >
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ACC_CASH_FLOW</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="annexCodeLookupMode"
+                                  formControlName="c_o_d">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <span class="default-50"></span>
             <mat-form-field class="default-50" >
                 <mat-label translate>ACC_DEBIT</mat-label>
                 <input #debit matInput  formControlName="debit" type="number" (change)="onDebitChange(debit.value)">

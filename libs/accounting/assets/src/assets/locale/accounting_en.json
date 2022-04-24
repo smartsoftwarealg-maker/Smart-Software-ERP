@@ -31,5 +31,10 @@
     "DEBIT":                 "Debit",
     "CREDIT":                "Credit",
     "PROJECT":               "Project",
-    "POS":                   "Position"
+    "POS":                   "Position",
+    "TRANSAC_DETAIL":        "Transaction detail",
+    "SHOW_HEADER":           "Show transaction header",
+    "SHOW_DETAIL":       "Show transaction detail",
+    "BUDGETABLE":            "Budgetable"
+
 }

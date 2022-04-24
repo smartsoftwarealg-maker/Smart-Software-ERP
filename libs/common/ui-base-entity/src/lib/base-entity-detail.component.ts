@@ -122,6 +122,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return of(null);
     }
 
+    protected goBack() {
+        this.shellSrv.goBack();
+    }
+
     public save() {
         this.form.markAllAsTouched();
         if (!this.form.valid) {
@@ -138,7 +142,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         obs.subscribe({
             next: () => {
                 this.shellSrv.setLoading(false);
-                this.shellSrv.goBack();
+                this.goBack();
                 this.form.markAsUntouched();
                 this.snackBarSrv.showSuccessMessage();
             },

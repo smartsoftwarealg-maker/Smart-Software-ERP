@@ -9,6 +9,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="c_o_d">
+                <mat-header-cell *matHeaderCellDef translate>ACC_CASH_FLOW</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.c_o_d}}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -60,23 +67,23 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="ctrl-div" *ngIf="parentId">
-        <button mat-mini-fab color="primary" (click)="showDetail(0)">
-            <span class="fas fa-plus"></span>
-        </button>
-        <button mat-mini-fab (click)="edit()"
-                [disabled]="!selected"
-                color="accent">
-            <span class="fas fa-pen"></span>
-        </button>
-        <button mat-mini-fab (click)="deleteSelected()"
-                [disabled]="!selected"
-                color="warn">
-            <span class="fas fa-trash-alt"></span>
-        </button>
-        <button mat-mini-fab (click)="exit()" color="accent">
-            <span class="fa-solid fa-person-from-portal"></span>
-        </button>
-    </div>
+<!--    <div class="ctrl-div" *ngIf="parentId">-->
+<!--        <button mat-mini-fab color="primary" (click)="showDetail(0)">-->
+<!--            <span class="fas fa-plus"></span>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab (click)="edit()"-->
+<!--                [disabled]="!selected"-->
+<!--                color="accent">-->
+<!--            <span class="fas fa-pen"></span>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab (click)="deleteSelected()"-->
+<!--                [disabled]="!selected"-->
+<!--                color="warn">-->
+<!--            <span class="fas fa-trash-alt"></span>-->
+<!--        </button>-->
+<!--        <button mat-mini-fab (click)="exit()" color="accent">-->
+<!--            <span class="fa-solid fa-person-from-portal"></span>-->
+<!--        </button>-->
+<!--    </div>-->
 
 </div>

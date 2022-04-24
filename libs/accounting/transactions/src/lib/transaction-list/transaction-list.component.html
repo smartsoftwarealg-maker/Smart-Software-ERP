@@ -13,10 +13,10 @@
         <div class="table-div">
             <mat-table mat-table [dataSource]="data" class="main-table">
 
-                <ng-container matColumnDef="pieceno">
+                <ng-container matColumnDef="pieceNo">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.pieceno}}
+                        {{e.pieceNo}}
                     </mat-cell>
                 </ng-container>
 
@@ -27,10 +27,10 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="piecedate">
+                <ng-container matColumnDef="pieceDate">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{e.piecedate | date: 'dd/MM/yyyy' }}
+                        {{e.pieceDate | date: 'dd/MM/yyyy' }}
                     </mat-cell>
                 </ng-container>
 
@@ -54,12 +54,7 @@
             </mat-table>
         </div>
     </div>
-    <div class="detail">
-        <mat-radio-group aria-label="Select an option" value="1">
-            <mat-radio-button value="1" (click)="selectMode(1)" translate>COMMON_LIST</mat-radio-button>
-            <mat-radio-button value="2" (click)="selectMode(2)" translate>COMMON_DETAIL</mat-radio-button>
-        </mat-radio-group>
-
+    <div class="detail" *ngIf="selected">
         <router-outlet></router-outlet>
     </div>
 </div>
