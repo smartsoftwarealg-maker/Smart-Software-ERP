@@ -7,3 +7,4 @@ export * from './lib/journal-user.service';
 export * from './lib/acc-file.service';
 export * from './lib/acc-transaction.service';
 export * from './lib/acc-transaction-lines.service';
+export * from './lib/annex-code.service';

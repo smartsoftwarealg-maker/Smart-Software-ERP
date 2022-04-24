@@ -1,4 +1,6 @@
 export const ACC_FILE_URL         = '/accounting/acc-files';
+export const ACC_ACC_FILE_URL     = '/accounting/files';
+export const ACC_ANNEX_CODE_URL   = '/accounting/annex-codes';
 export const ACC_POLICY_URL       = '/accounting/acc-policies';
 export const ACC_JOURNALS_URL     = '/accounting/journals';
 export const ACC_JOURNAL_TYPE_URL = '/lookups/journal_types';
@@ -68,11 +70,11 @@ export interface ACCTransaction {
     id: number;
     fileId: number;
     oid: number;
-    piecemonth: number;
+    pieceMonth: number;
     journalno: number;
-    pieceno: number;
+    pieceNo: number;
     description?: string;
-    piecedate?: Date,
+    pieceDate?: Date,
     userid?: number;
     folio?: number;
     generator?: number;
@@ -116,4 +118,11 @@ export interface ACCFile {
     closureDate?: Date;
     center: number;
     visible: boolean;
+}
+
+export interface AnnexCode {
+    id: number;
+    code: string;
+    description?: string;
+    fileId?: number;
 }

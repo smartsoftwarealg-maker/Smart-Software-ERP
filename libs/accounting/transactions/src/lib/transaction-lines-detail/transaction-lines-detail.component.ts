@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ACCTransactionLine, AccTransactionLineService} from '@ss/accounting/accounting-api';
+import {ACCTransactionLine, AccTransactionLineService, AnnexCodeService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -18,8 +18,10 @@ import {AgentService, CustomerService} from '@ss/logistics/api-agent';
     styleUrls: ['./transaction-lines-detail.component.scss']
 })
 export class TransactionLinesDetailComponent {
-    accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
-    customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
+    customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
+
     public form: FormGroup = null;
     id = 0;
     transactionId = 0;
@@ -35,7 +37,8 @@ export class TransactionLinesDetailComponent {
         public lookupsSrv: LookupsService,
         private accountSrv: AccountService,
         private customerSrv: AgentService,
-        private loginSrv: LoginService) {
+        private loginSrv: LoginService,
+        private annexCodeSrv: AnnexCodeService) {
     }
 
     setupForm(e: ACCTransactionLine): FormGroup {

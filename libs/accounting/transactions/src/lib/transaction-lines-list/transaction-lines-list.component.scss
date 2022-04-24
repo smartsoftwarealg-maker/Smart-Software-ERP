@@ -20,7 +20,7 @@
 
 mat-table {
     width: 100%;
-    min-width: 750px;
+    min-width: 800px;
 }
 
 .ctrl-div {
@@ -33,6 +33,9 @@ mat-table {
     flex: 0 1 90px;
 }
 
+.mat-column-c_o_d {
+    flex: 0 1 50px;
+}
 .mat-column-description,
 .mat-column-customerName {
     flex: 0 1 200px;

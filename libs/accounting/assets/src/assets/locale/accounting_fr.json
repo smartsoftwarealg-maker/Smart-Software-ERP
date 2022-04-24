@@ -31,6 +31,10 @@
     "DEBIT":                 "Débit",
     "CREDIT":                "Crédit",
     "PROJECT":               "Projet",
-    "POS":                   "Position"
+    "POS":                   "Position",
+    "TRANSAC_DETAIL":        "Détail de l'ecriture comptable'",
+    "SHOW_HEADER":           "Afficher l'en-tête de l'ecriture comptable",
+    "SHOW_DETAIL":       "Afficher le détail de l'ecriture comptable",
+    "BUDGETABLE":            "Budgetaire"
 }
 

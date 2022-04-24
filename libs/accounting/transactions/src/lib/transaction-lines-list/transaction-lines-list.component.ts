@@ -15,7 +15,17 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
   styleUrls: ['./transaction-lines-list.component.scss']
 })
 export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTransactionLine> implements OnInit {
-    displayedColumns = ['lineNumber', 'accountNo', 'description', 'customerName', 'reference', 'debit', 'credit'];
+    displayedColumns = [
+        'lineNumber',
+        'accountNo',
+        'description',
+        'customerName',
+        'reference',
+        'c_o_d',
+        'debit',
+        'credit'
+    ];
+
     parentId: number = null;
 
     constructor(
@@ -35,7 +45,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
               confirmationSrv,
               defReportSrv,
               pagPersistSrv,
-              'ADMINISTRATION_BANK');
+              'ACC_TRANSAC_DETAIL');
     }
 
     override ngOnInit() {
@@ -44,6 +54,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
             .subscribe(p => {
                 this.parentId = +p['id'];
                 this.entitySrv.setParentId(this.parentId);
+                console.log('prent id', this.parentId);
                 super.ngOnInit();
             })
     }
