@@ -25,7 +25,8 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'ASSETS',
             icon: 'fa-solid fa-car-building',
-            route: ABS_ASSETS_URL
+            route: ABS_ASSETS_URL,
+            accessRights: 'Asset'
         },
         {
             name: 'COMMON_REPORTS',

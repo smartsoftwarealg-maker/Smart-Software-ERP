@@ -281,7 +281,7 @@ export class ShellService {
     }
 
     public getApp() {
-        return this.router.url.split('/')[2]; // strTakeUntil(strTakeUntil(strDropUntil(this.router.url, '/app/'), '?'), '#');
+        return this.router.url.split('/')[2].replace('-app', ''); // strTakeUntil(strTakeUntil(strDropUntil(this.router.url, '/app/'), '?'), '#');
     }
 
     public navigateByRelativeUrl(path: string): void {

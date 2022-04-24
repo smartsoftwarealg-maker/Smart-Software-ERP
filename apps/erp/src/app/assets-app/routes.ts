@@ -23,6 +23,11 @@ import {
     AssetRevaluationTypeListComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
+import {
+    ReportCatalogDetailComponent,
+    ReportCatalogListComponent
+} from '../../../../../libs/administration/ui-report-catalog/src';
 
 export const mainRoutes: Routes = [
     {
@@ -127,8 +132,27 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: ADMINISTRATION_REPORT_CATALOG_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ReportCatalogListComponent,
+                canActivate: [CanActivateService],
+                data: { app: 'assets' }
+            },
+            {
+                path: ':id',
+                component: ReportCatalogDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
         path: COMMON_REPORTS_URL,
-        data: {reportBase: 'assets'},
+        data: { reportBase: 'assets' },
         component: ReportViewComponent,
         canActivate: [CanActivateService]
     },
