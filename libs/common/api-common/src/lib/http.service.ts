@@ -192,7 +192,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { responseType: 'text', headers: HttpService.getHeaders({ timeout: timeout + '' }) });
+                {responseType: 'text', headers: HttpService.getHeaders() });
     }
 
     public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
