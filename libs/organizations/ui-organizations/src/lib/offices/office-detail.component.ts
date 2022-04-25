@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Office, OfficeService, ServiceService } from '@ss/organizations/api-organizations';
+import { Office, OfficeService, ServiceService, ServiceAutoCompleteModel } from '@ss/organizations/api-organizations';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
@@ -20,9 +20,9 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     public form: FormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
+    public servicesAutoCompleteModel: ServiceAutoCompleteModel;
 
     constructor(
-        public serviceSrv: ServiceService,
         public officeSrv: OfficeService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -33,10 +33,11 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         private employeeSrv: EmployeeService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
+        this.servicesAutoCompleteModel = new ServiceAutoCompleteModel(this.httpSrv);
     }
 
     protected getRouteParam(): Observable<any> {
-        this.serviceSrv.setParentId(0);
+        this.officeSrv.setParentId(0);
         return super.getRouteParam();
     }
 
