@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Division, Department, DivisionService, DepartmentService } from '@ss/organizations/api-organizations';
+import { Division, Department, DivisionService, DepartmentService, DivisionsAutoCompleteModel } from '@ss/organizations/api-organizations';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
@@ -20,9 +20,9 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
     public form: FormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
+    public divisionAutoCompleteModel: DivisionsAutoCompleteModel;
 
     constructor(
-        public divisionsSrv: DivisionService,
         public departementSrv: DepartmentService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -33,6 +33,7 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         private employeeSrv: EmployeeService) {
         super(departementSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTMENT');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
+        this.divisionAutoCompleteModel = new DivisionsAutoCompleteModel(this.httpSrv);
     }
 
     protected getRouteParam(): Observable<any> {

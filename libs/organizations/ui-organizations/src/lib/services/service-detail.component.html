@@ -21,5 +21,17 @@
                 COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_DEPARTMENT</mat-label>
+            <ss-auto-complete matInput
+                [required]="true"
+                descriptionFieldName="description"
+                [model]="departmentAutoCompleteModel"
+                formControlName="department"></ss-auto-complete>
+            <mat-error *ngIf="form.controls['department'].hasError('required')" translate>
+                COMMON_FIELD_REQUIRED
+            </mat-error>
+        </mat-form-field>
     </form>
 </div>
