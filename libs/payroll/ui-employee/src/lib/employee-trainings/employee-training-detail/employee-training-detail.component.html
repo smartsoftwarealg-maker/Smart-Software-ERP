@@ -57,7 +57,7 @@
     </mat-form-field>
 
     <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>PAYROLL_LOCATION</mat-label>
+        <mat-label translate>COMMON_LOCATION</mat-label>
         <input matInput [maxLength]="64" formControlName="location" type="text" required="true">
         <mat-error *ngIf="form.controls.location.hasError('required')" translate>
             COMMON_FIELD_REQUIRED

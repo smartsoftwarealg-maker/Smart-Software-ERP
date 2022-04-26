@@ -198,5 +198,6 @@
     "RESPONSIBLE": "Responsible",
     "REFERENCE": "Reference",
     "OFFICES": "Offices",
+    "LOCATION":           "Location",
     "EXCEL_EXPORT": "Export to excel file"
 }

@@ -199,5 +199,6 @@
     "RESPONSIBLE": "Responsable",
     "REFERENCE": "Référence",
     "OFFICES": "Bureau",
-    "EXCEL_EXPORT": "Exporter vers un fichier excel"
+    "EXCEL_EXPORT": "Exporter vers un fichier excel",
+    "LOCATION":           "Lieu"
 }

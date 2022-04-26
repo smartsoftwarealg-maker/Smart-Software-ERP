@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+        <form *ngIf="form !== null" [formGroup]="form" >
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
@@ -14,6 +14,7 @@
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" >
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
@@ -29,13 +30,14 @@
                 <input matInput formControlName="reference" type="text" >
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50 sm-100" *ngIf="accPolicy?.manualCashFlow; else space">
                 <mat-label translate>ACC_CASH_FLOW</mat-label>
                 <ss-auto-complete matInput
                                   [model]="annexCodeLookupMode"
                                   formControlName="c_o_d">
                 </ss-auto-complete>
             </mat-form-field>
+            <ng-template #space> <span class="default-50 sm-100"></span></ng-template>
 
             <span class="default-50"></span>
             <mat-form-field class="default-50" >

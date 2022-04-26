@@ -30,6 +30,9 @@
     "FILES":                 "",
     "TRANSAC_DETAIL":        "",
     "SHOW_HEADER":           "",
-    "SHOW_DETAIL":       "",
-    "BUDGETABLE":            ""
+    "SHOW_DETAIL":           "",
+    "BUDGETABLE":            "",
+    "MANAGE_PROJECTS":       "",
+    "FOLIO":                 "",
+    "MANUAL_CASH_FLOW":      ""
 }
