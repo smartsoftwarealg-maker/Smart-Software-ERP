@@ -13,3 +13,5 @@ export * from './lib/asset-cost-type-list/asset-cost-type-list.component';
 export * from './lib/asset-cost-type-detail/asset-cost-type-detail.component';
 export * from './lib/asset-revaluation-type-list/asset-revaluation-type-list.component';
 export * from './lib/asset-revaluation-type-detail/asset-revaluation-type-detail.component';
+export * from './lib/asset-locations-detail/asset-locations-detail.component';
+export * from './lib/asset-locations-list/asset-locations-list.component';

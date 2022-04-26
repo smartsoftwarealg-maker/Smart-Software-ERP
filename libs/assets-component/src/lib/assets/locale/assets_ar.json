@@ -28,5 +28,6 @@
     "REVALUATIONS":       "إعادة التقييم",
     "BLOCKINGS":          "اعتراض",
     "COST_TYPES":         "أنواع التكلفة",
-    "REVALUATION_TYPES":  "أنواع إعادة التقييم"
+    "REVALUATION_TYPES":  "أنواع إعادة التقييم",
+    "LOCATIONS":          "مواقع الأصول"
 }

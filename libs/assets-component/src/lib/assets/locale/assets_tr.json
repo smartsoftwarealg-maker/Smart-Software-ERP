@@ -28,5 +28,6 @@
     "REVALUATIONS":       "",
     "BLOCKINGS":          "",
     "COST_TYPES":         "",
-    "REVALUATION_TYPES":  ""
+    "REVALUATION_TYPES":  "",
+    "LOCATIONS":          ""
 }
