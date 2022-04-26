@@ -9,18 +9,25 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50" *ngIf="accPolicy?.showFolio">
+                <mat-label translate>ACC_FOLIO</mat-label>
+                <input matInput formControlName="folio" type="text" autofocus maxlength="4">
+                <mat-error *ngIf="form.controls['folio'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            </mat-form-field>
+
             <span class="default-50"></span>
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_DATE</mat-label>
                 <ss-date-picker formControlName="pieceDate" ></ss-date-picker>
             </mat-form-field>
 
-            <div  class="default-100" >
+            <div  class="default-100" *ngIf="accPolicy?.showBudget">
                 <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
             </div>
             <span class="default-100 filler" ></span>
 
-            <mat-form-field style="width: 90%">
+            <mat-form-field style="width: 90%" *ngIf="accPolicy?.showProjects">
                 <mat-placeholder translate>ACC_PROJECT</mat-placeholder>
                 <mat-select formControlName="projectId">
                     <mat-option *ngFor="let p of projects" [value]="p.id">

@@ -1,5 +1,6 @@
 export const ASSETS_URL = '/assets';
 export const COST_URL = '/costs';
+export const LOCATIONS_URL = '/locations';
 export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
@@ -61,7 +62,14 @@ export interface Depreciation {
     totalDepreciation: number;
     remaining: number;
 }
-
+export interface AssetLocation {
+    id: number;
+    description: string;
+    centerId: number;
+    code?: string;
+    structure?: number;
+    bar_code?: number;
+}
 export interface AssetCost {
     id: number;
     cost_type: number;

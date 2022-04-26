@@ -34,7 +34,10 @@
     "POS":                   "Position",
     "TRANSAC_DETAIL":        "Transaction detail",
     "SHOW_HEADER":           "Show transaction header",
-    "SHOW_DETAIL":       "Show transaction detail",
-    "BUDGETABLE":            "Budgetable"
+    "SHOW_DETAIL":           "Show transaction detail",
+    "BUDGETABLE":            "Budgetable",
+    "MANAGE_PROJECTS":       "Manage projects",
+    "FOLIO":                 "Folio",
+    "MANUAL_CASH_FLOW":      "Manually manage cash flow"
 
 }

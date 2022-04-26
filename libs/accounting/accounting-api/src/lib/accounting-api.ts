@@ -46,6 +46,8 @@ export interface ACCPolicy {
     financialAccount?: string;
     paymentAccount?: string;
     finBankAccount?: string;
+    showProjects: boolean;
+    manualCashFlow: boolean;
 }
 
 export interface Journal {

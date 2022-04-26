@@ -61,6 +61,8 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             financialAccount: [e.financialAccount],
             paymentAccount: [e.paymentAccount],
             finBankAccount: [e.finBankAccount],
+            showProjects: [e.showProjects, Validators.required],
+            manualCashFlow: [e.manualCashFlow, Validators.required],
             openPeriods: [{ value: e.openPeriods, disabled: e.modifyClosedPeriods }, [Validators.required, Validators.min(0), Validators.max(12)]],
         });
     }

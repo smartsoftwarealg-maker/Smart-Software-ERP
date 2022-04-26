@@ -34,7 +34,10 @@
     "POS":                   "Position",
     "TRANSAC_DETAIL":        "Détail de l'ecriture comptable'",
     "SHOW_HEADER":           "Afficher l'en-tête de l'ecriture comptable",
-    "SHOW_DETAIL":       "Afficher le détail de l'ecriture comptable",
-    "BUDGETABLE":            "Budgetaire"
+    "SHOW_DETAIL":           "Afficher le détail de l'ecriture comptable",
+    "BUDGETABLE":            "Budgetaire",
+    "MANAGE_PROJECTS":       "Gérer des projets",
+    "FOLIO":                 "Folio",
+    "MANUAL_CASH_FLOW":      "Gérer manuellement la trésorerie"
 }
 

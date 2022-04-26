@@ -24,5 +24,6 @@
     "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours",
     "MONTH_CLOSED":                       "Le mois sélectionné est fermé. Les mises à jour ne sont pas autorisées!",
     "MISSING_HIRE_DATE":                  "La date de recrutement est manquante.",
-    "SESSION_EXPIRED":                    "Votre session a expiré. Veuillez vous reconnecter"
+    "SESSION_EXPIRED":                    "Votre session a expiré. Veuillez vous reconnecter",
+    "INVALID_CENTER":                     "Des données avec un code de centre invalide ont été demandées"
 }

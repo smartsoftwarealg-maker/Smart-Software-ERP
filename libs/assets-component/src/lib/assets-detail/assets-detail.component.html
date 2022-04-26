@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field id="reference2" class="default-25 sm-50" >
         <mat-label><spna translate>COMMON_REFERENCE</spna> 2</mat-label>
-        <input matInput formControlName="reference2" type="text" autofocus maxlength="20">
+        <input matInput formControlName="reference2" type="text"  maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
     <mat-form-field id="description" class="default-50 sm-100">
@@ -17,12 +17,12 @@
     </mat-form-field>
     <mat-form-field id="serial_no" class="default-50 sm-100">
         <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-        <input matInput formControlName="serial_no" type="text" autofocus maxlength="20">
+        <input matInput formControlName="serial_no" type="text"  maxlength="20">
         <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
     <mat-form-field id="barcode" class="default-50 sm-100">
         <mat-label translate>ASSET_BAR_CODE</mat-label>
-        <input matInput formControlName="barcode" type="text" autofocus maxlength="20">
+        <input matInput formControlName="barcode" type="text"  maxlength="20">
         <mat-error *ngIf="form.controls['barcode'].invalid" translate>COMMON_FIELD_MAX_LENGTH
         </mat-error>
     </mat-form-field>
@@ -41,6 +41,21 @@
         <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_LOCATION</mat-label>
+        <ss-auto-complete matInput
+                          [model]="locationAutoCompleteModel"
+                          formControlName="location">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_OFFICE</mat-label>
+        <ss-auto-complete matInput
+                          [model]="officeAutoCompleteModel"
+                          formControlName="office">
+        </ss-auto-complete>
+    </mat-form-field>
 
     <mat-form-field id="info" class="default-50 sm-100">
         <mat-label translate>COMMON_INFO</mat-label>

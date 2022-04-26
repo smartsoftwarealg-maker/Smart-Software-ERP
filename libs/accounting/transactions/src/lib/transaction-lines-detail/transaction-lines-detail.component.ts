@@ -1,6 +1,12 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ACCTransactionLine, AccTransactionLineService, AnnexCodeService} from '@ss/accounting/accounting-api';
+import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {
+    AccPoliciesService,
+    ACCPolicy,
+    ACCTransactionLine,
+    AccTransactionLineService,
+    AnnexCodeService
+} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -8,7 +14,7 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentService, CustomerService} from '@ss/logistics/api-agent';
 
@@ -21,11 +27,12 @@ export class TransactionLinesDetailComponent {
     accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
-
+    accPolicy: ACCPolicy = null;
     public form: FormGroup = null;
     id = 0;
     transactionId = 0;
     fileId = 0;
+    selectedAccount: Account = null;
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -38,11 +45,13 @@ export class TransactionLinesDetailComponent {
         private accountSrv: AccountService,
         private customerSrv: AgentService,
         private loginSrv: LoginService,
-        private annexCodeSrv: AnnexCodeService) {
+        private annexCodeSrv: AnnexCodeService,
+        private accPolicySrv: AccPoliciesService) {
+        this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj)
     }
 
     setupForm(e: ACCTransactionLine): FormGroup {
-        return this.formBuilder.group({
+        return  this.formBuilder.group({
             id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
             oid: [e.oid || this.transactionId],
@@ -55,16 +64,22 @@ export class TransactionLinesDetailComponent {
             credit: [{ value: e.balance < 0? -e.balance : 0.0, disabled: e.balance > 0 } ],
             reference: [e.reference],
             checkNo: [e.checkNo],
-            description: [e.description],
+            description: [e.description, Validators.required],
             customerId: [e.customerId],
             accountId: [e.accountId],
-        });
+        }, { validators: formValidator });
+        // form.setValidators(this.formValidator);
     }
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
         this.load();
     }
+
+    private accountSelected(a: Account) {
+        this.selectedAccount = a;
+    }
+
 
     public loadEntity(id: number): Observable<ACCTransactionLine> {
         if (id == null) {
@@ -90,6 +105,8 @@ export class TransactionLinesDetailComponent {
         this.loginSrv
             .loadContext()
             .pipe(
+                switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
+                tap(pol => this.accPolicy = pol),
                 switchMap(_ => this.route.parent.params),
                 tap(p => {
                     const id = +p['id'];
@@ -121,7 +138,6 @@ export class TransactionLinesDetailComponent {
     }
 
     save() {
-        console.log(this.form.value)
         const val = this.form.value;
         val.balance = val.debit || 0 - val.credit || 0;
         delete val.debit;
@@ -166,5 +182,15 @@ export class TransactionLinesDetailComponent {
             this.form.controls[ctrl].enable();
         }
     }
-
 }
+
+export const formValidator: ValidatorFn =
+    (group: AbstractControl): ValidationErrors | null => {
+        console.log('*******customer id ', group.get('customerId').value);
+        if (!group.get('customerId').value) {
+            console.log('customer id is invalid')
+            group.get('customerId').setErrors({ invalid: true })
+        }
+        return { invalid: true };
+    }
+

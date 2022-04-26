@@ -13,6 +13,8 @@ import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {Observable} from 'rxjs';
+import {OfficeService} from '@ss/organizations/api-organizations';
+import {AssetLocationService} from '../asset-location.service';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -23,6 +25,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
     private maxReference: string = null;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
+    locationAutoCompleteModel  = new DefaultAutoCompleteModel(this.locationSrv);
+    officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     accountantDepreciation: Depreciation[] = [];
@@ -40,6 +44,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
+        private officeSrv: OfficeService,
+        private locationSrv: AssetLocationService,
         private accountSrv: AccountService,
         private loginSrv: LoginService) {
         super(detailSrv,
@@ -49,6 +55,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             formBuilder,
             confirmationSrv, 'ASSETS');
         this.accountAutoCompleteModel.onObjectSelected = (acc) => this.accountSelected(acc);
+        this.officeSrv.setParentId(0);
     }
 
     setupForm(b: Asset): FormGroup {

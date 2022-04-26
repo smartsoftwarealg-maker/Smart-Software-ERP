@@ -1,5 +1,5 @@
 import {Component, Output} from '@angular/core';
-import {ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
+import {AccPoliciesService, ACCPolicy, ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -19,6 +19,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
     minDate: Date = new Date();
     maxDate: Date = new Date();
     projects: Lookup[] = [];
+    accPolicy: ACCPolicy = null;
     journalId = 0;
 
     constructor(
@@ -30,7 +31,8 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
         public override formBuilder: FormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private loginSrv: LoginService) {
+        private loginSrv: LoginService,
+        private accPolicySrv: AccPoliciesService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -53,8 +55,10 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
                         const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
                         this.maxDate = new Date(nextMonth.getDate() - 1);
                     }),
-                      switchMap(_ => this.entitySrv.getProjects()),
-                      tap(res => this.projects = res));
+                    switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
+                    tap(res => this.accPolicy = res),
+                    switchMap(_ => this.entitySrv.getProjects()),
+                    tap(res => this.projects = res));
     }
 
     setupForm(e: ACCTransaction): FormGroup {

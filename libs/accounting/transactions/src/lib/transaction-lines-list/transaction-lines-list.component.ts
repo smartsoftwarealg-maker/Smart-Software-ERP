@@ -54,7 +54,6 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
             .subscribe(p => {
                 this.parentId = +p['id'];
                 this.entitySrv.setParentId(this.parentId);
-                console.log('prent id', this.parentId);
                 super.ngOnInit();
             })
     }
