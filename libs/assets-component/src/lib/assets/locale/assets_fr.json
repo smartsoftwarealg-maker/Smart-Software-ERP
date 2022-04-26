@@ -28,5 +28,6 @@
     "REVALUATIONS":       "Réévaluations",
     "BLOCKINGS":          "Blocage",
     "COST_TYPES":         "Types de coûts",
-    "REVALUATION_TYPES":  "Types de réévaluation"
+    "REVALUATION_TYPES":  "Types de réévaluation",
+    "LOCATIONS":          "Emplacements des actifs"
 }

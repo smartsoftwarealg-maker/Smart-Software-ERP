@@ -28,5 +28,6 @@
     "REVALUATIONS":       "Revaluations",
     "BLOCKINGS":          "Blocking",
     "COST_TYPES":         "Cost types",
-    "REVALUATION_TYPES":  "Revaluation types"
+    "REVALUATION_TYPES":  "Revaluation types",
+    "LOCATIONS":          "Asset locations"
 }

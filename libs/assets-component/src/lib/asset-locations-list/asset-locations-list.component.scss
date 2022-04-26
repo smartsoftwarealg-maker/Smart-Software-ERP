@@ -1,0 +1,40 @@
+
+:host {
+    display: block;
+    margin: auto;
+    width: 496px;
+}
+
+.main-table {
+    width: 496px;
+    min-height: 320px;
+}
+
+// keep the material design specs
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.mat-column-code {
+    flex: 0 0 140px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-description {
+    flex: 0 0 300px ;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
