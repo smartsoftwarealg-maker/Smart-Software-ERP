@@ -17,7 +17,8 @@ export interface Account {
     customerCode: boolean;
     budgetAccount: boolean;
     treasuryAccount: boolean;
-    journalId: number
+    journalId: number;
+    ccRequired: boolean;
 }
 
 export interface GenerationAccount {

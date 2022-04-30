@@ -40,5 +40,6 @@
     "FOLIO":                 "رقم الورقة",
     "MANUAL_CASH_FLOW":      "إدارة التدفق النقدي يدويًا",
     "CHECKNO":               "رقم الصك",
-    "ANALYZE_CHECKS":        "تحليل الصكوك"
+    "ANALYZE_CHECKS":        "تحليل الصكوك",
+    "CC_REQUIRED":           "مطلوب مركز التكلفة"
 }

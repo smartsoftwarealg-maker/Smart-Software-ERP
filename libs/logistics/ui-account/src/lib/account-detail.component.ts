@@ -56,7 +56,8 @@ export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
             customerCode: [a.customerCode],
             budgetAccount: [a.budgetAccount],
             treasuryAccount: [a.treasuryAccount],
-            journalId: [a.journalId]
+            journalId: [a.journalId],
+            ccRequired: [a.ccRequired]
         });
     }
 

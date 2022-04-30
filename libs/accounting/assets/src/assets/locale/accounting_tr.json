@@ -36,5 +36,6 @@
     "FOLIO":                 "",
     "MANUAL_CASH_FLOW":      "",
     "CHECKNO":               "",
-    "ANALYZE_CHECKS":        ""
+    "ANALYZE_CHECKS":        "",
+    "CC_REQUIRED":           ""
 }

@@ -102,6 +102,7 @@ export interface ACCTransactionLine {
     checkNo?: string;
     matchKey?: string;
     costCenter?: string;
+    costCenterId?: number;
     quantity?: number;
     investmentId?: string;
     description?: string;
