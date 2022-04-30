@@ -276,14 +276,14 @@
             <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-career>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #oldCareerPanel [class]="getPanelHeaderClass('career', oldCareerPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_OLD_CAREERS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-old-career-list>
+            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel" ></ss-employee-old-career-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">

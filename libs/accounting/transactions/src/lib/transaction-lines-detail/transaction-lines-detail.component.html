@@ -57,6 +57,15 @@
                 <input #credit matInput formControlName="credit" type="number" (change)="onCreditChange(credit.value)">
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="ccLookupModel"
+                                  formControlName="costCenterId">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['customer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
             <mat-form-field class="default-50">
                 <mat-label translate>ACC_POS</mat-label>
                 <input matInput formControlName="lineNumber" type="number">

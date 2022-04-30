@@ -17,6 +17,7 @@ import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentService, CustomerService} from '@ss/logistics/api-agent';
+import {CostCenterService} from '@ss/logistics/api-cost-center';
 
 @Component({
     selector: 'ss-transaction-lines-detail',
@@ -26,6 +27,7 @@ import {AgentService, CustomerService} from '@ss/logistics/api-agent';
 export class TransactionLinesDetailComponent {
     accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    ccLookupModel       = new DefaultAutoCompleteModel(this.ccSrv, 'id', 'code');
     annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
     accPolicy: ACCPolicy = null;
     public form: FormGroup = null;
@@ -43,6 +45,10 @@ export class TransactionLinesDetailComponent {
                 }
                 if (!group.get('reference').value && this.selectedAccount?.analyzed) {
                     group.get('reference').setErrors({invalid: true})
+                    result = {invalid: true};
+                }
+                if (!group.get('costCenterId').value && this.selectedAccount?.ccRequired) {
+                    group.get('costCenterId').setErrors({invalid: true})
                     result = {invalid: true};
                 }
                 if (this.selectedAccount.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks && !group.get('checkNo').value) {
@@ -65,7 +71,8 @@ export class TransactionLinesDetailComponent {
         private customerSrv: AgentService,
         private loginSrv: LoginService,
         private annexCodeSrv: AnnexCodeService,
-        private accPolicySrv: AccPoliciesService) {
+        private accPolicySrv: AccPoliciesService,
+        private ccSrv: CostCenterService) {
         this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj)
     }
 
@@ -86,6 +93,7 @@ export class TransactionLinesDetailComponent {
             description: [e.description, Validators.required],
             customerId: [e.customerId],
             accountId: [e.accountId],
+            costCenterId: [e.costCenterId]
         }, { validators: this.formValidator });
     }
 
@@ -159,7 +167,6 @@ export class TransactionLinesDetailComponent {
     }
 
     save() {
-        console.log('*****************valid:', this.form.valid);
         if (!this.form.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_FORM');
             return;

@@ -69,15 +69,15 @@
 
 
     <mat-form-field class="default-50 sm-100">
-        <mat-label translate>ASSET_ITEM_COUNT</mat-label>
-        <input matInput formControlName="itemCount" type="number">
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
         <ss-auto-complete matInput
                           [model]="ccAutoCompleteModel"
                           formControlName="costCenter"></ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ASSET_ITEM_COUNT</mat-label>
+        <input matInput formControlName="itemCount" type="number">
     </mat-form-field>
 
     <mat-accordion>
