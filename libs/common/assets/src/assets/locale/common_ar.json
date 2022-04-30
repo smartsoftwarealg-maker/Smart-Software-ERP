@@ -199,5 +199,6 @@
     "REFERENCE": "مرجع",
     "OFFICES": "المكاتب",
     "EXCEL_EXPORT": "حول إلى ملف اكسل",
-    "LOCATION":     "موقع"
+    "LOCATION":     "موقع",
+    "INVALID_FORM": "هذه الاستمارة غير مكتملة"
 }

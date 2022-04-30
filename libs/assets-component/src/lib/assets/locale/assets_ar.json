@@ -29,5 +29,6 @@
     "BLOCKINGS":          "اعتراض",
     "COST_TYPES":         "أنواع التكلفة",
     "REVALUATION_TYPES":  "أنواع إعادة التقييم",
-    "LOCATIONS":          "مواقع الأصول"
+    "LOCATIONS":          "مواقع الأصول",
+    "IMPORT":             "ضم من مركز آخر"
 }

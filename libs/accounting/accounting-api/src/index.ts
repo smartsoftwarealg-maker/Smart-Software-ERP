@@ -9,3 +9,4 @@ export * from './lib/acc-transaction.service';
 export * from './lib/acc-transaction-lines.service';
 export * from './lib/annex-code.service';
 export * from './lib/transacline-validator';
+export * from './lib/asset-ends.service';

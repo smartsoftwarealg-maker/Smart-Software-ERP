@@ -29,5 +29,6 @@
     "BLOCKINGS":          "Blocage",
     "COST_TYPES":         "Types de coûts",
     "REVALUATION_TYPES":  "Types de réévaluation",
-    "LOCATIONS":          "Emplacements des actifs"
+    "LOCATIONS":          "Emplacements des actifs",
+    "IMPORT":             "Intégrer depuis un autre centre"
 }

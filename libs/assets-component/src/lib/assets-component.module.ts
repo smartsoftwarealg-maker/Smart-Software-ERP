@@ -22,6 +22,7 @@ import { AssetRevaluationTypeListComponent } from './asset-revaluation-type-list
 import { AssetRevaluationTypeDetailComponent } from './asset-revaluation-type-detail/asset-revaluation-type-detail.component';
 import { AssetLocationsListComponent } from './asset-locations-list/asset-locations-list.component';
 import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-locations-detail.component';
+import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-lo
         AssetRevaluationTypeListComponent,
         AssetRevaluationTypeDetailComponent,
         AssetLocationsListComponent,
-        AssetLocationsDetailComponent
+        AssetLocationsDetailComponent,
+        AssetSearchDialogComponent
     ],
 })
 export class AssetsComponentModule {

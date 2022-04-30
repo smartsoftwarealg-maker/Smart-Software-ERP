@@ -38,6 +38,7 @@
     "BUDGETABLE":            "Budgetable",
     "MANAGE_PROJECTS":       "Manage projects",
     "FOLIO":                 "Folio",
-    "MANUAL_CASH_FLOW":      "Manually manage cash flow"
-
+    "MANUAL_CASH_FLOW":      "Manually manage cash flow",
+    "CHECKNO":               "Check number",
+    "ANALYZE_CHECKS":        "Analyze checks"
 }

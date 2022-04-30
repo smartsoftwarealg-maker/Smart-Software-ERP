@@ -50,6 +50,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             showBudget: [e.showBudget, Validators.required],
             openingJournal: [e.openingJournal, Validators.required],
             bankAccount: [e.bankAccount],
+            analyzeChecks: [e.analyzeChecks],
             cashAccount: [e.cashAccount],
             investAccount: [e.investAccount],
             depreciationAccount: [e.depreciationAccount],
