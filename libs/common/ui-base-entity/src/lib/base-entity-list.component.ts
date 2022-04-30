@@ -158,10 +158,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         return null;
     }
 
+    protected canShowProcessingStatus(): boolean {
+        return true;
+    }
     public refresh(callback?: () => void) {
         this.releaseResources();
         this.data = [];
-        this.shellSrv.setLoading(true);
+        this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         const a = this.preload();
         const b = this.getPage();

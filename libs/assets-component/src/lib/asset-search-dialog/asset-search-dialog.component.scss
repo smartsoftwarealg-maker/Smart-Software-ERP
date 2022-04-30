@@ -1,0 +1,32 @@
+.container {
+    height: 100%;
+    min-height: 400px;
+    width: 500px;
+}
+
+.pagination {
+    width: 96%;
+    margin: 0 auto;
+}
+mat-table {
+    width: 500px;
+    min-height: 300px;
+    height: 100%;
+}
+
+.mat-column-reference {
+    flex: 1 1 100px;
+}
+.mat-column-description {
+    flex: 1 1 400px;
+}
+
+ss-pagination {
+    width: 500px;
+    margin: 0 auto;
+}
+.ctrl-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

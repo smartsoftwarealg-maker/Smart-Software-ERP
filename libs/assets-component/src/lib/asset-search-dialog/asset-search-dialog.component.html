@@ -1,0 +1,36 @@
+<div class="container">
+    <mat-form-field appearance="fill" class="default-100 sm-100">
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput [formControl]="searchText" type="text">
+    </mat-form-field>
+
+    <mat-table mat-table [dataSource]="assetList" class="main-table">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="pagination"> <ss-pagination [paginationModel]="pagination"></ss-pagination> </div>
+    <div mat-dialog-actions class="ctrl-div">
+        <button mat-raised-button [mat-dialog-close]="selectedAsset" color="primary" cdkFocusInitial translate>
+            COMMON_SELECT
+        </button>
+        <button mat-raised-button (click)="close()" translate color="accent">COMMON_CANCEL</button>
+    </div>
+</div>
