@@ -33,6 +33,25 @@ export class TransactionLinesDetailComponent {
     transactionId = 0;
     fileId = 0;
     selectedAccount: Account = null;
+    private formValidator: ValidatorFn =
+        (group: AbstractControl): ValidationErrors | null => {
+            let result = null;
+            if (this.selectedAccount) {
+                if (!group.get('customerId').value && this.selectedAccount?.customerCode) {
+                    group.get('customerId').setErrors({invalid: true})
+                    result = {invalid: true};
+                }
+                if (!group.get('reference').value && this.selectedAccount?.analyzed) {
+                    group.get('reference').setErrors({invalid: true})
+                    result = {invalid: true};
+                }
+                if (this.selectedAccount.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks && !group.get('checkNo').value) {
+                    group.get('checkNo').setErrors({invalid: true})
+                    result = {invalid: true};
+                }
+            }
+            return result;
+        }
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -56,7 +75,7 @@ export class TransactionLinesDetailComponent {
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
             oid: [e.oid || this.transactionId],
             accountNo: [e.accountNo, Validators.required],
-            customer: [e.customer, Validators.required],
+            customer: [e.customer],
             lineNumber: [e.lineNumber || 1],
             c_o_d: [e.c_o_d],
             balance: [e.balance],
@@ -67,8 +86,7 @@ export class TransactionLinesDetailComponent {
             description: [e.description, Validators.required],
             customerId: [e.customerId],
             accountId: [e.accountId],
-        }, { validators: formValidator });
-        // form.setValidators(this.formValidator);
+        }, { validators: this.formValidator });
     }
 
     ngOnInit() {
@@ -97,6 +115,9 @@ export class TransactionLinesDetailComponent {
 
     public finishLoading(e: ACCTransactionLine) {
         this.shellSrv.setLoading(false);
+        this.accountSrv
+            .get(e.accountId)
+            .subscribe(res => this.selectedAccount = res);
         this.form = this.setupForm(e);
     }
 
@@ -138,6 +159,12 @@ export class TransactionLinesDetailComponent {
     }
 
     save() {
+        console.log('*****************valid:', this.form.valid);
+        if (!this.form.valid) {
+            this.snackBarSrv.showFailureMessage('COMMON_INVALID_FORM');
+            return;
+        }
+
         const val = this.form.value;
         val.balance = val.debit || 0 - val.credit || 0;
         delete val.debit;
@@ -184,13 +211,4 @@ export class TransactionLinesDetailComponent {
     }
 }
 
-export const formValidator: ValidatorFn =
-    (group: AbstractControl): ValidationErrors | null => {
-        console.log('*******customer id ', group.get('customerId').value);
-        if (!group.get('customerId').value) {
-            console.log('customer id is invalid')
-            group.get('customerId').setErrors({ invalid: true })
-        }
-        return { invalid: true };
-    }
 

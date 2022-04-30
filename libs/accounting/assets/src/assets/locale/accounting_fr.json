@@ -38,6 +38,8 @@
     "BUDGETABLE":            "Budgetaire",
     "MANAGE_PROJECTS":       "Gérer des projets",
     "FOLIO":                 "Folio",
-    "MANUAL_CASH_FLOW":      "Gérer manuellement la trésorerie"
+    "MANUAL_CASH_FLOW":      "Gérer manuellement la trésorerie",
+    "CHECKNO":               "Numéro de chèque",
+    "ANALYZE_CHECKS":        "Analyser les chèques"
 }
 

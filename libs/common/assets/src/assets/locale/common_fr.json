@@ -200,5 +200,6 @@
     "REFERENCE": "Référence",
     "OFFICES": "Bureau",
     "EXCEL_EXPORT": "Exporter vers un fichier excel",
-    "LOCATION":           "Lieu"
+    "LOCATION":           "Lieu",
+    "INVALID_FORM":       "Ce formulaire est invalide"
 }

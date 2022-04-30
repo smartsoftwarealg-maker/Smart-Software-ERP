@@ -15,3 +15,4 @@ export * from './lib/language.service';
 export * from './lib/utils';
 export * from './lib/customer-session.service';
 export * from './lib/paginator-persistence.service';
+export * from './lib/is-param.service';

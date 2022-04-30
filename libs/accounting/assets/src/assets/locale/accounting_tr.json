@@ -34,5 +34,7 @@
     "BUDGETABLE":            "",
     "MANAGE_PROJECTS":       "",
     "FOLIO":                 "",
-    "MANUAL_CASH_FLOW":      ""
+    "MANUAL_CASH_FLOW":      "",
+    "CHECKNO":               "",
+    "ANALYZE_CHECKS":        ""
 }

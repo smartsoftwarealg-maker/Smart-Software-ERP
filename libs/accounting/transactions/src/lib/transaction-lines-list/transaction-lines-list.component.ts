@@ -3,7 +3,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     ACCTransactionLine, AccTransactionLineService
 } from '@ss/accounting/accounting-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -15,6 +15,17 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
   styleUrls: ['./transaction-lines-list.component.scss']
 })
 export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTransactionLine> implements OnInit {
+    private exitButton: ToolbarButton = {
+        icon: 'fa-solid fa-person-from-portal',
+        label: 'COMMON_EXIT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => {
+            this.shellSrv.goBack();
+            this.shellSrv.updateShell();
+        }
+    };
     displayedColumns = [
         'lineNumber',
         'accountNo',
@@ -55,7 +66,8 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
                 this.parentId = +p['id'];
                 this.entitySrv.setParentId(this.parentId);
                 super.ngOnInit();
-            })
+            });
+        this.shellSrv.addButton(this.exitButton);
     }
 
     override selectRow(row: ACCTransactionLine) {
