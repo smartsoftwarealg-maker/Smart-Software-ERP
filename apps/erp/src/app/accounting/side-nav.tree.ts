@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ACC_ACCOUNT_URL,
+    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL,
     ABS_ACC_FILE_SELECTION_URL, ABS_ACC_FILES_URL,
     ABS_ACC_JOURNALS_URL, ABS_ACC_PERIOD_SELECTION_URL,
     ABS_ACC_TRANSACTIONS_URL,
@@ -30,6 +30,12 @@ export const accountingNavTree: SideNavNode = {
             name: 'LOGISTICS_ACCOUNTS',
             icon: 'fas fa-user-circle',
             route: ABS_ACC_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
+        {
+            name: 'ACC_ASSET_ACCOUNTS',
+            icon: 'fas fa-cogs',
+            route: ABS_ACC_ASSET_ACCOUNT_URL,
             accessRights: 'Account'
         },
         {

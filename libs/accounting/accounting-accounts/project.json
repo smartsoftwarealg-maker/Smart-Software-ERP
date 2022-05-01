@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/accounting/accounting-accounts",
+    "sourceRoot": "libs/accounting/accounting-accounts/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/accounting/accounting-accounts"],
+            "options": {
+                "jestConfig": "libs/accounting/accounting-accounts/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/accounting/accounting-accounts/src/**/*.ts",
+                    "libs/accounting/accounting-accounts/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

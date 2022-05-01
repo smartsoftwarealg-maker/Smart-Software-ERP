@@ -42,6 +42,9 @@
     "CHECKNO":               "Numéro de chèque",
     "ANALYZE_CHECKS":        "Analyser les chèques",
     "CC_REQUIRED":           "Le centre de coûts est requis",
-    "PERIOD_SELECTION":      "Sélection de la période"
+    "PERIOD_SELECTION":      "Sélection de la période",
+    "ASSET_ACCOUNTS":        "Comptes d'actifs",
+    "DEPRECIATION_ACCOUNT":  "Compte d'amortissement",
+    "ENDOWMENT_ACCOUNT":     "Compte de dotation"
 }
 
