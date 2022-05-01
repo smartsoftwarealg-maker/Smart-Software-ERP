@@ -72,3 +72,19 @@ mat-radio-group {
     justify-content: space-around;
     padding: 8px 0;
 }
+
+@media (max-width: 600px) {
+    .container {
+        height: 100%;
+        display: block;
+    }
+
+    .journals,
+    .transactions {
+        height: 250px;
+
+    }
+    .detail {
+        height: 100%;
+    }
+}

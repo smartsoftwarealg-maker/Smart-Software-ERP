@@ -41,5 +41,6 @@
     "MANUAL_CASH_FLOW":      "Manually manage cash flow",
     "CHECKNO":               "Check number",
     "ANALYZE_CHECKS":        "Analyze checks",
-    "CC_REQUIRED":           "Cost center is required"
+    "CC_REQUIRED":           "Cost center is required",
+    "PERIOD_SELECTION":      "Period selection"
 }

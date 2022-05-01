@@ -32,6 +32,11 @@ export const accRoutes: Routes = [
         canActivate: [CanActivateService]
     },
     {
+        path: ACC_PERIOD_SELECTOR_URL,
+        component: PeriodSelectorComponent,
+        canActivate: [CanActivateService]
+    },
+    {
         path: ACC_POLICIES_URL,
         component: AccPoliciesComponent,
         canActivate: [CanActivateService]
