@@ -66,9 +66,9 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.accPeriod.setValue(this.loginSrv.appCtx.accPeriod || 1);
     }
 
-    private selectFolder() {
+    selectFolder() {
         this.entitySrv
-            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, this.accPeriod.value)
+            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, 1)
             .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)))
             .subscribe(res => {
                 if (this.selectedRow) {

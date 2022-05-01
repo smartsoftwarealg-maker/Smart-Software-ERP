@@ -1,0 +1,15 @@
+.container {
+    max-width: 900px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mat-column-credit.mat-cell,
+.mat-column-debit.mat-cell {
+    justify-content: right;
+    padding: 0 8px;
+}
+
+.imbalance {
+   background: red;
+}

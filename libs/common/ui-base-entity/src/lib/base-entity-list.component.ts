@@ -137,6 +137,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             this.excelButton,
             this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
+        // this.filter = this.pagPersistSrv.getSearch(this.title);
         this.refresh();
     }
 
@@ -208,7 +209,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public ngOnDestroy() {
         this.releaseResources();
         this.shellSrv.reset();
-        this.pagPersistSrv.set(this.title, this.pagination);
+        this.pagPersistSrv.set(this.title, this.pagination, this.filter);
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

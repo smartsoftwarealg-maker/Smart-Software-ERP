@@ -41,6 +41,7 @@
     "MANUAL_CASH_FLOW":      "Gérer manuellement la trésorerie",
     "CHECKNO":               "Numéro de chèque",
     "ANALYZE_CHECKS":        "Analyser les chèques",
-    "CC_REQUIRED":           "Le centre de coûts est requis"
+    "CC_REQUIRED":           "Le centre de coûts est requis",
+    "PERIOD_SELECTION":      "Sélection de la période"
 }
 
