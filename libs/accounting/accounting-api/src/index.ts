@@ -10,3 +10,4 @@ export * from './lib/acc-transaction-lines.service';
 export * from './lib/annex-code.service';
 export * from './lib/asset-ends.service';
 export * from './lib/period-selector.service';
+export * from './lib/asset-ends.service';

@@ -42,5 +42,8 @@
     "CHECKNO":               "رقم الصك",
     "ANALYZE_CHECKS":        "تحليل الصكوك",
     "CC_REQUIRED":           "مطلوب مركز التكلفة",
-    "PERIOD_SELECTION":      "اختيار الدورة"
+    "PERIOD_SELECTION":      "اختيار الدورة",
+    "ASSET_ACCOUNTS":        "حسابات الأصول",
+    "DEPRECIATION_ACCOUNT":  "حساب الإهلاك",
+    "ENDOWMENT_ACCOUNT":     "حساب الوقف"
 }

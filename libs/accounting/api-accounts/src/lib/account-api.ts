@@ -2,6 +2,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AccountService} from './account.service';
 
 export const ACCOUNT_URL = '/accounts';
+export const ASSET_ACCOUNT_URL = '/accounts/assets';
 export const GENACCOUNT_URL = '/genaccounts';
 
 export interface Account {
@@ -19,6 +20,8 @@ export interface Account {
     treasuryAccount: boolean;
     journalId: number;
     ccRequired: boolean;
+    depreciation_account?: string;
+    endowment_account?: string;
 }
 
 export interface GenerationAccount {

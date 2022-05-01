@@ -4,6 +4,7 @@
         "accounting-acc-policies": "libs/accounting/acc-policies",
         "accounting-accounting-api": "libs/accounting/accounting-api",
         "accounting-accounting-journal": "libs/accounting/accounting-journal",
+        "accounting-accounting-accounts": "libs/accounting/accounting-accounts",
         "accounting-api-accounts": "libs/accounting/api-accounts",
         "accounting-assets": "libs/accounting/assets",
         "accounting-transactions": "libs/accounting/transactions",

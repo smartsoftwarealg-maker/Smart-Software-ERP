@@ -10,6 +10,7 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 // common
 export const LOOKUPS_URL = 'lookups';
 export const COMMON_ACCOUNT_URL = 'accounts';
+export const ASSET_ACCOUNT_URL = 'asset-accounts';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -236,6 +237,7 @@ export const ABS_ACC_TRANSACTIONS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL
 export const ABS_ACC_FILE_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILE_SELECTOR_URL].join('/');
 export const ABS_ACC_PERIOD_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PERIOD_SELECTOR_URL].join('/');
 export const ABS_ACC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_ACCOUNT_URL].join('/');
+export const ABS_ACC_ASSET_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ASSET_ACCOUNT_URL].join('/');
 
 
 //Logistics

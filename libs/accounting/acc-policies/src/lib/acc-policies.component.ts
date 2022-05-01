@@ -32,7 +32,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
         private journalSrv: AccJournalsService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_OPTIONS');
         detailSrv.setParentId(this.loginSrv.appCtx.center);
         this.id = this.loginSrv.appCtx.center;
     }
