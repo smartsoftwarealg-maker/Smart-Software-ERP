@@ -201,5 +201,6 @@
     "OFFICES": "Bureau",
     "EXCEL_EXPORT": "Exporter vers un fichier excel",
     "LOCATION":           "Lieu",
-    "INVALID_FORM":       "Ce formulaire est invalide"
+    "INVALID_FORM":       "Ce formulaire est invalide",
+    "PURCHASE":           "Achat"
 }

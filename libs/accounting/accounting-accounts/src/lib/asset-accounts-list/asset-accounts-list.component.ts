@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetAccountService} from '../../../../../accounting-api/src/lib/asset-account.service';
+import {AssetAccountService} from '@ss/accounting/accounting-api';
 
 @Component({
   selector: 'ss-asset-accounts-list',

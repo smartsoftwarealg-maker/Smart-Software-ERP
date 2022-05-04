@@ -45,6 +45,8 @@
     "PERIOD_SELECTION":      "Sélection de la période",
     "ASSET_ACCOUNTS":        "Comptes d'actifs",
     "DEPRECIATION_ACCOUNT":  "Compte d'amortissement",
-    "ENDOWMENT_ACCOUNT":     "Compte de dotation"
+    "ENDOWMENT_ACCOUNT":     "Compte de dotation",
+    "TRANSAC_ACCOUNTS":      "Comptes d'ecritures comptables",
+    "GENERATION_ACCOUNTS":   "Comptes de génération"
 }
 

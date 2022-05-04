@@ -12,6 +12,7 @@ export const ACC_CTX_URL            = '/ctx';
 export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
 export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
+export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 
 export interface ACCPolicy {
     id: number;
@@ -137,4 +138,10 @@ export interface PeriodSummary {
     debit:  number;
     credit: number;
     month?: string;
+}
+
+export interface TransacAccount {
+    id: number;
+    description: string;
+    accountno?: string;
 }

@@ -41,5 +41,7 @@
     "PERIOD_SELECTION":      "",
     "ASSET_ACCOUNTS":        "",
     "DEPRECIATION_ACCOUNT":  "",
-    "ENDOWMENT_ACCOUNT":     ""
+    "ENDOWMENT_ACCOUNT":     "",
+    "TRANSAC_ACCOUNTS":      "",
+    "GENERATION_ACCOUNTS":   ""
 }

@@ -45,5 +45,7 @@
     "PERIOD_SELECTION":      "اختيار الدورة",
     "ASSET_ACCOUNTS":        "حسابات الأصول",
     "DEPRECIATION_ACCOUNT":  "حساب الإهلاك",
-    "ENDOWMENT_ACCOUNT":     "حساب الوقف"
+    "ENDOWMENT_ACCOUNT":     "حساب الوقف",
+    "TRANSAC_ACCOUNTS":      "حسابات المعاملات المحاسبية",
+    "GENERATION_ACCOUNTS":   "حسابات الإنشاء الآلي"
 }
