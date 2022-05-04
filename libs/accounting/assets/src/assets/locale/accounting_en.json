@@ -45,5 +45,7 @@
     "PERIOD_SELECTION":      "Period selection",
     "ASSET_ACCOUNTS":        "Asset accounts",
     "DEPRECIATION_ACCOUNT":  "Depreciation account",
-    "ENDOWMENT_ACCOUNT":     "Endowment account"
+    "ENDOWMENT_ACCOUNT":     "Endowment account",
+    "TRANSAC_ACCOUNTS":      "Accounting transaction accounts",
+    "GENERATION_ACCOUNTS":   "Generation accounts"
 }

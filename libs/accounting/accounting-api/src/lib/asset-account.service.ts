@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Account, ASSET_ACCOUNT_URL} from '../../../accounting/api-accounts/src';
+import {Account, ASSET_ACCOUNT_URL} from '@ss/accounting/api-accounts';
 
 @Injectable({
     providedIn: 'root'

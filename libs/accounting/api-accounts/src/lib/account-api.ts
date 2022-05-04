@@ -32,6 +32,8 @@ export interface GenerationAccount {
     accType?: string;
     purchase?: string;
     description?: string;
+    supplier?: string;
+    sales?: string;
 }
 
 export const ACCOUNT_TYPES = {

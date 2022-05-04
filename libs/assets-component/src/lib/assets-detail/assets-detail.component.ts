@@ -96,7 +96,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
-            depreciationType: [b.depreciationType],
+            depreciationType: [b.depreciationType || 1],
             supplier: [b.supplier],
             originalSupplier: [b.originalSupplier],
             barcode: [b.barcode],
@@ -125,7 +125,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             old_depreciation: [b.old_depreciation || 0, Validators.required],
             outof_service: [b.outof_service || false, Validators.required],
             criticity: [b.criticity],
-            startYear: [b.startYear],
+            startYear: [b.startYear || 0],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -217,7 +217,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.order_date         =  asset.order_date       || null;
                 asset.office             =  asset.office           || null;
                 asset.sales_price        =  asset.sales_price      || null;
-                asset.investment_type    =  asset.investment_type  || null;
+                asset.investment_type    =  asset.investment_type  || 1;
                 asset.outof_service      =  !!asset.outof_service;
                 asset.criticity          =  asset.criticity        || null;
                 asset.accountId          =  asset.accountId        || null;

@@ -9,8 +9,10 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 
 // common
 export const LOOKUPS_URL = 'lookups';
-export const COMMON_ACCOUNT_URL = 'accounts';
-export const ASSET_ACCOUNT_URL = 'asset-accounts';
+export const COMMON_ACCOUNT_URL     = 'accounts';
+export const ASSET_ACCOUNT_URL      = 'asset-accounts';
+export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
+export const GENERATION_ACCOUNT_URL = 'generation-accounts';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -238,6 +240,8 @@ export const ABS_ACC_FILE_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_U
 export const ABS_ACC_PERIOD_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PERIOD_SELECTOR_URL].join('/');
 export const ABS_ACC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_ACCOUNT_URL].join('/');
 export const ABS_ACC_ASSET_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ASSET_ACCOUNT_URL].join('/');
+export const ABS_ACC_TRANSAC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, TRANSAC_ACCOUNT_URL].join('/');
+export const ABS_ACC_GENERATION_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 
 
 //Logistics

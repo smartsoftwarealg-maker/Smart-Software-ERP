@@ -8,6 +8,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import { AssetAccountsDetailComponent } from './asset-accounts-detail/asset-accounts-detail.component';
+import { TransacAccountsDetailComponent } from './transac-accounts-detail/transac-accounts-detail.component';
+import { TransacAccountsListComponent } from './transac-accounts-list/transac-accounts-list.component';
+import { GenerationAccountsListComponent } from './generation-accounts-list/generation-accounts-list.component';
+import { GenerationAccountsDetailComponent } from './generation-accounts-detail/generation-accounts-detail.component';
 
 @NgModule({
     imports: [
@@ -21,7 +25,11 @@ import { AssetAccountsDetailComponent } from './asset-accounts-detail/asset-acco
     ],
     declarations: [
       AssetAccountsListComponent,
-      AssetAccountsDetailComponent
+      AssetAccountsDetailComponent,
+      TransacAccountsDetailComponent,
+      TransacAccountsListComponent,
+      GenerationAccountsListComponent,
+      GenerationAccountsDetailComponent
     ],
 })
 export class AccountingAccountsModule {}

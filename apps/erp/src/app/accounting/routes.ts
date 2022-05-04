@@ -5,7 +5,7 @@ import {
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
     ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL,
-    COMMON_ACCOUNT_URL
+    COMMON_ACCOUNT_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -19,7 +19,14 @@ import {
     AccFileListComponent,
     AccFileDetailComponent
 } from '@ss/accounting/transactions';
-import {AssetAccountsListComponent, AssetAccountsDetailComponent} from '@ss/accounting/accounting-accounts';
+import {
+    AssetAccountsListComponent,
+    AssetAccountsDetailComponent,
+    TransacAccountsListComponent,
+    TransacAccountsDetailComponent,
+    GenerationAccountsListComponent,
+    GenerationAccountsDetailComponent
+} from '@ss/accounting/accounting-accounts';
 
 export const accRoutes: Routes = [
     {
@@ -53,6 +60,42 @@ export const accRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: TRANSAC_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransacAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: TransacAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: GENERATION_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: GenerationAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: GenerationAccountsDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

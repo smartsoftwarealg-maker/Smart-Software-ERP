@@ -193,5 +193,6 @@
     "OFFICES":          "",
     "EXCEL_EXPORT":     "",
     "LOCATION":           "Location",
-    "INVALID_FORM": ""
+    "INVALID_FORM": "",
+    "PURCHASE":          ""
 }

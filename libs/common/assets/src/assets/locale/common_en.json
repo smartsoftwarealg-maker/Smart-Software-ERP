@@ -200,5 +200,6 @@
     "OFFICES": "Offices",
     "LOCATION":           "Location",
     "EXCEL_EXPORT": "Export to excel file",
-    "INVALID_FORM": "This form is invalid"
+    "INVALID_FORM": "This form is invalid",
+    "PURCHASE":          "Purchase"
 }
