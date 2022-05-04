@@ -21,6 +21,16 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'ACCJournal'
         },
         {
+            name: 'ACC_FILE_SELECTOR',
+            icon: 'fa-solid fa-folder-open',
+            route: ABS_ACC_FILE_SELECTION_URL
+        },
+        {
+            name: 'ACC_PERIOD_SELECTION',
+            icon: 'fa-solid fa-folder-open',
+            route: ABS_ACC_PERIOD_SELECTION_URL
+        },
+        {
             name: 'ACC_JOURNALS',
             icon: 'fas fa-books',
             route: ABS_ACC_JOURNALS_URL,
@@ -37,16 +47,6 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fas fa-cogs',
             route: ABS_ACC_ASSET_ACCOUNT_URL,
             accessRights: 'Account'
-        },
-        {
-            name: 'ACC_FILE_SELECTOR',
-            icon: 'fa-solid fa-folder-open',
-            route: ABS_ACC_FILE_SELECTION_URL
-        },
-        {
-            name: 'ACC_PERIOD_SELECTION',
-            icon: 'fa-solid fa-folder-open',
-            route: ABS_ACC_PERIOD_SELECTION_URL
         },
         {
             name: 'ACC_TRANSACTIONS',
