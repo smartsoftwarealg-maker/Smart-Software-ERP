@@ -28,6 +28,6 @@
     "BLOCKINGS":          "Blocking",
     "COST_TYPES":         "Cost types",
     "REVALUATION_TYPES":  "Revaluation types",
-    "LOCATIONS":          "Asset locations",
+    "LOCATIONS":          "Locations",
     "IMPORT":             "Integrate from another center"
 }

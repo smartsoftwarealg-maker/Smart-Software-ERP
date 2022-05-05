@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL,
+    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL, ABS_ACC_CASHFLOW_ACCOUNT_URL,
     ABS_ACC_FILE_SELECTION_URL, ABS_ACC_FILES_URL, ABS_ACC_GENERATION_ACCOUNT_URL,
     ABS_ACC_JOURNALS_URL, ABS_ACC_PERIOD_SELECTION_URL, ABS_ACC_TRANSAC_ACCOUNT_URL,
     ABS_ACC_TRANSACTIONS_URL,
@@ -59,6 +59,12 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-wind-turbine',
             route: ABS_ACC_GENERATION_ACCOUNT_URL,
             accessRights: 'Account'
+        },
+        {
+            name: 'ACC_CASHFLOW_ACCOUNTS',
+            icon: 'fa-solid fa-cash-register',
+            route: ABS_ACC_CASHFLOW_ACCOUNT_URL,
+            accessRights: 'Cashflow'
         },
         {
             name: 'ACC_TRANSACTIONS',

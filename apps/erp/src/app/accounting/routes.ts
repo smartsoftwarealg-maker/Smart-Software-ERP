@@ -4,7 +4,7 @@ import {
     ACC_FILE_SELECTOR_URL, ACC_FILES_URL,
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
-    ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL,
+    ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
@@ -25,7 +25,7 @@ import {
     TransacAccountsListComponent,
     TransacAccountsDetailComponent,
     GenerationAccountsListComponent,
-    GenerationAccountsDetailComponent
+    GenerationAccountsDetailComponent, CashflowAccountsListComponent, CashflowAccountsDetailComponent
 } from '@ss/accounting/accounting-accounts';
 
 export const accRoutes: Routes = [
@@ -96,6 +96,24 @@ export const accRoutes: Routes = [
             {
                 path: ':id',
                 component: GenerationAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: CASHFLOW_ACCOUNTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CashflowAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: CashflowAccountsDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

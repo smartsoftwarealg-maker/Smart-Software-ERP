@@ -13,6 +13,7 @@ export const COMMON_ACCOUNT_URL     = 'accounts';
 export const ASSET_ACCOUNT_URL      = 'asset-accounts';
 export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
 export const GENERATION_ACCOUNT_URL = 'generation-accounts';
+export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -242,6 +243,7 @@ export const ABS_ACC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL,
 export const ABS_ACC_ASSET_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ASSET_ACCOUNT_URL].join('/');
 export const ABS_ACC_TRANSAC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, TRANSAC_ACCOUNT_URL].join('/');
 export const ABS_ACC_GENERATION_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, GENERATION_ACCOUNT_URL].join('/');
+export const ABS_ACC_CASHFLOW_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, CASHFLOW_ACCOUNTS_URL].join('/');
 
 
 //Logistics
