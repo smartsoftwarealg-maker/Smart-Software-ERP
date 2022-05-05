@@ -12,6 +12,8 @@ import { TransacAccountsDetailComponent } from './transac-accounts-detail/transa
 import { TransacAccountsListComponent } from './transac-accounts-list/transac-accounts-list.component';
 import { GenerationAccountsListComponent } from './generation-accounts-list/generation-accounts-list.component';
 import { GenerationAccountsDetailComponent } from './generation-accounts-detail/generation-accounts-detail.component';
+import { CashflowAccountsDetailComponent } from './cashflow-accounts-detail/cashflow-accounts-detail.component';
+import { CashflowAccountsListComponent } from './cashflow-accounts-list/cashflow-accounts-list.component';
 
 @NgModule({
     imports: [
@@ -29,7 +31,9 @@ import { GenerationAccountsDetailComponent } from './generation-accounts-detail/
       TransacAccountsDetailComponent,
       TransacAccountsListComponent,
       GenerationAccountsListComponent,
-      GenerationAccountsDetailComponent
+      GenerationAccountsDetailComponent,
+      CashflowAccountsDetailComponent,
+      CashflowAccountsListComponent
     ],
 })
 export class AccountingAccountsModule {}
