@@ -25,11 +25,19 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="collective">
+            <ng-container matColumnDef="specialFixed">
                 <mat-header-cell *matHeaderCellDef translate>REMUN_SPECIAL_FIXED</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
-                                  [checked]="e.collective"></mat-checkbox>
+                                  [checked]="e.specialFixed"></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="common">
+                <mat-header-cell *matHeaderCellDef translate>REMUN_COLLECTIVE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                                  [checked]="e.common"></mat-checkbox>
                 </mat-cell>
             </ng-container>
 

@@ -77,5 +77,8 @@
     "FOLLOWUP": "Follow up",
     "STRICT_POSITIVE": "Greater than zero",
     "ARCHIVE_GENERATOR": "Archive generator",
-    "LOAN":              "Loan"
+    "LOAN":              "Loan",
+    "PAYMENT_INFO":      "Payment information",
+    "CACO_FUND":         "CACOBABPT",
+    "UPDATE_ALL":        "Update all"
 }

@@ -77,5 +77,8 @@
     "FOLLOWUP": "التابع",
     "STRICT_POSITIVE": "أكبر من الصفر",
     "ARCHIVE_GENERATOR": "منشئ الأرشيف",
-    "LOAN":              "القرض"
+    "LOAN":              "القرض",
+    "PAYMENT_INFO":      "معلومات الدفع",
+    "CACO_FUND":         "الكوكبات",
+    "UPDATE_ALL":        "تحديث الجميع"
 }
