@@ -107,10 +107,10 @@ export interface Career {
     decision_date: string;
 
     // todo: add these fields
-    // motive               : Option[Int] = None,
-    // workshop             : Option[Int] = None,
-    // cost_center          : Option[Int] = None,
-    // qualification        : Option[Int] = None,
+    // motive               ?: number;
+    // workshop             ?: number;
+    // cost_center          ?: number;
+    // qualification        ?: number;
     // responsible          : Option[Long] = None,
 }
 
@@ -212,4 +212,15 @@ export interface PersonSummary {
     contractType: string;
     categSection: string;
     rank: string;
+}
+
+export interface PaymentInfo {
+    id: number;
+    employee: number;
+    maritalStatus?: number;
+    fund1?: number;
+    fund2?: number;
+    bank?: number;
+    accountno?: string;
+    paymode?: number;
 }

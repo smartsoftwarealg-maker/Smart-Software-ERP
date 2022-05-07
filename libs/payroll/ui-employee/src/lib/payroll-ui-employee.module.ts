@@ -33,6 +33,7 @@ import { EmployeeOldCareerDetailComponent } from './employee-old-career/employee
 import { EmployeeDecisionDetailComponent } from './employee-decisions/employee-decision-detail.component';
 import { EmployeeDecisionListComponent } from './employee-decisions/employee-decision-list.component';
 import { PersonListComponent } from './person-list/person-list.component';
+import { PaymentInfoComponent } from './payment-info/payment-info.component';
 
 @NgModule({
     imports: [
@@ -83,7 +84,8 @@ import { PersonListComponent } from './person-list/person-list.component';
         EmployeeOldCareerDetailComponent,
         EmployeeDecisionDetailComponent,
         EmployeeDecisionListComponent,
-        PersonListComponent
+        PersonListComponent,
+        PaymentInfoComponent
      ]
 })
 export class PayrollUiEmployeeModule {

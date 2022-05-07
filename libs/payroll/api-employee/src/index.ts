@@ -17,3 +17,5 @@ export * from './lib/employee-languages.service';
 export * from './lib/employee-old-career.service';
 export * from './lib/employee-decision.service';
 export * from './lib/person-list.service';
+export * from './lib/payment-info.service';
+export * from './lib/fund.service';
