@@ -105,15 +105,15 @@
                                         style="display: inline-block; justify-self: center">
                         </ss-image-input>
                         <div class="slip-info">
-                            <div >
+                            <div>
                                 <span translate>PAYROLL_ID</span>
                                 <span class="bold-element">: {{ selectedRow?.id }} </span>
                             </div>
-                            <div >
+                            <div>
                                 <span translate>PAYROLL_LAST_NAME</span>
                                 <span class="bold-element">: {{ selectedRow?.lastName }}</span>
                             </div>
-                            <div >
+                            <div>
                                 <span translate>PAYROLL_FIRST_NAME</span>
                                 <span class="bold-element">: {{ selectedRow?.firstName }}</span>
                             </div>
@@ -167,6 +167,34 @@
                         <mat-header-row *matHeaderRowDef="slipColumns; sticky: true"></mat-header-row>
                         <mat-row class="selectable" *matRowDef="let row; columns: slipColumns;"></mat-row>
                     </mat-table>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span translate>REMUN_COLLECTIVE</span>
+                </ng-template>
+                <div class="collective">
+                    <form *ngIf="form !== null" novalidate [formGroup]="form">
+                        <mat-form-field class="default-50 small-100">
+                            <mat-label translate>REMUN_FIELD</mat-label>
+                            <ss-auto-complete matInput
+                                              [required]="true"
+                                              [model]="commonElementsLookup"
+                                              formControlName="field">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <mat-form-field class="default-50 small-100">
+                            <mat-label translate>COMMON_VALUE</mat-label>
+                            <input matInput
+                                   class="default-100"
+                                   formControlName="value"
+                                   type="number"
+                                   step="0.01">
+                        </mat-form-field>
+                        <div class="button-div default-100">
+                            <button mat-raised-button color="primary" (click)="updateCommon()" translate>REMUN_UPDATE_ALL</button>
+                        </div>
+                    </form>
                 </div>
             </mat-tab>
             <mat-tab>

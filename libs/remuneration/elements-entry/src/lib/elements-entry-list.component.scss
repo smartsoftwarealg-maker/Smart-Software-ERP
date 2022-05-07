@@ -60,6 +60,7 @@ body, html{
     height: calc(100vh - 200px);
     display: flex;
     flex-flow: row;
+    padding-top: 16px;
 }
 .slip-table {
     width: 100%;
@@ -120,6 +121,20 @@ mat-header-cell {
 .mat-column-post {
     flex: 0 0 250px;
     font-size: small;
+}
+
+.collective {
+    width: 100%;
+    height: calc(100vh - 200px);
+    padding-top: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.button-div {
+    display: flex;
+    justify-content: end;
+    width: 100%;
 }
 
 .total-cell {

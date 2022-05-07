@@ -18,10 +18,16 @@
                 <mat-checkbox formControlName="fixed" translate>REMUN_FIXED</mat-checkbox>
             </div>
 
+
             <div class="default-50 sm-100">
-                <mat-checkbox formControlName="collective" translate>REMUN_SPECIAL_FIXED</mat-checkbox>
+                <mat-checkbox formControlName="specialFixed" translate>REMUN_SPECIAL_FIXED</mat-checkbox>
             </div>
 
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="common" translate>REMUN_COLLECTIVE</mat-checkbox>
+            </div>
+
+            <span class="default-100"></span>
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>REMUN_MIN</mat-label>
                 <input matInput formControlName="minValue" type="number" >
