@@ -16,6 +16,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
 })
 export class EmployeeCareerListComponent implements OnInit, OnDestroy {
     private _activePersonnel = true;
+    private _hrMode          = true;
 
     @Input()
     set activePersonnel(active: boolean) {
@@ -30,6 +31,14 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
         this.entitySrv.setParentId(id);
     }
 
+    @Input()
+    set hrMode(mode: boolean) {
+        this._hrMode = mode;
+    }
+
+    get hrMode() {
+        return this._hrMode;
+    }
     public displayedColumns = [
         'from_date',
         'to_date',
