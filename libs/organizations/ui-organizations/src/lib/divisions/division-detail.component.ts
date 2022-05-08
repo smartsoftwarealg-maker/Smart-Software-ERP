@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Division, Service, Department, Office, Lookup, DivisionService } from '@ss/organizations/api-organizations';
+import { Division, DivisionService } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
 
@@ -18,7 +18,6 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
 
     public form: FormGroup = null;
     public saving: boolean = false;
-//    public parentId: number = 0;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(
@@ -27,9 +26,9 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
+        private employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
-        private employeeSrv: EmployeeService) {
+        public confirmationSrv: ConfirmationDialogService) {
         super(divisionsSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DIVISION');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
@@ -43,7 +42,6 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
 
     public readForm(): Division {
         const formVal = this.form.value as Division;
-//        formVal.division = this.parentId;
         return formVal;
     }
 }

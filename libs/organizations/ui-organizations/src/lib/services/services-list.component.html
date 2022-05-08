@@ -10,20 +10,13 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="department">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DEPARTMENT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ departments[e.department] }}
-                </mat-cell>
-            </ng-container>
-
             <ng-container matColumnDef="responsible">
-                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_RESPONSIBLE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_RESPONSIBLE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.responsibleName }}
                 </mat-cell>
             </ng-container>
-
+            
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>

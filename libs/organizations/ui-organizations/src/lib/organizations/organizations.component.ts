@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService, LanguageService } from '@ss/common/api-common';
-import { DIVISIONS_URL, Division, Service, Department, DEPARTMENTS_URL, SERVICES_URL, Office, OFFICES_URL, Lookup } from '@ss/organizations/api-organizations';
-import { switchMap } from 'rxjs';
+import { Lookup, ORGANIZATION_URL, Organization } from '@ss/organizations/api-organizations';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,6 +10,9 @@ import { TreeNode } from 'angular13-organization-chart';
 import { EmployeeService, Employee } from '@ss/payroll/api-employee';
 import { ImageModel } from '@ss/common/ui-image-input';
 import {ActivatedRoute} from '@angular/router';
+import { DivisionService, DepartmentService, ServiceService, OfficeService, Division, Department, Service, Office } from '@ss/common/api-lookup';
+import { switchMap, tap } from 'rxjs/operators';
+import { Level } from './common';
 
 interface OrgTreeNode extends TreeNode {
     id: number;
@@ -21,14 +23,6 @@ interface OrgTreeNode extends TreeNode {
     children: OrgTreeNode[];
 }
 
-enum Level {
-    None = -1,
-    Root = 0,
-    Division = 1,
-    Department = 2,
-    Service = 3,
-    Office = 4
-}
 
 @Component({
     selector: 'ss-organizations',
@@ -42,6 +36,10 @@ export class OrganizationsComponent implements OnInit {
                 private matDialog: MatDialog,
                 private snackBarSrv: SnackBarService,
                 private personSrv: EmployeeService,
+                private divisionsSrv: DivisionService,
+                private departmentSrv: DepartmentService,
+                private serviceSrv: ServiceService,
+                private officeSrv: OfficeService,
                 private route: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService,
                 private langSrv: LanguageService) { }
@@ -105,38 +103,60 @@ export class OrganizationsComponent implements OnInit {
         const divisions: { [key: number]: OrgTreeNode; } = {};
         const departments: { [key: number]: OrgTreeNode; } = {};
         const services: { [key: number]: OrgTreeNode; } = {};
-        this.httpSrv.get<Division[]>(DIVISIONS_URL)
+        const offices: { [key: number]: OrgTreeNode; } = {};
+        this.divisionsSrv.getListSimple()
             .pipe(
-                switchMap((divs: Division[]) => {
-                    this.root.children = divs.map(d => {
-                        const node = this.lookupToChartNode(d.id, d.description, 0, d.responsible, Level.Division);
+                tap(ds => {
+                    ds.forEach((d: Division) => {
+                        const node = this.lookupToChartNode(d.id, d.description, null, d.responsible, Level.Division);
                         divisions[d.id] = node;
-                        this.loadPersonName(d.responsible);
-                        return node;
+                        this.root.children.push(node);
                     });
-                    return this.httpSrv.get<Department[]>(DEPARTMENTS_URL[0] + 0 + DEPARTMENTS_URL[1]);
                 }),
-                switchMap((ds: Department[]) => {
+                switchMap(() => this.departmentSrv.getListSimple()),
+                tap(ds => {
                     ds.forEach(d => {
-                        const node = this.lookupToChartNode(d.id, d.description, d.division, d.responsible, Level.Department);
-                        departments[d.id] = node;
-                        divisions[d.division]?.children.push(node);
-                        this.loadPersonName(d.responsible);
+                        departments[d.id] = this.lookupToChartNode(d.id, d.description, null, d.responsible, Level.Department);
                     });
-                    return this.httpSrv.get<Service[]>(SERVICES_URL[0] + 0 + SERVICES_URL[1]);
                 }),
-                switchMap((srv: Service[]) => {
-                    srv.forEach(s => {
-                        const node = this.lookupToChartNode(s.id, s.description, s.department, s.responsible, Level.Service);
-                        services[s.id] = node;
-                        departments[s.department]?.children.push(node);
-                        this.loadPersonName(s.responsible);
+                switchMap(() => this.serviceSrv.getListSimple()),
+                tap(ss => {
+                    ss.forEach((s: Service) => {
+                        services[s.id] = this.lookupToChartNode(s.id, s.description, null, s.responsible, Level.Service);
                     });
-                    return this.httpSrv.get<Office[]>(OFFICES_URL[0] + 0 + OFFICES_URL[1]);
-                })
-            ).subscribe((offices: Office[]) => {
-                offices.forEach(o => {
-                    services[o.service]?.children.push(this.lookupToChartNode(o.id, o.description, o.service, null, Level.Office));
+                }),
+                switchMap(() => this.officeSrv.getListSimple()),
+                tap(os => {
+                    os.forEach((o: Office) => {
+                        offices[o.id] = this.lookupToChartNode(o.id, o.description, null, o.responsible, Level.Office);
+                    });
+                }),
+                switchMap(() => this.httpSrv.get<Organization[]>(ORGANIZATION_URL))
+            )
+            .subscribe((organizations: Organization[]) => {
+                organizations.forEach(org => {
+                    // todo: add person
+                    if (org.division) {
+                        // don't do shit!
+                    } else if (org.department) {
+                        const p = divisions[org.parentId];
+                        const c = departments[org.department];
+                        if (p && c) {
+                            p.children.push(c);
+                        }
+                    } else if (org.service) {
+                        const p = departments[org.parentId];
+                        const c = services[org.service];
+                        if (p && c) {
+                            p.children.push(c);
+                        }
+                    } else if (org.office) {
+                        const p = services[org.parentId];
+                        const c = offices[org.office];
+                        if (p && c) {
+                            p.children.push(c);
+                        }
+                    }
                 });
                 this.shellSrv.setLoading(false);
             });
@@ -162,7 +182,7 @@ export class OrganizationsComponent implements OnInit {
             imgModel = new ImageModel(this.httpSrv);
             imgModel.readOnly = true;
             imgModel.setImageUrl(this.personSrv.getPhotoUrl(responsibleId), false);
-            //console.log(this.httpSrv.baseUrl + this.personSrv.getPhotoUrl(responsibleId));
+            this.loadPersonName(responsibleId);
         }
         const node: OrgTreeNode = {
             id: id,
@@ -180,7 +200,6 @@ export class OrganizationsComponent implements OnInit {
     }
 
     select(node: OrgTreeNode, level: Level) {
-        console.log(node);
         if (level === this.selectedLevel && this.selected != null && node.id === this.selected.id) {
             this.deselect();
             this.updateUi();
@@ -209,22 +228,8 @@ export class OrganizationsComponent implements OnInit {
         this.shellSrv.updateShell();
     }
 
-    getSelectedEntityUrl(): string {
-        switch (this.selectedLevel) {
-            case Level.Division:
-                return DIVISIONS_URL;
-            case Level.Department:
-                return DEPARTMENTS_URL[0] + this.selected.parentId + DEPARTMENTS_URL[1];
-            case Level.Service:
-                return SERVICES_URL[0] + this.selected.parentId + SERVICES_URL[1];
-            case Level.Office:
-                return OFFICES_URL[0] + this.selected.parentId + OFFICES_URL[1];
-        }
-        return null;
-    }
-
     public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
+        /*this.confirmationSrv.confirmDelete()
             .subscribe((b: boolean) => {
                 if (b) {
                     if (this.selected && this.selected.id > 0) {
@@ -243,76 +248,21 @@ export class OrganizationsComponent implements OnInit {
                             );
                     }
                 }
-            });
-
+            });*/
     }
 
     public showDetail(create: boolean): void {
-        let lookup: Division | Department | Service | Office = { id: 0, description: '', responsible: null };
-        let title = '';
-        let url = '';
-        switch (this.selectedLevel) {
-            case Level.Root:
-                if (create) {
-                    title = 'COMMON_EDIT_DIVISION';
-                    url = DIVISIONS_URL;
-                    lookup = { id: 0, description: '', responsible: null };
-                } else {
-                    return;
-                }
-                break;
-            case Level.Division:
-                if (create) {
-                    title = 'COMMON_EDIT_DEPARTMENT';
-                    url = DEPARTMENTS_URL[0] + this.selected.id + DEPARTMENTS_URL[1];
-                    lookup = { id: 0, description: '', division: this.selected.id, responsible: null };
-                } else {
-                    title = 'COMMON_EDIT_DIVISION';
-                    url = DIVISIONS_URL;
-                    lookup = { id: this.selected.id, description: this.selected.name, responsible: this.selected.responsible };
-                }
-                break;
-            case Level.Department:
-                if (create) {
-                    title = 'COMMON_EDIT_SERVICE';
-                    url = SERVICES_URL[0] + this.selected.id + SERVICES_URL[1];
-                    lookup = { id: 0, description: '', department: this.selected.id, responsible: null };
-                } else {
-                    title = 'COMMON_EDIT_DEPARTMENT';
-                    url = DEPARTMENTS_URL[0] + this.selected.parentId + DEPARTMENTS_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, division: this.selected.parentId, responsible: this.selected.responsible };
-                }
-                break;
-            case Level.Service:
-                if (create) {
-                    title = 'COMMON_EDIT_OFFICE';
-                    url = OFFICES_URL[0] + this.selected.id + OFFICES_URL[1];
-                    lookup = { id: 0, description: '', service: this.selected.id, responsible: null };
-                } else {
-                    title = 'COMMON_EDIT_SERVICE';
-                    url = SERVICES_URL[0] + this.selected.parentId + SERVICES_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, department: this.selected.parentId, responsible: this.selected.responsible };
-                }
-                break;
-            case Level.Office:
-                if (!create) {
-                    title = 'COMMON_EDIT_OFFICE';
-                    url = OFFICES_URL[0] + this.selected.parentId + OFFICES_URL[1];
-                    lookup = { id: this.selected.id, description: this.selected.name, service: this.selected.parentId, responsible: null };
-                } else {
-                    return;
-                }
-                break;
-            default: return;
+        if (!this.selected || !this.selectedLevel) {
+            return;
         }
+
         const config = new MatDialogConfig();
         config.disableClose = true;
         config.width = '400px';
         config.maxWidth = '100%';
         config.data = {
-            url: url,
-            title: title,
-            lookup: lookup
+            id: this.selected.id,
+            level: this.selectedLevel,
         };
         this.matDialog.open(OrganizationsDetailComponent, config)
             .afterClosed()

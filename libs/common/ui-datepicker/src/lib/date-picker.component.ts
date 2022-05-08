@@ -129,10 +129,20 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     @ViewChild('textField', { static: true }) textField: ElementRef;
 
-
-
     /** The value of the control. */
     date: Date;
+    minValue: Date;
+    maxValue: Date;
+
+    @Input()
+    set minDate(d: Date) {
+        this.minDate = d;
+    }
+
+    @Input()
+    set maxDate(d: Date) {
+        this.maxValue = d;        
+    }
 
     /**
      * Stream that emits whenever the state of the control changes such that the parent `MatFormField`
@@ -192,6 +202,12 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.onChange(d);
     }
 
+    checkDateRange(): boolean {
+        return this.date == null
+            || (this.minDate != null && this.minDate.getTime() <= this.date.getTime())
+            || (this.maxDate != null && this.maxDate.getTime() >= this.date.getTime());
+    }
+
     // value accessor
     writeValue(obj: any): void {
         if (obj == null) {
@@ -206,7 +222,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         } else {
             this.date = null;
         }
-        const outForm = this.toOutputFormat(obj);
+        this.checkDateRange();
+        const outForm = this.toOutputFormat(this.date);
         if (obj !== outForm) {
             this.onChange(outForm);
         }
@@ -231,6 +248,12 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     ngDoCheck(): void {
         if (this.ngControl) {
             this.errorState = this.ngControl.invalid && this.ngControl.touched;
+            if (!this.checkDateRange()) {
+                this.errorState = true;
+                this.ngControl.errors.range = true;
+            } else {
+                delete this.ngControl.errors.range;
+            }
             if (this.lastErrorState !== this.errorState) {
                 this.stateChanges.next();
                 this.lastErrorState = this.errorState;
@@ -251,15 +274,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             return null;
         }
         if (this.outputFormat === 'dateStr') {
-            if (isString(obj)) {
-                return removeTimeForDateStr(obj);
-            }
             return this.time ? dateTimeToYmdStr(obj) : dateToYmdStr(obj);
         }
         if (this.outputFormat === 'dateObject') {
-            if (isString(obj)) {
-                return this.time ? strToDateTime(obj) : strToDate(obj);
-            }
             return obj;
         }
         throw new Error('DatePicker does not know outputFormat: ' + this.outputFormat);

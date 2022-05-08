@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Division, Department, DivisionService, DepartmentService, DivisionsAutoCompleteModel } from '@ss/organizations/api-organizations';
+import { Observable, of } from 'rxjs';
+import { DepartmentService, Department } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
-import { Observable, of } from 'rxjs';
 
 @Component({
     selector: 'ss-department-detail',
@@ -20,7 +20,6 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
     public form: FormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
-    public divisionAutoCompleteModel: DivisionsAutoCompleteModel;
 
     constructor(
         public departementSrv: DepartmentService,
@@ -28,12 +27,11 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
+        private employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
-        private employeeSrv: EmployeeService) {
+        public confirmationSrv: ConfirmationDialogService) {
         super(departementSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTMENT');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
-        this.divisionAutoCompleteModel = new DivisionsAutoCompleteModel(this.httpSrv);
     }
 
     protected getRouteParam(): Observable<any> {
@@ -45,7 +43,6 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         console.log(a);
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            division: [a.division, Validators.required],
             responsible: [a.responsible, Validators.required]
         });
     }

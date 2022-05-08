@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { Lookup, DepartmentsService, DivisionService, ServicesService } from './internal.services';
+import { Lookup, DepartmentService, DivisionService, ServiceService } from '@ss/common/api-lookup';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class DivisionsAutoCompleteModel extends DefaultAutoCompleteModel<Lookup>
 export class DepartmentAutoCompleteModel extends DefaultAutoCompleteModel<Lookup> {
 
     constructor(srv: HttpService) {
-        super(new DepartmentsService(srv));
+        super(new DepartmentService(srv));
     }
 }
 
@@ -29,6 +29,6 @@ export class DepartmentAutoCompleteModel extends DefaultAutoCompleteModel<Lookup
 export class ServiceAutoCompleteModel extends DefaultAutoCompleteModel<Lookup> {
 
     constructor(srv: HttpService) {
-        super(new ServicesService(srv));
+        super(new ServiceService(srv));
     }
 }

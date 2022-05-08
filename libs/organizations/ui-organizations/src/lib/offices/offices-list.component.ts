@@ -5,15 +5,11 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LanguageService, PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AgentService} from '@ss/logistics/api-agent';
-import { Office as IOffice, ServiceService, OfficeService } from '@ss/organizations/api-organizations';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Observable, of, forkJoin } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { EmployeeService } from '@ss/payroll/api-employee';
-
-interface Office extends IOffice {
-    responsibleName?: string;
-}
+import { OfficeService, Office } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-offices-list',
@@ -24,14 +20,12 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     displayedColumns = [
         'description',
-        'service',
         'responsible'
     ];
     services: { [key: number]: string} = {};
 
     constructor(
         public officeSrv: OfficeService,
-        public serviceSrv: ServiceService,
         public employeeSrv: EmployeeService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -52,26 +46,13 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         console.log('ngOnInit');
     }
 
-    public preload(): Observable<any> {
-        this.officeSrv.setParentId(0);
-        this.serviceSrv.setParentId(0);
-        return of(null);
-    }
-
     public processLoadedData(data: Office[]): Observable<Office[]> {
-        this.services = {};
-        return data.length == 0 ? of(data) : forkJoin(
-                data.map(d =>
-                    d.responsible
-                        ? this.employeeSrv.get(d.responsible)
-                            .pipe(tap(p => d.responsibleName = this.langSrv.formatFullName(p.firstName, p.lastName)))
-                        : of(null)
-                )
-        ).pipe(
-            switchMap(() => this.serviceSrv.getList(0, 49)),
-            tap(divs => divs.body.forEach(e => this.services[e.id] = e.description)),
-            switchMap(() => of(data))
+        data.forEach(d =>
+            d.responsible
+                ? this.employeeSrv.get(d.responsible).subscribe(p => d.responsibleName = this.langSrv.formatFullName(p.firstName, p.lastName))
+                : of(null)
         );
+        return of(data);
     }
 
 }

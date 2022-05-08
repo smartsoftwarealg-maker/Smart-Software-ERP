@@ -3,6 +3,7 @@
        [value]="date"
        (keyup)="onKeyUp($event)"
        (dateChange)="onDateChanged($event.value)"
+       [min]="minDate" [max]="maxDate"
        [required]="isRequired">
 <button class="toggleButton abs-end-0" type="button" [disabled]="isDisabled" mat-icon-button datepicker-toggle
         (click)="datePicker.open()">
