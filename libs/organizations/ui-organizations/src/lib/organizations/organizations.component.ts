@@ -9,7 +9,7 @@ import { OrganizationsDetailComponent } from './organizations-detail.component';
 import { TreeNode } from 'angular13-organization-chart';
 import { EmployeeService, Employee } from '@ss/payroll/api-employee';
 import { ImageModel } from '@ss/common/ui-image-input';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DivisionService, DepartmentService, ServiceService, OfficeService, Division, Department, Service, Office } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import { Level } from './common';
@@ -32,17 +32,17 @@ interface OrgTreeNode extends TreeNode {
 export class OrganizationsComponent implements OnInit {
 
     constructor(private httpSrv: HttpService,
-                private shellSrv: ShellService,
-                private matDialog: MatDialog,
-                private snackBarSrv: SnackBarService,
-                private personSrv: EmployeeService,
-                private divisionsSrv: DivisionService,
-                private departmentSrv: DepartmentService,
-                private serviceSrv: ServiceService,
-                private officeSrv: OfficeService,
-                private route: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService,
-                private langSrv: LanguageService) { }
+        private shellSrv: ShellService,
+        private matDialog: MatDialog,
+        private snackBarSrv: SnackBarService,
+        private personSrv: EmployeeService,
+        private divisionsSrv: DivisionService,
+        private departmentSrv: DepartmentService,
+        private serviceSrv: ServiceService,
+        private officeSrv: OfficeService,
+        private route: ActivatedRoute,
+        private confirmationSrv: ConfirmationDialogService,
+        private langSrv: LanguageService) { }
 
     readonly defaultStyle = '';
 
@@ -50,7 +50,7 @@ export class OrganizationsComponent implements OnInit {
 
     selected: OrgTreeNode;
     selectedLevel: Level = Level.None;
-    people: { [key: number]: string} = {};
+    people: { [key: number]: string } = {};
 
     public addButton: ToolbarButton = {
         icon: 'fas fa-plus',
@@ -170,13 +170,13 @@ export class OrganizationsComponent implements OnInit {
     }
 
     lookupToChartNode(id: number, description: string, parent: number, responsibleId: number, level: Level): OrgTreeNode {
-//        const types = [
-//           ' ',
-//           'COMMON_DIVISION',
-//           'COMMON_DEPARTMENT',
-//           'COMMON_SERVICE',
-//           'COMMON_OFFICE'
-//        ];
+        //        const types = [
+        //           ' ',
+        //           'COMMON_DIVISION',
+        //           'COMMON_DEPARTMENT',
+        //           'COMMON_SERVICE',
+        //           'COMMON_OFFICE'
+        //        ];
         let imgModel = null;
         if (responsibleId) {
             imgModel = new ImageModel(this.httpSrv);
@@ -190,7 +190,7 @@ export class OrganizationsComponent implements OnInit {
             // chart fields
             responsible: responsibleId,
             name: description,
-//            type: this.langSrv.translate(types[level]),
+            //            type: this.langSrv.translate(types[level]),
             css: this.defaultStyle,
             imageModel: imgModel,
             children: []
@@ -229,12 +229,12 @@ export class OrganizationsComponent implements OnInit {
     }
 
     public deleteSelected(): void {
-        /*this.confirmationSrv.confirmDelete()
+        this.confirmationSrv.confirmDelete()
             .subscribe((b: boolean) => {
                 if (b) {
                     if (this.selected && this.selected.id > 0) {
                         this.shellSrv.setLoading(true);
-                        this.httpSrv.remove(this.getSelectedEntityUrl() + '/' + this.selected.id)
+                        this.httpSrv.remove(ORGANIZATION_URL + '/' + this.selected.id)
                             .subscribe(
                                 () => {
                                     this.snackBarSrv.showSuccessMessage();
@@ -248,7 +248,7 @@ export class OrganizationsComponent implements OnInit {
                             );
                     }
                 }
-            });*/
+            });
     }
 
     public showDetail(create: boolean): void {
