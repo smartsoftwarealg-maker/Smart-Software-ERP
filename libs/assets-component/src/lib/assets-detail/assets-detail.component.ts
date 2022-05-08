@@ -5,7 +5,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService, OfficeService} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -14,7 +14,6 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {OfficeService} from '@ss/organizations/api-organizations';
 import {AssetLocationService} from '../asset-location.service';
 import {AssetEndsService} from '@ss/accounting/accounting-api';
 import {MatDialog} from '@angular/material/dialog';
