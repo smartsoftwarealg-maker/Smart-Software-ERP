@@ -41,6 +41,8 @@ export const CC_GROUP_URL = '/lookups/ccenter_groups';
 export const LANGUAGES_URL = '/lookups/languages';
 export const LANGUAGE_LEVELS_URL = '/lookups/language_levels';
 
+export const WORKSHOPS_URL = '/lookups/workshops';
+
 export interface Wilaya {
     id: number;
     description: string;
