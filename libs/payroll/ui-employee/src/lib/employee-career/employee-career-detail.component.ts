@@ -27,6 +27,7 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
     services: Service[] = [];
     categories: Category[] = [];
     salaryGrid: Lookup[] = [];
+    workshops: Lookup[] = [];
 
     constructor(
         public employeeCareerSrv: EmployeeCareerService,
@@ -63,10 +64,11 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
             division: a.division,
             department: a.department,
             service: a.service,
+            workshop: a.workshop,
             salary_grid: a.salary_grid,
             prof_category: a.prof_category,
             salary_rank: a.salary_rank,
-            from_date: [a.from_date, Validators.required],
+            from_date: [a.from_date],
             to_date: a.to_date,
             trial_period: [a.trial_period || 0, Validators.required],
             decision: a.decision,
@@ -78,6 +80,8 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
         return this.lookupsSrv.getPosts()
             .pipe(
                 tap(posts => this.posts = posts),
+                switchMap(() => this.lookupsSrv.getWorkshops()),
+                tap(list => this.workshops = list),
                 switchMap(() => this.lookupsSrv.getDepartments()),
                 tap(list => this.departments = list),
                 switchMap(() => this.lookupsSrv.getDivisions()),

@@ -15,6 +15,7 @@ export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
 export const DEPARTMENTS_URL = '/lookups/departments';
 export const DIVISIONS_URL = '/lookups/superdepartments';
+export const WORKSHOPS_URL = '/lookups/workshops';
 
 export const MARKS_URL = '/lookups/marks';
 export const UNIT_URL = '/lookups/units';

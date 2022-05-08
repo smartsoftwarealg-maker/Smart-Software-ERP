@@ -85,6 +85,15 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-label translate>PAYROLL_WORKSHOP</mat-label>
+            <mat-select formControlName="workshop">
+                <mat-option *ngFor="let v of workshops" [value]="v.id">
+                    {{v.description}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_CATEGORY</mat-label>
             <mat-select formControlName="prof_category">
                 <mat-option *ngFor="let v of categories" [value]="v.id">
