@@ -88,7 +88,6 @@ export interface EmployeeActivation {
     centerName?: string;
 }
 
-// [{"id":2432,"employee":1,"paymonth":202101,"post":325,"division":3,"department":4,"service":23,"salary_grid":45,"prof_category":20,"salary_rank":101,"from_date":"2014-01-01 00:00:00","to_date":"2021-02-01 00:00:00","trial_period":0}]
 export interface Career {
     id: number;
     employee: number;
@@ -105,11 +104,13 @@ export interface Career {
     trial_period: number;
     decision: string;
     decision_date: string;
-
+    gridCategory?: string;
+    gridSection?: string;
+    profCategory?: string;
+    workshop?: number;
+    cost_center?: number;
     // todo: add these fields
     // motive               ?: number;
-    // workshop             ?: number;
-    // cost_center          ?: number;
     // qualification        ?: number;
     // responsible          : Option[Long] = None,
 }

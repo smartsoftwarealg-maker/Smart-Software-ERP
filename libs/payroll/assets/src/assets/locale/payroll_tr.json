@@ -120,5 +120,6 @@
     "LANGUAGE_WRITE_LEVEL": "Write level",
     "OLD_CAREERS": "Ancienne carrière",
     "RATE": "Taux",
-    "EMPLOYEE_SUMMARY": "Statistiques"
+    "EMPLOYEE_SUMMARY": "Statistiques",
+    "WORKSHOP":         ""
 }

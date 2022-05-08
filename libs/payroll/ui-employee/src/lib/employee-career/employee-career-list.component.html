@@ -80,6 +80,51 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="workshop">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_WORKSHOP
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{workshops[e.workshop]}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gridCategory">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_SALARY_GRID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ (e.gridCategory || '') + '/' + (e.gridSection || '')}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="profCategory">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_CATEGORY
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.profCategory}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="salary_rank">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_RANK
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.salary_rank}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="trial_period">
+            <mat-header-cell *matHeaderCellDef translate>
+                PAYROLL_TRIAL_PERIOD
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.trial_period}}
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
             *matRowDef="let row; columns: displayedColumns;"></mat-row>

@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy, Input } from "@angular/core";
-import { SnackBarService } from '@ss/common/ui-shell';
-import { CAREER_ROUTE_URL, EmployeeCareerService, Career } from '@ss/payroll/api-employee';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { PaginationModel, LanguageService } from '@ss/common/api-common';
-import { LookupsService } from '@ss/common/api-lookup';
-import { switchMap, tap } from 'rxjs/operators';
-import { Lookup } from '@ss/logistics/ui-doc-import';
+import {Component, Input, OnDestroy, OnInit} from "@angular/core";
+import {SnackBarService} from '@ss/common/ui-shell';
+import {Career, CAREER_ROUTE_URL, EmployeeCareerService} from '@ss/payroll/api-employee';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {LanguageService, PaginationModel} from '@ss/common/api-common';
+import {LookupsService} from '@ss/common/api-lookup';
+import {switchMap, tap} from 'rxjs/operators';
+import {Lookup} from '@ss/logistics/ui-doc-import';
 
 @Component({
     selector: 'ss-employee-career',
@@ -15,40 +15,18 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
     styleUrls: ['./employee-career-list.component.scss']
 })
 export class EmployeeCareerListComponent implements OnInit, OnDestroy {
-    private _activePersonnel = true;
-    private _hrMode          = true;
-
-    @Input()
-    set activePersonnel(active: boolean) {
-        this._activePersonnel = active;
-    }
-    get activePersonnel() {
-        return this._activePersonnel;
-    }
-
-    @Input()
-    set personId(id: number) {
-        this.entitySrv.setParentId(id);
-    }
-
-    @Input()
-    set hrMode(mode: boolean) {
-        this._hrMode = mode;
-    }
-
-    get hrMode() {
-        return this._hrMode;
-    }
     public displayedColumns = [
-        'from_date',
-        'to_date',
         'paymonth',
         'post',
         'division',
         'department',
-        'service'
+        'service',
+        'workshop',
+        'gridCategory',
+        'profCategory',
+        'salary_rank',
+        'trial_period'
     ];
-
     public readonly pagination = PaginationModel.newInstance();
     public data: Career[] = [];
     public selected = 0;
@@ -56,15 +34,43 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
     public divisions: { [id: number]: string; };
     public departments: { [id: number]: string; };
     public services: { [id: number]: string; };
+    public workshops: { [id: number]: string; };
 
     constructor(public entitySrv: EmployeeCareerService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public langSrv: LanguageService,
-        public lookupsSrv: LookupsService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService) {
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public router: Router,
+                public langSrv: LanguageService,
+                public lookupsSrv: LookupsService,
+                public confirmationSrv: ConfirmationDialogService,
+                public defReportSrv: DefaultReportService) {
+    }
+
+    private _activePersonnel = true;
+
+    get activePersonnel() {
+        return this._activePersonnel;
+    }
+
+    @Input()
+    set activePersonnel(active: boolean) {
+        this._activePersonnel = active;
+    }
+
+    private _hrMode = true;
+
+    get hrMode() {
+        return this._hrMode;
+    }
+
+    @Input()
+    set hrMode(mode: boolean) {
+        this._hrMode = mode;
+    }
+
+    @Input()
+    set personId(id: number) {
+        this.entitySrv.setParentId(id);
     }
 
     ngOnInit() {
@@ -78,6 +84,8 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
         this.lookupsSrv.getPosts()
             .pipe(
                 tap((list: Lookup[]) => this.posts = this.lookupToMap(list)),
+                switchMap(() => this.lookupsSrv.getWorkshops()),
+                tap((list: Lookup[]) => this.workshops = this.lookupToMap(list)),
                 switchMap(() => this.lookupsSrv.getDepartments()),
                 tap((list: Lookup[]) => this.departments = this.lookupToMap(list)),
                 switchMap(() => this.lookupsSrv.getDivisions()),
@@ -86,7 +94,7 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
                 tap((list: Lookup[]) => this.services = this.lookupToMap(list)),
                 switchMap(() => this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize))
             )
-            .subscribe(result => {
+            .subscribe((result: {body: Career[], itemCount: number} )=> {
                 this.data = result.body;
                 this.data.forEach(p => {
                     p.from_date = this.langSrv.formatDate(p.from_date);
@@ -140,7 +148,7 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
     }
 
     public showDetail(id: number) {
-        this.router.navigate([CAREER_ROUTE_URL, id], { relativeTo: this.route })
+        this.router.navigate([CAREER_ROUTE_URL, id], {relativeTo: this.route})
             .then();
     }
 

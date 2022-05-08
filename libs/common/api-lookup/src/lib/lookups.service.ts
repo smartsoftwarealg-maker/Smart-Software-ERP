@@ -55,7 +55,16 @@ import {
     Department,
     DEPARTMENTS_URL,
     Division,
-    DIVISIONS_URL, Unit, UNIT_URL, CATEGORY_URL, SALES_CATEGORY_URL, Language, LanguageLevel, LANGUAGES_URL, LANGUAGE_LEVELS_URL
+    DIVISIONS_URL,
+    Unit,
+    UNIT_URL,
+    CATEGORY_URL,
+    SALES_CATEGORY_URL,
+    Language,
+    LanguageLevel,
+    LANGUAGES_URL,
+    LANGUAGE_LEVELS_URL,
+    WORKSHOPS_URL
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
 import {Lookup} from '@ss/logistics/ui-doc-import';
@@ -179,6 +188,10 @@ export class LookupsService {
 
     public getDepartments(): Observable<Department[]> {
         return this.lookupCacheSrv.load<Department>(DEPARTMENTS_URL, 'departments')
+    }
+
+    public getWorkshops(): Observable<Lookup[]> {
+        return this.lookupCacheSrv.load<Lookup>(WORKSHOPS_URL, 'workshops')
     }
 
     public getDivisions(): Observable<Division[]> {

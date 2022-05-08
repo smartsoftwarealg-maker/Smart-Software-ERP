@@ -1,5 +1,5 @@
 
-$table_width: 1020px;
+$table_width: 1300px;
 
 :host {
     display: inline-block;
@@ -52,25 +52,26 @@ $table_width: 1020px;
     padding-left: 8px;
 }
 
-.mat-column-post {
-    flex: 0 0 140px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-division {
-    flex: 0 0 140px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
+.mat-column-post,
+.mat-column-division,
 .mat-column-department {
-    flex: 0 0 140px;
+    flex: 0 0 120px;
     padding-right: 8px;
     padding-left: 8px;
 }
 
-.mat-column-service {
+.mat-column-gridCategory,
+.mat-column-profCategory,
+.mat-column-trial_period,
+.mat-column-salary_rank
+{
+    flex: 0 0 100px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-service,
+.mat-column-workshop {
     flex: 0 0 140px;
     padding-right: 8px;
     padding-left: 8px;
