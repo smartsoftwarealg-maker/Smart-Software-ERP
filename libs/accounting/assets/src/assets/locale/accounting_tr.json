@@ -30,6 +30,18 @@
     "FILES":                 "",
     "TRANSAC_DETAIL":        "",
     "SHOW_HEADER":           "",
-    "SHOW_DETAIL":       "",
-    "BUDGETABLE":            ""
+    "SHOW_DETAIL":           "",
+    "BUDGETABLE":            "",
+    "MANAGE_PROJECTS":       "",
+    "FOLIO":                 "",
+    "MANUAL_CASH_FLOW":      "",
+    "CHECKNO":               "",
+    "ANALYZE_CHECKS":        "",
+    "CC_REQUIRED":           "",
+    "PERIOD_SELECTION":      "",
+    "ASSET_ACCOUNTS":        "",
+    "DEPRECIATION_ACCOUNT":  "",
+    "ENDOWMENT_ACCOUNT":     "",
+    "TRANSAC_ACCOUNTS":      "",
+    "GENERATION_ACCOUNTS":   ""
 }

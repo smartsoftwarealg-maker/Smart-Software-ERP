@@ -82,6 +82,7 @@ interface LanguageConfig {
     providedIn: 'root'
 })
 export class LanguageService {
+    private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
     private static readonly LOCAL_STORAGE_KEY = 'localeCode';
     private static style: HTMLElement  = null;
@@ -403,7 +404,7 @@ export class LanguageService {
         if (!paymonth || paymonth <= 0) {
             return '';
         }
-        return this.translate('MONTH_' + (paymonth % 100)) + ' ' +  Math.floor(paymonth/100);
+        return this.translate(this.MONTHS[paymonth % 100]) + ' ' +  Math.floor(paymonth/100);
     }
 
     // privates

@@ -34,7 +34,19 @@
     "POS":                   "Position",
     "TRANSAC_DETAIL":        "Détail de l'ecriture comptable'",
     "SHOW_HEADER":           "Afficher l'en-tête de l'ecriture comptable",
-    "SHOW_DETAIL":       "Afficher le détail de l'ecriture comptable",
-    "BUDGETABLE":            "Budgetaire"
+    "SHOW_DETAIL":           "Afficher le détail de l'ecriture comptable",
+    "BUDGETABLE":            "Budgetaire",
+    "MANAGE_PROJECTS":       "Gérer des projets",
+    "FOLIO":                 "Folio",
+    "MANUAL_CASH_FLOW":      "Gérer manuellement la trésorerie",
+    "CHECKNO":               "Numéro de chèque",
+    "ANALYZE_CHECKS":        "Analyser les chèques",
+    "CC_REQUIRED":           "Le centre de coûts est requis",
+    "PERIOD_SELECTION":      "Sélection de la période",
+    "ASSET_ACCOUNTS":        "Comptes d'actifs",
+    "DEPRECIATION_ACCOUNT":  "Compte d'amortissement",
+    "ENDOWMENT_ACCOUNT":     "Compte de dotation",
+    "TRANSAC_ACCOUNTS":      "Comptes d'ecritures comptables",
+    "GENERATION_ACCOUNTS":   "Comptes de génération"
 }
 

@@ -11,5 +11,4 @@ export class OfficeService extends BaseEntityService<Office> {
     constructor(protected httpSrv: HttpService) {
         super(httpSrv, OFFICES_URL);
     }
-
 }

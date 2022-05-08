@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ASSET_LOCATIONS,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
     ABS_COMMON_REPORTS_URL,
@@ -21,6 +22,11 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_REVALUATION_TYPES',
             icon: 'fa-solid fa-list-tree',
             route: ABS_REVALUATION_TYPES
+        },
+        {
+            name: 'ASSET_LOCATIONS',
+            icon: 'fa-solid fa-location-crosshairs',
+            route: ABS_ASSET_LOCATIONS
         },
         {
             name: 'ASSETS',

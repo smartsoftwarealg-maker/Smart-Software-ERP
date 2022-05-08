@@ -118,8 +118,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     callModelSelectEvent(obj: any) {
-        if (this.model && this.model.onObjectSelected) {
-            this.model.onObjectSelected(obj);
+        if (this.model && this.model.onObjectSelected != null) {
+            this.model.onObjectSelected(this.model.cache);
         }
     }
 

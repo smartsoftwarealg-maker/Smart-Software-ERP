@@ -33,9 +33,10 @@ export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<Eleme
             field: [e.field || 'e???'],
             descriptionAr: [e.descriptionAr],
             fixed: [e.fixed || false],
-            collective: [e.collective || false],
+            specialFixed: [e.specialFixed || false],
             gridComputed: [e.gridComputed || false],
             postComputed: [e.postComputed || false],
+            common: [e.common || false],
             minValue: [e.minValue || 0.0],
             maxValue: [e.maxValue || 0.0],
             fieldType: [e.fieldType || 1]

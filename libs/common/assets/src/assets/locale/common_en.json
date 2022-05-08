@@ -198,5 +198,8 @@
     "RESPONSIBLE": "Responsible",
     "REFERENCE": "Reference",
     "OFFICES": "Offices",
-    "EXCEL_EXPORT": "Export to excel file"
+    "LOCATION":           "Location",
+    "EXCEL_EXPORT": "Export to excel file",
+    "INVALID_FORM": "This form is invalid",
+    "PURCHASE":          "Purchase"
 }

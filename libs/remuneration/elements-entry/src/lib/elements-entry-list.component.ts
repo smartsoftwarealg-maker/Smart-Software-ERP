@@ -13,6 +13,9 @@ import {MatSelectChange} from '@angular/material/select';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import {Form, FormBuilder, FormGroup} from '@angular/forms';
+import {CommonElementsService} from './common-elements.service';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -21,10 +24,12 @@ import {PayrollMonthService} from '@ss/remuneration/payroll-month';
   styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
-    private readonly JOURNAL_IDX = 2;
+    private readonly JOURNAL_IDX = 3;
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
+    commonElementsLookup = new DefaultAutoCompleteModel(this.commonFieldSrv, 'field');
+    form: FormGroup = null;
     selectedTabIndex = 0;
     mainTableWidth = 900;
     slipTableWidth = 500;
@@ -48,9 +53,15 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         public pagPersistSrv: PaginatorPersistenceService,
         private employeeSrv: EmployeeService,
         private httpSrv: HttpService,
-        private monthSelectorSrv: PayrollMonthService) {
+        private monthSelectorSrv: PayrollMonthService,
+        private formBuilder: FormBuilder,
+        private commonFieldSrv: CommonElementsService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
         this.pagination.pageSize = 5;
+        this.form = this.formBuilder.group( {
+            field: [''],
+            value: [0.0]
+        })
     }
 
     getPage(): Observable<ELine[]> {
@@ -118,5 +129,23 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
                     this.shellSrv.setLoading(false);
                 });
         }
+    }
+
+    updateCommon() {
+        // this.commonFieldSrv.update({field: })
+        const payload = { field: this.form.controls['field'].value,
+                          value: this.form.controls['value'].value
+                        };
+        if (payload.field?.length == 4) {
+            this.confirmationSrv
+                .confirm('REMUN_UPDATE_ALL', 'REMUN_UPDATE_ALL')
+                .pipe(switchMap(res => res? this.commonFieldSrv.updateAll(payload) : of(false)))
+                .subscribe(res => {
+                    if (typeof res !== 'boolean') {
+                        this.snackBarSrv.showSuccessMessage()
+                    }
+                })
+        }
+        console.log(this.form.value);
     }
 }

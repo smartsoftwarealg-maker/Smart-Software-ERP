@@ -34,6 +34,18 @@
     "POS":                   "الترتيب",
     "TRANSAC_DETAIL":        "تفاصيل الصفقة",
     "SHOW_HEADER":           "إظهار رأس المعاملة" ,
-    "SHOW_DETAIL":       "إظهار تفاصيل المعاملة" ,
-    "BUDGETABLE":            "مناسب للميزانية"
+    "SHOW_DETAIL":           "إظهار تفاصيل المعاملة" ,
+    "BUDGETABLE":            "مناسب للميزانية",
+    "MANAGE_PROJECTS":       "إدارة المشاريع",
+    "FOLIO":                 "رقم الورقة",
+    "MANUAL_CASH_FLOW":      "إدارة التدفق النقدي يدويًا",
+    "CHECKNO":               "رقم الصك",
+    "ANALYZE_CHECKS":        "تحليل الصكوك",
+    "CC_REQUIRED":           "مطلوب مركز التكلفة",
+    "PERIOD_SELECTION":      "اختيار الدورة",
+    "ASSET_ACCOUNTS":        "حسابات الأصول",
+    "DEPRECIATION_ACCOUNT":  "حساب الإهلاك",
+    "ENDOWMENT_ACCOUNT":     "حساب الوقف",
+    "TRANSAC_ACCOUNTS":      "حسابات المعاملات المحاسبية",
+    "GENERATION_ACCOUNTS":   "حسابات الإنشاء الآلي"
 }

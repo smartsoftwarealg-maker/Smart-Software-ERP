@@ -77,5 +77,8 @@
     "FOLLOWUP": "Rappel",
     "STRICT_POSITIVE": "Supérieur à zéro",
     "ARCHIVE_GENERATOR": "Générateur d'archives",
-    "LOAN":              "Pret"
+    "LOAN":              "Pret",
+    "PAYMENT_INFO":      "Informations de paiement",
+    "CACO_FUND":         "CACOBABPT",
+    "UPDATE_ALL":        "Tout mettre à jour"
 }

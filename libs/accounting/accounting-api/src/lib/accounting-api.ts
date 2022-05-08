@@ -1,15 +1,18 @@
-export const ACC_FILE_URL         = '/accounting/acc-files';
-export const ACC_ACC_FILE_URL     = '/accounting/files';
-export const ACC_ANNEX_CODE_URL   = '/accounting/annex-codes';
-export const ACC_POLICY_URL       = '/accounting/acc-policies';
-export const ACC_JOURNALS_URL     = '/accounting/journals';
-export const ACC_JOURNAL_TYPE_URL = '/lookups/journal_types';
-export const JOURNAL_USER_URL     = '/users';
-export const ACC_TRANSACTION_URL  = '/transactions';
-export const ACC_DETAIL_URL       = '/detail';
-export const ACC_TRANSACTIONS_URL = '/accounting/transactions';
-export const ACC_CTX_URL          = '/ctx';
-export const ACC_PROJECTS_URL     = '/lookups/acc_projects';
+export const ACC_FILE_URL           = '/accounting/acc-files';
+export const ACC_ACC_FILE_URL       = '/accounting/files';
+export const ACC_ANNEX_CODE_URL     = '/accounting/annex-codes';
+export const ACC_POLICY_URL         = '/accounting/acc-policies';
+export const ACC_JOURNALS_URL       = '/accounting/journals';
+export const ACC_JOURNAL_TYPE_URL   = '/lookups/journal_types';
+export const JOURNAL_USER_URL       = '/users';
+export const ACC_TRANSACTION_URL    = '/transactions';
+export const ACC_DETAIL_URL         = '/detail';
+export const ACC_TRANSACTIONS_URL   = '/accounting/transactions';
+export const ACC_CTX_URL            = '/ctx';
+export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
+export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
+export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
+export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 
 export interface ACCPolicy {
     id: number;
@@ -46,6 +49,8 @@ export interface ACCPolicy {
     financialAccount?: string;
     paymentAccount?: string;
     finBankAccount?: string;
+    showProjects: boolean;
+    manualCashFlow: boolean;
 }
 
 export interface Journal {
@@ -99,6 +104,7 @@ export interface ACCTransactionLine {
     checkNo?: string;
     matchKey?: string;
     costCenter?: string;
+    costCenterId?: number;
     quantity?: number;
     investmentId?: string;
     description?: string;
@@ -125,4 +131,17 @@ export interface AnnexCode {
     code: string;
     description?: string;
     fileId?: number;
+}
+
+export interface PeriodSummary {
+    id:     number;
+    debit:  number;
+    credit: number;
+    month?: string;
+}
+
+export interface TransacAccount {
+    id: number;
+    description: string;
+    accountno?: string;
 }

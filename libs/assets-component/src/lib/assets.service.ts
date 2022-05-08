@@ -21,4 +21,8 @@ export class AssetsService extends BaseEntityService<Asset>{
     getMaxReference(): Observable<{reference: string}> {
         return this.httpSrv.get<{reference: string}> ('/assets/max-reference');
     }
+
+    soldOut(page: number, filter: string): Observable<{ itemCount: number, body: Asset[] }> {
+        return this.httpSrv.getData<Asset>('/assets/soldout', page, 5, filter);
+    }
 }

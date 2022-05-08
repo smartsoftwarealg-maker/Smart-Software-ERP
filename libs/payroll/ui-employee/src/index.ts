@@ -17,3 +17,4 @@ export * from './lib/employee-languages/employee-languages-detail.component';
 export * from './lib/employee-old-career/employee-old-career-detail.component';
 export * from './lib/employee-decisions/employee-decision-detail.component';
 export * from './lib/person-list/person-list.component';
+export * from './lib/payment-info/payment-info.component';

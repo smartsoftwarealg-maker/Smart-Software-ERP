@@ -26,6 +26,9 @@
             "@ss/accounting/accounting-journal": [
                 "libs/accounting/accounting-journal/src/index.ts"
             ],
+            "@ss/accounting/accounting-accounts": [
+                "libs/accounting/accounting-accounts/src/index.ts"
+            ],
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
             ],

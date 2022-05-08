@@ -34,7 +34,18 @@
     "POS":                   "Position",
     "TRANSAC_DETAIL":        "Transaction detail",
     "SHOW_HEADER":           "Show transaction header",
-    "SHOW_DETAIL":       "Show transaction detail",
-    "BUDGETABLE":            "Budgetable"
-
+    "SHOW_DETAIL":           "Show transaction detail",
+    "BUDGETABLE":            "Budgetable",
+    "MANAGE_PROJECTS":       "Manage projects",
+    "FOLIO":                 "Folio",
+    "MANUAL_CASH_FLOW":      "Manually manage cash flow",
+    "CHECKNO":               "Check number",
+    "ANALYZE_CHECKS":        "Analyze checks",
+    "CC_REQUIRED":           "Cost center is required",
+    "PERIOD_SELECTION":      "Period selection",
+    "ASSET_ACCOUNTS":        "Asset accounts",
+    "DEPRECIATION_ACCOUNT":  "Depreciation account",
+    "ENDOWMENT_ACCOUNT":     "Endowment account",
+    "TRANSAC_ACCOUNTS":      "Accounting transaction accounts",
+    "GENERATION_ACCOUNTS":   "Generation accounts"
 }

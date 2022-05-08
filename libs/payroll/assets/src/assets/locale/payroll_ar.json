@@ -113,7 +113,6 @@
     "DAY_COUNT":         "التدريبات",
     "TRAINING":          "عدد الأيام",
     "TRAININGS":         "تمرين",
-    "LOCATION":          "موقع",
     "DIPLOMA":           "شهادة دبلوم",
     "MISSION_EXPENSES":  "نفقات البعثة" ,
     "TRAINING_EXPENSES":"نفقات التدريب" ,
@@ -134,5 +133,6 @@
     "LANGUAGE_WRITE_LEVEL": "الكتابة",
     "OLD_CAREERS": "المسيرة الماضية",
     "RATE": "النسبة",
-    "EMPLOYEE_SUMMARY": "الإحصائيات"
+    "EMPLOYEE_SUMMARY": "الإحصائيات",
+    "WORKSHOP":         "الموقع"
 }

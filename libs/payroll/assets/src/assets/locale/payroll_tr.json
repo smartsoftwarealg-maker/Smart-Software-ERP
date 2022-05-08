@@ -106,7 +106,6 @@
     "TRAININGS":          "Trainings",
     "DAY_COUNT":          "Number of days",
     "TRAINING":           "Training",
-    "LOCATION":           "Location",
     "DIPLOMA":            "Diploma",
     "MISSION_EXPENSES":   "Mission expenses",
     "TRAINING_EXPENSES": "Training expenses",
@@ -121,5 +120,6 @@
     "LANGUAGE_WRITE_LEVEL": "Write level",
     "OLD_CAREERS": "Ancienne carrière",
     "RATE": "Taux",
-    "EMPLOYEE_SUMMARY": "Statistiques"
+    "EMPLOYEE_SUMMARY": "Statistiques",
+    "WORKSHOP":         ""
 }

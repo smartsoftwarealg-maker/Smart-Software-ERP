@@ -32,7 +32,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
         private journalSrv: AccJournalsService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_OPTIONS');
         detailSrv.setParentId(this.loginSrv.appCtx.center);
         this.id = this.loginSrv.appCtx.center;
     }
@@ -50,6 +50,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             showBudget: [e.showBudget, Validators.required],
             openingJournal: [e.openingJournal, Validators.required],
             bankAccount: [e.bankAccount],
+            analyzeChecks: [e.analyzeChecks],
             cashAccount: [e.cashAccount],
             investAccount: [e.investAccount],
             depreciationAccount: [e.depreciationAccount],
@@ -61,6 +62,8 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             financialAccount: [e.financialAccount],
             paymentAccount: [e.paymentAccount],
             finBankAccount: [e.finBankAccount],
+            showProjects: [e.showProjects, Validators.required],
+            manualCashFlow: [e.manualCashFlow, Validators.required],
             openPeriods: [{ value: e.openPeriods, disabled: e.modifyClosedPeriods }, [Validators.required, Validators.min(0), Validators.max(12)]],
         });
     }

@@ -1,0 +1,53 @@
+<mat-table mat-table [dataSource]="data" class="main-table">
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.description}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="purchase">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_PURCHASE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.purchase}}
+        </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="supplier">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.supplier}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="stock">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_STOCK</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.stock}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="consumption">
+        <mat-header-cell *matHeaderCellDef translate>STOCK_CONSUMPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.consumption}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sales">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_SALES</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.sales}}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

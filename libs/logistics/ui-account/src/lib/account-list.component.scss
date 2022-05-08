@@ -2,7 +2,7 @@
 :host {
     display: block;
     margin: auto;
-    width: 828px;
+    width: 900px;
 }
 
 .main-table {
@@ -34,7 +34,9 @@
     padding-left: 8px !important;
 }
 
-.mat-column-analyzed .mat-column-customerCode {
+.mat-column-analyzed,
+.mat-column-customerCode,
+.mat-column-ccRequired{
     flex: 0 0 100px ;
     padding-right: 8px !important;
     padding-left: 8px !important;

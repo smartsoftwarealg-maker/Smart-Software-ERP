@@ -266,24 +266,24 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
+        <mat-expansion-panel *ngIf="id && activePersonnel" #careerPanel [class]="getPanelHeaderClass('career', careerPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_CAREER
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-career>
+            <ss-employee-career [personId]="id" [activePersonnel]="activePersonnel" [hrMode]="hrMode"></ss-employee-career>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel">
+        <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #oldCareerPanel [class]="getPanelHeaderClass('career', oldCareerPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     PAYROLL_OLD_CAREERS
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel"></ss-employee-old-career-list>
+            <ss-employee-old-career-list [personId]="id" [activePersonnel]="activePersonnel" ></ss-employee-old-career-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel *ngIf="id && hrMode && activePersonnel" #contractsPanel [class]="getPanelHeaderClass('contracts', contractsPanel)">
@@ -364,6 +364,15 @@
             </mat-expansion-panel-header>
 
             <ss-employee-decision-list [personId]="id"></ss-employee-decision-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngIf="!hrMode" #infoPanel [class]="getPanelHeaderClass('infoPanel', infoPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    REMUN_PAYMENT_INFO
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-payment-info [personId]="id"></ss-payment-info>
         </mat-expansion-panel>
 
     </mat-accordion>

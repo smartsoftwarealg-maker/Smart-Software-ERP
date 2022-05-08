@@ -20,7 +20,6 @@
     "EXIT":              "الخروج",
     "DATE_OUT":          "تاريخ الخروج",
     "SALES_PRICE":       "سعر البيع",
-    "PURCHASE":          "شراء",
     "NAC":               "صافي قيمة المحاسب",
     "FISCAL":            "مالي",
     "ACCOUNTANT":        "محاسبي",
@@ -28,5 +27,7 @@
     "REVALUATIONS":       "إعادة التقييم",
     "BLOCKINGS":          "اعتراض",
     "COST_TYPES":         "أنواع التكلفة",
-    "REVALUATION_TYPES":  "أنواع إعادة التقييم"
+    "REVALUATION_TYPES":  "أنواع إعادة التقييم",
+    "LOCATIONS":          "المواقع",
+    "IMPORT":             "ضم من مركز آخر"
 }

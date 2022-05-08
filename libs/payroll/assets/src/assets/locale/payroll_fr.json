@@ -113,7 +113,6 @@
     "TRAININGS":          "Formations",
     "DAY_COUNT":          "Nombre de jours",
     "TRAINING":           "Formation",
-    "LOCATION":           "Lieu",
     "DIPLOMA":            "Diplôme",
     "MISSION_EXPENSES":   "Frais de mission",
     "TRAINING_EXPENSES": "Dépenses de formation",
@@ -134,5 +133,6 @@
     "LANGUAGE_WRITE_LEVEL": "Niveau d'écriture",
     "OLD_CAREERS": "Ancienne carrière",
     "RATE": "Taux",
-    "EMPLOYEE_SUMMARY": "Statistiques"
+    "EMPLOYEE_SUMMARY": "Statistiques",
+    "WORKSHOP":         ""
 }

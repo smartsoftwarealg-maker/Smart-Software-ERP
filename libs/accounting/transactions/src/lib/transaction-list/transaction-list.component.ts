@@ -1,7 +1,7 @@
 import {Component, OnDestroy, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {
-    AccJournalsService,
+    AccJournalsService, AccPoliciesService,
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
@@ -12,7 +12,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
-import {Observable, Subscription, tap} from 'rxjs';
+import {Observable, Subscription, switchMap, tap} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
@@ -33,7 +33,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     };
     private subs: Subscription = null;
     journalList: Journal[] = [];
-    displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit', 'projectName'];
+    displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
@@ -47,15 +47,27 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService,
         private journalSrv: AccJournalsService,
-        private detailSrv: AccTransactionLineService) {
+        private detailSrv: AccTransactionLineService,
+        private loginSrv: LoginService,
+        private accPolicySrv: AccPoliciesService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ACC_TRANSACTIONS');
         entitySrv.setParentId(0);
     }
 
     override preload(): Observable<any> {
         return this.journalSrv
-            .getList(0, 50)
-            .pipe(tap(res => this.journalList = res.body));
+            .getList(0, 100)
+            .pipe(tap(res => this.journalList = res.body),
+                  switchMap(_ => this.loginSrv.loadContext()),
+                  switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
+                tap(policy => {
+                    if (policy.showProjects) {
+                        this.displayedColumns.push('projectName');
+                    }
+                    // if (policy.showBudget) {
+                    //     this.displayedColumns.push('projectName');
+                    // }
+                }));
     }
 
     override ngOnInit() {
@@ -84,6 +96,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                                   this.viewReportButton,
                                   this.defReportButton,
                                   this.listButton]);
+        this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.updateShell();
     }
 

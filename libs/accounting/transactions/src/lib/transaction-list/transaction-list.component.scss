@@ -3,7 +3,7 @@
     width: 100%;
     max-width: 100%;
     display: grid;
-    grid-template-columns: minmax(350px, 25%) 1fr;
+    grid-template-columns: minmax(460px, 30%) 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "journals     detail"
                          "transactions detail";
@@ -71,4 +71,20 @@ mat-radio-group {
     display: flex;
     justify-content: space-around;
     padding: 8px 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        height: 100%;
+        display: block;
+    }
+
+    .journals,
+    .transactions {
+        height: 250px;
+
+    }
+    .detail {
+        height: 100%;
+    }
 }

@@ -1,32 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, Depreciation} from '../assets-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
-import {HttpService, LoginService} from '@ss/common/api-common';
+import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {OfficeService} from '@ss/organizations/api-organizations';
+import {AssetLocationService} from '../asset-location.service';
+import {AssetEndsService} from '@ss/accounting/accounting-api';
+import {MatDialog} from '@angular/material/dialog';
+import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
+import {CostCenterService} from '@ss/logistics/api-cost-center';
 
 @Component({
     selector: 'ss-assets-detail',
     templateUrl: './assets-detail.component.html',
     styleUrls: ['./assets-detail.component.scss']
 })
-export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
+export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
+    private isANSEJ = false;
+    private importBtn: ToolbarButton = {
+        icon: 'fa-solid fa-file-import',
+        label: 'ASSET_IMPORT',
+        disabled: false,
+        visible: this.isANSEJ,
+        keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
+        click: () => this.importAsset()
+    };
+
     private maxReference: string = null;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
+    ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
+    locationAutoCompleteModel  = new DefaultAutoCompleteModel(this.locationSrv);
+    officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
+    assetEnds: Lookup[] = [];
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
 
 
@@ -40,19 +61,26 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
+        private officeSrv: OfficeService,
+        private locationSrv: AssetLocationService,
         private accountSrv: AccountService,
-        private loginSrv: LoginService) {
+        private loginSrv: LoginService,
+        private endSrv: AssetEndsService,
+        private dialog: MatDialog,
+        private isParamSrv: IsParamService,
+        private costCenterSrv: CostCenterService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
             route,
             formBuilder,
             confirmationSrv, 'ASSETS');
-        this.accountAutoCompleteModel.onObjectSelected = (acc) => this.accountSelected(acc);
+        this.officeSrv.setParentId(0);
     }
 
     setupForm(b: Asset): FormGroup {
         const today = new Date();
+        this.importBtn.visible = !b.id && this.isANSEJ;
         const form = this.formBuilder.group({
             id: [b.id],
             reference: [b.reference, [Validators.minLength(11),  Validators.required]],
@@ -68,6 +96,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
+            depreciationType: [b.depreciationType || 1],
             supplier: [b.supplier],
             originalSupplier: [b.originalSupplier],
             barcode: [b.barcode],
@@ -96,7 +125,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             old_depreciation: [b.old_depreciation || 0, Validators.required],
             outof_service: [b.outof_service || false, Validators.required],
             criticity: [b.criticity],
-            startYear: [b.startYear || 0, Validators.required],
+            startYear: [b.startYear || 0],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -127,13 +156,74 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> {
             return '';
     }
 
-    accountSelected(acc: Account) {
-        // console.log(acc)
-        //this.form.value['accountno'].setValue(acc?.accountNo);
+
+    override preload(): Observable<any> {
+        return this.isParamSrv
+            .is('ANSEJ')
+            .pipe(tap(res => this.isANSEJ = res),
+                  switchMap(_ => this.endSrv.getList(0, 50)),
+                  tap(res => this.assetEnds = res.body));
     }
 
-    // override preload(): Observable<any> {
-    //     return this.httpSrv
-    //
-    // }
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importBtn);
+    }
+
+    private importAsset() {
+        const dialogRef = this.dialog.open(AssetSearchDialogComponent,
+            {
+                data: {id: 0, reference: '', centerId: 0}
+            });
+
+        dialogRef.afterClosed().subscribe(asset => {
+            if (asset) {
+                delete asset['decliningRate'];
+                delete asset['creation_date'];
+                delete asset['parentId'];
+                asset.id = 0;
+                asset.reference2         =  this.form.controls['reference2'].value;
+                asset.centerId           =  this.loginSrv.appCtx.center;
+                asset.accountno          =  asset.accountno        || null;
+                asset.description        =  asset.description      || null;
+                asset.info               =  asset.info             || null;
+                asset.acquisitionDate    =  asset.acquisitionDate  || null;
+                asset.serviceDate        =  asset.serviceDate      || null;
+                asset.invoiceNumber      =  asset.invoiceNumber    || null;
+                asset.itemCount          =  asset.itemCount        || null;
+                asset.acquisitionValue   =  asset.acquisitionValue || null;
+                asset.historicValue      =  asset.historicValue    || null;
+                asset.depreciationRate   =  asset.depreciationRate || null;
+                asset.depreciationType   =  asset.depreciationType || null;
+                asset.residualValue      =  asset.residualValue    || null;
+                asset.supplier           =  asset.supplier         || null;
+                asset.originalSupplier   =  asset.originalSupplier || null;
+                asset.barcode            =  asset.barcode          || null;
+                asset.receptionNumber    =  asset.receptionNumber  || null;
+                asset.dateOut            =  null;
+                asset.customer           =  null;
+                asset.serial_no          =  asset.serial_no        || null;
+                asset.location           =  asset.location         || null;
+                asset.costCenter         =  asset.costCenter       || null;
+                asset.investEnd          =  null;
+                asset.startYear          =  asset.startYear        || 0;
+                asset.receptionDate      =  asset.receptionDate    || null;
+                asset.positionNumb       =  asset.positionNumb     || null;
+                asset.modelNumb          =  asset.modelNumb        || null;
+                asset.installation_code  =  asset.installation_code|| null;
+                asset.tech_specific      =  asset.tech_specific    || null;
+                asset.comment            =  asset.comment          || null;
+                asset.order_numb         =  asset.order_numb       || null;
+                asset.order_date         =  asset.order_date       || null;
+                asset.office             =  asset.office           || null;
+                asset.sales_price        =  asset.sales_price      || null;
+                asset.investment_type    =  asset.investment_type  || 1;
+                asset.outof_service      =  !!asset.outof_service;
+                asset.criticity          =  asset.criticity        || null;
+                asset.accountId          =  asset.accountId        || null;
+
+                this.form.setValue(asset, { onlySelf: false, emitEvent: true });
+            }
+        });
+    }
 }

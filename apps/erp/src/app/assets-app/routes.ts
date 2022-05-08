@@ -6,7 +6,7 @@ import {
     ASSETS_BLOCKING_URL,
     ASSETS_COST_URL,
     ASSETS_REVALUATION_URL, ASSET_COST_TYPE_URL,
-    PAY_ELEMENT_TYPES_URL, ASSET_REVALUATION_TYPE_URL, COMMON_REPORTS_URL
+    PAY_ELEMENT_TYPES_URL, ASSET_REVALUATION_TYPE_URL, COMMON_REPORTS_URL, ASSET_LOCATIONS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -20,14 +20,11 @@ import {
     AssetCostTypeListComponent,
     AssetCostTypeDetailComponent,
     AssetRevaluationTypeDetailComponent,
-    AssetRevaluationTypeListComponent
+    AssetRevaluationTypeListComponent, AssetLocationsListComponent, AssetLocationsDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
-import {
-    ReportCatalogDetailComponent,
-    ReportCatalogListComponent
-} from '../../../../../libs/administration/ui-report-catalog/src';
+import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 
 export const mainRoutes: Routes = [
     {
@@ -108,6 +105,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetCostTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ASSET_LOCATIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetLocationsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AssetLocationsDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

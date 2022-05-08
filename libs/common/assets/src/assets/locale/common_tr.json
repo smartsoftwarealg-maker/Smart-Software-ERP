@@ -191,5 +191,8 @@
     "SECURITY":         "",
     "RESPONSIBLE":      "",
     "OFFICES":          "",
-    "EXCEL_EXPORT":     ""
+    "EXCEL_EXPORT":     "",
+    "LOCATION":           "Location",
+    "INVALID_FORM": "",
+    "PURCHASE":          ""
 }
