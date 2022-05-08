@@ -19,7 +19,6 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
 
     public form: FormGroup = null;
     public saving: boolean = false;
-    public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(
         public officeSrv: OfficeService,
@@ -28,10 +27,8 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
-        private employeeSrv: EmployeeService) {
+        public confirmationSrv: ConfirmationDialogService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
-        this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
     protected getRouteParam(): Observable<any> {
@@ -41,8 +38,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
 
     setupForm(a: Office): FormGroup {
         return this.form = this.formBuilder.group({
-            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            responsible: [a.responsible, Validators.required]
+            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])]
         });
     }
 
