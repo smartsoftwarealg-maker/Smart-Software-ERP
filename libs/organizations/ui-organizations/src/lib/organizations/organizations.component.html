@@ -7,7 +7,7 @@
 <!-- Node Template -->
 <ng-template #nodeTemplate let-node>
     <div class="chart-node">
-        <div class="node-name">{{node?.name}}</div>
+        <div class="node-name"><span>{{node?.name}}</span></div>
         <div *ngIf="node?.responsible" class="responsible">
             <ss-image-input class="responsible-img" [ImageModel]="node?.imageModel"></ss-image-input>
             <!--img [src]="node?.image"-->

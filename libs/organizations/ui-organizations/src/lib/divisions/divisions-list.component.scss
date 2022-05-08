@@ -3,11 +3,11 @@
 :host {
     display: block;
     margin: auto;
-    width: 444px;
+    width: 520px;
 }
 
 .main-table {
-    width: 444px;
+    width: 520px;
     min-height: 320px;
 }
 
@@ -19,17 +19,16 @@
 
 
 .mat-column-description {
-    flex: 0 0 200px;
+    flex: 0 0 272px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-responsible {
-    flex: 0 0 180px;
+    flex: 0 0 184px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
-
 
 .pagination-container {
 

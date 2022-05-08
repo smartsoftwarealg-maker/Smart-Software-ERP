@@ -21,17 +21,5 @@
                 COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
-
-        <mat-form-field class="default-100">
-            <mat-label translate>COMMON_SERVICE</mat-label>
-            <ss-auto-complete matInput
-                [required]="true"
-                descriptionFieldName="description"
-                [model]="servicesAutoCompleteModel"
-                formControlName="service"></ss-auto-complete>
-            <mat-error *ngIf="form.controls['service'].hasError('required')" translate>
-                COMMON_FIELD_REQUIRED
-            </mat-error>
-        </mat-form-field>
     </form>
 </div>

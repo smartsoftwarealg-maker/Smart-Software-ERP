@@ -9,12 +9,14 @@ export const PUNISHMENT_TYPE_URL = '/lookups/punishmenttypes';
 export const PROFESSIONAL_FAULT_URL = '/lookups/professionalfaults';
 export const POSTS_URL = '/posts';
 export const CATEGORIES_URL = '/lookups/categories';
-export const SERVICES_URL = '/lookups/services';
 export const FORMS_URL = '/lookups/forms';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
-export const DEPARTMENTS_URL = '/lookups/departments';
-export const DIVISIONS_URL = '/lookups/superdepartments';
+
+export const DIVISIONS_URL = '/organizations/divisions';
+export const DEPARTMENTS_URL = '/organizations/divisions/0/departments';
+export const SERVICES_URL = '/organizations/departments/0/services';
+export const OFFICES_URL = '/organizations/services/0/offices';
 
 export const MARKS_URL = '/lookups/marks';
 export const UNIT_URL = '/lookups/units';
@@ -222,16 +224,26 @@ export interface Department {
     id: number;
     description: string;
     responsible: number;
+    responsibleName?: string;
 }
 
 export interface Division {
     id: number;
     description: string;
     responsible: number;
+    responsibleName?: string;
 }
 
 export interface Service {
     id: number;
     description: string;
     responsible: number;
+    responsibleName?: string;
+}
+
+export interface Office {
+    id: number;
+    description: string;
+    responsible: number;
+    responsibleName?: string;
 }

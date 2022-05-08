@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Service, ServiceService, DepartmentService, DepartmentAutoCompleteModel } from '@ss/organizations/api-organizations';
+import { Observable, of } from 'rxjs';
+import { Service, ServiceService } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
-import { Observable, of } from 'rxjs';
 
 @Component({
     selector: 'ss-service-detail',
@@ -20,7 +20,6 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
     public form: FormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
-    public departmentAutoCompleteModel: DepartmentAutoCompleteModel;
 
     constructor(
         public serviceSrv: ServiceService,
@@ -29,11 +28,10 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
-        private employeeSrv: EmployeeService) {
+        private employeeSrv: EmployeeService,
+        public confirmationSrv: ConfirmationDialogService) {
         super(serviceSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_SERVICE');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
-        this.departmentAutoCompleteModel = new DepartmentAutoCompleteModel(this.httpSrv);
     }
 
     protected getRouteParam(): Observable<any> {
@@ -44,7 +42,6 @@ export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> i
     setupForm(a: Service): FormGroup {
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            department: [a.department, Validators.required],
             responsible: [a.responsible, Validators.required]
         });
     }
