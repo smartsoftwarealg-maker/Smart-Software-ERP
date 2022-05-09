@@ -3,18 +3,18 @@
 </div>
 <mat-dialog-content style="display: block">
 
-    <div style="width: 100%">
+    <div *ngIf="!loading" style="width: 100%">
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field class="default-100">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
-                    autofocus>
-                <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
+            <mat-form-field floatLabel="always" class="default-100">
+                <mat-label translate>{{title}}</mat-label>
+                <mat-select formControlName="lookup" required>
+                    <mat-option *ngFor="let p of lookups; let i = index" [value]="p.id">
+                        {{p.description}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </form>
-
     </div>
 
 </mat-dialog-content>

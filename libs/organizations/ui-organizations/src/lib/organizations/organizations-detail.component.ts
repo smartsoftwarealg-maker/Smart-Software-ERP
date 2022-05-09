@@ -1,12 +1,15 @@
 import { Component, Inject, OnInit, Injectable } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Lookup } from '@ss/organizations/api-organizations';
+import { Lookup, Organization } from '@ss/organizations/api-organizations';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, LoginService } from '@ss/common/api-common';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SnackBarService } from '@ss/common/ui-shell';
-import { Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { Level } from './common';
+import { OrganizationsService } from '@ss/organizations/api-organizations';
+import { DivisionService, DepartmentService, ServiceService, OfficeService } from '@ss/common/api-lookup';
+import { tap, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable()
 class LookupService extends BaseEntityService<Lookup> {
@@ -23,28 +26,65 @@ class LookupService extends BaseEntityService<Lookup> {
         LookupService
     ]
 })
-export class OrganizationsDetailComponent implements OnInit {
+export class OrganizationsDetailComponent {
 
     public title: string;
-    public url: string;
-    public lookup: Lookup;
+    public level: Level;
     public form: FormGroup = null;
     public saving: boolean = false;
+    public lookups: Lookup[];
+    public loading = true;
+    public organization: Organization;
 
     constructor(public dialogRef: MatDialogRef<OrganizationsDetailComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         public formBuilder: FormBuilder,
         public snackBarSrv: SnackBarService,
-        public entitySrv: LookupService) {
-        this.title = data.title;
-        this.lookup = data.lookup;
-        entitySrv.setURL(data.url);
+        public loginSrv: LoginService,
+        public orgSrv: OrganizationsService,
+        private divisionsSrv: DivisionService,
+        private departmentSrv: DepartmentService,
+        private serviceSrv: ServiceService,
+        private officeSrv: OfficeService,
+        public httpSrv: HttpService) {
+
+        const titles = [
+            ' ',
+            'COMMON_DIVISION',
+            'COMMON_DEPARTMENT',
+            'COMMON_SERVICE',
+            'COMMON_OFFICE'
+        ];
+
+        this.title = titles[data.level];
+        this.level = data.level;
+        this.loadLookups().subscribe(o => this.setup({
+            center: this.loginSrv.appCtx.center,
+            id: 0,
+            parentId: !data.id || data.id < 1 ? null : data.id
+        }));
     }
 
-    public ngOnInit(): void {
+    private loadLookups() {
+        switch (this.level) {
+            case Level.Division:
+                return this.divisionsSrv.getListSimple().pipe(tap((list: any[]) => this.lookups = list));
+            case Level.Department:
+                return this.departmentSrv.getListSimple().pipe(tap((list: any[]) => this.lookups = list));
+            case Level.Service:
+                return this.serviceSrv.getListSimple().pipe(tap((list: any[]) => this.lookups = list));
+            case Level.Office:
+                return this.officeSrv.getListSimple().pipe(tap((list: any[]) => this.lookups = list));
+        }
+        return of([]);
+    }
+
+    private setup(org: Organization) {
+        this.organization = org;
         this.form = this.formBuilder.group({
-            description: [this.lookup.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
+            lookup: [null, Validators.required],
         });
+        this.loading = false;
     }
 
     public save(): void {
@@ -57,11 +97,21 @@ export class OrganizationsDetailComponent implements OnInit {
             return;
         }
         this.saving = true;
-        this.lookup.description = this.form.value.description;
-        let obs: Observable<any> = this.lookup.id === 0
-            ? this.entitySrv.add(this.lookup).pipe(tap((i: number) => { this.lookup.id = i; }))
-            : this.entitySrv.update(this.lookup);
-        obs.subscribe({
+        switch (this.level) {
+            case Level.Division:
+                this.organization.division = this.form.value.lookup;
+                break;
+            case Level.Department:
+                this.organization.department = this.form.value.lookup;
+                break;
+            case Level.Service:
+                this.organization.service = this.form.value.lookup;
+                break;
+            case Level.Office:
+                this.organization.office = this.form.value.lookup;
+                break;
+        }
+        this.orgSrv.save(this.organization).subscribe({
             next: () => {
                 //this.saving = false;
                 this.close(true);

@@ -61,14 +61,14 @@ export class OrganizationsComponent implements OnInit {
         click: () => this.showDetail(true)
     };
 
-    public editButton: ToolbarButton = {
-        icon: 'fas fa-pen',
-        label: 'COMMON_EDIT_SELECTED',
-        disabled: true,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.showDetail(false)
-    };
+//    public editButton: ToolbarButton = {
+//        icon: 'fas fa-pen',
+//        label: 'COMMON_EDIT_SELECTED',
+//        disabled: true,
+//        visible: true,
+//        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+//        click: () => this.showDetail(false)
+//    };
 
     public deleteButton: ToolbarButton = {
         icon: 'fas fa-trash-alt',
@@ -98,8 +98,9 @@ export class OrganizationsComponent implements OnInit {
     refresh() {
         this.shellSrv.setLoading(true);
         this.people = {};
-        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.editButton, this.deleteButton]);
+        this.shellSrv.setButtons([this.refreshButton, this.addButton, this.deleteButton]);
         this.root = this.lookupToChartNode(0, this.langSrv.translate('ORGANIZATION'), 0, null, Level.Root);
+        this.root.onClick = () => this.select(this.root, Level.Root);
         const divisions: { [key: number]: OrgTreeNode; } = {};
         const departments: { [key: number]: OrgTreeNode; } = {};
         const services: { [key: number]: OrgTreeNode; } = {};
@@ -108,9 +109,7 @@ export class OrganizationsComponent implements OnInit {
             .pipe(
                 tap(ds => {
                     ds.forEach((d: Division) => {
-                        const node = this.lookupToChartNode(d.id, d.description, null, d.responsible, Level.Division);
-                        divisions[d.id] = node;
-                        this.root.children.push(node);
+                        divisions[d.id] = this.lookupToChartNode(d.id, d.description, null, d.responsible, Level.Division);
                     });
                 }),
                 switchMap(() => this.departmentSrv.getListSimple()),
@@ -137,23 +136,30 @@ export class OrganizationsComponent implements OnInit {
                 organizations.forEach(org => {
                     // todo: add person
                     if (org.division) {
-                        // don't do shit!
+                        const c = divisions[org.division];
+                        if (org.parentId == null && c) {
+                            c.id = org.id;
+                            this.root.children.push(c);
+                        }
                     } else if (org.department) {
                         const p = divisions[org.parentId];
                         const c = departments[org.department];
                         if (p && c) {
+                            c.id = org.id;
                             p.children.push(c);
                         }
                     } else if (org.service) {
                         const p = departments[org.parentId];
                         const c = services[org.service];
                         if (p && c) {
+                            c.id = org.id;
                             p.children.push(c);
                         }
                     } else if (org.office) {
                         const p = services[org.parentId];
                         const c = offices[org.office];
                         if (p && c) {
+                            c.id = org.id;
                             p.children.push(c);
                         }
                     }
@@ -170,13 +176,6 @@ export class OrganizationsComponent implements OnInit {
     }
 
     lookupToChartNode(id: number, description: string, parent: number, responsibleId: number, level: Level): OrgTreeNode {
-        //        const types = [
-        //           ' ',
-        //           'COMMON_DIVISION',
-        //           'COMMON_DEPARTMENT',
-        //           'COMMON_SERVICE',
-        //           'COMMON_OFFICE'
-        //        ];
         let imgModel = null;
         if (responsibleId) {
             imgModel = new ImageModel(this.httpSrv);
@@ -200,6 +199,7 @@ export class OrganizationsComponent implements OnInit {
     }
 
     select(node: OrgTreeNode, level: Level) {
+        console.log('selected =', node);
         if (level === this.selectedLevel && this.selected != null && node.id === this.selected.id) {
             this.deselect();
             this.updateUi();
@@ -222,7 +222,7 @@ export class OrganizationsComponent implements OnInit {
 
     updateUi() {
         const disabled = this.selectedLevel === Level.None || this.selectedLevel == Level.Root;
-        this.editButton.disabled = disabled;
+//        this.editButton.disabled = disabled;
         this.deleteButton.disabled = disabled;
         this.addButton.disabled = this.selectedLevel === Level.Office || this.selectedLevel === Level.None;
         this.shellSrv.updateShell();
@@ -252,9 +252,10 @@ export class OrganizationsComponent implements OnInit {
     }
 
     public showDetail(create: boolean): void {
-        if (!this.selected || !this.selectedLevel) {
+        if (this.selectedLevel < Level.Root) {
             return;
         }
+        const lvl = create ? this.selectedLevel + 1 : this.selectedLevel;
 
         const config = new MatDialogConfig();
         config.disableClose = true;
@@ -262,7 +263,7 @@ export class OrganizationsComponent implements OnInit {
         config.maxWidth = '100%';
         config.data = {
             id: this.selected.id,
-            level: this.selectedLevel,
+            level: lvl,
         };
         this.matDialog.open(OrganizationsDetailComponent, config)
             .afterClosed()
