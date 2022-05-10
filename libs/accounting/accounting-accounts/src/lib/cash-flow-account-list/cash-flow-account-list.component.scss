@@ -1,0 +1,30 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-div {
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    max-height: 40vh;
+}
+
+.mat-column-accountno {
+    flex: 1 0 100px;
+}
+
+.mat-column-ctrl {
+    flex: 0 0 40px;
+}
+
+.mat-column-description {
+    flex: 1 0 260px;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 430px;
+}

@@ -1,8 +1,0 @@
-<mat-list role="list">
-    <mat-list-item class="selectable"
-                   role="listitem"
-                   *ngFor="let d of data" (click)="selectItem(d)"
-                   [class.selected]="d.id === selectedId">
-        {{ d.description }}
-    </mat-list-item>
-</mat-list>
