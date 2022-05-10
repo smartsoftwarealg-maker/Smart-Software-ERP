@@ -19,7 +19,7 @@
             <ng-container matColumnDef="ctrl">
                 <mat-header-cell *matHeaderCellDef></mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    <button mat-mini-fab (click)="delete(e)"> <i class="fa-solid fa-trash-can-xmark"></i></button>
+                        <button mat-icon-button color="accent" (click)="delete(e)"><i class="fa-solid fa-trash-can-xmark"></i></button>
                 </mat-cell>
             </ng-container>
 

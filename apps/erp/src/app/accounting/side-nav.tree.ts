@@ -61,7 +61,7 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'Account'
         },
         {
-            name: 'ACC_CASHFLOW_ACCOUNTS',
+            name: 'ACC_CASH_FLOW',
             icon: 'fa-solid fa-cash-register',
             route: ABS_ACC_CASHFLOW_ACCOUNT_URL,
             accessRights: 'Cashflow'
