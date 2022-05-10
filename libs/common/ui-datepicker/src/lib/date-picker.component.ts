@@ -203,9 +203,12 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     }
 
     checkDateRange(): boolean {
-        return this.date == null
-            || (this.minDate != null && this.minDate.getTime() <= this.date.getTime())
-            || (this.maxDate != null && this.maxDate.getTime() >= this.date.getTime());
+        return this.date == null ||
+        (
+            (this.minDate == null || this.minDate.getTime() <= this.date.getTime())
+            &&
+            (this.maxDate == null || this.maxDate.getTime() >= this.date.getTime())
+        );
     }
 
     // value accessor
@@ -222,7 +225,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         } else {
             this.date = null;
         }
-        this.checkDateRange();
         const outForm = this.toOutputFormat(this.date);
         if (obj !== outForm) {
             this.onChange(outForm);
@@ -248,14 +250,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     ngDoCheck(): void {
         if (this.ngControl) {
             this.errorState = this.ngControl.invalid && this.ngControl.touched;
-            if (!this.checkDateRange()) {
-                this.errorState = true;
-                if (this.ngControl.errors)
-                    this.ngControl.errors.range = true;
-            } else {
-                if (this.ngControl.errors)
-                    delete this.ngControl.errors.range;
-            }
             if (this.lastErrorState !== this.errorState) {
                 this.stateChanges.next();
                 this.lastErrorState = this.errorState;
