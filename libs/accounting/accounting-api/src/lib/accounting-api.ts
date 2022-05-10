@@ -13,6 +13,7 @@ export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
 export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
+export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
 
 export interface ACCPolicy {
     id: number;
@@ -133,6 +134,15 @@ export interface AnnexCode {
     fileId?: number;
 }
 
+export interface CashFlowAcc {
+    id: number;
+    code: string;
+    accountno?: string;
+    balanceSign: number;
+    fileYear?: number;
+    description?: string;
+}
+
 export interface PeriodSummary {
     id:     number;
     debit:  number;
@@ -144,4 +154,16 @@ export interface TransacAccount {
     id: number;
     description: string;
     accountno?: string;
+}
+
+export interface PendingTreasury {
+    accountNo: string;
+    description: string;
+    balance: number;
+}
+
+export interface TreasuryInfo {
+    total: number;
+    located: number;
+    nonLocated: number;
 }

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="annex">
+        <mat-list role="list">
+            <mat-list-item class="selectable"
+                           role="listitem"
+                           *ngFor="let d of data" (click)="selectItem(d)"
+                           [class.selected]="d.id === selectedId">
+                {{ d.description }}
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div class="pending-div">
+        <mat-table mat-table [dataSource]="pendingData" class="main-table">
+
+            <ng-container matColumnDef="add">
+                <mat-header-cell *matHeaderCellDef translate></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <button mat-mini-fab (click)="add(e)" color="primary"><i class="fa-solid fa-circle-plus"></i></button>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="accountNo">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.accountNo}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="debit">
+                <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.balance > 0 ? e.balance : 0 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="credit">
+                <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.balance < 0 ? -e.balance : 0 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="pendingColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id === selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: pendingColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <ss-cash-flow-account-list [account]="selectedCode"></ss-cash-flow-account-list>
+
+    <div class="summary-div">
+        <mat-form-field>
+            <mat-label translate>COMMON_TOTAL</mat-label>
+            <input matInput [formControl]="total" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>ACC_LOCATED_TREASURY</mat-label>
+            <input matInput [formControl]="located" type="text" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>ACC_NON_LOCATED_TREASURY</mat-label>
+            <input matInput [formControl]="nonLocated" type="text" readonly>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="refreshPending()" translate> COMMON_REFRESH</button>
+
+    </div>
+</div>

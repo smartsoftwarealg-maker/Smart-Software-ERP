@@ -25,7 +25,7 @@ import {
     TransacAccountsListComponent,
     TransacAccountsDetailComponent,
     GenerationAccountsListComponent,
-    GenerationAccountsDetailComponent, CashflowAccountsListComponent, CashflowAccountsDetailComponent
+    GenerationAccountsDetailComponent, CashFlowListComponent, CashFlowDetailComponent
 } from '@ss/accounting/accounting-accounts';
 
 export const accRoutes: Routes = [
@@ -108,12 +108,12 @@ export const accRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: CashflowAccountsListComponent,
+                component: CashFlowListComponent,
                 canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: CashflowAccountsDetailComponent,
+                component: CashFlowDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
