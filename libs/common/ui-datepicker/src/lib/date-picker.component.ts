@@ -182,7 +182,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     /** Handles a click on the control's container. */
     onContainerClick(event: MouseEvent) {
         if ((event.target as Element).tagName.toLowerCase() !== 'input') {
-            this.elRef.nativeElement.querySelector('input').focus();
+            this.elRef.nativeElement.querySelector('input')?.focus();
         }
     }
 
@@ -250,9 +250,11 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             this.errorState = this.ngControl.invalid && this.ngControl.touched;
             if (!this.checkDateRange()) {
                 this.errorState = true;
-                this.ngControl.errors.range = true;
+                if (this.ngControl.errors)
+                    this.ngControl.errors.range = true;
             } else {
-                delete this.ngControl.errors.range;
+                if (this.ngControl.errors)
+                    delete this.ngControl.errors.range;
             }
             if (this.lastErrorState !== this.errorState) {
                 this.stateChanges.next();
