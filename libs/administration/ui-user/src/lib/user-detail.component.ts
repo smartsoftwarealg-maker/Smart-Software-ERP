@@ -32,7 +32,6 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     openedPanel = -1;
     isManager = false;
 
-
     roleList: Role[] = [];
     centerList: Role[] = [];
     userRoles: UserRole[] = [];

@@ -16,8 +16,11 @@
     flex: 1 0 100px;
 }
 
+
 .mat-column-ctrl {
-    flex: 0 0 40px;
+    flex: 0 1 40px;
+    justify-content: flex-start;
+    padding: 0 !important;
 }
 
 .mat-column-description {

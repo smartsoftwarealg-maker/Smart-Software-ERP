@@ -43,5 +43,7 @@
     "DEPRECIATION_ACCOUNT":  "",
     "ENDOWMENT_ACCOUNT":     "",
     "TRANSAC_ACCOUNTS":      "",
-    "GENERATION_ACCOUNTS":   ""
+    "GENERATION_ACCOUNTS":   "",
+    "LOCATED_TREASURY":      "",
+    "NON_LOCATED_TREASURY":  ""
 }

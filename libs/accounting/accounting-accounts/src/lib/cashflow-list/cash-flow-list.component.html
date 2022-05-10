@@ -15,7 +15,8 @@
             <ng-container matColumnDef="add">
                 <mat-header-cell *matHeaderCellDef translate></mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    <button mat-mini-fab (click)="add(e)" color="primary"><i class="fa-solid fa-circle-plus"></i></button>
+                    <button mat-icon-button (click)="add(e); assigned.refresh()" color="primary"
+                            [disabled]="!selectedCode"><i class="fa-solid fa-circle-plus"></i></button>
                 </mat-cell>
             </ng-container>
 
@@ -53,24 +54,53 @@
         </mat-table>
     </div>
 
-    <ss-cash-flow-account-list [account]="selectedCode"></ss-cash-flow-account-list>
+    <ss-cash-flow-account-list #assigned
+                               [account]="selectedCode"
+                               (itemDeleted)="refreshPending()">
+    </ss-cash-flow-account-list>
 
     <div class="summary-div">
-        <mat-form-field>
-            <mat-label translate>COMMON_TOTAL</mat-label>
-            <input matInput [formControl]="total" type="text" readonly>
-        </mat-form-field>
 
-        <mat-form-field>
-            <mat-label translate>ACC_LOCATED_TREASURY</mat-label>
-            <input matInput [formControl]="located" type="text" readonly>
-        </mat-form-field>
+        <fieldset>
+            <legend translate>COMMON_TOTAL</legend>
+            <mat-form-field class="default-50">
+                <mat-label translate>ACC_DEBIT</mat-label>
+                <input matInput [formControl]="totalDB" type="text" readonly>
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>ACC_CREDIT</mat-label>
+                <input matInput [formControl]="totalCR" type="text" readonly>
+            </mat-form-field>
+        </fieldset>
 
-        <mat-form-field>
-            <mat-label translate>ACC_NON_LOCATED_TREASURY</mat-label>
-            <input matInput [formControl]="nonLocated" type="text" readonly>
-        </mat-form-field>
-        <button mat-raised-button color="primary" (click)="refreshPending()" translate> COMMON_REFRESH</button>
+        <fieldset>
+            <legend translate>ACC_LOCATED_TREASURY</legend>
+            <mat-form-field class="default-50">
+                <mat-label translate>ACC_DEBIT</mat-label>
+                <input matInput [formControl]="locatedDB" type="text" readonly>
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>ACC_CREDIT</mat-label>
+                <input matInput [formControl]="locatedCR" type="text" readonly>
+            </mat-form-field>
+        </fieldset>
+
+        <fieldset class="f-warn">
+            <legend translate>ACC_NON_LOCATED_TREASURY</legend>
+            <mat-form-field class="default-50 f-warn">
+                <mat-label translate>ACC_DEBIT</mat-label>
+                <input matInput [formControl]="nonLocatedDB" type="text" readonly>
+            </mat-form-field>
+            <mat-form-field class="default-50 f-warn">
+                <mat-label translate>ACC_CREDIT</mat-label>
+                <input matInput [formControl]="nonLocatedCR" type="text" readonly>
+            </mat-form-field>
+        </fieldset>
+
+        <div class="btn-div">
+            <mat-checkbox [formControl]="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
+            <button mat-raised-button color="primary" (click)="refreshPending()" translate> COMMON_REFRESH</button>
+        </div>
 
     </div>
 </div>
