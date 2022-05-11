@@ -27,6 +27,7 @@ import {
     GenerationAccountsListComponent,
     GenerationAccountsDetailComponent, CashFlowListComponent, CashFlowDetailComponent
 } from '@ss/accounting/accounting-accounts';
+import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 
 export const accRoutes: Routes = [
     {
@@ -55,7 +56,7 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, AccountingPeriodGuard]
             },
             {
                 path: ':id',
@@ -109,12 +110,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CashFlowListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, AccountingPeriodGuard]
             },
             {
                 path: ':id',
                 component: CashFlowDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, AccountingPeriodGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -181,6 +182,7 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransactionListComponent,
+                canActivate: [CanActivateService, AccountingPeriodGuard],
                 children: [
                     {
                         path: ':id',

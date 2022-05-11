@@ -70,4 +70,11 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     balance(row: PeriodSummary) {
         return Math.abs(row?.debit - row?.credit) >= 0.01;
     }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.editButton.visible = false;
+        this.deleteButton.visible = false;
+        this.addButton.visible = false;
+    }
 }
