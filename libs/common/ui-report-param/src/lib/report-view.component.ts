@@ -9,7 +9,7 @@ import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
 import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -91,7 +91,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     loadReportTree(app: string) {
-        this.reportsService.getReportsTree(app).subscribe((res: any) => {
+        this.reportsService
+            .getReportsTree(app)
+            .subscribe((res: any) => {
             this.reportTree.data = this.parseTree(res.list, '');
         });
     }

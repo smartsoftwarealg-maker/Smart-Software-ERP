@@ -2,7 +2,7 @@ export const REPORT_PARAMS_URL = '/reports/params';
 
 export interface ReportNode {
     name: string;
-    list: [];
+    list: ReportNode[];
     parent: '';
 }
 
