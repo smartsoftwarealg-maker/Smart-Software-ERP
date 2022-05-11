@@ -14,3 +14,4 @@ export * from './lib/asset-ends.service';
 export * from './lib/transac-account.service';
 export * from './lib/asset-account.service';
 export * from './lib/cash-flow-account.service';
+export * from './lib/accounting-period.guard';
