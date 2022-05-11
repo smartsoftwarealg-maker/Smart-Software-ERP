@@ -54,11 +54,12 @@
         </mat-table>
     </div>
 
-    <ss-cash-flow-account-list #assigned
-                               [account]="selectedCode"
-                               (itemDeleted)="refreshPending()">
-    </ss-cash-flow-account-list>
-
+    <div class="account-list">
+        <ss-cash-flow-account-list #assigned
+                                   [account]="selectedCode"
+                                   (itemDeleted)="refreshPending()">
+        </ss-cash-flow-account-list>
+    </div>
     <div class="summary-div">
 
         <fieldset>
