@@ -85,6 +85,7 @@ import {
     TRAINING_ROUTE_URL,
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
+import {PayrollMonthGuard} from '@ss/payroll-common';
 
 export const mainRoutes: Routes = [
     {
@@ -99,12 +100,12 @@ export const mainRoutes: Routes = [
     {
         path: PAY_DAS_URL,
         component: DasComponent,
-        canActivate: [CanActivateService]
+        canActivate: [CanActivateService, PayrollMonthGuard]
     },
     {
         path: PAY_CACO_URL,
         component: CacoComponent,
-        canActivate: [CanActivateService]
+        canActivate: [CanActivateService, PayrollMonthGuard]
     },
     {
         path: PAY_ELEMENTSINFO_URL,
@@ -129,7 +130,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SpecialPayrollListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, PayrollMonthGuard]
             },
             {
                 path: ':id',
@@ -146,13 +147,13 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MissionPreparationListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, PayrollMonthGuard]
             },
             {
                 path: ':id',
                 component: MissionPreparationDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService, PayrollMonthGuard]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -177,22 +178,22 @@ export const mainRoutes: Routes = [
     {
         path: PAY_MONTH_CLOSER,
         component: MonthCloserComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CanActivateService, PayrollMonthGuard],
     },
     {
         path: PAY_XLS_INJECTION,
         component: ExcelInjectionComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CanActivateService, PayrollMonthGuard],
     },
     {
         path: PAY_MONTH_CANCELER,
         component: MonthCancelerComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CanActivateService, PayrollMonthGuard],
     },
     {
         path: PAY_ARCHIVE_GENERATOR,
         component: ArchiveGeneratorComponent,
-        canActivate: [CanActivateService],
+        canActivate: [CanActivateService, PayrollMonthGuard],
     },
     {
         path: PAY_MONTH_SELECTOR,
@@ -205,7 +206,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: VacationPlanningListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
             },
             {
                 path: ':id',
@@ -231,12 +232,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FormulaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, PayrollMonthGuard]
             },
             {
                 path: ':id',
                 component: FormulaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -248,12 +249,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ElementsEntryListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
             },
             {
                 path: ':id',
                 component: ElementsEntryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -265,12 +266,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PayrollAmendmentListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
             },
             {
                 path: ':id',
                 component: PayrollAmendmentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -282,12 +283,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LoansListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
             },
             {
                 path: ':id',
                 component: LoansDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -299,12 +300,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FixedElementsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, PayrollMonthGuard]
             },
             {
                 path: ':id',
                 component: FixedElementsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -316,12 +317,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InputFilterListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, PayrollMonthGuard]
             },
             {
                 path: ':id',
                 component: InputFilterDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -365,7 +366,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'payroll'},
         component: ReportViewComponent,
-        canActivate: [CanActivateService]
+        canActivate: [CanActivateService, PayrollMonthGuard]
     },
     {
         path: HR_INACTIVE_EMPLOYEES_URL,
@@ -373,7 +374,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 data: { active: false }
             },
             {
@@ -382,7 +383,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: EmployeeDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [CanActivateService, PayrollMonthGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: false }
                     },
@@ -396,7 +397,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeActivationDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -411,7 +412,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -426,7 +427,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeContractsDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -547,7 +548,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [CanActivateService, PayrollMonthGuard],
                 data: { active: true }
             },
             {
@@ -556,7 +557,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: EmployeeDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [CanActivateService, PayrollMonthGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: false, active: true }
                     },
@@ -570,7 +571,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeActivationDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -585,7 +586,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -600,7 +601,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeContractsDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [CanActivateService, PayrollMonthGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]

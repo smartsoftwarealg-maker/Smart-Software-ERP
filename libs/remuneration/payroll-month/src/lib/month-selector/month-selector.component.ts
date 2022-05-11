@@ -82,7 +82,7 @@ export class MonthSelectorComponent implements OnInit {
                             } else {
                                 if (typeof res !== 'number') {
                                     this.specialList = res.body;
-                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: 'REMUN_NORMAL_PAY'});
+                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
                                 }
                             }
                             this.processing = false;
