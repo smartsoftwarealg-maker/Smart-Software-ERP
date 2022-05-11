@@ -7,8 +7,7 @@ import {LoginService} from '@ss/common/api-common';
     providedIn: 'root'
 })
 export class AccountingPeriodGuard implements CanActivate {
-    constructor(private loginSrv: LoginService, private router: Router) {
-    }
+    constructor(private loginSrv: LoginService, private router: Router) {}
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
