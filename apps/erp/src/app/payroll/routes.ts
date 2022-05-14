@@ -1,5 +1,5 @@
 import {
-    COMMON_REPORTS_URL, HR_EMPLOYEES_URL, HR_INACTIVE_EMPLOYEES_URL,
+    COMMON_REPORTS_URL, DASHBOARD_URL, HR_EMPLOYEES_URL, HR_INACTIVE_EMPLOYEES_URL,
     LOOKUPS_URL,
     MISSION_PREPARATION_URL,
     MISSION_TRAJECTORIES,
@@ -86,8 +86,14 @@ import {
     WIVES_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import {PayrollMonthGuard} from '@ss/payroll-common';
+import {DashboardComponent} from '@ss/dashboard';
 
 export const mainRoutes: Routes = [
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./payroll-lookups.module').then(m => m.PayrollLookupsModule)

@@ -34,8 +34,6 @@ export const ORGANIZATIONS_APP_URL = 'organizations';
 // common
 export const COMMON_REPORTS_URL = 'reports';
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
-export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
-export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_ASSETS_REPORTS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_REPORTS_URL].join('/');
 
 // Administration
@@ -75,6 +73,7 @@ export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 export const STOCK_COST_CENTER_URL = 'cost-centers';
 export const STOCK_MARKS_URL = 'marks';
 export const STOCK_CLASSES_URL = 'classes';
+export const STOCK_DASHBOARD_URL = 'dashboard';
 export const STOCK_SUBCLASSES_URL = 'subclasses';
 export const STOCK_STORE_NAMES_URL = 'storeNames';
 export const STOCK_STORES_URL = 'stores';
@@ -84,6 +83,7 @@ export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
 export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
+export const STOCK_REPORTS_URL = 'stock-reports';
 
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
@@ -231,6 +231,8 @@ export const ABS_STOCK_UNITS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_
 export const ABS_STOCK_AGENT_TYPE = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, LOGISTICS_AGENT_TYPE_URL].join('/');
 export const ABS_STOCK_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORT_CATALOG_URL].join('/');
+export const ABS_STOCK_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORTS_URL].join('/');
 
 //Accounting
 export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_POLICIES_URL].join('/');
@@ -244,6 +246,7 @@ export const ABS_ACC_ASSET_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_AP
 export const ABS_ACC_TRANSAC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, TRANSAC_ACCOUNT_URL].join('/');
 export const ABS_ACC_GENERATION_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 export const ABS_ACC_CASHFLOW_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, CASHFLOW_ACCOUNTS_URL].join('/');
+export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_REPORTS_URL].join('/');
 
 
 //Logistics
@@ -259,12 +262,13 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
 export const ABS_FINANCE_SPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SPAYMENTS_URL].join('/');
-export const ABS_FINANCE_PAYMENT_ORDERS    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
+export const ABS_FINANCE_PAYMENT_ORDERS   = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, PAYMENT_ORDER].join('/');
+export const ABS_FINANCE_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_FINANCE_PAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_PAYMENTS_URL].join('/');
 export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_COMPENSATION_URL].join('/');
 export const ABS_FINANCE_SCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_CCOMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
-
+export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, COMMON_REPORTS_URL].join('/');
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_CATEGORIES_URL].join('/');
 export const ABS_HR_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIPLOMAS_URL].join('/');
@@ -282,6 +286,8 @@ export const ABS_HR_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LO
 export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DIVISIONS_URL].join('/');
 export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_DEPARTMENTS_URL].join('/');
 export const ABS_HR_PERSON_LIST_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PERSON_LIST_URL].join('/');
+export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_HR_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, DASHBOARD_URL].join('/');
 
 
 // payroll
@@ -305,6 +311,7 @@ export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
 export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
+export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DASHBOARD_URL].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
@@ -324,6 +331,8 @@ export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
 export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
+export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/')
+export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/')
 
 //dashboard
 export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');

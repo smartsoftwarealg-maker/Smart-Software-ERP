@@ -15,7 +15,7 @@ import {
     ABS_PUNISHMENT_TYPE_URL,
     ABS_PROFESSIONAL_FAULTS_URL,
     ABS_COMMON_REPORTS_URL,
-    ABS_HR_REPORTS_URL, ABS_INACTIVE_HR_EMPLOYEES_URL
+    ABS_HR_REPORTS_URL, ABS_INACTIVE_HR_EMPLOYEES_URL, ABS_FINANCE_DASHBOARD_URL, ABS_HR_DASHBOARD_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -113,6 +113,11 @@ export const hrNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-calendar-check',
             route: ABS_HR_REPORTS_URL,
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_HR_DASHBOARD_URL,
         },
     ],
     accessRights: "HRMASTER"
