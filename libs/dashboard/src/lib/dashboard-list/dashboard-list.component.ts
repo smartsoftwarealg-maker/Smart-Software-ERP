@@ -16,6 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
     displayedColumns = [
+        'appName',
         'description',
     ];
 

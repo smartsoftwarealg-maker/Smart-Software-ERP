@@ -3,7 +3,7 @@ import {
     DASHBOARD_URL
 } from '../common';
 import { Routes } from '@angular/router';
-import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
 import {DashboardListComponent, DashboardDetailComponent, DashboardComponent} from '@ss/dashboard';
 
 export const dashboardRoutes: Routes = [

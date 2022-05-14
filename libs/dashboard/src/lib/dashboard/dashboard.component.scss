@@ -30,7 +30,7 @@ mat-cell, mat-header-cell {
     display: flex;
     flex-flow: row wrap;
     flex: 0 1 64px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .list-container {

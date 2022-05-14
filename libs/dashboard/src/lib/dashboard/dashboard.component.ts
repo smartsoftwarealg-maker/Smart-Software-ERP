@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
-import {switchMap, tap} from 'rxjs';
+import {Observable, of, switchMap, tap} from 'rxjs';
 import {LanguageService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
@@ -19,6 +19,7 @@ import {Id} from '@ss/common/ui-auto-complete';
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
+    app: string = null;
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     queries: string[] = [];
@@ -40,6 +41,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 public lookupsSrv: LookupsService,
                 private agentSrv: AgentService,
                 private langSrv: LanguageService,
+                private lookupSrv: LookupsService,
                 public pagPersistSrv: PaginatorPersistenceService) {
         super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();
@@ -105,4 +107,12 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 }
             });
     }
+
+    processLoadedData(data: Dashboard[]): Observable<Dashboard[]> {
+        const urlList = this.router.url.split('/');
+        this.app = urlList[2];
+        console.log(this.app, data);
+        return this.app === 'dashboard'? of(data) : of(data.filter(d => d.appName === this.app));
+    }
+
 }

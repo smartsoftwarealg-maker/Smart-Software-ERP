@@ -1,5 +1,6 @@
 export const VATS_URL = '/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
+export const APPLICATIONS_URL = '/lookups/erp_applications';
 export const WILAYAS_URL = '/lookups/wilayas';
 export const NATIONALITIES_URL = '/lookups/nationalities';
 

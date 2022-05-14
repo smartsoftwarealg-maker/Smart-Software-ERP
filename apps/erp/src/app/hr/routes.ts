@@ -15,7 +15,7 @@ import {
     HR_SERVICES_URL,
     HR_SUSPENSION_REASON_URL,
     LOOKUPS_URL,
-    HR_PERSON_LIST_URL
+    HR_PERSON_LIST_URL, DASHBOARD_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -83,12 +83,17 @@ import {
     DECISION_ROUTE_URL
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
-import { Component } from '@angular/core';
+import {DashboardComponent} from '@ss/dashboard';
 
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./hr-lookups.module').then(m => m.HRLookupsModule)
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
     },
     {
         path: HR_PERSON_LIST_URL,

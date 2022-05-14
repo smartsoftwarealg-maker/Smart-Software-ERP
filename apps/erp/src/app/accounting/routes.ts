@@ -5,7 +5,7 @@ import {
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
     ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
-    COMMON_ACCOUNT_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
+    COMMON_ACCOUNT_URL, COMMON_REPORTS_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -28,12 +28,26 @@ import {
     GenerationAccountsDetailComponent, CashFlowListComponent, CashFlowDetailComponent
 } from '@ss/accounting/accounting-accounts';
 import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const accRoutes: Routes = [
     {
         path: ACC_FILE_SELECTOR_URL,
         component: FileSelectorComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: { reportBase: 'accounting'},
+                component: ReportViewComponent,
+                canActivate: [CanActivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: ACC_PERIOD_SELECTOR_URL,

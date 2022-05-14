@@ -15,7 +15,7 @@ import {
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
-    docInfoRoutes, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL
+    docInfoRoutes, STOCK_ARTICLES_STORE_URL, STOCK_ANOMALY_URL, STOCK_REPORTS_URL, DASHBOARD_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -47,8 +47,14 @@ import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
 import {InventoryAnomaliesComponent} from '@ss/stock/ui-inventory-anomalies';
+import {DashboardComponent} from '@ss/dashboard';
 
 export const mainRoutes: Routes = [
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
     {
         path: STOCK_ANOMALY_URL,
         component: InventoryAnomaliesComponent,
@@ -287,11 +293,11 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: COMMON_REPORTS_URL,
+        path: STOCK_REPORTS_URL,
         children: [
             {
                 path: LIST_URL,
-                data: { reportBase: 'syscom'},
+                data: { reportBase: 'stock'},
                 component: ReportViewComponent,
                 canActivate: [CanActivateService]
             },

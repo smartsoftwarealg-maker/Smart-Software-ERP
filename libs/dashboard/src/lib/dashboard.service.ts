@@ -17,6 +17,7 @@ export class DashboardService extends BaseEntityExtendedService<Dashboard> {
   getHeaders(queryId: number): Observable<Headers> {
       return this.httpSrv.get<Headers>(`/dashboard/${queryId}/headers`);
   }
+
   getData(queryId: number, page: number, size: number, from?: string, to?: string, agent?: any): Observable<{ itemCount: number, body: any[][] }> {
       let params = new HttpParams();
       ([['from', from], ['to', to], ['agent', agent]])

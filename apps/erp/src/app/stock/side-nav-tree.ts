@@ -13,7 +13,11 @@ import {
     ABS_STOCK_SUBCLASSES_URL,
     ABS_STOCK_UNITS_URL,
     ABS_STORE_ASSIGNMENT_URL,
-    ABS_INVENTORY_ANOMALIES_URL, ABS_STOCK_INVENTORY_URL, ABS_ASSETS_REPORTS_URL, ABS_STOCK_REPORTS_URL
+    ABS_INVENTORY_ANOMALIES_URL,
+    ABS_STOCK_INVENTORY_URL,
+    ABS_ASSETS_REPORTS_URL,
+    ABS_STOCK_REPORTS_URL,
+    ABS_PURCHASE_DASHBOARD_URL, ABS_STOCK_DASHBOARD_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -97,6 +101,11 @@ export const stockNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-calendar-check',
             route: ABS_STOCK_REPORTS_URL,
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_STOCK_DASHBOARD_URL,
         },
     ]
 };

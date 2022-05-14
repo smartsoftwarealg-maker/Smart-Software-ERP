@@ -1,7 +1,11 @@
 import {
     ABS_FINANCE_PAYMENT_ORDERS,
-    ABS_FINANCE_SCOMPENSATIONS, ABS_FINANCE_SPAYMENTS, ABS_PURCHASE_ORDER_URL, ABS_PURCHASE_QUOTATION_URL,
-    ABS_PURCHASE_RECEPTION_URL
+    ABS_FINANCE_SCOMPENSATIONS,
+    ABS_FINANCE_SPAYMENTS,
+    ABS_PAYROLL_DASHBOARD_URL, ABS_PURCHASE_DASHBOARD_URL,
+    ABS_PURCHASE_ORDER_URL,
+    ABS_PURCHASE_QUOTATION_URL,
+    ABS_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORTS_URL, ABS_STOCK_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -39,6 +43,16 @@ export const purchasesNavTree: SideNavNode = {
             icon: 'fas fa-coins',
             route: ABS_FINANCE_SCOMPENSATIONS,
             accessRights: 'Accounting'
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fas fa-calendar-check',
+            route: ABS_PURCHASE_REPORTS_URL,
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_PURCHASE_DASHBOARD_URL,
         },
     ]
 };

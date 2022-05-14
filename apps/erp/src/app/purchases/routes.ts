@@ -1,6 +1,13 @@
 import {Routes} from '@angular/router';
 import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
-import {docInfoRoutes, MISSION_TRAJECTORIES, PAYMENT_ORDER, PURCHASE_QUOTATION_URL} from '../common';
+import {
+    COMMON_REPORTS_URL,
+    DASHBOARD_URL,
+    docInfoRoutes,
+    MISSION_TRAJECTORIES,
+    PAYMENT_ORDER,
+    PURCHASE_QUOTATION_URL
+} from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -13,6 +20,8 @@ import {
     QuotationLinesDetailComponent,
     QuotationListComponent
 } from '@ss/purchases/ui-quotation';
+import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const routes: Routes = [
     {
@@ -92,6 +101,24 @@ export const routes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: { reportBase: 'purchase'},
+                component: ReportViewComponent,
+                canActivate: [CanActivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
 ];

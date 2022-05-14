@@ -64,7 +64,7 @@ import {
     LanguageLevel,
     LANGUAGES_URL,
     LANGUAGE_LEVELS_URL,
-    WORKSHOPS_URL
+    WORKSHOPS_URL, APPLICATIONS_URL
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
 import {Lookup} from '@ss/logistics/ui-doc-import';
@@ -87,6 +87,10 @@ export class LookupsService {
 
     public getMaritalStatuses(): Observable<MaritalStatus[]> {
         return this.lookupCacheSrv.load<MaritalStatus>(MARITAL_STATUS_URL, 'maritalStatuses');
+    }
+
+    public getApplicationList(): Observable<Lookup[]> {
+        return this.lookupCacheSrv.load<Lookup>(APPLICATIONS_URL, 'applications');
     }
 
     public getDiplomas(): Observable<Diploma[]> {

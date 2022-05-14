@@ -2,15 +2,27 @@ import {
     LOGISTICS_PAYMENTS_URL,
     LOGISTICS_COMPENSATION_URL,
     LOGISTICS_SPAYMENTS_URL,
-    LOGISTICS_CPAYMENTS_URL, LOGISTICS_SCOMPENSATION_URL, LOGISTICS_CCOMPENSATION_URL, PAYMENT_ORDER
+    LOGISTICS_CPAYMENTS_URL,
+    LOGISTICS_SCOMPENSATION_URL,
+    LOGISTICS_CCOMPENSATION_URL,
+    PAYMENT_ORDER,
+    DASHBOARD_URL,
+    COMMON_REPORTS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PaymentsListComponent, PaymentsDetailComponent} from '@ss/logistics/payments';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
-import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '../../../../../libs/purchases/payment-orders/src';
+import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
+import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const financeRoutes: Routes = [
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
     {
         path: LOGISTICS_CCOMPENSATION_URL,
         component: PaymentCompensationComponent,
@@ -100,6 +112,20 @@ export const financeRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+    {
+        path: COMMON_REPORTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                data: { reportBase: 'finance'},
+                component: ReportViewComponent,
+                canActivate: [CanActivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

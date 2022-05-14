@@ -10,7 +10,7 @@
             <ss-date-picker [formControl]="toDate"></ss-date-picker>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
+        <mat-form-field class="default-50 sm-100" *ngIf="app === null">
             <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
             <ss-auto-complete matInput
                               [required]="true"
@@ -29,6 +29,7 @@
         </mat-list>
 
     </div>
+
     <div class="pagination-container b-b-background page1">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
@@ -52,8 +53,8 @@
         </mat-table>
 
     </div>
-    <div class="pagination-container b-b-background page2">
-        <ss-pagination [paginationModel]="detailPagination"></ss-pagination>
-    </div>
+<!--    <div class="pagination-container b-b-background page2">-->
+<!--        <ss-pagination [paginationModel]="detailPagination"></ss-pagination>-->
+<!--    </div>-->
 
 </div>

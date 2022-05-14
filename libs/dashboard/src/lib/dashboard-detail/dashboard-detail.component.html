@@ -1,7 +1,13 @@
 <form *ngIf="form" novalidate [formGroup]="form" >
 
+    <mat-form-field class="default-50">
+        <mat-label translate>COMMON_APPLICATIONS</mat-label>
+        <mat-select formControlName="appId" required>
+            <mat-option *ngFor="let a of applications | async" [value]="a.id"> {{ a.description }} </mat-option>
+        </mat-select>
+    </mat-form-field>
 
-    <mat-form-field class="description">
+    <mat-form-field class="default-50">
         <mat-label translate>COMMON_DESCRIPTION</mat-label>
         <input matInput formControlName="description" type="text" required>
 
@@ -11,7 +17,8 @@
 
     </mat-form-field>
 
-    <mat-form-field>
+
+    <mat-form-field class="default-100">
         <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
         <textarea matInput formControlName="query" type="text" rows="40"></textarea>
         <mat-error
