@@ -64,6 +64,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.shellSrv.addButton(selectButton);
         this.shellSrv.updateShell();
         this.accPeriod.setValue(this.loginSrv.appCtx.accPeriod || 1);
+        this.shellSrv.setGoBackPath('..', this.route);
     }
 
     selectFolder() {
@@ -75,6 +76,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
                     this.shellSrv.setLabels([{ title: `${this.selectedRow.description}` }]);
                 }
                 this.snackBarSrv.showSuccessMessage();
+                this.shellSrv.goBack();
             })
     }
 

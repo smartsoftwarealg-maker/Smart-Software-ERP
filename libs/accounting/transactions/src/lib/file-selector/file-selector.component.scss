@@ -20,3 +20,12 @@
 .pagination-container {
     flex-grow: 0;
 }
+
+.btn-div {
+    width: 98%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: flex-end;
+}
