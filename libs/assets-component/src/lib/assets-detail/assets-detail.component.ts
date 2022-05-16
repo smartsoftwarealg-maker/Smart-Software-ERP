@@ -80,10 +80,12 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     setupForm(b: Asset): FormGroup {
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
+        const minLen = this.isANSEJ? 11 : 1;
+        const ref2Validators = this.isANSEJ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.minLength(11),  Validators.required]],
-            reference2: [b.reference2 || this.maxReference, [Validators.maxLength(5), Validators.required ]],
+            reference: [b.reference, [Validators.minLength(minLen),  Validators.required]],
+            reference2: [b.reference2 || this.maxReference, ref2Validators],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today, Validators.required],

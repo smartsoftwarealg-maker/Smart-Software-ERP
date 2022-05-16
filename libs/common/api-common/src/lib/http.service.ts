@@ -37,8 +37,8 @@ export class HttpService {
                         alert('ERROR: Failed to patch XhrFactory');
                     } else {
                         xhrFactory.build = function () {
-                            if (requestTimeout && requestTimeout > 0)
-                                console.log('requestTimeout', requestTimeout);
+                            // if (requestTimeout && requestTimeout > 0)
+                            //     console.log('requestTimeout', requestTimeout);
                             const request = new XMLHttpRequest();
                             request.timeout = requestTimeout || defaultTimeout;
                             return request;
