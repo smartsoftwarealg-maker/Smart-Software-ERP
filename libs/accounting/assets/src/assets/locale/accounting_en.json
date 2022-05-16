@@ -48,6 +48,7 @@
     "ENDOWMENT_ACCOUNT":       "Endowment account",
     "TRANSAC_ACCOUNTS":        "Accounting transaction accounts",
     "GENERATION_ACCOUNTS":     "Generation accounts",
-    "LOCATED_TREASURY":      "Total treasury journals balance",
-    "NON_LOCATED_TREASURY":  "Displaced treasury balance"
+    "LOCATED_TREASURY":        "Total treasury journals balance",
+    "NON_LOCATED_TREASURY":    "Displaced treasury balance",
+    "SELECT_ACC_FOLDER":       "Please, select your accounting file"
 }

@@ -26,5 +26,5 @@
     "MISSING_HIRE_DATE":             "Hire date is missing.",
     "SESSION_EXPIRED":               "Your session has expired. Please, relogin again",
     "INVALID_CENTER":                "Data with invalid center code was requested",
-    "KASPERSKY_EXC":                "Kaspersky has messed with the request. Please, contact your network administrator to solve the problem."
+    "KASPERSKY_EXC":                 "Kaspersky has messed up with the request. Please, contact your network administrator to solve the problem."
 }

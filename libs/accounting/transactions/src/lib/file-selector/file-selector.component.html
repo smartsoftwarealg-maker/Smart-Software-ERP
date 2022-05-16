@@ -1,27 +1,31 @@
 <div class="container">
-    <div class="btn-div"> <button mat-raised-button
-                                  color="primary"
-                                  (click)="selectFolder()"
-                                  [disabled]="!selected"
-                                  translate>COMMON_SELECT</button></div>
-<!--    <mat-form-field floatLabel="always" class="default-50">-->
-<!--        <mat-label translate>ACC_PERIOD</mat-label>-->
-<!--        <mat-select [formControl]="accPeriod" required>-->
-<!--            <mat-option [value]="1" translate>JANUARY</mat-option>-->
-<!--            <mat-option [value]="2" translate>FEBRUARY</mat-option>-->
-<!--            <mat-option [value]="3" translate>MARCH</mat-option>-->
-<!--            <mat-option [value]="4" translate>APRIL</mat-option>-->
-<!--            <mat-option [value]="5" translate>MAY</mat-option>-->
-<!--            <mat-option [value]="6" translate>JUNE</mat-option>-->
-<!--            <mat-option [value]="7" translate>JULY</mat-option>-->
-<!--            <mat-option [value]="8" translate>AUGUST</mat-option>-->
-<!--            <mat-option [value]="9" translate>SEPTEMBER</mat-option>-->
-<!--            <mat-option [value]="10" translate>OCTOBER</mat-option>-->
-<!--            <mat-option [value]="11" translate>NOVEMBER</mat-option>-->
-<!--            <mat-option [value]="12" translate>DECEMBER</mat-option>-->
-<!--        </mat-select>-->
-<!--    </mat-form-field>-->
-<!--    <button mat-raised-button color="primary" (click)="selectFolder()" translate>COMMON_SELECT</button>-->
+    <div class="btn-div">
+        <span translate class="f-warn">ACC_SELECT_ACC_FOLDER</span>
+        <button mat-raised-button
+                color="primary"
+                (click)="selectFolder()"
+                [disabled]="!selected"
+                translate>COMMON_SELECT
+        </button>
+    </div>
+    <!--    <mat-form-field floatLabel="always" class="default-50">-->
+    <!--        <mat-label translate>ACC_PERIOD</mat-label>-->
+    <!--        <mat-select [formControl]="accPeriod" required>-->
+    <!--            <mat-option [value]="1" translate>JANUARY</mat-option>-->
+    <!--            <mat-option [value]="2" translate>FEBRUARY</mat-option>-->
+    <!--            <mat-option [value]="3" translate>MARCH</mat-option>-->
+    <!--            <mat-option [value]="4" translate>APRIL</mat-option>-->
+    <!--            <mat-option [value]="5" translate>MAY</mat-option>-->
+    <!--            <mat-option [value]="6" translate>JUNE</mat-option>-->
+    <!--            <mat-option [value]="7" translate>JULY</mat-option>-->
+    <!--            <mat-option [value]="8" translate>AUGUST</mat-option>-->
+    <!--            <mat-option [value]="9" translate>SEPTEMBER</mat-option>-->
+    <!--            <mat-option [value]="10" translate>OCTOBER</mat-option>-->
+    <!--            <mat-option [value]="11" translate>NOVEMBER</mat-option>-->
+    <!--            <mat-option [value]="12" translate>DECEMBER</mat-option>-->
+    <!--        </mat-select>-->
+    <!--    </mat-form-field>-->
+    <!--    <button mat-raised-button color="primary" (click)="selectFolder()" translate>COMMON_SELECT</button>-->
 
     <div class="table-div">
         <mat-table mat-table [dataSource]="data" class="main-table">
