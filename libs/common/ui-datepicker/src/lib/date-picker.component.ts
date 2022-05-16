@@ -62,7 +62,11 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     @Input()
     set value(obj: Date) {
         this.writeValue(obj);
-        this.onChange(this.date);
+        try {
+            this.onChange(this.date);
+        } catch {
+            // ignored
+        }
     }
 
     @Input()
@@ -193,13 +197,21 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         if (txt && txt.length > 8) {
             value = this.time ? strToDateTime(txt) : strToDate(txt);
         }
-        this.onChange(value);
+        try {
+            this.onChange(value);
+        } catch {
+            // ignored
+        }
         this.stateChanges.next();
     }
 
     onDateChanged(d: Date) {
         this.writeValue(d);
-        this.onChange(d);
+        try {
+            this.onChange(d);
+        } catch {
+            // ignored
+        }
     }
 
     checkDateRange(): boolean {
@@ -227,7 +239,11 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
         const outForm = this.toOutputFormat(this.date);
         if (obj !== outForm) {
-            this.onChange(outForm);
+            try {
+                this.onChange(outForm);
+            } catch {
+                // ignored
+            }
         }
         this.stateChanges.next();
     }
