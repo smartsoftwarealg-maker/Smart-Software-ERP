@@ -10,9 +10,7 @@ export class CustomErrorHandler extends ErrorHandler {
 
     // I handle the given error.
     public handleError(error: any): void {
-        console.log(error);
-        const unwrappedError = error.originalError || error;
-        this.errorSrv.setError(error);
+        this.errorSrv.setError(error.originalError || error);
     }
 
 }

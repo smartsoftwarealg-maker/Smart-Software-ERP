@@ -45,5 +45,6 @@
     "TRANSAC_ACCOUNTS":      "",
     "GENERATION_ACCOUNTS":   "",
     "LOCATED_TREASURY":      "",
-    "NON_LOCATED_TREASURY":  ""
+    "NON_LOCATED_TREASURY":  "",
+    "SELECT_ACC_FOLDER":     ""
 }
