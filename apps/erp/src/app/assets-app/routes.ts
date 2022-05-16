@@ -25,6 +25,7 @@ import {
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
+import {AccountingPeriodGuard} from '../../../../../libs/accounting/accounting-api/src';
 
 export const mainRoutes: Routes = [
     {
@@ -168,7 +169,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: { reportBase: 'assets' },
         component: ReportViewComponent,
-        canActivate: [CanActivateService]
+        canActivate: [CanActivateService, AccountingPeriodGuard]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
