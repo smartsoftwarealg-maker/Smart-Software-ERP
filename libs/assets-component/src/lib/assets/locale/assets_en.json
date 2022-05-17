@@ -29,5 +29,7 @@
     "COST_TYPES":         "Cost types",
     "REVALUATION_TYPES":  "Revaluation types",
     "LOCATIONS":          "Locations",
-    "IMPORT":             "Integrate from another center"
+    "IMPORT":             "Integrate from another center",
+    "BLOCK_NO":           "Block number",
+    "FLOOR_NO":           "Floor number"
 }

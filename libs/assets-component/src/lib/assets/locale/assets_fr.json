@@ -29,5 +29,7 @@
     "COST_TYPES":         "Types de coûts",
     "REVALUATION_TYPES":  "Types de réévaluation",
     "LOCATIONS":          "Emplacements",
-    "IMPORT":             "Intégrer depuis un autre centre"
+    "IMPORT":             "Intégrer depuis un autre centre",
+    "BLOCK_NO":           "Numéro du bâtiment",
+    "FLOOR_NO":           "Numéro d'étage"
 }

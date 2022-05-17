@@ -24,5 +24,6 @@
     "MONTH_CLOSED":                         "",
     "MISSING_HIRE_DATE":                    "",
     "SESSION_EXPIRED":                      "",
-    "INVALID_CENTER":                       ""
+    "INVALID_CENTER":                       "",
+    "KASPERSKY_EXC":                ""
 }

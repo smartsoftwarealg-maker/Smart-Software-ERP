@@ -48,6 +48,7 @@
     "ENDOWMENT_ACCOUNT":       "حساب الوقف",
     "TRANSAC_ACCOUNTS":        "حسابات المعاملات المحاسبية",
     "GENERATION_ACCOUNTS":     "حسابات الإنشاء الآلي",
-    "LOCATED_TREASURY":      "إجمالي رصيد دفاتر اليومية الخزينة",
-    "NON_LOCATED_TREASURY":  "الرصيد المفقود"
+    "LOCATED_TREASURY":        "إجمالي رصيد دفاتر اليومية الخزينة"  ,
+    "NON_LOCATED_TREASURY":    "الرصيد المفقود",
+    "SELECT_ACC_FOLDER":       "من فضلك ، حدد ملف المحاسبة الخاص بك"
 }

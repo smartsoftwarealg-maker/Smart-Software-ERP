@@ -48,7 +48,8 @@
     "ENDOWMENT_ACCOUNT":       "Compte de dotation",
     "TRANSAC_ACCOUNTS":        "Comptes d'ecritures comptables",
     "GENERATION_ACCOUNTS":     "Comptes de génération",
-    "LOCATED_TREASURY":      "Solde de Trésorerie Incorrectement saisi",
-    "NON_LOCATED_TREASURY":  "Solde Trésorerie affectés"
+    "LOCATED_TREASURY":        "Solde de Trésorerie Incorrectement saisi",
+    "NON_LOCATED_TREASURY":    "Solde Trésorerie affectés",
+    "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable"
 }
 

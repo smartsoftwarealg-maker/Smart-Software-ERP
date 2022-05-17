@@ -1,9 +1,9 @@
 <form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field id="reference" class="default-25 sm-50">
         <mat-label translate>COMMON_REFERENCE</mat-label>
-        <input matInput formControlName="reference" type="text" autofocus maxlength="20">
-        <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-        </mat-error>
+        <input matInput formControlName="reference" type="text" autofocus maxlength="16">
+        <mat-error *ngIf="form.controls['reference'].errors?.maxlength" [translate]="{maxLen: 16}">COMMON_FIELD_MAX_LENGTH</mat-error>
+        <mat-error *ngIf="form.controls['reference'].errors?.minlength" [translate]="{minLen: minLength}">COMMON_FIELD_MIN_LENGTH</mat-error>
     </mat-form-field>
     <mat-form-field id="reference2" class="default-25 sm-50" >
         <mat-label><spna translate>COMMON_REFERENCE</spna> 2</mat-label>
@@ -42,7 +42,7 @@
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">
-        <mat-label translate>COMMON_LOCATION</mat-label>
+        <mat-label translate>ASSET_LOCATIONS</mat-label>
         <ss-auto-complete matInput
                           [model]="locationAutoCompleteModel"
                           formControlName="location">
@@ -143,7 +143,7 @@
         <mat-expansion-panel #purchase expanded="false" [class]="getPanelHeaderClass('purchase', purchase)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
-                    ASSET_PURCHASE
+                    COMMON_PURCHASE
                 </mat-panel-title>
             </mat-expansion-panel-header>
 

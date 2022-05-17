@@ -5,8 +5,13 @@ import {
     ASSETS_ASSET_URL,
     ASSETS_BLOCKING_URL,
     ASSETS_COST_URL,
-    ASSETS_REVALUATION_URL, ASSET_COST_TYPE_URL,
-    PAY_ELEMENT_TYPES_URL, ASSET_REVALUATION_TYPE_URL, COMMON_REPORTS_URL, ASSET_LOCATIONS_URL
+    ASSETS_REVALUATION_URL,
+    ASSET_COST_TYPE_URL,
+    PAY_ELEMENT_TYPES_URL,
+    ASSET_REVALUATION_TYPE_URL,
+    COMMON_REPORTS_URL,
+    ASSET_LOCATIONS_URL,
+    ORGANIZATIONS_OFFICES_URL, ASSETS_OFFICES_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -25,6 +30,8 @@ import {
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
+import {AccountingPeriodGuard} from '../../../../../libs/accounting/accounting-api/src';
+import {OfficeDetailComponent, OfficesListComponent} from '../../../../../libs/organizations/ui-organizations/src';
 
 export const mainRoutes: Routes = [
     {
@@ -168,7 +175,24 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: { reportBase: 'assets' },
         component: ReportViewComponent,
-        canActivate: [CanActivateService]
+        canActivate: [CanActivateService, AccountingPeriodGuard]
+    },
+    {
+        path: ASSETS_OFFICES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: OfficesListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: OfficeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

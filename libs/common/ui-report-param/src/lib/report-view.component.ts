@@ -9,7 +9,7 @@ import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
 import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
-import {Observable, tap} from 'rxjs';
+import {catchError, Observable, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -151,32 +151,38 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
-       obs.pipe(map(res => {
+        obs.pipe(map(res => {
             if (this.form.value.reportType === 'HTML') {
                 return res;
             } else {
-                const obj: Blob = <Blob> res;
+                const obj: Blob = <Blob>res;
                 return new Blob([obj], {type: this.getMimeType()});
             }
-        })).subscribe(res => {
-            if (this.isAndroid && this.form.value.reportType === 'PDF') {
-                this.writeThenOpenFile(res);
-            } else {
-                if (this.form.value.reportType === 'EXCEL') {
-                    saveAs(res, 'excel.xlsx');
-                } else if (this.form.value.reportType === 'PDF') {
-                    this.pdfSrc = URL.createObjectURL(res);
-                    this.leftPaneHidden = true;
+        })).subscribe({
+            next: res => {
+                if (this.isAndroid && this.form.value.reportType === 'PDF') {
+                    this.writeThenOpenFile(res);
                 } else {
-                    this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
-                    this.leftPaneHidden = true;
+                    if (this.form.value.reportType === 'EXCEL') {
+                        saveAs(res, 'excel.xlsx');
+                    } else if (this.form.value.reportType === 'PDF') {
+                        this.pdfSrc = URL.createObjectURL(res);
+                        this.leftPaneHidden = true;
+                    } else {
+                        this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
+                        this.leftPaneHidden = true;
+                    }
                 }
+                this.generating = false;
+            }, error: err => {
+                this.generating = false;
+                this.leftPaneHidden = false;
+                if (err.error) {
+                    const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
+                    err.error = JSON.parse(json);
+                }
+                throw err;
             }
-           this.generating = false;
-        }, err => {
-            this.generating = false;
-            this.leftPaneHidden = false;
-            return err;
         });
     }
 
