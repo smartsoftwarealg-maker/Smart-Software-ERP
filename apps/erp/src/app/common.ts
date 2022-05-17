@@ -159,6 +159,7 @@ export const ASSET_REVALUATION_TYPE_URL = 'revaluation_types';
 export const ASSETS_COST_URL            = 'costs'
 export const ASSETS_REVALUATION_URL     = 'revaluations'
 export const ASSETS_BLOCKING_URL        = 'blockings'
+export const ASSETS_OFFICES_URL         = 'offices';
 
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -318,6 +319,7 @@ export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET
 export const ABS_COST_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_COST_TYPE_URL].join('/');
 export const ABS_REVALUATION_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_REVALUATION_TYPE_URL].join('/');
 export const ABS_ASSET_LOCATIONS = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_LOCATIONS_URL].join('/');
+export const ABS_ASSET_OFFICES_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_OFFICES_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

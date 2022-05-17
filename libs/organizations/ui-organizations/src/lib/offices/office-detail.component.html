@@ -3,11 +3,22 @@
 <div class="form-container">
     <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
         <mat-form-field class="default-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <mat-label translate>ADMINISTRATION_CODE</mat-label>
             <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
                 autofocus>
             <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>ASSET_BLOCK_NO</mat-label>
+            <input matInput formControlName="blockNo" type="number" >
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>ASSET_FLOOR_NO</mat-label>
+            <input matInput formControlName="floorNo" type="number" >
+        </mat-form-field>
+
     </form>
 </div>
