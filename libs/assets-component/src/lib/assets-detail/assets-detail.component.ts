@@ -35,6 +35,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
         click: () => this.importAsset()
     };
+    minLength = 1;
 
     private maxReference: string = null;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
@@ -80,11 +81,11 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     setupForm(b: Asset): FormGroup {
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
-        const minLen = this.isANSEJ? 11 : 1;
+        this.minLength = this.isANSEJ? 11 : 1;
         const ref2Validators = this.isANSEJ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.minLength(minLen),  Validators.required]],
+            reference: [b.reference, [Validators.minLength(this.minLength),  Validators.required]],
             reference2: [b.reference2 || this.maxReference, ref2Validators],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
