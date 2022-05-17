@@ -25,6 +25,7 @@
     "DEL_SELECTED": "Delete selected",
     "FIELD_REQUIRED": "This field is required",
     "FIELD_MAX_LENGTH": "The max length is $maxLen$",
+    "FIELD_MIN_LENGTH": "The min length is $minLen$",
     "EMAIL_INVALID": "This email is invalid",
     "URL_INVALID": "This url is invalid",
     "INTEGER_INVALID": "This is not an integer",
