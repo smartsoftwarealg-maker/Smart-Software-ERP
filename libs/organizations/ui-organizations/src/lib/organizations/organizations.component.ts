@@ -127,7 +127,7 @@ export class OrganizationsComponent implements OnInit {
                 switchMap(() => this.officeSrv.getListSimple()),
                 tap(os => {
                     os.forEach((o: Office) => {
-                        offices[o.id] = this.lookupToChartNode(o.id, o.description, null, o.responsible, Level.Office);
+                        offices[o.id] = this.lookupToChartNode(o.id, o.description, null, null, Level.Office);
                     });
                 }),
                 switchMap(() => this.httpSrv.get<Organization[]>(ORGANIZATION_URL))

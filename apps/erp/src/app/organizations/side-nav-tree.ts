@@ -39,7 +39,7 @@ export const organizationsNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_OFFICES',
-            icon: 'fas fa-building',
+            icon: 'fas fa-chair',
             route: ABS_ORGANIZATIONS_OFFICES_URL,
             accessRights: 'Services'
         }

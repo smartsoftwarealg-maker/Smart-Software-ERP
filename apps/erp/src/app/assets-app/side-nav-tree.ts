@@ -1,10 +1,10 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ASSET_LOCATIONS,
+    ABS_ASSET_LOCATIONS, ABS_ASSET_OFFICES_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
     ABS_COMMON_REPORTS_URL,
-    ABS_COST_TYPES,
+    ABS_COST_TYPES, ABS_ORGANIZATIONS_OFFICES_URL,
     ABS_REVALUATION_TYPES
 } from '../common';
 
@@ -22,6 +22,12 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_REVALUATION_TYPES',
             icon: 'fa-solid fa-list-tree',
             route: ABS_REVALUATION_TYPES
+        },
+        {
+            name: 'COMMON_OFFICES',
+            icon: 'fas fa-chair',
+            route: ABS_ASSET_OFFICES_URL,
+            accessRights: 'Office'
         },
         {
             name: 'ASSET_LOCATIONS',
