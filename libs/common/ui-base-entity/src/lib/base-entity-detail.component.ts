@@ -69,19 +69,19 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             : a.pipe(
                 switchMap(() => b)
             );
-        const sub = c.subscribe(
-            entity => {
+        c.subscribe({
+            next: entity => {
                 if (entity) {
                     this.finishLoading(entity);
                 } else {
                     throw new Error("BaseEntityDetail: Entity is null");
                 }
             },
-            error => {
+            error: error => {
                 this.shellSrv.showRetry(() => this.load());
                 throw error;
             }
-        );
+        });
     }
 
     protected getRouteParam(): Observable<any> {

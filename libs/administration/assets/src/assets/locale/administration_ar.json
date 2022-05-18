@@ -64,5 +64,12 @@
     "ROLES": "الوظائف",
     "ROLE": "الوظيفة",
     "RESPONSIBLE": "مسؤول",
-    "APPLICATION": "التطبيق"
+    "APPLICATION": "التطبيق",
+    "TEXT":        "نص",
+    "INT":         "عدد صحيح",
+    "DECIMAL":     "عدد عشري",
+    "LOOKUP":      "بحث",
+    "ATTRIBUTES":  "صفات",
+    "MODULE":      "وحدة",
+    "LOOKUP_VALUES": "قيم البحث"
 }
