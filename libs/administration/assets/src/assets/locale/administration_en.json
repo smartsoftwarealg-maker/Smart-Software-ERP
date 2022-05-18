@@ -64,5 +64,12 @@
     "ROLES": "Roles",
     "ROLE": "Role",
     "RESPONSIBLE": "Responsible",
-    "APPLICATION": "Application"
+    "APPLICATION": "Application",
+    "TEXT":        "Text",
+    "INT":         "Integer",
+    "DECIMAL":     "Decimal",
+    "LOOKUP":      "Lookup",
+    "ATTRIBUTES":  "Attributes",
+    "MODULE":      "Module",
+    "LOOKUP_VALUES": "Lookup values"
 }

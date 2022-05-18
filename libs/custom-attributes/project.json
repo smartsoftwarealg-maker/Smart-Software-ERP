@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/custom-attributes",
+    "sourceRoot": "libs/custom-attributes/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/custom-attributes"],
+            "options": {
+                "jestConfig": "libs/custom-attributes/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/custom-attributes/src/**/*.ts",
+                    "libs/custom-attributes/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

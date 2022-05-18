@@ -20,14 +20,14 @@
             "@ss/accounting/acc-policies": [
                 "libs/accounting/acc-policies/src/index.ts"
             ],
+            "@ss/accounting/accounting-accounts": [
+                "libs/accounting/accounting-accounts/src/index.ts"
+            ],
             "@ss/accounting/accounting-api": [
                 "libs/accounting/accounting-api/src/index.ts"
             ],
             "@ss/accounting/accounting-journal": [
                 "libs/accounting/accounting-journal/src/index.ts"
-            ],
-            "@ss/accounting/accounting-accounts": [
-                "libs/accounting/accounting-accounts/src/index.ts"
             ],
             "@ss/accounting/api-accounts": [
                 "libs/accounting/api-accounts/src/index.ts"
@@ -131,6 +131,7 @@
             "@ss/common/ui-traceability": [
                 "libs/common/ui-traceability/src/index.ts"
             ],
+            "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
             "@ss/exchange/api-currency-deposit": [
                 "libs/exchange/api-currency-deposit/src/index.ts"

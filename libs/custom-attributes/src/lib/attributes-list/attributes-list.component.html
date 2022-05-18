@@ -1,0 +1,43 @@
+<div class="container">
+    <mat-form-field floatLabel="always" class="default-50 small-100">
+        <mat-label translate>ADMINISTRATION_MODULE</mat-label>
+        <mat-select [formControl]="moduleId">
+            <mat-option *ngFor="let t of entitySrv.modules" [value]="t.id">
+                {{ t.description | translate }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="table-div">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="moduleId">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_MODULE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{entitySrv.modules[(e.moduleId || 1) - 1]?.description | translate}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="attType">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{entitySrv.attributeTypes[(e.attType || 1) - 1]?.description  | translate}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

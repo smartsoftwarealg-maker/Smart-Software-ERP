@@ -2,9 +2,9 @@
     "version": 2,
     "projects": {
         "accounting-acc-policies": "libs/accounting/acc-policies",
+        "accounting-accounting-accounts": "libs/accounting/accounting-accounts",
         "accounting-accounting-api": "libs/accounting/accounting-api",
         "accounting-accounting-journal": "libs/accounting/accounting-journal",
-        "accounting-accounting-accounts": "libs/accounting/accounting-accounts",
         "accounting-api-accounts": "libs/accounting/api-accounts",
         "accounting-assets": "libs/accounting/assets",
         "accounting-transactions": "libs/accounting/transactions",
@@ -52,6 +52,7 @@
         "common-ui-theme": "libs/common/ui-theme",
         "common-ui-traceability": "libs/common/ui-traceability",
         "cspace": "apps/cspace",
+        "custom-attributes": "libs/custom-attributes",
         "dashboard": "libs/dashboard",
         "erp": "apps/erp",
         "exchange": "apps/exchange",

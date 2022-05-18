@@ -1,0 +1,31 @@
+.container {
+    width: 90%;
+    height: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-div {
+    width: 100%;
+    overflow-x: auto;
+    flex-grow: 1;
+}
+
+mat-table {
+    width: 100%;
+    height: 100%;
+}
+
+.mat-column-description {
+    flex: 3 1 auto;
+}
+.mat-column-attType {
+    flex: 1 1 auto;
+}
+
+.mat-column-moduleId {
+    flex: 1 1 90px;
+
+}
