@@ -10,6 +10,8 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {RouterModule} from '@angular/router';
+import { ChildAttributesComponent } from './child-attributes/child-attributes.component';
+import {CommonUiDefaultReportModule} from '@ss/common/ui-default-report-component';
 
 @NgModule({
     imports: [
@@ -21,11 +23,16 @@ import {RouterModule} from '@angular/router';
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
+        CommonUiDefaultReportModule,
         RouterModule,
     ],
     declarations: [
-      AttributesListComponent,
-      AttributesDetailComponent
+        AttributesListComponent,
+        AttributesDetailComponent,
+        ChildAttributesComponent,
     ],
+    exports: [
+        ChildAttributesComponent
+    ]
 })
 export class CustomAttributesModule {}

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AttributesDetailComponent } from './attributes-detail.component';
+import { ChildAttributesComponent } from './child-attributes.component';
 
-describe('AttributesDetailComponent', () => {
-  let component: AttributesDetailComponent;
-  let fixture: ComponentFixture<AttributesDetailComponent>;
+describe('ChildAttributesComponent', () => {
+  let component: ChildAttributesComponent;
+  let fixture: ComponentFixture<ChildAttributesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AttributesDetailComponent ]
+      declarations: [ ChildAttributesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttributesDetailComponent);
+    fixture = TestBed.createComponent(ChildAttributesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

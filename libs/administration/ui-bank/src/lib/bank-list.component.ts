@@ -19,7 +19,6 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
         'code'
     ];
 
-
     constructor(
         public override entitySrv: BankService,
         public override shellSrv: ShellService,

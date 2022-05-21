@@ -70,6 +70,7 @@
     "DECIMAL":     "عدد عشري",
     "LOOKUP":      "بحث",
     "ATTRIBUTES":  "صفات",
+    "ATTRIBUTE":  "صفة",
     "MODULE":      "وحدة",
     "LOOKUP_VALUES": "قيم البحث"
 }

@@ -67,9 +67,10 @@
     "APPLICATION": "Application",
     "TEXT":        "Text",
     "INT":         "Integer",
-    "DECIMAL":     "Decimal",
+    "DECIMAL":     "Number",
     "LOOKUP":      "Lookup",
     "ATTRIBUTES":  "Attributes",
+    "ATTRIBUTE":   "Attribute",
     "MODULE":      "Module",
     "LOOKUP_VALUES": "Lookup values"
 }

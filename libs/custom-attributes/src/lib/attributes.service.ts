@@ -4,25 +4,33 @@ import {ATTRIB_MODULES_URL, ATTRIB_TEMPL_URL, AttribTempl, AttribVal} from './at
 import {HttpService} from '@ss/common/api-common';
 import {Lookup} from '@ss/common/api-lookup';
 import {HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttributesService extends BaseEntityService<AttribTempl> {
-    readonly LOOKUP = 4;
+    readonly TEXT    = 1;
+    // readonly INT     = 2;
+    readonly DECIMAL = 2;
+    readonly LOOKUP  = 3;
+    readonly DATE    = 4;
+
+    readonly ARTICLES = 1;
+    readonly ASSETS   = 2;
+
     attributeTypes: Lookup[] = [
-        {id: 1, description: 'ADMINISTRATION_TEXT'},
-        {id: 2, description: 'ADMINISTRATION_INT'},
-        {id: 3, description: 'ADMINISTRATION_DECIMAL'},
+        {id: this.TEXT, description: 'ADMINISTRATION_TEXT'},
+        // {id: 2, description: 'ADMINISTRATION_INT'},
+        {id: this.DECIMAL, description: 'ADMINISTRATION_DECIMAL'},
         {id: this.LOOKUP, description: 'ADMINISTRATION_LOOKUP'},
-        {id: 5, description: 'COMMON_DATE'},
+        {id: this.DATE, description: 'COMMON_DATE'},
     ];
 
     modules: Lookup[] = [
-        {id: 1, description: 'LOGISTICS_ARTICLES'},
-        {id: 2, description: 'ASSETS'},
+        {id: this.ARTICLES, description: 'LOGISTICS_ARTICLES'},
+        {id: this.ASSETS, description: 'ASSETS'},
     ];
 
     constructor(protected override httpSrv: HttpService) {
@@ -51,6 +59,10 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
          this.httpSrv
             .post(`/attributes/${v.code}/values`, v)
             .pipe(map((res: { id: number }) => res.id));
+    }
 
+    getChildAttributes(): Observable<AttribTempl[]> {
+        this.setParentId(this.ASSETS);
+        return this.getList(0, 50).pipe(map(res => res.body));
     }
 }

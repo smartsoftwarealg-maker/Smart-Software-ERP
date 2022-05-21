@@ -89,4 +89,8 @@ export class BaseEntityService<T> {
     setURL(url: string) {
         this.url = url;
     }
+
+    setParentURL(url: string) {
+        this.parentUrl = url;
+    }
 }
