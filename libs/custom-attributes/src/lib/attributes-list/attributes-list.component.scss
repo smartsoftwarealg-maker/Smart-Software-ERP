@@ -19,13 +19,9 @@ mat-table {
 }
 
 .mat-column-description {
-    flex: 3 1 auto;
+    flex: 3 1 300px;
 }
+
 .mat-column-attType {
-    flex: 1 1 auto;
-}
-
-.mat-column-moduleId {
-    flex: 1 1 90px;
-
+    flex: 1 1 100px;
 }

@@ -23,6 +23,7 @@ import { AssetRevaluationTypeDetailComponent } from './asset-revaluation-type-de
 import { AssetLocationsListComponent } from './asset-locations-list/asset-locations-list.component';
 import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-locations-detail.component';
 import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
+import {CustomAttributesModule} from '@ss/custom-attributes';
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-d
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
+        CustomAttributesModule,
     ],
     declarations: [
         AssetsDetailComponent,

@@ -2,12 +2,19 @@
     <mat-form-field id="reference" class="default-25 sm-50">
         <mat-label translate>COMMON_REFERENCE</mat-label>
         <input matInput formControlName="reference" type="text" autofocus maxlength="16">
-        <mat-error *ngIf="form.controls['reference'].errors?.maxlength" [translate]="{maxLen: 16}">COMMON_FIELD_MAX_LENGTH</mat-error>
-        <mat-error *ngIf="form.controls['reference'].errors?.minlength" [translate]="{minLen: minLength}">COMMON_FIELD_MIN_LENGTH</mat-error>
+        <mat-error *ngIf="form.controls['reference'].errors?.maxlength" [translate]="{maxLen: 16}">
+            COMMON_FIELD_MAX_LENGTH
+        </mat-error>
+        <mat-error *ngIf="form.controls['reference'].errors?.minlength" [translate]="{minLen: minLength}">
+            COMMON_FIELD_MIN_LENGTH
+        </mat-error>
     </mat-form-field>
-    <mat-form-field id="reference2" class="default-25 sm-50" >
-        <mat-label><spna translate>COMMON_REFERENCE</spna> 2</mat-label>
-        <input matInput formControlName="reference2" type="text"  maxlength="20">
+    <mat-form-field id="reference2" class="default-25 sm-50">
+        <mat-label>
+            <spna translate>COMMON_REFERENCE</spna>
+            2
+        </mat-label>
+        <input matInput formControlName="reference2" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
     <mat-form-field id="description" class="default-50 sm-100">
@@ -17,21 +24,21 @@
     </mat-form-field>
     <mat-form-field id="serial_no" class="default-50 sm-100">
         <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-        <input matInput formControlName="serial_no" type="text"  maxlength="20">
+        <input matInput formControlName="serial_no" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
     <mat-form-field id="barcode" class="default-50 sm-100">
         <mat-label translate>ASSET_BAR_CODE</mat-label>
-        <input matInput formControlName="barcode" type="text"  maxlength="20">
+        <input matInput formControlName="barcode" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['barcode'].invalid" translate>COMMON_FIELD_MAX_LENGTH
         </mat-error>
     </mat-form-field>
 
-<!--    <mat-form-field id="accountno" class="default-50 sm-100">-->
-<!--        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
-<!--        <input matInput formControlName="accountno" type="text" required>-->
-<!--        <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
-<!--    </mat-form-field>-->
+    <!--    <mat-form-field id="accountno" class="default-50 sm-100">-->
+    <!--        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
+    <!--        <input matInput formControlName="accountno" type="text" required>-->
+    <!--        <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
+    <!--    </mat-form-field>-->
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
@@ -59,7 +66,7 @@
 
     <mat-form-field id="info" class="default-50 sm-100">
         <mat-label translate>COMMON_INFO</mat-label>
-        <input matInput formControlName="info" type="text" >
+        <input matInput formControlName="info" type="text">
     </mat-form-field>
 
     <mat-form-field id="comment" class="default-50 sm-100">
@@ -149,7 +156,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
-                <input matInput formControlName="order_numb" type="text" >
+                <input matInput formControlName="order_numb" type="text">
             </mat-form-field>
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_ORDER_DATE</mat-label>
@@ -164,12 +171,12 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                <input matInput formControlName="receptionNumber" type="text" >
+                <input matInput formControlName="receptionNumber" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
-                <input matInput formControlName="invoiceNumber" type="text" >
+                <input matInput formControlName="invoiceNumber" type="text">
             </mat-form-field>
 
 
@@ -204,7 +211,7 @@
 
             <mat-form-field class="value">
                 <mat-label translate>COMMON_TYPE</mat-label>
-                <mat-select formControlName="investEnd" >
+                <mat-select formControlName="investEnd">
                     <mat-option [value]="null"></mat-option>
                     <mat-option *ngFor="let v of assetEnds" [value]="v.id">
                         {{v ? v.description : ''}}
@@ -225,7 +232,8 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel #depreciations expanded="false" [class]="getPanelHeaderClass('depreciations', depreciations)">
+        <mat-expansion-panel #depreciations expanded="false"
+                             [class]="getPanelHeaderClass('depreciations', depreciations)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     <span translate>ASSET_DEPRECIATIONS</span>:
@@ -268,7 +276,6 @@
                         </ng-container>
 
 
-
                         <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
                     </mat-table>
@@ -307,7 +314,6 @@
                         </ng-container>
 
 
-
                         <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
                         <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
                     </mat-table>
@@ -341,8 +347,19 @@
             </mat-expansion-panel-header>
             <ss-asset-blocking-list [assetId]="id"></ss-asset-blocking-list>
         </mat-expansion-panel>
+
+        <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ADMINISTRATION_ATTRIBUTES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"></ss-child-attributes>
+        </mat-expansion-panel>
+
     </mat-accordion>
-<!--    <pre>{{form?.value | json}} {{ form?.valid}}</pre>-->
+    <!--    <pre>{{form?.value | json}} {{ form?.valid}}</pre>-->
 
 </form>
 

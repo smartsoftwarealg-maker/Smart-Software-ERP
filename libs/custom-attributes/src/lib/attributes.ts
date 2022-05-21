@@ -1,6 +1,12 @@
+import {ExtraEntryPointObject} from '@angular-devkit/build-angular';
+
 export const ATTRIB_MODULES_URL = '/modules';
 export const ATTRIB_TEMPL_URL = '/attributes';
 export const ATTRIB_VALUES_URL = '/values';
+
+export const PARENT_ARTICLE = 1;
+export const PARENT_ASSET   = 2;
+export const PARENT_TRANSAC = 3;
 
 export interface AttribTempl {
     id: number;
@@ -25,4 +31,8 @@ export interface Attrib {
     transacId?: number;
     articleId?: number;
     assetId?: number;
+    attribName?: string;
+    attribType?: number;
+    valueName?: string;
+    value?: string | number | Date;
 }

@@ -1,5 +1,6 @@
 export const ASSETS_URL = '/assets';
 export const COST_URL = '/costs';
+export const ATTRIBUTE_URL = '/attributes';
 export const LOCATIONS_URL = '/locations';
 export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
