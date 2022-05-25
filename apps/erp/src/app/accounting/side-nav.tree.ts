@@ -3,7 +3,7 @@ import {
     ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL, ABS_ACC_CASHFLOW_ACCOUNT_URL,
     ABS_ACC_FILE_SELECTION_URL, ABS_ACC_FILES_URL, ABS_ACC_GENERATION_ACCOUNT_URL,
     ABS_ACC_JOURNALS_URL, ABS_ACC_PERIOD_SELECTION_URL, ABS_ACC_REPORTS_URL, ABS_ACC_TRANSAC_ACCOUNT_URL,
-    ABS_ACC_TRANSACTIONS_URL, ABS_HR_REPORTS_URL,
+    ABS_ACC_TRANSACTIONS_URL, ABS_DEPRECIATION_GENERATION_URL, ABS_HR_REPORTS_URL,
     ABS_POLICIES_URL,
     ABS_STOCK_ACCOUNT_URL, ACCOUNTING_APP_URL
 } from '../common';
@@ -71,6 +71,11 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fas fa-calculator',
             route: ABS_ACC_TRANSACTIONS_URL,
             accessRights: 'ACCTransaction'
+        },
+        {
+            name: 'ACC_DEPRECIATION_GENERATION',
+            icon: 'fa-solid fa-engine',
+            route: ABS_DEPRECIATION_GENERATION_URL,
         },
         {
             name: 'COMMON_REPORTS',
