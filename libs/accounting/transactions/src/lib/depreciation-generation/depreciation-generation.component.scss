@@ -15,13 +15,9 @@ form {
     max-width: 90px;
 }
 
-.table-div {
-    margin-top: 8px;
-    height: 100%;
-    overflow-x: auto;
-}
 
 mat-table {
+    margin-top: 8px;
     width: 600px;
 }
 
@@ -37,5 +33,5 @@ mat-table {
 .mat-column-debit,
 .mat-column-credit {
     flex: 1 1 120px;
-    justify-self: flex-end;
+    justify-content: flex-end;
 }
