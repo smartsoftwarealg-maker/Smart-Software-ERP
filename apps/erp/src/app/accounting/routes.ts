@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
 import {
+    ACC_DEPRECIATION_GEN_URL,
     ACC_FILE_SELECTOR_URL, ACC_FILES_URL,
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
     ACC_POLICIES_URL,
@@ -17,7 +18,7 @@ import {
     TransactionLinesListComponent,
     TransactionListComponent,
     AccFileListComponent,
-    AccFileDetailComponent
+    AccFileDetailComponent, DepreciationGenerationComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -35,6 +36,11 @@ export const accRoutes: Routes = [
         path: ACC_FILE_SELECTOR_URL,
         component: FileSelectorComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: ACC_DEPRECIATION_GEN_URL,
+        component: DepreciationGenerationComponent,
+        canActivate: [CanActivateService, AccountingPeriodGuard]
     },
     {
         path: COMMON_REPORTS_URL,

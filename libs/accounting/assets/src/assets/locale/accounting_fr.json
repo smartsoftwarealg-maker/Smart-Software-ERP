@@ -50,6 +50,8 @@
     "GENERATION_ACCOUNTS":     "Comptes de génération",
     "LOCATED_TREASURY":        "Solde de Trésorerie Incorrectement saisi",
     "NON_LOCATED_TREASURY":    "Solde Trésorerie affectés",
-    "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable"
+    "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable",
+    "DEPRECIATION_GENERATION": "Génération d'amortissement",
+    "BY_COST_CENTER":           "Par centre de coûts"
 }
 
