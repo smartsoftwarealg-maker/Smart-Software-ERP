@@ -76,5 +76,6 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.addButton.visible = false;
+        this.shellSrv.updateShell();
     }
 }

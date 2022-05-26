@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
 import {DepreciationRow} from './depreciation-row';
+import {ShellService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'ss-depreciation-generation',
@@ -17,7 +19,9 @@ export class DepreciationGenerationComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private loginSrv: LoginService,
-                private deprecSrv: DepreciationGenerationService) {}
+                private deprecSrv: DepreciationGenerationService,
+                private route: ActivatedRoute,
+                private shellSrv: ShellService) {}
 
     ngOnInit(): void {
         const max = 12;
@@ -27,7 +31,8 @@ export class DepreciationGenerationComponent implements OnInit {
             byCC:  [false, Validators.required],
             year:  [this.loginSrv.appCtx.accYear],
             dType: [2, Validators.required]
-        })
+        });
+        this.shellSrv.setGoBackPath('..', this.route);
     }
 
     generate() {

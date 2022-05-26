@@ -40,11 +40,20 @@ export class TransactionLinesDetailComponent {
             let result = null;
             if (this.selectedAccount) {
                 if (!group.get('customerId').value && this.selectedAccount?.customerCode) {
-                    group.get('customerId').setErrors({invalid: true})
+                    group.get('customerId').setErrors({invalid: true});
+                    result = {invalid: true};
+                }
+                if (!group.get('accountId').value) {
+                    group.get('accountId').setErrors({ invalid: true });
+                    result = {invalid: true};
+                }
+                if (group.get('debit').value === 0 && group.get('credit').value === 0) {
+                    group.get('debit').setErrors({ invalid: true });
+                    group.get('credit').setErrors({ invalid: true });
                     result = {invalid: true};
                 }
                 if (!group.get('reference').value && this.selectedAccount?.analyzed) {
-                    group.get('reference').setErrors({invalid: true})
+                    group.get('reference').setErrors({invalid: true});
                     result = {invalid: true};
                 }
                 if (!group.get('costCenterId').value && this.selectedAccount?.ccRequired) {
@@ -81,7 +90,7 @@ export class TransactionLinesDetailComponent {
             id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
             oid: [e.oid || this.transactionId],
-            accountNo: [e.accountNo, Validators.required],
+            accountNo: [e.accountNo],
             customer: [e.customer],
             lineNumber: [e.lineNumber || 1],
             c_o_d: [e.c_o_d],
@@ -92,7 +101,7 @@ export class TransactionLinesDetailComponent {
             checkNo: [e.checkNo],
             description: [e.description, Validators.required],
             customerId: [e.customerId],
-            accountId: [e.accountId],
+            accountId: [e.accountId, Validators.required],
             costCenterId: [e.costCenterId]
         }, { validators: this.formValidator });
     }
