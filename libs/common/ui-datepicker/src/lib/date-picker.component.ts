@@ -140,7 +140,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     @Input()
     set minDate(d: Date) {
-        this.minDate = d;
+        this.minValue = d;
     }
 
     @Input()
