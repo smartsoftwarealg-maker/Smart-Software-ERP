@@ -145,7 +145,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     @Input()
     set maxDate(d: Date) {
-        this.maxValue = d;        
+        this.maxValue = d;
     }
 
     /**
