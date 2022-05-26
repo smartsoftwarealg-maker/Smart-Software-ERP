@@ -12,7 +12,7 @@ import {Account} from '@ss/accounting/api-accounts';
 })
 export class ClassService extends BaseEntityService<Class> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CLASSES_URL);
     }
 

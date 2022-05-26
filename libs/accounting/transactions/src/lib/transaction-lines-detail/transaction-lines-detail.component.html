@@ -23,7 +23,7 @@
                                   [model]="customerLookupModel"
                                   formControlName="customerId">
                 </ss-auto-complete>
-                <mat-error *ngIf="form.controls['customer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                <mat-error *ngIf="form.controls['customerId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
@@ -50,11 +50,13 @@
             <mat-form-field class="default-50" >
                 <mat-label translate>ACC_DEBIT</mat-label>
                 <input #debit matInput  formControlName="debit" type="number" (change)="onDebitChange(debit.value)">
+                <mat-error *ngIf="form.controls['debit'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
                 <mat-label translate>ACC_CREDIT</mat-label>
                 <input #credit matInput formControlName="credit" type="number" (change)="onCreditChange(credit.value)">
+                <mat-error *ngIf="form.controls['credit'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
@@ -63,19 +65,18 @@
                                   [model]="ccLookupModel"
                                   formControlName="costCenterId">
                 </ss-auto-complete>
-                <mat-error *ngIf="form.controls['customer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                <mat-error *ngIf="form.controls['costCenterId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
                 <mat-label translate>ACC_POS</mat-label>
                 <input matInput formControlName="lineNumber" type="number">
             </mat-form-field>
-<!--  <pre>{{form.value | json }}</pre>-->
 
         </form>
 
         <div class="ctrl default-100">
-            <button mat-flat-button color="primary"  (click)="save()">
+            <button mat-flat-button color="primary"  (click)="save()" [disabled]="!form?.valid">
                 <i class="fas fa-save"></i>
                 <span translate> COMMON_SAVE </span>
             </button>
@@ -85,6 +86,7 @@
             </button>
         </div>
 <!--        <div>valid: {{form?.valid}}</div>-->
+<!--        <pre>{{form?.value | json }}</pre>-->
     </mat-card-content>
 </mat-card>
 

@@ -228,10 +228,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
         const itemControlsOn = this.selected != null && this.selected > 0;
-        // to avoid calling up shellUpdate twice, i will replace the next 2 lines with a better code
-        // this.shellSrv.setButtonEnabled(this.editButton, itemControlsOn);
-        // this.shellSrv.setButtonEnabled(this.deleteButton, itemControlsOn);
-        // this removes calling updateShell twice
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;

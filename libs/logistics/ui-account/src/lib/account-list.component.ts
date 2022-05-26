@@ -40,6 +40,7 @@ export class AccountListComponent extends BaseEntityListComponent<Account> {
         public lookupsSrv: LookupsService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(accountService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_ACCOUNTS');
+        this.pagination.pageSize = 10;
     }
 
     preload(): Observable<any> {
