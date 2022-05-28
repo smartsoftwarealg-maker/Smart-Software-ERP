@@ -48,19 +48,35 @@
         <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
+<!--    <mat-form-field class="default-50 sm-100">-->
+<!--        <mat-label translate>ASSET_LOCATIONS</mat-label>-->
+<!--        <ss-auto-complete matInput-->
+<!--                          [model]="locationAutoCompleteModel"-->
+<!--                          formControlName="location">-->
+<!--        </ss-auto-complete>-->
+<!--    </mat-form-field>-->
+
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_LOCATIONS</mat-label>
         <ss-auto-complete matInput
-                          [model]="locationAutoCompleteModel"
-                          formControlName="location">
+                          [model]="officeAutoCompleteModel"
+                          formControlName="office">
         </ss-auto-complete>
     </mat-form-field>
 
+
     <mat-form-field class="default-50 sm-100">
-        <mat-label translate>COMMON_OFFICE</mat-label>
+        <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
         <ss-auto-complete matInput
-                          [model]="officeAutoCompleteModel"
-                          formControlName="office">
+                          [model]="ccAutoCompleteModel"
+                          formControlName="costCenter"></ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_CLASS</mat-label>
+        <ss-auto-complete matInput
+                          [model]="classAutoCompleteModel"
+                          formControlName="assetClass">
         </ss-auto-complete>
     </mat-form-field>
 
@@ -72,14 +88,6 @@
     <mat-form-field id="comment" class="default-50 sm-100">
         <mat-label translate>COMMON_MEMO</mat-label>
         <input matInput formControlName="comment" type="text">
-    </mat-form-field>
-
-
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
-        <ss-auto-complete matInput
-                          [model]="ccAutoCompleteModel"
-                          formControlName="costCenter"></ss-auto-complete>
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">

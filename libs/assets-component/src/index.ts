@@ -15,3 +15,5 @@ export * from './lib/asset-revaluation-type-list/asset-revaluation-type-list.com
 export * from './lib/asset-revaluation-type-detail/asset-revaluation-type-detail.component';
 export * from './lib/asset-locations-detail/asset-locations-detail.component';
 export * from './lib/asset-locations-list/asset-locations-list.component';
+export * from './lib/asset-class-detail/asset-class-detail.component';
+export * from './lib/asset-class-list/asset-class-list.component';

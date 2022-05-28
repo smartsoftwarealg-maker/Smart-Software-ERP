@@ -1,4 +1,5 @@
 export const ASSETS_URL = '/assets';
+export const ASSET_CLASS_URL = '/asset-classes';
 export const COST_URL = '/costs';
 export const ATTRIBUTE_URL = '/attributes';
 export const LOCATIONS_URL = '/locations';
@@ -55,6 +56,9 @@ export interface Asset {
     outof_service: boolean;
     criticity?: number;
     accountId?: number;
+    ccCode?: string;
+    assetClass?: number;
+    className?: string;
 }
 
 export interface Depreciation {
@@ -97,4 +101,12 @@ export interface Blocking {
     investId: number
     fromDate: Date;
     toDate: Date;
+}
+
+export interface AssetClass {
+    id: number;
+    description:       string,
+    descriptionAr?:    string;
+    depreciationRate?: number;
+    usefulLife?:       number;
 }
