@@ -24,6 +24,8 @@ import { AssetLocationsListComponent } from './asset-locations-list/asset-locati
 import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-locations-detail.component';
 import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
 import {CustomAttributesModule} from '@ss/custom-attributes';
+import { AssetClassListComponent } from './asset-class-list/asset-class-list.component';
+import { AssetClassDetailComponent } from './asset-class-detail/asset-class-detail.component';
 
 @NgModule({
     imports: [
@@ -53,7 +55,9 @@ import {CustomAttributesModule} from '@ss/custom-attributes';
         AssetRevaluationTypeDetailComponent,
         AssetLocationsListComponent,
         AssetLocationsDetailComponent,
-        AssetSearchDialogComponent
+        AssetSearchDialogComponent,
+        AssetClassListComponent,
+        AssetClassDetailComponent
     ],
 })
 export class AssetsComponentModule {

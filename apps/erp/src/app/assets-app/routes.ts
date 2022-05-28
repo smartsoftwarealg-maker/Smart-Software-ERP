@@ -11,7 +11,7 @@ import {
     ASSET_REVALUATION_TYPE_URL,
     COMMON_REPORTS_URL,
     ASSET_LOCATIONS_URL,
-    ORGANIZATIONS_OFFICES_URL, ASSETS_OFFICES_URL
+    ORGANIZATIONS_OFFICES_URL, ASSETS_OFFICES_URL, ASSET_CLASS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -25,13 +25,16 @@ import {
     AssetCostTypeListComponent,
     AssetCostTypeDetailComponent,
     AssetRevaluationTypeDetailComponent,
-    AssetRevaluationTypeListComponent, AssetLocationsListComponent, AssetLocationsDetailComponent
+    AssetRevaluationTypeListComponent,
+    AssetLocationsListComponent,
+    AssetLocationsDetailComponent,
+    AssetClassListComponent, AssetClassDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
-import {AccountingPeriodGuard} from '../../../../../libs/accounting/accounting-api/src';
-import {OfficeDetailComponent, OfficesListComponent} from '../../../../../libs/organizations/ui-organizations/src';
+import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
+import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
 
 export const mainRoutes: Routes = [
     {
@@ -112,6 +115,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetCostTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ASSET_CLASS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetClassListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AssetClassDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

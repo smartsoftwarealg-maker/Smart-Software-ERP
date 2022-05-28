@@ -86,20 +86,20 @@ $ss-black: (
 );
 
 $ss-green: (
-    50: #B2FFBB,
-    100: #A5FFB0,
-    200: #99FFA4,
-    300: #8CFF97,
-    400: #7FFF8A,
-    500: #72FF7E,
-    600: #66FF72,
-    700: #59FF64,
-    800: #4CFF55,
-    900: #3FFF49,
-    A100: #71E277,
-    A200: #64E06B,
-    A400: #58DD5F,
-    A700: #4CDB53,
+    50:   #E8F5E9,
+    100:  #C8E6C9,
+    200:  #A5D6A7,
+    300:  #81C784,
+    400:  #66BB6A,
+    500:  #4CAF50,
+    600:  #43A047,
+    700:  #388E3C,
+    800:  #2E7D32,
+    900:  #1B5E20,
+    A100: #B9F6CA,
+    A200: #69F0AE,
+    A400: #00E676,
+    A700: #00C853,
     contrast: (
         50: rgba(black, 0.87),
         100: rgba(black, 0.87),
@@ -595,7 +595,7 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 }
 
-$theme-4-primary: mat.define-palette(mat.$yellow-palette);
+$theme-4-primary: mat.define-palette(mat.$grey-palette);
 $theme-4-accent:  mat.define-palette(mat.$orange-palette);
 $theme-4-warn:    mat.define-palette(mat.$red-palette);
 
