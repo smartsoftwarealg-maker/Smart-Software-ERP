@@ -247,6 +247,6 @@ export interface Service {
 export interface Office {
     id: number;
     description: string;
-    blockNo?: number;
+    blockNo?: string;
     floorNo: number;
 }

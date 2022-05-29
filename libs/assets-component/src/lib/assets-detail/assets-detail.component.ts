@@ -19,6 +19,7 @@ import {AssetEndsService} from '@ss/accounting/accounting-api';
 import {MatDialog} from '@angular/material/dialog';
 import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
+import {AssetClassService} from '../asset-class.service';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -37,6 +38,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     };
     private minLength = 1;
     private maxReference: string = null;
+    classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
@@ -66,7 +68,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         private endSrv: AssetEndsService,
         private dialog: MatDialog,
         private isParamSrv: IsParamService,
-        private costCenterSrv: CostCenterService) {
+        private costCenterSrv: CostCenterService,
+        private classSrv: AssetClassService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -126,6 +129,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             outof_service: [b.outof_service || false, Validators.required],
             criticity: [b.criticity],
             startYear: [b.startYear || 0],
+            assetClass: [b.assetClass],
         });
         if (b.id) {
             this.maxReference = b.reference2;

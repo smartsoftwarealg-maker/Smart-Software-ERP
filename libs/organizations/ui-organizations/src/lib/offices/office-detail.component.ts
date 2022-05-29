@@ -38,9 +38,9 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
 
     setupForm(a: Office): FormGroup {
         return this.form = this.formBuilder.group({
-            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            blockNo: [a.blockNo],
-            floorNo: [a.floorNo]
+            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(4)])],
+            blockNo: [a.blockNo, [Validators.minLength(1), Validators.maxLength(4)]],
+            floorNo: [a.floorNo, [Validators.min(0), Validators.max(20)]]
         });
     }
 
