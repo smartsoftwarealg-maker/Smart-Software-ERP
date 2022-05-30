@@ -29,5 +29,6 @@
     "COST_TYPES":         "",
     "REVALUATION_TYPES":  "",
     "LOCATIONS":          "",
-    "IMPORT":             ""
+    "IMPORT":             "",
+    "APPOINTMENTS":       ""
 }

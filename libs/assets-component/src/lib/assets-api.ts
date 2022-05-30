@@ -1,5 +1,6 @@
 export const ASSETS_URL = '/assets';
 export const ASSET_CLASS_URL = '/asset-classes';
+export const APPOINTMENT_URL = '/appointments';
 export const COST_URL = '/costs';
 export const ATTRIBUTE_URL = '/attributes';
 export const LOCATIONS_URL = '/locations';
@@ -109,4 +110,16 @@ export interface AssetClass {
     descriptionAr?:    string;
     depreciationRate?: number;
     usefulLife?:       number;
+}
+
+export interface ASSAppointment {
+    id: number
+    invest_id: number;
+    decision_date?: Date;
+    decision_ref?: string;
+    location?: number;
+    cost_center?: number;
+    office_id?: number;
+    invent_id: number;
+    officeCode?: string;
 }

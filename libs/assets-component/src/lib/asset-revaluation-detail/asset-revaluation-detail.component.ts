@@ -21,7 +21,7 @@ import {AssetRevaluationLookupService} from '../asset-revaluation-lookup.service
   styleUrls: ['./asset-revaluation-detail.component.scss']
 })
 export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<AssetRevaluation> implements OnInit {
-private parentId = 0;
+    private parentId = 0;
     revaluationLookup = new DefaultAutoCompleteModel(this.revaluationLookupSrv);
 
     constructor(
@@ -35,15 +35,15 @@ private parentId = 0;
         public lookupsSrv: LookupsService,
         private revaluationLookupSrv: AssetRevaluationLookupService) {
         super(assetRevaluationSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
             'ASSET_REVALUATIONS');
     }
 
-public setupForm(a: AssetRevaluation): FormGroup {
+    public setupForm(a: AssetRevaluation): FormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             reval_type: [a.reval_type, Validators.required],
@@ -55,7 +55,7 @@ public setupForm(a: AssetRevaluation): FormGroup {
         });
     }
 
-protected override getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route
             .parent
             .parent.params

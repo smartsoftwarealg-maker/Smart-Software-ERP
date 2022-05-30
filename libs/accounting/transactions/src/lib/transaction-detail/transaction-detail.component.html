@@ -37,7 +37,7 @@
             </mat-form-field>
         </form>
 
-        <div class="ctrl default-100">
+        <div mat-subheader class="ctrl default-100 b-primary">
             <button mat-flat-button color="primary" translate (click)="save()">
                 <i class="fas fa-save"></i>
                 COMMON_SAVE
@@ -47,10 +47,10 @@
                 COMMON_CANCEL
             </button>
 
-            <button mat-flat-button color="warn" translate (click)="deleteSelected()" *ngIf="id > 0">
+            <!--button mat-flat-button color="warn" translate (click)="deleteSelected()" *ngIf="id > 0">
                 <i class="fas fa-trash-can"></i>
                 COMMON_DELETE
-            </button>
+            </button-->
         </div>
     </mat-card-content>
 </mat-card>

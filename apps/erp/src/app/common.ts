@@ -160,6 +160,7 @@ export const ASSET_LOCATIONS_URL        = 'locations';
 export const ASSET_REVALUATION_TYPE_URL = 'revaluation_types';
 export const ASSETS_COST_URL            = 'costs'
 export const ASSETS_REVALUATION_URL     = 'revaluations'
+export const ASSETS_APPOINTMENTS_URL    = 'appointments'
 export const ASSETS_BLOCKING_URL        = 'blockings'
 export const ASSETS_OFFICES_URL         = 'offices';
 

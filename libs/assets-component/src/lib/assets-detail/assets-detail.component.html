@@ -356,6 +356,15 @@
             <ss-asset-blocking-list [assetId]="id"></ss-asset-blocking-list>
         </mat-expansion-panel>
 
+        <mat-expansion-panel #appointments expanded="false" [class]="getPanelHeaderClass('appointments', appointments)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ASSET_APPOINTMENTS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-asset-appointment-list [assetId]="id"></ss-asset-appointment-list>
+        </mat-expansion-panel>
+
         <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>

@@ -1,5 +1,5 @@
 {
-    "TRANSACTIONS":             "Accounting transactions",
+    "TRANSACTIONS":             "Transactions",
     "CASH_FLOW":                "Cash flow",
     "CONSOLIDATION":            "Consolidation",
     "FUNDING":                  "Funding",
@@ -46,7 +46,7 @@
     "ASSET_ACCOUNTS":           "Asset accounts",
     "DEPRECIATION_ACCOUNT":     "Depreciation account",
     "ENDOWMENT_ACCOUNT":        "Endowment account",
-    "TRANSAC_ACCOUNTS":         "Accounting transaction accounts",
+    "TRANSAC_ACCOUNTS":         "Transaction accounts",
     "GENERATION_ACCOUNTS":      "Generation accounts",
     "LOCATED_TREASURY":         "Total treasury journals balance",
     "NON_LOCATED_TREASURY":     "Displaced treasury balance",
