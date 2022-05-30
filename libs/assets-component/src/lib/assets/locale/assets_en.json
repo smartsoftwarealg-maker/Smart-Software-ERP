@@ -31,5 +31,6 @@
     "LOCATIONS":          "Locations",
     "IMPORT":             "Integrate from another center",
     "BLOCK_NO":           "Block number",
-    "FLOOR_NO":           "Floor number"
+    "FLOOR_NO":           "Floor number",
+    "APPOINTMENTS":       "Appointments"
 }

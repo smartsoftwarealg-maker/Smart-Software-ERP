@@ -7,11 +7,10 @@ import {
     ASSETS_COST_URL,
     ASSETS_REVALUATION_URL,
     ASSET_COST_TYPE_URL,
-    PAY_ELEMENT_TYPES_URL,
     ASSET_REVALUATION_TYPE_URL,
     COMMON_REPORTS_URL,
     ASSET_LOCATIONS_URL,
-    ORGANIZATIONS_OFFICES_URL, ASSETS_OFFICES_URL, ASSET_CLASS_URL
+    ADMINISTRATION_REPORT_CATALOG_URL, ASSETS_OFFICES_URL, ASSET_CLASS_URL, ASSETS_APPOINTMENTS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -28,10 +27,9 @@ import {
     AssetRevaluationTypeListComponent,
     AssetLocationsListComponent,
     AssetLocationsDetailComponent,
-    AssetClassListComponent, AssetClassDetailComponent
+    AssetClassListComponent, AssetClassDetailComponent, AssetAppointmentListComponent, AssetAppointmentDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
-import {ADMINISTRATION_REPORT_CATALOG_URL} from '../../../../exchange/src/app/common';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
@@ -79,6 +77,21 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: AssetRevaluationDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
+                    },
+                    {
+                        path: ASSETS_APPOINTMENTS_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: AssetAppointmentListComponent
+                            },
+                            {
+                                path: ':id',
+                                component: AssetAppointmentDetailComponent,
                                 canActivate: [CanActivateService],
                                 canDeactivate: [CanDeactivateService]
                             }

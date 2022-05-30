@@ -31,5 +31,6 @@
     "LOCATIONS":          "Emplacements",
     "IMPORT":             "Intégrer depuis un autre centre",
     "BLOCK_NO":           "Numéro du bâtiment",
-    "FLOOR_NO":           "Numéro d'étage"
+    "FLOOR_NO":           "Numéro d'étage",
+    "APPOINTMENTS":       "Affectations"
 }

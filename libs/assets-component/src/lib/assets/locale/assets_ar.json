@@ -31,5 +31,6 @@
     "LOCATIONS":          "المواقع",
     "IMPORT":             "ضم من مركز آخر",
     "BLOCK_NO":           "رقم المبنى",
-    "FLOOR_NO":           "رقم الطابق"
+    "FLOOR_NO":           "رقم الطابق",
+    "APPOINTMENTS":       "تخصيصات"
 }

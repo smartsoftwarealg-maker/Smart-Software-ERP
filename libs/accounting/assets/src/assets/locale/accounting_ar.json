@@ -1,5 +1,5 @@
 {
-    "TRANSACTIONS":             "المعاملات المحاسبية" ,
+    "TRANSACTIONS":             "المعاملات" ,
     "CASH_FLOW":                "نقد متدفق",
     "CONSOLIDATION":            "الدمج",
     "FUNDING":                  "التمويل",
@@ -46,7 +46,7 @@
     "ASSET_ACCOUNTS":           "حسابات الأصول",
     "DEPRECIATION_ACCOUNT":     "حساب الإهلاك",
     "ENDOWMENT_ACCOUNT":        "حساب الوقف",
-    "TRANSAC_ACCOUNTS":         "حسابات المعاملات المحاسبية",
+    "TRANSAC_ACCOUNTS":         "حسابات المعاملات",
     "GENERATION_ACCOUNTS":      "حسابات الإنشاء الآلي",
     "LOCATED_TREASURY":         "إجمالي رصيد دفاتر اليومية الخزينة"  ,
     "NON_LOCATED_TREASURY":     "الرصيد المفقود",
