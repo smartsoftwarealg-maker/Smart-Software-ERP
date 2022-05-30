@@ -22,8 +22,26 @@
     </mat-form-field>
 
     <button mat-raised-button
-
             color="primary"
+            [disabled]="!form.valid || processing"
+            (click)="refresh()"
+            translate>COMMON_REFRESH
+    </button>
+
+    <mat-form-field>
+        <mat-label translate>ACC_JOURNALS</mat-label>
+        <ss-auto-complete matInput
+                          [model]="journalLookup"
+                          formControlName="journal"></ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="date"></ss-date-picker>
+    </mat-form-field>
+
+    <button mat-raised-button
+            color="warn"
             [disabled]="!form.valid || processing"
             (click)="generate()"
             translate>COMMON_GENERATE

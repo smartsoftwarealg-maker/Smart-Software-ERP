@@ -89,4 +89,24 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
     protected override goBack() {
         this.cancel();
     }
+
+    public deleteSelected(): void {
+        this.confirmationSrv
+            .confirmDelete()
+            .pipe(switchMap(b => b ? this.entitySrv.remove(this.id) : of(b)))
+            .subscribe({
+                next: res => {
+                    if (typeof res === 'object') {
+                        this.cancel();
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                },
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                }
+            });
+    }
+
+
 }
