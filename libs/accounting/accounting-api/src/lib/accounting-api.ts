@@ -53,6 +53,7 @@ export interface ACCPolicy {
     finBankAccount?: string;
     showProjects: boolean;
     manualCashFlow: boolean;
+    minAssetValue: 0;
 }
 
 export interface Journal {

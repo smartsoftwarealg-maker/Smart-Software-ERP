@@ -32,5 +32,6 @@
     "IMPORT":             "Intégrer depuis un autre centre",
     "BLOCK_NO":           "Numéro du bâtiment",
     "FLOOR_NO":           "Numéro d'étage",
-    "APPOINTMENTS":       "Affectations"
+    "APPOINTMENTS":       "Affectations",
+    "MIN_VALUE":          "Valeur minimale d' immobilisation"
 }
