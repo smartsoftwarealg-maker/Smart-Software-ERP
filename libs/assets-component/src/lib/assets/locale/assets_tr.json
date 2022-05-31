@@ -30,5 +30,6 @@
     "REVALUATION_TYPES":  "",
     "LOCATIONS":          "",
     "IMPORT":             "",
-    "APPOINTMENTS":       ""
+    "APPOINTMENTS":       "",
+    "MIN_VALUE":          ""
 }

@@ -5,7 +5,7 @@ import {
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
     ABS_COMMON_REPORTS_URL,
-    ABS_COST_TYPES, ABS_ORGANIZATIONS_OFFICES_URL,
+    ABS_COST_TYPES, ABS_OPTIONS_URL, ABS_ORGANIZATIONS_OFFICES_URL,
     ABS_REVALUATION_TYPES
 } from '../common';
 
@@ -46,6 +46,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-car-building',
             route: ABS_ASSETS_URL,
             accessRights: 'Asset'
+        },
+        {
+            name: 'COMMON_OPTIONS',
+            icon: 'fa-solid fa-tools',
+            route: ABS_OPTIONS_URL,
+            accessRights: 'AssetOption'
         },
         {
             name: 'COMMON_REPORTS',

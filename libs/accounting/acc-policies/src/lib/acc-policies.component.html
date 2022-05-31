@@ -83,6 +83,11 @@
                 <mat-label translate>ACC_DEPRECIATION_ACCOUNTS</mat-label>
                 <input matInput formControlName="depreciationAccount" type="text">
             </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100 spacersm-100 spacer">
+                <mat-label translate>ASSET_MIN_VALUE</mat-label>
+                <input matInput formControlName="minAssetValue" type="number" step="1">
+            </mat-form-field>
         </mat-expansion-panel>
 
         <mat-expansion-panel #consolidation expanded="false"
