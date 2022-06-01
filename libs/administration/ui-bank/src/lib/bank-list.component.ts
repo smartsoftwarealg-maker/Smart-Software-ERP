@@ -38,6 +38,4 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
               pagPersistSrv,
             'ADMINISTRATION_BANK');
     }
-
-
 }

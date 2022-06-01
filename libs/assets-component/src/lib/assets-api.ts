@@ -8,6 +8,7 @@ export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
+export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 
 export interface Asset {
     id: number;
@@ -122,4 +123,11 @@ export interface ASSAppointment {
     office_id?: number;
     invent_id: number;
     officeCode?: string;
+}
+
+export interface AssetReception {
+    id: number;
+    acquisition_Date: Date;
+    invoice_Number?: string;
+    supplier?: string;
 }

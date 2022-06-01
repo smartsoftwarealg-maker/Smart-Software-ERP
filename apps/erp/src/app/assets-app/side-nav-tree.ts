@@ -1,7 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ASSET_CLASSES,
-    ABS_ASSET_LOCATIONS, ABS_ASSET_OFFICES_URL,
+    ABS_ASSET_LOCATIONS, ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
     ABS_COMMON_REPORTS_URL,
@@ -45,6 +45,12 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSETS',
             icon: 'fa-solid fa-car-building',
             route: ABS_ASSETS_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'ASSET_RECEPTIONS',
+            icon: 'fa-solid fa-hands-holding-diamond',
+            route: ABS_ASSET_RECEPTIONS_URL,
             accessRights: 'Asset'
         },
         {
