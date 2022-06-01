@@ -1,0 +1,31 @@
+<mat-table mat-table [dataSource]="data" class="main-table">
+
+    <ng-container matColumnDef="acquisition_Date">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.acquisition_Date | date: 'dd/MM/yyyy' }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="invoice_Number">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.invoice_Number}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="supplier">
+        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.supplier}}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

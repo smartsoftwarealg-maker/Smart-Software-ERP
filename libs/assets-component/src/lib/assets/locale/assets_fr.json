@@ -33,5 +33,6 @@
     "BLOCK_NO":           "Numéro du bâtiment",
     "FLOOR_NO":           "Numéro d'étage",
     "APPOINTMENTS":       "Affectations",
-    "MIN_VALUE":          "Valeur minimale d' immobilisation"
+    "MIN_VALUE":          "Valeur minimale d' immobilisation",
+    "RECEPTIONS":         "Receptions"
 }

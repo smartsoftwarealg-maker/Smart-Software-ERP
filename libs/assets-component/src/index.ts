@@ -20,3 +20,5 @@ export * from './lib/asset-class-list/asset-class-list.component';
 export * from './lib/asset-appointment-detail/asset-appointment-detail.component';
 export * from './lib/asset-appointment-list/asset-appointment-list.component';
 export * from './lib/asset-options/asset-options.component';
+export * from './lib/asset-receptions/asset-receptions.component';
+export * from './lib/asset-reception.service';

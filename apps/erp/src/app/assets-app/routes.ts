@@ -10,7 +10,12 @@ import {
     ASSET_REVALUATION_TYPE_URL,
     COMMON_REPORTS_URL,
     ASSET_LOCATIONS_URL,
-    ADMINISTRATION_REPORT_CATALOG_URL, ASSETS_OFFICES_URL, ASSET_CLASS_URL, ASSETS_APPOINTMENTS_URL, ASSET_OPTIONS_URL
+    ADMINISTRATION_REPORT_CATALOG_URL,
+    ASSETS_OFFICES_URL,
+    ASSET_CLASS_URL,
+    ASSETS_APPOINTMENTS_URL,
+    ASSET_OPTIONS_URL,
+    ASSET_RECEPTIONS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -31,7 +36,7 @@ import {
     AssetClassDetailComponent,
     AssetAppointmentListComponent,
     AssetAppointmentDetailComponent,
-    AssetOptionsComponent
+    AssetOptionsComponent, AssetReceptionsComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -234,6 +239,10 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_OPTIONS_URL,
         component: AssetOptionsComponent
+    },
+    {
+        path: ASSET_RECEPTIONS_URL,
+        component: AssetReceptionsComponent
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

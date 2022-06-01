@@ -29,6 +29,7 @@ import { AssetClassDetailComponent } from './asset-class-detail/asset-class-deta
 import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
 import { AssetAppointmentDetailComponent } from './asset-appointment-detail/asset-appointment-detail.component';
 import { AssetOptionsComponent } from './asset-options/asset-options.component';
+import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
 
 @NgModule({
     imports: [
@@ -63,7 +64,8 @@ import { AssetOptionsComponent } from './asset-options/asset-options.component';
         AssetClassDetailComponent,
         AssetAppointmentListComponent,
         AssetAppointmentDetailComponent,
-        AssetOptionsComponent
+        AssetOptionsComponent,
+        AssetReceptionsComponent
     ],
 })
 export class AssetsComponentModule {

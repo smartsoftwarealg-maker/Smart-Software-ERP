@@ -31,5 +31,6 @@
     "LOCATIONS":          "",
     "IMPORT":             "",
     "APPOINTMENTS":       "",
-    "MIN_VALUE":          ""
+    "MIN_VALUE":          "",
+    "RECEPTIONS":         ""
 }
