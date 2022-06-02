@@ -1,0 +1,27 @@
+.table-div {
+    height: 100%;
+    width: 100%;
+    min-height: 250px;
+    overflow-y: auto;
+}
+.input-div {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+}
+
+mat-form-field,
+mat-input {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.btn-div {
+    width: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-top: navy solid 1px;
+    padding-top: 8px;
+}

@@ -64,5 +64,10 @@
     "ROLES":               "Roller",
     "ROLE":                "Rol",
     "RESPONSIBLE":         "Sorumluluk sahibi",
-    "APPLICATION": "Application"
+    "APPLICATION": "Application",
+    "TEXT":        "",
+    "INT":         "",
+    "DECIMAL":     "",
+    "LOOKUP":      "",
+    "MODULE":      ""
 }

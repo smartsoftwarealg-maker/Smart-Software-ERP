@@ -23,6 +23,13 @@ import { AssetRevaluationTypeDetailComponent } from './asset-revaluation-type-de
 import { AssetLocationsListComponent } from './asset-locations-list/asset-locations-list.component';
 import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-locations-detail.component';
 import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
+import {CustomAttributesModule} from '@ss/custom-attributes';
+import { AssetClassListComponent } from './asset-class-list/asset-class-list.component';
+import { AssetClassDetailComponent } from './asset-class-detail/asset-class-detail.component';
+import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
+import { AssetAppointmentDetailComponent } from './asset-appointment-detail/asset-appointment-detail.component';
+import { AssetOptionsComponent } from './asset-options/asset-options.component';
+import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
 
 @NgModule({
     imports: [
@@ -35,6 +42,7 @@ import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-d
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterModule,
+        CustomAttributesModule,
     ],
     declarations: [
         AssetsDetailComponent,
@@ -51,7 +59,13 @@ import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-d
         AssetRevaluationTypeDetailComponent,
         AssetLocationsListComponent,
         AssetLocationsDetailComponent,
-        AssetSearchDialogComponent
+        AssetSearchDialogComponent,
+        AssetClassListComponent,
+        AssetClassDetailComponent,
+        AssetAppointmentListComponent,
+        AssetAppointmentDetailComponent,
+        AssetOptionsComponent,
+        AssetReceptionsComponent
     ],
 })
 export class AssetsComponentModule {

@@ -64,5 +64,13 @@
     "ROLES": "Roles",
     "ROLE": "Role",
     "RESPONSIBLE": "Responsable",
-    "APPLICATION": "Application"
+    "APPLICATION": "Application",
+    "TEXT":        "Texte",
+    "INT":         "Entier",
+    "DECIMAL":     "Numéro",
+    "LOOKUP":      "Liste",
+    "ATTRIBUTES":  "Attributs",
+    "ATTRIBUTE":   "Attribut",
+    "MODULE":      "Module",
+    "LOOKUP_VALUES": "Valeurs de recherche"
 }

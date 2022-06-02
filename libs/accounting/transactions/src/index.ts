@@ -7,3 +7,4 @@ export * from './lib/file-selector/file-selector.component';
 export * from './lib/period-selector/period-selector.component';
 export * from './lib/acc-file-detail/acc-file-detail.component';
 export * from './lib/acc-file-list/acc-file-list.component';
+export * from './lib/depreciation-generation/depreciation-generation.component';

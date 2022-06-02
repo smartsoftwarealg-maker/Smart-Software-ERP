@@ -40,7 +40,8 @@ export class BaseEntityService<T> {
      * id is a string for the moment but could be ported to int in the future.
      * @param id
      */
-    public get(id: number | string): Observable<T> {
+    public get(iid: number | string): Observable<T> {
+        const id = iid === undefined || iid === null ? 0 : iid;
         return id < 1 || id === '-1' ? of(null) :
             isString(id) ?
                 this.httpSrv.get(this.getUrl() + '?find=' + id) :
@@ -88,5 +89,9 @@ export class BaseEntityService<T> {
 
     setURL(url: string) {
         this.url = url;
+    }
+
+    setParentURL(url: string) {
+        this.parentUrl = url;
     }
 }

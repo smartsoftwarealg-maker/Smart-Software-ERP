@@ -10,7 +10,7 @@ import {
     ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_WILAYA_URL,
     ADMINISTRATION_ACCCESSRIGHTS_URL,
-    ADMINISTRATION_TRACEABILITY_URL
+    ADMINISTRATION_TRACEABILITY_URL, ADMINISTRATION_ATTRIBUTE_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -32,6 +32,7 @@ import {
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
+import {AttributesDetailComponent, AttributesListComponent} from '../../../../../libs/custom-attributes/src';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -39,6 +40,24 @@ export const mainRoutes: Routes = [
     //        path: LOOKUPS_URL,
     //        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
     //    },
+    {
+        path: ADMINISTRATION_ATTRIBUTE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AttributesListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AttributesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: ADMINISTRATION_BANK_URL,
         children: [

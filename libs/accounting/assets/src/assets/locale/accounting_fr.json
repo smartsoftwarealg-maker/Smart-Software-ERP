@@ -1,5 +1,5 @@
 {
-    "TRANSACTIONS":            "Opérations comptables",
+    "TRANSACTIONS":            "Ecritures",
     "CASH_FLOW":               "Flux de trésorerie",
     "CONSOLIDATION":           "Consolidation",
     "FUNDING":                 "Le financement",
@@ -46,10 +46,12 @@
     "ASSET_ACCOUNTS":          "Comptes d'actifs",
     "DEPRECIATION_ACCOUNT":    "Compte d'amortissement",
     "ENDOWMENT_ACCOUNT":       "Compte de dotation",
-    "TRANSAC_ACCOUNTS":        "Comptes d'ecritures comptables",
+    "TRANSAC_ACCOUNTS":        "Comptes d'ecritures",
     "GENERATION_ACCOUNTS":     "Comptes de génération",
     "LOCATED_TREASURY":        "Solde de Trésorerie Incorrectement saisi",
     "NON_LOCATED_TREASURY":    "Solde Trésorerie affectés",
-    "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable"
+    "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable",
+    "DEPRECIATION_GENERATION": "Génération d'amortissement",
+    "BY_COST_CENTER":           "Par centre de coûts"
 }
 

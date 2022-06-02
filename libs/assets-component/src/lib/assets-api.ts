@@ -1,10 +1,14 @@
 export const ASSETS_URL = '/assets';
+export const ASSET_CLASS_URL = '/asset-classes';
+export const APPOINTMENT_URL = '/appointments';
 export const COST_URL = '/costs';
+export const ATTRIBUTE_URL = '/attributes';
 export const LOCATIONS_URL = '/locations';
 export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
+export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 
 export interface Asset {
     id: number;
@@ -54,6 +58,9 @@ export interface Asset {
     outof_service: boolean;
     criticity?: number;
     accountId?: number;
+    ccCode?: string;
+    assetClass?: number;
+    className?: string;
 }
 
 export interface Depreciation {
@@ -96,4 +103,31 @@ export interface Blocking {
     investId: number
     fromDate: Date;
     toDate: Date;
+}
+
+export interface AssetClass {
+    id: number;
+    description:       string,
+    descriptionAr?:    string;
+    depreciationRate?: number;
+    usefulLife?:       number;
+}
+
+export interface ASSAppointment {
+    id: number
+    invest_id: number;
+    decision_date?: Date;
+    decision_ref?: string;
+    location?: number;
+    cost_center?: number;
+    office_id?: number;
+    invent_id: number;
+    officeCode?: string;
+}
+
+export interface AssetReception {
+    id: number;
+    acquisition_Date: Date;
+    invoice_Number?: string;
+    supplier?: string;
 }

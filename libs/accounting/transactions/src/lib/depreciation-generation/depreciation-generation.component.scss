@@ -1,0 +1,38 @@
+.width-sc {
+    width: 96%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-content: center;
+    align-items: center;
+}
+
+.number {
+    max-width: 90px;
+}
+
+
+mat-table {
+    margin-top: 8px;
+    width: 600px;
+}
+
+
+.mat-column-acc,
+.mat-column-cCenter {
+    flex: 1 1 90px;
+}
+
+.mat-column-description {
+    flex: 2 1 180px;
+}
+.mat-column-debit,
+.mat-column-credit {
+    flex: 1 1 120px;
+    justify-content: flex-end;
+}

@@ -14,6 +14,7 @@ export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
+export const SCALE                  = 10000;
 
 export interface ACCPolicy {
     id: number;
@@ -52,6 +53,7 @@ export interface ACCPolicy {
     finBankAccount?: string;
     showProjects: boolean;
     manualCashFlow: boolean;
+    minAssetValue: 0;
 }
 
 export interface Journal {

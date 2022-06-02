@@ -9,6 +9,7 @@ import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {maxDate, minDate} from '@ss/common/ui-datepicker';
 
 @Component({
   selector: 'ss-transaction-detail',
@@ -53,7 +54,8 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
                 .pipe(tap(_ => {
                         this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
                         const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
-                        this.maxDate = new Date(nextMonth.getDate() - 1);
+                        this.maxDate = nextMonth;
+                        this.maxDate.setDate(0);
                     }),
                     switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
                     tap(res => this.accPolicy = res),
@@ -68,7 +70,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
         return this.formBuilder.group({
             id: [e.id],
             oid: [e.oid || 0],
-            pieceDate: [e.pieceDate, Validators.required],
+            pieceDate: [e.pieceDate, [Validators.required, maxDate(this.maxDate), minDate(this.minDate)]],
             pieceNo: [e.pieceNo || 0, Validators.required],
             folio: [e.folio],
             projectId: [e.projectId],
@@ -87,4 +89,24 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
     protected override goBack() {
         this.cancel();
     }
+
+    public deleteSelected(): void {
+        this.confirmationSrv
+            .confirmDelete()
+            .pipe(switchMap(b => b ? this.entitySrv.remove(this.id) : of(b)))
+            .subscribe({
+                next: res => {
+                    if (typeof res === 'object') {
+                        this.cancel();
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                },
+                error: err => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                }
+            });
+    }
+
+
 }

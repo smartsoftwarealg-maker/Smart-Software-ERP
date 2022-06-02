@@ -28,10 +28,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
-.list-div {
+.value-div {
     overflow-y: auto;
     height: 100%;
     max-height: 400px;

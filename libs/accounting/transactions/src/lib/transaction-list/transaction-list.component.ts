@@ -5,14 +5,14 @@ import {
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
-    Journal,
+    Journal, SCALE,
 } from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
-import {Observable, Subscription, switchMap, tap} from 'rxjs';
+import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
@@ -154,6 +154,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
+                this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
     }
@@ -165,6 +166,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(journalId, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
+                this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
         this.router

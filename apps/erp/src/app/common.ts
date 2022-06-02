@@ -42,6 +42,7 @@ export const ADMINISTRATION_CENTER_URL = 'centers';
 export const ADMINISTRATION_USER_URL = 'users';
 export const ADMINISTRATION_ROLE_URL = 'roles';
 export const ADMINISTRATION_BANK_URL = 'banks';
+export const ADMINISTRATION_ATTRIBUTE_URL = 'attributes';
 export const ADMINISTRATION_SMTP_URL = 'smtps';
 export const ADMINISTRATION_REPORT_CATALOG_URL = 'report-catalog';
 export const ADMINISTRATION_CITY_URL = 'cities';
@@ -154,12 +155,16 @@ export const PAY_CACO_URL             = 'caco';
 // Assets
 export const ASSETS_ASSET_URL           = 'assets';
 export const ASSET_COST_TYPE_URL        = 'cost_types';
+export const ASSET_CLASS_URL            = 'asset_classes';
 export const ASSET_LOCATIONS_URL        = 'locations';
 export const ASSET_REVALUATION_TYPE_URL = 'revaluation_types';
 export const ASSETS_COST_URL            = 'costs'
 export const ASSETS_REVALUATION_URL     = 'revaluations'
+export const ASSETS_APPOINTMENTS_URL    = 'appointments'
 export const ASSETS_BLOCKING_URL        = 'blockings'
 export const ASSETS_OFFICES_URL         = 'offices';
+export const ASSET_OPTIONS_URL          = 'asset-policies';
+export const ASSET_RECEPTIONS_URL       = 'asset-receptions';
 
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -179,12 +184,13 @@ export const TAG_URL        = 'tags';
 export const ARCHIVE_VIEWER = 'viewer';
 
 //Accounting
-export const ACC_POLICIES_URL        = 'acc-policies';
-export const ACC_JOURNALS_URL        = 'journals';
-export const ACC_TRANSACTIONS_URL    = 'transactions';
-export const ACC_FILE_SELECTOR_URL   = 'file-select';
-export const ACC_PERIOD_SELECTOR_URL = 'period-select';
-export const ACC_FILES_URL           = 'acc-files';
+export const ACC_POLICIES_URL         = 'acc-policies';
+export const ACC_JOURNALS_URL         = 'journals';
+export const ACC_TRANSACTIONS_URL     = 'transactions';
+export const ACC_FILE_SELECTOR_URL    = 'file-select';
+export const ACC_DEPRECIATION_GEN_URL = 'deprec-gen';
+export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
+export const ACC_FILES_URL            = 'acc-files';
 
 // #############
 // # FULL URLS #
@@ -197,6 +203,7 @@ export const ABS_ADMINISTRATION_ROLE_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_
 export const ABS_ADMINISTRATION_CENTER_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_CENTER_URL].join('/');
 export const ABS_ADMINISTRATION_BANK_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_BANK_URL].join('/');
 export const ABS_ADMINISTRATION_SMTP_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_SMTP_URL].join('/');
+export const ABS_ADMINISTRATION_ATTRIBUTES_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ATTRIBUTE_URL].join('/');
 export const ABS_ADMINISTRATION_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_REPORT_CATALOG_URL].join('/');
 export const ABS_ADMINISTRATION_CITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_CITY_URL].join('/');
 export const ABS_ADMINISTRATION_COUNTRY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_COUNTRY_URL].join('/');
@@ -240,6 +247,7 @@ export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PO
 export const ABS_ACC_JOURNALS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_JOURNALS_URL].join('/');
 export const ABS_ACC_FILES_URL   = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILES_URL].join('/');
 export const ABS_ACC_TRANSACTIONS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_TRANSACTIONS_URL].join('/');
+export const ABS_DEPRECIATION_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_DEPRECIATION_GEN_URL].join('/');
 export const ABS_ACC_FILE_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILE_SELECTOR_URL].join('/');
 export const ABS_ACC_PERIOD_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PERIOD_SELECTOR_URL].join('/');
 export const ABS_ACC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_ACCOUNT_URL].join('/');
@@ -317,9 +325,12 @@ export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
 export const ABS_COST_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_COST_TYPE_URL].join('/');
+export const ABS_ASSET_CLASSES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_CLASS_URL].join('/');
 export const ABS_REVALUATION_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_REVALUATION_TYPE_URL].join('/');
 export const ABS_ASSET_LOCATIONS = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_LOCATIONS_URL].join('/');
 export const ABS_ASSET_OFFICES_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_OFFICES_URL].join('/');
+export const ABS_OPTIONS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_OPTIONS_URL].join('/');
+export const ABS_ASSET_RECEPTIONS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_RECEPTIONS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

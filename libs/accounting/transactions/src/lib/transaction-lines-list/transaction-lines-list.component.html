@@ -40,14 +40,14 @@
             <ng-container matColumnDef="debit">
                 <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ (e.balance > 0.0 ? e.balance * e.sign : 0.0)}}
+                    {{ (e.balance > 0.0 ? e.balance * e.sign : 0.0) | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="credit">
                 <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ (e.balance < 0.0 ? -e.balance * e.sign : 0.0)}}
+                    {{ (e.balance < 0.0 ? -e.balance * e.sign : 0.0) | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
