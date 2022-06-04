@@ -6,7 +6,6 @@ import {Lookup} from '@ss/common/api-lookup';
 import {HttpParams} from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
 import {map} from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -63,6 +62,18 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
 
     getChildAttributes(): Observable<AttribTempl[]> {
         this.setParentId(this.ASSETS);
-        return this.getList(0, 50).pipe(map(res => res.body));
+        return this.getList(0, 50)
+            .pipe(tap(res => console.log(res)),
+                  map(res => res.body));
+    }
+
+    attributeList(modeuleId: number, attribType: number): Observable<AttribTempl[]> {
+        this.setParentId(modeuleId);
+        return this.getList(0, 50)
+            .pipe(map(res => res.body.filter(e => e.attType === attribType)));
+    }
+
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number; body: AttribTempl[] }> {
+        return super.getList(page, pageSize, filter, sortBy, extraPrams);
     }
 }

@@ -34,5 +34,6 @@
     "FLOOR_NO":           "رقم الطابق",
     "APPOINTMENTS":       "تخصيصات",
     "MIN_VALUE":          "الحد الأدنى لقيمة الأصول",
-    "RECEPTIONS":         "الاستقبال"
+    "RECEPTIONS":         "الاستقبال",
+    "BENEFICIARY":        "المستفيد"
 }

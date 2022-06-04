@@ -9,6 +9,8 @@ export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 export const ASSET_RECEPTIONS_URL = '/asset-receptions';
+export const ASSET_APPOINTMENT_URL = '/asset-appointments';
+export const ASSET_APPOINTMENT_LINE_URL = '/lines';
 
 export interface Asset {
     id: number;
@@ -130,4 +132,24 @@ export interface AssetReception {
     acquisition_Date: Date;
     invoice_Number?: string;
     supplier?: string;
+}
+
+export interface ASSAppointmentHeader {
+    id:           number;
+    center:       number;
+    serialNumber: number;
+    date:         Date;
+    officeId?:    number;
+    attribCode?:  number;
+    attribVal?:   number;
+    officeName?:  string;
+    valName?:     string;
+}
+
+export interface AssetAppointmentLine {
+    id: number;
+    appointmentId: number;
+    assetId: number;
+    reference?: string;
+    description?: string;
 }
