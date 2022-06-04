@@ -1,4 +1,10 @@
 import {ExtraEntryPointObject} from '@angular-devkit/build-angular';
+export const ASSET_MODULE = 2;
+export const ARTICLE_MODULE = 1;
+
+export const ATTRIB_TYPE_TEXT   = 1;
+export const ATTRIB_TYPE_NUMBER = 2;
+export const ATTRIB_TYPE_LOOKUP = 3;
 
 export const ATTRIB_MODULES_URL = '/modules';
 export const ATTRIB_TEMPL_URL = '/attributes';

@@ -25,8 +25,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     public cache: T;
     public filterLoadedData = (x: T[]) => x;
 
-    constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {
-    }
+    constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {}
 
     onValueChanged = (e: Id) => {};
     onObjectSelected = (e: T) => {};

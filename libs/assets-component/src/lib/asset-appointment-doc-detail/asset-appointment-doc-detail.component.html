@@ -1,0 +1,101 @@
+<mat-card class="item">
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field id="serialNumber" class="default-50 sm-100">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="serialNumber" type="number" autofocus>
+                <mat-error *ngIf="form.controls['serialNumber'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" required>
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker required="true" formControlName="date"></ss-date-picker>
+                <mat-error *ngIf="form.controls.date.hasError('required')" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_LOCATIONS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="officeAutoCompleteModel"
+                                  formControlName="officeId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>ADMINISTRATION_ATTRIBUTES</mat-label>
+                <mat-select formControlName="attribCode">
+                    <mat-option *ngFor="let a of childAttributes" [value]="a.id">{{ a.description }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_VALUE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="attributeLookup"
+                                  formControlName="attribVal"></ss-auto-complete>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-table mat-table [dataSource]="detailData" class="main-table item">
+
+    <ng-container matColumnDef="reference">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.reference}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.description}}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
+             *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+</mat-table>
+
+<div class="item ctrl_div">
+
+    <mat-form-field class="input_div">
+        <mat-label translate>ASSETS</mat-label>
+        <ss-auto-complete matInput
+                          #lookup
+                          [model]="assetLookupModel"
+                          [formControl]="inputControl">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <div class="btn_div">
+        <button mat-mini-fab color="primary"
+                matTooltip="{{'COMMON_ADD' | translate}}"
+                (click)="addAsset(); lookup.setAutoControlValue(null)">
+            <i class="fas fa-add"></i>
+        </button>
+        <button mat-mini-fab
+                [disabled]="!selectedId"
+                matTooltip="{{'COMMON_DELETE' | translate}}"
+                (click)="deleteAsset()">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button mat-mini-fab
+                color="primary"
+                [disabled]="selectedId !== 0"
+                matTooltip="{{'COMMON_SAVE' | translate}}"
+                (click)="saveAsset()">
+            <i class="fas fa-save"> </i>
+        </button>
+    </div>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

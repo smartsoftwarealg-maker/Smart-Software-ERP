@@ -34,5 +34,6 @@
     "FLOOR_NO":           "Floor number",
     "APPOINTMENTS":       "Appointments",
     "MIN_VALUE":          "Minimum asset value",
-    "RECEPTIONS":         "Receptions"
+    "RECEPTIONS":         "Receptions",
+    "BENEFICIARY":        "Beneficiary"
 }

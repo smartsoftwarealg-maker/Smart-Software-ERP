@@ -30,6 +30,8 @@ import { AssetAppointmentListComponent } from './asset-appointment-list/asset-ap
 import { AssetAppointmentDetailComponent } from './asset-appointment-detail/asset-appointment-detail.component';
 import { AssetOptionsComponent } from './asset-options/asset-options.component';
 import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
+import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/asset-appointment-doc-list.component';
+import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-detail/asset-appointment-doc-detail.component';
 
 @NgModule({
     imports: [
@@ -65,7 +67,9 @@ import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.comp
         AssetAppointmentListComponent,
         AssetAppointmentDetailComponent,
         AssetOptionsComponent,
-        AssetReceptionsComponent
+        AssetReceptionsComponent,
+        AssetAppointmentDocListComponent,
+        AssetAppointmentDocDetailComponent
     ],
 })
 export class AssetsComponentModule {

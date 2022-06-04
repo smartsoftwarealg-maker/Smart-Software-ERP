@@ -1,0 +1,31 @@
+.item {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.ctrl_div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 16px;
+}
+
+.input_div {
+    margin-top: 8px;
+    flex: 3;
+}
+.btn_div {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto 8px;
+}
+
+.main-table {
+    min-height: 45%;
+    width: 80%;
+    margin: 0 auto;
+}
