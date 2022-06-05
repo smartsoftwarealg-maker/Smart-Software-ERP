@@ -194,5 +194,6 @@
     "EXCEL_EXPORT":     "",
     "LOCATION":           "Location",
     "INVALID_FORM": "",
-    "PURCHASE":          ""
+    "PURCHASE":          "",
+    "DB_UPDATER":        ""
 }

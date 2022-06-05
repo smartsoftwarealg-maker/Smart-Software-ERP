@@ -1,0 +1,16 @@
+.ctrl_div {
+    display: flex;
+    align-items: flex-end;
+    gap: 64px;
+    margin: 0 0 16px 0;
+}
+
+.list_div {
+    min-width: 300px;
+}
+
+textarea {
+    width: calc(100% - 32px);
+    height: 100%;
+    margin-left: 16px;
+}

@@ -202,5 +202,6 @@
     "EXCEL_EXPORT": "حول إلى ملف اكسل",
     "LOCATION":     "موقع",
     "INVALID_FORM": "هذه الاستمارة غير مكتملة",
-    "PURCHASE":          "شراء"
+    "PURCHASE":          "شراء",
+    "DB_UPDATER":        "محدث قاعدة البيانات"
 }

@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/administration/db-updater",
+    "sourceRoot": "libs/administration/db-updater/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/administration/db-updater"],
+            "options": {
+                "jestConfig": "libs/administration/db-updater/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/administration/db-updater/src/**/*.ts",
+                    "libs/administration/db-updater/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

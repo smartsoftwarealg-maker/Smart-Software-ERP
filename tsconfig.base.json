@@ -53,6 +53,9 @@
             "@ss/administration/api-user": [
                 "libs/administration/api-user/src/index.ts"
             ],
+            "@ss/administration/db-updater": [
+                "libs/administration/db-updater/src/index.ts"
+            ],
             "@ss/administration/ui-bank": [
                 "libs/administration/ui-bank/src/index.ts"
             ],
