@@ -105,7 +105,7 @@
     "CONSUMER": "Consomateur",
     "AGENCY": "Agence",
     "RAW_AGENT_DEBTS": "Dettes (sans compensation)",
-    "PAYMENT_COMPENSATION": "Paiements",
+    "PAYMENT_COMPENSATION": "Compensation paiements",
     "MAKE_PAYMENT": "Effectuer le paiement",
     "CANCEL_PAYMENT": "Annuler le paiement",
     "PURCHASE_ORDER": "Bon de commande",
