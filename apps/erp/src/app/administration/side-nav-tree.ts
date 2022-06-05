@@ -11,7 +11,7 @@ import {
     ABS_ADMINISTRATION_COUNTRY_URL,
     ABS_ADMINISTRATION_CITY_URL,
     ABS_ADMINISTRATION_WILAYA_URL,
-    ABS_ADMINISTRATION_ATTRIBUTES_URL
+    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -92,6 +92,13 @@ export const administrationNavTree: SideNavNode = {
             route: ABS_ADMINISTRATION_ACCESS_RIGHTS_URL,
             accessRights: 'AccessRight'
         },
+        {
+            name: 'COMMON_DB_UPDATER',
+            icon: 'fa-solid fa-calendar-lines-pen',
+            route: ABS_DB_UPDATER_URL,
+            accessRights: 'Logging'
+        },
+
         {
             name: 'COMMON_TRACEABILITY',
             icon: 'fas fa-tape',

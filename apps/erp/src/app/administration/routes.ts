@@ -10,7 +10,7 @@ import {
     ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_WILAYA_URL,
     ADMINISTRATION_ACCCESSRIGHTS_URL,
-    ADMINISTRATION_TRACEABILITY_URL, ADMINISTRATION_ATTRIBUTE_URL
+    ADMINISTRATION_TRACEABILITY_URL, ADMINISTRATION_ATTRIBUTE_URL, ADMINISTRATION_DB_UPDATER_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -32,7 +32,8 @@ import {
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
-import {AttributesDetailComponent, AttributesListComponent} from '../../../../../libs/custom-attributes/src';
+import {AttributesDetailComponent, AttributesListComponent} from '@ss/custom-attributes';
+import {DbUpdaterComponent} from '@ss/administration/db-updater';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -239,6 +240,10 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: ADMINISTRATION_DB_UPDATER_URL,
+        component: DbUpdaterComponent
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
