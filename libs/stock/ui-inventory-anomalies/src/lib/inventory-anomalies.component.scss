@@ -3,7 +3,7 @@
     flex: 1 1 50%;
     width: 100%;
     overflow-x: auto;
-    height: 100%;
+    height: calc(100% - 64px);
     min-height: 200px;
 }
 
@@ -21,24 +21,21 @@
 
 
 .mat-column-description {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     min-width: 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
 }
 
-.mat-column-computedStock, .mat-column-actualStock, .mat-column-diff {
+.mat-column-computedStock,
+.mat-column-actualStock,
+.mat-column-diff {
     flex: 0 1 90px;
     max-width: 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
 }
 
-.mat-column-store, .mat-column-reference {
+.mat-column-store,
+.mat-column-reference {
     flex: 0 1 100px;
     max-width: 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
 }
 
 mat-header-cell {

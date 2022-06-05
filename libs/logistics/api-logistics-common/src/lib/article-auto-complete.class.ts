@@ -14,6 +14,8 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
     onValueChanged = (art: string | number) => {
         this.evenEmitter.emit(art);
     }
+
+    toString = a => a? `${a.reference} ${a.description2}` : null;
 }
 
 export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Store> {

@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -11,6 +11,7 @@ import {tap} from 'rxjs/operators';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-logistics-common';
 import {TransactionLine} from '@ss/logistics/api-transaction';
+import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
 
 
 @Component({
@@ -19,9 +20,11 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit, OnDestroy {
+    @ViewChild(DocInfoComponent) infoChild = null;
 
     parentId: number;
     selectedRow: any;
+
 
     articleAutoCompleteModel: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
     storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.storeNameSrv);
@@ -57,11 +60,19 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
 
+        const store = this.form?.controls['store'].value || 0;
         this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
+            if (this.infoChild) {
+                this.infoChild.params = { articleReference: <string>art, articleStoreId: store };
+            }
             this.articleSrv
-                .getPPrice(<string>art, this.form.controls['store'].value, this.parentId)
+                .getPPrice(<string>art, store, this.parentId, this.id)
                 .subscribe({
-                    next: res => this.form.controls['price'].setValue(res.price),
+                    next: res => {
+                        this.form?.controls['pprice'].setValue(res.price);
+                        this.form?.controls['price'].setValue(res.price);
+                        this.form?.controls['stock'].setValue(res.qty);
+                    },
                     error: err => this.form.controls['price'].setValue(0.0)
                 })
         });
@@ -69,9 +80,13 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         this.storeAutoCompleteModel
             .evenEmitter.subscribe(id => {
             this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, <number>id, this.parentId)
+                .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
                 .subscribe({
-                    next: res => this.form.controls['price'].setValue(res.price),
+                    next: res => {
+                        this.form?.controls['pprice'].setValue(res.price);
+                        this.form?.controls['price'].setValue(res.price);
+                        this.form?.controls['stock'].setValue(res.qty);
+                    },
                     error: err => this.form.controls['price'].setValue(0.0)
                 })
         });
@@ -105,11 +120,18 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
             qtySatisfied: [b.qtySatisfied],
             qtyInvoiced: [b.qtyInvoiced],
             qtyReturned: [b.qtyReturned],
-            price: [b.price],
+            price: [{ value: b.price, disabled: true}, Validators.required],
             observation: [b.observation],
             footerMemo: [b.footerMemo],
             position: [b.position],
             pprice: [b.pprice],
+            stock: [{ value: 0.0, disabled: true} ]
         });
+    }
+
+    readForm(): TransactionLine {
+        const value = super.readForm();
+        value.price = value.pprice;
+        return value;
     }
 }

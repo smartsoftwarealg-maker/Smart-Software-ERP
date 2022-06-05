@@ -32,6 +32,7 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         'actualStock',
         'diff'
     ];
+    selectedReference: string = null;
 
     public constructor(
         public anomalySrv: AnomalyService,
@@ -69,5 +70,11 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         this.deleteButton.visible = false;
         this.editButton.visible = false;
         this.addButton.visible = false;
+        this.excelButton.visible = false;
+    }
+
+    selectRow(row: Anomaly) {
+        super.selectRow(row);
+        this.selectedReference = row?.reference;
     }
 }
