@@ -32,7 +32,7 @@ export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 
 // treasury
-export const TREASURY_AGENT_URL = 'agents';
+export const TREASURY_AGENT_URL = 'treasury';
 
 
 // common
