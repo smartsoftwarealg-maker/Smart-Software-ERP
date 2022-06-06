@@ -10,7 +10,7 @@ import {of, switchMap, tap} from 'rxjs';
 })
 export class DbUpdaterComponent implements OnInit {
     processing = false;
-    files: string[] = ['one', 'two'];
+    files: string[] = [];
     output: string = '';
 
 
@@ -32,10 +32,12 @@ export class DbUpdaterComponent implements OnInit {
                     this.output = this.output + res;
                     i += 1;
                 }),
-                switchMap(res => i < selection.length ? this.updateSrv.updateDatabase(list[i]) : of('\n*******************End')))
-            .subscribe(res => {
-                this.output = this.output + res;
-                this.processing = false;
+                switchMap(res => i < selection.length ? this.updateSrv.updateDatabase(list[i]) : of('')))
+            .subscribe({
+                next: res => {
+                    this.output = this.output + res + '\n*******************End';
+                    this.processing = false;
+                }, error: err => this.processing = false
             });
     }
 
