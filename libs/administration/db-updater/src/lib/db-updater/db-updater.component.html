@@ -1,29 +1,28 @@
-<div class="ctrl_div">
-    <div class="list_div">
-        <mat-selection-list #list [disabled]="processing">
-            <mat-list-option *ngFor="let f of files" [value]="f">
-                {{f}}
-            </mat-list-option>
-        </mat-selection-list>
-    </div>
-    <button mat-raised-button
-            type="button"
-            color="primary"
-            class="generate"
-            [disabled]="!list.selectedOptions.selected.length || processing"
-            (click)="update(list.selectedOptions.selected)">
-        {{ 'COMMON_GENERATE' | translate }}
-    </button>
-</div>
 <mat-progress-bar mode="indeterminate" *ngIf="processing"></mat-progress-bar>
-<div class="out_div">
-
-    <textarea
-              rows="45"
-              class="text-area"
-              readonly
-              [value]="output"></textarea>
+<div class="container">
+    <div class="ctrl_div">
+        <div class="list_div">
+            <mat-selection-list #list [disabled]="processing">
+                <mat-list-option *ngFor="let f of files" [value]="f">
+                    {{f}}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+        <button mat-raised-button
+                type="button"
+                color="primary"
+                class="generate"
+                [disabled]="!list.selectedOptions.selected.length || processing"
+                (click)="update(list.selectedOptions.selected)">
+            {{ 'COMMON_GENERATE' | translate }}
+        </button>
+    </div>
+    <div class="out_div">
+            <textarea
+                rows="30"
+                class="text-area"
+                readonly
+                [value]="output">
+            </textarea>
+    </div>
 </div>
-<!--<p>-->
-<!--    Options selected: {{shoes.selectedOptions.selected.length}}-->
-<!--</p>-->
