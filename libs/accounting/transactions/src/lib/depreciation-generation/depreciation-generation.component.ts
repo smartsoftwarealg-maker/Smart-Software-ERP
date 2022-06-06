@@ -7,7 +7,6 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-depreciation-generation',

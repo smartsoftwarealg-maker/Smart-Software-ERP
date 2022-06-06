@@ -22,3 +22,5 @@ export * from './lib/asset-appointment-list/asset-appointment-list.component';
 export * from './lib/asset-options/asset-options.component';
 export * from './lib/asset-receptions/asset-receptions.component';
 export * from './lib/asset-reception.service';
+export * from './lib/asset-appointment-doc-detail/asset-appointment-doc-detail.component';
+export * from './lib/asset-appointment-doc-list/asset-appointment-doc-list.component';

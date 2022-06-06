@@ -13,6 +13,7 @@
         "administration-api-company": "libs/administration/api-company",
         "administration-api-smtp": "libs/administration/api-smtp",
         "administration-assets": "libs/administration/assets",
+        "administration-db-updater": "libs/administration/db-updater",
         "administration-ui-bank": "libs/administration/ui-bank",
         "administration-ui-center": "libs/administration/ui-center",
         "administration-ui-company": "libs/administration/ui-company",

@@ -42,7 +42,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
-    locationAutoCompleteModel  = new DefaultAutoCompleteModel(this.locationSrv);
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');

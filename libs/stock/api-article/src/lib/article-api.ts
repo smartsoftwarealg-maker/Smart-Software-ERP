@@ -21,3 +21,9 @@ export interface Article {
     vatValue?: number;
     notForSale: boolean;
 }
+
+export interface QtyPrice {
+    document: number;
+    qty: number;
+    price: number;
+}

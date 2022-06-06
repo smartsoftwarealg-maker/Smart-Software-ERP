@@ -32,5 +32,6 @@
     "IMPORT":             "",
     "APPOINTMENTS":       "",
     "MIN_VALUE":          "",
-    "RECEPTIONS":         ""
+    "RECEPTIONS":         "",
+    "BENEFICIARY":        ""
 }

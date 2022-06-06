@@ -1,10 +1,10 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ASSET_APPOINTMENT_DOC_URL,
     ABS_ASSET_CLASSES,
-    ABS_ASSET_LOCATIONS, ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
+    ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
-    ABS_COMMON_REPORTS_URL,
     ABS_COST_TYPES, ABS_OPTIONS_URL, ABS_ORGANIZATIONS_OFFICES_URL,
     ABS_REVALUATION_TYPES
 } from '../common';
@@ -51,7 +51,13 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_RECEPTIONS',
             icon: 'fa-solid fa-hands-holding-diamond',
             route: ABS_ASSET_RECEPTIONS_URL,
-            accessRights: 'Asset'
+            accessRights: 'ASSReception'
+        },
+        {
+            name: 'ASSET_APPOINTMENTS',
+            icon: 'fa-solid fa-check-to-slot',
+            route: ABS_ASSET_APPOINTMENT_DOC_URL,
+            accessRights: 'ASSAppointment'
         },
         {
             name: 'COMMON_OPTIONS',
