@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DbUpdaterService} from '../db-updater.service';
 import {MatListOption} from '@angular/material/list';
 import {of, switchMap, tap} from 'rxjs';
+import {ShellService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Route} from '@angular/router';
 
 @Component({
     selector: 'ss-db-updater',
@@ -14,11 +16,14 @@ export class DbUpdaterComponent implements OnInit {
     output: string = '';
 
 
-    constructor(private updateSrv: DbUpdaterService) {
+    constructor(private updateSrv: DbUpdaterService,
+                private shellSrv: ShellService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
         this.updateSrv.getChangeFiles().subscribe(res => this.files = res);
+        this.shellSrv.setGoBackPath('../', this.route);
     }
 
     update(selection: MatListOption[]) {
