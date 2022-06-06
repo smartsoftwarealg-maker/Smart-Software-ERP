@@ -31,6 +31,10 @@ export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 
+// treasury
+export const TREASURY_AGENT_URL = 'agents';
+
+
 // common
 export const COMMON_REPORTS_URL = 'reports';
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
