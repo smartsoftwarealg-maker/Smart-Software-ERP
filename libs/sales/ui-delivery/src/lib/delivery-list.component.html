@@ -1,4 +1,3 @@
-<div class="main-container">
 
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table">
@@ -58,8 +57,8 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
+    <div class="doc-info">
     <ss-doc-info
-        class="doc-info"
         [displayedGroups]="['agent','document']"
         [params]="{
             agentId: selectedRow?.agent,
@@ -67,4 +66,4 @@
             documentURL:'/delivery'
         }">
     </ss-doc-info>
-</div>
+    </div>

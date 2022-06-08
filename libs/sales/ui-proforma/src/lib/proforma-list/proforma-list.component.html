@@ -1,64 +1,62 @@
-<div class="main-container">
-
-    <div class="table-container">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+<div class="table-container">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
 
-            <ng-container matColumnDef="number">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_NUMBER</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.number}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.number}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="payMethod">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.payMethodName }}
-                </mat-cell>
-            </ng-container>
-
-
-            <ng-container matColumnDef="date">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.date }}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.reference }}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="referenceDocDate">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.referenceDocDate }}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="agent">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.agentName }}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="payMethod">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.payMethodName }}
+            </mat-cell>
+        </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id === selected"  (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.date }}
+            </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="referenceDocDate">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.referenceDocDate }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="agent">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.agentName }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+
+<div class="doc-info">
     <ss-doc-info
-        class="doc-info"
         [displayedGroups]="['agent','document']"
         [params]="{
             agentId: selectedRow?.agent,
@@ -66,5 +64,4 @@
             documentURL:'/proforma'
         }">
     </ss-doc-info>
-
 </div>
