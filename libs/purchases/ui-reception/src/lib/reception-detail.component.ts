@@ -78,7 +78,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
             discountDescription: [form.discountDescription],
             fixedDiscount: [form.fixedDiscount || 0.0],
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
-            dealer: [form.dealer || this.loginSrv.appCtx.id, Validators.required],
+            dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager }, Validators.required],
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
             agent: [form.agent, Validators.required]

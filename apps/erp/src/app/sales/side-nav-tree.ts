@@ -1,8 +1,6 @@
 import {
     ABS_FINANCE_CCOMPENSATIONS,
     ABS_FINANCE_CPAYMENTS,
-    ABS_FINANCE_SCOMPENSATIONS,
-    ABS_FINANCE_SPAYMENTS,
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
@@ -14,7 +12,6 @@ import {SideNavNode} from '@ss/common/api-common';
 export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
-    accessRights: null,
     children: [
         {
             name: 'LOGISTICS_PROFORMA',
@@ -64,5 +61,6 @@ export const salesNavTree: SideNavNode = {
             route: ABS_FINANCE_CCOMPENSATIONS,
             accessRights: 'Accounting'
         },
-    ]
+    ],
+    accessRights: "SALES"
 };

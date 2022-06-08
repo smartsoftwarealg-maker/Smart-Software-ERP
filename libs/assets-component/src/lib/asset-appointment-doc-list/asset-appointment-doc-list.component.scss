@@ -1,0 +1,30 @@
+mat-table {
+    min-width: 600px;
+}
+.main-table,
+.pagination-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mat-column-date,
+.mat-column-serialNumber {
+    flex: 1 1 100px;
+}
+
+.mat-column-officeName,
+.mat-column-valName {
+    flex: 1 1 200px;
+}
+
+.mat-column-date {
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-officeName,
+.mat-column-valName {
+    border-left: white solid  1px;
+    padding-left: 8px;
+}

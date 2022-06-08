@@ -4,8 +4,6 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    MISSION_TRAJECTORIES,
-    PAYMENT_ORDER,
     PURCHASE_QUOTATION_URL
 } from '../common';
 import {
@@ -22,6 +20,7 @@ import {
 } from '@ss/purchases/ui-quotation';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {AccountingPeriodGuard} from '../../../../../libs/accounting/accounting-api/src';
 
 export const routes: Routes = [
     {
@@ -110,15 +109,8 @@ export const routes: Routes = [
     },
     {
         path: COMMON_REPORTS_URL,
-        children: [
-            {
-                path: LIST_URL,
-                data: { reportBase: 'purchase'},
-                component: ReportViewComponent,
-                canActivate: [CanActivateService]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
+        data: { reportBase: 'purchases' },
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
     },
 ];
