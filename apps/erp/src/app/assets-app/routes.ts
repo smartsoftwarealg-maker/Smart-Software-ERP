@@ -15,7 +15,7 @@ import {
     ASSET_CLASS_URL,
     ASSETS_APPOINTMENTS_URL,
     ASSET_OPTIONS_URL,
-    ASSET_RECEPTIONS_URL, ASSETS_APPOINTMENTS_DOC_URL
+    ASSET_RECEPTIONS_URL, ASSETS_APPOINTMENTS_DOC_URL, ASSET_INVENTORY_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -39,12 +39,15 @@ import {
     AssetOptionsComponent,
     AssetReceptionsComponent,
     AssetAppointmentDocListComponent,
-    AssetAppointmentDocDetailComponent
+    AssetAppointmentDocDetailComponent, AssetInventoryDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
+import {
+    AssetInventoryListComponent
+} from '../../../../../libs/assets-component/src/lib/asset-inventory-list/asset-inventory-list.component';
 
 export const mainRoutes: Routes = [
     {
@@ -259,6 +262,23 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_OPTIONS_URL,
         component: AssetOptionsComponent
+    },
+    {
+        path: ASSET_INVENTORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetInventoryListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AssetInventoryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
     },
     {
         path: ASSET_RECEPTIONS_URL,

@@ -33,5 +33,6 @@
     "APPOINTMENTS":       "",
     "MIN_VALUE":          "",
     "RECEPTIONS":         "",
-    "BENEFICIARY":        ""
+    "BENEFICIARY":        "",
+    "INVENTORY_YEAR":     ""
 }
