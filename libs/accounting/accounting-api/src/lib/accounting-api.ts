@@ -54,6 +54,7 @@ export interface ACCPolicy {
     showProjects: boolean;
     manualCashFlow: boolean;
     minAssetValue: 0;
+    inventoryYear: 0;
 }
 
 export interface Journal {

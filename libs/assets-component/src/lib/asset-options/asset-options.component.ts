@@ -47,7 +47,8 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
             investAccount: [e.investAccount],
             depreciationAccount: [e.depreciationAccount],
             assetsAccount: [e.assetsAccount],
-            minAssetValue: [e.minAssetValue || 0, Validators.required]
+            minAssetValue: [e.minAssetValue || 0, Validators.required],
+            inventoryYear: [e.inventoryYear || 0, Validators.required]
         });
     }
     public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
