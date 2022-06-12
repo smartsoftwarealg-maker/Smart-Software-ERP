@@ -45,9 +45,10 @@
         *ngIf="selected"
         [displayedGroups]="['agent']"
         [params]="{
-            documentId: selectedRow?.id,
+            documentId: 0,
             documentURL:'/agents',
             agentId : selectedRow?.id
         }">
     </ss-doc-info>
 </div>
+
