@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, ElementRef, ViewChild,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentType, LookupsService} from '@ss/common/api-lookup';
@@ -9,6 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
 //import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
@@ -17,7 +18,6 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
     templateUrl: './agent-list.component.html'
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
-
     agentTypes: { [id: number]: string; };
 
     displayedColumns = [
@@ -42,10 +42,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
     }
 
     preload(): Observable<any> {
-        return this.lookupsSrv.getAgentTypes()
-            .pipe(
-                tap(x => this.onAgentTypesLoaded(x))
-            );
+        return this.lookupsSrv.getAgentTypes().pipe(tap(x => this.onAgentTypesLoaded(x)));
     }
 
     private onAgentTypesLoaded(data: AgentType[]) {
