@@ -1,4 +1,4 @@
-<div class="main-container"  *ngIf="parentId">
+<div class="main-container" *ngIf="parentId">
     <div class="add-button">
         <button mat-mini-fab color="primary" (click)="showDetail(0)">
             <span class="fas fa-plus"></span>
@@ -80,15 +80,16 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <ss-doc-info
-        class="doc-info"
-        *ngIf="selectedId"
-        [displayedGroups]="['article', 'document']"
-        [params]="{
+    <div class="doc-info">
+        <ss-doc-info
+            *ngIf="selectedId"
+            [displayedGroups]="['article', 'document']"
+            [params]="{
             documentId: selectedRow?.transacId,
             documentURL:'/consumption',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">
-    </ss-doc-info>
+        </ss-doc-info>
+    </div>
 </div>

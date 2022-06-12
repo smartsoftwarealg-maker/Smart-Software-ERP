@@ -14,7 +14,7 @@ import {TransactionLinesService} from './transaction-lines.service';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine>  {
     private subscriptions: Subscription[] = [];
-    protected line: TransactionLine = null;
+    selectedRow: TransactionLine = null;
     agentId = 0;
     parentId: number;
     selectedReference: string = null;
@@ -62,12 +62,11 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     }
 
 
-
     finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         const subs1 = this.form.get('qtySatisfied').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
-                if (next > 0.0 && this.line.reference) {
+                if (next > 0.0 && this.selectedRow.reference) {
                     this.form.get('reference').disable();
                     this.form.get('store').disable();
                 } else {
@@ -78,7 +77,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         });
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
-                if (next > 0.0 && this.line.reference) {
+                if (next > 0.0 && this.selectedRow?.reference) {
                     this.form.get('reference').disable();
                     this.form.get('store').disable();
                 } else {
@@ -93,7 +92,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     readForm(): TransactionLine {
         const form =  super.readForm();
-        fillObject(this.line, form)
+        fillObject(this.selectedRow, form)
         return form;
     }
 
@@ -101,7 +100,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
     }
     public setupForm(b: TransactionLine): FormGroup {
-        this.line = b;
+        this.selectedRow = b;
         this.selectedReference = b?.reference;
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({

@@ -9,19 +9,6 @@
 
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_STORE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="storeAutoCompleteModel"
-                                  formControlName="store"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>STOCK_ARTICLE</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
@@ -33,8 +20,22 @@
                 <mat-error
                     *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
                 </mat-error>
+                <span *ngIf="showStock" class="info f-warn"><span
+                    translate>STOCK_STOCK</span>: {{ articleStock }} </span>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_STORE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="storeAutoCompleteModel"
+                                  formControlName="store"></ss-auto-complete>
+                <mat-error
+                    *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error
+                    *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+            </mat-form-field>
 
             <mat-form-field id="qtySatisfied" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
@@ -67,13 +68,15 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-doc-info *ngIf="selectedReference"
-             class="doc-info"
-             [displayedGroups]="['document', 'article']"
-             [params]="{
-                    articleReference: selectedReference,
+<div class="doc-info">
+    <ss-doc-info *ngIf="selectedRow?.transacId"
+                 [displayedGroups]="['document', 'article']"
+                 [params]="{
+                    articleReference: selectedRow?.reference || '',
+                    articleStoreId: selectedRow?.store || 0,
                     agentId: agentId,
                     documentId: parentId,
                     documentURL:'/proforma'
              }">
-</ss-doc-info>
+    </ss-doc-info>
+</div>
