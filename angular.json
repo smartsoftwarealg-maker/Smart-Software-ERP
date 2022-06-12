@@ -174,7 +174,9 @@
         "stock-ui-inventory-exit-lines": "libs/stock/ui-inventory-exit-lines",
         "stock-ui-inventory-lines": "libs/stock/ui-inventory-lines",
         "stock-ui-store": "libs/stock/ui-store",
+        "treasury-api-checks": "libs/treasury/api-checks",
         "treasury-assets": "libs/treasury/assets",
+        "treasury-ui-checks": "libs/treasury/ui-checks",
         "ui-report-catalog": "libs/administration/ui-report-catalog",
         "web-arch-assets": "libs/web-arch/assets",
         "web-arch-ui": "libs/web-arch/ui"

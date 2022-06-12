@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/treasury/api-checks",
+    "sourceRoot": "libs/treasury/api-checks/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/treasury/api-checks"],
+            "options": {
+                "jestConfig": "libs/treasury/api-checks/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/api-checks/src/**/*.ts",
+                    "libs/treasury/api-checks/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
