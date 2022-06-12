@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.component';
 import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.component';
+import {DocInfoComponent, LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.c
         CommonUiLangModule,
         UiPaginationModule,
         ReactiveFormsModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        LogisticsUiDocInfoModule
     ],
     declarations: [
         AgentListComponent,
