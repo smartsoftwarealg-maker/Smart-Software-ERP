@@ -84,15 +84,15 @@
 
 </div>
 
-
-<ss-doc-info
-    class="doc-info"
-    *ngIf="selectedId"
-    [displayedGroups]="['article', 'document']"
-    [params]="{
+<div class="doc-info">
+    <ss-doc-info
+        *ngIf="selectedId"
+        [displayedGroups]="['article', 'document']"
+        [params]="{
             documentId: selectedRow?.transacId,
             documentURL:'/inventory',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">
-</ss-doc-info>
+    </ss-doc-info>
+</div>

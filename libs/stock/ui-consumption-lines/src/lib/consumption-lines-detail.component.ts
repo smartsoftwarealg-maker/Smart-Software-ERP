@@ -20,7 +20,6 @@ import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> implements OnInit, OnDestroy {
-    @ViewChild(DocInfoComponent) infoChild = null;
     line: TransactionLine = null;
 
     parentId: number;
@@ -63,9 +62,6 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
 
         const store = this.form?.controls['store'].value || 0;
         this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
-            if (this.infoChild) {
-                this.infoChild.params = { articleReference: <string>art, articleStoreId: store };
-            }
             this.articleSrv
                 .getPPrice(<string>art, store, this.parentId, this.id)
                 .subscribe({

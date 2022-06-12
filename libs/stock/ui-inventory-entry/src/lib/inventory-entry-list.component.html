@@ -50,14 +50,14 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <ss-doc-info
-        class="doc-info"
-        [displayedGroups]="['document']"
-        [params]="{
+    <div class="doc-info">
+        <ss-doc-info
+            [displayedGroups]="['document']"
+            [params]="{
             documentId: selectedRow?.id,
             documentURL:'/correctionIn'
         }">
-    </ss-doc-info>
-
+        </ss-doc-info>
+    </div>
 </div>
 

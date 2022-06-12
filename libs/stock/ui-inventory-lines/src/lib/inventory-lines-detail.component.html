@@ -69,14 +69,15 @@
         </mat-card-content>
     </mat-card>
 
-    <ss-doc-info *ngIf="selectedReference"
-                 class="doc-info"
-                 [displayedGroups]="['document','article']"
-                 [params]="{
+    <div class="doc-info">
+        <ss-doc-info *ngIf="selectedReference"
+                     [displayedGroups]="['document','article']"
+                     [params]="{
             articleReference: selectedReference,
             agentId: agentId,
             documentId: parentId,
             documentURL:'/proforma'
         }">
-    </ss-doc-info>
+        </ss-doc-info>
+    </div>
 </div>
