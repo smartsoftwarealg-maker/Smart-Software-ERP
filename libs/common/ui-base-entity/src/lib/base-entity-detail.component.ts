@@ -2,15 +2,15 @@ import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subscription} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
-
     private queryId: number;
+    protected subscriptions: Subscription[] = [];
     public form: FormGroup = null;
 
     public saveButton: ToolbarButton = {
@@ -50,7 +50,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public ngOnDestroy() {
         this.shellSrv.reset();
         this.form = null;
+        this.subscriptions.forEach(s => s.unsubscribe());
     }
+
 
     /**
      * Overload this to load your own things. and tap to save your results

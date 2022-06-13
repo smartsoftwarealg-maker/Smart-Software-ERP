@@ -29,7 +29,6 @@ import {AssetsService} from '../assets.service';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
-    private subscriptions: Subscription[] = [];
     selectedId = 0;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];

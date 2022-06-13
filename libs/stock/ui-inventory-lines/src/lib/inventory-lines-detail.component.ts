@@ -41,11 +41,4 @@ export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailCom
         );
     }
 
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }
