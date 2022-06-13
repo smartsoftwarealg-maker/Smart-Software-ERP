@@ -41,13 +41,4 @@ export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDeta
             'STOCK_EDIT_INVENTORY_LINES_ENTRY'
         );
     }
-
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

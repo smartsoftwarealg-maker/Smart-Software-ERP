@@ -48,12 +48,4 @@ export class InventoryExitLinesDetailComponent extends BaseConsumptionLinesDetai
             'STOCK_EDIT_INVENTORY_LINES_EXIT'
         );
     }
-
-    ngOnInit() {
-        super.onInit_();
-    }
-
-    protected onDestroy() {
-        super.onDestroy_();
-    }
 }

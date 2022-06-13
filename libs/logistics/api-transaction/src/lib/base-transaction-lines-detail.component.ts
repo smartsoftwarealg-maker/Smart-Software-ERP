@@ -13,7 +13,6 @@ import {TransactionLine} from './transaction-line';
 import {TransactionLinesService} from './transaction-lines.service';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine>  {
-    private subscriptions: Subscription[] = [];
     selectedRow: TransactionLine = null;
     agentId = 0;
     parentId: number;
@@ -36,6 +35,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public title: string) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.articleAutoCompleteModel.onObjectSelected = a => this.onArticle(a);
+        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     preload(): Observable<any> {
@@ -49,16 +49,6 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
                 switchMap(id => this.detailSrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
             );
-    }
-
-
-    protected onInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
-    }
-
-    protected onDestroy() {
-        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
 

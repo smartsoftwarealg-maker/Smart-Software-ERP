@@ -39,13 +39,4 @@ export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLin
             lookupsSrv,
             'SALES_EDIT_CANCELLATION_LINES');
     }
-
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

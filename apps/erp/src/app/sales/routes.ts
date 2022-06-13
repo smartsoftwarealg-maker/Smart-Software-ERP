@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { DeliveryDetailComponent, DeliveryListComponent } from '@ss/sales/ui-delivery';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { DeliveryLinesDetailComponent } from '@ss/sales/ui-delivery-lines';
-import { docInfoRoutes } from '../common';
+import {COMMON_REPORTS_URL, DASHBOARD_URL, docInfoRoutes} from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent } from '@ss/sales/ui-order-lines';
@@ -21,6 +21,8 @@ import {
 } from '@ss/sales/ui-delivery-cancellation';
 
 import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListComponent} from '@ss/sales/ui-proforma';
+import {DashboardComponent} from '../../../../../libs/dashboard/src';
+import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
 
 export const lookupRoutes: Routes = []
 
@@ -185,6 +187,17 @@ export const mainRoutes: Routes = [
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL }
         ]
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        data: { reportBase: 'sales' },
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

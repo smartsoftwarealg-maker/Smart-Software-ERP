@@ -3,7 +3,7 @@ import {
     TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {OnDestroy, OnInit} from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
@@ -14,7 +14,9 @@ import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 
-export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDetailComponent {
+@Directive()
+export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
+    private consumptions = [260, 261, 266, 269, 270, 272, 510, 511, 513];
     line: TransactionLine = null;
 
     parentId: number;
@@ -61,7 +63,7 @@ export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDet
         this.showStock = true;
     }
 
-    onInit_() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
 
@@ -75,18 +77,31 @@ export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDet
                 })
         });
 
-        this.storeAutoCompleteModel
-            .evenEmitter.subscribe(id => {
-            this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
-                .subscribe({
-                    next: res => this.updateStockAndValue(res),
-                    error: err => this.form.controls['price'].setValue(0.0)
-                })
-        });
+        const subs1 = this.storeAutoCompleteModel
+            .evenEmitter
+            .subscribe(id => {
+                this.articleSrv
+                    .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
+                    .subscribe({
+                        next: res => this.updateStockAndValue(res),
+                        error: err => this.form.controls['price'].setValue(0.0)
+                    })
+            });
+        const subs2 = this.articleAutoCompleteModel
+            .evenEmitter
+            .subscribe(ref => {
+                this.articleSrv
+                    .getPPrice(<string>ref, this.form.controls['store']?.value || 0, this.parentId, this.id)
+                    .subscribe({
+                        next: res => this.updateStockAndValue(res),
+                        error: err => this.form.controls['price'].setValue(0.0)
+                    })
+            });
+        this.subscriptions.push(subs1);
+        this.subscriptions.push(subs2);
     }
 
-    onDestroy_() {
+    override ngOnDestroy() {
         this.articleAutoCompleteModel.evenEmitter.unsubscribe();
         this.storeAutoCompleteModel.evenEmitter.unsubscribe();
         super.ngOnDestroy();
@@ -115,10 +130,11 @@ export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDet
             qtySatisfied: [b.qtySatisfied],
             qtyInvoiced: [b.qtyInvoiced],
             qtyReturned: [b.qtyReturned],
-            price: [{ value: b.price, disabled: true}, Validators.required],
+            price: [{ value: b.price, disabled: this.consumptions.find(e => e === b.document)}, Validators.required],
             observation: [b.observation],
             footerMemo: [b.footerMemo],
             position: [b.position],
+            vat: [b.vat || 0, Validators.required],
             pprice: [b.pprice],
         });
     }
