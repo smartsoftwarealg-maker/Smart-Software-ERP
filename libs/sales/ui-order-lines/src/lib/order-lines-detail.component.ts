@@ -45,12 +45,4 @@ export class OrderLinesDetailComponent extends BaseTransactionLinesDetailCompone
             'SALES_EDIT_ORDER_LINES'
         );
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

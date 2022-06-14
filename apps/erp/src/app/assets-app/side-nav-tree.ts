@@ -1,7 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ASSET_APPOINTMENT_DOC_URL,
-    ABS_ASSET_CLASSES,
+    ABS_ASSET_CLASSES, ABS_ASSET_INVENTORY_URL,
     ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
@@ -64,6 +64,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-tools',
             route: ABS_OPTIONS_URL,
             accessRights: 'AssetOption'
+        },
+        {
+            name: 'INVENTORY',
+            icon: 'fa-solid fa-scanner-gun',
+            route: ABS_ASSET_INVENTORY_URL,
+            accessRights: 'AssetInventory'
         },
         {
             name: 'COMMON_REPORTS',

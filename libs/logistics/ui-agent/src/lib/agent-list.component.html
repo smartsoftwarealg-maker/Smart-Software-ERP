@@ -32,10 +32,23 @@
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
              *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
+
+<div class="doc-info">
+    <ss-doc-info
+        *ngIf="selected"
+        [displayedGroups]="['agent']"
+        [params]="{
+            documentId: 0,
+            documentURL:'/agents',
+            agentId : selectedRow?.id
+        }">
+    </ss-doc-info>
+</div>
+

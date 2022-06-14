@@ -40,13 +40,4 @@ export class InvoiceCancellationLinesDetailComponent extends BaseTransactionLine
             'SALES_EDIT_INVOICE_LINES'
         );
     }
-
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

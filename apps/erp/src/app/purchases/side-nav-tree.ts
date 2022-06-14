@@ -5,7 +5,7 @@ import {
     ABS_PAYROLL_DASHBOARD_URL, ABS_PURCHASE_DASHBOARD_URL,
     ABS_PURCHASE_ORDER_URL,
     ABS_PURCHASE_QUOTATION_URL,
-    ABS_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORTS_URL, ABS_STOCK_REPORTS_URL
+    ABS_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORTS_URL, ABS_STOCK_AGENT_URL, ABS_STOCK_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -14,6 +14,12 @@ export const purchasesNavTree: SideNavNode = {
     icon: 'fas fa-shopping-basket',
     accessRights: 'PURCHASES',
     children: [
+        {
+            name: 'LOGISTICS_AGENT',
+            icon: 'fas fa-user',
+            route: ABS_STOCK_AGENT_URL,
+            accessRights: 'Agent'
+        },
         {
             name: 'PURCHASES_QUOTATION',
             icon: 'fas fa-quote-left',

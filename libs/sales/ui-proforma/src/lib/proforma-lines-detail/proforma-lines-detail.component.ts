@@ -45,12 +45,4 @@ export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComp
             'LOGISTICS_PROFORMA'
         );
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

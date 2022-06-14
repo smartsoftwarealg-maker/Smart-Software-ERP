@@ -11,6 +11,8 @@ export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 export const ASSET_APPOINTMENT_URL = '/asset-appointments';
 export const ASSET_APPOINTMENT_LINE_URL = '/lines';
+export const ASSET_INVENTORY_URL = '/inventories';
+export const ASSET_YEARS_URL = '/years';
 
 export interface Asset {
     id: number;
@@ -152,4 +154,19 @@ export interface AssetAppointmentLine {
     assetId: number;
     reference?: string;
     description?: string;
+}
+
+export interface AssetInventory {
+    id: number;
+    centerId: number;
+    investId: number;
+    office?: number;
+    inventYear: number;
+    date?: Date;
+    inventMemo?: string;
+    status?: number;
+    inventId?: number;
+    userId?: number;
+    officeDescription?: string;
+    assetDescription?: string;
 }

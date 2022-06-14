@@ -15,13 +15,14 @@ import {
     TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
+import {BaseConsumptionLinesDetail} from '../../../../logistics/api-transaction/src/lib/base-consumption-lines-detail';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
     templateUrl: './delivery-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
+export class DeliveryLinesDetailComponent extends BaseConsumptionLinesDetail {
     constructor(
         public inventoryLinesService: TransactionLinesService,
         public shellSrv: ShellService,
@@ -42,16 +43,8 @@ export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComp
             articleSrv,
             storeNameSrv,
             lookupsSrv,
+            router,
             'SALES_EDIT_DELIVERY_LINES'
         );
-    }
-
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
     }
 }

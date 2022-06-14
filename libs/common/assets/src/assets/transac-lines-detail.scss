@@ -18,9 +18,18 @@ mat-card {
     }
     flex: 0 0 auto;
 }
-
-ss-doc-info {
-    width: 100%;
+.doc-info {
+    width: 96%;
     flex: 0 1 auto;
     align-self: stretch;
+    margin: 0 auto;
+}
+
+
+.info {
+    font-size: .7em;
+    font-weight: bolder;
+    position: absolute;
+    top: 32px;
+    left: 0;
 }

@@ -16,4 +16,5 @@ export interface TransactionLine {
     pprice: number;
     storeName?: string;
     refDescription?: string;
+    document: number;
 }

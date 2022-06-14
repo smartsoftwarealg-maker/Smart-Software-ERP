@@ -44,12 +44,4 @@ export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetai
             lookupsSrv,
             'PURCHASES_EDIT_ORDER_LINES');
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

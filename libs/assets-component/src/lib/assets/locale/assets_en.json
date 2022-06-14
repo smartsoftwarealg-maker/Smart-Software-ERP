@@ -35,5 +35,6 @@
     "APPOINTMENTS":       "Appointments",
     "MIN_VALUE":          "Minimum asset value",
     "RECEPTIONS":         "Receptions",
-    "BENEFICIARY":        "Beneficiary"
+    "BENEFICIARY":        "Beneficiary",
+    "INVENTORY_YEAR":     "Inventory year"
 }

@@ -48,7 +48,7 @@ export class InventoryExitDetailComponent extends BaseEntityDetailComponent<Tran
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required]
+            dealer: [ { value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager} , Validators.required]
         });
     }
 

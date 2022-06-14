@@ -35,5 +35,6 @@
     "APPOINTMENTS":       "Affectations",
     "MIN_VALUE":          "Valeur minimale d' immobilisation",
     "RECEPTIONS":         "Receptions",
-    "BENEFICIARY":        "Bénéficiaire"
+    "BENEFICIARY":        "Bénéficiaire",
+    "INVENTORY_YEAR":     "Année d'inventaire"
 }

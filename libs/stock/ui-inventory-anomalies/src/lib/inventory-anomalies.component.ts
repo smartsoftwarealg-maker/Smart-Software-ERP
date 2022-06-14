@@ -27,7 +27,7 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
     displayedColumns = [
         'store',
         'reference',
-        'description',
+        'description2',
         'computedStock',
         'actualStock',
         'diff'

@@ -32,6 +32,9 @@ import { AssetOptionsComponent } from './asset-options/asset-options.component';
 import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
 import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/asset-appointment-doc-list.component';
 import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-detail/asset-appointment-doc-detail.component';
+import { AssetInventoryDetailComponent } from './asset-inventory-detail/asset-inventory-detail.component';
+import { AssetInventoryListComponent } from './asset-inventory-list/asset-inventory-list.component';
+import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
 
 @NgModule({
     imports: [
@@ -45,6 +48,7 @@ import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-deta
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
+        NgxScannerQrcodeModule,
     ],
     declarations: [
         AssetsDetailComponent,
@@ -69,7 +73,9 @@ import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-deta
         AssetOptionsComponent,
         AssetReceptionsComponent,
         AssetAppointmentDocListComponent,
-        AssetAppointmentDocDetailComponent
+        AssetAppointmentDocDetailComponent,
+        AssetInventoryDetailComponent,
+        AssetInventoryListComponent
     ],
 })
 export class AssetsComponentModule {

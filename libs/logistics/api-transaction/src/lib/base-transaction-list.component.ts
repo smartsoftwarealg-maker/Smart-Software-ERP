@@ -35,17 +35,6 @@ export abstract class BaseTransactionListComponent extends BaseEntityListCompone
             x.date = this.langServ.formatDate(x.date);
             x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
         });
-        const obs = this.payMethodSrv?
-            this.payMethodSrv.getAll(data.filter(x => x.payMethod).map((x: any) => x.payMethod)):
-            of(<PayMethod[]>[]);
-        return zip(this.agentServ.getByIDList(data.filter(x => x.agent).map(x => x.agent)),
-            this.userSrv.getAll(data.filter(x => x.dealer).map((x: any) => x.delaer)),
-            obs).pipe(
-            tap(res => data.forEach(e => {
-                e.agentName = res[0].find(a => a.id === e.agent)?.denomination;
-                e.dealerName = res[1].find(a => a.id === e.dealer)?.fullName;
-                e.payMethodName = res[2].find(a => a.id === e.payMethod)?.description;
-            })),
-            switchMap(_ => super.processLoadedData(data)));
+        return of(data);
     }
 }

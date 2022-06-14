@@ -927,3 +927,9 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
         text-align: end;
     }
 }
+
+.mat-header-cell {
+    justify-content: center !important;
+    font-weight: bolder;
+    font-size: small;
+}

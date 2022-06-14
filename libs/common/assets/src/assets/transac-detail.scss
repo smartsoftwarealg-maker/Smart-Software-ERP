@@ -8,13 +8,11 @@
     gap: 5px;
     padding: 5px;
 }
+
 mat-card {
     margin: 5px auto;
     padding: 10px 0px;
-    flex-grow: 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.detail-list {
-    flex-grow: 1;
-    height: 100%;
-}

@@ -29,7 +29,6 @@ import {AssetsService} from '../assets.service';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
-    private subscriptions: Subscription[] = [];
     selectedId = 0;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
@@ -86,8 +85,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             .valueChanges
             .pipe(
                 debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(v => this.attribLookupSrv.setParentId(v?.id || 0));
+                distinctUntilChanged(),
+                tap(id => console.log(id))
+            ).subscribe(v => this.attribLookupSrv.setParentId(v || 0));
         this.subscriptions.push(subs);
 
         this.attribLookupSrv.setParentId(b?.attribCode || 0)

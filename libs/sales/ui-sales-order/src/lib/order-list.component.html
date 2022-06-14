@@ -73,14 +73,14 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <ss-doc-info
-        class="doc-info"
-        [displayedGroups]="['agent','document']"
-        [params]="{
+    <div class="doc-info">
+        <ss-doc-info
+            [displayedGroups]="['agent','document']"
+            [params]="{
             agentId: selectedRow?.agent,
             documentId: selectedRow?.id,
             documentURL:'/delivery'
         }">
-    </ss-doc-info>
-
+        </ss-doc-info>
+    </div>
 </div>

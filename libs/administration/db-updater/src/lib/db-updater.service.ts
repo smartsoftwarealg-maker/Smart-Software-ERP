@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {map, Observable, pipe, tap} from 'rxjs';
+import {DBResponse} from './db-updater-api';
 
 interface Files {
     files: string[];
@@ -21,7 +22,11 @@ export class DbUpdaterService {
             .pipe(map(res => res.files));
     }
 
-    updateDatabase(file: string): Observable<string> {
+    updateDatabase(file: string): Observable<DBResponse> {
         return this.httpSrv.post('/update-db', {filename: file});
+    }
+
+    info(): Observable<DBResponse> {
+        return this.httpSrv.get<DBResponse>('/update-db');
     }
 }

@@ -35,5 +35,6 @@
     "APPOINTMENTS":       "تخصيصات",
     "MIN_VALUE":          "الحد الأدنى لقيمة الأصول",
     "RECEPTIONS":         "الاستقبال",
-    "BENEFICIARY":        "المستفيد"
+    "BENEFICIARY":        "المستفيد",
+    "INVENTORY_YEAR":     "سنة الجرد"
 }

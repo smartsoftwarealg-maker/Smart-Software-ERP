@@ -40,12 +40,4 @@ export class QuotationLinesDetailComponent extends BaseTransactionLinesDetailCom
             lookupsSrv,
             'PURCHASES_QUOTATION');
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

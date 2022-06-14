@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DbUpdaterService} from '../db-updater.service';
 import {MatListOption} from '@angular/material/list';
-import {of, switchMap, tap} from 'rxjs';
+import {catchError, concatMap, delay, from, map, Observable, of, switchMap, tap} from 'rxjs';
+import {ShellService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Route} from '@angular/router';
+import {DBResponse} from '../db-updater-api';
 
 @Component({
     selector: 'ss-db-updater',
@@ -9,37 +12,57 @@ import {of, switchMap, tap} from 'rxjs';
     styleUrls: ['./db-updater.component.scss']
 })
 export class DbUpdaterComponent implements OnInit {
+    private EMPTY_RESPONSE: DBResponse = { processing: false, info: ''};
     processing = false;
-    files: string[] = ['one', 'two'];
+    files: string[] = [];
     output: string = '';
 
 
-    constructor(private updateSrv: DbUpdaterService) {
+    constructor(private updateSrv: DbUpdaterService,
+                private shellSrv: ShellService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
         this.updateSrv.getChangeFiles().subscribe(res => this.files = res);
+        this.shellSrv.setGoBackPath('../', this.route);
     }
 
     update(selection: MatListOption[]) {
         this.output = '';
         this.processing = true;
-        const list = selection.map(e => e.value);
-        let i = 0;
-        this.updateSrv
-            .updateDatabase(list[0])
-            .pipe(tap(res => {
-                    this.output = this.output + res;
-                    i += 1;
+        const list: string[] = selection.map(e => e.value.toString());
+        let freshOut = '';
+        const loop: Observable<DBResponse> = this.updateSrv
+            .info()
+            .pipe(delay(3000),
+                tap(res => {
+                    this.output = freshOut + res.info;
+                    if (!res.processing) {
+                        freshOut = res.info;
+                    }
                 }),
-                switchMap(res => i < selection.length ? this.updateSrv.updateDatabase(list[i]) : of('\n*******************End')))
-            .subscribe(res => {
-                this.output = this.output + res;
-                this.processing = false;
+                switchMap(res => res.processing? loop : of(res)));
+
+        from(list)
+            .pipe(concatMap(file => this.updateSrv
+                .updateDatabase(file)
+                .pipe(tap(res => {
+                    freshOut +=  `*****************************${file}*******************************\n`;
+                    freshOut += res.info;
+                    this.output = freshOut;
+                }),
+                    catchError(e => {
+                        freshOut +=  `*****************************${file}*******************************\n`;
+                        this.output = freshOut;
+                        return loop;
+                    }))))
+            .subscribe({
+                next:     () =>  this.output += '************************************************************************\n',
+                error: () => this.processing = false,
+                complete: () => this.processing = false
             });
+
     }
 
-    private updateDB(fileList: string[]) {
-        this.updateSrv
-    }
 }

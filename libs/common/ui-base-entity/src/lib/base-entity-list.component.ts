@@ -156,7 +156,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
      * returns null if nothing is needed
      */
     public preload(): Observable<any> {
-        return null;
+        return of(null);
     }
 
     protected canShowProcessingStatus(): boolean {
@@ -167,26 +167,24 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
-        const a = this.preload();
-        const b = this.getPage();
-        const c: Observable<T[]> = a == null
-            ? b
-            : a.pipe(switchMap(() => b));
-        c.subscribe({
-                next:
-                    data => {
-                        this.finishLoading(data);
-                        if (callback) {
-                            callback();
+        (this.preload() || of(null))
+            .pipe(switchMap(() => this.getPage()))
+            .subscribe({
+                    next:
+                        data => {
+                            this.finishLoading(data);
+                            if (callback) {
+                                callback();
+                            }
+                        },
+                    error:
+                        err => {
+                            this.data = []; // clear everything;
+                            this.shellSrv.setLoading(false); // stop the animation
+                            throw err;
                         }
-                    },
-                error: err => {
-                    this.data = []; // clear everything;
-                    this.shellSrv.setLoading(false); // stop the animation
-                    throw err;
                 }
-            }
-        );
+            );
     }
 
     // this is created so we can override the service call whenever we want

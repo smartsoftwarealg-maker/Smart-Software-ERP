@@ -41,12 +41,4 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
             'STOCK_EDIT_RECEPTION_LINES'
         );
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
-    }
 }

@@ -12,6 +12,12 @@ export const financeNavTree: SideNavNode = {
     accessRights: 'FINANCE',
     children: [
         {
+            name: 'LOGISTICS_PAYMENT_ORDERS',
+            icon: 'fas fa-credit-card-front',
+            route: ABS_FINANCE_PAYMENT_ORDERS,
+            accessRights: 'PaymentOrder'
+        },
+        {
             name: 'COMMON_PAYMENTS',
             icon: 'fas fa-coins',
             route: ABS_FINANCE_PAYMENTS,
@@ -24,20 +30,14 @@ export const financeNavTree: SideNavNode = {
             accessRights: 'Accounting'
         },
         {
-            name: 'LOGISTICS_PAYMENT_ORDERS',
-            icon: 'fas fa-credit-card-front',
-            route: ABS_FINANCE_PAYMENT_ORDERS,
-            accessRights: 'PaymentOrder'
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_FINANCE_DASHBOARD_URL,
         },
         {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-calendar-check',
             route: ABS_FINANCE_REPORTS_URL,
-        },
-        {
-            name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
-            route: ABS_FINANCE_DASHBOARD_URL,
         },
     ]
 };

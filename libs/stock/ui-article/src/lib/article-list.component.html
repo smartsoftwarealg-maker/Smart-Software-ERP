@@ -3,7 +3,8 @@
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="image">
-                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
+                </mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <div class="person-photo">
                         <ss-image-input
@@ -67,12 +68,13 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <ss-doc-info
-        class="doc-info"
-        *ngIf="selected" [displayedGroups]="['article']"
-        [params]="{ articleId: selectedRow?.id,
+    <div class="doc-info">
+        <ss-doc-info
+            *ngIf="selected" [displayedGroups]="['article']"
+            [params]="{ articleId: selectedRow?.id,
                     articleUseStoreSearch : true,
                     articleReference: selectedRow?.reference
                   }">
-    </ss-doc-info>
+        </ss-doc-info>
+    </div>
 </div>

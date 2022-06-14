@@ -35,6 +35,9 @@
                     <mat-error
                         *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
                     </mat-error>
+                    <span *ngIf="showStock" class="info f-warn"><span
+                        translate>STOCK_STOCK</span>: {{ articleStock }}
+                    </span>
                 </mat-form-field>
 
 
@@ -76,14 +79,15 @@
             </form>
         </mat-card-content>
     </mat-card>
-    <ss-doc-info *ngIf="selectedReference"
-                 class="doc-info"
-                 [displayedGroups]="['document', 'agent', 'article']"
-                 [params]="{
+    <div class="doc-info">
+        <ss-doc-info *ngIf="selectedReference"
+                     [displayedGroups]="['document', 'agent', 'article']"
+                     [params]="{
             articleReference: selectedReference,
             agentId: agentId,
             documentId: parentId,
             documentURL:'/proforma'
         }">
-    </ss-doc-info>
+        </ss-doc-info>
+    </div>
 </div>

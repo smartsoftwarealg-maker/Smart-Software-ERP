@@ -16,14 +16,14 @@ import {
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import {LoginService} from "@ss/common/api-common";
-
+import {BaseConsumptionLinesDetail} from '../../../../logistics/api-transaction/src/lib/base-consumption-lines-detail';
 
 @Component({
     selector: 'ss-inventory-exit-lines-detail',
     templateUrl: './inventory-exit-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
+export class InventoryExitLinesDetailComponent extends BaseConsumptionLinesDetail implements OnInit, OnDestroy {
     constructor(
         public inventoryLinesService: TransactionLinesService,
         public shellSrv: ShellService,
@@ -44,16 +44,8 @@ export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetai
             articleSrv,
             storeNameSrv,
             lookupsSrv,
+            router,
             'STOCK_EDIT_INVENTORY_LINES_EXIT'
         );
-    }
-
-
-    ngOnInit() {
-        super.onInit();
-    }
-
-    ngOnDestroy() {
-        super.onDestroy();
     }
 }
