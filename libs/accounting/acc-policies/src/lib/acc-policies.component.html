@@ -42,6 +42,13 @@
                                   formControlName="openingJournal"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100 spacer">
+                <mat-label translate>ACC_DEF_PROJECT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="projectLookup"
+                                  formControlName="defProject"></ss-auto-complete>
+            </mat-form-field>
+
         </mat-expansion-panel>
 
         <mat-expansion-panel #cashFlow expanded="false" [class]="getPanelHeaderClass('cashFlow', cashFlow)">

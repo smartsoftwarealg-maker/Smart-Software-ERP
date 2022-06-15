@@ -31,6 +31,7 @@
     "DEBIT":                    "مدين",
     "CREDIT":                   "دائن",
     "PROJECT":                  "مشروع",
+    "PROJECTS":                  "المشاريع",
     "POS":                      "الترتيب",
     "TRANSAC_DETAIL":           "تفاصيل الصفقة",
     "SHOW_HEADER":              "إظهار رأس المعاملة" ,
@@ -52,5 +53,6 @@
     "NON_LOCATED_TREASURY":     "الرصيد المفقود",
     "SELECT_ACC_FOLDER":        "من فضلك ، حدد ملف المحاسبة الخاص بك",
     "DEPRECIATION_GENERATION":  "توليد الاستهلاك",
-    "BY_COST_CENTER":           "حسب مركز التكلفة"
+    "BY_COST_CENTER":           "حسب مركز التكلفة",
+    "DEF_PROJECT":              "المشروع الافتراضي"
 }

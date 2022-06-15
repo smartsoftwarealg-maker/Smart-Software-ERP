@@ -4,7 +4,7 @@ import {
     ACC_DEPRECIATION_GEN_URL,
     ACC_FILE_SELECTOR_URL, ACC_FILES_URL,
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
-    ACC_POLICIES_URL,
+    ACC_POLICIES_URL, ACC_PROJECTS_URL,
     ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL, COMMON_REPORTS_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
@@ -18,7 +18,7 @@ import {
     TransactionLinesListComponent,
     TransactionListComponent,
     AccFileListComponent,
-    AccFileDetailComponent, DepreciationGenerationComponent
+    AccFileDetailComponent, DepreciationGenerationComponent, AccProjectListComponent, AccProjectDetailComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -171,6 +171,24 @@ export const accRoutes: Routes = [
             {
                 path: ':id',
                 component: AccFileDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: ACC_PROJECTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AccProjectListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AccProjectDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

@@ -46,5 +46,6 @@
     "GENERATION_ACCOUNTS":   "",
     "LOCATED_TREASURY":      "",
     "NON_LOCATED_TREASURY":  "",
-    "SELECT_ACC_FOLDER":     ""
+    "SELECT_ACC_FOLDER":     "",
+    "DEF_PROJECT":              ""
 }
