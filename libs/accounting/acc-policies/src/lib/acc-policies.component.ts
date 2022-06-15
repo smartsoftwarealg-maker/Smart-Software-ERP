@@ -9,7 +9,7 @@ import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {AccountAutocompleteModel} from '@ss/accounting/api-accounts';
-import {AccJournalsService, AccPoliciesService} from '@ss/accounting/accounting-api';
+import {AccJournalsService, AccPoliciesService, AccProjectService} from '@ss/accounting/accounting-api';
 import {ACCPolicy} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {MatCheckboxChange} from '@angular/material/checkbox';
@@ -21,6 +21,7 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 })
 export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
     journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
+    projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
 
     constructor(
         public detailSrv: AccPoliciesService,
@@ -31,6 +32,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
+        private projectSrv: AccProjectService,
         private journalSrv: AccJournalsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_OPTIONS');
         detailSrv.setParentId(this.loginSrv.appCtx.center);
@@ -62,6 +64,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
             financialAccount: [e.financialAccount],
             paymentAccount: [e.paymentAccount],
             finBankAccount: [e.finBankAccount],
+            defProject: [e.defProject],
             showProjects: [e.showProjects, Validators.required],
             manualCashFlow: [e.manualCashFlow, Validators.required],
             openPeriods: [{ value: e.openPeriods, disabled: e.modifyClosedPeriods }, [Validators.required, Validators.min(0), Validators.max(12)]],
