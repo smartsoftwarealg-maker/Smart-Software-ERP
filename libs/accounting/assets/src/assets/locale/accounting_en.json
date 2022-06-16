@@ -54,5 +54,6 @@
     "SELECT_ACC_FOLDER":        "Please, select your accounting file",
     "DEPRECIATION_GENERATION" : "Depreciation generation",
     "BY_COST_CENTER":           "By cost center",
-    "DEF_PROJECT":              "Default project"
+    "DEF_PROJECT":              "Default project",
+    "GENERATION":           "Transaction generation"
 }

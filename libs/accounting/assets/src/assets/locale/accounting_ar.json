@@ -54,5 +54,6 @@
     "SELECT_ACC_FOLDER":        "من فضلك ، حدد ملف المحاسبة الخاص بك",
     "DEPRECIATION_GENERATION":  "توليد الاستهلاك",
     "BY_COST_CENTER":           "حسب مركز التكلفة",
-    "DEF_PROJECT":              "المشروع الافتراضي"
+    "DEF_PROJECT":              "المشروع الافتراضي",
+    "GENERATION":           "توليد الصفقات"
 }
