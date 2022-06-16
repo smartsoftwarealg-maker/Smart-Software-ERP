@@ -1,6 +1,7 @@
 export const ACC_FILE_URL           = '/accounting/acc-files';
 export const ACC_ACC_FILE_URL       = '/accounting/files';
 export const ACC_ANNEX_CODE_URL     = '/accounting/annex-codes';
+export const ACC_GENERATION_URL     = '/accounting/generations';
 export const ACC_POLICY_URL         = '/accounting/acc-policies';
 export const ACC_JOURNALS_URL       = '/accounting/journals';
 export const ACC_JOURNAL_TYPE_URL   = '/lookups/journal_types';
@@ -170,4 +171,15 @@ export interface TreasuryInfo {
     total: number;
     located: number;
     nonLocated: number;
+}
+
+export interface TDocument {
+    description: string;
+    number:      number;
+    date:        Date;
+}
+
+export interface GenerationInfo {
+    journal: number;
+    genType: string
 }

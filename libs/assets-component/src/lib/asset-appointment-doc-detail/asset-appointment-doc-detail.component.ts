@@ -86,7 +86,6 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             .pipe(
                 debounceTime(300),
                 distinctUntilChanged(),
-                tap(id => console.log(id))
             ).subscribe(v => this.attribLookupSrv.setParentId(v || 0));
         this.subscriptions.push(subs);
 
