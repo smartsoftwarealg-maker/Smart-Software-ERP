@@ -9,6 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 //import { FileOpener } from '@ionic-native/file-opener/ngx';
 //import { File } from '@ionic-native/file/ngx';
 import { HttpService } from '../../../common/http.service';
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-report-catalog',
@@ -16,6 +17,7 @@ import { HttpService } from '../../../common/http.service';
     styleUrls: ['./report-view.component.scss']
 })
 export class ReportViewComponent implements OnInit, OnDestroy {
+    private uuid = '';
     public appName;
     public dirList;
     public reportsList;
@@ -32,11 +34,10 @@ export class ReportViewComponent implements OnInit, OnDestroy {
     constructor(public _route: ActivatedRoute,
         private router: Router,
         private _service: ReportService,
-        //private file: File,
-        //private fileOpener: FileOpener,
         private sanitizer: DomSanitizer,
         private httpSrv: HttpService,
-        private deviceService: DeviceDetectorService) {
+        private deviceService: DeviceDetectorService,
+        private loginSrv: LoginService) {
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
@@ -161,10 +162,11 @@ export class ReportViewComponent implements OnInit, OnDestroy {
         this.htmlSrc = null;
         this.generating = true;
         const data = {
-            'app': this.appName + '/',
-            'rType': this.reportType,
-            'fileName': this.selectedReport.replace('.jasper', ''),
-            'paramList': this.createList()
+            app: this.appName + '/',
+            rType: this.reportType,
+            fileName: this.selectedReport.replace('.jasper', ''),
+            paramList: this.createList(),
+            uuid: this.uuid
         };
 
         let obsrv;

@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class AccountingAccountingService extends BaseEntityService<TDocument> {
+export class AccountingGenerationService extends BaseEntityService<TDocument> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACC_GENERATION_URL);
     }
