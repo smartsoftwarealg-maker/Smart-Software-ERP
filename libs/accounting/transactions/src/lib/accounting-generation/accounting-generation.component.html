@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="processing" mode="indeterminate" ></mat-progress-bar>
 <form *ngIf="form !== null" novalidate [formGroup]="form" class="width-sc">
     <mat-form-field class="number">
         <mat-label translate>ACC_FOLDER</mat-label>
@@ -36,9 +37,8 @@
             translate>COMMON_GENERATE
     </button>
 </form>
-<mat-progress-bar *ngIf="processing" mode="indeterminate" ></mat-progress-bar>
 
-<div class="table-div width-sc">
+<div class="table-div">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="description">
