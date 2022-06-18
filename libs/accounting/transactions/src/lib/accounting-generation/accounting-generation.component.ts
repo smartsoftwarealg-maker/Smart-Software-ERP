@@ -16,10 +16,11 @@ import {HttpParams} from '@angular/common/http';
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
     private documentMap = new Map(
-        [[1, {code: 514, description: 'purchase'}],
-            [2, {code: 514, description: 'inventory'}],
-            [3, {code: 260, description: 'consumption'}],
-            [4, {code: 258, description: 'sales'}],
+        [
+            [1, {code: 514, description: 'purchase',    stock: false}],
+            [2, {code: 514, description: 'inventory',   stock: true}],
+            [3, {code: 260, description: 'consumption', stock: true}],
+            [4, {code: 258, description: 'sales',       stock: false}],
         ]);
     private subscriptions: Subscription[] = [];
     form: FormGroup | null = null;
@@ -37,6 +38,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                 private snackBarSrv: SnackBarService,
                 private journalSrv: AccJournalsService) {
         this.pagination.onChange = () => this.showDocuments();
+        this.pagination.pageSize = 15;
     }
 
     ngOnDestroy(): void {
@@ -69,10 +71,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
       const generationPayload = { journal: this.form?.controls['journal'].value,
                                   genType: this.documentMap.get(key)?.description
                                 };
-      console.log(generationPayload);
       this.generationSrv
           .generate(generationPayload)
           .subscribe(res => {
+              this.showDocuments();
               this.snackBarSrv.showSuccessMessage();
           })
   }
@@ -81,7 +83,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
       this.processing = true;
       this.shellSrv.setLoading(true);
       const key = +this.form?.controls['genType'].value;
-      const params = new HttpParams().set('document', this.documentMap.get(key)?.code || 0);
+      const value = this.documentMap.get(key);
+      const params = new HttpParams()
+          .set('document', value?.code || 0)
+          .set('stock', value?.stock);
       this.generationSrv
           .getList(this.pagination.page - 1, this.pagination.pageSize, null, null, params)
           .subscribe({
