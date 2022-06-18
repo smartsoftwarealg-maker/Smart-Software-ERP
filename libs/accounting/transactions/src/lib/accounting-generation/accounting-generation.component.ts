@@ -15,10 +15,12 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./accounting-generation.component.scss']
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
-    private documentMap = new Map([[1, {code: 514, description: 'purchase'}],
-                          [2, {code: 514, description: 'inventory'}],
-                          [3, {code: 260, description: 'consumption'}],
-                         ]);
+    private documentMap = new Map(
+        [[1, {code: 514, description: 'purchase'}],
+            [2, {code: 514, description: 'inventory'}],
+            [3, {code: 260, description: 'consumption'}],
+            [4, {code: 258, description: 'sales'}],
+        ]);
     private subscriptions: Subscription[] = [];
     form: FormGroup | null = null;
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
