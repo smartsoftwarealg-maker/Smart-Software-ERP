@@ -1,14 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from '@ss/common/api-common';
+import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {AccJournalsService, Journal, TDocument} from '@ss/accounting/accounting-api';
-import {AccountingAccountingService} from '../../../../accounting-api/src/lib/accounting-accounting.service';
+import {AccJournalsService, AccountingGenerationService, Journal, TDocument} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {PaginationModel} from '../../../../../../apps/hotel/src/app/common/pagination/pagination.component';
 import {HttpParams} from '@angular/common/http';
 
 @Component({
@@ -31,7 +29,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
 
     constructor(private fb: FormBuilder,
                 private loginSrv: LoginService,
-                private generationSrv: AccountingAccountingService,
+                private generationSrv: AccountingGenerationService,
                 private route: ActivatedRoute,
                 private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService,

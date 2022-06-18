@@ -6,14 +6,14 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseTreeControl, NestedTreeControl} from '@angular/cdk/tree';
 import {ReportTreeService} from '@ss/common/api-reports';
 import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
-import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {HttpService, LanguageService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
-import {catchError, Observable, tap} from 'rxjs';
+import {catchError, delay, Observable, of, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {map} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {saveAs} from 'file-saver';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -29,6 +29,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     @ViewChild('tree', { static: false }) tree: MatTree<any>;
 
+    private uuid = '';
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
@@ -71,6 +72,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         public langSrv: LanguageService,
         public defReportSrv: DefaultReportService,
         private deviceService: DeviceDetectorService,
+        private loginSrv: LoginService,
+        private httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS')
         const os = deviceService.getDeviceInfo().os.toLowerCase();
@@ -142,12 +145,20 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.releasePdf();
         this.htmlSrc = null;
         this.generating = true;
+        this.uuid = this.selectedReport.name.replace('.jasper', '') + '-' + this.loginSrv.appCtx.id + '-' + new Date().getTime();
         const data: ReportViewData = {
             app:       this.app + this.selectedReport.parent,
             rType:     this.form.value.reportType,
             fileName:  this.selectedReport.name.replace('.jasper', ''),
+            uuid:      this.uuid,
             paramList: this.createList()
         };
+
+        const loop: Observable<any> = this.httpSrv
+            .get(`/reports/view?uuid=${this.uuid}`)
+            .pipe(delay(3000),
+                switchMap(res => res['processing']? loop: of(res)));
+
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
@@ -180,8 +191,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 if (err.error) {
                     const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
                     err.error = JSON.parse(json);
+                    throw err;
                 }
-                throw err;
+                return loop;
             }
         });
     }
