@@ -24,6 +24,7 @@ export interface ReportViewData {
     app:       string;
     rType:     string;
     fileName:  string;
+    uuid?:     string,
     paramList: ParamValue[];
 }
 

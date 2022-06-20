@@ -1,0 +1,73 @@
+<mat-progress-bar *ngIf="processing" mode="indeterminate" ></mat-progress-bar>
+<form *ngIf="form !== null" novalidate [formGroup]="form" class="width-sc">
+    <mat-form-field class="number">
+        <mat-label translate>ACC_FOLDER</mat-label>
+        <input matInput formControlName="year" type="number" required>
+    </mat-form-field>
+
+    <mat-form-field class="number">
+        <mat-label translate>ACC_PERIOD</mat-label>
+        <input matInput formControlName="period" type="number" required>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+        <mat-select name="fileName" formControlName="genType">
+            <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
+            <mat-option value="2" translate>COMMON_INVENTORY</mat-option>
+            <mat-option value="3" translate>STOCK_CONSUMPTION</mat-option>
+            <mat-option value="4" translate>COMMON_SALES</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label translate>ACC_JOURNALS</mat-label>
+        <ss-auto-complete matInput
+                          [model]="journalLookup"
+                          formControlName="journal"></ss-auto-complete>
+    </mat-form-field>
+
+
+    <button mat-raised-button
+            color="warn"
+            [disabled]="!form.valid || processing"
+            (click)="generate()"
+            translate>COMMON_GENERATE
+    </button>
+</form>
+
+<div class="table-div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.number}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.date | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="false"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

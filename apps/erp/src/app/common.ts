@@ -195,9 +195,11 @@ export const ACC_POLICIES_URL         = 'acc-policies';
 export const ACC_JOURNALS_URL         = 'journals';
 export const ACC_TRANSACTIONS_URL     = 'transactions';
 export const ACC_FILE_SELECTOR_URL    = 'file-select';
+export const ACC_GENERATION_URL       = 'acc-generation';
 export const ACC_DEPRECIATION_GEN_URL = 'deprec-gen';
 export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
 export const ACC_FILES_URL            = 'acc-files';
+export const ACC_PROJECTS_URL         = 'acc-projects';
 
 // #############
 // # FULL URLS #
@@ -258,6 +260,7 @@ export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_
 export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_POLICIES_URL].join('/');
 export const ABS_ACC_JOURNALS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_JOURNALS_URL].join('/');
 export const ABS_ACC_FILES_URL   = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILES_URL].join('/');
+export const ABS_ACC_PROJECT_URL   = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_PROJECTS_URL].join('/');
 export const ABS_ACC_TRANSACTIONS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_TRANSACTIONS_URL].join('/');
 export const ABS_DEPRECIATION_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_DEPRECIATION_GEN_URL].join('/');
 export const ABS_ACC_FILE_SELECTION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_FILE_SELECTOR_URL].join('/');
@@ -268,6 +271,7 @@ export const ABS_ACC_TRANSAC_ACCOUNT_URL     = '/' + [MAIN_PAGE_URL, ACCOUNTING_
 export const ABS_ACC_GENERATION_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 export const ABS_ACC_CASHFLOW_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, CASHFLOW_ACCOUNTS_URL].join('/');
 export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_GENERATION_URL].join('/');
 
 
 //Logistics

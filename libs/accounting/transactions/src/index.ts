@@ -8,3 +8,6 @@ export * from './lib/period-selector/period-selector.component';
 export * from './lib/acc-file-detail/acc-file-detail.component';
 export * from './lib/acc-file-list/acc-file-list.component';
 export * from './lib/depreciation-generation/depreciation-generation.component';
+export * from './lib/acc-project-detail/acc-project-detail.component';
+export * from './lib/acc-project-list/acc-project-list.component';
+export * from './lib/accounting-generation/accounting-generation.component';

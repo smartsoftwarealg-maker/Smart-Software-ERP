@@ -18,6 +18,9 @@ import { AccFileListComponent } from './acc-file-list/acc-file-list.component';
 import { AccFileDetailComponent } from './acc-file-detail/acc-file-detail.component';
 import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import { DepreciationGenerationComponent } from './depreciation-generation/depreciation-generation.component';
+import { AccProjectListComponent } from './acc-project-list/acc-project-list.component';
+import { AccProjectDetailComponent } from './acc-project-detail/acc-project-detail.component';
+import { AccountingGenerationComponent } from './accounting-generation/accounting-generation.component';
 
 @NgModule({
     imports: [
@@ -41,7 +44,10 @@ import { DepreciationGenerationComponent } from './depreciation-generation/depre
       PeriodSelectorComponent,
       AccFileListComponent,
       AccFileDetailComponent,
-      DepreciationGenerationComponent
+      DepreciationGenerationComponent,
+      AccProjectListComponent,
+      AccProjectDetailComponent,
+      AccountingGenerationComponent
     ],
 })
 export class AccountingTransactionsModule {}

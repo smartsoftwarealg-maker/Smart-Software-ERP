@@ -1,19 +1,33 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL, ABS_ACC_CASHFLOW_ACCOUNT_URL,
-    ABS_ACC_FILE_SELECTION_URL, ABS_ACC_FILES_URL, ABS_ACC_GENERATION_ACCOUNT_URL,
-    ABS_ACC_JOURNALS_URL, ABS_ACC_PERIOD_SELECTION_URL, ABS_ACC_REPORTS_URL, ABS_ACC_TRANSAC_ACCOUNT_URL,
-    ABS_ACC_TRANSACTIONS_URL, ABS_DEPRECIATION_GENERATION_URL, ABS_HR_REPORTS_URL,
-    ABS_POLICIES_URL,
-    ABS_STOCK_ACCOUNT_URL, ACCOUNTING_APP_URL
+    ABS_ACC_ACCOUNT_URL,
+    ABS_ACC_ASSET_ACCOUNT_URL,
+    ABS_ACC_CASHFLOW_ACCOUNT_URL,
+    ABS_ACC_FILE_SELECTION_URL,
+    ABS_ACC_FILES_URL,
+    ABS_ACC_GENERATION_ACCOUNT_URL,
+    ABS_ACC_JOURNALS_URL,
+    ABS_ACC_PERIOD_SELECTION_URL,
+    ABS_ACC_PROJECT_URL,
+    ABS_ACC_REPORTS_URL,
+    ABS_ACC_TRANSAC_ACCOUNT_URL,
+    ABS_ACC_TRANSACTIONS_URL,
+    ABS_DEPRECIATION_GENERATION_URL, ABS_GENERATION_URL,
+    ABS_POLICIES_URL
 } from '../common';
 
 
 export const accountingNavTree: SideNavNode = {
     name: 'ACCOUNTING',
-    icon: 'fas fa-cog',
+    icon: 'fa-solid fa-money-bill-trend-up',
     accessRights: 'ACCOUNTING',
     children: [
+        {
+            name: 'ACC_PROJECTS',
+            icon: 'fa-solid fa-laptop-file',
+            route: ABS_ACC_PROJECT_URL,
+            accessRights: 'ACCProject'
+        },
         {
             name: 'ACC_FILES',
             icon: 'fas fa-folders',
@@ -76,6 +90,11 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_DEPRECIATION_GENERATION',
             icon: 'fa-solid fa-engine',
             route: ABS_DEPRECIATION_GENERATION_URL,
+        },
+        {
+            name: 'ACC_GENERATION',
+            icon: 'fa-solid fa-gears',
+            route: ABS_GENERATION_URL,
         },
         {
             name: 'COMMON_REPORTS',

@@ -31,6 +31,7 @@
     "DEBIT":                    "Debit",
     "CREDIT":                   "Credit",
     "PROJECT":                  "Project",
+    "PROJECTS":                 "Projects",
     "POS":                      "Position",
     "TRANSAC_DETAIL":           "Transaction detail",
     "SHOW_HEADER":              "Show transaction header",
@@ -52,5 +53,7 @@
     "NON_LOCATED_TREASURY":     "Displaced treasury balance",
     "SELECT_ACC_FOLDER":        "Please, select your accounting file",
     "DEPRECIATION_GENERATION" : "Depreciation generation",
-    "BY_COST_CENTER":           "By cost center"
+    "BY_COST_CENTER":           "By cost center",
+    "DEF_PROJECT":              "Default project",
+    "GENERATION":           "Transaction generation"
 }

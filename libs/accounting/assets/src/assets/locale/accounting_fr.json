@@ -31,6 +31,7 @@
     "DEBIT":                   "Débit",
     "CREDIT":                  "Crédit",
     "PROJECT":                 "Projet",
+    "PROJECTS":                "Projets",
     "POS":                     "Position",
     "TRANSAC_DETAIL":          "Détail de l'ecriture comptable'",
     "SHOW_HEADER":             "Afficher l'en-tête de l'ecriture comptable",
@@ -52,6 +53,8 @@
     "NON_LOCATED_TREASURY":    "Solde Trésorerie affectés",
     "SELECT_ACC_FOLDER":       "Veuillez sélectionner votre exercice comptable",
     "DEPRECIATION_GENERATION": "Génération d'amortissement",
-    "BY_COST_CENTER":           "Par centre de coûts"
+    "BY_COST_CENTER":           "Par centre de coûts",
+    "DEF_PROJECT":              "Projet par défaut",
+    "GENERATION":           "Generation ecritures"
 }
 
