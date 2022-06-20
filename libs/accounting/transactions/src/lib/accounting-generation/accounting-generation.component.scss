@@ -6,6 +6,11 @@ form {
     padding: 8px;
 }
 
+.center-div {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .table-div {
     height: calc(100% - 140px);
 }
@@ -15,4 +20,16 @@ form {
 
 button {
     align-self: center;
+}
+
+.mat-column-description {
+    flex: 2 1 200px;
+}
+
+.mat-column-cCenter,
+.mat-column-debit,
+.mat-column-credit,
+.mat-column-account,
+.mat-column-employee {
+    flex: 1 1 100px;
 }
