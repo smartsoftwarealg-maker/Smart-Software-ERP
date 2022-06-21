@@ -1,6 +1,6 @@
 .main-container {
     height: 100%;
-    width: 600px;
+    width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     overflow-x: auto;
 }
 .main-table {
-    width: 600px;
+    width: 700px;
     height: 100%;
 }
 
@@ -23,8 +23,11 @@
 }
 
 
+.mat-column-location {
+    flex: 1 1 200px;
+}
 .mat-column-description {
-    flex: 1 1 300px;
+    flex: 2 1 300px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
