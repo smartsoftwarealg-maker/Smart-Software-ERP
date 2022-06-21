@@ -38,6 +38,7 @@ export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLo
             defReportSrv,
             pagPersistSrv,
             'ASSET_LOCATIONS');
+        this.pagination.pageSize = 10;
     }
 
 }

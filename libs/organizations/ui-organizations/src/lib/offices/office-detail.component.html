@@ -2,12 +2,25 @@
 
 <div class="form-container">
     <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
+
         <mat-form-field class="default-100">
             <mat-label translate>COMMON_OFFICE</mat-label>
-            <input matInput formControlName="description" type="text" minlength="3" maxlength="64" required
+            <input matInput formControlName="description" type="text" minlength="3" maxlength="10" required
                 autofocus>
-            <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+            <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['description'].errors?.maxlength" [translate]="{maxLen: 10}">
+                COMMON_FIELD_MAX_LENGTH
             </mat-error>
+            <mat-error *ngIf="form.controls['description'].errors?.minlength" [translate]="{minLen: 3}">
+                COMMON_FIELD_MIN_LENGTH
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_LOCATION</mat-label>
+            <ss-auto-complete matInput
+                              [model]="locationLookup"
+                              formControlName="location"></ss-auto-complete>
         </mat-form-field>
 
         <mat-form-field class="default-100">
@@ -19,6 +32,9 @@
             <mat-label translate>ASSET_FLOOR_NO</mat-label>
             <input matInput formControlName="floorNo" type="number" max="20">
         </mat-form-field>
-
     </form>
+    <mat-form-field class="default-100">
+        <mat-label translate>COMMON_NUMBER</mat-label>
+        <input matInput [formControl]="numberCtrl" type="number" min="1" max="90" step="1">
+    </mat-form-field>
 </div>
