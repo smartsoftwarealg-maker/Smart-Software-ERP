@@ -106,6 +106,8 @@ export interface AssetRevaluation {
 
 export interface Blocking {
     id: number;
+    decisionNumber?: string;
+    decisionDate?: Date;
     investId: number
     fromDate: Date;
     toDate: Date;

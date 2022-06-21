@@ -4,7 +4,8 @@
             <mat-form-field id="code" class="value">
                 <mat-label translate>ADMINISTRATION_CODE</mat-label>
                 <input matInput formControlName="code" type="text" autofocus maxlength="4">
-                <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                <mat-error *ngIf="form.controls['code'].errors?.maxlength" [translate]="{ maxLen: 4 }">
+                    COMMON_FIELD_MAX_LENGTH
                 </mat-error>
             </mat-form-field>
             <mat-form-field id="description" class="value">

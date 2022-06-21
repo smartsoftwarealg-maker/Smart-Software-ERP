@@ -195,5 +195,6 @@
     "LOCATION":           "Location",
     "INVALID_FORM": "",
     "PURCHASE":          "",
-    "DB_UPDATER":        ""
+    "DB_UPDATER":        "",
+    "DECISION":           ""
 }

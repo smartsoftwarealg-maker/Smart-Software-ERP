@@ -206,5 +206,6 @@
     "INVALID_FORM":       "Ce formulaire est invalide",
     "PURCHASE":           "Achat",
     "DB_UPDATER":         "Mise à jour de la base de données",
+    "DECISION":           "Decision",
     "EMPLOYEES":          "Employés"
 }

@@ -19,6 +19,24 @@
         <div>
             <mat-table mat-table [dataSource]="blockings" class="main-table">
 
+                <ng-container matColumnDef="decision" style="justify-content: center; text-align: center">
+                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                        COMMON_DECISION
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e" >
+                        {{e.decisionNumber}}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date" style="justify-content: center; text-align: center">
+                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                        COMMON_DATE
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let e" style="justify-content: center">
+                        {{e.decisionDate | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="fromDate" style="justify-content: center; text-align: center">
                     <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
                         COMMON_FROM
