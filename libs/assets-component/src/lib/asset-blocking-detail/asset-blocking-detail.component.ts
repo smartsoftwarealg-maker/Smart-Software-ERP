@@ -21,7 +21,6 @@ import {AssetBlockingService} from '../asset-blocking.service';
 })
 export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Blocking> implements OnInit {
     private parentId = 0;
-    costTypeLookup = new DefaultAutoCompleteModel(this.costTypeLookupSrv);
 
     constructor(
         public assetBlockingSrv: AssetBlockingService,
@@ -31,8 +30,7 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         public override formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private costTypeLookupSrv: AssetCostsTypeService) {
+        public lookupsSrv: LookupsService) {
         super(assetBlockingSrv,
             shellSrv,
             snackBarSrv,
@@ -46,9 +44,11 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         const today = new Date();
         return this.form = this.formBuilder.group({
             id: a.id,
-            investId: [a.investId || this.parentId, Validators.required],
-            fromDate: [a.fromDate || today, Validators.required],
-            toDate: [a.toDate || today, Validators.required]
+            investId:       [a.investId || this.parentId, Validators.required],
+            fromDate:       [a.fromDate || today, Validators.required],
+            toDate:         [a.toDate || today, Validators.required],
+            decisionDate:   [a.decisionDate, Validators.required],
+            decisionNumber: [a.decisionNumber]
         });
     }
 

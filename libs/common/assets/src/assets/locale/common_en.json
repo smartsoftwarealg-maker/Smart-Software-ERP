@@ -205,5 +205,6 @@
     "INVALID_FORM": "This form is invalid",
     "PURCHASE":          "Purchase",
     "DB_UPDATER":        "Database updater",
+    "DECISION":           "Decision",
     "EMPLOYEE":          "Employee"
 }

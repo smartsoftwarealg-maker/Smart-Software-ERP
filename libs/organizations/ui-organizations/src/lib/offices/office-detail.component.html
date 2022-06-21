@@ -8,10 +8,10 @@
             <input matInput formControlName="description" type="text" minlength="3" maxlength="10" required
                 autofocus>
             <mat-error *ngIf="form.controls['description'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['description'].errors?.maxlength" [translate]="{maxLen: 10}">
+            <mat-error *ngIf="form.controls['description'].errors?.maxlength" [translate]="{ maxLen: 10 }">
                 COMMON_FIELD_MAX_LENGTH
             </mat-error>
-            <mat-error *ngIf="form.controls['description'].errors?.minlength" [translate]="{minLen: 3}">
+            <mat-error *ngIf="form.controls['description'].errors?.minlength" [translate]="{ minLen: 3 }">
                 COMMON_FIELD_MIN_LENGTH
             </mat-error>
         </mat-form-field>
