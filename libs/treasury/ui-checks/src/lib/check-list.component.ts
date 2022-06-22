@@ -6,7 +6,8 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { HttpService, PaginatorPersistenceService } from '@ss/common/api-common';
+import { HttpService, PaginatorPersistenceService, ymdToDmy, removeTimeForDateStr } from '@ss/common/api-common';
+import {Observable, of} from 'rxjs';
 
 @Component({
     selector: 'ss-checks-list',
@@ -16,9 +17,10 @@ import { HttpService, PaginatorPersistenceService } from '@ss/common/api-common'
 export class CheckListComponent extends BaseEntityListComponent<Check> implements OnInit {
 
     displayedColumns = [
-        'id',
+        'description',
         'number',
         'amount',
+        'agent',
         'date',
         'due_days',
         'bank',
@@ -27,7 +29,7 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         'depositDate',
         'depositNumber',
         'processDate',
-        'description'
+        'memo'
     ];
 
     constructor(
@@ -44,6 +46,15 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         super(checkSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKS');
     }
 
+    public processLoadedData(data: Check[]): Observable<Check[]> {
+        data.forEach(c => {
+            c.date = removeTimeForDateStr(ymdToDmy(c.date));
+            c.depositDate = removeTimeForDateStr(ymdToDmy(c.depositDate));
+            c.processDate = removeTimeForDateStr(ymdToDmy(c.processDate));
+        });
+        return of(data);
+    }
+    
     ngOnInit() {
         super.ngOnInit();
     }

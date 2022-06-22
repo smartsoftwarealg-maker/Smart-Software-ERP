@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService } from '@ss/common/api-common';
+import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-check-detail',
@@ -14,10 +15,12 @@ import { HttpService } from '@ss/common/api-common';
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {
 
+    public agentAutoCompleteModel: AgentLookupModel;
     aid = 0;
 
     constructor(
         public checkSrv: CheckService,
+        public agentSrv: AgentService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -25,7 +28,8 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         public confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
-        super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
+        super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKS');
+        new AgentLookupModel(this.agentSrv);
     }
 
     finishLoading(e: Check) {
@@ -37,6 +41,22 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         return this.formBuilder.group({
             id: [a.id],
             number: [a.number, Validators.required],
+            center: a.center,
+            bankId: [a.bankId],
+            bank: a.bank,
+            deposited: a.deposited,
+            depositDate: a.depositDate,
+            depositNumber: a.depositNumber,
+            processDate: a.processDate,
+            description: a.description,
+            date: [a.date, Validators.required],
+            due_days: [a.due_days, Validators.required],
+            agent: [a.agent, Validators.required],
+            amount: [a.amount, Validators.required],
+            mode: a.mode,
+            canceled: a.canceled,
+            memo: a.memo,
+            bookId: a.bookId
         });
     }
 

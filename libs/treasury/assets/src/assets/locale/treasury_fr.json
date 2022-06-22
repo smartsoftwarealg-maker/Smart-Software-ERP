@@ -1,4 +1,17 @@
 {
+    "AGENTS": "Tier",
     "AGENT": "Tiers",
-    "CHECKS": "Chèques"
+    "CHECKS": "Chèques",
+    "NUMBER": "Numéro",
+    "DEPOSIT_NUMBER": "Numéro de dépôt",
+    "DESCRIPTION": "Description",
+    "AMOUNT": "Montant",
+    "DATE": "Date",
+    "BANK": "Banque",
+    "DUE_DAYS": "Jours d'échéance",
+    "DEPOSITED": "Verser",
+    "CANCELED": "Annulé",
+    "DEPOSIT_DATE": "Date de dépôt",
+    "PROCESS_DATE": "Date de traitement",
+    "MEMO": "Memo"
 }

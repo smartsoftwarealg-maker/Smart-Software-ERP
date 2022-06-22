@@ -1,4 +1,17 @@
 {
-    "AGENT": "Agents",
-    "CHECKS": "Checks"
+    "AGENT": "Agent",
+    "AGENTS": "Agents",
+    "CHECKS": "Checks",
+    "NUMBER": "Number",
+    "DEPOSIT_NUMBER": "Deposit number",
+    "DESCRIPTION": "Description",
+    "AMOUNT": "Amount",
+    "DATE": "Date",
+    "BANK": "Bank",
+    "DUE_DAYS": "Due days",
+    "DEPOSITED": "Deposite",
+    "CANCELED": "Canceled",
+    "DEPOSIT_DATE": "Deposit date",
+    "PROCESS_DATE": "Process date",
+    "MEMO": "Memo"
 }

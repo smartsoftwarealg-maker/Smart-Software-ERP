@@ -22,20 +22,12 @@ mat-card {
     max-width: 1000px;
 }
 
-.image {
-    min-height: 100%;
-    min-width: 100px;
-    flex: 1 1 150px;
-}
-
 form {
     flex: 2 0 auto;
     max-width: 600px;
 }
 
-ss-article-store {
-    flex: 2 1 auto;
-    height: auto;
-    width: 100%;
-    background: #B2FFBB;
+.checkbox-container {
+    height: 64.8px;
+    line-height: 64.8px;
 }

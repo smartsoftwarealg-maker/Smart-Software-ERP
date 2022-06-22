@@ -9,7 +9,7 @@ export const treasuryNavTree: SideNavNode = {
     accessRights: 'TREASURY',
     children: [
         {
-            name: 'TRS_AGENT',
+            name: 'TRS_AGENTS',
             icon: 'fas fa-user',
             route: ABS_TREASURY_AGENT_URL,
             accessRights: 'Agent'
