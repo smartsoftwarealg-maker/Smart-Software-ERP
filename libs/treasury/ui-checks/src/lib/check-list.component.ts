@@ -7,7 +7,7 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { HttpService, PaginatorPersistenceService, ymdToDmy, removeTimeForDateStr } from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
     selector: 'ss-checks-list',
@@ -54,7 +54,7 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         });
         return of(data);
     }
-    
+
     ngOnInit() {
         super.ngOnInit();
     }
