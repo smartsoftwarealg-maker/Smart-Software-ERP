@@ -183,3 +183,13 @@ export interface GenerationInfo {
     journal: number;
     genType: string
 }
+
+
+export interface PAYRow {
+    account?: string
+    description?: string;
+    employee?: string;
+    cCenter?: string;
+    fundCC?: string;
+    amount: number
+}

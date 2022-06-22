@@ -10,6 +10,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_LOCATION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.lDescription}}
+                </mat-cell>
+            </ng-container>
+
 
             <ng-container matColumnDef="blockNo">
                 <mat-header-cell *matHeaderCellDef translate>ASSET_BLOCK_NO</mat-header-cell>

@@ -204,5 +204,7 @@
     "EXCEL_EXPORT": "Export to excel file",
     "INVALID_FORM": "This form is invalid",
     "PURCHASE":          "Purchase",
-    "DB_UPDATER":        "Database updater"
+    "DB_UPDATER":        "Database updater",
+    "DECISION":           "Decision",
+    "EMPLOYEE":          "Employee"
 }

@@ -63,8 +63,7 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
     getChildAttributes(): Observable<AttribTempl[]> {
         this.setParentId(this.ASSETS);
         return this.getList(0, 50)
-            .pipe(tap(res => console.log(res)),
-                  map(res => res.body));
+            .pipe(map(res => res.body));
     }
 
     attributeList(modeuleId: number, attribType: number): Observable<AttribTempl[]> {

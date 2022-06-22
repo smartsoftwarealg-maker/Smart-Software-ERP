@@ -5,7 +5,7 @@ import {
     ACC_ANNEX_CODE_URL,
     ACC_FILE_URL,
     ACC_GENERATION_URL,
-    AnnexCode, GenerationInfo,
+    AnnexCode, GenerationInfo, PAYRow,
     TDocument
 } from './accounting-api';
 import {HttpService} from '@ss/common/api-common';
@@ -21,5 +21,9 @@ export class AccountingGenerationService extends BaseEntityService<TDocument> {
 
     generate(info: GenerationInfo): Observable<any> {
         return this.httpSrv.post('/accounting/generations', info);
+    }
+
+    getPayrollLines(): Observable<PAYRow[]> {
+        return this.httpSrv.get<PAYRow[]>('/accounting/generations/payroll');
     }
 }

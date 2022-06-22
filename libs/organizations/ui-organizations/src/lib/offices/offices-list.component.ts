@@ -18,6 +18,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     displayedColumns = [
         'description',
+        'location',
         'blockNo',
         'floorNo'
     ];

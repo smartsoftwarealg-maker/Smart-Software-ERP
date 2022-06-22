@@ -249,4 +249,5 @@ export interface Office {
     description: string;
     blockNo?: string;
     floorNo: number;
+    location?: number;
 }

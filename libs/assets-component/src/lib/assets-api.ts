@@ -73,6 +73,7 @@ export interface Depreciation {
     totalDepreciation: number;
     remaining: number;
 }
+
 export interface AssetLocation {
     id: number;
     description: string;
@@ -81,6 +82,7 @@ export interface AssetLocation {
     structure?: number;
     bar_code?: number;
 }
+
 export interface AssetCost {
     id: number;
     cost_type: number;
@@ -104,6 +106,8 @@ export interface AssetRevaluation {
 
 export interface Blocking {
     id: number;
+    decisionNumber?: string;
+    decisionDate?: Date;
     investId: number
     fromDate: Date;
     toDate: Date;
