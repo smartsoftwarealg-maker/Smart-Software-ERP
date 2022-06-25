@@ -18,6 +18,7 @@ import {LoginService, PaginationModel, User} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
 import {UserListService} from '@ss/common/api-users';
 import {of, switchMap, tap} from 'rxjs';
+import {BankService} from '@ss/administration/api-bank';
 
 @Component({
     selector: 'ss-journal-detail',
@@ -27,6 +28,7 @@ import {of, switchMap, tap} from 'rxjs';
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     centerLookup = new DefaultAutoCompleteModel(this.centerSrv);
     typeLookup = new DefaultAutoCompleteModel(this.journalTypeSrv);
+    bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
     users: JournalUser[] = [];
     paginator = PaginationModel.newInstance({page: 1, pageSize: 5, elementCount: 0});
     userId = 0;
@@ -47,6 +49,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         private loginSrv: LoginService,
         private journalTypeSrv: JournalTypeService,
         private journalUserSrv: JournalUserService,
+        private bankSrv: BankService,
         private usersSrv: UserListService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_JOURNALS');
         this.centerSrv.setParentId(loginSrv.appCtx.company);
@@ -55,13 +58,15 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     public setupForm(e: Journal): FormGroup {
         this.journalUserSrv.setParentId(e.id);
         this.loadUsers();
+
         return this.formBuilder.group({
-            id: [e.id],
+            id:           [e.id],
             abbreviation: [e.abbreviation, Validators.maxLength(4)],
-            description: [e.description, Validators.required],
+            description:  [e.description, Validators.required],
             defaultLabel: [e.defaultLabel],
-            jType: [e.jType],
-            center: [e.center],
+            jType:        [e.jType],
+            bankId:       [e.bankId],
+            center:       [e.center],
         });
     }
 

@@ -18,7 +18,8 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> {
         'abbreviation',
         'defaultLabel',
         'centerName',
-        'typeName'
+        'typeName',
+        'bankName'
     ];
 
 

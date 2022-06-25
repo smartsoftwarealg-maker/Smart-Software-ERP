@@ -68,6 +68,8 @@ export interface Journal {
     center?: number;
     centerName?: string;
     typeName?: string;
+    bankId?: number;
+    bankName?: string;
 }
 
 export interface JournalUser {
@@ -192,4 +194,12 @@ export interface PAYRow {
     cCenter?: string;
     fundCC?: string;
     amount: number
+}
+
+export interface Check {
+    number: string;
+    date: Date;
+    description?: string;
+    bank: string;
+    journal?: number;
 }
