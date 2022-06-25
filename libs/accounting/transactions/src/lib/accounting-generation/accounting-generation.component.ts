@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {
     AccJournalsService,
-    AccountingGenerationService,
+    AccountingGenerationService, Check,
     Journal,
     PAYRow,
     TDocument
@@ -21,7 +21,11 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./accounting-generation.component.scss']
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
-    readonly PAYROLL = 5;
+    readonly PURCHASE = 1;
+    readonly SALES    = 4;
+    readonly PAYROLL  = 5;
+    readonly BANK     = 6;
+
     private documentMap = new Map(
         [
             [1, {code: 514, description: 'purchase',    stock: false}],
@@ -29,16 +33,23 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             [3, {code: 260, description: 'consumption', stock: true}],
             [4, {code: 258, description: 'sales',       stock: false}],
             [5, {code: 0,   description: 'payroll',     stock: false}],
+            [6, {code: 0,   description: 'bank',        stock: false}],
         ]);
     private subscriptions: Subscription[] = [];
+
     showingTransactions = true;
+    showingBank         = false;
+    showingPayroll      = false;
+
     form: FormGroup | null = null;
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
     processing = false;
     data: TDocument[] = [];
     payrollData: PAYRow[] = [];
+    checkData: Check[] = [];
     displayedColumns = ['description', 'number', 'date'];
     payrollColumns = ['account', 'description', 'employee', 'cCenter', 'debit', 'credit'];
+    bankColumns = ['number', 'date', 'bank'];
     public pagination = PaginationModel.newInstance();
 
     constructor(private fb: FormBuilder,
@@ -110,6 +121,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                 }
             });
     }
+
   private showPayrollLines() {
       this.generationSrv
           .getPayrollLines()
@@ -126,13 +138,36 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
           })
   }
 
+  private showBankPayments() {
+      this.generationSrv
+          .getChecks()
+          .subscribe({
+              next: res => {
+                  this.processing = false;
+                  this.checkData  = res;
+                  const bankId = res.length > 0? res[0].journal || null: null;
+                  this.form?.controls['journal']?.setValue(bankId);
+                  this.shellSrv.setLoading(false);
+              }, error: err => {
+                  this.processing = false;
+                  this.shellSrv.setLoading(false);
+                  throw err;
+              }
+          })
+  }
+
   showDocuments() {
       this.processing = true;
       this.shellSrv.setLoading(true);
       const key = +this.form?.controls['genType'].value;
-      this.showingTransactions = key !== this.PAYROLL;
+      this.showingBank         = key === this.BANK;
+      this.showingPayroll      = key === this.PAYROLL;
+      this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
+
       if (this.showingTransactions) {
           this.showTransactions(key);
+      } else if (this.showingBank) {
+          this.showBankPayments();
       } else {
           this.showPayrollLines();
       }

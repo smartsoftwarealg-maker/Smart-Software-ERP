@@ -19,9 +19,9 @@
             <mat-option value="3" translate>STOCK_CONSUMPTION</mat-option>
             <mat-option value="4" translate>COMMON_SALES</mat-option>
             <mat-option value="5" translate>COMMON_PAYROLL</mat-option>
+            <mat-option value="6" translate>LOGISTICS_BANK</mat-option>
         </mat-select>
     </mat-form-field>
-
 
     <mat-form-field>
         <mat-label translate>ACC_JOURNALS</mat-label>
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<div class="table-div  center-div" *ngIf="!showingTransactions">
+<div class="table-div  center-div" *ngIf="showingPayroll">
     <mat-table mat-table [dataSource]="payrollData" class="main-table">
 
         <ng-container matColumnDef="description">
@@ -97,7 +97,6 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -112,7 +111,6 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="cCenter">
             <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -120,9 +118,38 @@
             </mat-cell>
         </ng-container>
 
-
         <mat-header-row *matHeaderRowDef="payrollColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="false"
                  *matRowDef="let row; columns: payrollColumns;"></mat-row>
+    </mat-table>
+</div>
+
+<div class="table-div center-div" *ngIf="showingBank">
+    <mat-table mat-table [dataSource]="checkData" class="main-table">
+
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.number}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.date | date: 'mm/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="bank">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_BANK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.bank}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="bankColumns"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="false"
+                 *matRowDef="let row; columns: bankColumns;"></mat-row>
     </mat-table>
 </div>
