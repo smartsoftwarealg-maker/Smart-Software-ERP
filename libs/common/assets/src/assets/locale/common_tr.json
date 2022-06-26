@@ -196,5 +196,6 @@
     "INVALID_FORM": "",
     "PURCHASE":          "",
     "DB_UPDATER":        "",
-    "DECISION":           ""
+    "DECISION":           "",
+    "REQUESTER":          ""
 }

@@ -17,6 +17,22 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_REQUESTER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="requesterLookup"
+                                  formControlName="requesterId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="requesterLookup"
+                                  formControlName="beneficiaryId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_LOCATIONS</mat-label>
                 <ss-auto-complete matInput
                                   [model]="officeAutoCompleteModel"
@@ -24,19 +40,6 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>ADMINISTRATION_ATTRIBUTES</mat-label>
-                <mat-select formControlName="attribCode">
-                    <mat-option *ngFor="let a of childAttributes" [value]="a.id">{{ a.description }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_VALUE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="attributeLookup"
-                                  formControlName="attribVal"></ss-auto-complete>
-            </mat-form-field>
         </form>
 
     </mat-card-content>
