@@ -36,5 +36,7 @@
     "MIN_VALUE":          "Minimum asset value",
     "RECEPTIONS":         "Receptions",
     "BENEFICIARY":        "Beneficiary",
-    "INVENTORY_YEAR":     "Inventory year"
+    "INVENTORY_YEAR":     "Inventory year",
+    "INVENTORY_NO":       "Inventory number",
+    "BLOCKING_TYPES":     "Blocking types"
 }

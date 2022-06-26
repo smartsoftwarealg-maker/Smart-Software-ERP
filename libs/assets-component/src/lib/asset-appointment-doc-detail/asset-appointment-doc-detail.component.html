@@ -45,7 +45,7 @@
     </mat-card-content>
 </mat-card>
 
-<mat-table mat-table [dataSource]="detailData" class="main-table item">
+<mat-table *ngIf="editMode" mat-table [dataSource]="detailData" class="main-table item" >
 
     <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
@@ -67,7 +67,11 @@
     </mat-row>
 </mat-table>
 
-<div class="item ctrl_div">
+<div *ngIf="editMode" class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+
+<div *ngIf="editMode" class="item ctrl_div">
 
     <mat-form-field class="input_div">
         <mat-label translate>ASSETS</mat-label>
@@ -98,7 +102,4 @@
             <i class="fas fa-save"> </i>
         </button>
     </div>
-</div>
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

@@ -156,6 +156,7 @@ export const PAY_CACO_URL             = 'caco';
 // Assets
 export const ASSETS_ASSET_URL            = 'assets';
 export const ASSET_COST_TYPE_URL         = 'cost_types';
+export const ASSET_BLOCKING_TYPE_URL     = 'blocking_types';
 export const ASSET_CLASS_URL             = 'asset_classes';
 export const ASSET_LOCATIONS_URL         = 'locations';
 export const ASSET_REVALUATION_TYPE_URL  = 'revaluation_types';
@@ -335,6 +336,7 @@ export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
 export const ABS_COST_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_COST_TYPE_URL].join('/');
+export const ABS_BLOCKING_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_BLOCKING_TYPE_URL].join('/');
 export const ABS_ASSET_CLASSES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_CLASS_URL].join('/');
 export const ABS_REVALUATION_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_REVALUATION_TYPE_URL].join('/');
 export const ABS_ASSET_LOCATIONS = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_LOCATIONS_URL].join('/');

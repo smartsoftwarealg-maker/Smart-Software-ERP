@@ -126,9 +126,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0, Validators.required],
             outof_service: [b.outof_service || false, Validators.required],
-            criticity: [b.criticity],
-            startYear: [b.startYear || 0],
-            assetClass: [b.assetClass],
+            criticity:   [b.criticity],
+            startYear:   [b.startYear || 0],
+            assetClass:  [b.assetClass],
+            inventoryNo: [b.inventoryNo],
         });
         if (b.id) {
             this.maxReference = b.reference2;

@@ -26,6 +26,7 @@ export class DbUpdaterComponent implements OnInit {
     ngOnInit(): void {
         this.updateSrv.getChangeFiles().subscribe(res => this.files = res);
         this.shellSrv.setGoBackPath('../', this.route);
+        this.shellSrv.setTitle('COMMON_DB_UPDATER');
     }
 
     update(selection: MatListOption[]) {
