@@ -1,3 +1,50 @@
+<div class="table-container">
+    <mat-table mat-table [dataSource]="revaluations" class="main-table">
+
+        <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_TYPE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.typeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="deprec_year" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                LOGISTICS_AMOUNT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.deprec_year}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="useful_life" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                LOGISTICS_AMOUNT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.useful_life}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                LOGISTICS_AMOUNT
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.amount | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
 <div class="ctrl-div">
     <button mat-mini-fab color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
@@ -14,55 +61,4 @@
     </button>
 </div>
 
-<div class="table-container">
-    <div class="cost-div">
-        <div>
-            <mat-table mat-table [dataSource]="revaluations" class="main-table">
-
-                <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        COMMON_TYPE
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.typeDescription}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="deprec_year" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        LOGISTICS_AMOUNT
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.deprec_year}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="useful_life" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        LOGISTICS_AMOUNT
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.useful_life}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="amount" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        LOGISTICS_AMOUNT
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.amount | number: '1.2-2'}}
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <div class="pagination-container b-b-background">
-                <ss-pagination [paginationModel]="pagination"></ss-pagination>
-            </div>
-        </div>
-    </div>
-</div>
 

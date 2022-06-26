@@ -17,7 +17,7 @@ export class AssetBlockingListComponent implements OnInit {
     public selected = 0;
     blockings: Blocking[] = [];
     public readonly pagination = PaginationModel.newInstance();
-    public displayedColumns = ['decision', 'date', 'fromDate', 'toDate'];
+    public displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
 
 
     constructor(public entitySrv: AssetBlockingService,

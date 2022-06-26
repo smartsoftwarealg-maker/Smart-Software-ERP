@@ -20,7 +20,7 @@ import {
     ASSET_INVENTORY_URL,
     STOCK_AGENT_URL,
     docInfoRoutes,
-    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL
+    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -52,6 +52,12 @@ import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
 import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import {ActivityDetailComponent, ActivityListComponent} from '@ss/common/ui-lookup';
+import {
+    AssetBlockingTypeDetailComponent
+} from '../../../../../libs/assets-component/src/lib/asset-blocking-type-detail/asset-blocking-type-detail.component';
+import {
+    AssetBlockingTypeListComponent
+} from '../../../../../libs/assets-component/src/lib/asset-blocking-type-list/asset-blocking-type-list.component';
 
 export const mainRoutes: Routes = [
     {
@@ -163,6 +169,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetCostTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ASSET_BLOCKING_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetBlockingTypeListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AssetBlockingTypeDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

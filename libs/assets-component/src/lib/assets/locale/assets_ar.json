@@ -36,5 +36,7 @@
     "MIN_VALUE":          "الحد الأدنى لقيمة الأصول",
     "RECEPTIONS":         "الاستقبال",
     "BENEFICIARY":        "المستفيد",
-    "INVENTORY_YEAR":     "سنة الجرد"
+    "INVENTORY_YEAR":     "سنة الجرد",
+    "INVENTORY_NO":       "رقم الجرد",
+    "BLOCKING_TYPES":     "أنواع المنع"
 }

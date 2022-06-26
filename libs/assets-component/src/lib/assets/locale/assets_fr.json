@@ -36,5 +36,7 @@
     "MIN_VALUE":          "Valeur minimale d' immobilisation",
     "RECEPTIONS":         "Receptions",
     "BENEFICIARY":        "Bénéficiaire",
-    "INVENTORY_YEAR":     "Année d'inventaire"
+    "INVENTORY_YEAR":     "Année d'inventaire",
+    "INVENTORY_NO":       "Numéro d'inventaire",
+    "BLOCKING_TYPES":     "Types de blocage"
 }

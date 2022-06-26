@@ -31,14 +31,15 @@ import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     public requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    editMode = false;
+   // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
     inputControl = new FormControl();
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
-    attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
+    // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
     pagination               = PaginationModel.newInstance();
     displayedColumns         = ['reference', 'description',];
 
@@ -52,7 +53,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         public lookupsSrv: LookupsService,
         private officeSrv: OfficeService,
         private attributeSrv: AttributesService,
-        private attribLookupSrv: AttributeLookupService,
+        // private attribLookupSrv: AttributeLookupService,
         private loginSrv: LoginService,
         private detailSrv: AssetAppointmentLineService,
         private consumerSrv: ConsumerService,
@@ -62,7 +63,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     }
 
     public setupForm(b: ASSAppointmentHeader) {
-        console.log(b);
+        this.editMode = b.id != 0;
         this.loginSrv
             .loadContext()
             .subscribe();

@@ -1,3 +1,61 @@
+<div class="table-container">
+    <mat-table mat-table [dataSource]="blockings" class="main-table">
+
+        <ng-container matColumnDef="decision" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DECISION
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.decisionNumber}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DESCRIPTION
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_DATE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.decisionDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fromDate" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_FROM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.fromDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toDate" style="justify-content: center; text-align: center">
+            <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
+                COMMON_TO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: center">
+                {{e.toDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
+
 <div class="ctrl-div">
     <button mat-mini-fab color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
@@ -13,57 +71,3 @@
         <span class="fas fa-trash-alt"></span>
     </button>
 </div>
-
-<div class="table-container">
-    <div class="cost-div">
-        <div>
-            <mat-table mat-table [dataSource]="blockings" class="main-table">
-
-                <ng-container matColumnDef="decision" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        COMMON_DECISION
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" >
-                        {{e.decisionNumber}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="date" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        COMMON_DATE
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.decisionDate | date: 'dd/MM/yyyy' }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="fromDate" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        COMMON_FROM
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.fromDate | date: 'dd/MM/yyyy' }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="toDate" style="justify-content: center; text-align: center">
-                    <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
-                        COMMON_TO
-                    </mat-header-cell>
-                    <mat-cell *matCellDef="let e" style="justify-content: center">
-                        {{e.toDate | date: 'dd/MM/yyyy' }}
-                    </mat-cell>
-                </ng-container>
-
-
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <div class="pagination-container b-b-background">
-                <ss-pagination [paginationModel]="pagination"></ss-pagination>
-            </div>
-        </div>
-    </div>
-</div>
-

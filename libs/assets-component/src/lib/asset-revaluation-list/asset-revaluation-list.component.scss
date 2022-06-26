@@ -1,3 +1,10 @@
+.table-container {
+    width: 100%;
+    min-height: 250px;
+    overflow-y: auto;
+    padding: 0;
+}
+
 .ctrl-div {
     width: 100%;
     display: flex;
@@ -18,19 +25,25 @@
 
 .mat-column-typeDescription {
     flex: 1 1 150px;
+    border-left: white solid 1px;
+    border-right: white solid 1px;
+    padding-left: 4px;
+}
+.mat-column-decision {
+    padding-left: 4px;
 }
 
 .mat-column-date,
+.mat-column-fromDate,
+.mat-column-toDate,
 .mat-column-decision,
 .mat-column-deprec_year,
 .mat-column-useful_life,
 .mat-column-amount {
     flex: 1 1 100px;
+    border-left: white solid 1px;
 }
 
-.table-container {
-    width: 100%;
-}
 .main-table {
     min-width: 800px;
     width: 100%;
