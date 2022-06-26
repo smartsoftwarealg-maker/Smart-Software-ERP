@@ -74,55 +74,6 @@
                 <mat-checkbox formControlName="taxPayable"  translate>LOGISTICS_TAX_PAYABLE</mat-checkbox>
             </div>
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
-                <input matInput formControlName="creationTime" type="text">
-            </mat-form-field>
-
-
-        </mat-expansion-panel>
-
-        <mat-expansion-panel #latinPanel [class]="getPanelHeaderClass('latin',latinPanel)">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    LOGISTICS_LATIN
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_PHONE</mat-label>
-                <input matInput formControlName="phone" type="text">
-            </mat-form-field>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_MOBILE</mat-label>
-                <input matInput formControlName="mobile" type="text">
-            </mat-form-field>
-
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_FAX</mat-label>
-                <input matInput formControlName="fax" type="text">
-            </mat-form-field>
-
-            <mat-form-field id="email" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_EMAIL</mat-label>
-                <input matInput formControlName="email" type="email">
-                <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field id="website" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_WEBSITE</mat-label>
-                <input matInput formControlName="website" type="text">
-                <mat-error
-                    *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
-                </mat-error>
-            </mat-form-field>
-
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
-            </div>
-
             <mat-form-field  class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
                 <mat-select formControlName="activity">
@@ -143,6 +94,24 @@
                 </mat-select>
             </mat-form-field>
 
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #latinPanel [class]="getPanelHeaderClass('latin',latinPanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    LOGISTICS_INFO
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="isInternal"  translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
+            </div>
+
+            <div class="default-50 sm-100">
+                <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
+            </div>
+
 
             <div class="default-50 sm-100">
                 <mat-checkbox formControlName="recordBlocked"  translate>LOGISTICS_RECORD_BLOCKED</mat-checkbox>
@@ -153,9 +122,10 @@
                 <input matInput formControlName="blockingReason"  type="text">
             </mat-form-field>
 
-            <div class="default-50 sm-100">
-                <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
-            </div>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CREATION_TIME</mat-label>
+                <input matInput formControlName="creationTime" type="text">
+            </mat-form-field>
 
         </mat-expansion-panel>
 
@@ -314,6 +284,36 @@
             <mat-form-field  class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_CONTACT</mat-label>
                 <input matInput formControlName="contact" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_PHONE</mat-label>
+                <input matInput formControlName="phone" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_MOBILE</mat-label>
+                <input matInput formControlName="mobile" type="text">
+            </mat-form-field>
+
+            <mat-form-field  class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_FAX</mat-label>
+                <input matInput formControlName="fax" type="text">
+            </mat-form-field>
+
+            <mat-form-field id="email" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_EMAIL</mat-label>
+                <input matInput formControlName="email" type="email">
+                <mat-error *ngIf="form.controls['email'].invalid" translate>COMMON_EMAIL_INVALID
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="website" class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_WEBSITE</mat-label>
+                <input matInput formControlName="website" type="text">
+                <mat-error
+                    *ngIf="form.controls['website'].invalid" translate>COMMON_URL_INVALID
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

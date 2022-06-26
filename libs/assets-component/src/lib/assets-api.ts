@@ -115,10 +115,10 @@ export interface Blocking {
 
 export interface AssetClass {
     id: number;
-    description:       string,
-    descriptionAr?:    string;
+    description: string,
+    descriptionAr?: string;
     depreciationRate?: number;
-    usefulLife?:       number;
+    usefulLife?: number;
 }
 
 export interface ASSAppointment {
@@ -141,15 +141,18 @@ export interface AssetReception {
 }
 
 export interface ASSAppointmentHeader {
-    id:           number;
-    center:       number;
+    id: number;
+    center: number;
     serialNumber: number;
-    date:         Date;
-    officeId?:    number;
-    attribCode?:  number;
-    attribVal?:   number;
-    officeName?:  string;
-    valName?:     string;
+    date: Date;
+    officeId?: number;
+    officeName?: string;
+    requesterId?: number;
+    requestDate?: Date;
+    requestNumber?: string;
+    beneficiaryId?: number;
+    requester?: string;
+    beneficiary?: string;
 }
 
 export interface AssetAppointmentLine {

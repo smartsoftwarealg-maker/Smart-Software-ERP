@@ -5,8 +5,7 @@ import {
     ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
-    ABS_COST_TYPES, ABS_OPTIONS_URL, ABS_ORGANIZATIONS_OFFICES_URL,
-    ABS_REVALUATION_TYPES
+    ABS_COST_TYPES, ABS_LOGISTICS_ACTIVITY, ABS_OPTIONS_URL, ABS_REVALUATION_TYPES, ASSETS_STOCK_AGENT_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -14,6 +13,12 @@ export const assetsNavTree: SideNavNode = {
     icon: 'fa-solid fa-car-bus',
     accessRights: 'ASSETS',
     children: [
+        {
+            name: 'COMMON_ACTIVITIES',
+            icon: 'fab fa-app-store-ios',
+            route: ABS_LOGISTICS_ACTIVITY,
+            accessRights: 'Activity'
+        },
         {
             name: 'ASSET_COST_TYPES',
             icon: 'fa-solid fa-list-check',
@@ -28,6 +33,12 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_REVALUATION_TYPES',
             icon: 'fa-solid fa-list-tree',
             route: ABS_REVALUATION_TYPES
+        },
+        {
+            name: 'LOGISTICS_AGENTS',
+            icon: 'fas fa-user',
+            route: ASSETS_STOCK_AGENT_URL,
+            accessRights: 'Agent'
         },
         {
             name: 'ASSET_LOCATIONS',

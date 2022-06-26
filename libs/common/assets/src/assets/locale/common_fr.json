@@ -207,5 +207,6 @@
     "PURCHASE":           "Achat",
     "DB_UPDATER":         "Mise à jour de la base de données",
     "DECISION":           "Decision",
-    "EMPLOYEES":          "Employés"
+    "EMPLOYEES":          "Employés",
+    "REQUESTER":          "Demandeur"
 }

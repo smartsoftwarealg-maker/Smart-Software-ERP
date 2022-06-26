@@ -15,7 +15,12 @@ import {
     ASSET_CLASS_URL,
     ASSETS_APPOINTMENTS_URL,
     ASSET_OPTIONS_URL,
-    ASSET_RECEPTIONS_URL, ASSETS_APPOINTMENTS_DOC_URL, ASSET_INVENTORY_URL
+    ASSET_RECEPTIONS_URL,
+    ASSETS_APPOINTMENTS_DOC_URL,
+    ASSET_INVENTORY_URL,
+    STOCK_AGENT_URL,
+    docInfoRoutes,
+    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -39,15 +44,14 @@ import {
     AssetOptionsComponent,
     AssetReceptionsComponent,
     AssetAppointmentDocListComponent,
-    AssetAppointmentDocDetailComponent, AssetInventoryDetailComponent
+    AssetAppointmentDocDetailComponent, AssetInventoryDetailComponent, AssetInventoryListComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
-import {
-    AssetInventoryListComponent
-} from '../../../../../libs/assets-component/src/lib/asset-inventory-list/asset-inventory-list.component';
+import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
+import {ActivityDetailComponent, ActivityListComponent} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
     {
@@ -128,6 +132,22 @@ export const mainRoutes: Routes = [
                         ]
                     }
                 ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_ACTIVITY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ActivityListComponent
+            },
+            {
+                path: ':id',
+                component: ActivityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -283,6 +303,26 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_RECEPTIONS_URL,
         component: AssetReceptionsComponent
+    },
+    {
+        path: ASSETS_AGENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes,
+                data: { form: 'Agent' }
+            },
+            {
+                path: ':id',
+                component: AgentDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

@@ -16,12 +16,13 @@ import {
     AttributeLookupService,
     AttributesService
 } from '@ss/custom-attributes';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
-import {of, Subscription} from 'rxjs';
+import {of} from 'rxjs';
 import {AssetAppointmentLineService} from '../asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
+import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 
 @Component({
   selector: 'ss-asset-appointment-doc-detail',
@@ -29,6 +30,8 @@ import {AssetsService} from '../assets.service';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
+    public requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
@@ -52,12 +55,14 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         private attribLookupSrv: AttributeLookupService,
         private loginSrv: LoginService,
         private detailSrv: AssetAppointmentLineService,
+        private consumerSrv: ConsumerService,
         private assetSrv: AssetsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
     }
 
     public setupForm(b: ASSAppointmentHeader) {
+        console.log(b);
         this.loginSrv
             .loadContext()
             .subscribe();
@@ -72,24 +77,17 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 this.pagination.elementCount = res.itemCount;
             });
         const form = this.formBuilder.group({
-            id:           [b.id],
-            center:       [b.center || this.loginSrv.appCtx.center],
-            serialNumber: [b.serialNumber],
-            date:         [b.date, Validators.required],
-            officeId:     [b.officeId],
-            attribCode:   [b.attribCode],
-            attribVal:    [b.attribVal],
+            id:            [b.id],
+            center:        [b.center || this.loginSrv.appCtx.center],
+            serialNumber:  [b.serialNumber || 1],
+            date:          [b.date, Validators.required],
+            officeId:      [b.officeId],
+            requesterId:   [b.requesterId],
+            requestDate:   [b.requestDate],
+            requestNumber: [b.requestNumber],
+            beneficiaryId: [b.beneficiaryId],
         });
 
-        const subs = form.controls['attribCode']
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged(),
-            ).subscribe(v => this.attribLookupSrv.setParentId(v || 0));
-        this.subscriptions.push(subs);
-
-        this.attribLookupSrv.setParentId(b?.attribCode || 0)
         return form;
     }
 

@@ -154,20 +154,22 @@ export const PAY_DAS_URL              = 'das';
 export const PAY_CACO_URL             = 'caco';
 
 // Assets
-export const ASSETS_ASSET_URL           = 'assets';
-export const ASSET_COST_TYPE_URL        = 'cost_types';
-export const ASSET_CLASS_URL            = 'asset_classes';
-export const ASSET_LOCATIONS_URL        = 'locations';
-export const ASSET_REVALUATION_TYPE_URL = 'revaluation_types';
-export const ASSETS_COST_URL            = 'costs'
-export const ASSETS_REVALUATION_URL     = 'revaluations'
-export const ASSETS_APPOINTMENTS_URL    = 'appointments'
-export const ASSETS_BLOCKING_URL        = 'blockings'
-export const ASSETS_OFFICES_URL         = 'offices';
-export const ASSET_OPTIONS_URL          = 'asset-policies';
-export const ASSET_INVENTORY_URL        = 'asset-inventories';
-export const ASSET_RECEPTIONS_URL       = 'asset-receptions';
-export const ASSETS_APPOINTMENTS_DOC_URL= 'asset-appointments'
+export const ASSETS_ASSET_URL            = 'assets';
+export const ASSET_COST_TYPE_URL         = 'cost_types';
+export const ASSET_CLASS_URL             = 'asset_classes';
+export const ASSET_LOCATIONS_URL         = 'locations';
+export const ASSET_REVALUATION_TYPE_URL  = 'revaluation_types';
+export const ASSETS_COST_URL             = 'costs'
+export const ASSETS_REVALUATION_URL      = 'revaluations'
+export const ASSETS_APPOINTMENTS_URL     = 'appointments'
+export const ASSETS_BLOCKING_URL         = 'blockings'
+export const ASSETS_OFFICES_URL          = 'offices';
+export const ASSET_OPTIONS_URL           = 'asset-policies';
+export const ASSET_INVENTORY_URL         = 'asset-inventories';
+export const ASSET_RECEPTIONS_URL        = 'asset-receptions';
+export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments'
+export const ASSETS_AGENT_URL            = 'agents';
+
 
 //Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -341,6 +343,7 @@ export const ABS_OPTIONS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_OPTIO
 export const ABS_ASSET_RECEPTIONS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_RECEPTIONS_URL].join('/');
 export const ABS_ASSET_APPOINTMENT_DOC_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_APPOINTMENTS_DOC_URL].join('/');
 export const ABS_ASSET_INVENTORY_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_INVENTORY_URL].join('/');
+export const ASSETS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_AGENT_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
