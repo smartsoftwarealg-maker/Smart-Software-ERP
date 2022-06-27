@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Blocking} from '../assets-api';
 import {LanguageService, PaginationModel} from '@ss/common/api-common';
-import {SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -14,19 +14,21 @@ import {AssetBlockingService} from '../asset-blocking.service';
   styleUrls: ['../asset-revaluation-list/asset-revaluation-list.component.scss']
 })
 export class AssetBlockingListComponent implements OnInit {
+    private reportForm = 'Blocking';
     public selected = 0;
     blockings: Blocking[] = [];
     public readonly pagination = PaginationModel.newInstance();
     public displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
 
 
-    constructor(public entitySrv: AssetBlockingService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public langSrv: LanguageService,
-                public confirmationSrv: ConfirmationDialogService,
-                public defReportSrv: DefaultReportService) {
+    constructor(private entitySrv: AssetBlockingService,
+                private snackBarSrv: SnackBarService,
+                private route: ActivatedRoute,
+                private router: Router,
+                private langSrv: LanguageService,
+                private confirmationSrv: ConfirmationDialogService,
+                private defReportSrv: DefaultReportService,
+                private shellSrv: ShellService) {
     }
 
     ngOnInit() {
@@ -84,6 +86,24 @@ export class AssetBlockingListComponent implements OnInit {
             .subscribe(res => {
                 this.blockings = res.body;
                 this.pagination.elementCount = res.itemCount;
+            });
+    }
+
+    public selectReport() {
+        this.defReportSrv
+            .open(this.shellSrv.getApp(), this.reportForm)
+            .subscribe(resp => {
+                if (resp.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
+    }
+    public viewReport() {
+        this.defReportSrv
+            .viewReport(this.reportForm, this.selected)
+            .subscribe(res => {
+                const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+                window.open(fileURL, '_blank');
             });
     }
 }

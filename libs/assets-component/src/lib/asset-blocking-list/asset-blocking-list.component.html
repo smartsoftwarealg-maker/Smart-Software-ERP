@@ -70,4 +70,12 @@
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
+    <button mat-mini-fab (click)="selectReport()" color="warn">
+        <span class="fas fa-print"></span>
+    </button>
+    <button mat-mini-fab (click)="selectReport()"
+            [matTooltip]="'COMMON_SELECT_REPORT' | translate"
+            color="warn">
+        <span class="fas fa-folders"></span>
+    </button>
 </div>
