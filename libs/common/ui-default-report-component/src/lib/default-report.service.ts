@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {LanguageService} from '@ss/common/api-common';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {Observable, of} from 'rxjs';
+import {Observable, of, switchMap} from 'rxjs';
 import {DefaultReportComponent} from './ui-default-report/default-report.component';
 import {HttpParams} from '@angular/common/http';
 import {Company, HttpService} from '@ss/common/api-common';
@@ -18,7 +18,7 @@ export class DefaultReportService {
                 private matDialog: MatDialog,
                 private httpSrv: HttpService) {}
 
-    public open(app: string, form: string): Observable<any> {
+    public open(app: string, form: string): Observable<{count: number}> {
         const config = new MatDialogConfig();
         config.disableClose = true;
         config.height = '400px';
@@ -27,9 +27,28 @@ export class DefaultReportService {
         config.data = { app: app, form: form };
         return this.matDialog
             .open(DefaultReportComponent, config)
-            .afterClosed();
+            .afterClosed()
+            .pipe(switchMap(res => typeof res === 'string'? this.setUserReport(form, res) : of({ count: 0 })));
     }
 
+    /*
+        private selectReport() {
+        this.defReportSrv
+            .open(this.shellSrv.getApp(), this.reportForm)
+            .subscribe(res => {
+                if (typeof res === 'string') {
+                    this.defReportSrv
+                        .setUserReport(this.reportForm, res)
+                        .subscribe(resp => {
+                            if (resp.count > 0) {
+                                this.snackBarSrv.showSuccessMessage();
+                            }
+                        })
+                }
+            });
+    }
+
+     */
     public openEmailDlg(from: string, to: string): Observable<boolean> {
         const config = new MatDialogConfig();
         config.disableClose = true;

@@ -246,18 +246,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public exit() {
         this.router.navigate(['../..'], { relativeTo: this.route }).then();
     }
+
     private selectReport() {
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)
-            .subscribe(res => {
-                if (typeof res === 'string') {
-                    this.defReportSrv
-                        .setUserReport(this.reportForm, res)
-                        .subscribe(resp => {
-                            if (resp.count > 0) {
-                                this.snackBarSrv.showSuccessMessage();
-                            }
-                        })
+            .subscribe(resp => {
+                if (resp.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
                 }
             });
     }

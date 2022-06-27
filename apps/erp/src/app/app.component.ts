@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.0.7');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.0');
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             organizationsNavTree,

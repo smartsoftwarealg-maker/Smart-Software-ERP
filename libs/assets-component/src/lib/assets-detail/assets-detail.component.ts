@@ -226,6 +226,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.outof_service      =  !!asset.outof_service;
                 asset.criticity          =  asset.criticity        || null;
                 asset.accountId          =  asset.accountId        || null;
+                asset.assetClass         =  asset.assetClass       || null;
+                asset.inventoryNo        =  asset.inventoryNo      || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }
