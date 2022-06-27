@@ -15,7 +15,8 @@ import {AssetBlockingService} from '../asset-blocking.service';
 })
 export class AssetBlockingListComponent implements OnInit {
     private reportForm = 'Blocking';
-    public selected = 0;
+    selected = 0;
+    @Input() editable = true;
     blockings: Blocking[] = [];
     public readonly pagination = PaginationModel.newInstance();
     public displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];

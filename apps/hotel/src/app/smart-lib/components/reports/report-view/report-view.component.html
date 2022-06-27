@@ -16,7 +16,7 @@
             <mat-form-field class="f-w">
                 <mat-select [(ngModel)]="selectedReport" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }"
                     (ngModelChange)="onReportSelect()" [disabled]="generating"
-                    placeholder="{{'SELECT_REPORT' | translate:lang}}">
+                    placeholder="{{'COMMON_SELECT_REPORT' | translate:lang}}">
                     <mat-option *ngFor="let rep of selectedDir['files']" [value]="selectedDir['name'] +'/'+ rep">
                         {{ rep }}
                     </mat-option>

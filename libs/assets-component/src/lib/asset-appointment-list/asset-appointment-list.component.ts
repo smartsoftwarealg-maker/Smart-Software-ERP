@@ -20,7 +20,8 @@ export class AssetAppointmentListComponent implements OnInit {
         'officeCode',
         'denomination'
     ];
-    public selected = 0;
+    @Input() editable = true;
+    selected = 0;
     data: ASSAppointment[] = [];
     public readonly pagination = PaginationModel.newInstance();
 

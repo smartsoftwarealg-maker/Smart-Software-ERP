@@ -109,7 +109,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     //
 
     public ngOnInit() {
-        const node = this.shellSrv.getNavNodeByRouter(this.router);
+        const node = this.shellSrv.getNavNodeByRouter();
         this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
@@ -121,7 +121,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             delete: true
         } as Right : this.shellSrv.getRights(node.accessRights);
 
-        this.editButton.visible = rights.edit;
+        // this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;
         this.deleteButton.visible = rights.delete;
 

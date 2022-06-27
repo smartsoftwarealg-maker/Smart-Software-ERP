@@ -15,7 +15,8 @@ import {AssetRevaluationService} from '../asset-revaluation.service';
   styleUrls: ['./asset-revaluation-list.component.scss']
 })
 export class AssetRevaluationListComponent implements OnInit {
-    public selected = 0;
+    selected = 0;
+    @Input() editable = true;
     revaluations: AssetRevaluation[] = [];
     public readonly pagination = PaginationModel.newInstance();
     public displayedColumns = ['typeDescription', 'deprec_year', 'useful_life', 'amount'];

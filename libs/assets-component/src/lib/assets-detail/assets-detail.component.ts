@@ -38,6 +38,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     };
     private minLength = 1;
     private maxReference: string = null;
+    isEditable = true;
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
@@ -79,6 +80,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     setupForm(b: Asset): FormGroup {
+        this.isEditable = this.saveButton.visible;
+        console.log('editable', this.isEditable);
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ? 11 : 1;
@@ -172,8 +175,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
-
-
 
     private importAsset() {
         const dialogRef = this.dialog.open(AssetSearchDialogComponent,
