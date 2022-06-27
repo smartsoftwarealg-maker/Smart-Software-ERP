@@ -1,3 +1,24 @@
+<div class="btn-div" *ngIf="editable">
+    <button mat-mini-fab color="primary"
+            matTooltip="{{'COMMON_ADD' | translate}}"
+            (click)="addAttribute()">
+        <i class="fas fa-add"></i>
+    </button>
+    <button mat-mini-fab
+            [disabled]="!selectedAttribute || !selectedAttribute.id"
+            matTooltip="{{'COMMON_DELETE' | translate}}"
+            (click)="deleteAttribute()">
+        <i class="fas fa-minus"></i>
+    </button>
+    <button mat-mini-fab
+            color="primary"
+            [disabled]="!selectedAttribute || !selectedAttributeCtrl.value"
+            matTooltip="{{'COMMON_SAVE' | translate}}"
+            (click)="saveAttribute()">
+        <i class="fas fa-save"> </i>
+    </button>
+</div>
+
 <div class="table-div">
     <mat-table mat-table [dataSource]="childAttributes" class="main-table">
         <ng-container matColumnDef="attribName">
@@ -62,23 +83,3 @@
     </container-element>
 </div>
 
-<div class="btn-div">
-    <button mat-mini-fab color="primary"
-            matTooltip="{{'COMMON_ADD' | translate}}"
-            (click)="addAttribute()">
-        <i class="fas fa-add"></i>
-    </button>
-    <button mat-mini-fab
-            [disabled]="!selectedAttribute || !selectedAttribute.id"
-            matTooltip="{{'COMMON_DELETE' | translate}}"
-            (click)="deleteAttribute()">
-        <i class="fas fa-minus"></i>
-    </button>
-    <button mat-mini-fab
-            color="primary"
-            [disabled]="!selectedAttribute || !selectedAttributeCtrl.value"
-            matTooltip="{{'COMMON_SAVE' | translate}}"
-            (click)="saveAttribute()">
-        <i class="fas fa-save"> </i>
-    </button>
-</div>

@@ -197,5 +197,6 @@
     "PURCHASE":          "",
     "DB_UPDATER":        "",
     "DECISION":           "",
-    "REQUESTER":          ""
+    "REQUESTER":          "",
+    "PRINT_REPORT":       ""
 }

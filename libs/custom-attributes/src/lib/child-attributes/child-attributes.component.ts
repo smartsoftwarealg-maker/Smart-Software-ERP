@@ -19,13 +19,13 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
     private datePipe = new DatePipe(this.langSrv.defaultLanguage);
-
     private _parentId: 1 | 2 | 3 = 2;
+    private subscriptions: Subscription[] = [];
 
+    @Input() editable = true;
     attributeCtrl = new FormControl();
     childAttributes: Attrib[] = [];
     selectedAttributeCtrl = new FormControl();
-    private subscriptions: Subscription[] = [];
     attributeColumns = ['attribName', 'value'];
     selectedAttribute: Attrib = null;
     attributeType = 0;

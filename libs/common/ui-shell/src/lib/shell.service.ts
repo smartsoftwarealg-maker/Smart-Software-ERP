@@ -5,6 +5,7 @@ import {Observable, Subscription} from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
+    DocRight,
     LanguageService, Right,
     SideNavNode,
     strDropEndUntil,
@@ -126,7 +127,7 @@ export class ShellService {
 
     /* SIDE NAV */
 
-    public getNavNodeByRouter(router: Router): SideNavNode {
+    public getNavNodeByRouter(): SideNavNode {
         // const url = router.routerState.snapshot.url;
         const url = '/' +
             this.router
@@ -500,7 +501,22 @@ export class ShellService {
         this._application = str;
     }
 
+    getCurrentNodeRights(): Right {
+        const node = this.getNavNodeByRouter();
+        const rights = !node || !node.accessRights? {
+            read: true,
+            write: true,
+            edit: true,
+            delete: true
+        } as Right : this.getRights(node.accessRights);
+        return rights;
+    }
+
     getRights(component: string): Right {
         return this.rightsSrv.getUserRights(component);
+    }
+
+    loadUserRights(): Observable<DocRight[]> {
+        return this.rightsSrv.load();
     }
 }

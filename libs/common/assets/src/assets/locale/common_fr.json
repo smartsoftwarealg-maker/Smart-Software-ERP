@@ -208,5 +208,7 @@
     "DB_UPDATER":         "Mise à jour de la base de données",
     "DECISION":           "Decision",
     "EMPLOYEES":          "Employés",
-    "REQUESTER":          "Demandeur"
+    "REQUESTER":          "Demandeur",
+    "SELECT_REPORT":      "sélectionnez l'etat",
+    "PRINT_REPORT":       "Imprimer le rapport par défaut"
 }

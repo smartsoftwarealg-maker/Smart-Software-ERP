@@ -207,5 +207,7 @@
     "DB_UPDATER":        "Database updater",
     "DECISION":           "Decision",
     "EMPLOYEE":          "Employee",
-    "REQUESTER":          "Requester"
+    "REQUESTER":          "Requester",
+    "SELECT_REPORT":      "select report",
+    "PRINT_REPORT":       "Print default report"
 }
