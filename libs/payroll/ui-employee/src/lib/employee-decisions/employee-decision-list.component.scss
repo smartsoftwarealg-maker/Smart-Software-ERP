@@ -1,6 +1,6 @@
 
 
-$table_width: 662px;
+$table_width: 700px;
 
 :host {
     display: inline-block;
@@ -32,44 +32,23 @@ $table_width: 662px;
 
 .main-table {
     width: $table_width;
-    min-height: 320px;
+    min-height: 800px;
 }
 
-.mat-column-dec_reference {
-    flex: 0 0 140px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
 
-.mat-column-dec_date {
-    flex: 0 0 90px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-application_date {
-    flex: 0 0 90px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
-.mat-column-dec_motive {
-    flex: 0 0 140px;
-    padding-right: 8px;
-    padding-left: 8px;
-}
-
+.mat-column-dec_date,
+.mat-column-application_date,
 .mat-column-application_period {
-    flex: 0 0 90px;
-    padding-right: 8px;
-    padding-left: 8px;
+    flex: 1 1  90px;
 }
 
-.mat-column-dec_header {
-    flex: 0 0 140px;
-    padding-right: 8px;
-    padding-left: 8px;
+
+.mat-column-dec_motive,
+.mat-column-dec_header,
+.mat-column-dec_reference {
+    flex: 1 1 140px;
 }
+
 
 .pagination-container {
     ss-pagination {
@@ -81,7 +60,9 @@ $table_width: 662px;
 }
 
 .buttons {
-    margin: auto;
-    width: 200px;
+    margin: 8px auto;
+    width: 150px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 }

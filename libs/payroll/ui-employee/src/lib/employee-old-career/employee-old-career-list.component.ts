@@ -13,6 +13,7 @@ import { PaginationModel, LanguageService } from '@ss/common/api-common';
 })
 export class EmployeeOldCareerListComponent implements OnInit, OnDestroy {
     private _activePersonnel = true;
+    @Input() editable = true;
 
     @Input()
     set activePersonnel(active: boolean) {

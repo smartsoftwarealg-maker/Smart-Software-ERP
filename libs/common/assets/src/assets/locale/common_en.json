@@ -206,8 +206,10 @@
     "PURCHASE":          "Purchase",
     "DB_UPDATER":        "Database updater",
     "DECISION":           "Decision",
-    "EMPLOYEE":          "Employee",
+    "DECISIONS":          "Decisions",
+    "EMPLOYEE":           "Employee",
     "REQUESTER":          "Requester",
     "SELECT_REPORT":      "select report",
-    "PRINT_REPORT":       "Print default report"
+    "PRINT_REPORT":       "Print default report",
+    "TREASURY":           "Treasury"
 }

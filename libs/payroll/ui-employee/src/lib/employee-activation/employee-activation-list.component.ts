@@ -15,11 +15,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
     styleUrls: ['./employee-activation-list.component.scss']
 })
 export class EmployeeActivationListComponent implements OnInit, OnDestroy {
-    @Input()
-    set personId(id: number) {
-        this.entitySrv.setParentId(id);
-    }
-
+    @Input() editable = true;
     public displayedColumns = [
         'centerName',
         'hireDate',
@@ -72,6 +68,11 @@ export class EmployeeActivationListComponent implements OnInit, OnDestroy {
                 return total
             }, {}
         );
+    }
+
+    @Input()
+    set personId(id: number) {
+        this.entitySrv.setParentId(id);
     }
 
     public select(id: number): void {

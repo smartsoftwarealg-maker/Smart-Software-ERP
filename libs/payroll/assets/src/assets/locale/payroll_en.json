@@ -132,5 +132,7 @@
     "OLD_CAREERS": "Past career",
     "RATE": "Rate",
     "EMPLOYEE_SUMMARY": "Statistics",
-    "WORKSHOP":         "Site"
+    "WORKSHOP":         "Site",
+    "APPLICATION_DATE":   "Application date",
+    "APPLICATION_PERIOD": "Periode application"
 }

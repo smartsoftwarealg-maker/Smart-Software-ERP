@@ -16,6 +16,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
 })
 export class EmployeeContractListComponent implements OnInit, OnDestroy {
     private _activePersonnel = true;
+    @Input() editable = true;
 
     @Input()
     set activePersonnel(active: boolean) {

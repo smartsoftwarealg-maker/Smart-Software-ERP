@@ -88,7 +88,9 @@ $table_width: 1300px;
 
 
 .buttons {
-    margin: auto;
-    width: 200px;
+    margin: 8px auto;
+    width: 150px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 }

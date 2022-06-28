@@ -198,5 +198,6 @@
     "DB_UPDATER":        "",
     "DECISION":           "",
     "REQUESTER":          "",
-    "PRINT_REPORT":       ""
+    "PRINT_REPORT":       "",
+    "TREASURY":           ""
 }

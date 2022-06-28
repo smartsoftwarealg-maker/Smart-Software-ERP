@@ -207,8 +207,10 @@
     "PURCHASE":           "Achat",
     "DB_UPDATER":         "Mise à jour de la base de données",
     "DECISION":           "Decision",
+    "DECISIONS":          "Decisions",
     "EMPLOYEES":          "Employés",
     "REQUESTER":          "Demandeur",
     "SELECT_REPORT":      "sélectionnez l'etat",
-    "PRINT_REPORT":       "Imprimer le rapport par défaut"
+    "PRINT_REPORT":       "Imprimer le rapport par défaut",
+    "TREASURY":           "Trésorerie"
 }
