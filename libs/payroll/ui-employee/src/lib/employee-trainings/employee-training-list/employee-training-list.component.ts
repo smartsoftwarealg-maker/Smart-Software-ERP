@@ -16,6 +16,7 @@ import {Training} from '../employee-training';
 })
 export class EmployeeTrainingListComponent implements OnInit {
     private _activePersonnel = true;
+    @Input() editable = true;
 
     @Input()
     set activePersonnel(active: boolean) {

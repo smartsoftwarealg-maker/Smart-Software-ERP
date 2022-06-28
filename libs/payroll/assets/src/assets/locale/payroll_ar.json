@@ -132,5 +132,7 @@
     "OLD_CAREERS": "المسيرة الماضية",
     "RATE": "النسبة",
     "EMPLOYEE_SUMMARY": "الإحصائيات",
-    "WORKSHOP":         "الموقع"
+    "WORKSHOP":         "الموقع",
+    "APPLICATION_DATE":   "تاريخ التنفيذ",
+    "APPLICATION_PERIOD": "دورة التنفيذ"
 }

@@ -12,7 +12,7 @@ import { PaginationModel, LanguageService } from '@ss/common/api-common';
     styleUrls: ['./employee-decision-list.component.scss']
 })
 export class EmployeeDecisionListComponent implements OnInit, OnDestroy {
-
+    @Input() editable = true;
     @Input()
     set personId(id: number) {
         this.entitySrv.setParentId(id);

@@ -120,5 +120,7 @@
     "OLD_CAREERS": "Ancienne carrière",
     "RATE": "Taux",
     "EMPLOYEE_SUMMARY": "Statistiques",
-    "WORKSHOP":         ""
+    "WORKSHOP":         "",
+    "APPLICATION_DATE":   "",
+    "APPLICATION_PERIOD": ""
 }

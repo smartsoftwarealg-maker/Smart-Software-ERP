@@ -74,7 +74,9 @@ $table_width: 752px;
 }
 
 .buttons {
-    margin: auto;
-    width: 200px;
+    margin: 8px auto;
+    width: 150px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 }

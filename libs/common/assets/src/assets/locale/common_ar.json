@@ -205,8 +205,10 @@
     "PURCHASE":          "شراء",
     "DB_UPDATER":        "محدث قاعدة البيانات",
     "DECISION":          "قرار",
+    "DECISIONS":          "قرارات",
     "EMPLOYEE":          "الموظف",
     "REQUESTER":          "الطالب",
     "SELECT_REPORT":      "اختر تقريرا",
-    "PRINT_REPORT":       "طباعة التقرير الافتراضي"
+    "PRINT_REPORT":       "طباعة التقرير الافتراضي",
+    "TREASURY":           "خزينة"
 }

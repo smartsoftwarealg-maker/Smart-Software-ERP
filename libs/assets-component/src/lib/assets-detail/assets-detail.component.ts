@@ -81,7 +81,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     setupForm(b: Asset): FormGroup {
         this.isEditable = this.saveButton.visible;
-        console.log('editable', this.isEditable);
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ? 11 : 1;
@@ -150,6 +149,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                     form.controls['reference2'].setValue(this.maxReference);
                     form.controls['reference'].setValue(this.maxReference);
                 })
+        }
+        if (!this.isEditable) {
+            form.disable();
         }
         return form;
     }
