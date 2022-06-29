@@ -202,4 +202,6 @@ export interface Check {
     description?: string;
     bank: string;
     journal?: number;
+    debit: number;
+    credit: number;
 }

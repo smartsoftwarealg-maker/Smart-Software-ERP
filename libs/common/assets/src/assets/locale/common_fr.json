@@ -212,5 +212,7 @@
     "REQUESTER":          "Demandeur",
     "SELECT_REPORT":      "sélectionnez l'etat",
     "PRINT_REPORT":       "Imprimer le rapport par défaut",
-    "TREASURY":           "Trésorerie"
+    "TREASURY":           "Trésorerie",
+    "CASH":               "Espèces",
+    "AMOUNT":             "Montant"
 }

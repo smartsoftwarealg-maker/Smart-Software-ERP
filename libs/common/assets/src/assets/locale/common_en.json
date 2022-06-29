@@ -211,5 +211,7 @@
     "REQUESTER":          "Requester",
     "SELECT_REPORT":      "select report",
     "PRINT_REPORT":       "Print default report",
-    "TREASURY":           "Treasury"
+    "TREASURY":           "Treasury",
+    "CASH":               "Cash",
+    "AMOUNT":             "Amount"
 }

@@ -25,6 +25,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     readonly SALES    = 4;
     readonly PAYROLL  = 5;
     readonly BANK     = 6;
+    readonly CASH     = 7;
 
     private documentMap = new Map(
         [
@@ -34,11 +35,13 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             [4, {code: 258, description: 'sales',       stock: false}],
             [5, {code: 0,   description: 'payroll',     stock: false}],
             [6, {code: 0,   description: 'bank',        stock: false}],
+            [7, {code: 0,   description: 'cash',        stock: false}],
         ]);
     private subscriptions: Subscription[] = [];
 
     showingTransactions = true;
     showingBank         = false;
+    showingCash         = false;
     showingPayroll      = false;
 
     form: FormGroup | null = null;
@@ -47,9 +50,11 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     data: TDocument[] = [];
     payrollData: PAYRow[] = [];
     checkData: Check[] = [];
+    cashData: Check[] = [];
     displayedColumns = ['description', 'number', 'date'];
     payrollColumns = ['account', 'description', 'employee', 'cCenter', 'debit', 'credit'];
     bankColumns = ['number', 'date', 'bank'];
+    cashColumns = ['number', 'date', 'debit', 'credit'];
     public pagination = PaginationModel.newInstance();
 
     constructor(private fb: FormBuilder,
@@ -156,20 +161,48 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
           })
   }
 
+  private showCashPayments() {
+      this.generationSrv
+          .getCash()
+          .subscribe({
+              next: res => {
+                  this.processing = false;
+                  this.cashData  = res;
+                  this.shellSrv.setLoading(false);
+                  console.log('data', this.cashData)
+              }, error: err => {
+                  this.processing = false;
+                  this.shellSrv.setLoading(false);
+                  throw err;
+              }
+          })
+  }
+
   showDocuments() {
       this.processing = true;
       this.shellSrv.setLoading(true);
       const key = +this.form?.controls['genType'].value;
+      console.log('key', key)
       this.showingBank         = key === this.BANK;
+      this.showingCash         = key === this.CASH;
       this.showingPayroll      = key === this.PAYROLL;
       this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
 
-      if (this.showingTransactions) {
-          this.showTransactions(key);
-      } else if (this.showingBank) {
-          this.showBankPayments();
-      } else {
-          this.showPayrollLines();
+      switch (key) {
+          case this.BANK:
+              this.showBankPayments();
+              break;
+
+          case this.CASH:
+              this.showCashPayments();
+              break;
+
+          case this.PAYROLL:
+              this.showPayrollLines();
+              break;
+
+          default:
+              this.showTransactions(key);
       }
   }
 }
