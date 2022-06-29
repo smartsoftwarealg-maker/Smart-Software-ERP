@@ -27,9 +27,19 @@ button {
 }
 
 .mat-column-cCenter,
-.mat-column-debit,
-.mat-column-credit,
 .mat-column-account,
 .mat-column-employee {
     flex: 1 1 100px;
 }
+
+.mat-column-debit,
+.mat-column-credit {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+.mat-column-number,
+.mat-column-date {
+    flex: 1 1 110px;
+}
+

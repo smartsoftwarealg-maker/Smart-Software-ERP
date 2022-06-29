@@ -210,5 +210,7 @@
     "REQUESTER":          "الطالب",
     "SELECT_REPORT":      "اختر تقريرا",
     "PRINT_REPORT":       "طباعة التقرير الافتراضي",
-    "TREASURY":           "خزينة"
+    "TREASURY":           "خزينة",
+    "CASH":               "النقد",
+    "AMOUNT":             "المبلغ"
 }

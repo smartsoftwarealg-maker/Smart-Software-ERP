@@ -30,4 +30,7 @@ export class AccountingGenerationService extends BaseEntityService<TDocument> {
     getChecks(): Observable<Check[]> {
         return this.httpSrv.get<Check[]>('/accounting/generations/bank');
     }
+    getCash(): Observable<Check[]> {
+        return this.httpSrv.get<Check[]>('/accounting/generations/cash');
+    }
 }
