@@ -22,7 +22,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
-    selector: 'ss-report-params',
+    selector: 'ss-report-view',
     styleUrls: ['./report-view.component.scss'],
     templateUrl: './report-view.component.html'
 })
@@ -52,8 +52,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     treeControl = new NestedTreeControl<any>(node => node.list);
     selectedReport: ReportNode;
     app: string;
-    private file: File = new File();
-    private fileOpener = new FileOpener();
 
     hasChild = (_: number, node: any) => !!node && node.list.length > 0;
 
