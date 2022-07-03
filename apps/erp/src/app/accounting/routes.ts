@@ -59,7 +59,7 @@ export const accRoutes: Routes = [
                 path: LIST_URL,
                 data: { reportBase: 'accounting'},
                 component: ReportViewComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, AccountingPeriodGuard]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
