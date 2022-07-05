@@ -26,5 +26,6 @@
     "MISSING_HIRE_DATE":                  "La date de recrutement est manquante.",
     "SESSION_EXPIRED":                    "Votre session a expiré. Veuillez vous reconnecter",
     "INVALID_CENTER":                     "Des données avec un code de centre invalide ont été demandées",
-    "KASPERSKY_EXC":                      "Kaspersky a gâché la demande. Veuillez contacter votre administrateur réseau pour résoudre le problème."
+    "KASPERSKY_EXC":                      "Kaspersky a gâché la demande. Veuillez contacter votre administrateur réseau pour résoudre le problème.",
+    "NO_ACCOUNTING_SOURCE":               "Il n'y a pas de source pour ce dossier comptable"
 }

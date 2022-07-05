@@ -21,6 +21,7 @@ import { DepreciationGenerationComponent } from './depreciation-generation/depre
 import { AccProjectListComponent } from './acc-project-list/acc-project-list.component';
 import { AccProjectDetailComponent } from './acc-project-detail/acc-project-detail.component';
 import { AccountingGenerationComponent } from './accounting-generation/accounting-generation.component';
+import { AccountingReopenComponent } from './accounting-reopen/accounting-reopen.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { AccountingGenerationComponent } from './accounting-generation/accountin
       DepreciationGenerationComponent,
       AccProjectListComponent,
       AccProjectDetailComponent,
-      AccountingGenerationComponent
+      AccountingGenerationComponent,
+      AccountingReopenComponent
     ],
 })
 export class AccountingTransactionsModule {}

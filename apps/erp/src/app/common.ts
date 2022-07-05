@@ -196,6 +196,7 @@ export const ACC_TRANSACTIONS_URL     = 'transactions';
 export const ACC_FILE_SELECTOR_URL    = 'file-select';
 export const ACC_GENERATION_URL       = 'acc-generation';
 export const ACC_DEPRECIATION_GEN_URL = 'deprec-gen';
+export const ACC_REOPEN_URL           = 'acc-reopen';
 export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
 export const ACC_FILES_URL            = 'acc-files';
 export const ACC_PROJECTS_URL         = 'acc-projects';
@@ -267,6 +268,7 @@ export const ABS_ACC_GENERATION_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_
 export const ABS_ACC_CASHFLOW_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, CASHFLOW_ACCOUNTS_URL].join('/');
 export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_GENERATION_URL].join('/');
+export const ABS_REOPEN_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_REOPEN_URL].join('/');
 
 
 //Logistics
