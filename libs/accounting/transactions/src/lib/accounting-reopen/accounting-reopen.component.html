@@ -1,0 +1,46 @@
+<div *ngIf="balancedFolder && !generating; else warning" class="prompt-div">
+    <mat-form-field class="default-50">
+        <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+        <input matInput [formControl]="description" type="text" required>
+        <mat-error *ngIf="description.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="reopen()" class="default-50" translate>
+        COMMON_GENERATE
+    </button>
+</div>
+<ng-template #warning>
+    <div *ngIf="!generating" class="warning-msg f-warn" translate>BL_INVALID_DATA</div>
+</ng-template>
+<mat-progress-bar mode="indeterminate" *ngIf="generating"></mat-progress-bar>
+
+<div class="table-div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="month">
+            <mat-header-cell *matHeaderCellDef translate>ACC_PERIOD</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.month | translate}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="debit">
+            <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.debit | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="credit">
+            <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.credit | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable"
+                 [class.imbalance]="balance(row) >= 0.01"
+                 [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

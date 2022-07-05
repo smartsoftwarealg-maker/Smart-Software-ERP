@@ -13,3 +13,22 @@
 .imbalance {
    background: red;
 }
+
+.table-div {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.mat-column-debit,
+.mat-column-credit {
+    flex: 1 1 200px;
+}
+
+.mat-column-month
+{
+    flex: 1 1 150px;
+}
+
+mat-table {
+    width: 550px;
+}

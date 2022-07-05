@@ -205,3 +205,8 @@ export interface Check {
     debit: number;
     credit: number;
 }
+
+export interface ReopenInfo {
+    description: string;
+    detail: boolean;
+}
