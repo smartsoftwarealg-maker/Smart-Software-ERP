@@ -1,5 +1,5 @@
 .container {
-    width: 96%;
+    width: 98%;
     height: 100%;
     max-width: 900px;
     margin: 0 auto;
@@ -15,6 +15,7 @@
 
 .main-table {
     width: 100%;
+    min-width: 350px;
 }
 
 .pagination-container {
@@ -22,12 +23,24 @@
 }
 
 .btn-div {
-    width: 98%;
-    max-width: 900px;
+    width: 94%;
+    max-width: 800px;
     margin: 0 auto;
     padding: 8px 16px;
     display: flex;
     justify-content: space-between;
     align-content: center;
     font-size: 1.2em;
+}
+
+.mat-column-description {
+    flex: 3 0 150px;
+    border-left: white thin solid;
+}
+
+.mat-column-fileYear,
+.mat-column-closed {
+    flex: 1 1 100px;
+    border-left: white thin solid;
+    justify-content: center;
 }

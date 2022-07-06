@@ -1,4 +1,4 @@
-<div class="buttons">
+<div class="buttons" *ngIf="editable">
     <button mat-mini-fab color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>
@@ -64,16 +64,16 @@
 
         <ng-container matColumnDef="dec_header">
             <mat-header-cell *matHeaderCellDef translate>
-                PAYROLL_HEADER
+                COMMON_MEMO
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.application_period}}
+                {{e.header}}
             </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-            *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 </div>

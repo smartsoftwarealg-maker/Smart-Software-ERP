@@ -6,6 +6,7 @@ import {Observable, of, Subscription} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {DocRight} from '@ss/common/api-common';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -58,32 +59,34 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
      * Overload this to load your own things. and tap to save your results
      */
     public preload(): Observable<any> {
-        return null;
+        return of(null);
     }
 
     public load() {
         this.form = null;
         this.shellSrv.setLoading(true);
-        const a = this.preload();
-        const b = this.getRouteParam();
-        const c = a == null
-            ? b
-            : a.pipe(
-                switchMap(() => b)
-            );
-        c.subscribe({
-            next: entity => {
-                if (entity) {
-                    this.finishLoading(entity);
-                } else {
-                    throw new Error("BaseEntityDetail: Entity is null");
+
+        this.preload()
+            .pipe(
+                switchMap(_ => this.shellSrv.loadUserRights()),
+                tap(_ => {
+                    const rights = this.shellSrv.getCurrentNodeRights();
+                    this.saveButton.visible = rights.edit;
+                }),
+                switchMap(_ => this.getRouteParam()))
+            .subscribe({
+                next: entity => {
+                    if (entity) {
+                        this.finishLoading(entity);
+                    } else {
+                        throw new Error("BaseEntityDetail: Entity is null");
+                    }
+                },
+                error: error => {
+                    this.shellSrv.showRetry(() => this.load());
+                    throw error;
                 }
-            },
-            error: error => {
-                this.shellSrv.showRetry(() => this.load());
-                throw error;
-            }
-        });
+            });
     }
 
     protected getRouteParam(): Observable<any> {

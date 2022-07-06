@@ -55,5 +55,6 @@
     "DEPRECIATION_GENERATION" : "Depreciation generation",
     "BY_COST_CENTER":           "By cost center",
     "DEF_PROJECT":              "Default project",
-    "GENERATION":           "Transaction generation"
+    "GENERATION":               "Transaction generation",
+    "REOPENING":                "Reopening"
 }

@@ -24,10 +24,11 @@ mat-table {
 }
 
 .buttons {
-    width: 100%;
+    margin: 8px auto;
+    width: 150px;
+    text-align: center;
     display: flex;
-    justify-content: center;
-    column-gap: 10px;
+    justify-content: space-between;
 }
 
 .mat-column-sanction,

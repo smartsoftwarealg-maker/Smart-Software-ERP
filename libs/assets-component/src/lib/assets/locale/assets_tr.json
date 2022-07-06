@@ -34,5 +34,7 @@
     "MIN_VALUE":          "",
     "RECEPTIONS":         "",
     "BENEFICIARY":        "",
-    "INVENTORY_YEAR":     ""
+    "INVENTORY_YEAR":     "",
+    "INVENTORY_NO":       "",
+    "BLOCKING_TYPES":     ""
 }

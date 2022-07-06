@@ -17,9 +17,11 @@ export class AssetAppointmentListComponent implements OnInit {
     displayedColumns = [
         'decision_date',
         'decision_ref',
-        'officeCode'
+        'officeCode',
+        'denomination'
     ];
-    public selected = 0;
+    @Input() editable = true;
+    selected = 0;
     data: ASSAppointment[] = [];
     public readonly pagination = PaginationModel.newInstance();
 

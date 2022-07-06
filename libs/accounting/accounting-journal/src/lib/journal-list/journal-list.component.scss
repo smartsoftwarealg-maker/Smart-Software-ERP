@@ -19,13 +19,18 @@
 .main-table {
     width: 900px;
 }
-.mat-column-description,
+.mat-column-bankName,
 .mat-column-centerName,
 .mat-column-defaultLabel {
-    flex: 1 1 200px;
+    flex: 1 1 150px;
 }
 
 .mat-column-abbreviation,
 .mat-column-typeName {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
 }
+
+.mat-column-description {
+    flex: 1 1 250px;
+}
+

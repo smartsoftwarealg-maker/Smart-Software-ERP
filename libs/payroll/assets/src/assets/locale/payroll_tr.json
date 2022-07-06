@@ -89,7 +89,6 @@
     "OLD_ELEMENTS": "Old elements",
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
     "NO_CHANGES": "",
-    "AMOUNT": "",
     "TAKEN": "",
     "SECTION": "",
     "EMPLOYEE_WIVES": "Spouses",
@@ -120,5 +119,7 @@
     "OLD_CAREERS": "Ancienne carrière",
     "RATE": "Taux",
     "EMPLOYEE_SUMMARY": "Statistiques",
-    "WORKSHOP":         ""
+    "WORKSHOP":         "",
+    "APPLICATION_DATE":   "",
+    "APPLICATION_PERIOD": ""
 }

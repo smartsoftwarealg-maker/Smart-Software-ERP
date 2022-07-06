@@ -16,6 +16,7 @@ import {PUNISHMENT_ROUTE_URL} from '@ss/payroll/api-employee';
 })
 export class PunishmentListComponent implements OnInit {
     private _activePersonnel = true;
+    @Input() editable = true;
 
     @Input()
     set activePersonnel(active: boolean) {

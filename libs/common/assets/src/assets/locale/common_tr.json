@@ -192,9 +192,14 @@
     "RESPONSIBLE":      "",
     "OFFICES":          "",
     "EXCEL_EXPORT":     "",
-    "LOCATION":           "Location",
-    "INVALID_FORM": "",
+    "LOCATION":         "",
+    "INVALID_FORM":      "",
     "PURCHASE":          "",
     "DB_UPDATER":        "",
-    "DECISION":           ""
+    "DECISION":           "",
+    "REQUESTER":          "",
+    "PRINT_REPORT":       "",
+    "TREASURY":           "",
+    "CASH":               "",
+    "AMOUNT":             ""
 }

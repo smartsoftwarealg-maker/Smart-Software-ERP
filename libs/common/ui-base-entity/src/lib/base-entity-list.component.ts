@@ -109,7 +109,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     //
 
     public ngOnInit() {
-        const node = this.shellSrv.getNavNodeByRouter(this.router);
+        const node = this.shellSrv.getNavNodeByRouter();
         this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
@@ -121,7 +121,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             delete: true
         } as Right : this.shellSrv.getRights(node.accessRights);
 
-        this.editButton.visible = rights.edit;
+        // this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;
         this.deleteButton.visible = rights.delete;
 
@@ -246,18 +246,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public exit() {
         this.router.navigate(['../..'], { relativeTo: this.route }).then();
     }
+
     private selectReport() {
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)
-            .subscribe(res => {
-                if (typeof res === 'string') {
-                    this.defReportSrv
-                        .setUserReport(this.reportForm, res)
-                        .subscribe(resp => {
-                            if (resp.count > 0) {
-                                this.snackBarSrv.showSuccessMessage();
-                            }
-                        })
+            .subscribe(resp => {
+                if (resp.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
                 }
             });
     }

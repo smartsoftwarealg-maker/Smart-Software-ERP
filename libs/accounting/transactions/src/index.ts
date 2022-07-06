@@ -11,3 +11,6 @@ export * from './lib/depreciation-generation/depreciation-generation.component';
 export * from './lib/acc-project-detail/acc-project-detail.component';
 export * from './lib/acc-project-list/acc-project-list.component';
 export * from './lib/accounting-generation/accounting-generation.component';
+export * from './lib/accounting-reopen/accounting-reopen.component';
+export * from './lib/accounting-reopen/can-close-opener';
+

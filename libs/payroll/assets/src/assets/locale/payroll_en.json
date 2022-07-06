@@ -89,7 +89,6 @@
     "OLD_ELEMENTS": "Old elements",
     "GENERATE_ELEMENTS": "Generate new payroll elements?",
     "NO_CHANGES": "No changes were made",
-    "AMOUNT": "Amount",
     "TAKEN": "Taken",
     "MONTH_COUNT": "No. of months",
     "CONSUMPTION_MONTH": "Month consumed",
@@ -132,5 +131,7 @@
     "OLD_CAREERS": "Past career",
     "RATE": "Rate",
     "EMPLOYEE_SUMMARY": "Statistics",
-    "WORKSHOP":         "Site"
+    "WORKSHOP":         "Site",
+    "APPLICATION_DATE":   "Application date",
+    "APPLICATION_PERIOD": "Periode application"
 }

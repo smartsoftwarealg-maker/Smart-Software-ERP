@@ -13,7 +13,7 @@ import {
     ABS_ACC_TRANSAC_ACCOUNT_URL,
     ABS_ACC_TRANSACTIONS_URL,
     ABS_DEPRECIATION_GENERATION_URL, ABS_GENERATION_URL,
-    ABS_POLICIES_URL
+    ABS_POLICIES_URL, ABS_REOPEN_URL
 } from '../common';
 
 
@@ -95,6 +95,11 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_GENERATION',
             icon: 'fa-solid fa-gears',
             route: ABS_GENERATION_URL,
+        },
+        {
+            name: 'ACC_REOPENING',
+            icon: 'fa-solid fa-door-open',
+            route: ABS_REOPEN_URL,
         },
         {
             name: 'COMMON_REPORTS',

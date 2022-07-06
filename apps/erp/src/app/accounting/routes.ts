@@ -4,7 +4,7 @@ import {
     ACC_DEPRECIATION_GEN_URL,
     ACC_FILE_SELECTOR_URL, ACC_FILES_URL, ACC_GENERATION_URL,
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
-    ACC_POLICIES_URL, ACC_PROJECTS_URL,
+    ACC_POLICIES_URL, ACC_PROJECTS_URL, ACC_REOPEN_URL,
     ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL, COMMON_REPORTS_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
@@ -23,7 +23,7 @@ import {
     DepreciationGenerationComponent,
     AccProjectListComponent,
     AccProjectDetailComponent,
-    AccountingGenerationComponent
+    AccountingGenerationComponent, AccountingReopenComponent, CanCloseOpener
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -53,13 +53,19 @@ export const accRoutes: Routes = [
         canActivate: [CanActivateService, AccountingPeriodGuard]
     },
     {
+        path: ACC_REOPEN_URL,
+        component: AccountingReopenComponent,
+        canActivate: [CanActivateService, AccountingPeriodGuard],
+        canDeactivate: [CanCloseOpener]
+    },
+    {
         path: COMMON_REPORTS_URL,
         children: [
             {
                 path: LIST_URL,
                 data: { reportBase: 'accounting'},
                 component: ReportViewComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService, AccountingPeriodGuard]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

@@ -14,7 +14,8 @@ import {of, switchMap} from 'rxjs';
   styleUrls: ['./asset-costs-list.component.scss']
 })
 export class AssetCostsListComponent implements OnInit {
-    public selected = 0;
+    @Input() editable = true;
+    selected = 0;
     fiscalCosts: AssetCost[] = [];
     accountantCosts: AssetCost[] = [];
     public readonly fiscalPagination = PaginationModel.newInstance();

@@ -52,9 +52,6 @@ export class UserRightsService {
     }
 
     getUserRights(component: string): Right {
-        if (!component) {
-            return this.getDefault();
-        }
         return this.rightsMap.get(component) || this.getDefault();
     }
 

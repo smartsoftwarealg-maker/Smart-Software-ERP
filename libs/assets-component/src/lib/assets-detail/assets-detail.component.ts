@@ -38,6 +38,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     };
     private minLength = 1;
     private maxReference: string = null;
+    isEditable = true;
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
@@ -79,6 +80,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     setupForm(b: Asset): FormGroup {
+        this.isEditable = this.saveButton.visible;
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ? 11 : 1;
@@ -126,9 +128,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0, Validators.required],
             outof_service: [b.outof_service || false, Validators.required],
-            criticity: [b.criticity],
-            startYear: [b.startYear || 0],
-            assetClass: [b.assetClass],
+            criticity:   [b.criticity],
+            startYear:   [b.startYear || 0],
+            assetClass:  [b.assetClass],
+            inventoryNo: [b.inventoryNo],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -146,6 +149,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                     form.controls['reference2'].setValue(this.maxReference);
                     form.controls['reference'].setValue(this.maxReference);
                 })
+        }
+        if (!this.isEditable) {
+            form.disable();
         }
         return form;
     }
@@ -171,8 +177,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
-
-
 
     private importAsset() {
         const dialogRef = this.dialog.open(AssetSearchDialogComponent,
@@ -225,6 +229,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.outof_service      =  !!asset.outof_service;
                 asset.criticity          =  asset.criticity        || null;
                 asset.accountId          =  asset.accountId        || null;
+                asset.assetClass         =  asset.assetClass       || null;
+                asset.inventoryNo        =  asset.inventoryNo      || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }

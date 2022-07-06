@@ -1,11 +1,12 @@
 .main-container {
     display: flex;
-    height: 90%;
+    height: calc(100% - 32px);
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 8px;
     max-width: 1200px;
     margin: 0 auto;
+    overflow-y: hidden;
 }
 
 .tree-div {
@@ -18,19 +19,23 @@
 .boolean-param {
     height: 64px;
     padding: 8px;
+    display: flex;
+    align-items: center;
 }
+
 .param-container {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 16px;
     flex-grow: 1;
     align-self: stretch;
     height: 100%;
-    padding: 10px;
     max-height: calc(100% - 40px);
 }
+
 .report-name {
-    max-height: 36px;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    padding: 8px;
+    font-weight: bolder;
     display: flex;
     width: 100%;
     justify-items: center;
@@ -49,7 +54,8 @@ form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 10px;
+    gap: 16px;
+    justify-content: space-between;
 }
 .spinner {
     width: 100%;

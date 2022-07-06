@@ -7,6 +7,7 @@ export const LOCATIONS_URL = '/locations';
 export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
+export const BLOCKING_TYPE_URL = '/lookups/blocking_types';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 export const ASSET_APPOINTMENT_URL = '/asset-appointments';
@@ -65,6 +66,7 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
+    inventoryNo?: number;
 }
 
 export interface Depreciation {
@@ -111,14 +113,16 @@ export interface Blocking {
     investId: number
     fromDate: Date;
     toDate: Date;
+    blockingType?: number;
+    typeDescription?: string;
 }
 
 export interface AssetClass {
     id: number;
-    description:       string,
-    descriptionAr?:    string;
+    description: string,
+    descriptionAr?: string;
     depreciationRate?: number;
-    usefulLife?:       number;
+    usefulLife?: number;
 }
 
 export interface ASSAppointment {
@@ -131,6 +135,8 @@ export interface ASSAppointment {
     office_id?: number;
     invent_id: number;
     officeCode?: string;
+    agentId?: number;
+    denomination?: string;
 }
 
 export interface AssetReception {
@@ -141,15 +147,18 @@ export interface AssetReception {
 }
 
 export interface ASSAppointmentHeader {
-    id:           number;
-    center:       number;
+    id: number;
+    center: number;
     serialNumber: number;
-    date:         Date;
-    officeId?:    number;
-    attribCode?:  number;
-    attribVal?:   number;
-    officeName?:  string;
-    valName?:     string;
+    date: Date;
+    officeId?: number;
+    officeName?: string;
+    requesterId?: number;
+    requestDate?: Date;
+    requestNumber?: string;
+    beneficiaryId?: number;
+    requester?: string;
+    beneficiary?: string;
 }
 
 export interface AssetAppointmentLine {

@@ -89,7 +89,6 @@
     "OLD_ELEMENTS": "Éléments anciens",
     "GENERATE_ELEMENTS": "Générer de nouveaux éléments de paie ?",
     "NO_CHANGES": "Aucune modification n'a été apportée",
-    "AMOUNT": "Montant",
     "TAKEN": "",
     "MONTH_COUNT": "",
     "CONSUMPTION_MONTH": "",
@@ -132,5 +131,7 @@
     "OLD_CAREERS": "Carrière Antérieure",
     "RATE": "Taux",
     "EMPLOYEE_SUMMARY": "Statistiques",
-    "WORKSHOP":         ""
+    "WORKSHOP":         "Site",
+    "APPLICATION_DATE":   "Date application",
+    "APPLICATION_PERIOD": ""
 }

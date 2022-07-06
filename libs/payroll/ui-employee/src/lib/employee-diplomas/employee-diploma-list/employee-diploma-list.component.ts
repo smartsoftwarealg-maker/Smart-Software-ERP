@@ -16,6 +16,7 @@ import {EmployeeDiplomaService} from '../employee-diploma.service';
 })
 export class EmployeeDiplomaListComponent implements OnInit {
     private _activePersonnel = true;
+    @Input() editable = true;
 
     @Input()
     set activePersonnel(active: boolean) {

@@ -35,6 +35,8 @@ import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-deta
 import { AssetInventoryDetailComponent } from './asset-inventory-detail/asset-inventory-detail.component';
 import { AssetInventoryListComponent } from './asset-inventory-list/asset-inventory-list.component';
 import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
+import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset-blocking-type-list.component';
+import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
 
 @NgModule({
     imports: [
@@ -75,7 +77,9 @@ import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
         AssetAppointmentDocListComponent,
         AssetAppointmentDocDetailComponent,
         AssetInventoryDetailComponent,
-        AssetInventoryListComponent
+        AssetInventoryListComponent,
+        AssetBlockingTypeListComponent,
+        AssetBlockingTypeDetailComponent
     ],
 })
 export class AssetsComponentModule {

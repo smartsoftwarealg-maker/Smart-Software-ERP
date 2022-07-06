@@ -91,9 +91,15 @@
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ASSET_INVENTORY_NO</mat-label>
+        <input matInput formControlName="inventoryNo" type="number">
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_ITEM_COUNT</mat-label>
         <input matInput formControlName="itemCount" type="number">
     </mat-form-field>
+
 
     <mat-accordion>
         <mat-expansion-panel #depreciation expanded="true" [class]="getPanelHeaderClass('depreciation', depreciation)">
@@ -335,7 +341,7 @@
                     ASSET_COSTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-costs-list [assetId]="id"></ss-asset-costs-list>
+            <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel #revaluations expanded="false" [class]="getPanelHeaderClass('revaluations', revaluations)">
@@ -344,7 +350,7 @@
                     ASSET_REVALUATIONS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-revaluation-list [assetId]="id"></ss-asset-revaluation-list>
+            <ss-asset-revaluation-list [assetId]="id" [editable]="isEditable"></ss-asset-revaluation-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel #bockings expanded="false" [class]="getPanelHeaderClass('bockings', bockings)">
@@ -353,7 +359,7 @@
                     ASSET_BLOCKINGS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-blocking-list [assetId]="id"></ss-asset-blocking-list>
+            <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel #appointments expanded="false" [class]="getPanelHeaderClass('appointments', appointments)">
@@ -362,7 +368,7 @@
                     ASSET_APPOINTMENTS
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-asset-appointment-list [assetId]="id"></ss-asset-appointment-list>
+            <ss-asset-appointment-list [assetId]="id" [editable]="isEditable"></ss-asset-appointment-list>
         </mat-expansion-panel>
 
         <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
@@ -372,7 +378,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"></ss-child-attributes>
+            <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2" [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
 
     </mat-accordion>

@@ -15,6 +15,7 @@ import {Lookup} from '@ss/logistics/ui-doc-import';
     styleUrls: ['./employee-career-list.component.scss']
 })
 export class EmployeeCareerListComponent implements OnInit, OnDestroy {
+    @Input() editable = true;
     public displayedColumns = [
         'paymonth',
         'post',

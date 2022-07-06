@@ -55,6 +55,7 @@
     "DEPRECIATION_GENERATION": "Génération d'amortissement",
     "BY_COST_CENTER":           "Par centre de coûts",
     "DEF_PROJECT":              "Projet par défaut",
-    "GENERATION":           "Generation ecritures"
+    "GENERATION":               "Generation ecritures",
+    "REOPENING":                "Reouverture"
 }
 

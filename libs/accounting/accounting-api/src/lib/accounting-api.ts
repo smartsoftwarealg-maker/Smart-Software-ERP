@@ -1,8 +1,8 @@
-export const ACC_FILE_URL           = '/accounting/acc-files';
+export const ACC_FILE_URL           = '/acc-files';
 export const ACC_ACC_FILE_URL       = '/accounting/files';
 export const ACC_ANNEX_CODE_URL     = '/accounting/annex-codes';
 export const ACC_GENERATION_URL     = '/accounting/generations';
-export const ACC_POLICY_URL         = '/accounting/acc-policies';
+export const ACC_POLICY_URL         = '/acc-policies';
 export const ACC_JOURNALS_URL       = '/accounting/journals';
 export const ACC_JOURNAL_TYPE_URL   = '/lookups/journal_types';
 export const JOURNAL_USER_URL       = '/users';
@@ -68,6 +68,8 @@ export interface Journal {
     center?: number;
     centerName?: string;
     typeName?: string;
+    bankId?: number;
+    bankName?: string;
 }
 
 export interface JournalUser {
@@ -192,4 +194,19 @@ export interface PAYRow {
     cCenter?: string;
     fundCC?: string;
     amount: number
+}
+
+export interface Check {
+    number: string;
+    date: Date;
+    description?: string;
+    bank: string;
+    journal?: number;
+    debit: number;
+    credit: number;
+}
+
+export interface ReopenInfo {
+    description: string;
+    detail: boolean;
 }

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetCost, Blocking} from '../assets-api';
+import {Blocking} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetCostsService} from '../asset-costs.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetCostsTypeService} from '../asset-costs-type.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {AssetBlockingService} from '../asset-blocking.service';
+import {AssetBlockingTypeService} from '../asset-blocking-type.service';
 
 @Component({
   selector: 'ss-asset-blocking-detail',
@@ -20,6 +19,7 @@ import {AssetBlockingService} from '../asset-blocking.service';
   styleUrls: ['./asset-blocking-detail.component.scss']
 })
 export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Blocking> implements OnInit {
+    typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
     private parentId = 0;
 
     constructor(
@@ -30,7 +30,8 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         public override formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private typeLookupSrv: AssetBlockingTypeService) {
         super(assetBlockingSrv,
             shellSrv,
             snackBarSrv,
@@ -48,7 +49,8 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
             fromDate:       [a.fromDate || today, Validators.required],
             toDate:         [a.toDate || today, Validators.required],
             decisionDate:   [a.decisionDate, Validators.required],
-            decisionNumber: [a.decisionNumber]
+            decisionNumber: [a.decisionNumber],
+            blockingType:   [a.blockingType]
         });
     }
 

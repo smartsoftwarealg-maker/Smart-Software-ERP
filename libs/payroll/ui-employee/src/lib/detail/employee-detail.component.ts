@@ -8,7 +8,7 @@ import { LookupsService, MaritalStatus, Nationality, NationalityService } from '
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { count, Observable, of, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
@@ -25,6 +25,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PAYROLL_RANK = 3;
     readonly PAYROLL_POST = 4;
 
+    isEditable = true;
     hrMode = false;
     activePersonnel = false;
     imageModel: ImageModel;
@@ -64,6 +65,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public setupForm(p: Employee) {
+        this.isEditable = this.saveButton.visible;
         this.infoSrv.load()
             .pipe(switchMap(_ => this.infoSrv.get(p.id)))
             .subscribe(res => {
@@ -82,7 +84,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             p.sex = 1;
         }
 
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             // birth info
             id: p.id,
             firstName: [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
@@ -107,6 +109,10 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             fatherAr: [p.fatherAr, Validators.maxLength(64)],
             motherAr: [p.motherAr, Validators.maxLength(64)]
         });
+        if (!this.isEditable) {
+            form.disable();
+        }
+        return form;
     }
 
     public isControlValid(c: AbstractControl): boolean {

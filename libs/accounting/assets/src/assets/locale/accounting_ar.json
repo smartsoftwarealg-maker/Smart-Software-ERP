@@ -55,5 +55,6 @@
     "DEPRECIATION_GENERATION":  "توليد الاستهلاك",
     "BY_COST_CENTER":           "حسب مركز التكلفة",
     "DEF_PROJECT":              "المشروع الافتراضي",
-    "GENERATION":           "توليد الصفقات"
+    "GENERATION":               "توليد الصفقات",
+    "REOPENING":                "الافتتاح"
 }
