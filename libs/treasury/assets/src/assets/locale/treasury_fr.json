@@ -13,5 +13,9 @@
     "CANCELED": "Annulé",
     "DEPOSIT_DATE": "Date de dépôt",
     "PROCESS_DATE": "Date de traitement",
-    "MEMO": "Memo"
+    "MEMO": "Memo",
+    "FROM_NUMBER": "Du numéro",
+    "TO_NUMBER": "Au numéro",
+    "BOOK_YEAR": "Année du Carnets",
+    "CHECKBOOKS": "Carnets de chèques"
 }

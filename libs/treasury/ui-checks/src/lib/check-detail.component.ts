@@ -29,7 +29,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         public httpSrv: HttpService,
         public router: Router) {
         super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKS');
-        new AgentLookupModel(this.agentSrv);
+        this.agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     }
 
     finishLoading(e: Check) {

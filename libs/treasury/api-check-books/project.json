@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/treasury/api-check-books",
+    "sourceRoot": "libs/treasury/api-check-books/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/treasury/api-check-books"],
+            "options": {
+                "jestConfig": "libs/treasury/api-check-books/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/api-check-books/src/**/*.ts",
+                    "libs/treasury/api-check-books/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

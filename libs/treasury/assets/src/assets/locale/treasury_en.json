@@ -13,5 +13,9 @@
     "CANCELED": "Canceled",
     "DEPOSIT_DATE": "Deposit date",
     "PROCESS_DATE": "Process date",
-    "MEMO": "Memo"
+    "MEMO": "Memo",
+    "FROM_NUMBER": "From number",
+    "TO_NUMBER": "To number",
+    "BOOK_YEAR": "Book year",
+    "CHECKBOOKS": "Check books"
 }
