@@ -11,8 +11,10 @@ export class AccountingPeriodGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+        // console.log(this.loginSrv.appCtx);
         return this.loginSrv.appCtx &&
                this.loginSrv.appCtx.accFile > 0 &&
-               this.loginSrv.appCtx.accYear > 1000 ? true : this.router.createUrlTree(['/app/accounting/file-select']);
+               this.loginSrv.appCtx.accYear > 1000 &&
+               this.loginSrv.appCtx.accPeriod > 0? true : this.router.createUrlTree(['/app/accounting/file-select']);
     }
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
+import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -15,7 +15,10 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./file-selector.component.scss']
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
+    private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
     accPeriod = new FormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
+    periods: string[] = [];
+    maxPeriod = 1;
 
     displayedColumns = [
         'description',
@@ -32,6 +35,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService,
+        private periodSrv: PeriodSelectorService,
         private loginSrv: LoginService) {
         super(entitySrv,
             shellSrv,
@@ -65,11 +69,12 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.shellSrv.updateShell();
         this.accPeriod.setValue(this.loginSrv.appCtx.accPeriod || 1);
         this.shellSrv.setGoBackPath('..', this.route);
+        this.periods = this.MONTHS.filter((e, i) => i <= this.maxPeriod);
     }
 
     selectFolder() {
         this.entitySrv
-            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, 1)
+            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, this.accPeriod.value)
             .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)))
             .subscribe(res => {
                 if (this.selectedRow) {
@@ -83,5 +88,20 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     override finishLoading(data: ACCFile[]) {
         super.finishLoading(data);
         this.selected = data.find(e => e.fileYear === this.loginSrv.appCtx.accYear)?.id;
+    }
+
+    override select(id: number) {
+        super.select(id);
+        this.entitySrv
+            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, 1)
+            .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)),
+                switchMap(_ => this.periodSrv.getList(0, 50)))
+            .subscribe(res => {
+                const data = res.body;
+                const error = data.filter(e => Math.abs(e.debit - e.credit) >= 0);
+                const maxMonth = (error.length > 0)? error[error.length - 1].id - 1 : 11;
+                this.periods = this.MONTHS.filter((e, i) => i <= maxMonth);
+                this.maxPeriod = maxMonth;
+            });
     }
 }

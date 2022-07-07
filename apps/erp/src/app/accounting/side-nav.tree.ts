@@ -90,6 +90,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_DEPRECIATION_GENERATION',
             icon: 'fa-solid fa-engine',
             route: ABS_DEPRECIATION_GENERATION_URL,
+            accessRights: 'ACCTransaction'
         },
         {
             name: 'ACC_GENERATION',
