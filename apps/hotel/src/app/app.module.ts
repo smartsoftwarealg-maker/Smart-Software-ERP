@@ -87,5 +87,8 @@ export class AppModule {
         private router: Router, private langSrv: LanguageService) {
         navSrv.init(routes, router);
         langSrv.addSource('assets/locale/', '');
+        langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
+        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
+        langSrv.addSource('assets/locale/common_', 'COMMON_');
     }
 }
