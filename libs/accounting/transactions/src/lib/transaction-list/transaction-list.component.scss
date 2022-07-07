@@ -3,13 +3,17 @@
     width: 100%;
     max-width: 100%;
     display: grid;
-    grid-template-columns: minmax(460px, 30%) 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "journals     detail"
+    grid-template-columns: minmax(470px, 30%) 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas: "header       detail"
+                         "journals     detail"
                          "transactions detail";
     overflow-x: hidden;
 }
 
+.header {
+    grid-area: header;
+}
 .detail {
     width: 100%;
     height: 100%;
@@ -46,25 +50,41 @@
 
 
 .main-table {
-    width: 550px;
+    width: 470px;
 }
 
-.mat-column-pieceNo,
+.mat-column-pieceNo {
+    flex: 0 1 60px;
+    border-left: white solid thin;
+    padding-left: 4px !important;
+    justify-content: center;
+}
+
 .mat-column-pieceDate,
 .mat-column-projectName {
     flex: 1 1 90px;
+    border-left: white solid thin;
+}
+
+.mat-column-pieceDate {
+    flex: 1 1 90px;
+    border-left: white solid thin;
+    justify-content: center;
 }
 
 .mat-column-debit,
 .mat-column-credit  {
-    flex: 1 1 140px;
+    flex: 1 1 100px;
+    border-left: white solid thin;
+    justify-content: flex-end;
+    padding-right: 4px;
 }
 
-.mat-column-credit.mat-cell,
-.mat-column-debit.mat-cell {
-    justify-content: right;
-    padding: 0 8px;
-}
+//.mat-column-credit.mat-cell,
+//.mat-column-debit.mat-cell {
+//    justify-content: right;
+//    padding: 0 8px;
+//}
 
 mat-radio-group {
     width: 100%;

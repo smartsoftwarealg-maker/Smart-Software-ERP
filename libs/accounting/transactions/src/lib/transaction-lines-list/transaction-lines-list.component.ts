@@ -33,7 +33,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
         'lineNumber',
         'accountNo',
         'description',
-        'customerName',
+        'customer',
         'reference',
         'c_o_d',
         'debit',
