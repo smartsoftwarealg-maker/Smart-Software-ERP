@@ -189,6 +189,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 delete asset['decliningRate'];
                 delete asset['creation_date'];
                 delete asset['parentId'];
+                delete asset['className'];
+                delete asset['ccCode'];
                 asset.id = 0;
                 asset.reference2         =  this.form.controls['reference2'].value;
                 asset.centerId           =  this.loginSrv.appCtx.center;
