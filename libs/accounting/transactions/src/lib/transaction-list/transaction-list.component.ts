@@ -34,6 +34,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.toggleMode()
     };
+    selectedJournal = 0;
     imbalancedRow = true;
     journalFilter = new FormControl('');
     journalList: Journal[] = [];
@@ -56,6 +57,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         private accPolicySrv: AccPoliciesService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ACC_TRANSACTIONS');
         entitySrv.setParentId(0);
+        this.pagination.onChange = () => this.refreshTransactions();
     }
 
     override preload(): Observable<any> {
@@ -139,7 +141,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     override selectRow(row: ACCTransaction) {
-        row.id = (row.fileId || 0 ) * 10000 + (row.oid || 0);
+        row.id = (row.fileId || 0 ) * SCALE + (row.oid || 0);
         super.selectRow(row);
         this.imbalancedRow = Math.abs(row.debit - row.credit) >= 0.01;
         this.navigate();
@@ -170,11 +172,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             });
     }
 
-    journalSelected(event: MatSelectionListChange) {
-        const journalId = event.options[0].value;
-        this.entitySrv.setParentId(event.options[0].value);
+    private refreshTransactions() {
         this.entitySrv
-            .findByJournal(journalId, this.pagination.page, this.pagination.pageSize)
+            .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
@@ -186,6 +186,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.shellSrv.setGoBackPath('..', this.route);
                 this.showButtons();
             });
+    }
+    journalSelected(event: MatSelectionListChange) {
+        this.selectedJournal = event.options[0].value;
+        this.entitySrv.setParentId(event.options[0].value);
+        this.refreshTransactions();
     }
 
     toggleMode( ) {
