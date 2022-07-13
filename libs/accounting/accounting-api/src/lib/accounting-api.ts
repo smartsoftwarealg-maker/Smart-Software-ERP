@@ -14,6 +14,8 @@ export const ACC_CTX_URL            = '/ctx';
 export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
 export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
+export const ACC_ACC_BALANCE_URL    = '/accounting/balance';
+export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
 export const SCALE                  = 10000;
@@ -210,4 +212,29 @@ export interface Check {
 export interface ReopenInfo {
     description: string;
     detail: boolean;
+}
+
+export interface GL {
+    accountno: string;
+    description: string;
+    pieceNo: number;
+    journal: string;
+    reference?: string;
+    checkNo?: string;
+    debit: number;
+    credit: number;
+}
+
+export interface Balance {
+    accountNo:   string;
+    description: string;
+    customer?:   string;
+    oldDebit:    number;
+    oldCredit:   number;
+    curDebit:    number;
+    curCredit:   number;
+    totDebit:    number;
+    totCredit:   number;
+    debit:       number;
+    credit:      number;
 }

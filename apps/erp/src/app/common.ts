@@ -200,6 +200,7 @@ export const ACC_REOPEN_URL           = 'acc-reopen';
 export const ACC_PERIOD_SELECTOR_URL  = 'period-select';
 export const ACC_FILES_URL            = 'acc-files';
 export const ACC_PROJECTS_URL         = 'acc-projects';
+export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
 
 // #############
 // # FULL URLS #
@@ -269,6 +270,7 @@ export const ABS_ACC_CASHFLOW_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ACCOUNTING_AP
 export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_GENERATION_URL].join('/');
 export const ABS_REOPEN_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_REOPEN_URL].join('/');
+export const ABS_BALANCE_QUERIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_BALANCE_QUERIES_URL].join('/');
 
 
 //Logistics

@@ -1,0 +1,97 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <mat-form-field id="code" >
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput formControlName="filter" type="text" autofocus maxlength="20">
+                <mat-error *ngIf="form.controls['filter'].invalid" translate>FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label translate>COMMON_FROM</mat-label>
+                <input matInput formControlName="from" type="text" required>
+                <mat-error *ngIf="form.controls['from'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label translate>COMMON_TO</mat-label>
+                <input matInput formControlName="to" type="text" required>
+                <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <div id="responsible" class="default-100 sm-100">
+                <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
+            </div>
+
+            <button mat-raised-button
+                    color="primary"
+                    [disabled]="!form.valid"
+                    (click)="refresh()"
+                    translate>COMMON_REFRESH
+            </button>
+        </form>
+    </mat-card-content>
+
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ACC_BALANCE</span>
+            </ng-template>
+            <mat-table mat-table [dataSource]="balanceData" class="main-table">
+
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.accountNo}}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.description}}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="balanceCols; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.accountNo == selectedAccount" (click)="selectBalance(row)"
+                         *matRowDef="let row; columns: balanceCols;"></mat-row>
+            </mat-table>
+            <div class="pagination-container b-b-background">
+                <ss-pagination [paginationModel]="balancePaginator"></ss-pagination>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span translate>ACC_GL</span>
+            </ng-template>
+
+            <mat-table mat-table [dataSource]="glData" class="main-table">
+
+                <ng-container matColumnDef="accountno">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.accountno}}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.description}}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="glCols; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.accountno == selectedAccount" (click)="selectGL(row)"
+                         *matRowDef="let row; columns: glCols;"></mat-row>
+            </mat-table>
+            <div class="pagination-container b-b-background">
+                <ss-pagination [paginationModel]="glPaginator"></ss-pagination>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+</mat-card>

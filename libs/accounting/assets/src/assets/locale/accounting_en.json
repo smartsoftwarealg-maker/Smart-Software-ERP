@@ -56,5 +56,6 @@
     "BY_COST_CENTER":           "By cost center",
     "DEF_PROJECT":              "Default project",
     "GENERATION":               "Transaction generation",
-    "REOPENING":                "Reopening"
+    "REOPENING":                "Reopening",
+    "BALANCE_QUERIES":          "Balance queries"
 }

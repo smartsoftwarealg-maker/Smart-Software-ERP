@@ -49,5 +49,6 @@
     "SELECT_ACC_FOLDER":     "",
     "DEF_PROJECT":              "",
     "GENERATION":           "",
-    "REOPENING":                ""
+    "REOPENING":                "",
+    "BALANCE_QUERIES":          ""
 }
