@@ -380,9 +380,10 @@ export class ShellService {
     public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField: boolean = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
-            alert(
-                'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the fuction twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
-            );
+            console.log('Search called twice!!');
+            // alert(
+            //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the fuction twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
+            // );
         } else {
             this.searchControl = new FormControl();
             this.subscription = subFn(

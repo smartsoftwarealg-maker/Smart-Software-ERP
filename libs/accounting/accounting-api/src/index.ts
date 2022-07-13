@@ -17,3 +17,4 @@ export * from './lib/cash-flow-account.service';
 export * from './lib/accounting-period.guard';
 export * from './lib/acc-project.service'
 export * from './lib/accounting-generation.service';
+export * from './lib/balance-queries.service';

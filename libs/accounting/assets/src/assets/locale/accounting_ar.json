@@ -56,5 +56,6 @@
     "BY_COST_CENTER":           "حسب مركز التكلفة",
     "DEF_PROJECT":              "المشروع الافتراضي",
     "GENERATION":               "توليد الصفقات",
-    "REOPENING":                "الافتتاح"
+    "REOPENING":                "الافتتاح",
+    "BALANCE_QUERIES":          "استعلامات"
 }

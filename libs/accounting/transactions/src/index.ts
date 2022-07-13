@@ -13,4 +13,4 @@ export * from './lib/acc-project-list/acc-project-list.component';
 export * from './lib/accounting-generation/accounting-generation.component';
 export * from './lib/accounting-reopen/accounting-reopen.component';
 export * from './lib/accounting-reopen/can-close-opener';
-
+export * from './lib/balance-queries/balance-queries.component';

@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {AccountDetailComponent, AccountListComponent} from '@ss/logistics/ui-account';
 import {
+    ACC_BALANCE_QUERIES_URL,
     ACC_DEPRECIATION_GEN_URL,
     ACC_FILE_SELECTOR_URL, ACC_FILES_URL, ACC_GENERATION_URL,
     ACC_JOURNALS_URL, ACC_PERIOD_SELECTOR_URL,
@@ -23,7 +24,7 @@ import {
     DepreciationGenerationComponent,
     AccProjectListComponent,
     AccProjectDetailComponent,
-    AccountingGenerationComponent, AccountingReopenComponent, CanCloseOpener
+    AccountingGenerationComponent, AccountingReopenComponent, CanCloseOpener, BalanceQueriesComponent
 } from '@ss/accounting/transactions';
 import {
     AssetAccountsListComponent,
@@ -265,6 +266,11 @@ export const accRoutes: Routes = [
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
+    },
+    {
+        path: ACC_BALANCE_QUERIES_URL,
+        component: BalanceQueriesComponent,
+        canActivate: [CanActivateService, AccountingPeriodGuard]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
