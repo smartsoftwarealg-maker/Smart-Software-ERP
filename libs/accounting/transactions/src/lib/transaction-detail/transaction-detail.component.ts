@@ -1,5 +1,11 @@
 import {Component, Output} from '@angular/core';
-import {AccPoliciesService, ACCPolicy, ACCTransaction, AccTransactionService} from '@ss/accounting/accounting-api';
+import {
+    AccPoliciesService,
+    ACCPolicy,
+    ACCTransaction,
+    AccTransactionService,
+    SCALE
+} from '@ss/accounting/accounting-api';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -66,7 +72,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
     setupForm(e: ACCTransaction): FormGroup {
         e.journalno = e.journalno || this.journalId;
         e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
-        e.id = e.fileId * 10000 + (e.oid || 0);
+        e.id = e.fileId * SCALE + (e.oid || 0);
         return this.formBuilder.group({
             id: [e.id],
             oid: [e.oid || 0],
