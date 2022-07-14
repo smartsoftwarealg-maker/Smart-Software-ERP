@@ -100,6 +100,7 @@ export interface ACCTransaction {
     debit?: number;
     credit?: number;
     projectName?: string;
+    balanced?: boolean;
 }
 
 export interface ACCTransactionLine {

@@ -35,7 +35,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         click: () => this.toggleMode()
     };
     selectedJournal = 0;
-    imbalancedRow = true;
     journalFilter = new FormControl('');
     journalList: Journal[] = [];
     displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
@@ -100,6 +99,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 .subscribe(res => this.journalList = res.body));
     }
 
+
     private setDefaultButtons() {
         this.shellSrv.setButtons([this.refreshButton,
                                   this.addButton,
@@ -143,7 +143,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     override selectRow(row: ACCTransaction) {
         row.id = (row.fileId || 0 ) * SCALE + (row.oid || 0);
         super.selectRow(row);
-        this.imbalancedRow = Math.abs(row.debit - row.credit) >= 0.01;
         this.navigate();
     }
 
@@ -177,6 +176,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
+                this.data.forEach(e => e.balanced = Math.abs(e.debit - e.credit) < 0.01);
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
@@ -199,4 +199,5 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.listButton.label = this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER';
         this.navigate();
     }
+
 }
