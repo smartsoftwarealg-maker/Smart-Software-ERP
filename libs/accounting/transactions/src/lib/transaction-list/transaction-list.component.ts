@@ -34,6 +34,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.toggleMode()
     };
+    public math = Math
     selectedJournal = 0;
     journalFilter = new FormControl('');
     journalList: Journal[] = [];
@@ -176,9 +177,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
-                this.data.forEach(e => e.balanced = Math.abs(e.debit - e.credit) < 0.01);
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
+                console.log(this.data);
             });
         this.router
             .navigate(['.'], { relativeTo: this.route })
