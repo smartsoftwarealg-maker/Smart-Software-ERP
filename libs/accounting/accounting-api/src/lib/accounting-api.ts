@@ -215,7 +215,7 @@ export interface ReopenInfo {
 }
 
 export interface GL {
-    accountno: string;
+    accountNo: string;
     description: string;
     pieceNo: number;
     journal: string;

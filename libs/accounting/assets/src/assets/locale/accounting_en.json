@@ -57,5 +57,13 @@
     "DEF_PROJECT":              "Default project",
     "GENERATION":               "Transaction generation",
     "REOPENING":                "Reopening",
-    "BALANCE_QUERIES":          "Balance queries"
+    "BALANCE_QUERIES":          "Balance queries",
+    "OLD_DEBIT":                "Old debit",
+    "OLD_CREDIT":               "Old credit",
+    "CUR_DEBIT":                "Current debit",
+    "CUR_CREDIT":               "Current credit",
+    "TOTAL_DEBIT":              "Total debit",
+    "TOTAL_CREDIT":             "Total credit",
+    "BALANCE":                  "Balance",
+    "GL":                       "General ledger"
 }
