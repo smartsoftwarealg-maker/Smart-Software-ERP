@@ -20,19 +20,26 @@ export class BalanceQueriesComponent implements OnInit {
     balanceCols = [
         'accountNo',
         'description',
-        // 'customer',
-        // 'oldDebit',
-        // 'oldCredit',
-        // 'curDebit',
-        // 'curCredit',
-        // 'totDebit',
-        // 'totCredit',
-        // 'debit',
-        // 'credit'
+        'customer',
+        'oldDebit',
+        'oldCredit',
+        'curDebit',
+        'curCredit',
+        'totDebit',
+        'totCredit',
+        'debit',
+        'credit'
     ];
-    glCols = ['accountno',
-              'description'
-             ];
+    glCols = [
+        'accountNo',
+        'description',
+        'pieceNo',
+        'journal',
+        'reference',
+        'checkNo',
+        'debit',
+        'credit'
+    ];
 
     balanceData: Balance[] = [];
     glData: GL[] = [];
@@ -92,6 +99,6 @@ export class BalanceQueriesComponent implements OnInit {
         this.selectedAccount = row?.accountNo;
     }
     selectGL(row: GL) {
-        this.selectedAccount = row?.accountno;
+        this.selectedAccount = row?.accountNo;
     }
 }

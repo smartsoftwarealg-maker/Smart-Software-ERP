@@ -57,5 +57,13 @@
     "DEF_PROJECT":              "المشروع الافتراضي",
     "GENERATION":               "توليد الصفقات",
     "REOPENING":                "الافتتاح",
-    "BALANCE_QUERIES":          "استعلامات"
+    "BALANCE_QUERIES":          "استعلامات",
+    "OLD_DEBIT":                "الدائن القديم",
+    "OLD_CREDIT":               "المدين القديم",
+    "CUR_DEBIT":                "الدائن الحالي",
+    "CUR_CREDIT":               "المدين الحالي" ,
+    "TOTAL_DEBIT":              "إجمالي الدائن",
+    "TOTAL_CREDIT":             "إجمالي المدين",
+    "BALANCE":                  "الرصيد",
+    "GL":                       "دفتر الأستاذ العام"
 }

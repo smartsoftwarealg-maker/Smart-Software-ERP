@@ -214,5 +214,6 @@
     "TREASURY":           "Treasury",
     "CASH":               "Cash",
     "AMOUNT":             "Amount",
-    "NO_":                      "No."
+    "NO_":                "No.",
+    "JOURNAL":            "Journal"
 }

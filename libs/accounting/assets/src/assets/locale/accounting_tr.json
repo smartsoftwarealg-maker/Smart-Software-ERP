@@ -50,5 +50,13 @@
     "DEF_PROJECT":              "",
     "GENERATION":           "",
     "REOPENING":                "",
-    "BALANCE_QUERIES":          ""
+    "BALANCE_QUERIES":          "",
+    "OLD_DEBIT":                "",
+    "OLD_CREDIT":               "",
+    "CUR_DEBIT":                "",
+    "CUR_CREDIT":               "",
+    "TOTAL_DEBIT":                "",
+    "TOTAL_CREDIT":               "",
+    "BALANCE":                  "",
+    "GL":                       ""
 }

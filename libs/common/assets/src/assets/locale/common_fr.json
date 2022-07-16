@@ -215,5 +215,6 @@
     "TREASURY":           "Trésorerie",
     "CASH":               "Espèces",
     "AMOUNT":             "Montant",
-    "NO_":                      "N°"
+    "NO_":                "N°",
+    "JOURNAL":            "Journal"
 }

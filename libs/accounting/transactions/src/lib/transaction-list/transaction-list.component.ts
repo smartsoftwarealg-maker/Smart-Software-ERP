@@ -179,7 +179,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.data = res.body;
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
-                console.log(this.data);
             });
         this.router
             .navigate(['.'], { relativeTo: this.route })
