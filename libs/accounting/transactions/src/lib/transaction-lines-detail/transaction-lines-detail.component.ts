@@ -5,7 +5,7 @@ import {
     ACCPolicy,
     ACCTransactionLine,
     AccTransactionLineService,
-    AnnexCodeService
+    AnnexCodeService, SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -87,7 +87,7 @@ export class TransactionLinesDetailComponent {
 
     setupForm(e: ACCTransactionLine): FormGroup {
         return  this.formBuilder.group({
-            id: [((e.fileId * 10000 + e.oid) * 10000 + e.lineNumber) || 0],
+            id: [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
             oid: [e.oid || this.transactionId],
             accountNo: [e.accountNo],
@@ -149,8 +149,8 @@ export class TransactionLinesDetailComponent {
                 tap(p => {
                     const id = +p['id'];
                     this.entitySrv.setParentId(id);
-                    this.transactionId = id % 10000;
-                    this.fileId = +(id / 10000).toFixed(0);
+                    this.transactionId = id % SCALE;
+                    this.fileId = +(id / SCALE).toFixed(0);
                 }),
                 switchMap(_ => this.route.params),
                 switchMap(p => {

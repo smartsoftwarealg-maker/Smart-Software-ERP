@@ -213,5 +213,7 @@
     "PRINT_REPORT":       "Print default report",
     "TREASURY":           "Treasury",
     "CASH":               "Cash",
-    "AMOUNT":             "Amount"
+    "AMOUNT":             "Amount",
+    "NO_":                "No.",
+    "JOURNAL":            "Journal"
 }

@@ -72,5 +72,6 @@
     "ATTRIBUTES":  "صفات",
     "ATTRIBUTE":  "صفة",
     "MODULE":      "وحدة",
-    "LOOKUP_VALUES": "قيم البحث"
+    "LOOKUP_VALUES": "قيم البحث",
+    "CUSTOM_DATA":   "بيانات المستخدم"
 }

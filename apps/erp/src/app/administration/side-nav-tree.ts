@@ -75,7 +75,7 @@ export const administrationNavTree: SideNavNode = {
             accessRights: 'SMTP'
         },
         {
-            name: 'ADMINISTRATION_ATTRIBUTES',
+            name: 'ADMINISTRATION_CUSTOM_DATA',
             icon: 'fa-solid fa-user-pen',
             route: ABS_ADMINISTRATION_ATTRIBUTES_URL,
             accessRights: 'AttribTempl'

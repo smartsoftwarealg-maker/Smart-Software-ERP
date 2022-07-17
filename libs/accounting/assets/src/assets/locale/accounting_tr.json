@@ -49,5 +49,14 @@
     "SELECT_ACC_FOLDER":     "",
     "DEF_PROJECT":              "",
     "GENERATION":           "",
-    "REOPENING":                ""
+    "REOPENING":                "",
+    "BALANCE_QUERIES":          "",
+    "OLD_DEBIT":                "",
+    "OLD_CREDIT":               "",
+    "CUR_DEBIT":                "",
+    "CUR_CREDIT":               "",
+    "TOTAL_DEBIT":                "",
+    "TOTAL_CREDIT":               "",
+    "BALANCE":                  "",
+    "GL":                       ""
 }

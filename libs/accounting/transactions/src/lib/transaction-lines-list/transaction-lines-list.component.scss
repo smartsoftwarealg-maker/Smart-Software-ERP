@@ -30,36 +30,48 @@ mat-table {
 }
 
 .mat-column-lineNumber {
-    flex: 0 1 90px;
+    padding-left: 4px;
+    border-left: white thin solid;
+    flex: 1 1 60px;
+    justify-content: center;
 }
 
 .mat-column-c_o_d {
     flex: 0 1 50px;
+    border-left: white thin solid;
+    padding-left: 4px;
 }
-.mat-column-description,
-.mat-column-customerName {
-    flex: 0 1 200px;
+.mat-column-description {
+    flex: 3 1 250px;
+    padding-left: 4px;
+    border-left: white thin solid;
 }
 
 .mat-column-debit,
 .mat-column-credit {
-    flex: 0 1 100px;
+    flex: 1 0 100px;
+    border-left: white thin solid;
+    justify-content: flex-end;
+    padding-right: 4px;
 }
 
 .mat-column-accountNo,
-.mat-column-reference {
-    flex: 0 1 100px;
+.mat-column-reference,
+.mat-column-customer {
+    flex: 1 1 90px;
+    border-left: white thin solid;
+    padding-left: 4px;
 }
 
-
-.mat-column-credit.mat-cell,
-.mat-column-debit.mat-cell {
-    justify-content: right;
-    padding: 0 8px;
-}
-
-.mat-header-cell {
-    justify-content: center;
-    font-weight: bolder;
-    font-size: small;
-}
+//
+//.mat-column-credit.mat-cell,
+//.mat-column-debit.mat-cell {
+//    justify-content: right;
+//    padding: 0 8px;
+//}
+//
+//.mat-header-cell {
+//    justify-content: center;
+//    font-weight: bolder;
+//    font-size: small;
+//}
