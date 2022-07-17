@@ -4,6 +4,7 @@ export const ACC_ANNEX_CODE_URL     = '/accounting/annex-codes';
 export const ACC_GENERATION_URL     = '/accounting/generations';
 export const ACC_POLICY_URL         = '/acc-policies';
 export const ACC_JOURNALS_URL       = '/accounting/journals';
+export const ACC_USER_JOURNALS_URL  = '/accounting/user-journals';
 export const ACC_JOURNAL_TYPE_URL   = '/lookups/journal_types';
 export const JOURNAL_USER_URL       = '/users';
 export const ACC_TRANSACTION_URL    = '/transactions';
@@ -13,9 +14,11 @@ export const ACC_CTX_URL            = '/ctx';
 export const ACC_PROJECTS_URL       = '/lookups/acc_projects';
 export const ACC_ASSET_END_URL      = '/lookups/investment_ends';
 export const ACC_PERIOD_SUMMARY_URL = '/accounting/summary';
+export const ACC_ACC_BALANCE_URL    = '/accounting/balance';
+export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
-export const SCALE                  = 10000;
+export const SCALE                  = 100000;
 
 export interface ACCPolicy {
     id: number;
@@ -209,4 +212,29 @@ export interface Check {
 export interface ReopenInfo {
     description: string;
     detail: boolean;
+}
+
+export interface GL {
+    accountNo: string;
+    description: string;
+    pieceNo: number;
+    journal: string;
+    reference?: string;
+    checkNo?: string;
+    debit: number;
+    credit: number;
+}
+
+export interface Balance {
+    accountNo:   string;
+    description: string;
+    customer?:   string;
+    oldDebit:    number;
+    oldCredit:   number;
+    curDebit:    number;
+    curCredit:   number;
+    totDebit:    number;
+    totCredit:   number;
+    debit:       number;
+    credit:      number;
 }

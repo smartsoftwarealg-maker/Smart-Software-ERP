@@ -72,5 +72,6 @@
     "ATTRIBUTES":  "Attributes",
     "ATTRIBUTE":   "Attribute",
     "MODULE":      "Module",
-    "LOOKUP_VALUES": "Lookup values"
+    "LOOKUP_VALUES": "Lookup values",
+    "CUSTOM_DATA":   "User data"
 }

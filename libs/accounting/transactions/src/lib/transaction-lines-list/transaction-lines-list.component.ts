@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     AccPoliciesService, ACCPolicy,
-    ACCTransactionLine, AccTransactionLineService
+    ACCTransactionLine, AccTransactionLineService, SCALE
 } from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -33,7 +33,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
         'lineNumber',
         'accountNo',
         'description',
-        'customerName',
+        'customer',
         'reference',
         'c_o_d',
         'debit',
@@ -80,7 +80,7 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
     }
 
     override selectRow(row: ACCTransactionLine) {
-        row.id = (row.fileId * 10000 + row.oid) * 10000 + row.lineNumber;
+        row.id = (row.fileId * SCALE + row.oid) * SCALE + row.lineNumber;
         super.selectRow(row);
     }
 

@@ -22,6 +22,7 @@ import { AccProjectListComponent } from './acc-project-list/acc-project-list.com
 import { AccProjectDetailComponent } from './acc-project-detail/acc-project-detail.component';
 import { AccountingGenerationComponent } from './accounting-generation/accounting-generation.component';
 import { AccountingReopenComponent } from './accounting-reopen/accounting-reopen.component';
+import { BalanceQueriesComponent } from './balance-queries/balance-queries.component';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { AccountingReopenComponent } from './accounting-reopen/accounting-reopen
       AccProjectListComponent,
       AccProjectDetailComponent,
       AccountingGenerationComponent,
-      AccountingReopenComponent
+      AccountingReopenComponent,
+      BalanceQueriesComponent
     ],
 })
 export class AccountingTransactionsModule {}

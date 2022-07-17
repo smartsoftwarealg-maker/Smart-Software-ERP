@@ -69,5 +69,6 @@
     "INT":         "",
     "DECIMAL":     "",
     "LOOKUP":      "",
-    "MODULE":      ""
+    "MODULE":      "",
+    "CUSTOM_DATA":   ""
 }

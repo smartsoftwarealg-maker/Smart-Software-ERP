@@ -56,6 +56,15 @@
     "BY_COST_CENTER":           "Par centre de coûts",
     "DEF_PROJECT":              "Projet par défaut",
     "GENERATION":               "Generation ecritures",
-    "REOPENING":                "Reouverture"
+    "REOPENING":                "Reouverture",
+    "BALANCE_QUERIES":          "Interrogation balance",
+    "OLD_DEBIT":                "Ancien débit",
+    "OLD_CREDIT":               "Ancien crédit",
+    "CUR_DEBIT":                "Débit en cours",
+    "CUR_CREDIT":               "Crédit en cours",
+    "TOTAL_DEBIT":              "Débit total",
+    "TOTAL_CREDIT":             "Crédit total",
+    "BALANCE":                  "Solde",
+    "GL":                       "Grand livre général"
 }
 

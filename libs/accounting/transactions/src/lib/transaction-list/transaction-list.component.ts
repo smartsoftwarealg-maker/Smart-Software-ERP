@@ -13,8 +13,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
 import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {MatFormField} from '@angular/material/form-field';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'ss-transaction-list',
@@ -23,6 +25,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy {
     private headerMode: boolean = true;
+    private subscriptions: Subscription[] = [];
     private listButton: ToolbarButton = {
         icon: this.headerMode? 'far fa-smile' : 'fas fa-child',
         label: this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER',
@@ -31,7 +34,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.toggleMode()
     };
-    private subs: Subscription = null;
+    public math = Math
+    selectedJournal = 0;
+    journalFilter = new FormControl('');
     journalList: Journal[] = [];
     displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
 
@@ -52,11 +57,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         private accPolicySrv: AccPoliciesService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ACC_TRANSACTIONS');
         entitySrv.setParentId(0);
+        this.pagination.onChange = () => this.refreshTransactions();
     }
 
     override preload(): Observable<any> {
         return this.journalSrv
-            .getList(0, 100)
+            .getUserJournals(this.journalFilter.value || '')
             .pipe(tap(res => this.journalList = res.body),
                   switchMap(_ => this.loginSrv.loadContext()),
                   switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
@@ -64,17 +70,14 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     if (policy.showProjects) {
                         this.displayedColumns.push('projectName');
                     }
-                    // if (policy.showBudget) {
-                    //     this.displayedColumns.push('projectName');
-                    // }
                 }));
     }
 
     override ngOnInit() {
         this.journalSrv
-            .getList(0, 50)
+            .getUserJournals(this.journalFilter.value || '')
             .subscribe(res => this.journalList = res.body);
-        this.subs = this.router
+        const subs = this.router
             .events
             .pipe(filter(ev => ev instanceof NavigationEnd))
             .subscribe(event => {
@@ -85,8 +88,18 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     }
                 }
             });
+        this.subscriptions.push(subs);
         this.setDefaultButtons();
+
+        this.subscriptions.push(
+            this.journalFilter
+                .valueChanges
+                .pipe(debounceTime(300),
+                      distinctUntilChanged(),
+                      switchMap(str => this.journalSrv.getUserJournals(str)))
+                .subscribe(res => this.journalList = res.body));
     }
+
 
     private setDefaultButtons() {
         this.shellSrv.setButtons([this.refreshButton,
@@ -102,7 +115,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     override ngOnDestroy() {
         super.ngOnDestroy();
-        this.subs?.unsubscribe();
+        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     private showButtons() {
@@ -129,7 +142,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
     override selectRow(row: ACCTransaction) {
-        row.id = (row.fileId || 0 ) * 10000 + (row.oid || 0);
+        row.id = (row.fileId || 0 ) * SCALE + (row.oid || 0);
         super.selectRow(row);
         this.navigate();
     }
@@ -159,11 +172,9 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             });
     }
 
-    journalSelected(event: MatSelectionListChange) {
-        const journalId = event.options[0].value;
-        this.entitySrv.setParentId(event.options[0].value);
+    private refreshTransactions() {
         this.entitySrv
-            .findByJournal(journalId, this.pagination.page, this.pagination.pageSize)
+            .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
@@ -176,6 +187,11 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.showButtons();
             });
     }
+    journalSelected(event: MatSelectionListChange) {
+        this.selectedJournal = event.options[0].value;
+        this.entitySrv.setParentId(event.options[0].value);
+        this.refreshTransactions();
+    }
 
     toggleMode( ) {
         this.headerMode = !this.headerMode;
@@ -183,4 +199,5 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.listButton.label = this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER';
         this.navigate();
     }
+
 }

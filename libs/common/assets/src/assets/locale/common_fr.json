@@ -214,5 +214,7 @@
     "PRINT_REPORT":       "Imprimer le rapport par défaut",
     "TREASURY":           "Trésorerie",
     "CASH":               "Espèces",
-    "AMOUNT":             "Montant"
+    "AMOUNT":             "Montant",
+    "NO_":                "N°",
+    "JOURNAL":            "Journal"
 }
