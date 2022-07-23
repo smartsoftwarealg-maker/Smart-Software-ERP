@@ -1,16 +1,7 @@
 import {
-    ABS_STOCK_ACTIVITY,
-    ABS_STOCK_AGENT_TYPE,
-    ABS_STOCK_COMPANY_TYPE,
-    ABS_STOCK_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
-    ABS_STOCK_UNITS_URL,
-    ABS_STOCK_VAT_URL,
-    ABS_LOGISTICS_OPTIONS,
-    ABS_STOCK_AGENT_URL,
     LOGISTICS_STOCK_AGENT_URL,
-    ABS_FINANCE_PAYMENTS,
-    ABS_LOGISTICS_CATEGORY
+    ABS_LOGISTICS_CATEGORY,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
@@ -19,9 +10,9 @@ import {
     ABS_LOGISTICS_VAT_URL
 } from "../common";
 
-export const logAdminNavTree: SideNavNode = {
-    name: 'COMMON_LOGISTICS-ADMINISTRATION',
-    icon: 'fas fa-users-cog',
+export const scheduledSalesNavTree: SideNavNode = {
+    name: 'SCHEDULED_SALES',
+    icon: 'fa-solid fa-calendar-day',
     children: [
         // {
         //     name: 'COMMON_UNITS',
@@ -32,7 +23,8 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: LOGISTICS_STOCK_AGENT_URL
+            route: LOGISTICS_STOCK_AGENT_URL,
+            accessRights: 'Agent'
         },
         {
             name: 'COMMON_VAT',
@@ -69,5 +61,6 @@ export const logAdminNavTree: SideNavNode = {
             route: ABS_LOGISTICS_CATEGORY,
             accessRights: 'SalesCategory'
         },
-    ]
+    ],
+    accessRights: 'SCHEDULED_SALES'
 };

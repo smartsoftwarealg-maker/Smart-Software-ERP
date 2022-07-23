@@ -36,5 +36,7 @@
     "BENEFICIARY":        "",
     "INVENTORY_YEAR":     "",
     "INVENTORY_NO":       "",
-    "BLOCKING_TYPES":     ""
+    "BLOCKING_TYPES":     "",
+    "BUILDINGS":          "",
+    "SITE":               ""
 }

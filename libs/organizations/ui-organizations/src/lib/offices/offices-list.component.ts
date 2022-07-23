@@ -17,9 +17,9 @@ import { OfficeService, Office } from '@ss/common/api-lookup';
 export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     displayedColumns = [
+        'code',
         'description',
-        'location',
-        'blockNo',
+        'locationDescription',
         'floorNo'
     ];
 

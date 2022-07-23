@@ -371,6 +371,16 @@
             </mat-form-field>
 
         </mat-expansion-panel>
+
+        <mat-expansion-panel #archivePanel
+                             [class]="getPanelHeaderClass('archive', archivePanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-agent-archive-list [id]="id"></ss-agent-archive-list>
+        </mat-expansion-panel>
     </mat-accordion>
 
 </form>

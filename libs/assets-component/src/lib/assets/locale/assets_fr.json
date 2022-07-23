@@ -38,5 +38,7 @@
     "BENEFICIARY":        "Bénéficiaire",
     "INVENTORY_YEAR":     "Année d'inventaire",
     "INVENTORY_NO":       "Numéro d'inventaire",
-    "BLOCKING_TYPES":     "Types de blocage"
+    "BLOCKING_TYPES":     "Types de blocage",
+    "BUILDINGS":          "Bâtiments",
+    "SITES":               "Sites"
 }

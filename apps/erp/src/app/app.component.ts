@@ -22,6 +22,7 @@ import { Event, NavigationEnd, Router } from '@angular/router';
 import { AccessRightsService } from '@ss/common/api-access-rights';
 import { organizationsNavTree } from './organizations/side-nav-tree';
 import {compiledApplications} from '../environments/environment';
+import {scheduledSalesNavTree} from './scheduled-sales/side-nav-tree';
 
 @Component({
     selector: 'ss-root',
@@ -57,6 +58,7 @@ export class AppComponent implements OnInit {
             assetsNavTree,
             treasuryNavTree,
             dashboardNavTree,
+            scheduledSalesNavTree
         ].filter(e => compiledApplications.indexOf(e.name) >= 0));
 
         this.httpSrv

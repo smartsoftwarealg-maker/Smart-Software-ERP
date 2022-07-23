@@ -20,7 +20,7 @@ import {
     ASSET_INVENTORY_URL,
     STOCK_AGENT_URL,
     docInfoRoutes,
-    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL
+    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL, ASSET_BUILDING_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -44,7 +44,11 @@ import {
     AssetOptionsComponent,
     AssetReceptionsComponent,
     AssetAppointmentDocListComponent,
-    AssetAppointmentDocDetailComponent, AssetInventoryDetailComponent, AssetInventoryListComponent
+    AssetAppointmentDocDetailComponent,
+    AssetInventoryDetailComponent,
+    AssetInventoryListComponent,
+    AssetBlockingTypeListComponent,
+    AssetBlockingTypeDetailComponent, AssetBuildingListComponent, AssetBuildingDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -52,12 +56,6 @@ import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
 import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
 import {ActivityDetailComponent, ActivityListComponent} from '@ss/common/ui-lookup';
-import {
-    AssetBlockingTypeDetailComponent
-} from '../../../../../libs/assets-component/src/lib/asset-blocking-type-detail/asset-blocking-type-detail.component';
-import {
-    AssetBlockingTypeListComponent
-} from '../../../../../libs/assets-component/src/lib/asset-blocking-type-list/asset-blocking-type-list.component';
 
 export const mainRoutes: Routes = [
     {
@@ -152,6 +150,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ASSET_BUILDING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetBuildingListComponent
+            },
+            {
+                path: ':id',
+                component: AssetBuildingDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

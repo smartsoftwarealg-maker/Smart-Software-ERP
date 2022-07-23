@@ -20,7 +20,7 @@ import {
     ASSETS_APP_URL,
     ACCOUNTING_APP_URL,
     TREASURY_APP_URL,
-    ORGANIZATIONS_APP_URL
+    ORGANIZATIONS_APP_URL, SCHEDULED_SALES_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
@@ -48,6 +48,10 @@ const routes: Routes = [
             {
                 path: TREASURY_APP_URL,
                 loadChildren: () => import('./treasury/treasury.module').then(m => m.TreasuryModule)
+            },
+            {
+                path: SCHEDULED_SALES_APP_URL,
+                loadChildren: () => import('./scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
             },
             {
                 path: STOCK_APP_URL,

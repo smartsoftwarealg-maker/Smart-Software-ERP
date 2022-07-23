@@ -38,5 +38,6 @@
     "DASHBOARD":                "Dashboard",
     "TREASURY":                 "Treasury",
     "ORGANIZATIONS": "Organizations",
-    "RETRY":         "Retry"
+    "RETRY":         "Retry",
+    "SCHEDULED_SALES": "Scheduled sales"
 }

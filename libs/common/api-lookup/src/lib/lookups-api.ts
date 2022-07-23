@@ -247,7 +247,13 @@ export interface Service {
 export interface Office {
     id: number;
     description: string;
-    blockNo?: string;
+    center?: number;
     floorNo: number;
     location?: number;
+    code?: string;
+    buildingId?: number;
+    locationDescription?: string;
+    locationCode?:        string;
+    buildingCode?:        string;
+    buildingDescription?: string;
 }
