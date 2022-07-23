@@ -37,6 +37,8 @@ import { AssetInventoryListComponent } from './asset-inventory-list/asset-invent
 import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
 import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset-blocking-type-list.component';
 import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
+import { AssetBuildingListComponent } from './asset-building-list/asset-building-list.component';
+import { AssetBuildingDetailComponent } from './asset-building-detail/asset-building-detail.component';
 
 @NgModule({
     imports: [
@@ -79,7 +81,9 @@ import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/a
         AssetInventoryDetailComponent,
         AssetInventoryListComponent,
         AssetBlockingTypeListComponent,
-        AssetBlockingTypeDetailComponent
+        AssetBlockingTypeDetailComponent,
+        AssetBuildingListComponent,
+        AssetBuildingDetailComponent
     ],
 })
 export class AssetsComponentModule {

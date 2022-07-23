@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ASSET_APPOINTMENT_DOC_URL,
+    ABS_ASSET_APPOINTMENT_DOC_URL, ABS_ASSET_BUILDS,
     ABS_ASSET_CLASSES, ABS_ASSET_INVENTORY_URL, ABS_ASSET_LOCATIONS,
     ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
@@ -50,13 +50,19 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Agent'
         },
         {
-            name: 'ASSET_LOCATIONS',
-            icon: 'fas fa-chair',
+            name: 'ASSET_SITES',
+            icon: 'fa-solid fa-earth-africa',
             route: ABS_ASSET_LOCATIONS,
             accessRights: 'ASSLocation'
         },
         {
-            name: 'COMMON_OFFICES',
+            name: 'ASSET_BUILDINGS',
+            icon: 'fa-solid fa-city',
+            route: ABS_ASSET_BUILDS,
+            accessRights: 'AssetBuilding'
+        },
+        {
+            name: 'ASSET_LOCATIONS',
             icon: 'fa-solid fa-location-crosshairs',
             route: ABS_ASSET_OFFICES_URL,
             accessRights: 'Office'

@@ -34,5 +34,6 @@
     "HR": "Gestion RH",
     "TREASURY":     "",
     "ORGANIZATIONS": "",
-    "RETRY":         ""
+    "RETRY":         "",
+    "SCHEDULED_SALES": ""
 }

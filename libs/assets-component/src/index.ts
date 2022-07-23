@@ -26,3 +26,7 @@ export * from './lib/asset-appointment-doc-detail/asset-appointment-doc-detail.c
 export * from './lib/asset-appointment-doc-list/asset-appointment-doc-list.component';
 export * from './lib/asset-inventory-detail/asset-inventory-detail.component';
 export * from './lib/asset-inventory-list/asset-inventory-list.component';
+export * from './lib/asset-building-list/asset-building-list.component';
+export * from './lib/asset-building-detail/asset-building-detail.component';
+export * from './lib/asset-blocking-type-detail/asset-blocking-type-detail.component';
+export * from './lib/asset-blocking-type-list/asset-blocking-type-list.component';

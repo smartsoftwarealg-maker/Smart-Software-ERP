@@ -6,12 +6,12 @@ import {
     LOGISTICS_AGENT_TYPE_URL,
     LOGISTICS_COMPANY_TYPE_URL,
     LOGISTICS_CURRENCY_URL,
-    LOGISTICS_VAT_URL, LOGISTICS_NUMBERING_URL
+    LOGISTICS_VAT_URL, LOGISTICS_NUMBERING_URL, LOGISTICS_CATEGORY_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
-import {AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
+import {AgentArchiveDetailComponent, AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
 import {
     ActivityDetailComponent,
     ActivityListComponent,
@@ -24,7 +24,7 @@ import {
     CurrencyDetailComponent,
     CurrencyListComponent,
     MarkDetailComponent,
-    MarkListComponent,
+    MarkListComponent, SalesCategoryDetailComponent, SalesCategoryListComponent,
     StoreNameDetailComponent,
     StoreNameListComponent,
     SubclassDetailComponent,
@@ -38,7 +38,7 @@ import {OptionsDetailComponent} from '@ss/logistics/ui-options';
 import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
-} from '../../../../../libs/logistics/document-numbering/src';
+} from '@ss/logistics/document-numbering';
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
@@ -54,12 +54,22 @@ export const mainRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: AgentDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [CanActivateService],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true},
+                    },
+                    {
+                        path: 'archive',
+                        component: AgentArchiveDetailComponent
+                    }
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {
@@ -152,6 +162,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_CATEGORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesCategoryListComponent
+            },
+            {
+                path: ':id',
+                component: SalesCategoryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

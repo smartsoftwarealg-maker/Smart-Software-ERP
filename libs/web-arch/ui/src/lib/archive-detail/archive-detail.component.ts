@@ -19,7 +19,7 @@ import {MatSelectionList} from '@angular/material/list';
   styleUrls: ['./archive-detail.component.css']
 })
 export class ArchiveDetailComponent implements OnInit {
-    @ViewChild('tags', { static: false }) selectionList: MatSelectionList;
+  @ViewChild('tags', { static: false }) selectionList: MatSelectionList;
   form: FormGroup = null;
   private id: string = null;
   public selectedService: number = null;

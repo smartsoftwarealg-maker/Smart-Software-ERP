@@ -1,5 +1,4 @@
 import { MAIN_PAGE_URL } from '@ss/common/api-common';
-import { ACTIVATION_LIST_URL as activationListUrl } from '@ss/payroll/api-employee';
 
 // TODO: REMOVE UNUSED BULLSHIT
 
@@ -96,7 +95,7 @@ export const PAYROLL_MARITAL_STATUS_URL = 'maritalStatus';
 export const PAYROLL_POSTS_URL = 'posts';
 export const PAYROLL_NATIONALITIES_URL = 'nationalities';
 export const PAYROLL_EMPLOYEES_URL = 'employees';
-export const PAYROLL_EMPLOYEE_ACTIVATION_URL = activationListUrl;
+export const PAYROLL_EMPLOYEE_ACTIVATION_URL = 'activations';
 export const PAYROLL_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const PAYROLL_SUSPENSION_REASON_URL = 'suspensionReason';
 export const PAYROLL_CAREER_URL = 'career';

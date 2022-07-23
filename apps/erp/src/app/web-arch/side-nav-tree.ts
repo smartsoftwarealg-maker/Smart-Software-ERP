@@ -3,7 +3,7 @@ import {ABS_ARCHIVE_URL, ABS_TAG_URL} from '../common';
 
 export const webArchNavTree: SideNavNode = {
     name: 'WEBARCH',
-    icon: 'fas fa-users',
+    icon: 'fa-solid fa-cabinet-filing',
     children: [
         {
             name: 'WAR_TAGS',

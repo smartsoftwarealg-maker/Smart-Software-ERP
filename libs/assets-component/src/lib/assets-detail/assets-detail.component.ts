@@ -5,7 +5,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Lookup, LookupsService, OfficeService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -20,6 +20,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 import {AssetClassService} from '../asset-class.service';
+import {BaseEntityService} from '@ss/common/api-base-entity';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -43,7 +44,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
-    officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
+    officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     accountantDepreciation: Depreciation[] = [];
@@ -131,7 +132,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             criticity:   [b.criticity],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
-            inventoryNo: [b.inventoryNo],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -232,11 +232,19 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.criticity          =  asset.criticity        || null;
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
-                asset.inventoryNo        =  asset.inventoryNo      || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }
         });
     }
+
+}
+
+class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
+    constructor(public override entitySrv: BaseEntityService<Office>) {
+        super(entitySrv, 'id', 'description');
+    }
+
+    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} (${x.code})`  : null;
 
 }

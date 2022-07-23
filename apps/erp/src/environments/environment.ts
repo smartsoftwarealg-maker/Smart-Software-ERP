@@ -21,7 +21,8 @@ export const compiledApplications = [
     'PAYROLL',
     'WEBARCH',
     'COMMON_DASHBOARD',
-    'ORGANIZATIONS'
+    'ORGANIZATIONS',
+    'SCHEDULED_SALES'
 ];
 /*
  * For easier debugging in development mode, you can import the following file

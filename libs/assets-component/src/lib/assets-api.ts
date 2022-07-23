@@ -1,4 +1,5 @@
 export const ASSETS_URL = '/assets';
+export const ASSETS_BUILDING_URL = '/buildings';
 export const ASSET_CLASS_URL = '/asset-classes';
 export const APPOINTMENT_URL = '/appointments';
 export const COST_URL = '/costs';
@@ -66,7 +67,6 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
-    inventoryNo?: number;
 }
 
 export interface Depreciation {
@@ -182,4 +182,11 @@ export interface AssetInventory {
     userId?: number;
     officeDescription?: string;
     assetDescription?: string;
+}
+
+export interface AssetBuilding {
+    id: number;
+    centerId: number;
+    code: string;
+    description: string;
 }

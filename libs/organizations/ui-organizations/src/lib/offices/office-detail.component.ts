@@ -11,8 +11,9 @@ import { OfficeService, Office } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import {AssetLocationService} from '../../../../../assets-component/src/lib/asset-location.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
+import {AssetBuilding, AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {AssetsBuildingService} from '../../../../../assets-component/src/lib/assets-building.service';
 
 @Component({
     selector: 'ss-office-detail',
@@ -21,8 +22,10 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
+    buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
     numberCtrl = new FormControl(1, [Validators.min(1), Validators.max(90)]);
     private locationCode = '';
+    private buildingCode = '';
 
     public form: FormGroup = null;
     public saving: boolean = false;
@@ -35,9 +38,11 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
+        private buildingSrv: AssetsBuildingService,
         private locationSrv: AssetLocationService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.locationLookup.onObjectSelected = e => this.locationSelected(e);
+        this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
     }
 
     protected getRouteParam(): Observable<any> {
@@ -47,15 +52,16 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
 
     setupForm(a: Office): FormGroup {
         this.form = this.formBuilder.group({
-            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])],
-            blockNo:     [a.blockNo, [Validators.minLength(1), Validators.maxLength(4)]],
+            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
+            code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(16)])],
+            buildingId:  [a.buildingId],
             floorNo:     [a.floorNo, [Validators.min(0), Validators.max(20)]],
             location:    [a.location],
             id:          [a.id]
         });
 
         this.subscriptions
-            .push(this.form.controls['blockNo']
+            .push(this.form.controls['buildingId']
                 .valueChanges
                 .pipe(
                     debounceTime(300),
@@ -91,15 +97,20 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         this.computeCode();
     }
 
+    private buildingSelected(e: AssetBuilding) {
+        this.buildingCode = e?.code || '';
+        this.computeCode();
+    }
+
     private withLeadingZeros(v: string | number) {
         const str = ('0000' + v);
         return str.substring(str.length - 2);
     }
     private computeCode() {
         const code = this.locationCode +
-            this.withLeadingZeros(this.form.value.blockNo || '') +
+            this.buildingCode +
             this.withLeadingZeros(this.form.value.floorNo || '') +
             this.withLeadingZeros(this.numberCtrl.value || 1);
-        this.form.controls['description'].setValue(code, {onlySelf: true});
+        this.form.controls['code'].setValue(code, {onlySelf: true});
     }
 }

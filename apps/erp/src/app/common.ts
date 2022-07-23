@@ -30,6 +30,7 @@ export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
+export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 
 // common
 export const COMMON_REPORTS_URL = 'reports';
@@ -80,10 +81,6 @@ export const STOCK_SUBCLASSES_URL = 'subclasses';
 export const STOCK_STORE_NAMES_URL = 'storeNames';
 export const STOCK_STORES_URL = 'stores';
 export const STOCK_UNITS_URL = 'units';
-export const LOGISTICS_AGENT_TYPE_URL = 'agentTypes';
-export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
-export const LOGISTICS_ACTIVITY_URL = 'activities';
-export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 
@@ -104,6 +101,12 @@ export const LOGISTICS_CCOMPENSATION_URL = 'ccompensations';
 export const LOGISTICS_OPTION_URL = 'options';
 export const LOGISTICS_AGENT_URL = 'agents';
 export const LOGISTICS_NUMBERING_URL = 'documents';
+export const LOGISTICS_AGENT_TYPE_URL = 'agentTypes';
+export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
+export const LOGISTICS_ACTIVITY_URL = 'activities';
+export const LOGISTICS_CURRENCY_URL = 'currencies';
+export const LOGISTICS_CATEGORY_URL = 'sales-categories';
+export const LOGISTICS_ARCHIVE_URL = '/archives/agents';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -170,6 +173,7 @@ export const ASSET_INVENTORY_URL         = 'asset-inventories';
 export const ASSET_RECEPTIONS_URL        = 'asset-receptions';
 export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments'
 export const ASSETS_AGENT_URL            = 'agents';
+export const ASSET_BUILDING_URL          = 'buildings';
 
 
 //Missions
@@ -282,6 +286,7 @@ export const ABS_LOGISTICS_VAT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LO
 export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL,  LOGISTICS_COMPANY_TYPE_URL].join('/');
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
+export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
 
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');
@@ -350,6 +355,7 @@ export const ABS_ASSET_RECEPTIONS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, AS
 export const ABS_ASSET_APPOINTMENT_DOC_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_APPOINTMENTS_DOC_URL].join('/');
 export const ABS_ASSET_INVENTORY_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_INVENTORY_URL].join('/');
 export const ASSETS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_AGENT_URL].join('/');
+export const ABS_ASSET_BUILDS = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_BUILDING_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
