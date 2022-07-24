@@ -1,6 +1,7 @@
 import {Observable, of} from 'rxjs';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {map} from 'rxjs/operators';
+import {Office} from '@ss/common/api-lookup';
 
 export type Id = number | string;
 
@@ -50,4 +51,12 @@ export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
     getById = (t: Id) => of(<number>null);
     filter = (a: string) => of(<number[]>[]);
     isPerfectMatch = (o: number, f: string) => false;
+}
+
+export class CodeDescriptionAutoCompleteModel<T> extends DefaultAutoCompleteModel<T> {
+    constructor(public override entitySrv: BaseEntityService<T>) {
+        super(entitySrv, 'id', 'description');
+    }
+
+    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} (${x.code})`  : null;
 }

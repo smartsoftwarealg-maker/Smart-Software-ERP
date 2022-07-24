@@ -246,5 +246,4 @@ class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
     }
 
     override toString = (x:Office) => x ? `${x.description.substring(0, 50)} (${x.code})`  : null;
-
 }
