@@ -70,5 +70,6 @@
     "DECIMAL":     "",
     "LOOKUP":      "",
     "MODULE":      "",
-    "CUSTOM_DATA":   ""
+    "CUSTOM_DATA":   "",
+    "ARCHIVE_DOCUMENTS": ""
 }

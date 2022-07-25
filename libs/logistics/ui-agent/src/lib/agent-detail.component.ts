@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
@@ -22,6 +22,7 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, LoginService} from '@ss/common/api-common';
 import {Bank} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
+import {LOGISTICS_AGENT_URL, ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 
 
 @Component({
@@ -29,7 +30,7 @@ import {Lookup} from '@ss/logistics/ui-doc-import';
     styleUrls: ['./agent-detail.component.scss'],
     templateUrl: './agent-detail.component.html'
 })
-export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit  {
+export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
     isSales = this.route.snapshot.data['sales'];
     pwd1 = new FormControl();
     pwd2 = new FormControl();
@@ -52,7 +53,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private router: Router) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
@@ -222,10 +224,19 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     }
 
     updatePassword() {
-        if (this.pwd1.value === this.pwd2.value ) {
+        if (this.pwd1.value === this.pwd2.value) {
             this.agentSrv
-                .updatePassword({id: this.loginSrv.appCtx.id, agentId: this.form.controls['id'].value, password: this.pwd2.value })
+                .updatePassword({
+                    id: this.loginSrv.appCtx.id,
+                    agentId: this.form.controls['id'].value,
+                    password: this.pwd2.value
+                })
                 .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
         }
     }
- }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.setGoBackFn(() => this.router.navigate([ABS_LOGISTICS_AGENT_URL]).then());
+    }
+}

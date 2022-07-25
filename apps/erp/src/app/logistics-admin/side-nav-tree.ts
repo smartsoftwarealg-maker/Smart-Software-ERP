@@ -7,7 +7,7 @@ import {
     ABS_STOCK_UNITS_URL,
     ABS_LOGISTICS_OPTIONS,
     ABS_STOCK_AGENT_URL,
-    LOGISTICS_STOCK_AGENT_URL,
+    ABS_LOGISTICS_AGENT_URL,
     ABS_FINANCE_PAYMENTS,
     ABS_LOGISTICS_VAT_URL, LOGISTICS_DOCUMENT_URL
 } from '../common';
@@ -33,7 +33,7 @@ export const logAdminNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: LOGISTICS_STOCK_AGENT_URL,
+            route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'
         },
         {

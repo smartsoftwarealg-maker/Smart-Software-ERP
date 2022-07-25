@@ -10,7 +10,10 @@ import {
     ADMINISTRATION_COUNTRY_URL,
     ADMINISTRATION_WILAYA_URL,
     ADMINISTRATION_ACCCESSRIGHTS_URL,
-    ADMINISTRATION_TRACEABILITY_URL, ADMINISTRATION_ATTRIBUTE_URL, ADMINISTRATION_DB_UPDATER_URL
+    ADMINISTRATION_TRACEABILITY_URL,
+    ADMINISTRATION_ATTRIBUTE_URL,
+    ADMINISTRATION_DB_UPDATER_URL,
+    ADMINISTRATION_ARCHIVE_DOCUMENTS_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -28,7 +31,7 @@ import {
     CityListComponent,
     CityDetailComponent,
     WilayaListComponent,
-    WilayaDetailComponent
+    WilayaDetailComponent, AppArchiveDocumentListComponent, AppArchiveDocumentDetailComponent
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
@@ -87,6 +90,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CountryDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ADMINISTRATION_ARCHIVE_DOCUMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AppArchiveDocumentListComponent
+            },
+            {
+                path: ':id',
+                component: AppArchiveDocumentDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
