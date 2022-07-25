@@ -2,6 +2,7 @@ export const AGENT_URL = '/agents';
 export const CUSTOMER_URL = '/customers';
 export const CONSUMER_URL = '/consumers';
 export const SUPPLIER_URL = '/suppliers';
+export const AGENT_ARCHIVE_URL = '/archives';
 
 export interface Agent {
     id: number;
@@ -57,3 +58,8 @@ export interface Agent {
     license?: string // FIXME:: remove this field
 }
 
+export interface Archive {
+    id: number;
+    description?: string;
+    data?: any[];
+}

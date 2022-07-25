@@ -1,0 +1,18 @@
+.main-table,
+.pagination-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.main-table {
+    height: calc(100% - 64px);
+}
+
+.mat-column-code {
+    flex: 1 1 30%;
+}
+
+.mat-column-description {
+    flex: 3 1 70%;
+}

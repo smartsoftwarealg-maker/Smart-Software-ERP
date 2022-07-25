@@ -38,5 +38,7 @@
     "BENEFICIARY":        "المستفيد",
     "INVENTORY_YEAR":     "سنة الجرد",
     "INVENTORY_NO":       "رقم الجرد",
-    "BLOCKING_TYPES":     "أنواع المنع"
+    "BLOCKING_TYPES":     "أنواع المنع",
+    "BUILDINGS":          "",
+    "SITES":              "المواقع"
 }

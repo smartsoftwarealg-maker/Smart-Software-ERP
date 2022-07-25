@@ -23,19 +23,17 @@
 }
 
 
-.mat-column-location {
+.mat-column-locationDescription {
     flex: 1 1 200px;
 }
 .mat-column-description {
-    flex: 2 1 300px;
-    padding-right: 8px !important;
+    flex: 2 1 200px;
     padding-left: 8px !important;
 }
 
 .mat-column-floorNo,
-.mat-column-blockNo {
+.mat-column-code {
     flex: 0 1 100px;
-    padding-right: 8px !important;
     padding-left: 8px !important;
 }
 

@@ -40,9 +40,9 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
         this.router.navigate(['detail'], {relativeTo: this.route}).then();
     }
 
-    onEdit(id: string) {
-        this.router.navigate(['detail', {id: id}], {relativeTo: this.route}).then();
-    }
+    // onEdit(id: string) {
+    //     this.router.navigate(['detail', {id: id}], {relativeTo: this.route}).then();
+    // }
 
     public edit() {
         if (this.selectedRow._id) {

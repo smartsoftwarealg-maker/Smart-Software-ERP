@@ -1,0 +1,40 @@
+<form novalidate
+      [formGroup]="form"
+      *ngIf="form"
+      class="form__container">
+
+    <mat-form-field>
+        <mat-placeholder translate>COMMON_DESCRIPTION</mat-placeholder>
+        <input matInput type="text" name="description" formControlName="description">
+    </mat-form-field>
+
+    <div class="imj">
+        <img [src]="uploadUtil.imgSrc" [alt]="'image'"/>
+    </div>
+<!--    <div>-->
+<!--        <pre>{{form?.value | json }}</pre>-->
+<!--    </div>-->
+</form>
+
+<div class="ctr_div">
+    <input type="file"
+           #fileInput
+           style="display: none"
+           (change)="uploadUtil.onFileSelected($event)">
+
+    <input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
+    <mat-progress-bar
+        *ngIf="uploadUtil.loadingRate < 100"
+        mode="determinate" value="{{ uploadUtil.loadingRate }}">
+    </mat-progress-bar>
+    <button mat-mini-fab (click)="onSave()" color="primary">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="onCancel()" color="accent">
+        <i class="fas fa-undo"></i>
+    </button>
+
+    <button mat-mini-fab (click)="fileInput.click()" color="warn">
+        <i class="fas fa-upload"></i>
+    </button>
+</div>

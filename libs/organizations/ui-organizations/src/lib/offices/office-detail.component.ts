@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
 import { OfficeService, Office } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import {AssetLocationService} from '../../../../../assets-component/src/lib/asset-location.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
+import {CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {AssetBuilding, AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {AssetsBuildingService} from '../../../../../assets-component/src/lib/assets-building.service';
 
 @Component({
     selector: 'ss-office-detail',
@@ -20,9 +21,8 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     styleUrls: ['./office-detail.component.scss']
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
-    locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
-    numberCtrl = new FormControl(1, [Validators.min(1), Validators.max(90)]);
-    private locationCode = '';
+    locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
+    buildingLookup = new CodeDescriptionAutoCompleteModel(this.buildingSrv);
 
     public form: FormGroup = null;
     public saving: boolean = false;
@@ -35,9 +35,11 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public formBuilder: FormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
+        private buildingSrv: AssetsBuildingService,
         private locationSrv: AssetLocationService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
-        this.locationLookup.onObjectSelected = e => this.locationSelected(e);
+        // this.locationLookup.onObjectSelected = e => this.locationSelected(e);
+        // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
     }
 
     protected getRouteParam(): Observable<any> {
@@ -47,36 +49,37 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
 
     setupForm(a: Office): FormGroup {
         this.form = this.formBuilder.group({
-            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(10)])],
-            blockNo:     [a.blockNo, [Validators.minLength(1), Validators.maxLength(4)]],
+            description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
+            code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(3)])],
+            buildingId:  [a.buildingId],
             floorNo:     [a.floorNo, [Validators.min(0), Validators.max(20)]],
             location:    [a.location],
             id:          [a.id]
         });
 
-        this.subscriptions
-            .push(this.form.controls['blockNo']
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged())
-                .subscribe(v => this.computeCode()));
+        // this.subscriptions
+        //     .push(this.form.controls['buildingId']
+        //         .valueChanges
+        //         .pipe(
+        //             debounceTime(300),
+        //             distinctUntilChanged())
+        //         .subscribe(v => this.computeCode()));
 
-        this.subscriptions
-            .push(this.form.controls['floorNo']
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged())
-                .subscribe(v => this.computeCode()));
+        // this.subscriptions
+        //     .push(this.form.controls['floorNo']
+        //         .valueChanges
+        //         .pipe(
+        //             debounceTime(300),
+        //             distinctUntilChanged())
+        //         .subscribe(v => this.computeCode()));
 
-        this.subscriptions
-            .push(this.numberCtrl
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged())
-                .subscribe(v => this.computeCode()));
+        // this.subscriptions
+        //     .push(this.numberCtrl
+        //         .valueChanges
+        //         .pipe(
+        //             debounceTime(300),
+        //             distinctUntilChanged())
+        //         .subscribe(v => this.computeCode()));
 
         return this.form;
     }
@@ -86,20 +89,25 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         return formVal;
     }
 
-    private locationSelected(e: AssetLocation) {
-        this.locationCode = e?.code || '';
-        this.computeCode();
-    }
+    // private locationSelected(e: AssetLocation) {
+    //     this.locationCode = e?.code || '';
+    //     this.computeCode();
+    // }
+
+    // private buildingSelected(e: AssetBuilding) {
+    //     this.buildingCode = e?.code || '';
+    //     this.computeCode();
+    // }
 
     private withLeadingZeros(v: string | number) {
         const str = ('0000' + v);
         return str.substring(str.length - 2);
     }
-    private computeCode() {
-        const code = this.locationCode +
-            this.withLeadingZeros(this.form.value.blockNo || '') +
-            this.withLeadingZeros(this.form.value.floorNo || '') +
-            this.withLeadingZeros(this.numberCtrl.value || 1);
-        this.form.controls['description'].setValue(code, {onlySelf: true});
-    }
+    // private computeCode() {
+    //     const code = this.locationCode +
+    //         this.buildingCode +
+    //         this.withLeadingZeros(this.form.value.floorNo || '') +
+    //         this.withLeadingZeros(this.numberCtrl.value || 1);
+    //     this.form.controls['code'].setValue(code, {onlySelf: true});
+    // }
 }

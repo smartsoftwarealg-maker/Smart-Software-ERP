@@ -4,24 +4,24 @@
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_OFFICE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description}}
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="location">
+            <ng-container matColumnDef="locationDescription">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_LOCATION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.lDescription}}
+                    {{e.locationDescription}}
                 </mat-cell>
             </ng-container>
 
 
-            <ng-container matColumnDef="blockNo">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_BLOCK_NO</mat-header-cell>
+            <ng-container matColumnDef="code">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.blockNo }}
+                    {{ e.code }}
                 </mat-cell>
             </ng-container>
 

@@ -38,5 +38,6 @@
     "HR": "Gestion RH",
     "TREASURY":  "Trésorerie",
     "ORGANIZATIONS": "Organisations",
-    "RETRY":         "Retenter"
+    "RETRY":         "Retenter",
+    "SCHEDULED_SALES": "Ventes programmées"
 }

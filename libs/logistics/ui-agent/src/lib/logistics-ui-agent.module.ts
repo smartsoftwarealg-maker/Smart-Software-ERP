@@ -10,6 +10,8 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.component';
 import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.component';
 import {DocInfoComponent, LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+import { AgentArchiveListComponent } from './agent-archive-list/agent-archive-list.component';
+import { AgentArchiveDetailComponent } from './agent-archive-detail/agent-archive-detail.component';
 
 @NgModule({
     imports: [
@@ -26,6 +28,8 @@ import {DocInfoComponent, LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-i
         AgentDetailComponent,
         MiniAgentDetailComponent,
         CustomerProfileComponent,
+        AgentArchiveListComponent,
+        AgentArchiveDetailComponent,
     ],
     exports: [
         AgentListComponent,
