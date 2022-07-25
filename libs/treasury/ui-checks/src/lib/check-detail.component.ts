@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, LoginService } from '@ss/common/api-common';
 import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 
 @Component({
@@ -20,6 +20,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
 
     constructor(
         public checkSrv: CheckService,
+        public loginSrv: LoginService,
         public agentSrv: AgentService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -41,7 +42,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         return this.formBuilder.group({
             id: [a.id],
             number: [a.number, Validators.required],
-            center: a.center,
+            center: a.center || this.loginSrv.appCtx.center,
             bankId: [a.bankId],
             bank: a.bank,
             deposited: a.deposited,
@@ -56,7 +57,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
             mode: a.mode,
             canceled: a.canceled,
             memo: a.memo,
-            bookId: a.bookId
+            bookId: a.bookId // todo: add this to detail
         });
     }
 

@@ -17,5 +17,7 @@
     "FROM_NUMBER": "From number",
     "TO_NUMBER": "To number",
     "BOOK_YEAR": "Book year",
-    "CHECKBOOKS": "Check books"
+    "CHECKBOOKS": "Check books",
+    "EDIT_CHECKBOOKS": "Check book detail",
+    "EDIT_CHECKS": "Check details"
 }

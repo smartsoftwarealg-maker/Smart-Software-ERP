@@ -6,6 +6,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, LoginService } from '@ss/common/api-common';
+import { Observable } from 'rxjs';
+import { LookupsService, Bank } from '@ss/common/api-lookup';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-check-book-detail',
@@ -15,9 +18,11 @@ import { HttpService, LoginService } from '@ss/common/api-common';
 export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBook> implements OnInit {
 
     aid = 0;
+    banks: Bank[];
 
     constructor(
         public checkBookSrv: CheckBookService,
+        public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -29,6 +34,11 @@ export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBoo
         super(checkBookSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKBOOKS');
     }
 
+    public preload(): Observable<any> {
+        return this.lookupsSrv.getBanks()
+            .pipe(tap(x => { this.banks = x }));
+    }
+
     finishLoading(e: CheckBook) {
         super.finishLoading(e);
     }
@@ -36,16 +46,16 @@ export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBoo
     public setupForm(a: CheckBook) {
         this.aid = a.id;
         if (!a.id || !a.centerId) {
-            a.centerId =  this.loginSrv.appCtx.center;
+            a.centerId = this.loginSrv.appCtx.center;
         }
         return this.formBuilder.group({
             id: [a.id],
-            centerId: [a.centerId, Validators.required],
+            centerId: [a.centerId || this.loginSrv.appCtx.center, Validators.required],
             bankId: [a.bankId, Validators.required],
             bookYear: [a.bookYear, Validators.required],
             fromNumber: [a.fromNumber, Validators.required],
             toNumber: [a.toNumber, Validators.required],
-            bankName: [a.bankName, Validators.required]
+            bankName: [a.bankName]
         });
     }
 
