@@ -34,3 +34,4 @@ export * from './lib/professional-fault.service';
 export * from './lib/languages.service';
 export * from './lib/languageLevels.service';
 export * from './lib/office.service';
+export * from './lib/app-archive-document.service';

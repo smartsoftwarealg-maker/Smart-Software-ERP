@@ -1,0 +1,29 @@
+.buttons {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.content_div {
+    padding: 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 300px;
+}
+
+mat-list {
+    flex: 1 1 30%;
+}
+
+.imj {
+    flex: 2 1 50%;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    max-width: 300px;
+    max-height: 300px;
+}

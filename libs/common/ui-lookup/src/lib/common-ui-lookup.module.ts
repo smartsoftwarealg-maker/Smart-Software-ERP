@@ -39,6 +39,7 @@ import {
     ProfessionalFaultListComponent
 } from './professional-fault.component';
 import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './punishment-type.component';
+import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './app-archive-docs.component';
 
 @NgModule({
     imports: [
@@ -117,7 +118,9 @@ import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './puni
         PunishmentTypeDetailComponent,
         PunishmentTypeListComponent,
         ProfessionalFaultListComponent,
-        ProfessionalFaultDetailComponent
+        ProfessionalFaultDetailComponent,
+        AppArchiveDocumentListComponent,
+        AppArchiveDocumentDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -184,7 +187,9 @@ import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './puni
         PunishmentTypeDetailComponent,
         PunishmentTypeListComponent,
         ProfessionalFaultListComponent,
-        ProfessionalFaultDetailComponent
+        ProfessionalFaultDetailComponent,
+        AppArchiveDocumentListComponent,
+        AppArchiveDocumentDetailComponent
     ]
 })
 export class CommonUiLookupModule { }

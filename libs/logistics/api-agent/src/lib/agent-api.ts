@@ -1,8 +1,9 @@
+export const APPLICATIONS_URL = '/applications';
 export const AGENT_URL = '/agents';
 export const CUSTOMER_URL = '/customers';
 export const CONSUMER_URL = '/consumers';
 export const SUPPLIER_URL = '/suppliers';
-export const AGENT_ARCHIVE_URL = '/archives';
+export const APP_ARCHIVE_URL = '/archives';
 
 export interface Agent {
     id: number;
@@ -58,8 +59,11 @@ export interface Agent {
     license?: string // FIXME:: remove this field
 }
 
-export interface Archive {
+export interface AppArchive {
     id: number;
-    description?: string;
+    appId: number;
+    documentId: number;
+    objId: number;
+    docDescription?: string;
     data?: any[];
 }

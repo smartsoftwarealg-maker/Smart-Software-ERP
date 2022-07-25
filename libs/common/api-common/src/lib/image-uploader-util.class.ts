@@ -46,4 +46,13 @@ export class ImageUploaderUtil {
         reader.readAsDataURL(this.selectedFile);
     }
 
+    public static toBase64(blob: any, callback: any) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const dataUrl = reader.result;
+            callback(dataUrl);
+        };
+        reader.readAsDataURL(blob);
+    }
+
 }

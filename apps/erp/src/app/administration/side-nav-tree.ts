@@ -11,7 +11,7 @@ import {
     ABS_ADMINISTRATION_COUNTRY_URL,
     ABS_ADMINISTRATION_CITY_URL,
     ABS_ADMINISTRATION_WILAYA_URL,
-    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL
+    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL, ABS_APP_ARCHIVE_DOCUMENTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -73,6 +73,12 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-server',
             route: ABS_ADMINISTRATION_SMTP_URL,
             accessRights: 'SMTP'
+        },
+        {
+            name: 'ADMINISTRATION_ARCHIVE_DOCUMENTS',
+            icon: 'fa-solid fa-box-archive',
+            route: ABS_APP_ARCHIVE_DOCUMENTS_URL,
+            accessRights: 'AppArchive'
         },
         {
             name: 'ADMINISTRATION_CUSTOM_DATA',

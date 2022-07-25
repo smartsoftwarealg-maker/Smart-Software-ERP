@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/common/app-archive",
+    "sourceRoot": "libs/common/app-archive/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/common/app-archive"],
+            "options": {
+                "jestConfig": "libs/common/app-archive/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/common/app-archive/src/**/*.ts",
+                    "libs/common/app-archive/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

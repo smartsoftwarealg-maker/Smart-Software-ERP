@@ -3,12 +3,16 @@
       *ngIf="form"
       class="form__container">
 
-    <mat-form-field>
-        <mat-placeholder translate>COMMON_DESCRIPTION</mat-placeholder>
-        <input matInput type="text" name="description" formControlName="description">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>ADMINISTRATION_ARCHIVE_DOCUMENTS</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="documentAutoCompleteModel"
+                          formControlName="documentId">
+        </ss-auto-complete>
     </mat-form-field>
 
-    <div class="imj">
+    <div class="imj" *ngIf="form?.value.id">
         <img [src]="uploadUtil.imgSrc" [alt]="'image'"/>
     </div>
 <!--    <div>-->
@@ -34,7 +38,7 @@
         <i class="fas fa-undo"></i>
     </button>
 
-    <button mat-mini-fab (click)="fileInput.click()" color="warn">
+    <button mat-mini-fab (click)="fileInput.click()" color="warn" *ngIf="form?.value?.id">
         <i class="fas fa-upload"></i>
     </button>
 </div>

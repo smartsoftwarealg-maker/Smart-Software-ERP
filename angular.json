@@ -32,6 +32,7 @@
         "common-api-common": "libs/common/api-common",
         "common-api-lookup": "libs/common/api-lookup",
         "common-api-users": "libs/common/api-users",
+        "common-app-archive": "libs/common/app-archive",
         "common-assets": "libs/common/assets",
         "common-ui-access-rights": "libs/common/ui-access-rights",
         "common-ui-auto-complete": "libs/common/ui-auto-complete",
