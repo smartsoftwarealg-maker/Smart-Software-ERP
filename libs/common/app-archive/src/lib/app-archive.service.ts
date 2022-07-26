@@ -11,6 +11,7 @@ import {tap} from 'rxjs/operators';
 })
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
+    private _cb : (id: number) => void = null;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, APP_ARCHIVE_URL, APPLICATIONS_URL);
@@ -27,9 +28,20 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
 
     set appId(id: number) {
         this._appId = id;
+        if (this._cb != null) {
+            this._cb(id);
+        }
     }
 
     get appId() {
         return this._appId;
+    }
+
+    set objId(id: number) {
+        this.setParentId(id);
+    }
+
+    set callBackFn(fn: (id: number) => void) {
+        this._cb = fn;
     }
  }

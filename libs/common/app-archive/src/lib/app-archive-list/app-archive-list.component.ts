@@ -78,7 +78,13 @@ export class AppArchiveListComponent implements OnInit {
             });
     }
 
-    refresh() {}
+    refresh() {
+        this.entitySrv.getList(0, 50)
+            .subscribe(res => {
+                this.data = res.body || [];
+                this.paginator.elementCount = res.itemCount;
+            })
+    }
 
     select(a: AppArchive) {
         this.selectedId = a?.id;
@@ -89,4 +95,5 @@ export class AppArchiveListComponent implements OnInit {
 //                console.log(res);
             });
     }
+
 }

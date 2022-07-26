@@ -34,5 +34,5 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         AppArchiveMainComponent
     ]
 })
-export class CommonAppArchiveModule {
+export class AppArchiveModule {
 }

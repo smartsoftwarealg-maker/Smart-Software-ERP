@@ -30,3 +30,4 @@ export * from './lib/asset-building-list/asset-building-list.component';
 export * from './lib/asset-building-detail/asset-building-detail.component';
 export * from './lib/asset-blocking-type-detail/asset-blocking-type-detail.component';
 export * from './lib/asset-blocking-type-list/asset-blocking-type-list.component';
+export * from './lib/asset-receptions-detail/asset-receptions-detail.component';
