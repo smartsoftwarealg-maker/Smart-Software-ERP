@@ -10,3 +10,13 @@ mat-card {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+.title {
+    width: 96%;
+    max-width: 500px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border-top: white solid 1px;
+}

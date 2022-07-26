@@ -15,17 +15,20 @@
 </div>
 
 <div class="content_div">
-    <mat-list role="list">
-        <mat-list-item role="listitem"
-                       *ngFor="let d of data"
-                       class="selectable"
-                       [class.selected]="d.id == selectedId"
-                       (click)="select(d)">
-            {{ d.docDescription}}
-        </mat-list-item>
-    </mat-list>
+    <div class="list_div">
+        <div mat-subheader class="b-primary" translate> {{ 'ADMINISTRATION_ARCHIVE_DOCUMENTS' }}</div>
 
-    <div class="imj" *ngIf="imgSrc?.length > 100" >
-        <img [src]="imgSrc" [alt]="'image'" />
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let d of data"
+                           class="selectable"
+                           [class.selected]="d.id == selectedId"
+                           (click)="select(d)">
+                {{ d.docDescription}}
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div class="imj" *ngIf="imgSrc?.length > 100">
+        <img [src]="imgSrc" [alt]="'image'"/>
     </div>
 </div>
