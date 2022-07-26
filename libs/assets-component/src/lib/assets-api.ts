@@ -67,6 +67,7 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
+    supplierName?: string;
 }
 
 export interface Depreciation {

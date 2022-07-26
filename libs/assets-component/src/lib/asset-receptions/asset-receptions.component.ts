@@ -44,7 +44,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
 
     override ngOnInit() {
         super.ngOnInit();
-        this.editButton.visible = false;
+        // this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.shellSrv.updateShell();
     }

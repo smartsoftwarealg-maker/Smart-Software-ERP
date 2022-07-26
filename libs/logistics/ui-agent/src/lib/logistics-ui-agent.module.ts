@@ -10,7 +10,7 @@ import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialo
 import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.component';
 import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.component';
 import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
-import {CommonAppArchiveModule} from '@ss/common/app-archive';
+import {AppArchiveModule} from '@ss/common/app-archive';
 
 @NgModule({
     imports: [
@@ -21,7 +21,7 @@ import {CommonAppArchiveModule} from '@ss/common/app-archive';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         LogisticsUiDocInfoModule,
-        CommonAppArchiveModule
+        AppArchiveModule
     ],
     declarations: [
         AgentListComponent,

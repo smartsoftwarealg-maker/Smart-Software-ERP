@@ -39,6 +39,8 @@ import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset
 import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
 import { AssetBuildingListComponent } from './asset-building-list/asset-building-list.component';
 import { AssetBuildingDetailComponent } from './asset-building-detail/asset-building-detail.component';
+import {AppArchiveModule} from '@ss/common/app-archive';
+import { AssetReceptionsDetailComponent } from './asset-receptions-detail/asset-receptions-detail.component';
 
 @NgModule({
     imports: [
@@ -53,6 +55,7 @@ import { AssetBuildingDetailComponent } from './asset-building-detail/asset-buil
         RouterModule,
         CustomAttributesModule,
         NgxScannerQrcodeModule,
+        AppArchiveModule
     ],
     declarations: [
         AssetsDetailComponent,
@@ -83,7 +86,8 @@ import { AssetBuildingDetailComponent } from './asset-building-detail/asset-buil
         AssetBlockingTypeListComponent,
         AssetBlockingTypeDetailComponent,
         AssetBuildingListComponent,
-        AssetBuildingDetailComponent
+        AssetBuildingDetailComponent,
+        AssetReceptionsDetailComponent
     ],
 })
 export class AssetsComponentModule {
