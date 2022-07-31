@@ -9,7 +9,6 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
     ]
 })
 export class SalesModule {
-    constructor(private payMethod: PayMethodService) {
-        this.payMethod.load();
+    constructor() {
     }
 }

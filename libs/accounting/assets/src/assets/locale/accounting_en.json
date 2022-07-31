@@ -30,8 +30,6 @@
     "FILES":                    "Files",
     "DEBIT":                    "Debit",
     "CREDIT":                   "Credit",
-    "PROJECT":                  "Project",
-    "PROJECTS":                 "Projects",
     "POS":                      "Position",
     "TRANSAC_DETAIL":           "Transaction detail",
     "SHOW_HEADER":              "Show transaction header",

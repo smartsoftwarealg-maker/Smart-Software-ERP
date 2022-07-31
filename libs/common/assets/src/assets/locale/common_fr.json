@@ -216,5 +216,7 @@
     "CASH":               "Espèces",
     "AMOUNT":             "Montant",
     "NO_":                "N°",
-    "JOURNAL":            "Journal"
+    "JOURNAL":            "Journal",
+    "PROJECT":                 "Projet",
+    "PROJECTS":                "Projets"
 }

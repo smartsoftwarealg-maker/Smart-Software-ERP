@@ -91,6 +91,11 @@
                         "glob": "**/*",
                         "input": "libs/web-arch/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/scheduled-sales/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],

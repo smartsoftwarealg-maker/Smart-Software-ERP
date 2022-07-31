@@ -27,7 +27,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="projectName">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_PROJECT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef translate>common_PROJECT</mat-header-cell>
                     <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
                         {{e.projectName}}
                     </mat-cell>

@@ -1,7 +1,7 @@
 import {
     ABS_LOGISTICS_PAY_METHOD,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_LOGISTICS_CATEGORY,
+    ABS_LOGISTICS_CATEGORY, ABS_SCHEDULED_SALES_PROJECTS,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
@@ -59,6 +59,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-users-class',
             route: ABS_LOGISTICS_CATEGORY,
+            accessRights: 'SalesCategory'
+        },
+        {
+            name: ' COMMON_PROJECTS',
+            icon: 'fa-solid fa-buildings',
+            route: ABS_SCHEDULED_SALES_PROJECTS,
             accessRights: 'SalesCategory'
         },
     ],
