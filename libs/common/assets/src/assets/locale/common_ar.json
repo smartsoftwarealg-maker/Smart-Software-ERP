@@ -215,6 +215,7 @@
     "AMOUNT":             "المبلغ",
     "NO_":                "رقم",
     "JOURNAL":            "الدفتر",
-    "PROJECTS":                  "المشاريع",
-    "PROJECT":                  "مشروع"
+    "PROJECTS":           "المشاريع",
+    "PROJECT":             "مشروع",
+    "COUNT":               "عدد"
 }
