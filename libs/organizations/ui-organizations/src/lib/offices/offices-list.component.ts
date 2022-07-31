@@ -42,7 +42,6 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         super.ngOnInit();
-        console.log('ngOnInit');
     }
 
 }

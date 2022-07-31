@@ -1,0 +1,38 @@
+<mat-form-field class="default-100">
+    <mat-label translate>ASSET_LOCATIONS</mat-label>
+    <ss-auto-complete matInput
+                      [model]="locationLookup"
+                      [formControl]="locationFF">
+    </ss-auto-complete>
+</mat-form-field>
+
+<mat-form-field class="default-100">
+    <mat-label translate>ASSET_BUILDINGS</mat-label>
+    <ss-auto-complete matInput
+                      [model]="buildingLookup"
+                      [formControl]="buildingFF">
+    </ss-auto-complete>
+</mat-form-field>
+<mat-form-field id="description" class="default-100">
+    <mat-label translate>ASSET_FLOOR_NO</mat-label>
+    <input matInput [formControl]="floorFF" type="number" required>
+</mat-form-field>
+
+<div class="list_div">
+    <mat-list role="list">
+        <mat-list-item class="selectable"
+                       role="listitem"
+                       (click)="select(d)"
+                       *ngFor="let d of list"
+                       [class.selected]="d.id === selectedOffice?.id"        >
+            {{ d.description }} - {{ d.locationCode }} / {{ d.buildingCode }} / {{ d.code}}
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<div mat-dialog-actions class="ctrl-div">
+    <button mat-raised-button [mat-dialog-close]="selectedOffice" color="primary" cdkFocusInitial translate>
+        COMMON_SELECT
+    </button>
+    <button mat-raised-button (click)="close()" translate color="accent">COMMON_CANCEL</button>
+</div>

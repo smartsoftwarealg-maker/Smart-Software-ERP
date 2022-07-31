@@ -48,22 +48,27 @@
         <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
+
 <!--    <mat-form-field class="default-50 sm-100">-->
 <!--        <mat-label translate>ASSET_LOCATIONS</mat-label>-->
 <!--        <ss-auto-complete matInput-->
-<!--                          [model]="locationAutoCompleteModel"-->
-<!--                          formControlName="location">-->
+<!--                          [model]="officeAutoCompleteModel"-->
+<!--                          formControlName="office">-->
 <!--        </ss-auto-complete>-->
 <!--    </mat-form-field>-->
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>ASSET_LOCATIONS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="officeAutoCompleteModel"
-                          formControlName="office">
-        </ss-auto-complete>
-    </mat-form-field>
-
+    <div class="default-50 sm-100">
+        <mat-form-field style="width: calc(100% - 48px)">
+            <mat-label translate>ASSET_LOCATIONS</mat-label>
+            <ss-auto-complete matInput
+                              [model]="officeAutoCompleteModel"
+                              formControlName="office">
+            </ss-auto-complete>
+        </mat-form-field>
+        <button mat-mini-fab (click)="openSearchDlg()">
+            <i class="fa-solid fa-file-magnifying-glass"></i>
+        </button>
+    </div>
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
@@ -374,6 +379,17 @@
             </mat-expansion-panel-header>
 
             <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2" [editable]="isEditable"></ss-child-attributes>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <ss-app-archive-main [id]="id" [appId]="3"></ss-app-archive-main>
+
         </mat-expansion-panel>
 
     </mat-accordion>

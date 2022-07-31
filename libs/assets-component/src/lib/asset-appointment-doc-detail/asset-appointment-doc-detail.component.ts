@@ -23,6 +23,9 @@ import {AssetAppointmentLineService} from '../asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
+import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
+import {OfficeSearchComponent} from '../office-search/office-search.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-asset-appointment-doc-detail',
@@ -57,6 +60,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         private loginSrv: LoginService,
         private detailSrv: AssetAppointmentLineService,
         private consumerSrv: ConsumerService,
+        private dialog: MatDialog,
         private assetSrv: AssetsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
@@ -151,5 +155,15 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
             })
+    }
+
+    openSearchDlg() {
+        const dialogRef = this.dialog.open(OfficeSearchComponent,
+            {
+                data: {id: 0, description: null}
+            });
+        dialogRef
+            .afterClosed()
+            .subscribe(res => this.form.controls['officeId']?.setValue(res?.id));
     }
 }

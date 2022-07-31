@@ -276,7 +276,6 @@ export class ShellService {
 
     public setGoBackPath(path: string, relativeActivatedRoute: ActivatedRoute, params?: any) {
         this.setGoBackFn(() => {
-            console.log(this.router.url, path);
             this.router.navigate([path], { relativeTo: relativeActivatedRoute, queryParams: params })
                 .then()
         });
