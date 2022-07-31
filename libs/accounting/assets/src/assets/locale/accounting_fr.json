@@ -30,8 +30,6 @@
     "FILES":                   "Dossiers",
     "DEBIT":                   "Débit",
     "CREDIT":                  "Crédit",
-    "PROJECT":                 "Projet",
-    "PROJECTS":                "Projets",
     "POS":                     "Position",
     "TRANSAC_DETAIL":          "Détail de l'ecriture comptable'",
     "SHOW_HEADER":             "Afficher l'en-tête de l'ecriture comptable",

@@ -30,8 +30,6 @@
     "FILES":                    "الملفات",
     "DEBIT":                    "مدين",
     "CREDIT":                   "دائن",
-    "PROJECT":                  "مشروع",
-    "PROJECTS":                  "المشاريع",
     "POS":                      "الترتيب",
     "TRANSAC_DETAIL":           "تفاصيل الصفقة",
     "SHOW_HEADER":              "إظهار رأس المعاملة" ,

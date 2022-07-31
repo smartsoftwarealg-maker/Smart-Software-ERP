@@ -28,7 +28,7 @@
             <span class="default-100 filler" ></span>
 
             <mat-form-field style="width: 90%" *ngIf="accPolicy?.showProjects">
-                <mat-placeholder translate>ACC_PROJECT</mat-placeholder>
+                <mat-placeholder translate>common_PROJECT</mat-placeholder>
                 <mat-select formControlName="projectId">
                     <mat-option *ngFor="let p of projects" [value]="p.id">
                         {{ p.description }}

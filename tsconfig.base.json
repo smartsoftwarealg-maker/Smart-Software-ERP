@@ -378,6 +378,12 @@
             "@ss/sales/ui-transactionlines": [
                 "libs/sales/ui-transactionlines/src/index.ts"
             ],
+            "@ss/scheduled-sales/api-scheduled-sales": [
+                "libs/scheduled-sales/api-scheduled-sales/src/index.ts"
+            ],
+            "@ss/scheduled-sales/projects": [
+                "libs/scheduled-sales/projects/src/index.ts"
+            ],
             "@ss/stock/api-article": ["libs/stock/api-article/src/index.ts"],
             "@ss/stock/api-article-store": [
                 "libs/stock/api-article-store/src/index.ts"

@@ -131,6 +131,7 @@ export class AppModule {
     constructor(private langSrv: LanguageService) {
         langSrv.addSource('assets/locale/', '');
         langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
+        langSrv.addSource('assets/locale/sch_', 'SCH_');
         langSrv.addSource('assets/locale/stock_', 'STOCK_');
         langSrv.addSource('assets/locale/payroll_', 'PAYROLL_');
         langSrv.addSource('assets/locale/common_', 'COMMON_');

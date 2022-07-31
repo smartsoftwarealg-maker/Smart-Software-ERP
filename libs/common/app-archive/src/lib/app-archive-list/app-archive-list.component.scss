@@ -15,9 +15,11 @@
     min-height: 70%;
 }
 
-mat-list {
+.list_div {
+    overflow-y: auto;
     flex: 1 1 30%;
 }
+
 
 .imj {
     flex: 2 1 60%;
@@ -32,3 +34,4 @@ img {
     max-width: 96%;
     max-height: 96%;
 }
+

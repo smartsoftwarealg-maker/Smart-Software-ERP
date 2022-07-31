@@ -176,8 +176,10 @@ export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments'
 export const ASSETS_AGENT_URL            = 'agents';
 export const ASSET_BUILDING_URL          = 'buildings';
 
+// Scheduled sales
+export const SS_PROJECTS_URL             = 'ss_projects';
 
-//Missions
+// Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
 
@@ -289,6 +291,10 @@ export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_UR
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
+
+// Scheduled sales
+export const ABS_SCHEDULED_SALES_PROJECTS = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');
+
 
 //Finance
 export const ABS_FINANCE_CPAYMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CPAYMENTS_URL].join('/');

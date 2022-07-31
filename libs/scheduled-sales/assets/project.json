@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/scheduled-sales/assets",
+    "sourceRoot": "libs/scheduled-sales/assets/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/scheduled-sales/assets"],
+            "options": {
+                "jestConfig": "libs/scheduled-sales/assets/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/scheduled-sales/assets/src/**/*.ts",
+                    "libs/scheduled-sales/assets/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
