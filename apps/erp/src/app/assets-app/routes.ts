@@ -20,7 +20,7 @@ import {
     ASSET_INVENTORY_URL,
     STOCK_AGENT_URL,
     docInfoRoutes,
-    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL, ASSET_BUILDING_URL
+    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL, ASSET_BUILDING_URL, LOGISTICS_AGENT_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -82,7 +82,17 @@ export const mainRoutes: Routes = [
                         path: '',
                         component: AssetsDetailComponent,
                         canActivate: [CanActivateService],
-                        canDeactivate: [CanDeactivateService]
+                        canDeactivate: [CanDeactivateService],
+                        children: [
+                            { path: '', component: AppArchiveListComponent },
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ASSETS_COST_URL,
@@ -386,20 +396,34 @@ export const mainRoutes: Routes = [
 
     },
     {
-        path: ASSETS_AGENT_URL,
+        path: LOGISTICS_AGENT_URL,
         children: [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
-                children: docInfoRoutes,
-                data: {form: 'Agent'}
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: AgentDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [CanActivateService],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true},
+                        children: [
+                            { path: '', component: AppArchiveListComponent },
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

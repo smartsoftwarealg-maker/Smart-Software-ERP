@@ -21,6 +21,7 @@ import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-di
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 import {AssetClassService} from '../asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {OfficeSearchComponent} from '../office-search/office-search.component';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -236,6 +237,16 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }
         });
+    }
+
+    openSearchDlg() {
+        const dialogRef = this.dialog.open(OfficeSearchComponent,
+            {
+                data: {id: 0, description: null}
+            });
+        dialogRef
+            .afterClosed()
+            .subscribe(res => this.form.controls['office']?.setValue(res?.id));
     }
 
 }

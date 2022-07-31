@@ -32,20 +32,24 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ASSET_LOCATIONS</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="officeAutoCompleteModel"
-                                  formControlName="officeId">
-                </ss-auto-complete>
-            </mat-form-field>
-
+            <div class="default-50 sm-100">
+                <mat-form-field style="width: calc(100% - 48px)">
+                    <mat-label translate>ASSET_LOCATIONS</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="officeAutoCompleteModel"
+                                      formControlName="officeId">
+                    </ss-auto-complete>
+                </mat-form-field>
+                <button mat-mini-fab (click)="openSearchDlg()">
+                    <i class="fa-solid fa-file-magnifying-glass"></i>
+                </button>
+            </div>
         </form>
 
     </mat-card-content>
 </mat-card>
 
-<mat-table *ngIf="editMode" mat-table [dataSource]="detailData" class="main-table item" >
+<mat-table *ngIf="editMode" mat-table [dataSource]="detailData" class="main-table item">
 
     <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
