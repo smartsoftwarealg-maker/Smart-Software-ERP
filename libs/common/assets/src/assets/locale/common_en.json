@@ -217,5 +217,6 @@
     "NO_":                "No.",
     "JOURNAL":            "Journal",
     "PROJECT":                  "Project",
-    "PROJECTS":                 "Projects"
+    "PROJECTS":                 "Projects",
+    "COUNT":               "Count"
 }
