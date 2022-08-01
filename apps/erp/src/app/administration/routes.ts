@@ -13,7 +13,7 @@ import {
     ADMINISTRATION_TRACEABILITY_URL,
     ADMINISTRATION_ATTRIBUTE_URL,
     ADMINISTRATION_DB_UPDATER_URL,
-    ADMINISTRATION_ARCHIVE_DOCUMENTS_URL
+    ADMINISTRATION_ARCHIVE_DOCUMENTS_URL, LOGISTICS_NUMBERING_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -37,6 +37,10 @@ import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
 import {AttributesDetailComponent, AttributesListComponent} from '@ss/custom-attributes';
 import {DbUpdaterComponent} from '@ss/administration/db-updater';
+import {
+    DocumentNumberingDetailComponent,
+    DocumentNumberingListComponent
+} from '@ss/logistics/document-numbering';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -254,6 +258,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: WilayaDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_NUMBERING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DocumentNumberingListComponent
+            },
+            {
+                path: ':id',
+                component: DocumentNumberingDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
-import {LoginService} from '@ss/common/api-common';
-import {AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
 import {DocumentNumberingService} from '../document-numbering.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {DefinitionLookupService} from '../definition-lookup.service';
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-document-numbering-detail',
@@ -17,7 +16,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./document-numbering-detail.component.scss']
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {
-    documentAutoCompleteModel = new DefaultAutoCompleteModel(this.docSrv);
+    documentAutoCompleteModel = new DefaultAutoCompleteModel(this.definitionSrv);
 
     constructor(
         private docSrv: DocumentNumberingService,
@@ -26,7 +25,8 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
         public route: ActivatedRoute,
         public formBuilder: FormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public definitionSrv: DefinitionLookupService,
+        private loginSrv: LoginService) {
         super(docSrv,
             shellSrv,
             snackBarSrv,
@@ -39,7 +39,7 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
     public setupForm(e: LDocument): FormGroup {
         return this.formBuilder.group({
             id: [e.id],
-            centerId: [e.centerId],
+            centerId: [e.centerId || this.loginSrv.appCtx.center],
             code: [e.code, Validators.required],
             startNumber: [e.startNumber, Validators.required],
             footer: [e.footer],

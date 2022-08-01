@@ -85,17 +85,23 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         const form = this.formBuilder.group({
             id:            [b.id],
             center:        [b.center || this.loginSrv.appCtx.center],
-            serialNumber:  [b.serialNumber || 1],
+            serialNumber:  [{ value: b.serialNumber || 1, disabled: true }],
             date:          [b.date, Validators.required],
-            officeId:      [b.officeId],
+            officeId:      [b.officeId, Validators.required],
             requesterId:   [b.requesterId],
             requestDate:   [b.requestDate],
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
-            reappointment: [b.reappointment || 0, Validators.required],
+            reappointment: [b.reappointment || false, Validators.required],
         });
 
         return form;
+    }
+
+    override readForm(): ASSAppointmentHeader {
+        const value = super.readForm();
+        value.serialNumber = 1;
+        return value;
     }
 
     override ngOnDestroy() {

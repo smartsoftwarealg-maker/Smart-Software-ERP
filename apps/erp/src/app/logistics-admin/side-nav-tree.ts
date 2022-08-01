@@ -25,12 +25,6 @@ export const logAdminNavTree: SideNavNode = {
         //     accessRights: 'Unit'
         // },
         {
-            name: 'LOGISTICS_DOCUMENT_NUMBERING',
-            icon: 'fas fa-list-ol',
-            route: LOGISTICS_DOCUMENT_URL,
-            accessRights: 'Document'
-        },
-        {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
             route: ABS_LOGISTICS_AGENT_URL,
