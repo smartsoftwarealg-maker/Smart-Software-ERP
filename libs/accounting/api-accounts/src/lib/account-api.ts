@@ -22,6 +22,8 @@ export interface Account {
     ccRequired: boolean;
     depreciation_account?: string;
     endowment_account?: string;
+    depreciationRate?: number;
+    usefulLife?: number;
 }
 
 export interface GenerationAccount {

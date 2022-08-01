@@ -58,5 +58,7 @@
     "TOTAL_DEBIT":                "",
     "TOTAL_CREDIT":               "",
     "BALANCE":                  "",
-    "GL":                       ""
+    "GL":                       "",
+    "DEPRECIATION_RATE": "",
+    "USEFUL_LIFE":       ""
 }

@@ -2,8 +2,6 @@
     "SERVICE_DATE":      "",
     "ACQUISITION_VALUE": "",
     "RESIDUAL_VALUE":    "",
-    "DEPRECIATION_RATE": "",
-    "USEFUL_LIFE":       "",
     "SERIAL_NUMBER":     "",
     "BAR_CODE":          "",
     "ITEM_COUNT":        "",
@@ -38,5 +36,6 @@
     "INVENTORY_NO":       "",
     "BLOCKING_TYPES":     "",
     "BUILDINGS":          "",
-    "SITE":               ""
+    "SITE":               "",
+    "REAPPOINTMENT":      ""
 }

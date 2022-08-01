@@ -49,7 +49,9 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
             journalId: [a.journalId],
             ccRequired: [a.ccRequired],
             depreciation_account: [a.depreciation_account],
-            endowment_account: [a.endowment_account]
+            endowment_account: [a.endowment_account],
+            depreciationRate: [a.depreciationRate],
+            usefulLife: [a.usefulLife]
         });
     }
 

@@ -27,6 +27,16 @@
                 <input matInput formControlName="endowment_account" type="text">
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
+                <input matInput formControlName="depreciationRate" type="number" min="1" max="100">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ACC_USEFUL_LIFE</mat-label>
+                <input matInput formControlName="usefulLife" type="number" max="99" min="1" step="1">
+            </mat-form-field>
+
 
         </form>
     </mat-card-content>

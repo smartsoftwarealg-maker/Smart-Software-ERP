@@ -20,7 +20,9 @@ export class AssetAccountsListComponent extends BaseEntityListComponent<Account>
         'accountNo',
         'description',
         'depreciation_account',
-        'endowment_account'
+        'endowment_account',
+        'depreciationRate',
+        'usefulLife'
     ];
 
     constructor(

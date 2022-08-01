@@ -54,14 +54,14 @@
             </ng-container>
 
             <ng-container matColumnDef="depreciationRate">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION_RATE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.depreciationRate | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="useful_life">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_USEFUL_LIFE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.useful_life | number: '1.2-2'}}
                 </mat-cell>
