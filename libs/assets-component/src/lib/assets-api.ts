@@ -146,6 +146,8 @@ export interface AssetReception {
     acquisition_Date: Date;
     invoice_Number?: string;
     supplier?: string;
+    count: number,
+    amount?: number
 }
 
 export interface ASSAppointmentHeader {

@@ -218,5 +218,6 @@
     "NO_":                "N°",
     "JOURNAL":            "Journal",
     "PROJECT":                 "Projet",
-    "PROJECTS":                "Projets"
+    "PROJECTS":                "Projets",
+    "COUNT":               "number"
 }

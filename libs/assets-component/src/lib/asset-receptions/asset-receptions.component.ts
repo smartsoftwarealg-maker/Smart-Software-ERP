@@ -19,6 +19,8 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'acquisition_Date',
         'invoice_Number',
         'supplier',
+        'count',
+        'amount'
     ];
 
     constructor(
