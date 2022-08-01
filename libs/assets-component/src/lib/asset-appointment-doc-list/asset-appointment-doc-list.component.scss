@@ -1,6 +1,7 @@
 mat-table {
-    min-width: 600px;
+    min-width: 800px;
 }
+
 .main-table,
 .pagination-container {
     width: 90%;
@@ -9,13 +10,25 @@ mat-table {
 }
 
 .mat-column-date,
-.mat-column-serialNumber {
+.mat-column-serialNumber,
+.mat-column-reappointment,
+.mat-column-requestNumber {
     flex: 1 1 100px;
+    border-left: white solid 1px;
+}
+
+.mat-column-reappointment,
+.mat-column-requestDate {
+    flex: 1 1 100px;
+    border-left: white solid 1px;
+    justify-content: center;
+    padding-left: 8px;
 }
 
 .mat-column-officeName,
-.mat-column-valName {
+.mat-column-beneficiary {
     flex: 1 1 200px;
+    border-left: white solid 1px;
 }
 
 .mat-column-date {

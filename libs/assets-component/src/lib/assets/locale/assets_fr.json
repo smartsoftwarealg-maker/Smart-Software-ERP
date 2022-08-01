@@ -2,8 +2,6 @@
     "SERVICE_DATE":       "Date mise en service",
     "ACQUISITION_VALUE":  "Valeur d'acquisition",
     "RESIDUAL_VALUE":     "valeur résiduelle",
-    "DEPRECIATION_RATE":  "Taux d'amortissement",
-    "USEFUL_LIFE":        "Vie utile",
     "SERIAL_NUMBER":      "Numéro de série",
     "BAR_CODE":           "Code à barre",
     "ITEM_COUNT":         "Nombre d'éléments",
@@ -40,5 +38,6 @@
     "INVENTORY_NO":       "Numéro d'inventaire",
     "BLOCKING_TYPES":     "Types de blocage",
     "BUILDINGS":          "Bâtiments",
-    "SITES":               "Sites"
+    "SITES":               "Sites",
+    "REAPPOINTMENT":      "Reaffectation"
 }

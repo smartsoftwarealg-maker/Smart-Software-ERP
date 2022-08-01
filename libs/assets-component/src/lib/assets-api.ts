@@ -138,6 +138,7 @@ export interface ASSAppointment {
     officeCode?: string;
     agentId?: number;
     denomination?: string;
+    reappointment: boolean
 }
 
 export interface AssetReception {
@@ -160,6 +161,8 @@ export interface ASSAppointmentHeader {
     beneficiaryId?: number;
     requester?: string;
     beneficiary?: string;
+    activity?: string;
+    reappointment: boolean;
 }
 
 export interface AssetAppointmentLine {

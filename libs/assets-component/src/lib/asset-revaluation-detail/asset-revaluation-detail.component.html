@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>ASSET_USEFUL_LIFE</mat-label>
+            <mat-label translate>ACC_USEFUL_LIFE</mat-label>
             <input matInput formControlName="useful_life" type="number" required>
             <mat-error *ngIf="form.controls['useful_life'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
             <mat-error *ngIf="form.controls['useful_life'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
@@ -36,7 +36,7 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>ASSET_DEPRECIATION_RATE</mat-label>
+            <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
             <input matInput formControlName="deprec_rate" type="number" required step="0.1">
             <mat-error *ngIf="form.controls['deprec_rate'].hasError('validOption')" translate>COMMON_NO_MATCH</mat-error>
             <mat-error *ngIf="form.controls['deprec_rate'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>

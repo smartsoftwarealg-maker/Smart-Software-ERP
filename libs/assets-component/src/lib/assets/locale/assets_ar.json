@@ -2,8 +2,6 @@
     "SERVICE_DATE":      "تاريخ الخدمة",
     "ACQUISITION_VALUE": "قيمة الاقتناء" ,
     "RESIDUAL_VALUE":    "القيمة المتبقية",
-    "DEPRECIATION_RATE": "معدل الاستهلاك",
-    "USEFUL_LIFE":       "العمر الإنتاجي",
     "SERIAL_NUMBER":     "رقم سري",
     "BAR_CODE":          "الباركود",
     "ITEM_COUNT":        "عدد الأصناف",
@@ -39,6 +37,7 @@
     "INVENTORY_YEAR":     "سنة الجرد",
     "INVENTORY_NO":       "رقم الجرد",
     "BLOCKING_TYPES":     "أنواع المنع",
-    "BUILDINGS":          "",
-    "SITES":              "المواقع"
+    "BUILDINGS":          "المبانئ",
+    "SITES":              "المواقع",
+    "REAPPOINTMENT":      "إعادة التعيين"
 }

@@ -11,7 +11,7 @@ import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
+import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AssetLocationService} from '../asset-location.service';
@@ -79,6 +79,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             formBuilder,
             confirmationSrv, 'ASSETS');
         this.officeSrv.setParentId(0);
+        this.accountAutoCompleteModel.onObjectSelected = a => this.updateAccountDefaults(a);
     }
 
     setupForm(b: Asset): FormGroup {
@@ -247,6 +248,13 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         dialogRef
             .afterClosed()
             .subscribe(res => this.form.controls['office']?.setValue(res?.id));
+    }
+
+    private updateAccountDefaults(a: Account) {
+        if (this.form && a) {
+            this.form.controls['depreciationRate'].setValue(a.depreciationRate || 0);
+            this.form.controls['useful_life'].setValue(a.usefulLife || 0);
+        }
     }
 
 }

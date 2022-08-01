@@ -63,6 +63,8 @@
     "TOTAL_DEBIT":              "Débit total",
     "TOTAL_CREDIT":             "Crédit total",
     "BALANCE":                  "Solde",
-    "GL":                       "Grand livre général"
+    "GL":                       "Grand livre général",
+    "DEPRECIATION_RATE":  "Taux d'amortissement",
+    "USEFUL_LIFE":        "Vie utile"
 }
 

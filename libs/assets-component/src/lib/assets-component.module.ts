@@ -89,7 +89,7 @@ import { OfficeSearchComponent } from './office-search/office-search.component';
         AssetBuildingListComponent,
         AssetBuildingDetailComponent,
         AssetReceptionsDetailComponent,
-        OfficeSearchComponent
+        OfficeSearchComponent,
     ],
 })
 export class AssetsComponentModule {

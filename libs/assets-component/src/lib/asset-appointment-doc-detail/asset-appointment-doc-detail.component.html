@@ -17,6 +17,20 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_REFERENCE</mat-label>
+                <input matInput formControlName="requestNumber" type="text" >
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" required>
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker required="true" formControlName="requestDate"></ss-date-picker>
+<!--                <mat-error *ngIf="form.controls.requestDate.hasError('required')" translate>-->
+<!--                    COMMON_FIELD_REQUIRED-->
+<!--                </mat-error>-->
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_REQUESTER</mat-label>
                 <ss-auto-complete matInput
                                   [model]="requesterLookup"
@@ -27,9 +41,10 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_BENEFICIARY</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="requesterLookup"
+                                  [model]="beneficiaryLookup"
                                   formControlName="beneficiaryId">
                 </ss-auto-complete>
+                <span class="activity f-warn" *ngIf="!!activity"> {{ activity }}</span>
             </mat-form-field>
 
             <div class="default-50 sm-100">
@@ -44,6 +59,11 @@
                     <i class="fa-solid fa-file-magnifying-glass"></i>
                 </button>
             </div>
+
+            <div id="manager" class="default-50 sm-100">
+                <mat-checkbox formControlName="reappointment" translate>ASSET_REAPPOINTMENT</mat-checkbox>
+            </div>
+
         </form>
 
     </mat-card-content>

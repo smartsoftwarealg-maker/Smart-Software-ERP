@@ -20,7 +20,12 @@ import {
     ASSET_INVENTORY_URL,
     STOCK_AGENT_URL,
     docInfoRoutes,
-    ASSETS_AGENT_URL, LOGISTICS_ACTIVITY_URL, ASSET_BLOCKING_TYPE_URL, ASSET_BUILDING_URL, LOGISTICS_AGENT_URL
+    ASSETS_AGENT_URL,
+    LOGISTICS_ACTIVITY_URL,
+    ASSET_BLOCKING_TYPE_URL,
+    ASSET_BUILDING_URL,
+    LOGISTICS_AGENT_URL,
+    COMMON_ACCOUNT_URL, ASSET_ACCOUNT_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -64,7 +69,10 @@ import {
     AppArchiveDetailComponent
 } from '@ss/logistics/ui-agent';
 import {ActivityDetailComponent, ActivityListComponent} from '@ss/common/ui-lookup';
-import {AppArchiveMainComponent} from '../../../../../libs/common/app-archive/src';
+import {
+    AssetAccountsDetailComponent,
+    AssetAccountsListComponent
+} from '@ss/accounting/accounting-accounts';
 
 export const mainRoutes: Routes = [
     {
@@ -429,6 +437,26 @@ export const mainRoutes: Routes = [
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
+
+    {
+        path: ASSET_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: AssetAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

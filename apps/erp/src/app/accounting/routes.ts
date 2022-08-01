@@ -93,7 +93,7 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAccountsListComponent,
-                canActivate: [CanActivateService, AccountingPeriodGuard]
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',

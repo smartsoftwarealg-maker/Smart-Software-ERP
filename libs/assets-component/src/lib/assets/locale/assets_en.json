@@ -2,8 +2,6 @@
     "SERVICE_DATE":      "Service date",
     "ACQUISITION_VALUE": "Acquisition value",
     "RESIDUAL_VALUE":    "residual value",
-    "DEPRECIATION_RATE": "Depreciation rate",
-    "USEFUL_LIFE":       "Useful life",
     "SERIAL_NUMBER":     "Serial number",
     "BAR_CODE":          "Bar code",
     "ITEM_COUNT":        "Item count",
@@ -40,5 +38,6 @@
     "INVENTORY_NO":       "Inventory number",
     "BLOCKING_TYPES":     "Blocking types",
     "BUILDINGS":          "Buildings",
-    "SITES":              "Sites"
+    "SITES":              "Sites",
+    "REAPPOINTMENT":      "Reappointment"
 }

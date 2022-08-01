@@ -13,7 +13,6 @@ import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
     AttribTempl,
-    AttributeLookupService,
     AttributesService
 } from '@ss/custom-attributes';
 import {switchMap} from 'rxjs/operators';
@@ -23,7 +22,6 @@ import {AssetAppointmentLineService} from '../asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
-import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -33,8 +31,10 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
-    public requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     editMode = false;
+    activity: string = 'todo';
    // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
     detailData: AssetAppointmentLine[] = [];
@@ -64,23 +64,24 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         private assetSrv: AssetsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
+        this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
     }
 
     public setupForm(b: ASSAppointmentHeader) {
         this.editMode = b.id != 0;
-        this.loginSrv
-            .loadContext()
-            .subscribe();
+        this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);
         this.detailSrv.setParentId(b.id || 0);
         this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
             .pipe(tap(res => this.childAttributes = res),
+                switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(_ => this.detailSrv.getList(0, 5)))
             .subscribe(res => {
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+
         const form = this.formBuilder.group({
             id:            [b.id],
             center:        [b.center || this.loginSrv.appCtx.center],
@@ -91,6 +92,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             requestDate:   [b.requestDate],
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
+            reappointment: [b.reappointment || 0, Validators.required],
         });
 
         return form;

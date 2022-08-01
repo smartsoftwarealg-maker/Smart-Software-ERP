@@ -21,10 +21,32 @@
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="valName">
+    <ng-container matColumnDef="beneficiary">
         <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{ e.beneficiary }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="requestNumber">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.requestNumber }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="requestDate">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.requestDate | date: 'dd/MM/yyyy' }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="reappointment">
+        <mat-header-cell *matHeaderCellDef translate>ASSET_REAPPOINTMENT</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                          [checked]="e.reappointment"></mat-checkbox>
         </mat-cell>
     </ng-container>
 

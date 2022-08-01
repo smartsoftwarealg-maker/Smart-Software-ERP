@@ -53,6 +53,7 @@ export interface Agent {
     postalCode?: string;
     approval?: string;
     category?: number;
+    activityDescription?: string;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

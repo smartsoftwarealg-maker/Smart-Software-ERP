@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL, ABS_ASSET_ACCOUNT_URL,
     ABS_ASSET_APPOINTMENT_DOC_URL, ABS_ASSET_BUILDS,
     ABS_ASSET_CLASSES, ABS_ASSET_INVENTORY_URL, ABS_ASSET_LOCATIONS,
     ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
@@ -13,6 +14,12 @@ export const assetsNavTree: SideNavNode = {
     icon: 'fa-solid fa-car-bus',
     accessRights: 'ASSETS',
     children: [
+        {
+            name: 'ACC_ASSET_ACCOUNTS',
+            icon: 'fas fa-cogs',
+            route: ABS_ACC_ASSET_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
