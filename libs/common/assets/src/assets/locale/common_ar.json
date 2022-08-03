@@ -217,5 +217,6 @@
     "JOURNAL":            "الدفتر",
     "PROJECTS":           "المشاريع",
     "PROJECT":             "مشروع",
-    "COUNT":               "عدد"
+    "COUNT":               "عدد",
+    "FURNITURE_STATUS":    "حالة الأثاث"
 }

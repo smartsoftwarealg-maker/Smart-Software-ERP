@@ -2,7 +2,7 @@
     "SERVICE_DATE":       "Date mise en service",
     "ACQUISITION_VALUE":  "Valeur d'acquisition",
     "RESIDUAL_VALUE":     "valeur résiduelle",
-    "SERIAL_NUMBER":      "Numéro de série",
+    "SERIAL_NUMBER":      "N° série",
     "BAR_CODE":           "Code à barre",
     "ITEM_COUNT":         "Nombre d'éléments",
     "DEPRECIATION":       "Dépréciation",
@@ -39,5 +39,6 @@
     "BLOCKING_TYPES":     "Types de blocage",
     "BUILDINGS":          "Bâtiments",
     "SITES":               "Sites",
-    "REAPPOINTMENT":      "Reaffectation"
+    "REAPPOINTMENT":      "Reaffectation",
+    "END_TYPES":          "Types de sortie"
 }

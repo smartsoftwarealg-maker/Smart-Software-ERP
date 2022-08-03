@@ -1,0 +1,14 @@
+import {Injectable} from '@angular/core';
+import {HttpService, Role} from '@ss/common/api-common';
+import {BaseEntityService} from '@ss/common/api-base-entity';
+import {Lookup} from '@ss/common/api-lookup';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class FurnitureStatusService extends BaseEntityService<Lookup> {
+
+    constructor(protected httpSrv: HttpService) {
+        super(httpSrv, '/lookups/furniture_status');
+    }
+}

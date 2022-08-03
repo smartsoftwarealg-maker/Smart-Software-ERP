@@ -39,5 +39,6 @@
     "BLOCKING_TYPES":     "Blocking types",
     "BUILDINGS":          "Buildings",
     "SITES":              "Sites",
-    "REAPPOINTMENT":      "Reappointment"
+    "REAPPOINTMENT":      "Reappointment",
+    "END_TYPES":          "Exit types"
 }

@@ -107,7 +107,7 @@ export const LOGISTICS_COMPANY_TYPE_URL = 'companyTypes';
 export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const LOGISTICS_CATEGORY_URL = 'sales-categories';
-export const LOGISTICS_ARCHIVE_URL = '/archives/agents';
+export const FURNITURE_STATUS_URL = 'furniture-states';
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -161,6 +161,7 @@ export const PAY_CACO_URL             = 'caco';
 export const ASSETS_ASSET_URL            = 'assets';
 export const ASSET_COST_TYPE_URL         = 'cost_types';
 export const ASSET_BLOCKING_TYPE_URL     = 'blocking_types';
+export const ASSET_END_TYPE_URL          = 'end_types';
 export const ASSET_CLASS_URL             = 'asset_classes';
 export const ASSET_LOCATIONS_URL         = 'locations';
 export const ASSET_REVALUATION_TYPE_URL  = 'revaluation_types';
@@ -229,6 +230,7 @@ export const ABS_ADMINISTRATION_ACCESS_RIGHTS_URL = '/' + [MAIN_PAGE_URL, ADMINI
 export const ABS_ADMINISTRATION_TRACEABILITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_TRACEABILITY_URL].join('/');
 export const ABS_DB_UPDATER_URL                  = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_DB_UPDATER_URL].join('/');
 export const ABS_APP_ARCHIVE_DOCUMENTS_URL       = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ARCHIVE_DOCUMENTS_URL].join('/');
+export const ABS_STATUS_TYPES                    = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
 
 // Organizations
 export const ABS_ORGANIZATIONS_CHART_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_CHART_URL].join('/');
@@ -353,6 +355,7 @@ export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
 export const ABS_COST_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_COST_TYPE_URL].join('/');
+export const ABS_END_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_END_TYPE_URL].join('/');
 export const ABS_BLOCKING_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_BLOCKING_TYPE_URL].join('/');
 export const ABS_ASSET_CLASSES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_CLASS_URL].join('/');
 export const ABS_REVALUATION_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_REVALUATION_TYPE_URL].join('/');

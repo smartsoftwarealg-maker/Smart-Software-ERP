@@ -217,7 +217,8 @@
     "AMOUNT":             "Montant",
     "NO_":                "N°",
     "JOURNAL":            "Journal",
-    "PROJECT":                 "Projet",
-    "PROJECTS":                "Projets",
-    "COUNT":               "number"
+    "PROJECT":            "Projet",
+    "PROJECTS":           "Projets",
+    "COUNT":              "number",
+    "FURNITURE_STATUS":   "Statut du mobilier"
 }

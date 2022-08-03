@@ -218,5 +218,6 @@
     "JOURNAL":            "Journal",
     "PROJECT":                  "Project",
     "PROJECTS":                 "Projects",
-    "COUNT":               "Count"
+    "COUNT":               "Count",
+    "FURNITURE_STATUS":    "Furniture status"
 }

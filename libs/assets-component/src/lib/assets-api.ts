@@ -9,6 +9,7 @@ export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const BLOCKING_TYPE_URL = '/lookups/blocking_types';
+export const END_TYPE_URL = '/lookups/investment_ends';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 export const ASSET_APPOINTMENT_URL = '/asset-appointments';
@@ -68,6 +69,9 @@ export interface Asset {
     assetClass?: number;
     className?: string;
     supplierName?: string;
+    status?: number;
+    geolocation?: string;
+    beneficiary?: string;
 }
 
 export interface Depreciation {

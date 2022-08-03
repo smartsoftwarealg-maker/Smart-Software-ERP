@@ -16,15 +16,17 @@
     flex-grow: 0;
 }
 .main-table {
-    width: 1200px;
+    width: 1400px;
 }
 
+.mat-column-beneficiary,
 .mat-column-description {
     flex: 1 1 140px;
 }
 
 .mat-column-reference,
-.mat-column-accountno{
+.mat-column-geolocation,
+.mat-column-accountno {
     flex: 1 1 100px;
 }
 
@@ -32,6 +34,7 @@
 .mat-column-useful_life,
 .mat-column-acquisitionValue,
 .mat-column-residualValue,
+.mat-column-serial_no,
 .mat-column-acquisitionDate,
 .mat-column-serviceDate {
     flex: 1 1 90px;

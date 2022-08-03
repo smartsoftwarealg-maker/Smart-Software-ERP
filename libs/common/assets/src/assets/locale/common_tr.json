@@ -203,5 +203,6 @@
     "CASH":               "",
     "AMOUNT":             "",
     "NO_":                      "",
-    "COUNT":               ""
+    "COUNT":               "",
+    "FURNITURE_STATUS":    ""
 }

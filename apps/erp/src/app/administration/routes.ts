@@ -13,7 +13,7 @@ import {
     ADMINISTRATION_TRACEABILITY_URL,
     ADMINISTRATION_ATTRIBUTE_URL,
     ADMINISTRATION_DB_UPDATER_URL,
-    ADMINISTRATION_ARCHIVE_DOCUMENTS_URL, LOGISTICS_NUMBERING_URL
+    ADMINISTRATION_ARCHIVE_DOCUMENTS_URL, LOGISTICS_NUMBERING_URL, ASSET_END_TYPE_URL, FURNITURE_STATUS_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -31,7 +31,10 @@ import {
     CityListComponent,
     CityDetailComponent,
     WilayaListComponent,
-    WilayaDetailComponent, AppArchiveDocumentListComponent, AppArchiveDocumentDetailComponent
+    WilayaDetailComponent,
+    AppArchiveDocumentListComponent,
+    AppArchiveDocumentDetailComponent,
+    FurnitureStatusListComponent, FurnitureStatusDetailComponent
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
@@ -41,6 +44,7 @@ import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
+import {EndTypesDetailComponent, EndTypesListComponent} from '../../../../../libs/assets-component/src';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -278,6 +282,23 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: FURNITURE_STATUS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: FurnitureStatusListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: FurnitureStatusDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
     },
     {

@@ -25,7 +25,7 @@ import {
     ASSET_BLOCKING_TYPE_URL,
     ASSET_BUILDING_URL,
     LOGISTICS_AGENT_URL,
-    COMMON_ACCOUNT_URL, ASSET_ACCOUNT_URL
+    COMMON_ACCOUNT_URL, ASSET_ACCOUNT_URL, ASSET_END_TYPE_URL, FURNITURE_STATUS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -56,7 +56,7 @@ import {
     AssetBlockingTypeDetailComponent,
     AssetBuildingListComponent,
     AssetBuildingDetailComponent,
-    AssetReceptionsDetailComponent
+    AssetReceptionsDetailComponent, EndTypesListComponent, EndTypesDetailComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -68,7 +68,12 @@ import {
     AppArchiveListComponent,
     AppArchiveDetailComponent
 } from '@ss/logistics/ui-agent';
-import {ActivityDetailComponent, ActivityListComponent} from '@ss/common/ui-lookup';
+import {
+    ActivityDetailComponent,
+    ActivityListComponent,
+    FurnitureStatusDetailComponent,
+    FurnitureStatusListComponent
+} from '@ss/common/ui-lookup';
 import {
     AssetAccountsDetailComponent,
     AssetAccountsListComponent
@@ -227,6 +232,40 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetBlockingTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: FURNITURE_STATUS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: FurnitureStatusListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: FurnitureStatusDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: ASSET_END_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: EndTypesListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: EndTypesDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

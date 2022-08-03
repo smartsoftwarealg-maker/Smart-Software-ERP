@@ -1,12 +1,24 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ACC_ACCOUNT_URL, ABS_ACC_ASSET_ACCOUNT_URL, ABS_ASSET_ACCOUNT_URL,
-    ABS_ASSET_APPOINTMENT_DOC_URL, ABS_ASSET_BUILDS,
-    ABS_ASSET_CLASSES, ABS_ASSET_INVENTORY_URL, ABS_ASSET_LOCATIONS,
-    ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
+    ABS_ACC_ACCOUNT_URL,
+    ABS_ACC_ASSET_ACCOUNT_URL,
+    ABS_ASSET_ACCOUNT_URL,
+    ABS_ASSET_APPOINTMENT_DOC_URL,
+    ABS_ASSET_BUILDS,
+    ABS_ASSET_CLASSES,
+    ABS_ASSET_INVENTORY_URL,
+    ABS_ASSET_LOCATIONS,
+    ABS_ASSET_OFFICES_URL,
+    ABS_ASSET_RECEPTIONS_URL,
     ABS_ASSETS_REPORTS_URL,
-    ABS_ASSETS_URL, ABS_BLOCKING_TYPES,
-    ABS_COST_TYPES, ABS_LOGISTICS_ACTIVITY, ABS_OPTIONS_URL, ABS_REVALUATION_TYPES, ASSETS_STOCK_AGENT_URL
+    ABS_ASSETS_URL,
+    ABS_BLOCKING_TYPES,
+    ABS_COST_TYPES,
+    ABS_END_TYPES,
+    ABS_LOGISTICS_ACTIVITY,
+    ABS_OPTIONS_URL,
+    ABS_REVALUATION_TYPES, ABS_STATUS_TYPES,
+    ASSETS_STOCK_AGENT_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -31,6 +43,18 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-check',
             route: ABS_COST_TYPES,
             accessRights: 'AssetCostType'
+        },
+        {
+            name: 'ASSET_END_TYPES',
+            icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',
+            route: ABS_END_TYPES,
+            accessRights: 'AssetCostType'
+        },
+        {
+            name: 'COMMON_FURNITURE_STATUS',
+            icon: 'fa-solid fa-battery-bolt',
+            route: ABS_STATUS_TYPES,
+            accessRights: 'FurnitureStatus'
         },
         {
             name: 'ASSET_BLOCKING_TYPES',

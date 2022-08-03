@@ -40,6 +40,7 @@ import {
 } from './professional-fault.component';
 import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './punishment-type.component';
 import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './app-archive-docs.component';
+import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './furniture-status.component';
 
 @NgModule({
     imports: [
@@ -120,7 +121,9 @@ import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from
         ProfessionalFaultListComponent,
         ProfessionalFaultDetailComponent,
         AppArchiveDocumentListComponent,
-        AppArchiveDocumentDetailComponent
+        AppArchiveDocumentDetailComponent,
+        FurnitureStatusDetailComponent,
+        FurnitureStatusListComponent
     ],
     exports: [
         VatListComponent,
@@ -189,7 +192,9 @@ import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from
         ProfessionalFaultListComponent,
         ProfessionalFaultDetailComponent,
         AppArchiveDocumentListComponent,
-        AppArchiveDocumentDetailComponent
+        AppArchiveDocumentDetailComponent,
+        FurnitureStatusDetailComponent,
+        FurnitureStatusListComponent
     ]
 })
 export class CommonUiLookupModule { }
