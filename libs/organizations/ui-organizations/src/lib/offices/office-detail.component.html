@@ -41,7 +41,7 @@
             <mat-label translate>ADMINISTRATION_CODE</mat-label>
             <input matInput formControlName="code" type="text" minlength="3" maxlength="20" required>
             <mat-error *ngIf="form.controls['code'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
-            <mat-error *ngIf="form.controls['code'].errors?.maxlength" [translate]="{ maxLen: 20 }">
+            <mat-error *ngIf="form.controls['code'].errors?.maxlength" [translate]="{ maxLen: 4 }">
                 COMMON_FIELD_MAX_LENGTH
             </mat-error>
             <mat-error *ngIf="form.controls['code'].errors?.minlength" [translate]="{ minLen: 3 }">

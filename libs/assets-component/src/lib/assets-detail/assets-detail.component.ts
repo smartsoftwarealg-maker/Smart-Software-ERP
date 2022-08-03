@@ -5,14 +5,14 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Lookup, LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
+import {FurnitureStatusService, Lookup, LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
-import {switchMap, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AssetLocationService} from '../asset-location.service';
 import {AssetEndsService} from '@ss/accounting/accounting-api';
@@ -30,6 +30,7 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
     private isANSEJ = false;
+    private isAQS   = false;
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
         label: 'ASSET_IMPORT',
@@ -42,6 +43,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private maxReference: string = null;
     isEditable = true;
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
+    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
@@ -71,7 +73,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         private dialog: MatDialog,
         private isParamSrv: IsParamService,
         private costCenterSrv: CostCenterService,
-        private classSrv: AssetClassService) {
+        private classSrv: AssetClassService,
+        private statusSrv: FurnitureStatusService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -134,6 +137,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             criticity:   [b.criticity],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
+            status:      [b.status]
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -145,12 +149,15 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         } else {
             this.accountantDepreciation = this.fiscalDepreciation = [];
             this.detailSrv
-                .getMaxReference()
+                .getMaxReception()
+                .pipe(tap(res => form.controls['receptionNumber'].setValue(res.reception)),
+                      switchMap(_ => this.detailSrv.getMaxReference()))
                 .subscribe(res => {
                     this.maxReference = res.reference;
                     form.controls['reference2'].setValue(this.maxReference);
                     form.controls['reference'].setValue(this.maxReference);
-                })
+                });
+            this.setClassListener(form);
         }
         if (!this.isEditable) {
             form.disable();
@@ -171,6 +178,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         return this.isParamSrv
             .is('ANSEJ')
             .pipe(tap(res => this.isANSEJ = res),
+                  switchMap(_ => this.isParamSrv.is('AQS')),
+                  tap(res => this.isAQS = res),
                   switchMap(_ => this.endSrv.getList(0, 50)),
                   tap(res => this.assetEnds = res.body));
     }
@@ -178,6 +187,20 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
+    }
+
+    private setClassListener(form: FormGroup) {
+        if (this.isAQS) {
+            const subs = form
+                .controls['assetClass']
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged(),
+                    switchMap(res => this.detailSrv.getAQSMaxReference(<number>res))
+                ).subscribe(res => form.controls['reference'].setValue(res.reference));
+            this.subscriptions.push(subs);
+        }
     }
 
     private importAsset() {
@@ -234,6 +257,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.criticity          =  asset.criticity        || null;
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
+                asset.status             =  asset.status           || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }

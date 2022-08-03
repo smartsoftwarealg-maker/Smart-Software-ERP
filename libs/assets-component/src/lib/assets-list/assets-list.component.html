@@ -25,8 +25,29 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="serial_no">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.serial_no}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="geolocation">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.geolocation}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="beneficiary">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.beneficiary}}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="acquisitionDate">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.acquisitionDate | date: 'dd/MM/yyyy'}}
                 </mat-cell>

@@ -39,5 +39,6 @@
     "BLOCKING_TYPES":     "أنواع المنع",
     "BUILDINGS":          "المبانئ",
     "SITES":              "المواقع",
-    "REAPPOINTMENT":      "إعادة التعيين"
+    "REAPPOINTMENT":      "إعادة التعيين",
+    "END_TYPES":          "أنواع الخروج"
 }

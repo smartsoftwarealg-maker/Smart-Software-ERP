@@ -35,3 +35,4 @@ export * from './lib/languages.service';
 export * from './lib/languageLevels.service';
 export * from './lib/office.service';
 export * from './lib/app-archive-document.service';
+export * from './lib/furniture-status.service';

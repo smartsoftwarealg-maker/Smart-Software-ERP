@@ -30,3 +30,4 @@ export * from './lib/division.component';
 export * from './lib/professional-fault.component';
 export * from './lib/punishment-type.component';
 export * from './lib/app-archive-docs.component';
+export * from './lib/furniture-status.component';

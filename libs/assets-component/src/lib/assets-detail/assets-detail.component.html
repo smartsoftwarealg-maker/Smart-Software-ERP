@@ -11,8 +11,7 @@
     </mat-form-field>
     <mat-form-field id="reference2" class="default-25 sm-50">
         <mat-label>
-            <spna translate>COMMON_REFERENCE</spna>
-            2
+            <spna translate>COMMON_REFERENCE</spna>2
         </mat-label>
         <input matInput formControlName="reference2" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
@@ -96,6 +95,22 @@
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+        <ss-auto-complete matInput
+                          [model]="accountAutoCompleteModel"
+                          formControlName="accountId"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_STATUS</mat-label>
+        <ss-auto-complete matInput
+                          [model]="statusAutoCompleteModel"
+                          formControlName="status"></ss-auto-complete>
+        <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100" *ngIf="!isAQS">
         <mat-label translate>ASSET_ITEM_COUNT</mat-label>
         <input matInput formControlName="itemCount" type="number">
     </mat-form-field>

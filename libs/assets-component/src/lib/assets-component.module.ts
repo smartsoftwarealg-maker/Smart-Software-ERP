@@ -42,6 +42,8 @@ import { AssetBuildingDetailComponent } from './asset-building-detail/asset-buil
 import {AppArchiveModule} from '@ss/common/app-archive';
 import { AssetReceptionsDetailComponent } from './asset-receptions-detail/asset-receptions-detail.component';
 import { OfficeSearchComponent } from './office-search/office-search.component';
+import { EndTypesListComponent } from './end-types-list/end-types-list.component';
+import { EndTypesDetailComponent } from './end-types-detail/end-types-detail.component';
 
 @NgModule({
     imports: [
@@ -90,6 +92,8 @@ import { OfficeSearchComponent } from './office-search/office-search.component';
         AssetBuildingDetailComponent,
         AssetReceptionsDetailComponent,
         OfficeSearchComponent,
+        EndTypesListComponent,
+        EndTypesDetailComponent,
     ],
 })
 export class AssetsComponentModule {
