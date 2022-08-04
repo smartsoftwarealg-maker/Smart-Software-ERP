@@ -1,0 +1,20 @@
+export const environment = {
+  production: true,
+};
+
+export const compiledApplications = [
+    'ADMINISTRATION',
+    // 'COMMON_LOGISTICS-ADMINISTRATION',
+    // 'PURCHASES',
+    // 'STOCK',
+    // 'SALES',
+    // 'COMMON_FINANCE',
+    // 'ACCOUNTING',
+    // 'ASSETS',
+    // 'TREASURY',
+    // 'HR',
+    // 'PAYROLL',
+    // 'WEBARCH',
+    // 'COMMON_DASHBOARD',
+    'SCHEDULED_SALES'
+];

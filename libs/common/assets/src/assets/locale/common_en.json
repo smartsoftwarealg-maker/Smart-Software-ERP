@@ -219,5 +219,6 @@
     "PROJECT":                  "Project",
     "PROJECTS":                 "Projects",
     "COUNT":               "Count",
-    "FURNITURE_STATUS":    "Furniture status"
+    "FURNITURE_STATUS":    "Furniture status",
+    "QTY": "Qty"
 }

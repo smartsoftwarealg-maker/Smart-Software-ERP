@@ -44,6 +44,7 @@ import { AssetReceptionsDetailComponent } from './asset-receptions-detail/asset-
 import { OfficeSearchComponent } from './office-search/office-search.component';
 import { EndTypesListComponent } from './end-types-list/end-types-list.component';
 import { EndTypesDetailComponent } from './end-types-detail/end-types-detail.component';
+import { SearchListComponent } from './search-list/search-list.component';
 
 @NgModule({
     imports: [
@@ -94,6 +95,7 @@ import { EndTypesDetailComponent } from './end-types-detail/end-types-detail.com
         OfficeSearchComponent,
         EndTypesListComponent,
         EndTypesDetailComponent,
+        SearchListComponent,
     ],
 })
 export class AssetsComponentModule {

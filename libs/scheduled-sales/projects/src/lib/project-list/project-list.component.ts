@@ -17,7 +17,10 @@ export class ProjectListComponent extends BaseEntityListComponent<SSProject> {
 
     displayedColumns = [
         'description',
-        'project_code'
+        'project_code',
+        'start_date',
+        'finish_date',
+        'qty'
     ];
 
     constructor(

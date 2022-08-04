@@ -1,0 +1,22 @@
+.table-div {
+    height: calc(100% - 64px);
+    width: 96%;
+    max-width: 1200px;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.main-table {
+    width: 1000px;
+    margin: 0 auto;
+}
+.mat-column-description {
+    flex: 1 1 150px;
+}
+.mat-column-project_code,
+.mat-column-finish_date,
+.mat-column-start_date {
+    flex: 1 1 90px;
+}
+

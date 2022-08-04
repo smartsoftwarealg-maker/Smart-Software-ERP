@@ -220,5 +220,6 @@
     "PROJECT":            "Projet",
     "PROJECTS":           "Projets",
     "COUNT":              "number",
-    "FURNITURE_STATUS":   "Statut du mobilier"
+    "FURNITURE_STATUS":   "Statut du mobilier",
+    "QTY": "Qté"
 }
