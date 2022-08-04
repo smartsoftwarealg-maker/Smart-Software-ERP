@@ -204,5 +204,6 @@
     "AMOUNT":             "",
     "NO_":                      "",
     "COUNT":               "",
-    "FURNITURE_STATUS":    ""
+    "FURNITURE_STATUS":    "",
+    "QTY":                 "Miktar"
 }

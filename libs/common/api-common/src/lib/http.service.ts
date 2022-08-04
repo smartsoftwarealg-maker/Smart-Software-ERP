@@ -166,7 +166,7 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?: any | null, timeout: number = 0): Observable<any> {
+    public post(url: string, data?: any | null, timeout: number = 300_000): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error("HTTP SERVICE NOT READY");
         }

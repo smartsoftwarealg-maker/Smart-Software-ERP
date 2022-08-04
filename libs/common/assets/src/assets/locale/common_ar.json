@@ -218,5 +218,6 @@
     "PROJECTS":           "المشاريع",
     "PROJECT":             "مشروع",
     "COUNT":               "عدد",
-    "FURNITURE_STATUS":    "حالة الأثاث"
+    "FURNITURE_STATUS":    "حالة الأثاث",
+    "QTY": "الكمية"
 }
