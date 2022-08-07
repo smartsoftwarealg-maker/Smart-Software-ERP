@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Asset, ASSETS_URL, Depreciation} from './assets-api';
-import {HttpService} from '@ss/common/api-common';
+import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from './assets-api';
+import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {LanguagesService} from '@ss/common/api-lookup';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AssetsService extends BaseEntityService<Asset>{
+export class AssetsService extends BaseEntityService<Asset> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ASSETS_URL);
@@ -35,4 +37,19 @@ export class AssetsService extends BaseEntityService<Asset>{
     soldOut(page: number, filter: string): Observable<{ itemCount: number, body: Asset[] }> {
         return this.httpSrv.getData<Asset>('/assets/soldout', page, 5, filter);
     }
+
+    public search(pageModel: PaginationModel, criteria: SearchCriteria): Observable<Asset[]> {
+        const params = Object.entries(criteria)
+            .filter(([key, value]) => value && value !== '' && value !== 0)
+            .reduce((a, b) => a.set(b[0], b[1]), new HttpParams());
+        return  this.httpSrv
+            .getData<Asset>('/assets/search', pageModel.page - 1, pageModel.pageSize, null, null, params)
+            .pipe(
+                map(data => {
+                    pageModel.elementCount = data.itemCount;
+                    return data.body;
+                })
+            );
+    }
+
 }

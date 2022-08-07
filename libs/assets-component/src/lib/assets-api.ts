@@ -200,3 +200,23 @@ export interface AssetBuilding {
     code: string;
     description: string;
 }
+
+export interface SearchCriteria {
+    reference?: string;
+    reference2?: string;
+    description?: string;
+    accountNo?: string;
+    acquisitionDate?: Date;
+    serviceDate?: Date;
+    invoiceNumber?: string;
+    acquisitionValue?: number;
+    supplier?: string;
+    dateOut?: string;
+    serialNo?: string;
+    location?: number;
+    investEnd?: number;
+    receptionNumber?: string;
+    receptionDate?: Date;
+    orderNumb?: string;
+    orderDate?: Date;
+}

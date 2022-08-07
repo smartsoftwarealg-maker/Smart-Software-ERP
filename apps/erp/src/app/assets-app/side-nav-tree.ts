@@ -9,7 +9,7 @@ import {
     ABS_ASSET_INVENTORY_URL,
     ABS_ASSET_LOCATIONS,
     ABS_ASSET_OFFICES_URL,
-    ABS_ASSET_RECEPTIONS_URL,
+    ABS_ASSET_RECEPTIONS_URL, ABS_ASSET_SEARCH_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
     ABS_BLOCKING_TYPES,
@@ -117,16 +117,22 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'ASSAppointment'
         },
         {
-            name: 'COMMON_OPTIONS',
-            icon: 'fa-solid fa-tools',
-            route: ABS_OPTIONS_URL,
-            accessRights: 'AssetOption'
+            name: 'COMMON_SEARCH',
+            icon: 'fa-brands fa-searchengin',
+            route: ABS_ASSET_SEARCH_URL,
+            accessRights: 'Asset'
         },
         {
             name: 'INVENTORY',
             icon: 'fa-solid fa-scanner-gun',
             route: ABS_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
+        },
+        {
+            name: 'COMMON_OPTIONS',
+            icon: 'fa-solid fa-tools',
+            route: ABS_OPTIONS_URL,
+            accessRights: 'AssetOption'
         },
         {
             name: 'COMMON_REPORTS',

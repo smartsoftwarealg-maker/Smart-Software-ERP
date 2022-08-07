@@ -25,7 +25,7 @@ import {
     ASSET_BLOCKING_TYPE_URL,
     ASSET_BUILDING_URL,
     LOGISTICS_AGENT_URL,
-    COMMON_ACCOUNT_URL, ASSET_ACCOUNT_URL, ASSET_END_TYPE_URL, FURNITURE_STATUS_URL
+    COMMON_ACCOUNT_URL, ASSET_ACCOUNT_URL, ASSET_END_TYPE_URL, FURNITURE_STATUS_URL, ASSETS_SEARCH_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -56,7 +56,7 @@ import {
     AssetBlockingTypeDetailComponent,
     AssetBuildingListComponent,
     AssetBuildingDetailComponent,
-    AssetReceptionsDetailComponent, EndTypesListComponent, EndTypesDetailComponent
+    AssetReceptionsDetailComponent, EndTypesListComponent, EndTypesDetailComponent, SearchListComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -385,6 +385,10 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_OPTIONS_URL,
         component: AssetOptionsComponent
+    },
+    {
+        path: ASSETS_SEARCH_URL,
+        component: SearchListComponent
     },
     {
         path: ASSET_INVENTORY_URL,

@@ -187,7 +187,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             );
     }
 
-    // this is created so we can override the service call whenever we want
+    // this is created, so we can override the service call whenever we want
     public getPage() {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy);
     }
