@@ -45,6 +45,10 @@ import { OfficeSearchComponent } from './office-search/office-search.component';
 import { EndTypesListComponent } from './end-types-list/end-types-list.component';
 import { EndTypesDetailComponent } from './end-types-detail/end-types-detail.component';
 import { SearchListComponent } from './search-list/search-list.component';
+import { AssetExcelInjectionComponent } from './asset-excel-injection/asset-excel-injection.component';
+import { DepreciationRateListComponent } from './depreciation-rate-list/depreciation-rate-list.component';
+import { DepreciationRateDetailComponent } from './depreciation-rate-detail/depreciation-rate-detail.component';
+import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.component';
 
 @NgModule({
     imports: [
@@ -96,6 +100,10 @@ import { SearchListComponent } from './search-list/search-list.component';
         EndTypesListComponent,
         EndTypesDetailComponent,
         SearchListComponent,
+        AssetExcelInjectionComponent,
+        DepreciationRateListComponent,
+        DepreciationRateDetailComponent,
+        DuplicateDialogComponent,
     ],
 })
 export class AssetsComponentModule {

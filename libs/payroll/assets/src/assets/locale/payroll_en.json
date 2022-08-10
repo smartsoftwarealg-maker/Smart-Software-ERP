@@ -129,9 +129,8 @@
     "LANGUAGE_READ_LEVEL": "Read level",
     "LANGUAGE_WRITE_LEVEL": "Write level",
     "OLD_CAREERS": "Past career",
-    "RATE": "Rate",
     "EMPLOYEE_SUMMARY": "Statistics",
     "WORKSHOP":         "Site",
     "APPLICATION_DATE":   "Application date",
-    "APPLICATION_PERIOD": "Periode application"
+    "APPLICATION_PERIOD": "Application period"
 }

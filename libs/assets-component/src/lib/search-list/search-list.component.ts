@@ -113,6 +113,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> {
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
+                disableClose: true,
                 data: {id: 0, description: null}
             });
         dialogRef

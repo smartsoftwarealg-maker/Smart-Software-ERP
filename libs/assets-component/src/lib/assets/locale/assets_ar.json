@@ -40,5 +40,8 @@
     "BUILDINGS":          "المبانئ",
     "SITES":              "المواقع",
     "REAPPOINTMENT":      "إعادة التعيين",
-    "END_TYPES":          "أنواع الخروج"
+    "END_TYPES":          "أنواع الخروج",
+    "DEPRECIATION_RATES": "معدلات الإهلاك",
+    "DUPLICATE_SELECTED": "استنياخ السجل المحدد",
+    "DUPLICATE":          "استنساخ"
 }

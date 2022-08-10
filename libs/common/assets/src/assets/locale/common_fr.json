@@ -221,5 +221,7 @@
     "PROJECTS":           "Projets",
     "COUNT":              "number",
     "FURNITURE_STATUS":   "Statut du mobilier",
-    "QTY": "Qté"
+    "QTY":                "Qté",
+    "EXCEL_INJECTION":     "Injection d'Excel",
+    "RATE":               "Taux"
 }

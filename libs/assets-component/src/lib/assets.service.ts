@@ -52,4 +52,12 @@ export class AssetsService extends BaseEntityService<Asset> {
             );
     }
 
+    upload(data: FormData): Observable<any> {
+        return this.httpSrv.upload('/assets/injection', data);
+    }
+
+    duplicate(assetId: number, count: number): Observable<any> {
+        const data = { id: assetId, count: count };
+        return this.httpSrv.post('/assets/duplicate', data);
+    }
 }

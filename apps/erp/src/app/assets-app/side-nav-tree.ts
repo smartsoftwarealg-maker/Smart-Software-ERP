@@ -5,7 +5,7 @@ import {
     ABS_ASSET_ACCOUNT_URL,
     ABS_ASSET_APPOINTMENT_DOC_URL,
     ABS_ASSET_BUILDS,
-    ABS_ASSET_CLASSES,
+    ABS_ASSET_CLASSES, ABS_ASSET_INJECTION_URL,
     ABS_ASSET_INVENTORY_URL,
     ABS_ASSET_LOCATIONS,
     ABS_ASSET_OFFICES_URL,
@@ -120,6 +120,12 @@ export const assetsNavTree: SideNavNode = {
             name: 'COMMON_SEARCH',
             icon: 'fa-brands fa-searchengin',
             route: ABS_ASSET_SEARCH_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'COMMON_EXCEL_INJECTION',
+            icon: 'fa-solid fa-syringe',
+            route: ABS_ASSET_INJECTION_URL,
             accessRights: 'Asset'
         },
         {

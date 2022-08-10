@@ -16,6 +16,7 @@ export const ASSET_APPOINTMENT_URL = '/asset-appointments';
 export const ASSET_APPOINTMENT_LINE_URL = '/lines';
 export const ASSET_INVENTORY_URL = '/inventories';
 export const ASSET_YEARS_URL = '/years';
+export const ASSET_DEPRECIATION_RATES = '/rates';
 
 export interface Asset {
     id: number;
@@ -219,4 +220,11 @@ export interface SearchCriteria {
     receptionDate?: Date;
     orderNumb?: string;
     orderDate?: Date;
+}
+
+export interface DepreciationRate {
+    id: number;
+    parentId: number;
+    year: number;
+    rate: number;
 }
