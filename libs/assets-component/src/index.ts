@@ -34,3 +34,6 @@ export * from './lib/asset-receptions-detail/asset-receptions-detail.component';
 export * from './lib/end-types-detail/end-types-detail.component';
 export * from './lib/end-types-list/end-types-list.component';
 export * from './lib/search-list/search-list.component';
+export * from './lib/asset-excel-injection/asset-excel-injection.component';
+export * from './lib/depreciation-rate-detail/depreciation-rate-detail.component';
+export * from './lib/depreciation-rate-list/depreciation-rate-list.component';

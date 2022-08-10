@@ -40,5 +40,8 @@
     "BUILDINGS":          "Buildings",
     "SITES":              "Sites",
     "REAPPOINTMENT":      "Reappointment",
-    "END_TYPES":          "Exit types"
+    "END_TYPES":          "Exit types",
+    "DEPRECIATION_RATES": "Depreciation rates",
+    "DUPLICATE_SELECTED": "Duplicate selected asset",
+    "DUPLICATE":          "Duplicate"
 }

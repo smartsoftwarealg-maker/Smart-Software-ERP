@@ -117,7 +117,7 @@
 
 
     <mat-accordion>
-        <mat-expansion-panel #depreciation expanded="true" [class]="getPanelHeaderClass('depreciation', depreciation)">
+        <mat-expansion-panel #depreciation expanded="false" [class]="getPanelHeaderClass('depreciation', depreciation)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION
@@ -395,6 +395,16 @@
 
             <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2" [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
+
+        <mat-expansion-panel #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    ASSET_DEPRECIATION_RATES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-depreciation-rate-list [assetId]="id" [editable]="isEditable"></ss-depreciation-rate-list>
+        </mat-expansion-panel>
+
 
         <mat-expansion-panel #archives expanded="false" [class]="getPanelHeaderClass('archives', archives)">
             <mat-expansion-panel-header>

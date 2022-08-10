@@ -220,5 +220,7 @@
     "PROJECTS":                 "Projects",
     "COUNT":               "Count",
     "FURNITURE_STATUS":    "Furniture status",
-    "QTY": "Qty"
+    "QTY":                 "Qty",
+    "EXCEL_INJECTION":     "Excel injection",
+    "RATE":                "Rate"
 }

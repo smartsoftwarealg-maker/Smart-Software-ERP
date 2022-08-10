@@ -70,7 +70,7 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'ADMINISTRATION_SMTP',
-            icon: 'fas fa-server',
+            icon: 'fa-solid fa-at',
             route: ABS_ADMINISTRATION_SMTP_URL,
             accessRights: 'SMTP'
         },

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Asset} from '../assets-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -9,6 +9,9 @@ import {IsParamService, PaginatorPersistenceService} from '@ss/common/api-common
 import {AssetsService} from '../assets.service';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import {DocImportComponent} from '@ss/logistics/ui-doc-import';
+import {DuplicateDialogComponent} from '../duplicate-dialog/duplicate-dialog.component';
 
 @Component({
     selector: 'ss-assets-list',
@@ -45,6 +48,15 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
 
     displayedColumns = this.DEF_COLS;
 
+    private duplicateBtn: ToolbarButton = {
+        disabled: true,
+        icon: 'fa-solid fa-copy',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'ASSET_DUPLICATE_SELECTED',
+        visible: true,
+        click: () => this.duplicate(),
+    }
+
     constructor(public listSrv: AssetsService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
@@ -53,6 +65,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
                 public override defReportSrv: DefaultReportService,
                 public override confirmationSrv: ConfirmationDialogService,
                 public override pagPersistSrv: PaginatorPersistenceService,
+                private dialog: MatDialog,
                 private isParamSrv: IsParamService) {
         super(listSrv,
             shellSrv,
@@ -60,7 +73,8 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
             route,
             router,
             confirmationSrv,
-            defReportSrv, pagPersistSrv,
+            defReportSrv,
+            pagPersistSrv,
             'ASSETS');
         this.pagination.pageSize = 10;
     }
@@ -69,5 +83,33 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         return this.isParamSrv
             .is('AQS')
             .pipe(tap(res => res? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.duplicateBtn);
+    }
+
+    private duplicate() {
+        if (!!this.selected) {
+            const dialogRef = this.dialog.open(DuplicateDialogComponent, {
+                disableClose: true,
+                width: '400px',
+                height: '150px',
+                data: { id: this.selected}
+            });
+            dialogRef
+                .afterClosed()
+                .subscribe(res => {
+                    if (res['success'] === true) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                });
+        }
+    }
+
+    override select(id: number) {
+        super.select(id);
+        this.duplicateBtn.disabled = !id;
     }
 }

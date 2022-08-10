@@ -219,5 +219,7 @@
     "PROJECT":             "مشروع",
     "COUNT":               "عدد",
     "FURNITURE_STATUS":    "حالة الأثاث",
-    "QTY": "الكمية"
+    "QTY":                 "الكمية",
+    "EXCEL_INJECTION":     "حقن إكسال",
+    "RATE":                "النسبة"
 }

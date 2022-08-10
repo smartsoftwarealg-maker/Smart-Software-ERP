@@ -205,5 +205,7 @@
     "NO_":                      "",
     "COUNT":               "",
     "FURNITURE_STATUS":    "",
-    "QTY":                 "Miktar"
+    "QTY":                 "Miktar",
+    "EXCEL_INJECTION":     "",
+    "RATE":                "Puanla"
 }
