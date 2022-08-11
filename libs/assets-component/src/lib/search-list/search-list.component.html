@@ -19,10 +19,6 @@
                 <input matInput formControlName="accountNo" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-25 sm-50">
-                <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                <input matInput formControlName="serialNo" type="text">
-            </mat-form-field>
 
             <mat-form-field id="serial_no" class="default-25 sm-50">
                 <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
@@ -62,12 +58,11 @@
                                       formControlName="location">
                     </ss-auto-complete>
                 </mat-form-field>
-                <button mat-mini-fab (click)="openSearchDlg()">
+                <button mat-mini-fab (click)="openSearchDlg()" type="button">
                     <i class="fa-solid fa-file-magnifying-glass"></i>
                 </button>
             </div>
 
-            <button mat-raised-button color="primary" translate (click)="refresh()">SEARCH</button>
         </form>
     </div>
     <div class="table-div">
