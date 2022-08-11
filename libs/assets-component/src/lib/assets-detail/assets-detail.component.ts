@@ -29,6 +29,7 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
     styleUrls: ['./assets-detail.component.scss']
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
+    // Private
     private isANSEJ = false;
     private isAQS   = false;
     private importBtn: ToolbarButton = {
@@ -41,6 +42,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     };
     private minLength = 1;
     private maxReference: string = null;
+
+    // Public
+    depreciationTypes: Lookup[] = [
+        { id: 1, description: 'ASSET_LINEAR' },
+        { id: 2, description: 'ASSET_DECLINING' },
+        { id: 3, description: 'ASSET_ACTIVITY' },
+    ];
+
     isEditable = true;
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);

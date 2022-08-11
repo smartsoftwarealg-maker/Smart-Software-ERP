@@ -154,6 +154,16 @@
             </mat-form-field>
 
             <mat-form-field class="default-50">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <mat-select formControlName="depreciationType">
+                    <mat-option *ngFor="let v of depreciationTypes" [value]="v.id">
+                        {{ v?.description | translate }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50">
                 <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
                 <input matInput formControlName="depreciationRate" type="number" required>
                 <mat-error *ngIf="form.controls['depreciationRate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>

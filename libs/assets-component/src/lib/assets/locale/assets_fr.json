@@ -43,5 +43,8 @@
     "END_TYPES":          "Types de sortie",
     "DEPRECIATION_RATES": "Taux d'amortissement",
     "DUPLICATE_SELECTED": "Dupliquer l'actif sélectionné",
-    "DUPLICATE":          "Dupliquer"
+    "DUPLICATE":          "Dupliquer",
+    "LINEAR":             "Linéaire",
+    "DECLINING":          "En déclin",
+    "ACTIVITY":           "Activité"
 }

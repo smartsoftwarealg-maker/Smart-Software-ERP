@@ -41,5 +41,8 @@
     "END_TYPES":          "",
     "DEPRECIATION_RATES": "",
     "DUPLICATE_SELECTED": "",
-    "DUPLICATE":          ""
+    "DUPLICATE":          "",
+    "LINEAR":             "",
+    "DECLINING":          "",
+    "ACTIVITY":           ""
 }

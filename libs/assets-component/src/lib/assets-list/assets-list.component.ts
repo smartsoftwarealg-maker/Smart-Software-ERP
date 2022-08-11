@@ -12,6 +12,7 @@ import {tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent} from '@ss/logistics/ui-doc-import';
 import {DuplicateDialogComponent} from '../duplicate-dialog/duplicate-dialog.component';
+import {Lookup} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-assets-list',
