@@ -43,5 +43,8 @@
     "END_TYPES":          "Exit types",
     "DEPRECIATION_RATES": "Depreciation rates",
     "DUPLICATE_SELECTED": "Duplicate selected asset",
-    "DUPLICATE":          "Duplicate"
+    "DUPLICATE":          "Duplicate",
+    "LINEAR":             "Linear",
+    "DECLINING":          "Declining",
+    "ACTIVITY":           "Activity"
 }

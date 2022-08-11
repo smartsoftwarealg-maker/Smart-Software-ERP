@@ -5,8 +5,8 @@ import {AssetLocationService} from '../asset-location.service';
 import {AssetsBuildingService} from '../assets-building.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {FormControl} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Subscription, switchMap} from 'rxjs';
+import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'ss-office-search',
@@ -69,7 +69,9 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     private search() {
         this.officeSrv
             .search(this.locationFF.value, this.buildingFF.value, this.floorFF.value)
-            .subscribe(res => this.list = res);
+            .pipe(tap(res => this.list = res),
+                  switchMap(_ => this.officeSrv.buildings(this.locationFF.value || 0)))
+            .subscribe(res => this.buildingSrv.buildings = res);
     }
 
     select(office: Office) {
