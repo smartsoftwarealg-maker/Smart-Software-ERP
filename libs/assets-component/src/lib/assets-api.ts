@@ -73,6 +73,7 @@ export interface Asset {
     status?: number;
     geolocation?: string;
     beneficiary?: string;
+    receptionId?: number;
 }
 
 export interface Depreciation {
@@ -148,11 +149,23 @@ export interface ASSAppointment {
 
 export interface AssetReception {
     id: number;
-    acquisition_Date: Date;
-    invoice_Number?: string;
-    supplier?: string;
-    count: number,
-    amount?: number
+    centerId: number;
+    serialNumber: number;
+    receptionDate: Date;
+    supplier?: number;
+    origSupplier?: number;
+    requestNumber?: string;
+    orderNumber?: string;
+    deliveryNumber?: string;
+    invoiceNumber?: string;
+    requestDate?: Date;
+    orderDate?: Date;
+    deliveryDate?: Date;
+    invoiceDate?: Date;
+    count: number;
+    amount?: number;
+    supplierName?: string;
+    origSupplierName?: string;
 }
 
 export interface ASSAppointmentHeader {

@@ -14,14 +14,20 @@
 .mat-column-amount {
     flex: 1 1 100px;
     justify-content: right;
+    border-left: white solid 1px;
+    padding-left: 8px;
 }
 
 .mat-column-count,
-.mat-column-acquisition_Date,
-.mat-column-invoice_Number {
+.mat-column-receptionDate,
+.mat-column-serialNumber {
     flex: 1 1 100px;
+    border-left: white solid 1px;
+    padding-left: 8px;
 }
 
-.mat-column-supplier {
-    flex: 1 1 250px;
+.mat-column-supplierName {
+    flex: 1 1 200px;
+    border-left: white solid 1px;
+    padding-left: 8px;
 }

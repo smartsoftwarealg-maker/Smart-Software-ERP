@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset, Depreciation} from '../assets-api';
+import {Asset, AssetReception, Depreciation} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -22,6 +22,7 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
 import {AssetClassService} from '../asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
+import {AssetReceptionService} from '../asset-reception.service';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -59,6 +60,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
     originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    receptionLookup = new DefaultAutoCompleteModel(this.receptionSrv);
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
@@ -83,7 +85,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         private isParamSrv: IsParamService,
         private costCenterSrv: CostCenterService,
         private classSrv: AssetClassService,
-        private statusSrv: FurnitureStatusService) {
+        private statusSrv: FurnitureStatusService,
+        private receptionSrv: AssetReceptionService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -146,7 +149,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             criticity:   [b.criticity],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
-            status:      [b.status]
+            status:      [b.status],
+            receptionId: [b.receptionId]
         });
         if (b.id) {
             this.maxReference = b.reference2;

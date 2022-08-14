@@ -16,9 +16,9 @@ import {AssetReceptionService} from '../asset-reception.service';
 export class AssetReceptionsComponent extends BaseEntityListComponent<AssetReception> {
 
     displayedColumns = [
-        'acquisition_Date',
-        'invoice_Number',
-        'supplier',
+        'serialNumber',
+        'receptionDate',
+        'supplierName',
         'count',
         'amount'
     ];

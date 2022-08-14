@@ -202,7 +202,7 @@
                 <ss-date-picker formControlName="order_date"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <!--mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
                 <ss-date-picker formControlName="receptionDate"></ss-date-picker>
             </mat-form-field>
@@ -211,7 +211,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
                 <input matInput formControlName="receptionNumber" type="text">
-            </mat-form-field>
+            </mat-form-field-->
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
@@ -232,6 +232,16 @@
                                   [model]="originalSupplierAutoCompleteModel"
                                   formControlName="originalSupplier"></ss-auto-complete>
             </mat-form-field>
+
+            <div class="default-50 sm-100">
+                <mat-form-field style="width: calc(100% - 48px)">
+                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="receptionLookup"
+                                      formControlName="receptionId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
 
         </mat-expansion-panel>
 

@@ -1,23 +1,23 @@
 <mat-table mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="acquisition_Date">
+    <ng-container matColumnDef="receptionDate">
         <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.acquisition_Date | date: 'dd/MM/yyyy' }}
+            {{e.receptionDate | date: 'dd/MM/yyyy' }}
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="invoice_Number">
+    <ng-container matColumnDef="serialNumber">
         <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.invoice_Number}}
+            {{e.serialNumber}}
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="supplier">
+    <ng-container matColumnDef="supplierName">
         <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{e.supplier}}
+            {{e.supplierName}}
         </mat-cell>
     </ng-container>
 

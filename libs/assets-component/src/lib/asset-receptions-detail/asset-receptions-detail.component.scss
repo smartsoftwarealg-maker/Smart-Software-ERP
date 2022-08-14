@@ -1,6 +1,6 @@
-mat-card {
+form {
     width: 90%;
-    max-width: 500px;
+    max-width: 1000px;
     margin: 16px auto;
 }
 
@@ -19,4 +19,9 @@ mat-card {
     display: flex;
     justify-content: center;
     border-top: white solid 1px;
+}
+
+fieldset {
+    width: 44%;
+    margin: 8px 8px 0;
 }

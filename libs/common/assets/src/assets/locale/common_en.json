@@ -216,11 +216,12 @@
     "AMOUNT":             "Amount",
     "NO_":                "No.",
     "JOURNAL":            "Journal",
-    "PROJECT":                  "Project",
-    "PROJECTS":                 "Projects",
+    "PROJECT":             "Project",
+    "PROJECTS":            "Projects",
     "COUNT":               "Count",
     "FURNITURE_STATUS":    "Furniture status",
     "QTY":                 "Qty",
     "EXCEL_INJECTION":     "Excel injection",
-    "RATE":                "Rate"
+    "RATE":                "Rate",
+    "RECEPTION":           "Reception"
 }

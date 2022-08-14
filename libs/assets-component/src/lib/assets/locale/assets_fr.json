@@ -46,5 +46,13 @@
     "DUPLICATE":          "Dupliquer",
     "LINEAR":             "Linéaire",
     "DECLINING":          "En déclin",
-    "ACTIVITY":           "Activité"
+    "ACTIVITY":           "Activité",
+    "REQUEST_NUMBER":      "Numéro de D.A.",
+    "REQUEST_DATE":        "Date de D.A.",
+    "ORDER_NUMBER":        "Numéro de commande",
+    "ORDER_DATE":          "Date du commande",
+    "DELIVERY_NUMBER":     "Numéro de livraison",
+    "DELIVERY_DATE":       "Date de livraison",
+    "INVOICE_NUMBER":      "Numéro de facture",
+    "INVOICE_DATE":        "Date de facturation"
 }
