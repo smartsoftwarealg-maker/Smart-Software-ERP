@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset, AssetReception, Depreciation} from '../assets-api';
+import {Asset, Depreciation} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -115,7 +115,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.vat || 0, Validators.required],
-            invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
             depreciationType: [b.depreciationType || 1],
@@ -138,8 +137,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             installation_code: [b.installation_code],
             tech_specific: [b.tech_specific],
             comment: [b.comment],
-            order_numb: [b.order_numb],
-            order_date: [b.order_date],
             office: [b.office],
             sales_price: [b.sales_price],
             useful_life: [b.useful_life || 5, Validators.required],
@@ -150,7 +147,15 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
             status:      [b.status],
-            receptionId: [b.receptionId]
+            receptionId: [b.receptionId],
+            orderNumber: [{ value: b.orderNumber, disabled: true }],
+            orderDate: [{ value: b.orderDate, disabled: true }],
+            requestNumber: [{ value: b.requestNumber, disabled: true }],
+            requestDate: [{ value: b.requestDate, disabled: true }],
+            deliveryNumber: [{ value: b.deliveryNumber, disabled: true }],
+            deliveryDate: [{ value: b.deliveryDate, disabled: true }],
+            invoiceNumber: [{ value: b.invoiceNumber, disabled: true }],
+            invoiceDate: [{ value: b.invoiceDate, disabled: true }],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -261,8 +266,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.installation_code  =  asset.installation_code|| null;
                 asset.tech_specific      =  asset.tech_specific    || null;
                 asset.comment            =  asset.comment          || null;
-                asset.order_numb         =  asset.order_numb       || null;
-                asset.order_date         =  asset.order_date       || null;
+                asset.orderNumber        =                            null;
+                asset.orderDate          =                            null;
                 asset.office             =  asset.office           || null;
                 asset.sales_price        =  asset.sales_price      || null;
                 asset.investment_type    =  asset.investment_type  || 1;

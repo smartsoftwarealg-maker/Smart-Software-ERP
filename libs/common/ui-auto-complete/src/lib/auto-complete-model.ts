@@ -36,7 +36,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     valueOf = (x: any) => x ? x[this.idField] : null;
 
-    toString = (x: any) => x ? x[this.descriptionField].substring(0, 50) : null;
+    toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) : null;
 
     getById = (id: Id) => id ? this.entitySrv.get(id) : of(null);
 

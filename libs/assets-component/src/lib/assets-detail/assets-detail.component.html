@@ -193,13 +193,23 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
+            <!--div class="default-50 sm-100">
+                <mat-form-field style="width: calc(100% - 48px)">
+                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="receptionLookup"
+                                      formControlName="receptionId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div -->
+
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
-                <input matInput formControlName="order_numb" type="text">
+                <input matInput formControlName="orderNumber" type="text">
             </mat-form-field>
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_ORDER_DATE</mat-label>
-                <ss-date-picker formControlName="order_date"></ss-date-picker>
+                <ss-date-picker formControlName="orderDate"></ss-date-picker>
             </mat-form-field>
 
             <!--mat-form-field class="default-50 sm-100">
@@ -232,16 +242,6 @@
                                   [model]="originalSupplierAutoCompleteModel"
                                   formControlName="originalSupplier"></ss-auto-complete>
             </mat-form-field>
-
-            <div class="default-50 sm-100">
-                <mat-form-field style="width: calc(100% - 48px)">
-                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="receptionLookup"
-                                      formControlName="receptionId">
-                    </ss-auto-complete>
-                </mat-form-field>
-            </div>
 
         </mat-expansion-panel>
 

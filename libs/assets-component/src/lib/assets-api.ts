@@ -29,7 +29,6 @@ export interface Asset {
     info?: string;
     acquisitionDate?: string;
     serviceDate?: string;
-    invoiceNumber?: string;
     itemCount?: number;
     acquisitionValue: number;
     historicValue: number;
@@ -38,8 +37,6 @@ export interface Asset {
     decliningRate?: number;
     depreciationType?: number;
     residualValue: number;
-    supplier?: number;
-    originalSupplier?: number;
     barcode?: string;
     dateOut?: string;
     customer?: number;
@@ -48,15 +45,11 @@ export interface Asset {
     costCenter?: number;
     investEnd?: number;
     startYear?: number;
-    receptionNumber?: string;
-    receptionDate?: string;
     positionNumb?: string;
     modelNumb?: string;
     installation_code?: string;
     tech_specific?: string;
     comment?: string;
-    order_numb?: string;
-    order_date?: string;
     office?: number;
     sales_price?: number;
     creation_date?: string;
@@ -69,11 +62,22 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
-    supplierName?: string;
     status?: number;
     geolocation?: string;
     beneficiary?: string;
     receptionId?: number;
+    receptionNumber?: string;
+    receptionDate?: Date;
+    requestNumber?: string;
+    requestDate?: Date;
+    orderNumber?: string;
+    orderDate?: Date;
+    deliveryNumber?: string;
+    deliveryDate?: Date;
+    invoiceNumber?: string;
+    invoiceDate?: Date;
+    supplier?: string;
+    originalSupplier?: string;
 }
 
 export interface Depreciation {
