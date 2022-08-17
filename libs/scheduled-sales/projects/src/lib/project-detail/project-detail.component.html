@@ -45,6 +45,21 @@
                 <input matInput formControlName="qty" type="number"  step="1">
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_MONTHLY_RATE</mat-label>
+                <input matInput formControlName="monthly_rate" type="number"  step="1">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_ACTIVITY</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="activityLookup"
+                                  formControlName="agentId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
         </form>
 
     </mat-card-content>

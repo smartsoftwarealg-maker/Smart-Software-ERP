@@ -4,14 +4,14 @@
 
             <mat-form-field id="accountNo" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-                <input matInput formControlName="accountNo" type="text" required readonly>
+                <input matInput formControlName="accountNo" type="text" required>
                 <mat-error *ngIf="form.controls['accountNo'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field id="description" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" required readonly>
+                <input matInput formControlName="description" type="text" required>
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>

@@ -12,11 +12,11 @@ import {
     ABS_ASSET_RECEPTIONS_URL, ABS_ASSET_SEARCH_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
-    ABS_BLOCKING_TYPES,
+    ABS_BLOCKING_TYPES, ABS_COMMON_MARKS_URL,
     ABS_COST_TYPES,
     ABS_END_TYPES,
     ABS_LOGISTICS_ACTIVITY,
-    ABS_OPTIONS_URL,
+    ABS_OPTIONS_URL, ABS_PURCHASE_RECEPTION_URL,
     ABS_REVALUATION_TYPES, ABS_STATUS_TYPES,
     ASSETS_STOCK_AGENT_URL
 } from '../common';
@@ -75,6 +75,12 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Revaluation'
         },
         {
+            name: 'COMMON_MARKS',
+            icon: 'fa-solid fa-copyright',
+            route: ABS_COMMON_MARKS_URL,
+            accessRights: 'Mark'
+        },
+        {
             name: 'LOGISTICS_AGENTS',
             icon: 'fas fa-user',
             route: ASSETS_STOCK_AGENT_URL,
@@ -99,12 +105,6 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Office'
         },
         {
-            name: 'ASSETS',
-            icon: 'fa-solid fa-car-building',
-            route: ABS_ASSETS_URL,
-            accessRights: 'Asset'
-        },
-        {
             name: 'ASSET_RECEPTIONS',
             icon: 'fa-solid fa-hands-holding-diamond',
             route: ABS_ASSET_RECEPTIONS_URL,
@@ -115,6 +115,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-check-to-slot',
             route: ABS_ASSET_APPOINTMENT_DOC_URL,
             accessRights: 'ASSAppointment'
+        },
+        {
+            name: 'ASSETS',
+            icon: 'fa-solid fa-car-building',
+            route: ABS_ASSETS_URL,
+            accessRights: 'Asset'
         },
         {
             name: 'COMMON_SEARCH',

@@ -37,6 +37,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     activity: string = 'todo';
    // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
+    selectedRow: AssetAppointmentLine = null;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
     inputControl = new FormControl();
@@ -93,6 +94,8 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
             reappointment: [b.reappointment || false, Validators.required],
+            site:          [{ value: b.site, disabled: true }],
+            building:      [{ value: b.building, disabled: true }],
         });
 
         return form;
@@ -111,8 +114,8 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
 
     select(row: AssetAppointmentLine) {
         this.selectedId = row?.id || null;
-
-       this.inputControl.setValue(row?.assetId || 0);
+        this.selectedRow = row;
+       // this.inputControl.setValue(row?.assetId || 0);
     }
 
     addAsset() {
@@ -122,7 +125,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     }
 
     deleteAsset() {
-        const row = <AssetAppointmentLine>this.inputControl.value
+        const row = this.selectedRow;
         if (row) {
             this.confirmationSrv
                 .confirmDelete()
@@ -151,6 +154,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 .subscribe(res => {
                     this.detailData = res.body;
                     this.pagination.elementCount = res.itemCount;
+                    this.inputControl.setValue(null, {onlySelf: true});
+                    this.inputControl.reset();
+                    this.selectedId = 0;
                     this.snackBarSrv.showSuccessMessage();
                 });
         }

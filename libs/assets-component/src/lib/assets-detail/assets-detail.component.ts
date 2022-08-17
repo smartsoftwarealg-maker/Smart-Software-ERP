@@ -5,11 +5,18 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {FurnitureStatusService, Lookup, LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
+import {
+    FurnitureStatusService,
+    Lookup,
+    LookupsService,
+    MarkService,
+    Office,
+    OfficeService
+} from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {CustomerService, SupplierService} from '@ss/logistics/api-agent';
+import {Agent, ConsumerService, CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
@@ -22,6 +29,7 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
 import {AssetClassService} from '../asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
+import {AssetReceptionService} from '../asset-reception.service';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -51,14 +59,16 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     ];
 
     isEditable = true;
+    markAutoCompleteModel = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
-    originalSupplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    receptionLookup = new DefaultAutoCompleteModel(this.receptionSrv);
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
@@ -83,7 +93,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         private isParamSrv: IsParamService,
         private costCenterSrv: CostCenterService,
         private classSrv: AssetClassService,
-        private statusSrv: FurnitureStatusService) {
+        private statusSrv: FurnitureStatusService,
+        private consumerSrv: ConsumerService,
+        private markSrv: MarkService,
+        private receptionSrv: AssetReceptionService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -112,13 +125,11 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.vat || 0, Validators.required],
-            invoiceNumber: [b.invoiceNumber],
             itemCount: [b.itemCount || 1],
             info: [b.info],
             depreciationType: [b.depreciationType || 1],
-            supplier: [b.supplier],
-            originalSupplier: [b.originalSupplier],
-            barcode: [b.barcode],
+            supplier: [{ value: b.supplier, disabled: true }],
+            originalSupplier: [{ value: b.originalSupplier, disabled: true }],
             dateOut: [b.dateOut],
             customer: [b.customer],
             serial_no: [b.serial_no],
@@ -135,8 +146,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             installation_code: [b.installation_code],
             tech_specific: [b.tech_specific],
             comment: [b.comment],
-            order_numb: [b.order_numb],
-            order_date: [b.order_date],
             office: [b.office],
             sales_price: [b.sales_price],
             useful_life: [b.useful_life || 5, Validators.required],
@@ -146,7 +155,18 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             criticity:   [b.criticity],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
-            status:      [b.status]
+            status:      [b.status],
+            receptionId: [b.receptionId],
+            orderNumber: [{ value: b.orderNumber, disabled: true }],
+            orderDate: [{ value: b.orderDate, disabled: true }],
+            requestNumber:  [b.requestNumber],
+            requestDate:    [b.requestDate],
+            requester:      [b.requester],
+            mark:           [b.mark],
+            deliveryNumber: [{ value: b.deliveryNumber, disabled: true }],
+            deliveryDate:   [{ value: b.deliveryDate, disabled: true }],
+            invoiceNumber:  [{ value: b.invoiceNumber, disabled: true }],
+            invoiceDate:    [{ value: b.invoiceDate, disabled: true }],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -242,7 +262,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.residualValue      =  asset.residualValue    || null;
                 asset.supplier           =  asset.supplier         || null;
                 asset.originalSupplier   =  asset.originalSupplier || null;
-                asset.barcode            =  asset.barcode          || null;
                 asset.receptionNumber    =  asset.receptionNumber  || null;
                 asset.dateOut            =  null;
                 asset.customer           =  null;
@@ -257,8 +276,11 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.installation_code  =  asset.installation_code|| null;
                 asset.tech_specific      =  asset.tech_specific    || null;
                 asset.comment            =  asset.comment          || null;
-                asset.order_numb         =  asset.order_numb       || null;
-                asset.order_date         =  asset.order_date       || null;
+                asset.requester          =  asset.requester        || null;
+                asset.requestNumber      =  asset.requestNumber    || null;
+                asset.requestDate         =  asset.requestDate     || null;
+                asset.orderNumber        =                            null;
+                asset.orderDate          =                            null;
                 asset.office             =  asset.office           || null;
                 asset.sales_price        =  asset.sales_price      || null;
                 asset.investment_type    =  asset.investment_type  || 1;
@@ -267,6 +289,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
                 asset.status             =  asset.status           || null;
+                asset.mark               =  asset.mark             || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }

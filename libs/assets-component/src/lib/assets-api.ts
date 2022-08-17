@@ -29,7 +29,6 @@ export interface Asset {
     info?: string;
     acquisitionDate?: string;
     serviceDate?: string;
-    invoiceNumber?: string;
     itemCount?: number;
     acquisitionValue: number;
     historicValue: number;
@@ -38,9 +37,6 @@ export interface Asset {
     decliningRate?: number;
     depreciationType?: number;
     residualValue: number;
-    supplier?: number;
-    originalSupplier?: number;
-    barcode?: string;
     dateOut?: string;
     customer?: number;
     serial_no?: string;
@@ -48,15 +44,11 @@ export interface Asset {
     costCenter?: number;
     investEnd?: number;
     startYear?: number;
-    receptionNumber?: string;
-    receptionDate?: string;
     positionNumb?: string;
     modelNumb?: string;
     installation_code?: string;
     tech_specific?: string;
     comment?: string;
-    order_numb?: string;
-    order_date?: string;
     office?: number;
     sales_price?: number;
     creation_date?: string;
@@ -69,10 +61,24 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
-    supplierName?: string;
     status?: number;
     geolocation?: string;
     beneficiary?: string;
+    receptionId?: number;
+    receptionNumber?: string;
+    receptionDate?: Date;
+    requestNumber?: string;
+    requestDate?: Date;
+    orderNumber?: string;
+    orderDate?: Date;
+    deliveryNumber?: string;
+    deliveryDate?: Date;
+    invoiceNumber?: string;
+    invoiceDate?: Date;
+    supplier?: string;
+    originalSupplier?: string;
+    requester?: number;
+    mark?: number;
 }
 
 export interface Depreciation {
@@ -143,16 +149,28 @@ export interface ASSAppointment {
     officeCode?: string;
     agentId?: number;
     denomination?: string;
-    reappointment: boolean
+    reappointment: boolean,
 }
 
 export interface AssetReception {
     id: number;
-    acquisition_Date: Date;
-    invoice_Number?: string;
-    supplier?: string;
-    count: number,
-    amount?: number
+    centerId: number;
+    serialNumber: number;
+    receptionDate: Date;
+    supplier?: number;
+    origSupplier?: number;
+    requestNumber?: string;
+    orderNumber?: string;
+    deliveryNumber?: string;
+    invoiceNumber?: string;
+    requestDate?: Date;
+    orderDate?: Date;
+    deliveryDate?: Date;
+    invoiceDate?: Date;
+    count: number;
+    amount?: number;
+    supplierName?: string;
+    origSupplierName?: string;
 }
 
 export interface ASSAppointmentHeader {
@@ -170,6 +188,8 @@ export interface ASSAppointmentHeader {
     beneficiary?: string;
     activity?: string;
     reappointment: boolean;
+    site?: string;
+    building?: string;
 }
 
 export interface AssetAppointmentLine {
@@ -220,6 +240,7 @@ export interface SearchCriteria {
     receptionDate?: Date;
     orderNumb?: string;
     orderDate?: Date;
+    requester?: number;
 }
 
 export interface DepreciationRate {

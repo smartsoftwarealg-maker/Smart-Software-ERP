@@ -154,6 +154,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
+                this.form?.reset(val);
                 throw err;
             }
         })

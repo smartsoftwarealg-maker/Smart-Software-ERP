@@ -46,5 +46,14 @@
     "DUPLICATE": "استنساخ",
     "LINEAR":    "خطي",
     "DECLINING": "رافض" ,
-    "ACTIVITY":  "نشاط"
+    "ACTIVITY":  "نشاط",
+    "REQUEST_NUMBER":      "رقم طلب الشراء" ,
+    "REQUEST_DATE":        "تاريخ طلب الشراء" ,
+    "ORDER_NUMBER":        "رقم طلب الشراء",
+    "ORDER_DATE":          "تاريخ طلب الشراء" ,
+    "DELIVERY_NUMBER":     "رقم الشحنه",
+    "DELIVERY_DATE":       "تاريخ التسليم او الوصول",
+    "INVOICE_NUMBER":      "رقم الفاتورة",
+    "INVOICE_DATE":        "تاريخ الفاتورة",
+    "SITE":                "الموقع"
 }

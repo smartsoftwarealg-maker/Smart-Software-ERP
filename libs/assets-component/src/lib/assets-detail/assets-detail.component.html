@@ -26,12 +26,6 @@
         <input matInput formControlName="serial_no" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
-    <mat-form-field id="barcode" class="default-50 sm-100">
-        <mat-label translate>ASSET_BAR_CODE</mat-label>
-        <input matInput formControlName="barcode" type="text" maxlength="20">
-        <mat-error *ngIf="form.controls['barcode'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-        </mat-error>
-    </mat-form-field>
 
     <!--    <mat-form-field id="accountno" class="default-50 sm-100">-->
     <!--        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
@@ -84,6 +78,14 @@
         </ss-auto-complete>
     </mat-form-field>
 
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MARK</mat-label>
+        <ss-auto-complete matInput
+                          [model]="markAutoCompleteModel"
+                          formControlName="mark">
+        </ss-auto-complete>
+    </mat-form-field>
+
     <mat-form-field id="info" class="default-50 sm-100">
         <mat-label translate>COMMON_INFO</mat-label>
         <input matInput formControlName="info" type="text">
@@ -92,14 +94,6 @@
     <mat-form-field id="comment" class="default-50 sm-100">
         <mat-label translate>COMMON_MEMO</mat-label>
         <input matInput formControlName="comment" type="text">
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-        <ss-auto-complete matInput
-                          [model]="accountAutoCompleteModel"
-                          formControlName="accountId"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">
@@ -192,45 +186,79 @@
                     COMMON_PURCHASE
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <span class="default-100"></span>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
-                <input matInput formControlName="order_numb" type="text">
-            </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ASSET_ORDER_DATE</mat-label>
-                <ss-date-picker formControlName="order_date"></ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
+            <div class="default-25 sm-50">
+                <mat-form-field>
+                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="receptionLookup"
+                                      formControlName="receptionId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
                 <ss-date-picker formControlName="receptionDate"></ss-date-picker>
             </mat-form-field>
 
+            <div class="default-50 sm-100">
+                <mat-form-field>
+                    <mat-label translate>COMMON_REQUESTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="requesterLookup"
+                                      formControlName="requester">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                <input matInput formControlName="receptionNumber" type="text">
+                <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
+                <input matInput formControlName="requestNumber" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_REQUEST_DATE</mat-label>
+                <ss-date-picker formControlName="requestDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
+                <input matInput formControlName="orderNumber" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_ORDER_DATE</mat-label>
+                <ss-date-picker formControlName="orderDate"></ss-date-picker>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
+                <input matInput formControlName="deliveryNumber" type="text">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_DELIVERY_DATE</mat-label>
+                <ss-date-picker formControlName="deliveryDate"></ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
                 <input matInput formControlName="invoiceNumber" type="text">
             </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_INVOICE_DATE</mat-label>
+                <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
+            </mat-form-field>
 
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="supplierAutoCompleteModel"
-                                  formControlName="supplier"></ss-auto-complete>
+                <input matInput formControlName="supplier" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_ORIGINAL_SUPPLIER</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="originalSupplierAutoCompleteModel"
-                                  formControlName="originalSupplier"></ss-auto-complete>
+                <input matInput formControlName="originalSupplier" type="text">
             </mat-form-field>
 
         </mat-expansion-panel>

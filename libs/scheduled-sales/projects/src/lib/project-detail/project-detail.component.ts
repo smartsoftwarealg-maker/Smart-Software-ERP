@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Activity, ActivityService, LookupsService} from '@ss/common/api-lookup';
 import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ProjectService} from '../project.service';
 import {LoginService} from '@ss/common/api-common';
@@ -19,6 +19,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
+    public activityLookup = new DefaultAutoCompleteModel<Activity>(this.activitySrv)
 
     constructor(
         public override entitySrv: ProjectService,
@@ -29,6 +30,7 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private customerSrv: CustomerService,
+        private activitySrv: ActivityService,
         private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
@@ -38,13 +40,15 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:           [b.id],
-            centerId:     [b.centerId],
+            centerId:     [b.centerId || this.loginSrv.appCtx.center],
             agentId:      [b.agentId, Validators.required],
             project_code: [b.project_code],
             description:  [b.description, Validators.required],
             start_date:   [b.start_date, Validators.required],
             finish_date:  [b.finish_date, Validators.required],
-            qty:          [b.qty, Validators.required]
+            qty:          [b.qty, Validators.required],
+            monthly_rate: [b.monthly_rate, Validators.required],
+            activity:     [b.activity]
         });
     }
 

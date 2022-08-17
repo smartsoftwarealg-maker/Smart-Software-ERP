@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Mark, MarkService } from '@ss/common/api-lookup';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {Mark, MarkService} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -27,7 +27,7 @@ export class MarkListComponent extends BaseEntityListComponent<Mark> {
         public defReportSrv: DefaultReportService,
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_MARKS');
+        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_MARKS');
     }
 
 }

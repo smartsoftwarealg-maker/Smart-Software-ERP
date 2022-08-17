@@ -14,6 +14,9 @@ export const ASSET_ACCOUNT_URL      = 'asset-accounts';
 export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
 export const GENERATION_ACCOUNT_URL = 'generation-accounts';
 export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
+export const COMMON_MARKS_URL = 'marks';
+export const COMMON_REPORTS_URL = 'reports';
+
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -32,10 +35,6 @@ export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 
-// common
-export const COMMON_REPORTS_URL = 'reports';
-export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
-export const ABS_ASSETS_REPORTS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_REPORTS_URL].join('/');
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -75,7 +74,6 @@ export const STOCK_INVENTORY_URL = 'inventory';
 export const STOCK_AGENT_URL = 'agents';
 export const STOCK_AGENT_PRICE_URL = 'agent-prices';
 export const STOCK_COST_CENTER_URL = 'cost-centers';
-export const STOCK_MARKS_URL = 'marks';
 export const STOCK_CLASSES_URL = 'classes';
 export const STOCK_DASHBOARD_URL = 'dashboard';
 export const STOCK_SUBCLASSES_URL = 'subclasses';
@@ -84,6 +82,11 @@ export const STOCK_STORES_URL = 'stores';
 export const STOCK_UNITS_URL = 'units';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
+
+// common
+export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_ASSETS_REPORTS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_COMMON_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, COMMON_MARKS_URL].join('/');
 
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
@@ -243,7 +246,6 @@ export const ABS_ORGANIZATIONS_SERVICES_URL = '/' + [MAIN_PAGE_URL, ORGANIZATION
 export const ABS_ORGANIZATIONS_OFFICES_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_OFFICES_URL].join('/');
 
 // stock
-export const ABS_STOCK_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_MARKS_URL].join('/');
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_URL].join('/');
