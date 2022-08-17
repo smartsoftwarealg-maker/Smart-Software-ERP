@@ -2,7 +2,7 @@
     width: 90%;
     max-width: 1000px;
     margin: 16px auto 0;
-    min-height: calc(100% - 96px);
+    height: 60%;
 }
 
 .pagination-container {
@@ -30,4 +30,32 @@
     flex: 1 1 200px;
     border-left: white solid 1px;
     padding-left: 8px;
+}
+
+
+.mat-column-beneficiary,
+.mat-column-description {
+    flex: 1 1 140px;
+}
+
+.mat-column-reference,
+.mat-column-geolocation,
+.mat-column-accountno {
+    flex: 1 1 100px;
+}
+
+.mat-column-depreciationRate,
+.mat-column-useful_life,
+.mat-column-acquisitionValue,
+.mat-column-residualValue,
+.mat-column-serial_no,
+.mat-column-acquisitionDate,
+.mat-column-serviceDate {
+    flex: 1 1 90px;
+}
+
+.detail-table {
+    width: 96%;
+    max-width: 1200px;
+    margin: 8px auto 0;
 }

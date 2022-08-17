@@ -12,7 +12,7 @@ import {
     ABS_ASSET_RECEPTIONS_URL, ABS_ASSET_SEARCH_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
-    ABS_BLOCKING_TYPES,
+    ABS_BLOCKING_TYPES, ABS_COMMON_MARKS_URL,
     ABS_COST_TYPES,
     ABS_END_TYPES,
     ABS_LOGISTICS_ACTIVITY,
@@ -73,6 +73,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-tree',
             route: ABS_REVALUATION_TYPES,
             accessRights: 'Revaluation'
+        },
+        {
+            name: 'COMMON_MARKS',
+            icon: 'fa-solid fa-copyright',
+            route: ABS_COMMON_MARKS_URL,
+            accessRights: 'Mark'
         },
         {
             name: 'LOGISTICS_AGENTS',

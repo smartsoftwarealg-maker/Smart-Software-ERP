@@ -4,9 +4,10 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetReception} from '../assets-api';
+import {IsParamService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {Asset, AssetReception} from '../assets-api';
 import {AssetReceptionService} from '../asset-reception.service';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'ss-asset-receptions',
@@ -14,6 +15,34 @@ import {AssetReceptionService} from '../asset-reception.service';
   styleUrls: ['./asset-receptions.component.scss']
 })
 export class AssetReceptionsComponent extends BaseEntityListComponent<AssetReception> {
+    private DEF_COLS = [
+        'reference',
+        'description',
+        'accountno',
+        'acquisitionDate',
+        'serviceDate',
+        'acquisitionValue',
+        'depreciationRate',
+        'useful_life',
+        'residualValue',
+    ];
+
+    private AQS_COLS = [
+        'reference',
+        'description',
+        'accountno',
+        'acquisitionDate',
+        'serviceDate',
+        'acquisitionValue',
+        'geolocation',
+        'beneficiary',
+        'serial_no',
+        'depreciationRate',
+        'useful_life',
+        'residualValue',
+    ];
+
+    detailColumns = this.DEF_COLS;
 
     displayedColumns = [
         'serialNumber',
@@ -22,6 +51,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'count',
         'amount'
     ];
+    detail: Asset[] = [];
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -31,7 +61,8 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService,
+        private isParamSrv: IsParamService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -49,5 +80,13 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         // this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.shellSrv.updateShell();
+        this.isParamSrv
+            .is('AQS')
+            .pipe(tap(res => res? this.detailColumns = this.AQS_COLS : this.DEF_COLS))
+    }
+
+    override select(id: number) {
+        super.select(id);
+        this.entitySrv.getAssets(id || 0).subscribe(res => this.detail = res);
     }
 }

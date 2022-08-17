@@ -40,6 +40,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
 
     public setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here
+
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center],
@@ -57,11 +58,6 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             invoiceDate:    [b.invoiceDate],
         });
     }
-
-    override save() {
-        super.save();
-    }
-
 
     override readForm(): AssetReception {
         const value =  super.readForm();

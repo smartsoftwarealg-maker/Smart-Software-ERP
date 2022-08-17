@@ -54,5 +54,6 @@
     "DELIVERY_NUMBER":     "Delivery number",
     "DELIVERY_DATE":       "Delivery date",
     "INVOICE_NUMBER":      "Invoice number",
-    "INVOICE_DATE":        "Invoice date"
+    "INVOICE_DATE":        "Invoice date",
+    "SITE":                "Site"
 }

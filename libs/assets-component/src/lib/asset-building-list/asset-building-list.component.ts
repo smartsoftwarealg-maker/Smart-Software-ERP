@@ -38,6 +38,7 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             defReportSrv,
             pagPersistSrv,
             'ASSET_BUILDINGS');
+        this.entitySrv.buildings = [];
     }
 
 }

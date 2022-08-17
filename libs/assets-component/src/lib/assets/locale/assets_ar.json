@@ -54,5 +54,6 @@
     "DELIVERY_NUMBER":     "رقم الشحنه",
     "DELIVERY_DATE":       "تاريخ التسليم او الوصول",
     "INVOICE_NUMBER":      "رقم الفاتورة",
-    "INVOICE_DATE":        "تاريخ الفاتورة"
+    "INVOICE_DATE":        "تاريخ الفاتورة",
+    "SITE":                "الموقع"
 }

@@ -25,7 +25,9 @@ export class AssetsBuildingService extends BaseEntityService<AssetBuilding> {
         return super.getList(page, pageSize, filter, sortBy, extraPrams)
             .pipe(map(res => {
                 return  { itemCount: res.itemCount,
-                          body: res.body.filter(b => this._buildings.has(b.id)) };
+                          body: this._buildings.size == 0?
+                              res.body :
+                              res.body.filter(b => this._buildings.has(b.id)) };
             } ));
     }
 

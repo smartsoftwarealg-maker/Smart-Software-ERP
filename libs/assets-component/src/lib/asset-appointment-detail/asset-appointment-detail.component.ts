@@ -46,7 +46,7 @@ export class AssetAppointmentDetailComponent extends BaseEntityDetailComponent<A
             invest_id:     [a.invest_id || this.parentId],
             decision_date: [a.decision_date, Validators.required],
             decision_ref:  [a.decision_ref],
-            office_id:     [a.office_id, Validators.required],
+            office_id:     [a.office_id, Validators.required]
         });
     }
 

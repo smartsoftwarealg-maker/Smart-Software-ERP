@@ -37,7 +37,6 @@ export interface Asset {
     decliningRate?: number;
     depreciationType?: number;
     residualValue: number;
-    barcode?: string;
     dateOut?: string;
     customer?: number;
     serial_no?: string;
@@ -78,6 +77,8 @@ export interface Asset {
     invoiceDate?: Date;
     supplier?: string;
     originalSupplier?: string;
+    requester?: number;
+    mark?: number;
 }
 
 export interface Depreciation {
@@ -148,7 +149,7 @@ export interface ASSAppointment {
     officeCode?: string;
     agentId?: number;
     denomination?: string;
-    reappointment: boolean
+    reappointment: boolean,
 }
 
 export interface AssetReception {
@@ -187,6 +188,8 @@ export interface ASSAppointmentHeader {
     beneficiary?: string;
     activity?: string;
     reappointment: boolean;
+    site?: string;
+    building?: string;
 }
 
 export interface AssetAppointmentLine {
@@ -237,6 +240,7 @@ export interface SearchCriteria {
     receptionDate?: Date;
     orderNumb?: string;
     orderDate?: Date;
+    requester?: number;
 }
 
 export interface DepreciationRate {

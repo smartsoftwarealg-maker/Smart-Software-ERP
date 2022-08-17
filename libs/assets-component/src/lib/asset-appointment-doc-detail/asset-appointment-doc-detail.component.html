@@ -18,15 +18,15 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_REFERENCE</mat-label>
-                <input matInput formControlName="requestNumber" type="text" >
+                <input matInput formControlName="requestNumber" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100" required>
                 <mat-label translate>COMMON_DATE</mat-label>
                 <ss-date-picker required="true" formControlName="requestDate"></ss-date-picker>
-<!--                <mat-error *ngIf="form.controls.requestDate.hasError('required')" translate>-->
-<!--                    COMMON_FIELD_REQUIRED-->
-<!--                </mat-error>-->
+                <!--                <mat-error *ngIf="form.controls.requestDate.hasError('required')" translate>-->
+                <!--                    COMMON_FIELD_REQUIRED-->
+                <!--                </mat-error>-->
             </mat-form-field>
 
 
@@ -59,6 +59,16 @@
                     <i class="fa-solid fa-file-magnifying-glass"></i>
                 </button>
             </div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_SITE</mat-label>
+                <input matInput formControlName="site" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BUILDINGS</mat-label>
+                <input matInput formControlName="building" type="text">
+            </mat-form-field>
 
             <div id="manager" class="default-50 sm-100">
                 <mat-checkbox formControlName="reappointment" translate>ASSET_REAPPOINTMENT</mat-checkbox>
@@ -109,7 +119,7 @@
     <div class="btn_div">
         <button mat-mini-fab color="primary"
                 matTooltip="{{'COMMON_ADD' | translate}}"
-                (click)="addAsset(); lookup.setAutoControlValue(null)">
+                (click)="saveAsset(); lookup.setAutoControlValue(null)">
             <i class="fas fa-add"></i>
         </button>
         <button mat-mini-fab
@@ -118,12 +128,12 @@
                 (click)="deleteAsset()">
             <i class="fas fa-minus"></i>
         </button>
-        <button mat-mini-fab
-                color="primary"
-                [disabled]="selectedId !== 0"
-                matTooltip="{{'COMMON_SAVE' | translate}}"
-                (click)="saveAsset()">
-            <i class="fas fa-save"> </i>
-        </button>
+<!--        <button mat-mini-fab-->
+<!--                color="primary"-->
+<!--                [disabled]="selectedId !== 0"-->
+<!--                matTooltip="{{'COMMON_SAVE' | translate}}"-->
+<!--                (click)="saveAsset()">-->
+<!--            <i class="fas fa-save"> </i>-->
+<!--        </button>-->
     </div>
 </div>

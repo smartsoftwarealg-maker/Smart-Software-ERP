@@ -36,7 +36,7 @@ import {
     ASSET_END_TYPE_URL,
     FURNITURE_STATUS_URL,
     ASSETS_SEARCH_URL,
-    ASSETS_INJECTION_URL, ASSETS_DEPRECIATION_URL, PURCHASE_RECEPTION_URL
+    ASSETS_INJECTION_URL, ASSETS_DEPRECIATION_URL, PURCHASE_RECEPTION_URL, COMMON_MARKS_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -87,7 +87,7 @@ import {
     ActivityDetailComponent,
     ActivityListComponent,
     FurnitureStatusDetailComponent,
-    FurnitureStatusListComponent
+    FurnitureStatusListComponent, MarkDetailComponent, MarkListComponent
 } from '@ss/common/ui-lookup';
 import {
     AssetAccountsDetailComponent,
@@ -531,6 +531,23 @@ export const mainRoutes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+
+    {
+        path: COMMON_MARKS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MarkListComponent
+            },
+            {
+                path: ':id',
+                component: MarkDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
 
