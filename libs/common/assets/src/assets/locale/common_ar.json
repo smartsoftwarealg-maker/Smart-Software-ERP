@@ -222,5 +222,6 @@
     "QTY":                 "الكمية",
     "EXCEL_INJECTION":     "حقن إكسال",
     "RATE":                "النسبة",
-    "RECEPTION":           "استقبال"
+    "RECEPTION":           "استقبال",
+    "UPLOAD":              "تحميل"
 }

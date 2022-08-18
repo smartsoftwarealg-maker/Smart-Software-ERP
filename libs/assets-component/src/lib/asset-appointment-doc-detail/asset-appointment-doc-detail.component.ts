@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService, OfficeService} from '@ss/common/api-lookup';
+import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../asset-appointment-doc.service';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -15,7 +15,7 @@ import {
     AttribTempl,
     AttributesService
 } from '@ss/custom-attributes';
-import {switchMap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {AssetAppointmentLineService} from '../asset-appointment-line.service';
@@ -66,6 +66,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
+
     }
 
     public setupForm(b: ASSAppointmentHeader) {
@@ -97,7 +98,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             site:          [{ value: b.site, disabled: true }],
             building:      [{ value: b.building, disabled: true }],
         });
-
+        this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
         return form;
     }
 
@@ -107,21 +108,11 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         return value;
     }
 
-    override ngOnDestroy() {
-        this.subscriptions.forEach(s => s.unsubscribe());
-        super.ngOnDestroy();
-    }
 
     select(row: AssetAppointmentLine) {
         this.selectedId = row?.id || null;
         this.selectedRow = row;
        // this.inputControl.setValue(row?.assetId || 0);
-    }
-
-    addAsset() {
-        this.inputControl.setValue(null, {onlySelf: true});
-        this.inputControl.reset();
-        this.selectedId = 0;
     }
 
     deleteAsset() {
@@ -178,6 +169,15 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             });
         dialogRef
             .afterClosed()
-            .subscribe(res => this.form.controls['officeId']?.setValue(res?.id));
+            .subscribe((res: Office) => {
+                this.form.controls['officeId']?.setValue(res?.id);
+                this.form.get('site').setValue(res?.locationDescription, {onlySelf: true});
+                this.form.get('building').setValue(res?.buildingDescription, {onlySelf: true});
+            });
+    }
+
+    onOfficeChange(off: Office) {
+        this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
+        this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
     }
 }

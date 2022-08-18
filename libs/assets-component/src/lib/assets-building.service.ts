@@ -33,6 +33,7 @@ export class AssetsBuildingService extends BaseEntityService<AssetBuilding> {
 
     set buildings(b: Lookup[]) {
         this._buildings.clear();
+        console.log('buildings', b);
         b.forEach(l => this._buildings.add(l.id));
     }
 }

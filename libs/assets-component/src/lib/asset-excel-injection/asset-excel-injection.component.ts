@@ -78,10 +78,9 @@ export class AssetExcelInjectionComponent implements OnInit {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
-    onFileSelected(event: any) {
+    onFileSelected(files: any) {
         this.processing = true;
-        const file:File = event.target.files[0];
-
+        const file:File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
@@ -96,7 +95,7 @@ export class AssetExcelInjectionComponent implements OnInit {
             this.uploadSub = upload$.subscribe({
                 next: (res: any) => {
                     if (res.type == HttpEventType.UploadProgress) {
-                        this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+                        this.uploadProgress = Math.round(100 * (res.loaded / res.total));
                     } else if (res.type == HttpEventType.Response) {
                         this.snackBarSrv.showSuccessMessage();
                     }

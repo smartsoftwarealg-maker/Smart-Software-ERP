@@ -19,6 +19,7 @@ export const DEPARTMENTS_URL = '/organizations/departments';
 export const SERVICES_URL = '/organizations/services';
 export const OFFICES_URL = '/organizations/offices';
 export const BUILDINGS_URL = '/organizations/buildings';
+export const FLOORS_URL    = '/organizations/floors';
 
 export const APP_ARCHIVE_DOCUMENTS_URL = '/lookups/archive_documents';
 export const MARKS_URL = '/lookups/marks';

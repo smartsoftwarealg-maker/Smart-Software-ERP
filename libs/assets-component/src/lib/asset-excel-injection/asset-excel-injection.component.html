@@ -1,26 +1,34 @@
 <div class="container">
-    <fieldset>
-    <div class="ctrl-div">
+    <fieldset class="ctrl-div">
             <div class="file-upload">
                 <input type="file" class="file-input"
                        [accept]="requiredFileType"
-                       (change)="onFileSelected($event)" #fileUpload>
+                       #fileUpload>
 
                 <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
                 <button mat-mini-fab color="primary"
                         class="upload-btn"
                         (click)="fileUpload.click()"
-                        *ngIf="!uploadProgress  && form.valid">
+                        *ngIf="!uploadProgress">
                     <i class="fas fa-paperclip"></i>
+                </button>
+            </div>
+            <div *ngIf="!uploadProgress">
+                <button mat-raised-button color="primary"
+                        type="button"
+                        (click)="onFileSelected(fileUpload.files)"
+                        [disabled]="!form.valid">
+                    {{ 'COMMON_UPLOAD' | translate }}
+                    <i class="fa-solid fa-upload  icon"></i>
                 </button>
             </div>
             <div *ngIf="!uploadProgress">
                 <button mat-raised-button color="warn" type="button" (click)="cancel()">
                     {{ 'COMMON_CANCEL' | translate }}
+                    <i class="fa-solid fa-rotate-left icon"></i>
                 </button>
             </div>
-    </div>
     </fieldset>
 
     <div class="progress">
