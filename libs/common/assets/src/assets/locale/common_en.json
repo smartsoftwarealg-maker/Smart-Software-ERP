@@ -223,5 +223,6 @@
     "QTY":                 "Qty",
     "EXCEL_INJECTION":     "Excel injection",
     "RATE":                "Rate",
-    "RECEPTION":           "Reception"
+    "RECEPTION":           "Reception",
+    "UPLOAD":              "Upload"
 }

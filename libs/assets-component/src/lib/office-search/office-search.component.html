@@ -8,14 +8,17 @@
 
 <mat-form-field class="default-100">
     <mat-label translate>ASSET_BUILDINGS</mat-label>
-    <ss-auto-complete matInput
-                      [model]="buildingLookup"
-                      [formControl]="buildingFF">
-    </ss-auto-complete>
+    <mat-select [formControl]="buildingFF">
+        <mat-option *ngFor="let b of buildings" [value]="b.id">{{ b.description }}</mat-option>
+    </mat-select>
 </mat-form-field>
-<mat-form-field id="description" class="default-100">
+
+
+<mat-form-field class="default-100">
     <mat-label translate>ASSET_FLOOR_NO</mat-label>
-    <input matInput [formControl]="floorFF" type="number" required>
+    <mat-select [formControl]="floorFF">
+        <mat-option *ngFor="let f of floors" [value]="f.id">{{ f.description }}</mat-option>
+    </mat-select>
 </mat-form-field>
 
 <div class="list_div">
@@ -24,7 +27,7 @@
                        role="listitem"
                        (click)="select(d)"
                        *ngFor="let d of list"
-                       [class.selected]="d.id === selectedOffice?.id"        >
+                       [class.selected]="d.id === selectedOffice?.id">
             {{ d.description }} - {{ d.locationCode }} / {{ d.buildingCode }} / {{ d.code}}
         </mat-list-item>
     </mat-list>

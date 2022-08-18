@@ -208,5 +208,6 @@
     "QTY":                 "Miktar",
     "EXCEL_INJECTION":     "",
     "RATE":                "Puanla",
-    "RECEPTION":           ""
+    "RECEPTION":           "",
+    "UPLOAD":              ""
 }

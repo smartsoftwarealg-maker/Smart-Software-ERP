@@ -224,5 +224,6 @@
     "QTY":                "Qté",
     "EXCEL_INJECTION":     "Injection d'Excel",
     "RATE":               "Taux",
-    "RECEPTION":          "Reception"
+    "RECEPTION":          "Reception",
+    "UPLOAD":              "Charger"
 }
