@@ -136,5 +136,7 @@
     "INVOICE_NUMBER": "Numéro de facture",
     "PAYMENT_ORDERS": "Ordres de paiement",
     "ORDER_NO":      "Numéro de commande",
-    "PPRICE":        "Prix stock"
+    "CONTRACT_NUMBER": "Numéro de contrat",
+    "CONTRACT_DATE":   "Date de contrat",
+    "ODS":             "ODS"
 }

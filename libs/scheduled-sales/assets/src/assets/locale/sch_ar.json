@@ -1,2 +1,7 @@
 {
+    "SECTOR":         "قطاع",
+    "WORK_MASTER":    "اشراف",
+    "REQUESTED_QTY":  "الكمية المطلوبة" ,
+    "MONTHLY_RATE":   "المعدل الشهري",
+    "REPRESENTATIVE": "وكيل"
 }

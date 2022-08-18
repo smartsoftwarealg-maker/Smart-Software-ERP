@@ -137,5 +137,8 @@
     "INVOICE_NUMBER": "رقم الفاتورة",
     "PAYMENT_ORDER": "أوامر الدفع",
     "ORDER_NO":      "رقم الطلب",
-    "PPRICE":        "سعر المخزون"
+    "PPRICE":        "سعر المخزون",
+    "CONTRACT_NUMBER": "رقم التعاقد",
+    "CONTRACT_DATE":   "تاريخ العقد",
+    "ODS":             "أمر الانطلاق"
 }

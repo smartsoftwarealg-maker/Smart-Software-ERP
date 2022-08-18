@@ -1,0 +1,39 @@
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: calc(100% - 64px);
+    overflow-y: auto;
+}
+
+.main-table {
+    min-width: 800px;
+    width: 100%;
+}
+
+.mat-column-reference {
+    flex: 1 1 100px;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-classDescription,
+.mat-column-typeDescription {
+    flex: 1 1 120px;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-description2 {
+    flex: 1 1 250px;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-price,
+.mat-column-vatValue {
+    flex: 1 1 90px;
+    justify-content: end;
+    border-left: white solid 1px;
+    padding-right: 8px;
+}

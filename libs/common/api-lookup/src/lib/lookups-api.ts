@@ -23,6 +23,7 @@ export const FLOORS_URL    = '/organizations/floors';
 
 export const APP_ARCHIVE_DOCUMENTS_URL = '/lookups/archive_documents';
 export const MARKS_URL = '/lookups/marks';
+export const TYPES_URL = '/lookups/types';
 export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
 export const SUBCLASSES_URL = '/lookups/subclasses';
@@ -35,6 +36,8 @@ export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
+export const SECTOR_URL = '/lookups/sectors';
+export const WORK_MASTER_URL = '/lookups/master_works';
 export const FUNDS_URL = '/lookups/funds';
 export const ROLES_URL = '/lookups/roles';
 export const BANKS_URL = '/banks';

@@ -36,3 +36,5 @@ export * from './lib/languageLevels.service';
 export * from './lib/office.service';
 export * from './lib/app-archive-document.service';
 export * from './lib/furniture-status.service';
+export * from './lib/work-master.service';
+export * from './lib/type.service';

@@ -1,0 +1,64 @@
+<mat-card>
+    <mat-card-content>
+        <div class="form_container">
+            <form *ngIf="form" novalidate [formGroup]="form">
+
+                <div style="height: 16px"></div>
+
+                <mat-form-field floatLabel="always" class="default-25 sm-50">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text" required>
+                </mat-form-field>
+                <div class="default-25 sm-hide"></div>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description2" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_CLASS</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="classLookup"
+                                      formControlName="pClass">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="typeLookup"
+                                      formControlName="aType">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field floatLabel="always" class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price1" type="number">
+                </mat-form-field>
+                <div class="default-25 sm-hide"></div>
+
+                <mat-form-field floatLabel="always" class="default-25 sm-100">
+                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                    <mat-select formControlName="vat">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let v of vats" [value]="v.id">
+                            {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="blocked" translate>COMMON_BLOCKED</mat-checkbox>
+                </div>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="discountable" translate>LOGISTICS_DISCOUNTABLE</mat-checkbox>
+                </div>
+
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>
