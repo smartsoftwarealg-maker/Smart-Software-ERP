@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/purchases/assets",
     "sourceRoot": "libs/purchases/assets/src",
     "prefix": "ss",
     "targets": {
@@ -18,7 +18,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/assets"],
             "options": {
-                "jestConfig": "libs/purchases/assets/jest.config.js",
+                "jestConfig": "libs/purchases/assets/jest.config.ts",
                 "passWithNoTests": true
             }
         }

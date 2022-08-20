@@ -6,7 +6,7 @@ import {
 import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService, QtyPrice} from '@ss/stock/api-article';
 import {LookupsService, LotsService} from '@ss/common/api-lookup';
@@ -33,7 +33,7 @@ export abstract class BaseConsumptionLinesDetail extends BaseTransactionLinesDet
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,

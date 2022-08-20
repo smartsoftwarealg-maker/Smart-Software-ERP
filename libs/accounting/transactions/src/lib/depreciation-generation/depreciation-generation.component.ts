@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
 import {DepreciationRow} from './depreciation-row';
@@ -18,12 +18,12 @@ export class DepreciationGenerationComponent implements OnInit {
     maxDate: Date = new Date();
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
 
-    public form: FormGroup | null = null;
+    public form: UntypedFormGroup | null = null;
     data: DepreciationRow[] = [];
     displayedColumns = ['acc', 'description', 'cCenter', 'debit', 'credit'];
     processing = false;
 
-    constructor(private fb: FormBuilder,
+    constructor(private fb: UntypedFormBuilder,
                 private loginSrv: LoginService,
                 private deprecSrv: DepreciationGenerationService,
                 private route: ActivatedRoute,

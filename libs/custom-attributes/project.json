@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/custom-attributes",
     "sourceRoot": "libs/custom-attributes/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/custom-attributes"],
             "options": {
-                "jestConfig": "libs/custom-attributes/jest.config.js",
+                "jestConfig": "libs/custom-attributes/jest.config.ts",
                 "passWithNoTests": true
             }
         },

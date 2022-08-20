@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/sales/ui-sales-order",
     "sourceRoot": "libs/sales/ui-sales-order/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-sales-order"],
             "options": {
-                "jestConfig": "libs/sales/ui-sales-order/jest.config.js",
+                "jestConfig": "libs/sales/ui-sales-order/jest.config.ts",
                 "passWithNoTests": true
             }
         }

@@ -138,5 +138,6 @@
     "ORDER_NO":      "Numéro de commande",
     "CONTRACT_NUMBER": "Numéro de contrat",
     "CONTRACT_DATE":   "Date de contrat",
-    "ODS":             "ODS"
+    "ODS":             "ODS",
+    "DISCOUNTABLE":    "Remisable"
 }

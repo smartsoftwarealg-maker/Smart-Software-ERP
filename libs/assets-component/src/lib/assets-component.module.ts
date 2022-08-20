@@ -34,7 +34,6 @@ import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/a
 import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-detail/asset-appointment-doc-detail.component';
 import { AssetInventoryDetailComponent } from './asset-inventory-detail/asset-inventory-detail.component';
 import { AssetInventoryListComponent } from './asset-inventory-list/asset-inventory-list.component';
-import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
 import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset-blocking-type-list.component';
 import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
 import { AssetBuildingListComponent } from './asset-building-list/asset-building-list.component';
@@ -62,7 +61,6 @@ import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.co
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        NgxScannerQrcodeModule,
         AppArchiveModule
     ],
     declarations: [

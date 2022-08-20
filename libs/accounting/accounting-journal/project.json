@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/accounting/accounting-journal",
     "sourceRoot": "libs/accounting/accounting-journal/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/accounting/accounting-journal"],
             "options": {
-                "jestConfig": "libs/accounting/accounting-journal/jest.config.js",
+                "jestConfig": "libs/accounting/accounting-journal/jest.config.ts",
                 "passWithNoTests": true
             }
         },

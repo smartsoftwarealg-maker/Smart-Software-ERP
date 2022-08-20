@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -28,7 +28,7 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -42,7 +42,7 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
             'ASSET_COSTS');
     }
 
-    public setupForm(a: AssetCost): FormGroup {
+    public setupForm(a: AssetCost): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             cost_type: [a.cost_type || 2, Validators.required],

@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Training} from '../employee-training';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DiplomaService, LookupsService} from '@ss/common/api-lookup';
@@ -28,7 +28,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -56,7 +56,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             );
     }
 
-    setupForm(a: Training): FormGroup {
+    setupForm(a: Training): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee || this.trainingSrv.getParentId(),

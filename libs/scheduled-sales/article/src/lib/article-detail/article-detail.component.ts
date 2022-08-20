@@ -5,7 +5,14 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ClassService, LookupsService, Mark, TypeService, Unit, Vat, VatService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {
+    AbstractControl,
+    FormGroup,
+    UntypedFormBuilder,
+    ValidationErrors,
+    ValidatorFn,
+    Validators
+} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {HttpService} from '@ss/common/api-common';
 import {Observable, pipe, zip} from 'rxjs';
@@ -22,16 +29,26 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
     aid = 0;
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
-
+    color: string = '';
     vats: Vat[];
     selectedRow: Article;
+    private formValidator: ValidatorFn =
+        (group: AbstractControl): ValidationErrors | null => {
+            const discountFF = group.get('discount');
+            const invalid = group.get('discountable').value === false && discountFF.value > 0.0;
+
+            const errors = invalid? {invalid: true} : null;
+            group.get('discount').setErrors(errors);
+
+            return errors;
+        }
 
     constructor(
         public articleSrv: SSArticleService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private classSrv: ClassService,
@@ -51,14 +68,15 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
 
     public setupForm(a: Article) {
         // this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
+        this.color = '#' + (a?.rgb|| 0).toString(16);
         this.aid = a.id;
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             description2: [a.description2, Validators.required],
             id: [a.id],
             pClass: [a.pClass],
             aType: [a.aType],
             price1: [a.price1 || 0],
-            discount: [a.discount || 0],
+            discount: [a.discount || 0, [Validators.max(50), Validators.min(0)]],
             appId: [1],
             blocked: [a.blocked || false],
             discountable: [a.discountable || false],
@@ -67,10 +85,18 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
             reference: [a.reference, Validators.required],
             vat: [a.vat]
         });
+        form.setValidators([this.formValidator]);
+        return form;
     }
 
     public override preload(): Observable<any> {
         return this.lookupsSrv.getVats()
             .pipe(tap(res => this.vats = res));
     }
+
+    select(c: string) {
+        this.color = c;
+        this.form.get('rgb').setValue(parseInt(c.substring(1), 16));
+    }
+
 }

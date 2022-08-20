@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/api-transaction",
     "sourceRoot": "libs/logistics/api-transaction/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/api-transaction"],
             "options": {
-                "jestConfig": "libs/logistics/api-transaction/jest.config.js",
+                "jestConfig": "libs/logistics/api-transaction/jest.config.ts",
                 "passWithNoTests": true
             }
         }

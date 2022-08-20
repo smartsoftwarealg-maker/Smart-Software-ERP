@@ -4,7 +4,7 @@ import {ELine} from '../elements-entry-api';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {HttpService} from '@ss/common/api-common';
@@ -25,7 +25,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private httpSrv: HttpService,
@@ -45,7 +45,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
         return this.infoSrv.load();
     }
 
-    public setupForm(e: ELine): FormGroup {
+    public setupForm(e: ELine): UntypedFormGroup {
         if (e.elements.length ==0) {
             e.elements = this.infoSrv.colsList().map(_ => 0.0);
         }
@@ -59,8 +59,8 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
         });
     }
 
-    get elementsForm(): FormArray {
-        return this.form.controls['elements'] as FormArray;
+    get elementsForm(): UntypedFormArray {
+        return this.form.controls['elements'] as UntypedFormArray;
     }
 
 

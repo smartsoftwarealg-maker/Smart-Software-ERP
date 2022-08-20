@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LanguageService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'ss-accounting-reopen',
@@ -19,7 +19,7 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
     private label = `${this.langSrv.translate('ACC_REOPENING')} ${this.loginSrv.appCtx.accYear}`;
     generating = false;
     balancedFolder = false;
-    description = new FormControl(this.label,[Validators.required, Validators.maxLength(50)]);
+    description = new UntypedFormControl(this.label,[Validators.required, Validators.maxLength(50)]);
     displayedColumns = [
         'month',
         'debit',

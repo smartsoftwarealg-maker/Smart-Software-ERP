@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/ui-agent-balance",
     "sourceRoot": "libs/logistics/ui-agent-balance/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-agent-balance"],
             "options": {
-                "jestConfig": "libs/logistics/ui-agent-balance/jest.config.js",
+                "jestConfig": "libs/logistics/ui-agent-balance/jest.config.ts",
                 "passWithNoTests": true
             }
         }

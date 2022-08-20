@@ -7,7 +7,7 @@ import { FoyerArticle } from '../hotel-api';
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
 import { SnackBarService } from '../../common/snack-bar.service';
 import { switchMap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LoadingState } from '../../common/util';
 import { AccountsACModel } from './foyer-api';
 import { ImageInputComponent } from '../../common/image-input/image-input.component';
@@ -26,7 +26,7 @@ const foyerAppCode = 14;
 // tslint:disable-next-line:max-line-length
 export class FoyerArticlesDetailComponent extends AbstractEntityView<FoyerArticle, BackendDataSource<FoyerArticle>> implements OnInit, OnDestroy {
 
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saved = false;
     public accountsACModel: AccountsACModel;
     id: number;
@@ -36,7 +36,7 @@ export class FoyerArticlesDetailComponent extends AbstractEntityView<FoyerArticl
     constructor(
         public httpSrv: HttpService,
         public snackBarSrv: SnackBarService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public foyerSrv: FoyerArticlesService,
         public router: Router,

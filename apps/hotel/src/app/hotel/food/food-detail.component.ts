@@ -8,7 +8,7 @@ import { BackendDataSource } from '../../common/base-classes/backend-data-source
 import { SnackBarService } from '../../common/snack-bar.service';
 import { FoodService } from './food.service';
 import { switchMap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { LoadingState } from '../../common/util';
 import { AccountsACModel } from './food-api';
 import { ImageInputComponent } from '../../common/image-input/image-input.component';
@@ -25,7 +25,7 @@ const foodAppCode = 12;
 })
 export class FoodDetailComponent extends AbstractEntityView<Food, BackendDataSource<Food>> implements OnInit, OnDestroy {
 
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saved = false;
     public accountsACModel: AccountsACModel;
     id: number;
@@ -35,7 +35,7 @@ export class FoodDetailComponent extends AbstractEntityView<Food, BackendDataSou
     constructor(
         public httpSrv: HttpService,
         public snackBarSrv: SnackBarService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public foodSrv: FoodService,
         public router: Router,

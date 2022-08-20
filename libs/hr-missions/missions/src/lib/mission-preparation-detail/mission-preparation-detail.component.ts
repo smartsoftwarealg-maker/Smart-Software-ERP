@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Mission} from '../missions-api.class';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MissionsService} from '../missions.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -32,7 +32,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         private lookupsSrv: LookupsService,
@@ -44,7 +44,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'MISSION_PREPARATION');
     }
 
-    public setupForm(b: Mission): FormGroup {
+    public setupForm(b: Mission): UntypedFormGroup {
         return this.formBuilder.group({
             id: [b.id],
             number: [b.number],

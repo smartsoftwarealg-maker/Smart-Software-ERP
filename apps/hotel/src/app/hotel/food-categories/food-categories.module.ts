@@ -49,9 +49,6 @@ const routes: Routes = [
     exports: [
         FoodCategoriesListComponent,
         FoodCategoriesDetailComponent
-    ],
-    entryComponents: [
-        FoodCategoriesDetailComponent
     ]
 })
 export class FoodCategoriesModule {

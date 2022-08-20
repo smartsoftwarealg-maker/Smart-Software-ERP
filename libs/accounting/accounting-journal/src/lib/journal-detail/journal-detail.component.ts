@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {
@@ -33,7 +33,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     paginator = PaginationModel.newInstance({page: 1, pageSize: 5, elementCount: 0});
     userId = 0;
     selectedUser = 0;
-    userCtrl = new FormControl();
+    userCtrl = new UntypedFormControl();
     userAutoComplete = new DefaultAutoCompleteModel<User>(this.usersSrv, 'id', 'fullName');
     displayedColumns = ['userName'];
 
@@ -42,7 +42,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private centerSrv: CenterService,
@@ -55,7 +55,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         this.centerSrv.setParentId(loginSrv.appCtx.company);
     }
 
-    public setupForm(e: Journal): FormGroup {
+    public setupForm(e: Journal): UntypedFormGroup {
         this.journalUserSrv.setParentId(e.id);
         this.loadUsers();
 

@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -23,9 +23,9 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
 
     @Input() editable = true;
-    attributeCtrl = new FormControl();
+    attributeCtrl = new UntypedFormControl();
     childAttributes: Attrib[] = [];
-    selectedAttributeCtrl = new FormControl();
+    selectedAttributeCtrl = new UntypedFormControl();
     attributeColumns = ['attribName', 'value'];
     selectedAttribute: Attrib = null;
     attributeType = 0;

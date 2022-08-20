@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ArchiveService} from '../archive.service';
 import {switchMap, tap} from 'rxjs/operators';
 import {ArchiveDocument, Lookup, UPDocInfo} from '../archive-document';
@@ -20,7 +20,7 @@ import {MatSelectionList} from '@angular/material/list';
 })
 export class ArchiveDetailComponent implements OnInit {
   @ViewChild('tags', { static: false }) selectionList: MatSelectionList;
-  form: FormGroup = null;
+  form: UntypedFormGroup = null;
   private id: string = null;
   public selectedService: number = null;
   private DUMMY = './assets/img/Dummy.png';
@@ -37,7 +37,7 @@ export class ArchiveDetailComponent implements OnInit {
   constructor(private service: ArchiveService,
               private router: Router,
               private route: ActivatedRoute,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private serviceSrv: ServiceService,
               private agentSrv: AgentService,
               private loginSrv: LoginService,

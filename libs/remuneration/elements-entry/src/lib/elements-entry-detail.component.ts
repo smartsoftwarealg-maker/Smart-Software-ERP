@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ELine} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ElementsEntryService} from './elements-entry.service';
@@ -25,7 +25,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private httpSrv: HttpService,
@@ -45,7 +45,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         this.infoSrv.load();
     }
 
-    public setupForm(e: ELine): FormGroup {
+    public setupForm(e: ELine): UntypedFormGroup {
         // this.shellSrv.setLoading(false);
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
         return this.formBuilder.group({
@@ -57,8 +57,8 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         });
     }
 
-    get elementsForm(): FormArray {
-        return this.form.controls['elements'] as FormArray;
+    get elementsForm(): UntypedFormArray {
+        return this.form.controls['elements'] as UntypedFormArray;
     }
 
     selectInput(ev: MatSelectChange) {

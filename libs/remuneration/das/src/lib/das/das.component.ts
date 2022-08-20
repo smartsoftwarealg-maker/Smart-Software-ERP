@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {BankService} from '@ss/administration/api-bank';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSelectionList} from '@angular/material/list';
@@ -24,7 +24,7 @@ interface Lookup {
     styleUrls: ['./das.component.scss']
 })
 export class DasComponent implements OnInit {
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     curYear = new Date().getFullYear() - 1;
     funds: Fund[] = [];
     absences: Formula[] = [];
@@ -39,7 +39,7 @@ export class DasComponent implements OnInit {
     constructor(private shellSrv: ShellService,
                 private dasSrv: DasService,
                 private route: ActivatedRoute,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private elementInfoSrv: ElementsInfoService,
                 private formulaSrv: PayrollFormulasService,
                 private fundSrv: LookupsService) {

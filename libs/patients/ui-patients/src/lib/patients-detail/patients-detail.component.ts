@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {
     Activity,
     AgentPrice,
@@ -28,8 +28,8 @@ import {Patient, PatientService} from '@ss/patients/api-patient';
     styleUrls: ['./patients-detail.component.scss']
 })
 export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient> {
-    pwd1 = new FormControl();
-    pwd2 = new FormControl();
+    pwd1 = new UntypedFormControl();
+    pwd2 = new UntypedFormControl();
     agentTypes: AgentType[];
     companyTypes: CompanyType[] = [];
     cities: City[] = [];
@@ -47,7 +47,7 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(patientSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PATIENTS');

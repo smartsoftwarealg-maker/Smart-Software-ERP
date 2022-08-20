@@ -38,6 +38,7 @@
         "common-ui-auto-complete": "libs/common/ui-auto-complete",
         "common-ui-base-entity": "libs/common/ui-base-entity",
         "common-ui-center-select": "libs/common/ui-center-select",
+        "common-ui-color-select": "libs/common/ui-color-select",
         "common-ui-confirmation-dialog": "libs/common/ui-confirmation-dialog",
         "common-ui-datepicker": "libs/common/ui-datepicker",
         "common-ui-default-report-component": "libs/common/ui-default-report-component",

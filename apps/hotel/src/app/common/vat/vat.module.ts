@@ -47,9 +47,6 @@ const routes: Routes = [
     exports: [
         VatListComponent,
         VatDetailComponent
-    ],
-    entryComponents: [
-        VatDetailComponent
     ]
 })
 export class VatModule {

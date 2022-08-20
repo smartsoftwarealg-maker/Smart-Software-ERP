@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/sales/api-invoice",
     "sourceRoot": "libs/sales/api-invoice/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/api-invoice"],
             "options": {
-                "jestConfig": "libs/sales/api-invoice/jest.config.js",
+                "jestConfig": "libs/sales/api-invoice/jest.config.ts",
                 "passWithNoTests": true
             }
         }

@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {HttpEventType} from '@angular/common/http';
 import {AssetsService} from '../assets.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'ss-asset-excel-injection',
@@ -71,7 +71,7 @@ export class AssetExcelInjectionComponent implements OnInit {
                 public snackBarSrv: SnackBarService,
                 private shellSrv: ShellService,
                 private activatedRoute: ActivatedRoute,
-                private fb: FormBuilder) {
+                private fb: UntypedFormBuilder) {
     }
 
     ngOnInit(): void {

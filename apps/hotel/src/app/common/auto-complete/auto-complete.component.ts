@@ -3,7 +3,7 @@ import {LoadingState} from '../util';
 import {
     AbstractControl,
     ControlValueAccessor,
-    FormControl,
+    UntypedFormControl,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     ValidationErrors,
@@ -33,7 +33,7 @@ import {Subscription} from 'rxjs';
 export class AutoCompleteComponent implements OnInit, OnDestroy, Validator, ControlValueAccessor {
 
     options: any[] = [];
-    control = new FormControl();
+    control = new UntypedFormControl();
     loadingState: LoadingState = LoadingState.COMPLETE;
     subscription: Subscription;
     @Input() required = false;

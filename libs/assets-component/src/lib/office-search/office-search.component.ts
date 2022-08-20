@@ -4,7 +4,7 @@ import {Lookup, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetLocationService} from '../asset-location.service';
 import {AssetsBuildingService} from '../assets-building.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {Subscription, switchMap} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 
@@ -21,9 +21,9 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     buildings: Lookup[] = [];
     floors:    Lookup[] = [];
 
-    locationFF = new FormControl(0);
-    buildingFF = new FormControl(0);
-    floorFF    = new FormControl(0);
+    locationFF = new UntypedFormControl(0);
+    buildingFF = new UntypedFormControl(0);
+    floorFF    = new UntypedFormControl(0);
     list: Office[] = [];
 
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,

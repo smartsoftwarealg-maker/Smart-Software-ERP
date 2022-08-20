@@ -1,7 +1,7 @@
 import {Component, HostBinding, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Tag} from '../tag';
@@ -23,11 +23,11 @@ export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: FormBuilder) {
+        public formBuilder: UntypedFormBuilder) {
         super(tagSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'WAR_TAGS');
     }
 
-    public setupForm(e: Tag): FormGroup {
+    public setupForm(e: Tag): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

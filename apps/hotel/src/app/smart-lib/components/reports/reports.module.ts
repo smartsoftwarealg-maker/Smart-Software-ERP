@@ -39,10 +39,6 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
     exports: [
         SafePipe
     ],
-    entryComponents: [
-        ReportViewerComponent,
-        ReportSelectorComponent
-    ],
     providers: [
         ReportSelectorService,
         ReportViewerService,

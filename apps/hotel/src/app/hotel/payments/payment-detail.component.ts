@@ -1,7 +1,7 @@
 import { CanDeactivate, RouterStateSnapshot, UrlTree, ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { Payment, agentsUrl, paymentsUrl, AgentACModel } from './payment-api';
 import { HttpService } from '../../smart-lib/common/http.service';
@@ -22,14 +22,14 @@ import { isString } from '@ss/common/api-common';
 export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendDataSource<Payment>> implements OnInit, OnDestroy {
 
     saved = false;
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     private record: Payment;
     agentAcModel: AgentACModel;
 
     constructor(
         public httpSrv: HttpService,
         public snackBarSrv: SnackBarService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public router: Router,
         public activatedRoute: ActivatedRoute,

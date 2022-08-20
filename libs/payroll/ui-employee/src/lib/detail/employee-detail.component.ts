@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Employee, EmployeeService } from '@ss/payroll/api-employee';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -31,7 +31,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
     public maritalStatuses: MaritalStatus[];
-    public elementsForm: FormGroup = null;
+    public elementsForm: UntypedFormGroup = null;
     generationModes = [
         { id: 1, description: 'PAYROLL_IEP' },
         { id: 2, description: 'PAYROLL_OLD_ELEMENTS' },
@@ -43,7 +43,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -191,8 +191,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return this.imageModel.submit('file');
     }
 
-    get elementsFormArray(): FormArray {
-        return this.elementsForm?.controls['elements'] as FormArray;
+    get elementsFormArray(): UntypedFormArray {
+        return this.elementsForm?.controls['elements'] as UntypedFormArray;
     }
 
     saveElements() {

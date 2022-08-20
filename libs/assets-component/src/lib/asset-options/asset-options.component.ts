@@ -4,7 +4,7 @@ import {AccJournalsService, AccPoliciesService, ACCPolicy} from '@ss/accounting/
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
@@ -24,7 +24,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {
@@ -41,7 +41,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
                 switchMap(_ => this.loadEntity(this.loginSrv.appCtx.center)));
     }
 
-    public setupForm(e: ACCPolicy): FormGroup {
+    public setupForm(e: ACCPolicy): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             investAccount: [e.investAccount],

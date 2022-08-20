@@ -38,11 +38,11 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_LOGISTICS_VAT_URL,
             accessRights: 'VAT'
         },
-        {
-            name: 'COMMON_COMPANY_TYPES',
-            icon: 'fas fa-building',
-            route: ABS_LOGISTICS_COMPANY_TYPE
-        },
+        // {
+        //     name: 'COMMON_COMPANY_TYPES',
+        //     icon: 'fas fa-building',
+        //     route: ABS_LOGISTICS_COMPANY_TYPE
+        // },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
@@ -55,12 +55,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_LOGISTICS_PAY_METHOD,
             accessRights: 'MPay'
         },
-        {
-            name: 'COMMON_CURRENCIES',
-            icon: 'fas fa-coins',
-            route: ABS_LOGISTICS_CURRENCY,
-            accessRights: 'Currency'
-        },
+        // {
+        //     name: 'COMMON_CURRENCIES',
+        //     icon: 'fas fa-coins',
+        //     route: ABS_LOGISTICS_CURRENCY,
+        //     accessRights: 'Currency'
+        // },
         {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-users-class',

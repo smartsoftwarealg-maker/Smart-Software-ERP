@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/ui-datepicker",
     "sourceRoot": "libs/common/ui-datepicker/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/common/ui-datepicker/jest.config.js",
+                "jestConfig": "libs/common/ui-datepicker/jest.config.ts",
                 "tsConfig": "libs/common/ui-datepicker/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/common/ui-datepicker/src/test-setup.ts"

@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
 import {DocImportService} from '../doc-import.service';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 
 @Component({
@@ -15,7 +15,7 @@ export class DocImportComponent implements OnInit {
   public   documentList: Lookup[];
   public   importList: ImportInfo[] = [];
   readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
-  public  document = new FormControl();
+  public  document = new UntypedFormControl();
   private importInfo: ImportInfo = null;
   private agentId = 0;
 

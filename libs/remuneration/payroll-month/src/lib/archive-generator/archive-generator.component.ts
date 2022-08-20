@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -13,11 +13,11 @@ import {ArchiveGeneratorService} from '../archive-generator.service';
   styleUrls: ['./archive-generator.component.scss']
 })
 export class ArchiveGeneratorComponent implements OnInit {
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     processing = false;
 
     constructor(private selectorSrv: PayrollMonthService,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private shellSrv: ShellService,
                 private route: ActivatedRoute,
                 private router: Router,

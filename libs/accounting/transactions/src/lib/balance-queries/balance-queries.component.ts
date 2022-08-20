@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Balance, BalanceQueryService, GL} from '@ss/accounting/accounting-api';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
 import {ShellService} from '@ss/common/ui-shell';
@@ -16,7 +16,7 @@ export class BalanceQueriesComponent implements OnInit {
     public glPaginator      = PaginationModel.newInstance();
 
     selectedAccount: string | null = null;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     balanceCols = [
         'accountNo',
         'description',
@@ -45,7 +45,7 @@ export class BalanceQueriesComponent implements OnInit {
     glData: GL[] = [];
 
     constructor(private querySrv: BalanceQueryService,
-                private fb: FormBuilder,
+                private fb: UntypedFormBuilder,
                 private shellSrv: ShellService,
                 private route: ActivatedRoute) {
         this.balancePaginator.onChange = () => this.refreshBalance();

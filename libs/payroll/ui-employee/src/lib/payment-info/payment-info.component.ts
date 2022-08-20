@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FundService, PaymentInfoService} from '@ss/payroll/api-employee';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {Fund, LookupsService, MaritalStatus} from '@ss/common/api-lookup';
 import {switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
@@ -23,7 +23,7 @@ export class PaymentInfoComponent {
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
 
     constructor(private infoSrv: PaymentInfoService,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private lookupsSrv: LookupsService,
                 private fundSrv: FundService,
                 private bankSrv: BankService,

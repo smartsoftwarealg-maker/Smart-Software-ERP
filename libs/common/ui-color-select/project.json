@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/common/ui-color-select/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/common/ui-color-select"],
+            "options": {
+                "jestConfig": "libs/common/ui-color-select/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/common/ui-color-select/**/*.ts",
+                    "libs/common/ui-color-select/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

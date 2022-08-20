@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
@@ -19,7 +19,7 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./special-payroll-detail.component.scss']
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
-    employeeLookup = new FormControl();
+    employeeLookup = new UntypedFormControl();
 
     processing = false;
     displayedColumns = ['id', 'lastName', 'firstName', 'post']
@@ -34,7 +34,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         override shellSrv: ShellService,
         override snackBarSrv: SnackBarService,
         override route: ActivatedRoute,
-        override formBuilder: FormBuilder,
+        override formBuilder: UntypedFormBuilder,
         override confirmationSrv: ConfirmationDialogService,
         private loginSrv: LoginService,
         private entrySrv: ElementsEntryService,
@@ -54,7 +54,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
             });
     }
 
-    setupForm(e: Special): FormGroup {
+    setupForm(e: Special): UntypedFormGroup {
         this.payrollId = e?.id;
         this.paymonth = e?.paymonth || 0;
         this.selectorSrv

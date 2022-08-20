@@ -1,7 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NgControl } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, FormGroup, NgControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { isString } from '@ss/common/api-common';
@@ -90,7 +90,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     static nextId = 0;
 
     readonly stateChanges = new Subject<void>();
-    autoControl: FormControl = new FormControl();
+    autoControl: UntypedFormControl = new UntypedFormControl();
     filterSub: Subscription;
     @HostBinding() readonly id = `ss-auto-complete-${UiAutoCompleteComponent.nextId++}`;
     isRequired = false;

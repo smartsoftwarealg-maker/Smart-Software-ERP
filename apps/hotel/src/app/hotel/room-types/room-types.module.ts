@@ -48,9 +48,6 @@ const routes: Routes = [
     exports: [
         RoomTypesListComponent,
         RoomTypesDetailComponent
-    ],
-    entryComponents: [
-        RoomTypesDetailComponent
     ]
 })
 export class RoomTypesModule {

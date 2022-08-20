@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AttribTempl, AttribVal} from '../attributes';
@@ -20,7 +20,7 @@ export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribT
     private parentId = 0;
     lookupValues: AttribVal[] = [];
     selectedValue: AttribVal = null;
-    selectedItem = new FormControl();
+    selectedItem = new UntypedFormControl();
     isLookupType   = false;
 
     constructor(
@@ -28,7 +28,7 @@ export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribT
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_ATTRIBUTES');

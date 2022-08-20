@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {AttributesService} from '../attributes.service';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
   styleUrls: ['./attributes-list.component.scss']
 })
 export class AttributesListComponent extends BaseEntityListComponent<AttribTempl> implements OnInit, OnDestroy {
-    moduleId = new FormControl(1);
+    moduleId = new UntypedFormControl(1);
     displayedColumns = [
         'description',
         'attType'

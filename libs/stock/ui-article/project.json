@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/stock/ui-article",
     "sourceRoot": "libs/stock/ui-article/src",
     "prefix": "ss",
     "targets": {
@@ -17,7 +17,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/stock/ui-article/jest.config.js",
+                "jestConfig": "libs/stock/ui-article/jest.config.ts",
                 "tsConfig": "libs/stock/ui-article/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/stock/ui-article/src/test-setup.ts"

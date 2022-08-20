@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -26,8 +26,8 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './user-detail.component.html'
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
-    pwd1 = new FormControl();
-    pwd2 = new FormControl();
+    pwd1 = new UntypedFormControl();
+    pwd2 = new UntypedFormControl();
     validId = false;
     openedPanel = -1;
     isManager = false;
@@ -40,8 +40,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     selectedRole = 0;
     selectedCenter = 0;
 
-    roleCtrl = new FormControl();
-    centerCtrl = new FormControl();
+    roleCtrl = new UntypedFormControl();
+    centerCtrl = new UntypedFormControl();
     roleAutoComplete = new DefaultAutoCompleteModel<Role>(this.roleServ);
     centerAutoComplete = new DefaultAutoCompleteModel<Role>(this.centerSrv);
 
@@ -53,7 +53,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private roleServ: RoleService,

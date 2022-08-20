@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
@@ -30,7 +30,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public reportListsService: ReportListService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_REPORT_CATALOG');

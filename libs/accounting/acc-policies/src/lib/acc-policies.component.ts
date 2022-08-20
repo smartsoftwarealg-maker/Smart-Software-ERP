@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validator, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
@@ -28,7 +28,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
@@ -43,7 +43,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         return this.loadEntity(this.loginSrv.appCtx.center);
     }
 
-    public setupForm(e: ACCPolicy): FormGroup {
+    public setupForm(e: ACCPolicy): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             showFolio: [e.showFolio, Validators.required],

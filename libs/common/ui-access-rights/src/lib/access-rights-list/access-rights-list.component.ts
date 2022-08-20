@@ -7,7 +7,7 @@ import {DefaultReportService} from "@ss/common/ui-default-report-component";
 import {AccessRightsService} from "@ss/common/api-access-rights";
 import {LookupsService, RoleService} from "@ss/common/api-lookup";
 import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {switchMap} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
@@ -25,7 +25,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     menuItems: string[] = [];
     roleList: Role[] = [];
     selectedItem = '';
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
 
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
 
@@ -39,17 +39,17 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public defReportSrv: DefaultReportService,
         public router: Router,
         private lookupSrv: LookupsService,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         private roleSrv: RoleService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(rightsSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
-        this.form = new FormGroup({
-            roles: new FormControl(),
-            canRead: new FormControl(false),
-            canWrite: new FormControl(false),
-            canEdit: new FormControl(false),
-            canDelete: new FormControl(false)
+        this.form = new UntypedFormGroup({
+            roles: new UntypedFormControl(),
+            canRead: new UntypedFormControl(false),
+            canWrite: new UntypedFormControl(false),
+            canEdit: new UntypedFormControl(false),
+            canDelete: new UntypedFormControl(false)
         });
         this.editButton.icon = 'fas fa-save';
         this.editButton.label = 'COMMON_SAVE';

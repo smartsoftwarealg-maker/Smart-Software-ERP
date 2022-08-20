@@ -1,11 +1,11 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }
     },
-    "root": "apps/erp",
     "sourceRoot": "apps/erp/src",
     "prefix": "ss",
     "targets": {
@@ -275,7 +275,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "apps/erp/jest.config.js",
+                "jestConfig": "apps/erp/jest.config.ts",
                 "tsConfig": "apps/erp/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "apps/erp/src/test-setup.ts"

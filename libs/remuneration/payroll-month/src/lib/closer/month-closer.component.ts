@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PayrollMonthService} from '../payroll-month.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {of, switchMap, tap} from 'rxjs';
@@ -13,11 +13,11 @@ import {LanguageService} from '@ss/common/api-common';
   styleUrls: ['./month-closer.component.scss']
 })
 export class MonthCloserComponent implements OnInit {
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     processing = false;
 
   constructor(private selectorSrv: PayrollMonthService,
-              private formBuilder: FormBuilder,
+              private formBuilder: UntypedFormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private confirmationSrv: ConfirmationDialogService,

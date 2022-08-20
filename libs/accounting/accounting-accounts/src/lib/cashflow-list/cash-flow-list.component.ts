@@ -13,7 +13,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {switchMap, tap} from 'rxjs';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {CashFlowAccountListComponent} from '../cash-flow-account-list/cash-flow-account-list.component';
 
 @Component({
@@ -29,15 +29,15 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     infoData: TreasuryInfo = { total: 0, located: 0, nonLocated: 0 };
     pendingColumns = ['add', 'accountNo', 'description', 'debit', 'credit'];
 
-    totalDB = new FormControl();
-    locatedDB = new FormControl();
-    nonLocatedDB = new FormControl();
+    totalDB = new UntypedFormControl();
+    locatedDB = new UntypedFormControl();
+    nonLocatedDB = new UntypedFormControl();
 
-    totalCR = new FormControl();
-    locatedCR = new FormControl();
-    nonLocatedCR = new FormControl();
+    totalCR = new UntypedFormControl();
+    locatedCR = new UntypedFormControl();
+    nonLocatedCR = new UntypedFormControl();
 
-    consolidated = new FormControl();
+    consolidated = new UntypedFormControl();
 
     constructor(
         public override entitySrv: AnnexCodeService,

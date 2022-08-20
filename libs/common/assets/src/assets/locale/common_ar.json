@@ -223,5 +223,6 @@
     "EXCEL_INJECTION":     "حقن إكسال",
     "RATE":                "النسبة",
     "RECEPTION":           "استقبال",
-    "UPLOAD":              "تحميل"
+    "UPLOAD":              "تحميل",
+    "COLOR":               "اللون"
 }

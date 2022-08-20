@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 import {Observable, tap} from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         'debit',
         'credit'
     ];
-    accPeriod = new FormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
+    accPeriod = new UntypedFormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
     periods: string[] = [];
     constructor(
         public override entitySrv: PeriodSelectorService,

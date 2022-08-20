@@ -3,7 +3,7 @@ import {ArticleService} from '@ss/stock/api-article';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
     BaseTransactionLinesDetailComponent,
@@ -23,7 +23,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLin
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,

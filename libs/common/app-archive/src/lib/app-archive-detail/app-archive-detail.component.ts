@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppArchive} from '@ss/logistics/api-agent';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,13 +18,13 @@ import {tap} from 'rxjs/operators';
 export class AppArchiveDetailComponent implements OnInit {
     public documentAutoCompleteModel    = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
 
     constructor(private service: AppArchiveService,
                 private documentSrv: AppArchiveDocumentService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private fb: FormBuilder,
+                private fb: UntypedFormBuilder,
                 private loginSrv: LoginService,
                 private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService) {

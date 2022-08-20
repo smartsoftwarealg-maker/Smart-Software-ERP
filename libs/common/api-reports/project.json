@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/api-reports",
     "sourceRoot": "libs/common/api-reports/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-reports"],
             "options": {
-                "jestConfig": "libs/common/api-reports/jest.config.js",
+                "jestConfig": "libs/common/api-reports/jest.config.ts",
                 "passWithNoTests": true
             }
         }

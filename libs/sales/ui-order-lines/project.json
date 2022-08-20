@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/sales/ui-order-lines",
     "sourceRoot": "libs/sales/ui-order-lines/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-order-lines"],
             "options": {
-                "jestConfig": "libs/sales/ui-order-lines/jest.config.js",
+                "jestConfig": "libs/sales/ui-order-lines/jest.config.ts",
                 "outputs": ["coverage/libs/stock/article-store"],
                 "options": {
                     "jestConfig": "libs/stock/article-store/jest.config.js",

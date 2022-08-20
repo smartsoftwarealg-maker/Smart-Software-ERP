@@ -4,7 +4,7 @@ import {
     ActivatedRoute,
     Router
 } from '@angular/router';
-import {FormBuilder} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap, zip} from 'rxjs';
 import {filter, map, tap} from 'rxjs/operators';
@@ -17,7 +17,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
                 public router: Router,
-                public formBuilder: FormBuilder,
+                public formBuilder: UntypedFormBuilder,
                 public confirmationSrv: ConfirmationDialogService,
                 public title: string) {
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);

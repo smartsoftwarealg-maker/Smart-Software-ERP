@@ -4,7 +4,7 @@ import {LoginService} from "@ss/common/api-common";
 import {LookupsService, PayModeService} from "@ss/common/api-lookup";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Data, Params} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {PaymentsDetailService} from "../services/payments-detail.service";
 import {BankService} from "@ss/administration/api-bank";
@@ -31,7 +31,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(paymentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PAYMENTS');
@@ -46,7 +46,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             })
     }
 
-    setupForm(a: Payment): FormGroup {
+    setupForm(a: Payment): UntypedFormGroup {
         this.updateAgentURL();
         const db = a.amount > 0.0 ? a.amount : 0.0;
         const cr = a.amount < 0.0 ? -a.amount : 0.0;

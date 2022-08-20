@@ -4,7 +4,7 @@ import {Grid} from '../grid-api';
 import {BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {GridService} from '../grid.service';
@@ -21,13 +21,13 @@ export class SalaryGridDetailComponent extends BaseEntityDetailComponent<Grid> {
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_SALARY_GRID');
     }
 
-    setupForm(b: Grid): FormGroup {
+    setupForm(b: Grid): UntypedFormGroup {
         return this.formBuilder.group({
             id: [b.id],
             category: [b.category, Validators.required],

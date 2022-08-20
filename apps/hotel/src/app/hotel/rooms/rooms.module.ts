@@ -61,9 +61,6 @@ const routes: Routes = [
     providers: [
         RoomsService,
         CanDeactivateService
-    ],
-    entryComponents: [
-        RoomsDetailComponent
     ]
 })
 export class RoomsModule {

@@ -4,7 +4,7 @@ import {Blocking} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -27,7 +27,7 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -41,7 +41,7 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
             'ASSET_BLOCKINGS');
     }
 
-    public setupForm(a: Blocking): FormGroup {
+    public setupForm(a: Blocking): UntypedFormGroup {
         const today = new Date();
         return this.form = this.formBuilder.group({
             id: a.id,

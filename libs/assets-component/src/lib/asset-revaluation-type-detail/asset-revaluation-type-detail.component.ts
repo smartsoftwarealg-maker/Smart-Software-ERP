@@ -4,7 +4,7 @@ import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {AssetCostTypeService} from '../asset-cost-type.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AssetRevaluationTypeService} from '../asset-revaluation-type.service';
 
@@ -20,13 +20,13 @@ export class AssetRevaluationTypeDetailComponent extends BaseEntityDetailCompone
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(infoSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_REVALUATION_TYPES');
     }
 
-    setupForm(e: Lookup): FormGroup {
+    setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             description: [e.description, Validators.required],

@@ -11,7 +11,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
 import {catchError, delay, Observable, of, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {map, switchMap} from 'rxjs/operators';
 import {saveAs} from 'file-saver';
@@ -39,7 +39,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     generating = false;
     leftPaneHidden = false;
     isAndroid = false;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     params: any = null;
     displayedColumns = [
         'description',
@@ -121,10 +121,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             const cc: any = {};
 
             this.data.forEach(e =>  {
-                cc[e.name] = new FormControl(e.valueString);
+                cc[e.name] = new UntypedFormControl(e.valueString);
             });
-            cc['reportType'] = new FormControl('PDF');
-            this.form = new FormGroup(cc);
+            cc['reportType'] = new UntypedFormControl('PDF');
+            this.form = new UntypedFormGroup(cc);
         });
         if (this.tree) {
             this.tree.treeControl.collapseAll();

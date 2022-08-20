@@ -102,6 +102,9 @@
             "@ss/common/ui-center-select": [
                 "libs/common/ui-center-select/src/index.ts"
             ],
+            "@ss/common/ui-color-select": [
+                "libs/common/ui-color-select/src/index.ts"
+            ],
             "@ss/common/ui-confirmation-dialog": [
                 "libs/common/ui-confirmation-dialog/src/index.ts"
             ],

@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../asset-appointment-doc.service';
@@ -40,7 +40,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     selectedRow: AssetAppointmentLine = null;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
-    inputControl = new FormControl();
+    inputControl = new UntypedFormControl();
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
@@ -52,7 +52,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private officeSrv: OfficeService,

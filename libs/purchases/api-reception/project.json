@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/purchases/api-reception",
     "sourceRoot": "libs/purchases/api-reception/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/api-reception"],
             "options": {
-                "jestConfig": "libs/purchases/api-reception/jest.config.js",
+                "jestConfig": "libs/purchases/api-reception/jest.config.ts",
                 "passWithNoTests": true
             }
         }

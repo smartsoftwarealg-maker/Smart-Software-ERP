@@ -14,6 +14,8 @@ import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {LogisticsUiDocImportModule} from '@ss/logistics/ui-doc-import';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
+import {CommonUiColorSelectModule} from '@ss/common/ui-color-select';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 @NgModule({
     imports: [
@@ -29,7 +31,9 @@ import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
         LogisticsUiDocInfoModule,
         LogisticsUiDocImportModule,
         LogisticsUiStockInfoModule,
-        CommonUiImageInputModule
+        CommonUiImageInputModule,
+        CommonUiColorSelectModule,
+        ColorPickerModule
     ],
     declarations: [ArticleListComponent, ArticleDetailComponent]
 })

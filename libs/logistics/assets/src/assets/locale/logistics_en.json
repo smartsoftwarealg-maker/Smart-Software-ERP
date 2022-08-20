@@ -139,5 +139,6 @@
     "ORDER_NO":      "Order number",
     "CONTRACT_NUMBER": "Contract number",
     "CONTRACT_DATE":   "Contract date",
-    "ODS":             "O.D.S"
+    "ODS":             "O.D.S",
+    "DISCOUNTABLE":    "Discountable"
 }

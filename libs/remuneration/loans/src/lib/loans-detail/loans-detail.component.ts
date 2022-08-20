@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Loan} from '../loans-class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoansService} from '../loans.service';
 import {EmployeeService} from '@ss/payroll/api-employee';
@@ -26,7 +26,7 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         private employeeSrv: EmployeeService,
         public override confirmationSrv: ConfirmationDialogService,
         private loginSrv: LoginService,
@@ -40,7 +40,7 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
             'PAYROLL_LOANS');
     }
 
-    setupForm(e: Loan): FormGroup {
+    setupForm(e: Loan): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id || 0],
             employee: [e.employee || 0],

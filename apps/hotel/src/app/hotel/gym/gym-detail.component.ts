@@ -8,7 +8,7 @@ import { DisplayableService, FullService, Room, ServiceDetail } from '../hotel-a
 import { AgentACModel, FullServiceDataSource } from './gym-api';
 import { dateTimeToStr, LoadingState, strToDateTime } from '../../common/util';
 import { map, switchMap } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BookingStates } from '../restaurant/restaurant-api';
 import { Right } from '../../smart-lib/common/models';
 import { UserService } from '../../smart-lib/components/login/user.service';
@@ -72,7 +72,7 @@ export class GymDetailComponent implements OnInit {
     private accessRight: Right;
     private record: FullService;
     private dataSrc: FullServiceDataSource;
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public agentACModel: AgentACModel;
     public agentBookings: BookedRoom[] = [];
     invoiceDetails: {
@@ -89,7 +89,7 @@ export class GymDetailComponent implements OnInit {
     inDate: Date;
 
     constructor(public gymSrv: GymService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public router: Router,
         public userSrv: UserService,
         public httpSrv: HttpService,

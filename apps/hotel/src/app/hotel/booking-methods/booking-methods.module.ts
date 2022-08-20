@@ -49,9 +49,6 @@ const routes: Routes = [
     exports: [
         BookingMethodsListComponent,
         BookingMethodsDetailComponent
-    ],
-    entryComponents: [
-        BookingMethodsDetailComponent
     ]
 })
 export class BookingMethodsModule {
