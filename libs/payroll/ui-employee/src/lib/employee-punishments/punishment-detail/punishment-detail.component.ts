@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Punishment} from '../punishment-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService, LoginService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -30,7 +30,7 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -55,7 +55,7 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
             );
     }
 
-    setupForm(a: Punishment): FormGroup {
+    setupForm(a: Punishment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee || this.detailSrv.getParentId(),

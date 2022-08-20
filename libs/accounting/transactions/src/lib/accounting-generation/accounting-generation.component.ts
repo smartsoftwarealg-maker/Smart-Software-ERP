@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -44,7 +44,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     showingCash         = false;
     showingPayroll      = false;
 
-    form: FormGroup | null = null;
+    form: UntypedFormGroup | null = null;
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
     processing = false;
     data: TDocument[] = [];
@@ -57,7 +57,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     cashColumns = ['number', 'date', 'debit', 'credit'];
     public pagination = PaginationModel.newInstance();
 
-    constructor(private fb: FormBuilder,
+    constructor(private fb: UntypedFormBuilder,
                 private loginSrv: LoginService,
                 private generationSrv: AccountingGenerationService,
                 private route: ActivatedRoute,

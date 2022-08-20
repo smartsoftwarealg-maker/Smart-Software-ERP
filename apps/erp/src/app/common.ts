@@ -185,6 +185,7 @@ export const ASSET_BUILDING_URL          = 'buildings';
 
 // Scheduled sales
 export const SS_PROJECTS_URL             = 'ss_projects';
+export const SS_ARTICLE_URL              = 'ss_article';
 
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -301,6 +302,7 @@ export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 
 // Scheduled sales
 export const ABS_SCHEDULED_SALES_PROJECTS = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');
+export const ABS_SCHEDULED_SALES_ARTICLE = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_ARTICLE_URL].join('/');
 
 
 //Finance

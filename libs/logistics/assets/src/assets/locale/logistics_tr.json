@@ -135,5 +135,6 @@
     "INVOICE_NUMBER": "",
     "PAYMENT_ORDERS": "",
     "ORDER_NO":      "",
-    "PPRICE":        ""
+    "PPRICE":        "",
+    "DISCOUNTABLE":    ""
 }

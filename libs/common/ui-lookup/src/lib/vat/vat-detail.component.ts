@@ -3,7 +3,7 @@ import {Vat, VatService} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 
 
@@ -20,11 +20,11 @@ export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: FormBuilder) {
+        public formBuilder: UntypedFormBuilder) {
         super(vatSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_VAT');
     }
 
-    public setupForm(e: Vat): FormGroup {
+    public setupForm(e: Vat): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             value: [e.value, Validators.compose(

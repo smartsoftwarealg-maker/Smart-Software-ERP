@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/remuneration/payroll-formulas",
     "sourceRoot": "libs/remuneration/payroll-formulas/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/remuneration/payroll-formulas"],
             "options": {
-                "jestConfig": "libs/remuneration/payroll-formulas/jest.config.js",
+                "jestConfig": "libs/remuneration/payroll-formulas/jest.config.ts",
                 "passWithNoTests": true
             }
         },

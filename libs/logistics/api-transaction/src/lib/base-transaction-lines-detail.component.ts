@@ -1,7 +1,7 @@
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import {LookupsService, LotsService, Store} from '@ss/common/api-lookup';
@@ -27,7 +27,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
@@ -89,7 +89,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     onArticle(a: Article | string) {
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
     }
-    public setupForm(b: TransactionLine): FormGroup {
+    public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
         // Make sure to update the template if you edit the configuration here

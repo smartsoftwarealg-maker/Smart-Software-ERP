@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostBinding, Input, OnDestroy, Optional, Self} from '@angular/core';
-import {ControlValueAccessor, FormBuilder, FormGroup, NgControl, Validators} from '@angular/forms';
+import {ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NgControl, Validators} from '@angular/forms';
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject, Subscription} from 'rxjs';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
@@ -14,7 +14,7 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     static nextId = 0;
     focused = false;
     touched = false;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     stateChanges = new Subject<void>();
     onChangeSubscription: Subscription = null;
     onTouched = () => {};
@@ -26,7 +26,7 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     @Input('aria-describedby') userAriaDescribedBy: string;
     @HostBinding() id = `ss-paymonth-editor-${PaymonthEditorComponent.nextId++}`;
 
-    constructor(private fb: FormBuilder,
+    constructor(private fb: UntypedFormBuilder,
                 protected _elementRef: ElementRef<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
                 @Optional() @Self() public ngControl: NgControl) {
         this.form = fb.group({

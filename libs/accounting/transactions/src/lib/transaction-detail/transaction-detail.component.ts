@@ -6,7 +6,7 @@ import {
     AccTransactionService,
     SCALE
 } from '@ss/accounting/accounting-api';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -35,7 +35,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
@@ -69,7 +69,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
                     tap(res => this.projects = res));
     }
 
-    setupForm(e: ACCTransaction): FormGroup {
+    setupForm(e: ACCTransaction): UntypedFormGroup {
         e.journalno = e.journalno || this.journalId;
         e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
         e.id = e.fileId * SCALE + (e.oid || 0);

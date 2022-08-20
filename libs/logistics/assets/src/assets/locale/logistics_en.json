@@ -137,5 +137,8 @@
     "INVOICE_NUMBER": "Invoice number",
     "PAYMENT_ORDERS": "Payment orders",
     "ORDER_NO":      "Order number",
-    "PPRICE":        "Stock price"
+    "CONTRACT_NUMBER": "Contract number",
+    "CONTRACT_DATE":   "Contract date",
+    "ODS":             "O.D.S",
+    "DISCOUNTABLE":    "Discountable"
 }

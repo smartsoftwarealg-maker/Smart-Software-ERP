@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/scheduled",
     "sourceRoot": "apps/scheduled/src",
     "prefix": "ss",
     "targets": {
@@ -111,7 +111,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/scheduled"],
             "options": {
-                "jestConfig": "apps/scheduled/jest.config.js",
+                "jestConfig": "apps/scheduled/jest.config.ts",
                 "passWithNoTests": true
             }
         }

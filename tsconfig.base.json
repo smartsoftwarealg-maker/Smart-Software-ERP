@@ -102,6 +102,9 @@
             "@ss/common/ui-center-select": [
                 "libs/common/ui-center-select/src/index.ts"
             ],
+            "@ss/common/ui-color-select": [
+                "libs/common/ui-color-select/src/index.ts"
+            ],
             "@ss/common/ui-confirmation-dialog": [
                 "libs/common/ui-confirmation-dialog/src/index.ts"
             ],
@@ -380,6 +383,9 @@
             ],
             "@ss/scheduled-sales/api-scheduled-sales": [
                 "libs/scheduled-sales/api-scheduled-sales/src/index.ts"
+            ],
+            "@ss/scheduled-sales/article": [
+                "libs/scheduled-sales/article/src/index.ts"
             ],
             "@ss/scheduled-sales/projects": [
                 "libs/scheduled-sales/projects/src/index.ts"

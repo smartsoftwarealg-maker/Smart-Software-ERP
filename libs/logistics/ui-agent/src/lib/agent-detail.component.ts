@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {AbstractControl, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     Activity,
@@ -32,8 +32,8 @@ import {LOGISTICS_AGENT_URL, ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
     isSales = this.route.snapshot.data['sales'];
-    pwd1 = new FormControl();
-    pwd2 = new FormControl();
+    pwd1 = new UntypedFormControl();
+    pwd2 = new UntypedFormControl();
     agentTypes: AgentType[];
     companyTypes: CompanyType[] = [];
     cities: City[] = [];
@@ -51,7 +51,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private router: Router) {

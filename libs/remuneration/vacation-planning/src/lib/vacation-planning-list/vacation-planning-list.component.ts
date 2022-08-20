@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {VacationPlanningService} from '../vacation-planning.service';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MatSelectChange} from '@angular/material/select';
 
 @Component({
@@ -17,8 +17,8 @@ import {MatSelectChange} from '@angular/material/select';
 })
 export class VacationPlanningListComponent extends BaseEntityListComponent<VacationPlanning> {
     private readonly THIS_YEAR = new Date().getFullYear();
-    period  = new FormControl(  this.THIS_YEAR - 1);
-    rate    = new FormControl(173.33);
+    period  = new UntypedFormControl(  this.THIS_YEAR - 1);
+    rate    = new UntypedFormControl(173.33);
     defYear = new Date().getFullYear() - 1;
     periods = [
         this.THIS_YEAR - 10,

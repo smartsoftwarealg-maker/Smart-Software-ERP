@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/exchange/api-currency-exchange",
     "sourceRoot": "libs/exchange/api-currency-exchange/src",
     "prefix": "ss",
     "targets": {
@@ -17,7 +17,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/exchange/api-currency-exchange"],
             "options": {
-                "jestConfig": "libs/exchange/api-currency-exchange/jest.config.js",
+                "jestConfig": "libs/exchange/api-currency-exchange/jest.config.ts",
                 "passWithNoTests": true
             }
         }

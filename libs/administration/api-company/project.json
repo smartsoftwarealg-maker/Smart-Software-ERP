@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/administration/api-company",
     "sourceRoot": "libs/administration/api-company/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/administration/api-company/jest.config.js",
+                "jestConfig": "libs/administration/api-company/jest.config.ts",
                 "tsConfig": "libs/administration/api-company/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/administration/api-company/src/test-setup.ts"

@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/payroll/assets",
     "sourceRoot": "libs/payroll/assets/src",
     "prefix": "ss",
     "targets": {

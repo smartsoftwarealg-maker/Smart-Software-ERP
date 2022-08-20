@@ -5,7 +5,7 @@ import {ABS_ASSET_RECEPTIONS_URL} from '../../../../../apps/erp/src/app/common';
 import {AssetsService} from '../assets.service';
 import {switchMap, tap} from 'rxjs/operators';
 import {Asset, AssetReception} from '../assets-api';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetReceptionService} from '../asset-reception.service';
 import {Bank, BankService} from '@ss/administration/api-bank';
@@ -29,7 +29,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,

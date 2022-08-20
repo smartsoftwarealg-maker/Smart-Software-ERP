@@ -13,7 +13,7 @@ import {MatSelectChange} from '@angular/material/select';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {Form, FormBuilder, FormGroup} from '@angular/forms';
+import {Form, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {CommonElementsService} from './common-elements.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
@@ -29,7 +29,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
     commonElementsLookup = new DefaultAutoCompleteModel(this.commonFieldSrv, 'field');
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     selectedTabIndex = 0;
     mainTableWidth = 900;
     slipTableWidth = 500;
@@ -54,7 +54,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         private employeeSrv: EmployeeService,
         private httpSrv: HttpService,
         private monthSelectorSrv: PayrollMonthService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         private commonFieldSrv: CommonElementsService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
         this.pagination.pageSize = 5;

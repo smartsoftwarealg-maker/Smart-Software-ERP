@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 
@@ -11,15 +11,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./customer-profile.component.scss']
 })
 export class CustomerProfileComponent implements OnInit {
- form: FormGroup = null;
+ form: UntypedFormGroup = null;
  agent: Agent = null;
- pwd1 = new FormControl();
- pwd2 = new FormControl();
+ pwd1 = new UntypedFormControl();
+ pwd2 = new UntypedFormControl();
 
   constructor(private shellSrv: ShellService,
               private loginSrv: LoginService,
               public route: ActivatedRoute,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               public snackBarSrv: SnackBarService,
               private agentSrv: AgentService) { }
 

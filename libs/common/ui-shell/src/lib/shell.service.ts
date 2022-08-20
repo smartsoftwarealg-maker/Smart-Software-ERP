@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
@@ -77,7 +77,7 @@ export class ShellService {
     protected appName: string;
     //
     protected goBackFn: () => void = null;
-    protected searchControl: FormControl;
+    protected searchControl: UntypedFormControl;
     public focusSearchField: boolean;
     protected searchInputLabel: string;
     //
@@ -354,7 +354,7 @@ export class ShellService {
         return this.searchInputLabel;
     }
 
-    public get searchFormControl(): FormControl {
+    public get searchFormControl(): UntypedFormControl {
         return this.searchControl;
     }
 
@@ -385,7 +385,7 @@ export class ShellService {
             //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the fuction twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
             // );
         } else {
-            this.searchControl = new FormControl();
+            this.searchControl = new UntypedFormControl();
             this.subscription = subFn(
                 this.searchControl
                     .valueChanges

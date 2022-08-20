@@ -5,7 +5,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import {
     AbstractControl,
     ControlValueAccessor,
-    FormControl,
+    UntypedFormControl,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     ValidationErrors,
@@ -38,7 +38,7 @@ export class TagInputComponent implements OnInit, AfterViewInit, OnDestroy, Cont
 
     valid = true; // last result of validation
     loading = false;
-    txtCtrl = new FormControl();
+    txtCtrl = new UntypedFormControl();
     elements: any[] = [];
     filtered: any[] = [];
 

@@ -4,7 +4,7 @@ import {Article, ArticleService} from '@ss/stock/api-article';
 import {ActivatedRoute, Router} from '@angular/router';
 import {tap} from 'rxjs/operators';
 import {Observable, zip} from 'rxjs';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ClassService, LookupsService, Mark, Unit, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -32,7 +32,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private classSrv: ClassService,

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SnackBarService } from '../../common/snack-bar.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { AbstractEntityView } from '../../common/base-classes/abstract-entity-view';
 import { BackendDataSource } from '../../common/base-classes/backend-data-source';
@@ -23,14 +23,14 @@ const agentsUrl = '/agents';
 export class ClientsDetailComponent extends AbstractEntityView<Agent, BackendDataSource<Agent>> implements OnInit, OnDestroy {
 
     saved = false;
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
 
     private record: Agent;
 
     constructor(
         public httpSrv: HttpService,
         public snackBarSrv: SnackBarService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public router: Router,
         public activatedRoute: ActivatedRoute,

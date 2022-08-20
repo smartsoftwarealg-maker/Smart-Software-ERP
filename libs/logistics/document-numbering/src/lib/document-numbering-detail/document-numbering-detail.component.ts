@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DocumentNumberingService} from '../document-numbering.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -23,7 +23,7 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public definitionSrv: DefinitionLookupService,
         private loginSrv: LoginService) {
@@ -36,7 +36,7 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
             'LOGISTICS_DOCUMENT_NUMBERING');
     }
 
-    public setupForm(e: LDocument): FormGroup {
+    public setupForm(e: LDocument): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             centerId: [e.centerId || this.loginSrv.appCtx.center],

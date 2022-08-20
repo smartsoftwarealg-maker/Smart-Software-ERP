@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/ui-traceability",
     "sourceRoot": "libs/common/ui-traceability/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/ui-traceability"],
             "options": {
-                "jestConfig": "libs/common/ui-traceability/jest.config.js",
+                "jestConfig": "libs/common/ui-traceability/jest.config.ts",
                 "passWithNoTests": true
             }
         },

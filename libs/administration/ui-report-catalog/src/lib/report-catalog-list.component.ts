@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ReportCatalogService, ReportsCatalog} from '@ss/administration/api-report-catalog';
 import {Observable} from 'rxjs';
 import {ReportAppsService} from '@ss/common/api-reports';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, FormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {HttpParams} from '@angular/common/http';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
@@ -19,7 +19,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
 
     applications: string[];
-    applicationsCtrl = new FormControl();
+    applicationsCtrl = new UntypedFormControl();
 
 
     displayedColumns = [

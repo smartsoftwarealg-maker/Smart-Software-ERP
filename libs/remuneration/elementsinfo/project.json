@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/remuneration/elementsinfo",
     "sourceRoot": "libs/remuneration/elementsinfo/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/remuneration/elementsinfo"],
             "options": {
-                "jestConfig": "libs/remuneration/elementsinfo/jest.config.js",
+                "jestConfig": "libs/remuneration/elementsinfo/jest.config.ts",
                 "passWithNoTests": true
             }
         },

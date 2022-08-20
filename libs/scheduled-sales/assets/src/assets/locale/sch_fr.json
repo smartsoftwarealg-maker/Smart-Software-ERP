@@ -1,2 +1,7 @@
 {
+    "SECTOR":        "Secteur",
+    "WORK_MASTER":   "Maitre ouvrage",
+    "REQUESTED_QTY":  "Quantité demandée",
+    "MONTHLY_RATE":   "Tarif mensuel",
+    "REPRESENTATIVE": "Représentant"
 }

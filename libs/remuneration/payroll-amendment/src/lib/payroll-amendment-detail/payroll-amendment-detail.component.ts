@@ -4,7 +4,7 @@ import {Amendment} from '../payroll-amendment.class';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {HttpService, LoginService} from '@ss/common/api-common';
@@ -26,7 +26,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         private httpSrv: HttpService,
         private employeeSrv: EmployeeService,
@@ -34,7 +34,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_AMENDMENTS');
     }
 
-    setupForm(e: Amendment): FormGroup {
+    setupForm(e: Amendment): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             center: [e.center || this.loginSrv.appCtx.center],

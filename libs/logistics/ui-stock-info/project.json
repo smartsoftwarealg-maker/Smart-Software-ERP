@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/ui-stock-info",
     "sourceRoot": "libs/logistics/ui-stock-info/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-stock-info"],
             "options": {
-                "jestConfig": "libs/logistics/ui-stock-info/jest.config.js",
+                "jestConfig": "libs/logistics/ui-stock-info/jest.config.ts",
                 "passWithNoTests": true
             }
         }

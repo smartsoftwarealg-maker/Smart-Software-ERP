@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, Depreciation} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
     FurnitureStatusService,
@@ -79,7 +79,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
@@ -107,7 +107,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.accountAutoCompleteModel.onObjectSelected = a => this.updateAccountDefaults(a);
     }
 
-    setupForm(b: Asset): FormGroup {
+    setupForm(b: Asset): UntypedFormGroup {
         this.isEditable = this.saveButton.visible;
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
@@ -218,7 +218,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.shellSrv.addButton(this.importBtn);
     }
 
-    private setClassListener(form: FormGroup) {
+    private setClassListener(form: UntypedFormGroup) {
         if (this.isAQS) {
             const subs = form
                 .controls['assetClass']

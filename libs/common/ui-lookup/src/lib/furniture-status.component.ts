@@ -4,7 +4,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
@@ -45,11 +45,11 @@ export class FurnitureStatusDetailComponent extends BaseEntityDetailComponent<Lo
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: FormBuilder) {
+        public formBuilder: UntypedFormBuilder) {
         super(statusSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_STATUS');
     }
 
-    public setupForm(e: Lookup): FormGroup {
+    public setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

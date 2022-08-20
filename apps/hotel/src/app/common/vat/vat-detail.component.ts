@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -9,10 +9,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     styleUrls: ['./vat-detail.component.scss']
 })
 export class VatDetailComponent implements OnInit {
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
 
     constructor(
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         private dialogRef: MatDialogRef<VatDetailComponent>,
         private confirmationSrv: ConfirmationDialogService,
         @Inject(MAT_DIALOG_DATA) public data: any) {

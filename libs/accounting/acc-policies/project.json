@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/accounting/acc-policies",
     "sourceRoot": "libs/accounting/acc-policies/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/accounting/acc-policies"],
             "options": {
-                "jestConfig": "libs/accounting/acc-policies/jest.config.js",
+                "jestConfig": "libs/accounting/acc-policies/jest.config.ts",
                 "passWithNoTests": true
             }
         },

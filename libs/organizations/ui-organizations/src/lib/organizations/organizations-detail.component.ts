@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Lookup, Organization } from '@ss/organizations/api-organizations';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService, LoginService } from '@ss/common/api-common';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { Level } from './common';
 import { OrganizationsService } from '@ss/organizations/api-organizations';
@@ -30,7 +30,7 @@ export class OrganizationsDetailComponent {
 
     public title: string;
     public level: Level;
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saving: boolean = false;
     public lookups: Lookup[];
     public loading = true;
@@ -38,7 +38,7 @@ export class OrganizationsDetailComponent {
 
     constructor(public dialogRef: MatDialogRef<OrganizationsDetailComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public snackBarSrv: SnackBarService,
         public loginSrv: LoginService,
         public orgSrv: OrganizationsService,

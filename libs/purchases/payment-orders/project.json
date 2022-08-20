@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/purchases/payment-orders",
     "sourceRoot": "libs/purchases/payment-orders/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/payment-orders"],
             "options": {
-                "jestConfig": "libs/purchases/payment-orders/jest.config.js",
+                "jestConfig": "libs/purchases/payment-orders/jest.config.ts",
                 "passWithNoTests": true
             }
         },

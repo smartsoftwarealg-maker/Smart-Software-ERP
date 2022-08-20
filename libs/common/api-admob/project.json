@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/api-admob",
     "sourceRoot": "libs/common/api-admob/src",
     "prefix": "ss",
     "targets": {
@@ -17,7 +17,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-admob"],
             "options": {
-                "jestConfig": "libs/common/api-admob/jest.config.js",
+                "jestConfig": "libs/common/api-admob/jest.config.ts",
                 "passWithNoTests": true
             }
         }

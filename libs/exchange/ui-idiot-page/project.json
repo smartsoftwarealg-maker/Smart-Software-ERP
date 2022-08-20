@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/exchange/ui-idiot-page",
     "sourceRoot": "libs/exchange/ui-idiot-page/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/exchange/ui-idiot-page"],
             "options": {
-                "jestConfig": "libs/exchange/ui-idiot-page/jest.config.js",
+                "jestConfig": "libs/exchange/ui-idiot-page/jest.config.ts",
                 "passWithNoTests": true
             }
         },

@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/ui-doc-import",
     "sourceRoot": "libs/logistics/ui-doc-import/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/logistics/ui-doc-import"],
             "options": {
-                "jestConfig": "libs/logistics/ui-doc-import/jest.config.js",
+                "jestConfig": "libs/logistics/ui-doc-import/jest.config.ts",
                 "passWithNoTests": true
             }
         }

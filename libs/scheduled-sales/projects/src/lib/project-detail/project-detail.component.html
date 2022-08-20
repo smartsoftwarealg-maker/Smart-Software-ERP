@@ -41,6 +41,11 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_REQUESTED_QTY</mat-label>
+                <input matInput formControlName="requested_qty" type="number"  step="1">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_QTY</mat-label>
                 <input matInput formControlName="qty" type="number"  step="1">
             </mat-form-field>
@@ -51,14 +56,65 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_ACTIVITY</mat-label>
+                <mat-label translate>ADMINISTRATION_ACTIVITY</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
                                   [model]="activityLookup"
-                                  formControlName="agentId">
+                                  formControlName="activity">
                 </ss-auto-complete>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_SECTOR</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="sectorLookup"
+                                  formControlName="sector">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_WILAYA</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="wilayaLookup"
+                                  formControlName="wilaya">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_WORK_MASTER</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="workMasterLookup"
+                                  formControlName="master_work">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CONTRACT_NUMBER</mat-label>
+                <input matInput formControlName="contract_number" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CONTRACT_DATE</mat-label>
+                <ss-date-picker formControlName="contract_date"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_ODS</mat-label>
+                <input matInput formControlName="ods" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>SCH_REPRESENTATIVE</mat-label>
+                <input matInput formControlName="representative" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_STATUS</mat-label>
+                <input matInput formControlName="represent_status" type="text">
+            </mat-form-field>
 
         </form>
 

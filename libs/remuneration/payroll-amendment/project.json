@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/remuneration/payroll-amendment",
     "sourceRoot": "libs/remuneration/payroll-amendment/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/remuneration/payroll-amendment"],
             "options": {
-                "jestConfig": "libs/remuneration/payroll-amendment/jest.config.js",
+                "jestConfig": "libs/remuneration/payroll-amendment/jest.config.ts",
                 "passWithNoTests": true
             }
         },

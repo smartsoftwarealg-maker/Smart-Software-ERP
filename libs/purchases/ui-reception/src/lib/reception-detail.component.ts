@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
@@ -46,7 +46,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersSrv: UserListService,
         public supplierSrv: SupplierService,

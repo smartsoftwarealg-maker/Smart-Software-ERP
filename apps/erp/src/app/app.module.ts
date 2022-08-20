@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
 import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 const routes: Routes = [
     {
@@ -123,6 +124,7 @@ const routes: Routes = [
         // modules with routes
         UiLoginModule,
         UiCenterSelectModule,
+        ColorPickerModule
     ],
     bootstrap: [AppComponent],
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Trajectory} from '../trajectory';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -18,13 +18,13 @@ export class TrajectoryDetailComponent extends BaseEntityDetailComponent<Traject
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'MISSION_TRAJECTORIES');
     }
 
 
-    setupForm(b: Trajectory): FormGroup {
+    setupForm(b: Trajectory): UntypedFormGroup {
         return this.formBuilder.group({
             id: [b.id],
             distance: [b.distance, Validators.required],

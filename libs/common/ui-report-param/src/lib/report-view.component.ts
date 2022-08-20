@@ -11,13 +11,11 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
 import {catchError, delay, Observable, of, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {map, switchMap} from 'rxjs/operators';
 import {saveAs} from 'file-saver';
-import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {DeviceDetectorService} from 'ngx-device-detector';
-import {File} from '@ionic-native/file/ngx';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
@@ -41,7 +39,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     generating = false;
     leftPaneHidden = false;
     isAndroid = false;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     params: any = null;
     displayedColumns = [
         'description',
@@ -62,8 +60,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public router: Router,
-        // private fileOpener: FileOpener,
-        // private file: File,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public sanitizer: DomSanitizer,
@@ -125,10 +121,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             const cc: any = {};
 
             this.data.forEach(e =>  {
-                cc[e.name] = new FormControl(e.valueString);
+                cc[e.name] = new UntypedFormControl(e.valueString);
             });
-            cc['reportType'] = new FormControl('PDF');
-            this.form = new FormGroup(cc);
+            cc['reportType'] = new UntypedFormControl('PDF');
+            this.form = new UntypedFormGroup(cc);
         });
         if (this.tree) {
             this.tree.treeControl.collapseAll();
@@ -221,19 +217,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     private writeThenOpenFile(fileBlob: any) {
-        // const fs = this.file.externalApplicationStorageDirectory;
-        // this
-        //     .file
-        //     .writeFile(fs,
-        //         'report.pdf',
-        //         fileBlob,
-        //         {replace: true}
-        //     ).then(res => {
-        //     this.fileOpener.open(
-        //         res.toInternalURL(),
-        //         'application/pdf'
-        //     ).catch(err => window.alert(err));
-        // }).catch((err) => window.alert(err));
     }
 
     private dateToBackendStr(x: Date) {

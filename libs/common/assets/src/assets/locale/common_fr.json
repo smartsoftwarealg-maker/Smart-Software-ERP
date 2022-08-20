@@ -225,5 +225,6 @@
     "EXCEL_INJECTION":     "Injection d'Excel",
     "RATE":               "Taux",
     "RECEPTION":          "Reception",
-    "UPLOAD":              "Charger"
+    "UPLOAD":              "Charger",
+    "COLOR":               "Colour"
 }

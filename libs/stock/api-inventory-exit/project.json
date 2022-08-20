@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/stock/api-inventory-exit",
     "sourceRoot": "libs/stock/api-inventory-exit/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/stock/api-inventory-exit/jest.config.js",
+                "jestConfig": "libs/stock/api-inventory-exit/jest.config.ts",
                 "tsConfig": "libs/stock/api-inventory-exit/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/stock/api-inventory-exit/src/test-setup.ts"

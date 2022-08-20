@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/stock/ui-inventory-entry",
     "sourceRoot": "libs/stock/ui-inventory-entry/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/stock/ui-inventory-entry/jest.config.js",
+                "jestConfig": "libs/stock/ui-inventory-entry/jest.config.ts",
                 "tsConfig": "libs/stock/ui-inventory-entry/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/stock/ui-inventory-entry/src/test-setup.ts"

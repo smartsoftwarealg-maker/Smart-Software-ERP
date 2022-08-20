@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/cespace",
     "sourceRoot": "apps/cespace/src",
     "prefix": "ss",
     "targets": {
@@ -110,7 +110,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/cespace"],
             "options": {
-                "jestConfig": "apps/cespace/jest.config.js",
+                "jestConfig": "apps/cespace/jest.config.ts",
                 "passWithNoTests": true
             }
         },

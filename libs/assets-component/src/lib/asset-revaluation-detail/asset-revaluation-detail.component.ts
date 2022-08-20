@@ -5,7 +5,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AssetCostsService} from '../asset-costs.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -29,7 +29,7 @@ export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -43,7 +43,7 @@ export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<
             'ASSET_REVALUATIONS');
     }
 
-    public setupForm(a: AssetRevaluation): FormGroup {
+    public setupForm(a: AssetRevaluation): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             reval_type: [a.reval_type, Validators.required],

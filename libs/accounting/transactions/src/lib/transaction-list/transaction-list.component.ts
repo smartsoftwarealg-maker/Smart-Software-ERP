@@ -16,7 +16,7 @@ import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {MatFormField} from '@angular/material/form-field';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 @Component({
   selector: 'ss-transaction-list',
@@ -36,7 +36,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     };
     public math = Math
     selectedJournal = 0;
-    journalFilter = new FormControl('');
+    journalFilter = new UntypedFormControl('');
     journalList: Journal[] = [];
     displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
 

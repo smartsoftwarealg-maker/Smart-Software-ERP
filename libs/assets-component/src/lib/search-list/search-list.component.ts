@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, FormGroup} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
 import {AssetLocationService} from '../asset-location.service';
@@ -82,7 +82,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> {
                 private locationSrv: AssetLocationService,
                 private officeSrv: OfficeService,
                 private dialog: MatDialog,
-                private fb: FormBuilder,
+                private fb: UntypedFormBuilder,
                 private langSrv: LanguageService) {
         super(listSrv,
               shellSrv,

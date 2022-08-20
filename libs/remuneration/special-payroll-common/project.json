@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/remuneration/special-payroll-common",
     "sourceRoot": "libs/remuneration/special-payroll-common/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/remuneration/special-payroll-common"],
             "options": {
-                "jestConfig": "libs/remuneration/special-payroll-common/jest.config.js",
+                "jestConfig": "libs/remuneration/special-payroll-common/jest.config.ts",
                 "passWithNoTests": true
             }
         },

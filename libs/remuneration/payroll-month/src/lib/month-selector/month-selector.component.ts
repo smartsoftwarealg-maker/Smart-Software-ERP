@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -17,11 +17,11 @@ export class MonthSelectorComponent implements OnInit {
     specialList: Special[] = [];
     private minMonth = 0;
     private maxMonth = 0;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     processing = false;
 
     constructor(private selectorSrv: PayrollMonthService,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService,

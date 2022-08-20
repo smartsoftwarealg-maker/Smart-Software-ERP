@@ -1,4 +1,3 @@
-import {ExtraEntryPointObject} from '@angular-devkit/build-angular';
 export const ASSET_MODULE = 2;
 export const ARTICLE_MODULE = 1;
 

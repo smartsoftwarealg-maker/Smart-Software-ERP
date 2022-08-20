@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {LanguageService, PaginationModel} from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
@@ -28,10 +28,10 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     application = '';
     data: string[][] = [];
     displayedColumns: string[] = [];
-    form = new FormGroup({
-        options: new FormControl(1),
-        fromDate: new FormControl(this.traceSrv.fromDate),
-        toDate: new FormControl(this.traceSrv.toDate)
+    form = new UntypedFormGroup({
+        options: new UntypedFormControl(1),
+        fromDate: new UntypedFormControl(this.traceSrv.fromDate),
+        toDate: new UntypedFormControl(this.traceSrv.toDate)
     });
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
     apps: string[] = [];

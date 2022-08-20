@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/web-arch/ui",
     "sourceRoot": "libs/web-arch/ui/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/web-arch/ui"],
             "options": {
-                "jestConfig": "libs/web-arch/ui/jest.config.js",
+                "jestConfig": "libs/web-arch/ui/jest.config.ts",
                 "passWithNoTests": true
             }
         },

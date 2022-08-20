@@ -11,9 +11,6 @@ import {MaterialModule} from '../material.module';
     ],
     declarations: [MessageComponent,],
     exports: [MessageComponent,],
-    entryComponents: [
-        MessageComponent
-    ],
     providers: [CustomErrorHandler]
 })
 export class ErrorHandlerModule {

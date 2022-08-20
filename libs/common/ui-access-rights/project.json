@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/ui-access-rights",
     "sourceRoot": "libs/common/ui-access-rights/src",
     "prefix": "ss",
     "targets": {
@@ -17,7 +17,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/ui-access-rights"],
             "options": {
-                "jestConfig": "libs/common/ui-access-rights/jest.config.js",
+                "jestConfig": "libs/common/ui-access-rights/jest.config.ts",
                 "passWithNoTests": true
             }
         }

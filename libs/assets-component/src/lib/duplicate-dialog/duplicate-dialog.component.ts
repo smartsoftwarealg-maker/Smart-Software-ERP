@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {AssetsService} from '../assets.service';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 
 @Component({
     selector: 'ss-duplicate-dialog',
@@ -11,7 +11,7 @@ import {FormControl, Validators} from '@angular/forms';
 export class DuplicateDialogComponent implements OnInit {
     assetId = 0;
     processing = false;
-    count = new FormControl(1, Validators.required);
+    count = new UntypedFormControl(1, Validators.required);
 
     constructor(private dialogRef: MatDialogRef<DuplicateDialogComponent>,
                 private assetSrv: AssetsService,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BookingMethod, BookingState, ChargingCost, FullBooking, PaymentMethod, Room, RoomOption, RoomState, RoomType } from '../hotel-api';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap, map } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Vat } from '../../common/vat/vat-api';
 import { AutoCompleteModel } from '../../common/auto-complete/auto-complete-model';
 import { HotelOptions } from '../options/options';
@@ -27,7 +27,7 @@ export function dateDiff(first: Date, last: Date) {
 
 export interface ListFilters {
     firstDay: Date;
-    roomsFilter: FormControl;
+    roomsFilter: UntypedFormControl;
     selectedAgentId: number;
     selectedRoomType: number;
     selectedRoomOptions: number[];
@@ -92,7 +92,7 @@ export class BookingService {
     //
     public listFilters: ListFilters = {
         firstDay: null,
-        roomsFilter: new FormControl(),
+        roomsFilter: new UntypedFormControl(),
         selectedAgentId: null,
         selectedRoomType: 0,
         selectedRoomOptions: []

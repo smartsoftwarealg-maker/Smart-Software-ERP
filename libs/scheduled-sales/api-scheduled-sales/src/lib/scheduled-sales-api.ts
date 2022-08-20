@@ -1,4 +1,7 @@
+import {ImageModel} from '@ss/common/ui-image-input';
+
 export const SS_PROJECT_URL = '/ssales/projects';
+export const SS_ARTICLE_URL = '/ssales/articles';
 
 export interface SSProject {
     id: number;
@@ -40,4 +43,29 @@ export interface SSProject {
     sectorName?: string;
     wilayaName?: string;
     typeName?: string;
+}
+
+export interface Article {
+    id: number;
+    reference: string;
+    description1?: string;
+    description2?: string;
+    price1?: number;
+    price2: number;
+    price3: number;
+    discount?: number;
+    appId?: number;
+    blocked: boolean;
+    discountable: boolean;
+    accountNo?: string;
+    rgb: number;
+    vat?: number;
+    aType?: number;
+    pClass?: number;
+    unit?: number;
+    imageModel?: ImageModel;
+    classDescription?: string;
+    typeDescription?: string;
+    unitDescription?: string;
+    vatValue?: number;
 }

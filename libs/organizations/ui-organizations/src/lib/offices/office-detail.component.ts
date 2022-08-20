@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {UntypedFormGroup, UntypedFormBuilder, Validators, FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -24,7 +24,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
     buildingLookup = new CodeDescriptionAutoCompleteModel(this.buildingSrv);
 
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saving: boolean = false;
 
     constructor(
@@ -32,7 +32,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         private buildingSrv: AssetsBuildingService,
@@ -47,7 +47,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         return super.getRouteParam();
     }
 
-    setupForm(a: Office): FormGroup {
+    setupForm(a: Office): UntypedFormGroup {
         this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
             code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(4)])],

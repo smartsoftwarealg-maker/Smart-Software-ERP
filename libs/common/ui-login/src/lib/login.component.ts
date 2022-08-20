@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ABS_INDEX_URL, LoginService, LoginType} from '@ss/common/api-common';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {Router} from '@angular/router';
@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
     public user: { username: string, password: string } = {username: '', password: ''};
     public license: string = null;
     readonly isPhone: boolean;
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     loading = false;
     updating = false;
 
     constructor(public loginSrv: LoginService,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 public router: Router,
                 protected deviceSrv: DeviceDetectorService) {
         const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ToolbarButton, ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { EmploymentType, EmploymentTypeService, LookupsService, SuspensionReason } from '@ss/common/api-lookup';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -27,7 +27,7 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -46,7 +46,7 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
             );
     }
 
-    setupForm(a: EmployeeActivation): FormGroup {
+    setupForm(a: EmployeeActivation): UntypedFormGroup {
         this.entity = a;
         return this.formBuilder.group({
             id: a.id,
