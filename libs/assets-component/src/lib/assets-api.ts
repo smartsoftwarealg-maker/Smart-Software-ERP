@@ -138,18 +138,13 @@ export interface AssetClass {
 }
 
 export interface ASSAppointment {
-    id: number
-    invest_id: number;
-    decision_date?: Date;
-    decision_ref?: string;
-    location?: number;
-    cost_center?: number;
-    office_id?: number;
-    invent_id: number;
-    officeCode?: string;
-    agentId?: number;
-    denomination?: string;
-    reappointment: boolean,
+    id: number;
+    parentId: number;
+    date?: Date;
+    number?: string;
+    location?: string;
+    code?:  string;
+    beneficiary?:  string;
 }
 
 export interface AssetReception {

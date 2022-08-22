@@ -43,10 +43,9 @@ export class AssetAppointmentDetailComponent extends BaseEntityDetailComponent<A
     public setupForm(a: ASSAppointment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id:            [a.id],
-            invest_id:     [a.invest_id || this.parentId],
-            decision_date: [a.decision_date, Validators.required],
-            decision_ref:  [a.decision_ref],
-            office_id:     [a.office_id, Validators.required]
+            date:          [a.date, Validators.required],
+            number:        [a.number],
+            location:      [a.location, Validators.required]
         });
     }
 
