@@ -15,11 +15,12 @@ import {ASSAppointment} from '../assets-api';
 })
 export class AssetAppointmentListComponent implements OnInit {
     displayedColumns = [
-        'decision_date',
-        'decision_ref',
-        'officeCode',
-        'denomination'
+        'date',
+        'number',
+        'location',
+        'beneficiary'
     ];
+
     @Input() editable = true;
     selected = 0;
     data: ASSAppointment[] = [];

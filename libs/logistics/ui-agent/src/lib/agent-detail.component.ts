@@ -12,17 +12,18 @@ import {
     City,
     CompanyType,
     Country,
-    Currency,
+    Currency, DepartmentService,
     LookupsService,
     PayMode
 } from '@ss/common/api-lookup';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {FormValidators, LoginService} from '@ss/common/api-common';
+import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
 import {Bank} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
 import {LOGISTICS_AGENT_URL, ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -31,6 +32,8 @@ import {LOGISTICS_AGENT_URL, ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    AQS = false;
+    departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     isSales = this.route.snapshot.data['sales'];
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
@@ -54,7 +57,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private router: Router) {
+        private router: Router,
+        private isParamSrv: IsParamService,
+        private departmentSrv: DepartmentService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
@@ -82,7 +87,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 switchMap(() => this.lookupsSrv.getBanks()),
                 tap(x => this.banks = x),
                 switchMap(_ => this.lookupsSrv.getSalesCategories()),
-                tap(x => this.categories = x)
+                tap(x => this.categories = x),
+                switchMap(_ => this.isParamSrv.is('AQS')),
+                tap(res => this.AQS = res)
             );
     }
 
@@ -151,7 +158,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             approval: [a.approval],
             category: [a.category],
             tin: [a.tin],
-            creationTime: {value: a.creationTime, disabled: true}
+            department: [a.department],
+            creationTime: { value: a.creationTime, disabled: true }
         });
     }
 

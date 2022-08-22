@@ -41,5 +41,6 @@ export class ProjectListComponent extends BaseEntityListComponent<SSProject> {
             defReportSrv,
             pagPersistSrv,
             'COMMON_PROJECTS');
+        this.pagination.pageSize = 10;
     }
 }

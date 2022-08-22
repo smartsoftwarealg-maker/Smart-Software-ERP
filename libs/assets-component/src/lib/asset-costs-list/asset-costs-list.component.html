@@ -1,13 +1,17 @@
 <div class="ctrl-div" *ngIf="editable">
-    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+    <button mat-mini-fab  type="button" color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>
-    <button mat-mini-fab (click)="edit()"
+    <button mat-mini-fab
+            type="button"
+            (click)="edit()"
             [disabled]="!selected"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()"
+    <button mat-mini-fab
+            type="button"
+            (click)="deleteSelected()"
             [disabled]="!selected"
             color="warn">
         <span class="fas fa-trash-alt"></span>

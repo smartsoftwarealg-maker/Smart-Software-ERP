@@ -11,6 +11,7 @@ import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.compon
 import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.component';
 import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {AppArchiveModule} from '@ss/common/app-archive';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import {AppArchiveModule} from '@ss/common/app-archive';
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         LogisticsUiDocInfoModule,
-        AppArchiveModule
+        AppArchiveModule,
+        CommonUiAutoCompleteModule
     ],
     declarations: [
         AgentListComponent,

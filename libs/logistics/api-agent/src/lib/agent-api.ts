@@ -54,6 +54,7 @@ export interface Agent {
     approval?: string;
     category?: number;
     activityDescription?: string;
+    department?: number;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

@@ -74,13 +74,17 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
             .subscribe(res => {
                 this.buildings = res;
                 this.buildingFF.setValue(null);
+                this.floorFF.setValue(null);
             });
     }
 
     private findFloors() {
         this.officeSrv
             .floors(this.locationFF.value || 0, this.buildingFF.value || 0)
-            .subscribe(res => this.floors = res);
+            .subscribe(res => {
+                this.floors = res;
+                this.floorFF.setValue(null);
+            });
     }
 
     private findOffices() {
