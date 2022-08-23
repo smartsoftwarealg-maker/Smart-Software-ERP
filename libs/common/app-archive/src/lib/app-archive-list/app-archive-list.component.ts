@@ -31,7 +31,10 @@ export class AppArchiveListComponent implements OnInit {
             .parent
             .params
             .pipe(
-                tap(params => this.entitySrv.setParentId(+params['id'] || 0)),
+                tap(params => {
+                    this._id = +params['id'] || 0;
+                    this.entitySrv.setParentId(this._id);
+                }),
                   switchMap(_ => this.entitySrv.getList(0, 50)))
             .subscribe(res => {
                 this.data = res.body || [];
@@ -53,6 +56,9 @@ export class AppArchiveListComponent implements OnInit {
         this.entitySrv.setParentId(agentId);
     }
 
+    get id() {
+        return this._id;
+    }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()

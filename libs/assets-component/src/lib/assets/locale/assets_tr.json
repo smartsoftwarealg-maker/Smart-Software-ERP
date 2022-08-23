@@ -52,5 +52,6 @@
     "DELIVERY_DATE":       "",
     "INVOICE_NUMBER":      "",
     "INVOICE_DATE":        "",
-    "SITE":                ""
+    "SITE":                "",
+    "GOTO_DETAIL":   ""
 }

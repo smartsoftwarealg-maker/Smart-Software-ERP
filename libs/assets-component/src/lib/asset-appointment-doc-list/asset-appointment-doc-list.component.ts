@@ -22,7 +22,8 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
         'beneficiary',
         'requestNumber',
         'requestDate',
-        'reappointment'
+        'reappointment',
+        'creatorName'
     ];
 
     constructor(

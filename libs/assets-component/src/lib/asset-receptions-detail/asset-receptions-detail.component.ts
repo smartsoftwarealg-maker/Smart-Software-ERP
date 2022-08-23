@@ -34,7 +34,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private loginSrv: LoginService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 
 
@@ -45,17 +45,19 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center],
             serialNumber:   [{ value: b.serialNumber || 1, disabled: true }],
-            receptionDate:  [b.receptionDate, Validators.required],
+            receptionDate:  [b.receptionDate  || new Date(), Validators.required],
             supplier:       [b.supplier, Validators.required],
             origSupplier:   [b.origSupplier],
             requestNumber:  [b.requestNumber],
             orderNumber:    [b.orderNumber],
             deliveryNumber: [b.deliveryNumber],
             invoiceNumber:  [b.invoiceNumber],
-            requestDate:    [b.requestDate ],
+            requestDate:    [b.requestDate],
             orderDate:      [b.orderDate],
             deliveryDate:   [b.deliveryDate],
             invoiceDate:    [b.invoiceDate],
+            creatorName:    [{ value: b.creatorName, disabled: true }],
+            modifierName:   [{ value: b.modifierName, disabled: true }],
         });
     }
 

@@ -22,9 +22,6 @@ export class AppArchiveMainComponent {
         if (comp && comp['refresh'] != null) {
             comp['refresh']();
         }
-        // if (typeof comp === AppArchiveListComponent) {
-        //
-        // }
     }
 
     @Input()

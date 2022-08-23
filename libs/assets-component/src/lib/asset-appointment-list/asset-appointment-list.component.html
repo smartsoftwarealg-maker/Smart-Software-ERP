@@ -51,6 +51,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <i class="fa-solid fa-key open-icon" (click)="openAppointment(e.id)" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>

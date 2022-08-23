@@ -22,9 +22,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'acquisitionDate',
         'serviceDate',
         'acquisitionValue',
-        'depreciationRate',
-        'useful_life',
-        'residualValue',
+        'key'
     ];
 
     private AQS_COLS = [
@@ -37,9 +35,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'geolocation',
         'beneficiary',
         'serial_no',
-        'depreciationRate',
-        'useful_life',
-        'residualValue',
+        'key'
     ];
 
     detailColumns = this.DEF_COLS;
@@ -49,7 +45,8 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'receptionDate',
         'supplierName',
         'count',
-        'amount'
+        'amount',
+        'creatorName',
     ];
     detail: Asset[] = [];
 
@@ -78,7 +75,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
     override ngOnInit() {
         super.ngOnInit();
         // this.editButton.visible = false;
-        this.deleteButton.visible = false;
+        // this.deleteButton.visible = false;
         this.shellSrv.updateShell();
         this.isParamSrv
             .is('AQS')
@@ -88,5 +85,12 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
     override select(id: number) {
         super.select(id);
         this.entitySrv.getAssets(id || 0).subscribe(res => this.detail = res);
+    }
+
+    openAsset(id: number) {
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../assets', id], { relativeTo: this.route });
+        }
     }
 }

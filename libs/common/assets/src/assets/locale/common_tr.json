@@ -210,5 +210,7 @@
     "RATE":                "Puanla",
     "RECEPTION":           "",
     "UPLOAD":              "",
-    "COLOR":               ""
+    "COLOR":               "",
+    "CREATED_BY":          "",
+    "MODIFIED_BY":         ""
 }

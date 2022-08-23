@@ -1,15 +1,14 @@
 <form *ngIf="form !== null" novalidate [formGroup]="form">
-    <mat-form-field id="number" class="default-25 sm-50">
+    <mat-form-field id="number" class="default-50 sm-100">
         <mat-label translate>COMMON_NUMBER</mat-label>
         <input matInput formControlName="serialNumber" type="number" readonly>
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker formControlName="receptionDate"></ss-date-picker>
     </mat-form-field>
 
-    <span class="default-50 sm-100"></span>
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
         <ss-auto-complete matInput
@@ -27,53 +26,63 @@
     </mat-form-field>
 
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
         <input matInput formControlName="requestNumber" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_REQUEST_DATE</mat-label>
         <ss-date-picker formControlName="requestDate"></ss-date-picker>
     </mat-form-field>
 
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
         <input matInput formControlName="orderNumber" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_ORDER_DATE</mat-label>
         <ss-date-picker formControlName="orderDate"></ss-date-picker>
     </mat-form-field>
 
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
         <input matInput formControlName="deliveryNumber" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_DELIVERY_DATE</mat-label>
         <ss-date-picker formControlName="deliveryDate"></ss-date-picker>
     </mat-form-field>
 
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
         <input matInput formControlName="invoiceNumber" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-50">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>ASSET_INVOICE_DATE</mat-label>
         <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MODIFIED_BY</mat-label>
+        <input matInput formControlName="creatorName" type="text">
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_MODIFIED_BY</mat-label>
+        <input matInput formControlName="modifierName" type="text">
     </mat-form-field>
 
 </form>
 
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }}</div>-->
 
-<div class="content">
+<div class="content" *ngIf="id > 0">
     <ss-app-archive-main [id]="id" [appId]="2"></ss-app-archive-main>
 </div>

@@ -55,5 +55,6 @@
     "DELIVERY_DATE":       "Date de livraison",
     "INVOICE_NUMBER":      "Numéro de facture",
     "INVOICE_DATE":        "Date de facturation",
-    "SITE":                "Site"
+    "SITE":                "Site",
+    "GOTO_DETAIL":   "Ouvrir la page de détail"
 }

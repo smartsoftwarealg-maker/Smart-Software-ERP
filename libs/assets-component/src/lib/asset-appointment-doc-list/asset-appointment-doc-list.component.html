@@ -35,6 +35,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="creatorName">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_CREATED_BY</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.creatorName }}
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="requestDate">
         <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
         <mat-cell *matCellDef="let e">

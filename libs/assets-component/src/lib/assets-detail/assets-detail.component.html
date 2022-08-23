@@ -11,7 +11,8 @@
     </mat-form-field>
     <mat-form-field id="reference2" class="default-25 sm-50">
         <mat-label>
-            <spna translate>COMMON_REFERENCE</spna>2
+            <spna translate>COMMON_REFERENCE</spna>
+            2
         </mat-label>
         <input matInput formControlName="reference2" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
@@ -41,15 +42,6 @@
         <mat-error *ngIf="form.controls['accountId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
-
-<!--    <mat-form-field class="default-50 sm-100">-->
-<!--        <mat-label translate>ASSET_LOCATIONS</mat-label>-->
-<!--        <ss-auto-complete matInput-->
-<!--                          [model]="officeAutoCompleteModel"-->
-<!--                          formControlName="office">-->
-<!--        </ss-auto-complete>-->
-<!--    </mat-form-field>-->
-
     <div class="default-50 sm-100">
         <mat-form-field style="width: calc(100% - 48px)">
             <mat-label translate>ASSET_LOCATIONS</mat-label>
@@ -62,6 +54,16 @@
             <i class="fa-solid fa-file-magnifying-glass"></i>
         </button>
     </div>
+
+    <mat-form-field *ngIf="isAQS" class="default-50 sm-100">
+        <mat-label translate>ASSET_SITE</mat-label>
+        <input matInput formControlName="site" type="text" readonly>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="isAQS" class="default-50 sm-100">
+        <mat-label translate>ASSET_BUILDINGS</mat-label>
+        <input matInput formControlName="building" type="text" readonly>
+    </mat-form-field>
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
@@ -84,11 +86,6 @@
                           [model]="markAutoCompleteModel"
                           formControlName="mark">
         </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field id="info" class="default-50 sm-100">
-        <mat-label translate>COMMON_INFO</mat-label>
-        <input matInput formControlName="info" type="text">
     </mat-form-field>
 
     <mat-form-field id="comment" class="default-50 sm-100">
@@ -188,15 +185,16 @@
             </mat-expansion-panel-header>
             <span class="default-100"></span>
 
-            <div class="default-25 sm-50">
-                <mat-form-field>
+                <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="receptionLookup"
-                                      formControlName="receptionId">
-                    </ss-auto-complete>
+                    <div style="display: flex">
+                        <ss-auto-complete matInput
+                                          [model]="receptionLookup"
+                                          formControlName="receptionId">
+                        </ss-auto-complete>
+                        <i class="fa-solid fa-key open-icon" (click)="openReception()" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+                    </div>
                 </mat-form-field>
-            </div>
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
                 <ss-date-picker formControlName="receptionDate"></ss-date-picker>
@@ -212,40 +210,40 @@
                 </mat-form-field>
             </div>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
                 <input matInput formControlName="requestNumber" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_REQUEST_DATE</mat-label>
                 <ss-date-picker formControlName="requestDate"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
                 <input matInput formControlName="orderNumber" type="text">
             </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_ORDER_DATE</mat-label>
                 <ss-date-picker formControlName="orderDate"></ss-date-picker>
             </mat-form-field>
 
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
                 <input matInput formControlName="deliveryNumber" type="text">
             </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_DELIVERY_DATE</mat-label>
                 <ss-date-picker formControlName="deliveryDate"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
                 <input matInput formControlName="invoiceNumber" type="text">
             </mat-form-field>
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_INVOICE_DATE</mat-label>
                 <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
             </mat-form-field>
@@ -431,7 +429,8 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2" [editable]="isEditable"></ss-child-attributes>
+            <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
+                                 [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
 
         <mat-expansion-panel #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)">

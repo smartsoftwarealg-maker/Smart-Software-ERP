@@ -26,7 +26,6 @@ export interface Asset {
     centerId: number;
     accountno: string;
     description?: string;
-    info?: string;
     acquisitionDate?: string;
     serviceDate?: string;
     itemCount?: number;
@@ -79,6 +78,8 @@ export interface Asset {
     originalSupplier?: string;
     requester?: number;
     mark?: number;
+    site?: string;
+    building?: string;
 }
 
 export interface Depreciation {
@@ -166,6 +167,9 @@ export interface AssetReception {
     amount?: number;
     supplierName?: string;
     origSupplierName?: string;
+    modifiedBy?: number;
+    creatorName?: string;
+    modifierName?: string;
 }
 
 export interface ASSAppointmentHeader {
@@ -185,6 +189,9 @@ export interface ASSAppointmentHeader {
     reappointment: boolean;
     site?: string;
     building?: string;
+    modifiedBy?: number;
+    creatorName?: string;
+    modifierName?: string;
 }
 
 export interface AssetAppointmentLine {
