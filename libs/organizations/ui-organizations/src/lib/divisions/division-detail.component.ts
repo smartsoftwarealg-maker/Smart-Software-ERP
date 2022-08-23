@@ -36,7 +36,7 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
     setupForm(a: Division): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            responsible: [a.responsible, Validators.required]
+            responsible: [a.responsible]
         });
     }
 
