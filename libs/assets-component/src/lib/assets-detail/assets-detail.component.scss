@@ -31,3 +31,9 @@ form {
 mat-form-field {
     width: 100%;
 }
+
+.open-icon:hover {
+    cursor: pointer;
+    border-bottom: darkblue solid 2px;
+    padding: 4px;
+}

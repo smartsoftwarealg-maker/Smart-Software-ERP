@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
@@ -15,9 +15,9 @@ import {
     AttribTempl,
     AttributesService
 } from '@ss/custom-attributes';
-import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {AssetAppointmentLineService} from '../asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
@@ -45,7 +45,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
     pagination               = PaginationModel.newInstance();
-    displayedColumns         = ['reference', 'description',];
+    displayedColumns         = ['reference', 'description', 'key'];
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,
@@ -59,6 +59,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         private attributeSrv: AttributesService,
         // private attribLookupSrv: AttributeLookupService,
         private loginSrv: LoginService,
+        private router: Router,
         private detailSrv: AssetAppointmentLineService,
         private consumerSrv: ConsumerService,
         private dialog: MatDialog,
@@ -66,7 +67,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
-
+        this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
     }
 
     public setupForm(b: ASSAppointmentHeader) {
@@ -87,24 +88,25 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         const form = this.formBuilder.group({
             id:            [b.id],
             center:        [b.center || this.loginSrv.appCtx.center],
-            serialNumber:  [{ value: b.serialNumber || 1, disabled: true }],
-            date:          [b.date, Validators.required],
+            serialNumber:  [{ value: b.serialNumber || 1, disabled: false }],
+            date:          [b.date || new Date(), Validators.required],
             officeId:      [b.officeId, Validators.required],
             requesterId:   [b.requesterId],
-            requestDate:   [b.requestDate],
+            requestDate:   [b.requestDate || new Date()],
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
             reappointment: [b.reappointment || false, Validators.required],
             site:          [{ value: b.site, disabled: true }],
             building:      [{ value: b.building, disabled: true }],
+            creatorName:   [{ value: b.creatorName, disabled: true }],
+            modifierName:  [{ value: b.modifierName, disabled: true }],
         });
-        this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
         return form;
     }
 
     override readForm(): ASSAppointmentHeader {
         const value = super.readForm();
-        value.serialNumber = 1;
+        value.serialNumber = value.serialNumber || 1;
         return value;
     }
 
@@ -180,4 +182,44 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
         this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
     }
+
+    public override save() {
+        this.form.markAllAsTouched();
+        if (!this.form.valid) {
+            this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
+            return;
+        }
+        let val: ASSAppointmentHeader = this.readForm();
+        val.id = this.id;
+        this.shellSrv.setLoading(true);
+        const obs: Observable<any> = val.id === 0
+            ? this.entitySrv
+                .add(val)
+                .pipe(switchMap(i => { this.id = i; this.detailSrv.setParentId(i); return this.entitySrv.get(i); }),
+                      tap(v => { val.id = v.id; val.serialNumber = v.serialNumber; }))
+            : this.entitySrv.update(val);
+        obs.subscribe({
+            next: () => {
+                this.shellSrv.setLoading(false);
+                this.form?.reset(val);
+                this.form.markAsUntouched();
+                this.snackBarSrv.showSuccessMessage();
+                this.editMode = true;
+            },
+            error: err => {
+                this.shellSrv.setLoading(false);
+                this.snackBarSrv.showFailureMessage();
+                this.form?.reset(val);
+                throw err;
+            }
+        })
+    }
+
+    openAsset(id: number) {
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../../assets', id], { relativeTo: this.route });
+        }
+    }
+
 }

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset, Depreciation} from '../assets-api';
+import {Asset, AssetReception, Depreciation} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
@@ -96,7 +96,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         private statusSrv: FurnitureStatusService,
         private consumerSrv: ConsumerService,
         private markSrv: MarkService,
-        private receptionSrv: AssetReceptionService) {
+        private receptionSrv: AssetReceptionService,
+        private router: Router) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,
@@ -105,6 +106,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             confirmationSrv, 'ASSETS');
         this.officeSrv.setParentId(0);
         this.accountAutoCompleteModel.onObjectSelected = a => this.updateAccountDefaults(a);
+        this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
+        this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
     setupForm(b: Asset): UntypedFormGroup {
@@ -126,7 +129,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.vat || 0, Validators.required],
             itemCount: [b.itemCount || 1],
-            info: [b.info],
             depreciationType: [b.depreciationType || 1],
             supplier: [{ value: b.supplier, disabled: true }],
             originalSupplier: [{ value: b.originalSupplier, disabled: true }],
@@ -140,11 +142,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             costCenter: [b.costCenter],
             investEnd: [b.investEnd],
             receptionNumber: [b.receptionNumber],
-            receptionDate: [b.receptionDate],
+            receptionDate: [{ value: b.receptionDate, disabled: true }],
             positionNumb: [b.positionNumb],
             modelNumb: [b.modelNumb],
             installation_code: [b.installation_code],
-            tech_specific: [b.tech_specific],
             comment: [b.comment],
             office: [b.office],
             sales_price: [b.sales_price],
@@ -167,6 +168,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             deliveryDate:   [{ value: b.deliveryDate, disabled: true }],
             invoiceNumber:  [{ value: b.invoiceNumber, disabled: true }],
             invoiceDate:    [{ value: b.invoiceDate, disabled: true }],
+            site:           [{ value: b.site, disabled: true }],
+            building:       [{ value: b.building, disabled: true }],
         });
         if (b.id) {
             this.maxReference = b.reference2;
@@ -250,7 +253,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.centerId           =  this.loginSrv.appCtx.center;
                 asset.accountno          =  asset.accountno        || null;
                 asset.description        =  asset.description      || null;
-                asset.info               =  asset.info             || null;
                 asset.acquisitionDate    =  asset.acquisitionDate  || null;
                 asset.serviceDate        =  asset.serviceDate      || null;
                 asset.invoiceNumber      =  asset.invoiceNumber    || null;
@@ -278,7 +280,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.comment            =  asset.comment          || null;
                 asset.requester          =  asset.requester        || null;
                 asset.requestNumber      =  asset.requestNumber    || null;
-                asset.requestDate         =  asset.requestDate     || null;
+                asset.requestDate        =  asset.requestDate     || null;
                 asset.orderNumber        =                            null;
                 asset.orderDate          =                            null;
                 asset.office             =  asset.office           || null;
@@ -290,6 +292,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.assetClass         =  asset.assetClass       || null;
                 asset.status             =  asset.status           || null;
                 asset.mark               =  asset.mark             || null;
+                asset.site               =  asset.site             || null;
+                asset.building           =  asset.building         || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }
@@ -313,6 +317,30 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         }
     }
 
+    onOfficeChange(off: Office) {
+        this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
+        this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
+    }
+    onReceptionChange(r: AssetReception) {
+        if (r) {
+            const numb = this.form.get('requestNumber').value;
+            const date = this.form.get('requestDate').value;
+            if (!numb || numb.trim() === '') {
+                this.form.get('requestNumber').setValue(r.requestNumber);
+            }
+            if (!date) {
+                this.form.get('requestDate').setValue(r.requestDate);
+            }
+        }
+    }
+
+    openReception() {
+        const id = this.form.get('receptionId').value || 0;
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route });
+        }
+    }
 }
 
 class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {

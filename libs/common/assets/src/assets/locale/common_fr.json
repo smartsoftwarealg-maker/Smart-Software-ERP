@@ -226,5 +226,7 @@
     "RATE":               "Taux",
     "RECEPTION":          "Reception",
     "UPLOAD":              "Charger",
-    "COLOR":               "Colour"
+    "COLOR":               "Colour",
+    "CREATED_BY":          "Créé par",
+    "MODIFIED_BY":         "Etabli par"
 }

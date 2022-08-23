@@ -13,6 +13,7 @@
 
 .mat-column-date,
 .mat-column-number,
+.mat-column-creatorName,
 .mat-column-location  {
     flex: 1 1 120px;
 }
@@ -25,7 +26,7 @@
 }
 
 .main-table {
-    min-width: 400px;
+    min-width: 600px;
     width: 100%;
     margin: 0 auto;
 }

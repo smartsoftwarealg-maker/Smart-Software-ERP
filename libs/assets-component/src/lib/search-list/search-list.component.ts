@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Asset, SearchCriteria} from '../assets-api';
 import {AssetsService} from '../assets.service';
@@ -7,9 +7,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {UntypedFormBuilder, FormGroup} from '@angular/forms';
+import {Observable, Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {UntypedFormBuilder} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
 import {AssetLocationService} from '../asset-location.service';
@@ -23,7 +23,8 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.scss']
 })
-export class SearchListComponent extends BaseEntityListComponent<Asset> {
+export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
+    private subscriptions: Subscription[] = [];
     private EPOCH: Date | null = null;
     private DEF_COLS = [
         'reference',
@@ -107,8 +108,16 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> {
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.shellSrv.disableSearch();
-        this.shellSrv.searchFormControl
+        this.subscriptions.push(
+            this.form
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                )
+                .subscribe(_ => this.refresh()));
     }
+
 
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
@@ -125,6 +134,15 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> {
     override getPage(): Observable<Asset[]> {
         return this.listSrv.search(this.pagination, <SearchCriteria>this.form.value);
     }
+
+    override ngOnDestroy() {
+        this.subscriptions.forEach(s => s.unsubscribe());
+    }
+
+    protected override canShowProcessingStatus(): boolean {
+        return false;
+    }
+
 }
 
 class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {

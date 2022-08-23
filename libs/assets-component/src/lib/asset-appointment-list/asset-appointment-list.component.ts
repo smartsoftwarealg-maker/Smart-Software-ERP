@@ -18,7 +18,8 @@ export class AssetAppointmentListComponent implements OnInit {
         'date',
         'number',
         'location',
-        'beneficiary'
+        'beneficiary',
+        'key'
     ];
 
     @Input() editable = true;
@@ -96,5 +97,12 @@ export class AssetAppointmentListComponent implements OnInit {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+    }
+
+    openAppointment(id: number) {
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../../asset-appointments', id], { relativeTo: this.route });
+        }
     }
 }

@@ -4,11 +4,10 @@
 
             <mat-form-field id="serialNumber" class="default-50 sm-100">
                 <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput formControlName="serialNumber" type="number" autofocus>
-                <mat-error *ngIf="form.controls['serialNumber'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                <input matInput formControlName="serialNumber" type="number" readonly>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100" required>
+            <mat-form-field class="default-50 sm-100" required autofocus>
                 <mat-label translate>COMMON_DATE</mat-label>
                 <ss-date-picker required="true" formControlName="date"></ss-date-picker>
                 <mat-error *ngIf="form.controls.date.hasError('required')" translate>
@@ -51,6 +50,7 @@
                 <mat-form-field style="width: calc(100% - 48px)">
                     <mat-label translate>ASSET_LOCATIONS</mat-label>
                     <ss-auto-complete matInput
+                                      [required]="true"
                                       [model]="officeAutoCompleteModel"
                                       formControlName="officeId">
                     </ss-auto-complete>
@@ -74,12 +74,22 @@
                 <mat-checkbox formControlName="reappointment" translate>ASSET_REAPPOINTMENT</mat-checkbox>
             </div>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_CREATED_BY</mat-label>
+                <input matInput formControlName="creatorName" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_MODIFIED_BY</mat-label>
+                <input matInput formControlName="modifierName" type="text">
+            </mat-form-field>
+
         </form>
 
     </mat-card-content>
 </mat-card>
 
-<mat-table *ngIf="editMode" mat-table [dataSource]="detailData" class="main-table item">
+<mat-table *ngIf="id > 0" mat-table [dataSource]="detailData" class="main-table item">
 
     <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
@@ -95,17 +105,24 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="key">
+        <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            <i class="fa-solid fa-key open-icon" (click)="openAsset(e.assetId)" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+        </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row)"
              *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
 </mat-table>
 
-<div *ngIf="editMode" class="pagination-container b-b-background">
+<div *ngIf="id > 0" class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<div *ngIf="editMode" class="item ctrl_div">
+<div *ngIf="id > 0" class="item ctrl_div">
 
     <mat-form-field class="input_div">
         <mat-label translate>ASSETS</mat-label>

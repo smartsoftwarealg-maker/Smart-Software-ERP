@@ -1,6 +1,6 @@
 .main-table {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 16px auto 0;
     height: 60%;
 }
@@ -19,6 +19,7 @@
 }
 
 .mat-column-count,
+.mat-column-creatorName,
 .mat-column-receptionDate,
 .mat-column-serialNumber {
     flex: 1 1 100px;
@@ -44,6 +45,11 @@
     flex: 1 1 100px;
 }
 
+.mat-column-key {
+    flex: 0 0 26px;
+    justify-content: space-around;
+}
+
 .mat-column-depreciationRate,
 .mat-column-useful_life,
 .mat-column-acquisitionValue,
@@ -58,4 +64,10 @@
     width: 96%;
     max-width: 1200px;
     margin: 8px auto 0;
+}
+
+.open-icon:hover {
+    cursor: pointer;
+    border-bottom: darkblue solid 2px;
+    padding: 4px;
 }
