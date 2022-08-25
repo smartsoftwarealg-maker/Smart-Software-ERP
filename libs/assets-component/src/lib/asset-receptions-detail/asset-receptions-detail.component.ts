@@ -12,7 +12,7 @@ import {Bank, BankService} from '@ss/administration/api-bank';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
-import {SupplierService} from '@ss/logistics/api-agent';
+import {ConsumerService, SupplierService} from '@ss/logistics/api-agent';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
@@ -23,6 +23,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> {
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    requesterLookup = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -33,6 +34,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
+        private consumerSrv: ConsumerService,
         private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
@@ -46,6 +48,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             centerId:       [b.centerId || this.loginSrv.appCtx.center],
             serialNumber:   [{ value: b.serialNumber || 1, disabled: true }],
             receptionDate:  [b.receptionDate  || new Date(), Validators.required],
+            requester:      [b.requester],
             supplier:       [b.supplier, Validators.required],
             origSupplier:   [b.origSupplier],
             requestNumber:  [b.requestNumber],

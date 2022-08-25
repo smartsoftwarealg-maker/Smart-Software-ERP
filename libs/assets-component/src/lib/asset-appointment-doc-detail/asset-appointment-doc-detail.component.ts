@@ -189,8 +189,12 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
+        const site = this.form.get('site').value;
+        const building = this.form.get('building').value;
         let val: ASSAppointmentHeader = this.readForm();
         val.id = this.id;
+        val.site = site;
+        val.building = building;
         this.shellSrv.setLoading(true);
         const obs: Observable<any> = val.id === 0
             ? this.entitySrv

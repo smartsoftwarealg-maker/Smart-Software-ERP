@@ -278,7 +278,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                             if (options.length === 1) {
                                 if (this.model.isPerfectMatch(options[0], txt)) {
                                     this.setValue(this.model.valueOf(options[0]), true);
-                                    this.callModelSelectEvent(options[0]);
+                                    // this.callModelSelectEvent(options[0]);
                                 }
                             }
                         }
@@ -286,8 +286,14 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 );
             })
         ).subscribe(
-            () => { this.loading = false; },
-            err => { this.model.options = []; this.loading = false; throw err; }
+            {
+                next: () => this.loading = false,
+                error: err => {
+                    this.model.options = [];
+                    this.loading = false;
+                    throw err;
+                }
+            }
         );
     }
 

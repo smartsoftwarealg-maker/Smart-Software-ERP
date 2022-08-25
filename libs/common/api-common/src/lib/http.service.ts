@@ -130,7 +130,6 @@ export class HttpService {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
-        console.log(this.baseUrl, url)
         return this
             .httpClient
             .get(this.baseUrl + url,

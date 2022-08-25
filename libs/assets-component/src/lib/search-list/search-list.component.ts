@@ -8,7 +8,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {Observable, Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 import {UntypedFormBuilder} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SupplierService} from '@ss/logistics/api-agent';
@@ -17,6 +17,8 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Office, OfficeService} from '@ss/common/api-lookup';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import {saveAs} from 'file-saver';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'ss-search-list',
@@ -25,7 +27,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
     private subscriptions: Subscription[] = [];
-    private EPOCH: Date | null = null;
+    private EPOCH: Date | null = new Date(0);
     private DEF_COLS = [
         'reference',
         'description',
@@ -132,7 +134,10 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
 
 
     override getPage(): Observable<Asset[]> {
-        return this.listSrv.search(this.pagination, <SearchCriteria>this.form.value);
+        return this.listSrv
+            .search(this.pagination, <SearchCriteria>this.form.value)
+            .pipe(tap(res => this.pagination.elementCount = res.itemCount),
+                  map(res => res.body));
     }
 
     override ngOnDestroy() {
@@ -143,6 +148,20 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         return false;
     }
 
+    private format(key: string, value: string) {
+        return (key.indexOf('Date') > 0) ? this.langSrv.formatDate(value) : value;
+    }
+
+    public override excel() {
+        const criteria = <SearchCriteria>this.form.value;
+        const params = Object.entries(criteria)
+            .filter(([key, value]) => value && value !== '' && value !== 0)
+            .reduce((a, b) => a.set(b[0], this.format(b[0], b[1])), new HttpParams());
+
+        this.entitySrv
+            .excel(this.form.value['reference'])
+            .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
+    }
 }
 
 class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {

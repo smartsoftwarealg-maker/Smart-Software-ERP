@@ -153,6 +153,7 @@ export interface AssetReception {
     centerId: number;
     serialNumber: number;
     receptionDate: Date;
+    requester?: number;
     supplier?: number;
     origSupplier?: number;
     requestNumber?: string;
@@ -170,6 +171,7 @@ export interface AssetReception {
     modifiedBy?: number;
     creatorName?: string;
     modifierName?: string;
+    requesterName?: string;
 }
 
 export interface ASSAppointmentHeader {
