@@ -295,7 +295,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     public excel() {
         this.entitySrv
-            .excel()
+            .excel(this.filter)
             .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
     }
 

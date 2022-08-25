@@ -1,8 +1,16 @@
+.table-div {
+    width: 90%;
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
 .main-table {
     width: 90%;
-    max-width: 1200px;
+    min-width: 900px;
     margin: 16px auto 0;
     height: 60%;
+    overflow-y: auto;
 }
 
 .pagination-container {
@@ -10,6 +18,14 @@
     max-width: 1000px;
     margin: 16px auto 0;
 }
+
+.detail-table {
+    width: 96%;
+    min-width: 900px;
+    max-width: 1200px;
+    margin: 8px auto 0;
+}
+
 
 .mat-column-amount {
     flex: 1 1 100px;
@@ -60,14 +76,8 @@
     flex: 1 1 90px;
 }
 
-.detail-table {
-    width: 96%;
-    max-width: 1200px;
-    margin: 8px auto 0;
-}
 
-.open-icon:hover {
+.open-icon {
     cursor: pointer;
-    border-bottom: darkblue solid 2px;
-    padding: 4px;
+    margin-left: 16px;
 }

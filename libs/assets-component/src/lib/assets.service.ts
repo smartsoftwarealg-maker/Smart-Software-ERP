@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from './assets-api';
-import {HttpService, PaginationModel} from '@ss/common/api-common';
+import {HttpService, LanguageService, PaginationModel} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {LanguagesService} from '@ss/common/api-lookup';
 })
 export class AssetsService extends BaseEntityService<Asset> {
 
-    constructor(protected override httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService, private langSrv: LanguageService) {
         super(httpSrv, ASSETS_URL);
     }
 
@@ -38,18 +38,17 @@ export class AssetsService extends BaseEntityService<Asset> {
         return this.httpSrv.getData<Asset>('/assets/soldout', page, 5, filter);
     }
 
-    public search(pageModel: PaginationModel, criteria: SearchCriteria): Observable<Asset[]> {
+    private format(key: string, value: string) {
+        return (key.indexOf('Date') > 0) ? this.langSrv.formatDate(value) : value;
+    }
+
+    public search(pageModel: PaginationModel, criteria: SearchCriteria): Observable<{ itemCount: number, body: Asset[] }> {
         const params = Object.entries(criteria)
             .filter(([key, value]) => value && value !== '' && value !== 0)
-            .reduce((a, b) => a.set(b[0], b[1]), new HttpParams());
+            .reduce((a, b) => a.set(b[0], this.format(b[0], b[1])), new HttpParams());
+
         return  this.httpSrv
-            .getData<Asset>('/assets/search', pageModel.page - 1, pageModel.pageSize, null, null, params)
-            .pipe(
-                map(data => {
-                    pageModel.elementCount = data.itemCount;
-                    return data.body;
-                })
-            );
+            .getData<Asset>('/assets/search', pageModel.page - 1, pageModel.pageSize, null, null, params);
     }
 
     upload(data: FormData): Observable<any> {
@@ -60,4 +59,6 @@ export class AssetsService extends BaseEntityService<Asset> {
         const data = { id: assetId, count: count };
         return this.httpSrv.post('/assets/duplicate', data);
     }
+
+
 }

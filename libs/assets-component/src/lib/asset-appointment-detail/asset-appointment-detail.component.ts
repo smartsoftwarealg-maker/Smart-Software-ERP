@@ -19,7 +19,6 @@ import {AssetAppointmentService} from '../asset-appointment.service';
 })
 export class AssetAppointmentDetailComponent extends BaseEntityDetailComponent<ASSAppointment> implements OnInit {
     private parentId = 0;
-    officeLookup = new DefaultAutoCompleteModel(this.officeSrv);
 
     constructor(
         public assetAppointmentSrv: AssetAppointmentService,
@@ -29,8 +28,7 @@ export class AssetAppointmentDetailComponent extends BaseEntityDetailComponent<A
         public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private officeSrv: OfficeService) {
+        public lookupsSrv: LookupsService) {
         super(assetAppointmentSrv,
             shellSrv,
             snackBarSrv,

@@ -27,8 +27,14 @@ export class BaseEntityService<T> {
         return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
     }
 
-    public excel(): Observable<Blob> {
-        return this.httpSrv.getBlob(this.getUrl() + '/excel');
+    public excel(filter?: string): Observable<Blob> {
+        const params = filter? new HttpParams().set('filter', filter) : null;
+        return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
+    }
+
+    public excelWithParams(params?: HttpParams): Observable<Blob> {
+        console.log('criteria', params);
+        return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
     }
 
     //

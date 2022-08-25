@@ -47,7 +47,7 @@
     </div>
 
     <form novalidate [formGroup]="form">
-        <mat-form-field required>
+        <mat-form-field required >
             <mat-label translate>COMMON_REFERENCE</mat-label>
             <mat-select formControlName="reference">
                 <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>

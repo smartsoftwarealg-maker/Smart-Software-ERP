@@ -55,24 +55,24 @@
         </button>
     </div>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-100">
+    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
         <mat-label translate>ASSET_SITE</mat-label>
         <input matInput formControlName="site" type="text" readonly>
     </mat-form-field>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-100">
+    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
         <mat-label translate>ASSET_BUILDINGS</mat-label>
         <input matInput formControlName="building" type="text" readonly>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
+    <mat-form-field class="default-50 sm-50">
         <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
         <ss-auto-complete matInput
                           [model]="ccAutoCompleteModel"
                           formControlName="costCenter"></ss-auto-complete>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
+    <mat-form-field class="default-50 sm-50">
         <mat-label translate>COMMON_CLASS</mat-label>
         <ss-auto-complete matInput
                           [model]="classAutoCompleteModel"
@@ -80,7 +80,7 @@
         </ss-auto-complete>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
+    <mat-form-field class="default-50 sm-50">
         <mat-label translate>COMMON_MARK</mat-label>
         <ss-auto-complete matInput
                           [model]="markAutoCompleteModel"
@@ -88,12 +88,7 @@
         </ss-auto-complete>
     </mat-form-field>
 
-    <mat-form-field id="comment" class="default-50 sm-100">
-        <mat-label translate>COMMON_MEMO</mat-label>
-        <input matInput formControlName="comment" type="text">
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-100">
+    <mat-form-field class="default-50 sm-50">
         <mat-label translate>COMMON_STATUS</mat-label>
         <ss-auto-complete matInput
                           [model]="statusAutoCompleteModel"
@@ -101,7 +96,13 @@
         <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100" *ngIf="!isAQS">
+    <mat-form-field id="comment" class="default-50 sm-100">
+        <mat-label translate>COMMON_MEMO</mat-label>
+        <input matInput formControlName="comment" type="text">
+    </mat-form-field>
+
+
+    <mat-form-field class="default-50 sm-50" *ngIf="!isAQS">
         <mat-label translate>ASSET_ITEM_COUNT</mat-label>
         <input matInput formControlName="itemCount" type="number">
     </mat-form-field>
@@ -187,12 +188,12 @@
 
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                    <div style="display: flex">
+                    <div class="reception-div">
                         <ss-auto-complete matInput
                                           [model]="receptionLookup"
                                           formControlName="receptionId">
                         </ss-auto-complete>
-                        <i class="fa-solid fa-key open-icon" (click)="openReception()" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+                        <i class="fa-solid fa-book-open open-icon" (click)="openReception()" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
                     </div>
                 </mat-form-field>
             <mat-form-field class="default-25 sm-50">
