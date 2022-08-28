@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/scheduled-sales/sales-quota/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/scheduled-sales/sales-quota"],
+            "options": {
+                "jestConfig": "libs/scheduled-sales/sales-quota/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/scheduled-sales/sales-quota/**/*.ts",
+                    "libs/scheduled-sales/sales-quota/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

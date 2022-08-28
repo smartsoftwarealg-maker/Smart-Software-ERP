@@ -32,9 +32,10 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.check();
-        this.rightsSrv.load()
+        this.rightsSrv
+            .load()
             .subscribe(() => {
-                this.shellSrv.filterSideNav();
+                // this.shellSrv.filterSideNav();
             })
     }
 

@@ -3,5 +3,8 @@
     "WORK_MASTER":   "Maitre ouvrage",
     "REQUESTED_QTY":  "Quantité demandée",
     "MONTHLY_RATE":   "Tarif mensuel",
-    "REPRESENTATIVE": "Représentant"
+    "REPRESENTATIVE": "Représentant",
+    "DISCOUNTS":      "Réductions",
+    "QUOTAS":         "Quotas",
+    "DISCOUNT_TYPE":  "Type de remise"
 }

@@ -18,6 +18,7 @@ import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
     templateUrl: './agent-list.component.html'
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
+    isSales = this.route.snapshot.data['sales'] || false;
     agentTypes: { [id: number]: string; };
 
     displayedColumns = [
@@ -39,6 +40,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public lookupsSrv: LookupsService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_AGENTS');
+        this.pagination.pageSize = this.isSales? 15 : 5;
     }
 
     preload(): Observable<any> {

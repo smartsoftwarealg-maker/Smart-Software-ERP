@@ -42,7 +42,17 @@ export class AppComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.4');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.5');
+        this.httpSrv
+            .init()
+            .pipe(switchMap(() => zip(this.langSrv.init(), this.loginSrv.loadContext())))
+            .subscribe({
+                next: () => { this.init(); this.setupNavigation(); },
+                error: () => this.loginSrv.logout()
+            });
+    }
+
+    private setupNavigation() {
         this.shellSrv.setSideNavDataSource([
             administrationNavTree,
             organizationsNavTree,
@@ -60,18 +70,11 @@ export class AppComponent implements OnInit {
             dashboardNavTree,
             scheduledSalesNavTree
         ].filter(e => compiledApplications.indexOf(e.name) >= 0));
-
-        this.httpSrv
-            .init()
-            .pipe(switchMap(() => this.langSrv.init()))
-            .subscribe({
-                next: () => this.init(),
-                error: () => this.loginSrv.logout()
-            });
     }
 
-    init() {
+    private init() {
         this.loaded = true;
+
         this.router
             .events
             .pipe(switchMap((event: Event) => {

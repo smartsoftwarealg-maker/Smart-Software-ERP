@@ -41,6 +41,7 @@ import {
 import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './punishment-type.component';
 import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './app-archive-docs.component';
 import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './furniture-status.component';
+import {DiscountDetailComponent, DiscountListComponent} from './discount.component';
 
 @NgModule({
     imports: [
@@ -123,7 +124,9 @@ import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './fu
         AppArchiveDocumentListComponent,
         AppArchiveDocumentDetailComponent,
         FurnitureStatusDetailComponent,
-        FurnitureStatusListComponent
+        FurnitureStatusListComponent,
+        DiscountDetailComponent,
+        DiscountListComponent
     ],
     exports: [
         VatListComponent,
@@ -194,7 +197,9 @@ import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './fu
         AppArchiveDocumentListComponent,
         AppArchiveDocumentDetailComponent,
         FurnitureStatusDetailComponent,
-        FurnitureStatusListComponent
+        FurnitureStatusListComponent,
+        DiscountDetailComponent,
+        DiscountListComponent
     ]
 })
 export class CommonUiLookupModule { }

@@ -35,5 +35,4 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
             description: [b.description, Validators.required],
         });
     }
-
 }
