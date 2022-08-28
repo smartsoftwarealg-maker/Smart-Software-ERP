@@ -3,5 +3,8 @@
     "WORK_MASTER":    "اشراف",
     "REQUESTED_QTY":  "الكمية المطلوبة" ,
     "MONTHLY_RATE":   "المعدل الشهري",
-    "REPRESENTATIVE": "وكيل"
+    "REPRESENTATIVE": "وكيل",
+    "DISCOUNTS":      "خصومات",
+    "QUOTAS":         "الحصص",
+    "DISCOUNT_TYPE":  "نوع الخصم"
 }

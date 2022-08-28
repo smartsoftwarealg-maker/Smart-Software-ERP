@@ -7,7 +7,6 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {
     AbstractControl,
-    FormGroup,
     UntypedFormBuilder,
     ValidationErrors,
     ValidatorFn,
@@ -15,7 +14,7 @@ import {
 } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {HttpService} from '@ss/common/api-common';
-import {Observable, pipe, zip} from 'rxjs';
+import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
 

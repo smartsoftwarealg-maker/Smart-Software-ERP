@@ -1,0 +1,48 @@
+<form *ngIf="form !== null" novalidate [formGroup]="form">
+
+    <mat-form-field class="default-50">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="salesDate"></ss-date-picker>
+    </mat-form-field>
+
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [model]="customerLookup"
+                          formControlName="agentId">
+        </ss-auto-complete>
+        <mat-error *ngIf="form.controls['agentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_ARTICLE</mat-label>
+        <ss-auto-complete matInput
+                          [model]="articleLookup"
+                          formControlName="productId">
+        </ss-auto-complete>
+        <mat-error *ngIf="form.controls['productId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50">
+        <mat-label translate>COMMON_QTY</mat-label>
+        <input matInput formControlName="qty" type="number" required>
+        <mat-error *ngIf="form.controls['qty'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50">
+        <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+        <input matInput formControlName="discount" type="number" required>
+        <mat-error *ngIf="form.controls['discount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>SCH_DISCOUNT_TYPE</mat-label>
+        <ss-auto-complete matInput
+                          [model]="discountLookup"
+                          formControlName=discountType>
+        </ss-auto-complete>
+    </mat-form-field>
+
+</form>
+

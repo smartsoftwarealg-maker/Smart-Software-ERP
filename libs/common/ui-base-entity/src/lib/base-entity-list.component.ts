@@ -114,12 +114,12 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
 
-        const rights = !node || !node.accessRights? {
+        const rights = !node?.customerRights && !node?.accessRights? {
             read: true,
             write: true,
             edit: true,
             delete: true
-        } as Right : this.shellSrv.getRights(node.accessRights);
+        } as Right : this.shellSrv.getRights(node);
 
         // this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;

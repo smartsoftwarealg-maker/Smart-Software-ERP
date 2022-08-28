@@ -225,8 +225,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
                 children: docInfoRoutes,
+                canActivate: [CanActivateService],
                 data: { form: 'Agent' }
             },
             {

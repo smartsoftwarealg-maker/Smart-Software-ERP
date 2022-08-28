@@ -2,6 +2,7 @@ import {ImageModel} from '@ss/common/ui-image-input';
 
 export const SS_PROJECT_URL = '/ssales/projects';
 export const SS_ARTICLE_URL = '/ssales/articles';
+export const SS_QUOTA_URL   = '/ssales/quotas';
 
 export interface SSProject {
     id: number;
@@ -68,4 +69,23 @@ export interface Article {
     typeDescription?: string;
     unitDescription?: string;
     vatValue?: number;
+}
+
+export interface Quota {
+    id: number;
+    centerId: number;
+    salesDate?: Date;
+    agentId?: number;
+    productId?: number;
+    exworks: boolean;
+    qty: number;
+    discountType?: number;
+    discount: number;
+    canceled: number;
+    discount_2: number;
+    discount_3: number;
+    reference?: string;
+    description?: string;
+    customerCode?: string;
+    customerName?: string;
 }

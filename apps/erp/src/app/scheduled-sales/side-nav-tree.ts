@@ -1,7 +1,10 @@
 import {
     ABS_LOGISTICS_PAY_METHOD,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_LOGISTICS_CATEGORY, ABS_SCHEDULED_SALES_PROJECTS, ABS_SCHEDULED_SALES_ARTICLE,
+    ABS_LOGISTICS_CATEGORY,
+    ABS_SCHEDULED_SALES_PROJECTS,
+    ABS_SCHEDULED_SALES_ARTICLE,
+    ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
@@ -44,6 +47,12 @@ export const scheduledSalesNavTree: SideNavNode = {
         //     route: ABS_LOGISTICS_COMPANY_TYPE
         // },
         {
+            name: 'SCH_DISCOUNTS',
+            icon: 'fa-solid fa-badge-percent',
+            route: ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+            accessRights: 'Discount'
+        },
+        {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
             route: ABS_LOGISTICS_ACTIVITY,
@@ -73,6 +82,14 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_SCHEDULED_SALES_PROJECTS,
             accessRights: 'SalesCategory'
         },
+        {
+            name: 'SCH_QUOTAS',
+            icon: 'fa-solid fa-money-bill-wheat',
+            route: ABS_SCHEDULED_SALES_QUOTAS,
+            accessRights: 'Quota',
+            customerRights: {read: true, edit: false, delete: false, write: false}
+        },
     ],
-    accessRights: 'SCHEDULED_SALES'
+    accessRights: 'SCHEDULED_SALES',
+    customerRights: {read: true, edit: false, delete: false, write: false}
 };

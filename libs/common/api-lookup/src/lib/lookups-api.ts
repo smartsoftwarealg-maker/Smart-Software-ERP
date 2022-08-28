@@ -36,6 +36,7 @@ export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
+export const DISCOUNT_URL = '/lookups/discounts';
 export const SECTOR_URL = '/lookups/sectors';
 export const WORK_MASTER_URL = '/lookups/master_works';
 export const FUNDS_URL = '/lookups/funds';

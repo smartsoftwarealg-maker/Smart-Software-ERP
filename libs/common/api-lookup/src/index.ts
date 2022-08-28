@@ -38,3 +38,4 @@ export * from './lib/app-archive-document.service';
 export * from './lib/furniture-status.service';
 export * from './lib/work-master.service';
 export * from './lib/type.service';
+export * from './lib/discount.service';
