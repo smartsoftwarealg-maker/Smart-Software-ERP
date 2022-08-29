@@ -11,29 +11,25 @@ import {map} from 'rxjs/operators';
     providedIn: 'root'
 })
 export class AssetsBuildingService extends BaseEntityService<AssetBuilding> {
-    private _buildings = new Set<number>();
-
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ASSETS_BUILDING_URL);
     }
 
-    override getList(page: number,
-                     pageSize: number,
-                     filter?: string,
-                     sortBy?: string,
-                     extraPrams?: HttpParams): Observable<{ itemCount: number; body: AssetBuilding[] }> {
-        return super.getList(page, pageSize, filter, sortBy, extraPrams)
-            .pipe(map(res => {
-                return  { itemCount: res.itemCount,
-                          body: this._buildings.size == 0?
-                              res.body :
-                              res.body.filter(b => this._buildings.has(b.id)) };
-            } ));
-    }
-
-    set buildings(b: Lookup[]) {
-        this._buildings.clear();
-        console.log('buildings', b);
-        b.forEach(l => this._buildings.add(l.id));
-    }
+    // override getList(page: number,
+    //                  pageSize: number,
+    //                  filter?: string,
+    //                  sortBy?: string,
+    //                  extraPrams?: HttpParams): Observable<{ itemCount: number; body: AssetBuilding[] }> {
+    //     return super.getList(page, pageSize, filter, sortBy, extraPrams)
+    //         .pipe(map(res => {
+    //             return {
+    //                 itemCount: res.itemCount,
+    //                 body: res.body.filter(b => this.location < 1 || b.locationId === this._locationId)
+    //             }
+    //         } ));
+    // }
+    //
+    // set location(l: number) {
+    //     this._locationId = l;
+    // }
 }

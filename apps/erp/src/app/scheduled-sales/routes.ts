@@ -3,7 +3,7 @@ import {
 } from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {
-    ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+    LOGISTICS_ACTIVITY_URL,
     SS_ARTICLE_URL,
     SS_DISCOUNTS_URL,
     SS_PROJECTS_URL,
@@ -18,7 +18,6 @@ import {
     DiscountDetailComponent,
     DiscountListComponent
 } from '@ss/common/ui-lookup';
-import {LOGISTICS_ACTIVITY_URL} from '../../../../scheduled/src/app/common';
 
 export const schedSalesRoutes: Routes = [
     {

@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
         private router: Router) { }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.5');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.6');
         this.httpSrv
             .init()
             .pipe(switchMap(() => zip(this.langSrv.init(), this.loginSrv.loadContext())))

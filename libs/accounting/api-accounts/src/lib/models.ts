@@ -17,5 +17,5 @@ export class GenerationAccountAutocompleteModel extends DefaultAutoCompleteModel
         super(accountSrv);
     }
 
-    toString = (x: any) => x ?  `${x['account']} ${x['description'] || ''}` : null;
+    override toString = (x: any) => x ?  `${x['account']} ${x['description'] || ''}` : null;
 }

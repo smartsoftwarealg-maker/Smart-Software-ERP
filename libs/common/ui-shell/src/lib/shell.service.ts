@@ -15,6 +15,8 @@ import {
     UserRightsService
 } from '@ss/common/api-common';
 import * as _ from 'lodash';
+import {doc} from 'prettier';
+import debug = doc.debug;
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version
@@ -54,6 +56,7 @@ export interface MenuItem {
 })
 export class ShellService {
     private _application = '';
+    private navTree: SideNavNode[] = [];
 
     backgroundColors: string[] = [
         '#d88f64', '#806570', '#610B6E',
@@ -199,8 +202,8 @@ export class ShellService {
             // MUST-use for each, MUST NOT change reference of array
             const userRights = this.rightsSrv.rights;
             tree.forEach(r => {
-                const right = this.loginSrv.appCtx.id > 0? userRights?.get(r.accessRights) : r.customerRights;
-                r.visible = right?.read || (right === undefined && this.loginSrv.appCtx.manager);
+                const right = this.loginSrv.appCtx?.id > 0? userRights?.get(r.accessRights) : r.customerRights;
+                r.visible = right?.read || (right === undefined && this.loginSrv.appCtx?.manager);
                 this.setAppSideNavVisibility(r.children);
             });
         }
@@ -237,10 +240,17 @@ export class ShellService {
         return this.sideNavDataSrc;
     }
 
-    public setSideNavDataSource(tree: SideNavNode[]) {
-        this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(tree));
+    public filterSideNav() {
+        this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
         this.generateNavColors(this.navData);
         this.updateShell();
+    }
+
+    public setSideNavDataSource(tree: SideNavNode[]) {
+        this.navTree = tree;
+        if (this.loginSrv.appCtx) {
+            this.filterSideNav();
+        }
     }
 
     private generateNavColors(tree: SideNavNode[]): void {

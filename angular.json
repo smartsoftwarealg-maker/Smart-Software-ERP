@@ -153,7 +153,6 @@
         "sales-ui-proforma": "libs/sales/ui-proforma",
         "sales-ui-sales-order": "libs/sales/ui-sales-order",
         "sales-ui-transactionlines": "libs/sales/ui-transactionlines",
-        "scheduled": "apps/scheduled",
         "scheduled-sales-api-scheduled-sales": "libs/scheduled-sales/api-scheduled-sales",
         "scheduled-sales-article": "libs/scheduled-sales/article",
         "scheduled-sales-projects": "libs/scheduled-sales/projects",

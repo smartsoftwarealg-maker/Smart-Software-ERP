@@ -80,6 +80,7 @@ export interface Asset {
     mark?: number;
     site?: string;
     building?: string;
+    beneficiaryId?: number;
 }
 
 export interface Depreciation {
@@ -221,9 +222,10 @@ export interface AssetInventory {
 
 export interface AssetBuilding {
     id: number;
-    centerId: number;
+    locationId: number;
     code: string;
     description: string;
+    location?: string;
 }
 
 export interface SearchCriteria {
