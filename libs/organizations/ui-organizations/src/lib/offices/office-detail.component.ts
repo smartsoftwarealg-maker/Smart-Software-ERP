@@ -12,7 +12,7 @@ import { PersonAutocompleteClass } from '@ss/payroll-common';
 import {AssetLocationService} from '../../../../../assets-component/src/lib/asset-location.service';
 import {CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AssetBuilding, AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {AssetsBuildingService} from '../../../../../assets-component/src/lib/assets-building.service';
 
 @Component({
@@ -22,7 +22,7 @@ import {AssetsBuildingService} from '../../../../../assets-component/src/lib/ass
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
-    buildingLookup = new CodeDescriptionAutoCompleteModel(this.buildingSrv);
+    buildingLookup = new BuildingLookup(this.buildingSrv);
 
     public form: UntypedFormGroup = null;
     public saving: boolean = false;
@@ -38,7 +38,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         private buildingSrv: AssetsBuildingService,
         private locationSrv: AssetLocationService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
-        // this.locationLookup.onObjectSelected = e => this.locationSelected(e);
+        this.locationLookup.onObjectSelected = e => this.locationSelected(e);
         // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
     }
 
@@ -51,35 +51,11 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
             code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(4)])],
-            buildingId:  [a.buildingId],
+            buildingId:  [a.buildingId, Validators.required],
             floorNo:     [a.floorNo, [Validators.min(0), Validators.max(20)]],
             location:    [a.location],
             id:          [a.id]
         });
-
-        // this.subscriptions
-        //     .push(this.form.controls['buildingId']
-        //         .valueChanges
-        //         .pipe(
-        //             debounceTime(300),
-        //             distinctUntilChanged())
-        //         .subscribe(v => this.computeCode()));
-
-        // this.subscriptions
-        //     .push(this.form.controls['floorNo']
-        //         .valueChanges
-        //         .pipe(
-        //             debounceTime(300),
-        //             distinctUntilChanged())
-        //         .subscribe(v => this.computeCode()));
-
-        // this.subscriptions
-        //     .push(this.numberCtrl
-        //         .valueChanges
-        //         .pipe(
-        //             debounceTime(300),
-        //             distinctUntilChanged())
-        //         .subscribe(v => this.computeCode()));
 
         return this.form;
     }
@@ -89,10 +65,10 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         return formVal;
     }
 
-    // private locationSelected(e: AssetLocation) {
-    //     this.locationCode = e?.code || '';
-    //     this.computeCode();
-    // }
+    private locationSelected(e: AssetLocation) {
+        this.buildingLookup.location = (e?.id || 99999);
+        this.form.get('buildingId').setValue(0);
+    }
 
     // private buildingSelected(e: AssetBuilding) {
     //     this.buildingCode = e?.code || '';
@@ -110,4 +86,21 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     //         this.withLeadingZeros(this.numberCtrl.value || 1);
     //     this.form.controls['code'].setValue(code, {onlySelf: true});
     // }
+}
+
+class BuildingLookup extends CodeDescriptionAutoCompleteModel<AssetBuilding> {
+    private _locationId = 0;
+
+    constructor(buildingSrv: AssetsBuildingService) {
+        super(buildingSrv);
+    }
+
+    set location(l: number) {
+        this._locationId = l;
+    }
+
+    override filter = (filter: string) =>
+        this.entitySrv
+            .getList(0, 20, filter, this.descriptionField)
+            .pipe(map(x => x.body.filter(e => e.locationId === this._locationId)));
 }

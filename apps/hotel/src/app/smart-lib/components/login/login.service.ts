@@ -62,6 +62,7 @@ export class LoginService {
                     .pipe(
                         tap(res2 => this.loginFromStorage()),
                         catchError(err => {
+                            localStorage.clear();
                             return of(false);
                         }),
                         switchMap(res => this.userSrv.load()),

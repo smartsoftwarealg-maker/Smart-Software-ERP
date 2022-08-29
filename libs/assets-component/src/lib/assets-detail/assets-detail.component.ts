@@ -66,7 +66,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
-    requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    requesterLookup          = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    beneficiaryLookup        = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     receptionLookup = new ReceptionAutoComplete(this.receptionSrv);
     accountantDepreciation: Depreciation[] = [];
@@ -150,6 +151,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             installation_code: [b.installation_code],
             comment: [b.comment],
             office: [b.office],
+            beneficiaryId: [b.beneficiaryId],
             sales_price: [b.sales_price],
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
@@ -297,6 +299,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.mark               =  asset.mark             || null;
                 asset.site               =  asset.site             || null;
                 asset.building           =  asset.building         || null;
+                asset.beneficiaryId      =  asset.beneficiaryId    || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }
@@ -375,8 +378,9 @@ class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
         super(entitySrv, 'id', 'description');
     }
 
-    override filter = (filter: string) => this.entitySrv
-        .getList(0, 20, filter, this.descriptionField)
-        .pipe(map(x => x.body.filter(e => e.serialNumber === +filter)));
+    override filter = (filter: string) =>
+        this.entitySrv
+            .getList(0, 20, filter, this.descriptionField)
+            .pipe(map(x => x.body));
 
 }

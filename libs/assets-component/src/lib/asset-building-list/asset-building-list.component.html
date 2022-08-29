@@ -7,6 +7,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="location">
+        <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.location}}
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
         <mat-cell *matCellDef="let e">

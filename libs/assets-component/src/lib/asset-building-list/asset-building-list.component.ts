@@ -16,6 +16,7 @@ import {AssetsBuildingService} from '../assets-building.service';
 })
 export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBuilding> {
     displayedColumns = [
+        'location',
         'code',
         'description',
     ];
@@ -38,7 +39,5 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             defReportSrv,
             pagPersistSrv,
             'ASSET_BUILDINGS');
-        this.entitySrv.buildings = [];
     }
-
 }

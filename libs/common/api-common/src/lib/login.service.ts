@@ -57,7 +57,7 @@ export class LoginService {
                 tap((info: LoginInfo) => {
                     this.appCtx = info.ctx;
                     this.httpSrv.updateAuthToken(info.jwt);
-                }));
+                }), catchError(err => of(null)));
     }
 
     // todo: fix auto login
