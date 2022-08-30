@@ -380,7 +380,7 @@ class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
 
     override filter = (filter: string) =>
         this.entitySrv
-            .getList(0, 20, filter, this.descriptionField)
+            .getList(0, 20, filter, 'serial_number')
             .pipe(map(x => x.body));
 
 }

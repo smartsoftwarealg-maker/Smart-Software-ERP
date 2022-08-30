@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import {
-    ADMINISTRATION_APP_URL, DASHBOARD_APP_URL, FINANCE_APP_URL,
+    ADMINISTRATION_APP_URL,
+    DASHBOARD_APP_URL,
+    FINANCE_APP_URL,
     LOGISTICS_APP_URL,
     PAYROLL_APP_URL,
     HR_APP_URL,
@@ -20,87 +22,21 @@ import {
     ASSETS_APP_URL,
     ACCOUNTING_APP_URL,
     TREASURY_APP_URL,
-    ORGANIZATIONS_APP_URL, SCHEDULED_SALES_APP_URL
+    ORGANIZATIONS_APP_URL,
+    SCHEDULED_SALES_APP_URL
 } from './common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPageComponent, CommonUiMainPageModule } from '@ss/common/ui-main-page';
 import {CanActivateService, INDEX_PAGE_URL, LanguageService, LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ColorPickerModule} from 'ngx-color-picker';
+import {appRoutes} from '../environments/environment';
 
 const routes: Routes = [
     {
         path: MAIN_PAGE_URL,
         component: ShellComponent,
-        children: [
-            {
-                path: INDEX_PAGE_URL,
-                component: MainPageComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ORGANIZATIONS_APP_URL,
-                loadChildren: () => import('./organizations/organizations.module').then(m => m.OrganizationsModule)
-            },
-            {
-                path: ACCOUNTING_APP_URL,
-                loadChildren: () => import('./accounting/accounting.module').then(m => m.AccountingModule)
-            },
-            {
-                path: TREASURY_APP_URL,
-                loadChildren: () => import('./treasury/treasury.module').then(m => m.TreasuryModule)
-            },
-            {
-                path: SCHEDULED_SALES_APP_URL,
-                loadChildren: () => import('./scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
-            },
-            {
-                path: STOCK_APP_URL,
-                loadChildren: () => import('./stock/stock.module').then(m => m.StockModule)
-            },
-            {
-                path: SALES_APP_URL,
-                loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule)
-            },
-            {
-                path: ADMINISTRATION_APP_URL,
-                loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
-            },
-            {
-                path: PAYROLL_APP_URL,
-                loadChildren: () => import('./payroll/payroll.module').then(m => m.PayrollModule)
-            },
-            {
-                path: HR_APP_URL,
-                loadChildren: () => import('./hr/hr.module').then(m => m.HRModule)
-            },
-            {
-                path: DASHBOARD_APP_URL,
-                loadChildren: () => import('./dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
-            },
-            {
-                path: FINANCE_APP_URL,
-                loadChildren: () => import('./finance/finance.module').then(m => m.FinanceModule)
-            },
-            {
-                path: PURCHASES_APP_URL,
-                loadChildren: () => import('./purchases/purchases.module').then(m => m.PurchasesModule)
-            },
-            {
-                path: LOGISTICS_APP_URL,
-                loadChildren: () => import('./logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
-            },
-            {
-                path: WEBARCH_APP_URL,
-                loadChildren: () => import('./web-arch/web-arch.module').then(m => m.WebArchModule)
-            },
-            {
-                path: ASSETS_APP_URL,
-                loadChildren: () => import('./assets-app/assets.module').then(m => m.AssetsModule)
-            },
-            { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
-        ]
+        children: appRoutes
     },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
@@ -128,24 +64,4 @@ const routes: Routes = [
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {
-
-    constructor(private langSrv: LanguageService) {
-        langSrv.addSource('assets/locale/', '');
-        langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
-        langSrv.addSource('assets/locale/sch_', 'SCH_');
-        langSrv.addSource('assets/locale/stock_', 'STOCK_');
-        langSrv.addSource('assets/locale/payroll_', 'PAYROLL_');
-        langSrv.addSource('assets/locale/common_', 'COMMON_');
-        langSrv.addSource('assets/locale/remuneration_', 'REMUN_');
-        langSrv.addSource('assets/locale/sales_', 'SALES_');
-        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
-        langSrv.addSource('assets/locale/purchases_', 'PURCHASES_');
-        langSrv.addSource('assets/locale/bl_', 'BL_');
-        langSrv.addSource('assets/locale/webarch_', 'WAR_');
-        langSrv.addSource('assets/locale/missions_', 'MISSION_');
-        langSrv.addSource('assets/locale/assets_', 'ASSET_');
-        langSrv.addSource('assets/locale/treasury_', 'TRS_');
-        langSrv.addSource('assets/locale/accounting_', 'ACC_');
-    }
-}
+export class AppModule {}
