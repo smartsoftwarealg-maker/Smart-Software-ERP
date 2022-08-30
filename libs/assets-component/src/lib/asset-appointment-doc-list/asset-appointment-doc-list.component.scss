@@ -7,6 +7,8 @@ mat-table {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    overflow-y: auto;
+    height: calc(100% - 64px);
 }
 
 .mat-column-date,
@@ -16,6 +18,7 @@ mat-table {
 .mat-column-requestNumber {
     flex: 1 1 100px;
     border-left: white solid 1px;
+    padding-left: 4px;
 }
 
 .mat-column-reappointment,

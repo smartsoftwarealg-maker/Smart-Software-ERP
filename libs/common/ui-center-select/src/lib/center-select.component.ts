@@ -10,6 +10,8 @@ import {
 import {switchMap} from 'rxjs/operators';
 import {MatStepper} from '@angular/material/stepper';
 import {UserRightsService} from '@ss/common/api-common';
+import {navBar} from '../../../../../apps/erp/src/environments/environment';
+import {ShellService} from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -35,7 +37,8 @@ export class CenterSelectComponent implements OnInit {
                 private loginSrv: LoginService,
                 private router: Router,
                 private userSrv: UserService,
-                private rightsSrv: UserRightsService) {
+                private rightsSrv: UserRightsService,
+                private shellSrv: ShellService) {
     }
 
     ngOnInit() {
@@ -106,8 +109,10 @@ export class CenterSelectComponent implements OnInit {
                         next: () => {
                             // this.endLoading(); // don't show shit, because we are leaving anyway
                             const dest = !this.loginSrv.appCtx? PROFILE_PAGE_URL : INDEX_PAGE_URL;
-                            this.router.navigate(['/' + dest]).then(() => {
-                            });
+                            if (this.loginSrv.appCtx) {
+                                this.shellSrv.setSideNavDataSource(navBar)
+                            }
+                            this.router.navigate(['/' + dest]).then(() => {});
                         }, error: err => {
                             this.endLoading();
                             throw err;
