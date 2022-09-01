@@ -1,0 +1,48 @@
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>TRS_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="jType">
+                <mat-header-cell *matHeaderCellDef translate>TRS_JOURNAL_TYEP</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.jType}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="bankId">
+                <mat-header-cell *matHeaderCellDef translate>TRS_BANK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.bankId}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="bankAccount">
+                <mat-header-cell *matHeaderCellDef translate>TRS_BANK_ACCOUNT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.bankAccount}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="typeName">
+                <mat-header-cell *matHeaderCellDef translate>TRS_TYPE_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.typeName}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

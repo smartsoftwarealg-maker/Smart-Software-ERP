@@ -9,7 +9,7 @@ export interface JournalUser {
 }
 
 export interface Journal {
-        id: number;
+    id: number;
     description: String,
     jType: number;
     bankId?: number;

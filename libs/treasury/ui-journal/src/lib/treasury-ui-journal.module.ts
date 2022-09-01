@@ -1,7 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { JournalListComponent } from './journal-list.component';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiConfirmationDialogModule,
+        CommonUiDatepickerModule,
+        RouterModule,
+        CommonUiAutoCompleteModule
+    ],
+    declarations: [JournalListComponent],
+    exports: [JournalListComponent]
 })
 export class TreasuryUiJournalModule {}

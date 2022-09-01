@@ -2,6 +2,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import { ABS_TREASURY_AGENT_URL } from '../common';
 import { ABS_TREASURY_CHECKS_URL } from '../common';
 import { ABS_TREASURY_CHECK_BOOKS_URL } from '../common';
+import { ABS_TREASURY_JOURNALS_URL } from '../common';
 
 
 export const treasuryNavTree: SideNavNode = {
@@ -26,6 +27,12 @@ export const treasuryNavTree: SideNavNode = {
             icon: 'fas fa-check',
             route: ABS_TREASURY_CHECK_BOOKS_URL,
             accessRights: 'CheckBooks'
+        },
+        {
+            name: 'TRS_JOURNAL',
+            icon: 'fas fa-check',
+            route: ABS_TREASURY_JOURNALS_URL,
+            accessRights: 'Journals'
         }
     ]
 }

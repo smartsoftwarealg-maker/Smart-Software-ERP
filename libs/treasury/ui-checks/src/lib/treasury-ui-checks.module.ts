@@ -9,7 +9,7 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { AgentDenominationPipe } from '@ss/logistics/api-agent';
-import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 
 @NgModule({
     imports: [
