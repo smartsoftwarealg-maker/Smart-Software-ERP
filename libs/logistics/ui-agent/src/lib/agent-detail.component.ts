@@ -6,7 +6,7 @@ import {Observable, of} from 'rxjs';
 import {AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
-    Activity,
+    ActivityService,
     AgentPrice,
     AgentType,
     City,
@@ -20,9 +20,9 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
-import {Bank} from '@ss/administration/api-bank';
+import {Bank, BankService} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
-import {LOGISTICS_AGENT_URL, ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
+import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
@@ -34,6 +34,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
     AQS = false;
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
+    activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
+    bankLookup     = new DefaultAutoCompleteModel(this.bankSrv);
     isSales = this.route.snapshot.data['sales'];
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
@@ -44,9 +46,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     countries: Country[] = [];
     currencies: Currency[] = [];
     payModes: PayMode[] = [];
-    activities: Activity[] = [];
     prices: AgentPrice[] = [];
-    banks: Bank[] = [];
 
     constructor(
         private loginSrv: LoginService,
@@ -59,7 +59,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public lookupsSrv: LookupsService,
         private router: Router,
         private isParamSrv: IsParamService,
-        private departmentSrv: DepartmentService) {
+        private departmentSrv: DepartmentService,
+        private activitySrv: ActivityService,
+        private bankSrv: BankService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
@@ -79,13 +81,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 tap(x => this.currencies = x),
                 switchMap(() => this.lookupsSrv.getPayModes()),
                 tap(x => this.payModes = x),
-                switchMap(() => this.lookupsSrv.getActivities()),
-                tap(x => this.activities = x),
                 switchMap(() => this.lookupsSrv.getPrices()),
                 catchError(e => of([])),
                 tap(x => this.prices = x),
-                switchMap(() => this.lookupsSrv.getBanks()),
-                tap(x => this.banks = x),
                 switchMap(_ => this.lookupsSrv.getSalesCategories()),
                 tap(x => this.categories = x),
                 switchMap(_ => this.isParamSrv.is('AQS')),
