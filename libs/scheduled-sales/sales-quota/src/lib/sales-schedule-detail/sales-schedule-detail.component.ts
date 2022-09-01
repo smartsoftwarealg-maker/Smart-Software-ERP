@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
+import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -10,8 +10,10 @@ import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {DatePipe} from '@angular/common';
+import {MatSelectChange} from '@angular/material/select';
+import {switchMap, tap} from 'rxjs';
 
-type Article = { id: number, reference: string, description: string};
+// type Article = { id: number, reference: string, description: string};
 
 @Component({
     selector: 'ss-sales-schedule-detail',
@@ -25,7 +27,10 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     public quotas: Quota[] = [];
     public articles: Article[] = [];
-
+    public quantities: number[] = [];
+    public balance = 0;
+    public remainingQty = 0;
+    public price = 1000;
 
     constructor(
         public override entitySrv: ScheduleService,
@@ -51,15 +56,40 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
             parentId: [b.parentId || this.loginSrv.appCtx.agentId, Validators.required],
             salesDate: [b.salesDate, Validators.required],
             productRef: [b.productRef, Validators.required],
+            qty: [b.qty, Validators.required],
         });
     }
 
     private onCustomer(a: Agent) {
         this.entitySrv
             .getQuotas(a?.id || 0)
-            .subscribe(res => {
-                this.quotas = res;
-                this.articles = [... new Set(this.quotas.map(q => <Article> { id: q.productId, reference: q.reference, description: q.description }))];
-            });
+            .pipe(tap(res => this.quotas = res),
+                switchMap(_ => this.entitySrv.getBalance(a?.id || 0, this.form.get('id').value)))
+            .subscribe(res => this.balance = res);
+    }
+
+    onDate(date: any) {
+        console.log(date);
+
+        this.articles = [
+            ...new Set(this.quotas
+                .filter(q => q.salesDate === date)
+                .map(q => <Article>{
+                    id: q.productId,
+                    reference: q.reference,
+                    description2: q.description,
+                    price1: q.price
+                }))];
+
+    }
+    onArticle(a: MatSelectChange) {
+        const agentId = this.form.get('parentId').value;
+        const schedId = this.form.get('id').value;
+        const date    = this.form.get('salesDate').value;
+        this.entitySrv
+            .getQuantities(a.value)
+            .pipe(tap(res => this.quantities = res.map(e => e.qty)),
+                switchMap(_ => this.entitySrv.getRemainingQty(agentId, schedId, a.value, date)))
+            .subscribe(res => this.remainingQty = res);
     }
 }

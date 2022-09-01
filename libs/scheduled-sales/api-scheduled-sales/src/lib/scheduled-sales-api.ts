@@ -74,6 +74,11 @@ export interface Article {
     vatValue?: number;
 }
 
+export interface Qty {
+    pType: number;
+    qty: number;
+}
+
 export interface Quota {
     id: number;
     centerId: number;
@@ -91,6 +96,7 @@ export interface Quota {
     description?: string;
     customerCode?: string;
     customerName?: string;
+    price?: number;
 }
 
 export interface Schedule {
