@@ -14,6 +14,7 @@ import {CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel} from '@ss/co
 import {AssetBuilding, AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 import {AssetsBuildingService} from '../../../../../assets-component/src/lib/assets-building.service';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
     selector: 'ss-office-detail',
@@ -75,10 +76,10 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     //     this.computeCode();
     // }
 
-    private withLeadingZeros(v: string | number) {
-        const str = ('0000' + v);
-        return str.substring(str.length - 2);
-    }
+    // private withLeadingZeros(v: string | number) {
+    //     const str = ('0000' + v);
+    //     return str.substring(str.length - 2);
+    // }
     // private computeCode() {
     //     const code = this.locationCode +
     //         this.buildingCode +
@@ -97,10 +98,11 @@ class BuildingLookup extends CodeDescriptionAutoCompleteModel<AssetBuilding> {
 
     set location(l: number) {
         this._locationId = l;
+        this.clear();
     }
 
     override filter = (filter: string) =>
         this.entitySrv
-            .getList(0, 20, filter, this.descriptionField)
-            .pipe(map(x => x.body.filter(e => e.locationId === this._locationId)));
+            .getList(0, 999, filter, this.descriptionField)
+            .pipe(map(x => x.body.filter(e => e.locationId === this._locationId).slice(0, 20)));
 }

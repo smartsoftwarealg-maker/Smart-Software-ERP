@@ -1,8 +1,11 @@
 import {ImageModel} from '@ss/common/ui-image-input';
 
-export const SS_PROJECT_URL = '/ssales/projects';
-export const SS_ARTICLE_URL = '/ssales/articles';
-export const SS_QUOTA_URL   = '/ssales/quotas';
+export const SS_PROJECT_URL  = '/ssales/projects';
+export const SS_ARTICLE_URL  = '/ssales/articles';
+export const SS_SCHEDULE_URL = '/schedules';
+export const SS_QUOTA_URL    = '/ssales/quotas';
+export const SS_SCHEDULE_AGENTS  = '/ssales/agents';
+
 
 export interface SSProject {
     id: number;
@@ -88,4 +91,59 @@ export interface Quota {
     description?: string;
     customerCode?: string;
     customerName?: string;
+}
+
+export interface Schedule {
+    id: number;
+    autogenId?: number;
+    serialNumber: number;
+    salesDate: Date;
+    centerId: number;
+    parentId: number;
+    productRef?: string;
+    qty: number;
+    price: number;
+    vat: number;
+    projectId?: number;
+    userId: number;
+    salesId?: number;
+    canceled: boolean;
+    creationDate: Date;
+    tareWeight: number;
+    payMethod?: number;
+    chkNumber?: string;
+    chkBank?: string;
+    bankLocation?: string;
+    chkAmount?: number;
+    chkDate?: Date;
+    transporter?: string;
+    plateNumber?: string;
+    chainNumber?: string;
+    idNumber?: string;
+    orderNo?: string;
+    commRegister?: string;
+    memo?: string;
+    tareTime?: Date;
+    discount: number;
+    isPrinted: boolean;
+    hostName?: string;
+    loadingLine?: number;
+    discountType?: number;
+    printDate?: Date;
+    destination?: string;
+    brut_time?: Date;
+    brut_userid?: number;
+    is_refund: boolean;
+    brutWeight?: number;
+    transporterId?: number;
+    segment_id?: number;
+    segment_price?: number;
+    mode?: number;
+    iDestination?: number;
+    timeOut?: Date;
+    timeIn?: Date;
+    is_desktop: boolean;
+    customerCode?: string;
+    customerName?: string;
+    productDescription?: string;
 }

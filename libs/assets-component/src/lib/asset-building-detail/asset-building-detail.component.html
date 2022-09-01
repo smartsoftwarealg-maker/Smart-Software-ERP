@@ -2,7 +2,7 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
             <mat-form-field class="default-100">
-                <mat-label translate>COMMON_LOCATION</mat-label>
+                <mat-label translate>ASSET_SITE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="locationLookup"
                                   formControlName="locationId"></ss-auto-complete>

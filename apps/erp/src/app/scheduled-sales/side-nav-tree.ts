@@ -4,7 +4,7 @@ import {
     ABS_LOGISTICS_CATEGORY,
     ABS_SCHEDULED_SALES_PROJECTS,
     ABS_SCHEDULED_SALES_ARTICLE,
-    ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+    ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES, ABS_SCHEDULED_SALES_SCHEDULES,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
@@ -87,6 +87,13 @@ export const scheduledSalesNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-bill-wheat',
             route: ABS_SCHEDULED_SALES_QUOTAS,
             accessRights: 'Quota',
+            customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'SCH_SCHEDULES',
+            icon: 'fa-solid fa-calendar-range',
+            route: ABS_SCHEDULED_SALES_SCHEDULES,
+            accessRights: 'Schedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
         },
     ],

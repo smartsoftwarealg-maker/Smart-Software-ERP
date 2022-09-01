@@ -6,5 +6,7 @@
     "REPRESENTATIVE": "Representative",
     "DISCOUNTS":      "Discounts",
     "QUOTAS":         "Quotas",
-    "DISCOUNT_TYPE":  "Discount type"
+    "DISCOUNT_TYPE":  "Discount type",
+    "SCHEDULES":      "Schedules",
+    "IS_DESKTOP":     "Desktop"
 }

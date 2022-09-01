@@ -1,7 +1,6 @@
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {organizationsNavTree} from '../app/organizations/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
-import {treasuryNavTree} from '../app/treasury/side-nav.tree';
 import {Routes} from '@angular/router';
 import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
@@ -31,7 +30,6 @@ export const navBar = [
     administrationNavTree,
     organizationsNavTree,
     assetsNavTree,
-    treasuryNavTree,
 ];
 
 export const langAssets = [

@@ -4,7 +4,8 @@
        (keyup)="onKeyUp($event)"
        (dateChange)="onDateChanged($event.value)"
        [min]="minValue" [max]="maxValue"
-       [required]="isRequired">
+       [required]="isRequired"
+       [matDatepickerFilter]="matDatepickerFilter">
 <button class="toggleButton abs-end-0" type="button" [disabled]="isDisabled" mat-icon-button datepicker-toggle
         (click)="datePicker.open()">
     <i class="warn-when-invalid far fa-calendar-alt"></i>
