@@ -1,0 +1,17 @@
+<div class="form-container">
+    <form *ngIf="form" novalidate [formGroup]="form" >
+
+
+        <mat-form-field floatLabel="always" class="default-50">
+            <mat-label translate>COMMON_YEAR</mat-label>
+            <input matInput formControlName="year" type="number" required>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" class="default-50">
+            <mat-label translate>COMMON_RATE</mat-label>
+            <input matInput formControlName="rate" type="number" required>
+        </mat-form-field>
+
+        <!--                <pre>{{form.value | json}}</pre>-->
+    </form>
+</div>

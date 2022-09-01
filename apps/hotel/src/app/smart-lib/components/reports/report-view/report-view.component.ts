@@ -6,8 +6,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { saveAs } from 'file-saver';
 import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-//import { FileOpener } from '@ionic-native/file-opener/ngx';
-//import { File } from '@ionic-native/file/ngx';
 import { HttpService } from '../../../common/http.service';
 import {LoginService} from '@ss/common/api-common';
 
@@ -210,21 +208,6 @@ export class ReportViewComponent implements OnInit, OnDestroy {
 
 
     private writeThenOpenFile(fileBlob: any) {
-        /*
-        const fs = this.file.externalApplicationStorageDirectory;
-        this
-            .file
-            .writeFile(fs,
-                'report.pdf',
-                fileBlob,
-                { replace: true }
-            ).then(res => {
-                this.fileOpener.open(
-                    res.toInternalURL(),
-                    'application/pdf'
-                ).catch(err => window.alert(err));
-            }).catch((err) => window.alert(err));
-        */
     }
 
 

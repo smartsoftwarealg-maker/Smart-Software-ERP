@@ -19,7 +19,11 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
         'serialNumber',
         'date',
         'officeName',
-        'valName'
+        'beneficiary',
+        'requestNumber',
+        'requestDate',
+        'reappointment',
+        'creatorName'
     ];
 
     constructor(

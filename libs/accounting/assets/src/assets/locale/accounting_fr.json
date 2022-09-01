@@ -30,8 +30,6 @@
     "FILES":                   "Dossiers",
     "DEBIT":                   "Débit",
     "CREDIT":                  "Crédit",
-    "PROJECT":                 "Projet",
-    "PROJECTS":                "Projets",
     "POS":                     "Position",
     "TRANSAC_DETAIL":          "Détail de l'ecriture comptable'",
     "SHOW_HEADER":             "Afficher l'en-tête de l'ecriture comptable",
@@ -44,7 +42,7 @@
     "ANALYZE_CHECKS":          "Analyser les chèques",
     "CC_REQUIRED":             "Le centre de coûts est requis",
     "PERIOD_SELECTION":        "Sélection de la période",
-    "ASSET_ACCOUNTS":          "Comptes d'actifs",
+    "ASSET_ACCOUNTS":          "Plan comptable",
     "DEPRECIATION_ACCOUNT":    "Compte d'amortissement",
     "ENDOWMENT_ACCOUNT":       "Compte de dotation",
     "TRANSAC_ACCOUNTS":        "Comptes d'ecritures",
@@ -65,6 +63,8 @@
     "TOTAL_DEBIT":              "Débit total",
     "TOTAL_CREDIT":             "Crédit total",
     "BALANCE":                  "Solde",
-    "GL":                       "Grand livre général"
+    "GL":                       "Grand livre général",
+    "DEPRECIATION_RATE":  "Taux d'amortissement",
+    "USEFUL_LIFE":        "Vie utile"
 }
 

@@ -10,9 +10,10 @@
 }
 
 .mat-column-code {
-    flex: 1 1 30%;
+    flex: 1 1 100PX;
 }
 
-.mat-column-description {
-    flex: 3 1 70%;
+.mat-column-description,
+.mat-column-location {
+    flex: 3 1 250PX;
 }

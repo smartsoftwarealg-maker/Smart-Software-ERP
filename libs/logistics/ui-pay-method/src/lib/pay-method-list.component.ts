@@ -38,6 +38,7 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
         private payModeSrv: PayModeService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(payMethodSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_PAY_METHOD');
+        this.pagination.pageSize = 10;
     }
 
     processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {

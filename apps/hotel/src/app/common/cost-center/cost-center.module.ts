@@ -47,9 +47,6 @@ const routes: Routes = [
     exports: [
         CostCenterListComponent,
         CostCenterDetailComponent
-    ],
-    entryComponents: [
-        CostCenterDetailComponent
     ]
 })
 export class CostCenterModule {

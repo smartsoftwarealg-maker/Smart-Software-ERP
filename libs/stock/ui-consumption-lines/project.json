@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/stock/ui-consumption-lines",
     "sourceRoot": "libs/stock/ui-consumption-lines/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/stock/ui-consumption-lines/jest.config.js",
+                "jestConfig": "libs/stock/ui-consumption-lines/jest.config.ts",
                 "tsConfig": "libs/stock/ui-consumption-lines/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/stock/ui-consumption-lines/src/test-setup.ts"

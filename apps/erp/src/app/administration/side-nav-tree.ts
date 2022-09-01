@@ -11,7 +11,7 @@ import {
     ABS_ADMINISTRATION_COUNTRY_URL,
     ABS_ADMINISTRATION_CITY_URL,
     ABS_ADMINISTRATION_WILAYA_URL,
-    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL
+    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL, ABS_APP_ARCHIVE_DOCUMENTS_URL, LOGISTICS_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -70,15 +70,27 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'ADMINISTRATION_SMTP',
-            icon: 'fas fa-server',
+            icon: 'fa-solid fa-at',
             route: ABS_ADMINISTRATION_SMTP_URL,
             accessRights: 'SMTP'
+        },
+        {
+            name: 'ADMINISTRATION_ARCHIVE_DOCUMENTS',
+            icon: 'fa-solid fa-box-archive',
+            route: ABS_APP_ARCHIVE_DOCUMENTS_URL,
+            accessRights: 'AppArchive'
         },
         {
             name: 'ADMINISTRATION_CUSTOM_DATA',
             icon: 'fa-solid fa-user-pen',
             route: ABS_ADMINISTRATION_ATTRIBUTES_URL,
             accessRights: 'AttribTempl'
+        },
+        {
+            name: 'LOGISTICS_DOCUMENT_NUMBERING',
+            icon: 'fas fa-list-ol',
+            route: LOGISTICS_DOCUMENT_URL,
+            accessRights: 'Document'
         },
         {
             name: 'ADMINISTRATION_REPORT_CATALOG',

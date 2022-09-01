@@ -1,0 +1,21 @@
+.ctr_div {
+    width: 200px;
+    margin: 16px auto 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.imj {
+    width: 90%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 16px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-height: 96%;
+    max-width: 96%;
+}

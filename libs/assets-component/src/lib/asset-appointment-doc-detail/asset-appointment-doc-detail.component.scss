@@ -25,7 +25,33 @@
 }
 
 .main-table {
-    min-height: 45%;
+    min-height: 30%;
     width: 80%;
+    max-width: 800px;
     margin: 0 auto;
+}
+
+.activity {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    font-size: 0.70em;
+    font-weight: bolder;
+}
+
+.mat-column-key {
+    flex: 0 0 24px;
+}
+
+.mat-column-description {
+    flex: 1 1 250px;
+}
+
+.mat-column-reference {
+    flex: 1 1 150px;
+}
+
+.open-icon {
+    cursor: pointer;
+    margin-left: 16px;
 }

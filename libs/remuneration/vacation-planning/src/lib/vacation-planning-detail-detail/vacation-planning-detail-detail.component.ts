@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -27,7 +27,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -35,7 +35,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
         super(planningSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_VACATION_PLANNING');
     }
 
-    setupForm(e: VacationPlanningDetail): FormGroup {
+    setupForm(e: VacationPlanningDetail): UntypedFormGroup {
         return this.formBuilder.group({
             from_date: [e.from_date, Validators.required],
             to_date:   [e.to_date, Validators.required],

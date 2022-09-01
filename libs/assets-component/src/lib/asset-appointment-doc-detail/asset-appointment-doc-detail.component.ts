@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService, OfficeService} from '@ss/common/api-lookup';
+import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetAppointmentDocService} from '../asset-appointment-doc.service';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -13,16 +13,17 @@ import {
     ASSET_MODULE,
     ATTRIB_TYPE_LOOKUP,
     AttribTempl,
-    AttributeLookupService,
     AttributesService
 } from '@ss/custom-attributes';
 import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {AssetAppointmentLineService} from '../asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
+import {OfficeSearchComponent} from '../office-search/office-search.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-asset-appointment-doc-detail',
@@ -30,87 +31,94 @@ import {Agent, ConsumerService} from '@ss/logistics/api-agent';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
-    public requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     editMode = false;
+    activity: string = 'todo';
    // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
+    selectedRow: AssetAppointmentLine = null;
     detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
-    inputControl = new FormControl();
+    inputControl = new UntypedFormControl();
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
     pagination               = PaginationModel.newInstance();
-    displayedColumns         = ['reference', 'description',];
+    displayedColumns         = ['reference', 'description', 'key'];
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private officeSrv: OfficeService,
         private attributeSrv: AttributesService,
         // private attribLookupSrv: AttributeLookupService,
         private loginSrv: LoginService,
+        private router: Router,
         private detailSrv: AssetAppointmentLineService,
         private consumerSrv: ConsumerService,
+        private dialog: MatDialog,
         private assetSrv: AssetsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
+        this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
+        this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
     }
 
     public setupForm(b: ASSAppointmentHeader) {
         this.editMode = b.id != 0;
-        this.loginSrv
-            .loadContext()
-            .subscribe();
+        this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);
         this.detailSrv.setParentId(b.id || 0);
         this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
             .pipe(tap(res => this.childAttributes = res),
+                switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(_ => this.detailSrv.getList(0, 5)))
             .subscribe(res => {
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+
         const form = this.formBuilder.group({
             id:            [b.id],
             center:        [b.center || this.loginSrv.appCtx.center],
-            serialNumber:  [b.serialNumber || 1],
-            date:          [b.date, Validators.required],
-            officeId:      [b.officeId],
+            serialNumber:  [{ value: b.serialNumber || 1, disabled: false }],
+            date:          [b.date || new Date(), Validators.required],
+            officeId:      [b.officeId, Validators.required],
             requesterId:   [b.requesterId],
-            requestDate:   [b.requestDate],
+            requestDate:   [b.requestDate || new Date()],
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
+            reappointment: [b.reappointment || false, Validators.required],
+            site:          [{ value: b.site, disabled: true }],
+            building:      [{ value: b.building, disabled: true }],
+            creatorName:   [{ value: b.creatorName, disabled: true }],
+            modifierName:  [{ value: b.modifierName, disabled: true }],
         });
-
         return form;
     }
 
-    override ngOnDestroy() {
-        this.subscriptions.forEach(s => s.unsubscribe());
-        super.ngOnDestroy();
+    override readForm(): ASSAppointmentHeader {
+        const value = super.readForm();
+        value.serialNumber = value.serialNumber || 1;
+        return value;
     }
+
 
     select(row: AssetAppointmentLine) {
         this.selectedId = row?.id || null;
-
-       this.inputControl.setValue(row?.assetId || 0);
-    }
-
-    addAsset() {
-        this.inputControl.setValue(null, {onlySelf: true});
-        this.inputControl.reset();
-        this.selectedId = 0;
+        this.selectedRow = row;
+       // this.inputControl.setValue(row?.assetId || 0);
     }
 
     deleteAsset() {
-        const row = <AssetAppointmentLine>this.inputControl.value
+        const row = this.selectedRow;
         if (row) {
             this.confirmationSrv
                 .confirmDelete()
@@ -139,6 +147,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 .subscribe(res => {
                     this.detailData = res.body;
                     this.pagination.elementCount = res.itemCount;
+                    this.inputControl.setValue(null, {onlySelf: true});
+                    this.inputControl.reset();
+                    this.selectedId = 0;
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
@@ -152,4 +163,67 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 this.pagination.elementCount = res.itemCount;
             })
     }
+
+    openSearchDlg() {
+        const dialogRef = this.dialog.open(OfficeSearchComponent,
+            {
+                data: {id: 0, description: null}
+            });
+        dialogRef
+            .afterClosed()
+            .subscribe((res: Office) => {
+                this.form.controls['officeId']?.setValue(res?.id);
+                this.form.get('site').setValue(res?.locationDescription, {onlySelf: true});
+                this.form.get('building').setValue(res?.buildingDescription, {onlySelf: true});
+            });
+    }
+
+    onOfficeChange(off: Office) {
+        this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
+        this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
+    }
+
+    public override save() {
+        this.form.markAllAsTouched();
+        if (!this.form.valid) {
+            this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
+            return;
+        }
+        const site = this.form.get('site').value;
+        const building = this.form.get('building').value;
+        let val: ASSAppointmentHeader = this.readForm();
+        val.id = this.id;
+        val.site = site;
+        val.building = building;
+        this.shellSrv.setLoading(true);
+        const obs: Observable<any> = val.id === 0
+            ? this.entitySrv
+                .add(val)
+                .pipe(switchMap(i => { this.id = i; this.detailSrv.setParentId(i); return this.entitySrv.get(i); }),
+                      tap(v => { val.id = v.id; val.serialNumber = v.serialNumber; }))
+            : this.entitySrv.update(val);
+        obs.subscribe({
+            next: () => {
+                this.shellSrv.setLoading(false);
+                this.form?.reset(val);
+                this.form.markAsUntouched();
+                this.snackBarSrv.showSuccessMessage();
+                this.editMode = true;
+            },
+            error: err => {
+                this.shellSrv.setLoading(false);
+                this.snackBarSrv.showFailureMessage();
+                this.form?.reset(val);
+                throw err;
+            }
+        })
+    }
+
+    openAsset(id: number) {
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../../assets', id], { relativeTo: this.route });
+        }
+    }
+
 }

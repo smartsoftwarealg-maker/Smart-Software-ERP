@@ -1,0 +1,34 @@
+<form *ngIf="form !== null" novalidate [formGroup]="form">
+    <mat-form-field class="default-50 sm-100" autofocus>
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="customerLookup"
+                          formControlName="parentId">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker formControlName="salesDate" [matDatepickerFilter]="dateFilter"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field id="agentType" class="default-50 sm-100">
+        <mat-label translate>COMMON_PRODUCT</mat-label>
+        <mat-select formControlName="productRef" required>
+            <mat-option *ngFor="let v of articles" [value]="v.reference">
+                {{v ? v.description : ''}}
+            </mat-option>
+        </mat-select>
+        <mat-error
+            *ngIf="form.controls['productRef'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
+    <!--    <mat-form-field class="default-50 sm-100">-->
+<!--        <mat-selection-list ma color="primary" multiple="false" formControlName="productRef">-->
+<!--            <mat-list-option *ngFor="let u of articles"-->
+<!--                             [value]="u.reference"> {{ u.description }}-->
+<!--            </mat-list-option>-->
+<!--        </mat-selection-list>-->
+<!--    </mat-form-field>-->
+</form>

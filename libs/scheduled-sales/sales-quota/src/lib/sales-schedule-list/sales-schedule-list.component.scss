@@ -1,0 +1,40 @@
+.search-div,
+.table-div,
+.pagination-container {
+    width: 94%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.table-div {
+    min-height: calc(100% - 128px);
+    width: 100%;
+    overflow-x: auto;
+}
+
+.main-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+.mat-column-productRef,
+.mat-column-serialNumber,
+.mat-column-salesDate {
+    flex: 1 1 100px;
+}
+
+.mat-column-qty,
+.mat-column-price,
+.mat-column-discount {
+    flex: 1 1 100px;
+    justify-content: right;
+}
+
+.mat-column-is_desktop{
+    flex: 1 1 100px;
+    justify-content: center;
+}
+
+.mat-column-productDescription {
+    flex: 1 1 250px;
+}

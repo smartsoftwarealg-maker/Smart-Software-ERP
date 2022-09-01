@@ -1,5 +1,5 @@
 import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of, Subscription} from 'rxjs';
@@ -12,7 +12,7 @@ import {DocRight} from '@ss/common/api-common';
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
     private queryId: number;
     protected subscriptions: Subscription[] = [];
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -28,7 +28,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public title: string) {
     }
@@ -154,6 +154,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
+                this.form?.reset(val);
                 throw err;
             }
         })
@@ -163,7 +164,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return this.form.value;
     }
 
-    public abstract setupForm(e: T): FormGroup;
+    public abstract setupForm(e: T): UntypedFormGroup;
 
     // use CanDeactivateService, it will look for this function and call it
     public canDeactivate(): Observable<boolean> {

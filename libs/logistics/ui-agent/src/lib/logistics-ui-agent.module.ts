@@ -9,9 +9,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
 import {MiniAgentDetailComponent} from './ui-mini-agent/mini-agent-detail.component';
 import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.component';
-import {DocInfoComponent, LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
-import { AgentArchiveListComponent } from './agent-archive-list/agent-archive-list.component';
-import { AgentArchiveDetailComponent } from './agent-archive-detail/agent-archive-detail.component';
+import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+import {AppArchiveModule} from '@ss/common/app-archive';
+import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 
 @NgModule({
     imports: [
@@ -21,15 +21,15 @@ import { AgentArchiveDetailComponent } from './agent-archive-detail/agent-archiv
         UiPaginationModule,
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        LogisticsUiDocInfoModule
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
+        CommonUiAutoCompleteModule
     ],
     declarations: [
         AgentListComponent,
         AgentDetailComponent,
         MiniAgentDetailComponent,
         CustomerProfileComponent,
-        AgentArchiveListComponent,
-        AgentArchiveDetailComponent,
     ],
     exports: [
         AgentListComponent,

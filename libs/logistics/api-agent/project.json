@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/api-agent",
     "sourceRoot": "libs/logistics/api-agent/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/logistics/api-agent/jest.config.js",
+                "jestConfig": "libs/logistics/api-agent/jest.config.ts",
                 "tsConfig": "libs/logistics/api-agent/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/logistics/api-agent/src/test-setup.ts"

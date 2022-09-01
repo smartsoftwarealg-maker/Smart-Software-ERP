@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { Room } from '../hotel-api';
 import { Observable, of } from 'rxjs';
@@ -23,7 +23,7 @@ const roomsUrl = '/hotels/rooms';
 })
 export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSource<Room>> implements OnInit, OnDestroy {
 
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saved = false;
 
     constructor(public router: Router,
@@ -31,7 +31,7 @@ export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSo
         public httpSrv: HttpService,
         public snackBarSrv: SnackBarService,
         public userSrv: UserService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         private confirmationSrv: ConfirmationDialogService,
         public roomsSrv: RoomsService) {
         // entity: null

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {HttpService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ArchiveDocument} from '../archive-document';
@@ -18,7 +18,7 @@ import {saveAs} from 'file-saver';
     styleUrls: ['./archive-list.component.css']
 })
 export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
-    public searchFld = new FormControl();
+    public searchFld = new UntypedFormControl();
     rights = {create: true, del: true, edit: true};
 
     constructor(

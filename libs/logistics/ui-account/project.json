@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/ui-account",
     "sourceRoot": "libs/logistics/ui-account/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/logistics/ui-account/jest.config.js",
+                "jestConfig": "libs/logistics/ui-account/jest.config.ts",
                 "tsConfig": "libs/logistics/ui-account/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/logistics/ui-account/src/test-setup.ts"

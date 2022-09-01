@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 //import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -20,7 +20,7 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
@@ -35,5 +35,4 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
             description: [b.description, Validators.required],
         });
     }
-
 }

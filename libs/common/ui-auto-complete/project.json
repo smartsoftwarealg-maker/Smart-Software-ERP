@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/ui-auto-complete",
     "sourceRoot": "libs/common/ui-auto-complete/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/common/ui-auto-complete/jest.config.js",
+                "jestConfig": "libs/common/ui-auto-complete/jest.config.ts",
                 "tsConfig": "libs/common/ui-auto-complete/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/common/ui-auto-complete/src/test-setup.ts"

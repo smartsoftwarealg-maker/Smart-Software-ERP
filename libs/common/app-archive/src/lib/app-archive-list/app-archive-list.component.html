@@ -1,0 +1,34 @@
+<div class="buttons" *ngIf="editable && id > 0">
+    <button mat-mini-fab color="primary" (click)="showDetail('0')">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="content_div">
+    <div class="list_div">
+        <div mat-subheader class="b-primary" translate> {{ 'ADMINISTRATION_ARCHIVE_DOCUMENTS' }}</div>
+
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let d of data"
+                           class="selectable"
+                           [class.selected]="d.id == selectedId"
+                           (click)="select(d)">
+                {{ d.docDescription}}
+            </mat-list-item>
+        </mat-list>
+    </div>
+    <div class="imj" *ngIf="imgSrc?.length > 100">
+        <img [src]="imgSrc" [alt]="'image'"/>
+    </div>
+</div>

@@ -216,5 +216,17 @@
     "CASH":               "Espèces",
     "AMOUNT":             "Montant",
     "NO_":                "N°",
-    "JOURNAL":            "Journal"
+    "JOURNAL":            "Journal",
+    "PROJECT":            "Projet",
+    "PROJECTS":           "Projets",
+    "COUNT":              "number",
+    "FURNITURE_STATUS":   "Statut du mobilier",
+    "QTY":                "Qté",
+    "EXCEL_INJECTION":     "Injection d'Excel",
+    "RATE":               "Taux",
+    "RECEPTION":          "Reception",
+    "UPLOAD":              "Charger",
+    "COLOR":               "Colour",
+    "CREATED_BY":          "Créé par",
+    "MODIFIED_BY":         "Dernière modification par"
 }

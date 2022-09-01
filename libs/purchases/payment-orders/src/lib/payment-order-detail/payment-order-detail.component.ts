@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {PaymentOrder} from '../payment-order';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PaymentOrderService} from '../payment-order.service';
@@ -24,7 +24,7 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
@@ -32,7 +32,7 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PAYMENT_ORDERS');
     }
 
-    setupForm(b: PaymentOrder): FormGroup {
+    setupForm(b: PaymentOrder): UntypedFormGroup {
         return this.formBuilder.group({
             id: [b.id],
             ord_number: [b.ord_number || 0],

@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/payroll/ui-employee",
     "sourceRoot": "libs/payroll/ui-employee/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/payroll/ui-employee/jest.config.js",
+                "jestConfig": "libs/payroll/ui-employee/jest.config.ts",
                 "tsConfig": "libs/payroll/ui-employee/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/payroll/ui-employee/src/test-setup.ts"

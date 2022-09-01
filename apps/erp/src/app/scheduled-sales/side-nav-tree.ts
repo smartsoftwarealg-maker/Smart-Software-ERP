@@ -1,7 +1,10 @@
 import {
     ABS_LOGISTICS_PAY_METHOD,
-    LOGISTICS_STOCK_AGENT_URL,
+    ABS_LOGISTICS_AGENT_URL,
     ABS_LOGISTICS_CATEGORY,
+    ABS_SCHEDULED_SALES_PROJECTS,
+    ABS_SCHEDULED_SALES_ARTICLE,
+    ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES, ABS_SCHEDULED_SALES_SCHEDULES,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
@@ -23,7 +26,13 @@ export const scheduledSalesNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: LOGISTICS_STOCK_AGENT_URL,
+            route: ABS_LOGISTICS_AGENT_URL,
+            accessRights: 'Agent'
+        },
+        {
+            name: 'LOGISTICS_ARTICLE',
+            icon: 'fas fa-box',
+            route: ABS_SCHEDULED_SALES_ARTICLE,
             accessRights: 'Agent'
         },
         {
@@ -32,10 +41,16 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_LOGISTICS_VAT_URL,
             accessRights: 'VAT'
         },
+        // {
+        //     name: 'COMMON_COMPANY_TYPES',
+        //     icon: 'fas fa-building',
+        //     route: ABS_LOGISTICS_COMPANY_TYPE
+        // },
         {
-            name: 'COMMON_COMPANY_TYPES',
-            icon: 'fas fa-building',
-            route: ABS_LOGISTICS_COMPANY_TYPE
+            name: 'SCH_DISCOUNTS',
+            icon: 'fa-solid fa-badge-percent',
+            route: ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+            accessRights: 'Discount'
         },
         {
             name: 'COMMON_ACTIVITIES',
@@ -49,18 +64,39 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_LOGISTICS_PAY_METHOD,
             accessRights: 'MPay'
         },
-        {
-            name: 'COMMON_CURRENCIES',
-            icon: 'fas fa-coins',
-            route: ABS_LOGISTICS_CURRENCY,
-            accessRights: 'Currency'
-        },
+        // {
+        //     name: 'COMMON_CURRENCIES',
+        //     icon: 'fas fa-coins',
+        //     route: ABS_LOGISTICS_CURRENCY,
+        //     accessRights: 'Currency'
+        // },
         {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-users-class',
             route: ABS_LOGISTICS_CATEGORY,
             accessRights: 'SalesCategory'
         },
+        {
+            name: ' COMMON_PROJECTS',
+            icon: 'fa-solid fa-buildings',
+            route: ABS_SCHEDULED_SALES_PROJECTS,
+            accessRights: 'SalesCategory'
+        },
+        {
+            name: 'SCH_QUOTAS',
+            icon: 'fa-solid fa-money-bill-wheat',
+            route: ABS_SCHEDULED_SALES_QUOTAS,
+            accessRights: 'Quota',
+            customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'SCH_SCHEDULES',
+            icon: 'fa-solid fa-calendar-range',
+            route: ABS_SCHEDULED_SALES_SCHEDULES,
+            accessRights: 'Schedule',
+            customerRights: {read: true, edit: false, delete: false, write: false}
+        },
     ],
-    accessRights: 'SCHEDULED_SALES'
+    accessRights: 'SCHEDULED_SALES',
+    customerRights: {read: true, edit: false, delete: false, write: false}
 };

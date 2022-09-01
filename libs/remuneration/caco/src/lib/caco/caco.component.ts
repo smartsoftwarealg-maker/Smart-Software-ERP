@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {saveAs} from 'file-saver';
 import {zip} from 'rxjs';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
@@ -20,7 +20,7 @@ interface Lookup {
     styleUrls: ['./caco.component.scss']
 })
 export class CacoComponent implements OnInit {
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     curYear = new Date().getFullYear() - 1;
     funds: Fund[] = [];
     absences: Formula[] = [];
@@ -35,7 +35,7 @@ export class CacoComponent implements OnInit {
     constructor(private shellSrv: ShellService,
                 private cacoSrv: CacoService,
                 private route: ActivatedRoute,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private elementInfoSrv: ElementsInfoService,
                 private formulaSrv: PayrollFormulasService,
                 private fundSrv: LookupsService) {

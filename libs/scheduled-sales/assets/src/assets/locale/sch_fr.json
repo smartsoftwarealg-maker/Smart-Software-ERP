@@ -1,0 +1,12 @@
+{
+    "SECTOR":        "Secteur",
+    "WORK_MASTER":   "Maitre ouvrage",
+    "REQUESTED_QTY":  "Quantité demandée",
+    "MONTHLY_RATE":   "Tarif mensuel",
+    "REPRESENTATIVE": "Représentant",
+    "DISCOUNTS":      "Réductions",
+    "QUOTAS":         "Quotas",
+    "DISCOUNT_TYPE":  "Type de remise",
+    "SCHEDULES":      "Programmes",
+    "IS_DESKTOP":     "Traditionnel"
+}

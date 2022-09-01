@@ -9,7 +9,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {LanguageService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {Id} from '@ss/common/ui-auto-complete';
 
@@ -25,8 +25,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     queries: string[] = [];
     detailPagination = PaginationModel.newInstance();
     time = new Date().getTime();
-    toDate      = new FormControl(new Date());
-    fromDate    = new FormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
+    toDate      = new UntypedFormControl(new Date());
+    fromDate    = new UntypedFormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
     agentLookup = new AgentLookupModel(this.agentSrv);
     selectedAgentId: Id = '';
     tableWidth = '1000';

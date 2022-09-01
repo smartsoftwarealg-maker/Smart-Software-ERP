@@ -214,5 +214,17 @@
     "CASH":               "النقد",
     "AMOUNT":             "المبلغ",
     "NO_":                "رقم",
-    "JOURNAL":            "الدفتر"
+    "JOURNAL":            "الدفتر",
+    "PROJECTS":           "المشاريع",
+    "PROJECT":             "مشروع",
+    "COUNT":               "عدد",
+    "FURNITURE_STATUS":    "حالة الأثاث",
+    "QTY":                 "الكمية",
+    "EXCEL_INJECTION":     "حقن إكسال",
+    "RATE":                "النسبة",
+    "RECEPTION":           "استقبال",
+    "UPLOAD":              "تحميل",
+    "COLOR":               "اللون",
+    "CREATED_BY":          "انشأ من قبل",
+    "MODIFIED_BY":         "التعديل الأخير من قبل"
 }

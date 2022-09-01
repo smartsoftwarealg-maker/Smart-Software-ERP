@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -16,6 +15,7 @@ import {AssetsBuildingService} from '../assets-building.service';
 })
 export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBuilding> {
     displayedColumns = [
+        'location',
         'code',
         'description',
     ];
@@ -39,5 +39,4 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             pagPersistSrv,
             'ASSET_BUILDINGS');
     }
-
 }

@@ -4,7 +4,7 @@ import {Formula} from './payroll-formulas-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PayrollFormulasService} from './payroll-formulas.service';
@@ -21,7 +21,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv,
@@ -33,7 +33,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
               'REMUN_FORMULAS');
     }
 
-    setupForm(e: Formula): FormGroup {
+    setupForm(e: Formula): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             archiveYear: [e.archiveYear],

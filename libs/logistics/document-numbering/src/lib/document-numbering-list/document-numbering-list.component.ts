@@ -39,6 +39,6 @@ export class DocumentNumberingListComponent extends BaseEntityListComponent<LDoc
               defReportSrv,
               pagPersistSrv,
             'LOGISTICS_DOCUMENT_NUMBERING');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
     }
 }

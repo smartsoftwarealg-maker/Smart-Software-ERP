@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/patients",
     "sourceRoot": "apps/patients/src",
     "prefix": "ss",
     "targets": {
@@ -116,7 +116,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/patients"],
             "options": {
-                "jestConfig": "apps/patients/jest.config.js",
+                "jestConfig": "apps/patients/jest.config.ts",
                 "passWithNoTests": true
             }
         }

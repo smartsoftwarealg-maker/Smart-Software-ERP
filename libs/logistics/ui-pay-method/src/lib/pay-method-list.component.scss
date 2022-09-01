@@ -1,12 +1,12 @@
-
-:host {
-    display: block;
-    margin: auto;
-    width: 828px;
+.container {
+    height: calc(100% - 64px);
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-y: auto;
 }
-
 .main-table {
-    width: 828px;
+    width: 650px;
     min-height: 320px;
 }
 
@@ -16,26 +16,14 @@
     padding-left: 16px;
 }
 
-.mat-column-accountNo {
-    flex: 0 0 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
 
 .mat-column-description {
-    flex:  0 0 280px;
+    flex:  1 1 400px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
-
-.mat-column-accType {
-    flex: 0 0 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-analyzed .mat-column-customerCode {
-    flex: 0 0 100px ;
+.mat-column-mode {
+    flex:  1 1 200px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

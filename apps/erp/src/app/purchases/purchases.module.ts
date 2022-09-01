@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
 
 @NgModule({
     imports: [
@@ -9,7 +8,6 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
     ]
 })
 export class PurchasesModule {
-    constructor(private payMethod: PayMethodService) {
-        this.payMethod.load();
+    constructor() {
     }
 }

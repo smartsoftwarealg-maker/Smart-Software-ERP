@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {
     AccPoliciesService,
     ACCPolicy,
@@ -30,7 +30,7 @@ export class TransactionLinesDetailComponent {
     ccLookupModel       = new DefaultAutoCompleteModel(this.ccSrv, 'id', 'code');
     annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
     accPolicy: ACCPolicy = null;
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     id = 0;
     transactionId = 0;
     fileId = 0;
@@ -73,7 +73,7 @@ export class TransactionLinesDetailComponent {
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private accountSrv: AccountService,
@@ -85,7 +85,7 @@ export class TransactionLinesDetailComponent {
         this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj)
     }
 
-    setupForm(e: ACCTransactionLine): FormGroup {
+    setupForm(e: ACCTransactionLine): UntypedFormGroup {
         return  this.formBuilder.group({
             id: [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],

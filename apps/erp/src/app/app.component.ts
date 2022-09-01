@@ -1,28 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {AppContext, HttpService, LoginInfo, LoginService} from '@ss/common/api-common';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
-import { hrNavTree } from './hr/side-nav-tree';
-import { stockNavTree } from './stock/side-nav-tree';
-import { payrollNavTree } from './payroll/side-nav-tree';
-import { administrationNavTree } from './administration/side-nav-tree';
-import { salesNavTree } from './sales/side-nav-tree';
-import { purchasesNavTree } from './purchases/side-nav-tree';
-import { logAdminNavTree } from './logistics-admin/side-nav-tree';
-import { financeNavTree } from './finance/side-nav-tree';
-import { dashboardNavTree } from './dashboard/side-nav-tree';
-import { webArchNavTree } from './web-arch/side-nav-tree';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
-import { assetsNavTree } from './assets-app/side-nav-tree';
-import { accountingNavTree } from './accounting/side-nav.tree';
-import { treasuryNavTree } from './treasury/side-nav.tree';
 import { of, zip } from 'rxjs';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { AccessRightsService } from '@ss/common/api-access-rights';
-import { organizationsNavTree } from './organizations/side-nav-tree';
-import {compiledApplications} from '../environments/environment';
-import {scheduledSalesNavTree} from './scheduled-sales/side-nav-tree';
+import {langAssets, navBar} from '../environments/environment';
 
 @Component({
     selector: 'ss-root',
@@ -39,39 +24,27 @@ export class AppComponent implements OnInit {
         private loginSrv: LoginService,
         private monthSelectorSrv: PayrollMonthService,
         private rightsSrv: AccessRightsService,
-        private router: Router) { }
+        private router: Router) {
+        langAssets.forEach(e => langSrv.addSource(e[0], e[1]));
+    }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.0');
-        this.shellSrv.setSideNavDataSource([
-            administrationNavTree,
-            organizationsNavTree,
-            logAdminNavTree,
-            purchasesNavTree,
-            stockNavTree,
-            salesNavTree,
-            financeNavTree,
-            hrNavTree,
-            payrollNavTree,
-            webArchNavTree,
-            accountingNavTree,
-            assetsNavTree,
-            treasuryNavTree,
-            dashboardNavTree,
-            scheduledSalesNavTree
-        ].filter(e => compiledApplications.indexOf(e.name) >= 0));
-
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.7');
         this.httpSrv
             .init()
-            .pipe(switchMap(() => this.langSrv.init()))
+            .pipe(switchMap(() => zip(this.langSrv.init(), this.loginSrv.loadContext())))
             .subscribe({
-                next: () => this.init(),
+                next: () => {
+                    this.init();
+                    this.shellSrv.setSideNavDataSource(navBar);
+                },
                 error: () => this.loginSrv.logout()
             });
     }
 
-    init() {
+    private init() {
         this.loaded = true;
+
         this.router
             .events
             .pipe(switchMap((event: Event) => {

@@ -80,7 +80,6 @@
     "CUSTOMER":            "Müşteri",
     "PPRICE":              "PPrice",
     "NUMBER":              "Numara",
-    "QTY":                 "Miktar",
     "STORE":               "Mağaza",
     "IMPORT_DOCUMENT":     "Önemli belge",
     "CIRCULATION":         "Dolaşım",
@@ -136,5 +135,6 @@
     "INVOICE_NUMBER": "",
     "PAYMENT_ORDERS": "",
     "ORDER_NO":      "",
-    "PPRICE":        ""
+    "PPRICE":        "",
+    "DISCOUNTABLE":    ""
 }

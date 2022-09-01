@@ -9,7 +9,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
+                <ss-date-picker formControlName="receptionDate"></ss-date-picker>
             </mat-form-field>
 
 
@@ -38,20 +38,6 @@
                 <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>STOCK_DEALER</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="dealerAutoCompleteModel"
-                                  formControlName="dealer"></ss-auto-complete>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
-                <mat-error
-                    *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
-                </mat-error>
-
-            </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
@@ -65,6 +51,21 @@
                 </mat-error>
                 <mat-error
                     *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_DEALER</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="dealerAutoCompleteModel"
+                                  formControlName="dealer"></ss-auto-complete>
+                <mat-error
+                    *ngIf="form.controls['dealer'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+                <mat-error
+                    *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
                 </mat-error>
 
             </mat-form-field>

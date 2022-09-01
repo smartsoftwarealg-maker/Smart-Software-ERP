@@ -1,49 +1,54 @@
 {
-    "npmScope": "ss",
-    "affected": {
-        "defaultBase": "master"
+  "npmScope": "ss",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "cli": {
+    "packageManager": "npm"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "cli": {
-        "defaultCollection": "@nrwl/angular",
-        "packageManager": "npm"
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "YjJkNzUwODEtYzA0MC00NGQ5LTg4ZDEtMWE0ZmU4NmQ2NGUyfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
     },
-    "implicitDependencies": {
-        "package.json": {
-            "dependencies": "*",
-            "devDependencies": "*"
-        },
-        ".eslintrc.json": "*"
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     },
-    "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/workspace/tasks-runners/default",
-            "options": {
-                "cacheableOperations": ["build", "lint", "test", "e2e"]
-            }
-        }
-    },
-    "targetDependencies": {
-        "build": [
-            {
-                "target": "build",
-                "projects": "dependencies"
-            }
-        ]
-    },
-    "generators": {
-        "@nrwl/angular:application": {
-            "style": "scss",
-            "linter": "eslint",
-            "unitTestRunner": "jest",
-            "e2eTestRunner": "cypress"
-        },
-        "@nrwl/angular:library": {
-            "linter": "eslint",
-            "unitTestRunner": "jest"
-        },
-        "@nrwl/angular:component": {
-            "style": "scss"
-        }
-    },
-    "defaultProject": "erp"
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "erp",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  }
 }

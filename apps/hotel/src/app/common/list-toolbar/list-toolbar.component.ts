@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { Right } from '../../smart-lib/common/models';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class ListToolbarComponent implements OnInit, OnDestroy {
 
-    searchControl: FormControl = new FormControl();
+    searchControl: UntypedFormControl = new UntypedFormControl();
 
     @Output()
     filterChange = new EventEmitter<string>();

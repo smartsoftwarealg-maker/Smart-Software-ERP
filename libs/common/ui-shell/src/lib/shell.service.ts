@@ -1,19 +1,22 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UntypedFormControl} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {
     DocRight,
-    LanguageService, Right,
+    LanguageService,
+    LoginService,
+    Right,
     SideNavNode,
     strDropEndUntil,
-    strDropUntil,
     strTakeUntil,
     UserRightsService
 } from '@ss/common/api-common';
 import * as _ from 'lodash';
+import {doc} from 'prettier';
+import debug = doc.debug;
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version
@@ -53,6 +56,7 @@ export interface MenuItem {
 })
 export class ShellService {
     private _application = '';
+    private navTree: SideNavNode[] = [];
 
     backgroundColors: string[] = [
         '#d88f64', '#806570', '#610B6E',
@@ -77,7 +81,7 @@ export class ShellService {
     protected appName: string;
     //
     protected goBackFn: () => void = null;
-    protected searchControl: FormControl;
+    protected searchControl: UntypedFormControl;
     public focusSearchField: boolean;
     protected searchInputLabel: string;
     //
@@ -92,7 +96,10 @@ export class ShellService {
     protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
     public navData: SideNavNode[] = [];
 
-    constructor(public langSrv: LanguageService, public router: Router, private rightsSrv: UserRightsService) { }
+    constructor(public langSrv: LanguageService,
+                public router: Router,
+                private rightsSrv: UserRightsService,
+                private loginSrv: LoginService) { }
 
     /* LOADING */
 
@@ -101,9 +108,6 @@ export class ShellService {
         this.updateShell();
     }
 
-    getLoading(): boolean {
-        return this.isLoading;
-    }
 
     public showRetry(retryCallback: () => void) {
         this.isError = true;
@@ -153,18 +157,27 @@ export class ShellService {
             : node.children.map(n => this.getNavNodeByUrl(url, n)).filter(n => !!n)[0];
     }
 
-    public filterSideNav(): void {
-        this.setSideNavVisibility(this.navData);
-        this.setAppSideNavVisibility(this.navData);
-        this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
-
+    public filterNavTree(tree: SideNavNode[]): SideNavNode[] {
+        this.setAppSideNavVisibility(tree);
+        const filteredTree = tree.filter(t => t.visible || (t.children !== null && t.children.find(e => e.visible) !== undefined));
+        const finalTree = this.filterSideNavByVisibility(filteredTree);
+        return finalTree.length === 1? finalTree[0].children : finalTree;
     }
+
+    // public filterSideNav(): void {
+    //     this.setSideNavVisibility(this.navData);
+    //     this.navData = this.navData.filter(e => !e.children || e.children.find(c => c.visible));
+    //     this.setAppSideNavVisibility(this.navData);
+    //     this.sideNavDataSrc.data = this.filterSideNavByVisibility(this.navData);
+    // }
+
 
     private filterSideNavByVisibility(tree: SideNavNode[]): SideNavNode[] {
         if (tree == null) {
             return null;
         }
-        return tree.filter(i => i.visible)
+        return tree
+            .filter(t => t.visible)
             .map(i => {
                 const clone: SideNavNode = _.cloneDeep(i);
                 clone.children = this.filterSideNavByVisibility(i.children);
@@ -174,22 +187,24 @@ export class ShellService {
 
     private setSideNavVisibility(tree: SideNavNode[]): void {
         if (tree != null) {
-            // MUST use for each, MUST NOT change reference of array
+            // MUST-use for each, MUST NOT change reference of array
             tree.forEach(r => {
                 this.setSideNavVisibility(r.children);
                 r.visible = (!r.accessRights || this.rightsSrv.canUserPass(r.accessRights)) &&
-                    (r.children == null || r.children.find(e => e.visible) != null);
+                            (r.children == null || r.children.find(e => e.visible) != null) &&
+                            (!!r.customerRights?.read || this.loginSrv.appCtx.id > 0);
             });
         }
     }
 
     private setAppSideNavVisibility(tree: SideNavNode[]): void {
         if (tree != null) {
-            // MUST use for each, MUST NOT change reference of array
+            // MUST-use for each, MUST NOT change reference of array
             const userRights = this.rightsSrv.rights;
             tree.forEach(r => {
-                r.visible = r.accessRights != null &&
-                    (userRights.size == 0 || userRights.get(r.accessRights)?.read === true);
+                const right = this.loginSrv.appCtx?.id > 0? userRights?.get(r.accessRights) : r.customerRights;
+                r.visible = right?.read || (right === undefined && this.loginSrv.appCtx?.manager);
+                this.setAppSideNavVisibility(r.children);
             });
         }
     }
@@ -225,11 +240,17 @@ export class ShellService {
         return this.sideNavDataSrc;
     }
 
-    public setSideNavDataSource(tree: SideNavNode[]) {
-        this.navData = tree;
-        this.sideNavDataSrc.data = [];
-        this.generateNavColors(tree);
+    public filterSideNav() {
+        this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
+        this.generateNavColors(this.navData);
         this.updateShell();
+    }
+
+    public setSideNavDataSource(tree: SideNavNode[]) {
+        this.navTree = tree;
+        if (this.loginSrv.appCtx) {
+            this.filterSideNav();
+        }
     }
 
     private generateNavColors(tree: SideNavNode[]): void {
@@ -354,7 +375,7 @@ export class ShellService {
         return this.searchInputLabel;
     }
 
-    public get searchFormControl(): FormControl {
+    public get searchFormControl(): UntypedFormControl {
         return this.searchControl;
     }
 
@@ -372,20 +393,21 @@ export class ShellService {
     }
 
     /**
-     * Adds search functionality the title-bar without extra screen space (call ONCE per component, and do not call in it's children)
+     * Adds search functionality the title-bar without extra screen space (call ONCE per component, and do not call in its children)
      *
      * @param inputLabel the title of the search input
      * @param subFn a function that subscribes to an observable, this observable sends search terms
+     * @param focusField
      */
     public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField: boolean = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
             console.log('Search called twice!!');
             // alert(
-            //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the fuction twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
+            //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the function twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
             // );
         } else {
-            this.searchControl = new FormControl();
+            this.searchControl = new UntypedFormControl();
             this.subscription = subFn(
                 this.searchControl
                     .valueChanges
@@ -486,15 +508,15 @@ export class ShellService {
         this.showToolbarFn = fn;
     }
 
-    public setQueryParams(activatedRoute: ActivatedRoute, params: any): void {
-        this.router.navigate(
-            [],
-            {
-                relativeTo: activatedRoute,
-                queryParams: params,
-                queryParamsHandling: 'merge', // remove to replace all query params by provided
-            });
-    }
+    // public setQueryParams(activatedRoute: ActivatedRoute, params: any): void {
+    //     this.router.navigate(
+    //         [],
+    //         {
+    //             relativeTo: activatedRoute,
+    //             queryParams: params,
+    //             queryParamsHandling: 'merge', // remove to replace all query params by provided
+    //         });
+    // }
     get application() {
         return this._application;
     }
@@ -504,17 +526,18 @@ export class ShellService {
 
     getCurrentNodeRights(): Right {
         const node = this.getNavNodeByRouter();
-        const rights = !node || !node.accessRights? {
+        return !node?.accessRights && !node?.customerRights ? {
             read: true,
             write: true,
             edit: true,
             delete: true
-        } as Right : this.getRights(node.accessRights);
-        return rights;
+        } as Right : this.getRights(node);
     }
 
-    getRights(component: string): Right {
-        return this.rightsSrv.getUserRights(component);
+    getRights(node: SideNavNode): Right {
+        return this.loginSrv.appCtx.id > 0?
+            this.rightsSrv.getUserRights(node.accessRights) :
+            node.customerRights;
     }
 
     loadUserRights(): Observable<DocRight[]> {

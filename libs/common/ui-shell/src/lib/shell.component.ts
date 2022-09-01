@@ -3,6 +3,7 @@ import { ShellService } from './shell.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import {LanguageService, LoginService, SideNavNode} from '@ss/common/api-common';
 import {UserRightsService} from '@ss/common/api-common';
+import {navBar} from '../../../../../apps/erp/src/environments/environment';
 
 @Component({
     selector: 'ss-shell',
@@ -32,8 +33,10 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         this.shellSrv.setUpdateShellFn(null);
         this.shellSrv.setShowToolbarFn(this.showToolbar);
         this.check();
-        this.rightsSrv.load()
+        this.rightsSrv
+            .load()
             .subscribe(() => {
+                this.shellSrv.setSideNavDataSource(navBar);
                 this.shellSrv.filterSideNav();
             })
     }

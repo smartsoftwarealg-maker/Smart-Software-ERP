@@ -4,7 +4,7 @@ import {AssetLocation} from '../assets-api';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AssetLocationService} from '../asset-location.service';
@@ -23,7 +23,7 @@ export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<Ass
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {

@@ -15,9 +15,6 @@ import { MaterialModule } from '../../smart-lib/components/material.module';
     ],
     exports: [
         ConfirmationDialogComponent,
-    ],
-    entryComponents: [
-        ConfirmationDialogComponent
     ]
 })
 export class ConfirmationDialogModule {

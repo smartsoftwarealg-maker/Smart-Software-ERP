@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetInventory} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, OfficeService} from '@ss/common/api-lookup';
 import {AssetInventoryService} from '../asset-inventory.service';
@@ -14,7 +14,6 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
-import {NgxScannerQrcodeComponent} from 'ngx-scanner-qrcode';
 
 @Component({
   selector: 'ss-asset-inventory',
@@ -23,7 +22,6 @@ import {NgxScannerQrcodeComponent} from 'ngx-scanner-qrcode';
 })
 export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<AssetInventory> {
     private accPolicy: ACCPolicy | null = null;
-    @ViewChild('action', { static: true }) action: NgxScannerQrcodeComponent;
 
     officeLookup      = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel  = new AssetLookupModel(this.assetSrv);
@@ -33,7 +31,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
@@ -66,12 +64,6 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
                   }));
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        if (this.action) {
-            this.action.start();
-        }
-    }
 
     onScan(data: any) {
         console.log(data)

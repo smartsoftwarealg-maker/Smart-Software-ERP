@@ -9,12 +9,14 @@ export const BLOCKING_URL = '/blocking';
 export const REVALUATION_URL = '/revaluations';
 export const COST_TYPE_URL = '/lookups/invest_costtypes';
 export const BLOCKING_TYPE_URL = '/lookups/blocking_types';
+export const END_TYPE_URL = '/lookups/investment_ends';
 export const REVALUATION_TYPE_URL = '/lookups/revaluations';
 export const ASSET_RECEPTIONS_URL = '/asset-receptions';
 export const ASSET_APPOINTMENT_URL = '/asset-appointments';
 export const ASSET_APPOINTMENT_LINE_URL = '/lines';
 export const ASSET_INVENTORY_URL = '/inventories';
 export const ASSET_YEARS_URL = '/years';
+export const ASSET_DEPRECIATION_RATES = '/rates';
 
 export interface Asset {
     id: number;
@@ -24,10 +26,8 @@ export interface Asset {
     centerId: number;
     accountno: string;
     description?: string;
-    info?: string;
     acquisitionDate?: string;
     serviceDate?: string;
-    invoiceNumber?: string;
     itemCount?: number;
     acquisitionValue: number;
     historicValue: number;
@@ -36,9 +36,6 @@ export interface Asset {
     decliningRate?: number;
     depreciationType?: number;
     residualValue: number;
-    supplier?: number;
-    originalSupplier?: number;
-    barcode?: string;
     dateOut?: string;
     customer?: number;
     serial_no?: string;
@@ -46,15 +43,11 @@ export interface Asset {
     costCenter?: number;
     investEnd?: number;
     startYear?: number;
-    receptionNumber?: string;
-    receptionDate?: string;
     positionNumb?: string;
     modelNumb?: string;
     installation_code?: string;
     tech_specific?: string;
     comment?: string;
-    order_numb?: string;
-    order_date?: string;
     office?: number;
     sales_price?: number;
     creation_date?: string;
@@ -67,6 +60,27 @@ export interface Asset {
     ccCode?: string;
     assetClass?: number;
     className?: string;
+    status?: number;
+    geolocation?: string;
+    beneficiary?: string;
+    receptionId?: number;
+    receptionNumber?: string;
+    receptionDate?: Date;
+    requestNumber?: string;
+    requestDate?: Date;
+    orderNumber?: string;
+    orderDate?: Date;
+    deliveryNumber?: string;
+    deliveryDate?: Date;
+    invoiceNumber?: string;
+    invoiceDate?: Date;
+    supplier?: string;
+    originalSupplier?: string;
+    requester?: number;
+    mark?: number;
+    site?: string;
+    building?: string;
+    beneficiaryId?: number;
 }
 
 export interface Depreciation {
@@ -126,24 +140,39 @@ export interface AssetClass {
 }
 
 export interface ASSAppointment {
-    id: number
-    invest_id: number;
-    decision_date?: Date;
-    decision_ref?: string;
-    location?: number;
-    cost_center?: number;
-    office_id?: number;
-    invent_id: number;
-    officeCode?: string;
-    agentId?: number;
-    denomination?: string;
+    id: number;
+    parentId: number;
+    date?: Date;
+    number?: string;
+    location?: string;
+    code?:  string;
+    beneficiary?:  string;
 }
 
 export interface AssetReception {
     id: number;
-    acquisition_Date: Date;
-    invoice_Number?: string;
-    supplier?: string;
+    centerId: number;
+    serialNumber: number;
+    receptionDate: Date;
+    requester?: number;
+    supplier?: number;
+    origSupplier?: number;
+    requestNumber?: string;
+    orderNumber?: string;
+    deliveryNumber?: string;
+    invoiceNumber?: string;
+    requestDate?: Date;
+    orderDate?: Date;
+    deliveryDate?: Date;
+    invoiceDate?: Date;
+    count: number;
+    amount?: number;
+    supplierName?: string;
+    origSupplierName?: string;
+    modifiedBy?: number;
+    creatorName?: string;
+    modifierName?: string;
+    requesterName?: string;
 }
 
 export interface ASSAppointmentHeader {
@@ -159,6 +188,13 @@ export interface ASSAppointmentHeader {
     beneficiaryId?: number;
     requester?: string;
     beneficiary?: string;
+    activity?: string;
+    reappointment: boolean;
+    site?: string;
+    building?: string;
+    modifiedBy?: number;
+    creatorName?: string;
+    modifierName?: string;
 }
 
 export interface AssetAppointmentLine {
@@ -186,7 +222,36 @@ export interface AssetInventory {
 
 export interface AssetBuilding {
     id: number;
-    centerId: number;
+    locationId: number;
     code: string;
     description: string;
+    location?: string;
+}
+
+export interface SearchCriteria {
+    reference?: string;
+    reference2?: string;
+    description?: string;
+    accountNo?: string;
+    acquisitionDate?: Date;
+    serviceDate?: Date;
+    invoiceNumber?: string;
+    acquisitionValue?: number;
+    supplier?: string;
+    dateOut?: string;
+    serialNo?: string;
+    location?: number;
+    investEnd?: number;
+    receptionNumber?: string;
+    receptionDate?: Date;
+    orderNumb?: string;
+    orderDate?: Date;
+    requester?: number;
+}
+
+export interface DepreciationRate {
+    id: number;
+    parentId: number;
+    year: number;
+    rate: number;
 }

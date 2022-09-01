@@ -3,7 +3,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
@@ -22,7 +22,7 @@ export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> i
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override formBuilder: FormBuilder,
+        public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {
@@ -35,7 +35,7 @@ export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> i
               'ACC_FILES');
     }
 
-    public setupForm(e: ACCFile): FormGroup {
+    public setupForm(e: ACCFile): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             center: [e.center || this.loginSrv.appCtx.center],

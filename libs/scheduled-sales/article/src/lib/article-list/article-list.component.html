@@ -1,0 +1,55 @@
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.reference}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description2">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description2}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    {{ e.price1 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="classDescription">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CLASS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.classDescription}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="typeDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.typeDescription}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="vatValue">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.vatValue | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

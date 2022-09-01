@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -17,7 +17,7 @@ import { EmployeeService } from '@ss/payroll/api-employee';
 })
 export class DepartmentDetailComponent extends BaseEntityDetailComponent<Department> implements OnInit, OnDestroy {
 
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
@@ -26,7 +26,7 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         private employeeSrv: EmployeeService,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService) {
@@ -39,11 +39,11 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         return super.getRouteParam();
     }
 
-    setupForm(a: Department): FormGroup {
+    setupForm(a: Department): UntypedFormGroup {
         console.log(a);
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
-            responsible: [a.responsible, Validators.required]
+            responsible: [a.responsible]
         });
     }
 

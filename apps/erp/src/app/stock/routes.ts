@@ -11,7 +11,7 @@ import {
     STOCK_INVENTORY_ENTRY_URL,
     STOCK_INVENTORY_EXIT_URL,
     STOCK_INVENTORY_URL,
-    STOCK_MARKS_URL,
+    COMMON_MARKS_URL,
     STOCK_STORE_NAMES_URL,
     STOCK_SUBCLASSES_URL,
     STOCK_UNITS_URL,
@@ -225,8 +225,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
                 children: docInfoRoutes,
+                canActivate: [CanActivateService],
                 data: { form: 'Agent' }
             },
             {
@@ -348,7 +348,7 @@ export const lookupRoutes: Routes = [
         ]
     },
     {
-        path: STOCK_MARKS_URL,
+        path: COMMON_MARKS_URL,
         children: [
             {
                 path: LIST_URL,

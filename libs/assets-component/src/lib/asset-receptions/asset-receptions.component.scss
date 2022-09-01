@@ -1,12 +1,83 @@
+.table-div {
+    width: 90%;
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
 .main-table {
     width: 90%;
-    max-width: 1000px;
+    min-width: 900px;
     margin: 16px auto 0;
-    min-height: calc(100% - 96px);
+    height: 60%;
+    overflow-y: auto;
 }
 
 .pagination-container {
     width: 90%;
     max-width: 1000px;
     margin: 16px auto 0;
+}
+
+.detail-table {
+    width: 96%;
+    min-width: 900px;
+    max-width: 1200px;
+    margin: 8px auto 0;
+}
+
+
+.mat-column-amount {
+    flex: 1 1 100px;
+    justify-content: right;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-count,
+.mat-column-creatorName,
+.mat-column-receptionDate,
+.mat-column-serialNumber {
+    flex: 1 1 100px;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+.mat-column-supplierName {
+    flex: 1 1 200px;
+    border-left: white solid 1px;
+    padding-left: 8px;
+}
+
+
+.mat-column-beneficiary,
+.mat-column-description {
+    flex: 1 1 140px;
+}
+
+.mat-column-reference,
+.mat-column-geolocation,
+.mat-column-accountno {
+    flex: 1 1 100px;
+}
+
+.mat-column-key {
+    flex: 0 0 26px;
+    justify-content: space-around;
+}
+
+.mat-column-depreciationRate,
+.mat-column-useful_life,
+.mat-column-acquisitionValue,
+.mat-column-residualValue,
+.mat-column-serial_no,
+.mat-column-acquisitionDate,
+.mat-column-serviceDate {
+    flex: 1 1 90px;
+}
+
+
+.open-icon {
+    cursor: pointer;
+    margin-left: 16px;
 }

@@ -15,11 +15,13 @@ import {ASSAppointment} from '../assets-api';
 })
 export class AssetAppointmentListComponent implements OnInit {
     displayedColumns = [
-        'decision_date',
-        'decision_ref',
-        'officeCode',
-        'denomination'
+        'date',
+        'number',
+        'location',
+        'beneficiary',
+        'key'
     ];
+
     @Input() editable = true;
     selected = 0;
     data: ASSAppointment[] = [];
@@ -95,5 +97,12 @@ export class AssetAppointmentListComponent implements OnInit {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
             });
+    }
+
+    openAppointment(id: number) {
+        if (id > 0) {
+            console.log('id: ', id);
+            this.router.navigate(['../../asset-appointments', id], { relativeTo: this.route });
+        }
     }
 }

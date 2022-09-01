@@ -5,4 +5,3 @@ export * from './lib/consumer.service';
 export * from './lib/suppier.service';
 export * from './lib/customer.service';
 export * from './lib/agent-denomination.pipe';
-export * from './lib/agent-archive.service';

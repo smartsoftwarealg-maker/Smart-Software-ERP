@@ -1,11 +1,11 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "generators": {
         "@nrwl/angular:component": {
             "style": "scss"
         }
     },
-    "root": "apps/erp",
     "sourceRoot": "apps/erp/src",
     "prefix": "ss",
     "targets": {
@@ -91,6 +91,11 @@
                         "glob": "**/*",
                         "input": "libs/web-arch/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/scheduled-sales/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],
@@ -154,6 +159,60 @@
                         }
                     ]
                 },
+                "prodssales": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.ssales.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "devssales": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.ssales.ts"
+                        }
+                    ],
+                    "optimization": false,
+                    "outputHashing": "all",
+                    "sourceMap": true,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": false,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "150mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "150kb"
+                        }
+                    ]
+                },
                 "development": {
                     "optimization": false,
                     "outputHashing": "all",
@@ -192,6 +251,9 @@
                 },
                 "development": {
                     "browserTarget": "erp:build:development"
+                },
+                "devssales": {
+                    "browserTarget": "erp:build:devssales"
                 }
             }
         },
@@ -213,7 +275,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "apps/erp/jest.config.js",
+                "jestConfig": "apps/erp/jest.config.ts",
                 "tsConfig": "apps/erp/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "apps/erp/src/test-setup.ts"

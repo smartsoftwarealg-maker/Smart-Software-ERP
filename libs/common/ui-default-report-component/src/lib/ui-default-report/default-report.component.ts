@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormData} from '../FormData';
 import {SnackBarService} from '@ss/common/ui-shell';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ReportCatalog, ReportListService} from '@ss/common/api-reports';
 
@@ -12,9 +12,9 @@ import {ReportCatalog, ReportListService} from '@ss/common/api-reports';
   styleUrls: ['./default-report.component.scss']
 })
 export class DefaultReportComponent implements OnInit {
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public reportList: string[] = [];
-    public filename = new FormControl('');
+    public filename = new UntypedFormControl('');
 
   constructor(private dialogRef: MatDialogRef<DefaultReportComponent>,
               private snackBarSrv: SnackBarService,

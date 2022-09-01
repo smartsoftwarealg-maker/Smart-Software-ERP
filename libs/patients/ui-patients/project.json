@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/patients/ui-patients",
     "sourceRoot": "libs/patients/ui-patients/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/patients/ui-patients"],
             "options": {
-                "jestConfig": "libs/patients/ui-patients/jest.config.js",
+                "jestConfig": "libs/patients/ui-patients/jest.config.ts",
                 "passWithNoTests": true
             }
         },

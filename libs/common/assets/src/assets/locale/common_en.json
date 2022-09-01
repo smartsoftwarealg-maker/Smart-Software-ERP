@@ -215,5 +215,17 @@
     "CASH":               "Cash",
     "AMOUNT":             "Amount",
     "NO_":                "No.",
-    "JOURNAL":            "Journal"
+    "JOURNAL":            "Journal",
+    "PROJECT":             "Project",
+    "PROJECTS":            "Projects",
+    "COUNT":               "Count",
+    "FURNITURE_STATUS":    "Furniture status",
+    "QTY":                 "Qty",
+    "EXCEL_INJECTION":     "Excel injection",
+    "RATE":                "Rate",
+    "RECEPTION":           "Reception",
+    "UPLOAD":              "Upload",
+    "COLOR":               "Color",
+    "CREATED_BY":          "Created by",
+    "MODIFIED_BY":         "Last modified by"
 }

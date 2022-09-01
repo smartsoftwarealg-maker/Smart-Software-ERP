@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/api-cost-center",
     "sourceRoot": "libs/logistics/api-cost-center/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/logistics/api-cost-center/jest.config.js",
+                "jestConfig": "libs/logistics/api-cost-center/jest.config.ts",
                 "tsConfig": "libs/logistics/api-cost-center/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/logistics/api-cost-center/src/test-setup.ts"

@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/ui-lookup",
     "sourceRoot": "libs/common/ui-lookup/src",
     "prefix": "ss",
     "targets": {
@@ -17,7 +17,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/common/ui-lookup/jest.config.js",
+                "jestConfig": "libs/common/ui-lookup/jest.config.ts",
                 "tsConfig": "libs/common/ui-lookup/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/common/ui-lookup/src/test-setup.ts"

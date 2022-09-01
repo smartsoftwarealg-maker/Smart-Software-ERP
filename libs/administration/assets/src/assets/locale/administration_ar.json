@@ -73,5 +73,6 @@
     "ATTRIBUTE":  "صفة",
     "MODULE":      "وحدة",
     "LOOKUP_VALUES": "قيم البحث",
-    "CUSTOM_DATA":   "بيانات المستخدم"
+    "CUSTOM_DATA":   "بيانات المستخدم",
+    "ARCHIVE_DOCUMENTS": "وثائق الأرشيف"
 }

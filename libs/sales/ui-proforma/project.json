@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/sales/ui-proforma",
     "sourceRoot": "libs/sales/ui-proforma/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/sales/ui-proforma"],
             "options": {
-                "jestConfig": "libs/sales/ui-proforma/jest.config.js",
+                "jestConfig": "libs/sales/ui-proforma/jest.config.ts",
                 "passWithNoTests": true
             }
         },

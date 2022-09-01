@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/common/api-access-rights",
     "sourceRoot": "libs/common/api-access-rights/src",
     "prefix": "ss",
     "targets": {
@@ -8,7 +8,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/common/api-access-rights"],
             "options": {
-                "jestConfig": "libs/common/api-access-rights/jest.config.js",
+                "jestConfig": "libs/common/api-access-rights/jest.config.ts",
                 "passWithNoTests": true
             }
         },

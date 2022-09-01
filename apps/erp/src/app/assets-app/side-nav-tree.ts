@@ -1,11 +1,24 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ASSET_APPOINTMENT_DOC_URL, ABS_ASSET_BUILDS,
-    ABS_ASSET_CLASSES, ABS_ASSET_INVENTORY_URL, ABS_ASSET_LOCATIONS,
-    ABS_ASSET_OFFICES_URL, ABS_ASSET_RECEPTIONS_URL,
+    ABS_ACC_ACCOUNT_URL,
+    ABS_ACC_ASSET_ACCOUNT_URL,
+    ABS_ASSET_ACCOUNT_URL,
+    ABS_ASSET_APPOINTMENT_DOC_URL,
+    ABS_ASSET_BUILDS,
+    ABS_ASSET_CLASSES, ABS_ASSET_INJECTION_URL,
+    ABS_ASSET_INVENTORY_URL,
+    ABS_ASSET_LOCATIONS,
+    ABS_ASSET_OFFICES_URL,
+    ABS_ASSET_RECEPTIONS_URL, ABS_ASSET_SEARCH_URL,
     ABS_ASSETS_REPORTS_URL,
-    ABS_ASSETS_URL, ABS_BLOCKING_TYPES,
-    ABS_COST_TYPES, ABS_LOGISTICS_ACTIVITY, ABS_OPTIONS_URL, ABS_REVALUATION_TYPES, ASSETS_STOCK_AGENT_URL
+    ABS_ASSETS_URL,
+    ABS_BLOCKING_TYPES, ABS_COMMON_MARKS_URL,
+    ABS_COST_TYPES,
+    ABS_END_TYPES,
+    ABS_LOGISTICS_ACTIVITY,
+    ABS_OPTIONS_URL, ABS_PURCHASE_RECEPTION_URL,
+    ABS_REVALUATION_TYPES, ABS_STATUS_TYPES,
+    ASSETS_STOCK_AGENT_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -13,6 +26,12 @@ export const assetsNavTree: SideNavNode = {
     icon: 'fa-solid fa-car-bus',
     accessRights: 'ASSETS',
     children: [
+        {
+            name: 'ACC_ASSET_ACCOUNTS',
+            icon: 'fas fa-cogs',
+            route: ABS_ACC_ASSET_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
@@ -24,6 +43,18 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-check',
             route: ABS_COST_TYPES,
             accessRights: 'AssetCostType'
+        },
+        {
+            name: 'ASSET_END_TYPES',
+            icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',
+            route: ABS_END_TYPES,
+            accessRights: 'AssetCostType'
+        },
+        {
+            name: 'COMMON_FURNITURE_STATUS',
+            icon: 'fa-solid fa-battery-bolt',
+            route: ABS_STATUS_TYPES,
+            accessRights: 'FurnitureStatus'
         },
         {
             name: 'ASSET_BLOCKING_TYPES',
@@ -42,6 +73,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-tree',
             route: ABS_REVALUATION_TYPES,
             accessRights: 'Revaluation'
+        },
+        {
+            name: 'COMMON_MARKS',
+            icon: 'fa-solid fa-copyright',
+            route: ABS_COMMON_MARKS_URL,
+            accessRights: 'Mark'
         },
         {
             name: 'LOGISTICS_AGENTS',
@@ -68,12 +105,6 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Office'
         },
         {
-            name: 'ASSETS',
-            icon: 'fa-solid fa-car-building',
-            route: ABS_ASSETS_URL,
-            accessRights: 'Asset'
-        },
-        {
             name: 'ASSET_RECEPTIONS',
             icon: 'fa-solid fa-hands-holding-diamond',
             route: ABS_ASSET_RECEPTIONS_URL,
@@ -86,16 +117,34 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'ASSAppointment'
         },
         {
-            name: 'COMMON_OPTIONS',
-            icon: 'fa-solid fa-tools',
-            route: ABS_OPTIONS_URL,
-            accessRights: 'AssetOption'
+            name: 'ASSETS',
+            icon: 'fa-solid fa-car-building',
+            route: ABS_ASSETS_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'COMMON_SEARCH',
+            icon: 'fa-brands fa-searchengin',
+            route: ABS_ASSET_SEARCH_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'COMMON_EXCEL_INJECTION',
+            icon: 'fa-solid fa-syringe',
+            route: ABS_ASSET_INJECTION_URL,
+            accessRights: 'Asset'
         },
         {
             name: 'INVENTORY',
             icon: 'fa-solid fa-scanner-gun',
             route: ABS_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
+        },
+        {
+            name: 'COMMON_OPTIONS',
+            icon: 'fa-solid fa-tools',
+            route: ABS_OPTIONS_URL,
+            accessRights: 'AssetOption'
         },
         {
             name: 'COMMON_REPORTS',

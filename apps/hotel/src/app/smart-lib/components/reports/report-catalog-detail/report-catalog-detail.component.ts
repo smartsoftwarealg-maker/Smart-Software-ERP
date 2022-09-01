@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportCatalogService } from '../report-catalog/report-catalog.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { switchMap, tap } from 'rxjs/operators';
 import { ReportCatalog } from '../report-catalog';
 import { SnackBarService } from '../../../../common/snack-bar.service';
@@ -12,7 +12,7 @@ import { SnackBarService } from '../../../../common/snack-bar.service';
     styleUrls: ['./report-catalog-detail.component.css']
 })
 export class ReportCatalogDetailComponent implements OnInit {
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
 
     private id: number = null;
     private appName = 'hotel';
@@ -22,7 +22,7 @@ export class ReportCatalogDetailComponent implements OnInit {
         private route: Router,
         private snackBarSrv: SnackBarService,
         private parent: ActivatedRoute,
-        private fb: FormBuilder) {
+        private fb: UntypedFormBuilder) {
     }
 
     ngOnInit() {

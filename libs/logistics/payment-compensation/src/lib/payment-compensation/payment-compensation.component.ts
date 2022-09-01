@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
-import {FormControl} from "@angular/forms";
+import {UntypedFormControl} from "@angular/forms";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {map, Observable, of, switchMap} from "rxjs";
@@ -43,8 +43,8 @@ export class PaymentCompensationComponent implements OnInit {
     selectedPayment: FlatPaymentNode = null;
     selectedDebt: Debt = null;
     agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
-    agent = new FormControl();
-    date = new FormControl(new Date())
+    agent = new UntypedFormControl();
+    date = new UntypedFormControl(new Date())
 
     treeControl = new FlatTreeControl<FlatPaymentNode>(node => node.level, node => node.expandable);
 

@@ -25,8 +25,29 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="serial_no">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.serial_no}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="geolocation">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.geolocation}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="beneficiary">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.beneficiary}}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="acquisitionDate">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.acquisitionDate | date: 'dd/MM/yyyy'}}
                 </mat-cell>
@@ -54,14 +75,14 @@
             </ng-container>
 
             <ng-container matColumnDef="depreciationRate">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION_RATE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.depreciationRate | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="useful_life">
-                <mat-header-cell *matHeaderCellDef translate>ASSET_USEFUL_LIFE</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.useful_life | number: '1.2-2'}}
                 </mat-cell>

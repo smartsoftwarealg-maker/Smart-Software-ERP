@@ -1,6 +1,6 @@
 {
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
-    "root": "apps/hotel",
     "sourceRoot": "apps/hotel/src",
     "prefix": "ss",
     "targets": {
@@ -126,7 +126,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/apps/hotel"],
             "options": {
-                "jestConfig": "apps/hotel/jest.config.js",
+                "jestConfig": "apps/hotel/jest.config.ts",
                 "passWithNoTests": true
             }
         }

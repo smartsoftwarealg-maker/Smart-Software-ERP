@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Observable, of } from 'rxjs';
@@ -28,7 +28,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
@@ -46,7 +46,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
             );
     }
 
-    setupForm(a: EmployeeLanguage): FormGroup {
+    setupForm(a: EmployeeLanguage): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,

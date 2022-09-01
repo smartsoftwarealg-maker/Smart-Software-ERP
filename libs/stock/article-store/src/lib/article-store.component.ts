@@ -6,7 +6,7 @@ import {Article} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
 
 @Component({
@@ -20,11 +20,11 @@ export class ArticleStoreComponent implements OnInit {
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
     lots: { [id: number]: string; };
-    storeForm: FormGroup = new FormGroup({
-        storeId: new FormControl(),
-        referenceId: new FormControl(),
-        reference: new FormControl(),
-        id: new FormControl()
+    storeForm: UntypedFormGroup = new UntypedFormGroup({
+        storeId: new UntypedFormControl(),
+        referenceId: new UntypedFormControl(),
+        reference: new UntypedFormControl(),
+        id: new UntypedFormControl()
     });
 
     //

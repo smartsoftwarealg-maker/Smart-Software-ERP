@@ -1,0 +1,46 @@
+<div class="table-div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="project_code">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.project_code}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="start_date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.start_date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="finish_date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.finish_date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.qty | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

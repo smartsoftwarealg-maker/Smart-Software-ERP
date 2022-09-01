@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/purchases/ui-purchase-order",
     "sourceRoot": "libs/purchases/ui-purchase-order/src",
     "prefix": "ss",
     "targets": {
@@ -21,7 +21,7 @@
             "executor": "@nrwl/jest:jest",
             "outputs": ["coverage/libs/purchases/ui-purchase-order"],
             "options": {
-                "jestConfig": "libs/purchases/ui-purchase-order/jest.config.js",
+                "jestConfig": "libs/purchases/ui-purchase-order/jest.config.ts",
                 "passWithNoTests": true
             }
         }

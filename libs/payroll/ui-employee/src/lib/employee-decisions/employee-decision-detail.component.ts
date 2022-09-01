@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Observable, of } from 'rxjs';
@@ -26,7 +26,7 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public loginSrv: LoginService,
@@ -45,7 +45,7 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
             );
     }
 
-    setupForm(a: Decision): FormGroup {
+    setupForm(a: Decision): UntypedFormGroup {
         this.entity = a;
         if (!a.id) {
             a.centerId = this.loginSrv.appCtx.center;

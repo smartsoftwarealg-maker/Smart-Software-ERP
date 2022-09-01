@@ -1,10 +1,19 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent, HttpXhrBackend, HttpRequest } from '@angular/common/http';
-import { catchError, filter, last, map, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { LoginInfo } from './models';
-import { AppConfigService } from './app-config.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {
+    HttpClient,
+    HttpEvent,
+    HttpEventType,
+    HttpHeaders,
+    HttpParams,
+    HttpProgressEvent,
+    HttpXhrBackend,
+    HttpRequest
+} from '@angular/common/http';
+import {catchError, filter, last, map, tap} from 'rxjs/operators';
+import {of} from 'rxjs';
+import {LoginInfo} from './models';
+import {AppConfigService} from './app-config.service';
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -107,13 +116,13 @@ export class HttpService {
             .httpClient
             .get<T[]>(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({ sstimeout: (timeout + '') }),
+                    headers: HttpService.getHeaders({sstimeout: (timeout + '')}),
                     observe: 'response', params: httpParams
                 }
             ).pipe(map(ress => {
                 const cr = ress.headers.get('Content-Range');
                 const cnt = cr ? +cr.split('/')[1] : 0;
-                return { itemCount: cnt, body: ress.body };
+                return {itemCount: cnt, body: ress.body};
             }));
     }
 
@@ -125,7 +134,7 @@ export class HttpService {
             .httpClient
             .get(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
+                    headers: HttpService.getHeaders({sstimeout: timeout + ''}),
                     observe: 'response',
                     responseType: 'blob',
                     params: httpParams
@@ -149,14 +158,14 @@ export class HttpService {
             .httpClient
             .get<T>(fullURL,
                 {
-                    headers: HttpService.getHeaders({ sstimeout: timeout + '' }),
+                    headers: HttpService.getHeaders({sstimeout: timeout + ''}),
                     observe: 'response',
                     params: httpParams
                 }
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?: any | null, timeout: number = 0): Observable<any> {
+    public post(url: string, data?: any | null, timeout: number = 300_000): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error("HTTP SERVICE NOT READY");
         }
@@ -164,7 +173,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
+                {headers: HttpService.getHeaders({sstimeout: timeout + ''})});
     }
 
     public upload(url: string, data?: any | null): Observable<any> {
@@ -190,7 +199,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'text', headers: HttpService.getHeaders() });
+                {responseType: 'text', headers: HttpService.getHeaders()});
     }
 
     public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
@@ -201,7 +210,7 @@ export class HttpService {
             .httpClient
             .put(this.baseUrl + url,
                 data,
-                { headers: HttpService.getHeaders({ sstimeout: timeout + '' }) });
+                {headers: HttpService.getHeaders({sstimeout: timeout + ''})});
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -214,12 +223,12 @@ export class HttpService {
         return this
             .httpClient
             .delete(this.baseUrl + url,
-                { headers: HttpService.getHeaders() });
+                {headers: HttpService.getHeaders()});
     }
 
     public doLogin(url: string, data: any | null): Observable<LoginInfo> {
-        const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, { headers: httpHeaders });
+        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+        return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, {headers: httpHeaders});
     }
 
     // public doLogin2(url, data): Observable<{ jwt: string }> {
@@ -233,7 +242,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                { responseType: 'arraybuffer', headers: HttpService.getHeaders({ sstimeout: timeout + '' }) }
+                {responseType: 'arraybuffer', headers: HttpService.getHeaders({sstimeout: timeout + ''})}
             );
     }
 

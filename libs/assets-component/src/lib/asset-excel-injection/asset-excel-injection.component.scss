@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+fieldset {
+    width: 90%;
+    max-width: 700px;
+    margin: 8px auto;
+    padding: 0 16px;
+}
+
+.ctrl-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.ctrl-div {
+    margin-left: 20px;
+}
+
+button {
+    padding: 0 8px;
+    margin-left: 16px;
+}
+.icon {
+    margin-left: 8px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    flex-grow: 1;
+    max-width: 80%;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 96%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+mat-form-field  {
+    max-width: 150px;
+}

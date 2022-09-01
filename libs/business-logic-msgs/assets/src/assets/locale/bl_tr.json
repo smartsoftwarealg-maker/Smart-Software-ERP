@@ -26,5 +26,6 @@
     "SESSION_EXPIRED":                      "",
     "INVALID_CENTER":                       "",
     "KASPERSKY_EXC":                        "",
-    "NO_ACCOUNTING_SOURCE":                 ""
+    "NO_ACCOUNTING_SOURCE":                 "",
+    "MISSING_REQUIRED_PARAMS":      ""
 }

@@ -89,6 +89,7 @@
             "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
             "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
             "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
+            "@ss/common/app-archive": ["libs/common/app-archive/src/index.ts"],
             "@ss/common/ui-access-rights": [
                 "libs/common/ui-access-rights/src/index.ts"
             ],
@@ -100,6 +101,9 @@
             ],
             "@ss/common/ui-center-select": [
                 "libs/common/ui-center-select/src/index.ts"
+            ],
+            "@ss/common/ui-color-select": [
+                "libs/common/ui-color-select/src/index.ts"
             ],
             "@ss/common/ui-confirmation-dialog": [
                 "libs/common/ui-confirmation-dialog/src/index.ts"
@@ -376,6 +380,18 @@
             ],
             "@ss/sales/ui-transactionlines": [
                 "libs/sales/ui-transactionlines/src/index.ts"
+            ],
+            "@ss/scheduled-sales/api-scheduled-sales": [
+                "libs/scheduled-sales/api-scheduled-sales/src/index.ts"
+            ],
+            "@ss/scheduled-sales/article": [
+                "libs/scheduled-sales/article/src/index.ts"
+            ],
+            "@ss/scheduled-sales/projects": [
+                "libs/scheduled-sales/projects/src/index.ts"
+            ],
+            "@ss/scheduled-sales/sales-quota": [
+                "libs/scheduled-sales/sales-quota/src/index.ts"
             ],
             "@ss/stock/api-article": ["libs/stock/api-article/src/index.ts"],
             "@ss/stock/api-article-store": [

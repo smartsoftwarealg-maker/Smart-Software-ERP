@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/administration/api-bank",
     "sourceRoot": "libs/administration/api-bank/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/administration/api-bank/jest.config.js",
+                "jestConfig": "libs/administration/api-bank/jest.config.ts",
                 "tsConfig": "libs/administration/api-bank/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/administration/api-bank/src/test-setup.ts"

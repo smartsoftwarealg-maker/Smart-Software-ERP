@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { CostCenter } from './cost-center';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,10 +10,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     styleUrls: ['./cost-center-detail.component.scss']
 })
 export class CostCenterDetailComponent implements OnInit {
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
 
     constructor(
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         private dialogRef: MatDialogRef<CostCenterDetailComponent>,
         private confirmationSrv: ConfirmationDialogService,
         @Inject(MAT_DIALOG_DATA) public data: any) {

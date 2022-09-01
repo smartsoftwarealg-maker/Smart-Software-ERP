@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Asset} from '../assets-api';
 import {AssetsService} from '../assets.service';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
 
@@ -30,7 +30,7 @@ export class AssetSearchDialogComponent implements OnInit {
         outof_service: false
     };
     displayedColumns = ['reference', 'description'];
-    searchText = new FormControl();
+    searchText = new UntypedFormControl();
 
     constructor(public dialogRef: MatDialogRef<AssetSearchDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Asset,

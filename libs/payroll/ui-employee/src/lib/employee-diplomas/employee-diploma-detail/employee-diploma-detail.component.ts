@@ -4,7 +4,7 @@ import {Career, EmployeeCareerService, SubjectService} from '@ss/payroll/api-emp
 import {EmployeeDiploma} from '../employee-diploma-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DiplomaService, EducationLevelService, LookupsService} from '@ss/common/api-lookup';
@@ -31,7 +31,7 @@ export class EmployeeDiplomaDetailComponent extends BaseEntityDetailComponent<Em
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -53,7 +53,7 @@ export class EmployeeDiplomaDetailComponent extends BaseEntityDetailComponent<Em
             );
     }
 
-    setupForm(a: EmployeeDiploma): FormGroup {
+    setupForm(a: EmployeeDiploma): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,

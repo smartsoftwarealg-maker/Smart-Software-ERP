@@ -4,7 +4,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService, ToolbarButton, KeepOnToolbar} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
@@ -50,7 +50,7 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,

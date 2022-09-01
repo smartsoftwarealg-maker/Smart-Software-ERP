@@ -202,5 +202,15 @@
     "TREASURY":           "",
     "CASH":               "",
     "AMOUNT":             "",
-    "NO_":                      ""
+    "NO_":                      "",
+    "COUNT":               "",
+    "FURNITURE_STATUS":    "",
+    "QTY":                 "Miktar",
+    "EXCEL_INJECTION":     "",
+    "RATE":                "Puanla",
+    "RECEPTION":           "",
+    "UPLOAD":              "",
+    "COLOR":               "",
+    "CREATED_BY":          "",
+    "MODIFIED_BY":         ""
 }

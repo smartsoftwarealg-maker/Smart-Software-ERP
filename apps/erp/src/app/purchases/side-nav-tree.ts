@@ -33,7 +33,7 @@ export const purchasesNavTree: SideNavNode = {
             accessRights: 'POrder'
         },
         {
-            name: 'PURCHASES_RECEPTION',
+            name: 'COMMON_RECEPTION',
             icon: 'fas fa-cart-arrow-down',
             route: ABS_PURCHASE_RECEPTION_URL,
             accessRights: 'Reception'

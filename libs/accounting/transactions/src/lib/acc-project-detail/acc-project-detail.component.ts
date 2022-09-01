@@ -4,7 +4,7 @@ import {Lookup, Mark, MarkService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {AccProjectService} from '@ss/accounting/accounting-api';
 
 @Component({
@@ -20,11 +20,11 @@ export class AccProjectDetailComponent extends BaseEntityDetailComponent<Lookup>
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
-        public override formBuilder: FormBuilder) {
+        public override formBuilder: UntypedFormBuilder) {
         super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_PROJECTS');
     }
 
-    public setupForm(e: Mark): FormGroup {
+    public setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

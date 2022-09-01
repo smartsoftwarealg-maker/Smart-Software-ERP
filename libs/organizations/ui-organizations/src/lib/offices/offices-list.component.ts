@@ -43,5 +43,4 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         this.shellSrv.setGoBackPath('..', this.route);
         super.ngOnInit();
     }
-
 }

@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/logistics/assets",
     "sourceRoot": "libs/logistics/assets/src",
     "prefix": "ss",
     "targets": {

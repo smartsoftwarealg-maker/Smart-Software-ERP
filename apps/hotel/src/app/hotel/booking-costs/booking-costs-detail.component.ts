@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '../../common/confirmation-dialog/confirmation-dialog.service';
 import { ChargingCost, RoomType } from '../hotel-api';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,11 +10,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     styleUrls: ['./booking-costs-detail.component.scss']
 })
 export class BookingCostDetailComponent implements OnInit {
-    public form: FormGroup = null;
+    public form: UntypedFormGroup = null;
     public roomTypes: RoomType[];
 
     constructor(
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         private dialogRef: MatDialogRef<BookingCostDetailComponent>,
         private confirmationSrv: ConfirmationDialogService,
         @Inject(MAT_DIALOG_DATA) public data: any) {

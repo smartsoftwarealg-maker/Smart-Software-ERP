@@ -40,7 +40,7 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<div class="doc-info">
+<div class="doc-info" *ngIf="!isSales">
     <ss-doc-info
         *ngIf="selected"
         [displayedGroups]="['agent']"

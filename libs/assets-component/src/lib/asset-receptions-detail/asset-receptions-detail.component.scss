@@ -1,0 +1,28 @@
+form {
+    width: 90%;
+    max-width: 600px;
+    margin: 16px auto;
+}
+
+.content {
+    width: 90%;
+    height: calc(100% - 300px);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.title {
+    width: 96%;
+    max-width: 500px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border-top: white solid 1px;
+}
+
+fieldset {
+    width: 44%;
+    margin: 8px 8px 0;
+}
+

@@ -11,26 +11,22 @@ import {
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
-import {AgentArchiveDetailComponent, AgentDetailComponent, AgentListComponent} from '@ss/logistics/ui-agent';
+import {
+    AppArchiveDetailComponent,
+    AgentDetailComponent,
+    AgentListComponent,
+    AppArchiveListComponent
+} from '@ss/logistics/ui-agent';
 import {
     ActivityDetailComponent,
     ActivityListComponent,
     AgentTypeDetailComponent,
     AgentTypeListComponent,
-    ClassDetailComponent,
-    ClassListComponent,
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
     CurrencyDetailComponent,
     CurrencyListComponent,
-    MarkDetailComponent,
-    MarkListComponent, SalesCategoryDetailComponent, SalesCategoryListComponent,
-    StoreNameDetailComponent,
-    StoreNameListComponent,
-    SubclassDetailComponent,
-    SubclassListComponent,
-    UnitDetailComponent,
-    UnitListComponent,
+    SalesCategoryDetailComponent, SalesCategoryListComponent,
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';
@@ -50,7 +46,8 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: {sales: true},
             },
             {
                 path: ':id',
@@ -61,10 +58,16 @@ export const mainRoutes: Routes = [
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
-                    },
-                    {
-                        path: 'archive',
-                        component: AgentArchiveDetailComponent
+                        children: [
+                            {path: '', component: AppArchiveListComponent},
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },

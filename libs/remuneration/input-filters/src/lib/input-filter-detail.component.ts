@@ -4,7 +4,7 @@ import {InputFilter} from './input-filter-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {InputFiltersService} from './input-filters.service';
@@ -26,13 +26,13 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
+        public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_INPUT_FILTERS');
     }
 
-    public setupForm(e: InputFilter): FormGroup {
+    public setupForm(e: InputFilter): UntypedFormGroup {
         this.selection = e.selection;
         return this.formBuilder.group({
             id: [e.id || 0],

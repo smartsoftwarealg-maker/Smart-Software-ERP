@@ -5,7 +5,7 @@ import {DashboardService} from '../dashboard.service';
 import {AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 
@@ -22,13 +22,13 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
                 public shellSrv: ShellService,
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
-                public formBuilder: FormBuilder,
+                public formBuilder: UntypedFormBuilder,
                 public confirmationSrv: ConfirmationDialogService,
                 public lookupsSrv: LookupsService) {
         super(dashboardSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DASHBOARD')
     }
 
-    setupForm(a: Dashboard): FormGroup {
+    setupForm(a: Dashboard): UntypedFormGroup {
         return this.formBuilder.group({
             id: [a.id],
             description: [a.description],

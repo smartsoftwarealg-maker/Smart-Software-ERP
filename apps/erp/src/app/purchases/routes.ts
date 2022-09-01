@@ -20,7 +20,6 @@ import {
 } from '@ss/purchases/ui-quotation';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
-import {AccountingPeriodGuard} from '../../../../../libs/accounting/accounting-api/src';
 
 export const routes: Routes = [
     {

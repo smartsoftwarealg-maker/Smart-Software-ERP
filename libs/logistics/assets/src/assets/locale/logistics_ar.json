@@ -118,7 +118,6 @@
     "REMOVE_FROM_CART": "إزالة الكل",
     "REMOVE_ONE_FROM_CART": "إزالة واحد",
     "AMOUNT_EXCEEDED": "تجاوز المبلغ المسموح به",
-    "QTY": "الكمية",
     "PRICE": "السعر",
     "TOTAL": "المجموع",
     "PROFORMA": "الفاتورة الأولية",
@@ -138,5 +137,9 @@
     "INVOICE_NUMBER": "رقم الفاتورة",
     "PAYMENT_ORDER": "أوامر الدفع",
     "ORDER_NO":      "رقم الطلب",
-    "PPRICE":        "سعر المخزون"
+    "PPRICE":        "سعر المخزون",
+    "CONTRACT_NUMBER": "رقم التعاقد",
+    "CONTRACT_DATE":   "تاريخ العقد",
+    "ODS":             "أمر الانطلاق",
+    "DISCOUNTABLE":    "قابل للخصم"
 }

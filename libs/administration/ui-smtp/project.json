@@ -1,6 +1,6 @@
 {
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/administration/ui-smtp",
     "sourceRoot": "libs/administration/ui-smtp/src",
     "prefix": "ss",
     "targets": {
@@ -20,7 +20,7 @@
         "test": {
             "executor": "@nrwl/jest:jest",
             "options": {
-                "jestConfig": "libs/administration/ui-smtp/jest.config.js",
+                "jestConfig": "libs/administration/ui-smtp/jest.config.ts",
                 "tsConfig": "libs/administration/ui-smtp/tsconfig.spec.json",
                 "passWithNoTests": true,
                 "setupFile": "libs/administration/ui-smtp/src/test-setup.ts"

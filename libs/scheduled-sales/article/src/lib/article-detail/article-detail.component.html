@@ -1,0 +1,90 @@
+<mat-card>
+    <mat-card-content>
+        <div class="form_container">
+            <form *ngIf="form" novalidate [formGroup]="form">
+
+                <div style="height: 16px"></div>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text" required>
+                    <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description2" type="text" required>
+                    <mat-error *ngIf="form.controls['description2'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_CLASS</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="classLookup"
+                                      formControlName="pClass">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="typeLookup"
+                                      formControlName="aType">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price1" type="number">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                    <mat-select formControlName="vat">
+                        <mat-option [value]="null"></mat-option>
+                        <mat-option *ngFor="let v of vats" [value]="v.id">
+                            {{v.value == null ? '0.00' : v.value.toFixed(2)}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                    <input matInput formControlName="discount" type="number" [max]="50" [min]="0" step="1">
+                    <mat-error *ngIf="form.controls['discount'].invalid" translate>BL_INVALID_DATA</mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+                    <input matInput formControlName="accountNo" type="number">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_COLOR</mat-label>
+                    <input matInput
+                           [colorPicker]="color"
+                           (colorPickerChange)="select($event)"
+                           [style.background]="color"
+                           [cpOKButton]="true"
+                           [cpOKButtonText]="'COMMON_SELECT' | translate"
+                           [cpCancelButtonText]="'COMMON_CANCEL' | translate"
+                           [cpCancelButton]="true"
+                           readonly/>
+                </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                </div>
+
+                <div class="default-50 sm-100">
+                    <mat-checkbox formControlName="discountable" translate>LOGISTICS_DISCOUNTABLE</mat-checkbox>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>
+

@@ -114,12 +114,12 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
 
-        const rights = !node || !node.accessRights? {
+        const rights = !node?.customerRights && !node?.accessRights? {
             read: true,
             write: true,
             edit: true,
             delete: true
-        } as Right : this.shellSrv.getRights(node.accessRights);
+        } as Right : this.shellSrv.getRights(node);
 
         // this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;
@@ -187,7 +187,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             );
     }
 
-    // this is created so we can override the service call whenever we want
+    // this is created, so we can override the service call whenever we want
     public getPage() {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy);
     }
@@ -295,7 +295,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     public excel() {
         this.entitySrv
-            .excel()
+            .excel(this.filter)
             .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
     }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {BankService} from '@ss/administration/api-bank';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSelectionList} from '@angular/material/list';
@@ -22,7 +22,7 @@ interface Lookup {
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
-    form: FormGroup = null;
+    form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
     bankList: Lookup[] = [];
     receivingBanks: Lookup[] = [];
@@ -32,7 +32,7 @@ export class EdoComponent implements OnInit {
     constructor(private shellSrv: ShellService,
                 private edoSrv: EdoService,
                 private route: ActivatedRoute,
-                private formBuilder: FormBuilder,
+                private formBuilder: UntypedFormBuilder,
                 private monthSrv: PayrollMonthService,
                 private bankSrv: BankService) {
 

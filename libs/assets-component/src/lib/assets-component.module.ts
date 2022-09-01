@@ -34,11 +34,20 @@ import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/a
 import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-detail/asset-appointment-doc-detail.component';
 import { AssetInventoryDetailComponent } from './asset-inventory-detail/asset-inventory-detail.component';
 import { AssetInventoryListComponent } from './asset-inventory-list/asset-inventory-list.component';
-import {NgxScannerQrcodeModule} from 'ngx-scanner-qrcode';
 import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset-blocking-type-list.component';
 import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
 import { AssetBuildingListComponent } from './asset-building-list/asset-building-list.component';
 import { AssetBuildingDetailComponent } from './asset-building-detail/asset-building-detail.component';
+import {AppArchiveModule} from '@ss/common/app-archive';
+import { AssetReceptionsDetailComponent } from './asset-receptions-detail/asset-receptions-detail.component';
+import { OfficeSearchComponent } from './office-search/office-search.component';
+import { EndTypesListComponent } from './end-types-list/end-types-list.component';
+import { EndTypesDetailComponent } from './end-types-detail/end-types-detail.component';
+import { SearchListComponent } from './search-list/search-list.component';
+import { AssetExcelInjectionComponent } from './asset-excel-injection/asset-excel-injection.component';
+import { DepreciationRateListComponent } from './depreciation-rate-list/depreciation-rate-list.component';
+import { DepreciationRateDetailComponent } from './depreciation-rate-detail/depreciation-rate-detail.component';
+import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.component';
 
 @NgModule({
     imports: [
@@ -52,7 +61,7 @@ import { AssetBuildingDetailComponent } from './asset-building-detail/asset-buil
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        NgxScannerQrcodeModule,
+        AppArchiveModule
     ],
     declarations: [
         AssetsDetailComponent,
@@ -83,7 +92,16 @@ import { AssetBuildingDetailComponent } from './asset-building-detail/asset-buil
         AssetBlockingTypeListComponent,
         AssetBlockingTypeDetailComponent,
         AssetBuildingListComponent,
-        AssetBuildingDetailComponent
+        AssetBuildingDetailComponent,
+        AssetReceptionsDetailComponent,
+        OfficeSearchComponent,
+        EndTypesListComponent,
+        EndTypesDetailComponent,
+        SearchListComponent,
+        AssetExcelInjectionComponent,
+        DepreciationRateListComponent,
+        DepreciationRateDetailComponent,
+        DuplicateDialogComponent,
     ],
 })
 export class AssetsComponentModule {
