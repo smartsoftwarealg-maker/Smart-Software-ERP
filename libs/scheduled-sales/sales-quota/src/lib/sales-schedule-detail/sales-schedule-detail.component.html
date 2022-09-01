@@ -1,3 +1,10 @@
+<div>
+    <div>COMMON_BALANCE: {{ balance }} </div>
+    <div>COMMON_QTY: {{ remainingQty }}</div>
+    <div>COMMON_TOTAL: {{ remainingQty * price }}</div>
+    <div>COMMON_BALANCE: {{ balance - remainingQty * price }}</div>
+</div>
+
 <form *ngIf="form !== null" novalidate [formGroup]="form">
     <mat-form-field class="default-50 sm-100" autofocus>
         <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
@@ -10,25 +17,41 @@
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_FROM</mat-label>
-        <ss-date-picker formControlName="salesDate" [matDatepickerFilter]="dateFilter"></ss-date-picker>
+        <ss-date-picker formControlName="salesDate"
+                        (ngModelChange)="onDate($event)"
+                        [matDatepickerFilter]="dateFilter">
+        </ss-date-picker>
     </mat-form-field>
 
-    <mat-form-field id="agentType" class="default-50 sm-100">
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_PRODUCT</mat-label>
-        <mat-select formControlName="productRef" required>
+        <mat-select formControlName="productRef" required (selectionChange)="onArticle($event)">
             <mat-option *ngFor="let v of articles" [value]="v.reference">
-                {{v ? v.description : ''}}
+                {{v ? v.description2 : ''}}
             </mat-option>
         </mat-select>
         <mat-error
-            *ngIf="form.controls['productRef'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            *ngIf="form.controls['productRef'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_QTY</mat-label>
+        <mat-select formControlName="qty" required>
+            <mat-option *ngFor="let v of quantities" [value]="v">
+                {{ v }}
+            </mat-option>
+        </mat-select>
+        <mat-error
+            *ngIf="form.controls['qty'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
     </mat-form-field>
 
     <!--    <mat-form-field class="default-50 sm-100">-->
-<!--        <mat-selection-list ma color="primary" multiple="false" formControlName="productRef">-->
-<!--            <mat-list-option *ngFor="let u of articles"-->
-<!--                             [value]="u.reference"> {{ u.description }}-->
-<!--            </mat-list-option>-->
-<!--        </mat-selection-list>-->
-<!--    </mat-form-field>-->
+    <!--        <mat-selection-list ma color="primary" multiple="false" formControlName="productRef">-->
+    <!--            <mat-list-option *ngFor="let u of articles"-->
+    <!--                             [value]="u.reference"> {{ u.description }}-->
+    <!--            </mat-list-option>-->
+    <!--        </mat-selection-list>-->
+    <!--    </mat-form-field>-->
 </form>

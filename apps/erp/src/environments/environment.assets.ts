@@ -49,10 +49,10 @@ export const appRoutes: Routes =  [
         component: MainPageComponent,
         canActivate: [CanActivateService]
     },
-    {
-        path: ACCOUNTING_APP_URL,
-        loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
-    },
+    // {
+    //     path: ACCOUNTING_APP_URL,
+    //     loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    // },
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)

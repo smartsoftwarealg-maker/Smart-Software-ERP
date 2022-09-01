@@ -1,6 +1,19 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import {
+    Component,
+    DoCheck,
+    ElementRef, EventEmitter,
+    HostBinding,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    Self,
+    ViewChild
+} from '@angular/core';
 import {
     ControlValueAccessor,
     NgControl
@@ -58,15 +71,22 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     @Input()
     public matDatepickerFilter: (d: Date | null) => boolean = (d) => true;
 
+    @Output()
+    dateChange = new EventEmitter();
+
     get value() {
         return this.toOutputFormat(this.date);
     }
 
     @Input()
     set value(obj: Date) {
-        this.writeValue(obj);
+        console.log(obj, this.date)
         try {
-            this.onChange(this.date);
+            if (obj !== this.date) {
+                this.writeValue(obj);
+                this.onChange(this.date);
+                this.dateChange.emit(this.date);
+            }
         } catch {
             // ignored
         }
