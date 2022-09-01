@@ -40,6 +40,7 @@ export const langAssets = [
     ['assets/locale/purchases_', 'PURCHASES_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/assets_', 'ASSET_'],
+    ['assets/locale/accounting_', 'ACC_'],
 ];
 
 export const appRoutes: Routes =  [
@@ -47,6 +48,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: ACCOUNTING_APP_URL,
+        loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,
