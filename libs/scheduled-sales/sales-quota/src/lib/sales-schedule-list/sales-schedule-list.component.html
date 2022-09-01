@@ -1,0 +1,80 @@
+<div class="search-div">
+    <mat-form-field class="default-50 sm-100" autofocus>
+        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="customerLookup"
+                          [formControl]="agentFC">
+        </ss-auto-complete>
+    </mat-form-field>
+</div>
+<div class="table-div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="serialNumber">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.serialNumber}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="salesDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.salesDate | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="productRef">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.productRef}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="productDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.productDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.qty | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="discount">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DISCOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.discount | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.price | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="is_desktop">
+            <mat-header-cell *matHeaderCellDef translate>SCH_IS_DESKTOP</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.is_desktop"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

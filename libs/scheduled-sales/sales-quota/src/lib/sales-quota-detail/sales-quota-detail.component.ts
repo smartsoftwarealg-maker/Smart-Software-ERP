@@ -39,16 +39,15 @@ export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> 
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
-            salesDate: [b.salesDate || new Date(0), Validators.required],
-            description: [b.description, Validators.required],
+            salesDate: [b.salesDate || new Date(), Validators.required],
             agentId: [b.agentId, Validators.required],
             productId: [b.productId, Validators.required],
-            exworks: [b.exworks, Validators.required],
+            exworks: [b.exworks || true, Validators.required],
             qty: [b.qty, Validators.required],
             discountType: [b.discountType],
-            discount: [b.discount, Validators.required],
-            discount_2: [b.discount_2, Validators.required],
-            discount_3: [b.discount_3, Validators.required],
+            discount: [b.discount || 0, Validators.required],
+            discount_2: [b.discount_2 || 0, Validators.required],
+            discount_3: [b.discount_3 || 0, Validators.required],
         });
     }
 

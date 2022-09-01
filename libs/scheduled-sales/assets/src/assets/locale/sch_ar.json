@@ -6,5 +6,7 @@
     "REPRESENTATIVE": "وكيل",
     "DISCOUNTS":      "خصومات",
     "QUOTAS":         "الحصص",
-    "DISCOUNT_TYPE":  "نوع الخصم"
+    "DISCOUNT_TYPE":  "نوع الخصم",
+    "SCHEDULES":      "مواعيد",
+    "IS_DESKTOP":     "تقليدي"
 }

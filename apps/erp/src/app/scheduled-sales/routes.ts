@@ -7,11 +7,15 @@ import {
     SS_ARTICLE_URL,
     SS_DISCOUNTS_URL,
     SS_PROJECTS_URL,
-    SS_QUOTA_URL
+    SS_QUOTA_URL, SS_SCHEDULE_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
-import {SalesQuotaDetailComponent, SalesQuotaListComponent} from '@ss/scheduled-sales/sales-quota';
+import {
+    SalesQuotaDetailComponent,
+    SalesQuotaListComponent, SalesScheduleDetailComponent,
+    SalesScheduleListComponent
+} from '@ss/scheduled-sales/sales-quota';
 import {
     ActivityDetailComponent,
     ActivityListComponent,
@@ -31,6 +35,24 @@ export const schedSalesRoutes: Routes = [
             {
                 path: ':id',
                 component: DiscountDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: SS_SCHEDULE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesScheduleListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SalesScheduleDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
