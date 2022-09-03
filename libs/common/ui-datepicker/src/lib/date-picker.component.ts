@@ -218,18 +218,18 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         }
         try {
             this.onChange(value);
-            this.dateChange.emit(value);
         } catch {
             // ignored
         }
         this.stateChanges.next();
     }
 
+
     onDateChanged(d: Date) {
+        this.dateChange.emit(d);
         this.writeValue(d);
         try {
             this.onChange(d);
-            this.dateChange.emit(d);
         } catch {
             // ignored
         }
@@ -265,7 +265,6 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         if (obj !== outForm) {
             try {
                 this.onChange(outForm);
-                this.dateChange.emit(outForm);
             } catch {
                 // ignored
             }

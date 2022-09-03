@@ -26,7 +26,7 @@
     <mat-form-field class="default-25 sm-50">
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker formControlName="salesDate"
-                        (ngModelChange)="onDate($event)"
+                        (dateChange)="onDate(t($event))"
                         [matDatepickerFilter]="dateFilter">
         </ss-date-picker>
     </mat-form-field>

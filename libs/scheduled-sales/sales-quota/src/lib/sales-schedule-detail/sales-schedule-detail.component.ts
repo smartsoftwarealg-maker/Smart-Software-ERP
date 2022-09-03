@@ -87,7 +87,6 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
                       tap(res => this.remainingQty = res))
                 .subscribe(_ => {
                     this.onDate(this.t(e.salesDate));
-                    console.log(this.articles)
                     this.price = this.articles.find(r => r.reference === e.productRef)?.price1 || 0;
                 });
         }
