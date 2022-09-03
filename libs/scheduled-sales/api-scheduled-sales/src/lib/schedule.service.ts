@@ -59,4 +59,10 @@ export class ScheduleService extends BaseEntityService<Schedule>{
             .get<{ qty: number }>('/ssales/remaining-qty', params)
             .pipe(map(res => res.qty || 0));
     }
+
+    schedule(schedule: Schedule): Observable<any> {
+        return schedule.id?
+            this.httpSrv.put('/ssales/schedule', schedule) :
+            this.httpSrv.post('/ssales/schedule', schedule) ;
+    }
 }

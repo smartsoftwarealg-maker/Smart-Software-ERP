@@ -139,5 +139,8 @@
     "CONTRACT_NUMBER": "Numéro de contrat",
     "CONTRACT_DATE":   "Date de contrat",
     "ODS":             "ODS",
-    "DISCOUNTABLE":    "Remisable"
+    "DISCOUNTABLE":    "Remisable",
+    "DRIVER":          "Discountable",
+    "DRIVER_LICENSE":  "Chauffeur",
+    "PLATE_NUMBER":    "Permis de conduire"
 }

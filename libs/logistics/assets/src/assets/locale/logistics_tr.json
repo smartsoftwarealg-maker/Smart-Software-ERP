@@ -136,5 +136,8 @@
     "PAYMENT_ORDERS": "",
     "ORDER_NO":      "",
     "PPRICE":        "",
-    "DISCOUNTABLE":    ""
+    "DISCOUNTABLE":    "",
+    "DRIVER":          "",
+    "DRIVER_LICENSE":  "",
+    "PLATE_NUMBER":    ""
 }

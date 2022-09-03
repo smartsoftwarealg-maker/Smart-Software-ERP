@@ -65,14 +65,14 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
+    @Output()
+    dateChange = new EventEmitter<Date>();
+
     @Input()
     public time: boolean = false;
 
     @Input()
     public matDatepickerFilter: (d: Date | null) => boolean = (d) => true;
-
-    @Output()
-    dateChange = new EventEmitter();
 
     get value() {
         return this.toOutputFormat(this.date);
@@ -80,16 +80,12 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     @Input()
     set value(obj: Date) {
-        console.log(obj, this.date)
-        try {
-            if (obj !== this.date) {
-                this.writeValue(obj);
-                this.onChange(this.date);
-                this.dateChange.emit(this.date);
-            }
-        } catch {
-            // ignored
-        }
+        this.writeValue(obj);
+        // try {
+        //     this.onChange(this.date);
+        // } catch {
+        //     // ignored
+        // }
     }
 
     @Input()
@@ -228,7 +224,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.stateChanges.next();
     }
 
+
     onDateChanged(d: Date) {
+        this.dateChange.emit(d);
         this.writeValue(d);
         try {
             this.onChange(d);
@@ -248,6 +246,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     // value accessor
     writeValue(obj: any): void {
+        if (this.date == obj) {
+            return;
+        }
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {
