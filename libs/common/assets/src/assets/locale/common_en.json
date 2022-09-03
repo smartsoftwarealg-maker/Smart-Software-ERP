@@ -227,5 +227,8 @@
     "UPLOAD":              "Upload",
     "COLOR":               "Color",
     "CREATED_BY":          "Created by",
-    "MODIFIED_BY":         "Last modified by"
+    "MODIFIED_BY":         "Last modified by",
+    "OLD_BALANCE":         "Old balance",
+    "BALANCE":             "Balance",
+    "PRODUCT":             "Product"
 }

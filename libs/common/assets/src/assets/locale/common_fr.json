@@ -228,5 +228,8 @@
     "UPLOAD":              "Charger",
     "COLOR":               "Colour",
     "CREATED_BY":          "Créé par",
-    "MODIFIED_BY":         "Dernière modification par"
+    "MODIFIED_BY":         "Dernière modification par",
+    "OLD_BALANCE":         "Ancien solde",
+    "BALANCE":             "Solde",
+    "PRODUCT":             "Produit"
 }

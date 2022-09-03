@@ -29,8 +29,10 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
     public articles: Article[] = [];
     public quantities: number[] = [];
     public balance = 0;
+    public qty = 0;
     public remainingQty = 0;
-    public price = 1000;
+    public price = 0.0;
+    public amount = 0.0;
 
     constructor(
         public override entitySrv: ScheduleService,
@@ -43,53 +45,110 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
         private loginSrv: LoginService,
         private customerSrv: CustomerService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_RESERVATION');
-        this.customerLookup.onObjectSelected = a => this.onCustomer(a);
+        this.customerLookup.onObjectSelected = a => this.onCustomer(a?.id || 0);
     }
 
     private t(d: Date) {
-        return d? this.datePipe.transform(d, 'yyyyMMdd') : '';
+        return d? this.datePipe.transform(d, 'yyyy-MM-dd') : '';
     }
+
     public setupForm(b: Schedule) {
-        this.userLogin = !this.loginSrv.appCtx.agentId && this.loginSrv.appCtx.id > 0;
         return this.formBuilder.group({
             id: [b.id],
             parentId: [b.parentId || this.loginSrv.appCtx.agentId, Validators.required],
             salesDate: [b.salesDate, Validators.required],
             productRef: [b.productRef, Validators.required],
             qty: [b.qty, Validators.required],
+            plateNumber: [b.plateNumber, Validators.required],
+            idNumber: [b.idNumber, Validators.required],
+            transporter: [b.transporter, Validators.required],
         });
     }
 
-    private onCustomer(a: Agent) {
+    override finishLoading(e: Schedule) {
+        super.finishLoading(e);
+        this.userLogin = !this.loginSrv.appCtx.agentId && this.loginSrv.appCtx.id > 0;
+        if (e.id) {
+            this.entitySrv.setParentId(e.parentId);
+            const agentId = e.parentId;
+            const schedId = e.id;
+            const date = e.salesDate;
+            const reference = e.productRef;
+            this.qty = e.qty;
+            this.price = e.price;
+            this.entitySrv
+                .getQuotas(e.parentId)
+                .pipe(tap(res => this.quotas = res),
+                      switchMap(_ => this.entitySrv.getBalance(e.parentId, e.id)),
+                      tap(res => this.balance = res),
+                      switchMap(_ => this.entitySrv.getQuantities(e.productRef)),
+                      tap(res => this.quantities = res.map(e => e.qty)),
+                      switchMap(_ => this.entitySrv.getRemainingQty(agentId, schedId, reference, date)),
+                      tap(res => this.remainingQty = res))
+                .subscribe(_ => {
+                    this.onDate(this.t(e.salesDate));
+                    console.log(this.articles)
+                    this.price = this.articles.find(r => r.reference === e.productRef)?.price1 || 0;
+                });
+        }
+    }
+
+    private onCustomer(id: number) {
+        this.entitySrv.setParentId(id);
         this.entitySrv
-            .getQuotas(a?.id || 0)
+            .getQuotas(id)
             .pipe(tap(res => this.quotas = res),
-                switchMap(_ => this.entitySrv.getBalance(a?.id || 0, this.form.get('id').value)))
+                  switchMap(_ => this.entitySrv.getBalance(id, this.form.get('id').value)))
             .subscribe(res => this.balance = res);
     }
 
-    onDate(date: any) {
-        console.log(date);
-
+    onDate(date: string) {
         this.articles = [
             ...new Set(this.quotas
-                .filter(q => q.salesDate === date)
-                .map(q => <Article>{
+                .filter(q => this.t(q.salesDate) === date)
+                .map(q => <Article> {
                     id: q.productId,
                     reference: q.reference,
                     description2: q.description,
                     price1: q.price
                 }))];
-
     }
-    onArticle(a: MatSelectChange) {
+
+    private onArticle(a: MatSelectChange) {
+        this.onArticleRef(a.value);
+    }
+
+    private onArticleRef(reference: string) {
         const agentId = this.form.get('parentId').value;
         const schedId = this.form.get('id').value;
         const date    = this.form.get('salesDate').value;
+        this.price = this.articles.find(r => r.reference === reference)?.price1 || 0;
         this.entitySrv
-            .getQuantities(a.value)
+            .getQuantities(reference)
             .pipe(tap(res => this.quantities = res.map(e => e.qty)),
-                switchMap(_ => this.entitySrv.getRemainingQty(agentId, schedId, a.value, date)))
+                  switchMap(_ => this.entitySrv.getRemainingQty(agentId, schedId, reference, date)))
             .subscribe(res => this.remainingQty = res);
+    }
+
+    onQty(e: MatSelectChange) {
+        this.qty = e.value;
+    }
+
+    override readForm(): Schedule {
+        const raw: Schedule = this.form.getRawValue();
+        const sched = super.readForm();
+        sched.centerId = this.loginSrv.appCtx.id;
+        sched.isDesktop = false;
+        sched.parentId = raw.parentId;
+        sched.serialNumber = 0;
+        sched.userId = this.loginSrv.appCtx.id;
+        sched.price = this.price;
+        sched.canceled = false;
+        sched.vat = this.articles.find(a => a.reference === sched.productRef)?.vat || 0.0;
+        sched.discount = this.quotas.find(q => this.t(q.salesDate) === this.t(sched.salesDate) && q.reference === sched.productRef)?.discount || 0;
+        sched.isPrinted = false;
+        sched.is_refund = false;
+        sched.brutWeight = 0;
+        return sched;
     }
 }

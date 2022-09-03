@@ -148,7 +148,7 @@ export interface Schedule {
     iDestination?: number;
     timeOut?: Date;
     timeIn?: Date;
-    is_desktop: boolean;
+    isDesktop: boolean;
     customerCode?: string;
     customerName?: string;
     productDescription?: string;

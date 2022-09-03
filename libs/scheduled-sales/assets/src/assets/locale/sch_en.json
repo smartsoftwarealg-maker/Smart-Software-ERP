@@ -8,5 +8,8 @@
     "QUOTAS":         "Quotas",
     "DISCOUNT_TYPE":  "Discount type",
     "SCHEDULES":      "Schedules",
-    "IS_DESKTOP":     "Desktop"
+    "IS_DESKTOP":     "Desktop",
+    "REMAINING_QTY":  "Remaining quantity",
+    "RESERVATION":    "Reservation",
+    "SCHEDULED_QTY":  "Scheduled qty"
 }
