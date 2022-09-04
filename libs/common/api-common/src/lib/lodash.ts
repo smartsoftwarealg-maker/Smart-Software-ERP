@@ -1,4 +1,4 @@
-import Stack from './Stack.js'
+import Stack from './Stack'
 
 function isObject(value) {
     const type = typeof value
