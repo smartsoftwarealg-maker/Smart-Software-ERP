@@ -8,5 +8,10 @@
     "QUOTAS":         "الحصص",
     "DISCOUNT_TYPE":  "نوع الخصم",
     "SCHEDULES":      "مواعيد",
-    "IS_DESKTOP":     "تقليدي"
+    "IS_DESKTOP":     "تقليدي",
+    "REMAINING_QTY":  "الكمية المتبقية",
+    "RESERVATION":    "حجز",
+    "SCHEDULED_QTY":  "الكمية المبرمجة",
+    "SALES_MODES":    "طرق التسليم",
+    "DAYS_AHEAD":     "الأيام المتقدمة"
 }

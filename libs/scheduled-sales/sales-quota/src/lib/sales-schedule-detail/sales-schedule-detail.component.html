@@ -1,4 +1,19 @@
-<form *ngIf="form !== null" novalidate [formGroup]="form">
+<div class="b-primary info-div size">
+    <div class="default-50 sm-100 header">{{ 'COMMON_OLD_BALANCE'| translate }}: <span
+        class="amount"> {{ balance | number: '1.2-2' }}  </span></div>
+    <div class="default-50 sm-100 header">{{ 'SCH_REMAINING_QTY' | translate }} : <span
+        class="amount">{{ remainingQty | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'SCH_SCHEDULED_QTY' | translate }} : <span
+        class="amount">{{ qty | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'LOGISTICS_PRICE' | translate }}: <span
+        class="amount">{{ price | number: '1.2-2' }}</span></div>
+    <div class="default-50 header">{{ 'COMMON_AMOUNT' | translate }} : <span
+        class="amount">{{ qty * price | number: '1.2-2' }}</span></div>
+    <div class="default-50 sm-100 header">{{ 'COMMON_BALANCE' | translate }} : <span
+        class="amount">{{ balance - qty * price | number: '1.2-2' }}</span></div>
+</div>
+
+<form *ngIf="form !== null" novalidate [formGroup]="form" class="size">
     <mat-form-field class="default-50 sm-100" autofocus>
         <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
         <ss-auto-complete matInput
@@ -8,27 +23,73 @@
         </ss-auto-complete>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>COMMON_FROM</mat-label>
-        <ss-date-picker formControlName="salesDate" [matDatepickerFilter]="dateFilter"></ss-date-picker>
+    <mat-form-field class="default-25 sm-50">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker formControlName="salesDate"
+                        (dateChange)="onDate(t($event))"
+                        [matDatepickerFilter]="dateFilter">
+        </ss-date-picker>
     </mat-form-field>
-
-    <mat-form-field id="agentType" class="default-50 sm-100">
+    <span class="default-25"></span>
+    <mat-form-field class="default-50 sm-100">
         <mat-label translate>COMMON_PRODUCT</mat-label>
-        <mat-select formControlName="productRef" required>
+        <mat-select formControlName="productRef" required (selectionChange)="onArticle($event)">
             <mat-option *ngFor="let v of articles" [value]="v.reference">
-                {{v ? v.description : ''}}
+                {{v ? v.description2 : ''}}
             </mat-option>
         </mat-select>
         <mat-error
-            *ngIf="form.controls['productRef'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            *ngIf="form.controls['productRef'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
     </mat-form-field>
 
-    <!--    <mat-form-field class="default-50 sm-100">-->
-<!--        <mat-selection-list ma color="primary" multiple="false" formControlName="productRef">-->
-<!--            <mat-list-option *ngFor="let u of articles"-->
-<!--                             [value]="u.reference"> {{ u.description }}-->
-<!--            </mat-list-option>-->
-<!--        </mat-selection-list>-->
-<!--    </mat-form-field>-->
+    <mat-form-field class="default-25 sm-50">
+        <mat-label translate>SCH_SCHEDULED_QTY</mat-label>
+        <mat-select formControlName="qty" required (selectionChange)="onQty($event)">
+            <mat-option *ngFor="let v of quantities" [value]="v">
+                {{ v }}
+            </mat-option>
+        </mat-select>
+        <mat-error
+            *ngIf="form.controls['qty'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field id="transporter" class="default-50">
+        <mat-label translate>LOGISTICS_DRIVER</mat-label>
+        <input matInput formControlName="transporter" type="text" required>
+        <mat-error
+            *ngIf="form.controls['transporter'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50">
+        <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
+        <input matInput formControlName="idNumber" type="text" required>
+        <mat-error
+            *ngIf="form.controls['idNumber'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="default-50">
+        <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+        <input matInput formControlName="plateNumber" type="text" required>
+        <mat-error
+            *ngIf="form.controls['plateNumber'].invalid" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+    </mat-form-field>
+
+<!--    <div class="default-50 sm-100" >-->
+<!--        <button type="button"-->
+<!--                class="button-div"-->
+<!--                mat-raised-button-->
+<!--                color="primary"-->
+<!--                [disabled]="!form?.valid || balance - qty * price < 1 || remainingQty - quantities < -1"-->
+<!--                (click)="save()"-->
+<!--                translate>-->
+<!--            <i class="fa-solid fa-floppy-disk save-icon"></i>-->
+<!--            COMMON_SAVE-->
+<!--        </button>-->
+<!--    </div>-->
 </form>
+

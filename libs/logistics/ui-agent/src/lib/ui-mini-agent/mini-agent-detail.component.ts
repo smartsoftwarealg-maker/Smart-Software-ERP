@@ -25,10 +25,6 @@ export class MiniAgentDetailComponent extends AgentDetailComponent {
                 tap(x => this.currencies = x),
                 switchMap(() => this.lookupsSrv.getPayModes()),
                 tap(x => this.payModes = x),
-                // switchMap(() => this.lookupsSrv.getActivities()),
-                // tap(x => this.activities = x),
-                switchMap(() => this.lookupsSrv.getBanks()),
-                tap(x => this.banks = x)
             );
     }
 }

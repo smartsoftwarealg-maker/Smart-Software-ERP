@@ -1,6 +1,19 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, DoCheck, ElementRef, HostBinding, Input, OnChanges, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import {
+    Component,
+    DoCheck,
+    ElementRef, EventEmitter,
+    HostBinding,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    Self,
+    ViewChild
+} from '@angular/core';
 import {
     ControlValueAccessor,
     NgControl
@@ -52,6 +65,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         });
     }
 
+    @Output()
+    dateChange = new EventEmitter<Date>();
+
     @Input()
     public time: boolean = false;
 
@@ -65,11 +81,11 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     @Input()
     set value(obj: Date) {
         this.writeValue(obj);
-        try {
-            this.onChange(this.date);
-        } catch {
-            // ignored
-        }
+        // try {
+        //     this.onChange(this.date);
+        // } catch {
+        //     // ignored
+        // }
     }
 
     @Input()
@@ -208,7 +224,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         this.stateChanges.next();
     }
 
+
     onDateChanged(d: Date) {
+        this.dateChange.emit(d);
         this.writeValue(d);
         try {
             this.onChange(d);
@@ -228,6 +246,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
 
     // value accessor
     writeValue(obj: any): void {
+        if (this.date == obj) {
+            return;
+        }
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {

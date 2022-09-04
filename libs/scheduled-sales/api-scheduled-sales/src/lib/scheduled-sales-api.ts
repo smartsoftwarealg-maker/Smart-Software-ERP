@@ -1,10 +1,11 @@
 import {ImageModel} from '@ss/common/ui-image-input';
 
-export const SS_PROJECT_URL  = '/ssales/projects';
-export const SS_ARTICLE_URL  = '/ssales/articles';
-export const SS_SCHEDULE_URL = '/schedules';
-export const SS_QUOTA_URL    = '/ssales/quotas';
-export const SS_SCHEDULE_AGENTS  = '/ssales/agents';
+export const SS_PROJECT_URL     = '/ssales/projects';
+export const SS_ARTICLE_URL     = '/ssales/articles';
+export const SS_SCHEDULE_URL    = '/schedules';
+export const SS_QUOTA_URL       = '/ssales/quotas';
+export const SS_MODE_URL        = '/ssales/modes';
+export const SS_SCHEDULE_AGENTS = '/ssales/agents';
 
 
 export interface SSProject {
@@ -74,6 +75,11 @@ export interface Article {
     vatValue?: number;
 }
 
+export interface Qty {
+    pType: number;
+    qty: number;
+}
+
 export interface Quota {
     id: number;
     centerId: number;
@@ -91,6 +97,7 @@ export interface Quota {
     description?: string;
     customerCode?: string;
     customerName?: string;
+    price?: number;
 }
 
 export interface Schedule {
@@ -142,8 +149,14 @@ export interface Schedule {
     iDestination?: number;
     timeOut?: Date;
     timeIn?: Date;
-    is_desktop: boolean;
+    isDesktop: boolean;
     customerCode?: string;
     customerName?: string;
     productDescription?: string;
+}
+
+export interface SalesMode {
+    id: number;
+    description: string;
+    daysAhead: number;
 }

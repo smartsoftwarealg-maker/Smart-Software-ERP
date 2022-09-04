@@ -11,6 +11,8 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { SalesScheduleListComponent } from './sales-schedule-list/sales-schedule-list.component';
 import { SalesScheduleDetailComponent } from './sales-schedule-detail/sales-schedule-detail.component';
+import { SalesModeListComponent } from './sales-mode-list/sales-mode-list.component';
+import { SalesModeDetailComponent } from './sales-mode-detail/sales-mode-detail.component';
 
 @NgModule({
     imports: [
@@ -28,6 +30,8 @@ import { SalesScheduleDetailComponent } from './sales-schedule-detail/sales-sche
         SalesQuotaDetailComponent,
         SalesScheduleListComponent,
         SalesScheduleDetailComponent,
+        SalesModeListComponent,
+        SalesModeDetailComponent,
     ],
 })
 export class ScheduledSalesSalesQuotaModule {}

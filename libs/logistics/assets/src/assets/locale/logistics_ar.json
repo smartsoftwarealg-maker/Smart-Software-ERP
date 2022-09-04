@@ -141,5 +141,8 @@
     "CONTRACT_NUMBER": "رقم التعاقد",
     "CONTRACT_DATE":   "تاريخ العقد",
     "ODS":             "أمر الانطلاق",
-    "DISCOUNTABLE":    "قابل للخصم"
+    "DISCOUNTABLE":    "قابل للخصم",
+    "DRIVER":          "قابل للخصم",
+    "DRIVER_LICENSE":  "سائق",
+    "PLATE_NUMBER":    "رخصة قيادة"
 }

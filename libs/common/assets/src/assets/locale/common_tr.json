@@ -212,5 +212,8 @@
     "UPLOAD":              "",
     "COLOR":               "",
     "CREATED_BY":          "",
-    "MODIFIED_BY":         ""
+    "MODIFIED_BY":         "",
+    "OLD_BALANCE":         "",
+    "BALANCE":             "",
+    "PRODUCT":             ""
 }

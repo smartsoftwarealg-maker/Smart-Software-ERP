@@ -140,5 +140,8 @@
     "CONTRACT_NUMBER": "Contract number",
     "CONTRACT_DATE":   "Contract date",
     "ODS":             "O.D.S",
-    "DISCOUNTABLE":    "Discountable"
+    "DISCOUNTABLE":    "Discountable",
+    "DRIVER":          "Driver",
+    "DRIVER_LICENSE":  "Driver license",
+    "PLATE_NUMBER":    "Plate number"
 }

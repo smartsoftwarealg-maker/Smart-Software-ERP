@@ -36,7 +36,7 @@ import {
     ASSET_END_TYPE_URL,
     FURNITURE_STATUS_URL,
     ASSETS_SEARCH_URL,
-    ASSETS_INJECTION_URL, ASSETS_DEPRECIATION_URL, PURCHASE_RECEPTION_URL, COMMON_MARKS_URL
+    ASSETS_INJECTION_URL, ASSETS_DEPRECIATION_URL, PURCHASE_RECEPTION_URL, COMMON_MARKS_URL, SCH_SALES_MODE_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -93,6 +93,9 @@ import {
     AssetAccountsDetailComponent,
     AssetAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
+import {
+    SalesModeListComponent
+} from '../../../../../libs/scheduled-sales/sales-quota/src/lib/sales-mode-list/sales-mode-list.component';
 
 export const mainRoutes: Routes = [
     {

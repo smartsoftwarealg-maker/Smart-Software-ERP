@@ -8,5 +8,10 @@
     "QUOTAS":         "Quotas",
     "DISCOUNT_TYPE":  "Type de remise",
     "SCHEDULES":      "Programmes",
-    "IS_DESKTOP":     "Traditionnel"
+    "IS_DESKTOP":     "Traditionnel",
+    "REMAINING_QTY":  "Quantité restante",
+    "RESERVATION":    "Reservation",
+    "SCHEDULED_QTY":  "Qté programmée",
+    "SALES_MODES":    "Modes de livraison",
+    "DAYS_AHEAD":     "Jours d'avance"
 }

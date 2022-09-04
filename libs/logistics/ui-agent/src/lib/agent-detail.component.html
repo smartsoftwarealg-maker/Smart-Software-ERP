@@ -74,14 +74,12 @@
                 <mat-checkbox formControlName="taxPayable"  translate>LOGISTICS_TAX_PAYABLE</mat-checkbox>
             </div>
 
-            <mat-form-field  class="default-50 sm-100">
+            <mat-form-field *ngIf="AQS" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
-                <mat-select formControlName="activity">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of activities" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
+                <ss-auto-complete matInput
+                                  formControlName="activity"
+                                  [model]="activityLookup">
+                </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field  class="default-50 sm-100">
@@ -207,14 +205,12 @@
                 <input matInput formControlName="capital" type="text">
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field *ngIf="AQS" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_BANK</mat-label>
-                <mat-select formControlName="bank">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of banks" [value]="v.id">
-                        {{v ? v.description : ''}}
-                    </mat-option>
-                </mat-select>
+                <ss-auto-complete matInput
+                                  formControlName="bank"
+                                  [model]="bankLookup">
+                </ss-auto-complete>
             </mat-form-field>
 
 
