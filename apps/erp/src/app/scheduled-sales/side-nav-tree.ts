@@ -1,15 +1,7 @@
-import {
-    ABS_LOGISTICS_PAY_METHOD,
-    ABS_LOGISTICS_AGENT_URL,
-    ABS_LOGISTICS_CATEGORY,
-    ABS_SCHEDULED_SALES_PROJECTS,
-    ABS_SCHEDULED_SALES_ARTICLE,
-    ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES, ABS_SCHEDULED_SALES_SCHEDULES,
-} from '../common';
+import {ABS_LOGISTICS_PAY_METHOD, ABS_LOGISTICS_AGENT_URL, ABS_LOGISTICS_CATEGORY, ABS_SCHEDULED_SALES_PROJECTS, ABS_SCHEDULED_SALES_ARTICLE, ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES, ABS_SCHEDULED_SALES_SCHEDULES, ABS_SALES_MODES_URL,} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LOGISTICS_ACTIVITY,
-    ABS_LOGISTICS_COMPANY_TYPE, ABS_LOGISTICS_CURRENCY,
     ABS_LOGISTICS_VAT_URL
 } from "../common";
 
@@ -70,6 +62,12 @@ export const scheduledSalesNavTree: SideNavNode = {
         //     route: ABS_LOGISTICS_CURRENCY,
         //     accessRights: 'Currency'
         // },
+        {
+            name: 'SCH_SALES_MODES',
+            icon: 'fa-solid fa-light-switch',
+            route: ABS_SALES_MODES_URL,
+            accessRights: 'SalesMode'
+        },
         {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-users-class',

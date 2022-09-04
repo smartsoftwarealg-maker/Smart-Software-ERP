@@ -11,5 +11,7 @@
     "IS_DESKTOP":     "تقليدي",
     "REMAINING_QTY":  "الكمية المتبقية",
     "RESERVATION":    "حجز",
-    "SCHEDULED_QTY":  "الكمية المبرمجة"
+    "SCHEDULED_QTY":  "الكمية المبرمجة",
+    "SALES_MODES":    "طرق التسليم",
+    "DAYS_AHEAD":     "الأيام المتقدمة"
 }
