@@ -11,5 +11,7 @@
     "IS_DESKTOP":     "Desktop",
     "REMAINING_QTY":  "Remaining quantity",
     "RESERVATION":    "Reservation",
-    "SCHEDULED_QTY":  "Scheduled qty"
+    "SCHEDULED_QTY":  "Scheduled qty",
+    "SALES_MODES":    "Delivery modes",
+    "DAYS_AHEAD":     "Advance days"
 }

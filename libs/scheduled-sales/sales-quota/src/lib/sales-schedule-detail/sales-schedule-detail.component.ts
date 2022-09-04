@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -12,6 +12,7 @@ import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {DatePipe} from '@angular/common';
 import {MatSelectChange} from '@angular/material/select';
 import {switchMap, tap} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 // type Article = { id: number, reference: string, description: string};
 
@@ -53,7 +54,7 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
     }
 
     public setupForm(b: Schedule) {
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             id: [b.id],
             parentId: [b.parentId || this.loginSrv.appCtx.agentId, Validators.required],
             salesDate: [b.salesDate, Validators.required],
@@ -63,6 +64,15 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
             idNumber: [b.idNumber, Validators.required],
             transporter: [b.transporter, Validators.required],
         });
+        this.subscriptions.push(
+            form.valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(_ => this.saveButton.disabled = !this.form?.valid || this.balance - this.qty * this.price < 1 || this.remainingQty - this.qty < -1)
+        );
+        this.saveButton.disabled = b.id < 1;
+        return form;
     }
 
     override finishLoading(e: Schedule) {
@@ -88,6 +98,7 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
                 .subscribe(_ => {
                     this.onDate(this.t(e.salesDate));
                     this.price = this.articles.find(r => r.reference === e.productRef)?.price1 || 0;
+                    this.saveButton.disabled = !this.form?.valid || this.balance - this.qty * this.price < 1 || this.remainingQty - this.qty < -1;
                 });
         }
     }
@@ -126,11 +137,15 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
             .getQuantities(reference)
             .pipe(tap(res => this.quantities = res.map(e => e.qty)),
                   switchMap(_ => this.entitySrv.getRemainingQty(agentId, schedId, reference, date)))
-            .subscribe(res => this.remainingQty = res);
+            .subscribe(res => {
+                this.remainingQty = res;
+                this.saveButton.disabled = !this.form?.valid || this.balance - this.qty * this.price < 1 || this.remainingQty - this.qty < -1;
+            });
     }
 
     onQty(e: MatSelectChange) {
         this.qty = e.value;
+        this.saveButton.disabled = !this.form?.valid || this.balance - this.qty * this.price < 1 || this.remainingQty - this.qty < -1;
     }
 
     override readForm(): Schedule {

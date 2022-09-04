@@ -11,5 +11,7 @@
     "IS_DESKTOP":     "Traditionnel",
     "REMAINING_QTY":  "Quantité restante",
     "RESERVATION":    "Reservation",
-    "SCHEDULED_QTY":  "Qté programmée"
+    "SCHEDULED_QTY":  "Qté programmée",
+    "SALES_MODES":    "Modes de livraison",
+    "DAYS_AHEAD":     "Jours d'avance"
 }
