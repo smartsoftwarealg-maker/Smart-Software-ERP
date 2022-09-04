@@ -17,3 +17,4 @@ export * from './lib/customer-session.service';
 export * from './lib/paginator-persistence.service';
 export * from './lib/is-param.service';
 export * from './lib/image-uploader-util.class';
+export * from './lib/lodash';

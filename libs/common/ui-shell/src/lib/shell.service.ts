@@ -12,9 +12,9 @@ import {
     SideNavNode,
     strDropEndUntil,
     strTakeUntil,
+    cloneDeep,
     UserRightsService
 } from '@ss/common/api-common';
-import * as _ from 'lodash';
 import {doc} from 'prettier';
 import debug = doc.debug;
 
@@ -179,7 +179,7 @@ export class ShellService {
         return tree
             .filter(t => t.visible)
             .map(i => {
-                const clone: SideNavNode = _.cloneDeep(i);
+                const clone: SideNavNode = cloneDeep(i);
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
             })
