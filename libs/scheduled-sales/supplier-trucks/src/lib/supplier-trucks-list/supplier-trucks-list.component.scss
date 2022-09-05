@@ -1,0 +1,21 @@
+.table-div, .pagination-container {
+    width: 90%;
+    min-height: 55%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+.main-table {
+    width: 100%;
+    min-width: 600px;
+}
+
+.mat-column-supplierCode,
+.mat-column-plateNumber {
+    flex: 1 1 100px;
+}
+
+.mat-column-supplierName {
+    flex: 3 1 300px;
+}

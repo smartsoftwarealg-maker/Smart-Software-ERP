@@ -157,6 +157,7 @@
         "scheduled-sales-article": "libs/scheduled-sales/article",
         "scheduled-sales-projects": "libs/scheduled-sales/projects",
         "scheduled-sales-sales-quota": "libs/scheduled-sales/sales-quota",
+        "scheduled-sales-supplier-trucks": "libs/scheduled-sales/supplier-trucks",
         "stock-api-article": "libs/stock/api-article",
         "stock-api-consumption": "libs/stock/api-consumption",
         "stock-api-consumption-lines": "libs/stock/api-consumption-lines",

@@ -194,7 +194,9 @@ export const SS_QUOTA_URL                = 'ss_quotas';
 export const SS_ARTICLE_URL              = 'ss_article';
 export const SS_DISCOUNTS_URL            = 'discounts';
 export const SS_SCHEDULE_URL             = 'schedules';
-export const SCH_SALES_MODE_URL          = 'sales-modes';
+export const SS_PARTNER_SCHEDULE_URL     = 'partner-schedules';
+export const SS_SALES_MODE_URL           = 'sales-modes';
+export const SS_TRUCKS_URL               = 'supplier-trucks';
 
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
@@ -316,12 +318,15 @@ export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
 
 // Scheduled sales
-export const ABS_SCHEDULED_SALES_PROJECTS       = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');
-export const ABS_SCHEDULED_SALES_ARTICLE        = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_ARTICLE_URL].join('/');
-export const ABS_SCHEDULED_SALES_QUOTAS         = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_QUOTA_URL].join('/');
-export const ABS_SCHEDULED_SALES_SCHEDULES      = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SCHEDULE_URL].join('/');
-export const ABS_SCHEDULED_SALES_DISCOUNT_TYPES = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_DISCOUNTS_URL].join('/');
-export const ABS_SALES_MODES_URL                = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SCH_SALES_MODE_URL].join('/');
+export const ABS_SCHEDULED_SALES_PROJECTS           = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');
+export const ABS_SCHEDULED_SALES_ARTICLE            = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_ARTICLE_URL].join('/');
+export const ABS_SCHEDULED_SALES_QUOTAS             = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_QUOTA_URL].join('/');
+export const ABS_SCHEDULED_SALES_SCHEDULES          = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SCHEDULE_URL].join('/');
+export const ABS_SCHEDULED_SALES_DISCOUNT_TYPES     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_DISCOUNTS_URL].join('/');
+export const ABS_SALES_MODES_URL                    = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SALES_MODE_URL].join('/');
+export const ABS_SCHEDULED_SALES_PARTNER_SCHEDULES  = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PARTNER_SCHEDULE_URL].join('/');
+export const ABS_SCHEDULED_SALES_PARTNER_TRUCKS      = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_TRUCKS_URL].join('/');
+
 
 
 //Finance

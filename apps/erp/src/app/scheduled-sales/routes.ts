@@ -3,15 +3,18 @@ import {
 } from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {
-    LOGISTICS_ACTIVITY_URL, SCH_SALES_MODE_URL,
+    LOGISTICS_ACTIVITY_URL, SS_SALES_MODE_URL,
     SS_ARTICLE_URL,
-    SS_DISCOUNTS_URL,
+    SS_DISCOUNTS_URL, SS_PARTNER_SCHEDULE_URL,
     SS_PROJECTS_URL,
-    SS_QUOTA_URL, SS_SCHEDULE_URL
+    SS_QUOTA_URL, SS_SCHEDULE_URL, SS_TRUCKS_URL
 } from '../common';
 import {ProjectListComponent, ProjectDetailComponent} from '@ss/scheduled-sales/projects';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/scheduled-sales/article';
 import {
+    PartnerScheduleDetailComponent,
+    SalesModeDetailComponent,
+    SalesModeListComponent,
     SalesQuotaDetailComponent,
     SalesQuotaListComponent, SalesScheduleDetailComponent,
     SalesScheduleListComponent
@@ -22,14 +25,26 @@ import {
     DiscountDetailComponent,
     DiscountListComponent
 } from '@ss/common/ui-lookup';
-import {
-    SalesModeListComponent
-} from '../../../../../libs/scheduled-sales/sales-quota/src/lib/sales-mode-list/sales-mode-list.component';
-import {
-    SalesModeDetailComponent
-} from '../../../../../libs/scheduled-sales/sales-quota/src/lib/sales-mode-detail/sales-mode-detail.component';
+import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
 
 export const schedSalesRoutes: Routes = [
+    {
+        path: SS_TRUCKS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SupplierTrucksListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SupplierTrucksDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: SS_DISCOUNTS_URL,
         children: [
@@ -46,6 +61,13 @@ export const schedSalesRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+
+    {
+        path: SS_PARTNER_SCHEDULE_URL,
+        component: PartnerScheduleDetailComponent,
+        canActivate: [CanActivateService],
+        canDeactivate: [CanDeactivateService]
     },
 
     {
@@ -85,7 +107,7 @@ export const schedSalesRoutes: Routes = [
     },
 
     {
-        path: SCH_SALES_MODE_URL,
+        path: SS_SALES_MODE_URL,
         children: [
             {
                 path: LIST_URL,

@@ -5,6 +5,8 @@ export const SS_ARTICLE_URL     = '/ssales/articles';
 export const SS_SCHEDULE_URL    = '/schedules';
 export const SS_QUOTA_URL       = '/ssales/quotas';
 export const SS_MODE_URL        = '/ssales/modes';
+export const SS_TRUCK_URL       = '/ssales/trucks';
+export const SS_CONTRACT_URL    = '/ssales/supplier-contracts';
 export const SS_SCHEDULE_AGENTS = '/ssales/agents';
 
 
@@ -159,4 +161,21 @@ export interface SalesMode {
     id: number;
     description: string;
     daysAhead: number;
+}
+
+export interface SupplierTruck {
+    id: number
+    supplier?: number;
+    plateNumber?: string;
+    supplierName?: string;
+    supplierCode?: string;
+}
+
+export interface TruckContract {
+    id: number;
+    truckId: number;
+    reference?: string;
+    contractDate?: string;
+    fromDate?: string;
+    toDate?: string;
 }
