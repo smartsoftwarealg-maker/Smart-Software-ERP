@@ -13,6 +13,7 @@ import { SalesScheduleListComponent } from './sales-schedule-list/sales-schedule
 import { SalesScheduleDetailComponent } from './sales-schedule-detail/sales-schedule-detail.component';
 import { SalesModeListComponent } from './sales-mode-list/sales-mode-list.component';
 import { SalesModeDetailComponent } from './sales-mode-detail/sales-mode-detail.component';
+import { PartnerScheduleDetailComponent } from './partner-schedule-detail/partner-schedule-detail.component';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { SalesModeDetailComponent } from './sales-mode-detail/sales-mode-detail.
         SalesScheduleDetailComponent,
         SalesModeListComponent,
         SalesModeDetailComponent,
+        PartnerScheduleDetailComponent,
     ],
 })
 export class ScheduledSalesSalesQuotaModule {}

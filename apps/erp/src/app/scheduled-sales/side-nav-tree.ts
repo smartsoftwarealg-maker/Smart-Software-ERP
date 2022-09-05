@@ -1,4 +1,15 @@
-import {ABS_LOGISTICS_PAY_METHOD, ABS_LOGISTICS_AGENT_URL, ABS_LOGISTICS_CATEGORY, ABS_SCHEDULED_SALES_PROJECTS, ABS_SCHEDULED_SALES_ARTICLE, ABS_SCHEDULED_SALES_QUOTAS, ABS_SCHEDULED_SALES_DISCOUNT_TYPES, ABS_SCHEDULED_SALES_SCHEDULES, ABS_SALES_MODES_URL,} from '../common';
+import {
+    ABS_LOGISTICS_PAY_METHOD,
+    ABS_LOGISTICS_AGENT_URL,
+    ABS_LOGISTICS_CATEGORY,
+    ABS_SCHEDULED_SALES_PROJECTS,
+    ABS_SCHEDULED_SALES_ARTICLE,
+    ABS_SCHEDULED_SALES_QUOTAS,
+    ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
+    ABS_SCHEDULED_SALES_SCHEDULES,
+    ABS_SALES_MODES_URL,
+    ABS_SCHEDULED_SALES_PARTNER_SCHEDULES, ABS_SCHEDULED_SALES_PARTNER_TRUCKS,
+} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LOGISTICS_ACTIVITY,
@@ -75,6 +86,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             accessRights: 'SalesCategory'
         },
         {
+            name: 'SCH_SUPPLIER_TRUCKS',
+            icon: 'fa-solid fa-truck-monster',
+            route: ABS_SCHEDULED_SALES_PARTNER_TRUCKS,
+            accessRights: 'SupplierTruck'
+        },
+        {
             name: ' COMMON_PROJECTS',
             icon: 'fa-solid fa-buildings',
             route: ABS_SCHEDULED_SALES_PROJECTS,
@@ -91,6 +108,13 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'SCH_SCHEDULES',
             icon: 'fa-solid fa-calendar-range',
             route: ABS_SCHEDULED_SALES_SCHEDULES,
+            accessRights: 'Schedule',
+            customerRights: {read: true, edit: false, delete: false, write: false}
+        },
+        {
+            name: 'SCH_PARTNER_SCHEDULES',
+            icon: 'fa-solid fa-calendar-range',
+            route: ABS_SCHEDULED_SALES_PARTNER_SCHEDULES,
             accessRights: 'Schedule',
             customerRights: {read: true, edit: false, delete: false, write: false}
         },
