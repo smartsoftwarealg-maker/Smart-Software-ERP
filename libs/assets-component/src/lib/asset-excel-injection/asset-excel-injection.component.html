@@ -238,32 +238,26 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
-            <mat-select formControlName="receptionDate">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <!--mat-form-field>
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <mat-select formControlName="modelNumb">
-                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
-            </mat-select>
-        </mat-form-field-->
-
-        <mat-form-field>
-            <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
-            <mat-select formControlName="orderNumb">
+            <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
+            <mat-select formControlName="requestNumb">
                 <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-label translate>ASSET_ORDER_DATE</mat-label>
-            <mat-select formControlName="orderDate">
+            <mat-label translate>ASSET_REQUEST_DATE</mat-label>
+            <mat-select formControlName="requestDate">
                 <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
             </mat-select>
         </mat-form-field>
+
+        <mat-form-field>
+            <mat-label translate>COMMON_REQUESTER</mat-label>
+            <mat-select formControlName="requester">
+                <mat-option *ngFor="let c of columns" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
 
         <mat-form-field>
             <mat-label translate>COMMON_CLASS</mat-label>
