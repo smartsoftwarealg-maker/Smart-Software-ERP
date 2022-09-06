@@ -230,5 +230,6 @@
     "MODIFIED_BY":         "Last modified by",
     "OLD_BALANCE":         "Old balance",
     "BALANCE":             "Balance",
-    "PRODUCT":             "Product"
+    "PRODUCT":             "Product",
+    "DOUBLE_CLICK_OPEN":   "Double click to open"
 }

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {ReportParamsService, ReportViewData} from "@ss/common/api-reports";
 import {ShellService} from "@ss/common/ui-shell";
-import {AdmobClass} from '@ss/common/api-admob';
-import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'ss-idiot-page',

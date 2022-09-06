@@ -28,7 +28,12 @@
             </mat-list-item>
         </mat-list>
     </div>
-    <div class="imj" *ngIf="imgSrc?.length > 100">
-        <img [src]="imgSrc" [alt]="'image'"/>
+    <div class="imj" *ngIf="imgSrc?.length > 100 || filename" >
+
+        <img [src]="imgSrc"
+             [alt]="'image'"
+             [ngClass]="{ clickable: filename != null }"
+             (dblclick)="onClick($event)"
+             [matTooltip]="filename? ('COMMON_DOUBLE_CLICK_OPEN' | translate) : ''"/>
     </div>
 </div>
