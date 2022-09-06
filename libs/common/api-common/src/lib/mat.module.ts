@@ -92,12 +92,13 @@ import { SimpleDateAdapter } from './custom-date-adapter';
         MatTooltipModule,
         MatTreeModule,
         PortalModule,
-        ScrollingModule
+        ScrollingModule,
+
     ],
     providers: [
         {
             provide: DateAdapter, useClass: SimpleDateAdapter,
         }
-    ]
+    ],
 })
 export class MaterialModule { }

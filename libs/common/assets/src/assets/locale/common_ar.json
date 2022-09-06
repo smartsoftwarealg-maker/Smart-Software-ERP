@@ -229,5 +229,6 @@
     "MODIFIED_BY":         "التعديل الأخير من قبل",
     "OLD_BALANCE":         "التوازن القديم",
     "BALANCE":             "الرصيد",
-    "PRODUCT":             "منتج"
+    "PRODUCT":             "منتج",
+    "DOUBLE_CLICK_OPEN":   "انقر نقرًا مزدوجًا للفتح"
 }

@@ -231,5 +231,6 @@
     "MODIFIED_BY":         "Dernière modification par",
     "OLD_BALANCE":         "Ancien solde",
     "BALANCE":             "Solde",
-    "PRODUCT":             "Produit"
+    "PRODUCT":             "Produit",
+    "DOUBLE_CLICK_OPEN":   "Double-cliquez pour ouvrir"
 }

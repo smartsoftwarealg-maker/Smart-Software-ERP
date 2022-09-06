@@ -4,8 +4,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AppArchive} from '@ss/logistics/api-agent';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {AppArchiveService} from '../app-archive.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'ss-agent-archive-list',
@@ -14,17 +15,21 @@ import {AppArchiveService} from '../app-archive.service';
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
-    @Input() editable = true;
     imgSrc: string | null = null;
     selectedId = 0;
+    filename: string = null;
     data: AppArchive[] = [];
     paginator = PaginationModel.newInstance();
+    pdfSrc: string = null;
+
+    @Input() editable = true;
 
     constructor(private entitySrv: AppArchiveService,
                 private snackBarSrv: SnackBarService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService) {}
+                private confirmationSrv: ConfirmationDialogService,
+                private ds: DomSanitizer) {}
 
     ngOnInit(): void {
         this.route
@@ -93,13 +98,37 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     select(a: AppArchive) {
-        this.selectedId = a?.id;
-        this.entitySrv
-            .image(a?.id || 0)
-            .subscribe(res => {
-                ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s);
-//                console.log(res);
-            });
+        if (a) {
+            this.selectedId = a.id || 0;
+            if (a.filename?.indexOf('.pdf') > 1) {
+                this.filename = a.filename;
+                this.imgSrc = './assets/img/pdf.png';
+            } else if (a.filename?.indexOf('.doc') > 1) {
+                this.filename = a.filename;
+                this.imgSrc = ('./assets/img/word.png');
+            } else {
+                this.filename = null;
+                this.entitySrv
+                    .image(this.selectedId)
+                    .subscribe(res => {
+                        ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s);
+                    });
+            }
+        }
     }
+
+    onClick(e: MouseEvent) {
+        if (this.filename?.indexOf('.pdf') > 1) {
+            // this.release();
+            this.entitySrv.image(this.selectedId)
+                // .pipe(map((res: any) => new Blob([res.body], {type: 'application/pdf'})))
+                .subscribe(res => {
+                    const  pdfSrc = window.URL.createObjectURL(res);
+                    window.open(pdfSrc);
+                    window.URL.revokeObjectURL(pdfSrc);
+                });
+        }
+    }
+
 
 }

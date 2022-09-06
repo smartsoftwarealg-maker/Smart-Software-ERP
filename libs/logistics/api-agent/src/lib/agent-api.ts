@@ -67,5 +67,6 @@ export interface AppArchive {
     documentId: number;
     objId: number;
     docDescription?: string;
+    filename?: string;
     data?: any[];
 }

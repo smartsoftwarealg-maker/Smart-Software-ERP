@@ -35,3 +35,10 @@ img {
     max-height: 96%;
 }
 
+$color: hsl(100, 60%, 50%, .6);
+
+.clickable:hover {
+    cursor: pointer;
+    outline: 2px solid $color;
+}
+
