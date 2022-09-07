@@ -11,6 +11,7 @@ import {
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import {LoginService} from "@ss/common/api-common";
+import {OfferLinesService} from '../../../../../logistics/api-transaction/src/lib/offer-lines.service';
 
 @Component({
     selector: 'ss-quotation-lines-detail',
@@ -20,7 +21,7 @@ import {LoginService} from "@ss/common/api-common";
 export class QuotationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: OfferLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

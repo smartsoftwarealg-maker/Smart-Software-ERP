@@ -31,12 +31,6 @@
                                       [required]="true"
                                       [model]="agentAutoCompleteModel"
                                       formControlName="agent"></ss-auto-complete>
-                    <!--      <mat-error-->
-                    <!--                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-                    <!--                </mat-error>-->
-                    <!--                <mat-error-->
-                    <!--                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-                    <!--                </mat-error>-->
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -59,7 +53,6 @@
                     <mat-label translate>STOCK_DEALER</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
-                                      [disabled]="!manager"
                                       [model]="dealerAutoCompleteModel"
                                       formControlName="dealer"></ss-auto-complete>
                     <mat-error
@@ -68,7 +61,6 @@
                     <mat-error
                         *ngIf="form.controls['dealer'].hasError('validOption')" translate>COMMON_NO_MATCH
                     </mat-error>
-
                 </mat-form-field>
 
 
@@ -109,5 +101,5 @@
             </form>
         </mat-card-content>
     </mat-card>
-    <ss-quotation-lines-list class="detail-list"></ss-quotation-lines-list>
+    <ss-quotation-lines-list *ngIf="id" class="detail-list" [id]="id"></ss-quotation-lines-list>
 </div>

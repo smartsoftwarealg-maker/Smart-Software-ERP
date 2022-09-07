@@ -32,7 +32,12 @@ import {
     UnitDetailComponent,
     UnitListComponent,
 } from '@ss/common/ui-lookup';
-import {AgentListComponent, AgentDetailComponent} from '@ss/logistics/ui-agent';
+import {
+    AgentListComponent,
+    AgentDetailComponent,
+    AppArchiveListComponent,
+    AppArchiveDetailComponent
+} from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
@@ -233,7 +238,17 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: AgentDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', component: AppArchiveListComponent },
+                    {
+                        path: 'detail',
+                        children: [
+                            {path: ':id', component: AppArchiveDetailComponent},
+                            {path: '**', redirectTo: '../' }
+                        ]
+                    }
+                ]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
