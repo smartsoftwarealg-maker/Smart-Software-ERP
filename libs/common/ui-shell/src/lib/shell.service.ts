@@ -185,17 +185,17 @@ export class ShellService {
             })
     }
 
-    private setSideNavVisibility(tree: SideNavNode[]): void {
-        if (tree != null) {
-            // MUST-use for each, MUST NOT change reference of array
-            tree.forEach(r => {
-                this.setSideNavVisibility(r.children);
-                r.visible = (!r.accessRights || this.rightsSrv.canUserPass(r.accessRights)) &&
-                            (r.children == null || r.children.find(e => e.visible) != null) &&
-                            (!!r.customerRights?.read || this.loginSrv.appCtx.id > 0);
-            });
-        }
-    }
+    // private setSideNavVisibility(tree: SideNavNode[]): void {
+    //     if (tree != null) {
+    //         // MUST-use for each, MUST NOT change reference of array
+    //         tree.forEach(r => {
+    //             this.setSideNavVisibility(r.children);
+    //             r.visible = (!r.accessRights || this.rightsSrv.canUserPass(r.accessRights)) &&
+    //                         (r.children == null || r.children.find(e => e.visible) != null) &&
+    //                         (!!r.customerRights?.read || this.loginSrv.appCtx.id > 0);
+    //         });
+    //     }
+    // }
 
     private setAppSideNavVisibility(tree: SideNavNode[]): void {
         if (tree != null) {
