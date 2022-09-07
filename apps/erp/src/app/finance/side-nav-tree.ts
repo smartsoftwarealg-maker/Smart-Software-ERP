@@ -25,7 +25,7 @@ export const financeNavTree: SideNavNode = {
         },
         {
             name: 'LOGISTICS_PAYMENT_COMPENSATION',
-            icon: 'fas fa-coins',
+            icon: 'fa-solid fa-scale-balanced',
             route: ABS_FINANCE_COMPENSATIONS,
             accessRights: 'Accounting'
         },

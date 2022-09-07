@@ -40,6 +40,6 @@ export class ReceptionListComponent extends BaseTransactionListComponent {
         public defReportSrv: DefaultReportService,
         public payMethodSrv: PayMethodService,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(receptionSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'STOCK_RECEPTION');
+        super(receptionSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'COMMON_RECEPTION');
     }
 }
