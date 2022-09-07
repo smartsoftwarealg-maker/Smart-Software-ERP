@@ -8,7 +8,6 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
-
 @Component({
     selector: 'ss-activity-list',
     templateUrl: './base-templates/list-template.html',
@@ -30,7 +29,6 @@ export class ActivityListComponent extends BaseEntityListComponent<Activity> {
         super(activitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_ACTIVITIES');
         this.pagination.pageSize = 10;
     }
-
 }
 
 

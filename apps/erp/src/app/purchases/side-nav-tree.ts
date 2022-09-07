@@ -38,18 +38,18 @@ export const purchasesNavTree: SideNavNode = {
             route: ABS_PURCHASE_RECEPTION_URL,
             accessRights: 'Reception'
         },
-        {
-            name: 'COMMON_PAYMENTS',
-            icon: 'fas fa-coins',
-            route: ABS_FINANCE_SPAYMENTS,
-            accessRights: 'SPayment'
-        },
-        {
-            name: 'LOGISTICS_PAYMENT_COMPENSATION',
-            icon: 'fa-solid fa-scale-balanced',
-            route: ABS_FINANCE_SCOMPENSATIONS,
-            accessRights: 'Accounting'
-        },
+        // {
+        //     name: 'COMMON_PAYMENTS',
+        //     icon: 'fas fa-coins',
+        //     route: ABS_FINANCE_SPAYMENTS,
+        //     accessRights: 'SPayment'
+        // },
+        // {
+        //     name: 'LOGISTICS_PAYMENT_COMPENSATION',
+        //     icon: 'fa-solid fa-scale-balanced',
+        //     route: ABS_FINANCE_SCOMPENSATIONS,
+        //     accessRights: 'Accounting'
+        // },
         {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-calendar-check',

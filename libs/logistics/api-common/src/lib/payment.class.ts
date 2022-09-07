@@ -18,6 +18,7 @@ export interface Payment {
     memo?: string;
     debit?: number;
     credit?: number;
+    modeDescription?: string;
     denomination?: string;
 }
 
