@@ -5,25 +5,14 @@ import {Routes} from '@angular/router';
 import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {
-    ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
     ASSETS_APP_URL,
     DASHBOARD_APP_URL,
-    FINANCE_APP_URL,
-    HR_APP_URL,
-    LOGISTICS_APP_URL,
     ORGANIZATIONS_APP_URL,
-    PAYROLL_APP_URL,
-    PURCHASES_APP_URL,
-    SALES_APP_URL,
-    SCHEDULED_SALES_APP_URL,
-    STOCK_APP_URL,
-    TREASURY_APP_URL,
-    WEBARCH_APP_URL
 } from '../app/common';
 
 export const environment = {
-  production: true,
+    production: true,
 };
 
 export const navBar = [
@@ -49,10 +38,6 @@ export const appRoutes: Routes =  [
         component: MainPageComponent,
         canActivate: [CanActivateService]
     },
-    // {
-    //     path: ACCOUNTING_APP_URL,
-    //     loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
-    // },
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
@@ -64,10 +49,6 @@ export const appRoutes: Routes =  [
     {
         path: DASHBOARD_APP_URL,
         loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
-    },
-    {
-        path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
     },
     {
         path: ASSETS_APP_URL,

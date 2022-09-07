@@ -13,6 +13,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
 import {PurchaseQuotationService} from '../purchase-quotation.service';
+import {OfferLinesService} from '../../../../../logistics/api-transaction/src/lib/offer-lines.service';
 
 @Component({
     selector: 'ss-proforma-detail',
@@ -20,10 +21,10 @@ import {PurchaseQuotationService} from '../purchase-quotation.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class QuotationDetailComponent extends BaseEntityDetailComponent<Transaction> {
-    public isManager = false;
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public  isManager = false;
+    public  dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersService)
+    public  agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
+    public  payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     private transac: Transaction = null;
 
     constructor(public proformaSrv: PurchaseQuotationService,
@@ -37,8 +38,9 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
                 private supplierSrv: SupplierService,
                 private loginService: LoginService,
                 private loginSrv: LoginService,
-                private payMethodSrv: PayMethodService) {
-        super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PROFORMA');
+                private payMethodSrv: PayMethodService,
+                private detailSrv: OfferLinesService) {
+        super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_QUOTATION');
     }
 
     public setupForm(form: Transaction) {
@@ -50,6 +52,8 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
             form.dealer = form.userID;
             form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
+        this.id = form.id || 0;
+        this.detailSrv.setParentId(this.id);
         this.transac = form;
         this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({

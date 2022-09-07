@@ -4,17 +4,14 @@ import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
 import {TransactionLine} from './transaction-line';
 import {Transaction} from './transaction';
+import {TransactionLinesClass} from './transaction-lines.class';
 
 @Injectable({
     providedIn: 'root'
 })
-export class TransactionLinesService extends BaseEntityExtendedService<TransactionLine> {
+export class TransactionLinesService extends TransactionLinesClass {
 
     constructor(protected httpSrv: HttpService) {
         super(httpSrv,  '/detail', '/transactions');
-    }
-
-    getTransaction(id: number): Observable<Transaction> {
-        return this.httpSrv.get(`/inventory/${id}`);
     }
 }

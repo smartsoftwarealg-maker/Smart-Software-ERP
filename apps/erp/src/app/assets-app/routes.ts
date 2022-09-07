@@ -93,9 +93,6 @@ import {
     AssetAccountsDetailComponent,
     AssetAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
-import {
-    SalesModeListComponent
-} from '../../../../../libs/scheduled-sales/sales-quota/src/lib/sales-mode-list/sales-mode-list.component';
 
 export const mainRoutes: Routes = [
     {

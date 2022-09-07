@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -26,7 +26,6 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
         'vat',
     ];
 
-
     constructor(
         public detailSrv: TransactionLinesService,
         public shellSrv: ShellService,
@@ -37,16 +36,22 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService) {
         super(detailSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            router,
-            articleSrv,
-            storeNamesSrv,
-            confirmationSrv);
+              shellSrv,
+              snackBarSrv,
+              route,
+              router,
+              articleSrv,
+              storeNamesSrv,
+              confirmationSrv);
     }
 
     ngOnInit() {
         super.onInit();
+    }
+
+    @Input()
+    set id(parentId: number) {
+        this.detailSrv.setParentId(parentId || 0);
+        this.parentId = parentId || 0;
     }
 }

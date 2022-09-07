@@ -11,6 +11,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {TransactionLinesService} from './transaction-lines.service';
+import {TransactionLinesClass} from './transaction-lines.class';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine>  {
     selectedRow: TransactionLine = null;
@@ -23,7 +24,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: TransactionLinesClass,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -35,7 +36,6 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public title: string) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.articleAutoCompleteModel.onObjectSelected = a => this.onArticle(a);
-        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
     }
 
     preload(): Observable<any> {
@@ -45,6 +45,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
                 tap(p => {
                     this.parentId = +p.parent;
                     this.detailSrv.setParentId(this.parentId);
+                    this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
                 }),
                 switchMap(id => this.detailSrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
@@ -89,6 +90,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     onArticle(a: Article | string) {
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
     }
+
     public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
