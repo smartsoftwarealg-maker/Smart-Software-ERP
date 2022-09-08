@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import {LanguageService, SideNavNode} from '@ss/common/api-common';
@@ -21,9 +21,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        if (!this.srv.display) {
-            this.srv.display = this.shellSrv.navData;
-        }
         this.updateGobackButton();
         this.shellSrv.setTitle(this.shellSrv.applicationTitle);
         this.shellSrv.enableSearch(

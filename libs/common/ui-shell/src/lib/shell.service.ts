@@ -13,7 +13,8 @@ import {
     strDropEndUntil,
     strTakeUntil,
     cloneDeep,
-    UserRightsService
+    UserRightsService,
+    MainPageService
 } from '@ss/common/api-common';
 import {doc} from 'prettier';
 import debug = doc.debug;
@@ -98,6 +99,7 @@ export class ShellService {
 
     constructor(public langSrv: LanguageService,
                 public router: Router,
+                public mainPageSrv: MainPageService,
                 private rightsSrv: UserRightsService,
                 private loginSrv: LoginService) { }
 
@@ -243,6 +245,7 @@ export class ShellService {
     public filterSideNav() {
         this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
         this.generateNavColors(this.navData);
+        this.mainPageSrv.display = this.navData;
         this.updateShell();
     }
 
