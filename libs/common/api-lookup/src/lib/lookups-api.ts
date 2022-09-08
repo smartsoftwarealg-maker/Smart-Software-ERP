@@ -13,7 +13,7 @@ export const CATEGORIES_URL = '/lookups/categories';
 export const FORMS_URL = '/lookups/forms';
 export const EMPLOYMENT_TYPE_URL = '/lookups/employment_type';
 export const SUSPENSION_REASON_URL = '/lookups/suspensionreasons';
-export const JOURNAL_TYPES_URL = '/lookups/journal_type';
+export const JOURNAL_TYPES_URL = '/lookups/journal_types';
 
 export const DIVISIONS_URL = '/organizations/divisions';
 export const DEPARTMENTS_URL = '/organizations/departments';

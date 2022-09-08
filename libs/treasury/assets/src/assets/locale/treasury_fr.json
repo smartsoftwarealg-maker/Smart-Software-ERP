@@ -19,5 +19,8 @@
     "BOOK_YEAR": "Année du Carnets",
     "CHECKBOOKS": "Carnets de chèques",
     "EDIT_CHECKBOOKS": "Détail du chéquier",
-    "EDIT_CHECKS": "Chèque détails"
+    "EDIT_CHECKS": "Chèque détails",
+    "JOURNAL_TYPE": "Type de journal",
+    "BANK_ACCOUNT": "Compte bancaire",
+    "TYPE_NAME": "Type name"
 }

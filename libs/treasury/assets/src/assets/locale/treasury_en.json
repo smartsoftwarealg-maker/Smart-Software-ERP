@@ -19,5 +19,8 @@
     "BOOK_YEAR": "Book year",
     "CHECKBOOKS": "Check books",
     "EDIT_CHECKBOOKS": "Check book detail",
-    "EDIT_CHECKS": "Check details"
+    "EDIT_CHECKS": "Check details",
+    "JOURNAL_TYPE": "Journal type",
+    "BANK_ACCOUNT": "Bank account",
+    "TYPE_NAME": "Type name"
 }

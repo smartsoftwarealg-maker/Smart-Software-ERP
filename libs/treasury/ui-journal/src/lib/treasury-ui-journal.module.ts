@@ -8,6 +8,7 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { JournalListComponent } from './journal-list.component';
+import { LookupModule } from '@ss/common/api-lookup';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { JournalListComponent } from './journal-list.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         RouterModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        LookupModule
     ],
     declarations: [JournalListComponent],
     exports: [JournalListComponent]
