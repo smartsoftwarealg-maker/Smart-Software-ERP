@@ -70,7 +70,7 @@ export const exchangeNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fas fa-file-chart-line',
+            icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_EXCHANGE_REPORT_PARAMS
         }
     ]
