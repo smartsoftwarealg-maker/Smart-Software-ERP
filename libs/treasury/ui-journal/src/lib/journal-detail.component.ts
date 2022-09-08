@@ -13,6 +13,9 @@ import { HttpService, LoginService } from '@ss/common/api-common';
     templateUrl: './journal-detail.component.html'
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
+
+
+
     constructor(
         public journalSrv: JournalService,
         public loginSrv: LoginService,
@@ -26,4 +29,9 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNALS');
     }
 
+    public setupForm(a: Journal) {
+        this.id = a.id;
+        return this.formBuilder.group({
+        });
+    }
 }
