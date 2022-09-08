@@ -3,22 +3,26 @@ import {
     ABS_ACC_ACCOUNT_URL,
     ABS_ACC_ASSET_ACCOUNT_URL,
     ABS_ASSET_ACCOUNT_URL,
+    ABS_ASSET_ACTIVITY,
     ABS_ASSET_APPOINTMENT_DOC_URL,
-    ABS_ASSET_BUILDS,
-    ABS_ASSET_CLASSES, ABS_ASSET_INJECTION_URL,
+    ABS_ASSET_BUILDINGS,
+    ABS_ASSET_CLASSES,
+    ABS_ASSET_INJECTION_URL,
     ABS_ASSET_INVENTORY_URL,
     ABS_ASSET_LOCATIONS,
     ABS_ASSET_OFFICES_URL,
-    ABS_ASSET_RECEPTIONS_URL, ABS_ASSET_SEARCH_URL,
+    ABS_ASSET_RECEPTIONS_URL,
+    ABS_ASSET_SEARCH_URL,
     ABS_ASSETS_REPORTS_URL,
     ABS_ASSETS_URL,
-    ABS_BLOCKING_TYPES, ABS_COMMON_MARKS_URL,
-    ABS_COST_TYPES,
-    ABS_END_TYPES,
-    ABS_LOGISTICS_ACTIVITY,
-    ABS_OPTIONS_URL, ABS_PURCHASE_RECEPTION_URL,
-    ABS_REVALUATION_TYPES, ABS_STATUS_TYPES,
-    ASSETS_STOCK_AGENT_URL
+    ABS_ASSET_BLOCKING_TYPES,
+    ABS_ASSET_COST_TYPES,
+    ABS_ASSET_END_TYPES,
+    ABS_ASSET_OPTIONS_URL,
+    ABS_ASSET_REVALUATION_TYPES,
+    ABS_STATUS_TYPES,
+    ABS_ASSETS_AGENT_URL,
+    ABS_ASSET_MARKS_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -29,25 +33,25 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'ACC_ASSET_ACCOUNTS',
             icon: 'fas fa-cogs',
-            route: ABS_ACC_ASSET_ACCOUNT_URL,
+            route: ABS_ASSET_ACCOUNT_URL,
             accessRights: 'Account'
         },
         {
             name: 'COMMON_ACTIVITIES',
             icon: 'fab fa-app-store-ios',
-            route: ABS_LOGISTICS_ACTIVITY,
+            route: ABS_ASSET_ACTIVITY,
             accessRights: 'Activity'
         },
         {
             name: 'ASSET_COST_TYPES',
             icon: 'fa-solid fa-list-check',
-            route: ABS_COST_TYPES,
+            route: ABS_ASSET_COST_TYPES,
             accessRights: 'AssetCostType'
         },
         {
             name: 'ASSET_END_TYPES',
             icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',
-            route: ABS_END_TYPES,
+            route: ABS_ASSET_END_TYPES,
             accessRights: 'AssetCostType'
         },
         {
@@ -59,7 +63,7 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'ASSET_BLOCKING_TYPES',
             icon: 'fa-solid fa-pause',
-            route: ABS_BLOCKING_TYPES,
+            route: ABS_ASSET_BLOCKING_TYPES,
             accessRights: 'AssetBlockingType'
         },
         {
@@ -71,19 +75,19 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'ASSET_REVALUATION_TYPES',
             icon: 'fa-solid fa-list-tree',
-            route: ABS_REVALUATION_TYPES,
+            route: ABS_ASSET_REVALUATION_TYPES,
             accessRights: 'Revaluation'
         },
         {
             name: 'COMMON_MARKS',
             icon: 'fa-solid fa-copyright',
-            route: ABS_COMMON_MARKS_URL,
+            route: ABS_ASSET_MARKS_URL,
             accessRights: 'Mark'
         },
         {
             name: 'LOGISTICS_AGENTS',
             icon: 'fas fa-user',
-            route: ASSETS_STOCK_AGENT_URL,
+            route: ABS_ASSETS_AGENT_URL,
             accessRights: 'Agent'
         },
         {
@@ -95,7 +99,7 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'ASSET_BUILDINGS',
             icon: 'fa-solid fa-city',
-            route: ABS_ASSET_BUILDS,
+            route: ABS_ASSET_BUILDINGS,
             accessRights: 'AssetBuilding'
         },
         {
@@ -143,7 +147,7 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'COMMON_OPTIONS',
             icon: 'fa-solid fa-tools',
-            route: ABS_OPTIONS_URL,
+            route: ABS_ASSET_OPTIONS_URL,
             accessRights: 'AssetOption'
         },
         {
