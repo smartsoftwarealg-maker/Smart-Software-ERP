@@ -114,7 +114,7 @@ export const hrNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_HR_REPORTS_URL,
         },
         {

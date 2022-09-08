@@ -63,7 +63,7 @@ export const salesNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_SALES_REPORTS_URL,
         },
         {
