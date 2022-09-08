@@ -1,0 +1,90 @@
+<div class="main_container">
+    <div class="form_container">
+        <form *ngIf="form" novalidate [formGroup]="form">
+
+            <div style="height: 16px"></div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_AGENT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="agentAutoCompleteModel"
+                                  formControlName="agent"></ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_AMOUNT</mat-label>
+                <input matInput formControlName="due_days" type="amount" required>
+                <mat-error *ngIf="form.controls['due_days'].invalid" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_NUMBER</mat-label>
+                <input matInput formControlName="number" type="text" required>
+                <mat-error *ngIf="form.controls['number'].invalid" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_DATE</mat-label>
+                <ss-date-picker formControlName="date" [required]="true"></ss-date-picker>
+                <mat-error *ngIf="form.controls['date'].invalid" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_DUE_DAYS</mat-label>
+                <input matInput formControlName="due_days" type="number" required>
+                <mat-error *ngIf="form.controls['due_days'].invalid" translate>
+                    COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_BANK</mat-label>
+                <input matInput formControlName="bank" type="text">
+            </mat-form-field>
+
+            <div class="checkbox-container default-50 sm-100">
+                <mat-checkbox formControlName="deposited" translate>TRS_DEPOSITED</mat-checkbox>
+            </div>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_DEPOSIT_DATE</mat-label>
+                <ss-date-picker formControlName="depositDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_DEPOSIT_NUMBER</mat-label>
+                <input matInput formControlName="depositNumber" type="text">
+            </mat-form-field>
+            
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_MEMO</mat-label>
+                <input matInput formControlName="memo" type="text">
+            </mat-form-field>
+            
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>TRS_PROCESS_DATE</mat-label>
+                <ss-date-picker formControlName="processDate"></ss-date-picker>
+            </mat-form-field>
+
+            <div class="checkbox-container default-50 sm-100">
+                <mat-checkbox formControlName="canceled" translate>TRS_CANCELED</mat-checkbox>
+            </div>
+
+            <div style="height: 16px"></div>
+
+        </form>
+    </div>
+</div>

@@ -467,6 +467,22 @@
                 "libs/stock/ui-reception-lines/src/index.ts"
             ],
             "@ss/stock/ui-store": ["libs/stock/ui-store/src/index.ts"],
+            "@ss/treasury/api-check-books": [
+                "libs/treasury/api-check-books/src/index.ts"
+            ],
+            "@ss/treasury/api-checks": [
+                "libs/treasury/api-checks/src/index.ts"
+            ],
+            "@ss/treasury/api-journal": [
+                "libs/treasury/api-journal/src/index.ts"
+            ],
+            "@ss/treasury/ui-check-books": [
+                "libs/treasury/ui-check-books/src/index.ts"
+            ],
+            "@ss/treasury/ui-checks": ["libs/treasury/ui-checks/src/index.ts"],
+            "@ss/treasury/ui-journal": [
+                "libs/treasury/ui-journal/src/index.ts"
+            ],
             "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
             "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"]
         }

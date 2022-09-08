@@ -12,9 +12,10 @@ import {
     SideNavNode,
     strDropEndUntil,
     strTakeUntil,
-    UserRightsService
+    cloneDeep,
+    UserRightsService,
+    MainPageService
 } from '@ss/common/api-common';
-import * as _ from 'lodash';
 import {doc} from 'prettier';
 import debug = doc.debug;
 
@@ -98,6 +99,7 @@ export class ShellService {
 
     constructor(public langSrv: LanguageService,
                 public router: Router,
+                public mainPageSrv: MainPageService,
                 private rightsSrv: UserRightsService,
                 private loginSrv: LoginService) { }
 
@@ -179,7 +181,7 @@ export class ShellService {
         return tree
             .filter(t => t.visible)
             .map(i => {
-                const clone: SideNavNode = _.cloneDeep(i);
+                const clone: SideNavNode = cloneDeep(i);
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
             })
@@ -243,6 +245,7 @@ export class ShellService {
     public filterSideNav() {
         this.sideNavDataSrc.data = this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
         this.generateNavColors(this.navData);
+        this.mainPageSrv.display = this.navData;
         this.updateShell();
     }
 

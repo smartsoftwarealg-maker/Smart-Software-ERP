@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/treasury/ui-checks",
+    "sourceRoot": "libs/treasury/ui-checks/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/treasury/ui-checks"],
+            "options": {
+                "jestConfig": "libs/treasury/ui-checks/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/ui-checks/src/**/*.ts",
+                    "libs/treasury/ui-checks/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

@@ -39,3 +39,5 @@ export * from './lib/furniture-status.service';
 export * from './lib/work-master.service';
 export * from './lib/type.service';
 export * from './lib/discount.service';
+export * from './lib/lookup-description.pipe';
+export * from './lib/lookup.module';

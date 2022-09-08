@@ -35,6 +35,11 @@ export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 
+// treasury
+export const TREASURY_AGENT_URL = 'agents';
+export const TREASURY_CHECKS_URL = 'checks';
+export const TREASURY_CHECK_BOOKS_URL = 'checkBooks';
+export const TREASURY_JOURNALS_URL = 'journals';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -251,6 +256,12 @@ export const ABS_ORGANIZATIONS_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIO
 export const ABS_ORGANIZATIONS_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_DEPARTMENTS_URL].join('/');
 export const ABS_ORGANIZATIONS_SERVICES_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_SERVICES_URL].join('/');
 export const ABS_ORGANIZATIONS_OFFICES_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_OFFICES_URL].join('/');
+
+// treasury
+export const ABS_TREASURY_AGENT_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_AGENT_URL].join('/');;
+export const ABS_TREASURY_CHECKS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_CHECKS_URL].join('/');;
+export const ABS_TREASURY_CHECK_BOOKS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_CHECK_BOOKS_URL].join('/');;
+export const ABS_TREASURY_JOURNALS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_JOURNALS_URL].join('/');;
 
 // stock
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');

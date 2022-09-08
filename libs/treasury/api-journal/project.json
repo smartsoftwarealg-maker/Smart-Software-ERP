@@ -1,0 +1,26 @@
+{
+    "projectType": "library",
+    "root": "libs/treasury/api-journal",
+    "sourceRoot": "libs/treasury/api-journal/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/treasury/api-journal"],
+            "options": {
+                "jestConfig": "libs/treasury/api-journal/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/api-journal/src/**/*.ts",
+                    "libs/treasury/api-journal/src/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

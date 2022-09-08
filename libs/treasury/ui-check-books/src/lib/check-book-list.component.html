@@ -1,0 +1,43 @@
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table">
+
+            <ng-container matColumnDef="fromNumber">
+                <mat-header-cell *matHeaderCellDef translate>TRS_FROM_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.fromNumber}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="toNumber">
+                <mat-header-cell *matHeaderCellDef translate>TRS_TO_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.toNumber}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="bank">
+                <mat-header-cell *matHeaderCellDef translate>TRS_BANK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.bankName}}
+                    &nbsp;
+                    {{e.bankId | bankDescription | async}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="bookYear">
+                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>TRS_BOOK_YEAR</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: center">
+                    {{e.bookYear}}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>

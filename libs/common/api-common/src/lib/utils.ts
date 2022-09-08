@@ -129,7 +129,7 @@ export function dateToDmyStr(date: Date) {
 }
 
 export function dateToYmdStr(date: Date | string): string {
-    if (typeof date === 'string'  || date instanceof String) {
+    if (typeof date === 'string' || date instanceof String) {
         return <string>date;
     } else {
         return pad4(date.getFullYear())
@@ -141,7 +141,7 @@ export function dateToYmdStr(date: Date | string): string {
 }
 
 export function dateTimeToYmdStr(date: Date | string): string {
-    if (typeof date === 'string'  || date instanceof String) {
+    if (typeof date === 'string' || date instanceof String) {
         return <string>date;
     } else {
         return pad4(date.getFullYear())
@@ -188,6 +188,18 @@ export function isNumber(value: any): boolean {
 
 export function isDate(value: any): boolean {
     return value instanceof Date;
+}
+
+export function isObject(value) {
+    const type = typeof value
+    return value != null && (type === 'object' || type === 'function')
+}
+
+function getTag(value) {
+    if (value == null) {
+        return value === undefined ? '[object Undefined]' : '[object Null]'
+    }
+    return toString.call(value)
 }
 
 const ZERO_ASCII = 48;
@@ -266,3 +278,5 @@ export function strDropUntil(txt: string, token: string) {
 }
 
 export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
+
+
