@@ -15,7 +15,6 @@ export class CirculationComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-
     data: Circulation[];
     articleReference: string;
     articleId: number;
@@ -53,14 +52,9 @@ export class CirculationComponent implements OnInit {
     }
 
     loadCirculation() {
-        if (this.articleReference || this.articleId) {
-            const loader: Observable<Circulation[]> = this.articleReference ?
-                this.loadByReference(this.articleReference)
-                : this.loadById(this.articleId);
-            this.load(loader);
-        } else {
-            throw new Error('I could not find an id or a ref, plz fix me');
-        }
+        const loader: Observable<Circulation[]> = this.articleReference ?
+            this.loadByReference(this.articleReference) : this.loadById(this.articleId || 0);
+        this.load(loader);
     }
 
     loadById(id: number): Observable<Circulation[]> {

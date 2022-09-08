@@ -48,13 +48,4 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
                 }
             });
     }
-
-    processLoadedData(data: Payment[]): Observable<Payment[]> {
-        return this.agentSrv
-            .getByIDList(data.map(e => e.agent))
-            .pipe(map(res => {
-                data.forEach(e => e.denomination = res.find(a => a.id === e.agent)?.denomination)
-                return data;
-            }));
-    }
 }

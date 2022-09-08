@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from './assets-api';
 import {HttpService, LanguageService, PaginationModel} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
+import {Observable, retry} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {LanguagesService} from '@ss/common/api-lookup';
@@ -18,7 +18,9 @@ export class AssetsService extends BaseEntityService<Asset> {
 
     getDepreciation(id: number): Observable<Depreciation[][]> {
         const aid = id || 0;
-        return this.httpSrv.get<Depreciation[][]>(`/assets/depreciations/${aid}`);
+        return this.httpSrv
+            .get<Depreciation[][]>(`/assets/depreciations/${aid}`)
+            .pipe(retry({ count: 5, delay: 3000 }));
     }
 
     getMaxReference(): Observable<{reference: string}> {
