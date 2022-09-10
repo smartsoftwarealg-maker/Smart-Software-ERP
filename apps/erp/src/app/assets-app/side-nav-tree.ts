@@ -154,6 +154,7 @@ export const assetsNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_ASSETS_REPORTS_URL,
+            accessRights: 'Report'
         },
     ]
 };

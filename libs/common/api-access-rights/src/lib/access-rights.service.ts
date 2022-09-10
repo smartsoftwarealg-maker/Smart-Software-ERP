@@ -20,12 +20,12 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
         const params = new HttpParams().set('app', app);
         const url = '/entities';
         return app === 'APPLICATIONS' ?
-            of(['PAYROLL', 'PAYMENTS','WEBARCHIVE', 'LOGISTICS','ORGANIZATION', 'ACCOUNTING','SALES',
-                      'HRMASTER','PURCHASES', 'INVENTORY','ASSETS', 'ADMINISTRATION',
-                      'DASHBOARD', 'FINANCE', 'LOGISTICS-ADMINISTRATION']) : //'COMMON', , 'EXCHANGE'
+            of(['ACCOUNTING', 'ADMINISTRATION','ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
+                'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+                'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE'].sort((a, b) => a.localeCompare(b) )) : //'COMMON', , 'EXCHANGE'
             this.httpSrv
                 .get<{ entities: string[] }>(url, params)
-                .pipe(map(res => res['entities']));
+                .pipe(map(res => res['entities'].sort((a, b) => a.localeCompare(b))));
     }
 
     saveRights(r: AccessRight, form: string): Observable<any> {
