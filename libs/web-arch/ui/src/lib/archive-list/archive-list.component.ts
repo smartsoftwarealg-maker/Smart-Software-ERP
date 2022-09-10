@@ -10,7 +10,6 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ArchiveService} from '../archive.service';
 import {Observable, of} from 'rxjs';
-import {saveAs} from 'file-saver';
 
 @Component({
     selector: 'ss-archive-list',
@@ -171,7 +170,12 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
         } else {
             this.service.getImage(doc._id).subscribe(blob => {
                 if (blob) {
-                    saveAs(this.getBlob(blob, doc), this.getFileName(doc));
+                    // saveAs(this.getBlob(blob, doc), this.getFileName(doc));
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(this.getBlob(blob, doc));
+                    link.download = this.getFileName(doc);
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }
             });
         }

@@ -1,13 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ReportService } from '../report-service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { saveAs } from 'file-saver';
 import { map } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpService } from '../../../common/http.service';
-import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-report-catalog',
@@ -29,13 +26,11 @@ export class ReportViewComponent implements OnInit, OnDestroy {
     public isAndroid = false;
     public reportType = 'HTML';
 
-    constructor(public _route: ActivatedRoute,
-        private router: Router,
+    constructor(private router: Router,
         private _service: ReportService,
         private sanitizer: DomSanitizer,
         private httpSrv: HttpService,
-        private deviceService: DeviceDetectorService,
-        private loginSrv: LoginService) {
+        private deviceService: DeviceDetectorService) {
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
@@ -190,7 +185,8 @@ export class ReportViewComponent implements OnInit, OnDestroy {
                 this.writeThenOpenFile(res);
             } else {
                 if (this.reportType === 'EXCEL') {
-                    saveAs(res, 'excel.xlsx');
+                   // saveAs(res, 'excel.xlsx');
+                   window.open(URL.createObjectURL(res));
                 } else if (this.reportType === 'PDF') {
                     this.leftPaneHidden = true;
                     this.pdfSrc = URL.createObjectURL(res);

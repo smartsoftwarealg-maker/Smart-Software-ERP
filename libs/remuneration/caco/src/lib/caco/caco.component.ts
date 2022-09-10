@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {saveAs} from 'file-saver';
 import {zip} from 'rxjs';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
@@ -83,7 +82,13 @@ export class CacoComponent implements OnInit {
             .subscribe({
                 next: res => {
                     this.edoText = res.join('\n');
-                    saveAs(new Blob(res), '');
+                    // saveAs(new Blob(res), '');
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(new Blob(res));
+                    link.download = 'caco.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+
                     this.shellSrv.setLoading(false);
                 },
                 error: err => {
