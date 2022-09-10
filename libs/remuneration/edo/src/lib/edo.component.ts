@@ -6,7 +6,6 @@ import {BankService} from '@ss/administration/api-bank';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatSelectionList} from '@angular/material/list';
 import {EdoService} from './edo.service';
-import {saveAs} from 'file-saver';
 import {switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
@@ -47,7 +46,6 @@ export class EdoComponent implements OnInit {
                 }),
                 switchMap(_ => this.monthSrv.maxMonth()),
                 tap(res => this.curYear = +((res.month % 1_000_000)/100).toFixed(0) ),
-                tap(res => console.log(((res.month % 1_000_000)/100).toFixed(0) )),
                 switchMap(_ => this.edoSrv.getCenterBank()),
                 tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));
@@ -58,7 +56,6 @@ export class EdoComponent implements OnInit {
         const selection = this.blist.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
         this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
-        console.log(this.form.value)
         this.edoSrv
             .generate(this.form.value, selection)
             .subscribe({
@@ -85,7 +82,12 @@ export class EdoComponent implements OnInit {
             .subscribe({
                 next:
                     res => {
-                        saveAs(new Blob(res), filename)
+                        // saveAs(new Blob(res), filename)
+                        const link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(new Blob(res, { type: 'application/octet-stream' }));
+                        link.download = filename;
+                        link.click();
+                        setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                         this.shellSrv.setLoading(false);
                     },
                 error:

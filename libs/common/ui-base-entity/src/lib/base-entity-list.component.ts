@@ -7,7 +7,6 @@ import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityService} from "@ss/common/api-base-entity";
-import {saveAs} from 'file-saver';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
@@ -296,7 +295,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     public excel() {
         this.entitySrv
             .excel(this.filter)
-            .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
+            .subscribe(blob => {
+                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = this.entitySrv.constructor.name + '.xlsx';
+                link.click();
+                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+            });
     }
 
     public deleteSelected(): void {

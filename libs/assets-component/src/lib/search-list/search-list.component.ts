@@ -17,7 +17,6 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Office, OfficeService} from '@ss/common/api-lookup';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {saveAs} from 'file-saver';
 import {HttpParams} from '@angular/common/http';
 
 @Component({
@@ -160,7 +159,14 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
 
         this.entitySrv
             .excel(this.form.value['reference'])
-            .subscribe(blob => saveAs(blob, this.entitySrv.constructor.name + '.xlsx'));
+            .subscribe(blob => {
+                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = this.entitySrv.constructor.name + '.xlsx';
+                link.click();
+                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+            });
     }
 }
 

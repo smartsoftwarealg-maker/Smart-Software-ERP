@@ -1,16 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {BankService} from '@ss/administration/api-bank';
-import {SelectionModel} from '@angular/cdk/collections';
-import {MatSelectionList} from '@angular/material/list';
-import {saveAs} from 'file-saver';
-import {switchMap, tap, zip} from 'rxjs';
-import {EdoService} from '@ss/remuneration/edo';
+import {zip} from 'rxjs';
 import {DasService} from '../das.service';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
-import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
+import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
 
 interface Lookup {
@@ -86,7 +81,12 @@ export class DasComponent implements OnInit {
             .generate(value.year, value.fund, value.modes, value.periods, value.ssBase, value.absence)
             .subscribe({
                 next: res => {
-                    saveAs(new Blob(res.data), res.filename)
+                    // saveAs(new Blob(res.data), res.filename)
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(new Blob(res.data));
+                    link.download = res.filename;
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                     this.shellSrv.setLoading(false);
                 },
                 error: err => {
