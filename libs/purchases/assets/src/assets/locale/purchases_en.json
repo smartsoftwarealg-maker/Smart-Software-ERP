@@ -2,5 +2,6 @@
     "PURCHASE_ORDER": "Purchase Order",
     "EDIT_ORDER": "Edit purchase order",
     "EDIT_ORDER_LINES": "Edit order lines",
-    "QUOTATION": "Supplier quotation"
+    "QUOTATION": "Supplier quotation",
+    "PURCHASE_REQUEST": "Purchase request"
 }

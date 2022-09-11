@@ -2,5 +2,6 @@
     "PURCHASE_ORDER": "Bon de commande",
     "EDIT_ORDER": "Modification Bon de commande",
     "EDIT_ORDER_LINES": "Modification detail commande",
-    "QUOTATION": "Offre fournisseur"
+    "QUOTATION": "Offre fournisseur",
+    "PURCHASE_REQUEST": "Demande d'achat"
 }

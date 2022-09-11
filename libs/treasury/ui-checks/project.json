@@ -1,6 +1,5 @@
 {
     "projectType": "library",
-    "root": "libs/treasury/ui-checks",
     "sourceRoot": "libs/treasury/ui-checks/src",
     "prefix": "ss",
     "targets": {

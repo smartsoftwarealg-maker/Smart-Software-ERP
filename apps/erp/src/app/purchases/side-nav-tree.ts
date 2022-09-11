@@ -2,10 +2,15 @@ import {
     ABS_FINANCE_PAYMENT_ORDERS,
     ABS_FINANCE_SCOMPENSATIONS,
     ABS_FINANCE_SPAYMENTS,
-    ABS_PAYROLL_DASHBOARD_URL, ABS_PURCHASE_DASHBOARD_URL,
+    ABS_PAYROLL_DASHBOARD_URL,
+    ABS_PURCHASE_DASHBOARD_URL,
     ABS_PURCHASE_ORDER_URL,
     ABS_PURCHASE_QUOTATION_URL,
-    ABS_PURCHASE_RECEPTION_URL, ABS_PURCHASE_REPORTS_URL, ABS_STOCK_AGENT_URL, ABS_STOCK_REPORTS_URL
+    ABS_PURCHASE_RECEPTION_URL,
+    ABS_PURCHASE_REPORTS_URL,
+    ABS_PURCHASE_REQUEST_URL,
+    ABS_STOCK_AGENT_URL,
+    ABS_STOCK_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -25,6 +30,12 @@ export const purchasesNavTree: SideNavNode = {
             icon: 'fas fa-quote-left',
             route: ABS_PURCHASE_QUOTATION_URL,
             accessRights: 'SOffer'
+        },
+        {
+            name: 'PURCHASES_PURCHASE_REQUEST',
+            icon: 'fa-sharp fa-solid fa-basket-shopping-simple',
+            route: ABS_PURCHASE_REQUEST_URL,
+            accessRights: 'PRequest'
         },
         {
             name: 'PURCHASES_PURCHASE_ORDER',
