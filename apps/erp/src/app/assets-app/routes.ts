@@ -372,7 +372,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'assets'},
         component: ReportViewComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard]
+        canActivate: [CanActivateService]
     },
     {
         path: ASSETS_OFFICES_URL,

@@ -23,7 +23,6 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
 
     displayedColumns = [
         'position',
-        'store',
         'reference',
         'description',
         'qtyOrdered',

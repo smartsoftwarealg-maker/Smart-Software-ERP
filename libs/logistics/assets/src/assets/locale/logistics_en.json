@@ -143,5 +143,6 @@
     "DISCOUNTABLE":    "Discountable",
     "DRIVER":          "Driver",
     "DRIVER_LICENSE":  "Driver license",
-    "PLATE_NUMBER":    "Plate number"
+    "PLATE_NUMBER":    "Plate number",
+    "POSITION":        "Position"
 }

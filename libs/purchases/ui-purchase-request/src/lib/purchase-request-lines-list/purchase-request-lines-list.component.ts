@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
 
 @Component({
     selector: 'ss-purchase-request-lines-list',
@@ -15,17 +16,14 @@ export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesList
 
     displayedColumns = [
         'position',
-        'store',
         'reference',
         'description',
         'qtyOrdered',
         'qtySatisfied',
-        'price',
-        'vat',
     ];
 
     constructor(
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: PurchaseRequestLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
@@ -15,6 +15,9 @@ import {Transaction} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
+import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
+import {MatDialog} from '@angular/material/dialog';
+import {PurchaseOrderLinesListComponent} from './purchase-order-lines-list.component';
 
 @Component({
     selector: 'ss-ui-order-detail',
@@ -22,6 +25,8 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    @ViewChild(PurchaseOrderLinesListComponent) detail: PurchaseOrderLinesListComponent;
+
     private order: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
@@ -29,6 +34,14 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importDocument(),
+    }
 
     constructor(public orderService: PurchaseOrderService,
                 public shellSrv: ShellService,
@@ -42,6 +55,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 private loginService: LoginService,
                 private payMethodSrv: PayMethodService,
                 private loginSrv: LoginService,
+                private dialog: MatDialog,
+                private docImportService: DocImportService,
                 private currencySrv: CurrencyService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
@@ -53,6 +68,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
 
     public setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
+        this.order = form;
+        this.importBtn.disabled = form.agent == null || form.agent === undefined;
         if (!form.id) {
             form.id = 0;
             form.number = 0;
@@ -92,5 +109,38 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
     ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
+        this.shellSrv.addButton(this.importBtn);
+    }
+
+    private importDocument() {
+        if (!this.importBtn.disabled) {
+            const agentId = this.form.controls['agent'].value;
+            const dialogRef = this.dialog.open(DocImportComponent, {
+                width: '70%',
+                height: '55%',
+                data: { documentList: [ { id: 10, description: 'PURCHASES_PURCHASE_REQUEST' }],
+                    agentId: agentId}
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result && result['document']  && result['number']) {
+                    const document = result['document'];
+                    const number   = result['number'];
+                    this.docImportService
+                        .importDoc(document, number, this.order.id)
+                        .pipe(switchMap(_ => this.detail?.loadDetailLines()))
+                        .subscribe({
+                            next: res => {
+                                this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                                this.shellSrv.setLoading(false);
+                            },
+                            error: err => {
+                                this.snackBarSrv.showMessage('COMMON_FAILURE', true);
+                                this.shellSrv.setLoading(false);
+                            }
+                        });
+                }
+            });
+        }
     }
 }

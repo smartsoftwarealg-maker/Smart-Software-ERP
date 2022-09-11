@@ -19,10 +19,9 @@ export class PurchaseRequestListComponent  extends BaseTransactionListComponent 
     displayedColumns = [
         'number',
         'date',
-        'agent',
-        'payMethod',
         'reference',
         'referenceDocDate',
+        'dealerName'
     ];
 
     constructor(
