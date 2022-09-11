@@ -23,25 +23,25 @@ export const organizationsNavTree: SideNavNode = {
             name: 'COMMON_DIVISIONS',
             icon: 'fas fa-building',
             route: ABS_ORGANIZATIONS_DIVISIONS_URL,
-            accessRights: 'Division'
+            accessRights: 'ODivision'
         },
         {
             name: 'COMMON_DEPARTMENTS',
             icon: 'fas fa-building',
             route: ABS_ORGANIZATIONS_DEPARTMENTS_URL,
-            accessRights: 'Departments'
+            accessRights: 'Department'
         },
         {
             name: 'COMMON_SERVICES',
             icon: 'fas fa-building',
             route: ABS_ORGANIZATIONS_SERVICES_URL,
-            accessRights: 'Services'
+            accessRights: 'Service'
         },
         {
             name: 'COMMON_OFFICES',
             icon: 'fas fa-chair',
             route: ABS_ORGANIZATIONS_OFFICES_URL,
-            accessRights: 'Services'
+            accessRights: 'Office'
         }
     ]
 };
