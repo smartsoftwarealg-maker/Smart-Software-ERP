@@ -1,6 +1,5 @@
 {
     "projectType": "library",
-    "root": "libs/treasury/ui-journal",
     "sourceRoot": "libs/treasury/ui-journal/src",
     "prefix": "ss",
     "targets": {

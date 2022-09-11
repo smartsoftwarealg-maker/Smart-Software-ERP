@@ -1,6 +1,5 @@
 {
     "projectType": "library",
-    "root": "libs/treasury/api-checks",
     "sourceRoot": "libs/treasury/api-checks/src",
     "prefix": "ss",
     "targets": {

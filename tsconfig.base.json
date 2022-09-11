@@ -294,6 +294,9 @@
             "@ss/purchases/ui-purchase-order": [
                 "libs/purchases/ui-purchase-order/src/index.ts"
             ],
+            "@ss/purchases/ui-purchase-request": [
+                "libs/purchases/ui-purchase-request/src/index.ts"
+            ],
             "@ss/purchases/ui-quotation": [
                 "libs/purchases/ui-quotation/src/index.ts"
             ],

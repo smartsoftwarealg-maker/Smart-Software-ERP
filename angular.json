@@ -117,6 +117,7 @@
         "purchases-assets": "libs/purchases/assets",
         "purchases-payment-orders": "libs/purchases/payment-orders",
         "purchases-ui-purchase-order": "libs/purchases/ui-purchase-order",
+        "purchases-ui-purchase-request": "libs/purchases/ui-purchase-request",
         "purchases-ui-quotation": "libs/purchases/ui-quotation",
         "purchases-ui-reception": "libs/purchases/ui-reception",
         "remuneration-assets": "libs/remuneration/assets",

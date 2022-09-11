@@ -4,7 +4,7 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    PURCHASE_QUOTATION_URL
+    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
@@ -20,6 +20,11 @@ import {
 } from '@ss/purchases/ui-quotation';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {
+    PurchaseRequestDetailComponent,
+    PurchaseRequestLinesDetailComponent,
+    PurchaseRequestListComponent
+} from '../../../../../libs/purchases/ui-purchase-request/src';
 
 export const routes: Routes = [
     {
@@ -66,6 +71,32 @@ export const routes: Routes = [
             {
                 path: ':id',
                 component: PurchaseOrderDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: PURCHASE_REQUEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PurchaseRequestListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: PurchaseRequestLinesDetailComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PurchaseRequestDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
