@@ -31,7 +31,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DivisionsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
             },
             {
                 path: ':id',
