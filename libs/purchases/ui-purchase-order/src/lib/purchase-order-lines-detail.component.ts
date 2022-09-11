@@ -9,6 +9,7 @@ import {
     BaseTransactionLinesDetailComponent,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
+import {PurchaseOrderLinesService} from './purchase-order-lines.service';
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -18,7 +19,7 @@ import {
 export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: PurchaseOrderLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

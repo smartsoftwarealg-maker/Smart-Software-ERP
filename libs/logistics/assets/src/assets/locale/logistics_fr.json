@@ -142,5 +142,6 @@
     "DISCOUNTABLE":    "Remisable",
     "DRIVER":          "Discountable",
     "DRIVER_LICENSE":  "Chauffeur",
-    "PLATE_NUMBER":    "Matricule"
+    "PLATE_NUMBER":    "Matricule",
+    "POSITION": "Pos"
 }

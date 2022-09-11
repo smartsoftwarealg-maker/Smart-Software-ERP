@@ -69,7 +69,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
             document: [0],
             centerId: [0],
             date: [form.date || new Date(), Validators.required],
-            number: [form.number],
+            number: [{ value: form.number || 0, disabled: true }],
             reference: [form.reference],
             payMethod: [form.payMethod, Validators.required],
             referenceDocDate: [form.referenceDocDate],
@@ -78,7 +78,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
             discountDescription: [form.discountDescription],
             fixedDiscount: [form.fixedDiscount || 0.0],
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
-            dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager }, Validators.required],
+            dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager }],
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
             agent: [form.agent, Validators.required]

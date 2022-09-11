@@ -1,7 +1,7 @@
 .table-div {
     height: 60%;
     min-width: 100%;
-    min-height: 200px;
+    min-height: 300px;
     overflow-x: auto;
 }
 .main-table {
@@ -9,6 +9,7 @@
     height: 45%;
     min-height: 250px;
     margin: 0 auto;
+    min-width: 700px;
 }
 
 .main-container {
@@ -38,20 +39,23 @@
 }
 
 
-.mat-column-reference {
-    flex: 1 0 100px;
-}
 
 .mat-column-description {
     flex: 2 1 300px;
+    padding-left: 6px;
+    border-left: white solid 1px;
 }
 
+.mat-column-reference,
 .mat-column-qtySatisfied,
 .mat-column-qtyOrdered,
 .mat-column-price,
-.mat-column-vat  {
+.mat-column-vat,
+.mat-column-position {
     flex: 1 0 90px;
     justify-content: flex-end;
+    padding: 0 4px;
+    border-left: white solid 1px;
 }
 
 mat-header-cell {
@@ -59,6 +63,7 @@ mat-header-cell {
     font-weight: bolder;
     font-size: 0.75em;
     justify-content: center;
+    border-left: white solid 1px;
 }
 
 .add-button {

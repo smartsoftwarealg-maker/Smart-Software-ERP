@@ -6,6 +6,7 @@ import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {LookupsService, LotsService} from '@ss/common/api-lookup';
+import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
 
 @Component({
     selector: 'ss-purchase-request-lines-detail',
@@ -15,7 +16,7 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDetailComponent {
 
     constructor(
-        public override detailSrv: TransactionLinesService,
+        public override detailSrv: PurchaseRequestLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -25,14 +26,14 @@ export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDet
         public override storeNameSrv: LotsService,
         public override lookupsSrv: LookupsService) {
         super(detailSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            articleSrv,
-            storeNameSrv,
-            lookupsSrv,
-            'PURCHASES_PURCHASE_REQUEST');
+              shellSrv,
+              snackBarSrv,
+              route,
+              formBuilder,
+              confirmationSrv,
+              articleSrv,
+              storeNameSrv,
+              lookupsSrv,
+              'PURCHASES_PURCHASE_REQUEST');
     }
 }

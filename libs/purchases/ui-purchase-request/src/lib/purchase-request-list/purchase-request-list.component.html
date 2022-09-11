@@ -10,12 +10,6 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="payMethod">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PAY_METHOD</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.payMethodName }}
-                </mat-cell>
-            </ng-container>
 
 
             <ng-container matColumnDef="date">
@@ -39,20 +33,12 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="dealer">
+            <ng-container matColumnDef="dealerName">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_DEALER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.dealerName }}
                 </mat-cell>
             </ng-container>
-
-            <ng-container matColumnDef="agent">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.agentName }}
-                </mat-cell>
-            </ng-container>
-
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"

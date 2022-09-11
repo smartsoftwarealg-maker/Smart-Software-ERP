@@ -1,5 +1,4 @@
 .main-container {
-    height: 100%;
     width: 98%;
     margin: 0 auto;
     max-width: 1200px;
@@ -18,8 +17,7 @@ mat-header-cell {
 .table-container  {
     width: 100%;
     margin: 0 auto;
-    flex: 1 0 50%;
-    overflow-x: auto;
+    flex: 1 0 60%;
 }
 
 
@@ -36,18 +34,15 @@ mat-header-cell {
 
 
 .doc-info {
-    height: 100%;
     width: 100%;
     margin: 0 auto;
     flex: 1 1 40%;
-    overflow-x: auto;
 }
 
 .main-table {
     width: 94%;
     min-width: 1000px;
     margin: 0 auto;
-    min-height: 300px;
 }
 
 
@@ -57,28 +52,21 @@ mat-header-cell {
 }
 
 .mat-column-agent {
-    flex: 1 1 150px;
+    flex: 3 1 200px;
 }
 
+.mat-column-referenceDocDate,
+.mat-column-reference,
 .mat-column-date,
 .mat-column-locked,
 .mat-column-dirty,
 .mat-column-number {
-    flex: 0 1 100px;
-}
-
-.mat-column-reference {
     flex: 1 1 100px;
 }
 
-.mat-column-referenceDocDate {
-    flex: 1 0 100px;
-}
 
+
+.mat-column-dealerName,
 .mat-column-payMethod {
-    flex: 1 1 150px;
-}
-
-.mat-column-dealer {
-    flex: 1 0 150px;
+    flex: 1 1 120px;
 }
