@@ -31,7 +31,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         public confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
-        super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNALS');
+        super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNAL');
     }
 
     public preload(): Observable<any> {

@@ -29,7 +29,7 @@ export const treasuryNavTree: SideNavNode = {
             accessRights: 'CheckBooks'
         },
         {
-            name: 'TRS_JOURNAL',
+            name: 'TRS_JOURNALS',
             icon: 'fas fa-check',
             route: ABS_TREASURY_JOURNALS_URL,
             accessRights: 'Journals'
