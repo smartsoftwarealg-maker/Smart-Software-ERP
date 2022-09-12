@@ -53,7 +53,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         return this.formBuilder.group({
             id: [a.id],
             center: [a.center || this.loginSrv.appCtx.center],
-            number: [a.number],
+            number: [a.number || 0],
             bankId: [a.bankId],
             bank: [a.bank],
             description: [a.description, Validators.required],

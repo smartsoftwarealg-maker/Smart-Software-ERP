@@ -1,5 +1,6 @@
 .main-container {
-    height: 100%;
+    margin-top: 8px;
+    height: calc(100% - 72px);
     width: 100%;
     max-width: 99%;
     display: flex;
@@ -24,6 +25,7 @@
 
 .pagination-container {
     flex: 0 0 auto;
+    width: 100%;
     ss-pagination {
         left: 0;
         right: 0;
