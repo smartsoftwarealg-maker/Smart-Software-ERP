@@ -2,7 +2,7 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field id="position" class="default-50 sm-100">
+            <mat-form-field id="position" class="default-50 sm-50">
                 <mat-label translate>LOGISTICS_POSITION</mat-label>
                 <input matInput formControlName="position" type="number">
             </mat-form-field>
@@ -38,7 +38,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="qtySatisfied" class="default-50 sm-100">
+            <mat-form-field id="qtySatisfied" class="default-50 sm-50">
                 <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
                 <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
                 <mat-error
@@ -46,7 +46,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="price" class="default-50 sm-100">
+            <mat-form-field id="price" class="default-50 sm-50">
                 <mat-label translate>LOGISTICS_PRICE</mat-label>
                 <input matInput formControlName="price" type="number" step=".01" required>
                 <mat-error

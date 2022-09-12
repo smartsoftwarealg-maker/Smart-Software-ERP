@@ -7,6 +7,8 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {OptionService} from '../../../../logistics/ui-options/src/lib/option.service';
+import {Observable, tap} from 'rxjs';
 
 
 @Component({
@@ -40,6 +42,7 @@ export class StoreNameListComponent extends BaseEntityListComponent<Store> {
     styleUrls: ['./base-templates/detail-template.scss']
 })
 export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
+    private mainStore = 0;
 
     constructor(
         private loginSrv: LoginService,
@@ -48,22 +51,29 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public formBuilder: UntypedFormBuilder,
+        private optionSrv: OptionService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_STORE_NAME');
+    }
+
+    preload(): Observable<any> {
+        return this.optionSrv
+            .get(this.loginSrv.appCtx.center)
+            .pipe(tap(res => this.mainStore = res.mainStore));
     }
 
     public setupForm(e: Store): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
-            centerId: [this.loginSrv.appCtx.center]
+            centerId: [e.centerId || this.loginSrv.appCtx.center],
+            expires: [e.expires],
+            storeId: [1]
         });
     }
 
     readForm(): Store {
-        const store = super.readForm();
-        store.centerId = this.loginSrv.appCtx.center;
-        return store;
+        return this.form.getRawValue();
     }
 }
 

@@ -55,17 +55,17 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     finishLoading(e: TransactionLine) {
         super.finishLoading(e);
-        const subs1 = this.form.get('qtySatisfied').valueChanges.subscribe(next => {
-            if (typeof next === 'number') {
-                if (next > 0.0 && this.selectedRow.reference) {
-                    this.form.get('reference').disable();
-                    this.form.get('store').disable();
-                } else {
-                    this.form.get('reference').enable();
-                    this.form.get('store').enable();
-                }
-            }
-        });
+        // const subs1 = this.form.get('qtySatisfied').valueChanges.subscribe(next => {
+        //     if (typeof next === 'number') {
+        //         if (next > 0.0 && this.selectedRow.reference) {
+        //             this.form.get('reference').disable();
+        //             this.form.get('store').disable();
+        //         } else {
+        //             this.form.get('reference').enable();
+        //             this.form.get('store').enable();
+        //         }
+        //     }
+        // });
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
                 if (next > 0.0 && this.selectedRow?.reference) {
@@ -77,7 +77,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
                 }
             }
         });
-        this.subscriptions.push(subs1);
+        // this.subscriptions.push(subs1);
         this.subscriptions.push(subs2);
     }
 

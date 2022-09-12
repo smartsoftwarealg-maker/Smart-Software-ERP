@@ -1,54 +1,55 @@
-<mat-table mat-table [dataSource]="data" class="main-table">
+<div class="table_div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
-    <ng-container matColumnDef="store">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.store}}
-        </mat-cell>
-    </ng-container>
-
-
-    <ng-container matColumnDef="reference">
-        <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{ e.reference }}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="description2">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{ e.description2 }}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="computedStock">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_COMPUTED_STOCK</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{ e.computedStock | number: '1.2'}}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="actualStock">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_ACTUAL_STOCK</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{ e.actualStock | number: '1.2' }}
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="diff">
-        <mat-header-cell *matHeaderCellDef translate>STOCK_DIFFERENCE</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{ e.diff | number: '1.2' }}
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="store">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.store}}
+            </mat-cell>
+        </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.reference === selectedReference" (click)="selectRow(row)"
-             *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.reference }}
+            </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="description2">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description2 }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="computedStock">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_COMPUTED_STOCK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.computedStock | number: '1.2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actualStock">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_ACTUAL_STOCK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.actualStock | number: '1.2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="diff">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_DIFFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.diff | number: '1.2' }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.reference === selectedReference" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
