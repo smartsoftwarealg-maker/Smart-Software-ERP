@@ -20,8 +20,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
         'description',
         'jType',
         'bankId',
-        'bankAccount',
-        'typeName'
+        'bankAccount'
     ];
 
     constructor(

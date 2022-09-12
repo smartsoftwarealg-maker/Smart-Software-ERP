@@ -51,7 +51,7 @@ export const navBar = [
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,
-//    treasuryNavTree,
+    treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree
 ];

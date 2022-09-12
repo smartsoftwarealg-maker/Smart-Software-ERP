@@ -12,7 +12,8 @@
             <ng-container matColumnDef="jType">
                 <mat-header-cell *matHeaderCellDef translate>TRS_JOURNAL_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.jType | lookup:'/lookups/journal_types' | async}}
+                    <!--{{e.jType | lookup:'/lookups/journal_types' | async}}-->
+                    {{e.typeName}}
                 </mat-cell>
             </ng-container>
 
@@ -27,13 +28,6 @@
                 <mat-header-cell *matHeaderCellDef translate>TRS_BANK_ACCOUNT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.bankAccount}}
-                </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="typeName">
-                <mat-header-cell *matHeaderCellDef translate>TRS_TYPE_NAME</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.typeName}}
                 </mat-cell>
             </ng-container>
 

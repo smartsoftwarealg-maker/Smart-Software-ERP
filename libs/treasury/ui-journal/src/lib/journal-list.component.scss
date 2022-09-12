@@ -1,4 +1,4 @@
-$table_width: 902px;
+$table_width: 726px;
 
 :host {
     display: inline-block;
@@ -43,12 +43,6 @@ $table_width: 902px;
 }
 
 .mat-column-bankAccount {
-    flex: 0 0 160px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
-.mat-column-typeName {
     flex: 0 0 160px;
     padding-right: 8px !important;
     padding-left: 8px !important;

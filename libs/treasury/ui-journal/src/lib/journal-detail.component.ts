@@ -6,6 +6,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService, LoginService } from '@ss/common/api-common';
+import { Observable } from 'rxjs';
+import { LookupsService, Bank, Lookup } from '@ss/common/api-lookup';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-journal-detail',
@@ -14,10 +17,12 @@ import { HttpService, LoginService } from '@ss/common/api-common';
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
 
-
+    banks: Bank[];
+    journalTypes: Lookup[];
 
     constructor(
         public journalSrv: JournalService,
+        public lookupsSrv: LookupsService,
         public loginSrv: LoginService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -29,9 +34,24 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNALS');
     }
 
+    public preload(): Observable<any> {
+        return this.lookupsSrv.getBanks()
+            .pipe(
+                tap(x => { this.banks = x }),
+                switchMap(() => this.lookupsSrv.getJournalTypes()),
+                tap(x => { this.journalTypes = x }),
+            );
+    }
+
     public setupForm(a: Journal) {
         this.id = a.id;
         return this.formBuilder.group({
+            id: [a.id],
+            description: [a.description, Validators.required],
+            jType: [a.jType, Validators.required],
+            bankId: a.bankId,
+            bankAccount: a.bankAccount,
+            centerId: a.centerId
         });
     }
 }
