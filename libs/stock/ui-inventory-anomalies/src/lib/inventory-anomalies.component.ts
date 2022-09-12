@@ -47,6 +47,7 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.editButton.visible = false;
+        this.pagination.pageSize = 15;
     }
 
     fixAnomalies() {

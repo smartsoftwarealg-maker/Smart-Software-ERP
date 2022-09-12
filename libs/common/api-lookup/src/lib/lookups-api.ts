@@ -142,6 +142,7 @@ export interface Store {
     id: number;
     centerId: number;
     description: string;
+    expires: boolean;
 }
 
 export interface Unit {

@@ -11,16 +11,17 @@ export interface ArticleStore {
     storeId: number;
     referenceId: number;
     reference: string;
-    stock: number;
-    pp: number;
+    stock?: number;
+    pp?: number;
     price1: number;
     price2: number;
     price3: number;
     price4: number;
     price5: number;
-    inventPMP: number;
-    inventStock: number;
-    theoStock: number;
+    inventPMP?: number;
+    inventStock?: number;
+    theoStock?: number;
     blockedLot: boolean;
+    storeName?: string;
 }
 
