@@ -22,7 +22,7 @@ export class EmployeeDecisionListComponent implements OnInit, OnDestroy {
         'dec_reference',
         'dec_date',
         'application_date',
-        'dec_motive',
+        'motiveName',
         'application_period',
         'dec_header'
     ];
@@ -94,8 +94,7 @@ export class EmployeeDecisionListComponent implements OnInit, OnDestroy {
     }
 
     public showDetail(id: number) {
-        this.router.navigate([DECISION_ROUTE_URL, id], { relativeTo: this.route })
-            .then();
+        this.router.navigate([DECISION_ROUTE_URL, id], { relativeTo: this.route }).then();
     }
 
     ngOnDestroy() {

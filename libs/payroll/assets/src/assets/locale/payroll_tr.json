@@ -110,6 +110,7 @@
     "TRAINING_EXPENSES": "Training expenses",
     "EXTRA_EXPENSES":     "Extra expenses",
     "JUDICIAL_FRAME":     "Judicial frame",
+    "JUDICIAL_FRAMES":     "Judicial frames",
     "STARTING_MONTH":     "",
     "CHILDREN" : "",
     "LANGUAGES": "Languages",
@@ -118,7 +119,9 @@
     "LANGUAGE_WRITE_LEVEL": "Write level",
     "OLD_CAREERS": "Ancienne carrière",
     "EMPLOYEE_SUMMARY": "Statistiques",
-    "WORKSHOP":         "",
+    "WORKSHOP":           "",
     "APPLICATION_DATE":   "",
-    "APPLICATION_PERIOD": ""
+    "APPLICATION_PERIOD": "",
+    "MOTIVES":            "",
+    "CONTRACT_MOTIVES":   ""
 }

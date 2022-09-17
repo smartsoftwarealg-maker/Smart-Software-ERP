@@ -1,14 +1,24 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { Observable, of } from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { HttpService } from '@ss/common/api-common';
-import { Contract, EmployeeContractService } from '@ss/payroll/api-employee';
-import { Post, LookupsService, Department, Division, Service, Category } from '@ss/common/api-lookup';
+import {HttpService, LoginService} from '@ss/common/api-common';
+import {Contract, ContractMotiveService, EmployeeContractService, MotiveService} from '@ss/payroll/api-employee';
+import {
+    Post,
+    LookupsService,
+    Department,
+    Division,
+    Service,
+    Category,
+    PostService,
+    WorkshopService
+} from '@ss/common/api-lookup';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -17,6 +27,8 @@ import { Post, LookupsService, Department, Division, Service, Category } from '@
     styleUrls: ['./employee-contracts-detail.component.scss']
 })
 export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<Contract> implements OnInit, OnDestroy {
+    postLookup = new DefaultAutoCompleteModel(this.postSrv);
+    motiveLookup = new DefaultAutoCompleteModel(this.motiveSrv);
 
     entity: Contract;
     posts: Post[] = [];
@@ -35,8 +47,11 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
-        super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CONTRACT');
+        public lookupsSrv: LookupsService,
+        private postSrv: PostService,
+        private motiveSrv: ContractMotiveService,
+        private loginSrv: LoginService) {
+        super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CONTRACTS');
     }
 
     protected getRouteParam(): Observable<any> {
@@ -55,11 +70,11 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee,
-            centerId: a.centerId,
+            centerId: a.centerId | this.loginSrv.appCtx.center,
             number: [a.number, Validators.required],
-//            info: a.info,
+            info: a.info,
             post: [a.post, Validators.required],
-            recordNumber: [a.recordNumber],
+            recordNumber: [a.recordNumber, Validators.required],
             date: a.date,
             valid_date: a.valid_date,
             division: a.division,
@@ -68,7 +83,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
             salary_rank: a.salary_rank,
             salarygrid: a.salarygrid,
             fromdate: [a.fromdate, Validators.required],
-            todate: a.todate,
+            todate: [a.todate, Validators.required],
             trial_period: [a.trial_period, Validators.required],
             related_contract: a.related_contract,
             basesalary: a.basesalary,
@@ -98,6 +113,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
     public readForm(): Contract {
         const formVal = this.form.value as Contract;
         formVal.employee = this.parentId;
+        formVal.centerId = this.loginSrv.appCtx.center;
         return formVal;
     }
 }

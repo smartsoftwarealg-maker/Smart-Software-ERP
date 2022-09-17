@@ -45,7 +45,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RouterModule
+        RouterModule,
     ],
     exports: [
         EmployeeListComponent,
@@ -57,7 +57,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         EmployeeLanguagesDetailComponent,
         EmployeeOldCareerDetailComponent,
         EmployeeDecisionDetailComponent,
-        PersonListComponent
+        PersonListComponent,
     ],
     declarations: [
         EmployeeListComponent,
@@ -85,8 +85,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         EmployeeDecisionDetailComponent,
         EmployeeDecisionListComponent,
         PersonListComponent,
-        PaymentInfoComponent
-     ]
+        PaymentInfoComponent,
+    ],
 })
-export class PayrollUiEmployeeModule {
-}
+export class PayrollUiEmployeeModule {}

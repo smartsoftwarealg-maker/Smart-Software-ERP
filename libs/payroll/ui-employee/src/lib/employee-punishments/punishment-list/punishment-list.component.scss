@@ -1,9 +1,3 @@
-$table_width: 600px;
-
-:host {
-    display: inline-block;
-    width: 100%;
-}
 
 // keep the material design specs
 .mat-row, .mat-header-row {
@@ -12,14 +6,16 @@ $table_width: 600px;
 }
 
 .table-container {
-    width: 100%;
+    width: 96%;
     display: block;
-    margin: auto;
-    max-width: $table_width;
+    margin: 0 auto;
+    max-width: 1200PX;
     overflow-y: auto;
 }
+
 mat-table {
-    width: 600px;
+    width: 100%;
+    min-width: 700px;
     min-height: 180px;
 }
 
@@ -35,7 +31,7 @@ mat-table {
 .mat-column-typeName,
 .mat-column-faultName,
 .mat-column-memo {
-    flex: 1 1 120px;
+    flex: 2 1 120px;
 }
 
 .mat-column-date,

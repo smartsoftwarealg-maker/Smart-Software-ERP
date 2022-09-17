@@ -24,6 +24,7 @@ export const FLOORS_URL    = '/organizations/floors';
 
 export const APP_ARCHIVE_DOCUMENTS_URL = '/lookups/archive_documents';
 export const MARKS_URL = '/lookups/marks';
+export const DAIRA_URL = '/lookups/regions';
 export const TYPES_URL = '/lookups/types';
 export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
@@ -161,7 +162,9 @@ export interface City {
     postalCode?: string;
     descriptionAr?: string;
     wilaya?: number;
-    wilayaDescr?: string;
+    wilayaDescription?: string;
+    daira?: number;
+    dairaDescription?: string;
 }
 
 export interface Country {

@@ -224,11 +224,13 @@
     "RATE":                "النسبة",
     "RECEPTION":           "استقبال",
     "UPLOAD":              "تحميل",
-    "COLOR":               "اللون",
-    "CREATED_BY":          "انشأ من قبل",
+    "COLOR":               "اللون",    "CREATED_BY":          "انشأ من قبل",
     "MODIFIED_BY":         "التعديل الأخير من قبل",
     "OLD_BALANCE":         "التوازن القديم",
     "BALANCE":             "الرصيد",
     "PRODUCT":             "منتج",
-    "DOUBLE_CLICK_OPEN":   "انقر نقرًا مزدوجًا للفتح"
+    "DOUBLE_CLICK_OPEN":   "انقر نقرًا مزدوجًا للفتح",
+    "DAIRAS":               "الدوائر",
+    "CITY":                 "المدينة",
+    "DAIRA":               "الدائرة"
 }

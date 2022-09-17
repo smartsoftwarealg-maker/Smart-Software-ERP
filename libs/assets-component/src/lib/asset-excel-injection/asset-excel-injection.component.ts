@@ -77,6 +77,10 @@ export class AssetExcelInjectionComponent implements OnInit {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
+    onChange(e: any) {
+        this.fileName = e[0]?.name;
+    }
+
     onFileSelected(files: any) {
         this.processing = true;
         const file:File = files[0];

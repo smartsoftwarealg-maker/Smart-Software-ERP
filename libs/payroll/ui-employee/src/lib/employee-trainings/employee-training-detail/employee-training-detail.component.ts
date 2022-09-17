@@ -42,7 +42,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             snackBarSrv, route,
             formBuilder,
             confirmationSrv,
-            'PAYROLL_PUNISHMENTS');
+            'PAYROLL_TRAINING');
     }
 
     protected getRouteParam(): Observable<any> {

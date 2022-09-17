@@ -29,6 +29,7 @@ export class EmployeeContractListComponent implements OnInit, OnDestroy {
     @Input()
     set personId(id: number) {
         this.entitySrv.setParentId(id);
+        this.refresh();
     }
 
     public displayedColumns = [

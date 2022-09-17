@@ -9,6 +9,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable, of, map} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
+import {DairaService} from '../../../api-lookup/src/lib/dira.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class CityListComponent extends BaseEntityListComponent<City> {
 
-    displayedColumns = ['description', 'descriptionAr', 'wilaya'];
+    displayedColumns = ['description', 'descriptionAr', 'dairaDescription', 'wilayaDescription'];
 
     constructor(
         public citySrv: CityService,
@@ -28,20 +29,9 @@ export class CityListComponent extends BaseEntityListComponent<City> {
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public router: Router,
-        private wilayaSrv: WilayaService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(citySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CITIES');
     }
-
-    processLoadedData(data: City[]): Observable<City[]> {
-        return this.wilayaSrv
-            .getByIDs(data.map(c => c.wilaya || 0))
-            .pipe(map(wilayas => {
-                data.forEach(c => c.wilayaDescr = wilayas.find(w => w.id === c.wilaya)?.description);
-                return data;
-            }));
-    }
-
 }
 
 
@@ -52,10 +42,12 @@ export class CityListComponent extends BaseEntityListComponent<City> {
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {
     wilayLookupModel = new DefaultAutoCompleteModel(this.wilayaSrv);
+    dairaLookupModel = new DefaultAutoCompleteModel(this.dairaSrv);
 
     constructor(
         public citySrv: CityService,
-        public wilayaSrv: WilayaService,
+        private wilayaSrv: WilayaService,
+        private dairaSrv: DairaService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -69,6 +61,7 @@ export class CityDetailComponent extends BaseEntityDetailComponent<City> {
             id: e.id,
             description: [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
+            daira: [e.daira],
             wilaya: [e.wilaya]
         });
     }

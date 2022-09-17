@@ -4,13 +4,13 @@
     <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_CONTRACT_NUMBER</mat-label>
+            <mat-label translate>COMMON_NUMBER</mat-label>
             <input matInput required [maxLength]="20" formControlName="number">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_CONTRACT_RECORD_NUMBER</mat-label>
-            <input matInput [maxLength]="20" formControlName="recordNumber">
+            <mat-label translate>COMMON_REFERENCE</mat-label>
+            <input matInput [maxLength]="20" formControlName="recordNumber" required>
         </mat-form-field>
 
         <!--mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -28,7 +28,7 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_TO</mat-label>
-            <ss-date-picker formControlName="todate"></ss-date-picker>
+            <ss-date-picker required="true" formControlName="todate"></ss-date-picker>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -43,12 +43,12 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_POST</mat-label>
-            <mat-select formControlName="post">
-                <mat-option *ngFor="let v of posts" [value]="v.id">
-                    {{v.description}}
-                </mat-option>
-            </mat-select>
+            <ss-auto-complete matInput
+                              formControlName="post"
+                              [model]="postLookup">
+            </ss-auto-complete>
         </mat-form-field>
+
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_DIVISION</mat-label>
@@ -79,22 +79,22 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_BASE_SALARY</mat-label>
-            <input matInput formControlName="basesalary" type="number" style="text-align: center;">
+            <input matInput formControlName="basesalary" type="number" style="text-align: end;">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_SALARY_RANK</mat-label>
-            <input matInput formControlName="salary_rank" type="number" style="text-align: center;">
+            <input matInput formControlName="salary_rank" type="number" style="text-align: end;">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_SALARY_GRID</mat-label>
-            <input matInput formControlName="salarygrid" type="number" style="text-align: center;">
+            <input matInput formControlName="salarygrid" type="number" style="text-align: end;">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_TRIAL_PERIOD</mat-label>
-            <input matInput formControlName="trial_period" type="number" style="text-align: center;">
+            <input matInput formControlName="trial_period" type="number" style="text-align: end;">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -104,7 +104,11 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_MOTIVE</mat-label>
-            <input matInput [maxLength]="96" formControlName="motive">
+            <ss-auto-complete matInput
+                              formControlName="info"
+                              [model]="motiveLookup">
+            </ss-auto-complete>
         </mat-form-field>
+
     </form>
 </div>
