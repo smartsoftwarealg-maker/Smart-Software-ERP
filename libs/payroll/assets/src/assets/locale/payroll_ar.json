@@ -116,6 +116,7 @@
     "TRAINING_EXPENSES":"نفقات التدريب" ,
     "EXTRA_EXPENSES":    "نفقات إضافية",
     "JUDICIAL_FRAME":    "الإطار القضائي",
+    "JUDICIAL_FRAMES":    "الأطر القضائي",
     "PUNISHMENT_TYPE":   "نوع العقوبة",
     "FAULTS":             "خطأ",
     "FAULT":             "أخطاء",
@@ -132,5 +133,7 @@
     "EMPLOYEE_SUMMARY": "الإحصائيات",
     "WORKSHOP":         "الموقع",
     "APPLICATION_DATE":   "تاريخ التنفيذ",
-    "APPLICATION_PERIOD": "دورة التنفيذ"
+    "APPLICATION_PERIOD": "دورة التنفيذ",
+    "DECISION_MOTIVES":   "أهداف التقارير",
+    "CONTRACT_MOTIVES":   "دوافع العقد"
 }

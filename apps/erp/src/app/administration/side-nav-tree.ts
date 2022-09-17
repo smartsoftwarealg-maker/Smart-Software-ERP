@@ -11,7 +11,11 @@ import {
     ABS_ADMINISTRATION_COUNTRY_URL,
     ABS_ADMINISTRATION_CITY_URL,
     ABS_ADMINISTRATION_WILAYA_URL,
-    ABS_ADMINISTRATION_ATTRIBUTES_URL, ABS_DB_UPDATER_URL, ABS_APP_ARCHIVE_DOCUMENTS_URL, LOGISTICS_DOCUMENT_URL
+    ABS_ADMINISTRATION_ATTRIBUTES_URL,
+    ABS_DB_UPDATER_URL,
+    ABS_APP_ARCHIVE_DOCUMENTS_URL,
+    ABS_LOGISTICS_DOCUMENT_URL,
+    ABS_ADMINISTRATION_DAIRAS_URL, ABS_ADMINISTRATION_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -40,9 +44,15 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_WILAYAS',
-            icon: 'fas fa-route-interstate',
+            icon: 'fa-regular fa-earth-africa',
             route: ABS_ADMINISTRATION_WILAYA_URL,
             accessRights: 'Wilaya'
+        },
+        {
+            name: 'COMMON_DAIRAS',
+            icon: 'fa-sharp fa-solid fa-map-location-dot',
+            route: ABS_ADMINISTRATION_DAIRAS_URL,
+            accessRights: 'Daira'
         },
         {
             name: 'COMMON_CITIES',
@@ -89,7 +99,7 @@ export const administrationNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_DOCUMENT_NUMBERING',
             icon: 'fas fa-list-ol',
-            route: LOGISTICS_DOCUMENT_URL,
+            route: ABS_ADMINISTRATION_DOCUMENT_URL,
             accessRights: 'Document'
         },
         {

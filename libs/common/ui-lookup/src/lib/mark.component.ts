@@ -8,7 +8,6 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
-
 @Component({
     selector: 'ss-mark-list',
     templateUrl: './base-templates/list-template.html',

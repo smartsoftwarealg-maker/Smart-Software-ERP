@@ -1,5 +1,5 @@
 <div class="form_container">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" style="width: 700px">
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
@@ -15,10 +15,17 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="wilaya">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_WILAYAS</mat-header-cell>
+        <ng-container matColumnDef="dairaDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DAIRA</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.wilayaDescr}}
+                {{e.dairaDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="wilayaDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_WILAYA</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.wilayaDescription}}
             </mat-cell>
         </ng-container>
 

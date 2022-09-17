@@ -1,7 +1,7 @@
 .container {
     height: calc(100% - 64px);
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     overflow-y: auto;
 }
@@ -16,10 +16,12 @@
     padding-left: 16px;
 }
 
-.mat-column-description {
-    flex: 0 0 268px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-description
+.mat-column-descriptionAr,
+{
+    flex: 1 1 250px;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
 }
 
 .pagination-container {

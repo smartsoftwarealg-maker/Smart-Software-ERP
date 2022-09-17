@@ -7,8 +7,9 @@ import { Observable, of } from 'rxjs';
 import { tap, switchMap, map } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService, LoginService } from '@ss/common/api-common';
-import { EmployeeDecisionService, Decision } from '@ss/payroll/api-employee';
+import {EmployeeDecisionService, Decision, MotiveService, DecisionMotiveService} from '@ss/payroll/api-employee';
 import { LookupsService } from '@ss/common/api-lookup';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-emp-decision-detail',
@@ -16,6 +17,7 @@ import { LookupsService } from '@ss/common/api-lookup';
     styleUrls: ['./employee-decision-detail.component.scss']
 })
 export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<Decision> implements OnInit, OnDestroy {
+    decisionLookup = new DefaultAutoCompleteModel(this.motiveSrv);
 
     entity: Decision;
 
@@ -30,8 +32,9 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public loginSrv: LoginService,
-        public lookupsSrv: LookupsService) {
-        super(employeeDecisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_DECISION');
+        public lookupsSrv: LookupsService,
+        private motiveSrv: DecisionMotiveService) {
+        super(employeeDecisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DECISIONS');
     }
 
     protected getRouteParam(): Observable<any> {

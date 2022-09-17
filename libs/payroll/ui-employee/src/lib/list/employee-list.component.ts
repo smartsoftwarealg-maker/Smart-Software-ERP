@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { ShellService, SnackBarService, ToolbarButton, KeepOnToolbar, ToolbarLabel } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee as IEmployee, EmployeeService } from '@ss/payroll/api-employee';
+import { Employee, EmployeeService } from '@ss/payroll/api-employee';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
@@ -16,18 +16,12 @@ interface Lookup {
     description: string;
 }
 
-// frontend only
-interface Employee extends IEmployee {
-    fullName: string;
-    imageModel: ImageModel;
-}
-
 @Component({
     selector: 'ss-employee-list',
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html'
 })
-export class EmployeeListComponent extends BaseEntityListComponent<IEmployee> implements OnInit {
+export class EmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
     activePersonnel = true;
     public displayedColumns = [
         'id',

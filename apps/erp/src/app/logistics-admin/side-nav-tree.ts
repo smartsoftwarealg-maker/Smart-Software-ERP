@@ -9,7 +9,7 @@ import {
     ABS_STOCK_AGENT_URL,
     ABS_LOGISTICS_AGENT_URL,
     ABS_FINANCE_PAYMENTS,
-    ABS_LOGISTICS_VAT_URL, LOGISTICS_DOCUMENT_URL
+    ABS_LOGISTICS_VAT_URL, ABS_LOGISTICS_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 

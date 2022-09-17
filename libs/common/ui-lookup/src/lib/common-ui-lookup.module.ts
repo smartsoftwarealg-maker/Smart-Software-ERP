@@ -42,6 +42,11 @@ import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './puni
 import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './app-archive-docs.component';
 import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './furniture-status.component';
 import {DiscountDetailComponent, DiscountListComponent} from './discount.component';
+import {DairaDetailComponent, DairaListComponent} from './daira.component';
+import {JudicialFrameDetailComponent, JudicialFrameListComponent} from './judicial-frame.component';
+import {DecisionMotiveDetailComponent, DecisionMotiveListComponent} from './decision-motive.component';
+import {MotiveDetailComponent, MotiveListComponent} from './motive.component';
+import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './contract-motive.component';
 
 @NgModule({
     imports: [
@@ -126,7 +131,17 @@ import {DiscountDetailComponent, DiscountListComponent} from './discount.compone
         FurnitureStatusDetailComponent,
         FurnitureStatusListComponent,
         DiscountDetailComponent,
-        DiscountListComponent
+        DiscountListComponent,
+        DairaListComponent,
+        DairaDetailComponent,
+        JudicialFrameDetailComponent,
+        JudicialFrameListComponent,
+        DecisionMotiveListComponent,
+        DecisionMotiveDetailComponent,
+        MotiveListComponent,
+        MotiveDetailComponent,
+        ContractMotiveDetailComponent,
+        ContractMotiveListComponent
     ],
     exports: [
         VatListComponent,
@@ -199,7 +214,17 @@ import {DiscountDetailComponent, DiscountListComponent} from './discount.compone
         FurnitureStatusDetailComponent,
         FurnitureStatusListComponent,
         DiscountDetailComponent,
-        DiscountListComponent
+        DiscountListComponent,
+        DairaListComponent,
+        DairaDetailComponent,
+        JudicialFrameDetailComponent,
+        JudicialFrameListComponent,
+        DecisionMotiveListComponent,
+        DecisionMotiveDetailComponent,
+        MotiveListComponent,
+        MotiveDetailComponent,
+        ContractMotiveDetailComponent,
+        ContractMotiveListComponent
     ]
 })
 export class CommonUiLookupModule { }

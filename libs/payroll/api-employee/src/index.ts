@@ -19,3 +19,5 @@ export * from './lib/employee-decision.service';
 export * from './lib/person-list.service';
 export * from './lib/payment-info.service';
 export * from './lib/fund.service';
+export * from './lib/decision-motive.service';
+export * from './lib/contract-motive.service';

@@ -18,10 +18,14 @@
             <ss-date-picker [required]="true" formControlName="application_date"></ss-date-picker>
         </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-form-field class="default-50 sm-100">
             <mat-label translate>PAYROLL_MOTIVE</mat-label>
-            <input matInput formControlName="dec_motive" type="text">
+            <ss-auto-complete matInput
+                              formControlName="dec_motive"
+                              [model]="decisionLookup">
+            </ss-auto-complete>
         </mat-form-field>
+
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_APPLICATION_PERIOD</mat-label>
@@ -29,7 +33,7 @@
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
-            <mat-label translate>PAYROLL_HEADER</mat-label>
+            <mat-label translate>COMMON_MEMO</mat-label>
             <input matInput formControlName="dec_header" type="text">
         </mat-form-field>
 

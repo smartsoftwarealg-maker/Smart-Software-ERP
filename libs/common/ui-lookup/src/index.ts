@@ -32,3 +32,7 @@ export * from './lib/punishment-type.component';
 export * from './lib/app-archive-docs.component';
 export * from './lib/furniture-status.component';
 export * from './lib/discount.component';
+export * from './lib/daira.component';
+export * from './lib/judicial-frame.component';
+export * from './lib/decision-motive.component';
+export * from './lib/motive.component';

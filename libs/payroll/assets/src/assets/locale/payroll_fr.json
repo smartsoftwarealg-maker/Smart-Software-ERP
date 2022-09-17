@@ -116,6 +116,7 @@
     "TRAINING_EXPENSES": "Couts de formation",
     "EXTRA_EXPENSES":     "Couts supplémentaires",
     "JUDICIAL_FRAME":     "Cadre judiciaire",
+    "JUDICIAL_FRAMES":     "Cadre judiciaires",
     "PUNISHMENT_TYPE":    "Type de sanction",
     "FAULT":              "Faute",
     "FAULTS":              "Fautes",
@@ -132,5 +133,7 @@
     "EMPLOYEE_SUMMARY": "Statistiques",
     "WORKSHOP":         "Site",
     "APPLICATION_DATE":   "Date application",
-    "APPLICATION_PERIOD": "Periode application"
+    "APPLICATION_PERIOD": "Periode application",
+    "DECISION_MOTIVES":   "Motifs decisions",
+    "CONTRACT_MOTIVES":   "Motifs du contrat"
 }

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { Employee, EmployeeService } from '@ss/payroll/api-employee';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
-import { LookupsService, MaritalStatus, Nationality, NationalityService } from '@ss/common/api-lookup';
+import {City, CityService, LookupsService, MaritalStatus, Nationality, NationalityService} from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { MatExpansionPanel } from '@angular/material/expansion';
+import {MatExpansionPanel} from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -30,6 +30,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     activePersonnel = false;
     imageModel: ImageModel;
     nationalityModel: DefaultAutoCompleteModel<Nationality>;
+    cityLookup = new CityLookup(this.citySrv);
     public maritalStatuses: MaritalStatus[];
     public elementsForm: UntypedFormGroup = null;
     generationModes = [
@@ -46,8 +47,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        public infoSrv: FixedElementsEntryService) {
+        private lookupsSrv: LookupsService,
+        private infoSrv: FixedElementsEntryService,
+        private citySrv: CityService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
         this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv));
@@ -107,7 +109,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
             birthPlaceAr: [p.birthPlaceAr, Validators.maxLength(64)],
             fatherAr: [p.fatherAr, Validators.maxLength(64)],
-            motherAr: [p.motherAr, Validators.maxLength(64)]
+            motherAr: [p.motherAr, Validators.maxLength(64)],
+            birthCity:[p.birthCity]
         });
         if (!this.isEditable) {
             form.disable();
@@ -239,6 +242,16 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     throw err;
                 }
             });
-
     }
+
+}
+
+class CityLookup extends DefaultAutoCompleteModel<City> {
+    constructor(citySrv: CityService) {
+        super(citySrv);
+    }
+
+    toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
+                               (x.dairaDescription? '/' + x.dairaDescription: '') +
+                               (x.wilayaDescription? '/' + x.wilayaDescription: ''): null;
 }

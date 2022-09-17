@@ -5,6 +5,12 @@
 <!--        <input matInput [maxLength]="12" formControlName="number" type="text">-->
 <!--    </mat-form-field>-->
 
+    <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-label translate>COMMON_NUMBER</mat-label>
+        <input matInput [maxLength]="10" formControlName="number" type="text" required>
+        <mat-error *ngIf="form.controls['fault'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
+
     <mat-form-field class="default-25 sm-100">
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker required="true" formControlName="date"></ss-date-picker>
