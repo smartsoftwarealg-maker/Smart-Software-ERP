@@ -17,6 +17,7 @@ export class ExcelInjectionComponent implements OnInit {
 
     @Input()
     requiredFileType = '.xlsx';
+    processing = false;
 
     fileName = '';
     uploadProgress = 0;
@@ -38,29 +39,42 @@ export class ExcelInjectionComponent implements OnInit {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
-    onFileSelected(event: any) {
-        const file:File = event.target.files[0];
+    onChange(e: any) {
+        this.fileName = e[0]?.name;
+    }
 
+    onFileSelected(files: any) {
+        const file:File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
             formData.append("file", file);
 
-            const upload$ = this.injectSrv
+            this.processing = true;
+            this.uploadSub = this.injectSrv
                 .upload(formData)
-                .pipe(finalize(() => this.reset()));
-
-            this.uploadSub = upload$.subscribe((res: any) => {
-                if (res.type == HttpEventType.UploadProgress) {
-                    this.uploadProgress = Math.round(100 * (event.loaded / event.total));
-                } else if (res.type == HttpEventType.Response) {
-                    const ret = res.body;
-                    if (ret['list']) {
-                        this.snackBarSrv.showSuccessMessage();
-                        this.queryList = ret['list'].join('\n');
-                    }
-                }
-            })
+                .pipe(finalize(() => {
+                    this.reset();
+                    this.processing = false;
+                }))
+                .subscribe({
+                    next: (res: any) => {
+                        if (res.type == HttpEventType.UploadProgress) {
+                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                        } else if (res.type == HttpEventType.Response) {
+                            const ret = res.body;
+                            if (ret['list']) {
+                                this.snackBarSrv.showSuccessMessage();
+                                this.queryList = ret['list'].join('\n');
+                                this.processing = false;
+                            }
+                        }
+                    },
+                    // error: err => {
+                    //     this.processing = false;
+                    //     throw err;
+                    // }
+                });
         }
     }
 

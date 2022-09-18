@@ -41,7 +41,7 @@
 
 </div>
 
-<mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="uploadProgress"></mat-progress-bar>
+<mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
 <form novalidate [formGroup]="form">
     <mat-form-field required>
         <mat-label translate>COMMON_REFERENCE</mat-label>

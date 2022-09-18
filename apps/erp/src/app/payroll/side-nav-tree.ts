@@ -93,141 +93,123 @@ export const payrollNavTree: SideNavNode = {
             ]
         },
         {
-            name: 'PAYROLL_EMPLOYEES',
-            icon: 'far fa-user-hard-hat',
-            children: [
-                {
-                    name: 'PAYROLL_SALARY_GRID',
-                    icon: 'far fa-game-board',
-                    route: ABS_SALARY_GRID_URL
-                },
-                {
-                    name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
-                    icon: 'far fa-users-slash',
-                    route: ABS_INACTIVE_HR_EMPLOYEES_URL
-                },
-                {
-                    name: 'PAYROLL_EMPLOYEES_LIST',
-                    icon: 'fad fa-users',
-                    route: ABS_PAYROLL_EMPLOYEES_URL
-                }
-            ]
+            name: 'PAYROLL_SALARY_GRID',
+            icon: 'far fa-game-board',
+            route: ABS_SALARY_GRID_URL
         },
         {
-            name: 'MISSION_MISSIONS',
-            icon: 'far fa-plane-departure',
-            children: [
-                {
-                    name: 'MISSION_TRAJECTORIES',
-                    icon: 'far fa-bezier-curve',
-                    route: ABS_TRAJECTORY_URL
-                },
-                {
-                    name: 'MISSION_MISSION_PREPARATION',
-                    icon: 'fas fa-plane',
-                    route: ABS_MISSION_PREPARATION_URL
-                },
-            ]
+            name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
+            icon: 'far fa-users-slash',
+            route: ABS_INACTIVE_HR_EMPLOYEES_URL
         },
         {
-            name: 'REMUN_REMUNERATION',
-            icon: 'fas fa-money-check-alt',
-            children: [
-                {
-                    name: 'REMUN_MONTH_SELECTION',
-                    icon: 'fas fa-calendar-check',
-                    route: ABS_MONTH_SELECTOR_URL,
-                },
-                {
-                    name: 'REMUN_ELEMENTSINFO',
-                    icon: 'fab fa-elementor',
-                    route: ABS_ELEMENTSINFO_URL
-                },
-                {
-                    name: 'REMUN_ELEMENT_TYPES',
-                    icon: 'fas fa-layer-group',
-                    route: ABS_ELEMENT_TYPES_URL
-                },
-                {
-                    name: 'REMUN_FORMULAS',
-                    icon: 'fas fa-function',
-                    route: ABS_FORMULAS_URL
-                },
-                {
-                    name: 'REMUN_INPUT_FILTERS',
-                    icon: 'fas fa-filter',
-                    route: ABS_INPUT_FILTERS_URL
-                },
-                {
-                    name: 'REMUN_SPECIAL_PAYROLLS',
-                    icon: 'fas fa-comments-alt-dollar',
-                    route: ABS_SPECIAL_PAYROLL_URL
-                },
-                {
-                    name: 'PAYROLL_FIXED_ELEMENTS',
-                    icon: 'fas fa-address-card',
-                    route: ABS_FIXED_ELEMENTS_URL
-                },
-                {
-                    name: 'REMUN_ELEMENTS_ENTRY',
-                    icon: 'fas fa-coins',
-                    route: ABS_ELEMENTS_ENTRY_URL
-                },
-                {
-                    name: 'REMUN_EXCEL_INJECTION',
-                    icon: 'fas fa-file-excel',
-                    route: ABS_EXCEL_INJECTION_URL
-                },
-                {
-                    name: 'REMUN_AMENDMENTS',
-                    icon: 'fas fa-user-edit',
-                    route: ABS_AMENDMENT_URL
-                },
-                {
-                    name: 'PAYROLL_LOANS',
-                    icon: 'fas fa-user-edit',
-                    route: ABS_LOANS_URL
-                },
-                {
-                    name: 'REMUN_EDO',
-                    icon: 'fa fa-university',
-                    route: ABS_EDO_URL
-                },
-                {
-                    name: 'REMUN_MONTH_CLOSURE',
-                    icon: 'fas fa-door-closed',
-                    route: ABS_MONTH_CLOSER_URL,
-                    accessRights: 'Closer'
-                },
-                {
-                    name: 'REMUN_VACATION_PLANNING',
-                    icon: 'fas fa-calendar-times',
-                    route: ABS_VACATION_PLANNING_URL,
-                    accessRights: 'VPlanning'
-                },
-                {
-                    name: 'REMUN_ARCHIVE_GENERATOR',
-                    icon: 'fas fa-cabinet-filing',
-                    route: ABS_ARCHIVE_GENERATOR_URL,
-                    accessRights: 'Canceler'
-                },
-                {
-                    name: 'REMUN_MONTH_CANCELLATION',
-                    icon: 'fas fa-calendar-week',
-                    route: ABS_MONTH_CANCELER_URL,
-                    accessRights: 'Canceler'
-                },
-                {
-                    name: 'REMUN_DAS',
-                    icon: 'fas fa-shield-check',
-                    route: ABS_DAS_URL
-                },
-                {
-                    name: 'REMUN_CACO',
-                    icon: 'fas fa-cloud-rain',
-                    route: ABS_CACO_URL
-                },
-            ]
+            name: 'PAYROLL_EMPLOYEES_LIST',
+            icon: 'fad fa-users',
+            route: ABS_PAYROLL_EMPLOYEES_URL
+        },
+        {
+            name: 'MISSION_TRAJECTORIES',
+            icon: 'far fa-bezier-curve',
+            route: ABS_TRAJECTORY_URL
+        },
+        {
+            name: 'MISSION_MISSION_PREPARATION',
+            icon: 'fas fa-plane',
+            route: ABS_MISSION_PREPARATION_URL
+        },
+        {
+            name: 'REMUN_MONTH_SELECTION',
+            icon: 'fas fa-calendar-check',
+            route: ABS_MONTH_SELECTOR_URL,
+        },
+        {
+            name: 'REMUN_ELEMENTSINFO',
+            icon: 'fab fa-elementor',
+            route: ABS_ELEMENTSINFO_URL
+        },
+        {
+            name: 'REMUN_ELEMENT_TYPES',
+            icon: 'fas fa-layer-group',
+            route: ABS_ELEMENT_TYPES_URL
+        },
+        {
+            name: 'REMUN_FORMULAS',
+            icon: 'fas fa-function',
+            route: ABS_FORMULAS_URL
+        },
+        {
+            name: 'REMUN_INPUT_FILTERS',
+            icon: 'fas fa-filter',
+            route: ABS_INPUT_FILTERS_URL
+        },
+        {
+            name: 'REMUN_SPECIAL_PAYROLLS',
+            icon: 'fas fa-comments-alt-dollar',
+            route: ABS_SPECIAL_PAYROLL_URL
+        },
+        {
+            name: 'PAYROLL_FIXED_ELEMENTS',
+            icon: 'fas fa-address-card',
+            route: ABS_FIXED_ELEMENTS_URL
+        },
+        {
+            name: 'REMUN_ELEMENTS_ENTRY',
+            icon: 'fas fa-coins',
+            route: ABS_ELEMENTS_ENTRY_URL
+        },
+        {
+            name: 'REMUN_EXCEL_INJECTION',
+            icon: 'fas fa-file-excel',
+            route: ABS_EXCEL_INJECTION_URL
+        },
+        {
+            name: 'REMUN_AMENDMENTS',
+            icon: 'fas fa-user-edit',
+            route: ABS_AMENDMENT_URL
+        },
+        {
+            name: 'PAYROLL_LOANS',
+            icon: 'fas fa-user-edit',
+            route: ABS_LOANS_URL
+        },
+        {
+            name: 'REMUN_EDO',
+            icon: 'fa fa-university',
+            route: ABS_EDO_URL
+        },
+        {
+            name: 'REMUN_MONTH_CLOSURE',
+            icon: 'fas fa-door-closed',
+            route: ABS_MONTH_CLOSER_URL,
+            accessRights: 'Closer'
+        },
+        {
+            name: 'REMUN_VACATION_PLANNING',
+            icon: 'fas fa-calendar-times',
+            route: ABS_VACATION_PLANNING_URL,
+            accessRights: 'VPlanning'
+        },
+        {
+            name: 'REMUN_ARCHIVE_GENERATOR',
+            icon: 'fas fa-cabinet-filing',
+            route: ABS_ARCHIVE_GENERATOR_URL,
+            accessRights: 'Canceler'
+        },
+        {
+            name: 'REMUN_MONTH_CANCELLATION',
+            icon: 'fas fa-calendar-week',
+            route: ABS_MONTH_CANCELER_URL,
+            accessRights: 'Canceler'
+        },
+        {
+            name: 'REMUN_DAS',
+            icon: 'fas fa-shield-check',
+            route: ABS_DAS_URL
+        },
+        {
+            name: 'REMUN_CACO',
+            icon: 'fas fa-cloud-rain',
+            route: ABS_CACO_URL
         },
         {
             name: 'COMMON_DASHBOARD',

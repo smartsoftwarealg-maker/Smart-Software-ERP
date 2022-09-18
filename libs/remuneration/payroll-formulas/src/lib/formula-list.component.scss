@@ -2,9 +2,9 @@
     margin: 0;
     padding: 10px;
     box-sizing: border-box;
-    height: 100%;
-    width: 80%;
-    max-width: 900px;
+    height: calc(100% - 64px);
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,7 @@ mat-table {
 .main-table {
     height: 100%;
     width: 100%;
+    min-width: 1200px;
     flex-grow: 1;
     flex-shrink: 1;
     overflow-x: auto;

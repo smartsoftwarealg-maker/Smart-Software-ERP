@@ -29,10 +29,8 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     constructor(public entitySrv: BaseEntityService<T>, public idField: string = 'id', public descriptionField: string = 'description') {
     }
 
-    onValueChanged = (e: Id) => {
-    };
-    onObjectSelected = (e: T) => {
-    };
+    onValueChanged = (e: Id) => {};
+    onObjectSelected = (e: T) => {};
 
     valueOf = (x: any) => x ? x[this.idField] : null;
 

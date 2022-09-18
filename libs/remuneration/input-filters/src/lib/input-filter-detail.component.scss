@@ -31,8 +31,8 @@
 
 .rlist {
     grid-area: rlist;
-    max-height: 90%;
-    overflow-y: auto;
+    overflow-y: clip;
+    height: 100%;
 }
 
 .lbutton {
@@ -45,6 +45,10 @@
     align-self: end;
 }
 
+.list-container {
+    overflow-y: auto;
+    height: calc(100% - 110px);
+}
 
 @media (max-width: 580px) {
     .container {
@@ -66,4 +70,4 @@
         justify-self: start;
     }
 
- }
+}
