@@ -135,5 +135,6 @@
     "APPLICATION_DATE":   "Application date",
     "APPLICATION_PERIOD": "Application period",
     "DECISION_MOTIVES":   "Decision motives",
-    "CONTRACT_MOTIVES":   "Contract motives"
+    "CONTRACT_MOTIVES":   "Contract motives",
+    "PAYROLL_MOTIVES":    "Employment motives"
 }

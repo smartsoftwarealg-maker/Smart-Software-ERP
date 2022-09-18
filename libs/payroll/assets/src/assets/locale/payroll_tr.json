@@ -123,5 +123,6 @@
     "APPLICATION_DATE":   "",
     "APPLICATION_PERIOD": "",
     "MOTIVES":            "",
-    "CONTRACT_MOTIVES":   ""
+    "CONTRACT_MOTIVES":   "",
+    "MOTIVES":           ""
 }

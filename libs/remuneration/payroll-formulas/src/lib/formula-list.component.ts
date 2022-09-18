@@ -44,6 +44,6 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
               defReportSrv,
               pagPersistSrv,
             'REMUN_FORMULAS');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
     }
 }

@@ -29,7 +29,6 @@ export class ElementTypesListComponent extends BaseEntityListComponent<ElementTy
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENT_TYPES');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
     }
-
 }

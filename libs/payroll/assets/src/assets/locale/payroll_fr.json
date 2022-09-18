@@ -135,5 +135,6 @@
     "APPLICATION_DATE":   "Date application",
     "APPLICATION_PERIOD": "Periode application",
     "DECISION_MOTIVES":   "Motifs decisions",
-    "CONTRACT_MOTIVES":   "Motifs du contrat"
+    "CONTRACT_MOTIVES":   "Motifs du contrat",
+    "MOTIVES":            "Motifs"
 }
