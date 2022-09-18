@@ -84,7 +84,7 @@ export const hrNavTree: SideNavNode = {
             route: ABS_HR_JUDICIAL_FRAMES_URL
         },
         {
-            name: 'PAYROLL_MOTIVES',
+            name: 'PAYROLL_PAYROLL_MOTIVES',
             icon: 'fa-solid fa-goal-net',
             route: ABS_HR_MOTIVES_URL
         },
