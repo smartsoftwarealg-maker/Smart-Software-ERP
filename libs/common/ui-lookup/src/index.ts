@@ -36,3 +36,4 @@ export * from './lib/daira.component';
 export * from './lib/judicial-frame.component';
 export * from './lib/decision-motive.component';
 export * from './lib/motive.component';
+export * from './lib/contract-motive.component';

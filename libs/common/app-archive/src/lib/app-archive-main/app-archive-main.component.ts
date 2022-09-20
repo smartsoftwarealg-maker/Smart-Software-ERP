@@ -15,12 +15,6 @@ export class AppArchiveMainComponent implements AfterViewInit {
     constructor(private archiveSrv: AppArchiveService, private route: ActivatedRoute) { }
 
 
-    @Input()
-    set id(objectId: number) {
-        this._id = objectId;
-        this.refresh();
-    }
-
     private refresh() {
         if (this.outlet && this.outlet.component) {
             const comp: any = this.outlet?.component;
@@ -28,6 +22,12 @@ export class AppArchiveMainComponent implements AfterViewInit {
                 comp['refresh']();
             }
         }
+    }
+
+    @Input()
+    set id(objectId: number) {
+        this._id = objectId;
+        this.refresh();
     }
 
     @Input()

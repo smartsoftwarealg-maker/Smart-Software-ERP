@@ -380,6 +380,15 @@
             <ss-payment-info [personId]="id"></ss-payment-info>
         </mat-expansion-panel>
 
+        <mat-expansion-panel #archivePanel
+                             [class]="getPanelHeaderClass('archive', archivePanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-app-archive-main [id]="id" [appId]="6" *ngIf="id"></ss-app-archive-main>
+        </mat-expansion-panel>
 
     </mat-accordion>
 
