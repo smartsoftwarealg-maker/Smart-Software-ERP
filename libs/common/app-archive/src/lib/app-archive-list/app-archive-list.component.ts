@@ -14,7 +14,7 @@ import {DomSanitizer} from '@angular/platform-browser';
     styleUrls: ['./app-archive-list.component.scss']
 })
 export class AppArchiveListComponent implements OnInit {
-    private _id = 0;
+    private _id = -1;
     imgSrc: string | null = null;
     selectedId = 0;
     filename: string = null;
@@ -28,8 +28,7 @@ export class AppArchiveListComponent implements OnInit {
                 private snackBarSrv: SnackBarService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService,
-                private ds: DomSanitizer) {}
+                private confirmationSrv: ConfirmationDialogService) {}
 
     ngOnInit(): void {
         this.route
@@ -37,10 +36,10 @@ export class AppArchiveListComponent implements OnInit {
             .params
             .pipe(
                 tap(params => {
-                    this._id = +params['id'] || 0;
+                    this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
                     this.entitySrv.setParentId(this._id);
                 }),
-                  switchMap(_ => this.entitySrv.getList(0, 50)))
+                switchMap(_ => this.entitySrv.getList(0, 50)))
             .subscribe(res => {
                 this.data = res.body || [];
                 this.paginator.elementCount = res.itemCount;
@@ -56,9 +55,9 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     @Input()
-    set id(agentId: number) {
-        this._id = agentId;
-        this.entitySrv.setParentId(agentId);
+    set id(id: number) {
+        this._id = id;
+        this.entitySrv.setParentId(id);
     }
 
     get id() {
@@ -90,6 +89,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     refresh() {
+        this.imgSrc = null;
         this.entitySrv.getList(0, 50)
             .subscribe(res => {
                 this.data = res.body || [];
@@ -120,8 +120,8 @@ export class AppArchiveListComponent implements OnInit {
     onClick(e: MouseEvent) {
         if (this.filename?.indexOf('.pdf') > 1) {
             // this.release();
-            this.entitySrv.image(this.selectedId)
-                // .pipe(map((res: any) => new Blob([res.body], {type: 'application/pdf'})))
+            this.entitySrv
+                .image(this.selectedId)
                 .subscribe(res => {
                     const  pdfSrc = window.URL.createObjectURL(res);
                     window.open(pdfSrc);
@@ -129,6 +129,5 @@ export class AppArchiveListComponent implements OnInit {
                 });
         }
     }
-
 
 }

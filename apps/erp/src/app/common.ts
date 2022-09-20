@@ -6,6 +6,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -449,6 +450,20 @@ export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join(
 // ######################################
 
 export const docInfoRoutes: Routes = [
+    {
+        path: 'archive',
+        component: AppArchiveMainComponent,
+        children: [
+            { path: '', component: AppArchiveListComponent },
+            {
+                path: 'detail',
+                children: [
+                    {path: ':id', component: AppArchiveDetailComponent},
+                    {path: '**', redirectTo: '../' }
+                ]
+            }
+        ]
+    },
     {
         path: 'totals',
         component: TotalComponent

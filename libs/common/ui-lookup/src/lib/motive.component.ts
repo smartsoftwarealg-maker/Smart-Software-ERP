@@ -48,7 +48,7 @@ export class MotiveDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(
         public markSrv: MotiveService,
-        public shellSrv: ShellService,
+        public override shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,

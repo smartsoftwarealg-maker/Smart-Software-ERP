@@ -24,6 +24,7 @@ import {Bank, BankService} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
 import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {AGENT_ARCHIVES} from '@ss/common/app-archive';
 
 
 @Component({
@@ -32,6 +33,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);

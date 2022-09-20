@@ -96,6 +96,7 @@
         "logistics-ui-currency": "libs/logistics/ui-currency",
         "logistics-ui-doc-import": "libs/logistics/ui-doc-import",
         "logistics-ui-doc-info": "libs/logistics/ui-doc-info",
+        "logistics-ui-document-archive": "libs/logistics/ui-document-archive",
         "logistics-ui-options": "libs/logistics/ui-options",
         "logistics-ui-pay-method": "libs/logistics/ui-pay-method",
         "logistics-ui-stock-info": "libs/logistics/ui-stock-info",

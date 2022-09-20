@@ -124,5 +124,6 @@
     "APPLICATION_PERIOD": "",
     "MOTIVES":            "",
     "CONTRACT_MOTIVES":   "",
-    "MOTIVES":           ""
+    "MOTIVES":           "",
+    "PAYROLL_MOTIVES":   ""
 }

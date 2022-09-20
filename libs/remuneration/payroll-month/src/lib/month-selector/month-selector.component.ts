@@ -41,9 +41,8 @@ export class MonthSelectorComponent implements OnInit {
                 this.maxMonth  = res[1].month;
                 const min      = +(res[0].month / 100).toFixed(0);
                 const max      = +(res[1].month / 100).toFixed(0);
-                const curYear  = (+(res[2].payMonth / 100) % 10000).toFixed(0);
-                const curMonth = +(res[2].payMonth % 100).toFixed(0);
-                const offset = +(res[2].payMonth / 1_000_000).toFixed(0)
+                const curYear  = (+( (res[2].payMonth || this.maxMonth) / 100) % 10000).toFixed(0);
+                const curMonth = +( (res[2].payMonth || this.maxMonth) % 100).toFixed(0);
                 this.specialList = res[3].body;
                 this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
                 this.form = this.formBuilder

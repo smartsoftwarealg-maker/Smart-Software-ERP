@@ -16,7 +16,6 @@ export class TotalComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-
     data: Total[];
 
     displayedColumns = [
