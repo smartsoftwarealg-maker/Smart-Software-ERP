@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AppArchive} from '@ss/logistics/api-agent';
@@ -14,7 +14,8 @@ import {DomSanitizer} from '@angular/platform-browser';
     styleUrls: ['./app-archive-list.component.scss']
 })
 export class AppArchiveListComponent implements OnInit {
-    private _id = -1;
+    private _id = 0;
+    inputSet = false;
     imgSrc: string | null = null;
     selectedId = 0;
     filename: string = null;
@@ -29,6 +30,7 @@ export class AppArchiveListComponent implements OnInit {
                 private router: Router,
                 private route: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService) {}
+
 
     ngOnInit(): void {
         this.route
@@ -57,7 +59,14 @@ export class AppArchiveListComponent implements OnInit {
     @Input()
     set id(id: number) {
         this._id = id;
+        console.log('3------------', this._id);
         this.entitySrv.setParentId(id);
+        this.entitySrv
+            .getList(0, 50)
+            .subscribe(res => {
+                this.data = res.body || [];
+                this.paginator.elementCount = res.itemCount;
+        });
     }
 
     get id() {
@@ -118,16 +127,14 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     onClick(e: MouseEvent) {
-        if (this.filename?.indexOf('.pdf') > 1) {
-            // this.release();
-            this.entitySrv
-                .image(this.selectedId)
-                .subscribe(res => {
-                    const  pdfSrc = window.URL.createObjectURL(res);
-                    window.open(pdfSrc);
-                    window.URL.revokeObjectURL(pdfSrc);
-                });
-        }
+        // this.release();
+        this.entitySrv
+            .image(this.selectedId)
+            .subscribe(res => {
+                const pdfSrc = window.URL.createObjectURL(res);
+                window.open(pdfSrc);
+                window.URL.revokeObjectURL(pdfSrc);
+            });
     }
 
 }

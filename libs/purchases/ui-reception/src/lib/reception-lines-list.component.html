@@ -90,9 +90,9 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="doc-info">
+    <div class="doc-info" *ngIf="selectedRow?.transacId">
         <ss-doc-info
-            *ngIf="selectedId"
+            *ngIf="selectedRow?.transacId"
             [displayedGroups]="['article', 'document']"
             [params]="{
             documentId: selectedRow?.transacId,

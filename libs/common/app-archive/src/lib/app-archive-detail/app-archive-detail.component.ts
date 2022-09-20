@@ -43,7 +43,7 @@ export class AppArchiveDetailComponent implements OnInit {
                 this.form = this.fb.group({
                     id:         [res?.id || 0],
                     appId:      [res?.appId || this.service.appId],
-                    documentId: [res?.documentId, Validators.required],
+                    documentId: [{ value: res?.documentId, disabled: !!res?.id}, Validators.required],
                     objId:      [res?.objId || this.service.getParentId(), Validators.required]
                 });
             });
@@ -75,7 +75,7 @@ export class AppArchiveDetailComponent implements OnInit {
 
     private save() {
         this.service
-            .save(this.form.value)
+            .save(this.form.getRawValue())
             .subscribe(_ => {
                 this.snackBarSrv.showSuccessMessage();
                 this.onCancel();
@@ -85,4 +85,5 @@ export class AppArchiveDetailComponent implements OnInit {
     onCancel() {
         this.router.navigate(['../..'], {relativeTo: this.route}).then();
     }
+
 }

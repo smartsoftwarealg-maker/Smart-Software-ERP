@@ -17,7 +17,6 @@ import {Observable, of} from 'rxjs';
     styleUrls: ['./archive-list.component.css']
 })
 export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
-    public searchFld = new UntypedFormControl();
     rights = {create: true, del: true, edit: true};
 
     constructor(
