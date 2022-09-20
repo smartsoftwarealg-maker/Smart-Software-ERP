@@ -33,7 +33,11 @@ import {
 import { Routes } from '@angular/router';
 import {
     CategoryDetailComponent,
-    CategoryListComponent, DecisionMotiveDetailComponent, DecisionMotiveListComponent, DepartmentDetailComponent,
+    CategoryListComponent, ContractMotiveDetailComponent,
+    ContractMotiveListComponent,
+    DecisionMotiveDetailComponent,
+    DecisionMotiveListComponent,
+    DepartmentDetailComponent,
     DepartmentListComponent,
     DiplomaDetailComponent,
     DiplomaListComponent,
@@ -42,9 +46,13 @@ import {
     EducationLevelDetailComponent,
     EducationLevelListComponent,
     EmploymentTypeDetailComponent,
-    EmploymentTypeListComponent, JudicialFrameDetailComponent, JudicialFrameListComponent,
+    EmploymentTypeListComponent,
+    JudicialFrameDetailComponent,
+    JudicialFrameListComponent,
     MaritalStatusDetailComponent,
-    MaritalStatusListComponent, MotiveDetailComponent, MotiveListComponent,
+    MaritalStatusListComponent,
+    MotiveDetailComponent,
+    MotiveListComponent,
     NationalityDetailComponent,
     NationalityListComponent,
     PostDetailComponent,
@@ -89,10 +97,7 @@ import {
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
-import {
-    ContractMotiveDetailComponent,
-    ContractMotiveListComponent
-} from '../../../../../libs/common/ui-lookup/src/lib/contract-motive.component';
+import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -194,7 +199,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: true }
+                        data: { hrMode: true, active: true },
+                        children: [
+                            {path: '', component: AppArchiveListComponent},
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
@@ -383,7 +398,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: false }
+                        data: { hrMode: true, active: false },
+                        children: [
+                            {path: '', component: AppArchiveListComponent},
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
