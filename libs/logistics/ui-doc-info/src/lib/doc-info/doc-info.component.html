@@ -2,7 +2,7 @@
     <mat-toolbar color="primary">
         <ng-container *ngFor="let entryGroup of getDisplayedEntries()">
 
-            <ng-container *ngIf="entryGroup.entries.length>0">
+            <ng-container *ngIf="entryGroup.entries.length > 0">
                 <button mat-button [matMenuTriggerFor]="agentMenu">
                     <i class="fas fa-bars"></i>
                     <span class="space" translate>{{entryGroup.description}}</span>

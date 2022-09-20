@@ -97,15 +97,15 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="doc-info">
-        <ss-doc-info
-            [displayedGroups]="['article','document']"
-            [params]="{
+</div>
+<div class="doc-info">
+    <ss-doc-info
+        [displayedGroups]="['article','document']"
+        [params]="{
             documentId: selectedRow?.transacId,
             documentURL:'/delivery',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">
-        </ss-doc-info>
-    </div>
+    </ss-doc-info>
 </div>

@@ -235,6 +235,9 @@
             "@ss/logistics/ui-doc-info": [
                 "libs/logistics/ui-doc-info/src/index.ts"
             ],
+            "@ss/logistics/ui-document-archive": [
+                "libs/logistics/ui-document-archive/src/index.ts"
+            ],
             "@ss/logistics/ui-options": [
                 "libs/logistics/ui-options/src/index.ts"
             ],

@@ -34,6 +34,8 @@ import { EmployeeDecisionDetailComponent } from './employee-decisions/employee-d
 import { EmployeeDecisionListComponent } from './employee-decisions/employee-decision-list.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
+import {AppArchiveModule} from '@ss/common/app-archive';
+import {CustomAttributesModule} from '@ss/custom-attributes';
 
 @NgModule({
     imports: [
@@ -43,9 +45,11 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         CommonUiImageInputModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
         RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule
     ],
     exports: [
         EmployeeListComponent,

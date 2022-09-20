@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/logistics/ui-document-archive/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/logistics/ui-document-archive"],
+            "options": {
+                "jestConfig": "libs/logistics/ui-document-archive/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/logistics/ui-document-archive/**/*.ts",
+                    "libs/logistics/ui-document-archive/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
