@@ -118,16 +118,14 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     onClick(e: MouseEvent) {
-        if (this.filename?.indexOf('.pdf') > 1) {
-            // this.release();
-            this.entitySrv
-                .image(this.selectedId)
-                .subscribe(res => {
-                    const  pdfSrc = window.URL.createObjectURL(res);
-                    window.open(pdfSrc);
-                    window.URL.revokeObjectURL(pdfSrc);
-                });
-        }
+        // this.release();
+        this.entitySrv
+            .image(this.selectedId)
+            .subscribe(res => {
+                const pdfSrc = window.URL.createObjectURL(res);
+                window.open(pdfSrc);
+                window.URL.revokeObjectURL(pdfSrc);
+            });
     }
 
 }
