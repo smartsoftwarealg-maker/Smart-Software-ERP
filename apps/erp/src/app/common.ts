@@ -35,6 +35,8 @@ export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
+export const MISSIONS_APP_URL = 'missions';
+export const CONTRACTS_APP_URL = 'contracts';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';

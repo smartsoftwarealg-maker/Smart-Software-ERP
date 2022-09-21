@@ -18,19 +18,19 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'TRS_CHECKS',
-            icon: 'fas fa-check',
+            icon: 'fas fa-money-check-dollar',
             route: ABS_TREASURY_CHECKS_URL,
             accessRights: 'Checks'
         },
         {
             name: 'TRS_CHECKBOOKS',
-            icon: 'fas fa-check',
+            icon: 'fas fa-money-check-dollar-pen',
             route: ABS_TREASURY_CHECK_BOOKS_URL,
             accessRights: 'CheckBooks'
         },
         {
             name: 'TRS_JOURNALS',
-            icon: 'fas fa-check',
+            icon: 'fas fa-book',
             route: ABS_TREASURY_JOURNALS_URL,
             accessRights: 'Journals'
         }
