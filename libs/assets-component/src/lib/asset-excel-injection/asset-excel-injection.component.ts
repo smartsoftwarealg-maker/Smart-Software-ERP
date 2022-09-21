@@ -77,8 +77,11 @@ export class AssetExcelInjectionComponent implements OnInit {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
+    onChange(e: any) {
+        this.fileName = e[0]?.name;
+    }
+
     onFileSelected(files: any) {
-        this.processing = true;
         const file:File = files[0];
         if (file) {
             this.fileName = file.name;
@@ -87,11 +90,12 @@ export class AssetExcelInjectionComponent implements OnInit {
             Object.entries(this.form.value)
                 .filter(([k, v]) => v != null && v != '' && v != ' ')
                 .forEach(([k, v]) => formData.append(k, v.toString()));
-            const upload$ = this.injectSrv
-                .upload(formData)
-                .pipe(finalize(() => this.reset()));
 
-            this.uploadSub = upload$.subscribe({
+            this.processing = true;
+            this.uploadSub = this.injectSrv
+                .upload(formData)
+                .pipe(finalize(() => this.reset()))
+                .subscribe({
                 next: (res: any) => {
                     if (res.type == HttpEventType.UploadProgress) {
                         this.uploadProgress = Math.round(100 * (res.loaded / res.total));

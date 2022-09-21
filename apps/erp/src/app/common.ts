@@ -6,6 +6,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
+import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -57,6 +58,7 @@ export const ADMINISTRATION_WILAYA_URL = 'wilayas';
 export const ADMINISTRATION_ACCCESSRIGHTS_URL = 'accessrights';
 export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
 export const ADMINISTRATION_DB_UPDATER_URL   = 'db_updater';
+export const ADMIN_DARIRA_URL = 'dairas';
 
 // Organizations
 export const ORGANIZATIONS_CHART_URL = 'chart';
@@ -96,6 +98,7 @@ export const ABS_COMMON_MARKS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS
 // Purchase
 export const PURCHASE_RECEPTION_URL = 'receptions';
 export const PURCHASE_ORDER_URL = 'porders';
+export const PURCHASE_REQUEST_URL = 'prequests';
 export const PURCHASE_QUOTATION_URL = 'offers';
 export const PAYMENT_ORDER = 'payment-orders';
 
@@ -135,7 +138,11 @@ export const HR_EDUCATION_LEVELS_URL = 'educationLevels';
 export const HR_MARITAL_STATUS_URL = 'maritalStatus';
 export const HR_POSTS_URL = 'posts';
 export const HR_NATIONALITIES_URL = 'nationalities';
-export const HR_EMPLOYEES_URL = 'employees';
+export const HR_JUDICIAL_FRAMES_URL = 'judicial-frames';
+export const HR_DECISION_MOTIVE_URL = 'decision-motives';
+export const HR_CONTRACT_MOTIVE_URL = 'contract-motives';
+export const HR_MOTIVE_URL          = 'motives';
+export const HR_EMPLOYEES_URL       = 'employees';
 export const HR_INACTIVE_EMPLOYEES_URL = 'inactive-employees';
 export const HR_PERSON_LIST_URL = 'stats';
 export const HR_EMPLOYMENT_TYPE_URL = 'employmentType';
@@ -244,11 +251,12 @@ export const ABS_ADMINISTRATION_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, ADMINISTR
 export const ABS_ADMINISTRATION_CITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_CITY_URL].join('/');
 export const ABS_ADMINISTRATION_COUNTRY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_COUNTRY_URL].join('/');
 export const ABS_ADMINISTRATION_WILAYA_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_WILAYA_URL].join('/');
+export const ABS_ADMINISTRATION_DAIRAS_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_DARIRA_URL].join('/');
 export const ABS_ADMINISTRATION_ACCESS_RIGHTS_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ACCCESSRIGHTS_URL].join('/');
 export const ABS_ADMINISTRATION_TRACEABILITY_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_TRACEABILITY_URL].join('/');
 export const ABS_DB_UPDATER_URL                  = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_DB_UPDATER_URL].join('/');
 export const ABS_APP_ARCHIVE_DOCUMENTS_URL       = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ARCHIVE_DOCUMENTS_URL].join('/');
-export const ABS_STATUS_TYPES                    = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
+export const ABS_ADMINISTRATION_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOGISTICS_NUMBERING_URL].join('/');
 
 // Organizations
 export const ABS_ORGANIZATIONS_CHART_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_CHART_URL].join('/');
@@ -310,7 +318,7 @@ export const ABS_BALANCE_QUERIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL,
 export const ABS_LOGISTICS_PAY_METHOD = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_PAY_METHOD_URL].join('/');
 export const ABS_LOGISTICS_OPTIONS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_OPTION_URL].join('/');
 export const ABS_LOGISTICS_AGENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_URL].join('/');
-export const LOGISTICS_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_NUMBERING_URL].join('/');
+export const ABS_LOGISTICS_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_NUMBERING_URL].join('/');
 export const ABS_LOGISTICS_VAT_URL = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_VAT_URL].join('/');
 export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL,  LOGISTICS_COMPANY_TYPE_URL].join('/');
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
@@ -350,6 +358,10 @@ export const ABS_HR_POSTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, H
 export const ABS_HR_NATIONALITIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_NATIONALITIES_URL].join('/');
 export const ABS_HR_SERVICES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SERVICES_URL].join('/');
 export const ABS_HR_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_EMPLOYEES_URL].join('/');
+export const ABS_HR_JUDICIAL_FRAMES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_JUDICIAL_FRAMES_URL].join('/');
+export const ABS_HR_DECISION_MOTIVES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_DECISION_MOTIVE_URL].join('/');
+export const ABS_HR_CONTRACT_MOTIVES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CONTRACT_MOTIVE_URL].join('/');
+export const ABS_HR_MOTIVES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_MOTIVE_URL].join('/');
 export const ABS_INACTIVE_HR_EMPLOYEES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_INACTIVE_EMPLOYEES_URL].join('/');
 export const ABS_HR_EMPLOYMENT_TYPE_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_EMPLOYMENT_TYPE_URL].join('/');
 export const ABS_HR_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, LOOKUPS_URL, HR_SUSPENSION_REASON_URL].join('/');
@@ -399,10 +411,11 @@ export const ABS_ASSET_APPOINTMENT_DOC_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_UR
 export const ABS_ASSET_SEARCH_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_SEARCH_URL].join('/');
 export const ABS_ASSET_INJECTION_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_INJECTION_URL].join('/');
 export const ABS_ASSET_INVENTORY_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_INVENTORY_URL].join('/');
-export const ABS_ASSETS_AGENT_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_AGENT_URL].join('/');
-export const ABS_ASSET_BUILDINGS = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_BUILDING_URL].join('/');
-export const ABS_ASSET_ACCOUNT_URL  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_ACCOUNT_URL].join('/');
-export const ABS_ASSET_MARKS_URL  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_MARKS_URL].join('/');
+export const ABS_ASSETS_AGENT_URL    = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_AGENT_URL].join('/');
+export const ABS_ASSET_BUILDINGS     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_BUILDING_URL].join('/');
+export const ABS_ASSET_ACCOUNT_URL   = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_ACCOUNT_URL].join('/');
+export const ABS_ASSET_MARKS_URL     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_MARKS_URL].join('/');
+export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');
@@ -417,6 +430,7 @@ export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASH
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
+export const ABS_PURCHASE_REQUEST_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_REQUEST_URL].join('/');
 export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
 export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/')
 export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/')
@@ -436,6 +450,20 @@ export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join(
 // ######################################
 
 export const docInfoRoutes: Routes = [
+    {
+        path: 'archive',
+        component: AppArchiveMainComponent,
+        children: [
+            { path: '', component: AppArchiveListComponent },
+            {
+                path: 'detail',
+                children: [
+                    {path: ':id', component: AppArchiveDetailComponent},
+                    {path: '**', redirectTo: '../' }
+                ]
+            }
+        ]
+    },
     {
         path: 'totals',
         component: TotalComponent

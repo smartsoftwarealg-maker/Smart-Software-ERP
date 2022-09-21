@@ -15,8 +15,7 @@ export class RedirectToParentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.router.navigate(['..'], { relativeTo: this.route })
-            .then();
+        this.router.navigate(['..'], { relativeTo: this.route }).then();
     }
 
 }

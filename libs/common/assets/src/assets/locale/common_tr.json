@@ -216,5 +216,7 @@
     "OLD_BALANCE":         "",
     "BALANCE":             "",
     "PRODUCT":             "",
-    "DOUBLE_CLICK_OPEN":   ""
+    "DOUBLE_CLICK_OPEN":   "",
+    "DAIRAS":              "Dairas",
+    "CITY":                "Kent"
 }

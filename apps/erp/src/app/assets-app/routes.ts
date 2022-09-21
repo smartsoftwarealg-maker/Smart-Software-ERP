@@ -71,7 +71,6 @@ import {
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
-import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
 import {
     AgentListComponent,
@@ -372,7 +371,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'assets'},
         component: ReportViewComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard]
+        canActivate: [CanActivateService]
     },
     {
         path: ASSETS_OFFICES_URL,

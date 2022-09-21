@@ -20,7 +20,7 @@ import {
     ABS_ASSET_END_TYPES,
     ABS_ASSET_OPTIONS_URL,
     ABS_ASSET_REVALUATION_TYPES,
-    ABS_STATUS_TYPES,
+    ABS_ASSET_STATUS_TYPES,
     ABS_ASSETS_AGENT_URL,
     ABS_ASSET_MARKS_URL
 } from '../common';
@@ -57,7 +57,7 @@ export const assetsNavTree: SideNavNode = {
         {
             name: 'COMMON_FURNITURE_STATUS',
             icon: 'fa-solid fa-battery-bolt',
-            route: ABS_STATUS_TYPES,
+            route: ABS_ASSET_STATUS_TYPES,
             accessRights: 'FurnitureStatus'
         },
         {
@@ -112,13 +112,13 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_RECEPTIONS',
             icon: 'fa-solid fa-hands-holding-diamond',
             route: ABS_ASSET_RECEPTIONS_URL,
-            accessRights: 'ASSReception'
+            accessRights: 'AssetReception'
         },
         {
             name: 'ASSET_APPOINTMENTS',
             icon: 'fa-solid fa-check-to-slot',
             route: ABS_ASSET_APPOINTMENT_DOC_URL,
-            accessRights: 'ASSAppointment'
+            accessRights: 'ASSAppointmentHeader'
         },
         {
             name: 'ASSETS',
@@ -154,6 +154,7 @@ export const assetsNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_ASSETS_REPORTS_URL,
+            accessRights: 'Report'
         },
     ]
 };

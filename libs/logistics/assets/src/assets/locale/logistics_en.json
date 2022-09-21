@@ -6,7 +6,6 @@
     "CODE": "Code",
     "ADDRESS": "Address",
     "ADDRESS2": "Address 2",
-    "CITY": "City",
     "COUNTRY": "Country",
     "PHONE": "Phone",
     "MOBILE": "Mobile",
@@ -143,5 +142,6 @@
     "DISCOUNTABLE":    "Discountable",
     "DRIVER":          "Driver",
     "DRIVER_LICENSE":  "Driver license",
-    "PLATE_NUMBER":    "Plate number"
+    "PLATE_NUMBER":    "Plate number",
+    "POSITION":        "Position"
 }

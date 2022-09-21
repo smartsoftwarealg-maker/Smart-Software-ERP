@@ -18,7 +18,7 @@ import {Transaction} from '@ss/logistics/api-transaction';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Transaction> {
-
+    manager = false;
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
     constructor(
@@ -38,6 +38,7 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
 
     public setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
+        this.manager = this.loginSrv.appCtx.manager;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
@@ -48,7 +49,7 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required]
+            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.manager}, Validators.required]
         });
     }
 

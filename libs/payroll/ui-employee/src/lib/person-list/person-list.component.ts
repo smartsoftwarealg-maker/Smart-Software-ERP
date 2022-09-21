@@ -48,7 +48,6 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
 
     maritalStatus: { [id: number]: string; };
     nationalities: { [id: number]: string; };
-    militaryServiceStates: { [id: number]: string; };
 
     constructor(
         public personListSrv: PersonListService,

@@ -12,7 +12,7 @@
     "MSRV_EXEMPTED":"Exempted",
     "MSRV_UNFIT":"Unfit",
     "EMPLOYEES": "Employees",
-    "EMPLOYEES_LIST": "ِActive employees",
+    "EMPLOYEES_LIST": "Active employees",
     "INACTIVE_EMPLOYEES_LIST": "Inactive employees",
     "EDIT_EMPLOYEE": "Edit employee",
     "FIRST_NAME": "First name",
@@ -116,6 +116,7 @@
     "TRAINING_EXPENSES": "Training expenses",
     "EXTRA_EXPENSES":     "Extra expenses",
     "JUDICIAL_FRAME":     "Judicial frame",
+    "JUDICIAL_FRAMES":     "Judicial frames",
     "PUNISHMENT_TYPE":    "Punishment type",
     "FAULT":              "Fault",
     "FAULTS":              "Faults",
@@ -132,5 +133,8 @@
     "EMPLOYEE_SUMMARY": "Statistics",
     "WORKSHOP":         "Site",
     "APPLICATION_DATE":   "Application date",
-    "APPLICATION_PERIOD": "Application period"
+    "APPLICATION_PERIOD": "Application period",
+    "DECISION_MOTIVES":   "Decision motives",
+    "CONTRACT_MOTIVES":   "Contract motives",
+    "PAYROLL_MOTIVES":    "Employment motives"
 }

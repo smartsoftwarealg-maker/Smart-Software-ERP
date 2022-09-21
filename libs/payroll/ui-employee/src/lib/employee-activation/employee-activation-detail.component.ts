@@ -55,8 +55,8 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
             activityStatus: a.activityStatus,
             hireDate: a.hireDate,
             suspended: a.suspended,
-            suspensionDate: a.suspended ? [a.suspensionDate, Validators.required] : null,
-            suspensionReason: a.suspended ? [a.suspensionReason, Validators.required] : null,
+            suspensionDate: [a.suspensionDate],
+            suspensionReason: [a.suspensionReason],
             employmentType: a.employmentType,
             inConflict: a.inConflict
         });

@@ -56,7 +56,6 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         private usersService: UserListService,
         private lookupsSrv: LookupsService,
         private agentService: AgentService,
-        private loginService: LoginService,
         private dialog: MatDialog,
         private docImportService: DocImportService,
         private payMethodSrv: PayMethodService) {
@@ -79,17 +78,17 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         if (!b.id) {
             b.id = 0;
             b.number = 0;
-            b.userID = this.loginService.appCtx.id;
+            b.userID = this.loginSrv.appCtx.id;
             b.dealer = b.userID;
             b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
         this.invoice = b;
-        this.isManager = this.loginService.appCtx.manager;
+        this.isManager = this.loginSrv.appCtx.manager;
         this.importBtn.disabled = b.agent == null || b.agent === undefined;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            centerId: [0],
+            centerId: [0 || this.loginSrv.appCtx.center],
             date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
             number: [b.number || 0],
             reference: [b.reference],
@@ -104,10 +103,9 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
             agent: [b.agent, Validators.required],
         });
     }
+
     readForm(): Transaction {
-        const form =  super.readForm();
-        fillObject(this.invoice, form)
-        return form;
+        return this.form.getRawValue();
     }
 
     private importDocument() {

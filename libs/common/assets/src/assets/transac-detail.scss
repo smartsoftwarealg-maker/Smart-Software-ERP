@@ -3,15 +3,21 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    max-width: 900px;
+    max-width: 600px;
     margin: 0 auto;
     gap: 5px;
     padding: 5px;
 }
 
-mat-card {
+mat-card, .detail_div {
+    width: 90%;
+    max-width: 600px;
     margin: 5px auto;
     padding: 10px 0px;
-    margin: 0 auto;
+    margin: 8px auto;
 }
 
+.detail_div {
+    max-width: 1200px;
+    overflow-x: auto;
+}

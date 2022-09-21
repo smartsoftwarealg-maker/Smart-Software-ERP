@@ -25,5 +25,18 @@
 
     </mat-form-field>
 
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_DAIRA</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          descriptionFieldName="daira"
+                          [model]="dairaLookupModel"
+                          formControlName="daira"></ss-auto-complete>
+        <mat-error
+            *ngIf="form.controls['daira'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+        </mat-error>
+
+    </mat-form-field>
+
 
 </form>

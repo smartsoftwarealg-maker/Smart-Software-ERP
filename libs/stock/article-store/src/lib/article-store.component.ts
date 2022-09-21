@@ -6,9 +6,23 @@ import {Article} from '@ss/stock/api-article';
 import {PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {ArticleStore, ArticleStoresService} from '@ss/stock/api-article-store';
 
+interface StoreForm {
+    id: FormControl<number>;
+    storeId: FormControl<number>,
+    referenceId: FormControl<number>,
+    reference: FormControl<string|null>,
+    stock: FormControl<number>,
+    price1: FormControl<number>,
+    price2: FormControl<number>,
+    price3: FormControl<number>,
+    price4: FormControl<number>,
+    price5: FormControl<number>,
+    blockedLot: FormControl<boolean>
+
+}
 @Component({
     selector: 'ss-article-store',
     styleUrls: ['./article-store.component.scss'],
@@ -19,12 +33,18 @@ export class ArticleStoreComponent implements OnInit {
     article_!: Article;
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.lotsService);
-    lots: { [id: number]: string; };
-    storeForm: UntypedFormGroup = new UntypedFormGroup({
-        storeId: new UntypedFormControl(),
-        referenceId: new UntypedFormControl(),
-        reference: new UntypedFormControl(),
-        id: new UntypedFormControl()
+    storeForm: FormGroup<StoreForm> = new FormGroup({
+        id: new FormControl(0, {nonNullable: true}),
+        storeId: new FormControl(0),
+        referenceId: new FormControl(0),
+        reference: new FormControl(null),
+        stock: new FormControl(0),
+        price1: new FormControl<number>(0),
+        price2: new FormControl<number>(0),
+        price3: new FormControl<number>(0),
+        price4: new FormControl<number>(0),
+        price5: new FormControl<number>(0),
+        blockedLot: new FormControl<boolean>(false)
     });
 
     //
@@ -33,7 +53,7 @@ export class ArticleStoreComponent implements OnInit {
     data: ArticleStore[];
     selectedStore: ArticleStore = null;
     displayedColumns = [
-        'storeId',
+        'storeName',
         'stock'
     ];
 
@@ -52,10 +72,17 @@ export class ArticleStoreComponent implements OnInit {
     ngOnInit() {
         this.articleStoreSrv.setParentId(this.article_.id);
         this.storeForm.setValue({
-            storeId: null,
+            storeId: 0,
             referenceId: this.article_.id,
             reference: this.article_.reference,
-            id: 0
+            id: 0,
+            price1: 0,
+            price2: 0,
+            price3: 0,
+            price4: 0,
+            price5: 0,
+            stock: 0,
+            blockedLot: false
         });
         this.loadArticleStore();
     }
@@ -68,25 +95,18 @@ export class ArticleStoreComponent implements OnInit {
 
     loadArticleStore() {
         this.articleStoreSrv
-            .getPage(this.pagination)
-            .subscribe((x: ArticleStore[]) => {
-            const ids = x.map(_ => _.id);
-            this.lotsService.getAll(ids).subscribe((s: Store[]) => {
-                this.lots = s.reduce(
-                    (total: { [id: number]: string; }, currentValue) => {
-                        total[currentValue.id] = currentValue.description;
-                        return total
-                    }, {}
-                );
-            });
-            this.data = x;
+            .getList(this.pagination.page - 1, this.pagination.pageSize)
+            .subscribe((x) => {
+                this.pagination.elementCount = x.itemCount;
+                const ids = x.body.map(_ => _.id);
+                this.data = x.body;
         });
 
     }
 
-
     addStore() {
-        this.articleStoreSrv.add(this.storeForm.value)
+        const value = this.storeForm.getRawValue();
+        this.articleStoreSrv.add(value)
             .subscribe({
                 next: res => {
                     this.snackBarSrv.showSuccessMessage();
@@ -109,10 +129,13 @@ export class ArticleStoreComponent implements OnInit {
 
     removeStore() {
         if (this.selectedStore) {
+            console.log('selected', this.selectedStore);
             this.articleStoreSrv
                 .remove(this.selectedStore.id)
-                .subscribe(res => this.snackBarSrv.showSuccessMessage())
-            this.data = this.data.filter(e => e.id !== this.selectedStore.id)
+                .subscribe(res => {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.data = this.data.filter(e => e.id !== this.selectedStore.id);
+                })
         }
     }
 }

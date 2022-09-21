@@ -137,8 +137,13 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
             .subscribe(res => this.comparisonData = res);
     }
     generate() {
-        this.amendSrv
-            .generate()
-            .subscribe(res => this.snackBarSrv.showSuccessMessage());
+        this.confirmationSrv
+            .confirm('REMUN_AMENDMENT', 'COMMON_GENERATE')
+            .pipe(switchMap(yes => yes? this.amendSrv.generate(): of(null)))
+            .subscribe(res => {
+                if (res && res['count']) {
+                    this.snackBarSrv.showSuccessMessage()
+                }
+            });
     }
 }

@@ -21,7 +21,7 @@
                 <!--                </mat-error>-->
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50">
                 <mat-label translate>COMMON_DEBIT</mat-label>
                 <input matInput
                        formControlName="debit"
@@ -30,7 +30,7 @@
                 <mat-error *ngIf="form.controls.debit.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50">
                 <mat-label translate>COMMON_CREDIT</mat-label>
                 <input matInput
                        formControlName="credit"
@@ -46,20 +46,20 @@
                 <mat-error *ngIf="form.controls.description.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
                 <input matInput formControlName="dueDays" type="number" step="1" required>
                 <mat-error *ngIf="form.controls.dueDays.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field id="number" class="default-50 sm-100">
+            <mat-form-field id="number" class="default-50">
                 <mat-label translate>COMMON_NUMBER</mat-label>
                 <input matInput formControlName="number" type="text">
                 <mat-error *ngIf="form.controls.number.invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_MODE</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
@@ -68,7 +68,7 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_BANK</mat-label>
                 <ss-auto-complete matInput
                                   [required]="false"

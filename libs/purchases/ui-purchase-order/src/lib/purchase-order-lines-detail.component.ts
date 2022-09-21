@@ -1,20 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
+import {UntypedFormBuilder} from '@angular/forms';
+import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import {ArticleService} from '@ss/stock/api-article';
 import {
     BaseTransactionLinesDetailComponent,
-    TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
+import {PurchaseOrderLinesService} from './purchase-order-lines.service';
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -24,7 +19,7 @@ import {
 export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: PurchaseOrderLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

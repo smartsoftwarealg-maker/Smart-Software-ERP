@@ -87,6 +87,7 @@ import {
 } from '@ss/payroll/api-employee';
 import {PayrollMonthGuard} from '@ss/payroll-common';
 import {DashboardComponent} from '@ss/dashboard';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '../../../../../libs/common/app-archive/src';
 
 export const mainRoutes: Routes = [
     {
@@ -391,7 +392,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService, PayrollMonthGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: false }
+                        data: { hrMode: true, active: false },
+                        children: [
+                            { path: '', component: AppArchiveListComponent },
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
@@ -565,7 +576,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService, PayrollMonthGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: false, active: true }
+                        data: { hrMode: false, active: true },
+                        children: [
+                            { path: '', component: AppArchiveListComponent },
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,

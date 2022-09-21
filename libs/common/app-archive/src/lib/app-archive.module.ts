@@ -15,7 +15,6 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 @NgModule({
     imports: [
         CommonModule,
-        BrowserModule,
         RouterModule,
         MaterialModule,
         CommonUiLangModule,

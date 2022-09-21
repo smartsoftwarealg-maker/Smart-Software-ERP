@@ -54,7 +54,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
 
         this.dataCols = this.elements
             .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed)
-            .sort((a, b) => a.description.localeCompare(b.description)) || [];
+            .sort((a, b) => a.description?.localeCompare(b.description) || -1) || [];
         return this.dataCols;
     }
 

@@ -3,7 +3,7 @@
 <div class="form-container">
     <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-form-field floatLabel="always" class="default-100">
             <mat-label translate>PAYROLL_LANGUAGE</mat-label>
             <mat-select formControlName="language_id" required>
                 <mat-option *ngFor="let v of languages" [value]="v.id">
@@ -12,7 +12,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-form-field floatLabel="always" class="default-100">
             <mat-label translate>PAYROLL_LANGUAGE_READ_LEVEL</mat-label>
             <mat-select formControlName="read_level" required>
                 <mat-option *ngFor="let v of languageLevels" [value]="v.id">
@@ -21,7 +21,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
+        <mat-form-field floatLabel="always" class="default-100">
             <mat-label translate>PAYROLL_LANGUAGE_WRITE_LEVEL</mat-label>
             <mat-select formControlName="write_level" required>
                 <mat-option *ngFor="let v of languageLevels" [value]="v.id">

@@ -1,36 +1,46 @@
-        <form *ngIf="form !== null" novalidate [formGroup]="form" class="container">
+<form *ngIf="form !== null" novalidate [formGroup]="form" class="container">
 
-            <mat-form-field id="description" class="description">
-                <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" autofocus required>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+    <mat-form-field id="description" class="description">
+        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+        <input matInput formControlName="description" type="text" autofocus required>
+        <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
 
-            <mat-form-field id="selection" class="selection">
-                <mat-label translate>REMUN_SELECTION</mat-label>
-                <input matInput formControlName="selection" type="text" required readonly>
-                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
+    <mat-form-field id="selection" class="selection">
+        <mat-label translate>REMUN_SELECTION</mat-label>
+        <input matInput formControlName="selection" type="text" required readonly>
+        <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+    </mat-form-field>
 
-            <div class="llist">
-                <div mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTION' }}</div>
-                <mat-selection-list #llist>
-                    <mat-list-option *ngFor="let s of selectionArray" [value]="s">
-                        {{ s }}
-                    </mat-list-option>
-                </mat-selection-list>
-            </div>
+    <div class="llist">
+        <div mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTION' }}</div>
+        <mat-selection-list #llist>
+            <mat-list-option *ngFor="let s of selectionArray" [value]="s">
+                {{ s }}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
 
-            <div class="rlist">
-                <div mat-subheader class="b-primary" translate> {{ 'REMUN_FIELDS' }}</div>
-                <mat-selection-list #elemlist>
-                    <mat-list-option *ngFor="let e of elements" [value]="e.field">
-                        {{e.field}} {{ e.description }}
-                    </mat-list-option>
-                </mat-selection-list>
-            </div>
-            <button mat-raised-button color="primary" class="lbutton" (click)="addElements(elemlist.selectedOptions)">&lt;</button>
-            <button mat-raised-button color="primary" class="rbutton" (click)="removeElements(llist.selectedOptions)">&gt;</button>
+    <div class="rlist">
+        <span mat-subheader class="b-primary">
+                    {{ 'REMUN_FIELDS' | translate }}
+        </span>
+        <mat-form-field>
+            <mat-label translate>COMMON_SEARCH</mat-label>
+            <input matInput [formControl]="filter" type="text">
+        </mat-form-field>
+        <div class="list-container">
+            <mat-selection-list #elemlist>
+                <mat-list-option *ngFor="let e of filteredElements" [value]="e.field">
+                    {{e.field}} {{ e.description }}
+                </mat-list-option>
+            </mat-selection-list>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" class="lbutton" (click)="addElements(elemlist.selectedOptions)">&lt;
+    </button>
+    <button mat-raised-button color="primary" class="rbutton" (click)="removeElements(llist.selectedOptions)">&gt;
+    </button>
 
-        </form>
+</form>
 

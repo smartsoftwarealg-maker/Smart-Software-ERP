@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/purchases/ui-purchase-request/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/purchases/ui-purchase-request"],
+            "options": {
+                "jestConfig": "libs/purchases/ui-purchase-request/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/purchases/ui-purchase-request/**/*.ts",
+                    "libs/purchases/ui-purchase-request/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

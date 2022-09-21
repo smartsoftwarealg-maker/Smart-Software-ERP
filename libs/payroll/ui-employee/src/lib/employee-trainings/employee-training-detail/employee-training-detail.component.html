@@ -1,11 +1,11 @@
 <form *ngIf="form" novalidate [formGroup]="form" class="form-container">
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
+    <mat-form-field floatLabel="always" class="default-25 sm-50">
         <mat-label translate>PAYROLL_REFERENCE</mat-label>
         <input matInput [maxLength]="12" formControlName="reference" type="text">
     </mat-form-field>
 
-    <mat-form-field class="default-25 sm-100">
+    <mat-form-field class="default-25 sm-50">
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker required="true" formControlName="ref_date"></ss-date-picker>
         <mat-error *ngIf="form.controls.ref_date.hasError('required')" translate>
@@ -13,17 +13,7 @@
         </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="default-50 sm-100">
-        <mat-label translate>PAYROLL_MOTIVE</mat-label>
-        <ss-auto-complete matInput
-                          [required]="true"
-                          [model]="motiveAutoCompleteModel"
-                          formControlName="motive"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['motive'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-    </mat-form-field>
-
-    <div class="default-50 sm-50"></div>
-    <mat-form-field class="default-25 sm-100">
+    <mat-form-field class="default-25 sm-50">
         <mat-label translate>PAYROLL_FROM</mat-label>
         <ss-date-picker required="true" formControlName="from_date"></ss-date-picker>
         <mat-error *ngIf="form.controls.from_date.hasError('required')" translate>
@@ -31,20 +21,26 @@
         </mat-error>
     </mat-form-field>
 
-    <div class="filler default-25"></div>
-    <mat-form-field class="default-25 sm-100">
+    <mat-form-field class="default-25 sm-50">
         <mat-label translate>PAYROLL_TO</mat-label>
         <ss-date-picker required="true" formControlName="to_date"></ss-date-picker>
         <mat-error *ngIf="form.controls.to_date.hasError('required')" translate>
             COMMON_FIELD_REQUIRED
         </mat-error>
     </mat-form-field>
-    <div class="filler default-25"></div>
 
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>PAYROLL_DAY_COUNT</mat-label>
-        <input matInput type="number" formControlName=day_count>
+
+    <mat-form-field class="default-50 sm-100 auto" >
+        <mat-label translate>PAYROLL_MOTIVE</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="motiveAutoCompleteModel"
+                          formControlName="motive">
+        </ss-auto-complete>
+        <mat-error *ngIf="form.controls['motive'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
+
+
 
     <mat-form-field floatLabel="always" class="default-50 sm-100">
         <mat-label translate>PAYROLL_TRAINING</mat-label>
@@ -73,28 +69,34 @@
         <mat-error *ngIf="form.controls['diploma_id']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
 
-
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>PAYROLL_MISSION_EXPENSES</mat-label>
-        <input matInput type="number" formControlName=mission_expenses>
-    </mat-form-field>
-
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>PAYROLL_TRAINING_EXPENSES</mat-label>
-        <input matInput type="number" formControlName=trn_expenses>
-    </mat-form-field>
-
-    <mat-form-field floatLabel="always" class="default-50 sm-100">
-        <mat-label translate>PAYROLL_EXTRA_EXPENSES</mat-label>
-        <input matInput type="number" formControlName=extra_expenses>
-    </mat-form-field>
-
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>PAYROLL_JUDICIAL_FRAME</mat-label>
         <ss-auto-complete matInput
                           [model]=judicialFrameAutoCompleteModel
-                          formControlName="judicial_frame"></ss-auto-complete>
+                          formControlName="judicial_frame">
+        </ss-auto-complete>
     </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-25 sm-50">
+        <mat-label translate>PAYROLL_DAY_COUNT</mat-label>
+        <input matInput type="number" formControlName=day_count>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-25 sm-50">
+        <mat-label translate>PAYROLL_MISSION_EXPENSES</mat-label>
+        <input matInput type="number" formControlName=mission_expenses>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-25 sm-50">
+        <mat-label translate>PAYROLL_TRAINING_EXPENSES</mat-label>
+        <input matInput type="number" formControlName=trn_expenses>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" class="default-25 sm-50">
+        <mat-label translate>PAYROLL_EXTRA_EXPENSES</mat-label>
+        <input matInput type="number" formControlName=extra_expenses>
+    </mat-form-field>
+
 
 </form>
 

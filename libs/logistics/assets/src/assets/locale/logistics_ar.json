@@ -6,7 +6,6 @@
     "CODE": "الرمز",
     "ADDRESS": "العنوان",
     "ADDRESS2": "العنوان الثاني",
-    "CITY": "المدينة",
     "COUNTRY": "بالبلد",
     "PHONE": "الهاتف",
     "MOBILE": "النقال",
@@ -144,5 +143,6 @@
     "DISCOUNTABLE":    "قابل للخصم",
     "DRIVER":          "قابل للخصم",
     "DRIVER_LICENSE":  "سائق",
-    "PLATE_NUMBER":    "رخصة قيادة"
+    "PLATE_NUMBER":    "رخصة قيادة",
+    "POSITION": "الرتبة"
 }

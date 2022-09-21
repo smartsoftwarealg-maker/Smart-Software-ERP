@@ -44,17 +44,16 @@
             </mat-form-field>
             <mat-form-field floatLabel="always" class="default-50">
                 <mat-label translate>PAYROLL_YEAR</mat-label>
-                <input matInput formControlName="paymonthY" type="number" style="text-align: center;" required>
+                <input matInput formControlName="paymonthY" type="number" style="text-align: end;" required>
             </mat-form-field>
         </div>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_POST</mat-label>
-            <mat-select formControlName="post">
-                <mat-option *ngFor="let v of posts" [value]="v.id">
-                    {{v.description}}
-                </mat-option>
-            </mat-select>
+            <ss-auto-complete matInput
+                              formControlName="post"
+                              [model]="postLookup">
+            </ss-auto-complete>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -86,11 +85,10 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_WORKSHOP</mat-label>
-            <mat-select formControlName="workshop">
-                <mat-option *ngFor="let v of workshops" [value]="v.id">
-                    {{v.description}}
-                </mat-option>
-            </mat-select>
+            <ss-auto-complete matInput
+                              formControlName="workshop"
+                              [model]="workshopLookup">
+            </ss-auto-complete>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -104,7 +102,7 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_SALARY_RANK</mat-label>
-            <input matInput formControlName="salary_rank" type="number" style="text-align: center;">
+            <input matInput formControlName="salary_rank" type="number" style="text-align: end;">
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -118,7 +116,7 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_TRIAL_PERIOD</mat-label>
-            <input matInput formControlName="trial_period" type="number" style="text-align: center;">
+            <input matInput formControlName="trial_period" type="number" style="text-align: end;">
         </mat-form-field>
 <!--        <pre>{{form.value | json}}</pre>-->
     </form>

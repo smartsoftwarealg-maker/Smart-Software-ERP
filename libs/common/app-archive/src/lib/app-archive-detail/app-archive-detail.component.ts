@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AppArchiveService} from '../app-archive.service';
-import {switchMap, zip} from 'rxjs';
+import {of, switchMap, zip} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {tap} from 'rxjs/operators';
@@ -16,9 +16,9 @@ import {tap} from 'rxjs/operators';
     styleUrls: ['./app-archive-detail.component.scss']
 })
 export class AppArchiveDetailComponent implements OnInit {
-    public documentAutoCompleteModel    = new DefaultAutoCompleteModel(this.documentSrv);
+    documentAutoCompleteModel     = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
-    form: UntypedFormGroup = null;
+    form: UntypedFormGroup        = null;
 
     constructor(private service: AppArchiveService,
                 private documentSrv: AppArchiveDocumentService,
@@ -27,23 +27,23 @@ export class AppArchiveDetailComponent implements OnInit {
                 private fb: UntypedFormBuilder,
                 private loginSrv: LoginService,
                 private shellSrv: ShellService,
-                private snackBarSrv: SnackBarService) {
-    }
+                private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {
         zip(this.route.paramMap, this.route.parent.parent.paramMap)
             .pipe(
                 tap(res => {
-                    const id = +res[0].get('id');
-                    const parentId = +res[1].get('id');
-                    this.service.setParentId(parentId);
+                    const parentId = +res[1].get('id') || 0;
+                    if (parentId > 0 || !this.service.getParentId() ) {
+                        this.service.setParentId(parentId);
+                    }
                 }),
-                switchMap(res => this.service.get(+res[0].get('id'))))
+                switchMap(res => this.service.getParentId()? this.service.get(+res[0].get('id')) : of(null as AppArchive)))
             .subscribe(res => {
                 this.form = this.fb.group({
                     id:         [res?.id || 0],
                     appId:      [res?.appId || this.service.appId],
-                    documentId: [res?.documentId, Validators.required],
+                    documentId: [{ value: res?.documentId, disabled: !!res?.id}, Validators.required],
                     objId:      [res?.objId || this.service.getParentId(), Validators.required]
                 });
             });
@@ -75,7 +75,7 @@ export class AppArchiveDetailComponent implements OnInit {
 
     private save() {
         this.service
-            .save(this.form.value)
+            .save(this.form.getRawValue())
             .subscribe(_ => {
                 this.snackBarSrv.showSuccessMessage();
                 this.onCancel();
@@ -85,4 +85,5 @@ export class AppArchiveDetailComponent implements OnInit {
     onCancel() {
         this.router.navigate(['../..'], {relativeTo: this.route}).then();
     }
+
 }

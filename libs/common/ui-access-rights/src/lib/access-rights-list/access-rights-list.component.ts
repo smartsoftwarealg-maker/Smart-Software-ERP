@@ -1,5 +1,12 @@
 import {Component} from '@angular/core';
-import {AccessRight, LoginService, PaginatorPersistenceService, Role} from "@ss/common/api-common";
+import {
+    AccessRight,
+    Language,
+    LanguageService,
+    LoginService,
+    PaginatorPersistenceService,
+    Role
+} from "@ss/common/api-common";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
@@ -21,12 +28,12 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
 
     apps: string[] = [];
+    sortedApps: string[] = [];
     application = '';
     menuItems: string[] = [];
     roleList: Role[] = [];
     selectedItem = '';
     form: UntypedFormGroup = null;
-
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
 
     constructor(
@@ -40,9 +47,18 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public router: Router,
         private lookupSrv: LookupsService,
         public formBuilder: UntypedFormBuilder,
+        public pagPersistSrv: PaginatorPersistenceService,
         private roleSrv: RoleService,
-        public pagPersistSrv: PaginatorPersistenceService) {
-        super(rightsSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_ACCESS_RIGHTS');
+        private langSrv: LanguageService) {
+        super(rightsSrv,
+              shellSrv,
+              snackBarSrv,
+              route,
+              router,
+              confirmationSrv,
+              defReportSrv,
+              pagPersistSrv,
+            'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
         this.form = new UntypedFormGroup({
             roles: new UntypedFormControl(),
@@ -65,8 +81,11 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                     return this.rightsSrv.getApps();
                 }))
             .subscribe(res => {
-                this.apps = this.apps = res['apps'] || [];
+                this.apps = (res['apps'].sort((a, b) => a.localeCompare(b)) || []);
                 this.apps.unshift('APPLICATIONS');
+                this.sortedApps = this.apps
+                    .map(e => 'COMMON_' + e)
+                    .sort((a, b) => a.localeCompare(b));
             });
     }
 

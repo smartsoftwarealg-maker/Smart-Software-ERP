@@ -56,6 +56,11 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_CITY</mat-label>
+                <ss-auto-complete [model]="cityLookup"  formControlName="birthCity"></ss-auto-complete>
+            </mat-form-field>
+
             <mat-radio-group formControlName="sex" class="default-50 sm-100">
                 <mat-radio-button [value]="1" translate style="margin: 8px;">PAYROLL_MALE</mat-radio-button>
                 <mat-radio-button [value]="2" translate style="margin: 8px;">PAYROLL_FEMALE</mat-radio-button>
@@ -373,6 +378,16 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ss-payment-info [personId]="id"></ss-payment-info>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #archivePanel
+                             [class]="getPanelHeaderClass('archive', archivePanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_ARCHIVE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-app-archive-main [id]="id" [appId]="6" *ngIf="id"></ss-app-archive-main>
         </mat-expansion-panel>
 
     </mat-accordion>

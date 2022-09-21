@@ -1,9 +1,11 @@
 <div class="container">
-    <div class="ctrl-div">
+    <div class="ctrl-div" *ngIf="!processing">
         <div class="file-upload">
-            <input type="file" class="file-input"
-                   [accept]="requiredFileType"
-                   (change)="onFileSelected($event)" #fileUpload>
+            <input type="file"
+                   class="file-input"
+                   accept=".xlsx, application/msexcel"
+                   (change)="onChange(fileUpload.files)"
+                   #fileUpload>
 
             <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
@@ -14,27 +16,31 @@
                 <i class="fas fa-paperclip"></i>
             </button>
         </div>
-        <div *ngIf="!uploadProgress" >
-            <button mat-raised-button color="warn" type="button" (click)="cancel()">
-                {{ 'COMMON_CANCEL' | translate }}
-            </button>
-        </div>
+        <button mat-raised-button color="primary"
+                type="button"
+                (click)="onFileSelected(fileUpload.files)"
+                [disabled]="!fileName">
+            <i class="fa-solid fa-upload  icon"></i>
+            {{ 'COMMON_UPLOAD' | translate }}
+        </button>
+        <button mat-raised-button color="warn" type="button" (click)="cancel()">
+            <i class="fa-solid fa-arrow-rotate-left icon"></i>
+            {{ 'COMMON_CANCEL' | translate }}
+        </button>
     </div>
 
-    <div class="progress">
+    <mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
 
-        <mat-progress-bar class="progress-bar" mode="determinate"
-                          [value]="uploadProgress" *ngIf="uploadProgress">
+<!--    <div class="progress">-->
 
-        </mat-progress-bar>
 
-        <i class="fas fa-upload"
-           (click)="cancelUpload()"
-           *ngIf="uploadProgress"
-           translate> COMMON_CANCEL
-        </i>
+<!--        <i class="fas fa-upload"-->
+<!--           (click)="cancelUpload()"-->
+<!--           *ngIf="uploadProgress"-->
+<!--           translate> COMMON_CANCEL-->
+<!--        </i>-->
 
-    </div>
+<!--    </div>-->
 
 
     <textarea cols="30" rows="10" class="text-area" readonly [value]="queryList"></textarea>

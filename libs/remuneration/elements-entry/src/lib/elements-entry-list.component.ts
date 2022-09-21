@@ -96,6 +96,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
                 this.addButton.visible = false;
                 this.shellSrv.updateShell();
             });
+        this.excelButton.visible = false;
     }
 
     selectInput(ev: MatSelectChange) {

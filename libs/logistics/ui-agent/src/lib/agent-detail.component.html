@@ -260,7 +260,7 @@
             </mat-form-field>
 
             <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CITY</mat-label>
+                <mat-label translate>COMMON_CITY</mat-label>
                 <mat-select formControlName="city">
                     <mat-option [value]="null"></mat-option>
                     <mat-option *ngFor="let v of cities" [value]="v.id">
@@ -383,8 +383,9 @@
                     COMMON_ARCHIVE
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <ss-app-archive-main [id]="id" [appId]="1"></ss-app-archive-main>
+            <ss-app-archive-main [id]="id" [appId]="LOCAL_AGENT_ARCHIVES"></ss-app-archive-main>
         </mat-expansion-panel>
     </mat-accordion>
 
 </form>
+

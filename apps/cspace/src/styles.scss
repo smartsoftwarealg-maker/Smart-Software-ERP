@@ -623,15 +623,15 @@ $theme-4-warn:    mat-palette($mat-red);
 
 .default-50 {
     display: inline-block;
-    margin: 0 1%;
-    max-width: 48%;
+    margin: 0 1em;
+    max-width: calc(50% - 2em);
     width: 48%;
 }
 
 .default-100 {
     display: inline-block;
-    margin: 0 1%;
-    max-width: 98%;
+    margin: 0 1em;
+    max-width: calc(100% - 2em);
     width: 98%;
 }
 

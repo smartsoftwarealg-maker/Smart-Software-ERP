@@ -14,7 +14,6 @@ import {HttpParams} from '@angular/common/http';
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {map, switchMap} from 'rxjs/operators';
-import {saveAs} from 'file-saver';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
@@ -165,18 +164,18 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             }
         })).subscribe({
             next: res => {
-                if (this.isAndroid && this.form.value.reportType === 'PDF') {
-                    this.writeThenOpenFile(res);
+                if (this.form.value.reportType === 'EXCEL') {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(res);
+                    link.download = this.selectedReport.name.replace('.jasper', '') + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                } else if (this.form.value.reportType === 'PDF') {
+                    this.pdfSrc = URL.createObjectURL(res);
+                    this.leftPaneHidden = true;
                 } else {
-                    if (this.form.value.reportType === 'EXCEL') {
-                        saveAs(res, 'excel.xlsx');
-                    } else if (this.form.value.reportType === 'PDF') {
-                        this.pdfSrc = URL.createObjectURL(res);
-                        this.leftPaneHidden = true;
-                    } else {
-                        this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
-                        this.leftPaneHidden = true;
-                    }
+                    this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
+                    this.leftPaneHidden = true;
                 }
                 this.generating = false;
             }, error: err => {

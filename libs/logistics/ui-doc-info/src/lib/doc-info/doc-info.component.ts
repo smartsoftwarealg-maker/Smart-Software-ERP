@@ -45,6 +45,12 @@ export class DocInfoComponent {
                     description: 'COMMON_TOTAL',
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
+                },
+                {
+                    name: 'archive',
+                    description: 'COMMON_ARCHIVE',
+                    url: 'archive',
+                    paramsProvided: (p: string[]) => p.includes('documentId')
                 }
             ],
         },

@@ -6,7 +6,8 @@ import {
     HR_DIVISIONS_URL,
     HR_EDUCATION_LEVELS_URL,
     HR_EMPLOYEES_URL,
-    HR_EMPLOYMENT_TYPE_URL, HR_INACTIVE_EMPLOYEES_URL,
+    HR_EMPLOYMENT_TYPE_URL,
+    HR_INACTIVE_EMPLOYEES_URL,
     HR_MARITAL_STATUS_URL,
     HR_NATIONALITIES_URL,
     HR_POSTS_URL,
@@ -15,7 +16,12 @@ import {
     HR_SERVICES_URL,
     HR_SUSPENSION_REASON_URL,
     LOOKUPS_URL,
-    HR_PERSON_LIST_URL, DASHBOARD_URL
+    HR_PERSON_LIST_URL,
+    DASHBOARD_URL,
+    HR_JUDICIAL_FRAMES_URL,
+    HR_DECISION_MOTIVE_URL,
+    HR_MOTIVE_URL,
+    HR_CONTRACT_MOTIVE_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -27,7 +33,10 @@ import {
 import { Routes } from '@angular/router';
 import {
     CategoryDetailComponent,
-    CategoryListComponent,
+    CategoryListComponent, ContractMotiveDetailComponent,
+    ContractMotiveListComponent,
+    DecisionMotiveDetailComponent,
+    DecisionMotiveListComponent,
     DepartmentDetailComponent,
     DepartmentListComponent,
     DiplomaDetailComponent,
@@ -38,8 +47,12 @@ import {
     EducationLevelListComponent,
     EmploymentTypeDetailComponent,
     EmploymentTypeListComponent,
+    JudicialFrameDetailComponent,
+    JudicialFrameListComponent,
     MaritalStatusDetailComponent,
     MaritalStatusListComponent,
+    MotiveDetailComponent,
+    MotiveListComponent,
     NationalityDetailComponent,
     NationalityListComponent,
     PostDetailComponent,
@@ -84,8 +97,77 @@ import {
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
+import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
+    {
+        path: HR_MOTIVE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MotiveListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: MotiveDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_DECISION_MOTIVE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DecisionMotiveListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: DecisionMotiveDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_CONTRACT_MOTIVE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ContractMotiveListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: ContractMotiveDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_JUDICIAL_FRAMES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: JudicialFrameListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: JudicialFrameDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./hr-lookups.module').then(m => m.HRLookupsModule)
@@ -117,7 +199,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: true }
+                        data: { hrMode: true, active: true },
+                        children: [
+                            {path: '', component: AppArchiveListComponent},
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
@@ -268,6 +360,21 @@ export const mainRoutes: Routes = [
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
+                    },
+                    {
+                        path: DECISION_ROUTE_URL,
+                        children: [
+                            {
+                                path: '',
+                                component: RedirectToParentComponent,
+                            },
+                            {
+                                path: ':id',
+                                component: EmployeeDecisionDetailComponent,
+                                canActivate: [CanActivateService],
+                                canDeactivate: [CanDeactivateService]
+                            }
+                        ]
                     }
                 ]
             },
@@ -291,7 +398,17 @@ export const mainRoutes: Routes = [
                         component: EmployeeDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: { hrMode: true, active: false }
+                        data: { hrMode: true, active: false },
+                        children: [
+                            {path: '', component: AppArchiveListComponent},
+                            {
+                                path: 'detail',
+                                children: [
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                    {path: '**', redirectTo: '../' }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ACTIVATION_ROUTE_URL,
@@ -485,6 +602,23 @@ export const lookupRoutes: Routes = [
             {
                 path: ':id',
                 component: EmploymentTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_JUDICIAL_FRAMES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: JudicialFrameListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: JudicialFrameDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

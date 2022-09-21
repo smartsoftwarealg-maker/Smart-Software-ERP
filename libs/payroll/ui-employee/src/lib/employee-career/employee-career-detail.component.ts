@@ -3,14 +3,23 @@ import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shel
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable, of } from 'rxjs';
-import { tap, switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { tap, switchMap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { Career, EmployeeCareerService } from '@ss/payroll/api-employee';
-import {Post, LookupsService, Department, Division, Service, Category, Lookup} from '@ss/common/api-lookup';
-import {Grid} from '../../../../salary-grid/src/lib/grid-api';
-import {GridService} from '../../../../salary-grid/src/lib/grid.service';
+import {
+    Post,
+    LookupsService,
+    Department,
+    Division,
+    Service,
+    Category,
+    Lookup,
+    PostService, WorkshopService
+} from '@ss/common/api-lookup';
+import {GridService} from '@ss/payroll/salary-grid';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -19,7 +28,8 @@ import {GridService} from '../../../../salary-grid/src/lib/grid.service';
     styleUrls: ['./employee-career-detail.component.scss']
 })
 export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Career> implements OnInit, OnDestroy {
-
+    postLookup = new DefaultAutoCompleteModel(this.postSrv);
+    workshopLookup = new DefaultAutoCompleteModel(this.workshopSrv);
     entity: Career;
     posts: Post[] = [];
     departments: Department[] = [];
@@ -27,7 +37,6 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
     services: Service[] = [];
     categories: Category[] = [];
     salaryGrid: Lookup[] = [];
-    workshops: Lookup[] = [];
 
     constructor(
         public employeeCareerSrv: EmployeeCareerService,
@@ -38,7 +47,9 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
         public httpSrv: HttpService,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private gridService: GridService) {
+        private gridService: GridService,
+        private postSrv: PostService,
+        private workshopSrv: WorkshopService) {
         super(employeeCareerSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CAREER');
     }
 
@@ -77,12 +88,8 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
     }
 
     preload(): Observable<any> {
-        return this.lookupsSrv.getPosts()
+        return this.lookupsSrv.getDepartments()
             .pipe(
-                tap(posts => this.posts = posts),
-                switchMap(() => this.lookupsSrv.getWorkshops()),
-                tap(list => this.workshops = list),
-                switchMap(() => this.lookupsSrv.getDepartments()),
                 tap(list => this.departments = list),
                 switchMap(() => this.lookupsSrv.getDivisions()),
                 tap(list => this.divisions = list),

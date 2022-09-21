@@ -34,6 +34,8 @@ import { EmployeeDecisionDetailComponent } from './employee-decisions/employee-d
 import { EmployeeDecisionListComponent } from './employee-decisions/employee-decision-list.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
+import {CustomAttributesModule} from '@ss/custom-attributes';
+import {AppArchiveModule} from '@ss/common/app-archive';
 
 @NgModule({
     imports: [
@@ -43,9 +45,11 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         CommonUiImageInputModule,
         UiPaginationModule,
         CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
-        RouterModule
+        CommonUiDatepickerModule,
+        RouterModule,
+        CustomAttributesModule,
+        AppArchiveModule
     ],
     exports: [
         EmployeeListComponent,
@@ -57,7 +61,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         EmployeeLanguagesDetailComponent,
         EmployeeOldCareerDetailComponent,
         EmployeeDecisionDetailComponent,
-        PersonListComponent
+        PersonListComponent,
     ],
     declarations: [
         EmployeeListComponent,
@@ -85,8 +89,7 @@ import { PaymentInfoComponent } from './payment-info/payment-info.component';
         EmployeeDecisionDetailComponent,
         EmployeeDecisionListComponent,
         PersonListComponent,
-        PaymentInfoComponent
-     ]
+        PaymentInfoComponent,
+    ],
 })
-export class PayrollUiEmployeeModule {
-}
+export class PayrollUiEmployeeModule {}

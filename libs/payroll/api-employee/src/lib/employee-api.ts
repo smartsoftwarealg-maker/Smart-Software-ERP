@@ -1,3 +1,4 @@
+import {ImageModel} from '@ss/common/ui-image-input';
 
 export const EMPLOYEES_URL = '/persons';
 export const INACTIVE_EMPLOYEES_URL = '/inactive-persons';
@@ -72,6 +73,9 @@ export interface Employee {
     diploma: number;
     mutualNumber: string;
     post?: string;
+    fullName?: string;
+    imageModel?: ImageModel;
+    birthCity?: number;
 }
 
 export interface EmployeeActivation {
@@ -120,7 +124,7 @@ export interface Contract {
     centerId: number;
     employee: number;
     number: string;
-    info: string;
+    info?: number;
     recordNumber: string;
     date: string;
     related_contract: number;
@@ -194,6 +198,7 @@ export interface Decision {
     dec_motive: number;
     application_period: number;
     dec_header: string;
+    motiveName?: string;
 }
 
 export interface PersonSummary {
