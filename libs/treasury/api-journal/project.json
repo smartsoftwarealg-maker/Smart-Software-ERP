@@ -1,6 +1,5 @@
 {
     "projectType": "library",
-    "root": "libs/treasury/api-journal",
     "sourceRoot": "libs/treasury/api-journal/src",
     "prefix": "ss",
     "targets": {

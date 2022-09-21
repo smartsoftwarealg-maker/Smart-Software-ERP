@@ -184,10 +184,12 @@
         "treasury-api-check-books": "libs/treasury/api-check-books",
         "treasury-api-checks": "libs/treasury/api-checks",
         "treasury-api-journal": "libs/treasury/api-journal",
+        "treasury-api-transactions": "libs/treasury/api-transactions",
         "treasury-assets": "libs/treasury/assets",
         "treasury-ui-check-books": "libs/treasury/ui-check-books",
         "treasury-ui-checks": "libs/treasury/ui-checks",
         "treasury-ui-journal": "libs/treasury/ui-journal",
+        "treasury-ui-transactions": "libs/treasury/ui-transactions",
         "ui-report-catalog": "libs/administration/ui-report-catalog",
         "web-arch-assets": "libs/web-arch/assets",
         "web-arch-ui": "libs/web-arch/ui"
