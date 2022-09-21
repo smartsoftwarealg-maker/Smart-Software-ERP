@@ -1,0 +1,25 @@
+{
+    "projectType": "library",
+    "sourceRoot": "libs/treasury/api-transactions/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/libs/treasury/api-transactions"],
+            "options": {
+                "jestConfig": "libs/treasury/api-transactions/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/api-transactions/**/*.ts",
+                    "libs/treasury/api-transactions/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}
