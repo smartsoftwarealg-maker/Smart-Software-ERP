@@ -64,7 +64,10 @@ import {
     LanguageLevel,
     LANGUAGES_URL,
     LANGUAGE_LEVELS_URL,
-    WORKSHOPS_URL, APPLICATIONS_URL
+    JOURNAL_TYPES_URL,
+    WORKSHOPS_URL,
+    APPLICATIONS_URL,
+    JournalType
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
 import {Lookup} from '@ss/logistics/ui-doc-import';
@@ -212,5 +215,9 @@ export class LookupsService {
 
     public getLanguageLevels(): Observable<LanguageLevel[]> {
         return this.lookupCacheSrv.load(LANGUAGE_LEVELS_URL, 'languageLevels');
+    }
+
+    public getJournalTypes(): Observable<JournalType[]> {
+        return this.lookupCacheSrv.load(JOURNAL_TYPES_URL, 'trsJournalTypes');
     }
 }

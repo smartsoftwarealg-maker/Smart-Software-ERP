@@ -4,7 +4,7 @@ import { LIST_URL, CanActivateService, CanDeactivateService, ABS_INDEX_URL } fro
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
 import { CheckListComponent, CheckDetailComponent } from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
-import { JournalListComponent } from '@ss/treasury/ui-journal';
+import { JournalListComponent, JournalDetailComponent } from '@ss/treasury/ui-journal';
 
 export const mainRoutes: Routes = [
     {
@@ -22,7 +22,6 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
@@ -40,7 +39,6 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
@@ -58,7 +56,6 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
@@ -70,13 +67,12 @@ export const mainRoutes: Routes = [
                 component: JournalListComponent,
                 canActivate: [CanActivateService]
             },
-            /*{
+            {
                 path: ':id',
-                component: CheckBookDetailComponent,
+                component: JournalDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
-            },*/
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     }

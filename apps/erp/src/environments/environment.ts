@@ -12,17 +12,21 @@ import {financeNavTree} from '../app/finance/side-nav-tree';
 import {hrNavTree} from '../app/hr/side-nav-tree';
 import {payrollNavTree} from '../app/payroll/side-nav-tree';
 import {webArchNavTree} from '../app/web-arch/side-nav-tree';
-import {accountingNavTree} from '../app/accounting/side-nav.tree';
+import {accountingNavTree} from '../app/accounting/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
-import {treasuryNavTree} from '../app/treasury/side-nav.tree';
+import {treasuryNavTree} from '../app/treasury/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {missionsNavTree} from '../app/missions/side-nav-tree';
+import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
     ASSETS_APP_URL,
+    MISSIONS_APP_URL,
+    CONTRACTS_APP_URL,
     DASHBOARD_APP_URL,
     FINANCE_APP_URL,
     HR_APP_URL,
@@ -55,9 +59,11 @@ export const navBar = [
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,
-//    treasuryNavTree,
+    treasuryNavTree,
     dashboardNavTree,
-    scheduledSalesNavTree
+    scheduledSalesNavTree,
+    missionsNavTree,
+    contractsNavTree
 ];
 
 export const langAssets = [
@@ -144,6 +150,14 @@ export const appRoutes: Routes =  [
     {
         path: ASSETS_APP_URL,
         loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
+    },
+    {
+        path: MISSIONS_APP_URL,
+        loadChildren: () => import('../app/missions/missions.module').then(m => m.MissionsModule)
+    },
+    {
+        path: CONTRACTS_APP_URL,
+        loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

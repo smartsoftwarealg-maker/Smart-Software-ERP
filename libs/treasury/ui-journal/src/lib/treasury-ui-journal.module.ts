@@ -9,6 +9,7 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { JournalListComponent } from './journal-list.component';
 import { LookupModule } from '@ss/common/api-lookup';
+import { JournalDetailComponent } from './journal-detail.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import { LookupModule } from '@ss/common/api-lookup';
         CommonUiAutoCompleteModule,
         LookupModule
     ],
-    declarations: [JournalListComponent],
-    exports: [JournalListComponent]
+    declarations: [JournalListComponent, JournalDetailComponent],
+    exports: [JournalListComponent, JournalDetailComponent]
 })
 export class TreasuryUiJournalModule {}
