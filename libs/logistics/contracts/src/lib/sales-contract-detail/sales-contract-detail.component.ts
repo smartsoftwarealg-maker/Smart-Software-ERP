@@ -33,7 +33,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         private customerSrv: AgentService,
         private typeSrv: ProjectTypeService,
         private loginSrv: LoginService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CONTRACTS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CONTRACTS');
     }
 
     public setupForm(b: Project) {

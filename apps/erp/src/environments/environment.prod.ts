@@ -48,9 +48,11 @@ export const navBar = [
     logAdminNavTree,
     purchasesNavTree,
     stockNavTree,
+    contractsNavTree,
     salesNavTree,
     financeNavTree,
     hrNavTree,
+    missionsNavTree,
     payrollNavTree,
     webArchNavTree,
     accountingNavTree,
@@ -58,8 +60,6 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
-    missionsNavTree,
-    contractsNavTree
 ];
 
 export const langAssets = [

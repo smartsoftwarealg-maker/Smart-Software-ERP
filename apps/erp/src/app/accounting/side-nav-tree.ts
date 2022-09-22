@@ -23,7 +23,7 @@ export const accountingNavTree: SideNavNode = {
     accessRights: 'ACCOUNTING',
     children: [
         {
-            name: 'ACC_PROJECTS',
+            name: 'COMMON_PROJECTS',
             icon: 'fa-solid fa-laptop-file',
             route: ABS_ACC_PROJECT_URL,
             accessRights: 'ACCProject'

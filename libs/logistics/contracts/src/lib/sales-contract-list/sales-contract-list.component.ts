@@ -37,6 +37,6 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COMMON_CONTRACTS');
+            'CONTRACTS');
     }
 }

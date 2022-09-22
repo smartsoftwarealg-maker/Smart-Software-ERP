@@ -1,15 +1,11 @@
 import {
     ABS_LOGISTICS_ACTIVITY,
-    ABS_STOCK_AGENT_TYPE,
     ABS_LOGISTICS_COMPANY_TYPE,
     ABS_LOGISTICS_CURRENCY,
     ABS_LOGISTICS_PAY_METHOD,
-    ABS_STOCK_UNITS_URL,
     ABS_LOGISTICS_OPTIONS,
-    ABS_STOCK_AGENT_URL,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_FINANCE_PAYMENTS,
-    ABS_LOGISTICS_VAT_URL, ABS_LOGISTICS_DOCUMENT_URL, ABS_LOGISTICS_CONTRACT_URL, ABS_LOGISTICS_PROJECT_TYPE
+    ABS_LOGISTICS_VAT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -35,12 +31,6 @@ export const logAdminNavTree: SideNavNode = {
             icon: 'fas fa-percentage',
             route: ABS_LOGISTICS_VAT_URL,
             accessRights: 'VAT'
-        },
-        {
-            name: 'LOGISTICS_PROJECT_TYPES',
-            icon: 'fa-solid fa-message-text',
-            route: ABS_LOGISTICS_PROJECT_TYPE,
-            accessRights: "ProjectType"
         },
         {
             name: 'COMMON_COMPANY_TYPES',

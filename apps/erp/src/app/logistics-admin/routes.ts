@@ -10,8 +10,6 @@ import {
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
     LOGISTICS_CATEGORY_URL,
-    LOGISTICS_CONTRACT_URL,
-    LOGISTICS_PROJECT_TYPE_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -146,22 +144,6 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: LOGISTICS_PROJECT_TYPE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ProjectTypeListComponent
-            },
-            {
-                path: ':id',
-                component: ProjectTypeDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
         path: LOGISTICS_CURRENCY_URL,
         children: [
             {
@@ -219,22 +201,6 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocumentNumberingDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: LOGISTICS_CONTRACT_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: SalesContractListComponent
-            },
-            {
-                path: ':id',
-                component: SalesContractDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

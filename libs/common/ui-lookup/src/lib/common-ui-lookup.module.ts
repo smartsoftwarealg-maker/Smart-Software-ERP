@@ -48,6 +48,7 @@ import {DecisionMotiveDetailComponent, DecisionMotiveListComponent} from './deci
 import {MotiveDetailComponent, MotiveListComponent} from './motive.component';
 import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './contract-motive.component';
 import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-type.component';
+import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './project-motive.component';
 
 @NgModule({
     imports: [
@@ -144,7 +145,9 @@ import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-ty
         ContractMotiveDetailComponent,
         ContractMotiveListComponent,
         ProjectTypeDetailComponent,
-        ProjectTypeListComponent
+        ProjectTypeListComponent,
+        ProjectMotiveDetailComponent,
+        ProjectMotiveListComponent
     ],
     exports: [
         VatListComponent,
@@ -229,7 +232,9 @@ import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-ty
         ContractMotiveDetailComponent,
         ContractMotiveListComponent,
         ProjectTypeDetailComponent,
-        ProjectTypeListComponent
+        ProjectTypeListComponent,
+        ProjectMotiveDetailComponent,
+        ProjectMotiveListComponent
     ]
 })
 export class CommonUiLookupModule { }

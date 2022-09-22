@@ -7,7 +7,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes,
     LOGISTICS_AGENT_TYPE_URL,
-    LOGISTICS_CONTRACT_URL
+    CONTRACT_PROJECT_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';

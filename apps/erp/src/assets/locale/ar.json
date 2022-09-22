@@ -40,5 +40,6 @@
     "TREASURY": "خزينة",
     "ORGANIZATIONS": "التنظيم",
     "RETRY":         "أعد المحاولة",
-    "SCHEDULED_SALES": "المبيعات المجدولة"
+    "SCHEDULED_SALES": "المبيعات المجدولة",
+    "CONTRACTS":       "العقود"
 }

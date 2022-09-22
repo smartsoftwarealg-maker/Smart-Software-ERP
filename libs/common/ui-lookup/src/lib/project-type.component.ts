@@ -48,7 +48,7 @@ export class ProjectTypeDetailComponent extends BaseEntityDetailComponent<Lookup
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(companyTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_COMPANY_TYPE');
+        super(companyTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECT_TYPES');
     }
 
     public setupForm(e: Lookup): UntypedFormGroup {

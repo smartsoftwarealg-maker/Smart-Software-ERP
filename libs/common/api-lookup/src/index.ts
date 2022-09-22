@@ -42,3 +42,4 @@ export * from './lib/discount.service';
 export * from './lib/lookup-description.pipe';
 export * from './lib/lookup.module';
 export * from './lib/workshop.service';
+export * from './lib/project-motive.service';

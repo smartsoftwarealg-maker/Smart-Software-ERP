@@ -38,3 +38,4 @@ export * from './lib/decision-motive.component';
 export * from './lib/motive.component';
 export * from './lib/contract-motive.component';
 export * from './lib/project-type.component';
+export * from './lib/project-motive.component';
