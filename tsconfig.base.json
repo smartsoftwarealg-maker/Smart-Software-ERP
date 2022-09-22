@@ -199,6 +199,9 @@
             "@ss/logistics/api-transaction": [
                 "libs/logistics/api-transaction/src/index.ts"
             ],
+            "@ss/logistics/contracts": [
+                "libs/logistics/contracts/src/index.ts"
+            ],
             "@ss/logistics/document-numbering": [
                 "libs/logistics/document-numbering/src/index.ts"
             ],

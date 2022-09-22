@@ -2,7 +2,13 @@ import { Routes } from '@angular/router';
 import { DeliveryDetailComponent, DeliveryListComponent } from '@ss/sales/ui-delivery';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { DeliveryLinesDetailComponent } from '@ss/sales/ui-delivery-lines';
-import {COMMON_REPORTS_URL, DASHBOARD_URL, docInfoRoutes} from '../common';
+import {
+    COMMON_REPORTS_URL,
+    DASHBOARD_URL,
+    docInfoRoutes,
+    LOGISTICS_AGENT_TYPE_URL,
+    LOGISTICS_CONTRACT_URL
+} from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent } from '@ss/sales/ui-order-lines';
@@ -21,8 +27,9 @@ import {
 } from '@ss/sales/ui-delivery-cancellation';
 
 import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListComponent} from '@ss/sales/ui-proforma';
-import {DashboardComponent} from '../../../../../libs/dashboard/src';
-import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
+import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {SalesContractDetailComponent, SalesContractListComponent} from '@ss/logistics/contracts';
 
 export const lookupRoutes: Routes = []
 

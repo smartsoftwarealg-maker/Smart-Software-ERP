@@ -2,11 +2,16 @@ import {
     LOGISTICS_AGENT_URL,
     LOGISTICS_OPTION_URL,
     LOGISTICS_PAY_METHOD_URL,
-    LOOKUPS_URL, LOGISTICS_ACTIVITY_URL,
+    LOOKUPS_URL,
+    LOGISTICS_ACTIVITY_URL,
     LOGISTICS_AGENT_TYPE_URL,
     LOGISTICS_COMPANY_TYPE_URL,
     LOGISTICS_CURRENCY_URL,
-    LOGISTICS_VAT_URL, LOGISTICS_NUMBERING_URL, LOGISTICS_CATEGORY_URL
+    LOGISTICS_VAT_URL,
+    LOGISTICS_NUMBERING_URL,
+    LOGISTICS_CATEGORY_URL,
+    LOGISTICS_CONTRACT_URL,
+    LOGISTICS_PROJECT_TYPE_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -25,7 +30,7 @@ import {
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
     CurrencyDetailComponent,
-    CurrencyListComponent,
+    CurrencyListComponent, ProjectTypeDetailComponent, ProjectTypeListComponent,
     SalesCategoryDetailComponent, SalesCategoryListComponent,
     VatDetailComponent,
     VatListComponent,
@@ -35,6 +40,7 @@ import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
+import {SalesContractDetailComponent, SalesContractListComponent} from '../../../../../libs/logistics/contracts/src';
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
@@ -140,6 +146,22 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: LOGISTICS_PROJECT_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProjectTypeListComponent
+            },
+            {
+                path: ':id',
+                component: ProjectTypeDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
         path: LOGISTICS_CURRENCY_URL,
         children: [
             {
@@ -197,6 +219,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocumentNumberingDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_CONTRACT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesContractListComponent
+            },
+            {
+                path: ':id',
+                component: SalesContractDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

@@ -144,5 +144,7 @@
     "DRIVER":          "قابل للخصم",
     "DRIVER_LICENSE":  "سائق",
     "PLATE_NUMBER":    "رخصة قيادة",
-    "POSITION": "الرتبة"
+    "POSITION":        "الرتبة",
+    "PROJECT_TYPES":   "أنواع المشاريع",
+    "PROJECT_TYPE":    "نوع المشروع"
 }

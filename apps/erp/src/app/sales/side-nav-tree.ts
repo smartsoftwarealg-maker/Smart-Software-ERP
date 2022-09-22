@@ -1,11 +1,17 @@
 import {
     ABS_FINANCE_CCOMPENSATIONS,
-    ABS_FINANCE_CPAYMENTS, ABS_PURCHASE_DASHBOARD_URL, ABS_PURCHASE_REPORTS_URL, ABS_SALES_DASHBOARD_URL,
+    ABS_FINANCE_CPAYMENTS,
+    ABS_LOGISTICS_CONTRACT_URL,
+    ABS_PURCHASE_DASHBOARD_URL,
+    ABS_PURCHASE_REPORTS_URL,
+    ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
-    ABS_SALES_ORDER_URL, ABS_SALES_PROFORMA_URL, ABS_SALES_REPORTS_URL
+    ABS_SALES_ORDER_URL,
+    ABS_SALES_PROFORMA_URL,
+    ABS_SALES_REPORTS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -18,6 +24,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-quote-right',
             route: ABS_SALES_PROFORMA_URL,
             accessRights: 'Proforma'
+        },
+        {
+            name: 'COMMON_CONTRACTS',
+            icon: 'fa-solid fa-file-signature',
+            route: ABS_LOGISTICS_CONTRACT_URL,
+            accessRights: 'Agent'
         },
         {
             name: 'SALES_ORDER',

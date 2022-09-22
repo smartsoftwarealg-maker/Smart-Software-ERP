@@ -143,5 +143,7 @@
     "DRIVER":          "Driver",
     "DRIVER_LICENSE":  "Driver license",
     "PLATE_NUMBER":    "Plate number",
-    "POSITION":        "Position"
+    "POSITION":        "Position",
+    "PROJECT_TYPES":   "Project types",
+    "PROJECT_TYPE":    "Project type"
 }
