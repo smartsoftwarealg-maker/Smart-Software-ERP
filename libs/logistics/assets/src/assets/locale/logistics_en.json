@@ -145,5 +145,7 @@
     "PLATE_NUMBER":    "Plate number",
     "POSITION":        "Position",
     "PROJECT_TYPES":   "Project types",
-    "PROJECT_TYPE":    "Project type"
+    "PROJECT_TYPE":    "Project type",
+    "AWARD_PROCEDURES": "Award procedures",
+    "AWARD_PROCEDURE": "Award procedure"
 }

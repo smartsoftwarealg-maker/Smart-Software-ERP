@@ -146,5 +146,7 @@
     "PLATE_NUMBER":    "رخصة قيادة",
     "POSITION":        "الرتبة",
     "PROJECT_TYPES":   "أنواع المشاريع",
-    "PROJECT_TYPE":    "نوع المشروع"
+    "PROJECT_TYPE":    "نوع المشروع",
+    "AWARD_PROCEDURES": "إجراءات المنح",
+    "AWARD_PROCEDURE":  "إجراء المنح"
 }

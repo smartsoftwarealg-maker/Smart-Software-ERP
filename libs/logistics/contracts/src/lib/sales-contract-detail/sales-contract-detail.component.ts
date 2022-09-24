@@ -6,11 +6,11 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {AwardProcedureService, LookupsService, ProjectMotiveService} from '@ss/common/api-lookup';
 import {SalesContractService} from '../sales-contract.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
-import {ProjectTypeService} from '../../../../../common/api-lookup/src/lib/project-type.service';
+import {ProjectTypeService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 
 @Component({
@@ -21,6 +21,8 @@ import {LoginService} from '@ss/common/api-common';
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
+    motiveLookup = new DefaultAutoCompleteModel(this.motiveSrv);
+    awardLookup = new DefaultAutoCompleteModel(this.awardSrv);
 
     constructor(
         public override entitySrv: SalesContractService,
@@ -32,6 +34,8 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public lookupsSrv: LookupsService,
         private customerSrv: AgentService,
         private typeSrv: ProjectTypeService,
+        private motiveSrv: ProjectMotiveService,
+        private awardSrv: AwardProcedureService,
         private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CONTRACTS');
     }
@@ -50,7 +54,9 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             amount:         [b.amount || 0],
             advancePayment: [b.advancePayment || 0],
             advanceRate:    [b.advanceRate || 0],
-            projType:       [b.projType, Validators.required],
+            projType:       [b.projType],
+            awardProcedure: [b.awardProcedure],
+            projMotive:     [b.projMotive],
         });
     }
 

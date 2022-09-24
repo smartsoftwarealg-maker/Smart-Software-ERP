@@ -125,6 +125,7 @@ export const FURNITURE_STATUS_URL = 'furniture-states';
 // Contracts
 export const CONTRACTS_PROJECT_TYPE_URL = 'projectTypes';
 export const CONTRACTS_PROJECT_MOTIVE_URL = 'projectMotives';
+export const CONTRACTS_AWARD_PROCEDURE_URL = 'award-procedure';
 export const CONTRACT_PROJECT_URL = 'contracts';
 
 
@@ -337,6 +338,7 @@ export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
 export const ABS_CONTRACTS_PROJECT_URL = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACT_PROJECT_URL].join('/');
 export const ABS_CONTRACTS_PROJECT_MOTIVE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_PROJECT_MOTIVE_URL].join('/');
+export const ABS_CONTRACTS_AWARD_PROCEDURE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_AWARD_PROCEDURE_URL].join('/');
 
 // Scheduled sales
 export const ABS_SCHEDULED_SALES_PROJECTS           = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');

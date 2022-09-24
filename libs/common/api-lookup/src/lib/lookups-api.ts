@@ -38,6 +38,7 @@ export const CURRENCY_URL = '/currencies';
 export const COMPANY_TYPE_URL = '/lookups/companies';
 export const PROJECT_TYPE_URL = '/lookups/project_types';
 export const PROJECT_MOTIVE_URL = '/lookups/project_motives';
+export const AWARD_PROCEDURE_URL = '/lookups/award_procedures';
 export const PAY_MODE_URL = '/lookups/paymodes';
 export const ACTIVITY_URL = '/lookups/activities';
 export const DISCOUNT_URL = '/lookups/discounts';

@@ -138,5 +138,7 @@
     "DISCOUNTABLE":    "",
     "DRIVER":          "",
     "DRIVER_LICENSE":  "",
-    "PLATE_NUMBER":    ""
+    "PLATE_NUMBER":    "",
+    "AWARD_PROCEDURES": "",
+    "AWARD_PROCEDURE":  ""
 }

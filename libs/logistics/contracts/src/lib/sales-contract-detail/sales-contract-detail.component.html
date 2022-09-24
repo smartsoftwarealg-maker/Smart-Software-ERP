@@ -49,6 +49,22 @@
                 <mat-error *ngIf="form.controls['projType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_MOTIVE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="motiveLookup"
+                                  formControlName="projMotive">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_AWARD_PROCEDURE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="awardLookup"
+                                  formControlName="awardProcedure">
+                </ss-auto-complete>
+            </mat-form-field>
+
         </form>
 
     </mat-card-content>

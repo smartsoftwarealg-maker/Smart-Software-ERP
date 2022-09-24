@@ -237,5 +237,6 @@
     "DAIRA":                "Daira",
     "CITY":                 "Ville",
     "CONTRACTS":            "Contrats",
-    "MOTIVES":              "Motifs"
+    "MOTIVES":              "Motifs",
+    "MOTIVE":               "Motif"
 }
