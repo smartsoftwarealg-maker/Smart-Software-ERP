@@ -47,6 +47,9 @@ import {JudicialFrameDetailComponent, JudicialFrameListComponent} from './judici
 import {DecisionMotiveDetailComponent, DecisionMotiveListComponent} from './decision-motive.component';
 import {MotiveDetailComponent, MotiveListComponent} from './motive.component';
 import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './contract-motive.component';
+import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-type.component';
+import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './project-motive.component';
+import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './award.procedure.component';
 
 @NgModule({
     imports: [
@@ -141,7 +144,13 @@ import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './cont
         MotiveListComponent,
         MotiveDetailComponent,
         ContractMotiveDetailComponent,
-        ContractMotiveListComponent
+        ContractMotiveListComponent,
+        ProjectTypeDetailComponent,
+        ProjectTypeListComponent,
+        ProjectMotiveDetailComponent,
+        ProjectMotiveListComponent,
+        AwardProcedureDetailComponent,
+        AwardProcedureListComponent
     ],
     exports: [
         VatListComponent,
@@ -224,7 +233,13 @@ import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './cont
         MotiveListComponent,
         MotiveDetailComponent,
         ContractMotiveDetailComponent,
-        ContractMotiveListComponent
+        ContractMotiveListComponent,
+        ProjectTypeDetailComponent,
+        ProjectTypeListComponent,
+        ProjectMotiveDetailComponent,
+        ProjectMotiveListComponent,
+        AwardProcedureDetailComponent,
+        AwardProcedureListComponent
     ]
 })
 export class CommonUiLookupModule { }

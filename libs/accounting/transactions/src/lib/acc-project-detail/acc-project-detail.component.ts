@@ -21,7 +21,7 @@ export class AccProjectDetailComponent extends BaseEntityDetailComponent<Lookup>
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_PROJECTS');
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
 
     public setupForm(e: Mark): UntypedFormGroup {

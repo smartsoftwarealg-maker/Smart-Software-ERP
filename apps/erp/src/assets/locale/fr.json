@@ -40,5 +40,6 @@
     "TREASURY":  "Trésorerie",
     "ORGANIZATIONS": "Organisations",
     "RETRY":         "Retenter",
-    "SCHEDULED_SALES": "Ventes programmées"
+    "SCHEDULED_SALES": "Ventes programmées",
+    "CONTRACTS":       "Contrats"
 }

@@ -71,11 +71,9 @@
     "SALARY_GRID": "Grille des salaire",
     "TRIAL_PERIOD": "Période d'essai",
     "SALARY_RANK": "Échelon",
-    "CONTRACTS": "Contrats",
     "EMPLOYEE_CONTRACTS": "Contrats employés",
     "CONFIRMED":"Confirmé",
     "COST_CENTER":"Centre de coûts",
-    "MOTIVE":"Motif",
     "NOTES":"Remarques",
     "BASE_SALARY":"Salaire de base",
     "REC_NUMBER":"N° d'enregistrement",
@@ -136,6 +134,5 @@
     "APPLICATION_PERIOD": "Periode application",
     "DECISION_MOTIVES":   "Motifs decisions",
     "CONTRACT_MOTIVES":   "Motifs du contrat",
-    "MOTIVES":            "Motifs",
     "PAYROLL_MOTIVES":    "Motifs"
 }

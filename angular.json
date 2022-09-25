@@ -82,6 +82,7 @@
         "logistics-api-totals": "libs/logistics/api-totals",
         "logistics-api-transaction": "libs/logistics/api-transaction",
         "logistics-assets": "libs/logistics/assets",
+        "logistics-contracts": "libs/logistics/contracts",
         "logistics-document-numbering": "libs/logistics/document-numbering",
         "logistics-payment-compensation": "libs/logistics/payment-compensation",
         "logistics-payments": "libs/logistics/payments",

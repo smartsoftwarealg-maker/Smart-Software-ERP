@@ -1,0 +1,84 @@
+<mat-card>
+    <mat-card-content>
+
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <mat-form-field id="contractNo" class="default-50 sm-100">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="contractNo" type="text" autofocus maxlength="10" required>
+                <mat-error *ngIf="form.controls['contractNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="projDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="customerLookupModel"
+                                  formControlName="customer">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['customer'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="fromDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker formControlName="toDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_TYPE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="typeLookup"
+                                  formControlName="projType">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['projType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_MOTIVE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="motiveLookup"
+                                  formControlName="projMotive">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_AWARD_PROCEDURE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="awardLookup"
+                                  formControlName="awardProcedure">
+                </ss-auto-complete>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+
+<mat-accordion>
+    <mat-expansion-panel #depreciation expanded="true" [class]="getPanelHeaderClass('depreciation', depreciation)">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                LOGISTICS_ARTICLES
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <ss-contract-article-main></ss-contract-article-main>
+    </mat-expansion-panel>
+</mat-accordion>
+

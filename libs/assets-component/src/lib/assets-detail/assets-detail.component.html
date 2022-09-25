@@ -196,16 +196,17 @@
             </mat-expansion-panel-header>
             <span class="default-100"></span>
 
-                <mat-form-field class="default-25 sm-50">
-                    <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
-                    <div class="reception-div">
-                        <ss-auto-complete matInput
-                                          [model]="receptionLookup"
-                                          formControlName="receptionId">
-                        </ss-auto-complete>
-                        <i class="fa-solid fa-book-open open-icon" (click)="openReception()" matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
-                    </div>
-                </mat-form-field>
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                <div class="reception-div">
+                    <ss-auto-complete matInput
+                                      [model]="receptionLookup"
+                                      formControlName="receptionId">
+                    </ss-auto-complete>
+                    <i class="fa-solid fa-book-open open-icon" (click)="openReception()"
+                       matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+                </div>
+            </mat-form-field>
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
                 <ss-date-picker formControlName="receptionDate"></ss-date-picker>
