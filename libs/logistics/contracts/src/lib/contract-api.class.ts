@@ -1,5 +1,5 @@
 export const PROJECT_URL = '/projects';
-export const PROJECT_ARTICLES_URL = 'articles';
+export const PROJECT_ARTICLES_URL = '/articles';
 
 export interface Project {
     id: number;
@@ -37,7 +37,7 @@ export interface Project {
     customerName?: string;
 }
 
-export interface ProjectReference {
+export interface ProjectArticle {
     id: number;
     parentId: number;
     reference?: string;
@@ -45,5 +45,7 @@ export interface ProjectReference {
     address?: string;
     qty: number;
     vat: number;
-    discount: number
+    discount: number,
+    description?: string;
+    articleId?: number;
 }

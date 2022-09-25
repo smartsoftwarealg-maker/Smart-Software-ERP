@@ -69,3 +69,16 @@
 
     </mat-card-content>
 </mat-card>
+
+<mat-accordion>
+    <mat-expansion-panel #depreciation expanded="true" [class]="getPanelHeaderClass('depreciation', depreciation)">
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                LOGISTICS_ARTICLES
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <ss-contract-article-main></ss-contract-article-main>
+    </mat-expansion-panel>
+</mat-accordion>
+

@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
-import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {FormControl, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AwardProcedureService, LookupsService, ProjectMotiveService} from '@ss/common/api-lookup';
 import {SalesContractService} from '../sales-contract.service';
@@ -12,6 +11,11 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
 import {ProjectTypeService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
+import {MatExpansionPanel} from '@angular/material/expansion';
+import {ContractArticleService} from '../contract-article.service';
+import {Article, ArticleService} from '@ss/stock/api-article';
+import {ArticleAutoCompleteModel} from '@ss/logistics/api-logistics-common';
+import {MatSelect} from '@angular/material/select';
 
 @Component({
     selector: 'ss-sales-contract-detail',
@@ -20,9 +24,13 @@ import {LoginService} from '@ss/common/api-common';
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
-    typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
-    motiveLookup = new DefaultAutoCompleteModel(this.motiveSrv);
-    awardLookup = new DefaultAutoCompleteModel(this.awardSrv);
+    typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
+    motiveLookup  = new DefaultAutoCompleteModel(this.motiveSrv);
+    awardLookup   = new DefaultAutoCompleteModel(this.awardSrv);
+    articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
+    // articleCtrl   = new FormControl<number>(0);
+    selectedArticle: Article = null;
+    articles: Article[] = [];
 
     constructor(
         public override entitySrv: SalesContractService,
@@ -36,8 +44,11 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         private typeSrv: ProjectTypeService,
         private motiveSrv: ProjectMotiveService,
         private awardSrv: AwardProcedureService,
+        private articleSrv: ArticleService,
+        private contractArticleSrv: ContractArticleService,
         private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CONTRACTS');
+        // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 
     public setupForm(b: Project) {
@@ -63,4 +74,25 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     override readForm(): Project {
         return this.form.getRawValue();
     }
+
+    public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {
+        if (panel.expanded)
+            return 'b-primary-expansion-panel'
+        else
+            return '';
+    }
+
+    addArticle() {
+        console.log(this.id, this.articleLookup.cache?.id);
+        this.articles.push(this.articleLookup.cache);
+    }
+
+    deleteArticle() {
+        console.log(this.selectedArticle);
+    }
+
+    onArticle(e: any) {
+        console.log(e);
+    }
+
 }

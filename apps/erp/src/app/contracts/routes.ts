@@ -12,7 +12,12 @@ import {
     ProjectTypeDetailComponent,
     ProjectTypeListComponent
 } from '@ss/common/ui-lookup';
-import {SalesContractDetailComponent, SalesContractListComponent} from '@ss/logistics/contracts';
+import {
+    ContractArticleDetailComponent,
+    ContractArticleListComponent, ContractArticleMainComponent,
+    SalesContractDetailComponent,
+    SalesContractListComponent
+} from '@ss/logistics/contracts';
 import {
     ProjectMotiveDetailComponent,
     ProjectMotiveListComponent
@@ -46,7 +51,7 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: ProjectMotiveDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -80,10 +85,19 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: SalesContractDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'articles', pathMatch: 'full' },
+                    {
+                        path: 'articles',
+                        children: [
+                            {path: '', component: ContractArticleListComponent},
+                            {path: ':id', component: ContractArticleDetailComponent}
+                        ]
+                    }
+                ]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-
 ];

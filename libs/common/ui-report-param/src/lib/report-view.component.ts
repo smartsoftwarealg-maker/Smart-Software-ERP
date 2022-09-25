@@ -1,15 +1,15 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild,} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {BaseTreeControl, NestedTreeControl} from '@angular/cdk/tree';
+import {NestedTreeControl} from '@angular/cdk/tree';
 import {ReportTreeService} from '@ss/common/api-reports';
 import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
 import {HttpService, LanguageService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
-import {catchError, delay, Observable, of, tap} from 'rxjs';
+import {delay, Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';

@@ -1,0 +1,29 @@
+mat-toolbar {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+.width-div {
+    width: 98%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-table {
+    width: 100%;
+    min-width: 500px;
+    min-height: 250px;
+}
+
+.mat-column-reference {
+    flex: 1 1 120px;
+}
+.mat-column-description {
+    flex: 1 1 200px;
+}
+
+.mat-column-price,
+.mat-column-qty {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
