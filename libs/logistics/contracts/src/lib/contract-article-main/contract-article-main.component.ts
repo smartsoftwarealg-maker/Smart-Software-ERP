@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'ss-contract-article-main',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./contract-article-main.component.scss'],
 })
 export class ContractArticleMainComponent implements OnInit {
-    constructor() {}
+    constructor(private route: ActivatedRoute, private router: Router) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.router.navigate(['articles'], {relativeTo: this.route}).then();
+    }
 }

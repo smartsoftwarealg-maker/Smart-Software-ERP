@@ -43,7 +43,8 @@ export class ContractArticleListComponent implements OnInit {
     }
 
     showDetail(id: number) {
-        this.router.navigate([id], { relativeTo: this.route }).then();
+        console.log(this.router.url, id);
+        this.router.navigate([this.router.url, id]).then();
     }
 
     edit() {

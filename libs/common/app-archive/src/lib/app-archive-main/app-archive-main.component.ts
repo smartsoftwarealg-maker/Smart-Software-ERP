@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
-import {ActivatedRoute, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {AppArchiveListComponent} from '../app-archive-list/app-archive-list.component';
 
 @Component({
@@ -12,11 +12,14 @@ export class AppArchiveMainComponent implements AfterViewInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
     private _id = 0;
 
-    constructor(private archiveSrv: AppArchiveService, private route: ActivatedRoute) { }
+    constructor(private archiveSrv: AppArchiveService,
+                private route: ActivatedRoute,
+                private router: Router) { }
+
 
 
     private refresh() {
-        if (this.outlet && this.outlet.component) {
+        if (this.outlet && this.outlet.isActivated && this.outlet.component) {
             const comp: any = this.outlet?.component;
             if (comp && comp['refresh'] != null) {
                 comp['refresh']();
@@ -52,5 +55,9 @@ export class AppArchiveMainComponent implements AfterViewInit {
             }
         });
     }
+
+    // ngOnInit(): void {
+    //     this.router.navigate(['archive'], {relativeTo: this.route}).then();
+    // }
 
 }

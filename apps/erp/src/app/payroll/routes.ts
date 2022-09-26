@@ -87,7 +87,7 @@ import {
 } from '@ss/payroll/api-employee';
 import {PayrollMonthGuard} from '@ss/payroll-common';
 import {DashboardComponent} from '@ss/dashboard';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '../../../../../libs/common/app-archive/src';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -578,12 +578,11 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: false, active: true },
                         children: [
-                            { path: '', component: AppArchiveListComponent },
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]
