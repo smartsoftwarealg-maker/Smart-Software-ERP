@@ -57,7 +57,6 @@ export class ContractArticleDetailComponent implements OnInit {
         this.entitySrv
             .save(this.form.getRawValue())
             .subscribe(res => {
-                console.log(res);
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
                 }
@@ -66,11 +65,11 @@ export class ContractArticleDetailComponent implements OnInit {
     }
 
     cancel() {
-        this.confirmSrv
-            .confirm('COMMON_CONFIRMATION', 'COMMON_CANCEL')
-            .pipe(switchMap(res => res?
-                this.router.navigate(['../'], { relativeTo: this.route }):
-                of(false)))
+        const confirm =
+            this.form.dirty ? this.confirmSrv.confirm('COMMON_CONFIRMATION', 'COMMON_CANCEL') :
+            of(true);
+        confirm.pipe(switchMap(res => res?
+            this.router.navigate(['../'], { relativeTo: this.route }):  of(false)))
             .subscribe(_ => {});
     }
 }

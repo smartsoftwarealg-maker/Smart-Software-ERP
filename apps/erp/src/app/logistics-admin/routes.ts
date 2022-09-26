@@ -61,14 +61,13 @@ export const mainRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: {sales: true},
+                        data: { sales: true },
                         children: [
-                            {path: '', component: AppArchiveListComponent},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]

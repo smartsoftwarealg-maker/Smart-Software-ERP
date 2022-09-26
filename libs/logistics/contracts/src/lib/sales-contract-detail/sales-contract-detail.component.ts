@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AwardProcedureService, LookupsService, ProjectMotiveService} from '@ss/common/api-lookup';
@@ -37,6 +37,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
+        private  router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
@@ -82,17 +83,9 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             return '';
     }
 
-    addArticle() {
-        console.log(this.id, this.articleLookup.cache?.id);
-        this.articles.push(this.articleLookup.cache);
+    panelOpened(path: string) {
+        const url = this.router.url;
+        const next = url.substring(0, url.lastIndexOf('/')) + '/' + path;
+        // this.router.navigate([next]).then();
     }
-
-    deleteArticle() {
-        console.log(this.selectedArticle);
-    }
-
-    onArticle(e: any) {
-        console.log(e);
-    }
-
 }

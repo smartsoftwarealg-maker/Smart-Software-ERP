@@ -14,14 +14,14 @@ import {
 } from '@ss/common/ui-lookup';
 import {
     ContractArticleDetailComponent,
-    ContractArticleListComponent, ContractArticleMainComponent,
-    SalesContractDetailComponent,
+    ContractArticleListComponent, SalesContractDetailComponent,
     SalesContractListComponent
 } from '@ss/logistics/contracts';
 import {
     ProjectMotiveDetailComponent,
     ProjectMotiveListComponent
 } from '@ss/common/ui-lookup';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -74,12 +74,13 @@ export const mainRoutes: Routes = [
         ]
     },
 
+
     {
         path: CONTRACT_PROJECT_URL,
         children: [
             {
                 path: LIST_URL,
-                component: SalesContractListComponent
+                component: SalesContractListComponent,
             },
             {
                 path: ':id',
@@ -91,10 +92,17 @@ export const mainRoutes: Routes = [
                     {
                         path: 'articles',
                         children: [
-                            {path: '', component: ContractArticleListComponent},
-                            {path: ':id', component: ContractArticleDetailComponent}
+                            {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
+                            {path: ':id', component: ContractArticleDetailComponent, pathMatch: 'full'}
                         ]
-                    }
+                    },
+                    {
+                        path: 'archives',
+                        children: [
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', outlet: 'archive'},
+                            {path: ':id', component: AppArchiveDetailComponent}
+                        ]
+                    },
                 ]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

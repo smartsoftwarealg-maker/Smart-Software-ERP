@@ -35,6 +35,7 @@ export class AppArchiveListComponent implements OnInit {
     ngOnInit(): void {
         this.route
             .parent
+            .parent
             .params
             .pipe(
                 tap(params => {
@@ -49,7 +50,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     public showDetail(id: string) {
-        this.router.navigate(['detail', id], {relativeTo: this.route}).then();
+        this.router.navigate([id], {relativeTo: this.route}).then();
     }
 
     public edit() {
@@ -59,7 +60,6 @@ export class AppArchiveListComponent implements OnInit {
     @Input()
     set id(id: number) {
         this._id = id;
-        console.log('3------------', this._id);
         this.entitySrv.setParentId(id);
         this.entitySrv
             .getList(0, 50)

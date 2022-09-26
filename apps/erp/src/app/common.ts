@@ -467,16 +467,9 @@ export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join(
 export const docInfoRoutes: Routes = [
     {
         path: 'archive',
-        component: AppArchiveMainComponent,
         children: [
-            { path: '', component: AppArchiveListComponent },
-            {
-                path: 'detail',
-                children: [
-                    {path: ':id', component: AppArchiveDetailComponent},
-                    {path: '**', redirectTo: '../' }
-                ]
-            }
+            {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+            {path: ':id', component: AppArchiveDetailComponent},
         ]
     },
     {

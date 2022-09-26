@@ -83,7 +83,7 @@ export class AppArchiveDetailComponent implements OnInit {
     }
 
     onCancel() {
-        this.router.navigate(['../..'], {relativeTo: this.route}).then();
+        this.router.navigate(['..'], {relativeTo: this.route}).then();
     }
 
 }
