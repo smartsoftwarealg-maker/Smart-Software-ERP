@@ -8,7 +8,7 @@ import {AppArchiveListComponent} from '../app-archive-list/app-archive-list.comp
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss']
 })
-export class AppArchiveMainComponent implements AfterViewInit, OnInit {
+export class AppArchiveMainComponent implements AfterViewInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
     private _id = 0;
 
@@ -56,8 +56,8 @@ export class AppArchiveMainComponent implements AfterViewInit, OnInit {
         });
     }
 
-    ngOnInit(): void {
-        this.router.navigate(['archive'], {relativeTo: this.route}).then();
-    }
+    // ngOnInit(): void {
+    //     this.router.navigate(['archive'], {relativeTo: this.route}).then();
+    // }
 
 }

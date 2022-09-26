@@ -88,18 +88,17 @@ export const mainRoutes: Routes = [
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'articles', pathMatch: 'full' },
                     {
                         path: 'articles',
                         children: [
                             {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
-                            {path: ':id', component: ContractArticleDetailComponent, pathMatch: 'full'}
+                            {path: ':id', component: ContractArticleDetailComponent }
                         ]
                     },
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', outlet: 'archive'},
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
                             {path: ':id', component: AppArchiveDetailComponent}
                         ]
                     },

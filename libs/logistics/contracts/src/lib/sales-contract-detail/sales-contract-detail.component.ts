@@ -23,6 +23,7 @@ import {MatSelect} from '@angular/material/select';
     styleUrls: ['./sales-contract-detail.component.scss'],
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
+    shownPanel: string = null;
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
     motiveLookup  = new DefaultAutoCompleteModel(this.motiveSrv);
@@ -83,9 +84,9 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             return '';
     }
 
-    panelOpened(path: string) {
-        const url = this.router.url;
-        const next = url.substring(0, url.lastIndexOf('/')) + '/' + path;
-        // this.router.navigate([next]).then();
+    panelOpened(panel: string) {
+        this.shownPanel = panel;
+        const next = '/app/contracts/contracts/' + this.id + '/' + panel;
+        this.router.navigate([next]).then();
     }
 }
