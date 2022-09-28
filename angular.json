@@ -172,6 +172,7 @@
         "stock-api-inventory-lines": "libs/stock/api-inventory-lines",
         "stock-article-store": "libs/stock/article-store",
         "stock-assets": "libs/stock/assets",
+        "stock-inventory-transfers": "libs/stock/inventory-transfers",
         "stock-ui-article": "libs/stock/ui-article",
         "stock-ui-article-store-assignment": "libs/stock/ui-article-store-assignment",
         "stock-ui-consumption": "libs/stock/ui-consumption",

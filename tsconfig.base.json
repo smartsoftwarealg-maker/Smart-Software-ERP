@@ -442,6 +442,9 @@
             "@ss/stock/article-store": [
                 "libs/stock/article-store/src/index.ts"
             ],
+            "@ss/stock/inventory-transfers": [
+                "libs/stock/inventory-transfers/src/index.ts"
+            ],
             "@ss/stock/ui-article": ["libs/stock/ui-article/src/index.ts"],
             "@ss/stock/ui-article-store-assignment": [
                 "libs/stock/ui-article-store-assignment/src/index.ts"
