@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DOCUMENT_ARCHIVES} from '@ss/common/app-archive';
 
 interface Entry {
     name: string,
@@ -29,7 +30,7 @@ export class DocInfoComponent {
             // throw Error('Some params are messing !');
         }
 
-        this.params_ = params;
+        this.params_ = {...params, appId: DOCUMENT_ARCHIVES};
         this.navigate();
     }
 
@@ -46,12 +47,12 @@ export class DocInfoComponent {
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
                 },
-                // {
-                //     name: 'archive',
-                //     description: 'COMMON_ARCHIVE',
-                //     url: 'archive',
-                //     paramsProvided: (p: string[]) => p.includes('documentId')
-                // }
+                {
+                    name: 'archive',
+                    description: 'COMMON_ARCHIVE',
+                    url: 'archive',
+                    paramsProvided: (p: string[]) => p.includes('documentId')
+                }
             ],
         },
         {

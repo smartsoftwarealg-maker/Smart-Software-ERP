@@ -33,10 +33,12 @@ export class AppArchiveListComponent implements OnInit {
 
     ngOnInit(): void {
         this.route
-            .parent
-            .parent
-            .params
-            .pipe(
+            .queryParamMap
+            .pipe(tap(params => {
+                this.entitySrv.setParentId(+params.get('documentId') || 0);
+                this.entitySrv.appId = +params.get('appId') || 0;
+                }),
+                  switchMap(_ => this.route.parent.parent.params),
                 tap(params => {
                     this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
                     this.entitySrv.setParentId(this._id);

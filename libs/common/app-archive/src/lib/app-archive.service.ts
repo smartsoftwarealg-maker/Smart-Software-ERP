@@ -10,6 +10,7 @@ import {tap} from 'rxjs/operators';
     providedIn: 'root'
 })
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
+    private _hasQueryParams = false;
     private _appId: number;
     private _cb : (id: number) => void = null;
 
