@@ -3,4 +3,8 @@ export * from './lib/inventory-transfer-detail/inventory-transfer-detail.compone
 export * from './lib/inventory-transfer-list/inventory-transfer-list.component';
 export * from './lib/inventory-transfer-lines-list/inventory-transfer-lines-list.component';
 export * from './lib/inventory-transfer-lines-detail/inventory-transfer-lines-detail.component';
-
+export * from './lib/transfer-reception.service';
+export * from './lib/transfer-reception-detail/transfer-reception-detail.component';
+export * from './lib/transfer-reception-list/transfer-reception-list.component';
+export * from './lib/transfer-reception-lines-list/transfer-reception-lines-list.component';
+export * from './lib/transfer-reception-lines-detail/transfer-reception-lines-detail.component';

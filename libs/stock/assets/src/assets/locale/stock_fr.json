@@ -51,5 +51,6 @@
     "DIFFERENCE": "Difference",
     "FIX": "Corriger les anomalies",
     "PERCENTAGE":  "Pourcentage",
-    "TRANSFERS":   "Cessions"
+    "TRANSFERS":   "Cessions",
+    "TRANSFER_RECEPTIONS": "Réceptions sur cessions"
 }

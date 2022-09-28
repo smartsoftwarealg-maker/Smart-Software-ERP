@@ -1,13 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Transaction} from '@ss/logistics/api-transaction';
-import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {DeliveryService} from '@ss/sales/api-delivery';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -18,6 +16,10 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
+import {
+    InventoryTransferLinesListComponent
+} from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
+import {TransferService} from '../transfer.service';
 
 @Component({
     selector: 'ss-inventory-transfer-detail',
@@ -25,9 +27,9 @@ import {DatePipe} from '@angular/common';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    @ViewChild(DeliveryLinesListComponent) detail: DeliveryLinesListComponent;
+    @ViewChild(InventoryTransferLinesListComponent) detail: InventoryTransferLinesListComponent;
 
-    private delivery: Transaction = null;
+    private transfer: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
 
@@ -38,7 +40,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
     constructor(
         private langSrv: LanguageService,
         private loginSrv: LoginService,
-        public deliveryService: DeliveryService,
+        public transferService: TransferService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -51,7 +53,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
         private dialog: MatDialog,
         private docImportService: DocImportService,
         private payMethodSrv: PayMethodService) {
-        super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
+        super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_TRANSFERS');
     }
 
     override preload(): Observable<any> {
@@ -68,7 +70,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
             b.dealer = b.userID;
             b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
-        this.delivery = b;
+        this.transfer = b;
         this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({
             id: [b.id],
@@ -91,7 +93,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
 
     override readForm(): Transaction {
         const form =  super.readForm();
-        fillObject(this.delivery, form)
+        fillObject(this.transfer, form)
         return form;
     }
 }

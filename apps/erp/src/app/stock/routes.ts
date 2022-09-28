@@ -20,7 +20,7 @@ import {
     STOCK_ANOMALY_URL,
     STOCK_REPORTS_URL,
     DASHBOARD_URL,
-    STOCK_TRANSFER_URL
+    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -61,7 +61,10 @@ import {DashboardComponent} from '@ss/dashboard';
 import {
     InventoryTransferDetailComponent,
     InventoryTransferLinesDetailComponent,
-    InventoryTransferListComponent
+    InventoryTransferListComponent,
+    TransferReceptionDetailComponent,
+    TransferReceptionLinesDetailComponent,
+    TransferReceptionListComponent
 } from '@ss/stock/inventory-transfers';
 
 export const mainRoutes: Routes = [
@@ -200,6 +203,33 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: InventoryTransferDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: STOCK_TRANSFER_RECEPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransferReceptionListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: TransferReceptionLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: TransferReceptionDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes

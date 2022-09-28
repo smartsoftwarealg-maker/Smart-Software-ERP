@@ -11,7 +11,7 @@ import {
     ABS_INVENTORY_ANOMALIES_URL,
     ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_REPORTS_URL,
-    ABS_STOCK_DASHBOARD_URL, ABS_STOCK_TRANSFER_URL
+    ABS_STOCK_DASHBOARD_URL, ABS_STOCK_TRANSFER_URL, ABS_STOCK_TRANSFER_RECEPTION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -90,7 +90,13 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_TRANSFERS',
             icon: 'fa-sharp fa-solid fa-money-bill-transfer',
             route: ABS_STOCK_TRANSFER_URL,
-            accessRights: 'Consumption'
+            accessRights: 'Transfer'
+        },
+        {
+            name: 'STOCK_TRANSFER_RECEPTIONS',
+            icon: 'fa-solid fa-bag-shopping',
+            route: ABS_STOCK_TRANSFER_RECEPTION_URL,
+            accessRights: 'TransferReception'
         },
         {
             name: 'STOCK_ANOMALIES',

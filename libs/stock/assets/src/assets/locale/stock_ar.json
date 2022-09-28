@@ -51,5 +51,6 @@
     "DIFFERENCE": "الفرق",
     "FIX": "تصحيح الفروق",
     "PERCENTAGE":  "النسبة المئوية",
-    "TRANSFERS": "التحويلات"
+    "TRANSFERS": "التحويلات",
+    "TRANSFER_RECEPTIONS": "استقبالات النقل"
 }
