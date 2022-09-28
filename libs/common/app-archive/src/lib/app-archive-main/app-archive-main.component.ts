@@ -43,11 +43,11 @@ export class AppArchiveMainComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.route.queryParams.subscribe(param => {
-            const docId = +param['documentId'];
+        this.route.queryParamMap.subscribe(param => {
+            const docId = +param.get('documentId') | 0;
             if (docId && this.outlet && this.outlet.isActivated) {
                 this._id = docId;
-                this.archiveSrv.appId = +param['appId'] || 0;
+                this.archiveSrv.appId = +param.get('appId') || 0;
                 const list = <AppArchiveListComponent> this.outlet?.component;
                 list.id = this._id;
                 this.archiveSrv.setParentId(this._id);

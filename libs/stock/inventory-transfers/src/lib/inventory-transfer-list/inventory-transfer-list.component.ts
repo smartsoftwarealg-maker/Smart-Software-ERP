@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
-import {DeliveryService} from '@ss/sales/api-delivery';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';

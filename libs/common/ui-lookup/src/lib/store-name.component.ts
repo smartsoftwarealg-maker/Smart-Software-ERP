@@ -18,7 +18,7 @@ import {Observable, tap} from 'rxjs';
 })
 export class StoreNameListComponent extends BaseEntityListComponent<Store> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public storeNameSrv: LotsService,
@@ -66,6 +66,7 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr],
             centerId: [e.centerId || this.loginSrv.appCtx.center],
             expires: [e.expires],
             storeId: [1]

@@ -52,5 +52,6 @@
     "DIFFERENCE": "Difference",
     "FIX": "Fix anomalies",
     "PERCENTAGE":  "Percentage",
-    "TRANSFERS":   "Transfers"
+    "TRANSFERS":   "Transfers",
+    "TRANSFER_RECEPTIONS": "Transfer receptions"
 }

@@ -146,6 +146,7 @@ export interface Store {
     id: number;
     centerId: number;
     description: string;
+    descriptionAr?: string;
     expires: boolean;
 }
 

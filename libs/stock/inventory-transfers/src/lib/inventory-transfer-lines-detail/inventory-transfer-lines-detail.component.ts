@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
     BaseConsumptionLinesDetail
-} from '../../../../../logistics/api-transaction/src/lib/base-consumption-lines-detail';
+} from '@ss/logistics/api-transaction';
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
