@@ -50,5 +50,6 @@
     "ACTUAL_STOCK": "الكمية الحالية",
     "DIFFERENCE": "الفرق",
     "FIX": "تصحيح الفروق",
-    "PERCENTAGE":  "النسبة المئوية"
+    "PERCENTAGE":  "النسبة المئوية",
+    "TRANSFERS": "التحويلات"
 }

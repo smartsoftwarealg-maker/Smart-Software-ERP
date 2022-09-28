@@ -15,7 +15,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
-    inputSet = false;
     imgSrc: string | null = null;
     selectedId = 0;
     filename: string = null;

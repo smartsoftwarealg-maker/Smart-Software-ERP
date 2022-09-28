@@ -51,5 +51,6 @@
     "ACTUAL_STOCK": "Actual",
     "DIFFERENCE": "Difference",
     "FIX": "Fix anomalies",
-    "PERCENTAGE":  "Percentage"
+    "PERCENTAGE":  "Percentage",
+    "TRANSFERS":   "Transfers"
 }
