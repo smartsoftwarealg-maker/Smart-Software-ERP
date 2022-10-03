@@ -112,7 +112,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.receptionLookup.onObjectSelected = o => this.onReceptionChange(o);
     }
 
-
     setupForm(b: Asset): UntypedFormGroup {
         this.isEditable = this.saveButton.visible;
         const today = new Date();
@@ -327,8 +326,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     onOfficeChange(off: Office) {
-        this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
-        this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
+        if (off) {
+            this.form.get('site').setValue(off.locationDescription, {onlySelf: true});
+            this.form.get('building').setValue(off.buildingDescription, {onlySelf: true});
+        }
     }
 
     onReceptionChange(r: AssetReception) {
@@ -358,7 +359,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openReception() {
         const id = this.form.get('receptionId').value || 0;
         if (id > 0) {
-            console.log('id: ', id);
             this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route });
         }
     }
