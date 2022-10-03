@@ -101,17 +101,20 @@ export const stockNavTree: SideNavNode = {
         {
             name: 'STOCK_ANOMALIES',
             icon: 'fas fa-tasks',
-            route: ABS_INVENTORY_ANOMALIES_URL
+            route: ABS_INVENTORY_ANOMALIES_URL,
+            accessRights: 'Article'
         },
         {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_STOCK_REPORTS_URL,
+            accessRights: 'Report'
         },
         {
             name: 'COMMON_DASHBOARD',
             icon: 'fas fa-calendar-check',
             route: ABS_STOCK_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ]
 };
