@@ -369,7 +369,7 @@ class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
         super(entitySrv, 'id', 'description');
     }
 
-    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} (${x.code})`  : null;
+    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} ${x.code? '(' + x.code + ')' : ''}`  : null;
 }
 
 class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
