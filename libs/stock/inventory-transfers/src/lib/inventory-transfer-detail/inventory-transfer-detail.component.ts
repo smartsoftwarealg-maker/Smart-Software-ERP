@@ -10,9 +10,6 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UserListService} from '@ss/common/api-users';
-import {MatDialog} from '@angular/material/dialog';
-import {DocImportService} from '@ss/logistics/ui-doc-import';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
@@ -20,6 +17,7 @@ import {
     InventoryTransferLinesListComponent
 } from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
 import {TransferService} from '../transfer.service';
+import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
 
 @Component({
     selector: 'ss-inventory-transfer-detail',
@@ -34,8 +32,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
     public groups: CCGroup[];
 
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
 
     constructor(
         private langSrv: LanguageService,
@@ -48,11 +45,8 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
         public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,
-        private agentService: AgentService,
-        private loginService: LoginService,
-        private dialog: MatDialog,
-        private docImportService: DocImportService,
-        private payMethodSrv: PayMethodService) {
+        private branchService: BranchService,
+        private loginService: LoginService) {
         super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_TRANSFERS');
     }
 
@@ -62,7 +56,6 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
     }
 
     override setupForm(b: Transaction) {
-        // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
             b.number = 0;
@@ -81,7 +74,7 @@ export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
-            payMethod: [b.payMethod, Validators.required],
+            payMethod: [b.payMethod],
             footer: [b.footer],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
