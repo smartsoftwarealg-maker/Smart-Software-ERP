@@ -5,7 +5,6 @@ import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {DeliveryService} from '@ss/sales/api-delivery';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -21,6 +20,7 @@ import {
     TransferReceptionLinesListComponent
 } from '../transfer-reception-lines-list/transfer-reception-lines-list.component';
 import {TransferReceptionService} from '../transfer-reception.service';
+import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
 
 @Component({
     selector: 'ss-transfer-reception-detail',
@@ -35,8 +35,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
     public groups: CCGroup[];
 
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
 
     constructor(
         private langSrv: LanguageService,
@@ -49,11 +48,8 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
         public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,
-        private agentService: AgentService,
-        private loginService: LoginService,
-        private dialog: MatDialog,
-        private docImportService: DocImportService,
-        private payMethodSrv: PayMethodService) {
+        private branchService: BranchService,
+        private loginService: LoginService) {
         super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
     }
 
@@ -82,7 +78,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
             reference: [b.reference],
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
-            payMethod: [b.payMethod, Validators.required],
+            payMethod: [b.payMethod],
             footer: [b.footer],
             discountDescription: [b.discountDescription],
             fixedDiscount: [b.fixedDiscount || 0.0],
