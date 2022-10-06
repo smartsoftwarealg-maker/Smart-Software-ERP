@@ -108,16 +108,6 @@ export const payrollNavTree: SideNavNode = {
             route: ABS_PAYROLL_EMPLOYEES_URL
         },
         {
-            name: 'MISSION_TRAJECTORIES',
-            icon: 'far fa-bezier-curve',
-            route: ABS_TRAJECTORY_URL
-        },
-        {
-            name: 'MISSION_MISSION_PREPARATION',
-            icon: 'fas fa-plane',
-            route: ABS_MISSION_PREPARATION_URL
-        },
-        {
             name: 'REMUN_MONTH_SELECTION',
             icon: 'fas fa-calendar-check',
             route: ABS_MONTH_SELECTOR_URL,

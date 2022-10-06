@@ -297,27 +297,31 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                children: docInfoRoutes,
-                canActivate: [CanActivateService],
-                data: { form: 'Agent' }
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
-                component: AgentDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService],
                 children: [
                     {
-                        path: 'archive',
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [CanActivateService],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true},
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
-                            {path: ':id', component: AppArchiveDetailComponent},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            }
                         ]
                     }
                 ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {
@@ -338,24 +342,24 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
-    {
-        path: STOCK_AGENT_PRICE_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: AgentPriceListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: AgentPriceDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
-    },
+    // {
+    //     path: STOCK_AGENT_PRICE_URL,
+    //     children: [
+    //         {
+    //             path: LIST_URL,
+    //             component: AgentPriceListComponent,
+    //             canActivate: [CanActivateService]
+    //         },
+    //         {
+    //             path: ':id',
+    //             component: AgentPriceDetailComponent,
+    //             canActivate: [CanActivateService],
+    //             canDeactivate: [CanDeactivateService]
+    //         },
+    //         { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+    //         { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+    //     ]
+    // },
     {
         path: STOCK_COST_CENTER_URL,
         children: [

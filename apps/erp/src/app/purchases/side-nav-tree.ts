@@ -1,7 +1,7 @@
 import {
     ABS_FINANCE_PAYMENT_ORDERS,
     ABS_FINANCE_SCOMPENSATIONS,
-    ABS_FINANCE_SPAYMENTS,
+    ABS_FINANCE_SPAYMENTS, ABS_LOGISTICS_AGENT_URL,
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PURCHASE_DASHBOARD_URL,
     ABS_PURCHASE_ORDER_URL,
@@ -9,8 +9,7 @@ import {
     ABS_PURCHASE_RECEPTION_URL,
     ABS_PURCHASE_REPORTS_URL,
     ABS_PURCHASE_REQUEST_URL,
-    ABS_STOCK_AGENT_URL,
-    ABS_STOCK_REPORTS_URL
+    ABS_STOCK_AGENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -22,7 +21,7 @@ export const purchasesNavTree: SideNavNode = {
         {
             name: 'LOGISTICS_AGENT',
             icon: 'fas fa-user',
-            route: ABS_STOCK_AGENT_URL,
+            route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'
         },
         {

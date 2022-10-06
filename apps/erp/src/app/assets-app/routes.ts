@@ -491,6 +491,7 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
+                            {path: '', redirectTo: 'archive'},
                             {
                                 path: 'archive',
                                 children: [
