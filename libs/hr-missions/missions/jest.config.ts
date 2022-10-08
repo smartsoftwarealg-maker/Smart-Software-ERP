@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-    displayName: 'missions',
-    preset: '../../jest.preset.js',
+    displayName: 'hr-missions-missions',
+    preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
     globals: {
         'ts-jest': {
@@ -9,7 +9,7 @@ export default {
             stringifyContentPathRegex: '\\.(html|svg)$',
         },
     },
-    coverageDirectory: '../../coverage/libs/hr-missions/missions',
+    coverageDirectory: '../../../coverage/libs/hr-missions/missions',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
     },

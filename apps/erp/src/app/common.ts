@@ -221,8 +221,8 @@ export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
 
 //Missions
-export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_PREPARATION_URL].join('/');
-export const ABS_TRAJECTORY_URL          = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_TRAJECTORIES].join('/');
+export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_PREPARATION_URL].join('/');
+export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_TRAJECTORIES].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';

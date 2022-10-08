@@ -41,5 +41,6 @@
     "ORGANIZATIONS": "التنظيم",
     "RETRY":         "أعد المحاولة",
     "SCHEDULED_SALES": "المبيعات المجدولة",
-    "CONTRACTS":       "العقود"
+    "CONTRACTS":       "العقود",
+    "MISSIONS":        "المهمات"
 }

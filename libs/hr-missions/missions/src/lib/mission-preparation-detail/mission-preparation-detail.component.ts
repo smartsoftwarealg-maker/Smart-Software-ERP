@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
 import {Mission} from '../missions-api.class';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MissionsService} from '../missions.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Bank, Fund, LookupsService} from '@ss/common/api-lookup';
+import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {UserListService} from '@ss/common/api-users';
-import {PayrollUtil, PersonAutocompleteClass} from '@ss/payroll-common';
+import {PersonAutocompleteClass} from '@ss/payroll-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {TransportService} from '../zone.service';
 import {ZoneService} from '../transport.service';
 import {TrajectoryService} from '../trajectory.service';
 import {LoginService} from '@ss/common/api-common';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'ss-mission-preparation-detail',
@@ -29,11 +29,11 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
 
     constructor(
         public detailSrv: MissionsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         private lookupsSrv: LookupsService,
         private employeeSrv: EmployeeService,

@@ -1,20 +1,22 @@
 import { Routes } from '@angular/router';
 import {MISSION_PREPARATION_URL, MISSION_TRAJECTORIES} from '../common';
+
 import {
     ABS_INDEX_URL,
     CanActivateService,
     CanDeactivateService,
     LIST_URL
-} from '../../../../../libs/common/api-common/src';
-import {
-    MissionPreparationDetailComponent,
-    MissionPreparationListComponent
-} from '../../../../../libs/hr-missions/missions/src';
-import {PayrollMonthGuard} from '../../../../../libs/payroll-common/src';
+} from '@ss/common/api-common';
+
 import {
     TrajectoryDetailComponent,
     TrajectoryListComponent
-} from '../../../../../libs/hr-missions/mission-trajectories/src';
+} from '@ss/hr-missions/mission-trajectories';
+
+import {
+    MissionPreparationDetailComponent,
+    MissionPreparationListComponent
+} from '@ss/hr-missions/missions';
 
 export const mainRoutes: Routes = [
     {
@@ -23,13 +25,13 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MissionPreparationListComponent,
-                canActivate: [CanActivateService, PayrollMonthGuard]
+                canActivate: [CanActivateService]
             },
             {
                 path: ':id',
                 component: MissionPreparationDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService, PayrollMonthGuard]
+                canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]

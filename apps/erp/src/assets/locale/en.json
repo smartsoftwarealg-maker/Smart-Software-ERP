@@ -41,5 +41,6 @@
     "ORGANIZATIONS": "Organizations",
     "RETRY":         "Retry",
     "SCHEDULED_SALES": "Scheduled sales",
-    "CONTRACTS":       "Contracts"
+    "CONTRACTS":       "Contracts",
+    "MISSIONS":        "Missions"
 }

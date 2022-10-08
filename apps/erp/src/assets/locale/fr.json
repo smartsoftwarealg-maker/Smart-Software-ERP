@@ -41,5 +41,6 @@
     "ORGANIZATIONS": "Organisations",
     "RETRY":         "Retenter",
     "SCHEDULED_SALES": "Ventes programmées",
-    "CONTRACTS":       "Contrats"
+    "CONTRACTS":       "Contrats",
+    "MISSIONS":        "Missions"
 }

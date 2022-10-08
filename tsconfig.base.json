@@ -165,6 +165,9 @@
             "@ss/hr-missions/mission-trajectories": [
                 "libs/hr-missions/mission-trajectories/src/index.ts"
             ],
+            "@ss/hr-missions/missions": [
+                "libs/hr-missions/missions/src/index.ts"
+            ],
             "@ss/logistics/api-account": [
                 "libs/logistics/api-account/src/index.ts"
             ],

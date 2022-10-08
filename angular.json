@@ -69,6 +69,32 @@
         "hotel": "apps/hotel",
         "hr-missions-assets": "libs/hr-missions/assets",
         "hr-missions-mission-trajectories": "libs/hr-missions/mission-trajectories",
+        "hr-missions-missions": {
+            "projectType": "library",
+            "root": "libs/hr-missions/missions",
+            "sourceRoot": "libs/hr-missions/missions/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/hr-missions/missions"],
+                    "options": {
+                        "jestConfig": "libs/hr-missions/missions/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/hr-missions/missions/**/*.ts",
+                            "libs/hr-missions/missions/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "libs-scheduled-sales-assets": "libs/scheduled-sales/assets",
         "logistics-api-agent": "libs/logistics/api-agent",
         "logistics-api-agent-balance": "libs/logistics/api-agent-balance",
