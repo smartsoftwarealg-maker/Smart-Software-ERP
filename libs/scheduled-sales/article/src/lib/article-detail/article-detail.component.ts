@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ClassService, LookupsService, Mark, TypeService, Unit, Vat, VatService} from '@ss/common/api-lookup';
+import {
+    ClassService,
+    LookupsService,
+    Mark,
+    TypeService,
+    Unit,
+    UnitService,
+    Vat,
+    VatService
+} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {
@@ -28,6 +37,7 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
     aid = 0;
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
+    unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
     color: string = '';
     vats: Vat[];
     selectedRow: Article;
@@ -53,6 +63,7 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
         private classSrv: ClassService,
         private typeSrv: TypeService,
         private vatSrv: VatService,
+        private unitSrv: UnitService,
         public httpSrv: HttpService,
         public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
@@ -82,7 +93,8 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
             accountNo: [a.accountNo],
             rgb: [a.rgb || 0],
             reference: [a.reference, Validators.required],
-            vat: [a.vat]
+            vat: [a.vat],
+            unit: [a.unit, Validators.required]
         });
         form.setValidators([this.formValidator]);
         return form;

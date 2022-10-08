@@ -31,7 +31,7 @@ import {
     PAYROLL_APP_URL,
     PURCHASES_APP_URL,
     SALES_APP_URL,
-    // SCHEDULED_SALES_APP_URL,
+    SCHEDULED_SALES_APP_URL,
     STOCK_APP_URL,
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
@@ -60,7 +60,7 @@ export const navBar = [
     assetsNavTree,
     treasuryNavTree,
     dashboardNavTree,
-    // scheduledSalesNavTree,
+    scheduledSalesNavTree,
 ];
 
 export const langAssets = [
@@ -100,10 +100,10 @@ export const appRoutes: Routes =  [
         path: TREASURY_APP_URL,
         loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
     },
-    // {
-    //     path: SCHEDULED_SALES_APP_URL,
-    //     loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
-    // },
+    {
+        path: SCHEDULED_SALES_APP_URL,
+        loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
+    },
     {
         path: STOCK_APP_URL,
         loadChildren: () => import('../app/stock/stock.module').then(m => m.StockModule)
