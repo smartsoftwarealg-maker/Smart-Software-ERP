@@ -6,7 +6,7 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
@@ -15,6 +15,8 @@ import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
+import {Project} from '../../../../logistics/contracts/src/lib/contract-api.class';
+import {SalesContractService} from '@ss/logistics/contracts';
 
 @Component({
   selector: 'ss-ui-order-detail',
@@ -25,9 +27,10 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
     private order: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
 
     constructor(public orderService: SalesOrderService,
                 public shellSrv: ShellService,
@@ -40,7 +43,8 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
                 private agentService: AgentService,
                 private loginService: LoginService,
                 private loginSrv: LoginService,
-                private payMethodSrv: PayMethodService) {
+                private payMethodSrv: PayMethodService,
+                private projectSrv: SalesContractService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
     }
 
@@ -50,7 +54,6 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
     }
 
     public setupForm(form: Transaction) {
-        // Make sure to update the template if you edit the configuration here
         if (!form.id) {
             form.id = 0;
             form.number = 0;
@@ -58,12 +61,13 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             form.dealer = form.userID;
             form.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
+        this.projectSrv.setParentId(form?.agent || 0);
         this.order = form;
         this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({
             id: [form.id],
-            document: [0],
-            centerId: [0],
+            document: [1025],
+            centerId: [form.centerId || this.loginSrv.appCtx.center],
             date: [form.date, Validators.required],
             number: [form.number],
             payMethod: [form.payMethod, Validators.required],
@@ -76,6 +80,7 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
             fixedDiscountVAT: [form.fixedDiscountVAT || 0.0],
             dealer: [{ value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
             agent: [form.agent, Validators.required],
+            project: [form.project],
             locked: [form.locked || false, Validators.required],
             dirty: [!form.dirty || false, Validators.required]
         });
@@ -88,3 +93,18 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         return form;
     }
 }
+
+// class ProjectLookup extends DefaultAutoCompleteModel<Project> {
+//     private _customer = 0;
+//
+//     constructor(projectSrv: SalesContractService) {
+//         super(projectSrv, 'id', 'description');
+//     }
+//     filter = (filter: string) => this.entitySrv
+//         .getList(1, 9999, filter, this.descriptionField)
+//         .pipe(map(x => x.body.filter(p => !!p.description && p.customer === this._customer)));
+//
+//     set customer(c: number) {
+//         this._customer = c;
+//     }
+// }

@@ -26,11 +26,8 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     shownPanel: string = null;
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
-    motiveLookup  = new DefaultAutoCompleteModel(this.motiveSrv);
     awardLookup   = new DefaultAutoCompleteModel(this.awardSrv);
     articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
-    // articleCtrl   = new FormControl<number>(0);
-    selectedArticle: Article = null;
     articles: Article[] = [];
 
     constructor(

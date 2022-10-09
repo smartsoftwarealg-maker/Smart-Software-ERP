@@ -28,7 +28,15 @@ export class AwardProcedureListComponent extends BaseEntityListComponent<Lookup>
         public defReportSrv: DefaultReportService,
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
-        super(companyTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_MOTIVES');
+        super(companyTypeSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'LOGISTICS_AWARD_PROCEDURES');
     }
 
 }
@@ -48,14 +56,20 @@ export class AwardProcedureDetailComponent extends BaseEntityDetailComponent<Loo
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(companyTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_MOTIVES');
+        super(companyTypeServ,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'LOGISTICS_AWARD_PROCEDURES');
     }
 
     public setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description:   [e.description,  Validators.required],
-            descriptionAr: [e.descriptionAr, Validators.required]
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

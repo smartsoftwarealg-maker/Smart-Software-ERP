@@ -8,6 +8,7 @@ interface Entry {
     url: string,
     paramsProvided: (x: string[]) => boolean
 }
+type Menu = { group: string, description: string, entries: Entry[] };
 
 @Component({
     selector: 'ss-doc-info',
@@ -16,7 +17,6 @@ interface Entry {
 })
 
 export class DocInfoComponent {
-
     @Input() displayedGroups: string[] = [];
 
     @Input() set params(params: any) {
@@ -34,8 +34,13 @@ export class DocInfoComponent {
         this.navigate();
     }
 
-    public selectedEntry: any;
     private params_: any;
+    private readonly ARCHIVE = {
+        name: 'archive',
+        description: 'COMMON_ARCHIVE',
+        url: 'archive',
+        paramsProvided: (p: string[]) => p.includes('documentId')
+    };
     private entries_: { group: string, description: string, entries: Entry[] }[] = [
         {
             group: 'document',
@@ -47,12 +52,7 @@ export class DocInfoComponent {
                     url: 'totals',
                     paramsProvided: (p: string[]) => p.includes('documentId') && p.includes('documentURL')
                 },
-                {
-                    name: 'archive',
-                    description: 'COMMON_ARCHIVE',
-                    url: 'archive',
-                    paramsProvided: (p: string[]) => p.includes('documentId')
-                }
+                this.ARCHIVE
             ],
         },
         {
@@ -76,7 +76,8 @@ export class DocInfoComponent {
                     description: 'LOGISTICS_RAW_AGENT_DEBTS',
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
-                }
+                },
+                this.ARCHIVE
             ],
         },
         {
@@ -106,6 +107,12 @@ export class DocInfoComponent {
             ]
         },
     ];
+    public selectedEntry: Entry = {
+        name: 'archive',
+        description: 'COMMON_ARCHIVE',
+        url: 'archive',
+        paramsProvided: (p: string[]) => p.includes('documentId')
+    };
 
 
     constructor(private router: Router,
