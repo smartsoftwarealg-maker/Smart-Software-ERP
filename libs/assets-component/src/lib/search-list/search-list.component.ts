@@ -25,7 +25,6 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./search-list.component.scss']
 })
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
-    private subscriptions: Subscription[] = [];
     private EPOCH: Date | null = new Date(0);
     private DEF_COLS = [
         'reference',

@@ -25,7 +25,6 @@ import {UntypedFormControl} from '@angular/forms';
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy {
     private headerMode: boolean = true;
-    private subscriptions: Subscription[] = [];
     private listButton: ToolbarButton = {
         icon: this.headerMode? 'far fa-smile' : 'fas fa-child',
         label: this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER',
@@ -111,11 +110,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                                   this.listButton]);
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.updateShell();
-    }
-
-    override ngOnDestroy() {
-        super.ngOnDestroy();
-        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     private showButtons() {

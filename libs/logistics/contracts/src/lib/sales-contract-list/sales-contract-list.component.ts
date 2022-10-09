@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {SalesContractService} from '../sales-contract.service';
+import {FormControl} from '@angular/forms';
+import {Agent, AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-sales-contract-list',
@@ -14,6 +17,8 @@ import {SalesContractService} from '../sales-contract.service';
     styleUrls: ['./sales-contract-list.component.scss'],
 })
 export class SalesContractListComponent extends BaseEntityListComponent<Project> {
+    agentId     = new FormControl<number>(0);
+    agentLookup = new AgentLookupModel(this.agentSrv);
     displayedColumns = [
         'contractNo',
         'projDate',
@@ -28,7 +33,8 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService,
+        private agentSrv: AgentService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -38,5 +44,12 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
             defReportSrv,
             pagPersistSrv,
             'CONTRACTS');
+        this.entitySrv.setParentId(0);
+        this.agentLookup.onObjectSelected = a => this.onCustomer(a);
+    }
+
+    private onCustomer(a: Agent) {
+        this.entitySrv.setParentId(a?.id | 0);
+        this.refresh();
     }
 }

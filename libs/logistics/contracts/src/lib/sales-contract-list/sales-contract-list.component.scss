@@ -1,6 +1,12 @@
+.agent-div {
+    width: min(96%, 1200px);
+    margin: 0 auto;
+}
+mat-form-field {
+    min-width: 350px;
+}
 .table-div {
-    width: 96%;
-    max-width: 1200px;
+    width: min(96%, 1200px);
     margin: 0 auto;
     overflow-x: auto;
     min-height: calc(100% - 64px);

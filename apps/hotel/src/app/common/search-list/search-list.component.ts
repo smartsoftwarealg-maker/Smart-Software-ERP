@@ -44,8 +44,7 @@ export class SearchListComponent implements OnDestroy, OnInit {
             .pipe(
                 debounceTime(300),
                 distinctUntilChanged()
-            )
-            .subscribe(v => this.filterChanged(v));
+            ).subscribe(v => this.filterChanged(v));
     }
 
     private filterChanged(filter: string): void {

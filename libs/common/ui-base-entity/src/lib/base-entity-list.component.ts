@@ -2,7 +2,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel, PaginatorPersistenceService, Right} from '@ss/common/api-common';
 import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -11,6 +11,7 @@ import {BaseEntityService} from "@ss/common/api-base-entity";
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
     private reportForm: string = null;
+    subscriptions: Subscription[] = [];
 
     constructor(public entitySrv: BaseEntityService<T>,
         public shellSrv: ShellService,
@@ -207,6 +208,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.releaseResources();
         this.shellSrv.reset();
         this.pagPersistSrv.set(this.title, this.pagination, this.filter);
+        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
