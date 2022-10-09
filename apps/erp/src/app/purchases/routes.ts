@@ -24,7 +24,7 @@ import {
     PurchaseRequestDetailComponent,
     PurchaseRequestLinesDetailComponent,
     PurchaseRequestListComponent
-} from '../../../../../libs/purchases/ui-purchase-request/src';
+} from '@ss/purchases/ui-purchase-request';
 
 export const routes: Routes = [
     {

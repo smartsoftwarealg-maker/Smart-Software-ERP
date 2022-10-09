@@ -9,17 +9,17 @@
     flex-direction: column;
 }
 .main-table {
-    height: 100%;
-    flex-grow: 2;
+    height: calc(100% - 64px);
     overflow-x: auto;
 }
 
-.pagination-container {
-    flex-grow: 0;
+.size-800 {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 mat-table {
-    width: 500px;
     height: 100%;
 }
 

@@ -234,5 +234,7 @@
     "DOUBLE_CLICK_OPEN":   "Double click to open",
     "DAIRAS":              "Dairas",
     "CITY":                "City",
-    "DAIRA":               "Daira"
+    "DAIRA":               "Daira",
+    "MOTIVES":             "Motives",
+    "MOTIVE":              "Motive"
 }

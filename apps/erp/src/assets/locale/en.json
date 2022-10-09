@@ -39,5 +39,7 @@
     "TREASURY":                 "Treasury",
     "ORGANIZATIONS": "Organizations",
     "RETRY":         "Retry",
-    "SCHEDULED_SALES": "Scheduled sales"
+    "SCHEDULED_SALES": "Scheduled sales",
+    "CONTRACTS":       "Contracts",
+    "MISSIONS":        "Missions"
 }

@@ -2,6 +2,7 @@ export const APPLICATIONS_URL = '/applications';
 export const AGENT_URL = '/agents';
 export const CUSTOMER_URL = '/customers';
 export const CONSUMER_URL = '/consumers';
+export const BRANCH_URL = '/branches';
 export const SUPPLIER_URL = '/suppliers';
 export const APP_ARCHIVE_URL = '/archives';
 

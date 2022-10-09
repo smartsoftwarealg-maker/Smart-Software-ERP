@@ -235,5 +235,8 @@
     "DOUBLE_CLICK_OPEN":   "Double-cliquez pour ouvrir",
     "DAIRAS":               "Dairas",
     "DAIRA":                "Daira",
-    "CITY":                 "Ville"
+    "CITY":                 "Ville",
+    "CONTRACTS":            "Contrats",
+    "MOTIVES":              "Motifs",
+    "MOTIVE":               "Motif"
 }

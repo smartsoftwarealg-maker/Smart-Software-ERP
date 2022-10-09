@@ -16,7 +16,8 @@ import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
+import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
+import {CanActivateService} from '../../../../libs/common/api-common/src';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {
     ACCOUNTING_APP_URL,
@@ -48,9 +49,11 @@ export const navBar = [
     logAdminNavTree,
     purchasesNavTree,
     stockNavTree,
+    contractsNavTree,
     salesNavTree,
     financeNavTree,
     hrNavTree,
+    missionsNavTree,
     payrollNavTree,
     webArchNavTree,
     accountingNavTree,
@@ -58,8 +61,6 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
-    missionsNavTree,
-    contractsNavTree
 ];
 
 export const langAssets = [

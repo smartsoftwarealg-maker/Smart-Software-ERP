@@ -1,9 +1,11 @@
 import {
-    COMMON_REPORTS_URL, DASHBOARD_URL, HR_EMPLOYEES_URL, HR_INACTIVE_EMPLOYEES_URL,
+    COMMON_REPORTS_URL,
+    DASHBOARD_URL,
+    HR_EMPLOYEES_URL,
+    HR_INACTIVE_EMPLOYEES_URL,
     LOOKUPS_URL,
-    MISSION_PREPARATION_URL,
-    MISSION_TRAJECTORIES,
-    PAY_AMENDMENT_URL, PAY_ARCHIVE_GENERATOR,
+    PAY_AMENDMENT_URL,
+    PAY_ARCHIVE_GENERATOR,
     PAY_CACO_URL,
     PAY_DAS_URL,
     PAY_EDO_URL,
@@ -20,7 +22,8 @@ import {
     PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
-    PAY_XLS_INJECTION, PAYROLL_EMPLOYEES_URL
+    PAY_XLS_INJECTION,
+    PAYROLL_EMPLOYEES_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -58,8 +61,6 @@ import {PayrollAmendmentDetailComponent, PayrollAmendmentListComponent} from '@s
 import {LoansDetailComponent, LoansListComponent} from '@ss/remuneration/loans';
 import {DasComponent} from '@ss/remuneration/das';
 import {CacoComponent} from '@ss/remuneration/caco';
-import {MissionPreparationDetailComponent, MissionPreparationListComponent} from '@ss/hr-missions';
-import {TrajectoryDetailComponent, TrajectoryListComponent} from '@ss/hr-missions/mission-trajectories';
 import {SalaryGridDetailComponent, SalaryGridListComponent} from '@ss/payroll/salary-grid';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {
@@ -87,7 +88,7 @@ import {
 } from '@ss/payroll/api-employee';
 import {PayrollMonthGuard} from '@ss/payroll-common';
 import {DashboardComponent} from '@ss/dashboard';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '../../../../../libs/common/app-archive/src';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -144,23 +145,6 @@ export const mainRoutes: Routes = [
                 component: SpecialPayrollDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: MISSION_PREPARATION_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: MissionPreparationListComponent,
-                canActivate: [CanActivateService, PayrollMonthGuard]
-            },
-            {
-                path: ':id',
-                component: MissionPreparationDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService, PayrollMonthGuard]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -346,23 +330,6 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SalaryGridDetailComponent,
-                canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
-    },
-    {
-        path: MISSION_TRAJECTORIES,
-        children: [
-            {
-                path: LIST_URL,
-                component: TrajectoryListComponent,
-                canActivate: [CanActivateService]
-            },
-            {
-                path: ':id',
-                component: TrajectoryDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
@@ -578,12 +545,11 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: false, active: true },
                         children: [
-                            { path: '', component: AppArchiveListComponent },
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]

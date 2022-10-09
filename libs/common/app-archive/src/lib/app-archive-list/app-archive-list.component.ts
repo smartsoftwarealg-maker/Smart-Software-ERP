@@ -15,7 +15,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
-    inputSet = false;
     imgSrc: string | null = null;
     selectedId = 0;
     filename: string = null;
@@ -34,9 +33,12 @@ export class AppArchiveListComponent implements OnInit {
 
     ngOnInit(): void {
         this.route
-            .parent
-            .params
-            .pipe(
+            .queryParamMap
+            .pipe(tap(params => {
+                this.entitySrv.setParentId(+params.get('documentId') || 0);
+                this.entitySrv.appId = +params.get('appId') || 0;
+                }),
+                  switchMap(_ => this.route.parent.parent.params),
                 tap(params => {
                     this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
                     this.entitySrv.setParentId(this._id);
@@ -49,7 +51,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     public showDetail(id: string) {
-        this.router.navigate(['detail', id], {relativeTo: this.route}).then();
+        this.router.navigate([id], {relativeTo: this.route}).then();
     }
 
     public edit() {
@@ -59,7 +61,6 @@ export class AppArchiveListComponent implements OnInit {
     @Input()
     set id(id: number) {
         this._id = id;
-        console.log('3------------', this._id);
         this.entitySrv.setParentId(id);
         this.entitySrv
             .getList(0, 50)

@@ -31,7 +31,7 @@ import {
     ABS_MONTH_SELECTOR_URL, ABS_PAYROLL_DASHBOARD_URL, ABS_PAYROLL_EMPLOYEES_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
-    ABS_TRAJECTORY_URL,
+    ABS_MISSION_TRAJECTORY_URL,
     ABS_VACATION_PLANNING_URL
 } from '../common';
 
@@ -106,16 +106,6 @@ export const payrollNavTree: SideNavNode = {
             name: 'PAYROLL_EMPLOYEES_LIST',
             icon: 'fad fa-users',
             route: ABS_PAYROLL_EMPLOYEES_URL
-        },
-        {
-            name: 'MISSION_TRAJECTORIES',
-            icon: 'far fa-bezier-curve',
-            route: ABS_TRAJECTORY_URL
-        },
-        {
-            name: 'MISSION_MISSION_PREPARATION',
-            icon: 'fas fa-plane',
-            route: ABS_MISSION_PREPARATION_URL
         },
         {
             name: 'REMUN_MONTH_SELECTION',

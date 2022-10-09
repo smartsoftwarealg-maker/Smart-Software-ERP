@@ -39,7 +39,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         'acquisitionDate',
         'serviceDate',
         'acquisitionValue',
-        'geolocation',
+        'officeDescription',
         'beneficiary',
         'serial_no',
         'depreciationRate',

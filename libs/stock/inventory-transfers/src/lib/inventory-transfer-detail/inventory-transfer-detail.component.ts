@@ -1,0 +1,92 @@
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {Transaction} from '@ss/logistics/api-transaction';
+import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
+import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {UserListService} from '@ss/common/api-users';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {DatePipe} from '@angular/common';
+import {
+    InventoryTransferLinesListComponent
+} from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
+import {TransferService} from '../transfer.service';
+import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
+
+@Component({
+    selector: 'ss-inventory-transfer-detail',
+    templateUrl: './inventory-transfer-detail.component.html',
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
+})
+export class InventoryTransferDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    @ViewChild(InventoryTransferLinesListComponent) detail: InventoryTransferLinesListComponent;
+
+    private transfer: Transaction = null;
+    public isManager = false;
+    public groups: CCGroup[];
+
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
+
+    constructor(
+        private langSrv: LanguageService,
+        private loginSrv: LoginService,
+        public transferService: TransferService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public usersService: UserListService,
+        public lookupsSrv: LookupsService,
+        private branchService: BranchService,
+        private loginService: LoginService) {
+        super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_TRANSFERS');
+    }
+
+    override preload(): Observable<any> {
+        return this.lookupsSrv.getCCGroups()
+            .pipe(tap(x => this.groups = x))
+    }
+
+    override setupForm(b: Transaction) {
+        if (!b.id) {
+            b.id = 0;
+            b.number = 0;
+            b.userID = this.loginService.appCtx.id;
+            b.dealer = b.userID;
+            b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
+        }
+        this.transfer = b;
+        this.isManager = this.loginService.appCtx.manager;
+        return this.formBuilder.group({
+            id: [b.id],
+            document: [0],
+            centerId: [0],
+            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+            number: [b.number || 0],
+            reference: [b.reference],
+            referenceDocDate: [b.referenceDocDate],
+            header: [b.header],
+            payMethod: [b.payMethod],
+            footer: [b.footer],
+            discountDescription: [b.discountDescription],
+            fixedDiscount: [b.fixedDiscount || 0.0],
+            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
+            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
+            agent: [b.agent, Validators.required],
+        });
+    }
+
+    override readForm(): Transaction {
+        const form =  super.readForm();
+        fillObject(this.transfer, form)
+        return form;
+    }
+}

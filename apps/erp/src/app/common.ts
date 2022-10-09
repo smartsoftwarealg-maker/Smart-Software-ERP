@@ -78,6 +78,8 @@ export const STOCK_ARTICLES_STORE_URL = 'articlestores';
 export const STOCK_ANOMALY_URL = 'anomalies';
 export const STOCK_INVENTORY_ENTRY_URL = 'inventory-entries';
 export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
+export const STOCK_TRANSFER_URL       = 'transfers';
+export const STOCK_TRANSFER_RECEPTION_URL  = 'transfer-reception';
 export const STOCK_CONSUMPTION_URL = 'consumptions';
 export const STOCK_INVENTORY_URL = 'inventory';
 export const STOCK_AGENT_URL = 'agents';
@@ -121,6 +123,13 @@ export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const LOGISTICS_CATEGORY_URL = 'sales-categories';
 export const FURNITURE_STATUS_URL = 'furniture-states';
+
+// Contracts
+export const CONTRACTS_PROJECT_TYPE_URL = 'projectTypes';
+export const CONTRACTS_PROJECT_MOTIVE_URL = 'projectMotives';
+export const CONTRACTS_AWARD_PROCEDURE_URL = 'award-procedure';
+export const CONTRACT_PROJECT_URL = 'contracts';
+
 
 // Sales
 export const SALES_DELIVERY_URL = 'delivery';
@@ -212,8 +221,8 @@ export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
 
 //Missions
-export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_PREPARATION_URL].join('/');
-export const ABS_TRAJECTORY_URL          = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, MISSION_TRAJECTORIES].join('/');
+export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_PREPARATION_URL].join('/');
+export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_TRAJECTORIES].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
@@ -283,6 +292,8 @@ export const ABS_STOCK_INVENTORY_ENTRY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL
 export const ABS_STOCK_INVENTORY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_URL].join('/');
 export const ABS_STOCK_INVENTORY_EXIT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_EXIT_URL].join('/');
 export const ABS_STOCK_CONSUMPTION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_CONSUMPTION_URL].join('/');
+export const ABS_STOCK_TRANSFER_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_TRANSFER_URL].join('/');
+export const ABS_STOCK_TRANSFER_RECEPTION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_TRANSFER_RECEPTION_URL].join('/');
 export const ABS_INVENTORY_ANOMALIES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ANOMALY_URL].join('/');
 export const ABS_STOCK_AGENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_AGENT_URL].join('/');
 export const ABS_STOCK_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMMON_ACCOUNT_URL].join('/');
@@ -327,6 +338,12 @@ export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, L
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
 
+// Contracts
+export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
+export const ABS_CONTRACTS_PROJECT_URL = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACT_PROJECT_URL].join('/');
+export const ABS_CONTRACTS_PROJECT_MOTIVE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_PROJECT_MOTIVE_URL].join('/');
+export const ABS_CONTRACTS_AWARD_PROCEDURE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_AWARD_PROCEDURE_URL].join('/');
+
 // Scheduled sales
 export const ABS_SCHEDULED_SALES_PROJECTS           = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');
 export const ABS_SCHEDULED_SALES_ARTICLE            = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_ARTICLE_URL].join('/');
@@ -335,7 +352,7 @@ export const ABS_SCHEDULED_SALES_SCHEDULES          = '/' + [MAIN_PAGE_URL, SCHE
 export const ABS_SCHEDULED_SALES_DISCOUNT_TYPES     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_DISCOUNTS_URL].join('/');
 export const ABS_SALES_MODES_URL                    = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_SALES_MODE_URL].join('/');
 export const ABS_SCHEDULED_SALES_PARTNER_SCHEDULES  = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PARTNER_SCHEDULE_URL].join('/');
-export const ABS_SCHEDULED_SALES_PARTNER_TRUCKS      = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_TRUCKS_URL].join('/');
+export const ABS_SCHEDULED_SALES_PARTNER_TRUCKS     = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_TRUCKS_URL].join('/');
 
 
 
@@ -454,16 +471,9 @@ export const ABS_TAG_URL = '/' + [MAIN_PAGE_URL, WEBARCH_APP_URL, TAG_URL].join(
 export const docInfoRoutes: Routes = [
     {
         path: 'archive',
-        component: AppArchiveMainComponent,
         children: [
-            { path: '', component: AppArchiveListComponent },
-            {
-                path: 'detail',
-                children: [
-                    {path: ':id', component: AppArchiveDetailComponent},
-                    {path: '**', redirectTo: '../' }
-                ]
-            }
+            {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+            {path: ':id', component: AppArchiveDetailComponent},
         ]
     },
     {

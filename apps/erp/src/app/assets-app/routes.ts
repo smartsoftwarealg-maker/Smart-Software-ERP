@@ -107,12 +107,11 @@ export const mainRoutes: Routes = [
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
                         children: [
-                            { path: '', component: AppArchiveListComponent },
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]
@@ -454,12 +453,11 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
-                            {path: '', component: AppArchiveListComponent},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../'}
                                 ]
                             }
                         ]
@@ -493,12 +491,12 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
-                            { path: '', component: AppArchiveListComponent },
+                            {path: '', redirectTo: 'archive'},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]

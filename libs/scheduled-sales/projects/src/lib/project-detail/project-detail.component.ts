@@ -11,8 +11,7 @@ import {ProjectService} from '../project.service';
 import {LoginService} from '@ss/common/api-common';
 import {Agent, CustomerService} from '@ss/logistics/api-agent';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {SectorService} from '../../../../../common/api-lookup/src/lib/sector.service';
-import {WorkMasterService} from '../../../../../common/api-lookup/src/lib/work-master.service';
+import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
 
 @Component({
   selector: 'ss-project-detail',

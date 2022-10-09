@@ -2,11 +2,14 @@ import {
     LOGISTICS_AGENT_URL,
     LOGISTICS_OPTION_URL,
     LOGISTICS_PAY_METHOD_URL,
-    LOOKUPS_URL, LOGISTICS_ACTIVITY_URL,
+    LOOKUPS_URL,
+    LOGISTICS_ACTIVITY_URL,
     LOGISTICS_AGENT_TYPE_URL,
     LOGISTICS_COMPANY_TYPE_URL,
     LOGISTICS_CURRENCY_URL,
-    LOGISTICS_VAT_URL, LOGISTICS_NUMBERING_URL, LOGISTICS_CATEGORY_URL
+    LOGISTICS_VAT_URL,
+    LOGISTICS_NUMBERING_URL,
+    LOGISTICS_CATEGORY_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -25,7 +28,7 @@ import {
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
     CurrencyDetailComponent,
-    CurrencyListComponent,
+    CurrencyListComponent, ProjectTypeDetailComponent, ProjectTypeListComponent,
     SalesCategoryDetailComponent, SalesCategoryListComponent,
     VatDetailComponent,
     VatListComponent,
@@ -35,6 +38,7 @@ import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
+import {SalesContractDetailComponent, SalesContractListComponent} from '../../../../../libs/logistics/contracts/src';
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,
@@ -57,14 +61,14 @@ export const mainRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: {sales: true},
+                        data: { sales: true },
                         children: [
-                            {path: '', component: AppArchiveListComponent},
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]

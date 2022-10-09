@@ -218,5 +218,7 @@
     "PRODUCT":             "",
     "DOUBLE_CLICK_OPEN":   "",
     "DAIRAS":              "Dairas",
-    "CITY":                "Kent"
+    "CITY":                "Kent",
+    "CONTRACTS":           "Sözleşmeler",
+    "MOTIVE":              "Güdü"
 }

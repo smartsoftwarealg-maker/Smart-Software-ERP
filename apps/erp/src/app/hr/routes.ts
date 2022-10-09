@@ -201,12 +201,11 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: true },
                         children: [
-                            {path: '', component: AppArchiveListComponent},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]
@@ -400,12 +399,11 @@ export const mainRoutes: Routes = [
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: false },
                         children: [
-                            {path: '', component: AppArchiveListComponent},
                             {
-                                path: 'detail',
+                                path: 'archive',
                                 children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
-                                    {path: '**', redirectTo: '../' }
                                 ]
                             }
                         ]

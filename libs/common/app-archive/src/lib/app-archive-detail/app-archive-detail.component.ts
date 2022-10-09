@@ -16,6 +16,7 @@ import {tap} from 'rxjs/operators';
     styleUrls: ['./app-archive-detail.component.scss']
 })
 export class AppArchiveDetailComponent implements OnInit {
+    private withQueryParams = false;
     documentAutoCompleteModel     = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
     form: UntypedFormGroup        = null;
@@ -30,9 +31,12 @@ export class AppArchiveDetailComponent implements OnInit {
                 private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {
-        zip(this.route.paramMap, this.route.parent.parent.paramMap)
+        zip(this.route.paramMap, this.route.parent.parent.paramMap, this.route.data)
             .pipe(
                 tap(res => {
+                    const appId = +res[2]['appId'] || this.service.appId;
+                    this.service.appId = appId;
+                    this.withQueryParams = appId > 0;
                     const parentId = +res[1].get('id') || 0;
                     if (parentId > 0 || !this.service.getParentId() ) {
                         this.service.setParentId(parentId);
@@ -83,7 +87,11 @@ export class AppArchiveDetailComponent implements OnInit {
     }
 
     onCancel() {
-        this.router.navigate(['../..'], {relativeTo: this.route}).then();
+        const params = this.withQueryParams ? {
+            documentId: this.service.getParentId(),
+            appId: this.service.appId
+        } : {};
+        this.router.navigate(['..'], {relativeTo: this.route, queryParams: params}).then();
     }
 
 }

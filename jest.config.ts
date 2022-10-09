@@ -6,5 +6,5 @@ export default {
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
     coverageReporters: ['html'],
-    projects: '<rootDir>/libs/logistics/ui-document-archive',
+    projects: '<rootDir>/libs/hr-missions/missions',
 };
