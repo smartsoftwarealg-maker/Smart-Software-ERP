@@ -71,7 +71,9 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     }
 
     override readForm(): Project {
-        return this.form.getRawValue();
+        const value = this.form.getRawValue() as Project;
+        this.entitySrv.setParentId(value.customer | 0);
+        return value;
     }
 
     public getPanelHeaderClass(section: string, panel: MatExpansionPanel): string {

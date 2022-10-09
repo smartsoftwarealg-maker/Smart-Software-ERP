@@ -41,7 +41,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 public lookupsSrv: LookupsService,
                 private agentSrv: AgentService,
                 private langSrv: LanguageService,
-                private lookupSrv: LookupsService,
                 public pagPersistSrv: PaginatorPersistenceService) {
         super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();
