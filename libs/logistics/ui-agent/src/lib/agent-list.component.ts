@@ -40,7 +40,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public lookupsSrv: LookupsService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_AGENTS');
-        this.pagination.pageSize = this.isSales? 15 : 5;
+        this.pagination.pageSize = this.isSales? 10 : 5;
     }
 
     preload(): Observable<any> {
