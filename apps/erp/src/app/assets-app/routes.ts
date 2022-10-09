@@ -32,7 +32,7 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL
+    COMMON_MARKS_URL, docInfoRoutes
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -479,7 +479,9 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [CanActivateService],
+                data: {sales: true},
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -489,9 +491,9 @@ export const mainRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
-                        data: {sales: true},
+                        data: {sales: false},
                         children: [
-                            {path: '', redirectTo: 'archive'},
+                            {path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [

@@ -8,9 +8,12 @@ import {AppArchiveListComponent} from '../app-archive-list/app-archive-list.comp
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss']
 })
-export class AppArchiveMainComponent implements AfterViewInit {
+export class AppArchiveMainComponent implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
     private _id = 0;
+    private _docId = 0;
+    private _appId = 0;
+    private _agentId = 0;
 
     constructor(private archiveSrv: AppArchiveService,
                 private route: ActivatedRoute,
@@ -42,22 +45,14 @@ export class AppArchiveMainComponent implements AfterViewInit {
         return this._id;
     }
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
         this.route.queryParamMap.subscribe(param => {
             const docId = +param.get('documentId') | 0;
-            if (docId && this.outlet && this.outlet.isActivated) {
-                this._id = docId;
-                this.archiveSrv.appId = +param.get('appId') || 0;
-                const list = <AppArchiveListComponent> this.outlet?.component;
-                list.id = this._id;
-                this.archiveSrv.setParentId(this._id);
-                list.refresh();
-            }
+            const agentId = +param.get('agentId') | 0;
+            this._appId = +param.get('appId') | 0;
+            this.archiveSrv.appId = this._appId;
+            this._id = docId || agentId;
+            this.archiveSrv.setParentId(this._id);
         });
     }
-
-    // ngOnInit(): void {
-    //     this.router.navigate(['archive'], {relativeTo: this.route}).then();
-    // }
-
 }

@@ -23,4 +23,6 @@ export interface Transaction {
     dealerName?: string;
     agentName?: string;
     payMethodName?: string;
+    project?: number;
+    projectDescription?: string;
 }

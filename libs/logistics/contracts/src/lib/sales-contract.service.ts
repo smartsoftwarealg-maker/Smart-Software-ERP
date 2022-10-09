@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Project, PROJECT_URL} from './contract-api.class';
+import {Project, PROJECT_AGENT_URL, PROJECT_URL} from './contract-api.class';
 import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
@@ -9,6 +9,6 @@ import {HttpService} from '@ss/common/api-common';
 export class SalesContractService extends BaseEntityService<Project> {
 
   constructor(protected override httpSrv: HttpService) {
-      super(httpSrv, PROJECT_URL);
+      super(httpSrv, PROJECT_URL, PROJECT_AGENT_URL);
   }
 }

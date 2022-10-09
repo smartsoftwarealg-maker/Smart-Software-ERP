@@ -32,10 +32,13 @@ export class AppArchiveListComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.imgSrc = null;
         this.route
             .queryParamMap
             .pipe(tap(params => {
-                this.entitySrv.setParentId(+params.get('documentId') || 0);
+                const docId = +params.get('documentId') || 0;
+                const agentId = +params.get('agentId') || 0;
+                this.entitySrv.setParentId(docId || agentId);
                 this.entitySrv.appId = +params.get('appId') || 0;
                 }),
                   switchMap(_ => this.route.parent.parent.params),
@@ -47,6 +50,7 @@ export class AppArchiveListComponent implements OnInit {
             .subscribe(res => {
                 this.data = res.body || [];
                 this.paginator.elementCount = res.itemCount;
+                this.imgSrc = null;
             });
     }
 
@@ -126,6 +130,7 @@ export class AppArchiveListComponent implements OnInit {
             }
         }
     }
+
 
     onClick(e: MouseEvent) {
         // this.release();

@@ -51,10 +51,7 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_MOTIVE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="motiveLookup"
-                                  formControlName="projMotive">
-                </ss-auto-complete>
+                <input matInput formControlName="projMotive" type="text" autofocus maxlength="70" required>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

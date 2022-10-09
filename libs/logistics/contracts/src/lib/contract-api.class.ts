@@ -1,5 +1,6 @@
 export const PROJECT_URL = '/projects';
 export const PROJECT_ARTICLES_URL = '/articles';
+export const PROJECT_AGENT_URL = '/agents';
 
 export interface Project {
     id: number;
@@ -21,7 +22,7 @@ export interface Project {
     finalReception?: number;
     projType?: number;
     advancePayment: number;
-    projMotive?: number;
+    projMotive?: string;
     performBond: number;
     lateFee: number;
     awardProcedure?: number;

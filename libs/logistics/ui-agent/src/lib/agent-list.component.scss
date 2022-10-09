@@ -1,13 +1,13 @@
-
-:host {
-    display: block;
-    margin: auto;
-    width: 978px;
+.doc-info {
+    width: min(98%, 1200px);
+    margin: 0 auto;
 }
 
 .main-table {
-    width: 978px;
-    min-height: 320px;
+    width: min(98%, 1200px);
+    margin: 0 auto;
+    height: 60%;
+    overflow-y: auto;
 }
 
 // keep the material design specs

@@ -9,7 +9,7 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL,
+    LOGISTICS_CATEGORY_URL, docInfoRoutes,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -52,6 +52,7 @@ export const mainRoutes: Routes = [
                 component: AgentListComponent,
                 canActivate: [CanActivateService],
                 data: {sales: true},
+                children: docInfoRoutes
             },
             {
                 path: ':id',
