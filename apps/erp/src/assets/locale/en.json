@@ -41,5 +41,6 @@
     "RETRY":         "Retry",
     "SCHEDULED_SALES": "Scheduled sales",
     "CONTRACTS":       "Contracts",
-    "MISSIONS":        "Missions"
+    "MISSIONS":        "Missions",
+    "SHOPPING-CART":   "Shopping cart"
 }

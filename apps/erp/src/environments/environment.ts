@@ -38,9 +38,10 @@ import {
     SCHEDULED_SALES_APP_URL,
     STOCK_APP_URL,
     TREASURY_APP_URL,
-    WEBARCH_APP_URL
+    WEBARCH_APP_URL, SHOPPING_CART_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
+import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -64,6 +65,7 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
+    shoppingCartNavTree
 ];
 
 export const langAssets = [
@@ -94,6 +96,10 @@ export const appRoutes: Routes =  [
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+    },
+    {
+        path: SHOPPING_CART_APP_URL,
+        loadChildren: () => import('../app/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
     },
     {
         path: ACCOUNTING_APP_URL,
