@@ -2,17 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
-import {
-    BaseTransactionLinesListComponent,
-    TransactionLine,
-    TransactionLinesService
-} from '@ss/logistics/api-transaction';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
+import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/offer-lines.service';
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -32,7 +25,7 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
     ];
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: OfferLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

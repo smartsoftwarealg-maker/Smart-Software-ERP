@@ -47,16 +47,21 @@ mat-header-cell {
 }
 
 .mat-column-agent {
-    flex: 3 1 200px;
+    flex: 4 1 200px;
 }
 
 .mat-column-referenceDocDate,
 .mat-column-reference,
 .mat-column-date,
-.mat-column-locked,
-.mat-column-dirty,
 .mat-column-number {
     flex: 1 1 100px;
+}
+
+.mat-column-locked,
+.mat-column-dirty {
+    flex: 0 1 50px;
+    max-width: 50px;
+    justify-content: center;
 }
 
 

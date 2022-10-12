@@ -5,6 +5,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -45,4 +46,5 @@ export class OrderLinesListComponent extends BaseTransactionLinesListComponent i
     ngOnInit() {
         super.onInit();
     }
+
 }

@@ -25,6 +25,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="fromDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.fromDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.toDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="customerName">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
             <mat-cell *matCellDef="let e">

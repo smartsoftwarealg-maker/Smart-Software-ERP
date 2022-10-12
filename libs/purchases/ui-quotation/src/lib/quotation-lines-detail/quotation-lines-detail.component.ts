@@ -11,7 +11,7 @@ import {
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import {LoginService} from "@ss/common/api-common";
-import {OfferLinesService} from '../../../../../logistics/api-transaction/src/lib/offer-lines.service';
+import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-quotation-lines-detail',

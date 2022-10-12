@@ -45,7 +45,7 @@ export class BaseTransactionLinesListComponent {
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
-        this.shellSrv.setLoading(true);
+        // this.shellSrv.setLoading(true);
         this.detailSrv.setParentId(this.parentId);
         return this.detailSrv
             .getPage(this.pagination, null, null)

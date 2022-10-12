@@ -107,6 +107,7 @@ export const mainRoutes: Routes = [
                         canActivate: [CanActivateService],
                         canDeactivate: [CanDeactivateService],
                         children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [

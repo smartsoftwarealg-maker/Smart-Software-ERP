@@ -127,6 +127,7 @@ export const MILITARY_SERVICE_STATES: MilitaryServiceState[] = [
 export interface Mark {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface Class {

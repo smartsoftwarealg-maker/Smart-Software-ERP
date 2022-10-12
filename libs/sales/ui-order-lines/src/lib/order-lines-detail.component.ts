@@ -5,16 +5,11 @@ import {UntypedFormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
-    TransactionLine,
-    TransactionLinesService
+    BaseTransactionLinesDetailComponent
 } from '@ss/logistics/api-transaction';
+import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/offer-lines.service';
 
 @Component({
   selector: 'ss-order-lines-detail',
@@ -23,7 +18,7 @@ import {
 })
 export class OrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
-        public inventoryLinesService: TransactionLinesService,
+        public inventoryLinesService: OfferLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,

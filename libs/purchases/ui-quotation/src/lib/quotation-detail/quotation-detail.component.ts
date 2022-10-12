@@ -13,7 +13,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
 import {PurchaseQuotationService} from '../purchase-quotation.service';
-import {OfferLinesService} from '../../../../../logistics/api-transaction/src/lib/offer-lines.service';
+import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-proforma-detail',
