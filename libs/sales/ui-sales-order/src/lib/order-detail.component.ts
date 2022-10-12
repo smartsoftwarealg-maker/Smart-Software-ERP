@@ -1,12 +1,12 @@
-import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, ViewChild} from '@angular/core';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {Observable, of, switchMap} from 'rxjs';
+import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
@@ -15,8 +15,9 @@ import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
-import {Project} from '../../../../logistics/contracts/src/lib/contract-api.class';
 import {SalesContractService} from '@ss/logistics/contracts';
+import {MatDialog} from '@angular/material/dialog';
+import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
 
 @Component({
   selector: 'ss-ui-order-detail',
@@ -24,13 +25,22 @@ import {SalesContractService} from '@ss/logistics/contracts';
   styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
+    @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importDocument(),
+    }
     private order: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
+    public dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersService);
+    public agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
+    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
 
     constructor(public orderService: SalesOrderService,
                 public shellSrv: ShellService,
@@ -44,13 +54,20 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
                 private loginService: LoginService,
                 private loginSrv: LoginService,
                 private payMethodSrv: PayMethodService,
+                private dialog: MatDialog,
                 private projectSrv: SalesContractService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
     }
 
     preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
+        return this.lookupsSrv
+            .getCCGroups()
             .pipe(tap(x => this.groups = x))
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importBtn);
     }
 
     public setupForm(form: Transaction) {
@@ -92,19 +109,16 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         form.dirty = !form.dirty;
         return form;
     }
-}
 
-// class ProjectLookup extends DefaultAutoCompleteModel<Project> {
-//     private _customer = 0;
-//
-//     constructor(projectSrv: SalesContractService) {
-//         super(projectSrv, 'id', 'description');
-//     }
-//     filter = (filter: string) => this.entitySrv
-//         .getList(1, 9999, filter, this.descriptionField)
-//         .pipe(map(x => x.body.filter(p => !!p.description && p.customer === this._customer)));
-//
-//     set customer(c: number) {
-//         this._customer = c;
-//     }
-// }
+    private importDocument() {
+        if (!this.importBtn.disabled) {
+            this.orderService
+                .consumeContract(this.id)
+                .pipe(switchMap(_ => this.orderList? this.orderList.loadDetailLines() : of(null)))
+                .subscribe(_ => {
+                    this.shellSrv.setLoading(false);
+                    this.snackBarSrv.showSuccessMessage();
+                });
+        }
+    }
+}

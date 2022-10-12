@@ -9,7 +9,7 @@
     height: 50%;
     min-height: 250px;
     margin: 0 auto;
-    min-width: 700px;
+    min-width: 900px;
 }
 
 .main-container {
@@ -33,19 +33,23 @@
 
 
 .mat-column-position {
-    flex: 0 0 50px;
+    flex: 1 1 50px;
+    justify-content: center!important;
+    max-width: 50px;
 }
 
 .mat-column-store {
-    flex: 1 0 100px;
+    flex: 1 1 100px;
+    border-left: white solid 1px;
 }
 
 
 
 .mat-column-description {
     flex: 2 1 300px;
-    padding-left: 6px;
+    padding-left: 4px;
     border-left: white solid 1px;
+    min-width: 100px;
 }
 
 .mat-column-reference,

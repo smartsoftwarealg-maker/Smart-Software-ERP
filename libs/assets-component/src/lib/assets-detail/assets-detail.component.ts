@@ -15,7 +15,7 @@ import {
 } from '@ss/common/api-lookup';
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel, Id} from '@ss/common/ui-auto-complete';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, ConsumerService, CustomerService, SupplierService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
@@ -39,7 +39,6 @@ import {AssetReceptionService} from '../asset-reception.service';
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
     // Private
     private isANSEJ = false;
-    private isAQS   = false;
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
         label: 'ASSET_IMPORT',
@@ -48,10 +47,11 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
         click: () => this.importAsset()
     };
-    private minLength = 1;
     private maxReference: string = null;
 
     // Public
+    minLength = 1;
+    isAQS   = false;
     depreciationTypes: Lookup[] = [
         { id: 1, description: 'ASSET_LINEAR' },
         { id: 2, description: 'ASSET_DECLINING' },
@@ -62,7 +62,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     markAutoCompleteModel = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
     statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
-    supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    // supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
@@ -155,8 +155,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0, Validators.required],
-            outof_service: [b.outof_service || false, Validators.required],
-            criticity:   [b.criticity],
+            outOfService: [b.outof_service || false, Validators.required],
+            outof_service:   [b.outof_service],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
             status:      [b.status],
@@ -280,18 +280,16 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.positionNumb       =  asset.positionNumb     || null;
                 asset.modelNumb          =  asset.modelNumb        || null;
                 asset.installation_code  =  asset.installation_code|| null;
-                asset.tech_specific      =  asset.tech_specific    || null;
                 asset.comment            =  asset.comment          || null;
                 asset.requester          =  asset.requester        || null;
                 asset.requestNumber      =  asset.requestNumber    || null;
-                asset.requestDate        =  asset.requestDate     || null;
-                asset.orderNumber        =                            null;
-                asset.orderDate          =                            null;
+                asset.requestDate        =  asset.requestDate      || null;
+                asset.orderNumber        =  asset.orderNumber      || null;
+                asset.orderDate          =  asset.orderDate        || null;
                 asset.office             =  asset.office           || null;
                 asset.sales_price        =  asset.sales_price      || null;
                 asset.investment_type    =  asset.investment_type  || 1;
-                asset.outof_service      =  !!asset.outof_service;
-                asset.criticity          =  asset.criticity        || null;
+                asset.outof_service      =  0;
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
                 asset.status             =  asset.status           || null;
@@ -299,6 +297,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.site               =  asset.site             || null;
                 asset.building           =  asset.building         || null;
                 asset.beneficiaryId      =  asset.beneficiaryId    || null;
+                asset.receptionId        =  asset.receptionId      || null;
+                asset.deliveryNumber     =  asset.deliveryNumber   || null;
+                asset.deliveryDate       =  asset.deliveryDate     || null;
+                asset.invoiceDate        =  asset.invoiceDate      || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }

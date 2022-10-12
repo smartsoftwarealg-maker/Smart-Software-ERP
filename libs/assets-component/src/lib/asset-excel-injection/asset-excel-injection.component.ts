@@ -59,7 +59,6 @@ export class AssetExcelInjectionComponent implements OnInit {
         investmentType:    [''],
         usefulLife:        [''],
         oldDepreciation:   [''],
-        outOfService:      [''],
         assetClass:        [''],
         status:            [''],
         beneficiary:       ['']

@@ -16,9 +16,9 @@ import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 })
 export class OrderListComponent  extends BaseTransactionListComponent {
     displayedColumns = [
-        'agent',
         'number',
         'date',
+        'agent',
         'payMethod',
         'dirty',
         'locked',

@@ -14,7 +14,7 @@ mat-form-field {
 
 .main-table {
     width: 100%;
-    min-width: 600px;
+    min-width: 900px;
 }
 
 .mat-column-description,
@@ -22,7 +22,13 @@ mat-form-field {
     flex: 2 1 250px;
 }
 
-.mat-column-contractNo,
-.mat-column-projDate {
+.mat-column-contractNo {
     flex: 1 1 100px;
+}
+.mat-column-contractNo,
+.mat-column-projDate,
+.mat-column-toDate,
+.mat-column-fromDate {
+    flex: 1 1 90px;
+    justify-content: center;
 }

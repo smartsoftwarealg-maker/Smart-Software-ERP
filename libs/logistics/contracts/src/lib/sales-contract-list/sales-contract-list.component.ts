@@ -23,7 +23,9 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
         'contractNo',
         'projDate',
         'description',
-        'customerName'
+        'customerName',
+        'fromDate',
+        'toDate'
     ];
     constructor(
         public override entitySrv: SalesContractService,
@@ -49,7 +51,16 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
     }
 
     private onCustomer(a: Agent) {
-        this.entitySrv.setParentId(a?.id | 0);
+        const id = a?.id | 0;
+        this.entitySrv.setParentId(id);
+        this.entitySrv.selectedId = id;
+        this.refresh();
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.agentId.setValue(this.entitySrv.selectedId);
+        this.entitySrv.setParentId(this.entitySrv.selectedId);
         this.refresh();
     }
 }

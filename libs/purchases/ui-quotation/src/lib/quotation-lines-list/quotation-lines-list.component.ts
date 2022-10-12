@@ -4,8 +4,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
 import {ArticleService} from '@ss/stock/api-article';
-import {LotsService, Store} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent, TransactionLinesService} from "@ss/logistics/api-transaction";
+import {LotsService} from '@ss/common/api-lookup';
+import {BaseTransactionLinesListComponent} from "@ss/logistics/api-transaction";
+import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-quotation-lines-list',
@@ -27,7 +28,7 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
     ];
 
     constructor(
-        public detailSrv: TransactionLinesService,
+        public detailSrv: OfferLinesService,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
