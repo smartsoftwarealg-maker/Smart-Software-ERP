@@ -7,6 +7,7 @@ import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
+import {CSPACE_APP_URL} from '../../../cspace/src/app/common';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -37,6 +38,7 @@ export const ORGANIZATIONS_APP_URL = 'organizations';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
+export const SHOPPING_CART_APP_URL = 'scart';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -69,6 +71,10 @@ export const ORGANIZATIONS_DEPARTMENTS_URL = 'departments';
 export const ORGANIZATIONS_SERVICES_URL = 'services';
 export const ORGANIZATIONS_OFFICES_URL = 'offices';
 
+// CSPACE
+export const CSPACE_CART_URL = 'cart';
+export const CSPACE_CARTDETAIL_URL = 'cartdetail';
+export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 
 
 // Stock
@@ -306,6 +312,11 @@ export const ABS_STOCK_REPORT_PARAMS = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, COMM
 export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORT_CATALOG_URL].join('/');
 export const ABS_STOCK_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORTS_URL].join('/');
+
+// cspace
+export const ABS_CUSTOMER_PROFILE = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, COMMON_CUSTOMER_PROFILE_URL].join('/');
+export const ABS_CART = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, CSPACE_CART_URL].join('/');
+export const ABS_CART_DETAIL = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, CSPACE_CARTDETAIL_URL].join('/');
 
 //Accounting
 export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_POLICIES_URL].join('/');

@@ -27,7 +27,6 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
     awardLookup   = new DefaultAutoCompleteModel(this.awardSrv);
-    articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
     articles: Article[] = [];
 
     constructor(
@@ -47,6 +46,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         private contractArticleSrv: ContractArticleService,
         private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CONTRACTS');
+        this.entitySrv.setParentId(0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 

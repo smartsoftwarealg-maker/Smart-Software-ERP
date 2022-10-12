@@ -1,5 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpService, LanguageService, LoginService, PaginationModel} from "@ss/common/api-common";
+import {
+    HttpService,
+    LanguageService,
+    LoginService,
+    PaginationModel,
+    PaginatorPersistenceService
+} from "@ss/common/api-common";
 import {Cart, Cartline} from "../cartline";
 import {LookupsService, MarkService} from "@ss/common/api-lookup";
 import {ShoppingCartService} from "../shopping-cart.service";
@@ -56,8 +62,17 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         public httpSrv: HttpService,
         public langSrv: LanguageService,
         private loginSrv: LoginService,
-        private breakPointObs: BreakpointObserver) {
-        super(cartSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_SHOPPING');
+        private breakPointObs: BreakpointObserver,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(cartSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'LOGISTICS_SHOPPING');
         this.isHandset = this.breakPointObs.observe(['(max-width: 700px)']);
     }
 

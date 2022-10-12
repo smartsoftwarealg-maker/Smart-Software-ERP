@@ -41,5 +41,6 @@
     "RETRY":         "أعد المحاولة",
     "SCHEDULED_SALES": "المبيعات المجدولة",
     "CONTRACTS":       "العقود",
-    "MISSIONS":        "المهمات"
+    "MISSIONS":        "المهمات",
+    "SHOPPING-CART":   "عربة التسوق"
 }

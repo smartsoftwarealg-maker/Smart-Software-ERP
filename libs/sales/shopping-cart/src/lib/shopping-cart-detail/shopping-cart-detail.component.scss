@@ -25,3 +25,28 @@
 .mat-column-price {
     max-width: 90px;
 }
+
+.header-div {
+    padding: 8px;
+    display: flex;
+    flex-flow: row;
+    gap: 32px;
+}
+
+.total-div {
+    display: flex;
+    gap: 8px;
+}
+
+.shop-btn {
+    margin-left: auto;
+}
+
+div span {
+    font-weight: bold;
+}
+
+.layout {
+    width: min(96%, 1200px);
+    margin: 0 auto;
+}

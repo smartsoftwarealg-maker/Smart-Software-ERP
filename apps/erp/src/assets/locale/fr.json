@@ -42,5 +42,6 @@
     "RETRY":         "Retenter",
     "SCHEDULED_SALES": "Ventes programmées",
     "CONTRACTS":       "Contrats",
-    "MISSIONS":        "Missions"
+    "MISSIONS":        "Missions",
+    "SHOPPING-CART":   "Panier"
 }

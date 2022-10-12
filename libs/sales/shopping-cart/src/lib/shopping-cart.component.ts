@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {DefaultReportService} from "@ss/common/ui-default-report-component";
 import {LookupsService, MarkService} from "@ss/common/api-lookup";
-import {HttpService, PaginationModel} from "@ss/common/api-common";
+import {HttpService, PaginationModel, PaginatorPersistenceService} from "@ss/common/api-common";
 import {ImageModel} from '@ss/common/ui-image-input';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {ShoppingCartService} from "./shopping-cart.service";
@@ -34,8 +34,17 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
         public confirmationSrv: ConfirmationDialogService,
         public defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public httpSrv: HttpService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'LOGISTICS_SHOPPING_CART');
+        public httpSrv: HttpService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(articleSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'LOGISTICS_SHOPPING_CART');
         this.articleSrv.setUrl(AVAILABLE_ARTICLES_URL);
     }
 

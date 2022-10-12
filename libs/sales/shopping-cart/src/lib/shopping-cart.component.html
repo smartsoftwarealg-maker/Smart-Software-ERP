@@ -15,14 +15,20 @@
     </fieldset>
     <div class="data">
         <mat-card class="card" *ngFor="let a of data">
-            <ss-image-input mat-card-medium-image width="100%" height="250px" [ImageModel]="a.imageModel"
-                            style="display: inline-block;">
-            </ss-image-input>
+
             <mat-card-content>
 
+                <div class="img-div">
+                    <ss-image-input mat-card-medium-image
+                                    class="img-div"
+                                    width="100%"
+                                    height="100%"
+                                    [ImageModel]="a.imageModel">
+                    </ss-image-input>
+                </div>
                 <ul class="info">
                     <li>
-                         {{ a.description2 }}
+                        {{ a.description2 }}
                     </li>
                     <li class="description">
                         <span class="badge" translate>COMMON_MARK</span> {{ a.markDescrip }}
@@ -37,13 +43,13 @@
             <mat-card-actions>
                 <div>
                     <span class="filler"></span>
-                    <input #qtyInput type="number" class="qty" value="1" >
+                    <input #qtyInput type="number" class="qty bolder b-primary" value="1">
                     <button mat-raised-button
                             disabled="{{ cartTotal > 1000000.0 }}"
                             color="primary"
                             (click)="addToCart(a, +qtyInput.value)">
                         <i class="fas fa-cart-plus"></i> &nbsp;
-                        <span class="bolder" translate>LOGISTICS_ADD_TO_CART</span>
+                            <span class="bolder add-btn" translate>LOGISTICS_ADD_TO_CART</span>
                     </button>
                 </div>
             </mat-card-actions>
