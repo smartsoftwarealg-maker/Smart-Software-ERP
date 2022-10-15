@@ -67,7 +67,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            centerId: [0],
+            centerId: [form.centerId || this.loginSrv.appCtx.center],
             date: [form.date || new Date(), Validators.required],
             number: [{ value: form.number || 0, disabled: true }],
             reference: [form.reference],

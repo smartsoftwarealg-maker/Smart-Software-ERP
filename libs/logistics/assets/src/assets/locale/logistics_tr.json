@@ -140,5 +140,6 @@
     "DRIVER_LICENSE":  "",
     "PLATE_NUMBER":    "",
     "AWARD_PROCEDURES": "",
-    "AWARD_PROCEDURE":  ""
+    "AWARD_PROCEDURE":  "",
+    "IMPORT_CONTRACT":  ""
 }

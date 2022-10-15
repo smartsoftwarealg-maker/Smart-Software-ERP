@@ -5,12 +5,11 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
 import {LookupsService, LotsService, Store} from '@ss/common/api-lookup';
-import {Observable, Subscription, switchMap} from 'rxjs';
+import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
-import {TransactionLinesService} from './transaction-lines.service';
 import {TransactionLinesClass} from './transaction-lines.class';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine>  {
@@ -55,17 +54,6 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     finishLoading(e: TransactionLine) {
         super.finishLoading(e);
-        // const subs1 = this.form.get('qtySatisfied').valueChanges.subscribe(next => {
-        //     if (typeof next === 'number') {
-        //         if (next > 0.0 && this.selectedRow.reference) {
-        //             this.form.get('reference').disable();
-        //             this.form.get('store').disable();
-        //         } else {
-        //             this.form.get('reference').enable();
-        //             this.form.get('store').enable();
-        //         }
-        //     }
-        // });
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
             if (typeof next === 'number') {
                 if (next > 0.0 && this.selectedRow?.reference) {

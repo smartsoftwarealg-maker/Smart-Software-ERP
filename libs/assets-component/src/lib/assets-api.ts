@@ -54,7 +54,7 @@ export interface Asset {
     investment_type?: number;
     useful_life: number;
     old_depreciation: number;
-    outof_service: boolean;
+    outOfService: boolean;
     criticity?: number;
     accountId?: number;
     ccCode?: string;

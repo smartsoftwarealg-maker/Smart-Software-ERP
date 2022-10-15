@@ -4,7 +4,7 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL
+    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL, LOGISTICS_ARTICLES_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
@@ -25,6 +25,7 @@ import {
     PurchaseRequestLinesDetailComponent,
     PurchaseRequestListComponent
 } from '@ss/purchases/ui-purchase-request';
+import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 
 export const routes: Routes = [
     {
@@ -142,5 +143,45 @@ export const routes: Routes = [
         data: { reportBase: 'purchases' },
         component: ReportViewComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: LOGISTICS_ARTICLES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ArticleDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_ARTICLES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ArticleDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
     },
 ];

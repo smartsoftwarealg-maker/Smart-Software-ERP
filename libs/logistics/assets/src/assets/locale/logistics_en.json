@@ -147,5 +147,6 @@
     "PROJECT_TYPES":   "Project types",
     "PROJECT_TYPE":    "Project type",
     "AWARD_PROCEDURES": "Award procedures",
-    "AWARD_PROCEDURE": "Award procedure"
+    "AWARD_PROCEDURE": "Award procedure",
+    "IMPORT_CONTRACT":  "Import contract articles"
 }

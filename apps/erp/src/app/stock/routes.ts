@@ -4,7 +4,7 @@ import {
     COMMON_ACCOUNT_URL,
     STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_URL,
-    STOCK_ARTICLES_URL,
+    LOGISTICS_ARTICLES_URL,
     STOCK_CLASSES_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
@@ -20,7 +20,7 @@ import {
     STOCK_ANOMALY_URL,
     STOCK_REPORTS_URL,
     DASHBOARD_URL,
-    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL
+    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -66,6 +66,7 @@ import {
     TransferReceptionLinesDetailComponent,
     TransferReceptionListComponent
 } from '@ss/stock/inventory-transfers';
+import {UserStoresComponent} from '@ss/stock/ui-store';
 
 export const mainRoutes: Routes = [
     {
@@ -84,7 +85,12 @@ export const mainRoutes: Routes = [
         canActivate: [CanActivateService],
     },
     {
-        path: STOCK_ARTICLES_URL,
+        path: USER_STORES_URL,
+        component: UserStoresComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: LOGISTICS_ARTICLES_URL,
         children: [
             {
                 path: LIST_URL,

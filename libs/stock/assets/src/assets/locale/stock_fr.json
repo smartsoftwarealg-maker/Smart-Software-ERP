@@ -52,5 +52,6 @@
     "FIX": "Corriger les anomalies",
     "PERCENTAGE":  "Pourcentage",
     "TRANSFERS":   "Cessions",
-    "TRANSFER_RECEPTIONS": "Réceptions sur cessions"
+    "TRANSFER_RECEPTIONS": "Réceptions sur cessions",
+    "USER_STORES": "Magasins d'utilisateurs"
 }
