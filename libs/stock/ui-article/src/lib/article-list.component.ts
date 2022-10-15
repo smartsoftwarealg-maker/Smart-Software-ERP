@@ -28,9 +28,9 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         'unit'
     ];
 
-    private marks: Mark[];
-    private units: Unit[];
-    private vats: Vat[];
+    private marks: Mark[] = [];
+    private units: Unit[] = [];
+    private vats: Vat[] = [];
 
     constructor(
         public articleSrv: ArticleService,
