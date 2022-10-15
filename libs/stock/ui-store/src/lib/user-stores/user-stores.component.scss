@@ -1,0 +1,29 @@
+.container {
+    box-sizing: border-box;
+    width: min(98%, 1200px);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.store-list-div, .user-list-div {
+    flex-grow: 1;
+}
+.user-div,
+.store-div {
+    width: max(50%, 350px);
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+
+.btn-div {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 0 8px;
+}

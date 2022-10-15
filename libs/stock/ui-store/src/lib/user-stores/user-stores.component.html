@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="user-div">
+        <div class="user-list-div">
+            <mat-list role="list" class="user-list-div">
+                <mat-list-item class="selectable"
+                               [class.selected]="u.id === selectedUserId"
+                               role="listitem"
+                               *ngFor="let u of users"
+                               (click)="selectUser(u)">
+                    {{ u.fullName }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="userPagination"></ss-pagination>
+        </div>
+    </div>
+
+    <div class="store-div">
+        <div [formGroup]="storeForm" class="btn-div">
+            <mat-form-field>
+                <mat-label translate>STOCK_STORE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="storeAutoCompleteModel"
+                                  formControlName="id"></ss-auto-complete>
+                <mat-error
+                    *ngIf="storeForm.controls['id'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+
+            <button mat-mini-fab
+                    color="primary"
+                    [disabled]="storeForm.controls['id']?.value == null || !selectedUserId "
+                    [matTooltip]="'COMMON_ADD'|translate"
+                    (click)="addStore()">
+                <i class="fas fa-plus"></i>
+            </button>
+
+            <button mat-mini-fab
+                    [disabled]="selectedStore == null || !selectedUserId || !selectedStore"
+                    [matTooltip]="'COMMON_DELETE'|translate"
+                    (click)="removeStore()">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+        <div class="store-list-div">
+            <mat-list role="list">
+                <mat-list-item class="selectable"
+                               [class.selected]="s.id === selectedStore?.id"
+                               role="listitem"
+                               *ngFor="let s of stores"
+                               (click)="selectStore(s)">
+                    {{ s.storeDescription }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="storePagination"></ss-pagination>
+        </div>
+    </div>
+</div>

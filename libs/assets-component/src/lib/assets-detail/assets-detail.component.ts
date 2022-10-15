@@ -155,8 +155,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0, Validators.required],
-            outOfService: [b.outof_service || false, Validators.required],
-            outof_service:   [b.outof_service],
+            outOfService: [b.outOfService || false, Validators.required],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass],
             status:      [b.status],
@@ -289,7 +288,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.office             =  asset.office           || null;
                 asset.sales_price        =  asset.sales_price      || null;
                 asset.investment_type    =  asset.investment_type  || 1;
-                asset.outof_service      =  0;
+                asset.outOfService       =  0;
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
                 asset.status             =  asset.status           || null;

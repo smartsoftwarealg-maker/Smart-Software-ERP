@@ -1,6 +1,6 @@
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {organizationsNavTree} from '../app/organizations/side-nav-tree';
-import {logAdminNavTree} from '../app/logistics-admin/side-nav-tree';
+import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {purchasesNavTree} from '../app/purchases/side-nav-tree';
 import {stockNavTree} from '../app/stock/side-nav-tree';
 import {salesNavTree} from '../app/sales/side-nav-tree';
@@ -37,7 +37,9 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
+    SHOPPING_CART_APP_URL,
 } from '../app/common';
+import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -46,21 +48,22 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
-    logAdminNavTree,
+    logisticsAdminNavTree,
+    contractsNavTree,
     purchasesNavTree,
     stockNavTree,
-    contractsNavTree,
     salesNavTree,
     financeNavTree,
     hrNavTree,
     missionsNavTree,
     payrollNavTree,
-    webArchNavTree,
     accountingNavTree,
     assetsNavTree,
     treasuryNavTree,
     dashboardNavTree,
+    webArchNavTree,
     scheduledSalesNavTree,
+    shoppingCartNavTree
 ];
 
 export const langAssets = [
@@ -155,6 +158,10 @@ export const appRoutes: Routes =  [
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+    },
+    {
+        path: SHOPPING_CART_APP_URL,
+        loadChildren: () => import('../app/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

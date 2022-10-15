@@ -146,5 +146,6 @@
     "PROJECT_TYPES":   "Types de projet",
     "PROJECT_TYPE":    "Type de projet",
     "AWARD_PROCEDURES": "Procédures d'attribution",
-    "AWARD_PROCEDURE":  "Procédures d'attribution"
+    "AWARD_PROCEDURE":  "Procédures d'attribution",
+    "IMPORT_CONTRACT":  "Importer des articles de contrat"
 }

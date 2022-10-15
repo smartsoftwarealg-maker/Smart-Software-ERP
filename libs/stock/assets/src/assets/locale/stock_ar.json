@@ -52,5 +52,6 @@
     "FIX": "تصحيح الفروق",
     "PERCENTAGE":  "النسبة المئوية",
     "TRANSFERS": "التحويلات",
-    "TRANSFER_RECEPTIONS": "استقبالات النقل"
+    "TRANSFER_RECEPTIONS": "استقبالات النقل",
+    "USER_STORES": "مخازن المستعمل"
 }

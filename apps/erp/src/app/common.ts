@@ -6,8 +6,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
-import {CSPACE_APP_URL} from '../../../cspace/src/app/common';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -79,8 +78,8 @@ export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 
 // Stock
 export const LOGISTICS_VAT_URL = 'vat';
-export const STOCK_ARTICLES_URL = 'articles';
 export const STOCK_ARTICLES_STORE_URL = 'articlestores';
+export const USER_STORES_URL = 'user-stores';
 export const STOCK_ANOMALY_URL = 'anomalies';
 export const STOCK_INVENTORY_ENTRY_URL = 'inventory-entries';
 export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
@@ -113,6 +112,7 @@ export const PURCHASE_QUOTATION_URL = 'offers';
 export const PAYMENT_ORDER = 'payment-orders';
 
 // Logistics
+export const LOGISTICS_ARTICLES_URL = 'articles';
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
 export const LOGISTICS_PAYMENTS_URL = 'payments';
 export const LOGISTICS_SPAYMENTS_URL = 'spayments';
@@ -291,8 +291,8 @@ export const ABS_TREASURY_JOURNALS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL
 // stock
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');
 export const ABS_STOCK_SUBCLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_SUBCLASSES_URL].join('/');
-export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_URL].join('/');
 export const ABS_STORE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLES_STORE_URL].join('/');
+export const ABS_USER_STORE_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, USER_STORES_URL].join('/');
 export const ABS_STOCK_STORES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_STORES_URL].join('/');
 export const ABS_STOCK_INVENTORY_ENTRY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_ENTRY_URL].join('/');
 export const ABS_STOCK_INVENTORY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_URL].join('/');
@@ -348,6 +348,7 @@ export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_UR
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
+export const ABS_LOGISTICS_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOGISTICS_ARTICLES_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');

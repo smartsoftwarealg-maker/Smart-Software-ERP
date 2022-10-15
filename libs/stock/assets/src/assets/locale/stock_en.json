@@ -53,5 +53,6 @@
     "FIX": "Fix anomalies",
     "PERCENTAGE":  "Percentage",
     "TRANSFERS":   "Transfers",
-    "TRANSFER_RECEPTIONS": "Transfer receptions"
+    "TRANSFER_RECEPTIONS": "Transfer receptions",
+    "USER_STORES": "User stores"
 }

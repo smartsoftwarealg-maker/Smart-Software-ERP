@@ -24,7 +24,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     public canDeactivate(): Observable<boolean> {
-        console.log(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent'));
         const parent = +(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
         return this.id === 0 || parent === this.id?
             of(true) :
@@ -38,5 +37,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                         }
                     }),
                     switchMap(res => res.dirty? of(false): super.canDeactivate()));
+     }
+
+     readForm(): Transaction {
+         return this.form.getRawValue();
      }
 }

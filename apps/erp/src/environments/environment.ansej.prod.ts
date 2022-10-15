@@ -1,6 +1,6 @@
 import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {organizationsNavTree} from '../app/organizations/side-nav-tree';
-import {logAdminNavTree} from '../app/logistics-admin/side-nav-tree';
+import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
 import {purchasesNavTree} from '../app/purchases/side-nav-tree';
 import {stockNavTree} from '../app/stock/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
@@ -42,10 +42,10 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
-    logAdminNavTree,
+    logisticsAdminNavTree,
+    contractsNavTree,
     purchasesNavTree,
     stockNavTree,
-    contractsNavTree,
     financeNavTree,
     hrNavTree,
     missionsNavTree,

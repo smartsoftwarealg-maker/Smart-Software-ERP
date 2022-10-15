@@ -26,13 +26,14 @@ import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
 })
 export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction> {
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
-    private importBtn: ToolbarButton = {
+
+    private importContractBtn: ToolbarButton = {
         disabled: false,
-        icon: 'fas fa-file-import',
+        icon: 'fa-solid fa-file-arrow-up',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        label: 'LOGISTICS_IMPORT_CONTRACT',
         visible: true,
-        click: () => this.importDocument(),
+        click: () => this.importContract(),
     }
     private order: Transaction = null;
     public isManager = false;
@@ -67,7 +68,7 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.addButton(this.importBtn);
+        this.shellSrv.addButton(this.importContractBtn);
     }
 
     public setupForm(form: Transaction) {
@@ -110,8 +111,8 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         return form;
     }
 
-    private importDocument() {
-        if (!this.importBtn.disabled) {
+    private importContract() {
+        if (!this.importContractBtn.disabled) {
             this.orderService
                 .consumeContract(this.id)
                 .pipe(switchMap(_ => this.orderList? this.orderList.loadDetailLines() : of(null)))

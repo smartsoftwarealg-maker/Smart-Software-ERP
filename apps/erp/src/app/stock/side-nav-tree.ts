@@ -1,7 +1,7 @@
 import {
     ABS_STOCK_ACCOUNT_URL,
     ABS_STOCK_AGENT_URL,
-    ABS_STOCK_ARTICLES_URL,
+    ABS_LOGISTICS_ARTICLES_URL,
     ABS_STOCK_COST_CENTER_URL,
     ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_INVENTORY_EXIT_URL,
@@ -11,7 +11,11 @@ import {
     ABS_INVENTORY_ANOMALIES_URL,
     ABS_STOCK_INVENTORY_URL,
     ABS_STOCK_REPORTS_URL,
-    ABS_STOCK_DASHBOARD_URL, ABS_STOCK_TRANSFER_URL, ABS_STOCK_TRANSFER_RECEPTION_URL, ABS_LOGISTICS_AGENT_URL
+    ABS_STOCK_DASHBOARD_URL,
+    ABS_STOCK_TRANSFER_URL,
+    ABS_STOCK_TRANSFER_RECEPTION_URL,
+    ABS_LOGISTICS_AGENT_URL,
+    ABS_USER_STORE_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -23,7 +27,7 @@ export const stockNavTree: SideNavNode = {
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
-            route: ABS_STOCK_ARTICLES_URL,
+            route: ABS_LOGISTICS_ARTICLES_URL,
             accessRights: 'Article'
         },
         {
@@ -61,6 +65,12 @@ export const stockNavTree: SideNavNode = {
             icon: 'fas fa-pallet',
             route: ABS_STORE_ASSIGNMENT_URL,
             accessRights: 'Store'
+        },
+        {
+            name: 'STOCK_USER_STORES',
+            icon: 'fa-sharp fa-solid fa-users-medical',
+            route: ABS_USER_STORE_URL,
+            accessRights: 'UserStore'
         },
         {
             name: 'STOCK_INVENTORY',

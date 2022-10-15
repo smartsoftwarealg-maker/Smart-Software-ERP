@@ -27,7 +27,7 @@ export class AssetSearchDialogComponent implements OnInit {
         residualValue: 0,
         useful_life: 0,
         old_depreciation: 0,
-        outof_service: false
+        outOfService: false
     };
     displayedColumns = ['reference', 'description'];
     searchText = new UntypedFormControl();

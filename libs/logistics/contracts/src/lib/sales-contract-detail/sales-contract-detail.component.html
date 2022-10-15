@@ -69,7 +69,7 @@
 <!--<ss-contract-article-main></ss-contract-article-main>-->
 <!--<ss-app-archive-main [id]="id" [appId]="6"></ss-app-archive-main>-->
 
-<mat-accordion>
+<mat-accordion *ngIf="id">
     <mat-expansion-panel #articles
                          expanded="false"
                          [class]="getPanelHeaderClass('articles', articles)"

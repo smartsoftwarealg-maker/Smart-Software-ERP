@@ -1,5 +1,7 @@
 import {ImageModel} from '@ss/common/ui-image-input';
 
+export const USERS_URL = '/users';
+export const STORES_URL = '/stores';
 export const ARTICLES_URL = '/articles';
 export const AVAILABLE_ARTICLES_URL = '/articles/available';
 export const ARTICLE_IMAGE_URL = '/image';
@@ -26,4 +28,11 @@ export interface QtyPrice {
     document: number;
     qty: number;
     price: number;
+}
+
+export interface UserStore {
+    id: number;
+    userId: number;
+    storeId: number;
+    storeDescription?: string;
 }

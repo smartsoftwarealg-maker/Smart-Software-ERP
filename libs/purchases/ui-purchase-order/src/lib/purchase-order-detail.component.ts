@@ -5,7 +5,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {CCGroup, Currency, CurrencyService, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
@@ -18,6 +18,7 @@ import {UserListService} from '@ss/common/api-users';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
 import {PurchaseOrderLinesListComponent} from './purchase-order-lines-list.component';
+import {SalesContractService} from '@ss/logistics/contracts';
 
 @Component({
     selector: 'ss-ui-order-detail',
@@ -25,9 +26,18 @@ import {PurchaseOrderLinesListComponent} from './purchase-order-lines-list.compo
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    @ViewChild(PurchaseOrderLinesListComponent) detail: PurchaseOrderLinesListComponent;
-
     private order: Transaction = null;
+    private importContractBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-file-arrow-up',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_CONTRACT',
+        visible: true,
+        click: () => this.importContract(),
+    }
+
+    @ViewChild(PurchaseOrderLinesListComponent) detail: PurchaseOrderLinesListComponent;
+    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public isManager = false;
     public groups: CCGroup[];
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
@@ -57,7 +67,8 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                 private loginSrv: LoginService,
                 private dialog: MatDialog,
                 private docImportService: DocImportService,
-                private currencySrv: CurrencyService) {
+                private currencySrv: CurrencyService,
+                private projectSrv: SalesContractService) {
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
 
@@ -79,10 +90,11 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         }
         this.order = form;
         this.isManager = this.loginService.appCtx.manager;
+        this.projectSrv.setParentId(form?.agent || 0);
         return this.formBuilder.group({
-            id: [form.id],
+            id: [form.id || 0],
             document: [0],
-            centerId: [0],
+            centerId: [form.centerId || this.loginSrv.appCtx.center],
             date: [form.date, Validators.required],
             number: [form.number],
             reference: [form.reference],
@@ -96,6 +108,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
             currency: [form.currency || 10, Validators.required],
             currencyRate: [form.currencyRate || 1],
             dealer: [{value: form.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager}, Validators.required],
+            project: [form.project],
             agent: [form.agent, Validators.required],
         });
     }
@@ -110,6 +123,7 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         super.ngOnInit();
         this.currencySrv.load().subscribe();
         this.shellSrv.addButton(this.importBtn);
+        this.shellSrv.addButton(this.importContractBtn);
     }
 
     private importDocument() {
@@ -141,6 +155,18 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
                         });
                 }
             });
+        }
+    }
+
+    private importContract() {
+        if (!this.importBtn.disabled) {
+            this.orderService
+                .consumeContract(this.id)
+                .pipe(switchMap(_ => this.detail? this.detail.loadDetailLines() : of(null)))
+                .subscribe(_ => {
+                    this.shellSrv.setLoading(false);
+                    this.snackBarSrv.showSuccessMessage();
+                });
         }
     }
 }
