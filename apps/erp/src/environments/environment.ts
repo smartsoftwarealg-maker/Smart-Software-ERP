@@ -42,6 +42,7 @@ import {
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
+import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -56,9 +57,10 @@ export const navBar = [
     contractsNavTree,
     salesNavTree,
     financeNavTree,
+    hrLookupNavTree,
     hrNavTree,
-    missionsNavTree,
     payrollNavTree,
+    missionsNavTree,
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,

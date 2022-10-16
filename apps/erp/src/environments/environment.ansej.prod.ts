@@ -34,6 +34,7 @@ import {
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
 } from '../app/common';
+import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -47,9 +48,10 @@ export const navBar = [
     purchasesNavTree,
     stockNavTree,
     financeNavTree,
+    hrLookupNavTree,
     hrNavTree,
-    missionsNavTree,
     payrollNavTree,
+    missionsNavTree,
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,

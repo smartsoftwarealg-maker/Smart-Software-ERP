@@ -1,6 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_AMENDMENT_URL, ABS_ARCHIVE_GENERATOR_URL,
+    ABS_AMENDMENT_URL,
+    ABS_ARCHIVE_GENERATOR_URL,
     ABS_CACO_URL,
     ABS_COMMON_REPORTS_URL,
     ABS_DAS_URL,
@@ -11,27 +12,16 @@ import {
     ABS_EXCEL_INJECTION_URL,
     ABS_FIXED_ELEMENTS_URL,
     ABS_FORMULAS_URL,
-    ABS_HR_CATEGORIES_URL,
-    ABS_HR_DEPARTMENTS_URL,
-    ABS_HR_DIPLOMAS_URL,
-    ABS_HR_DIVISIONS_URL,
-    ABS_HR_EDUCATION_LEVELS_URL,
-    ABS_HR_EMPLOYEES_URL,
-    ABS_HR_EMPLOYMENT_TYPE_URL,
-    ABS_HR_MARITAL_STATUS_URL,
-    ABS_HR_NATIONALITIES_URL,
-    ABS_HR_POSTS_URL,
-    ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_INACTIVE_HR_EMPLOYEES_URL,
+    ABS_INACTIVE_HR_EMPLOYEES_URL,
     ABS_INPUT_FILTERS_URL,
     ABS_LOANS_URL,
-    ABS_MISSION_PREPARATION_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
-    ABS_MONTH_SELECTOR_URL, ABS_PAYROLL_DASHBOARD_URL, ABS_PAYROLL_EMPLOYEES_URL,
+    ABS_MONTH_SELECTOR_URL,
+    ABS_PAYROLL_DASHBOARD_URL,
+    ABS_PAYROLL_EMPLOYEES_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
-    ABS_MISSION_TRAJECTORY_URL,
     ABS_VACATION_PLANNING_URL
 } from '../common';
 
@@ -39,59 +29,6 @@ export const payrollNavTree: SideNavNode = {
     name: 'PAYROLL',
     icon: 'fas fa-coins',
     children: [
-        {
-            name: 'COMMON_LOOKUPS',
-            icon: 'fas fa-clipboard-list',
-            children: [
-                {
-                    name: 'COMMON_EMPLOYMENT_TYPES',
-                    icon: 'fas fa-business-time',
-                    route: ABS_HR_EMPLOYMENT_TYPE_URL,
-                    accessRights: 'EmploymentType'
-                },
-                {
-                    name: 'COMMON_SUSPENSION_REASONS',
-                    icon: 'fas fa-user-times',
-                    route: ABS_HR_SUSPENSION_REASON_URL,
-                    accessRights: ''
-                },
-                {
-                    name: 'COMMON_POSTS',
-                    icon: 'fas fa-chair-office',
-                    route: ABS_HR_POSTS_URL
-                },
-                {
-                    name: 'COMMON_MARITAL_STATUS',
-                    icon: 'fas fa-rings-wedding',
-                    route: ABS_HR_MARITAL_STATUS_URL
-                },
-                {
-                    name: 'COMMON_CATEGORIES',
-                    icon: 'fas fa-shapes',
-                    route: ABS_HR_CATEGORIES_URL
-                },
-                {
-                    name: 'COMMON_DIVISIONS',
-                    icon: 'fas fa-puzzle-piece',
-                    route: ABS_HR_DIVISIONS_URL
-                },
-                {
-                    name: 'COMMON_DEPARTMENTS',
-                    icon: 'far fa-building',
-                    route: ABS_HR_DEPARTMENTS_URL
-                },
-                {
-                    name: 'COMMON_SERVICES',
-                    icon: 'fas fa-shapes',
-                    route: ABS_HR_SERVICES_URL
-                },
-                {
-                    name: 'COMMON_NATIONALITIES',
-                    icon: 'fas fa-flag',
-                    route: ABS_HR_NATIONALITIES_URL
-                }
-            ]
-        },
         {
             name: 'PAYROLL_SALARY_GRID',
             icon: 'far fa-game-board',
