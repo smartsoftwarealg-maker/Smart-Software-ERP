@@ -40,6 +40,7 @@ import {
     SHOPPING_CART_APP_URL,
 } from '../app/common';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
+import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -49,19 +50,20 @@ export const navBar = [
     administrationNavTree,
     organizationsNavTree,
     logisticsAdminNavTree,
-    contractsNavTree,
     purchasesNavTree,
     stockNavTree,
+    contractsNavTree,
     salesNavTree,
     financeNavTree,
+    hrLookupNavTree,
     hrNavTree,
-    missionsNavTree,
     payrollNavTree,
+    missionsNavTree,
+    webArchNavTree,
     accountingNavTree,
     assetsNavTree,
     treasuryNavTree,
     dashboardNavTree,
-    webArchNavTree,
     scheduledSalesNavTree,
     shoppingCartNavTree
 ];

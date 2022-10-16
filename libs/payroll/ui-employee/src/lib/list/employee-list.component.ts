@@ -49,7 +49,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         public httpSrv: HttpService,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
-        this.pagination.pageSize = 15;
+        this.pagination.pageSize = 10;
         this.route.data.subscribe(data => {
             this.activePersonnel = !!data.active
             this.employeeSrv.setMode(this.activePersonnel);
