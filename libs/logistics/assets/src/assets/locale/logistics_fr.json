@@ -147,5 +147,9 @@
     "PROJECT_TYPE":    "Type de projet",
     "AWARD_PROCEDURES": "Procédures d'attribution",
     "AWARD_PROCEDURE":  "Procédures d'attribution",
-    "IMPORT_CONTRACT":  "Importer des articles de contrat"
+    "IMPORT_CONTRACT":  "Importer des articles de contrat",
+    "APPID":            "Secteur",
+    "PARTS":            "Pieces",
+    "CEMENT":           "Ciment",
+    "FURNITURE":        "Furniture"
 }

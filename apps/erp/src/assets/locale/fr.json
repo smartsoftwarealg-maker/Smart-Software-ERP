@@ -43,5 +43,6 @@
     "SCHEDULED_SALES": "Ventes programmées",
     "CONTRACTS":       "Contrats",
     "MISSIONS":        "Missions",
-    "SHOPPING-CART":   "Panier"
+    "SHOPPING-CART":   "Panier",
+    "FOOD":            "Food"
 }

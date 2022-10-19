@@ -33,7 +33,7 @@ export class ShoppingCartService extends BaseEntityExtendedService<Cartline> {
             description: item.description,
             qty: item.qty + qty,
             price: item.price,
-            dirty: false
+            validated: false
         };
 
         return this.httpSrv.put(`/cartlines`, newItem);

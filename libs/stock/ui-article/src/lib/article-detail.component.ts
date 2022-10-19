@@ -71,7 +71,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             salesUnit: [a.salesUnit],
             price1: [a.price1 || 0],
             reference: [a.reference, Validators.required],
-            appCode: [a.appCode],
+            appId: [a.appId || this.articleSrv.getParentId()],
             notForSale: [a.notForSale || false, Validators.required],
             vat: [a.vat]
         });

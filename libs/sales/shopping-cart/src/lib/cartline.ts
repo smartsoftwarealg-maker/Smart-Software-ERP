@@ -2,6 +2,7 @@ import {ImageModel} from "@ss/common/ui-image-input";
 
 export const CART_URL = '/cart';
 export const CARTLINES_URL = '/cartlines';
+
 export interface Cartline {
     id: number;
     cartId: number;
@@ -11,7 +12,7 @@ export interface Cartline {
     qty: number;
     price: number;
     mark?: string;
-    dirty: boolean;
+    validated: boolean;
     imageModel?: ImageModel;
 }
 
@@ -21,5 +22,5 @@ export interface Cart {
     agentId: number;
     shopDate: Date;
     validated: boolean;
-    processed: boolean
+    processed: boolean;
 }

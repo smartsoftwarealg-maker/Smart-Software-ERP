@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+.top-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.confirmation {
+    display: flex;
+    gap: 10px;
+    align-self: center;
+}
+
+.mat-column-actions {
+    min-width: 140px;
+    padding: 0 5px;
+}
+
+.mat-column-qty {
+    max-width: 50px;
+}
+
+.mat-column-price {
+    max-width: 90px;
+}
+
+.header-div {
+    padding: 8px;
+    display: flex;
+    flex-flow: row;
+    gap: 32px;
+}
+
+.total-div {
+    display: flex;
+    gap: 8px;
+}
+
+.shop-btn {
+    margin-left: auto;
+    display: flex;
+    gap: 1em;
+    font-size: 0.75em;
+    font-weight: bolder;
+}
+
+div span {
+    font-weight: bold;
+}
+
+.layout {
+    width: min(96%, 1200px);
+    margin: 0 auto;
+}

@@ -1,4 +1,9 @@
-@import "../../../../common/assets/src/assets/main-container";
+.main-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 
 // keep the material design specs
 .mat-row, .mat-header-row {

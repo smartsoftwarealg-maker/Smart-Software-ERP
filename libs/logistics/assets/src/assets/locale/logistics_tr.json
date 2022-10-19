@@ -141,5 +141,9 @@
     "PLATE_NUMBER":    "",
     "AWARD_PROCEDURES": "",
     "AWARD_PROCEDURE":  "",
-    "IMPORT_CONTRACT":  ""
+    "IMPORT_CONTRACT":  "",
+    "APPID":            "Sector",
+    "PARTS":            "Parts",
+    "CEMENT":           "",
+    "FURNITURE":        ""
 }

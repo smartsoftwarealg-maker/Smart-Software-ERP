@@ -4,12 +4,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
 import {Mark, Unit} from '@ss/common/api-lookup';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Observable, of, zip} from 'rxjs';
+import {Observable, of, tap, zip} from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {FormControl} from '@angular/forms';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-article-list',
@@ -17,6 +19,7 @@ import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
     templateUrl: './article-list.component.html'
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
+    filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
     displayedColumns = [
         'image',
@@ -59,6 +62,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
     }
 
     ngOnInit() {
+        super.ngOnInit();
         zip(this.lookupsSrv.getMarks(),
             this.lookupsSrv.getUnits(),
             this.lookupsSrv.getVats())
@@ -67,6 +71,15 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
                 this.units = res[1];
                 this.vats = res[2];
             });
-        super.ngOnInit();
+        this.subscriptions.push(
+            this.filterCtrl
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(id => {
+                this.articleSrv.setParentId(id);
+                this.refresh();
+            }));
     }
 }

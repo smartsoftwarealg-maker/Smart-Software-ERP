@@ -21,6 +21,7 @@ export class AppArchiveListComponent implements OnInit {
     data: AppArchive[] = [];
     paginator = PaginationModel.newInstance();
     pdfSrc: string = null;
+    displayedColumns = ['docDescription', 'filename'];
 
     @Input() editable = true;
 

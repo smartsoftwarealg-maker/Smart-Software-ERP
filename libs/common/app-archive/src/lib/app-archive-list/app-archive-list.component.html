@@ -26,15 +26,27 @@
         </div>
 
         <div class="list_div">
-            <mat-list role="list">
-                <mat-list-item role="listitem"
-                               *ngFor="let d of data"
-                               class="selectable"
-                               [class.selected]="d.id == selectedId"
-                               (click)="select(d)">
-                    {{ d.docDescription}}
-                </mat-list-item>
-            </mat-list>
+            <mat-table mat-table [dataSource]="data" class="main-table">
+
+                <ng-container matColumnDef="filename">
+                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.filename}}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="docDescription">
+                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{e.docDescription}}
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
         </div>
     </div>
 

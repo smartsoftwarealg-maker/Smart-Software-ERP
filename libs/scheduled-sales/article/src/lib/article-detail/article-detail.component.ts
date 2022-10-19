@@ -87,7 +87,7 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
             aType: [a.aType],
             price1: [a.price1 || 0],
             discount: [a.discount || 0, [Validators.max(50), Validators.min(0)]],
-            appId: [1],
+            appId: [a.appId || 1],
             blocked: [a.blocked || false],
             discountable: [a.discountable || false],
             accountNo: [a.accountNo],

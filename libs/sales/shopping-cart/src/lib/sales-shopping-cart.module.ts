@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShoppingCartComponent } from './shopping-cart.component';
+import { ShoppingCartComponent } from './shopping-cart-list/shopping-cart.component';
 import {MaterialModule} from "@ss/common/api-common";
 import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
