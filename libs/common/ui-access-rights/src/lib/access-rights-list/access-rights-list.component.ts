@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {
     AccessRight,
-    Language,
     LanguageService,
     LoginService,
     PaginatorPersistenceService,

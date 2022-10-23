@@ -29,7 +29,8 @@ export class AppArchiveListComponent implements OnInit {
                 private snackBarSrv: SnackBarService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService) {}
+                private confirmationSrv: ConfirmationDialogService) {
+    }
 
 
     ngOnInit(): void {
@@ -40,9 +41,9 @@ export class AppArchiveListComponent implements OnInit {
                 const docId = +params.get('documentId') || 0;
                 const agentId = +params.get('agentId') || 0;
                 this.entitySrv.setParentId(docId || agentId);
-                this.entitySrv.appId = +params.get('appId') || 0;
+                this.entitySrv.appId = +params.get('appId') || this.entitySrv.appId;
                 }),
-                  switchMap(_ => this.route.parent.parent.params),
+                switchMap(_ => this.route.parent.parent.params),
                 tap(params => {
                     this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
                     this.entitySrv.setParentId(this._id);
@@ -91,6 +92,7 @@ export class AppArchiveListComponent implements OnInit {
                                     next: () => {
                                         this.snackBarSrv.showSuccessMessage();
                                         this.data = this.data.filter(e => e.id !== a.id);
+                                        this.imgSrc = null;
                                     },
                                     error: err => {
                                         this.snackBarSrv.showFailureMessage();

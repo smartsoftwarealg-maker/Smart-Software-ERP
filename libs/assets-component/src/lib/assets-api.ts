@@ -173,6 +173,7 @@ export interface AssetReception {
     creatorName?: string;
     modifierName?: string;
     requesterName?: string;
+    memo?: string;
 }
 
 export interface ASSAppointmentHeader {

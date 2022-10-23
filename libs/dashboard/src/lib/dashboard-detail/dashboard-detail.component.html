@@ -1,30 +1,32 @@
-<form *ngIf="form" novalidate [formGroup]="form" >
+<form *ngIf="form" novalidate [formGroup]="form">
 
-    <mat-form-field class="default-50">
-        <mat-label translate>COMMON_APPLICATIONS</mat-label>
-        <mat-select formControlName="appId" required>
-            <mat-option *ngFor="let a of applications | async" [value]="a.id"> {{ a.description }} </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class="input_ctrl">
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_APPLICATIONS</mat-label>
+            <mat-select formControlName="appId" required>
+                <mat-option *ngFor="let a of applications | async" [value]="a.id"> {{ a.description }} </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field class="default-50">
-        <mat-label translate>COMMON_DESCRIPTION</mat-label>
-        <input matInput formControlName="description" type="text" required>
+        <mat-form-field class="default-100">
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text" required>
 
-        <mat-error
-            *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
-        </mat-error>
+            <mat-error
+                *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
 
-    </mat-form-field>
+        </mat-form-field>
+    </div>
 
-
-    <mat-form-field class="default-100">
-        <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
-        <textarea matInput formControlName="query" type="text" rows="40"></textarea>
-        <mat-error
-            *ngIf="form.controls['query'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-        </mat-error>
-    </mat-form-field>
-
+    <div class="query_div">
+        <mat-form-field class="default-100 query_div">
+            <mat-label translate>COMMON_DASHBOARD_QUERY</mat-label>
+            <textarea matInput formControlName="query" type="text" rows="30"></textarea>
+            <mat-error
+                *ngIf="form.controls['query'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+            </mat-error>
+        </mat-form-field>
+    </div>
 
 </form>

@@ -13,11 +13,17 @@
     flex-grow: 1;
     overflow-y: auto;
 }
+
 .pagination-container {
     flex-grow: 0;
 }
+
 .main-table {
     width: 1400px;
+}
+
+.sold {
+    opacity: 60%;
 }
 
 .mat-column-beneficiary,

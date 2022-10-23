@@ -12,16 +12,17 @@
     <mat-form-field id="reference2" class="default-25 sm-50">
         <mat-label>
             <spna translate>COMMON_REFERENCE</spna>
-            2
         </mat-label>
         <input matInput formControlName="reference2" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
+
     <mat-form-field id="description" class="default-50 sm-100">
         <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
         <input matInput formControlName="description" type="text" required>
         <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>
+
     <mat-form-field id="serial_no" class="default-50 sm-100">
         <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
         <input matInput formControlName="serial_no" type="text" maxlength="20">
@@ -207,6 +208,7 @@
                        matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
                 </div>
             </mat-form-field>
+
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
                 <ss-date-picker formControlName="receptionDate"></ss-date-picker>

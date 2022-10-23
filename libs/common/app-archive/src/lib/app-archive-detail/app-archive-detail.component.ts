@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AppArchiveService} from '../app-archive.service';
-import {of, switchMap, zip} from 'rxjs';
+import {concatMap, from, of, switchMap, zip} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {tap} from 'rxjs/operators';
@@ -63,17 +63,27 @@ export class AppArchiveDetailComponent implements OnInit {
 
     private upload() {
         const formData = new FormData();
-        formData.append('file', this.uploadUtil.selectedFile);
+        let rawValue = this.form.getRawValue();
         formData.append('description', this.form.value.description);
         formData.append('filename', 'file');
-        formData.append('id', this.form.value.id);
+        formData.append('id', rawValue.id);
+        formData.append('app_id', rawValue.appId);
+        formData.append('document_id', rawValue.documentId);
+        formData.append('obj_id', rawValue.objId);
         this.uploadUtil.loadingRate = 0;
-        this.service
-            .upsert(this.form.value.id, formData)
-            .subscribe(res => {
-                this.snackBarSrv.showSuccessMessage();
-                this.form.reset();
-                this.onCancel();
+        formData.append('file', this.uploadUtil.selectedFile);
+
+        from(this.uploadUtil.fileList)
+            .pipe(concatMap(f => {
+                formData.delete('file');
+                formData.append('file', f);
+                return this.service.upsert(this.form.value.id, formData);
+            })).subscribe({
+                complete: () => {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.form.reset();
+                    this.onCancel();
+                }
             });
     }
 
@@ -93,5 +103,4 @@ export class AppArchiveDetailComponent implements OnInit {
         } : {};
         this.router.navigate(['..'], {relativeTo: this.route, queryParams: params}).then();
     }
-
 }

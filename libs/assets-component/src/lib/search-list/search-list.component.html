@@ -26,22 +26,40 @@
                 <mat-error *ngIf="form.controls['serialNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
-                                  [model]="supplierAutoCompleteModel"
+                                  [model]="supplierLookup"
                                   formControlName="supplier">
                 </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
+                <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="beneficiaryLookup"
+                                  formControlName="beneficiary">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
                 <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-25 sm-50">
-                <mat-label translate>ASSET_SERVICE_DATE</mat-label>
+                <mat-label> {{ 'ASSET_ACQUISITION_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
+                <ss-date-picker formControlName="acquisitionDateTo"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_FROM' | translate }}</mat-label>
                 <ss-date-picker formControlName="serviceDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label> {{ 'ASSET_SERVICE_DATE' | translate }}, {{ 'COMMON_TO' | translate }}</mat-label>
+                <ss-date-picker formControlName="serviceDateTo"></ss-date-picker>
             </mat-form-field>
 
             <mat-form-field class="default-25 sm-50">

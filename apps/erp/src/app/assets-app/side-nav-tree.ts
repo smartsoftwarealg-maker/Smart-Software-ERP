@@ -1,7 +1,5 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_ACC_ACCOUNT_URL,
-    ABS_ACC_ASSET_ACCOUNT_URL,
     ABS_ASSET_ACCOUNT_URL,
     ABS_ASSET_ACTIVITY,
     ABS_ASSET_APPOINTMENT_DOC_URL,
@@ -22,7 +20,8 @@ import {
     ABS_ASSET_REVALUATION_TYPES,
     ABS_ASSET_STATUS_TYPES,
     ABS_ASSETS_AGENT_URL,
-    ABS_ASSET_MARKS_URL
+    ABS_ASSET_MARKS_URL,
+    ABS_ASSET_DASHBOARD_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -149,6 +148,11 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-tools',
             route: ABS_ASSET_OPTIONS_URL,
             accessRights: 'AssetOption'
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_ASSET_DASHBOARD_URL,
         },
         {
             name: 'COMMON_REPORTS',

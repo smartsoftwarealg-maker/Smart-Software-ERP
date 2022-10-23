@@ -32,7 +32,7 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL, docInfoRoutes
+    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -88,6 +88,7 @@ import {
     AssetAccountsDetailComponent,
     AssetAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
+import {DashboardComponent} from '@ss/dashboard';
 
 export const mainRoutes: Routes = [
     {
@@ -545,6 +546,11 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

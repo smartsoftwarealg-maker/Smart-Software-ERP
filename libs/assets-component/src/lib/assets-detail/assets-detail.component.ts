@@ -59,17 +59,16 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     ];
 
     isEditable = true;
-    markAutoCompleteModel = new DefaultAutoCompleteModel(this.markSrv);
-    classAutoCompleteModel = new DefaultAutoCompleteModel(this.classSrv);
-    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
-    // supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
-    accountAutoCompleteModel  = new AccountAutocompleteModel(this.accountSrv);
-    ccAutoCompleteModel  = new DefaultAutoCompleteModel(this.costCenterSrv);
-    officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
-    requesterLookup          = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    beneficiaryLookup        = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    customerAutoCompleteModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
-    receptionLookup = new ReceptionAutoComplete(this.receptionSrv);
+    markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
+    classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
+    statusAutoCompleteModel    = new DefaultAutoCompleteModel(this.statusSrv);
+    accountAutoCompleteModel   = new AccountAutocompleteModel(this.accountSrv);
+    ccAutoCompleteModel        = new DefaultAutoCompleteModel(this.costCenterSrv);
+    officeAutoCompleteModel    = new OfficeAutoComplete(this.officeSrv);
+    requesterLookup            = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    beneficiaryLookup          = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    customerAutoCompleteModel  = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
+    receptionLookup            = new ReceptionAutoComplete(this.receptionSrv);
     accountantDepreciation: Depreciation[] = [];
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
@@ -124,7 +123,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             reference2: [b.reference2 || this.maxReference, ref2Validators],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
-            serviceDate: [b.serviceDate || today, Validators.required],
+            serviceDate: [b.serviceDate || today],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
             historicValue: [b.historicValue || 0, Validators.required],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
@@ -157,7 +156,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             old_depreciation: [b.old_depreciation || 0, Validators.required],
             outOfService: [b.outOfService || false, Validators.required],
             startYear:   [b.startYear || 0],
-            assetClass:  [b.assetClass],
+            assetClass:  [b.assetClass, Validators.required],
             status:      [b.status],
             receptionId: [b.receptionId],
             orderNumber: [{ value: b.orderNumber, disabled: true }],
@@ -173,6 +172,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             site:           [{ value: b.site, disabled: true }],
             building:       [{ value: b.building, disabled: true }],
         });
+        if (!this.isAQS) {
+            this.form.controls['assetClass'].clearValidators();
+        }
         if (b.id) {
             this.maxReference = b.reference2;
             this.detailSrv.getDepreciation(b.id)
@@ -346,6 +348,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             }
             this.form.get('orderDate').setValue(r.orderDate);
             this.form.get('orderNumber').setValue(r.orderNumber);
+            this.form.get('receptionDate').setValue(r.receptionDate);
 
             this.form.get('deliveryDate').setValue(r.deliveryDate);
             this.form.get('deliveryNumber').setValue(r.deliveryNumber);

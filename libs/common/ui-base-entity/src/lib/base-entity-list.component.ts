@@ -124,6 +124,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         // this.editButton.visible = rights.edit;
         this.addButton.visible = rights.write;
         this.deleteButton.visible = rights.delete;
+        this.editButton.icon = rights.edit? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
+        this.editButton.label = rights.edit? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);

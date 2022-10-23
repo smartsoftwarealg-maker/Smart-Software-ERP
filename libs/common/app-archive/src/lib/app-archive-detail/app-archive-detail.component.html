@@ -13,6 +13,7 @@
             <input type="file"
                    #fileInput
                    style="display: none"
+                   multiple
                    (change)="uploadUtil.onFileSelected($event)">
 
             <input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
@@ -29,7 +30,7 @@
                     <i class="fas fa-undo"></i>
                 </button>
 
-                <button mat-mini-fab (click)="fileInput.click()" color="warn" *ngIf="form?.value?.id" type="button">
+                <button mat-mini-fab (click)="fileInput.click()" color="warn" type="button">
                     <i class="fas fa-upload"></i>
                 </button>
             </div>

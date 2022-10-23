@@ -134,7 +134,7 @@ export class HttpService {
             .httpClient
             .get(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({sstimeout: timeout + ''}),
+                    headers: HttpService.getHeaders(),
                     observe: 'response',
                     responseType: 'blob',
                     params: httpParams

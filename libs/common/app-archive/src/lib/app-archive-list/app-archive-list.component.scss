@@ -4,11 +4,12 @@
     margin: 8px 0;
 }
 .tool_bar {
-    width: 80%;
+    width: 100%;
     display: flex;
     gap: 1em;
-    justify-content: flex-start;
     margin: 0 auto;
+    padding: 4px;
+    box-sizing: border-box;
 }
 .title {
     flex: 1 1 200px;
@@ -22,28 +23,33 @@
 }
 
 .content_div {
-    flex: 1 1 30%;
+    flex: 1 1 50%;
     height: 100%;
-    max-width: 30%;
+    max-width: 50%;
     min-height: 70%;
 }
 
 .list_div {
     overflow-y: auto;
-    flex: 1 1 30%;
+    flex: 1 1 40%;
     width: 100%;
+    overflow-x: auto;
 }
 
+.mat-column-filename,
+.mat-column-docDescription {
+    flex: 1 1 150px;
+}
 
+.main-table {
+    width: min(370px, 100%);
+}
 .imj {
-    flex: 2 1 60%;
-    width: min(100%, 400px);
-    height: min(100%, 300px);
+    flex: 2 1 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    flex: 2 1 70%;
 }
 
 img {

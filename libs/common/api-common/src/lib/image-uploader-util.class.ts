@@ -1,12 +1,15 @@
 export class ImageUploaderUtil {
     private DUMMY = './assets/img/Dummy.png';
     public selectedFile: File = null;
+    public fileList: File[] = [];
     imgBuff: Uint8Array = null;
     imgSrc: ArrayBuffer | string = this.DUMMY;
     loadingRate = 100;
 
     onFileSelected(event: any) {
         this.selectedFile = event.target.files[0];
+        this.fileList = event.target.files;
+
         const reader = new FileReader();
 
         reader.onload = (ev: any) => {

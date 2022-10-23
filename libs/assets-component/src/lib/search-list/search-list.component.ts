@@ -11,7 +11,7 @@ import {Observable, Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 import {UntypedFormBuilder} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {SupplierService} from '@ss/logistics/api-agent';
+import {ConsumerService, SupplierService} from '@ss/logistics/api-agent';
 import {AssetLocationService} from '../asset-location.service';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -26,6 +26,7 @@ import {HttpParams} from '@angular/common/http';
 })
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
     private EPOCH: Date | null = new Date(0);
+    private FUTURE: Date | null = new Date(9999, 11, 31);
     private DEF_COLS = [
         'reference',
         'description',
@@ -53,20 +54,24 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         'residualValue',
     ];
 
-    supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    beneficiaryLookup = new DefaultAutoCompleteModel(this.beneficiarySrv, 'id', 'denomination');
 
     displayedColumns = this.DEF_COLS;
     form = this.fb.group( {
-        reference:       [''],
-        reference2:      [''],
-        description:     [''],
-        supplier:        [0],
-        accountNo:       [''],
-        serialNo:        [''],
-        acquisitionDate: [this.EPOCH],
-        serviceDate:     [this.EPOCH],
-        acquisitionValue: [0],
-        location:         [0]
+        reference:         [''],
+        reference2:        [''],
+        description:       [''],
+        supplier:          [0],
+        beneficiary:       [0],
+        accountNo:         [''],
+        serialNo:          [''],
+        acquisitionDate:   [this.EPOCH],
+        serviceDate:       [this.EPOCH],
+        acquisitionDateTo: [this.FUTURE],
+        serviceDateTo:     [this.FUTURE],
+        acquisitionValue:  [0],
+        location:          [0]
     });
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
 
@@ -77,8 +82,9 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
                 public override router: Router,
                 public override defReportSrv: DefaultReportService,
                 public override confirmationSrv: ConfirmationDialogService,
-                private supplierSrv: SupplierService,
                 public override pagPersistSrv: PaginatorPersistenceService,
+                private beneficiarySrv: ConsumerService,
+                private supplierSrv: SupplierService,
                 private isParamSrv: IsParamService,
                 private locationSrv: AssetLocationService,
                 private officeSrv: OfficeService,
