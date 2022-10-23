@@ -6,12 +6,12 @@
     </div>
 
     <div>
-        <div *ngIf="data[0]?.dirty; else notConfirmed" class="confirmation f-warn">
+        <div *ngIf="data[0]?.validated; else notConfirmed" class="confirmation f-warn">
             <button mat-raised-button
                     color="warn"
                     (click)="confirm(true)"
                     [matTooltip]="langSrv.translate('COMMON_CONFIRM')">
-                <span translate>COMMON_NOT_CONFIRMED</span> &nbsp;
+                <span translate>COMMON_CONFIRMED</span> &nbsp;
                 <i class="fas fa-check-square"></i>
             </button>
         </div>
@@ -22,7 +22,7 @@
                         color="accent"
                         (click)="confirm(false)"
                         [matTooltip]="langSrv.translate('COMMON_UNCONFIRM')">
-                    <span translate>COMMON_CONFIRMED</span> &nbsp;
+                    <span translate>COMMON_NOT_CONFIRMED</span> &nbsp;
                     <i class="fas fa-times-circle"></i>
                 </button>
             </div>

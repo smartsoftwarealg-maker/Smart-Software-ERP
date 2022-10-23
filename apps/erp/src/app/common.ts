@@ -38,6 +38,7 @@ export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
 export const SHOPPING_CART_APP_URL = 'scart';
+export const FOOD_CART_APP_URL = 'food';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -74,6 +75,10 @@ export const ORGANIZATIONS_OFFICES_URL = 'offices';
 export const CSPACE_CART_URL = 'cart';
 export const CSPACE_CARTDETAIL_URL = 'cartdetail';
 export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
+
+//Food
+export const FOOD_CART_URL       = 'cart';
+export const FOOD_CARTDETAIL_URL = 'cartdetail';
 
 
 // Stock
@@ -316,7 +321,9 @@ export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_
 // cspace
 export const ABS_CUSTOMER_PROFILE = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, COMMON_CUSTOMER_PROFILE_URL].join('/');
 export const ABS_CART = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, CSPACE_CART_URL].join('/');
-export const ABS_CART_DETAIL = '/' + [MAIN_PAGE_URL, SHOPPING_CART_APP_URL, CSPACE_CARTDETAIL_URL].join('/');
+
+// food
+export const ABS_FOOD = '/' + [MAIN_PAGE_URL, FOOD_CART_APP_URL, FOOD_CART_URL].join('/');
 
 //Accounting
 export const ABS_POLICIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_POLICIES_URL].join('/');
@@ -447,6 +454,7 @@ export const ABS_ASSET_BUILDINGS     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASS
 export const ABS_ASSET_ACCOUNT_URL   = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_ACCOUNT_URL].join('/');
 export const ABS_ASSET_MARKS_URL     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_MARKS_URL].join('/');
 export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
+export const ABS_ASSET_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, DASHBOARD_URL].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

@@ -1,35 +1,32 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {
     HttpService,
     LanguageService,
     LoginService,
-    PaginationModel,
     PaginatorPersistenceService
-} from "@ss/common/api-common";
-import {Cart, Cartline} from "../cartline";
-import {LookupsService, MarkService} from "@ss/common/api-lookup";
-import {ShoppingCartService} from "../shopping-cart.service";
-import {Article, ArticleService} from "@ss/stock/api-article";
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {DefaultReportService} from "@ss/common/ui-default-report-component";
+} from '@ss/common/api-common';
+import {Cart, Cartline} from '../cartline';
+import {LookupsService, MarkService} from '@ss/common/api-lookup';
+import {ShoppingCartService} from '../shopping-cart.service';
+import {ArticleService} from '@ss/stock/api-article';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
-import {ImageModel} from "@ss/common/ui-image-input";
-import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
-import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
+import {ImageModel} from '@ss/common/ui-image-input';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 
 @Component({
   selector: 'ss-shopping-cart-detail',
   templateUrl: './shopping-cart-detail.component.html',
-  styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart.component.scss']
+  styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart-list/shopping-cart.component.scss']
 })
 export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartline> {
     private subscription: Subscription = null;
     private isHandset: Observable<BreakpointState> = null;
-    public readonly pagination = PaginationModel.newInstance();
     public cartTotal = 0.0;
-    public lastItem: Cartline = null;
     public isSmallScreen = false;
 
     private LONG = [
@@ -147,7 +144,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        l.dirty = dirty;
+                        l.validated = dirty;
                     } else {
                         this.snackBarSrv.showFailureMessage();
                     }

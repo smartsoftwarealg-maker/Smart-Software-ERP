@@ -10,16 +10,8 @@ import {AppArchiveListComponent} from '../app-archive-list/app-archive-list.comp
 })
 export class AppArchiveMainComponent implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
-    private _id = 0;
-    private _docId = 0;
-    private _appId = 0;
-    private _agentId = 0;
 
-    constructor(private archiveSrv: AppArchiveService,
-                private route: ActivatedRoute,
-                private router: Router) { }
-
-
+    constructor(private archiveSrv: AppArchiveService,  private route: ActivatedRoute) { }
 
     private refresh() {
         if (this.outlet && this.outlet.isActivated && this.outlet.component) {
@@ -32,27 +24,28 @@ export class AppArchiveMainComponent implements OnInit {
 
     @Input()
     set id(objectId: number) {
-        this._id = objectId;
+        this.archiveSrv.setParentId(objectId);
         this.refresh();
     }
 
     @Input()
     set appId(id: number) {
         this.archiveSrv.appId = id;
+        this.refresh();
     }
 
     get id() {
-        return this._id;
+        return this.archiveSrv.getParentId();
     }
 
     ngOnInit(): void {
         this.route.queryParamMap.subscribe(param => {
-            const docId = +param.get('documentId') | 0;
-            const agentId = +param.get('agentId') | 0;
-            this._appId = +param.get('appId') | 0;
-            this.archiveSrv.appId = this._appId;
-            this._id = docId || agentId;
-            this.archiveSrv.setParentId(this._id);
+            const docId = +param.get('documentId') || 0;
+            const agentId = +param.get('agentId') || 0;
+            const appId = +param.get('appId') || 0;
+            this.archiveSrv.appId = this.archiveSrv.appId || appId;
+            const id = (docId || agentId) || 0;
+            this.archiveSrv.setParentId(id);
         });
     }
 }

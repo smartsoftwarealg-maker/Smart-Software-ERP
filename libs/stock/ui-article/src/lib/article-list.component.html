@@ -1,4 +1,17 @@
 <div class="main-container">
+    <mat-form-field class="default-50">
+        <mat-label translate>LOGISTICS_APPID</mat-label>
+        <mat-select [formControl]="filterCtrl">
+            <mat-option [value]="0"></mat-option>
+            <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>
+            <mat-option [value]="2"> {{'LOGISTICS_PARTS'|translate}} </mat-option>
+            <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>
+            <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="main-container">
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table">
 

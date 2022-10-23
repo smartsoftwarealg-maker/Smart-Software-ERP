@@ -38,11 +38,14 @@ import {
     SCHEDULED_SALES_APP_URL,
     STOCK_APP_URL,
     TREASURY_APP_URL,
-    WEBARCH_APP_URL, SHOPPING_CART_APP_URL
+    WEBARCH_APP_URL,
+    SHOPPING_CART_APP_URL,
+    FOOD_CART_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
+import {foodNavTree} from '../app/food/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -67,7 +70,8 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
-    shoppingCartNavTree
+    shoppingCartNavTree,
+    foodNavTree
 ];
 
 export const langAssets = [
@@ -102,6 +106,10 @@ export const appRoutes: Routes =  [
     {
         path: SHOPPING_CART_APP_URL,
         loadChildren: () => import('../app/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
+    },
+    {
+        path: FOOD_CART_APP_URL,
+        loadChildren: () => import('../app/food/food.module').then(m => m.FoodCartModule)
     },
     {
         path: ACCOUNTING_APP_URL,

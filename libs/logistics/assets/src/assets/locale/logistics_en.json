@@ -148,5 +148,9 @@
     "PROJECT_TYPE":    "Project type",
     "AWARD_PROCEDURES": "Award procedures",
     "AWARD_PROCEDURE": "Award procedure",
-    "IMPORT_CONTRACT":  "Import contract articles"
+    "IMPORT_CONTRACT":  "Import contract articles",
+    "APPID":            "Sector",
+    "PARTS":            "Parts",
+    "CEMENT":           "Concrete",
+    "FURNITURE":        "Furniture"
 }

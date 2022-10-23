@@ -9,8 +9,8 @@ import {LookupsService, MarkService} from "@ss/common/api-lookup";
 import {HttpService, PaginationModel, PaginatorPersistenceService} from "@ss/common/api-common";
 import {ImageModel} from '@ss/common/ui-image-input';
 import {Observable, of, switchMap, tap} from 'rxjs';
-import {ShoppingCartService} from "./shopping-cart.service";
-import {Cartline} from "./cartline";
+import {ShoppingCartService} from "../shopping-cart.service";
+import {Cartline} from "../cartline";
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -77,7 +77,7 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
             qty: qty,
             price: article.price1,
             description: article.description2,
-            dirty: false
+            validated: false
         };
         if (this.cartTotal + article.price1 <= 1000000) {
             this.cartSrv

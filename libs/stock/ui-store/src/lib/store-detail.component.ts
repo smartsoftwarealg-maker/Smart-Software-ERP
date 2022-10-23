@@ -58,7 +58,7 @@ export class StoreDetailComponent extends BaseEntityDetailComponent<Article> imp
             mark: [a.mark],
             price1: [a.price1, Validators.compose([Validators.required, Validators.min(0.01)])],
             reference: [a.reference, Validators.required],
-            appCode: [a.appCode],
+            appId: [a.appId],
             vat: [a.vat]
         });
     }

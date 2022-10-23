@@ -84,6 +84,16 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_APPID</mat-label>
+                    <mat-select formControlName="appId">
+                        <mat-option [value]="null"> </mat-option>
+                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>
+                        <mat-option [value]="2"> {{'LOGISTICS_FOOD'|translate}} </mat-option>
+                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
                 <div class="default-50 sm-100">
                     <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
                 </div>

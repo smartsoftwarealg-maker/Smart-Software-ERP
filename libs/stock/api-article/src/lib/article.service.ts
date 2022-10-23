@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Article, ARTICLE_IMAGE_URL, ARTICLES_URL, QtyPrice} from './article-api';
+import {APP_URL, Article, ARTICLE_IMAGE_URL, ARTICLES_URL, QtyPrice} from './article-api';
 import {Observable, of} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
@@ -11,7 +11,8 @@ import {HttpService} from '@ss/common/api-common';
 export class ArticleService extends BaseEntityExtendedService<Article> {
 
     constructor(protected httpSrv: HttpService) {
-        super(httpSrv, ARTICLES_URL);
+        super(httpSrv, ARTICLES_URL, APP_URL);
+        this.setParentId(0);
     }
 
     getPPrice(ref: string, storeId: number, transacId: number, id: number): Observable<QtyPrice> {

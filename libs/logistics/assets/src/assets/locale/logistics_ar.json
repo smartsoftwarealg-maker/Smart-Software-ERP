@@ -149,5 +149,9 @@
     "PROJECT_TYPE":    "نوع المشروع",
     "AWARD_PROCEDURES": "إجراءات المنح",
     "AWARD_PROCEDURE":  "إجراء المنح",
-    "IMPORT_CONTRACT":  "مقالات عقد الاستيراد"
+    "IMPORT_CONTRACT":  "مقالات عقد الاستيراد",
+    "APPID":            "قطاع",
+    "PARTS":            "غيار",
+    "CEMENT":           "أسمنت",
+    "FURNITURE":        "أثاث"
 }

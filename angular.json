@@ -172,6 +172,32 @@
         "sales-api-invoice-cancellation": "libs/sales/api-invoice-cancellation",
         "sales-api-sales-order": "libs/sales/api-sales-order",
         "sales-assets": "libs/sales/assets",
+        "sales-food-cart": {
+            "projectType": "library",
+            "root": "libs/sales/food-cart",
+            "sourceRoot": "libs/sales/food-cart/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/sales/food-cart"],
+                    "options": {
+                        "jestConfig": "libs/sales/food-cart/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/sales/food-cart/**/*.ts",
+                            "libs/sales/food-cart/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "sales-shopping-cart": "libs/sales/shopping-cart",
         "sales-ui-delivery": "libs/sales/ui-delivery",
         "sales-ui-delivery-cancellation": "libs/sales/ui-delivery-cancellation",

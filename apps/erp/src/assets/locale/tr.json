@@ -36,5 +36,6 @@
     "RETRY":         "",
     "SCHEDULED_SALES": "",
     "MISSIONS":        "",
-    "SHOPPING-CART":   ""
+    "SHOPPING-CART":   "",
+    "FOOD":            "Food"
 }

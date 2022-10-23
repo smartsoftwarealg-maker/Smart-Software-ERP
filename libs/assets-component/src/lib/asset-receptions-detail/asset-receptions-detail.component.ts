@@ -22,8 +22,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 })
 export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> {
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
-    origSupplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
-    requesterLookup = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
+    origSupplierLookup        = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
+    requesterLookup           = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -56,6 +56,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             deliveryNumber: [b.deliveryNumber],
             invoiceNumber:  [b.invoiceNumber],
             requestDate:    [b.requestDate],
+            memo:           [b.memo],
             orderDate:      [b.orderDate],
             deliveryDate:   [b.deliveryDate],
             invoiceDate:    [b.invoiceDate],

@@ -42,5 +42,6 @@
     "SCHEDULED_SALES": "Scheduled sales",
     "CONTRACTS":       "Contracts",
     "MISSIONS":        "Missions",
-    "SHOPPING-CART":   "Shopping cart"
+    "SHOPPING-CART":   "Shopping cart",
+    "FOOD":            "Food"
 }
