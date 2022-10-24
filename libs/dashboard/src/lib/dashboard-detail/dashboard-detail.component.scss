@@ -1,20 +1,18 @@
 .input_ctrl {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .query_div {
     padding: 8px;
     width: 100%;
-    height: calc(100% - 0px);
-    max-width: 1000px;
+    height: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.open-icon:hover {
-}
-
-
 textarea {
     flex: 1 0 auto;
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: 1.4em;
 }

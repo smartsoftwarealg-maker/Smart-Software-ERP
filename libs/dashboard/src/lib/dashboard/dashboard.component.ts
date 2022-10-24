@@ -6,10 +6,17 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {Observable, of, switchMap, tap} from 'rxjs';
-import {LanguageService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {UntypedFormControl} from '@angular/forms';
+import {
+    APP_ASSET,
+    APP_DASHBOARD, APP_HR, APP_PAYROLL,
+    APP_PURCHASE, APP_SALES, APP_STOCK, getApplicationId,
+    LanguageService,
+    PaginationModel,
+    PaginatorPersistenceService
+} from '@ss/common/api-common';
+import {FormControl, UntypedFormControl} from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {Id} from '@ss/common/ui-auto-complete';
 
@@ -19,17 +26,16 @@ import {Id} from '@ss/common/ui-auto-complete';
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
-    app: string = null;
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     queries: string[] = [];
     detailPagination = PaginationModel.newInstance();
     time = new Date().getTime();
-    toDate      = new UntypedFormControl(new Date());
-    fromDate    = new UntypedFormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
-    agentLookup = new AgentLookupModel(this.agentSrv);
+    toDate              = new UntypedFormControl(new Date());
+    fromDate            = new UntypedFormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
+    agentLookup         = new AgentLookupModel(this.agentSrv);
+    tableWidth          = '1000';
     selectedAgentId: Id = '';
-    tableWidth = '1000';
 
     constructor(public dashboardSrv: DashboardService,
                 public shellSrv: ShellService,
@@ -48,6 +54,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     ngOnInit() {
+        this.dashboardSrv.setParentId(1);
         super.ngOnInit();
         this.editButton.visible = false;
         this.addButton.visible = false;
@@ -107,11 +114,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             });
     }
 
-    processLoadedData(data: Dashboard[]): Observable<Dashboard[]> {
-        const urlList = this.router.url.split('/');
-        this.app = urlList[2];
-        console.log(this.app, data);
-        return this.app === 'dashboard'? of(data) : of(data.filter(d => d.appName === this.app));
+    preload(): Observable<any> {
+        this.dashboardSrv.setParentId(getApplicationId(this.router));
+        return super.preload();
     }
-
 }

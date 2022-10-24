@@ -11,7 +11,7 @@ import {HttpParams} from '@angular/common/http';
 export class DashboardService extends BaseEntityExtendedService<Dashboard> {
 
   constructor(protected httpSrv: HttpService) {
-      super(httpSrv, '/queries');
+      super(httpSrv, '/queries', '/applications');
   }
 
   getHeaders(queryId: number): Observable<Headers> {
