@@ -1,6 +1,9 @@
 
 // in this file define functions and constants only
 
+import {Router} from '@angular/router';
+import {APP_ASSET, APP_DASHBOARD, APP_HR, APP_PAYROLL, APP_PURCHASE, APP_SALES, APP_STOCK} from './constants';
+
 export function ymdToDmy(date: string) {
     if (date) {
         const y = date.substring(0, 4);
@@ -30,7 +33,7 @@ function assertTrue(b: boolean): void {
 }
 
 
-/** 
+/**
       @param month is not 1-based
 */
 function getNumDaysInMonth(year: number, month: number): number {
@@ -39,7 +42,7 @@ function getNumDaysInMonth(year: number, month: number): number {
     return new Date(year, month, 0).getDate();
 }
 
-/** 
+/**
       @param m: month is not 1-based
 */
 function isValidDate(y: number, m: number, d: number): boolean {
@@ -277,6 +280,17 @@ export function strDropUntil(txt: string, token: string) {
     return i > -1 ? txt.substring(i) : '';
 }
 
-export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
+// export const getKeyValue = <U extends keyof T, T extends object>(key: U) => (obj: T) => obj[key];
 
-
+export function getApplicationId(router: Router) {
+    const urlList = router.url.split('/');
+    const app = urlList[2];
+    const parentId = app === 'assets-app'? APP_ASSET:
+        app === 'dashboard'? APP_DASHBOARD:
+            app === 'stock'? APP_STOCK:
+                app === 'HR'? APP_HR:
+                    app === 'payroll'? APP_PAYROLL:
+                        app === 'sales'? APP_SALES:
+                            app === 'purchases'? APP_PURCHASE: 0;
+    return parentId;
+}

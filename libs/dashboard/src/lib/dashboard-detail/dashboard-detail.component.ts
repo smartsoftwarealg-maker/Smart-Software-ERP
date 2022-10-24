@@ -4,10 +4,19 @@ import {Dashboard} from '../dashboard';
 import {DashboardService} from '../dashboard.service';
 import {AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {
+    APP_ASSET,
+    APP_DASHBOARD,
+    APP_HR,
+    APP_PAYROLL,
+    APP_PURCHASE,
+    APP_STOCK,
+    getApplicationId
+} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-dashboard-detail',
@@ -16,6 +25,13 @@ import {LookupsService} from '@ss/common/api-lookup';
 })
 export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboard> implements OnInit {
     applications = this.lookupsSrv.getApplicationList();
+    APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
+        { id: APP_PURCHASE,  description: 'PURCHASES' },
+        { id: APP_STOCK,     description: 'STOCK'     },
+        { id: APP_PAYROLL,   description: 'PAYROLL'   },
+        { id: APP_HR,        description: 'HR'        },
+        { id: APP_ASSET,     description: 'ASSETS'    },
+    ];
 
     constructor(public dashboardSrv: DashboardService,
                 public agentSrv: AgentService,
@@ -24,15 +40,26 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
                 public route: ActivatedRoute,
                 public formBuilder: UntypedFormBuilder,
                 public confirmationSrv: ConfirmationDialogService,
-                public lookupsSrv: LookupsService) {
-        super(dashboardSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DASHBOARD')
+                public lookupsSrv: LookupsService,
+                private router: Router) {
+        super(dashboardSrv,
+              shellSrv,
+              snackBarSrv,
+              route,
+              formBuilder,
+              confirmationSrv,
+              'COMMON_DASHBOARD')
+        if (!this.dashboardSrv.getParentId()) {
+            this.dashboardSrv.setParentId(getApplicationId(this.router));
+        }
     }
+
 
     setupForm(a: Dashboard): UntypedFormGroup {
         return this.formBuilder.group({
             id: [a.id],
             description: [a.description],
-            appId: [a.appId, Validators.required],
+            appId: [a.appId || this.dashboardSrv.getParentId(), Validators.required],
             query: [a.query],
         });
     }
