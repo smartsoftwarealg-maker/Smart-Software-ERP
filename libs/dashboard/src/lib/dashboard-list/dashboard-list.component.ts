@@ -56,7 +56,9 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
             defReportSrv,
             pagPersistSrv,
           'COMMON_DASHBOARD_QUERIES');
-      this.dashboardSrv.setParentId(1);
+      if (!this.dashboardSrv.getParentId()) {
+          this.dashboardSrv.setParentId(1);
+      }
   }
 
   ngOnInit() {
