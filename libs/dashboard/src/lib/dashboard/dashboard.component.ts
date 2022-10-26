@@ -33,6 +33,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     time = new Date().getTime();
     toDate              = new UntypedFormControl(new Date());
     fromDate            = new UntypedFormControl(new Date(this.time - 365 * 24 * 3600 * 1000));
+    consolidated        = new FormControl<boolean>(false);
     agentLookup         = new AgentLookupModel(this.agentSrv);
     tableWidth          = '1000';
     selectedAgentId: Id = '';
@@ -69,21 +70,23 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.dashboardData = [];
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
         if (id) {
             this.shellSrv.setLoading(true);
             this.dashboardSrv
                 .getHeaders(id)
                 .pipe(tap(res => {
-                    this.headers = res.headers;
-                    this.tableWidth = (res.headers.length * 100) + '';
-                }),
+                        this.headers = res.headers;
+                        this.tableWidth = (res.headers.length * 100) + '';
+                    }),
                     switchMap(_ => this.dashboardSrv.getData(
-                          id,
-                          this.detailPagination.page,
-                          this.detailPagination.pageSize,
-                          from,
-                          to,
-                          this.selectedAgentId)))
+                        id,
+                        this.detailPagination.page,
+                        this.detailPagination.pageSize,
+                        from,
+                        to,
+                        this.selectedAgentId,
+                        consolidated)))
                 .subscribe({
                     next: res => {
                         this.dashboardData = res.body;

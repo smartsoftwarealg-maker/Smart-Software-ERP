@@ -13,7 +13,7 @@ import {
     APP_HR,
     APP_PAYROLL,
     APP_PURCHASE,
-    APP_STOCK,
+    APP_STOCK, APP_TREASURY,
     PaginatorPersistenceService
 } from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
@@ -31,10 +31,10 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
                               { id: APP_PAYROLL,   description: 'PAYROLL'   },
                               { id: APP_HR,        description: 'HR'        },
                               { id: APP_ASSET,     description: 'ASSETS'    },
+                              { id: APP_TREASURY,  description: 'TREASURY'  },
                              ];
     applicationCtrl = new FormControl(this.dashboardSrv.getParentId());
     displayedColumns = [
-        'appName',
         'description',
     ];
 

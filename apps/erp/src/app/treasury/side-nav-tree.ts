@@ -1,5 +1,10 @@
 import {SideNavNode} from '@ss/common/api-common';
-import { ABS_TREASURY_AGENT_URL } from '../common';
+import {
+    ABS_ASSET_DASHBOARD_URL,
+    ABS_ASSETS_REPORTS_URL,
+    ABS_TREASURY_AGENT_URL,
+    ABS_TREASURY_DASHBOARD_URL, ABS_TREASURY_REPORTS_URL
+} from '../common';
 import { ABS_TREASURY_CHECKS_URL } from '../common';
 import { ABS_TREASURY_CHECK_BOOKS_URL } from '../common';
 import { ABS_TREASURY_JOURNALS_URL } from '../common';
@@ -33,6 +38,18 @@ export const treasuryNavTree: SideNavNode = {
             icon: 'fas fa-book',
             route: ABS_TREASURY_JOURNALS_URL,
             accessRights: 'Journals'
-        }
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fas fa-calendar-check',
+            route: ABS_TREASURY_DASHBOARD_URL,
+            accessRights: 'Dashboard'
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            route: ABS_TREASURY_REPORTS_URL,
+            accessRights: 'Report'
+        },
     ]
 }

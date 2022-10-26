@@ -2,7 +2,16 @@
 // in this file define functions and constants only
 
 import {Router} from '@angular/router';
-import {APP_ASSET, APP_DASHBOARD, APP_HR, APP_PAYROLL, APP_PURCHASE, APP_SALES, APP_STOCK} from './constants';
+import {
+    APP_ASSET,
+    APP_DASHBOARD,
+    APP_HR,
+    APP_PAYROLL,
+    APP_PURCHASE,
+    APP_SALES,
+    APP_STOCK,
+    APP_TREASURY
+} from './constants';
 
 export function ymdToDmy(date: string) {
     if (date) {
@@ -285,12 +294,16 @@ export function strDropUntil(txt: string, token: string) {
 export function getApplicationId(router: Router) {
     const urlList = router.url.split('/');
     const app = urlList[2];
-    const parentId = app === 'assets-app'? APP_ASSET:
-        app === 'dashboard'? APP_DASHBOARD:
-            app === 'stock'? APP_STOCK:
-                app === 'HR'? APP_HR:
-                    app === 'payroll'? APP_PAYROLL:
-                        app === 'sales'? APP_SALES:
-                            app === 'purchases'? APP_PURCHASE: 0;
-    return parentId;
+    const MAP = new Map<string, number> ([
+        ['dashboard', APP_DASHBOARD],
+        ['stock', APP_STOCK],
+        ['HR', APP_HR],
+        ['payroll', APP_PAYROLL],
+        ['sales', APP_SALES],
+        ['assets-app', APP_ASSET],
+        ['treasury', APP_TREASURY],
+        ['purchases', APP_PURCHASE],
+    ]);
+
+    return MAP.get(app) || 1;
 }

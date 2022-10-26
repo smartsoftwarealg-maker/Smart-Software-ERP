@@ -4,7 +4,7 @@
         <mat-form-field class="default-100">
             <mat-label translate>COMMON_APPLICATIONS</mat-label>
             <mat-select formControlName="appId" required>
-                <mat-option *ngFor="let a of applications | async" [value]="a.id"> {{ a.description }} </mat-option>
+                <mat-option *ngFor="let a of APPLICATIONS" [value]="a.id"> {{ a.description | translate }} </mat-option>
             </mat-select>
         </mat-form-field>
 
