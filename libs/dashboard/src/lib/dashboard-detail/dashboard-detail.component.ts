@@ -14,9 +14,10 @@ import {
     APP_HR,
     APP_PAYROLL,
     APP_PURCHASE,
-    APP_STOCK,
+    APP_STOCK, APP_TREASURY,
     getApplicationId
 } from '@ss/common/api-common';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-dashboard-detail',
@@ -31,6 +32,7 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
         { id: APP_PAYROLL,   description: 'PAYROLL'   },
         { id: APP_HR,        description: 'HR'        },
         { id: APP_ASSET,     description: 'ASSETS'    },
+        { id: APP_TREASURY,  description: 'TREASURY'  },
     ];
 
     constructor(public dashboardSrv: DashboardService,
@@ -62,5 +64,18 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
             appId: [a.appId || this.dashboardSrv.getParentId(), Validators.required],
             query: [a.query],
         });
+
+        this.subscriptions.push(
+            this.form
+                .controls['appId']
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(id => {
+                    this.dashboardSrv.setParentId(id);
+                    this.form.controls['appId'].setValue(id, { onlySelf: true });
+                })
+        );
     }
 }

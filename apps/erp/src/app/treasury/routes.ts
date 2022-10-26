@@ -1,10 +1,18 @@
 import { Routes } from '@angular/router';
-import { TREASURY_AGENT_URL, TREASURY_CHECKS_URL, TREASURY_CHECK_BOOKS_URL, TREASURY_JOURNALS_URL } from '../common';
+import {
+    TREASURY_AGENT_URL,
+    TREASURY_CHECKS_URL,
+    TREASURY_CHECK_BOOKS_URL,
+    TREASURY_JOURNALS_URL,
+    DASHBOARD_URL, COMMON_REPORTS_URL
+} from '../common';
 import { LIST_URL, CanActivateService, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
 import { CheckListComponent, CheckDetailComponent } from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
 import { JournalListComponent, JournalDetailComponent } from '@ss/treasury/ui-journal';
+import {DashboardComponent} from '../../../../../libs/dashboard/src';
+import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
 
 export const mainRoutes: Routes = [
     {
@@ -75,5 +83,16 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
-    }
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        data: {reportBase: 'treasury'},
+        component: ReportViewComponent,
+        canActivate: [CanActivateService]
+    },
 ];

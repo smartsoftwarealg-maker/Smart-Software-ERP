@@ -5,7 +5,7 @@ export const APP_PAYROLL   = 4;
 export const APP_HR        = 5;
 export const APP_ASSET     = 6;
 export const APP_SALES     = 7;
-
+export const APP_TREASURY  = 8;
 
 export const INDEX_PAGE_URL   = 'index';
 export const MAIN_PAGE_URL    = 'app';
