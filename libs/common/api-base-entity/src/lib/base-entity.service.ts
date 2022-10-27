@@ -2,15 +2,16 @@ import {map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
+import {Sort} from '@angular/material/sort';
 
 export class BaseEntityService<T> {
-
+    private _sortColumn: string = null;
     protected parentId: number;
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {}
 
     public getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<T[]> {
-        return this.getList(pageModel.page - 1, pageModel.pageSize, filter, sortBy, extraPrams)
+        return this.getList(pageModel.page - 1, pageModel.pageSize, filter, this._sortColumn, extraPrams)
             .pipe(
                 map(data => {
                     pageModel.elementCount = data.itemCount;
@@ -24,7 +25,7 @@ export class BaseEntityService<T> {
     }
 
     public getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: T[] }> {
-        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
+        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, this._sortColumn, extraPrams);
     }
 
     public excel(filter?: string): Observable<Blob> {
@@ -99,5 +100,9 @@ export class BaseEntityService<T> {
 
     setParentURL(url: string) {
         this.parentUrl = url;
+    }
+
+    set sortColumn(s: Sort) {
+        this._sortColumn = s.active;
     }
 }

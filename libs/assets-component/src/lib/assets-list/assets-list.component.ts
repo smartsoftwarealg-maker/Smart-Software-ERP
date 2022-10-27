@@ -13,6 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent} from '@ss/logistics/ui-doc-import';
 import {DuplicateDialogComponent} from '../duplicate-dialog/duplicate-dialog.component';
 import {Lookup} from '@ss/common/api-lookup';
+import {Sort} from '@angular/material/sort';
 
 @Component({
     selector: 'ss-assets-list',
@@ -112,5 +113,11 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     override select(id: number) {
         super.select(id);
         this.duplicateBtn.disabled = !id;
+    }
+
+    sort(event: Sort) {
+        // console.log(event);
+        this.listSrv.sortColumn = event;
+        this.refresh();
     }
 }
