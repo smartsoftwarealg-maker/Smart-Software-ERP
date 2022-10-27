@@ -14,9 +14,7 @@ import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
-import {CanActivateService} from '../../../../libs/common/api-common/src';
-import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
@@ -35,6 +33,7 @@ import {
     CONTRACTS_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
+import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 
 export const environment = {
   production: true,

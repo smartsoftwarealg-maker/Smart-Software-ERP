@@ -10,6 +10,7 @@ import {
     DASHBOARD_APP_URL,
     ORGANIZATIONS_APP_URL,
 } from '../app/common';
+import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -18,6 +19,7 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
+    dashboardNavTree,
     assetsNavTree,
 ];
 
@@ -45,6 +47,10 @@ export const appRoutes: Routes =  [
     {
         path: ADMINISTRATION_APP_URL,
         loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+    },
+    {
+        path: DASHBOARD_APP_URL,
+        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
     },
     {
         path: DASHBOARD_APP_URL,
