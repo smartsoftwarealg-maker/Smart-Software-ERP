@@ -1,43 +1,43 @@
 <div class="table-div">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="receptionDate">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
                 {{e.receptionDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="serialNumber">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
                 {{e.serialNumber}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="creatorName">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_CREATED_BY</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CREATED_BY</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
                 {{e.creatorName}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="supplierName">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_SUPPLIER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
+            <mat-cell *matCellDef="let e" >
                 {{e.supplierName}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="count">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_COUNT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_COUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.count}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="amount">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_AMOUNT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.amount | number: '1.2-2' }}
             </mat-cell>

@@ -114,10 +114,4 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         super.select(id);
         this.duplicateBtn.disabled = !id;
     }
-
-    sort(event: Sort) {
-        // console.log(event);
-        this.listSrv.sortColumn = event;
-        this.refresh();
-    }
 }
