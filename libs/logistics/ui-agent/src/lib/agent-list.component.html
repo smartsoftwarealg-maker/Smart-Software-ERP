@@ -1,14 +1,14 @@
-<mat-table mat-table [dataSource]="data" class="main-table">
+<mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
     <ng-container matColumnDef="customerCode">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef  mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{e.customerCode}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="denomination">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DENOMINATION</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef  mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{e.denomination}}
         </mat-cell>
@@ -16,14 +16,14 @@
 
 
     <ng-container matColumnDef="agentType">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_AGENT_TYPE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef  mat-sort-header translate>LOGISTICS_AGENT_TYPE</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{agentTypes[e.agentType]}}
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ADDRESS</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef  mat-sort-header translate>LOGISTICS_ADDRESS</mat-header-cell>
         <mat-cell *matCellDef="let e">
             {{e.address}}
         </mat-cell>

@@ -7,6 +7,7 @@ import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityService} from "@ss/common/api-base-entity";
+import {Sort} from '@angular/material/sort';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
@@ -333,6 +334,12 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                     }
                 }
             })
+    }
+
+    sort(event: Sort) {
+        // console.log(event);
+        this.entitySrv.sortColumn = event;
+        this.refresh();
     }
 
 }
