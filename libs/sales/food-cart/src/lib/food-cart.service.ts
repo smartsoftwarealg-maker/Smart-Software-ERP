@@ -41,4 +41,8 @@ export class FoodCartService extends BaseEntityExtendedService<Cartline> {
     confirm(cart: Cart): Observable<{ count: number }> {
         return this.httpSrv.put('/cart', cart);
     }
+
+    confirmLines(lines: Cartline[]): Observable<{ id: number }> {
+        return this.httpSrv.post('/cart/confirm', lines);
+    }
 }

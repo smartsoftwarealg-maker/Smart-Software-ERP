@@ -1,53 +1,33 @@
-<mat-toolbar class="header-div layout">
+<mat-toolbar class="header-div width-96">
     <div class="total-div">
         <span><span translate>COMMON_TOTAL</span>: </span>
         <span class="bolder">{{ cartTotal | number: '1.2-2'}}</span>
         <span translate>COMMON_AD</span>
     </div>
 
-    <div>
-        <div *ngIf="data[0]?.validated; else notConfirmed" class="confirmation f-warn">
+    <div class="shop-btn">
+        <div *ngIf="this.data.length > 0" class="confirmation f-accent">
             <button mat-raised-button
                     color="warn"
-                    (click)="confirm(true)"
+                    (click)="confirm()"
                     [matTooltip]="langSrv.translate('COMMON_CONFIRM')">
-                <span translate>COMMON_NOT_CONFIRMED</span> &nbsp;
+                <span translate>COMMON_CONFIRM</span> &nbsp;
                 <i class="fas fa-times-circle"></i>
             </button>
         </div>
-
-        <ng-template #notConfirmed>
-            <div class="confirmation f-warn">
-                <button mat-raised-button
-                        color="accent"
-                        (click)="confirm(false)"
-                        [matTooltip]="langSrv.translate('COMMON_UNCONFIRM')">
-                    <span translate>COMMON_CONFIRMED</span> &nbsp;
-                    <i class="fas fa-check-square"></i>
-                </button>
-            </div>
-        </ng-template>
     </div>
 
 
-    <div class="shop-btn confirmation">
-        <span *ngIf="data[0]?.validated; else notConfirmedStatus" class="confirmation fa-primary" translate>
-        COMMON_CONFIRMED
-    </span>
+    <!--div class="shop-btn confirmation" *ngIf="selectedRow && data.length > 0">
+        <span *ngIf="selectedRow?.validated; else notConfirmedStatus" class="confirmation fa-primary" translate>
+            COMMON_CONFIRMED
+        </span>
         <ng-template #notConfirmedStatus>
             <span translate class="f-warn">COMMON_NOT_CONFIRMED</span> &nbsp;
         </ng-template>
-        <button mat-raised-button
-                color="primary"
-                [matTooltip]="langSrv.translate('LOGISTICS_SHOPPING')"
-                routerLink="../cart">
-            <i class="fal fa-shopping-cart"></i>
-        </button>
-    </div>
+    </div-->
 </mat-toolbar>
-
-<div class="top-actions" *ngIf="isSmallScreen">
-
+<div *ngIf="isSmallScreen && selectedPartId" class="small-actions">
     <button mat-mini-fab
             color="primary"
             (click)="addToCart(selectedRow, 1)"
@@ -67,19 +47,8 @@
         <i class="fas fa-times"></i>
     </button>
 
-    <div class="shop-btn confirmation">
-        <span *ngIf="data[0]?.validated; else notConfirmedStatus" class="confirmation fa-primary" translate>
-        COMMON_CONFIRMED
-    </span>
-        <ng-template #notConfirmedStatus>
-            <span translate class="f-warn">COMMON_NOT_CONFIRMED</span> &nbsp;
-        </ng-template>
-    </div>
-
 </div>
-
-
-<div class="table-container layout">
+<div class="width-96 layout">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="image">
@@ -122,7 +91,6 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="total">
             <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
@@ -133,39 +101,42 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACTIONS</mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
-                <button mat-mini-fab
-                        color="primary"
-                        (click)="addToCart(e, 1)"
-                        [matTooltip]="langSrv.translate('LOGISTICS_ADD_ONE')">
-                    <i class="fas fa-plus-square"></i>
-                </button> &nbsp;
-                <button mat-mini-fab
-                        color="accent"
-                        (click)="addToCart(e, -1)"
-                        [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ONE')">
-                    <i class="fas fa-minus-square"></i>
-                </button> &nbsp;
-                <button mat-mini-fab
-                        color="warn"
-                        (click)="removeFromCart(e)"
-                        [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ALL')">
-                    <i class="fas fa-times"></i>
-                </button>
+                    <button mat-mini-fab
+                            color="primary"
+                            (click)="addToCart(e, 1)"
+                            *ngIf="!e?.validated"
+                            [matTooltip]="langSrv.translate('LOGISTICS_ADD_ONE')">
+                        <i class="fas fa-plus-square"></i>
+                    </button> &nbsp;
+                    <button mat-mini-fab
+                            color="accent"
+                            (click)="addToCart(e, -1)"
+                            *ngIf="!e?.validated"
+                            [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ONE')">
+                        <i class="fas fa-minus-square"></i>
+                    </button> &nbsp;
+                    <button mat-mini-fab
+                            color="warn"
+                            (click)="removeFromCart(e)"
+                            *ngIf="!e?.validated"
+                            [matTooltip]="langSrv.translate('LOGISTICS_REMOVE_ALL')">
+                        <i class="fas fa-times"></i>
+                    </button>
             </mat-cell>
         </ng-container>
 
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
+        <mat-row class="selectable" [class.selected]="row.partId === selectedPartId"  (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+<!--    <div class="pagination-container b-b-background  layout">-->
+<!--        <ss-pagination [paginationModel]="pagination"></ss-pagination>-->
+<!--    </div>-->
 </div>
 
-<div class="pagination-container b-b-background  layout">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
-</div>
 
-<div class="layout">
+<div *ngIf="openOrderExists" class="width-96">
     <div class="search-div">
         <mat-form-field>
             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -190,27 +161,26 @@
                     <li>
                         {{ a.description2 }}
                     </li>
-                    <li class="description">
-                        <span class="badge" translate>LOGISTICS_PRICE</span>
-                        <span class="bolder"> {{ a.price1 | number: '1.2-2'}}</span>
-                        <span class="bolder" translate>COMMON_AD</span>
+                    <li class="description b-warn">
+                        <span class="badge b-primary">{{ 'LOGISTICS_PRICE' | translate }} :</span>
+                        <span class="bolder currency" translate>COMMON_AD</span>
+                        <span class="bolder">{{ a.price1 | number: '1.2-2'}}</span>
                     </li>
                 </ul>
             </mat-card-content>
             <mat-card-actions>
                 <div>
-                    <span class="filler"></span>
-                    <input #qtyInput type="number" class="qty bolder b-primary" value="1">
+                    <input #qtyInput type="number" class="qty b-primary " value="1">
                     <button mat-raised-button
+                            class="add-btn"
                             disabled="{{ cartTotal > 1000000.0 }}"
                             color="primary"
-                            (click)="addToCart(a, +qtyInput.value)">
+                            (click)="addArticleToCart(a, +qtyInput.value)">
                         <i class="fas fa-cart-plus"></i> &nbsp;
-                        <span class="bolder add-btn" translate>LOGISTICS_ADD_TO_CART</span>
+                        <span class="bolder" translate>LOGISTICS_ADD_TO_CART</span>
                     </button>
                 </div>
             </mat-card-actions>
         </mat-card>
     </div>
-
 </div>

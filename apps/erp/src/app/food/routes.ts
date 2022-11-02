@@ -7,12 +7,12 @@ import {
 import {ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
 import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
-import {FoodCartComponent, FoodCartDetailComponent} from '@ss/sales/food-cart';
+import {FoodCartDetailComponent} from '@ss/sales/food-cart';
 
 export const mainRoutes: Routes = [
     {
         path: FOOD_CART_URL,
-        component: FoodCartComponent,
+        component: FoodCartDetailComponent,
         canActivate: [CanActivateService],
     },
     {

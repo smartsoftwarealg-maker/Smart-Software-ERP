@@ -14,7 +14,6 @@ import {LogisticsUiDocImportModule} from '@ss/logistics/ui-doc-import';
 import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 import {FoodCartDetailComponent} from './food-cart-detail/food-cart-detail.component';
-import {FoodCartComponent} from './food-cart-list/food-cart.component';
 
 @NgModule({
     imports: [
@@ -35,7 +34,6 @@ import {FoodCartComponent} from './food-cart-list/food-cart.component';
     ],
     declarations: [
         FoodCartDetailComponent,
-        FoodCartComponent
     ]
 })
 export class SalesFoodCartModule {}

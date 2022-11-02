@@ -69,7 +69,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
 
     check(): void {
         const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        const open = vw >= 1000;
+        const open = vw >= 1800;
         if (open !== this.showSideNav) {
             this.showSideNav = open;
         }
