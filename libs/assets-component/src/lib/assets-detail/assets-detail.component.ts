@@ -173,7 +173,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             building:       [{ value: b.building, disabled: true }],
         });
         if (!this.isAQS) {
-            this.form?.controls['assetClass'].clearValidators();
+            form.controls['assetClass'].clearValidators();
         }
         if (b.id) {
             this.maxReference = b.reference2;
