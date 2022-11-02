@@ -13,5 +13,6 @@
     "DELIVERY_CANCELLATION": "Avoir sul BL",
     "EDIT_DELIVERY_CANCEL": "Modification annulation",
     "EDIT_CANCELLATION_LINES": "Modification detail annulation",
-    "EDIT_ORDER_LINES": "Modification detail commande"
+    "EDIT_ORDER_LINES": "Modification detail commande",
+    "CONFIRM_CART": "Confirmer le panier"
 }

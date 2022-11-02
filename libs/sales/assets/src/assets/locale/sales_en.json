@@ -13,5 +13,6 @@
     "DELIVERY_CANCELLATION": "Delivery cancellation",
     "EDIT_DELIVERY_CANCEL": "Edit cancellation",
     "EDIT_CANCELLATION_LINES": "Edit cancellation lines",
-    "EDIT_ORDER_LINES": "Edit order lines"
+    "EDIT_ORDER_LINES": "Edit order lines",
+    "CONFIRM_CART": "Confirm shopping cart"
 }
