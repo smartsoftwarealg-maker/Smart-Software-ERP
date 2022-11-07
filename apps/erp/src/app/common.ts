@@ -79,7 +79,8 @@ export const COMMON_CUSTOMER_PROFILE_URL = 'profile';
 //Food
 export const FOOD_CART_URL       = 'cart';
 export const FOOD_CARTDETAIL_URL = 'cartdetail';
-
+export const PAYPAL_CHECKOUT_URL = 'checkout';
+export const PAYPAL_REVIEW_URL   = 'review_payment';
 
 // Stock
 export const LOGISTICS_VAT_URL = 'vat';

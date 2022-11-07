@@ -17,7 +17,6 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     subscriptions: Subscription[] = [];
     selectedOffice: Office | null = null;
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
-    buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
     buildings: Lookup[] = [];
     floors:    Lookup[] = [];
 
@@ -29,8 +28,7 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Office,
                 private officeSrv: OfficeService,
-                private locationSrv: AssetLocationService,
-                private buildingSrv: AssetsBuildingService) {
+                private locationSrv: AssetLocationService) {
     }
 
     close() {

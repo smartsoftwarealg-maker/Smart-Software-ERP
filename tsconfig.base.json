@@ -370,6 +370,7 @@
                 "libs/sales/api-sales-order/src/index.ts"
             ],
             "@ss/sales/food-cart": ["libs/sales/food-cart/src/index.ts"],
+            "@ss/sales/paypal": ["libs/sales/paypal/src/index.ts"],
             "@ss/sales/shopping-cart": [
                 "libs/sales/shopping-cart/src/index.ts"
             ],

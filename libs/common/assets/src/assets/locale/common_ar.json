@@ -235,5 +235,7 @@
     "DAIRA":               "الدائرة",
     "CONTRACTS":           "العقود",
     "MOTIVES":             "الدوافع",
-    "MOTIVE":              "الدافع"
+    "MOTIVE":              "الدافع",
+    "FIRST_NAME": "الإسم",
+    "LAST_NAME": "اللقب"
 }

@@ -153,5 +153,9 @@
     "APPID":            "قطاع",
     "PARTS":            "غيار",
     "CEMENT":           "أسمنت",
-    "FURNITURE":        "أثاث"
+    "FURNITURE":        "أثاث",
+    "SUBTOTAL":         "المجموع الفرعي",
+    "SHIPPING":         "شحن",
+    "CHECKOUT":         "الدفع",
+    "PAYER":            "دافع"
 }

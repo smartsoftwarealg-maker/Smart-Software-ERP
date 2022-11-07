@@ -145,5 +145,9 @@
     "APPID":            "Sector",
     "PARTS":            "Parts",
     "CEMENT":           "",
-    "FURNITURE":        ""
+    "FURNITURE":        "",
+    "SUBTOTAL":         "",
+    "SHIPPING":         "",
+    "CHECKOUT":         "",
+    "PAYER":            ""
 }
