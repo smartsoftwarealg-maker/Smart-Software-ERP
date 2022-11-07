@@ -19,7 +19,7 @@
             <div class="default-100" style="height: 16px;"></div>
 
             <mat-form-field id="firstName" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FIRST_NAME</mat-label>
+                <mat-label translate>COMMON_FIRST_NAME</mat-label>
                 <input matInput formControlName="firstName" type="text" maxlength="64" required>
                 <mat-error *ngIf="form.controls.firstName.hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
@@ -29,7 +29,7 @@
             </mat-form-field>
 
             <mat-form-field id="lastName" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_LAST_NAME</mat-label>
+                <mat-label translate>COMMON_LAST_NAME</mat-label>
                 <input matInput formControlName="lastName" type="text" maxlength="64" required>
                 <mat-error *ngIf="form.controls.lastName.hasError('required')" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
@@ -182,7 +182,7 @@
             <div class="default-100" style="height: 16px;"></div>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_FIRST_NAME_AR</mat-label>
+                <mat-label translate>COMMON_FIRST_NAME_AR</mat-label>
                 <input matInput formControlName="firstNameAr" type="text" maxlength="64">
                 <mat-error *ngIf="form.controls.firstNameAr.hasError('maxlength')" [translate]="{maxLen: 64}">
                     COMMON_FIELD_MAX_LENGTH
@@ -190,7 +190,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>PAYROLL_LAST_NAME_AR</mat-label>
+                <mat-label translate>COMMON_LAST_NAME_AR</mat-label>
                 <input matInput formControlName="lastNameAr" type="text" maxlength="64">
                 <mat-error *ngIf="form.controls.lastNameAr.hasError('maxlength')" [translate]="{maxLen: 64}">
                     COMMON_FIELD_MAX_LENGTH

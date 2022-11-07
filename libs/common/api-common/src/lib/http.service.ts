@@ -139,7 +139,7 @@ export class HttpService {
                     responseType: 'blob',
                     params: httpParams
                 }
-            ).pipe(map(ress => ress.body));
+            ).pipe(map(res => res.body));
     }
 
     public get<T>(url: string, httpParams?: HttpParams, timeout: number = 0): Observable<T> {

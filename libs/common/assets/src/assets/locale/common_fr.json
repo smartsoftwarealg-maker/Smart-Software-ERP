@@ -238,5 +238,7 @@
     "CITY":                 "Ville",
     "CONTRACTS":            "Contrats",
     "MOTIVES":              "Motifs",
-    "MOTIVE":               "Motif"
+    "MOTIVE":               "Motif",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom"
 }

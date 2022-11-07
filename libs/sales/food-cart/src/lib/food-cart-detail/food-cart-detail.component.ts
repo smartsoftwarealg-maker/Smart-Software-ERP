@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {
     HttpService,
     LanguageService,
@@ -18,6 +18,9 @@ import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 import {Cart, Cartline} from '@ss/sales/shopping-cart';
 import {FoodCartService} from '../food-cart.service';
 import {FormControl} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {CheckoutComponent} from '@ss/sales/paypal';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'ss-food-cart-detail',
@@ -61,12 +64,14 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public lookupsSrv: LookupsService,
-        public httpSrv: HttpService,
-        public langSrv: LanguageService,
+        public override pagPersistSrv: PaginatorPersistenceService,
+        private lookupsSrv: LookupsService,
+        private httpSrv: HttpService,
+        private langSrv: LanguageService,
         private loginSrv: LoginService,
         private breakPointObs: BreakpointObserver,
-        public override pagPersistSrv: PaginatorPersistenceService) {
+        private dialog: MatDialog,
+        @Inject(DOCUMENT) private document: Document) {
         super(cartSrv,
             shellSrv,
             snackBarSrv,
@@ -96,7 +101,8 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
 
     override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
+        this.shellSrv.disableSearch();
+        this.shellSrv.setButtons([this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
             this.displayedColumns =  this.isSmallScreen? this.SHORT : this.LONG;
@@ -170,17 +176,28 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
     }
 
     confirm() {
-        if (this.data.length > 0) {
-            this.confirmationSrv
-                .confirm('COMMON_CONFIRMATION', 'SALES_CONFIRM_CART')
-                .pipe(switchMap(res => res ? this.cartSrv.confirmLines(this.data) : of({id: 0})))
-                .subscribe(res => {
-                    if (res.id) {
-                        this.data = [];
-                        this.snackBarSrv.showSuccessMessage();
-                    }
-                });
-        }
+        const dialogRef = this.dialog.open(CheckoutComponent,{ data: this.data, disableClose: true })
+        dialogRef
+            .afterClosed()
+            .subscribe(res => {
+                if (res) {
+                    this.document.location.href = res.toString();
+                }
+                // if (res === true) {
+                //     this.data = [];
+                // }
+            })
+        // if (this.data.length > 0) {
+        //     this.confirmationSrv
+        //         .confirm('COMMON_CONFIRMATION', 'SALES_CONFIRM_CART')
+        //         .pipe(switchMap(res => res ? this.cartSrv.confirmLines(this.data) : of({id: 0})))
+        //         .subscribe(res => {
+        //             if (res.id) {
+        //                 this.data = [];
+        //                 this.snackBarSrv.showSuccessMessage();
+        //             }
+        //         });
+        // }
         // if (this.selectedRow) {
         //     this.selectedRow.validated = confirmed;
         //     const cart: Cart = {
