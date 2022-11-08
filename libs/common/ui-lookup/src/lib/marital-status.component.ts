@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class MaritalStatusListComponent extends BaseEntityListComponent<MaritalStatus> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public maritalStatusSrv: MaritalStatusService,
@@ -53,7 +53,8 @@ export class MaritalStatusDetailComponent extends BaseEntityDetailComponent<Mari
     public setupForm(e: MaritalStatus): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description:  [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

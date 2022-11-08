@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class CountryListComponent extends BaseEntityListComponent<Country> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public countrySrv: CountryService,

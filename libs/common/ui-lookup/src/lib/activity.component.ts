@@ -15,7 +15,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class ActivityListComponent extends BaseEntityListComponent<Activity> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public activitySrv: ActivityService,

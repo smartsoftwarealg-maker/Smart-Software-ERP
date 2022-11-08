@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class FurnitureStatusListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public statusSrv: FurnitureStatusService,

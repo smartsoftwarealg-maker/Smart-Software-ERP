@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class SuspensionReasonListComponent extends BaseEntityListComponent<SuspensionReason> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public suspensionReasonSrv: SuspensionReasonService,
@@ -53,7 +53,8 @@ export class SuspensionReasonDetailComponent extends BaseEntityDetailComponent<S
     public setupForm(e: SuspensionReason): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

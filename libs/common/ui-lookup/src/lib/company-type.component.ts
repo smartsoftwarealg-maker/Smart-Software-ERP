@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class CompanyTypeListComponent extends BaseEntityListComponent<CompanyType> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public companyTypeSrv: CompanyTypeService,

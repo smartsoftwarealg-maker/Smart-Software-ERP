@@ -47,13 +47,14 @@ export class NationalityDetailComponent extends BaseEntityDetailComponent<Nation
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(nationalitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EDIT_NATIONALITY');
+        super(nationalitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_NATIONALITIES');
     }
 
     public setupForm(e: Nationality): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

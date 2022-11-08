@@ -15,7 +15,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class MarkListComponent extends BaseEntityListComponent<Mark> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public markSrv: MarkService,

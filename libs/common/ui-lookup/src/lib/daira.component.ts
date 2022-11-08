@@ -16,7 +16,7 @@ import {DairaService} from '../../../api-lookup/src/lib/dira.service';
 })
 export class DairaListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public markSrv: DairaService,

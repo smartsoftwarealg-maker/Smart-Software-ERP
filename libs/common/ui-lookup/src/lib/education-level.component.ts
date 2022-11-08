@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class EducationLevelListComponent extends BaseEntityListComponent<EducationLevel> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public educationLevelSrv: EducationLevelService,
@@ -54,7 +54,8 @@ export class EducationLevelDetailComponent extends BaseEntityDetailComponent<Edu
     public setupForm(e: EducationLevel): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description:  [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

@@ -17,7 +17,7 @@ import {JudicialFrameService} from '@ss/payroll/api-employee';
 })
 export class JudicialFrameListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public markSrv: JudicialFrameService,
@@ -54,13 +54,14 @@ export class JudicialFrameDetailComponent extends BaseEntityDetailComponent<Look
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DAIRAS');
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_JUDICIAL_FRAME');
     }
 
     public setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

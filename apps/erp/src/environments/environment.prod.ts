@@ -37,10 +37,10 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL,
+    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL,
 } from '../app/common';
-import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
+import {foodNavTree} from '../app/food/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -65,7 +65,7 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
-    shoppingCartNavTree
+    foodNavTree
 ];
 
 export const langAssets = [
@@ -160,6 +160,10 @@ export const appRoutes: Routes =  [
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+    },
+    {
+        path: FOOD_CART_APP_URL,
+        loadChildren: () => import('../app/food/food.module').then(m => m.FoodCartModule)
     },
     {
         path: SHOPPING_CART_APP_URL,

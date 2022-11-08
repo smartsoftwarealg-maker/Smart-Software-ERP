@@ -66,7 +66,8 @@ export class ProfessionalFaultDetailComponent extends BaseEntityDetailComponent<
     public setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

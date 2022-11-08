@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class DivisionListComponent extends BaseEntityListComponent<Division> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public divisionSrv: DivisionService,
@@ -53,7 +53,8 @@ export class DivisionDetailComponent extends BaseEntityDetailComponent<Division>
     public setupForm(e: Division): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }
