@@ -75,6 +75,7 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
     ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
+        this.addButton.visible = false;
     }
 
     public select(id: number): void {

@@ -10,10 +10,7 @@ import {AssetsService} from '../assets.service';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import {DocImportComponent} from '@ss/logistics/ui-doc-import';
 import {DuplicateDialogComponent} from '../duplicate-dialog/duplicate-dialog.component';
-import {Lookup} from '@ss/common/api-lookup';
-import {Sort} from '@angular/material/sort';
 
 @Component({
     selector: 'ss-assets-list',

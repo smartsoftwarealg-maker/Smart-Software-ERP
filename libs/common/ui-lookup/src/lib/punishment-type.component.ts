@@ -54,13 +54,14 @@ export class PunishmentTypeDetailComponent extends BaseEntityDetailComponent<Loo
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(divisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_FAULT_TYPE');
+        super(divisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_PUNISHMENT_TYPE');
     }
 
     public setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

@@ -35,7 +35,7 @@ export class MotiveListComponent extends BaseEntityListComponent<Lookup> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'PAYROLL_MOTIVES');
+            'COMMON_MOTIVES');
     }
 }
 
@@ -53,13 +53,14 @@ export class MotiveDetailComponent extends BaseEntityDetailComponent<Lookup> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_MOTIVES');
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_MOTIVES');
     }
 
     public setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

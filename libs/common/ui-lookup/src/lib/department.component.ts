@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class DepartmentListComponent extends BaseEntityListComponent<Department> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public departmentSrv: DepartmentService,
@@ -53,7 +53,8 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
     public setupForm(e: Department): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

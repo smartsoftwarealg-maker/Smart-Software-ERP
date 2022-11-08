@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class EmploymentTypeListComponent extends BaseEntityListComponent<EmploymentType> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public employmentTypeSrv: EmploymentTypeService,
@@ -53,7 +53,8 @@ export class EmploymentTypeDetailComponent extends BaseEntityDetailComponent<Emp
     public setupForm(e: EmploymentType): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

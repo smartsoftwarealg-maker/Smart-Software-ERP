@@ -69,51 +69,61 @@ export interface Vat {
 export class MaritalStatus {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Nationality {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class EducationLevel {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Diploma {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Post {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Category {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Service {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class MilitaryServiceState {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class Language {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export class LanguageLevel {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export const MILITARY_SERVICE_STATES: MilitaryServiceState[] = [
@@ -141,6 +151,7 @@ export interface Class {
 export interface Subclass {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface Store {
@@ -154,11 +165,13 @@ export interface Store {
 export interface Unit {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface AgentType {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface City {
@@ -189,11 +202,13 @@ export interface Currency {
 export interface CompanyType {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface PayMode {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface PayMethod {
@@ -206,11 +221,13 @@ export interface PayMethod {
 export interface Activity {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface Bank {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface AgentPrice {
@@ -223,26 +240,31 @@ export interface AgentPrice {
 export interface Fund {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface CCGroup {
     id: number;
-    description: string;
+    description:    string;
+    descriptionAr?: string;
 }
 
 export interface EmploymentType {
     id: number;
-    description: string;
+    description:    string;
+    descriptionAr?: string;
 }
 
 export interface SuspensionReason {
     id: number;
-    description: string;
+    description:    string;
+    descriptionAr?: string;
 }
 
 export interface Department {
     id: number;
     description: string;
+    descriptionAr?: string;
     responsible: number;
     responsibleName?: string;
 }
@@ -250,6 +272,7 @@ export interface Department {
 export interface Division {
     id: number;
     description: string;
+    descriptionAr?: string;
     responsible: number;
     responsibleName?: string;
 }
@@ -257,6 +280,7 @@ export interface Division {
 export interface Service {
     id: number;
     description: string;
+    descriptionAr?: string;
     responsible: number;
     responsibleName?: string;
 }
@@ -264,6 +288,7 @@ export interface Service {
 export interface Office {
     id: number;
     description: string;
+    descriptionAr?: string;
     center?: number;
     floorNo: number;
     location?: number;
@@ -278,4 +303,5 @@ export interface Office {
 export interface JournalType {
     id: number;
     description: string;
+    descriptionAr?: string;
 }

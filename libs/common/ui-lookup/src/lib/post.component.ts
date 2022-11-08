@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class PostListComponent extends BaseEntityListComponent<Post> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public postSrv: PostService,
@@ -47,13 +47,14 @@ export class PostDetailComponent extends BaseEntityDetailComponent<Post> {
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(postSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_POST');
+        super(postSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_POSTS');
     }
 
     public setupForm(e: Post): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

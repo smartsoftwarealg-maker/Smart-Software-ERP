@@ -133,5 +133,8 @@
     "DECISION_MOTIVES":   "Decision motives",
     "CONTRACT_MOTIVES":   "Contract motives",
     "PAYROLL_MOTIVES":    "Employment motives",
-    "LOOKUPS": "HR Tables"
+    "LOOKUPS": "HR Tables",
+    "PROF_CATEGORY":     "Category",
+    "CONTRACT_TYPE":     "Contract type",
+    "CATEGORY_SECTION":  "Categ./Sec."
 }

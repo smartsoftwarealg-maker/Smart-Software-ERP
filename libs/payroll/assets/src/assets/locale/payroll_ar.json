@@ -133,5 +133,8 @@
     "DECISION_MOTIVES":   "أهداف التقارير",
     "CONTRACT_MOTIVES":   "دوافع العقد",
     "PAYROLL_MOTIVES":    "دوافع التوظيف",
-    "LOOKUPS": "جداول"
+    "LOOKUPS":           "جداول",
+    "PROF_CATEGORY":     "",
+    "CONTRACT_TYPE":     "",
+    "CATEGORY_SECTION":  ""
 }

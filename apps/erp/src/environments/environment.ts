@@ -70,7 +70,7 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
-    shoppingCartNavTree,
+    // shoppingCartNavTree,
     foodNavTree
 ];
 

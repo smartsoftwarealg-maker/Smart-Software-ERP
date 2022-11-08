@@ -28,45 +28,45 @@
             <span translate>COMMON_LIST</span>
         </ng-template>
         <div class="main-table-scroll">
-            <mat-table mat-table [dataSource]="data" class="main-table">
+            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
                 <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ID</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{e.id}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="fullname">
-                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_FULLNAME</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_FULLNAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{e.fullName}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="post">
-                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_POST</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{e.post}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="birth">
-                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTHINFO</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_BIRTHINFO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{e.birthDate}} / {{e.birthPlace}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="address">
-                    <mat-header-cell *matHeaderCellDef translate>PAYROLL_ADDRESS</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ADDRESS</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{e.address1}}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="maritalStatus">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_MARITAL_STATUS</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MARITAL_STATUS</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{maritalStatus[e.maritalStatus]}}
                     </mat-cell>

@@ -16,7 +16,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class DiplomaListComponent extends BaseEntityListComponent<Diploma> {
 
-    displayedColumns = ['description'];
+    displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
         public diplomaSrv: DiplomaService,
@@ -53,7 +53,8 @@ export class DiplomaDetailComponent extends BaseEntityDetailComponent<Diploma> {
     public setupForm(e: Diploma): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr],
         });
     }
 }
