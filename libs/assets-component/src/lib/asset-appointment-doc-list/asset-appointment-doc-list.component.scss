@@ -2,47 +2,48 @@ mat-table {
     min-width: 800px;
 }
 
-.main-table,
-.pagination-container {
+.main-table {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     overflow-y: auto;
-    height: calc(100% - 64px);
+    height: calc(50% - 64px);
 }
 
-.mat-column-date,
+.mat-column-serial_no,
 .mat-column-serialNumber,
 .mat-column-creatorName,
 .mat-column-reappointment,
 .mat-column-requestNumber {
-    flex: 1 1 100px;
+    flex: 1 1 110px;
     border-left: white solid 1px;
-    padding-left: 4px;
+    padding: 0 4px;
 }
 
+.mat-column-date,
+.mat-column-acquisitionDate,
+.mat-column-serviceDate,
+.mat-column-reference,
 .mat-column-reappointment,
 .mat-column-requestDate {
     flex: 1 1 100px;
     border-left: white solid 1px;
     justify-content: center;
-    padding-left: 8px;
+    padding: 0 4px;
 }
 
+.mat-column-description,
 .mat-column-officeName,
 .mat-column-beneficiary {
     flex: 1 1 200px;
     border-left: white solid 1px;
-    padding-left: 8px;
+    padding-left: 4px;
 }
 
-.mat-column-date {
-    border-left: white solid 1px;
-    padding-left: 8px;
-}
 
 .mat-column-officeName,
 .mat-column-valName {
     border-left: white solid  1px;
-    padding-left: 8px;
+    padding-left: 4px;
 }
+

@@ -43,9 +43,6 @@ export interface Asset {
     costCenter?: number;
     investEnd?: number;
     startYear?: number;
-    positionNumb?: string;
-    modelNumb?: string;
-    installation_code?: string;
     tech_specific?: string;
     comment?: string;
     office?: number;
@@ -248,6 +245,7 @@ export interface SearchCriteria {
     orderNumb?: string;
     orderDate?: Date;
     requester?: number;
+    consolidated?: boolean;
 }
 
 export interface DepreciationRate {

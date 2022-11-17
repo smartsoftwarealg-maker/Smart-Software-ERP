@@ -71,7 +71,7 @@ export const salesNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_SALES_DASHBOARD_URL,
         },
     ],

@@ -41,7 +41,7 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_TREASURY_DASHBOARD_URL,
             accessRights: 'Dashboard'
         },

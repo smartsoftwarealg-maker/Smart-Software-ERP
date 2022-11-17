@@ -1,14 +1,13 @@
 .main-container {
-    height: 100%;
     width: 700px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
 }
 .table-container {
     width: 100%;
     flex-grow: 1;
     overflow-x: auto;
+    width: 700px;
+    margin: 0 auto;
 }
 .main-table {
     width: 700px;

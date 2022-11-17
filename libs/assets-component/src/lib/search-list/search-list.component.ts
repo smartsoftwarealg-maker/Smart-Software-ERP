@@ -71,7 +71,8 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         acquisitionDateTo: [this.FUTURE],
         serviceDateTo:     [this.FUTURE],
         acquisitionValue:  [0],
-        location:          [0]
+        location:          [0],
+        consolidated:      [false]
     });
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
 
@@ -99,7 +100,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
               confirmationSrv,
               defReportSrv,
               pagPersistSrv,
-            'ASSETS');
+            'COMMON_SEARCH');
         this.pagination.pageSize = 10;
     }
 
@@ -144,6 +145,20 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
                   map(res => res.body));
     }
 
+    public override excel() {
+        const criteria = <SearchCriteria>this.form.value;
+        this.listSrv
+            .getExcel(criteria)
+            .subscribe(blob => {
+                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = this.entitySrv.constructor.name + '.xlsx';
+                link.click();
+                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+            });
+    }
+
     override ngOnDestroy() {
         this.subscriptions.forEach(s => s.unsubscribe());
     }
@@ -156,23 +171,6 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         return (key.indexOf('Date') > 0) ? this.langSrv.formatDate(value) : value;
     }
 
-    public override excel() {
-        const criteria = <SearchCriteria>this.form.value;
-        const params = Object.entries(criteria)
-            .filter(([key, value]) => value && value !== '' && value !== 0)
-            .reduce((a, b) => a.set(b[0], this.format(b[0], b[1])), new HttpParams());
-
-        this.entitySrv
-            .excel(this.form.value['reference'])
-            .subscribe(blob => {
-                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = this.entitySrv.constructor.name + '.xlsx';
-                link.click();
-                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
-            });
-    }
 }
 
 class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {

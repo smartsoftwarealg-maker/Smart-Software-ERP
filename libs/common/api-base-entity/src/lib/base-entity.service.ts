@@ -34,7 +34,6 @@ export class BaseEntityService<T> {
     }
 
     public excelWithParams(params?: HttpParams): Observable<Blob> {
-        console.log('criteria', params);
         return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
     }
 

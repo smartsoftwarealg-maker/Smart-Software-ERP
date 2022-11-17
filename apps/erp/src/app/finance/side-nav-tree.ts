@@ -31,7 +31,7 @@ export const financeNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_FINANCE_DASHBOARD_URL,
         },
         {

@@ -53,6 +53,15 @@ export class AssetsService extends BaseEntityService<Asset> {
             .getData<Asset>('/assets/search', pageModel.page - 1, pageModel.pageSize, null, null, params);
     }
 
+    public getExcel(criteria: SearchCriteria): Observable<Blob> {
+        const params = Object.entries(criteria)
+            .filter(([key, value]) => value && value !== '' && value !== 0)
+            .reduce((a, b) => a.set(b[0], this.format(b[0], b[1])), new HttpParams());
+
+        return  this.httpSrv
+            .getBlob('/assets/search-excel', params);
+    }
+
     upload(data: FormData): Observable<any> {
         return this.httpSrv.upload('/assets/injection', data);
     }

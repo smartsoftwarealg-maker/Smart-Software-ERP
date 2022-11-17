@@ -9,5 +9,7 @@
         </mat-option>
     </mat-autocomplete>
     <i *ngIf="loading" class="ss-suffix-button abs-end-0 fa-spin warn-when-invalid far fa-spinner"></i>
-    <i *ngIf="isInputInvalid()" (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon"></i>
+    <i *ngIf="isInputInvalid()" (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon" title="{{'COMMON_CANCEL' | translate}}"></i>
+    <i *ngIf="notFound" (click)="addCurrentText()" class="ss-suffix-button fa-solid fa-folder-plus margin-30" title="{{'COMMON_ADD' | translate}}"></i>
 </ng-container>
+

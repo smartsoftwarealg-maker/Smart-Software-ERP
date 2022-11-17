@@ -221,7 +221,6 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
 
     openAsset(id: number) {
         if (id > 0) {
-            console.log('id: ', id);
             this.router.navigate(['../../assets', id], { relativeTo: this.route });
         }
     }

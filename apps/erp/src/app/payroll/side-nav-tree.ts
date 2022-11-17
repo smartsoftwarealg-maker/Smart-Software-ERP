@@ -140,7 +140,7 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_PAYROLL_DASHBOARD_URL,
         },
 
