@@ -35,14 +35,17 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private consumerSrv: ConsumerService,
-        private loginSrv: LoginService) {
+        private loginSrv: LoginService,
+        private router: Router) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 
 
     public setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here
-
+        if (b.id) {
+            this.router.navigate(['archive'], { relativeTo: this.route }).then();
+        }
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center],

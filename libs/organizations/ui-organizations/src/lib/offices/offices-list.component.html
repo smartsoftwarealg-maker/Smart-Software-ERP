@@ -1,15 +1,15 @@
 <div class="table-container">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)" >
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef  mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.description}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="locationDescription">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_LOCATION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LOCATION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.locationDescription}}
             </mat-cell>
@@ -17,14 +17,14 @@
 
 
         <ng-container matColumnDef="code">
-            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.code }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="floorNo">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_FLOOR_NO</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_FLOOR_NO</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.floorNo }}
             </mat-cell>

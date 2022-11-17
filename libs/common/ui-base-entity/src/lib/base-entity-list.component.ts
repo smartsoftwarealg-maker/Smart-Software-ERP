@@ -140,8 +140,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             this.excelButton,
             this.emailReportButton]);
         this.pagination.onChange = () => this.refresh();
-        // this.filter = this.pagPersistSrv.getSearch(this.title);
-        this.refresh();
+        this.filter = this.pagPersistSrv.getSearch(this.title);
+        this.shellSrv.searchFormControl.setValue(this.filter);
+        // this.refresh();
     }
 
     public enableSearch(): void {
@@ -302,11 +303,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             .excel(this.filter)
             .subscribe(blob => {
                 // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = this.entitySrv.constructor.name + '.xlsx';
-                link.click();
-                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
             });
     }
 

@@ -51,8 +51,6 @@ import {
     AssetLocationsDetailComponent,
     AssetClassListComponent,
     AssetClassDetailComponent,
-    AssetAppointmentListComponent,
-    AssetAppointmentDetailComponent,
     AssetOptionsComponent,
     AssetReceptionsComponent,
     AssetAppointmentDocListComponent,
@@ -158,21 +156,6 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: AssetRevaluationDetailComponent,
-                                canActivate: [CanActivateService],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    },
-                    {
-                        path: ASSETS_APPOINTMENTS_URL,
-                        children: [
-                            {
-                                path: '',
-                                component: AssetAppointmentListComponent
-                            },
-                            {
-                                path: ':id',
-                                component: AssetAppointmentDetailComponent,
                                 canActivate: [CanActivateService],
                                 canDeactivate: [CanDeactivateService]
                             }

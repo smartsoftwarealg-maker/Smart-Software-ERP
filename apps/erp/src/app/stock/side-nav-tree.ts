@@ -122,7 +122,7 @@ export const stockNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-calendar-check',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_STOCK_DASHBOARD_URL,
             accessRights: 'Dashboard'
         },

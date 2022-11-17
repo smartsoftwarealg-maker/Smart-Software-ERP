@@ -18,6 +18,7 @@ import { AutoCompleteModel, Id } from './auto-complete-model';
     ]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
+    notFound = false;
 
     constructor(
         @Optional() @Self() public ngControl: NgControl,
@@ -273,6 +274,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.loading = true;
                 return txt == null ? of([]) : this.model.filter(txt).pipe(
                     tap(options => {
+                        const curText  = this.autoControl.value.toString();
+                        this.notFound = curText.length > 3 && options.length === 0;
                         if (id == this.counter) {
                             this.model.options = options;
                             if (options.length === 1) {
@@ -332,6 +335,10 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     hasNoMatch(): boolean {
         return !this.loading && this.model.options && this.model.options.length == 0;
+    }
+
+    addCurrentText() {
+        this.model.addEntry(this.autoControl.value.toString());
     }
 }
 

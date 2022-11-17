@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {IsParamService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {IsParamService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {Asset, AssetReception} from '../assets-api';
 import {AssetReceptionService} from '../asset-reception.service';
 import {tap} from 'rxjs/operators';
@@ -49,6 +49,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'creatorName',
     ];
     detail: Asset[] = [];
+    detailPagination = PaginationModel.newInstance();
 
     constructor(
         public override entitySrv: AssetReceptionService,

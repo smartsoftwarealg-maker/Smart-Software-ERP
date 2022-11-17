@@ -26,8 +26,6 @@ import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-d
 import {CustomAttributesModule} from '@ss/custom-attributes';
 import { AssetClassListComponent } from './asset-class-list/asset-class-list.component';
 import { AssetClassDetailComponent } from './asset-class-detail/asset-class-detail.component';
-import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
-import { AssetAppointmentDetailComponent } from './asset-appointment-detail/asset-appointment-detail.component';
 import { AssetOptionsComponent } from './asset-options/asset-options.component';
 import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
 import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/asset-appointment-doc-list.component';
@@ -81,8 +79,6 @@ import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.co
         AssetSearchDialogComponent,
         AssetClassListComponent,
         AssetClassDetailComponent,
-        AssetAppointmentListComponent,
-        AssetAppointmentDetailComponent,
         AssetOptionsComponent,
         AssetReceptionsComponent,
         AssetAppointmentDocListComponent,

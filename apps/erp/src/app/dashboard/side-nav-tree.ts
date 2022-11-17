@@ -3,7 +3,7 @@ import {SideNavNode} from '@ss/common/api-common';
 
 export const dashboardNavTree: SideNavNode = {
     name: 'COMMON_DASHBOARD',
-    icon: 'fas fa-folder',
+    icon: 'fa-solid fa-gauge-min',
     accessRights: 'DASHBOARD',
     children: [
         {
@@ -14,7 +14,7 @@ export const dashboardNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DASHBOARD',
-            icon: 'fas fa-user-circle',
+            icon: 'fa-solid fa-gauge-min',
             route: ABS_DASHBOARD_URL,
             accessRights: 'Dashboard'
         },

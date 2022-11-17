@@ -112,6 +112,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 
     setupForm(b: Asset): UntypedFormGroup {
+        this.receptionSrv.sortColumn = { active: 'id', direction: 'asc'};
         this.isEditable = this.saveButton.visible;
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
@@ -144,9 +145,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             investEnd: [b.investEnd],
             receptionNumber: [b.receptionNumber],
             receptionDate: [{ value: b.receptionDate, disabled: true }],
-            positionNumb: [b.positionNumb],
-            modelNumb: [b.modelNumb],
-            installation_code: [b.installation_code],
             comment: [b.comment],
             office: [b.office],
             beneficiaryId: [b.beneficiaryId],
@@ -261,8 +259,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.serviceDate        =  asset.serviceDate      || null;
                 asset.invoiceNumber      =  asset.invoiceNumber    || null;
                 asset.itemCount          =  asset.itemCount        || null;
-                asset.acquisitionValue   =  asset.acquisitionValue || null;
-                asset.historicValue      =  asset.historicValue    || null;
+                asset.acquisitionValue   =  asset.acquisitionValue || 0;
+                asset.historicValue      =  asset.historicValue    || 0;
                 asset.depreciationRate   =  asset.depreciationRate || null;
                 asset.depreciationType   =  asset.depreciationType || null;
                 asset.residualValue      =  asset.residualValue    || null;
@@ -278,9 +276,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.investEnd          =  null;
                 asset.startYear          =  asset.startYear        || 0;
                 asset.receptionDate      =  asset.receptionDate    || null;
-                asset.positionNumb       =  asset.positionNumb     || null;
-                asset.modelNumb          =  asset.modelNumb        || null;
-                asset.installation_code  =  asset.installation_code|| null;
                 asset.comment            =  asset.comment          || null;
                 asset.requester          =  asset.requester        || null;
                 asset.requestNumber      =  asset.requestNumber    || null;
@@ -288,9 +283,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.orderNumber        =  asset.orderNumber      || null;
                 asset.orderDate          =  asset.orderDate        || null;
                 asset.office             =  asset.office           || null;
+                asset.vat                =  asset.vat              || 0;
                 asset.sales_price        =  asset.sales_price      || null;
-                asset.investment_type    =  asset.investment_type  || 1;
-                asset.outOfService       =  0;
+                asset.investment_type    =  asset.investment_type  || null;
+                asset.outOfService       =  false;
                 asset.accountId          =  asset.accountId        || null;
                 asset.assetClass         =  asset.assetClass       || null;
                 asset.status             =  asset.status           || null;
@@ -384,7 +380,7 @@ class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
 
     override filter = (filter: string) =>
         this.entitySrv
-            .getList(0, 20, filter, 'serial_number')
+            .getList(0, 50, filter, 'serial_number')
             .pipe(map(x => x.body));
 
 }

@@ -123,4 +123,21 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.dashboardSrv.setParentId(getApplicationId(this.router));
         return super.preload();
     }
+
+    excel() {
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        this.dashboardSrv
+            .getExcel(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId)
+            .subscribe(blob => {
+                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+            });
+    }
 }
