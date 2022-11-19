@@ -7,7 +7,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {OptionService} from '../../../../logistics/ui-options/src/lib/option.service';
+import {OptionService} from '@ss/logistics/ui-options';
 import {Observable, tap} from 'rxjs';
 
 

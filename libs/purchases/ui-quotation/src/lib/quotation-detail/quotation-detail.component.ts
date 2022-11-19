@@ -59,7 +59,7 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            centerId: [0],
+            centerId: [0 || this.loginSrv.appCtx.center],
             date: [form.date, Validators.required],
             number: [form.number],
             payMethod: [form.payMethod, Validators.required],

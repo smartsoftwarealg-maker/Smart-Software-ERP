@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService, LoginService } from '@ss/common/api-common';
+import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank, Lookup } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
@@ -16,25 +16,23 @@ import { switchMap, tap } from 'rxjs/operators';
     templateUrl: './journal-detail.component.html'
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
-
     banks: Bank[];
     journalTypes: Lookup[];
 
     constructor(
         public journalSrv: JournalService,
         public lookupsSrv: LookupsService,
-        public loginSrv: LoginService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: FormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
         super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNAL');
     }
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return this.lookupsSrv.getBanks()
             .pipe(
                 tap(x => { this.banks = x }),

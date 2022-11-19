@@ -6,12 +6,13 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
-import {Observable} from 'rxjs';
+import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {ArticleService, QtyPrice} from '@ss/stock/api-article';
 import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-logistics-common';
 import {TransactionLine} from '@ss/logistics/api-transaction';
-import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
+import {LoginService} from '@ss/common/api-common';
+import {OptionService} from '@ss/logistics/ui-options';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
     selectedRow: any;
     articleStock = 0.0;
     showStock = false;
+    mainStore = 0;
 
 
     articleAutoCompleteModel: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
@@ -41,7 +43,9 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         public confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private loginSrv: LoginService,
+        private optionSrv: OptionService) {
         super(consumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,'STOCK_EDIT_CONSUMPTION_LINES');
     }
 
@@ -51,8 +55,9 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
                 tap(p => {
                     this.parentId = +p.parent;
                     this.consumptionLinesService.setParentId(this.parentId);
-                    return p;
-                })
+                }),
+                switchMap(_ => this.optionSrv.get(this.loginSrv.appCtx.center)),
+                tap(res => this.mainStore = res.mainStore)
             );
     }
 
@@ -60,8 +65,8 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
 
-        const store = this.form?.controls['store'].value || 0;
         this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
+            const store = this.form?.controls['store'].value || 0;
             this.articleSrv
                 .getPPrice(<string>art, store, this.parentId, this.id)
                 .subscribe({
@@ -111,7 +116,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
             transacId: [this.parentId],
             reference: [{ value: b.reference, disabled: b.qtySatisfied > 0 }],
             sourceDoc: [b.sourceDoc],
-            store: [{ value: b.store, disabled: b.qtySatisfied > 0 }],
+            store: [{ value: b.store || this.mainStore, disabled: b.qtySatisfied > 0 }],
             qtyOrdered: [b.qtyOrdered],
             qtySatisfied: [b.qtySatisfied],
             qtyInvoiced: [b.qtyInvoiced],

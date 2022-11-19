@@ -65,7 +65,7 @@ export class PurchaseRequestDetailComponent  extends BaseEntityDetailComponent<T
         return this.formBuilder.group({
             id: [form.id],
             document: [0],
-            centerId: [0],
+            centerId: [0 || this.loginSrv.appCtx.center],
             date: [form.date, Validators.required],
             number: [form.number],
             reference: [form.reference],

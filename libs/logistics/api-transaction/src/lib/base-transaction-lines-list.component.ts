@@ -5,17 +5,16 @@ import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, zip} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
-import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
+import {LINES_DETAIL_URL, LoginService, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 
 export class BaseTransactionLinesListComponent {
+
     parentId: number;
     data: TransactionLine[];
     selectedId: number;
     selectedRow: TransactionLine = null;
-    // stores: { [id: number]: string; } = {};
-    // articles: { [reference: string]: string; } = {};
 
     private _updated = false;
     readonly pagination = PaginationModel.newInstance();
@@ -32,16 +31,13 @@ export class BaseTransactionLinesListComponent {
         this.pagination.onChange = () => this.loadDetailLines().subscribe(x => this.shellSrv.setLoading(false));
     }
 
-
     onInit() {
         this.route
             .params
             .pipe(map(p => +p.id),
                 tap(id => this.parentId = id),
-                switchMap(id => this.loadDetailLines()))
-            .subscribe(x => {
-                this.shellSrv.setLoading(false);
-            });
+                switchMap(_ => this.loadDetailLines()))
+            .subscribe(_ => this.shellSrv.setLoading(false));
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
@@ -50,18 +46,7 @@ export class BaseTransactionLinesListComponent {
         return this.detailSrv
             .getPage(this.pagination, null, null)
             .pipe(tap(data => this.data = data),
-                switchMap(data => {
-                    const storesIds = this.data.map(x => x.store);
-                    const articleReferences = this.data.map(x => x.reference);
-                    return zip(this.storeNamesSrv.getAll(storesIds), this.articleSrv.getAll(articleReferences, 'reference'))
-                }),
-                tap(res => {
-                    this.data.forEach(d => {
-                        d.storeName = res[0].find(s => s.id === d.store)?.description;
-                        d.refDescription = res[1].find(a => a.reference === d.reference)?.description2;
-                    });
-                }),
-                switchMap(res => of(this.data)));
+                 switchMap(res => of(this.data)));
     }
 
     select(row: TransactionLine) {

@@ -40,5 +40,6 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
             lookupsSrv,
             'STOCK_EDIT_RECEPTION_LINES'
         );
+        this.articleSrv.setParentURL(null);
     }
 }
