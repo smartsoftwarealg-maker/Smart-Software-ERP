@@ -22,11 +22,16 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         const url = `/pprice?find=${ref}&storeId=${storeId}&transacId=${transacId}&id=${id}`;
         return this.httpSrv.get<QtyPrice>(url);
     }
+
     public getPhotoUrl(id: number): string {
         return id != null && id > 0 ? (ARTICLES_URL + '/' + id + ARTICLE_IMAGE_URL) : null;
     }
 
     setUrl(url: string) {
         this.url = url;
+    }
+
+    get(iid: number | string): Observable<Article> {
+        return super.get(iid);
     }
 }

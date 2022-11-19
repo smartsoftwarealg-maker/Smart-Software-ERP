@@ -1,28 +1,21 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
+import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {ArticleAutocompleteModel, ArticleService} from '@ss/stock/api-article';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import {ArticleService} from '@ss/stock/api-article';
 import {
     BaseTransactionLinesDetailComponent,
-    TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {BaseConsumptionLinesDetail} from '../../../../logistics/api-transaction/src/lib/base-consumption-lines-detail';
 
 @Component({
     selector: 'ss-delivery-lines-detail',
     templateUrl: './delivery-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class DeliveryLinesDetailComponent extends BaseConsumptionLinesDetail {
+export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(
         public inventoryLinesService: TransactionLinesService,
         public shellSrv: ShellService,
@@ -43,7 +36,6 @@ export class DeliveryLinesDetailComponent extends BaseConsumptionLinesDetail {
             articleSrv,
             storeNameSrv,
             lookupsSrv,
-            router,
             'SALES_EDIT_DELIVERY_LINES'
         );
     }

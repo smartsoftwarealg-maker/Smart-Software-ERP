@@ -20,20 +20,20 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
 
     constructor(
         public checkSrv: CheckService,
-        public loginSrv: LoginService,
+        private loginSrv: LoginService,
         public agentSrv: AgentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: FormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
         super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKS');
         this.agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     }
 
-    finishLoading(e: Check) {
+    override finishLoading(e: Check) {
         super.finishLoading(e);
     }
 

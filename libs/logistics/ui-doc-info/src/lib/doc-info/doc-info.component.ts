@@ -8,7 +8,7 @@ interface Entry {
     url: string,
     paramsProvided: (x: string[]) => boolean
 }
-type Menu = { group: string, description: string, entries: Entry[] };
+// type Menu = { group: string, description: string, entries: Entry[] };
 
 @Component({
     selector: 'ss-doc-info',
@@ -107,17 +107,16 @@ export class DocInfoComponent {
             ]
         },
     ];
-    public selectedEntry: Entry = {
-        name: 'archive',
-        description: 'COMMON_ARCHIVE',
-        url: 'archive',
-        paramsProvided: (p: string[]) => p.includes('documentId')
-    };
+    public selectedEntry: Entry = null;
+    // {
+    //     name: 'archive',
+    //     description: 'COMMON_ARCHIVE',
+    //     url: 'archive',
+    //     paramsProvided: (p: string[]) => p.includes('documentId')
+    // };
 
 
-    constructor(private router: Router,
-                private route: ActivatedRoute) {
-    }
+    constructor(private router: Router, private route: ActivatedRoute) {}
 
     getDisplayedEntries(): any {
         return this.entries_.filter(x => this.displayedGroups.includes(x.group));

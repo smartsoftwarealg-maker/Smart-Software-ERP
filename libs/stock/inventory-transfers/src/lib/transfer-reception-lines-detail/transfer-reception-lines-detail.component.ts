@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-    BaseConsumptionLinesDetail
+    BaseTransactionLinesDetailComponent
 } from '@ss/logistics/api-transaction';
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -15,13 +15,12 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
     templateUrl: './transfer-reception-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class TransferReceptionLinesDetailComponent  extends BaseConsumptionLinesDetail {
+export class TransferReceptionLinesDetailComponent  extends BaseTransactionLinesDetailComponent {
     constructor(
         public inventoryLinesService: TransactionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public override articleSrv: ArticleService,
@@ -36,7 +35,6 @@ export class TransferReceptionLinesDetailComponent  extends BaseConsumptionLines
             articleSrv,
             storeNameSrv,
             lookupsSrv,
-            router,
             'STOCK_TRANSFER_RECEPTION'
         );
     }

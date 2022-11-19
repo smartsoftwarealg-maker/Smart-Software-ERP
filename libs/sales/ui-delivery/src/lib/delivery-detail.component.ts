@@ -90,7 +90,7 @@ export class DeliveryDetailComponent extends BaseEntityDetailComponent<Transacti
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
-            centerId: [0],
+            centerId: [0 || this.loginSrv.appCtx.center],
             date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
             number: [b.number || 0],
             reference: [b.reference],
