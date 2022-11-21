@@ -28,5 +28,6 @@
     "INVALID_CENTER":                "Data with invalid center code was requested",
     "KASPERSKY_EXC":                 "Kaspersky has messed up with the request. Please, contact your network administrator to solve the problem.",
     "NO_ACCOUNTING_SOURCE":          "There is no source for this accounting folder",
-    "MISSING_REQUIRED_PARAMS":       "Some required parameters are missing."
+    "MISSING_REQUIRED_PARAMS":       "Some required parameters are missing.",
+    "SOURCE_SAME_DESTINATION":       "The source and the destination are the same"
 }

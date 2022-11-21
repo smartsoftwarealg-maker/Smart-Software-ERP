@@ -32,7 +32,7 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL
+    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL
 } from '../common';
 import {
     AssetCostsDetailComponent,
@@ -65,7 +65,10 @@ import {
     EndTypesListComponent,
     EndTypesDetailComponent,
     SearchListComponent,
-    AssetExcelInjectionComponent, DepreciationRateListComponent, DepreciationRateDetailComponent
+    AssetExcelInjectionComponent,
+    DepreciationRateListComponent,
+    DepreciationRateDetailComponent,
+    AssetsTransferComponent
 } from '@ss/assets-component';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
@@ -394,6 +397,10 @@ export const mainRoutes: Routes = [
     {
         path: ASSET_OPTIONS_URL,
         component: AssetOptionsComponent
+    },
+    {
+        path: ASSET_TRANSFER_URL,
+        component: AssetsTransferComponent
     },
     {
         path: ASSETS_SEARCH_URL,
