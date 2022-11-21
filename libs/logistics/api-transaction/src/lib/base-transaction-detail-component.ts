@@ -7,7 +7,7 @@ import {
 import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap, zip} from 'rxjs';
-import {filter, map, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 

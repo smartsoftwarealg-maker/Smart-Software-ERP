@@ -470,12 +470,12 @@ export const lookupRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    {
-        path: COMMON_REPORTS_URL,
-        data: {reportBase: 'stock'},
-        component: ReportViewComponent,
-        canActivate: [CanActivateService]
-    },
+    // {
+    //     path: COMMON_REPORTS_URL,
+    //     data: {reportBase: 'stock'},
+    //     component: ReportViewComponent,
+    //     canActivate: [CanActivateService]
+    // },
     {
         path: STOCK_SUBCLASSES_URL,
         children: [
