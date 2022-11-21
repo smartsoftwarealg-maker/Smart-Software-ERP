@@ -1,3 +1,7 @@
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Office} from '@ss/common/api-lookup';
+import {BaseEntityService} from '@ss/common/api-base-entity';
+
 export const ASSETS_URL = '/assets';
 export const ASSETS_BUILDING_URL = '/buildings';
 export const ASSET_CLASS_URL = '/asset-classes';
@@ -253,4 +257,12 @@ export interface DepreciationRate {
     parentId: number;
     year: number;
     rate: number;
+}
+
+export class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
+    constructor(public override entitySrv: BaseEntityService<Office>) {
+        super(entitySrv, 'id', 'description');
+    }
+
+    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} ${x.code? '(' + x.code + ')' : ''}`  : null;
 }

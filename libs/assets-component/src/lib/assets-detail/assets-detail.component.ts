@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset, AssetReception, Depreciation} from '../assets-api';
+import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -364,13 +364,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 }
 
-class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
-    constructor(public override entitySrv: BaseEntityService<Office>) {
-        super(entitySrv, 'id', 'description');
-    }
-
-    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} ${x.code? '(' + x.code + ')' : ''}`  : null;
-}
 
 class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
 

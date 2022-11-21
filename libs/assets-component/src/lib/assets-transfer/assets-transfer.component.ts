@@ -1,0 +1,85 @@
+import { Component, OnInit } from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {OfficeService} from '@ss/common/api-lookup';
+import {OfficeAutoComplete} from '../assets-api';
+import {OfficeSearchComponent} from '../office-search/office-search.component';
+import {MatDialog} from '@angular/material/dialog';
+import {FormBuilder, Validators} from '@angular/forms';
+import {AssetsTransferService} from '../assets-transfer.service';
+import {IsParamService} from '@ss/common/api-common';
+
+@Component({
+    selector: 'ss-assets-transfer',
+    templateUrl: './assets-transfer.component.html',
+    styleUrls: ['./assets-transfer.component.scss'],
+})
+export class AssetsTransferComponent implements OnInit {
+    isAQS   = false;
+    srcLookup  = new OfficeAutoComplete(this.officeSrv);
+    dstLookup  = new OfficeAutoComplete(this.officeSrv);
+    form = this.fb.group({
+        source: [0, Validators.required],
+        destination: [0, Validators.required],
+        sourceSite: [{ value: '', disabled: true }],
+        sourceBuilding: [{ value: '', disabled: true }],
+        destinationSite: [{ value: '', disabled: true }],
+        destinationBuilding: [{ value: '', disabled: true }],
+    });
+
+    constructor(private shellSrv: ShellService,
+                private transferSrv: AssetsTransferService,
+                private officeSrv: OfficeService,
+                private dialog: MatDialog,
+                private route: ActivatedRoute,
+                private snackBarSrv: SnackBarService,
+                private isParamSrv: IsParamService,
+                private fb: FormBuilder) {}
+
+    ngOnInit(): void {
+        this.shellSrv.setGoBackPath('..', this.route);
+        this.isParamSrv.is('AQS').subscribe(res => this.isAQS = res);
+        this.shellSrv.setTitle('ASSET_TRANSFER');
+    }
+
+    openSourceDlg() {
+        const dialogRef = this.dialog.open(OfficeSearchComponent,
+            {
+                data: {id: 0, description: null}
+            });
+
+        dialogRef
+            .afterClosed()
+            .subscribe(off => {
+                this.form.controls.source?.setValue(off?.id);
+                this.form.get('sourceSite').setValue(off?.locationDescription, {onlySelf: true});
+                this.form.get('sourceBuilding').setValue(off?.buildingDescription, {onlySelf: true});
+            });
+    }
+
+    openDestinationDlg() {
+        const dialogRef = this.dialog.open(OfficeSearchComponent,
+            {
+                data: {id: 0, description: null}
+            });
+        dialogRef
+            .afterClosed()
+            .subscribe(off => {
+                this.form.controls.destination?.setValue(off?.id);
+                this.form.get('destinationSite').setValue(off?.locationDescription, {onlySelf: true});
+                this.form.get('destinationBuilding').setValue(off?.buildingDescription, {onlySelf: true});
+            });
+    }
+
+    transfer() {
+        this.transferSrv.
+        transfer(this.form.controls.source.value, this.form.controls.destination.value)
+            .subscribe(res => {
+                if (res) {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.form.reset();
+                }
+            });
+    }
+
+}

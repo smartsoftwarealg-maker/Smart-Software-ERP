@@ -27,5 +27,6 @@
     "INVALID_CENTER":                       "",
     "KASPERSKY_EXC":                        "",
     "NO_ACCOUNTING_SOURCE":                 "",
-    "MISSING_REQUIRED_PARAMS":      ""
+    "MISSING_REQUIRED_PARAMS":              "",
+    "SOURCE_SAME_DESTINATION":              ""
 }
