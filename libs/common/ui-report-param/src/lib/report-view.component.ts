@@ -104,7 +104,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     getPage(): Observable<ReportParam[]> {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
-            new HttpParams().set('report', `${this.selectedReport.parent}/${this.selectedReport.name}`)
+            new HttpParams().set('report', `${this.app}/${this.selectedReport.parent}/${this.selectedReport.name}`)
                 .set('app', this.app)
         );
     }

@@ -25,9 +25,10 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         'image',
         'reference',
         'description2',
-        'price',
-        'vat',
-        'mark',
+        // 'price',
+        // 'vat',
+        'markName',
+        'klassName',
         'unit'
     ];
 

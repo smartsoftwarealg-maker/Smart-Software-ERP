@@ -23,6 +23,8 @@ export interface Article {
     unitDescrip?: string;
     vatValue?: number;
     notForSale: boolean;
+    klassName?: string;
+    markName?: string;
 }
 
 export interface QtyPrice {
