@@ -24,6 +24,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup        = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     requesterLookup           = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
+    editable = false;
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -69,6 +70,8 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
     }
 
     override readForm(): AssetReception {
+        const rights = this.shellSrv.getCurrentNodeRights();
+        this.editable = rights.edit;
         const value =  super.readForm();
         value.serialNumber = 0;
         return value;
