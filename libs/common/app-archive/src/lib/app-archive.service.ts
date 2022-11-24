@@ -11,6 +11,7 @@ import {tap} from 'rxjs/operators';
 })
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
+    private _editable = false;
     private _cb : (id: number) => void = null;
 
     constructor(protected override httpSrv: HttpService) {
@@ -37,6 +38,13 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
         return this._appId;
     }
 
+    set editable(value: boolean) {
+        this._editable = value;
+    }
+
+    get editable(): boolean {
+        return this._editable;
+    }
     set objId(id: number) {
         this.setParentId(id);
     }

@@ -23,6 +23,11 @@ export class AppArchiveMainComponent implements OnInit {
     }
 
     @Input()
+    set editable(value: boolean) {
+        this.archiveSrv.editable = value;
+    }
+
+    @Input()
     set id(objectId: number) {
         this.archiveSrv.setParentId(objectId);
         this.refresh();

@@ -13,6 +13,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     private queryId: number;
     protected subscriptions: Subscription[] = [];
     public form: UntypedFormGroup = null;
+    isEditable = true;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -120,9 +121,13 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public finishLoading(e: T) {
         this.shellSrv.setLoading(false);
         this.form = this.setupForm(e);
+        this.isEditable = this.saveButton.visible;
+        if (!this.isEditable && this.form) {
+            this.form.disable();
+        }
     }
 
-    /** called with the new id to allow to upload attachement to this object */
+    /** called with the new id to allow to upload attatchement to this object */
     public uploadAttachments(id: number): Observable<any> {
         return of(null);
     }

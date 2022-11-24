@@ -5,6 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {HttpEventType} from '@angular/common/http';
 import {AssetsService} from '../assets.service';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {UserRightsService} from '@ss/common/api-common';
 
 @Component({
   selector: 'ss-asset-excel-injection',
@@ -19,6 +20,7 @@ export class AssetExcelInjectionComponent implements OnInit {
 
     @Input()
     requiredFileType = '.xlsx';
+    isEditable = false;
 
     fileName = '';
     uploadProgress = 0;
@@ -66,6 +68,7 @@ export class AssetExcelInjectionComponent implements OnInit {
 
     constructor(private injectSrv: AssetsService,
                 private router: Router,
+                private rightsSrv: UserRightsService,
                 public snackBarSrv: SnackBarService,
                 private shellSrv: ShellService,
                 private activatedRoute: ActivatedRoute,
@@ -74,6 +77,8 @@ export class AssetExcelInjectionComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
+        this.isEditable = this.rightsSrv.getUserRights('Asset')?.write;
+        console.log('Editable', this.rightsSrv.getUserRights('Asset'));
     }
 
     onChange(e: any) {

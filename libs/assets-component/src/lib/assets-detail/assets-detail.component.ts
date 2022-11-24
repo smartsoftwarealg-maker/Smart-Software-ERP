@@ -58,7 +58,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         { id: 3, description: 'ASSET_ACTIVITY' },
     ];
 
-    isEditable = true;
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
     statusAutoCompleteModel    = new DefaultAutoCompleteModel(this.statusSrv);
@@ -113,7 +112,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     setupForm(b: Asset): UntypedFormGroup {
         this.receptionSrv.sortColumn = { active: 'id', direction: 'asc'};
-        this.isEditable = this.saveButton.visible;
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ? 11 : 1;
@@ -126,7 +124,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
-            historicValue: [b.historicValue || 0, Validators.required],
+            historicValue: [b.historicValue || 0],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.vat || 0, Validators.required],
@@ -192,9 +190,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                     form.controls['reference'].setValue(this.maxReference);
                 });
             this.setClassListener(form);
-        }
-        if (!this.isEditable) {
-            form.disable();
         }
         return form;
     }
