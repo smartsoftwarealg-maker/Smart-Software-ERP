@@ -78,5 +78,6 @@
     "WORKFLOW_MESSAGES":   "Workflow messages",
     "LEVEL":               "Level",
     "FINAL":               "Final?",
-    "USER_MESSAGES":       "User messages"
+    "USER_MESSAGES":       "User messages",
+    "USER_DOCUMENTS":      "User documents"
 }

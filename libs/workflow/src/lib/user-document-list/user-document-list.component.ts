@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
 import {FormControl} from '@angular/forms';
-import {UserLookup} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -10,6 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserDocumentService} from '../user-document.service';
+import {UserLookup} from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-user-document-list',

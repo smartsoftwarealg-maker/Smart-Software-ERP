@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {DocStatus, UserDocument} from '../workflow-api';
-import {UserLookup} from '@ss/common/api-common';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {UserDocument} from '../workflow-api';
+import {DefaultAutoCompleteModel, UserLookup} from '@ss/common/ui-auto-complete';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {UserListService} from '@ss/common/api-users';
-import {DocStatusService} from '../doc-status.service';
 import {UserDocumentService} from '../user-document.service';
 import {DefinitionLookupService} from '@ss/logistics/document-numbering';
 

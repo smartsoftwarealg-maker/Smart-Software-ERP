@@ -14,8 +14,6 @@ import {LoginService} from '@ss/common/api-common';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {ContractArticleService} from '../contract-article.service';
 import {Article, ArticleService} from '@ss/stock/api-article';
-import {ArticleAutoCompleteModel} from '@ss/logistics/api-logistics-common';
-import {MatSelect} from '@angular/material/select';
 
 @Component({
     selector: 'ss-sales-contract-detail',

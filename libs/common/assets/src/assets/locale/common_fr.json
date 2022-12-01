@@ -240,5 +240,6 @@
     "MOTIVES":              "Motifs",
     "MOTIVE":               "Motif",
     "FIRST_NAME":           "Prénom",
-    "LAST_NAME":            "Nom"
+    "LAST_NAME":            "Nom",
+    "DOCUMENT":             "Document"
 }

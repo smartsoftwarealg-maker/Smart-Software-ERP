@@ -20,4 +20,3 @@ export * from './lib/image-uploader-util.class';
 export * from './lib/lodash';
 export * from './lib/can-activate.service';
 export * from './lib/can-deactivate.service';
-export * from './lib/user-lookup.class';

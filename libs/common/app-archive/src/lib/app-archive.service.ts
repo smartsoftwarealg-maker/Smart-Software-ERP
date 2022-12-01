@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
+
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
     private _editable = false;
@@ -47,5 +48,4 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     set objId(id: number) {
         this.setParentId(id);
     }
-
  }

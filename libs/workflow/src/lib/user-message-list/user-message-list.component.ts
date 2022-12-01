@@ -9,7 +9,7 @@ import {UserMessage} from '../workflow-api';
 import {UserMessageService} from '../user-message.service';
 import {UserListService} from '@ss/common/api-users';
 import {FormControl} from '@angular/forms';
-import {UserLookup} from '../../../../common/api-common/src/lib/user-lookup.class';
+import {UserLookup} from '../../../../common/ui-auto-complete/src/lib/user-lookup.class';
 
 @Component({
     selector: 'ss-user-message-list',

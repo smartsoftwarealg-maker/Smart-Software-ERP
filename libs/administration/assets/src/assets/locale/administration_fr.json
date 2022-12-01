@@ -78,5 +78,6 @@
     "WORKFLOW_MESSAGES":    "Messages de flux de travail",
     "LEVEL":                "Niveau",
     "FINAL":                "Final?",
-    "USER_MESSAGES":        "Messages utilisateur"
+    "USER_MESSAGES":        "Messages utilisateur",
+    "USER_DOCUMENTS":      "Documents utilisateur"
 }

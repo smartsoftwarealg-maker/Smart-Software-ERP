@@ -224,7 +224,8 @@
     "RATE":                "النسبة",
     "RECEPTION":           "استقبال",
     "UPLOAD":              "تحميل",
-    "COLOR":               "اللون",    "CREATED_BY":          "انشأ من قبل",
+    "COLOR":               "اللون",
+    "CREATED_BY":          "انشأ من قبل",
     "MODIFIED_BY":         "التعديل الأخير من قبل",
     "OLD_BALANCE":         "التوازن القديم",
     "BALANCE":             "الرصيد",
@@ -237,5 +238,6 @@
     "MOTIVES":             "الدوافع",
     "MOTIVE":              "الدافع",
     "FIRST_NAME":          "الإسم",
-    "LAST_NAME":           "اللقب"
+    "LAST_NAME":           "اللقب",
+    "DOCUMENT":            "الوثيقة"
 }
