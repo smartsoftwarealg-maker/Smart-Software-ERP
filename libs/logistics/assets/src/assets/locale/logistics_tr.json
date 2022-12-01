@@ -149,5 +149,6 @@
     "SUBTOTAL":         "",
     "SHIPPING":         "",
     "CHECKOUT":         "",
-    "PAYER":            ""
+    "PAYER":            "",
+    "SEND_MESSAGE":     ""
 }

@@ -47,6 +47,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'count',
         'amount',
         'creatorName',
+        'status'
     ];
     detail: Asset[] = [];
     detailPagination = PaginationModel.newInstance();

@@ -74,5 +74,9 @@
     "MODULE":      "Module",
     "LOOKUP_VALUES": "Valeurs de recherche",
     "CUSTOM_DATA":   "Données d'utilisateur",
-    "ARCHIVE_DOCUMENTS": "Documents d'archives"
+    "ARCHIVE_DOCUMENTS": "Documents d'archives",
+    "WORKFLOW_MESSAGES":    "Messages de flux de travail",
+    "LEVEL":                "Niveau",
+    "FINAL":                "Final?",
+    "USER_MESSAGES":        "Messages utilisateur"
 }

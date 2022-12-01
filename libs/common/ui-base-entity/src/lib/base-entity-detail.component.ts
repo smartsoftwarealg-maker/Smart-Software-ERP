@@ -43,6 +43,8 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     public ngOnInit() {
+        const rights = this.shellSrv.getCurrentNodeRights();
+        this.isEditable = rights.edit;
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.saveButton]);
@@ -73,6 +75,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                 tap(_ => {
                     const rights = this.shellSrv.getCurrentNodeRights();
                     this.saveButton.visible = rights.edit;
+                    this.isEditable = rights.edit;
                 }),
                 switchMap(_ => this.getRouteParam()))
             .subscribe({
@@ -121,7 +124,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     public finishLoading(e: T) {
         this.shellSrv.setLoading(false);
         this.form = this.setupForm(e);
-        this.isEditable = this.saveButton.visible;
         if (!this.isEditable && this.form) {
             this.form.disable();
         }

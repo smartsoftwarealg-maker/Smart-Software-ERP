@@ -63,6 +63,9 @@ export const ADMINISTRATION_ACCCESSRIGHTS_URL = 'accessrights';
 export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
 export const ADMINISTRATION_DB_UPDATER_URL   = 'db_updater';
 export const ADMIN_DARIRA_URL = 'dairas';
+export const ADMIN_USER_MESSAGES_URL = 'user-messages';
+export const ADMIN_USER_DOCUMENTS_URL = 'user-documents';
+
 
 // Organizations
 export const ORGANIZATIONS_CHART_URL = 'chart';
@@ -135,6 +138,7 @@ export const LOGISTICS_ACTIVITY_URL = 'activities';
 export const LOGISTICS_CURRENCY_URL = 'currencies';
 export const LOGISTICS_CATEGORY_URL = 'sales-categories';
 export const FURNITURE_STATUS_URL = 'furniture-states';
+export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
 
 // Contracts
 export const CONTRACTS_PROJECT_TYPE_URL = 'projectTypes';
@@ -281,6 +285,9 @@ export const ABS_ADMINISTRATION_TRACEABILITY_URL = '/' + [MAIN_PAGE_URL, ADMINIS
 export const ABS_DB_UPDATER_URL                  = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_DB_UPDATER_URL].join('/');
 export const ABS_APP_ARCHIVE_DOCUMENTS_URL       = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMINISTRATION_ARCHIVE_DOCUMENTS_URL].join('/');
 export const ABS_ADMINISTRATION_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOGISTICS_NUMBERING_URL].join('/');
+export const ABS_ADMINISTRATION_WORKFLOW_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOGISTICS_WORKFLOW_URL].join('/');
+export const ABS_ADMINISTRATION_USER_MESSAGES_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_USER_MESSAGES_URL].join('/');
+export const ABS_ADMINISTRATION_USER_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_USER_DOCUMENTS_URL].join('/');
 
 // Organizations
 export const ABS_ORGANIZATIONS_CHART_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS_APP_URL, ORGANIZATIONS_CHART_URL].join('/');

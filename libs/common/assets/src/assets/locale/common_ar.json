@@ -236,6 +236,6 @@
     "CONTRACTS":           "العقود",
     "MOTIVES":             "الدوافع",
     "MOTIVE":              "الدافع",
-    "FIRST_NAME": "الإسم",
-    "LAST_NAME": "اللقب"
+    "FIRST_NAME":          "الإسم",
+    "LAST_NAME":           "اللقب"
 }

@@ -9,7 +9,6 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {TotalComponent} from "./total.component";
 
-
 @NgModule({
     imports: [
         CommonModule,

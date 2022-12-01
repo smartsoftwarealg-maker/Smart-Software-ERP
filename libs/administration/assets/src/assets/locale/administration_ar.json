@@ -74,5 +74,9 @@
     "MODULE":      "وحدة",
     "LOOKUP_VALUES": "قيم البحث",
     "CUSTOM_DATA":   "بيانات المستخدم",
-    "ARCHIVE_DOCUMENTS": "وثائق الأرشيف"
+    "ARCHIVE_DOCUMENTS": "وثائق الأرشيف",
+    "WORKFLOW_MESSAGES":   "رسائل سير العمل",
+    "LEVEL":               "مستوى",
+    "FINAL":               "نهائي؟",
+    "USER_MESSAGES":       "رسائل المستخدم"
 }

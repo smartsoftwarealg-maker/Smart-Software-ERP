@@ -28,5 +28,7 @@
     "KASPERSKY_EXC":                        "",
     "NO_ACCOUNTING_SOURCE":                 "",
     "MISSING_REQUIRED_PARAMS":              "",
-    "SOURCE_SAME_DESTINATION":              ""
+    "SOURCE_SAME_DESTINATION":              "",
+    "MESSAGE_ALREADY_SENT":                 "",
+    "HIGHER_LEVEL_EXISTS":                  ""
 }
