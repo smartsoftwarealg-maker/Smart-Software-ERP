@@ -156,5 +156,6 @@
     "SUBTOTAL":         "Subtotal",
     "SHIPPING":         "Shipping",
     "CHECKOUT":         "Checkout",
-    "PAYER":            "Payer"
+    "PAYER":            "Payer",
+    "SEND_MESSAGE":     "Send a message"
 }

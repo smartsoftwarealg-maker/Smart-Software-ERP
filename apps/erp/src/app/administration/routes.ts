@@ -17,7 +17,11 @@ import {
     LOGISTICS_NUMBERING_URL,
     ASSET_END_TYPE_URL,
     FURNITURE_STATUS_URL,
-    ADMIN_DARIRA_URL
+    ADMIN_DARIRA_URL,
+    LOGISTICS_WORKFLOW_URL,
+    ADMIN_USER_MESSAGES_URL,
+    ADMIN_USER_DOCUMENTS_URL,
+    ADMIN_WORKFLOW_INBOX_URL,
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -48,6 +52,12 @@ import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
+import {
+    DocStatusListComponent,
+    DocStatusDetailComponent,
+    UserMessageListComponent,
+    UserMessageDetailComponent, UserDocumentListComponent, UserDocumentDetailComponent, WorkflowInboxListComponent
+} from '@ss/workflow';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -303,6 +313,58 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: LOGISTICS_WORKFLOW_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DocStatusListComponent
+            },
+            {
+                path: ':id',
+                component: DocStatusDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ADMIN_USER_MESSAGES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: UserMessageListComponent
+            },
+            {
+                path: ':id',
+                component: UserMessageDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ADMIN_USER_DOCUMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: UserDocumentListComponent
+            },
+            {
+                path: ':id',
+                component: UserDocumentDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ADMIN_WORKFLOW_INBOX_URL,
+        component: WorkflowInboxListComponent
     },
     {
         path: FURNITURE_STATUS_URL,

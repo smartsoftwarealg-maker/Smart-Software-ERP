@@ -36,6 +36,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.status}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AMOUNT</mat-header-cell>
             <mat-cell *matCellDef="let e">

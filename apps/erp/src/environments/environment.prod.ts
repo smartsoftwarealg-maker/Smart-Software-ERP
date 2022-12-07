@@ -37,10 +37,11 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL,
+    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
+import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -65,6 +66,7 @@ export const navBar = [
     treasuryNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
+    workflowNavTree,
     foodNavTree
 ];
 
@@ -166,9 +168,18 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/food/food.module').then(m => m.FoodCartModule)
     },
     {
+        path: WORK_FLOW_URL,
+        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+    },
+    {
         path: SHOPPING_CART_APP_URL,
         loadChildren: () => import('../app/shopping-cart/shopping-cart.module').then(m => m.ShoppingCartModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
+
+export const APPLICATION_LIST = [
+    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
+    'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+    'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];

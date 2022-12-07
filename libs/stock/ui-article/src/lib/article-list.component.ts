@@ -20,17 +20,9 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-
-    displayedColumns = [
-        'image',
-        'reference',
-        'description2',
-        // 'price',
-        // 'vat',
-        'markName',
-        'klassName',
-        'unit'
-    ];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'awp', 'markName', 'klassName', 'unit'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'price1', 'markName', 'klassName', 'unit'];
+    displayedColumns = this.STOCK_COLS;
 
     private marks: Mark[] = [];
     private units: Unit[] = [];
@@ -66,11 +58,14 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         super.ngOnInit();
         zip(this.lookupsSrv.getMarks(),
             this.lookupsSrv.getUnits(),
-            this.lookupsSrv.getVats())
+            this.lookupsSrv.getVats(),
+            this.route.paramMap)
             .subscribe(res => {
                 this.marks = res[0];
                 this.units = res[1];
                 this.vats = res[2];
+                this.displayedColumns = res[3].get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
+                console.log('price', this.displayedColumns);
             });
         this.subscriptions.push(
             this.filterCtrl

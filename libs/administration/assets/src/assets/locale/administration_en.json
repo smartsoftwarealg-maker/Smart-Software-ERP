@@ -74,5 +74,11 @@
     "MODULE":      "Module",
     "LOOKUP_VALUES": "Lookup values",
     "CUSTOM_DATA":   "User data",
-    "ARCHIVE_DOCUMENTS": "Archive documents"
+    "ARCHIVE_DOCUMENTS": "Archive documents",
+    "WORKFLOW_MESSAGES":   "Workflow messages",
+    "LEVEL":               "Level",
+    "FINAL":               "Final?",
+    "USER_MESSAGES":       "User messages",
+    "USER_DOCUMENTS":      "User documents",
+    "WORKFLOW_INBOX":      "Inbox"
 }

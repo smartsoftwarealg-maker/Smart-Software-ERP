@@ -149,7 +149,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             sales_price: [b.sales_price],
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
-            old_depreciation: [b.old_depreciation || 0, Validators.required],
+            old_depreciation: [b.old_depreciation || 0],
             outOfService: [b.outOfService || false, Validators.required],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass, Validators.required],

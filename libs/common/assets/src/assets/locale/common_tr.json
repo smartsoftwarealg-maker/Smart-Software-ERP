@@ -222,5 +222,8 @@
     "CONTRACTS":           "Sözleşmeler",
     "MOTIVE":              "Güdü",
     "FIRST_NAME":          "Isim",
-    "LAST_NAME":           "Soyadi"
+    "LAST_NAME":           "Soyadi",
+    "DOCUMENT":            "",
+    "TIME":                "",
+    "SHOW_ALL":            ""
 }

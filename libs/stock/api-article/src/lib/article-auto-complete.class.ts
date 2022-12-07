@@ -1,4 +1,4 @@
-import {DefaultAutoCompleteModel, Id} from '@ss/common/ui-auto-complete';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Article, ArticleService} from '@ss/stock/api-article';
 import {EventEmitter} from '@angular/core';
 import {Store, LotsService} from '@ss/common/api-lookup';
@@ -15,7 +15,7 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
         this.evenEmitter.emit(art);
     }
 
-    toString = a => a? `${a.reference} ${a.description2}` : null;
+    toString = (x: any) => x ? `${x[this.idField]} ${x[this.descriptionField]}`.substring(0, 50) : null;
 }
 
 export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Store> {

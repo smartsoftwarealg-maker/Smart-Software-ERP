@@ -1,0 +1,13 @@
+.list-div {
+    height: calc(100% - 100px);
+    width: 90%;
+    margin: 16px auto;
+    border-radius: 2em;
+}
+
+.ctrl-div {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}

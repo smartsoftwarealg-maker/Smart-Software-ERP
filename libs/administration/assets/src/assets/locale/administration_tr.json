@@ -71,5 +71,11 @@
     "LOOKUP":      "",
     "MODULE":      "",
     "CUSTOM_DATA":   "",
-    "ARCHIVE_DOCUMENTS": ""
+    "ARCHIVE_DOCUMENTS": "",
+    "WORKFLOW_MESSAGES":   "",
+    "LEVEL":               "",
+    "FINAL":               "",
+    "USER_MESSAGES":       "",
+    "USER_DOCUMENTS":      "",
+    "WORKFLOW_INBOX":      ""
 }

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContractArticleService} from '../contract-article.service';
-import {FormBuilder, FormControl, FormGroup, UntypedFormGroup, Validators} from '@angular/forms';
-import {ProjectArticle} from '../contract-api.class';
+import {FormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {filter, map, of, switchMap, tap} from 'rxjs';
-import {ArticleAutoCompleteModel} from '@ss/logistics/api-logistics-common';
-import {ArticleService} from '@ss/stock/api-article';
+import {ArticleAutoCompleteModel, ArticleService} from '@ss/stock/api-article';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 
