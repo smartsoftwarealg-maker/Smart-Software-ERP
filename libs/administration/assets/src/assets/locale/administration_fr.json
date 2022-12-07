@@ -79,5 +79,6 @@
     "LEVEL":                "Niveau",
     "FINAL":                "Final?",
     "USER_MESSAGES":        "Messages utilisateur",
-    "USER_DOCUMENTS":      "Documents utilisateur"
+    "USER_DOCUMENTS":      "Documents utilisateur",
+    "WORKFLOW_INBOX":      "Boîte de réception"
 }

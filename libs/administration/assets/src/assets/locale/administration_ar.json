@@ -79,5 +79,6 @@
     "LEVEL":               "مستوى",
     "FINAL":               "نهائي؟",
     "USER_MESSAGES":       "رسائل المستخدم",
-    "USER_DOCUMENTS":      "وثائق المستخدم"
+    "USER_DOCUMENTS":      "وثائق المستخدم",
+    "WORKFLOW_INBOX":      "صندوق الوارد"
 }

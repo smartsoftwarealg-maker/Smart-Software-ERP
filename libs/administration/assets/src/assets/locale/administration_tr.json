@@ -76,5 +76,6 @@
     "LEVEL":               "",
     "FINAL":               "",
     "USER_MESSAGES":       "",
-    "USER_DOCUMENTS":      ""
+    "USER_DOCUMENTS":      "",
+    "WORKFLOW_INBOX":      ""
 }

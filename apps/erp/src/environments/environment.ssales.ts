@@ -70,3 +70,7 @@ export const appRoutes: Routes =  [
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
+
+export const APPLICATION_LIST = [
+    'ADMINISTRATION', 'DASHBOARD',  'ORGANIZATION', 'PAYMENTS',
+    'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];

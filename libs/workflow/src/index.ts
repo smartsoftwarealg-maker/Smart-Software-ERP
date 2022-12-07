@@ -6,3 +6,4 @@ export * from './lib/user-message-detail/user-message-detail.component';
 export * from './lib/user-message-list/user-message-list.component';
 export * from './lib/user-document-detail/user-document-detail.component';
 export * from './lib/user-document-list/user-document-list.component';
+export * from './lib/workflow-inbox-list/workflow-inbox-list.component';

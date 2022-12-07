@@ -241,5 +241,8 @@
     "MOTIVE":               "Motif",
     "FIRST_NAME":           "Prénom",
     "LAST_NAME":            "Nom",
-    "DOCUMENT":             "Document"
+    "DOCUMENT":             "Document",
+    "TIME":                 "Temps",
+    "SHOW_ALL":             "Afficher tout",
+    "WORKFLOW":             "Flux de travail"
 }

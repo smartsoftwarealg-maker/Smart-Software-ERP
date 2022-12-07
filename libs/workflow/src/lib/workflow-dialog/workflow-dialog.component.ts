@@ -43,7 +43,8 @@ export class WorkflowDialogComponent implements OnInit {
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),
-            senderId: this.loginSrv.appCtx.id
+            senderId: this.loginSrv.appCtx.id,
+            receiverId: this.loginSrv.appCtx.id
         };
         this.mailboxSrv.setParentId(this.loginSrv.appCtx.id);
         this.mailboxSrv

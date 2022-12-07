@@ -44,10 +44,17 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="price">
+            <ng-container matColumnDef="price1">
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
                 <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
                     {{ e.price1 | number: '1.2-2'}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="awp">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                    {{ e.awp | number: '1.2-2'}}
                 </mat-cell>
             </ng-container>
 

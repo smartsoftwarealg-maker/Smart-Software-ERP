@@ -239,5 +239,8 @@
     "MOTIVE":              "الدافع",
     "FIRST_NAME":          "الإسم",
     "LAST_NAME":           "اللقب",
-    "DOCUMENT":            "الوثيقة"
+    "DOCUMENT":            "الوثيقة",
+    "TIME":                "زمن",
+    "SHOW_ALL":            "عرض الكل",
+    "WORKFLOW":            "سير العمل"
 }

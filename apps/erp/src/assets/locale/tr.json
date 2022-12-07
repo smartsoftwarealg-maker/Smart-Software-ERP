@@ -37,5 +37,6 @@
     "SCHEDULED_SALES": "",
     "MISSIONS":        "",
     "SHOPPING-CART":   "",
-    "FOOD":            "Food"
+    "FOOD":            "Food",
+    "WORKFLOW":        ""
 }

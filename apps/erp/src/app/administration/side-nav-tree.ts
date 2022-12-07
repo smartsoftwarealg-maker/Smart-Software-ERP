@@ -18,7 +18,7 @@ import {
     ABS_ADMINISTRATION_DAIRAS_URL,
     ABS_ADMINISTRATION_DOCUMENT_URL,
     ABS_ADMINISTRATION_WORKFLOW_URL,
-    ABS_ADMINISTRATION_USER_MESSAGES_URL, ABS_ADMINISTRATION_USER_DOCUMENT_URL
+    ABS_ADMINISTRATION_USER_MESSAGES_URL, ABS_ADMINISTRATION_USER_DOCUMENT_URL, ABS_ADMINISTRATION_WORKFLOW_INBOX_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -116,24 +116,6 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-hand-paper',
             route: ABS_ADMINISTRATION_ACCESS_RIGHTS_URL,
             accessRights: 'AccessRight'
-        },
-        {
-            name: 'ADMINISTRATION_WORKFLOW_MESSAGES',
-            icon: 'fa-sharp fa-solid fa-water',
-            route: ABS_ADMINISTRATION_WORKFLOW_URL,
-            accessRights: 'Workflow'
-        },
-        {
-            name: 'ADMINISTRATION_USER_DOCUMENTS',
-            icon: 'fa-solid fa-id-card',
-            route: ABS_ADMINISTRATION_USER_DOCUMENT_URL,
-            accessRights: 'UserDocument'
-        },
-        {
-            name: 'ADMINISTRATION_USER_MESSAGES',
-            icon: 'fa-regular fa-user-doctor-message',
-            route: ABS_ADMINISTRATION_USER_MESSAGES_URL,
-            accessRights: 'UserMessage'
         },
         {
             name: 'COMMON_DB_UPDATER',

@@ -3,13 +3,13 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService, User} from '@ss/common/api-common';
+import {LoginService, PaginatorPersistenceService, User} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {UserMessage} from '../workflow-api';
 import {UserMessageService} from '../user-message.service';
 import {UserListService} from '@ss/common/api-users';
 import {FormControl} from '@angular/forms';
-import {UserLookup} from '../../../../common/ui-auto-complete/src/lib/user-lookup.class';
+import {UserLookup} from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-user-message-list',
@@ -17,7 +17,7 @@ import {UserLookup} from '../../../../common/ui-auto-complete/src/lib/user-looku
     styleUrls: ['./user-message-list.component.scss'],
 })
 export class UserMessageListComponent extends BaseEntityListComponent<UserMessage> {
-    userCtrl = new FormControl<number>(0);
+    userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
     userAutoComplete = new UserLookup(this.usersSrv);
     displayedColumns = [
         'messageDescription',
@@ -33,7 +33,8 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService,
-        private usersSrv: UserListService) {
+        private usersSrv: UserListService,
+        private loginSrv: LoginService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -47,6 +48,7 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
             this.entitySrv.setParentId(u?.id || 0);
             this.refresh();
         }
-        this.entitySrv.setParentId(0);
+        this.entitySrv.setParentId(this.loginSrv.appCtx.id);
     }
+
 }

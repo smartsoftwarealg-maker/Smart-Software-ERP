@@ -1,14 +1,13 @@
 import { Routes } from '@angular/router';
 import {
     COMMON_CUSTOMER_PROFILE_URL, COMMON_REPORTS_URL,
-    CSPACE_CART_URL,
-    CSPACE_CARTDETAIL_URL, FOOD_CART_URL, FOOD_CARTDETAIL_URL, PAYPAL_CHECKOUT_URL, PAYPAL_REVIEW_URL
+    FOOD_CART_URL, FOOD_CARTDETAIL_URL, PAYPAL_CHECKOUT_URL, PAYPAL_REVIEW_URL
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, LIST_URL} from '@ss/common/api-common';
 import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {FoodCartDetailComponent} from '@ss/sales/food-cart';
-import {CheckoutComponent, ReviewComponent} from '../../../../../libs/sales/paypal/src';
+import {CheckoutComponent, ReviewComponent} from '@ss/sales/paypal';
 
 export const mainRoutes: Routes = [
     {

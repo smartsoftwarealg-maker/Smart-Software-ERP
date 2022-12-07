@@ -20,7 +20,7 @@ import {
     STOCK_ANOMALY_URL,
     STOCK_REPORTS_URL,
     DASHBOARD_URL,
-    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL
+    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL, STOCK_ARTICLE_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -90,12 +90,13 @@ export const mainRoutes: Routes = [
         canActivate: [CanActivateService],
     },
     {
-        path: LOGISTICS_ARTICLES_URL,
+        path: STOCK_ARTICLE_URL,
         children: [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
                 canActivate: [CanActivateService],
+                data: { price: 'awp' },
                 children: docInfoRoutes
             },
             {

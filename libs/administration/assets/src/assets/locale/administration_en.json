@@ -79,5 +79,6 @@
     "LEVEL":               "Level",
     "FINAL":               "Final?",
     "USER_MESSAGES":       "User messages",
-    "USER_DOCUMENTS":      "User documents"
+    "USER_DOCUMENTS":      "User documents",
+    "WORKFLOW_INBOX":      "Inbox"
 }

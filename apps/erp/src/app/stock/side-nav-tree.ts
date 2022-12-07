@@ -15,7 +15,7 @@ import {
     ABS_STOCK_TRANSFER_URL,
     ABS_STOCK_TRANSFER_RECEPTION_URL,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_USER_STORE_URL
+    ABS_USER_STORE_URL, ABS_STOCK_ARTICLES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -27,7 +27,7 @@ export const stockNavTree: SideNavNode = {
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
-            route: ABS_LOGISTICS_ARTICLES_URL,
+            route: ABS_STOCK_ARTICLES_URL,
             accessRights: 'Article'
         },
         {
