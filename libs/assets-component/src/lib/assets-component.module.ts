@@ -1,15 +1,15 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {AssetsDetailComponent} from './assets-detail/assets-detail.component';
-import {AssetsListComponent} from './assets-list/assets-list.component';
-import {RouterModule} from '@angular/router';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {CommonUiConfirmationDialogModule} from '@ss/common/ui-confirmation-dialog';
-import {UiPaginationModule} from '@ss/common/ui-pagination';
-import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {MaterialModule} from '@ss/common/api-common';
-import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AssetsDetailComponent } from './assets-detail/assets-detail.component';
+import { AssetsListComponent } from './assets-list/assets-list.component';
+import { RouterModule } from '@angular/router';
+import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
+import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
+import { UiPaginationModule } from '@ss/common/ui-pagination';
+import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { AssetCostsListComponent } from './asset-costs-list/asset-costs-list.component';
 import { AssetCostsDetailComponent } from './asset-costs-detail/asset-costs-detail.component';
 import { AssetRevaluationListComponent } from './asset-revaluation-list/asset-revaluation-list.component';
@@ -23,11 +23,11 @@ import { AssetRevaluationTypeDetailComponent } from './asset-revaluation-type-de
 import { AssetLocationsListComponent } from './asset-locations-list/asset-locations-list.component';
 import { AssetLocationsDetailComponent } from './asset-locations-detail/asset-locations-detail.component';
 import { AssetSearchDialogComponent } from './asset-search-dialog/asset-search-dialog.component';
-import {CustomAttributesModule} from '@ss/custom-attributes';
+import { CustomAttributesModule } from '@ss/custom-attributes';
 import { AssetClassListComponent } from './asset-class-list/asset-class-list.component';
 import { AssetClassDetailComponent } from './asset-class-detail/asset-class-detail.component';
 import { AssetOptionsComponent } from './asset-options/asset-options.component';
-import {AssetReceptionsComponent} from './asset-receptions/asset-receptions.component';
+import { AssetReceptionsComponent } from './asset-receptions/asset-receptions.component';
 import { AssetAppointmentDocListComponent } from './asset-appointment-doc-list/asset-appointment-doc-list.component';
 import { AssetAppointmentDocDetailComponent } from './asset-appointment-doc-detail/asset-appointment-doc-detail.component';
 import { AssetInventoryDetailComponent } from './asset-inventory-detail/asset-inventory-detail.component';
@@ -36,7 +36,7 @@ import { AssetBlockingTypeListComponent } from './asset-blocking-type-list/asset
 import { AssetBlockingTypeDetailComponent } from './asset-blocking-type-detail/asset-blocking-type-detail.component';
 import { AssetBuildingListComponent } from './asset-building-list/asset-building-list.component';
 import { AssetBuildingDetailComponent } from './asset-building-detail/asset-building-detail.component';
-import {AppArchiveModule} from '@ss/common/app-archive';
+import { AppArchiveModule } from '@ss/common/app-archive';
 import { AssetReceptionsDetailComponent } from './asset-receptions-detail/asset-receptions-detail.component';
 import { OfficeSearchComponent } from './office-search/office-search.component';
 import { EndTypesListComponent } from './end-types-list/end-types-list.component';
@@ -46,6 +46,7 @@ import { AssetExcelInjectionComponent } from './asset-excel-injection/asset-exce
 import { DepreciationRateListComponent } from './depreciation-rate-list/depreciation-rate-list.component';
 import { DepreciationRateDetailComponent } from './depreciation-rate-detail/depreciation-rate-detail.component';
 import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.component';
+import { AssetsTransferComponent } from './assets-transfer/assets-transfer.component';
 
 @NgModule({
     imports: [
@@ -59,7 +60,7 @@ import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.co
         CommonUiDatepickerModule,
         RouterModule,
         CustomAttributesModule,
-        AppArchiveModule
+        AppArchiveModule,
     ],
     declarations: [
         AssetsDetailComponent,
@@ -98,7 +99,7 @@ import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.co
         DepreciationRateListComponent,
         DepreciationRateDetailComponent,
         DuplicateDialogComponent,
+        AssetsTransferComponent,
     ],
 })
-export class AssetsComponentModule {
-}
+export class AssetsComponentModule {}

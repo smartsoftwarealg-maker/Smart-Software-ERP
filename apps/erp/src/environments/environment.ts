@@ -40,12 +40,13 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     SHOPPING_CART_APP_URL,
-    FOOD_CART_APP_URL
+    FOOD_CART_APP_URL, WORK_FLOW_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
+import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -71,6 +72,7 @@ export const navBar = [
     dashboardNavTree,
     scheduledSalesNavTree,
     // shoppingCartNavTree,
+    workflowNavTree,
     foodNavTree
 ];
 
@@ -110,6 +112,10 @@ export const appRoutes: Routes =  [
     {
         path: FOOD_CART_APP_URL,
         loadChildren: () => import('../app/food/food.module').then(m => m.FoodCartModule)
+    },
+    {
+        path: WORK_FLOW_URL,
+        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
     },
     {
         path: ACCOUNTING_APP_URL,
@@ -179,6 +185,10 @@ export const appRoutes: Routes =  [
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
 
+export const APPLICATION_LIST = [
+    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
+    'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+    'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

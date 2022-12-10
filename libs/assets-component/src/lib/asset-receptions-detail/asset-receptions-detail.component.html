@@ -83,6 +83,11 @@
     </mat-form-field>
 
     <mat-form-field class="default-50 sm-50">
+        <mat-label translate>COMMON_STATUS</mat-label>
+        <input matInput formControlName="status" type="text">
+    </mat-form-field>
+
+    <mat-form-field class="default-50 sm-50">
         <mat-label translate>COMMON_CREATED_BY</mat-label>
         <input matInput formControlName="creatorName" type="text">
     </mat-form-field>
@@ -97,5 +102,5 @@
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }} </div> {{id}}-->
 
 <div class="content" *ngIf="id > 0">
-    <ss-app-archive-main [id]="id" [appId]="2"></ss-app-archive-main>
+    <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable"></ss-app-archive-main>
 </div>

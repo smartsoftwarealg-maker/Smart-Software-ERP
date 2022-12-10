@@ -129,7 +129,7 @@
             <span class="default-100"></span>
             <mat-form-field class="default-50">
                 <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
-                <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
+                <ss-date-picker formControlName="acquisitionDate" required></ss-date-picker>
             </mat-form-field>
 
 
@@ -146,7 +146,7 @@
 
             <mat-form-field class="default-50">
                 <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
-                <input matInput formControlName="historicValue" type="number" required>
+                <input matInput formControlName="historicValue" type="number" >
                 <mat-error *ngIf="form.controls['historicValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
@@ -462,7 +462,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-app-archive-main [id]="id" [appId]="3"></ss-app-archive-main>
+            <ss-app-archive-main [id]="id" [appId]="3" [editable]="isEditable"></ss-app-archive-main>
 
         </mat-expansion-panel>
 

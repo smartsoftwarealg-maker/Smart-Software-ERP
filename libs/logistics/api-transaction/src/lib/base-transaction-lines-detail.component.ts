@@ -3,16 +3,15 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Article, ArticleService, QtyPrice} from '@ss/stock/api-article';
+import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/stock/api-article';
 import {LookupsService, LotsService, Store} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {fillObject, LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {TransactionLinesClass} from './transaction-lines.class';
-import {inject, OnInit} from '@angular/core';
+import {inject} from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import {ArticleAutoCompleteModel, LotAutoCompleteModel} from '@ss/logistics/api-logistics-common';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> {
     private loginSrv  =  inject(LoginService);

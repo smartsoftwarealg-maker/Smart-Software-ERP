@@ -17,9 +17,10 @@ import {
     PURCHASES_APP_URL,
     SALES_APP_URL,
     STOCK_APP_URL,
-    CONTRACTS_APP_URL,
+    CONTRACTS_APP_URL, WORK_FLOW_URL,
 } from '../app/common';
 import {logisticsAdminNavTree} from '../app/logistics-admin/side-nav-tree';
+import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -34,6 +35,7 @@ export const navBar = [
     salesNavTree,
     financeNavTree,
     dashboardNavTree,
+    workflowNavTree
 ];
 
 export const langAssets = [
@@ -56,6 +58,10 @@ export const appRoutes: Routes =  [
     {
         path: LOGISTICS_APP_URL,
         loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+    },
+    {
+        path: WORK_FLOW_URL,
+        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
     },
     {
         path: STOCK_APP_URL,
@@ -92,3 +98,8 @@ export const appRoutes: Routes =  [
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
+
+export const APPLICATION_LIST = [
+    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE',
+    'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+    'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];

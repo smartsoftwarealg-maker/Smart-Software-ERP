@@ -44,5 +44,6 @@
     "CONTRACTS":       "Contrats",
     "MISSIONS":        "Missions",
     "SHOPPING-CART":   "Panier",
-    "FOOD":            "Food"
+    "FOOD":            "Food",
+    "WORKFLOW":        "Flux de travail"
 }

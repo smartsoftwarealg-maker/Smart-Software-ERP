@@ -1,0 +1,23 @@
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 8px auto;
+    border-radius: 1.5em;
+    padding: 1em;
+}
+.table-div {
+    height: calc(100% - 120px);
+}
+
+.mat-column-messageDescription {
+    flex: 4 1 auto;
+    border-left: #cfcf solid 1px;
+}
+
+
+.pagination {
+    width: 90%;
+    max-width: 500px;
+    margin: 8px auto;
+    border-radius: 1.5em;
+}

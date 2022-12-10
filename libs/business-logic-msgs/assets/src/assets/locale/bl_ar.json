@@ -29,5 +29,8 @@
     "INVALID_CENTER":               "تم طلب بيانات ذات رمز مركز غير صالح",
     "KASPERSKY_EXC":                "لقد عبث كاسبيرسكي بالطلب. من فضلك ، اتصل بمسؤول الشبكة لحل المشكلة.",
     "NO_ACCOUNTING_SOURCE":         "لا يوجد مصدر لمجلد المحاسبة هذا",
-    "MISSING_REQUIRED_PARAMS":      "بعض المعلمات المطلوبة مفقودة."
+    "MISSING_REQUIRED_PARAMS":      "بعض المعلمات المطلوبة مفقودة.",
+    "SOURCE_SAME_DESTINATION":      "المصدر والوجهة متماثلان",
+    "MESSAGE_ALREADY_SENT":         "تم إرسال هذه الرسالة بالفعل",
+    "HIGHER_LEVEL_EXISTS":          "هذه الوثيقة في مستوى أعلى"
 }

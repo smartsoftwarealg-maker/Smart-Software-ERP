@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ABS_ASSET_RECEPTIONS_URL} from '../../../../../apps/erp/src/app/common';
 import {AssetsService} from '../assets.service';
 import {switchMap, tap} from 'rxjs/operators';
@@ -14,16 +14,28 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {ConsumerService, SupplierService} from '@ss/logistics/api-agent';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {MatDialog} from '@angular/material/dialog';
+import {DocImportComponent} from '@ss/logistics/ui-doc-import';
+import {WorkflowDialogComponent} from '@ss/workflow';
 
 @Component({
     selector: 'ss-asset-receptions-detail',
     templateUrl: './asset-receptions-detail.component.html',
     styleUrls: ['./asset-receptions-detail.component.scss']
 })
-export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> {
+export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> implements OnInit {
+    private sendBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-envelope',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_SEND_MESSAGE',
+        visible: true,
+        click: () => this.sendMessage(),
+    }
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup        = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     requesterLookup           = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
+    editable = false;
 
     constructor(
         public override entitySrv: AssetReceptionService,
@@ -36,15 +48,22 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         private supplierSrv: SupplierService,
         private consumerSrv: ConsumerService,
         private loginSrv: LoginService,
-        private router: Router) {
+        private router: Router,
+        private dialog: MatDialog) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+    }
 
     public setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here
         if (b.id) {
             this.router.navigate(['archive'], { relativeTo: this.route }).then();
+        }
+        if (this.isEditable) {
+            this.shellSrv.addButton(this.sendBtn);
         }
         return this.formBuilder.group({
             id:             [b.id],
@@ -63,12 +82,15 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             orderDate:      [b.orderDate],
             deliveryDate:   [b.deliveryDate],
             invoiceDate:    [b.invoiceDate],
+            status:         [{ value: b.status, disabled: true }],
             creatorName:    [{ value: b.creatorName, disabled: true }],
             modifierName:   [{ value: b.modifierName, disabled: true }],
         });
     }
 
     override readForm(): AssetReception {
+        const rights = this.shellSrv.getCurrentNodeRights();
+        this.editable = rights.edit;
         const value =  super.readForm();
         value.serialNumber = 0;
         return value;
@@ -89,4 +111,20 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
     //             }
     //         ));
     // }
+
+    private sendMessage() {
+        if (!this.sendBtn.disabled) {
+            const id = this.form.controls['id'].value;
+            const dialogRef = this.dialog.open(WorkflowDialogComponent, {
+                width: '350px',
+                height: '400px',
+                data: { assetRecepId: id, senderId: this.loginSrv.appCtx.id }
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                this.snackBarSrv.showSuccessMessage();
+            });
+        }
+    }
+
 }

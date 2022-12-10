@@ -21,7 +21,7 @@ import {
     ABS_ASSET_STATUS_TYPES,
     ABS_ASSETS_AGENT_URL,
     ABS_ASSET_MARKS_URL,
-    ABS_ASSET_DASHBOARD_URL
+    ABS_ASSET_DASHBOARD_URL, ABS_ASSET_TRANSFER_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -142,6 +142,12 @@ export const assetsNavTree: SideNavNode = {
             icon: 'fa-solid fa-scanner-gun',
             route: ABS_ASSET_INVENTORY_URL,
             accessRights: 'AssetInventory'
+        },
+        {
+            name: 'ASSET_TRANSFER',
+            icon: 'fa-sharp fa-solid fa-shuffle',
+            route: ABS_ASSET_TRANSFER_URL,
+            accessRights: 'AssetTransfer'
         },
         {
             name: 'COMMON_OPTIONS',

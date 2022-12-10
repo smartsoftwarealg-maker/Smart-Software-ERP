@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Asset, AssetReception, Depreciation} from '../assets-api';
+import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -58,7 +58,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         { id: 3, description: 'ASSET_ACTIVITY' },
     ];
 
-    isEditable = true;
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
     statusAutoCompleteModel    = new DefaultAutoCompleteModel(this.statusSrv);
@@ -113,7 +112,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     setupForm(b: Asset): UntypedFormGroup {
         this.receptionSrv.sortColumn = { active: 'id', direction: 'asc'};
-        this.isEditable = this.saveButton.visible;
         const today = new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ? 11 : 1;
@@ -126,7 +124,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate || today],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
-            historicValue: [b.historicValue || 0, Validators.required],
+            historicValue: [b.historicValue || 0],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
             residualValue: [b.residualValue || 0, Validators.required],
             vat: [b.vat || 0, Validators.required],
@@ -151,7 +149,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             sales_price: [b.sales_price],
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
-            old_depreciation: [b.old_depreciation || 0, Validators.required],
+            old_depreciation: [b.old_depreciation || 0],
             outOfService: [b.outOfService || false, Validators.required],
             startYear:   [b.startYear || 0],
             assetClass:  [b.assetClass, Validators.required],
@@ -192,9 +190,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                     form.controls['reference'].setValue(this.maxReference);
                 });
             this.setClassListener(form);
-        }
-        if (!this.isEditable) {
-            form.disable();
         }
         return form;
     }
@@ -364,13 +359,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     }
 }
 
-class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
-    constructor(public override entitySrv: BaseEntityService<Office>) {
-        super(entitySrv, 'id', 'description');
-    }
-
-    override toString = (x:Office) => x ? `${x.description.substring(0, 50)} ${x.code? '(' + x.code + ')' : ''}`  : null;
-}
 
 class ReceptionAutoComplete extends DefaultAutoCompleteModel<AssetReception> {
 

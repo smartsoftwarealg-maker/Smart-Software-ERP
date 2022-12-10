@@ -30,10 +30,11 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL,
+    CONTRACTS_APP_URL, WORK_FLOW_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -56,6 +57,7 @@ export const navBar = [
     assetsNavTree,
     treasuryNavTree,
     dashboardNavTree,
+    workflowNavTree
 ];
 
 export const langAssets = [
@@ -137,6 +139,12 @@ export const appRoutes: Routes =  [
         path: MISSIONS_APP_URL,
         loadChildren: () => import('../app/missions/missions.module').then(m => m.MissionsModule)
     },
+
+    {
+        path: WORK_FLOW_URL,
+        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+    },
+
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
@@ -144,3 +152,8 @@ export const appRoutes: Routes =  [
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
+
+export const APPLICATION_LIST = [
+    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
+    'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+    'PAYROLL', 'PURCHASES', 'WORKFLOW']; //, 'SALES', 'WEBARCHIVE'

@@ -223,5 +223,7 @@
     "MOTIVE":              "Güdü",
     "FIRST_NAME":          "Isim",
     "LAST_NAME":           "Soyadi",
-    "WORKFLOW":            ""
+    "DOCUMENT":            "",
+    "TIME":                "",
+    "SHOW_ALL":            ""
 }

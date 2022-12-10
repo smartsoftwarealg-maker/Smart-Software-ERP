@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
@@ -10,6 +10,7 @@ import {AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-a
 export class DocumentArchiveComponent implements OnInit {
     @ViewChild(AppArchiveMainComponent) archiveDoc: AppArchiveListComponent = null;
     documentId = 0;
+    isEditable = false;
 
     constructor(private route: ActivatedRoute) {}
 
@@ -20,5 +21,10 @@ export class DocumentArchiveComponent implements OnInit {
                 this.archiveDoc.id = +param['documentId'] || 0;
             }
         });
+    }
+
+    @Input()
+    set editable(value: boolean) {
+        this.isEditable = value;
     }
 }

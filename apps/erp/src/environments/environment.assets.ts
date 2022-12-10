@@ -8,9 +8,10 @@ import {
     ADMINISTRATION_APP_URL,
     ASSETS_APP_URL,
     DASHBOARD_APP_URL,
-    ORGANIZATIONS_APP_URL,
+    ORGANIZATIONS_APP_URL, WORK_FLOW_URL,
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
+import {workflowNavTree} from '../app/workflow/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -20,6 +21,7 @@ export const navBar = [
     administrationNavTree,
     organizationsNavTree,
     dashboardNavTree,
+    workflowNavTree,
     assetsNavTree,
 ];
 
@@ -53,6 +55,10 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
     },
     {
+        path: WORK_FLOW_URL,
+        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+    },
+    {
         path: DASHBOARD_APP_URL,
         loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
     },
@@ -63,3 +69,7 @@ export const appRoutes: Routes =  [
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
 ];
+
+export const APPLICATION_LIST = [
+    'ADMINISTRATION', 'ASSETS', 'DASHBOARD',
+    'INVENTORY', 'ORGANIZATION', 'WORKFLOW'];

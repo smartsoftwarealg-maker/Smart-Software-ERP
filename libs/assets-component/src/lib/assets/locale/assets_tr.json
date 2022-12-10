@@ -53,5 +53,6 @@
     "INVOICE_NUMBER":      "",
     "INVOICE_DATE":        "",
     "SITE":                "",
-    "GOTO_DETAIL":   ""
+    "GOTO_DETAIL":   "",
+    "TRANSFER":            ""
 }

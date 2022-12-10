@@ -155,5 +155,6 @@
     "SUBTOTAL":         "Sous-total",
     "SHIPPING":         "Expédition",
     "CHECKOUT":         "Paiement",
-    "PAYER":            "Payeur"
+    "PAYER":            "Payeur",
+    "SEND_MESSAGE":     "Envoyer un message"
 }

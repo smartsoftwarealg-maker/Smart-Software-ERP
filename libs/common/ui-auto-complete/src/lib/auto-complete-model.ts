@@ -8,7 +8,6 @@ import {SnackBarService} from '@ss/common/ui-shell';
 export type Id = number | string;
 
 export interface AutoCompleteModel<T> {
-
     valueOf: (a: T) => Id;
     toString: (a: T) => string;
     getById: (a: Id) => Observable<T>;

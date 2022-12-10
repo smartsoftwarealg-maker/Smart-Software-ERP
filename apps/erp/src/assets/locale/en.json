@@ -43,5 +43,6 @@
     "CONTRACTS":       "Contracts",
     "MISSIONS":        "Missions",
     "SHOPPING-CART":   "Shopping cart",
-    "FOOD":            "Food"
+    "FOOD":            "Food",
+    "WORKFLOW":        "Workflow"
 }

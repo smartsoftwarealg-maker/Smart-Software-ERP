@@ -1,16 +1,17 @@
-import {Injectable, Input} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
-import {APP_ARCHIVE_URL, APPLICATIONS_URL, AppArchive} from '../../../../logistics/api-agent/src/lib/agent-api';
-import {map, Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {APP_ARCHIVE_URL, APPLICATIONS_URL, AppArchive} from '@ss/logistics/api-agent';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
     providedIn: 'root'
 })
+
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
+    private _editable = false;
     private _cb : (id: number) => void = null;
 
     constructor(protected override httpSrv: HttpService) {
@@ -37,8 +38,14 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
         return this._appId;
     }
 
+    set editable(value: boolean) {
+        this._editable = value;
+    }
+
+    get editable(): boolean {
+        return this._editable;
+    }
     set objId(id: number) {
         this.setParentId(id);
     }
-
  }

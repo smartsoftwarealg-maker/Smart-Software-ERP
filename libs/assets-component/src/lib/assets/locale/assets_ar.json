@@ -56,5 +56,6 @@
     "INVOICE_NUMBER":      "رقم الفاتورة",
     "INVOICE_DATE":        "تاريخ الفاتورة",
     "SITE":                "الموقع",
-    "GOTO_DETAIL":   "افتح صفحة التفاصيل"
+    "GOTO_DETAIL":         "افتح صفحة التفاصيل",
+    "TRANSFER":            "تحويلات"
 }

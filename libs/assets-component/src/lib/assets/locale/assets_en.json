@@ -56,5 +56,6 @@
     "INVOICE_NUMBER":      "Invoice number",
     "INVOICE_DATE":        "Invoice date",
     "SITE":                "Site",
-    "GOTO_DETAIL":   "Open detail page"
+    "GOTO_DETAIL":         "Open detail page",
+    "TRANSFER":            "Transfers"
 }

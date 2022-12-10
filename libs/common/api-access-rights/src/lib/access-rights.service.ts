@@ -4,6 +4,7 @@ import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {map} from "rxjs/operators";
+import {APPLICATION_LIST} from '../../../../../apps/erp/src/environments/environment';
 
 export const ACCESS_RIGHTS_URL = '/accessrights';
 
@@ -20,9 +21,7 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
         const params = new HttpParams().set('app', app);
         const url = '/entities';
         return app === 'APPLICATIONS' ?
-            of(['ACCOUNTING', 'ADMINISTRATION','ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
-                'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-                'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE'].sort((a, b) => a.localeCompare(b) )) : //'COMMON', , 'EXCHANGE'
+            of(APPLICATION_LIST) : //'COMMON', , 'EXCHANGE'
             this.httpSrv
                 .get<{ entities: string[] }>(url, params)
                 .pipe(map(res => res['entities'].sort((a, b) => a.localeCompare(b))));

@@ -66,13 +66,14 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             canEdit: new UntypedFormControl(false),
             canDelete: new UntypedFormControl(false)
         });
-        this.editButton.icon = 'fas fa-save';
-        this.editButton.label = 'COMMON_SAVE';
-        this.editButton.disabled = !this.selectedItem;
     }
 
     ngOnInit() {
         super.ngOnInit();
+        this.editButton.icon = 'fas fa-save';
+        this.editButton.label = 'COMMON_SAVE';
+        this.editButton.disabled = !this.selectedItem;
+        this.shellSrv.updateShell();
         this.lookupSrv.getRoles()
             .pipe(
                 switchMap(res => {

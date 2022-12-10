@@ -25,7 +25,7 @@ export class AppArchiveListComponent implements OnInit {
 
     @Input() editable = true;
 
-    constructor(private entitySrv: AppArchiveService,
+    constructor(public entitySrv: AppArchiveService,
                 private snackBarSrv: SnackBarService,
                 private router: Router,
                 private route: ActivatedRoute,

@@ -56,5 +56,6 @@
     "INVOICE_NUMBER":      "Numéro de facture",
     "INVOICE_DATE":        "Date de facturation",
     "SITE":                "Site",
-    "GOTO_DETAIL":   "Ouvrir la page de détail"
+    "GOTO_DETAIL":         "Ouvrir la page de détail",
+    "TRANSFER":            "Transferts"
 }
