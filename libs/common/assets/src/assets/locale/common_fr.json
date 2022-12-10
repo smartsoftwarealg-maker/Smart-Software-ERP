@@ -239,6 +239,7 @@
     "CONTRACTS":            "Contrats",
     "MOTIVES":              "Motifs",
     "MOTIVE":               "Motif",
-    "FIRST_NAME": "Prénom",
-    "LAST_NAME": "Nom"
+    "FIRST_NAME":           "Prénom",
+    "LAST_NAME":            "Nom",
+    "WORKFLOW":             "Workflow"
 }

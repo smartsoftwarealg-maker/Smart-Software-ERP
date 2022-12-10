@@ -23,9 +23,10 @@ export class UiStockInfoComponent implements OnInit {
     displayedColumns = [
         'store',
         'stock',
+        'awp',
         'price1',
         'price2',
-        'price3'
+        'price3',
     ];
 
   constructor(public stockSrv: StockInfoService,
