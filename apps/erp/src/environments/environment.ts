@@ -187,7 +187,7 @@ export const appRoutes: Routes =  [
 
 export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
-    'INVENTORY', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+    'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
     'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'WORKFLOW'];
 /*
  * For easier debugging in development mode, you can import the following file

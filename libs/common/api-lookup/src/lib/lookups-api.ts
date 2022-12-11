@@ -59,6 +59,7 @@ export const WORKSHOPS_URL = '/lookups/workshops';
 export interface Wilaya {
     id: number;
     description: string;
+    descriptionAr?: string;
 }
 
 export interface Vat {
@@ -143,6 +144,7 @@ export interface Mark {
 export interface Class {
     id: number;
     description: string;
+    descriptionAr?: string;
     accountId?: number;
     accountno?: string;
     accountName?: string;

@@ -1,4 +1,5 @@
 import {
+    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_FINANCE_CCOMPENSATIONS,
     ABS_FINANCE_CPAYMENTS,
     ABS_SALES_DASHBOARD_URL,
@@ -68,11 +69,19 @@ export const salesNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_SALES_REPORTS_URL,
+            accessRights: 'Report'
+        },
+        {
+            name: 'ADMINISTRATION_WORKFLOW_INBOX',
+            icon: 'fa-solid fa-envelope',
+            route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+            accessRights: 'MailBox'
         },
         {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_SALES_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ],
     accessRights: "SALES"

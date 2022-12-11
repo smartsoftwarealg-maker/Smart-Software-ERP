@@ -54,7 +54,8 @@ export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
     public setupForm(e: Wilaya): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

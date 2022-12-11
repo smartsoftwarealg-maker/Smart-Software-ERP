@@ -122,7 +122,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             reference2: [b.reference2 || this.maxReference, ref2Validators],
             description: [b.description, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
-            serviceDate: [b.serviceDate || today],
+            serviceDate: [b.serviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
             historicValue: [b.historicValue || 0],
             depreciationRate: [b.depreciationRate || 0, Validators.required],

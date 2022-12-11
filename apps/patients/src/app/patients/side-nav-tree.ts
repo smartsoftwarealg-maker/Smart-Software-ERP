@@ -33,7 +33,8 @@ export const patientNavTree: SideNavNode = {
         {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-file-chart-line',
-            route: ABS_PATIENTS_REPORT_PARAMS
+            route: ABS_PATIENTS_REPORT_PARAMS,
+            accessRights: 'Report'
         }
     ]
 };

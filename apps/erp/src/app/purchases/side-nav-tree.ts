@@ -9,7 +9,7 @@ import {
     ABS_PURCHASE_RECEPTION_URL,
     ABS_PURCHASE_REPORTS_URL,
     ABS_PURCHASE_REQUEST_URL,
-    ABS_STOCK_AGENT_URL, ABS_LOGISTICS_ARTICLES_URL
+    ABS_STOCK_AGENT_URL, ABS_LOGISTICS_ARTICLES_URL, ABS_ADMINISTRATION_WORKFLOW_INBOX_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -70,11 +70,19 @@ export const purchasesNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_PURCHASE_REPORTS_URL,
+            accessRights: 'Report'
+        },
+        {
+            name: 'ADMINISTRATION_WORKFLOW_INBOX',
+            icon: 'fa-solid fa-envelope',
+            route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+            accessRights: 'MailBox'
         },
         {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_PURCHASE_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
     ]
 };

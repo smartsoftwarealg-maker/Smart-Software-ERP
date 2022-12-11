@@ -77,6 +77,7 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr],
             accountId: [e.accountId]
         });
     }
