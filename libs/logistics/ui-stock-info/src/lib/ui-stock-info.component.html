@@ -37,6 +37,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="awp">
+                <mat-header-cell *matHeaderCellDef><span translate>LOGISTICS_AWP</span></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.awp | number : '1.2-4'}}
+                </mat-cell>
+            </ng-container>
+
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>

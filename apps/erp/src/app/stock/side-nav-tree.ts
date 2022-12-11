@@ -15,15 +15,25 @@ import {
     ABS_STOCK_TRANSFER_URL,
     ABS_STOCK_TRANSFER_RECEPTION_URL,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_USER_STORE_URL, ABS_STOCK_ARTICLES_URL
+    ABS_USER_STORE_URL,
+    ABS_STOCK_ARTICLES_URL,
+    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+    ABS_DASHBOARD_URL,
+    ABS_STOCK_CLASSES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',
     icon: 'fas fa-warehouse-alt',
-    accessRights: 'INVENTORY',
+    accessRights: 'STOCK',
     children: [
+        {
+            name: 'COMMON_CLASSES',
+            icon: 'fa-solid fa-family',
+            route: ABS_STOCK_CLASSES_URL,
+            accessRights: 'Klass'
+        },
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
@@ -121,10 +131,16 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'Report'
         },
         {
+            name: 'ADMINISTRATION_WORKFLOW_INBOX',
+            icon: 'fa-solid fa-envelope',
+            route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+            accessRights: 'MailBox'
+        },
+        {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_STOCK_DASHBOARD_URL,
-            accessRights: 'Dashboard'
+            accessRights: 'DASHBOARD'
         },
     ]
 };

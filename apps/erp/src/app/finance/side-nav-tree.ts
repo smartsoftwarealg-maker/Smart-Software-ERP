@@ -38,6 +38,7 @@ export const financeNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fas fa-calendar-check',
             route: ABS_FINANCE_REPORTS_URL,
+            accessRights: 'Report'
         },
     ]
 };

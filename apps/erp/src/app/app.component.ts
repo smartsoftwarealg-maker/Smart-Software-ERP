@@ -6,7 +6,6 @@ import { ShellService } from '@ss/common/ui-shell';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { of, zip } from 'rxjs';
 import { Event, NavigationEnd, Router } from '@angular/router';
-import { AccessRightsService } from '@ss/common/api-access-rights';
 import {langAssets, navBar} from '../environments/environment';
 
 @Component({
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit {
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         private monthSelectorSrv: PayrollMonthService,
-        private rightsSrv: AccessRightsService,
         private router: Router) {
         langAssets.forEach(e => langSrv.addSource(e[0], e[1]));
     }

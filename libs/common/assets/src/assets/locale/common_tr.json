@@ -225,5 +225,9 @@
     "LAST_NAME":           "Soyadi",
     "DOCUMENT":            "",
     "TIME":                "",
-    "SHOW_ALL":            ""
+    "SHOW_ALL":            "",
+    "DOCUMENT":            "",
+    "TIME":                "",
+    "SHOW_ALL":            "",
+    "EPAYMENT":            ""
 }

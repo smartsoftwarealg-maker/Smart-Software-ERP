@@ -37,8 +37,10 @@
     }
 
     .message-content {
+        max-height: calc(90% - 96px);
         width: 100%;
         padding-bottom: 16px;
+        overflow: auto;
     }
 
     .dialog-actions {

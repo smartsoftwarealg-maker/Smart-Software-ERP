@@ -106,6 +106,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'COMMON_REPORTS',
             icon: 'fa-sharp fa-solid fa-file-chart-column',
             route: ABS_ACC_REPORTS_URL,
+            accessRights: 'Report'
         },
         {
             name: 'ACC_BALANCE_QUERIES',

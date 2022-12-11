@@ -242,5 +242,9 @@
     "DOCUMENT":            "الوثيقة",
     "TIME":                "زمن",
     "SHOW_ALL":            "عرض الكل",
-    "WORKFLOW":            "سير العمل"
+    "WORKFLOW":            "سير العمل",
+    "DOCUMENT":            "الوثيقة",
+    "TIME":                "زمن",
+    "SHOW_ALL":            "عرض الكل",
+    "EPAYMENT":            "الدفع الإلكتروني"
 }

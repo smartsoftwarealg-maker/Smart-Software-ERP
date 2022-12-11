@@ -16,7 +16,7 @@ export const dashboardNavTree: SideNavNode = {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_DASHBOARD_URL,
-            accessRights: 'Dashboard'
+            accessRights: 'DASHBOARD'
         },
     ]
 };

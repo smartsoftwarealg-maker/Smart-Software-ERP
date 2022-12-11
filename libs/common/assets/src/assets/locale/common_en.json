@@ -242,5 +242,9 @@
     "DOCUMENT":            "Document",
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
-    "WORKFLOW":            "Workflow"
+    "WORKFLOW":            "Workflow",
+    "DOCUMENT":            "Document",
+    "TIME":                "Time",
+    "SHOW_ALL":            "Show all",
+    "EPAYMENT":            "E-payment"
 }

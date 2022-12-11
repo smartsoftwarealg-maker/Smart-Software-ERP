@@ -72,4 +72,4 @@ export const appRoutes: Routes =  [
 
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'ASSETS', 'DASHBOARD',
-    'INVENTORY', 'ORGANIZATION', 'WORKFLOW'];
+    'STOCK', 'ORGANIZATION', 'WORKFLOW'];

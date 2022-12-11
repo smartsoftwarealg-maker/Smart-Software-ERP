@@ -1,20 +1,20 @@
 <div class="container">
-    <div class="user-div">
-        <div class="user-list-div">
-            <mat-list role="list" class="user-list-div">
-                <mat-list-item class="selectable"
-                               [class.selected]="u.id === selectedUserId"
-                               role="listitem"
-                               *ngFor="let u of users"
-                               (click)="selectUser(u)">
-                    {{ u.fullName }}
-                </mat-list-item>
-            </mat-list>
-        </div>
-        <div class="pagination-container b-b-background">
-            <ss-pagination [paginationModel]="userPagination"></ss-pagination>
-        </div>
-    </div>
+    <mat-card class="user-list-div">
+        <mat-list role="list" class="user-list-div">
+            <mat-list-item class="selectable"
+                           [class.selected]="u.id === selectedUserId"
+                           role="listitem"
+                           *ngFor="let u of users"
+                           (click)="selectUser(u)">
+                {{ u.fullName }}
+            </mat-list-item>
+        </mat-list>
+        <mat-card-footer>
+            <div class="pagination-container b-b-background">
+                <ss-pagination [paginationModel]="userPagination"></ss-pagination>
+            </div>
+        </mat-card-footer>
+    </mat-card>
 
     <div class="store-div">
         <div [formGroup]="storeForm" class="btn-div">
@@ -43,7 +43,7 @@
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>
-        <div class="store-list-div">
+        <mat-card class="store-list-div">
             <mat-list role="list">
                 <mat-list-item class="selectable"
                                [class.selected]="s.id === selectedStore?.id"
@@ -53,7 +53,7 @@
                     {{ s.storeDescription }}
                 </mat-list-item>
             </mat-list>
-        </div>
+        </mat-card>
         <div class="pagination-container b-b-background">
             <ss-pagination [paginationModel]="storePagination"></ss-pagination>
         </div>

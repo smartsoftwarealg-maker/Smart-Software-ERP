@@ -244,5 +244,9 @@
     "DOCUMENT":             "Document",
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
-    "WORKFLOW":             "Flux de travail"
+    "WORKFLOW":             "Flux de travail",
+    "DOCUMENT":             "Document",
+    "TIME":                 "Temps",
+    "SHOW_ALL":             "Afficher tout",
+    "EPAYMENT":             "E-paiement"
 }
