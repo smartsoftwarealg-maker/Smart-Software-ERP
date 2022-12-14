@@ -21,6 +21,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.status }}
+        </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="beneficiary">
         <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_BENEFICIARY</mat-header-cell>
         <mat-cell *matCellDef="let e">
