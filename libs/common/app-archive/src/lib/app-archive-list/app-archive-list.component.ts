@@ -146,4 +146,9 @@ export class AppArchiveListComponent implements OnInit {
             });
     }
 
+    setEditable(value: boolean) {
+        this.editable = value;
+        console.log('editable', value);
+    }
+
 }

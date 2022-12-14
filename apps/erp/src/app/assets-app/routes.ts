@@ -400,7 +400,7 @@ export const mainRoutes: Routes = [
     },
     {
         path: ASSET_TRANSFER_URL,
-        component: AssetsTransferComponent
+        component: AssetsTransferComponent,
     },
     {
         path: ASSETS_SEARCH_URL,

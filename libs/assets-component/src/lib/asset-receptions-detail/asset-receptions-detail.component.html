@@ -96,11 +96,9 @@
         <mat-label translate>COMMON_MODIFIED_BY</mat-label>
         <input matInput formControlName="modifierName" type="text">
     </mat-form-field>
-
 </form>
 
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }} </div> {{id}}-->
-
-<div class="content" *ngIf="id > 0">
+<div class="content" *ngIf="id > 0 && form !== null" >
     <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable"></ss-app-archive-main>
 </div>

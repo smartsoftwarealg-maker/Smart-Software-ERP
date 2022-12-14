@@ -23,6 +23,7 @@ export interface MailBox {
     transacId?: number;
     payOrderId?: number;
     assetRecepId?: number;
+    assetAppointmentId?: number;
     senderName?: string;
     receiverName?: string;
     message?: string;

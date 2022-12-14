@@ -176,6 +176,7 @@ export interface AssetReception {
     requesterName?: string;
     memo?: string;
     status?: string;
+    validated?: boolean
 }
 
 export interface ASSAppointmentHeader {
@@ -198,6 +199,8 @@ export interface ASSAppointmentHeader {
     modifiedBy?: number;
     creatorName?: string;
     modifierName?: string;
+    validated?: boolean;
+    status?: string;
 }
 
 export interface AssetAppointmentLine {
