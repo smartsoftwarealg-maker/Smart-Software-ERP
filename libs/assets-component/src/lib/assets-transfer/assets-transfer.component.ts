@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OfficeService} from '@ss/common/api-lookup';
 import {OfficeAutoComplete} from '../assets-api';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AssetsTransferService} from '../assets-transfer.service';
 import {IsParamService, UserRightsService} from '@ss/common/api-common';
+import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 
 @Component({
     selector: 'ss-assets-transfer',
@@ -37,6 +38,8 @@ export class AssetsTransferComponent implements OnInit {
                 private snackBarSrv: SnackBarService,
                 private isParamSrv: IsParamService,
                 private rightsSrv: UserRightsService,
+                private router: Router,
+                private activatedRoute: ActivatedRoute,
                 private fb: FormBuilder) {}
 
     ngOnInit(): void {
@@ -82,6 +85,9 @@ export class AssetsTransferComponent implements OnInit {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
                     this.form.reset();
+                    if (res.length > 0) {
+                        this.router.navigate(['../asset-appointments', res[0]], { relativeTo: this.activatedRoute }).then();
+                    }
                 }
             });
     }
