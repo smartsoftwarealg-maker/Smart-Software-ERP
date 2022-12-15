@@ -9,7 +9,7 @@ export class AssetsTransferService {
 
   constructor(private httpSrv: HttpService) { }
 
-  transfer(src: number, dst: number): Observable<any> {
+  transfer(src: number, dst: number): Observable<number[]> {
       return this.httpSrv.post('/assets/transfer', { source: src, destination: dst });
   }
 }
