@@ -28,7 +28,7 @@ export interface Exchange {
 })
 export class CurrencyExchangeService extends BaseEntityExtendedService<Exchange> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EXCHANGE_EXCHANGE_URL);
     }
 }

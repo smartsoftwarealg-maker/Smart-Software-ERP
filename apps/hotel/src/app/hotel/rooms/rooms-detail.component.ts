@@ -26,10 +26,10 @@ export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSo
     public form: UntypedFormGroup = null;
     public saved = false;
 
-    constructor(public router: Router,
+    constructor(public override router: Router,
         public activatedRoute: ActivatedRoute,
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public userSrv: UserService,
         private formBuilder: UntypedFormBuilder,
         private confirmationSrv: ConfirmationDialogService,

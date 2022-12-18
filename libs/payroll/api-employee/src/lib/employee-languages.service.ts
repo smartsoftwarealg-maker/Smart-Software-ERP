@@ -6,7 +6,7 @@ import { LANGUAGES_PARENT_URL, LANGUAGES_CHILD_URL, EmployeeLanguage } from './e
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeLanguagesService extends BaseEntityService<EmployeeLanguage> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, LANGUAGES_CHILD_URL, LANGUAGES_PARENT_URL);
     }
 }

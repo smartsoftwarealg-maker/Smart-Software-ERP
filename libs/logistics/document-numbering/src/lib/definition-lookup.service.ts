@@ -8,7 +8,7 @@ import {Definition, DEFINITION_URL} from './document-api';
 })
 export class DefinitionLookupService extends BaseEntityExtendedService<Definition> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, DEFINITION_URL);
   }
 }

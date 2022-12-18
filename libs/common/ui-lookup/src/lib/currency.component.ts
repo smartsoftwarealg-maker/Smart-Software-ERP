@@ -20,13 +20,13 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
     constructor(
         public currencySrv: CurrencyService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CURRENCIES');
         this.pagination.pageSize = 20;
     }
@@ -43,22 +43,22 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
 
     constructor(
         public currencySrv: CurrencyService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(currencySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
     }
 
-    public setupForm(e: Currency): UntypedFormGroup {
+    public override setupForm(e: Currency): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]
         });
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
     }

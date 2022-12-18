@@ -24,7 +24,7 @@ export class AccProjectDetailComponent extends BaseEntityDetailComponent<Lookup>
         super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
 
-    public setupForm(e: Mark): UntypedFormGroup {
+    public override setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

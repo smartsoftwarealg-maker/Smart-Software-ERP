@@ -25,7 +25,7 @@ export class SalesModeDetailComponent extends BaseEntityDetailComponent<SalesMod
     }
 
 
-    public setupForm(b: SalesMode) {
+    public override setupForm(b: SalesMode) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

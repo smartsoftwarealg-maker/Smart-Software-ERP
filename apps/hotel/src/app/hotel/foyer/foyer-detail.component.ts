@@ -79,10 +79,10 @@ export class FoyerDetailComponent extends AbstractEntityView<FullService, Backen
     };
 
     constructor(public foyerSrv: FoyerService,
-                public router: Router,
+                public override router: Router,
                 public userSrv: UserService,
                 public httpSrv: HttpService,
-                public snackBarSrv: SnackBarService,
+                public override snackBarSrv: SnackBarService,
                 public activatedRoute: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService) {
         // entity: null

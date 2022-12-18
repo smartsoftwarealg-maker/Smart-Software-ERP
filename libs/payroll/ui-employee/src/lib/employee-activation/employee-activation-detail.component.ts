@@ -24,29 +24,29 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
 
     constructor(
         public employeeActivationSrv: EmployeeActivationService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {
         super(employeeActivationSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.empId = +p.id;
+                    this.empId = +p['id'];
                     this.employeeActivationSrv.setParentId(this.empId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: EmployeeActivation): UntypedFormGroup {
+    override setupForm(a: EmployeeActivation): UntypedFormGroup {
         this.entity = a;
         return this.formBuilder.group({
             id: a.id,
@@ -62,7 +62,7 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         });
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getEmploymentTypes()
             .pipe(
                 tap((types: any[]) => this.employmentTypes = types),

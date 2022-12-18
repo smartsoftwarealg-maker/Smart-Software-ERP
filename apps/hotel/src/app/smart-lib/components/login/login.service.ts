@@ -47,7 +47,7 @@ export class LoginService {
     constructor(private httpSrv: HttpService,
         public userSrv: UserService,
         private decSrv: DecService,
-        public router: Router) {
+        public override router: Router) {
     }
 
     get isLoggedIn(): boolean {

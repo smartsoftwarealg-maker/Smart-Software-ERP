@@ -23,20 +23,19 @@ export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice>
 
     constructor(
         public agentPriceSrv: AgentPriceService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(agentPriceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_AGENT_PRICE');
     }
 
-    public ngOnInit() {
+    public override ngOnInit() {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
     }
-
 }

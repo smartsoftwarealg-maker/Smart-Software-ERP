@@ -97,14 +97,14 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return this.route.params
             .pipe(
                 switchMap(p => {
-                    this.queryId = +p.id;
+                    this.queryId = +p['id'];
                     return this.loadEntity(this.queryId || 0);
                 })
             );
     }
 
     //public assignQueryParams(p: any) {
-    //    this.queryId = +p.id;
+    //    this.queryId = +p['id'];
     //}
 
     public loadEntity(id: number): Observable<T> {

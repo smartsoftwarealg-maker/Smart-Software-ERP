@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class PayModeService extends BaseEntityService<PayMode> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PAY_MODE_URL);
     }
 

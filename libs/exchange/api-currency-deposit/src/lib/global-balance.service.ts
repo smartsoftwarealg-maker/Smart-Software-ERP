@@ -10,7 +10,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class GlobalBalanceService extends BaseEntityExtendedService<GBalance> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EXCHANGE_GBALANCE_URL);
     }
 

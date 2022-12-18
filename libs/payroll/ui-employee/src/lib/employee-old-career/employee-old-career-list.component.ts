@@ -11,7 +11,7 @@ import { PaginationModel, LanguageService } from '@ss/common/api-common';
     templateUrl: './employee-old-career-list.component.html',
     styleUrls: ['./employee-old-career-list.component.scss']
 })
-export class EmployeeOldCareerListComponent implements OnInit, OnDestroy {
+export class EmployeeOldCareerListComponent implements OnInit {
     private _activePersonnel = true;
     @Input() editable = true;
 
@@ -108,6 +108,4 @@ export class EmployeeOldCareerListComponent implements OnInit, OnDestroy {
             .then();
     }
 
-    ngOnDestroy() {
-    }
 }

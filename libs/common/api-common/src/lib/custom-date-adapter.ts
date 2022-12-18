@@ -21,7 +21,7 @@ export class SimpleDateAdapter extends NativeDateAdapter {
      * Gets the first day of the week.
      * @returns The first day of the week (0-indexed, 0 = Sunday).
      */
-    getFirstDayOfWeek(): number {
+    override getFirstDayOfWeek(): number {
         return 5; // الجمعة
     }
 
@@ -32,7 +32,7 @@ export class SimpleDateAdapter extends NativeDateAdapter {
      *     (type is implementation-dependent).
      * @returns The parsed date.
      */
-    parse(value: any): Date | null {
+    override parse(value: any): Date | null {
         if (value == null) return null;
         return toDate(value);
     }
@@ -44,7 +44,7 @@ export class SimpleDateAdapter extends NativeDateAdapter {
      * @param displayFormat The format to use to display the date as a string.
      * @returns The formatted date string.
      */
-    format(date: Date, displayFormat: any): string {
+    override format(date: Date, displayFormat: any): string {
         if (date == null) {
             return null;
         }

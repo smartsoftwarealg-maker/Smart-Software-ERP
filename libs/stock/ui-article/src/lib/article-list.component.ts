@@ -30,19 +30,19 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
 
     constructor(
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ARTICLES');
     }
 
-    processLoadedData(data: Article[]): Observable<Article[]> {
+    override processLoadedData(data: Article[]): Observable<Article[]> {
         data?.forEach(p => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
@@ -54,7 +54,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         return of(data);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         zip(this.lookupsSrv.getMarks(),
             this.lookupsSrv.getUnits(),

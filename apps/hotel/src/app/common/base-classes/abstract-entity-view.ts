@@ -12,7 +12,7 @@ export class AbstractEntityView<T, S extends AbstractDataSource<T>> {
 
     saveFn = (x, y) => this.save(x, y);
 
-    constructor(public dataSrc: S, public accessRight: Right, public snackBarSrv: SnackBarService) {
+    constructor(public dataSrc: S, public accessRight: Right, public override snackBarSrv: SnackBarService) {
     }
 
     public refresh(): void {

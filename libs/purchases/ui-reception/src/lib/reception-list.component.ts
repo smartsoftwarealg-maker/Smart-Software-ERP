@@ -29,17 +29,17 @@ export class ReceptionListComponent extends BaseTransactionListComponent {
 
     constructor(
         public receptionSrv: ReceptionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public userSrv: UserService,
-        public agentServ: AgentService,
-        public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService,
-        public pagPersistSrv: PaginatorPersistenceService) {
-        super(receptionSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'COMMON_RECEPTION');
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override userSrv: UserService,
+        public override agentSrv: AgentService,
+        public override langServ: LanguageService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override payMethodSrv: PayMethodService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(receptionSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'COMMON_RECEPTION');
     }
 }

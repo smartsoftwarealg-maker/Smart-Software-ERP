@@ -55,7 +55,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     @Input()
-    set ImageModel(model: ImageModel) {
+    set imageModel(model: ImageModel) {
         if (this.model) {
             this.model.onUpdate = null;
         }

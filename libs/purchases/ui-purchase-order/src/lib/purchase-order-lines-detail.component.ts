@@ -19,15 +19,15 @@ import {PurchaseOrderLinesService} from './purchase-order-lines.service';
 export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 
     constructor(
-        public detailSrv: PurchaseOrderLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override detailSrv: PurchaseOrderLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override storeNameSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,

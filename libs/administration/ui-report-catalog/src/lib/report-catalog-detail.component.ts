@@ -27,17 +27,17 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         private traceSrv: TraceabilityService,
         private reportService: ReportAppsService,
         public reportCatalogService: ReportCatalogService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public reportListsService: ReportListService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_REPORT_CATALOG');
     }
 
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         this.reportService
             .getApps()
             .pipe(switchMap(res => {
@@ -51,7 +51,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
     }
 
 
-    finishLoading(e: ReportsCatalog) {
+    override finishLoading(e: ReportsCatalog) {
         this.reportListsService
             .getListByApp(this.app)
             .subscribe((res: string[]) => {
@@ -68,7 +68,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         }));
     }
 
-    public setupForm(b: ReportsCatalog) {
+    public override setupForm(b: ReportsCatalog) {
         return this.formBuilder.group({
             id: [b.id],
             application:[null, Validators.required],

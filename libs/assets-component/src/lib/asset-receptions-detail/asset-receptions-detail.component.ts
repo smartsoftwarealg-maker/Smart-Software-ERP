@@ -53,7 +53,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
     }
 
 
-    public setupForm(b: AssetReception) {
+    public override setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here
         if (b.id) {
             this.router.navigate(['archive'], { relativeTo: this.route }).then();

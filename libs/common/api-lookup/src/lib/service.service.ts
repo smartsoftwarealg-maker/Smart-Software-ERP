@@ -8,7 +8,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 })
 export class ServiceService extends BaseEntityService<Service> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, SERVICES_URL);
     }
 

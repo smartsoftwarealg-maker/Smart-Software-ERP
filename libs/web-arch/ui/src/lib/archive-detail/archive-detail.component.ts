@@ -59,7 +59,7 @@ export class ArchiveDetailComponent implements OnInit {
       .subscribe(next => {
         this.curTags.clear();
         const res = next && next.length > 0 ? next[0] : {id: 0, metadata: {}} as ArchiveDocument;
-        const docTags: string[] = res.metadata.tags?.split(',') || [];
+        const docTags: string[] = res.metadata['tags']?.split(',') || [];
         docTags.forEach(e => this.curTags.add(e));
 
         this.imgSrc = res['imgSrc'] || this.service.toBase64FromDoc(res);

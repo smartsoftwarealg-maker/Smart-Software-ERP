@@ -34,7 +34,7 @@ export class CanActivateService implements CanActivate {
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {
-        const entity = route.data.entity;
+        const entity = route.data['entity'];
 
         if (entity && !this.rightsSrv.canUserPass(entity)) {
             return false;

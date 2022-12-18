@@ -116,8 +116,8 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     };
 
     @Input()
-    set required(b: boolean) {
-        this.isRequired = b;
+    set required(b: boolean | string) {
+        this.isRequired = b == true || b === 'true';
         this.stateChanges.next();
     }
 

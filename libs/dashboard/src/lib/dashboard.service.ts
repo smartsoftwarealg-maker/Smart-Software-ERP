@@ -10,7 +10,7 @@ import {HttpParams} from '@angular/common/http';
 })
 export class DashboardService extends BaseEntityExtendedService<Dashboard> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, '/queries', '/applications');
   }
 

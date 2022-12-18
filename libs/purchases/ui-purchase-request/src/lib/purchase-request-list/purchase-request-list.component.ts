@@ -31,7 +31,7 @@ export class PurchaseRequestListComponent  extends BaseTransactionListComponent 
         public override route: ActivatedRoute,
         public override router: Router,
         public override userSrv: UserService,
-        public agentSrv: AgentService,
+        public override agentSrv: AgentService,
         public override langServ: LanguageService,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,

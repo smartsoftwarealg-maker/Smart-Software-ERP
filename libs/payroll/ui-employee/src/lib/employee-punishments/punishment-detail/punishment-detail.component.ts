@@ -27,12 +27,12 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
 
     constructor(
         public detailSrv: PunishmentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private faultSrv: ProfessionalFaultService,
         private punishTypeSrv: PunishmentTypeService,
@@ -44,18 +44,18 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
             confirmationSrv,
             'PAYROLL_PUNISHMENTS');
     }
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    const parentId = +p.id;
+                    const parentId = +p['id'];
                     this.detailSrv.setParentId(parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: Punishment): UntypedFormGroup {
+   override setupForm(a: Punishment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee || this.detailSrv.getParentId(),
@@ -69,5 +69,4 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
             memo: a.memo,
         });
     }
-
 }

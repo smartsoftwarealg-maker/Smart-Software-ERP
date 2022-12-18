@@ -11,7 +11,7 @@ export function maxDate(max: Date): ValidatorFn {
         if (isString(value)) {
             value = strToDateTime(value);
             if (!value) {
-                return;
+                return null;
             }
         }
 
@@ -29,7 +29,7 @@ export function minDate(min: Date): ValidatorFn {
         if (isString(value)) {
             value = strToDateTime(value);
             if (!value) {
-                return;
+                return null;
             }
         }
 

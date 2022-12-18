@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class JournalTypeService extends BaseEntityService<JournalType> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, JOURNAL_TYPES_URL);
     }
 

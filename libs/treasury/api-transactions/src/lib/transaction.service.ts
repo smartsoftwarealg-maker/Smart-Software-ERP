@@ -4,13 +4,13 @@ import { HttpService } from '@ss/common/api-common';
 import { TTransaction, TTransactionLine, TRANSACTIONS_URL } from './models';
 
 export class TransactionService extends BaseEntityExtendedService<TTransaction> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, TRANSACTIONS_URL);
     }
 }
 
 export class TransactionLineService extends BaseEntityExtendedService<TTransactionLine> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, TRANSACTIONS_URL);
     }
 }

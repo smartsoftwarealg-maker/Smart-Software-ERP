@@ -8,7 +8,7 @@ import {Payment, PAYMENT_URL} from "@ss/logistics/api-common";
 })
 export class PaymentsListService extends BaseEntityService<Payment>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PAYMENT_URL);
     }
 

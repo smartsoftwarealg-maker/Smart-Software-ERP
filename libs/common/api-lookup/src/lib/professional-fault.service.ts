@@ -9,7 +9,7 @@ import {Lookup} from '@ss/common/api-lookup';
 })
 export class ProfessionalFaultService extends BaseEntityService<Lookup> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PROFESSIONAL_FAULT_URL);
     }
 

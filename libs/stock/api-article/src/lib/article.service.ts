@@ -10,9 +10,9 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class ArticleService extends BaseEntityExtendedService<Article> {
 
-    constructor(protected httpSrv: HttpService) {
-        super(httpSrv, ARTICLES_URL, APP_URL);
-        this.setParentId(0);
+    constructor(protected override httpSrv: HttpService) {
+        super(httpSrv, ARTICLES_URL);
+        // this.setParentId(0);
     }
 
     getPPrice(ref: string, storeId: number, transacId: number, id: number): Observable<QtyPrice> {
@@ -31,7 +31,7 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         this.url = url;
     }
 
-    get(iid: number | string): Observable<Article> {
+    override get(iid: number | string): Observable<Article> {
         return super.get(iid);
     }
 }

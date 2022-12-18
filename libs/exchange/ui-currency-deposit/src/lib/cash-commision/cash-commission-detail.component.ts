@@ -29,11 +29,11 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public exchangeService: CurrencyDepositService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_COMMISSIONS');
         this.typeAutoCompleteModel.onValueChanged = value => this.onTypeChange();
@@ -41,7 +41,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
     }
 
 
-    public setupForm(b: Deposit) {
+    public override setupForm(b: Deposit) {
         console.log('&^^^^^^^^^^^^^^^^', this.loginSrv.appCtx);
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
@@ -96,7 +96,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
     //     }
     // }
 
-    readForm(): Deposit {
+    override readForm(): Deposit {
         const value = super.readForm();
         value.amount = 0;
         console.log('^^^^^^^^^^^^^^^^^', this.loginSrv.appCtx.id);

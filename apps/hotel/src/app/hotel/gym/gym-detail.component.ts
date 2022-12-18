@@ -90,10 +90,10 @@ export class GymDetailComponent implements OnInit {
 
     constructor(public gymSrv: GymService,
         private formBuilder: UntypedFormBuilder,
-        public router: Router,
+        public override router: Router,
         public userSrv: UserService,
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService) {
         this.dataSrc = new FullServiceDataSource(httpSrv);

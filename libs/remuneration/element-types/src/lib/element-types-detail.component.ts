@@ -21,22 +21,21 @@ export class ElementTypesDetailComponent extends BaseEntityDetailComponent<Eleme
 
     constructor(
         private infoSrv: ElementTypesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private httpSrv: HttpService) {
         super(infoSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMENT_TYPES');
     }
 
-    setupForm(e: ElementType): UntypedFormGroup {
+    override setupForm(e: ElementType): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             description: [e.description, Validators.required],
             fieldId: [e.fieldId],
         });
     }
-
 }

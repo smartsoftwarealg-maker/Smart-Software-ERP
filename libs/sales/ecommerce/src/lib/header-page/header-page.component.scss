@@ -1,0 +1,12 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    background-clip: content-box;
+}
+span {
+    padding-left: 1em;
+    font-size: 5em;
+    height: 100%;
+    align-self: center;
+}

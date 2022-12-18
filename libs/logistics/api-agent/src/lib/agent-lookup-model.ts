@@ -7,5 +7,5 @@ export class AgentLookupModel extends DefaultAutoCompleteModel<Agent> {
         super(agentService, 'id', 'denomination');
     }
 
-    toString = (x:any) => x ? (x['customerCode']? x['customerCode'] + ', ' : '') + x[this.descriptionField] : null;
+    override toString = (x:any) => x ? (x['customerCode']? x['customerCode'] + ', ' : '') + x[this.descriptionField] : null;
 }

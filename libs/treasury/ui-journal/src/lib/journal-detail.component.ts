@@ -41,7 +41,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
             );
     }
 
-    public setupForm(a: Journal) {
+    public override setupForm(a: Journal) {
         this.id = a.id;
         return this.formBuilder.group({
             id: [a.id],

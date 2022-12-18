@@ -14,7 +14,7 @@ export class PayMethodService extends BaseEntityExtendedService<PayMethod> {
     private _payModes: Map<number, string> = new Map<number, string>();
     private _payMethods: PayMethod[] = [];
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, MPAY_URL);
     }
 

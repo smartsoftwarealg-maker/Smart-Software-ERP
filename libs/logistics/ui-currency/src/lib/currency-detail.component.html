@@ -13,7 +13,7 @@
             <mat-form-field id="description" class="value">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls.description.invalid" translate>COMMON_FIELD_REQUIRED
+                <mat-error *ngIf="form.controls['description']?.invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
 

@@ -41,12 +41,12 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
 
     constructor(
         public employeeContractSrv: EmployeeContractService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private postSrv: PostService,
         private motiveSrv: ContractMotiveService,
@@ -54,11 +54,11 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CONTRACTS');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeContractSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
@@ -96,7 +96,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         });
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getPosts()
             .pipe(
                 tap(posts => this.posts = posts),
@@ -110,7 +110,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
             );
     }
 
-    public readForm(): Contract {
+    public override readForm(): Contract {
         const formVal = this.form.value as Contract;
         formVal.employee = this.parentId;
         formVal.centerId = this.loginSrv.appCtx.center;

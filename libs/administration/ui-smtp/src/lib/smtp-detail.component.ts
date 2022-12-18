@@ -17,17 +17,17 @@ export class SmtpDetailComponent extends BaseEntityDetailComponent<Smtp> {
 
     constructor(
         public smtpService: SmtpService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(smtpService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_SMTP');
     }
 
 
-    public setupForm(b: Smtp) {
+    public override setupForm(b: Smtp) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

@@ -19,13 +19,13 @@ export class VatListComponent extends BaseEntityListComponent<Vat> {
 
     constructor(
         public vatSrv: VatService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(vatSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_VATS');
     }
 

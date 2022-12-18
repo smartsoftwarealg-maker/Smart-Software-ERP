@@ -28,11 +28,11 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         private loginSrv: LoginService,
         private bankSrv: BankService,
         public paymentSrv: PaymentsDetailService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(paymentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PAYMENTS');
     }
@@ -46,7 +46,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             })
     }
 
-    setupForm(a: Payment): UntypedFormGroup {
+    override setupForm(a: Payment): UntypedFormGroup {
         this.updateAgentURL();
         const db = a.amount > 0.0 ? a.amount : 0.0;
         const cr = a.amount < 0.0 ? -a.amount : 0.0;
@@ -66,7 +66,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         })
     }
 
-    readForm(): Payment {
+    override readForm(): Payment {
         const p =  super.readForm();
         p.amount = p['debit'] || 0 - p['credit'] || 0;
         p.debit = p.credit = null;

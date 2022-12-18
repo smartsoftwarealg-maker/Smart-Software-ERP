@@ -46,11 +46,11 @@ import { dateToDmyStr, strToDate } from '@ss/common/api-common';
 @Injectable()
 export class AppDateAdapter extends NativeDateAdapter {
 
-    format(date: Date, displayFormat: any): string {
+    override format(date: Date, displayFormat: any): string {
         return dateToDmyStr(date);
     }
 
-    parse(value: any): Date {
+    override parse(value: any): Date {
         return strToDate(value);
     }
 

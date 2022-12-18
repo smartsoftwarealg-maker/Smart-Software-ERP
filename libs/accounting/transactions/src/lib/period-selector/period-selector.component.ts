@@ -67,7 +67,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
             })
     }
 
-    balance(row: PeriodSummary) {
+    balance(row: PeriodSummary): boolean {
         return Math.abs(row?.debit - row?.credit) >= 0.01;
     }
 

@@ -70,8 +70,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     };
 
     @Input()
-    set required(b: boolean) {
-        this.isRequired = b;
+    set required(b: boolean|string) {
+        this.isRequired = b === true || b === 'true';
         this.stateChanges.next();
     }
 

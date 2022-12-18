@@ -41,7 +41,7 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
             'ASSET_BLOCKINGS');
     }
 
-    public setupForm(a: Blocking): UntypedFormGroup {
+    public override setupForm(a: Blocking): UntypedFormGroup {
         const today = new Date();
         return this.form = this.formBuilder.group({
             id: a.id,

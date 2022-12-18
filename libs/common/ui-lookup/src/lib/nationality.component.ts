@@ -20,13 +20,13 @@ export class NationalityListComponent extends BaseEntityListComponent<Nationalit
 
     constructor(
         public nationalitySrv: NationalityService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(nationalitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_NATIONALITIES');
     }
 
@@ -42,15 +42,15 @@ export class NationalityDetailComponent extends BaseEntityDetailComponent<Nation
 
     constructor(
         public nationalitySrv: NationalityService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(nationalitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_NATIONALITIES');
     }
 
-    public setupForm(e: Nationality): UntypedFormGroup {
+    public override setupForm(e: Nationality): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

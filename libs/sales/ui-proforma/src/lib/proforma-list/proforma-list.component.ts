@@ -26,17 +26,17 @@ export class ProformaListComponent  extends BaseTransactionListComponent {
 
     constructor(
         public proformaSrv: SalesProformaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public userSrv: UserService,
-        public agentServ: AgentService,
-        public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService,
-        public pagPersistSrv: PaginatorPersistenceService) {
-        super(proformaSrv, shellSrv, snackBarSrv, route, router, userSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'LOGISTICS_PROFORMA');
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override userSrv: UserService,
+        public override agentSrv: AgentService,
+        public override langServ: LanguageService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override payMethodSrv: PayMethodService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(proformaSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'LOGISTICS_PROFORMA');
     }
 }

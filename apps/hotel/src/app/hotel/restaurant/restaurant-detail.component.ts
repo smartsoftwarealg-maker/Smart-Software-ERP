@@ -83,10 +83,10 @@ export class RestaurantDetailComponent extends AbstractEntityView<FullService, B
     menu: Food[] = [];
 
     constructor(public restSrv: RestaurantService,
-        public router: Router,
+        public override router: Router,
         public userSrv: UserService,
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService) {
         // entity: null

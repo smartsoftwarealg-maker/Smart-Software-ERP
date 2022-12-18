@@ -8,7 +8,7 @@ export class CustomErrorHandler extends ErrorHandler implements OnInit {
     public dialogRef: MatDialogRef<MessageComponent>;
     public matDialog: MatDialog;
 
-    // public router: Router;
+    // public override router: Router;
 
     constructor(public injector: Injector) {
         super();

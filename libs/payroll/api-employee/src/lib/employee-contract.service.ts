@@ -7,7 +7,7 @@ import { CONTRACT_PARENT_URL, CONTRACT_CHILD_URL, Contract } from './employee-ap
 @Injectable({ providedIn: 'root' })
 export class EmployeeContractService extends BaseEntityService<Contract> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CONTRACT_CHILD_URL, CONTRACT_PARENT_URL);
     }
 

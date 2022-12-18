@@ -39,22 +39,22 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     selectedAgentId: Id = '';
 
     constructor(public dashboardSrv: DashboardService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public confirmationSrv: ConfirmationDialogService,
-                public defReportSrv: DefaultReportService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override router: Router,
+                public override confirmationSrv: ConfirmationDialogService,
+                public override defReportSrv: DefaultReportService,
                 public lookupsSrv: LookupsService,
                 private agentSrv: AgentService,
                 private langSrv: LanguageService,
-                public pagPersistSrv: PaginatorPersistenceService) {
+                public override pagPersistSrv: PaginatorPersistenceService) {
         super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();
         this.agentLookup.onValueChanged = (id: Id) => this.selectedAgentId = id;
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         if (!this.dashboardSrv.getParentId()) {
             this.dashboardSrv.setParentId(1);
         }
@@ -64,7 +64,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.deleteButton.visible = false;
     }
 
-    select(id: number) {
+    override select(id: number) {
         super.select(id);
         this.headers = [];
         this.dashboardData = [];
@@ -119,12 +119,12 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             });
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         this.dashboardSrv.setParentId(getApplicationId(this.router));
         return super.preload();
     }
 
-    excel() {
+    override excel() {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
         this.dashboardSrv

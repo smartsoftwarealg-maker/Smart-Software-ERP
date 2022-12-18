@@ -49,11 +49,11 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
         this.customerLookup.onObjectSelected = a => this.onCustomer(a?.id || 0);
     }
 
-    private t(d: Date) {
+    t(d: Date) {
         return d? this.datePipe.transform(d, 'yyyy-MM-dd') : '';
     }
 
-    public setupForm(b: Schedule) {
+    public override setupForm(b: Schedule) {
         const form = this.formBuilder.group({
             id: [b.id],
             parentId: [b.parentId || this.loginSrv.appCtx.agentId, Validators.required],
@@ -124,7 +124,7 @@ export class SalesScheduleDetailComponent extends BaseEntityDetailComponent<Sche
                 }))];
     }
 
-    private onArticle(a: MatSelectChange) {
+    onArticle(a: MatSelectChange) {
         this.onArticleRef(a.value);
     }
 

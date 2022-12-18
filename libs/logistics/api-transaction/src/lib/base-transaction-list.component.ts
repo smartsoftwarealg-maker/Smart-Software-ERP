@@ -15,22 +15,22 @@ import {Transaction} from './transaction';
 export abstract class BaseTransactionListComponent extends BaseEntityListComponent<Transaction> {
     protected constructor(
         public listSrv: BaseEntityService<Transaction>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public userSrv: UserService,
-        public agentServ: AgentService,
+        public agentSrv: AgentService,
         public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public payMethodSrv: PayMethodService,
-        public pagPersistSrv: PaginatorPersistenceService,
+        public override pagPersistSrv: PaginatorPersistenceService,
         title: string) {
         super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, title);
     }
 
-    processLoadedData(data: Transaction[]): Observable<Transaction[]> {
+    override processLoadedData(data: Transaction[]): Observable<Transaction[]> {
         data.forEach(x => {
             x.date = this.langServ.formatDate(x.date);
             x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);

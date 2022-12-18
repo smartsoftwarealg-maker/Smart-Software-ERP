@@ -19,16 +19,16 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
     aid = 0;
 
     constructor(
+        private agentSrv: AgentService,
         public checkSrv: CheckService,
         private loginSrv: LoginService,
-        public agentSrv: AgentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: FormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
-        public router: Router) {
+        public  router: Router) {
         super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKS');
         this.agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     }
@@ -37,7 +37,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         super.finishLoading(e);
     }
 
-    public setupForm(a: Check) {
+    public override setupForm(a: Check) {
         this.aid = a.id;
         return this.formBuilder.group({
             id: [a.id],

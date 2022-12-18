@@ -19,9 +19,9 @@ export class ReportCatalogDataSource implements DataSource<ReportCatalog> {
             .catalogService
             .load(this.pagingModel.page, this.pagingModel.pageSize)
             .pipe(
-                catchError(() => of([])),
+                // catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
-            ).subscribe((catalog: {body: any[], itemCount: number}) => {
+            ).subscribe((catalog: { body: ReportCatalog[], itemCount: number}) => {
                 this.catalogSubject.next(catalog.body);
                 this.pagingModel.elementCount = catalog.itemCount;
             });

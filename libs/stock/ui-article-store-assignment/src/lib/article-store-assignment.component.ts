@@ -31,18 +31,18 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
 
     constructor(
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_STORE_ASSIGNMENT');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.onMarksLoaded(x)),
@@ -56,7 +56,7 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
         data.forEach(m => this.marks[m.id] = m.description);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.deleteButton.visible = false;
         this.addButton.visible = false;

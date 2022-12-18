@@ -25,8 +25,8 @@ export class FoodListComponent extends AbstractEntityList<Food, BackendDataSourc
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
-        public router: Router,
+        public override snackBarSrv: SnackBarService,
+        public override router: Router,
         public activatedRoute: ActivatedRoute,
         public foodSrv: FoodService) {
         // entity: null

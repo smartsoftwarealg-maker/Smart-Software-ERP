@@ -24,19 +24,19 @@ export class CenterListComponent extends BaseEntityListComponent<Center> {
 
     constructor(
         public centerSrv: CenterService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         private loginSrv: LoginService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(centerSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_CENTER');
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         this.centerSrv.setParentId(this.loginSrv.appCtx.company);
         return of(true);
     }

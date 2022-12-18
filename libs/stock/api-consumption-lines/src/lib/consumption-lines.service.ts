@@ -10,7 +10,7 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
 })
 export class ConsumptionLinesService extends BaseEntityExtendedService<TransactionLine> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CONSUMPTION_LINES_URL, CONSUMPTION_URL);
     }
 }

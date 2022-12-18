@@ -8,7 +8,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class UserStoresService extends BaseEntityService<UserStore> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, STORES_URL, USERS_URL);
   }
 }

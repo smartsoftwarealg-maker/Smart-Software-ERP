@@ -26,7 +26,7 @@ export class BookingMethodsListComponent extends AbstractEntityList<BookingMetho
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public matDialog: MatDialog) {
         // entity: null
         super(new BackendDataSource(httpSrv, bookingMethodsUrl), userSrv.getRights(null), snackBarSrv, PaginationModel.newInstance());

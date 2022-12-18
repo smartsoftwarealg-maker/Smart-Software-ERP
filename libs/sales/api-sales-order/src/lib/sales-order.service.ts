@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class SalesOrderService extends BaseEntityService<Transaction> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ORDER_URL);
     }
 

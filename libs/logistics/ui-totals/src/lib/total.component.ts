@@ -37,8 +37,8 @@ export class TotalComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
-            const documentId = +param.documentId;
-            const documentURL = param.documentURL;
+            const documentId = +param['documentId'];
+            const documentURL = param['documentURL'];
 
             if (documentId) {
                 this.totalSrv.setParentsIds(documentId, documentURL);

@@ -35,14 +35,14 @@
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>PAYROLL_FROM</mat-label>
 <!--                        <input matInput formControlName="application_month" type="number"  required>-->
-                        <ss-paymonth-editor formControlName="application_month" required></ss-paymonth-editor>
+                        <ss-paymonth-editor formControlName="application_month" [required]="true"></ss-paymonth-editor>
                         <mat-error *ngIf="form.controls['application_month'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="default-50 sm-100" *ngIf="!form.controls['id'].value">
                         <mat-label translate>PAYROLL_TO</mat-label>
 <!--                        <input matInput formControlName="to" type="number"  required>-->
-                        <ss-paymonth-editor formControlName="to" required></ss-paymonth-editor>
+                        <ss-paymonth-editor formControlName="to" required="true"></ss-paymonth-editor>
                         <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                     </mat-form-field>
 
@@ -87,13 +87,13 @@
 
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>PAYROLL_FROM</mat-label>
-                        <ss-paymonth-editor formControlName="application_month" required></ss-paymonth-editor>
+                        <ss-paymonth-editor formControlName="application_month" required="true"></ss-paymonth-editor>
                         <mat-error *ngIf="form.controls['application_month'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>PAYROLL_TO</mat-label>
-                        <ss-paymonth-editor formControlName="to" required></ss-paymonth-editor>
+                        <ss-paymonth-editor formControlName="to" [required]=true></ss-paymonth-editor>
                         <mat-error *ngIf="form.controls['to'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
                     </mat-form-field>
 

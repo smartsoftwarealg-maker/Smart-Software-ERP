@@ -33,7 +33,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
     }
 
 
-    public setupForm(b: GenerationAccount) {
+    public override setupForm(b: GenerationAccount) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

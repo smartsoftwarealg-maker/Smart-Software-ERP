@@ -47,11 +47,11 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         public deliveryService: DeliveryCancellationService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,
         private agentService: AgentService,
@@ -64,17 +64,17 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
 
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
@@ -104,7 +104,7 @@ export class DeliveryCancellationDetailComponent extends BaseEntityDetailCompone
             agent: [b.agent, Validators.required],
         });
     }
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.delivery, form)
         return form;

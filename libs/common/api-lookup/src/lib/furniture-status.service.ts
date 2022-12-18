@@ -8,7 +8,7 @@ import {Lookup} from '@ss/common/api-lookup';
 })
 export class FurnitureStatusService extends BaseEntityService<Lookup> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/lookups/furniture_status');
     }
 }

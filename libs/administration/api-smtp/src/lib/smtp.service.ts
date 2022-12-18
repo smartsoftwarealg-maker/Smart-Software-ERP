@@ -9,7 +9,7 @@ import {Smtp, SMTPS_URL} from './smtp-api';
 })
 export class SmtpService extends BaseEntityService<Smtp>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, SMTPS_URL);
     }
 

@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class EducationLevelService extends BaseEntityService<EducationLevel> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EDUCATION_LEVEL_URL);
     }
 

@@ -30,18 +30,18 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     constructor(
         public reportCatalogService: ReportCatalogService,
         public reportService: ReportAppsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_REPORT_CATALOG');
         this.pagination.pageSize = 10;
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
         // this.shellSrv.setTitle(this.title);
         // this.shellSrv.setGoBackPath('../..', this.route);
@@ -53,7 +53,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         });
     }
 
-    processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
+    override processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {
         return super.processLoadedData(data);
     }
 
@@ -66,13 +66,13 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     // }
 
 
-    getPage(): Observable<ReportsCatalog[]> {
+    override getPage(): Observable<ReportsCatalog[]> {
         const params = new HttpParams().set('base', this.applicationsCtrl.value);
         return this.entitySrv
             .getPage(this.pagination, this.filter, this.sortBy, params);
     }
 
-    showDetail(id: number) {
+    override showDetail(id: number) {
         this.router.navigate(['./' + id], {relativeTo: this.route}).then();
     }
 }

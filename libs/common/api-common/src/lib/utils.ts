@@ -202,12 +202,12 @@ export function isDate(value: any): boolean {
     return value instanceof Date;
 }
 
-export function isObject(value) {
+export function isObject(value: any) {
     const type = typeof value
     return value != null && (type === 'object' || type === 'function')
 }
 
-function getTag(value) {
+function getTag(value: any) {
     if (value == null) {
         return value === undefined ? '[object Undefined]' : '[object Null]'
     }

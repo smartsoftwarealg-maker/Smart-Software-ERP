@@ -34,7 +34,7 @@ export class BaseTransactionLinesListComponent {
     onInit() {
         this.route
             .params
-            .pipe(map(p => +p.id),
+            .pipe(map(p => +p['id']),
                 tap(id => this.parentId = id),
                 switchMap(_ => this.loadDetailLines()))
             .subscribe(_ => this.shellSrv.setLoading(false));

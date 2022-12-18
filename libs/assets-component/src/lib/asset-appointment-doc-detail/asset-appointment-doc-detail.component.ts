@@ -79,7 +79,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
     }
 
-    public setupForm(b: ASSAppointmentHeader) {
+    public override setupForm(b: ASSAppointmentHeader) {
         this.editMode = b.id != 0;
         this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);

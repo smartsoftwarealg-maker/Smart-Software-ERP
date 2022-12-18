@@ -55,7 +55,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         this.centerSrv.setParentId(loginSrv.appCtx.company);
     }
 
-    public setupForm(e: Journal): UntypedFormGroup {
+    public override setupForm(e: Journal): UntypedFormGroup {
         this.journalUserSrv.setParentId(e.id);
         this.loadUsers();
 

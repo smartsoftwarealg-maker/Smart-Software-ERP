@@ -8,7 +8,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class PayrollFormulasService extends BaseEntityService<Formula> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PAYROLL_FORMULAS_URL);
     }
 }

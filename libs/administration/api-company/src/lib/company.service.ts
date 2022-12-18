@@ -9,7 +9,7 @@ import {Company, COMPANY_URL} from "./company-api";
 })
 export class CompanyService extends BaseEntityService<Company> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, COMPANY_URL);
     }
 

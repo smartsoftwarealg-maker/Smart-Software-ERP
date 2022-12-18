@@ -59,9 +59,9 @@ export class RestaurantListComponent extends AbstractEntityList<DisplayableServi
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public restSrv: RestaurantService,
-        public router: Router,
+        public override router: Router,
         public activatedRoute: ActivatedRoute) {
         // entity: null
         super(new FullServiceDataSource(httpSrv), userSrv.getRights(null), snackBarSrv, restSrv.pagination);

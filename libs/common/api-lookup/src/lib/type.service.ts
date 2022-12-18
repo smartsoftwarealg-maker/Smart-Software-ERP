@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class TypeService extends BaseEntityService<Mark> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, TYPES_URL);
     }
 

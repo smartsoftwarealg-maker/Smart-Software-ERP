@@ -29,8 +29,8 @@ export class PaymentListComponent extends AbstractEntityList<Payment, BackendDat
     constructor(public httpSrv: HttpService,
                 public userSrv: UserService,
                 public langSrv: LanguageService,
-                public snackBarSrv: SnackBarService,
-                public router: Router,
+                public override snackBarSrv: SnackBarService,
+                public override router: Router,
                 public activatedRoute: ActivatedRoute,
                 public clientSrv: ClientsService,
                 public paySrv: PaymentService) {

@@ -8,7 +8,7 @@ import {Transaction} from '@ss/logistics/api-transaction';
 })
 export class SalesProformaService extends BaseEntityService<Transaction> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/proforma');
     }
 }

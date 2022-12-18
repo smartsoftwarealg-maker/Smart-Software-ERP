@@ -6,5 +6,5 @@ export default {
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
     coverageReporters: ['html'],
-    projects: '<rootDir>/libs/workflow',
+    projects: '<rootDir>/libs/sales/ecommerce',
 };

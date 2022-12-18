@@ -58,9 +58,9 @@ export class FoyerListComponent extends AbstractEntityList<DisplayableService, B
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public foyerSrv: FoyerService,
-        public router: Router,
+        public override router: Router,
         public activatedRoute: ActivatedRoute) {
         // entity: null
         super(new FullServiceDataSource(httpSrv), userSrv.getRights(null), snackBarSrv, foyerSrv.pagination);

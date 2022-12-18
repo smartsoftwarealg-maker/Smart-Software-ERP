@@ -8,7 +8,7 @@ import { JOURNALS_URL, Journal } from './model';
     providedIn: 'root'
 })
 export class JournalService extends BaseEntityExtendedService<Journal> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, JOURNALS_URL);
     }
 }

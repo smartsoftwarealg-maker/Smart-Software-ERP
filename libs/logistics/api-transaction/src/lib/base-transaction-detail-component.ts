@@ -13,17 +13,17 @@ import {Transaction} from './transaction';
 
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> {
     constructor(public invoiceService: BaseEntityService<Transaction>,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
                 public router: Router,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
-                public title: string) {
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
+                public override title: string) {
         super(invoiceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
     }
 
-    public canDeactivate(): Observable<boolean> {
+    public override canDeactivate(): Observable<boolean> {
         const parent = +(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
         return this.id === 0 || parent === this.id?
             of(true) :
@@ -39,7 +39,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     switchMap(res => res.dirty? of(false): super.canDeactivate()));
      }
 
-     readForm(): Transaction {
+     override readForm(): Transaction {
          return this.form.getRawValue();
      }
 }

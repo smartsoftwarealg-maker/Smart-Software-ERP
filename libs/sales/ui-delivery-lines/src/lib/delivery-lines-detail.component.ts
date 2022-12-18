@@ -18,15 +18,14 @@ import {
 export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(
         public inventoryLinesService: TransactionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override storeNameSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
             snackBarSrv,

@@ -17,17 +17,17 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
 
     constructor(
         public currencySrv: CurrencyService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(currencySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CURRENCIES');
     }
 
 
-    public setupForm(b: Currency) {
+    public override setupForm(b: Currency) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

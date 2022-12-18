@@ -39,13 +39,13 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         private currencySrv: CurrencyService,
         public exchangeSrv: CurrencyDepositService,
         public agentService: AgentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(exchangeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'EXCHANGE_CURRENCY_DEPOSIT');
     }
 

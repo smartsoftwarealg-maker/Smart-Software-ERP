@@ -36,14 +36,14 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
 
 
     constructor(
-        public detailSrv: InventoryEntryLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public readonly route: ActivatedRoute,
-        public readonly router: Router,
-        public readonly articleSrv: ArticleService,
-        public readonly storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override detailSrv: InventoryEntryLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override  route: ActivatedRoute,
+        public override router: Router,
+        public override articleSrv: ArticleService,
+        public override storeNamesSrv: LotsService,
+        public override confirmationSrv: ConfirmationDialogService,
         private breakPointObs: BreakpointObserver) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
         this.isHandset = this.breakPointObs.observe(['(max-width: 800px)']);
@@ -59,5 +59,4 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
         super.onInit();
         this.isHandset.subscribe(state => this.displayedColumns = state.matches ? this.SHORT : this.LONG);
     }
-
 }

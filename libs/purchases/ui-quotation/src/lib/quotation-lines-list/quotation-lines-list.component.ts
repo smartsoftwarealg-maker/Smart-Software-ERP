@@ -14,8 +14,6 @@ import {OfferLinesService} from '@ss/logistics/api-transaction';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class QuotationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    public readonly pagination = PaginationModel.newInstance();
-
     displayedColumns = [
         'position',
         // 'store',
@@ -28,14 +26,14 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
     ];
 
     constructor(
-        public detailSrv: OfferLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public articleSrv: ArticleService,
-        public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override detailSrv: OfferLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override articleSrv: ArticleService,
+        public override storeNamesSrv: LotsService,
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv,
               shellSrv,
               snackBarSrv,

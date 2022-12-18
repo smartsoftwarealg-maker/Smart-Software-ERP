@@ -32,14 +32,14 @@ export class DeliveryLinesListComponent extends BaseTransactionLinesListComponen
     ];
 
     constructor(
-        public detailSrv: TransactionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public articleSrv: ArticleService,
-        public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override detailSrv: TransactionLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override articleSrv: ArticleService,
+        public override storeNamesSrv: LotsService,
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
 

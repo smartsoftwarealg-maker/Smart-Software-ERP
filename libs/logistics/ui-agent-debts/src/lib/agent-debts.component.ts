@@ -34,7 +34,7 @@ export class AgentDebtsComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
-            const agentId = +param.agentId;
+            const agentId = +param['agentId'];
             const compensated = param['compensated'];
             const params = new HttpParams().set('compensated', compensated);
             if (agentId) {

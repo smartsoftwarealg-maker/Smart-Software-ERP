@@ -20,13 +20,13 @@ export class DiplomaListComponent extends BaseEntityListComponent<Diploma> {
 
     constructor(
         public diplomaSrv: DiplomaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(diplomaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DIPLOMAS');
     }
 
@@ -42,15 +42,15 @@ export class DiplomaDetailComponent extends BaseEntityDetailComponent<Diploma> {
 
     constructor(
         public diplomaSrv: DiplomaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(diplomaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DIPLOMA');
     }
 
-    public setupForm(e: Diploma): UntypedFormGroup {
+    public override setupForm(e: Diploma): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

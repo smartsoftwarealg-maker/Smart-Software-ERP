@@ -20,13 +20,13 @@ export class EmploymentTypeListComponent extends BaseEntityListComponent<Employm
 
     constructor(
         public employmentTypeSrv: EmploymentTypeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(employmentTypeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_EMPLOYMENT_TYPES');
     }
 
@@ -42,15 +42,15 @@ export class EmploymentTypeDetailComponent extends BaseEntityDetailComponent<Emp
 
     constructor(
         public employmentTypeSrv: EmploymentTypeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(employmentTypeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_EMPLOYMENT_TYPE');
     }
 
-    public setupForm(e: EmploymentType): UntypedFormGroup {
+    public override setupForm(e: EmploymentType): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

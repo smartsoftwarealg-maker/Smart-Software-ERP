@@ -16,6 +16,7 @@ import {OptionService} from '@ss/logistics/ui-options';
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> {
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
+    showStock = true;
     selectedRow: TransactionLine = null;
     agentId = 0;
     parentId: number;
@@ -28,26 +29,26 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.storeNameSrv);
 
     constructor(
-        public detailSrv: TransactionLinesClass,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService,
-        public title: string) {
+        public  detailSrv: TransactionLinesClass,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public          articleSrv: ArticleService,
+        public          storeNameSrv: LotsService,
+        public          lookupsSrv: LookupsService,
+        public override title: string) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.articleAutoCompleteModel.onObjectSelected = a => this.onArticle(a);
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.route
             .queryParams
             .pipe(
                 tap(p => {
-                    this.parentId = +p.parent;
+                    this.parentId = +p['parent'];
                     this.detailSrv.setParentId(this.parentId);
                     this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
                 }),
@@ -102,7 +103,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         this.subscriptions.push(subs2);
     }
 
-    finishLoading(e: TransactionLine) {
+    override finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         this.selectedRow = e;
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
@@ -119,7 +120,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         this.subscriptions.push(subs2);
     }
 
-    readForm(): TransactionLine {
+    override readForm(): TransactionLine {
         const form =  super.readForm();
         fillObject(this.selectedRow, form)
         return form;
@@ -129,7 +130,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
     }
 
-    public setupForm(b: TransactionLine): UntypedFormGroup {
+    public override setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
         // Make sure to update the template if you edit the configuration here

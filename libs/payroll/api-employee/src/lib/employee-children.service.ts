@@ -7,7 +7,7 @@ import { CHILDREN_PARENT_URL, CHILDREN_CHILD_URL, Child } from './employee-api';
 @Injectable({ providedIn: 'root' })
 export class EmployeeChildrenService extends BaseEntityService<Child> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CHILDREN_CHILD_URL, CHILDREN_PARENT_URL);
     }
 

@@ -35,7 +35,7 @@ export class AttributesDetailComponent extends BaseEntityDetailComponent<AttribT
         this.paginator.onChange = () => this.loadLookupValues();
     }
 
-    public setupForm(b: AttribTempl) {
+    public override setupForm(b: AttribTempl) {
         const form = this.formBuilder.group({
             id: [b.id],
             attType: [{ value: b.attType, disabled: false}, Validators.required],

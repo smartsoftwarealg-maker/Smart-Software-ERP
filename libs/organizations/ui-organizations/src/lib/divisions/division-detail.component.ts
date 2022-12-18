@@ -15,32 +15,30 @@ import { EmployeeService } from '@ss/payroll/api-employee';
     styleUrls: ['./division-detail.component.scss']
 })
 export class DivisionDetailComponent extends BaseEntityDetailComponent<Division> implements OnInit, OnDestroy {
-
-    public form: UntypedFormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(
         public divisionsSrv: DivisionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         private employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(divisionsSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DIVISION');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
-    setupForm(a: Division): UntypedFormGroup {
+    override setupForm(a: Division): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             responsible: [a.responsible]
         });
     }
 
-    public readForm(): Division {
+    public override readForm(): Division {
         const formVal = this.form.value as Division;
         return formVal;
     }

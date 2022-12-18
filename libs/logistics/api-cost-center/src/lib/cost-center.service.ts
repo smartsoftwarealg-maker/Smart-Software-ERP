@@ -9,7 +9,7 @@ import {COST_CENTER_URL, CostCenter} from "./cost-center-api";
 })
 export class CostCenterService extends BaseEntityService<CostCenter> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, COST_CENTER_URL);
     }
 

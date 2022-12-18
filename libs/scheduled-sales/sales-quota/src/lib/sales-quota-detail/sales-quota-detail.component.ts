@@ -35,7 +35,7 @@ export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> 
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_QUOTAS');
     }
 
-    public setupForm(b: Quota) {
+    public override setupForm(b: Quota) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

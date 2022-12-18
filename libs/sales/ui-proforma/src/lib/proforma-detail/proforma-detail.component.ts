@@ -30,11 +30,11 @@ export class ProformaDetailComponent extends BaseEntityDetailComponent<Transacti
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(public proformaSrv: SalesProformaService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
                 public usersService: UserListService,
                 public lookupsSrv: LookupsService,
                 private agentService: AgentService,
@@ -44,12 +44,12 @@ export class ProformaDetailComponent extends BaseEntityDetailComponent<Transacti
         super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PROFORMA');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!form.id) {
             form.id = 0;
@@ -78,10 +78,9 @@ export class ProformaDetailComponent extends BaseEntityDetailComponent<Transacti
             agent: [form.agent, Validators.required],
         });
     }
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.transac, form)
         return form;
     }
-
 }

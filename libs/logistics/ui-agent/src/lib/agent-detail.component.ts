@@ -53,11 +53,11 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     constructor(
         private loginSrv: LoginService,
         public agentSrv: AgentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private router: Router,
         private isParamSrv: IsParamService,
@@ -68,7 +68,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         // this.isSales = this.route.snapshot.data['sales'];
     }
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return this.lookupsSrv
             .getAgentTypes()
             .pipe(
@@ -93,7 +93,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             );
     }
 
-    finishLoading(e: Agent) {
+    override finishLoading(e: Agent) {
         super.finishLoading(e);
         this.form.controls['recordBlocked']
             .valueChanges
@@ -108,7 +108,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             });
     }
 
-    public setupForm(a: Agent) {
+    public override setupForm(a: Agent) {
         const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
         // Make sure to update the template if you edit the configuration here
@@ -211,7 +211,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             return '';
     }
 
-    readForm(): Agent {
+    override readForm(): Agent {
         const a = super.readForm();
         a.price = a.price || 1;
         a.agentType = a.agentType || 0;
@@ -219,7 +219,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         return a;
     }
 
-    uploadAttachments(id: number): Observable<any> {
+    override uploadAttachments(id: number): Observable<any> {
         return this.agentSrv
             .get(id)
             .pipe(tap(agent => {
@@ -243,7 +243,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         }
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackFn(() => this.router.navigate([ABS_LOGISTICS_AGENT_URL]).then());
     }

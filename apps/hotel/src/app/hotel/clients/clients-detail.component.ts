@@ -29,10 +29,10 @@ export class ClientsDetailComponent extends AbstractEntityView<Agent, BackendDat
 
     constructor(
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
-        public router: Router,
+        public override router: Router,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService,
         private clientsSrv: ClientsService) {

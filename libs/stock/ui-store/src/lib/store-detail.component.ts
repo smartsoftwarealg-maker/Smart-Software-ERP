@@ -23,18 +23,18 @@ export class StoreDetailComponent extends BaseEntityDetailComponent<Article> imp
 
     constructor(
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: FormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
     }
 
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.marks = x),
@@ -44,12 +44,12 @@ export class StoreDetailComponent extends BaseEntityDetailComponent<Article> imp
     }
 
 
-    finishLoading(e: Article) {
+    override finishLoading(e: Article) {
         super.finishLoading(e);
         this.selectedRow = e;
     }
 
-    public setupForm(a: Article) {
+    public override setupForm(a: Article) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             accountno: [a.accountno],

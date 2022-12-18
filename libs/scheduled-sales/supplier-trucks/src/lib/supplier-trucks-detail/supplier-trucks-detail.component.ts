@@ -31,7 +31,7 @@ export class SupplierTrucksDetailComponent extends BaseEntityDetailComponent<Sup
     }
 
 
-    public setupForm(b: SupplierTruck) {
+    public override setupForm(b: SupplierTruck) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:          [b.id],

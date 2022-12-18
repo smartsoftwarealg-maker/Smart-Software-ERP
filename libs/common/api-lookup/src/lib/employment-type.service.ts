@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class EmploymentTypeService extends BaseEntityService<EmploymentType> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EMPLOYMENT_TYPE_URL);
     }
 

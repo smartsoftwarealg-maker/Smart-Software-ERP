@@ -7,7 +7,7 @@ import {HttpParams} from '@angular/common/http';
 
 export class TransactionLinesClass extends BaseEntityExtendedService<TransactionLine> {
 
-    constructor(protected httpSrv: HttpService, baseUrl: string, parentUrl: string) {
+    constructor(protected override httpSrv: HttpService, baseUrl: string, parentUrl: string) {
         super(httpSrv,  baseUrl, parentUrl);
     }
 
@@ -15,7 +15,7 @@ export class TransactionLinesClass extends BaseEntityExtendedService<Transaction
         return this.httpSrv.get(`/inventory/${id}`);
     }
 
-    getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number; body: TransactionLine[] }> {
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number; body: TransactionLine[] }> {
         return super.getList(page, pageSize, filter, sortBy, extraPrams);
     }
 }

@@ -9,7 +9,7 @@ import {REPORTS_CATALOG, ReportsCatalog} from "./report-catalog-api";
 })
 export class ReportCatalogService extends BaseEntityService<ReportsCatalog> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, REPORTS_CATALOG);
     }
 }

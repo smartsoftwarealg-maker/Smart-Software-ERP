@@ -12,7 +12,7 @@ import {tap} from 'rxjs/operators';
 })
 export class OfficeService extends BaseEntityService<Office> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OFFICES_URL);
     }
 

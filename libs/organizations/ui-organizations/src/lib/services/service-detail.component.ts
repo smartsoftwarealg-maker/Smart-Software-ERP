@@ -16,37 +16,35 @@ import { EmployeeService } from '@ss/payroll/api-employee';
     styleUrls: ['./service-detail.component.scss']
 })
 export class ServiceDetailComponent extends BaseEntityDetailComponent<Service> implements OnInit, OnDestroy {
-
-    public form: UntypedFormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(
         public serviceSrv: ServiceService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public  httpSrv: HttpService,
         private employeeSrv: EmployeeService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(serviceSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_SERVICE');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         this.serviceSrv.setParentId(0);
         return super.getRouteParam();
     }
 
-    setupForm(a: Service): UntypedFormGroup {
+    override setupForm(a: Service): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
             responsible: [a.responsible]
         });
     }
 
-    public readForm(): Service {
+    public override readForm(): Service {
         const formVal = this.form.value as Service;
         return formVal;
     }

@@ -15,7 +15,7 @@ export class CardService extends BaseEntityService<Card> {
 
     cardUrl: string;
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CARD_URL, ARTICLES_URL);
     }
 
@@ -34,7 +34,7 @@ export class CardService extends BaseEntityService<Card> {
     }
 
 
-    protected getUrl(): string {
+    protected override getUrl(): string {
         return this.cardUrl;
     }
 }

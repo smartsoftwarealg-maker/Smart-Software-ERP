@@ -9,8 +9,8 @@
 
             <mat-form-field class="default-50 sm-50" required autofocus>
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker required="true" formControlName="date"></ss-date-picker>
-                <mat-error *ngIf="form.controls.date.hasError('required')" translate>
+                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
+                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
                     COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
@@ -22,7 +22,7 @@
 
             <mat-form-field class="default-50 sm-50" required>
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker required="true" formControlName="requestDate"></ss-date-picker>
+                <ss-date-picker [required]=true formControlName="requestDate"></ss-date-picker>
                 <!--                <mat-error *ngIf="form.controls.requestDate.hasError('required')" translate>-->
                 <!--                    COMMON_FIELD_REQUIRED-->
                 <!--                </mat-error>-->

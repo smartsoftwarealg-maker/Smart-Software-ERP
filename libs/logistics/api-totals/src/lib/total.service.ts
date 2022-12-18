@@ -10,7 +10,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 export class TotalService extends BaseEntityService<Total> {
 
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, TOTAL_URL);
     }
 
@@ -21,7 +21,7 @@ export class TotalService extends BaseEntityService<Total> {
     }
 
     // the parent url changes
-    setParentId(id: number) {
+    override setParentId(id: number) {
         throw Error("Don't use this to set the parent url use you need to provide the parent url too");
     }
 

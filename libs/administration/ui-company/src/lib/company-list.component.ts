@@ -24,15 +24,13 @@ export class CompanyListComponent extends BaseEntityListComponent<Company> {
 
     constructor(
         public companySrv: CompanyService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(companySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_COMPANY');
     }
-
-
 }

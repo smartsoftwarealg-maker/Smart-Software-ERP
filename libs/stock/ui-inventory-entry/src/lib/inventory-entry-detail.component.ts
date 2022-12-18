@@ -25,18 +25,18 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         public inventoryEntryService: InventoryEntryService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_ENTRY');
     }
 
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         this.manager = this.loginSrv.appCtx.manager;
         return this.formBuilder.group({

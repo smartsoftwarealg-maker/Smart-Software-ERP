@@ -9,7 +9,7 @@ import {Deposit} from "./models";
 })
 export class CurrencyCommissionService extends BaseEntityExtendedService<Deposit> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/commissions');
     }
 }

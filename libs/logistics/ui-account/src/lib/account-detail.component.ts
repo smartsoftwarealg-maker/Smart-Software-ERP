@@ -22,17 +22,17 @@ export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
 
     constructor(
         public accountService: AccountService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(accountService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_ACCOUNT');
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         this.accountTypes = Object.keys(ACCOUNT_TYPES)
             .map(x => {
                 return {'id': +x, 'description': ACCOUNT_TYPES[x]}
@@ -41,7 +41,7 @@ export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
         return of(null);
     }
 
-    public setupForm(a: Account) {
+    public override setupForm(a: Account) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],

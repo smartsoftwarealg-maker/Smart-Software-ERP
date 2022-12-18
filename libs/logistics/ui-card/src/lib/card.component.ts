@@ -60,10 +60,10 @@ export class CardComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            this.articleId = +x.articleId
-            this.storeId = +x.articleStoreId;
-            this.articleReference = x.articleReference;
-            this.useStoreForm = !!x.articleUseStoreSearch
+            this.articleId = +x['articleId']
+            this.storeId = +x['articleStoreId'];
+            this.articleReference = x['articleReference'];
+            this.useStoreForm = !!x['articleUseStoreSearch']
 
             if (!this.useStoreForm) {
                 this.loadCard();

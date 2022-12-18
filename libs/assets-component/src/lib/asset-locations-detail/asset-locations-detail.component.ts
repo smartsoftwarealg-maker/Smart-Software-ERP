@@ -42,7 +42,7 @@ export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<Ass
             .loadContext();
     }
 
-    public setupForm(b: AssetLocation) {
+    public override setupForm(b: AssetLocation) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
