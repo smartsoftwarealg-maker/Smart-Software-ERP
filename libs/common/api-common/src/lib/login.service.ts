@@ -174,6 +174,25 @@ export class LoginService {
             });
     }
 
+    public anonymous() {
+        this.wrongData = false;
+        this.licenseErrorType = null;
+        this
+            .httpSrv
+            .init()
+            .pipe(switchMap(_ => this.httpSrv.get<LoginInfo>('/anonymous')))
+            .subscribe({
+                next: (info: LoginInfo) => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                },
+                error: err => {
+                    this.connectionError = err.status === 0;
+                    this.wrongData = !this.connectionError;
+                },
+            });
+    }
+
     public userOrCustomerLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.wrongData = false;
         this.licenseErrorType = null;

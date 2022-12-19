@@ -86,6 +86,21 @@
                                 "glob": "**/*",
                                 "input": "libs/administration/assets/src/assets",
                                 "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/common/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/logistics-admin/assets/src/assets",
+                                "output": "assets"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "libs/logistics/assets/src/assets",
+                                "output": "assets"
                             }
                         ],
                         "styles": ["apps/ecommerce/src/styles.scss"],

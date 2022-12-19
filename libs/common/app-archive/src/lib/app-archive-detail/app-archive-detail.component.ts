@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AppArchive} from '@ss/logistics/api-agent';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
@@ -9,6 +8,7 @@ import {concatMap, from, of, switchMap, zip} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {tap} from 'rxjs/operators';
+import {AppArchive} from '../app-archive-api';
 
 @Component({
     selector: 'ss-agent-archive-detail',

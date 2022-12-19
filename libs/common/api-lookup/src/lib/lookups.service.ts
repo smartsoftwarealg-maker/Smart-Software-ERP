@@ -66,7 +66,7 @@ import {
     LANGUAGE_LEVELS_URL,
     JOURNAL_TYPES_URL,
     WORKSHOPS_URL,
-    APPLICATIONS_URL,
+    LOOKUPS_APPLICATIONS_URL,
     JournalType
 } from './lookups-api';
 import { Role } from '@ss/common/api-common';
@@ -93,7 +93,7 @@ export class LookupsService {
     }
 
     public getApplicationList(): Observable<Lookup[]> {
-        return this.lookupCacheSrv.load<Lookup>(APPLICATIONS_URL, 'applications');
+        return this.lookupCacheSrv.load<Lookup>(LOOKUPS_APPLICATIONS_URL, 'applications');
     }
 
     public getDiplomas(): Observable<Diploma[]> {

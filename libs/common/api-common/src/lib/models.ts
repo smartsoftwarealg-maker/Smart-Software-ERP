@@ -239,3 +239,5 @@ export class ExtendedPaginationModel extends PaginationModel {
         this.propagatedElementCount = that.propagatedElementCount;
     }
 }
+
+

@@ -39,7 +39,7 @@ export class FoyerArticlesDetailComponent extends AbstractEntityView<FoyerArticl
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public foyerSrv: FoyerArticlesService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService) {
         super(new BackendDataSource(httpSrv, foyerArticlesUrl), userSrv.getRights(null), snackBarSrv);

@@ -1,1 +1,930 @@
+// todo: make this file shared
+
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+mat.$theme-ignore-duplication-warnings:true;
+
+body {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+$ss-white: (
+    50: #ffffff,
+    100: #FDFDFD,
+    200: #FBFBFB,
+    300: #F9F9F9,
+    400: #F7F7F7,
+    500: #F5F5F5,
+    600: #F3F3F3,
+    700: #F1F1F1,
+    800: #F0F0F0,
+    900: #EFEFEF,
+    A100: #EEEEEE,
+    A200: #DDDDDD,
+    A400: #CCCCCC,
+    A700: #BBBBBB,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: rgba(black, 0.87),
+        A100: rgba(black, 0.87),
+        A200: rgba(black, 0.87),
+        A400: rgba(black, 0.87),
+        A700: rgba(black, 0.87),
+    )
+);
+
+$ss-black: (
+    50: #000000,
+    100: #101010,
+    200: #151515,
+    300: #202020,
+    400: #252525,
+    500: #303030,
+    600: #303030,
+    700: #353535,
+    800: #404040,
+    900: #454545,
+    A100: #505050,
+    A200: #555555,
+    A400: #606060,
+    A700: #656565,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+        A100: white,
+        A200: white,
+        A400: white,
+        A700: white,
+    )
+);
+
+$ss-green: (
+    50:   #E8F5E9,
+    100:  #C8E6C9,
+    200:  #A5D6A7,
+    300:  #81C784,
+    400:  #66BB6A,
+    500:  #4CAF50,
+    600:  #43A047,
+    700:  #388E3C,
+    800:  #2E7D32,
+    900:  #1B5E20,
+    A100: #B9F6CA,
+    A200: #69F0AE,
+    A400: #00E676,
+    A700: #00C853,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: rgba(black, 0.87),
+        A100: rgba(black, 0.87),
+        A200: rgba(black, 0.87),
+        A400: rgba(black, 0.87),
+        A700: rgba(black, 0.87),
+    )
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Use these classes to style your components
+
+@mixin theme-classes($theme) {
+
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // icons
+    .mat-form-field.ng-invalid.ng-touched {
+        .warn-when-invalid {
+            color: map-get($warn, text);;
+        }
+    }
+
+    // custom styles
+    .mat-header-row {
+        background-color: map-get($primary, 300);
+    }
+    .mat-header-cell {
+        color: mat.get-contrast-color-from-palette($primary, 100);
+        font-weight: bolder;
+    }
+
+    // defaults
+    color: map-get($foreground, base);
+    background-color: map-get($background, background);
+
+    // background
+
+    .f-b-status-bar { color: map-get($background, status-bar); }
+    .b-b-status-bar { background-color: map-get($background, status-bar); }
+
+    .f-b-app-bar { color: map-get($background, app-bar); }
+    .b-b-app-bar { background-color: map-get($background, app-bar); }
+
+    .f-b-background { color: map-get($background, background); }
+    .b-b-background { background-color: map-get($background, background); }
+
+    .f-b-hover { color: map-get($background, hover); }
+    .b-b-hover { background-color: map-get($background, hover); }
+
+    .selectable {
+        cursor: pointer;
+        &:hover {
+            background-color: rgba($color: #829dc5, $alpha: 0.25);
+        }
+    }
+
+    .f-b-card { color: map-get($background, card); }
+    .b-b-card { background-color: map-get($background, card); }
+
+    .f-b-dialog { color: map-get($background, dialog); }
+    .b-b-dialog { background-color: map-get($background, dialog); }
+
+    .f-b-disabled-btn { color: map-get($background, disabled-button); }
+    .b-b-disabled-btn { background-color: map-get($background, disabled-button); }
+
+    .f-b-raised-btn { color: map-get($background, raised-button); }
+    .b-b-raised-btn { background-color: map-get($background, raised-button); }
+
+    .f-b-focused-btn { color: map-get($background, focused-button); }
+    .b-b-focused-btn { background-color: map-get($background, focused-button); }
+
+    .f-b-selected-btn { color: map-get($background, selected-button); }
+    .b-b-selected-btn { background-color: map-get($background, selected-button); }
+    .selected {
+        // background-color: map-get($background, selected-button);
+        background-color: rgba($color: #5555FF, $alpha: 0.3) !important;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .f-b-selected-disabled-btn { color: map-get($background, selected-disabled-button); }
+    .b-b-selected-disabled-btn { background-color: map-get($background, selected-disabled-button); }
+
+    .f-b-disabled-btn-tgl { color: map-get($background, disabled-button-toggle); }
+    .b-b-disabled-btn-tgl { background-color: map-get($background, disabled-button-toggle); }
+
+    .f-b-unselected-chip { color: map-get($background, unselected-chip); }
+    .b-b-unselected-chip { background-color: map-get($background, unselected-chip); }
+
+    .f-b-disabled-list-opt { color: map-get($background, disabled-list-option); }
+    .b-b-disabled-list-opt { background-color: map-get($background, disabled-list-option); }
+
+    .f-b-tooltip { color: map-get($background, tooltip); }
+    .b-b-tooltip { background-color: map-get($background, tooltip); }
+
+    // foreground
+
+    .f-f-base { color: map-get($foreground, base); }
+    .b-f-base { background-color: map-get($foreground, base); }
+
+    .f-f-divider { color: map-get($foreground, divider); }
+    .b-f-divider { background-color: map-get($foreground, divider); }
+
+    .f-f-disabled { color: map-get($foreground, disabled); }
+    .b-f-disabled { background-color: map-get($foreground, disabled); }
+
+    .f-f-disabled-btn { color: map-get($foreground, disabled-button); }
+    .b-f-disabled-btn { background-color: map-get($foreground, disabled-button); }
+
+    .f-f-text { color: map-get($foreground, disabled-text); }
+    .b-f-text { background-color: map-get($foreground, disabled-text); }
+
+    .f-f-elevation { color: map-get($foreground, elevation); }
+    .b-f-elevation { background-color: map-get($foreground, elevation); }
+
+    .f-f-hint-text { color: map-get($foreground, hint-text); }
+    .b-f-hint-text { background-color: map-get($foreground, hint-text); }
+
+    .f-f-secondary-text { color: map-get($foreground, secondary-text); }
+    .b-f-secondary-text { background-color: map-get($foreground, secondary-text); }
+
+    .f-f-icon { color: map-get($foreground, icon); }
+    .b-f-icon { background-color: map-get($foreground, icon); }
+
+    .f-f-text { color: map-get($foreground, text); }
+    .b-f-text { background-color: map-get($foreground, text); }
+
+    .f-f-slider-min { color: map-get($foreground, slider-min); }
+    .b-f-slider-min { background-color: map-get($foreground, slider-min); }
+
+    .f-f-slider-off { color: map-get($foreground, slider-off); }
+    .b-f-slider-off { background-color: map-get($foreground, slider-off); }
+
+    .f-f-slider-off-active { color: map-get($foreground, slider-off-active); }
+    .b-f-slider-off-active { background-color: map-get($foreground, slider-off-active); }
+
+    // primary
+
+    .f-primary { color: map-get($primary, default); }
+    .f-primary-lighter { color: map-get($primary, lighter); }
+    .f-primary-darker { color: map-get($primary, darker); }
+    .f-primary-contrast { color: map-get($primary, default-contrast); }
+    .f-primary-lighter-contrast { color: map-get($primary, lighter-contrast); }
+    .f-primary-darker-contrast { color: map-get($primary, darker-contrast); }
+    .f-primary-text { color: map-get($primary, text); }
+
+    // warn
+
+    .f-warn { color: map-get($warn, default); }
+    .f-warn-lighter { color: map-get($warn, lighter); }
+    .f-warn-darker { color: map-get($warn, darker); }
+    .f-warn-contrast { color: map-get($warn, default-contrast); }
+    .f-warn-lighter-contrast { color: map-get($warn, lighter-contrast); }
+    .f-warn-darker-contrast { color: map-get($warn, darker-contrast); }
+    .f-warn-text { color: map-get($warn, text); }
+
+    // accent
+
+    .f-accent { color: map-get($accent, default); }
+    .f-accent-lighter { color: map-get($accent, lighter); }
+    .f-accent-darker { color: map-get($accent, darker); }
+    .f-accent-contrast { color: map-get($accent, default-contrast); }
+    .f-accent-lighter-contrast { color: map-get($accent, lighter-contrast); }
+    .f-accent-darker-contrast { color: map-get($accent, darker-contrast); }
+    .f-accent-text { color: map-get($accent, text); }
+
+}
+
+$theme-1-primary: mat.define-palette(mat.$blue-palette);
+$theme-1-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$theme-1-warn:    mat.define-palette(mat.$red-palette);
+
+.theme-1-bg-p {
+    background-color: map-get($theme-1-primary, default);
+}
+
+.theme-1-bg-a {
+    background-color: map-get($theme-1-accent, default);
+}
+
+.theme-1-bg-w {
+    background-color: map-get($theme-1-warn, default);
+}
+
+.theme-1-bg {
+    background-color: #EEEEEE;
+}
+
+.theme-1 {
+
+    $theme: mat.define-light-theme((
+        color: (
+            primary: $theme-1-primary,
+            accent: $theme-1-accent,
+            warn: $theme-1-warn
+        )
+    ));
+
+    @include mat.all-component-themes($theme);
+    @include theme-classes($theme);
+
+    .b-primary {
+        $reverse-theme-p: mat.define-dark-theme((
+            color: (
+                primary: mat.define-palette($ss-white, 500, 100, 700, 500),
+                accent: $theme-1-accent,
+                warn: $theme-1-warn
+            )
+        ));
+        $reverse-color-p: map-get($reverse-theme-p, primary);
+
+        @include mat.all-component-colors($reverse-theme-p);
+
+        background-color: map-get($theme-1-primary, default) !important;
+        color: map-get($reverse-color-p, default) !important;
+
+        // override mat-tree background to fix a bug
+        .mat-tree {
+            background-color: map-get($theme-1-primary, default);
+        }
+    }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
+    .b-accent {
+        $reverse-theme-a: mat.define-dark-theme((
+            color: (
+                primary: $theme-1-primary,
+                accent: mat.define-palette($ss-white),
+                warn: $theme-1-warn
+            )
+        ));
+        $reverse-color-a: map-get($reverse-theme-a, accent);
+
+        @include mat.all-component-colors($reverse-theme-a);
+
+        background-color: map-get($theme-1-accent, default)!important;
+        color: map-get($reverse-color-a, default) !important;
+    }
+
+    .b-warn {
+        $reverse-theme-w: mat.define-dark-theme((
+            color: (
+                primary: $theme-1-primary,
+                accent: $theme-1-accent,
+                warn: mat.define-palette($ss-white)
+            )
+        ));
+        $reverse-color-w: map-get($reverse-theme-w, warn);
+
+        @include mat.all-component-colors($reverse-theme-w);
+
+        background-color: map-get($theme-1-warn, default) !important;
+        color: map-get($reverse-color-w, default) !important;
+    }
+
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
+    }
+}
+
+$theme-2-primary: mat.define-palette(mat.$indigo-palette);
+$theme-2-accent:  mat.define-palette(mat.$orange-palette, 900, 800, A700);
+$theme-2-warn:    mat.define-palette(mat.$red-palette);
+
+.theme-2-bg-p {
+    background-color: map-get($theme-2-primary, default);
+}
+
+.theme-2-bg-a {
+    background-color: map-get($theme-2-accent, default);
+}
+
+.theme-2-bg-w {
+    background-color: map-get($theme-2-warn, default);
+}
+
+.theme-2-bg {
+    background-color: #EEEEEE;
+}
+
+.theme-2 {
+
+    $theme: mat.define-light-theme((
+        color: (
+            primary: $theme-2-primary,
+            accent: $theme-2-accent,
+            warn: $theme-2-warn
+        )
+    ));
+
+    @include mat.all-component-themes($theme);
+    @include theme-classes($theme);
+
+    .b-primary {
+        $reverse-theme-p: mat.define-dark-theme((
+            color: (
+                primary: mat.define-palette($ss-white),
+                accent: $theme-2-accent,
+                warn: $theme-2-warn
+            )
+        ));
+        $reverse-color-p: map-get($reverse-theme-p, primary);
+
+        @include mat.all-component-colors($reverse-theme-p);
+
+        background-color: map-get($theme-2-primary, default);
+        color: map-get($reverse-color-p, default);
+
+        // override mat-tree background to fix a bug
+        .mat-tree {
+            background-color: map-get($theme-2-primary, default);
+        }
+    }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
+
+    .b-accent {
+        $reverse-theme-a: mat.define-dark-theme((
+            color: (
+                primary: $theme-2-primary,
+                accent: mat.define-palette($ss-white),
+                warn: $theme-2-warn
+            )
+        ));
+        $reverse-color-a: map-get($reverse-theme-a, accent);
+
+        @include mat.all-component-colors($reverse-theme-a);
+
+        background-color: map-get($theme-2-accent, default);
+        color: map-get($reverse-color-a, default);
+    }
+
+    .b-warn {
+        $reverse-theme-w: mat.define-dark-theme((
+            color: (
+                primary: $theme-2-primary,
+                accent: $theme-2-accent,
+                warn: mat.define-palette($ss-white)
+            )
+        ));
+        $reverse-color-w: map-get($reverse-theme-w, warn);
+
+        @include mat.all-component-colors($reverse-theme-w);
+
+        background-color: map-get($theme-2-warn, default);
+        color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
+    }
+
+}
+
+
+$theme-3-primary: mat.define-palette($ss-green);
+$theme-3-accent:  mat.define-palette(mat.$lime-palette, 100, 200, 300);
+$theme-3-warn:    mat.define-palette(mat.$red-palette);
+
+.theme-3-bg-p {
+    background-color: map-get($theme-3-primary, default);
+}
+
+.theme-3-bg-a {
+    background-color: map-get($theme-3-accent, default);
+}
+
+.theme-3-bg-w {
+    background-color: map-get($theme-3-warn, default);
+}
+
+.theme-3-bg {
+    background-color: #303030;
+}
+
+.theme-3 {
+
+    $theme: mat.define-dark-theme((
+        color: (
+            primary: $theme-3-primary,
+            accent: $theme-3-accent,
+            warn: $theme-3-warn
+        )
+    ));
+
+    @include mat.all-component-themes($theme);
+    @include theme-classes($theme);
+
+    .b-primary {
+        $reverse-theme-p: mat.define-light-theme((
+            color: (
+                primary: mat.define-palette($ss-black),
+                accent: $theme-3-accent,
+                warn: $theme-3-warn
+            )
+        ));
+        $reverse-color-p: map-get($reverse-theme-p, primary);
+
+        @include mat.all-component-colors($reverse-theme-p);
+
+        background-color: map-get($theme-3-primary, default);
+        color: map-get($reverse-color-p, default);
+
+        // override mat-tree background to fix a bug
+        .mat-tree {
+            background-color: map-get($theme-3-primary, default);
+        }
+    }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
+
+    .b-accent {
+        $reverse-theme-a: mat.define-light-theme((
+            color: (
+                primary: $theme-3-primary,
+                accent: mat.define-palette($ss-black),
+                warn: $theme-3-warn
+            )
+        ));
+        $reverse-color-a: map-get($reverse-theme-a, accent);
+
+        @include mat.all-component-colors($reverse-theme-a);
+
+        background-color: map-get($theme-3-accent, default);
+        color: map-get($reverse-color-a, default);
+    }
+
+    .b-warn {
+        $reverse-theme-w: mat.define-light-theme((
+            color: (
+                primary: $theme-3-primary,
+                accent: $theme-3-accent,
+                warn: mat.define-palette($ss-black)
+            )
+        ));
+        $reverse-color-w: map-get($reverse-theme-w, warn);
+
+        @include mat.all-component-colors($reverse-theme-w);
+
+        background-color: map-get($theme-3-warn, default);
+        color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
+    }
+
+}
+
+$theme-4-primary: mat.define-palette(mat.$yellow-palette);
+$theme-4-accent:  mat.define-palette(mat.$orange-palette);
+$theme-4-warn:    mat.define-palette(mat.$red-palette);
+
+.theme-4-bg-p {
+    background-color: map-get($theme-4-primary, default);
+}
+
+.theme-4-bg-a {
+    background-color: map-get($theme-4-accent, default);
+}
+
+.theme-4-bg-w {
+    background-color: map-get($theme-4-warn, default);
+}
+
+.theme-4-bg {
+    background-color: #303030;
+}
+
+.theme-4 {
+
+    $theme: mat.define-dark-theme((
+        color: (
+            primary: $theme-4-primary,
+            accent: $theme-4-accent,
+            warn: $theme-4-warn
+        )
+    ));
+
+    @include mat.all-component-themes($theme);
+    @include theme-classes($theme);
+
+    .b-primary {
+        $reverse-theme-p: mat.define-light-theme((
+            color: (
+                primary: mat.define-palette($ss-black),
+                accent: $theme-4-accent,
+                warn: $theme-4-warn
+            )
+        ));
+        $reverse-color-p: map-get($reverse-theme-p, primary);
+
+        @include mat.all-component-colors($reverse-theme-p);
+
+        background-color: map-get($theme-4-primary, default);
+        color: map-get($reverse-color-p, default);
+
+        // override mat-tree background to fix a bug
+        .mat-tree {
+            background-color: map-get($theme-4-primary, default);
+        }
+    }
+    .b-primary-expansion-panel mat-expansion-panel-header{
+        @extend .b-primary;
+        &:hover,&:focus{
+            @extend .b-primary;
+        }
+
+    }
+
+
+    .b-accent {
+        $reverse-theme-a: mat.define-light-theme((
+            color: (
+                primary: $theme-4-primary,
+                accent: mat.define-palette($ss-black),
+                warn: $theme-4-warn
+            )
+        ));
+        $reverse-color-a: map-get($reverse-theme-a, accent);
+
+        @include mat.all-component-colors($reverse-theme-a);
+
+        background-color: map-get($theme-4-accent, default);
+        color: map-get($reverse-color-a, default);
+    }
+
+    .b-warn {
+        $reverse-theme-w: mat.define-light-theme((
+            color: (
+                primary: $theme-4-primary,
+                accent: $theme-4-accent,
+                warn: mat.define-palette($ss-black)
+            )
+        ));
+        $reverse-color-w: map-get($reverse-theme-w, warn);
+
+        @include mat.all-component-colors($reverse-theme-w);
+
+        background-color: map-get($theme-4-warn, default);
+        color: map-get($reverse-color-w, default);
+    }
+    .b-warn-expansion-panel mat-expansion-panel-header{
+        @extend .b-warn;
+        &:hover,&:focus{
+            @extend .b-warn;
+        }
+    }
+
+}
+
+
+//
+
+.margin-one-percent {
+    margin-right: 1% !important;
+    margin-left: 1% !important;
+}
+
+
+.default-20 {
+    display: inline-block;
+    margin: 0 1%;
+    max-width: 17.6%;
+    width: 17.6%;
+}
+
+.default-25 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(25% - 16px);
+    width: calc(25% - 16px);
+}
+
+.default-33 {
+    display: inline-block;
+    margin: 0 1%;
+    max-width: 31.33%;
+    width: 31.33%;
+}
+
+.default-50 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(50% - 16px);
+    width: calc(50% - 16px);
+}
+
+.default-100 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(100% - 16px);
+    width: calc(100% - 16px);;
+}
+
+
+// small
+@media (max-width: 449px) {
+    .sm-hide {
+        display: none;
+        visibility: hidden;
+    }
+    .sm-100 {
+        display: inline-block;
+        margin: 0 2% !important;
+        max-width: 94% !important;
+        width: 94% !important;
+    }
+    .sm-50 {
+        display: inline-block;
+        margin: 0 2% !important;
+        max-width: 45% !important;
+        width: 45% !important;
+    }
+}
+
+// medium
+@media (min-width: 450px) and (max-width: 599px) {
+    .md-hide {
+        display: none;
+        visibility: hidden;
+    }
+    .md-20 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 17.6% !important;
+        width: 17.6% !important;
+    }
+    .md-25 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 22.5% !important;
+        width: 22.5% !important;
+    }
+    .md-33 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 30.6777% !important;
+        width: 30.6777% !important;
+    }
+    .md-50 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 47% !important;
+        width: 47% !important;
+    }
+    .md-100 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 96% !important;
+        width: 96% !important;
+    }
+}
+
+// large
+@media (min-width: 600px) and (max-width: 799px) {
+    .lg-hide {
+        display: none;
+        visibility: hidden;
+    }
+    .lg-20 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 17.6% !important;
+        width: 17.6% !important;
+    }
+    .lg-25 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 22.5% !important;
+        width: 22.5% !important;
+    }
+    .lg-33 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 31.33% !important;
+        width: 31.33% !important;
+    }
+    .lg-50 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 48% !important;
+        width: 48% !important;
+    }
+    .lg-100 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 98% !important;
+        width: 98% !important;
+    }
+}
+
+// extra large
+@media (min-width: 800px) and (max-width: 1199px) {
+    .xl-hide {
+        display: none;
+        visibility: hidden;
+    }
+    .xl-20 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 17.6% !important;
+        width: 17.6% !important;
+    }
+    .xl-25 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 22.5% !important;
+        width: 22.5% !important;
+    }
+    .xl-33 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 31.33% !important;
+        width: 31.33% !important;
+    }
+    .xl-50 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 48% !important;
+        width: 48% !important;
+    }
+    .xl-100 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 98% !important;
+        width: 98% !important;
+    }
+}
+
+// extra extra large
+@media (min-width: 1200px) {
+    .xxl-hide {
+        display: none;
+        visibility: hidden;
+    }
+    .xxl-10 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 7.8% !important;
+        width: 7.8% !important;
+    }
+    .xxl-20 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 17.6% !important;
+        width: 17.6% !important;
+    }
+    .xxl-25 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 22.5% !important;
+        width: 22.5% !important;
+    }
+    .xxl-33 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 31.33% !important;
+        width: 31.33% !important;
+    }
+    .xxl-50 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 48% !important;
+        width: 48% !important;
+    }
+    .xxl-100 {
+        display: inline-block;
+        margin: 0 1%;
+        max-width: 98% !important;
+        width: 98% !important;
+    }
+
+}
+
+.amount {
+    input {
+        text-align: end;
+    }
+}
+
+.mat-header-cell {
+    justify-content: center !important;
+    font-weight: bolder;
+    font-size: small;
+}

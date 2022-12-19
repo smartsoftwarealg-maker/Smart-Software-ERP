@@ -21,4 +21,5 @@ export const LINES_DETAIL_URL = 'lines';
 export const CENTER_SELECT_URL = 'cclogin';
 // FULL URLS
 export const ABS_INDEX_URL = '/' + [MAIN_PAGE_URL, INDEX_PAGE_URL].join('/');
+export const APPLICATIONS_URL = '/applications';
 
