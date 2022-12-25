@@ -3,6 +3,7 @@ import {APP_URL, Article, ARTICLE_IMAGE_URL, ARTICLES_URL, AvailableStock, QtyPr
 import {Observable, of} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
+import {HttpParams} from '@angular/common/http';
 
 
 @Injectable({
@@ -35,8 +36,9 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         return super.get(iid);
     }
 
-    availableStock(): Observable<AvailableStock[]> {
-        return this.httpSrv.get<AvailableStock[]>('/articles/available-stock');
+    availableStock(searchText?: string): Observable<AvailableStock[]> {
+        const params = searchText? new HttpParams().set('filter', searchText) : null;
+        return this.httpSrv.get<AvailableStock[]>('/articles/available-stock', params);
     }
 
     init(): Observable<boolean> {

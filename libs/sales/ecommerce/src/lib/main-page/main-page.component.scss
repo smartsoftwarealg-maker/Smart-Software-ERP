@@ -1,0 +1,46 @@
+.container {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.header-div {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+img {
+    display: block;
+}
+
+.search-div {
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+
+
+.article-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2em;
+}
+
+.img-div {
+    height: 150px;
+    width: 150px;
+}
+
+.description {
+    font-weight: bolder;
+    max-width: 150px;
+    font-size: small;
+}

@@ -46,6 +46,8 @@ export interface AvailableArticle {
     stock: number;
     price: number;
     storeId: number;
+    partId: number;
+    imageModel?: ImageModel;
 }
 export interface AvailableStock {
     classDescription: String;

@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {DocRight, Right} from './models';
 import {HttpService} from './http.service';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {LoginService} from './login.service';
+import {FORMS_URL} from '@ss/common/api-lookup';
 
 interface Lookup {
     id: number;
@@ -21,14 +22,15 @@ export class UserRightsService {
     constructor(private httpSrv: HttpService, private loginSrv: LoginService) { }
 
     public load(): Observable<DocRight[]> {
-        return this.httpSrv.get<Lookup[]>('/lookups/forms')
+        return this.loginSrv.isLoggedIn?
+            this.httpSrv.get<Lookup[]>(FORMS_URL)
             .pipe(switchMap(res => {
                     this.forms = res;
                     return this.httpSrv.get<DocRight[]>('/rights')
                 }),
                 tap((res: DocRight[]) =>
                     res.forEach(e => this.rightsMap.set(e.document, { read: e.read, write: e.write, edit: e.edit, delete: e.delete}))
-                ));
+                )) : of([]);
     }
 
     get rights(): Map<string, Right> {

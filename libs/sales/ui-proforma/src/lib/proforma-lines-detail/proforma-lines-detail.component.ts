@@ -22,7 +22,7 @@ export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComp
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public override articleSrv: ArticleService,
-        public override storeNameSrv: LotsService,
+        public override lotSrv: LotsService,
         public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
@@ -31,7 +31,7 @@ export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComp
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'LOGISTICS_PROFORMA'
         );

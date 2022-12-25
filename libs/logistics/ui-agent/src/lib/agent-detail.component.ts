@@ -22,7 +22,6 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
-import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AGENT_ARCHIVES} from '@ss/common/app-archive';
 
@@ -219,17 +218,17 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         return a;
     }
 
-    override uploadAttachments(id: number): Observable<any> {
-        return this.agentSrv
-            .get(id)
-            .pipe(tap(agent => {
-                this.form.controls['price'].setValue(agent.price);
-                this.form.controls['agentType'].setValue(agent.agentType);
-                this.form.controls['currency'].setValue(agent.currency);
-                this.form.controls['customerCode'].setValue(agent.customerCode);
-                this.form.controls['creationTime'].setValue(agent.creationTime);
-            }));
-    }
+    // override uploadAttachments(id: number): Observable<any> {
+    //     return this.agentSrv
+    //         .get(id)
+    //         .pipe(tap(agent => {
+    //             this.form.controls['price'].setValue(agent?.price || 0);
+    //             this.form.controls['agentType'].setValue(agent.agentType);
+    //             this.form.controls['currency'].setValue(agent.currency);
+    //             this.form.controls['customerCode'].setValue(agent.customerCode);
+    //             this.form.controls['creationTime'].setValue(agent.creationTime);
+    //         }));
+    // }
 
     updatePassword() {
         if (this.pwd1.value === this.pwd2.value) {
@@ -245,6 +244,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
 
     override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackFn(() => this.router.navigate([ABS_LOGISTICS_AGENT_URL]).then());
+        const idx = this.router.url.indexOf('agents');
+        const url = this.router.url.substring(0, idx) + 'agents';
+        this.shellSrv.setGoBackPath(url, this.route);
     }
 }

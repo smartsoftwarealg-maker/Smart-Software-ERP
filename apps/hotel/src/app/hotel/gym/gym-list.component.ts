@@ -60,7 +60,7 @@ export class GymListComponent extends AbstractEntityList<DisplayableService, Bac
         public langSrv: LanguageService,
         public override snackBarSrv: SnackBarService,
         public gymSrv: GymService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute) {
         // entity: null
         super(new FullServiceDataSource(httpSrv), userSrv.getRights(null), snackBarSrv, gymSrv.listPagination);

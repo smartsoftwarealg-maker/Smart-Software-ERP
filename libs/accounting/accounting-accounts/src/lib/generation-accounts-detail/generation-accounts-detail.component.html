@@ -8,41 +8,52 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="purchase" class="default-50 small-100">
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_PURCHASE</mat-label>
-                <input matInput formControlName="purchase" type="text" >
-                <mat-error *ngIf="form.controls['purchase'].invalid" translate>COMMON_FIELD_
-                </mat-error>
+                <ss-auto-complete matInput
+                                  [model]="purchaseLookup"
+                                  formControlName="purchase">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['purchase'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field id="supplier" class="default-50 small-100">
-                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-                <input matInput formControlName="supplier" type="text" >
-                <mat-error *ngIf="form.controls['supplier'].invalid" translate>COMMON_FIELD_
-                </mat-error>
-            </mat-form-field>
+            <!--            <mat-form-field id="supplier" class="default-50 small-100">-->
+<!--                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>-->
+<!--                <input matInput formControlName="supplier" type="text" >-->
+<!--                <mat-error *ngIf="form.controls['supplier'].invalid" translate>COMMON_FIELD_-->
+<!--                </mat-error>-->
+<!--            </mat-form-field>-->
 
-            <mat-form-field id="stock" class="default-50 small-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_STOCK</mat-label>
-                <input matInput formControlName="stock" type="text" >
-                <mat-error *ngIf="form.controls['stock'].invalid" translate>COMMON_FIELD_
-                </mat-error>
+                <ss-auto-complete matInput
+                                  [model]="stockLookup"
+                                  formControlName="stock">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['stock'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field id="consumption" class="default-50 small-100">
-                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                <input matInput formControlName="consumption" type="text" >
-                <mat-error *ngIf="form.controls['consumption'].invalid" translate>COMMON_FIELD_
-                </mat-error>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_CONSUMPTION</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="consumptionLookup"
+                                  formControlName="consumption">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['consumption'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field id="sales" class="default-50 small-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_SALES</mat-label>
-                <input matInput formControlName="sales" type="text" >
-                <mat-error *ngIf="form.controls['sales'].invalid" translate>COMMON_FIELD_
-                </mat-error>
+                <ss-auto-complete matInput
+                                  [model]="salesLookup"
+                                  formControlName=sales>
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['sales'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
+<!--            <pre>{{form?.value | json }}</pre>-->
 
         </form>
 

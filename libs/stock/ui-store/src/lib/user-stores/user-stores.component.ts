@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PaginationModel, User} from '@ss/common/api-common';
+import {LoginService, PaginationModel, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
 import {UserStore} from '@ss/stock/api-article';
@@ -17,6 +17,7 @@ import {of, switchMap} from 'rxjs';
     styleUrls: ['./user-stores.component.scss'],
 })
 export class UserStoresComponent implements OnInit {
+    readonly isManager = this.loginSrv.appCtx.manager;
     private filter: string = null;
     private refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
@@ -47,7 +48,8 @@ export class UserStoresComponent implements OnInit {
                 private route: ActivatedRoute,
                 private lotsService: LotsService,
                 private snackBarSrv: SnackBarService,
-                private confirmationSrv: ConfirmationDialogService) {
+                private confirmationSrv: ConfirmationDialogService,
+                private loginSrv: LoginService) {
         this.shellSrv.setTitle('STOCK_USER_STORES');
         this.shellSrv.setGoBackPath('..', this.route);
         this.userPagination.pageSize = 10;

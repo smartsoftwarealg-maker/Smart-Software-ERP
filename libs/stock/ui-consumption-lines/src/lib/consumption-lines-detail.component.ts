@@ -115,7 +115,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
             transacId: [this.parentId],
             reference: [{ value: b.reference, disabled: b.qtySatisfied > 0 }],
             sourceDoc: [b.sourceDoc],
-            store: [{ value: b.store || this.mainStore, disabled: b.qtySatisfied > 0 }],
+            store: [{ value: b.store, disabled: b.qtySatisfied > 0 }],
             qtyOrdered: [b.qtyOrdered],
             qtySatisfied: [b.qtySatisfied],
             qtyInvoiced: [b.qtyInvoiced],

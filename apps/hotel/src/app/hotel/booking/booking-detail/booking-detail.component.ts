@@ -130,7 +130,7 @@ export class BookingDetailComponent implements OnInit, OnDestroy {
     constructor(public bookingSrv: BookingService,
         public httpSrv: HttpService,
         public activatedRoute: ActivatedRoute,
-        public override router: Router,
+        public router: Router,
         private confirmationSrv: ConfirmationDialogService,
         private languageSrv: LanguageService,
         private snackBarSrv: SnackBarService) {

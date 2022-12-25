@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { forkJoin, Observable, of, Subject } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { Direction } from '@angular/cdk/bidi';
-import { HttpClient } from '@angular/common/http';
-import { dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
-import { AppConfigService } from './app-config.service';
+import {Injectable} from '@angular/core';
+import {forkJoin, Observable, of, Subject, zip} from 'rxjs';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import {Direction} from '@angular/cdk/bidi';
+import {HttpClient} from '@angular/common/http';
+import {dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
+import {AppConfigService} from './app-config.service';
 import {HttpService} from './http.service';
 import {LoginService} from './login.service';
 
@@ -85,7 +85,7 @@ export class LanguageService {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
     private static readonly LOCAL_STORAGE_KEY = 'localeCode';
-    private static style: HTMLElement  = null;
+    private static style: HTMLElement = null;
     private readonly RTL_STYLE =
         '.locale-dir { direction: rtl; } ' +
         '.cdk-overlay-pane { direction: rtl !important; } ' +
@@ -193,16 +193,15 @@ export class LanguageService {
 
     constructor(private appConfigSrv: AppConfigService,
                 private httpClient: HttpClient,
-                private loginSrv: LoginService,
-                private httpSrv: HttpService) {
+                private loginSrv: LoginService) {
         this.languages = DEFAULT_SUPPORTED_LANGUAGES;
         this.defaultLanguage = DEFAULT_LANGUAGE;
     }
 
     public init(): Observable<void> {
-        return this.appConfigSrv.getConfig().pipe(
-            switchMap(conf => this.setLanguage(this.parseConfig(conf)))
-        );
+        return this.appConfigSrv
+            .getConfig()
+            .pipe(switchMap(conf => this.setLanguage(this.parseConfig(conf))));
     }
 
     /**
@@ -290,6 +289,7 @@ export class LanguageService {
         if (this.currentLanguage == null || src.loaded[this.currentLanguage.code]) {
             return of(false);
         }
+        this.sources.push(src);
         return this.httpClient
             .get<{ [key: string]: string; }>(src.uri + this.currentLanguage.code + '.json')
             .pipe(
@@ -297,7 +297,13 @@ export class LanguageService {
                     src.loaded[this.currentLanguage.code] = true;
                     this.pushData(conf, src.prefix);
                     return true;
-                })
+                }),
+                catchError(err => {
+                    throw err;
+                }),
+                catchError(err => {
+                    throw err;
+                }),
             );
     }
 
@@ -321,12 +327,15 @@ export class LanguageService {
         this.changeSubject.next(this.currentLanguage.code);
     }
 
+    public addSources(sources: string[][]): Observable<boolean[]> {
+        const res = sources.filter(s => this.sources.map(e => e.uri).find(uri => s) === undefined);
+        return zip(res.map(s => this.load({uri: s[0], loaded: {}, prefix: s[1]})));
+    }
+
     public addSource(uri: string, prefix: string): void {
         if (this.sources.filter(s => s.uri === uri).length === 0) {
-            const src: Source = { uri, loaded: {}, prefix };
-            this.sources.push(src);
-            this.load(src).subscribe(
-            );
+            const src: Source = {uri, loaded: {}, prefix};
+            this.load(src).subscribe();
         }
         // return this.load(src);
     }
@@ -404,7 +413,7 @@ export class LanguageService {
         if (!paymonth || paymonth <= 0) {
             return '';
         }
-        return this.translate(this.MONTHS[paymonth % 100]) + ' ' +  Math.floor(paymonth/100);
+        return this.translate(this.MONTHS[paymonth % 100]) + ' ' + Math.floor(paymonth / 100);
     }
 
     // privates
@@ -428,14 +437,15 @@ export class LanguageService {
             throw new Error('Unknown language code "' + code + '"');
         }
         const dir = a[0].dir;
-        if (dir === 'ltr') {
-            LanguageService.style.innerHTML = this.LTR_STYLE;
-            this.rtl = false;
-        } else {
-            LanguageService.style.innerHTML = this.RTL_STYLE;
-            this.rtl = true;
+        if (LanguageService.style) {
+            if (dir === 'ltr') {
+                LanguageService.style.innerHTML = this.LTR_STYLE;
+                this.rtl = false;
+            } else {
+                LanguageService.style.innerHTML = this.RTL_STYLE;
+                this.rtl = true;
+            }
         }
     }
-
 
 }

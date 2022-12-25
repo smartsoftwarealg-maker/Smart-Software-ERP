@@ -1,5 +1,49 @@
+<div class="header-div">
+    <img src="./assets/img/logo.jpg" alt="Logo">
+    <h1>eParts</h1>
+
+    <mat-menu #menu="matMenu" style="overflow: hidden">
+        <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
+            <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
+                <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
+                <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
+            </div>
+            <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
+                <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
+                <span class="text" translate>COMMON_THEME_SETTINGS</span>
+            </div>
+        </div>
+    </mat-menu>
+    <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+        <i class="fas fa-caret-down"></i>
+    </button>
+
+</div>
+<div class="search-div">
+    <mat-form-field class="search-field margin-start-8">
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input [formControl]="searchControl" matInput type="text">
+    </mat-form-field>
+    <button mat-icon-button (click)="refresh()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+</div>
 <div *ngFor="let c of articles$ | async">
-    <div>
-        {{ c.classDescription }}
+    <div class="b-primary header">{{ c.classDescription }} </div>
+    <div class="article-div">
+        <div *ngFor="let a of c.articles">
+            <div class="img-div">
+                <ss-image-input width="100%" height="100%"
+                                [imageModel]="a.imageModel">
+                </ss-image-input>
+            </div>
+            <div class="description"> {{ a.articleDescription }} </div>
+            <div class="description">
+                <span> {{ 'COMMON_QTY' | translate }}:  {{ a.stock }} </span>
+            </div>
+            <div class="description">
+                <span> {{ 'LOGISTICS_PRICE' | translate }}: {{ a.price | number: '1.2-2'}} </span>
+            </div>
+        </div>
     </div>
 </div>

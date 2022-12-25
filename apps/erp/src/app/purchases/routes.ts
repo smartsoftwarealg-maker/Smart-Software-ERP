@@ -4,7 +4,7 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL, LOGISTICS_ARTICLES_URL
+    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL, LOGISTICS_ARTICLES_URL, STOCK_ARTICLE_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
@@ -145,12 +145,13 @@ export const routes: Routes = [
         canActivate: [CanActivateService]
     },
     {
-        path: LOGISTICS_ARTICLES_URL,
+        path: STOCK_ARTICLE_URL,
         children: [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
                 canActivate: [CanActivateService],
+                data: { price: 'awp' },
                 children: docInfoRoutes
             },
             {

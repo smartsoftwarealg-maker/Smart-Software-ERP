@@ -26,7 +26,7 @@ export class ClientsListComponent extends AbstractEntityList<Agent, BackendDataS
         public userSrv: UserService,
         public langSrv: LanguageService,
         public override snackBarSrv: SnackBarService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         public clientSrv: ClientsService) {
         // entity: null

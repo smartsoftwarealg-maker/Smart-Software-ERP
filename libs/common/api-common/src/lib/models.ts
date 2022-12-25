@@ -59,6 +59,7 @@ export interface AppContext {
     accFile?: number;
     accPeriod?: number;
     params: Map<string, string>;
+    description?: string;
 }
 
 export interface LoginInfo {

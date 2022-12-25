@@ -6,6 +6,17 @@ export const environment = {
     production: false,
 };
 
+export const langAssets = [
+    ['assets/locale/', ''],
+    ['assets/locale/administration_', 'ADMINISTRATION_'],
+    ['assets/locale/stock_', 'STOCK_'],
+    ['assets/locale/common_', 'COMMON_'],
+    ['assets/locale/sales_', 'SALES_'],
+    ['assets/locale/logistics_', 'LOGISTICS_'],
+    ['assets/locale/purchases_', 'PURCHASES_'],
+    ['assets/locale/bl_', 'BL_'],
+];
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

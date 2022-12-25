@@ -2,9 +2,9 @@ import {ABS_DASHBOARD_QUERY_URL, ABS_DASHBOARD_URL} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const dashboardNavTree: SideNavNode = {
-    name: 'DASHBOARD',
+    name: 'DASHBOARD-APP',
     icon: 'fa-solid fa-gauge-min',
-    accessRights: 'DASHBOARD',
+    accessRights: 'DASHBOARD-APP',
     children: [
         {
             name: 'COMMON_DASHBOARD_QUERIES',

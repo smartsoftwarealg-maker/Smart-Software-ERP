@@ -14,5 +14,6 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(
             RouterModule.forRoot(ecommerceRoutes, { initialNavigation: 'enabledBlocking' })
         ),
+        //provideAnimations()
     ],
 }).catch((err) => console.error(err));

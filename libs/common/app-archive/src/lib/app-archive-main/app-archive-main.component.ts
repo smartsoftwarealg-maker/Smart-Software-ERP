@@ -41,7 +41,7 @@ export class AppArchiveMainComponent implements OnInit {
 
     @Input()
     set appId(id: number) {
-        this.archiveSrv.appId = id;
+        this.archiveSrv.appId = id || 0;
         this.refresh();
     }
 

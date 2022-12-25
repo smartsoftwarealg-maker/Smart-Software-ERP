@@ -71,5 +71,5 @@ export const appRoutes: Routes =  [
 ];
 
 export const APPLICATION_LIST = [
-    'ADMINISTRATION', 'ASSETS', 'DASHBOARD',
+    'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP',
     'STOCK', 'ORGANIZATION', 'WORKFLOW'];

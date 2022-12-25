@@ -52,7 +52,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
 
     @Input()
     set attributeId(id: number) {
-        this.childAttribSrv.setParentId(id);
+        this.childAttribSrv.setParentId(id || 0);
         this.refresh();
     }
 

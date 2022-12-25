@@ -7,7 +7,7 @@ import {LanguageService} from '@ss/common/api-common';
     // tslint:disable-next-line:directive-selector
     selector: '[l10nTranslate],[translate]'
 })
-export class TranslateDirective extends BaseDirective implements OnInit {
+export class TranslateDirective extends BaseDirective implements OnInit { //1
 
     @Input() set l10nTranslate(params: any) {
         this.params = params;

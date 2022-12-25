@@ -25,7 +25,7 @@ export class OrderLinesDetailComponent extends BaseTransactionLinesDetailCompone
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public override articleSrv: ArticleService,
-        public override storeNameSrv: LotsService,
+        public override lotSrv: LotsService,
         public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
@@ -34,7 +34,7 @@ export class OrderLinesDetailComponent extends BaseTransactionLinesDetailCompone
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'SALES_EDIT_ORDER_LINES'
         );

@@ -107,11 +107,16 @@ export class AppArchiveListComponent implements OnInit {
 
     refresh() {
         this.imgSrc = null;
-        this.entitySrv.getList(0, 50)
-            .subscribe(res => {
-                this.data = res.body || [];
-                this.paginator.elementCount = res.itemCount;
-            })
+        if (this.entitySrv.getParentId() > 0) {
+            this.entitySrv.getList(0, 50)
+                .subscribe(res => {
+                    this.data = res.body || [];
+                    this.paginator.elementCount = res.itemCount;
+                });
+        } else {
+            this.data = [];
+            this.paginator.elementCount = 0;
+        }
     }
 
     select(a: AppArchive) {

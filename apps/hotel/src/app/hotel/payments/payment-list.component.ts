@@ -30,7 +30,7 @@ export class PaymentListComponent extends AbstractEntityList<Payment, BackendDat
                 public userSrv: UserService,
                 public langSrv: LanguageService,
                 public override snackBarSrv: SnackBarService,
-                public override router: Router,
+                public router: Router,
                 public activatedRoute: ActivatedRoute,
                 public clientSrv: ClientsService,
                 public paySrv: PaymentService) {

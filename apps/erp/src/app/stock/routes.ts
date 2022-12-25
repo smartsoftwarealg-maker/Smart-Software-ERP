@@ -20,7 +20,7 @@ import {
     STOCK_ANOMALY_URL,
     STOCK_REPORTS_URL,
     DASHBOARD_URL,
-    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL, STOCK_ARTICLE_URL
+    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL, STOCK_ARTICLE_URL, GENERATION_ACCOUNT_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -67,6 +67,10 @@ import {
     TransferReceptionListComponent
 } from '@ss/stock/inventory-transfers';
 import {UserStoresComponent} from '@ss/stock/ui-store';
+import {
+    GenerationAccountsDetailComponent,
+    GenerationAccountsListComponent
+} from '@ss/accounting/accounting-accounts';
 
 export const mainRoutes: Routes = [
     {
@@ -108,6 +112,24 @@ export const mainRoutes: Routes = [
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: GENERATION_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: GenerationAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: GenerationAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {GenerationAccount, GenerationAccountService} from '@ss/accounting/api-accounts';
+import {Account, AccountService, GenerationAccount, GenerationAccountService} from '@ss/accounting/api-accounts';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
   selector: 'ss-generation-accounts-detail',
@@ -14,6 +15,10 @@ import {LookupsService} from '@ss/common/api-lookup';
   styleUrls: ['./generation-accounts-detail.component.scss']
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {
+    purchaseLookup    = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
+    stockLookup       = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
+    consumptionLookup = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
+    salesLookup       = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
 
     constructor(
         public override entitySrv: GenerationAccountService,
@@ -22,7 +27,8 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private accountSrv: AccountService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -37,6 +43,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
+            account: [b.account],
             stock: [b.stock],
             consumption: [b.consumption],
             purchase: [b.purchase],

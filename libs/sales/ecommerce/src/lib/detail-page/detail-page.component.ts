@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'ss-sales-ecommerce',
-    standalone: true,
-    imports: [CommonModule],
     templateUrl: './detail-page.component.html',
     styleUrls: ['./detail-page.component.css'],
 })

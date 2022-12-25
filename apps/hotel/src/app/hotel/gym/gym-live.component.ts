@@ -25,7 +25,7 @@ export class GymLiveComponent implements OnInit, OnDestroy {
     constructor(public gymSrv: GymService,
         public httpSrv: HttpService,
         public userSrv: UserService,
-        public override router: Router,
+        public  router: Router,
         public activatedRoute: ActivatedRoute) {
         this.gymSrv.livePagination.pageSize = 50;
     }

@@ -24,43 +24,43 @@ export class HttpService {
     public baseUrl: string;
 
     constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
-        this.patchTimeout();
+        // this.patchTimeout();
     }
 
-    private patchTimeout() {
-        // patch that shit
-        const httpXhrBackend: any = HttpXhrBackend;
-        httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
-        httpXhrBackend.prototype.handle = function (req) {
-            try {
-                const defaultTimeout = 30000;
-                const requestTimeout = +req.headers.get('sstimeout');
-                //console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
-                req.headers = req.headers.delete('sstimeout');
+    // private patchTimeout() {
+    //     // patch that shit
+    //     const httpXhrBackend: any = HttpXhrBackend;
+    //     httpXhrBackend.prototype.handle2 = httpXhrBackend.prototype.handle;
+    //     httpXhrBackend.prototype.handle = function (req) {
+    //         try {
+    //             const defaultTimeout = 30000;
+    //             const requestTimeout = +req.headers.get('sstimeout');
+    //             //console.log('$$ req.headers.get(\'sstimeout\') = ' + req.headers.get('sstimeout'));
+    //             req.headers = req.headers.delete('sstimeout');
+    //
+    //             const xhrFactory = this.xhrFactory;
+    //             if (xhrFactory == null) {
+    //                 alert('ERROR: Failed to patch HttpXhrBackend');
+    //             } else {
+    //                 if (xhrFactory.build == null) {
+    //                     alert('ERROR: Failed to patch XhrFactory');
+    //                 } else {
+    //                     xhrFactory.build = function () {
+    //                         const request = new XMLHttpRequest();
+    //                         request.timeout = requestTimeout || defaultTimeout;
+    //                         return request;
+    //                     }
+    //                 }
+    //             }
+    //         } catch (e) {
+    //             console.error(e);
+    //         }
+    //         return this.handle2(req);
+    //     }
+    // }
 
-                const xhrFactory = this.xhrFactory;
-                if (xhrFactory == null) {
-                    alert('ERROR: Failed to patch HttpXhrBackend');
-                } else {
-                    if (xhrFactory.build == null) {
-                        alert('ERROR: Failed to patch XhrFactory');
-                    } else {
-                        xhrFactory.build = function () {
-                            const request = new XMLHttpRequest();
-                            request.timeout = requestTimeout || defaultTimeout;
-                            return request;
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error(e);
-            }
-            return this.handle2(req);
-        }
-    }
-
-    static getHeaders(headers?: { [name: string]: string }) {
-        return new HttpHeaders(headers || {})
+    static getHeaders() {
+        return new HttpHeaders({})
             .set('Authorization', this.getAuthToken() || '');
     }
 
@@ -116,7 +116,7 @@ export class HttpService {
             .httpClient
             .get<T[]>(this.baseUrl + url,
                 {
-                    headers: HttpService.getHeaders({sstimeout: (timeout + '')}),
+                    headers: HttpService.getHeaders(),
                     observe: 'response', params: httpParams
                 }
             ).pipe(map(ress => {
@@ -158,7 +158,7 @@ export class HttpService {
             .httpClient
             .get<T>(fullURL,
                 {
-                    headers: HttpService.getHeaders({sstimeout: timeout + ''}),
+                    headers: HttpService.getHeaders(),
                     observe: 'response',
                     params: httpParams
                 }
@@ -173,7 +173,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {headers: HttpService.getHeaders({sstimeout: timeout + ''})});
+                {headers: HttpService.getHeaders()});
     }
 
     public upload(url: string, data?: any | null): Observable<any> {
@@ -210,7 +210,7 @@ export class HttpService {
             .httpClient
             .put(this.baseUrl + url,
                 data,
-                {headers: HttpService.getHeaders({sstimeout: timeout + ''})});
+                {headers: HttpService.getHeaders()});
     }
 
     // noinspection JSUnusedGlobalSymbols
@@ -231,6 +231,12 @@ export class HttpService {
         return this.httpClient.post<LoginInfo>(this.baseUrl + url, data, {headers: httpHeaders});
     }
 
+    public anonymous(): Observable<LoginInfo> {
+        const httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+        return this.httpClient.get<LoginInfo>(this.baseUrl + '/anonymous', {headers: httpHeaders});
+    }
+
+
     // public doLogin2(url, data): Observable<{ jwt: string }> {
     //     const httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     //     return this.httpClient.post<{ jwt: string }>(this.baseUrl + url, data, { headers: httpHeaders });
@@ -242,7 +248,7 @@ export class HttpService {
             .httpClient
             .post(this.baseUrl + url,
                 data,
-                {responseType: 'arraybuffer', headers: HttpService.getHeaders({sstimeout: timeout + ''})}
+                {responseType: 'arraybuffer', headers: HttpService.getHeaders()}
             );
     }
 
@@ -305,7 +311,6 @@ export class HttpService {
                 this.baseUrl = conf.baseUrl; // backward compatibility shit (microsoft is shit)
             }
         }
-        console.log('****************', this.baseUrl);
     }
 
     // noinspection JSUnusedGlobalSymbols

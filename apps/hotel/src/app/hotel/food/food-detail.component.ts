@@ -38,7 +38,7 @@ export class FoodDetailComponent extends AbstractEntityView<Food, BackendDataSou
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public foodSrv: FoodService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService) {
         // entity: null

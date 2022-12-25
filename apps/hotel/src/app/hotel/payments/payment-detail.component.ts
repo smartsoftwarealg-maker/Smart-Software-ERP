@@ -31,7 +31,7 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
         public override snackBarSrv: SnackBarService,
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService,
         private paySrv: PaymentService) {

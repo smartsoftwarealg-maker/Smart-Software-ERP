@@ -4,12 +4,13 @@
 
 .main-container {
     width: 90%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .main-table {
-    width: 700px;
+    min-width: 800px;
+    width: 100%;
 }
 // keep the material design specs
 .mat-row, .mat-header-row {

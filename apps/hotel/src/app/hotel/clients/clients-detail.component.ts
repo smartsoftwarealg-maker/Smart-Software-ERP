@@ -32,7 +32,7 @@ export class ClientsDetailComponent extends AbstractEntityView<Agent, BackendDat
         public override snackBarSrv: SnackBarService,
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         private confirmationSrv: ConfirmationDialogService,
         private clientsSrv: ClientsService) {

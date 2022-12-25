@@ -26,7 +26,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     articleStock = 0.0;
     articleAutoCompleteModel: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
-    storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.storeNameSrv);
+    storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
 
     constructor(
         public  detailSrv: TransactionLinesClass,
@@ -36,7 +36,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public          articleSrv: ArticleService,
-        public          storeNameSrv: LotsService,
+        public          lotSrv: LotsService,
         public          lookupsSrv: LookupsService,
         public override title: string) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
@@ -139,7 +139,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
             transacId: [this.parentId],
             reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
             sourceDoc: [b.sourceDoc],
-            store: [b.store || this.mainStore],
+            store: [b.store],
             qtyOrdered: [b.qtyOrdered],
             qtySatisfied: [b.qtySatisfied ||0, Validators.required],
             qtyInvoiced: [b.qtyInvoiced ||0, Validators.required],

@@ -36,6 +36,7 @@
     "HR": "HR Management",
     "FINANCE":                  "Finance",
     "DASHBOARD":                "Dashboard",
+    "DASHBOARD-APP":                "Dashboard",
     "TREASURY":                 "Treasury",
     "ORGANIZATIONS": "Organizations",
     "RETRY":         "Retry",

@@ -12,7 +12,7 @@ export class NavBarComponent {
     @Output()
     toggleSideNav = new EventEmitter();
 
-    constructor(public navSrv: NavService, public langSrv: LanguageService, public override router: Router) {
+    constructor(public navSrv: NavService, public langSrv: LanguageService, public router: Router) {
     }
 
     emitToggleSideNav(): void {

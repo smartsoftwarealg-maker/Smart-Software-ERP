@@ -27,7 +27,7 @@ export class FoyerArticlesListComponent extends AbstractEntityList<FoyerArticle,
         public userSrv: UserService,
         public langSrv: LanguageService,
         public override snackBarSrv: SnackBarService,
-        public override router: Router,
+        public router: Router,
         public activatedRoute: ActivatedRoute,
         public foyerSrv: FoyerArticlesService) {
         // entity: null

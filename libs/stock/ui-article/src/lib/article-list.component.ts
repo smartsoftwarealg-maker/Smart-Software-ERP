@@ -65,7 +65,6 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
                 this.units = res[1];
                 this.vats = res[2];
                 this.displayedColumns = res[3].get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
-                console.log('price', this.displayedColumns);
             });
         this.subscriptions.push(
             this.filterCtrl

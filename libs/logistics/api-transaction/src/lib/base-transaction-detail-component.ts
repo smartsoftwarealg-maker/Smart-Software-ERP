@@ -30,13 +30,13 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             this.invoiceService
                 .get(this.id)
                 .pipe(tap(res => {
-                        if (res.dirty) {
+                        if (res?.dirty) {
                             this.form.markAsDirty({onlySelf: false});
                             this.form.markAsUntouched({onlySelf: false});
                             this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
                         }
                     }),
-                    switchMap(res => res.dirty? of(false): super.canDeactivate()));
+                    switchMap(res => res?.dirty? of(false): super.canDeactivate()));
      }
 
      override readForm(): Transaction {

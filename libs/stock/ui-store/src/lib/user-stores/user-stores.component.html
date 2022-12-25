@@ -17,7 +17,7 @@
     </mat-card>
 
     <div class="store-div">
-        <div [formGroup]="storeForm" class="btn-div">
+        <div [formGroup]="storeForm" class="btn-div" *ngIf="isManager">
             <mat-form-field>
                 <mat-label translate>STOCK_STORE</mat-label>
                 <ss-auto-complete matInput
@@ -29,6 +29,7 @@
             </mat-form-field>
 
             <button mat-mini-fab
+                    *ngIf="isManager"
                     color="primary"
                     [disabled]="storeForm.controls['id']?.value == null || !selectedUserId "
                     [matTooltip]="'COMMON_ADD'|translate"
@@ -37,6 +38,7 @@
             </button>
 
             <button mat-mini-fab
+                    *ngIf="isManager"
                     [disabled]="selectedStore == null || !selectedUserId || !selectedStore"
                     [matTooltip]="'COMMON_DELETE'|translate"
                     (click)="removeStore()">
