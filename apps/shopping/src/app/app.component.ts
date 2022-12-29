@@ -29,16 +29,13 @@ export class AppComponent {
                   tap(_ => this.loaded = true))
             .subscribe({
                 next: () => {
-                    console.log('********************next',  this.langSrv.translate( 'COMMON_QTY'));
                     this.loaded = true;
                 },
                 error: err => {
-                    console.error('***************************', err);
                     throw err;
                 },
                 complete: () => {
                     this.loaded = true;
-                    console.log("***************************completed", this.loaded);
                 }
             })
 

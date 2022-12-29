@@ -41,7 +41,7 @@
 </form>
 
 <div class="table-div center-div" *ngIf="showingTransactions">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="content-div">
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="table-div  center-div" *ngIf="showingPayroll">
-    <mat-table mat-table [dataSource]="payrollData" class="main-table">
+    <mat-table mat-table [dataSource]="payrollData" class="content-div">
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
@@ -126,7 +126,7 @@
 </div>
 
 <div class="table-div center-div" *ngIf="showingBank">
-    <mat-table mat-table [dataSource]="checkData" class="main-table">
+    <mat-table mat-table [dataSource]="checkData" class="content-div">
 
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
@@ -156,7 +156,7 @@
 </div>
 
 <div class="table-div center-div" *ngIf="showingCash">
-    <mat-table mat-table [dataSource]="cashData" class="main-table">
+    <mat-table mat-table [dataSource]="cashData" class="content-div">
 
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>

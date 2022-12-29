@@ -22,7 +22,7 @@
     <div class="cost-div">
         <div>
             <div mat-subheader class="b-primary" translate> {{ 'ASSET_FISCAL' }}</div>
-            <mat-table mat-table [dataSource]="fiscalCosts" class="main-table">
+            <mat-table mat-table [dataSource]="fiscalCosts" class="content-div">
 
                 <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
                     <mat-header-cell *matHeaderCellDef translate style="justify-content: center">
@@ -52,7 +52,7 @@
         </div>
         <div>
             <div mat-subheader class="b-primary" translate> {{ 'ASSET_ACCOUNTANT' }}</div>
-            <mat-table mat-table [dataSource]="accountantCosts" class="main-table">
+            <mat-table mat-table [dataSource]="accountantCosts" class="content-div">
 
                 <ng-container matColumnDef="typeDescription" style="justify-content: center; text-align: center">
                     <mat-header-cell *matHeaderCellDef translate style="justify-content: center">

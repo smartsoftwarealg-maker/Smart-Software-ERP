@@ -1,12 +1,21 @@
-.header {
-    width: 100%;
+.header-div {
     display: flex;
-    align-content: center;
-    background-clip: content-box;
+    gap: 1em;
+    align-items: center;
+    padding-top: 8px;
+    margin-bottom: 8px;
 }
-span {
-    padding-left: 1em;
-    font-size: 5em;
-    height: 100%;
+img {
     align-self: center;
+    height: 64px;
+    width: auto;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+.btn-div {
+    margin-left: auto;
+}
+
+.search-div {
+    display: flex;
 }

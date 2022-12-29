@@ -1,0 +1,44 @@
+<ss-header-page [showSearch]="false" (showCart)="goShopping()"></ss-header-page>
+
+<div class="ack_main_div" *ngIf="cartSrv.confirmation">
+    <p class="thanks_div default-100">
+        <span translate>SALES_THANKS</span>,
+        {{ cartSrv.confirmation.firstName}} {{ cartSrv.confirmation.lastName}},
+        <span translate>SALES_WILL_SHIP</span>
+    </p>
+
+    <div class="address_div default-100">
+        {{ cartSrv.confirmation.address}}
+    </div>
+</div>
+<div class="go_shopping" *ngIf="cartSrv.confirmation">
+    <button mat-raised-button
+            color="primary"
+            (click)="goShopping()"
+            translate>
+        SALES_GO_SHOPPING
+    </button>
+</div>
+<div class="cart_main_div">
+    <div class="item_div">
+        <mat-card *ngFor="let a of cartSrv.cart">
+            <div class="img-div">
+                <ss-image-input width="100%" height="100%"
+                                [imageModel]="a.imageModel">
+                </ss-image-input>
+            </div>
+            <div class="description"> {{ a.articleDescription }} </div>
+            <div class="info_div">
+                <div class="price_qty">
+                    <div>
+                        <span> {{ 'COMMON_QTY' | translate }}: </span> <span class="number">{{ a.qty }} </span>
+                    </div>
+                    <div>
+                        <span> {{ 'LOGISTICS_PRICE' | translate }}: </span> <span
+                        class="number">{{ a.price | number: '1.2-2'}} </span>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

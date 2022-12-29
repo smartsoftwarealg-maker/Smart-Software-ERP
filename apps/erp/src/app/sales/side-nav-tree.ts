@@ -1,7 +1,7 @@
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_FINANCE_CCOMPENSATIONS,
-    ABS_FINANCE_CPAYMENTS,
+    ABS_FINANCE_CPAYMENTS, ABS_SALES_ADS,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
@@ -63,6 +63,12 @@ export const salesNavTree: SideNavNode = {
             name: 'LOGISTICS_PAYMENT_COMPENSATION',
             icon: 'fas fa-coins',
             route: ABS_FINANCE_CCOMPENSATIONS,
+            accessRights: 'Accounting'
+        },
+        {
+            name: 'SALES_ADS',
+            icon: 'fa-sharp fa-solid fa-eggplant',
+            route: ABS_SALES_ADS,
             accessRights: 'Accounting'
         },
         {

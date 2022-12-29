@@ -1,15 +1,15 @@
 import {Component, inject, OnDestroy, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
-import {AppConfigService, HttpService, LanguageService, MaterialModule} from '@ss/common/api-common';
-import {ArticleService, AvailableStock} from '@ss/stock/api-article';
-import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
-import {AppArchiveModule, AppArchiveService} from '@ss/common/app-archive';
-import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {CommonUiImageInputModule, ImageModel} from '@ss/common/ui-image-input';
+import {map, Observable, Subscription, switchMap, tap} from 'rxjs';
+import {HttpService, ImageUploaderUtil} from '@ss/common/api-common';
+import {ArticleService, AvailableArticle, AvailableStock} from '@ss/stock/api-article';
+import {ImageModel} from '@ss/common/ui-image-input';
 import {FormControl} from '@angular/forms';
-import {CustomErrorHandlerService} from '@ss/common/ui-error-handler';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Lookup} from '@ss/common/api-lookup';
+import {SalesAdsService} from '../sales-ads.service';
+import {ADImage} from '../ecommerce-api';
+import {CartService} from '../cart.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'ss-main-page',
@@ -18,29 +18,74 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit, OnDestroy {
+    private jobId: any = null;
     private subscriptions: Subscription[] = [];
-    private httpSrv = inject(HttpService);
+    private httpSrv    = inject(HttpService);
     private articleSrv = inject(ArticleService);
+    private adSrv      = inject(SalesAdsService);
+    private router     = inject(Router);
+    private route      = inject(ActivatedRoute);
+
+    cartSrv    = inject(CartService);
+    uploadUtil = new ImageUploaderUtil();
     searchControl = new FormControl('');
     articles$: Observable<AvailableStock[]> = null;
+    classes$: Observable<Lookup[]>          = null;
+    ads: ADImage[] = [];
+    adsLoaded = false;
+    adIndex = 0;
     selectedId = 0;
+    selectedClass = 0;
 
     constructor() {
     }
 
     ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());
+        if (this.jobId) {
+            clearInterval(this.jobId);
+        }
     }
 
     ngOnInit(): void {
         this.refresh();
-        this.subscriptions.push(
+
+        this.classes$ = this.articles$
+            .pipe(map(res =>  res.map(e => <Lookup> {id: e.classId, description: e.classDescription})));
+
+        this.adSrv
+            .getList(0, 5)
+            .pipe(map(res => res.body))
+            .subscribe(res => {
+                this.ads = res;
+                this.ads.forEach(e => {
+                    this.adSrv
+                        .image(e.id)
+                        .subscribe(
+                            img => {
+                                e.imageBlob = img;
+                                ImageUploaderUtil.toBase64(img, (s: string) => e.imageSrc = s);
+                            });
+                });
+            });
+
+
+        this.subscriptions
+            .push(
             this.searchControl.valueChanges.pipe(
                 debounceTime(300),
                 distinctUntilChanged()
             ).subscribe(filter => {
                 this.refresh();
             }));
+
+        this.jobId = setInterval(() => {
+                this.adIndex = this.ads.length == 0 ? 0 : ++this.adIndex % this.ads.length;
+                this.uploadUtil.imgSrc = this.ads[this.adIndex].imageSrc;
+                // ImageUploaderUtil.toBase64(this.ads[this.adIndex].imageBlob, (s: string) => this.uploadUtil.imgSrc = s);
+                this.adsLoaded = true;
+            },
+            5000);
     }
 
     select(id: number) {
@@ -51,16 +96,33 @@ export class MainPageComponent implements OnInit, OnDestroy {
         this.articles$ =
             this.httpSrv
                 .init()
-                .pipe(switchMap(_ => this.articleSrv.availableStock(this.searchControl.value)),
+                .pipe(switchMap(_ => this.articleSrv.availableStock(this.selectedClass, this.searchControl.value)),
                     tap(res => {
                         res.forEach(s => {
                             s.articles.forEach(a => {
                                 a.imageModel = new ImageModel(this.httpSrv);
                                 a.imageModel.readOnly = true;
                                 a.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.partId), false);
-                            })
+                            });
                         })
                     }));
     }
 
+    selectClass(classId: number) {
+        this.selectedClass = classId;
+        this.refresh();
+    }
+
+    removeFromCart(a: AvailableArticle) {
+        this.cartSrv.removeFromCart(a);
+    }
+
+    addToCart(a: AvailableArticle) {
+        this.cartSrv.addToCart(a);
+    }
+
+    showCart() {
+        console.log(this.router.url);
+        this.router.navigate(['./cart'], { relativeTo: this.route });
+    }
 }

@@ -5,7 +5,12 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import {HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
+import {
+    HeaderPageComponent,
+    MainPageComponent, SalesAcknowledgementComponent,
+    SalesConfirmationComponent,
+    ShoppingCartComponent
+} from '@ss/sales/ecommerce';
 import {UiThemeModule} from '@ss/common/ui-theme';
 import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
 import {CommonModule} from '@angular/common';
@@ -14,6 +19,9 @@ import {CommonUiLangModule} from '@ss/common/ui-lang';
 
 const shoppingRoutes: Routes = [
     {path: '', component: MainPageComponent, pathMatch: 'full'},
+    {path: 'cart', component: ShoppingCartComponent},
+    {path: 'sales-acknowledgement', component: SalesAcknowledgementComponent},
+    {path: 'sales-confirmation', component: SalesConfirmationComponent},
     {path: '**', redirectTo: '/app/main-page', pathMatch: 'full'}
 ];
 
@@ -25,7 +33,6 @@ const shoppingRoutes: Routes = [
         RouterModule.forRoot(shoppingRoutes, { initialNavigation: 'enabledBlocking' }),
         RouterModule,
         HttpClientModule,
-        HeaderPageComponent,
         HttpClientModule,
         UiThemeModule,
         UiErrorHandlerModule,

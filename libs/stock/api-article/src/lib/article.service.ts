@@ -36,9 +36,12 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         return super.get(iid);
     }
 
-    availableStock(searchText?: string): Observable<AvailableStock[]> {
-        const params = searchText? new HttpParams().set('filter', searchText) : null;
-        return this.httpSrv.get<AvailableStock[]>('/articles/available-stock', params);
+    availableStock(klass?: number, searchText?: string): Observable<AvailableStock[]> {
+        const params = new HttpParams();
+        const p1 = klass? params.set('klass', klass) : params;
+        const p2 = searchText? p1.set('filter', searchText) : p1;
+        // const params = searchText? new HttpParams().set('filter', searchText) : null;
+        return this.httpSrv.get<AvailableStock[]>('/articles/available-stock', p2);
     }
 
     init(): Observable<boolean> {

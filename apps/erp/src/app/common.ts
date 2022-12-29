@@ -158,7 +158,7 @@ export const SALES_INVOICE_CANCEL_URL = 'cinvoice';
 export const SALES_DELIVERY_CANCEL_URL = 'cdelivery';
 export const SALES_ORDER_URL = 'order';
 export const SALES_PROFORMA_URL = 'proforma';
-
+export const SALES_AD_URL = 'sales-ads';
 // HR
 export const HR_CATEGORIES_URL = 'categories';
 export const HR_SERVICES_URL = 'services';
@@ -248,6 +248,7 @@ export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_UR
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
 export const DASHBOARD_URL       = 'dashbaord';
+
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -484,6 +485,7 @@ export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_OR
 export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PROFORMA_URL].join('/');
 export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON_REPORTS_URL].join('/')
 export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/')
+export const ABS_SALES_ADS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_AD_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');

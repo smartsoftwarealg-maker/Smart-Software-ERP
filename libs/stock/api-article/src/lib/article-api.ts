@@ -48,8 +48,10 @@ export interface AvailableArticle {
     storeId: number;
     partId: number;
     imageModel?: ImageModel;
+    qty?: number;
 }
 export interface AvailableStock {
+    classId: number;
     classDescription: String;
     articles: AvailableArticle[];
 }
