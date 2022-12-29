@@ -40,3 +40,18 @@ export interface UserStore {
     storeId: number;
     storeDescription?: string;
 }
+
+export interface AvailableArticle {
+    articleDescription: string;
+    stock: number;
+    price: number;
+    storeId: number;
+    partId: number;
+    imageModel?: ImageModel;
+    qty?: number;
+}
+export interface AvailableStock {
+    classId: number;
+    classDescription: String;
+    articles: AvailableArticle[];
+}

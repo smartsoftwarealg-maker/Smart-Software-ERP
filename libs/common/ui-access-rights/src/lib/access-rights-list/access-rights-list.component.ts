@@ -38,17 +38,16 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     constructor(
         private loginSrv: LoginService,
         public rightsSrv: AccessRightsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
         private lookupSrv: LookupsService,
         public formBuilder: UntypedFormBuilder,
-        public pagPersistSrv: PaginatorPersistenceService,
-        private roleSrv: RoleService,
-        private langSrv: LanguageService) {
+        public override pagPersistSrv: PaginatorPersistenceService,
+        private roleSrv: RoleService) {
         super(rightsSrv,
               shellSrv,
               snackBarSrv,
@@ -68,7 +67,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         });
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.editButton.icon = 'fas fa-save';
         this.editButton.label = 'COMMON_SAVE';
@@ -89,7 +88,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             });
     }
 
-    edit() {
+    override edit() {
         if (this.selectedItem) {
             const r: AccessRight = {
                 id: this.selectedRow?.id || 0,
@@ -118,7 +117,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         }
     }
 
-    showDetail(id: number) {
+    override showDetail(id: number) {
         this.editButton.disabled = false;
     }
 
@@ -130,7 +129,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         this.form.reset();
     }
 
-    selectRow(row: AccessRight) {
+    override selectRow(row: AccessRight) {
         super.selectRow(row);
         this.form.controls['roles']?.setValue(row?.roleId || 0);
         this.form.controls['canRead']?.setValue(this.canRead());
@@ -157,7 +156,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     }
 
 
-    processLoadedData(data: AccessRight[]): Observable<AccessRight[]> {
+    override processLoadedData(data: AccessRight[]): Observable<AccessRight[]> {
         data.forEach(d => {
             d.roleName = this.roleList.find(r => r.id === d.roleId)?.description;
             d.read = ((d.rights || 0) & 1) === 1;

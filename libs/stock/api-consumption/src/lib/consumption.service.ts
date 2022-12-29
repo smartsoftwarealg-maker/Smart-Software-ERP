@@ -11,7 +11,7 @@ export const CONSUMPTION_LINES_URL = '/detail';
 })
 export class ConsumptionService extends BaseEntityService<Transaction> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CONSUMPTION_URL);
     }
 

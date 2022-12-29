@@ -20,7 +20,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     dataCols: ElementsInfo[] = [];
     specialPayroll = false;
 
-    constructor(protected httpSrv: HttpService,
+    constructor(protected override httpSrv: HttpService,
                 private inputFilterSrv: InputFiltersService,
                 private elementInfoSrv: ElementsInfoService) {
         super(httpSrv, INPUT_ELEMENTS_URL);
@@ -62,7 +62,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
         return this.colsList().join('') || '';
     }
 
-    get(id: number | string): Observable<ELine> {
+    override get(id: number | string): Observable<ELine> {
         const params = new HttpParams().set('cols', this.colsString());
         return this.httpSrv.get(this.getUrl() + '/' + id, params);
     }

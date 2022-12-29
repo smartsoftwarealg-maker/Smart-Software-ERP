@@ -246,5 +246,6 @@
     "DOCUMENT":            "Document",
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
-    "EPAYMENT":            "E-payment"
+    "EPAYMENT":            "E-payment",
+    "MORE":                "More"
 }

@@ -27,25 +27,25 @@ export class ServicesListComponent extends BaseEntityListComponent<Service> {
     constructor(
         public serviceSrv: ServiceService,
         public employeeSrv: EmployeeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public userSrv: UserService,
         public agentSrv: AgentService,
         public langSrv: LanguageService,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(serviceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_SERVICES');
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
-    public processLoadedData(data: Service[]): Observable<Service[]> {
+    public override processLoadedData(data: Service[]): Observable<Service[]> {
         data.forEach(d =>
             d.responsible
                 ? this.employeeSrv.get(d.responsible).subscribe(p => d.responsibleName = this.langSrv.formatFullName(p.firstName, p.lastName))

@@ -8,7 +8,7 @@ import { CheckBook, CHECK_BOOK_URL } from './check-books-api';
     providedIn: 'root'
 })
 export class CheckBookService extends BaseEntityExtendedService<CheckBook> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CHECK_BOOK_URL);
     }
 }

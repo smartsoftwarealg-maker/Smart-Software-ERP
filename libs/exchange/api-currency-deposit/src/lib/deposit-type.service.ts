@@ -16,7 +16,7 @@ export interface DepositType {
 
 export class DepositTypeService extends BaseEntityExtendedService<DepositType> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/deptypes');
     }
 }

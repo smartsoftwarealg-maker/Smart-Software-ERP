@@ -4,7 +4,7 @@
         <mat-form-field class="year">
             <mat-label translate>PAYROLL_YEAR</mat-label>
             <input matInput formControlName="year" type="number" [min]="curYear" [max]="curYear" step="1" required>
-            <mat-error *ngIf="form.controls.year.hasError('required')" translate>COMMON_FIELD_REQUIRED
+            <mat-error *ngIf="form.controls['year'].hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
 
@@ -13,7 +13,7 @@
             <mat-select formControlName="fund">
                 <mat-option *ngFor="let c of funds" [value]="c.id">{{ c.description }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('fund')" translate>COMMON_FIELD_REQUIRED
+            <mat-error *ngIf="form.controls['fund'].hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
 
@@ -23,7 +23,7 @@
                 <mat-option *ngFor="let c of bases"
                             [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('ssBase')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['ssBase'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -32,7 +32,7 @@
                 <mat-option *ngFor="let c of absences"
                             [value]="c.variable">{{ c.variable }} {{ c.description }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('absence')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['absence'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -40,7 +40,7 @@
             <mat-select formControlName="modes">
                 <mat-option *ngFor="let c of modes" [value]="c.id"> {{ c.description | translate }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('modes')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['modes'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -48,7 +48,7 @@
             <mat-select formControlName="periods">
                 <mat-option *ngFor="let c of periods" [value]="c.id"> {{ c.description | translate }}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.controls.year.hasError('periods')" translate>COMMON_FIELD_REQUIRED</mat-error>
+            <mat-error *ngIf="form.controls['periods'].hasError('required')" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
         <div class="btn-group">

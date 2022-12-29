@@ -28,12 +28,12 @@ export class EmployeeDiplomaDetailComponent extends BaseEntityDetailComponent<Em
 
     constructor(
         public employeeDiplomaSrv: EmployeeDiplomaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private diplomaSrv: DiplomaService,
         private subjectSrv: SubjectService,
@@ -42,18 +42,18 @@ export class EmployeeDiplomaDetailComponent extends BaseEntityDetailComponent<Em
         super(employeeDiplomaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_DIPLOMAS');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    const parentId = +p.id;
+                    const parentId = +p['id'];
                     this.employeeDiplomaSrv.setParentId(parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: EmployeeDiploma): UntypedFormGroup {
+    override setupForm(a: EmployeeDiploma): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,

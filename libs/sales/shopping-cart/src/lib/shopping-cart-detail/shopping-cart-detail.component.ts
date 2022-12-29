@@ -49,12 +49,12 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         private markSrv: MarkService,
         private cartSrv: ShoppingCartService,
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
         public langSrv: LanguageService,
@@ -73,7 +73,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         this.isHandset = this.breakPointObs.observe(['(max-width: 700px)']);
     }
 
-    processLoadedData(data: Cartline[]): Observable<Cartline[]> {
+    override processLoadedData(data: Cartline[]): Observable<Cartline[]> {
         data.forEach(p => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
@@ -85,7 +85,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                   switchMap(res => of(data)));
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
         this.isHandset.subscribe(state => {
@@ -152,7 +152,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         }
     }
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         super.ngOnDestroy();
         if (this.subscription) {
             this.subscription.unsubscribe();

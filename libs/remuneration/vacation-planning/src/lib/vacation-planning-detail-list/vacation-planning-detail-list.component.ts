@@ -84,7 +84,7 @@ export class VacationPlanningDetailListComponent implements OnInit {
         this.shellSrv.setButtons([this.addButton, this.editButton, this.deleteButton]);
         this.route
             .params
-            .pipe(map(p => +p.id),
+            .pipe(map(p => +p['id']),
                 tap(id => this.parentId = id),
                 switchMap(id => this.loadDetailLines()))
             .subscribe(res => {

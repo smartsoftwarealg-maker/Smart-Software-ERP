@@ -7,7 +7,7 @@ import { OLD_CAREER_PARENT_URL, OLD_CAREER_CHILD_URL, OldCareer } from './employ
 @Injectable({ providedIn: 'root' })
 export class EmployeeOldCareerService extends BaseEntityService<OldCareer> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OLD_CAREER_CHILD_URL, OLD_CAREER_PARENT_URL);
     }
 }

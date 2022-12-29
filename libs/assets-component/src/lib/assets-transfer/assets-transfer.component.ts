@@ -8,7 +8,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AssetsTransferService} from '../assets-transfer.service';
 import {IsParamService, UserRightsService} from '@ss/common/api-common';
-import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 
 @Component({
     selector: 'ss-assets-transfer',
@@ -85,8 +84,8 @@ export class AssetsTransferComponent implements OnInit {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
                     this.form.reset();
-                    if (res.length > 0) {
-                        this.router.navigate(['../asset-appointments', res[0]], { relativeTo: this.activatedRoute }).then();
+                    if (res.id > 0) {
+                        this.router.navigate(['../asset-appointments', res.id], { relativeTo: this.activatedRoute }).then();
                     }
                 }
             });

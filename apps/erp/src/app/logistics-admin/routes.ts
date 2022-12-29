@@ -9,7 +9,7 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL, docInfoRoutes,
+    LOGISTICS_CATEGORY_URL, docInfoRoutes, GENERATION_ACCOUNT_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -39,6 +39,10 @@ import {
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
 import {SalesContractDetailComponent, SalesContractListComponent} from '../../../../../libs/logistics/contracts/src';
+import {
+    GenerationAccountsDetailComponent,
+    GenerationAccountsListComponent
+} from '../../../../../libs/accounting/accounting-accounts/src';
 export const mainRoutes: Routes = [
     {
         path: LOOKUPS_URL,

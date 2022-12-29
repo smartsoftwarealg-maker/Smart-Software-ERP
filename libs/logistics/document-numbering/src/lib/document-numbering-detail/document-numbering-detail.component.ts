@@ -20,11 +20,11 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
 
     constructor(
         private docSrv: DocumentNumberingService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public definitionSrv: DefinitionLookupService,
         private loginSrv: LoginService) {
         super(docSrv,
@@ -36,7 +36,7 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
             'LOGISTICS_DOCUMENT_NUMBERING');
     }
 
-    public setupForm(e: LDocument): UntypedFormGroup {
+    public override setupForm(e: LDocument): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             centerId: [e.centerId || this.loginSrv.appCtx.center],

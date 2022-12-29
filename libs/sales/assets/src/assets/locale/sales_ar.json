@@ -14,5 +14,11 @@
     "EDIT_DELIVERY_CANCEL": "تحديث الإلغاء",
     "EDIT_CANCELLATION_LINES": "تحديث أسطر الإلغاء",
     "EDIT_ORDER_LINES": "تحديث الطلبات",
-    "CONFIRM_CART": "تأكيد عربة التسوق"
+    "CONFIRM_CART": "تأكيد عربة التسوق",
+    "ADS":          "إعلانات المبيعات",
+    "GO_SHOPPING":  "مواصلة التسوق",
+    "SHOW_CART":    "عرض عربة التسوق",
+    "SALES_COUNT":  "عدد الأصناف",
+    "THANKS":       "شكرًا",
+    "WILL_SHIP":    "سيتم شحن البضائع فور استلام المبلغ المدفوع إلى العنوان التالي:"
 }

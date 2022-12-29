@@ -28,18 +28,18 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public exchangeService: CurrencyExchangeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
         this.purchaseAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
         this.salesAutoCompleteModel['onValueChanged'] = value => this.onCurrencyChange();
     }
 
-    public setupForm(b: Exchange) {
+    public override setupForm(b: Exchange) {
         return this.formBuilder.group({
             id: [b.id],
             agentId: [b.agentId, Validators.required],
@@ -55,7 +55,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
     }
 
 
-    readForm(): Exchange {
+    override readForm(): Exchange {
         const value = super.readForm();
         value.userId = this.loginSrv.appCtx.id;
         value.centerId = this.loginSrv.appCtx.center;

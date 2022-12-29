@@ -9,7 +9,7 @@ import {Transaction} from "@ss/logistics/api-transaction";
 })
 export class ReceptionService extends BaseEntityService<Transaction> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PURCHASE_URL);
     }
 }

@@ -8,7 +8,7 @@ import {ELEMENT_TYPE_URL, ElementType} from '@ss/payroll-common';
 })
 export class ElementTypesService extends BaseEntityService<ElementType> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ELEMENT_TYPE_URL);
     }
 }

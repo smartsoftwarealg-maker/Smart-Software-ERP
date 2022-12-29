@@ -20,13 +20,13 @@ export class DairaListComponent extends BaseEntityListComponent<Lookup> {
 
     constructor(
         public markSrv: DairaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(markSrv,
             shellSrv,
             snackBarSrv,
@@ -48,15 +48,15 @@ export class DairaDetailComponent extends BaseEntityDetailComponent<Lookup> {
 
     constructor(
         public markSrv: DairaService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DAIRAS');
     }
 
-    public setupForm(e: Mark): UntypedFormGroup {
+    public override setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required]

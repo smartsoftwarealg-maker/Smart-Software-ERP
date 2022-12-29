@@ -13,8 +13,8 @@
 
     <mat-form-field class="default-25 sm-100">
         <mat-label translate>COMMON_DATE</mat-label>
-        <ss-date-picker required="true" formControlName="date"></ss-date-picker>
-        <mat-error *ngIf="form.controls.date?.hasError('required')" translate>
+        <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
+        <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
             COMMON_FIELD_REQUIRED
         </mat-error>
     </mat-form-field>

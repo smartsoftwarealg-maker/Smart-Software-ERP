@@ -34,12 +34,12 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
 
     constructor(
         public consumptionLinesService: ConsumptionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
         public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public articleSrv: ArticleService,
         public storeNameSrv: LotsService,
         public lookupsSrv: LookupsService,
@@ -48,11 +48,11 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         super(consumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,'STOCK_EDIT_CONSUMPTION_LINES');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.route.queryParams
             .pipe(
                 tap(p => {
-                    this.parentId = +p.parent;
+                    this.parentId = +p['parent'];
                     this.consumptionLinesService.setParentId(this.parentId);
                 }),
                 switchMap(_ => this.optionSrv.get(this.loginSrv.appCtx.center)),
@@ -60,7 +60,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
             );
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
 
@@ -91,13 +91,13 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         this.articleStock = res.qty;
         this.showStock = true;
     }
-    ngOnDestroy() {
+    override ngOnDestroy() {
         this.articleAutoCompleteModel.evenEmitter.unsubscribe();
         this.storeAutoCompleteModel.evenEmitter.unsubscribe();
         super.ngOnDestroy();
     }
 
-    finishLoading(e: TransactionLine) {
+    override finishLoading(e: TransactionLine) {
         this.selectedRow = e;
         this.router.navigate([], {
             relativeTo: this.route,
@@ -107,7 +107,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         super.finishLoading(e);
     }
 
-    public setupForm(b: TransactionLine) {
+    public override setupForm(b: TransactionLine) {
         // Make sure to update the template if you edit the configuration here
         this.line = b;
         return this.formBuilder.group({
@@ -115,7 +115,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
             transacId: [this.parentId],
             reference: [{ value: b.reference, disabled: b.qtySatisfied > 0 }],
             sourceDoc: [b.sourceDoc],
-            store: [{ value: b.store || this.mainStore, disabled: b.qtySatisfied > 0 }],
+            store: [{ value: b.store, disabled: b.qtySatisfied > 0 }],
             qtyOrdered: [b.qtyOrdered],
             qtySatisfied: [b.qtySatisfied],
             qtyInvoiced: [b.qtyInvoiced],
@@ -128,7 +128,7 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         });
     }
 
-    readForm(): TransactionLine {
+    override readForm(): TransactionLine {
         const value = super.readForm();
         value.price = value.pprice;
         value.reference = value.reference || this.line.reference;

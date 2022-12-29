@@ -21,16 +21,16 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
 
     constructor(
         public service: ArchiveService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(service, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'WAR_ARCHIVE');
     }
 
@@ -42,7 +42,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     //     this.router.navigate(['detail', {id: id}], {relativeTo: this.route}).then();
     // }
 
-    public edit() {
+    public override edit() {
         if (this.selectedRow._id) {
             this.router.navigate(['detail', {id: this.selectedRow._id}], {relativeTo: this.route}).then();
         }
@@ -65,7 +65,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             });
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         const downloadButton: ToolbarButton = {
             icon: 'fas fa-download',
@@ -86,7 +86,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             .forEach(e => this.viewDocument(e));
     }
 
-    processLoadedData(data: ArchiveDocument[]): Observable<ArchiveDocument[]> {
+    override processLoadedData(data: ArchiveDocument[]): Observable<ArchiveDocument[]> {
         data.forEach(d => {
             if (d.thumbnail && d.thumbnail.length > 100) {
                 d.imgSrc = 'data:image/jpeg;base64,' + btoa(
@@ -101,7 +101,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
         return of(data);
     }
 
-    public deleteSelected(): void {
+    public override deleteSelected(): void {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {

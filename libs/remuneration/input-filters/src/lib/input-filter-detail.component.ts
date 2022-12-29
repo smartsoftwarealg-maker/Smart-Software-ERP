@@ -27,16 +27,16 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
     constructor(
         private detailSrv: InputFiltersService,
         private elementSrv: ElementsInfoService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_INPUT_FILTERS');
     }
 
-    public setupForm(e: InputFilter): UntypedFormGroup {
+    public override setupForm(e: InputFilter): UntypedFormGroup {
         this.selection = e.selection;
         this.buildSelectionArray();
         return this.formBuilder.group({
@@ -46,7 +46,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
         });
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.elementSrv
             .getList(0, 2000)
@@ -96,7 +96,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
         [];
     }
 
-    readForm(): InputFilter {
+    override readForm(): InputFilter {
         const value = super.readForm();
         value.selection = this.selection;
         return value;

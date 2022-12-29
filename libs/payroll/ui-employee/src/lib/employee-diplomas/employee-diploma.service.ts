@@ -8,7 +8,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class EmployeeDiplomaService extends BaseEntityService<EmployeeDiploma>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv,  EMPLOYEE_DIPLOMA_URL, PERSON_URL);
     }
 }

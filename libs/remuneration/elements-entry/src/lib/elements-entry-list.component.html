@@ -36,7 +36,7 @@
                     <mat-cell *matCellDef="let e">
                         <div class="person-photo">
                             <ss-image-input width="60px" height="76px"
-                                            [ImageModel]="e.imageModel"
+                                            [imageModel]="e.imageModel"
                                             style="display: inline-block;">
                             </ss-image-input>
                         </div>
@@ -96,7 +96,7 @@
             <div class="slip-image">
                 <ss-image-input width="160px"
                                 height="200px"
-                                [ImageModel]="selectedRow?.imageModel"
+                                [imageModel]="selectedRow?.imageModel"
                                 style="display: inline-block; justify-self: center">
                 </ss-image-input>
                 <div class="slip-info">

@@ -19,7 +19,7 @@ export class AbstractEntityList<T, S extends AbstractDataSource<T>> extends Abst
 
     saveFn = (x, y) => this.save(x, y);
 
-    constructor(public dataSrc: S, public accessRight: Right, public snackBarSrv: SnackBarService, paginationModel: PaginationModel) {
+    constructor(public dataSrc: S, public accessRight: Right, public override snackBarSrv: SnackBarService, paginationModel: PaginationModel) {
         super(dataSrc, accessRight, snackBarSrv);
         this.paginationModel = paginationModel;
         this.paginationModel.onChange = this.onPaginationChanged.bind(this);

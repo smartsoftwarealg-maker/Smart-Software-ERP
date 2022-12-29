@@ -150,5 +150,6 @@
     "SHIPPING":         "",
     "CHECKOUT":         "",
     "PAYER":            "",
-    "SEND_MESSAGE":     ""
+    "SEND_MESSAGE":     "",
+    "QTY":              ""
 }

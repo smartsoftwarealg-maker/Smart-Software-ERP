@@ -8,7 +8,7 @@ import {GENACCOUNT_URL, GenerationAccount} from "./account-api";
     providedIn: 'root'
 })
 export class GenerationAccountService extends BaseEntityService<GenerationAccount> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, GENACCOUNT_URL);
     }
 }

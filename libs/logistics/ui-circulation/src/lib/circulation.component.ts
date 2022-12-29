@@ -36,15 +36,15 @@ export class CirculationComponent implements OnInit {
                 public snackBarSrv: SnackBarService,
                 public route: ActivatedRoute,
                 public router: Router,
-                // public articleSrv: ArticleService,
+                // public override articleSrv: ArticleService,
                 public langServ: LanguageService) {}
 
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
             // if no reference found go for id
-            this.articleReference = x.articleReference;
-            this.articleId = +x.articleId;
+            this.articleReference = x['articleReference'];
+            this.articleId = +x['articleId'];
             this.loadCirculation();
         });
 

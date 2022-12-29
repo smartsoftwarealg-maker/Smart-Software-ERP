@@ -13,12 +13,12 @@ import {Store} from '@ss/common/api-lookup';
 })
 export class ArticleLotsService extends BaseEntityExtendedService<Store> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARTICLE_LOTS_URL, ARTICLES_URL);
     }
 
 
-    get(id: number): Observable<Store> {
+    override get(id: number): Observable<Store> {
         return this.httpSrv.get('/lots' + '/' + id);
     }
 }

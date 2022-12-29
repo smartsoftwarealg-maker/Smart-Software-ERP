@@ -10,7 +10,7 @@ import {HttpParams} from "@angular/common/http";
 })
 export class WilayaService extends BaseEntityService<Wilaya> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, WILAYAS_URL);
     }
 

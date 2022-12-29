@@ -14,5 +14,11 @@
     "EDIT_DELIVERY_CANCEL": "Modification annulation",
     "EDIT_CANCELLATION_LINES": "Modification detail annulation",
     "EDIT_ORDER_LINES": "Modification detail commande",
-    "CONFIRM_CART": "Confirmer le panier"
+    "CONFIRM_CART": "Confirmer le panier",
+    "ADS":          "Annonces de vente",
+    "GO_SHOPPING":  "Continuer vos achats",
+    "SHOW_CART":    "Afficher le panier",
+    "SALES_COUNT":  "Nombre d'éléments",
+    "THANKS":       "Merci",
+    "WILL_SHIP":    "La marchandise sera expédiée dès réception de votre paiement à l'adresse suivante :"
 }

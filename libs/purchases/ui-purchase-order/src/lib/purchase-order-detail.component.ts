@@ -54,11 +54,11 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
     }
 
     constructor(public orderService: PurchaseOrderService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
                 public usersService: UserListService,
                 public lookupsSrv: LookupsService,
                 private supplierSrv: SupplierService,
@@ -72,12 +72,12 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_EDIT_ORDER');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
         this.order = form;
         this.importBtn.disabled = form.agent == null || form.agent === undefined;
@@ -113,13 +113,13 @@ export class PurchaseOrderDetailComponent extends BaseEntityDetailComponent<Tran
         });
     }
 
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form = super.readForm();
         fillObject(this.order, form)
         return form;
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
         this.shellSrv.addButton(this.importBtn);

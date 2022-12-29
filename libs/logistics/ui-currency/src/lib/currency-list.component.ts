@@ -22,13 +22,13 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
     constructor(
         public currencySrv: CurrencyService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public lookupSrv: LookupsService,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
         public pagPersist: PaginatorPersistenceService) {
         super(currencySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersist, 'LOGISTICS_CURRENCIES');
         this.pagination.pageSize = 20;

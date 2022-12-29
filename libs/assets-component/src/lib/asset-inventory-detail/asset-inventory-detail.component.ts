@@ -41,7 +41,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'INVENTORY');
     }
 
-    public setupForm(b: AssetInventory) {
+    public override setupForm(b: AssetInventory) {
         this.id = this.id || 0;
         return this.formBuilder.group({
             id:         [b.id || 0],

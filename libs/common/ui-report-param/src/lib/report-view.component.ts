@@ -55,25 +55,25 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     constructor(
         public reportsService: ReportTreeService,
         public reportService: ReportParamsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public sanitizer: DomSanitizer,
         public langSrv: LanguageService,
-        public defReportSrv: DefaultReportService,
+        public override defReportSrv: DefaultReportService,
         private deviceService: DeviceDetectorService,
         private loginSrv: LoginService,
         private httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS')
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe(f => this.setFilter(f)));
@@ -81,8 +81,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.pagination.onChange = () => this.refresh();
 
         this.route.data.subscribe(res => {
-            this.loadReportTree(res.reportBase);
-            this.app = res.reportBase;
+            this.loadReportTree(res['reportBase']);
+            this.app = res['reportBase'];
         });
     }
 
@@ -102,7 +102,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         });
     }
 
-    getPage(): Observable<ReportParam[]> {
+    override getPage(): Observable<ReportParam[]> {
         return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
             new HttpParams().set('report', `${this.app}/${this.selectedReport.parent}/${this.selectedReport.name}`)
                 .set('app', this.app)
@@ -182,8 +182,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 this.generating = false;
                 this.leftPaneHidden = false;
                 if (err.error) {
-                    const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
-                    err.error = JSON.parse(json);
+                    // const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
+                    // err.error = JSON.parse(json);
                     throw err;
                 }
                 return loop;
@@ -202,7 +202,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         }
     }
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         this.releasePdf();
         this.shellSrv.reset();
     }

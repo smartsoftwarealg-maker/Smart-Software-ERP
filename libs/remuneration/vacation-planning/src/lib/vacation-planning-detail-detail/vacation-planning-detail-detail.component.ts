@@ -24,12 +24,12 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
 
     constructor(
         public planningSrv: VacationPlanningDetailService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public infoSrv: FixedElementsEntryService) {
         super(planningSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_VACATION_PLANNING');
@@ -46,7 +46,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
         })
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return zip(this.route.parent.params,
             this.lookupsSrv.getTable('/lookups/vacation_types', 'vacation_types'))
             .pipe(tap(res => {
@@ -55,7 +55,7 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
             }));
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../', this.route);
     }

@@ -117,7 +117,7 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     get required() {
         return this._required;
     }
-    set required(req) {
+    set required(req: any) {
         this._required = coerceBooleanProperty(req);
         this.stateChanges.next();
     }

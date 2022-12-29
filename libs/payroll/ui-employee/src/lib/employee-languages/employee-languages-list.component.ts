@@ -14,7 +14,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
     templateUrl: './employee-languages-list.component.html',
     styleUrls: ['./employee-languages-list.component.scss']
 })
-export class EmployeeLanguagesListComponent implements OnInit, OnDestroy {
+export class EmployeeLanguagesListComponent implements OnInit {
     private _activePersonnel = true;
     @Input() editable = true;
 
@@ -122,6 +122,4 @@ export class EmployeeLanguagesListComponent implements OnInit, OnDestroy {
             .then();
     }
 
-    ngOnDestroy() {
-    }
 }

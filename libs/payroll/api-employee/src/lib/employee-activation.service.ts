@@ -11,12 +11,12 @@ import { tap, map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class EmployeeActivationService extends BaseEntityService<EmployeeActivation> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACTIVATION_CHILD_URL, ACTIVATION_PARENT_URL);
     }
 
     // FIXME: this workaround should not be in the frontend
-    public getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: EmployeeActivation[] }> {
+    public override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: EmployeeActivation[] }> {
         return super.getList(page, pageSize, filter, sortBy, extraPrams).pipe(
             tap(result => result.body.sort((a, b) => (a.activityStatus > 0 ? a.activityStatus : 999999) - (b.activityStatus > 0 ? b.activityStatus : 999999)))
         );

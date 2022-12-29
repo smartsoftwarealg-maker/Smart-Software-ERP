@@ -10,7 +10,7 @@ import {AGENT_URL} from "@ss/logistics/api-agent";
 })
 export class AgentBalanceService extends BaseEntityService<AgentBalance> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, BALANCE_URL, AGENT_URL);
     }
 

@@ -25,7 +25,7 @@ export class RoomTypesListComponent extends AbstractEntityList<RoomType, Backend
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public matDialog: MatDialog) {
         // entity: null
         super(new BackendDataSource(httpSrv, roomTypesUrl), userSrv.getRights(null), snackBarSrv, PaginationModel.newInstance());

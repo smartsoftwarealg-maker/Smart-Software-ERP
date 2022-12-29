@@ -22,13 +22,13 @@ export class StoreNameListComponent extends BaseEntityListComponent<Store> {
 
     constructor(
         public storeNameSrv: LotsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_STORE_NAMES');
     }
 
@@ -47,22 +47,22 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
     constructor(
         private loginSrv: LoginService,
         public storeNameSrv: LotsService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder,
         private optionSrv: OptionService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_STORE_NAME');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.optionSrv
             .get(this.loginSrv.appCtx.center)
             .pipe(tap(res => this.mainStore = res.mainStore));
     }
 
-    public setupForm(e: Store): UntypedFormGroup {
+    public override setupForm(e: Store): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
@@ -73,7 +73,7 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
         });
     }
 
-    readForm(): Store {
+    override readForm(): Store {
         return this.form.getRawValue();
     }
 }

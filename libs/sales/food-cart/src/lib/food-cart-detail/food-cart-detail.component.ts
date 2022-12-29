@@ -67,7 +67,7 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         public override pagPersistSrv: PaginatorPersistenceService,
         private lookupsSrv: LookupsService,
         private httpSrv: HttpService,
-        private langSrv: LanguageService,
+        public langSrv: LanguageService,
         private loginSrv: LoginService,
         private breakPointObs: BreakpointObserver,
         private dialog: MatDialog,

@@ -46,13 +46,13 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
     constructor(
         private langSrv: LanguageService,
         private loginSrv: LoginService,
-        public invoiceService: InvoiceService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override invoiceService: InvoiceService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         private usersService: UserListService,
         private lookupsSrv: LookupsService,
         private agentService: AgentService,
@@ -63,17 +63,17 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
@@ -104,7 +104,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         });
     }
 
-    readForm(): Transaction {
+    override readForm(): Transaction {
         return this.form.getRawValue();
     }
 

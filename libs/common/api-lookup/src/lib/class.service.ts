@@ -16,6 +16,9 @@ export class ClassService extends BaseEntityService<Class> {
         super(httpSrv, CLASSES_URL);
     }
 
+    init(): Observable<boolean> {
+        return this.httpSrv.init();
+    }
     reload(data: Class[]): Observable<Class[]> {
         const ids = data.map(e => e.accountId).join(',');
         return this.httpSrv
@@ -24,5 +27,9 @@ export class ClassService extends BaseEntityService<Class> {
                 data.forEach(e => e.accountName = res.find(c => c.id === e.accountId)?.description);
                 return of(data);
             }));
+    }
+
+    showURL() {
+        console.log('**************base url', this.httpSrv.baseUrl);
     }
 }

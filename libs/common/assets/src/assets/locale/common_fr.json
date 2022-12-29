@@ -248,5 +248,6 @@
     "DOCUMENT":             "Document",
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
-    "EPAYMENT":             "E-paiement"
+    "EPAYMENT":             "E-paiement",
+    "MORE":                 "Plus"
 }

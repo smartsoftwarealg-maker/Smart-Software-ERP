@@ -42,7 +42,7 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
             'ASSET_COSTS');
     }
 
-    public setupForm(a: AssetCost): UntypedFormGroup {
+    public override setupForm(a: AssetCost): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             cost_type: [a.cost_type || 2, Validators.required],

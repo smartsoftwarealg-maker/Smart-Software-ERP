@@ -204,7 +204,7 @@ class ListCache {
      * @param {string} key The key of the entry to check.
      * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
      */
-    has(key) {
+    has(key: string) {
         return assocIndexOf(this.__data__, key) > -1
     }
 
@@ -216,7 +216,7 @@ class ListCache {
      * @param {*} value The value to set.
      * @returns {Object} Returns the list cache instance.
      */
-    set(key, value) {
+    set(key: string, value: any) {
         const data = this.__data__
         const index = assocIndexOf(data, key)
 
@@ -242,7 +242,7 @@ class Stack {
      * @constructor
      * @param {Array} [entries] The key-value pairs to cache.
      */
-    constructor(entries?) {
+    constructor(entries?: any) {
         const data = this.__data__ = new ListCache(entries)
         this.size = data.size
     }
@@ -264,7 +264,7 @@ class Stack {
      * @param {string} key The key of the value to remove.
      * @returns {boolean} Returns `true` if the entry was removed, else `false`.
      */
-    delete(key) {
+    delete(key: string) {
         const data = this.__data__
         const result = data['delete'](key)
 

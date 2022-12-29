@@ -43,7 +43,7 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         return this.loadEntity(this.loginSrv.appCtx.center);
     }
 
-    public setupForm(e: ACCPolicy): UntypedFormGroup {
+    public override setupForm(e: ACCPolicy): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             showFolio: [e.showFolio, Validators.required],

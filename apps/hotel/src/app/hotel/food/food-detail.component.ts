@@ -34,7 +34,7 @@ export class FoodDetailComponent extends AbstractEntityView<Food, BackendDataSou
 
     constructor(
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         private formBuilder: UntypedFormBuilder,
         public userSrv: UserService,
         public foodSrv: FoodService,

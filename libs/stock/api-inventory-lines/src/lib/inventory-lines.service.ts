@@ -11,7 +11,7 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
 })
 export class InventoryLinesService extends BaseEntityExtendedService<TransactionLine> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, INVENTORY_LINES_URL, INVENTORY_URL);
     }
 

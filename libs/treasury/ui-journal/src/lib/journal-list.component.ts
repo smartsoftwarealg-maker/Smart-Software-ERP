@@ -25,15 +25,15 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
 
     constructor(
         public journalSrv: JournalService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(journalSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKS');
     }
 
@@ -44,7 +44,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
 //        return of(data);
 //    }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
     }
 }

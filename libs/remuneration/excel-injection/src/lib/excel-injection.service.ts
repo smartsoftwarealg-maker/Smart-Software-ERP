@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class ExcelInjectionService extends BaseEntityService<any> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, '/payroll/xls-injection');
   }
 

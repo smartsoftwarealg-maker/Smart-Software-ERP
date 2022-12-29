@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class VacationPlanningDetailService extends BaseEntityService<VacationPlanningDetail> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/detail', '/payroll/vacations');
     }
 }

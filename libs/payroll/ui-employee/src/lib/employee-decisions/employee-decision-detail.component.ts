@@ -25,30 +25,30 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
 
     constructor(
         public employeeDecisionSrv: EmployeeDecisionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public loginSrv: LoginService,
         public lookupsSrv: LookupsService,
         private motiveSrv: DecisionMotiveService) {
         super(employeeDecisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DECISIONS');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeDecisionSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: Decision): UntypedFormGroup {
+    override setupForm(a: Decision): UntypedFormGroup {
         this.entity = a;
         if (!a.id) {
             a.centerId = this.loginSrv.appCtx.center;
@@ -67,7 +67,7 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
     }
 
 
-    public readForm(): Decision {
+    public override readForm(): Decision {
         const formVal = this.form.value as Decision;
         formVal.employee = this.parentId;
         return formVal;

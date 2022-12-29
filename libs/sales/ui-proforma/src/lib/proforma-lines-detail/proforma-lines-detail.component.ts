@@ -16,15 +16,14 @@ import {OfferLinesService} from '@ss/logistics/api-transaction';
 export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
         public inventoryLinesService: OfferLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override lotSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
             snackBarSrv,
@@ -32,7 +31,7 @@ export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComp
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'LOGISTICS_PROFORMA'
         );

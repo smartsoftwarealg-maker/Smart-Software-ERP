@@ -27,18 +27,18 @@ export class InvoiceListComponent extends BaseTransactionListComponent {
 
     constructor(
         public invoiceSrv: InvoiceService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public usersSrv: UserService,
-        public agentServ: AgentService,
-        public langServ: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public payMethodSrv: PayMethodService,
-        public pagPersistSrv: PaginatorPersistenceService) {
-        super(invoiceSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentServ, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'SALES_INVOICE');
+        public override agentSrv: AgentService,
+        public override langServ: LanguageService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override payMethodSrv: PayMethodService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(invoiceSrv, shellSrv, snackBarSrv, route, router, usersSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'SALES_INVOICE');
     }
 
 }

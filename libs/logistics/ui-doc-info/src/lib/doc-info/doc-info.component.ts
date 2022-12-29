@@ -77,7 +77,6 @@ export class DocInfoComponent {
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
                 },
-                this.ARCHIVE
             ],
         },
         {

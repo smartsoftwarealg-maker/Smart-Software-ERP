@@ -156,5 +156,6 @@
     "SHIPPING":         "Expédition",
     "CHECKOUT":         "Paiement",
     "PAYER":            "Payeur",
-    "SEND_MESSAGE":     "Envoyer un message"
+    "SEND_MESSAGE":     "Envoyer un message",
+    "QTY":              "Qté"
 }

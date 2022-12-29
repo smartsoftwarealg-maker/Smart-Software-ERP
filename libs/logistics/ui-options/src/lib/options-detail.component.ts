@@ -42,18 +42,18 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     constructor(
         private loginSrv: LoginService,
         public optionSrv: OptionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private currencySrv: CurrencyService,
         private storeNameSrv: LotsService) {
         super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OPTION');
     }
 
-    public setupForm(a: Option) {
+    public override setupForm(a: Option) {
         return this.formBuilder.group({
             id: [this.loginSrv.appCtx.center],
             eval_price: [a.eval_price || 1, Validators.required],
@@ -64,12 +64,12 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
         });
     }
 
-    loadEntity(id: number): Observable<Option> {
+    override loadEntity(id: number): Observable<Option> {
         this.id = this.loginSrv.appCtx.center;
         return super.loadEntity(this.id);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.currencySrv
             .getList(0, 50)

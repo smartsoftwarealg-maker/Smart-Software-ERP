@@ -12,7 +12,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 export class CurrencyService extends BaseEntityService<Currency> {
     private currencies: Currency[] = [];
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CURRENCY_URL);
     }
 

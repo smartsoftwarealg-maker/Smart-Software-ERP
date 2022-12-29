@@ -12,11 +12,16 @@ export class AppConfigService {
 
     constructor(private httpClient: HttpClient) {
         this.httpClient.get('./config/config.json')
-            .subscribe(config => {
-                this.config = config;
-                this.subject.next(config);
-                this.subject.complete();
-                this.subject = null; // idk why i delayed this. :\
+            .subscribe({
+                next: config => {
+                    this.config = config;
+                    this.subject.next(config);
+                    this.subject.complete();
+                    this.subject = null; // idk why i delayed this. :\
+                },
+                error: err => {
+                    this.config = null;
+                }
             });
     }
 

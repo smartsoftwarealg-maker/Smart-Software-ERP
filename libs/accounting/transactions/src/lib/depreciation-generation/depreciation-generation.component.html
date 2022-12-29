@@ -16,8 +16,8 @@
     <mat-form-field>
         <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
         <mat-select name="fileName" formControlName="dType">
-            <mat-option [value]="1" translate>ASSET_ACCOUNTANT</mat-option>
-            <mat-option [value]="2" translate>LOGISTICS_FISCAL</mat-option>
+            <mat-option value="1" translate>ASSET_ACCOUNTANT</mat-option>
+            <mat-option value="2" translate>LOGISTICS_FISCAL</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -50,7 +50,7 @@
 <mat-progress-bar *ngIf="processing" mode="indeterminate" ></mat-progress-bar>
 
 <div class="table-div width-sc">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="content-div">
 
         <ng-container matColumnDef="acc">
             <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>

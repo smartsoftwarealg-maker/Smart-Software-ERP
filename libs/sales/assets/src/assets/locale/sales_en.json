@@ -14,5 +14,11 @@
     "EDIT_DELIVERY_CANCEL": "Edit cancellation",
     "EDIT_CANCELLATION_LINES": "Edit cancellation lines",
     "EDIT_ORDER_LINES": "Edit order lines",
-    "CONFIRM_CART": "Confirm shopping cart"
+    "CONFIRM_CART": "Confirm shopping cart",
+    "ADS":          "Sales ads",
+    "GO_SHOPPING":  "Continue shopping",
+    "SHOW_CART":    "Show shopping cart",
+    "SALES_COUNT":  "Item count",
+    "THANKS":       "Thanks",
+    "WILL_SHIP":    "The goods will be shipped upon the receipt of your payment to the following address:"
 }

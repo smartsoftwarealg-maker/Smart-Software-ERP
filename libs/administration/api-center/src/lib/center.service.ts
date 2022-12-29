@@ -10,7 +10,7 @@ import {COMPANY_URL} from "@ss/administration/api-company";
 })
 export class CenterService extends BaseEntityService<Center> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CENTER_URL, COMPANY_URL);
     }
 

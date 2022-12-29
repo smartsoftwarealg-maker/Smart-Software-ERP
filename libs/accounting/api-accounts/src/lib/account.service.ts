@@ -8,7 +8,7 @@ import {Account, ACCOUNT_URL} from "./account-api";
     providedIn: 'root'
 })
 export class AccountService extends BaseEntityService<Account> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACCOUNT_URL);
     }
 }

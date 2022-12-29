@@ -51,7 +51,7 @@ export class PurchaseRequestDetailComponent  extends BaseEntityDetailComponent<T
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!form.id) {
             form.id = 0;

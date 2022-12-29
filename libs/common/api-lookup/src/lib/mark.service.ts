@@ -10,7 +10,7 @@ import {Lookup} from './lookup.class';
 })
 export class MarkService extends BaseEntityService<Lookup> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, MARKS_URL);
     }
 

@@ -11,7 +11,7 @@ import {TransactionLinesClass} from './transaction-lines.class';
 })
 export class TransactionLinesService extends TransactionLinesClass {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv,  '/detail', '/transactions');
     }
 }

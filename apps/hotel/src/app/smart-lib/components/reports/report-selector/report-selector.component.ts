@@ -43,9 +43,9 @@ export class ReportSelectorComponent {
             .http
             //.get<ReportCatalog[]>(this.url + `?page=${this.pModel.page - 1}-${this.pModel.pageSize}`)
             .getData(this.url, this.pModel.page - 1, this.pModel.pageSize)
-            .subscribe((res: {body: ReportCatalog[], itemCount: number}) => {
+            .subscribe((res: any) => {
                 this.records = res.body;
-                this.pModel.elementCount = res.itemCount;
+                this.pModel.elementCount = res['itemCount'] || 0;
             });
     }
 }

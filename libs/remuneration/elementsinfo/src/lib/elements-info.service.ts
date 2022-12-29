@@ -8,7 +8,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class ElementsInfoService extends BaseEntityService<ElementsInfo>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ELEMENTSINFO_URL);
     }
 }

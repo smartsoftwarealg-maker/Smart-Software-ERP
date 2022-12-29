@@ -27,7 +27,7 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
     }
 
 
-    public setupForm(b: Bank) {
+    public override setupForm(b: Bank) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

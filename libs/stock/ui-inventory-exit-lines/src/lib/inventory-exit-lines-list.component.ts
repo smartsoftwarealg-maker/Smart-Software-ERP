@@ -25,14 +25,14 @@ export class InventoryExitLinesListComponent extends BaseTransactionLinesListCom
 
 
     constructor(
-        public detailSrv: InventoryExitLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public articleSrv: ArticleService,
-        public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override detailSrv: InventoryExitLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override articleSrv: ArticleService,
+        public override storeNamesSrv: LotsService,
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
 

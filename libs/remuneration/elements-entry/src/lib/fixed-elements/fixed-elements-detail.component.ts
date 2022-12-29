@@ -22,11 +22,11 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
 
     constructor(
         public infoSrv: FixedElementsEntryService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private httpSrv: HttpService,
         private employeeSrv: EmployeeService,) {
@@ -41,11 +41,11 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.infoSrv.load();
     }
 
-    public setupForm(e: ELine): UntypedFormGroup {
+    public override setupForm(e: ELine): UntypedFormGroup {
         if (e.elements.length ==0) {
             e.elements = this.infoSrv.colsList().map(_ => 0.0);
         }
@@ -64,7 +64,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
     }
 
 
-    readForm(): ELine {
+    override readForm(): ELine {
         const data = super.readForm();
         data.cols = this.infoSrv.colsString();
         return data;

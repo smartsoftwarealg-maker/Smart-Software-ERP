@@ -36,12 +36,11 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
     ];
 
     constructor(public dashboardSrv: DashboardService,
-                public agentSrv: AgentService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
                 public lookupsSrv: LookupsService,
                 private router: Router) {
         super(dashboardSrv,
@@ -57,7 +56,7 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
     }
 
 
-    setupForm(a: Dashboard): UntypedFormGroup {
+    override setupForm(a: Dashboard): UntypedFormGroup {
         return this.formBuilder.group({
             id: [a.id],
             description: [a.description],

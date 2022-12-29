@@ -29,28 +29,28 @@ export class EmployeeWifeDetailComponent extends BaseEntityDetailComponent<Wife>
 
     constructor(
         public employeeWivesSrv: EmployeeWivesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(employeeWivesSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_WIVES');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeWivesSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: Wife): UntypedFormGroup {
+    override setupForm(a: Wife): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
@@ -66,7 +66,7 @@ export class EmployeeWifeDetailComponent extends BaseEntityDetailComponent<Wife>
         });
     }
 
-    public readForm(): Wife {
+    public override readForm(): Wife {
         const formVal = this.form.value as Wife;
         formVal.employee = this.parentId;
         return formVal;

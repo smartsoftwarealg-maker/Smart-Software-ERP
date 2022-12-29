@@ -7,7 +7,7 @@ import { JournalUser, JOURNAL_USERS_URL } from './model';
     providedIn: 'root'
 })
 export class JournalUserService extends BaseEntityExtendedService<JournalUser> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, JOURNAL_USERS_URL);
     }
 }

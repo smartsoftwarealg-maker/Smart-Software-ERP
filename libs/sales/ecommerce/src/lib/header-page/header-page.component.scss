@@ -1,0 +1,21 @@
+.header-div {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    padding-top: 8px;
+    margin-bottom: 8px;
+}
+img {
+    align-self: center;
+    height: 64px;
+    width: auto;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+.btn-div {
+    margin-left: auto;
+}
+
+.search-div {
+    display: flex;
+}

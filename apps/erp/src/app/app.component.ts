@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppContext, HttpService, LoginInfo, LoginService} from '@ss/common/api-common';
-import {map, switchMap} from 'rxjs/operators';
+import {AppContext, HttpService, LoginInfo, LoginService, UserRightsService} from '@ss/common/api-common';
+import {map, switchMap, tap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
@@ -14,7 +14,6 @@ import {langAssets, navBar} from '../environments/environment';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
     loaded = false;
 
     constructor(private httpSrv: HttpService,
@@ -22,19 +21,25 @@ export class AppComponent implements OnInit {
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         private monthSelectorSrv: PayrollMonthService,
-        private router: Router) {
-        langAssets.forEach(e => langSrv.addSource(e[0], e[1]));
+        private router: Router,
+        private rightsSrv: UserRightsService) {
+        //langAssets.forEach(e => langSrv.addSource(e[0], e[1]));
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.19');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.20');
         this.httpSrv
             .init()
-            .pipe(switchMap(() => zip(this.langSrv.init(), this.loginSrv.loadContext())))
+            .pipe(
+                switchMap(_ => this.loginSrv.loadContext()),
+                switchMap(_ => this.rightsSrv.load()),
+                switchMap(() => this.langSrv.init()),
+                switchMap(_ => this.langSrv.addSources(langAssets)))
             .subscribe({
                 next: () => {
                     this.init();
                     this.shellSrv.setSideNavDataSource(navBar);
+                    // this.shellSrv.filterSideNav();
                 },
                 error: () => this.loginSrv.logout()
             });

@@ -24,26 +24,26 @@ export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBoo
         public checkBookSrv: CheckBookService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: FormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: FormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
         super(checkBookSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKBOOKS');
     }
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return this.lookupsSrv.getBanks()
             .pipe(tap(x => { this.banks = x }));
     }
 
-    finishLoading(e: CheckBook) {
+    override finishLoading(e: CheckBook) {
         super.finishLoading(e);
     }
 
-    public setupForm(a: CheckBook) {
+    public override setupForm(a: CheckBook) {
         this.aid = a.id;
         if (!a.id || !a.centerId) {
             a.centerId = this.loginSrv.appCtx.center;

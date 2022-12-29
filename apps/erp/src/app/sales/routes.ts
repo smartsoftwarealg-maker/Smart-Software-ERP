@@ -7,7 +7,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes,
     LOGISTICS_AGENT_TYPE_URL,
-    CONTRACT_PROJECT_URL
+    CONTRACT_PROJECT_URL, PAY_SPECIAL_PAYROLL_URL, SALES_AD_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -30,6 +30,12 @@ import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListCompo
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {SalesContractDetailComponent, SalesContractListComponent} from '@ss/logistics/contracts';
+import {
+    SpecialPayrollDetailComponent,
+    SpecialPayrollListComponent
+} from '../../../../../libs/remuneration/special-payroll/src';
+import {PayrollMonthGuard} from '../../../../../libs/payroll-common/src';
+import {SalesAdsDetailComponent, SalesAdsListComponent} from '../../../../../libs/sales/ecommerce/src';
 
 export const lookupRoutes: Routes = []
 
@@ -193,6 +199,23 @@ export const mainRoutes: Routes = [
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL }
+        ]
+    },
+    {
+        path: SALES_AD_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesAdsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: SalesAdsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
     {

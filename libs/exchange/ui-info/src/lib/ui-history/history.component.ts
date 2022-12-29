@@ -27,7 +27,7 @@ export class HistoryComponent implements OnInit {
     ];
 
 
-    constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {
+    constructor(public exchangeSrv: CurrencyDepositService, public override route: ActivatedRoute) {
     }
 
     ngOnInit() {

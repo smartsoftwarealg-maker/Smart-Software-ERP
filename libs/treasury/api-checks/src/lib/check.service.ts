@@ -8,7 +8,7 @@ import { Check, CHECKS_URL } from './treasury-api';
     providedIn: 'root'
 })
 export class CheckService extends BaseEntityExtendedService<Check> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CHECKS_URL);
     }
 }

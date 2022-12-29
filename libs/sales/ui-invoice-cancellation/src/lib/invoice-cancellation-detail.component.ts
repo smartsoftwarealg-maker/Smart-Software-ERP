@@ -46,11 +46,11 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         public invoiceService: InvoiceCancellationService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,
         private agentService: AgentService,
@@ -62,12 +62,12 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
     }
 
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
@@ -97,7 +97,7 @@ export class InvoiceCancellationDetailComponent extends BaseEntityDetailComponen
             agent: [b.agent, Validators.required],
         });
     }
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.invoice, form)
         return form;

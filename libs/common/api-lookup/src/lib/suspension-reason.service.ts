@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class SuspensionReasonService extends BaseEntityService<SuspensionReason> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, SUSPENSION_REASON_URL);
     }
 

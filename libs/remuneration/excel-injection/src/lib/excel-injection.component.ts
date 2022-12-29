@@ -26,7 +26,7 @@ export class ExcelInjectionComponent implements OnInit {
 
     constructor(private injectSrv: ExcelInjectionService,
                 private router: Router,
-                public snackBarSrv: SnackBarService,
+                public  snackBarSrv: SnackBarService,
                 private monthSelectorSrv: PayrollMonthService,
                 private shellSrv: ShellService,
                 private activatedRoute: ActivatedRoute) {

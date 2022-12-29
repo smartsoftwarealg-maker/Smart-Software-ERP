@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {HttpService} from '@ss/common/api-common';
-import {APP_ARCHIVE_URL, APPLICATIONS_URL, AppArchive} from '@ss/logistics/api-agent';
+import {APPLICATIONS_URL, HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
+import {APP_ARCHIVE_URL, AppArchive} from './app-archive-api';
 
 
 @Injectable({

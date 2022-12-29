@@ -22,7 +22,7 @@
         <ss-auto-complete matInput
                           [model]="articleLookup"
                           formControlName="articleId"
-                          required>
+                          required="true">
         </ss-auto-complete>
         <mat-error *ngIf="form.controls['articleId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
     </mat-form-field>

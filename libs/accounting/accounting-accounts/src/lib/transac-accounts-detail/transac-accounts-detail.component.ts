@@ -27,7 +27,7 @@ export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<Tr
     }
 
 
-    public setupForm(b: TransacAccount) {
+    public override setupForm(b: TransacAccount) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:          [b.id],

@@ -10,7 +10,7 @@ import {GBalance, Balance, CBalance, Commission, Deposit, EXCHANGE_DEPOSIT_URL} 
 })
 export class CurrencyDepositService extends BaseEntityExtendedService<Deposit> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, EXCHANGE_DEPOSIT_URL);
     }
 

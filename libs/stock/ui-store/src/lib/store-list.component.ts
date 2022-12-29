@@ -31,13 +31,13 @@ export class StoreListComponent extends BaseEntityListComponent<Article> {
     vats: { [id: number]: number; };
 
     constructor(
-        public entitySrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override entitySrv: ArticleService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
@@ -51,7 +51,7 @@ export class StoreListComponent extends BaseEntityListComponent<Article> {
             'STOCK_SORES');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getMarks()
             .pipe(
                 tap(x => this.onMarksLoaded(x)),

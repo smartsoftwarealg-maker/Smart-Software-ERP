@@ -31,19 +31,19 @@ export class AccountListComponent extends BaseEntityListComponent<Account> {
 
     constructor(
         public accountService: AccountService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(accountService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_ACCOUNTS');
         this.pagination.pageSize = 10;
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         this.accountTypes = ACCOUNT_TYPES;
         return of(null);
     }

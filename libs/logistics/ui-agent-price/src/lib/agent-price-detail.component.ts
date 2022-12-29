@@ -18,21 +18,21 @@ export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPr
 
     constructor(
         public agentPriceService: AgentPriceService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(agentPriceService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT_PRICE');
     }
 
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
     }
 
-    public setupForm(b: AgentPrice) {
+    public override setupForm(b: AgentPrice) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

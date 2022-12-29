@@ -48,7 +48,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
 
-    public setupForm(b: Project) {
+    public override setupForm(b: Project) {
         const today = new Date();
         return this.formBuilder.group({
             id:             [b.id],

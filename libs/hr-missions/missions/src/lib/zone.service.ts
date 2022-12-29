@@ -9,7 +9,7 @@ import {Lookup} from '@ss/common/api-lookup';
 })
 export class TransportService extends BaseEntityService<Lookup> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, TRANSPORT_URL);
   }
 }

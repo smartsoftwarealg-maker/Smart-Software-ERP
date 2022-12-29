@@ -10,7 +10,7 @@ const CLONE_DEEP_FLAG = 1
 const CLONE_FLAT_FLAG = 2
 const CLONE_SYMBOLS_FLAG = 4
 
-export function cloneDeep(value) {
+export function cloneDeep(value: any) {
     return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG)
 }
 
@@ -21,7 +21,7 @@ const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
 /* Built-in method references for those with the same name as other `lodash` methods. */
 const nativeGetSymbols = Object.getOwnPropertySymbols
 
-function getSymbols(object) {
+function getSymbols(object: any) {
     if (object == null) {
         return [];
     }
@@ -210,7 +210,7 @@ function cloneDataView(dataView, isDeep) {
     return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength)
 }
 
-function initCloneByTag(object, tag, isDeep) {
+function initCloneByTag(object: any, tag: any, isDeep: boolean) {
     const Ctor = object.constructor
     switch (tag) {
         case arrayBufferTag:
@@ -368,7 +368,7 @@ function baseClone(value, bitmask, customizer?, key?, object?, stack?) {
             if (isFunc || !cloneableTags[tag]) {
                 return object ? value : {}
             }
-            result = initCloneByTag(value, tag, isDeep)
+            result = initCloneByTag(value, tag, isDeep !== 0)
         }
     }
     // Check for circular references and return its corresponding clone.

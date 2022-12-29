@@ -38,20 +38,20 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
 
     constructor(
         public employeeSrv: EmployeeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public lookupsSrv: LookupsService,
         public langSrv: LanguageService,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
         this.pagination.pageSize = 10;
         this.route.data.subscribe(data => {
-            this.activePersonnel = !!data.active
+            this.activePersonnel = !!data['active']
             this.employeeSrv.setMode(this.activePersonnel);
         });
     }
@@ -60,18 +60,18 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         return item.id;
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
         this.addButton.visible = this.activePersonnel;
     }
 
-    public select(id: number): void {
+    public override select(id: number): void {
         const disableControls = id == null || id < 1;
         super.select(id);
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getMaritalStatuses()
             .pipe(
                 tap(x => {
@@ -96,7 +96,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         return map;
     }
 
-    public processLoadedData(data: Employee[]): Observable<Employee[]> {
+    public override processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(data.map(p => {
             // note: formatting the date here means it will not change when the language
             // is changed until the page is refreshed
@@ -108,8 +108,4 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
             return p;
         }));
     }
-
-    public releaseResources(): void {
-    }
-
 }

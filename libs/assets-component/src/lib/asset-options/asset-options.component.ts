@@ -41,7 +41,7 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
                 switchMap(_ => this.loadEntity(this.loginSrv.appCtx.center)));
     }
 
-    public setupForm(e: ACCPolicy): UntypedFormGroup {
+    public override setupForm(e: ACCPolicy): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             investAccount: [e.investAccount],

@@ -28,28 +28,28 @@ export class EmployeeChildDetailComponent extends BaseEntityDetailComponent<Chil
 
     constructor(
         public employeeChildrenSrv: EmployeeChildrenService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(employeeChildrenSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CHILDREN');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeChildrenSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: Child): UntypedFormGroup {
+    override setupForm(a: Child): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
@@ -61,7 +61,7 @@ export class EmployeeChildDetailComponent extends BaseEntityDetailComponent<Chil
         });
     }
 
-    public readForm(): Child {
+    public override readForm(): Child {
         const formVal = this.form.value as Child;
         formVal.employee = this.parentId;
         return formVal;

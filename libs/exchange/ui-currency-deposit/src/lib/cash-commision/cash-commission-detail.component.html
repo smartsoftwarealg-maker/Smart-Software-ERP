@@ -24,13 +24,13 @@
                                   [required]="true"
                                   [model]="typeAutoCompleteModel"
                                   formControlName="depositType"></ss-auto-complete>
-                <mat-error *ngIf="form.controls.depositType.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                <mat-error *ngIf="form.controls['depositType']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field id="description" class="default-50 sm-100">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required>
-                <mat-error *ngIf="form.controls.description.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+                <mat-error *ngIf="form.controls['description']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

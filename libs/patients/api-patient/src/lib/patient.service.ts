@@ -11,7 +11,7 @@ import {Payment} from "@ss/logistics/api-common";
 })
 
 export class PatientService extends BaseEntityExtendedService<Patient> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PATIENT_URL);
     }
 

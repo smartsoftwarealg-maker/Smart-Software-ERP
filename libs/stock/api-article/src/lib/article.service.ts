@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {APP_URL, Article, ARTICLE_IMAGE_URL, ARTICLES_URL, QtyPrice} from './article-api';
+import {APP_URL, Article, ARTICLE_IMAGE_URL, ARTICLES_URL, AvailableStock, QtyPrice} from './article-api';
 import {Observable, of} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
+import {HttpParams} from '@angular/common/http';
 
 
 @Injectable({
@@ -10,9 +11,9 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class ArticleService extends BaseEntityExtendedService<Article> {
 
-    constructor(protected httpSrv: HttpService) {
-        super(httpSrv, ARTICLES_URL, APP_URL);
-        this.setParentId(0);
+    constructor(protected override httpSrv: HttpService) {
+        super(httpSrv, ARTICLES_URL);
+        // this.setParentId(0);
     }
 
     getPPrice(ref: string, storeId: number, transacId: number, id: number): Observable<QtyPrice> {
@@ -31,7 +32,19 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
         this.url = url;
     }
 
-    get(iid: number | string): Observable<Article> {
+    override get(iid: number | string): Observable<Article> {
         return super.get(iid);
+    }
+
+    availableStock(klass?: number, searchText?: string): Observable<AvailableStock[]> {
+        const params = new HttpParams();
+        const p1 = klass? params.set('klass', klass) : params;
+        const p2 = searchText? p1.set('filter', searchText) : p1;
+        // const params = searchText? new HttpParams().set('filter', searchText) : null;
+        return this.httpSrv.get<AvailableStock[]>('/articles/available-stock', p2);
+    }
+
+    init(): Observable<boolean> {
+        return this.httpSrv.init();
     }
 }

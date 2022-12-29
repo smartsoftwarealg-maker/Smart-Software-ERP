@@ -44,11 +44,11 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
 
     constructor(public orderService: SalesOrderService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
                 public usersService: UserListService,
                 public lookupsSrv: LookupsService,
                 private agentService: AgentService,
@@ -60,18 +60,18 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         super(orderService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_ORDER');
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv
             .getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importContractBtn);
     }
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         if (!form.id) {
             form.id = 0;
             form.number = 0;
@@ -104,7 +104,7 @@ export class OrderDetailComponent extends BaseEntityDetailComponent<Transaction>
         });
     }
 
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form =  super.readForm();
         fillObject(this.order, form);
         form.dirty = !form.dirty;

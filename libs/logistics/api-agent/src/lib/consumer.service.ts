@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class ConsumerService extends BaseEntityExtendedService<Agent> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CONSUMER_URL);
     }
 

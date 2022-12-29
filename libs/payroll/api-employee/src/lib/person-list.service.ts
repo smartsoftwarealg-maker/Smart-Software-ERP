@@ -9,7 +9,7 @@ import { HttpService } from '@ss/common/api-common';
 })
 export class PersonListService extends BaseEntityService<PersonSummary> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/persons-list');
     }
 

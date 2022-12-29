@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
 })
 export class CirculationService extends BaseEntityService<Circulation> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CIRCULATION_URL, ARTICLES_URL);
     }
 

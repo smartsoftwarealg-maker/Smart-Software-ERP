@@ -25,28 +25,28 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
 
     constructor(
         public employeeLanguagesSrv: EmployeeLanguagesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(employeeLanguagesSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_LANGUAGES');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeLanguagesSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: EmployeeLanguage): UntypedFormGroup {
+    override setupForm(a: EmployeeLanguage): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
@@ -57,7 +57,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
         });
     }
 
-    preload(): Observable<any> {
+   override preload(): Observable<any> {
         return this.lookupsSrv.getLanguages()
             .pipe(
                 tap(languages => this.languages = languages),
@@ -66,7 +66,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
             );
     }
 
-    public readForm(): EmployeeLanguage {
+    public override readForm(): EmployeeLanguage {
         const formVal = this.form.value as EmployeeLanguage;
         formVal.person_id = this.parentId;
         return formVal;

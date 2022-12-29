@@ -28,20 +28,20 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
 
     constructor(
         public payMethodSrv: PayMethodService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        public defReportSrv: DefaultReportService,
+        public override defReportSrv: DefaultReportService,
         private payModeSrv: PayModeService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(payMethodSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_PAY_METHOD');
         this.pagination.pageSize = 10;
     }
 
-    processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {
+    override processLoadedData(data: PayMethod[]): Observable<PayMethod[]> {
         return this.payMethodSrv
             .getModes()
             .pipe(tap(res => data.forEach(m => m.modeDescription = res.find(pm => pm.id === m.payMode)?.description)),

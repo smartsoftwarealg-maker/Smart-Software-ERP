@@ -19,15 +19,14 @@ import {LoginService} from "@ss/common/api-common";
 export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
         public inventoryLinesService: TransactionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override lotSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
             snackBarSrv,
@@ -35,10 +34,9 @@ export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailCom
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'STOCK_EDIT_INVENTORY_LINES'
         );
     }
-
 }

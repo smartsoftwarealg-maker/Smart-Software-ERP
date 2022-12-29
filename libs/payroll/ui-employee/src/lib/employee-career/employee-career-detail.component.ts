@@ -40,12 +40,12 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
 
     constructor(
         public employeeCareerSrv: EmployeeCareerService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private gridService: GridService,
         private postSrv: PostService,
@@ -53,11 +53,11 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
         super(employeeCareerSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CAREER');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    const parentId = +p.id;
+                    const parentId = +p['id'];
                     this.employeeCareerSrv.setParentId(parentId);
                     return super.getRouteParam();
                 })
@@ -87,7 +87,7 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
         });
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getDepartments()
             .pipe(
                 tap(list => this.departments = list),
@@ -104,7 +104,7 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
             );
     }
 
-    public readForm(): Career {
+    public override readForm(): Career {
         const formVal = this.form.value;
         const val: Career = formVal;
         val.paymonth = formVal.paymonthY * 100 + formVal.paymonthM;

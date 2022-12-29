@@ -31,7 +31,7 @@ export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Acco
               'LOGISTICS_EDIT_ACCOUNT');
     }
 
-    public setupForm(a: Account) {
+    public override setupForm(a: Account) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],

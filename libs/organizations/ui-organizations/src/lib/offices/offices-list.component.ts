@@ -25,21 +25,17 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
 
     constructor(
         public officeSrv: OfficeService,
-        public employeeSrv: EmployeeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public userSrv: UserService,
-        public agentSrv: AgentService,
-        public langSrv: LanguageService,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(officeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_OFFICES');
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         super.ngOnInit();
     }

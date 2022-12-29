@@ -21,11 +21,11 @@ export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMetho
 
     constructor(
         public payMethodSrv: PayMethodService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private payModeSrv: PayModeService) {
         super(payMethodSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_ACCOUNT');
@@ -33,7 +33,7 @@ export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMetho
 
 
 
-    public setupForm(a: PayMethod) {
+    public override setupForm(a: PayMethod) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
