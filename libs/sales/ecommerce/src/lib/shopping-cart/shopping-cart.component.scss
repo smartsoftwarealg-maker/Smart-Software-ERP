@@ -4,8 +4,7 @@
     max-width: 1200px;
     margin: 0 auto;
     gap: 1.5em;
-    padding-top: 16px;
-    justify-content: center;
+    padding: 8px;
 }
 
 .cart_main_div mat-card {
@@ -21,6 +20,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2em;
+    justify-content: space-between;
 }
 
 fieldset {
