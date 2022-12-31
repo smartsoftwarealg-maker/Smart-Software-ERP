@@ -122,7 +122,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     showCart() {
-        console.log(this.router.url);
         this.router.navigate(['./cart'], { relativeTo: this.route });
     }
 }

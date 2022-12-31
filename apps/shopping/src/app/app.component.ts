@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpService, LanguageService, LoginService} from '@ss/common/api-common';
-import {langAssets} from '../../../ecommerce/src/environments/environment';
 import {catchError, switchMap, tap} from 'rxjs/operators';
+import {langAssets} from '../environments/environment';
 
 @Component({
     selector: 'ss-root',

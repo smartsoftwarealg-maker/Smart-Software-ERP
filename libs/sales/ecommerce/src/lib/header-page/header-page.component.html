@@ -1,12 +1,41 @@
-
 <div class="header-div b-primary">
     <img src="./assets/img/logo.jpg" alt="Logo">
     <h1>eParts</h1>
 
+
+    <div class="btn-div">
+        <div *ngIf="showSearch" class="search-div">
+                <mat-form-field class="search-field margin-start-8">
+                    <mat-label translate>COMMON_SEARCH</mat-label>
+                    <input [formControl]="searchControl" matInput type="text">
+                </mat-form-field>
+                <button mat-icon-button (click)="refreshEvent('refresh')" [matTooltip]="'COMMON_SEARCH' | translate">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            <button mat-icon-button (click)="cartEvent('cart')"
+                    [matBadge]="cartSrv.cartCount"
+                    [matBadgeHidden]="cartSrv.cartCount <= 0"
+                    [matTooltip]="'SALES_SHOW_CART' | translate">
+                <i class="fa-regular fa-cart-shopping"></i>
+            </button>
+        </div>
+        <button mat-icon-button (click)="cartEvent('cart')"
+                *ngIf="!showSearch"
+                [matBadge]="cartSrv.cartCount"
+                [matBadgeHidden]="cartSrv.cartCount <= 0"
+                [matTooltip]="'SALES_GO_SHOPPING' | translate">
+            <i class="fa-regular fa-cart-shopping"></i>
+        </button>
+
+        <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+            <i class="fas fa-caret-down"></i>
+        </button>
+    </div>
     <mat-menu #menu="matMenu" style="overflow: hidden">
         <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
             <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
-                <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
+                <ss-language-select class="icon" (click)="$event.stopPropagation()"
+                                    #langBtn></ss-language-select>
                 <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
             </div>
             <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
@@ -15,34 +44,4 @@
             </div>
         </div>
     </mat-menu>
-    <div class="btn-div">
-        <div class="search-div">
-            <div *ngIf="showSearch" class="search-div">
-                <mat-form-field class="search-field margin-start-8">
-                    <mat-label translate>COMMON_SEARCH</mat-label>
-                    <input [formControl]="searchControl" matInput type="text">
-                </mat-form-field>
-                <button mat-icon-button (click)="refreshEvent('refresh')" [matTooltip]="'COMMON_SEARCH' | translate">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button mat-icon-button (click)="cartEvent('cart')"
-                        [matBadge]="cartSrv.cartCount"
-                        [matBadgeHidden]="cartSrv.cartCount <= 0"
-                        [matTooltip]="'SALES_SHOW_CART' | translate">
-                    <i class="fa-regular fa-cart-shopping"></i>
-                </button>
-            </div>
-            <button mat-icon-button (click)="cartEvent('cart')"
-                    *ngIf="!showSearch"
-                    [matBadge]="cartSrv.cartCount"
-                    [matBadgeHidden]="cartSrv.cartCount <= 0"
-                    [matTooltip]="'SALES_GO_SHOPPING' | translate">
-                <i class="fa-regular fa-cart-shopping"></i>
-            </button>
-
-            <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
-                <i class="fas fa-caret-down"></i>
-            </button>
-        </div>
-    </div>
 </div>

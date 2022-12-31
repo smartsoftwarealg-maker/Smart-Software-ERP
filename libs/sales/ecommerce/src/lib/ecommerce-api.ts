@@ -1,5 +1,3 @@
-import {AvailableArticle} from '@ss/stock/api-article';
-
 export interface ADImage {
     id: number;
     description: string;
@@ -18,5 +16,6 @@ export interface Confirmation {
     lastName:  string;
     firstName: string;
     address:   string;
+    mobile:    string;
     lines: Product[];
 }

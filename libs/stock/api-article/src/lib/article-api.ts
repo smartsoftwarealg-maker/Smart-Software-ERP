@@ -50,6 +50,7 @@ export interface AvailableArticle {
     imageModel?: ImageModel;
     qty?: number;
 }
+
 export interface AvailableStock {
     classId: number;
     classDescription: String;

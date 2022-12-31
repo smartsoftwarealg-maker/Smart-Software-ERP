@@ -16,13 +16,14 @@ import {UiErrorHandlerModule} from '@ss/common/ui-error-handler';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
+import {ShoppingGuard} from '@ss/sales/ecommerce';
 
 const shoppingRoutes: Routes = [
     {path: '', component: MainPageComponent, pathMatch: 'full'},
-    {path: 'cart', component: ShoppingCartComponent},
-    {path: 'sales-acknowledgement', component: SalesAcknowledgementComponent},
-    {path: 'sales-confirmation', component: SalesConfirmationComponent},
-    {path: '**', redirectTo: '/app/main-page', pathMatch: 'full'}
+    {path: 'cart', component: ShoppingCartComponent, canActivate: [ShoppingGuard]},
+    {path: 'sales-acknowledgement', component: SalesAcknowledgementComponent, canActivate: [ShoppingGuard]},
+    {path: 'sales-confirmation', component: SalesConfirmationComponent, canActivate: [ShoppingGuard]},
+    {path: '**', redirectTo: '/main-page', pathMatch: 'full'}
 ];
 
 @NgModule({

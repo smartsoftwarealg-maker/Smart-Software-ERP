@@ -24,6 +24,7 @@ export class SalesConfirmationComponent implements OnInit {
         firstName: ['', Validators.required],
         lastName:  ['', Validators.required],
         address:   ['', Validators.required],
+        mobile:    ['', Validators.required],
         amount:    [{ value: this.cartSrv.cartAmount, disabled: true}]
     })
 
@@ -44,10 +45,11 @@ export class SalesConfirmationComponent implements OnInit {
         });
 
         this.cartSrv.confirmation = {
-            lastName: info.lastName,
+            lastName:  info.lastName,
             firstName: info.firstName,
             address:   info.address,
-            lines: detail
+            mobile:    info.mobile,
+            lines:     detail
         };
         this.confirming = true;
         this.cartSrv
@@ -57,6 +59,7 @@ export class SalesConfirmationComponent implements OnInit {
                     if (res['count']) {
                         this.snackBar.showSuccessMessage();
                     }
+                    this.cartSrv.clear();
                     this.router.navigate(['../sales-acknowledgement'], {relativeTo: this.route});
                 },
                 error: err => {
