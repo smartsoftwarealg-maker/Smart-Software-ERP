@@ -35,6 +35,8 @@ h1 {
     padding: 8px;
     margin: 8px 0;
     display: flex;
+    align-items: center;
+    font-weight: bolder;
 }
 
 .article-div {
@@ -50,12 +52,13 @@ h1 {
 .img-div {
     height: 150px;
     width: 150px;
+    justify-self: center;
 }
 
 .description {
+    padding: 8px 0;
     font-weight: bolder;
-    max-width: 150px;
-    font-size: medium;
+    font-size: .8em;
 }
 
 .info_div {
