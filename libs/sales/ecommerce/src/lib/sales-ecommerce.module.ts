@@ -10,7 +10,7 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiDocImportModule } from '@ss/logistics/ui-doc-import';
-import {DetailPageComponent, HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
+import { HeaderPageComponent, MainPageComponent} from '@ss/sales/ecommerce';
 import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +41,6 @@ import { SalesAcknowledgementComponent } from './sales-acknowledgement/sales-ack
     ],
     declarations: [
         MainPageComponent,
-        DetailPageComponent,
         SalesAdsListComponent,
         SalesAdsDetailComponent,
         ShoppingCartComponent,
@@ -49,6 +48,6 @@ import { SalesAcknowledgementComponent } from './sales-acknowledgement/sales-ack
         SalesAcknowledgementComponent,
         HeaderPageComponent
     ],
-    exports: [MainPageComponent, DetailPageComponent],
+    exports: [MainPageComponent],
 })
 export class SalesEcommerceModule {}

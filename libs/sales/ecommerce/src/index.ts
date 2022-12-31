@@ -1,4 +1,3 @@
-export * from './lib/detail-page/detail-page.component';
 export * from './lib/main-page/main-page.component';
 export * from './lib/header-page/header-page.component';
 export * from './lib/sales-ecommerce.module';
@@ -8,3 +7,5 @@ export * from './lib/sales-ads.service';
 export * from './lib/shopping-cart/shopping-cart.component';
 export * from './lib/sales-confirmation/sales-confirmation.component';
 export * from './lib/sales-acknowledgement/sales-acknowledgement.component';
+export * from './lib/ecommerce-api';
+export * from './lib/shopping.guard';

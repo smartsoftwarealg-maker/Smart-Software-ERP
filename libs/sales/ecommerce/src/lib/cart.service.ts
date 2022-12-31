@@ -61,6 +61,12 @@ export class CartService extends BaseEntityService<Lookup> {
     private updateAmount() {
         this.cartAmount = this.cart.length == 0 ?
             0 :
-            this.cart.map(c => c.qty * c.price).reduce((a, b) => a + b);
+            +this.cart.map(c => c.qty * c.price).reduce((a, b) => a + b).toFixed(2);
+    }
+
+    clear() {
+        this.cart = [];
+        this.updateCount();
+        this.updateAmount();
     }
 }
