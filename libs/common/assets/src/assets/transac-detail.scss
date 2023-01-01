@@ -8,9 +8,13 @@
     padding: 5px;
 }
 
+mat-card {
+    border-radius: 1.2em;
+    padding: 8px;
+}
 mat-card, .detail_div {
     width: 90%;
-    max-width: 900px;
+    max-width: 800px;
     margin: 5px auto;
     padding: 10px 0px;
     margin: 8px auto;

@@ -300,6 +300,9 @@
             "@ss/purchases/payment-orders": [
                 "libs/purchases/payment-orders/src/index.ts"
             ],
+            "@ss/purchases/reception-cancellation": [
+                "libs/purchases/reception-cancellation/src/index.ts"
+            ],
             "@ss/purchases/ui-purchase-order": [
                 "libs/purchases/ui-purchase-order/src/index.ts"
             ],

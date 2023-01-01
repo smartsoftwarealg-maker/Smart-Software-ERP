@@ -150,7 +150,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; val.id = i; /* todo: navigate to the correct route using the new id*/ }))
             : this.entitySrv.update(val)
                 .pipe(tap(i => {
-                    console.log('queryid', this.queryId, val.id);
                     if (this.queryId == 0) {
                         this.queryId = i;
                         val.id = i;

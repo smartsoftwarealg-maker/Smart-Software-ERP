@@ -1,2 +1,2 @@
 export const PURCHASE_URL = "/reception";
-export const PURCHASE_DETAIL = "/detail";
+export const PURCHASE_CANCELLATION_URL = "/creception";

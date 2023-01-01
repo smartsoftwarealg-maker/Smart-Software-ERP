@@ -6,5 +6,5 @@ export default {
     resolver: '@nrwl/jest/plugins/resolver',
     moduleFileExtensions: ['ts', 'js', 'html'],
     coverageReporters: ['html'],
-    projects: '<rootDir>/apps/shopping',
+    projects: '<rootDir>/libs/purchases/reception-cancellation',
 };

@@ -26,7 +26,7 @@ export class CirculationComponent implements OnInit {
         'date',
         'qty',
         'price',
-        'pprice',
+        'pPrice',
         'customer',
         'store'
     ];
