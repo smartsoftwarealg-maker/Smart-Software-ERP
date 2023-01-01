@@ -4,7 +4,11 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes,
-    PURCHASE_QUOTATION_URL, PURCHASE_REQUEST_URL, LOGISTICS_ARTICLES_URL, STOCK_ARTICLE_URL
+    PURCHASE_QUOTATION_URL,
+    PURCHASE_REQUEST_URL,
+    LOGISTICS_ARTICLES_URL,
+    STOCK_ARTICLE_URL,
+    PURCHASE_RECEPTION_CANCELLATION_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
@@ -26,6 +30,11 @@ import {
     PurchaseRequestListComponent
 } from '@ss/purchases/ui-purchase-request';
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
+import {
+    ReceptionCancellationDetailComponent,
+    ReceptionCancellationLinesDetailComponent,
+    ReceptionCancellationListComponent
+} from '@ss/purchases/reception-cancellation';
 
 export const routes: Routes = [
     {
@@ -125,6 +134,33 @@ export const routes: Routes = [
             {
                 path: ':id',
                 component: ReceptionDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: PURCHASE_RECEPTION_CANCELLATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ReceptionCancellationListComponent,
+                canActivate: [CanActivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: ReceptionCancellationLinesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ReceptionCancellationDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes

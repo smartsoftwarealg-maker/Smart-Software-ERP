@@ -7,7 +7,7 @@ import {
     ABS_PURCHASE_REPORTS_URL,
     ABS_PURCHASE_REQUEST_URL,
     ABS_LOGISTICS_ARTICLES_URL,
-    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL, ABS_STOCK_ARTICLES_URL
+    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL, ABS_STOCK_ARTICLES_URL, ABS_PURCHASE_RECEPTION_CANCELLATION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -50,6 +50,12 @@ export const purchasesNavTree: SideNavNode = {
             name: 'COMMON_RECEPTION',
             icon: 'fas fa-cart-arrow-down',
             route: ABS_PURCHASE_RECEPTION_URL,
+            accessRights: 'Reception'
+        },
+        {
+            name: 'STOCK_RECEPTION_CANCELLATION',
+            icon: 'fa-solid fa-cart-minus',
+            route: ABS_PURCHASE_RECEPTION_CANCELLATION_URL,
             accessRights: 'Reception'
         },
         // {

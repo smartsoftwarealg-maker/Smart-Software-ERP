@@ -53,5 +53,6 @@
     "PERCENTAGE":  "Pourcentage",
     "TRANSFERS":   "Cessions",
     "TRANSFER_RECEPTIONS": "Réceptions sur cessions",
-    "USER_STORES": "Magasins d'utilisateurs"
+    "USER_STORES": "Magasins d'utilisateurs",
+    "RECEPTION_CANCELLATION": "Annulation de la réception"
 }

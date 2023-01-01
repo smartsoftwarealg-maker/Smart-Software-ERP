@@ -53,5 +53,6 @@
     "PERCENTAGE":  "النسبة المئوية",
     "TRANSFERS": "التحويلات",
     "TRANSFER_RECEPTIONS": "استقبالات النقل",
-    "USER_STORES": "مخازن المستعمل"
+    "USER_STORES": "مخازن المستعمل",
+    "RECEPTION_CANCELLATION": "إلغاء الاستقبال"
 }
