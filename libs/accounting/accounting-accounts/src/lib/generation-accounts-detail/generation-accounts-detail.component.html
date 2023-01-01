@@ -3,7 +3,7 @@
         <form *ngIf="form !== null" novalidate [formGroup]="form">
             <mat-form-field id="description" class="default-50 small-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                <input matInput formControlName="description" type="text" >
+                <input matInput formControlName="description" type="text">
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_
                 </mat-error>
             </mat-form-field>
@@ -18,12 +18,14 @@
                 <mat-error *ngIf="form.controls['purchase'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <!--            <mat-form-field id="supplier" class="default-50 small-100">-->
-<!--                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>-->
-<!--                <input matInput formControlName="supplier" type="text" >-->
-<!--                <mat-error *ngIf="form.controls['supplier'].invalid" translate>COMMON_FIELD_-->
-<!--                </mat-error>-->
-<!--            </mat-form-field>-->
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="supplierLookup"
+                                  formControlName="supplier">
+                </ss-auto-complete>
+            </mat-form-field>
+
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_STOCK</mat-label>

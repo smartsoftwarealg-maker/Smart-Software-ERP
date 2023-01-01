@@ -12,6 +12,14 @@ export class AccountAutocompleteModel extends DefaultAutoCompleteModel<Account> 
     override toString = (x: any) => x ?  `${x['accountNo']} ${x[this.descriptionField]}` : null;
 }
 
+export class AccountStringAutocompleteModel extends DefaultAutoCompleteModel<Account> {
+    constructor(public accountSrv: AccountService) {
+        super(accountSrv, 'accountNo');
+    }
+
+    override toString = (x: any) => x ?  `${x['accountNo']} ${x[this.descriptionField]}` : null;
+}
+
 export class GenerationAccountAutocompleteModel extends DefaultAutoCompleteModel<GenerationAccount> {
     constructor(public accountSrv: GenerationAccountService) {
         super(accountSrv);
