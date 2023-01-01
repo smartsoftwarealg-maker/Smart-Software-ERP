@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Account, AccountService, GenerationAccount, GenerationAccountService} from '@ss/accounting/api-accounts';
+import {
+    Account,
+    AccountAutocompleteModel,
+    AccountService, AccountStringAutocompleteModel,
+    GenerationAccount,
+    GenerationAccountService
+} from '@ss/accounting/api-accounts';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -15,10 +21,11 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./generation-accounts-detail.component.scss']
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {
-    purchaseLookup    = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
-    stockLookup       = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
-    consumptionLookup = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
-    salesLookup       = new DefaultAutoCompleteModel<Account>(this.accountSrv, 'accountNo', 'description');
+    purchaseLookup    = new AccountStringAutocompleteModel(this.accountSrv);
+    supplierLookup    = new AccountStringAutocompleteModel(this.accountSrv);
+    stockLookup       = new AccountStringAutocompleteModel(this.accountSrv);
+    consumptionLookup = new AccountStringAutocompleteModel(this.accountSrv);
+    salesLookup       = new AccountStringAutocompleteModel(this.accountSrv);
 
     constructor(
         public override entitySrv: GenerationAccountService,
@@ -51,6 +58,11 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
             sales: [b.sales],
             description: [b.description, Validators.required],
         });
+    }
+
+    override readForm(): GenerationAccount {
+        console.log('value', this.form.getRawValue());
+        return this.form.getRawValue();
     }
 
 }

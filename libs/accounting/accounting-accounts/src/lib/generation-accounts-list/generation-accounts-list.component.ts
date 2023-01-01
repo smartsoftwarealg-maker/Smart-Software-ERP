@@ -42,6 +42,7 @@ export class GenerationAccountsListComponent extends BaseEntityListComponent<Gen
             defReportSrv,
             pagPersistSrv,
             'ACC_GENERATION_ACCOUNTS');
+        this.pagination.pageSize = 15;
     }
 
 }
