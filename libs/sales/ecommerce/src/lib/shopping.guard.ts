@@ -13,7 +13,6 @@ export class ShoppingGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        console.log(this.service.cartCount);
         return this.service.cartCount > 0? true : this.router.navigate(['/main-page']);
     }
 }

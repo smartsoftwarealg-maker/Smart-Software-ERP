@@ -25,10 +25,10 @@ export class MainPageComponent implements OnInit, OnDestroy {
     private adSrv      = inject(SalesAdsService);
     private router     = inject(Router);
     private route      = inject(ActivatedRoute);
+    private filter     = '';
 
     cartSrv    = inject(CartService);
     uploadUtil = new ImageUploaderUtil();
-    searchControl = new FormControl('');
     articles$: Observable<AvailableStock[]> = null;
     classes$: Observable<Lookup[]>          = null;
     ads: ADImage[] = [];
@@ -48,7 +48,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.refresh();
+        this.refresh('');
 
         this.classes$ = this.articles$
             .pipe(map(res =>  res.map(e => <Lookup> {id: e.classId, description: e.classDescription})));
@@ -69,16 +69,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
                 });
             });
 
-
-        this.subscriptions
-            .push(
-            this.searchControl.valueChanges.pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(filter => {
-                this.refresh();
-            }));
-
         this.jobId = setInterval(() => {
                 this.adIndex = this.ads.length == 0 ? 0 : ++this.adIndex % this.ads.length;
                 this.uploadUtil.imgSrc = this.ads[this.adIndex].imageSrc;
@@ -92,11 +82,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
         this.selectedId = id;
     }
 
-    refresh() {
+    refresh(filter: string) {
+        this.filter = filter;
         this.articles$ =
             this.httpSrv
                 .init()
-                .pipe(switchMap(_ => this.articleSrv.availableStock(this.selectedClass, this.searchControl.value)),
+                .pipe(switchMap(_ => this.articleSrv.availableStock(this.selectedClass, filter)),
                     tap(res => {
                         res.forEach(s => {
                             s.articles.forEach(a => {
@@ -110,7 +101,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     selectClass(classId: number) {
         this.selectedClass = classId;
-        this.refresh();
+        this.refresh(this.filter);
     }
 
     removeFromCart(a: AvailableArticle) {
