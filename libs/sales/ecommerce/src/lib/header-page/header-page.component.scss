@@ -1,10 +1,3 @@
-.header-div {
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    padding-top: 8px;
-    margin-bottom: 8px;
-}
 img {
     align-self: center;
     height: 64px;
@@ -12,8 +5,47 @@ img {
     margin-left: 8px;
     margin-bottom: 8px;
 }
+h1 {
+    font-family: Serif;
+    font-weight: bolder;
+    font-size: 3em;
+}
+.header-div {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    padding-top: 8px;
+    margin-bottom: 8px;
+}
+
 .btn-div {
     margin-left: auto;
     display: flex;
 }
+
+.img__span {
+    display: flex;
+    gap: 1em;
+}
+.search-div-mobile {
+    display: none;
+}
+
+.search-div-mobile button {
+
+}
+.cart-button {
+    margin-left: auto;
+}
+
+@media (width <= 500px) {
+    .search-div {
+        display: none;
+    }
+    .search-div-mobile {
+        display: flex;
+        padding-right: 16px;
+    }
+}
+
 
