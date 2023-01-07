@@ -51,7 +51,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         private journalUserSrv: JournalUserService,
         private bankSrv: BankService,
         private usersSrv: UserListService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_JOURNALS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_JOURNALS');
         this.centerSrv.setParentId(loginSrv.appCtx.company);
     }
 

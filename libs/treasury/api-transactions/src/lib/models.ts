@@ -1,12 +1,11 @@
 
+export const PERIOD_URL = '/treasury/periods';
 export const TRANSACTIONS_URL = '/treasury/transactions';
-export const TRANSACTION_DETAIL_PARENT_URL = '/treasury/transactions/';
-export const TRANSACTION_DETAIL_CHILD_URL = '/detail';
 
 
-export interface TTransaction{
+export interface TTransaction {
     id: number,
-    center: number,
+    centerId: number,
     journalId: number,
     operationDate: number,
     transacDate: string,
@@ -19,6 +18,7 @@ export interface TTransaction{
     paymode: number,
     bankExpenses: boolean,
     treasuryGroup: number,
+    groupName?: string;
     memo?: string
 }
 

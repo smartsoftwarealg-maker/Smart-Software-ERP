@@ -21,8 +21,7 @@ export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
     }
 

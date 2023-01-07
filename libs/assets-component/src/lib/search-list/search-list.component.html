@@ -81,9 +81,21 @@
                 </button>
             </div>
 
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
+                <input matInput formControlName="invoiceNumber" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
+                <input matInput formControlName="orderNumb" type="text">
+            </mat-form-field>
+
+
             <div id="manager" class="default-25 sm-50" >
                 <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
             </div>
+
         </form>
     </div>
     <div class="table-div">

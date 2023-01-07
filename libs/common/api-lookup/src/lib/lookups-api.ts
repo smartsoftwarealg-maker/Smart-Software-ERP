@@ -24,6 +24,7 @@ export const FLOORS_URL    = '/organizations/floors';
 
 export const APP_ARCHIVE_DOCUMENTS_URL = '/lookups/archive_documents';
 export const MARKS_URL = '/lookups/marks';
+export const TREASURY_GROUP_URL = '/lookups/treasury_groups';
 export const DAIRA_URL = '/lookups/regions';
 export const TYPES_URL = '/lookups/types';
 export const UNIT_URL = '/lookups/units';

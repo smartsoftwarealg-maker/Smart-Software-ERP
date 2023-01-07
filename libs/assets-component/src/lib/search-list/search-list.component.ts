@@ -72,7 +72,10 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         serviceDateTo:     [this.FUTURE],
         acquisitionValue:  [0],
         location:          [0],
-        consolidated:      [false]
+        consolidated:      [false],
+        invoiceNumber:     [''],
+        orderNumb:         [''],
+        receptionNumber:   [0]
     });
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
 

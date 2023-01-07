@@ -27,7 +27,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             accessRights: 'Article'
         },
         {
-            name: 'LOGISTICS_AGENT',
+            name: 'COMMON_AGENT',
             icon: 'fas fa-user',
             route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'

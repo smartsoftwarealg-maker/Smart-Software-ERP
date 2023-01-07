@@ -1,4 +1,18 @@
 {
-    "AGENT": "الأطراف",
-    "CHECKS": "الصكوك"
+    "DEPOSIT_NUMBER":  "رقم الإيداع",
+    "DUE_DAYS":        "أيام الاستحقاق",
+    "DEPOSITED":       "المودعة",
+    "DEPOSIT_DATE":    "تاريخ الإيداع",
+    "PROCESS_DATE":    "تاريخ العملية",
+    "FROM_NUMBER":     "من الرقم" ,
+    "TO_NUMBER":       "إلى رقم" ,
+    "BOOK_YEAR":       "سنة الكتاب",
+    "CHECKBOOKS":      "دفاتر الشيكات",
+    "JOURNAL_TYPE":    "نوع دفتر اليومية",
+    "BANK_ACCOUNT":    "حساب البنك",
+    "NATURE":          "طبيعة سجية",
+    "INCOME":          "دخل",
+    "EXPENSE":         "مصروف",
+    "PIECENO":         "رقم القطعة",
+    "CHECKS":          "الصكوك"
 }

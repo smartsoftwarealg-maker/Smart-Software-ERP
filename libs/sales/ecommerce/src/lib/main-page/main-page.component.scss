@@ -4,6 +4,9 @@
     overflow-y: auto;
 }
 
+mat-card {
+    border-radius: 1.5em;
+}
 
 img {
     display: block;
@@ -53,8 +56,15 @@ h1 {
 }
 .img-div {
     height: 150px;
-    width: 150px;
+    width: 100%;
     justify-self: center;
+    display: flex;
+    min-width: 180px;
+}
+.img-div ss-image-input {
+    justify-self: center;
+    max-height: 150px;
+    max-height: 150px;
 }
 
 .description {
