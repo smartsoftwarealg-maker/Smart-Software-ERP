@@ -249,5 +249,12 @@
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
     "EPAYMENT":             "E-paiement",
-    "MORE":                 "Plus"
+    "MORE":                 "Plus",
+    "BANK":                 "Banque",
+    "TRANSACTIONS":         "Ecritures",
+    "CHECKNO":              "Numéro de chèque",
+    "JOURNALS":             "Journaux",
+    "AGENTS":               "Agents",
+    "AGENT":                "Tier",
+    "EDIT_AGENT": "Modifier l'agent"
 }

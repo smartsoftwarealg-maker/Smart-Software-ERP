@@ -1,5 +1,4 @@
 {
-    "TRANSACTIONS":             "المعاملات" ,
     "CASH_FLOW":                "نقد متدفق",
     "CONSOLIDATION":            "الدمج",
     "FUNDING":                  "التمويل",
@@ -22,7 +21,6 @@
     "MODIFY_CLOSED_PERIODS":    "السماح بتعديل الفترات المغلقة",
     "UPDATABLE_PERIODS":        "عدد الفترات القابلة للتعديل",
     "DEFAULT_LABEL":            "التسمية الافتراضية",
-    "JOURNALS":                 "الدفاتر",
     "FILE_SELECTOR":            "اختيار الملف",
     "PERIOD":                   "فترة",
     "CLOSED":                   "مغلق",
@@ -38,7 +36,6 @@
     "MANAGE_PROJECTS":          "إدارة المشاريع",
     "FOLIO":                    "رقم الورقة",
     "MANUAL_CASH_FLOW":         "إدارة التدفق النقدي يدويًا",
-    "CHECKNO":                  "رقم الصك",
     "ANALYZE_CHECKS":           "تحليل الصكوك",
     "CC_REQUIRED":              "مطلوب مركز التكلفة",
     "PERIOD_SELECTION":         "اختيار الدورة",

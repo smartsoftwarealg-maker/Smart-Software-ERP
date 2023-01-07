@@ -1,36 +1,31 @@
-<div class="main_container">
-    <div class="form_container">
-        <form *ngIf="form" novalidate [formGroup]="form">
+<mat-card class="form_container">
+    <form *ngIf="form" novalidate [formGroup]="form">
 
-            <div style="height: 16px"></div>
+        <div style="height: 16px"></div>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>TRS_BANK</mat-label>
-                <mat-select formControlName="bankId" required>
-                    <mat-option *ngFor="let p of banks" [value]="p.id">
-                        {{ p.description }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-    
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>TRS_BOOK_YEAR</mat-label>
-                <input matInput formControlName="bookYear" type="number">
-            </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_BANK</mat-label>
+            <mat-select formControlName="bankId" required>
+                <mat-option *ngFor="let p of banks" [value]="p.id">
+                    {{ p.description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>TRS_FROM_NUMBER</mat-label>
-                <input matInput formControlName="fromNumber" type="number">
-            </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>TRS_BOOK_YEAR</mat-label>
+            <input matInput formControlName="bookYear" type="number">
+        </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>TRS_TO_NUMBER</mat-label>
-                <input matInput formControlName="toNumber" type="number">
-            </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>TRS_FROM_NUMBER</mat-label>
+            <input matInput formControlName="fromNumber" type="number">
+        </mat-form-field>
 
+        <mat-form-field class="default-50">
+            <mat-label translate>TRS_TO_NUMBER</mat-label>
+            <input matInput formControlName="toNumber" type="number">
+        </mat-form-field>
 
-            <div style="height: 16px"></div>
-
-        </form>
-    </div>
-</div>
+    </form>
+</mat-card>

@@ -72,7 +72,7 @@
 
                     <ng-container matColumnDef="checkNumb">
                         <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
-                            PAY_CHECKNO
+                            COMMON_CHECKNO
                         </mat-header-cell>
                         <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
                             {{ x.checkNumb }}
@@ -90,7 +90,7 @@
 
                     <ng-container matColumnDef="bank">
                         <mat-header-cell class="theme-background-accent padding-start-16 padding-end-8" *matHeaderCellDef mat-sort-header translate>
-                            PAY_BANK
+                            COMMON_BANK
                         </mat-header-cell>
                         <mat-cell *matCellDef="let x" class="padding-start-16 padding-end-8">
                             {{ paySrv.banksIndex[x.bankId] }}

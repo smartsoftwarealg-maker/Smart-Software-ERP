@@ -230,5 +230,11 @@
     "TIME":                "",
     "SHOW_ALL":            "",
     "EPAYMENT":            "",
-    "MORE":                ""
+    "MORE":                "",
+    "BANK":                "Banka",
+    "TRANSACTIONS":          "",
+    "JOURNALS":              "",
+    "AGENTS":             "Ajanlar",
+    "AGENT":               "Temsilci",
+    "EDIT_AGENT":         "Düzenleme temsilcisi"
 }

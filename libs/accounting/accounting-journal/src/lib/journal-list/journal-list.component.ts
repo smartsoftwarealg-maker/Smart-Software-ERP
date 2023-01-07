@@ -40,7 +40,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ACC_JOURNALS');
+            'COMMON_JOURNALS');
         this.pagination.pageSize = 10;
     }
 

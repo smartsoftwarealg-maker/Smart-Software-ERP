@@ -159,7 +159,7 @@
     "UNCONFIRM": "Click to cancel confirmation",
     "STATUS": "Status",
     "LOCKED": "Locked",
-    "AGENT": "Partners",
+    "AGENT": "Partner",
     "ARTICLE": "Article",
     "CUR_EXCHANGE": "Currency exchange",
     "HRCOMMON": "HRMaster common",
@@ -247,5 +247,11 @@
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
     "EPAYMENT":            "E-payment",
-    "MORE":                "More"
+    "MORE":                "More",
+    "BANK":                "Bank",
+    "TRANSACTIONS":             "Transactions",
+    "CHECKNO":                  "Check number",
+    "JOURNALS":                 "Journals",
+    "AGENTS":                  "Partners",
+    "EDIT_AGENT": "Edit agent"
 }

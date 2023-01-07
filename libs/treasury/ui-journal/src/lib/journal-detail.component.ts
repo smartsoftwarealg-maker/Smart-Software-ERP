@@ -17,7 +17,10 @@ import { switchMap, tap } from 'rxjs/operators';
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
     banks: Bank[];
-    journalTypes: Lookup[];
+    journalTypes = [
+        {id: 1, description: 'BANK'},
+        {id: 2, description: 'CASH'},
+    ];
 
     constructor(
         public journalSrv: JournalService,
@@ -29,16 +32,12 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
-        super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_JOURNAL');
+        super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_JOURNALS');
     }
 
     public override preload(): Observable<any> {
         return this.lookupsSrv.getBanks()
-            .pipe(
-                tap(x => { this.banks = x }),
-                switchMap(() => this.lookupsSrv.getJournalTypes()),
-                tap(x => { this.journalTypes = x }),
-            );
+            .pipe(tap(x => { this.banks = x }));
     }
 
     public override setupForm(a: Journal) {
@@ -46,10 +45,20 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         return this.formBuilder.group({
             id: [a.id],
             description: [a.description, Validators.required],
-            jType: [a.jType, Validators.required],
-            bankId: a.bankId,
-            bankAccount: a.bankAccount,
-            centerId: a.centerId
+            jType: [a.jType || 1, Validators.required],
+            bankId: [{ value: a.bankId, disabled: a.jType === 2 }],
+            bankAccount: [{ value: a.bankAccount, disabled: (a.jType || 1) !== 1 }],
+            centerId: [a.centerId]
         });
+    }
+
+    onJournalType(event: number) {
+        if (event === 1) {
+            this.form.controls['bankId']?.enable({onlySelf: true});
+            this.form.controls['bankAccount']?.enable({onlySelf: true});
+        } else {
+            this.form.controls['bankId']?.disable({onlySelf: true});
+            this.form.controls['bankAccount']?.disable({onlySelf: true});
+        }
     }
 }

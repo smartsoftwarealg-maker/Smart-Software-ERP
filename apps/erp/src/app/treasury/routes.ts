@@ -4,15 +4,21 @@ import {
     TREASURY_CHECKS_URL,
     TREASURY_CHECK_BOOKS_URL,
     TREASURY_JOURNALS_URL,
-    DASHBOARD_URL, COMMON_REPORTS_URL
+    DASHBOARD_URL, COMMON_REPORTS_URL, TREASURY_TRANSACTION_URL, TREASURY_GROUPS_URL
 } from '../common';
 import { LIST_URL, CanActivateService, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
 import { CheckListComponent, CheckDetailComponent } from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
 import { JournalListComponent, JournalDetailComponent } from '@ss/treasury/ui-journal';
-import {DashboardComponent} from '../../../../../libs/dashboard/src';
-import {ReportViewComponent} from '../../../../../libs/common/ui-report-param/src';
+import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {
+    TransactionDetailComponent,
+    TransactionDetailGuard,
+    TransactionListComponent
+} from '@ss/treasury/ui-transactions';
+import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
     {
@@ -51,6 +57,24 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: TREASURY_GROUPS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TreasuryGroupListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: TreasuryGroupDetailComponent,
+                canActivate: [CanActivateService],
+                canActivateChild: [TransactionDetailGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
         path: TREASURY_CHECK_BOOKS_URL,
         children: [
             {
@@ -78,6 +102,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: JournalDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: TREASURY_TRANSACTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransactionListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: TransactionDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },

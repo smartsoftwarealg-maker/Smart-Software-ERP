@@ -1,0 +1,83 @@
+<div class="table-div">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>COMMON_JOURNAL</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="journalLookup"
+                          [formControl]="journalFilter">
+        </ss-auto-complete>
+    </mat-form-field>
+
+    <mat-form-field class="default-50 date-ctrl">
+        <mat-label translate>COMMON_DATE</mat-label>
+        <ss-date-picker [formControl]="dateFilter" (dateChange)="onDate($event)"></ss-date-picker>
+    </mat-form-field>
+</div>
+
+<div class="table-div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_CHECKNO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference2">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference2}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pieceno">
+            <mat-header-cell *matHeaderCellDef translate>TRS_PIECENO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.pieceno}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="groupName">
+            <mat-header-cell *matHeaderCellDef translate>TRS_NATURE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.groupName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="memo">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.memo}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="income">
+            <mat-header-cell *matHeaderCellDef translate>TRS_INCOME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{(e.balance > 0 ? e.balance : 0) | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expenses">
+            <mat-header-cell *matHeaderCellDef translate>TRS_EXPENSE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{(e.balance > 0 ? 0.0 : -e.balance) | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

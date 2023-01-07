@@ -34,7 +34,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(journalSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKS');
+        super(journalSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_JOURNALS');
     }
 
 //    public processLoadedData(data: Journal[]): Observable<Journal[]> {

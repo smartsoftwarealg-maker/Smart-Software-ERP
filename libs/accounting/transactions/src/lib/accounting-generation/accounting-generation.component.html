@@ -19,13 +19,13 @@
             <mat-option value="3" translate>STOCK_CONSUMPTION</mat-option>
             <mat-option value="4" translate>COMMON_SALES</mat-option>
             <mat-option value="5" translate>COMMON_PAYROLL</mat-option>
-            <mat-option value="6" translate>LOGISTICS_BANK</mat-option>
+            <mat-option value="6" translate>COMMON_BANK</mat-option>
             <mat-option value="7" translate>COMMON_CASH</mat-option>
         </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label translate>ACC_JOURNALS</mat-label>
+        <mat-label translate>COMMON_JOURNALS</mat-label>
         <ss-auto-complete matInput
                           [model]="journalLookup"
                           formControlName="journal"></ss-auto-complete>
@@ -143,7 +143,7 @@
         </ng-container>
 
         <ng-container matColumnDef="bank">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_BANK</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.bank}}
             </mat-cell>

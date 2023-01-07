@@ -29,7 +29,7 @@
 
 
         <mat-form-field class="sm-100 default-50">
-            <mat-label translate>PAY_CHECKNO</mat-label>
+            <mat-label translate>COMMON_CHECKNO</mat-label>
             <input matInput formControlName="checkNumb" type="text">
         </mat-form-field>
 
@@ -38,7 +38,7 @@
         </app-date-picker>
 
         <mat-form-field class="sm-100 default-50">
-            <mat-label translate>PAY_BANK</mat-label>
+            <mat-label translate>COMMON_BANK</mat-label>
             <mat-select formControlName="bankId">
                 <mat-option *ngFor="let c of paySrv.banks" [value]="c.id">{{ c.description }}</mat-option>
             </mat-select>

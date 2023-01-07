@@ -1,5 +1,4 @@
 {
-    "TRANSACTIONS":             "Transactions",
     "CASH_FLOW":                "Cash flow",
     "CONSOLIDATION":            "Consolidation",
     "FUNDING":                  "Funding",
@@ -22,7 +21,6 @@
     "MODIFY_CLOSED_PERIODS":    "Allow the modification of closed periods",
     "UPDATABLE_PERIODS":        "Number of modifiable periods",
     "DEFAULT_LABEL":            "Default label",
-    "JOURNALS":                 "Journals",
     "FILE_SELECTOR":            "File selection",
     "PERIOD":                   "Period",
     "CLOSED":                   "Closed",
@@ -38,7 +36,6 @@
     "MANAGE_PROJECTS":          "Manage projects",
     "FOLIO":                    "Folio",
     "MANUAL_CASH_FLOW":         "Manually manage cash flow",
-    "CHECKNO":                  "Check number",
     "ANALYZE_CHECKS":           "Analyze checks",
     "CC_REQUIRED":              "Cost center is required",
     "PERIOD_SELECTION":         "Period selection",

@@ -32,7 +32,7 @@
             </mat-form-field>
 
             <mat-form-field id="agentType" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
+                <mat-label translate>COMMON_AGENT_TYPE</mat-label>
                 <mat-select formControlName="agentType" required>
                     <mat-option *ngFor="let v of agentTypes" [value]="v.id">
                         {{v ? v.description : ''}}
@@ -206,7 +206,7 @@
             </mat-form-field>
 
             <mat-form-field *ngIf="AQS" class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_BANK</mat-label>
+                <mat-label translate>COMMON_BANK</mat-label>
                 <ss-auto-complete matInput
                                   formControlName="bank"
                                   [model]="bankLookup">
@@ -215,7 +215,7 @@
 
 
             <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_BANK_ACCOUNT</mat-label>
+                <mat-label translate>COMMON_BANK_ACCOUNT</mat-label>
                 <input matInput formControlName="bankAccount" type="text">
             </mat-form-field>
 

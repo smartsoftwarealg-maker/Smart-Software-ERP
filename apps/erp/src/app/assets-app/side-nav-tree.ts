@@ -69,7 +69,7 @@ export const assetsNavTree: SideNavNode = {
             name: 'COMMON_CLASSES',
             icon: 'fa-solid fa-rectangle-list',
             route: ABS_ASSET_CLASSES,
-            accessRights: 'Class'
+            accessRights: 'AssetClass'
         },
         {
             name: 'ASSET_REVALUATION_TYPES',
@@ -84,7 +84,7 @@ export const assetsNavTree: SideNavNode = {
             accessRights: 'Mark'
         },
         {
-            name: 'LOGISTICS_AGENTS',
+            name: 'COMMON_AGENTS',
             icon: 'fas fa-user',
             route: ABS_ASSETS_AGENT_URL,
             accessRights: 'Agent'

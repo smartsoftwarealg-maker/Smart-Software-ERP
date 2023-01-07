@@ -57,7 +57,7 @@ export class DocInfoComponent {
         },
         {
             group: 'agent',
-            description: 'LOGISTICS_AGENT',
+            description: 'COMMON_AGENT',
             entries: [
                 {
                     name: 'balance',

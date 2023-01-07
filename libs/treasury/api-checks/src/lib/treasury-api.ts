@@ -20,4 +20,5 @@ export interface Check {
     canceled: boolean;
     memo?: string;
     bookId?: number;
+    agentName?: string;
 }

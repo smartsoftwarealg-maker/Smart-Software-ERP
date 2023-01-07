@@ -3,7 +3,7 @@
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>TRS_DESCRIPTION</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.description}}
                 </mat-cell>
@@ -12,13 +12,12 @@
             <ng-container matColumnDef="jType">
                 <mat-header-cell *matHeaderCellDef translate>TRS_JOURNAL_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    <!--{{e.jType | lookup:'/lookups/journal_types' | async}}-->
-                    {{e.typeName}}
+                    {{ 'COMMON_' + e.typeName | translate }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="bankId">
-                <mat-header-cell *matHeaderCellDef translate>TRS_BANK</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.bankId | lookup:'/banks' | async}}
                 </mat-cell>

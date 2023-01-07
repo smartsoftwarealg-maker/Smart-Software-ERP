@@ -19,8 +19,9 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
     displayedColumns = [
         'description',
         'number',
-        'amount',
-        'agent',
+        'debit',
+        'credit',
+        'agentName',
         'date',
         'due_days',
         'bank',
@@ -44,6 +45,7 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         public httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(checkSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKS');
+        this.pagination.pageSize = 10;
     }
 
     public override processLoadedData(data: Check[]): Observable<Check[]> {
