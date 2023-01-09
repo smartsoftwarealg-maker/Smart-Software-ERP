@@ -14,5 +14,6 @@
     "INCOME":          "دخل",
     "EXPENSE":         "مصروف",
     "PIECENO":         "رقم القطعة",
-    "CHECKS":          "الصكوك"
+    "CHECKS":          "الصكوك",
+    "PERIOD":          "الدورة"
 }
