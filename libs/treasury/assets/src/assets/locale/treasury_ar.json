@@ -15,5 +15,6 @@
     "EXPENSE":         "مصروف",
     "PIECENO":         "رقم القطعة",
     "CHECKS":          "الصكوك",
-    "PERIOD":          "الدورة"
+    "PERIOD":          "الدورة",
+    "BANK_EXPENSES":   "مصاريف مصرفية"
 }

@@ -15,5 +15,6 @@
     "EXPENSE":         "Frais",
     "PIECENO":         "Pièce n°.",
     "CHECKS":          "Cheques",
-    "PERIOD":          "Periode"
+    "PERIOD":          "Periode",
+    "BANK_EXPENSES":   "Frais bancaires"
 }

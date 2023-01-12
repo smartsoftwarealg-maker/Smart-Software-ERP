@@ -49,6 +49,7 @@ export const TREASURY_JOURNALS_URL = 'journals';
 export const TREASURY_GROUPS_URL = 'treasury-groups';
 export const TREASURY_JOURNAL_TYPE_URL = 'journal-types';
 export const TREASURY_TRANSACTION_URL = 'transactions';
+export const TREASURY_BANK_EXPENSE_URL = 'bank-expenses';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -316,6 +317,7 @@ export const ABS_TREASURY_DASHBOARD_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_UR
 export const ABS_TREASURY_REPORTS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_TREASURY_JOURNAL_TYPE_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_JOURNAL_TYPE_URL].join('/');
 export const ABS_TREASURY_TRANSACTION_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_TRANSACTION_URL].join('/');
+export const ABS_TREASURY_BANK_EXPENSES_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_BANK_EXPENSE_URL].join('/');
 
 // stock
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');

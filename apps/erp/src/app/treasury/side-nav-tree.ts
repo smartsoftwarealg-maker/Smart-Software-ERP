@@ -2,7 +2,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ASSET_DASHBOARD_URL,
     ABS_ASSETS_REPORTS_URL,
-    ABS_TREASURY_AGENT_URL,
+    ABS_TREASURY_AGENT_URL, ABS_TREASURY_BANK_EXPENSES_URL,
     ABS_TREASURY_DASHBOARD_URL,
     ABS_TREASURY_GROUPS_URL,
     ABS_TREASURY_JOURNAL_TYPE_URL,
@@ -41,6 +41,12 @@ export const treasuryNavTree: SideNavNode = {
             name: 'COMMON_TRANSACTIONS',
             icon: 'fas fa-money-check-dollar',
             route: ABS_TREASURY_TRANSACTION_URL,
+            accessRights: 'TTransaction'
+        },
+        {
+            name: 'TRS_BANK_EXPENSES',
+            icon: 'fa-sharp fa-solid fa-sack-dollar',
+            route: ABS_TREASURY_BANK_EXPENSES_URL,
             accessRights: 'TTransaction'
         },
         {
