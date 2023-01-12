@@ -72,6 +72,10 @@
                 <mat-error *ngIf="form.controls['treasuryGroup']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
+            <div class="default-50" *ngIf="entitySrv.isBank()">
+                <mat-checkbox formControlName="bankExpenses" translate >TRS_BANK_EXPENSES</mat-checkbox>?
+            </div>
+
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_MEMO</mat-label>
                 <input matInput formControlName="memo" type="text">

@@ -15,5 +15,6 @@
     "EXPENSE":         "Expense",
     "PIECENO":         "Piece No.",
     "CHECKS":          "Checks",
-    "PERIOD":          "Period"
+    "PERIOD":          "Period",
+    "BANK_EXPENSES":   "Bank expenses"
 }
