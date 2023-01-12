@@ -344,5 +344,4 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.entitySrv.sortColumn = event;
         this.refresh();
     }
-
 }

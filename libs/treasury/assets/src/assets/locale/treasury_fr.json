@@ -14,5 +14,6 @@
     "INCOME":          "Revenu",
     "EXPENSE":         "Frais",
     "PIECENO":         "Pièce n°.",
-    "CHECKS":          "Cheques"
+    "CHECKS":          "Cheques",
+    "PERIOD":          "Periode"
 }

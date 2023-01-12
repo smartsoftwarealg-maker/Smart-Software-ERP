@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+mat-card {
+    border-radius: 1.2em;
+}
 .main-container {
     box-sizing: border-box;
     display: grid;
@@ -23,6 +26,8 @@
 
 mat-cell, mat-header-cell {
     min-width: 100px;
+    border-left: whitesmoke solid 1px;
+    padding-left: 4px;
 }
 .consolidated {
     align-self: center;

@@ -39,10 +39,6 @@
     max-width: 50px;
 }
 
-.mat-column-store {
-    flex: 1 1 100px;
-    border-left: white solid 1px;
-}
 
 
 
@@ -54,6 +50,12 @@
 }
 
 .mat-column-reference,
+.mat-column-store {
+    flex: 1 0 100px;
+    padding: 0 4px;
+    border-left: ghostwhite solid 1px;
+}
+
 .mat-column-qtySatisfied,
 .mat-column-qtyOrdered,
 .mat-column-price,

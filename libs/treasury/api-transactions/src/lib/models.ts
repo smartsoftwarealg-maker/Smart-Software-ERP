@@ -19,7 +19,9 @@ export interface TTransaction {
     bankExpenses: boolean,
     treasuryGroup: number,
     groupName?: string;
-    memo?: string
+    memo?: string,
+    agent?: number;
+    agentName?: string;
 }
 
 export interface TTransactionLine {
@@ -33,3 +35,4 @@ export interface TTransactionLine {
     invoiceDate: string
 }
 
+export interface Summary{journal: string, period: number, balance: number, rTotal: number}

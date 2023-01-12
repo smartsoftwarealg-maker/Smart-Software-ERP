@@ -14,5 +14,6 @@
     "INCOME":          "Income",
     "EXPENSE":         "Expense",
     "PIECENO":         "Piece No.",
-    "CHECKS":          "Checks"
+    "CHECKS":          "Checks",
+    "PERIOD":          "Period"
 }

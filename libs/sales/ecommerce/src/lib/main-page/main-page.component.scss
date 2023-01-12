@@ -11,13 +11,23 @@ mat-card {
 img {
     display: block;
 }
-
+.header-div {
+    border: #4CAF50 solid 4px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 132px;
+    z-index: 90;
+}
 h1 {
     margin: auto;
     font-size: 5em;
     font-style: oblique;
 }
-
+.main-div {
+    margin-top: 96px;
+}
 @media (width > 500px) {
     .main-div {
         width: 100%;

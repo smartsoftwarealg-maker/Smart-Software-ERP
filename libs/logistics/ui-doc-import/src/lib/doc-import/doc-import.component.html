@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-form-field appearance="fill" >
+    <mat-form-field appearance="fill">
         <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
         <mat-select matNativeControl required [formControl]="document">
             <mat-option *ngFor="let d of documentList" value="{{ d.id }}">{{ d.description | translate }}</mat-option>
@@ -44,7 +44,7 @@
 
     </div>
     <div class="ctrl">
-    <button mat-raised-button color="primary" (click)="close()"  translate>COMMON_IMPORT</button>
-    <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
+        <button mat-raised-button color="primary" (click)="close()" translate>COMMON_IMPORT</button>
+        <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
     </div>
 </div>

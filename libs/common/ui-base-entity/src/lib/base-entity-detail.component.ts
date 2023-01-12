@@ -129,7 +129,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         }
     }
 
-    /** called with the new id to allow to upload attatchement to this object */
+    /** called with the new id to allow to upload attachment to this object */
     public uploadAttachments(id: number): Observable<any> {
         return of(null);
     }

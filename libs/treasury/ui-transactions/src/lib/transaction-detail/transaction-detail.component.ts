@@ -10,6 +10,7 @@ import {LookupsService, TreasuryGroupService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {MatRadioChange} from '@angular/material/radio';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -18,6 +19,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 })
 export class TransactionDetailComponent extends BaseEntityDetailComponent<TTransaction> {
     groupLookup = new DefaultAutoCompleteModel(this.groupSrv);
+    agentLookup = new AgentLookupModel(this.agentSrv);
 
     constructor(
         public override entitySrv: TreasuryTransactionService,
@@ -26,6 +28,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
+        private agentSrv: AgentService,
         private loginSrv: LoginService,
         private groupSrv: TreasuryGroupService,
         private router: Router) {
@@ -52,6 +55,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             pieceno:       [e.pieceno, Validators.required],
             operationDate: [e.operationDate || 0],
             balance:       [e.balance],
+            agent:         [e.agent],
             income:        [e.balance > 0? e.balance : 0],
             expense:       [e.balance > 0? 0 : -e.balance],
             userId:        [e.userId || this.loginSrv.appCtx.id],

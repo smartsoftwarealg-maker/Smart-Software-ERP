@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityExtendedService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import {TTransaction, TTransactionLine, TRANSACTIONS_URL, PERIOD_URL} from './models';
+import {TTransaction, TTransactionLine, TRANSACTIONS_URL, PERIOD_URL, Summary} from './models';
 import {HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Journal} from '@ss/treasury/api-journal';
@@ -39,6 +39,11 @@ export class TreasuryTransactionService extends BaseEntityExtendedService<TTrans
     }
     get date() {
         return this._date;
+    }
+
+    summary(): Observable<Summary[]> {
+        const id = this._journal?.id || 0;
+        return this.httpSrv.get<Summary[]>(`/treasury/transactions/journals/${id}/summary`);
     }
 
     override getList(page: number,

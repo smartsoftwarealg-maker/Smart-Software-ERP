@@ -22,7 +22,7 @@
         </mat-form-field>
     </div>
 
-    <div class="list-container">
+    <mat-card class="list-container">
         <mat-list>
             <mat-list-item *ngFor="let row of data"
                            [class.selected]="row.id === selected"
@@ -31,8 +31,7 @@
                 {{ row.description }}
             </mat-list-item>
         </mat-list>
-
-    </div>
+    </mat-card>
 
     <div class="pagination-container b-b-background page1">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
