@@ -35,4 +35,4 @@ export interface TTransactionLine {
     invoiceDate: string
 }
 
-export interface Summary{journal: string, period: number, balance: number}
+export interface Summary{journal: string, period: number, balance: number, rTotal: number}

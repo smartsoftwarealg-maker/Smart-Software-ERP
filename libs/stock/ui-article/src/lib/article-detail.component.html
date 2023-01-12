@@ -66,16 +66,26 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_APPID</mat-label>
-                    <mat-select formControlName="appId">
-                        <mat-option [value]="null"> </mat-option>
-                        <mat-option [value]="0"></mat-option>
-                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>
-                        <mat-option [value]="2"> {{'LOGISTICS_PARTS'|translate}} </mat-option>
-                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>
-                        <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>
-                    </mat-select>
+<!--                <mat-form-field class="default-50 sm-100">-->
+<!--                    <mat-label translate>LOGISTICS_APPID</mat-label>-->
+<!--                    <mat-select formControlName="appId">-->
+<!--                        <mat-option [value]="null"> </mat-option>-->
+<!--                        <mat-option [value]="0"></mat-option>-->
+<!--                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>-->
+<!--                        <mat-option [value]="2"> {{'LOGISTICS_PARTS'|translate}} </mat-option>-->
+<!--                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>-->
+<!--                        <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
+
+                <mat-form-field floatLabel="always" class="default-50">
+                    <mat-label translate>STOCK_MIN_QTY</mat-label>
+                    <input matInput formControlName="minQty" type="number">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always" class="default-50">
+                    <mat-label translate>STOCK_MAX_QTY</mat-label>
+                    <input matInput formControlName="maxQty" type="number">
                 </mat-form-field>
 
                 <div class="default-50 sm-100">

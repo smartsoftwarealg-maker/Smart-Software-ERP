@@ -26,6 +26,8 @@ export interface Article {
     notForSale: boolean;
     klassName?: string;
     markName?: string;
+    minQty?: number;
+    maxQty?: number;
 }
 
 export interface QtyPrice {

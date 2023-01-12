@@ -153,6 +153,12 @@ export interface Transaction {
     };
 }
 
+export interface InjectFormat{store: number;
+    reference: string;
+    qty: string;
+    price: string
+}
+
 export interface Account {
     id: number;
     accountno: string;

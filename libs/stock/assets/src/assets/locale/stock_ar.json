@@ -54,5 +54,7 @@
     "TRANSFERS": "التحويلات",
     "TRANSFER_RECEPTIONS": "استقبالات النقل",
     "USER_STORES": "مخازن المستعمل",
-    "RECEPTION_CANCELLATION": "إلغاء الاستقبال"
+    "RECEPTION_CANCELLATION": "إلغاء الاستقبال",
+    "MIN_QTY":                "الحد الأدنى للكمية",
+    "MAX_QTY":                "الكمية الأمنية"
 }

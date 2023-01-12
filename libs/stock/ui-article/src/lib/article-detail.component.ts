@@ -65,15 +65,17 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         this.aid = a.id;
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
-            id: [a.id],
-            mark: [a.mark],
-            klass: [a.klass],
-            salesUnit: [a.salesUnit],
-            price1: [a.price1 || 0],
-            reference: [a.reference, Validators.required],
-            appId: [a.appId || this.articleSrv.getParentId()],
-            notForSale: [a.notForSale || false, Validators.required],
-            vat: [a.vat]
+            id:           [a.id],
+            mark:         [a.mark],
+            maxQty:       [a.maxQty],
+            minQty:       [a.minQty],
+            klass:        [a.klass],
+            salesUnit:    [a.salesUnit],
+            price1:       [a.price1 || 0],
+            reference:    [a.reference, Validators.required],
+            appId:        [a.appId || this.articleSrv.getParentId()],
+            notForSale:   [a.notForSale || false, Validators.required],
+            vat:          [a.vat]
         });
     }
 
