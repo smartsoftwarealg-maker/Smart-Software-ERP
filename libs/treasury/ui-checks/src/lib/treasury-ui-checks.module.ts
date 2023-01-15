@@ -10,6 +10,10 @@ import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { AgentDenominationPipe } from '@ss/logistics/api-agent';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { ProcessedCheckListComponent } from './processed-check-list/processed-check-list.component';
+import { ProcessedCheckDetailComponent } from './processed-check-detail/processed-check-detail.component';
+import { ProcessedCheckInjectionDialogComponent } from './processed-check-injection-dialog/processed-check-injection-dialog.component';
+import { CheckMatchingListComponent } from './check-matching-list/check-matching-list.component';
 
 @NgModule({
     imports: [
@@ -20,9 +24,17 @@ import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         RouterModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
     ],
-    declarations: [CheckListComponent, CheckDetailComponent, AgentDenominationPipe],
-    exports: [CheckListComponent, CheckDetailComponent]
+    declarations: [
+        CheckListComponent,
+        CheckDetailComponent,
+        AgentDenominationPipe,
+        ProcessedCheckListComponent,
+        ProcessedCheckDetailComponent,
+        ProcessedCheckInjectionDialogComponent,
+        CheckMatchingListComponent,
+    ],
+    exports: [CheckListComponent, CheckDetailComponent],
 })
-export class TreasuryUiChecksModule { }
+export class TreasuryUiChecksModule {}

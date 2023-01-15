@@ -4,11 +4,21 @@ import {
     TREASURY_CHECKS_URL,
     TREASURY_CHECK_BOOKS_URL,
     TREASURY_JOURNALS_URL,
-    DASHBOARD_URL, COMMON_REPORTS_URL, TREASURY_TRANSACTION_URL, TREASURY_GROUPS_URL, TREASURY_BANK_EXPENSE_URL
+    DASHBOARD_URL,
+    COMMON_REPORTS_URL,
+    TREASURY_TRANSACTION_URL,
+    TREASURY_GROUPS_URL,
+    TREASURY_BANK_EXPENSE_URL,
+    TREASURY_PROCESSED_CHECKS_URL, TREASURY_CHECK_MATCHING_URL
 } from '../common';
 import { LIST_URL, CanActivateService, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
-import { CheckListComponent, CheckDetailComponent } from '@ss/treasury/ui-checks';
+import {
+    CheckListComponent,
+    CheckDetailComponent,
+    ProcessedCheckListComponent,
+    ProcessedCheckDetailComponent, CheckMatchingListComponent
+} from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
 import { JournalListComponent, JournalDetailComponent } from '@ss/treasury/ui-journal';
 import {DashboardComponent} from '@ss/dashboard';
@@ -51,6 +61,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CheckDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: TREASURY_PROCESSED_CHECKS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProcessedCheckListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: ProcessedCheckDetailComponent,
                 canActivate: [CanActivateService],
                 canDeactivate: [CanDeactivateService]
             },
@@ -145,6 +172,11 @@ export const mainRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
+        canActivate: [CanActivateService],
+    },
+    {
+        path: TREASURY_CHECK_MATCHING_URL,
+        component: CheckMatchingListComponent,
         canActivate: [CanActivateService],
     },
     {

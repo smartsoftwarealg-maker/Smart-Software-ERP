@@ -2,10 +2,10 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ASSET_DASHBOARD_URL,
     ABS_ASSETS_REPORTS_URL,
-    ABS_TREASURY_AGENT_URL, ABS_TREASURY_BANK_EXPENSES_URL,
+    ABS_TREASURY_AGENT_URL, ABS_TREASURY_BANK_EXPENSES_URL, ABS_TREASURY_CHECK_MATCHING_URL,
     ABS_TREASURY_DASHBOARD_URL,
     ABS_TREASURY_GROUPS_URL,
-    ABS_TREASURY_JOURNAL_TYPE_URL,
+    ABS_TREASURY_JOURNAL_TYPE_URL, ABS_TREASURY_PROCESSED_CHECKS_URL,
     ABS_TREASURY_REPORTS_URL,
     ABS_TREASURY_TRANSACTION_URL
 } from '../common';
@@ -58,9 +58,21 @@ export const treasuryNavTree: SideNavNode = {
         {
             name: 'TRS_CHECKS',
             icon: 'fas fa-money-check-dollar',
-            route: ABS_TREASURY_CHECKS_URL,
-            accessRights: 'Checks'
+            route: ABS_TREASURY_PROCESSED_CHECKS_URL,
+            accessRights: 'ProcessedChecks'
         },
+        {
+            name: 'TRS_CHECK_MATCHING',
+            icon: 'fa-sharp fa-solid fa-check-double',
+            route: ABS_TREASURY_CHECK_MATCHING_URL,
+            accessRights: 'ProcessedChecks'
+        },
+        // {
+        //     name: 'TRS_CHECKS',
+        //     icon: 'fas fa-money-check-dollar',
+        //     route: ABS_TREASURY_CHECKS_URL,
+        //     accessRights: 'Checks'
+        // },
         {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
