@@ -44,12 +44,14 @@ export const WORK_FLOW_URL = 'workflow';
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
 export const TREASURY_CHECKS_URL = 'checks';
+export const TREASURY_PROCESSED_CHECKS_URL = 'processed-checks';
 export const TREASURY_CHECK_BOOKS_URL = 'checkBooks';
 export const TREASURY_JOURNALS_URL = 'journals';
 export const TREASURY_GROUPS_URL = 'treasury-groups';
 export const TREASURY_JOURNAL_TYPE_URL = 'journal-types';
 export const TREASURY_TRANSACTION_URL = 'transactions';
 export const TREASURY_BANK_EXPENSE_URL = 'bank-expenses';
+export const TREASURY_CHECK_MATCHING_URL = 'check-matching';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -310,6 +312,7 @@ export const ABS_ORGANIZATIONS_OFFICES_URL = '/' + [MAIN_PAGE_URL, ORGANIZATIONS
 // treasury
 export const ABS_TREASURY_AGENT_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_AGENT_URL].join('/');
 export const ABS_TREASURY_CHECKS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_CHECKS_URL].join('/');
+export const ABS_TREASURY_PROCESSED_CHECKS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_PROCESSED_CHECKS_URL].join('/');
 export const ABS_TREASURY_CHECK_BOOKS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_CHECK_BOOKS_URL].join('/');
 export const ABS_TREASURY_JOURNALS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_JOURNALS_URL].join('/');
 export const ABS_TREASURY_GROUPS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_GROUPS_URL].join('/');
@@ -318,6 +321,7 @@ export const ABS_TREASURY_REPORTS_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL,
 export const ABS_TREASURY_JOURNAL_TYPE_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_JOURNAL_TYPE_URL].join('/');
 export const ABS_TREASURY_TRANSACTION_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_TRANSACTION_URL].join('/');
 export const ABS_TREASURY_BANK_EXPENSES_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_BANK_EXPENSE_URL].join('/');
+export const ABS_TREASURY_CHECK_MATCHING_URL =  '/' + [MAIN_PAGE_URL, TREASURY_APP_URL, TREASURY_CHECK_MATCHING_URL].join('/');
 
 // stock
 export const ABS_STOCK_CLASSES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, LOOKUPS_URL, STOCK_CLASSES_URL].join('/');

@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import {LoginService} from '@ss/common/api-common';
@@ -38,5 +38,11 @@ export class InvoiceLinesDetailComponent extends BaseTransactionLinesDetailCompo
             lookupsSrv,
             'SALES_EDIT_INVOICE_LINES'
         );
+    }
+
+    override setupForm(b: TransactionLine): UntypedFormGroup {
+        const form = super.setupForm(b);
+        form.controls['qtyOrdered']?.disable();
+        return form;
     }
 }

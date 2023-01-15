@@ -1,0 +1,25 @@
+.table-container, .pagination-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 16px auto 0;
+}
+
+.table-container {
+    height: calc(100% - 96px);
+    overflow-x: auto;
+}
+
+.main-table {
+    width: 100%;
+    min-width: 600px;
+}
+
+.mat-column-number,
+.mat-column-checkDate,
+.mat-column-amount {
+    flex: 1 1 120px;
+}
+
+.mat-column-bankName {
+    flex: 2 1 200px;
+}
