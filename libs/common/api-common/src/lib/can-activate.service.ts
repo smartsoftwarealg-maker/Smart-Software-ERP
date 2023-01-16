@@ -12,9 +12,6 @@ import { UserRightsService } from './user-rights.service';
     providedIn: 'root'
 })
 export class CanActivateService implements CanActivate {
-
-    private requiredWork = () => of(null);
-
     constructor(public router: Router,
         protected httpSrv: HttpService,
         private loginSrv: LoginService,

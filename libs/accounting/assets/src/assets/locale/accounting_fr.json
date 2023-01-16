@@ -62,6 +62,7 @@
     "BALANCE":                  "Solde",
     "GL":                       "Grand livre général",
     "DEPRECIATION_RATE":  "Taux d'amortissement",
-    "USEFUL_LIFE":        "Vie utile"
+    "USEFUL_LIFE":        "Vie utile",
+    "File":                      "Exercise"
 }
 

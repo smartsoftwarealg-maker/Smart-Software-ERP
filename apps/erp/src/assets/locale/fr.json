@@ -46,5 +46,6 @@
     "MISSIONS":        "Missions",
     "SHOPPING-CART":   "Panier",
     "FOOD":            "Food",
-    "WORKFLOW":        "Flux de travail"
+    "WORKFLOW":        "Flux de travail",
+    "BUDGET-APP":          "Budget"
 }
