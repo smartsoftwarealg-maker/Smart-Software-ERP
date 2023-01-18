@@ -23,7 +23,6 @@ export class AppComponent {
             .pipe(switchMap(_ => this.langSrv.init()),
                   switchMap(_ => this.langSrv.addSources(langAssets)),
                   catchError(err => {
-                      console.error('eroorrrrrrrrrrrrrrrrr', err);
                       throw err;
                   }),
                   tap(_ => this.loaded = true))

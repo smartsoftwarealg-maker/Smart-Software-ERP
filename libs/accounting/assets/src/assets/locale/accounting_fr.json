@@ -63,6 +63,7 @@
     "GL":                       "Grand livre général",
     "DEPRECIATION_RATE":  "Taux d'amortissement",
     "USEFUL_LIFE":        "Vie utile",
-    "File":                      "Exercise"
+    "File":                      "Exercise",
+    "STOCK_ACCOUNTS":       "Comptes de stock"
 }
 

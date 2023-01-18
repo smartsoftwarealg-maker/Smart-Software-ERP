@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from '../cart.service';
 
@@ -11,7 +11,7 @@ import {CartService} from '../cart.service';
         '../shopping-cart/shopping-cart.component.scss',
         '../sales-confirmation/sales-confirmation.component.scss'],
 })
-export class SalesAcknowledgementComponent implements OnInit {
+export class SalesAcknowledgementComponent implements OnInit, OnDestroy {
     private router     = inject(Router);
     private route      = inject(ActivatedRoute);
 
@@ -22,6 +22,10 @@ export class SalesAcknowledgementComponent implements OnInit {
     ngOnInit(): void {}
 
     goShopping() {
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['../'], { relativeTo: this.route }).then(() => this.cartSrv.clearConfirmation());
+    }
+
+    ngOnDestroy() {
+        this.cartSrv.clearConfirmation();
     }
 }

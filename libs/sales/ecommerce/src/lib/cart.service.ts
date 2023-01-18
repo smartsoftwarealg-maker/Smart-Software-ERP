@@ -15,6 +15,7 @@ export class CartService extends BaseEntityService<Lookup> {
     confirmation: Confirmation = null;
 
     cart: AvailableArticle[] = [];
+    confirmed: AvailableArticle[] = [];
     cartCount = 0;
     cartAmount = 0;
 
@@ -65,8 +66,13 @@ export class CartService extends BaseEntityService<Lookup> {
     }
 
     clear() {
+        this.confirmed = this.cart;
         this.cart = [];
         this.updateCount();
         this.updateAmount();
+    }
+
+    clearConfirmation() {
+        this.confirmed = [];
     }
 }

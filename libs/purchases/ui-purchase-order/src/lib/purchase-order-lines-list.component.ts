@@ -6,6 +6,8 @@ import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/offer-lines.service';
+import {Subscription} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -13,7 +15,6 @@ import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/o
   styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-
     displayedColumns = [
         'position',
         'reference',

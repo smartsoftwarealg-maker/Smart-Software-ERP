@@ -63,5 +63,6 @@
     "GL":                       "General ledger",
     "DEPRECIATION_RATE":        "Depreciation rate",
     "USEFUL_LIFE":              "Useful life",
-    "FILE":                     "File"
+    "FILE":                     "File",
+    "STOCK_ACCOUNTS":       "Stock accounts"
 }

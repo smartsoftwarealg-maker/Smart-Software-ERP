@@ -1,4 +1,5 @@
 <ss-header-page  (refresh)="refresh($event)" (showCart)="showCart()"></ss-header-page >
+
 <div class="main-div">
     <div class="class__list">
         <mat-list role="mat-list">
@@ -10,6 +11,7 @@
             </mat-list-item>
         </mat-list>
     </div>
+
     <div class="ad__div">
         <div *ngIf="adsLoaded; else altImage">
             <div class="imj">

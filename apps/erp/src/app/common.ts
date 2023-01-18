@@ -14,6 +14,7 @@ export const COMMON_ACCOUNT_URL     = 'accounts';
 export const ASSET_ACCOUNT_URL      = 'asset-accounts';
 export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
 export const GENERATION_ACCOUNT_URL = 'generation-accounts';
+export const STOCK_ACCOUNT_URL      = 'stock-accounts';
 export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
 export const COMMON_MARKS_URL = 'marks';
 export const COMMON_REPORTS_URL = 'reports';
@@ -352,6 +353,7 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 export const ABS_STOCK_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORTS_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLE_URL].join('/');
+export const ABS_STOCK_STOCK_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ACCOUNT_URL].join('/');
 export const ABS_STOCK_GENERATION_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 
 // cspace

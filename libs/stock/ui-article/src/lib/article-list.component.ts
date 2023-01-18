@@ -20,8 +20,8 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'awp', 'markName', 'klassName', 'unit'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'price1', 'markName', 'klassName', 'unit'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
     displayedColumns = this.STOCK_COLS;
 
     private marks: Mark[] = [];

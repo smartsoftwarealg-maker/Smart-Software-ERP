@@ -51,7 +51,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         private postSrv: PostService,
         private motiveSrv: ContractMotiveService,
         private loginSrv: LoginService) {
-        super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CONTRACTS');
+        super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CONTRACTS');
     }
 
     protected override getRouteParam(): Observable<any> {

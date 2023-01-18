@@ -7,6 +7,7 @@ import {DasService} from '../das.service';
 import {Fund, LookupsService} from '@ss/common/api-lookup';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
+import {LoginService} from '@ss/common/api-common';
 
 interface Lookup {
     id: number;
@@ -37,7 +38,8 @@ export class DasComponent implements OnInit {
                 private formBuilder: UntypedFormBuilder,
                 private elementInfoSrv: ElementsInfoService,
                 private formulaSrv: PayrollFormulasService,
-                private fundSrv: LookupsService) {
+                private fundSrv: LookupsService,
+                private loginSrv: LoginService) {
 
     }
 
@@ -61,10 +63,10 @@ export class DasComponent implements OnInit {
         const value = this.form.value;
         this.shellSrv.setLoading(true);
         this.dasSrv
-            .generate(value.year, value.fund, value.modes, value.periods, value.ssBase, value.absence)
+            .generate(value.year, value.fund, value.modes, value.periods, value.ssBase, value.absence, '' + this.loginSrv.appCtx.center)
             .subscribe({
                 next: res => {
-                    this.edoText = res.data.join('\n');
+                    this.edoText = res.data.join('');
                     this.shellSrv.setLoading(false);
                 },
                 error: err => {

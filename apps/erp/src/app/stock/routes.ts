@@ -20,7 +20,12 @@ import {
     STOCK_ANOMALY_URL,
     STOCK_REPORTS_URL,
     DASHBOARD_URL,
-    STOCK_TRANSFER_URL, STOCK_TRANSFER_RECEPTION_URL, USER_STORES_URL, STOCK_ARTICLE_URL, GENERATION_ACCOUNT_URL
+    STOCK_TRANSFER_URL,
+    STOCK_TRANSFER_RECEPTION_URL,
+    USER_STORES_URL,
+    STOCK_ARTICLE_URL,
+    GENERATION_ACCOUNT_URL,
+    STOCK_ACCOUNT_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -44,7 +49,6 @@ import {
     AppArchiveDetailComponent
 } from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
-import { AgentPriceDetailComponent, AgentPriceListComponent } from '@ss/logistics/ui-agent-price';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
 import { InventoryEntryDetailComponent, InventoryEntryListComponent } from '@ss/stock/ui-inventory-entry';
 import { InventoryEntryLinesDetailComponent } from '@ss/stock/ui-inventory-entry-lines';
@@ -69,7 +73,7 @@ import {
 import {UserStoresComponent} from '@ss/stock/ui-store';
 import {
     GenerationAccountsDetailComponent,
-    GenerationAccountsListComponent
+    GenerationAccountsListComponent, TransacAccountsDetailComponent, TransacAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
 
 export const mainRoutes: Routes = [
@@ -116,6 +120,24 @@ export const mainRoutes: Routes = [
     },
     {
         path: GENERATION_ACCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransacAccountsListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: TransacAccountsDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: STOCK_ACCOUNT_URL,
         children: [
             {
                 path: LIST_URL,

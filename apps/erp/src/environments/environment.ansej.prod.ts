@@ -30,7 +30,7 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_URL, BUDGET_BUDGET_URL,
+    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';

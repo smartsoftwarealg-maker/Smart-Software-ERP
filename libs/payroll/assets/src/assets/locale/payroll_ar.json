@@ -134,7 +134,8 @@
     "CONTRACT_MOTIVES":   "دوافع العقد",
     "PAYROLL_MOTIVES":    "دوافع التوظيف",
     "LOOKUPS":           "جداول",
-    "PROF_CATEGORY":     "",
-    "CONTRACT_TYPE":     "",
-    "CATEGORY_SECTION":  ""
+    "PROF_CATEGORY":     "فئة",
+    "CONTRACT_TYPE":     "نوع العقد",
+    "CATEGORY_SECTION":  "الصنف/الفرع",
+    "EMPLOYEE":          "الموظف"
 }

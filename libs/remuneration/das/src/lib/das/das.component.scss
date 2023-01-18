@@ -1,16 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
-.container {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+mat-card {
+    width: 90%;
+    max-width: 1400px;
+    margin: 16px auto;
+    border-radius: 1.5em;
+    padding: 12px;
 }
 
 form {
@@ -19,11 +18,13 @@ form {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: space-between;
 }
 
 form mat-form-field {
     min-width: 150px;
 }
+
 .btn-group {
     align-self: center;
     display: flex;
@@ -35,8 +36,14 @@ button {
     padding: 0 8px;
 }
 
+.edo-text {
+    width: calc(100% - 16px);
+    height: calc(100% - 128px);
+    margin: 0 auto;
+}
+
 textarea {
+    padding: 8px;
     width: 100%;
     height: 100%;
-    overflow: scroll;
 }

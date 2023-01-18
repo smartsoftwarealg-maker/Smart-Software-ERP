@@ -1,19 +1,16 @@
 img {
-    align-self: center;
-    height: 64px;
+    height: 56px;
     width: auto;
-    margin-left: 8px;
-    margin-bottom: 8px;
+    margin: 4px;
 }
 h1 {
     font-family: Serif;
     font-weight: bolder;
-    font-size: 3em;
     color: navy;
 }
 .wrapper-div {
     position: fixed;
-    height: 96px;
+    height: 64px;
     width: 100%;
     top: 0;
     left: 0;
@@ -53,6 +50,9 @@ h1 {
     .search-div-mobile {
         display: flex;
         padding-right: 16px;
+    }
+    .wrapper-div {
+        height: 150px;
     }
 }
 
