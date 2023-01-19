@@ -17,7 +17,7 @@ import {
     ABS_STOCK_ARTICLES_URL,
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_DASHBOARD_URL,
-    ABS_STOCK_CLASSES_URL, ABS_ACC_GENERATION_ACCOUNT_URL, ABS_STOCK_GENERATION_ACCOUNT_URL
+    ABS_STOCK_CLASSES_URL, ABS_ACC_GENERATION_ACCOUNT_URL, ABS_STOCK_GENERATION_ACCOUNT_URL, ABS_STOCK_STOCK_ACCOUNT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -51,8 +51,14 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'Account'
         },
         {
-            name: 'ACC_GENERATION_ACCOUNTS',
+            name: 'ACC_STOCK_ACCOUNTS',
             icon: 'fa-solid fa-wind-turbine',
+            route: ABS_STOCK_STOCK_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
+        {
+            name: 'ACC_GENERATION_ACCOUNTS',
+            icon: 'fa-thin fa-wind-turbine',
             route: ABS_STOCK_GENERATION_ACCOUNT_URL,
             accessRights: 'Account'
         },

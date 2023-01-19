@@ -16,9 +16,9 @@ import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
-import {CanActivateService} from '../../../../libs/common/api-common/src';
-import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
+import {INDEX_PAGE_URL} from '@ss/common/api-common';
+import {CanActivateService} from '@ss/common/api-common';
+import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
@@ -37,11 +37,12 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_URL,
+    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
+import {budgetNavTree} from '../app/budget/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -64,6 +65,7 @@ export const navBar = [
     accountingNavTree,
     assetsNavTree,
     treasuryNavTree,
+    budgetNavTree,
     dashboardNavTree,
     scheduledSalesNavTree,
     workflowNavTree,
@@ -86,7 +88,8 @@ export const langAssets = [
     ['assets/locale/missions_', 'MISSION_'],
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/treasury_', 'TRS_'],
-    ['assets/locale/accounting_', 'ACC_']
+    ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/budget_', 'BUD_']
 ];
 
 export const appRoutes: Routes =  [
@@ -102,6 +105,10 @@ export const appRoutes: Routes =  [
     {
         path: ACCOUNTING_APP_URL,
         loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    },
+    {
+        path: BUDGET_BUDGET_URL,
+        loadChildren: () => import('../app/budget/budget.module').then(m => m.BudgetModule)
     },
     {
         path: TREASURY_APP_URL,
@@ -168,7 +175,7 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/food/food.module').then(m => m.FoodCartModule)
     },
     {
-        path: WORK_FLOW_URL,
+        path: WORK_FLOW_APP_URL,
         loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
     },
     {

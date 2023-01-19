@@ -1,9 +1,10 @@
-<div class="container">
+<mat-card>
     <form *ngIf="form" novalidate [formGroup]="form">
 
         <mat-form-field class="year">
             <mat-label translate>PAYROLL_YEAR</mat-label>
-            <input matInput formControlName="year" type="number" [min]="curYear" [max]="curYear" step="1" required>
+            <input matInput formControlName="year" type="number" [min]="curYear - 3" [max]="curYear + 1" step="1"
+                   required>
             <mat-error *ngIf="form.controls['year'].hasError('required')" translate>COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
@@ -71,12 +72,14 @@
             </button>
         </div>
     </form>
-    <div class="edo-text">
+</mat-card>
+
+<div class="edo-text">
         <textarea cols="100"
-                  rows="30"
+                  rows="40"
                   class="text-area"
                   readonly
-                  [value]="edoText"></textarea>
-    </div>
-<!--            <pre>{{form?.value | json}}</pre>-->
+                  [value]="edoText">
+        </textarea>
 </div>
+<!--            <pre>{{form?.value | json}}</pre>-->

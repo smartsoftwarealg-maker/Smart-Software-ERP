@@ -16,7 +16,6 @@ import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/
     templateUrl: './inventory-entry-lines-list.component.html'
 })
 export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {
-    private subscription: Subscription = null;
     private isHandset: Observable<BreakpointState> = null;
     private readonly LONG = [
         'position',

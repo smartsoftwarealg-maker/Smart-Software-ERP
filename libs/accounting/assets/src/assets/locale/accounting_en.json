@@ -61,6 +61,8 @@
     "TOTAL_CREDIT":             "Total credit",
     "BALANCE":                  "Balance",
     "GL":                       "General ledger",
-    "DEPRECIATION_RATE": "Depreciation rate",
-    "USEFUL_LIFE":       "Useful life"
+    "DEPRECIATION_RATE":        "Depreciation rate",
+    "USEFUL_LIFE":              "Useful life",
+    "FILE":                     "File",
+    "STOCK_ACCOUNTS":       "Stock accounts"
 }

@@ -21,6 +21,8 @@
     flex-wrap: wrap;
     gap: 2em;
     justify-content: space-between;
+    max-width: 1000px;
+    margin: 8px auto 0;
 }
 
 fieldset {
@@ -40,4 +42,15 @@ fieldset {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+@media (width <= 600px) {
+    .cart_main_div {
+        margin-top: 150px;
+        flex-direction: column;
+        align-content: center;
+    }
+    .item_div {
+        justify-content: center;
+    }
 }

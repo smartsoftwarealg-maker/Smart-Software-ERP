@@ -14,6 +14,7 @@ export const COMMON_ACCOUNT_URL     = 'accounts';
 export const ASSET_ACCOUNT_URL      = 'asset-accounts';
 export const TRANSAC_ACCOUNT_URL    = 'transac-accounts';
 export const GENERATION_ACCOUNT_URL = 'generation-accounts';
+export const STOCK_ACCOUNT_URL      = 'stock-accounts';
 export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
 export const COMMON_MARKS_URL = 'marks';
 export const COMMON_REPORTS_URL = 'reports';
@@ -39,7 +40,8 @@ export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
 export const SHOPPING_CART_APP_URL = 'scart';
 export const FOOD_CART_APP_URL = 'food';
-export const WORK_FLOW_URL = 'workflow';
+export const WORK_FLOW_APP_URL = 'workflow';
+export const BUDGET_APP_URL = 'budget';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -116,6 +118,9 @@ export const STOCK_UNITS_URL = 'units';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
+
+// Budget
+export const BUDGET_BUDGET_URL = 'budgets'
 
 // common
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
@@ -348,6 +353,7 @@ export const ABS_STOCK_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STO
 export const ABS_STOCK_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_STOCK_REPORTS_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_REPORTS_URL].join('/');
 export const ABS_STOCK_ARTICLES_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ARTICLE_URL].join('/');
+export const ABS_STOCK_STOCK_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_ACCOUNT_URL].join('/');
 export const ABS_STOCK_GENERATION_ACCOUNT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, GENERATION_ACCOUNT_URL].join('/');
 
 // cspace
@@ -375,6 +381,9 @@ export const ABS_ACC_REPORTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, COM
 export const ABS_GENERATION_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_GENERATION_URL].join('/');
 export const ABS_REOPEN_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_REOPEN_URL].join('/');
 export const ABS_BALANCE_QUERIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_BALANCE_QUERIES_URL].join('/');
+
+//Budget
+export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');
 
 
 //Logistics

@@ -21,7 +21,7 @@ const shoppingRoutes: Routes = [
     {path: '', component: MainPageComponent, pathMatch: 'full'},
     {path: 'cart', component: ShoppingCartComponent, canActivate: [ShoppingGuard]},
     {path: 'main-page', component: MainPageComponent},
-    {path: 'sales-acknowledgement', component: SalesAcknowledgementComponent, canActivate: [ShoppingGuard]},
+    {path: 'sales-acknowledgement', component: SalesAcknowledgementComponent},
     {path: 'sales-confirmation', component: SalesConfirmationComponent, canActivate: [ShoppingGuard]},
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

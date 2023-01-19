@@ -13,7 +13,6 @@ export class ArticleService extends BaseEntityExtendedService<Article> {
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARTICLES_URL);
-        // this.setParentId(0);
     }
 
     getPPrice(ref: string, storeId: number, transacId: number, id: number): Observable<QtyPrice> {

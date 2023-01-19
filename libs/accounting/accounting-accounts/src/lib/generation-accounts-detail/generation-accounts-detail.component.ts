@@ -42,7 +42,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
             route,
             formBuilder,
             confirmationSrv,
-            'ACC_GENERATION_ACCOUNTS');
+            'ACC_STOCK_ACCOUNTS');
     }
 
 

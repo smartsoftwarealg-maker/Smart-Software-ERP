@@ -61,6 +61,8 @@
     "TOTAL_CREDIT":             "إجمالي المدين",
     "BALANCE":                  "الرصيد",
     "GL":                       "دفتر الأستاذ العام",
-    "DEPRECIATION_RATE": "معدل الاستهلاك",
-    "USEFUL_LIFE":       "العمر الإنتاجي"
+    "DEPRECIATION_RATE":        "معدل الاستهلاك",
+    "USEFUL_LIFE":              "العمر الإنتاجي",
+    "FILE":                     "الدفتر",
+    "STOCK_ACCOUNTS":       "حسابات المخزون"
 }

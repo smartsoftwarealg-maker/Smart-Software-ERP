@@ -60,7 +60,7 @@ export class SalesConfirmationComponent implements OnInit {
                         this.snackBar.showSuccessMessage();
                     }
                     this.cartSrv.clear();
-                    this.router.navigate(['../sales-acknowledgement'], {relativeTo: this.route});
+                    this.router.navigate(['../sales-acknowledgement'], {relativeTo: this.route}).then();
                 },
                 error: err => {
                     this.confirming = false;

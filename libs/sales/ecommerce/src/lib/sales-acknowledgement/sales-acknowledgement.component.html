@@ -21,7 +21,7 @@
 </div>
 <div class="cart_main_div">
     <div class="item_div">
-        <mat-card *ngFor="let a of cartSrv.cart">
+        <mat-card *ngFor="let a of cartSrv.confirmed">
             <div class="img-div">
                 <ss-image-input width="100%" height="100%"
                                 [imageModel]="a.imageModel">
