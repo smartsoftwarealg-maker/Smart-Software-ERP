@@ -13,7 +13,7 @@
         </ss-auto-complete>
     </mat-form-field>
 
-    <div class="payments">
+    <mat-card class="payments">
         <div mat-subheader class="b-primary" translate> {{ 'COMMON_PAYMENTS' }} </div>
         <mat-tree [dataSource]="dataSource"
                   [treeControl]="treeControl"
@@ -49,10 +49,10 @@
                 {{ node.description }}: {{ node.paidAmount | number: '1.2-2' }} / {{ node.amount | number: '1.2-2'}}
             </mat-tree-node>
         </mat-tree>
-    </div>
+    </mat-card>
 
-    <div class="debts">
-        <div mat-subheader class="b-primary" translate> {{ 'COMMON_AGENT_DEBTS' }} </div>
+    <mat-card class="debts">
+        <div mat-subheader class="b-primary" translate> {{ 'LOGISTICS_AGENT_DEBTS' }} </div>
         <mat-list role="list"
                   draggable="true"
                   (dragover)="onOver($event)"
@@ -68,7 +68,7 @@
                 {{ d?.document }}: {{ d?.balance | number: '1.2-2' }}
             </mat-list-item>
         </mat-list>
-    </div>
+    </mat-card>
     <div class="cancel">
         <button mat-raised-button
                 color="accent"

@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 @Component({
     selector: 'ss-transfer-reception-lines-list',
     templateUrl: './transfer-reception-lines-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class TransferReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
 
@@ -33,9 +33,5 @@ export class TransferReceptionLinesListComponent  extends BaseTransactionLinesLi
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
-    }
-
-    ngOnInit() {
-        super.onInit();
     }
 }

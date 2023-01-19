@@ -39,7 +39,6 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Transact
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         private dialog: MatDialog,
-        private importSrv: InventoryImportService,
         public inventoryService: InventoryService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,

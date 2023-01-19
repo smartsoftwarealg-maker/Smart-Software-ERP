@@ -34,9 +34,4 @@ export class ConsumptionLinesListComponent  extends BaseTransactionLinesListComp
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
-
 }

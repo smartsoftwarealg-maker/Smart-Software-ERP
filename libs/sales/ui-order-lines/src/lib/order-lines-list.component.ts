@@ -42,8 +42,4 @@ export class OrderLinesListComponent extends BaseTransactionLinesListComponent i
             storeNamesSrv,
             confirmationSrv);
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
 }
