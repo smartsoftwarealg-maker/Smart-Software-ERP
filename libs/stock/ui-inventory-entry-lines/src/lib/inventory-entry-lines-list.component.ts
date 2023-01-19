@@ -9,6 +9,7 @@ import {Article, ArticleService} from '@ss/stock/api-article';
 import {LotsService, Store} from '@ss/common/api-lookup';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/api-transaction';
+import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
@@ -16,8 +17,7 @@ import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/
     templateUrl: './inventory-entry-lines-list.component.html'
 })
 export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {
-    private isHandset: Observable<BreakpointState> = null;
-    private readonly LONG = [
+    displayedColumns = [
         'position',
         'store',
         'reference',
@@ -25,37 +25,17 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
         'qtySatisfied',
         'price',
     ];
-    private readonly SHORT = [
-        'position',
-        'description',
-        'qtySatisfied',
-        'price',
-    ];
-    displayedColumns = this.LONG;
 
 
     constructor(
         public override detailSrv: InventoryEntryLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
-        public override  route: ActivatedRoute,
+        public override route: ActivatedRoute,
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService,
-        private breakPointObs: BreakpointObserver) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
-        this.isHandset = this.breakPointObs.observe(['(max-width: 800px)']);
-    }
-
-    ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
-
-    ngOnInit() {
-        super.onInit();
-        this.isHandset.subscribe(state => this.displayedColumns = state.matches ? this.SHORT : this.LONG);
     }
 }

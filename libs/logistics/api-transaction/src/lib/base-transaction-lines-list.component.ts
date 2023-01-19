@@ -9,10 +9,10 @@ import {LINES_DETAIL_URL, LoginService, PaginationModel} from '@ss/common/api-co
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import {OnDestroy} from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 
-
-export class BaseTransactionLinesListComponent {
+@Directive()
+export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     protected subscription: Subscription = null;
     searchText = new FormControl('');
     parentId: number;
@@ -35,7 +35,7 @@ export class BaseTransactionLinesListComponent {
         this.pagination.onChange = () => this.loadDetailLines().subscribe(x => this.shellSrv.setLoading(false));
     }
 
-    onInit() {
+    ngOnInit() {
         this.route
             .params
             .pipe(map(p => +p['id']),
@@ -111,6 +111,10 @@ export class BaseTransactionLinesListComponent {
     }
 
     unsubscribe(): void {
+        this.subscription?.unsubscribe();
+    }
+
+    ngOnDestroy() {
         this.subscription?.unsubscribe();
     }
 }

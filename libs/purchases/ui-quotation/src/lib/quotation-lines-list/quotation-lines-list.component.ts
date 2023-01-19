@@ -44,10 +44,6 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
               confirmationSrv);
     }
 
-    ngOnInit() {
-        super.onInit();
-    }
-
     @Input()
     set id(parentId: number) {
         this.detailSrv.setParentId(parentId || 0);

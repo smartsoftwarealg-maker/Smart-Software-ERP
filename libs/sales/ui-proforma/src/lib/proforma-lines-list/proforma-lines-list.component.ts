@@ -46,8 +46,4 @@ export class ProformaLinesListComponent extends BaseTransactionLinesListComponen
             storeNamesSrv,
             confirmationSrv);
     }
-
-    ngOnInit() {
-        super.onInit();
-    }
 }

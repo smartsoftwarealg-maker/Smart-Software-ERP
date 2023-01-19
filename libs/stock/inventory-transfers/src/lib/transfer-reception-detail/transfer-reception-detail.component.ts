@@ -21,6 +21,10 @@ import {
 } from '../transfer-reception-lines-list/transfer-reception-lines-list.component';
 import {TransferReceptionService} from '../transfer-reception.service';
 import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
+import {
+    InventoryTransferLinesListComponent
+} from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
+import {TransferService} from '../transfer.service';
 
 @Component({
     selector: 'ss-transfer-reception-detail',
@@ -28,9 +32,9 @@ import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.s
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    @ViewChild(TransferReceptionLinesListComponent) detail: TransferReceptionLinesListComponent;
+    @ViewChild(InventoryTransferLinesListComponent) detail: InventoryTransferLinesListComponent;
 
-    private delivery: Transaction = null;
+    private transfer: Transaction = null;
     public isManager = false;
     public groups: CCGroup[];
 
@@ -40,7 +44,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
     constructor(
         private langSrv: LanguageService,
         private loginSrv: LoginService,
-        public deliveryService: TransferReceptionService,
+        public transferService: TransferReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -50,7 +54,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
         public lookupsSrv: LookupsService,
         private branchService: BranchService,
         private loginService: LoginService) {
-        super(deliveryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SALES_EDIT_DELIVERY');
+        super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_TRANSFER_RECEPTIONS');
     }
 
     override preload(): Observable<any> {
@@ -59,7 +63,6 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
     }
 
     override setupForm(b: Transaction) {
-        // Make sure to update the template if you edit the configuration here
         if (!b.id) {
             b.id = 0;
             b.number = 0;
@@ -67,7 +70,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
             b.dealer = b.userID;
             b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
         }
-        this.delivery = b;
+        this.transfer = b;
         this.isManager = this.loginService.appCtx.manager;
         return this.formBuilder.group({
             id: [b.id],
@@ -90,7 +93,7 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
 
     override readForm(): Transaction {
         const form =  super.readForm();
-        fillObject(this.delivery, form)
+        fillObject(this.transfer, form)
         return form;
     }
 }
