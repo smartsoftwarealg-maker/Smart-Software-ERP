@@ -317,6 +317,9 @@
             "@ss/purchases/ui-reception": [
                 "libs/purchases/ui-reception/src/index.ts"
             ],
+            "@ss/remuneration/archive-viewer": [
+                "libs/remuneration/archive-viewer/src/index.ts"
+            ],
             "@ss/remuneration/assets": [
                 "libs/remuneration/assets/src/index.ts"
             ],

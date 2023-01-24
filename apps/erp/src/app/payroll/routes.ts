@@ -5,7 +5,7 @@ import {
     HR_INACTIVE_EMPLOYEES_URL,
     LOOKUPS_URL,
     PAY_AMENDMENT_URL,
-    PAY_ARCHIVE_GENERATOR,
+    PAY_ARCHIVE_GENERATOR, PAY_ARCHIVE_VIEWER_URL,
     PAY_CACO_URL,
     PAY_DAS_URL,
     PAY_EDO_URL,
@@ -89,6 +89,7 @@ import {
 import {PayrollMonthGuard} from '@ss/payroll-common';
 import {DashboardComponent} from '@ss/dashboard';
 import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {ArchiveViewerListComponent} from '../../../../../libs/remuneration/archive-viewer/src';
 
 export const mainRoutes: Routes = [
     {
@@ -108,6 +109,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_DAS_URL,
         component: DasComponent,
+        canActivate: [CanActivateService, PayrollMonthGuard]
+    },
+    {
+        path: PAY_ARCHIVE_VIEWER_URL,
+        component: ArchiveViewerListComponent,
         canActivate: [CanActivateService, PayrollMonthGuard]
     },
     {

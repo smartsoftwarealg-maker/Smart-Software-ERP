@@ -3,7 +3,6 @@
     "ID": "ID",
     "FULLNAME": "Ad Soyad",
     "BIRTHINFO": "Dogum bilgisi",
-    "ADDRESS": "Adres",
     "WILAYA": "Wilaya",
     "NATIONALITY": "Milliyet",
     "MILITARY_SERVICE": "Askeri servis",
@@ -24,7 +23,6 @@
     "PID": "ID",
     "EMAIL": "E-posta adresi",
     "PHONE": "Telefon",
-    "MOBILE": "Cep Telefonu",
     "SS_NUMBER": "Sosyal Güvenlik numarasi",
     "RETIREMENT_DATE": "Emeklilik tarihi",
     "ARABIC_INFO": "Arapça bilgi",
@@ -71,7 +69,6 @@
     "SALARY_RANK": "Adım",
     "EMPLOYEE_CONTRACTS": "Çalışan sözleşmeleri",
     "CONFIRMED":"Onaylanmış",
-    "COST_CENTER":"Ödeme merkezi",
     "NOTES":"Notlar",
     "BASE_SALARY":"Asgari ücret",
     "REC_NUMBER":"Kayıt numarası",
@@ -119,5 +116,10 @@
     "APPLICATION_DATE":   "",
     "APPLICATION_PERIOD": "",
     "CONTRACT_MOTIVES":   "",
-    "PAYROLL_MOTIVES":   ""
+    "PAYROLL_MOTIVES":   "",
+    "MUTUAL_NUMBER":     "",
+    "SEX":               "",
+    "CHILD_COUNT":       "",
+    "SUSPENSION_DATE":   "",
+    "PERMANENT_DATE":    ""
 }

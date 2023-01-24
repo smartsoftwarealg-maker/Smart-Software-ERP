@@ -252,5 +252,9 @@
     "JOURNALS":                 "الدفاتر",
     "AGENTS":                   "العملاء",
     "AGENT":                    "الزبون",
-    "EDIT_AGENT": "تعديل العميل"
+    "EDIT_AGENT": "تعديل العميل",
+    "COST_CENTER":"مركز التكلفة",
+    "ADDRESS": "العنوان",
+    "MOBILE": "النقال",
+    "COMPACT":                    "مدمج"
 }

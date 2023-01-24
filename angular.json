@@ -228,6 +228,32 @@
         "purchases-ui-purchase-request": "libs/purchases/ui-purchase-request",
         "purchases-ui-quotation": "libs/purchases/ui-quotation",
         "purchases-ui-reception": "libs/purchases/ui-reception",
+        "remuneration-archive-viewer": {
+            "projectType": "library",
+            "root": "libs/remuneration/archive-viewer",
+            "sourceRoot": "libs/remuneration/archive-viewer/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/remuneration/archive-viewer"],
+                    "options": {
+                        "jestConfig": "libs/remuneration/archive-viewer/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/remuneration/archive-viewer/**/*.ts",
+                            "libs/remuneration/archive-viewer/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "remuneration-assets": "libs/remuneration/assets",
         "remuneration-caco": "libs/remuneration/caco",
         "remuneration-das": "libs/remuneration/das",

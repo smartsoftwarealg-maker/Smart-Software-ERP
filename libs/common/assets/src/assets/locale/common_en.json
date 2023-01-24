@@ -252,5 +252,9 @@
     "CHECKNO":                  "Check number",
     "JOURNALS":                 "Journals",
     "AGENTS":                  "Partners",
-    "EDIT_AGENT": "Edit agent"
+    "EDIT_AGENT": "Edit agent",
+    "COST_CENTER":"Cost center",
+    "ADDRESS": "Address",
+    "MOBILE": "Mobile",
+    "COMPACT":                    "Compact"
 }

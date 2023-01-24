@@ -213,6 +213,7 @@ export const PAY_LOANS_URL            = 'loans';
 export const PAY_FIXED_ELEMENTS_URL   = 'fixedelements';
 export const PAY_EDO_URL              = 'edo';
 export const PAY_DAS_URL              = 'das';
+export const PAY_ARCHIVE_VIEWER_URL   = 'archive-viewer';
 export const PAY_CACO_URL             = 'caco';
 
 // Assets
@@ -470,6 +471,7 @@ export const ABS_AMENDMENT_URL       = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_LOANS_URL].join('/');
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
 export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
+export const ABS_ARCHIVE_VIEWER_URL  = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ARCHIVE_VIEWER_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
 export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
 export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DASHBOARD_URL].join('/');
