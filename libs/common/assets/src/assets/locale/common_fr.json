@@ -256,5 +256,9 @@
     "JOURNALS":             "Journaux",
     "AGENTS":               "Agents",
     "AGENT":                "Tier",
-    "EDIT_AGENT": "Modifier l'agent"
+    "EDIT_AGENT": "Modifier l'agent",
+    "COST_CENTER":"Centre de coûts",
+    "ADDRESS": "Adresse",
+    "MOBILE": "Mobile",
+    "COMPACT":                    "Compact"
 }
