@@ -149,5 +149,7 @@
     "WIFE_FATHER_AR":    "الأب الزوج (باللغة العربية)" ,
     "WIFE_MOTHER_AR":    "زوجة الأم (بالعربية)" ,
     "WIFE_AR":           "الزوج (باللغة العربية)" ,
-    "POST_AR":           "Post (Ar)"
+    "POST_AR":           "Post (Ar)",
+    "PERSONAL_INFO":     "معلومات شخصية",
+    "ARCHIVE_VIEWER":    "استعراض الأرشيف"
 }

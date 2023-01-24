@@ -148,5 +148,7 @@
     "WIFE_FATHER_AR":    "Père époux (Ar)",
     "WIFE_MOTHER_AR":    "Mère époux (Ar)",
     "WIFE_AR":           "Conjoint (Ar)",
-    "POST_AR":           "Poste (Ar)"
+    "POST_AR":           "Poste (Ar)",
+    "PERSONAL_INFO":     "Informations personnelles",
+    "ARCHIVE_VIEWER":    "Visualisation archives"
 }
