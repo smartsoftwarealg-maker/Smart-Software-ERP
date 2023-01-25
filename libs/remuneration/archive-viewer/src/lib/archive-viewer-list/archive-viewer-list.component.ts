@@ -8,7 +8,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {PAYArchive} from '../archive-viewer-api';
 import {ArchiveViewerService} from '../archive-viewer.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {zip} from 'rxjs';
+import {debounceTime, distinctUntilChanged, zip} from 'rxjs';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
 import {FormControl} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -67,26 +67,17 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
         'wifeMotherAr',
         'postAr',
         'paymonth',
-         'v1',
-        'v2',
-        'v3',
-        'v4',
-        'v5',
-        'v6',
-        'v7',
-        'v8',
-        'v9',
     ];
 
     private FIXED_INFO = [
         'id',
         'lastname',
-        'firstname',
-        'post'];
+        'firstname'];
 
     minTableWidth = 1000;
 
-    _formulaHeaders = ['???', '???', '???', '???', '???', '???', '???', '???', '???', '???', ];
+    _formulaVariables: string[] = [];
+    _formulaHeaders:   string[] = [];
     _formulas: Formula[] = [];
     _info: string[][] = [
         ['post', 'PAYROLL_POST'],
@@ -134,11 +125,12 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     _minYear = 0;
     _maxYear = 0;
 
-    fromYear  = new FormControl<number>(0);
-    fromMonth = new FormControl<number>(0);
-    toYear    = new FormControl<number>(0);
-    toMonth   = new FormControl<number>(0);
-    compact   = new FormControl<boolean>(false);
+    fromYear      = new FormControl<number>(0);
+    fromMonth     = new FormControl<number>(0);
+    toYear        = new FormControl<number>(0);
+    toMonth       = new FormControl<number>(0);
+    compact       = new FormControl<boolean>(false);
+    formulaFilter = new FormControl<string>('');
 
     displayedColumns = this.FIXED_INFO;
 
@@ -161,7 +153,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'REMUN_ARCHIVE_VIEWER');
+            'PAYROLL_ARCHIVE_VIEWER');
     }
 
     override ngOnInit() {
@@ -176,35 +168,80 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 this._minYear = +(res[0].month / 100).toFixed(0);
                 this._maxYear = +(res[1].month / 100).toFixed(0);
 
-                this._formulas = res[2].body;
+                this._formulas = res[2].body
+                    .filter(f => f.description !== null && f.description != undefined)
+                    .sort((a, b) => a.description.localeCompare(b.description));
 
                 this.fromYear.setValue(this._maxYear);
                 this.fromMonth.setValue(res[1].month % 100);
 
                 this.toYear.setValue(this._maxYear);
                 this.toMonth.setValue(res[1].month % 100);
-            })
+            });
+
+        this.subscriptions.push(
+            this.formulaFilter
+                .valueChanges
+                .pipe(debounceTime(300), distinctUntilChanged())
+                .subscribe(str => this.refreshFormulas()));
+    }
+
+    private refreshFormulas() {
+        this.formulas
+            .getList(0, 500, this.formulaFilter.value)
+            .subscribe(res => this._formulas = res.body);
     }
 
     refreshList(personalSel: SelectionModel<MatListOption>, formulaSel: SelectionModel<MatListOption>) {
         const from = this.fromYear.value * 100 + this.fromMonth.value;
         const to = this.toYear.value * 100 + this.toMonth.value;
-        formulaSel.selected.forEach((e: any, i) => this._formulaHeaders[i] = e.value?.description);
+        if (this.compact.value) {
+            const periods = this.periodInterval();
+            const formulas = formulaSel.selected.map((e: any, i) => e.value?.description);
+            this._formulaHeaders = [];
+            this._formulaVariables = [];
+            periods.forEach(((p, ip) => {
+                formulas.forEach((f, fi) => {
+                    this._formulaVariables.push('v' + (1 + this._formulaVariables.length));
+                    this._formulaHeaders.push(p + '-' + f)
+                })
+            }));
+        } else {
+            this._formulaHeaders = formulaSel.selected.map((e: any, i) => e.value?.description);
+            this._formulaVariables = formulaSel.selected.map((e: any, i) => 'v' + (i + 1)).slice(0, 9);
+        }
         const formulas = formulaSel.selected.map((e: any) => e.value.variable).join(',');
-        const values = formulaSel.selected.map((e: any, i) => 'v' + (i + 1)).slice(0, 9);
-        const personalInfo = personalSel.selected.map((e: any) => e.value).join(',');
+        const personalInfo = this.FIXED_INFO.concat(personalSel.selected.map((e: any) => e.value)).join(',');
         this.entitySrv
-            .refreshList(from, to, formulas, this.compact.value, this.pagination.page - 1, this.pagination.pageSize)
+            .refreshList(from,
+                to,
+                formulas,
+                personalInfo,
+                this.compact.value,
+                this.pagination.page - 1,
+                this.pagination.pageSize)
             .subscribe(res => {
-                this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
-                this.displayedColumns = this.INFO_COLUMNS
-                    .filter(e => this.FIXED_INFO.indexOf(e) >= 0 ||
-                                 personalInfo.indexOf(e) >= 0 ||
-                                 values.indexOf(e) >= 0);
+                this.displayedColumns = this.INFO_COLUMNS.filter(e => personalInfo.indexOf(e) >= 0);
+                this.displayedColumns = this.displayedColumns.concat(this._formulaVariables);
+                this.data = res.body;
             });
-         this.minTableWidth = 400 + 100 * (formulaSel.selected.length + values.length + personalSel.selected.length);
+         this.minTableWidth = 400 + 100 * (formulaSel.selected.length + this._formulaVariables.length + personalSel.selected.length);
         // console.log(this.minTableWidth);
     }
 
+    private periodInterval(): number[] {
+        const periods: number[] = [];
+
+        let from = this.fromYear.value * 100 + this.fromMonth.value;
+        while (from <= this.toYear.value * 100 + this.toMonth.value) {
+            periods.push(from);
+            from++;
+            if (from % 100 > 12) {
+                from = +(from / 100).toFixed(0) + 101;
+            }
+        }
+
+        return periods;
+    }
 }

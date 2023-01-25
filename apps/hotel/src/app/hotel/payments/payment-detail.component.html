@@ -40,6 +40,7 @@
         <mat-form-field class="sm-100 default-50">
             <mat-label translate>COMMON_BANK</mat-label>
             <mat-select formControlName="bankId">
+                <mat-option [value]="null"> </mat-option>
                 <mat-option *ngFor="let c of paySrv.banks" [value]="c.id">{{ c.description }}</mat-option>
             </mat-select>
         </mat-form-field>

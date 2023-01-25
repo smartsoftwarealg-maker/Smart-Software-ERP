@@ -53,6 +53,7 @@
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_DIVISION</mat-label>
             <mat-select formControlName="division">
+                <mat-option [value]="null"> </mat-option>
                 <mat-option *ngFor="let v of divisions" [value]="v.id">
                     {{v.description}}
                 </mat-option>

@@ -149,5 +149,7 @@
     "WIFE_FATHER_AR":    "Spouse father (Ar)",
     "WIFE_MOTHER_AR":    "Spouse mother (Ar)",
     "WIFE_AR":           "Spouse (Ar)",
-    "POST_AR":           "Post (Ar)"
+    "POST_AR":           "Post (Ar)",
+    "PERSONAL_INFO":     "Personal information",
+    "ARCHIVE_VIEWER":    "Archive viewer"
 }

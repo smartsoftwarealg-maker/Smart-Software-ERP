@@ -9,6 +9,7 @@
     <mat-form-field floatLabel="always" class="default-50 sm-100">
         <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
         <mat-select formControlName="employmentType">
+            <mat-option [value]="null"> </mat-option>
             <mat-option *ngFor="let v of employmentTypes" [value]="v.id">
                 {{v.description}}
             </mat-option>
@@ -31,11 +32,11 @@
     <mat-form-field floatLabel="always" class="default-50 sm-100">
         <mat-label translate>PAYROLL_SUSPENSION_REASON</mat-label>
         <mat-select formControlName="suspensionReason" [required]="form.value['suspended']">
+            <mat-option [value]="null"> </mat-option>
             <mat-option *ngFor="let v of suspensionReasons" [value]="v.id">
                 {{v.description}}
             </mat-option>
         </mat-select>
     </mat-form-field>
-
 
 </form>
