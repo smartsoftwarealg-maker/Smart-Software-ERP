@@ -48,6 +48,10 @@
             <ng-template mat-tab-label>
                 {{ 'REMUN_FORMULAS' | translate}}
             </ng-template>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="formulaFilter" type="text" >
+            </mat-form-field>
             <mat-selection-list #formulas>
                 <mat-list-option *ngFor="let f of _formulas" [value]="f">
                     {{f.description }}

@@ -8,7 +8,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {PAYArchive} from '../archive-viewer-api';
 import {ArchiveViewerService} from '../archive-viewer.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {zip} from 'rxjs';
+import {debounceTime, distinctUntilChanged, zip} from 'rxjs';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
 import {FormControl} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -72,8 +72,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     private FIXED_INFO = [
         'id',
         'lastname',
-        'firstname',
-        'post'];
+        'firstname'];
 
     minTableWidth = 1000;
 
@@ -126,11 +125,12 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     _minYear = 0;
     _maxYear = 0;
 
-    fromYear  = new FormControl<number>(0);
-    fromMonth = new FormControl<number>(0);
-    toYear    = new FormControl<number>(0);
-    toMonth   = new FormControl<number>(0);
-    compact   = new FormControl<boolean>(false);
+    fromYear      = new FormControl<number>(0);
+    fromMonth     = new FormControl<number>(0);
+    toYear        = new FormControl<number>(0);
+    toMonth       = new FormControl<number>(0);
+    compact       = new FormControl<boolean>(false);
+    formulaFilter = new FormControl<string>('');
 
     displayedColumns = this.FIXED_INFO;
 
@@ -168,7 +168,9 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 this._minYear = +(res[0].month / 100).toFixed(0);
                 this._maxYear = +(res[1].month / 100).toFixed(0);
 
-                this._formulas = res[2].body;
+                this._formulas = res[2].body
+                    .filter(f => f.description !== null && f.description != undefined)
+                    .sort((a, b) => a.description.localeCompare(b.description));
 
                 this.fromYear.setValue(this._maxYear);
                 this.fromMonth.setValue(res[1].month % 100);
@@ -176,6 +178,18 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
                 this.toYear.setValue(this._maxYear);
                 this.toMonth.setValue(res[1].month % 100);
             });
+
+        this.subscriptions.push(
+            this.formulaFilter
+                .valueChanges
+                .pipe(debounceTime(300), distinctUntilChanged())
+                .subscribe(str => this.refreshFormulas()));
+    }
+
+    private refreshFormulas() {
+        this.formulas
+            .getList(0, 500, this.formulaFilter.value)
+            .subscribe(res => this._formulas = res.body);
     }
 
     refreshList(personalSel: SelectionModel<MatListOption>, formulaSel: SelectionModel<MatListOption>) {
@@ -197,13 +211,18 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
             this._formulaVariables = formulaSel.selected.map((e: any, i) => 'v' + (i + 1)).slice(0, 9);
         }
         const formulas = formulaSel.selected.map((e: any) => e.value.variable).join(',');
-        const personalInfo = personalSel.selected.map((e: any) => e.value).join(',');
+        const personalInfo = this.FIXED_INFO.concat(personalSel.selected.map((e: any) => e.value)).join(',');
         this.entitySrv
-            .refreshList(from, to, formulas, this.compact.value, this.pagination.page - 1, this.pagination.pageSize)
+            .refreshList(from,
+                to,
+                formulas,
+                personalInfo,
+                this.compact.value,
+                this.pagination.page - 1,
+                this.pagination.pageSize)
             .subscribe(res => {
                 this.pagination.elementCount = res.itemCount;
-                this.displayedColumns = this.INFO_COLUMNS
-                    .filter(e => this.FIXED_INFO.indexOf(e) >= 0 || personalInfo.indexOf(e) >= 0);
+                this.displayedColumns = this.INFO_COLUMNS.filter(e => personalInfo.indexOf(e) >= 0);
                 this.displayedColumns = this.displayedColumns.concat(this._formulaVariables);
                 this.data = res.body;
             });

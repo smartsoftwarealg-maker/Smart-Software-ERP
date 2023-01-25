@@ -12,6 +12,7 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
     private _from     = 0;
     private _to       = 0;
     private _formulas = '___';
+    private _columns  = 'id,lastname,firstname';
     private _compact  = false;
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARCHIVE_VIEWER_URL);
@@ -43,15 +44,23 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
         this._from = t;
     }
 
-    refreshList(from: number, to: number, formulas: string, compact: boolean, offset: number, limit: number): Observable<{ itemCount: number; body: PAYArchive[] }> {
+    refreshList(from: number,
+                to: number,
+                formulas: string,
+                columns: string,
+                compact: boolean,
+                offset: number,
+                limit: number): Observable<{ itemCount: number; body: PAYArchive[] }> {
         this._from     = from;
         this._to       = to;
         this._formulas = formulas;
+        this._columns  = columns;
         this._compact  = compact;
         const params = new HttpParams()
             .set('from', from)
             .set('formula', formulas)
             .set('compact', this._compact)
+            .set('columns', this._columns)
             .set('to', to);
 
         return super.getList(offset, limit, null, null, params)
@@ -65,4 +74,14 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
             }));
     }
 
+    override excel(filter?: string): Observable<Blob> {
+        const params = new HttpParams()
+            .set('from', this._from)
+            .set('formula', this._formulas)
+            .set('compact', this._compact)
+            .set('to', this._to)
+            .set('filter', filter|| '')
+            .set('columns', this._columns);
+        return super.excelWithParams(params);
+    }
 }

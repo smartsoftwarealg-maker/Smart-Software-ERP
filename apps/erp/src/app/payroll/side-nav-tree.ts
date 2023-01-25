@@ -134,7 +134,7 @@ export const payrollNavTree: SideNavNode = {
             route: ABS_DAS_URL
         },
         {
-            name: 'REMUN_ARCHIVE_VIEWER',
+            name: 'PAYROLL_ARCHIVE_VIEWER',
             icon: 'fa-sharp fa-solid fa-box-archive',
             route: ABS_ARCHIVE_VIEWER_URL
         },
