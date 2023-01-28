@@ -48,6 +48,7 @@ import { DepreciationRateDetailComponent } from './depreciation-rate-detail/depr
 import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.component';
 import { AssetsTransferComponent } from './assets-transfer/assets-transfer.component';
 import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
+import { InventoryImportComponent } from './inventory-import/inventory-import.component';
 
 @NgModule({
     imports: [
@@ -102,6 +103,7 @@ import { AssetAppointmentListComponent } from './asset-appointment-list/asset-ap
         DuplicateDialogComponent,
         AssetsTransferComponent,
         AssetAppointmentListComponent,
+        InventoryImportComponent,
     ],
 })
 export class AssetsComponentModule {}

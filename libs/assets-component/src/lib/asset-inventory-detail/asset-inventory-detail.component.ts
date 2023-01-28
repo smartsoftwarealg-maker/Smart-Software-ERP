@@ -1,11 +1,11 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetInventory} from '../assets-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService, OfficeService} from '@ss/common/api-lookup';
+import {FurnitureStatusService, LookupsService, OfficeService} from '@ss/common/api-lookup';
 import {AssetInventoryService} from '../asset-inventory.service';
 import {LoginService} from '@ss/common/api-common';
 import {AccPoliciesService, ACCPolicy} from '@ss/accounting/accounting-api';
@@ -14,6 +14,8 @@ import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AssetLookupModel} from '../asset-lookup-model';
 import {AssetsService} from '../assets.service';
+import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-asset-inventory',
@@ -25,6 +27,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
 
     officeLookup      = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel  = new AssetLookupModel(this.assetSrv);
+    statusLookup      = new DefaultAutoCompleteModel(this.statusSrv);
 
     constructor(
         public override entitySrv: AssetInventoryService,
@@ -37,7 +40,8 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         private loginSrv: LoginService,
         private officeSrv: OfficeService,
         private policySrv: AccPoliciesService,
-        private assetSrv: AssetsService) {
+        private assetSrv: AssetsService,
+        private statusSrv: FurnitureStatusService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'INVENTORY');
     }
 
@@ -48,6 +52,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
             centerId:   [this.loginSrv.appCtx.center],
             office:     [b.office, Validators.required],
             investId:   [b.investId],
+            status:      [b.status],
             inventYear: [b.inventYear | this.accPolicy?.inventoryYear, Validators.required],
             date:       [b.date || new Date(), Validators.required],
             inventMemo: [b.inventMemo],

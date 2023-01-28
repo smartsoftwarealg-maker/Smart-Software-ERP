@@ -224,6 +224,7 @@ export interface AssetInventory {
     userId?: number;
     officeDescription?: string;
     assetDescription?: string;
+    statusDescription?: string;
 }
 
 export interface AssetBuilding {
