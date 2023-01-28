@@ -256,5 +256,6 @@
     "COST_CENTER":"Cost center",
     "ADDRESS": "Address",
     "MOBILE": "Mobile",
-    "COMPACT":                    "Compact"
+    "COMPACT":                    "Compact",
+    "INVOICE_NUMBER":             "Invoice number"
 }

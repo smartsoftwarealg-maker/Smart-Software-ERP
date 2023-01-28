@@ -26,7 +26,6 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
         'vat',
     ];
 
-
     constructor(
         public override detailSrv: TransactionLinesService,
         public override shellSrv: ShellService,

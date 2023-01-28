@@ -16,7 +16,9 @@
     min-width: 300px;
     border-radius: 1.5em;
 }
+
 .table-div {
+    min-height: 250px;
     width: 96%;
     max-width: 1200px;
     margin: 8px auto;
@@ -29,6 +31,7 @@
     width: 100%;
     min-width: 1200px;
 }
+
 .date-ctrl {
     flex: 1 1 400px;
     margin: 0 auto;

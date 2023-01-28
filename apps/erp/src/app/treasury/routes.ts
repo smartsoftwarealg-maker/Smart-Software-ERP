@@ -27,6 +27,8 @@ import {
     BankExpenseDetailComponent,
     BankExpenseListComponent,
     TransactionDetailComponent,
+    TransactionLineDetailComponent,
+    TransactionLineListComponent,
     TransactionListComponent
 } from '@ss/treasury/ui-transactions';
 import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from '@ss/common/ui-lookup';
@@ -147,7 +149,15 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: TransactionDetailComponent,
                 canActivate: [CanActivateService],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'lines', pathMatch: 'full' },
+                    { path: 'lines',
+                      children: [
+                          { path: '', component: TransactionLineListComponent, pathMatch: 'full'},
+                          { path: ':id', component: TransactionLineDetailComponent }
+                      ] },
+                ]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]

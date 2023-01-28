@@ -1,0 +1,34 @@
+.content__div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 8px auto 0;
+}
+
+.main-table {
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+.mat-column-invoiceNo {
+    padding-left: 4px;
+    flex: 1 1 90px;
+}
+
+.mat-column-invoiceDate {
+    flex: 1 1 90px;
+    justify-content: center;
+    border-left: ghostwhite solid 1px;
+}
+
+.mat-column-amount {
+    flex: 1 1 90px;
+    justify-content: end;
+    border-left: ghostwhite solid 1px;
+    padding-right: 4px;
+}
+
+.mat-column-description {
+    flex: 2 1 150px;
+    border-left: ghostwhite solid 1px;
+    padding-left: 4px;
+}
