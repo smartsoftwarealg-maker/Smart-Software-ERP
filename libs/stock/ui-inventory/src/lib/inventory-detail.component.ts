@@ -52,11 +52,13 @@ export class InventoryDetailComponent extends BaseEntityDetailComponent<Transact
 
     ngOnInit() {
         super.ngOnInit();
+        this.importBtn.visible = this.id > 0;
         this.shellSrv.addButton(this.importBtn);
     }
 
     public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
+        this.importBtn.visible = b.id > 0;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
