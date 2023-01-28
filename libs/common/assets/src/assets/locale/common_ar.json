@@ -256,5 +256,6 @@
     "COST_CENTER":"مركز التكلفة",
     "ADDRESS": "العنوان",
     "MOBILE": "النقال",
-    "COMPACT":                    "مدمج"
+    "COMPACT":                    "مدمج",
+    "INVOICE_NUMBER":             "رقم الفاتورة"
 }

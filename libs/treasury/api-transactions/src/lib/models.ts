@@ -1,6 +1,7 @@
 
 export const PERIOD_URL = '/treasury/periods';
 export const TRANSACTIONS_URL = '/treasury/transactions';
+export const DETAIL_URL = '/detail';
 
 
 export interface TTransaction {
@@ -28,11 +29,10 @@ export interface TTransactionLine {
     id: number,
     transacId: number,
     invoiceNo?: string,
-    supplier?: string,
     description?: string,
     amount: number,
     vat: number,
-    invoiceDate: string
+    invoiceDate?: Date
 }
 
 export interface Summary{journal: string, period: number, balance: number, rTotal: number}

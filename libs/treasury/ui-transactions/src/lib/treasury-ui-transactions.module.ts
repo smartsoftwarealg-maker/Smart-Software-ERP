@@ -15,6 +15,8 @@ import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { BankExpenseListComponent } from './bank-expense-list/bank-expense-list.component';
 import { BankExpenseDetailComponent } from './bank-expense-detail/bank-expense-detail.component';
+import { TransactionLineListComponent } from './transaction-line-list/transaction-line-list.component';
+import { TransactionLineDetailComponent } from './transaction-line-detail/transaction-line-detail.component';
 
 @NgModule({
     imports: [
@@ -36,6 +38,8 @@ import { BankExpenseDetailComponent } from './bank-expense-detail/bank-expense-d
         TransactionDetailComponent,
         BankExpenseListComponent,
         BankExpenseDetailComponent,
+        TransactionLineListComponent,
+        TransactionLineDetailComponent,
     ],
 })
 export class TreasuryUiTransactionsModule {}

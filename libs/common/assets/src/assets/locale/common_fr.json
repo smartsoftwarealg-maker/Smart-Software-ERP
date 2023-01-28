@@ -260,5 +260,6 @@
     "COST_CENTER":"Centre de coûts",
     "ADDRESS": "Adresse",
     "MOBILE": "Mobile",
-    "COMPACT":                    "Compact"
+    "COMPACT":                    "Compact",
+    "INVOICE_NUMBER":             "Numéro de facture"
 }

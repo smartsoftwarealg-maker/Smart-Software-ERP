@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityExtendedService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import {TTransaction, TTransactionLine, TRANSACTIONS_URL, PERIOD_URL, Summary} from './models';
+import {TTransaction, TTransactionLine, TRANSACTIONS_URL, PERIOD_URL, Summary, DETAIL_URL} from './models';
 import {HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Journal} from '@ss/treasury/api-journal';
@@ -31,7 +31,8 @@ export class TreasuryBankExpenseService extends BaseTreasuryTransactionService {
 })
 export class TransactionLineService extends BaseEntityExtendedService<TTransactionLine> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, TRANSACTIONS_URL);
+        super(httpSrv, DETAIL_URL, TRANSACTIONS_URL);
+        this.setParentId(0);
     }
 }
 

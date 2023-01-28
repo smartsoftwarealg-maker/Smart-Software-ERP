@@ -2,14 +2,16 @@ import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Event, NavigationEnd, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {TreasuryGroupService} from '@ss/common/api-lookup';
-import {LoginService} from '@ss/common/api-common';
+import {AppContext, LoginInfo, LoginService} from '@ss/common/api-common';
 import {MatRadioChange} from '@angular/material/radio';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import {filter, map, switchMap} from 'rxjs/operators';
+import {of, zip} from 'rxjs';
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -38,6 +40,16 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
         if (!this.entitySrv.journalId) {
             this.router.navigate(['/app/treasury/transactions'])
         }
+        this.subscriptions.push(
+        this.router
+            .events
+            .pipe(filter(event => event instanceof NavigationEnd))
+            .subscribe(event => {
+                if (event instanceof NavigationEnd) {
+                    this.saveButton.visible = event.url.indexOf('/lines/') < 0;
+                }
+            }));
+
         super.ngOnInit();
     }
 
