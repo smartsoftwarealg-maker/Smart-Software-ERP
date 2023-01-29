@@ -7,8 +7,8 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { LookupsService, Bank, Lookup } from '@ss/common/api-lookup';
-import { switchMap, tap } from 'rxjs/operators';
+import { LookupsService, Bank } from '@ss/common/api-lookup';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-journal-detail',
@@ -18,8 +18,8 @@ import { switchMap, tap } from 'rxjs/operators';
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
     banks: Bank[];
     journalTypes = [
-        {id: 1, description: 'BANK'},
-        {id: 2, description: 'CASH'},
+        {id: 1, description: 'CASH'},
+        {id: 2, description: 'BANK'},
     ];
 
     constructor(

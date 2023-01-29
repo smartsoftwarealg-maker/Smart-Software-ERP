@@ -42,10 +42,17 @@
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef translate>COMMON_AMOUNT</mat-header-cell>
+    <ng-container matColumnDef="income">
+        <mat-header-cell *matHeaderCellDef translate>TRS_INCOME</mat-header-cell>
         <mat-cell *matCellDef="let e">
-            {{ e.amount | number: '1.2-2' }}
+            {{ e.amount > 0? e.amount : 0 | number: '1.2-2' }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expenses">
+        <mat-header-cell *matHeaderCellDef translate>TRS_EXPENSE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.amount > 0? 0 : -e.amount| number: '1.2-2' }}
         </mat-cell>
     </ng-container>
 

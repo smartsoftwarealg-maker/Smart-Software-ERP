@@ -27,19 +27,37 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50" *ngIf="entitySrv.isBank()">
-                <mat-label translate>COMMON_CHECKNO</mat-label>
-                <input matInput formControlName="reference" type="text" required>
-                <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
+            <div class="default-50" *ngIf="entitySrv.isBank()">
+                <mat-checkbox formControlName="bankExpenses" translate >TRS_BANK_EXPENSES</mat-checkbox>?
+            </div>
             <mat-form-field class="default-50"  *ngIf="entitySrv.isBank()">
                 <mat-label translate>COMMON_BANK</mat-label>
                 <input matInput formControlName="reference2" type="text" required>
                 <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <div class="default-50"></div>
+            <mat-form-field class="default-50" *ngIf="entitySrv.isBank()">
+                <mat-label translate>COMMON_CHECKNO</mat-label>
+                <input matInput formControlName="reference" type="text" required>
+                <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>TRS_NATURE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="groupLookup"
+                                  formControlName="treasuryGroup"
+                                  autofocus>
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['treasuryGroup']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>TRS_PIECENO</mat-label>
+                <input matInput formControlName="pieceno" type="number" required>
+            </mat-form-field>
+            <div class="default-50" *ngIf="!entitySrv.isBank()"> </div>
+
             <mat-form-field class="default-50 a-number">
                 <mat-label translate>TRS_INCOME</mat-label>
                 <input matInput formControlName="income"
@@ -57,24 +75,6 @@
                        required>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>TRS_PIECENO</mat-label>
-                <input matInput formControlName="pieceno" type="number" required>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>TRS_NATURE</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="groupLookup"
-                                  formControlName="treasuryGroup"
-                                  autofocus>
-                </ss-auto-complete>
-                <mat-error *ngIf="form.controls['treasuryGroup']?.invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
-            <div class="default-50" *ngIf="entitySrv.isBank()">
-                <mat-checkbox formControlName="bankExpenses" translate >TRS_BANK_EXPENSES</mat-checkbox>?
-            </div>
 
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_MEMO</mat-label>

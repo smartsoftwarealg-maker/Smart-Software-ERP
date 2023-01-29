@@ -20,7 +20,8 @@
     border-left: ghostwhite solid 1px;
 }
 
-.mat-column-amount {
+.mat-column-income,
+.mat-column-expenses {
     flex: 1 1 90px;
     justify-content: end;
     border-left: ghostwhite solid 1px;
