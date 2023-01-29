@@ -31,5 +31,6 @@
     "MISSING_REQUIRED_PARAMS":            "Certains paramètres obligatoires sont manquants.",
     "SOURCE_SAME_DESTINATION":            "La source et la destination sont les mêmes",
     "MESSAGE_ALREADY_SENT":               "Ce message est déjà envoyé",
-    "HIGHER_LEVEL_EXISTS":                "Ce document est à un niveau supérieur"
+    "HIGHER_LEVEL_EXISTS":                "Ce document est à un niveau supérieur",
+    "INVALID_AMOUNT":                     "Montant invalide"
 }

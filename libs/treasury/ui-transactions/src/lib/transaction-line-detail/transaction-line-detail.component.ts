@@ -47,6 +47,8 @@ export class TransactionLineDetailComponent implements OnInit {
                     invoiceDate: [line.invoiceDate || new Date()],
                     description: [line.description, Validators.required],
                     amount:      [line.amount || 0, Validators.required],
+                    income:      [{ value: line.amount > 0? line.amount : 0, disabled: line.amount < 0 }],
+                    expense:     [{ value: line.amount > 0? 0 : -line.amount, disabled: line.amount > 0 }],
                     vat:         [line.vat || 0, Validators.required],
                 })
             });
@@ -58,8 +60,10 @@ export class TransactionLineDetailComponent implements OnInit {
     }
 
     save() {
+        const value = this.form.getRawValue();
+        value.amount = (value.income ||0) - (value.expense || 0);
         this.entitySrv
-            .save(this.form.getRawValue())
+            .save(value)
             .subscribe({
                 next: res => {
                     this.snackBarSrv.showSuccessMessage();
@@ -69,6 +73,20 @@ export class TransactionLineDetailComponent implements OnInit {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 }
-            })
+            });
+    }
+
+    onAmount() {
+        const income = +this.form.value['income'] || 0;
+        const expense = +this.form.value['expense'] || 0;
+        this.form.controls['income'].enable({ onlySelf: true });
+        this.form.controls['expense'].enable({ onlySelf: true });
+        if (income - expense > 0.0) {
+            this.form.controls['income'].enable({ onlySelf: true });
+            this.form.controls['expense'].disable({ onlySelf: true });
+        } else if (income - expense < 0) {
+            this.form.controls['expense'].enable({ onlySelf: true });
+            this.form.controls['income'].disable({ onlySelf: true });
+        }
     }
 }

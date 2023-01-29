@@ -30,5 +30,6 @@
     "MISSING_REQUIRED_PARAMS":              "",
     "SOURCE_SAME_DESTINATION":              "",
     "MESSAGE_ALREADY_SENT":                 "",
-    "HIGHER_LEVEL_EXISTS":                  ""
+    "HIGHER_LEVEL_EXISTS":                  "",
+    "INVALID_AMOUNT":               ""
 }

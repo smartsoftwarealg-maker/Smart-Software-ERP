@@ -1,6 +1,6 @@
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Summary, TTransaction} from '@ss/treasury/api-transactions';
-import {Journal} from '@ss/treasury/api-journal';
+import {BANK_JOURNAL, Journal} from '@ss/treasury/api-journal';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
@@ -10,8 +10,6 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
     private _journal: Journal = null;
     private _bankExpenses = false;
     private _date: Date = new Date();
-
-    public readonly BANK = 1;
 
     constructor(protected override httpSrv: HttpService, protected url_: string) {
         super(httpSrv, url_);
@@ -63,6 +61,6 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
     }
 
     isBank() {
-        return this._journal?.jType === this.BANK;
+        return this._journal?.jType === BANK_JOURNAL;
     }
 }

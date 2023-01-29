@@ -23,7 +23,8 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
     displayedColumns = [
         'invoiceNo',
         'description',
-        'amount',
+        'income',
+        'expenses',
         // 'vat',
         'invoiceDate'
     ];

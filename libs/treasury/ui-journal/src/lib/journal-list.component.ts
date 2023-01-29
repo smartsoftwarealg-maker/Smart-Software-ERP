@@ -35,6 +35,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
         public httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(journalSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_JOURNALS');
+        this.pagination.pageSize = 15;
     }
 
 //    public processLoadedData(data: Journal[]): Observable<Journal[]> {
