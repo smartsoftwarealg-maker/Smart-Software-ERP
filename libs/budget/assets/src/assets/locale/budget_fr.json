@@ -1,2 +1,7 @@
 {
+    "INCOME":        "Revenu",
+    "EXPENSE":       "Frais",
+    "ADD_ACCOUNT":   "Ajouter un compte",
+    "BUDGETS":       "Budget",
+    "BUDGET_GROUPS": "Groupes budgétaires"
 }

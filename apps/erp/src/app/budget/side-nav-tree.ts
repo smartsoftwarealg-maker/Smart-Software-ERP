@@ -1,5 +1,5 @@
 import {SideNavNode} from '@ss/common/api-common';
-import {ABS_BUDGET_BUDGET_URL} from '../common';
+import {ABS_BUDGET_BUDGET_URL, ABS_BUDGET_GROUP_URL} from '../common';
 
 export const budgetNavTree: SideNavNode = {
     name: 'BUDGET-APP',
@@ -10,6 +10,12 @@ export const budgetNavTree: SideNavNode = {
             name: 'BUD_BUDGETS',
             icon: 'fa-solid fa-laptop-file',
             route: ABS_BUDGET_BUDGET_URL,
+            accessRights: 'Budget'
+        },
+        {
+            name: 'BUD_BUDGET_GROUPS',
+            icon: 'fa-solid fa-laptop-file',
+            route: ABS_BUDGET_GROUP_URL,
             accessRights: 'Budget'
         },
     ]

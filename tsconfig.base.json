@@ -80,6 +80,9 @@
             "@ss/assets-component": ["libs/assets-component/src/index.ts"],
             "@ss/budget/assets": ["libs/budget/assets/src/index.ts"],
             "@ss/budget/budget": ["libs/budget/budget/src/index.ts"],
+            "@ss/budget/budget-groups": [
+                "libs/budget/budget-groups/src/index.ts"
+            ],
             "@ss/common/api-access-rights": [
                 "libs/common/api-access-rights/src/index.ts"
             ],

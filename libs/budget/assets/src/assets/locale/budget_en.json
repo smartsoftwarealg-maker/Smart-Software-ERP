@@ -1,2 +1,7 @@
 {
+    "INCOME":        "Income",
+    "EXPENSE":       "Expense",
+    "ADD_ACCOUNT":   "Add account",
+    "BUDGETS":       "Budgets",
+    "BUDGET_GROUPS": "Budget groups"
 }

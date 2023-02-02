@@ -1,2 +1,7 @@
 {
+    "INCOME":        "دخل",
+    "EXPENSE":       "مصروف",
+    "ADD_ACCOUNT":   "إنشاء حساب",
+    "BUDGETS":       "الميزانيات",
+    "BUDGET_GROUPS": "مجموعات الميزانية"
 }
