@@ -76,6 +76,32 @@
             },
             "tags": []
         },
+        "budget-budget-groups": {
+            "projectType": "library",
+            "root": "libs/budget/budget-groups",
+            "sourceRoot": "libs/budget/budget-groups/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/budget/budget-groups"],
+                    "options": {
+                        "jestConfig": "libs/budget/budget-groups/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/budget/budget-groups/**/*.ts",
+                            "libs/budget/budget-groups/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "business-logic-msgs-assets": "libs/business-logic-msgs/assets",
         "cespace": "apps/cespace",
         "common-api-access-rights": "libs/common/api-access-rights",
