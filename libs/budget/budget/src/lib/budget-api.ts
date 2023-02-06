@@ -4,4 +4,5 @@ export interface Budget {
     id: number;
     description: string;
     status?: number;
+    year: number
 }

@@ -1,0 +1,14 @@
+mat-card {
+    width: 98%;
+    margin: 8px auto;
+    padding: 8px;
+    height: calc(100% - 72px);
+    border-radius: 1.5em;
+}
+
+.ctrl-div {
+    width: 98%;
+    margin: 8px auto 0;
+    display: flex;
+    justify-content: space-between;
+}

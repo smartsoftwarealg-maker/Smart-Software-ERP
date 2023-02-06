@@ -120,8 +120,11 @@ export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
 
 // Budget
-export const BUDGET_BUDGET_URL = 'budgets'
-export const BUDGET_GROUP_URL  = 'budget-groups';
+export const BUDGET_BUDGET_URL   = 'budgets'
+export const BUDGET_GROUP_URL    = 'budget-groups';
+export const BUDGET_PLANNING_URL = 'budget-planning';
+export const BUDGET_SELECTOR_URL = 'budget-selector';
+
 // common
 export const ABS_COMMON_REPORTS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_ASSETS_REPORTS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_REPORTS_URL].join('/');
@@ -386,6 +389,7 @@ export const ABS_BALANCE_QUERIES_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL,
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');
 export const ABS_BUDGET_GROUP_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_GROUP_URL].join('/');
+export const ABS_BUDGET_PLANNING_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_PLANNING_URL].join('/');
 
 
 //Logistics

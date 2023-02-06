@@ -46,7 +46,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
             route,
             formBuilder,
             confirmationSrv,
-            'ACC_TRANSACTIONS');
+            'COMMON_TRANSACTIONS');
     }
 
     override ngOnInit() {

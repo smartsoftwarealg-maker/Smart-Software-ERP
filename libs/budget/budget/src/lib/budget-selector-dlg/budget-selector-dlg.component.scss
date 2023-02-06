@@ -1,0 +1,20 @@
+mat-card {
+    border-radius: 1.4em;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+}
+
+.content_div {
+    width: 90%;
+    max-width: 500px;
+    margin: 8px auto;
+}
+
+.button__div {
+    display: flex;
+    justify-content: end;
+}
+
+button i {
+    margin-right: 16px;
+}

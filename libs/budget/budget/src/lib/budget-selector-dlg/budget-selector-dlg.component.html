@@ -1,0 +1,22 @@
+<mat-card class="content_div">
+    <mat-list>
+        <mat-list-item *ngFor="let b of data"
+                       [class.selected]="b.id === selectedBudget?.id"
+                       (click)="select(b)"
+                       class="selectable" >
+            {{ b.description }}
+        </mat-list-item>
+    </mat-list>
+</mat-card>
+<div class="content_div button__div" >
+    <button mat-raised-button color="primary"
+            type="button"
+            (click)="selectBudget()"
+            [disabled]="!selectedBudget">
+        <i class="fa-solid fa-check"></i>
+        {{ 'BUD_SELECT_BUDGET' | translate }}
+    </button>
+</div>
+
+
+

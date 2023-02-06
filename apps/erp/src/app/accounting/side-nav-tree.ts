@@ -81,7 +81,7 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'Cashflow'
         },
         {
-            name: 'ACC_TRANSACTIONS',
+            name: 'COMMON_TRANSACTIONS',
             icon: 'fas fa-calculator',
             route: ABS_ACC_TRANSACTIONS_URL,
             accessRights: 'ACCTransaction'
