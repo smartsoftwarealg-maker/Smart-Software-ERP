@@ -54,7 +54,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         private detailSrv: AccTransactionLineService,
         private loginSrv: LoginService,
         private accPolicySrv: AccPoliciesService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ACC_TRANSACTIONS');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_TRANSACTIONS');
         entitySrv.setParentId(0);
         this.pagination.onChange = () => this.refreshTransactions();
     }

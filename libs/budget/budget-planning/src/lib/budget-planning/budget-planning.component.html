@@ -1,0 +1,88 @@
+<div class="content_div button_div">
+    <mat-radio-group>
+        <mat-radio-button value="1" (change)="onChange($event)" translate>BUD_INCOME
+        </mat-radio-button>
+        <mat-radio-button class="right-radio-button" value="2" (change)="onChange($event)" translate>BUD_EXPENSE</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-radio-group>
+        <mat-radio-button  value="1" (change)="onMode($event)"  translate>COMMON_AMOUNT</mat-radio-button>
+        <mat-radio-button class="right-radio-button" value="2" (change)="onMode($event)" translate>COMMON_QTY</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class="table_div">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 content_div">
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef>
+                <span [style.paddingLeft.px]="10" translate>ADMINISTRATION_CODE</span>
+            </th>
+            <td mat-cell *matCellDef="let data"
+                class="selectable"
+                style="min-width: 200px"
+                (click)="select(data)"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId">
+                <button mat-icon-button
+                        [style.visibility]="!data.expandable ? 'hidden' : ''"
+                        [style.marginLeft.px]="data.level * 20"
+                        (click)="treeControl.toggle(data)">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                        {{treeControl.isExpanded(data) ? '-' : '+'}}
+                    </mat-icon>
+                </button>
+
+                {{data.code}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef translate> ADMINISTRATION_DESCRIPTION</th>
+            <td mat-cell *matCellDef="let data"
+                (click)="select(data)"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId"
+                style="min-width: 150px"
+                class="selectable">
+                {{data.description}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reqAmount">
+            <th mat-header-cell *matHeaderCellDef translate> BUD_REQUESTED_AMOUNT</th>
+            <td mat-cell *matCellDef="let data"
+                class="number"
+                style="min-width: 120px"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId">
+                {{data.reqAmount | number: '1.2-2'}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef translate> BUD_ALLOCATED_AMOUNT</th>
+            <td mat-cell *matCellDef="let data" class="number"
+                style="min-width: 120px"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId">
+                {{data.amount | number: '1.2-2'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reqQty">
+            <th mat-header-cell *matHeaderCellDef translate> BUD_REQUESTED_QTY</th>
+            <td mat-cell *matCellDef="let data"
+                class="number"
+                style="min-width: 90px"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId">
+                {{data.reqQty }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acceptQty">
+            <th mat-header-cell *matHeaderCellDef translate> BUD_ALLOCATED_QTY</th>
+            <td mat-cell *matCellDef="let data" class="number"
+                style="min-width: 120px"
+                [class.selected]="data?.groupId === selectedPlanning?.groupId">
+                {{data.acceptQty}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+

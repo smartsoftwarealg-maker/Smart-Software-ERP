@@ -3,5 +3,11 @@
     "EXPENSE":       "Frais",
     "ADD_ACCOUNT":   "Ajouter un compte",
     "BUDGETS":       "Budget",
-    "BUDGET_GROUPS": "Groupes budgétaires"
+    "BUDGET_GROUPS": "Groupes budgétaires",
+    "REQUESTED_AMOUNT": "Quantité exigée",
+    "SELECT_BUDGET":    "Sélectionner budget",
+    "BUDGET_PLANNING":  "Planification budgétaire",
+    "ALLOCATED_AMOUNT": "Montant alloué",
+    "REQUESTED_QTY":    "Quantité demandée",
+    "ALLOCATED_QTY":    "Quantité allouée"
 }

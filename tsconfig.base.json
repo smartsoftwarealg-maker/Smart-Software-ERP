@@ -83,6 +83,9 @@
             "@ss/budget/budget-groups": [
                 "libs/budget/budget-groups/src/index.ts"
             ],
+            "@ss/budget/budget-planning": [
+                "libs/budget/budget-planning/src/index.ts"
+            ],
             "@ss/common/api-access-rights": [
                 "libs/common/api-access-rights/src/index.ts"
             ],
