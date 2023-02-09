@@ -89,6 +89,7 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.shellSrv.setTitle('BUD_BUDGET_GROUPS');
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.addButton(this.editButton);
         this.shellSrv.addButton(this.addButton);

@@ -257,5 +257,6 @@
     "ADDRESS": "العنوان",
     "MOBILE": "النقال",
     "COMPACT":                    "مدمج",
-    "INVOICE_NUMBER":             "رقم الفاتورة"
+    "INVOICE_NUMBER":             "رقم الفاتورة",
+    "BUDGET":                     "الميوانية"
 }

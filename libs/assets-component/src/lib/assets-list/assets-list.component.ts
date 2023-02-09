@@ -40,6 +40,8 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         'officeDescription',
         'beneficiary',
         'serial_no',
+        'receptionNumber',
+        'appointmentNumber',
         'depreciationRate',
         'useful_life',
         'residualValue',

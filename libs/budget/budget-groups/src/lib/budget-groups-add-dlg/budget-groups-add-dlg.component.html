@@ -13,6 +13,9 @@
             <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
+        <div id="disabled" class="default-100 sm-100">
+            <mat-checkbox formControlName="disabled" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+        </div>
     </form>
 </mat-card>
 

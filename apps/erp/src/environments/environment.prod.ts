@@ -16,8 +16,7 @@ import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {INDEX_PAGE_URL} from '@ss/common/api-common';
-import {CanActivateService} from '@ss/common/api-common';
+import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
 import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
     ACCOUNTING_APP_URL,
@@ -37,7 +36,7 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL,
+    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, BUDGET_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -107,7 +106,7 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
     },
     {
-        path: BUDGET_BUDGET_URL,
+        path: BUDGET_APP_URL,
         loadChildren: () => import('../app/budget/budget.module').then(m => m.BudgetModule)
     },
     {

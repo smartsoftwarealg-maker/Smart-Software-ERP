@@ -18,3 +18,15 @@ mat-card {
 button i {
     margin-right: 16px;
 }
+
+mat-card-title {
+    width: 100%;
+    border-bottom: ghostwhite solid 2px;
+    padding: 8px 0;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin: 8px auto;
+}

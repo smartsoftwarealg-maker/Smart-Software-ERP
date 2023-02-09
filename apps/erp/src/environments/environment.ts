@@ -42,7 +42,7 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_BUDGET_URL, BUDGET_APP_URL
+    BUDGET_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';

@@ -24,12 +24,22 @@
         </mat-form-field>
 
         <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_CLOSING_AMOUNT</mat-label>
+            <input matInput formControlName="closingAmount" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_COMPLEMENT</mat-label>
+            <input matInput formControlName="complement" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
             <mat-label translate>BUD_REQUESTED_QTY</mat-label>
             <input matInput formControlName="reqQty" type="number" [min]="0">
         </mat-form-field>
 
         <mat-form-field class="default-50" required>
-            <mat-label translate>BUD_ACCEPTED_QTY</mat-label>
+            <mat-label translate>BUD_ALLOCATED_QTY</mat-label>
             <input matInput formControlName="acceptQty" type="number" [min]="0">
         </mat-form-field>
 

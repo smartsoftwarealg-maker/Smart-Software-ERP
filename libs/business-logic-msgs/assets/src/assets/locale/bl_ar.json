@@ -33,5 +33,7 @@
     "SOURCE_SAME_DESTINATION":      "المصدر والوجهة متماثلان",
     "MESSAGE_ALREADY_SENT":         "تم إرسال هذه الرسالة بالفعل",
     "HIGHER_LEVEL_EXISTS":          "هذه الوثيقة في مستوى أعلى",
-    "INVALID_AMOUNT":               "مبلغ غير صحيح"
+    "INVALID_AMOUNT":               "مبلغ غير صحيح",
+    "ACCESS_DENIED":                "الوصول مرفوض لهذه الصفحة",
+    "BLOCKED_GROUP":                "مجموعة الميزانية هذه محظورة."
 }

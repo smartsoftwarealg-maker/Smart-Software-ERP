@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.27');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.28');
         this.httpSrv
             .init()
             .pipe(
@@ -62,11 +62,11 @@ export class AppComponent implements OnInit {
                             .pipe(map(res => `${res[0]['description'] || ''}: ${res[1].ctx['accPeriod'] || '' }  / ${res[1].ctx['accYear'] || '' } `));
                     }
                     if (event.url?.indexOf('/app') >= 0) {
-                            return this.httpSrv
-                                .get<any>('/ccenter')
-                                .pipe(map(res => res['description'] || ''));
-                        }
+                        return this.httpSrv
+                            .get<any>('/ccenter')
+                            .pipe(map(res => res['description'] || ''));
                     }
+                }
                 return of('');
             }))
             .subscribe(str => this.shellSrv.setLabels([{ title: str }]));

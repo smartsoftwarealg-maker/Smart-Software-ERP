@@ -79,5 +79,6 @@
     "FINAL":                "Final?",
     "USER_MESSAGES":        "Messages utilisateur",
     "USER_DOCUMENTS":      "Documents utilisateur",
-    "WORKFLOW_INBOX":      "Boîte de réception"
+    "WORKFLOW_INBOX":      "Boîte de réception",
+    "SEVERE":              "Révoquer tous les droits d'accès lorsqu'ils ne sont pas spécifiés"
 }

@@ -443,15 +443,6 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: LOOKUPS_URL,
-        loadChildren: () => import('./stock-lookups.module').then(m => m.StockLookupsModule)
-    },
-    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-];
-
-export const lookupRoutes: Routes = [
-    {
         path: STOCK_STORE_NAMES_URL,
         children: [
             {
@@ -537,5 +528,8 @@ export const lookupRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
 

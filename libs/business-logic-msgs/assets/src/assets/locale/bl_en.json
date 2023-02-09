@@ -32,5 +32,7 @@
     "SOURCE_SAME_DESTINATION":       "The source and the destination are the same",
     "MESSAGE_ALREADY_SENT":          "This message is already sent",
     "HIGHER_LEVEL_EXISTS":           "This document is at a higher level",
-    "INVALID_AMOUNT":                "Invalid amount"
+    "INVALID_AMOUNT":                "Invalid amount",
+    "ACCESS_DENIED":                 "Access denied for this page",
+    "BLOCKED_GROUP":                 "This budget group is blocked."
 }

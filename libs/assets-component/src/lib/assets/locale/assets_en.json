@@ -30,7 +30,7 @@
     "IMPORT":             "Integrate from another center",
     "BLOCK_NO":           "Block number",
     "FLOOR_NO":           "Floor number",
-    "APPOINTMENTS":       "Appointments",
+    "APPOINTMENTS":       "Assignments",
     "MIN_VALUE":          "Minimum asset value",
     "RECEPTIONS":         "Receptions",
     "BENEFICIARY":        "Beneficiary",
@@ -39,7 +39,7 @@
     "BLOCKING_TYPES":     "Blocking types",
     "BUILDINGS":          "Buildings",
     "SITES":              "Sites",
-    "REAPPOINTMENT":      "Reappointment",
+    "REAPPOINTMENT":      "Reappoint.",
     "END_TYPES":          "Exit types",
     "DEPRECIATION_RATES": "Depreciation rates",
     "DUPLICATE_SELECTED": "Duplicate selected asset",
@@ -57,5 +57,6 @@
     "INVOICE_DATE":        "Invoice date",
     "SITE":                "Site",
     "GOTO_DETAIL":         "Open detail page",
-    "TRANSFER":            "Transfers"
+    "TRANSFER":            "Transfers",
+    "APPOINTMENT_NUMBER":  "Assignment number"
 }

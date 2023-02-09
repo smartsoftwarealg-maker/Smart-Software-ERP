@@ -46,7 +46,7 @@ export class AgentTypeDetailComponent extends BaseEntityDetailComponent<AgentTyp
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(agentTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_AGENT_TYPE');
+        super(agentTypeServ, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT_TYPE');
     }
 
     public override setupForm(e: AgentType): UntypedFormGroup {

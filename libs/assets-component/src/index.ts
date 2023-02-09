@@ -36,5 +36,4 @@ export * from './lib/asset-excel-injection/asset-excel-injection.component';
 export * from './lib/depreciation-rate-detail/depreciation-rate-detail.component';
 export * from './lib/depreciation-rate-list/depreciation-rate-list.component';
 export * from './lib/assets-transfer/assets-transfer.component';
-export * from './lib/asset-appointment-list/asset-appointment-list.component';
 export * from './lib/inventory-import/inventory-import.component';

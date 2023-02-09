@@ -57,5 +57,6 @@
     "INVOICE_DATE":        "تاريخ الفاتورة",
     "SITE":                "الموقع",
     "GOTO_DETAIL":         "افتح صفحة التفاصيل",
-    "TRANSFER":            "تحويلات"
+    "TRANSFER":            "تحويلات",
+    "APPOINTMENT_NUMBER":  "رقم التنازل"
 }
