@@ -56,6 +56,8 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
             budgetId:      node.budgetId,
             groupId:       node.groupId,
             amount:        node.amount,
+            closingAmount: node.closingAmount,
+            complement:    node.complement,
             reqQty:        node.reqQty,
             acceptQty:     node.acceptQty,
             acceptAmount:  node.acceptAmount,
@@ -84,6 +86,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this.shellSrv.setTitle('BUD_BUDGET_PLANNING');
         this.shellSrv.setGoBackPath('..', this.route);
         this.entitySrv.setParentId(this.budgetSrv.budget?.id || 0)
         this.shellSrv.addButton(this.editButton);
@@ -114,7 +117,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
         if (!this.editButton.disabled) {
             const dialogRef = this.dialog.open(BudgetPlanningAddDlgComponent, {
                 width: '500px',
-                height: '550px',
+                height: '450px',
                 disableClose: true,
                 data: this.selectedPlanning
             });
