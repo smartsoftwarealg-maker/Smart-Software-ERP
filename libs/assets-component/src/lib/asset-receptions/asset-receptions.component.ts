@@ -91,7 +91,6 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
 
     openAsset(id: number) {
         if (id > 0) {
-            console.log('id: ', id);
             this.router.navigate(['../assets', id], { relativeTo: this.route });
         }
     }

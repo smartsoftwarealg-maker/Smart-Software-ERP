@@ -9,5 +9,7 @@
     "BUDGET_PLANNING":  "Budget planning",
     "ALLOCATED_AMOUNT": "Allocated amount",
     "REQUESTED_QTY":    "Requested qty",
-    "ALLOCATED_QTY":    "Allocated qty"
+    "ALLOCATED_QTY":    "Allocated qty",
+    "CLOSING_AMOUNT":   "Closing amount",
+    "COMPLEMENT":       "Complement"
 }

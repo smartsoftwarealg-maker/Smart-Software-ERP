@@ -31,5 +31,6 @@
     "SOURCE_SAME_DESTINATION":              "",
     "MESSAGE_ALREADY_SENT":                 "",
     "HIGHER_LEVEL_EXISTS":                  "",
-    "INVALID_AMOUNT":               ""
+    "INVALID_AMOUNT":               "",
+    "ACCESS_DENIED":                ""
 }

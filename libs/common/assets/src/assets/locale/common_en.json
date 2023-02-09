@@ -257,5 +257,6 @@
     "ADDRESS": "Address",
     "MOBILE": "Mobile",
     "COMPACT":                    "Compact",
-    "INVOICE_NUMBER":             "Invoice number"
+    "INVOICE_NUMBER":             "Invoice number",
+    "BUDGET":                     "Budget"
 }

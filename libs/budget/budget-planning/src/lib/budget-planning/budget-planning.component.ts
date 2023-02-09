@@ -22,7 +22,7 @@ import {BudgetAccountService} from '@ss/budget/budget-groups';
     styleUrls: ['./budget-planning.component.scss'],
 })
 export class BudgetPlanningComponent implements OnInit, OnDestroy {
-    private AMOUNT_COLS = ['code', 'description', 'reqAmount', 'amount'];
+    private AMOUNT_COLS = ['code', 'description', 'reqAmount', 'amount', 'closingAmount', 'complement'];
     private QTY_COLS = ['code', 'description', 'reqQty', 'acceptQty'];
 
     private editButton: ToolbarButton = {
@@ -114,7 +114,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
         if (!this.editButton.disabled) {
             const dialogRef = this.dialog.open(BudgetPlanningAddDlgComponent, {
                 width: '500px',
-                height: '400px',
+                height: '550px',
                 disableClose: true,
                 data: this.selectedPlanning
             });

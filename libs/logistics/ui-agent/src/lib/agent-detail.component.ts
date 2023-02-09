@@ -63,7 +63,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         private departmentSrv: DepartmentService,
         private activitySrv: ActivityService,
         private bankSrv: BankService) {
-        super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
+        super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
 

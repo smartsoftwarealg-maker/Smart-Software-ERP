@@ -19,7 +19,9 @@ export class BudgetPlanningAddDlgComponent implements OnInit {
         reqAmount:    [this.data.reqAmount],
         acceptQty:    [this.data.acceptQty],
         reqQty:       [this.data.reqQty],
+        complement:   [this.data.complement],
         acceptAmount: [this.data.acceptAmount],
+        closingAmount:[this.data.closingAmount],
         description:  [{value: this.data.description, disabled: true}],
         code:         [{value: this.data.code, disabled: true}],
     });

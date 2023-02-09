@@ -78,5 +78,6 @@
     "FINAL":               "Final?",
     "USER_MESSAGES":       "User messages",
     "USER_DOCUMENTS":      "User documents",
-    "WORKFLOW_INBOX":      "Inbox"
+    "WORKFLOW_INBOX":      "Inbox",
+    "SEVERE":              "Revoke all access rights when not specified"
 }

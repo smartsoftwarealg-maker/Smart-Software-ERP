@@ -82,6 +82,8 @@ export interface Asset {
     site?: string;
     building?: string;
     beneficiaryId?: number;
+    appointmentNumber?: number;
+    isFinal?: number;
 }
 
 export interface Depreciation {

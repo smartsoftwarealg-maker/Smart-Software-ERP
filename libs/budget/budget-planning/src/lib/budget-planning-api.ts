@@ -14,6 +14,8 @@ export interface BudgetPlanningTree {
     code?: string;
     description?: string;
     groupParentId?: number;
+    complement?: number;
+    closingAmount?: number;
     children?: BudgetPlanningTree[];
 }
 
@@ -31,5 +33,7 @@ export interface FlatBudgetPlanningTree {
     groupParentId?: number;
     level: number;
     expandable: boolean;
+    complement?: number;
+    closingAmount?: number;
 }
 

@@ -39,7 +39,7 @@
     "BLOCKING_TYPES":     "Types de blocage",
     "BUILDINGS":          "Bâtiments",
     "SITES":               "Sites",
-    "REAPPOINTMENT":      "Reaffectation",
+    "REAPPOINTMENT":      "Reaffect.",
     "END_TYPES":          "Types de sortie",
     "DEPRECIATION_RATES": "Taux d'amortissement",
     "DUPLICATE_SELECTED": "Dupliquer l'actif sélectionné",
@@ -57,5 +57,6 @@
     "INVOICE_DATE":        "Date de facturation",
     "SITE":                "Site",
     "GOTO_DETAIL":         "Ouvrir la page de détail",
-    "TRANSFER":            "Transferts"
+    "TRANSFER":            "Transferts",
+    "APPOINTMENT_NUMBER":  "Numéro d'affectation"
 }

@@ -9,5 +9,7 @@
     "BUDGET_PLANNING":  "Planification budgétaire",
     "ALLOCATED_AMOUNT": "Montant alloué",
     "REQUESTED_QTY":    "Quantité demandée",
-    "ALLOCATED_QTY":    "Quantité allouée"
+    "ALLOCATED_QTY":    "Quantité allouée",
+    "CLOSING_AMOUNT":   "Montant de clôture",
+    "COMPLEMENT":       "Complément"
 }

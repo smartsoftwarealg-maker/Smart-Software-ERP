@@ -1,4 +1,8 @@
-
+mat-card {
+    width: 500px;
+    margin: 8px auto;
+    border-radius: 1.4em;
+}
 
 .value {
     width: 400px;
@@ -6,10 +10,3 @@
     margin: auto;
 }
 
-form {
-    width: 100%;
-    padding-top: 16px;
-    height: 100px;
-    max-width: 500px;
-    margin: 0 auto;
-}

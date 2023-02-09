@@ -47,7 +47,6 @@ import { DepreciationRateListComponent } from './depreciation-rate-list/deprecia
 import { DepreciationRateDetailComponent } from './depreciation-rate-detail/depreciation-rate-detail.component';
 import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.component';
 import { AssetsTransferComponent } from './assets-transfer/assets-transfer.component';
-import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
 import { InventoryImportComponent } from './inventory-import/inventory-import.component';
 
 @NgModule({
@@ -102,7 +101,6 @@ import { InventoryImportComponent } from './inventory-import/inventory-import.co
         DepreciationRateDetailComponent,
         DuplicateDialogComponent,
         AssetsTransferComponent,
-        AssetAppointmentListComponent,
         InventoryImportComponent,
     ],
 })
