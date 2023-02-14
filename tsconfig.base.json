@@ -264,6 +264,8 @@
             "@ss/logistics/ui-totals": [
                 "libs/logistics/ui-totals/src/index.ts"
             ],
+            "@ss/ltm/assets": ["libs/ltm/assets/src/index.ts"],
+            "@ss/ltm/ltm": ["libs/ltm/ltm/src/index.ts"],
             "@ss/organizations/api-organizations": [
                 "libs/organizations/api-organizations/src/index.ts"
             ],

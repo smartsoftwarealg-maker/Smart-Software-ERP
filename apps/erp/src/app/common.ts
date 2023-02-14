@@ -35,6 +35,7 @@ export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const ORGANIZATIONS_APP_URL = 'organizations';
+export const LTM_APP_URL = 'ltm';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
@@ -265,6 +266,12 @@ export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_UR
 export const DASHBOARD_QUERY_URL = 'queries';
 export const DASHBOARD_URL       = 'dashbaord';
 
+// LTM
+export const LTM_LINES_URL       = 'ltm-lines';
+export const LTM_TEST_URL        = 'ltm-tests';
+export const LTM_MATTER_URL      = 'ltm-matters';
+export const LTM_PERIODICITY_URL = 'ltm-periodicities';
+export const LTM_TESTING_URL     = 'ltm-testings';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -480,6 +487,13 @@ export const ABS_ARCHIVE_VIEWER_URL  = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');
 export const ABS_SALARY_GRID_URL     = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_SALARY_GRID].join('/');
 export const ABS_PAYROLL_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DASHBOARD_URL].join('/');
+
+// ltm
+export const ABS_LTM_LINES_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_LINES_URL].join('/');
+export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MATTER_URL].join('/');
+export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PERIODICITY_URL].join('/');
+export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
+export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');

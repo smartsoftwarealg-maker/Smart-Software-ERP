@@ -1,0 +1,45 @@
+<mat-card>
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+        <mat-form-field class="default-50">
+            <mat-label translate>LTM_LINE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="lineLookup"
+                              [disabled]="true"
+                              formControlName="parentId">
+            </ss-auto-complete>
+        </mat-form-field>
+
+
+        <mat-form-field class="default-50">
+            <mat-label translate>LTM_MATTER</mat-label>
+            <ss-auto-complete matInput
+                              [model]="matterLookup"
+                              formControlName="matterId">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>LTM_TEST</mat-label>
+            <ss-auto-complete matInput
+                              [model]="testLookup"
+                              formControlName="testId">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker [required]=true formControlName="timeStamp" [time]="true"></ss-date-picker>
+            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
+                COMMON_FIELD_REQUIRED
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="default-50">
+            <mat-label translate>LTM_MAX_VALUE</mat-label>
+            <input matInput formControlName="value" type="number" required>
+        </mat-form-field>
+<!--        <pre> {{ form.value | json }}</pre>-->
+
+    </form>
+</mat-card>

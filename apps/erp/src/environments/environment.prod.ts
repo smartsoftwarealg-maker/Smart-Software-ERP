@@ -36,12 +36,13 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, BUDGET_APP_URL,
+    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, BUDGET_APP_URL, LTM_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
+import {ltmNavTree} from '../app/ltm/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -68,6 +69,7 @@ export const navBar = [
     dashboardNavTree,
     scheduledSalesNavTree,
     workflowNavTree,
+    ltmNavTree,
     foodNavTree
 ];
 
@@ -88,6 +90,7 @@ export const langAssets = [
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/ltm_', 'LTM_'],
     ['assets/locale/budget_', 'BUD_']
 ];
 
@@ -96,6 +99,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: LTM_APP_URL,
+        loadChildren: () => import('../app/ltm/ltm.module').then(m => m.LtmModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,

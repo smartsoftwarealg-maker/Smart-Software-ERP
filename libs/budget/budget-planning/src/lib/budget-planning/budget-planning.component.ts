@@ -115,7 +115,8 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
 
     private edit() {
         if (!this.editButton.disabled) {
-            const dialogRef = this.dialog.open(BudgetPlanningAddDlgComponent, {
+            const dialogRef
+                = this.dialog.open(BudgetPlanningAddDlgComponent, {
                 width: '500px',
                 height: '450px',
                 disableClose: true,

@@ -169,10 +169,6 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: LOOKUPS_URL,
-        loadChildren: () => import('./hr-lookups.module').then(m => m.HRLookupsModule)
-    },
-    {
         path: DASHBOARD_URL,
         component: DashboardComponent,
         canActivate: [CanActivateService],
@@ -584,11 +580,6 @@ export const mainRoutes: Routes = [
         canActivate: [CanActivateService],
         data: { reportBase: 'hr' }
     },
-    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL }
-];
-
-export const lookupRoutes: Routes = [
     {
         path: HR_EMPLOYMENT_TYPE_URL,
         children: [
@@ -828,5 +819,6 @@ export const lookupRoutes: Routes = [
         ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+    { path: '**', redirectTo: ABS_INDEX_URL }
 ];
+
