@@ -232,6 +232,58 @@
         "logistics-ui-pay-method": "libs/logistics/ui-pay-method",
         "logistics-ui-stock-info": "libs/logistics/ui-stock-info",
         "logistics-ui-totals": "libs/logistics/ui-totals",
+        "ltm-assets": {
+            "projectType": "library",
+            "root": "libs/ltm/assets",
+            "sourceRoot": "libs/ltm/assets/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/ltm/assets"],
+                    "options": {
+                        "jestConfig": "libs/ltm/assets/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/ltm/assets/**/*.ts",
+                            "libs/ltm/assets/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
+        "ltm-ltm": {
+            "projectType": "library",
+            "root": "libs/ltm/ltm",
+            "sourceRoot": "libs/ltm/ltm/src",
+            "prefix": "ss",
+            "targets": {
+                "test": {
+                    "executor": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/ltm/ltm"],
+                    "options": {
+                        "jestConfig": "libs/ltm/ltm/jest.config.ts",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "executor": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/ltm/ltm/**/*.ts",
+                            "libs/ltm/ltm/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "tags": []
+        },
         "missions": "libs/hr-missions/missions",
         "organizations-api-organizations": "libs/organizations/api-organizations",
         "organizations-ui-organizations": "libs/organizations/ui-organizations",

@@ -1,0 +1,15 @@
+.content_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.table_div {
+    height: calc(100% - 260px);
+}
+
+.ctrl_div {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
