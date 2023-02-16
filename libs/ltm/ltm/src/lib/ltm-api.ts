@@ -2,6 +2,7 @@ export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_LTM_LINE_URL    = '/ltm/ltm-lines';
+export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 
@@ -53,4 +54,9 @@ export interface LTMTesting {
     value: number;
     matter?: string;
     test?: string;
+}
+
+export interface LTMTestInjection {
+    line: number;
+    matter: number;
 }

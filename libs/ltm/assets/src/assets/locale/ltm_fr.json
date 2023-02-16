@@ -8,4 +8,9 @@
     "PERIODICITIES":  "Périodicités",
     "MATTERS":        "Matière",
     "TESTS":          "Questions",
+    "PERIOD":         "Periode",
+    "MIN_VALUE":      "Valeur minimum",
+    "OPT_VALUE":      "Valeur optimale",
+    "MAX_VALUE":      "Valeur maximum",
+    "PERIODICITY":    "Périodicité"
 }

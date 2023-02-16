@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import {LotsService} from '@ss/common/api-lookup';
 import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
 import {ProcessedCheckService} from '@ss/treasury/api-checks';
 import {BankService} from '@ss/administration/api-bank';

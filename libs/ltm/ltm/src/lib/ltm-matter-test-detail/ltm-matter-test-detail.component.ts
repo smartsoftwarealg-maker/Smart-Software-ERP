@@ -51,7 +51,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
                 switchMap(_ => this.route.paramMap),
                 switchMap(params => {
                     const id = +(params.get('id')||'0');
-                    return id > 0? this.entitySrv.get(id) : of(<LTMMatterTest> { id: 0, parentId: this.form.controls.parentId.value, testId: 0});
+                    return id > 0? this.entitySrv.get(id) : of(<LTMMatterTest> { id: 0, parentId: this.form.controls.parentId.value, testId: 0, minValue: 0, optValue: 0, maxValue: 0});
                 }))
             .subscribe(matter => {
                 this.form.controls.id.setValue(matter.id);
