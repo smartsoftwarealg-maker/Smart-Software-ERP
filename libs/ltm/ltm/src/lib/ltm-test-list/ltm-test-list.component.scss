@@ -1,27 +1,30 @@
 .content_div {
     width: 90%;
-    max-width: 900px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .mat-column-description {
     flex: 3 1 250px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
 }
 
 .mat-column-descriptionAr {
-    flex: 1 1 120px
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
 }
 
-.mat-column-minValue,
-.mat-column-optValue,
-.mat-column-maxValue {
-    flex: 1 1 120px;
-    justify-content: right;
+.mat-column-id {
+    flex: 1 1 70px;
+    justify-content: center;
+    border-left: gray solid 1px;
 }
 
 mat-table {
-    width: 100%;
-    min-width: 730px;
+    width: 98%;
+    min-width: 450px;
 }
 
 .container {

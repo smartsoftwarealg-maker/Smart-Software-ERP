@@ -32,6 +32,7 @@ export class LtmMatterTestListComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private confirmationSrv: ConfirmationDialogService) {
+        this.pagination.onChange = () => this.refresh();
     }
 
     showDetail(id: number) {
@@ -64,15 +65,18 @@ export class LtmMatterTestListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.refresh();
+    }
+
+    refresh() {
         this.entitySrv
             .getList(this.pagination.page - 1, this.pagination.pageSize)
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
-            })
+            });
     }
 
     sortData(event: any) {
-
     }
 }

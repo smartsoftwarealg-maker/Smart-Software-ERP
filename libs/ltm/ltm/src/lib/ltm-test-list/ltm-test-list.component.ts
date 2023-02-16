@@ -14,7 +14,7 @@ import {LtmTestService} from '../ltm-test.service';
     styleUrls: ['./ltm-test-list.component.scss'],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = ['id', 'description'];
 
     constructor(
         public override entitySrv: LtmTestService,
@@ -26,5 +26,6 @@ export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LTM_TESTS');
+        this.pagination.pageSize = 15;
     }
 }
