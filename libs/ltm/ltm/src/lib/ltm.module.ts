@@ -23,6 +23,7 @@ import { LtmMatterTestListComponent } from './ltm-matter-test-list/ltm-matter-te
 import { LtmTestingListComponent } from './ltm-testing-list/ltm-testing-list.component';
 import { LtmTestingDetailComponent } from './ltm-testing-detail/ltm-testing-detail.component';
 import { LtmInjectionComponent } from './ltm-injection/ltm-injection.component';
+import { LtmReportComponent } from './ltm-report/ltm-report.component';
 
 @NgModule({
     imports: [
@@ -52,6 +53,7 @@ import { LtmInjectionComponent } from './ltm-injection/ltm-injection.component';
         LtmTestingListComponent,
         LtmTestingDetailComponent,
         LtmInjectionComponent,
+        LtmReportComponent,
     ],
 })
 export class LtmModule {}

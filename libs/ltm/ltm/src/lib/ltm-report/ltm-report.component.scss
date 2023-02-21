@@ -1,0 +1,26 @@
+.container {
+    width: 98%;
+    margin: 4px auto;
+    min-height: 98%;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.line_div {
+    flex: 1 1 25%;
+}
+
+.chart_div {
+    flex: 2 1 75%;
+}
+
+mat-card {
+    align-self: stretch;
+}
+
+@media (width <= 500px) {
+    .container {
+        display: block;
+    }
+}

@@ -272,6 +272,7 @@ export const LTM_TEST_URL        = 'ltm-tests';
 export const LTM_MATTER_URL      = 'ltm-matters';
 export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
+export const LTM_CHARTS_URL      = 'ltm-reports';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -494,6 +495,7 @@ export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PERIODICITY_URL].join('/');
 export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
 export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');
+export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
