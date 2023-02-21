@@ -1,4 +1,5 @@
 {
+    "name": "sales-assets",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/sales/assets/src",
@@ -16,7 +17,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/sales/assets"],
+            "outputs": ["{workspaceRoot}/coverage/libs/sales/assets"],
             "options": {
                 "jestConfig": "libs/sales/assets/jest.config.js",
                 "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-edo",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/edo/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/edo"],
+            "outputs": ["{workspaceRoot}/coverage/libs/remuneration/edo"],
             "options": {
                 "jestConfig": "libs/remuneration/edo/jest.config.ts",
                 "passWithNoTests": true

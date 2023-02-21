@@ -1,4 +1,5 @@
 {
+    "name": "web-arch-ui",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/web-arch/ui/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/web-arch/ui"],
+            "outputs": ["{workspaceRoot}/coverage/libs/web-arch/ui"],
             "options": {
                 "jestConfig": "libs/web-arch/ui/jest.config.ts",
                 "passWithNoTests": true

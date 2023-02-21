@@ -1,4 +1,5 @@
 {
+    "name": "administration-ui-center",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/ui-center/src",

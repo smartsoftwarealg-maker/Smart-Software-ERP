@@ -21,7 +21,7 @@ export class CbalanceComponent implements OnInit {
     ];
 
 
-    constructor(public exchangeSrv: CurrencyDepositService, public override route: ActivatedRoute) {}
+    constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {}
 
 
     ngOnInit() {

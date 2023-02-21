@@ -1,4 +1,5 @@
 {
+    "name": "logistics-api-cost-center",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/api-cost-center/src",

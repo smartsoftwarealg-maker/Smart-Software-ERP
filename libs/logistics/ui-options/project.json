@@ -1,4 +1,5 @@
 {
+    "name": "logistics-ui-options",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-options/src",
@@ -15,7 +16,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/ui-options"],
+            "outputs": ["{workspaceRoot}/coverage/libs/logistics/ui-options"],
             "options": {
                 "jestConfig": "libs/logistics/ui-options/jest.config.ts",
                 "passWithNoTests": true

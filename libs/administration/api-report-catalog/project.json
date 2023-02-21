@@ -1,4 +1,5 @@
 {
+    "name": "api-report-catalog",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/api-report-catalog/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/administration/api-report-catalog"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/administration/api-report-catalog"
+            ],
             "options": {
                 "jestConfig": "libs/administration/api-report-catalog/jest.config.ts",
                 "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+    "name": "exchange-api-currency-deposit",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/exchange/api-currency-deposit/src",
@@ -15,7 +16,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/exchange/api-currency-deposit"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/exchange/api-currency-deposit"
+            ],
             "options": {
                 "jestConfig": "libs/exchange/api-currency-deposit/jest.config.ts",
                 "passWithNoTests": true

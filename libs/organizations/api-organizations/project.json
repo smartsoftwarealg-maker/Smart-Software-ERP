@@ -1,4 +1,5 @@
 {
+    "name": "organizations-api-organizations",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/organizations/api-organizations/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/organizations/api-organizations"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/organizations/api-organizations"
+            ],
             "options": {
                 "jestConfig": "libs/organizations/api-organizations/jest.config.ts",
                 "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+    "name": "sales-ui-delivery-lines",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/sales/ui-delivery-lines/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/sales/ui-delivery-lines"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/sales/ui-delivery-lines"
+            ],
             "options": {
                 "jestConfig": "libs/sales/ui-delivery-lines/jest.config.ts",
                 "passWithNoTests": true

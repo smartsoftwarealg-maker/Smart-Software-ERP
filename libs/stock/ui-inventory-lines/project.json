@@ -1,4 +1,5 @@
 {
+    "name": "stock-ui-inventory-lines",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/stock/ui-inventory-lines/src",

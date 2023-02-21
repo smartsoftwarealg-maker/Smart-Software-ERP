@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-input-filters",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/input-filters/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/input-filters"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/input-filters"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/input-filters/jest.config.ts",
                 "passWithNoTests": true

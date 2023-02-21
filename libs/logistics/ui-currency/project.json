@@ -1,4 +1,5 @@
 {
+    "name": "logistics-ui-currency",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-currency/src",
@@ -15,7 +16,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/ui-currency"],
+            "outputs": ["{workspaceRoot}/coverage/libs/logistics/ui-currency"],
             "options": {
                 "jestConfig": "libs/logistics/ui-currency/jest.config.ts",
                 "passWithNoTests": true

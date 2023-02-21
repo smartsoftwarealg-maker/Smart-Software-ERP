@@ -58,8 +58,9 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
     override readForm(): Loan {
         const f = super.readForm();
         console.log(typeof f.payMonth)
-        if (typeof f.payMonth === 'object') {
-            f.payMonth = f.payMonth['year'] * 100 + f.payMonth['month'];
+        if (f.payMonth != null && typeof f.payMonth === 'object') {
+            const obj = f.payMonth || {};
+            f.payMonth = +obj['year'] * 100 + (+obj['month']);
         }
         return f;
     }

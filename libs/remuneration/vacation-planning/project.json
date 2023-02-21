@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-vacation-planning",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/vacation-planning/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/vacation-planning"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/vacation-planning"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/vacation-planning/jest.config.ts",
                 "passWithNoTests": true

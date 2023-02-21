@@ -1,11 +1,15 @@
 {
+    "name": "treasury-api-transactions",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/treasury/api-transactions/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/treasury/api-transactions"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/treasury/api-transactions"
+            ],
             "options": {
                 "jestConfig": "libs/treasury/api-transactions/jest.config.ts",
                 "passWithNoTests": true
