@@ -1,4 +1,5 @@
 {
+    "name": "administration-api-smtp",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/api-smtp/src",

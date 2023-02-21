@@ -1,11 +1,13 @@
 {
+    "name": "treasury-ui-journal",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/treasury/ui-journal/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/treasury/ui-journal"],
+            "outputs": ["{workspaceRoot}/coverage/libs/treasury/ui-journal"],
             "options": {
                 "jestConfig": "libs/treasury/ui-journal/jest.config.js",
                 "passWithNoTests": true

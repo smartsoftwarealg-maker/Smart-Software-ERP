@@ -1,11 +1,13 @@
 {
+    "name": "treasury-api-journal",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/treasury/api-journal/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/treasury/api-journal"],
+            "outputs": ["{workspaceRoot}/coverage/libs/treasury/api-journal"],
             "options": {
                 "jestConfig": "libs/treasury/api-journal/jest.config.js",
                 "passWithNoTests": true

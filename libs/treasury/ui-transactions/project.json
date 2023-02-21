@@ -1,11 +1,15 @@
 {
+    "name": "treasury-ui-transactions",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/treasury/ui-transactions/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/treasury/ui-transactions"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/treasury/ui-transactions"
+            ],
             "options": {
                 "jestConfig": "libs/treasury/ui-transactions/jest.config.ts",
                 "passWithNoTests": true

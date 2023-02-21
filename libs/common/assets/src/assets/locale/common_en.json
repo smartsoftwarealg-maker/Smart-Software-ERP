@@ -258,5 +258,6 @@
     "MOBILE": "Mobile",
     "COMPACT":                    "Compact",
     "INVOICE_NUMBER":             "Invoice number",
-    "BUDGET":                     "Budget"
+    "BUDGET":                     "Budget",
+    "CHARTS":                     "Charts"
 }

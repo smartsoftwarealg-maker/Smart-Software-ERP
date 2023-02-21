@@ -1,11 +1,15 @@
 {
+    "name": "scheduled-sales-sales-quota",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/scheduled-sales/sales-quota/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/scheduled-sales/sales-quota"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/scheduled-sales/sales-quota"
+            ],
             "options": {
                 "jestConfig": "libs/scheduled-sales/sales-quota/jest.config.ts",
                 "passWithNoTests": true

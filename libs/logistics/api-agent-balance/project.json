@@ -1,4 +1,5 @@
 {
+    "name": "logistics-api-agent-balance",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/api-agent-balance/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/api-agent-balance"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/api-agent-balance"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/api-agent-balance/jest.config.ts",
                 "passWithNoTests": true

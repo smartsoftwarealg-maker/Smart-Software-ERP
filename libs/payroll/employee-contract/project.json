@@ -1,12 +1,15 @@
 {
+    "name": "employee-contract",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
-    "root": "libs/payroll/employee-contract",
     "sourceRoot": "libs/payroll/ui-employee-contract/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/payroll/ui-employee-contract"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/payroll/ui-employee-contract"
+            ],
             "options": {
                 "jestConfig": "libs/payroll/ui-employee-contract/jest.config.js",
                 "passWithNoTests": true

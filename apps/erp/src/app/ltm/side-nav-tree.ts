@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_LTM_CHARTS_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_PERIODICITIES_URL,
@@ -45,7 +46,12 @@ export const ltmNavTree: SideNavNode = {
             accessRights: 'LTMMatter'
         },
 
-
+        {
+            name: 'COMMON_CHARTS',
+            icon: 'fa-solid fa-chart-simple',
+            route: ABS_LTM_CHARTS_URL,
+            accessRights: 'LTMTesting'
+        },
     ],
     accessRights: "LTM"
 };

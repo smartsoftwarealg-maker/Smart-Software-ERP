@@ -714,6 +714,13 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     width: 17.6%;
 }
 
+.default-80 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(80% - 30px);
+    width: calc(80% - 30px);
+}
+
 .default-25 {
     display: inline-block;
     margin: 0 8px;

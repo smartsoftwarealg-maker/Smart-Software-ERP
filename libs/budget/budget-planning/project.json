@@ -1,0 +1,27 @@
+{
+    "name": "budget-budget-planning",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/budget/budget-planning/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/libs/budget/budget-planning"],
+            "options": {
+                "jestConfig": "libs/budget/budget-planning/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/budget/budget-planning/**/*.ts",
+                    "libs/budget/budget-planning/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

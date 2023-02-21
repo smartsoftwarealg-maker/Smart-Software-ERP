@@ -1,4 +1,5 @@
 {
+    "name": "logistics-api-circulation",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/api-circulation/src",

@@ -1,4 +1,5 @@
 {
+    "name": "administration-db-updater",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/db-updater/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/administration/db-updater"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/administration/db-updater"
+            ],
             "options": {
                 "jestConfig": "libs/administration/db-updater/jest.config.ts",
                 "passWithNoTests": true

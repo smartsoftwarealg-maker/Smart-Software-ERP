@@ -1,4 +1,5 @@
 {
+    "name": "stock-ui-article-store-assignment",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/stock/ui-article-store-assignment/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/stock/ui-article-store-assignment"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/stock/ui-article-store-assignment"
+            ],
             "options": {
                 "jestConfig": "libs/stock/ui-article-store-assignment/jest.config.ts",
                 "passWithNoTests": true

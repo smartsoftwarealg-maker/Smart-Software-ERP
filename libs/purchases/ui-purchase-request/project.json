@@ -1,11 +1,15 @@
 {
+    "name": "purchases-ui-purchase-request",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/purchases/ui-purchase-request/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/purchases/ui-purchase-request"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/purchases/ui-purchase-request"
+            ],
             "options": {
                 "jestConfig": "libs/purchases/ui-purchase-request/jest.config.ts",
                 "passWithNoTests": true

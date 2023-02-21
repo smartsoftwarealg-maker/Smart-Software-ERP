@@ -1,4 +1,5 @@
 {
+    "name": "logistics-ui-account",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-account/src",

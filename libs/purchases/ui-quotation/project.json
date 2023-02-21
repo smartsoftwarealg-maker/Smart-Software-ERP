@@ -1,4 +1,5 @@
 {
+    "name": "purchases-ui-quotation",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/purchases/ui-quotation/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/purchases/ui-quotation"],
+            "outputs": ["{workspaceRoot}/coverage/libs/purchases/ui-quotation"],
             "options": {
                 "jestConfig": "libs/purchases/ui-quotation/jest.config.ts",
                 "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+    "name": "purchases-assets",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/purchases/assets/src",
@@ -16,7 +17,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/purchases/assets"],
+            "outputs": ["{workspaceRoot}/coverage/libs/purchases/assets"],
             "options": {
                 "jestConfig": "libs/purchases/assets/jest.config.ts",
                 "passWithNoTests": true
