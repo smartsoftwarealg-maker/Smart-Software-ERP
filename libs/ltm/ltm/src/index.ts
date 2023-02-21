@@ -15,3 +15,4 @@ export * from './lib/ltm-matter-test-list/ltm-matter-test-list.component';
 export * from './lib/ltm-matter-test-detail/ltm-matter-test-detail.component';
 export * from './lib/ltm-testing-list/ltm-testing-list.component';
 export * from './lib/ltm-testing-detail/ltm-testing-detail.component';
+export * from './lib/ltm-report/ltm-report.component';

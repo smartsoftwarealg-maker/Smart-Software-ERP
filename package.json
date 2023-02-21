@@ -44,6 +44,7 @@
         "@muaazh/datepicker": "^13.1.2",
         "@nrwl/angular": "15.7.2",
         "angular13-organization-chart": "^2.0.0",
+        "chart.js": "^4.2.1",
         "file-saver": "^2.0.5",
         "hammerjs": "^2.0.8",
         "ng2-file-upload": "^3.0.0",

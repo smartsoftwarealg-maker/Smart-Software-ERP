@@ -5,7 +5,7 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LtmInjectionService extends BaseEntityExtendedService<LTMTestInjection> {
 
