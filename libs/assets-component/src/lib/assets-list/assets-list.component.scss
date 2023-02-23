@@ -1,5 +1,5 @@
 mat-table {
-    min-width: 1400px;
+    min-width: 1600px;
 }
 
 .container {
@@ -31,9 +31,12 @@ mat-table {
 }
 
 .mat-column-officeDescription,
-.mat-column-beneficiary,
+.mat-column-beneficiary {
+    flex: 1 1 120px;
+}
+
 .mat-column-description {
-    flex: 1 1 130px;
+    flex: 1 1 220px;
 }
 
 .mat-column-serial_no,

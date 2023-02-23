@@ -3,6 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@muaazh/datepicker/theming' as datepicker;
 @use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 mat.$theme-ignore-duplication-warnings:true;
 
@@ -16,6 +17,8 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    //font-size: small;
+    font-family: Roboto, sans-serif;
 }
 
 

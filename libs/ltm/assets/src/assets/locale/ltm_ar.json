@@ -11,5 +11,7 @@
     "MIN_VALUE":      "الحد الأدنى للقيمة",
     "OPT_VALUE":      "القيمة المثلى",
     "MAX_VALUE":      "القيمة القصوى",
-    "PERIODICITY":    "دور"
+    "PERIODICITY":    "دور",
+    "LOW":            "قليل",
+    "HIGH":           "عالي"
 }
