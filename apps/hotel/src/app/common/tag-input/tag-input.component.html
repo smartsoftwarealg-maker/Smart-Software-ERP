@@ -2,7 +2,7 @@
     <mat-label>
         <ng-content></ng-content>
     </mat-label>
-    <mat-chip-list #chipList required="{{required}}">
+    <!--mat-chip-list #chipList required="{{required}}">
         <mat-chip *ngFor="let e of elements" [removable]="true">
             <div [dir]="langSrv.dir" class="chip-content">
                 {{chipElementToString(e)}}
@@ -23,7 +23,7 @@
                [matChipInputFor]="chipList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                [matChipInputAddOnBlur]="false" *ngIf="!required">
-    </mat-chip-list>
+    </mat-chip-list-->
     <mat-autocomplete #tagAC="matAutocomplete" (optionSelected)="onSelection($event)" [autoActiveFirstOption]="true">
         <mat-option *ngFor="let f of filtered" [value]="f">
             {{optionElementToString(f)}}

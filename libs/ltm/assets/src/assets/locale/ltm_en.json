@@ -12,5 +12,7 @@
     "MIN_VALUE":      "Minimum value",
     "OPT_VALUE":      "Optimal value",
     "MAX_VALUE":      "Maximum value",
-    "PERIODICITY":    "Periodicity"
+    "PERIODICITY":    "Periodicity",
+    "LOW":            "Low",
+    "HIGH":           "High"
 }

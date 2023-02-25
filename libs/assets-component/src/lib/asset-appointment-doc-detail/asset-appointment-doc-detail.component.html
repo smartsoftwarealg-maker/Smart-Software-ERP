@@ -89,7 +89,8 @@
     </mat-card-content>
 </mat-card>
 
-<mat-table *ngIf="id > 0" mat-table [dataSource]="detailData" class="main-table item">
+<div class="item table_div">
+ <mat-table *ngIf="id > 0" mat-table [dataSource]="detailData" class="main-table">
 
     <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
@@ -117,7 +118,7 @@
              *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
 </mat-table>
-
+</div>
 <div *ngIf="id > 0" class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

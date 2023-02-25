@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {map, Observable, of} from 'rxjs';
-import {LTMLine, LTMLineMatter, LTMTesting} from '../ltm-api';
+import {map, Observable, of, zip} from 'rxjs';
+import {LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
 import {FormControl} from '@angular/forms';
 import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {Chart, ChartItem, ChartType, LineController} from 'chart.js';
+import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {Chart, ChartItem, registerables} from 'chart.js';
 import {LtmTestingService} from '../ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
+import {LtmMatterService} from '../ltm-matter.service';
+import {LtmMatterTestService} from '../ltm-matter-test.service';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-ltm-report',
@@ -17,6 +20,7 @@ import {ChartConfiguration} from 'chart.js/dist/types';
     styleUrls: ['./ltm-report.component.scss'],
 })
 export class LtmReportComponent implements OnInit {
+    private chartList: Chart[] = null;
     selectedMatter: LTMLineMatter = null;
     matters$: Observable<LTMLineMatter[]> = of([]);
     lines$: Observable<LTMLine[]> = null;
@@ -27,11 +31,15 @@ export class LtmReportComponent implements OnInit {
     from     = new FormControl<Date>(new Date());
     to       = new FormControl<Date>(new Date());
 
-    constructor(private shellSrv: ShellService,
-                private lineSrv: LtmLineService,
-                private matterSrv: LtmLineMatterService,
+    constructor(private shellSrv:   ShellService,
+                private lineSrv:    LtmLineService,
+                private matterSrv:  LtmLineMatterService,
                 private testingSrv: LtmTestingService,
-                private route: ActivatedRoute) {}
+                private testSrv:    LtmMatterTestService,
+                private langSrv:    LanguageService,
+                private route:      ActivatedRoute) {
+        Chart.register(...registerables);
+    }
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
@@ -53,43 +61,75 @@ export class LtmReportComponent implements OnInit {
     onMatter(m: LTMLineMatter) {
         this.selectedMatter = m;
         this.testingSrv.setParentId(m?.parentId);
-        this.testingSrv
-            .getList(0, 10000)
-            .pipe(map(res => res.body.filter(e => e.matterId === m?.id && e.test !== null)))
-            .subscribe(res => this.buildCharts(res));
+        this.testSrv.setParentId(m.matterId);
+        zip(this.testSrv.getList(0, 50),
+            this.testingSrv.getData(m.parentId, m.matterId, this.from.value, this.to.value))
+            .subscribe(res => {
+                const tests = res[0].body;
+                const data  = res[1];
+                this.buildCharts(data, tests);
+            });
     }
 
-    private buildCharts(tests: LTMTesting[]) {
-        this.charts = tests
+    private buildCharts(data: LTMTesting[], tests: LTMMatterTest[]) {
+        this.charts = data
             .map(e => e.test)
             .filter((value, index, array) => value != null && array.indexOf(value) === index);
-        setTimeout(()=> this.onCanvas(tests), 1000);
+        setTimeout(()=> this.onCanvas(data, tests), 1000);
     }
 
-    onCanvas(tests: LTMTesting[]) {
-        this.charts
-            .forEach(c => {
+    onCanvas(data: LTMTesting[], tests: LTMMatterTest[]) {
+        this.chartList?.forEach(c => c?.destroy());
+        this.chartList = this.charts
+            .map(c => {
                 const ctx = <ChartItem>document.getElementById(c);
-                const test = tests.filter(t => t.test === c);
+                const test = data.filter(t => t.test === c);
                 if (test.length > 0) {
-                    const data = this.chartData(test);
-                    new Chart(ctx, data);
-                    console.log(test, data);
+                    const data = this.chartData(test, tests);
+                    return new Chart(ctx, data);
+                } else {
+                    return null;
                 }
             });
     }
 
-    private chartData(tests: LTMTesting[]): ChartConfiguration {
+    private chartData(data: LTMTesting[], tests: LTMMatterTest[]): ChartConfiguration {
+        const range = tests.filter(e => e.testId === data[0]?.testId).map(e => [e.minValue, e.maxValue])[0];
         return {
-            type: <ChartType>'line' ,
+            type: 'line' ,
             data: {
-                labels: tests.map(_ => _.timeStamp),
+                labels: data.map(_ => _.timeStamp),
                 datasets: [
                     {
-                        label: tests[0].test,
-                        data: tests.map(_ => _.value)
+                        label: this.langSrv.translate('LTM_LOW'),
+                        data: data.map(_ => range[0]),
+                        backgroundColor: ['blue'],
+                        borderColor: ['blue']
+                    },
+                    {
+                        label: data[0].test,
+                        data: data.map(e => e.value),
+                        backgroundColor: ['green'],
+                        borderColor: ['rgba(75, 192, 192, 1)']
+                    },
+                    {
+                        label: this.langSrv.translate('LTM_HIGH'),
+                        data: data.map(_ => range[1]),
+                        backgroundColor: ['red'],
+                        borderColor: ['red']
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
                     }
-                ]
+                }
             }
         };
     }
