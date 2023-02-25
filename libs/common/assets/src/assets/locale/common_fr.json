@@ -249,6 +249,10 @@
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
     "EPAYMENT":             "E-paiement",
+<<<<<<< HEAD
+    "FIRST_NAME_AR": "Prénom (Arabe)",
+    "LAST_NAME_AR": "Nom (Arabe)"
+=======
     "MORE":                 "Plus",
     "BANK":                 "Banque",
     "TRANSACTIONS":         "Ecritures",
@@ -264,4 +268,5 @@
     "INVOICE_NUMBER":             "Numéro de facture",
     "BUDGET":                     "Budget",
     "CHARTS":                     "Graphiques"
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
 }

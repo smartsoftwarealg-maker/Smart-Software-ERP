@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import { Employee, EmployeeService } from '@ss/payroll/api-employee';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
 import {City, CityService, LookupsService, MaritalStatus, Nationality, NationalityService} from '@ss/common/api-lookup';
@@ -49,6 +49,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public override confirmationSrv: ConfirmationDialogService,
         public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,
+        private router: Router,
         private citySrv: CityService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
@@ -241,6 +242,12 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     throw err;
                 }
             });
+    }
+
+    showArchive() {
+        if (this.router.url.indexOf('archive') <0) {
+            this.router.navigate(['archive'], { relativeTo: this.route })
+        }
     }
 
 }

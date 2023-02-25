@@ -246,6 +246,10 @@
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
     "EPAYMENT":            "E-payment",
+<<<<<<< HEAD
+    "FIRST_NAME_AR": "First name (Arabic)",
+    "LAST_NAME_AR": "Last name (Arabic)"
+=======
     "MORE":                "More",
     "BANK":                "Bank",
     "TRANSACTIONS":             "Transactions",
@@ -260,4 +264,5 @@
     "INVOICE_NUMBER":             "Invoice number",
     "BUDGET":                     "Budget",
     "CHARTS":                     "Charts"
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
 }

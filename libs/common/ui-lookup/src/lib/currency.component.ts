@@ -54,7 +54,8 @@ export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency>
     public override setupForm(e: Currency): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 

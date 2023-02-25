@@ -12,6 +12,11 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {PersonAutocompleteClass} from '@ss/payroll-common';
 import {ElementTypesService} from '@ss/remuneration/element-types';
 
+type Period = {
+    year: number;
+    month: number;
+}
+
 @Component({
   selector: 'ss-loans-detail',
   templateUrl: './loans-detail.component.html',
@@ -57,10 +62,9 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
 
     override readForm(): Loan {
         const f = super.readForm();
-        console.log(typeof f.payMonth)
-        if (f.payMonth != null && typeof f.payMonth === 'object') {
-            const obj = f.payMonth || {};
-            f.payMonth = +obj['year'] * 100 + (+obj['month']);
+        if (typeof f.payMonth === 'object') {
+            const obj: Period = f.payMonth;
+            f.payMonth = obj.year * 100 + obj.month;
         }
         return f;
     }

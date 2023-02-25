@@ -1,13 +1,18 @@
-.doc-info {
-    width: min(98%, 1200px);
-    margin: 0 auto;
+
+.table_div {
+    min-height: 60%;
+    overflow-y: auto;
 }
 
+<<<<<<< HEAD
+.size_98 {
+    width: 98%;
+    max-width: 1200px;
+=======
 .content-div {
     width: min(98%, 1200px);
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
     margin: 0 auto;
-    height: 60%;
-    overflow-y: auto;
 }
 
 // keep the material design specs

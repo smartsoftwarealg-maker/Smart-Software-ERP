@@ -1,12 +1,21 @@
-
-:host {
-    display: block;
-    margin: auto;
-    width: 496px;
+.size {
+    width: 90%;
+    max-width: 800px;
+    margin: 4px auto 0;
 }
 
+.div_table {
+    height: calc(100% - 70px);
+    overflow: auto;
+}
+
+<<<<<<< HEAD
+.main-table {
+    width: 100%;
+=======
 .content-div {
     width: 496px;
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
     min-height: 320px;
 }
 
@@ -17,13 +26,13 @@
 }
 
 .mat-column-code {
-    flex: 0 0 140px ;
+    flex: 0 1 150px ;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-description {
-    flex: 0 0 300px ;
+    flex: 3 1 300px ;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

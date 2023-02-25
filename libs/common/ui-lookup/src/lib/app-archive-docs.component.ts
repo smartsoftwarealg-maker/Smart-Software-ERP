@@ -41,12 +41,12 @@ export class AppArchiveDocumentDetailComponent extends BaseEntityDetailComponent
 
     constructor(
         public markSrv: AppArchiveDocumentService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_MARK');
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public confirmationSrv: ConfirmationDialogService,
+        public formBuilder: UntypedFormBuilder) {
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_ARCHIVE_DOCUMENTS');
     }
 
     public override setupForm(e: Lookup): UntypedFormGroup {

@@ -31,7 +31,7 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_USERS');
         this.isManager = loginSrv.appCtx.manager;
-        this.pagination.pageSize = 10;
+        this.pagination.pageSize = 15;
     }
 
     override ngOnInit() {

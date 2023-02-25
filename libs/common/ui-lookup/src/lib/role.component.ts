@@ -53,7 +53,8 @@ export class RoleDetailComponent extends BaseEntityDetailComponent<Role> {
     public override setupForm(e: Activity): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description:   [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }
