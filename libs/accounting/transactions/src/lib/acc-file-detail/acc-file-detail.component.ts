@@ -35,7 +35,7 @@ export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> i
               'ACC_FILES');
     }
 
-    public setupForm(e: ACCFile): UntypedFormGroup {
+    public override setupForm(e: ACCFile): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
             center: [e.center || this.loginSrv.appCtx.center],

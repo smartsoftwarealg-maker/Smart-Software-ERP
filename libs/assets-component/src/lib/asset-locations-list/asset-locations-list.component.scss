@@ -1,8 +1,7 @@
-.main-table {
-    min-height: calc(100% - 64px);
-}
+
+.main-table,
  .pagination-container,
- .main-table {
+ .content-div {
      width: 90%;
      max-width: 800px;
      margin: 0 auto;
@@ -12,4 +11,9 @@
 }
 .mat-column-description {
     flex: 3 1 70%;
+}
+
+.main-table {
+    margin-top: 4px;
+    min-height: calc(100% - 72px);
 }

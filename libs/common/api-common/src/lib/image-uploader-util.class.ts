@@ -57,5 +57,4 @@ export class ImageUploaderUtil {
         };
         reader.readAsDataURL(blob);
     }
-
 }

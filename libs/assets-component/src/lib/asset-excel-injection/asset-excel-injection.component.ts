@@ -78,7 +78,6 @@ export class AssetExcelInjectionComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
         this.isEditable = this.rightsSrv.getUserRights('Asset')?.write;
-        console.log('Editable', this.rightsSrv.getUserRights('Asset'));
     }
 
     onChange(e: any) {

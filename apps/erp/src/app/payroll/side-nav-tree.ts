@@ -1,7 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_AMENDMENT_URL,
-    ABS_ARCHIVE_GENERATOR_URL,
+    ABS_ARCHIVE_GENERATOR_URL, ABS_ARCHIVE_VIEWER_URL,
     ABS_CACO_URL,
     ABS_COMMON_REPORTS_URL,
     ABS_DAS_URL,
@@ -132,6 +132,11 @@ export const payrollNavTree: SideNavNode = {
             name: 'REMUN_DAS',
             icon: 'fas fa-shield-check',
             route: ABS_DAS_URL
+        },
+        {
+            name: 'PAYROLL_ARCHIVE_VIEWER',
+            icon: 'fa-sharp fa-solid fa-box-archive',
+            route: ABS_ARCHIVE_VIEWER_URL
         },
         {
             name: 'REMUN_CACO',

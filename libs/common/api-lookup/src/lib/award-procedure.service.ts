@@ -9,7 +9,7 @@ import {Lookup} from '@ss/common/api-lookup';
 })
 export class AwardProcedureService extends BaseEntityService<Lookup> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AWARD_PROCEDURE_URL);
     }
 

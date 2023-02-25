@@ -5,7 +5,9 @@ import {HttpParams} from '@angular/common/http';
 
 export class BaseEntityExtendedService<T> extends BaseEntityService<T> {
 
-    constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {
+    constructor(protected override httpSrv: HttpService,
+                protected override url: string,
+                protected override parentUrl?: string) {
         super(httpSrv, url, parentUrl);
     }
 

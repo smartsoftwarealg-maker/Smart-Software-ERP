@@ -9,8 +9,8 @@
 
             <mat-form-field class="default-50 sm-50" required autofocus>
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker required="true" formControlName="date"></ss-date-picker>
-                <mat-error *ngIf="form.controls.date.hasError('required')" translate>
+                <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
+                <mat-error *ngIf="form.controls['date']?.hasError('required')" translate>
                     COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
@@ -22,7 +22,7 @@
 
             <mat-form-field class="default-50 sm-50" required>
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker required="true" formControlName="requestDate"></ss-date-picker>
+                <ss-date-picker [required]=true formControlName="requestDate"></ss-date-picker>
                 <!--                <mat-error *ngIf="form.controls.requestDate.hasError('required')" translate>-->
                 <!--                    COMMON_FIELD_REQUIRED-->
                 <!--                </mat-error>-->
@@ -89,7 +89,8 @@
     </mat-card-content>
 </mat-card>
 
-<mat-table *ngIf="id > 0" mat-table [dataSource]="detailData" class="main-table item">
+<div class="item table_div">
+ <mat-table *ngIf="id > 0" mat-table [dataSource]="detailData" class="main-table">
 
     <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
@@ -117,7 +118,7 @@
              *matRowDef="let row; columns: displayedColumns;">
     </mat-row>
 </mat-table>
-
+</div>
 <div *ngIf="id > 0" class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

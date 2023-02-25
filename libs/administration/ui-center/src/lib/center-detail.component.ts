@@ -26,18 +26,18 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
     constructor(
         private loginSrv: LoginService,
         public centerService: CenterService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(centerService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_CENTER');
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         this.centerService.setParentId(this.loginSrv.appCtx?.company)
         return this.lookupsSrv.getFunds()
             .pipe(tap(x => this.funds = x))
@@ -47,7 +47,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             }));
     }
 
-    public setupForm(b: Center) {
+    public override setupForm(b: Center) {
         // Make sure to update the template if you edit the configuration here
         const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 

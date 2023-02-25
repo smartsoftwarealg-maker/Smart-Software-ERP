@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class ActivityService extends BaseEntityService<Activity> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACTIVITY_URL);
     }
 

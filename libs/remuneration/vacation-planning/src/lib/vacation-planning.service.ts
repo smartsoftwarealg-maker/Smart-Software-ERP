@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class VacationPlanningService extends BaseEntityService<VacationPlanning> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, VACATION_PLANNING_URL, '/payroll/years');
         this.parentId = new Date().getFullYear() - 1;
     }
@@ -18,7 +18,7 @@ export class VacationPlanningService extends BaseEntityService<VacationPlanning>
         this.parentId = value;
     }
 
-    getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<VacationPlanning[]> {
+    override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<VacationPlanning[]> {
         return super.getPage(pageModel, filter, sortBy);
     }
 

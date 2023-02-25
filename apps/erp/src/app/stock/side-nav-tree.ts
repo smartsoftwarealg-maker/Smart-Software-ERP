@@ -1,7 +1,5 @@
 import {
     ABS_STOCK_ACCOUNT_URL,
-    ABS_STOCK_AGENT_URL,
-    ABS_LOGISTICS_ARTICLES_URL,
     ABS_STOCK_COST_CENTER_URL,
     ABS_STOCK_INVENTORY_ENTRY_URL,
     ABS_STOCK_INVENTORY_EXIT_URL,
@@ -19,7 +17,7 @@ import {
     ABS_STOCK_ARTICLES_URL,
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_DASHBOARD_URL,
-    ABS_STOCK_CLASSES_URL
+    ABS_STOCK_CLASSES_URL, ABS_ACC_GENERATION_ACCOUNT_URL, ABS_STOCK_GENERATION_ACCOUNT_URL, ABS_STOCK_STOCK_ACCOUNT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -41,7 +39,7 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'Article'
         },
         {
-            name: 'LOGISTICS_AGENT',
+            name: 'COMMON_AGENT',
             icon: 'fas fa-user',
             route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'
@@ -50,6 +48,18 @@ export const stockNavTree: SideNavNode = {
             name: 'LOGISTICS_ACCOUNTS',
             icon: 'fas fa-user-circle',
             route: ABS_STOCK_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
+        {
+            name: 'ACC_STOCK_ACCOUNTS',
+            icon: 'fa-solid fa-wind-turbine',
+            route: ABS_STOCK_STOCK_ACCOUNT_URL,
+            accessRights: 'Account'
+        },
+        {
+            name: 'ACC_GENERATION_ACCOUNTS',
+            icon: 'fa-thin fa-wind-turbine',
+            route: ABS_STOCK_GENERATION_ACCOUNT_URL,
             accessRights: 'Account'
         },
         // {

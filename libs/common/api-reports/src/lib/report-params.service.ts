@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class ReportParamsService extends BaseEntityService<ReportParam> {
 
-    constructor(public httpSrv: HttpService) {
+    constructor(public override httpSrv: HttpService) {
         super(httpSrv, REPORT_PARAMS_URL);
     }
 

@@ -29,20 +29,20 @@ export class CostCenterListComponent extends BaseEntityListComponent<CostCenter>
 
     constructor(
         public costCenterSrv: CostCenterService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
         public lookupSrv: LookupsService,
-        public defReportSrv: DefaultReportService,
-        public confirmationSrv: ConfirmationDialogService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(costCenterSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_COST_CENTER');
     }
 
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupSrv.getCCGroups()
             .pipe(
                 tap(x => this.onCCGroupsLoaded(x)),

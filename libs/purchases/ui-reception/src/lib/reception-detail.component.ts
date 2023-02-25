@@ -42,12 +42,12 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     constructor(
         public receptionService: ReceptionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersSrv: UserListService,
         public supplierSrv: SupplierService,
         public lookupsSrv: LookupsService,
@@ -60,7 +60,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
     }
 
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
         this.reception = form;
         this.importBtn.disabled = form.agent == null || form.agent === undefined;
@@ -85,7 +85,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         });
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
         this.shellSrv.addButton(this.importBtn);

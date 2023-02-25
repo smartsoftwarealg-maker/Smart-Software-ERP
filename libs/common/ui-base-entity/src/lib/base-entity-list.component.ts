@@ -114,8 +114,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
-
-        const rights = !node?.customerRights && !node?.accessRights? {
+        const rights = !node? {
+                read: false,
+                write: false,
+                edit: false,
+                delete: false
+            } as Right :
+            !node.customerRights && !node.accessRights? {
             read: true,
             write: true,
             edit: true,
@@ -344,5 +349,4 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.entitySrv.sortColumn = event;
         this.refresh();
     }
-
 }

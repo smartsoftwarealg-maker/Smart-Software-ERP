@@ -118,9 +118,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         const ref2Validators = this.isANSEJ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
         const form = this.formBuilder.group({
             id: [b.id],
-            reference: [b.reference, [Validators.minLength(this.minLength),  Validators.required]],
-            reference2: [b.reference2 || this.maxReference, ref2Validators],
-            description: [b.description, Validators.required],
+            reference: [{value: b.reference, disabled: !!b.isFinal}, [Validators.minLength(this.minLength),  Validators.required]],
+            reference2: [{value: b.reference2 || this.maxReference, disabled: !!b.isFinal}, ref2Validators],
+            description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
             acquisitionDate: [b.acquisitionDate || today, Validators.required],
             serviceDate: [b.serviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
@@ -189,8 +189,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                     form.controls['reference2'].setValue(this.maxReference);
                     form.controls['reference'].setValue(this.maxReference);
                 });
-            this.setClassListener(form);
         }
+        this.setClassListener(form);
         return form;
     }
 
@@ -356,6 +356,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         if (id > 0) {
             this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route });
         }
+    }
+
+    override readForm(): Asset {
+        return this.form.getRawValue();
     }
 }
 

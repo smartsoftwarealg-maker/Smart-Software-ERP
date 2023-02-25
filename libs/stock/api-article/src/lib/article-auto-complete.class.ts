@@ -11,11 +11,11 @@ export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> 
         super(articleSrv, 'reference', 'description2');
     }
 
-    onValueChanged = (art: string | number) => {
+    override onValueChanged = (art: string | number) => {
         this.evenEmitter.emit(art);
     }
 
-    toString = (x: any) => x ? `${x[this.idField]} ${x[this.descriptionField]}`.substring(0, 50) : null;
+    override toString = (x: any) => x ? `${x[this.idField]} ${x[this.descriptionField]}`.substring(0, 50) : null;
 }
 
 export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Store> {
@@ -25,7 +25,7 @@ export class LotAutoCompleteModel extends DefaultAutoCompleteModel<Store> {
         super(storeNameSrv);
     }
 
-    onValueChanged = (id: number | string) => {
+    override onValueChanged = (id: number | string) => {
         this.evenEmitter.emit(id);
     }
 }

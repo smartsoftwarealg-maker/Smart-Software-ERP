@@ -26,6 +26,8 @@ export interface Article {
     notForSale: boolean;
     klassName?: string;
     markName?: string;
+    minQty?: number;
+    maxQty?: number;
 }
 
 export interface QtyPrice {
@@ -39,4 +41,20 @@ export interface UserStore {
     userId: number;
     storeId: number;
     storeDescription?: string;
+}
+
+export interface AvailableArticle {
+    articleDescription: string;
+    stock: number;
+    price: number;
+    storeId: number;
+    partId: number;
+    imageModel?: ImageModel;
+    qty?: number;
+}
+
+export interface AvailableStock {
+    classId: number;
+    classDescription: String;
+    articles: AvailableArticle[];
 }

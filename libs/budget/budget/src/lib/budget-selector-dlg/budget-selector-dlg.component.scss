@@ -1,0 +1,32 @@
+mat-card {
+    border-radius: 1.4em;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+}
+
+.content_div {
+    width: 90%;
+    max-width: 500px;
+    margin: 8px auto;
+}
+
+.button__div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button i {
+    margin-right: 16px;
+}
+
+mat-card-title {
+    width: 100%;
+    border-bottom: ghostwhite solid 2px;
+    padding: 8px 0;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin: 8px auto;
+}

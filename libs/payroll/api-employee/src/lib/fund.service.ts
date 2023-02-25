@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class FundService extends BaseEntityService<Fund>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, FUNDS_URL);
     }
     public getFunds(): Observable<Fund[]> {

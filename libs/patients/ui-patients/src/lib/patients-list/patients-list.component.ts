@@ -28,12 +28,12 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
 
     constructor(
         public patientService: PatientService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService) {
         super(patientService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, 'COMMON_PATIENTS');
     }

@@ -1,19 +1,28 @@
-mat-table {
-    min-width: 800px;
-}
-
-.main-table {
-    width: 90%;
+.content-div {
+    width: 96%;
     max-width: 1200px;
     margin: 0 auto;
     overflow-y: auto;
     height: calc(50% - 64px);
 }
 
+.main_table {
+    height: 50%;
+    margin-top: 4px;
+}
+
+.child_table {
+    height: 30%;
+}
+
+mat-table {
+    min-width: 1000px;
+}
+
+
 .mat-column-serial_no,
 .mat-column-serialNumber,
 .mat-column-creatorName,
-.mat-column-reappointment,
 .mat-column-requestNumber {
     flex: 1 1 110px;
     border-left: white solid 1px;
@@ -21,9 +30,11 @@ mat-table {
 }
 
 .mat-column-date,
+.mat-column-reappointment,
 .mat-column-acquisitionDate,
 .mat-column-serviceDate,
 .mat-column-reference,
+.mat-column-status,
 .mat-column-reappointment,
 .mat-column-requestDate {
     flex: 1 1 100px;
@@ -46,4 +57,3 @@ mat-table {
     border-left: white solid  1px;
     padding-left: 4px;
 }
-

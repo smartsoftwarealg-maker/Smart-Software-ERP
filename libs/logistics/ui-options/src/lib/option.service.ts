@@ -11,7 +11,7 @@ export const OPTION_URL = '/logistics/options';
 
 export class OptionService extends BaseEntityExtendedService<Option> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OPTION_URL);
     }
 }

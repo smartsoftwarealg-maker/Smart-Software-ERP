@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-elementsinfo",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/elementsinfo/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/elementsinfo"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/elementsinfo"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/elementsinfo/jest.config.ts",
                 "passWithNoTests": true

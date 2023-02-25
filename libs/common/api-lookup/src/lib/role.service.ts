@@ -7,7 +7,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class RoleService extends BaseEntityService<Role> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/lookups/roles');
     }
 }

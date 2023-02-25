@@ -17,6 +17,20 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="appointmentNumber">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_APPOINTMENT_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
+                    {{e.appointmentNumber}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef=receptionNumber>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSET_RECEPTION_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
+                    {{e.receptionNumber}}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="accountno">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
                 <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">

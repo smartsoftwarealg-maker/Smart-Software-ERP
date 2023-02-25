@@ -8,7 +8,7 @@ import {AGENT_PRICES_URL, AgentPrice} from "./agent-price-api";
 })
 export class AgentPriceService extends BaseEntityService<AgentPrice>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AGENT_PRICES_URL);
     }
 

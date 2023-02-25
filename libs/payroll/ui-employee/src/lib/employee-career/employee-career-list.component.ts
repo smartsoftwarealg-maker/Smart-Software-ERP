@@ -95,13 +95,13 @@ export class EmployeeCareerListComponent implements OnInit, OnDestroy {
                 tap((list: Lookup[]) => this.services = this.lookupToMap(list)),
                 switchMap(() => this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize))
             )
-            .subscribe((result: {body: Career[], itemCount: number} )=> {
-                this.data = result.body;
+            .subscribe(result => {
+                this.data = result['body'];
                 this.data.forEach(p => {
                     p.from_date = this.langSrv.formatDate(p.from_date);
                     p.to_date = this.langSrv.formatDate(p.to_date);
                 });
-                this.pagination.elementCount = result.itemCount;
+                this.pagination.elementCount = result['itemCount'];
             });
     }
 

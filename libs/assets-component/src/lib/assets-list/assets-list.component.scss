@@ -1,3 +1,7 @@
+mat-table {
+    min-width: 1600px;
+}
+
 .container {
     height: 100%;
     width: 98%;
@@ -18,7 +22,7 @@
     flex-grow: 0;
 }
 
-.main-table {
+.content-div {
     width: 1400px;
 }
 
@@ -26,23 +30,28 @@
     opacity: 60%;
 }
 
-.mat-column-beneficiary,
-.mat-column-description {
-    flex: 1 1 140px;
+.mat-column-officeDescription,
+.mat-column-beneficiary {
+    flex: 1 1 120px;
 }
 
+.mat-column-description {
+    flex: 1 1 220px;
+}
+
+.mat-column-serial_no,
 .mat-column-reference,
 .mat-column-geolocation,
-.mat-column-officeDescription,
 .mat-column-accountno {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
 }
 
+.mat-column-receptionNumber,
+.mat-column-appointmentNumber,
 .mat-column-depreciationRate,
 .mat-column-useful_life,
 .mat-column-acquisitionValue,
 .mat-column-residualValue,
-.mat-column-serial_no,
 .mat-column-acquisitionDate,
 .mat-column-serviceDate {
     flex: 1 1 90px;

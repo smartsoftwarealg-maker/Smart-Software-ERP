@@ -7,7 +7,7 @@ import { DECISION_PARENT_URL, Decision, DECISION_CHILD_URL } from './employee-ap
 @Injectable({ providedIn: 'root' })
 export class EmployeeDecisionService extends BaseEntityService<Decision> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, DECISION_CHILD_URL, DECISION_PARENT_URL);
     }
 

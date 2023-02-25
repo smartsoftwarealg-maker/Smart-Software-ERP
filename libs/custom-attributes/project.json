@@ -1,4 +1,5 @@
 {
+    "name": "custom-attributes",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/custom-attributes/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/custom-attributes"],
+            "outputs": ["{workspaceRoot}/coverage/libs/custom-attributes"],
             "options": {
                 "jestConfig": "libs/custom-attributes/jest.config.ts",
                 "passWithNoTests": true

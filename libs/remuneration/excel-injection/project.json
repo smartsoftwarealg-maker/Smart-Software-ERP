@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-excel-injection",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/excel-injection/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/excel-injection"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/excel-injection"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/excel-injection/jest.config.ts",
                 "passWithNoTests": true

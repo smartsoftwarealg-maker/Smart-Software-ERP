@@ -1,4 +1,5 @@
 {
+    "name": "purchases-api-reception",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/purchases/api-reception/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/purchases/api-reception"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/purchases/api-reception"
+            ],
             "options": {
                 "jestConfig": "libs/purchases/api-reception/jest.config.ts",
                 "passWithNoTests": true

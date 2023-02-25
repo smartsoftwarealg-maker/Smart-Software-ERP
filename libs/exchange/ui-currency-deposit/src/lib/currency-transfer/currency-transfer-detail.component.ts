@@ -34,11 +34,11 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
         private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public transferService: CurrencyTransferService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_TRANSFERS');
         this.typeAutoCompleteModel['onValueChanged'] = value => this.onTypeChange();
@@ -48,7 +48,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
     }
 
 
-    public setupForm(b: Deposit) {
+    public override setupForm(b: Deposit) {
         this.customerId = b.customerId;
         this.sourceId = b.sourceId;
         if (b.depositType) {
@@ -76,7 +76,7 @@ export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<D
     }
 
 
-    readForm(): Deposit {
+    override readForm(): Deposit {
         const value = super.readForm();
         value.userId = this.loginSrv.appCtx.id;
         value.centerId = this.loginSrv.appCtx.center;

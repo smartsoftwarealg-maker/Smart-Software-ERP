@@ -1,4 +1,7 @@
-.search-div,
+.search-div {
+    display: flex;
+}
+
 .table-div,
 .pagination-container {
     width: 94%;
@@ -12,7 +15,7 @@
     overflow-x: auto;
 }
 
-.main-table {
+.content-div {
     width: 100%;
     min-width: 1000px;
 }

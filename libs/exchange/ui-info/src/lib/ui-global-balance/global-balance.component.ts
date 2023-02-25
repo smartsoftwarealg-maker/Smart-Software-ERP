@@ -32,13 +32,13 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
 
     constructor(public exchangeSrv: GlobalBalanceService,
                 public agentService: AgentService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public router: Router,
-                public route: ActivatedRoute,
-                public defReportSrv: DefaultReportService,
-                public confirmationSrv: ConfirmationDialogService,
-                public pagPersistSrv: PaginatorPersistenceService) {
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override router: Router,
+                public override route: ActivatedRoute,
+                public override defReportSrv: DefaultReportService,
+                public override confirmationSrv: ConfirmationDialogService,
+                public override pagPersistSrv: PaginatorPersistenceService) {
         super(exchangeSrv,
             shellSrv,
             snackBarSrv,

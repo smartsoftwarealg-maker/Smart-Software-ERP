@@ -1,0 +1,39 @@
+.ctrl__div,
+.pagination-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 8px auto;
+    padding: 4px;
+}
+.ctrl__div {
+    display: flex;
+    align-content: center;
+}
+mat-form-field {
+    flex: 2 1 250px;
+}
+mat-radio-group {
+    align-self: center;
+    flex: 1 1 auto;
+}
+mat-radio-button {
+    margin-left: 8px;
+}
+
+.table-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: calc(100% - 170px);
+}
+
+.main-table {
+    width: 100%;
+}
+
+@media (width <= 700px) {
+    .ctrl__div {
+        display: block;
+    }
+
+}

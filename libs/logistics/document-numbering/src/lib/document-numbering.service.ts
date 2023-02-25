@@ -8,7 +8,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 })
 export class DocumentNumberingService extends BaseEntityService<LDocument> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, DOCUMENTS_URL);
   }
 }

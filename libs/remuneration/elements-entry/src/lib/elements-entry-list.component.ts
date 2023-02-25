@@ -44,13 +44,13 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
 
     constructor(
         public infoSrv: ElementsEntryService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService,
         private employeeSrv: EmployeeService,
         private httpSrv: HttpService,
         private monthSelectorSrv: PayrollMonthService,
@@ -64,13 +64,13 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         })
     }
 
-    getPage(): Observable<ELine[]> {
+    override getPage(): Observable<ELine[]> {
         const mode = this.infoSrv.selectionMode === 1? 'false' : 'true';
         const extraPrams = new HttpParams().set('input', this.infoSrv.selectedInput).set('fixed', mode);
         return this.infoSrv.selectedInput == 0 ? of([]) : this.infoSrv.getPage(this.pagination, null, null, extraPrams);
     }
 
-    processLoadedData(data: ELine[]): Observable<ELine[]> {
+    override processLoadedData(data: ELine[]): Observable<ELine[]> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.mainTableWidth = 900 + 120 * colList.length;
@@ -85,7 +85,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         return of(res);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.infoSrv.load();
         this.monthSelectorSrv
@@ -109,7 +109,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         this.refresh();
     }
 
-    select(id: number) {
+    override select(id: number) {
         super.select(id);
         this.infoSrv.getSlip(id).subscribe(res => {
             this.paySlip = res || [];
@@ -147,6 +147,5 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
                     }
                 })
         }
-        console.log(this.form.value);
     }
 }

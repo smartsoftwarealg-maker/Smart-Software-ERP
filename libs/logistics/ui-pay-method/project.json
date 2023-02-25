@@ -1,4 +1,5 @@
 {
+    "name": "logistics-ui-pay-method",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-pay-method/src",
@@ -15,7 +16,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/ui-pay-method"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/ui-pay-method"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/ui-pay-method/jest.config.ts",
                 "passWithNoTests": true

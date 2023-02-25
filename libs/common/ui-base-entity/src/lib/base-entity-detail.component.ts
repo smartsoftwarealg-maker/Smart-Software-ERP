@@ -97,14 +97,14 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return this.route.params
             .pipe(
                 switchMap(p => {
-                    this.queryId = +p.id;
+                    this.queryId = +p['id'];
                     return this.loadEntity(this.queryId || 0);
                 })
             );
     }
 
     //public assignQueryParams(p: any) {
-    //    this.queryId = +p.id;
+    //    this.queryId = +p['id'];
     //}
 
     public loadEntity(id: number): Observable<T> {
@@ -129,7 +129,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         }
     }
 
-    /** called with the new id to allow to upload attatchement to this object */
+    /** called with the new id to allow to upload attachment to this object */
     public uploadAttachments(id: number): Observable<any> {
         return of(null);
     }
@@ -146,9 +146,15 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         }
         const val: T = this.readForm();
         val.id = this.queryId;
-        let obs: Observable<any> = val.id === 0
+        let obs: Observable<any> = val.id === 0 && false// TO SOLVE IDIOTS' PROBLEM
             ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; val.id = i; /* todo: navigate to the correct route using the new id*/ }))
-            : this.entitySrv.update(val);
+            : this.entitySrv.update(val)
+                .pipe(tap(i => {
+                    if (this.queryId == 0) {
+                        this.queryId = i;
+                        val.id = i;
+                    }
+                }));
         obs = obs.pipe(switchMap(() => this.uploadAttachments(val.id)));
         this.shellSrv.setLoading(true);
         obs.subscribe({

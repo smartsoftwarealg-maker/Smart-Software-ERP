@@ -20,8 +20,8 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'awp', 'markName', 'klassName', 'unit'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'price1', 'markName', 'klassName', 'unit'];
+    private STOCK_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markName', 'klassName', 'unit'];
     displayedColumns = this.STOCK_COLS;
 
     private marks: Mark[] = [];
@@ -30,19 +30,19 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
 
     constructor(
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ARTICLES');
     }
 
-    processLoadedData(data: Article[]): Observable<Article[]> {
+    override processLoadedData(data: Article[]): Observable<Article[]> {
         data?.forEach(p => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
@@ -54,7 +54,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         return of(data);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         zip(this.lookupsSrv.getMarks(),
             this.lookupsSrv.getUnits(),
@@ -65,7 +65,6 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
                 this.units = res[1];
                 this.vats = res[2];
                 this.displayedColumns = res[3].get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
-                console.log('price', this.displayedColumns);
             });
         this.subscriptions.push(
             this.filterCtrl

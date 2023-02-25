@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.main-table {
+.content-div {
     width: 100%;
     max-width: 1624px;
     min-height: 320px;
@@ -29,4 +29,17 @@
         position: sticky;
         margin: auto;
     }
+}
+
+.mat-column-document {
+    flex: 3 1 200px;
+    border-left: gray solid 1px;
+}
+
+.mat-column-debit,
+.mat-column-credit {
+    flex: 1 1 120px;
+    justify-content: end;
+    border-left: gray solid 1px;
+    padding-right: 8px;
 }

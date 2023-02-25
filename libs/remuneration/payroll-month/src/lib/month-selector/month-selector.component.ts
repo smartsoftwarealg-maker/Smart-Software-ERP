@@ -15,8 +15,8 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class MonthSelectorComponent implements OnInit {
     specialList: Special[] = [];
-    private minMonth = 0;
-    private maxMonth = 0;
+    minMonth = 0;
+    maxMonth = 0;
     form: UntypedFormGroup = null;
     processing = false;
 

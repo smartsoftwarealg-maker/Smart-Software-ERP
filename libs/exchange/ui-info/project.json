@@ -1,4 +1,5 @@
 {
+    "name": "exchange-ui-info",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/exchange/ui-info/src",
@@ -15,7 +16,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/exchange/ui-info"],
+            "outputs": ["{workspaceRoot}/coverage/libs/exchange/ui-info"],
             "options": {
                 "jestConfig": "libs/exchange/ui-info/jest.config.ts",
                 "passWithNoTests": true

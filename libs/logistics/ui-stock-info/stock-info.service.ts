@@ -13,7 +13,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class StockInfoService extends BaseEntityService<StockInfo> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, STOCK_INFO_URL, ARTICLES_URL);
     }
 

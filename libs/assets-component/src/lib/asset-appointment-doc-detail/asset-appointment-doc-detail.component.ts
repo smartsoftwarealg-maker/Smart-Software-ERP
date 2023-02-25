@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -24,6 +24,7 @@ import {AssetsService} from '../assets.service';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
+import {WorkflowDialogComponent} from '@ss/workflow';
 
 @Component({
   selector: 'ss-asset-appointment-doc-detail',
@@ -31,6 +32,14 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
+    private sendBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-envelope',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_SEND_MESSAGE',
+        visible: true,
+        click: () => this.sendMessage(),
+    }
     requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     editMode = false;
@@ -70,11 +79,15 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
     }
 
-    public setupForm(b: ASSAppointmentHeader) {
+    public override setupForm(b: ASSAppointmentHeader) {
         this.editMode = b.id != 0;
         this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);
         this.detailSrv.setParentId(b.id || 0);
+        if (this.isEditable) {
+            this.shellSrv.addButton(this.sendBtn);
+        }
+        this.isEditable = this.sendBtn.visible = this.saveButton.visible = this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
         this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
             .pipe(tap(res => this.childAttributes = res),
@@ -225,4 +238,22 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         }
     }
 
+    private sendMessage() {
+        if (!this.sendBtn.disabled) {
+            const id = this.form.controls['id'].value;
+            const dialogRef = this.dialog.open(WorkflowDialogComponent, {
+                width: '350px',
+                height: '400px',
+                data: { assetAppointmentId: id, senderId: this.loginSrv.appCtx.id }
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result && result['message']) {
+                    this.snackBarSrv.showSuccessMessage();
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
+            });
+        }
+    }
 }

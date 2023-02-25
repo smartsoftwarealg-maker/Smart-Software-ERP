@@ -7,7 +7,7 @@ import { WIVES_PARENT_URL, WIVES_CHILD_URL, Wife } from './employee-api';
 @Injectable({ providedIn: 'root' })
 export class EmployeeWivesService extends BaseEntityService<Wife> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, WIVES_CHILD_URL, WIVES_PARENT_URL);
     }
 

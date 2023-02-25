@@ -1,22 +1,15 @@
-$table_width: 2070px;
-
-:host {
-    display: inline-block;
-    width: 100%;
-}
-
-.table-container {
-    width: 100%;
-    display: block;
-    margin: auto;
-    max-width: $table_width;
-    overflow: auto;
-}
-
 .main-table {
-    width: $table_width;
-    min-height: 320px;
+    width: 2000px;
 }
+.table-container {
+    width: 96%;
+    display: block;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: calc(100% - 64px);
+    overflow-x: auto;
+}
+
 
 // keep the material design specs
 .mat-row, .mat-header-row {
@@ -31,47 +24,41 @@ $table_width: 2070px;
     padding-left: 8px !important;
 }
 
-.mat-column-amount {
-    flex: 0 0 120px;
-    padding-right: 8px !important;
+.mat-column-debit,
+.mat-column-credit {
+    flex: 0 0 100px;
     padding-left: 8px !important;
 }
 
 .mat-column-due_days {
     flex: 0 0 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    justify-content: right;
 }
 
 .mat-column-processDate,
 .mat-column-depositDate,
 .mat-column-date {
     flex: 0 0 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    justify-content: center;
 }
 
 .mat-column-bank {
     flex: 0 0 150px;
-    padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-description {
-    flex: 0 0 300px;
-    padding-right: 8px !important;
+    flex: 0 0 200px;
     padding-left: 8px !important;
 }
 
 .mat-column-agent {
-    flex: 0 0 200px;
-    padding-right: 8px !important;
+    flex: 0 0 150px;
     padding-left: 8px !important;
 }
 
 .mat-column-memo {
     flex: 0 0 180px;
-    padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
@@ -80,4 +67,10 @@ $table_width: 2070px;
     flex: 0 0 120px;
     padding-right: 8px !important;
     padding-left: 8px !important;
+}
+
+.pagination-container {
+    width: 96%;
+    max-width: 1200px;
+    margin: 0 auto;
 }

@@ -16,30 +16,28 @@ import { EmployeeService } from '@ss/payroll/api-employee';
     styleUrls: ['./department-detail.component.scss']
 })
 export class DepartmentDetailComponent extends BaseEntityDetailComponent<Department> implements OnInit, OnDestroy {
-
-    public form: UntypedFormGroup = null;
     public saving: boolean = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(
         public departementSrv: DepartmentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         private employeeSrv: EmployeeService,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(departementSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_DEPARTMENT');
         this.personAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         this.departementSrv.setParentId(0);
         return super.getRouteParam();
     }
 
-    setupForm(a: Department): UntypedFormGroup {
+    override setupForm(a: Department): UntypedFormGroup {
         console.log(a);
         return this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(64)])],
@@ -47,7 +45,7 @@ export class DepartmentDetailComponent extends BaseEntityDetailComponent<Departm
         });
     }
 
-    public readForm(): Department {
+    public override readForm(): Department {
         const formVal = this.form.value as Department;
         return formVal;
     }

@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatChipsModule } from '@angular/material/chips';
+import {MatChipListbox, MatChipsModule} from '@angular/material/chips';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -46,11 +46,11 @@ import { dateToDmyStr, strToDate } from '@ss/common/api-common';
 @Injectable()
 export class AppDateAdapter extends NativeDateAdapter {
 
-    format(date: Date, displayFormat: any): string {
+    override format(date: Date, displayFormat: any): string {
         return dateToDmyStr(date);
     }
 
-    parse(value: any): Date {
+    override parse(value: any): Date {
         return strToDate(value);
     }
 
@@ -100,6 +100,7 @@ export class AppDateAdapter extends NativeDateAdapter {
         MatTreeModule,
         PortalModule,
         ScrollingModule,
+        MatChipsModule
     ],
     providers: [
         { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig },

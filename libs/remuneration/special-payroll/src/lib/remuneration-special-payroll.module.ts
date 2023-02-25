@@ -11,6 +11,7 @@ import {CommonUiDatepickerModule} from '@ss/common/ui-datepicker';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {CommonUiMainPageModule} from '@ss/common/ui-main-page';
 import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-payroll-common';
+import {CommonUiImageInputModule} from '@ss/common/ui-image-input';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import {RemunerationSpecialPayrollCommonModule} from '@ss/remuneration/special-p
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
+        CommonUiImageInputModule,
         RemunerationSpecialPayrollCommonModule
     ],
     declarations: [

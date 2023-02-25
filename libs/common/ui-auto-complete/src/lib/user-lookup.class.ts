@@ -9,7 +9,7 @@ export class UserLookup extends DefaultAutoCompleteModel<User> {
     }
 
 
-    filter = (filter: string) => this.entitySrv
+    override filter = (filter: string) => this.entitySrv
         .getList(0, 50, filter, this.descriptionField)
         .pipe(map(x => x.body.filter(u => !u.blocked && u.fullName)));
 }

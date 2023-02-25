@@ -1,11 +1,15 @@
 {
+    "name": "scheduled-sales-supplier-trucks",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/scheduled-sales/supplier-trucks/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/scheduled-sales/supplier-trucks"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/scheduled-sales/supplier-trucks"
+            ],
             "options": {
                 "jestConfig": "libs/scheduled-sales/supplier-trucks/jest.config.ts",
                 "passWithNoTests": true

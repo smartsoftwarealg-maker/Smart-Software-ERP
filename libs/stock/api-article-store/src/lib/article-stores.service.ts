@@ -10,7 +10,7 @@ import {ARTICLES_URL} from '@ss/stock/api-article';
 })
 export class ArticleStoresService extends BaseEntityExtendedService<ArticleStore> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARTICLE_STORE_URL, ARTICLES_URL);
     }
 }

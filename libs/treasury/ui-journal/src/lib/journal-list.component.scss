@@ -1,21 +1,25 @@
-$table_width: 726px;
-
-:host {
-    display: inline-block;
-    width: 100%;
-}
+$table_width: 800px;
 
 .table-container {
     width: 100%;
+    height: calc(100% - 64px);
     display: block;
     margin: auto;
     max-width: $table_width;
     overflow: auto;
+    padding-top: 8px;
 }
-
-.main-table {
+.pagination-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.content-div {
     width: $table_width;
     min-height: 320px;
+}
+
+mat-table {
+    height: 100%;
 }
 
 // keep the material design specs
@@ -26,14 +30,12 @@ $table_width: 726px;
 
 .mat-column-description {
     flex: 0 0 160px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-jType {
     flex: 0 0 160px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    padding-left: 4px !important;
 }
 
 .mat-column-bankId {
@@ -43,7 +45,6 @@ $table_width: 726px;
 }
 
 .mat-column-bankAccount {
-    flex: 0 0 160px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 0 0 180px;
+    padding-left: 4px !important;
 }

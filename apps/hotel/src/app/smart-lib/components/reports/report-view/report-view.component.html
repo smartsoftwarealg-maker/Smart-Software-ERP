@@ -5,7 +5,7 @@
             <mat-form-field class="f-w" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
                 <mat-select [(ngModel)]="selectedDir" [disabled]="generating"
                     [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }" (ngModelChange)="logIt($event)"
-                    placeholder="{{'SELECT_DIR' | translate:lang}}">
+                    placeholder="{{'SELECT_DIR' | translate}}">
                     <mat-option *ngFor="let dir of dirList" [value]="dir">{{dir.name === '.' ? appName : dir.name}}
                     </mat-option>
                 </mat-select>
@@ -16,7 +16,7 @@
             <mat-form-field class="f-w">
                 <mat-select [(ngModel)]="selectedReport" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }"
                     (ngModelChange)="onReportSelect()" [disabled]="generating"
-                    placeholder="{{'COMMON_SELECT_REPORT' | translate:lang}}">
+                    placeholder="{{'COMMON_SELECT_REPORT' | translate }}">
                     <mat-option *ngFor="let rep of selectedDir['files']" [value]="selectedDir['name'] +'/'+ rep">
                         {{ rep }}
                     </mat-option>

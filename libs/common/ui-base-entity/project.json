@@ -1,4 +1,5 @@
 {
+    "name": "common-ui-base-entity",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/common/ui-base-entity/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/common/ui-base-entity"],
+            "outputs": ["{workspaceRoot}/coverage/libs/common/ui-base-entity"],
             "options": {
                 "jestConfig": "libs/common/ui-base-entity/jest.config.ts",
                 "passWithNoTests": true

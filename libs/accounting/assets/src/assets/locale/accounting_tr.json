@@ -1,5 +1,4 @@
 {
-    "TRANSACTIONS":          "",
     "CASH_FLOW":             "",
     "CONSOLIDATION":         "",
     "FUNDING":               "",
@@ -22,7 +21,6 @@
     "MODIFY_CLOSED_PERIODS": "",
     "UPDATABLE_PERIODS":     "",
     "DEFAULT_LABEL":         "",
-    "JOURNALS":              "",
     "FILE_SELECTOR":         "",
     "PERIOD":                "",
     "CLOSED":                "",
@@ -60,5 +58,6 @@
     "BALANCE":                  "",
     "GL":                       "",
     "DEPRECIATION_RATE": "",
-    "USEFUL_LIFE":       ""
+    "USEFUL_LIFE":       "",
+    "ACC_STOCK_ACCOUNTS":       ""
 }

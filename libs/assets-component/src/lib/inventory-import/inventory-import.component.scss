@@ -1,0 +1,41 @@
+.progress {
+    width: 98%;
+    margin: 0 auto;
+    padding: 8px 0;
+}
+
+mat-card {
+    border-radius: 1.5em;
+    width: 90%;
+    margin: 0 auto;
+}
+
+fieldset {
+    width: 90%;
+    max-width: 700px;
+    margin: 10px auto;
+    border-radius: 1.5em;
+}
+
+.ctrl-div {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 12px auto 0;
+
+}
+.icon {
+    margin-left: 8px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}

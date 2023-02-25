@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LanguageSelectComponent } from './language-select.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { HttpClientModule } from '@angular/common/http';
-import { TranslateDirective } from './translate.directive';
 import { TranslatePipe } from './translate.pipe';
+import {TranslateDirective} from './translate.directive';
 
 @NgModule({
     imports: [
@@ -13,14 +13,14 @@ import { TranslatePipe } from './translate.pipe';
         MaterialModule
     ],
     declarations: [
-        TranslateDirective,
         LanguageSelectComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ],
     exports: [
-        TranslateDirective,
         LanguageSelectComponent,
-        TranslatePipe
+        TranslatePipe,
+        TranslateDirective
     ]
 })
 export class CommonUiLangModule { }

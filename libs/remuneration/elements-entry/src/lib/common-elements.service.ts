@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class CommonElementsService extends BaseEntityService<ElementsInfo> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, COMMON_ELEMENTSINFO_URL);
     }
 

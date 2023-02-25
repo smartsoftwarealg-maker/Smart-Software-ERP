@@ -19,8 +19,9 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
     displayedColumns = [
         'description',
         'number',
-        'amount',
-        'agent',
+        'debit',
+        'credit',
+        'agentName',
         'date',
         'due_days',
         'bank',
@@ -34,19 +35,20 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
 
     constructor(
         public checkSrv: CheckService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(checkSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKS');
+        this.pagination.pageSize = 10;
     }
 
-    public processLoadedData(data: Check[]): Observable<Check[]> {
+    public override processLoadedData(data: Check[]): Observable<Check[]> {
         data.forEach(c => {
             c.date = removeTimeForDateStr(ymdToDmy(c.date));
             c.depositDate = removeTimeForDateStr(ymdToDmy(c.depositDate));
@@ -55,7 +57,7 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         return of(data);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
     }
 }

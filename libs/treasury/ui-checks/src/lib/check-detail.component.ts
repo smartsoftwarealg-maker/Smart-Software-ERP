@@ -19,17 +19,17 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
     aid = 0;
 
     constructor(
+        private agentSrv: AgentService,
         public checkSrv: CheckService,
         private loginSrv: LoginService,
-        public agentSrv: AgentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: FormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
-        public router: Router) {
-        super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKS');
+        public  router: Router) {
+        super(checkSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_CHECKS');
         this.agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     }
 
@@ -37,7 +37,7 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
         super.finishLoading(e);
     }
 
-    public setupForm(a: Check) {
+    public override setupForm(a: Check) {
         this.aid = a.id;
         return this.formBuilder.group({
             id: [a.id],
@@ -53,12 +53,32 @@ export class CheckDetailComponent extends BaseEntityDetailComponent<Check> imple
             date: [a.date, Validators.required],
             due_days: [a.due_days, Validators.required],
             agent: [a.agent, Validators.required],
-            amount: [a.amount, Validators.required],
-            mode: a.mode,
+            debit: [{value: Math.max(a.amount, 0), disabled: this.form?.controls['credit'].value > 0}, Validators.required],
+            credit: [{value: Math.max(-a.amount, 0), disabled: this.form?.controls['debit'].value > 0}, Validators.required],
+            mode: [a.mode || 2],
             canceled: a.canceled,
             memo: a.memo,
             bookId: a.bookId // todo: add this to detail
         });
     }
 
+    onAmount() {
+        const debit = +this.form.value['debit'] || 0;
+        const credit = +this.form.value['credit'] || 0;
+        this.form.controls['debit'].enable({ onlySelf: true });
+        this.form.controls['credit'].enable({ onlySelf: true });
+        if (debit - credit > 0.0) {
+            this.form.controls['debit'].enable({ onlySelf: true });
+            this.form.controls['credit'].disable({ onlySelf: true });
+        } else if (debit - credit < 0) {
+            this.form.controls['credit'].enable({ onlySelf: true });
+            this.form.controls['debit'].disable({ onlySelf: true });
+        }
+    }
+
+    override readForm(): Check {
+        const check = this.form.getRawValue();
+        check.amount = (this.form.controls['debit'].value || 0) - (this.form.controls['credit'].value ||0);
+        return check;
+    }
 }

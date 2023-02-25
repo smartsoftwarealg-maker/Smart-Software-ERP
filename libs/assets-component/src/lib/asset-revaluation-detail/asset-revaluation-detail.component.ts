@@ -43,7 +43,7 @@ export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<
             'ASSET_REVALUATIONS');
     }
 
-    public setupForm(a: AssetRevaluation): UntypedFormGroup {
+    public override setupForm(a: AssetRevaluation): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             reval_type: [a.reval_type, Validators.required],

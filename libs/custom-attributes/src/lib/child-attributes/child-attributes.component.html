@@ -20,7 +20,7 @@
 </div>
 
 <div class="table-div">
-    <mat-table mat-table [dataSource]="childAttributes" class="main-table">
+    <mat-table mat-table [dataSource]="childAttributes" class="content-div">
         <ng-container matColumnDef="attribName">
             <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_ATTRIBUTES</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -50,35 +50,35 @@
         </mat-select>
     </mat-form-field>
     <container-element [ngSwitch]="attributeType" class="default-50">
-        <some-element *ngSwitchCase="1">
+        <div *ngSwitchCase="1">
             <mat-form-field class="default-50">
                 <mat-label translate>ADMINISTRATION_LOOKUP_VALUES</mat-label>
                 <input matInput [formControl]="selectedAttributeCtrl" type="text">
             </mat-form-field>
-        </some-element>
+        </div>
 
-        <some-element *ngSwitchCase="2">
+        <div *ngSwitchCase="2">
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_VALUE</mat-label>
                 <input matInput [formControl]="selectedAttributeCtrl" type="number" step="1">
             </mat-form-field>
-        </some-element>
+        </div>
 
-        <some-element *ngSwitchCase="3">
+        <div *ngSwitchCase="3">
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_VALUE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="attributeLookup"
                                   [formControl]="selectedAttributeCtrl"></ss-auto-complete>
             </mat-form-field>
-        </some-element>
+        </div>
 
-        <some-element *ngSwitchCase="4">
+        <div *ngSwitchCase="4">
             <mat-form-field class="default-50">
                 <mat-label translate>COMMON_DATE</mat-label>
                 <ss-date-picker [formControl]="selectedAttributeCtrl"></ss-date-picker>
             </mat-form-field>
-        </some-element>
+        </div>
 
     </container-element>
 </div>

@@ -22,7 +22,6 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
-import {ABS_LOGISTICS_AGENT_URL} from '../../../../../apps/erp/src/app/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AGENT_ARCHIVES} from '@ss/common/app-archive';
 
@@ -53,22 +52,22 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     constructor(
         private loginSrv: LoginService,
         public agentSrv: AgentService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private router: Router,
         private isParamSrv: IsParamService,
         private departmentSrv: DepartmentService,
         private activitySrv: ActivityService,
         private bankSrv: BankService) {
-        super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_AGENT');
+        super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return this.lookupsSrv
             .getAgentTypes()
             .pipe(
@@ -93,7 +92,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             );
     }
 
-    finishLoading(e: Agent) {
+    override finishLoading(e: Agent) {
         super.finishLoading(e);
         this.form.controls['recordBlocked']
             .valueChanges
@@ -108,7 +107,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             });
     }
 
-    public setupForm(a: Agent) {
+    public override setupForm(a: Agent) {
         const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
         // Make sure to update the template if you edit the configuration here
@@ -211,7 +210,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             return '';
     }
 
-    readForm(): Agent {
+    override readForm(): Agent {
         const a = super.readForm();
         a.price = a.price || 1;
         a.agentType = a.agentType || 0;
@@ -219,17 +218,17 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         return a;
     }
 
-    uploadAttachments(id: number): Observable<any> {
-        return this.agentSrv
-            .get(id)
-            .pipe(tap(agent => {
-                this.form.controls['price'].setValue(agent.price);
-                this.form.controls['agentType'].setValue(agent.agentType);
-                this.form.controls['currency'].setValue(agent.currency);
-                this.form.controls['customerCode'].setValue(agent.customerCode);
-                this.form.controls['creationTime'].setValue(agent.creationTime);
-            }));
-    }
+    // override uploadAttachments(id: number): Observable<any> {
+    //     return this.agentSrv
+    //         .get(id)
+    //         .pipe(tap(agent => {
+    //             this.form.controls['price'].setValue(agent?.price || 0);
+    //             this.form.controls['agentType'].setValue(agent.agentType);
+    //             this.form.controls['currency'].setValue(agent.currency);
+    //             this.form.controls['customerCode'].setValue(agent.customerCode);
+    //             this.form.controls['creationTime'].setValue(agent.creationTime);
+    //         }));
+    // }
 
     updatePassword() {
         if (this.pwd1.value === this.pwd2.value) {
@@ -243,8 +242,10 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         }
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setGoBackFn(() => this.router.navigate([ABS_LOGISTICS_AGENT_URL]).then());
+        const idx = this.router.url.indexOf('agents');
+        const url = this.router.url.substring(0, idx) + 'agents';
+        this.shellSrv.setGoBackPath(url, this.route);
     }
 }

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {Component, ViewChild} from '@angular/core';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -10,6 +10,10 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {Transaction} from '@ss/logistics/api-transaction';
+import {MatDialog} from '@angular/material/dialog';
+import {InventoryService} from '@ss/stock/api-inventory';
+import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
+import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 
 
 @Component({
@@ -18,27 +22,41 @@ import {Transaction} from '@ss/logistics/api-transaction';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Transaction> {
-    manager = false;
+    @ViewChild(InventoryLinesListComponent) detail: InventoryLinesListComponent;
+    private importBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importDocument(),
+    }
+
+
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
 
     constructor(
         private langSrv: LanguageService,
         private loginSrv: LoginService,
-        public inventoryEntryService: InventoryEntryService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        private dialog: MatDialog,
+        public inventoryService: InventoryEntryService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService) {
-        super(inventoryEntryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_ENTRY');
+        super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_INVENTORY_ENTRY');
     }
 
+    ngOnInit() {
+        super.ngOnInit();
+        this.shellSrv.addButton(this.importBtn);
+    }
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
-        this.manager = this.loginSrv.appCtx.manager;
         return this.formBuilder.group({
             id: [b.id],
             document: [0],
@@ -49,8 +67,35 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
             referenceDocDate: [b.referenceDocDate],
             header: [b.header],
             footer: [b.footer],
-            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.manager}, Validators.required]
+            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
         });
+    }
+
+    private importDocument() {
+        if (!this.importBtn.disabled) {
+            const id = this.form.controls['id']?.value;
+            const dialogRef = this.dialog.open(InventoryImportComponent, {
+                width: '600px',
+                height: '360px',
+                disableClose: true,
+                data: {
+                    transactId: id
+                }
+            });
+
+            dialogRef
+                .afterClosed()
+                .subscribe(result => {
+                    if (result && result['count']) {
+                        this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                    } else {
+                        this.snackBarSrv.showFailureMessage();
+                    }
+                    this.detail?.loadDetailLines().subscribe();
+
+                    this.shellSrv.setLoading(false);
+                });
+        }
     }
 
 }

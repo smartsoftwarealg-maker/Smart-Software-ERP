@@ -54,5 +54,8 @@
     "PERCENTAGE":  "Percentage",
     "TRANSFERS":   "Transfers",
     "TRANSFER_RECEPTIONS": "Transfer receptions",
-    "USER_STORES": "User stores"
+    "USER_STORES": "User stores",
+    "RECEPTION_CANCELLATION": "Reception cancellation",
+    "MIN_QTY":                "Minimum qty",
+    "MAX_QTY":                "Security qty"
 }

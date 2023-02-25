@@ -44,7 +44,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'MISSION_PREPARATION');
     }
 
-    public setupForm(b: Mission): UntypedFormGroup {
+    public override setupForm(b: Mission): UntypedFormGroup {
         return this.formBuilder.group({
             id: [b.id],
             number: [b.number],

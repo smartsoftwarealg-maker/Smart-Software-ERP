@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {AgentDetailComponent} from '../agent-detail.component';
 import {Observable} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
+import {Lookup} from '@ss/common/api-lookup';
 
 
 @Component({
@@ -10,7 +11,8 @@ import {switchMap, tap} from 'rxjs/operators';
     templateUrl: './mini-agent-detail.component.html'
 })
 export class MiniAgentDetailComponent extends AgentDetailComponent {
-    public preload(): Observable<any> {
+    banks: Lookup[] = [];
+    public override preload(): Observable<any> {
         return this.lookupsSrv
             .getAgentTypes()
             .pipe(

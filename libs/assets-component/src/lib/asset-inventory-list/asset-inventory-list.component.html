@@ -1,4 +1,4 @@
-<div class="main-table">
+<div class="main-table content-div">
     <mat-table mat-table [dataSource]="data">
 
         <ng-container matColumnDef="officeDescription">
@@ -12,6 +12,13 @@
             <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.assetDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.statusDescription}}
             </mat-cell>
         </ng-container>
 

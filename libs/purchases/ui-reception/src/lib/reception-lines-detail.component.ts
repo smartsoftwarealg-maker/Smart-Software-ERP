@@ -1,16 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
+import {ActivatedRoute} from '@angular/router';
+import {UntypedFormBuilder} from '@angular/forms';
+import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
     BaseTransactionLinesDetailComponent,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-reception-lines-detail',
@@ -20,15 +18,14 @@ import {LoginService} from '@ss/common/api-common';
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
         public receptionLinesSrv: TransactionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public router: Router,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override lotSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(receptionLinesSrv,
             shellSrv,
             snackBarSrv,
@@ -36,7 +33,7 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'STOCK_EDIT_RECEPTION_LINES'
         );

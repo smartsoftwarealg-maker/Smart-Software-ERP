@@ -30,11 +30,11 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
     constructor(
         private langSrv: LanguageService,
         public consumptionService: ConsumptionService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public consumerSrv: ConsumerService,
         public lookupsSrv: LookupsService,
@@ -43,12 +43,12 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
@@ -66,7 +66,7 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
         });
     }
 
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const value = super.readForm();
         value.dealer = value.dealer || this.loginSrv.appCtx.id;
         return value;

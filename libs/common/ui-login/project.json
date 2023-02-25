@@ -1,4 +1,5 @@
 {
+    "name": "common-ui-login",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/common/ui-login/src",

@@ -1,5 +1,9 @@
 <div class="main-container" *ngIf="parentId">
     <div class="add-button">
+        <mat-form-field>
+            <mat-label translate>COMMON_SEARCH</mat-label>
+            <input matInput [formControl]="searchText" type="text">
+        </mat-form-field>
         <button mat-mini-fab color="primary" (click)="showDetail(0)">
             <span class="fas fa-plus"></span>
         </button>
@@ -44,6 +48,13 @@
                 <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{ e.refDescription }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="qtyOrdered">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_ORDERED</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.qtyOrdered | number : '1.2-2'}}
                 </mat-cell>
             </ng-container>
 

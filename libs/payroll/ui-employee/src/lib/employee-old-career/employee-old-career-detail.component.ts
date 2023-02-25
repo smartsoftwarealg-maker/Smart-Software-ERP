@@ -23,28 +23,28 @@ export class EmployeeOldCareerDetailComponent extends BaseEntityDetailComponent<
 
     constructor(
         public employeeOldCareerSrv: EmployeeOldCareerService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(employeeOldCareerSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_OLD_CAREERS');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    this.parentId = +p.id;
+                    this.parentId = +p['id'];
                     this.employeeOldCareerSrv.setParentId(this.parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: OldCareer): UntypedFormGroup {
+    override setupForm(a: OldCareer): UntypedFormGroup {
         this.entity = a;
         return this.form = this.formBuilder.group({
             id: a.id,
@@ -57,7 +57,7 @@ export class EmployeeOldCareerDetailComponent extends BaseEntityDetailComponent<
     }
 
 
-    public readForm(): OldCareer {
+    public override readForm(): OldCareer {
         const formVal = this.form.value as OldCareer;
         formVal.employee = this.parentId;
         return formVal;

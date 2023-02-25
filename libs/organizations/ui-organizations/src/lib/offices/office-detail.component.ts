@@ -25,17 +25,16 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
     buildingLookup = new BuildingLookup(this.buildingSrv);
 
-    public form: UntypedFormGroup = null;
     public saving: boolean = false;
 
     constructor(
         public officeSrv: OfficeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         private buildingSrv: AssetsBuildingService,
         private locationSrv: AssetLocationService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
@@ -43,12 +42,12 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         this.officeSrv.setParentId(0);
         return super.getRouteParam();
     }
 
-    setupForm(a: Office): UntypedFormGroup {
+    override setupForm(a: Office): UntypedFormGroup {
         this.form = this.formBuilder.group({
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
             code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(4)])],
@@ -61,7 +60,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         return this.form;
     }
 
-    public readForm(): Office {
+    public override readForm(): Office {
         const formVal = this.form.value as Office;
         return formVal;
     }

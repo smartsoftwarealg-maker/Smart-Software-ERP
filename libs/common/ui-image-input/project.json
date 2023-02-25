@@ -1,4 +1,5 @@
 {
+    "name": "common-ui-image-input",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/common/ui-image-input/src",

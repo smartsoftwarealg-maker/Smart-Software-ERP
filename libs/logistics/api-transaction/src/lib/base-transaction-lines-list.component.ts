@@ -3,14 +3,18 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of, zip} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {Observable, of, Subscription, zip} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import {LINES_DETAIL_URL, LoginService, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
+import {FormControl} from '@angular/forms';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 
-export class BaseTransactionLinesListComponent {
-
+@Directive()
+export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    protected subscription: Subscription = null;
+    searchText = new FormControl('');
     parentId: number;
     data: TransactionLine[];
     selectedId: number;
@@ -31,20 +35,26 @@ export class BaseTransactionLinesListComponent {
         this.pagination.onChange = () => this.loadDetailLines().subscribe(x => this.shellSrv.setLoading(false));
     }
 
-    onInit() {
+    ngOnInit() {
         this.route
             .params
-            .pipe(map(p => +p.id),
+            .pipe(map(p => +p['id']),
                 tap(id => this.parentId = id),
                 switchMap(_ => this.loadDetailLines()))
             .subscribe(_ => this.shellSrv.setLoading(false));
+        this.subscription = this.searchText
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe( str => this.loadDetailLines().subscribe());
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
         // this.shellSrv.setLoading(true);
         this.detailSrv.setParentId(this.parentId);
         return this.detailSrv
-            .getPage(this.pagination, null, null)
+            .getPage(this.pagination, this.searchText.value, null)
             .pipe(tap(data => this.data = data),
                  switchMap(res => of(this.data)));
     }
@@ -98,5 +108,13 @@ export class BaseTransactionLinesListComponent {
             ['./' + LINES_DETAIL_URL + '/' + id],
             {relativeTo: this.route.parent, queryParams: params}
         ).then();
+    }
+
+    unsubscribe(): void {
+        this.subscription?.unsubscribe();
+    }
+
+    ngOnDestroy() {
+        this.subscription?.unsubscribe();
     }
 }

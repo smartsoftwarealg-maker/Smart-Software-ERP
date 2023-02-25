@@ -12,7 +12,7 @@ import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
 })
 export class AgentService extends BaseEntityExtendedService<Agent> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, AGENT_URL);
     }
 
@@ -20,7 +20,7 @@ export class AgentService extends BaseEntityExtendedService<Agent> {
         return this.httpSrv.get<Agent[]>('/agents?ids=' + ids.join(','));
     }
 
-    setURL(url: string) {
+    override setURL(url: string) {
         super.url = url;
     }
 

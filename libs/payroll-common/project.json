@@ -1,4 +1,5 @@
 {
+    "name": "payroll-common",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/payroll-common/src",
@@ -6,7 +7,7 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/payroll-common"],
+            "outputs": ["{workspaceRoot}/coverage/libs/payroll-common"],
             "options": {
                 "jestConfig": "libs/payroll-common/jest.config.ts",
                 "passWithNoTests": true

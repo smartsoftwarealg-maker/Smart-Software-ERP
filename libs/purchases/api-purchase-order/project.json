@@ -1,4 +1,5 @@
 {
+    "name": "purchases-api-purchase-order",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/purchases/api-purchase-order/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/purchases/api-purchase-order"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/purchases/api-purchase-order"
+            ],
             "options": {
                 "jestConfig": "libs/purchases/api-purchase-order/jest.config.ts",
                 "passWithNoTests": true

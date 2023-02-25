@@ -1,0 +1,10 @@
+.content_div {
+    width: 90%;
+    max-width: 600px;
+    margin: 8px auto;
+}
+
+.container {
+    height: calc(100% - 64px);
+    overflow-y: auto;
+}

@@ -113,11 +113,11 @@ export class LoginService {
             }));
     }
 
-    public setPayrollMonth(month: number): Observable<any> {
-        return this.httpSrv
-            .put('/payroll/month', { 'payMonth': month })
-            .pipe(tap(res => this.httpSrv.updateAuthToken(res)));
-    }
+    // public setPayrollMonth(month: number): Observable<any> {
+    //     return this.httpSrv
+    //         .put('/payroll/month', { 'payMonth': month })
+    //         .pipe(tap(res => this.httpSrv.updateAuthToken(res)));
+    // }
 
     public logout() {
         //     localStorage.removeItem('auth_token');

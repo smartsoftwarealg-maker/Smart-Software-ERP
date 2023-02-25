@@ -1,0 +1,50 @@
+form {
+    width: 96%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.ctr_div {
+    width: 200px;
+    margin: 16px auto 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.imj {
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    margin: 16px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    max-height: 90%;
+    max-width: 90%;
+}
+
+
+.button__div {
+    width: 100%;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+    flex: 1 1 40%;
+}
+
+
+.input__div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.input__div input {
+    background: #00AAAA;
+    flex: 2 1 50%;
+}

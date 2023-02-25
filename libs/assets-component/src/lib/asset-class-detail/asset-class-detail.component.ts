@@ -28,7 +28,7 @@ export class AssetClassDetailComponent extends BaseEntityDetailComponent<AssetCl
     }
 
 
-    public setupForm(b: AssetClass) {
+    public override setupForm(b: AssetClass) {
         return this.formBuilder.group({
             id: [b.id],
             depreciationRate: [b.depreciationRate, Validators.maxLength(50)],

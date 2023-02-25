@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-elements-entry",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/elements-entry/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/elements-entry"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/elements-entry"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/elements-entry/jest.config.ts",
                 "passWithNoTests": true

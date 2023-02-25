@@ -3,6 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@muaazh/datepicker/theming' as datepicker;
 @use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 mat.$theme-ignore-duplication-warnings:true;
 
@@ -16,6 +17,8 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
+    //font-size: small;
+    font-family: Roboto, sans-serif;
 }
 
 
@@ -200,7 +203,7 @@ $ss-green: (
     .selected {
         // background-color: map-get($background, selected-button);
         background-color: rgba($color: #5555FF, $alpha: 0.3) !important;
-        font-size: 1.1em;
+        font-size: 1.05em;
         font-weight: bold;
     }
 
@@ -718,6 +721,13 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     margin: 0 1%;
     max-width: 17.6%;
     width: 17.6%;
+}
+
+.default-80 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(80% - 30px);
+    width: calc(80% - 30px);
 }
 
 .default-25 {

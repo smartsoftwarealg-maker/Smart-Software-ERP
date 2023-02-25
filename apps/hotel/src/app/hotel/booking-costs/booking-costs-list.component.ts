@@ -33,7 +33,7 @@ export class BookingCostListComponent extends AbstractEntityList<ChargingCost, B
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public matDialog: MatDialog) {
         // entity: null
         super(new BackendDataSource(httpSrv, bookingCostsUrl), userSrv.getRights(null), snackBarSrv, PaginationModel.newInstance());

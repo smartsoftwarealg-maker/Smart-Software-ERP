@@ -1,0 +1,15 @@
+{
+    "INCOME":        "Income",
+    "EXPENSE":       "Expense",
+    "ADD_ACCOUNT":   "Add account",
+    "BUDGETS":       "Budgets",
+    "BUDGET_GROUPS": "Budget groups",
+    "REQUESTED_AMOUNT": "Requested amount",
+    "SELECT_BUDGET":    "Select budget",
+    "BUDGET_PLANNING":  "Budget planning",
+    "ALLOCATED_AMOUNT": "Allocated amount",
+    "REQUESTED_QTY":    "Requested qty",
+    "ALLOCATED_QTY":    "Allocated qty",
+    "CLOSING_AMOUNT":   "Closing amount",
+    "COMPLEMENT":       "Complement"
+}

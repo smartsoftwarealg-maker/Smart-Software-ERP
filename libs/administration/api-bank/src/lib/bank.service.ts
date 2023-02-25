@@ -8,7 +8,7 @@ import {Bank, BANKS_URL} from './bank-api';
 })
 export class BankService extends BaseEntityService<Bank>{
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, BANKS_URL);
     }
 }

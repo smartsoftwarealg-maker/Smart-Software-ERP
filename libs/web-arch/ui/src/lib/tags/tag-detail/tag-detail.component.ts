@@ -19,15 +19,15 @@ export class TagDetailComponent extends BaseEntityDetailComponent<Tag> {
 
     constructor(
         public tagSrv: TagService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(tagSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'WAR_TAGS');
     }
 
-    public setupForm(e: Tag): UntypedFormGroup {
+    public override setupForm(e: Tag): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

@@ -23,7 +23,7 @@ export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDet
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public override articleSrv: ArticleService,
-        public override storeNameSrv: LotsService,
+        public override lotSrv: LotsService,
         public override lookupsSrv: LookupsService) {
         super(detailSrv,
               shellSrv,
@@ -32,7 +32,7 @@ export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDet
               formBuilder,
               confirmationSrv,
               articleSrv,
-              storeNameSrv,
+              lotSrv,
               lookupsSrv,
               'PURCHASES_PURCHASE_REQUEST');
     }

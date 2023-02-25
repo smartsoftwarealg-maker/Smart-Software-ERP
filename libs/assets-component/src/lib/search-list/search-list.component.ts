@@ -37,6 +37,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         'depreciationRate',
         'useful_life',
         'residualValue',
+        'key'
     ];
 
     private AQS_COLS = [
@@ -52,6 +53,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         'depreciationRate',
         'useful_life',
         'residualValue',
+        'key'
     ];
 
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
@@ -72,7 +74,11 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         serviceDateTo:     [this.FUTURE],
         acquisitionValue:  [0],
         location:          [0],
-        consolidated:      [false]
+        consolidated:      [false],
+        invoiceNumber:     [''],
+        orderNumb:         [''],
+        status:            [''],
+        receptionNumber:   [0]
     });
     officeAutoCompleteModel  = new OfficeAutoComplete(this.officeSrv);
 
@@ -171,6 +177,11 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         return (key.indexOf('Date') > 0) ? this.langSrv.formatDate(value) : value;
     }
 
+    openAsset(id: number) {
+        if (id > 0) {
+            this.router.navigate(['../assets', id], { relativeTo: this.route });
+        }
+    }
 }
 
 class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {

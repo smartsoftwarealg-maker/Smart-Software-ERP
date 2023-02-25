@@ -8,7 +8,7 @@ import {HttpService, User, USER_URL} from '@ss/common/api-common';
 })
 export class UserListService extends BaseEntityExtendedService<User> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, USER_URL);
     }
 }

@@ -1,4 +1,5 @@
 {
+    "name": "accounting-accounting-accounts",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/accounting/accounting-accounts/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/accounting/accounting-accounts"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/accounting/accounting-accounts"
+            ],
             "options": {
                 "jestConfig": "libs/accounting/accounting-accounts/jest.config.ts",
                 "passWithNoTests": true

@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+    min-width: 700px;
+}
+.table_div {
+    overflow-x: auto;
+    width: 100%;
+    height: calc(100% - 48px);
+}
+
+.button_div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_div {
+    width: 90%;
+    max-width: 1000px;
+    margin: 8px auto;
+}
+
+.number {
+    text-align: right;
+}
+
+td.mat-cell:first-of-type {
+    padding-left: 0;
+}
+
+.right-radio-button {
+    margin-left: 32px;
+}

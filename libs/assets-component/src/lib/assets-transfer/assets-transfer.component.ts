@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OfficeService} from '@ss/common/api-lookup';
 import {OfficeAutoComplete} from '../assets-api';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
 import {AssetsTransferService} from '../assets-transfer.service';
-import {IsParamService} from '@ss/common/api-common';
+import {IsParamService, UserRightsService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-assets-transfer',
@@ -15,6 +15,8 @@ import {IsParamService} from '@ss/common/api-common';
     styleUrls: ['./assets-transfer.component.scss'],
 })
 export class AssetsTransferComponent implements OnInit {
+    private ASSET_TRANSFER = 'AssetTransfer';
+    editable = false;
     isAQS   = false;
     srcLookup  = new OfficeAutoComplete(this.officeSrv);
     dstLookup  = new OfficeAutoComplete(this.officeSrv);
@@ -34,12 +36,16 @@ export class AssetsTransferComponent implements OnInit {
                 private route: ActivatedRoute,
                 private snackBarSrv: SnackBarService,
                 private isParamSrv: IsParamService,
+                private rightsSrv: UserRightsService,
+                private router: Router,
+                private activatedRoute: ActivatedRoute,
                 private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.isParamSrv.is('AQS').subscribe(res => this.isAQS = res);
         this.shellSrv.setTitle('ASSET_TRANSFER');
+        this.editable = this.rightsSrv.getUserRights(this.ASSET_TRANSFER)?.write;
     }
 
     openSourceDlg() {
@@ -78,6 +84,9 @@ export class AssetsTransferComponent implements OnInit {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
                     this.form.reset();
+                    if (res.id > 0) {
+                        this.router.navigate(['../asset-appointments', res.id], { relativeTo: this.activatedRoute }).then();
+                    }
                 }
             });
     }

@@ -1,4 +1,5 @@
 {
+    "name": "logistics-document-numbering",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/document-numbering/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/document-numbering"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/document-numbering"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/document-numbering/jest.config.ts",
                 "passWithNoTests": true

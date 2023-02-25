@@ -10,7 +10,7 @@ import {Lookup} from '@ss/common/api-lookup';
 @Injectable({ providedIn: 'root' })
 export class SubjectService extends BaseEntityService<Lookup> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/lookups/trn_subjects');
     }
 }

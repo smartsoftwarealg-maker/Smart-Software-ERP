@@ -1,0 +1,134 @@
+import { Routes } from '@angular/router';
+import {
+    ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
+} from '@ss/common/api-common';
+import {
+    LTM_LINES_URL,
+    LTM_MATTER_URL,
+    LTM_PERIODICITY_URL,
+    LTM_CHARTS_URL,
+    LTM_TEST_URL,
+    LTM_TESTING_URL
+} from '../common';
+import {
+    LineMatterDetailComponent,
+    LtmLineDetailComponent,
+    LtmLineListComponent,
+    LtmMatterDetailComponent,
+    LtmMatterListComponent, LtmMatterTestListComponent,
+    LtmPeriodicitiesDetailComponent,
+    LtmPeriodicitiesListComponent,
+    LtmTestDetailComponent,
+    LtmTestListComponent,
+    LtmMatterTestDetailComponent, LtmTestingListComponent, LtmTestingDetailComponent, LtmReportComponent
+} from '@ss/ltm/ltm';
+import {LineMatterListComponent} from '@ss/ltm/ltm';
+
+export const mainRoutes: Routes = [
+    {
+        path: LTM_CHARTS_URL, component: LtmReportComponent
+    },
+    {
+        path: LTM_LINES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmLineListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: LtmLineDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', component: LineMatterListComponent, pathMatch: 'full'},
+                    { path: 'detail',
+                      children: [
+                          { path: ':id', component: LineMatterDetailComponent }
+                      ]
+                    }
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_MATTER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmMatterListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: LtmMatterDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', component: LtmMatterTestListComponent, pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: ':id', component: LtmMatterTestDetailComponent }
+                        ]
+                    }
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_TEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmTestListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: LtmTestDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_PERIODICITY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmPeriodicitiesListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: LtmPeriodicitiesDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LTM_TESTING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: LtmTestingListComponent,
+                canActivate: [CanActivateService]
+            },
+            {
+                path: ':id',
+                component: LtmTestingDetailComponent,
+                canActivate: [CanActivateService],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL }
+];

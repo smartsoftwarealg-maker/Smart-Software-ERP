@@ -1,0 +1,29 @@
+{
+    "name": "purchases-reception-cancellation",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/purchases/reception-cancellation/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/purchases/reception-cancellation"
+            ],
+            "options": {
+                "jestConfig": "libs/purchases/reception-cancellation/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/purchases/reception-cancellation/**/*.ts",
+                    "libs/purchases/reception-cancellation/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

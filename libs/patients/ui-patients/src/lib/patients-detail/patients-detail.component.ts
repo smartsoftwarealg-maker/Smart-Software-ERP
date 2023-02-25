@@ -44,11 +44,11 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
     constructor(
         private loginSrv: LoginService,
         public patientSrv: PatientService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(patientSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PATIENTS');
     }
@@ -78,7 +78,7 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
             );
     }
 
-    public setupForm(a: Patient) {
+    public override setupForm(a: Patient) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
@@ -147,7 +147,7 @@ export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient>
             return '';
     }
 
-    readForm(): Patient {
+    override readForm(): Patient {
         const a = super.readForm();
         a.centerId = this.loginSrv.appCtx.center;
         a.sex = +this.form.controls['sex'].value;

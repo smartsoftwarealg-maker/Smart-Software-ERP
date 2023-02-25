@@ -7,7 +7,7 @@ import {HttpService} from '@ss/common/api-common';
   providedIn: 'root'
 })
 export class InputFiltersService extends BaseEntityService<InputFilter> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, INPUT_FILTER_URL);
     }
 }

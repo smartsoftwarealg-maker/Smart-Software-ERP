@@ -12,9 +12,6 @@ import { UserRightsService } from './user-rights.service';
     providedIn: 'root'
 })
 export class CanActivateService implements CanActivate {
-
-    private requiredWork = () => of(null);
-
     constructor(public router: Router,
         protected httpSrv: HttpService,
         private loginSrv: LoginService,
@@ -34,7 +31,7 @@ export class CanActivateService implements CanActivate {
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {
-        const entity = route.data.entity;
+        const entity = route.data['entity'];
 
         if (entity && !this.rightsSrv.canUserPass(entity)) {
             return false;

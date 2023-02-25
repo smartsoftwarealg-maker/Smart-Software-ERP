@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserMessageService} from '../user-message.service';
 import {LoginService} from '@ss/common/api-common';
-import {map, Observable} from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
 import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
 
@@ -11,6 +11,7 @@ type MBData = {
     transacId?: number;
     payOrderId?: number;
     assetRecepId?: number;
+    assetAppointmentId?: number;
 };
 
 @Component({
@@ -40,6 +41,7 @@ export class WorkflowDialogComponent implements OnInit {
             assetRecepId: this.data.assetRecepId,
             payOrderId: this.data.payOrderId,
             transacId: this.data.transacId,
+            assetAppointmentId: this.data.assetAppointmentId,
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),
@@ -49,7 +51,14 @@ export class WorkflowDialogComponent implements OnInit {
         this.mailboxSrv.setParentId(this.loginSrv.appCtx.id);
         this.mailboxSrv
             .save(ent)
-            .subscribe(res => this.dialogRef.close({ message: this.selectedId }));
+            .pipe(tap(_ => this.dialogRef.close({ message: this.selectedId })))
+            .subscribe({
+                next: res => this.dialogRef.close({ message: this.selectedId }),
+                error: err => {
+                    this.dialogRef.close({ message: 0 });
+                    throw err;
+                }
+            });
     }
 
     public cancel() {

@@ -20,15 +20,15 @@
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_FROM</mat-label>
-            <ss-date-picker required="true" formControlName="fromdate"></ss-date-picker>
-            <mat-error *ngIf="form.controls.fromdate.hasError('required')" translate>
+            <ss-date-picker [required]=true formControlName="fromdate"></ss-date-picker>
+            <mat-error *ngIf="form.controls['fromdate'].hasError('required')" translate>
                 COMMON_FIELD_REQUIRED
             </mat-error>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_TO</mat-label>
-            <ss-date-picker required="true" formControlName="todate"></ss-date-picker>
+            <ss-date-picker [required]=true formControlName="todate"></ss-date-picker>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" class="default-50 sm-100">
@@ -53,6 +53,7 @@
         <mat-form-field floatLabel="always" class="default-50 sm-100">
             <mat-label translate>PAYROLL_DIVISION</mat-label>
             <mat-select formControlName="division">
+                <mat-option [value]="null"> </mat-option>
                 <mat-option *ngFor="let v of divisions" [value]="v.id">
                     {{v.description}}
                 </mat-option>

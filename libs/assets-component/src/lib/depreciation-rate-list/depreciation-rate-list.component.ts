@@ -88,5 +88,4 @@ export class DepreciationRateListComponent implements OnInit {
                 this.pagination.elementCount = res.itemCount;
             });
     }
-
 }

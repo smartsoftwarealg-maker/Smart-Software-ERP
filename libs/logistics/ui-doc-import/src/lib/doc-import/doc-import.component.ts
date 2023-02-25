@@ -15,9 +15,10 @@ export class DocImportComponent implements OnInit {
   public   documentList: Lookup[];
   public   importList: ImportInfo[] = [];
   readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
-  public  document = new UntypedFormControl();
-  private importInfo: ImportInfo = null;
-  private agentId = 0;
+
+  public   document = new UntypedFormControl();
+  private  importInfo: ImportInfo = null;
+  private  agentId = 0;
 
 
   constructor(private dialogRef: MatDialogRef<DocImportComponent>,

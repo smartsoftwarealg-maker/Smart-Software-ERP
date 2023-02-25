@@ -1,4 +1,5 @@
 {
+    "name": "remuneration-payroll-month",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/remuneration/payroll-month/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/remuneration/payroll-month"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/payroll-month"
+            ],
             "options": {
                 "jestConfig": "libs/remuneration/payroll-month/jest.config.ts",
                 "passWithNoTests": true

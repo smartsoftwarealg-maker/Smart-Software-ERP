@@ -14,7 +14,8 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 @Component({
     selector: 'ss-payments-list',
     templateUrl: './payments-list.component.html',
-    styleUrls: ['./payments-list.component.scss', '../../../../../common/assets/src/assets/main-container.scss']
+    styleUrls: ['./payments-list.component.scss',
+        '../../../../../common/assets/src/assets/main-container.scss']
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     displayedColumns = [
@@ -28,14 +29,14 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     constructor(
         private agentSrv: AgentService,
         public paymentSrv: PaymentsListService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(paymentSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_PAYMENTS');
 
         this.route.data.subscribe(data => {

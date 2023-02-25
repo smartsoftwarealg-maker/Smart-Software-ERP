@@ -35,6 +35,7 @@
     "LOGISTICS-ADMINISTRATION": "إدارة الإمدادات",
     "FINANCE": "التمويل",
     "DASHBOARD": "لوحة التحكم",
+    "DASHBOARD-APP": "لوحة التحكم",
     "HR": "الموارد البشرية",
     "TREASURY": "خزينة",
     "ORGANIZATIONS": "التنظيم",
@@ -44,5 +45,6 @@
     "MISSIONS":        "المهمات",
     "SHOPPING-CART":   "عربة التسوق",
     "FOOD":            "الطعام",
-    "WORKFLOW":        "سير العمل"
+    "WORKFLOW":        "سير العمل",
+    "BUDGET-APP":          "الميزانية"
 }

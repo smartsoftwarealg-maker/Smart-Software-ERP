@@ -29,7 +29,7 @@ export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSo
     constructor(public router: Router,
         public activatedRoute: ActivatedRoute,
         public httpSrv: HttpService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public userSrv: UserService,
         private formBuilder: UntypedFormBuilder,
         private confirmationSrv: ConfirmationDialogService,

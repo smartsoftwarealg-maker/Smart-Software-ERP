@@ -1,12 +1,10 @@
 {
-    "BANK": "ألبنك",
     "EDIT_BANK": "تعديل بنك",
     "CODE": "رمز البنك",
     "DESCRIPTION": "اسم البنك",
     "COMPANY": "الشركة",
     "CENTER": "المركز",
     "NO_RESULT": "لم يتم العثور على أي نتيجة",
-    "ADDRESS": "العنوان",
     "ABBREVIATION": "الإختصار",
     "EDIT_COMPANY": "تعديل شركة",
     "EDIT_CENTER": "تعديل مركز",
@@ -80,5 +78,6 @@
     "FINAL":               "نهائي؟",
     "USER_MESSAGES":       "رسائل المستخدم",
     "USER_DOCUMENTS":      "وثائق المستخدم",
-    "WORKFLOW_INBOX":      "صندوق الوارد"
+    "WORKFLOW_INBOX":      "صندوق الوارد",
+    "SEVERE":              "إبطال جميع حقوق الوصول عندما لا يتم تحديدها"
 }

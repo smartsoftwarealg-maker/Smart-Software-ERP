@@ -1,4 +1,5 @@
 {
+    "name": "administration-ui-user",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/ui-user/src",
@@ -19,7 +20,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/administration/ui-user"],
+            "outputs": ["{workspaceRoot}/coverage/libs/administration/ui-user"],
             "options": {
                 "jestConfig": "libs/administration/ui-user/jest.config.ts",
                 "passWithNoTests": true

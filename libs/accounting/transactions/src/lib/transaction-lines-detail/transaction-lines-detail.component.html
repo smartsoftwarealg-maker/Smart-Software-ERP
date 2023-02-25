@@ -33,7 +33,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50">
-                <mat-label translate>ACC_CHECKNO</mat-label>
+                <mat-label translate>COMMON_CHECKNO</mat-label>
                 <input matInput formControlName="checkNo" type="text" >
                 <mat-error *ngIf="form.controls['checkNo'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
@@ -60,7 +60,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_COST_CENTER</mat-label>
+                <mat-label translate>COMMON_COST_CENTER</mat-label>
                 <ss-auto-complete matInput
                                   [model]="ccLookupModel"
                                   formControlName="costCenterId">

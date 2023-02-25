@@ -1,0 +1,27 @@
+{
+    "name": "ltm-ltm",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/ltm/ltm/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/libs/ltm/ltm"],
+            "options": {
+                "jestConfig": "libs/ltm/ltm/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/ltm/ltm/**/*.ts",
+                    "libs/ltm/ltm/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

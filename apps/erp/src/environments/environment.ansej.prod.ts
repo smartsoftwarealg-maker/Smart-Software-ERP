@@ -30,11 +30,12 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL, WORK_FLOW_URL,
+    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
+import {budgetNavTree} from '../app/budget/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -56,6 +57,7 @@ export const navBar = [
     accountingNavTree,
     assetsNavTree,
     treasuryNavTree,
+    budgetNavTree,
     dashboardNavTree,
     workflowNavTree
 ];
@@ -90,6 +92,10 @@ export const appRoutes: Routes =  [
     {
         path: ACCOUNTING_APP_URL,
         loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+    },
+    {
+        path: BUDGET_BUDGET_URL,
+        loadChildren: () => import('../app/budget/budget.module').then(m => m.BudgetModule)
     },
     {
         path: TREASURY_APP_URL,
@@ -141,7 +147,7 @@ export const appRoutes: Routes =  [
     },
 
     {
-        path: WORK_FLOW_URL,
+        path: WORK_FLOW_APP_URL,
         loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
     },
 
@@ -154,6 +160,6 @@ export const appRoutes: Routes =  [
 ];
 
 export const APPLICATION_LIST = [
-    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD', 'FINANCE', 'HRMASTER',
+    'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
     'PAYROLL', 'PURCHASES', 'WORKFLOW']; //, 'SALES', 'WEBARCHIVE'

@@ -28,11 +28,11 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public exchangeService: CurrencyDepositService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(exchangeService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'EXCHANGE_CURRENCY_DEPOSIT');
         this.currencyAutoCompleteModel.onValueChanged = value => this.onCurrencyChange();
@@ -42,7 +42,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     }
 
 
-    public setupForm(b: Deposit) {
+    public override setupForm(b: Deposit) {
         const debit = b.amount > 0 ? b.amount : 0;
         const credit = b.amount < 0 ? -b.amount : 0;
         this.customerId = b.customerId;
@@ -97,7 +97,7 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
         this.form.controls['soldAmount'].setValue(soldAmount.toFixed(2));
     }
 
-    readForm(): Deposit {
+    override readForm(): Deposit {
         const value = super.readForm();
         value.amount = value['debit'] || 0 - value['credit'] || 0;
         value.userId = this.loginSrv.appCtx?.id;

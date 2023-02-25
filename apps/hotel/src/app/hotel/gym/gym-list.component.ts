@@ -58,7 +58,7 @@ export class GymListComponent extends AbstractEntityList<DisplayableService, Bac
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public gymSrv: GymService,
         public router: Router,
         public activatedRoute: ActivatedRoute) {

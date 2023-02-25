@@ -33,7 +33,7 @@ interface PaymentTree {
     styleUrls: ['./payment-compensation.component.scss']
 })
 export class PaymentCompensationComponent implements OnInit {
-    private AGENT    = 'LOGISTICS_AGENT';
+    private AGENT    = 'COMMON_AGENT';
     private CUSTOMER = 'LOGISTICS_CUSTOMER';
     private SUPPLIER = 'LOGISTICS_SUPPLIER';
 

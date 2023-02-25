@@ -13,7 +13,7 @@ import { of } from 'rxjs';
 
 @Injectable()
 class LookupService extends BaseEntityService<Lookup> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, null);
     }
 }

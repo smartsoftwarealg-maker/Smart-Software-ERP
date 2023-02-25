@@ -9,8 +9,7 @@ import {REPORTS_APPS_URL} from './report-api';
 })
 export class ReportAppsService {
 
-    constructor(protected httpSrv: HttpService) {
-    }
+    constructor(protected httpSrv: HttpService) {}
 
     getApps(): Observable<string[]> {
         return this.httpSrv.get(REPORTS_APPS_URL);

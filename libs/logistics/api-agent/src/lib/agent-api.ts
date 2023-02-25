@@ -1,10 +1,8 @@
-export const APPLICATIONS_URL = '/applications';
 export const AGENT_URL = '/agents';
 export const CUSTOMER_URL = '/customers';
 export const CONSUMER_URL = '/consumers';
 export const BRANCH_URL = '/branches';
 export const SUPPLIER_URL = '/suppliers';
-export const APP_ARCHIVE_URL = '/archives';
 
 export interface Agent {
     id: number;
@@ -62,12 +60,3 @@ export interface Agent {
     license?: string // FIXME:: remove this field
 }
 
-export interface AppArchive {
-    id: number;
-    appId: number;
-    documentId: number;
-    objId: number;
-    docDescription?: string;
-    filename?: string;
-    data?: any[];
-}

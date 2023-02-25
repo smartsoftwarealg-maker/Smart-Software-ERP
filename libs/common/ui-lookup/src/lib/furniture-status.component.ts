@@ -20,13 +20,13 @@ export class FurnitureStatusListComponent extends BaseEntityListComponent<Lookup
 
     constructor(
         public statusSrv: FurnitureStatusService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(statusSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_STATUS');
         this.pagination.pageSize = 10;
     }
@@ -41,15 +41,15 @@ export class FurnitureStatusDetailComponent extends BaseEntityDetailComponent<Lo
 
     constructor(
         public statusSrv: FurnitureStatusService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(statusSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_STATUS');
     }
 
-    public setupForm(e: Lookup): UntypedFormGroup {
+    public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],

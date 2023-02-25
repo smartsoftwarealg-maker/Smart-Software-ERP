@@ -45,7 +45,7 @@ export const accountingNavTree: SideNavNode = {
             route: ABS_ACC_PERIOD_SELECTION_URL
         },
         {
-            name: 'ACC_JOURNALS',
+            name: 'COMMON_JOURNALS',
             icon: 'fas fa-books',
             route: ABS_ACC_JOURNALS_URL,
             accessRights: 'ACCJournal'
@@ -81,7 +81,7 @@ export const accountingNavTree: SideNavNode = {
             accessRights: 'Cashflow'
         },
         {
-            name: 'ACC_TRANSACTIONS',
+            name: 'COMMON_TRANSACTIONS',
             icon: 'fas fa-calculator',
             route: ABS_ACC_TRANSACTIONS_URL,
             accessRights: 'ACCTransaction'

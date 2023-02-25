@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import '@angular/material/theming';
 
 .form_container {
     box-sizing: border-box;
@@ -11,7 +11,7 @@
     margin: 0 auto;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 60px 1fr 64px;
-    grid-template-areas: "date     customer"
+    grid-template-areas: "customer date"
                          "payments debts"
                          "cancel    make";
     @media (max-width: 600px) {
@@ -36,9 +36,11 @@
 }
 .payments {
     grid-area: payments;
+    overflow-y: auto;
 }
 .debts {
     grid-area: debts;
+    overflow-y: auto;
 }
 .cancel {
     grid-area: cancel;

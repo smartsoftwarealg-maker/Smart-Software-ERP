@@ -25,18 +25,18 @@ export class InventoryExitDetailComponent extends BaseEntityDetailComponent<Tran
         private langSrv: LanguageService,
         private loginSrv: LoginService,
         public inventoryExitService: InventoryExitService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryExitService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_INVENTORY_EXIT');
     }
 
 
-    public setupForm(b: Transaction) {
+    public override setupForm(b: Transaction) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],

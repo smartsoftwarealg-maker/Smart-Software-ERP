@@ -1,11 +1,15 @@
 {
+    "name": "stock-inventory-transfers",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/stock/inventory-transfers/src",
     "prefix": "ss",
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/stock/inventory-transfers"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/stock/inventory-transfers"
+            ],
             "options": {
                 "jestConfig": "libs/stock/inventory-transfers/jest.config.ts",
                 "passWithNoTests": true

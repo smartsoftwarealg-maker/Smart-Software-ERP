@@ -41,7 +41,7 @@ export class ArchiveService extends BaseEntityService<ArchiveDocument> {
             ['docx', this.WRD],
         ]);
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARCHIVE_URL);
     }
 

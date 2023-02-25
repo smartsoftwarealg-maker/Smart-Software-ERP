@@ -25,7 +25,7 @@ export class RoomsListComponent extends AbstractEntityList<Room, BackendDataSour
     constructor(public httpSrv: HttpService,
         public userSrv: UserService,
         public langSrv: LanguageService,
-        public snackBarSrv: SnackBarService,
+        public override snackBarSrv: SnackBarService,
         public roomsSrv: RoomsService,
         public router: Router,
         public activatedRoute: ActivatedRoute) {

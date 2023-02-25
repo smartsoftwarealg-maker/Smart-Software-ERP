@@ -82,6 +82,8 @@ export interface Asset {
     site?: string;
     building?: string;
     beneficiaryId?: number;
+    appointmentNumber?: number;
+    isFinal?: number;
 }
 
 export interface Depreciation {
@@ -176,6 +178,7 @@ export interface AssetReception {
     requesterName?: string;
     memo?: string;
     status?: string;
+    validated?: boolean
 }
 
 export interface ASSAppointmentHeader {
@@ -198,6 +201,8 @@ export interface ASSAppointmentHeader {
     modifiedBy?: number;
     creatorName?: string;
     modifierName?: string;
+    validated?: boolean;
+    status?: string;
 }
 
 export interface AssetAppointmentLine {
@@ -221,6 +226,7 @@ export interface AssetInventory {
     userId?: number;
     officeDescription?: string;
     assetDescription?: string;
+    statusDescription?: string;
 }
 
 export interface AssetBuilding {

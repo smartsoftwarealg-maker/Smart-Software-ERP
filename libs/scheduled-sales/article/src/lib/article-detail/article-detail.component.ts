@@ -76,7 +76,7 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
         this.selectedRow = e;
     }
 
-    public setupForm(a: Article) {
+    public override setupForm(a: Article) {
         // this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
         this.color = '#' + (a?.rgb|| 0).toString(16);
         this.aid = a.id;

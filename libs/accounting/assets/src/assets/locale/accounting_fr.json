@@ -1,5 +1,4 @@
 {
-    "TRANSACTIONS":            "Ecritures",
     "CASH_FLOW":               "Flux de trésorerie",
     "CONSOLIDATION":           "Consolidation",
     "FUNDING":                 "Le financement",
@@ -22,7 +21,6 @@
     "MODIFY_CLOSED_PERIODS":   "Autoriser la modification des périodes fermées",
     "UPDATABLE_PERIODS":       "Nombre de périodes modifiables",
     "DEFAULT_LABEL":           "Libellé par défaut",
-    "JOURNALS":                "Journaux",
     "FILE_SELECTOR":           "Sélection de dossier",
     "PERIOD":                  "Période",
     "CLOSED":                  "clôturée",
@@ -38,7 +36,6 @@
     "MANAGE_PROJECTS":         "Gérer des projets",
     "FOLIO":                   "Folio",
     "MANUAL_CASH_FLOW":        "Gérer manuellement la trésorerie",
-    "CHECKNO":                 "Numéro de chèque",
     "ANALYZE_CHECKS":          "Analyser les chèques",
     "CC_REQUIRED":             "Le centre de coûts est requis",
     "PERIOD_SELECTION":        "Sélection de la période",
@@ -65,6 +62,8 @@
     "BALANCE":                  "Solde",
     "GL":                       "Grand livre général",
     "DEPRECIATION_RATE":  "Taux d'amortissement",
-    "USEFUL_LIFE":        "Vie utile"
+    "USEFUL_LIFE":        "Vie utile",
+    "File":                      "Exercise",
+    "STOCK_ACCOUNTS":       "Comptes de stock"
 }
 

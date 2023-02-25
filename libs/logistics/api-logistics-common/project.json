@@ -1,4 +1,5 @@
 {
+    "name": "logistics-api-logistics-common",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/api-logistics-common/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/api-logistics-common"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/api-logistics-common"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/api-logistics-common/jest.config.ts",
                 "passWithNoTests": true

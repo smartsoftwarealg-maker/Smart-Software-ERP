@@ -1,4 +1,5 @@
 {
+    "name": "logistics-ui-stock-info",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-stock-info/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/ui-stock-info"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/ui-stock-info"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/ui-stock-info/jest.config.ts",
                 "passWithNoTests": true

@@ -158,7 +158,6 @@
     "UNCONFIRM": "انقر لإلغاء التاكيد",
     "STATUS": "الحالة",
     "LOCKED": "مغلق",
-    "AGENT": "الشركاء",
     "ARTICLE": "البضائع",
     "CUR_EXCHANGE": "الصرف",
     "HRCOMMON": "الموارد البشرية المشتركة",
@@ -206,7 +205,6 @@
     "DB_UPDATER":        "محدث قاعدة البيانات",
     "DECISION":          "قرار",
     "DECISIONS":          "قرارات",
-    "EMPLOYEE":          "الموظف",
     "REQUESTER":          "الطالب",
     "SELECT_REPORT":      "اختر تقريرا",
     "PRINT_REPORT":       "طباعة التقرير الافتراضي",
@@ -247,6 +245,24 @@
     "TIME":                "زمن",
     "SHOW_ALL":            "عرض الكل",
     "EPAYMENT":            "الدفع الإلكتروني",
+<<<<<<< HEAD
     "FIRST_NAME_AR": "الإسم",
     "LAST_NAME_AR": "اللقب"
+=======
+    "MORE":                "مزيد",
+    "BANK":                "ألبنك",
+    "TRANSACTIONS":             "المعاملات",
+    "CHECKNO":                  "رقم الصك",
+    "JOURNALS":                 "الدفاتر",
+    "AGENTS":                   "العملاء",
+    "AGENT":                    "الزبون",
+    "EDIT_AGENT": "تعديل العميل",
+    "COST_CENTER":"مركز التكلفة",
+    "ADDRESS": "العنوان",
+    "MOBILE": "النقال",
+    "COMPACT":                    "مدمج",
+    "INVOICE_NUMBER":             "رقم الفاتورة",
+    "BUDGET":                     "الميوانية",
+    "CHARTS":                     "الرسوم البيانية"
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
 }

@@ -9,7 +9,7 @@ import {PERSON_URL} from '../employee-diplomas/employee-diploma-api';
 })
 export class PunishmentService extends  BaseEntityService<Punishment> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv,  PUNISHMENTS_URL, PERSON_URL);
     }
 }

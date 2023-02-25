@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 
 export class AnomalyService extends BaseEntityService<Anomaly> {
     private readonly URL = '/inventory/anomalies';
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/inventory/anomalies');
     }
 

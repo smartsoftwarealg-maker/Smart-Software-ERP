@@ -2,15 +2,10 @@ import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
 import {
     BaseTransactionLinesListComponent,
-    TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 
@@ -26,24 +21,21 @@ export class DeliveryLinesListComponent extends BaseTransactionLinesListComponen
         'store',
         'reference',
         'description',
+        'qtyOrdered',
         'qtySatisfied',
         'price',
         'vat',
     ];
 
     constructor(
-        public detailSrv: TransactionLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public articleSrv: ArticleService,
-        public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
+        public override detailSrv: TransactionLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override articleSrv: ArticleService,
+        public override storeNamesSrv: LotsService,
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
-    }
-
-    ngOnInit() {
-        super.onInit();
     }
 }

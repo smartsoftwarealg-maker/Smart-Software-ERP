@@ -1,0 +1,92 @@
+<div class="main_container">
+    <div class="tree_container">
+        <mat-radio-group>
+            <mat-radio-button value="1" [checked]="true" (change)="onChange($event)" translate>BUD_INCOME
+            </mat-radio-button>
+            <mat-radio-button class="right-radio-button" value="2" (change)="onChange($event)" translate>BUD_EXPENSE
+            </mat-radio-button>
+        </mat-radio-group>
+        <div class="tree_div">
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+                <mat-tree-node *matTreeNodeDef="let node"
+                               class="selectable"
+                               matTreeNodePadding
+                               draggable="true"
+                               (drop)="onGroupDrop($event, node.id)"
+                               (dragover)="onOverChild($event, node.id)"
+                               (dragstart)="onStart($event, node?.id+ '')"
+                               [class.selected]="node.id == selectedGroup?.id"
+                               (click)="select(node)">
+                    {{node.code}} {{node.description}}
+                </mat-tree-node>
+                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                    <div class="mat-tree-node"
+                         draggable="true"
+                         (drop)="onGroupDrop($event, node.id)"
+                         (dragover)="onOverChild($event, node.id)"
+                         (dragstart)="onStart($event, node?.id+ '')"
+                         (click)="select(node)"
+                         [class.selected]="node.id == selectedGroup?.id">
+                        <button mat-icon-button matTreeNodeToggle
+                                [attr.aria-label]="'Toggle ' + node.description">
+                            <mat-icon class="mat-icon-rtl-mirror">
+                                {{treeControl.isExpanded(node) ? '-' : '+'}}
+                            </mat-icon>
+                        </button>
+                        {{node.code}} {{node.description}}
+                    </div>
+                    <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+                         role="group">
+                        <ng-container matTreeNodeOutlet></ng-container>
+                    </div>
+                </mat-nested-tree-node>
+            </mat-tree>
+        </div>
+        <div class="group_accounts">
+            <mat-list>
+                <mat-list-item *ngFor="let a of budgetAccountData"
+                               [class.selected]="a?.id === selectedBudgetAccount?.id"
+                               (click)="selectBudgetAccount(a)">
+                    <button mat-icon-button
+                            (click)="deleteBudgetAccount(a.id)"
+                            matTooltip="{{ 'COMMON_DELETE' | translate }}"
+                            [disabled]="!a?.id">
+                        <i class="fa-solid fa-trash-slash"></i>
+                    </button>
+
+                    {{ a.accountNo + ' ' + a.description }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+
+    <mat-card class="account_div">
+        <mat-form-field>
+            <mat-label translate>COMMON_SEARCH</mat-label>
+            <input matInput [formControl]="searchText" type="text">
+        </mat-form-field>
+
+        <div class="list_div">
+            <mat-list id="account"
+                      draggable="true"
+                      (dragover)="onOver($event)"
+                      (drop)="onAccountDrop($event)">
+                <mat-list-item *ngFor="let a of accountData"
+                               (click)="selectAccount(a)"
+                               (dragstart)="onStart($event, a?.id+ '')"
+                               [class.selected]="a?.id === selectedAccount?.id"
+                               draggable="true">
+                    {{ a.accountNo + ' ' + a.description }}
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <button mat-flat-button
+                color="primary"
+                [disabled]="!selectedGroup || !selectedAccount?.id"
+                (click)="addSelectedAccount()"
+                translate>
+            <i class="fa-solid fa-file-plus"></i>
+            BUD_ADD_ACCOUNT
+        </button>
+    </mat-card>
+</div>

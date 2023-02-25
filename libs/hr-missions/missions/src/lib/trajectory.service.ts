@@ -8,7 +8,7 @@ import {HttpService} from '@ss/common/api-common';
 })
 export class TrajectoryService extends BaseEntityService<Trajectory> {
 
-  constructor(protected httpSrv: HttpService) {
+  constructor(protected override httpSrv: HttpService) {
       super(httpSrv, TRAJECTORY_URL);
   }
 }

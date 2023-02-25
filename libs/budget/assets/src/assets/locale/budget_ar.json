@@ -1,0 +1,15 @@
+{
+    "INCOME":        "دخل",
+    "EXPENSE":       "مصروف",
+    "ADD_ACCOUNT":   "إنشاء حساب",
+    "BUDGETS":       "الميزانيات",
+    "BUDGET_GROUPS": "مجموعات الميزانية",
+    "ALLOCATED_AMOUNT": "الكمية المطلوبة",
+    "REQUESTED_AMOUNT": "تحديد الميزانية" ,
+    "SELECT_BUDGET":    "تخطيط الميزانية",
+    "BUDGET_PLANNING":  "المبلغ المخصص",
+    "REQUESTED_QTY":    "الكمية المطلوبة",
+    "ALLOCATED_QTY":    "الكمية المخصصة",
+    "CLOSING_AMOUNT":   "مبلغ الإغلاق" ,
+    "COMPLEMENT":       "إطراء"
+}

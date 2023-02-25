@@ -25,6 +25,12 @@ export class AppArchiveMainComponent implements OnInit {
     @Input()
     set editable(value: boolean) {
         this.archiveSrv.editable = value;
+        if (this.outlet && this.outlet.isActivated && this.outlet.component) {
+            const comp: any = this.outlet?.component;
+            if (comp && comp['setEditable'] != null) {
+                comp['setEditable'](value);
+            }
+        }
     }
 
     @Input()
@@ -35,7 +41,7 @@ export class AppArchiveMainComponent implements OnInit {
 
     @Input()
     set appId(id: number) {
-        this.archiveSrv.appId = id;
+        this.archiveSrv.appId = id || 0;
         this.refresh();
     }
 

@@ -1,4 +1,5 @@
 {
+    "name": "stock-ui-inventory-anomalies",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/stock/ui-inventory-anomalies/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/stock/ui-inventory-anomalies"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/stock/ui-inventory-anomalies"
+            ],
             "options": {
                 "jestConfig": "libs/stock/ui-inventory-anomalies/jest.config.ts",
                 "passWithNoTests": true

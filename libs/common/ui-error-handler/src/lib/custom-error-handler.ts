@@ -9,7 +9,7 @@ export class CustomErrorHandler extends ErrorHandler {
     }
 
     // I handle the given error.
-    public handleError(error: any): void {
+    public override handleError(error: any): void {
         this.errorSrv.setError(error.originalError || error);
     }
 

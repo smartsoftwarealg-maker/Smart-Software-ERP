@@ -1,12 +1,13 @@
 .main-container {
-    margin-top: 8px;
     height: calc(100% - 72px);
     width: 100%;
-    max-width: 99%;
+    max-width: 98%;
+    margin: 8px auto;
     display: flex;
     flex-direction: column;
     align-content: stretch;
     justify-content: stretch;
+    overflow-y: auto;
 }
 
 .table-container  {
@@ -25,7 +26,9 @@
 
 .pagination-container {
     flex: 0 0 auto;
-    width: 100%;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
     ss-pagination {
         left: 0;
         right: 0;
@@ -45,7 +48,7 @@
     overflow-x: auto;
 }
 
-.main-table {
+.content-div {
     width: 950px;
     margin: 0 auto;
     height: 100%;

@@ -8,7 +8,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 })
 export class LanguageLevelsService extends BaseEntityService<Language> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, LANGUAGE_LEVELS_URL);
     }
 }

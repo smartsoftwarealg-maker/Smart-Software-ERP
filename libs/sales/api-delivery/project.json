@@ -1,4 +1,5 @@
 {
+    "name": "sales-api-delivery",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/sales/api-delivery/src",
@@ -19,7 +20,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/sales/api-delivery"],
+            "outputs": ["{workspaceRoot}/coverage/libs/sales/api-delivery"],
             "options": {
                 "jestConfig": "libs/sales/api-delivery/jest.config.ts",
                 "passWithNoTests": true

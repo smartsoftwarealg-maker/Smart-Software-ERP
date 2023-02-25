@@ -1,4 +1,5 @@
 {
+    "name": "sales-ui-sales-order",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/sales/ui-sales-order/src",
@@ -19,7 +20,7 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/sales/ui-sales-order"],
+            "outputs": ["{workspaceRoot}/coverage/libs/sales/ui-sales-order"],
             "options": {
                 "jestConfig": "libs/sales/ui-sales-order/jest.config.ts",
                 "passWithNoTests": true

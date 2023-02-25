@@ -57,7 +57,7 @@ export class DocInfoComponent {
         },
         {
             group: 'agent',
-            description: 'LOGISTICS_AGENT',
+            description: 'COMMON_AGENT',
             entries: [
                 {
                     name: 'balance',
@@ -77,7 +77,6 @@ export class DocInfoComponent {
                     url: 'agent-debts',
                     paramsProvided: (p: string[]) => p.includes('agentId')
                 },
-                this.ARCHIVE
             ],
         },
         {

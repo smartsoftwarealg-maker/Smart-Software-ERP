@@ -1,6 +1,6 @@
 .item {
     width: 80%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 16px auto;
     padding: 16px;
 }
@@ -24,7 +24,7 @@
     margin: 0 auto 8px;
 }
 
-.main-table {
+.content-div {
     min-height: 30%;
     width: 80%;
     max-width: 800px;
@@ -40,11 +40,11 @@
 }
 
 .mat-column-key {
-    flex: 0 0 24px;
+    flex: 0 0 56px;
 }
 
 .mat-column-description {
-    flex: 1 1 250px;
+    flex: 1 1 200px;
 }
 
 .mat-column-reference {
@@ -54,4 +54,12 @@
 .open-icon {
     cursor: pointer;
     margin-left: 16px;
+}
+
+.table_div {
+    overflow-x: auto;
+}
+
+.main-table {
+    width: 800px;
 }

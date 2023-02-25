@@ -19,11 +19,11 @@ export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<V
 
     constructor(
         private detailSrv: VacationPlanningService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_VACATION_PLANNING');
     }
@@ -39,7 +39,7 @@ export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<V
         });
     }
 
-   ngOnInit() {
+   override ngOnInit() {
        this.shellSrv.setTitle(this.title); // set title save as list
        this.shellSrv.setGoBackPath('..', this.route);
        this.load();

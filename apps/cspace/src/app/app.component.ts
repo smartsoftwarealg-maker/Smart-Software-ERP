@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     loaded = false;
 
-    constructor(private httpSrv: HttpService, public shellSrv: ShellService, public langSrv: LanguageService) {
+    constructor(private httpSrv: HttpService, public override shellSrv: ShellService, public langSrv: LanguageService) {
     }
 
     ngOnInit() {

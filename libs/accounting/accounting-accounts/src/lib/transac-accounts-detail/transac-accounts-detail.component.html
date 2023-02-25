@@ -8,12 +8,22 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="accountno" class="default-100">
+<!--            <mat-form-field id="accountno" class="default-100">-->
+<!--                <mat-label translate>COMMON_ACCOUNTNO</mat-label>-->
+<!--                <input matInput formControlName="accountno" type="text" required autofocus>-->
+<!--                <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED-->
+<!--                </mat-error>-->
+<!--            </mat-form-field>-->
+
+            <mat-form-field class="default-100">
                 <mat-label translate>COMMON_ACCOUNTNO</mat-label>
-                <input matInput formControlName="accountno" type="text" required autofocus>
-                <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED
-                </mat-error>
+                <ss-auto-complete matInput
+                                  [model]="purchaseLookup"
+                                  formControlName="accountno">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
+
 
         </form>
 

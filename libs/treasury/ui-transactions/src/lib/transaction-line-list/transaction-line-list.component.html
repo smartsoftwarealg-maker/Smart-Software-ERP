@@ -1,0 +1,66 @@
+<div class="content__div" *ngIf="parentId > 0">
+    <mat-form-field>
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput [formControl]="searchText" type="text">
+    </mat-form-field>
+
+    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="id < 1"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="delete()"
+            [disabled]="id < 1"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<mat-table mat-table [dataSource]="data" class="main-table content__div">
+
+    <ng-container matColumnDef="invoiceNo">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_INVOICE_NUMBER</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.invoiceNo}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="invoiceDate">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.invoiceDate | date: 'dd/MM/yyyy'}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.description}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="income">
+        <mat-header-cell *matHeaderCellDef translate>TRS_INCOME</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.amount > 0? e.amount : 0 | number: '1.2-2' }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expenses">
+        <mat-header-cell *matHeaderCellDef translate>TRS_EXPENSE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.amount > 0? 0 : -e.amount| number: '1.2-2' }}
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == id" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

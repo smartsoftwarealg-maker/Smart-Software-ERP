@@ -159,7 +159,7 @@
     "UNCONFIRM": "Click to cancel confirmation",
     "STATUS": "Status",
     "LOCKED": "Locked",
-    "AGENT": "Partners",
+    "AGENT": "Partner",
     "ARTICLE": "Article",
     "CUR_EXCHANGE": "Currency exchange",
     "HRCOMMON": "HRMaster common",
@@ -207,7 +207,6 @@
     "DB_UPDATER":        "Database updater",
     "DECISION":           "Decision",
     "DECISIONS":          "Decisions",
-    "EMPLOYEE":           "Employee",
     "REQUESTER":          "Requester",
     "SELECT_REPORT":      "select report",
     "PRINT_REPORT":       "Print default report",
@@ -247,6 +246,23 @@
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
     "EPAYMENT":            "E-payment",
+<<<<<<< HEAD
     "FIRST_NAME_AR": "First name (Arabic)",
     "LAST_NAME_AR": "Last name (Arabic)"
+=======
+    "MORE":                "More",
+    "BANK":                "Bank",
+    "TRANSACTIONS":             "Transactions",
+    "CHECKNO":                  "Check number",
+    "JOURNALS":                 "Journals",
+    "AGENTS":                  "Partners",
+    "EDIT_AGENT": "Edit agent",
+    "COST_CENTER":"Cost center",
+    "ADDRESS": "Address",
+    "MOBILE": "Mobile",
+    "COMPACT":                    "Compact",
+    "INVOICE_NUMBER":             "Invoice number",
+    "BUDGET":                     "Budget",
+    "CHARTS":                     "Charts"
+>>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
 }

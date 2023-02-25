@@ -1,4 +1,5 @@
 {
+    "name": "administration-ui-roles",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/administration/ui-roles/src",
@@ -19,7 +20,9 @@
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/administration/ui-roles"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/administration/ui-roles"
+            ],
             "options": {
                 "jestConfig": "libs/administration/ui-roles/jest.config.ts",
                 "passWithNoTests": true

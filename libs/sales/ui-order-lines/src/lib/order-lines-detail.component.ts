@@ -19,15 +19,14 @@ import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/o
 export class OrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
         public inventoryLinesService: OfferLinesService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
-        public articleSrv: ArticleService,
-        public storeNameSrv: LotsService,
-        public lookupsSrv: LookupsService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override articleSrv: ArticleService,
+        public override lotSrv: LotsService,
+        public override lookupsSrv: LookupsService) {
         super(inventoryLinesService,
             shellSrv,
             snackBarSrv,
@@ -35,7 +34,7 @@ export class OrderLinesDetailComponent extends BaseTransactionLinesDetailCompone
             formBuilder,
             confirmationSrv,
             articleSrv,
-            storeNameSrv,
+            lotSrv,
             lookupsSrv,
             'SALES_EDIT_ORDER_LINES'
         );

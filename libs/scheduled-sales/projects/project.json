@@ -1,4 +1,5 @@
 {
+    "name": "scheduled-sales-projects",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/scheduled-sales/projects/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/scheduled-sales/projects"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/scheduled-sales/projects"
+            ],
             "options": {
                 "jestConfig": "libs/scheduled-sales/projects/jest.config.ts",
                 "passWithNoTests": true

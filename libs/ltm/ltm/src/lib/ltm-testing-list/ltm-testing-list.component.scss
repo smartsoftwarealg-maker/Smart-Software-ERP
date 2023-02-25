@@ -1,0 +1,26 @@
+
+.mat-column-matter,
+.mat-column-test {
+    flex: 1 1 150px;
+}
+
+.mat-column-timeStamp {
+    flex: 1 1 120px;
+}
+.mat-column-value {
+    flex: 1 1 100px;
+    justify-content: right;
+}
+.content_div {
+    width: 96%;
+    max-width: 900px;
+    margin: 8px auto;
+}
+
+.container {
+    min-height: calc(100% - 150px);
+}
+
+mat-table {
+    height: 100%;
+}

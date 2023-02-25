@@ -1,0 +1,66 @@
+<mat-card>
+    <form novalidate [formGroup]="form">
+
+        <mat-form-field required autofocus>
+            <mat-label translate>COMMON_CODE</mat-label>
+            <input matInput formControlName="code" type="text" >
+            <mat-error *ngIf="form.controls['code'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="default-100" required>
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text" >
+            <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_REQUESTED_AMOUNT</mat-label>
+            <input matInput formControlName="reqAmount" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>COMMON_AMOUNT</mat-label>
+            <input matInput formControlName="amount" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_CLOSING_AMOUNT</mat-label>
+            <input matInput formControlName="closingAmount" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_COMPLEMENT</mat-label>
+            <input matInput formControlName="complement" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_REQUESTED_QTY</mat-label>
+            <input matInput formControlName="reqQty" type="number" [min]="0">
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label translate>BUD_ALLOCATED_QTY</mat-label>
+            <input matInput formControlName="acceptQty" type="number" [min]="0">
+        </mat-form-field>
+
+<!--        <mat-form-field class="default-50" required>-->
+<!--            <mat-label translate>BUD_ACCEPTED_AMOUNT</mat-label>-->
+<!--            <input matInput formControlName="acceptAmount" type="number" [min]="0">-->
+<!--        </mat-form-field>-->
+
+    </form>
+</mat-card>
+
+<div class="ctrl-div">
+    <button mat-raised-button color="primary"
+            type="button"
+            (click)="save()">
+        {{ 'COMMON_SAVE' | translate }}
+        <i class="fa-solid fa-upload  icon"></i>
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        {{ 'COMMON_CANCEL' | translate }}
+        <i class="fa-solid fa-rotate-left icon"></i>
+    </button>
+</div>
+

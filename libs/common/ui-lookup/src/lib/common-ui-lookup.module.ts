@@ -50,6 +50,7 @@ import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './cont
 import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-type.component';
 import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './project-motive.component';
 import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './award.procedure.component';
+import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './treasury-group.component';
 
 @NgModule({
     imports: [
@@ -150,7 +151,9 @@ import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './awar
         ProjectMotiveDetailComponent,
         ProjectMotiveListComponent,
         AwardProcedureDetailComponent,
-        AwardProcedureListComponent
+        AwardProcedureListComponent,
+        TreasuryGroupListComponent,
+        TreasuryGroupDetailComponent,
     ],
     exports: [
         VatListComponent,
@@ -239,7 +242,9 @@ import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './awar
         ProjectMotiveDetailComponent,
         ProjectMotiveListComponent,
         AwardProcedureDetailComponent,
-        AwardProcedureListComponent
+        AwardProcedureListComponent,
+        CommonUiAutoCompleteModule,
+        CommonUiConfirmationDialogModule
     ]
 })
 export class CommonUiLookupModule { }

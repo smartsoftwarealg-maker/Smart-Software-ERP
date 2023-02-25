@@ -50,11 +50,11 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     constructor(
         private userListSrv: UserListService,
         private userSrv: UserService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private roleServ: RoleService,
         private loginSrv: LoginService,
@@ -64,7 +64,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     }
 
 
-    public setupForm(b: User) {
+    public override setupForm(b: User) {
         this.curUser = b;
         this.validId = b.id > 0;
         // Make sure to update the template if you edit the configuration here

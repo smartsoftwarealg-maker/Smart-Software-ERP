@@ -8,7 +8,7 @@ import {
     ADMINISTRATION_APP_URL,
     ASSETS_APP_URL,
     DASHBOARD_APP_URL,
-    ORGANIZATIONS_APP_URL, WORK_FLOW_URL,
+    ORGANIZATIONS_APP_URL, WORK_FLOW_APP_URL,
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -55,7 +55,7 @@ export const appRoutes: Routes =  [
         loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
     },
     {
-        path: WORK_FLOW_URL,
+        path: WORK_FLOW_APP_URL,
         loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
     },
     {
@@ -71,5 +71,5 @@ export const appRoutes: Routes =  [
 ];
 
 export const APPLICATION_LIST = [
-    'ADMINISTRATION', 'ASSETS', 'DASHBOARD',
+    'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP',
     'STOCK', 'ORGANIZATION', 'WORKFLOW'];

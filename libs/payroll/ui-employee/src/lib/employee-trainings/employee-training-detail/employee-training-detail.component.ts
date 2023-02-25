@@ -25,12 +25,12 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
 
     constructor(
         public trainingSrv: EmployeeTrainingService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private motiveSrv: MotiveService,
         private subjectSrv: SubjectService,
@@ -45,18 +45,18 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             'PAYROLL_TRAINING');
     }
 
-    protected getRouteParam(): Observable<any> {
+    protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(
                 switchMap(p => {
-                    const parentId = +p.id;
+                    const parentId = +p['id'];
                     this.trainingSrv.setParentId(parentId);
                     return super.getRouteParam();
                 })
             );
     }
 
-    setupForm(a: Training): UntypedFormGroup {
+    override setupForm(a: Training): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee || this.trainingSrv.getParentId(),
@@ -77,5 +77,4 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
             center: [this.loginSrv.appCtx.center]
         });
     }
-
 }

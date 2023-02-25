@@ -37,7 +37,7 @@ export class UiStockInfoComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            this.articleReference = x.articleReference;
+            this.articleReference = x['articleReference'];
             this.loadStockInfo();
         });
 

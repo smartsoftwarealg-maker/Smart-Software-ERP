@@ -21,22 +21,22 @@ export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCen
 
     constructor(
         public costCenterService: CostCenterService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(costCenterService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_COST_CENTERS');
     }
 
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x))
     }
 
-    public setupForm(b: CostCenter) {
+    public override setupForm(b: CostCenter) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [b.id],
@@ -45,5 +45,4 @@ export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCen
             groupId: [b.groupId],
         });
     }
-
 }

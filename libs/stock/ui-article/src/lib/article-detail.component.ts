@@ -29,11 +29,11 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
 
     constructor(
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private classSrv: ClassService,
         public httpSrv: HttpService,
@@ -43,7 +43,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     }
 
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         return zip(this.lookupsSrv.getMarks(),
             this.lookupsSrv.getUnits(),
             this.lookupsSrv.getVats())
@@ -54,30 +54,32 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             }));
     }
 
-    finishLoading(e: Article) {
+    override finishLoading(e: Article) {
         super.finishLoading(e);
         this.selectedRow = e;
     }
 
-    public setupForm(a: Article) {
+    public override setupForm(a: Article) {
         // Make sure to update the template if you edit the configuration here
         this.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(a.id), false);
         this.aid = a.id;
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
-            id: [a.id],
-            mark: [a.mark],
-            klass: [a.klass],
-            salesUnit: [a.salesUnit],
-            price1: [a.price1 || 0],
-            reference: [a.reference, Validators.required],
-            appId: [a.appId || this.articleSrv.getParentId()],
-            notForSale: [a.notForSale || false, Validators.required],
-            vat: [a.vat]
+            id:           [a.id],
+            mark:         [a.mark],
+            maxQty:       [a.maxQty],
+            minQty:       [a.minQty],
+            klass:        [a.klass],
+            salesUnit:    [a.salesUnit],
+            price1:       [a.price1 || 0],
+            reference:    [a.reference, Validators.required],
+            appId:        [a.appId || this.articleSrv.getParentId()],
+            notForSale:   [a.notForSale || false, Validators.required],
+            vat:          [a.vat]
         });
     }
 
-    uploadAttachments(id: number): Observable<any> {
+    override uploadAttachments(id: number): Observable<any> {
         this.imageModel.setBackendUrl(this.articleSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }

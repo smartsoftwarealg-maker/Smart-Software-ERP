@@ -1,12 +1,10 @@
 {
-    "BANK": "Bank",
     "EDIT_BANK": "Edit bank",
     "CODE": "Code",
     "DESCRIPTION": "Description",
     "COMPANY": "Company",
     "CENTER": "Center",
     "NO_RESULT": "No results found",
-    "ADDRESS": "Address $addr$",
     "ABBREVIATION": "Abbreviation",
     "EDIT_COMPANY": "Edit company",
     "EDIT_CENTER": "Edit center",
@@ -80,5 +78,6 @@
     "FINAL":               "Final?",
     "USER_MESSAGES":       "User messages",
     "USER_DOCUMENTS":      "User documents",
-    "WORKFLOW_INBOX":      "Inbox"
+    "WORKFLOW_INBOX":      "Inbox",
+    "SEVERE":              "Revoke all access rights when not specified"
 }

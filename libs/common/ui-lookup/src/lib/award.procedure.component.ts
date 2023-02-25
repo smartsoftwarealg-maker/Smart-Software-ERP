@@ -21,13 +21,13 @@ export class AwardProcedureListComponent extends BaseEntityListComponent<Lookup>
 
     constructor(
         public companyTypeSrv: AwardProcedureService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(companyTypeSrv,
             shellSrv,
             snackBarSrv,
@@ -51,11 +51,11 @@ export class AwardProcedureDetailComponent extends BaseEntityDetailComponent<Loo
 
     constructor(
         public companyTypeServ: AwardProcedureService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public formBuilder: UntypedFormBuilder) {
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override formBuilder: UntypedFormBuilder) {
         super(companyTypeServ,
             shellSrv,
             snackBarSrv,
@@ -65,7 +65,7 @@ export class AwardProcedureDetailComponent extends BaseEntityDetailComponent<Loo
             'LOGISTICS_AWARD_PROCEDURES');
     }
 
-    public setupForm(e: Lookup): UntypedFormGroup {
+    public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
             description:   [e.description,  Validators.required],

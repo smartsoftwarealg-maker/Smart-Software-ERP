@@ -19,7 +19,7 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
-    public readonly pagination = PaginationModel.newInstance();
+    // public readonly pagination = PaginationModel.newInstance();
     public cartTotal = 0.0;
     public lastItem: Cartline = null;
 
@@ -27,12 +27,12 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
         private markSrv: MarkService,
         private cartSrv: ShoppingCartService,
         public articleSrv: ArticleService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
@@ -48,7 +48,7 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
         this.articleSrv.setUrl(AVAILABLE_ARTICLES_URL);
     }
 
-    processLoadedData(data: Article[]): Observable<Article[]> {
+    override processLoadedData(data: Article[]): Observable<Article[]> {
         data.forEach(p => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
@@ -64,7 +64,7 @@ export class ShoppingCartComponent extends BaseEntityListComponent<Article> {
             );
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
     }

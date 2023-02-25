@@ -14,7 +14,7 @@ import { Lookup } from '@ss/logistics/ui-doc-import';
     templateUrl: './employee-wives-list.component.html',
     styleUrls: ['./employee-wives-list.component.scss']
 })
-export class EmployeeWivesListComponent implements OnInit, OnDestroy {
+export class EmployeeWivesListComponent implements OnInit {
     private _activePersonnel = true;
     @Input() editable = true;
 
@@ -49,8 +49,8 @@ export class EmployeeWivesListComponent implements OnInit, OnDestroy {
     public services: { [id: number]: string; };
 
     constructor(public entitySrv: EmployeeWivesService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
+        public  snackBarSrv: SnackBarService,
+        public  route: ActivatedRoute,
         public router: Router,
         public langSrv: LanguageService,
         public lookupsSrv: LookupsService,
@@ -124,6 +124,4 @@ export class EmployeeWivesListComponent implements OnInit, OnDestroy {
             .then();
     }
 
-    ngOnDestroy() {
-    }
 }

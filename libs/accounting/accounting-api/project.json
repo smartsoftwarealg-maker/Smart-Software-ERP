@@ -1,4 +1,5 @@
 {
+    "name": "accounting-accounting-api",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/accounting/accounting-api/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/accounting/accounting-api"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/accounting/accounting-api"
+            ],
             "options": {
                 "jestConfig": "libs/accounting/accounting-api/jest.config.ts",
                 "passWithNoTests": true

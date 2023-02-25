@@ -18,7 +18,7 @@
                 </mat-form-field>
 
                 <mat-form-field id="address" class="default-50 sm-100">
-                    <mat-label [translate]="{addr:''}">ADMINISTRATION_ADDRESS</mat-label>
+                    <mat-label [translate]="{addr:''}">COMMON_ADDRESS</mat-label>
                     <input matInput formControlName="address" type="text" required>
                     <mat-error *ngIf="form.controls['address'].invalid" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
@@ -105,7 +105,7 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>ADMINISTRATION_BANK</mat-label>
+                    <mat-label translate>COMMON_BANK</mat-label>
                     <mat-select formControlName="bank">
                         <mat-option [value]="null"></mat-option>
                         <mat-option *ngFor="let v of banks" [value]="v.id">
@@ -199,11 +199,11 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <div id="severe" class="default-50 sm-100">
+                <div id="severe" class="default-100">
                     <mat-checkbox formControlName="severe" translate>ADMINISTRATION_SEVERE</mat-checkbox>
                 </div>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-100">
                     <mat-label translate>ADMINISTRATION_LOGO</mat-label>
                     <input matInput formControlName="logo" type="text">
                 </mat-form-field>

@@ -28,11 +28,11 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
     private transac: Transaction = null;
 
     constructor(public proformaSrv: PurchaseQuotationService,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public formBuilder: UntypedFormBuilder,
-                public confirmationSrv: ConfirmationDialogService,
+                public override shellSrv: ShellService,
+                public override snackBarSrv: SnackBarService,
+                public override route: ActivatedRoute,
+                public override formBuilder: UntypedFormBuilder,
+                public override confirmationSrv: ConfirmationDialogService,
                 public usersService: UserListService,
                 public lookupsSrv: LookupsService,
                 private supplierSrv: SupplierService,
@@ -43,7 +43,7 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
         super(proformaSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PURCHASES_QUOTATION');
     }
 
-    public setupForm(form: Transaction) {
+    public override setupForm(form: Transaction) {
         // Make sure to update the template if you edit the configuration here
         if (!form.id) {
             form.id = 0;
@@ -75,7 +75,7 @@ export class QuotationDetailComponent extends BaseEntityDetailComponent<Transact
         });
     }
 
-    readForm(): Transaction {
+    override readForm(): Transaction {
         const form = super.readForm();
         fillObject(this.transac, form)
         return form;

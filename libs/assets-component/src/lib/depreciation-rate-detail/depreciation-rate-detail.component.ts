@@ -37,7 +37,7 @@ export class DepreciationRateDetailComponent extends BaseEntityDetailComponent<D
             'ASSET_DEPRECIATION_RATES');
     }
 
-    public setupForm(a: DepreciationRate): UntypedFormGroup {
+    public override setupForm(a: DepreciationRate): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id:       [a.id],
             parentId: [a.parentId || this.parentId, Validators.required],

@@ -8,7 +8,7 @@ import {Lookup} from '@ss/common/api-lookup';
     providedIn: 'root'
 })
 export class WorkMasterService extends BaseEntityService<Lookup> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, WORK_MASTER_URL);
     }
 }

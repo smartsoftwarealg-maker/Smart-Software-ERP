@@ -8,7 +8,7 @@ import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 })
 export class LotsService extends BaseEntityExtendedService<Store> {
 
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, LOTS_URL);
     }
 }

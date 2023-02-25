@@ -28,13 +28,13 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
 
     constructor(
         public infoSrv: FixedElementsEntryService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public router: Router,
-        public pagPersistSrv: PaginatorPersistenceService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override router: Router,
+        public override pagPersistSrv: PaginatorPersistenceService,
         private employeeSrv: EmployeeService,
         private monthSelectorSrv: PayrollMonthService,
         private httpSrv: HttpService) {
@@ -42,12 +42,12 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         this.pagination.pageSize = 15;
     }
 
-    getPage(): Observable<ELine[]> {
+    override getPage(): Observable<ELine[]> {
         const extraPrams = new HttpParams().set('input', -1).set('fixed', true);
         return this.infoSrv.getPage(this.pagination, super.filter, super.sortBy, extraPrams);
     }
 
-    processLoadedData(data: ELine[]): Observable<ELine[]> {
+    override processLoadedData(data: ELine[]): Observable<ELine[]> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.mainTableWidth = 600 + 120 * colList.length;
@@ -62,7 +62,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         return of(res);
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         // this.deleteButton.visible = false;
         this.monthSelectorSrv
@@ -75,7 +75,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
             });
     }
 
-    preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.infoSrv.load();
     }
 }

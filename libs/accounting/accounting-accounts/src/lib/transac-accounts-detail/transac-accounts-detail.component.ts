@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
+import {AccountService, AccountStringAutocompleteModel} from '@ss/accounting/api-accounts';
 
 @Component({
   selector: 'ss-transac-accounts-detail',
@@ -14,6 +15,7 @@ import {LookupsService} from '@ss/common/api-lookup';
   styleUrls: ['./transac-accounts-detail.component.scss']
 })
 export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<TransacAccount> {
+    purchaseLookup    = new AccountStringAutocompleteModel(this.accountSrv);
 
     constructor(
         public override entitySrv: TransacAccountService,
@@ -22,12 +24,13 @@ export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<Tr
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private accountSrv: AccountService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_TRANSAC_ACCOUNTS');
     }
 
 
-    public setupForm(b: TransacAccount) {
+    public override setupForm(b: TransacAccount) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:          [b.id],

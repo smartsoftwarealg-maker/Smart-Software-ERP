@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="main-table">
+    <div class="content-div">
         <mat-table mat-table [dataSource]="data"
                    [ngStyle]="{ 'width.px': mainTableWidth }">
 
@@ -9,7 +9,7 @@
                 <mat-cell *matCellDef="let e">
                     <div class="person-photo">
                         <ss-image-input width="60px" height="76px"
-                                        [ImageModel]="e.imageModel"
+                                        [imageModel]="e.imageModel"
                                         style="display: inline-block;">
                         </ss-image-input>
                     </div>

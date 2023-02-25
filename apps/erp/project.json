@@ -1,4 +1,5 @@
 {
+    "name": "erp",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "generators": {
@@ -96,6 +97,16 @@
                         "glob": "**/*",
                         "input": "libs/scheduled-sales/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/budget/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/ltm/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],
@@ -137,6 +148,33 @@
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
                             "with": "apps/erp/src/environments/environment.ansej.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "shopping": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.shopping.prod.ts"
                         }
                     ],
                     "optimization": true,

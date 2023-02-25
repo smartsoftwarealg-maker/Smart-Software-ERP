@@ -37,7 +37,7 @@ export class AgentBalanceComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
-            const agentId = +param.agentId;
+            const agentId = +param['agentId'];
 
             if (agentId) {
                 this.agentBalanceService.setParentId(agentId);

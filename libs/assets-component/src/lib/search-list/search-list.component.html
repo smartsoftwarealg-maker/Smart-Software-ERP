@@ -81,9 +81,25 @@
                 </button>
             </div>
 
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
+                <input matInput formControlName="invoiceNumber" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
+                <input matInput formControlName="orderNumb" type="text">
+            </mat-form-field>
+
+<!--            <mat-form-field class="default-25 sm-50">-->
+<!--                <mat-label translate>COMMON_STATUS</mat-label>-->
+<!--                <input matInput formControlName="status" type="text">-->
+<!--            </mat-form-field>-->
+
             <div id="manager" class="default-25 sm-50" >
                 <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
             </div>
+
         </form>
     </div>
     <div class="table-div">
@@ -175,6 +191,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="key">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <i class="fa-solid fa-book-open" (click)="openAsset(e.id)"
+                       matTooltip="{{ 'ASSET_GOTO_DETAIL' | translate }}"></i>
+                </mat-cell>
+            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"

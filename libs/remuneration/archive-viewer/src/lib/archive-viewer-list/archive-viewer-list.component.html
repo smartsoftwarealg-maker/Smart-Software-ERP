@@ -1,0 +1,130 @@
+<div class="ctrl_div">
+    <div class="period_div">
+        <fieldset>
+            <legend translate>COMMON_FROM</legend>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_MONTH</mat-label>
+                <input matInput [formControl]="fromMonth" type="number" required autofocus step="1">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput [formControl]="fromYear" type="number" required step="1">
+            </mat-form-field>
+        </fieldset>
+        <fieldset>
+            <legend translate>COMMON_TO</legend>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_MONTH</mat-label>
+                <input matInput [formControl]="toMonth" type="number" required autofocus step="1">
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PAYROLL_YEAR</mat-label>
+                <input matInput [formControl]="toYear" type="number" required step="1">
+            </mat-form-field>
+        </fieldset>
+        <div id="manager" >
+            <mat-checkbox [formControl]="compact" translate>COMMON_COMPACT</mat-checkbox>
+        </div>
+        <button type="button"
+                mat-raised-button
+                color="primary"
+                (click)="refreshList(info.selectedOptions, formulas.selectedOptions)"> {{ 'COMMON_REFRESH' | translate }}
+        </button>
+    </div>
+    <mat-tab-group>
+        <mat-tab >
+            <ng-template mat-tab-label>
+                {{ 'PAYROLL_PERSONAL_INFO' | translate}}
+            </ng-template>
+            <mat-selection-list #info>
+                <mat-list-option *ngFor="let f of _info" [value]="f[0]">
+                    {{f[1] | translate }}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                {{ 'REMUN_FORMULAS' | translate}}
+            </ng-template>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="formulaFilter" type="text" >
+            </mat-form-field>
+            <mat-selection-list #formulas>
+                <mat-list-option *ngFor="let f of _formulas" [value]="f">
+                    {{f.description }}
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+<div class="table_div">
+    <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{ 'min-width.px': minTableWidth }">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.id}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.lastname}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.firstname}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container *ngFor="let i of _info" matColumnDef="{{ i[0] }}">
+        <mat-header-cell *matHeaderCellDef translate>{{ i[1] }}</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e[i[0]]}}
+        </mat-cell>
+    </ng-container>
+
+    <!--ng-container matColumnDef="birthDate">
+        <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTH_DATE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.birthDate | date: 'dd/MM/yyyy' }}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="birthPlace">
+        <mat-header-cell *matHeaderCellDef translate>PAYROLL_BIRTH_PLACE</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.birthPlace}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="post">
+        <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.post}}
+        </mat-cell>
+    </ng-container-->
+
+    <ng-container *ngFor="let h of _formulaVariables, let i = index" matColumnDef="{{ h }}">
+        <mat-header-cell *matHeaderCellDef translate>{{ _formulaHeaders[i]}}</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{ e.values[i]  }}
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>
+<div class="pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

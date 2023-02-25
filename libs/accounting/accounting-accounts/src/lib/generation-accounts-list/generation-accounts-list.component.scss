@@ -1,0 +1,15 @@
+.content-div {
+    width: 96%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mat-column-description,
+.mat-column-purchase,
+.mat-column-supplier,
+.mat-column-stock,
+.mat-column-consumption,
+.mat-column-sales {
+    border-left: ghostwhite solid 1px;
+    padding-left: 6px;
+}

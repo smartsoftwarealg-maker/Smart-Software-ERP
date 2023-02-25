@@ -1,0 +1,18 @@
+{
+    "LINE":           "Line",
+    "LINES":          "Lines",
+    "TESTS":          "Tests",
+    "TEST":           "Tests",
+    "VALUE":          "Value",
+    "TESTINGS":       "Testings",
+    "PERIODICITIES":  "Periodicities",
+    "MATTER":         "Matter",
+    "MATTERS":        "Matters",
+    "PERIOD":         "Period",
+    "MIN_VALUE":      "Minimum value",
+    "OPT_VALUE":      "Optimal value",
+    "MAX_VALUE":      "Maximum value",
+    "PERIODICITY":    "Periodicity",
+    "LOW":            "Low",
+    "HIGH":           "High"
+}

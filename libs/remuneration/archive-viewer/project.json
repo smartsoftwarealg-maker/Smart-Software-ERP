@@ -1,0 +1,29 @@
+{
+    "name": "remuneration-archive-viewer",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/remuneration/archive-viewer/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/remuneration/archive-viewer"
+            ],
+            "options": {
+                "jestConfig": "libs/remuneration/archive-viewer/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/remuneration/archive-viewer/**/*.ts",
+                    "libs/remuneration/archive-viewer/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

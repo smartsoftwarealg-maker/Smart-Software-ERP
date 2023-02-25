@@ -7,7 +7,7 @@ import {LanguageService} from '@ss/common/api-common';
     // tslint:disable-next-line:directive-selector
     selector: '[l10nTranslate],[translate]'
 })
-export class TranslateDirective extends BaseDirective implements OnInit {
+export class TranslateDirective extends BaseDirective implements OnInit { //1
 
     @Input() set l10nTranslate(params: any) {
         this.params = params;
@@ -19,11 +19,11 @@ export class TranslateDirective extends BaseDirective implements OnInit {
 
     @Input() public params: any;
 
-    constructor(protected languageService: LanguageService, protected el: ElementRef, protected renderer: Renderer2) {
+    constructor(protected languageService: LanguageService, protected override el: ElementRef, protected override renderer: Renderer2) {
         super(el, renderer);
     }
 
-    ngOnInit(): void {
+    override ngOnInit(): void {
         super.ngOnInit();
         // this.replace();
     }

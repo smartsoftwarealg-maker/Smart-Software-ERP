@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
+import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -25,7 +26,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PAYROLL_RANK = 3;
     readonly PAYROLL_POST = 4;
 
-    isEditable = true;
     hrMode = false;
     activePersonnel = false;
     imageModel: ImageModel;
@@ -41,14 +41,14 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     ];
     constructor(
         public employeeSrv: EmployeeService,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public formBuilder: UntypedFormBuilder,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
+        public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,
-        private infoSrv: FixedElementsEntryService,
         private router: Router,
         private citySrv: CityService) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
@@ -56,10 +56,10 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv));
     }
 
-    public preload(): Observable<any> {
+    public override preload(): Observable<any> {
         this.route.data.subscribe(data => {
-            this.hrMode = !!data.hrMode;
-            this.activePersonnel = !!data.active;
+            this.hrMode = !!data['hrMode'];
+            this.activePersonnel = !!data['active'];
         });
         return this.lookupsSrv.getMaritalStatuses()
             .pipe(
@@ -67,7 +67,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             );
     }
 
-    public setupForm(p: Employee) {
+    public override setupForm(p: Employee) {
         this.isEditable = this.saveButton.visible;
         this.infoSrv.load()
             .pipe(switchMap(_ => this.infoSrv.get(p.id)))
@@ -124,31 +124,31 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public isBirthInfoValid(): boolean {
-        return this.isControlValid(this.form.controls.firstName) &&
-            this.isControlValid(this.form.controls.lastName) &&
-            this.isControlValid(this.form.controls.sex) &&
-            this.isControlValid(this.form.controls.birthDate) &&
-            this.isControlValid(this.form.controls.birthPlace) &&
-            this.isControlValid(this.form.controls.father) &&
-            this.isControlValid(this.form.controls.mother) &&
-            this.isControlValid(this.form.controls.nationality);
+        return this.isControlValid(this.form.controls['firstName']) &&
+            this.isControlValid(this.form.controls['lastName']) &&
+            this.isControlValid(this.form.controls['sex']) &&
+            this.isControlValid(this.form.controls['birthDate']) &&
+            this.isControlValid(this.form.controls['birthPlace']) &&
+            this.isControlValid(this.form.controls['father']) &&
+            this.isControlValid(this.form.controls['mother']) &&
+            this.isControlValid(this.form.controls['nationality']);
     }
 
     public isSocialInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls.address1) &&
-            this.isControlValid(this.form.controls.email) &&
-            this.isControlValid(this.form.controls.phone) &&
-            this.isControlValid(this.form.controls.mobile) &&
-            this.isControlValid(this.form.controls.ss_Number) &&
-            this.isControlValid(this.form.controls.maritalStatus);
+        return this.isControlValid(this.form.controls['address1']) &&
+            this.isControlValid(this.form.controls['email']) &&
+            this.isControlValid(this.form.controls['phone']) &&
+            this.isControlValid(this.form.controls['mobile']) &&
+            this.isControlValid(this.form.controls['ss_Number']) &&
+            this.isControlValid(this.form.controls['maritalStatus']);
     }
 
     public isArabicInfoPanelValid(): boolean {
-        return this.isControlValid(this.form.controls.firstNameAr) &&
-            this.isControlValid(this.form.controls.lastNameAr) &&
-            this.isControlValid(this.form.controls.birthPlaceAr) &&
-            this.isControlValid(this.form.controls.fatherAr) &&
-            this.isControlValid(this.form.controls.motherAr);
+        return this.isControlValid(this.form.controls['firstNameAr']) &&
+            this.isControlValid(this.form.controls['lastNameAr']) &&
+            this.isControlValid(this.form.controls['birthPlaceAr']) &&
+            this.isControlValid(this.form.controls['fatherAr']) &&
+            this.isControlValid(this.form.controls['motherAr']);
     }
 
     public isFixedElementsPanelValid(): boolean {
@@ -184,13 +184,12 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             return '';
     }
 
-    public readForm(): Employee {
+    public override readForm(): Employee {
         const e: Employee = this.form.value;
-        console.log(e.birthDate);
         return e;
     }
 
-    uploadAttachments(id: number): Observable<any> {
+    override uploadAttachments(id: number): Observable<any> {
         this.imageModel.setBackendUrl(this.employeeSrv.getPhotoUrl(id));
         return this.imageModel.submit('file');
     }
@@ -258,7 +257,7 @@ class CityLookup extends DefaultAutoCompleteModel<City> {
         super(citySrv);
     }
 
-    toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
+    override toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) +
                                (x.dairaDescription? '/' + x.dairaDescription: '') +
                                (x.wilayaDescription? '/' + x.wilayaDescription: ''): null;
 }

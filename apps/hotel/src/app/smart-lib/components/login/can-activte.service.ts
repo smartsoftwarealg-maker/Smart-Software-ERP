@@ -9,7 +9,8 @@ import { HttpService } from '../../../smart-lib/common/http.service';
 
 @Injectable()
 export class CanActivateService implements CanActivate {
-    constructor(public router: Router,
+    constructor(
+        public router: Router,
         protected httpSrv: HttpService,
         private loginSrv: LoginService,
         private userSrv: UserService) {

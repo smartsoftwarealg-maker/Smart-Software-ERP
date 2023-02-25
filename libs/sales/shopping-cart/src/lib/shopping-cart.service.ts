@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
     providedIn: 'root'
 })
 export class ShoppingCartService extends BaseEntityExtendedService<Cartline> {
-    constructor(protected httpSrv: HttpService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CARTLINES_URL);
     }
 

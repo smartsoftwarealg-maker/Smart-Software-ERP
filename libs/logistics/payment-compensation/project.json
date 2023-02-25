@@ -1,4 +1,5 @@
 {
+    "name": "logistics-payment-compensation",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "projectType": "library",
     "sourceRoot": "libs/logistics/payment-compensation/src",
@@ -6,7 +7,9 @@
     "targets": {
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/logistics/payment-compensation"],
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/payment-compensation"
+            ],
             "options": {
                 "jestConfig": "libs/logistics/payment-compensation/jest.config.ts",
                 "passWithNoTests": true
