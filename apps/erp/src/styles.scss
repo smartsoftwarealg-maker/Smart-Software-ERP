@@ -141,11 +141,17 @@ $ss-green: (
     }
 
     // custom styles
-    .mat-header-row {
+    .mat-mdc-header-cell,
+    .mdc-data-table__header-cell.cdk-header-cell,
+    .mat-mdc-header-row.mdc-data-table__header-row {
         background-color: map-get($primary, 300);
-    }
-    .mat-header-cell {
         color: mat.get-contrast-color-from-palette($primary, 100);
+    }
+
+    .mat-mdc-header-cell,
+    .mdc-data-table__header-cell.cdk-header-cell {
+        justify-self: center;
+        justify-content: center;
         font-weight: bolder;
     }
 
@@ -926,10 +932,4 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     input {
         text-align: end;
     }
-}
-
-.mat-header-cell {
-    justify-content: center !important;
-    font-weight: bolder;
-    font-size: small;
 }

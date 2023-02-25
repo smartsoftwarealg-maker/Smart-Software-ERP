@@ -37,5 +37,6 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
               defReportSrv,
               pagPersistSrv,
             'ADMINISTRATION_BANK');
+        this.pagination.pageSize = 15;
     }
 }

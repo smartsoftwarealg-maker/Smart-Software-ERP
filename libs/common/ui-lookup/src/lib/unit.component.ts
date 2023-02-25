@@ -54,7 +54,8 @@ export class UnitDetailComponent extends BaseEntityDetailComponent<Unit> {
     public setupForm(e: Unit): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

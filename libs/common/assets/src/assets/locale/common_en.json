@@ -246,5 +246,7 @@
     "DOCUMENT":            "Document",
     "TIME":                "Time",
     "SHOW_ALL":            "Show all",
-    "EPAYMENT":            "E-payment"
+    "EPAYMENT":            "E-payment",
+    "FIRST_NAME_AR": "First name (Arabic)",
+    "LAST_NAME_AR": "Last name (Arabic)"
 }

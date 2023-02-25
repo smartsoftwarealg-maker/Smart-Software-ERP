@@ -42,6 +42,7 @@ export class AttributesListComponent extends BaseEntityListComponent<AttribTempl
               defReportSrv,
               pagPersistSrv,
             'ADMINISTRATION_ATTRIBUTES');
+        this.pagination.pageSize = 10;
     }
 
     override ngOnInit() {

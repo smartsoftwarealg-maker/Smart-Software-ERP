@@ -1,11 +1,10 @@
-:host {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
-    min-width: 320px;
+mat-card {
+    width: 98%;
+    max-width: 1000px;
+    margin: 16px auto;
+    border-radius: 1.4em;
+    padding: 16px;
 }
-
 mat-expansion-panel {
     border-width: 1px 1px 0 1px;
     border-style: solid;

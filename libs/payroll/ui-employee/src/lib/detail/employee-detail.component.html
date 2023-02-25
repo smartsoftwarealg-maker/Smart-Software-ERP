@@ -381,6 +381,7 @@
         </mat-expansion-panel>
 
         <mat-expansion-panel #archivePanel
+                             (afterExpand)="showArchive()"
                              [class]="getPanelHeaderClass('archive', archivePanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>

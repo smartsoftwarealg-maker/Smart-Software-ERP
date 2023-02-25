@@ -248,5 +248,7 @@
     "DOCUMENT":             "Document",
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
-    "EPAYMENT":             "E-paiement"
+    "EPAYMENT":             "E-paiement",
+    "FIRST_NAME_AR": "Prénom (Arabe)",
+    "LAST_NAME_AR": "Nom (Arabe)"
 }

@@ -53,7 +53,8 @@ export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass>
     public setupForm(e: Subclass): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr]
         });
     }
 }

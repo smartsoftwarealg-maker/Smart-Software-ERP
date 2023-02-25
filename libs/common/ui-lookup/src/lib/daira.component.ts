@@ -59,7 +59,8 @@ export class DairaDetailComponent extends BaseEntityDetailComponent<Lookup> {
     public setupForm(e: Mark): UntypedFormGroup {
         return this.formBuilder.group({
             id: e.id,
-            description: [e.description, Validators.required]
+            description: [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr],
         });
     }
 }

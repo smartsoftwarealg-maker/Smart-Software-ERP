@@ -46,7 +46,7 @@ export class AppArchiveDocumentDetailComponent extends BaseEntityDetailComponent
         public route: ActivatedRoute,
         public confirmationSrv: ConfirmationDialogService,
         public formBuilder: UntypedFormBuilder) {
-        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_MARK');
+        super(markSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_ARCHIVE_DOCUMENTS');
     }
 
     public setupForm(e: Lookup): UntypedFormGroup {

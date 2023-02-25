@@ -246,5 +246,7 @@
     "DOCUMENT":            "الوثيقة",
     "TIME":                "زمن",
     "SHOW_ALL":            "عرض الكل",
-    "EPAYMENT":            "الدفع الإلكتروني"
+    "EPAYMENT":            "الدفع الإلكتروني",
+    "FIRST_NAME_AR": "الإسم",
+    "LAST_NAME_AR": "اللقب"
 }

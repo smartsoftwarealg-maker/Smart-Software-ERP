@@ -31,6 +31,7 @@ export class CityListComponent extends BaseEntityListComponent<City> {
         public router: Router,
         public pagPersistSrv: PaginatorPersistenceService) {
         super(citySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CITIES');
+        this.pagination.pageSize = 15;
     }
 }
 
