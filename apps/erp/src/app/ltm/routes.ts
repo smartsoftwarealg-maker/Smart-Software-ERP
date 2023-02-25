@@ -15,16 +15,20 @@ import {
     LtmLineDetailComponent,
     LtmLineListComponent,
     LtmMatterDetailComponent,
-    LtmMatterListComponent, LtmMatterTestListComponent,
+    LtmMatterListComponent,
+    LtmMatterTestListComponent,
     LtmPeriodicitiesDetailComponent,
     LtmPeriodicitiesListComponent,
     LtmTestDetailComponent,
     LtmTestListComponent,
-    LtmMatterTestDetailComponent, LtmTestingListComponent, LtmTestingDetailComponent, LtmReportComponent
+    LtmMatterTestDetailComponent,
+    LtmTestingListComponent,
+    LtmTestingDetailComponent,
+    LtmReportComponent,
+    LineMatterListComponent
 } from '@ss/ltm/ltm';
-import {LineMatterListComponent} from '@ss/ltm/ltm';
 
-export const mainRoutes: Routes = [
+export const ltmRoutes: Routes = [
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent
     },

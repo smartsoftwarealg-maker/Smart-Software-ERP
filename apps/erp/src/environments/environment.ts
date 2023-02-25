@@ -110,7 +110,7 @@ export const appRoutes: Routes =  [
     },
     {
         path: LTM_APP_URL,
-        loadChildren: () => import('../app/ltm/ltm.module').then(m => m.LtmModule)
+        loadChildren: () => import('../app/ltm/l-t-m.module').then(m => m.LTMModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,

@@ -249,24 +249,21 @@
     "TIME":                 "Temps",
     "SHOW_ALL":             "Afficher tout",
     "EPAYMENT":             "E-paiement",
-<<<<<<< HEAD
     "FIRST_NAME_AR": "Prénom (Arabe)",
-    "LAST_NAME_AR": "Nom (Arabe)"
-=======
-    "MORE":                 "Plus",
+    "LAST_NAME_AR": "Nom (Arabe)",
+   "MORE":                 "Plus",
     "BANK":                 "Banque",
     "TRANSACTIONS":         "Ecritures",
     "CHECKNO":              "Numéro de chèque",
     "JOURNALS":             "Journaux",
     "AGENTS":               "Agents",
     "AGENT":                "Tier",
-    "EDIT_AGENT": "Modifier l'agent",
-    "COST_CENTER":"Centre de coûts",
+    "EDIT_AGENT":           "Modifier l'agent",
+    "COST_CENTER":          "Centre de coûts",
     "ADDRESS": "Adresse",
     "MOBILE": "Mobile",
     "COMPACT":                    "Compact",
     "INVOICE_NUMBER":             "Numéro de facture",
     "BUDGET":                     "Budget",
     "CHARTS":                     "Graphiques"
->>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
 }
