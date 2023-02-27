@@ -55,11 +55,6 @@
 
 
 .pagination-container {
-
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-    }
+    max-width: 900px;
+    margin: 0 auto;
 }

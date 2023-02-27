@@ -3,7 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@muaazh/datepicker/theming' as datepicker;
 @use '@angular/material' as mat;
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 mat.$theme-ignore-duplication-warnings:true;
 
@@ -18,7 +18,7 @@ body {
     margin: 0;
     overflow: hidden;
     //font-size: small;
-    font-family: Roboto, sans-serif;
+    font-family:  Arial, Helvetica, sans-serif;
 }
 
 
@@ -149,12 +149,29 @@ $ss-green: (
     .mat-mdc-header-row.mdc-data-table__header-row {
         background-color: map-get($primary, 300);
         color: mat.get-contrast-color-from-palette($primary, 100);
+        font-weight: bolder;
+        font-size: 0.95em;
     }
 
     .mat-mdc-header-cell,
     .mdc-data-table__header-cell.cdk-header-cell {
         justify-self: center;
         justify-content: center;
+        font-weight: bolder;
+        font-size: 0.95em;
+    }
+
+    i {
+        font-size: small;
+    }
+
+    mat-custom-header .mat-custom-controls  .mat-custom-date-year-monthday {
+        font-size: 0.7em;
+        font-weight: bolder;
+    }
+
+    mat-custom-header.type-date .mat-custom-controls .mat-custom-date-year {
+        font-size: 2em;
         font-weight: bolder;
     }
 

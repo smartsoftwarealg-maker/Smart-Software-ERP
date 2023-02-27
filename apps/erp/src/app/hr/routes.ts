@@ -99,7 +99,7 @@ import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
 import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 
-export const mainRoutes: Routes = [
+export const hrRoutes: Routes = [
     {
         path: HR_MOTIVE_URL,
         children: [

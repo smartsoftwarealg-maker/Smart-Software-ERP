@@ -1,19 +1,15 @@
 
 .table_div {
-    min-height: 60%;
-    overflow-y: auto;
+    min-height: 55%;
+    overflow-x: auto;
 }
 
-<<<<<<< HEAD
 .size_98 {
     width: 98%;
     max-width: 1200px;
-=======
-.content-div {
-    width: min(98%, 1200px);
->>>>>>> d9d17989cc0d7038243649f1d34364376af874ca
     margin: 0 auto;
 }
+
 
 // keep the material design specs
 .mat-row, .mat-header-row {
@@ -34,7 +30,7 @@
 }
 
 .mat-column-agentType {
-    flex:  0 0 120px;
+    flex: 0 0 120px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

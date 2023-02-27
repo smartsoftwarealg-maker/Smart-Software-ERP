@@ -1,12 +1,14 @@
 .size {
     width: 90%;
     max-width: 700px;
-    margin: 4px auto 0;
+    margin: 0 auto 0;
 
 }
+
 .container {
-    height: calc(100% - 70px);
+    min-height: calc(100% - 118px);
     overflow-y: auto;
+    margin-top: 4px;
 }
 
 .content-div {

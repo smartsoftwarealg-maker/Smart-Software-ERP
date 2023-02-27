@@ -10,7 +10,6 @@ import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {Chart, ChartItem, registerables} from 'chart.js';
 import {LtmTestingService} from '../ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
-import {LtmMatterService} from '../ltm-matter.service';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {LanguageService} from '@ss/common/api-common';
 

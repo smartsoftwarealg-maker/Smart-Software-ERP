@@ -15,7 +15,14 @@
     grid-template-columns: 1fr 50px 1fr;
     grid-template-rows: repeat(3, auto) 1fr;
 }
-
+.search_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mat-form-field {
+        padding-top: 20px;
+    }
+}
 .description {
     grid-area: description;
 }

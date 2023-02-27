@@ -1,71 +1,69 @@
-<div class="container">
-    <div class="main-table">
-        <mat-table mat-table [dataSource]="data">
+<div class="main-table container">
+    <mat-table mat-table [dataSource]="data">
 
-            <ng-container matColumnDef="variable">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_VARIABLE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.variable}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="variable">
+            <mat-header-cell *matHeaderCellDef translate>REMUN_VARIABLE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.variable}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.description}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="base">
-                <mat-header-cell *matHeaderCellDef translate>REMUN_BASE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.base}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="base">
+            <mat-header-cell *matHeaderCellDef translate>REMUN_BASE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.base}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="rate">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_RATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.rate}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="rate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_RATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.rate}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef=formula>
-                <mat-header-cell *matHeaderCellDef translate>REMUN_FORMULA</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.formula}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef=formula>
+            <mat-header-cell *matHeaderCellDef translate>REMUN_FORMULA</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.formula}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef=accountno>
-                <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.accountno}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef=accountno>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.accountno}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef=followup_fld>
-                <mat-header-cell *matHeaderCellDef translate>REMUN_FOLLOWUP</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.followup_fld}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef=followup_fld>
+            <mat-header-cell *matHeaderCellDef translate>REMUN_FOLLOWUP</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.followup_fld}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef=val_sign>
-                <mat-header-cell *matHeaderCellDef translate>REMUN_SIGN</mat-header-cell>
-                <mat-cell *matCellDef="let e">
+        <ng-container matColumnDef=val_sign>
+            <mat-header-cell *matHeaderCellDef translate>REMUN_SIGN</mat-header-cell>
+            <mat-cell *matCellDef="let e">
                     <span
                         translate>{{ ['COMMON_ALL', 'REMUN_NEGATIVE', 'REMUN_POSITIVE', 'STRICT_POSITIVE'][+e.val_sign - 1] }} </span>
-                </mat-cell>
-            </ng-container>
+            </mat-cell>
+        </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
 </div>
-<div class="pagination-container b-b-background">
+<div class="container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

@@ -8,6 +8,7 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PayrollFormulasService} from './payroll-formulas.service';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
   selector: 'ss-formula-detail',
@@ -15,6 +16,7 @@ import {PayrollFormulasService} from './payroll-formulas.service';
   styleUrls: ['./formula-detail.component.scss']
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
+    elementLookup = new DefaultAutoCompleteModel(this.elementSrv, 'field', 'description');
 
     constructor(
         private detailSrv: PayrollFormulasService,
@@ -23,7 +25,8 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public lookupsSrv: LookupsService,
+        private elementSrv: ElementsInfoService) {
         super(detailSrv,
               shellSrv,
               snackBarSrv,

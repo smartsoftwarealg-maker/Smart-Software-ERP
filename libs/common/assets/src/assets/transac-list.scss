@@ -16,14 +16,8 @@ mat-header-cell {
 
 
 .pagination-container {
-    flex: 0 0 auto;
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-        flex: 0 0 auto;
-    }
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 

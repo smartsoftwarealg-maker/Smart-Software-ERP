@@ -1,14 +1,13 @@
-
-
-:host {
-    display: block;
-    margin: auto;
-    width: 520px;
+.size {
+    width: 90%;
+    max-width: 700px;
+    margin: 4px auto 0;
 }
 
-.content-div {
-    width: 520px;
-    min-height: 320px;
+.table-container {
+    width: 6000px;
+    height: calc(100% - 70px);
+    margin-top: 4px;
 }
 
 // keep the material design specs
@@ -19,13 +18,13 @@
 
 
 .mat-column-description {
-    flex: 0 0 272px;
+    flex: 1 1  272px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-responsible {
-    flex: 0 0 184px;
+    flex: 1 1 184px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

@@ -1,15 +1,11 @@
-
-:host {
-    display: block;
-    margin: auto;
-    width: 900px;
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto 0;
 }
-
-.content-div {
-    width: 828px;
-    min-height: 320px;
+.table_div {
+    min-height: calc(100% - 90px);
 }
-
 // keep the material design specs
 .mat-row, .mat-header-row {
     padding-right: 16px;

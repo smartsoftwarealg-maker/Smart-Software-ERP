@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
@@ -10,21 +11,26 @@ import {
     LTM_TEST_URL,
     LTM_TESTING_URL
 } from '../common';
+
 import {
     LineMatterDetailComponent,
     LtmLineDetailComponent,
     LtmLineListComponent,
     LtmMatterDetailComponent,
-    LtmMatterListComponent, LtmMatterTestListComponent,
+    LtmMatterListComponent,
+    LtmMatterTestListComponent,
     LtmPeriodicitiesDetailComponent,
     LtmPeriodicitiesListComponent,
     LtmTestDetailComponent,
     LtmTestListComponent,
-    LtmMatterTestDetailComponent, LtmTestingListComponent, LtmTestingDetailComponent, LtmReportComponent
+    LtmMatterTestDetailComponent,
+    LtmTestingListComponent,
+    LtmTestingDetailComponent,
+    LtmReportComponent,
+    LineMatterListComponent
 } from '@ss/ltm/ltm';
-import {LineMatterListComponent} from '@ss/ltm/ltm';
 
-export const mainRoutes: Routes = [
+export const ltmRoutes: Routes = [
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent
     },

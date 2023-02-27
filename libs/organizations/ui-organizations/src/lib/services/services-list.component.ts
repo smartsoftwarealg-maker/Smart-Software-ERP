@@ -9,12 +9,11 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { EmployeeService } from '@ss/payroll/api-employee';
 import { ServiceService, Service } from '@ss/common/api-lookup';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-services-list',
     templateUrl: './services-list.component.html',
-    styleUrls: ['./services-list.component.scss'],
+    styleUrls: ['../divisions/divisions-list.component.scss'],
 })
 export class ServicesListComponent extends BaseEntityListComponent<Service> {
 

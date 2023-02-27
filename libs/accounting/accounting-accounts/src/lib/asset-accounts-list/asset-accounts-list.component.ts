@@ -44,5 +44,6 @@ export class AssetAccountsListComponent extends BaseEntityListComponent<Account>
             defReportSrv,
             pagPersistSrv,
             'ACC_ASSET_ACCOUNTS');
+        this.pagination.pageSize = 10;
     }
 }

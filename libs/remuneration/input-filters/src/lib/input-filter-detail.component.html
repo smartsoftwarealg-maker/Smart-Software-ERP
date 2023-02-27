@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <div class="llist">
-        <div mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTION' }}</div>
+        <mat-toolbar mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTION' }}</mat-toolbar>
         <mat-selection-list #llist>
             <mat-list-option *ngFor="let s of selectionArray" [value]="s">
                 {{ s }}
@@ -22,13 +22,13 @@
     </div>
 
     <div class="rlist">
-        <span mat-subheader class="b-primary">
-                    {{ 'REMUN_FIELDS' | translate }}
-        </span>
-        <mat-form-field>
-            <mat-label translate>COMMON_SEARCH</mat-label>
-            <input matInput [formControl]="filter" type="text">
-        </mat-form-field>
+        <mat-toolbar color="primary" class="search_div">
+             {{ 'REMUN_FIELDS' | translate }}
+            <mat-form-field>
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="filter" type="text">
+            </mat-form-field>
+        </mat-toolbar>
         <div class="list-container">
             <mat-selection-list #elemlist>
                 <mat-list-option *ngFor="let e of filteredElements" [value]="e.field">

@@ -1,11 +1,11 @@
-.container {
+.size {
     width: 90%;
     max-width: 600px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     margin: 4px auto 0;
+}
+.container {
+    height: calc(100% - 64px);
+    overflow-x: auto;
 }
 .content-div {
     width: 600px;

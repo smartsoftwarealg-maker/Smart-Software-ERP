@@ -1,20 +1,18 @@
 .container {
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
-    height: 100%;
     width: 98%;
     max-width: 900px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
 }
+
 .ctrl-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
 }
-
+.main-table {
+    min-height: calc(100% - 148px);
+}
 .ctrl-div .year {
     flex-grow: 1;
     min-width: 120px;

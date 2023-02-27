@@ -1,4 +1,4 @@
-<div class="container">
+<mat-card class="container">
     <form *ngIf="form" [formGroup]="form">
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_LAST_NAME</mat-label>
@@ -23,6 +23,5 @@
             <input matInput formControlName="rest" type="number" readonly>
         </mat-form-field>
     </form>
-
-    <ss-vacation-planning-detail-list></ss-vacation-planning-detail-list>
-</div>
+</mat-card>
+<ss-vacation-planning-detail-list></ss-vacation-planning-detail-list>

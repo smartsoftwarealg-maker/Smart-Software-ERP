@@ -1,24 +1,20 @@
-import { Component, } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LanguageService, PaginatorPersistenceService, User, UserService } from '@ss/common/api-common';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { AgentService } from '@ss/logistics/api-agent';
-import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { DepartmentService, Department } from '@ss/common/api-lookup';
-import { Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { EmployeeService } from '@ss/payroll/api-employee';
-
+import {Component,} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {DepartmentService, Department} from '@ss/common/api-lookup';
+import {Observable, of} from 'rxjs';
+import {EmployeeService} from '@ss/payroll/api-employee';
 
 @Component({
     selector: 'ss-departments-list',
     templateUrl: './departments-list.component.html',
-    styleUrls: ['./departments-list.component.scss'],
+    styleUrls: ['../divisions/divisions-list.component.scss'],
 })
 export class DepartmentsListComponent extends BaseEntityListComponent<Department> {
-
     displayedColumns = [
         'description',
         'responsible'
@@ -37,6 +33,7 @@ export class DepartmentsListComponent extends BaseEntityListComponent<Department
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(departmentsSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DEPARTMENTS');
+        this.pagination.pageSize = 10;
     }
 
     override ngOnInit(): void {

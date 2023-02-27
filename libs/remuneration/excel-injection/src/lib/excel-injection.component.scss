@@ -5,8 +5,10 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 96%;
     height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .ctrl-div {
@@ -14,7 +16,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 5px 10px;
+    padding: 8px 10px;
+    margin-top: 4px;
 }
 .ctrl-div button {
     margin-left: 20px;
@@ -31,7 +34,8 @@
 .text-area {
     text-decoration: none;
     border: none;
-    width: 100%;
+    width: 96%;
+    margin: 8px auto;
     flex-grow: 2;
     padding: 10px;
 }
