@@ -31,5 +31,4 @@ export class InputFilterListComponent extends BaseEntityListComponent<InputFilte
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_INPUT_FILTERS');
         this.pagination.pageSize = 15;
     }
-
 }

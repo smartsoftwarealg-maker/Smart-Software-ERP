@@ -19,10 +19,10 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputFilter> {
     filter = new FormControl<string|null>('');
 
-    elements: ElementsInfo[] = [];
+    elements: ElementsInfo[]         = [];
     filteredElements: ElementsInfo[] = [];
+    selectionArray: string[]         = [];
     selection = '';
-    selectionArray: string[] = [];
 
     constructor(
         private detailSrv: InputFiltersService,

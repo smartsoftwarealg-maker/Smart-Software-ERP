@@ -19,6 +19,10 @@ mat-table {
     min-width: 1000px;
 }
 
+.mat-column-key {
+    border-left: whitesmoke solid 1px;
+    justify-content: center;
+}
 
 .mat-column-serial_no,
 .mat-column-serialNumber,

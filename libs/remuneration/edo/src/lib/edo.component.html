@@ -59,7 +59,7 @@
         </mat-form-field>
 
         <div class="bank-list">
-                <div mat-subheader class="b-primary" translate> {{ 'REMUN_SELECTED_BANKS' }}</div>
+            <div mat-subheader class="b-primary subheader" translate> {{ 'REMUN_SELECTED_BANKS' }}</div>
             <div class="llist">
                 <mat-selection-list #blist (change)="selectBanks(blist.selectedOptions)">
                     <mat-list-option *ngFor="let s of bankList" [value]="s.id" [selected]="true">

@@ -1,13 +1,14 @@
-form {
+mat-card {
     padding: 1em;
     width: 90%;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 750px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }
 
 .btn-div {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 16px;
 }

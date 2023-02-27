@@ -38,19 +38,18 @@
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
-    <div class="size_98 b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
-
-    <div class="size_98" *ngIf="isSales">
-        <ss-doc-info
-            *ngIf="selected"
-            [displayedGroups]="['agent']"
-            [params]="{
+</div>
+<div class="size_98 b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+<div class="size_98" *ngIf="isSales">
+    <ss-doc-info
+        *ngIf="selected"
+        [displayedGroups]="['agent']"
+        [params]="{
             documentId: 0,
             documentURL:'/agents',
             agentId : selectedRow?.id
         }">
-        </ss-doc-info>
-    </div>
-
+    </ss-doc-info>
+</div>

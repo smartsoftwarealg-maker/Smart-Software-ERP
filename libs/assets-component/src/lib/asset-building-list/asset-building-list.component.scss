@@ -1,5 +1,8 @@
-mat-table,
-.content-div,
+.table_div {
+    min-height: calc(100% - 118px);
+}
+
+.container,
 .pagination-container {
     width: 90%;
     max-width: 700px;
@@ -7,13 +10,9 @@ mat-table,
 }
 
 mat-table {
-    padding-top: 4px;
-    height: calc(100% - 72px);
+    min-width: 600px;
 }
 
-.content-div {
-    height: calc(100% - 64px);
-}
 
 .mat-column-code {
     flex: 1 1 100PX;

@@ -1,58 +1,60 @@
-<form [formGroup]="form">
-    <div class="sm-100">
-        <mat-form-field style="width: calc(100% - 48px)">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-auto-complete matInput
-                              [model]="srcLookup"
-                              formControlName="source">
-            </ss-auto-complete>
+<mat-card>
+    <form [formGroup]="form">
+        <div class="sm-100">
+            <mat-form-field style="width: calc(100% - 48px)">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="srcLookup"
+                                  formControlName="source">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab (click)="openSourceDlg()" type="button">
+                <i class="fa-solid fa-file-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+            <mat-label translate>ASSET_SITE</mat-label>
+            <input matInput formControlName="sourceSite" type="text" readonly>
         </mat-form-field>
-        <button mat-mini-fab (click)="openSourceDlg()" type="button">
-            <i class="fa-solid fa-file-magnifying-glass"></i>
-        </button>
-    </div>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_SITE</mat-label>
-        <input matInput formControlName="sourceSite" type="text" readonly>
-    </mat-form-field>
-
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_BUILDINGS</mat-label>
-        <input matInput formControlName="sourceBuilding" type="text" readonly>
-    </mat-form-field>
-
-    <div class="sm-100">
-        <mat-form-field style="width: calc(100% - 48px)">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-auto-complete matInput
-                              [model]="dstLookup"
-                              formControlName="destination">
-            </ss-auto-complete>
+        <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+            <mat-label translate>ASSET_BUILDINGS</mat-label>
+            <input matInput formControlName="sourceBuilding" type="text" readonly>
         </mat-form-field>
-        <button mat-mini-fab (click)="openDestinationDlg()" type="button">
-            <i class="fa-solid fa-file-magnifying-glass"></i>
-        </button>
-    </div>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_SITE</mat-label>
-        <input matInput formControlName="destinationSite" type="text" readonly>
-    </mat-form-field>
+        <div class="sm-100">
+            <mat-form-field style="width: calc(100% - 48px)">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="dstLookup"
+                                  formControlName="destination">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab (click)="openDestinationDlg()" type="button">
+                <i class="fa-solid fa-file-magnifying-glass"></i>
+            </button>
+        </div>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_BUILDINGS</mat-label>
-        <input matInput formControlName="destinationBuilding" type="text" readonly>
-    </mat-form-field>
+        <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+            <mat-label translate>ASSET_SITE</mat-label>
+            <input matInput formControlName="destinationSite" type="text" readonly>
+        </mat-form-field>
 
-    <div class="btn-div" *ngIf="editable">
-        <button mat-raised-button
-                type="button"
-                color="warn"
-                [disabled]="!form.valid || form.controls.source.value === form.controls.destination.value"
-                (click)="transfer()"
-                translate>COMMON_GENERATE
-        </button>
-    </div>
-</form>
+        <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+            <mat-label translate>ASSET_BUILDINGS</mat-label>
+            <input matInput formControlName="destinationBuilding" type="text" readonly>
+        </mat-form-field>
 
+        <div class="btn-div" *ngIf="editable">
+            <button mat-raised-button
+                    type="button"
+                    color="warn"
+                    [disabled]="!form.valid || form.controls.source.value === form.controls.destination.value"
+                    (click)="transfer()"
+                    translate>COMMON_GENERATE
+            </button>
+        </div>
+    </form>
+
+</mat-card>

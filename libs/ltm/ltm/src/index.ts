@@ -1,4 +1,4 @@
-export * from './lib/ltm.module';
+export * from './lib/ltm.app.module';
 export * from './lib/ltm-line-list/ltm-line-list.component';
 export * from './lib/ltm-line-detail/ltm-line-detail.component';
 export * from './lib/ltm-line-detail/ltm-line-detail.component';

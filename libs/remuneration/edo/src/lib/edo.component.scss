@@ -3,6 +3,14 @@
     padding: 0;
     box-sizing: content-box;
 }
+
+.subheader {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+}
 .container {
     width: 98%;
     max-width: 1000px;

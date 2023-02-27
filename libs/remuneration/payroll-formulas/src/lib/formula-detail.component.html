@@ -42,11 +42,19 @@
                 <input matInput formControlName="accountno" type="text">
             </mat-form-field>
 
-            <mat-form-field  class="default-50 sm-100">
-                <mat-label translate>REMUN_FOLLOWUP</mat-label>
-                <input matInput formControlName="followup_fld" type="text">
-            </mat-form-field>
+<!--            <mat-form-field  class="default-50 sm-100">-->
+<!--                <mat-label translate>REMUN_FOLLOWUP</mat-label>-->
+<!--                <input matInput formControlName="followup_fld" type="text">-->
+<!--            </mat-form-field>-->
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_FOLLOWUP</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="elementLookup"
+                                  formControlName="followup_fld">
+                </ss-auto-complete>
+            </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label><span translate>REMUN_SIGN</span></mat-label>

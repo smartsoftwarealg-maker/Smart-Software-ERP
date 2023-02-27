@@ -24,18 +24,22 @@ import { LtmTestingListComponent } from './ltm-testing-list/ltm-testing-list.com
 import { LtmTestingDetailComponent } from './ltm-testing-detail/ltm-testing-detail.component';
 import { LtmInjectionComponent } from './ltm-injection/ltm-injection.component';
 import { LtmReportComponent } from './ltm-report/ltm-report.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
+import {AppArchiveModule} from '@ss/common/app-archive';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
         CommonUiLangModule,
-        CommonUiImageInputModule,
         UiPaginationModule,
+        ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
+        LogisticsUiDocInfoModule,
+        AppArchiveModule,
         CommonUiAutoCompleteModule,
-        RouterModule,
+        CommonUiDatepickerModule
     ],
     exports: [
         LtmLineListComponent,
@@ -74,4 +78,4 @@ import { LtmReportComponent } from './ltm-report/ltm-report.component';
         LtmReportComponent,
     ],
 })
-export class LtmModule {}
+export class LtmAppModule {}

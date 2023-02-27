@@ -33,20 +33,19 @@
                 <mat-error *ngIf="form.controls['payMonth'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <span class="default-25 sm-50"></span>
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>COMMON_AMOUNT</mat-label>
-                <input matInput formControlName="amount" type="number" required step="1">
-                <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-            </mat-form-field>
-
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>PAYROLL_MONTH_COUNT</mat-label>
                 <input matInput formControlName="number" type="number" required step="1">
                 <mat-error *ngIf="form.controls['number'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-<!--           <pre>{{form.value | json}}</pre>-->
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_AMOUNT</mat-label>
+                <input matInput formControlName="amount" type="number" required step="1">
+                <mat-error *ngIf="form.controls['amount'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <!--           <pre>{{form.value | json}}</pre>-->
         </form>
 
     </mat-card-content>

@@ -1,16 +1,11 @@
 .container {
-    margin: 0;
     padding: 10px;
-    box-sizing: border-box;
-    height: 100%;
     width: 80%;
     max-width: 700px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
 }
-mat-table {
-    width: 600px;
+.main-table {
+    min-height: calc(100% - 120px);
 }
 
 .content-div {

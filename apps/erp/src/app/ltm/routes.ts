@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
@@ -10,6 +11,7 @@ import {
     LTM_TEST_URL,
     LTM_TESTING_URL
 } from '../common';
+
 import {
     LineMatterDetailComponent,
     LtmLineDetailComponent,

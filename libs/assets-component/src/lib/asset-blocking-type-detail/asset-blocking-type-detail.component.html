@@ -2,13 +2,13 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field class="default-50 sm-100" >
+            <mat-form-field class="default-100" >
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text">
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50 sm-100" >
+            <mat-form-field class="default-100" >
                 <mat-label translate>COMMON_DESCRIPTION_AR</mat-label>
                 <input matInput formControlName="descriptionAr" type="text">
                 <mat-error *ngIf="form.controls['descriptionAr'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>

@@ -2,11 +2,9 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LanguageService, PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
+import {PaginatorPersistenceService, User, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {AgentService} from '@ss/logistics/api-agent';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { EmployeeService } from '@ss/payroll/api-employee';
 import { OfficeService, Office } from '@ss/common/api-lookup';
 
 @Component({
@@ -15,7 +13,6 @@ import { OfficeService, Office } from '@ss/common/api-lookup';
     styleUrls: ['./offices-list.component.scss'],
 })
 export class OfficesListComponent extends BaseEntityListComponent<Office> {
-
     displayedColumns = [
         'code',
         'description',
@@ -33,6 +30,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(officeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_OFFICES');
+        this.pagination.pageSize = 10;
     }
 
     override ngOnInit(): void {

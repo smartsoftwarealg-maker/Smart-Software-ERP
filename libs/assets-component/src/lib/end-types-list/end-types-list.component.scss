@@ -4,8 +4,9 @@
     margin: 4px auto 0;
 }
 
-.main-table {
-    height: calc(100% - 64px);
+.table_div {
+    height: calc(100% - 120px);
+    overflow-x: auto;
 }
 
 .content-div {
