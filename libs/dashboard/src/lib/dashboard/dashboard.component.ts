@@ -127,8 +127,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     override excel() {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
         this.dashboardSrv
-            .getExcel(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId)
+            .getExcel(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId, consolidated)
             .subscribe(blob => {
                 // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
                 if (blob && blob.size > 100) {

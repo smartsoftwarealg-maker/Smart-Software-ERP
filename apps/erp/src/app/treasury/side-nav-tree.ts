@@ -29,7 +29,7 @@ export const treasuryNavTree: SideNavNode = {
             name: 'COMMON_JOURNALS',
             icon: 'fas fa-book',
             route: ABS_TREASURY_JOURNALS_URL,
-            accessRights: 'Journals'
+            accessRights: 'TreasuryJournal'
         },
         {
             name: 'TRS_NATURE',
@@ -53,19 +53,19 @@ export const treasuryNavTree: SideNavNode = {
             name: 'TRS_CHECKBOOKS',
             icon: 'fa-solid fa-book-copy',
             route: ABS_TREASURY_CHECK_BOOKS_URL,
-            accessRights: 'CheckBooks'
+            accessRights: 'CheckBook'
         },
         {
             name: 'TRS_CHECKS',
             icon: 'fas fa-money-check-dollar',
             route: ABS_TREASURY_PROCESSED_CHECKS_URL,
-            accessRights: 'ProcessedChecks'
+            accessRights: 'ProcessedCheck'
         },
         {
             name: 'TRS_CHECK_MATCHING',
             icon: 'fa-sharp fa-solid fa-check-double',
             route: ABS_TREASURY_CHECK_MATCHING_URL,
-            accessRights: 'ProcessedChecks'
+            accessRights: 'ProcessedCheck'
         },
         // {
         //     name: 'TRS_CHECKS',

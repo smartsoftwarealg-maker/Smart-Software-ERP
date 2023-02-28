@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { HttpService } from '@ss/common/api-common';
+import {HttpService, LoginService} from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { tap } from 'rxjs/operators';
@@ -30,8 +30,9 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
         public override route: ActivatedRoute,
         public override formBuilder: FormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public httpSrv: HttpService,
-        public router: Router) {
+        private httpSrv: HttpService,
+        private router: Router,
+        private loginSrv: LoginService) {
         super(journalSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_JOURNALS');
     }
 
@@ -48,7 +49,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
             jType: [a.jType || 1, Validators.required],
             bankId: [{ value: a.bankId, disabled: a.jType === 2 }],
             bankAccount: [{ value: a.bankAccount, disabled: (a.jType || 1) !== 1 }],
-            centerId: [a.centerId]
+            centerId: [a.centerId || this.loginSrv.appCtx.center]
         });
     }
 
