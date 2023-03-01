@@ -1,9 +1,9 @@
 {
-    "INCOME":        "Income",
-    "EXPENSE":       "Expense",
-    "ADD_ACCOUNT":   "Add account",
-    "BUDGETS":       "Budgets",
-    "BUDGET_GROUPS": "Budget groups",
+    "INCOME":           "Income",
+    "EXPENSE":          "Expense",
+    "ADD_ACCOUNT":      "Add account",
+    "BUDGETS":          "Budgets",
+    "BUDGET_GROUPS":    "Budget groups",
     "REQUESTED_AMOUNT": "Requested amount",
     "SELECT_BUDGET":    "Select budget",
     "BUDGET_PLANNING":  "Budget planning",
@@ -11,5 +11,7 @@
     "REQUESTED_QTY":    "Requested qty",
     "ALLOCATED_QTY":    "Allocated qty",
     "CLOSING_AMOUNT":   "Closing amount",
-    "COMPLEMENT":       "Complement"
+    "COMPLEMENT":       "Complement",
+    "COMMITMENTS":      "Commitments",
+    "TRANSFERS":        "Transfers"
 }

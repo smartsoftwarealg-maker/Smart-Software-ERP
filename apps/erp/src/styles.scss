@@ -165,6 +165,11 @@ $ss-green: (
         font-size: small;
     }
 
+    .number {
+        text-align: end;
+        font-weight: bold;
+    }
+
     mat-custom-header .mat-custom-controls  .mat-custom-date-year-monthday {
         font-size: 0.7em;
         font-weight: bolder;

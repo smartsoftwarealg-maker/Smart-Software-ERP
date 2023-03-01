@@ -34,5 +34,6 @@
     "HIGHER_LEVEL_EXISTS":           "This document is at a higher level",
     "INVALID_AMOUNT":                "Invalid amount",
     "ACCESS_DENIED":                 "Access denied for this page",
-    "BLOCKED_GROUP":                 "This budget group is blocked."
+    "BLOCKED_GROUP":                 "This budget group is blocked.",
+    "INSUFFICIENT_BALANCE":          "Insufficient balance"
 }

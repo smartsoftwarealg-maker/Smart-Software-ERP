@@ -35,5 +35,6 @@
     "HIGHER_LEVEL_EXISTS":          "هذه الوثيقة في مستوى أعلى",
     "INVALID_AMOUNT":               "مبلغ غير صحيح",
     "ACCESS_DENIED":                "الوصول مرفوض لهذه الصفحة",
-    "BLOCKED_GROUP":                "مجموعة الميزانية هذه محظورة."
+    "BLOCKED_GROUP":                "مجموعة الميزانية هذه محظورة.",
+    "INSUFFICIENT_BALANCE":         "رصيد غير كاف"
 }

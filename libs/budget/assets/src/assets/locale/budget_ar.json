@@ -11,5 +11,7 @@
     "REQUESTED_QTY":    "الكمية المطلوبة",
     "ALLOCATED_QTY":    "الكمية المخصصة",
     "CLOSING_AMOUNT":   "مبلغ الإغلاق" ,
-    "COMPLEMENT":       "إطراء"
+    "COMPLEMENT":       "متمم",
+    "COMMITMENTS":      "إلتزامات",
+    "TRANSFERS":        "التحويلات"
 }
