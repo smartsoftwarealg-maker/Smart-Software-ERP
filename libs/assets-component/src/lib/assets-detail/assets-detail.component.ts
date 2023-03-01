@@ -134,7 +134,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             originalSupplier: [{ value: b.originalSupplier, disabled: true }],
             dateOut: [b.dateOut],
             customer: [b.customer],
-            serial_no: [b.serial_no],
+            serial_no: [{ value: b.serial_no, disabled: !!b.isFinal }],
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
             accountno: [b.accountno || '21'],

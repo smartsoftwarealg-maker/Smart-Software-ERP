@@ -1,15 +1,15 @@
-
-.content-div {
-    width: 100%;
-    height: 100%;
-    max-width: 1624px;
-    min-height: 320px;
+mat-card {
+    width: 80%;
+    max-width: 800px;
+    margin: 19px auto;
+    padding: 16px;
+    border-radius: 1.4em;
+    max-height: 40%;
 }
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
+.btn_container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
 
@@ -72,9 +72,4 @@
         position: sticky;
         margin: auto;
     }
-}
-
-mat-card {
-    background: #829dc5;
-    height: 100%;
 }

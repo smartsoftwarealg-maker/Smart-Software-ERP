@@ -1,6 +1,7 @@
 <mat-card>
-    <ng-container [formGroup]="storeForm">
-        <mat-form-field class="default-33 sm-100">
+    <div [formGroup]="storeForm" class="btn_container">
+
+        <mat-form-field >
             <mat-label translate>STOCK_STORE</mat-label>
             <ss-auto-complete matInput
                               [model]="storeAutoCompleteModel"
@@ -12,7 +13,6 @@
                 *ngIf="storeForm.controls['storeId'].hasError('validOption')" translate>COMMON_NO_MATCH
             </mat-error>
         </mat-form-field>
-
         <button mat-mini-fab
                 color="primary"
                 [disabled]="storeForm.controls['storeId'].value == null"
@@ -21,6 +21,7 @@
             <i class="fas fa-plus"></i>
         </button>
 
+
         <button mat-mini-fab
                 [disabled]="selectedStore == null"
                 [matTooltip]="'COMMON_DELETE'|translate"
@@ -28,7 +29,7 @@
             <i class="fas fa-trash-alt"></i>
         </button>
 
-    </ng-container>
+    </div>
     <ng-container>
         <mat-table mat-table [dataSource]="data" class="main-table">
 

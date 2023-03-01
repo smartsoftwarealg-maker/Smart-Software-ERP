@@ -1,0 +1,55 @@
+.container_div {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    min-height: 100%;
+    width: 96%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.list_div {
+    flex: 1 1 25%;
+    min-height: 100%;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+}
+
+.content_div {
+    flex: 3 1 75%;
+}
+
+.table_div,
+.content_div,
+.table_div {
+    min-height: calc(100% - 96px);
+}
+
+.mat-column-description,
+.mat-column-supplierName {
+    flex: 2 1 250px;
+}
+
+.mat-column-decision,
+.mat-column-orderNo {
+    flex: 1 1 100px;
+}
+
+.mat-column-amount {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+
+.table_div,
+.content_div {
+    overflow-x: auto;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 800px;
+}
+
+.list_div {
+    min-width: 150px;
+}

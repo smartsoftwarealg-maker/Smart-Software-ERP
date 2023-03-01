@@ -3,15 +3,16 @@ export default {
     displayName: 'scheduled-sales-sales-quota',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    globals: {
-        'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            stringifyContentPathRegex: '\\.(html|svg)$',
-        },
-    },
+    globals: {},
     coverageDirectory: '../../../coverage/libs/scheduled-sales/sales-quota',
     transform: {
-        '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
+        '^.+\\.(ts|mjs|js|html)$': [
+            'jest-preset-angular',
+            {
+                tsconfig: '<rootDir>/tsconfig.spec.json',
+                stringifyContentPathRegex: '\\.(html|svg)$',
+            },
+        ],
     },
     transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
     snapshotSerializers: [

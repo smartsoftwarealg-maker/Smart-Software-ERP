@@ -11,5 +11,7 @@
     "REQUESTED_QTY":    "Quantité demandée",
     "ALLOCATED_QTY":    "Quantité allouée",
     "CLOSING_AMOUNT":   "Montant de clôture",
-    "COMPLEMENT":       "Complément"
+    "COMPLEMENT":       "Complément",
+    "COMMITMENTS":      "Engagements",
+    "TRANSFERS":        "Transferts"
 }

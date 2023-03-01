@@ -3,15 +3,16 @@ export default {
     displayName: 'remuneration-vacation-planning',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    globals: {
-        'ts-jest': {
-            tsconfig: '<rootDir>/tsconfig.spec.json',
-            stringifyContentPathRegex: '\\.(html|svg)$',
-        },
-    },
+    globals: {},
     coverageDirectory: '../../../coverage/libs/remuneration/vacation-planning',
     transform: {
-        '^.+\\.(ts|js|html)$': 'jest-preset-angular',
+        '^.+\\.(ts|js|html)$': [
+            'jest-preset-angular',
+            {
+                tsconfig: '<rootDir>/tsconfig.spec.json',
+                stringifyContentPathRegex: '\\.(html|svg)$',
+            },
+        ],
     },
     snapshotSerializers: [
         'jest-preset-angular/build/serializers/no-ng-attributes',

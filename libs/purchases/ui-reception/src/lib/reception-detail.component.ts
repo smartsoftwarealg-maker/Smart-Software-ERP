@@ -27,7 +27,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     private reception: Transaction = null;
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
 

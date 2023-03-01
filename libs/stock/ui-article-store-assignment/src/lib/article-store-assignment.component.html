@@ -1,5 +1,4 @@
-<div class="main-container">
-    <div class="table-container">
+    <div class="table-container container">
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="reference">
@@ -42,8 +41,7 @@
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
-    <div class="pagination-container b-b-background">
+    <div class="container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
-    <ss-article-store *ngIf="selectedRow && selectedRow.id !== 0" [article]="selectedRow"></ss-article-store>
-</div>
+    <ss-article-store class="container" *ngIf="selectedRow && selectedRow.id !== 0" [article]="selectedRow"></ss-article-store>
