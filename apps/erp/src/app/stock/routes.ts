@@ -25,7 +25,7 @@ import {
     USER_STORES_URL,
     STOCK_ARTICLE_URL,
     GENERATION_ACCOUNT_URL,
-    STOCK_ACCOUNT_URL
+    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL
 } from '../common';
 import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -56,7 +56,7 @@ import { InventoryExitDetailComponent, InventoryExitListComponent } from '@ss/st
 import { InventoryExitLinesDetailComponent } from '@ss/stock/ui-inventory-exit-lines';
 import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/ui-consumption';
 import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines';
-import { InventoryDetailComponent, InventoryListComponent } from '@ss/stock/ui-inventory';
+import {InventoryDetailComponent, InventoryListComponent, PriceRecalculationComponent} from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
@@ -528,6 +528,8 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+
+    { path: STOCK_PRICE_RECALCULATION_URL, component: PriceRecalculationComponent, canActivate: [CanActivateService]},
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

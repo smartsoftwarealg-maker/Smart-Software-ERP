@@ -56,5 +56,7 @@
     "USER_STORES": "Magasins d'utilisateurs",
     "RECEPTION_CANCELLATION": "Annulation de la réception",
     "MIN_QTY":                "Quantité minimale",
-    "MAX_QTY":                "Quantité de sécurité"
+    "MAX_QTY":                "Quantité de sécurité",
+    "RECALCULATE_PRICES":     "Recalculer les prix",
+    "PRICE_RECALCULATION":    "Recalcul du prix"
 }

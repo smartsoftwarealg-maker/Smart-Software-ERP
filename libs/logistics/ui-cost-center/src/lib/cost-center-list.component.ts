@@ -37,7 +37,7 @@ export class CostCenterListComponent extends BaseEntityListComponent<CostCenter>
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(costCenterSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_COST_CENTER');
+        super(costCenterSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_COST_CENTER');
     }
 
 

@@ -56,5 +56,7 @@
     "USER_STORES": "مخازن المستعمل",
     "RECEPTION_CANCELLATION": "إلغاء الاستقبال",
     "MIN_QTY":                "الحد الأدنى للكمية",
-    "MAX_QTY":                "الكمية الأمنية"
+    "MAX_QTY":                "الكمية الأمنية",
+    "RECALCULATE_PRICES":     "أعد حساب الأسعار",
+    "PRICE_RECALCULATION":    "حساب السعر"
 }
