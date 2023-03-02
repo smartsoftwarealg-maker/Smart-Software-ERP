@@ -7,9 +7,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BudgetCommitmentService} from '../budget-commitment.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, CustomerService, SupplierService} from '@ss/logistics/api-agent';
-import {AccountStringAutocompleteModel} from '@ss/accounting/api-accounts';
-import {Observable, switchMap} from 'rxjs';
+import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {DecimalPipe} from '@angular/common';
 import {LanguageService} from '@ss/common/api-common';
 
@@ -39,13 +37,16 @@ export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<B
     }
 
 
-    override loadEntity(id: number): Observable<BudgetCommitment> {
-        return this.entitySrv
-            .getInfo(id || 0)
-            .pipe(switchMap(res => {
-                this.planningInfo = res;
-                return super.loadEntity(id);
-            }));
+    override finishLoading(e: BudgetCommitment) {
+        this.entitySrv
+            .getInfo(e.parentId || this.entitySrv.getParentId())
+            .subscribe({
+                next: res => {
+                    this.planningInfo = res;
+                    super.finishLoading(e);
+                },
+                error: e => super.finishLoading(e)
+            });
     }
 
     public override setupForm(b: BudgetCommitment) {
