@@ -27,7 +27,7 @@ export class CostCenterDetailComponent extends BaseEntityDetailComponent<CostCen
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(costCenterService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_COST_CENTERS');
+        super(costCenterService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_COST_CENTERS');
     }
 
 

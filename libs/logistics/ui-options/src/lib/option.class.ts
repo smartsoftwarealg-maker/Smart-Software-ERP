@@ -45,3 +45,12 @@ export class Option {
     count_year: number;
     raw_store: number;
 }
+
+export interface MiniLine {
+    center: number;
+    store: number;
+    reference: string;
+    transacId: number;
+    id: number;
+    price: number;
+}

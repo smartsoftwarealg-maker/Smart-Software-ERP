@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field id="eval_price" class="default-100">
+                <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
+                <mat-select formControlName="eval_price" required>
+                    <mat-option *ngFor="let f of evalPriceOptions" [value]="f.id" translate>{{f.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['eval_price'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>LOGISTICS_INVENTORY_DATE</mat-label>
+                <ss-date-picker formControlName="inventory_date"></ss-date-picker>
+            </mat-form-field>
+
+            <div class="btn_div default-100">
+                <button mat-raised-button
+                        color="primary"
+                        type="button"
+                        [disabled]="processing"
+                        (click)="recalculate()">
+                    {{ 'STOCK_RECALCULATE_PRICES' | translate }}
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -17,7 +17,11 @@ import {
     ABS_STOCK_ARTICLES_URL,
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_DASHBOARD_URL,
-    ABS_STOCK_CLASSES_URL, ABS_ACC_GENERATION_ACCOUNT_URL, ABS_STOCK_GENERATION_ACCOUNT_URL, ABS_STOCK_STOCK_ACCOUNT_URL
+    ABS_STOCK_CLASSES_URL,
+    ABS_ACC_GENERATION_ACCOUNT_URL,
+    ABS_STOCK_GENERATION_ACCOUNT_URL,
+    ABS_STOCK_STOCK_ACCOUNT_URL,
+    ABS_INVENTORY_PRICE_RECALCULATION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -69,7 +73,7 @@ export const stockNavTree: SideNavNode = {
         //     accessRights: 'AgentPrice'
         // },
         {
-            name: 'LOGISTICS_COST_CENTER',
+            name: 'COMMON_COST_CENTER',
             icon: 'fas fa-building',
             route: ABS_STOCK_COST_CENTER_URL,
             accessRights: 'CostCenter'
@@ -132,6 +136,12 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_ANOMALIES',
             icon: 'fas fa-tasks',
             route: ABS_INVENTORY_ANOMALIES_URL,
+            accessRights: 'Article'
+        },
+        {
+            name: 'STOCK_PRICE_RECALCULATION',
+            icon: 'fa-solid fa-calculator',
+            route: ABS_INVENTORY_PRICE_RECALCULATION_URL,
             accessRights: 'Article'
         },
         {

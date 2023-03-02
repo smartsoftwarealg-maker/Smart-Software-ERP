@@ -74,7 +74,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                 switchMap(_ => this.shellSrv.loadUserRights()),
                 tap(_ => {
                     const rights = this.shellSrv.getCurrentNodeRights();
-                    this.saveButton.visible = rights.edit;
+                    this.saveButton.visible &&= rights.edit;
                     this.isEditable = rights.edit;
                 }),
                 switchMap(_ => this.getRouteParam()))
