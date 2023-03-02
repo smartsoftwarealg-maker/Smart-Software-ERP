@@ -54,8 +54,8 @@ export class BudgetCommitmentListComponent extends BaseEntityListComponent<Budge
     override ngOnInit() {
         super.ngOnInit();
         this.planningSrv
-            .getList(0, 50)
-            .subscribe(res => this.plannings = res.body);
+            .getList(0, 1000)
+            .subscribe(res => this.plannings = res.body.filter(p => !p.children));
     }
 
     onPlanning(p: BudgetPlanningTree) {
