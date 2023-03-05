@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {map, Observable, of, zip} from 'rxjs';
-import {LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
+import {Data, LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
 import {FormControl} from '@angular/forms';
 import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
@@ -20,6 +20,7 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class LtmReportComponent implements OnInit {
     private chartList: Chart[] = null;
+    anomaly = new FormControl<boolean>(false);
     selectedMatter: LTMLineMatter = null;
     matters$: Observable<LTMLineMatter[]> = of([]);
     lines$: Observable<LTMLine[]> = null;
@@ -60,31 +61,36 @@ export class LtmReportComponent implements OnInit {
     onMatter(m: LTMLineMatter) {
         this.selectedMatter = m;
         this.testingSrv.setParentId(m?.parentId);
-        this.testSrv.setParentId(m.matterId);
-        zip(this.testSrv.getList(0, 50),
-            this.testingSrv.getData(m.parentId, m.matterId, this.from.value, this.to.value))
-            .subscribe(res => {
-                const tests = res[0].body;
-                const data  = res[1];
-                this.buildCharts(data, tests);
-            });
+        this.testSrv.setParentId(m?.matterId);
+        if (m) {
+            zip(this.testSrv.getList(0, 100),
+                this.testingSrv.getData(m?.parentId, m?.matterId, this.anomaly.value, this.from.value, this.to.value))
+                .subscribe(res => {
+                    const tests = res[0].body;
+                    const data = res[1];
+                    this.buildCharts(data, tests);
+                });
+        }
     }
 
-    private buildCharts(data: LTMTesting[], tests: LTMMatterTest[]) {
+    onLine() {
+        this.selectedMatter = null;
+    }
+    private buildCharts(data: Data[], tests: LTMMatterTest[]) {
         this.charts = data
-            .map(e => e.test)
+            .map(e => e.description)
             .filter((value, index, array) => value != null && array.indexOf(value) === index);
         setTimeout(()=> this.onCanvas(data, tests), 1000);
     }
 
-    onCanvas(data: LTMTesting[], tests: LTMMatterTest[]) {
+    onCanvas(data: Data[], tests: LTMMatterTest[]) {
         this.chartList?.forEach(c => c?.destroy());
         this.chartList = this.charts
             .map(c => {
                 const ctx = <ChartItem>document.getElementById(c);
-                const test = data.filter(t => t.test === c);
+                const test = data.filter(t => t.description === c);
                 if (test.length > 0) {
-                    const data = this.chartData(test, tests);
+                    const data = this.chartData(test);
                     return new Chart(ctx, data);
                 } else {
                     return null;
@@ -92,34 +98,42 @@ export class LtmReportComponent implements OnInit {
             });
     }
 
-    private chartData(data: LTMTesting[], tests: LTMMatterTest[]): ChartConfiguration {
-        const range = tests.filter(e => e.testId === data[0]?.testId).map(e => [e.minValue, e.maxValue])[0];
+    private chartData(data: Data[]): ChartConfiguration {
         return {
             type: 'line' ,
             data: {
-                labels: data.map(_ => _.timeStamp),
+                labels: data.map(_ => _.key),
                 datasets: [
                     {
                         label: this.langSrv.translate('LTM_LOW'),
-                        data: data.map(_ => range[0]),
+                        data: data.map(_ => _.minValue),
                         backgroundColor: ['blue'],
                         borderColor: ['blue']
                     },
                     {
-                        label: data[0].test,
+                        label: data[0].description,
                         data: data.map(e => e.value),
                         backgroundColor: ['green'],
-                        borderColor: ['rgba(75, 192, 192, 1)']
+                        borderColor: ['green']
                     },
                     {
                         label: this.langSrv.translate('LTM_HIGH'),
-                        data: data.map(_ => range[1]),
+                        data: data.map(_ => _.maxValue),
                         backgroundColor: ['red'],
                         borderColor: ['red']
                     },
                 ],
             },
             options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: 'white',
+                            boxHeight: 18,
+                        },
+                    }
+                },
                 scales: {
                     x: {
                         ticks: {
@@ -127,6 +141,7 @@ export class LtmReportComponent implements OnInit {
                             maxRotation: 45,
                             minRotation: 45
                         }
+
                     }
                 }
             }

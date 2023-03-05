@@ -14,5 +14,6 @@
     "MAX_VALUE":      "Valeur maximum",
     "PERIODICITY":    "Périodicité",
     "LOW":            "Faible",
-    "HIGH":           "Haut"
+    "HIGH":           "Haut",
+    "ANOMALIES_ONLY": "Afficher uniquement les anomalies"
 }

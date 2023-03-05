@@ -69,12 +69,17 @@ export class LtmMatterTestListComponent implements OnInit {
     }
 
     refresh() {
-        this.entitySrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize)
-            .subscribe(res => {
-                this.data = res.body;
-                this.pagination.elementCount = res.itemCount;
-            });
+        console.log('parent', this.entitySrv.getParentId(), this.entitySrv.getParentId());
+        if (!this.entitySrv.getParentId()) {
+            this.router.navigate(['..'], { relativeTo: this.route }).then();
+        } else {
+            this.entitySrv
+                .getList(this.pagination.page - 1, this.pagination.pageSize)
+                .subscribe(res => {
+                    this.data = res.body;
+                    this.pagination.elementCount = res.itemCount;
+                });
+        }
     }
 
     sortData(event: any) {
