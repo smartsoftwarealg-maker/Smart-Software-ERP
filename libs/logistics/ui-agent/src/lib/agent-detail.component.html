@@ -387,6 +387,19 @@
                 <ss-app-archive-main [id]="id" [appId]="LOCAL_AGENT_ARCHIVES"
                                      [editable]="isEditable"></ss-app-archive-main>
             </mat-expansion-panel>
+
+            <mat-expansion-panel #attributes expanded="false" [class]="getPanelHeaderClass('attributes', attributes)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title translate>
+                        ADMINISTRATION_ATTRIBUTES
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
+                                     [editable]="isEditable">
+                </ss-child-attributes>
+            </mat-expansion-panel>
+
         </mat-accordion>
     </form>
 </mat-card>

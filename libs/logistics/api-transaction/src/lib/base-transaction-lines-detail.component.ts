@@ -60,8 +60,6 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     }
 
     private updateStockAndValue(res: QtyPrice) {
-        this.form?.controls['pprice'].setValue(res.price);
-        this.form?.controls['price'].setValue(res.price);
         this.articleStock = res.qty;
     }
 
@@ -69,24 +67,14 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         super.ngOnInit();
         this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
 
-        const store = this.form?.controls['store'].value || 0;
-        this.articleAutoCompleteModel.evenEmitter.subscribe(art => {
-            this.articleSrv
-                .getPPrice(<string>art, store, this.parentId, this.id)
-                .subscribe({
-                    next: res => this.updateStockAndValue(res),
-                    error: err => this.form.controls['price'].setValue(0.0)
-                })
-        });
-
         const subs1 = this.storeAutoCompleteModel
             .evenEmitter
             .subscribe(id => {
                 this.articleSrv
                     .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
                     .subscribe({
-                        next: res => this.updateStockAndValue(res),
-                        error: err => this.form.controls['price'].setValue(0.0)
+                        next: res => this.articleStock = res.qty,
+                        error: err => this.articleStock = 0
                     })
             });
         const subs2 = this.articleAutoCompleteModel
@@ -128,6 +116,12 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     onArticle(a: Article | string) {
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
+        this.articleSrv
+            .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
+            .subscribe({
+                next: res => this.updateStockAndValue(res),
+                error: err => this.form.controls['price'].setValue(0.0)
+            });
     }
 
     public override setupForm(b: TransactionLine): UntypedFormGroup {
