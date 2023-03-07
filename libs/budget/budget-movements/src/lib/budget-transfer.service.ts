@@ -5,7 +5,7 @@ import {
     BUDGET_COMMITMENTS,
     BUDGET_PLANNINGS, BUDGET_TRANSFERS,
     BudgetCommitment,
-    BudgetTransfer,
+    BudgetTransfer, BudgetTransferDetail,
     PlanningInfo
 } from './budget-movement-api';
 import {Observable} from 'rxjs';
@@ -21,5 +21,9 @@ export class BudgetTransferService extends BaseEntityService<BudgetTransfer> {
 
     getInfo(id: number): Observable<PlanningInfo> {
         return this.httpSrv.get<PlanningInfo>(`/budgets/${id}/planning-info`);
+    }
+
+    getDetail(transferId: number): Observable<BudgetTransferDetail[]> {
+        return this.httpSrv.get<BudgetTransferDetail[]>(`/budgets/tranfsers/${transferId}/detail`);
     }
 }

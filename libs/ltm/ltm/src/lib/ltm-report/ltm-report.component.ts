@@ -98,6 +98,14 @@ export class LtmReportComponent implements OnInit {
             });
     }
 
+    private getTitle() {
+        const now  = new Date();
+        const from = Date.parse((this.from.value || now).toString());
+        const to   = Date.parse((this.to.value || now).toString());
+        const days = (to - from) / (1000 * 60 * 60 * 24);
+        const msg = days < 1? 'HOURS': days < 32? 'DAYS' : 'MONTHS';
+        return this.langSrv.translate('COMMON_' + msg);
+    }
     private chartData(data: Data[]): ChartConfiguration {
         return {
             type: 'line' ,
@@ -136,6 +144,10 @@ export class LtmReportComponent implements OnInit {
                 },
                 scales: {
                     x: {
+                        title: {
+                           display: true,
+                           text: this.getTitle()
+                        },
                         ticks: {
                             autoSkip: false,
                             maxRotation: 45,

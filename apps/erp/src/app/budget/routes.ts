@@ -17,7 +17,10 @@ import {BudgetGroupsComponent} from '@ss/budget/budget-groups';
 import {BudgetPlanningComponent} from '@ss/budget/budget-planning';
 import {
     BudgetCommitmentDetailComponent,
-    BudgetCommitmentListComponent, BudgetTransferListComponent
+    BudgetCommitmentListComponent,
+    BudgetTransferDetailComponent, BudgetTransferLineDetailComponent,
+    BudgetTransferLineListComponent,
+    BudgetTransferListComponent
 } from '@ss/budget/budget-movements';
 
 export const budgetRoutes: Routes = [
@@ -67,9 +70,17 @@ export const budgetRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: BudgetTransferListComponent,
+                component: BudgetTransferDetailComponent,
                 canActivate: [CanActivateService, BudgetSelectorGuardGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', component: BudgetTransferLineListComponent, pathMatch: 'full'},
+                    { path: 'detail',
+                        children: [
+                            { path: ':id', component: BudgetTransferLineDetailComponent }
+                        ]
+                    }
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

@@ -25,6 +25,14 @@ export interface BudgetTransfer {
     userId: number;
 }
 
+export interface BudgetTransferDetail {
+    id: number;
+    transferId: number;
+    planningId: number;
+    amount: number;
+    description?: string;
+}
+
 export interface PlanningInfo {
     amount: number;
     complement: number;
