@@ -24,6 +24,6 @@ export class BudgetTransferService extends BaseEntityService<BudgetTransfer> {
     }
 
     getDetail(transferId: number): Observable<BudgetTransferDetail[]> {
-        return this.httpSrv.get<BudgetTransferDetail[]>(`/budgets/tranfsers/${transferId}/detail`);
+        return this.httpSrv.get<BudgetTransferDetail[]>(`/budgets/transfers/${transferId}/detail`);
     }
 }
