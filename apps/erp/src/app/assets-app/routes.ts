@@ -1,6 +1,5 @@
 import {
     ABS_INDEX_URL,
-    CanActivateService,
     CanDeactivateService,
     LIST_URL
 } from '@ss/common/api-common';
@@ -90,6 +89,7 @@ import {
     AssetAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
 import {DashboardComponent} from '@ss/dashboard';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -98,7 +98,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -106,7 +106,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: AssetsDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         children: [
                             { path: '', redirectTo: 'archive', pathMatch: 'full'},
@@ -129,7 +129,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: AssetCostsDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -144,7 +144,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: DepreciationRateDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -159,7 +159,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: AssetRevaluationDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -174,7 +174,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: AssetBlockingDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -194,7 +194,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -210,7 +210,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AssetBuildingDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -222,12 +222,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetCostTypeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetCostTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -239,12 +239,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetBlockingTypeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetBlockingTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -256,12 +256,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FurnitureStatusListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: FurnitureStatusDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -273,12 +273,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EndTypesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: EndTypesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -290,12 +290,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetClassListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetClassDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -307,12 +307,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetLocationsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetLocationsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -324,12 +324,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetRevaluationTypeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetRevaluationTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -341,13 +341,13 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ReportCatalogListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: {app: 'assets'}
             },
             {
                 path: ':id',
                 component: ReportCatalogDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -358,7 +358,7 @@ export const mainRoutes: Routes = [
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'assets'},
         component: ReportViewComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ASSETS_OFFICES_URL,
@@ -366,12 +366,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: OfficesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: OfficeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -383,12 +383,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAppointmentDocListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetAppointmentDocDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -416,12 +416,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetInventoryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetInventoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -433,7 +433,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetReceptionsComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -441,7 +441,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: AssetReceptionsDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
@@ -471,7 +471,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: {sales: true},
                 children: docInfoRoutes
             },
@@ -481,7 +481,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: AgentDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: false},
                         children: [
@@ -508,12 +508,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -531,7 +531,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: MarkDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -540,7 +540,7 @@ export const mainRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
 
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

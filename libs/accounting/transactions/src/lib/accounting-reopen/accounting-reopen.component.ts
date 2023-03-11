@@ -64,11 +64,10 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.addButton.visible = false;
-        this.shellSrv.updateShell();
+        super.ngOnInit();
     }
 
     reopen() {

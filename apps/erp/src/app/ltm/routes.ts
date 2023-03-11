@@ -29,6 +29,7 @@ import {
     LtmReportComponent,
     LineMatterListComponent
 } from '@ss/ltm/ltm';
+import {loginGuard} from '../erp-guards';
 
 export const ltmRoutes: Routes = [
     {
@@ -40,12 +41,12 @@ export const ltmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LtmLineListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: LtmLineDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', component: LineMatterListComponent, pathMatch: 'full'},
@@ -65,12 +66,12 @@ export const ltmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LtmMatterListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: LtmMatterDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', component: LtmMatterTestListComponent, pathMatch: 'full'},
@@ -90,12 +91,12 @@ export const ltmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LtmTestListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: LtmTestDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -107,12 +108,12 @@ export const ltmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LtmPeriodicitiesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: LtmPeriodicitiesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -124,12 +125,12 @@ export const ltmRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: LtmTestingListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: LtmTestingDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

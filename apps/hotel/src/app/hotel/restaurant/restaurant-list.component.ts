@@ -101,6 +101,6 @@ export class RestaurantListComponent extends AbstractEntityList<DisplayableServi
 
     edit(v: FullService): void {
         this.restSrv.activeEntity = v;
-        this.router.navigate([(v || { service: { id: 0 } }).service.id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { service: { id: 0 } }).service.id], { relativeTo: this.activatedRoute }).then();
     }
 }

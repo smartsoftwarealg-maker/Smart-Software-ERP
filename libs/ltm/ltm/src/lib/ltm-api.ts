@@ -44,6 +44,14 @@ export interface LTMMatterTest {
     maxValue: number
 }
 
+export interface Data {
+    key: string;
+    testId: number;
+    description: string;
+    value: number;
+    minValue: number;
+    maxValue: number;
+}
 export interface LTMTesting {
     id: number;
     parentId: number;

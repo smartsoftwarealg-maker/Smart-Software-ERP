@@ -1,5 +1,5 @@
 import {
-    ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
+    ABS_INDEX_URL, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {
@@ -26,6 +26,7 @@ import {
     DiscountListComponent
 } from '@ss/common/ui-lookup';
 import {SupplierTrucksDetailComponent, SupplierTrucksListComponent} from '@ss/scheduled-sales/supplier-trucks';
+import {loginGuard} from '../erp-guards';
 
 export const schedSalesRoutes: Routes = [
     {
@@ -34,12 +35,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SupplierTrucksListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SupplierTrucksDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -51,12 +52,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DiscountListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DiscountDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -66,7 +67,7 @@ export const schedSalesRoutes: Routes = [
     {
         path: SS_PARTNER_SCHEDULE_URL,
         component: PartnerScheduleDetailComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
         canDeactivate: [CanDeactivateService]
     },
 
@@ -76,12 +77,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesScheduleListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SalesScheduleDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -94,12 +95,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesQuotaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SalesQuotaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -112,12 +113,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalesModeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SalesModeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -130,12 +131,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ProjectListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ProjectDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -152,7 +153,7 @@ export const schedSalesRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -165,12 +166,12 @@ export const schedSalesRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ArticleDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

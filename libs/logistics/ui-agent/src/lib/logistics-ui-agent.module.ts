@@ -12,6 +12,7 @@ import {CustomerProfileComponent} from './ui-customer-profile/customer-profile.c
 import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {AppArchiveModule} from '@ss/common/app-archive';
 import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
+import {CustomAttributesModule} from '@ss/custom-attributes';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
         CommonUiConfirmationDialogModule,
         LogisticsUiDocInfoModule,
         AppArchiveModule,
-        CommonUiAutoCompleteModule
+        CommonUiAutoCompleteModule,
+        CustomAttributesModule
     ],
     declarations: [
         AgentListComponent,

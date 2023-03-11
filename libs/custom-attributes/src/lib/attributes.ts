@@ -12,6 +12,7 @@ export const ATTRIB_VALUES_URL = '/values';
 export const PARENT_ARTICLE = 1;
 export const PARENT_ASSET   = 2;
 export const PARENT_TRANSAC = 3;
+export const PARENT_AGENT   = 4;
 
 export interface AttribTempl {
     id: number;
@@ -36,6 +37,7 @@ export interface Attrib {
     transacId?: number;
     articleId?: number;
     assetId?: number;
+    agentId?: number;
     attribName?: string;
     attribType?: number;
     valueName?: string;

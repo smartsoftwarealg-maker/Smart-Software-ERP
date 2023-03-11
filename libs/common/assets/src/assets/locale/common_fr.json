@@ -265,5 +265,9 @@
     "COMPACT":                    "Compact",
     "INVOICE_NUMBER":             "Numéro de facture",
     "BUDGET":                     "Budget",
-    "CHARTS":                     "Graphiques"
+    "CHARTS":                     "Graphiques",
+    "LTM":                        "L.T.M",
+    "HOURS":                      "Heures",
+    "DAYS":                       "Jours",
+    "MONTHS":                     "Mois"
 }

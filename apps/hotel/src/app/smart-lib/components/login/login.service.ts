@@ -70,7 +70,7 @@ export class LoginService {
                             const failure: boolean = !this.agent && !this.person && !this.loggedIn;
                             if (failure) {
                                 localStorage.clear();
-                                this.router.navigate(['/login']);
+                                this.router.navigate(['/login']).then();
                             }
                             return !failure;
                         })

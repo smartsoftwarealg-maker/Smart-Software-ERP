@@ -267,9 +267,9 @@ export class GymDetailComponent implements OnInit {
         this.activatedRoute.queryParams.subscribe(params => {
             const cmd = params.referer;
             if (cmd) {
-                this.router.navigate([cmd]);
+                this.router.navigate([cmd]).then();
             } else {
-                this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+                this.router.navigate(['../'], { relativeTo: this.activatedRoute }).then();
             }
         });
     }
@@ -362,13 +362,13 @@ export class GymDetailComponent implements OnInit {
         const params = new URLSearchParams(window.location.search);
         const cmd = params.get('referer');
         if (cmd) {
-            this.router.navigate([cmd]);
+            this.router.navigate([cmd]).then();
         } else {
             let url = this.router.url;
             const i = url.lastIndexOf('/');
             if (i > -1) {
                 url = url.substring(0, i);
-                this.router.navigate([url]);
+                this.router.navigate([url]).then();
             }
         }
     }

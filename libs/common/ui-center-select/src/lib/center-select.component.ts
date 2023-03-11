@@ -112,6 +112,7 @@ export class CenterSelectComponent implements OnInit {
                             if (this.loginSrv.appCtx) {
                                 this.shellSrv.setSideNavDataSource(navBar)
                             }
+                            this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
                             this.router.navigate(['/' + dest]).then(() => {});
                         }, error: err => {
                             this.endLoading();

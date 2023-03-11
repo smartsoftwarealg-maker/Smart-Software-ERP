@@ -9,10 +9,33 @@
 
 .line_div {
     flex: 1 1 25%;
+    height: 75%;
+}
+mat-card {
+    margin-top: 16px;
+    min-height: calc(100vh - 400px);
+}
+.chart_container {
+    overflow-y: auto;
+    flex: 2 1 75%;
+    background: black;
+    max-height: calc(100vh - 120px);
 }
 
 .chart_div {
-    flex: 2 1 75%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 8px auto;
+}
+
+.chart {
+    flex: 1 1 40%;
+    display: block;
+    width: 40%;
+    height: 300px;
+    border-top: black solid 2px;
 }
 
 mat-card {

@@ -11,7 +11,7 @@ import {
     LOGISTICS_NUMBERING_URL,
     LOGISTICS_CATEGORY_URL, docInfoRoutes,
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
 import {PayMethodDetailComponent, PayMethodListComponent} from '@ss/logistics/ui-pay-method';
 import {
@@ -38,6 +38,7 @@ import {
     DocumentNumberingDetailComponent,
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -50,7 +51,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: {sales: true},
                 children: docInfoRoutes
             },
@@ -60,7 +61,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: AgentDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { sales: true },
                         children: [
@@ -90,7 +91,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: PayMethodDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
@@ -106,7 +107,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: VatDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -122,7 +123,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AgentTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -138,7 +139,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CompanyTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -154,7 +155,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CurrencyDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -170,7 +171,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ActivityDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -186,7 +187,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SalesCategoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -202,7 +203,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocumentNumberingDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -211,7 +212,7 @@ export const mainRoutes: Routes = [
     {
         path: LOGISTICS_OPTION_URL,
         component: OptionsDetailComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
         canDeactivate: [CanDeactivateService]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},

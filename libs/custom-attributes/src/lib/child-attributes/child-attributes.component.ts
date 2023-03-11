@@ -4,7 +4,7 @@ import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {SnackBarService} from '@ss/common/ui-shell';
-import {Attrib, AttribTempl, PARENT_ARTICLE, PARENT_ASSET, PARENT_TRANSAC} from '../attributes';
+import {Attrib, AttribTempl, PARENT_AGENT, PARENT_ARTICLE, PARENT_ASSET, PARENT_TRANSAC} from '../attributes';
 import {AttributesService} from '../attributes.service';
 import {ChildAttributesService} from '../child-attributes.service';
 import {AttributeLookupService} from '../attribute-lookup.service';
@@ -19,7 +19,7 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
     private datePipe = new DatePipe(this.langSrv.defaultLanguage);
-    private _parentId: 1 | 2 | 3 = 2;
+    private _parentId: 1 | 2 | 3 | 4 = 2;
     private subscriptions: Subscription[] = [];
 
     @Input() editable = true;
@@ -41,7 +41,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     }
 
     @Input()
-    set parentId(pId: 1 | 2 | 3) {
+    set parentId(pId: 1 | 2 | 3 | 4) {
         this._parentId = pId;
     }
 
@@ -77,7 +77,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
             ).subscribe(v => this.onAttribute(v));
         this.subscriptions.push(subs);
         this.attribSrv
-            .getChildAttributes()
+            .getChildAttributes(this._parentId)
             .subscribe(res => this.$childAttributes = res);
     }
 
@@ -157,6 +157,10 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
 
             case PARENT_ASSET:
                 this.selectedAttribute.assetId = this.childAttribSrv.getParentId();
+                break;
+
+            case PARENT_AGENT:
+                this.selectedAttribute.agentId = this.childAttribSrv.getParentId();
                 break;
 
             case PARENT_TRANSAC:

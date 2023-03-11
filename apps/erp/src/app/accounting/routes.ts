@@ -9,7 +9,7 @@ import {
     ACC_TRANSACTIONS_URL, ASSET_ACCOUNT_URL, CASHFLOW_ACCOUNTS_URL,
     COMMON_ACCOUNT_URL, COMMON_REPORTS_URL, GENERATION_ACCOUNT_URL, TRANSAC_ACCOUNT_URL
 } from '../common';
-import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
 import {JournalDetailComponent, JournalListComponent} from '@ss/accounting/accounting-journal';
 import {
@@ -34,29 +34,29 @@ import {
     GenerationAccountsListComponent,
     GenerationAccountsDetailComponent, CashFlowListComponent, CashFlowDetailComponent
 } from '@ss/accounting/accounting-accounts';
-import {AccountingPeriodGuard} from '@ss/accounting/accounting-api';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {accountingGuard, loginGuard} from '../erp-guards';
 
 export const accRoutes: Routes = [
     {
         path: ACC_FILE_SELECTOR_URL,
         component: FileSelectorComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ACC_GENERATION_URL,
         component: AccountingGenerationComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard]
+        canActivate: [loginGuard, accountingGuard]
     },
     {
         path: ACC_DEPRECIATION_GEN_URL,
         component: DepreciationGenerationComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard]
+        canActivate: [loginGuard, accountingGuard]
     },
     {
         path: ACC_REOPEN_URL,
         component: AccountingReopenComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard],
+        canActivate: [loginGuard, accountingGuard],
         canDeactivate: [CanCloseOpener]
     },
     {
@@ -66,7 +66,7 @@ export const accRoutes: Routes = [
                 path: LIST_URL,
                 data: { reportBase: 'accounting'},
                 component: ReportViewComponent,
-                canActivate: [CanActivateService, AccountingPeriodGuard]
+                canActivate: [loginGuard, accountingGuard]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -75,17 +75,17 @@ export const accRoutes: Routes = [
     {
         path: ACC_PERIOD_SELECTOR_URL,
         component: PeriodSelectorComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ACC_PERIOD_SELECTOR_URL,
         component: PeriodSelectorComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ACC_POLICIES_URL,
         component: AccPoliciesComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ASSET_ACCOUNT_URL,
@@ -93,12 +93,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -111,12 +111,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransacAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TransacAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -129,12 +129,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: GenerationAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: GenerationAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -147,12 +147,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CashFlowListComponent,
-                canActivate: [CanActivateService, AccountingPeriodGuard]
+                canActivate: [loginGuard, accountingGuard]
             },
             {
                 path: ':id',
                 component: CashFlowDetailComponent,
-                canActivate: [CanActivateService, AccountingPeriodGuard],
+                canActivate: [loginGuard, accountingGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -165,12 +165,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccountListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AccountDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -183,12 +183,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccFileListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AccFileDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -201,12 +201,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccProjectListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AccProjectDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -219,12 +219,12 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JournalListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: JournalDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -237,7 +237,7 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransactionListComponent,
-                canActivate: [CanActivateService, AccountingPeriodGuard],
+                canActivate: [loginGuard, accountingGuard],
                 children: [
                     {
                         path: ':id',
@@ -270,7 +270,7 @@ export const accRoutes: Routes = [
     {
         path: ACC_BALANCE_QUERIES_URL,
         component: BalanceQueriesComponent,
-        canActivate: [CanActivateService, AccountingPeriodGuard]
+        canActivate: [loginGuard, accountingGuard]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

@@ -51,7 +51,7 @@ export class ClientsListComponent extends AbstractEntityList<Agent, BackendDataS
 
     edit(v: Agent): void {
         this.clientSrv.setActiveEntity(v);
-        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute }).then();
     }
 
     protected loadMoreData(): Observable<any> {

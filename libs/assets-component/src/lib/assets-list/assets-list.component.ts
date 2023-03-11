@@ -43,8 +43,8 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         'receptionNumber',
         'appointmentNumber',
         'depreciationRate',
-        'useful_life',
-        'residualValue',
+        // 'useful_life',
+        // 'residualValue',
     ];
 
     displayedColumns = this.DEF_COLS;

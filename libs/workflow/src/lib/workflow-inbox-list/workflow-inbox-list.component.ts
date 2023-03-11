@@ -42,12 +42,10 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
     }
 
     override ngOnInit(): void {
-        super.ngOnInit();
-        this.editButton.visible
-
-            = false;
+        this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
+        super.ngOnInit();
     }
 
     changeMode(all: boolean) {

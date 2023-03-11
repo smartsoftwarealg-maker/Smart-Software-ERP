@@ -122,9 +122,9 @@ export class RoomsDetailComponent extends AbstractEntityView<Room, BackendDataSo
         this.activatedRoute.queryParams.subscribe(params => {
             const cmd = params.referer;
             if (cmd) {
-                this.router.navigate([cmd]);
+                this.router.navigate([cmd]).then();
             } else {
-                this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+                this.router.navigate(['../'], { relativeTo: this.activatedRoute }).then();
             }
         });
     }

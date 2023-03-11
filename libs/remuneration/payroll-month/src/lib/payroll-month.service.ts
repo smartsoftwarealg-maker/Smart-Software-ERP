@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AppContext, HttpService, LanguageService, LoginInfo, LoginService} from '@ss/common/api-common';
 import {catchError, map, Observable, of, tap} from 'rxjs';
+import {ToolbarLabel} from '@ss/common/ui-shell';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PayrollMonthService {
-
+    maxMonnth = 0;
     constructor(protected httpSrv: HttpService,
                 private loginSrv: LoginService,
                 private langSrv: LanguageService) {}
@@ -15,18 +16,24 @@ export class PayrollMonthService {
         return this.httpSrv.get<{ month: number }>('/payroll/max-month');
     }
 
-    curMonthLabel(): Observable<string> {
+    curMonthLabel(): Observable<ToolbarLabel> {
         return this.httpSrv
             .get<{ month: number }>('/payroll/max-month')
             .pipe(map(res => {
-                    const max = res.month;
-                    const cur = this.loginSrv.appCtx.payMonth % 1_000_000;
-                    const off = +(this.loginSrv.appCtx.payMonth / 1_000_000).toFixed(0);
-                    return `${this.langSrv.translate('PAYROLL_MONTH')}: ${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} / ${max % 100}/${(max / 100).toFixed(0)}`;
+                    this.maxMonnth = res.month;
+                    return this.getLabel();
                 }),
-                catchError(err => of('')));
+                catchError(err => of({ title: '', text: '' })));
     }
 
+    getLabel() {
+        const cur = this.loginSrv.appCtx.payMonth % 1_000_000;
+        const off = +(this.loginSrv.appCtx.payMonth / 1_000_000).toFixed(0);
+        return {
+            title: `${this.langSrv.translate('PAYROLL_MONTH')} :`,
+            text: `${cur % 100}/${(cur / 100).toFixed(0)} ${off > 0 ? '.' + off : ''} / ${this.maxMonnth % 100}/${(this.maxMonnth / 100).toFixed(0)}`
+        };
+    }
 
     minMonth(): Observable<{ month: number }> {
         return this.httpSrv.get<{ month: number }>('/payroll/min-month');
@@ -56,8 +63,7 @@ export class PayrollMonthService {
     }
 
     isUpdatableMonth(): Observable<boolean> {
-        return this.maxMonth()
-            .pipe(map(res => res.month === this.loginSrv.appCtx.payMonth % 1000000))
+        return this.maxMonth().pipe(map(res => res.month === this.loginSrv.appCtx.payMonth % 1000000))
     }
 
     ctx(): Observable<AppContext> {

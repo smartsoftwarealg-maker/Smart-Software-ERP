@@ -100,6 +100,6 @@ export class FoyerListComponent extends AbstractEntityList<DisplayableService, B
 
     edit(v: FullService): void {
         this.foyerSrv.activeEntity = v;
-        this.router.navigate([(v || { service: { id: 0 } }).service.id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { service: { id: 0 } }).service.id], { relativeTo: this.activatedRoute }).then();
     }
 }

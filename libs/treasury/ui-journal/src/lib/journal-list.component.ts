@@ -45,7 +45,4 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> imple
 //        return of(data);
 //    }
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
 }

@@ -2,7 +2,6 @@ import {administrationNavTree} from '../app/administration/side-nav-tree';
 import {organizationsNavTree} from '../app/organizations/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {Routes} from '@angular/router';
-import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {
     ADMINISTRATION_APP_URL,
@@ -12,6 +11,8 @@ import {
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
+import {loginGuard} from '../app/erp-guards';
+import {INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
 
 export const environment = {
     production: true,
@@ -40,7 +41,7 @@ export const appRoutes: Routes =  [
     {
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ORGANIZATIONS_APP_URL,

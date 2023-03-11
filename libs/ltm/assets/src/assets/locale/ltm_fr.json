@@ -6,7 +6,8 @@
     "VALUE":          "Valeur",
     "TESTINGS":       "Tests",
     "PERIODICITIES":  "Périodicités",
-    "MATTERS":        "Matière",
+    "MATTERS":        "Matières",
+    "MATTER":         "Matière",
     "TESTS":          "Questions",
     "PERIOD":         "Periode",
     "MIN_VALUE":      "Valeur minimum",
@@ -14,5 +15,6 @@
     "MAX_VALUE":      "Valeur maximum",
     "PERIODICITY":    "Périodicité",
     "LOW":            "Faible",
-    "HIGH":           "Haut"
+    "HIGH":           "Haut",
+    "ANOMALIES_ONLY": "Afficher uniquement les anomalies"
 }

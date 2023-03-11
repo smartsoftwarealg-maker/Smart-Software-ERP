@@ -57,7 +57,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         private formBuilder: UntypedFormBuilder,
         private commonFieldSrv: CommonElementsService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
-        this.pagination.pageSize = 5;
+        this.pagination.pageSize = 10;
         this.form = this.formBuilder.group( {
             field: [''],
             value: [0.0]
@@ -86,17 +86,16 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     }
 
     override ngOnInit() {
+        this.excelButton.visible = false;
+        this.deleteButton.visible = false;
+        this.addButton.visible = false;
         super.ngOnInit();
         this.infoSrv.load();
         this.monthSelectorSrv
             .isUpdatableMonth()
             .subscribe(upd => {
                 this.editButton.visible = upd;
-                this.deleteButton.visible = false;
-                this.addButton.visible = false;
-                this.shellSrv.updateShell();
             });
-        this.excelButton.visible = false;
     }
 
     selectInput(ev: MatSelectChange) {

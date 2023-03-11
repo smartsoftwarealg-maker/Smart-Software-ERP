@@ -50,10 +50,10 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
+        super.ngOnInit();
 
         const selectButton: ToolbarButton = {
             icon: 'fa-solid fa-check',
@@ -78,6 +78,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
             .pipe(tap(ctx => this.loginSrv.updateCtx(ctx)))
             .subscribe(res => {
                 if (this.selectedRow) {
+                    this.entitySrv.accFile = this.selectedRow;
                     this.shellSrv.setLabels([{ title: `${this.selectedRow.description}` }]);
                 }
                 this.snackBarSrv.showSuccessMessage();

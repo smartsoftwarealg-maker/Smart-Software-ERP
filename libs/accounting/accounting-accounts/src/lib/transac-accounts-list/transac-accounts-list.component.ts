@@ -43,8 +43,8 @@ export class TransacAccountsListComponent extends BaseEntityListComponent<Transa
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.addButton.visible = false;
         this.deleteButton.visible  = false;
+        super.ngOnInit();
     }
 }

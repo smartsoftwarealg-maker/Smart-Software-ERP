@@ -16,12 +16,13 @@ import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
+import {loginGuard} from '../erp-guards';
 
 export const financeRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: LOGISTICS_CCOMPENSATION_URL,
@@ -43,12 +44,12 @@ export const financeRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PaymentsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: PaymentsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -61,13 +62,13 @@ export const financeRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PaymentsListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { url: '/spayments', agents: '/customers' }
             },
             {
                 path: ':id',
                 component: PaymentsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 data: { url: '/spayments', agents: '/suppliers' }
             },
@@ -81,13 +82,13 @@ export const financeRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PaymentsListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { url: '/cpayments', agents: '/customers' }
             },
             {
                 path: ':id',
                 component: PaymentsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 data: { url: '/cpayments', agents: '/customers' }
             },
@@ -101,12 +102,12 @@ export const financeRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PaymentOrderListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: PaymentOrderDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -119,7 +120,7 @@ export const financeRoutes: Routes = [
                 path: LIST_URL,
                 data: { reportBase: 'finance'},
                 component: ReportViewComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

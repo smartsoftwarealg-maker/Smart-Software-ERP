@@ -98,6 +98,7 @@ import {
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
 import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
+import {loginGuard} from '../erp-guards';
 
 export const hrRoutes: Routes = [
     {
@@ -106,12 +107,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MotiveListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: MotiveDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -123,12 +124,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DecisionMotiveListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DecisionMotiveDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -140,12 +141,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ContractMotiveListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ContractMotiveDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -157,12 +158,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JudicialFrameListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: JudicialFrameDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -171,12 +172,12 @@ export const hrRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: HR_PERSON_LIST_URL,
         component: PersonListComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: HR_EMPLOYEES_URL,
@@ -184,7 +185,7 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { active: true }
             },
             {
@@ -193,7 +194,7 @@ export const hrRoutes: Routes = [
                     {
                         path: '',
                         component: EmployeeDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: true },
                         children: [
@@ -216,7 +217,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeActivationDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -231,7 +232,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -246,7 +247,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeContractsDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -261,7 +262,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeWifeDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -276,7 +277,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeChildDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -291,7 +292,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeDiplomaDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -306,7 +307,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeTrainingDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -321,7 +322,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: PunishmentDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -336,7 +337,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeLanguagesDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -351,7 +352,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeOldCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -366,7 +367,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeDecisionDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -382,7 +383,7 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmployeeListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { active: false }
             },
             {
@@ -391,7 +392,7 @@ export const hrRoutes: Routes = [
                     {
                         path: '',
                         component: EmployeeDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: { hrMode: true, active: false },
                         children: [
@@ -414,7 +415,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeActivationDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -429,7 +430,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -444,7 +445,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeContractsDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -459,7 +460,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeWifeDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -474,7 +475,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeChildDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -489,7 +490,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeDiplomaDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -504,7 +505,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeTrainingDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -519,7 +520,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: PunishmentDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -534,7 +535,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeLanguagesDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -549,7 +550,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeOldCareerDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -564,7 +565,7 @@ export const hrRoutes: Routes = [
                             {
                                 path: ':id',
                                 component: EmployeeDecisionDetailComponent,
-                                canActivate: [CanActivateService],
+                                canActivate: [loginGuard],
                                 canDeactivate: [CanDeactivateService]
                             }
                         ]
@@ -577,7 +578,7 @@ export const hrRoutes: Routes = [
     {
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
         data: { reportBase: 'hr' }
     },
     {
@@ -586,12 +587,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EmploymentTypeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: EmploymentTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -603,12 +604,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JudicialFrameListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: JudicialFrameDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -620,12 +621,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SuspensionReasonListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SuspensionReasonDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -637,12 +638,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ServiceListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ServiceDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -654,12 +655,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CategoryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CategoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -671,12 +672,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DiplomaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DiplomaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -688,12 +689,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ProfessionalFaultListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ProfessionalFaultDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -705,12 +706,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PunishmentTypeListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: PunishmentTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -722,12 +723,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: EducationLevelListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: EducationLevelDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -739,12 +740,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MaritalStatusListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: MaritalStatusDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -756,12 +757,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: PostListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: PostDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -773,12 +774,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: NationalityListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: NationalityDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -790,12 +791,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DepartmentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DepartmentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -807,12 +808,12 @@ export const hrRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DivisionListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DivisionDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {LTM_LTM_LINE_URL, LTM_TEST_URL, LTM_TESTINGS_URL, LTMTesting} from './ltm-api';
+import {Data, LTM_LTM_LINE_URL, LTM_TEST_URL, LTM_TESTINGS_URL, LTMTesting} from './ltm-api';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
@@ -17,12 +17,13 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
         super.setParentId(0);
     }
 
-    getData(lineId: number, matterId: number, from: Date, to: Date): Observable<LTMTesting[]> {
+    getData(lineId: number, matterId: number, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
         const params = new HttpParams()
             .set('line', lineId)
             .set('matter', matterId)
+            .set('anomaly', anomaly)
             .set('from', this.datePipe.transform(from.toString(), 'dd/MM/yyyy'))
             .set('to', this.datePipe.transform(to.toString(), 'dd/MM/yyyy'));
-        return this.httpSrv.get<LTMTesting[]>('/ltm/data', params);
+        return this.httpSrv.get<Data[]>('/ltm/data', params);
     }
 }

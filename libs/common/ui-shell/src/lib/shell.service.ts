@@ -72,6 +72,10 @@ export class ShellService {
         '#61380B', '#610B0B', '#75a079'
     ];
     private lastHash = -1;
+    private _companyName: ToolbarLabel = {
+        title: '',
+        icon: 'fa-solid fa-buildings'
+    }
 
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
@@ -86,8 +90,9 @@ export class ShellService {
     public focusSearchField: boolean;
     protected searchInputLabel: string;
     //
+
     buttons: ToolbarButton[] = [];
-    labels: ToolbarLabel[] = [];
+    labels: ToolbarLabel[] = [this._companyName];
     appButtons: ToolbarButton[] = [];
     //
     protected isLoading = false;
@@ -470,7 +475,7 @@ export class ShellService {
     }
 
     public setLabels(labels: ToolbarLabel[]): void {
-        this.labels = labels;
+        this.labels = [this._companyName, ...labels];
         //console.log(labels);
         this.updateShell();
     }
@@ -545,5 +550,10 @@ export class ShellService {
 
     loadUserRights(): Observable<DocRight[]> {
         return this.rightsSrv.load();
+    }
+
+    setCompanyName(name: string) {
+        this._companyName.title = name;
+        this.updateShell();
     }
 }

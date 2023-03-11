@@ -11,6 +11,7 @@ import {
     DocStatusListComponent, UserDocumentDetailComponent, UserDocumentListComponent, UserMessageDetailComponent,
     UserMessageListComponent, WorkflowInboxListComponent
 } from '@ss/workflow';
+import {loginGuard} from '../erp-guards';
 
 export const workflowRoutes: Routes = [
     {
@@ -23,7 +24,7 @@ export const workflowRoutes: Routes = [
             {
                 path: ':id',
                 component: DocStatusDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -39,7 +40,7 @@ export const workflowRoutes: Routes = [
             {
                 path: ':id',
                 component: UserMessageDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -55,7 +56,7 @@ export const workflowRoutes: Routes = [
             {
                 path: ':id',
                 component: UserDocumentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

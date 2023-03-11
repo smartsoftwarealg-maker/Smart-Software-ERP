@@ -12,6 +12,13 @@ import {EmployeeService} from '@ss/payroll/api-employee';
 import {Observable} from 'rxjs';
 import {FixedElementsEntryService} from './fixed-elements-entry.service';
 
+type Employee = {
+    id: number;
+    fullName: string;
+    post?: string;
+    imageModel: ImageModel;
+}
+
 @Component({
   selector: 'ss-fixed-elements-detail',
   templateUrl: './fixed-elements-detail.component.html',
@@ -19,7 +26,7 @@ import {FixedElementsEntryService} from './fixed-elements-entry.service';
 })
 export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELine> {
     imageModel: ImageModel;
-
+    employee: Employee = null;
     constructor(
         public infoSrv: FixedElementsEntryService,
         public override shellSrv: ShellService,
@@ -50,6 +57,12 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
             e.elements = this.infoSrv.colsList().map(_ => 0.0);
         }
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
+        this.employee = {
+            id: e.id,
+            fullName: e.firstName + ' ' + e.lastName,
+            post: e.post,
+            imageModel: this.imageModel
+        }
         return this.formBuilder.group({
             id: [e.id],
             firstName: [e.firstName || 'first name'],

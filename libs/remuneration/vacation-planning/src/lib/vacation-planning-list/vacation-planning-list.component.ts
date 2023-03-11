@@ -61,9 +61,9 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.addButton.visible = false;
         this.deleteButton.visible = false;
+        super.ngOnInit();
     }
 
     updatePlanning() {

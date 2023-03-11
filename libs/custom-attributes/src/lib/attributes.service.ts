@@ -18,6 +18,7 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
 
     readonly ARTICLES = 1;
     readonly ASSETS   = 2;
+    readonly AGENTS   = 4;
 
     attributeTypes: Lookup[] = [
         {id: this.TEXT, description: 'ADMINISTRATION_TEXT'},
@@ -30,6 +31,7 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
     modules: Lookup[] = [
         {id: this.ARTICLES, description: 'LOGISTICS_ARTICLES'},
         {id: this.ASSETS, description: 'ASSETS'},
+        {id: this.AGENTS, description: 'COMMON_AGENTS'},
     ];
 
     constructor(protected override httpSrv: HttpService) {
@@ -60,8 +62,8 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
             .pipe(map((res: { id: number }) => res.id));
     }
 
-    getChildAttributes(): Observable<AttribTempl[]> {
-        this.setParentId(this.ASSETS);
+    getChildAttributes(parentId: number): Observable<AttribTempl[]> {
+        this.setParentId(parentId);
         return this.getList(0, 50)
             .pipe(map(res => res.body));
     }

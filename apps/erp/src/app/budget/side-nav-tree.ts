@@ -3,7 +3,7 @@ import {
     ABS_BUDGET_BUDGET_URL,
     ABS_BUDGET_COMMITMENT_URL,
     ABS_BUDGET_GROUP_URL,
-    ABS_BUDGET_PLANNING_URL
+    ABS_BUDGET_PLANNING_URL, ABS_BUDGET_TRANSFER_URL
 } from '../common';
 
 export const budgetNavTree: SideNavNode = {
@@ -33,6 +33,12 @@ export const budgetNavTree: SideNavNode = {
             name: 'BUD_COMMITMENTS',
             icon: 'fa-solid fa-file-lock',
             route: ABS_BUDGET_COMMITMENT_URL,
+            accessRights: 'BudgetCommitment'
+        },
+        {
+            name: 'BUD_TRANSFERS',
+            icon: 'fa-solid fa-money-bill-transfer',
+            route: ABS_BUDGET_TRANSFER_URL,
             accessRights: 'BudgetCommitment'
         },
     ]

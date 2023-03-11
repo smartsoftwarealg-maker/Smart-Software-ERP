@@ -6,7 +6,7 @@
 }
 .input-div {
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
 }
@@ -24,4 +24,8 @@ mat-input {
     justify-content: space-around;
     border-top: navy solid 1px;
     padding-top: 8px;
+}
+
+.date__picker {
+    min-width: 120px;
 }

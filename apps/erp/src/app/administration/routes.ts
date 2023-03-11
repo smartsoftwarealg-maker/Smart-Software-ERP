@@ -23,7 +23,7 @@ import {
     ADMIN_USER_DOCUMENTS_URL,
     ADMIN_WORKFLOW_INBOX_URL,
 } from '../common';
-import { ABS_INDEX_URL, CanActivateService, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import { BankDetailComponent, BankListComponent } from '@ss/administration/ui-bank';
 import { CompanyDetailComponent, CompanyListComponent } from '@ss/administration/ui-company';
@@ -58,6 +58,7 @@ import {
     UserMessageListComponent,
     UserMessageDetailComponent, UserDocumentListComponent, UserDocumentDetailComponent, WorkflowInboxListComponent
 } from '@ss/workflow';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -71,12 +72,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AttributesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AttributesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -89,12 +90,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: BankListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: BankDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -111,7 +112,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: CountryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -127,7 +128,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AppArchiveDocumentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -136,12 +137,12 @@ export const mainRoutes: Routes = [
     {
         path: ADMINISTRATION_ACCCESSRIGHTS_URL,
         component: AccessRightsListComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ADMINISTRATION_TRACEABILITY_URL,
         component: TraceabilityComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ADMINISTRATION_SMTP_URL,
@@ -149,12 +150,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SmtpListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: SmtpDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -167,12 +168,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CompanyListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CompanyDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -185,12 +186,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: UserListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: UserDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
         ]
@@ -201,12 +202,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CenterListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CenterDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -219,12 +220,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ReportCatalogListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ReportCatalogDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -237,12 +238,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: RoleListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: RoleDetailComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
@@ -253,12 +254,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CityListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CityDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -270,12 +271,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DairaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DairaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -287,12 +288,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: WilayaListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: WilayaDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -308,7 +309,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocumentNumberingDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -324,7 +325,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocStatusDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -340,7 +341,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: UserMessageDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -356,7 +357,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: UserDocumentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -372,12 +373,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FurnitureStatusListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: FurnitureStatusDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}

@@ -1,10 +1,9 @@
 mat-table {
-    min-width: 1600px;
+    min-width: 2000px;
 }
 
 .container {
-    width: 98%;
-    max-width: 1400px;
+    width: 1600px;
     margin: 0 auto;
 }
 
@@ -34,16 +33,13 @@ mat-table {
 }
 
 .mat-column-description {
-    flex: 2 1 290px;
+    flex: 3 1 400px;
 }
 
 .mat-column-serial_no,
 .mat-column-reference,
 .mat-column-geolocation,
-.mat-column-accountno {
-    flex: 1 1 120px;
-}
-
+.mat-column-accountno,
 .mat-column-receptionNumber,
 .mat-column-appointmentNumber,
 .mat-column-depreciationRate,
@@ -52,5 +48,5 @@ mat-table {
 .mat-column-residualValue,
 .mat-column-acquisitionDate,
 .mat-column-serviceDate {
-    flex: 1 1 120px;
+    flex: 1 1 150px;
 }

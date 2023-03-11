@@ -3,10 +3,11 @@ import { CentersService } from './centers.service';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../login/user.service';
-import { switchMap } from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import { MAIN_PAGE_URL, PROFILE_PAGE_URL } from '../login/login-constants';
 import { Center, Company } from '../../common/models';
 import { MatStepper } from '@angular/material/stepper';
+import {ShellService} from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-company-center-login',
@@ -29,9 +30,10 @@ export class CenterSelectComponent implements OnInit {
     @ViewChild('stepper', { static: false }) stepper: MatStepper;
 
     constructor(private ccListSrv: CentersService,
-        private loginSrv: LoginService,
-        private router: Router,
-        private userService: UserService) {
+                private loginSrv: LoginService,
+                private router: Router,
+                private userService: UserService,
+                private shellSrv: ShellService) {
     }
 
     ngOnInit() {
@@ -39,17 +41,19 @@ export class CenterSelectComponent implements OnInit {
 
         this.loading = true;
         this.ccListSrv.getCompanyList()
-            .subscribe(r => {
-                this.companyList = r;
-                if (this.companyList.length === 1) {
-                    this.selectCompany(this.companyList[0].id);
-                    // } else {
-                    this.endLoading();
+            .subscribe({
+                    next: r => {
+                        this.companyList = r;
+                        if (this.companyList.length === 1) {
+                            this.selectCompany(this.companyList[0].id);
+                            // } else {
+                            this.endLoading();
+                        }
+                    }, error: err => {
+                        this.endLoading();
+                        throw err;
+                    }
                 }
-            }, err => {
-                this.endLoading();
-                throw err;
-            }
             );
     }
 
@@ -95,17 +99,21 @@ export class CenterSelectComponent implements OnInit {
             this.loginSrv
                 .centerLogin(this.selectedCenter)
                 .pipe(switchMap(() => this.userService.load()))
-                .subscribe(() => {
-                    // this.endLoading(); // don't show shit, because we are leaving anyway
-                    const dest = this.userService.context && this.userService.context.pwdExpired
-                        ? PROFILE_PAGE_URL : MAIN_PAGE_URL;
-                    this.router.navigate(['/' + dest]).then(() => {
-                    });
-                }, err => {
-                    this.endLoading();
-                    throw err;
-                }
-                );
+                .subscribe({
+                    next: () => {
+                        // this.endLoading(); // don't show shit, because we are leaving anyway
+                        const dest = this.userService.context && this.userService.context.pwdExpired
+                            ? PROFILE_PAGE_URL : MAIN_PAGE_URL;
+                        this.shellSrv.setCompanyName(this.centerList[this.selectedCenter].description);
+                        this.router.navigate(['/' + dest]).then(() => {
+                        });
+                    }
+                    , error:
+                        err => {
+                            this.endLoading();
+                            throw err;
+                        }
+                });
         }
     }
 
@@ -120,5 +128,4 @@ export class CenterSelectComponent implements OnInit {
             this.centerList = [];
         }
     }
-
 }

@@ -6,12 +6,14 @@
     "VALUE":          "قيمة",
     "TESTINGS":       "الاختبارات",
     "PERIODICITIES":  "الدوريات",
-    "MATTERS":        "موضوع",
+    "MATTERS":        "المواد",
+    "MATTER":         "المادة",
     "PERIOD":         "الدورة",
     "MIN_VALUE":      "الحد الأدنى للقيمة",
     "OPT_VALUE":      "القيمة المثلى",
     "MAX_VALUE":      "القيمة القصوى",
     "PERIODICITY":    "دور",
     "LOW":            "قليل",
-    "HIGH":           "عالي"
+    "HIGH":           "عالي",
+    "ANOMALIES_ONLY": "إظهار الحالات الشاذة فقط"
 }

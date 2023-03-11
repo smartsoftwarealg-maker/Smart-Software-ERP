@@ -1,5 +1,7 @@
 export const BUDGET_COMMITMENTS = '/commitments';
-export const BUDGET_PLANNINGS = '/budgets/plannings';
+export const BUDGET_TRANSFERS   = '/transfers';
+export const BUDGET_DETAIL      = '/detail';
+export const BUDGET_PLANNINGS   = '/budgets/plannings';
 
 export interface BudgetCommitment {
     id: number;
@@ -22,6 +24,14 @@ export interface BudgetTransfer {
     planningId: number;
     amount: number;
     userId: number;
+}
+
+export interface BudgetTransferDetail {
+    id: number;
+    transferId: number;
+    planningId: number;
+    amount: number;
+    description?: string;
 }
 
 export interface PlanningInfo {

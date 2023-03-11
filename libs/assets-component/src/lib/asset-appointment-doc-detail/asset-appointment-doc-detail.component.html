@@ -123,7 +123,7 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-<div *ngIf="id > 0" class="item ctrl_div">
+<div *ngIf="id > 0 && isEditable" class="item ctrl_div">
 
     <mat-form-field class="input_div">
         <mat-label translate>ASSETS</mat-label>
