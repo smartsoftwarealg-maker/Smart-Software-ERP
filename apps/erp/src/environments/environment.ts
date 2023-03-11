@@ -51,6 +51,7 @@ import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
+import {inject} from '@angular/core';
 
 export const environment = {
   production: false,

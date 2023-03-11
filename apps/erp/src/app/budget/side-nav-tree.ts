@@ -36,7 +36,7 @@ export const budgetNavTree: SideNavNode = {
             accessRights: 'BudgetCommitment'
         },
         {
-            name: 'BUD_TRANSFER',
+            name: 'BUD_TRANSFERS',
             icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_BUDGET_TRANSFER_URL,
             accessRights: 'BudgetCommitment'

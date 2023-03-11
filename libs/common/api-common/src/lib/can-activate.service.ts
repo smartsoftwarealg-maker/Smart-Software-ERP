@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import {inject, Injectable} from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivateFn, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { LoginService } from './login.service';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
@@ -8,10 +8,11 @@ import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';
 import { UserRightsService } from './user-rights.service';
 
+
 @Injectable({
     providedIn: 'root'
 })
-export class CanActivateService implements CanActivate {
+export class CanActivateService {
     constructor(public router: Router,
         protected httpSrv: HttpService,
         private loginSrv: LoginService,
@@ -24,10 +25,8 @@ export class CanActivateService implements CanActivate {
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.reload()),
-                map(_ =>  {
-                    return (this.loginSrv.isLoggedIn && this.canRead(route)) ||
-                        this.router.createUrlTree(['/' + LOGIN_URL]);
-                }));
+                  map(_ =>  (this.loginSrv.isLoggedIn && this.canRead(route)) ||
+                                  this.router.createUrlTree(['/' + LOGIN_URL])));
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {

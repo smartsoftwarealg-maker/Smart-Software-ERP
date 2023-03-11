@@ -1,6 +1,21 @@
-<div class="container">
-    <div class="filter default-50 sm-100">
-        <mat-form-field appearance="fill">
+<mat-card class=size_div>
+    <div class="default-20 sm-50 employee-card selectable mat-elevation-z6" *ngIf="form">
+
+        <div class="person-photo">
+            <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
+                            style="display: inline-block;">
+            </ss-image-input>
+        </div>
+
+        <div class="employee-details">
+            <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{employee.id}}</div>
+            <div style="font-weight: bold;">{{employee.fullName}}</div>
+            <div style="font-size: 0.7em">{{employee.post}}</div>
+        </div>
+    </div>
+
+    <div class="default-80 sm-50">
+        <mat-form-field class="default-100">
             <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
             <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
                 <mat-option *ngFor="let i of infoSrv.inputFilter" [value]="i.id">
@@ -8,61 +23,59 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
 
-    <div class="mode default-50 sm-100">
         <mat-radio-group aria-label="Select an option">
             <mat-radio-button value="1"
+                              class="default-80"
                               [checked]="infoSrv.selectionMode === 1 "
                               (click)="setSelectionMode(1)"
                               translate>REMUN_VARIABLE
             </mat-radio-button>
             <mat-radio-button value="2"
+                              class="default-80"
                               [checked]="infoSrv.selectionMode === 2 "
                               (click)="setSelectionMode(2)"
                               translate>REMUN_FIXED
             </mat-radio-button>
         </mat-radio-group>
     </div>
+</mat-card>
 
-    <form *ngIf="form !== null" novalidate [formGroup]="form">
+<form class="size_div" *ngIf="form !== null" novalidate [formGroup]="form">
 
-        <mat-form-field class="emp-id">
-            <mat-label translate>PAYROLL_ID</mat-label>
-            <input matInput formControlName="id" type="text" readonly>
+    <!--mat-form-field class="emp-id">
+        <mat-label translate>PAYROLL_ID</mat-label>
+        <input matInput formControlName="id" type="text" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="emp-post">
+        <mat-label translate>PAYROLL_POST</mat-label>
+        <input matInput formControlName="post" type="text" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="first-name">
+        <mat-label translate>COMMON_FIRST_NAME</mat-label>
+        <input matInput formControlName="firstName" type="text" readonly>
+    </mat-form-field>
+
+    <mat-form-field class="last-name">
+        <mat-label translate>COMMON_LAST_NAME</mat-label>
+        <input matInput formControlName="lastName" type="text" readonly>
+    </mat-form-field>
+
+    <div class="emp-photo">
+        <ss-image-input width="160px"
+                        height="200px"
+                        [imageModel]="imageModel"
+                        style="display: inline-block;">
+        </ss-image-input>
+    </div-->
+
+
+    <div formGroupName="elements" class="elements">
+        <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">
+            <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }} </mat-label>
+            <input matInput formControlName="{{ i }}" type="number">
         </mat-form-field>
-
-        <mat-form-field class="emp-post">
-            <mat-label translate>PAYROLL_POST</mat-label>
-            <input matInput formControlName="post" type="text" readonly>
-        </mat-form-field>
-
-        <mat-form-field class="first-name">
-            <mat-label translate>COMMON_FIRST_NAME</mat-label>
-            <input matInput formControlName="firstName" type="text" readonly>
-        </mat-form-field>
-
-        <mat-form-field class="last-name">
-            <mat-label translate>COMMON_LAST_NAME</mat-label>
-            <input matInput formControlName="lastName" type="text" readonly>
-        </mat-form-field>
-
-        <div class="emp-photo">
-            <ss-image-input width="160px"
-                            height="200px"
-                            [imageModel]="imageModel"
-                            style="display: inline-block;">
-            </ss-image-input>
-        </div>
-
-
-        <div formGroupName="elements" class="elements">
-            <mat-form-field *ngFor="let g of elementsForm.controls; let i = index">
-                <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }} </mat-label>
-                <input matInput formControlName="{{ i }}" type="number">
-            </mat-form-field>
-        </div>
-    </form>
-
-</div>
-
+    </div>
+</form>

@@ -63,10 +63,10 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.editButton.visible = false;
+        super.ngOnInit();
     }
 
     selectItem(annex: AnnexCode) {
@@ -75,7 +75,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     refreshPending() {
-        console.log(!!this.consolidated.value);
         this.shellSrv.setLoading(true)
         this.cashFlowSrv
             .info(!!this.consolidated.value)

@@ -56,8 +56,4 @@ export class CheckListComponent extends BaseEntityListComponent<Check> implement
         });
         return of(data);
     }
-
-    override ngOnInit() {
-        super.ngOnInit();
-    }
 }

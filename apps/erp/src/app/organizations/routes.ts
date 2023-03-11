@@ -18,12 +18,13 @@ import {
     ORGANIZATIONS_DIVISIONS_URL,
     ORGANIZATIONS_OFFICES_URL,
 } from '../common';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
         path: ORGANIZATIONS_CHART_URL,
         component: OrganizationsComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
     {
         path: ORGANIZATIONS_DIVISIONS_URL,
@@ -31,12 +32,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DivisionsListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: DivisionDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -48,12 +49,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: DepartmentsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: DepartmentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -65,12 +66,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ServicesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ServiceDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -82,12 +83,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: OfficesListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: OfficeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

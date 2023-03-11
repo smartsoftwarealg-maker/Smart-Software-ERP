@@ -72,10 +72,10 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.addButton.visible = false;
+        super.ngOnInit();
         this.shellSrv.updateShell();
     }
 }

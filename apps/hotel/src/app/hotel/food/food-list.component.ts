@@ -51,7 +51,7 @@ export class FoodListComponent extends AbstractEntityList<Food, BackendDataSourc
 
     edit(v: Food): void {
         this.foodSrv.activeEntity = v;
-        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute }).then();
     }
 
     protected loadMoreData(): Observable<any> {

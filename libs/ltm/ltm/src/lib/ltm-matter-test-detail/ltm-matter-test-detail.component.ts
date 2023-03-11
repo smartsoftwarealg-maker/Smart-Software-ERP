@@ -69,7 +69,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
             .subscribe(res => {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
-                    this.router.navigate(['../../'], { relativeTo: this.activatedRoute});
+                    this.router.navigate(['../../'], { relativeTo: this.activatedRoute}).then();
                 }
             });
     }
@@ -80,7 +80,7 @@ export class LtmMatterTestDetailComponent implements OnInit {
             of(true);
         obs.subscribe(res => {
             if (res) {
-                this.router.navigate(['../../'], { relativeTo: this.activatedRoute});
+                this.router.navigate(['../../'], { relativeTo: this.activatedRoute}).then();
             }
         });
     }

@@ -29,13 +29,13 @@ export class CanActivateService implements CanActivate {
                 .reLogin()
                 .pipe(map(res => res && this.canRead(route)));
         }
-        this.router.navigate(['/' + LOGIN_URL]);
+        this.router.navigate(['/' + LOGIN_URL]).then();
         return false;
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {
         if (this.userSrv.context && this.userSrv.context.pwdExpired) {
-            this.router.navigate(['/' + PROFILE_PAGE_URL]);
+            this.router.navigate(['/' + PROFILE_PAGE_URL]).then();
             return false;
         }
         const entity = route.data.entity;

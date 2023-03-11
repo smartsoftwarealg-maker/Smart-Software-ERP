@@ -88,7 +88,7 @@ export class PaymentListComponent extends AbstractEntityList<Payment, BackendDat
 
     edit(v: Payment): void {
         //this.clientSrv.setActiveEntity(v);
-        this.router.navigate([this.paySrv.parentId, (v || { id: 0 }).id], { relativeTo: this.activatedRoute });
+        this.router.navigate([this.paySrv.parentId, (v || { id: 0 }).id], { relativeTo: this.activatedRoute }).then();
     }
 
     loadMoreData() {

@@ -117,10 +117,10 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.shellSrv.disableSearch();
+        super.ngOnInit();
         this.subscriptions.push(
             this.form
                 .valueChanges

@@ -41,8 +41,8 @@ export class SalesModeListComponent extends BaseEntityListComponent<SalesMode> {
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.deleteButton.visible = false;
         this.addButton.visible = false;
+        super.ngOnInit();
     }
 }

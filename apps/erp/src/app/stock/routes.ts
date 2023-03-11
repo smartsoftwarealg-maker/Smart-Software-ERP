@@ -75,27 +75,28 @@ import {
     GenerationAccountsDetailComponent,
     GenerationAccountsListComponent, TransacAccountsDetailComponent, TransacAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: STOCK_ANOMALY_URL,
         component: InventoryAnomaliesComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: STOCK_ARTICLES_STORE_URL,
         component: ArticleStoreAssignmentComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: USER_STORES_URL,
         component: UserStoresComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: STOCK_ARTICLE_URL,
@@ -103,14 +104,14 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ArticleListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { price: 'awp' },
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ArticleDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -124,12 +125,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransacAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TransacAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -142,12 +143,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: GenerationAccountsListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: GenerationAccountsDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
@@ -160,20 +161,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -187,20 +188,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryEntryListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryEntryLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryEntryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -214,20 +215,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryExitListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryExitLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryExitDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -241,20 +242,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryTransferListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryTransferLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryTransferDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -268,20 +269,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransferReceptionListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: TransferReceptionLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: TransferReceptionDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -295,19 +296,19 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ConsumptionListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: ConsumptionLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ConsumptionDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -321,20 +322,20 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InventoryListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
                 component: InventoryLinesDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: InventoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
@@ -348,7 +349,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
@@ -356,7 +357,7 @@ export const mainRoutes: Routes = [
                     {
                         path: '',
                         component: AgentDetailComponent,
-                        canActivate: [CanActivateService],
+                        canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true},
                         children: [
@@ -381,12 +382,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccountListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AccountDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -399,12 +400,12 @@ export const mainRoutes: Routes = [
     //         {
     //             path: LIST_URL,
     //             component: AgentPriceListComponent,
-    //             canActivate: [CanActivateService]
+    //             canActivate: [loginGuard]
     //         },
     //         {
     //             path: ':id',
     //             component: AgentPriceDetailComponent,
-    //             canActivate: [CanActivateService],
+    //             canActivate: [loginGuard],
     //             canDeactivate: [CanDeactivateService]
     //         },
     //         { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -417,12 +418,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CostCenterListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CostCenterDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
@@ -436,7 +437,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 data: { reportBase: 'stock'},
                 component: ReportViewComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -452,7 +453,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: StoreNameDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -468,7 +469,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: UnitDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -484,7 +485,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: MarkDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -500,7 +501,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ClassDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -510,7 +511,7 @@ export const mainRoutes: Routes = [
     //     path: COMMON_REPORTS_URL,
     //     data: {reportBase: 'stock'},
     //     component: ReportViewComponent,
-    //     canActivate: [CanActivateService]
+    //     canActivate: [loginGuard]
     // },
     {
         path: STOCK_SUBCLASSES_URL,
@@ -522,14 +523,14 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SubclassDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
 
-    { path: STOCK_PRICE_RECALCULATION_URL, component: PriceRecalculationComponent, canActivate: [CanActivateService]},
+    { path: STOCK_PRICE_RECALCULATION_URL, component: PriceRecalculationComponent, canActivate: [loginGuard]},
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

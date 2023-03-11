@@ -13,5 +13,7 @@
     "CLOSING_AMOUNT":   "Closing amount",
     "COMPLEMENT":       "Complement",
     "COMMITMENTS":      "Commitments",
-    "TRANSFERS":        "Transfers"
+    "TRANSFERS":        "Transfers",
+    "DESTINATION":      "Receiving budget",
+    "PLANNINGS":        "Plannings"
 }

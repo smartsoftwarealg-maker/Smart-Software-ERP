@@ -78,7 +78,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
         this.srv.historyStack.splice(this.srv.historyStack.length - 1);
         if (!this.srv.historyStack.length) {
             this.shellSrv.setGoBackFn(null);
+            this.shellSrv.setLabels([]);
         }
+
         this.clearSearch();
     }
 

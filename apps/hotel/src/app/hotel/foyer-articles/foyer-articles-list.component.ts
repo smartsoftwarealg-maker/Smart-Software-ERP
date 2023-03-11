@@ -52,7 +52,7 @@ export class FoyerArticlesListComponent extends AbstractEntityList<FoyerArticle,
 
     edit(v: Food): void {
         this.foyerSrv.activeEntity = v;
-        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute }).then();
     }
 
     protected loadMoreData(): Observable<any> {

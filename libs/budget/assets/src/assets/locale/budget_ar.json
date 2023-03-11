@@ -1,9 +1,9 @@
 {
-    "INCOME":        "دخل",
-    "EXPENSE":       "مصروف",
-    "ADD_ACCOUNT":   "إنشاء حساب",
-    "BUDGETS":       "الميزانيات",
-    "BUDGET_GROUPS": "مجموعات الميزانية",
+    "INCOME":           "دخل",
+    "EXPENSE":          "مصروف",
+    "ADD_ACCOUNT":      "إنشاء حساب",
+    "BUDGETS":          "الميزانيات",
+    "BUDGET_GROUPS":    "مجموعات الميزانية",
     "ALLOCATED_AMOUNT": "الكمية المطلوبة",
     "REQUESTED_AMOUNT": "تحديد الميزانية" ,
     "SELECT_BUDGET":    "تخطيط الميزانية",
@@ -13,5 +13,7 @@
     "CLOSING_AMOUNT":   "مبلغ الإغلاق" ,
     "COMPLEMENT":       "متمم",
     "COMMITMENTS":      "إلتزامات",
-    "TRANSFERS":        "التحويلات"
+    "TRANSFERS":        "التحويلات",
+    "DESTINATION":      "الميزانية المستقبلة",
+    "PLANNINGS":        "إعدادات"
 }

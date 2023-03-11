@@ -1,7 +1,22 @@
 <div class="container">
+    <div class="default-20 sm-50 employee-card selectable mat-elevation-z6" *ngIf="form">
+
+        <div class="person-photo">
+            <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
+                            style="display: inline-block;">
+            </ss-image-input>
+        </div>
+
+        <div class="employee-details">
+            <div style="font-size: 1.5em; text-align: start; font-weight: bolder">{{employee.id}}</div>
+            <div style="font-weight: bold;">{{employee.fullName}}</div>
+            <div style="font-size: 0.7em">{{employee.post}}</div>
+        </div>
+    </div>
+
     <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-        <mat-form-field class="emp-id">
+        <!--mat-form-field class="emp-id">
             <mat-label translate>PAYROLL_ID</mat-label>
             <input matInput formControlName="id" type="text" readonly>
         </mat-form-field>
@@ -27,7 +42,7 @@
                             [imageModel]="imageModel"
                             style="display: inline-block;">
             </ss-image-input>
-        </div>
+        </div-->
 
 
         <div formGroupName="elements" class="elements">

@@ -37,7 +37,4 @@ export class CheckBookListComponent extends BaseEntityListComponent<CheckBook> i
         super(checkBookSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'TRS_CHECKBOOKS');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
 }

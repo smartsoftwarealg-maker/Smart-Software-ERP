@@ -32,6 +32,7 @@ import {
     TransactionListComponent
 } from '@ss/treasury/ui-transactions';
 import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from '@ss/common/ui-lookup';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -40,13 +41,13 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AgentListComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 data: { form: 'Agent' }
             },
             {
                 path: ':id',
                 component: AgentDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -58,12 +59,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CheckListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CheckDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -75,12 +76,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ProcessedCheckListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ProcessedCheckDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -92,12 +93,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TreasuryGroupListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TreasuryGroupDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -109,12 +110,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CheckBookListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: CheckBookDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -126,12 +127,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JournalListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: JournalDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -143,12 +144,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransactionListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TransactionDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', redirectTo: 'lines', pathMatch: 'full' },
@@ -168,12 +169,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: BankExpenseListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: BankExpenseDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
@@ -182,17 +183,17 @@ export const mainRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: TREASURY_CHECK_MATCHING_URL,
         component: CheckMatchingListComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'treasury'},
         component: ReportViewComponent,
-        canActivate: [CanActivateService]
+        canActivate: [loginGuard]
     },
 ];

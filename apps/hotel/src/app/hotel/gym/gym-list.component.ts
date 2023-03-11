@@ -102,7 +102,7 @@ export class GymListComponent extends AbstractEntityList<DisplayableService, Bac
         this.router.navigate(
             ['../' + (v || { service: { id: 0 } }).service.id],
             { relativeTo: this.activatedRoute, queryParams: { referer: '/hotel/gym/list' } }
-        );
+        ).then();
     }
 
     goToLiveView(): void {

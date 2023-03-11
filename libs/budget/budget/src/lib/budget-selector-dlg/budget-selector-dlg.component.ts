@@ -3,6 +3,7 @@ import {BudgetService} from '../budget.service';
 import {Budget} from '../budget-api';
 import {PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ShellService} from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-budget-selector-dlg',
@@ -16,6 +17,7 @@ export class BudgetSelectorDlgComponent implements OnInit {
     private paginator: PaginationModel = PaginationModel.newInstance({ page: 0, pageSize: 50, elementCount: 0});
     constructor(private budgetSrv: BudgetService,
                 private activatedRoute: ActivatedRoute,
+                private shellSrv: ShellService,
                 private router: Router) {}
 
     ngOnInit(): void {
@@ -33,6 +35,7 @@ export class BudgetSelectorDlgComponent implements OnInit {
 
     selectBudget() {
         this.budgetSrv.budget = this.selectedBudget;
+        this.shellSrv.setLabels([ { title: this.selectedBudget.description}])
         this.router.navigate(['../'], { relativeTo: this.activatedRoute });
     }
 }

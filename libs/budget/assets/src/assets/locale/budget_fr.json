@@ -1,9 +1,9 @@
 {
-    "INCOME":        "Revenu",
-    "EXPENSE":       "Frais",
-    "ADD_ACCOUNT":   "Ajouter un compte",
-    "BUDGETS":       "Budget",
-    "BUDGET_GROUPS": "Groupes budgétaires",
+    "INCOME":           "Revenu",
+    "EXPENSE":          "Frais",
+    "ADD_ACCOUNT":      "Ajouter un compte",
+    "BUDGETS":          "Budget",
+    "BUDGET_GROUPS":    "Groupes budgétaires",
     "REQUESTED_AMOUNT": "Quantité exigée",
     "SELECT_BUDGET":    "Sélectionner budget",
     "BUDGET_PLANNING":  "Planification budgétaire",
@@ -13,5 +13,7 @@
     "CLOSING_AMOUNT":   "Montant de clôture",
     "COMPLEMENT":       "Complément",
     "COMMITMENTS":      "Engagements",
-    "TRANSFERS":        "Transferts"
+    "TRANSFERS":        "Transferts",
+    "DESTINATION":      "Budget de réception",
+    "PLANNINGS":        "Plannings"
 }

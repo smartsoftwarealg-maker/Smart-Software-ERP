@@ -59,7 +59,7 @@ export class RoomsListComponent extends AbstractEntityList<Room, BackendDataSour
 
     edit(v: Room): void {
         this.roomsSrv.activeEntity = v;
-        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute });
+        this.router.navigate([(v || { id: 0 }).id], { relativeTo: this.activatedRoute }).then();
     }
 
     getRoomType(r: Room): string {

@@ -8,17 +8,18 @@ import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {FoodCartDetailComponent} from '@ss/sales/food-cart';
 import {CheckoutComponent, ReviewComponent} from '@ss/sales/paypal';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
         path: FOOD_CART_URL,
         component: FoodCartDetailComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: FOOD_CARTDETAIL_URL,
         component: FoodCartDetailComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: PAYPAL_CHECKOUT_URL,
@@ -31,7 +32,7 @@ export const mainRoutes: Routes = [
     {
         path: COMMON_CUSTOMER_PROFILE_URL,
         component: CustomerProfileComponent,
-        canActivate: [CanActivateService],
+        canActivate: [loginGuard],
     },
     {
         path: COMMON_REPORTS_URL,
@@ -40,7 +41,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 data: { reportBase: 'food' },
                 component: ReportViewComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

@@ -5,6 +5,7 @@ import {of, switchMap} from 'rxjs';
 import {BudgetTransferDetail} from '../budget-movement-api';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel} from '@ss/common/api-common';
+import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
 
 @Component({
     selector: 'ss-budget-line-list',
@@ -12,12 +13,14 @@ import {PaginationModel} from '@ss/common/api-common';
     styleUrls: ['./budget-transfer-line-list.component.scss'],
 })
 export class BudgetTransferLineListComponent implements OnInit {
+    parentId = 0;
     selected = 0;
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
     data: BudgetTransferDetail[] = [];
     displayedColumns = ['description', 'amount']
 
     constructor(private entitySrv: BudgetTransferService,
+                private detailSrv: BudgetTransferDetailService,
                 private router: Router,
                 private confirmationSrv: ConfirmationDialogService,
                 private route: ActivatedRoute) { }
@@ -26,7 +29,10 @@ export class BudgetTransferLineListComponent implements OnInit {
         this.route
             .parent
             .paramMap
-            .pipe(switchMap(params => this.entitySrv.getDetail(+params.get('id') || 0)) )
+            .pipe(switchMap(params => {
+                this.parentId = +params.get('id') || 0;
+                return this.entitySrv.getDetailLines(this.parentId);
+            }) )
             .subscribe(res => this.data = res);
     }
 
@@ -47,8 +53,8 @@ export class BudgetTransferLineListComponent implements OnInit {
     deleteSelected() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected) : of({count: -1})),
-                  switchMap(res => res.count > 0 ? this.entitySrv.getDetail(this.selected) : of(null)))
+            .pipe(switchMap(res => res ? this.detailSrv.remove(this.selected) : of({count: -1})),
+                  switchMap(res => res.count > 0 ? this.entitySrv.getDetailLines(this.parentId) : of(this.data)))
             .subscribe(res => {
                 this.data = res;
                 this.selected = null;

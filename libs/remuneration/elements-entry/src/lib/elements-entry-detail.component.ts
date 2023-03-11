@@ -12,6 +12,12 @@ import {ImageModel} from '@ss/common/ui-image-input';
 import {HttpService} from '@ss/common/api-common';
 import {EmployeeService} from '@ss/payroll/api-employee';
 
+type Employee = {
+    id: number;
+    fullName: string;
+    post?: string;
+    imageModel: ImageModel;
+}
 @Component({
     selector: 'ss-elements-entry-detail',
     templateUrl: './elements-entry-detail.component.html',
@@ -19,6 +25,7 @@ import {EmployeeService} from '@ss/payroll/api-employee';
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> {
     imageModel: ImageModel;
+    employee: Employee = null;
 
     constructor(
         public infoSrv: ElementsEntryService,
@@ -48,6 +55,12 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
     public override setupForm(e: ELine): UntypedFormGroup {
         // this.shellSrv.setLoading(false);
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
+        this.employee = {
+            id: e.id,
+            fullName: e.firstName + ' ' + e.lastName,
+            post: e.post,
+            imageModel: this.imageModel
+        }
         return this.formBuilder.group({
             id: [e.id],
             firstName: [e.firstName || 'first name'],

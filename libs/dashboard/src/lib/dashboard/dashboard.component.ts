@@ -58,10 +58,10 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         if (!this.dashboardSrv.getParentId()) {
             this.dashboardSrv.setParentId(1);
         }
-        super.ngOnInit();
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
+        super.ngOnInit();
     }
 
     override select(id: number) {

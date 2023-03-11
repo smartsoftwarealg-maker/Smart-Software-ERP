@@ -28,9 +28,6 @@ export class AgentPriceDetailComponent extends BaseEntityDetailComponent<AgentPr
     }
 
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
 
     public override setupForm(b: AgentPrice) {
         // Make sure to update the template if you edit the configuration here

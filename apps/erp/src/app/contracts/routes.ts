@@ -22,6 +22,7 @@ import {
     ProjectMotiveListComponent
 } from '@ss/common/ui-lookup';
 import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -34,7 +35,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: AwardProcedureDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -50,7 +51,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ProjectMotiveDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -67,7 +68,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: ProjectTypeDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -85,7 +86,7 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: SalesContractDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
                     {

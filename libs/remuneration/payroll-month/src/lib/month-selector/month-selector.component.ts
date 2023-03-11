@@ -71,7 +71,7 @@ export class MonthSelectorComponent implements OnInit {
             this.selectorSrv
                 .selectMonth(payMonth)
                 .pipe(switchMap(_ => this.selectorSrv.curMonthLabel()),
-                      tap(title => this.shellSrv.setLabels([{ title: title }])),
+                      tap(title => this.shellSrv.setLabels([title])),
                     switchMap(_ => loadSpecial? this.specialSrv.getList(0, 50): of(0)))
                 .subscribe({
                         next: res => {

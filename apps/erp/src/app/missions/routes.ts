@@ -17,6 +17,7 @@ import {
     MissionPreparationDetailComponent,
     MissionPreparationListComponent
 } from '@ss/hr-missions/missions';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -25,12 +26,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: MissionPreparationListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: MissionPreparationDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -42,12 +43,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TrajectoryListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TrajectoryDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

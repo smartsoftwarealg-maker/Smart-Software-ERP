@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppContext, HttpService, LoginInfo, LoginService, UserRightsService} from '@ss/common/api-common';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
@@ -34,41 +34,17 @@ export class AppComponent implements OnInit {
                 switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(_ => this.rightsSrv.load()),
                 switchMap(() => this.langSrv.init()),
-                switchMap(_ => this.langSrv.addSources(langAssets)))
+                switchMap(_ => this.langSrv.addSources(langAssets)),
+                switchMap(_ => this.httpSrv.get<any>('/ccenter')),
+                catchError(_ => of({ description: '' })),
+                tap(res => this.shellSrv.setCompanyName(res['description'] || '')))
             .subscribe({
                 next: () => {
-                    this.init();
+                    this.loaded = true;
                     this.shellSrv.setSideNavDataSource(navBar);
                     // this.shellSrv.filterSideNav();
                 },
                 error: () => this.loginSrv.logout()
             });
-    }
-
-    private init() {
-        this.loaded = true;
-
-        this.router
-            .events
-            .pipe(switchMap((event: Event) => {
-                if (event instanceof NavigationEnd) {
-                    //console.log(event.url)
-                    if (event.url.indexOf('/hr') > 0 || event.url.indexOf('/payroll') > 0) {
-                        return zip(this.monthSelectorSrv.curMonthLabel(), this.httpSrv.get<AppContext>('/ccenter'))
-                            .pipe(map(res => `${res[1]['description'] || ''} -  ${res[0]}`));
-                    }
-                    if (event.url?.indexOf('/accounting') >= 0) {
-                        return zip(this.httpSrv.get<AppContext>('/ccenter'), this.httpSrv.get<LoginInfo>('/ctx'))
-                            .pipe(map(res => `${res[0]['description'] || ''}: ${res[1].ctx['accPeriod'] || '' }  / ${res[1].ctx['accYear'] || '' } `));
-                    }
-                    if (event.url?.indexOf('/app') >= 0) {
-                        return this.httpSrv
-                            .get<any>('/ccenter')
-                            .pipe(map(res => res['description'] || ''));
-                    }
-                }
-                return of('');
-            }))
-            .subscribe(str => this.shellSrv.setLabels([{ title: str }]));
     }
 }

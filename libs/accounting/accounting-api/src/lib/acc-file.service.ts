@@ -9,6 +9,7 @@ import {map} from 'rxjs/operators';
     providedIn: 'root'
 })
 export class AccFileService extends BaseEntityService<ACCFile> {
+    _accFile: ACCFile = null;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACC_FILE_URL);
@@ -22,5 +23,17 @@ export class AccFileService extends BaseEntityService<ACCFile> {
 
     selectFolder(id: number, year: number, period: number): Observable<any> {
         return this.httpSrv.put(ACC_CTX_URL, {fileId:  id, period: period, accYear: year});
+    }
+
+    set accFile(file: ACCFile) {
+        this._accFile = file;
+    }
+
+    get accFile() {
+        return this._accFile;
+    }
+
+    get fileDescription() {
+        return this._accFile?.description || '';
     }
 }

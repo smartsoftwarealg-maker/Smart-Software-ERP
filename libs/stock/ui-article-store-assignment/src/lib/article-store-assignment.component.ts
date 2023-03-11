@@ -57,10 +57,10 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.deleteButton.visible = false;
         this.addButton.visible = false;
         this.editButton.visible = false;
+        super.ngOnInit();
     }
 
     // onVatsLoaded(data: Vat[]) {

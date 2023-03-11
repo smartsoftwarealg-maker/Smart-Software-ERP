@@ -8,6 +8,7 @@ import {
     TagDetailComponent,
     ArchiveViewerComponent
 } from '@ss/web-arch/ui';
+import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [
     {
@@ -24,12 +25,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ArchiveListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: ArchiveDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
@@ -41,12 +42,12 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TagListComponent,
-                canActivate: [CanActivateService]
+                canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: TagDetailComponent,
-                canActivate: [CanActivateService],
+                canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }

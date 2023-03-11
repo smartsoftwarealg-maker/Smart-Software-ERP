@@ -9,6 +9,8 @@ import {
     PlanningInfo
 } from './budget-movement-api';
 import {Observable} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
+import {Budget} from '@ss/budget/budget';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,16 @@ export class BudgetTransferService extends BaseEntityService<BudgetTransfer> {
         return this.httpSrv.get<PlanningInfo>(`/budgets/${id}/planning-info`);
     }
 
-    getDetail(transferId: number): Observable<BudgetTransferDetail[]> {
+    getDetailLines(transferId: number): Observable<BudgetTransferDetail[]> {
         return this.httpSrv.get<BudgetTransferDetail[]>(`/budgets/transfers/${transferId}/detail`);
+    }
+
+    getDetail(transferId: number, id: number): Observable<BudgetTransferDetail> {
+        return this.httpSrv.get<BudgetTransferDetail>(`/budgets/transfers/${transferId}/detail/${id}`);
+    }
+
+    getSources(year: number): Observable<Budget[]> {
+        const params = new HttpParams().set('year', year);
+        return this.httpSrv.get('/budgets/sources', params);
     }
 }

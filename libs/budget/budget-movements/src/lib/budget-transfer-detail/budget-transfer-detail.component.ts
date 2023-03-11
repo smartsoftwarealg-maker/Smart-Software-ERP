@@ -5,13 +5,14 @@ import {DecimalPipe} from '@angular/common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LanguageService, LoginService} from '@ss/common/api-common';
 import {BudgetTransferService} from '../budget-transfer.service';
 import {BudgetPlanningService} from '@ss/budget/budget-planning';
 import {BudgetService} from '@ss/budget/budget';
+import {filter} from 'rxjs';
 
 @Component({
     selector: 'ss-budget-transfer-detail',
@@ -75,7 +76,13 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
     override ngOnInit() {
         super.ngOnInit();
         if (this.entitySrv.getParentId() < 1) {
-            this.router.navigate(['..'], {relativeTo: this.activatedRoute});
+            this.router.navigate(['..'], {relativeTo: this.activatedRoute}).then();
         }
+        const sub = this.router.events.pipe(
+            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+        ).subscribe((e: RouterEvent) => {
+            this.saveButton.visible = e.url.indexOf('/detail') < 0;
+        });
+         this.subscriptions.push(sub);
     }
 }

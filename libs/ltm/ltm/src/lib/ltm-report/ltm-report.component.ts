@@ -43,6 +43,7 @@ export class LtmReportComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle(this.langSrv.translate('COMMON_CHARTS'));
         this.lines$ = this.lineSrv
             .getList(0, 50)
             .pipe(map(_ => _.body));
