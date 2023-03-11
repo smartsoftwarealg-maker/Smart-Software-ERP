@@ -1,9 +1,9 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_BUDGET_BUDGET_URL,
-    ABS_BUDGET_COMMITMENT_URL,
+    ABS_BUDGET_COMMITMENT_URL, ABS_BUDGET_DASHBOARD_URL,
     ABS_BUDGET_GROUP_URL,
-    ABS_BUDGET_PLANNING_URL, ABS_BUDGET_TRANSFER_URL
+    ABS_BUDGET_PLANNING_URL, ABS_BUDGET_TRANSFER_URL, ABS_STOCK_DASHBOARD_URL
 } from '../common';
 
 export const budgetNavTree: SideNavNode = {
@@ -40,6 +40,12 @@ export const budgetNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_BUDGET_TRANSFER_URL,
             accessRights: 'BudgetCommitment'
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-gauge-min',
+            route: ABS_BUDGET_DASHBOARD_URL,
+            accessRights: 'DASHBOARD'
         },
     ]
 };
