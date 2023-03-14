@@ -51,6 +51,7 @@ import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-ty
 import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './project-motive.component';
 import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './award.procedure.component';
 import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './treasury-group.component';
+import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './article-type.component';
 
 @NgModule({
     imports: [
@@ -154,6 +155,8 @@ import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './treasu
         AwardProcedureListComponent,
         TreasuryGroupListComponent,
         TreasuryGroupDetailComponent,
+        ArticleTypeListComponent,
+        ArticleTypeDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -244,7 +247,9 @@ import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './treasu
         AwardProcedureDetailComponent,
         AwardProcedureListComponent,
         CommonUiAutoCompleteModule,
-        CommonUiConfirmationDialogModule
+        CommonUiConfirmationDialogModule,
+        ArticleTypeListComponent,
+        ArticleTypeDetailComponent
     ]
 })
 export class CommonUiLookupModule { }

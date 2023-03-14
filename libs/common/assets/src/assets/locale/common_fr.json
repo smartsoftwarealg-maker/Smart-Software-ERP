@@ -117,6 +117,7 @@
     "CONSOLIDATED": "Consolidés",
     "VIEW_REPORT": "Voir le rapport",
     "TYPE": "Type",
+    "TYPES": "Types",
     "DEFAULT_REPORT": "Sélectionnez le rapport par défaut",
     "SELECT": "Sélectionner",
     "FILENAME": "Nom de fichier",
@@ -269,5 +270,6 @@
     "LTM":                        "L.T.M",
     "HOURS":                      "Heures",
     "DAYS":                       "Jours",
-    "MONTHS":                     "Mois"
+    "MONTHS":                     "Mois",
+    "FURNITURE":                  "Patrimoine"
 }

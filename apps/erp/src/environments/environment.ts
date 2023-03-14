@@ -42,7 +42,7 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL, LTM_APP_URL
+    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
@@ -52,6 +52,7 @@ import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {inject} from '@angular/core';
+import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -73,6 +74,7 @@ export const navBar = [
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,
+    furnitureNavTree,
     treasuryNavTree,
     budgetNavTree,
     dashboardNavTree,
@@ -188,6 +190,10 @@ export const appRoutes: Routes =  [
     {
         path: ASSETS_APP_URL,
         loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
+    },
+    {
+        path: FURNITURE_APP_URL,
+        loadChildren: () => import('../app/furniture/furniture.module').then(m => m.FurnitureModule)
     },
     {
         path: MISSIONS_APP_URL,

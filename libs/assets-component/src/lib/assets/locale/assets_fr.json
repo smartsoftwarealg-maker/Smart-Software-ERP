@@ -58,5 +58,10 @@
     "SITE":                "Site",
     "GOTO_DETAIL":         "Ouvrir la page de détail",
     "TRANSFER":            "Transferts",
-    "APPOINTMENT_NUMBER":  "Numéro d'affectation"
+    "APPOINTMENT_NUMBER":  "Numéro d'affectation",
+    "MULTIFUNCTIONAL":     "Multifonctionnel",
+    "OS":                  "Système opérateur",
+    "FURNITURE":           "Patrimoine",
+    "RECEIVER":            "Destinataire",
+    "RECEIVERS":           "Destinataires"
 }

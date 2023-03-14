@@ -74,6 +74,7 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
     }
 
     override ngOnInit() {
+        this.saveButton.visible = this.router.url.indexOf("/detail") < 0;
         super.ngOnInit();
         if (this.entitySrv.getParentId() < 1) {
             this.router.navigate(['..'], {relativeTo: this.activatedRoute}).then();

@@ -34,6 +34,7 @@ export const PURCHASES_APP_URL = 'purchases';
 export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
+export const FURNITURE_APP_URL = 'furniture';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
@@ -277,6 +278,14 @@ export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 
+// assets
+export const FURNITURE_URL            = 'furniture';
+export const FURNITURE_RECEIVER_URL   = 'furniture-receivers';
+export const FURNITURE_RECEPTION_URL  = 'furniture-receptions';
+export const FURNITURE_ASSIGNMENT_URL = 'furniture-assignments';
+export const FURNITURE_SALES_URL      = 'furniture-sales';
+export const FURNITURE_TYPES_URL      = 'furniture-types';
+
 //Web arch
 export const ARCHIVE_URL    = 'arch';
 export const TAG_URL        = 'tags';
@@ -503,6 +512,14 @@ export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
 export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');
 export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
+
+// Furniture
+export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
+export const ABS_FURNITURE_RECEIVERS_URL  = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_RECEIVER_URL].join('/');
+export const ABS_FURNITURE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_RECEPTION_URL].join('/');
+export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_ASSIGNMENT_URL].join('/');
+export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
+export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');

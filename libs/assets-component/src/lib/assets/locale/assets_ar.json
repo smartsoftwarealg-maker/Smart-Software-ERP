@@ -58,5 +58,10 @@
     "SITE":                "الموقع",
     "GOTO_DETAIL":         "افتح صفحة التفاصيل",
     "TRANSFER":            "تحويلات",
-    "APPOINTMENT_NUMBER":  "رقم التنازل"
+    "APPOINTMENT_NUMBER":  "رقم التنازل",
+    "MULTIFUNCTIONAL":     "متعدد الوظائف",
+    "OS":                  "نظام التشغيل",
+    "FURNITURE":           "الأثاث",
+    "RECEIVER":            "المتلقي",
+    "RECEIVERS":           "المتلقين"
 }

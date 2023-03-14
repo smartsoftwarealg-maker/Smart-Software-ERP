@@ -54,5 +54,7 @@
     "INVOICE_DATE":        "",
     "SITE":                "",
     "GOTO_DETAIL":   "",
-    "TRANSFER":            ""
+    "TRANSFER":            "",
+    "MULTIFUNCTIONAL":     "",
+    "OS":                  ""
 }
