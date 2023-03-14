@@ -1,0 +1,51 @@
+<div class="ctrl_div content_div" >
+    <button mat-mini-fab
+            type="button"
+            color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab
+            type="button"
+            (click)="edit()"
+            [disabled]="!selected"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab
+            type="button"
+            (click)="deleteSelected()"
+            [disabled]="!selected"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="div_table content_div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.qty | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.price | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

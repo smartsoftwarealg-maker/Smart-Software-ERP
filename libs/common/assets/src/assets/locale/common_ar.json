@@ -116,6 +116,7 @@
     "CONSOLIDATED": "مدمج",
     "VIEW_REPORT": "عرض التقرير",
     "TYPE": "النوع",
+    "TYPES": "الأنواع",
     "DEFAULT_REPORT": "حدد التقرير الافتراضي",
     "SELECT": "اختيار",
     "FILENAME": "اسم الملف",
@@ -265,5 +266,6 @@
     "LTM":                        "تسيير التحاليل",
     "HOURS":                      "ساعات",
     "DAYS":                       "أيام",
-    "MONTHS":                     "شهور"
+    "MONTHS":                     "شهور",
+    "FURNITURE":                  "أثاث"
 }

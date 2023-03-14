@@ -58,5 +58,10 @@
     "SITE":                "Site",
     "GOTO_DETAIL":         "Open detail page",
     "TRANSFER":            "Transfers",
-    "APPOINTMENT_NUMBER":  "Assignment number"
+    "APPOINTMENT_NUMBER":  "Assignment number",
+    "MULTIFUNCTIONAL":     "Multifunctional",
+    "OS":                  "Operating system",
+    "FURNITURE":           "Furniture",
+    "RECEIVER":            "Receiver",
+    "RECEIVERS":           "Receivers"
 }

@@ -5,7 +5,9 @@ import {
     BUDGET_COMMITMENT_URL,
     BUDGET_GROUP_URL,
     BUDGET_PLANNING_URL,
-    BUDGET_SELECTOR_URL, BUDGET_TRANSFER_URL, DASHBOARD_URL
+    BUDGET_SELECTOR_URL,
+    BUDGET_TRANSFER_URL,
+    DASHBOARD_URL
 } from '../common';
 import {
     BudgetDetailComponent,
@@ -100,4 +102,3 @@ export const budgetRoutes: Routes = [
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
 ];
-

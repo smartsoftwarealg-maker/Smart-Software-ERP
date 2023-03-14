@@ -15,6 +15,6 @@ export class MarkService extends BaseEntityService<Lookup> {
     }
 
     getByIdList(list: string): Observable<Lookup[]> {
-        return this.httpSrv.get<Mark[]>(`/lookups/marks?ids=${list}`);
+        return this.httpSrv.get<Lookup[]>(`/lookups/marks?ids=${list}`);
     }
 }

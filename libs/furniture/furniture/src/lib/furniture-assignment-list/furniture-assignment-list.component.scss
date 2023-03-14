@@ -1,0 +1,24 @@
+.size {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table_div {
+    min-height: calc(100% - 70px);
+    margin-top: 4px;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 900px;
+}
+
+.mat-column-supplierDescription {
+    flex: 2 1 300px;
+}
+
+.mat-column-date,
+.mat-column-number {
+    flex: 1 1 150px;
+}

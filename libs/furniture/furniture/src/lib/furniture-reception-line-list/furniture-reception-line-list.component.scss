@@ -1,0 +1,28 @@
+.content_div {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ctrl_div {
+    display: flex;
+    padding: 8px 0;
+    gap: 2em;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.mat-column-description {
+    flex: 2 1 60%;
+}
+
+.mat-column-price,
+.mat-column-qty {
+    flex: 1 1 20%;
+    justify-content: flex-end;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 800px;
+}

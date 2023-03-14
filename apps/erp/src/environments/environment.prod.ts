@@ -36,13 +36,20 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL, FOOD_CART_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, BUDGET_APP_URL, LTM_APP_URL,
+    SHOPPING_CART_APP_URL,
+    FOOD_CART_APP_URL,
+    WORK_FLOW_APP_URL,
+    BUDGET_BUDGET_URL,
+    BUDGET_APP_URL,
+    LTM_APP_URL,
+    FURNITURE_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
+import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -64,6 +71,7 @@ export const navBar = [
     webArchNavTree,
     accountingNavTree,
     assetsNavTree,
+    furnitureNavTree,
     treasuryNavTree,
     budgetNavTree,
     dashboardNavTree,
@@ -107,6 +115,10 @@ export const appRoutes: Routes =  [
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+    },
+    {
+        path: FURNITURE_APP_URL,
+        loadChildren: () => import('../app/furniture/furniture.module').then(m => m.FurnitureModule)
     },
     {
         path: ACCOUNTING_APP_URL,

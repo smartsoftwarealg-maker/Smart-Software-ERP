@@ -1,0 +1,28 @@
+.size {
+    width: 96%;
+    max-width: 1400px;
+    margin: 4px auto 0;
+}
+
+.table_div {
+    min-height: calc(100% - 64px);
+    overflow-x: auto;
+}
+
+.mat-column-reference,
+.mat-column-accountNo,
+.mat-column-acquisitionDate {
+    flex: 1 1 100px;
+}
+.mat-column-acquisitionValue {
+    flex: 1 1 100px;
+    justify-content: flex-end;
+}
+.mat-column-description {
+    flex: 2 1 300px;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 800px;
+}
