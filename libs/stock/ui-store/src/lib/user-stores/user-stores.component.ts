@@ -59,7 +59,7 @@ export class UserStoresComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setButtons([this.refreshButton]);
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.search(f)));
+        this.shellSrv.enableSearch('SEARCH_APP', o => o.subscribe((f: string) => this.search(f)));
         this.refreshUsers();
     }
 
