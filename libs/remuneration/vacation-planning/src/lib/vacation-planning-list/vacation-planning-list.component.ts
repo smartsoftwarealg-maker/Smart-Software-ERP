@@ -18,7 +18,7 @@ import {MatSelectChange} from '@angular/material/select';
 export class VacationPlanningListComponent extends BaseEntityListComponent<VacationPlanning> {
     private readonly THIS_YEAR = new Date().getFullYear();
     period  = new UntypedFormControl(  this.THIS_YEAR - 1);
-    rate    = new UntypedFormControl(173.33);
+    rate    = new UntypedFormControl(173.34);
     defYear = new Date().getFullYear() - 1;
     periods = [
         this.THIS_YEAR - 10,
