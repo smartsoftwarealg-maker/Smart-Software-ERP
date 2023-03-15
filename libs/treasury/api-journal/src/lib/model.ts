@@ -1,6 +1,7 @@
 
 export const JOURNAL_USERS_URL = '/treasury/journal-users';
 export const JOURNALS_URL      = '/treasury/journals';
+export const USER_JOURNALS_URL  = '/treasury/user-journals';
 
 export const CASH_JOURNAL = 1;
 export const BANK_JOURNAL = 2;

@@ -2,8 +2,13 @@
     width: 90%;
     max-width: 1200px;
     margin: 8px auto 0;
-}
 
+}
+.ctrl__div {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+}
 .main-table {
     min-height: 300px;
     overflow-y: auto;

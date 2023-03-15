@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {Journal, JournalService} from '@ss/treasury/api-journal';
+import {Journal, JournalService, UserJournalsService} from '@ss/treasury/api-journal';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
@@ -59,7 +59,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService,
-        private journalSrv: JournalService) {
+        private journalSrv: UserJournalsService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
