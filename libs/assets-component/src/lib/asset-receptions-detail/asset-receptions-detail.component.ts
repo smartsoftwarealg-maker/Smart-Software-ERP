@@ -108,7 +108,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             const id = this.form.controls['id'].value;
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
-                height: '400px',
+                height: '500px',
                 data: { assetRecepId: id, senderId: this.loginSrv.appCtx.id }
             });
 

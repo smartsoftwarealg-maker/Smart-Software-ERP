@@ -5,6 +5,7 @@ import {LoginService} from '@ss/common/api-common';
 import {map, Observable, tap} from 'rxjs';
 import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
+import {FormControl} from '@angular/forms';
 
 type MBData = {
     amount: number;
@@ -20,6 +21,7 @@ type MBData = {
     styleUrls: ['./workflow-dialog.component.scss'],
 })
 export class WorkflowDialogComponent implements OnInit {
+    canceled = new FormControl<boolean>(false);
     selectedId = 0;
     userMessages$: Observable<UserMessage[]> | null = null;
     constructor(private dialogRef: MatDialogRef<WorkflowDialogComponent>,
@@ -46,6 +48,7 @@ export class WorkflowDialogComponent implements OnInit {
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),
             senderId: this.loginSrv.appCtx.id,
+            canceled: this.canceled.value,
             receiverId: this.loginSrv.appCtx.id
         };
         this.mailboxSrv.setParentId(this.loginSrv.appCtx.id);

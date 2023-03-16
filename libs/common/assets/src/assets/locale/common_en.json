@@ -267,5 +267,6 @@
     "HOURS":                      "Hours",
     "DAYS":                       "Days",
     "MONTHS":                     "Months",
-    "FURNITURE":                  "Furniture"
+    "FURNITURE":                  "Furniture",
+    "DOWNGRADE":                  "Downgrade"
 }

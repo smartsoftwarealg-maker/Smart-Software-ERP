@@ -271,5 +271,6 @@
     "HOURS":                      "Heures",
     "DAYS":                       "Jours",
     "MONTHS":                     "Mois",
-    "FURNITURE":                  "Patrimoine"
+    "FURNITURE":                  "Patrimoine",
+    "DOWNGRADE":                  "Downgrade"
 }

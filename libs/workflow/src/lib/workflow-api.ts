@@ -27,6 +27,7 @@ export interface MailBox {
     senderName?: string;
     receiverName?: string;
     message?: string;
+    canceled: boolean;
 }
 
 export interface UserMessage {

@@ -1,20 +1,20 @@
 .container {
     height: 100%;
     width: 98%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 mat-table {
     width: 100%;
-    min-width: 1200px;
+    min-width: 1600px;
 }
 .table-div {
     width: 100%;
     height: 100%;
     flex-grow: 1;
-    overflow-y: auto;
+    overflow: auto;
 }
 .pagination-container {
     flex-grow: 0;
@@ -23,17 +23,17 @@ mat-table {
     width: 1400px;
 }
 
-.mat-column-beneficiary,
 .mat-column-description {
+    flex: 2 1 450px;
+}
+
+.mat-column-beneficiary {
     flex: 1 1 150px;
 }
 
 .mat-column-reference,
 .mat-column-geolocation,
-.mat-column-accountno {
-    flex: 1 1 100px;
-}
-
+.mat-column-accountno,
 .mat-column-depreciationRate,
 .mat-column-useful_life,
 .mat-column-key,
@@ -42,7 +42,7 @@ mat-table {
 .mat-column-serial_no,
 .mat-column-acquisitionDate,
 .mat-column-serviceDate {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
 }
 
 .form-div {

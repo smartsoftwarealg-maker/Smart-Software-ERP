@@ -3,12 +3,11 @@ mat-table {
 }
 
 .container {
-    width: 1600px;
+    width: 96%;
     margin: 0 auto;
 }
 
 .table-div {
-    width: 100%;
     height: calc(100% - 96px);
     flex-grow: 1;
     overflow-y: auto;
