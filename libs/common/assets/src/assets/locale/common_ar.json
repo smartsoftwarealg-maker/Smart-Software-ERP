@@ -267,5 +267,6 @@
     "HOURS":                      "ساعات",
     "DAYS":                       "أيام",
     "MONTHS":                     "شهور",
-    "FURNITURE":                  "أثاث"
+    "FURNITURE":                  "أثاث",
+    "DOWNGRADE":                  "تخفيض"
 }

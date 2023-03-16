@@ -1,5 +1,5 @@
 .list-div {
-    height: calc(100% - 100px);
+    height: calc(100% - 160px);
     width: 90%;
     margin: 16px auto;
     border-radius: 2em;
@@ -11,4 +11,8 @@
     display: flex;
     justify-content: space-between;
     padding: 0 16px;
+}
+
+.downgrade {
+    padding: 16px;
 }
