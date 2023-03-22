@@ -121,7 +121,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             reference: [{value: b.reference, disabled: !!b.isFinal}, [Validators.minLength(this.minLength),  Validators.required]],
             reference2: [{value: b.reference2 || this.maxReference, disabled: !!b.isFinal}, ref2Validators],
             description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
-            acquisitionDate: [b.acquisitionDate || today, Validators.required],
+            acquisitionDate: [b.acquisitionDate, Validators.required],
             serviceDate: [b.serviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
             historicValue: [b.historicValue || 0],
@@ -137,7 +137,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             serial_no: [{ value: b.serial_no, disabled: !!b.isFinal }],
             location: [b.location],
             centerId: [b.centerId || this.loginSrv.appCtx.center],
-            accountno:  [{ value: b.accountno, disabled: !!b.isFinal}, Validators.required],
+            accountno:  [{ value: b.accountno, disabled: !!b.isFinal}],
             accountId: [{ value: b.accountId, disabled: !!b.isFinal}, Validators.required],
             costCenter: [{ value: b.costCenter, disabled: !!b.isFinal}],
             investEnd: [b.investEnd],
@@ -150,7 +150,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             useful_life: [b.useful_life || 5, Validators.required],
             investment_type: [b.investment_type],
             old_depreciation: [b.old_depreciation || 0],
-            outOfService: [b.outOfService || false, Validators.required],
+            outOfService: [b.outOfService || false],
             startYear:   [b.startYear || 0],
             assetClass:  [{ value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
             status:      [b.status],
@@ -314,6 +314,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     private updateAccountDefaults(a: Account) {
         if (this.form && a) {
+            this.form.controls['accountno'].setValue(a.accountNo);
             this.form.controls['depreciationRate'].setValue(a.depreciationRate || 0);
             this.form.controls['useful_life'].setValue(a.usefulLife || 0);
         }

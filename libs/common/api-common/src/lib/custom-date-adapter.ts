@@ -48,6 +48,9 @@ export class SimpleDateAdapter extends NativeDateAdapter {
         if (date == null) {
             return null;
         }
+        if (displayFormat.hour && displayFormat.minute) {
+            return pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+        }
         if (displayFormat.month && !displayFormat.year) {
             if (displayFormat.day) {
                 // todo: use langSrv
@@ -81,7 +84,7 @@ export class SimpleDateAdapter extends NativeDateAdapter {
             case 'yyyy/MM/dd HH:mm:ss':
                 return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes()) + ':' + pad2(date.getSeconds());
             default:
-                console.log('new format', displayFormat);
+                console.log('new format', fmt);
                 return '???';
         }
     }

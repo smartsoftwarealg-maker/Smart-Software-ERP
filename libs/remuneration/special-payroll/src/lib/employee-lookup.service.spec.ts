@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import {EmployeeLookupService} from '@ss/payroll-common';
 
-import { EmployeeLookupService } from './employee-lookup.service';
 
 describe('EmployeeLookupService', () => {
   let service: EmployeeLookupService;

@@ -5,3 +5,4 @@ export * from './lib/budget-selector-dlg/budget-selector-dlg.component';
 export * from './lib/budget.service';
 export * from './lib/budget-selector.guard';
 export * from './lib/budget-api';
+export * from './lib/budget-selector.guard';

@@ -17,6 +17,7 @@ import {LtmMatterService} from '../ltm-matter.service';
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> {
 
     displayedColumns = [
+        'id',
         'description',
     ];
 

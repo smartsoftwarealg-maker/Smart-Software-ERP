@@ -25,9 +25,10 @@ import {
     strToDateTime,
     removeTimeForDateStr,
     dateTimeToYmdStr,
-    dateToYmdStr
+    dateToYmdStr, dateTimeToTime
 } from '@ss/common/api-common';
 import { Subject } from 'rxjs';
+import {MatCalendarType} from '@muaazh/datepicker/lib/calendar.types';
 
 @Component({
     selector: 'ss-date-picker',
@@ -68,8 +69,11 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     @Output()
     dateChange = new EventEmitter<Date>();
 
-    @Input()
-    public time: boolean = false;
+    // @Input()
+    // public time: boolean = false;
+
+    @Input('type')
+    public _type: MatCalendarType;
 
     @Input()
     public matDatepickerFilter: (d: Date | null) => boolean = (d) => true;
@@ -214,7 +218,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         // 1-1-2000 is an example of the shortest valid date (8 chars)
         let value: Date = null;
         if (txt && txt.length > 8) {
-            value = this.time ? strToDateTime(txt) : strToDate(txt);
+            value = this._type == 'datetime' || this._type === 'time' ? strToDateTime(txt) : strToDate(txt);
         }
         try {
             this.onChange(value);
@@ -252,7 +256,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
         if (obj == null) {
             this.date = null;
         } else if (isString(obj)) {
-            if (this.time)
+            if (this._type == 'datetime' || this._type === 'time')
                 this.date = strToDateTime(obj as any);
             else
                 this.date = strToDate(obj as any);
@@ -310,7 +314,9 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
             return null;
         }
         if (this.outputFormat === 'dateStr') {
-            return this.time ? dateTimeToYmdStr(obj) : dateToYmdStr(obj);
+            return this._type == 'datetime' ?
+                                 dateTimeToYmdStr(obj):
+                                 this._type === 'time'? dateTimeToTime(obj) : dateToYmdStr(obj);
         }
         if (this.outputFormat === 'dateObject') {
             return obj;

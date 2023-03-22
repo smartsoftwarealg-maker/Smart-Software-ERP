@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmMatterService} from '../ltm-matter.service';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
-import {Observable} from 'rxjs';
+import {filter, Observable} from 'rxjs';
 
 @Component({
     selector: 'ss-ltm-matter-detail',
@@ -24,12 +22,13 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
+        private router: Router,
         private testSrv: LtmMatterTestService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_MATTERS');
     }
 
     public override setupForm(b: LTMMatter) {
-        // Make sure to update the template if you edit the configuration here
+
         return this.formBuilder.group({
             id:            [b.id],
             description:   [b.description, Validators.required],
@@ -40,5 +39,24 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
     override loadEntity(id: number): Observable<LTMMatter> {
         this.testSrv.setParentId(id);
         return super.loadEntity(id);
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        const sub = this.router.events.pipe(
+            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+        ).subscribe((e: RouterEvent) => {
+            if (e instanceof NavigationEnd) {
+                this.disableControls(e.url);
+            }
+        });
+        this.subscriptions.push(sub);
+        this.disableControls(this.router.url);
+    }
+
+    private disableControls(url: string) {
+        const enabled = url.indexOf('/detail') < 0;
+        this.saveButton.visible = enabled;
+        this.shellSrv.setGoBackEnabled(enabled);
     }
 }

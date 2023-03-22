@@ -170,6 +170,14 @@ export function dateTimeToYmdStr(date: Date | string): string {
     }
 }
 
+export function dateTimeToTime(date: Date | string): string {
+    if (typeof date === 'string' || date instanceof String) {
+        return <string>date;
+    } else {
+        return  pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+    }
+}
+
 export function strToDate(str: string) {
     const date = strToDateTime(str);
     if (date != null) {

@@ -12,6 +12,4 @@
     </mat-card-content>
 </mat-card>
 
-<router-outlet *ngIf="id > 0">
-
-</router-outlet>
+<router-outlet *ngIf="id > 0 && form !== null"></router-outlet>

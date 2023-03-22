@@ -30,18 +30,19 @@
             <mat-label translate>LTM_LINE</mat-label>
             <ss-auto-complete matInput
                               [model]="lineLookup"
-                              [disabled]="true"
                               formControlName="line">
             </ss-auto-complete>
         </mat-form-field>
 
+        <span class="default-50"></span>
 
         <mat-form-field class="default-50">
-            <mat-label translate>LTM_MATTER</mat-label>
-            <ss-auto-complete matInput
-                              [model]="matterLookup"
-                              formControlName="matter">
-            </ss-auto-complete>
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker formControlName="from"></ss-date-picker>
+        </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker formControlName="to"></ss-date-picker>
         </mat-form-field>
     </form>
 </mat-card>
@@ -52,7 +53,7 @@
     <div *ngIf="!uploadProgress">
         <button mat-raised-button color="primary"
                 type="button"
-                (click)="onFileSelected(fileUpload.files)"
+                (click)="upload(fileUpload.files)"
                 [disabled]="!form.valid || fileName?.length < 4">
             {{ 'COMMON_UPLOAD' | translate }}
             <i class="fa-solid fa-upload  icon"></i>

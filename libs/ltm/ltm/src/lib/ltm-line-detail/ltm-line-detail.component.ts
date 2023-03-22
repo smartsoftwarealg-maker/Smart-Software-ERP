@@ -37,12 +37,19 @@ export class LtmLineDetailComponent extends BaseEntityDetailComponent<LTMLine> {
             .pipe(filter(ev => ev instanceof NavigationEnd))
             .subscribe(event => {
                 if (event instanceof NavigationEnd) {
-                    const visible = (event.url === '/app/ltm/ltm-lines');
+                    const visible = (event.url.indexOf('/detail') < 0);
                     this.saveButton.visible = visible;
+                    this.shellSrv.setGoBackEnabled(visible);
                 }
             });
         this.subscriptions.push(subs);
+        this.enableButtons(this.router.url);
+    }
 
+    private enableButtons(url: string) {
+        const visible = url.indexOf('/index') < 0;
+        this.saveButton.visible = visible;
+        this.shellSrv.setGoBackEnabled(visible);
     }
 
     public override setupForm(b: LTMLine) {

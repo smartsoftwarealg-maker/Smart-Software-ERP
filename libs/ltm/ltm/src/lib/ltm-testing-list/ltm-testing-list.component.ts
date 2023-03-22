@@ -30,7 +30,7 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
         click: () => this.inject()
     };
     lines$: Observable<LTMLine[]> = null;
-    lineCtrl = new FormControl<number>(0);
+    lineCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
     displayedColumns = ['matter', 'test', 'timeStamp', 'value'];
 
@@ -73,8 +73,8 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
 
     private inject() {
         const dialogRef = this.dialog.open(LtmInjectionComponent, {
-            width: '500px',
-            height: '290px',
+            width: '550px',
+            height: '320px',
             disableClose: true
         });
 

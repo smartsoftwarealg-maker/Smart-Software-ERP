@@ -44,6 +44,7 @@ export const SHOPPING_CART_APP_URL = 'scart';
 export const FOOD_CART_APP_URL = 'food';
 export const WORK_FLOW_APP_URL = 'workflow';
 export const BUDGET_APP_URL = 'budget';
+export const ATTENDANCE_APP_URL = 'attendance'
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -262,9 +263,20 @@ export const SS_TRUCKS_URL               = 'supplier-trucks';
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
 
-//Missions
+// Attendance
+export const ATTENDANCE_MACHINES_URL = 'attendance-machines';
+export const WORK_SHIFTS_URL         = 'work-shifts';
+export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
+
+
+// Missions
 export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_PREPARATION_URL].join('/');
 export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_TRAJECTORIES].join('/');
+
+// Attendance
+export const ABS_ATTENDANCE_WORKSHIFTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, WORK_SHIFTS_URL].join('/');
+export const ABS_ATTENDANCE_MACHINES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_MACHINES_URL].join('/');
+export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, SHIFT_ASSIGNMENT_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
