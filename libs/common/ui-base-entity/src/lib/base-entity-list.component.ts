@@ -128,8 +128,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         } as Right : this.shellSrv.getRights(node);
 
         // this.editButton.visible = rights.edit;
-        this.addButton.visible = rights.write;
-        this.deleteButton.visible = rights.delete;
+        this.addButton.visible &&= rights.write;
+        this.deleteButton.visible &&= rights.delete;
         this.editButton.icon = rights.edit? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
         this.editButton.label = rights.edit? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
 

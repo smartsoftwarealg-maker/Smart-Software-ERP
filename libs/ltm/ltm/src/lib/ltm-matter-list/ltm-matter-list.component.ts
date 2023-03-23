@@ -12,7 +12,7 @@ import {LtmMatterService} from '../ltm-matter.service';
 @Component({
     selector: 'ss-ltm-matter-list',
     templateUrl: './ltm-matter-list.component.html',
-    styleUrls: ['../ltm-line-list/ltm-line-list.component.scss'],
+    styleUrls: ['./ltm-matter-list.component.scss'],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> {
 

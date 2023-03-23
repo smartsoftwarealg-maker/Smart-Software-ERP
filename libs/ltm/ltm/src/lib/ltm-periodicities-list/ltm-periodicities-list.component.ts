@@ -18,7 +18,7 @@ export class LtmPeriodicitiesListComponent extends BaseEntityListComponent<Looku
     displayedColumns = ['description', 'descriptionAr'];
 
     constructor(
-        public markSrv: LtmPeriodicityService,
+        public override entitySrv: LtmPeriodicityService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -26,6 +26,6 @@ export class LtmPeriodicitiesListComponent extends BaseEntityListComponent<Looku
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LTM_PERIODICITIES');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LTM_PERIODICITIES');
     }
 }

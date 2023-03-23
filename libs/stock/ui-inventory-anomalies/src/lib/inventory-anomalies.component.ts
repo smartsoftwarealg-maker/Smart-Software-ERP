@@ -44,9 +44,9 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(anomalySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ANOMALIES');
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
-        this.editButton.visible = false;
+        // this.deleteButton.visible = false;
+        // this.addButton.visible = false;
+        // this.editButton.visible = false;
         this.pagination.pageSize = 15;
     }
 
@@ -66,12 +66,12 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
     }
 
     override ngOnInit() {
-        this.shellSrv.addButton(this.fixButton);
         this.deleteButton.visible = false;
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.excelButton.visible = false;
         super.ngOnInit();
+        this.shellSrv.addButton(this.fixButton);
     }
 
     override selectRow(row: Anomaly) {

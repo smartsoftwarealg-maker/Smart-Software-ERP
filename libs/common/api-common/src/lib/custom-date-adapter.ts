@@ -6,6 +6,9 @@ import { isString, isDate, pad2, pad4, strToDateTime } from './utils';
 
 function toDate(date: Date | string): Date {
     if (isString(date)) {
+        if (date.toString().match(/^\d{1,2}:\d{1,2}$/)) {
+            date = '2022-01-01 ' + date;
+        }
         return strToDateTime(date as string);
     }
     if (isDate(date)) {
@@ -48,9 +51,6 @@ export class SimpleDateAdapter extends NativeDateAdapter {
         if (date == null) {
             return null;
         }
-        if (displayFormat.hour && displayFormat.minute) {
-            return pad2(date.getHours()) + ':' + pad2(date.getMinutes());
-        }
         if (displayFormat.month && !displayFormat.year) {
             if (displayFormat.day) {
                 // todo: use langSrv
@@ -73,6 +73,9 @@ export class SimpleDateAdapter extends NativeDateAdapter {
                 }
                 return pad4(date.getFullYear()) + '/' + pad2(date.getMonth());
             }
+        }
+        if (displayFormat.hour && displayFormat.minute) {
+            return pad2(date.getHours()) + ':' + pad2(date.getMinutes());
         }
         const fmt = displayFormat as string;
         switch (fmt) {

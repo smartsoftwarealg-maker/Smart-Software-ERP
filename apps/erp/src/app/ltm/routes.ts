@@ -9,7 +9,7 @@ import {
     LTM_PERIODICITY_URL,
     LTM_CHARTS_URL,
     LTM_TEST_URL,
-    LTM_TESTING_URL
+    LTM_TESTING_URL, LTM_BATCH_URL
 } from '../common';
 
 import {
@@ -27,13 +27,17 @@ import {
     LtmTestingListComponent,
     LtmTestingDetailComponent,
     LtmReportComponent,
-    LineMatterListComponent
+    LineMatterListComponent,
+    LtmBatchInputComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 
 export const ltmRoutes: Routes = [
     {
-        path: LTM_CHARTS_URL, component: LtmReportComponent
+        path: LTM_BATCH_URL, component: LtmBatchInputComponent, canActivate: [loginGuard]
+    },
+    {
+        path: LTM_CHARTS_URL, component: LtmReportComponent, canActivate: [loginGuard]
     },
     {
         path: LTM_LINES_URL,

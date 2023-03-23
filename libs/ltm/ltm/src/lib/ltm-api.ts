@@ -1,6 +1,7 @@
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_TEST_URL        = '/ltm/tests';
+export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_LTM_LINE_URL    = '/ltm/ltm-lines';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/matters';
@@ -67,4 +68,16 @@ export interface LTMTesting {
 export interface LTMTestInjection {
     line: number;
     matter: number;
+}
+
+export interface BTest {
+    testId: number;
+    value: number;
+}
+
+export interface Batch {
+    parentId: number;
+    matterId: number;
+    timeStamp: Date;
+    tests: BTest[];
 }

@@ -16,5 +16,6 @@
     "PERIODICITY":    "Périodicité",
     "LOW":            "Faible",
     "HIGH":           "Haut",
-    "ANOMALIES_ONLY": "Afficher uniquement les anomalies"
+    "ANOMALIES_ONLY": "Afficher uniquement les anomalies",
+    "BATCH_TESTINGS": "Tests horaires"
 }

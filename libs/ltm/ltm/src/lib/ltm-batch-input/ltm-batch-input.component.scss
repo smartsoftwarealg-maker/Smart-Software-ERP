@@ -1,0 +1,41 @@
+mat-card {
+    max-width: 800px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
+}
+
+.group_div {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.list_div {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.container_div {
+    display: flex;
+    gap: 1em;
+}
+
+.list_card {
+    flex: 1 1 45%;
+}
+
+.data_div {
+    flex: 1 1 55%;
+}
+
+mat-card mat-label {
+    height: 2em;
+    font-weight: bolder;
+    padding: 4px 4px 0;
+    box-sizing: border-box;
+}

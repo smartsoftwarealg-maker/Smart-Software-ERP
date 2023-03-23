@@ -15,5 +15,6 @@
     "PERIODICITY":    "Periodicity",
     "LOW":            "Low",
     "HIGH":           "High",
-    "ANOMALIES_ONLY": "Show anomalies only"
+    "ANOMALIES_ONLY": "Show anomalies only",
+    "BATCH_TESTINGS": "Hourly testings"
 }

@@ -15,5 +15,6 @@
     "PERIODICITY":    "دور",
     "LOW":            "قليل",
     "HIGH":           "عالي",
-    "ANOMALIES_ONLY": "إظهار الحالات الشاذة فقط"
+    "ANOMALIES_ONLY": "إظهار الحالات الشاذة فقط",
+    "BATCH_TESTINGS": "الاختبارات الساعية"
 }

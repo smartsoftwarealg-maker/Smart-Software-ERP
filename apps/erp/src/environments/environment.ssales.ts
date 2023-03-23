@@ -28,6 +28,7 @@ export const langAssets = [
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/sch_', 'SCH_'],
     ['assets/locale/ltm_', 'LTM_'],
+    ['assets/locale/bl_', 'BL_'],
     ['assets/locale/common_', 'COMMON_'],
 ];
 

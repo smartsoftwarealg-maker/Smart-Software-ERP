@@ -73,7 +73,7 @@ export class DatePickerComponent implements MatFormFieldControl<Date>, DoCheck, 
     // public time: boolean = false;
 
     @Input('type')
-    public _type: MatCalendarType;
+    public _type: MatCalendarType = 'date';
 
     @Input()
     public matDatepickerFilter: (d: Date | null) => boolean = (d) => true;
