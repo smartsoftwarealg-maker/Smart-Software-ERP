@@ -16,7 +16,8 @@ import { PersonShiftListComponent } from './person-shift-list/person-shift-list.
 import { PersonShiftDetailComponent } from './person-shift-detail/person-shift-detail.component';
 import { ShiftTimingDetailComponent } from './shift-timing-detail/shift-timing-detail.component';
 import { ShiftTimingListComponent } from './shift-timing-list/shift-timing-list.component';
-import {RouterOutlet} from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { AttendanceLogComponent } from './attendance-log/attendance-log.component';
 
 @NgModule({
     imports: [
@@ -29,7 +30,7 @@ import {RouterOutlet} from '@angular/router';
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
         CommonUiDatepickerModule,
-        RouterOutlet
+        RouterOutlet,
     ],
     declarations: [
         WorkShiftListComponent,
@@ -40,6 +41,7 @@ import {RouterOutlet} from '@angular/router';
         PersonShiftDetailComponent,
         ShiftTimingDetailComponent,
         ShiftTimingListComponent,
+        AttendanceLogComponent,
     ],
 })
 export class AttendanceModule {}

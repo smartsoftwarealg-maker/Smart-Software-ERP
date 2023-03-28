@@ -43,11 +43,7 @@
         <div formArrayName="tests" class="group_div">
             <div *ngFor="let f of tests.controls; let i = index">
                 <div [formGroupName]="i">
-                    <!--                    <mat-form-field>-->
-                    <!--                        <mat-label translate>LTM_TEST</mat-label>-->
-                    <!--                        <input matInput formControlName="testId" type="text">-->
-                    <!--                    </mat-form-field>-->
-                    <mat-form-field>
+                    <mat-form-field class="input_div">
                         <mat-label translate>{{ labels[i] }}</mat-label>
                         <input matInput formControlName="value" type="number">
                     </mat-form-field>
@@ -56,5 +52,21 @@
         </div>
 
         <!--        <pre> {{form.value | json }}</pre>-->
+    </form>
+</mat-card>
+<mat-card>
+    <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+
+    <form *ngIf="totalsForm" [formGroup]="totalsForm">
+        <div formArrayName="totals" class="group_div">
+            <div *ngFor="let f of totals.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="input_div">
+                        <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+                        <input matInput formControlName="value" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
     </form>
 </mat-card>

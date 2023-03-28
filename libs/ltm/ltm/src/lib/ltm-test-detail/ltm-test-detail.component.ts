@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMMatter, LTMTest} from '../ltm-api';
-import {LtmMatterService} from '../ltm-matter.service';
+import {LTMTest} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
 import {LtmTestService} from '../ltm-test.service';
 
 @Component({
@@ -29,9 +27,11 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
     public override setupForm(b: LTMTest) {
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
-            id: [b.id],
-            description: [b.description, Validators.required],
+            id:            [b.id],
+            description:   [b.description, Validators.required],
             descriptionAr: [b.descriptionAr],
+            variable:      [b.variable],
+            formula:       [b.formula],
         });
     }
 }

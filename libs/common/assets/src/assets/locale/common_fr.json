@@ -272,5 +272,8 @@
     "DAYS":                       "Jours",
     "MONTHS":                     "Mois",
     "FURNITURE":                  "Patrimoine",
-    "DOWNGRADE":                  "Downgrade"
+    "DOWNGRADE":                  "Downgrade",
+    "VARIABLE": "Variable",
+    "FORMULA": "Formula",
+    "FORMULAS": "Formulas"
 }

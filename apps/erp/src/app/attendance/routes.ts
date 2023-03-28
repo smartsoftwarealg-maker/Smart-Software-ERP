@@ -4,12 +4,14 @@ import {
     ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {
+    ATTENDANCE_LOG_URL,
     ATTENDANCE_MACHINES_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL
 } from '../common';
 
 
 import {detailGuard, loginGuard, timingGuard} from '../erp-guards';
 import {
+    AttendanceLogComponent,
     AttendanceMachineDetailComponent,
     AttendanceMachineListComponent,
     PersonShiftDetailComponent,
@@ -21,6 +23,11 @@ import {
 
 
 export const attendanceRoutes: Routes = [
+    {
+        path: ATTENDANCE_LOG_URL,
+        component: AttendanceLogComponent,
+        canActivate: [loginGuard]
+    },
     {
         path: ATTENDANCE_MACHINES_URL,
         children: [

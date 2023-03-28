@@ -1,9 +1,20 @@
+import {Lookup} from '@ss/common/api-lookup';
+
 export const ATTENDANCE_MACHINE_URL = '/attendance/machines';
 export const WORK_SHIFT_URL         = '/attendance/shifts';
 export const ATTENDANCE_TYPE_URL    = '/attendance/attendance-types';
 export const ATTENDANCE_PERSONS_URL = '/attendance/persons';
 export const ATTENDANCE_SHIFTS_URL  = '/shifts';
 export const SHIFT_TIMING_URL       = '/timings';
+export const ATT_ATTENDANCE         = '/attendance/attendance';
+export const TYPES: Lookup[] = [
+    {id: 1, description: 'ATT_ATTENDANCE'},
+    {id: 2, description: 'ATT_PRESENCE'},
+    {id: 3, description: 'ATT_ABSENCE'},
+    {id: 4, description: 'ATT_LATENESS'},
+    {id: 5, description: 'ATT_SHIFT'},
+];
+
 
 export interface AttendanceMachine {
     id: number;
@@ -38,6 +49,16 @@ export interface PersonShift {
     shift: number;
     shiftDescription?: string;
     service?: number;
+    firstName?: string;
+    lastName?: string;
+}
+
+export interface ATTReport {
+    id: number;
+    firstName?: string;
+    lastName?: string;
+    post?: string;
+    attendance: string[];
 }
 
 export interface Timing {

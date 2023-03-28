@@ -1,4 +1,4 @@
-<div class="size">
+<div class="size ctrl_div">
     <mat-form-field class="default-50">
         <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
         <ss-auto-complete matInput
@@ -24,6 +24,20 @@
             <mat-header-cell *matHeaderCellDef translate>ATT_SHIFT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.shiftDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.firstName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.lastName}}
             </mat-cell>
         </ng-container>
 

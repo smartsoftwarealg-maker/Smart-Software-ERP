@@ -89,7 +89,7 @@
         <mat-label translate>COMMON_CLASS</mat-label>
         <ss-auto-complete matInput
                           [model]="classAutoCompleteModel"
-                          required
+                          [required]="isAQS"
                           formControlName="assetClass">
         </ss-auto-complete>
     </mat-form-field>

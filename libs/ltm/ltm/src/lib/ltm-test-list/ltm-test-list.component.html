@@ -15,6 +15,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="variable">
+            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.variable}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="formula">
+            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>COMMON_FORMULA</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.formula}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="descriptionAr">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION_AR</mat-header-cell>
             <mat-cell *matCellDef="let e">

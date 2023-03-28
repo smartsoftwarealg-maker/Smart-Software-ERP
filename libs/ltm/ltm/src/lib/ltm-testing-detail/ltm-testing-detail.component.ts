@@ -12,6 +12,7 @@ import {map, Observable} from 'rxjs';
 import {MatSelectChange} from '@angular/material/select';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
 
 @Component({
     selector: 'ss-ltm-testing-detail',
@@ -21,7 +22,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> {
     lineLookup   = new DefaultAutoCompleteModel(this.lineSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
-    testLookup   = new DefaultAutoCompleteModel(this.testSrv, 'testId', 'testDescription');
+    testLookup   = new DefaultAutoCompleteModel(this.testLookupSrv);
 
     selectedTestId   = 0;
     selectedMatterId = 0;
@@ -38,11 +39,11 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         public override confirmationSrv: ConfirmationDialogService,
         private lineSrv: LtmLineService,
         private matterSrv: LtmLineMatterService,
-        private testSrv: LtmMatterTestService,
+        private testLookupSrv: LtmMatterTestLookupService,
         private router: Router) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_TESTINGS');
         this.matterLookup.onObjectSelected = (m) => this.onMatter(m);
-        this.testSrv.setParentId(0);
+        this.testLookupSrv.setParentId(0);
     }
 
     override ngOnInit() {
@@ -53,7 +54,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
     }
 
     public override setupForm(b: LTMTesting) {
-        this.testSrv.setParentId(b.matterId || 0);
+        this.testLookupSrv.setParentId(b.matterId || 0);
         this.matterSrv.setParentId(b.parentId || this.entitySrv.getParentId());
         return this.formBuilder.group({
             id:           [b.id],
@@ -72,7 +73,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
     // }
 
     onMatter(m: LTMLineMatter) {
-        this.testSrv.setParentId(m.matterId);
+        this.testLookupSrv.setParentId(m.matterId);
     }
 
     // onTest(id: number) {

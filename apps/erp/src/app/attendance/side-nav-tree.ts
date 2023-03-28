@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ATTENDANCE_LOG_URL,
     ABS_ATTENDANCE_MACHINES_URL,
     ABS_ATTENDANCE_WORKSHIFTS_URL,
     ABS_SHIFT_ASSIGNMENTS_URL
@@ -26,6 +27,12 @@ export const attendanceNavTree: SideNavNode = {
             icon: 'fa-solid fa-user-gear',
             route: ABS_SHIFT_ASSIGNMENTS_URL,
             accessRights: 'PersonShift'
+        },
+        {
+            name: 'ATT_ATTENDANCE_LOG',
+            icon: 'fa-solid fa-user-gear',
+            route: ABS_ATTENDANCE_LOG_URL,
+            accessRights: 'Attendance'
         },
     ],
     accessRights: "ATTENDANCE_APP"

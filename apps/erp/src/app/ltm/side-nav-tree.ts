@@ -49,7 +49,7 @@ export const ltmNavTree: SideNavNode = {
 
         {
             name: 'LTM_BATCH_TESTINGS',
-            icon: 'fa-solid fa-link',
+            icon: 'fa-sharp fa-solid fa-clock-three-thirty',
             route: ABS_LTM_BATCH_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },

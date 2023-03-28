@@ -1,22 +1,23 @@
 .content_div {
     width: 90%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .mat-column-description {
-    flex: 3 1 250px;
+    flex: 3 1 200px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
-
+.mat-column-formula,
 .mat-column-descriptionAr {
-    flex: 1 1 120px;
+    flex: 1 1 150px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
-.mat-column-id {
+.mat-column-id,
+.mat-column-variable {
     flex: 1 1 70px;
     justify-content: center;
     border-left: gray solid 1px;
@@ -24,7 +25,7 @@
 
 mat-table {
     width: 98%;
-    min-width: 450px;
+    min-width: 900px;
 }
 
 .container {

@@ -1,5 +1,6 @@
 mat-card {
-    max-width: 800px;
+    width: 90%;
+    max-width: 1000px;
     margin: 16px auto;
     padding: 16px;
     border-radius: 1.4em;
@@ -12,6 +13,10 @@ mat-card {
     flex-wrap: wrap;
     gap: 1em;
     justify-content: center;
+}
+
+.input_div {
+    max-width: 120px;
 }
 
 .list_div {
@@ -38,4 +43,10 @@ mat-card mat-label {
     font-weight: bolder;
     padding: 4px 4px 0;
     box-sizing: border-box;
+}
+
+mat-card-header {
+    font-weight: bolder;
+    font-size: 1.2em;
+    padding-bottom: 8px;
 }

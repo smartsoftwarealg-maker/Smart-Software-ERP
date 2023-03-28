@@ -268,5 +268,8 @@
     "DAYS":                       "Days",
     "MONTHS":                     "Months",
     "FURNITURE":                  "Furniture",
-    "DOWNGRADE":                  "Downgrade"
+    "DOWNGRADE":                  "Downgrade",
+    "VARIABLE":                   "Variable",
+    "FORMULA":                    "Formula",
+    "FORMULAS":                   "Formulas"
 }

@@ -190,6 +190,9 @@ export class LanguageService {
     public get dir(): Direction {
         return this.rtl ? 'rtl' : 'ltr';
     }
+    public get lang(): string {
+        return  this.currentLanguage?.code;
+    }
 
     constructor(private appConfigSrv: AppConfigService,
                 private httpClient: HttpClient,
@@ -447,5 +450,7 @@ export class LanguageService {
             }
         }
     }
+
+
 
 }

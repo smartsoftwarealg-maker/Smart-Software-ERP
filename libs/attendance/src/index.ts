@@ -10,3 +10,4 @@ export * from './lib/shift-timing-detail/shift-timing-detail.component';
 export * from './lib/shift-timing-list/shift-timing-list.component';
 export * from './lib/guards/timing-detail-guard';
 export * from './lib/guards/assignment-detail-guard';
+export * from './lib/attendance-log/attendance-log.component';

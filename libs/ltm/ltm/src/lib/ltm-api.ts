@@ -31,6 +31,8 @@ export interface LTMTest {
     id: number;
     description: string;
     descriptionAr?: string;
+    variable?: string;
+    formula?: string;
 }
 
 export interface LTMMatterTest {
@@ -42,7 +44,9 @@ export interface LTMMatterTest {
     periodicity: number;
     minValue: number;
     optValue: number;
-    maxValue: number
+    maxValue: number;
+    variable?: string;
+    formula?: string;
 }
 
 export interface Data {
