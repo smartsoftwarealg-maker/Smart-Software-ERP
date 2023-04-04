@@ -28,7 +28,6 @@ import {Id} from '@ss/common/ui-auto-complete';
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
-    queries: string[] = [];
     detailPagination = PaginationModel.newInstance();
     time = new Date().getTime();
     toDate              = new UntypedFormControl(new Date());

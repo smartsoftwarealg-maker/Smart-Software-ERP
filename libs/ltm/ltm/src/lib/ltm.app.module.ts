@@ -4,7 +4,6 @@ import { LtmLineListComponent } from './ltm-line-list/ltm-line-list.component';
 import { LtmLineDetailComponent } from './ltm-line-detail/ltm-line-detail.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
@@ -28,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { AppArchiveModule } from '@ss/common/app-archive';
 import { LtmBatchInputComponent } from './ltm-batch-input/ltm-batch-input.component';
+import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
 
 @NgModule({
     imports: [
@@ -42,6 +42,7 @@ import { LtmBatchInputComponent } from './ltm-batch-input/ltm-batch-input.compon
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
         RouterOutlet,
+        CommonUiHourPickerModule
     ],
     exports: [
         LtmLineListComponent,

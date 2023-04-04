@@ -24,11 +24,15 @@ export class AttendanceLogComponent implements OnInit {
     private route         = inject(ActivatedRoute);
     private datePipe      = new DatePipe(this.langSrv.lang);
 
-    private FIXED_COLS    = [
+    private FIXED_HEADERS    = [
         this.langSrv.translate('LOGISTICS_ID'),
         this.langSrv.translate('COMMON_FIRST_NAME'),
-        this.langSrv.translate('COMMON_LAST_NAME')];
+        this.langSrv.translate('COMMON_LAST_NAME'),
+        this.langSrv.translate('PAYROLL_POST')
+    ];
+    private FIXED_COLS = ['id', 'firstName', 'lastName', 'post'];
 
+    tableWidth            = 390;
     types                 = TYPES
     selected: ATTReport   = null;
     data: ATTReport[]     = [];
@@ -39,7 +43,10 @@ export class AttendanceLogComponent implements OnInit {
         type: [1,          Validators.required]
     });
 
-    headers = this.FIXED_COLS;
+    headers = this.FIXED_HEADERS;
+    columns = this.FIXED_COLS;
+    varHeaders: string[] = [];
+    displayedCols = this.headers;
 
     ngOnInit() {
         registerLocaleData(localeFr);
@@ -50,20 +57,28 @@ export class AttendanceLogComponent implements OnInit {
     refresh() {
         const value = this.form.value;
         this.attendanceLog
-            .getReport(1, value.id, value.from, value.to)
+            .getReport(value.type, value.id, value.from, value.to)
             .subscribe(res => {
                 this.data = res;
-                this.headers = this.FIXED_COLS.concat(this.getVariableHeaders(new Date(value.from)));
+                this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
+                this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
+                this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
+                this.columns = this.displayedCols;
             });
     }
 
-    private getVariableHeaders(from: Date): string[] {
-        return this.data.length == 0 ? [] :
-            this.data[0].attendance.map(e => {
-                from.setDate(from.getDate() + 1);
-                return this.datePipe.transform(from, 'EEEE, dd');
+    private getVariableHeaders(from: Date, to: Date): string[] {
+        const dDay = new Date(from);
+        dDay.setDate(dDay.getDate() - 1);
+        return  Array.from({length: (to.getDate() - from.getDate() + 1)}, (v, k) => k)
+            .map(i => {
+                dDay.setDate(dDay.getDate() + 1);
+                dDay.setHours(0, 0, 0);
+                return this.datePipe.transform(dDay, 'EE, dd');
             });
+
     }
+
 
     select(item: ATTReport) {
         this.selected = item;

@@ -58,7 +58,7 @@ export interface ATTReport {
     firstName?: string;
     lastName?: string;
     post?: string;
-    attendance: string[];
+    attendance: string[][];
 }
 
 export interface Timing {

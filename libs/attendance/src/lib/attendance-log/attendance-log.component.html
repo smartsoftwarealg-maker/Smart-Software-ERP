@@ -34,17 +34,23 @@
     </form>
 </mat-card>
 
-<mat-table mat-table [dataSource]="data" class="main-table">
+<div class="table_div">
+    <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{'min-width.px': tableWidth }">
 
-    <ng-container *ngFor="let h of headers; let i = index" matColumnDef="{{ h }}">
-        <mat-header-cell *matHeaderCellDef> {{ h }} </mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e[i] }}
-        </mat-cell>
-    </ng-container>
+        <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">
+            <mat-header-cell *matHeaderCellDef > {{ i <= 3 ? headers[i] : varHeaders[i - 4] }} </mat-header-cell>
+            <mat-cell *matCellDef="let e" >
+                <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>
+                <ng-template #detail>
+                    <div *ngFor="let s of e.attendance[i - 4]"> {{ s }} </div>
+                </ng-template>
+
+            </mat-cell>
+        </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
-             *matRowDef="let row; columns: headers;"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"
+                 *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
+</div>

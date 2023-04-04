@@ -129,6 +129,9 @@
             "@ss/common/ui-error-handler": [
                 "libs/common/ui-error-handler/src/index.ts"
             ],
+            "@ss/common/ui-hour-picker": [
+                "libs/common/ui-hour-picker/src/index.ts"
+            ],
             "@ss/common/ui-image-input": [
                 "libs/common/ui-image-input/src/index.ts"
             ],

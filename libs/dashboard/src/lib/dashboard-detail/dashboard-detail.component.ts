@@ -11,7 +11,7 @@ import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {
     APP_ASSET,
     APP_DASHBOARD,
-    APP_HR,
+    APP_HR, APP_LTM,
     APP_PAYROLL,
     APP_PURCHASE,
     APP_STOCK, APP_TREASURY,
@@ -33,6 +33,7 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
         { id: APP_HR,        description: 'HR'        },
         { id: APP_ASSET,     description: 'ASSETS'    },
         { id: APP_TREASURY,  description: 'TREASURY'  },
+        { id: APP_LTM,       description: 'LTM'       },
     ];
 
     constructor(public dashboardSrv: DashboardService,

@@ -1,0 +1,16 @@
+<mat-card>
+    <div class="clock">
+        <div class="form_field">
+            <mat-form-field class="hour">
+                <input matInput #hour (change)="hourChanged(hour.value)" type="number" [formControl]="hourControl" [step]="step" min="1" max="24">
+            </mat-form-field>
+        </div>
+        <div class="selectors">
+            <mat-radio-group [value]="2" (change)="onStep($event)">
+                <mat-radio-button value="2" [checked]="true">12</mat-radio-button>
+                <mat-radio-button value="1">24</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+    </div>
+</mat-card>

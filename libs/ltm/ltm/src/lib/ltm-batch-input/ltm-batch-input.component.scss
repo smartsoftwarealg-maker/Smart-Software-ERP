@@ -1,6 +1,6 @@
 mat-card {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 16px auto;
     padding: 16px;
     border-radius: 1.4em;
@@ -49,4 +49,20 @@ mat-card-header {
     font-weight: bolder;
     font-size: 1.2em;
     padding-bottom: 8px;
+}
+
+.period_div {
+    display: flex;
+}
+
+@media (width <= 620px) {
+    .period_div {
+        flex-wrap: wrap;
+    }
+}
+
+@media (width <= 430px) {
+  .container_div {
+      display: block;
+  }
 }

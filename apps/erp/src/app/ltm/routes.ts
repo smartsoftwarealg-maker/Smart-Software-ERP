@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import {
-    ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
+    ABS_INDEX_URL, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {
     LTM_LINES_URL,
@@ -9,7 +9,7 @@ import {
     LTM_PERIODICITY_URL,
     LTM_CHARTS_URL,
     LTM_TEST_URL,
-    LTM_TESTING_URL, LTM_BATCH_URL
+    LTM_TESTING_URL, LTM_BATCH_URL, DASHBOARD_URL
 } from '../common';
 
 import {
@@ -31,6 +31,7 @@ import {
     LtmBatchInputComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
+import {DashboardComponent} from '@ss/dashboard';
 
 export const ltmRoutes: Routes = [
     {
@@ -139,6 +140,11 @@ export const ltmRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: DASHBOARD_URL,
+        component: DashboardComponent,
+        canActivate: [loginGuard],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

@@ -22,6 +22,9 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     private _periodicity = 0;
+    private matters: LTMMatter[] = [];
+    private TODAY = new Date();
+    private formulaMap = new Map<string, string>();
     periods$: Observable<Lookup[]> = of([]);
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -38,13 +41,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     formulas: string[] = [];
     selectedMatter: LTMMatter = null;
     lineLookup = new DefaultAutoCompleteModel(this.lineSrv);
-    private matters: LTMMatter[] = [];
 
     form = this.formBuilder.group(
         {
             parentId:  [0, Validators.required],
             matterId:  [0, Validators.required],
-            timeStamp: [new Date(), Validators.required],
+            timeStamp: [this.TODAY, Validators.required],
             tests:     this.formBuilder.array([])
         }
     );
@@ -63,6 +65,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         private testSrv:    LtmMatterTestService,
         private periodSrv: LtmPeriodicityService) {
         this.lineLookup.onObjectSelected = (l) => this.onLine(l);
+        this.TODAY.setHours(1, 0, 0, 0);
     }
 
     ngOnDestroy(): void {
@@ -92,13 +95,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             return formula.trim();
         }
     }
-    private evaluate(exp: string): number {
-        try {
-            return eval(exp)
-        } catch (e) {
-            return 0;
-        }
-    }
+
     private refreshFormulas() {
         const values = this.variables.map((v, i) => {
             return v? this.tests.at(i)?.value.value : 0;
@@ -109,8 +106,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             '\n' +
             this.formulas.map((f, i) => `result[${i}] = ${f};`).join('\n');
 
-        eval(program);
-        this.totals.controls.forEach((c, i) => c.setValue( { value: result[i]}))
+        //console.log(program);
+        try {
+            eval(program);
+        } catch (e: any ) {};
+        this.totals.controls.forEach((c, i) => c.setValue( { value: +result[i].toFixed(4)}))
     }
 
     onLine(line: LTMLine) {
@@ -135,6 +135,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private refreshData() {
         this.tests.clear();
         this.totals.clear();
+        this.formulaMap.clear();
         this.labels = [];
         this.formulas = [];
         this.variables = [];
@@ -149,7 +150,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && !t.formula)
                     .forEach(t => {
                         this.labels.push(t.testDescription);
-                        this.variables.push(t.variable||null);
+                        if (t.variable) {
+                            this.variables.push(t.variable);
+                        }
                         const testForm = this.formBuilder.group({
                             testId:   [{ value: t.testId, disabled: true }, Validators.required],
                             value:    [0,        Validators.required]
@@ -162,14 +165,26 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.formulas.push(t.formula);
+                        if (t.variable) {
+                            this.formulaMap.set(t.variable, t.formula);
+                        }
                         const testForm = this.formBuilder.group({
                             value:    [{ value: 0, disabled: true}]
                         });
                         this.totals.push(testForm);
                     });
+                const formulaVars = Array.from(this.formulaMap.keys());
+                this.formulas = this.formulas.map(f => this.replaceFormulas(f) );
+                console.log(this.formulas);
             });
     }
 
+    private replaceFormulas(f: string): string {
+        let res = f;
+        this.formulaMap.forEach((v, k) =>  console.log(k, v));
+        this.formulaMap.forEach((v, k) => res = res.replace(k, '(' + v + ')'));
+        return res;
+    }
     onMatter(m: LTMMatter) {
         this.selectedMatter = m;
         this.testSrv.setParentId(m.id);
@@ -201,5 +216,13 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         if (this.testSrv.getParentId() > 0) {
             this.refreshData();
         }
+    }
+
+    onHour(h: number) {
+        const value = this.form.getRawValue();
+        const date = new Date(value.timeStamp);
+        date.setHours(h, 0)
+        value.timeStamp = date;
+        this.form.setValue(value);
     }
 }

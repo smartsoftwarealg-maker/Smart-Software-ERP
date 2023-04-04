@@ -1,7 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LTM_BATCH_TESTINGS_URL,
-    ABS_LTM_CHARTS_URL,
+    ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL,
     ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_PERIODICITIES_URL,
@@ -59,6 +59,11 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-chart-simple',
             route: ABS_LTM_CHARTS_URL,
             accessRights: 'LTMTesting'
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-gauge-min',
+            route: ABS_LTM_DASHBOARD_URL,
         },
     ],
     accessRights: "LTM"

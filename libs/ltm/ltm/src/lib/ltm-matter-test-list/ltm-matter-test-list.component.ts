@@ -6,6 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {of, switchMap} from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
+import {Sort} from '@angular/material/sort';
 
 @Component({
     selector: 'ss-ltm-matter-test-list',
@@ -77,6 +78,8 @@ export class LtmMatterTestListComponent implements OnInit {
             });
     }
 
-    sortData(event: any) {
+    sortData(s: Sort) {
+        this.entitySrv.sortColumn = s;
+        this.refresh();
     }
 }
