@@ -2,16 +2,16 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
+import {FormControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ElementsEntryService, ELine} from '@ss/remuneration/elements-entry';
 import {map, of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {EmployeeLookupService} from '../employee-lookup.service';
 import {Lookup, Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-common';
 import {HttpParams} from '@angular/common/http';
+import {EmployeeLookupService} from '../employee-lookup.service';
 
 @Component({
   selector: 'ss-special-payroll-detail',
@@ -19,7 +19,7 @@ import {HttpParams} from '@angular/common/http';
   styleUrls: ['./special-payroll-detail.component.scss']
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
-    employeeLookup = new UntypedFormControl();
+    employeeLookup = new FormControl<number>(0);
 
     processing = false;
     displayedColumns = ['id', 'lastName', 'firstName', 'post']

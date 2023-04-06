@@ -77,6 +77,7 @@ export class LtmReportComponent implements OnInit {
     onLine() {
         this.selectedMatter = null;
     }
+
     private buildCharts(data: Data[], tests: LTMMatterTest[]) {
         this.charts = data
             .map(e => e.description)

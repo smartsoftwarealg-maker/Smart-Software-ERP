@@ -98,6 +98,7 @@ export class ShellService {
     protected isLoading = false;
     protected isError = false;
     protected retryCallback: () => void;
+    public goBackEnabled = true;
     // side nav data
     protected readonly sideNavDataSrc = new MatTreeNestedDataSource<SideNavNode>();
     public navData: SideNavNode[] = [];
@@ -555,5 +556,9 @@ export class ShellService {
     setCompanyName(name: string) {
         this._companyName.title = name;
         this.updateShell();
+    }
+
+    setGoBackEnabled(enable: boolean) {
+        this.goBackEnabled = enable;
     }
 }

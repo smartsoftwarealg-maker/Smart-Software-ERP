@@ -61,7 +61,7 @@
                     </button>
 
                     <button *ngIf="shellSrv.hasGoBackFn" mat-icon-button (click)="shellSrv.goBack()"
-                            [disabled]="shellSrv.loading"
+                            [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
                         class="hidden-during-search">
                         <i *ngIf="langSrv.rtl" class="fas fa-arrow-right"></i>
                         <i *ngIf="!langSrv.rtl" class="fas fa-arrow-left"></i>

@@ -99,6 +99,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.excel()
     };
+    public jsonButton: ToolbarButton = {
+        icon: 'fa-solid fa-book',
+        label: 'COMMON_JSON_EXPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.json()
+    };
     //
     public filter: string;
     public sortBy: string;
@@ -128,22 +136,25 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         } as Right : this.shellSrv.getRights(node);
 
         // this.editButton.visible = rights.edit;
-        this.addButton.visible = rights.write;
-        this.deleteButton.visible = rights.delete;
+        this.addButton.visible &&= rights.write;
+        this.deleteButton.visible &&= rights.delete;
         this.editButton.icon = rights.edit? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
         this.editButton.label = rights.edit? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();
-        this.shellSrv.setButtons([this.refreshButton,
+        this.shellSrv.setButtons([
+            this.refreshButton,
             this.addButton,
             this.editButton,
             this.deleteButton,
             this.viewReportButton,
             this.defReportButton,
             this.excelButton,
-            this.emailReportButton]);
+            this.jsonButton,
+            this.emailReportButton
+        ]);
         this.pagination.onChange = () => this.refresh();
         this.filter = this.pagPersistSrv.getSearch(this.title);
         this.shellSrv.searchFormControl.setValue(this.filter);
@@ -312,6 +323,20 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
                     link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+            });
+    }
+
+    public json() {
+        this.entitySrv
+            .json(this.filter)
+            .subscribe(blob => {
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.txt';
                     link.click();
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }

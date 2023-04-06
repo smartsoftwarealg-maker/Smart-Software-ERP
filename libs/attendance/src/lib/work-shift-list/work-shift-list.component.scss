@@ -1,0 +1,25 @@
+.size {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 96px);
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 900px;
+}
+
+.mat-column-description {
+    flex: 2 1 300px;
+}
+
+.mat-column-startDate,
+.mat-column-period,
+.mat-column-graceTime {
+    flex: 1 1 180px;
+    justify-content: center;
+}

@@ -1,16 +1,20 @@
 
 .table_div {
     min-height: 55%;
-    overflow-x: auto;
 }
-
+.doc-info {
+    overflow: auto;
+}
 .size_98 {
     width: 98%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
 // keep the material design specs
 .mat-row, .mat-header-row {
     padding-right: 16px;
@@ -18,27 +22,24 @@
 }
 
 .mat-column-customerCode {
-    flex: 0 0 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 1 1 120px;
 }
 
 .mat-column-denomination {
-    flex: 0 0 250px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 1 1 250px;
 }
 
-.mat-column-agentType {
-    flex: 0 0 120px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
+
 
 .mat-column-address {
-    flex: 0 0 300px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 1 1 300px;
+}
+
+.mat-column-activityDescription,
+.mat-column-agentType,
+.mat-column-departmentName,
+.mat-column-typeDescription {
+    flex: 1 1 150px;
 }
 
 

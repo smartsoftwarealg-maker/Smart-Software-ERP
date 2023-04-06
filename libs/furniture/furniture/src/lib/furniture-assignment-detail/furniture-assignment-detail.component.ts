@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {FurnitureTransaction} from '../furniture-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {FurnitureReceptionService} from '../furniture-reception.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';

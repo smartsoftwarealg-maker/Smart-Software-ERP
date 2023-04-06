@@ -1,0 +1,32 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 8px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 164px);
+}
+
+mat-form-field {
+    margin: auto auto;
+}
+
+.mat-column-shiftDescription {
+    flex: 3 1 220px;
+}
+
+.mat-column-date {
+    flex: 1 1 150px;
+    justify-content: center;
+}
+
+.mat-column-lastName,
+.mat-column-firstName {
+    flex: 1 1 150px;
+}
+
+.ctrl_div {
+    display: flex;
+    gap: 1em;
+}

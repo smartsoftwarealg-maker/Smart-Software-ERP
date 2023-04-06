@@ -84,6 +84,8 @@ export interface Ledger {
     checkInfo: number;
     ledgerType: number;
     description: string;
+    departmentName?: string;
+    typeDescription?: string;
 }
 
 export interface Agent {

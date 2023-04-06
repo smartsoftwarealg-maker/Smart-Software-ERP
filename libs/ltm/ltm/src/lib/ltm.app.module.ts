@@ -4,12 +4,11 @@ import { LtmLineListComponent } from './ltm-line-list/ltm-line-list.component';
 import { LtmLineDetailComponent } from './ltm-line-detail/ltm-line-detail.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
-import { CommonUiImageInputModule } from '@ss/common/ui-image-input';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { LineMatterDetailComponent } from './line-matter-detail/line-matter-detail.component';
 import { LineMatterListComponent } from './line-matter-list/line-matter-list.component';
 import { LtmMatterDetailComponent } from './ltm-matter-detail/ltm-matter-detail.component';
@@ -24,9 +23,11 @@ import { LtmTestingListComponent } from './ltm-testing-list/ltm-testing-list.com
 import { LtmTestingDetailComponent } from './ltm-testing-detail/ltm-testing-detail.component';
 import { LtmInjectionComponent } from './ltm-injection/ltm-injection.component';
 import { LtmReportComponent } from './ltm-report/ltm-report.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
-import {AppArchiveModule} from '@ss/common/app-archive';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
+import { AppArchiveModule } from '@ss/common/app-archive';
+import { LtmBatchInputComponent } from './ltm-batch-input/ltm-batch-input.component';
+import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import {AppArchiveModule} from '@ss/common/app-archive';
         AppArchiveModule,
         CommonUiAutoCompleteModule,
         CommonUiDatepickerModule,
-        RouterOutlet
+        RouterOutlet,
+        CommonUiHourPickerModule
     ],
     exports: [
         LtmLineListComponent,
@@ -77,6 +79,7 @@ import {AppArchiveModule} from '@ss/common/app-archive';
         LtmTestingDetailComponent,
         LtmInjectionComponent,
         LtmReportComponent,
+        LtmBatchInputComponent,
     ],
 })
 export class LtmAppModule {}

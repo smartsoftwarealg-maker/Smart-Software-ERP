@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field id="description" class="default-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" autofocus required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>ATT_GRACE_TIME</mat-label>
+                <input matInput formControlName="graceTime" type="number"  required>
+                <mat-error *ngIf="form.controls['graceTime'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>ATT_PERIOD</mat-label>
+                <input matInput formControlName="period" type="number"  required>
+                <mat-error *ngIf="form.controls['period'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="startDate"></ss-date-picker>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+<router-outlet *ngIf="form !== null" ></router-outlet>

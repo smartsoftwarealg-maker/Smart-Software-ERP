@@ -53,8 +53,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
-    pagination               = PaginationModel.newInstance();
-    displayedColumns         = ['reference', 'description', 'key'];
+    pagination       = PaginationModel.newInstance();
+    displayedColumns        = ['reference', 'description', 'key'];
+    geoLocation = ''
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,
@@ -77,6 +78,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.pagination.onChange = () => this.refresh();
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
+        this.assetLookupModel.onObjectSelected = o => this.geoLocation = o?.geolocation;
     }
 
     public override setupForm(b: ASSAppointmentHeader) {

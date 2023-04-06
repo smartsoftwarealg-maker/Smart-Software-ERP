@@ -268,5 +268,9 @@
     "DAYS":                       "أيام",
     "MONTHS":                     "شهور",
     "FURNITURE":                  "أثاث",
-    "DOWNGRADE":                  "تخفيض"
+    "DOWNGRADE":                  "تخفيض",
+    "VARIABLE":                   "المتغير",
+    "FORMULA":                    "الصيغة",
+    "FORMULAS":                   "الصيغ",
+    "JSON_EXPORT":                "تصدير إلى JSON"
 }

@@ -19,7 +19,6 @@
 
             <ng-container matColumnDef="agentType">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_AGENT_TYPE</mat-header-cell>
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AGENT_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{agentTypes[e.agentType]}}
                 </mat-cell>
@@ -29,6 +28,27 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ADDRESS</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     {{e.address}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="activityDescription">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACTIVITY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.activityDescription}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="departmentName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DEPARTMENT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.departmentName}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="typeDescription">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COMPANY_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.typeDescription}}
                 </mat-cell>
             </ng-container>
 

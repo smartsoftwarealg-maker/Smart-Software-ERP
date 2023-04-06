@@ -6,6 +6,9 @@ import { isString, isDate, pad2, pad4, strToDateTime } from './utils';
 
 function toDate(date: Date | string): Date {
     if (isString(date)) {
+        if (date.toString().match(/^\d{1,2}:\d{1,2}$/)) {
+            date = '2022-01-01 ' + date;
+        }
         return strToDateTime(date as string);
     }
     if (isDate(date)) {
@@ -71,6 +74,9 @@ export class SimpleDateAdapter extends NativeDateAdapter {
                 return pad4(date.getFullYear()) + '/' + pad2(date.getMonth());
             }
         }
+        if (displayFormat.hour && displayFormat.minute) {
+            return pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+        }
         const fmt = displayFormat as string;
         switch (fmt) {
             case 'yyyy/MM/dd':
@@ -81,7 +87,7 @@ export class SimpleDateAdapter extends NativeDateAdapter {
             case 'yyyy/MM/dd HH:mm:ss':
                 return pad4(date.getFullYear()) + '/' + pad2(date.getMonth() + 1) + '/' + pad2(date.getDate()) + ' ' + pad2(date.getHours()) + ':' + pad2(date.getMinutes()) + ':' + pad2(date.getSeconds());
             default:
-                console.log('new format', displayFormat);
+                console.log('new format', fmt);
                 return '???';
         }
     }

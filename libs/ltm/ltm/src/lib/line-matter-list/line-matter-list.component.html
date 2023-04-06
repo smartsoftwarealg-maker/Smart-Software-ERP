@@ -4,13 +4,13 @@
             color="primary" (click)="showDetail(0)">
         <span class="fas fa-plus"></span>
     </button>
-    <button mat-mini-fab
-            type="button"
-            (click)="edit()"
-            [disabled]="!selected"
-            color="accent">
-        <span class="fas fa-pen"></span>
-    </button>
+<!--    <button mat-mini-fab-->
+<!--            type="button"-->
+<!--            (click)="edit()"-->
+<!--            [disabled]="!selected"-->
+<!--            color="accent">-->
+<!--        <span class="fas fa-pen"></span>-->
+<!--    </button>-->
     <button mat-mini-fab
             type="button"
             (click)="deleteSelected()"
@@ -20,7 +20,7 @@
     </button>
 </div>
 <div class="table_div content_div">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" >
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>

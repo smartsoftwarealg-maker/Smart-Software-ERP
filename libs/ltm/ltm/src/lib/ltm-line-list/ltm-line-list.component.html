@@ -1,4 +1,4 @@
-<div class="table_div">
+<div class="table_div size">
     <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="code">
@@ -20,6 +20,6 @@
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
-<div class="pagination-container b-b-background">
+<div class="size b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

@@ -35,5 +35,7 @@
     "INVALID_AMOUNT":                     "Montant invalide",
     "ACCESS_DENIED":                      "Accès refusé pour cette page",
     "BLOCKED_GROUP":                      "Ce groupe de budgets est bloqué.",
-    "INSUFFICIENT_BALANCE":               "Solde insuffisant"
+    "INSUFFICIENT_BALANCE":               "Solde insuffisant",
+    "CONSUMED_REFERENCE":           "La référence est déjà consommée, aucune autre modification",
+    "USAGE_INVALID_DATE":           "Certains articles de ce document sont déjà consommés"
 }

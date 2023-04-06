@@ -42,7 +42,7 @@ import {
     BUDGET_BUDGET_URL,
     BUDGET_APP_URL,
     LTM_APP_URL,
-    FURNITURE_APP_URL,
+    FURNITURE_APP_URL, ATTENDANCE_APP_URL,
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -50,6 +50,7 @@ import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
+import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 
 export const environment = {
   production: true,
@@ -67,6 +68,7 @@ export const navBar = [
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
+    attendanceNavTree,
     missionsNavTree,
     webArchNavTree,
     accountingNavTree,
@@ -119,6 +121,10 @@ export const appRoutes: Routes =  [
     {
         path: FURNITURE_APP_URL,
         loadChildren: () => import('../app/furniture/furniture.module').then(m => m.FurnitureModule)
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
     },
     {
         path: ACCOUNTING_APP_URL,
@@ -207,4 +213,4 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];
+    'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];

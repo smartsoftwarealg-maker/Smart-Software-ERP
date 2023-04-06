@@ -8,6 +8,7 @@ import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {LtmInjectionService} from '../ltm-injection.service';
+import {LanguageService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-ltm-injection',
@@ -28,27 +29,34 @@ export class LtmInjectionComponent implements OnInit {
     processing = false;
 
     form = this.fb.group({
-        line:   [this.matterSrv.getParentId() || 0, Validators.required],
-        matter: [0,                            Validators.required],
+        line:   [{ value: this.matterSrv.getParentId(), disabled: true}, Validators.required],
+        from:   [new Date(),                        Validators.required],
+        to:     [new Date(),                        Validators.required],
     });
 
     constructor(private dialogRef: MatDialogRef<LtmInjectionComponent>,
                 private injectSrv: LtmInjectionService,
                 private fb: UntypedFormBuilder,
                 private lineSrv: LtmLineService,
-                private matterSrv: LtmLineMatterService) {
+                private matterSrv: LtmLineMatterService,
+                private langSrv: LanguageService) {
     }
 
 
-    onFileSelected(files: any) {
+    upload(files: any) {
         const file:File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
             formData.append('file', file);
-            Object.entries(this.form.value)
-                .filter(([k, v]) => v != null && v != '' && v != ' ')
-                .forEach(([k, v]) => formData.append(k, v.toString()));
+            const value = this.form.value;
+            console.log('file ****************', value);
+            formData.append('line', this.matterSrv.getParentId() + '');
+            formData.append('from', this.langSrv.formatDate(value.from));
+            formData.append('to',   this.langSrv.formatDate(value.to));
+            // Object.entries(this.form.getRawValue())
+            //     .filter(([k, v]) => v != null && v != '' && v != ' ')
+            //     .forEach(([k, v]) => formData.append(k, v.toString()));
             this.processing = true;
             this.uploadSub = this.injectSrv
                 .upload(formData)

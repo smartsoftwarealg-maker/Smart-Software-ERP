@@ -1,0 +1,32 @@
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ipAddress">
+            <mat-header-cell *matHeaderCellDef translate>ATT_IP_ADDRESS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.ipAddress}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="port">
+            <mat-header-cell *matHeaderCellDef translate>ATT_PORT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.port}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

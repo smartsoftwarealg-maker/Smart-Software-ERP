@@ -180,6 +180,9 @@ $ss-green: (
         font-weight: bolder;
     }
 
+    button.mat-custom-time-minute {
+        font-size: 0.9em;
+    }
     // defaults
     color: map-get($foreground, base);
     background-color: map-get($background, background);

@@ -1,0 +1,31 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.mat-column-date {
+    flex: 2 1 180px;
+}
+
+.mat-column-from,
+.mat-column-to,
+.mat-column-breakFrom,
+.mat-column-breakTo {
+    flex: 2 1 150px;
+    justify-content: center;
+}
+.table_div {
+    width: 100%;
+    overflow-x: auto;
+}
+.ctrl_div {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+mat-table {
+    width: 850px;
+}
+

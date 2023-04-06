@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMTest} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -14,7 +14,7 @@ import {LtmTestService} from '../ltm-test.service';
     styleUrls: ['./ltm-test-list.component.scss'],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = ['id', 'description'];
+    displayedColumns = ['id', 'description', 'variable', 'formula'];
 
     constructor(
         public override entitySrv: LtmTestService,

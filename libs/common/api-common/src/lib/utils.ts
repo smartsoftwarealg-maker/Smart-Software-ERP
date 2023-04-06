@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {
     APP_ASSET,
     APP_DASHBOARD,
-    APP_HR,
+    APP_HR, APP_LTM,
     APP_PAYROLL,
     APP_PURCHASE,
     APP_SALES,
@@ -170,6 +170,14 @@ export function dateTimeToYmdStr(date: Date | string): string {
     }
 }
 
+export function dateTimeToTime(date: Date | string): string {
+    if (typeof date === 'string' || date instanceof String) {
+        return <string>date;
+    } else {
+        return  pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+    }
+}
+
 export function strToDate(str: string) {
     const date = strToDateTime(str);
     if (date != null) {
@@ -303,6 +311,7 @@ export function getApplicationId(router: Router) {
         ['assets-app', APP_ASSET],
         ['treasury', APP_TREASURY],
         ['purchases', APP_PURCHASE],
+        ['ltm', APP_LTM],
     ]);
     console.log(app, MAP.get(app));
     return MAP.get(app) || 1;

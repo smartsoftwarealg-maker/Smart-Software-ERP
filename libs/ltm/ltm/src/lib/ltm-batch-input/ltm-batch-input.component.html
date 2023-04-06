@@ -1,0 +1,79 @@
+<mat-card>
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+        <div class="container_div">
+            <div class="data_div">
+                <mat-form-field class="default-100">
+                    <mat-label translate>LTM_LINE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="lineLookup"
+                                      formControlName="parentId">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <div class="default-100 period_div">
+                    <div class="date_div">
+                        <mat-form-field class="default-100">
+                            <mat-label translate>COMMON_DATE</mat-label>
+                            <ss-date-picker [required]=true formControlName="timeStamp"
+                                            [type]="'datetime'"></ss-date-picker>
+                            <mat-error *ngIf="form.controls['timeStamp'].hasError('required')" translate>
+                                COMMON_FIELD_REQUIRED
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-100">
+                            <mat-label translate>LTM_PERIODICITY</mat-label>
+                            <mat-select (valueChange)="onPeriod($event)">
+                                <mat-option *ngFor="let m of periods$ | async"
+                                            [value]="m.id">{{m.description}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <ss-hour-picker (hour)="onHour($event)"></ss-hour-picker>
+                </div>
+            </div>
+            <mat-card class="list_card default-100">
+                <mat-label translate class="b-primary">LTM_MATTERS</mat-label>
+                <div class="list_div">
+                    <mat-list>
+                        <mat-list-item *ngFor="let m of matters"
+                                       [class.selected]="selectedMatter?.id == m.id"
+                                       (click)="onMatter(m)"
+                                       class="list-item selectable">
+                            {{ m.description }}
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </mat-card>
+        </div>
+        <div formArrayName="tests" class="group_div">
+            <div *ngFor="let f of tests.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="input_div">
+                        <mat-label translate>{{ labels[i] }}</mat-label>
+                        <input matInput formControlName="value" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+<!--                <pre> {{form.value | json }}</pre>-->
+    </form>
+</mat-card>
+<mat-card>
+    <mat-card-header> {{ 'COMMON_FORMULAS'|translate }}</mat-card-header>
+
+    <form *ngIf="totalsForm" [formGroup]="totalsForm">
+        <div formArrayName="totals" class="group_div">
+            <div *ngFor="let f of totals.controls; let i = index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="input_div">
+                        <mat-label translate>{{ totalsLabels[i] }}</mat-label>
+                        <input matInput formControlName="value" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-card>

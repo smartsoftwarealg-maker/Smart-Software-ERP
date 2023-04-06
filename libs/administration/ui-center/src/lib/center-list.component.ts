@@ -15,7 +15,6 @@ import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 })
 export class CenterListComponent extends BaseEntityListComponent<Center> {
 
-
     displayedColumns = [
         'description',
         'address'

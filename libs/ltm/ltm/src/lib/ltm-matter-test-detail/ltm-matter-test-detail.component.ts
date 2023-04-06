@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {FormBuilder, Validators} from '@angular/forms';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LtmMatterService} from '../ltm-matter.service';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import {LTMLineMatter, LTMMatterTest} from '../ltm-api';
+import {LTMMatterTest} from '../ltm-api';
 import {LtmTestService} from '../ltm-test.service';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {LtmPeriodicityService} from '../ltm-periodicity.service';

@@ -54,7 +54,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             this.router.navigate(['archive'], { relativeTo: this.route }).then();
         }
         this.shellSrv.addButton(this.sendBtn);
-        this.saveButton.visible = this.isEditable = this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
+        this.saveButton.visible = this.isEditable = this.isEditable && !b.validated;
         this.sendBtn.visible =  b.id > 0; //this.isEditable &&
         return this.formBuilder.group({
             id:             [b.id],

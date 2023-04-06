@@ -16,7 +16,6 @@
 
             <span class="margin-start-8 conf-text">{{model.page + ' / ' + lastPage}}</span>
 
-
             <button mat-icon-button class="nav-btn" type="button" style="float: right" (click)="onRightButtonClick()"
                     [disabled]="isRightButtonDisabled()">
                 <i class="fas fa-chevron-right"></i>
@@ -38,7 +37,7 @@
             <input #pageInput matInput type="text" type="number" class="page-input margin-start-4 b-b-background f-f-text"
                    (keyup.enter)="onGoToPage()">
 
-            <button mat-flat-button type="button" color="primary"
+            <button mat-mini-fab type="button" color="primary"
                     (click)="onGoToPage()" translate>
                 COMMON_GO
             </button>

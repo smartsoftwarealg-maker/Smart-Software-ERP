@@ -42,7 +42,7 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL
+    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
@@ -53,6 +53,7 @@ import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {inject} from '@angular/core';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
+import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 
 export const environment = {
   production: false,
@@ -70,6 +71,7 @@ export const navBar = [
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
+    attendanceNavTree,
     missionsNavTree,
     webArchNavTree,
     accountingNavTree,
@@ -114,6 +116,10 @@ export const appRoutes: Routes =  [
     {
         path: LTM_APP_URL,
         loadChildren: () => import('../app/ltm/l-t-m.module').then(m => m.LTMModule)
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,
@@ -210,7 +216,7 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
     'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
-    'PAYROLL', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];
+    'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

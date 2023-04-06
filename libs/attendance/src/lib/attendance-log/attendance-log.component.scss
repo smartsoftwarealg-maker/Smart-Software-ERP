@@ -1,0 +1,31 @@
+mat-card {
+    width: 80%;
+    max-width: 800px;
+    margin: 8px auto;
+    padding: 16px;
+    border-radius: 1.4em;
+}
+
+.table_div {
+    width: 96%;
+    height: calc(100% - 300px);
+    max-width: 1400px;
+    margin: 8px auto;
+    overflow: auto;
+}
+
+mat-cell,
+mat-header-cell {
+    min-width: 110px;
+}
+mat-row {
+    height: 80px!important;
+}
+mat-cell {
+    height: 80px;
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}

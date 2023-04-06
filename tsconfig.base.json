@@ -78,6 +78,7 @@
                 "libs/administration/ui-user/src/index.ts"
             ],
             "@ss/assets-component": ["libs/assets-component/src/index.ts"],
+            "@ss/attendance": ["libs/attendance/src/index.ts"],
             "@ss/budget/assets": ["libs/budget/assets/src/index.ts"],
             "@ss/budget/budget": ["libs/budget/budget/src/index.ts"],
             "@ss/budget/budget-groups": [
@@ -127,6 +128,9 @@
             ],
             "@ss/common/ui-error-handler": [
                 "libs/common/ui-error-handler/src/index.ts"
+            ],
+            "@ss/common/ui-hour-picker": [
+                "libs/common/ui-hour-picker/src/index.ts"
             ],
             "@ss/common/ui-image-input": [
                 "libs/common/ui-image-input/src/index.ts"

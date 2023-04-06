@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpService, LanguageService} from "@ss/common/api-common";
+import {dateToDmyStr, HttpService, isString, LanguageService} from "@ss/common/api-common";
 import {MiniLine, Option} from "./option.class";
 import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
 import {Observable} from 'rxjs';
@@ -18,7 +18,7 @@ export class OptionService extends BaseEntityExtendedService<Option> {
     }
 
     recalculatePrice(since: Date): Observable<MiniLine> {
-        const date = this.datePipe.transform(since, 'dd-MM-yyyy');
+        const date = isString(since)? since : dateToDmyStr(since);
         return this.httpSrv.put(`/reception/recalculate?date=${date}`);
     }
 }

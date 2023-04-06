@@ -1,0 +1,39 @@
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="startDate">
+            <mat-header-cell *matHeaderCellDef translate>ATT_START_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.startDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="graceTime">
+            <mat-header-cell *matHeaderCellDef translate>ATT_GRACE_TIME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.graceTime}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+            <mat-header-cell *matHeaderCellDef translate>ATT_PERIOD</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.period}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

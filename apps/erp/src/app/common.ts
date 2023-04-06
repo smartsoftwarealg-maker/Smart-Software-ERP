@@ -44,6 +44,7 @@ export const SHOPPING_CART_APP_URL = 'scart';
 export const FOOD_CART_APP_URL = 'food';
 export const WORK_FLOW_APP_URL = 'workflow';
 export const BUDGET_APP_URL = 'budget';
+export const ATTENDANCE_APP_URL = 'attendance'
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -262,9 +263,22 @@ export const SS_TRUCKS_URL               = 'supplier-trucks';
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
 
-//Missions
+// Attendance
+export const ATTENDANCE_MACHINES_URL = 'attendance-machines';
+export const WORK_SHIFTS_URL         = 'work-shifts';
+export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
+export const ATTENDANCE_LOG_URL      = 'attendance-log';
+
+
+// Missions
 export const ABS_MISSION_PREPARATION_URL = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_PREPARATION_URL].join('/');
 export const ABS_MISSION_TRAJECTORY_URL  = '/' + [MAIN_PAGE_URL, MISSIONS_APP_URL, MISSION_TRAJECTORIES].join('/');
+
+// Attendance
+export const ABS_ATTENDANCE_WORKSHIFTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, WORK_SHIFTS_URL].join('/');
+export const ABS_ATTENDANCE_MACHINES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_MACHINES_URL].join('/');
+export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, SHIFT_ASSIGNMENT_URL].join('/');
+export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_LOG_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
@@ -277,6 +291,7 @@ export const LTM_MATTER_URL      = 'ltm-matters';
 export const LTM_PERIODICITY_URL = 'ltm-periodicities';
 export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
+export const LTM_BATCH_URL       = 'ltm-batch';
 
 // assets
 export const FURNITURE_URL            = 'furniture';
@@ -512,6 +527,8 @@ export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_TESTS_URL         = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TEST_URL].join('/');
 export const ABS_LTM_TESTINGS_URL      = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_TESTING_URL].join('/');
 export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
+export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
+export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
