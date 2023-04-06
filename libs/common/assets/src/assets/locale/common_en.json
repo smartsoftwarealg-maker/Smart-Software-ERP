@@ -271,5 +271,6 @@
     "DOWNGRADE":                  "Downgrade",
     "VARIABLE":                   "Variable",
     "FORMULA":                    "Formula",
-    "FORMULAS":                   "Formulas"
+    "FORMULAS":                   "Formulas",
+    "JSON_EXPORT":                "Export to JSON"
 }

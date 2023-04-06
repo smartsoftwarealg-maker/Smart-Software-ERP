@@ -43,7 +43,7 @@
                                   [model]="beneficiaryLookup"
                                   formControlName="beneficiaryId">
                 </ss-auto-complete>
-                <span class="activity f-warn" *ngIf="!!activity"> {{ activity }}</span>
+                <mat-hint class="activity f-warn">{{ activity }}</mat-hint>
             </mat-form-field>
 
             <div class="default-50 sm-100">
@@ -132,6 +132,7 @@
                           [model]="assetLookupModel"
                           [formControl]="inputControl">
         </ss-auto-complete>
+        <mat-hint class="activity f-warn">{{geoLocation}}</mat-hint>
     </mat-form-field>
 
     <div class="btn_div">

@@ -87,14 +87,14 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
 
 
-    private compute(formula: string, values: number[], i: number): string {
-        if (i < values.length) {
-            const temp = this.variables[i]? formula.replace(this.variables[i], values[0]+'').trim() : formula;
-            return this.compute(temp, values, i+ 1);
-        } else {
-            return formula.trim();
-        }
-    }
+    // private compute(formula: string, values: number[], i: number): string {
+    //     if (i < values.length) {
+    //         const temp = this.variables[i]? formula.replace(this.variables[i], values[0]+'').trim() : formula;
+    //         return this.compute(temp, values, i+ 1);
+    //     } else {
+    //         return formula.trim();
+    //     }
+    // }
 
     private refreshFormulas() {
         const values = this.variables.map((v, i) => {
@@ -109,8 +109,8 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         //console.log(program);
         try {
             eval(program);
-        } catch (e: any ) {};
-        this.totals.controls.forEach((c, i) => c.setValue( { value: +result[i].toFixed(4)}))
+        } catch (e: any ) {}
+        this.totals.controls.forEach((c, i) => c.setValue( { value: +result[i].toFixed(2)}))
     }
 
     onLine(line: LTMLine) {
@@ -142,7 +142,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.totalsLabels = [];
         this.form.controls['matterId'].setValue(this.testSrv.getParentId() || 0);
         this.saveButton.disabled = false;
-        this.testSrv.sortColumn = { active: 'id', direction: ''};
+        this.testSrv.sortColumn = { active: 'variable', direction: ''};
         this.testSrv
             .getList(0, 50, null, 'id')
             .subscribe(res => {

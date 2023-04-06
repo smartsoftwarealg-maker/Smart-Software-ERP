@@ -269,7 +269,8 @@
     "MONTHS":                     "شهور",
     "FURNITURE":                  "أثاث",
     "DOWNGRADE":                  "تخفيض",
-    "VARIABLE": "المتغير",
-    "FORMULA": "الصيغة",
-    "FORMULAS": "الصيغ"
+    "VARIABLE":                   "المتغير",
+    "FORMULA":                    "الصيغة",
+    "FORMULAS":                   "الصيغ",
+    "JSON_EXPORT":                "تصدير إلى JSON"
 }

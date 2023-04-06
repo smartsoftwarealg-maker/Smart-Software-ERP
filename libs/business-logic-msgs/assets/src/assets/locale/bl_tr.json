@@ -32,5 +32,7 @@
     "MESSAGE_ALREADY_SENT":                 "",
     "HIGHER_LEVEL_EXISTS":                  "",
     "INVALID_AMOUNT":               "",
-    "ACCESS_DENIED":                ""
+    "ACCESS_DENIED":                "",
+    "CONSUMED_REFERENCE":           "",
+    "USAGE_INVALID_DATE":           ""
 }

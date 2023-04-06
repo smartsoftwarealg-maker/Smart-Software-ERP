@@ -261,8 +261,8 @@
     "AGENT":                "Tier",
     "EDIT_AGENT":           "Modifier l'agent",
     "COST_CENTER":          "Centre de coûts",
-    "ADDRESS": "Adresse",
-    "MOBILE": "Mobile",
+    "ADDRESS":                    "Adresse",
+    "MOBILE":                     "Mobile",
     "COMPACT":                    "Compact",
     "INVOICE_NUMBER":             "Numéro de facture",
     "BUDGET":                     "Budget",
@@ -273,7 +273,8 @@
     "MONTHS":                     "Mois",
     "FURNITURE":                  "Patrimoine",
     "DOWNGRADE":                  "Downgrade",
-    "VARIABLE": "Variable",
-    "FORMULA": "Formule",
-    "FORMULAS": "Formules"
+    "VARIABLE":                   "Variable",
+    "FORMULA":                    "Formule",
+    "FORMULAS":                   "Formules",
+    "JSON_EXPORT":                "Exporter vers JSON"
 }

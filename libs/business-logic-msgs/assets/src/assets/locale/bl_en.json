@@ -35,5 +35,7 @@
     "INVALID_AMOUNT":                "Invalid amount",
     "ACCESS_DENIED":                 "Access denied for this page",
     "BLOCKED_GROUP":                 "This budget group is blocked.",
-    "INSUFFICIENT_BALANCE":          "Insufficient balance"
+    "INSUFFICIENT_BALANCE":          "Insufficient balance",
+    "CONSUMED_REFERENCE":            "Reference is already consumed, no further modification",
+    "USAGE_INVALID_DATE":            "Some articles of this document are already consumed"
 }
