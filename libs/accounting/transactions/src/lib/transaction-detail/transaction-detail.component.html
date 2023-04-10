@@ -1,56 +1,59 @@
 <mat-card>
-    <mat-card-content>
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
+    <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_NUMBER</mat-label>
-                <input matInput formControlName="pieceNo" type="text" autofocus maxlength="4">
-                <mat-error *ngIf="form.controls['pieceNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_NUMBER</mat-label>
+            <input matInput formControlName="pieceNo" type="number" autofocus >
+            <mat-error *ngIf="form.controls['pieceNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+        </mat-form-field>
 
-            <mat-form-field class="default-50" *ngIf="accPolicy?.showFolio">
-                <mat-label translate>ACC_FOLIO</mat-label>
-                <input matInput formControlName="folio" type="text" autofocus maxlength="4">
-                <mat-error *ngIf="form.controls['folio'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker formControlName="pieceDate" [maxDate]="maxDate" [minDate]="minDate"></ss-date-picker>
+        </mat-form-field>
 
-            <span class="default-50"></span>
-            <mat-form-field class="default-50">
-                <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="pieceDate" [maxDate]="maxDate" [minDate]="minDate"></ss-date-picker>
-            </mat-form-field>
+        <mat-form-field class="default-50" *ngIf="accPolicy?.showFolio">
+            <mat-label translate>ACC_FOLIO</mat-label>
+            <input matInput formControlName="folio" type="text" autofocus maxlength="4">
+            <mat-error *ngIf="form.controls['folio'].invalid" translate>COMMON_FIELD_MAX_LENGTH
+            </mat-error>
+        </mat-form-field>
 
-            <div  class="default-100" *ngIf="accPolicy?.showBudget">
-                <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
-            </div>
-            <span class="default-100 filler" ></span>
 
-            <mat-form-field style="width: 90%" *ngIf="accPolicy?.showProjects">
-                <mat-placeholder translate>common_PROJECT</mat-placeholder>
-                <mat-select formControlName="projectId">
-                    <mat-option *ngFor="let p of projects" [value]="p.id">
-                        {{ p.description }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </form>
-
-        <div mat-subheader class="ctrl default-100 b-primary">
-            <button mat-flat-button color="primary" translate (click)="save()">
-                <i class="fas fa-save"></i>
-                COMMON_SAVE
-            </button>
-            <button mat-flat-button color="accent" translate (click)="cancel()">
-                <i class="fas fa-redo"></i>
-                COMMON_CANCEL
-            </button>
-
-            <!--button mat-flat-button color="warn" translate (click)="deleteSelected()" *ngIf="id > 0">
-                <i class="fas fa-trash-can"></i>
-                COMMON_DELETE
-            </button-->
+        <div class="default-50 check_box" *ngIf="accPolicy?.showBudget">
+            <mat-checkbox formControlName="isBudget" translate>ACC_BUDGETABLE</mat-checkbox>
         </div>
-    </mat-card-content>
+
+        <mat-form-field class="default-50" *ngIf="accPolicy?.showProjects">
+            <mat-select formControlName="projectId" placeholder="{{'COMMON_PROJECT' | translate}}">
+                <mat-option *ngFor="let p of projects" [value]="p.id">
+                    {{ p.description }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <!--            <pre> {{ form.value | json }}</pre>-->
+
+    </form>
+
+    <div mat-subheader class="ctrl default-100">
+        <button mat-flat-button color="primary" (click)="save()" translate>
+            <i class="fas fa-save"></i>
+            COMMON_SAVE
+        </button>
+        <button mat-flat-button color="accent" translate (click)="cancel()">
+            <i class="fas fa-redo"></i>
+            COMMON_CANCEL
+        </button>
+
+        <button mat-flat-buttoncolor="warn" (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>
+            <i class="fas fa-trash-can"></i>
+            COMMON_DELETE
+        </button>
+    </div>
 </mat-card>
+<div *ngIf="id" class="detail">
+    <router-outlet></router-outlet>
+</div>

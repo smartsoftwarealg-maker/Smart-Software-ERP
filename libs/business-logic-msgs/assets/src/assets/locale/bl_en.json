@@ -37,5 +37,6 @@
     "BLOCKED_GROUP":                 "This budget group is blocked.",
     "INSUFFICIENT_BALANCE":          "Insufficient balance",
     "CONSUMED_REFERENCE":            "Reference is already consumed, no further modification",
-    "USAGE_INVALID_DATE":            "Some articles of this document are already consumed"
+    "USAGE_INVALID_DATE":            "Some articles of this document are already consumed",
+    "NUMBERING_PROBLEM":             "Your serial numbering policy does not allow you to create new pieces in this period"
 }

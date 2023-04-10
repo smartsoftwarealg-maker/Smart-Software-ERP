@@ -1,20 +1,20 @@
-import {Component, Output} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {
+    AccFileService,
     AccPoliciesService,
     ACCPolicy,
-    ACCTransaction,
+    ACCTransaction, AccTransactionLineService,
     AccTransactionService,
     SCALE
 } from '@ss/accounting/accounting-api';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {maxDate, minDate} from '@ss/common/ui-datepicker';
 
 @Component({
@@ -22,40 +22,49 @@ import {maxDate, minDate} from '@ss/common/ui-datepicker';
   templateUrl: './transaction-detail.component.html',
   styleUrls: ['./transaction-detail.component.scss']
 })
-export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTransaction> {
+export class TransactionDetailComponent implements OnInit {
+    form: UntypedFormGroup = null;
+    id = 0;
+    isEmpty = false;
     minDate: Date = new Date();
     maxDate: Date = new Date();
     projects: Lookup[] = [];
     accPolicy: ACCPolicy = null;
-    journalId = 0;
+    journalId: number = 0;
 
     constructor(
         private router: Router,
-        public override entitySrv: AccTransactionService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
+        public entitySrv: AccTransactionService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public formBuilder: UntypedFormBuilder,
+        public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
-        private accPolicySrv: AccPoliciesService) {
-        super(entitySrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            'COMMON_TRANSACTIONS');
+        public detailSrv: AccTransactionLineService,
+        private accPolicySrv: AccPoliciesService,
+        private fileSrv: AccFileService) {
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackFn(null);
+    ngOnInit() {
+        this.route
+            .params
+            .pipe(tap(params => this.id = +params['id']),
+                  switchMap(_ => this.preload()),
+                  switchMap(_ => this.id > 0? this.entitySrv.get(this.id) :
+                                                    of({
+                                                        id: 0,
+                                                        fileId: this.fileSrv.accFile.id,
+                                                        oid: 0,
+                                                        pieceMonth: 0,
+                                                        journalno: this.journalId,
+                                                        pieceNo: 0,
+                                                        isBudget: false})))
+            .subscribe(ent => this.setupForm(ent));
     }
 
-    override preload(): Observable<any> {
-        this.journalId = +this.entitySrv.getParentId();
+    preload(): Observable<any> {
+        this.journalId = this.entitySrv.getParentId();
         return this.loginSrv.loadContext()
                 .pipe(tap(_ => {
                         this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
@@ -69,19 +78,19 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
                     tap(res => this.projects = res));
     }
 
-    setupForm(e: ACCTransaction): UntypedFormGroup {
-        e.journalno = e.journalno || this.journalId;
+    setupForm(e: ACCTransaction) {
         e.fileId = e.fileId || this.loginSrv.appCtx?.accFile;
-        e.id = e.fileId * SCALE + (e.oid || 0);
-        return this.formBuilder.group({
+        e.id = e.oid? e.fileId * SCALE + (e.oid || 0) : 0;
+        this.isEmpty = e.debit < 0.001 && e.credit < 0.001;
+        this.form = this.formBuilder.group({
             id: [e.id],
             oid: [e.oid || 0],
             pieceDate: [e.pieceDate, [Validators.required, maxDate(this.maxDate), minDate(this.minDate)]],
-            pieceNo: [e.pieceNo || 0, Validators.required],
+            pieceNo: [ { value: e.pieceNo || 0, disabled: !this.accPolicy.manualNumbering }, Validators.required],
             folio: [e.folio],
             projectId: [e.projectId],
             piecemonth: [e.pieceMonth || this.loginSrv.appCtx.accPeriod],
-            journalno: [e.journalno || this.journalId],
+            journalno: [+e.journalno],
             isBudget: [e.isBudget],
             fileId: [e.fileId],
         });
@@ -89,12 +98,26 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
 
 
     cancel() {
-        this.router.navigate(['/app/accounting/transactions']).then();
+         this.router.navigate(['/app/accounting/transactions']).then();
     }
 
-    protected override goBack() {
-        this.cancel();
+    save() {
+        this.entitySrv
+            .save(this.form.getRawValue())
+            .subscribe(res => {
+                if (res) {
+                    this.snackBarSrv.showSuccessMessage();
+                }
+            });
     }
+    protected goBack() {
+        // this.cancel();
+    }
+
+    // override loadEntity(id: number): Observable<ACCTransaction> {
+    //     this.detailSrv.setParentId(id);
+    //     return super.loadEntity(id);
+    // }
 
     public deleteSelected(): void {
         this.confirmationSrv
@@ -114,5 +137,10 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<ACCTra
             });
     }
 
-
+    public canDeactivate(): Observable<boolean> {
+        if (this.form != null && this.form.touched) {
+            return this.confirmationSrv.confirmDontSave();
+        }
+        return of(true);
+    }
 }

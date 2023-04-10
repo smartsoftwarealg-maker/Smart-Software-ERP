@@ -145,10 +145,9 @@ export class TransactionLinesDetailComponent {
             .pipe(
                 switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
                 tap(pol => this.accPolicy = pol),
-                switchMap(_ => this.route.parent.params),
+                switchMap(_ => this.route.parent.parent.params),
                 tap(p => {
-                    const id = +p['id'];
-                    this.entitySrv.setParentId(id);
+                    const id = +p['id'] || 0;
                     this.transactionId = id % SCALE;
                     this.fileId = +(id / SCALE).toFixed(0);
                 }),
@@ -181,7 +180,7 @@ export class TransactionLinesDetailComponent {
             return;
         }
 
-        const val = this.form.value;
+        const val = this.form.getRawValue();
         val.balance = val.debit || 0 - val.credit || 0;
         delete val.debit;
         delete val.credit;

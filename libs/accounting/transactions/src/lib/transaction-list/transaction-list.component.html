@@ -1,83 +1,80 @@
 <div class="container">
-    <div mat-subheader class="b-primary"  class="header">
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_JOURNALS</mat-label>
-            <input matInput [formControl]="journalFilter" type="text">
-        </mat-form-field>
+    <div class="left_div">
+        <mat-card class="journals">
+            <div mat-subheader class="b-primary" class="header">
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_JOURNALS</mat-label>
+                    <input matInput [formControl]="journalFilter" type="text">
+                </mat-form-field>
 
-    </div>
-    <div class="journals">
-        <div class="list-div">
-            <mat-selection-list [multiple]="false" (selectionChange)="journalSelected($event)">
-                <mat-list-option *ngFor="let j of journalList" value="{{ j.id }}">
-                    {{ j.description }}
-                </mat-list-option>
-            </mat-selection-list>
+            </div>
+            <div class="list_div">
+                <mat-selection-list [multiple]="false" (selectionChange)="journalSelected($event)">
+                    <mat-list-option *ngFor="let j of journalList" value="{{ j.id }}">
+                        {{ j.description }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </mat-card>
+        <div class="transactions">
+            <div class="table-div">
+                <mat-table mat-table [dataSource]="data" class="main-table">
+
+                    <ng-container matColumnDef="pieceNo">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_NO_</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{e.pieceNo}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="projectName">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_PROJECT</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{e.projectName}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="pieceDate">
+                        <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{e.pieceDate | date: 'dd/MM/yyyy' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="debit">
+                        <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{e.debit | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="credit">
+                        <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
+                        <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
+                            {{e.credit | number: '1.2-2' }}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" [class.selected]="row?.oid === selectedRow?.oid"
+                             (click)="selectRow(row)"
+                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+                    <ng-container matColumnDef="isBudget">
+                        <mat-header-cell *matHeaderCellDef translate>ACC_BUDGETABLE</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true" [checked]="e.isBudget"></mat-checkbox>
+                        </mat-cell>
+                    </ng-container>
+
+                </mat-table>
+            </div>
+            <div class="pagination-container b-b-background" *ngIf="isRoot">
+                <ss-pagination [paginationModel]="pagination"></ss-pagination>
+            </div>
         </div>
     </div>
-    <div class="transactions">
-        <div class="table-div">
-            <mat-table mat-table [dataSource]="data" class="main-table">
-
-                <ng-container matColumnDef="pieceNo">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_NO_</mat-header-cell>
-                    <mat-cell *matCellDef="let e"  [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
-                        {{e.pieceNo}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="projectName">
-                    <mat-header-cell *matHeaderCellDef translate>common_PROJECT</mat-header-cell>
-                    <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
-                        {{e.projectName}}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="pieceDate">
-                    <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
-                    <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
-                        {{e.pieceDate | date: 'dd/MM/yyyy' }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="debit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_DEBIT</mat-header-cell>
-                    <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
-                        {{e.debit | number: '1.2-2' }}
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="credit">
-                    <mat-header-cell *matHeaderCellDef translate>ACC_CREDIT</mat-header-cell>
-                    <mat-cell *matCellDef="let e" [class.f-warn]="math.abs(e.debit - e.credit) > 0.01">
-                        {{e.credit | number: '1.2-2' }}
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row?.oid === selectedRow?.oid" (click)="selectRow(row)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-        </div>
-        <div class="pagination-container b-b-background">
-            <ss-pagination [paginationModel]="pagination"></ss-pagination>
-        </div>
-    </div>
-    <div class="detail">
+    <div class="detail" *ngIf="selectedJournal > 0">
         <router-outlet></router-outlet>
     </div>
 </div>
-
-
-<!--<button mat-mini-fab color="primary" (click)="addDetail()">-->
-<!--    <i class="fa-solid fa-folder-plus"></i>-->
-<!--</button>-->
-
-<!--<button mat-mini-fab color="primary" (click)="showDetail()">-->
-<!--    <i class="fa-solid fa-folder"></i>-->
-<!--</button>-->
-
-<!--<button mat-mini-fab color="primary" (click)="showDetailDetail()">-->
-<!--    <i class="fa-solid fa-folder"></i>-->
-<!--</button>-->
-

@@ -1,39 +1,50 @@
 .container {
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
-    display: grid;
-    grid-template-columns: minmax(470px, 30%) 1fr;
-    grid-template-rows: auto 1fr 2fr;
-    grid-template-areas: "header       detail"
-                         "journals     detail"
-                         "transactions detail";
-    overflow-x: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    height: calc(100% - 16px);
+    width: 96%;
+    margin: 4px auto;
+    gap: 1em;
 }
 
-.header {
-    grid-area: header;
-}
-.detail {
-    width: 100%;
-    height: 100%;
-    grid-area: detail;
-    //background: #e9b925;
-    overflow-x: auto;
-}
-
-.transactions {
-    grid-area: transactions;
-    overflow-x: auto;
+.left_div {
+    max-height: 100%;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1 1 40%;
+    max-width: 45%;
 }
 
 .journals {
-    grid-area: journals;
+    display: flex;
+    flex: 1 1 44%;
+    overflow: auto;
+}
+
+.transactions {
+    flex: 1 1 50%;
+    overflow-x: auto;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
 }
+
+.pagination-container {
+    flex: 0 0 64px;
+}
+
+.list_div {
+    overflow-y: auto;
+    flex: 1 1 55%;
+}
+
+.detail {
+    flex: 2 1 60%;
+    height: 100%;
+}
+
+
 
 .value-div {
     overflow-y: auto;
@@ -44,29 +55,28 @@
 
 .table-div {
     width: 100%;
-    min-height: 350px;
+    flex: 1 1 auto;
     overflow-x: auto;
 }
 
-
-.content-div {
-    width: 470px;
+mat-table {
+    min-width: 650px;
 }
 
 .mat-column-pieceNo {
-    flex: 0 1 60px;
+    flex: 0 1 90px;
     border-left: white solid thin;
-    padding-left: 4px !important;
     justify-content: center;
 }
 
 .mat-column-pieceDate,
 .mat-column-projectName {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
     border-left: white solid thin;
 }
 
-.mat-column-pieceDate {
+.mat-column-pieceDate,
+.mat-column-isBudget {
     flex: 1 1 90px;
     border-left: white solid thin;
     justify-content: center;
@@ -74,17 +84,12 @@
 
 .mat-column-debit,
 .mat-column-credit  {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
     border-left: white solid thin;
     justify-content: flex-end;
-    padding-right: 4px;
+    padding-right: 2px;
 }
 
-//.mat-column-credit.mat-cell,
-//.mat-column-debit.mat-cell {
-//    justify-content: right;
-//    padding: 0 8px;
-//}
 
 mat-radio-group {
     width: 100%;
@@ -93,18 +98,8 @@ mat-radio-group {
     padding: 8px 0;
 }
 
-@media (max-width: 600px) {
+@media (width <= 700px) {
     .container {
-        height: 100%;
-        display: block;
-    }
-
-    .journals,
-    .transactions {
-        height: 250px;
-
-    }
-    .detail {
-        height: 100%;
+        flex-wrap: wrap;
     }
 }

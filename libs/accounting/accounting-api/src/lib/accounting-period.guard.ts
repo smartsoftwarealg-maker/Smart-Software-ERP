@@ -16,11 +16,10 @@ export class AccountingPeriodGuard  {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        const rightTrack = this.fileSrv.accFile != null;
+        const rightTrack = this.fileSrv.accFile != null && this.loginSrv.appCtx.accPeriod > 0;
 
         if (rightTrack) {
-            console.log('title', this.fileSrv.accFile);
-            this.shellSrv.setLabels([{ title: this.fileSrv.fileDescription }]);
+            this.shellSrv.setLabels([{ title: `${this.fileSrv.fileDescription}: ${this.loginSrv.appCtx.accPeriod}/${this.fileSrv.curPeriod}`  }]);
         }
         return rightTrack? true : this.router.createUrlTree(['/app/accounting/file-select']);
     }

@@ -1,26 +1,26 @@
 .container {
     box-sizing: content-box;
     padding: 5px 0;
-    height: calc(100% - 10px);
-    width: 98%;
-    max-width: 98%;
+    height: calc(100% - 64px);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    //background: #e56400;
-    //overflow-x: auto;
 }
 
 .table-div {
-    flex-grow: 1;
-    max-width: 100%;
+    flex: 2 1 auto;
+    width: 100%;
     overflow-x: auto;
 }
 
+.pagination-container {
+    flex: 0 0 auto;
+}
 mat-table {
     width: 100%;
-    min-width: 800px;
+    height: calc(100% - 64px);
+    min-width: 900px;
 }
 
 .ctrl-div {
@@ -37,7 +37,7 @@ mat-table {
 }
 
 .mat-column-c_o_d {
-    flex: 0 1 50px;
+    flex: 0 1 70px;
     border-left: white thin solid;
     padding-left: 4px;
 }

@@ -15,14 +15,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     subscriptions: Subscription[] = [];
 
     constructor(public entitySrv: BaseEntityService<T>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public pagPersistSrv: PaginatorPersistenceService,
-        public title: string) {
+                public shellSrv: ShellService,
+                public snackBarSrv: SnackBarService,
+                public route: ActivatedRoute,
+                public router: Router,
+                public confirmationSrv: ConfirmationDialogService,
+                public defReportSrv: DefaultReportService,
+                public pagPersistSrv: PaginatorPersistenceService,
+                public title: string) {
         this.pagination.copyModel(pagPersistSrv.get(title));
     }
 
@@ -104,7 +104,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         label: 'COMMON_JSON_EXPORT',
         disabled: false,
         visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        keepOnToolbar: KeepOnToolbar.NEVER,
         click: () => this.json()
     };
     //
@@ -119,27 +119,27 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     public ngOnInit() {
         const node = this.shellSrv.getNavNodeByRouter();
-        this.reportForm = node && node.accessRights != undefined? node.accessRights : null;
+        this.reportForm = node && node.accessRights != undefined ? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
-        const rights = !node? {
+        const rights = !node ? {
                 read: false,
                 write: false,
                 edit: false,
                 delete: false
             } as Right :
-            !node.customerRights && !node.accessRights? {
-            read: true,
-            write: true,
-            edit: true,
-            delete: true
-        } as Right : this.shellSrv.getRights(node);
+            !node.customerRights && !node.accessRights ? {
+                read: true,
+                write: true,
+                edit: true,
+                delete: true
+            } as Right : this.shellSrv.getRights(node);
 
         // this.editButton.visible = rights.edit;
         this.addButton.visible &&= rights.write;
         this.deleteButton.visible &&= rights.delete;
-        this.editButton.icon = rights.edit? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
-        this.editButton.label = rights.edit? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
+        this.editButton.icon = rights.edit ? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
+        this.editButton.label = rights.edit ? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -182,6 +182,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     protected canShowProcessingStatus(): boolean {
         return true;
     }
+
     public refresh(callback?: () => void) {
         this.releaseResources();
         this.data = [];
@@ -261,11 +262,11 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public showDetail(id: number): void {
-        this.router.navigate([id], { relativeTo: this.route }).then();
+        this.router.navigate([id], {relativeTo: this.route}).then();
     }
 
     public exit() {
-        this.router.navigate(['../..'], { relativeTo: this.route }).then();
+        this.router.navigate(['../..'], {relativeTo: this.route}).then();
     }
 
     private selectReport() {
@@ -282,7 +283,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.defReportSrv
             .viewReport(this.reportForm, this.selected)
             .subscribe(res => {
-                const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
+                const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
                 window.open(fileURL, '_blank');
             });
     }
@@ -308,10 +309,10 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                     }
                     return of([]);
                 })).subscribe(res => {
-                    if (!res) {
-                        this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
-                    }
-                });
+            if (!res) {
+                this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
+            }
+        });
     }
 
     public excel() {

@@ -1,10 +1,14 @@
 mat-card {
-    width: 350px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }
 
-.filler {
-    min-height: 20px;
+
+.check_box {
+    height: 64px;
 }
 
 .ctrl {
@@ -12,5 +16,11 @@ mat-card {
     display: flex;
     justify-content: space-between;
     border-top: navy solid 2px;
-    padding-top: 16px;
+    padding-top: 8px;
+}
+
+.detail {
+    height: calc(100% - 265px);
+    width: 100%;
+    margin: 0 auto;
 }

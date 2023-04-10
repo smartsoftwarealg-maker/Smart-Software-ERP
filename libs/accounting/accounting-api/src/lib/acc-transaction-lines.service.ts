@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
     ACC_DETAIL_URL,
-    ACC_TRANSACTION_URL, ACC_TRANSACTIONS_URL,
-    ACCTransaction, ACCTransactionLine
+    ACC_TRANSACTIONS_URL,
+    ACCTransactionLine
 } from './accounting-api';
 import {HttpService} from '@ss/common/api-common';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
