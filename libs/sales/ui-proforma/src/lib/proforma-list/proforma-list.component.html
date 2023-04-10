@@ -20,7 +20,7 @@
         <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.date }}
+                {{ e.date | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
