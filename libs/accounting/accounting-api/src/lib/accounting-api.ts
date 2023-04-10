@@ -135,6 +135,7 @@ export interface ACCFile {
     closureDate?: Date;
     center: number;
     visible: boolean;
+    curPeriod?: number;
 }
 
 export interface AnnexCode {

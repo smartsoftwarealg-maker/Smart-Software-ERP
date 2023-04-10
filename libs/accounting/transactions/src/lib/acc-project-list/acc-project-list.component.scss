@@ -1,5 +1,9 @@
 .item {
     width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 600px;
+    margin: 4px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 70px);
 }

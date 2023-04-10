@@ -28,7 +28,7 @@
 
         </div>
         <div class="page-size-button-container">
-            <button mat-stroked-button color="primary" class="nav-btn" [matMenuTriggerFor]="perPageMenu" type="button">
+            <button mat-mini-fab color="primary" class="nav-btn" [matMenuTriggerFor]="perPageMenu" type="button">
                 {{model.pageSize}}
             </button>
         </div>
@@ -39,7 +39,7 @@
 
             <button mat-mini-fab type="button" color="primary"
                     (click)="onGoToPage()" translate>
-                COMMON_GO
+                <i class="fa-solid fa-person-running"></i>
             </button>
 
 

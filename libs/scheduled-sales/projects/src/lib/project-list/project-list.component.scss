@@ -1,16 +1,14 @@
-.table-div {
-    height: calc(100% - 64px);
+.table-div,
+.pagination-container {
     width: 96%;
-    max-width: 1200px;
-    margin: 0 auto;
-    max-width: 100%;
+    max-width: 800px;
+    margin: 4PX auto;
+}
+.table-div {
+    min-height: calc(100% - 64px);
     overflow-y: auto;
 }
 
-.content-div {
-    width: 1000px;
-    margin: 0 auto;
-}
 .mat-column-description {
     flex: 1 1 150px;
 }

@@ -7,16 +7,15 @@ import {
     AccTransactionService,
     Journal, SCALE,
 } from '@ss/accounting/accounting-api';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {MatSelectionListChange} from '@angular/material/list';
-import {Observable, of, Subscription, switchMap, tap} from 'rxjs';
+import {Observable, switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {MatFormField} from '@angular/material/form-field';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'ss-transaction-list',
@@ -24,18 +23,10 @@ import {UntypedFormControl} from '@angular/forms';
   styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy {
-    private headerMode: boolean = true;
-    private listButton: ToolbarButton = {
-        icon: this.headerMode? 'far fa-smile' : 'fas fa-child',
-        label: this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.toggleMode()
-    };
     public math = Math
+    isRoot = true;
     selectedJournal = 0;
-    journalFilter = new UntypedFormControl('');
+    journalFilter = new FormControl<string>('');
     journalList: Journal[] = [];
     displayedColumns = ['pieceNo', 'pieceDate', 'debit', 'credit'];
 
@@ -69,26 +60,33 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     if (policy.showProjects) {
                         this.displayedColumns.push('projectName');
                     }
+                    if (policy.showBudget) {
+                        this.displayedColumns.push('isBudget');
+                    }
                 }));
     }
 
     override ngOnInit() {
+        this.setDefaultButtons(true);
+        super.ngOnInit();
+
         this.journalSrv
             .getUserJournals(this.journalFilter.value || '')
             .subscribe(res => this.journalList = res.body);
-        const subs = this.router
+
+        this.subscriptions
+            .push(this.router
             .events
             .pipe(filter(ev => ev instanceof NavigationEnd))
             .subscribe(event => {
                 if (event instanceof NavigationEnd) {
-                    if (event.url === '/app/accounting/transactions') {
+                    const isRoot = event.url === '/app/accounting/transactions';
+                    if (isRoot) {
                         this.transactionSaved();
-                        this.setDefaultButtons();
                     }
+                    this.setDefaultButtons(isRoot);
                 }
-            });
-        this.subscriptions.push(subs);
-        this.setDefaultButtons();
+            }));
 
         this.subscriptions.push(
             this.journalFilter
@@ -100,32 +98,27 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     }
 
 
-    private setDefaultButtons() {
-        this.shellSrv.setButtons([this.refreshButton,
-                                  this.addButton,
-                                  this.editButton,
-                                  this.deleteButton,
-                                  this.viewReportButton,
-                                  this.defReportButton,
-                                  this.listButton]);
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.updateShell();
+    private setDefaultButtons(isRoot: boolean) {
+        this.isRoot = isRoot;
+        this.addButton.visible = isRoot && this.selectedJournal > 0;
+        this.editButton.visible = isRoot;
+        this.deleteButton.visible = isRoot;
     }
 
-    private showButtons() {
-        const itemControlsOn = this.selected != null && this.selected > 0;
-        this.editButton.disabled = !itemControlsOn;
-        this.deleteButton.disabled = !itemControlsOn;
-        this.viewReportButton.disabled = !itemControlsOn;
-        this.setDefaultButtons();
-    }
+    // private showButtons() {
+    //     const itemControlsOn = this.selected != null && this.selected > 0;
+    //     this.editButton.disabled = !itemControlsOn;
+    //     this.deleteButton.disabled = !itemControlsOn;
+    //     this.viewReportButton.disabled = !itemControlsOn;
+    // }
 
     private navigate() {
         if (this.selected) {
             if (this.outlet?.isActivated) {
                 this.outlet.deactivate();
             }
-            const commands = this.headerMode? [this.selected] : [this.selected, 'detail'];
+            // const commands = this.headerMode? [this.selected] : [this.selected, 'detail'];
+            const commands = [this.selected];
             this.router
                 .navigate(['.'], { relativeTo: this.route })
                 .then(_ => this.router.navigate(commands, {relativeTo: this.route}))
@@ -178,20 +171,14 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .navigate(['.'], { relativeTo: this.route })
             .then(_ => {
                 this.shellSrv.setGoBackPath('..', this.route);
-                this.showButtons();
+                // this.showButtons();
             });
     }
     journalSelected(event: MatSelectionListChange) {
         this.selectedJournal = event.options[0].value;
-        this.entitySrv.setParentId(event.options[0].value);
+        const journalId = event.options[0].value;
+        this.entitySrv.setParentId(journalId);
         this.refreshTransactions();
+        this.addButton.visible = journalId > 0;
     }
-
-    toggleMode( ) {
-        this.headerMode = !this.headerMode;
-        this.listButton.icon  = this.headerMode? 'far fa-smile' : 'fas fa-child';
-        this.listButton.label = this.headerMode? 'ACC_SHOW_DETAIL' : 'ACC_SHOW_HEADER';
-        this.navigate();
-    }
-
 }

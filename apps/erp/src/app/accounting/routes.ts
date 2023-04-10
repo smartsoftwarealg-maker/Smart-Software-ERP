@@ -245,17 +245,21 @@ export const accRoutes: Routes = [
                             {
                                 path: '',
                                 component: TransactionDetailComponent,
-                            },
-                            {
-                                path: 'detail',
+                                canDeactivate: [CanDeactivateService],
                                 children: [
+                                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
                                     {
-                                        path: ':id',
-                                        component: TransactionLinesDetailComponent,
-                                    },
-                                    {
-                                        path: '',
-                                        component: TransactionLinesListComponent,
+                                        path: 'detail',
+                                        children: [
+                                            {
+                                                path: ':id',
+                                                component: TransactionLinesDetailComponent,
+                                            },
+                                            {
+                                                path: '',
+                                                component: TransactionLinesListComponent,
+                                            },
+                                        ]
                                     },
                                 ]
                             },

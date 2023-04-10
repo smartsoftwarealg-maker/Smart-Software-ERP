@@ -36,4 +36,8 @@ export class AccFileService extends BaseEntityService<ACCFile> {
     get fileDescription() {
         return this._accFile?.description || '';
     }
+
+    get curPeriod() {
+        return this._accFile?.curPeriod || 1;
+    }
 }

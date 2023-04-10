@@ -1,34 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     AccPoliciesService, ACCPolicy,
     ACCTransactionLine, AccTransactionLineService, SCALE
 } from '@ss/accounting/accounting-api';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs';
+import {LoginService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
+import {of, switchMap, tap} from 'rxjs';
 
 @Component({
   selector: 'ss-transaction-lines-list',
   templateUrl: './transaction-lines-list.component.html',
   styleUrls: ['./transaction-lines-list.component.scss']
 })
-export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTransactionLine> implements OnInit {
+export class TransactionLinesListComponent implements OnInit {
+    data: ACCTransactionLine[] = [];
     private accPolicy: ACCPolicy = null;
-    private exitButton: ToolbarButton = {
-        icon: 'fa-solid fa-person-from-portal',
-        label: 'COMMON_EXIT',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => {
-            this.shellSrv.goBack();
-            this.shellSrv.updateShell();
-        }
-    };
+    pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
     private COLUMNS = [
         'lineNumber',
         'accountNo',
@@ -40,51 +30,74 @@ export class TransactionLinesListComponent extends BaseEntityListComponent<ACCTr
         'credit'];
     displayedColumns = this.COLUMNS;
 
+    selected= 0;
     parentId: number = null;
 
     constructor(
-        public override entitySrv: AccTransactionLineService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override router: Router,
-        public override defReportSrv: DefaultReportService,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
+        public entitySrv: AccTransactionLineService,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public defReportSrv: DefaultReportService,
+        public confirmationSrv: ConfirmationDialogService,
+        public pagPersistSrv: PaginatorPersistenceService,
         private loginSrv: LoginService,
         private policySrv: AccPoliciesService) {
-        super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
-              'ACC_TRANSAC_DETAIL');
+        this.pagination.onChange = () => this.refresh();
     }
 
-    override ngOnInit() {
+    ngOnInit() {
+        this.parentId = this.entitySrv.getParentId();
         this.loginSrv
             .loadContext()
             .pipe(switchMap(_ => this.policySrv.get(this.loginSrv.appCtx.center)),
-                  tap(res => this.accPolicy = res),
-                  tap(_ => this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d')),
-                  switchMap(_ => this.route.params))
-            .subscribe(p => {
-                this.parentId = +p['id'];
-                this.entitySrv.setParentId(this.parentId);
-                super.ngOnInit();
-                this.shellSrv.addButton(this.exitButton);
+                  tap(res => {
+                      this.accPolicy = res;
+                      this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
+                  }),
+                  switchMap(_ => this.entitySrv.getList(0, 5))
+                  )
+            .subscribe(res => {
+                this.data = res.body;
+                this.pagination.elementCount = res.itemCount;
             });
     }
 
-    override selectRow(row: ACCTransactionLine) {
+    selectRow(row: ACCTransactionLine) {
         row.id = (row.fileId * SCALE + row.oid) * SCALE + row.lineNumber;
-        super.selectRow(row);
+        this.selected = row?.id || 0;
     }
 
-    protected override canShowProcessingStatus(): boolean {
-        return false;
+    save() {
+
+    }
+
+    delete() {
+        this.confirmationSrv
+            .confirmDelete()
+            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected) : of({count: -1})),
+                switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
+            .subscribe(res => {
+                if (res && res.itemCount != null) {
+                    this.data = res.body;
+                    this.pagination.elementCount = res.itemCount;
+                    this.snackBarSrv.showSuccessMessage();
+                    this.selected = null;
+                }
+            });
+
+    }
+    showDetail(id: number) {
+        this.router.navigate([id], {relativeTo: this.route}).then();
+    }
+
+    refresh() {
+        this.entitySrv
+            .getList(this.pagination.page - 1, this.pagination.pageSize)
+            .subscribe(res => {
+                this.data = res.body;
+                this.pagination.elementCount = res.itemCount;
+            });
     }
 }
