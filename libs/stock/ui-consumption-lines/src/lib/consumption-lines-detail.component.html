@@ -20,8 +20,7 @@
                 <mat-error
                     *ngIf="form.controls['reference'].hasError('validOption')" translate>COMMON_NO_MATCH
                 </mat-error>
-                <span *ngIf="showStock" class="info f-warn"><span
-                    translate>STOCK_STOCK</span>: {{ articleStock }} </span>
+                <mat-hint *ngIf="showStock" class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock }} </mat-hint>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
