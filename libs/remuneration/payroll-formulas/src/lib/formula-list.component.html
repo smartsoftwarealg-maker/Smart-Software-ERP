@@ -2,7 +2,7 @@
     <mat-table mat-table [dataSource]="data">
 
         <ng-container matColumnDef="variable">
-            <mat-header-cell *matHeaderCellDef translate>REMUN_VARIABLE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_VARIABLE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.variable}}
             </mat-cell>
@@ -30,7 +30,7 @@
         </ng-container>
 
         <ng-container matColumnDef=formula>
-            <mat-header-cell *matHeaderCellDef translate>REMUN_FORMULA</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FORMULA</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.formula}}
             </mat-cell>

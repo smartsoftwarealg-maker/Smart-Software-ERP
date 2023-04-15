@@ -31,4 +31,9 @@ export class ElementTypesListComponent extends BaseEntityListComponent<ElementTy
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENT_TYPES');
         this.pagination.pageSize = 10;
     }
+
+    ngOnInit() {
+        this.addButton.visible = false;
+        super.ngOnInit();
+    }
 }
