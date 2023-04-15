@@ -38,5 +38,6 @@
     "INSUFFICIENT_BALANCE":               "Solde insuffisant",
     "CONSUMED_REFERENCE":                 "La référence est déjà consommée, aucune autre modification",
     "USAGE_INVALID_DATE":                 "Certains articles de ce document sont déjà consommés",
-    "NUMBERING_PROBLEM":                  "Votre politique de numérotation de série ne vous permet pas de créer de nouvelles pièces pendant cette période"
+    "NUMBERING_PROBLEM":                  "Votre politique de numérotation de série ne vous permet pas de créer de nouvelles pièces pendant cette période",
+    "INVALID_PRICE":                      "Prix d'inventaire non valide"
 }

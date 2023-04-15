@@ -1,8 +1,11 @@
 .table-container {
     overflow-x: auto;
+    min-height: 40%;
 }
 
-.main-container {
+.main-container,
+.doc-info,
+.pagination-container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;

@@ -79,7 +79,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
                 },
                 error: err => {
                     this.shellSrv.setLoading(false);
-                    if (err.statusText?.length > 40) {
+                    if (err.statusText?.length > 10) {
                         throw err;
                     } else {
                         this.snackBarSrv.showSuccessMessage();

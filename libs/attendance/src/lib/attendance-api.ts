@@ -58,7 +58,10 @@ export interface ATTReport {
     firstName?: string;
     lastName?: string;
     post?: string;
-    attendance: string[][];
+    attendance: string[][],
+    colors: number[];
+    weekends: boolean[];
+    hexColors?: string[];
 }
 
 export interface Timing {

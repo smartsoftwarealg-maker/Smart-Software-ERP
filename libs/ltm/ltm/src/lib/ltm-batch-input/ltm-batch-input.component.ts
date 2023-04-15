@@ -10,9 +10,10 @@ import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {LtmBatchService} from '../ltm-batch.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LtmPeriodicityService} from '../ltm-periodicity.service';
-import {map, Observable, of, Subscription} from 'rxjs';
+import {map, Observable, of, Subscription, switchMap} from 'rxjs';
 import {Lookup} from '@ss/common/api-lookup';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
+import {LtmTestService} from '../ltm-test.service';
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -22,9 +23,10 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     private _periodicity = 0;
-    private matters: LTMMatter[] = [];
     private TODAY = new Date();
     private formulaMap = new Map<string, string>();
+    private missingVariables: string[] = [];
+    matters: LTMMatter[] = [];
     periods$: Observable<Lookup[]> = of([]);
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -62,8 +64,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         public  confirmationSrv: ConfirmationDialogService,
         private lineSrv: LtmLineService,
         private matterSrv: LtmLineMatterService,
-        private testSrv:    LtmMatterTestService,
-        private periodSrv: LtmPeriodicityService) {
+        private matterTestSrv:    LtmMatterTestService,
+        private periodSrv: LtmPeriodicityService,
+        private testSrv: LtmTestService) {
         this.lineLookup.onObjectSelected = (l) => this.onLine(l);
         this.TODAY.setHours(1, 0, 0, 0);
     }
@@ -101,16 +104,20 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
             return v? this.tests.at(i)?.value.value : 0;
         });
         const result = this.formulas.map(f => 0);
-        const program = this.variables.filter(v => v).map((v, i) =>
+        const program =
+            this.variables.filter(v => v).map((v, i) =>
             `const ${v} = ${values[i]};`).join('\n') +
             '\n' +
-            this.formulas.map((f, i) => `result[${i}] = ${f};`).join('\n');
+            this.missingVariables.map(v => `const ${v} = 0;`).join('\n') +
+            '\n' +
+            this.formulas.map((f, i) => `result[${i}] = ${f};`).join('\n') ;
 
-        //console.log(program);
+        // console.log(program);
+        // console.log(result);
         try {
             eval(program);
         } catch (e: any ) {}
-        this.totals.controls.forEach((c, i) => c.setValue( { value: +result[i].toFixed(2)}))
+        this.totals.controls.forEach((c, i) => c.setValue( { value: (+result[i]||0).toFixed(2)}))
     }
 
     onLine(line: LTMLine) {
@@ -140,11 +147,20 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.formulas = [];
         this.variables = [];
         this.totalsLabels = [];
-        this.form.controls['matterId'].setValue(this.testSrv.getParentId() || 0);
+        this.form.controls['matterId'].setValue(this.matterTestSrv.getParentId() || 0);
         this.saveButton.disabled = false;
-        this.testSrv.sortColumn = { active: 'variable', direction: ''};
+        this.matterTestSrv.sortColumn = { active: 'variable', direction: ''};
+
         this.testSrv
-            .getList(0, 50, null, 'id')
+            .getList(0, 999, null, 'variable')
+            .pipe(
+                tap(res => this.missingVariables = res.body.filter(t => t.variable).map(t => t.variable)),
+                tap(res => {
+                    res.body
+                        .filter(t => t.variable && t.formula)
+                        .forEach(v => this.formulaMap.set(v.variable, v.formula))
+                }),
+                switchMap(_ => this.matterTestSrv.getList(0, 100, null, 'id')))
             .subscribe(res => {
                 res.body
                     .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && !t.formula)
@@ -159,35 +175,29 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                         });
                         this.tests.push(testForm);
                     });
-
+                this.missingVariables = this.missingVariables.filter(v => this.variables.indexOf(v) < 0);
                 res.body
                     .filter(t => (this._periodicity < 1 || this._periodicity === t.periodicity) && t.formula && t.testDescription)
                     .forEach(t => {
                         this.totalsLabels.push(t.testDescription);
                         this.formulas.push(t.formula);
-                        if (t.variable) {
-                            this.formulaMap.set(t.variable, t.formula);
-                        }
                         const testForm = this.formBuilder.group({
                             value:    [{ value: 0, disabled: true}]
                         });
                         this.totals.push(testForm);
                     });
-                const formulaVars = Array.from(this.formulaMap.keys());
                 this.formulas = this.formulas.map(f => this.replaceFormulas(f) );
-                console.log(this.formulas);
             });
     }
 
     private replaceFormulas(f: string): string {
         let res = f;
-        this.formulaMap.forEach((v, k) =>  console.log(k, v));
         this.formulaMap.forEach((v, k) => res = res.replace(k, '(' + v + ')'));
         return res;
     }
     onMatter(m: LTMMatter) {
         this.selectedMatter = m;
-        this.testSrv.setParentId(m.id);
+        this.matterTestSrv.setParentId(m.id);
         this.refreshData();
     }
 
@@ -213,7 +223,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     onPeriod(e: number) {
         this._periodicity = e;
-        if (this.testSrv.getParentId() > 0) {
+        if (this.matterTestSrv.getParentId() > 0) {
             this.refreshData();
         }
     }

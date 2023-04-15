@@ -38,11 +38,11 @@
     <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{'min-width.px': tableWidth }">
 
         <ng-container *ngFor="let h of columns; let i = index" matColumnDef="{{ columns[i] }}">
-            <mat-header-cell *matHeaderCellDef > {{ i <= 3 ? headers[i] : varHeaders[i - 4] }} </mat-header-cell>
-            <mat-cell *matCellDef="let e" >
+            <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }} </mat-header-cell>
+            <mat-cell *matCellDef="let e" [ngStyle]="{'background-color': i >= 4? e.hexColors[i - 4] : 'inherit'}">
                 <span *ngIf="i <= 3; else detail"> {{ e[columns[i]] }}</span>
                 <ng-template #detail>
-                    <div *ngFor="let s of e.attendance[i - 4]"> {{ s }} </div>
+                        <div *ngFor="let s of e.attendance[i - 4]"> {{ s }} </div>
                 </ng-template>
 
             </mat-cell>

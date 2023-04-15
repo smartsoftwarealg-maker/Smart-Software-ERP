@@ -2,7 +2,6 @@ import {Component, inject, OnInit} from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
 import {ShellService} from '@ss/common/ui-shell';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Lookup} from '@ss/common/api-lookup';
 import {ATTReport, TYPES} from '../attendance-api';
 import {ActivatedRoute} from '@angular/router';
 import {DatePipe} from '@angular/common';
@@ -60,6 +59,20 @@ export class AttendanceLogComponent implements OnInit {
             .getReport(value.type, value.id, value.from, value.to)
             .subscribe(res => {
                 this.data = res;
+                this.data.forEach(e => e.hexColors = e.colors.map((c, i) => {
+                    console.log(e.weekends[i]);
+                    if (e.weekends && e.weekends[i]) {
+                        return 'pink'
+                    }
+                    if (c > 0) {
+                        const hex = '0000' + c.toString(16);
+                        return '#' + hex.substring(hex.length - 6);
+                    } else {
+                        return 'inherit'
+                    }
+                    // return 'c'
+                }));
+                console.log(this.data);
                 this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
                 this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
                 this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
