@@ -3,7 +3,7 @@
         <form *ngIf="form !== null" novalidate [formGroup]="form">
 
             <mat-form-field class="default-50 sm-100" >
-                <mat-label translate>REMUN_VARIABLE</mat-label>
+                <mat-label translate>COMMON_VARIABLE</mat-label>
                 <input matInput formControlName="variable" type="text"  required autofocus>
                 <mat-error *ngIf="form.controls['variable'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
@@ -32,7 +32,7 @@
             </mat-form-field>
 
             <mat-form-field  class="default-100 sm-100">
-                <mat-label translate>REMUN_FORMULA</mat-label>
+                <mat-label translate>COMMON_FORMULA</mat-label>
                 <input matInput formControlName="formula" type="text">
                 <mat-error *ngIf="form.controls['formula'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>

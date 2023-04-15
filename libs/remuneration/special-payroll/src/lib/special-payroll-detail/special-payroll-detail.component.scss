@@ -1,7 +1,7 @@
 .container {
     box-sizing: content-box;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 8px auto;
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -30,17 +30,20 @@ mat-spinner {
 
 .ctrl-div {
     width: 96%;
-    max-width: 600px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
 }
 
 .delete-div, .employee-div {
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.employee-div mat-form-field {
+    min-width: 25em;
 }

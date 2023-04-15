@@ -14,6 +14,7 @@
 }
 .main-table {
     flex: 2 1 auto;
+    overflow-x: auto;
 }
 .content-div {
     flex-grow: 1;
@@ -23,7 +24,8 @@
     flex-grow: 0;
 }
 .master {
-    width: 950px;
+    width: 100%;
+    min-width: 1200px;
 }
 
 .consumption {
@@ -36,7 +38,7 @@
 .mat-column-employee,
 .mat-column-date,
 .mat-column-number {
-    flex: 0 0 80px;
+    flex: 1 1 90px;
     justify-self: center;
 }
 

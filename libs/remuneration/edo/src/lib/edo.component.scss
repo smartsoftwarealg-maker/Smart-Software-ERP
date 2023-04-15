@@ -1,7 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: content-box;
+.container {
+    width: 98%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1em;
+}
+
+mat-card {
+    flex: 2 1 70%;
+    margin: 8px auto;
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+.bank-list {
+    flex: 1 1 30%;
 }
 
 .subheader {
@@ -11,38 +24,17 @@
     justify-content: center;
     font-weight: bolder;
 }
-.container {
-    width: 98%;
-    max-width: 1000px;
-    height: 98%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
 
-form {
-    flex-grow: 0;
-    padding: 5px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 140px 140px 220px 1fr;
-    grid-template-rows: repeat(4, 64px);
-    grid-template-areas:
-        "month       year         bank       list"
-        "description description  formula    list"
-        "date        date         reference  list"
-        "special     generate     save       list";
-}
 
 .month {
     grid-area: month;
     justify-self: start;
-    max-width: 100px;
+    max-width: 140px;
 }
 .year {
     grid-area: year;
     justify-self: start;
-    max-width: 100px;
+    max-width: 140px;
 }
 .bank {
     grid-area: bank;
@@ -53,22 +45,6 @@ form {
 .formula {
     grid-area: formula;
 }
-.date {
-    grid-area: date;
-    justify-self: start;
-}
-.reference {
-    grid-area: reference;
-}
-.special {
-    grid-area: special;
-}
-.save {
-    grid-area: save;
-}
-.generate {
-    grid-area: generate;
-}
 
 button {
     align-self: center;
@@ -76,23 +52,23 @@ button {
     padding: 0 8px;
     min-width: 80px;
 }
+
 .bank-list {
     grid-area: list;
     flex-grow: 1;
     height: 100%;
 }
+
 .llist {
-    height: calc(100% - 64px);
+    max-height: 300px;
     overflow-y: auto;
 }
 
 .edo_text {
     width: 98%;
-    height: 900px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 8px;
     overflow: auto;
-    background-color: #e9b925;
     border: #e9b925 solid 1px;
 }
 
@@ -101,22 +77,8 @@ textarea {
     height: 100%;
 }
 
-@media (max-width: 600px) {
-    form {
-        flex-grow: 0;
-        padding: 5px;
-        display: grid;
-        grid-gap: 5px;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(4, 64px) 280px auto;
-        grid-template-areas:
-        "month       year         "
-        "bank        description  "
-        "date        formula      "
-        "reference   special      "
-        "list        list         "
-        ".           ."
-        "generate    save         ";
+@media (width <= 600px) {
+    .container {
+        display: block;
     }
-
 }

@@ -61,9 +61,9 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
     }
 
     override ngOnInit(): void {
+        this.addButton.visible = this.activePersonnel;
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
-        this.addButton.visible = this.activePersonnel;
     }
 
     public override select(id: number): void {

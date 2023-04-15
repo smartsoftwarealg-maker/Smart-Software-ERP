@@ -9,15 +9,10 @@
     </form>
 
     <div class="ctrl-div" *ngIf="payrollId">
-        <button mat-mini-fab color="primary" translate
-                matTooltip="{{'REMUN_GENERATE_ALL' | translate}}"
-                (click)="generateAll()">
-            <i class="fas fa-layer-plus"></i>
-        </button>
 
         <div class="employee-div" *ngIf="payrollId">
             <mat-form-field>
-                <mat-label translate>COMMON_EMPLOYEE</mat-label>
+                <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
                                   [model]="employeeAutoCompleteModel"
@@ -32,6 +27,11 @@
         </div>
 
         <div class="delete-div">
+            <button mat-mini-fab color="primary" translate
+                    matTooltip="{{'REMUN_GENERATE_ALL' | translate}}"
+                    (click)="generateAll()">
+                <i class="fas fa-layer-plus"></i>
+            </button>
             <button mat-mini-fab color="warn"
                     [disabled]="!selected"
                     matTooltip="{{ 'REMUN_DELETE_SELECTED' | translate}}"
