@@ -149,5 +149,6 @@
     "CHECKOUT":         "Paiement",
     "PAYER":            "Payeur",
     "SEND_MESSAGE":     "Envoyer un message",
-    "QTY":              "Qté"
+    "QTY":              "Qté",
+    "CHECK_PRICES":     "Vérifier les prix"
 }
