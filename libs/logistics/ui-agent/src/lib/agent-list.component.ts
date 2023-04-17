@@ -18,7 +18,7 @@ import {DocInfoComponent} from '@ss/logistics/ui-doc-info';
     templateUrl: './agent-list.component.html'
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
-    private     isAQS   = false;
+    private isAQS       = false;
     private DEF_COLUMNS = [
         'customerCode',
         'denomination',
@@ -36,12 +36,12 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         'typeDescription'
     ];
 
-    isSales = this.route.snapshot.data['sales'] || false;
+    isSales = this.route.snapshot.data['sales']  || false;
+    isAsset = this.route.snapshot.data['assets'] || false;
     agentTypes: { [id: number]: string; };
 
 
     displayedColumns = this.DEF_COLUMNS;
-
 
     constructor(
         public agentService: AgentService,

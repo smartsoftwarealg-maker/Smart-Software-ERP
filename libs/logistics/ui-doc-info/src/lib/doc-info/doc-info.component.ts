@@ -8,7 +8,6 @@ interface Entry {
     url: string,
     paramsProvided: (x: string[]) => boolean
 }
-// type Menu = { group: string, description: string, entries: Entry[] };
 
 @Component({
     selector: 'ss-doc-info',
@@ -35,12 +34,21 @@ export class DocInfoComponent {
     }
 
     private params_: any;
+    private     AGENT_ASSETS = 'agent_assets';
+    private readonly ASSET = {
+        name: this.AGENT_ASSETS,
+        description: 'ASSET_ASSIGNED_ASSETS',
+        url: 'agent-assets',
+        paramsProvided: (p: string[]) => p.includes('agentId')
+    };
+
     private readonly ARCHIVE = {
         name: 'archive',
         description: 'COMMON_ARCHIVE',
         url: 'archive',
         paramsProvided: (p: string[]) => p.includes('documentId')
     };
+
     private entries_: { group: string, description: string, entries: Entry[] }[] = [
         {
             group: 'document',
@@ -114,6 +122,17 @@ export class DocInfoComponent {
     //     paramsProvided: (p: string[]) => p.includes('documentId')
     // };
 
+
+    @Input() set showAssets(show: boolean) {
+        if (show) {
+            debugger;
+            if (this.entries_[1].entries.filter(e => e.name === this.AGENT_ASSETS).length < 1) {
+                this.entries_[1].entries.push(this.ASSET);
+            }
+        } else {
+            this.entries_[1].entries = this.entries_[1].entries.filter(e => e.name !== this.AGENT_ASSETS)
+        }
+    }
 
     constructor(private router: Router, private route: ActivatedRoute) {}
 

@@ -64,6 +64,7 @@
     <ss-doc-info
         *ngIf="selected"
         [displayedGroups]="['agent']"
+        [showAssets]="isAsset"
         [params]="{
             documentId: 0,
             documentURL:'/agents',

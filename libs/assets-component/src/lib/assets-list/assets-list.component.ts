@@ -11,6 +11,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
 import {DuplicateDialogComponent} from '../duplicate-dialog/duplicate-dialog.component';
+import {Sort} from '@angular/material/sort';
 
 @Component({
     selector: 'ss-assets-list',

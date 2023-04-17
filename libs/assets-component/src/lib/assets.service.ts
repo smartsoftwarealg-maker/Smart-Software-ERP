@@ -71,5 +71,7 @@ export class AssetsService extends BaseEntityService<Asset> {
         return this.httpSrv.post('/assets/duplicate', data);
     }
 
-
+    getAgentAssets(agentId: number): Observable<Asset[]> {
+        return this.httpSrv.get<Asset[]>(`/assets/agents/${agentId}/list`);
+    }
 }

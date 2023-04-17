@@ -24,12 +24,11 @@ export class AgentDebtsComponent implements OnInit {
     ];
 
 
-    constructor(public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public agentDebtsSrv: AgentDebtsService,
-                public confirmationSrv: ConfirmationDialogService) {
+    constructor(private shellSrv: ShellService,
+                private snackBarSrv: SnackBarService,
+                private route: ActivatedRoute,
+                private router: Router,
+                private agentDebtsSrv: AgentDebtsService) {
     }
 
     ngOnInit() {
