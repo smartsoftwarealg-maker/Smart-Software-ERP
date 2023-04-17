@@ -1,6 +1,7 @@
 
 .table_div {
     min-height: 55%;
+    overflow-x: auto;
 }
 .doc-info {
     overflow: auto;
@@ -13,8 +14,9 @@
 
 mat-table {
     width: 100%;
-    min-width: 1000px;
+    min-width: 1200px;
 }
+
 // keep the material design specs
 .mat-row, .mat-header-row {
     padding-right: 16px;
@@ -30,16 +32,15 @@ mat-table {
 }
 
 
-
 .mat-column-address {
-    flex: 1 1 300px;
+    flex: 1 1 250px;
 }
 
 .mat-column-activityDescription,
 .mat-column-agentType,
 .mat-column-departmentName,
 .mat-column-typeDescription {
-    flex: 1 1 150px;
+    flex: 1 1 200px;
 }
 
 

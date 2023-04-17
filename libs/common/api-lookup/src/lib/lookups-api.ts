@@ -20,11 +20,11 @@ export const DEPARTMENTS_URL = '/organizations/departments';
 export const SERVICES_URL = '/organizations/services';
 export const OFFICES_URL = '/organizations/offices';
 export const BUILDINGS_URL = '/organizations/buildings';
-export const FLOORS_URL    = '/organizations/floors';
+export const FLOORS_URL = '/organizations/floors';
 
 export const APP_ARCHIVE_DOCUMENTS_URL = '/lookups/archive_documents';
 export const MARKS_URL = '/lookups/marks';
-export const OS_URL    = '/lookups/os_es';
+export const OS_URL = '/lookups/os_es';
 export const ARTICLE_TYPE_URL = '/lookups/article_types';
 export const TREASURY_GROUP_URL = '/lookups/treasury_groups';
 export const DAIRA_URL = '/lookups/regions';
@@ -250,19 +250,19 @@ export interface Fund {
 
 export interface CCGroup {
     id: number;
-    description:    string;
+    description: string;
     descriptionAr?: string;
 }
 
 export interface EmploymentType {
     id: number;
-    description:    string;
+    description: string;
     descriptionAr?: string;
 }
 
 export interface SuspensionReason {
     id: number;
-    description:    string;
+    description: string;
     descriptionAr?: string;
 }
 
@@ -300,8 +300,8 @@ export interface Office {
     code?: string;
     buildingId?: number;
     locationDescription?: string;
-    locationCode?:        string;
-    buildingCode?:        string;
+    locationCode?: string;
+    buildingCode?: string;
     buildingDescription?: string;
 }
 
@@ -310,3 +310,4 @@ export interface JournalType {
     description: string;
     descriptionAr?: string;
 }
+

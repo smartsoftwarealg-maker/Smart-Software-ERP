@@ -54,3 +54,11 @@ export interface MiniLine {
     id: number;
     price: number;
 }
+
+export interface ERR {
+    document: string;
+    number: number;
+    date: Date;
+    reference: string;
+    description: string;
+}

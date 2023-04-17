@@ -46,4 +46,17 @@ export class DashboardService extends BaseEntityExtendedService<Dashboard> {
             .forEach(v => params = params.set(v[0], v[1]));
         return this.httpSrv.getBlob(`/dashboard/${queryId}/excel`, params);
     }
+    getJson(queryId: number,
+            page: number,
+            size: number,
+            from?: string,
+            to?: string,
+            agent?: any,
+            consolidated?: boolean): Observable<Blob> {
+        let params = new HttpParams();
+        ([['from', from], ['to', to], ['agent', agent], ['consolidated', consolidated]])
+            .filter(v => v[1])
+            .forEach(v => params = params.set(v[0], v[1]));
+        return this.httpSrv.getBlob(`/dashboard/${queryId}/json`, params);
+    }
 }
