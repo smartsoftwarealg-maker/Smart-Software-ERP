@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -26,6 +26,14 @@ import {Id} from '@ss/common/ui-auto-complete';
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
+    private jsonButton: ToolbarButton = {
+        icon:  'fa-solid fa-coffee-bean',
+        label: 'COMMON_JSON_EXPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.json()
+    };
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     detailPagination = PaginationModel.newInstance();
@@ -61,6 +69,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        this.shellSrv.addButton(this.jsonButton);
     }
 
     override select(id: number) {
@@ -135,6 +144,23 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
                     link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                }
+            });
+    }
+
+    public json() {
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
+        this.dashboardSrv
+            .getJson(this.selected, this.detailPagination.page, this.detailPagination.pageSize, from, to, this.selectedAgentId, consolidated)
+            .subscribe(blob => {
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.txt';
                     link.click();
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }

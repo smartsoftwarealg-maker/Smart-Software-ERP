@@ -63,5 +63,6 @@
     "OS":                  "Operating system",
     "FURNITURE":           "Furniture",
     "RECEIVER":            "Receiver",
-    "RECEIVERS":           "Receivers"
+    "RECEIVERS":           "Receivers",
+    "ASSIGNED_ASSETS":     "Assigned assets"
 }

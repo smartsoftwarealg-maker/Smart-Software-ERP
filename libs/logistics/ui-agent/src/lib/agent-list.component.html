@@ -1,6 +1,5 @@
 <div class="table_div size_98">
-    <div class="doc-info">
-        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="customerCode">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER_CODE</mat-header-cell>
@@ -57,7 +56,6 @@
             <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
-    </div>
 </div>
 <div class="size_98 b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
@@ -66,6 +64,7 @@
     <ss-doc-info
         *ngIf="selected"
         [displayedGroups]="['agent']"
+        [showAssets]="isAsset"
         [params]="{
             documentId: 0,
             documentURL:'/agents',

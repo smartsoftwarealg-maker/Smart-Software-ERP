@@ -63,5 +63,6 @@
     "OS":                  "نظام التشغيل",
     "FURNITURE":           "الأثاث",
     "RECEIVER":            "المتلقي",
-    "RECEIVERS":           "المتلقين"
+    "RECEIVERS":           "المتلقين",
+    "ASSIGNED_ASSETS":     "الأصول المخصصة"
 }

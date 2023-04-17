@@ -7,6 +7,7 @@ import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import {AgentAssetsListComponent} from '@ss/assets-component';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -627,5 +628,9 @@ export const docInfoRoutes: Routes = [
     {
         path: 'agent-debts',
         component: AgentDebtsComponent
+    },
+    {
+        path: 'agent-assets',
+        component: AgentAssetsListComponent
     }
 ];

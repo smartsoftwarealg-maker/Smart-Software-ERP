@@ -49,6 +49,7 @@ import { DuplicateDialogComponent } from './duplicate-dialog/duplicate-dialog.co
 import { AssetsTransferComponent } from './assets-transfer/assets-transfer.component';
 import { InventoryImportComponent } from './inventory-import/inventory-import.component';
 import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
+import {AgentAssetsListComponent} from './agent-assets-list/agent-assets-list.component';
 
 @NgModule({
     imports: [
@@ -104,6 +105,7 @@ import { AssetAppointmentListComponent } from './asset-appointment-list/asset-ap
         AssetsTransferComponent,
         InventoryImportComponent,
         AssetAppointmentListComponent,
+        AgentAssetsListComponent
     ],
 })
 export class AssetsComponentModule {}

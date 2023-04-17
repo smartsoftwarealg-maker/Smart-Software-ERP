@@ -63,5 +63,6 @@
     "OS":                  "Système opérateur",
     "FURNITURE":           "Patrimoine",
     "RECEIVER":            "Destinataire",
-    "RECEIVERS":           "Destinataires"
+    "RECEIVERS":           "Destinataires",
+    "ASSIGNED_ASSETS":     "Actifs affectés"
 }

@@ -99,14 +99,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         click: () => this.excel()
     };
-    public jsonButton: ToolbarButton = {
-        icon: 'fa-solid fa-book',
-        label: 'COMMON_JSON_EXPORT',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.NEVER,
-        click: () => this.json()
-    };
     //
     public filter: string;
     public sortBy: string;
@@ -152,7 +144,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             this.viewReportButton,
             this.defReportButton,
             this.excelButton,
-            this.jsonButton,
             this.emailReportButton
         ]);
         this.pagination.onChange = () => this.refresh();
@@ -324,20 +315,6 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                     const link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
                     link.download = this.entitySrv.constructor.name + '.xlsx';
-                    link.click();
-                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
-                }
-            });
-    }
-
-    public json() {
-        this.entitySrv
-            .json(this.filter)
-            .subscribe(blob => {
-                if (blob && blob.size > 100) {
-                    const link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = this.entitySrv.constructor.name + '.txt';
                     link.click();
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }

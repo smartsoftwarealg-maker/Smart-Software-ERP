@@ -5,8 +5,7 @@
             <mat-form-field id="contractNo" class="default-50 sm-100">
                 <mat-label translate>COMMON_NUMBER</mat-label>
                 <input matInput formControlName="contractNo" type="text" autofocus maxlength="10" required>
-                <mat-error *ngIf="form.controls['contractNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH
-                </mat-error>
+                <mat-error *ngIf="form.controls['contractNo'].invalid" [translate]="{maxLen: 10}">COMMON_FIELD_MAX_LENGTH</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">

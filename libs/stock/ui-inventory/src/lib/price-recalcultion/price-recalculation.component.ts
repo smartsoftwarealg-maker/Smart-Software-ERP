@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Currency, CurrencyService, LookupsService, LotsService, Store} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService} from '@ss/common/api-common';
-import {Option, OptionService} from '@ss/logistics/ui-options';
+import {LoginService, PaginationModel} from '@ss/common/api-common';
+import {ERR, Option, OptionService} from '@ss/logistics/ui-options';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -25,6 +25,17 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
         {id: 1, name: 'LOGISTICS_FIFO'},
         {id: 2, name: 'LOGISTICS_AWP'}
     ]
+
+    processing = false;
+    data: ERR[] = [];
+    selected: ERR = null;
+    displayedColumns = [
+        'document',
+        'number',
+        'date',
+        'reference',
+        'description',
+    ];
 
     currencies: Currency[] = [];
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
@@ -70,15 +81,19 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
     recalculate() {
         this.shellSrv.setLoading(true);
         const value = this.form.value;
+        this.processing = true;
         this.optionSrv
             .recalculatePrice(value.inventory_date)
             .subscribe({
                 next: res => {
+                    this.data = res;
                     this.snackBarSrv.showSuccessMessage();
                     this.shellSrv.setLoading(false);
+                    this.processing = false;
                 },
                 error: err => {
                     this.shellSrv.setLoading(false);
+                    this.processing = false;
                     if (err.statusText?.length > 10) {
                         throw err;
                     } else {
@@ -86,5 +101,9 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
                     }
                 }
             });
+    }
+
+    select(item: ERR) {
+        this.selected = item;
     }
 }

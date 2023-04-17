@@ -472,7 +472,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: AgentListComponent,
                 canActivate: [loginGuard],
-                data: {sales: true},
+                data: {sales: true, assets: true},
                 children: docInfoRoutes
             },
             {

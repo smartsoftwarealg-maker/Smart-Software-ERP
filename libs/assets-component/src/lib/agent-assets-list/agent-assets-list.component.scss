@@ -1,0 +1,31 @@
+.table-div {
+    overflow-x: auto;
+}
+mat-table {
+    min-width: 1200px;
+}
+.mat-column-officeDescription,
+.mat-column-beneficiary {
+    flex: 1 1 150px;
+}
+
+.mat-column-description {
+    flex: 3 1 400px;
+}
+.mat-column-reference {
+    flex: 1 1 180px;
+}
+
+.mat-column-serial_no,
+.mat-column-geolocation,
+.mat-column-accountno,
+.mat-column-receptionNumber,
+.mat-column-appointmentNumber,
+.mat-column-depreciationRate,
+.mat-column-useful_life,
+.mat-column-acquisitionValue,
+.mat-column-residualValue,
+.mat-column-acquisitionDate,
+.mat-column-serviceDate {
+    flex: 1 1 150px;
+}
