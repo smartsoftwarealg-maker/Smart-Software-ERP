@@ -1,9 +1,12 @@
 .table-div {
     overflow-x: auto;
+    min-height: 350px;
 }
+
 mat-table {
     min-width: 1200px;
 }
+
 .mat-column-officeDescription,
 .mat-column-beneficiary {
     flex: 1 1 150px;

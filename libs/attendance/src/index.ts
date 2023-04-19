@@ -11,3 +11,7 @@ export * from './lib/shift-timing-list/shift-timing-list.component';
 export * from './lib/guards/timing-detail-guard';
 export * from './lib/guards/assignment-detail-guard';
 export * from './lib/attendance-log/attendance-log.component';
+export * from './lib/holiday-list/holiday-list.component';
+export * from './lib/holiday-detail/holiday-detail.component';
+export * from './lib/attendance-log-list/attendance-log-list.component';
+export * from './lib/attendance-log-detail/attendance-log-detail.component';

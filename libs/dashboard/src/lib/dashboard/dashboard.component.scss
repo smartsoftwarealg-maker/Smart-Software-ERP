@@ -25,9 +25,12 @@ mat-card {
 }
 
 mat-cell, mat-header-cell {
-    min-width: 100px;
+    min-width: 180px;
     border-left: whitesmoke solid 1px;
     padding-left: 4px;
+}
+mat-header-cell {
+    font-size: small !important;
 }
 .consolidated {
     align-self: center;

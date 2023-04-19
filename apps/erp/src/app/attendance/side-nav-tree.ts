@@ -1,5 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
+    ABS_ATTENDANCE_HOLIDAY_URL,
     ABS_ATTENDANCE_LOG_URL,
     ABS_ATTENDANCE_MACHINES_URL,
     ABS_ATTENDANCE_WORKSHIFTS_URL,
@@ -21,6 +22,12 @@ export const attendanceNavTree: SideNavNode = {
             icon: 'fa-solid fa-gauge-min',
             route: ABS_ATTENDANCE_WORKSHIFTS_URL,
             accessRights: 'WorkShift'
+        },
+        {
+            name: 'ATT_HOLIDAYS',
+            icon: 'fa-solid fa-lights-holiday',
+            route: ABS_ATTENDANCE_HOLIDAY_URL,
+            accessRights: 'Holiday'
         },
         {
             name: 'ATT_SHIFT_ASSIGNMENTS',
