@@ -46,7 +46,7 @@ export class AttendanceLogComponent implements OnInit {
     columns = this.FIXED_COLS;
     varHeaders: string[] = [];
     displayedCols = this.headers;
-
+    processing = false;
     ngOnInit() {
         registerLocaleData(localeFr);
         registerLocaleData(localeAr);
@@ -54,13 +54,14 @@ export class AttendanceLogComponent implements OnInit {
     }
 
     refresh() {
+        this.processing = false;
         const value = this.form.value;
         this.attendanceLog
             .getReport(value.type, value.id, value.from, value.to)
-            .subscribe(res => {
+            .subscribe({
+                next: res => {
                 this.data = res;
                 this.data.forEach(e => e.hexColors = e.colors.map((c, i) => {
-                    console.log(e.weekends[i]);
                     if (e.weekends && e.weekends[i]) {
                         return 'pink'
                     }
@@ -72,12 +73,15 @@ export class AttendanceLogComponent implements OnInit {
                     }
                     // return 'c'
                 }));
-                console.log(this.data);
                 this.varHeaders = this.getVariableHeaders(new Date(value.from), new Date(value.to));
                 this.tableWidth = this.data.length == 0 ? 390 : this.data[0].attendance.length * 110 + 390;
                 this.displayedCols = this.FIXED_COLS.concat(this.varHeaders.map((_, i) => `e${i}`));
                 this.columns = this.displayedCols;
-            });
+                this.processing = false;
+            }, error: err => {
+                    this.processing = false;
+                    throw err;
+                }});
     }
 
     private getVariableHeaders(from: Date, to: Date): string[] {

@@ -27,7 +27,7 @@
         </mat-form-field>
 
         <span class="default-50"></span>
-        <button mat-raised-button color="primary" type="button" (click)="refresh()">
+        <button mat-raised-button color="primary" type="button" (click)="refresh()" [disabled]="processing">
             {{ 'COMMON_REFRESH' | translate }}
         </button>
 
@@ -47,7 +47,6 @@
 
             </mat-cell>
         </ng-container>
-
 
         <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected?.id" (click)="select(row)"

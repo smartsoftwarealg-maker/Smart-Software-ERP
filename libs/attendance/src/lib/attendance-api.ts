@@ -1,12 +1,14 @@
 import {Lookup} from '@ss/common/api-lookup';
 
 export const ATTENDANCE_MACHINE_URL = '/attendance/machines';
-export const WORK_SHIFT_URL         = '/attendance/shifts';
-export const ATTENDANCE_TYPE_URL    = '/attendance/attendance-types';
+export const WORK_SHIFT_URL = '/attendance/shifts';
+export const HOLIDAY_URL = '/attendance/holidays';
+export const SIGNATURE_URL = '/attendance/manual-signatures';
+export const ATTENDANCE_TYPE_URL = '/attendance/attendance-types';
 export const ATTENDANCE_PERSONS_URL = '/attendance/persons';
-export const ATTENDANCE_SHIFTS_URL  = '/shifts';
-export const SHIFT_TIMING_URL       = '/timings';
-export const ATT_ATTENDANCE         = '/attendance/attendance';
+export const ATTENDANCE_SHIFTS_URL = '/shifts';
+export const SHIFT_TIMING_URL = '/timings';
+export const ATT_ATTENDANCE = '/attendance/attendance';
 export const TYPES: Lookup[] = [
     {id: 1, description: 'ATT_ATTENDANCE'},
     {id: 2, description: 'ATT_PRESENCE'},
@@ -80,4 +82,24 @@ export interface WorkShift {
     startDate: Date,
     graceTime: number;
     period: number;
+}
+
+export interface Holiday {
+    id: number;
+    date: Date;
+    description?: string;
+}
+
+export interface ATTSignature {
+    id: number;
+    centerId: number;
+    personId: number;
+    dateTime: Date;
+    attendanceType?: number;
+    manually: boolean;
+    updater?: number;
+    updaterName?: string;
+    firstName?: string;
+    lastName?: string;
+    typeDescription?: string;
 }

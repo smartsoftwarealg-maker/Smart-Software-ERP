@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {WorkShift} from '../attendance-api';
-import {AttendanceMachineService} from '../attendance-machine.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';

@@ -18,6 +18,10 @@ import { ShiftTimingDetailComponent } from './shift-timing-detail/shift-timing-d
 import { ShiftTimingListComponent } from './shift-timing-list/shift-timing-list.component';
 import { RouterOutlet } from '@angular/router';
 import { AttendanceLogComponent } from './attendance-log/attendance-log.component';
+import { HolidayListComponent } from './holiday-list/holiday-list.component';
+import { HolidayDetailComponent } from './holiday-detail/holiday-detail.component';
+import {AttendanceLogListComponent} from './attendance-log-list/attendance-log-list.component';
+import {AttendanceLogDetailComponent} from './attendance-log-detail/attendance-log-detail.component';
 
 @NgModule({
     imports: [
@@ -42,6 +46,10 @@ import { AttendanceLogComponent } from './attendance-log/attendance-log.componen
         ShiftTimingDetailComponent,
         ShiftTimingListComponent,
         AttendanceLogComponent,
+        HolidayListComponent,
+        HolidayDetailComponent,
+        AttendanceLogListComponent,
+        AttendanceLogDetailComponent,
     ],
 })
 export class AttendanceModule {}
