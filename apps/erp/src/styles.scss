@@ -968,3 +968,9 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
         text-align: end;
     }
 }
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
