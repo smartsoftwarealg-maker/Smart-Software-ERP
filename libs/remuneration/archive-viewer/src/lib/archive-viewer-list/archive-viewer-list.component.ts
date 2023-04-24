@@ -15,7 +15,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatListOption} from '@angular/material/list';
 
 @Component({
-    selector: 'ss-archive-list',
+    selector: 'ss-archive-viewer',
     templateUrl: './archive-viewer-list.component.html',
     styleUrls: ['./archive-viewer-list.component.scss'],
 })
@@ -72,7 +72,9 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     private FIXED_INFO = [
         'id',
         'lastname',
-        'firstname'];
+        'firstname',
+        'post',
+        'paymonth'];
 
     minTableWidth = 1000;
 
@@ -157,10 +159,11 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     }
 
     override ngOnInit() {
-        super.ngOnInit();
         this.editButton.visible = false;
         this.deleteButton.visible = false;
         this.addButton.visible = false;
+        super.ngOnInit();
+        this.shellSrv.disableSearch();
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
             this.formulas.getList(0, 500))
@@ -195,16 +198,17 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     refreshList(personalSel: SelectionModel<MatListOption>, formulaSel: SelectionModel<MatListOption>) {
         const from = this.fromYear.value * 100 + this.fromMonth.value;
         const to = this.toYear.value * 100 + this.toMonth.value;
+        this._formulaHeaders = [];
+        this._formulaVariables = [];
         if (this.compact.value) {
             const periods = this.periodInterval();
             const formulas = formulaSel.selected.map((e: any, i) => e.value?.description);
-            this._formulaHeaders = [];
-            this._formulaVariables = [];
             periods.forEach(((p, ip) => {
                 formulas.forEach((f, fi) => {
                     this._formulaVariables.push('v' + (1 + this._formulaVariables.length));
                     this._formulaHeaders.push(p + '-' + f)
                 })
+                // this.pagination.pageSize = this.compact.value? 20 : 5;
             }));
         } else {
             this._formulaHeaders = formulaSel.selected.map((e: any, i) => e.value?.description);

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, LookupsService} from '@ss/common/api-lookup';
+import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ConsumptionService} from '@ss/stock/api-consumption';
 import {Observable} from 'rxjs';
@@ -12,7 +12,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -20,11 +21,10 @@ import {Transaction} from '@ss/logistics/api-transaction';
     templateUrl: './consumption-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transaction> {
+export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
 
     public groups: CCGroup[];
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
-    // fixme: use a model that shows both the agent-code and the denomination
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     manager = this.loginSrv.appCtx.manager;
     constructor(
@@ -33,13 +33,15 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
+        public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public consumerSrv: ConsumerService,
         public lookupsSrv: LookupsService,
-        public readonly loginSrv: LoginService) {
-        super(consumptionService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_CONSUMPTION');
+        protected override loginSrv: LoginService,
+        protected override dialog: MatDialog) {
+        super(consumptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
     }
 
 
@@ -48,27 +50,43 @@ export class ConsumptionDetailComponent extends BaseEntityDetailComponent<Transa
             .pipe(tap(x => this.groups = x))
     }
 
-    public override setupForm(b: Transaction) {
-        // Make sure to update the template if you edit the configuration here
-        return this.formBuilder.group({
-            id: [b.id],
-            document: [0],
-            centerId: [0 || this.loginSrv.appCtx.center],
-            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number || 0],
-            reference: [b.reference],
-            referenceDocDate: [b.referenceDocDate],
-            header: [b.header],
-            footer: [b.footer],
-            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: this.loginSrv.appCtx.manager}, Validators.required],
-            agent: [b.agent, Validators.required],
-            userID: [this.loginSrv.appCtx.id]
-        });
+    protected importedDocuments(): Lookup[] {
+        return [];
     }
 
-    override readForm(): Transaction {
-        const value = super.readForm();
-        value.dealer = value.dealer || this.loginSrv.appCtx.id;
-        return value;
+    protected requireAgent(): boolean {
+        return true;
     }
+
+    protected requireAgentToImportDocument(): boolean {
+        return true;
+    }
+
+    protected showImportButton(): boolean {
+        return false;
+    }
+
+    // public override setupForm(b: Transaction) {
+    //     // Make sure to update the template if you edit the configuration here
+    //     return this.formBuilder.group({
+    //         id: [b.id],
+    //         document: [0],
+    //         centerId: [0 || this.loginSrv.appCtx.center],
+    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+    //         number: [b.number || 0],
+    //         reference: [b.reference],
+    //         referenceDocDate: [b.referenceDocDate],
+    //         header: [b.header],
+    //         footer: [b.footer],
+    //         dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: this.loginSrv.appCtx.manager}, Validators.required],
+    //         agent: [b.agent, Validators.required],
+    //         userID: [this.loginSrv.appCtx.id]
+    //     });
+    // }
+    //
+    // override readForm(): Transaction {
+    //     const value = super.readForm();
+    //     value.dealer = value.dealer || this.loginSrv.appCtx.id;
+    //     return value;
+    // }
 }

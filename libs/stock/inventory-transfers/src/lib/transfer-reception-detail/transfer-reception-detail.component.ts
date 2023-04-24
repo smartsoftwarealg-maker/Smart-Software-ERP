@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Transaction} from '@ss/logistics/api-transaction';
-import {CCGroup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UserListService} from '@ss/common/api-users';
@@ -31,11 +31,8 @@ import {TransferService} from '../transfer.service';
     templateUrl: './transfer-reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
-export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    @ViewChild(InventoryTransferLinesListComponent) detail: InventoryTransferLinesListComponent;
+export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
 
-    private transfer: Transaction = null;
-    public isManager = false;
     public groups: CCGroup[];
 
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
@@ -43,18 +40,19 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
 
     constructor(
         private langSrv: LanguageService,
-        private loginSrv: LoginService,
+        protected override loginSrv: LoginService,
+        protected override dialog: MatDialog,
         public transferService: TransferReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
+        public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService,
-        private branchService: BranchService,
-        private loginService: LoginService) {
-        super(transferService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_TRANSFER_RECEPTIONS');
+        private branchService: BranchService) {
+        super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFER_RECEPTIONS');
     }
 
     override preload(): Observable<any> {
@@ -62,38 +60,51 @@ export class TransferReceptionDetailComponent extends BaseEntityDetailComponent<
             .pipe(tap(x => this.groups = x))
     }
 
-    override setupForm(b: Transaction) {
-        if (!b.id) {
-            b.id = 0;
-            b.number = 0;
-            b.userID = this.loginService.appCtx.id;
-            b.dealer = b.userID;
-            b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
-        }
-        this.transfer = b;
-        this.isManager = this.loginService.appCtx.manager;
-        return this.formBuilder.group({
-            id: [b.id],
-            document: [0],
-            centerId: [0 || this.loginSrv.appCtx.center],
-            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number || 0],
-            reference: [b.reference],
-            referenceDocDate: [b.referenceDocDate],
-            header: [b.header],
-            payMethod: [b.payMethod],
-            footer: [b.footer],
-            discountDescription: [b.discountDescription],
-            fixedDiscount: [b.fixedDiscount || 0.0],
-            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
-            dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
-            agent: [b.agent, Validators.required],
-        });
+    // override setupForm(b: Transaction) {
+    //     if (!b.id) {
+    //         b.id = 0;
+    //         b.number = 0;
+    //         b.userID = this.loginSrv.appCtx.id;
+    //         b.dealer = b.userID;
+    //         b.date = new DatePipe('en').transform(new Date(), 'dd/MM/yyyy');
+    //     }
+    //     this.transfer = b;
+    //     this.isManager = this.loginSrv.appCtx.manager;
+    //     return this.formBuilder.group({
+    //         id: [b.id],
+    //         document: [0],
+    //         centerId: [0 || this.loginSrv.appCtx.center],
+    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+    //         number: [b.number || 0],
+    //         reference: [b.reference],
+    //         referenceDocDate: [b.referenceDocDate],
+    //         header: [b.header],
+    //         payMethod: [b.payMethod],
+    //         footer: [b.footer],
+    //         discountDescription: [b.discountDescription],
+    //         fixedDiscount: [b.fixedDiscount || 0.0],
+    //         fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
+    //         dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.isManager }, Validators.required],
+    //         agent: [b.agent, Validators.required],
+    //     });
+    // }
+    //
+    // override readForm(): Transaction {
+    //     const form =  super.readForm();
+    //     fillObject(this.transfer, form)
+    //     return form;
+    // }
+    protected showImportButton(): boolean {
+        return false;
+    }
+    protected requireAgentToImportDocument(): boolean {
+        return true;
+    }
+    protected requireAgent(): boolean {
+        return true;
+    }
+    protected importedDocuments(): Lookup[] {
+        return [];
     }
 
-    override readForm(): Transaction {
-        const form =  super.readForm();
-        fillObject(this.transfer, form)
-        return form;
-    }
 }

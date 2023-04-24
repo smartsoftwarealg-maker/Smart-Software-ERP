@@ -1,3 +1,7 @@
+import {inject} from '@angular/core';
+import {LtmLineGuard} from './ltm-line-guard';
+import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angular/router';
+
 export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_TEST_URL        = '/ltm/tests';
@@ -6,7 +10,10 @@ export const LTM_LTM_LINE_URL    = '/ltm/ltm-lines';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
+export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
+export const lineGuard: CanActivateFn =
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(LtmLineGuard).canActivate(route, state)
 export interface LTMLine {
     id: number;
     centerId: number;

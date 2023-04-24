@@ -16,7 +16,9 @@ export class AccountingPeriodGuard  {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        const rightTrack = this.fileSrv.accFile != null && this.loginSrv.appCtx.accPeriod > 0;
+        const rightTrack = this.fileSrv.accFile != null &&
+                                    this.loginSrv.appCtx &&
+                                    this.loginSrv.appCtx.accPeriod > 0;
 
         if (rightTrack) {
             this.shellSrv.setLabels([{ title: `${this.fileSrv.fileDescription}: ${this.loginSrv.appCtx.accPeriod}/${this.fileSrv.curPeriod}`  }]);

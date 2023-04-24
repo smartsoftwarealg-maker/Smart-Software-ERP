@@ -22,6 +22,7 @@ export class OrderListComponent  extends BaseTransactionListComponent {
         'payMethod',
         'dirty',
         'locked',
+        'docStatus'
     ];
 
     constructor(

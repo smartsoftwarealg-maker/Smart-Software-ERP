@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, Input, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -15,7 +15,6 @@ import {
     templateUrl: './reception-lines-list.component.html'
 })
 export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
-
     displayedColumns = [
         'position',
         'store',

@@ -23,7 +23,8 @@ export class ReceptionListComponent extends BaseTransactionListComponent {
         'payMethod',
         'reference',
         'referenceDocDate',
-        'dealer'
+        'dealer',
+        'docStatus'
     ];
 
 

@@ -25,7 +25,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
                                   [model]="agentAutoCompleteModel"
@@ -86,4 +86,4 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-inventory-transfer-lines-list class="detail-list"></ss-inventory-transfer-lines-list>
+<ss-inventory-transfer-lines-list class="detail-list" *ngIf="id" [isEditable]="isEditable"></ss-inventory-transfer-lines-list>

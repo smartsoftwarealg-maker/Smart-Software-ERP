@@ -11,6 +11,12 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="docStatus">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.docStatus}}
+                </mat-cell>
+            </ng-container>
 
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>

@@ -50,4 +50,4 @@
     </mat-card-content>
 </mat-card>
 
-<ss-inventory-exit-lines-list></ss-inventory-exit-lines-list>
+<ss-inventory-exit-lines-list *ngIf="id" [isEditable]="isEditable"></ss-inventory-exit-lines-list>

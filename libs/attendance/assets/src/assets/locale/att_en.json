@@ -1,0 +1,7 @@
+{
+    "MACHINES":         "Attendance machines",
+    "WORKSHIFTS":       "Shifts",
+    "HOLIDAYS":         "Holidays",
+    "SHIFT_ASSIGNMENTS": "Shift assignment",
+    "ATTENDANCE_LOG":   "Attendance log"
+}

@@ -24,7 +24,8 @@ export class ReceptionCancellationListComponent extends BaseTransactionListCompo
         'payMethod',
         'reference',
         'referenceDocDate',
-        'dealer'
+        'dealer',
+        'docStatus'
     ];
 
 

@@ -26,7 +26,7 @@
                 <mat-label translate>STOCK_DEALER</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
-                                  [disabled]="!manager"
+                                  [disabled]="!isManager"
                                   [model]="dealerAutoCompleteModel"
                                   formControlName="dealer"></ss-auto-complete>
                 <mat-error
@@ -51,4 +51,4 @@
     </mat-card-content>
 </mat-card>
 
-<ss-inventory-entry-lines-list></ss-inventory-entry-lines-list>
+<ss-inventory-entry-lines-list *ngIf="id" [isEditable]="isEditable"></ss-inventory-entry-lines-list>

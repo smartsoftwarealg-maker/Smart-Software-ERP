@@ -6,8 +6,8 @@ export interface Training {
     ref_date?: Date;
     employee: number;
     motive?: number;
-    from_date?: string;
-    to_date?: string;
+    from_date?: Date;
+    to_date?: Date;
     day_count?: number;
     training?: string;
     trainer?: string;

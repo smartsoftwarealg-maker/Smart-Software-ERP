@@ -132,4 +132,4 @@
     </mat-card-content>
 </mat-card>
 
-<ss-reception-lines-list class="detail-list"></ss-reception-lines-list>
+<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id"></ss-reception-lines-list>

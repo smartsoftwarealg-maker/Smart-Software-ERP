@@ -81,4 +81,4 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-purchase-request-lines-list class="detail-list"></ss-purchase-request-lines-list>
+<ss-purchase-request-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id"></ss-purchase-request-lines-list>

@@ -30,11 +30,8 @@ export abstract class BaseTransactionListComponent extends BaseEntityListCompone
         super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, title);
     }
 
-    override processLoadedData(data: Transaction[]): Observable<Transaction[]> {
-        data.forEach(x => {
-            x.date = this.langServ.formatDate(x.date);
-            x.referenceDocDate = this.langServ.formatDate(x.referenceDocDate);
-        });
-        return of(data);
-    }
+    // override processLoadedData(data: Transaction[]): Observable<Transaction[]> {
+    //     data.forEach(x => {});
+    //     return of(data);
+    // }
 }

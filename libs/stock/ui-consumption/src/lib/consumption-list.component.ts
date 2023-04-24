@@ -20,7 +20,8 @@ export class ConsumptionListComponent extends BaseTransactionListComponent {
         'agent',
         'reference',
         'referenceDocDate',
-        'dealer'
+        'dealer',
+        'docStatus'
     ];
 
 

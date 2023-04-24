@@ -68,7 +68,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public override setupForm(p: Employee) {
-        this.isEditable = this.saveButton.visible;
         this.infoSrv.load()
             .pipe(switchMap(_ => this.infoSrv.get(p.id)))
             .subscribe(res => {
@@ -82,7 +81,6 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             });
 
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
-        // Make sure to update the template if you edit the configuration here
         if (!p.id) {
             p.sex = 1;
         }
@@ -113,9 +111,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             motherAr: [p.motherAr, Validators.maxLength(64)],
             birthCity:[p.birthCity]
         });
-        if (!this.isEditable) {
-            form.disable();
-        }
+        // if (!this.isEditable) {
+        //     form.disable();
+        // }
         return form;
     }
 

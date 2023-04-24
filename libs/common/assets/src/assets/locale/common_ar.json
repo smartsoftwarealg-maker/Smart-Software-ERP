@@ -272,5 +272,6 @@
     "VARIABLE":                   "المتغير",
     "FORMULA":                    "الصيغة",
     "FORMULAS":                   "الصيغ",
-    "JSON_EXPORT":                "تصدير إلى JSON"
+    "JSON_EXPORT":                "تصدير إلى JSON",
+    "LOAD_EXCEL":                 "تحميل من ملف Excel"
 }

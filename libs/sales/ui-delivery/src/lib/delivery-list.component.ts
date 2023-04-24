@@ -22,6 +22,7 @@ export class DeliveryListComponent extends BaseTransactionListComponent {
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
 

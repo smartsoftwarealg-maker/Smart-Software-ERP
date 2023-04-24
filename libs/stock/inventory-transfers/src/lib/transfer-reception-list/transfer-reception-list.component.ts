@@ -23,6 +23,7 @@ export class TransferReceptionListComponent  extends BaseTransactionListComponen
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
     constructor(

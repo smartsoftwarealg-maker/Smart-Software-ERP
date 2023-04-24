@@ -135,4 +135,4 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-order-lines-list class="detail-list"></ss-order-lines-list>
+<ss-order-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id"></ss-order-lines-list>

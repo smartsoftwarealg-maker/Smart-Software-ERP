@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -13,7 +13,6 @@ import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-
     displayedColumns = [
         'position',
         'reference',

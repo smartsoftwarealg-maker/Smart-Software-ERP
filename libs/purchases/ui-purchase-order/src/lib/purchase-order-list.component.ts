@@ -22,6 +22,7 @@ export class PurchaseOrderListComponent extends BaseTransactionListComponent {
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
     constructor(
