@@ -46,5 +46,6 @@
     "SHOPPING-CART":   "Shopping cart",
     "FOOD":            "Food",
     "WORKFLOW":        "Workflow",
-    "BUDGET-APP":      "Budget"
+    "BUDGET-APP":      "Budget",
+    "ATTENDANCE":      "Attendance"
 }

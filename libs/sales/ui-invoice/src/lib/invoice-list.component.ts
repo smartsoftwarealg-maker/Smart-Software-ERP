@@ -22,6 +22,7 @@ export class InvoiceListComponent extends BaseTransactionListComponent {
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
 

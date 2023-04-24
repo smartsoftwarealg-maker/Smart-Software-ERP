@@ -9,7 +9,7 @@ import {
     LTM_PERIODICITY_URL,
     LTM_CHARTS_URL,
     LTM_TEST_URL,
-    LTM_TESTING_URL, LTM_BATCH_URL, DASHBOARD_URL
+    LTM_TESTING_URL, LTM_BATCH_URL, DASHBOARD_URL, COMMON_REPORTS_URL
 } from '../common';
 
 import {
@@ -32,6 +32,7 @@ import {
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const ltmRoutes: Routes = [
     {
@@ -140,6 +141,12 @@ export const ltmRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
+        data: { reportBase: 'ltm' }
     },
     {
         path: DASHBOARD_URL,

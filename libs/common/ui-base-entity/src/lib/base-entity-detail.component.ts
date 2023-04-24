@@ -187,4 +187,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         return of(true);
     }
 
+    get isLoading() {
+        return this.shellSrv.getLoading();
+    }
 }

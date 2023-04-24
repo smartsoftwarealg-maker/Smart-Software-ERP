@@ -73,10 +73,6 @@ export class EmployeeTrainingListComponent implements OnInit {
         this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize)
             .subscribe(result => {
                 this.data = result.body;
-                this.data.forEach(p => {
-                    p.from_date = this.langSrv.formatDate(p.from_date);
-                    p.to_date = this.langSrv.formatDate(p.to_date);
-                });
                 this.pagination.elementCount = result.itemCount;
             });
     }

@@ -21,7 +21,8 @@ export class PurchaseRequestListComponent  extends BaseTransactionListComponent 
         'date',
         'reference',
         'referenceDocDate',
-        'dealerName'
+        'dealerName',
+        'docStatus'
     ];
 
     constructor(

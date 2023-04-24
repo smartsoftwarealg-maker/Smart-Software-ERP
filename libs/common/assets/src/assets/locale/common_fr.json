@@ -276,5 +276,6 @@
     "VARIABLE":                   "Variable",
     "FORMULA":                    "Formule",
     "FORMULAS":                   "Formules",
-    "JSON_EXPORT":                "Exporter vers JSON"
+    "JSON_EXPORT":                "Exporter vers JSON",
+    "LOAD_EXCEL":                 "Charger depuis un fichier Excel"
 }

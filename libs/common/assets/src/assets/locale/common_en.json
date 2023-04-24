@@ -272,5 +272,6 @@
     "VARIABLE":                   "Variable",
     "FORMULA":                    "Formula",
     "FORMULAS":                   "Formulas",
-    "JSON_EXPORT":                "Export to JSON"
+    "JSON_EXPORT":                "Export to JSON",
+    "LOAD_EXCEL":                 "Load from an Excel file"
 }

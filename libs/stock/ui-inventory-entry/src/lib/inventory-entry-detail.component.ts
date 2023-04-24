@@ -1,15 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
 import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
@@ -21,15 +21,15 @@ import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-entry-detail.component.html'
 })
-export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Transaction> {
+export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
     @ViewChild(InventoryLinesListComponent) detail: InventoryLinesListComponent;
-    private importBtn: ToolbarButton = {
+    private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        label: 'COMMON_LOAD_EXCEL',
         visible: true,
-        click: () => this.importDocument(),
+        click: () => this.importInventoryDocument(),
     }
 
 
@@ -37,42 +37,43 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
 
     constructor(
         private langSrv: LanguageService,
-        private loginSrv: LoginService,
-        private dialog: MatDialog,
+        protected loginSrv: LoginService,
+        protected dialog: MatDialog,
         public inventoryService: InventoryEntryService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
+        public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public usersService: UserListService,
         public lookupsSrv: LookupsService) {
-        super(inventoryService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_INVENTORY_ENTRY');
+        super(inventoryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_INVENTORY_ENTRY');
     }
 
     ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.addButton(this.importBtn);
+        this.shellSrv.addButton(this.invImportBtn);
     }
 
-    public override setupForm(b: Transaction) {
-        // Make sure to update the template if you edit the configuration here
-        return this.formBuilder.group({
-            id: [b.id],
-            document: [0],
-            centerId: [0 || this.loginSrv.appCtx.center],
-            date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-            number: [b.number || 0],
-            reference: [b.reference],
-            referenceDocDate: [b.referenceDocDate],
-            header: [b.header],
-            footer: [b.footer],
-            dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
-        });
-    }
+    // public override setupForm(b: Transaction) {
+    //     // Make sure to update the template if you edit the configuration here
+    //     return this.formBuilder.group({
+    //         id: [b.id],
+    //         document: [0],
+    //         centerId: [0 || this.loginSrv.appCtx.center],
+    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
+    //         number: [b.number || 0],
+    //         reference: [b.reference],
+    //         referenceDocDate: [b.referenceDocDate],
+    //         header: [b.header],
+    //         footer: [b.footer],
+    //         dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
+    //     });
+    // }
 
-    private importDocument() {
-        if (!this.importBtn.disabled) {
+    private importInventoryDocument() {
+        if (!this.invImportBtn.disabled) {
             const id = this.form.controls['id']?.value;
             const dialogRef = this.dialog.open(InventoryImportComponent, {
                 width: '600px',
@@ -96,6 +97,22 @@ export class InventoryEntryDetailComponent extends BaseEntityDetailComponent<Tra
                     this.shellSrv.setLoading(false);
                 });
         }
+    }
+
+    protected importedDocuments(): Lookup[] {
+        return [];
+    }
+
+    protected requireAgent(): boolean {
+        return false;
+    }
+
+    protected requireAgentToImportDocument(): boolean {
+        return false;
+    }
+
+    protected showImportButton(): boolean {
+        return false;
     }
 
 }

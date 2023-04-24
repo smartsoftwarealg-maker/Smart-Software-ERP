@@ -18,11 +18,11 @@ export class PayrollMonthGuard {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.loginSrv.appCtx.payMonth) {
+        if (this.loginSrv?.appCtx?.payMonth) {
             this.shellSrv.setLabels([this.monthSrv.getLabel()]);
         }
-        return this.loginSrv.appCtx &&
-        this.loginSrv.appCtx.payMonth > 100000 ? true :
+        return this.loginSrv?.appCtx &&
+        this.loginSrv.appCtx?.payMonth > 100000 ? true :
             this.router.createUrlTree(['/app/payroll/select']);
     }
 }

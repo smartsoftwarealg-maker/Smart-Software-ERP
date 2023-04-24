@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
-import {OfferLinesService} from '../../../../logistics/api-transaction/src/lib/offer-lines.service';
-import {Subscription} from 'rxjs';
-import {FormControl} from '@angular/forms';
+import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
   selector: 'ss-order-lines-list',

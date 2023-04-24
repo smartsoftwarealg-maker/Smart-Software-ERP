@@ -86,4 +86,4 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-inventory-transfer-lines-list class="detail-list"></ss-inventory-transfer-lines-list>
+<ss-inventory-transfer-lines-list class="detail-list" *ngIf="id" [isEditable]="isEditable"></ss-inventory-transfer-lines-list>

@@ -109,4 +109,4 @@
     </mat-card-content>
 </mat-card>
 
-<ss-delivery-lines-list class="detail-list"></ss-delivery-lines-list>
+<ss-delivery-lines-list class="detail-list" *ngIf="!isLoading && id" [isEditable]="isEditable"></ss-delivery-lines-list>

@@ -9,6 +9,7 @@ mat-tab-group {
 .mat-cell,
 .mat-header-cell {
     min-width: 90px;
+    font-size: 0.6em!important;
 }
 
 .ctrl_div {
@@ -31,7 +32,7 @@ mat-tab-group {
     width: 98%;
     margin: 0 auto;
     overflow-x: auto;
-    height: calc(70% - 175px);
+    height: calc(70% - 220px);
 }
 
 .main-table {
@@ -55,12 +56,19 @@ mat-tab-group {
     flex: 1 1 80px;
 }
 
-.mat-column-post,
+.mat-column-post {
+    flex: 1 1 250px;
+}
+
+.mat-column-paymonth,
 .mat-column-lastname,
 .mat-column-firstname {
     flex: 1 1 100px;
 }
 
+mat-header-cell.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
+    font-size: 0.7em;
+}
 
 @media (width <= 520px) {
     .ctrl_div {

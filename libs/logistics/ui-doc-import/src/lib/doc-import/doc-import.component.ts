@@ -12,13 +12,13 @@ import {catchError, map, switchMap, tap} from 'rxjs/operators';
   styleUrls: ['./doc-import.component.scss']
 })
 export class DocImportComponent implements OnInit {
+  private  agentId = 0;
   public   documentList: Lookup[];
   public   importList: ImportInfo[] = [];
   readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
 
   public   document = new UntypedFormControl();
-  private  importInfo: ImportInfo = null;
-  private  agentId = 0;
+  public  importInfo: ImportInfo = null;
 
 
   constructor(private dialogRef: MatDialogRef<DocImportComponent>,

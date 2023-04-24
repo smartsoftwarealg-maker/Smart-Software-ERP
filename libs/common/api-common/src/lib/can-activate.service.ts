@@ -8,7 +8,6 @@ import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
 import { UrlTree } from '@angular/router';
 import { UserRightsService } from './user-rights.service';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -25,7 +24,7 @@ export class CanActivateService {
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.reload()),
-                  map(_ =>  (this.loginSrv.isLoggedIn && this.canRead(route)) ||
+                  map(_ =>  (this.loginSrv.isLoggedIn && this.loginSrv.appCtx !== null && this.canRead(route)) ||
                                   this.router.createUrlTree(['/' + LOGIN_URL])));
     }
 

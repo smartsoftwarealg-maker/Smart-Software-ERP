@@ -47,5 +47,6 @@
     "SHOPPING-CART":   "Panier",
     "FOOD":            "Food",
     "WORKFLOW":        "Workflow",
-    "BUDGET-APP":      "Budget"
+    "BUDGET-APP":      "Budget",
+    "ATTENDANCE":      "Pointage"
 }

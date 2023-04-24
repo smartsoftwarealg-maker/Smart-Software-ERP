@@ -22,6 +22,7 @@ export class InventoryTransferListComponent extends BaseTransactionListComponent
         'payMethod',
         'reference',
         'referenceDocDate',
+        'docStatus'
     ];
 
     constructor(

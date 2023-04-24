@@ -107,4 +107,4 @@
     </mat-card-content>
 </mat-card>
 
-<ss-invoice-lines-list *ngIf="id"></ss-invoice-lines-list>
+<ss-invoice-lines-list *ngIf="id && !isLoading" [isEditable]="isEditable"></ss-invoice-lines-list>

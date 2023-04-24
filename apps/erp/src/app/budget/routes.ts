@@ -6,7 +6,7 @@ import {
     BUDGET_GROUP_URL,
     BUDGET_PLANNING_URL,
     BUDGET_SELECTOR_URL,
-    BUDGET_TRANSFER_URL,
+    BUDGET_TRANSFER_URL, COMMON_REPORTS_URL,
     DASHBOARD_URL
 } from '../common';
 import {
@@ -26,6 +26,7 @@ import {
 } from '@ss/budget/budget-movements';
 import {budgetGuard, loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
+import {ReportViewComponent} from '@ss/common/ui-report-param';
 
 export const budgetRoutes: Routes = [
     {
@@ -98,6 +99,13 @@ export const budgetRoutes: Routes = [
     { path: BUDGET_GROUP_URL, component: BudgetGroupsComponent, canActivate: [loginGuard] },
     { path: BUDGET_PLANNING_URL, component: BudgetPlanningComponent, canActivate: [CanActivateService, BudgetSelectorGuard] },
     { path: BUDGET_SELECTOR_URL, component: BudgetSelectorDlgComponent, canActivate: [loginGuard] },
+
+    {
+        path: COMMON_REPORTS_URL,
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
+        data: { reportBase: 'budget' }
+    },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

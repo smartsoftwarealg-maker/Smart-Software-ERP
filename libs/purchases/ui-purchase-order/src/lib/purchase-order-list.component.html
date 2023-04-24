@@ -32,10 +32,17 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="docStatus">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.docStatus }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="referenceDocDate">
                 <mat-header-cell *matHeaderCellDef translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.referenceDocDate }}
+                    {{ e.referenceDocDate | date: 'dd/MM/yyyy' }}
                 </mat-cell>
             </ng-container>
 

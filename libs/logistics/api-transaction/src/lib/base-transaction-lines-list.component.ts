@@ -9,10 +9,11 @@ import {LINES_DETAIL_URL, LoginService, PaginationModel} from '@ss/common/api-co
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import {Directive, OnDestroy, OnInit} from '@angular/core';
+import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    private _isEditable_ = true;
     protected subscription: Subscription = null;
     searchText = new FormControl('');
     parentId: number;
@@ -116,5 +117,14 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscription?.unsubscribe();
+    }
+
+    @Input()
+    set isEditable(e: boolean) {
+        this._isEditable_ = e;
+    }
+
+    get isEditable() {
+        return this._isEditable_;
     }
 }

@@ -20,7 +20,8 @@ export class InventoryEntryListComponent extends BaseTransactionListComponent {
         'date',
         'reference',
         'referenceDocDate',
-        'dealer'
+        'dealer',
+        'docStatus'
     ];
 
 

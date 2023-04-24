@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, Routes} from '@angular/router';
 
 import {
-    ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL,
+    ABS_INDEX_URL, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {
     ATTENDANCE_LOG_URL,
