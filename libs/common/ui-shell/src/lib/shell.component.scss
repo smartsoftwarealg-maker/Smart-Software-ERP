@@ -175,8 +175,6 @@
     }
 }
 
-
-
 .nav-bar-settings-menu {
     display: flex;
     flex-direction: column;
@@ -187,9 +185,10 @@
     .settings-item {
         cursor: pointer;
 
-        flex-basis: 40px;
-        line-height: 40px;
-        width: 208px;
+        flex-basis: 48px;
+        line-height: 48px;
+        height: 48px;
+        width: 258px;
         user-select: none;
 
         display: flex;
