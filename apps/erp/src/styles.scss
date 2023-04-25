@@ -970,7 +970,7 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
 }
 
 button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
