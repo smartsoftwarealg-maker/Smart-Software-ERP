@@ -233,7 +233,10 @@
 }
 
 .exit-search-btn {
-    display: none;
+    visibility: hidden;
+    position: absolute;
+    top: -99999px;
+    right: -99999px;
 }
 
 .smll-search-mode {
@@ -250,7 +253,10 @@
     }
 
     .exit-search-btn {
-        display: inline-block !important;
+        visibility: visible;
+        position: relative !important;
+        top: unset !important;
+        right: unset !important;
     }
 
     .shell-title {
