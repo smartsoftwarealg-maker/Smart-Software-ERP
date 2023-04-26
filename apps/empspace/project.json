@@ -1,0 +1,118 @@
+{
+    "name": "empspace",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "application",
+    "sourceRoot": "apps/empspace/src",
+    "prefix": "ss",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/empspace",
+                "index": "apps/empspace/src/index.html",
+                "main": "apps/empspace/src/main.ts",
+                "polyfills": "apps/empspace/src/polyfills.ts",
+                "tsConfig": "apps/empspace/tsconfig.app.json",
+                "inlineStyleLanguage": "scss",
+                "assets": [
+                    "apps/empspace/src/favicon.ico",
+                    "apps/empspace/src/assets",
+                    "apps/empspace/src/config",
+                    {
+                        "glob": "**/*",
+                        "input": "libs/common/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/logistics/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/attendance/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/administration/assets/src/assets",
+                        "output": "assets"
+                    }
+                ],
+                "styles": ["apps/empspace/src/styles.scss"],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["node_modules"]
+                },
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "5000kb",
+                            "maximumError": "10mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "20kb",
+                            "maximumError": "40kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/empspace/src/environments/environment.ts",
+                            "with": "apps/empspace/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "empspace:build:production"
+                },
+                "development": {
+                    "browserTarget": "empspace:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "empspace:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "apps/empspace/src/**/*.ts",
+                    "apps/empspace/src/**/*.html"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/apps/empspace"],
+            "options": {
+                "jestConfig": "apps/empspace/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

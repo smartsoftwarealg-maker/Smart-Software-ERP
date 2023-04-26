@@ -22,6 +22,8 @@ import { HolidayListComponent } from './holiday-list/holiday-list.component';
 import { HolidayDetailComponent } from './holiday-detail/holiday-detail.component';
 import {AttendanceLogListComponent} from './attendance-log-list/attendance-log-list.component';
 import {AttendanceLogDetailComponent} from './attendance-log-detail/attendance-log-detail.component';
+import {HolidayRequestListComponent} from './holiday-request-list/holiday-request-list.component';
+import {HolidayRequestDetailComponent} from './holiday-request-detail/holiday-request-detail.component';
 
 @NgModule({
     imports: [
@@ -50,6 +52,8 @@ import {AttendanceLogDetailComponent} from './attendance-log-detail/attendance-l
         HolidayDetailComponent,
         AttendanceLogListComponent,
         AttendanceLogDetailComponent,
+        HolidayRequestListComponent,
+        HolidayRequestDetailComponent
     ],
 })
 export class AttendanceModule {}

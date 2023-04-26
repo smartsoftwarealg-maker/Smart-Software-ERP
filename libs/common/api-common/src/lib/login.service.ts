@@ -20,7 +20,8 @@ const AUTH_TOKEN = 'auth_token';
 export enum LoginType {
     USER = 1,
     CUSTOMER,
-    BOTH
+    BOTH,
+    PERSON
 }
 
 
@@ -207,7 +208,7 @@ export class LoginService {
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
                     }
                 },
-                error: err => this.agentLogin(user, isAndroid, onFinish),
+                error: err => this.agentLogin('/customers/login', user, isAndroid, onFinish),
                 complete: () => {
                     if (onFinish != null) {
                         onFinish();
@@ -217,11 +218,11 @@ export class LoginService {
     }
 
 
-    public agentLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
+    public agentLogin(url: string, user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.licenseErrorType = null;
         this.wrongData = false;
         this.httpSrv
-            .doLogin('/customers/login', user)
+            .doLogin(url, user)
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
@@ -231,6 +232,7 @@ export class LoginService {
                 next:
                     (info: LoginInfo) => {
                         this.httpSrv.updateAuthToken(info.jwt);
+                        debugger;
                         this.appCtx = info.ctx;
                         const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);

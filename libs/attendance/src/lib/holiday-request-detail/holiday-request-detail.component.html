@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_STOCK</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="holidayLookup"
+                                  formControlName="hType">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['hType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="from"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker formControlName="to"></ss-date-picker>
+            </mat-form-field>
+
+<!--            <pre> {{ form.value | json }}</pre>-->
+        </form>
+
+    </mat-card-content>
+</mat-card>

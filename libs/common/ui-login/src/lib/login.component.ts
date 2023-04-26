@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         //
         this.loading = true;
         if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
-            this.loginSrv.agentLogin(this.user, this.isPhone, this.onLoadingFinished);
+            this.loginSrv.agentLogin('/customers/login', this.user, this.isPhone, this.onLoadingFinished);
         } else {
             if (this.loginSrv.customerLogin === LoginType.USER) {
                 this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);

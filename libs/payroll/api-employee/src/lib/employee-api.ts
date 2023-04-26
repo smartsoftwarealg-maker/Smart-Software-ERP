@@ -230,3 +230,14 @@ export interface PaymentInfo {
     accountno?: string;
     paymode?: number;
 }
+
+export interface HolidayRequest{id: number;
+    centerId: number;
+    personId: number;
+    hType: number;
+    from?: Date;
+    to?: Date;
+    firstName?: string;
+    lastName?: string;
+    typeDescription?: string;
+}

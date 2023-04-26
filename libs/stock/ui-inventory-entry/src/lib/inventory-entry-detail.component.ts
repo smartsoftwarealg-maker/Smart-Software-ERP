@@ -22,7 +22,7 @@ import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
-    @ViewChild(InventoryLinesListComponent) detail: InventoryLinesListComponent;
+    @ViewChild(InventoryLinesListComponent) _detail: InventoryLinesListComponent;
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -30,10 +30,10 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
         label: 'COMMON_LOAD_EXCEL',
         visible: true,
         click: () => this.importInventoryDocument(),
-    }
+    };
 
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
 
     constructor(
         private langSrv: LanguageService,
@@ -92,7 +92,7 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
                     } else {
                         this.snackBarSrv.showFailureMessage();
                     }
-                    this.detail?.loadDetailLines().subscribe();
+                    this._detail?.loadDetailLines().subscribe();
 
                     this.shellSrv.setLoading(false);
                 });
