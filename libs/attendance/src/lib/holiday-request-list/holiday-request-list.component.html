@@ -1,0 +1,32 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="typeDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.typeDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="from">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.from | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="to">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.to | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

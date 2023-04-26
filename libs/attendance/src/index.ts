@@ -15,3 +15,5 @@ export * from './lib/holiday-list/holiday-list.component';
 export * from './lib/holiday-detail/holiday-detail.component';
 export * from './lib/attendance-log-list/attendance-log-list.component';
 export * from './lib/attendance-log-detail/attendance-log-detail.component';
+export * from './lib/holiday-request-list/holiday-request-list.component';
+export * from './lib/holiday-request-detail/holiday-request-detail.component';

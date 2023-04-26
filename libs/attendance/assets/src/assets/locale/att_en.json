@@ -3,5 +3,16 @@
     "WORKSHIFTS":       "Shifts",
     "HOLIDAYS":         "Holidays",
     "SHIFT_ASSIGNMENTS": "Shift assignment",
-    "ATTENDANCE_LOG":   "Attendance log"
+    "ATTENDANCE_LOG":   "Attendance log",
+    "IP_ADDRESS":       "IP Address",
+    "PORT":             "Port",
+    "START_DATE":       "Start date",
+    "GRACE_TIME":       "Grace time",
+    "PERIOD":           "Period",
+    "SHIFT":            "Shift",
+    "ATTENDANCE":       "Attendance",
+    "PRESENCE":         "Presence",
+    "ABSENCE":          "Absence",
+    "LATENESS":         "Lateness",
+    "HOLIDAY_REQUEST":  "Holiday request"
 }

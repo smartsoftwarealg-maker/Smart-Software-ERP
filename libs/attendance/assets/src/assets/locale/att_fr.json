@@ -3,5 +3,16 @@
     "WORKSHIFTS":        "Shifts",
     "HOLIDAYS":          "Jours Fériés",
     "SHIFT_ASSIGNMENTS": "Affecations",
-    "ATTENDANCE_LOG":    "Journal Pointage"
+    "ATTENDANCE_LOG":    "Journal Pointage",
+    "IP_ADDRESS":       "Adresse IP",
+    "PORT":             "Port",
+    "START_DATE":       "Date de début",
+    "GRACE_TIME":       "Temps de grâce",
+    "PERIOD":           "Période",
+    "SHIFT":            "Shift",
+    "ATTENDANCE":       "Pointage",
+    "PRESENCE":         "Présence",
+    "ABSENCE":          "Absence",
+    "LATENESS":         "Retard",
+    "HOLIDAY_REQUEST":  "Demande congé"
 }
