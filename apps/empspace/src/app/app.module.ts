@@ -18,7 +18,7 @@ import {
     MAIN_PAGE_URL
 } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
-import {EMPSPACE_APP_URL} from "./common";
+import {EMPSPACE_APP_URL} from './common';
 import {MainPageComponent} from '@ss/common/ui-main-page';
 
 const routes: Routes = [
@@ -68,6 +68,8 @@ export class AppModule {
         this.loginSrv.customerLogin = LoginType.PERSON;
         langSrv.addSource('assets/locale/', '');
         langSrv.addSource('assets/locale/common_', 'COMMON_');
+        langSrv.addSource('assets/locale/logistics_', 'LOGISTICS_');
         langSrv.addSource('assets/locale/administration_', 'ADMINISTRATION_');
+        langSrv.addSource('assets/locale/att_', 'ATT_');
     }
 }

@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
             if (this.loginSrv.customerLogin === LoginType.USER) {
                 this.loginSrv.userLogin(this.user, this.isPhone, this.onLoadingFinished);
             } else {
-                this.loginSrv.userOrCustomerLogin(this.user, this.isPhone, this.onLoadingFinished);
+                this.loginSrv.agentLogin('/persons/login', this.user, this.isPhone, this.onLoadingFinished);
             }
         }
         localStorage.setItem(this.USER_DATA, JSON.stringify(this.user));

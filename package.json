@@ -74,6 +74,7 @@
     "@nrwl/linter": "15.9.2",
     "@nrwl/nx-cloud": "16.0.4",
     "@nrwl/workspace": "15.9.2",
+    "@nxtend/capacitor": "^13.0.0",
     "@schematics/angular": "15.2.6",
     "@types/jest": "29.5.1",
     "@types/node": "~18.16.1",

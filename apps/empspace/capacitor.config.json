@@ -1,0 +1,14 @@
+{
+  "appId": "com.smartsoftware.empspace",
+  "appName": "smart-empspace",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "../../dist/apps/empspace",
+  "allowMixedContent": true,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
