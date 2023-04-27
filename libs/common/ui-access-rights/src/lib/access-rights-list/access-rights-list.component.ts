@@ -1,29 +1,29 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
     AccessRight,
-    LanguageService,
     LoginService,
     PaginatorPersistenceService,
     Role
-} from "@ss/common/api-common";
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {DefaultReportService} from "@ss/common/ui-default-report-component";
-import {AccessRightsService} from "@ss/common/api-access-rights";
-import {LookupsService, RoleService} from "@ss/common/api-lookup";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from "@angular/forms";
-import {switchMap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
+} from '@ss/common/api-common';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {AccessRightsService} from '@ss/common/api-access-rights';
+import {LookupsService, RoleService} from '@ss/common/api-lookup';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 
 @Component({
-  selector: 'ss-access-rights',
-  templateUrl: './access-rights-list.component.html',
-  styleUrls: ['./access-rights-list.component.scss']
+    selector: 'ss-access-rights',
+    templateUrl: './access-rights-list.component.html',
+    styleUrls: ['./access-rights-list.component.scss']
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
+    private roleSrv = inject(RoleService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
 
     apps: string[] = [];
@@ -47,15 +47,15 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         private lookupSrv: LookupsService,
         public formBuilder: UntypedFormBuilder,
         public override pagPersistSrv: PaginatorPersistenceService,
-        private roleSrv: RoleService) {
+    ) {
         super(rightsSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
         this.form = new UntypedFormGroup({

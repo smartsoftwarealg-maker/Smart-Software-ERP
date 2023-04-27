@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
 import {DefaultAutoCompleteModel, UserLookup} from '@ss/common/ui-auto-complete';
@@ -17,6 +17,9 @@ import {DefinitionLookupService} from '@ss/logistics/document-numbering';
     styleUrls: ['./user-document-detail.component.scss'],
 })
 export class UserDocumentDetailComponent extends BaseEntityDetailComponent<UserDocument> {
+    private usersSrv =  inject(UserListService);
+    private definitionSrv =  inject(DefinitionLookupService);
+
     userLookup = new UserLookup(this.usersSrv);
     documentLookup = new DefaultAutoCompleteModel(this.definitionSrv);
 
@@ -27,9 +30,7 @@ export class UserDocumentDetailComponent extends BaseEntityDetailComponent<UserD
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private usersSrv: UserListService,
-        private definitionSrv: DefinitionLookupService,) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USER_DOCUMENTS');
     }
 

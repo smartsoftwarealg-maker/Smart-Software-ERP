@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BudgetTransfer, PlanningInfo} from '../budget-movement-api';
 import {DecimalPipe} from '@angular/common';
@@ -22,6 +22,7 @@ import {filter} from 'rxjs';
 export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<BudgetTransfer> {
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);
     private planningInfo: PlanningInfo = null;
+    private supplierSrv = inject(SupplierService);
     public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
 
 
@@ -32,7 +33,6 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public supplierSrv: SupplierService,
         private activatedRoute: ActivatedRoute,
         private langSrv: LanguageService,
         private router: Router,
@@ -74,7 +74,7 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
     }
 
     override ngOnInit() {
-        this.saveButton.visible = this.router.url.indexOf("/detail") < 0;
+        this.saveButton.visible = this.router.url.indexOf('/detail') < 0;
         super.ngOnInit();
         if (this.entitySrv.getParentId() < 1) {
             this.router.navigate(['..'], {relativeTo: this.activatedRoute}).then();
@@ -84,6 +84,6 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
         ).subscribe((e: RouterEvent) => {
             this.saveButton.visible = e.url.indexOf('/detail') < 0;
         });
-         this.subscriptions.push(sub);
+        this.subscriptions.push(sub);
     }
 }

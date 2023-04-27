@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from "@angular/core";
 import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
@@ -25,8 +25,12 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class DeliveryCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private usersService =  inject(UserListService);
+    private payMethodSrv =  inject(PayMethodService);
+    private agentService = inject(AgentService);
+
     public payModeAutoCompleteModel= new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
 
     constructor(
@@ -39,11 +43,9 @@ export class DeliveryCancellationDetailComponent extends BaseTransactionDetailCo
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
         public lookupsSrv: LookupsService,
-        private agentService: AgentService,
         protected dialog: MatDialog,
-        private payMethodSrv: PayMethodService) {
+        ) {
         super(deliveryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_DELIVERY_CANCEL');
     }
 

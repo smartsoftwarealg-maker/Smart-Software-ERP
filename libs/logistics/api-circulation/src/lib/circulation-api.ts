@@ -1,9 +1,9 @@
-export const CIRCULATION_URL = "/circulation";
+export const CIRCULATION_URL = '/circulation';
 
 export interface Circulation {
     document: string,
     number:   number,
-    date:     string,
+    date:     Date,
     qty:      number,
     price:    number,
     pprice:   number,

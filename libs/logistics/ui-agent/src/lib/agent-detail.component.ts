@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, switchMap, tap} from 'rxjs/operators';
@@ -32,6 +32,11 @@ import {AGENT_ARCHIVES} from '@ss/common/app-archive';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private bankSrv = inject(BankService);
+    private loginSrv = inject(LoginService);
+    private departmentSrv =  inject(DepartmentService);
+    private activitySrv =  inject(ActivityService);
+
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
@@ -50,7 +55,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     prices: AgentPrice[] = [];
 
     constructor(
-        private loginSrv: LoginService,
         public agentSrv: AgentService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -59,10 +63,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private router: Router,
-        private isParamSrv: IsParamService,
-        private departmentSrv: DepartmentService,
-        private activitySrv: ActivityService,
-        private bankSrv: BankService) {
+        private isParamSrv: IsParamService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
     }
@@ -101,14 +102,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                     this.form.controls['blockingReason'].disable();
                     this.form.controls['blockingReason'].setValue('');
                 } else {
-                    this.form.controls['blockingReason'].enable()
+                    this.form.controls['blockingReason'].enable();
                 }
 
             });
     }
 
     public override setupForm(a: Agent) {
-        const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
+        const urlRegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
@@ -171,7 +172,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             this.isTouchedAndInvalid(this.form.controls['customerCode']) ||
             this.isTouchedAndInvalid(this.form.controls['price']) ||
             this.isTouchedAndInvalid(this.form.controls['currency']) ||
-            this.isTouchedAndInvalid(this.form.controls['agentType'])
+            this.isTouchedAndInvalid(this.form.controls['agentType']);
     }
 
     public isLatinSectionInvalid(): boolean {
@@ -186,14 +187,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'general':
-                return this.isGeneralSectionInvalid();
-            case 'latin':
-                return this.isLatinSectionInvalid();
-            case 'fiscal':
-                return this.isFiscalSectionInvalid();
-            default:
-                return false;
+        case 'general':
+            return this.isGeneralSectionInvalid();
+        case 'latin':
+            return this.isLatinSectionInvalid();
+        case 'fiscal':
+            return this.isFiscalSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -205,7 +206,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
 
         // if expanded return primary background class
         if (panel.expanded)
-            return 'b-primary-expansion-panel'
+            return 'b-primary-expansion-panel';
         else
             return '';
     }

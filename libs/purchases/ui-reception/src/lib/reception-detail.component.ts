@@ -1,19 +1,16 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import { Component, inject, OnInit } from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {Currency, CurrencyService, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {switchMap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
 import {ReceptionService} from '@ss/purchases/api-reception';
 import {LoginService, User} from '@ss/common/api-common';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
-import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import {ReceptionLinesListComponent} from './reception-lines-list.component';
 import {MatDialog} from '@angular/material/dialog';
 
 
@@ -23,10 +20,15 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
+    public usersSrv = inject(UserListService);
+    public supplierSrv = inject(SupplierService);
+    public lookupsSrv = inject(LookupsService);
+    private payMethodSrv = inject(PayMethodService);
+
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
+    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
     constructor(
         public receptionService: ReceptionService,
@@ -36,11 +38,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersSrv: UserListService,
-        public supplierSrv: SupplierService,
-        public lookupsSrv: LookupsService,
         protected readonly loginSrv: LoginService,
-        private payMethodSrv: PayMethodService,
         protected dialog: MatDialog,
         private currencySrv: CurrencyService) {
         super(receptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_RECEPTION');

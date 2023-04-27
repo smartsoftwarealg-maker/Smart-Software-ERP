@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {FundService, PaymentInfoService} from '@ss/payroll/api-employee';
 import {UntypedFormBuilder} from '@angular/forms';
 import {Fund, LookupsService, MaritalStatus} from '@ss/common/api-lookup';
@@ -14,7 +14,10 @@ import {SnackBarService} from '@ss/common/ui-shell';
     styleUrls: ['./payment-info.component.scss']
 })
 export class PaymentInfoComponent {
-    fund1
+    private lookupsSrv =  inject(LookupsService);
+    private fundSrv =  inject(FundService);
+    private bankSrv =  inject(BankService);
+
     form = null;
     maritalStatus: MaritalStatus[];
     funds: Fund[] = [];
@@ -24,9 +27,6 @@ export class PaymentInfoComponent {
 
     constructor(private infoSrv: PaymentInfoService,
                 private formBuilder: UntypedFormBuilder,
-                private lookupsSrv: LookupsService,
-                private fundSrv: FundService,
-                private bankSrv: BankService,
                 private snackBarSrv: SnackBarService) {
     }
 
@@ -73,16 +73,16 @@ export class PaymentInfoComponent {
                 tap(res => this.funds = res),
                 switchMap(_ => this.infoSrv.load(this._personId))
             ).subscribe(res => {
-            this.form = this.formBuilder.group({
-                id: [res.id],
-                employee: [res.employee],
-                maritalStatus: [res.maritalStatus],
-                fund1: [res.fund1],
-                fund2: [res.fund2],
-                bank: [res.bank],
-                paymode: [res.paymode],
-                accountno: [res.accountno]
+                this.form = this.formBuilder.group({
+                    id: [res.id],
+                    employee: [res.employee],
+                    maritalStatus: [res.maritalStatus],
+                    fund1: [res.fund1],
+                    fund2: [res.fund2],
+                    bank: [res.bank],
+                    paymode: [res.paymode],
+                    accountno: [res.accountno]
+                });
             });
-        });
     }
 }

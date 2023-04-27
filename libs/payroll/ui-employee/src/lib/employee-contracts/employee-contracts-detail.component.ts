@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable, of } from 'rxjs';
-import { tap, switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { tap, switchMap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {HttpService, LoginService} from '@ss/common/api-common';
-import {Contract, ContractMotiveService, EmployeeContractService, MotiveService} from '@ss/payroll/api-employee';
+import {Contract, ContractMotiveService, EmployeeContractService} from '@ss/payroll/api-employee';
 import {
     Post,
     LookupsService,
@@ -15,8 +15,7 @@ import {
     Division,
     Service,
     Category,
-    PostService,
-    WorkshopService
+    PostService
 } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
@@ -27,6 +26,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./employee-contracts-detail.component.scss']
 })
 export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<Contract> implements OnInit, OnDestroy {
+    private postSrv =  inject(PostService);
+    private motiveSrv =  inject(ContractMotiveService);
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     motiveLookup = new DefaultAutoCompleteModel(this.motiveSrv);
 
@@ -37,7 +38,7 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
     services: Service[] = [];
     categories: Category[] = [];
 
-    parentId: number = 0;
+    parentId = 0;
 
     constructor(
         public employeeContractSrv: EmployeeContractService,
@@ -48,8 +49,6 @@ export class EmployeeContractsDetailComponent extends BaseEntityDetailComponent<
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private postSrv: PostService,
-        private motiveSrv: ContractMotiveService,
         private loginSrv: LoginService) {
         super(employeeContractSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CONTRACTS');
     }

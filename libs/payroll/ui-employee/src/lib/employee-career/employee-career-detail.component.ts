@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -28,6 +28,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./employee-career-detail.component.scss']
 })
 export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Career> implements OnInit, OnDestroy {
+    private postSrv =  inject(PostService);
+    private workshopSrv =  inject(WorkshopService);
     postLookup = new DefaultAutoCompleteModel(this.postSrv);
     workshopLookup = new DefaultAutoCompleteModel(this.workshopSrv);
     entity: Career;
@@ -47,9 +49,7 @@ export class EmployeeCareerDetailComponent extends BaseEntityDetailComponent<Car
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private gridService: GridService,
-        private postSrv: PostService,
-        private workshopSrv: WorkshopService) {
+        private gridService: GridService) {
         super(employeeCareerSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_CAREER');
     }
 

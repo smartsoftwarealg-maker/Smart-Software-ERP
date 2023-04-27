@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,6 +20,9 @@ import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
     styleUrls: ['./ltm-testing-detail.component.scss'],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> {
+    private lineSrv =  inject(LtmLineService);
+    private matterSrv =  inject(LtmLineMatterService);
+    private testLookupSrv =  inject(LtmMatterTestLookupService);
     lineLookup   = new DefaultAutoCompleteModel(this.lineSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
     testLookup   = new DefaultAutoCompleteModel(this.testLookupSrv);
@@ -37,9 +40,6 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        private lineSrv: LtmLineService,
-        private matterSrv: LtmLineMatterService,
-        private testLookupSrv: LtmMatterTestLookupService,
         private router: Router) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_TESTINGS');
         this.matterLookup.onObjectSelected = (m) => this.onMatter(m);

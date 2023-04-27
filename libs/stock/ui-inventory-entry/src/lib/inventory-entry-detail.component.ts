@@ -1,17 +1,15 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {UntypedFormBuilder} from '@angular/forms';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
-import {InventoryService} from '@ss/stock/api-inventory';
 import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 
@@ -22,6 +20,7 @@ import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
+    private usersService =  inject(UserListService);
     @ViewChild(InventoryLinesListComponent) _detail: InventoryLinesListComponent;
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -46,7 +45,6 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_INVENTORY_ENTRY');
     }

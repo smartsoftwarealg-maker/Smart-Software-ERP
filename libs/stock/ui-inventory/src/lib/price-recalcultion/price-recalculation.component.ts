@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {Currency, CurrencyService, LookupsService, LotsService, Store} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, PaginationModel} from '@ss/common/api-common';
+import {LoginService} from '@ss/common/api-common';
 import {ERR, Option, OptionService} from '@ss/logistics/ui-options';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -21,10 +21,12 @@ interface EvalPrice {
     styleUrls: ['./price-recalculation.component.scss'],
 })
 export class PriceRecalculationComponent extends BaseEntityDetailComponent<Option> implements OnInit {
+    private storeNameSrv =  inject(LotsService);
+
     evalPriceOptions: EvalPrice[] = [
         {id: 1, name: 'LOGISTICS_FIFO'},
         {id: 2, name: 'LOGISTICS_AWP'}
-    ]
+    ];
 
     processing = false;
     data: ERR[] = [];
@@ -49,8 +51,7 @@ export class PriceRecalculationComponent extends BaseEntityDetailComponent<Optio
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private currencySrv: CurrencyService,
-        private storeNameSrv: LotsService) {
+        private currencySrv: CurrencyService) {
         super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_PRICE_RECALCULATION');
     }
 

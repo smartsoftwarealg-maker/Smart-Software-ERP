@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ContractArticleService} from '../contract-article.service';
 import {FormBuilder, FormControl, UntypedFormGroup, Validators} from '@angular/forms';
@@ -14,13 +14,13 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
     styleUrls: ['./contract-article-detail.component.scss'],
 })
 export class ContractArticleDetailComponent implements OnInit {
+    private articleSrv =  inject(ArticleService);
     articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
     form: UntypedFormGroup = null;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private entitySrv: ContractArticleService,
-                private articleSrv: ArticleService,
                 private snackBarSrv: SnackBarService,
                 private confirmSrv: ConfirmationDialogService,
                 private fb: FormBuilder) {

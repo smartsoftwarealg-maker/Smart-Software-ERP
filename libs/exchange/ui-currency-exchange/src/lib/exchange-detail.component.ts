@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '@ss/exchange/api-currency-deposit';
+import {DepositTypeService} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
@@ -16,16 +16,16 @@ import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-excha
     styleUrls: ['./exchange-detail.component.scss'],
     templateUrl: './exchange-detail.component.html'
 })
-export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange> {
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange> implements OnInit {
+    private agentService =  inject(AgentService);
+    private typeSrv =  inject(DepositTypeService);
+    private loginSrv =  inject(LoginService);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public purchaseAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
     public salesAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
 
     constructor(
-        private agentService: AgentService,
-        private typeSrv: DepositTypeService,
-        private loginSrv: LoginService,
         private currencySrv: CurrencyService,
         public exchangeService: CurrencyExchangeService,
         public override shellSrv: ShellService,
@@ -66,7 +66,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
         const rate = this.form.controls['exchRate'].value;
         const amount = this.form.controls['amount'].value;
         const value = (rate * amount);
-        this.form.controls['soldAmount'].setValue(value, {onlySelf: true, emitEvents: false})
+        this.form.controls['soldAmount'].setValue(value, {onlySelf: true, emitEvents: false});
     }
 
     onCurrencyChange() {
@@ -77,7 +77,7 @@ export class ExchangeDetailComponent extends BaseEntityDetailComponent<Exchange>
             this.form.controls['exchRate']?.setValue(value);
         }
     }
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
     }

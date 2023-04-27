@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Training} from '../employee-training';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -14,11 +14,15 @@ import {EmployeeTrainingService} from '../employee-training.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
-  selector: 'ss-employee-training-dist',
-  templateUrl: './employee-training-detail.component.html',
-  styleUrls: ['./employee-training-detail.component.scss']
+    selector: 'ss-employee-training-dist',
+    templateUrl: './employee-training-detail.component.html',
+    styleUrls: ['./employee-training-detail.component.scss']
 })
 export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<Training> implements OnInit {
+    private motiveSrv =  inject(MotiveService);
+    private diplomaSrv =  inject(DiplomaService);
+    private loginSrv =  inject(LoginService);
+    private judicialSrv = inject(JudicialFrameService);
     motiveAutoCompleteModel = new DefaultAutoCompleteModel(this.motiveSrv);
     diplomaAutoCompleteModel = new DefaultAutoCompleteModel(this.diplomaSrv);
     judicialFrameAutoCompleteModel = new DefaultAutoCompleteModel(this.judicialSrv);
@@ -32,11 +36,7 @@ export class EmployeeTrainingDetailComponent extends BaseEntityDetailComponent<T
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private motiveSrv: MotiveService,
-        private subjectSrv: SubjectService,
-        private diplomaSrv: DiplomaService,
-        private loginSrv: LoginService,
-        private judicialSrv: JudicialFrameService) {
+        private subjectSrv: SubjectService) {
         super(trainingSrv,
             shellSrv,
             snackBarSrv, route,

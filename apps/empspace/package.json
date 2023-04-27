@@ -1,0 +1,9 @@
+{
+  "name": "emspace",
+  "devDependencies": {
+    "@capacitor/cli": "^4.0.0"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^4.2.0"
+  }
+}

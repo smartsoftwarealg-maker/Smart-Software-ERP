@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BudgetTransferDetail} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -20,6 +20,7 @@ import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
 })
 export class BudgetTransferLineDetailComponent implements OnInit {
     destinations$: Observable<Budget[]> = null;
+    private planningSrv = inject(BudgetPlanningService);
     planningLookup = new DefaultAutoCompleteModel(this.planningSrv);
     form = this.formBuilder.group( {
         id:          [0],
@@ -27,7 +28,7 @@ export class BudgetTransferLineDetailComponent implements OnInit {
         planningId:  [null, Validators.required],
         amount:      [0,    Validators.required],
         description: [null],
-    })
+    });
 
     constructor(
         private entitySrv: BudgetTransferService,
@@ -38,7 +39,6 @@ export class BudgetTransferLineDetailComponent implements OnInit {
         private router: Router,
         private formBuilder: UntypedFormBuilder,
         private budgetSrv: BudgetService,
-        private planningSrv: BudgetPlanningService,
         private confirmationSrv: ConfirmationDialogService) {
     }
 

@@ -1,20 +1,16 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {UntypedFormBuilder} from '@angular/forms';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {LanguageService, LoginService, User} from '@ss/common/api-common';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import {LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {DocImportComponent, InventoryImportComponent} from '@ss/logistics/ui-doc-import';
-import {switchMap} from 'rxjs/operators';
+import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
-import {InventoryImportService} from '../../../../logistics/ui-doc-import/src/lib/inventory-import.service';
-import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
 
 @Component({
     selector: 'ss-inventory-detail',
@@ -22,6 +18,7 @@ import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
     templateUrl: './inventory-detail.component.html'
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private usersService =  inject(UserListService);
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -29,9 +26,9 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importInventoryDocument(),
-    }
+    };
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
 
     constructor(
         protected loginSrv: LoginService,
@@ -43,7 +40,6 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         public router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventorySrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY');
     }

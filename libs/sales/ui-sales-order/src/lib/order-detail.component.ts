@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
@@ -23,6 +23,10 @@ import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
+    private agentService = inject(AgentService);
+    private usersService = inject(UserListService);
+    private payMethodSrv = inject(PayMethodService);
+
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
 
     private importContractBtn: ToolbarButton = {
@@ -32,7 +36,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         label: 'LOGISTICS_IMPORT_CONTRACT',
         visible: true,
         click: () => this.importContract(),
-    }
+    };
     private order: Transaction = null;
     public groups: CCGroup[];
     public dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersService);
@@ -47,11 +51,8 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public usersService: UserListService,
                 public lookupsSrv: LookupsService,
-                private agentService: AgentService,
                 public override loginSrv: LoginService,
-                private payMethodSrv: PayMethodService,
                 public override dialog: MatDialog,
                 private projectSrv: SalesContractService) {
         super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
@@ -60,7 +61,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
     override preload(): Observable<any> {
         return this.lookupsSrv
             .getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     override ngOnInit() {

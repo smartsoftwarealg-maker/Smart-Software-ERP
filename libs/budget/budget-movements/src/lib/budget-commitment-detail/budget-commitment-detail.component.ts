@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment, PlanningInfo} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./budget-commitment-detail.component.scss'],
 })
 export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<BudgetCommitment> {
+    private supplierSrv  = inject(SupplierService);
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);
     private planningInfo: PlanningInfo = null;
     public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
@@ -29,7 +30,6 @@ export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<B
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public supplierSrv: SupplierService,
         private activatedRoute: ActivatedRoute,
         private langSrv: LanguageService,
         private router: Router) {

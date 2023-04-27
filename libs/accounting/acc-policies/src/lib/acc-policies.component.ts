@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validator, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
+import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {AccountAutocompleteModel} from '@ss/accounting/api-accounts';
-import {AccJournalsService, AccPoliciesService, AccProjectService} from '@ss/accounting/accounting-api';
+import { AccJournalsService, AccPoliciesService, AccProjectService, Journal } from '@ss/accounting/accounting-api';
 import {ACCPolicy} from '@ss/accounting/accounting-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {MatCheckboxChange} from '@angular/material/checkbox';
@@ -20,8 +19,8 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
     styleUrls: ['./acc-policies.component.scss']
 })
 export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
-    journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
-    projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
+    journalLookup: DefaultAutoCompleteModel<Journal> = null;
+    projectLookup: DefaultAutoCompleteModel<Lookup> = null;
 
     constructor(
         public detailSrv: AccPoliciesService,
@@ -37,6 +36,8 @@ export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_OPTIONS');
         detailSrv.setParentId(this.loginSrv.appCtx.center);
         this.id = this.loginSrv.appCtx.center;
+        this.journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
+        this.projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
     }
 
     protected override getRouteParam(): Observable<any> {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {DocStatus, UserMessage} from '../workflow-api';
 import {DocStatusService} from '../doc-status.service';
@@ -17,6 +17,9 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['./user-message-detail.component.scss'],
 })
 export class UserMessageDetailComponent extends BaseEntityDetailComponent<UserMessage> {
+    private messageSrv =  inject(DocStatusService);
+    private usersSrv = inject(UserListService);
+
     userLookup = new UserLookup(this.usersSrv);
     messageLookup = new DefaultAutoCompleteModel<DocStatus>(this.messageSrv);
 
@@ -27,9 +30,7 @@ export class UserMessageDetailComponent extends BaseEntityDetailComponent<UserMe
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private usersSrv: UserListService,
-        private messageSrv: DocStatusService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USER_MESSAGES');
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {LoginService, PaginationModel, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
@@ -17,6 +17,8 @@ import {of, switchMap} from 'rxjs';
     styleUrls: ['./user-stores.component.scss'],
 })
 export class UserStoresComponent implements OnInit {
+    private lotsService =  inject(LotsService);
+
     readonly isManager = this.loginSrv.appCtx.manager;
     private filter: string = null;
     private refreshButton: ToolbarButton = {
@@ -46,7 +48,6 @@ export class UserStoresComponent implements OnInit {
                 private storeSrv: UserStoresService,
                 private shellSrv: ShellService,
                 private route: ActivatedRoute,
-                private lotsService: LotsService,
                 private snackBarSrv: SnackBarService,
                 private confirmationSrv: ConfirmationDialogService,
                 private loginSrv: LoginService) {

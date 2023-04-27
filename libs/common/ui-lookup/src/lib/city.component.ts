@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {City, CityService, WilayaService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,10 +6,9 @@ import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {Observable, of, map} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {DairaService} from '../../../api-lookup/src/lib/dira.service';
+import { DairaService } from '../../../api-lookup/src/lib/dira.service';
 
 
 @Component({
@@ -42,13 +41,13 @@ export class CityListComponent extends BaseEntityListComponent<City> {
     styleUrls: ['./base-templates/detail-template.scss']
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {
+    private wilayaSrv  = inject(WilayaService);
+    private dairaSrv  = inject(DairaService);
     wilayLookupModel = new DefaultAutoCompleteModel(this.wilayaSrv);
     dairaLookupModel = new DefaultAutoCompleteModel(this.dairaSrv);
 
     constructor(
         public citySrv: CityService,
-        private wilayaSrv: WilayaService,
-        private dairaSrv: DairaService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

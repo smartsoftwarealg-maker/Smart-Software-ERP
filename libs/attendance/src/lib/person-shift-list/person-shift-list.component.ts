@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PersonShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,6 +22,8 @@ import {switchMap} from 'rxjs/operators';
 })
 export class PersonShiftListComponent extends BaseEntityListComponent<PersonShift> {
     private selectedService = 0;
+    private employeeSrv = inject(EmployeeService);
+    private serviceSrv = inject(ServiceService);
 
     employeeCtrl   = new FormControl<number>(this.entitySrv.getParentId());
     serviceCtrl    = new FormControl<number>(0);
@@ -43,9 +45,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private employeeSrv: EmployeeService,
-        private serviceSrv: ServiceService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,

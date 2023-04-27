@@ -1,23 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import { Component, inject } from '@angular/core';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {LanguageService, LoginService, User} from '@ss/common/api-common';
+import {Agent} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UserListService} from '@ss/common/api-users';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {DatePipe} from '@angular/common';
-import {
-    InventoryTransferLinesListComponent
-} from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
 import {TransferService} from '../transfer.service';
-import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
+import {BranchService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
@@ -26,10 +21,14 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class InventoryTransferDetailComponent extends BaseTransactionDetailComponent {
+    private usersService =  inject(UserListService);
+    private lookupsSrv =  inject(LookupsService);
+    private branchService = inject(BranchService);
+
     public groups: CCGroup[];
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination');
 
     constructor(
         private langSrv: LanguageService,
@@ -41,16 +40,13 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
-        public lookupsSrv: LookupsService,
-        private branchService: BranchService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFERS');
     }
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {
