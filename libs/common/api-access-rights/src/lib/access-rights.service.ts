@@ -3,8 +3,7 @@ import {AccessRight, HttpService} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {map} from "rxjs/operators";
-import {APPLICATION_LIST} from '../../../../../apps/erp/src/environments/environment';
+import {map} from 'rxjs/operators';
 
 export const ACCESS_RIGHTS_URL = '/accessrights';
 
@@ -12,6 +11,10 @@ export const ACCESS_RIGHTS_URL = '/accessrights';
     providedIn: 'root'
 })
 export class AccessRightsService extends BaseEntityExtendedService<AccessRight> {
+    private APPLICATION_LIST = [
+        'ACCOUNTING', 'ADMINISTRATION', 'ASSETS', 'DASHBOARD-APP', 'FINANCE', 'HRMASTER',
+        'STOCK', 'LOGISTICS', 'LOGISTICS-ADMINISTRATION', 'ORGANIZATION', 'PAYMENTS',
+        'PAYROLL', 'ATTENDANCE', 'PURCHASES', 'SALES', 'WEBARCHIVE', 'TREASURY', 'LTM', 'WORKFLOW'];
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACCESS_RIGHTS_URL);
@@ -21,7 +24,7 @@ export class AccessRightsService extends BaseEntityExtendedService<AccessRight> 
         const params = new HttpParams().set('app', app);
         const url = '/entities';
         return app === 'APPLICATIONS' ?
-            of(APPLICATION_LIST) : //'COMMON', , 'EXCHANGE'
+            of(this.APPLICATION_LIST) : //'COMMON', , 'EXCHANGE'
             this.httpSrv
                 .get<{ entities: string[] }>(url, params)
                 .pipe(map(res => res['entities'].sort((a, b) => a.localeCompare(b))));

@@ -1,9 +1,8 @@
-import {Injectable} from "@angular/core";
-import {dateToDmyStr, HttpService, isString, LanguageService} from "@ss/common/api-common";
-import {ERR, MiniLine, Option} from "./option.class";
-import {BaseEntityExtendedService} from "@ss/common/api-base-entity";
+import {Injectable} from '@angular/core';
+import {dateToDmyStr, HttpService, isString} from '@ss/common/api-common';
+import {ERR, Option} from './option.class';
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {from, Observable} from 'rxjs';
-import {DatePipe} from '@angular/common';
 
 export const OPTION_URL = '/logistics/options';
 
@@ -12,8 +11,7 @@ export const OPTION_URL = '/logistics/options';
 })
 
 export class OptionService extends BaseEntityExtendedService<Option> {
-    private datePipe: DatePipe = new DatePipe(this.langSrv.defaultLanguage);
-    constructor(protected override httpSrv: HttpService, private langSrv: LanguageService) {
+    constructor(protected override httpSrv: HttpService) {
         super(httpSrv, OPTION_URL);
     }
 

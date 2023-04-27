@@ -13,7 +13,7 @@ import {inject} from '@angular/core';
 export const loginGuard: CanActivateFn =
     (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => inject(CanActivateService).canActivate(route, state)
 
-export const mainRoutes: Routes = [
+export const empRoutes: Routes = [
     {
         path: EMPSPACE_HOLIDAY_REQUEST_URL,
         children: [

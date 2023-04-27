@@ -3,7 +3,7 @@ import {HttpService, LoginService} from '@ss/common/api-common';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
 import {ShellService} from '@ss/common/ui-shell';
-import {empSpaceNavTree} from "./empspace/side-nav-tree";
+import {empSpaceNavTree} from './empspace/side-nav-tree';
 import {of} from 'rxjs';
 
 @Component({

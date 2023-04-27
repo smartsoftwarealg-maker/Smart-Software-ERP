@@ -1,8 +1,8 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FileItem, FileUploader, ParsedResponseHeaders } from 'ng2-file-upload';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
-import { HttpService } from '../../smart-lib/common/http.service';
+import {Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
+import {HttpService} from '../../smart-lib/common/http.service';
 
 // interface IConfig {
 //     baseUrl: string;
@@ -30,23 +30,23 @@ export class ImageInputComponent implements OnInit, Validator {
     public imgSrc: SafeResourceUrl;
 
     @Input()
-    parentUrl: string;
+        parentUrl: string;
     @Input()
-    childUrl: string;
+        childUrl: string;
     @Input()
-    editable = true;
+        editable = true;
     @Input()
-    required = false;
+        required = false;
     @Input()
-    cacheMap: { [key: number]: SafeResourceUrl; };
+        cacheMap: { [key: number]: SafeResourceUrl; };
     @Input()
-    suppressLoadingErrors = false;
+        suppressLoadingErrors = false;
 
-    @ViewChild('file', { static: false }) file: ElementRef;
+    @ViewChild('file', {static: false}) file: ElementRef;
 
     defaultImage: SafeResourceUrl;
 
-    public imageInputUploader: FileUploader = new FileUploader({ url: '' });
+    public imageInputUploader: FileUploader = new FileUploader({url: ''});
     id = 0;
 
     constructor(public httpSrv: HttpService, public sanitizer: DomSanitizer) {
@@ -104,7 +104,7 @@ export class ImageInputComponent implements OnInit, Validator {
             this.imageInputUploader.queue[0].withCredentials = false;
             this.imageInputUploader.queue[0].headers = [
                 // {name: 'Access-Control-Allow-Origin', value: '*'},
-                { name: 'Authorization', value: localStorage.getItem('auth_token') }
+                {name: 'Authorization', value: localStorage.getItem('auth_token')}
             ];
             this.imageInputUploader.queue[0].url = this.httpSrv.getBaseUrl()
                 + this.parentUrl + id + this.childUrl;
@@ -190,7 +190,7 @@ export class ImageInputComponent implements OnInit, Validator {
                 this.httpSrv.getBlob(this.parentUrl + this.id + this.childUrl)
                     .subscribe(
                         res => {
-                            const blob = new Blob([res.body], { type: 'images/jpg' });
+                            const blob = new Blob([res.body], {type: 'images/jpg'});
                             if (blob.size > 10) {
                                 // this.imgSrc = URL.createObjectURL(blob); // memory leak!!! did not call release!!!
                                 // ImageInputComponent.toBase64(blob, this.setImageBlob.bind(this));

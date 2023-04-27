@@ -24,11 +24,10 @@ import {MatDialog} from '@angular/material/dialog';
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
 
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    manager = this.loginSrv.appCtx.manager;
+    public dealerAutoCompleteModel: DefaultAutoCompleteModel<User> = null;
+    public agentAutoCompleteModel: DefaultAutoCompleteModel<Agent> = null;
+    manager = false;
     constructor(
-        private langSrv: LanguageService,
         public consumptionService: ConsumptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -42,12 +41,15 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(consumptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
+        this.dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(usersService);
+        this.agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(consumerSrv, 'id', 'denomination');
+        this.manager = this.loginSrv.appCtx?.manager;
     }
 
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {
