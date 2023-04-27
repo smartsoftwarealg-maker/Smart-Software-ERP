@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
@@ -32,7 +32,8 @@ import {TransferService} from '../transfer.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-
+    private usersService =  inject(UserListService);
+    private branchService =  inject(BranchService);
     public groups: CCGroup[];
 
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
@@ -49,9 +50,7 @@ export class TransferReceptionDetailComponent extends BaseTransactionDetailCompo
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
-        public lookupsSrv: LookupsService,
-        private branchService: BranchService) {
+        public lookupsSrv: LookupsService) {
         super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFER_RECEPTIONS');
     }
 

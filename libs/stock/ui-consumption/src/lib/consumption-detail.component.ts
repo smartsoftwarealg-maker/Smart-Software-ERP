@@ -1,19 +1,18 @@
-import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ConsumptionService} from '@ss/stock/api-consumption';
-import {Observable} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, ConsumerService} from '@ss/logistics/api-agent';
-import {LanguageService, LoginService, User} from '@ss/common/api-common';
-import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, inject } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UntypedFormBuilder } from '@angular/forms';
+import { CCGroup, Lookup, LookupsService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ConsumptionService } from '@ss/stock/api-consumption';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { Agent, ConsumerService } from '@ss/logistics/api-agent';
+import { LoginService, User } from '@ss/common/api-common';
+import { UserListService } from '@ss/common/api-users';
+import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -22,11 +21,12 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
-
+    private consumerSrv = inject(ConsumerService);
+    private usersService = inject(UserListService);
+    dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public groups: CCGroup[];
-    public dealerAutoCompleteModel: DefaultAutoCompleteModel<User> = null;
-    public agentAutoCompleteModel: DefaultAutoCompleteModel<Agent> = null;
-    manager = false;
+
     constructor(
         public consumptionService: ConsumptionService,
         public override shellSrv: ShellService,
@@ -35,15 +35,10 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
-        public consumerSrv: ConsumerService,
         public lookupsSrv: LookupsService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(consumptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
-        this.dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(usersService);
-        this.agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(consumerSrv, 'id', 'denomination');
-        this.manager = this.loginSrv.appCtx?.manager;
     }
 
 

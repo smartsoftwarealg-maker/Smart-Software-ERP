@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Punishment} from '../punishment-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,11 +17,14 @@ import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-punishment-detail',
-  templateUrl: './punishment-detail.component.html',
-  styleUrls: ['./punishment-detail.component.scss']
+    selector: 'ss-punishment-detail',
+    templateUrl: './punishment-detail.component.html',
+    styleUrls: ['./punishment-detail.component.scss']
 })
 export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishment> implements OnInit {
+    private faultSrv =  inject(ProfessionalFaultService);
+    private punishTypeSrv =  inject(PunishmentTypeService);
+
     faultAutoCompleteModel = new DefaultAutoCompleteModel(this.faultSrv);
     punishmentTypeAutoCompleteModel = new DefaultAutoCompleteModel(this.punishTypeSrv);
 
@@ -34,8 +37,6 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private faultSrv: ProfessionalFaultService,
-        private punishTypeSrv: PunishmentTypeService,
         private loginSrv: LoginService) {
         super(detailSrv,
             shellSrv,
@@ -55,7 +56,7 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
             );
     }
 
-   override setupForm(a: Punishment): UntypedFormGroup {
+    override setupForm(a: Punishment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id: a.id,
             employee: a.employee || this.detailSrv.getParentId(),

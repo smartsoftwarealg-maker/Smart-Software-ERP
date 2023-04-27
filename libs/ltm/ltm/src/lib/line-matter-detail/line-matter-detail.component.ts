@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {switchMap, tap} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,17 +16,17 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
     styleUrls: ['./line-matter-detail.component.scss'],
 })
 export class LineMatterDetailComponent implements OnInit {
+    private matterSrv =  inject(LtmMatterService);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     form = this.fb.group( {
         id:       [0],
         matterId: [0, Validators.required],
         parentId: [0, Validators.required]
-    })
+    });
 
     constructor(private entitySrv: LtmLineMatterService,
                 private fb: FormBuilder,
                 private route: ActivatedRoute,
-                private matterSrv: LtmMatterService,
                 private snackBarSrv: SnackBarService,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,

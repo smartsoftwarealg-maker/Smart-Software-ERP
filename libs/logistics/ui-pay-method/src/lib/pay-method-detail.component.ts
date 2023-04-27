@@ -1,12 +1,12 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, PayMethod, PayMode, PayModeService} from "@ss/common/api-lookup";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {PayMethodService} from "@ss/logistics/api-logistics-common";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
+import {LookupsService, PayMethod, PayMode, PayModeService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {PayMethodService} from '@ss/logistics/api-logistics-common';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -15,9 +15,7 @@ import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
     templateUrl: './pay-method-detail.component.html'
 })
 export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMethod> {
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMode>(this.payModeSrv)
-    private curPayMethod: any = null;
-
+    public payModeAutoCompleteModel: DefaultAutoCompleteModel<PayMode> = null;
 
     constructor(
         public payMethodSrv: PayMethodService,
@@ -29,6 +27,7 @@ export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMetho
         public lookupsSrv: LookupsService,
         private payModeSrv: PayModeService) {
         super(payMethodSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_EDIT_ACCOUNT');
+        this.payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMode>(this.payModeSrv);
     }
 
 

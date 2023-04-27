@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -16,6 +16,11 @@ import {LoginService} from '@ss/common/api-common';
     templateUrl: './deposit-detail.component.html'
 })
 export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
+    private agentService =  inject(AgentService);
+    private typeSrv =  inject(DepositTypeService);
+    private loginSrv =  inject(LoginService);
+    private currencySrv =  inject(CurrencyService);
+
     public agentAutoCompleteModel    = new AgentLookupModel(this.agentService);
     public typeAutoCompleteModel     = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
@@ -23,10 +28,6 @@ export class DepositDetailComponent extends BaseEntityDetailComponent<Deposit> {
     public customerId = 0;
 
     constructor(
-        private agentService: AgentService,
-        private typeSrv: DepositTypeService,
-        private loginSrv: LoginService,
-        private currencySrv: CurrencyService,
         public exchangeService: CurrencyDepositService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import {Match, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -14,6 +14,7 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./check-matching-list.component.scss'],
 })
 export class CheckMatchingListComponent implements OnInit, OnDestroy {
+    private bankSrv = inject(BankService);
     private filter: string = null;
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
     bankCtrl   = new FormControl<number>(0);
@@ -32,7 +33,6 @@ export class CheckMatchingListComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private shellSrv: ShellService,
-        private bankSrv: BankService,
         public checkSrv: ProcessedCheckService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,

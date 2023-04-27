@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -17,6 +17,7 @@ import {LanguageService} from '@ss/common/api-common';
     templateUrl: './card.component.html'
 })
 export class CardComponent implements OnInit {
+    private storeSrv =  inject(ArticleLotsService);
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeSrv);
 
@@ -53,17 +54,16 @@ export class CardComponent implements OnInit {
                 public router: Router,
                 public articleSrv: ArticleService,
                 public langServ: LanguageService,
-                public storeSrv: ArticleLotsService,
                 public confirmationSrv: ConfirmationDialogService) {
     }
 
 
     ngOnInit() {
         this.route.queryParams.subscribe(x => {
-            this.articleId = +x['articleId']
+            this.articleId = +x['articleId'];
             this.storeId = +x['articleStoreId'];
             this.articleReference = x['articleReference'];
-            this.useStoreForm = !!x['articleUseStoreSearch']
+            this.useStoreForm = !!x['articleUseStoreSearch'];
 
             if (!this.useStoreForm) {
                 this.loadCard();
@@ -85,7 +85,7 @@ export class CardComponent implements OnInit {
 
         const loadObserver = this.articleId ?
             this.cardSrv.loadByArticleId(this.pagination, this.storeId, this.articleId) :
-            this.cardSrv.loadByArticleReference(this.pagination, this.storeId, this.articleReference)
+            this.cardSrv.loadByArticleReference(this.pagination, this.storeId, this.articleReference);
 
 
         loadObserver.subscribe((x: Card[]) => {

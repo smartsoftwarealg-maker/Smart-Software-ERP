@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -16,11 +16,13 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./ltm-injection.component.scss'],
 })
 export class LtmInjectionComponent implements OnInit {
+    private lineSrv =  inject(LtmLineService);
+    private matterSrv =  inject(LtmLineMatterService);
     lineLookup   = new DefaultAutoCompleteModel(this.lineSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
 
     @Input()
-    requiredFileType = '.xlsx';
+        requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
@@ -37,8 +39,6 @@ export class LtmInjectionComponent implements OnInit {
     constructor(private dialogRef: MatDialogRef<LtmInjectionComponent>,
                 private injectSrv: LtmInjectionService,
                 private fb: UntypedFormBuilder,
-                private lineSrv: LtmLineService,
-                private matterSrv: LtmLineMatterService,
                 private langSrv: LanguageService) {
     }
 

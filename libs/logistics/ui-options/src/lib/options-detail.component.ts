@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -8,9 +8,6 @@ import {
     LookupsService,
     Store,
     LotsService,
-    PayMethod,
-    PayMode,
-    PayModeService,
     Currency,
     CurrencyService
 } from '@ss/common/api-lookup';
@@ -31,6 +28,7 @@ interface EvalPrice {
     templateUrl: './options-detail.component.html'
 })
 export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> implements OnInit {
+    private storeNameSrv = inject(LotsService);
     evalPriceOptions: EvalPrice[] = [
         {id: 1, name: 'LOGISTICS_FIFO'},
         {id: 2, name: 'LOGISTICS_AWP'}
@@ -48,8 +46,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private currencySrv: CurrencyService,
-        private storeNameSrv: LotsService) {
+        private currencySrv: CurrencyService) {
         super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OPTION');
     }
 

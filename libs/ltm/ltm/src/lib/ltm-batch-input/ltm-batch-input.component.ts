@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import {Batch, LTMLine, LTMMatter} from '../ltm-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -21,6 +21,7 @@ import {LtmTestService} from '../ltm-test.service';
     styleUrls: ['./ltm-batch-input.component.scss'],
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
+    private lineSrv =  inject(LtmLineService);
     private subscriptions: Subscription[] = [];
     private _periodicity = 0;
     private TODAY = new Date();
@@ -62,7 +63,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         public  route: ActivatedRoute,
         public  formBuilder: FormBuilder,
         public  confirmationSrv: ConfirmationDialogService,
-        private lineSrv: LtmLineService,
         private matterSrv: LtmLineMatterService,
         private matterTestSrv:    LtmMatterTestService,
         private periodSrv: LtmPeriodicityService,

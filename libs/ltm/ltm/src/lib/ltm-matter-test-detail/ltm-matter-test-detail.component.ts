@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {FormBuilder, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -17,6 +17,10 @@ import {LtmPeriodicityService} from '../ltm-periodicity.service';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
 })
 export class LtmMatterTestDetailComponent implements OnInit {
+    private activatedRoute = inject(ActivatedRoute);
+    private periodicitySrv = inject(LtmPeriodicityService);
+    private confirmationSrv = inject(ConfirmationDialogService);
+
     periodicityLookup = new DefaultAutoCompleteModel(this.periodicitySrv);
     testLookup = new DefaultAutoCompleteModel(this.testSrv);
     form = this.fb.group( {
@@ -27,17 +31,14 @@ export class LtmMatterTestDetailComponent implements OnInit {
         maxValue:    [0, Validators.required],
         optValue:    [0, Validators.required],
         periodicity: [0, Validators.required]
-    })
+    });
 
     constructor(private entitySrv: LtmMatterTestService,
                 private fb: FormBuilder,
                 private route: ActivatedRoute,
                 private testSrv: LtmTestService,
                 private snackBarSrv: SnackBarService,
-                private router: Router,
-                private activatedRoute: ActivatedRoute,
-                private periodicitySrv: LtmPeriodicityService,
-                private confirmationSrv: ConfirmationDialogService) {}
+                private router: Router) {}
 
     ngOnInit(): void {
         this.route

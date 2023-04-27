@@ -1,17 +1,15 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {UntypedFormBuilder} from '@angular/forms';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryExitService} from '@ss/stock/api-inventory-exit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
-
 
 @Component({
     selector: 'ss-inventory-exit-detail',
@@ -19,8 +17,9 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './inventory-exit-detail.component.html'
 })
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
+    public usersService =  inject(UserListService);
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
 
     constructor(
         private langSrv: LanguageService,
@@ -33,7 +32,6 @@ export class InventoryExitDetailComponent extends BaseTransactionDetailComponent
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
         public lookupsSrv: LookupsService) {
         super(inventoryExitService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY_EXIT');
     }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -9,7 +9,7 @@ import {CurrencyDepositService, DepositType, DepositTypeService, Deposit} from '
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import {LoginService} from '@ss/common/api-common';
-import {concatMap} from "rxjs/operators";
+import {concatMap} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-commission-detail',
@@ -17,6 +17,9 @@ import {concatMap} from "rxjs/operators";
     templateUrl: './cash-commission-detail.component.html'
 })
 export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Deposit> {
+    private currencySrv = inject(CurrencyService);
+    private agentService =  inject(AgentService);
+    private typeSrv =  inject(DepositTypeService);
     public agentAutoCompleteModel = new AgentLookupModel(this.agentService);
     public typeAutoCompleteModel = new DefaultAutoCompleteModel<DepositType>(this.typeSrv);
     public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
@@ -24,10 +27,7 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
     public customerId = 0;
 
     constructor(
-        private agentService: AgentService,
-        private typeSrv: DepositTypeService,
         private loginSrv: LoginService,
-        private currencySrv: CurrencyService,
         public exchangeService: CurrencyDepositService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -120,6 +120,6 @@ export class CashCommissionDetailComponent extends BaseEntityDetailComponent<Dep
         super.ngOnInit();
         this.currencySrv.load()
             .pipe(concatMap(_ => this.loginSrv.reload())).subscribe();
-        ;
+
     }
 }

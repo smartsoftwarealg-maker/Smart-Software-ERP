@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {PersonShift} from '../attendance-api';
+import { PersonShift, WorkShift } from "../attendance-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -10,7 +10,7 @@ import {EmployeeService} from '@ss/payroll/api-employee';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {WorkshiftService} from '../workshift.service';
 import {PersonAutocompleteClass} from '@ss/payroll-common';
-import {ServiceService} from '@ss/common/api-lookup';
+import { Service, ServiceService } from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-person-shift-detail',
@@ -18,9 +18,9 @@ import {ServiceService} from '@ss/common/api-lookup';
     styleUrls: ['./person-shift-detail.component.scss'],
 })
 export class PersonShiftDetailComponent extends BaseEntityDetailComponent<PersonShift> {
-    employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
-    shiftLookup    = new DefaultAutoCompleteModel(this.shiftSrv);
-    serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
+    employeeLookup: PersonAutocompleteClass = null;
+    shiftLookup: DefaultAutoCompleteModel<WorkShift> = null;
+    serviceLookup: DefaultAutoCompleteModel<Service> = null;
 
     constructor(
         public override entitySrv: PersonShiftService,
@@ -33,6 +33,9 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
         private shiftSrv: WorkshiftService,
         private serviceSrv: ServiceService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ATT_SHIFT_ASSIGNMENTS');
+        this.employeeLookup  = new PersonAutocompleteClass(this.employeeSrv);
+        this.shiftLookup     = new DefaultAutoCompleteModel(this.shiftSrv);
+        this.serviceLookup   = new DefaultAutoCompleteModel(this.serviceSrv);
     }
 
     public override setupForm(b: PersonShift) {

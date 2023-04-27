@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Budget} from '../budget-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,10 +17,10 @@ import {switchMap, tap} from 'rxjs/operators';
     styleUrls: ['./budget-detail.component.scss'],
 })
 export class BudgetDetailComponent extends BaseEntityDetailComponent<Budget> {
+    private fileSrv = inject(AccFileService);
     fileLookup = new DefaultAutoCompleteModel(this.fileSrv);
 
     constructor(
-        private         fileSrv: AccFileService,
         public override entitySrv: BudgetService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,

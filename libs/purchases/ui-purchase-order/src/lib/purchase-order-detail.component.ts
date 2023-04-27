@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from "@angular/core";
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -27,6 +27,12 @@ import {WorkflowDialogComponent} from '@ss/workflow';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent {
+    private currencySrv  = inject(CurrencyService);
+    private projectSrv  = inject(SalesContractService);
+    private supplierSrv =  inject(SupplierService);
+    private payMethodSrv =  inject(PayMethodService);
+    private usersService =  inject(UserListService);
+
     private importContractBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-file-arrow-up',
@@ -45,12 +51,12 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     //     click: () => this.sendMessage(),
     // }
 
-    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public groups: CCGroup[];
+    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv)
+    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
     constructor(public orderService: PurchaseOrderService,
                 public override shellSrv: ShellService,
@@ -59,14 +65,9 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public usersService: UserListService,
                 public lookupsSrv: LookupsService,
-                private supplierSrv: SupplierService,
-                private payMethodSrv: PayMethodService,
                 protected loginSrv: LoginService,
-                protected dialog: MatDialog,
-                private currencySrv: CurrencyService,
-                private projectSrv: SalesContractService) {
+                protected dialog: MatDialog) {
         super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_EDIT_ORDER');
     }
 
