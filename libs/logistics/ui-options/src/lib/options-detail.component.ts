@@ -18,7 +18,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Option} from './option.class';
 import {OptionService} from './option.service';
-import {LoginService} from "@ss/common/api-common";
+import {LoginService} from '@ss/common/api-common';
 
 interface EvalPrice {
     id: any,
@@ -34,7 +34,7 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
     evalPriceOptions: EvalPrice[] = [
         {id: 1, name: 'LOGISTICS_FIFO'},
         {id: 2, name: 'LOGISTICS_AWP'}
-    ]
+    ];
 
     currencies: Currency[] = [];
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);

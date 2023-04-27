@@ -29,8 +29,8 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
     mainStore = 0;
 
 
-    articleAutoCompleteModel: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
-    storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.storeNameSrv);
+    articleAutoCompleteModel: ArticleAutoCompleteModel = null;
+    storeAutoCompleteModel: LotAutoCompleteModel = null;
 
     constructor(
         public consumptionLinesService: ConsumptionLinesService,
@@ -46,6 +46,8 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
         private loginSrv: LoginService,
         private optionSrv: OptionService) {
         super(consumptionLinesService, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv,'STOCK_EDIT_CONSUMPTION_LINES');
+        this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
+        this.storeAutoCompleteModel = new LotAutoCompleteModel(this.storeNameSrv);
     }
 
     override preload(): Observable<any> {
@@ -71,18 +73,18 @@ export class ConsumptionLinesDetailComponent extends BaseEntityDetailComponent<T
                 .subscribe({
                     next: res => this.updateStockAndValue(res),
                     error: err => this.form.controls['price'].setValue(0.0)
-                })
+                });
         });
 
         this.storeAutoCompleteModel
             .evenEmitter.subscribe(id => {
-            this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
-                .subscribe({
-                    next: res => this.updateStockAndValue(res),
-                    error: err => this.form.controls['price'].setValue(0.0)
-                })
-        });
+                this.articleSrv
+                    .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
+                    .subscribe({
+                        next: res => this.updateStockAndValue(res),
+                        error: err => this.form.controls['price'].setValue(0.0)
+                    });
+            });
     }
 
     private updateStockAndValue(res: QtyPrice) {

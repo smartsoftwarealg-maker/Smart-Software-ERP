@@ -30,17 +30,17 @@ export class ImageInputComponent implements OnInit, Validator {
     public imgSrc: SafeResourceUrl;
 
     @Input()
-    parentUrl: string;
+        parentUrl: string;
     @Input()
-    childUrl: string;
+        childUrl: string;
     @Input()
-    editable = true;
+        editable = true;
     @Input()
-    required = false;
+        required = false;
     @Input()
-    cacheMap: { [key: number]: SafeResourceUrl; };
+        cacheMap: { [key: number]: SafeResourceUrl; };
     @Input()
-    suppressLoadingErrors = false;
+        suppressLoadingErrors = false;
 
     @ViewChild('file', {static: false}) file: ElementRef;
 
