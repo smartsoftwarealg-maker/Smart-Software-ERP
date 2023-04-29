@@ -19,8 +19,8 @@ import {
     HistoryComponent
 } from '@ss/exchange/ui-info';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
-import {CustomerProfileComponent} from "@ss/logistics/ui-agent";
-import {IdiotPageComponent} from "@ss/exchange/ui-idiot-page";
+import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
+import {IdiotPageComponent} from '@ss/exchange/ui-idiot-page';
 import {CustomerSessionService} from '@ss/common/api-common';
 
 export const mainRoutes: Routes = [
@@ -60,7 +60,7 @@ export const mainRoutes: Routes = [
                     { path: EXCHANGE_COMMISSIONS_URL, component: CommissionComponent },
                 ],
                 canActivate: [CanActivateService],
-                data: { form: "Deposit" }
+                data: { form: 'Deposit' }
             },
             {
                 path: ':id',

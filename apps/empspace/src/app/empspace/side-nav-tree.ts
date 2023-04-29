@@ -1,5 +1,5 @@
 import {
-    ABS_CUSTOMER_PROFILE, ABS_HOLIDAY_REQUEST
+    ABS_EMPLOYEE_PROFILE, ABS_ESPACE_REPORTS_URL, ABS_HOLIDAY_REQUEST
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -13,9 +13,16 @@ export const empSpaceNavTree: SideNavNode[] =
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            route: ABS_ESPACE_REPORTS_URL,
+            accessRights: 'Report',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
             name: 'COMMON_PROFILE',
             icon: 'fas fa-file-chart-line',
-            route: ABS_CUSTOMER_PROFILE,
+            route: ABS_EMPLOYEE_PROFILE,
             accessRights: 'Report',
             customerRights: {read: true, edit: false, delete: true, write: true}
         }

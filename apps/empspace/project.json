@@ -36,6 +36,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/business-logic-msgs/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/logistics/assets/src/assets",
                         "output": "assets"
                     }

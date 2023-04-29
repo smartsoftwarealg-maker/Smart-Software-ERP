@@ -273,5 +273,6 @@
     "FORMULA":                    "الصيغة",
     "FORMULAS":                   "الصيغ",
     "JSON_EXPORT":                "تصدير إلى JSON",
-    "LOAD_EXCEL":                 "تحميل من ملف Excel"
+    "LOAD_EXCEL":                 "تحميل من ملف Excel",
+    "ID":                         "رقم التعريف"
 }

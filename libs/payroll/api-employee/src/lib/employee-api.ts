@@ -76,6 +76,7 @@ export interface Employee {
     fullName?: string;
     imageModel?: ImageModel;
     birthCity?: number;
+    password?: string;
 }
 
 export interface EmployeeActivation {

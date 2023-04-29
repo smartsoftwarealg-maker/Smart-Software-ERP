@@ -273,5 +273,6 @@
     "FORMULA":                    "Formula",
     "FORMULAS":                   "Formulas",
     "JSON_EXPORT":                "Export to JSON",
-    "LOAD_EXCEL":                 "Load from an Excel file"
+    "LOAD_EXCEL":                 "Load from an Excel file",
+    "ID":                         "ID"
 }
