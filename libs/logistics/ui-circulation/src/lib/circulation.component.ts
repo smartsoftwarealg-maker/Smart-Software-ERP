@@ -67,10 +67,6 @@ export class CirculationComponent implements OnInit {
     }
 
     load(observable: Observable<Circulation[]>) {
-        observable.subscribe((x: Circulation[]) =>
-            this.data = x.map(c => {
-                c.date = this.langServ.formatDate(c.date);
-                return c;
-            }));
+        observable.subscribe((x: Circulation[]) => this.data = x);
     }
 }

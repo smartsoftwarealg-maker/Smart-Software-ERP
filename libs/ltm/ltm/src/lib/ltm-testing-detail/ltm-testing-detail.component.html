@@ -2,15 +2,6 @@
     <form *ngIf="form !== null" novalidate [formGroup]="form">
 
         <mat-form-field class="default-50">
-            <mat-label translate>LTM_LINE</mat-label>
-            <ss-auto-complete matInput
-                              [model]="lineLookup"
-                              formControlName="parentId">
-            </ss-auto-complete>
-        </mat-form-field>
-
-
-        <mat-form-field class="default-50">
             <mat-label translate>LTM_MATTER</mat-label>
             <ss-auto-complete matInput
                               [model]="matterLookup"

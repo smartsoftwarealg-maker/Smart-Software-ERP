@@ -1,7 +1,7 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
-import {Batch, LTMLine, LTMMatter} from '../ltm-api';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {Batch, LTMMatter} from '../ltm-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {FormArray, FormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmLineService} from '../ltm-line.service';
@@ -45,6 +45,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     selectedMatter: LTMMatter = null;
     lineLookup = new DefaultAutoCompleteModel(this.lineSrv);
 
+    formBuilder = inject(FormBuilder);
     form = this.formBuilder.group(
         {
             parentId:  [0, Validators.required],
@@ -61,13 +62,11 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         public  shellSrv: ShellService,
         public  snackBarSrv: SnackBarService,
         public  route: ActivatedRoute,
-        public  formBuilder: FormBuilder,
         public  confirmationSrv: ConfirmationDialogService,
         private matterSrv: LtmLineMatterService,
-        private matterTestSrv:    LtmMatterTestService,
+        private matterTestSrv: LtmMatterTestService,
         private periodSrv: LtmPeriodicityService,
         private testSrv: LtmTestService) {
-        this.lineLookup.onObjectSelected = (l) => this.onLine(l);
         this.TODAY.setHours(1, 0, 0, 0);
     }
 
@@ -78,15 +77,22 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.saveButton]);
-        this.shellSrv.setTitle('LTM_BATCH_TESTINGS')
+        this.shellSrv.setTitle('LTM_BATCH_TESTINGS');
         this.periods$ = this.periodSrv.getList(0, 50).pipe(map(res => res.body));
+        this.matterSrv
+            .getList(0, 50)
+            .subscribe(res =>
+                this.matters = res.body.map(lm => {
+                    return {id: lm.id, description: lm.description };
+                })
+            );
         this.subscriptions.push(
-        this.form
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe(value => this.refreshFormulas()));
+            this.form
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(value => this.refreshFormulas()));
     }
 
 
@@ -106,7 +112,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         const result = this.formulas.map(f => 0);
         const program =
             this.variables.filter(v => v).map((v, i) =>
-            `const ${v} = ${values[i]};`).join('\n') +
+                `const ${v} = ${values[i]};`).join('\n') +
             '\n' +
             this.missingVariables.map(v => `const ${v} = 0;`).join('\n') +
             '\n' +
@@ -116,20 +122,10 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         // console.log(result);
         try {
             eval(program);
-        } catch (e: any ) {}
-        this.totals.controls.forEach((c, i) => c.setValue( { value: (+result[i]||0).toFixed(2)}))
+        } catch (e: any ) { /* empty */ }
+        this.totals.controls.forEach((c, i) => c.setValue( { value: (+result[i]||0).toFixed(2)}));
     }
 
-    onLine(line: LTMLine) {
-        this.matterSrv.setParentId(line?.id || 0);
-        this.matterSrv
-            .getList(0, 50)
-            .subscribe(res =>
-                this.matters = res.body.map(lm => {
-                    return {id: lm.matterId, description: lm.description }
-                })
-            );
-    }
 
     get tests(): FormArray {
         return this.form.controls['tests'] as FormArray;
@@ -158,7 +154,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
                 tap(res => {
                     res.body
                         .filter(t => t.variable && t.formula)
-                        .forEach(v => this.formulaMap.set(v.variable, v.formula))
+                        .forEach(v => this.formulaMap.set(v.variable, v.formula));
                 }),
                 switchMap(_ => this.matterTestSrv.getList(0, 100, null, 'id')))
             .subscribe(res => {
@@ -197,6 +193,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     }
     onMatter(m: LTMMatter) {
         this.selectedMatter = m;
+        console.log(m);
         this.matterTestSrv.setParentId(m.id);
         this.refreshData();
     }
@@ -231,7 +228,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     onHour(h: number) {
         const value = this.form.getRawValue();
         const date = new Date(value.timeStamp);
-        date.setHours(h, 0)
+        date.setHours(h, 0);
         value.timeStamp = date;
         this.form.setValue(value);
     }
