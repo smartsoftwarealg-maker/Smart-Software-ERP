@@ -89,10 +89,7 @@ export class CardComponent implements OnInit {
 
 
         loadObserver.subscribe((x: Card[]) => {
-            this.data = x.map(y => {
-                y.date = this.langServ.formatDate(y.date);
-                return y;
-            });
+            this.data = x;
             this.shellSrv.setLoading(false);
         });
 

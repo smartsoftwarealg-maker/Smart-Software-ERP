@@ -15,10 +15,8 @@ import {LanguageService} from '@ss/common/api-common';
     templateUrl: './ltm-injection.component.html',
     styleUrls: ['./ltm-injection.component.scss'],
 })
-export class LtmInjectionComponent implements OnInit {
-    private lineSrv =  inject(LtmLineService);
+export class LtmInjectionComponent {
     private matterSrv =  inject(LtmLineMatterService);
-    lineLookup   = new DefaultAutoCompleteModel(this.lineSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
 
     @Input()
@@ -30,15 +28,14 @@ export class LtmInjectionComponent implements OnInit {
     uploadSub: Subscription;
     processing = false;
 
+    fb = inject(UntypedFormBuilder);
     form = this.fb.group({
-        line:   [{ value: this.matterSrv.getParentId(), disabled: true}, Validators.required],
         from:   [new Date(),                        Validators.required],
         to:     [new Date(),                        Validators.required],
     });
 
     constructor(private dialogRef: MatDialogRef<LtmInjectionComponent>,
                 private injectSrv: LtmInjectionService,
-                private fb: UntypedFormBuilder,
                 private langSrv: LanguageService) {
     }
 
@@ -50,8 +47,6 @@ export class LtmInjectionComponent implements OnInit {
             const formData = new FormData();
             formData.append('file', file);
             const value = this.form.value;
-            console.log('file ****************', value);
-            formData.append('line', this.matterSrv.getParentId() + '');
             formData.append('from', this.langSrv.formatDate(value.from));
             formData.append('to',   this.langSrv.formatDate(value.to));
             // Object.entries(this.form.getRawValue())
@@ -96,11 +91,4 @@ export class LtmInjectionComponent implements OnInit {
         this.fileName = e[0]?.name;
     }
 
-    ngOnInit() {
-        this.form
-            .controls['line']
-            .valueChanges
-            .pipe(debounceTime(300), distinctUntilChanged())
-            .subscribe(v => this.matterSrv.setParentId(v || 0));
-    }
 }

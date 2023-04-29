@@ -1,18 +1,15 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
+import {LTMLineMatter, LTMTesting} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Event, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmTestingService} from '../ltm-testing.service';
-import {LtmLineService} from '../ltm-line.service';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
-import {map, Observable} from 'rxjs';
-import {MatSelectChange} from '@angular/material/select';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
+import { LoginService } from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-ltm-testing-detail',
@@ -20,10 +17,8 @@ import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
     styleUrls: ['./ltm-testing-detail.component.scss'],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> {
-    private lineSrv =  inject(LtmLineService);
     private matterSrv =  inject(LtmLineMatterService);
     private testLookupSrv =  inject(LtmMatterTestLookupService);
-    lineLookup   = new DefaultAutoCompleteModel(this.lineSrv);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
     testLookup   = new DefaultAutoCompleteModel(this.testLookupSrv);
 
@@ -40,7 +35,8 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        private router: Router) {
+        private router: Router,
+        private loginSrv: LoginService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_TESTINGS');
         this.matterLookup.onObjectSelected = (m) => this.onMatter(m);
         this.testLookupSrv.setParentId(0);
@@ -55,10 +51,9 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
 
     public override setupForm(b: LTMTesting) {
         this.testLookupSrv.setParentId(b.matterId || 0);
-        this.matterSrv.setParentId(b.parentId || this.entitySrv.getParentId());
         return this.formBuilder.group({
             id:           [b.id],
-            parentId:     [{value: b.parentId || this.entitySrv.getParentId(), disabled: true}, Validators.required],
+            centerId:     [{value: b.centerId || this.loginSrv.appCtx.center, disabled: true}, Validators.required],
             matterId:     [b.matterId, Validators.required],
             testId:       [b.testId, Validators.required],
             timeStamp:    [b.timeStamp || new Date(), Validators.required],

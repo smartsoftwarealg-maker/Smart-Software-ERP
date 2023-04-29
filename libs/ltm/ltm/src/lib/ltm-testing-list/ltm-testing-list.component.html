@@ -1,13 +1,3 @@
-<div class="content_div">
-    <mat-form-field class="default-50">
-        <mat-label translate>LTM_LINE</mat-label>
-        <mat-select [formControl]="lineCtrl">
-            <mat-option *ngFor="let l of lines$ | async" [value]="l.id">
-                {{ l.description }}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
 <div class="content_div container">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 

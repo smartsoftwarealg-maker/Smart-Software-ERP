@@ -6,9 +6,9 @@ export const LTM_TESTINGS_URL    = '/ltm/testings';
 export const LTM_LINE_URL        = '/ltm/lines';
 export const LTM_TEST_URL        = '/ltm/tests';
 export const LTM_BATCH_URL       = '/ltm/batch';
-export const LTM_LTM_LINE_URL    = '/ltm/ltm-lines';
+export const LTM_TESTING_URL    = '/ltm/testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
-export const LTM_MATTER_URL      = '/matters';
+export const LTM_MATTER_URL      = '/ltm/matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
@@ -66,7 +66,7 @@ export interface Data {
 }
 export interface LTMTesting {
     id: number;
-    parentId: number;
+    centerId: number;
     matterId: number;
     testId: number;
     timeStamp: Date;

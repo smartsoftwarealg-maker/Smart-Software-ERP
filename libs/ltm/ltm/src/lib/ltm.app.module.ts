@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LtmLineListComponent } from './ltm-line-list/ltm-line-list.component';
-import { LtmLineDetailComponent } from './ltm-line-detail/ltm-line-detail.component';
 import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
@@ -45,8 +43,6 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         CommonUiHourPickerModule
     ],
     exports: [
-        LtmLineListComponent,
-        LtmLineDetailComponent,
         LineMatterDetailComponent,
         LineMatterListComponent,
         LtmMatterDetailComponent,
@@ -63,8 +59,6 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         LtmReportComponent,
     ],
     declarations: [
-        LtmLineListComponent,
-        LtmLineDetailComponent,
         LineMatterDetailComponent,
         LineMatterListComponent,
         LtmMatterDetailComponent,
