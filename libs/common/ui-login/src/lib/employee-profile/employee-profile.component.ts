@@ -25,7 +25,6 @@ export class EmployeeProfileComponent {
 
     ngOnInit(): void {
         this.shellSrv.setTitle('COMMON_PROFILE');
-        this.shellSrv.setGoBackPath('..', this.route);
         this.employeeSrv
             .get(this.loginSrv.appCtx.personId || 0)
             .subscribe(res => {
@@ -39,6 +38,8 @@ export class EmployeeProfileComponent {
                     email: [{ value: res.email || '', disabled: true}],
                 });
             });
+        this.shellSrv.setGoBackPath('../../', this.route);
+        this.shellSrv.updateShell();
     }
 
     updatePassword() {

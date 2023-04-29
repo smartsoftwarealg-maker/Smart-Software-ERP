@@ -15,10 +15,12 @@ export class AppComponent implements OnInit {
     langAssets = [
         ['assets/locale/', ''],
         ['assets/locale/administration_', 'ADMINISTRATION_'],
+        ['assets/locale/payroll_', 'PAYROLL_'],
         ['assets/locale/common_', 'COMMON_'],
-        ['assets/locale/bl_', 'BL_'],
         ['assets/locale/att_', 'ATT_'],
+        ['assets/locale/remuneration_', 'REMUN_'],
         ['assets/locale/logistics_', 'LOGISTICS_'],
+        ['assets/locale/bl_', 'BL_'],
     ];
 
     loaded = false;

@@ -35,6 +35,11 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/payroll/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "libs/exchange/assets/src/assets",
                         "output": "assets"
                     },

@@ -5,6 +5,7 @@ import { REPORT_PARAMS_URL } from '@ss/common/api-reports';
 // EMPSPACE
 export const EMPSPACE_HOLIDAY_REQUEST_URL = 'holiday-requests';
 export const EMPSPACE_PROFILE_URL = 'person-profile';
+export const EMPSPACE_PAYSLIP_URL = 'person-payslip';
 export const EMPSPACE_REPOERT_URL = 'espace-reports';
 
 // apps
@@ -28,5 +29,6 @@ export const ABS_ADMINISTRATION_REPORT_CATALOG = '/' + [MAIN_PAGE_URL, ADMINISTR
 
 //empspace
 export const ABS_HOLIDAY_REQUEST = '/' + [MAIN_PAGE_URL, EMPSPACE_APP_URL, EMPSPACE_HOLIDAY_REQUEST_URL].join('/');
+export const ABS_PERSONAL_PAYSLIP = '/' + [MAIN_PAGE_URL, EMPSPACE_APP_URL, EMPSPACE_PAYSLIP_URL].join('/');
 export const ABS_EMPLOYEE_PROFILE = '/' + [MAIN_PAGE_URL, EMPSPACE_APP_URL, EMPSPACE_PROFILE_URL].join('/');
 export const ABS_ESPACE_REPORTS_URL = '/' + [MAIN_PAGE_URL, EMPSPACE_APP_URL, EMPSPACE_REPOERT_URL].join('/');

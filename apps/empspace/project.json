@@ -26,7 +26,17 @@
                     },
                     {
                         "glob": "**/*",
-                        "input": "libs/attendance/assets/src/assets",
+                        "input": "libs/remuneration/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/payroll/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/logistics/assets/src/assets",
                         "output": "assets"
                     },
                     {
@@ -41,7 +51,7 @@
                     },
                     {
                         "glob": "**/*",
-                        "input": "libs/logistics/assets/src/assets",
+                        "input": "libs/attendance/assets/src/assets",
                         "output": "assets"
                     }
                 ],
