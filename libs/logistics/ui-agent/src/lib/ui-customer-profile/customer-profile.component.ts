@@ -6,46 +6,46 @@ import {LoginService} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'ss-ui-customer-profile',
-  templateUrl: './customer-profile.component.html',
-  styleUrls: ['./customer-profile.component.scss']
+    selector: 'ss-ui-customer-profile',
+    templateUrl: './customer-profile.component.html',
+    styleUrls: ['./customer-profile.component.scss']
 })
 export class CustomerProfileComponent implements OnInit {
- form: UntypedFormGroup = null;
- agent: Agent = null;
- pwd1 = new UntypedFormControl();
- pwd2 = new UntypedFormControl();
+    form: UntypedFormGroup = null;
+    agent: Agent = null;
+    pwd1 = new UntypedFormControl();
+    pwd2 = new UntypedFormControl();
 
-  constructor(private shellSrv: ShellService,
+    constructor(private shellSrv: ShellService,
               private loginSrv: LoginService,
               public route: ActivatedRoute,
               private fb: UntypedFormBuilder,
               public snackBarSrv: SnackBarService,
               private agentSrv: AgentService) { }
 
-  ngOnInit(): void {
-      this.shellSrv.setTitle('COMMON_PROFILE');
-      this.shellSrv.setGoBackPath('..', this.route);
-      this.agentSrv
-          .currentCustomer()
-          .subscribe(agent => {
-              this.agent = agent;
-              this.form = this.fb.group({
-                  code: [{ value: agent.customerCode, disabled: true}],
-                  denomination: [{ value: agent.denomination, disabled: true}],
-                  address: [{ value: agent.address || '', disabled: true}],
-                  phone: [{ value: agent.mobile || '', disabled: true}],
-                  email: [{ value: agent.email || '', disabled: true}],
-              });
-          });
-  }
+    ngOnInit(): void {
+        this.shellSrv.setTitle('COMMON_PROFILE');
+        this.shellSrv.setGoBackPath('..', this.route);
+        this.agentSrv
+            .currentCustomer()
+            .subscribe(agent => {
+                this.agent = agent;
+                this.form = this.fb.group({
+                    code: [{ value: agent.customerCode, disabled: true}],
+                    denomination: [{ value: agent.denomination, disabled: true}],
+                    address: [{ value: agent.address || '', disabled: true}],
+                    phone: [{ value: agent.mobile || '', disabled: true}],
+                    email: [{ value: agent.email || '', disabled: true}],
+                });
+            });
+    }
 
-  updatePassword() {
-      if (this.pwd1.value === this.pwd2.value && this.agent != null) {
-          this.agent.password = this.pwd1.value;
-          this.agentSrv
-              .updatePassword({ id: 0, agentId: this.loginSrv.appCtx.agentId, password: this.agent.password })
-              .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
-      }
-  }
+    updatePassword() {
+        if (this.pwd1.value === this.pwd2.value && this.agent != null) {
+            this.agent.password = this.pwd1.value;
+            this.agentSrv
+                .updatePassword({ id: 0, agentId: this.loginSrv.appCtx.agentId, password: this.agent.password })
+                .subscribe(res => this.snackBarSrv.showMessage('COMMON_SUCCESS', false, false));
+        }
+    }
 }

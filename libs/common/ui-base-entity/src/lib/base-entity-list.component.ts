@@ -6,7 +6,7 @@ import {Observable, of, Subscription} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityService} from "@ss/common/api-base-entity";
+import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Sort} from '@angular/material/sort';
 
 @Directive()
@@ -52,7 +52,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         label: 'COMMON_EDIT_SELECTED',
         disabled: true,
         visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => this.edit()
     };
     public deleteButton: ToolbarButton = {
@@ -115,11 +115,11 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
         const rights = !node ? {
-                read: false,
-                write: false,
-                edit: false,
-                delete: false
-            } as Right :
+            read: false,
+            write: false,
+            edit: false,
+            delete: false
+        } as Right :
             !node.customerRights && !node.accessRights ? {
                 read: true,
                 write: true,
@@ -182,20 +182,20 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
-                    next:
+                next:
                         data => {
                             this.finishLoading(data);
                             if (callback) {
                                 callback();
                             }
                         },
-                    error:
+                error:
                         err => {
                             this.data = []; // clear everything;
                             this.shellSrv.setLoading(false); // stop the animation
                             throw err;
                         }
-                }
+            }
             );
     }
 
@@ -300,10 +300,10 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                     }
                     return of([]);
                 })).subscribe(res => {
-            if (!res) {
-                this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
-            }
-        });
+                if (!res) {
+                    this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
+                }
+            });
     }
 
     public excel() {
@@ -344,7 +344,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                         }
                     }
                 }
-            })
+            });
     }
 
     sort(event: Sort) {

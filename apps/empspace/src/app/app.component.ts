@@ -12,12 +12,15 @@ import {of} from 'rxjs';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-     langAssets = [
+    langAssets = [
         ['assets/locale/', ''],
         ['assets/locale/administration_', 'ADMINISTRATION_'],
+        ['assets/locale/payroll_', 'PAYROLL_'],
         ['assets/locale/common_', 'COMMON_'],
         ['assets/locale/att_', 'ATT_'],
+        ['assets/locale/remuneration_', 'REMUN_'],
         ['assets/locale/logistics_', 'LOGISTICS_'],
+        ['assets/locale/bl_', 'BL_'],
     ];
 
     loaded = false;
@@ -34,14 +37,14 @@ export class AppComponent implements OnInit {
         this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.loadContext()),
-                  switchMap(() => this.langSrv.init()),
-                  switchMap(_ => this.langSrv.addSources(this.langAssets)),
-                  switchMap(_ => this.httpSrv.get<any>('/ccenter')),
-                  catchError(_ => of({ description: '' })),
-                  tap(res => this.shellSrv.setCompanyName(res['description'] || '')))
+                switchMap(() => this.langSrv.init()),
+                switchMap(_ => this.langSrv.addSources(this.langAssets)),
+                switchMap(_ => this.httpSrv.get<any>('/ccenter')),
+                catchError(_ => of({ description: '' })),
+                tap(res => this.shellSrv.setCompanyName(res['description'] || '')))
             .subscribe(() => {
                 this.loaded = true;
                 this.shellSrv.setSideNavDataSource(empSpaceNavTree);
-            })
+            });
     }
 }

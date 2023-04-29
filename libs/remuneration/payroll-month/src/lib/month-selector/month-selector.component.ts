@@ -9,9 +9,9 @@ import {Special, SpecialPayrollService} from '@ss/remuneration/special-payroll-c
 import {LanguageService} from '@ss/common/api-common';
 
 @Component({
-  selector: 'ss-month-selector',
-  templateUrl: './month-selector.component.html',
-  styleUrls: ['./month-selector.component.scss']
+    selector: 'ss-month-selector',
+    templateUrl: './month-selector.component.html',
+    styleUrls: ['./month-selector.component.scss']
 })
 export class MonthSelectorComponent implements OnInit {
     specialList: Special[] = [];
@@ -50,8 +50,8 @@ export class MonthSelectorComponent implements OnInit {
                         year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
                         month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
                         offset: [res[2].payMonth, Validators.required]
-                    })
-            })
+                    });
+            });
     }
 
     cancel() {
@@ -71,26 +71,26 @@ export class MonthSelectorComponent implements OnInit {
             this.selectorSrv
                 .selectMonth(payMonth)
                 .pipe(switchMap(_ => this.selectorSrv.curMonthLabel()),
-                      tap(title => this.shellSrv.setLabels([title])),
+                    tap(title => this.shellSrv.setLabels([title])),
                     switchMap(_ => loadSpecial? this.specialSrv.getList(0, 50): of(0)))
                 .subscribe({
-                        next: res => {
-                            if (!loadSpecial) {
-                                this.snackBarSrv.showSuccessMessage();
-                                this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-                            } else {
-                                if (typeof res !== 'number') {
-                                    this.specialList = res.body;
-                                    this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
-                                }
+                    next: res => {
+                        if (!loadSpecial) {
+                            this.snackBarSrv.showSuccessMessage();
+                            this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+                        } else {
+                            if (typeof res !== 'number') {
+                                this.specialList = res.body;
+                                this.specialList.push({ id: 0, center: 0, paymonth: payMonth, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
                             }
-                            this.processing = false;
-                        },
-                        error: err => {
-                            this.processing = false;
-                            throw err;
                         }
+                        this.processing = false;
+                    },
+                    error: err => {
+                        this.processing = false;
+                        throw err;
                     }
+                }
                 );
         } else
             this.snackBarSrv.showFailureMessage();

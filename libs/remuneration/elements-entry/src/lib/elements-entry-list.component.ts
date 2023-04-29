@@ -19,9 +19,9 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 
 @Component({
-  selector: 'ss-elements-entry-list',
-  templateUrl: './elements-entry-list.component.html',
-  styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
+    selector: 'ss-elements-entry-list',
+    templateUrl: './elements-entry-list.component.html',
+    styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     private readonly JOURNAL_IDX = 3;
@@ -35,7 +35,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     slipTableWidth = 500;
 
     slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
-    displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post']
+    displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post'];
     journalColumns = this.FIXED_JOURNAL_HEADERS;
 
     paySlip: PaymentElement[] = [];
@@ -61,7 +61,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
         this.form = this.formBuilder.group( {
             field: [''],
             value: [0.0]
-        })
+        });
     }
 
     override getPage(): Observable<ELine[]> {
@@ -134,17 +134,17 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     updateCommon() {
         // this.commonFieldSrv.update({field: })
         const payload = { field: this.form.controls['field'].value,
-                          value: this.form.controls['value'].value
-                        };
+            value: this.form.controls['value'].value
+        };
         if (payload.field?.length == 4) {
             this.confirmationSrv
                 .confirm('REMUN_UPDATE_ALL', 'REMUN_UPDATE_ALL')
                 .pipe(switchMap(res => res? this.commonFieldSrv.updateAll(payload) : of(false)))
                 .subscribe(res => {
                     if (typeof res !== 'boolean') {
-                        this.snackBarSrv.showSuccessMessage()
+                        this.snackBarSrv.showSuccessMessage();
                     }
-                })
+                });
         }
     }
 }

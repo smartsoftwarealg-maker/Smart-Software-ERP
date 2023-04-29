@@ -277,5 +277,6 @@
     "FORMULA":                    "Formule",
     "FORMULAS":                   "Formules",
     "JSON_EXPORT":                "Exporter vers JSON",
-    "LOAD_EXCEL":                 "Charger depuis un fichier Excel"
+    "LOAD_EXCEL":                 "Charger depuis un fichier Excel",
+    "ID":                         "Mat."
 }

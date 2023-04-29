@@ -6,10 +6,9 @@ import { LOGIN_URL } from '@ss/common/api-common';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiThemeModule } from '@ss/common/ui-theme';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
-const routes: Routes = [
-    { path: LOGIN_URL, component: LoginComponent }
-];
+const routes: Routes = [{ path: LOGIN_URL, component: LoginComponent }];
 
 @NgModule({
     imports: [
@@ -17,13 +16,9 @@ const routes: Routes = [
         MaterialModule,
         CommonUiLangModule,
         UiThemeModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
-    declarations: [
-        LoginComponent
-    ],
-    exports: [
-        LoginComponent
-    ]
+    declarations: [LoginComponent, EmployeeProfileComponent],
+    exports: [LoginComponent],
 })
-export class UiLoginModule { }
+export class UiLoginModule {}

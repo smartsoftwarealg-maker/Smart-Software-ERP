@@ -125,7 +125,6 @@ export class DocInfoComponent {
 
     @Input() set showAssets(show: boolean) {
         if (show) {
-            debugger;
             if (this.entries_[1].entries.filter(e => e.name === this.AGENT_ASSETS).length < 1) {
                 this.entries_[1].entries.push(this.ASSET);
             }

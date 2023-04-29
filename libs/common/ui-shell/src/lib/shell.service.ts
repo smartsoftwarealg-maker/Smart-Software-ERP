@@ -170,7 +170,7 @@ export class ShellService {
 
     public filterNavTree(tree: SideNavNode[]): SideNavNode[] {
         this.setAppSideNavVisibility(tree);
-        const filteredTree = tree.filter(t => t.visible || (t.children !== null && t.children.find(e => e.visible) !== undefined));
+        const filteredTree = tree.filter(t => t.visible || (t.children && t.children.find(e => e.visible) !== undefined));
         const finalTree = this.filterSideNavByVisibility(filteredTree);
         return finalTree.length === 1? finalTree[0].children : finalTree;
     }

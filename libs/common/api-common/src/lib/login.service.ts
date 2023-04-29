@@ -232,7 +232,6 @@ export class LoginService {
                 next:
                     (info: LoginInfo) => {
                         this.httpSrv.updateAuthToken(info.jwt);
-                        debugger;
                         this.appCtx = info.ctx;
                         const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.router.navigate(['/' + CENTER_SELECT_URL]);
