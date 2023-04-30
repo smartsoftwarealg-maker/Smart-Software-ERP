@@ -12,7 +12,7 @@ export const furnitureNavTree: SideNavNode = {
     children: [
         {
             name: 'ASSET_RECEIVERS',
-            icon: 'fa-sharp fa-solid fa-hands-holding-diamond',
+            icon: 'fa-solid fa-hands-holding-diamond',
             route: ABS_FURNITURE_RECEIVERS_URL,
             accessRights: 'FurnitureReceiver'
         },
@@ -24,7 +24,7 @@ export const furnitureNavTree: SideNavNode = {
         },
         {
             name: 'ASSET_FURNITURE',
-            icon: 'fa-sharp fa-solid fa-chair-office',
+            icon: 'fa-solid fa-chair-office',
             route: ABS_FURNITURE_URL,
             accessRights: 'Furniture'
         },

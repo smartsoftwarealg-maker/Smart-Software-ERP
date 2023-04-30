@@ -15,7 +15,7 @@ export const ltmNavTree: SideNavNode = {
     children: [
         {
             name: 'LTM_PERIODICITIES',
-            icon: 'fa-sharp fa-solid fa-timeline-arrow',
+            icon: 'fa-solid fa-timeline-arrow',
             route: ABS_LTM_PERIODICITIES_URL,
             accessRights: 'LTMMPeriod'
         },
@@ -43,7 +43,7 @@ export const ltmNavTree: SideNavNode = {
 
         {
             name: 'LTM_BATCH_TESTINGS',
-            icon: 'fa-sharp fa-solid fa-clock-three-thirty',
+            icon: 'fa-solid fa-clock-three-thirty',
             route: ABS_LTM_BATCH_TESTINGS_URL,
             accessRights: 'LTMTesting'
         },
@@ -61,7 +61,7 @@ export const ltmNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_LTM_REPORTS_URL,
             accessRights: 'Report'
         },

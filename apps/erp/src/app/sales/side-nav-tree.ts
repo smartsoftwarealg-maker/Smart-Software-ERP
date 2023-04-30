@@ -67,13 +67,13 @@ export const salesNavTree: SideNavNode = {
         },
         {
             name: 'SALES_ADS',
-            icon: 'fa-sharp fa-solid fa-eggplant',
+            icon: 'fa-solid fa-eggplant',
             route: ABS_SALES_ADS,
             accessRights: 'Accounting'
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_SALES_REPORTS_URL,
             accessRights: 'Report'
         },

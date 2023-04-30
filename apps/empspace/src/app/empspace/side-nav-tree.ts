@@ -21,7 +21,7 @@ export const empSpaceNavTree: SideNavNode[] =
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_ESPACE_REPORTS_URL,
             accessRights: 'Report',
             customerRights: {read: true, edit: true, delete: true, write: true}

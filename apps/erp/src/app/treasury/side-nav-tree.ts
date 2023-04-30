@@ -33,7 +33,7 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'TRS_NATURE',
-            icon: 'fa-sharp fa-solid fa-diagram-subtask',
+            icon: 'fa-solid fa-diagram-subtask',
             route: ABS_TREASURY_GROUPS_URL,
             accessRights: 'TreasuryGroup'
         },
@@ -45,7 +45,7 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'TRS_BANK_EXPENSES',
-            icon: 'fa-sharp fa-solid fa-sack-dollar',
+            icon: 'fa-solid fa-sack-dollar',
             route: ABS_TREASURY_BANK_EXPENSES_URL,
             accessRights: 'TTransaction'
         },
@@ -63,7 +63,7 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'TRS_CHECK_MATCHING',
-            icon: 'fa-sharp fa-solid fa-check-double',
+            icon: 'fa-solid fa-check-double',
             route: ABS_TREASURY_CHECK_MATCHING_URL,
             accessRights: 'ProcessedCheck'
         },
@@ -81,7 +81,7 @@ export const treasuryNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_TREASURY_REPORTS_URL,
             accessRights: 'Report'
         },
