@@ -145,7 +145,7 @@ export const assetsNavTree: SideNavNode = {
         },
         {
             name: 'ASSET_TRANSFER',
-            icon: 'fa-sharp fa-solid fa-shuffle',
+            icon: 'fa-solid fa-shuffle',
             route: ABS_ASSET_TRANSFER_URL,
             accessRights: 'AssetTransfer'
         },
@@ -163,7 +163,7 @@ export const assetsNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_ASSETS_REPORTS_URL,
             accessRights: 'Report'
         },

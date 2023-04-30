@@ -53,7 +53,7 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DAIRAS',
-            icon: 'fa-sharp fa-solid fa-map-location-dot',
+            icon: 'fa-solid fa-map-location-dot',
             route: ABS_ADMINISTRATION_DAIRAS_URL,
             accessRights: 'Daira'
         },
