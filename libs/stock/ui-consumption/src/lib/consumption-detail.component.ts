@@ -22,8 +22,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     private consumerSrv = inject(ConsumerService);
-    private usersService = inject(UserListService);
-    dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    private usersSrv = inject(UserListService);
+    dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public groups: CCGroup[];
 

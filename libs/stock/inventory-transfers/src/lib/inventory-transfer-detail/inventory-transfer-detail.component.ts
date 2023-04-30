@@ -21,13 +21,13 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class InventoryTransferDetailComponent extends BaseTransactionDetailComponent {
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     private lookupsSrv =  inject(LookupsService);
     private branchService = inject(BranchService);
 
     public groups: CCGroup[];
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination');
 
     constructor(

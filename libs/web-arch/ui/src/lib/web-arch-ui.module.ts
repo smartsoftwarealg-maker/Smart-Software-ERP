@@ -14,7 +14,6 @@ import {ConfirmationDialogComponent} from './confirmation-dialig/confirmation-di
 import {ArchiveListComponent} from './archive-list/archive-list.component';
 import {ArchiveDetailComponent} from './archive-detail/archive-detail.component';
 import {ArchiveElementComponent} from './archive-element/archive-element.component';
-import {ReportsModule} from '../../../../../apps/hotel/src/app/smart-lib/components/reports/reports.module';
 import {TagListComponent} from './tags/tag-list/tag-list.component';
 import {TagDetailComponent} from './tags/tag-detail/tag-detail.component';
 import {ArchiveViewerComponent} from './archive-viewer/archive-viewer.component';
@@ -30,7 +29,7 @@ import {ArchiveViewerComponent} from './archive-viewer/archive-viewer.component'
         CommonUiDatepickerModule,
         CommonUiAutoCompleteModule,
         LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule, ReportsModule],
+        LogisticsUiStockInfoModule, ],
 
     declarations: [
         ConfirmationDialogComponent,

@@ -33,7 +33,7 @@ export class InventoryExitListComponent extends BaseTransactionListComponent {
         public override router: Router,
         public override userSrv: UserService,
         public override agentSrv: AgentService,
-        public usersService: UserListService,
+        public usersSrv: UserListService,
         public override langServ: LanguageService,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,

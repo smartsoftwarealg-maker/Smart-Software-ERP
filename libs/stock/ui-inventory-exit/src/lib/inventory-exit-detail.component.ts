@@ -17,9 +17,9 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './inventory-exit-detail.component.html'
 })
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
-    public usersService =  inject(UserListService);
+    public usersSrv =  inject(UserListService);
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         private langSrv: LanguageService,

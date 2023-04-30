@@ -18,7 +18,7 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './inventory-detail.component.html'
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -28,7 +28,7 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         click: () => this.importInventoryDocument(),
     };
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         protected loginSrv: LoginService,

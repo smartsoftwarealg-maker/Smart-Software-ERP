@@ -24,7 +24,7 @@ import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
     private agentService = inject(AgentService);
-    private usersService = inject(UserListService);
+    private usersSrv = inject(UserListService);
     private payMethodSrv = inject(PayMethodService);
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
@@ -39,7 +39,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
     };
     private order: Transaction = null;
     public groups: CCGroup[];
-    public dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);

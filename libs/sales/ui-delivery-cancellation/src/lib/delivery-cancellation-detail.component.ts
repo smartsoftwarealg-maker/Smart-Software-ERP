@@ -25,12 +25,12 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class DeliveryCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     private payMethodSrv =  inject(PayMethodService);
     private agentService = inject(AgentService);
 
     public payModeAutoCompleteModel= new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
 
     constructor(
