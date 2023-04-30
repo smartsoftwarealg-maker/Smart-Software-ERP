@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {map, Observable, of, zip} from 'rxjs';
-import {Data, LTMLine, LTMLineMatter, LTMMatterTest, LTMTesting} from '../ltm-api';
+import {Data, LTMLineMatter, LTMMatterTest} from '../ltm-api';
 import {FormControl} from '@angular/forms';
 import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
-import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {Chart, ChartItem, registerables} from 'chart.js';
 import {LtmTestingService} from '../ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
@@ -23,11 +22,9 @@ export class LtmReportComponent implements OnInit {
     anomaly = new FormControl<boolean>(false);
     selectedMatter: LTMLineMatter = null;
     matters$: Observable<LTMLineMatter[]> = of([]);
-    lines$: Observable<LTMLine[]> = null;
 
     charts: string[] = [];
 
-    lineCtrl = new FormControl<number>(0);
     from     = new FormControl<Date>(new Date());
     to       = new FormControl<Date>(new Date());
 
@@ -44,19 +41,7 @@ export class LtmReportComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle(this.langSrv.translate('COMMON_CHARTS'));
-        this.lines$ = this.lineSrv
-            .getList(0, 50)
-            .pipe(map(_ => _.body));
-
-        this.lineCtrl
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged())
-            .subscribe(v => {
-                this.matterSrv.setParentId(v || 0);
-                this.matters$ = this.matterSrv.getList(0, 50).pipe(map(res => res.body));
-            })
+        this.matters$ = this.matterSrv.getList(0, 50).pipe(map(res => res.body));
     }
 
     onMatter(m: LTMLineMatter) {
@@ -64,8 +49,9 @@ export class LtmReportComponent implements OnInit {
         this.testingSrv.setParentId(m?.parentId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {
+            this.testSrv.setParentId(m?.id);
             zip(this.testSrv.getList(0, 100),
-                this.testingSrv.getData(m?.parentId, m?.matterId, this.anomaly.value, this.from.value, this.to.value))
+                this.testingSrv.getData(m?.id, this.anomaly.value, this.from.value, this.to.value))
                 .subscribe(res => {
                     const tests = res[0].body;
                     const data = res[1];
@@ -147,8 +133,8 @@ export class LtmReportComponent implements OnInit {
                 scales: {
                     x: {
                         title: {
-                           display: true,
-                           text: this.getTitle()
+                            display: true,
+                            text: this.getTitle()
                         },
                         ticks: {
                             autoSkip: false,
