@@ -32,11 +32,11 @@ import {TransferService} from '../transfer.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     private branchService =  inject(BranchService);
     public groups: CCGroup[];
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
 
     constructor(

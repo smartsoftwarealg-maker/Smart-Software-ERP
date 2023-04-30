@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -14,7 +14,7 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import {UserListService} from '@ss/common/api-users';
-import {SalesProformaService} from "../sales-proforma.service";
+import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
@@ -23,9 +23,13 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {
+    private agentService = inject(AgentService);
+    private payMethodSrv = inject(PayMethodService);
+    private usersSrv = inject(UserListService);
+
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(public proformaSrv: SalesProformaService,
@@ -35,18 +39,15 @@ export class ProformaDetailComponent extends BaseTransactionDetailComponent {
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public usersService: UserListService,
                 public lookupsSrv: LookupsService,
-                private agentService: AgentService,
                 protected override loginSrv: LoginService,
-                protected override dialog: MatDialog,
-                private payMethodSrv: PayMethodService) {
+                protected override dialog: MatDialog) {
         super(proformaSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv,  loginSrv, dialog, 'LOGISTICS_PROFORMA');
     }
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     protected importedDocuments(): Lookup[] {

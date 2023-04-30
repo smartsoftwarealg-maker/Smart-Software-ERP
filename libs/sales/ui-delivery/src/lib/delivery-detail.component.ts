@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -26,10 +26,13 @@ import {DeliveryLinesListComponent} from '@ss/sales/ui-delivery-lines';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class DeliveryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private payMethodSrv =  inject(PayMethodService);
+    private agentService = inject(AgentService);
+    private usersSrv = inject(UserListService);
     public groups: CCGroup[];
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
 
@@ -42,17 +45,14 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
         public router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
         public lookupsSrv: LookupsService,
-        private agentService: AgentService,
-        protected dialog: MatDialog,
-        private payMethodSrv: PayMethodService) {
+        protected dialog: MatDialog) {
         super(deliveryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_DELIVERY');
     }
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     protected override showImportButton(): boolean {

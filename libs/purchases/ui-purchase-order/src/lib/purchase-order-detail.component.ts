@@ -31,7 +31,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     private projectSrv  = inject(SalesContractService);
     private supplierSrv =  inject(SupplierService);
     private payMethodSrv =  inject(PayMethodService);
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
 
     private importContractBtn: ToolbarButton = {
         disabled: false,
@@ -54,7 +54,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     public groups: CCGroup[];
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 

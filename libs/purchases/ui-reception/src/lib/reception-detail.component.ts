@@ -1,17 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
-import {Currency, CurrencyService, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
-import {ReceptionService} from '@ss/purchases/api-reception';
-import {LoginService, User} from '@ss/common/api-common';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {UserListService} from '@ss/common/api-users';
-import {MatDialog} from '@angular/material/dialog';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UntypedFormBuilder } from '@angular/forms';
+import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { Agent, SupplierService } from '@ss/logistics/api-agent';
+import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import { ReceptionService } from '@ss/purchases/api-reception';
+import { LoginService, User } from '@ss/common/api-common';
+import { PayMethodService } from '@ss/logistics/api-logistics-common';
+import { UserListService } from '@ss/common/api-users';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -83,7 +83,8 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
     protected requireAgentToImportDocument(): boolean {
         return true;
     }
+
     protected importedDocuments(): Lookup[] {
-        return [{id: 2, description: 'LOGISTICS_PURCHASE_ORDER'}];
+        return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
     }
 }

@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import { CCGroup, CurrencyService, Lookup, LookupsService, PayMethod } from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LoginService, User} from '@ss/common/api-common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import { Agent, AgentService, SupplierService } from "@ss/logistics/api-agent";
 import {MatDialog} from '@angular/material/dialog';
 import {InvoiceService} from '@ss/sales/api-invoice';
 import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
@@ -22,10 +22,13 @@ import {UserListService} from '@ss/common/api-users';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private agentService = inject(AgentService);
+    private payMethodSrv = inject(PayMethodService);
+    private usersSrv = inject(UserListService);
     public groups: CCGroup[];
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination')
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
 
 
     constructor(
@@ -37,18 +40,15 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        private usersService: UserListService,
         private lookupsSrv: LookupsService,
-        private agentService: AgentService,
-        protected dialog: MatDialog,
-        private payMethodSrv: PayMethodService) {
+        protected dialog: MatDialog) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE');
     }
 
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     protected showImportButton(): boolean {

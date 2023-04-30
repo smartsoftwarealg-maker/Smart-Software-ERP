@@ -25,8 +25,8 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     mainStore = 0;
 
     articleStock = 0.0;
-    articleAutoCompleteModel: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
-    storeAutoCompleteModel: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
+    articleAutoCompleteModel: ArticleAutoCompleteModel = null;
+    storeAutoCompleteModel: LotAutoCompleteModel = null;
 
     constructor(
         public  detailSrv: TransactionLinesClass,
@@ -40,6 +40,8 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public          lookupsSrv: LookupsService,
         public override title: string) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
+        this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
+        this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
         this.articleAutoCompleteModel.onObjectSelected = a => this.onArticle(a);
     }
 

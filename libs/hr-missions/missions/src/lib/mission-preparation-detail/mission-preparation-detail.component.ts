@@ -34,7 +34,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersService: UserListService,
+        public usersSrv: UserListService,
         private lookupsSrv: LookupsService,
         private employeeSrv: EmployeeService,
         private transportSrv: TransportService,

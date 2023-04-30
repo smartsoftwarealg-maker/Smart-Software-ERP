@@ -21,11 +21,11 @@ import {UserListService} from '@ss/common/api-users';
 })
 export class InvoiceCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private payMethodSrv =  inject(PayMethodService);
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     private agentService =  inject(AgentService);
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
 
 

@@ -20,7 +20,7 @@ import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
-    private usersService =  inject(UserListService);
+    private usersSrv =  inject(UserListService);
     @ViewChild(InventoryLinesListComponent) _detail: InventoryLinesListComponent;
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -32,7 +32,7 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
     };
 
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersService);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         private langSrv: LanguageService,

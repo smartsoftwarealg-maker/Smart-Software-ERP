@@ -16,7 +16,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {Directive, inject, ViewChild} from '@angular/core';
 import {BaseTransactionLinesListComponent} from './base-transaction-lines-list.component';
-import {DatePipe} from '@angular/common';
 import {Lookup} from '@ss/common/api-lookup';
 
 @Directive()
@@ -33,7 +32,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),
-    }
+    };
 
     private sendBtn: ToolbarButton = {
         disabled: false,
@@ -42,7 +41,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         label: 'LOGISTICS_SEND_MESSAGE',
         visible: true,
         click: () => this.sendMessage(),
-    }
+    };
 
     constructor(public entitySrv: BaseEntityService<Transaction>,
                 public override shellSrv: ShellService,
@@ -64,18 +63,18 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             this.entitySrv
                 .get(this.id)
                 .pipe(tap(res => {
-                        if (res?.dirty && this.form) {
-                            this.form.markAsDirty({onlySelf: false});
-                            this.form.markAsUntouched({onlySelf: false});
-                            this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
-                        }
-                    }),
-                    switchMap(res => res?.dirty? of(false): super.canDeactivate()));
-     }
+                    if (res?.dirty && this.form) {
+                        this.form.markAsDirty({onlySelf: false});
+                        this.form.markAsUntouched({onlySelf: false});
+                        this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
+                    }
+                }),
+                switchMap(res => res?.dirty? of(false): super.canDeactivate()));
+    }
 
-     override readForm(): Transaction {
-         return this.form.getRawValue();
-     }
+    override readForm(): Transaction {
+        return this.form.getRawValue();
+    }
 
     // finishLoading(e: Transaction) {
     //     this.shellSrv.addButton(this.sendBtn);
@@ -144,13 +143,13 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             b.userID = this.loginSrv.appCtx.id;
             b.dealer = b.userID;
             b.date = new Date();
+        } else {
+            this.shellSrv.addButton(this.sendBtn);
+            if (this.showImportButton()) {
+                this.shellSrv.addButton(this.importBtn);
+            }
         }
         this._isManager = this.loginSrv.appCtx.manager;
-
-        this.shellSrv.addButton(this.sendBtn);
-        if (this.showImportButton()) {
-            this.shellSrv.addButton(this.importBtn);
-        }
 
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;

@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import { CCGroup, CurrencyService, Lookup, LookupsService, PayMethod } from "@ss/common/api-lookup";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {fillObject, LoginService, User} from '@ss/common/api-common';
@@ -22,8 +22,11 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class QuotationDetailComponent extends BaseTransactionDetailComponent {
-    public  dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersService)
-    public  agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
+    private payMethodSrv = inject(PayMethodService);
+    public supplierSrv = inject(SupplierService);
+    private usersSrv = inject(UserListService);
+    public  dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public  agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public  payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(public proformaSrv: PurchaseQuotationService,
@@ -33,13 +36,9 @@ export class QuotationDetailComponent extends BaseTransactionDetailComponent {
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public usersService: UserListService,
                 public lookupsSrv: LookupsService,
-                private supplierSrv: SupplierService,
                 protected loginSrv: LoginService,
-                protected override dialog: MatDialog,
-                private payMethodSrv: PayMethodService,
-                private detailSrv: OfferLinesService) {
+                protected override dialog: MatDialog) {
         super(proformaSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_QUOTATION');
     }
 
