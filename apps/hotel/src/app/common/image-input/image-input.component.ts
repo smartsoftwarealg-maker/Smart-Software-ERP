@@ -1,5 +1,4 @@
 import {Component, ElementRef, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
-import {FileItem, FileUploader, ParsedResponseHeaders} from 'ng2-file-upload';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
 import {HttpService} from '../../smart-lib/common/http.service';
