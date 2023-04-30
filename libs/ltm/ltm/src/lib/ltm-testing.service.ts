@@ -16,7 +16,7 @@ export class LtmTestingService extends BaseEntityService<LTMTesting> {
         super(httpSrv, LTM_TESTING_URL);
     }
 
-    getData(lineId: number, matterId: number, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
+    getData(matterId: number, anomaly: boolean, from: Date, to: Date): Observable<Data[]> {
         const params = new HttpParams()
             .set('matter', matterId)
             .set('anomaly', anomaly)
