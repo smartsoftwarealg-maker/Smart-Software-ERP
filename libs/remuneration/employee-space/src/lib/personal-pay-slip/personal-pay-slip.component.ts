@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ElementsEntryService, PaymentElement } from '@ss/remuneration/elements-entry';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { of, switchMap, tap, zip } from 'rxjs';
+import { of, Subscription, switchMap, tap, zip } from 'rxjs';
 import { PayrollMonthService } from '@ss/remuneration/payroll-month';
 import { Special, SpecialPayrollService } from '@ss/remuneration/special-payroll-common';
 import { LanguageService, LoginService } from '@ss/common/api-common';
@@ -14,7 +14,8 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './personal-pay-slip.component.html',
     styleUrls: ['./personal-pay-slip.component.scss'],
 })
-export class PersonalPaySlipComponent implements OnInit {
+export class PersonalPaySlipComponent implements OnInit, OnDestroy {
+    private subscription: Subscription[] = [];
     private route = inject(ActivatedRoute);
     private loginSrv = inject(LoginService);
     private shellSrv = inject(ShellService);
@@ -26,6 +27,7 @@ export class PersonalPaySlipComponent implements OnInit {
     private selectorSrv =  inject(PayrollMonthService);
 
     processing = false;
+    changing = true;
     minMonth = 0;
     maxMonth = 0;
     specialList: Special[] = [];
@@ -49,26 +51,33 @@ export class PersonalPaySlipComponent implements OnInit {
                 const curMonth = +( (res[2].payMonth || this.maxMonth) % 100).toFixed(0);
                 this.specialList = res[3].body;
                 this.specialList.push({ id: 0, center: 0, paymonth: res[2].payMonth % 1_000_000, description: this.langSrv.translate('REMUN_NORMAL_PAY')});
-                console.log(min, max);
                 this.form = this.formBuilder
                     .group({
                         year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
                         month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
                         offset: [res[2].payMonth, Validators.required]
                     });
-                this.form
-                    .valueChanges
-                    .pipe(
-                        debounceTime(300),
-                        distinctUntilChanged()
-                    ).subscribe(value => {
-                        this.loadPaySlip();
-                    });
-
+                this.subscription
+                    .push(
+                        this.form
+                            .controls['year']
+                            ?.valueChanges
+                            .pipe(debounceTime(300),
+                                distinctUntilChanged())
+                            .subscribe(() => this.changing = true));
+                this.subscription
+                    .push(
+                        this.form
+                            .controls['month']
+                            ?.valueChanges
+                            .pipe(debounceTime(300),
+                                distinctUntilChanged())
+                            .subscribe(() => this.changing = true));
             });
     }
 
     select(loadSpecial: boolean) {
+        this.processing = true;
         const year  = this.form.controls['year'].value;
         const month = this.form.controls['month'].value;
         let special = this.form.controls['offset'].value;
@@ -93,8 +102,10 @@ export class PersonalPaySlipComponent implements OnInit {
                                 paymonth: payMonth,
                                 description: this.langSrv.translate('REMUN_NORMAL_PAY')
                             });
+                            this.form.controls['offset'].setValue(payMonth);
                         }
                         this.processing = false;
+                        this.changing = !loadSpecial;
                     },
                     error: err => {
                         this.processing = false;
@@ -106,15 +117,20 @@ export class PersonalPaySlipComponent implements OnInit {
             this.snackBarSrv.showFailureMessage();
     }
 
-    private loadPaySlip() {
+    loadPaySlip() {
         const value = this.form.getRawValue();
-        const payMonth = value['year'] * 100 + value['month'];
+        this.processing = true;
 
         this.selectorSrv
-            .selectMonth(payMonth)
+            .selectMonth(value.offset)
             .pipe(switchMap(_ => this.infoSrv.getSlip(this.loginSrv.appCtx.personId)))
             .subscribe(res => {
                 this.paySlip = res || [];
+                this.processing = false;
             });
+    }
+
+    ngOnDestroy() {
+        this.subscription.forEach(s => s.unsubscribe());
     }
 }
