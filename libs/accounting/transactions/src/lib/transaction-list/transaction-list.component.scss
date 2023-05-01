@@ -17,6 +17,7 @@
     flex: 1 1 40%;
     max-width: 40%;
 }
+
 .right_div {
     flex: 2 1 60%;
     height: 100%;
@@ -90,12 +91,12 @@ mat-table {
     padding-right: 2px;
 }
 
-
 mat-radio-group {
     width: 100%;
     display: flex;
     justify-content: space-around;
     padding: 8px 0;
+    margin: 4px 0;
 }
 
 @media (width <= 700px) {
@@ -103,3 +104,4 @@ mat-radio-group {
         flex-wrap: wrap;
     }
 }
+

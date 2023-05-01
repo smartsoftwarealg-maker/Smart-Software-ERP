@@ -1,6 +1,6 @@
 mat-card {
     width: 90%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 4px auto;
     padding: 16px;
     border-radius: 1.4em;
@@ -21,6 +21,8 @@ mat-card {
 
 .right_div {
     height: calc(100% - 265px);
-    width: 100%;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
 }
+

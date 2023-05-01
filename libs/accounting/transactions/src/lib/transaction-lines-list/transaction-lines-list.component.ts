@@ -49,18 +49,25 @@ export class TransactionLinesListComponent implements OnInit {
 
     ngOnInit() {
         this.parentId = this.entitySrv.getParentId();
-        this.loginSrv
-            .loadContext()
-            .pipe(switchMap(_ => this.policySrv.get(this.loginSrv.appCtx.center)),
-                tap(res => {
-                    this.accPolicy = res;
-                    this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
-                }),
-                switchMap(_ => this.entitySrv.getList(0, 5))
-            )
+        this.route
+            .parent
+            .parent
+            .params
+            .pipe(tap(params => {
+                this.parentId = +params['id'];
+                this.entitySrv.setParentId(this.parentId);
+            }),
+            switchMap(() => this.entitySrv.getList(0, 5)))
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
+            });
+
+        this.policySrv
+            .get(this.loginSrv.appCtx.center)
+            .subscribe(res => {
+                this.accPolicy = res;
+                this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
             });
     }
 
@@ -69,9 +76,6 @@ export class TransactionLinesListComponent implements OnInit {
         this.selected = row?.id || 0;
     }
 
-    save() {
-
-    }
 
     delete() {
         this.confirmationSrv
@@ -100,6 +104,4 @@ export class TransactionLinesListComponent implements OnInit {
                 this.pagination.elementCount = res.itemCount;
             });
     }
-
-
 }

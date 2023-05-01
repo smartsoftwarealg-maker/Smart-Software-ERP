@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -16,6 +16,7 @@ import {LoginService} from '@ss/common/api-common';
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {maxDate, minDate} from '@ss/common/ui-datepicker';
+import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -26,6 +27,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     private fileSrv = inject(AccFileService);
     private subscriptions: Subscription[] = [];
     readonly isClosed = this.fileSrv.accFile.closed;
+    protected readonly ACC_TRANSACTION_ARCHIVES = ACC_TRANSACTION_ARCHIVES;
     isOnEdit = false;
     form: UntypedFormGroup = null;
     id = 0;
@@ -120,17 +122,13 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
             .subscribe(res => {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
+                    this.form.reset(this.form.getRawValue());
                 }
             });
     }
     protected goBack() {
         // this.cancel();
     }
-
-    // override loadEntity(id: number): Observable<ACCTransaction> {
-    //     this.detailSrv.setParentId(id);
-    //     return super.loadEntity(id);
-    // }
 
     public deleteSelected(): void {
         this.confirmationSrv
@@ -156,4 +154,5 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
         }
         return of(true);
     }
+
 }

@@ -1,11 +1,12 @@
-import {Component, OnDestroy, ViewChild} from '@angular/core';
+import { Component, inject, OnDestroy, ViewChild } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {
+    AccFileService,
     AccJournalsService, AccPoliciesService,
     ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
-    Journal, SCALE,
+    Journal, SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -16,6 +17,7 @@ import {switchMap, tap} from 'rxjs';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {FormControl} from '@angular/forms';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
     selector: 'ss-transaction-list',
@@ -23,6 +25,13 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./transaction-list.component.scss']
 })
 export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy {
+    private fileSrv = inject(AccFileService);
+    private journalSrv =  inject(AccJournalsService);
+    private detailSrv =  inject(AccTransactionLineService);
+    private loginSrv =  inject(LoginService);
+    private accPolicySrv =  inject(AccPoliciesService);
+
+    transactionMode = true;
     public math = Math;
     isRoot = true;
     selectedJournal = 0;
@@ -40,11 +49,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private journalSrv: AccJournalsService,
-        private detailSrv: AccTransactionLineService,
-        private loginSrv: LoginService,
-        private accPolicySrv: AccPoliciesService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_TRANSACTIONS');
         entitySrv.setParentId(0);
         this.pagination.onChange = () => this.refreshTransactions();
@@ -113,16 +118,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     private navigate() {
         if (this.selected) {
-            if (this.outlet?.isActivated) {
-                //this.outlet.deactivate();
-            }
-            const commands = ['.', this.selected];
-            // this.router
-            //     .navigate(['.'], { relativeTo: this.route })
-            //     .then(_ => this.router.navigate(commands, {relativeTo: this.route}))
-            //     .then(_ => {
-            //         this.detailSrv.setParentId(this.selected);
-            //     });
+            const commands = this.transactionMode? [this.selected] : [this.selected, 'archive'];
             this.router.navigate(commands, {relativeTo: this.route})
                 .then(_ => {
                     this.detailSrv.setParentId(this.selected);
@@ -186,5 +182,14 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
 
     protected override canShowProcessingStatus(): boolean {
         return false;
+    }
+
+    onMode(e: MatRadioChange) {
+        this.transactionMode = +e.value === 1;
+        this.navigate();
+    }
+
+    get isEditable() {
+        return this.fileSrv.isEditable;
     }
 }

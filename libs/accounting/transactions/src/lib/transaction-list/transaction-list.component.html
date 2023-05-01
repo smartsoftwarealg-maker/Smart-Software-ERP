@@ -6,7 +6,6 @@
                     <mat-label translate>COMMON_JOURNALS</mat-label>
                     <input matInput [formControl]="journalFilter" type="text">
                 </mat-form-field>
-
             </div>
             <div class="list_div">
                 <mat-selection-list [multiple]="false" (selectionChange)="journalSelected($event)">
@@ -15,6 +14,12 @@
                     </mat-list-option>
                 </mat-selection-list>
             </div>
+            <mat-radio-group aria-label="Select an option" (change)="onMode($event)">
+                <mat-radio-button value="1"  translate [checked]="true">ACC_TRANSAC_DETAIL</mat-radio-button>
+                <mat-radio-button value="2" translate>COMMON_ARCHIVE</mat-radio-button>
+            </mat-radio-group>
+
+
         </mat-card>
         <div class="transactions">
             <div class="table-div">
@@ -56,9 +61,6 @@
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                    <mat-row class="selectable" [class.selected]="row?.oid === selectedRow?.oid"
-                             (click)="selectRow(row)"
-                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
                     <ng-container matColumnDef="isBudget">
                         <mat-header-cell *matHeaderCellDef translate>ACC_BUDGETABLE</mat-header-cell>
@@ -67,6 +69,11 @@
                         </mat-cell>
                     </ng-container>
 
+
+                    <mat-row class="selectable" [class.selected]="row?.oid === selectedRow?.oid"
+                             (click)="selectRow(row)"
+                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
                 </mat-table>
             </div>
             <div class="pagination-container b-b-background">
@@ -74,7 +81,11 @@
             </div>
         </div>
     </div>
-    <div class="right_div" >
+    <div class="right_div" *ngIf="transactionMode; else archive">
         <router-outlet></router-outlet>
     </div>
+
+    <ng-template #archive>
+        <ss-app-archive-main class="right_div" [id]="selected" [appId]="7" [editable]="isEditable"></ss-app-archive-main>
+    </ng-template>
 </div>
