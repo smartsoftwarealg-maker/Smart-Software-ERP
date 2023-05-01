@@ -36,7 +36,7 @@ export const purchasesNavTree: SideNavNode = {
         },
         {
             name: 'PURCHASES_PURCHASE_REQUEST',
-            icon: 'fa-sharp fa-solid fa-basket-shopping-simple',
+            icon: 'fa-solid fa-basket-shopping-simple',
             route: ABS_PURCHASE_REQUEST_URL,
             accessRights: 'PRequest'
         },
@@ -72,7 +72,7 @@ export const purchasesNavTree: SideNavNode = {
         // },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_PURCHASE_REPORTS_URL,
             accessRights: 'Report'
         },

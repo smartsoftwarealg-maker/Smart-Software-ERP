@@ -32,13 +32,13 @@ export class TransactionLineDetailComponent implements OnInit {
             .parent
             .paramMap
             .pipe(switchMap(res => {
-                    this.entitySrv.setParentId(+res.get('id') || 0)
-                    return this.router.paramMap;
-                }),
-                switchMap(res => {
-                    const id = +res.get('id');
-                    return id > 0 ? this.entitySrv.get(id) : of(newLine);
-                }))
+                this.entitySrv.setParentId(+res.get('id') || 0);
+                return this.router.paramMap;
+            }),
+            switchMap(res => {
+                const id = +res.get('id');
+                return id > 0 ? this.entitySrv.get(id) : of(newLine);
+            }))
             .subscribe(line => {
                 this.form = this.fb.group({
                     id:          [line.id],
@@ -50,7 +50,7 @@ export class TransactionLineDetailComponent implements OnInit {
                     income:      [{ value: line.amount > 0? line.amount : 0, disabled: line.amount < 0 }],
                     expense:     [{ value: line.amount > 0? 0 : -line.amount, disabled: line.amount > 0 }],
                     vat:         [line.vat || 0, Validators.required],
-                })
+                });
             });
 
     }

@@ -11,9 +11,9 @@ import {LoginService, PaginationModel, PaginatorPersistenceService} from '@ss/co
 import {of, switchMap, tap} from 'rxjs';
 
 @Component({
-  selector: 'ss-transaction-lines-list',
-  templateUrl: './transaction-lines-list.component.html',
-  styleUrls: ['./transaction-lines-list.component.scss']
+    selector: 'ss-transaction-lines-list',
+    templateUrl: './transaction-lines-list.component.html',
+    styleUrls: ['./transaction-lines-list.component.scss']
 })
 export class TransactionLinesListComponent implements OnInit {
     data: ACCTransactionLine[] = [];
@@ -52,12 +52,12 @@ export class TransactionLinesListComponent implements OnInit {
         this.loginSrv
             .loadContext()
             .pipe(switchMap(_ => this.policySrv.get(this.loginSrv.appCtx.center)),
-                  tap(res => {
-                      this.accPolicy = res;
-                      this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
-                  }),
-                  switchMap(_ => this.entitySrv.getList(0, 5))
-                  )
+                tap(res => {
+                    this.accPolicy = res;
+                    this.displayedColumns = this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d');
+                }),
+                switchMap(_ => this.entitySrv.getList(0, 5))
+            )
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
@@ -100,4 +100,6 @@ export class TransactionLinesListComponent implements OnInit {
                 this.pagination.elementCount = res.itemCount;
             });
     }
+
+
 }

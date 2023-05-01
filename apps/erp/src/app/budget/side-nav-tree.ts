@@ -30,7 +30,7 @@ export const budgetNavTree: SideNavNode = {
         },
         {
             name: 'BUD_BUDGET_PLANNING',
-            icon: 'fa-sharp fa-solid fa-ruler-triangle',
+            icon: 'fa-solid fa-ruler-triangle',
             route: ABS_BUDGET_PLANNING_URL,
             accessRights: 'BudgetPlanning'
         },
@@ -48,7 +48,7 @@ export const budgetNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_BUDGET_REPORTS_URL,
             accessRights: 'Report'
         },

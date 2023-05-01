@@ -3,8 +3,9 @@
     flex-wrap: nowrap;
     height: calc(100% - 16px);
     width: 96%;
-    margin: 4px auto;
+    max-width: 1800px;
     gap: 1em;
+    margin: 8px auto;
 }
 
 .left_div {
@@ -14,7 +15,12 @@
     flex-direction: column;
     overflow: hidden;
     flex: 1 1 40%;
-    max-width: 45%;
+    max-width: 40%;
+}
+.right_div {
+    flex: 2 1 60%;
+    height: 100%;
+    max-width: 60%;
 }
 
 .journals {
@@ -25,7 +31,6 @@
 
 .transactions {
     flex: 1 1 50%;
-    overflow-x: auto;
     display: flex;
     flex-direction: column;
 }
@@ -39,10 +44,6 @@
     flex: 1 1 55%;
 }
 
-.detail {
-    flex: 2 1 60%;
-    height: 100%;
-}
 
 
 
@@ -54,13 +55,12 @@
 }
 
 .table-div {
-    width: 100%;
     flex: 1 1 auto;
     overflow-x: auto;
 }
 
 mat-table {
-    min-width: 650px;
+    min-width: 700px;
 }
 
 .mat-column-pieceNo {

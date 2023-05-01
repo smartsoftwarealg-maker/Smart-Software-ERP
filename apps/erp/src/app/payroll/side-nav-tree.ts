@@ -135,7 +135,7 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'PAYROLL_ARCHIVE_VIEWER',
-            icon: 'fa-sharp fa-solid fa-box-archive',
+            icon: 'fa-solid fa-box-archive',
             route: ABS_ARCHIVE_VIEWER_URL
         },
         {
@@ -151,7 +151,7 @@ export const payrollNavTree: SideNavNode = {
 
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_COMMON_REPORTS_URL,
             accessRights: 'Report'
         },

@@ -13,7 +13,7 @@ export const workflowNavTree: SideNavNode = {
     children: [
         {
             name: 'ADMINISTRATION_WORKFLOW_MESSAGES',
-            icon: 'fa-sharp fa-solid fa-water',
+            icon: 'fa-solid fa-water',
             route: ABS_ADMINISTRATION_WORKFLOW_URL,
             accessRights: 'Workflow'
         },

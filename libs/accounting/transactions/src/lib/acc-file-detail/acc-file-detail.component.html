@@ -1,14 +1,14 @@
 <mat-card>
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="fileYear" class="default-25 sm-50">
+            <mat-form-field id="fileYear" class="default-100">
                 <mat-label translate>COMMON_YEAR</mat-label>
                 <input matInput formControlName="fileYear" type="number"  step="1">
                 <mat-error *ngIf="form.controls['fileYear'].invalid" translate>COMMON_FIELD_MAX_LENGTH
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="description" class="default-50 sm-100">
+            <mat-form-field id="description" class="default-100">
                 <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
                 <input matInput formControlName="description" type="text" required autofocus>
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED

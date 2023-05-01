@@ -90,7 +90,7 @@ export const stockNavTree: SideNavNode = {
         },
         {
             name: 'STOCK_USER_STORES',
-            icon: 'fa-sharp fa-solid fa-users-medical',
+            icon: 'fa-solid fa-users-medical',
             route: ABS_USER_STORE_URL,
             accessRights: 'UserStore'
         },
@@ -120,7 +120,7 @@ export const stockNavTree: SideNavNode = {
         },
         {
             name: 'STOCK_TRANSFERS',
-            icon: 'fa-sharp fa-solid fa-money-bill-transfer',
+            icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_STOCK_TRANSFER_URL,
             accessRights: 'Transfer'
         },
@@ -144,7 +144,7 @@ export const stockNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_REPORTS',
-            icon: 'fa-sharp fa-solid fa-file-chart-column',
+            icon: 'fa-solid fa-file-chart-column',
             route: ABS_STOCK_REPORTS_URL,
             accessRights: 'Report'
         },

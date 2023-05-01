@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormControl} from '@angular/forms';
-import {Observable, Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {MatTreeNestedDataSource} from '@angular/material/tree';
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UntypedFormControl } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 import {
     DocRight,
     LanguageService,
@@ -16,7 +16,7 @@ import {
     UserRightsService,
     MainPageService
 } from '@ss/common/api-common';
-import {doc} from 'prettier';
+import { doc } from 'prettier';
 import debug = doc.debug;
 
 export enum KeepOnToolbar {
@@ -51,7 +51,6 @@ export interface MenuItem {
 }
 
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -75,7 +74,7 @@ export class ShellService {
     private _companyName: ToolbarLabel = {
         title: '',
         icon: 'fa-solid fa-buildings'
-    }
+    };
 
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
@@ -104,10 +103,11 @@ export class ShellService {
     public navData: SideNavNode[] = [];
 
     constructor(public langSrv: LanguageService,
-                public router: Router,
-                public mainPageSrv: MainPageService,
-                private rightsSrv: UserRightsService,
-                private loginSrv: LoginService) { }
+        public router: Router,
+        public mainPageSrv: MainPageService,
+        private rightsSrv: UserRightsService,
+        private loginSrv: LoginService) {
+    }
 
     /* LOADING */
 
@@ -172,7 +172,7 @@ export class ShellService {
         this.setAppSideNavVisibility(tree);
         const filteredTree = tree.filter(t => t.visible || (t.children && t.children.find(e => e.visible) !== undefined));
         const finalTree = this.filterSideNavByVisibility(filteredTree);
-        return finalTree.length === 1? finalTree[0].children : finalTree;
+        return finalTree.length === 1 ? finalTree[0].children : finalTree;
     }
 
     // public filterSideNav(): void {
@@ -193,7 +193,7 @@ export class ShellService {
                 const clone: SideNavNode = cloneDeep(i);
                 clone.children = this.filterSideNavByVisibility(i.children);
                 return clone;
-            })
+            });
     }
 
     // private setSideNavVisibility(tree: SideNavNode[]): void {
@@ -213,13 +213,12 @@ export class ShellService {
             // MUST-use for each, MUST NOT change reference of array
             const userRights = this.rightsSrv.rights;
             tree.forEach(r => {
-                const right = this.loginSrv.appCtx?.id > 0? userRights?.get(r.accessRights) : r.customerRights;
+                const right = this.loginSrv.appCtx?.id > 0 ? userRights?.get(r.accessRights) : r.customerRights;
                 r.visible = right?.read || (right === undefined && this.loginSrv.appCtx?.manager);
                 this.setAppSideNavVisibility(r.children);
             });
         }
     }
-
 
 
     public getMenuItems(): string[] {
@@ -298,7 +297,7 @@ export class ShellService {
         }
         this.lastHash = hashResult;
         return hashResult;
-    };
+    }
 
     /* GO BACK */
 
@@ -310,7 +309,7 @@ export class ShellService {
     public setGoBackPath(path: string, relativeActivatedRoute: ActivatedRoute, params?: any) {
         this.setGoBackFn(() => {
             this.router.navigate([path], { relativeTo: relativeActivatedRoute, queryParams: params })
-                .then()
+                .then();
         });
     }
 
@@ -327,8 +326,12 @@ export class ShellService {
         while (relative.startsWith('..')) {
             relative = relative.substring(2);
             url = strDropEndUntil(url, '/');
-            if (relative.length === 0) { break; }
-            if (!relative.startsWith('/')) { throw new Error('Invalid relative url ' + path); }
+            if (relative.length === 0) {
+                break;
+            }
+            if (!relative.startsWith('/')) {
+                throw new Error('Invalid relative url ' + path);
+            }
             relative = relative.substring(1);
         }
         url += (relative.length ? '/' : '') + relative;
@@ -391,7 +394,7 @@ export class ShellService {
         return this.searchControl;
     }
 
-    public disableSearch(updateShell: boolean = true) {
+    public disableSearch(updateShell = true) {
         this.searchControl = null;
         this.focusSearchField = false;
         this.searchInputLabel = null;
@@ -411,7 +414,7 @@ export class ShellService {
      * @param subFn a function that subscribes to an observable, this observable sends search terms
      * @param focusField
      */
-    public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField: boolean = false): void {
+    public enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
         this.searchInputLabel = inputLabel;
         if (this.hasSearch) {
             console.log('Search called twice!!');
@@ -424,11 +427,15 @@ export class ShellService {
                 this.searchControl
                     .valueChanges
                     .pipe(debounceTime(300),
-                    distinctUntilChanged())
+                        distinctUntilChanged())
             );
             this.updateShell();
         }
         this.focusSearchField = focusField;
+    }
+
+    getSearchText() {
+        return this.searchControl?.value;
     }
 
     /**
@@ -532,6 +539,7 @@ export class ShellService {
     get application() {
         return this._application;
     }
+
     set application(str: string) {
         this._application = str;
     }
@@ -547,7 +555,7 @@ export class ShellService {
     }
 
     getRights(node: SideNavNode): Right {
-        return this.loginSrv.appCtx.id > 0?
+        return this.loginSrv.appCtx.id > 0 ?
             this.rightsSrv.getUserRights(node.accessRights) :
             node.customerRights;
     }

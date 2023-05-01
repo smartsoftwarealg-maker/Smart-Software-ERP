@@ -14,11 +14,8 @@ import {
     ABS_ADMINISTRATION_ATTRIBUTES_URL,
     ABS_DB_UPDATER_URL,
     ABS_APP_ARCHIVE_DOCUMENTS_URL,
-    ABS_LOGISTICS_DOCUMENT_URL,
     ABS_ADMINISTRATION_DAIRAS_URL,
-    ABS_ADMINISTRATION_DOCUMENT_URL,
-    ABS_ADMINISTRATION_WORKFLOW_URL,
-    ABS_ADMINISTRATION_USER_MESSAGES_URL, ABS_ADMINISTRATION_USER_DOCUMENT_URL, ABS_ADMINISTRATION_WORKFLOW_INBOX_URL
+    ABS_ADMINISTRATION_DOCUMENT_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -53,7 +50,7 @@ export const administrationNavTree: SideNavNode = {
         },
         {
             name: 'COMMON_DAIRAS',
-            icon: 'fa-sharp fa-solid fa-map-location-dot',
+            icon: 'fa-solid fa-map-location-dot',
             route: ABS_ADMINISTRATION_DAIRAS_URL,
             accessRights: 'Daira'
         },

@@ -64,7 +64,10 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
                             ?.valueChanges
                             .pipe(debounceTime(300),
                                 distinctUntilChanged())
-                            .subscribe(() => this.changing = true));
+                            .subscribe(() => {
+                                this.changing = true;
+                                this.specialList = [];
+                            }));
                 this.subscription
                     .push(
                         this.form
@@ -72,7 +75,10 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
                             ?.valueChanges
                             .pipe(debounceTime(300),
                                 distinctUntilChanged())
-                            .subscribe(() => this.changing = true));
+                            .subscribe(() => {
+                                this.changing = true;
+                                this.specialList = [];
+                            }));
             });
     }
 

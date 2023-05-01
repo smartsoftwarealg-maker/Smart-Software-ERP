@@ -69,12 +69,12 @@
 
                 </mat-table>
             </div>
-            <div class="pagination-container b-b-background" *ngIf="isRoot">
+            <div class="pagination-container b-b-background">
                 <ss-pagination [paginationModel]="pagination"></ss-pagination>
             </div>
         </div>
     </div>
-    <div class="detail" *ngIf="selectedJournal > 0">
+    <div class="right_div" >
         <router-outlet></router-outlet>
     </div>
 </div>

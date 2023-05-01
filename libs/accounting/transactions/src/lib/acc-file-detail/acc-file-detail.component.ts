@@ -27,12 +27,12 @@ export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> i
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService) {
         super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
-              'ACC_FILES');
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'ACC_FILES');
     }
 
     public override setupForm(e: ACCFile): UntypedFormGroup {
@@ -58,8 +58,8 @@ export class AccFileDetailComponent extends BaseEntityDetailComponent<ACCFile> i
                 debounceTime(300),
                 distinctUntilChanged()
             ).subscribe(value => {
-            this.form.controls['description'].setValue(`${this.centerName} ${value}`);
-        });
+                this.form.controls['description'].setValue(`${this.centerName} ${value}`);
+            });
     }
 
     override ngOnInit() {

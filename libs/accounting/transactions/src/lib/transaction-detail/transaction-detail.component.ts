@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Output } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -9,20 +9,24 @@ import {
 } from '@ss/accounting/accounting-api';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
+import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {maxDate, minDate} from '@ss/common/ui-datepicker';
 
 @Component({
-  selector: 'ss-transaction-detail',
-  templateUrl: './transaction-detail.component.html',
-  styleUrls: ['./transaction-detail.component.scss']
+    selector: 'ss-transaction-detail',
+    templateUrl: './transaction-detail.component.html',
+    styleUrls: ['./transaction-detail.component.scss']
 })
-export class TransactionDetailComponent implements OnInit {
+export class TransactionDetailComponent implements OnInit, OnDestroy {
+    private fileSrv = inject(AccFileService);
+    private subscriptions: Subscription[] = [];
+    readonly isClosed = this.fileSrv.accFile.closed;
+    isOnEdit = false;
     form: UntypedFormGroup = null;
     id = 0;
     isEmpty = false;
@@ -30,7 +34,7 @@ export class TransactionDetailComponent implements OnInit {
     maxDate: Date = new Date();
     projects: Lookup[] = [];
     accPolicy: ACCPolicy = null;
-    journalId: number = 0;
+    journalId = 0;
 
     constructor(
         private router: Router,
@@ -42,40 +46,49 @@ export class TransactionDetailComponent implements OnInit {
         public lookupsSrv: LookupsService,
         private loginSrv: LoginService,
         public detailSrv: AccTransactionLineService,
-        private accPolicySrv: AccPoliciesService,
-        private fileSrv: AccFileService) {
+        private accPolicySrv: AccPoliciesService) {
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     ngOnInit() {
         this.route
             .params
             .pipe(tap(params => this.id = +params['id']),
-                  switchMap(_ => this.preload()),
-                  switchMap(_ => this.id > 0? this.entitySrv.get(this.id) :
-                                                    of({
-                                                        id: 0,
-                                                        fileId: this.fileSrv.accFile.id,
-                                                        oid: 0,
-                                                        pieceMonth: 0,
-                                                        journalno: this.journalId,
-                                                        pieceNo: 0,
-                                                        isBudget: false})))
+                switchMap(_ => this.preload()),
+                switchMap(_ => this.id > 0? this.entitySrv.get(this.id) :
+                    of({
+                        id: 0,
+                        fileId: this.fileSrv.accFile.id,
+                        oid: 0,
+                        pieceMonth: 0,
+                        journalno: this.journalId,
+                        pieceNo: 0,
+                        isBudget: false})))
             .subscribe(ent => this.setupForm(ent));
+        this.subscriptions.push(
+            this.router.events.pipe(
+                filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+            ).subscribe((e: RouterEvent) => {
+                this.isOnEdit = e.url.indexOf('/detail/') > 1;
+            }));
     }
 
     preload(): Observable<any> {
         this.journalId = this.entitySrv.getParentId();
         return this.loginSrv.loadContext()
-                .pipe(tap(_ => {
-                        this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
-                        const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
-                        this.maxDate = nextMonth;
-                        this.maxDate.setDate(0);
-                    }),
-                    switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
-                    tap(res => this.accPolicy = res),
-                    switchMap(_ => this.entitySrv.getProjects()),
-                    tap(res => this.projects = res));
+            .pipe(tap(_ => {
+                this.minDate = new Date(this.loginSrv.appCtx?.accYear, this.loginSrv.appCtx.accPeriod - 1, 1);
+                const nextMonth = new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod, 1);
+                this.maxDate = nextMonth;
+                this.maxDate.setDate(0);
+            }),
+            switchMap(_ => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
+            tap(res => this.accPolicy = res),
+            switchMap(_ => this.entitySrv.getProjects()),
+            tap(res => this.projects = res));
     }
 
     setupForm(e: ACCTransaction) {
@@ -98,7 +111,7 @@ export class TransactionDetailComponent implements OnInit {
 
 
     cancel() {
-         this.router.navigate(['/app/accounting/transactions']).then();
+        this.router.navigate(['/app/accounting/transactions']).then();
     }
 
     save() {

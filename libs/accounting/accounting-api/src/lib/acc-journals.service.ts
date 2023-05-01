@@ -14,7 +14,7 @@ export class AccJournalsService extends BaseEntityService<Journal> {
     }
 
     getUserJournals(filter: string): Observable<{ itemCount: number; body: Journal[] }> {
-        const params = new HttpParams().set("filter", filter);
+        const params = new HttpParams().set('filter', filter);
         return this.httpSrv.getData<Journal>(ACC_USER_JOURNALS_URL, 0, 100, filter, null, params);
     }
 }

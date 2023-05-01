@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {
+    AccFileService,
     AccPoliciesService,
     ACCPolicy,
     ACCTransactionLine,
@@ -16,7 +17,7 @@ import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AgentService, CustomerService} from '@ss/logistics/api-agent';
+import {AgentService} from '@ss/logistics/api-agent';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
 
 @Component({
@@ -25,16 +26,24 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
     styleUrls: ['./transaction-lines-detail.component.scss']
 })
 export class TransactionLinesDetailComponent {
+    private fileSrv = inject(AccFileService);
+    private customerSrv = inject(AgentService);
+    private loginSrv = inject(LoginService);
+    private annexCodeSrv = inject(AnnexCodeService);
+    private accPolicySrv = inject(AccPoliciesService);
+    private accountSrv =  inject(AccountService);
+
     accountLookupModel  = new AccountAutocompleteModel(this.accountSrv);
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     ccLookupModel       = new DefaultAutoCompleteModel(this.ccSrv, 'id', 'code');
     annexCodeLookupMode = new DefaultAutoCompleteModel(this.annexCodeSrv, 'code');
     accPolicy: ACCPolicy = null;
-    public form: UntypedFormGroup = null;
+    public form: UntypedFormGroup | null = null;
     id = 0;
     transactionId = 0;
     fileId = 0;
     selectedAccount: Account = null;
+    isCloded = this.fileSrv.accFile.closed;
     private formValidator: ValidatorFn =
         (group: AbstractControl): ValidationErrors | null => {
             let result = null;
@@ -57,16 +66,16 @@ export class TransactionLinesDetailComponent {
                     result = {invalid: true};
                 }
                 if (!group.get('costCenterId').value && this.selectedAccount?.ccRequired) {
-                    group.get('costCenterId').setErrors({invalid: true})
+                    group.get('costCenterId').setErrors({invalid: true});
                     result = {invalid: true};
                 }
                 if (this.selectedAccount.accountNo.startsWith('51') && this.accPolicy?.analyzeChecks && !group.get('checkNo').value) {
-                    group.get('checkNo').setErrors({invalid: true})
+                    group.get('checkNo').setErrors({invalid: true});
                     result = {invalid: true};
                 }
             }
             return result;
-        }
+        };
 
     constructor(
         public entitySrv: AccTransactionLineService,
@@ -76,16 +85,12 @@ export class TransactionLinesDetailComponent {
         public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private accountSrv: AccountService,
-        private customerSrv: AgentService,
-        private loginSrv: LoginService,
-        private annexCodeSrv: AnnexCodeService,
-        private accPolicySrv: AccPoliciesService,
         private ccSrv: CostCenterService) {
-        this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj)
+        this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj);
     }
 
     setupForm(e: ACCTransactionLine): UntypedFormGroup {
+
         return  this.formBuilder.group({
             id: [((e.fileId * SCALE + e.oid) * SCALE + e.lineNumber) || 0],
             fileId: [e.fileId || this.loginSrv.appCtx.accFile],
@@ -131,7 +136,6 @@ export class TransactionLinesDetailComponent {
     }
 
     public finishLoading(e: ACCTransactionLine) {
-        this.shellSrv.setLoading(false);
         this.accountSrv
             .get(e.accountId)
             .subscribe(res => this.selectedAccount = res);
@@ -139,7 +143,6 @@ export class TransactionLinesDetailComponent {
     }
 
     public load() {
-        this.shellSrv.setLoading(true);
         this.loginSrv
             .loadContext()
             .pipe(
@@ -157,17 +160,17 @@ export class TransactionLinesDetailComponent {
                     return this.loadEntity(this.id || 0);
                 })
             ).subscribe({
-            next: entity => {
-                if (entity) {
-                    this.finishLoading(entity);
+                next: entity => {
+                    if (entity) {
+                        this.finishLoading(entity);
+                    }
+                },
+                error: error => {
+                    this.shellSrv.setLoading(false);
+                    this.shellSrv.showRetry(() => this.load());
+                    throw error;
                 }
-            },
-            error: error => {
-                this.shellSrv.setLoading(false);
-                this.shellSrv.showRetry(() => this.load());
-                throw error;
-            }
-        });
+            });
     }
 
     cancel() {
@@ -186,7 +189,7 @@ export class TransactionLinesDetailComponent {
         delete val.credit;
         if (this.entitySrv.getParentId() != null) {
             val.id = this.id;
-            let obs: Observable<any> = val.id === 0
+            const obs: Observable<any> = val.id === 0
                 ? this.entitySrv.add(val).pipe(tap(i => {
                     this.id = i;
                     val.id = i;
@@ -202,7 +205,7 @@ export class TransactionLinesDetailComponent {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
                 }
-            })
+            });
         } else {
             this.snackBarSrv.showFailureMessage('COMMON_INVALID_SELECTION');
         }
