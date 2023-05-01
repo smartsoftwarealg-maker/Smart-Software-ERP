@@ -3,7 +3,7 @@
 
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_NUMBER</mat-label>
-            <input matInput formControlName="pieceNo" type="number" autofocus >
+            <input matInput formControlName="pieceNo" type="number" autofocus>
             <mat-error *ngIf="form.controls['pieceNo'].invalid" translate>COMMON_FIELD_MAX_LENGTH
             </mat-error>
         </mat-form-field>
@@ -39,21 +39,22 @@
     </form>
 
     <div mat-subheader class="ctrl default-100">
-        <button mat-flat-button color="primary" (click)="save()" translate>
+        <button mat-flat-button color="primary" (click)="save()" translate [disabled]="!form?.valid || isClosed"
+                *ngIf="!isOnEdit">
             <i class="fas fa-save"></i>
             COMMON_SAVE
         </button>
-        <button mat-flat-button color="accent" translate (click)="cancel()">
+        <button mat-flat-button color="accent" translate (click)="cancel()" *ngIf="!isOnEdit">
             <i class="fas fa-redo"></i>
             COMMON_CANCEL
         </button>
 
-        <button mat-flat-buttoncolor="warn" (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>
+        <button (click)="deleteSelected()" *ngIf="isEmpty && id > 0" translate>
             <i class="fas fa-trash-can"></i>
             COMMON_DELETE
         </button>
     </div>
 </mat-card>
-<div *ngIf="id" class="detail">
+<div *ngIf="id" class="right_div">
     <router-outlet></router-outlet>
 </div>

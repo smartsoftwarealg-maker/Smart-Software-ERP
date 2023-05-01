@@ -72,11 +72,10 @@
                 <mat-label translate>ACC_POS</mat-label>
                 <input matInput formControlName="lineNumber" type="number" readonly>
             </mat-form-field>
-
         </form>
 
         <div class="ctrl default-100">
-            <button mat-flat-button color="primary"  (click)="save()" [disabled]="!form?.valid">
+            <button mat-flat-button color="primary"  (click)="save()" [disabled]="!form?.valid || isCloded">
                 <i class="fas fa-save"></i>
                 <span translate> COMMON_SAVE </span>
             </button>

@@ -28,7 +28,7 @@
     "FILES":                   "Dossiers",
     "DEBIT":                   "Débit",
     "CREDIT":                  "Crédit",
-    "POS":                     "Position",
+    "POS":                     "Pos.",
     "TRANSAC_DETAIL":          "Détail de l'ecriture comptable'",
     "SHOW_HEADER":             "Afficher l'en-tête de l'ecriture comptable",
     "SHOW_DETAIL":             "Afficher le détail de l'ecriture comptable",

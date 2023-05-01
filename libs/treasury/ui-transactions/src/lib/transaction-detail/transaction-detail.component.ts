@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Event, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {TreasuryGroupService} from '@ss/common/api-lookup';
-import {AppContext, LoginInfo, LoginService} from '@ss/common/api-common';
-import {MatRadioChange} from '@angular/material/radio';
+import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
-import {filter, map, switchMap} from 'rxjs/operators';
-import {of, zip} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -19,6 +17,8 @@ import {of, zip} from 'rxjs';
     styleUrls: ['./transaction-detail.component.scss'],
 })
 export class TransactionDetailComponent extends BaseEntityDetailComponent<TTransaction> {
+    private agentSrv = inject(AgentService);
+    private groupSrv = inject(TreasuryGroupService);
     groupLookup = new DefaultAutoCompleteModel(this.groupSrv);
     agentLookup = new AgentLookupModel(this.agentSrv);
 
@@ -29,26 +29,24 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        private agentSrv: AgentService,
         private loginSrv: LoginService,
-        private groupSrv: TreasuryGroupService,
         private router: Router) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_TRANSACTIONS');
     }
 
     override ngOnInit() {
         if (!this.entitySrv.journalId) {
-            this.router.navigate(['/app/treasury/transactions'])
+            this.router.navigate(['/app/treasury/transactions']);
         }
         this.subscriptions.push(
-        this.router
-            .events
-            .pipe(filter(event => event instanceof NavigationEnd))
-            .subscribe(event => {
-                if (event instanceof NavigationEnd) {
-                    this.saveButton.visible = event.url.indexOf('/lines/') < 0;
-                }
-            }));
+            this.router
+                .events
+                .pipe(filter(event => event instanceof NavigationEnd))
+                .subscribe(event => {
+                    if (event instanceof NavigationEnd) {
+                        this.saveButton.visible = event.url.indexOf('/lines/') < 0;
+                    }
+                }));
 
         super.ngOnInit();
     }

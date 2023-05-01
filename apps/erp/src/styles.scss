@@ -978,3 +978,8 @@ button {
 .mdc-list-item__primary-text {
     display: flex !important;
 }
+
+mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
+    width: 100%;
+    overflow-x: clip;
+}

@@ -36,7 +36,7 @@
             <span translate>{{ 'COMMON_' + node.name }} </span>
         </mat-tree-node>
     </mat-tree>
-    <div class="detail" *ngIf="displayedColumns.length > 0 && data.length > 0">
+    <div class="right_div" *ngIf="displayedColumns.length > 0 && data.length > 0">
         <mat-table mat-table [dataSource]="data" class="content-div" [ngStyle]="{ 'min-width.px': tableWidth }">
             <ng-container *ngFor="let col of displayedColumns; let i = index" matColumnDef="{{ col }}">
                 <mat-header-cell *matHeaderCellDef> {{ col }} </mat-header-cell>

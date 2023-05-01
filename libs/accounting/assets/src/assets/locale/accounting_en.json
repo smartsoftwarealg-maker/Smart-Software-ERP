@@ -28,7 +28,7 @@
     "FILES":                    "Files",
     "DEBIT":                    "Debit",
     "CREDIT":                   "Credit",
-    "POS":                      "Position",
+    "POS":                      "Pos.",
     "TRANSAC_DETAIL":           "Transaction detail",
     "SHOW_HEADER":              "Show transaction header",
     "SHOW_DETAIL":              "Show transaction detail",

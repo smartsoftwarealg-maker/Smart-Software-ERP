@@ -11,6 +11,9 @@
 .table-div {
     flex: 2 1 auto;
     width: 100%;
+    height: calc(100% - 72px);
+    min-height: 300px;
+    max-width: 1000px;
     overflow-x: auto;
 }
 
@@ -24,6 +27,7 @@ mat-table {
 }
 
 .ctrl-div {
+    margin: 4px 0;
     display: flex;
     justify-content: center;
     column-gap: 16px;
@@ -42,7 +46,7 @@ mat-table {
     padding-left: 4px;
 }
 .mat-column-description {
-    flex: 3 1 250px;
+    flex: 3 1 300px;
     padding-left: 4px;
     border-left: white thin solid;
 }

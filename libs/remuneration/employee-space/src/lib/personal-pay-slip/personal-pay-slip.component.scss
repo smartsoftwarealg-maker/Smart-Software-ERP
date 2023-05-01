@@ -1,19 +1,35 @@
 mat-card {
-    padding: 16px;
+    padding: 8px;
+    width: 96%;
     max-width: 600px;
     margin: 16px auto;
     border-radius: 1.4em;
 }
 
 button {
-    min-width: 180px;
+    justify-self: stretch;
+    width: 100%;
 }
 
 mat-table {
-    min-width: 600px;
+    min-width: 750px;
 }
+
 .table_div {
     width: 98%;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
+    overflow-x: auto;
+}
+
+.mat-column-description {
+    flex: 1 1 250px;
+}
+
+.mat-column-base,
+.mat-column-rate,
+.mat-column-gain,
+.mat-column-deduction {
+    flex: 1 1 120px;
+    justify-self: flex-end;
 }

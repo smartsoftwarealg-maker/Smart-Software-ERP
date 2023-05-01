@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
-import {AppArchiveListComponent} from '../app-archive-list/app-archive-list.component';
+import {ActivatedRoute, RouterOutlet} from '@angular/router';
 
 @Component({
     selector: 'ss-app-archive-main',

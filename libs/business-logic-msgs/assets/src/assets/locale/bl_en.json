@@ -39,5 +39,6 @@
     "CONSUMED_REFERENCE":            "Reference is already consumed, no further modification",
     "USAGE_INVALID_DATE":            "Some articles of this document are already consumed",
     "NUMBERING_PROBLEM":             "Your serial numbering policy does not allow you to create new pieces in this period",
-    "INVALID_PRICE":                 "Invalid inventory price"
+    "INVALID_PRICE":                 "Invalid inventory price",
+    "CLOSED_FILE":                   "The accounting file is closed. No further modification is allowed"
 }

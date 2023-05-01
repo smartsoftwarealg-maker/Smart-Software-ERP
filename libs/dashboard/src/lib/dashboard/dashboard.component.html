@@ -37,7 +37,7 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="detail" *ngIf="headers && headers.length > 0 && dashboardData.length > 0">
+    <div class="right_div" *ngIf="headers && headers.length > 0 && dashboardData.length > 0">
         <mat-table mat-table [dataSource]="dashboardData"
                    class="main-table"
                    [ngStyle]="{ 'min-width.px': tableWidth }">

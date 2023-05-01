@@ -23,20 +23,22 @@ import { AccProjectDetailComponent } from './acc-project-detail/acc-project-deta
 import { AccountingGenerationComponent } from './accounting-generation/accounting-generation.component';
 import { AccountingReopenComponent } from './accounting-reopen/accounting-reopen.component';
 import { BalanceQueriesComponent } from './balance-queries/balance-queries.component';
+import { AppArchiveModule } from "@ss/common/app-archive";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiMainPageModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        CommonUiConfirmationDialogModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiMainPageModule,
+    CommonUiAutoCompleteModule,
+    CommonUiDatepickerModule,
+    CommonUiConfirmationDialogModule,
+    AppArchiveModule
+  ],
     declarations: [
       TransactionListComponent,
       TransactionDetailComponent,

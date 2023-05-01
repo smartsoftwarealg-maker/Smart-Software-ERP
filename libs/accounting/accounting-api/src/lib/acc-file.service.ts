@@ -40,4 +40,8 @@ export class AccFileService extends BaseEntityService<ACCFile> {
     get curPeriod() {
         return this._accFile?.curPeriod || 1;
     }
+
+    get isEditable() {
+        return !this._accFile?.closed;
+    }
 }
