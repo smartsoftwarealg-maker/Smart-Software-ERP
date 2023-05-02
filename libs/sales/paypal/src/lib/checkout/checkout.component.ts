@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, inject, Inject, OnInit } from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Cartline, Total} from '@ss/sales/shopping-cart';
 import {CheckoutService} from '../checkout.service';
@@ -12,13 +12,13 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
     styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
+    private fb = inject(FormBuilder);
     total: Total = null;
     status: string = null;
     form: UntypedFormGroup = null;
     constructor(private dialogRef: MatDialogRef<CheckoutComponent>,
                 @Inject(MAT_DIALOG_DATA) private data: Cartline[],
                 private checkoutSrv: CheckoutService,
-                private fb: FormBuilder,
                 private router: Router) {}
 
     ngOnInit(): void {

@@ -14,6 +14,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
     styleUrls: ['./contract-article-detail.component.scss'],
 })
 export class ContractArticleDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     private articleSrv =  inject(ArticleService);
     articleLookup = new ArticleAutoCompleteModel(this.articleSrv);
     form: UntypedFormGroup = null;
@@ -22,8 +23,7 @@ export class ContractArticleDetailComponent implements OnInit {
                 private route: ActivatedRoute,
                 private entitySrv: ContractArticleService,
                 private snackBarSrv: SnackBarService,
-                private confirmSrv: ConfirmationDialogService,
-                private fb: FormBuilder) {
+                private confirmSrv: ConfirmationDialogService) {
         this.articleLookup.onObjectSelected = a => this.form.controls['reference'].setValue(a.reference);
     }
 

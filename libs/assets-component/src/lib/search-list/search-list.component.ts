@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Asset, SearchCriteria} from '../assets-api';
 import {AssetsService} from '../assets.service';
@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 import {UntypedFormBuilder} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -17,14 +17,20 @@ import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {Office, OfficeService} from '@ss/common/api-lookup';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {HttpParams} from '@angular/common/http';
 
 @Component({
-  selector: 'ss-search-list',
-  templateUrl: './search-list.component.html',
-  styleUrls: ['./search-list.component.scss']
+    selector: 'ss-search-list',
+    templateUrl: './search-list.component.html',
+    styleUrls: ['./search-list.component.scss']
 })
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
+    private fb =  inject(UntypedFormBuilder);
+    private supplierSrv  = inject(SupplierService);
+    private assetSrv  = inject(AssetsService);
+    private isParamSrv  = inject(IsParamService);
+    private locationSrv  = inject(AssetLocationService);
+    private officeSrv  = inject(OfficeService);
+    private langSrv  = inject(LanguageService);
     private EPOCH: Date | null = new Date(0);
     private FUTURE: Date | null = new Date(9999, 11, 31);
     private DEF_COLS = [
@@ -91,21 +97,15 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
                 public override confirmationSrv: ConfirmationDialogService,
                 public override pagPersistSrv: PaginatorPersistenceService,
                 private beneficiarySrv: ConsumerService,
-                private supplierSrv: SupplierService,
-                private isParamSrv: IsParamService,
-                private locationSrv: AssetLocationService,
-                private officeSrv: OfficeService,
-                private dialog: MatDialog,
-                private fb: UntypedFormBuilder,
-                private langSrv: LanguageService) {
+                private dialog: MatDialog) {
         super(listSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'COMMON_SEARCH');
         this.pagination.pageSize = 10;
     }
@@ -148,7 +148,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         return this.listSrv
             .search(this.pagination, <SearchCriteria>this.form.value)
             .pipe(tap(res => this.pagination.elementCount = res.itemCount),
-                  map(res => res.body));
+                map(res => res.body));
     }
 
     public override excel() {

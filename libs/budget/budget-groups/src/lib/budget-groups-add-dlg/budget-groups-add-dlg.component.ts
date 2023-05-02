@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {UntypedFormBuilder, Validator, Validators} from '@angular/forms';
+import { Component, inject, Inject, OnInit } from "@angular/core";
+import { FormBuilder, UntypedFormBuilder, Validator, Validators } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetGroupTree} from '../budget-groups-api';
 
@@ -8,7 +8,8 @@ import {BudgetGroupTree} from '../budget-groups-api';
     templateUrl: './budget-groups-add-dlg.component.html',
     styleUrls: ['./budget-groups-add-dlg.component.scss'],
 })
-export class BudgetGroupsAddDlgComponent implements OnInit {
+export class BudgetGroupsAddDlgComponent {
+    private fb = inject(FormBuilder);
     form = this.fb.group({
         id:          [this.data.id],
         parentId:    [this.data.parentId],
@@ -19,10 +20,8 @@ export class BudgetGroupsAddDlgComponent implements OnInit {
     });
 
     constructor(private dialogRef: MatDialogRef<BudgetGroupsAddDlgComponent>,
-                private fb: UntypedFormBuilder,
                 @Inject(MAT_DIALOG_DATA) private data: BudgetGroupTree) {}
 
-    ngOnInit(): void {}
 
     save() {
         this.dialogRef.close(this.form.getRawValue());

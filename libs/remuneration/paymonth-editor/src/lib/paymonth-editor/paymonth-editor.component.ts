@@ -1,5 +1,12 @@
-import {Component, ElementRef, HostBinding, Input, OnDestroy, Optional, Self} from '@angular/core';
-import {ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NgControl, Validators} from '@angular/forms';
+import { Component, ElementRef, HostBinding, inject, Input, OnDestroy, Optional, Self } from "@angular/core";
+import {
+    ControlValueAccessor,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    NgControl,
+    Validators,
+    FormBuilder
+} from "@angular/forms";
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject, Subscription} from 'rxjs';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
@@ -12,24 +19,24 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 })
 export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnDestroy, ControlValueAccessor {
     static nextId = 0;
+    private fb = inject(FormBuilder);
+    private _required = false;
+    private _placeholder: string;
     focused = false;
     touched = false;
     form: UntypedFormGroup = null;
     stateChanges = new Subject<void>();
     onChangeSubscription: Subscription = null;
-    onTouched = () => {};
-    private _required = false;
-    private _placeholder: string;
     _disabled: boolean = false;
     controlType = 'ss-paymonth-input';
     autofilled?: boolean;
+    onTouched = () => {};
     @Input('aria-describedby') userAriaDescribedBy: string;
     @HostBinding() id = `ss-paymonth-editor-${PaymonthEditorComponent.nextId++}`;
 
-    constructor(private fb: UntypedFormBuilder,
-                protected _elementRef: ElementRef<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+    constructor(protected _elementRef: ElementRef<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
                 @Optional() @Self() public ngControl: NgControl) {
-        this.form = fb.group({
+        this.form = this.fb.group({
             month: [0, [Validators.required, Validators.max(12), Validators.min(1)]],
             year: [0, [Validators.required, Validators.max(3000), Validators.min(1900)]],
         });

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import { ReportCatalogService } from '../report-catalog/report-catalog.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { switchMap, tap } from 'rxjs/operators';
 import { ReportCatalog } from '../report-catalog';
 import { SnackBarService } from '../../../../common/snack-bar.service';
@@ -12,6 +12,7 @@ import { SnackBarService } from '../../../../common/snack-bar.service';
     styleUrls: ['./report-catalog-detail.component.css']
 })
 export class ReportCatalogDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     form: UntypedFormGroup = null;
 
     private id: number = null;
@@ -21,8 +22,7 @@ export class ReportCatalogDetailComponent implements OnInit {
     constructor(private service: ReportCatalogService,
         private route: Router,
         private snackBarSrv: SnackBarService,
-        private parent: ActivatedRoute,
-        private fb: UntypedFormBuilder) {
+        private parent: ActivatedRoute) {
     }
 
     ngOnInit() {

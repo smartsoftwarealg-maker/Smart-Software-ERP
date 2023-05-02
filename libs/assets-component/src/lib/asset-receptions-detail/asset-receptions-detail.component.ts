@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {ActivatedRoute, Router} from '@angular/router';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {AssetReception} from '../assets-api';
@@ -19,6 +19,10 @@ import {WorkflowDialogComponent} from '@ss/workflow';
     styleUrls: ['./asset-receptions-detail.component.scss']
 })
 export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<AssetReception> {
+    private supplierSrv =  inject(SupplierService);
+    private consumerSrv =  inject(ConsumerService);
+    private loginSrv =  inject(LoginService);
+    private router =  inject(Router);
     private sendBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-envelope',
@@ -39,10 +43,6 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private supplierSrv: SupplierService,
-        private consumerSrv: ConsumerService,
-        private loginSrv: LoginService,
-        private router: Router,
         private dialog: MatDialog) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }

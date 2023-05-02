@@ -1,8 +1,7 @@
 .container {
-    margin: 0;
     padding: 10px;
     box-sizing: border-box;
-    height: calc(100% - 64px);
+    min-height: calc(100% - 64px);
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;

@@ -16,6 +16,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
     styleUrls: ['./line-matter-detail.component.scss'],
 })
 export class LineMatterDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     private matterSrv =  inject(LtmMatterService);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv);
     form = this.fb.group( {
@@ -25,7 +26,6 @@ export class LineMatterDetailComponent implements OnInit {
     });
 
     constructor(private entitySrv: LtmLineMatterService,
-                private fb: FormBuilder,
                 private route: ActivatedRoute,
                 private snackBarSrv: SnackBarService,
                 private router: Router,

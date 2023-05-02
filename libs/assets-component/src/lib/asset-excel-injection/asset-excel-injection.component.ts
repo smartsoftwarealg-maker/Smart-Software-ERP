@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {finalize, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -8,18 +8,19 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {UserRightsService} from '@ss/common/api-common';
 
 @Component({
-  selector: 'ss-asset-excel-injection',
-  templateUrl: './asset-excel-injection.component.html',
-  styleUrls: ['./asset-excel-injection.component.scss']
+    selector: 'ss-asset-excel-injection',
+    templateUrl: './asset-excel-injection.component.html',
+    styleUrls: ['./asset-excel-injection.component.scss']
 })
 export class AssetExcelInjectionComponent implements OnInit {
+    private fb = inject(UntypedFormBuilder);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-               'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL',
-               'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
-             ];
+        'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL',
+        'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
+    ];
 
     @Input()
-    requiredFileType = '.xlsx';
+        requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
@@ -71,8 +72,7 @@ export class AssetExcelInjectionComponent implements OnInit {
                 private rightsSrv: UserRightsService,
                 public snackBarSrv: SnackBarService,
                 private shellSrv: ShellService,
-                private activatedRoute: ActivatedRoute,
-                private fb: UntypedFormBuilder) {
+                private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
@@ -99,19 +99,19 @@ export class AssetExcelInjectionComponent implements OnInit {
                 .upload(formData)
                 .pipe(finalize(() => this.reset()))
                 .subscribe({
-                next: (res: any) => {
-                    if (res.type == HttpEventType.UploadProgress) {
-                        this.uploadProgress = Math.round(100 * (res.loaded / res.total));
-                    } else if (res.type == HttpEventType.Response) {
-                        this.snackBarSrv.showSuccessMessage();
+                    next: (res: any) => {
+                        if (res.type == HttpEventType.UploadProgress) {
+                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                        } else if (res.type == HttpEventType.Response) {
+                            this.snackBarSrv.showSuccessMessage();
+                        }
+                        this.processing = false;
+                    },
+                    error: (err) => {
+                        this.processing = false;
+                        throw err;
                     }
-                    this.processing = false;
-                },
-                error: (err) => {
-                    this.processing = false;
-                    throw err;
-                }
-            });
+                });
         }
     }
 

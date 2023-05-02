@@ -1,17 +1,10 @@
-:host {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
-    min-width: 320px;
-}
 
-mat-card{
-    margin-top: 24px;
-    mat-card-content{
-        margin-top: 24px;
-    }
-    border-radius: 1.5em;
+mat-card {
+    width: 94%;
+    max-width: 700px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }
 .value {
     width: 260px;

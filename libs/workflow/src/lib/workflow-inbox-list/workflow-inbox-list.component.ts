@@ -19,6 +19,7 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
         'number',
         'date',
         'message',
+        'sender',
         'time',
     ];
     constructor(

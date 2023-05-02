@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetInventory} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -23,6 +23,12 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./asset-inventory-detail.component.scss']
 })
 export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<AssetInventory> {
+    private loginSrv = inject(LoginService);
+    private officeSrv = inject(OfficeService);
+    private policySrv = inject(AccPoliciesService);
+    private assetSrv = inject(AssetsService);
+    private statusSrv = inject(FurnitureStatusService);
+
     private accPolicy: ACCPolicy | null = null;
 
     officeLookup      = new DefaultAutoCompleteModel(this.officeSrv);
@@ -36,12 +42,7 @@ export class AssetInventoryDetailComponent extends BaseEntityDetailComponent<Ass
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private loginSrv: LoginService,
-        private officeSrv: OfficeService,
-        private policySrv: AccPoliciesService,
-        private assetSrv: AssetsService,
-        private statusSrv: FurnitureStatusService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'INVENTORY');
     }
 

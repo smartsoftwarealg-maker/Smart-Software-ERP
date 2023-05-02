@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute} from '@angular/router';
@@ -16,11 +16,13 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {HttpParams} from '@angular/common/http';
 
 @Component({
-  selector: 'ss-accounting-generation',
-  templateUrl: './accounting-generation.component.html',
-  styleUrls: ['./accounting-generation.component.scss']
+    selector: 'ss-accounting-generation',
+    templateUrl: './accounting-generation.component.html',
+    styleUrls: ['./accounting-generation.component.scss']
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
+    private fb = inject(UntypedFormBuilder);
+
     readonly PURCHASE = 1;
     readonly SALES    = 4;
     readonly PAYROLL  = 5;
@@ -57,8 +59,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     cashColumns = ['number', 'date', 'debit', 'credit'];
     public pagination = PaginationModel.newInstance();
 
-    constructor(private fb: UntypedFormBuilder,
-                private loginSrv: LoginService,
+    constructor(private loginSrv: LoginService,
                 private generationSrv: AccountingGenerationService,
                 private route: ActivatedRoute,
                 private shellSrv: ShellService,
@@ -72,39 +73,39 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
-  ngOnInit(): void {
-      this.shellSrv.setGoBackPath('..', this.route);
-      this.loginSrv
-          .loadContext()
-          .subscribe(res => {
-              this.form = this.fb.group({
-                  year:    [{ value: this.loginSrv.appCtx.accYear, disabled: true }],
-                  period:  [{ value: this.loginSrv.appCtx.accPeriod, disabled: true} ],
-                  journal: [null, Validators.required],
-                  genType: ['purchase', Validators.required],
-              });
-              this.subscriptions.push(
-                  this.form?.controls['genType']
-                      .valueChanges
-                      .pipe(
-                          debounceTime(300),
-                          distinctUntilChanged()
-                      ).subscribe(v => this.showDocuments()));
-          });
-  }
+    ngOnInit(): void {
+        this.shellSrv.setGoBackPath('..', this.route);
+        this.loginSrv
+            .loadContext()
+            .subscribe(res => {
+                this.form = this.fb.group({
+                    year:    [{ value: this.loginSrv.appCtx.accYear, disabled: true }],
+                    period:  [{ value: this.loginSrv.appCtx.accPeriod, disabled: true} ],
+                    journal: [null, Validators.required],
+                    genType: ['purchase', Validators.required],
+                });
+                this.subscriptions.push(
+                    this.form?.controls['genType']
+                        .valueChanges
+                        .pipe(
+                            debounceTime(300),
+                            distinctUntilChanged()
+                        ).subscribe(v => this.showDocuments()));
+            });
+    }
 
-  generate() {
-      const key = +this.form?.controls['genType'].value;
-      const generationPayload = { journal: this.form?.controls['journal'].value,
-                                  genType: this.documentMap.get(key)?.description
-                                };
-      this.generationSrv
-          .generate(generationPayload)
-          .subscribe(res => {
-              this.showDocuments();
-              this.snackBarSrv.showSuccessMessage();
-          })
-  }
+    generate() {
+        const key = +this.form?.controls['genType'].value;
+        const generationPayload = { journal: this.form?.controls['journal'].value,
+            genType: this.documentMap.get(key)?.description
+        };
+        this.generationSrv
+            .generate(generationPayload)
+            .subscribe(res => {
+                this.showDocuments();
+                this.snackBarSrv.showSuccessMessage();
+            });
+    }
 
     private showTransactions(key: number) {
         const value = this.documentMap.get(key);
@@ -127,82 +128,82 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             });
     }
 
-  private showPayrollLines() {
-      this.generationSrv
-          .getPayrollLines()
-          .subscribe({
-              next: res => {
-                  this.processing  = false;
-                  this.payrollData = res;
-                  this.shellSrv.setLoading(false);
-              }, error: err => {
-                  this.processing = false;
-                  this.shellSrv.setLoading(false);
-                  throw err;
-              }
-          })
-  }
+    private showPayrollLines() {
+        this.generationSrv
+            .getPayrollLines()
+            .subscribe({
+                next: res => {
+                    this.processing  = false;
+                    this.payrollData = res;
+                    this.shellSrv.setLoading(false);
+                }, error: err => {
+                    this.processing = false;
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
 
-  private showBankPayments() {
-      this.generationSrv
-          .getChecks()
-          .subscribe({
-              next: res => {
-                  this.processing = false;
-                  this.checkData  = res;
-                  const bankId = res.length > 0? res[0].journal || null: null;
-                  this.form?.controls['journal']?.setValue(bankId);
-                  this.shellSrv.setLoading(false);
-              }, error: err => {
-                  this.processing = false;
-                  this.shellSrv.setLoading(false);
-                  throw err;
-              }
-          })
-  }
+    private showBankPayments() {
+        this.generationSrv
+            .getChecks()
+            .subscribe({
+                next: res => {
+                    this.processing = false;
+                    this.checkData  = res;
+                    const bankId = res.length > 0? res[0].journal || null: null;
+                    this.form?.controls['journal']?.setValue(bankId);
+                    this.shellSrv.setLoading(false);
+                }, error: err => {
+                    this.processing = false;
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
 
-  private showCashPayments() {
-      this.generationSrv
-          .getCash()
-          .subscribe({
-              next: res => {
-                  this.processing = false;
-                  this.cashData  = res;
-                  this.shellSrv.setLoading(false);
-                  console.log('data', this.cashData)
-              }, error: err => {
-                  this.processing = false;
-                  this.shellSrv.setLoading(false);
-                  throw err;
-              }
-          })
-  }
+    private showCashPayments() {
+        this.generationSrv
+            .getCash()
+            .subscribe({
+                next: res => {
+                    this.processing = false;
+                    this.cashData  = res;
+                    this.shellSrv.setLoading(false);
+                    console.log('data', this.cashData);
+                }, error: err => {
+                    this.processing = false;
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
 
-  showDocuments() {
-      this.processing = true;
-      this.shellSrv.setLoading(true);
-      const key = +this.form?.controls['genType'].value;
-      console.log('key', key)
-      this.showingBank         = key === this.BANK;
-      this.showingCash         = key === this.CASH;
-      this.showingPayroll      = key === this.PAYROLL;
-      this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
+    showDocuments() {
+        this.processing = true;
+        this.shellSrv.setLoading(true);
+        const key = +this.form?.controls['genType'].value;
+        console.log('key', key);
+        this.showingBank         = key === this.BANK;
+        this.showingCash         = key === this.CASH;
+        this.showingPayroll      = key === this.PAYROLL;
+        this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
 
-      switch (key) {
-          case this.BANK:
-              this.showBankPayments();
-              break;
+        switch (key) {
+        case this.BANK:
+            this.showBankPayments();
+            break;
 
-          case this.CASH:
-              this.showCashPayments();
-              break;
+        case this.CASH:
+            this.showCashPayments();
+            break;
 
-          case this.PAYROLL:
-              this.showPayrollLines();
-              break;
+        case this.PAYROLL:
+            this.showPayrollLines();
+            break;
 
-          default:
-              this.showTransactions(key);
-      }
-  }
+        default:
+            this.showTransactions(key);
+        }
+    }
 }

@@ -1,19 +1,20 @@
-import {Component, Input} from '@angular/core';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LotsService} from '@ss/common/api-lookup';
-import {finalize, Subscription} from 'rxjs';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {MatDialogRef} from '@angular/material/dialog';
-import {HttpEventType} from '@angular/common/http';
-import {ProcessedCheckService} from '@ss/treasury/api-checks';
-import {BankService} from '@ss/administration/api-bank';
+import { Component, inject, Input } from '@angular/core';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { LotsService } from '@ss/common/api-lookup';
+import { finalize, Subscription } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { HttpEventType } from '@angular/common/http';
+import { ProcessedCheckService } from '@ss/treasury/api-checks';
+import { BankService } from '@ss/administration/api-bank';
 
 @Component({
     selector: 'ss-processed-check-injection-dialog',
     templateUrl: './processed-check-injection-dialog.component.html',
-    styleUrls: ['./processed-check-injection-dialog.component.scss'],
+    styleUrls: ['./processed-check-injection-dialog.component.scss']
 })
 export class ProcessedCheckInjectionDialogComponent {
+    private fb = inject(FormBuilder);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
         'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL',
@@ -21,7 +22,7 @@ export class ProcessedCheckInjectionDialogComponent {
     ];
 
     @Input()
-    requiredFileType = '.xlsx';
+        requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
@@ -30,22 +31,21 @@ export class ProcessedCheckInjectionDialogComponent {
     processing = false;
 
     form = this.fb.group({
-        bankId: [0,          Validators.required],
-        number: ['',         Validators.required],
-        date:   [new Date(), Validators.required],
-        amount: ['',         Validators.required],
+        bankId: [0, Validators.required],
+        number: ['', Validators.required],
+        date: [new Date(), Validators.required],
+        amount: ['', Validators.required]
     });
 
     constructor(private dialogRef: MatDialogRef<ProcessedCheckInjectionDialogComponent>,
-                private bankSrv:  BankService,
-                private injectSrv: ProcessedCheckService,
-                private fb: UntypedFormBuilder,
-                private storeNameSrv: LotsService) {
+        private bankSrv: BankService,
+        private injectSrv: ProcessedCheckService,
+        private storeNameSrv: LotsService) {
     }
 
 
     onFileSelected(files: any) {
-        const file:File = files[0];
+        const file: File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
@@ -68,7 +68,7 @@ export class ProcessedCheckInjectionDialogComponent {
                         throw err;
                     },
                     complete: () => {
-                        this.dialogRef.close( { count: 1 });
+                        this.dialogRef.close({ count: 1 });
                         this.processing = false;
                     }
                 });
@@ -88,6 +88,7 @@ export class ProcessedCheckInjectionDialogComponent {
     public cancel() {
         this.dialogRef.close();
     }
+
     onChange(e: any) {
         this.fileName = e[0]?.name;
     }

@@ -42,7 +42,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
     bankLookup     = new DefaultAutoCompleteModel(this.bankSrv);
-    isSales = this.route.snapshot.data['sales'];
+    isSales = false;
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
     agentTypes: AgentType[];
@@ -66,6 +66,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         private isParamSrv: IsParamService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
+        this.isSales = this.route.snapshot.data['sales'];
     }
 
     public override preload(): Observable<any> {

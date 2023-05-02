@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -32,6 +32,12 @@ import {WorkflowDialogComponent} from '@ss/workflow';
   styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
+    private officeSrv = inject(OfficeService);
+    private attributeSrv = inject(AttributesService);
+    private loginSrv = inject(LoginService);
+    private detailSrv = inject(AssetAppointmentLineService);
+    private consumerSrv = inject(ConsumerService);
+    private assetSrv = inject(AssetsService);
     private sendBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-envelope',
@@ -65,15 +71,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private officeSrv: OfficeService,
-        private attributeSrv: AttributesService,
         // private attribLookupSrv: AttributeLookupService,
-        private loginSrv: LoginService,
         private router: Router,
-        private detailSrv: AssetAppointmentLineService,
-        private consumerSrv: ConsumerService,
-        private dialog: MatDialog,
-        private assetSrv: AssetsService) {
+        private dialog: MatDialog) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
         this.pagination.onChange = () => this.refresh();
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;

@@ -16,7 +16,7 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./sales-schedule-list.component.scss'],
 })
 export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule> {
-    agentFC = new FormControl<number>(this.entitySrv.getParentId());
+    agentFC = new FormControl<number>(0);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     displayedColumns = [
         'serialNumber',
@@ -50,6 +50,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
             'SCH_SCHEDULES');
         this.customerLookup.onObjectSelected = (a) => this.onAgent(a);
         this.pagination.pageSize = 10;
+        this.agentFC.setValue(this.entitySrv.getParentId());
     }
 
     onAgent(a: Agent) {

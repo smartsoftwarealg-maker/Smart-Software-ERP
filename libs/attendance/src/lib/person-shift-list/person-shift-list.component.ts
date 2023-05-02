@@ -25,7 +25,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     private employeeSrv = inject(EmployeeService);
     private serviceSrv = inject(ServiceService);
 
-    employeeCtrl   = new FormControl<number>(this.entitySrv.getParentId());
+    employeeCtrl   = new FormControl<number>(0);
     serviceCtrl    = new FormControl<number>(0);
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
     serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
@@ -58,6 +58,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
         this.pagination.pageSize = 15;
         this.employeeLookup.onObjectSelected = (e) => this.onEmployee(e);
         this.serviceLookup.onObjectSelected = (e) => this.onService(e);
+        this.employeeCtrl.setValue(this.entitySrv.getParentId());
     }
 
     private onEmployee(e: Employee) {

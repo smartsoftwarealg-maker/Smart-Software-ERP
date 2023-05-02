@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement, PSpecial} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -23,7 +23,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     templateUrl: './elements-entry-list.component.html',
     styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
 })
-export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
+export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> implements OnInit {
     private readonly JOURNAL_IDX = 3;
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
@@ -67,7 +67,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> {
     override getPage(): Observable<ELine[]> {
         const mode = this.infoSrv.selectionMode === 1? 'false' : 'true';
         const extraPrams = new HttpParams().set('input', this.infoSrv.selectedInput).set('fixed', mode);
-        return this.infoSrv.selectedInput == 0 ? of([]) : this.infoSrv.getPage(this.pagination, null, null, extraPrams);
+        return this.infoSrv.selectedInput == 0 ? of([]) : this.infoSrv.getPage(this.pagination, this.filter, this.filter, extraPrams);
     }
 
     override processLoadedData(data: ELine[]): Observable<ELine[]> {

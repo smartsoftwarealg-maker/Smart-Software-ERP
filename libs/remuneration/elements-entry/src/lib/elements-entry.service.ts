@@ -1,18 +1,18 @@
-import {Injectable} from '@angular/core';
-import {BaseEntityService} from '@ss/common/api-base-entity';
-import {ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial} from './elements-entry-api';
-import {HttpService} from '@ss/common/api-common';
-import {HttpParams} from '@angular/common/http';
-import {map, Observable, zip} from 'rxjs';
-import {InputFilter, InputFiltersService} from '@ss/remuneration/input-filters';
-import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
+import { Injectable } from '@angular/core';
+import { BaseEntityService } from '@ss/common/api-base-entity';
+import { ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial } from './elements-entry-api';
+import { HttpService, PaginationModel } from "@ss/common/api-common";
+import { HttpParams } from '@angular/common/http';
+import { map, Observable, zip } from 'rxjs';
+import { InputFilter, InputFiltersService } from '@ss/remuneration/input-filters';
+import { ElementsInfo, ElementsInfoService } from '@ss/remuneration/elementsinfo';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ElementsEntryService extends BaseEntityService<ELine> {
     readonly VARIABLE_MODE = 1;
-    readonly FIXED_MODE    = 2;
+    readonly FIXED_MODE = 2;
     inputFilter: InputFilter[] = [];
     selectedInput = 5;
     selectionMode = 1;
@@ -21,8 +21,8 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     specialPayroll = false;
 
     constructor(protected override httpSrv: HttpService,
-                private inputFilterSrv: InputFiltersService,
-                private elementInfoSrv: ElementsInfoService) {
+        private inputFilterSrv: InputFiltersService,
+        private elementInfoSrv: ElementsInfoService) {
         super(httpSrv, INPUT_ELEMENTS_URL);
     }
 
@@ -73,5 +73,9 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
 
     getSpecialPayrolls(): Observable<PSpecial[]> {
         return this.httpSrv.get<PSpecial[]>('/payroll/special-payrolls');
+    }
+
+    getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<ELine[]> {
+        return super.getPage(pageModel, filter, sortBy, extraPrams);
     }
 }

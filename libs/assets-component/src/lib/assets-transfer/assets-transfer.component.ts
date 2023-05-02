@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OfficeService} from '@ss/common/api-lookup';
@@ -15,6 +15,17 @@ import {IsParamService, UserRightsService} from '@ss/common/api-common';
     styleUrls: ['./assets-transfer.component.scss'],
 })
 export class AssetsTransferComponent implements OnInit {
+    private fb =  inject(FormBuilder);
+    private transferSrv =  inject(AssetsTransferService);
+    private officeSrv =  inject(OfficeService);
+    private dialog =  inject(MatDialog);
+    private route =  inject(ActivatedRoute);
+    private snackBarSrv =  inject(SnackBarService);
+    private isParamSrv =  inject(IsParamService);
+    private rightsSrv =  inject(UserRightsService);
+    private router =  inject(Router);
+    private activatedRoute =  inject(ActivatedRoute);
+
     private ASSET_TRANSFER = 'AssetTransfer';
     editable = false;
     isAQS   = false;
@@ -29,17 +40,7 @@ export class AssetsTransferComponent implements OnInit {
         destinationBuilding: [{ value: '', disabled: true }],
     });
 
-    constructor(private shellSrv: ShellService,
-                private transferSrv: AssetsTransferService,
-                private officeSrv: OfficeService,
-                private dialog: MatDialog,
-                private route: ActivatedRoute,
-                private snackBarSrv: SnackBarService,
-                private isParamSrv: IsParamService,
-                private rightsSrv: UserRightsService,
-                private router: Router,
-                private activatedRoute: ActivatedRoute,
-                private fb: FormBuilder) {}
+    constructor(private shellSrv: ShellService) {}
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
