@@ -21,6 +21,7 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    public usersSrv = inject(UserListService);
     private payMethodSrv = inject(PayMethodService);
     public supplierSrv = inject(SupplierService);
     public groups: CCGroup[];
@@ -37,7 +38,7 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public usersSrv: UserListService,
+
                 public lookupsSrv: LookupsService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {

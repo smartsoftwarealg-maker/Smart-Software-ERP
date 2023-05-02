@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import { Component, inject, Inject, Input, OnInit } from '@angular/core';
 import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {HttpEventType} from '@angular/common/http';
@@ -13,12 +13,13 @@ import {AssetInventoryService} from '../asset-inventory.service';
     styleUrls: ['./inventory-import.component.scss'],
 })
 export class InventoryImportComponent {
+    private fb =  inject(UntypedFormBuilder);
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-               'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     @Input()
-    requiredFileType = '.xlsx';
+        requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
@@ -36,7 +37,6 @@ export class InventoryImportComponent {
 
     constructor(private dialogRef: MatDialogRef<InventoryImportComponent>,
                 private injectSrv: AssetInventoryService,
-                private fb: UntypedFormBuilder,
                 private storeNameSrv: LotsService,
                 @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
     }

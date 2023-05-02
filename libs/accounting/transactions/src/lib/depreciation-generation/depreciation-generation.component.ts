@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {LoginService} from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
@@ -14,6 +14,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./depreciation-generation.component.scss']
 })
 export class DepreciationGenerationComponent implements OnInit {
+    private fb = inject(UntypedFormBuilder);
     minDate: Date = new Date();
     maxDate: Date = new Date();
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
@@ -23,8 +24,7 @@ export class DepreciationGenerationComponent implements OnInit {
     displayedColumns = ['acc', 'description', 'cCenter', 'debit', 'credit'];
     processing = false;
 
-    constructor(private fb: UntypedFormBuilder,
-                private loginSrv: LoginService,
+    constructor(private loginSrv: LoginService,
                 private deprecSrv: DepreciationGenerationService,
                 private route: ActivatedRoute,
                 private shellSrv: ShellService,

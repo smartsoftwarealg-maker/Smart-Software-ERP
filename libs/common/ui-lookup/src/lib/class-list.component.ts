@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {Class, ClassService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -52,14 +52,15 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         }
 
         form {
-        width: 100%;
-        padding-top: 16px;
-        height: 100px;
-        display: flex;
-        flex-flow: column;
-    }`]
+            width: 100%;
+            padding-top: 16px;
+            height: 100px;
+            display: flex;
+            flex-flow: column;
+        }`]
 })
 export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
+    private accountSrv =  inject(GenerationAccountService);
     accountLookupModel = new GenerationAccountAutocompleteModel(this.accountSrv) ;
 
     constructor(
@@ -69,7 +70,7 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder,
-        private accountSrv: GenerationAccountService) {
+    ) {
         super(classSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_CLASS');
     }
 

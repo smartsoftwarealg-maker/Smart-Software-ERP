@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import {AssetLocationService} from '../asset-location.service';
   styleUrls: ['./asset-building-detail.component.scss']
 })
 export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<AssetBuilding> {
+    private locationSrv = inject(AssetLocationService);
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
 
     constructor(
@@ -27,8 +28,7 @@ export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<Asse
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private locationSrv: AssetLocationService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_BUILDINGS');
     }
 

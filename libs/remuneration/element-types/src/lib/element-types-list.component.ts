@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,16 +9,16 @@ import {ElementTypesService} from './element-types.service';
 import {ElementType} from '@ss/payroll-common';
 
 @Component({
-  selector: 'ss-element-types-list',
-  templateUrl: './element-types-list.component.html',
-  styleUrls: ['./element-types-list.component.scss']
+    selector: 'ss-element-types-list',
+    templateUrl: './element-types-list.component.html',
+    styleUrls: ['./element-types-list.component.scss']
 })
 export class ElementTypesListComponent extends BaseEntityListComponent<ElementType>  {
     displayedColumns = [
         'description',
         'field',
         'fieldName'
-    ]
+    ];
     constructor(
         public infoSrv: ElementTypesService,
         public override shellSrv: ShellService,

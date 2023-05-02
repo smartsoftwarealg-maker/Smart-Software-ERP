@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -38,6 +38,15 @@ import {AssetReceptionService} from '../asset-reception.service';
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
     // Private
+    private officeSrv =  inject(OfficeService);
+    private accountSrv = inject(AccountService);
+    private isParamSrv =  inject(IsParamService);
+    private costCenterSrv =  inject(CostCenterService);
+    private classSrv =  inject(AssetClassService);
+    private statusSrv =  inject(FurnitureStatusService);
+    private consumerSrv =  inject(ConsumerService);
+    private markSrv =  inject(MarkService);
+    private receptionSrv =  inject(AssetReceptionService);
     private isANSEJ = false;
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
@@ -83,19 +92,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         public lookupsSrv: LookupsService,
         private supplierSrv: SupplierService,
         private customerSrv: CustomerService,
-        private officeSrv: OfficeService,
         private locationSrv: AssetLocationService,
-        private accountSrv: AccountService,
         private loginSrv: LoginService,
         private endSrv: AssetEndsService,
         private dialog: MatDialog,
-        private isParamSrv: IsParamService,
-        private costCenterSrv: CostCenterService,
-        private classSrv: AssetClassService,
-        private statusSrv: FurnitureStatusService,
-        private consumerSrv: ConsumerService,
-        private markSrv: MarkService,
-        private receptionSrv: AssetReceptionService,
         private router: Router) {
         super(detailSrv,
             shellSrv,

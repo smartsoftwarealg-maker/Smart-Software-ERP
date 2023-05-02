@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import {LoginService, PaginationModel, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
@@ -17,6 +17,7 @@ import {of, switchMap} from 'rxjs';
     styleUrls: ['./user-stores.component.scss'],
 })
 export class UserStoresComponent implements OnInit {
+    private loginSrv =  inject(LoginService);
     private lotsService =  inject(LotsService);
 
     readonly isManager = this.loginSrv.appCtx.manager;
@@ -49,8 +50,7 @@ export class UserStoresComponent implements OnInit {
                 private shellSrv: ShellService,
                 private route: ActivatedRoute,
                 private snackBarSrv: SnackBarService,
-                private confirmationSrv: ConfirmationDialogService,
-                private loginSrv: LoginService) {
+                private confirmationSrv: ConfirmationDialogService) {
         this.shellSrv.setTitle('STOCK_USER_STORES');
         this.shellSrv.setGoBackPath('..', this.route);
         this.userPagination.pageSize = 10;
@@ -88,7 +88,7 @@ export class UserStoresComponent implements OnInit {
             .save(entity)
             .subscribe(id => {
                 entity.id = id;
-                this.stores.push(entity)
+                this.stores.push(entity);
                 this.snackBarSrv.showSuccessMessage();
             });
     }

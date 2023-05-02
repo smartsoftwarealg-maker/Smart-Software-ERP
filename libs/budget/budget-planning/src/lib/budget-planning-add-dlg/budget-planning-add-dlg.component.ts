@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { Component, inject, Inject, OnInit } from "@angular/core";
+import { FormBuilder, UntypedFormBuilder, Validators } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetGroupTree} from '../../../../budget-groups/src/lib/budget-groups-api';
 import {BudgetPlanningTree} from '../budget-planning-api';
@@ -10,7 +10,8 @@ import {BudgetService} from '@ss/budget/budget';
     templateUrl: './budget-planning-add-dlg.component.html',
     styleUrls: ['./budget-planning-add-dlg.component.scss'],
 })
-export class BudgetPlanningAddDlgComponent implements OnInit {
+export class BudgetPlanningAddDlgComponent {
+    private fb = inject(FormBuilder);
     form = this.fb.group({
         id:           [this.data.id],
         groupId:      [this.data.groupId],
@@ -28,10 +29,8 @@ export class BudgetPlanningAddDlgComponent implements OnInit {
 
     constructor(private dialogRef: MatDialogRef<BudgetPlanningAddDlgComponent>,
                 private budgetSrv: BudgetService,
-                private fb: UntypedFormBuilder,
                 @Inject(MAT_DIALOG_DATA) private data: BudgetPlanningTree) {}
 
-    ngOnInit(): void {}
 
     save() {
         this.dialogRef.close(this.form.getRawValue());

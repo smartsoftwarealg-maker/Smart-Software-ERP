@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import {UntypedFormGroup, UntypedFormBuilder, Validators, FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -22,10 +22,12 @@ import {HttpParams} from '@angular/common/http';
     styleUrls: ['./office-detail.component.scss']
 })
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
+    private buildingSrv = inject(AssetsBuildingService);
+    private locationSrv = inject(AssetLocationService);
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
     buildingLookup = new BuildingLookup(this.buildingSrv);
 
-    public saving: boolean = false;
+    public saving = false;
 
     constructor(
         public officeSrv: OfficeService,
@@ -34,9 +36,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
-        public override confirmationSrv: ConfirmationDialogService,
-        private buildingSrv: AssetsBuildingService,
-        private locationSrv: AssetLocationService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.locationLookup.onObjectSelected = e => this.locationSelected(e);
         // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);

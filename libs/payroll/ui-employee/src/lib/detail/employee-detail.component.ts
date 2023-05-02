@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Employee, EmployeeService } from '@ss/payroll/api-employee';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
-import {City, CityService, LookupsService, MaritalStatus, Nationality, NationalityService} from '@ss/common/api-lookup';
+import {City, CityService, LookupsService, MaritalStatus, NationalityService} from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -13,7 +13,6 @@ import { tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
-import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -21,6 +20,8 @@ import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    private citySrv = inject(CityService);
+    private nationalitySrv = inject(NationalityService);
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
     readonly PAYROLL_RANK = 3;
@@ -29,7 +30,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     hrMode = false;
     activePersonnel = false;
     imageModel: ImageModel;
-    nationalityModel: DefaultAutoCompleteModel<Nationality>;
+    nationalityModel = new DefaultAutoCompleteModel(this.nationalitySrv);
     cityLookup = new CityLookup(this.citySrv);
     public maritalStatuses: MaritalStatus[];
     public elementsForm: UntypedFormGroup = null;
@@ -49,11 +50,9 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         public override confirmationSrv: ConfirmationDialogService,
         public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,
-        private router: Router,
-        private citySrv: CityService) {
+        private router: Router) {
         super(employeeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
-        this.nationalityModel = new DefaultAutoCompleteModel<Nationality>(new NationalityService(httpSrv));
     }
 
     public override preload(): Observable<any> {
@@ -61,7 +60,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             this.hrMode = !!data['hrMode'];
             this.activePersonnel = !!data['active'];
         });
-        return this.lookupsSrv.getMaritalStatuses()
+        return this.lookupsSrv
+            .getMaritalStatuses()
             .pipe(
                 tap((x: MaritalStatus[]) => this.maritalStatuses = x),
             );
@@ -156,16 +156,16 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     public isSectionValid(section: string): boolean {
         switch (section) {
-            case 'birthinfo':
-                return this.isBirthInfoValid();
-            case 'socialInfo':
-                return this.isSocialInfoPanelValid();
-            case 'arabicInfo':
-                return this.isArabicInfoPanelValid();
-            case 'fixedElemnts':
-                return this.isFixedElementsPanelValid();
-            default:
-                return true;
+        case 'birthinfo':
+            return this.isBirthInfoValid();
+        case 'socialInfo':
+            return this.isSocialInfoPanelValid();
+        case 'arabicInfo':
+            return this.isArabicInfoPanelValid();
+        case 'fixedElemnts':
+            return this.isFixedElementsPanelValid();
+        default:
+            return true;
         }
     }
 
@@ -198,7 +198,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     saveElements() {
         const line: ELine = {
-//            id: this.form.controls['id'].value, <--- why??
+            //            id: this.form.controls['id'].value, <--- why??
             id: this.id,
             firstName: '',
             lastName: '',
@@ -244,7 +244,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
 
     showArchive() {
         if (this.router.url.indexOf('archive') <0) {
-            this.router.navigate(['archive'], { relativeTo: this.route })
+            this.router.navigate(['archive'], { relativeTo: this.route });
         }
     }
 

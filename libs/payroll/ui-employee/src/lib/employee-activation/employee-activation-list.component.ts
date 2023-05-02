@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { EmployeeActivationService, EmployeeActivation, ACTIVATION_ROUTE_URL } from '@ss/payroll/api-employee';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -65,7 +65,7 @@ export class EmployeeActivationListComponent implements OnInit, OnDestroy {
         return data.reduce(
             (total: { [id: number]: string; }, currentValue) => {
                 total[currentValue.id] = currentValue.description;
-                return total
+                return total;
             }, {}
         );
     }

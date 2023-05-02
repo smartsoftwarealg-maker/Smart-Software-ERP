@@ -21,6 +21,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="sender">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.sender}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef translate>LOGISTICS_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">

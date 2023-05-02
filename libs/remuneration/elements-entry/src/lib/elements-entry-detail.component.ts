@@ -23,7 +23,7 @@ type Employee = {
     templateUrl: './elements-entry-detail.component.html',
     styleUrls: ['./elements-entry-detail.component.scss', './common-css.scss']
 })
-export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> {
+export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {
     imageModel: ImageModel;
     employee: Employee = null;
 

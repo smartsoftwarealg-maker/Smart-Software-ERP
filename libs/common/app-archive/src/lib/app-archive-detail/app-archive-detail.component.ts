@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import {AppArchive} from '../app-archive-api';
 })
 export class AppArchiveDetailComponent implements OnInit {
     private withQueryParams = false;
+    private fb = inject(FormBuilder);
     private documentSrv =  inject(AppArchiveDocumentService);
     documentAutoCompleteModel     = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
@@ -25,7 +26,6 @@ export class AppArchiveDetailComponent implements OnInit {
     constructor(private service: AppArchiveService,
                 private router: Router,
                 private route: ActivatedRoute,
-                private fb: UntypedFormBuilder,
                 private loginSrv: LoginService,
                 private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService) {}

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {FormBuilder, Validators} from '@angular/forms';
 import {ShiftTimingService} from '../shift-timing.service';
 import {switchMap, tap} from 'rxjs/operators';
@@ -14,6 +14,7 @@ import {SnackBarService} from '@ss/common/ui-shell';
     styleUrls: ['./shift-timing-detail.component.scss'],
 })
 export class ShiftTimingDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     form = this.fb.group({
         id:        [0],
         parentId:  [this.entitySrv.getParentId(), Validators.required],
@@ -23,8 +24,7 @@ export class ShiftTimingDetailComponent implements OnInit {
         breakTo:   [new Date()],
     });
 
-    constructor(private fb: FormBuilder,
-                private entitySrv: ShiftTimingService,
+    constructor(private entitySrv: ShiftTimingService,
                 private route: ActivatedRoute,
                 private router: Router,
                 private snackBarSrv: SnackBarService,

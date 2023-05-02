@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { OLD_CAREER_ROUTE_URL, EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +32,7 @@ export class EmployeeOldCareerListComponent implements OnInit {
     public displayedColumns = [
         'post',
         'rate',
-//        'ctype',
+        //        'ctype',
         'from_date',
         'to_date',
     ];

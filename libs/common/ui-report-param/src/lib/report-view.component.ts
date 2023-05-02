@@ -1,20 +1,21 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LookupsService } from '@ss/common/api-lookup';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { ReportTreeService } from '@ss/common/api-reports';
-import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
-import { HttpService, LanguageService, LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
-import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData } from '@ss/common/api-reports';
-import { delay, Observable, of } from 'rxjs';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { map, switchMap } from 'rxjs/operators';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import {Component, OnDestroy, OnInit, ViewChild,} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {ReportTreeService} from '@ss/common/api-reports';
+import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
+import {HttpService, LanguageService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
+import {delay, Observable, of} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {map, switchMap} from 'rxjs/operators';
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
-        ['PDF', 'application/pdf']
+        ['PDF', 'application/pdf'],
     ]);
 
     pdfSrc: any = null;
@@ -41,7 +42,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     params: any = null;
     displayedColumns = [
         'description',
-        'valueString'
+        'valueString',
     ];
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
@@ -67,7 +68,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         private loginSrv: LoginService,
         private httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
+        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS')
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
@@ -80,18 +81,16 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.pagination.onChange = () => this.refresh();
 
         this.route.data.subscribe(res => {
+            this.loadReportTree(res['reportBase']);
             this.app = res['reportBase'];
-            this.loadReportTree(res['reportBase'], null);
         });
     }
 
-    loadReportTree(app: string, filter?: string) {
+    loadReportTree(app: string) {
         this.reportsService
             .getReportsTree(app)
             .subscribe((res: any) => {
                 this.reportTree.data = this.parseTree(res.list, '');
-                const searchStr = filter? filter.toLowerCase() : '';
-                this.reportTree.data = this.reportTree.data.filter(n => !filter || n.name.toLowerCase().indexOf(searchStr) >= 0);
             });
     }
 
@@ -104,11 +103,13 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     override getPage(): Observable<ReportParam[]> {
-        this.loadReportTree(this.app, this.shellSrv.getSearchText());
-        return of([]);
+        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
+            new HttpParams().set('report', `${this.app}/${this.selectedReport.parent}/${this.selectedReport.name}`)
+                .set('app', this.app)
+        );
     }
 
-    isReady(): boolean {
+    isReady(): Boolean {
         return this.form != null && !this.shellSrv.loading;
     }
 
@@ -118,7 +119,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.refresh(() => {
             const cc: any = {};
 
-            this.data.forEach(e => {
+            this.data.forEach(e =>  {
                 cc[e.name] = new UntypedFormControl(e.valueString);
             });
             cc['reportType'] = new UntypedFormControl('PDF');
@@ -130,7 +131,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     parseValueList(valueList: { description: string }[]) {
-        return valueList?.map(x => x.description).join(' ');
+        return valueList?.map(x=>x.description).join(' ');
     }
 
     generateReport() {
@@ -139,17 +140,17 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.generating = true;
         this.uuid = this.selectedReport.name.replace('.jasper', '') + '-' + this.loginSrv.appCtx.id + '-' + new Date().getTime();
         const data: ReportViewData = {
-            app: this.app + this.selectedReport.parent,
-            rType: this.form.value.reportType,
-            fileName: this.selectedReport.name.replace('.jasper', ''),
-            uuid: this.uuid,
+            app:       this.app + this.selectedReport.parent,
+            rType:     this.form.value.reportType,
+            fileName:  this.selectedReport.name.replace('.jasper', ''),
+            uuid:      this.uuid,
             paramList: this.createList()
         };
 
         const loop: Observable<any> = this.httpSrv
             .get(`/reports/view?uuid=${this.uuid}`)
             .pipe(delay(3000),
-                switchMap(res => res['processing'] ? loop : of(res)));
+                switchMap(res => res['processing']? loop: of(res)));
 
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
@@ -159,7 +160,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 return res;
             } else {
                 const obj: Blob = <Blob>res;
-                return new Blob([obj], { type: this.getMimeType() });
+                return new Blob([obj], {type: this.getMimeType()});
             }
         })).subscribe({
             next: res => {
@@ -210,7 +211,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                return { name: p.name, value: '' + this.form.controls[p.name].value };
+                return { name: p.name, value: '' + this.form.controls[p.name].value }
             });
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transactions';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,12 +12,12 @@ import {of} from 'rxjs';
     styleUrls: ['./transaction-line-detail.component.scss'],
 })
 export class TransactionLineDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     form: UntypedFormGroup = null;
     constructor(private entitySrv: TransactionLineService,
                 private snackBarSrv: SnackBarService,
                 private route: Router,
-                private router: ActivatedRoute,
-                private fb: FormBuilder) {}
+                private router: ActivatedRoute) {}
 
     ngOnInit(): void {
         const newLine: TTransactionLine = {

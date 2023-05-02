@@ -20,6 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private currencySrv =  inject(CurrencyService);
     public usersSrv = inject(UserListService);
     public supplierSrv = inject(SupplierService);
     public lookupsSrv = inject(LookupsService);
@@ -39,8 +40,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         protected readonly loginSrv: LoginService,
-        protected dialog: MatDialog,
-        private currencySrv: CurrencyService) {
+        protected dialog: MatDialog) {
         super(receptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_RECEPTION');
     }
 

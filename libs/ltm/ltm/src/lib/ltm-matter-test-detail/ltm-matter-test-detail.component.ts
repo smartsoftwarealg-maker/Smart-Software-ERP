@@ -17,6 +17,7 @@ import {LtmPeriodicityService} from '../ltm-periodicity.service';
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
 })
 export class LtmMatterTestDetailComponent implements OnInit {
+    private fb = inject(FormBuilder);
     private activatedRoute = inject(ActivatedRoute);
     private periodicitySrv = inject(LtmPeriodicityService);
     private confirmationSrv = inject(ConfirmationDialogService);
@@ -34,7 +35,6 @@ export class LtmMatterTestDetailComponent implements OnInit {
     });
 
     constructor(private entitySrv: LtmMatterTestService,
-                private fb: FormBuilder,
                 private route: ActivatedRoute,
                 private testSrv: LtmTestService,
                 private snackBarSrv: SnackBarService,

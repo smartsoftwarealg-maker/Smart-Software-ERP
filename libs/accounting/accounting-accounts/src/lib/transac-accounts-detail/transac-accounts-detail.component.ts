@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TransacAccount, TransacAccountService} from '@ss/accounting/accounting-api';
-import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -10,11 +9,12 @@ import {LookupsService} from '@ss/common/api-lookup';
 import {AccountService, AccountStringAutocompleteModel} from '@ss/accounting/api-accounts';
 
 @Component({
-  selector: 'ss-transac-accounts-detail',
-  templateUrl: './transac-accounts-detail.component.html',
-  styleUrls: ['./transac-accounts-detail.component.scss']
+    selector: 'ss-transac-accounts-detail',
+    templateUrl: './transac-accounts-detail.component.html',
+    styleUrls: ['./transac-accounts-detail.component.scss']
 })
 export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<TransacAccount> {
+    private accountSrv = inject(AccountService);
     purchaseLookup    = new AccountStringAutocompleteModel(this.accountSrv);
 
     constructor(
@@ -24,8 +24,7 @@ export class TransacAccountsDetailComponent extends BaseEntityDetailComponent<Tr
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private accountSrv: AccountService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ACC_TRANSAC_ACCOUNTS');
     }
 

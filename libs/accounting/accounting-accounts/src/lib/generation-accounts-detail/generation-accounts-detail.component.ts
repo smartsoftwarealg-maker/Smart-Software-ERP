@@ -1,26 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import { Component, inject } from '@angular/core';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
-    Account,
-    AccountAutocompleteModel,
     AccountService, AccountStringAutocompleteModel,
     GenerationAccount,
     GenerationAccountService
 } from '@ss/accounting/api-accounts';
-import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
 @Component({
-  selector: 'ss-generation-accounts-detail',
-  templateUrl: './generation-accounts-detail.component.html',
-  styleUrls: ['./generation-accounts-detail.component.scss']
+    selector: 'ss-generation-accounts-detail',
+    templateUrl: './generation-accounts-detail.component.html',
+    styleUrls: ['./generation-accounts-detail.component.scss']
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {
+    private accountSrv = inject(AccountService);
     purchaseLookup    = new AccountStringAutocompleteModel(this.accountSrv);
     supplierLookup    = new AccountStringAutocompleteModel(this.accountSrv);
     stockLookup       = new AccountStringAutocompleteModel(this.accountSrv);
@@ -34,8 +31,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private accountSrv: AccountService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
