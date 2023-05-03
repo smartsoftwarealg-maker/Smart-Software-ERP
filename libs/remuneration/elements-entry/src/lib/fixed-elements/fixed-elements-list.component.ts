@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -14,16 +14,16 @@ import {FixedElementsEntryService} from './fixed-elements-entry.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
-  selector: 'ss-fixed-elements-list',
-  templateUrl: './fixed-elements-list.component.html',
-  styleUrls: ['./fixed-elements-list.component.scss']
+    selector: 'ss-fixed-elements-list',
+    templateUrl: './fixed-elements-list.component.html',
+    styleUrls: ['./fixed-elements-list.component.scss']
 })
 export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
 
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
 
     mainTableWidth = 600;
-    displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post']
+    displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post'];
 
 
     constructor(

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ELine} from '../elements-entry-api';
-import {ImageModel} from '@ss/common/ui-image-input';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LookupsService} from '@ss/common/api-lookup';
-import {HttpService} from '@ss/common/api-common';
-import {EmployeeService} from '@ss/payroll/api-employee';
-import {Observable} from 'rxjs';
-import {FixedElementsEntryService} from './fixed-elements-entry.service';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { ELine } from '../elements-entry-api';
+import { ImageModel } from '@ss/common/ui-image-input';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LookupsService } from '@ss/common/api-lookup';
+import { HttpService } from '@ss/common/api-common';
+import { EmployeeService } from '@ss/payroll/api-employee';
+import { Observable } from 'rxjs';
+import { FixedElementsEntryService } from './fixed-elements-entry.service';
 
 type Employee = {
     id: number;
@@ -20,13 +20,14 @@ type Employee = {
 }
 
 @Component({
-  selector: 'ss-fixed-elements-detail',
-  templateUrl: './fixed-elements-detail.component.html',
-  styleUrls: ['./fixed-elements-detail.component.scss', '../common-css.scss']
+    selector: 'ss-fixed-elements-detail',
+    templateUrl: './fixed-elements-detail.component.html',
+    styleUrls: ['./fixed-elements-detail.component.scss']
 })
 export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELine> {
     imageModel: ImageModel;
     employee: Employee = null;
+
     constructor(
         public infoSrv: FixedElementsEntryService,
         public override shellSrv: ShellService,
@@ -36,7 +37,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private httpSrv: HttpService,
-        private employeeSrv: EmployeeService,) {
+        private employeeSrv: EmployeeService) {
         super(infoSrv,
             shellSrv,
             snackBarSrv,
@@ -53,7 +54,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
     }
 
     public override setupForm(e: ELine): UntypedFormGroup {
-        if (e.elements.length ==0) {
+        if (e.elements.length == 0) {
             e.elements = this.infoSrv.colsList().map(_ => 0.0);
         }
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id), false);
@@ -62,7 +63,7 @@ export class FixedElementsDetailComponent extends BaseEntityDetailComponent<ELin
             fullName: e.firstName + ' ' + e.lastName,
             post: e.post,
             imageModel: this.imageModel
-        }
+        };
         return this.formBuilder.group({
             id: [e.id],
             firstName: [e.firstName || 'first name'],

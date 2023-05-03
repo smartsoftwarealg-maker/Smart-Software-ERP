@@ -1,63 +1,61 @@
-<div class="container">
-    <div class="content-div">
-        <mat-table mat-table [dataSource]="data"
-                   [ngStyle]="{ 'width.px': mainTableWidth }">
+<div class="container content-div">
+    <mat-table mat-table [dataSource]="data"
+               [ngStyle]="{ 'width.px': mainTableWidth }">
 
-            <ng-container matColumnDef="photo">
-                <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
-                </mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    <div class="person-photo">
-                        <ss-image-input width="60px" height="76px"
-                                        [imageModel]="e.imageModel"
-                                        style="display: inline-block;">
-                        </ss-image-input>
-                    </div>
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="photo">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>PAYROLL_PHOTO
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <div class="person-photo">
+                    <ss-image-input width="60px" height="76px"
+                                    [imageModel]="e.imageModel"
+                                    style="display: inline-block;">
+                    </ss-image-input>
+                </div>
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.id}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.id}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="firstName">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.firstName}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.firstName}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="lastName">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.lastName}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.lastName}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container matColumnDef="post">
-                <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.post}}
-                </mat-cell>
-            </ng-container>
+        <ng-container matColumnDef="post">
+            <mat-header-cell *matHeaderCellDef translate>PAYROLL_POST</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.post}}
+            </mat-cell>
+        </ng-container>
 
-            <ng-container *ngFor="let c of infoSrv.dataCols; let i = index"
-                          matColumnDef="{{ infoSrv.dataCols[i].field }}">
-                <mat-header-cell *matHeaderCellDef>{{ infoSrv.loadDataCols()[i].description }}</mat-header-cell>
-                <mat-cell *matCellDef="let e" class="number-cell">
-                    {{ e.elements[i] | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+        <ng-container *ngFor="let c of infoSrv.dataCols; let i = index"
+                      matColumnDef="{{ infoSrv.dataCols[i].field }}">
+            <mat-header-cell *matHeaderCellDef>{{ infoSrv.loadDataCols()[i].description }}</mat-header-cell>
+            <mat-cell *matCellDef="let e" class="number-cell">
+                {{ e.elements[i] | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id === selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

@@ -4,12 +4,6 @@
 }
 
 .table_div {
-    min-height: calc(100% - 220px);
+    min-height: calc(100% - 86px);
     overflow-y: auto;
-}
-
-.ctrl-div {
-    display: flex;
-    gap: 1em;
-    justify-content: center;
 }

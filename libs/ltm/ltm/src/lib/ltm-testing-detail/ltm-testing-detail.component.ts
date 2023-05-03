@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LTMLineMatter, LTMTesting} from '../ltm-api';
+import { LTMLineMatter, LTMMatter, LTMTesting } from "../ltm-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmTestingService} from '../ltm-testing.service';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
-import { LoginService } from "@ss/common/api-common";
+import { LoginService } from '@ss/common/api-common';
+import { LtmMatterService } from '../ltm-matter.service';
 
 @Component({
     selector: 'ss-ltm-testing-detail',
@@ -17,7 +17,7 @@ import { LoginService } from "@ss/common/api-common";
     styleUrls: ['./ltm-testing-detail.component.scss'],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> {
-    private matterSrv =  inject(LtmLineMatterService);
+    private matterSrv =  inject(LtmMatterService);
     private testLookupSrv =  inject(LtmMatterTestLookupService);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
     testLookup   = new DefaultAutoCompleteModel(this.testLookupSrv);
@@ -67,14 +67,10 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
     //     console.log('*****************id', id);
     // }
 
-    onMatter(m: LTMLineMatter) {
-        this.testLookupSrv.setParentId(m.matterId);
+    onMatter(m: LTMMatter) {
+        this.testLookupSrv.setParentId(m.id);
     }
 
-    // onTest(id: number) {
-    //     this.selectedTestId = id;
-    //     this.form.controls['testId'].setValue(id);
-    // }
 
     override readForm(): LTMTesting {
         return this.form.getRawValue();

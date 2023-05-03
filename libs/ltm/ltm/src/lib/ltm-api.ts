@@ -9,6 +9,7 @@ export const LTM_BATCH_URL       = '/ltm/batch';
 export const LTM_TESTING_URL    = '/ltm/testings';
 export const LTM_INJECTION_URL   = '/ltm/injection';
 export const LTM_MATTER_URL      = '/ltm/matters';
+export const LTM_LINE_MATTER_URL      = '/ltm/line-matters';
 export const LRM_PERIODICITY_URL = '/lookups/ltm_periodicities';
 export const LTM_LINE_SELECT_URL = '/ltm/ltm_selection';
 
@@ -23,7 +24,7 @@ export interface LTMLine {
 
 export interface LTMLineMatter {
     id: number;
-    parentId: number;
+    centerId: number;
     matterId: number;
     description?: string;
 }
@@ -87,7 +88,7 @@ export interface BTest {
 }
 
 export interface Batch {
-    parentId: number;
+    centerId: number;
     matterId: number;
     timeStamp: Date;
     tests: BTest[];

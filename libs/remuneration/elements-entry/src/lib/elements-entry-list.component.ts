@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ELine, MJournal, PaymentElement, PSpecial} from './elements-entry-api';
+import {ELine, MJournal, PaymentElement} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {HttpService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
+import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {ElementsEntryService} from './elements-entry.service';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
@@ -13,7 +13,7 @@ import {MatSelectChange} from '@angular/material/select';
 import {EmployeeService} from '@ss/payroll/api-employee';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {Form, UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {CommonElementsService} from './common-elements.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
