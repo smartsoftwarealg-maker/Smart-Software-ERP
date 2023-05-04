@@ -29,7 +29,7 @@ export class DocInfoComponent {
             // throw Error('Some params are messing !');
         }
 
-        this.params_ = {...params, appId: DOCUMENT_ARCHIVES};
+        this.params_ = {...params, appId: DOCUMENT_ARCHIVES, editable: true};
         this.navigate();
     }
 
@@ -115,13 +115,6 @@ export class DocInfoComponent {
         },
     ];
     public selectedEntry: Entry = null;
-    // {
-    //     name: 'archive',
-    //     description: 'COMMON_ARCHIVE',
-    //     url: 'archive',
-    //     paramsProvided: (p: string[]) => p.includes('documentId')
-    // };
-
 
     @Input() set showAssets(show: boolean) {
         if (show) {
@@ -129,7 +122,7 @@ export class DocInfoComponent {
                 this.entries_[1].entries.push(this.ASSET);
             }
         } else {
-            this.entries_[1].entries = this.entries_[1].entries.filter(e => e.name !== this.AGENT_ASSETS)
+            this.entries_[1].entries = this.entries_[1].entries.filter(e => e.name !== this.AGENT_ASSETS);
         }
     }
 

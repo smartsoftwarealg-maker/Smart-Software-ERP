@@ -11,6 +11,7 @@ import {Sort} from '@angular/material/sort';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
+    private _editble = true;
     private reportForm: string = null;
     subscriptions: Subscription[] = [];
 
@@ -132,6 +133,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.deleteButton.visible &&= rights.delete;
         this.editButton.icon = rights.edit ? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
         this.editButton.label = rights.edit ? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
+        this._editble = rights.edit;
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -351,5 +353,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         // console.log(event);
         this.entitySrv.sortColumn = event;
         this.refresh();
+    }
+
+    get editable() {
+        return this._editble;
     }
 }

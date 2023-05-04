@@ -37,6 +37,9 @@ export class AppArchiveMainComponent implements OnInit {
         this.archiveSrv.setParentId(objectId);
         this.refresh();
     }
+    get id() {
+        return this.archiveSrv.getParentId();
+    }
 
     @Input()
     set appId(id: number) {
@@ -44,15 +47,13 @@ export class AppArchiveMainComponent implements OnInit {
         this.refresh();
     }
 
-    get id() {
-        return this.archiveSrv.getParentId();
-    }
 
     ngOnInit(): void {
         this.route.queryParamMap.subscribe(param => {
             const docId = +param.get('documentId') || 0;
             const agentId = +param.get('agentId') || 0;
             const appId = +param.get('appId') || 0;
+            this.editable = param.get('editable') === 'true';
             this.archiveSrv.appId = this.archiveSrv.appId || appId;
             const id = (docId || agentId) || 0;
             this.archiveSrv.setParentId(id);
