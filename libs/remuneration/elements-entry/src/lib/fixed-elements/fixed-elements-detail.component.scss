@@ -1,31 +1,14 @@
-form {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    grid-gap: 10px;
-    padding: 5px;
-    grid-template-areas: "emp-photo emp-id    ."
-                         "emp-photo last-name first-name"
-                         "emp-photo emp-post .          "
-                         "elements  elements elements  ";
+.size_div {
+    width: 90%;
+    margin: 8px auto;
 }
 
-.emp-photo {
-    grid-area: emp-photo;
+
+mat-card {
+    padding: 8px;
+    border-radius: 1.4em;
 }
-.emp-post {
-    grid-area: emp-post;
-}
-.em-id {
-    grid-area: emp-id;
-}
-.last-name {
-    grid-area: last-name;
-}
-.first-name {
-    grid-area: first-name;
-}
+
 .elements {
     display: flex;
     gap: 10px;
@@ -37,18 +20,3 @@ form {
     grid-area: elements;
 }
 
-@media (max-width: 600px) {
-    form {
-        width: 98%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: auto;
-        grid-gap: 10px;
-        grid-template-areas: "emp-photo emp-id "
-                             "emp-photo last-name"
-                             "emp-photo first-name"
-                             "emp-post  emp-post "
-                             "elements  elements ";
-    }
-
-}

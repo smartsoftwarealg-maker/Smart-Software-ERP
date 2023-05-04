@@ -20,7 +20,8 @@
 
 .main-table {
     //min-height: calc(100% - 120px);
-    background: #e5d4a1;
+    margin-top: 8px;
+    flex-grow: 1;
 }
 .pagination-container {
     flex-grow: 0;

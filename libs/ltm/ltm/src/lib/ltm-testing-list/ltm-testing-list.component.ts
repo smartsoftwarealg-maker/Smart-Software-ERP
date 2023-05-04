@@ -59,7 +59,7 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
     private inject() {
         const dialogRef = this.dialog.open(LtmInjectionComponent, {
             width: '600px',
-            height: '250px',
+            height: '320px',
             disableClose: true
         });
 

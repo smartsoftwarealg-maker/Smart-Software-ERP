@@ -1,19 +1,18 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import {Batch, LTMMatter} from '../ltm-api';
+import { Batch, LTMLineMatter } from '../ltm-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {FormArray, FormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {LtmBatchService} from '../ltm-batch.service';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LtmPeriodicityService} from '../ltm-periodicity.service';
 import {map, Observable, of, Subscription, switchMap} from 'rxjs';
 import {Lookup} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
 import {LtmTestService} from '../ltm-test.service';
+import { LoginService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-ltm-batch-input',
@@ -21,13 +20,13 @@ import {LtmTestService} from '../ltm-test.service';
     styleUrls: ['./ltm-batch-input.component.scss'],
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
-    private lineSrv =  inject(LtmLineService);
+    private loginSrv = inject(LoginService);
     private subscriptions: Subscription[] = [];
     private _periodicity = 0;
     private TODAY = new Date();
     private formulaMap = new Map<string, string>();
     private missingVariables: string[] = [];
-    matters: LTMMatter[] = [];
+    matters: LTMLineMatter[] = [];
     periods$: Observable<Lookup[]> = of([]);
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -42,13 +41,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     totalsLabels: string[] = [];
     variables: string[] = [];
     formulas: string[] = [];
-    selectedMatter: LTMMatter = null;
-    lineLookup = new DefaultAutoCompleteModel(this.lineSrv);
+    selectedMatter: LTMLineMatter = null;
 
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group(
         {
-            parentId:  [0, Validators.required],
+            centerId:  [this.loginSrv.appCtx.center, Validators.required],
             matterId:  [0, Validators.required],
             timeStamp: [this.TODAY, Validators.required],
             tests:     this.formBuilder.array([])
@@ -81,11 +79,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.periods$ = this.periodSrv.getList(0, 50).pipe(map(res => res.body));
         this.matterSrv
             .getList(0, 50)
-            .subscribe(res =>
-                this.matters = res.body.map(lm => {
-                    return {id: lm.id, description: lm.description };
-                })
-            );
+            .subscribe(res => this.matters = res.body );
         this.subscriptions.push(
             this.form
                 .valueChanges
@@ -191,16 +185,15 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.formulaMap.forEach((v, k) => res = res.replace(k, '(' + v + ')'));
         return res;
     }
-    onMatter(m: LTMMatter) {
+    onMatter(m: LTMLineMatter) {
         this.selectedMatter = m;
-        console.log(m);
-        this.matterTestSrv.setParentId(m.id);
+        this.matterTestSrv.setParentId(m.matterId);
         this.refreshData();
     }
 
     private save() {
         const formValue: Batch = this.form.getRawValue() as Batch;
-        if (formValue.matterId && formValue.parentId) {
+        if (formValue.matterId && formValue.centerId) {
             this.shellSrv.setLoading(true);
             this.entitySrv
                 .saveBatch(formValue)

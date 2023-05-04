@@ -1,9 +1,16 @@
 mat-card {
-    padding: 40px;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }
 
 button {
+    width: 100%;
     min-width: 150px;
 }
+
+i {
+     margin-right: 1em;
+     font-size: 1.5em;
+ }

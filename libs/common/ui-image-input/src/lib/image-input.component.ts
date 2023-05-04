@@ -28,7 +28,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     @Input()
-    alt = '';
+        alt = '';
 
     @Input()
     set width(w: string) {
@@ -55,7 +55,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     }
 
     @Input()
-    set imageModel(model: ImageModel) {
+    set imageModel(model: ImageModel|null) {
         if (this.model) {
             this.model.onUpdate = null;
         }

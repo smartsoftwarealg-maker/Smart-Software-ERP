@@ -45,7 +45,7 @@
                 <div [formGroupName]="i">
                     <mat-form-field class="input_div">
                         <mat-label translate>{{ labels[i] }}</mat-label>
-                        <input matInput formControlName="value" type="number">
+                        <input matInput formControlName="value" type="number"  (click)="$event.target.select()">
                     </mat-form-field>
                 </div>
             </div>

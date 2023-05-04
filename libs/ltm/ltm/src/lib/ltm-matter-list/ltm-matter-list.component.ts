@@ -39,5 +39,6 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
             defReportSrv,
             pagPersistSrv,
             'LTM_MATTERS');
+        this.pagination.pageSize = 15;
     }
 }

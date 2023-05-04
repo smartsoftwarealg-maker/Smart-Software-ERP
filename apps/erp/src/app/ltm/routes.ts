@@ -11,7 +11,7 @@ import {
     LTM_TESTING_URL,
     LTM_BATCH_URL,
     DASHBOARD_URL,
-    COMMON_REPORTS_URL
+    COMMON_REPORTS_URL, LTM_LINES_URL
 } from '../common';
 
 import {
@@ -26,7 +26,7 @@ import {
     LtmTestingListComponent,
     LtmTestingDetailComponent,
     LtmReportComponent,
-    LtmBatchInputComponent
+    LtmBatchInputComponent, LineMatterDetailComponent, LineMatterListComponent
 } from '@ss/ltm/ltm';
 import {loginGuard} from '../erp-guards';
 import {DashboardComponent} from '@ss/dashboard';
@@ -38,6 +38,13 @@ export const ltmRoutes: Routes = [
     },
     {
         path: LTM_CHARTS_URL, component: LtmReportComponent, canActivate: [loginGuard]
+    },
+    {
+        path: LTM_LINES_URL,
+        children: [
+            { path: LIST_URL, component: LineMatterListComponent, canActivate: [loginGuard]},
+            { path: ':id', component: LineMatterDetailComponent, canActivate: [loginGuard] }
+        ]
     },
     {
         path: LTM_MATTER_URL,

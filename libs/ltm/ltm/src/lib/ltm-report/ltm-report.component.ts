@@ -46,7 +46,7 @@ export class LtmReportComponent implements OnInit {
 
     onMatter(m: LTMLineMatter) {
         this.selectedMatter = m;
-        this.testingSrv.setParentId(m?.parentId);
+        this.testingSrv.setParentId(m?.centerId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {
             this.testSrv.setParentId(m?.id);

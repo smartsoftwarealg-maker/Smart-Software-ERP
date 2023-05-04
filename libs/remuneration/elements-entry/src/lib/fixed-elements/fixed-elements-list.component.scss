@@ -1,6 +1,10 @@
 .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
+    width: 98%;
+    max-width: 1600px;
+    margin: 4px auto;
+}
+
+.content-div {
+    min-height: calc(100% - 72px);
+    overflow-x: auto;
 }

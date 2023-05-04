@@ -2,12 +2,12 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_HR_REPORTS_URL,
     ABS_LTM_BATCH_TESTINGS_URL,
-    ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL,
+    ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL, ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL,
     ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL
-} from '../common';
+} from "../common";
 
 export const ltmNavTree: SideNavNode = {
     name: 'LTM',
@@ -31,6 +31,13 @@ export const ltmNavTree: SideNavNode = {
             icon: 'fa-solid fa-recycle',
             route: ABS_LTM_MATTERS_URL,
             accessRights: 'LTMMatter'
+        },
+
+        {
+            name: 'LTM_LINE_MATTERS',
+            icon: 'fa-solid fa-xmarks-lines',
+            route: ABS_LTM_LINES_URL,
+            accessRights: 'LTMLine'
         },
 
 

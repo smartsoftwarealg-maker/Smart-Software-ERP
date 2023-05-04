@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
 import {DashboardService} from '../dashboard.service';
-import {AgentService} from '@ss/logistics/api-agent';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
@@ -25,6 +24,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     styleUrls: ['./dashboard-detail.component.scss']
 })
 export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboard> implements OnInit {
+    private lookupsSrv =  inject(LookupsService);
     applications = this.lookupsSrv.getApplicationList();
     APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
         { id: APP_PURCHASE,  description: 'PURCHASES' },
@@ -42,15 +42,14 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
                 public override route: ActivatedRoute,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-                public lookupsSrv: LookupsService,
                 private router: Router) {
         super(dashboardSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
-              'COMMON_DASHBOARD')
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'COMMON_DASHBOARD');
         if (!this.dashboardSrv.getParentId()) {
             this.dashboardSrv.setParentId(getApplicationId(this.router));
         }
@@ -65,17 +64,5 @@ export class DashboardDetailComponent extends BaseEntityDetailComponent<Dashboar
             query: [a.query],
         });
 
-        this.subscriptions.push(
-            this.form
-                .controls['appId']
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(id => {
-                    this.dashboardSrv.setParentId(id);
-                    this.form.controls['appId'].setValue(id, { onlySelf: true });
-                })
-        );
     }
 }

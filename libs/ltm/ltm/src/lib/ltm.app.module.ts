@@ -57,6 +57,8 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         LtmTestingDetailComponent,
         LtmInjectionComponent,
         LtmReportComponent,
+        LineMatterListComponent,
+        LineMatterDetailComponent
     ],
     declarations: [
         LineMatterDetailComponent,
@@ -74,6 +76,8 @@ import {CommonUiHourPickerModule} from '@ss/common/ui-hour-picker';
         LtmInjectionComponent,
         LtmReportComponent,
         LtmBatchInputComponent,
+        LineMatterListComponent,
+        LineMatterDetailComponent
     ],
 })
 export class LtmAppModule {}
