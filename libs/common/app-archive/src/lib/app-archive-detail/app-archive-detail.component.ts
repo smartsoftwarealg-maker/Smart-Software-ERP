@@ -99,7 +99,8 @@ export class AppArchiveDetailComponent implements OnInit {
     onCancel() {
         const params = this.withQueryParams ? {
             documentId: this.service.getParentId(),
-            appId: this.service.appId
+            appId: this.service.appId,
+            editable: this.service.editable
         } : {};
         this.router.navigate(['..'], {relativeTo: this.route, queryParams: params}).then();
     }

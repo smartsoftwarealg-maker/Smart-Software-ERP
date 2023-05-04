@@ -1,11 +1,10 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {AppArchiveService} from '../app-archive.service';
-import {DomSanitizer} from '@angular/platform-browser';
 import {AppArchive} from '../app-archive-api';
 
 @Component({
@@ -42,13 +41,15 @@ export class AppArchiveListComponent implements OnInit {
                 const agentId = +params.get('agentId') || 0;
                 this.entitySrv.setParentId(docId || agentId);
                 this.entitySrv.appId = +params.get('appId') || this.entitySrv.appId;
-                }),
-                switchMap(_ => this.route.parent.parent.params),
-                tap(params => {
-                    this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
-                    this.entitySrv.setParentId(this._id);
-                }),
-                switchMap(_ => this.entitySrv.getList(0, 50)))
+                const editable = params.get('editable') === 'true';
+                this.setEditable(editable);
+            }),
+            switchMap(_ => this.route.parent.parent.params),
+            tap(params => {
+                this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
+                this.entitySrv.setParentId(this._id);
+            }),
+            switchMap(_ => this.entitySrv.getList(0, 50)))
             .subscribe(res => {
                 this.data = res.body || [];
                 this.paginator.elementCount = res.itemCount;
@@ -73,7 +74,7 @@ export class AppArchiveListComponent implements OnInit {
             .subscribe(res => {
                 this.data = res.body || [];
                 this.paginator.elementCount = res.itemCount;
-        });
+            });
     }
 
     get id() {
@@ -141,7 +142,6 @@ export class AppArchiveListComponent implements OnInit {
 
 
     onClick(e: MouseEvent) {
-        // this.release();
         this.entitySrv
             .image(this.selectedId)
             .subscribe(res => {
@@ -153,7 +153,6 @@ export class AppArchiveListComponent implements OnInit {
 
     setEditable(value: boolean) {
         this.editable = value;
-        console.log('editable', value);
+        this.entitySrv.editable = value;
     }
-
 }
