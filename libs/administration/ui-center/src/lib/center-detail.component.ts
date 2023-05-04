@@ -38,18 +38,18 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
 
 
     override preload(): Observable<any> {
-        this.centerService.setParentId(this.loginSrv.appCtx?.company)
+        this.centerService.setParentId(this.loginSrv.appCtx?.company);
         return this.lookupsSrv.getFunds()
             .pipe(tap(x => this.funds = x))
             .pipe(switchMap(() => this.lookupsSrv.getBanks()))
             .pipe(tap(x => {
-                this.banks = x
+                this.banks = x;
             }));
     }
 
     public override setupForm(b: Center) {
         // Make sure to update the template if you edit the configuration here
-        const urlRegExp: RegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
+        const urlRegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
         return this.formBuilder.group({
             id: [b.id],
@@ -99,12 +99,12 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'main':
-                return this.isMainSectionInvalid();
-            case 'contact':
-                return this.isContactSectionInvalid();
-            default:
-                return false;
+        case 'main':
+            return this.isMainSectionInvalid();
+        case 'contact':
+            return this.isContactSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -116,7 +116,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
 
         // if expanded return primary background class
         if (panel.expanded)
-            return 'b-primary-expansion-panel'
+            return 'b-primary-expansion-panel';
         else
             return '';
     }

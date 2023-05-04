@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -13,14 +13,14 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './user-list.component.html'
 })
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {
-    isManager = false;
+    private loginSrv = inject(LoginService);
+    isManager = this.loginSrv.appCtx.manager;
     displayedColumns = this.loginSrv.appCtx.manager?
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
         ['description', 'fullName',];
 
 
     constructor(
-        private loginSrv: LoginService,
         public userSrv: UserListService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -30,7 +30,6 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(userSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.appCtx.manager;
         this.pagination.pageSize = 15;
     }
 

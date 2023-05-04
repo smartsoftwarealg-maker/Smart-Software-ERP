@@ -9,6 +9,7 @@ import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {LtmInjectionService} from '../ltm-injection.service';
 import {LanguageService} from '@ss/common/api-common';
+import { MatRadioChange } from "@angular/material/radio";
 
 @Component({
     selector: 'ss-ltm-injection',
@@ -19,14 +20,14 @@ export class LtmInjectionComponent {
     private matterSrv =  inject(LtmLineMatterService);
     matterLookup = new DefaultAutoCompleteModel(this.matterSrv, 'matterId');
 
-    @Input()
-        requiredFileType = '.xlsx';
+    @Input()  requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
     uploadProgress = 0;
     uploadSub: Subscription;
     processing = false;
+    format: 1|2 = 1;
 
     fb = inject(UntypedFormBuilder);
     form = this.fb.group({
@@ -45,13 +46,12 @@ export class LtmInjectionComponent {
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
-            formData.append('file', file);
             const value = this.form.value;
+            formData.append('file', file);
             formData.append('from', this.langSrv.formatDate(value.from));
             formData.append('to',   this.langSrv.formatDate(value.to));
-            // Object.entries(this.form.getRawValue())
-            //     .filter(([k, v]) => v != null && v != '' && v != ' ')
-            //     .forEach(([k, v]) => formData.append(k, v.toString()));
+            formData.append('format',   this.format.toString());
+
             this.processing = true;
             this.uploadSub = this.injectSrv
                 .upload(formData)
@@ -91,4 +91,7 @@ export class LtmInjectionComponent {
         this.fileName = e[0]?.name;
     }
 
+    onFormat(e: MatRadioChange) {
+        this.format = +e.value === 2? 2 : 1;
+    }
 }

@@ -45,7 +45,7 @@
 
                 <div *ngFor="let pr of getInputsParams()" [ngStyle]="{ 'cursor': generating ? 'wait': 'auto' }">
                     <mat-form-field disabled="generating" style="max-width: 160px">
-                        <mat-placeholder>{{pr.description}}</mat-placeholder>
+                        <mat-laberl>{{pr.description}}</mat-laberl>
                         <input matInput [type]="pr.typeName" [disabled]="generating" [(ngModel)]="pr.value"
                             name="{{pr.name}}">
                     </mat-form-field>
@@ -78,7 +78,7 @@
                     </button>
 
                     <mat-form-field class="pad-20-l" style="max-width: 80px;">
-                        <mat-placeholder translate>TYPE</mat-placeholder>
+                        <mat-label translate>TYPE</mat-label>
                         <mat-select [(ngModel)]="reportType" name="rtype">
                             <mat-option [value]="'HTML'"> HTML </mat-option>
                             <mat-option [value]="'PDF'"> PDF </mat-option>

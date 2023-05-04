@@ -40,5 +40,6 @@
     "USAGE_INVALID_DATE":            "Some articles of this document are already consumed",
     "NUMBERING_PROBLEM":             "Your serial numbering policy does not allow you to create new pieces in this period",
     "INVALID_PRICE":                 "Invalid inventory price",
-    "CLOSED_FILE":                   "The accounting file is closed. No further modification is allowed"
+    "CLOSED_FILE":                   "The accounting file is closed. No further modification is allowed",
+    "INVALID_LEAVE_RANGE":           "Invalid leave period. Please, verify the acquired leave dates"
 }

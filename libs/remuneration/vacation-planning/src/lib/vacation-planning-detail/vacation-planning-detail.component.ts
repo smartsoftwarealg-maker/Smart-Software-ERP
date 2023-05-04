@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {VacationPlanning, VacationPlanningDetail} from '../vacation-planning-api';
-import {InputFiltersService} from '@ss/remuneration/input-filters';
-import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {VacationPlanning} from '../vacation-planning-api';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {VacationPlanningService} from '@ss/remuneration/vacation-planning';
 
 @Component({
-  selector: 'ss-vacation-planning-detail',
-  templateUrl: './vacation-planning-detail.component.html',
-  styleUrls: ['./vacation-planning-detail.component.scss']
+    selector: 'ss-vacation-planning-detail',
+    templateUrl: './vacation-planning-detail.component.html',
+    styleUrls: ['./vacation-planning-detail.component.scss']
 })
 export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<VacationPlanning> implements OnInit {
 
@@ -31,17 +29,17 @@ export class VacationPlanningDetailComponent extends BaseEntityDetailComponent<V
     setupForm(e: VacationPlanning): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id || 0],
-            lastName: [e.lastName],
-            firstName: [e.firstName],
-            acquired: [e.acquired],
-            taken: [e.taken],
-            rest: [e.acquired - e.taken],
+            lastName: [{ value: e.lastName, disabled: true }],
+            firstName: [{ value: e.firstName, disabled: true }],
+            acquired: [{ value: e.acquired, disabled: true }],
+            taken: [{ value: e.taken, disabled: true }],
+            rest: [{ value: e.acquired - e.taken, disabled: true }],
         });
     }
 
-   override ngOnInit() {
-       this.shellSrv.setTitle(this.title); // set title save as list
-       this.shellSrv.setGoBackPath('..', this.route);
-       this.load();
-   }
+    override ngOnInit() {
+        this.shellSrv.setTitle(this.title); // set title save as list
+        this.shellSrv.setGoBackPath('..', this.route);
+        this.load();
+    }
 }

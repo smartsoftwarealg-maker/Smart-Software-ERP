@@ -22,26 +22,26 @@ import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-dashboard-list',
-  templateUrl: './dashboard-list.component.html',
-  styleUrls: ['./dashboard-list.component.scss']
+    selector: 'ss-dashboard-list',
+    templateUrl: './dashboard-list.component.html',
+    styleUrls: ['./dashboard-list.component.scss']
 })
 export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
     APPLICATIONS: Lookup[] = [{ id: APP_DASHBOARD, description: 'DASHBOARD' },
-                              { id: APP_PURCHASE,  description: 'PURCHASES' },
-                              { id: APP_STOCK,     description: 'STOCK'     },
-                              { id: APP_PAYROLL,   description: 'PAYROLL'   },
-                              { id: APP_HR,        description: 'HR'        },
-                              { id: APP_ASSET,     description: 'ASSETS'    },
-                              { id: APP_TREASURY,  description: 'TREASURY'  },
-                              { id: APP_LTM,       description: 'LTM'  },
-                             ];
-    applicationCtrl = new FormControl(this.dashboardSrv.getParentId());
+        { id: APP_PURCHASE,  description: 'PURCHASES' },
+        { id: APP_STOCK,     description: 'STOCK'     },
+        { id: APP_PAYROLL,   description: 'PAYROLL'   },
+        { id: APP_HR,        description: 'HR'        },
+        { id: APP_ASSET,     description: 'ASSETS'    },
+        { id: APP_TREASURY,  description: 'TREASURY'  },
+        { id: APP_LTM,       description: 'LTM'  },
+    ];
+    applicationCtrl = new FormControl();
     displayedColumns = [
         'description',
     ];
 
-  constructor(public dashboardSrv: DashboardService,
+    constructor(public dashboardSrv: DashboardService,
               public override shellSrv: ShellService,
               public override snackBarSrv: SnackBarService,
               public override route: ActivatedRoute,
@@ -50,7 +50,7 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
               public override defReportSrv: DefaultReportService,
               public lookupsSrv: LookupsService,
               public override pagPersistSrv: PaginatorPersistenceService) {
-      super(dashboardSrv,
+        super(dashboardSrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -58,22 +58,23 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-          'COMMON_DASHBOARD_QUERIES');
-      if (!this.dashboardSrv.getParentId()) {
-          this.dashboardSrv.setParentId(1);
-      }
-  }
+            'COMMON_DASHBOARD_QUERIES');
+        if (!this.dashboardSrv.getParentId()) {
+            this.dashboardSrv.setParentId(1);
+        }
+        this.applicationCtrl.setValue(this.dashboardSrv.getParentId());
+    }
 
-  override ngOnInit() {
-      super.ngOnInit();
-      this.subscriptions.push(
-          this.applicationCtrl
-              .valueChanges
-              .pipe(debounceTime(300),
-                  distinctUntilChanged()
-              ).subscribe(id => {
-                  this.dashboardSrv.setParentId(id);
-                  this.refresh();
-              }));
-  }
+    override ngOnInit() {
+        super.ngOnInit();
+        this.subscriptions.push(
+            this.applicationCtrl
+                .valueChanges
+                .pipe(debounceTime(300),
+                    distinctUntilChanged()
+                ).subscribe(id => {
+                    this.dashboardSrv.setParentId(id);
+                    this.refresh();
+                }));
+    }
 }

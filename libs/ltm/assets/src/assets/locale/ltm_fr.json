@@ -18,5 +18,7 @@
     "HIGH":           "Haut",
     "ANOMALIES_ONLY": "Afficher uniquement les anomalies",
     "BATCH_TESTINGS": "Tests horaires",
-    "LINE_MATTERS":   "Matières ligne"
+    "LINE_MATTERS":   "Matières ligne",
+    "STANDARD_FORMAT": "Format standard",
+    "UPDATE_FORMAT":   "Format de mise à jour"
 }

@@ -25,16 +25,25 @@
 
 <mat-progress-bar class="progress-bar" mode="indeterminate" *ngIf="processing"></mat-progress-bar>
 <mat-card>
-    <form novalidate [formGroup]="form">
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_FROM</mat-label>
-            <ss-date-picker formControlName="from"></ss-date-picker>
-        </mat-form-field>
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_TO</mat-label>
-            <ss-date-picker formControlName="to"></ss-date-picker>
-        </mat-form-field>
-    </form>
+    <mat-card-header>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1" (change)="onFormat($event)" translate [checked]="true">LTM_STANDARD_FORMAT</mat-radio-button>
+            <mat-radio-button value="2" (change)="onFormat($event)" translate>LTM_UPDATE_FORMAT</mat-radio-button>
+        </mat-radio-group>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_FROM</mat-label>
+                <ss-date-picker formControlName="from"></ss-date-picker>
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_TO</mat-label>
+                <ss-date-picker formControlName="to"></ss-date-picker>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 

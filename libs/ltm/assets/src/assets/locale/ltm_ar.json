@@ -17,5 +17,7 @@
     "HIGH":           "عالي",
     "ANOMALIES_ONLY": "إظهار الحالات الشاذة فقط",
     "BATCH_TESTINGS": "الاختبارات الساعية",
-    "LINE_MATTERS":   "مواد الخط"
+    "LINE_MATTERS":   "مواد الخط",
+    "STANDARD_FORMAT": "النسق المعياري",
+    "UPDATE_FORMAT":   "نسيق التحديث"
 }
