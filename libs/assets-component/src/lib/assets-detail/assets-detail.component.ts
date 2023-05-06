@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -30,6 +30,7 @@ import {AssetClassService} from '../asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {AssetReceptionService} from '../asset-reception.service';
+import { ASSET_ARCHIVES } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-assets-detail',
@@ -81,6 +82,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     fiscalDepreciation: Depreciation[] = [];
     assetEnds: Lookup[] = [];
     depreciationColumns = ['year', 'depreciation', 'totalDepreciation', 'remaining'];
+    readonly LOCAL_ASSER_ARCHIVE = ASSET_ARCHIVES;
 
     constructor(
         public detailSrv: AssetsService,
@@ -183,7 +185,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             this.detailSrv
                 .getMaxReception()
                 .pipe(tap(res => form.controls['receptionNumber'].setValue(res.reception)),
-                      switchMap(_ => this.detailSrv.getMaxReference()))
+                    switchMap(_ => this.detailSrv.getMaxReference()))
                 .subscribe(res => {
                     this.maxReference = res.reference;
                     form.controls['reference2'].setValue(this.maxReference);
@@ -207,10 +209,10 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         return this.isParamSrv
             .is('ANSEJ')
             .pipe(tap(res => this.isANSEJ = res),
-                  switchMap(_ => this.isParamSrv.is('AQS')),
-                  tap(res => this.isAQS = res),
-                  switchMap(_ => this.endSrv.getList(0, 50)),
-                  tap(res => this.assetEnds = res.body));
+                switchMap(_ => this.isParamSrv.is('AQS')),
+                tap(res => this.isAQS = res),
+                switchMap(_ => this.endSrv.getList(0, 50)),
+                tap(res => this.assetEnds = res.body));
     }
 
     override ngOnInit() {

@@ -65,6 +65,7 @@
         *ngIf="selected"
         [displayedGroups]="['document']"
         [params]="{
+            id: selectedRow?.id,
             documentId: selectedRow?.id,
             documentURL:'/consumption',
             agentId : selectedRow.agent,

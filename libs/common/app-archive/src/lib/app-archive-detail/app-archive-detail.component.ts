@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ImageUploaderUtil, LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -7,7 +7,6 @@ import {AppArchiveService} from '../app-archive.service';
 import {concatMap, from, of, switchMap, zip} from 'rxjs';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
-import {tap} from 'rxjs/operators';
 import {AppArchive} from '../app-archive-api';
 
 @Component({
@@ -31,18 +30,9 @@ export class AppArchiveDetailComponent implements OnInit {
                 private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {
-        zip(this.route.paramMap, this.route.parent.parent.paramMap, this.route.data)
+        this.route.paramMap
             .pipe(
-                tap(res => {
-                    const appId = +res[2]['appId'] || this.service.appId;
-                    this.service.appId = appId;
-                    this.withQueryParams = appId > 0;
-                    const parentId = +res[1].get('id') || 0;
-                    if (parentId > 0 || !this.service.getParentId() ) {
-                        this.service.setParentId(parentId);
-                    }
-                }),
-                switchMap(res => this.service.getParentId()? this.service.get(+res[0].get('id')) : of(null as AppArchive)))
+                switchMap(res => +res.get('id') > 0? this.service.get(+res.get('id')) : of(null as AppArchive)))
             .subscribe(res => {
                 this.form = this.fb.group({
                     id:         [res?.id || 0],
@@ -63,7 +53,7 @@ export class AppArchiveDetailComponent implements OnInit {
 
     private upload() {
         const formData = new FormData();
-        let rawValue = this.form.getRawValue();
+        const rawValue = this.form.getRawValue();
         formData.append('description', this.form.value.description);
         formData.append('filename', 'file');
         formData.append('id', rawValue.id);

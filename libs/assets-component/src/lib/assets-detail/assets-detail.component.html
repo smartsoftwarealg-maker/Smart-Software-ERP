@@ -58,78 +58,85 @@
         </button>
     </div>
 
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_SITE</mat-label>
-        <input matInput formControlName="site" type="text" readonly>
-    </mat-form-field>
-
-    <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
-        <mat-label translate>ASSET_BUILDINGS</mat-label>
-        <input matInput formControlName="building" type="text" readonly>
-    </mat-form-field>
-
-    <div class="default-50 sm-100" *ngIf="isAQS">
-        <mat-form-field>
-            <mat-label translate>ASSET_BENEFICIARY</mat-label>
-            <ss-auto-complete matInput
-                              [model]="beneficiaryLookup"
-                              formControlName="beneficiaryId">
-            </ss-auto-complete>
-        </mat-form-field>
-    </div>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_COST_CENTER</mat-label>
-        <ss-auto-complete matInput
-                          [model]="ccAutoCompleteModel"
-                          formControlName="costCenter"></ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_CLASS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="classAutoCompleteModel"
-                          [required]="isAQS"
-                          formControlName="assetClass">
-        </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_MARK</mat-label>
-        <ss-auto-complete matInput
-                          [model]="markAutoCompleteModel"
-                          formControlName="mark">
-        </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-        <mat-label translate>COMMON_STATUS</mat-label>
-        <ss-auto-complete matInput
-                          [model]="statusAutoCompleteModel"
-                          formControlName="status"></ss-auto-complete>
-        <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
-    </mat-form-field>
-
-    <mat-form-field id="comment" class="default-50 sm-100">
-        <mat-label translate>COMMON_MEMO</mat-label>
-        <input matInput formControlName="comment" type="text">
-    </mat-form-field>
-
-
-    <mat-form-field class="default-50 sm-50" *ngIf="!isAQS">
-        <mat-label translate>ASSET_ITEM_COUNT</mat-label>
-        <input matInput formControlName="itemCount" type="number">
-    </mat-form-field>
 
 
     <mat-accordion>
+        <mat-expansion-panel #detail expanded="true" [class]="getPanelHeaderClass('detail', detail)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    COMMON_DETAIL
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+                <mat-label translate>ASSET_SITE</mat-label>
+                <input matInput formControlName="site" type="text" readonly>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="isAQS" class="default-50 sm-50">
+                <mat-label translate>ASSET_BUILDINGS</mat-label>
+                <input matInput formControlName="building" type="text" readonly>
+            </mat-form-field>
+
+            <div class="default-50 sm-100" *ngIf="isAQS">
+                <mat-form-field>
+                    <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="beneficiaryLookup"
+                                      formControlName="beneficiaryId">
+                    </ss-auto-complete>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>COMMON_COST_CENTER</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="ccAutoCompleteModel"
+                                  formControlName="costCenter"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>COMMON_CLASS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="classAutoCompleteModel"
+                                  [required]="isAQS"
+                                  formControlName="assetClass">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>COMMON_MARK</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="markAutoCompleteModel"
+                                  formControlName="mark">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>COMMON_STATUS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="statusAutoCompleteModel"
+                                  formControlName="status"></ss-auto-complete>
+                <mat-error *ngIf="form.controls['status'].invalid" translate>COMMON_STATUS</mat-error>
+            </mat-form-field>
+
+            <mat-form-field id="comment" class="default-50 sm-100">
+                <mat-label translate>COMMON_MEMO</mat-label>
+                <input matInput formControlName="comment" type="text">
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-50" *ngIf="!isAQS">
+                <mat-label translate>ASSET_ITEM_COUNT</mat-label>
+                <input matInput formControlName="itemCount" type="number">
+            </mat-form-field>
+        </mat-expansion-panel>
+
         <mat-expansion-panel #depreciation expanded="false" [class]="getPanelHeaderClass('depreciation', depreciation)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <span class="default-100"></span>
             <mat-form-field class="default-50">
                 <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
                 <ss-date-picker formControlName="acquisitionDate" required="true"></ss-date-picker>
@@ -198,7 +205,7 @@
                     COMMON_PURCHASE
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <span class="default-100"></span>
+
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
@@ -285,7 +292,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <span class="default-100"></span>
+
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_DATE_OUT</mat-label>
                 <ss-date-picker formControlName="dateOut"></ss-date-picker>
@@ -465,7 +472,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-app-archive-main [id]="id" [appId]="3" [editable]="isEditable"></ss-app-archive-main>
+            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>
 
         </mat-expansion-panel>
 

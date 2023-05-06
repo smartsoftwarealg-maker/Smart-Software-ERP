@@ -28,8 +28,9 @@ import {
     CompanyTypeDetailComponent,
     CompanyTypeListComponent,
     CurrencyDetailComponent,
-    CurrencyListComponent, ProjectTypeDetailComponent, ProjectTypeListComponent,
-    SalesCategoryDetailComponent, SalesCategoryListComponent,
+    CurrencyListComponent,
+    SalesCategoryDetailComponent,
+    SalesCategoryListComponent,
     VatDetailComponent,
     VatListComponent,
 } from '@ss/common/ui-lookup';

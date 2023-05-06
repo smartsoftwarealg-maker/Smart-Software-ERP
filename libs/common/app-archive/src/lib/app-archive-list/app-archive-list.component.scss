@@ -7,7 +7,7 @@
     width: 100%;
     display: flex;
     gap: 1em;
-    margin: 0 auto;
+    margin: 4px auto;
     padding: 4px;
     box-sizing: border-box;
 }
@@ -28,7 +28,10 @@
     max-width: 50%;
     min-height: 70%;
 }
-
+mat-label {
+    font-weight: bolder;
+    font-size: 1.5em;
+}
 .list_div {
     overflow-y: auto;
     flex: 1 1 40%;

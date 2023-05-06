@@ -16,23 +16,6 @@ interface Entry {
 })
 
 export class DocInfoComponent {
-    @Input() displayedGroups: string[] = [];
-
-    @Input() set params(params: any) {
-        const providedParams = Object.keys(params);
-        const notAllRequiredParamsExist = this.entries_
-            .filter(x => this.displayedGroups.includes(x.group))
-            .map(x => x.entries).reduce((t, x) => t.concat(x), [])
-            .map(x => x.paramsProvided(providedParams))
-            .some(x => !x);
-        if (notAllRequiredParamsExist) {
-            // throw Error('Some params are messing !');
-        }
-
-        this.params_ = {...params, appId: DOCUMENT_ARCHIVES, editable: true};
-        this.navigate();
-    }
-
     private params_: any;
     private     AGENT_ASSETS = 'agent_assets';
     private readonly ASSET = {
@@ -46,7 +29,7 @@ export class DocInfoComponent {
         name: 'archive',
         description: 'COMMON_ARCHIVE',
         url: 'archive',
-        paramsProvided: (p: string[]) => p.includes('documentId')
+        paramsProvided: (p: string[]) => p.includes('id') && p.includes('appId')
     };
 
     private entries_: { group: string, description: string, entries: Entry[] }[] = [
@@ -115,6 +98,13 @@ export class DocInfoComponent {
         },
     ];
     public selectedEntry: Entry = null;
+    @Input() displayedGroups: string[] = [];
+
+    @Input() set params(params: any) {
+        this.params_ = {...params, appId: DOCUMENT_ARCHIVES, editable: true};
+        this.navigate();
+    }
+
 
     @Input() set showAssets(show: boolean) {
         if (show) {
@@ -141,6 +131,7 @@ export class DocInfoComponent {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
+            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^entyry', this.selectedEntry);
             this.router.navigate([this.selectedEntry.url], {
                 relativeTo: this.route,
                 queryParamsHandling: 'merge',

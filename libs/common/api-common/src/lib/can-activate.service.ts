@@ -24,7 +24,7 @@ export class CanActivateService {
         return this.httpSrv
             .init()
             .pipe(switchMap(_ => this.loginSrv.reload()),
-                  map(_ =>  (this.loginSrv.isLoggedIn && this.loginSrv.appCtx !== null && this.canRead(route)) ||
+                map(_ =>  (this.loginSrv.isLoggedIn && this.loginSrv.appCtx !== null && this.canRead(route)) ||
                                   this.router.createUrlTree(['/' + LOGIN_URL])));
     }
 

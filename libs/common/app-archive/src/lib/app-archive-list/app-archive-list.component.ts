@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs/operators';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
 
@@ -32,30 +31,36 @@ export class AppArchiveListComponent implements OnInit {
     }
 
 
+
     ngOnInit(): void {
-        this.imgSrc = null;
-        this.route
-            .queryParamMap
-            .pipe(tap(params => {
-                const docId = +params.get('documentId') || 0;
-                const agentId = +params.get('agentId') || 0;
-                this.entitySrv.setParentId(docId || agentId);
-                this.entitySrv.appId = +params.get('appId') || this.entitySrv.appId;
-                const editable = params.get('editable') === 'true';
-                this.setEditable(editable);
-            }),
-            switchMap(_ => this.route.parent.parent.params),
-            tap(params => {
-                this._id = (+params['id'] || this.entitySrv.getParentId()) || 0;
-                this.entitySrv.setParentId(this._id);
-            }),
-            switchMap(_ => this.entitySrv.getList(0, 50)))
-            .subscribe(res => {
-                this.data = res.body || [];
-                this.paginator.elementCount = res.itemCount;
-                this.imgSrc = null;
-            });
+        this.route.queryParamMap.subscribe(param => {
+            const appId = +param.get('appId') || 0;
+            if (appId > 0) {
+                this.entitySrv.appId = appId;
+                const id = +param.get('documentId') || 0;
+                this.entitySrv.setParentId(id);
+                const editable = param.get('editable');
+                this.entitySrv.editable = editable && editable.toLowerCase() === 'true';
+            }
+            this.refresh();
+        });
     }
+    // ngOnInit(): void {
+    //     this.route.parent.parent.params
+    //         .pipe(
+    //             tap(params => {
+    //                 const id = +params['id'] || 0;
+    //                 if (id >= 0) {
+    //                     this.entitySrv.setParentId(this._id);
+    //                 }
+    //             }),
+    //             switchMap(_ => this.entitySrv.getList(0, 50)))
+    //         .subscribe(res => {
+    //             this.data = res.body || [];
+    //             this.paginator.elementCount = res.itemCount;
+    //             this.imgSrc = null;
+    //         });
+    // }
 
     public showDetail(id: string) {
         this.router.navigate([id], {relativeTo: this.route}).then();

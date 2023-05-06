@@ -107,6 +107,6 @@ export class BaseEntityService<T> {
     }
 
     set sortColumn(s: Sort) {
-        this._sortColumn = (s.direction === "desc" ? '-' : '') + s.active;
+        this._sortColumn = (s.direction === 'desc' ? '-' : '') + s.active;
     }
 }

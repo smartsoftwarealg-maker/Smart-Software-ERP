@@ -100,6 +100,6 @@
     </form>
 </mat-card>
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }} </div> {{id}}-->
-<div class="content" *ngIf="id > 0 && form !== null">
-    <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable"></ss-app-archive-main>
+<div class="content" *ngIf="id > 0">
+    <ss-app-archive-main [id]="id" [appId]="LOCAL_RECEPTIONS_ARCHIVES" [editable]="isEditable"></ss-app-archive-main>
 </div>

@@ -172,9 +172,8 @@ export class ArchiveDetailComponent implements OnInit {
         }
     }
 
-    onCancel(str?: string) {
-        const params = str ? { id: this.id, img: str } : {};
-        this.router.navigate(['..'], { relativeTo: this.route, queryParams: params });
+    onCancel() {
+        this.router.navigate(['..'], { relativeTo: this.route });
     }
 
     onFileSelected(event: any) {

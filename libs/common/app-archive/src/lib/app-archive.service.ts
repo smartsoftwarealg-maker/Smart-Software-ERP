@@ -12,7 +12,7 @@ import {APP_ARCHIVE_URL, AppArchive} from './app-archive-api';
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
     private _editable = false;
-    private _cb : (id: number) => void = null;
+    private _cb: (id: number) => void = null;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, APP_ARCHIVE_URL, APPLICATIONS_URL);
@@ -24,14 +24,12 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     }
 
     image(id: number): Observable<any> {
-        return this.httpSrv.getBlob(`/applications/${id}/upload` );
+        return this.httpSrv.getBlob(`/applications/${id}/upload`);
     }
 
     set appId(id: number) {
         this._appId = id;
-        if (this._cb != null) {
-            this._cb(id);
-        }
+        console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^set appId', id);
     }
 
     get appId() {
@@ -45,7 +43,14 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     get editable(): boolean {
         return this._editable;
     }
-    set objId(id: number) {
-        this.setParentId(id);
+
+    // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    //     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    //     return this._appId > 0 && this.getParentId() > 0;
+    // }
+
+    get isReady() {
+        console.log('*********************************', this._appId, this.getParentId());
+        return this._appId > 0 && this.getParentId() > 0;
     }
- }
+}

@@ -49,3 +49,7 @@ $color: hsl(100, 60%, 50%, .7);
     display: flex;
     gap: 16px;
 }
+
+mat-expansion-panel-header {
+    margin-bottom: 8px;
+}

@@ -20,7 +20,7 @@ import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
-import {Bank, BankService} from '@ss/administration/api-bank';
+import {BankService} from '@ss/administration/api-bank';
 import {Lookup} from '@ss/logistics/ui-doc-import';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AGENT_ARCHIVES} from '@ss/common/app-archive';

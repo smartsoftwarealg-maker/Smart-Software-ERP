@@ -11,8 +11,13 @@ import {
     TREASURY_BANK_EXPENSE_URL,
     TREASURY_PROCESSED_CHECKS_URL, TREASURY_CHECK_MATCHING_URL
 } from '../common';
-import { LIST_URL, CanActivateService, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
-import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
+import { LIST_URL, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
+import {
+    AgentDetailComponent,
+    AgentListComponent,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent
+} from '@ss/logistics/ui-agent';
 import {
     CheckListComponent,
     CheckDetailComponent,
@@ -144,7 +149,18 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransactionListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
+                children: [
+                    { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                    {
+                        path: 'archive',
+                        children: [
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
+                            {path: ':id', component: AppArchiveDetailComponent},
+                            {path: '**', component: AppArchiveListComponent}
+                        ]
+                    }
+                ]
             },
             {
                 path: ':id',
@@ -154,10 +170,10 @@ export const mainRoutes: Routes = [
                 children: [
                     { path: '', redirectTo: 'lines', pathMatch: 'full' },
                     { path: 'lines',
-                      children: [
-                          { path: '', component: TransactionLineListComponent, pathMatch: 'full'},
-                          { path: ':id', component: TransactionLineDetailComponent }
-                      ] },
+                        children: [
+                            { path: '', component: TransactionLineListComponent, pathMatch: 'full'},
+                            { path: ':id', component: TransactionLineDetailComponent }
+                        ] },
                 ]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
