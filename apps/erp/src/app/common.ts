@@ -38,6 +38,8 @@ export const ASSETS_APP_URL = 'assets-app';
 export const FURNITURE_APP_URL = 'furniture';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+
+export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';

@@ -71,6 +71,17 @@ export interface UserInfo {
     user: User;
 }
 
+export interface SideNavNode {
+    icon: string;
+    name: string;
+    route?: string;
+    visible?: boolean;
+    accessRights?: string;
+    children?: SideNavNode[];
+    backgroundColor?: string;
+    customerRights?: Right;
+}
+
 export interface Right {
     read: boolean;
     write: boolean;
