@@ -6,7 +6,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import { AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent } from '@ss/common/app-archive';
+import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 
 // common
@@ -36,6 +36,7 @@ export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const FURNITURE_APP_URL = 'furniture';
+export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 
@@ -306,6 +307,10 @@ export const FURNITURE_ASSIGNMENT_URL = 'furniture-assignments';
 export const FURNITURE_SALES_URL      = 'furniture-sales';
 export const FURNITURE_TYPES_URL      = 'furniture-types';
 
+// App. Archive viewer
+export const AA_VIEWER = 'aa-viewer';
+export const AA_RIGHTS = 'aa-rights';
+
 //Web arch
 export const ARCHIVE_URL    = 'arch';
 export const TAG_URL        = 'tags';
@@ -544,6 +549,10 @@ export const ABS_FURNITURE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_U
 export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_ASSIGNMENT_URL].join('/');
 export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
 export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
+
+// App. Archive viewer
+export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');
+export const ABS_ARCHIVE_RIGHTS_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_RIGHTS].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');

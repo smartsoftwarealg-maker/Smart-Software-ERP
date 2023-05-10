@@ -42,7 +42,7 @@ import {
     BUDGET_BUDGET_URL,
     BUDGET_APP_URL,
     LTM_APP_URL,
-    FURNITURE_APP_URL, ATTENDANCE_APP_URL,
+    FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -51,9 +51,10 @@ import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 
 export const environment = {
-  production: true,
+    production: true,
 };
 
 export const navBar = [
@@ -80,6 +81,7 @@ export const navBar = [
     scheduledSalesNavTree,
     workflowNavTree,
     ltmNavTree,
+    aaNavTree,
     foodNavTree
 ];
 
@@ -105,6 +107,10 @@ export const langAssets = [
 ];
 
 export const appRoutes: Routes =  [
+    {
+        path: ARCH_VIEWER_URL,
+        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    },
     {
         path: INDEX_PAGE_URL,
         component: MainPageComponent,

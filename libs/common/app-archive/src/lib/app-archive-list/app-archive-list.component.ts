@@ -5,6 +5,7 @@ import {SnackBarService} from '@ss/common/ui-shell';
 import {ImageUploaderUtil, PaginationModel} from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
+import { of, switchMap, tap } from "rxjs";
 
 @Component({
     selector: 'ss-agent-archive-list',
@@ -42,6 +43,28 @@ export class AppArchiveListComponent implements OnInit {
                 const editable = param.get('editable');
                 this.entitySrv.editable = editable && editable.toLowerCase() === 'true';
             }
+
+            this.route
+                .parent
+                .parent
+                .paramMap
+                .pipe(
+                    switchMap(params => {
+                        const id = +params.get('id');
+                        if (id > 0) {
+                            this.entitySrv.setParentId(id);
+                            return this.entitySrv.getList(0, 50);
+                        } else {
+                            return of(null);
+                        }
+                    }))
+                .subscribe(res => {
+                    if (res) {
+                        this.data = res.body || [];
+                        this.paginator.elementCount = res.itemCount;
+                        this.imgSrc = null;
+                    }
+                });
             this.refresh();
         });
     }

@@ -36,7 +36,7 @@ import {
 } from '@ss/accounting/accounting-accounts';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {accountingGuard, loginGuard} from '../erp-guards';
-import { AppArchiveDetailComponent, AppArchiveListComponent } from "@ss/common/app-archive";
+import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 
 export const accRoutes: Routes = [
     {
@@ -286,4 +286,4 @@ export const accRoutes: Routes = [
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-]
+];

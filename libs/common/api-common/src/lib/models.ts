@@ -21,6 +21,7 @@ export interface AccessRight {
     write?: boolean;
     edit?: boolean;
     delete?: boolean;
+    roleDescription?: string;
 }
 
 export interface Password {

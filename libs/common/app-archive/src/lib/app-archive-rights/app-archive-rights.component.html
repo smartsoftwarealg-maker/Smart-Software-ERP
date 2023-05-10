@@ -1,1 +1,42 @@
-<p>app-archive-rights works!</p>
+<div class="container_div">
+    <div class="list_div">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           class="selectable"
+                           *ngFor="let a of applications"
+                           [class.selected]="a.id === selectedApp?.id"
+                           (click)="selectApp(a)"> {{ a.description | translate }}</mat-list-item>
+        </mat-list>
+    </div>
+
+    <div class="rights_div">
+        <div class="ctrl_div">
+            <button mat-mini-fab color="accent"
+                    [disabled]="selectedRole === null || roleAssigned"
+                    (click)="addRole()"><i class="fas fa-plus-circle"></i>
+            </button>
+
+            <mat-form-field>
+                <mat-label translate>ADMINISTRATION_ROLE</mat-label>
+                <ss-auto-complete matInput
+                                  [formControl]="roleCtrl"
+                                  [model]="roleLookup">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab color="warn" [disabled]="selectedRole?.id < 1"
+                    (click)="deleteRole()">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+        <mat-card class="list_div">
+            <mat-list role="list">
+                <mat-list-item role="listitem"
+                               class="selectable"
+                               *ngFor="let r of assignedRoles"
+                               [class.selected]="r.roleId === selectedRight?.roleId"
+                               (click)="selectRight(r)"> {{ r.roleDescription }}
+                </mat-list-item>
+            </mat-list>
+        </mat-card>
+    </div>
+</div>

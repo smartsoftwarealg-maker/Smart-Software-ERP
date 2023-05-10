@@ -32,7 +32,6 @@ export class AppArchiveMainComponent implements OnInit {
 
     @Input()
     set id(objectId: number) {
-        console.log('*****************************objectId', objectId);
         this.archiveSrv.setParentId(objectId);
     }
     get id() {
@@ -41,7 +40,6 @@ export class AppArchiveMainComponent implements OnInit {
 
     @Input()
     set appId(id: number) {
-        console.log('*****************************oappId', id);
         this.archiveSrv.appId = id || 0;
     }
 

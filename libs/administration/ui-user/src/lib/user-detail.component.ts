@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
@@ -26,6 +26,8 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './user-detail.component.html'
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
+    private centerSrv = inject(CenterService);
+    private roleServ = inject(RoleService);
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
     validId = false;
@@ -56,9 +58,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private roleServ: RoleService,
-        private loginSrv: LoginService,
-        private centerSrv: CenterService) {
+        private loginSrv: LoginService) {
         super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
         this.isManager = loginSrv.appCtx?.manager;
     }
@@ -75,7 +75,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 switchMap(res => {
                     this.roleList = res['body'];
                     this.centerSrv.setParentId(this.loginSrv.appCtx?.company);
-                    return this.centerSrv.getList(0, 50)
+                    return this.centerSrv.getList(0, 50);
                 }),
                 switchMap(res => {
                     this.centerList = res['body'];
@@ -112,7 +112,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .confirmDelete()
                 .pipe(switchMap(yes => yes?
                     this.userSrv.deleteRole(this.curUser.id, this.selectedRole) : of({ count: 0 })),
-                    switchMap(res => !res || res['count'] > 0? this.userSrv.loadRoles(this.curUser.id) : of(null)))
+                switchMap(res => !res || res['count'] > 0? this.userSrv.loadRoles(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
                         this.loadUserRoles(res as UserRole[]);
@@ -129,7 +129,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .pipe(switchMap(res => this.userSrv.loadRoles(this.curUser.id)))
                 .subscribe(res => {
                     this.loadUserRoles(res);
-                    this.snackBarSrv.showSuccessMessage()
+                    this.snackBarSrv.showSuccessMessage();
                 });
         }
     }
@@ -149,7 +149,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .confirmDelete()
                 .pipe(switchMap(yes => yes?
                     this.userSrv.deleteCenter(this.curUser.id, this.selectedCenter) : of({ count: 0 })),
-                    switchMap(res => !res || res['count'] > 0? this.userSrv.loadCenters(this.curUser.id) : of(null)))
+                switchMap(res => !res || res['count'] > 0? this.userSrv.loadCenters(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
                         this.loadUserCenters(res as UserCenter[]);
@@ -166,7 +166,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .pipe(switchMap(res => this.userSrv.loadCenters(this.curUser.id)))
                 .subscribe(res => {
                     this.loadUserCenters(res);
-                    this.snackBarSrv.showSuccessMessage()
+                    this.snackBarSrv.showSuccessMessage();
                 });
         }
     }

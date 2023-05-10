@@ -52,6 +52,7 @@ import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -82,6 +83,7 @@ export const navBar = [
     // shoppingCartNavTree,
     workflowNavTree,
     ltmNavTree,
+    aaNavTree,
     foodNavTree
 ];
 

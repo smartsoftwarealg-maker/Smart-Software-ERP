@@ -14,7 +14,7 @@ import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
-import {CanActivateService, INDEX_PAGE_URL} from '../../../../libs/common/api-common/src';
+import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
 import {
     ACCOUNTING_APP_URL,
     ADMINISTRATION_APP_URL,
@@ -30,15 +30,16 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL,
+    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, ARCH_VIEWER_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 
 export const environment = {
-  production: true,
+    production: true,
 };
 
 export const navBar = [
@@ -60,7 +61,8 @@ export const navBar = [
     treasuryNavTree,
     budgetNavTree,
     dashboardNavTree,
-    workflowNavTree
+    workflowNavTree,
+    aaNavTree,
 ];
 
 export const langAssets = [
@@ -81,6 +83,10 @@ export const langAssets = [
 ];
 
 export const appRoutes: Routes =  [
+    {
+        path: ARCH_VIEWER_URL,
+        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    },
     {
         path: INDEX_PAGE_URL,
         component: MainPageComponent,

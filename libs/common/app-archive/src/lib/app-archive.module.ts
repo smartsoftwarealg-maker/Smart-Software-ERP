@@ -12,6 +12,7 @@ import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dia
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { AppArchiveRightsComponent } from './app-archive-rights/app-archive-rights.component';
 import { AppArchiveViewerComponent } from './app-archive-viewer/app-archive-viewer.component';
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { AppArchiveViewerComponent } from './app-archive-viewer/app-archive-view
         ReactiveFormsModule,
         CommonUiConfirmationDialogModule,
         CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule
     ],
 
     declarations: [

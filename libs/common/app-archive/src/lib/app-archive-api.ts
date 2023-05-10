@@ -1,3 +1,5 @@
+import { Lookup } from "@ss/common/api-lookup";
+
 export const AGENT_ARCHIVES            = 1;
 export const ASSET_RECEPTIONS_ARCHIVES = 2;
 export const ASSET_ARCHIVES            = 3;
@@ -17,3 +19,33 @@ export interface AppArchive {
     filename?: string;
     data?: any[];
 }
+export interface INFOArchive {
+    id: number;
+    appId: number;
+    documentId: number;
+    objId: number;
+    docDescription?: string;
+    filename?: string;
+    data?: any[];
+    info1?: string;
+    info2?: string;
+    info3?: string;
+}
+
+export interface AppArchiveObs {
+    body: INFOArchive[];
+    itemCount: number;
+}
+
+export const     APPLICATIONS: Lookup[] = [
+    { 'id': 1, 'description': 'COMMON_AGENT', descriptionAr: 'AAAgent' },
+    { 'id': 2, 'description': 'ASSET_RECEPTIONS', descriptionAr: 'AAAssetReception' },
+    { 'id': 3, 'description': 'COMMON_ASSETS', descriptionAr: 'AAAsset' },
+    { 'id': 4, 'description': 'PAYROLL_EMPLOYEES', descriptionAr: 'AAEmployee' },
+    { 'id': 5, 'description': 'LOGISTICS_PURCHASE_ORDER', descriptionAr: 'AAPOrder' },
+    { 'id': 52, 'description': 'COMMON_RECEPTION', descriptionAr: '' },
+    { 'id': 53, 'description': 'SALES_ORDER', descriptionAr: 'AASOrder' },
+    { 'id': 54, 'description': 'SALES_INVOICE', descriptionAr: 'AAInvoice' },
+    // {'id': 6,  'description': 'COMMON_CONTRACT'},
+    { 'id': 7, 'description': 'COMMON_ACCOUNTING', descriptionAr: 'AAAcounting' }
+];
