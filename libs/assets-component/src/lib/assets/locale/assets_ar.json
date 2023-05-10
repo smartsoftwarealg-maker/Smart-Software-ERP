@@ -1,5 +1,6 @@
 {
     "SERVICE_DATE": "تاريخ الخدمة",
+    "RESERVICE_DATE": "تاريخ إعادة الخدمة",
     "ACQUISITION_VALUE": "قيمة الاقتناء",
     "RESIDUAL_VALUE": "القيمة المتبقية",
     "SERIAL_NUMBER": "رقم سري",
@@ -64,5 +65,6 @@
     "FURNITURE":           "الأثاث",
     "RECEIVER":            "المتلقي",
     "RECEIVERS":           "المتلقين",
-    "ASSIGNED_ASSETS":     "الأصول المخصصة"
+    "ASSIGNED_ASSETS":     "الأصول المخصصة",
+    "START_YEAR":          "سنة البدء"
 }

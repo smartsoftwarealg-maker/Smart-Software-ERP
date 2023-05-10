@@ -84,6 +84,7 @@ export interface Asset {
     beneficiaryId?: number;
     appointmentNumber?: number;
     isFinal?: number;
+    reserviceDate?: Date;
 }
 
 export interface Depreciation {
