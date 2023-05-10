@@ -97,9 +97,9 @@ export class HttpService {
         return this.baseUrl;
     }
 
-    public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams, timeout: number = 0): Observable<{ itemCount: number, body: T[] }> {
+    public getData<T>(url: string, page: number, size: number, filterStr?: string, sortBy?: string, params?: HttpParams, timeout = 0): Observable<{ itemCount: number, body: T[] }> {
         if (this.baseUrl === undefined) {
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         let httpParams = (params == null ? new HttpParams() : params)
             .set('page', `${page}-${size}`);
@@ -126,7 +126,7 @@ export class HttpService {
             }));
     }
 
-    public getBlob(url: string, httpParams?: HttpParams, timeout: number = 0): Observable<Blob> {
+    public getBlob(url: string, httpParams?: HttpParams, timeout = 0): Observable<Blob> {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
@@ -142,10 +142,10 @@ export class HttpService {
             ).pipe(map(res => res.body));
     }
 
-    public get<T>(url: string, httpParams?: HttpParams, timeout: number = 0): Observable<T> {
+    public get<T>(url: string, httpParams?: HttpParams, timeout = 0): Observable<T> {
         if (this.baseUrl === undefined) {
             //    this.baseUrl = '';
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
@@ -165,9 +165,9 @@ export class HttpService {
             ).pipe(map(ress => ress.body));
     }
 
-    public post(url: string, data?: any | null, timeout: number = 300_000): Observable<any> {
+    public post(url: string, data?: any | null, timeout = 300_000): Observable<any> {
         if (this.baseUrl === undefined) {
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         return this
             .httpClient
@@ -178,7 +178,7 @@ export class HttpService {
 
     public upload(url: string, data?: any | null): Observable<any> {
         if (this.baseUrl === undefined) {
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         return this
             .httpClient
@@ -191,9 +191,9 @@ export class HttpService {
                 });
     }
 
-    public postHTML(url: string, data?: any | null, timeout: number = 0): Observable<any> {
+    public postHTML(url: string, data?: any | null, timeout = 0): Observable<any> {
         if (this.baseUrl === undefined) {
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         return this
             .httpClient
@@ -202,9 +202,9 @@ export class HttpService {
                 {responseType: 'text', headers: HttpService.getHeaders()});
     }
 
-    public put(url: string, data?: any | null, timeout: number = 0): Observable<any> {
+    public put(url: string, data?: any | null, timeout = 0): Observable<any> {
         if (this.baseUrl === undefined) {
-            throw new Error("HTTP SERVICE NOT READY");
+            throw new Error('HTTP SERVICE NOT READY');
         }
         return this
             .httpClient
@@ -243,7 +243,7 @@ export class HttpService {
     // }
 
     // noinspection JSUnusedGlobalSymbols
-    public postBlob(url: string, data?: any | null, timeout: number = 600000): Observable<ArrayBuffer> {
+    public postBlob(url: string, data?: any | null, timeout = 600000): Observable<ArrayBuffer> {
         return this
             .httpClient
             .post(this.baseUrl + url,

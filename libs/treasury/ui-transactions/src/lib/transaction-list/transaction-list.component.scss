@@ -1,16 +1,18 @@
-
+.size_div, .header-div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 8px auto;
+}
 .header-div {
     display: flex;
     gap: 2em;
     max-height: 26em;
-    width: 96%;
-    max-width: 1200px;
-    margin: 8px auto;
 }
 
 .journal_div {
     min-width: 25em;
 }
+
 .calendar_div {
     flex: 1 1 auto;
     min-width: 300px;
@@ -23,7 +25,8 @@
     max-width: 1200px;
     margin: 8px auto;
     overflow-x: auto;
-    height: calc(100% - 28em);
+    height: 40%;
+    max-height: 40%;
 }
 
 
@@ -45,7 +48,7 @@
     align-self: start;
 }
 .summary_table_div {
-    height: 20em;
+    height: 18em;
     max-height: 23em;
     overflow-y: auto;
     padding: 8px 0;
@@ -92,7 +95,6 @@ th {
     padding-left: 4px;
 
 }
-
 @media (width <= 700px) {
     .header-div {
         flex-direction: column;

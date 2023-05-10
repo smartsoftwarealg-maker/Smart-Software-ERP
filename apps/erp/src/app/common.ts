@@ -6,7 +6,7 @@ import { AgentBalanceComponent } from '@ss/logistics/ui-agent-balance';
 import { AgentDebtsComponent } from '@ss/logistics/ui-agent-debts';
 import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
-import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
+import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
 
 // common
@@ -36,8 +36,11 @@ export const LOGISTICS_APP_URL = 'logistics';
 export const WEBARCH_APP_URL = 'webarch';
 export const ASSETS_APP_URL = 'assets-app';
 export const FURNITURE_APP_URL = 'furniture';
+export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+
+export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
@@ -45,7 +48,7 @@ export const SHOPPING_CART_APP_URL = 'scart';
 export const FOOD_CART_APP_URL = 'food';
 export const WORK_FLOW_APP_URL = 'workflow';
 export const BUDGET_APP_URL = 'budget';
-export const ATTENDANCE_APP_URL = 'attendance'
+export const ATTENDANCE_APP_URL = 'attendance';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -122,10 +125,10 @@ export const STOCK_UNITS_URL = 'units';
 export const STOCK_REPORT_CATALOG_URL = 'report-catalog';
 export const STOCK_REPORTS_URL = 'stock-reports';
 export const STOCK_ARTICLE_URL = 'stock-articles';
-export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation'
+export const STOCK_PRICE_RECALCULATION_URL = 'price-recalculation';
 
 // Budget
-export const BUDGET_BUDGET_URL   = 'budgets'
+export const BUDGET_BUDGET_URL   = 'budgets';
 export const BUDGET_GROUP_URL    = 'budget-groups';
 export const BUDGET_PLANNING_URL = 'budget-planning';
 export const BUDGET_SELECTOR_URL = 'budget-selector';
@@ -236,9 +239,9 @@ export const ASSET_LOCATIONS_URL         = 'locations';
 export const ASSET_REVALUATION_TYPE_URL  = 'revaluation_types';
 export const ASSETS_COST_URL             = 'costs';
 export const ASSETS_DEPRECIATION_URL     = 'rates';
-export const ASSETS_REVALUATION_URL      = 'revaluations'
-export const ASSETS_APPOINTMENTS_URL     = 'appointments'
-export const ASSETS_BLOCKING_URL         = 'blockings'
+export const ASSETS_REVALUATION_URL      = 'revaluations';
+export const ASSETS_APPOINTMENTS_URL     = 'appointments';
+export const ASSETS_BLOCKING_URL         = 'blockings';
 export const ASSETS_OFFICES_URL          = 'offices';
 export const ASSET_OPTIONS_URL           = 'asset-policies';
 export const ASSET_TRANSFER_URL          = 'asset-transfer';
@@ -246,7 +249,7 @@ export const ASSETS_SEARCH_URL           = 'asset-search';
 export const ASSETS_INJECTION_URL        = 'asset-injection';
 export const ASSET_INVENTORY_URL         = 'asset-inventories';
 export const ASSET_RECEPTIONS_URL        = 'asset-receptions';
-export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments'
+export const ASSETS_APPOINTMENTS_DOC_URL = 'asset-appointments';
 export const ASSETS_AGENT_URL            = 'agents';
 export const ASSET_BUILDING_URL          = 'buildings';
 
@@ -303,6 +306,10 @@ export const FURNITURE_RECEPTION_URL  = 'furniture-receptions';
 export const FURNITURE_ASSIGNMENT_URL = 'furniture-assignments';
 export const FURNITURE_SALES_URL      = 'furniture-sales';
 export const FURNITURE_TYPES_URL      = 'furniture-types';
+
+// App. Archive viewer
+export const AA_VIEWER = 'aa-viewer';
+export const AA_RIGHTS = 'aa-rights';
 
 //Web arch
 export const ARCHIVE_URL    = 'arch';
@@ -543,6 +550,10 @@ export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_
 export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
 export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
 
+// App. Archive viewer
+export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');
+export const ABS_ARCHIVE_RIGHTS_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_RIGHTS].join('/');
+
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');
 export const ABS_ASSET_COST_TYPES = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSET_COST_TYPE_URL].join('/');
@@ -574,8 +585,8 @@ export const ABS_SALES_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL,
 export const ABS_SALES_DELIVERY_CANCEL_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_CANCEL_URL].join('/');
 export const ABS_SALES_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_URL].join('/');
 export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PROFORMA_URL].join('/');
-export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON_REPORTS_URL].join('/')
-export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/')
+export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_ADS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_AD_URL].join('/');
 
 // Purchace
@@ -584,8 +595,8 @@ export const ABS_PURCHASE_RECEPTION_CANCELLATION_URL = '/' + [MAIN_PAGE_URL, PUR
 export const ABS_PURCHASE_ORDER_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_ORDER_URL].join('/');
 export const ABS_PURCHASE_REQUEST_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_REQUEST_URL].join('/');
 export const ABS_PURCHASE_QUOTATION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_QUOTATION_URL].join('/');
-export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/')
-export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/')
+export const ABS_PURCHASE_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_PURCHASE_REPORTS_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, COMMON_REPORTS_URL].join('/');
 
 //dashboard
 export const ABS_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, DASHBOARD_APP_URL, DASHBOARD_URL].join('/');

@@ -129,37 +129,36 @@
                     ASSET_DEPRECIATION
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <span class="default-100"></span>
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
                 <ss-date-picker formControlName="acquisitionDate" required="true"></ss-date-picker>
             </mat-form-field>
 
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_SERVICE_DATE</mat-label>
                 <ss-date-picker formControlName="serviceDate"></ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
                 <input matInput formControlName="acquisitionValue" type="number" required>
                 <mat-error *ngIf="form.controls['acquisitionValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
                 <input matInput formControlName="historicValue" type="number" >
                 <mat-error *ngIf="form.controls['historicValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>LOGISTICS_VAT</mat-label>
                 <input matInput formControlName="vat" type="number" required>
                 <mat-error *ngIf="form.controls['vat'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <mat-select formControlName="depreciationType">
                     <mat-option *ngFor="let v of depreciationTypes" [value]="v.id">
@@ -169,23 +168,28 @@
             </mat-form-field>
 
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
                 <input matInput formControlName="depreciationRate" type="number" required>
                 <mat-error *ngIf="form.controls['depreciationRate'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_OLD_DEPRECIATION</mat-label>
                 <input matInput formControlName="old_depreciation" type="number">
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
+                <mat-label translate>ASSET_START_YEAR</mat-label>
+                <input matInput formControlName="startYear" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RESIDUAL_VALUE</mat-label>
                 <input matInput formControlName="residualValue" type="number" required>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ACC_USEFUL_LIFE</mat-label>
                 <input matInput formControlName="useful_life" type="number" required>
                 <mat-error *ngIf="form.controls['useful_life'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -198,7 +202,7 @@
                     COMMON_PURCHASE
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <span class="default-100"></span>
+
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
@@ -285,7 +289,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <span class="default-100"></span>
+
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>ASSET_DATE_OUT</mat-label>
                 <ss-date-picker formControlName="dateOut"></ss-date-picker>
@@ -465,7 +469,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
-            <ss-app-archive-main [id]="id" [appId]="3" [editable]="isEditable"></ss-app-archive-main>
+            <ss-app-archive-main [id]="id" [appId]="LOCAL_ASSER_ARCHIVE" [editable]="isEditable"></ss-app-archive-main>
 
         </mat-expansion-panel>
 

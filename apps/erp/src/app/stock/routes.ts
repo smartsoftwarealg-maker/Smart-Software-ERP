@@ -1,10 +1,6 @@
 import {
-    COMMON_REPORTS_URL,
-    LOOKUPS_URL,
     COMMON_ACCOUNT_URL,
-    STOCK_AGENT_PRICE_URL,
     STOCK_AGENT_URL,
-    LOGISTICS_ARTICLES_URL,
     STOCK_CLASSES_URL,
     STOCK_CONSUMPTION_URL,
     STOCK_COST_CENTER_URL,
@@ -27,7 +23,7 @@ import {
     GENERATION_ACCOUNT_URL,
     STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL
 } from '../common';
-import { ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 import { Routes } from '@angular/router';
 import {
@@ -45,7 +41,6 @@ import {
 import {
     AgentListComponent,
     AgentDetailComponent,
-    AppArchiveListComponent,
     AppArchiveDetailComponent
 } from '@ss/logistics/ui-agent';
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
@@ -76,6 +71,7 @@ import {
     GenerationAccountsListComponent, TransacAccountsDetailComponent, TransacAccountsListComponent
 } from '@ss/accounting/accounting-accounts';
 import {loginGuard} from '../erp-guards';
+import { AppArchiveMainComponent } from '@ss/common/app-archive';
 
 export const mainRoutes: Routes = [
     {
@@ -210,33 +206,6 @@ export const mainRoutes: Routes = [
         ]
     },
     {
-        path: STOCK_INVENTORY_EXIT_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: InventoryExitListComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
-                path: LINES_DETAIL_URL + '/:id',
-                component: InventoryExitLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
-                path: ':id',
-                component: InventoryExitDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
-    },
-    {
         path: STOCK_TRANSFER_URL,
         children: [
             {
@@ -317,6 +286,33 @@ export const mainRoutes: Routes = [
         ]
     },
     {
+        path: STOCK_INVENTORY_EXIT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: InventoryExitListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: InventoryExitLinesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: InventoryExitDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
         path: STOCK_INVENTORY_URL,
         children: [
             {
@@ -364,7 +360,7 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: '', component: AppArchiveMainComponent, pathMatch: 'full' },
                                     {path: ':id', component: AppArchiveDetailComponent},
                                 ]
                             }
@@ -394,24 +390,6 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
-    // {
-    //     path: STOCK_AGENT_PRICE_URL,
-    //     children: [
-    //         {
-    //             path: LIST_URL,
-    //             component: AgentPriceListComponent,
-    //             canActivate: [loginGuard]
-    //         },
-    //         {
-    //             path: ':id',
-    //             component: AgentPriceDetailComponent,
-    //             canActivate: [loginGuard],
-    //             canDeactivate: [CanDeactivateService]
-    //         },
-    //         { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-    //         { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-    //     ]
-    // },
     {
         path: STOCK_COST_CENTER_URL,
         children: [

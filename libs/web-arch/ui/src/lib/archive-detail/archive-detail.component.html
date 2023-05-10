@@ -5,14 +5,14 @@
           class="form__container">
 
         <mat-form-field class="des">
-            <mat-placeholder translate>COMMON_DESCRIPTION</mat-placeholder>
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
             <input matInput type="text" name="fileName" formControlName="description">
         </mat-form-field>
 
 
         <mat-form-field class="dat">
             <input matInput [matDatepicker]="picker" name="docDate" formControlName="docDate">
-            <mat-placeholder translate>COMMON_DATE</mat-placeholder>
+            <mat-label translate>COMMON_DATE</mat-label>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

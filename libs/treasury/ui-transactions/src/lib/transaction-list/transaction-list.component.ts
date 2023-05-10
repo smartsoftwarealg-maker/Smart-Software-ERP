@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Summary, TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { APP_TREASURY, PaginatorPersistenceService } from "@ss/common/api-common";
 import {FormControl} from '@angular/forms';
 import {Journal, UserJournalsService} from '@ss/treasury/api-journal';
-import {DefaultAutoCompleteModel, Id} from '@ss/common/ui-auto-complete';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
     selector: 'ss-transaction-list',
@@ -17,6 +18,8 @@ import {Observable} from 'rxjs';
     styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
+    private journalSrv = inject(UserJournalsService);
+
     private readonly CASH_COLS = [
         'description',
         'agentName',
@@ -39,12 +42,13 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         'groupName',
         'memo'];
 
-    dateFilter    = new FormControl<Date>(this.entitySrv.date);
-    journalFilter = new FormControl<number>(this.entitySrv.journalId);
+    dateFilter    = new FormControl<Date>(new Date());
+    journalFilter = new FormControl<number>(0);
     journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
     summary$: Observable<Summary[]> = null;
-
     displayedColumns = this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS;
+    mode: 1|2 = 1;
+    public TREASURY = APP_TREASURY;
 
     constructor(
         public override entitySrv: TreasuryTransactionService,
@@ -54,8 +58,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private journalSrv: UserJournalsService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -66,6 +69,8 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
             pagPersistSrv,
             'COMMON_TRANSACTIONS');
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
+        this.dateFilter.setValue(this.entitySrv.date);
+        this.journalFilter.setValue(this.entitySrv.journalId);
     }
 
     override ngOnInit() {
@@ -93,4 +98,9 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         const date = new Date(+(period / 10000).toFixed(0), +((period / 100) % 100).toFixed(0) - 1, +(period % 100).toFixed(0));
         this.onDate(date);
     }
+
+    onMode(e: MatRadioChange) {
+        this.mode = +e.value === 2? 2 : 1;
+    }
+
 }

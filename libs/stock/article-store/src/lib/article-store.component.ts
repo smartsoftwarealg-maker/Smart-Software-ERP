@@ -1,4 +1,4 @@
-import {Component, Input, OnInit,} from '@angular/core';
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -29,6 +29,7 @@ interface StoreForm {
     templateUrl: './article-store.component.html'
 })
 export class ArticleStoreComponent implements OnInit {
+    private lotsService = inject(LotsService);
 
     article_!: Article;
 
@@ -63,7 +64,6 @@ export class ArticleStoreComponent implements OnInit {
                 public route: ActivatedRoute,
                 public router: Router,
                 public articleStoreSrv: ArticleStoresService,
-                public lotsService: LotsService,
                 public confirmationSrv: ConfirmationDialogService) {
         this.pagination.onChange = () => this.loadArticleStore();
     }

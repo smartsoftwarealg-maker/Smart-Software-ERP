@@ -1,0 +1,27 @@
+.container_div {
+    display: flex;
+    width: 96%;
+    max-width: 800px;
+    margin: 8px auto;
+    gap: 1em;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.list_div {
+    flex: 1 1 55%;
+}
+.rights_div {
+    flex: 1 1 45%;
+}
+
+.ctrl_div {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.list_div {
+    height: calc(100% - 96px);
+    border-radius: 1.4em;
+}

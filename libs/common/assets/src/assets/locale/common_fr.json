@@ -278,5 +278,6 @@
     "FORMULAS":                   "Formules",
     "JSON_EXPORT":                "Exporter vers JSON",
     "LOAD_EXCEL":                 "Charger depuis un fichier Excel",
-    "ID":                         "Mat."
+    "ID":                         "Mat.",
+    "AAVIEWER":                   "APPArchive"
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
 import {FormControl} from '@angular/forms';
@@ -17,6 +17,7 @@ import {UserLookup} from '@ss/common/ui-auto-complete';
     styleUrls: ['./user-document-list.component.scss'],
 })
 export class UserDocumentListComponent extends BaseEntityListComponent<UserDocument> {
+    private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(0);
     userAutoComplete = new UserLookup(this.usersSrv);
     displayedColumns = [
@@ -31,8 +32,7 @@ export class UserDocumentListComponent extends BaseEntityListComponent<UserDocum
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private usersSrv: UserListService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -45,7 +45,7 @@ export class UserDocumentListComponent extends BaseEntityListComponent<UserDocum
         this.userAutoComplete.onObjectSelected = u => {
             this.entitySrv.setParentId(u?.id || 0);
             this.refresh();
-        }
+        };
         this.entitySrv.setParentId(0);
     }
 }

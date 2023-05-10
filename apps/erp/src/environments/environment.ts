@@ -42,21 +42,20 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL
+    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
-import {shoppingCartNavTree} from '../app/shopping-cart/side-nav-tree';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import {ltmNavTree} from '../app/ltm/side-nav-tree';
-import {inject} from '@angular/core';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
+import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 
 export const environment = {
-  production: false,
+    production: false,
 };
 
 export const navBar = [
@@ -84,6 +83,7 @@ export const navBar = [
     // shoppingCartNavTree,
     workflowNavTree,
     ltmNavTree,
+    aaNavTree,
     foodNavTree
 ];
 
@@ -114,6 +114,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: ARCH_VIEWER_URL,
+        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
     },
     {
         path: LTM_APP_URL,

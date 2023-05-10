@@ -1,8 +1,8 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {AssetReception} from '../assets-api';
-import {UntypedFormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetReceptionService} from '../asset-reception.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -12,6 +12,7 @@ import {ConsumerService, SupplierService} from '@ss/logistics/api-agent';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
+import { ASSET_RECEPTIONS_ARCHIVES } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-asset-receptions-detail',
@@ -30,10 +31,11 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         label: 'LOGISTICS_SEND_MESSAGE',
         visible: true,
         click: () => this.sendMessage(),
-    }
+    };
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup        = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     requesterLookup           = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
+    LOCAL_RECEPTIONS_ARCHIVES = ASSET_RECEPTIONS_ARCHIVES;
 
     constructor(
         public override entitySrv: AssetReceptionService,

@@ -21,6 +21,7 @@ export interface AccessRight {
     write?: boolean;
     edit?: boolean;
     delete?: boolean;
+    roleDescription?: string;
 }
 
 export interface Password {
@@ -69,6 +70,17 @@ export interface LoginInfo {
 
 export interface UserInfo {
     user: User;
+}
+
+export interface SideNavNode {
+    icon: string;
+    name: string;
+    route?: string;
+    visible?: boolean;
+    accessRights?: string;
+    children?: SideNavNode[];
+    backgroundColor?: string;
+    customerRights?: Right;
 }
 
 export interface Right {

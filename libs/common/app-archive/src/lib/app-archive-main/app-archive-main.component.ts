@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
-import {ActivatedRoute, RouterOutlet} from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'ss-app-archive-main',
@@ -10,11 +10,15 @@ import {ActivatedRoute, RouterOutlet} from '@angular/router';
 export class AppArchiveMainComponent implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
-    constructor(private archiveSrv: AppArchiveService,  private route: ActivatedRoute) { }
+    constructor(
+        public archiveSrv: AppArchiveService,
+        private route: ActivatedRoute,
+        private router: Router) {
+    }
 
-    private refresh() {
+    protected refresh() {
         if (this.outlet && this.outlet.isActivated && this.outlet.component) {
-            const comp: any = this.outlet?.component;
+            const comp: any = this.outlet?.component || null;
             if (comp && comp['refresh'] != null) {
                 comp['refresh']();
             }
@@ -24,18 +28,11 @@ export class AppArchiveMainComponent implements OnInit {
     @Input()
     set editable(value: boolean) {
         this.archiveSrv.editable = value;
-        if (this.outlet && this.outlet.isActivated && this.outlet.component) {
-            const comp: any = this.outlet?.component;
-            if (comp && comp['setEditable'] != null) {
-                comp['setEditable'](value);
-            }
-        }
     }
 
     @Input()
     set id(objectId: number) {
         this.archiveSrv.setParentId(objectId);
-        this.refresh();
     }
     get id() {
         return this.archiveSrv.getParentId();
@@ -44,19 +41,14 @@ export class AppArchiveMainComponent implements OnInit {
     @Input()
     set appId(id: number) {
         this.archiveSrv.appId = id || 0;
-        this.refresh();
     }
 
 
     ngOnInit(): void {
         this.route.queryParamMap.subscribe(param => {
-            const docId = +param.get('documentId') || 0;
-            const agentId = +param.get('agentId') || 0;
             const appId = +param.get('appId') || 0;
-            this.editable = param.get('editable') === 'true';
-            this.archiveSrv.appId = this.archiveSrv.appId || appId;
-            const id = (docId || agentId) || 0;
-            this.archiveSrv.setParentId(id);
+            if (appId > 0) {
+            }
         });
     }
 }

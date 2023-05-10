@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LoginService, PaginatorPersistenceService, User} from '@ss/common/api-common';
+import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {UserMessage} from '../workflow-api';
 import {UserMessageService} from '../user-message.service';
@@ -17,6 +17,8 @@ import {UserLookup} from '@ss/common/ui-auto-complete';
     styleUrls: ['./user-message-list.component.scss'],
 })
 export class UserMessageListComponent extends BaseEntityListComponent<UserMessage> {
+    private loginSrv  = inject(LoginService);
+    private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
     userAutoComplete = new UserLookup(this.usersSrv);
     displayedColumns = [
@@ -32,9 +34,7 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private usersSrv: UserListService,
-        private loginSrv: LoginService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -47,7 +47,7 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
         this.userAutoComplete.onObjectSelected = u => {
             this.entitySrv.setParentId(u?.id || 0);
             this.refresh();
-        }
+        };
         this.entitySrv.setParentId(this.loginSrv.appCtx.id);
     }
 

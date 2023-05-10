@@ -7,7 +7,7 @@ import {
     ABS_LTM_PERIODICITIES_URL, ABS_LTM_REPORTS_URL,
     ABS_LTM_TESTINGS_URL,
     ABS_LTM_TESTS_URL
-} from "../common";
+} from '../common';
 
 export const ltmNavTree: SideNavNode = {
     name: 'LTM',

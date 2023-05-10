@@ -6,10 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AgentService} from '@ss/logistics/api-agent';
 import {LanguageService, PaginatorPersistenceService, UserService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {Observable, of, zip} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {PayMethod} from '@ss/common/api-lookup';
 import {Transaction} from './transaction';
 
 export abstract class BaseTransactionListComponent extends BaseEntityListComponent<Transaction> {
@@ -29,9 +26,4 @@ export abstract class BaseTransactionListComponent extends BaseEntityListCompone
         title: string) {
         super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, title);
     }
-
-    // override processLoadedData(data: Transaction[]): Observable<Transaction[]> {
-    //     data.forEach(x => {});
-    //     return of(data);
-    // }
 }

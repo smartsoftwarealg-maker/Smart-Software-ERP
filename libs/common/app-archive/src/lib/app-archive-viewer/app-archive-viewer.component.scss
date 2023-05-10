@@ -1,0 +1,85 @@
+.header_div {
+    width: 94%;
+    max-width: 900px;
+    margin: 4px auto;
+    display: flex;
+    gap: 1em;
+    padding: 8px;
+}
+
+.img_div {
+    width: 94%;
+    max-width: 1400px;
+    margin: 4px auto;
+    display: flex;
+    gap: 1em;
+    padding: 8px;
+}
+
+.list_div {
+    flex: 1 1 40%;
+}
+
+.form_div {
+    flex: 2 1 60%;
+    padding: 8px;
+    border-radius: 1.4em;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card {
+    flex-grow: 2;
+    border-radius: 1.4em;
+}
+.button_div {
+    flex-grow: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px auto;
+    button {
+        border-radius: 1.4em;
+        min-width: 120px;
+    }
+}
+.archive_div {
+    flex: 1 1 60%;
+    max-width: 60%;
+    overflow-y: auto;
+}
+.imj {
+    flex: 1 1 40%;
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.mat-column-info1,
+.mat-column-info2,
+.mat-column-docDescription {
+    flex: 1 1 20%;
+}
+
+.mat-column-info3 {
+    flex: 1 1 40%;
+}
+
+$color: hsl(100, 60%, 50%, .6);
+
+.clickable:hover {
+    cursor: pointer;
+    outline: 2px solid $color;
+}
+
+@media (width <= 600px){
+    .header_div {
+        display: block;
+    }
+    .list_div {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
