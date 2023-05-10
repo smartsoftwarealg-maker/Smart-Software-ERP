@@ -125,6 +125,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
             acquisitionDate: [b.acquisitionDate, Validators.required],
             serviceDate: [b.serviceDate],
+            reserviceDate: [b.reserviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
             historicValue: [b.historicValue || 0],
             depreciationRate: [b.depreciationRate || 0, Validators.required],
@@ -254,6 +255,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.description        =  asset.description      || null;
                 asset.acquisitionDate    =  asset.acquisitionDate  || null;
                 asset.serviceDate        =  asset.serviceDate      || null;
+                asset.reserviceDate      =  asset.reserviceDate    || null;
                 asset.invoiceNumber      =  asset.invoiceNumber    || null;
                 asset.itemCount          =  asset.itemCount        || null;
                 asset.acquisitionValue   =  asset.acquisitionValue || 0;

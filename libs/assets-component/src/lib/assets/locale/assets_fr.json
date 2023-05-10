@@ -1,5 +1,6 @@
 {
     "SERVICE_DATE":       "Date mise en service",
+    "RESERVICE_DATE":     "Date mise en service",
     "ACQUISITION_VALUE":  "Valeur d'acquisition",
     "RESIDUAL_VALUE":     "valeur résiduelle",
     "SERIAL_NUMBER":      "N° série",
@@ -64,5 +65,6 @@
     "FURNITURE":           "Patrimoine",
     "RECEIVER":            "Destinataire",
     "RECEIVERS":           "Destinataires",
-    "ASSIGNED_ASSETS":     "Actifs affectés"
+    "ASSIGNED_ASSETS":     "Actifs affectés",
+    "START_YEAR":          "Année de début d'amortissement"
 }

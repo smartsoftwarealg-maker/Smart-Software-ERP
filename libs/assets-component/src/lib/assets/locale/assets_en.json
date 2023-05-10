@@ -1,5 +1,6 @@
 {
     "SERVICE_DATE":      "Service date",
+    "RESERVICE_DATE":    "Reservice date",
     "ACQUISITION_VALUE": "Acquisition value",
     "RESIDUAL_VALUE":    "residual value",
     "SERIAL_NUMBER":     "Serial number",
@@ -64,5 +65,6 @@
     "FURNITURE":           "Furniture",
     "RECEIVER":            "Receiver",
     "RECEIVERS":           "Receivers",
-    "ASSIGNED_ASSETS":     "Assigned assets"
+    "ASSIGNED_ASSETS":     "Assigned assets",
+    "START_YEAR":          "Start year"
 }
