@@ -37,6 +37,7 @@ export class AppArchiveRightsComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
+        this.shellSrv.setTitle('COMMON_ACCESS_RIGHTS');
         this.roleLookup.onObjectSelected = (r) => this.selectRole(r);
     }
 

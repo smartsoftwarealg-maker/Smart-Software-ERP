@@ -55,6 +55,7 @@ export class AppArchiveViewerComponent implements OnInit {
     applications: Lookup[] = [];
 
     ngOnInit(): void {
+        this.shellSrv.setTitle('COMMON_AAVIEWER');
         this.shellSrv.setGoBackPath('..', this.route);
         this.archiveSrv
             .userDocuments()
