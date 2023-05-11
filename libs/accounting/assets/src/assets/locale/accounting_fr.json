@@ -61,9 +61,9 @@
     "TOTAL_CREDIT":             "Crédit total",
     "BALANCE":                  "Solde",
     "GL":                       "Grand livre général",
-    "DEPRECIATION_RATE":  "Taux d'amortissement",
-    "USEFUL_LIFE":        "Vie utile",
+    "DEPRECIATION_RATE":        "Taux d'amortissement",
+    "USEFUL_LIFE":              "Vie utile",
     "File":                      "Exercise",
-    "STOCK_ACCOUNTS":       "Comptes de stock"
+    "STOCK_ACCOUNTS":           "Comptes de stock"
 }
 
