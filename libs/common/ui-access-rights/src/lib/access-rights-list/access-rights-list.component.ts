@@ -12,7 +12,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AccessRightsService} from '@ss/common/api-access-rights';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from "@angular/forms";
 import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -58,12 +58,12 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             pagPersistSrv,
             'COMMON_ACCESS_RIGHTS');
         this.pagination.pageSize = 20;
-        this.form = new UntypedFormGroup({
-            roles: new UntypedFormControl(),
-            canRead: new UntypedFormControl(false),
-            canWrite: new UntypedFormControl(false),
-            canEdit: new UntypedFormControl(false),
-            canDelete: new UntypedFormControl(false)
+        this.form =    new FormGroup({
+            roles:     new FormControl(0),
+            canRead:   new FormControl(false),
+            canWrite:  new FormControl(false),
+            canEdit:   new FormControl(false),
+            canDelete: new FormControl(false)
         });
     }
 

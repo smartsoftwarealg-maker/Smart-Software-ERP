@@ -37,7 +37,7 @@ export const ltmNavTree: SideNavNode = {
             name: 'LTM_LINE_MATTERS',
             icon: 'fa-solid fa-xmarks-lines',
             route: ABS_LTM_LINES_URL,
-            accessRights: 'LTMLine'
+            accessRights: 'LTMLineMatter'
         },
 
 

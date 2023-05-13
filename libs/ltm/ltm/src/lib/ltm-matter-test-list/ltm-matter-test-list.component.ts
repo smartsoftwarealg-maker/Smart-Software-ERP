@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {PaginationModel} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,6 +7,7 @@ import {of, switchMap} from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {Sort} from '@angular/material/sort';
+import { LtmMatterService } from "../ltm-matter.service";
 
 @Component({
     selector: 'ss-ltm-matter-test-list',
@@ -14,9 +15,11 @@ import {Sort} from '@angular/material/sort';
     styleUrls: ['./ltm-matter-test-list.component.scss'],
 })
 export class LtmMatterTestListComponent implements OnInit {
+    private matterSrv  = inject(LtmMatterService);
     selected: LTMMatterTest = null;
     data: LTMMatterTest[] = [];
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
+    readonly isEditable = this.matterSrv.editable;
 
     displayedColumns = [
         'testDescription',

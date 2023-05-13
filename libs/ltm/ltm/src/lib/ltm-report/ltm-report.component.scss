@@ -16,13 +16,13 @@
 }
 mat-card {
     margin-top: 16px;
-    min-height: calc(100vh - 400px);
+    min-height: calc(100vh - 420px);
 }
 .chart_container {
     overflow-y: auto;
     flex: 2 1 75%;
     background: black;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 130px);
 }
 
 .chart_div {
@@ -49,4 +49,8 @@ mat-card {
     .container {
         display: block;
     }
+}
+
+mat-progress-bar {
+    margin: 4px 0;
 }
