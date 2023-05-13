@@ -1,21 +1,29 @@
-import {Component, OnDestroy, OnInit, ViewChild,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {NestedTreeControl} from '@angular/cdk/tree';
-import {ReportTreeService} from '@ss/common/api-reports';
-import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
-import {HttpService, LanguageService, LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ParamValue, ReportParam, ReportParamsService, ReportNode, ReportViewData} from '@ss/common/api-reports';
-import {delay, Observable, of} from 'rxjs';
-import {HttpParams} from '@angular/common/http';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {map, switchMap} from 'rxjs/operators';
-import {DeviceDetectorService} from 'ngx-device-detector';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LookupsService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import {
+    ParamValue,
+    ReportNode,
+    ReportParam,
+    ReportParamsService,
+    ReportTreeService,
+    ReportViewData
+} from '@ss/common/api-reports';
+import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
+import { HttpService, LanguageService, LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { delay, Observable, of } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
+import { FormControl, FormGroup, UntypedFormGroup } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { map, switchMap } from 'rxjs/operators';
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { Directory, Filesystem } from '@capacitor/filesystem';
+import { FileOpener } from '@capacitor-community/file-opener';
 
 
 @Component({
@@ -30,7 +38,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
         ['HTML', 'text/html'],
-        ['PDF', 'application/pdf'],
+        ['PDF', 'application/pdf']
     ]);
 
     pdfSrc: any = null;
@@ -42,7 +50,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     params: any = null;
     displayedColumns = [
         'description',
-        'valueString',
+        'valueString'
     ];
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
@@ -68,7 +76,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         private loginSrv: LoginService,
         private httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS')
+        super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
         const os = deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
     }
@@ -88,7 +96,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     loadReportTree(app: string) {
         this.reportsService
-            .getReportsTree(app)
+            .getReportsTree(app, this.shellSrv.getSearchText())
             .subscribe((res: any) => {
                 this.reportTree.data = this.parseTree(res.list, '');
             });
@@ -103,13 +111,12 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     override getPage(): Observable<ReportParam[]> {
-        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
+        return this.selectedReport? this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
             new HttpParams().set('report', `${this.app}/${this.selectedReport.parent}/${this.selectedReport.name}`)
-                .set('app', this.app)
-        );
+                .set('app', this.app)) : of([]);
     }
 
-    isReady(): Boolean {
+    isReady(): boolean {
         return this.form != null && !this.shellSrv.loading;
     }
 
@@ -119,11 +126,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.refresh(() => {
             const cc: any = {};
 
-            this.data.forEach(e =>  {
-                cc[e.name] = new UntypedFormControl(e.valueString);
+            this.data.forEach(e => {
+                cc[e.name] = new FormControl(e.valueString);
             });
-            cc['reportType'] = new UntypedFormControl('PDF');
-            this.form = new UntypedFormGroup(cc);
+            cc['reportType'] = new FormControl('PDF');
+            this.form = new FormGroup(cc);
         });
         if (this.tree) {
             this.tree.treeControl.collapseAll();
@@ -131,7 +138,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     parseValueList(valueList: { description: string }[]) {
-        return valueList?.map(x=>x.description).join(' ');
+        return valueList?.map(x => x.description).join(' ');
     }
 
     generateReport() {
@@ -140,17 +147,17 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.generating = true;
         this.uuid = this.selectedReport.name.replace('.jasper', '') + '-' + this.loginSrv.appCtx.id + '-' + new Date().getTime();
         const data: ReportViewData = {
-            app:       this.app + this.selectedReport.parent,
-            rType:     this.form.value.reportType,
-            fileName:  this.selectedReport.name.replace('.jasper', ''),
-            uuid:      this.uuid,
+            app: this.app + this.selectedReport.parent,
+            rType: this.form.value.reportType,
+            fileName: this.selectedReport.name.replace('.jasper', ''),
+            uuid: this.uuid,
             paramList: this.createList()
         };
 
         const loop: Observable<any> = this.httpSrv
             .get(`/reports/view?uuid=${this.uuid}`)
             .pipe(delay(3000),
-                switchMap(res => res['processing']? loop: of(res)));
+                switchMap(res => res['processing'] ? loop : of(res)));
 
         const obs = (this.form.value.reportType === 'HTML') ?
             this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
@@ -160,7 +167,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 return res;
             } else {
                 const obj: Blob = <Blob>res;
-                return new Blob([obj], {type: this.getMimeType()});
+                return new Blob([obj], { type: this.getMimeType() });
             }
         })).subscribe({
             next: res => {
@@ -171,8 +178,13 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     link.click();
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 } else if (this.form.value.reportType === 'PDF') {
-                    this.pdfSrc = URL.createObjectURL(res);
-                    this.leftPaneHidden = true;
+                    if (this.isAndroid) {
+                        this.leftPaneHidden = false;
+                        this.writeThenOpenFile(res).then();
+                    } else {
+                        this.pdfSrc = URL.createObjectURL(res);
+                        this.leftPaneHidden = true;
+                    }
                 } else {
                     this.htmlSrc = this.sanitizer.bypassSecurityTrustHtml(res);
                     this.leftPaneHidden = true;
@@ -182,8 +194,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 this.generating = false;
                 this.leftPaneHidden = false;
                 if (err.error) {
-                    // const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
-                    // err.error = JSON.parse(json);
+                    const json = String.fromCharCode.apply(null, new Uint8Array(err.error));
+                    err.error = JSON.parse(json);
                     throw err;
                 }
                 return loop;
@@ -211,11 +223,33 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                return { name: p.name, value: '' + this.form.controls[p.name].value }
+                return { name: p.name, value: '' + this.form.controls[p.name].value };
             });
     }
 
-    private writeThenOpenFile(fileBlob: any) {
+    private async writeThenOpenFile(fileBlob: any): Promise<void> {
+        const str = await this.blobToBse64(fileBlob);
+        const temp1 = await Filesystem.writeFile({
+            path: 'report.pdf',
+            data: str,
+            directory: Directory.Documents,
+        });
+
+        const path = await Filesystem.getUri({
+            path: 'report.pdf',
+            directory: Directory.Documents
+        });
+        return  await FileOpener.open({ filePath: path.uri });
+    }
+
+    private blobToBse64(blob: Blob): Promise<string> {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        return new Promise(resolve => {
+            reader.onloadend = () => {
+                resolve(<string>reader.result);
+            };
+        });
     }
 
     private dateToBackendStr(x: Date) {

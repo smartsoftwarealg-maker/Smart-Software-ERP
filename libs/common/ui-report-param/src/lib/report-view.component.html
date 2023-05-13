@@ -109,7 +109,7 @@
             </div>
         </div>
     </ng-template>
-    <button mat-mini-fab class="close-btn" (click)="showLeftPane()" color="warn">
+    <button mat-mini-fab class="close-btn" (click)="showLeftPane()" color="warn" *ngIf="!isAndroid">
         <i class="fas fa-times"></i>
     </button>
 </ng-template>
