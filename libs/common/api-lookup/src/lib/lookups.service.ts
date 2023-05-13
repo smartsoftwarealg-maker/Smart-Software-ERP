@@ -111,7 +111,7 @@ export class LookupsService {
     }
 
     public getRoles(): Observable<Role[]> {
-        return this.lookupCacheSrv.load<Fund>(ROLES_URL, 'roles');
+        return this.lookupCacheSrv.load<Fund>(ROLES_URL, 'roles', 500);
     }
 
     public getCCGroups(): Observable<CCGroup[]> {
@@ -127,15 +127,15 @@ export class LookupsService {
     }
 
     public getDepartments(): Observable<Department[]> {
-        return this.lookupCacheSrv.load<Department>(DEPARTMENTS_URL, 'departments')
+        return this.lookupCacheSrv.load<Department>(DEPARTMENTS_URL, 'departments');
     }
 
     public getWorkshops(): Observable<Lookup[]> {
-        return this.lookupCacheSrv.load<Lookup>(WORKSHOPS_URL, 'workshops')
+        return this.lookupCacheSrv.load<Lookup>(WORKSHOPS_URL, 'workshops');
     }
 
     public getDivisions(): Observable<Division[]> {
-        return this.lookupCacheSrv.load<Division>(DIVISIONS_URL, 'divisions')
+        return this.lookupCacheSrv.load<Division>(DIVISIONS_URL, 'divisions');
     }
 
     public getTable(url, table: string): Observable<Lookup[]> {

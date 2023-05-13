@@ -1,9 +1,9 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService, RoleService} from '@ss/common/api-lookup';
+import { LookupsService, RoleService } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
     LoginService,
@@ -26,16 +26,15 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './user-detail.component.html'
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
+    private loginSrv = inject(LoginService);
     private centerSrv = inject(CenterService);
     private roleServ = inject(RoleService);
     pwd1 = new UntypedFormControl();
     pwd2 = new UntypedFormControl();
     validId = false;
     openedPanel = -1;
-    isManager = false;
+    isManager = this.loginSrv.appCtx?.manager;
 
-    roleList: Role[] = [];
-    centerList: Role[] = [];
     userRoles: UserRole[] = [];
     userCenters: UserCenter[] = [];
 
@@ -57,39 +56,21 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private loginSrv: LoginService) {
+        public lookupsSrv: LookupsService) {
         super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
-        this.isManager = loginSrv.appCtx?.manager;
     }
 
 
     public override setupForm(b: User) {
+        this.saveButton.visible = this.isManager;
         this.curUser = b;
         this.validId = b.id > 0;
         // Make sure to update the template if you edit the configuration here
 
-        this.roleServ
-            .getList(0, 50)
-            .pipe(
-                switchMap(res => {
-                    this.roleList = res['body'];
-                    this.centerSrv.setParentId(this.loginSrv.appCtx?.company);
-                    return this.centerSrv.getList(0, 50);
-                }),
-                switchMap(res => {
-                    this.centerList = res['body'];
-                    return this.userSrv.loadCenters(b.id);
-                }),
-                switchMap((res: any) => {
-                    this.loadUserCenters(res);
-                    return this.userSrv.loadRoles(b.id);
-                })).subscribe(res => this.loadUserRoles(res));
-
         return this.formBuilder.group({
             id: [b.id],
-            fullName: [b.fullName, Validators.required],
-            description: [b.description, Validators.required],
+            fullName: [{ value: b.fullName, disabled: !this.isManager }, Validators.required],
+            description: [{ value: b.description, disabled: !this.isManager }, Validators.required],
             manager: [b.manager || false],
             responsible: [b.responsible || false],
             blocked: [b.blocked || false]
@@ -136,7 +117,6 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     private loadUserRoles(res: UserRole[]) {
         this.userRoles = res;
-        this.userRoles.forEach(e => e.description = this.roleList.find(r => r.id === e.roleId)?.description);
     }
 
     roleSelectionChanged(ev: MatSelectionListChange) {
@@ -173,7 +153,6 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     private loadUserCenters(res: UserCenter[]) {
         this.userCenters = res;
-        this.userCenters.forEach(e => e.description = this.centerList.find(r => r.id === e.centerId)?.description);
     }
 
     centerSelectionChanged(ev: MatSelectionListChange) {

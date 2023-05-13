@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {AbstractControl, UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Bank, Fund, LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Center, CenterService} from '@ss/administration/api-center';
-import {MatExpansionPanel} from '@angular/material/expansion';
-import {Observable} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
-import {UserListService} from '@ss/common/api-users';
-import {LoginService} from '@ss/common/api-common';
+import { Component } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute } from '@angular/router';
+import { AbstractControl, UntypedFormBuilder, Validators } from '@angular/forms';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { Bank, Fund, LookupsService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { Center, CenterService } from '@ss/administration/api-center';
+import { MatExpansionPanel } from '@angular/material/expansion';
+import { catchError, Observable, of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { UserListService } from '@ss/common/api-users';
+import { LoginService } from '@ss/common/api-common';
 
 
 @Component({
@@ -40,11 +40,11 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
     override preload(): Observable<any> {
         this.centerService.setParentId(this.loginSrv.appCtx?.company);
         return this.lookupsSrv.getFunds()
-            .pipe(tap(x => this.funds = x))
-            .pipe(switchMap(() => this.lookupsSrv.getBanks()))
-            .pipe(tap(x => {
-                this.banks = x;
-            }));
+            .pipe(
+                catchError(() => of([])),
+                tap(x => this.funds = x),
+                switchMap(() => this.lookupsSrv.getBanks()),
+                tap(x => this.banks = x));
     }
 
     public override setupForm(b: Center) {

@@ -38,7 +38,7 @@
                     <mat-label translate>ADMINISTRATION_ACTIVITY_CODE</mat-label>
                     <input matInput formControlName="activityCode" type="text">
                 </mat-form-field>
-                <mat-form-field id="abbreviation" class="default-20 sm-20">
+                <mat-form-field id="abbreviation" class="default-50">
                     <mat-label translate>ADMINISTRATION_ABBREVIATION</mat-label>
                     <input matInput formControlName="abbreviation" type="text">
                     <mat-error *ngIf="form.controls['abbreviation'].invalid" [translate]="{maxLen: 1}">
@@ -154,7 +154,7 @@
 
             </mat-expansion-panel>
 
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngIf="funds.length > 0">
                 <mat-expansion-panel-header>
                     <mat-panel-title translate>
                         ADMINISTRATION_PAYROLL

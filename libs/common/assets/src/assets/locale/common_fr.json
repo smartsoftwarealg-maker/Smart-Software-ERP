@@ -279,5 +279,6 @@
     "JSON_EXPORT":                "Exporter vers JSON",
     "LOAD_EXCEL":                 "Charger depuis un fichier Excel",
     "ID":                         "Mat.",
-    "AAVIEWER":                   "APPArchive"
+    "AAVIEWER":                   "APPArchive",
+    "ATTENDANCE":                 "Pointage"
 }
