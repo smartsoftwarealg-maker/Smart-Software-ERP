@@ -262,4 +262,14 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             this.releasePdf();
         }
     }
+
+    refresh(callback?: () => void) {
+        this.reportsService
+            .getReportsTree(this.app, this.shellSrv.getSearchText())
+            .subscribe((res: any) => {
+                this.reportTree.data = this.parseTree(res.list, '');
+                super.refresh(callback);
+            });
+
+    }
 }
