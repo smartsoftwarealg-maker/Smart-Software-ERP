@@ -12,14 +12,15 @@
             <ss-date-picker [formControl]="to"></ss-date-picker>
         </mat-form-field>
 
-        <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY</mat-checkbox>
+        <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
+        </mat-checkbox>
         <mat-form-field class="default-100 sm-50">
             <mat-label translate>COMMON_SEARCH</mat-label>
             <input matInput [formControl]="searchText" type="text">
         </mat-form-field>
 
-        <mat-card>
-            <div class="list_div">
+        <div class="list_div">
+            <mat-card>
                 <mat-list>
                     <mat-list-item *ngFor="let m of matters$ | async"
                                    [class.selected]="selectedMatter?.id == m.id"
@@ -28,13 +29,11 @@
                         {{ m.description }}
                     </mat-list-item>
                 </mat-list>
-            </div>
-        </mat-card>
+            </mat-card>
+        </div>
     </div>
 
     <div class="chart_container">
-        <div class="chart_div">
-            <canvas *ngFor="let c of charts" [id]="c" class="chart"></canvas>
-        </div>
+        <canvas *ngFor="let c of charts" [id]="c" class="chart"></canvas>
     </div>
 </div>
