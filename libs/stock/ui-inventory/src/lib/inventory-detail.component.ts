@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, Transaction } from "@ss/logistics/api-transaction";
 import {LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
@@ -45,21 +45,10 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
     }
 
 
-    // public override setupForm(b: Transaction) {
-    //     // Make sure to update the template if you edit the configuration here
-    //     return this.formBuilder.group({
-    //         id: [b.id],
-    //         document: [0],
-    //         centerId: [0 || this.loginSrv.appCtx.center],
-    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-    //         number: [b.number || 0],
-    //         reference: [b.reference],
-    //         referenceDocDate: [b.referenceDocDate],
-    //         header: [b.header],
-    //         footer: [b.footer],
-    //         dealer: [b.dealer || this.loginSrv.appCtx.id, Validators.required],
-    //     });
-    // }
+    override setupForm(b: Transaction): UntypedFormGroup {
+        this.shellSrv.addButton(this.invImportBtn);
+        return super.setupForm(b);
+    }
 
     protected requireAgentToImportDocument(): boolean {
         return false;

@@ -13,6 +13,8 @@ import {AssetInventoryService} from '../asset-inventory.service';
     styleUrls: ['./inventory-import.component.scss'],
 })
 export class InventoryImportComponent {
+    private injectSrv = inject(AssetInventoryService);
+    private storeNameSrv = inject(LotsService);
     private fb =  inject(UntypedFormBuilder);
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
@@ -36,8 +38,6 @@ export class InventoryImportComponent {
     });
 
     constructor(private dialogRef: MatDialogRef<InventoryImportComponent>,
-                private injectSrv: AssetInventoryService,
-                private storeNameSrv: LotsService,
                 @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
     }
 
