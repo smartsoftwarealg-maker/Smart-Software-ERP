@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import { FormGroup, UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { BaseTransactionDetailComponent, Transaction } from "@ss/logistics/api-transaction";
+import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
 import {LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
@@ -46,7 +46,9 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
 
 
     override setupForm(b: Transaction): UntypedFormGroup {
-        this.shellSrv.addButton(this.invImportBtn);
+        if (b.id) {
+            this.shellSrv.addButton(this.invImportBtn);
+        }
         return super.setupForm(b);
     }
 
