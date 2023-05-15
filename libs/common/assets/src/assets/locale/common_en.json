@@ -275,5 +275,6 @@
     "JSON_EXPORT":                "Export to JSON",
     "LOAD_EXCEL":                 "Load from an Excel file",
     "ID":                         "ID",
-    "AAVIEWER":                   "APPArchive"
+    "AAVIEWER":                   "APPArchive",
+    "ATTENDANCE":                 "Attendance"
 }

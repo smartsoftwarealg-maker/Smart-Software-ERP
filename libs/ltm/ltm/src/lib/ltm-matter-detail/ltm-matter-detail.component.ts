@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -14,7 +14,7 @@ import {filter, Observable} from 'rxjs';
     templateUrl: './ltm-matter-detail.component.html',
     styleUrls: ['./ltm-matter-detail.component.scss'],
 })
-export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> {
+export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatter> implements OnInit {
     constructor(
         public override entitySrv: LtmMatterService,
         public override shellSrv: ShellService,
@@ -52,6 +52,7 @@ export class LtmMatterDetailComponent extends BaseEntityDetailComponent<LTMMatte
         });
         this.subscriptions.push(sub);
         this.disableControls(this.router.url);
+        this.entitySrv.editable = this.isEditable;
     }
 
     private disableControls(url: string) {

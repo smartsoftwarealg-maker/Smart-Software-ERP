@@ -20,6 +20,7 @@ import { LoginService } from '@ss/common/api-common';
     styleUrls: ['./ltm-batch-input.component.scss'],
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
+    public  shellSrv  = inject(ShellService);
     private loginSrv = inject(LoginService);
     private subscriptions: Subscription[] = [];
     private _periodicity = 0;
@@ -28,6 +29,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private missingVariables: string[] = [];
     matters: LTMLineMatter[] = [];
     periods$: Observable<Lookup[]> = of([]);
+
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
         label: 'COMMON_SAVE',
@@ -57,7 +59,6 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     constructor(
         public  entitySrv: LtmBatchService,
-        public  shellSrv: ShellService,
         public  snackBarSrv: SnackBarService,
         public  route: ActivatedRoute,
         public  confirmationSrv: ConfirmationDialogService,
@@ -74,9 +75,12 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.setButtons([this.saveButton]);
         this.shellSrv.setTitle('LTM_BATCH_TESTINGS');
         this.periods$ = this.periodSrv.getList(0, 50).pipe(map(res => res.body));
+        const rights = this.shellSrv.getCurrentNodeRights();
+        if (rights.edit) {
+            this.shellSrv.setButtons([this.saveButton]);
+        }
         this.matterSrv
             .getList(0, 50)
             .subscribe(res => this.matters = res.body );

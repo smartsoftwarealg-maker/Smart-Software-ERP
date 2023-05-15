@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {map, Observable, of, zip} from 'rxjs';
-import {Data, LTMLineMatter, LTMMatterTest} from '../ltm-api';
+import { map, Observable, of, Subscription } from 'rxjs';
+import {Data, LTMLineMatter} from '../ltm-api';
 import {FormControl} from '@angular/forms';
 import {LtmLineService} from '../ltm-line.service';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
@@ -11,20 +11,23 @@ import {LtmTestingService} from '../ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
 import {LanguageService} from '@ss/common/api-common';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-ltm-report',
     templateUrl: './ltm-report.component.html',
     styleUrls: ['./ltm-report.component.scss'],
 })
-export class LtmReportComponent implements OnInit {
+export class LtmReportComponent implements OnInit, OnDestroy {
+    private subscription: Subscription = null;
     private chartList: Chart[] = null;
+    private _matters$: Observable<LTMLineMatter[]> = of([]);
+    processing = false;
     anomaly = new FormControl<boolean>(false);
+    searchText = new FormControl<string>('');
     selectedMatter: LTMLineMatter = null;
-    matters$: Observable<LTMLineMatter[]> = of([]);
-
     charts: string[] = [];
-
+    matters$ = this._matters$;
     from     = new FormControl<Date>(new Date());
     to       = new FormControl<Date>(new Date());
 
@@ -41,7 +44,15 @@ export class LtmReportComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle(this.langSrv.translate('COMMON_CHARTS'));
-        this.matters$ = this.matterSrv.getList(0, 50).pipe(map(res => res.body));
+        this._matters$ = this.matterSrv.getList(0, 50).pipe(map(res => res.body));
+        this.matters$ = this._matters$;
+        this.subscription = this.searchText
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(res => this.matters$ = this._matters$
+                .pipe(map(e => e.filter(d => !res || d.description?.toLowerCase().indexOf(res.toLowerCase()) >= 0))));
     }
 
     onMatter(m: LTMLineMatter) {
@@ -49,13 +60,16 @@ export class LtmReportComponent implements OnInit {
         this.testingSrv.setParentId(m?.centerId);
         this.testSrv.setParentId(m?.matterId);
         if (m) {
+            this.processing = true;
             this.testSrv.setParentId(m?.id);
-            zip(this.testSrv.getList(0, 100),
-                this.testingSrv.getData(m?.id, this.anomaly.value, this.from.value, this.to.value))
-                .subscribe(res => {
-                    const tests = res[0].body;
-                    const data = res[1];
-                    this.buildCharts(data, tests);
+            this.testingSrv.getData(m?.id, this.anomaly.value, this.from.value, this.to.value)
+                .subscribe({
+                    next: res => {
+                        this.buildCharts(res);
+                    }, error: err => {
+                        this.processing = false;
+                        throw err;
+                    }
                 });
         }
     }
@@ -64,14 +78,14 @@ export class LtmReportComponent implements OnInit {
         this.selectedMatter = null;
     }
 
-    private buildCharts(data: Data[], tests: LTMMatterTest[]) {
+    private buildCharts(data: Data[]) {
         this.charts = data
             .map(e => e.description)
             .filter((value, index, array) => value != null && array.indexOf(value) === index);
-        setTimeout(()=> this.onCanvas(data, tests), 1000);
+        setTimeout(() => this.onCanvas(data), 1000);
     }
 
-    onCanvas(data: Data[], tests: LTMMatterTest[]) {
+    onCanvas(data: Data[]) {
         this.chartList?.forEach(c => c?.destroy());
         this.chartList = this.charts
             .map(c => {
@@ -84,6 +98,7 @@ export class LtmReportComponent implements OnInit {
                     return null;
                 }
             });
+        this.processing = false;
     }
 
     private getTitle() {
@@ -94,6 +109,7 @@ export class LtmReportComponent implements OnInit {
         const msg = days < 1? 'HOURS': days < 32? 'DAYS' : 'MONTHS';
         return this.langSrv.translate('COMMON_' + msg);
     }
+
     private chartData(data: Data[]): ChartConfiguration {
         return {
             type: 'line' ,
@@ -146,5 +162,10 @@ export class LtmReportComponent implements OnInit {
                 }
             }
         };
+    }
+
+
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
     }
 }

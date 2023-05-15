@@ -52,14 +52,16 @@ export class LtmTestingListComponent extends BaseEntityListComponent<LTMTesting>
 
     override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.addButton(this.injectBtn);
+        if (this.editable) {
+            this.shellSrv.addButton(this.injectBtn);
+        }
         this.refresh();
     }
 
     private inject() {
         const dialogRef = this.dialog.open(LtmInjectionComponent, {
             width: '600px',
-            height: '320px',
+            height: '340px',
             disableClose: true
         });
 

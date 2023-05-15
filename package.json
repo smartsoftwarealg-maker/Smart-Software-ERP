@@ -40,6 +40,8 @@
     "@angular/platform-browser-dynamic": "15.2.8",
     "@angular/router": "15.2.8",
     "@capacitor-community/admob": "^4.2.0",
+    "@capacitor-community/file-opener": "^1.0.5",
+    "@capacitor/filesystem": "^4.1.3",
     "@muaazh/datepicker": "^13.1.2",
     "@nrwl/angular": "15.9.2",
     "angular13-organization-chart": "^2.0.1",
@@ -69,7 +71,7 @@
     "@nrwl/js": "15.9.2",
     "@nrwl/linter": "15.9.2",
     "@nrwl/nx-cloud": "16.0.4",
-    "@nrwl/workspace": "16.0.3",
+    "@nrwl/workspace": "16.1.4",
     "@schematics/angular": "15.2.6",
     "@types/jest": "29.5.1",
     "@types/node": "~18.16.1",
@@ -89,7 +91,6 @@
     "ts-jest": "29.1.0",
     "ts-node": "10.9.1",
     "tslint": "~6.1.0",
-    "typescript": "4.9.5"
+    "typescript": "4.8.2"
   }
 }
-
