@@ -16,8 +16,7 @@ export class CanActivateService implements CanActivate {
         private userSrv: UserService) {
     }
 
-    canActivate(route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    canActivate(route: ActivatedRouteSnapshot,  state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
         if (this.loginSrv.isLoggedIn) {
             return this.canRead(route);

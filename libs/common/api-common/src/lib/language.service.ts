@@ -260,7 +260,7 @@ export class LanguageService {
             throw new Error('Invalid Config, Language name cannot be null or empty');
         }
         if (conf.dir !== 'rtl' && conf.dir !== 'ltr') {
-            throw new Error("Invalid Config, Language direction must be 'rtl' or 'ltr'");
+            throw new Error('Invalid Config, Language direction must be \'rtl\' or \'ltr\'');
         }
         const lang: Language = {
             name: conf.name,

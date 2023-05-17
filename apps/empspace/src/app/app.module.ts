@@ -10,16 +10,18 @@ import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+    AUTH_2FA_URL,
     CanActivateService,
     INDEX_PAGE_URL,
     LanguageService,
     LOGIN_URL, LoginService,
     LoginType,
-    MAIN_PAGE_URL
+    MAIN_PAGE_URL, UPDATE_PASSWORD_URL
 } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {EMPSPACE_APP_URL} from './common';
 import {MainPageComponent} from '@ss/common/ui-main-page';
+import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
 
 const routes: Routes = [
     {
@@ -39,6 +41,8 @@ const routes: Routes = [
             { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }
         ]
     },
+    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
+    { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];

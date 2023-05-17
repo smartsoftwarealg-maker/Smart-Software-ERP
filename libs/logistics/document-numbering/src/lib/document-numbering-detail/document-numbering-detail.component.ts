@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -16,6 +16,8 @@ import {LoginService} from '@ss/common/api-common';
     styleUrls: ['./document-numbering-detail.component.scss']
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {
+    private definitionSrv = inject(DefinitionLookupService);
+    private loginSrv  = inject(LoginService);
     documentAutoCompleteModel = new DefaultAutoCompleteModel(this.definitionSrv);
 
     constructor(
@@ -24,9 +26,7 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public definitionSrv: DefinitionLookupService,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(docSrv,
             shellSrv,
             snackBarSrv,

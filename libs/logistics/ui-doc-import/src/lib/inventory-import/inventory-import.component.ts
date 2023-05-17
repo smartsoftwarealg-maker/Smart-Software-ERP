@@ -1,19 +1,21 @@
 import { Component, inject, Inject, Input } from '@angular/core';
-import {finalize, Subscription} from 'rxjs';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {HttpEventType} from '@angular/common/http';
-import {InventoryImportService} from '../inventory-import.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LotsService, Store} from '@ss/common/api-lookup';
+import { finalize, Subscription } from 'rxjs';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { HttpEventType } from '@angular/common/http';
+import { InventoryImportService } from '../inventory-import.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { LotsService, Store } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-inventory-import',
     templateUrl: './inventory-import.component.html',
-    styleUrls: ['./inventory-import.component.scss'],
+    styleUrls: ['./inventory-import.component.scss']
 })
 export class InventoryImportComponent {
     private fb = inject(UntypedFormBuilder);
+    private injectSrv = inject(InventoryImportService);
+    private storeNameSrv = inject(LotsService);
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -31,22 +33,21 @@ export class InventoryImportComponent {
     processing = false;
 
     form = this.fb.group({
-        id:        [this.data.transactId,  Validators.required],
-        store:     [0,                     Validators.required],
-        reference: ['',                    Validators.required],
-        qty:       [0,                     Validators.required],
-        price:     ['',                    Validators.required],
+        id:        [0,  Validators.required],
+        store:     [0,  Validators.required],
+        reference: ['', Validators.required],
+        qty:       [0,  Validators.required],
+        price:     ['', Validators.required]
     });
 
     constructor(private dialogRef: MatDialogRef<InventoryImportComponent>,
-                private injectSrv: InventoryImportService,
-                private storeNameSrv: LotsService,
-                @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
+        @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
+        this.form.controls['id'].setValue(data.transactId);
     }
 
 
     onFileSelected(files: any) {
-        const file:File = files[0];
+        const file: File = files[0];
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
@@ -69,7 +70,7 @@ export class InventoryImportComponent {
                         throw err;
                     },
                     complete: () => {
-                        this.dialogRef.close( { count: 1 });
+                        this.dialogRef.close({ count: 1 });
                         this.processing = false;
                     }
                 });
@@ -89,6 +90,7 @@ export class InventoryImportComponent {
     public cancel() {
         this.dialogRef.close();
     }
+
     onChange(e: any) {
         this.fileName = e[0]?.name;
     }

@@ -1,32 +1,33 @@
-import {Component} from '@angular/core';
-import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
-import {LoginService} from "@ss/common/api-common";
-import {LookupsService, PayModeService} from "@ss/common/api-lookup";
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ActivatedRoute, Data, Params} from "@angular/router";
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {PaymentsDetailService} from "../services/payments-detail.service";
-import {BankService} from "@ss/administration/api-bank";
-import {DefaultAutoCompleteModel} from "@ss/common/ui-auto-complete";
-import {Payment} from "@ss/logistics/api-common";
-import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
+import { Component, inject } from '@angular/core';
+import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import {LoginService} from '@ss/common/api-common';
+import {LookupsService, PayModeService} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute} from '@angular/router';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {PaymentsDetailService} from '../services/payments-detail.service';
+import {BankService} from '@ss/administration/api-bank';
+import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {Payment} from '@ss/logistics/api-common';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 
 @Component({
-  selector: 'ss-payments-detail',
-  templateUrl: './payments-detail.component.html',
-  styleUrls: ['./payments-detail.component.scss']
+    selector: 'ss-payments-detail',
+    templateUrl: './payments-detail.component.html',
+    styleUrls: ['./payments-detail.component.scss']
 })
 export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> {
+    private typeSrv  = inject(PayModeService);
+    private loginSrv  = inject(LoginService);
+    private bankSrv  = inject(BankService);
+    private agentService = inject(AgentService);
+
     public agentAutoCompleteModel    = new AgentLookupModel(this.agentService);
     public bankAutoCompleteModel    = new DefaultAutoCompleteModel(this.bankSrv);
     public modeAutoCompleteModel    = new DefaultAutoCompleteModel(this.typeSrv);
 
     constructor(
-        private agentService: AgentService,
-        private typeSrv: PayModeService,
-        private loginSrv: LoginService,
-        private bankSrv: BankService,
         public paymentSrv: PaymentsDetailService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -43,7 +44,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
                 if (data['agents']) {
                     this.agentService.setURL(data['agents']);
                 }
-            })
+            });
     }
 
     override setupForm(a: Payment): UntypedFormGroup {
@@ -63,7 +64,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             debit: [{ value: db, disabled: cr > 0.000001}, Validators.required],
             credit: [{ value: cr, disabled: db > 0.000001}, Validators.required],
             mode: [a.mode || 2, Validators.required],
-        })
+        });
     }
 
     override readForm(): Payment {
@@ -92,6 +93,6 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         } else {
             this.form.controls[ctrl].enable();
         }
-     }
+    }
 
 }

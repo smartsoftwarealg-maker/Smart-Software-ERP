@@ -186,6 +186,31 @@ export class HttpService {
                 { responseType: 'text', headers: httpHeaders }
             );
     }
+    public putHTML(url: string, data?) {
+        const httpHeaders = new HttpHeaders()
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Authorization', this.getAuthToken());
+
+        return this
+            .httpClient
+            .put(this.baseUrl + url,
+                data,
+                { responseType: 'text', headers: httpHeaders }
+            );
+    }
+
+    public putBlob(url: string, data?) {
+        const httpHeaders = new HttpHeaders()
+            .set('Access-Control-Allow-Origin', '*')
+            .set('Authorization', this.getAuthToken());
+
+        return this
+            .httpClient
+            .post(this.baseUrl + url,
+                data,
+                { responseType: 'arraybuffer', headers: httpHeaders }
+            );
+    }
 
     public upload(url: string, fd: FormData): Observable<HttpEvent<any>> {
         const extraHeaders = {

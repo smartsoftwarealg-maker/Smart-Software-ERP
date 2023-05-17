@@ -12,6 +12,8 @@ export const INDEX_PAGE_URL = 'index';
 export const MAIN_PAGE_URL = 'app';
 export const PROFILE_PAGE_URL = 'profile';
 export const LOGIN_URL = 'login';
+export const UPDATE_PASSWORD_URL = 'update-password';
+export const AUTH_2FA_URL = 'auth-2fa';
 
 export const LIST_URL = '';
 

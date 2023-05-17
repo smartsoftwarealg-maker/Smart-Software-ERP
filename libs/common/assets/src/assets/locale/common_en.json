@@ -276,5 +276,15 @@
     "LOAD_EXCEL":                 "Load from an Excel file",
     "ID":                         "ID",
     "AAVIEWER":                   "APPArchive",
-    "ATTENDANCE":                 "Attendance"
+    "ATTENDANCE":                 "Attendance",
+    "PASSWORD_SETTING":           "Password setting",
+    "SEND_CODE":                  "Send verification code",
+    "2FA_SETUP":                  "Two factor authentication setup",
+    "VERIFY_CODE":                "Verify code",
+    "CODE_SENT":                  "A verification code has been sent to the above mail.\nPlease, enter the received code and click 'verify' button.",
+    "VERIFICATION_CODE":          "Your verification code",
+    "CODE_EXPIRED":               "The specified code has expired. Please, regenerate a new code",
+    "INVALID_CODE":               "The code is not valid",
+    "CONTINUE":                   "Continue",
+    "CODE_VERIFIED":              "The code has been successfully verified. Click 'Continue' button to continue"
 }
