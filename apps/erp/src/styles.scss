@@ -337,7 +337,7 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
 }
 
 .theme-1-bg {
-    background-color: #EEEEEE;
+    background-color: #FEFEFE;
 }
 
 .theme-1 {
@@ -355,19 +355,8 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-dark-theme((
-            color: (
-                primary: mat.define-palette($ss-white, 500, 100, 700, 500),
-                accent: $theme-1-accent,
-                warn: $theme-1-warn
-            )
-        ));
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include mat.all-component-colors($reverse-theme-p);
-
-        background-color: map-get($theme-1-primary, default) !important;
-        color: map-get($reverse-color-p, default) !important;
+        background-color: map-get($theme-1-primary, default);
+        color: white;
 
         // override mat-tree background to fix a bug
         .mat-tree {
@@ -383,35 +372,13 @@ $theme-1-warn:    mat.define-palette(mat.$red-palette);
     }
 
     .b-accent {
-        $reverse-theme-a: mat.define-dark-theme((
-            color: (
-                primary: $theme-1-primary,
-                accent: mat.define-palette($ss-white),
-                warn: $theme-1-warn
-            )
-        ));
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include mat.all-component-colors($reverse-theme-a);
-
-        background-color: map-get($theme-1-accent, default)!important;
-        color: map-get($reverse-color-a, default) !important;
+        background-color: map-get($theme-1-accent, default);
+        color: white;
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-dark-theme((
-            color: (
-                primary: $theme-1-primary,
-                accent: $theme-1-accent,
-                warn: mat.define-palette($ss-white)
-            )
-        ));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include mat.all-component-colors($reverse-theme-w);
-
-        background-color: map-get($theme-1-warn, default) !important;
-        color: map-get($reverse-color-w, default) !important;
+        background-color: map-get($theme-1-warn, default);
+        color: white;
     }
 
     .b-warn-expansion-panel mat-expansion-panel-header{
@@ -439,7 +406,7 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 }
 
 .theme-2-bg {
-    background-color: #EEEEEE;
+    background-color: #FEFEFE;
 }
 
 .theme-2 {
@@ -457,19 +424,8 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-dark-theme((
-            color: (
-                primary: mat.define-palette($ss-white),
-                accent: $theme-2-accent,
-                warn: $theme-2-warn
-            )
-        ));
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include mat.all-component-colors($reverse-theme-p);
-
         background-color: map-get($theme-2-primary, default);
-        color: map-get($reverse-color-p, default);
+        color: white;
 
         // override mat-tree background to fix a bug
         .mat-tree {
@@ -484,37 +440,14 @@ $theme-2-warn:    mat.define-palette(mat.$red-palette);
 
     }
 
-
     .b-accent {
-        $reverse-theme-a: mat.define-dark-theme((
-            color: (
-                primary: $theme-2-primary,
-                accent: mat.define-palette($ss-white),
-                warn: $theme-2-warn
-            )
-        ));
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include mat.all-component-colors($reverse-theme-a);
-
         background-color: map-get($theme-2-accent, default);
-        color: map-get($reverse-color-a, default);
+        color: white;
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-dark-theme((
-            color: (
-                primary: $theme-2-primary,
-                accent: $theme-2-accent,
-                warn: mat.define-palette($ss-white)
-            )
-        ));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include mat.all-component-colors($reverse-theme-w);
-
         background-color: map-get($theme-2-warn, default);
-        color: map-get($reverse-color-w, default);
+        color: white;
     }
     .b-warn-expansion-panel mat-expansion-panel-header{
         @extend .b-warn;
@@ -561,19 +494,8 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-light-theme((
-            color: (
-                primary: mat.define-palette($ss-black),
-                accent: $theme-3-accent,
-                warn: $theme-3-warn
-            )
-        ));
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include mat.all-component-colors($reverse-theme-p);
-
         background-color: map-get($theme-3-primary, default);
-        color: map-get($reverse-color-p, default);
+        color: black;
 
         // override mat-tree background to fix a bug
         .mat-tree {
@@ -590,35 +512,13 @@ $theme-3-warn:    mat.define-palette(mat.$red-palette);
 
 
     .b-accent {
-        $reverse-theme-a: mat.define-light-theme((
-            color: (
-                primary: $theme-3-primary,
-                accent: mat.define-palette($ss-black),
-                warn: $theme-3-warn
-            )
-        ));
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include mat.all-component-colors($reverse-theme-a);
-
         background-color: map-get($theme-3-accent, default);
-        color: map-get($reverse-color-a, default);
+        color: black;
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-light-theme((
-            color: (
-                primary: $theme-3-primary,
-                accent: $theme-3-accent,
-                warn: mat.define-palette($ss-black)
-            )
-        ));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include mat.all-component-colors($reverse-theme-w);
-
         background-color: map-get($theme-3-warn, default);
-        color: map-get($reverse-color-w, default);
+        color: black;
     }
     .b-warn-expansion-panel mat-expansion-panel-header{
         @extend .b-warn;
@@ -664,19 +564,8 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
     @include datepicker.theme($theme);
 
     .b-primary {
-        $reverse-theme-p: mat.define-light-theme((
-            color: (
-                primary: mat.define-palette($ss-black),
-                accent: $theme-4-accent,
-                warn: $theme-4-warn
-            )
-        ));
-        $reverse-color-p: map-get($reverse-theme-p, primary);
-
-        @include mat.all-component-colors($reverse-theme-p);
-
         background-color: map-get($theme-4-primary, default);
-        color: map-get($reverse-color-p, default);
+        color: black;
 
         // override mat-tree background to fix a bug
         .mat-tree {
@@ -693,35 +582,13 @@ $theme-4-warn:    mat.define-palette(mat.$red-palette);
 
 
     .b-accent {
-        $reverse-theme-a: mat.define-light-theme((
-            color: (
-                primary: $theme-4-primary,
-                accent: mat.define-palette($ss-black),
-                warn: $theme-4-warn
-            )
-        ));
-        $reverse-color-a: map-get($reverse-theme-a, accent);
-
-        @include mat.all-component-colors($reverse-theme-a);
-
         background-color: map-get($theme-4-accent, default);
-        color: map-get($reverse-color-a, default);
+        color: black;
     }
 
     .b-warn {
-        $reverse-theme-w: mat.define-light-theme((
-            color: (
-                primary: $theme-4-primary,
-                accent: $theme-4-accent,
-                warn: mat.define-palette($ss-black)
-            )
-        ));
-        $reverse-color-w: map-get($reverse-theme-w, warn);
-
-        @include mat.all-component-colors($reverse-theme-w);
-
         background-color: map-get($theme-4-warn, default);
-        color: map-get($reverse-color-w, default);
+        color: black;
     }
     .b-warn-expansion-panel mat-expansion-panel-header{
         @extend .b-warn;
@@ -982,4 +849,40 @@ button {
 mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
     width: 100%;
     overflow-x: clip;
+}
+
+
+
+// Calendar fix
+
+.mat-calendar-previous-button {
+    border: none !important;
+    background: none !important;
+}
+.mat-calendar-previous-button:before{
+    font-family: "Font Awesome 6 Pro";
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    content:"\f053" !important;
+}
+.mat-calendar-previous-button:after {
+    border: none !important;
+}
+
+.mat-calendar-next-button {
+    border: none !important;
+    background: none !important;
+}
+.mat-calendar-next-button:before{
+    font-family: "Font Awesome 6 Pro";
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    content:"\f054" !important;
+}
+.mat-calendar-next-button:after {
+    border: none !important;
 }
