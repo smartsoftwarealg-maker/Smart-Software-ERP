@@ -19,6 +19,9 @@ export class ReportService implements CanDeactivate<ReportViewComponent> {
     postBlob(url: string, data?) {
         return this.http.postBlob(url, data);
     }
+    putBlob(url: string, data?) {
+        return this.http.putBlob(url, data);
+    }
 
     canDeactivate(component: ReportViewComponent,
         currentRoute: ActivatedRouteSnapshot,

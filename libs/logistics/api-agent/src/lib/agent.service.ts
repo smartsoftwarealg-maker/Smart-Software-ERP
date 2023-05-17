@@ -6,7 +6,6 @@ import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
 
-
 @Injectable({
     providedIn: 'root'
 })

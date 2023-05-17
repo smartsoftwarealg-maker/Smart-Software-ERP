@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { LoginService } from './login.service';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { HttpService } from './http.service';
-import { PROFILE_PAGE_URL, LOGIN_URL } from './constants';
+import { PROFILE_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL } from './constants';
 import { UrlTree } from '@angular/router';
 import { UserRightsService } from './user-rights.service';
 
@@ -21,11 +21,22 @@ export class CanActivateService {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+        console.log('**************************************', this.loginSrv.appCtx.hasPassword);
         return this.httpSrv
             .init()
-            .pipe(switchMap(_ => this.loginSrv.reload()),
-                map(_ =>  (this.loginSrv.isLoggedIn && this.loginSrv.appCtx !== null && this.canRead(route)) ||
-                                  this.router.createUrlTree(['/' + LOGIN_URL])));
+            .pipe(
+                switchMap(() => this.loginSrv.reload()),
+                switchMap(() => this.httpSrv.get<{'verify': boolean}>('/verified')),
+                map(res => {
+                    if (res.verify && !this.loginSrv.appCtx.verified) {
+                        return this.loginSrv.appCtx.hasPassword ?
+                            this.router.createUrlTree(['/' + AUTH_2FA_URL]) :
+                            this.router.createUrlTree(['/' + UPDATE_PASSWORD_URL]);
+                    }
+                    return (this.loginSrv.isLoggedIn && this.loginSrv.appCtx !== null && this.canRead(route)) ||
+                            this.router.createUrlTree(['/' + LOGIN_URL]);
+                })
+            );
     }
 
     private canRead(route: ActivatedRouteSnapshot): boolean {

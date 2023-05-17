@@ -80,6 +80,7 @@
             "@ss/assets-component": ["libs/assets-component/src/index.ts"],
             "@ss/attendance": ["libs/attendance/src/index.ts"],
             "@ss/attendance/assets": ["libs/attendance/assets/src/index.ts"],
+            "@ss/auth-2fa": ["libs/auth-2fa/src/index.ts"],
             "@ss/budget/assets": ["libs/budget/assets/src/index.ts"],
             "@ss/budget/budget": ["libs/budget/budget/src/index.ts"],
             "@ss/budget/budget-groups": [

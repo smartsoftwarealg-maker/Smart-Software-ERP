@@ -61,6 +61,21 @@ export interface AppContext {
     accPeriod?: number;
     params: Map<string, string>;
     description?: string;
+    verified: boolean;
+    email?: string;
+}
+
+export interface ESender {
+    email: string;
+    pwd: string;
+    to: string;
+    subject: string;
+    body: string;
+}
+
+export interface Credentials {
+    username: string;
+    password: string;
 }
 
 export interface LoginInfo {

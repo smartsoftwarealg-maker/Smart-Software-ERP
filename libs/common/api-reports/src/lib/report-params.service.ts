@@ -16,10 +16,10 @@ export class ReportParamsService extends BaseEntityService<ReportParam> {
 
     viewHTML(data: ReportViewData): Observable<any> {
         return this.httpSrv
-            .postHTML('/reports/view', data);
+            .putHTML('/reports/view', data);
     }
 
     viewPDF(data: ReportViewData): Observable<any> {
-        return this.httpSrv.postBlob('/reports/view', data);
+        return this.httpSrv.putBlob('/reports/view', data);
     }
 }

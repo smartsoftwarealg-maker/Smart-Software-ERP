@@ -10,10 +10,11 @@ import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonUiMainPageModule } from '@ss/common/ui-main-page';
-import {LOGIN_URL, MAIN_PAGE_URL} from '@ss/common/api-common';
+import { AUTH_2FA_URL, LOGIN_URL, MAIN_PAGE_URL, UPDATE_PASSWORD_URL } from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {appRoutes} from '../environments/environment';
+import { Auth2FAConfirmationComponent, PasswordUpdateComponent } from '@ss/auth-2fa';
 
 const routes: Routes = [
     {
@@ -21,6 +22,8 @@ const routes: Routes = [
         component: ShellComponent,
         children: appRoutes
     },
+    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
+    { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];

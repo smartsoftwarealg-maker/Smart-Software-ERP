@@ -201,6 +201,16 @@ export class HttpService {
                 data,
                 {responseType: 'text', headers: HttpService.getHeaders()});
     }
+    public putHTML(url: string, data?: any | null, timeout = 0): Observable<any> {
+        if (this.baseUrl === undefined) {
+            throw new Error('HTTP SERVICE NOT READY');
+        }
+        return this
+            .httpClient
+            .put(this.baseUrl + url,
+                data,
+                {responseType: 'text', headers: HttpService.getHeaders()});
+    }
 
     public put(url: string, data?: any | null, timeout = 0): Observable<any> {
         if (this.baseUrl === undefined) {
@@ -247,6 +257,15 @@ export class HttpService {
         return this
             .httpClient
             .post(this.baseUrl + url,
+                data,
+                {responseType: 'arraybuffer', headers: HttpService.getHeaders()}
+            );
+    }
+
+    public putBlob(url: string, data?: any | null, timeout = 600000): Observable<ArrayBuffer> {
+        return this
+            .httpClient
+            .put(this.baseUrl + url,
                 data,
                 {responseType: 'arraybuffer', headers: HttpService.getHeaders()}
             );

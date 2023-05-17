@@ -280,5 +280,15 @@
     "LOAD_EXCEL":                 "Charger depuis un fichier Excel",
     "ID":                         "Mat.",
     "AAVIEWER":                   "APPArchive",
-    "ATTENDANCE":                 "Pointage"
+    "ATTENDANCE":                 "Pointage",
+    "PASSWORD_SETTING":           "Réglage du mot de passe",
+    "SEND_CODE":                  "Envoyer le code de vérification",
+    "2FA_SETUP":                  "Configuration de l'authentification à deux facteurs",
+    "VERIFY_CODE":                "Vérifier le code",
+    "CODE_SENT":                  "Un code de vérification a été envoyé à l'e-mail ci-dessus.\nVeuillez saisir le code reçu et cliquer sur le bouton \"vérifier\".",
+    "VERIFICATION_CODE":          "Votre code de vérification",
+    "CODE_EXPIRED":               "Le code spécifié a expiré. Veuillez régénérer un nouveau code",
+    "INVALID_CODE":               "Le code n'est pas valide",
+    "CONTINUE":                   "Continuer",
+    "CODE_VERIFIED":              "Le code a été vérifié avec succès. Cliquez sur le bouton 'Continuer' pour continuer"
 }

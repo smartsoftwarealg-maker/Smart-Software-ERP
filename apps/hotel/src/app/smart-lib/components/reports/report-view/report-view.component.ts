@@ -166,9 +166,9 @@ export class ReportViewComponent implements OnInit, OnDestroy {
         let obsrv;
 
         if (this.reportType === 'HTML') {
-            obsrv = this.httpSrv.postHTML('/reports/view', data);
+            obsrv = this.httpSrv.putHTML('/reports/view', data);
         } else {
-            obsrv = this._service.postBlob('/reports/view', data);
+            obsrv = this._service.putBlob('/reports/view', data);
         }
 
         obsrv.pipe(map(res => {

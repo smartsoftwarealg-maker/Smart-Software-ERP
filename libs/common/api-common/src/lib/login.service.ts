@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
-import {AppContext, LoginInfo, UserInfo} from './models';
+import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
 import {DecService} from './dec.service';
 import {CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL} from './constants';
 import {HttpService} from './http.service';
@@ -88,25 +88,26 @@ export class LoginService {
         return this.appCtx && this.appCtx.agentId !== null;
     }
 
+
     public reload(): Observable<AppContext> {
         this.httpSrv.init();
         return  (this.appCtx)? of (this.appCtx) :
             this.httpSrv.getAuthToken()?
-            this.httpSrv
-                .get<LoginInfo>('/ctx')
-                .pipe(
-                    tap(info => {
-                        this.httpSrv.updateAuthToken(info.jwt);
-                        this.appCtx = info.ctx;
-                    }),
-                    map(() => this.appCtx),
-                    catchError(err => {
-                        if (err.status !== 401) {
-                            throw err;
-                        }
-                        return of (null);
-                    })
-                ) : of(null);
+                this.httpSrv
+                    .get<LoginInfo>('/ctx')
+                    .pipe(
+                        tap(info => {
+                            this.httpSrv.updateAuthToken(info.jwt);
+                            this.appCtx = info.ctx;
+                        }),
+                        map(() => this.appCtx),
+                        catchError(err => {
+                            if (err.status !== 401) {
+                                throw err;
+                            }
+                            return of (null);
+                        })
+                    ) : of(null);
     }
 
     public updateCtx(info: LoginInfo) {
@@ -138,11 +139,11 @@ export class LoginService {
 
     public setLanguage(lang: string): Observable<any> {
         return this.appCtx ?
-        this.httpSrv.put('/lang?lang=' + lang)
-            .pipe(tap((info: LoginInfo) => {
-                this.httpSrv.updateAuthToken(info.jwt);
-                this.appCtx = info.ctx;
-            })) : of(null);
+            this.httpSrv.put('/lang?lang=' + lang)
+                .pipe(tap((info: LoginInfo) => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                })) : of(null);
     }
 
     public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
@@ -175,6 +176,20 @@ export class LoginService {
             });
     }
 
+    public refresh(cr: Credentials): Observable<LoginInfo> {
+        const url =
+            this.customerLogin === LoginType.CUSTOMER ? '/customers/login' :
+                this.customerLogin === LoginType.USER ? '/login' : '/persons/login';
+
+        return this.httpSrv
+            .doLogin(url, cr)
+            .pipe(
+                tap(info => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                }));
+    }
+
     public anonymous() {
         this.wrongData = false;
         this.licenseErrorType = null;
@@ -182,15 +197,15 @@ export class LoginService {
             .httpSrv
             .init()
             .pipe(switchMap(_ => this.httpSrv.anonymous()),
-                  tap((info: LoginInfo) => {
-                      this.httpSrv.updateAuthToken(info.jwt);
-                      this.appCtx = info.ctx;
-                  }),
+                tap((info: LoginInfo) => {
+                    this.httpSrv.updateAuthToken(info.jwt);
+                    this.appCtx = info.ctx;
+                }),
                 catchError(err => {
                     this.connectionError = err.status === 0;
                     this.wrongData = !this.connectionError;
                     throw err;
-                }))
+                }));
     }
 
     public userOrCustomerLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
@@ -218,11 +233,11 @@ export class LoginService {
     }
 
 
-    public agentLogin(url: string, user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
+    public agentLogin(url: string, credential: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.licenseErrorType = null;
         this.wrongData = false;
         this.httpSrv
-            .doLogin(url, user)
+            .doLogin(url, credential)
             .pipe(
                 tap(info => {
                     this.httpSrv.updateAuthToken(info.jwt);
@@ -253,7 +268,7 @@ export class LoginService {
                     }
                 }
             }
-        );
+            );
     }
 
 
@@ -291,5 +306,13 @@ export class LoginService {
     }
     ctx(): Observable<AppContext> {
         return this.httpSrv.get<any>('/ctx').pipe(map(res => res['ctx']));
+    }
+
+    sendCode(code: number, message: ESender): Observable<any> {
+        return this.httpSrv.post('/email', message);
+    }
+
+    setVerified(): Observable<any> {
+        return this.httpSrv.post('/verified');
     }
 }
