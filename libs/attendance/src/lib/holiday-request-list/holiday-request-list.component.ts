@@ -18,7 +18,7 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
         'typeDescription',
         'from',
         'to',
-        'statusDescription'
+        'docDescription'
     ];
 
     constructor(

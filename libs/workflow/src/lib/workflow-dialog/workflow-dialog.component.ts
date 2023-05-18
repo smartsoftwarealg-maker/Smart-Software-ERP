@@ -13,6 +13,7 @@ type MBData = {
     payOrderId?: number;
     assetRecepId?: number;
     assetAppointmentId?: number;
+    holidayRequestId?: number;
 };
 
 @Component({
@@ -43,6 +44,7 @@ export class WorkflowDialogComponent implements OnInit {
             assetRecepId: this.data.assetRecepId,
             payOrderId: this.data.payOrderId,
             transacId: this.data.transacId,
+            holidayRequestId: this.data.holidayRequestId,
             assetAppointmentId: this.data.assetAppointmentId,
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,

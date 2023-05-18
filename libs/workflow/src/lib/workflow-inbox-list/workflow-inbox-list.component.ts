@@ -70,6 +70,7 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
         case 531:  return `/app/assets-app/asset-receptions/${targetId}`;
         case 767:  return `/app/assets-app/inventory-entries/${targetId}`;
         case 1010: return `/app/assets-app/asset-appointments/${targetId}`;
+        case 3000: return `/app/hr/holiday-requests/${targetId}`;
         default:   return '.';
         }
     }
