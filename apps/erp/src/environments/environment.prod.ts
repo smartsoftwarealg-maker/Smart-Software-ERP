@@ -95,6 +95,7 @@ export const langAssets = [
     ['assets/locale/remuneration_', 'REMUN_'],
     ['assets/locale/sales_', 'SALES_'],
     ['assets/locale/logistics_', 'LOGISTICS_'],
+    ['assets/locale/att_', 'ATT_'],
     ['assets/locale/purchases_', 'PURCHASES_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/webarch_', 'WAR_'],
@@ -103,6 +104,7 @@ export const langAssets = [
     ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
     ['assets/locale/ltm_', 'LTM_'],
+    ['assets/locale/att_', 'ATT_'],
     ['assets/locale/budget_', 'BUD_']
 ];
 
