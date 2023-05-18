@@ -69,11 +69,12 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
         return this.formBuilder.group({
             id: [b.id],
-            fullName: [{ value: b.fullName, disabled: !this.isManager }, Validators.required],
+            fullName:    [{ value: b.fullName, disabled: !this.isManager }, Validators.required],
             description: [{ value: b.description, disabled: !this.isManager }, Validators.required],
-            manager: [b.manager || false],
+            manager:     [b.manager || false],
             responsible: [b.responsible || false],
-            blocked: [b.blocked || false]
+            blocked:     [b.blocked || false],
+            email:       [b.email, Validators.email]
         });
     }
 

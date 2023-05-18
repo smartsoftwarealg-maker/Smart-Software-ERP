@@ -40,6 +40,7 @@ export interface User {
     responsible?: boolean;
     password?: string;
     androidLicense?: string;
+    email?: string;
 }
 
 export interface AppContext {

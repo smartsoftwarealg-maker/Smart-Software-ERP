@@ -1,14 +1,14 @@
 {
     "version": "3.0",
-    "protocol0": "https://",
-    "protocol": "http://",
-    "defaultUrl0": "smartsoft.hopto.org:9999",
-    "defaultUrl": "localhost:8080",
+    "protocol": "https://",
+    "protocol0": "http://",
+    "defaultUrl": "smartsoft.hopto.org:9999",
+    "defaultUrl0": "localhost:8080",
     "urlRules": [
         {
             "frontend": "?",
-            "backend0": "smartsoft.hopto.org:4430",
-            "backend": "localhost:8080"
+            "backend": "smartsoft.hopto.org:4430",
+            "backend0": "localhost:8080"
         }
     ],
     "useBrowserLanguage": true,
