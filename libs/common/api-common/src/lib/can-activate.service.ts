@@ -21,15 +21,14 @@ export class CanActivateService {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
         Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-        console.log('**************************************', this.loginSrv.appCtx.hasPassword);
         return this.httpSrv
             .init()
             .pipe(
                 switchMap(() => this.loginSrv.reload()),
                 switchMap(() => this.httpSrv.get<{'verify': boolean}>('/verified')),
                 map(res => {
-                    if (res.verify && !this.loginSrv.appCtx.verified) {
-                        return this.loginSrv.appCtx.hasPassword ?
+                    if (res.verify && !this.loginSrv?.appCtx?.verified) {
+                        return this.loginSrv?.appCtx?.hasPassword ?
                             this.router.createUrlTree(['/' + AUTH_2FA_URL]) :
                             this.router.createUrlTree(['/' + UPDATE_PASSWORD_URL]);
                     }

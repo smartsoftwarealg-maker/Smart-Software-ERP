@@ -8,7 +8,7 @@ export const INBOX_URL  = '/workflow/inbox';
 
 export interface DocStatus {
     id: number;
-    description: String;
+    description: string;
     msgLevel: number;
     isFinal: boolean;
 }
@@ -24,6 +24,7 @@ export interface MailBox {
     payOrderId?: number;
     assetRecepId?: number;
     assetAppointmentId?: number;
+    holidayRequestId?: number;
     senderName?: string;
     receiverName?: string;
     message?: string;
@@ -55,4 +56,6 @@ export interface Inbox {
     date: Date,
     creator: string;
     docStatus: string;
+    documentId: number;
+    targetId: number;
 }

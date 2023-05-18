@@ -1,25 +1,20 @@
-import { Component, inject, OnInit, ViewChild } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { FormGroup, UntypedFormBuilder } from '@angular/forms';
 import {CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
-import {DatePipe} from '@angular/common';
+import {LoginService, User} from '@ss/common/api-common';
 import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
-import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
-import {PurchaseOrderLinesListComponent} from './purchase-order-lines-list.component';
 import {SalesContractService} from '@ss/logistics/contracts';
-import {WorkflowDialogComponent} from '@ss/workflow';
 
 @Component({
     selector: 'ss-ui-order-detail',
@@ -40,7 +35,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
         label: 'LOGISTICS_IMPORT_CONTRACT',
         visible: true,
         click: () => this.importContract(),
-    }
+    };
 
     // private sendBtn: ToolbarButton = {
     //     disabled: false,
@@ -55,7 +50,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
     constructor(public orderService: PurchaseOrderService,
@@ -73,7 +68,12 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
+    }
+
+    override setupForm(b: Transaction): FormGroup<any> {
+        this.projectSrv.setParentId(b?.agent || 0);
+        return super.setupForm(b);
     }
 
     // public override setupForm(form: Transaction) {

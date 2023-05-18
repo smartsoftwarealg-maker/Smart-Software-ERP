@@ -204,6 +204,7 @@ export const HR_PERSON_LIST_URL = 'stats';
 export const HR_EMPLOYMENT_TYPE_URL = 'employmentType';
 export const HR_SUSPENSION_REASON_URL = 'suspensionReason';
 export const HR_DIVISIONS_URL = 'divisions';
+export const HR_HOLIDAY_REQUEST_URL = 'holiday-requests';
 export const HR_DEPARTMENTS_URL = 'departments';
 
 // Payroll
@@ -503,6 +504,7 @@ export const ABS_HR_SUSPENSION_REASON_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR
 export const ABS_HR_DIVISIONS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_DIVISIONS_URL].join('/');
 export const ABS_HR_DEPARTMENTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL,  HR_DEPARTMENTS_URL].join('/');
 export const ABS_HR_PERSON_LIST_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PERSON_LIST_URL].join('/');
+export const ABS_HR_HOLIDAY_REQUEST_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_HOLIDAY_REQUEST_URL].join('/');
 export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_HR_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, DASHBOARD_URL].join('/');
 

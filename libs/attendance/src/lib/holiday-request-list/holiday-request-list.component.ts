@@ -17,7 +17,8 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
     displayedColumns = [
         'typeDescription',
         'from',
-        'to'
+        'to',
+        'statusDescription'
     ];
 
     constructor(

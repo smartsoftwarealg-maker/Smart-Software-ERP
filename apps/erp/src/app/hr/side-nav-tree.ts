@@ -20,8 +20,8 @@ import {
     ABS_HR_JUDICIAL_FRAMES_URL,
     ABS_HR_DECISION_MOTIVES_URL,
     ABS_HR_MOTIVES_URL,
-    ABS_HR_CONTRACT_MOTIVES_URL
-} from '../common';
+    ABS_HR_CONTRACT_MOTIVES_URL, ABS_HR_HOLIDAY_REQUEST_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const hrNavTree: SideNavNode = {
@@ -97,19 +97,25 @@ export const hrNavTree: SideNavNode = {
             name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
             icon: 'far fa-users-slash',
             route: ABS_INACTIVE_HR_EMPLOYEES_URL,
-            accessRights: "Person"
+            accessRights: 'Person'
         },
         {
             name: 'PAYROLL_EMPLOYEES_LIST',
             icon: 'fad fa-users',
             route: ABS_HR_EMPLOYEES_URL,
-            accessRights: "Person"
+            accessRights: 'Person'
         },
         {
             name: 'PAYROLL_EMPLOYEE_SUMMARY',
             icon: 'fa-solid fa-list-ul',
             route: ABS_HR_PERSON_LIST_URL,
-            accessRights: "Person"
+            accessRights: 'Person'
+        },
+        {
+            name: 'ATT_HOLIDAY_REQUEST',
+            icon: 'fa-solid fa-umbrella-beach',
+            route: ABS_HR_HOLIDAY_REQUEST_URL,
+            accessRights: 'HolidayRequest'
         },
         {
             name: 'COMMON_REPORTS',
@@ -123,5 +129,5 @@ export const hrNavTree: SideNavNode = {
             route: ABS_HR_DASHBOARD_URL,
         },
     ],
-    accessRights: "HRMASTER"
+    accessRights: 'HRMASTER'
 };

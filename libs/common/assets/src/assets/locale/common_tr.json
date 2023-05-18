@@ -240,5 +240,6 @@
     "COST_CENTER":        "Ödeme merkezi",
     "MOBILE": "Cep Telefonu",
     "INVOICE_NUMBER":             "",
-    "ATTENDANCE":                 ""
+    "ATTENDANCE":                 "",
+    "GOTO_DETAIL":   ""
 }

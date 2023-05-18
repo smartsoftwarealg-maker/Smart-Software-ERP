@@ -8,6 +8,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.statusDescription}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="from">
             <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
             <mat-cell *matCellDef="let e">

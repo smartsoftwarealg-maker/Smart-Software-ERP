@@ -1,13 +1,13 @@
 import {
     ABS_EMPLOYEE_PROFILE, ABS_ESPACE_REPORTS_URL, ABS_HOLIDAY_REQUEST, ABS_PERSONAL_PAYSLIP
-} from "../common";
+} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const empSpaceNavTree: SideNavNode[] =
     [
         {
             name: 'ATT_HOLIDAY_REQUEST',
-            icon: 'fas fa-file-chart-line',
+            icon: 'fa-solid fa-umbrella-beach',
             route: ABS_HOLIDAY_REQUEST,
             accessRights: 'Holiday',
             customerRights: {read: true, edit: true, delete: true, write: true}

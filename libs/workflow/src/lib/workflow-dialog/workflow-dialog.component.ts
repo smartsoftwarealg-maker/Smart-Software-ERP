@@ -47,11 +47,11 @@ export class WorkflowDialogComponent implements OnInit {
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),
-            senderId: this.loginSrv.appCtx.id,
+            senderId: this.loginSrv.appCtx.id || 1,
             canceled: this.canceled.value,
             receiverId: this.loginSrv.appCtx.id
         };
-        this.mailboxSrv.setParentId(this.loginSrv.appCtx.id);
+        this.mailboxSrv.setParentId(this.loginSrv.appCtx.id || 1);
         this.mailboxSrv
             .save(ent)
             .pipe(tap(_ => this.dialogRef.close({ message: this.selectedId })))

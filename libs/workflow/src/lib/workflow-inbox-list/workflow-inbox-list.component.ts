@@ -21,6 +21,7 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
         'message',
         'sender',
         'time',
+        'key'
     ];
     constructor(
         public override entitySrv: WorkflowInboxService,
@@ -52,5 +53,30 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
     changeMode(all: boolean) {
         this.entitySrv.all = all;
         this.refresh();
+    }
+
+    private getURL(documentId: number, targetId: number) {
+        switch (documentId) {
+        case 2:    return `/app/purchases/porders/${targetId}`;
+        case 10:   return `/app/purchases/prequests/${targetId}`;
+        case 257:  return `/app/sales/delivery/${targetId}`;
+        case 258:  return `/app/sales/invoice/${targetId}`;
+        case 259:  return `/app/purchases/transfers/${targetId}`;
+        case 260:  return `/app/purchases/consumptions/${targetId}`;
+        case 262:  return `/app/purchases/creceptions/${targetId}`;
+        case 514:  return `/app/purchases/receptions/${targetId}`;
+        case 516:  return `/app/purchases/transfer-reception/${targetId}`;
+        case 519:  return `/app/purchases/inventory/${targetId}`;
+        case 531:  return `/app/assets-app/asset-receptions/${targetId}`;
+        case 767:  return `/app/assets-app/inventory-entries/${targetId}`;
+        case 1010: return `/app/assets-app/asset-appointments/${targetId}`;
+        default:   return '.';
+        }
+    }
+    open(documentId: number, targetId: number) {
+        const url = this.getURL(documentId, targetId);
+        if (url.length > 5) {
+            this.router.navigate([url]).then();
+        }
     }
 }

@@ -286,5 +286,6 @@
     "CODE_EXPIRED":               "The specified code has expired. Please, regenerate a new code",
     "INVALID_CODE":               "The code is not valid",
     "CONTINUE":                   "Continue",
-    "CODE_VERIFIED":              "The code has been successfully verified. Click 'Continue' button to continue"
+    "CODE_VERIFIED":              "The code has been successfully verified. Click 'Continue' button to continue",
+    "GOTO_DETAIL":               "Open detail page"
 }
