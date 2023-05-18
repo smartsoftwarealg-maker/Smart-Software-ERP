@@ -51,19 +51,21 @@
 }
 
 .log__type {
-    width: 96%;
-    margin: 0 auto;
-    padding: 5px;
+    width: 98%;
+    margin: 4px auto;
+    padding: 0 8px;
     gap: 20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     grid-area: selector;
+    border-radius: 1.2em;
 }
 
 .date__picker {
     flex-grow: 1;
-    max-width: 150px;
+    max-width: 240px;
+    margin-top: 16px;
 }
 
 mat-radio-group {
