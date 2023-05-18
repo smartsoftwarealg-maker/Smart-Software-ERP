@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit } from "@angular/core";
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
@@ -23,6 +23,10 @@ interface LogFlatNode {
     styleUrls: ['./traceability.component.scss']
 })
 export class TraceabilityComponent implements OnInit, OnDestroy {
+    private traceSrv = inject(TraceabilityService);
+    private shellSrv = inject(ShellService);
+    public langSrv = inject(LanguageService);
+
     tableWidth = 400;
     selectedId = 0;
     application = '';
@@ -59,9 +63,6 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 
-    constructor(private traceSrv: TraceabilityService,
-                private shellSrv: ShellService,
-                public langSrv: LanguageService) { }
 
     ngOnInit(): void {
         this.traceSrv
