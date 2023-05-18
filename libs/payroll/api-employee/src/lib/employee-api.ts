@@ -232,7 +232,8 @@ export interface PaymentInfo {
     paymode?: number;
 }
 
-export interface HolidayRequest{id: number;
+export interface HolidayRequest{
+    id: number;
     centerId: number;
     personId: number;
     hType: number;
@@ -241,4 +242,6 @@ export interface HolidayRequest{id: number;
     firstName?: string;
     lastName?: string;
     typeDescription?: string;
+    docStatus?: number;
+    statusDescription?: string;
 }

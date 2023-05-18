@@ -28,7 +28,7 @@ export class Auth2FAConfirmationComponent {
 
     form = this.fb.group({
         code:  [''],
-        email: [{ value: this.loginSrv.appCtx.email || '', disabled: true}, [Validators.required, Validators.email]],
+        email: [{ value: this.loginSrv?.appCtx?.email || '', disabled: true}, [Validators.required, Validators.email]],
     });
 
     sendEmail() {

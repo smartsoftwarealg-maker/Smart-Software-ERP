@@ -26,6 +26,7 @@
                     [disabled]="!form.valid"
                     color="primary"
                     translate
+                    *ngIf="form.controls['email'].value?.indexOf('@') > 0"
                     (click)="sendEmail()">COMMON_SEND_CODE
             </button>
             <button mat-raised-button color="primary" translate

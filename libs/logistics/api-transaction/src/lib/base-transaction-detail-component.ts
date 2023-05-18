@@ -7,7 +7,7 @@ import {
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 import {WorkflowDialogComponent} from '@ss/workflow';
@@ -62,32 +62,24 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             of(true) :
             this.entitySrv
                 .get(this.id)
-                .pipe(tap(res => {
-                    if (res?.dirty && this.form) {
-                        this.form.markAsDirty({onlySelf: false});
-                        this.form.markAsUntouched({onlySelf: false});
-                        this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
-                    }
-                }),
-                switchMap(res => res?.dirty? of(false): super.canDeactivate()));
+                .pipe(
+                    map(res => {
+                        res.dirty = res.dirty && res?.document >= 200 && res?.document <= 800;
+                        return res;
+                    }),
+                    tap(res => {
+                        if (res?.dirty && this.form)  {
+                            this.form.markAsDirty({onlySelf: false});
+                            this.form.markAsUntouched({onlySelf: false});
+                            this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
+                        }
+                    }),
+                    switchMap(res => res?.dirty? of(false): super.canDeactivate()));
     }
 
     override readForm(): Transaction {
         return this.form.getRawValue();
     }
-
-    // finishLoading(e: Transaction) {
-    //     this.shellSrv.addButton(this.sendBtn);
-    //     if (this.showImportButton()) {
-    //         this.shellSrv.addButton(this.importBtn);
-    //     }
-    //     this.isEditable = this.isEditable && !e.isValidated;
-    //     this.saveButton.visible = this.saveButton.visible && !e.isValidated;
-    //     this.importBtn.visible = e.id > 0;
-    //     this.importBtn.disabled = this.requireAgentToImportDocument() && (e.agent === null || e.agent === undefined);
-    //     this.transaction = e;
-    //     return super.finishLoading(e);
-    // }
 
     protected abstract showImportButton(): boolean;
     protected abstract requireAgentToImportDocument(): boolean;

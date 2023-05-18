@@ -21,8 +21,8 @@ import {
     HR_JUDICIAL_FRAMES_URL,
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
-    HR_CONTRACT_MOTIVE_URL
-} from '../common';
+    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL
+} from "../common";
 import {
     ABS_INDEX_URL,
     CanActivateService,
@@ -99,6 +99,7 @@ import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
 import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
+import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
 
 export const hrRoutes: Routes = [
     {
@@ -815,6 +816,23 @@ export const hrRoutes: Routes = [
                 component: DivisionDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: HR_HOLIDAY_REQUEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: HolidayRequestListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: HolidayRequestDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
