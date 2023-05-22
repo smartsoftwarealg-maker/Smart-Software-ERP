@@ -21,14 +21,7 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    public usersSrv = inject(UserListService);
-    private payMethodSrv = inject(PayMethodService);
-    public supplierSrv = inject(SupplierService);
     public groups: CCGroup[];
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    // public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
 
     constructor(public orderService: PurchaseRequestService,
@@ -38,8 +31,6 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
                 public override router: Router,
                 public override formBuilder: UntypedFormBuilder,
                 public override confirmationSrv: ConfirmationDialogService,
-
-                public lookupsSrv: LookupsService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_PURCHASE_REQUEST');

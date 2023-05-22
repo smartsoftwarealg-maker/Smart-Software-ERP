@@ -28,7 +28,7 @@
                 <ss-auto-complete matInput
                                   [required]="true"
                                   descriptionFieldName="denomination"
-                                  [model]="agentAutoCompleteModel"
+                                  [model]="supplierAutoCompleteModel"
                                   formControlName="agent"></ss-auto-complete>
                 <mat-error
                     *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED
@@ -116,4 +116,4 @@
    </mat-card-content>
 </mat-card>
 
-<ss-reception-cancellation-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id"></ss-reception-cancellation-lines-list>
+<ss-reception-cancellation-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id" [parentExecutionRef]="executionRef"></ss-reception-cancellation-lines-list>

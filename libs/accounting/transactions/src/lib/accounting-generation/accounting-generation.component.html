@@ -1,7 +1,7 @@
 <mat-progress-bar *ngIf="processing" mode="indeterminate" class="center-div"></mat-progress-bar>
 <form *ngIf="form !== null" novalidate [formGroup]="form"  class="center-div">
     <mat-form-field class="number">
-        <mat-label translate>ACC_FOLDER</mat-label>
+        <mat-label translate>ACC_FILE</mat-label>
         <input matInput formControlName="year" type="number" required>
     </mat-form-field>
 
@@ -12,7 +12,7 @@
 
 
     <mat-form-field>
-        <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+        <mat-label translate>COMMON_TYPE</mat-label>
         <mat-select name="fileName" formControlName="genType">
             <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
             <mat-option value="2" translate>COMMON_INVENTORY</mat-option>

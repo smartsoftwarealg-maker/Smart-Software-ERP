@@ -23,10 +23,6 @@ import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
-    private agentService = inject(AgentService);
-    private usersSrv = inject(UserListService);
-    private payMethodSrv = inject(PayMethodService);
-
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
 
     private importContractBtn: ToolbarButton = {
@@ -39,10 +35,6 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
     };
     private order: Transaction = null;
     public groups: CCGroup[];
-    public dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
 
     constructor(public orderService: SalesOrderService,
                 public override shellSrv: ShellService,
@@ -53,8 +45,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
                 public override confirmationSrv: ConfirmationDialogService,
                 public lookupsSrv: LookupsService,
                 public override loginSrv: LoginService,
-                public override dialog: MatDialog,
-                private projectSrv: SalesContractService) {
+                public override dialog: MatDialog) {
         super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
     }
 

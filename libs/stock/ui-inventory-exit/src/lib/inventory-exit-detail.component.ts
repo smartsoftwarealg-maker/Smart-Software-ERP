@@ -17,9 +17,6 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './inventory-exit-detail.component.html'
 })
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
-    public usersSrv =  inject(UserListService);
-
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         private langSrv: LanguageService,
@@ -31,8 +28,7 @@ export class InventoryExitDetailComponent extends BaseTransactionDetailComponent
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(inventoryExitService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY_EXIT');
     }
 

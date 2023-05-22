@@ -27,7 +27,7 @@
                 <ss-auto-complete matInput
                                   [required]="true"
                                   descriptionFieldName="denomination"
-                                  [model]="agentAutoCompleteModel"
+                                  [model]="consumerAutoCompleteModel"
                                   formControlName="agent"></ss-auto-complete>
                 <mat-error
                     *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED

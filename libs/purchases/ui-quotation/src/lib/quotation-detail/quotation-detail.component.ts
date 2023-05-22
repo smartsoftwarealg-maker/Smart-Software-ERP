@@ -1,19 +1,12 @@
-import { Component, inject } from "@angular/core";
+import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { CCGroup, CurrencyService, Lookup, LookupsService, PayMethod } from "@ss/common/api-lookup";
+import {UntypedFormBuilder} from '@angular/forms';
+import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
-import {DatePipe} from '@angular/common';
-import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {UserListService} from '@ss/common/api-users';
+import {LoginService} from '@ss/common/api-common';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
 import {PurchaseQuotationService} from '../purchase-quotation.service';
-import {OfferLinesService} from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
@@ -22,12 +15,6 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class QuotationDetailComponent extends BaseTransactionDetailComponent {
-    private payMethodSrv = inject(PayMethodService);
-    public supplierSrv = inject(SupplierService);
-    private usersSrv = inject(UserListService);
-    public  dealerAutoCompleteModel  = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public  agentAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public  payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(public proformaSrv: PurchaseQuotationService,
                 public override shellSrv: ShellService,

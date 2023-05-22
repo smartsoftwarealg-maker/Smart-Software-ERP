@@ -22,11 +22,6 @@ import {SalesContractService} from '@ss/logistics/contracts';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent {
-    private currencySrv  = inject(CurrencyService);
-    private projectSrv  = inject(SalesContractService);
-    private supplierSrv =  inject(SupplierService);
-    private payMethodSrv =  inject(PayMethodService);
-    private usersSrv =  inject(UserListService);
 
     private importContractBtn: ToolbarButton = {
         disabled: false,
@@ -47,11 +42,6 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     // }
 
     public groups: CCGroup[];
-    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
     constructor(public orderService: PurchaseOrderService,
                 public override shellSrv: ShellService,
@@ -161,8 +151,8 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
         if (!this.importContractBtn.disabled) {
             this.orderService
                 .consumeContract(this.id)
-                .pipe(switchMap(_ => this.detail? this.detail.loadDetailLines() : of(null)))
                 .subscribe(_ => {
+                    this.executionRef++;
                     this.shellSrv.setLoading(false);
                     this.snackBarSrv.showSuccessMessage();
                 });

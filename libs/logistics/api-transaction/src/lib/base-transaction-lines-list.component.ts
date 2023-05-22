@@ -3,9 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of, Subscription, zip} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
-import {LINES_DETAIL_URL, LoginService, PaginationModel} from '@ss/common/api-common';
+import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
@@ -13,6 +13,7 @@ import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    private _ref = 0;
     private _isEditable_ = true;
     protected subscription: Subscription = null;
     searchText = new FormControl('');
@@ -56,8 +57,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         this.detailSrv.setParentId(this.parentId);
         return this.detailSrv
             .getPage(this.pagination, this.searchText.value, null)
-            .pipe(tap(data => this.data = data),
-                 switchMap(res => of(this.data)));
+            .pipe(tap(data => this.data = data));
     }
 
     select(row: TransactionLine) {
@@ -88,7 +88,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                             });
                     }
                 }
-            })
+            });
     }
 
     edit() {
@@ -126,5 +126,13 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     get isEditable() {
         return this._isEditable_;
+    }
+
+    @Input()
+    set parentExecutionRef(ref: number) {
+        if (this.parentId > 0) {
+            this._ref = ref;
+            this.loadDetailLines().subscribe();
+        }
     }
 }

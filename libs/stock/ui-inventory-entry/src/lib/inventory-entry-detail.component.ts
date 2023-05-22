@@ -20,7 +20,6 @@ import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {
-    private usersSrv =  inject(UserListService);
     @ViewChild(InventoryLinesListComponent) _detail: InventoryLinesListComponent;
     private invImportBtn: ToolbarButton = {
         disabled: false,
@@ -32,7 +31,6 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
     };
 
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         private langSrv: LanguageService,
@@ -44,8 +42,7 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(inventoryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_INVENTORY_ENTRY');
     }
 

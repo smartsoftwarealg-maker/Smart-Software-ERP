@@ -14,5 +14,4 @@ export class TranslatePipe implements PipeTransform {
         if (key == null || key === '') return null;
         return this.langSrv.translate(key, args);
     }
-
 }
