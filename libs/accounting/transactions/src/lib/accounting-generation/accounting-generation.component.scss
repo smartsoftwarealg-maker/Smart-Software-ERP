@@ -10,9 +10,20 @@ form {
     width: 90%;
     margin: 0 auto;
 }
+.table_div {
+    flex-grow: 1;
+}
+.pagination-container {
+    flex-grow: 0;
+}
+.container_div {
+    min-height: calc(100% - 140px);
+    display: flex;
+    flex-direction: column;
+}
 
-.table-div {
-    height: calc(100% - 140px);
+mat-table {
+    min-height: 100%;
 }
 .number {
     max-width: 90px;

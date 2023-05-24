@@ -18,7 +18,6 @@ import {MatDialog} from '@angular/material/dialog';
     templateUrl: './inventory-detail.component.html'
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private usersSrv =  inject(UserListService);
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -28,7 +27,6 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         click: () => this.importInventoryDocument(),
     };
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
 
     constructor(
         protected loginSrv: LoginService,
@@ -39,8 +37,7 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         public override route: ActivatedRoute,
         public router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(inventorySrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY');
     }
 
@@ -85,11 +82,10 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
                 .subscribe(result => {
                     if (result && result['count']) {
                         this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                        this.executionRef++;
                     } else {
                         this.snackBarSrv.showFailureMessage();
                     }
-                    this.detail?.loadDetailLines().subscribe();
-
                     this.shellSrv.setLoading(false);
                 });
         }

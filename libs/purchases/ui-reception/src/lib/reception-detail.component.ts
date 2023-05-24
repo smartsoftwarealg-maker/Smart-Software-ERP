@@ -20,16 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private currencySrv =  inject(CurrencyService);
-    public usersSrv = inject(UserListService);
-    public supplierSrv = inject(SupplierService);
-    public lookupsSrv = inject(LookupsService);
-    private payMethodSrv = inject(PayMethodService);
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
 
     constructor(
         public receptionService: ReceptionService,

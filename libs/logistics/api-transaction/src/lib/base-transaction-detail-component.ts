@@ -11,19 +11,32 @@ import { map, tap } from 'rxjs/operators';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 import {WorkflowDialogComponent} from '@ss/workflow';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, User } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import {Directive, inject, ViewChild} from '@angular/core';
-import {BaseTransactionLinesListComponent} from './base-transaction-lines-list.component';
-import {Lookup} from '@ss/common/api-lookup';
+import {Directive, inject} from '@angular/core';
+import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import { Agent, AgentService, BranchService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
+import { PayMethodService } from '@ss/logistics/api-logistics-common';
+import { UserListService } from '@ss/common/api-users';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { SalesContractService } from '@ss/logistics/contracts';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction>  {
-    @ViewChild(BaseTransactionLinesListComponent) protected detail: BaseTransactionLinesListComponent;
+    private agentService = inject(AgentService);
+    private payMethodSrv = inject(PayMethodService);
+    private usersSrv = inject(UserListService);
+    private consumerSrv = inject(ConsumerService);
+    private branchService = inject(BranchService);
     private _isManager = false;
     private transaction: Transaction = null;
     private docImportService: DocImportService = inject(DocImportService);
+    private supplierSrv = inject(SupplierService);
+
+    protected currencySrv =  inject(CurrencyService);
+    protected projectSrv = inject(SalesContractService);
+
 
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -43,6 +56,16 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         click: () => this.sendMessage(),
     };
 
+    protected lookupsSrv =  inject(LookupsService);
+
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
+    public projectLookup            = new DefaultAutoCompleteModel(this.projectSrv);
+    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+    public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    public executionRef = 0;
     constructor(public entitySrv: BaseEntityService<Transaction>,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
@@ -64,7 +87,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 .get(this.id)
                 .pipe(
                     map(res => {
-                        res.dirty = res.dirty && res?.document >= 200 && res?.document <= 800;
+                        if (res) {
+                            res.dirty = res?.dirty && res?.document >= 200 && res?.document <= 800;
+                        }
                         return res;
                     }),
                     tap(res => {
@@ -119,10 +144,16 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.transaction.id)
-                        .pipe(switchMap(_ => this.detail.loadDetailLines()))
+                        // .pipe(switchMap(_ => this.detail?.loadDetailLines()))
                         .subscribe({
-                            next: res => this.snackBarSrv.showMessage('COMMON_SUCCESS'),
-                            error: err => this.snackBarSrv.showMessage('COMMON_FAILURE', true)
+                            next: res => {
+                                this.executionRef++;
+                                this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                            },
+                            error: err => {
+                                this.snackBarSrv.showMessage('COMMON_FAILURE', false);
+                                throw err;
+                            }
                         });
                 }
             });

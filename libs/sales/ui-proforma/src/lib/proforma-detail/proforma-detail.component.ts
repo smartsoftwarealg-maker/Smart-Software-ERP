@@ -23,14 +23,8 @@ import {MatDialog} from '@angular/material/dialog';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ProformaDetailComponent extends BaseTransactionDetailComponent {
-    private agentService = inject(AgentService);
-    private payMethodSrv = inject(PayMethodService);
-    private usersSrv = inject(UserListService);
 
     public groups: CCGroup[];
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.agentService, 'id', 'denomination');
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
 
     constructor(public proformaSrv: SalesProformaService,
                 public override shellSrv: ShellService,

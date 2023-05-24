@@ -109,5 +109,5 @@
         </mat-card-content>
     </mat-card>
 
-    <ss-delivery-cancellation-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id"></ss-delivery-cancellation-lines-list>
+    <ss-delivery-cancellation-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id" [parentExecutionRef]="executionRef"></ss-delivery-cancellation-lines-list>
 </div>

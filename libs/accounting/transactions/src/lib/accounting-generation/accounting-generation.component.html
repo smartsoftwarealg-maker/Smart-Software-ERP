@@ -1,18 +1,18 @@
 <mat-progress-bar *ngIf="processing" mode="indeterminate" class="center-div"></mat-progress-bar>
-<form *ngIf="form !== null" novalidate [formGroup]="form"  class="center-div">
+<form *ngIf="form !== null" novalidate [formGroup]="form" class="center-div">
     <mat-form-field class="number">
-        <mat-label translate>ACC_FOLDER</mat-label>
+        <mat-label translate>ACC_FILE</mat-label>
         <input matInput formControlName="year" type="number" required>
     </mat-form-field>
 
-    <mat-form-field class="number" >
+    <mat-form-field class="number">
         <mat-label translate>ACC_PERIOD</mat-label>
         <input matInput formControlName="period" type="number" required>
     </mat-form-field>
 
 
     <mat-form-field>
-        <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+        <mat-label translate>COMMON_TYPE</mat-label>
         <mat-select name="fileName" formControlName="genType">
             <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
             <mat-option value="2" translate>COMMON_INVENTORY</mat-option>
@@ -40,41 +40,42 @@
     </button>
 </form>
 
-<div class="table-div center-div" *ngIf="showingTransactions">
-    <mat-table mat-table [dataSource]="data" class="content-div">
+<div class="container_div center-div" *ngIf="showingTransactions">
+    <div class="table_div">
+        <mat-table mat-table [dataSource]="data" class="content-div">
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.description}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.description}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="number">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.number}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="number">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.number}}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.date | date: 'dd/MM/yyyy'}}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.date | date: 'dd/MM/yyyy'}}
+                </mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="false"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="false"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 </div>
 
-<div class="table-div  center-div" *ngIf="showingPayroll">
+<div class="container_div  center-div" *ngIf="showingPayroll">
     <mat-table mat-table [dataSource]="payrollData" class="content-div">
 
         <ng-container matColumnDef="description">
@@ -101,14 +102,14 @@
         <ng-container matColumnDef="debit">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DEBIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ (e.amount > 0? e.amount : 0) | number: '1.2-2' }}
+                {{ (e.amount > 0 ? e.amount : 0) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="credit">
             <mat-header-cell *matHeaderCellDef translate>COMMON_CREDIT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ (e.amount > 0? 0 : -e.amount) | number: '1.2-2' }}
+                {{ (e.amount > 0 ? 0 : -e.amount) | number: '1.2-2' }}
             </mat-cell>
         </ng-container>
 
@@ -125,7 +126,7 @@
     </mat-table>
 </div>
 
-<div class="table-div center-div" *ngIf="showingBank">
+<div class="container_div center-div" *ngIf="showingBank">
     <mat-table mat-table [dataSource]="checkData" class="content-div">
 
         <ng-container matColumnDef="number">
@@ -155,7 +156,7 @@
     </mat-table>
 </div>
 
-<div class="table-div center-div" *ngIf="showingCash">
+<div class="container_div center-div" *ngIf="showingCash">
     <mat-table mat-table [dataSource]="cashData" class="content-div">
 
         <ng-container matColumnDef="number">

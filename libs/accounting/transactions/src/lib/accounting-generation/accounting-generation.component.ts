@@ -21,6 +21,12 @@ import {HttpParams} from '@angular/common/http';
     styleUrls: ['./accounting-generation.component.scss']
 })
 export class AccountingGenerationComponent implements OnInit, OnDestroy {
+    private loginSrv = inject(LoginService);
+    private generationSrv = inject(AccountingGenerationService);
+    private route = inject(ActivatedRoute);
+    private shellSrv = inject(ShellService);
+    private snackBarSrv = inject(SnackBarService);
+    private journalSrv = inject(AccJournalsService);
     private fb = inject(UntypedFormBuilder);
 
     readonly PURCHASE = 1;
@@ -59,12 +65,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     cashColumns = ['number', 'date', 'debit', 'credit'];
     public pagination = PaginationModel.newInstance();
 
-    constructor(private loginSrv: LoginService,
-                private generationSrv: AccountingGenerationService,
-                private route: ActivatedRoute,
-                private shellSrv: ShellService,
-                private snackBarSrv: SnackBarService,
-                private journalSrv: AccJournalsService) {
+    constructor() {
         this.pagination.onChange = () => this.showDocuments();
         this.pagination.pageSize = 15;
     }
@@ -183,7 +184,6 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         this.processing = true;
         this.shellSrv.setLoading(true);
         const key = +this.form?.controls['genType'].value;
-        console.log('key', key);
         this.showingBank         = key === this.BANK;
         this.showingCash         = key === this.CASH;
         this.showingPayroll      = key === this.PAYROLL;

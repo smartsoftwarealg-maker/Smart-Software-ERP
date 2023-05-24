@@ -5,7 +5,6 @@ import {Direction} from '@angular/cdk/bidi';
 import {HttpClient} from '@angular/common/http';
 import {dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
 import {AppConfigService} from './app-config.service';
-import {HttpService} from './http.service';
 import {LoginService} from './login.service';
 
 function formatFullName(first: string, last: string) {
@@ -202,7 +201,8 @@ export class LanguageService {
     }
 
     public init(): Observable<void> {
-        return this.appConfigSrv
+        return this
+            .appConfigSrv
             .getConfig()
             .pipe(switchMap(conf => this.setLanguage(this.parseConfig(conf))));
     }

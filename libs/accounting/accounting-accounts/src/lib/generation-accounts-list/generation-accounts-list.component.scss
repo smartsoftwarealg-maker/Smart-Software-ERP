@@ -1,7 +1,8 @@
 .content-div {
     width: 96%;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
+    overflow-x: auto;
 }
 
 .mat-column-description,
@@ -12,4 +13,9 @@
 .mat-column-sales {
     border-left: ghostwhite solid 1px;
     padding-left: 6px;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 900px;
 }

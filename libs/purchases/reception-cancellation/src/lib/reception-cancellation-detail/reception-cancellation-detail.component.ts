@@ -20,16 +20,6 @@ import {ReceptionCancellationService} from '../reception-cancellation.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ReceptionCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private currencySrv = inject(CurrencyService);
-    private payMethodSrv = inject(PayMethodService);
-    public supplierSrv = inject(SupplierService);
-    private usersSrv = inject(UserListService);
-
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-
 
     constructor(
         public override entitySrv: ReceptionCancellationService,
@@ -39,7 +29,6 @@ export class ReceptionCancellationDetailComponent extends BaseTransactionDetailC
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
         protected override readonly loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(entitySrv,

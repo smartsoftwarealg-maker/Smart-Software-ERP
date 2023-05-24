@@ -1,30 +1,15 @@
-import { Component, inject, OnInit, ViewChild } from "@angular/core";
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LanguageService, LoginService, User} from '@ss/common/api-common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import { Component, OnInit } from '@angular/core';
+import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import {CCGroup, Lookup} from '@ss/common/api-lookup';
+import {LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {UserListService} from '@ss/common/api-users';
 import {MatDialog} from '@angular/material/dialog';
-import {DocImportService} from '@ss/logistics/ui-doc-import';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {DatePipe} from '@angular/common';
-import {
-    TransferReceptionLinesListComponent
-} from '../transfer-reception-lines-list/transfer-reception-lines-list.component';
 import {TransferReceptionService} from '../transfer-reception.service';
-import {BranchService} from '../../../../../logistics/api-agent/src/lib/branch.service';
-import {
-    InventoryTransferLinesListComponent
-} from '../inventory-transfer-lines-list/inventory-transfer-lines-list.component';
-import {TransferService} from '../transfer.service';
 
 @Component({
     selector: 'ss-transfer-reception-detail',
@@ -32,15 +17,10 @@ import {TransferService} from '../transfer.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    private usersSrv =  inject(UserListService);
-    private branchService =  inject(BranchService);
     public groups: CCGroup[];
 
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv)
-    public agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.branchService, 'id', 'denomination')
 
     constructor(
-        private langSrv: LanguageService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog,
         public transferService: TransferReceptionService,
@@ -49,14 +29,13 @@ export class TransferReceptionDetailComponent extends BaseTransactionDetailCompo
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFER_RECEPTIONS');
     }
 
     override preload(): Observable<any> {
         return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x))
+            .pipe(tap(x => this.groups = x));
     }
 
     // override setupForm(b: Transaction) {

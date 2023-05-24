@@ -21,10 +21,6 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
-    private consumerSrv = inject(ConsumerService);
-    private usersSrv = inject(UserListService);
-    dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    agentAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public groups: CCGroup[];
 
     constructor(
@@ -35,7 +31,6 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(consumptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');

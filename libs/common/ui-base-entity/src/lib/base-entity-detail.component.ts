@@ -6,7 +6,6 @@ import {Observable, of, Subscription} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {DocRight} from '@ss/common/api-common';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -24,7 +23,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         click: () => this.save()
     };
 
-    constructor(
+    protected constructor(
         public entitySrv: BaseEntityService<T>,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
@@ -83,7 +82,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                     if (entity) {
                         this.finishLoading(entity);
                     } else {
-                        throw new Error("BaseEntityDetail: Entity is null");
+                        throw new Error('BaseEntityDetail: Entity is null');
                     }
                 },
                 error: error => {
@@ -108,7 +107,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     //}
 
     public loadEntity(id: number): Observable<T> {
-       if (id == null) {
+        if (id == null) {
             this.shellSrv.goBack();
             return of(null);
         }
@@ -130,7 +129,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     /** called with the new id to allow to upload attachment to this object */
-    public uploadAttachments(id: number): Observable<any> {
+    public uploadAttachments(id?: number): Observable<any> {
         return of(null);
     }
 
@@ -144,7 +143,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
-        const val: T = this.readForm();
+        const val = this.readForm();
         val.id = this.queryId;
         let obs: Observable<any> = val.id === 0 && false// TO SOLVE IDIOTS' PROBLEM
             ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; val.id = i; /* todo: navigate to the correct route using the new id*/ }))
@@ -170,7 +169,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                 this.form?.reset(val);
                 throw err;
             }
-        })
+        });
     }
 
     public readForm(): T {
