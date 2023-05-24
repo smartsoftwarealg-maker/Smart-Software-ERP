@@ -2,14 +2,14 @@
     display: flex;
 }
 
-.table-div,
+.container_div,
 .pagination-container {
     width: 94%;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-.table-div {
+.container_div {
     min-height: calc(100% - 128px);
     width: 100%;
     overflow-x: auto;

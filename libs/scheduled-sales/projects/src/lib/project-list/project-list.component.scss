@@ -1,10 +1,10 @@
-.table-div,
+.container_div,
 .pagination-container {
     width: 96%;
     max-width: 800px;
     margin: 4PX auto;
 }
-.table-div {
+.container_div {
     min-height: calc(100% - 64px);
     overflow-y: auto;
 }
