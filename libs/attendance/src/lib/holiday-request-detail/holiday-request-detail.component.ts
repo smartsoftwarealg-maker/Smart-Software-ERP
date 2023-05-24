@@ -50,12 +50,14 @@ export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<Hol
         }
         super.isEditable = !!this.loginSrv.appCtx.personId;
         return this.formBuilder.group({
-            id: [b.id],
-            centerId: [b.centerId || this.loginSrv.appCtx.center, Validators.required],
-            personId: [b.personId || this.loginSrv.appCtx.personId, Validators.required],
-            from:     [b.from, Validators.required],
-            to:       [b.to, Validators.required],
-            hType:    [b.hType, Validators.required],
+            id:        [b.id],
+            centerId:  [b.centerId || this.loginSrv.appCtx.center, Validators.required],
+            personId:  [b.personId || this.loginSrv.appCtx.personId, Validators.required],
+            from:      [b.from, Validators.required],
+            to:        [b.to, Validators.required],
+            hType:     [b.hType, Validators.required],
+            lastName:  [{ value: b.lastName, disabled: true}],
+            firstName: [{ value: b.firstName, disabled: true}]
         });
     }
 

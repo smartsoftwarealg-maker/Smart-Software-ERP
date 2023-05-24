@@ -15,6 +15,27 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="personId">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_ID</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.personId}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.lastName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.firstName}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="from">
             <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
             <mat-cell *matCellDef="let e">

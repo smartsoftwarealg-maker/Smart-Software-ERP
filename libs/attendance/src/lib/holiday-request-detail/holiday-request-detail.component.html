@@ -2,6 +2,17 @@
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
             <mat-form-field class="default-100">
+                <mat-label translate>COMMON_FIRST_NAME</mat-label>
+                <input matInput formControlName="firstName" type="text">
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_LAST_NAME</mat-label>
+                <input matInput formControlName="lastName" type="text">
+            </mat-form-field>
+
+
+            <mat-form-field class="default-100">
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="holidayLookup"

@@ -95,7 +95,7 @@ export const hrNavTree: SideNavNode = {
         // },
         {
             name: 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
-            icon: 'far fa-users-slash',
+            icon: 'fas fa-users-slash',
             route: ABS_INACTIVE_HR_EMPLOYEES_URL,
             accessRights: 'Person'
         },
