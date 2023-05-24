@@ -10,12 +10,18 @@
 
 mat-table {
     width: 100%;
-    min-width: 560px;
+    min-width: 770px;
 }
 
-.mat-column-statusDescription,
 .mat-column-typeDescription {
     flex: 2 1 180px;
+}
+.mat-column-docDescription {
+    flex: 2 1 120px;
+}
+.mat-column-lastName,
+.mat-column-firstName {
+    flex: 2 1 100px;
 }
 
 .mat-column-from,
