@@ -1,6 +1,6 @@
 .size {
     width: 96%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 4px auto 0;
 }
 .div_table {
@@ -10,7 +10,7 @@
 
 mat-table {
     width: 100%;
-    min-width: 770px;
+    min-width: 800px;
 }
 
 .mat-column-typeDescription {
@@ -19,12 +19,14 @@ mat-table {
 .mat-column-docDescription {
     flex: 2 1 120px;
 }
+.mat-column-creationTime,
 .mat-column-lastName,
 .mat-column-firstName {
-    flex: 2 1 100px;
+    flex: 1 1 100px;
 }
 
+.mat-column-personId,
 .mat-column-from,
 .mat-column-to {
-    flex: 2 1 100px;
+    flex: 1 1 100px;
 }

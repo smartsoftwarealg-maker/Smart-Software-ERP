@@ -86,8 +86,6 @@ export class AssetAppointmentListComponent implements OnInit {
             .then();
     }
 
-    ngOnDestroy() {
-    }
 
     public refresh() {
         this.selected = 0;
@@ -102,7 +100,7 @@ export class AssetAppointmentListComponent implements OnInit {
     openAppointment(id: number) {
         if (id > 0) {
             console.log('id: ', id);
-            this.router.navigate(['../../asset-appointments', id], { relativeTo: this.route });
+            this.router.navigate(['../../asset-appointments', id], { relativeTo: this.route }).then();
         }
     }
 }

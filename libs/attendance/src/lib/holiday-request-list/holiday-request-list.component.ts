@@ -1,11 +1,11 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { LoginService, PaginatorPersistenceService } from "@ss/common/api-common";
+import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
 import {HolidayRequestService} from '../holiday-request.service';
 
 @Component({
@@ -21,11 +21,13 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
         'firstName',
         'lastName',
         'typeDescription',
+        'creationTime',
         'from',
         'to',
         'docDescription'
     ];
     private personColumns = [
+        'creationTime',
         'typeDescription',
         'from',
         'to',

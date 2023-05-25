@@ -1,4 +1,4 @@
-<mat-card class="container container_div">
+<div class="container container_div">
     <mat-form-field class="user-lookup">
         <mat-label translate>ADMINISTRATION_USERS</mat-label>
         <ss-auto-complete matInput
@@ -27,7 +27,7 @@
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-</mat-card>
+</div>
 <div class="pagination b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>

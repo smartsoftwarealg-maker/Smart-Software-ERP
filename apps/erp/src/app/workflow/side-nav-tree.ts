@@ -1,7 +1,7 @@
 import {CanActivateService, CanDeactivateService, LIST_URL, SideNavNode} from '@ss/common/api-common';
 import {
     ABS_ADMINISTRATION_USER_DOCUMENT_URL,
-    ABS_ADMINISTRATION_USER_MESSAGES_URL,
+    ABS_ADMINISTRATION_USER_MESSAGES_URL, ABS_ADMINISTRATION_USER_RECEIVED_MESSAGES_URL,
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_ADMINISTRATION_WORKFLOW_URL
 } from '../common';
@@ -27,6 +27,12 @@ export const workflowNavTree: SideNavNode = {
             name: 'ADMINISTRATION_USER_MESSAGES',
             icon: 'fa-regular fa-user-doctor-message',
             route: ABS_ADMINISTRATION_USER_MESSAGES_URL,
+            accessRights: 'UserMessage'
+        },
+        {
+            name: 'ADMINISTRATION_USER_RECEIVED_MESSAGES',
+            icon: 'fa-regular fa-user-doctor-message',
+            route: ABS_ADMINISTRATION_USER_RECEIVED_MESSAGES_URL,
             accessRights: 'UserMessage'
         },
         {

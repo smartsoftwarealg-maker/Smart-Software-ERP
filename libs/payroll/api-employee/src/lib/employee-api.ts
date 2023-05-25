@@ -239,6 +239,7 @@ export interface HolidayRequest{
     hType: number;
     from?: Date;
     to?: Date;
+    creationTime: Date,
     firstName?: string;
     lastName?: string;
     typeDescription?: string;

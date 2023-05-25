@@ -5,8 +5,9 @@
     border-radius: 1.5em;
     padding: 1em;
 }
+
 .container_div {
-    height: calc(100% - 110px);
+    min-height: calc(100% - 148px);
 }
 
 .mat-column-messageDescription {

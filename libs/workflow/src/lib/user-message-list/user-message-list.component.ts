@@ -50,5 +50,4 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
         };
         this.entitySrv.setParentId(this.loginSrv.appCtx.id);
     }
-
 }

@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -9,8 +9,8 @@ import {HolidayRequestService} from '../holiday-request.service';
 import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {HolidayTypeService} from '../holiday-type.service';
-import { WorkflowDialogComponent } from "@ss/workflow";
-import { MatDialog } from "@angular/material/dialog";
+import { WorkflowDialogComponent } from '@ss/workflow';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'ss-holiday-request-dist',
@@ -45,6 +45,7 @@ export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<Hol
 
     public override setupForm(b: HolidayRequest) {
         // Make sure to update the template if you edit the configuration here
+        this.saveButton.visible = this.loginSrv.appCtx.id == 0;
         if (b.id) {
             this.shellSrv.addButton(this.sendBtn);
         }

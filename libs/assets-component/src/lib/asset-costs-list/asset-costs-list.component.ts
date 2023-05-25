@@ -9,9 +9,9 @@ import {AssetCost} from '../assets-api';
 import {of, switchMap} from 'rxjs';
 
 @Component({
-  selector: 'ss-asset-costs-list',
-  templateUrl: './asset-costs-list.component.html',
-  styleUrls: ['./asset-costs-list.component.scss']
+    selector: 'ss-asset-costs-list',
+    templateUrl: './asset-costs-list.component.html',
+    styleUrls: ['./asset-costs-list.component.scss']
 })
 export class AssetCostsListComponent implements OnInit {
     @Input() editable = true;

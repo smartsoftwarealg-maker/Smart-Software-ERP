@@ -14,6 +14,10 @@ import { UserMessageListComponent } from './user-message-list/user-message-list.
 import { UserDocumentListComponent } from './user-document-list/user-document-list.component';
 import { UserDocumentDetailComponent } from './user-document-detail/user-document-detail.component';
 import { WorkflowInboxListComponent } from './workflow-inbox-list/workflow-inbox-list.component';
+import { UserReceivedMessageListComponent } from './user-received-message-list/user-received-message-list.component';
+import {
+    UserReceivedMessageDetailComponent
+} from './user-received-message-detail/user-received-message-detail.component';
 
 @NgModule({
     imports: [
@@ -34,6 +38,8 @@ import { WorkflowInboxListComponent } from './workflow-inbox-list/workflow-inbox
         UserDocumentListComponent,
         UserDocumentDetailComponent,
         WorkflowInboxListComponent,
+        UserReceivedMessageListComponent,
+        UserReceivedMessageDetailComponent,
     ],
 })
 export class WorkflowModule {}
