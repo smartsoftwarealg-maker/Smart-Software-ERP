@@ -31,6 +31,7 @@ export class DocStatusDetailComponent extends BaseEntityDetailComponent<DocStatu
             description: [b.description, Validators.required],
             msgLevel: [b.msgLevel, Validators.required],
             isFinal: [b.isFinal || false, Validators.required],
+            isPostFinal: [b.isPostFinal || false, Validators.required],
         });
     }
 }

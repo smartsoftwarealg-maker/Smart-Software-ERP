@@ -16,7 +16,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
 import {Directive, inject} from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
-import { Agent, AgentService, BranchService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
+import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -28,7 +28,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
     private consumerSrv = inject(ConsumerService);
-    private branchService = inject(BranchService);
+    // private branchService = inject(BranchService);
     private _isManager = false;
     private transaction: Transaction = null;
     private docImportService: DocImportService = inject(DocImportService);
@@ -66,7 +66,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public executionRef = 0;
-    constructor(public entitySrv: BaseEntityService<Transaction>,
+
+    protected constructor(public entitySrv: BaseEntityService<Transaction>,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -117,7 +118,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { transacId: id, senderId: this.loginSrv.appCtx.id }
+                data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.transaction.isValidated }
             });
 
             dialogRef.afterClosed().subscribe(result => {

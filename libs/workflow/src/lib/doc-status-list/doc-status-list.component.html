@@ -23,6 +23,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="isPostFinal">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_POST_FINAL</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.isPostFinal"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>

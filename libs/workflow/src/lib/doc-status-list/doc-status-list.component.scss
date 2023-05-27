@@ -15,7 +15,8 @@
 }
 
 .mat-column-msgLevel,
-.mat-column-isFinal {
+.mat-column-isFinal,
+.mat-column-isPostFinal {
     flex: 1 1 90px;
     border-left: #cdcf solid 1px;
     justify-content: center;

@@ -12,6 +12,7 @@ export interface DocStatus {
     description: string;
     msgLevel: number;
     isFinal: boolean;
+    isPostFinal: boolean;
 }
 
 export interface MailBox {
@@ -37,7 +38,9 @@ export interface UserMessage {
     userId: number;
     messageId: number;
     amount: number;
+    isPostFinal: boolean;
     messageDescription?: string;
+    userName?: string;
 }
 
 export interface UserDocument {

@@ -32,6 +32,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         visible: true,
         click: () => this.sendMessage(),
     };
+    private validated = false;
     supplierAutoCompleteModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     origSupplierLookup        = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     requesterLookup           = new DefaultAutoCompleteModel(this.consumerSrv, 'id', 'denomination');
@@ -58,6 +59,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         this.shellSrv.addButton(this.sendBtn);
         this.saveButton.visible = this.isEditable = this.isEditable && !b.validated;
         this.sendBtn.visible =  b.id > 0; //this.isEditable &&
+        this.validated = b.validated;
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center],
@@ -111,7 +113,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
-                data: { assetRecepId: id, senderId: this.loginSrv.appCtx.id }
+                data: { assetRecepId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
             });
 
             dialogRef.afterClosed().subscribe(result => {

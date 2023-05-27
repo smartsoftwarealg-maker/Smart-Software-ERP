@@ -41,5 +41,6 @@
     "NUMBERING_PROBLEM":                  "Votre politique de numérotation de série ne vous permet pas de créer de nouvelles pièces pendant cette période",
     "INVALID_PRICE":                      "Prix d'inventaire non valide",
     "CLOSED_FILE":                        "Le dossier comptable est clos. Aucune autre modification n'est autorisée",
-    "INVALID_LEAVE_RANGE":                "Période de congé invalide. Veuillez vérifier les dates de congé acquises"
+    "INVALID_LEAVE_RANGE":                "Période de congé invalide. Veuillez vérifier les dates de congé acquises",
+    "POST_FINAL_MSG":                     ""
 }
