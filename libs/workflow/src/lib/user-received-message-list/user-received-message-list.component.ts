@@ -43,7 +43,7 @@ export class UserReceivedMessageListComponent  extends BaseEntityListComponent<U
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ADMINISTRATION_WORKFLOW_RECEIVED_MESSAGES');
+            'ADMINISTRATION_USER_RECEIVED_MESSAGES');
         this.userAutoComplete.onObjectSelected = u => {
             this.entitySrv.setParentId(u?.id || 0);
             this.refresh();

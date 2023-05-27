@@ -271,6 +271,7 @@ export const MISSION_TRAJECTORIES = 'trajectories';
 
 // Attendance
 export const ATTENDANCE_MACHINES_URL = 'attendance-machines';
+export const ABSENCE_MOTIVE_URL = 'absence-motives';
 export const WORK_SHIFTS_URL         = 'work-shifts';
 export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
 export const ATTENDANCE_LOG_URL      = 'attendance-log';
@@ -287,6 +288,7 @@ export const ABS_ATTENDANCE_MACHINES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_
 export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, SHIFT_ASSIGNMENT_URL].join('/');
 export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_LOG_URL].join('/');
 export const ABS_ATTENDANCE_HOLIDAY_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, HOLIDAY_URL].join('/');
+export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_MOTIVE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';

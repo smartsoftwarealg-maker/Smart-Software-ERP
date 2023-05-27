@@ -20,10 +20,14 @@ import { RouterOutlet } from '@angular/router';
 import { AttendanceLogComponent } from './attendance-log/attendance-log.component';
 import { HolidayListComponent } from './holiday-list/holiday-list.component';
 import { HolidayDetailComponent } from './holiday-detail/holiday-detail.component';
-import {AttendanceLogListComponent} from './attendance-log-list/attendance-log-list.component';
-import {AttendanceLogDetailComponent} from './attendance-log-detail/attendance-log-detail.component';
-import {HolidayRequestListComponent} from './holiday-request-list/holiday-request-list.component';
-import {HolidayRequestDetailComponent} from './holiday-request-detail/holiday-request-detail.component';
+import { AttendanceLogListComponent } from './attendance-log-list/attendance-log-list.component';
+import { AttendanceLogDetailComponent } from './attendance-log-detail/attendance-log-detail.component';
+import { HolidayRequestListComponent } from './holiday-request-list/holiday-request-list.component';
+import { HolidayRequestDetailComponent } from './holiday-request-detail/holiday-request-detail.component';
+import {
+    AbsenceMotiveDetailComponent,
+    AbsenceMotiveListComponent
+} from "./absence-motive-list/absence-motive-list.component";
 
 @NgModule({
     imports: [
@@ -53,7 +57,9 @@ import {HolidayRequestDetailComponent} from './holiday-request-detail/holiday-re
         AttendanceLogListComponent,
         AttendanceLogDetailComponent,
         HolidayRequestListComponent,
-        HolidayRequestDetailComponent
+        HolidayRequestDetailComponent,
+        AbsenceMotiveListComponent,
+        AbsenceMotiveDetailComponent
     ],
 })
 export class AttendanceModule {}

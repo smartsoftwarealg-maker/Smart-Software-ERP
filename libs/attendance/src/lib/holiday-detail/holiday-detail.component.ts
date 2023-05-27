@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {HolidayService} from '../Holiday.service';
+import {HolidayService} from '../holiday.service';
 
 @Component({
     selector: 'ss-holiday-detail',

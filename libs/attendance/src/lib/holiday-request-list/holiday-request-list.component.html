@@ -1,3 +1,14 @@
+<div class="size">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="absenceMotiveLookup"
+                          [formControl]="absenceMotiveCtrl">
+        </ss-auto-complete>
+    </mat-form-field>
+</div>
+
 <div class="div_table size">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 

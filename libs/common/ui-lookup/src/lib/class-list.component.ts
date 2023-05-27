@@ -13,7 +13,6 @@ import {
 import {GenerationAccountService} from '@ss/accounting/api-accounts';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
-
 @Component({
     selector: 'ss-class-list',
     templateUrl: './base-templates/class-list.component.html',
