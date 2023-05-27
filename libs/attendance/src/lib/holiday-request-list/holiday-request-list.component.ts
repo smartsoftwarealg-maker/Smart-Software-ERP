@@ -7,11 +7,11 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common';
 import {HolidayRequestService} from '../holiday-request.service';
-import { AbsenceMotiveService } from '../absence-motive.service';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HolidayTypeService } from '../holiday-type.service';
+import { Lookup } from "@ss/common/api-lookup";
 
 @Component({
     selector: 'ss-holiday-request-list',
@@ -20,7 +20,6 @@ import { HolidayTypeService } from '../holiday-type.service';
 })
 export class HolidayRequestListComponent extends BaseEntityListComponent<HolidayRequest> implements OnInit {
     private loginSrv = inject(LoginService);
-    private absenceMotiveSrv = inject(AbsenceMotiveService);
     private vacationType = inject(HolidayTypeService);
 
     absenceMotiveLookup = new DefaultAutoCompleteModel(this.vacationType);
@@ -64,19 +63,12 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
             pagPersistSrv,
             'ATT_HOLIDAY_REQUEST');
         this.pagination.pageSize = 10;
+        this.absenceMotiveLookup.onObjectSelected = (lookup) => this.onType(lookup);
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.subscriptions.push(
-            this.absenceMotiveCtrl
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(code => {
-                    this.entitySrv.absenceMotive = code || 0;
-                    this.refresh();
-                }));
+
+    onType(lookup: Lookup) {
+        this.entitySrv.absenceMotive = lookup?.id || 0;
+        this.refresh();
     }
 }
