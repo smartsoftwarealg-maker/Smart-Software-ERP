@@ -4,11 +4,11 @@ import {MESSAGES_URL, USER_URL, UserMessage} from './workflow-api';
 import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserMessageService extends BaseEntityService<UserMessage> {
 
-  constructor(protected override httpSrv: HttpService) {
-      super(httpSrv, MESSAGES_URL, USER_URL)
-  }
+    constructor(protected override httpSrv: HttpService) {
+        super(httpSrv, MESSAGES_URL, USER_URL);
+    }
 }

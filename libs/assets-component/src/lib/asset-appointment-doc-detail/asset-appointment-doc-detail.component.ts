@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -27,9 +27,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {WorkflowDialogComponent} from '@ss/workflow';
 
 @Component({
-  selector: 'ss-asset-appointment-doc-detail',
-  templateUrl: './asset-appointment-doc-detail.component.html',
-  styleUrls: ['./asset-appointment-doc-detail.component.scss']
+    selector: 'ss-asset-appointment-doc-detail',
+    templateUrl: './asset-appointment-doc-detail.component.html',
+    styleUrls: ['./asset-appointment-doc-detail.component.scss']
 })
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     private officeSrv = inject(OfficeService);
@@ -45,12 +45,13 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         label: 'LOGISTICS_SEND_MESSAGE',
         visible: true,
         click: () => this.sendMessage(),
-    }
+    };
+    private validated = false;
     requesterLookup   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     editMode = false;
-    activity: string = 'todo';
-   // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    activity = 'todo';
+    // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = 0;
     selectedRow: AssetAppointmentLine = null;
     detailData: AssetAppointmentLine[] = [];
@@ -61,7 +62,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
     pagination       = PaginationModel.newInstance();
     displayedColumns        = ['reference', 'description', 'key'];
-    geoLocation = ''
+    geoLocation = '';
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,
@@ -82,6 +83,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     }
 
     public override setupForm(b: ASSAppointmentHeader) {
+        this.validated = b?.validated || false;
         this.editMode = b.id != 0;
         this.activity = b?.activity;
         this.attributeSrv.setParentId(ASSET_MODULE);
@@ -129,7 +131,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     select(row: AssetAppointmentLine) {
         this.selectedId = row?.id || null;
         this.selectedRow = row;
-       // this.inputControl.setValue(row?.assetId || 0);
+        // this.inputControl.setValue(row?.assetId || 0);
     }
 
     deleteAsset() {
@@ -149,7 +151,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                     if (typeof res !== 'boolean') {
                         this.snackBarSrv.showSuccessMessage();
                     }
-                })
+                });
         }
     }
 
@@ -176,7 +178,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             .subscribe(res => {
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
-            })
+            });
     }
 
     openSearchDlg() {
@@ -206,7 +208,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         }
         const site = this.form.get('site').value;
         const building = this.form.get('building').value;
-        let val: ASSAppointmentHeader = this.readForm();
+        const val: ASSAppointmentHeader = this.readForm();
         val.id = this.id;
         val.site = site;
         val.building = building;
@@ -215,7 +217,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             ? this.entitySrv
                 .add(val)
                 .pipe(switchMap(i => { this.id = i; this.detailSrv.setParentId(i); return this.entitySrv.get(i); }),
-                      tap(v => { val.id = v.id; val.serialNumber = v.serialNumber; }))
+                    tap(v => { val.id = v.id; val.serialNumber = v.serialNumber; }))
             : this.entitySrv.update(val);
         obs.subscribe({
             next: () => {
@@ -231,12 +233,12 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 this.form?.reset(val);
                 throw err;
             }
-        })
+        });
     }
 
     openAsset(id: number) {
         if (id > 0) {
-            this.router.navigate(['../../assets', id], { relativeTo: this.route });
+            this.router.navigate(['../../assets', id], { relativeTo: this.route }).then();
         }
     }
 
@@ -246,7 +248,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '400px',
-                data: { assetAppointmentId: id, senderId: this.loginSrv.appCtx.id }
+                data: { assetAppointmentId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
             });
 
             dialogRef.afterClosed().subscribe(result => {

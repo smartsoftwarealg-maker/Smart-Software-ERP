@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import {AssetCostsTypeService} from '../asset-costs-type.service';
     styleUrls: ['./asset-costs-detail.component.scss']
 })
 export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCost> implements OnInit {
+    private costTypeLookupSrv =  inject(AssetCostsTypeService);
     private parentId = 0;
     costTypeLookup = new DefaultAutoCompleteModel(this.costTypeLookupSrv);
     costTypes = [{ id: 1, description: 'ASSET_ACCOUNTANT'}, {id: 2, description: 'ASSET_FISCAL'}];
@@ -31,14 +32,13 @@ export class AssetCostsDetailComponent extends BaseEntityDetailComponent<AssetCo
         public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private costTypeLookupSrv: AssetCostsTypeService) {
+        public lookupsSrv: LookupsService) {
         super(assetCostSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
             'ASSET_COSTS');
     }
 

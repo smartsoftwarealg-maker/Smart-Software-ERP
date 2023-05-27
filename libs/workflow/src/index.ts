@@ -7,3 +7,5 @@ export * from './lib/user-message-list/user-message-list.component';
 export * from './lib/user-document-detail/user-document-detail.component';
 export * from './lib/user-document-list/user-document-list.component';
 export * from './lib/workflow-inbox-list/workflow-inbox-list.component';
+export * from './lib/user-received-message-detail/user-received-message-detail.component';
+export * from './lib/user-received-message-list/user-received-message-list.component';

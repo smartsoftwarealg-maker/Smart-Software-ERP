@@ -19,6 +19,7 @@ import { AutoCompleteModel, Id } from './auto-complete-model';
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
     notFound = false;
+    allowAdd = false;
 
     constructor(
         @Optional() @Self() public ngControl: NgControl,
@@ -40,6 +41,10 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         return this.selected;
     }
 
+    @Input()
+    set canAdd(b: boolean) {
+        this.allowAdd = b;
+    }
     @Input()
     set value(selected: Id) {
         this.setValue(selected, true);

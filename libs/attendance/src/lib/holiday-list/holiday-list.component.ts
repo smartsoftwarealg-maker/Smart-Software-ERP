@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {HolidayService} from '../Holiday.service';
+import {HolidayService} from '../holiday.service';
 
 @Component({
     selector: 'ss-holiday-list',

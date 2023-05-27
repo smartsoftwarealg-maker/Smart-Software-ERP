@@ -14,6 +14,7 @@ type MBData = {
     assetRecepId?: number;
     assetAppointmentId?: number;
     holidayRequestId?: number;
+    validated?: boolean;
 };
 
 @Component({
@@ -34,8 +35,17 @@ export class WorkflowDialogComponent implements OnInit {
     ngOnInit(): void {
         this.messageSrv.setParentId(this.loginSrv.appCtx.id);
         this.userMessages$ = this.messageSrv
-            .getList(0, 100, this.data.amount + '')
-            .pipe(map(res => res.body));
+            .getList(0, 100, (this.data.amount || 0) + '')
+            .pipe(map(res => {
+                const data: UserMessage[] = [];
+                res.body.forEach(e => {
+                    if (data.find(d => d.messageId === e.messageId) === undefined &&
+                        (this.data.validated || !e.isPostFinal)) {
+                        data.push(e);
+                    }
+                });
+                return data;
+            }));
     }
 
     public send() {

@@ -17,7 +17,8 @@ export class DocStatusListComponent extends BaseEntityListComponent<DocStatus> {
     displayedColumns = [
         'description',
         'msgLevel',
-        'isFinal'
+        'isFinal',
+        'isPostFinal'
     ];
 
     constructor(

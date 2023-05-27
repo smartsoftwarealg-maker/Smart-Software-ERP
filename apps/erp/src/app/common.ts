@@ -80,6 +80,7 @@ export const ADMINISTRATION_TRACEABILITY_URL = 'logging';
 export const ADMINISTRATION_DB_UPDATER_URL   = 'db_updater';
 export const ADMIN_DARIRA_URL = 'dairas';
 export const ADMIN_USER_MESSAGES_URL = 'user-messages';
+export const ADMIN_USER_RECEIVED_MESSAGES_URL = 'received-messages';
 export const ADMIN_USER_DOCUMENTS_URL = 'user-documents';
 export const ADMIN_WORKFLOW_INBOX_URL = 'workflow-inbox';
 
@@ -270,6 +271,7 @@ export const MISSION_TRAJECTORIES = 'trajectories';
 
 // Attendance
 export const ATTENDANCE_MACHINES_URL = 'attendance-machines';
+export const ABSENCE_MOTIVE_URL = 'absence-motives';
 export const WORK_SHIFTS_URL         = 'work-shifts';
 export const SHIFT_ASSIGNMENT_URL    = 'shift-assignments';
 export const ATTENDANCE_LOG_URL      = 'attendance-log';
@@ -286,6 +288,7 @@ export const ABS_ATTENDANCE_MACHINES_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_
 export const ABS_SHIFT_ASSIGNMENTS_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, SHIFT_ASSIGNMENT_URL].join('/');
 export const ABS_ATTENDANCE_LOG_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ATTENDANCE_LOG_URL].join('/');
 export const ABS_ATTENDANCE_HOLIDAY_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, HOLIDAY_URL].join('/');
+export const ABS_ATTENDANCE_ABSENCE_MOTIVE_URL = '/' + [MAIN_PAGE_URL, ATTENDANCE_APP_URL, ABSENCE_MOTIVE_URL].join('/');
 
 //Dashboard
 export const DASHBOARD_QUERY_URL = 'queries';
@@ -354,6 +357,7 @@ export const ABS_APP_ARCHIVE_DOCUMENTS_URL       = '/' + [MAIN_PAGE_URL, ADMINIS
 export const ABS_ADMINISTRATION_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOGISTICS_NUMBERING_URL].join('/');
 export const ABS_ADMINISTRATION_WORKFLOW_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, LOGISTICS_WORKFLOW_URL].join('/');
 export const ABS_ADMINISTRATION_USER_MESSAGES_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_USER_MESSAGES_URL].join('/');
+export const ABS_ADMINISTRATION_USER_RECEIVED_MESSAGES_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_USER_RECEIVED_MESSAGES_URL].join('/');
 export const ABS_ADMINISTRATION_USER_DOCUMENT_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_USER_DOCUMENTS_URL].join('/');
 export const ABS_ADMINISTRATION_WORKFLOW_INBOX_URL = '/' + [MAIN_PAGE_URL, ADMINISTRATION_APP_URL, ADMIN_WORKFLOW_INBOX_URL].join('/');
 

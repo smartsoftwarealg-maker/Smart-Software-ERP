@@ -1,50 +1,68 @@
+<div class="size">
+    <mat-form-field class="default-50 sm-100">
+        <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+        <ss-auto-complete matInput
+                          [required]="true"
+                          [model]="absenceMotiveLookup"
+                          [formControl]="absenceMotiveCtrl">
+        </ss-auto-complete>
+    </mat-form-field>
+</div>
+
 <div class="div_table size">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="typeDescription">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.typeDescription}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="docDescription">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.docDescription}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="personId">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_ID</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ID</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.personId}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.lastName}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_FIRST_NAME</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.firstName}}
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="creationTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.creationTime | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="from">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FROM</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.from | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="to">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TO</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.to | date: 'dd/MM/yyyy' }}
             </mat-cell>

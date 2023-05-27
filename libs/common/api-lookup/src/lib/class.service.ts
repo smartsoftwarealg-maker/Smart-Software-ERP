@@ -28,8 +28,4 @@ export class ClassService extends BaseEntityService<Class> {
                 return of(data);
             }));
     }
-
-    showURL() {
-        console.log('**************base url', this.httpSrv.baseUrl);
-    }
 }

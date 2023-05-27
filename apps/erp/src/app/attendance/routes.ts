@@ -1,9 +1,10 @@
-import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, Routes} from '@angular/router';
+import {Routes} from '@angular/router';
 
 import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL,
 } from '@ss/common/api-common';
 import {
+    ABSENCE_MOTIVE_URL,
     ATTENDANCE_LOG_URL,
     ATTENDANCE_MACHINES_URL, HOLIDAY_URL, SHIFT_ASSIGNMENT_URL, WORK_SHIFTS_URL
 } from '../common';
@@ -11,6 +12,8 @@ import {
 
 import {detailGuard, loginGuard, timingGuard} from '../erp-guards';
 import {
+    AbsenceMotiveDetailComponent,
+    AbsenceMotiveListComponent,
     AttendanceLogComponent,
     AttendanceMachineDetailComponent,
     AttendanceMachineListComponent, HolidayDetailComponent, HolidayListComponent,
@@ -19,7 +22,7 @@ import {
     ShiftTimingListComponent,
     WorkShiftDetailComponent,
     WorkShiftListComponent
-} from '@ss/attendance';
+} from "@ss/attendance";
 
 
 export const attendanceRoutes: Routes = [
@@ -39,6 +42,23 @@ export const attendanceRoutes: Routes = [
             {
                 path: ':id',
                 component: AttendanceMachineDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ABSENCE_MOTIVE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AbsenceMotiveListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AbsenceMotiveDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
