@@ -1,68 +1,24 @@
+.table_div {
+    min-height: calc(100% - 64px);
+    overflow-x: auto;
+}
 
-:host {
-    display: block;
-    margin: auto;
+.size_div {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+mat-table {
     width: 100%;
-    max-width: 846px;
+    min-width: 800px;
 }
-
-.content-div {
-    width: 100%;
-    max-width: 846px;
-    min-height: 320px;
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
 .mat-column-description {
-    flex: 0 0 300px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-    @media (max-width: 846px) {
-        flex: 0 0 30%;
-    }
+    flex: 2 1  300px;
 }
 
-.mat-column-company2 {
-    flex:  0 0 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-
-    @media (max-width: 846px) {
-        flex: 0 0 20%;
-    }
-
-}
-
-.mat-column-company3 {
-    flex:  0 0 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-    @media (max-width: 846px) {
-        flex: 0 0 20%;
-    }
-}
-
+.mat-column-company2,
+.mat-column-company3,
 .mat-column-address {
-    flex:  0 0 150px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-    @media (max-width: 846px) {
-        flex: 0 0 30%;
-    }
-}
-
-
-.pagination-container {
-
-    ss-pagination {
-        left: 0;
-        right: 0;
-        position: sticky;
-        margin: auto;
-    }
+    flex:  1 1 150px;
 }

@@ -241,5 +241,7 @@
     "MOBILE": "Cep Telefonu",
     "INVOICE_NUMBER":             "",
     "ATTENDANCE":                 "",
-    "GOTO_DETAIL":   ""
+    "GOTO_DETAIL":   "",
+    "ADDRESS":             "Adres $ addr $",
+    "ADDRESS_AR":          "Addressar"
 }

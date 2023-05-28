@@ -16,7 +16,7 @@ import {LoginService} from '@ss/common/api-common';
 import { filter, Observable, of, Subscription } from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {maxDate, minDate} from '@ss/common/ui-datepicker';
-import { ACC_TRANSACTION_ARCHIVES } from "@ss/common/app-archive";
+import { ACC_TRANSACTION_ARCHIVES } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-transaction-detail',

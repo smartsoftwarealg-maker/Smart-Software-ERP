@@ -9,9 +9,8 @@ import { LoginService, PaginatorPersistenceService } from '@ss/common/api-common
 import {HolidayRequestService} from '../holiday-request.service';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HolidayTypeService } from '../holiday-type.service';
-import { Lookup } from "@ss/common/api-lookup";
+import { Lookup } from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-holiday-request-list',

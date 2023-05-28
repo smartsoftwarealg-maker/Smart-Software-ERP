@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {
     AccFileService,
@@ -9,7 +9,7 @@ import {
     AnnexCodeService, SCALE
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from "@angular/router";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
@@ -25,7 +25,8 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
     templateUrl: './transaction-lines-detail.component.html',
     styleUrls: ['./transaction-lines-detail.component.scss']
 })
-export class TransactionLinesDetailComponent {
+export class TransactionLinesDetailComponent implements OnInit {
+    private router = inject(Router);
     private fileSrv = inject(AccFileService);
     private customerSrv = inject(AgentService);
     private loginSrv = inject(LoginService);
@@ -112,7 +113,7 @@ export class TransactionLinesDetailComponent {
     }
 
     ngOnInit() {
-        this.shellSrv.setGoBackPath('..', this.route);
+        // this.shellSrv.setGoBackPath('..', this.route);
         this.load();
     }
 
@@ -174,7 +175,8 @@ export class TransactionLinesDetailComponent {
     }
 
     cancel() {
-        this.shellSrv.goBack();
+        this.router.navigate(['..'], { relativeTo: this.route }).then();
+        // this.shellSrv.goBack();
     }
 
     save() {

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {
     AccFileService,
@@ -24,7 +24,7 @@ import { MatRadioChange } from '@angular/material/radio';
     templateUrl: './transaction-list.component.html',
     styleUrls: ['./transaction-list.component.scss']
 })
-export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy {
+export class TransactionListComponent extends BaseEntityListComponent<ACCTransaction> implements OnDestroy, OnInit {
     private fileSrv = inject(AccFileService);
     private journalSrv =  inject(AccJournalsService);
     private detailSrv =  inject(AccTransactionLineService);
@@ -99,6 +99,13 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                     distinctUntilChanged(),
                     switchMap(str => this.journalSrv.getUserJournals(str)))
                 .subscribe(res => this.journalList = res.body));
+        this.shellSrv.setGoBackFn(() => {
+            const idx = this.router.url.lastIndexOf('/detail/');
+            const remaining = idx >= 0 ? this.router.url.substring(idx + '/detail/'.length) : '';
+            if (remaining.length < 1) {
+                this.router.navigate(['/app/accounting']).then();
+            }
+        });
     }
 
 
@@ -169,12 +176,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 this.data.forEach(e => e.id = e.fileId * SCALE + e.oid);
                 this.pagination.elementCount = res.itemCount;
             });
-        this.router
-            .navigate(['.'], { relativeTo: this.route })
-            .then(_ => {
-                this.shellSrv.setGoBackPath('..', this.route);
-                // this.showButtons();
-            });
+        // this.router
+        //     .navigate(['.'], { relativeTo: this.route })
+        //     .then(_ => {
+        //         this.shellSrv.setGoBackPath('..', this.route);
+        //         // this.showButtons();
+        //     });
     }
     journalSelected(event: MatSelectionListChange) {
         this.selectedJournal = event.options[0].value;
