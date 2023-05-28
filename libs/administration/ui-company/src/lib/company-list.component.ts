@@ -2,8 +2,8 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Company, CompanyService} from "@ss/administration/api-company";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Company, CompanyService} from '@ss/administration/api-company';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 

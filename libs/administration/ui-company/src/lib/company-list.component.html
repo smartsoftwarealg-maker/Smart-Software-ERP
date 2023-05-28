@@ -1,40 +1,43 @@
-<mat-table mat-table [dataSource]="data" class="main-table">
+<div class="table_div size_div">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
 
-    <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.description}}
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="company2">
-        <mat-header-cell *matHeaderCellDef [translate]="{company: 2}">ADMINISTRATION_COMPANY_NUMBER</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.company2}}
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="company2">
+            <mat-header-cell *matHeaderCellDef [translate]="{company: 2}">ADMINISTRATION_COMPANY_NUMBER
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.company2}}
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="company3">
-        <mat-header-cell *matHeaderCellDef [translate]="{company: 3}">ADMINISTRATION_COMPANY_NUMBER</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.company3}}
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="company3">
+            <mat-header-cell *matHeaderCellDef [translate]="{company: 3}">ADMINISTRATION_COMPANY_NUMBER
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.company3}}
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef [translate]="{addr:1}">ADMINISTRATION_ADDRESS</mat-header-cell>
-        <mat-cell *matCellDef="let e">
-            {{e.address}}
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef [translate]="{addr:1}">COMMON_ADDRESS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.address}}
+            </mat-cell>
+        </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-             *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
-
-<div class="pagination-container b-b-background">
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size_div b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
