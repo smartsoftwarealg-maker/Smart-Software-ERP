@@ -18,5 +18,10 @@ mat-expansion-panel {
         border-style: dotted;
         margin-bottom: 20px;
     }
-
+}
+.center_ctrl {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    align-items: center;
 }

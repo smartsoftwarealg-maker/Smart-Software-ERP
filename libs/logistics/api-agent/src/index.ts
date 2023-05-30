@@ -6,3 +6,4 @@ export * from './lib/suppier.service';
 export * from './lib/customer.service';
 export * from './lib/agent-denomination.pipe';
 export * from './lib/branch.service';
+export * from './lib/agent-center.service';

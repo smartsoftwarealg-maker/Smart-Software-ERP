@@ -97,7 +97,6 @@ export interface Agent {
     blocked: boolean;
     license?: string;
 }
-
 export interface Center {
     id: number;
     description: string;

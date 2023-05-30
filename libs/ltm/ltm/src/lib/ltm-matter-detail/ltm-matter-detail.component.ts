@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '../ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';

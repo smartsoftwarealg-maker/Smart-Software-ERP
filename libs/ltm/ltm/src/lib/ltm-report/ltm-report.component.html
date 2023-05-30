@@ -21,7 +21,7 @@
 
         <div class="list_div">
             <mat-card>
-                <mat-list>
+                <mat-list [disabled]="processing">
                     <mat-list-item *ngFor="let m of matters$ | async"
                                    [class.selected]="selectedMatter?.id == m.id"
                                    (click)="onMatter(m)"

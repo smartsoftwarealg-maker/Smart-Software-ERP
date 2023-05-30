@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {AbstractControl, UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
+import { AbstractControl, FormControl, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     ActivityService,
@@ -16,14 +16,18 @@ import {
     LookupsService,
     PayMode
 } from '@ss/common/api-lookup';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import { Agent, AgentCenter, AgentCenterService, AgentService } from '@ss/logistics/api-agent';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
-import {FormValidators, IsParamService, LoginService} from '@ss/common/api-common';
+import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/api-common';
 import {BankService} from '@ss/administration/api-bank';
-import {Lookup} from '@ss/logistics/ui-doc-import';
+import { Lookup } from '@ss/logistics/ui-doc-import';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AGENT_ARCHIVES} from '@ss/common/app-archive';
+import { MatSelectionListChange } from '@angular/material/list';
+import { CenterService } from '@ss/administration/api-center';
+import { MatDialog } from '@angular/material/dialog';
+import { AgentImportComponent } from './agent-import/agent-import.component';
 
 
 @Component({
@@ -32,10 +36,24 @@ import {AGENT_ARCHIVES} from '@ss/common/app-archive';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private dialog  = inject(MatDialog);
+    private router = inject(Router);
+    private isParamSrv = inject(IsParamService);
     private bankSrv = inject(BankService);
     private loginSrv = inject(LoginService);
     private departmentSrv =  inject(DepartmentService);
     private activitySrv =  inject(ActivityService);
+    private agentCenterSrv = inject(AgentCenterService);
+    private centerSrv = inject(CenterService);
+
+    private invImportBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fas fa-file-import',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.importAgents(),
+    };
 
     public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
@@ -53,6 +71,11 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     currencies: Currency[] = [];
     payModes: PayMode[] = [];
     prices: AgentPrice[] = [];
+    selectedCenter = 0;
+    agentCenters: AgentCenter[] = [];
+
+    centerLookup = new DefaultAutoCompleteModel<Role>(this.centerSrv);
+    centerCtrl = new FormControl<number>(0);
 
     constructor(
         public agentSrv: AgentService,
@@ -61,12 +84,11 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private router: Router,
-        private isParamSrv: IsParamService) {
+        public lookupsSrv: LookupsService) {
         super(agentSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_AGENT');
         // this.isSales = this.route.snapshot.data['sales'];
         this.isSales = this.route.snapshot.data['sales'];
+        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
 
     public override preload(): Observable<any> {
@@ -112,6 +134,10 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     public override setupForm(a: Agent) {
         const urlRegExp = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
 
+        this.agentCenterSrv.setParentId(a?.id ||0);
+        this.agentCenterSrv
+            .getList(0, 1000)
+            .subscribe(res => this.agentCenters = res.body);
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
@@ -249,5 +275,59 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         const idx = this.router.url.indexOf('agents');
         const url = this.router.url.substring(0, idx) + 'agents';
         this.shellSrv.setGoBackPath(url, this.route);
+        this.shellSrv.addButton(this.invImportBtn);
+    }
+
+    centerSelectionChanged(ev: MatSelectionListChange) {
+        this.selectedCenter = ev.options[0].value;
+    }
+
+    deleteCenter() {
+        if (this.selectedCenter > 0) {
+            this.agentCenterSrv
+                .remove(this.selectedCenter)
+                .pipe(switchMap(res => this.agentCenterSrv.getList(0, 1000)))
+                .subscribe(res => {
+                    this.selectedCenter = 0;
+                    this.agentCenters = res.body;
+                    this.snackBarSrv.showSuccessMessage();
+                });
+        }
+    }
+
+    addCenter() {
+        if (this.centerCtrl.value != null) {
+            this.agentCenterSrv
+                .save({ id: 0, parentId: this.id, centerId: this.centerCtrl.value })
+                .pipe(switchMap(res => this.agentCenterSrv.getList(0, 1000)))
+                .subscribe(res => {
+                    this.agentCenters = res.body;
+                    this.snackBarSrv.showSuccessMessage();
+                });
+        }
+    }
+    private importAgents() {
+        if (!this.invImportBtn.disabled) {
+            const id = this.form.controls['id']?.value;
+            const dialogRef = this.dialog.open(AgentImportComponent, {
+                width: '720px',
+                height: '690px',
+                disableClose: true,
+                data: {
+                    transactId: id
+                }
+            });
+
+            dialogRef
+                .afterClosed()
+                .subscribe(result => {
+                    if (result && result['count']) {
+                        this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                    } else {
+                        this.snackBarSrv.showFailureMessage();
+                    }
+                    this.shellSrv.setLoading(false);
+                });
+        }
     }
 }
