@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpService} from "@ss/common/api-common";
-import {Observable} from "rxjs";
-import {ImportInfo} from "./import-info";
-import {HttpParams} from "@angular/common/http";
+import {HttpService} from '@ss/common/api-common';
+import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class InventoryImportService {
 
-  constructor(private httpSrv: HttpService) { }
+    constructor(private httpSrv: HttpService) { }
 
     upload(data: FormData): Observable<any> {
         return this.httpSrv.upload('/inventory/injection', data);

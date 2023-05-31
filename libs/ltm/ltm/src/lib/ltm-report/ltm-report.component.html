@@ -14,14 +14,14 @@
 
         <mat-checkbox [formControl]="anomaly" (click)="onMatter(selectedMatter)" translate>LTM_ANOMALIES_ONLY
         </mat-checkbox>
-        <mat-form-field class="default-100 sm-50">
+        <mat-form-field class="default-100 sm-50" >
             <mat-label translate>COMMON_SEARCH</mat-label>
             <input matInput [formControl]="searchText" type="text">
         </mat-form-field>
 
         <div class="list_div">
             <mat-card>
-                <mat-list>
+                <mat-list [disabled]="processing">
                     <mat-list-item *ngFor="let m of matters$ | async"
                                    [class.selected]="selectedMatter?.id == m.id"
                                    (click)="onMatter(m)"
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="chart_container">
-        <canvas *ngFor="let c of charts" [id]="c" class="chart"></canvas>
+    <div class="chart_container" >
+        <canvas *ngFor="let c of charts" [id]="c" class="chart" [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
     </div>
 </div>

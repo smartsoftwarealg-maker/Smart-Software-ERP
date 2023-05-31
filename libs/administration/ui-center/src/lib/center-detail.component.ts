@@ -68,7 +68,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             nif: [b.nif],
             bankAccount: [b.bankAccount],
             logo: [b.logo],
-            company: [b.company],
+            company: [b.company | this.loginSrv.appCtx.company],
             activity: [b.activity],
             activityCode: [b.activityCode],
             payMonth: [b.payMonth],
@@ -121,5 +121,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             return '';
     }
 
-
+    readForm(): Center {
+        return this.form.getRawValue();
+    }
 }

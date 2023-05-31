@@ -2,6 +2,7 @@ export const AGENT_URL = '/agents';
 export const CUSTOMER_URL = '/customers';
 export const CONSUMER_URL = '/consumers';
 export const BRANCH_URL = '/branches';
+export const CENTER_URL = '/centers';
 export const SUPPLIER_URL = '/suppliers';
 
 export interface Agent {
@@ -60,3 +61,9 @@ export interface Agent {
     license?: string // FIXME:: remove this field
 }
 
+export interface AgentCenter {
+    id: number;
+    parentId: number;
+    centerId: number;
+    centerDescription?: string;
+}
