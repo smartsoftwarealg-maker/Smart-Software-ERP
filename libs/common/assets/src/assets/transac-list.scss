@@ -5,7 +5,7 @@ mat-header-cell {
     text-align: center;
     font-weight: bolder;
     font-size: 0.75em;
-    font-family: Arial;
+    font-family: Arial, serif;
 }
 
 .table-container  {
@@ -15,6 +15,7 @@ mat-header-cell {
     margin: 0 auto;
     flex: 1 0 60%;
     overflow-x: auto;
+    min-height: 350px;
 }
 
 

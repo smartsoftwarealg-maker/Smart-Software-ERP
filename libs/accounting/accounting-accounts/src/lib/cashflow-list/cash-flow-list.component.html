@@ -11,7 +11,7 @@
         </mat-list>
     </div>
     <div class="pending-div">
-        <mat-table mat-table [dataSource]="pendingData" class="main-table">
+        <mat-table mat-table [dataSource]="pendingData" class="main-table" matSort (matSortChange)="sort($event)" >
 
             <ng-container matColumnDef="add">
                 <mat-header-cell *matHeaderCellDef translate></mat-header-cell>
