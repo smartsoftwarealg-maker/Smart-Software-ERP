@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import { map, Observable, of, Subscription } from 'rxjs';
+import { filter, map, Observable, of, Subscription } from "rxjs";
 import {Data, LTMLineMatter} from '../ltm-api';
 import {FormControl} from '@angular/forms';
 import {LtmLineService} from '../ltm-line.service';
@@ -24,7 +24,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
     private _matters$: Observable<LTMLineMatter[]> = of([]);
     processing = false;
     anomaly = new FormControl<boolean>(false);
-    searchText = new FormControl<string>('');
+    searchText = new FormControl<string>({ value: '', disabled: this.processing });
     selectedMatter: LTMLineMatter = null;
     charts: string[] = [];
     matters$ = this._matters$;
@@ -50,6 +50,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
             .valueChanges
             .pipe(
                 debounceTime(300),
+                filter(() => !this.processing),
                 distinctUntilChanged()
             ).subscribe(res => this.matters$ = this._matters$
                 .pipe(map(e => e.filter(d => !res || d.description?.toLowerCase().indexOf(res.toLowerCase()) >= 0))));
@@ -62,7 +63,7 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         if (m) {
             this.processing = true;
             this.testSrv.setParentId(m?.id);
-            this.testingSrv.getData(m?.id, this.anomaly.value, this.from.value, this.to.value)
+            this.testingSrv.getData(m?.matterId, this.anomaly.value, this.from.value, this.to.value)
                 .subscribe({
                     next: res => {
                         this.buildCharts(res);

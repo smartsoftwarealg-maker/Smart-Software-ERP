@@ -23,6 +23,7 @@ mat-card {
     flex: 2 1 75%;
     background: black;
     max-height: calc(100vh - 140px);
+    margin-top: 2em;
 }
 
 .chart_div {
@@ -38,7 +39,7 @@ mat-card {
     display: block;
     width: 40%;
     height: 300px;
-    border-top: black solid 2px;
+    border-bottom: white solid 6px;
 }
 
 mat-card {
