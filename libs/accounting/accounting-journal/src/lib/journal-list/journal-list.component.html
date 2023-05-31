@@ -1,6 +1,6 @@
 <div class="container">
     <div class="container_div">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>

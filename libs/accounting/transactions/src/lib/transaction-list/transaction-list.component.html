@@ -23,7 +23,7 @@
         </mat-card>
         <div class="transactions">
             <div class="container_div">
-                <mat-table mat-table [dataSource]="data" class="main-table">
+                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
                     <ng-container matColumnDef="pieceNo">
                         <mat-header-cell *matHeaderCellDef translate>COMMON_NO_</mat-header-cell>
