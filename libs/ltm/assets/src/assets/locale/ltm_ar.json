@@ -19,5 +19,6 @@
     "BATCH_TESTINGS": "الاختبارات الساعية",
     "LINE_MATTERS":   "مواد الخط",
     "STANDARD_FORMAT": "النسق المعياري",
-    "UPDATE_FORMAT":   "نسيق التحديث"
+    "UPDATE_FORMAT":   "نسيق التحديث",
+    "SHOW_GRAPH":      "تظهر في الرسم البياني"
 }

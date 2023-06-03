@@ -41,6 +41,7 @@ export interface LTMTest {
     descriptionAr?: string;
     variable?: string;
     formula?: string;
+    showGraph: boolean;
 }
 
 export interface LTMMatterTest {

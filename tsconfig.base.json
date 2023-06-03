@@ -319,6 +319,9 @@
             "@ss/purchases/api-reception": [
                 "libs/purchases/api-reception/src/index.ts"
             ],
+            "@ss/purchases/imported-purchases": [
+                "libs/purchases/imported-purchases/src/index.ts"
+            ],
             "@ss/purchases/payment-orders": [
                 "libs/purchases/payment-orders/src/index.ts"
             ],

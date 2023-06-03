@@ -1,6 +1,6 @@
 {
   "name": "ss",
-  "version": "0.1.56",
+  "version": "0.1.57",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -71,7 +71,7 @@
     "@nrwl/js": "15.9.2",
     "@nrwl/linter": "15.9.2",
     "@nrwl/nx-cloud": "16.0.4",
-    "@nrwl/workspace": "16.2.2",
+    "@nrwl/workspace": "16.3.2",
     "@schematics/angular": "15.2.6",
     "@types/jest": "29.5.1",
     "@types/node": "~18.16.1",

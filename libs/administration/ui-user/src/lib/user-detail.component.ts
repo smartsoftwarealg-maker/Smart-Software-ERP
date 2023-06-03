@@ -14,7 +14,7 @@ import {
 } from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {CenterService} from '@ss/administration/api-center';
-import {switchMap} from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import {MatSelectionListChange} from '@angular/material/list';
 import {of} from 'rxjs';
 import {UserListService} from '@ss/common/api-users';
@@ -66,6 +66,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         this.curUser = b;
         this.validId = b.id > 0;
         // Make sure to update the template if you edit the configuration here
+        this.loadCentersAndRoles();
 
         return this.formBuilder.group({
             id: [b.id],
@@ -97,7 +98,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 switchMap(res => !res || res['count'] > 0? this.userSrv.loadRoles(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
-                        this.loadUserRoles(res as UserRole[]);
+                        this.userRoles = res;
                         this.snackBarSrv.showSuccessMessage();
                     }
                 });
@@ -110,14 +111,10 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .addRole(this.curUser.id, this.roleCtrl.value)
                 .pipe(switchMap(res => this.userSrv.loadRoles(this.curUser.id)))
                 .subscribe(res => {
-                    this.loadUserRoles(res);
+                    this.userRoles = res;
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
-    }
-
-    private loadUserRoles(res: UserRole[]) {
-        this.userRoles = res;
     }
 
     roleSelectionChanged(ev: MatSelectionListChange) {
@@ -133,7 +130,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 switchMap(res => !res || res['count'] > 0? this.userSrv.loadCenters(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
-                        this.loadUserCenters(res as UserCenter[]);
+                        this.userCenters = res;
                         this.snackBarSrv.showSuccessMessage();
                     }
                 });
@@ -146,17 +143,24 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .addCenter(this.curUser.id, this.centerCtrl.value)
                 .pipe(switchMap(res => this.userSrv.loadCenters(this.curUser.id)))
                 .subscribe(res => {
-                    this.loadUserCenters(res);
+                    this.userCenters = res;
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
     }
 
-    private loadUserCenters(res: UserCenter[]) {
-        this.userCenters = res;
-    }
 
     centerSelectionChanged(ev: MatSelectionListChange) {
         this.selectedCenter = ev.options[0].value;
+    }
+
+    loadCentersAndRoles() {
+        this.userSrv
+            .loadCenters(this.curUser.id)
+            .pipe(
+                tap(res => this.userCenters = res),
+                switchMap(res => this.userSrv.loadRoles(this.curUser.id))
+            ).subscribe(res => this.userRoles = res);
+
     }
 }

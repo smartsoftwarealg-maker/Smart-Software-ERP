@@ -19,5 +19,6 @@
     "BATCH_TESTINGS": "Hourly testings",
     "LINE_MATTERS":   "Line matters",
     "STANDARD_FORMAT": "Standard format",
-    "UPDATE_FORMAT":   "Update format"
+    "UPDATE_FORMAT":   "Update format",
+    "SHOW_GRAPH":      "Show in graph"
 }

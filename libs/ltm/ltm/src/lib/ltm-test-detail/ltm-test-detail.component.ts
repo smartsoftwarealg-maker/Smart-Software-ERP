@@ -32,6 +32,7 @@ export class LtmTestDetailComponent extends BaseEntityDetailComponent<LTMTest> {
             descriptionAr: [b.descriptionAr],
             variable:      [b.variable],
             formula:       [b.formula],
+            showGraph:     [b.showGraph]
         });
     }
 }
