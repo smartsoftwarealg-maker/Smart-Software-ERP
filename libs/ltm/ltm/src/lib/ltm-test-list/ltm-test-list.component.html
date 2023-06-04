@@ -2,30 +2,39 @@
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef=id>
-            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.id}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.description}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="variable">
-            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.variable}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="formula">
-            <mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header translate>COMMON_FORMULA</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FORMULA</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.formula}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="showGraph">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_SHOW_GRAPH</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.showGraph">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 

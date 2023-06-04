@@ -3,5 +3,6 @@
     "EDIT_ORDER": "Edit purchase order",
     "EDIT_ORDER_LINES": "Edit order lines",
     "QUOTATION": "Supplier quotation",
-    "PURCHASE_REQUEST": "Purchase request"
+    "PURCHASE_REQUEST": "Purchase request",
+    "IMPORT_PURCHASE_ORDER": "Import reception"
 }

@@ -18,6 +18,8 @@ import { LtmLineMatterLookup } from '../ltm-line-matter-lookup';
     styleUrls: ['./ltm-testing-detail.component.scss'],
 })
 export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTesting> implements OnInit {
+    private router  = inject(Router);
+    private loginSrv  = inject(LoginService);
     private matterSrv =  inject(LtmLineMatterService);
     private testLookupSrv =  inject(LtmMatterTestLookupService);
     matterLookup = new LtmLineMatterLookup(this.matterSrv);
@@ -29,9 +31,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LTM_TESTINGS');
         this.matterLookup.onObjectSelected = (m) => this.onMatter(m);
         this.testLookupSrv.setParentId(0);
@@ -54,6 +54,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
             timeStamp:    [b.timeStamp || new Date(), Validators.required],
             creationTime: [b.creationTime || new Date(), Validators.required],
             value:        [b.value || 0, Validators.required],
+            userId:       [b.userId || this.loginSrv.appCtx.id, Validators.required]
         });
     }
 

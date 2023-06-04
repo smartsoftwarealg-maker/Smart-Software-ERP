@@ -41,6 +41,7 @@ export interface LTMTest {
     descriptionAr?: string;
     variable?: string;
     formula?: string;
+    showGraph: boolean;
 }
 
 export interface LTMMatterTest {
@@ -73,6 +74,7 @@ export interface LTMTesting {
     timeStamp: Date;
     creationTime: Date;
     value: number;
+    userId?: number;
     matter?: string;
     test?: string;
 }

@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {AppContext, HttpService, LoginInfo, LoginService, UserRightsService} from '@ss/common/api-common';
-import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import { Component, inject, OnInit } from '@angular/core';
+import {HttpService, LoginService, UserRightsService} from '@ss/common/api-common';
+import {catchError, switchMap, tap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
-import { PayrollMonthService } from '@ss/remuneration/payroll-month';
-import { of, zip } from 'rxjs';
-import { Event, NavigationEnd, Router } from '@angular/router';
+import { of } from 'rxjs';
+import { Router } from '@angular/router';
 import {langAssets, navBar} from '../environments/environment';
 
 @Component({
@@ -14,20 +13,21 @@ import {langAssets, navBar} from '../environments/environment';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    private httpSrv = inject(HttpService);
+    private shellSrv = inject(ShellService);
+    private loginSrv = inject(LoginService);
+    private router = inject(Router);
+    private rightsSrv = inject(UserRightsService);
+
+    public langSrv = inject(LanguageService);
     loaded = false;
 
-    constructor(private httpSrv: HttpService,
-        private shellSrv: ShellService,
-        private langSrv: LanguageService,
-        private loginSrv: LoginService,
-        private monthSelectorSrv: PayrollMonthService,
-        private router: Router,
-        private rightsSrv: UserRightsService) {
+    constructor() {
         //langAssets.forEach(e => langSrv.addSource(e[0], e[1]));
     }
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.55');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.57');
         this.httpSrv
             .init()
             .pipe(

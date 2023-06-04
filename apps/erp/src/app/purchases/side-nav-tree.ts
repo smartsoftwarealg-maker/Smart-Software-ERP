@@ -7,8 +7,11 @@ import {
     ABS_PURCHASE_REPORTS_URL,
     ABS_PURCHASE_REQUEST_URL,
     ABS_LOGISTICS_ARTICLES_URL,
-    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL, ABS_STOCK_ARTICLES_URL, ABS_PURCHASE_RECEPTION_CANCELLATION_URL
-} from '../common';
+    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+    ABS_STOCK_ARTICLES_URL,
+    ABS_PURCHASE_RECEPTION_CANCELLATION_URL,
+    ABS_IMPORT_PURCHASE_RECEPTION_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const purchasesNavTree: SideNavNode = {
@@ -50,6 +53,12 @@ export const purchasesNavTree: SideNavNode = {
             name: 'COMMON_RECEPTION',
             icon: 'fas fa-cart-arrow-down',
             route: ABS_PURCHASE_RECEPTION_URL,
+            accessRights: 'Reception'
+        },
+        {
+            name: 'PURCHASES_IMPORT_PURCHASE_ORDER',
+            icon: 'fa-solid fa-sailboat',
+            route: ABS_IMPORT_PURCHASE_RECEPTION_URL,
             accessRights: 'Reception'
         },
         {

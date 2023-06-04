@@ -3,5 +3,6 @@
     "EDIT_ORDER": "تعديل طلب الشراء",
     "EDIT_ORDER_LINES": "تحديث أسطر الطلب",
     "QUOTATION": "عرض أسعار المورد",
-    "PURCHASE_REQUEST": "طلب شراء"
+    "PURCHASE_REQUEST": "طلب شراء",
+    "IMPORT_PURCHASE_ORDER": "استقبال الاستيراد"
 }

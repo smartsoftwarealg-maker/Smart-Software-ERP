@@ -16,7 +16,7 @@ import {
 import {AssetsService} from '../assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Agent, ConsumerService, CustomerService, SupplierService} from '@ss/logistics/api-agent';
+import { Agent, AgentService, ConsumerService, CustomerService, SupplierService } from "@ss/logistics/api-agent";
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
@@ -39,6 +39,12 @@ import { ASSET_ARCHIVES } from '@ss/common/app-archive';
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
     // Private
+    private router = inject(Router);
+    private agentSrv = inject(AgentService);
+    private customerSrv = inject(CustomerService);
+    private loginSrv = inject(LoginService);
+    private endSrv = inject(AssetEndsService);
+    private dialog = inject(MatDialog);
     private officeSrv =  inject(OfficeService);
     private accountSrv = inject(AccountService);
     private isParamSrv =  inject(IsParamService);
@@ -49,6 +55,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private markSrv =  inject(MarkService);
     private receptionSrv =  inject(AssetReceptionService);
     private isANSEJ = false;
+
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
         label: 'ASSET_IMPORT',
@@ -75,6 +82,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     ccAutoCompleteModel        = new DefaultAutoCompleteModel(this.costCenterSrv);
     officeAutoCompleteModel    = new OfficeAutoComplete(this.officeSrv);
     requesterLookup            = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
+    agentLookup                = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     beneficiaryLookup          = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     customerAutoCompleteModel  = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     receptionLookup            = new ReceptionAutoComplete(this.receptionSrv);
@@ -91,14 +99,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private supplierSrv: SupplierService,
-        private customerSrv: CustomerService,
-        private locationSrv: AssetLocationService,
-        private loginSrv: LoginService,
-        private endSrv: AssetEndsService,
-        private dialog: MatDialog,
-        private router: Router) {
+        public lookupsSrv: LookupsService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,

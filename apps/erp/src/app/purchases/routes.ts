@@ -1,5 +1,10 @@
 import {Routes} from '@angular/router';
-import {ABS_INDEX_URL, CanActivateService, LINES_DETAIL_URL, LIST_URL, CanDeactivateService} from '@ss/common/api-common';
+import {
+    ABS_INDEX_URL,
+    LINES_DETAIL_URL,
+    LIST_URL,
+    CanDeactivateService
+} from '@ss/common/api-common';
 import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
@@ -8,8 +13,8 @@ import {
     PURCHASE_REQUEST_URL,
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
-    PURCHASE_RECEPTION_CANCELLATION_URL
-} from '../common';
+    PURCHASE_RECEPTION_CANCELLATION_URL, IMPORT_PURCHASE_RECEPTION_URL
+} from "../common";
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -36,6 +41,11 @@ import {
     ReceptionCancellationListComponent
 } from '@ss/purchases/reception-cancellation';
 import {loginGuard} from '../erp-guards';
+import {
+    ImportReceptionDetailComponent,
+    ImportReceptionLinesDetailComponent,
+    ImportReceptionListComponent
+} from "@ss/purchases/imported-purchases";
 
 export const routes: Routes = [
     {
@@ -135,6 +145,33 @@ export const routes: Routes = [
             {
                 path: ':id',
                 component: ReceptionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: IMPORT_PURCHASE_RECEPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ImportReceptionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: LINES_DETAIL_URL + '/:id',
+                component: ReceptionLinesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ImportReceptionDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
