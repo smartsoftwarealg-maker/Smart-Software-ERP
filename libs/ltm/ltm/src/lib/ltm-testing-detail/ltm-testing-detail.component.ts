@@ -54,6 +54,7 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
             timeStamp:    [b.timeStamp || new Date(), Validators.required],
             creationTime: [b.creationTime || new Date(), Validators.required],
             value:        [b.value || 0, Validators.required],
+            userId:       [b.userId || this.loginSrv.appCtx.id, Validators.required]
         });
     }
 

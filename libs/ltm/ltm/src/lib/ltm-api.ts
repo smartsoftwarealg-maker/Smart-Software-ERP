@@ -74,6 +74,7 @@ export interface LTMTesting {
     timeStamp: Date;
     creationTime: Date;
     value: number;
+    userId?: number;
     matter?: string;
     test?: string;
 }
