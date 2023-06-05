@@ -132,4 +132,22 @@
     </mat-card-content>
 </mat-card>
 
-<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && id" [parentExecutionRef]="executionRef"></ss-reception-lines-list>
+<div class="btn_div b-primary" >
+    <button mat-raised-button
+            color="{{ selectedIndex == 0? 'accent' : 'primary' }}"
+            type="button"
+            (click)="navigate(0,'./lines-list')">
+        <i class="fa-solid fa-truck-ramp-box"></i>
+        {{ 'COMMON_DETAIL' | translate }}
+    </button>
+
+    <button mat-raised-button
+            color="{{ selectedIndex == 1? 'accent' : 'primary' }}"
+            type="button"
+            (click)="navigate(1,'.')">
+        <i class="fa-solid fa-truck-ramp-box"></i>
+        {{ 'LOGISTICS_EXTRA_COSTS' | translate }}
+    </button>
+</div>
+
+<router-outlet></router-outlet>

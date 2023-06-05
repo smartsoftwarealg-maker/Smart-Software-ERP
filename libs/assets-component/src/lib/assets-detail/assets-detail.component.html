@@ -123,7 +123,7 @@
 
 
     <mat-accordion>
-        <mat-expansion-panel #depreciation expanded="false" [class]="getPanelHeaderClass('depreciation', depreciation)">
+        <mat-expansion-panel #depreciation expanded="false" [class]="depreciation.expanded? 'b-primary-expansion-panel' : ''">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION
@@ -133,7 +133,6 @@
                 <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
                 <ss-date-picker formControlName="acquisitionDate" required="true"></ss-date-picker>
             </mat-form-field>
-
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_SERVICE_DATE</mat-label>

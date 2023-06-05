@@ -1,16 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder } from '@angular/forms';
-import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import { Lookup } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
-import { LoginService, User } from '@ss/common/api-common';
-import { PayMethodService } from '@ss/logistics/api-logistics-common';
-import { UserListService } from '@ss/common/api-users';
+import { LoginService } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 
 

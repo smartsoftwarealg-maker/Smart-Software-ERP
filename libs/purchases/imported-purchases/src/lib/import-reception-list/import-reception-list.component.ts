@@ -12,7 +12,7 @@ import { PayMethodService } from '@ss/logistics/api-logistics-common';
 @Component({
     selector: 'ss-import-reception',
     templateUrl: './import-reception-list.component.html',
-    styleUrls: ['./import-reception-list.component.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class ImportReceptionListComponent extends BaseTransactionListComponent {
 

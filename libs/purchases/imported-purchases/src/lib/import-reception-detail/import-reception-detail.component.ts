@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionDetailComponent
+} from '@ss/logistics/api-transaction';
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,9 +14,11 @@ import { Lookup } from '@ss/common/api-lookup';
 @Component({
     selector: 'ss-import-reception-detail',
     templateUrl: './import-reception-detail.component.html',
-    styleUrls: ['./import-reception-detail.component.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss',
+        './import-reception-detail.component.scss']
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    selectedIndex = 0;
 
 
     constructor(
@@ -50,5 +54,10 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
 
     protected importedDocuments(): Lookup[] {
         return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
+    }
+
+    navigate(idx: number, url: string) {
+        this.selectedIndex = idx;
+        this.router.navigate([url], { relativeTo: this.route }).then();
     }
 }

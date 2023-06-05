@@ -7,10 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionService } from '@ss/stock/api-consumption';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { Agent, ConsumerService } from '@ss/logistics/api-agent';
-import { LoginService, User } from '@ss/common/api-common';
-import { UserListService } from '@ss/common/api-users';
+import { LoginService } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 

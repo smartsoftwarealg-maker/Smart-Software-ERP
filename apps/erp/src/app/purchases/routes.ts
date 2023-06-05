@@ -14,7 +14,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL, IMPORT_PURCHASE_RECEPTION_URL
-} from "../common";
+} from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -45,7 +45,12 @@ import {
     ImportReceptionDetailComponent,
     ImportReceptionLinesDetailComponent,
     ImportReceptionListComponent
-} from "@ss/purchases/imported-purchases";
+} from '@ss/purchases/imported-purchases';
+import { ExtraCostDetailComponent, ExtraCostListComponent, ExtraCostMainComponent } from '@ss/purchases/extra-costs';
+import { doc } from 'prettier';
+import {
+    ImportReceptionLinesListComponent
+} from '../../../../../libs/purchases/imported-purchases/src/lib/import-reception-lines-list/import-reception-lines-list.component';
 
 export const routes: Routes = [
     {
@@ -174,7 +179,12 @@ export const routes: Routes = [
                 component: ImportReceptionDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', component: ExtraCostListComponent },
+                    { path: 'detail', component: ExtraCostDetailComponent },
+                    { path: 'lines-list', component: ImportReceptionLinesListComponent },
+                    { path: 'lines-detail', component: ImportReceptionLinesDetailComponent }
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
