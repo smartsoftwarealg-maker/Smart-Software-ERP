@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
-import {InvoiceService} from '@ss/sales/api-invoice';
+import { InvoiceLinesService, InvoiceService } from "@ss/sales/api-invoice";
 import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
 
 
@@ -22,6 +22,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
 
     constructor(
         protected loginSrv: LoginService,
+        public override detailSrv: InvoiceLinesService,
         public override entitySrv: InvoiceService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -30,7 +31,7 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         protected dialog: MatDialog) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE');
+        super(entitySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE');
     }
 
 

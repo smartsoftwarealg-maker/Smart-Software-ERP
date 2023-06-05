@@ -15,6 +15,7 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
 import {MatDialog} from '@angular/material/dialog';
 import {SalesContractService} from '@ss/logistics/contracts';
+import { PurchaseOrderLinesService } from "./purchase-order-lines.service";
 
 @Component({
     selector: 'ss-ui-order-detail',
@@ -44,6 +45,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
     public groups: CCGroup[];
 
     constructor(public orderService: PurchaseOrderService,
+                public override detailSrv: PurchaseOrderLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -53,7 +55,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
                 public lookupsSrv: LookupsService,
                 protected loginSrv: LoginService,
                 protected dialog: MatDialog) {
-        super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_EDIT_ORDER');
+        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_EDIT_ORDER');
     }
 
     override preload(): Observable<any> {

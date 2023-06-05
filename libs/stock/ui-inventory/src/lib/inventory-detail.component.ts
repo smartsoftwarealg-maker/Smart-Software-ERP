@@ -11,6 +11,7 @@ import {LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
+import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
 
 @Component({
     selector: 'ss-inventory-detail',
@@ -32,13 +33,14 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         protected loginSrv: LoginService,
         protected dialog: MatDialog,
         public inventorySrv: InventoryService,
+        public override detailSrv: InventoryLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY');
+        super(inventorySrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY');
     }
 
 

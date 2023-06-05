@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
 import {DeliveryService} from '@ss/sales/api-delivery';
 import {LoginService} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 
 
 @Component({
@@ -31,6 +31,7 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
     constructor(
         protected loginSrv: LoginService,
         public deliveryService: DeliveryService,
+        public override detailSrv: TransactionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -39,7 +40,17 @@ export class DeliveryDetailComponent extends BaseTransactionDetailComponent impl
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         protected dialog: MatDialog) {
-        super(deliveryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_DELIVERY');
+        super(deliveryService,
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            formBuilder,
+            confirmationSrv,
+            loginSrv,
+            dialog,
+            'SALES_EDIT_DELIVERY');
     }
 
     override preload(): Observable<any> {

@@ -12,7 +12,7 @@ import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {DatePipe} from '@angular/common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, OfferLinesService, Transaction } from "@ss/logistics/api-transaction";
 import {UserListService} from '@ss/common/api-users';
 import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -27,6 +27,7 @@ export class ProformaDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];
 
     constructor(public proformaSrv: SalesProformaService,
+                public override detailSrv: OfferLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -36,7 +37,7 @@ export class ProformaDetailComponent extends BaseTransactionDetailComponent {
                 public lookupsSrv: LookupsService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
-        super(proformaSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv,  loginSrv, dialog, 'LOGISTICS_PROFORMA');
+        super(proformaSrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv,  loginSrv, dialog, 'LOGISTICS_PROFORMA');
     }
 
     override preload(): Observable<any> {

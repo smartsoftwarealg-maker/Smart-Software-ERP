@@ -11,7 +11,7 @@ import {fillObject, LoginService, User} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, Transaction, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {UserListService} from '@ss/common/api-users';
 import {SalesContractService} from '@ss/logistics/contracts';
 import {MatDialog} from '@angular/material/dialog';
@@ -37,6 +37,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];
 
     constructor(public orderService: SalesOrderService,
+                public override detailSrv: TransactionLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -46,7 +47,7 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
                 public lookupsSrv: LookupsService,
                 public override loginSrv: LoginService,
                 public override dialog: MatDialog) {
-        super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
+        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
     }
 
     override preload(): Observable<any> {

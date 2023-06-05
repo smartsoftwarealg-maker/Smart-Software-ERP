@@ -14,6 +14,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {PurchaseRequestService} from '../purchase-request.service';
 import {MatDialog} from '@angular/material/dialog';
+import { PurchaseRequestLinesService } from "../purchase-request-lines.service";
 
 @Component({
     selector: 'ss-purchase-request-detail',
@@ -25,6 +26,7 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
 
 
     constructor(public orderService: PurchaseRequestService,
+        public override detailSrv: PurchaseRequestLinesService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
                 public override route: ActivatedRoute,
@@ -33,7 +35,7 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
                 public override confirmationSrv: ConfirmationDialogService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
-        super(orderService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_PURCHASE_REQUEST');
+        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_PURCHASE_REQUEST');
     }
 
     override preload(): Observable<any> {

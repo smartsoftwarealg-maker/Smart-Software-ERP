@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-    BaseTransactionDetailComponent
-} from '@ss/logistics/api-transaction';
+    BaseTransactionDetailComponent, TransactionLinesService
+} from "@ss/logistics/api-transaction";
 import { ReceptionService } from '@ss/purchases/api-reception';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +24,7 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
     constructor(
         public receptionService: ReceptionService,
         public override shellSrv: ShellService,
+        public override detailSrv: TransactionLinesService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override router: Router,
@@ -31,7 +32,7 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         public override confirmationSrv: ConfirmationDialogService,
         protected override readonly loginSrv: LoginService,
         protected override dialog: MatDialog) {
-        super(receptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_RECEPTION');
+        super(receptionService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_RECEPTION');
     }
 
     protected showImportButton(): boolean {

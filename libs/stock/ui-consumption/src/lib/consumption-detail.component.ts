@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder } from '@angular/forms';
-import { CCGroup, Lookup, LookupsService } from '@ss/common/api-lookup';
+import { CCGroup, Lookup } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionService } from '@ss/stock/api-consumption';
 import { Observable } from 'rxjs';
@@ -10,6 +10,7 @@ import { tap } from 'rxjs/operators';
 import { LoginService } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
+import { ConsumptionLinesService } from "@ss/stock/api-consumption-lines";
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];
 
     constructor(
-        public consumptionService: ConsumptionService,
+        public consumptionSrv: ConsumptionService,
+        public override detailSrv: ConsumptionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -30,7 +32,7 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
         public override confirmationSrv: ConfirmationDialogService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog) {
-        super(consumptionService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
+        super(consumptionSrv, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_CONSUMPTION');
     }
 
 

@@ -8,7 +8,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import {BaseEntityService} from '@ss/common/api-base-entity';
+import { BaseEntityExtendedService, BaseEntityService } from "@ss/common/api-base-entity";
 import {Transaction} from './transaction';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
@@ -21,6 +21,7 @@ import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { SalesContractService } from '@ss/logistics/contracts';
+import { TransactionLine } from "./transaction-line";
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction>  {
@@ -67,16 +68,18 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public executionRef = 0;
 
-    protected constructor(public entitySrv: BaseEntityService<Transaction>,
-                public override shellSrv: ShellService,
-                public override snackBarSrv: SnackBarService,
-                public override route: ActivatedRoute,
-                public router: Router,
-                public override formBuilder: UntypedFormBuilder,
-                public override confirmationSrv: ConfirmationDialogService,
-                protected loginSrv: LoginService,
-                protected dialog: MatDialog,
-                public override title: string) {
+    protected constructor(
+        public entitySrv: BaseEntityService<Transaction>,
+        public detailSrv: BaseEntityExtendedService<TransactionLine>,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public router: Router,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        protected loginSrv: LoginService,
+        protected dialog: MatDialog,
+        public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
     }
 
@@ -145,7 +148,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.transaction.id)
-                        // .pipe(switchMap(_ => this.detail?.loadDetailLines()))
                         .subscribe({
                             next: res => {
                                 this.executionRef++;
