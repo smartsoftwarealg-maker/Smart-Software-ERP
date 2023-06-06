@@ -43,14 +43,10 @@ import {
 import {loginGuard} from '../erp-guards';
 import {
     ImportReceptionDetailComponent,
-    ImportReceptionLinesDetailComponent,
+    ImportReceptionLinesDetailComponent, ImportReceptionLinesListComponent,
     ImportReceptionListComponent
 } from '@ss/purchases/imported-purchases';
-import { ExtraCostDetailComponent, ExtraCostListComponent, ExtraCostMainComponent } from '@ss/purchases/extra-costs';
-import { doc } from 'prettier';
-import {
-    ImportReceptionLinesListComponent
-} from '../../../../../libs/purchases/imported-purchases/src/lib/import-reception-lines-list/import-reception-lines-list.component';
+import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
 
 export const routes: Routes = [
     {
@@ -169,7 +165,7 @@ export const routes: Routes = [
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
-                component: ReceptionLinesDetailComponent,
+                component: ImportReceptionLinesDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
@@ -180,10 +176,21 @@ export const routes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', pathMatch: 'full', component: ExtraCostListComponent },
-                    { path: 'detail', component: ExtraCostDetailComponent },
+                    { path: '', pathMatch: 'full', component: ImportReceptionLinesListComponent },
+                    { path: 'costs-list', component: ExtraCostListComponent },
                     { path: 'lines-list', component: ImportReceptionLinesListComponent },
-                    { path: 'lines-detail', component: ImportReceptionLinesDetailComponent }
+                    {
+                        path: 'costs-detail',
+                        children: [
+                            { path: ':id', component: ExtraCostDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ImportReceptionLinesDetailComponent },
+                        ]
+                    }
                 ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

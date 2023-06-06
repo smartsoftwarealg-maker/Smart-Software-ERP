@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BaseTransactionLinesDetailComponent2, TransactionLinesService } from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-import-reception-lines-detail',
     templateUrl: './import-reception-lines-detail.component.html',
-    styleUrls: ['./import-reception-lines-detail.component.scss'],
+    styleUrls: ['./import-reception-lines-detail.component.scss',
+        '../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class ImportReceptionLinesDetailComponent {}
+export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent2 implements OnInit, OnDestroy {
+    constructor(protected receptionLinesSrv: TransactionLinesService) {
+        super(receptionLinesSrv);
+    }
+}

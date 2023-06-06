@@ -8,7 +8,7 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { BaseEntityExtendedService, BaseEntityService } from "@ss/common/api-base-entity";
+import { BaseEntityExtendedService, BaseEntityService } from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
@@ -21,7 +21,7 @@ import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { SalesContractService } from '@ss/logistics/contracts';
-import { TransactionLine } from "./transaction-line";
+import { TransactionLine } from './transaction-line';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction>  {
@@ -67,6 +67,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public supplierAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public consumerAutoCompleteModel   = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public executionRef = 0;
+    public formId = 0;
 
     protected constructor(
         public entitySrv: BaseEntityService<Transaction>,
@@ -81,6 +82,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         protected dialog: MatDialog,
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
+        this.projectSrv.setParentId(0);
     }
 
     public override canDeactivate(): Observable<boolean> {
@@ -175,7 +177,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 this.shellSrv.addButton(this.importBtn);
             }
         }
+        this.detailSrv.setParentId(b.id || 0);
+        this.projectSrv.setParentId(b.agent);
         this._isManager = this.loginSrv.appCtx.manager;
+        this.formId = b.id || 0;
 
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;

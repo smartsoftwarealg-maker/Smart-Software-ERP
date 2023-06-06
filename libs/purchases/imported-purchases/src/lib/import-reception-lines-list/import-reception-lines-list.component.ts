@@ -9,7 +9,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 @Component({
     selector: 'ss-import-reception-lines-list',
     templateUrl: './import-reception-lines-list.component.html',
-    styleUrls: ['./import-reception-lines-list.component.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class ImportReceptionLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [
@@ -35,12 +35,9 @@ export class ImportReceptionLinesListComponent extends BaseTransactionLinesListC
     }
 
     override showDetail(id: number) {
-        const params = {
-            parent: this.parentId
-        };
+
         this.router.navigate(
-            [['../lines-detail', id || 0]],
-            {relativeTo: this.route.parent, queryParams: params}
-        ).then();
+            ['lines-detail', id || 0],
+            { relativeTo: this.route.parent}).then();
     }
 }

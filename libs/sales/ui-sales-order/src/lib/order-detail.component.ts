@@ -1,19 +1,14 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable, of, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
+import {fillObject, LoginService} from '@ss/common/api-common';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import { BaseTransactionDetailComponent, Transaction, TransactionLinesService } from "@ss/logistics/api-transaction";
-import {UserListService} from '@ss/common/api-users';
-import {SalesContractService} from '@ss/logistics/contracts';
+import { BaseTransactionDetailComponent, Transaction, TransactionLinesService } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
 

@@ -144,10 +144,10 @@
     <button mat-raised-button
             color="{{ selectedIndex == 1? 'accent' : 'primary' }}"
             type="button"
-            (click)="navigate(1,'.')">
+            (click)="navigate(1,'./costs-list')">
         <i class="fa-solid fa-truck-ramp-box"></i>
         {{ 'LOGISTICS_EXTRA_COSTS' | translate }}
     </button>
 </div>
 
-<router-outlet></router-outlet>
+<router-outlet *ngIf="formId"></router-outlet>

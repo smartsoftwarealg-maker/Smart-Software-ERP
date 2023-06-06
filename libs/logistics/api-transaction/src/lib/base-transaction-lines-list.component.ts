@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, Subscription} from 'rxjs';
+import { Observable, of, Subscription } from "rxjs";
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
@@ -38,12 +38,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.route
-            .params
-            .pipe(map(p => +p['id']),
-                tap(id => this.parentId = id),
-                switchMap(_ => this.loadDetailLines()))
-            .subscribe(_ => this.shellSrv.setLoading(false));
+        this.parentId = this.detailSrv.getParentId();
+        this.loadDetailLines().subscribe(_ => this.shellSrv.setLoading(false));
+
         this.subscription = this.searchText
             .valueChanges
             .pipe(
@@ -53,10 +50,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
-        // this.shellSrv.setLoading(true);
-        this.detailSrv.setParentId(this.parentId);
-        return this.detailSrv
-            .getPage(this.pagination, this.searchText.value, null)
+        return (this.detailSrv.getParentId()? this.detailSrv.getPage(this.pagination, this.searchText.value, null) : of([]))
             .pipe(tap(data => this.data = data));
     }
 

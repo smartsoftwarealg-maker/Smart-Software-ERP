@@ -11,6 +11,7 @@ import {UserListService} from '@ss/common/api-users';
 import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
 import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
+import { InventoryExitLinesService } from "@ss/stock/api-inventory-exit-lines";
 
 @Component({
     selector: 'ss-inventory-exit-detail',
@@ -23,7 +24,7 @@ export class InventoryExitDetailComponent extends BaseTransactionDetailComponent
         protected loginSrv: LoginService,
         protected dialog: MatDialog,
         public inventoryExitService: InventoryExitService,
-        public override detailSrv: InventoryLinesService,
+        public override detailSrv: InventoryExitLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

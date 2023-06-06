@@ -32,7 +32,6 @@ export class TreasuryBankExpenseService extends BaseTreasuryTransactionService {
 export class TransactionLineService extends BaseEntityExtendedService<TTransactionLine> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, DETAIL_URL, TRANSACTIONS_URL);
-        this.setParentId(0);
     }
 }
 
