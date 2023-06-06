@@ -176,6 +176,7 @@ export const routes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
+                    ...docInfoRoutes,
                     { path: '', pathMatch: 'full', component: ImportReceptionLinesListComponent },
                     { path: 'costs-list', component: ExtraCostListComponent },
                     { path: 'lines-list', component: ImportReceptionLinesListComponent },
