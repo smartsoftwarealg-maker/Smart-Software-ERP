@@ -176,10 +176,12 @@ export const routes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    ...docInfoRoutes,
-                    { path: '', pathMatch: 'full', component: ImportReceptionLinesListComponent },
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
                     { path: 'costs-list', component: ExtraCostListComponent },
-                    { path: 'lines-list', component: ImportReceptionLinesListComponent },
+                    { path: 'lines-list',
+                        component: ImportReceptionLinesListComponent,
+                        children: docInfoRoutes
+                    },
                     {
                         path: 'costs-detail',
                         children: [
@@ -191,7 +193,8 @@ export const routes: Routes = [
                         children: [
                             { path: ':id', component: ImportReceptionLinesDetailComponent },
                         ]
-                    }
+                    },
+                    ...docInfoRoutes
                 ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},

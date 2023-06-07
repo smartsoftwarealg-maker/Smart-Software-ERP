@@ -145,5 +145,6 @@
     "CHECKOUT":         "",
     "PAYER":            "",
     "SEND_MESSAGE":     "",
-    "QTY":              ""
+    "QTY":              "",
+    "EXTRA_COSTS":      ""
 }

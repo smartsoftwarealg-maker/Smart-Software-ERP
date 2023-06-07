@@ -153,5 +153,6 @@
     "PAYER":            "Payer",
     "SEND_MESSAGE":     "Send a message",
     "QTY":              "Quantity",
-    "CHECK_PRICES":     "Check prices"
+    "CHECK_PRICES":     "Check prices",
+    "EXTRA_COSTS":      "Diverse costs"
 }

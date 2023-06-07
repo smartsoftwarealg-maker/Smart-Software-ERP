@@ -26,6 +26,7 @@ import {UserListService} from '@ss/common/api-users';
     templateUrl: './user-detail.component.html'
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
+    private userSrv = inject(UserService);
     private loginSrv = inject(LoginService);
     private centerSrv = inject(CenterService);
     private roleServ = inject(RoleService);
@@ -50,7 +51,6 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
 
     constructor(
         private userListSrv: UserListService,
-        private userSrv: UserService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -58,6 +58,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(userListSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_USERS');
+        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
 
 

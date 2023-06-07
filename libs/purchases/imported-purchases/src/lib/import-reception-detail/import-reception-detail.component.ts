@@ -19,6 +19,7 @@ import { filter } from 'rxjs';
         './import-reception-detail.component.scss']
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
+    private URLs = ['./lines-list', './costs-list'];
     selectedIndex = 0;
 
     constructor(
@@ -56,6 +57,7 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
             }
         });
         this.subscriptions.push(sub);
+        this.disableControls(this.router.url);
     }
 
     private disableControls(url: string) {
@@ -73,7 +75,15 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
     }
 
     navigate(idx: number, url: string) {
-        this.selectedIndex = idx;
-        this.router.navigate([url], { relativeTo: this.route }).then();
+        if (this.saveButton.visible) {
+            this.selectedIndex = idx;
+            this.router.navigate([url], { relativeTo: this.route }).then();
+        }
+    }
+
+    onTabChange(idx: number) {
+        if (this.saveButton.visible) {
+            this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
+        }
     }
 }

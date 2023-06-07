@@ -132,8 +132,8 @@ export class DocInfoComponent {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
             const backUrl = this.router.url.indexOf('/lines-') > 0 ||
-                          this.router.url.indexOf('/costs-') > 0? '..' : '';
-            this.router.navigate([backUrl, this.selectedEntry.url],
+                          this.router.url.indexOf('/costs-') > 0? ['..', this.selectedEntry.url] : [this.selectedEntry.url];
+            this.router.navigate([this.selectedEntry.url],
                 {
                     relativeTo: this.route,
                     queryParamsHandling: 'merge',
