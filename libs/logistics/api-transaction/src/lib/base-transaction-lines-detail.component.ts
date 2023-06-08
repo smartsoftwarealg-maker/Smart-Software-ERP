@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/stock/api-article';
-import {LookupsService, LotsService, Store} from '@ss/common/api-lookup';
+import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {fillObject, LoginService} from '@ss/common/api-common';

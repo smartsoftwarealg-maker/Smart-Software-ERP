@@ -31,7 +31,7 @@ import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {SalesAdsDetailComponent, SalesAdsListComponent} from '@ss/sales/ecommerce';
 import {loginGuard} from '../erp-guards';
 
-export const lookupRoutes: Routes = []
+export const lookupRoutes: Routes = [];
 
 export const mainRoutes: Routes = [
     {

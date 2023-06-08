@@ -6,6 +6,7 @@ import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {OfferLinesService} from '@ss/logistics/api-transaction';
+import { PurchaseOrderLinesService } from "./purchase-order-lines.service";
 
 @Component({
   selector: 'ss-order-lines-list',
@@ -24,7 +25,7 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
     ];
 
     constructor(
-        public override detailSrv: OfferLinesService,
+        public override detailSrv: PurchaseOrderLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

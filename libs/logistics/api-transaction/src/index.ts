@@ -7,3 +7,5 @@ export * from './lib/base-transaction-list.component';
 export * from './lib/base-transaction-lines-detail.component';
 export * from './lib/transaction-lines.class';
 export * from './lib/offer-lines.service';
+export * from './lib/base-transaction-lines-detail2.component';
+export * from './lib/offer-lines.service';

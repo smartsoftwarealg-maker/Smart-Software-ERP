@@ -14,7 +14,7 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL, IMPORT_PURCHASE_RECEPTION_URL
-} from "../common";
+} from '../common';
 import {
     PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
     PurchaseOrderListComponent
@@ -43,9 +43,10 @@ import {
 import {loginGuard} from '../erp-guards';
 import {
     ImportReceptionDetailComponent,
-    ImportReceptionLinesDetailComponent,
+    ImportReceptionLinesDetailComponent, ImportReceptionLinesListComponent,
     ImportReceptionListComponent
-} from "@ss/purchases/imported-purchases";
+} from '@ss/purchases/imported-purchases';
+import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';
 
 export const routes: Routes = [
     {
@@ -164,7 +165,7 @@ export const routes: Routes = [
             },
             {
                 path: LINES_DETAIL_URL + '/:id',
-                component: ReceptionLinesDetailComponent,
+                component: ImportReceptionLinesDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
@@ -174,7 +175,27 @@ export const routes: Routes = [
                 component: ImportReceptionDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'costs-list', component: ExtraCostListComponent },
+                    { path: 'lines-list',
+                        component: ImportReceptionLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'costs-detail',
+                        children: [
+                            { path: ':id', component: ExtraCostDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ImportReceptionLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

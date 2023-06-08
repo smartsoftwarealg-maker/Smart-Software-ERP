@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {CCGroup, Lookup} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,13 +24,14 @@ export class TransferReceptionDetailComponent extends BaseTransactionDetailCompo
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog,
         public transferService: TransferReceptionService,
+        public override detailSrv: TransactionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFER_RECEPTIONS');
+        super(transferService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFER_RECEPTIONS');
     }
 
     override preload(): Observable<any> {

@@ -2,10 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginationModel} from '@ss/common/api-common';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent} from "@ss/logistics/api-transaction";
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
@@ -35,13 +34,13 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              articleSrv,
-              storeNamesSrv,
-              confirmationSrv);
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv);
     }
 
     @Input()

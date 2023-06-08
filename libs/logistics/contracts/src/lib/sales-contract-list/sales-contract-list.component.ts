@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
     styleUrls: ['./sales-contract-list.component.scss'],
 })
 export class SalesContractListComponent extends BaseEntityListComponent<Project> {
+    private agentSrv = inject(AgentService);
     agentId     = new FormControl<number>(0);
     agentLookup = new AgentLookupModel(this.agentSrv);
     displayedColumns = [
@@ -35,8 +36,7 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private agentSrv: AgentService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,

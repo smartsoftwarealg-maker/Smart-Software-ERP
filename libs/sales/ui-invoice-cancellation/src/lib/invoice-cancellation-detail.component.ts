@@ -9,7 +9,7 @@ import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
 import {MatDialog} from '@angular/material/dialog';
 import {InvoiceCancellationService} from '@ss/sales/api-invoice-cancellation';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
 
@@ -21,7 +21,7 @@ import {UserListService} from '@ss/common/api-users';
 })
 export class InvoiceCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     constructor(
-        private langSrv: LanguageService,
+        public override detailSrv: TransactionLinesService,
         protected override loginSrv: LoginService,
         public invoiceService: InvoiceCancellationService,
         public override shellSrv: ShellService,
@@ -33,7 +33,7 @@ export class InvoiceCancellationDetailComponent extends BaseTransactionDetailCom
         public lookupsSrv: LookupsService,
         protected dialog: MatDialog,
     ) {
-        super(invoiceService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE_CANCEL');
+        super(invoiceService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_INVOICE_CANCEL');
     }
 
 

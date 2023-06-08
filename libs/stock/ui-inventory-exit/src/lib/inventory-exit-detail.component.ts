@@ -8,8 +8,10 @@ import {InventoryExitService} from '@ss/stock/api-inventory-exit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
+import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
+import { InventoryExitLinesService } from "@ss/stock/api-inventory-exit-lines";
 
 @Component({
     selector: 'ss-inventory-exit-detail',
@@ -19,17 +21,17 @@ import {MatDialog} from '@angular/material/dialog';
 export class InventoryExitDetailComponent extends BaseTransactionDetailComponent {
 
     constructor(
-        private langSrv: LanguageService,
         protected loginSrv: LoginService,
         protected dialog: MatDialog,
         public inventoryExitService: InventoryExitService,
+        public override detailSrv: InventoryExitLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(inventoryExitService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY_EXIT');
+        super(inventoryExitService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_INVENTORY_EXIT');
     }
 
 

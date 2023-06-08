@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
@@ -25,7 +25,7 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
     public groups: CCGroup[];
 
     constructor(
-        private langSrv: LanguageService,
+        public override detailSrv: TransactionLinesService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog,
         public transferService: TransferService,
@@ -35,7 +35,7 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(transferService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFERS');
+        super(transferService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFERS');
     }
 
     override preload(): Observable<any> {

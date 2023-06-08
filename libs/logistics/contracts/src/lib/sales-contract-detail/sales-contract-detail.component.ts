@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl, UntypedFormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {AwardProcedureService, LookupsService, ProjectMotiveService} from '@ss/common/api-lookup';
 import {SalesContractService} from '../sales-contract.service';
@@ -21,6 +21,13 @@ import {Article, ArticleService} from '@ss/stock/api-article';
     styleUrls: ['./sales-contract-detail.component.scss'],
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
+    private loginSrv = inject(LoginService);
+    private customerSrv = inject(AgentService);
+    private typeSrv = inject(ProjectTypeService);
+    private motiveSrv = inject(ProjectMotiveService);
+    private awardSrv = inject(AwardProcedureService);
+    private articleSrv = inject(ArticleService);
+    private contractArticleSrv = inject(ContractArticleService);
     shownPanel: string = null;
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
@@ -35,14 +42,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         private  router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private customerSrv: AgentService,
-        private typeSrv: ProjectTypeService,
-        private motiveSrv: ProjectMotiveService,
-        private awardSrv: AwardProcedureService,
-        private articleSrv: ArticleService,
-        private contractArticleSrv: ContractArticleService,
-        private loginSrv: LoginService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CONTRACTS');
         this.entitySrv.setParentId(0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);

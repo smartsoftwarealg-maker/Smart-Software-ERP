@@ -78,5 +78,6 @@
     "USER_MESSAGES":       "رسائل المستخدم",
     "USER_DOCUMENTS":      "وثائق المستخدم",
     "WORKFLOW_INBOX":      "صندوق الوارد",
-    "USER_RECEIVED_MESSAGES": ""
+    "USER_RECEIVED_MESSAGES": "الرسائل المستلمة",
+    "POST_FINAL":             "ما بعد النهائي"
 }

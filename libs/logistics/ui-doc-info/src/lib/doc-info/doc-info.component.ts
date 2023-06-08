@@ -131,12 +131,14 @@ export class DocInfoComponent {
         if (this.selectedEntry != null) {
             delete this.params_['compensated'];
             this.params_.compensated = this.selectedEntry.name === 'debts_2'? 'false' : 'true';
-            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^entyry', this.selectedEntry);
-            this.router.navigate([this.selectedEntry.url], {
-                relativeTo: this.route,
-                queryParamsHandling: 'merge',
-                queryParams: this.params_
-            });
+            const backUrl = this.router.url.indexOf('/lines-') > 0 ||
+                          this.router.url.indexOf('/costs-') > 0? ['..', this.selectedEntry.url] : [this.selectedEntry.url];
+            this.router.navigate([this.selectedEntry.url],
+                {
+                    relativeTo: this.route,
+                    queryParamsHandling: 'merge',
+                    queryParams: this.params_
+                }).then();
         }
     }
 }

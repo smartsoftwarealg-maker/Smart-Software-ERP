@@ -78,5 +78,6 @@
     "USER_MESSAGES":        "Messages utilisateur",
     "USER_DOCUMENTS":      "Documents utilisateur",
     "WORKFLOW_INBOX":      "Boîte de réception",
-    "USER_RECEIVED_MESSAGES": ""
+    "USER_RECEIVED_MESSAGES": "Messages reçus",
+    "POST_FINAL":             "Après la finale"
 }

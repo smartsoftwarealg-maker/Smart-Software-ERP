@@ -1,16 +1,11 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
-import {ReceptionLinesListComponent} from '@ss/purchases/ui-reception';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, User} from '@ss/common/api-common';
-import {Agent, SupplierService} from '@ss/logistics/api-agent';
-import {Currency, CurrencyService, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
-import {ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import { Component, OnInit } from '@angular/core';
+import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import {LoginService} from '@ss/common/api-common';
+import {Lookup} from '@ss/common/api-lookup';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {UserListService} from '@ss/common/api-users';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {MatDialog} from '@angular/material/dialog';
 import {ReceptionCancellationService} from '../reception-cancellation.service';
 
@@ -23,6 +18,7 @@ export class ReceptionCancellationDetailComponent extends BaseTransactionDetailC
 
     constructor(
         public override entitySrv: ReceptionCancellationService,
+        public override detailSrv: TransactionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -32,6 +28,7 @@ export class ReceptionCancellationDetailComponent extends BaseTransactionDetailC
         protected override readonly loginSrv: LoginService,
         protected override dialog: MatDialog) {
         super(entitySrv,
+            detailSrv,
             shellSrv,
             snackBarSrv,
             route,

@@ -8,10 +8,11 @@ import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LanguageService, LoginService, User} from '@ss/common/api-common';
 import {UserListService} from '@ss/common/api-users';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
 import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
+import { InventoryEntryLinesService } from "@ss/stock/api-inventory-entry-lines";
 
 
 @Component({
@@ -33,17 +34,17 @@ export class InventoryEntryDetailComponent extends BaseTransactionDetailComponen
 
 
     constructor(
-        private langSrv: LanguageService,
         protected loginSrv: LoginService,
         protected dialog: MatDialog,
         public inventoryService: InventoryEntryService,
+        public override detailSrv: InventoryEntryLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(inventoryService, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_INVENTORY_ENTRY');
+        super(inventoryService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_INVENTORY_ENTRY');
     }
 
     ngOnInit() {
