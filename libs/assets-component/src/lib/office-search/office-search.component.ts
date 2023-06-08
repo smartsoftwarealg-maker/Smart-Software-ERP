@@ -1,34 +1,34 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup, Office, OfficeService} from '@ss/common/api-lookup';
 import {AssetLocationService} from '../asset-location.service';
-import {AssetsBuildingService} from '../assets-building.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {UntypedFormControl} from '@angular/forms';
-import {Subscription, switchMap} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import {Subscription} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-office-search',
-  templateUrl: './office-search.component.html',
-  styleUrls: ['./office-search.component.scss']
+    selector: 'ss-office-search',
+    templateUrl: './office-search.component.html',
+    styleUrls: ['./office-search.component.scss']
 })
 export class OfficeSearchComponent implements OnDestroy, OnInit {
+    private officeSrv = inject(OfficeService);
+    private locationSrv = inject(AssetLocationService);
+
     subscriptions: Subscription[] = [];
     selectedOffice: Office | null = null;
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     buildings: Lookup[] = [];
     floors:    Lookup[] = [];
 
-    locationFF = new UntypedFormControl(0);
-    buildingFF = new UntypedFormControl(0);
-    floorFF    = new UntypedFormControl(0);
+    locationFF = new FormControl<number>(0);
+    buildingFF = new FormControl<number>(0);
+    floorFF    = new FormControl<number>(0);
     list: Office[] = [];
 
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: Office,
-                private officeSrv: OfficeService,
-                private locationSrv: AssetLocationService) {
+                @Inject(MAT_DIALOG_DATA) public data: Office) {
     }
 
     close() {
