@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ExtraCostMainComponent } from './extra-cost-main/extra-cost-main.component';
 import { ExtraCostListComponent } from './extra-cost-list/extra-cost-list.component';
 import { ExtraCostDetailComponent } from './extra-cost-detail/extra-cost-detail.component';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { MatSortModule } from '@angular/material/sort';

@@ -43,7 +43,7 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
     articleAutoCompleteModel: ArticleAutoCompleteModel = null;
     storeAutoCompleteModel: LotAutoCompleteModel = null;
 
-    protected constructor(protected entitySrv: TransactionLinesService) {
+    protected constructor(protected entitySrv: TransactionLinesService, protected document: number) {
         this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
         this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
         this.articleAutoCompleteModel.onObjectSelected = (a) => this.onArticle(a);
@@ -197,8 +197,8 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
             reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
             sourceDoc: [b.sourceDoc],
             store: [b.store],
-            qtyOrdered: [b.qtyOrdered],
-            qtySatisfied: [b.qtySatisfied ||0, Validators.required],
+            qtyOrdered: [{ value: b.qtyOrdered, disabled: this.document >= 513 && this.document <= 800 }],
+            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < 513 || this.document > 800}, Validators.required],
             qtyInvoiced: [b.qtyInvoiced ||0, Validators.required],
             qtyReturned: [b.qtyReturned ||0, Validators.required],
             price: [b.price || 0, Validators.required],

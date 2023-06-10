@@ -6,12 +6,12 @@ import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {OfferLinesService} from '@ss/logistics/api-transaction';
-import { PurchaseOrderLinesService } from "./purchase-order-lines.service";
+import { PurchaseOrderLinesService } from "../purchase-order-lines.service";
 
 @Component({
   selector: 'ss-order-lines-list',
   templateUrl: './purchase-order-lines-list.component.html',
-  styleUrls: ['../../../../common/assets/src/assets/transac-lines-list.scss'],
+  styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [

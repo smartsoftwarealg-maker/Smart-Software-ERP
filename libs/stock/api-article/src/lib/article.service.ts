@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {APP_URL, Article, ARTICLE_IMAGE_URL, ARTICLES_URL, AvailableStock, QtyPrice} from './article-api';
+import {Article, ARTICLE_IMAGE_URL, ARTICLES_URL, AvailableStock, QtyPrice} from './article-api';
 import {Observable, of} from 'rxjs';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';

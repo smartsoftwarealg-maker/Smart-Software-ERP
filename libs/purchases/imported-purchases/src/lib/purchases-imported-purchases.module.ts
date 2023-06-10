@@ -18,9 +18,8 @@ import { MaterialModule } from '@ss/common/api-common';
 import { PurchasesUiReceptionModule } from '@ss/purchases/ui-reception';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { PurchasesExtraCostsModule } from '@ss/purchases/extra-costs';
 import { ImportReceptionLinesListComponent } from './import-reception-lines-list/import-reception-lines-list.component';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ImportReceptionLinesMainComponent } from './import-reception-lines-main/import-reception-lines-main.component';
 
 @NgModule({
@@ -48,9 +47,8 @@ import { ImportReceptionLinesMainComponent } from './import-reception-lines-main
         PurchasesUiReceptionModule,
         ReactiveFormsModule,
         TextFieldModule,
-        PurchasesExtraCostsModule,
         RouterOutlet,
-        RouterLink
-    ]
+        RouterLink,
+    ],
 })
 export class PurchasesImportedPurchasesModule {}

@@ -6,15 +6,14 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
-    TransactionLinesService
+    BaseTransactionLinesDetailComponent
 } from '@ss/logistics/api-transaction';
-import {PurchaseOrderLinesService} from './purchase-order-lines.service';
+import {PurchaseOrderLinesService} from '../purchase-order-lines.service';
 
 @Component({
-  selector: 'ss-order-lines-detail',
-  styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
-  templateUrl: './purchase-order-lines-detail.component.html',
+    selector: 'ss-order-lines-detail',
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
+    templateUrl: './purchase-order-lines-detail.component.html',
 })
 export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
 

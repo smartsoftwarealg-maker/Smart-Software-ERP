@@ -9,6 +9,6 @@ import { BaseTransactionLinesDetailComponent2, TransactionLinesService } from '@
 })
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent2 implements OnInit, OnDestroy {
     constructor(protected receptionLinesSrv: TransactionLinesService) {
-        super(receptionLinesSrv);
+        super(receptionLinesSrv, 514);
     }
 }

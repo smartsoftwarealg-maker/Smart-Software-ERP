@@ -3,6 +3,7 @@ import {ImageModel} from '@ss/common/ui-image-input';
 export const USERS_URL = '/users';
 export const STORES_URL = '/stores';
 export const ARTICLES_URL = '/articles';
+export const SERVICE_ARTICLES_URL = '/articles/services';
 export const APP_URL = '/apps';
 export const AVAILABLE_ARTICLES_URL = '/articles/available';
 export const ARTICLE_IMAGE_URL = '/image';
@@ -55,6 +56,6 @@ export interface AvailableArticle {
 
 export interface AvailableStock {
     classId: number;
-    classDescription: String;
+    classDescription: string;
     articles: AvailableArticle[];
 }

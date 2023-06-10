@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BaseTransactionListComponent } from '@ss/logistics/api-transaction';
-import { ReceptionService } from '@ss/purchases/api-reception';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguageService, PaginatorPersistenceService, UserService } from '@ss/common/api-common';
@@ -8,6 +7,7 @@ import { AgentService } from '@ss/logistics/api-agent';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
+import { ImportReceptionService } from '../services/import-reception.service';
 
 @Component({
     selector: 'ss-import-reception',
@@ -29,7 +29,7 @@ export class ImportReceptionListComponent extends BaseTransactionListComponent {
 
 
     constructor(
-        public receptionSrv: ReceptionService,
+        public receptionSrv: ImportReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

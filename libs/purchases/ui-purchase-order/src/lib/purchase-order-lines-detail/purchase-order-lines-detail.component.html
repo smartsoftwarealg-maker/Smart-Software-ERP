@@ -40,10 +40,15 @@
 
                 <mat-form-field id="qtyOrdered" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
-                    <input matInput formControlName="qtyOrdered" type="number" step=".01" required>
+                    <input matInput formControlName="qtyOrdered" type="number" step="1" required>
                     <mat-error
                         *ngIf="form.controls['qtyOrdered'].hasError('required')" translate>COMMON_FIELD_REQUIRED
                     </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="qtySatisfied" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
+                    <input matInput formControlName="qtySatisfied" type="number" step="1" required>
                 </mat-form-field>
 
                 <mat-form-field id="price" class="default-50 sm-100">
