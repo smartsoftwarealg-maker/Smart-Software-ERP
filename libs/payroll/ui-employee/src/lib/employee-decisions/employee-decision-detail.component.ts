@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
 
     entity: Decision;
 
-    parentId: number = 0;
+    parentId = 0;
 
     constructor(
         public employeeDecisionSrv: EmployeeDecisionService,

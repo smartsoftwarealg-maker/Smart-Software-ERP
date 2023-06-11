@@ -45,6 +45,7 @@ export class PunishmentDetailComponent extends BaseEntityDetailComponent<Punishm
             confirmationSrv,
             'PAYROLL_PUNISHMENTS');
     }
+
     protected override getRouteParam(): Observable<any> {
         return this.route.parent.parent.params
             .pipe(

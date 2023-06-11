@@ -1,5 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BaseTransactionLinesDetailComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesDetailComponent,
+    DOC_RECEPTION_CANCELLATION,
+    TransactionLinesService
+} from "@ss/logistics/api-transaction";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
@@ -32,7 +36,8 @@ export class ReceptionCancellationLinesDetailComponent extends BaseTransactionLi
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_RECEPTION_CANCELLATION_LINES'
+            'STOCK_RECEPTION_CANCELLATION_LINES',
+            DOC_RECEPTION_CANCELLATION
         );
         this.articleSrv.setParentURL(null);
     }

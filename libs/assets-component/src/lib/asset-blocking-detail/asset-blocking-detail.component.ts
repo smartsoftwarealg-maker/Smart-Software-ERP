@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -14,11 +14,12 @@ import {AssetBlockingService} from '../asset-blocking.service';
 import {AssetBlockingTypeService} from '../asset-blocking-type.service';
 
 @Component({
-  selector: 'ss-asset-blocking-detail',
-  templateUrl: './asset-blocking-detail.component.html',
-  styleUrls: ['./asset-blocking-detail.component.scss']
+    selector: 'ss-asset-blocking-detail',
+    templateUrl: './asset-blocking-detail.component.html',
+    styleUrls: ['./asset-blocking-detail.component.scss']
 })
 export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Blocking> implements OnInit {
+    private typeLookupSrv = inject(AssetBlockingTypeService);
     typeLookup = new DefaultAutoCompleteModel(this.typeLookupSrv);
     private parentId = 0;
 
@@ -30,8 +31,7 @@ export class AssetBlockingDetailComponent extends BaseEntityDetailComponent<Bloc
         public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private typeLookupSrv: AssetBlockingTypeService) {
+        public lookupsSrv: LookupsService) {
         super(assetBlockingSrv,
             shellSrv,
             snackBarSrv,

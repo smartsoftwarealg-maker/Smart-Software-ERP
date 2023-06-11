@@ -6,10 +6,10 @@ import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_QUOTATION,
     TransactionLine,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 import {LoginService} from "@ss/common/api-common";
 import {OfferLinesService} from '@ss/logistics/api-transaction';
 
@@ -39,6 +39,7 @@ export class QuotationLinesDetailComponent extends BaseTransactionLinesDetailCom
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'PURCHASES_QUOTATION');
+            'PURCHASES_QUOTATION',
+            DOC_QUOTATION);
     }
 }

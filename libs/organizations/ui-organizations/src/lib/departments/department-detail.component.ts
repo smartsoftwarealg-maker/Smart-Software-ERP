@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Observable, of } from 'rxjs';
 import { DepartmentService, Department } from '@ss/common/api-lookup';
 import { PersonAutocompleteClass } from '@ss/payroll-common';
 import { EmployeeService } from '@ss/payroll/api-employee';
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'ss-department-detail',
@@ -16,7 +16,7 @@ import { EmployeeService } from '@ss/payroll/api-employee';
     styleUrls: ['./department-detail.component.scss']
 })
 export class DepartmentDetailComponent extends BaseEntityDetailComponent<Department> implements OnInit, OnDestroy {
-    public saving: boolean = false;
+    public saving = false;
     public personAutoCompleteModel: PersonAutocompleteClass;
 
     constructor(

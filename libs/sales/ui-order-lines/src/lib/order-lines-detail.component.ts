@@ -6,8 +6,8 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent, OfferLinesService
-} from '@ss/logistics/api-transaction';
+    BaseTransactionLinesDetailComponent, DOC_SALES_ORDER, OfferLinesService
+} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-order-lines-detail',
@@ -34,7 +34,8 @@ export class OrderLinesDetailComponent extends BaseTransactionLinesDetailCompone
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'SALES_EDIT_ORDER_LINES'
+            'SALES_EDIT_ORDER_LINES',
+            DOC_SALES_ORDER
         );
     }
 }

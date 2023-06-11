@@ -6,9 +6,9 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent, TransactionLine,
+    BaseTransactionLinesDetailComponent, DOC_DELIVERY, TransactionLine,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -35,7 +35,8 @@ export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComp
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'SALES_EDIT_DELIVERY_LINES'
+            'SALES_EDIT_DELIVERY_LINES',
+            DOC_DELIVERY
         );
     }
 

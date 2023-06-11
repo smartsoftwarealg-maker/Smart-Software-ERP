@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent
-} from '@ss/logistics/api-transaction';
+    BaseTransactionLinesDetailComponent, DOC_TRANSFER_RECEPTION
+} from "@ss/logistics/api-transaction";
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -35,7 +35,8 @@ export class TransferReceptionLinesDetailComponent  extends BaseTransactionLines
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_TRANSFER_RECEPTION'
+            'STOCK_TRANSFER_RECEPTION',
+            DOC_TRANSFER_RECEPTION
         );
     }
 }

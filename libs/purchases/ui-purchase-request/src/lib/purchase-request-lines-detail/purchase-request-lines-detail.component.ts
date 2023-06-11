@@ -1,5 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BaseTransactionLinesDetailComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesDetailComponent,
+    DOC_PURCHASE_ORDER,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
@@ -26,14 +30,15 @@ export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDet
         public override lotSrv: LotsService,
         public override lookupsSrv: LookupsService) {
         super(detailSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
-              articleSrv,
-              lotSrv,
-              lookupsSrv,
-              'PURCHASES_PURCHASE_REQUEST');
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            articleSrv,
+            lotSrv,
+            lookupsSrv,
+            'PURCHASES_PURCHASE_REQUEST',
+            DOC_PURCHASE_ORDER);
     }
 }

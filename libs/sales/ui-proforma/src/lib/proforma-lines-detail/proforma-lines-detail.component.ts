@@ -5,7 +5,7 @@ import {UntypedFormBuilder} from '@angular/forms';
 import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
-import {BaseTransactionLinesDetailComponent} from '@ss/logistics/api-transaction';
+import { BaseTransactionLinesDetailComponent, DOC_QUOTATION } from "@ss/logistics/api-transaction";
 import {OfferLinesService} from '@ss/logistics/api-transaction';
 
 @Component({
@@ -33,7 +33,8 @@ export class ProformaLinesDetailComponent extends BaseTransactionLinesDetailComp
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'LOGISTICS_PROFORMA'
+            'LOGISTICS_PROFORMA',
+            DOC_QUOTATION
         );
     }
 }

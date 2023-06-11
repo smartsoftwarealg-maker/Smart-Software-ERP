@@ -35,16 +35,16 @@ export class EmployeeActivationDetailComponent extends BaseEntityDetailComponent
         super(employeeActivationSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
     }
 
-    protected override getRouteParam(): Observable<any> {
-        return this.route.parent.parent.params
-            .pipe(
-                switchMap(p => {
-                    this.empId = +p['id'];
-                    this.employeeActivationSrv.setParentId(this.empId);
-                    return super.getRouteParam();
-                })
-            );
-    }
+    // protected override getRouteParam(): Observable<any> {
+    //     return this.route.parent.parent.params
+    //         .pipe(
+    //             switchMap(p => {
+    //                 this.empId = +p['id'];
+    //                 this.employeeActivationSrv.setParentId(this.empId);
+    //                 return super.getRouteParam();
+    //             })
+    //         );
+    // }
 
     override setupForm(a: EmployeeActivation): UntypedFormGroup {
         this.entity = a;

@@ -6,8 +6,8 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent
-} from '@ss/logistics/api-transaction';
+    BaseTransactionLinesDetailComponent, DOC_PURCHASE_ORDER
+} from "@ss/logistics/api-transaction";
 import {PurchaseOrderLinesService} from '../purchase-order-lines.service';
 
 @Component({
@@ -36,6 +36,7 @@ export class PurchaseOrderLinesDetailComponent extends BaseTransactionLinesDetai
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'PURCHASES_EDIT_ORDER_LINES');
+            'PURCHASES_EDIT_ORDER_LINES',
+            DOC_PURCHASE_ORDER);
     }
 }

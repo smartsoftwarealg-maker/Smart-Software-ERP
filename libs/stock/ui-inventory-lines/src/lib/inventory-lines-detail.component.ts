@@ -6,10 +6,10 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_INVENTORY,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {LoginService} from "@ss/common/api-common";
+import {LoginService} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-inventory-lines-detail',
@@ -36,7 +36,8 @@ export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailCom
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_EDIT_INVENTORY_LINES'
+            'STOCK_EDIT_INVENTORY_LINES',
+            DOC_INVENTORY
         );
     }
 }

@@ -6,7 +6,7 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent, TransactionLine,
+    BaseTransactionLinesDetailComponent, DOC_INVOICE, TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 import {LoginService} from '@ss/common/api-common';
@@ -36,7 +36,8 @@ export class InvoiceLinesDetailComponent extends BaseTransactionLinesDetailCompo
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'SALES_EDIT_INVOICE_LINES'
+            'SALES_EDIT_INVOICE_LINES',
+            DOC_INVOICE
         );
     }
 

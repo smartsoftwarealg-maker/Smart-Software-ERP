@@ -11,9 +11,9 @@
 </div>
 
 <mat-card>
-    <form novalidate [formGroup]="form" *ngIf="entity">
+    <form novalidate [formGroup]="form" *ngIf="form">
 
-        <mat-form-field class="default-50 sm-100">
+        <mat-form-field class="default-100">
             <mat-label translate>LOGISTICS_ARTICLE</mat-label>
             <ss-auto-complete matInput
                               [model]="articleLookup"
@@ -23,9 +23,18 @@
             <mat-error *ngIf="form.controls['reference'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="default-50">
+        <mat-form-field class="default-100">
             <mat-label translate>COMMON_DESCRIPTION</mat-label>
             <input matInput formControlName="description" type="text" required autofocus>
+        </mat-form-field>
+
+        <mat-form-field class="default-100">
+            <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+            <ss-auto-complete matInput
+                              [model]="supplierLookup"
+                              required
+                              formControlName="agent">
+            </ss-auto-complete>
         </mat-form-field>
 
         <mat-form-field class="default-50">
@@ -38,6 +47,10 @@
             <input matInput formControlName="vat" type="number" required autofocus>
         </mat-form-field>
 
+        <div id="manager" class="default-50">
+            <mat-checkbox formControlName="foreignCurrency" translate>LOGISTICS_FOREIGN_CURRENCY</mat-checkbox>
+        </div>
+
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_INVOICE_NUMBER</mat-label>
             <input matInput formControlName="invoiceNo" type="text" required autofocus>
@@ -46,15 +59,16 @@
         <mat-form-field class="default-50" >
             <mat-label translate>COMMON_TYPE</mat-label>
             <mat-select formControlName="costType">
-                <mat-option *ngFor="let c of costTypes" [value]="c.id">{{ c.description }}</mat-option>
+                <mat-option *ngFor="let c of costTypes" [value]="c.id">{{ c.description | translate }}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="default-50" >
             <mat-label translate>COMMON_TYPE</mat-label>
             <mat-select formControlName="valueType">
-                <mat-option *ngFor="let c of valueTypes" [value]="c.id">{{ c.description }}</mat-option>
+                <mat-option *ngFor="let c of valueTypes" [value]="c.id">{{ c.description  | translate }}</mat-option>
             </mat-select>
         </mat-form-field>
+<!--        <pre> {{ form.value | json }}</pre>-->
     </form>
 </mat-card>

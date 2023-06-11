@@ -3,27 +3,30 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExtraCostService } from '../services/extra-cost.service';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { COST_TYPES, ExtraCost, VALUE_TYPES } from '@ss/logistics/api-transaction';
 import { of, switchMap, tap } from 'rxjs';
 import { ArticleAutoCompleteModel, ServiceArticleService } from '@ss/stock/api-article';
+import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
+import { Agent, SupplierService } from '@ss/logistics/api-agent';
+import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 
 @Component({
     selector: 'ss-extra-cost-detail',
     templateUrl: './extra-cost-detail.component.html',
     styleUrls: ['./extra-cost-detail.component.scss'],
 })
-export class ExtraCostDetailComponent implements OnInit {
+export class ExtraCostDetailComponent extends AbstractEntityComponent<ExtraCost> implements OnInit {
+    private supplierSrv = inject(SupplierService);
     private serviceArticleSrv = inject(ServiceArticleService);
-    private snackBarSrv = inject(SnackBarService);
-    private confirmationSrv = inject(ConfirmationDialogService);
     private router = inject(Router);
     private route = inject(ActivatedRoute);
-    private entitySrv = inject(ExtraCostService);
-    private shellSrv = inject(ShellService);
     private fb = inject(FormBuilder);
     private parentId= 0;
-    private Empty: ExtraCost = {
+
+    public supplierLookup   = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+
+    public Empty: ExtraCost = {
         id: 0,
         parentId: 0,
         reference: '',
@@ -36,62 +39,62 @@ export class ExtraCostDetailComponent implements OnInit {
         exchangeRate: 1.0
     };
 
+    public override shellSrv = inject(ShellService);
+    public override snackBarSrv = inject(SnackBarService);
+    public override confirmationSrv = inject(ConfirmationDialogService);
+
     costTypes = COST_TYPES;
     valueTypes = VALUE_TYPES;
     articleLookup = new ArticleAutoCompleteModel(this.serviceArticleSrv);
-    isEditable = true;
 
     entity: ExtraCost = null;
     formId = 0;
-    form = this.fb.group({
-        id: new FormControl<number>(0),
-        parentId: new FormControl<number>(0 || this.parentId),
-        reference: new FormControl<string | null>(null),
-        description: new FormControl<string | null>(null),
-        transactDate: new FormControl<Date>(new Date()),
-        amount: new FormControl<number>(0),
-        vat: new FormControl<number | null>(null),
-        agent: new FormControl<number>(0),
-        invoiceNo: new FormControl<string | null>(null),
-        foreignCurrency: new FormControl<boolean>(false),
-        costType: new FormControl<number>(0),
-        valueType: new FormControl<number>(0),
-        exchangeRate: new FormControl<number>(0),
-    });
 
-    ngOnInit() {
+    constructor(public override entitySrv: ExtraCostService) {
+        super(entitySrv);
+    }
+
+    override ngOnInit() {
         this.route
             .parent
             .parent
             .paramMap
-            .pipe(tap(res => console.log(res)),
+            .pipe(
+                tap(params => this.parentId = +(params.get('id') || '0')),
                 switchMap(() => this.route.paramMap),
                 tap(param => this.formId = +(param.get('id') || '0')),
                 switchMap(() => this.formId? this.entitySrv.get(this.formId) : of(this.Empty)))
             .subscribe(res => {
                 this.entity = res;
-                this.form = this.fb.group({
-                    id: new FormControl<number>(this.entity?.id),
-                    parentId: new FormControl<number>(res.parentId || this.parentId),
-                    reference: new FormControl<string>(res.reference),
-                    description: new FormControl<string>(res.description),
-                    transactDate: new FormControl<Date>(res.transactDate),
-                    amount: new FormControl<number>(res.amount),
-                    vat: new FormControl<number>(res.vat),
-                    agent: new FormControl<number>(res.agent),
-                    invoiceNo: new FormControl<string>(res.invoiceNo),
-                    foreignCurrency: new FormControl<boolean>(res.foreignCurrency),
-                    costType: new FormControl<number>(res.costType),
-                    valueType: new FormControl<number>(res.valueType),
-                    exchangeRate: new FormControl<number>(res.exchangeRate)
-                });
+                this.form = this.setupForm(res);
             });
+        super.ngOnInit();
     }
 
-    save() {
-        this.cancel();
+    override setupForm(e: ExtraCost): UntypedFormGroup {
+        this.id = e.id;
+        return this.fb.group({
+            id: new FormControl<number>(e?.id || 0),
+            parentId: new FormControl<number>(e.parentId || this.parentId),
+            reference: new FormControl<string>(e.reference),
+            description: new FormControl<string>(e.description),
+            transactDate: new FormControl<Date>(e.transactDate),
+            amount: new FormControl<number>(e.amount),
+            vat: new FormControl<number>(e.vat),
+            agent: new FormControl<number>(e.agent || 0, Validators.required),
+            invoiceNo: new FormControl<string>(e.invoiceNo),
+            foreignCurrency: new FormControl<boolean>(e.foreignCurrency),
+            costType: new FormControl<number>(e.costType),
+            valueType: new FormControl<number>(e.valueType),
+            exchangeRate: new FormControl<number>(e.exchangeRate)
+        });
     }
-    cancel() {
+
+    protected override goBack() {
         this.router.navigate(['../../costs-list'], { relativeTo: this.route}).then();
+    }
+
+    override readForm(): ExtraCost {
+        return this.form.getRawValue();
     }
 }

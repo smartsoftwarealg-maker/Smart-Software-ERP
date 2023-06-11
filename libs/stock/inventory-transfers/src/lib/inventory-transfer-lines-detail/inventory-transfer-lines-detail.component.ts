@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent
-} from '@ss/logistics/api-transaction';
+    BaseTransactionLinesDetailComponent, DOC_TRANSFER
+} from "@ss/logistics/api-transaction";
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -35,7 +35,8 @@ export class InventoryTransferLinesDetailComponent extends BaseTransactionLinesD
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_TRANSFERS'
+            'STOCK_TRANSFERS',
+            DOC_TRANSFER
         );
     }
 }

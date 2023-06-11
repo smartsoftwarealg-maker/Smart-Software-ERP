@@ -6,9 +6,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_DELIVERY_CANCELLATION,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 import {LoginService} from '@ss/common/api-common';
 
 @Component({
@@ -36,6 +36,7 @@ export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLin
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'SALES_EDIT_CANCELLATION_LINES');
+            'SALES_EDIT_CANCELLATION_LINES',
+            DOC_DELIVERY_CANCELLATION);
     }
 }

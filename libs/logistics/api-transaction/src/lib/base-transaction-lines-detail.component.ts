@@ -4,14 +4,15 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/stock/api-article';
-import {LookupsService, LotsService} from '@ss/common/api-lookup';
+import { LookupsService, LotsService, Store } from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import {fillObject, LoginService} from '@ss/common/api-common';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {TransactionLinesClass} from './transaction-lines.class';
 import {inject} from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
+import { DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
 
 export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDetailComponent<TransactionLine> {
     private loginSrv  =  inject(LoginService);
@@ -28,7 +29,7 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     articleAutoCompleteModel: ArticleAutoCompleteModel = null;
     storeAutoCompleteModel: LotAutoCompleteModel = null;
 
-    constructor(
+    protected constructor(
         public  detailSrv: TransactionLinesClass,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -38,11 +39,13 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         public          articleSrv: ArticleService,
         public          lotSrv: LotsService,
         public          lookupsSrv: LookupsService,
-        public override title: string) {
+        public override title: string,
+        public document: number) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
         this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
-        this.articleAutoCompleteModel.onObjectSelected = a => this.onArticle(a);
+        this.articleAutoCompleteModel.onObjectSelected = (a) => this.onArticle(a);
+        this.storeAutoCompleteModel.onObjectSelected =  (s) => this.onStore(s);
     }
 
     override preload(): Observable<any> {
@@ -62,64 +65,50 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
     }
 
     private updateStockAndValue(res: QtyPrice) {
+        this.form.controls['price'].setValue(res.price);
         this.articleStock = res.qty;
-    }
-
-    onInit() {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('../../' + this.parentId, this.route);
-
-        const subs1 = this.storeAutoCompleteModel
-            .evenEmitter
-            .subscribe(id => {
-                this.articleSrv
-                    .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
-                    .subscribe({
-                        next: res => this.articleStock = res.qty,
-                        error: err => this.articleStock = 0
-                    })
-            });
-        const subs2 = this.articleAutoCompleteModel
-            .evenEmitter
-            .subscribe(ref => {
-                this.articleSrv
-                    .getPPrice(<string>ref, this.form.controls['store']?.value || 0, this.parentId, this.id)
-                    .subscribe({
-                        next: res => this.updateStockAndValue(res),
-                        error: err => this.form.controls['price'].setValue(0.0)
-                    })
-            });
-        this.subscriptions.push(subs1);
-        this.subscriptions.push(subs2);
     }
 
     override finishLoading(e: TransactionLine) {
         super.finishLoading(e);
         this.selectedRow = e;
-        const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
-            if (typeof next === 'number') {
-                if (next > 0.0 && this.selectedRow?.reference) {
+        const subs2 = this.form.get('qtySatisfied')
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            ).subscribe(next => {
+                if (next > 0.0) {
                     this.form.get('reference').disable();
                     this.form.get('store').disable();
                 } else {
                     this.form.get('reference').enable();
                     this.form.get('store').enable();
                 }
-            }
-        });
+            });
         this.subscriptions.push(subs2);
     }
 
     override readForm(): TransactionLine {
-        const form =  super.readForm();
-        fillObject(this.selectedRow, form)
-        return form;
+        return this.form.getRawValue();
+        // const form =  super.readForm();
+        // fillObject(this.selectedRow, form);
+        // return form;
     }
 
     onArticle(a: Article | string) {
         this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
         this.articleSrv
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
+            .subscribe({
+                next: res => this.updateStockAndValue(res),
+                error: err => this.form.controls['price'].setValue(0.0)
+            });
+    }
+
+    onStore(s: Store) {
+        this.articleSrv
+            .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
                 error: err => this.form.controls['price'].setValue(0.0)
@@ -133,11 +122,11 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
         return this.formBuilder.group({
             id: [b.id],
             transacId: [this.parentId],
-            reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
+            reference: [ { value: b.reference || null, disabled:  b.qtySatisfied > 0.0001 }, Validators.required ],
             sourceDoc: [b.sourceDoc],
             store: [b.store],
-            qtyOrdered: [b.qtyOrdered],
-            qtySatisfied: [b.qtySatisfied ||0, Validators.required],
+            qtyOrdered: [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
+            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
             qtyInvoiced: [b.qtyInvoiced ||0, Validators.required],
             qtyReturned: [b.qtyReturned ||0, Validators.required],
             price: [b.price || 0, Validators.required],
@@ -147,4 +136,11 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
             position: [{ value: b.position || 0, disabled: true }],
         });
     }
+
+    protected isValidForm(): boolean {
+        const value = this.form.getRawValue();
+        return super.isValidForm() && value.reference;
+    }
+
+
 }

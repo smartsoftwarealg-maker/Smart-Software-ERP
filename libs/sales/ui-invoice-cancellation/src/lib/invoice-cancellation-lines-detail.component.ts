@@ -7,9 +7,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {LoginService} from '@ss/common/api-common';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-invoice-lines-detail',
@@ -36,7 +36,8 @@ export class InvoiceCancellationLinesDetailComponent extends BaseTransactionLine
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'SALES_EDIT_INVOICE_LINES'
+            'SALES_EDIT_INVOICE_LINES',
+            DOC_INVOICE_CANCELLATION
         );
     }
 }

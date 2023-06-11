@@ -57,7 +57,6 @@
             </mat-cell>
         </ng-container>
 
-
         <ng-container matColumnDef="supplierName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -68,14 +67,14 @@
         <ng-container matColumnDef="costName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COST_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.costName}}
+                {{e.costName | translate }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="valueName">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_VALUE_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.valueName}}
+                {{e.valueName | translate }}
             </mat-cell>
         </ng-container>
 

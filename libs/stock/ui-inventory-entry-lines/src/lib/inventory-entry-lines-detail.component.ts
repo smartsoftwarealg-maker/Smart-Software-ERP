@@ -1,15 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
-import {LookupsService, Store, LotsService} from '@ss/common/api-lookup';
+import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_CORRECTION_IN,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
-import {LoginService} from '@ss/common/api-common';
 
 
 @Component({
@@ -19,7 +18,7 @@ import {LoginService} from '@ss/common/api-common';
 })
 export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
-        public inventoryLinesService: TransactionLinesService,
+        public override detailSrv: TransactionLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -28,7 +27,7 @@ export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDeta
         public override articleSrv: ArticleService,
         public override lotSrv: LotsService,
         public override lookupsSrv: LookupsService) {
-        super(inventoryLinesService,
+        super(detailSrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -37,7 +36,8 @@ export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDeta
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY'
+            'STOCK_EDIT_INVENTORY_LINES_ENTRY',
+            DOC_CORRECTION_IN
         );
     }
 }
