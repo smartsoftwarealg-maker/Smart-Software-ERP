@@ -31,9 +31,9 @@ import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {
     PurchaseRequestDetailComponent,
-    PurchaseRequestLinesDetailComponent,
+    PurchaseRequestLinesDetailComponent, PurchaseRequestLinesListComponent,
     PurchaseRequestListComponent
-} from '@ss/purchases/ui-purchase-request';
+} from "@ss/purchases/ui-purchase-request";
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {
     ReceptionCancellationDetailComponent,
@@ -123,20 +123,25 @@ export const routes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: PurchaseRequestLinesDetailComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: PurchaseRequestDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PurchaseRequestLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PurchaseRequestLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {

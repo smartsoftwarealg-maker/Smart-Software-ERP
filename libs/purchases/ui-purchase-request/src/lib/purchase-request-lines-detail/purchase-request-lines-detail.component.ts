@@ -1,15 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent,
-    DOC_PURCHASE_ORDER,
-    TransactionLinesService
+    BaseTransactionLinesDetailComponent2,
+    DOC_PURCHASE_ORDER
 } from '@ss/logistics/api-transaction';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/stock/api-article';
-import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
 
 @Component({
@@ -17,28 +10,9 @@ import {PurchaseRequestLinesService} from '../purchase-request-lines.service';
     templateUrl: './purchase-request-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDetailComponent {
+export class PurchaseRequestLinesDetailComponent extends BaseTransactionLinesDetailComponent2 {
 
-    constructor(
-        public override detailSrv: PurchaseRequestLinesService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override articleSrv: ArticleService,
-        public override lotSrv: LotsService,
-        public override lookupsSrv: LookupsService) {
-        super(detailSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            articleSrv,
-            lotSrv,
-            lookupsSrv,
-            'PURCHASES_PURCHASE_REQUEST',
-            DOC_PURCHASE_ORDER);
+    constructor(public detailSrv: PurchaseRequestLinesService) {
+        super(detailSrv,  DOC_PURCHASE_ORDER);
     }
 }

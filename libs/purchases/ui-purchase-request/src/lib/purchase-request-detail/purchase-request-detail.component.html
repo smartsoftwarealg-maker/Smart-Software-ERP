@@ -53,4 +53,5 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-purchase-request-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId"></ss-purchase-request-lines-list>
+<!--<ss-purchase-request-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId"></ss-purchase-request-lines-list>-->
+<router-outlet *ngIf="formId"></router-outlet>
