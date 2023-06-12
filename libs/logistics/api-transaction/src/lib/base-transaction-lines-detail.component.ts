@@ -99,9 +99,6 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
 
     override readForm(): TransactionLine {
         return this.form.getRawValue();
-        // const form =  super.readForm();
-        // fillObject(this.selectedRow, form);
-        // return form;
     }
 
     onArticle(a: Article | string) {
