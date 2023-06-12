@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 import { LoginService } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
-import { ConsumptionLinesService } from "@ss/stock/api-consumption-lines";
+import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
 
 
 @Component({
