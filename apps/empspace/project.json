@@ -113,7 +113,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/empspace/src/**/*.ts",
@@ -122,7 +122,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/apps/empspace"],
             "options": {
                 "jestConfig": "apps/empspace/jest.config.ts",

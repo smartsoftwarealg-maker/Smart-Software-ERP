@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/logistics/ui-currency/src/**/*.ts",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/logistics/ui-currency"],
             "options": {
                 "jestConfig": "libs/logistics/ui-currency/jest.config.ts",

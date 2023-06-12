@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/exchange/ui-info/src/**/*.ts",
@@ -15,7 +15,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/exchange/ui-info"],
             "options": {
                 "jestConfig": "libs/exchange/ui-info/jest.config.ts",

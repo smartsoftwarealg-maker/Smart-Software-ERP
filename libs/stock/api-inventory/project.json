@@ -19,7 +19,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "options": {
                 "jestConfig": "libs/stock/inventory/jest.config.js",
                 "tsConfig": "libs/stock/inventory/tsconfig.spec.json",
@@ -29,7 +29,7 @@
         }
     },
     "generators": {
-        "@nrwl/angular:component": {
+        "@nx/angular:component": {
             "style": "scss"
         }
     }
