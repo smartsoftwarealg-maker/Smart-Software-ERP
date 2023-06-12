@@ -24,7 +24,7 @@ import {ReceptionLinesDetailComponent, ReceptionListComponent} from '@ss/purchas
 import {ReceptionDetailComponent} from '@ss/purchases/ui-reception';
 import {
     QuotationDetailComponent,
-    QuotationLinesDetailComponent,
+    QuotationLinesDetailComponent, QuotationLinesListComponent,
     QuotationListComponent
 } from '@ss/purchases/ui-quotation';
 import {DashboardComponent} from '@ss/dashboard';
@@ -59,20 +59,25 @@ export const routes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: QuotationLinesDetailComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: QuotationDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: QuotationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: QuotationLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {

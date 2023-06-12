@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -43,9 +43,9 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
             confirmationSrv);
     }
 
-    @Input()
-    set id(parentId: number) {
-        this.detailSrv.setParentId(parentId || 0);
-        this.parentId = parentId || 0;
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['../lines-detail', id || 0],
+            { relativeTo: this.route}).then();
     }
 }
