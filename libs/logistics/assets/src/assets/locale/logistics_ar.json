@@ -63,6 +63,7 @@
     "HEADER": "الرأس",
     "FOOTER": "التذيل",
     "QTY_SATISFIED": "الكمية المستلمة",
+    "QTY_INVOICED": "الكمية المفوترة",
     "ARTICLE": "السلعة",
     "ARTICLES": "السلع",
     "DOCUMENT": "الوثيقة",

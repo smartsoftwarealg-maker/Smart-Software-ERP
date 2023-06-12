@@ -44,7 +44,7 @@ export class ConsumptionLinesDetailComponent extends BaseTransactionLinesDetailC
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY',
+            'STOCK_EDIT_CONSUMPTION',
             DOC_CORRECTION_IN
         );
     }

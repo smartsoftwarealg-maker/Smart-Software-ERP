@@ -87,13 +87,18 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
                 }
             });
         this.subscriptions.push(subs2);
+        if (e.reference && e.store) {
+            this.articleSrv
+                .getPPrice(e.reference, e.store, e.transacId, e.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: () => this.form.controls['price'].setValue(0.0)
+                });
+        }
     }
 
     override readForm(): TransactionLine {
         return this.form.getRawValue();
-        // const form =  super.readForm();
-        // fillObject(this.selectedRow, form);
-        // return form;
     }
 
     onArticle(a: Article | string) {

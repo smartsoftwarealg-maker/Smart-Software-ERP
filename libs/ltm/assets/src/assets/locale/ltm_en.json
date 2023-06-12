@@ -20,5 +20,6 @@
     "LINE_MATTERS":   "Line matters",
     "STANDARD_FORMAT": "Standard format",
     "UPDATE_FORMAT":   "Update format",
-    "SHOW_GRAPH":      "Show in graph"
+    "SHOW_GRAPH":      "Show in graph",
+    "SEARCH_MATTERS":  "Search in this list"
 }
