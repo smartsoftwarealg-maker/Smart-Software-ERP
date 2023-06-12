@@ -90,7 +90,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/cspace/src/**/*.ts",
@@ -99,7 +99,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/apps/cspace"],
             "options": {
                 "jestConfig": "apps/cspace/jest.config.ts",

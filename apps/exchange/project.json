@@ -125,7 +125,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/exchange/src/**/*.ts",
@@ -134,7 +134,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/apps/exchange"],
             "options": {
                 "jestConfig": "apps/exchange/jest.config.ts",

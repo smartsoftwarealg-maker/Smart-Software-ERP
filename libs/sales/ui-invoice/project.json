@@ -16,7 +16,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/sales/ui-invoice"],
             "options": {
                 "jestConfig": "libs/sales/ui-invoice/jest.config.ts",

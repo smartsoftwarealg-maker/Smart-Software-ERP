@@ -53,7 +53,7 @@ export class BaseEntityService<T> {
      */
     public get(iid: number | string): Observable<T> {
         const id = iid === undefined || iid === null ? 0 : iid;
-        return id < 1 || id === '-1' ? of(null) :
+        return (id as number) < 1 || id === '-1' ? of(null) :
             isString(id) ?
                 this.httpSrv.get(this.getUrl() + '?find=' + id) :
                 this.httpSrv.get(this.getUrl() + '/' + id);

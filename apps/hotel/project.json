@@ -115,7 +115,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "apps/hotel/src/**/*.ts",
@@ -124,7 +124,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/apps/hotel"],
             "options": {
                 "jestConfig": "apps/hotel/jest.config.ts",
