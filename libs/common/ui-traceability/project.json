@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/common/ui-traceability"],
             "options": {
                 "jestConfig": "libs/common/ui-traceability/jest.config.ts",
@@ -14,7 +14,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/common/ui-traceability/src/**/*.ts",

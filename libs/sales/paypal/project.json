@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/sales/paypal"],
             "options": {
                 "jestConfig": "libs/sales/paypal/jest.config.ts",
@@ -14,7 +14,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/sales/paypal/**/*.ts",

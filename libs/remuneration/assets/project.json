@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/remuneration/assets"],
             "options": {
                 "jestConfig": "libs/remuneration/assets/jest.config.ts",
@@ -14,7 +14,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/remuneration/assets/src/**/*.ts",

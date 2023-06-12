@@ -16,7 +16,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "options": {
                 "jestConfig": "libs/payroll/assets/jest.config.js",
                 "tsConfig": "libs/payroll/assets/tsconfig.spec.json",
@@ -26,7 +26,7 @@
         }
     },
     "generators": {
-        "@nrwl/angular:component": {
+        "@nx/angular:component": {
             "style": "scss"
         }
     }

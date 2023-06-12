@@ -16,7 +16,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "options": {
                 "jestConfig": "libs/common/ui-shell/jest.config.ts",
                 "tsConfig": "libs/common/ui-shell/tsconfig.spec.json",
@@ -26,7 +26,7 @@
         }
     },
     "generators": {
-        "@nrwl/angular:component": {
+        "@nx/angular:component": {
             "style": "scss"
         }
     }

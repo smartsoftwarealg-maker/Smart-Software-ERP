@@ -19,7 +19,7 @@
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/sales/api-delivery"],
             "options": {
                 "jestConfig": "libs/sales/api-delivery/jest.config.ts",

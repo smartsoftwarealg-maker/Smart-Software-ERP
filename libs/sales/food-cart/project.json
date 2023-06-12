@@ -6,7 +6,7 @@
     "prefix": "ss",
     "targets": {
         "test": {
-            "executor": "@nrwl/jest:jest",
+            "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/libs/sales/food-cart"],
             "options": {
                 "jestConfig": "libs/sales/food-cart/jest.config.ts",
@@ -14,7 +14,7 @@
             }
         },
         "lint": {
-            "executor": "@nrwl/linter:eslint",
+            "executor": "@nx/linter:eslint",
             "options": {
                 "lintFilePatterns": [
                     "libs/sales/food-cart/**/*.ts",
