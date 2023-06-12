@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Batch, LTMLineMatter } from '../ltm-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {FormArray, FormBuilder, Validators} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LtmLineMatterService} from '../ltm-line-matter.service';
 import {LtmMatterTestService} from '../ltm-matter-test.service';
@@ -28,7 +28,9 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
     private formulaMap = new Map<string, string>();
     private missingVariables: string[] = [];
     matters: LTMLineMatter[] = [];
+    filteredMatters: LTMLineMatter[] = [];
     periods$: Observable<Lookup[]> = of([]);
+    searchField = new FormControl<string|null>('');
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -38,6 +40,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         keepOnToolbar: KeepOnToolbar.ALWAYS, // save button is too important to hide
         click: () => this.save()
     };
+
 
     labels: string[] = [];
     totalsLabels: string[] = [];
@@ -81,16 +84,32 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         if (rights.edit) {
             this.shellSrv.setButtons([this.saveButton]);
         }
+
         this.matterSrv
             .getList(0, 50)
-            .subscribe(res => this.matters = res.body );
+            .subscribe(res => this.filteredMatters = this.matters = res.body );
+
         this.subscriptions.push(
             this.form
                 .valueChanges
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged()
-                ).subscribe(value => this.refreshFormulas()));
+                ).subscribe(() => this.refreshFormulas()));
+
+        this.subscriptions.push(
+            this.searchField
+                .valueChanges
+                .pipe(
+                    debounceTime(300),
+                    distinctUntilChanged())
+                .subscribe(res =>
+                    this.filteredMatters = this.matters
+                        .filter(e =>
+                            res == null ||
+                            res.length == 0 ||
+                            e.description?.toLowerCase()?.indexOf(res.toLowerCase()) >= 0))
+        );
     }
 
 
