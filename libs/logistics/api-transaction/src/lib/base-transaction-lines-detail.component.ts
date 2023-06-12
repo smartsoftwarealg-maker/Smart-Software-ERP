@@ -94,16 +94,11 @@ export abstract class BaseTransactionLinesDetailComponent extends BaseEntityDeta
                     next: res => this.updateStockAndValue(res),
                     error: () => this.form.controls['price'].setValue(0.0)
                 });
-        } else {
-            console.log('________________________________________________', e.reference, e.store);
         }
     }
 
     override readForm(): TransactionLine {
         return this.form.getRawValue();
-        // const form =  super.readForm();
-        // fillObject(this.selectedRow, form);
-        // return form;
     }
 
     onArticle(a: Article | string) {
