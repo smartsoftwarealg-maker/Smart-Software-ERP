@@ -5,6 +5,16 @@ mat-card {
     padding: 16px;
     border-radius: 1.4em;
 }
+mat-card-header div {
+    font-size: 1em;
+    width: 100%;
+    display: flex;
+    align-content: flex-end;
+    padding: 4px;
+}
+mat-hint {
+    font-size: 0.6em;
+}
 
 .group_div {
     padding: 8px;

@@ -8,7 +8,6 @@
     "PERIODICITIES":  "Périodicités",
     "MATTERS":        "Matières",
     "MATTER":         "Matière",
-    "TESTS":          "Questions",
     "PERIOD":         "Periode",
     "MIN_VALUE":      "Valeur minimum",
     "OPT_VALUE":      "Valeur optimale",
@@ -21,5 +20,6 @@
     "LINE_MATTERS":   "Matières ligne",
     "STANDARD_FORMAT": "Format standard",
     "UPDATE_FORMAT":   "Format de mise à jour",
-    "SHOW_GRAPH":      "Afficher dans le graphique"
+    "SHOW_GRAPH":      "Afficher dans le graphique",
+    "SEARCH_MATTERS":  "Rechercher dans cette liste"
 }
