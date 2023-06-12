@@ -5,12 +5,12 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmTestingService} from '../ltm-testing.service';
+import {LtmTestingService} from '../services/ltm-testing.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LtmMatterTestLookupService} from '../ltm-matter-test-lookup.service';
+import {LtmMatterTestLookupService} from '../services/ltm-matter-test-lookup.service';
 import { LoginService } from '@ss/common/api-common';
-import { LtmLineMatterService } from '../ltm-line-matter.service';
-import { LtmLineMatterLookup } from '../ltm-line-matter-lookup';
+import { LtmLineMatterService } from '../services/ltm-line-matter.service';
+import { LtmLineMatterLookup } from '../services/ltm-line-matter-lookup';
 
 @Component({
     selector: 'ss-ltm-testing-detail',

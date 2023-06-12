@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {LTM_INJECTION_URL, LTMTestInjection} from './ltm-api';
+import {LTM_INJECTION_URL, LTMTestInjection} from '../ltm-api';
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 

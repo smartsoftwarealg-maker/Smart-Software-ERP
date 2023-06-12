@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {LtmTestService} from '../ltm-test.service';
+import {LtmTestService} from '../services/ltm-test.service';
 
 @Component({
     selector: 'ss-ltm-test-list',

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMLine, LTMMatter} from '../ltm-api';
-import {LtmLineService} from '../ltm-line.service';
+import {LtmLineService} from '../services/ltm-line.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {LtmMatterService} from '../ltm-matter.service';
+import {LtmMatterService} from '../services/ltm-matter.service';
 
 @Component({
     selector: 'ss-ltm-matter-list',

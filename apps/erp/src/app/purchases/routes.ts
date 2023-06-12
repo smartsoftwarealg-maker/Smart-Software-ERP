@@ -16,7 +16,7 @@ import {
     PURCHASE_RECEPTION_CANCELLATION_URL, IMPORT_PURCHASE_RECEPTION_URL
 } from '../common';
 import {
-    PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent,
+    PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent, PurchaseOrderLinesListComponent,
     PurchaseOrderListComponent
 } from '@ss/purchases/ui-purchase-order';
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
@@ -85,17 +85,24 @@ export const routes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: PurchaseOrderLinesDetailComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: PurchaseOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PurchaseOrderLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PurchaseOrderLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
@@ -161,13 +168,6 @@ export const routes: Routes = [
                 path: LIST_URL,
                 component: ImportReceptionListComponent,
                 canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
-                path: LINES_DETAIL_URL + '/:id',
-                component: ImportReceptionLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             {

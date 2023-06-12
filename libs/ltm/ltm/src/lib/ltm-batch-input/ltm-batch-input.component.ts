@@ -4,14 +4,14 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute} from '@angular/router';
 import { FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
-import {LtmBatchService} from '../ltm-batch.service';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
+import {LtmLineMatterService} from '../services/ltm-line-matter.service';
+import {LtmMatterTestService} from '../services/ltm-matter-test.service';
+import {LtmBatchService} from '../services/ltm-batch.service';
+import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
 import {map, Observable, of, Subscription, switchMap} from 'rxjs';
 import {Lookup} from '@ss/common/api-lookup';
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
-import {LtmTestService} from '../ltm-test.service';
+import {LtmTestService} from '../services/ltm-test.service';
 import { LoginService } from '@ss/common/api-common';
 
 @Component({

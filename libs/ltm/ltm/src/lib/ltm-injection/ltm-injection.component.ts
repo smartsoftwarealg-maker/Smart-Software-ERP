@@ -4,10 +4,10 @@ import {finalize, Subscription} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {HttpEventType} from '@angular/common/http';
-import {LtmLineService} from '../ltm-line.service';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
+import {LtmLineService} from '../services/ltm-line.service';
+import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {LtmInjectionService} from '../ltm-injection.service';
+import {LtmInjectionService} from '../services/ltm-injection.service';
 import {LanguageService} from '@ss/common/api-common';
 import { MatRadioChange } from "@angular/material/radio";
 

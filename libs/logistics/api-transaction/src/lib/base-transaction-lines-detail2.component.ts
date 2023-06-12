@@ -10,9 +10,9 @@ import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import { TransactionLinesService } from './transaction-lines.service';
 import { DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
+import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntityComponent<TransactionLine> implements OnInit {
@@ -40,7 +40,7 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     articleAutoCompleteModel: ArticleAutoCompleteModel = null;
     storeAutoCompleteModel: LotAutoCompleteModel = null;
 
-    protected constructor(public entitySrv: TransactionLinesService, protected document: number) {
+    protected constructor(public entitySrv: TransactionLinesClass, protected document: number) {
         super(entitySrv);
         this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
         this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);

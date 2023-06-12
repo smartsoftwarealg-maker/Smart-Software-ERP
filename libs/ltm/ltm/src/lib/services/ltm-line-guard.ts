@@ -4,7 +4,7 @@ import {LtmLineService} from './ltm-line.service';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {LTM_LINE_SELECT_URL} from './ltm-api';
+import {LTM_LINE_SELECT_URL} from '../ltm-api';
 import {ShellService} from '@ss/common/ui-shell';
 
 @Injectable({
