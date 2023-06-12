@@ -1,17 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
     BaseTransactionDetailComponent, Transaction, TransactionLinesService
-} from "@ss/logistics/api-transaction";
+} from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { Lookup } from '@ss/common/api-lookup';
-import { filter } from 'rxjs';
 import { ImportReceptionService } from '../services/import-reception.service';
-import { ExtraCostService } from '../../../../extra-costs/src/lib/services/extra-cost.service';
+import { ExtraCostService } from '@ss/purchases/extra-costs';
 
 @Component({
     selector: 'ss-import-reception-detail',
@@ -50,15 +49,6 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         super.ngOnInit();
         this.currencySrv.load().subscribe();
         this.shellSrv.setGoBackFn(() => this.router.navigate(['/app/purchases/import-receptions']).then());
-        const sub = this.router.events.pipe(
-            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
-        ).subscribe((e: RouterEvent) => {
-            if (e instanceof NavigationEnd) {
-                this.disableControls(e.url);
-            }
-        });
-        this.subscriptions.push(sub);
-        this.disableControls(this.router.url);
     }
 
     override finishLoading(e: Transaction) {
@@ -66,11 +56,6 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         super.finishLoading(e);
     }
 
-    private disableControls(url: string) {
-        const enabled = url.indexOf('-detail') < 0;
-        this.saveButton.visible = enabled;
-        this.shellSrv.setGoBackEnabled(enabled);
-    }
 
     protected requireAgentToImportDocument(): boolean {
         return true;

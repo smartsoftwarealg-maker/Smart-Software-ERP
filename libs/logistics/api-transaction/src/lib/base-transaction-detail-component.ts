@@ -1,12 +1,12 @@
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {
-    ActivatedRoute,
-    Router
-} from '@angular/router';
+    ActivatedRoute, NavigationEnd,
+    Router, RouterEvent
+} from "@angular/router";
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of, switchMap} from 'rxjs';
+import { filter, Observable, of, switchMap } from "rxjs";
 import { map, tap } from 'rxjs/operators';
 import { BaseEntityExtendedService, BaseEntityService } from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
@@ -14,7 +14,7 @@ import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import {Directive, inject} from '@angular/core';
+import { Directive, inject, OnInit } from "@angular/core";
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
@@ -24,7 +24,7 @@ import { SalesContractService } from '@ss/logistics/contracts';
 import { TransactionLine } from './transaction-line';
 
 @Directive()
-export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction>  {
+export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     private agentService = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
@@ -213,5 +213,24 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     get isManager() {
         return this._isManager;
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        const sub = this.router.events.pipe(
+            filter((e: any): e is RouterEvent => e instanceof RouterEvent)
+        ).subscribe((e: RouterEvent) => {
+            if (e instanceof NavigationEnd) {
+                this.disableControls(e.url);
+            }
+        });
+        this.subscriptions.push(sub);
+        this.disableControls(this.router.url);
+    }
+
+    protected disableControls(url: string) {
+        const enabled = url.indexOf('-detail') < 0;
+        this.saveButton.visible = enabled;
+        this.shellSrv.setGoBackEnabled(enabled);
     }
 }

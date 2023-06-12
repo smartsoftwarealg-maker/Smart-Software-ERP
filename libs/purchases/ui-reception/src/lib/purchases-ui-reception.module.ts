@@ -13,20 +13,22 @@ import {ReceptionLinesDetailComponent} from './reception-lines-detail.component'
 import {ReceptionListComponent} from './reception-list.component';
 import {ReceptionDetailComponent} from './reception-detail.component';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiDatepickerModule,
+    CommonUiAutoCompleteModule,
+    LogisticsUiDocInfoModule,
+    LogisticsUiStockInfoModule,
+    RouterOutlet
+  ],
     declarations: [
         ReceptionListComponent,
         ReceptionDetailComponent,
