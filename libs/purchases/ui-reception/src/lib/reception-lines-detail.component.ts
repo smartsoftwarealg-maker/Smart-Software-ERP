@@ -6,9 +6,9 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_RECEPTION,
     TransactionLinesService
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 
 @Component({
     selector: 'ss-reception-lines-detail',
@@ -35,7 +35,8 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
             articleSrv,
             lotSrv,
             lookupsSrv,
-            'STOCK_EDIT_RECEPTION_LINES'
+            'STOCK_EDIT_RECEPTION_LINES',
+            DOC_RECEPTION
         );
         this.articleSrv.setParentURL(null);
     }

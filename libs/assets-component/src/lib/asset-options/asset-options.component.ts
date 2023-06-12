@@ -14,9 +14,9 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 import {tap} from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-asset-options',
-  templateUrl: './asset-options.component.html',
-  styleUrls: ['./asset-options.component.scss']
+    selector: 'ss-asset-options',
+    templateUrl: './asset-options.component.html',
+    styleUrls: ['./asset-options.component.scss']
 })
 export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> {
     constructor(
@@ -34,11 +34,11 @@ export class AssetOptionsComponent extends BaseEntityDetailComponent<ACCPolicy> 
     protected override getRouteParam(): Observable<any> {
         return  this.loginSrv
             .loadContext()
-            .pipe(tap(_ => {
+            .pipe(
+                tap(_ => {
                     this.detailSrv.setParentId(this.loginSrv.appCtx.center);
                     this.id = this.loginSrv.appCtx.center;
-            }),
-                switchMap(_ => this.loadEntity(this.loginSrv.appCtx.center)));
+                }));
     }
 
     public override setupForm(e: ACCPolicy): UntypedFormGroup {

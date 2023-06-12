@@ -3,50 +3,49 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Article, ArticleAutoCompleteModel, ArticleService, LotAutoCompleteModel, QtyPrice} from '@ss/stock/api-article';
-import {LookupsService, LotsService} from '@ss/common/api-lookup';
-import { Observable, of, Subscription, switchMap } from 'rxjs';
+import { LookupsService, LotsService, Store } from '@ss/common/api-lookup';
+import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import { TransactionLinesService } from './transaction-lines.service';
+import { DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
+import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 
 @Directive()
-export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
-    private queryId: number;
-
+export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntityComponent<TransactionLine> implements OnInit {
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
-    private shellSrv = inject(ShellService);
-    private snackBarSrv = inject(SnackBarService);
     private formBuilder = inject(UntypedFormBuilder);
-    private confirmationSrv = inject(ConfirmationDialogService);
     private articleSrv = inject(ArticleService);
     private lotSrv = inject(LotsService);
     private lookupsSrv = inject(LookupsService);
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
 
-    protected subscriptions: Subscription[] = [];
-    protected route = inject(ActivatedRoute);
-    protected router = inject(Router);
+    public confirmationSrv = inject(ConfirmationDialogService);
+    public snackBarSrv = inject(SnackBarService);
+    public shellSrv = inject(ShellService);
 
-    form: UntypedFormGroup = null;
     selectedRow: TransactionLine = null;
     agentId = 0;
     parentId: number;
     selectedReference: string = null;
     isManager = false;
     mainStore = 0;
-    isEditable = true;
     saveDisabled = false;
     articleStock = 0.0;
     articleAutoCompleteModel: ArticleAutoCompleteModel = null;
     storeAutoCompleteModel: LotAutoCompleteModel = null;
 
-    protected constructor(protected entitySrv: TransactionLinesService) {
+    protected constructor(public entitySrv: TransactionLinesService, protected document: number) {
+        super(entitySrv);
         this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
         this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
         this.articleAutoCompleteModel.onObjectSelected = (a) => this.onArticle(a);
+        this.storeAutoCompleteModel.onObjectSelected =  (s) => this.onStore(s);
     }
 
     preload(): Observable<any> {
@@ -67,42 +66,13 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
     }
 
     private updateStockAndValue(res: QtyPrice) {
+        this.form.controls['price'].setValue(res.price);
         this.articleStock = res.qty;
     }
 
     ngOnInit() {
-        const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        super.ngOnInit();
         this.load();
-        const subs1 = this.storeAutoCompleteModel
-            .evenEmitter
-            .subscribe(id => {
-                this.articleSrv
-                    .getPPrice(this.form.controls['reference'].value, <number>id || 0, this.parentId, this.id)
-                    .subscribe({
-                        next: res => this.articleStock = res.qty,
-                        error: err => this.articleStock = 0
-                    });
-            });
-
-        const subs2 = this.articleAutoCompleteModel
-            .evenEmitter
-            .subscribe(ref => {
-                this.articleSrv
-                    .getPPrice(<string>ref, this.form.controls['store']?.value || 0, this.parentId, this.id)
-                    .subscribe({
-                        next: res => this.updateStockAndValue(res),
-                        error: err => this.form.controls['price'].setValue(0.0)
-                    });
-            });
-
-        this.subscriptions.push(subs1);
-        this.subscriptions.push(subs2);
-    }
-
-    public ngOnDestroy() {
-        this.form = null;
-        this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     public load() {
@@ -115,7 +85,11 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
                     this.saveDisabled &&= rights.edit;
                     this.isEditable = rights.edit;
                 }),
-                switchMap(_ => this.getRouteParam()))
+                switchMap(_ => this.route.params),
+                tap(p => {
+                    this.queryId = +p['id'];
+                }),
+                switchMap(() => this.loadEntity(this.queryId || 0)))
             .subscribe({
                 next: entity => {
                     if (entity) {
@@ -131,29 +105,15 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
             });
     }
 
-    public loadEntity(id: number): Observable<TransactionLine> {
-        if (id == null) {
-            this.shellSrv.goBack();
-            return of(null);
-        }
-        if (id === 0) {
-            const a: any = {
-                id: 0
-            };
-            return of(a);
-        }
-        return this.entitySrv.get(id);
-    }
-
-    protected getRouteParam(): Observable<any> {
-        return this.route.params
-            .pipe(
-                switchMap(p => {
-                    this.queryId = +p['id'];
-                    return this.loadEntity(this.queryId || 0);
-                })
-            );
-    }
+    // protected getRouteParam(): Observable<any> {
+    //     return this.route.params
+    //         .pipe(
+    //             switchMap(p => {
+    //                 this.queryId = +p['id'];
+    //                 return this.loadEntity(this.queryId || 0);
+    //             })
+    //         );
+    // }
 
     finishLoading(e: TransactionLine) {
         this.selectedRow = e;
@@ -186,6 +146,14 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
                 error: err => this.form.controls['price'].setValue(0.0)
             });
     }
+    onStore(s: Store) {
+        this.articleSrv
+            .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
+            .subscribe({
+                next: res => this.updateStockAndValue(res),
+                error: () => this.form.controls['price'].setValue(0.0)
+            });
+    }
 
     public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
@@ -197,8 +165,8 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
             reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
             sourceDoc: [b.sourceDoc],
             store: [b.store],
-            qtyOrdered: [b.qtyOrdered],
-            qtySatisfied: [b.qtySatisfied ||0, Validators.required],
+            qtyOrdered: [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
+            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
             qtyInvoiced: [b.qtyInvoiced ||0, Validators.required],
             qtyReturned: [b.qtyReturned ||0, Validators.required],
             price: [b.price || 0, Validators.required],
@@ -259,4 +227,9 @@ export abstract class BaseTransactionLinesDetailComponent2 implements OnInit {
             }
         });
     }
+
+    protected goBack() {
+        this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
+    }
 }
+

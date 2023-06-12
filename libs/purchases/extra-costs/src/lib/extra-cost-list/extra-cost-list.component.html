@@ -1,2 +1,91 @@
-<p>extra-cost-list works!</p>
-<a [routerLink]="['../costs-detail', '0']">Detail</a>
+<div class="button_div">
+<!--    <mat-form-field>-->
+<!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
+<!--        <input matInput [formControl]="searchText" type="text">-->
+<!--    </mat-form-field>-->
+
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" *ngIf="isEditable">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selected"
+            color="accent" *ngIf="isEditable">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selected"
+            color="warn" *ngIf="isEditable">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="container">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef=reference>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="transactDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.transactDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.amount | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vat">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.vat | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="supplierName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.supplierName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="costName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_COST_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.costName | translate }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="valueName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_VALUE_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.valueName | translate }}
+            </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="content_div b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>
+

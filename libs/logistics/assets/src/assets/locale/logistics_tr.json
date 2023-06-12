@@ -146,5 +146,11 @@
     "PAYER":            "",
     "SEND_MESSAGE":     "",
     "QTY":              "",
-    "EXTRA_COSTS":      ""
+    "EXTRA_COSTS":      "",
+    "FREIGHT":          "",
+    "INSURANCE":        "",
+    "CAF":              "",
+    "CUSTOMS":          "",
+    "TRANSIT":          "",
+    "PRICE_DISCOUNT":   ""
 }

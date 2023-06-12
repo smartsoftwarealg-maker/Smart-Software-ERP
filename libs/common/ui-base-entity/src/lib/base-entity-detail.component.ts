@@ -1,18 +1,15 @@
 import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
+import {UntypedFormBuilder} from '@angular/forms';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {Observable, of, Subscription} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityService} from '@ss/common/api-base-entity';
+import { AbstractEntityComponent } from './abstract-entity.component';
 
 @Directive()
-export abstract class BaseEntityDetailComponent<T extends { id: number }> implements OnInit, OnDestroy {
-    private queryId: number;
-    protected subscriptions: Subscription[] = [];
-    public form: UntypedFormGroup = null;
-    isEditable = true;
+export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -31,19 +28,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
         public title: string) {
-    }
-
-    public get id() {
-        return this.queryId;
-    }
-
-    public set id(value: number) {
-        this.queryId = value;
+        super(entitySrv);
     }
 
     public ngOnInit() {
-        const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        super.ngOnInit();
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setButtons([this.saveButton]);
@@ -51,11 +40,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     public ngOnDestroy() {
+        super.ngOnDestroy();
         this.shellSrv.reset();
-        this.form = null;
-        this.subscriptions.forEach(s => s.unsubscribe());
     }
-
 
     /**
      * Overload this to load your own things. and tap to save your results
@@ -76,7 +63,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
                     this.saveButton.visible &&= rights.edit;
                     this.isEditable = rights.edit;
                 }),
-                switchMap(_ => this.getRouteParam()))
+                switchMap(_ => this.getRouteParam()),
+                tap(p => this.queryId = +p['id']),
+                switchMap(() => this.loadEntity(this.queryId || 0)))
             .subscribe({
                 next: entity => {
                     if (entity) {
@@ -93,39 +82,13 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
     }
 
     protected getRouteParam(): Observable<any> {
-        return this.route.params
-            .pipe(
-                switchMap(p => {
-                    this.queryId = +p['id'];
-                    return this.loadEntity(this.queryId || 0);
-                })
-            );
-    }
-
-    //public assignQueryParams(p: any) {
-    //    this.queryId = +p['id'];
-    //}
-
-    public loadEntity(id: number): Observable<T> {
-        if (id == null) {
-            this.shellSrv.goBack();
-            return of(null);
-        }
-        if (id === 0) {
-            const a: any = {
-                id: 0
-            };
-            return of(a);
-        }
-        return this.entitySrv.get(id);
-    }
-
-    public finishLoading(e: T) {
-        this.shellSrv.setLoading(false);
-        this.form = this.setupForm(e);
-        if (!this.isEditable && this.form) {
-            this.form.disable();
-        }
+        return this.route.params;
+        // .pipe(
+        //     switchMap(p => {
+        //         this.queryId = +p['id'];
+        //         return this.loadEntity(this.queryId || 0);
+        //     })
+        // );
     }
 
     /** called with the new id to allow to upload attachment to this object */
@@ -137,56 +100,8 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> implem
         this.shellSrv.goBack();
     }
 
-    public save() {
-        this.form.markAllAsTouched();
-        if (!this.form.valid) {
-            this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
-            return;
-        }
-        const val = this.readForm();
-        val.id = this.queryId;
-        let obs: Observable<any> = val.id === 0 && false// TO SOLVE IDIOTS' PROBLEM
-            ? this.entitySrv.add(val).pipe(tap(i => { this.queryId = i; val.id = i; /* todo: navigate to the correct route using the new id*/ }))
-            : this.entitySrv.update(val)
-                .pipe(tap(i => {
-                    if (this.queryId == 0) {
-                        this.queryId = i;
-                        val.id = i;
-                    }
-                }));
-        obs = obs.pipe(switchMap(() => this.uploadAttachments(val.id)));
-        this.shellSrv.setLoading(true);
-        obs.subscribe({
-            next: () => {
-                this.shellSrv.setLoading(false);
-                this.goBack();
-                this.form.markAsUntouched();
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: err => {
-                this.snackBarSrv.showFailureMessage();
-                this.shellSrv.setLoading(false);
-                this.form?.reset(val);
-                throw err;
-            }
-        });
-    }
 
-    public readForm(): T {
-        return this.form.value;
-    }
 
-    public abstract setupForm(e: T): UntypedFormGroup;
 
     // use CanDeactivateService, it will look for this function and call it
-    public canDeactivate(): Observable<boolean> {
-        if (this.form != null && this.form.touched) {
-            return this.confirmationSrv.confirmDontSave();
-        }
-        return of(true);
-    }
-
-    get isLoading() {
-        return this.shellSrv.getLoading();
-    }
 }

@@ -12,7 +12,7 @@ import {BaseTransactionListComponent} from '@ss/logistics/api-transaction';
 @Component({
     selector: 'ss-ui-order',
     templateUrl: './purchase-order-list.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PurchaseOrderListComponent extends BaseTransactionListComponent {
     displayedColumns = [

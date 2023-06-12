@@ -9,10 +9,10 @@ import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
 import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
-import {PurchaseOrderListComponent} from "./purchase-order-list.component";
-import {PurchaseOrderDetailComponent} from "./purchase-order-detail.component";
-import {PurchaseOrderLinesListComponent} from "./purchase-order-lines-list.component";
-import {PurchaseOrderLinesDetailComponent} from "./purchase-order-lines-detail.component";
+import {PurchaseOrderListComponent} from "./purchase-order-list/purchase-order-list.component";
+import {PurchaseOrderDetailComponent} from "./purchase-order-detail/purchase-order-detail.component";
+import {PurchaseOrderLinesListComponent} from "./purchase-order-lines-list/purchase-order-lines-list.component";
+import {PurchaseOrderLinesDetailComponent} from "./purchase-order-lines-detail/purchase-order-lines-detail.component";
 
 @NgModule({
     imports: [CommonModule,

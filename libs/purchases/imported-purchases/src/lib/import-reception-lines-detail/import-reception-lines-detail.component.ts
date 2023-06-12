@@ -1,5 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BaseTransactionLinesDetailComponent2, TransactionLinesService } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionLinesDetailComponent2,
+    DOC_RECEPTION,
+    TransactionLinesService
+} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-import-reception-lines-detail',
@@ -9,6 +13,6 @@ import { BaseTransactionLinesDetailComponent2, TransactionLinesService } from '@
 })
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent2 implements OnInit, OnDestroy {
     constructor(protected receptionLinesSrv: TransactionLinesService) {
-        super(receptionLinesSrv);
+        super(receptionLinesSrv, DOC_RECEPTION);
     }
 }

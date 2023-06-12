@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
-    BaseTransactionDetailComponent, TransactionLinesService
-} from '@ss/logistics/api-transaction';
-import { ReceptionService } from '@ss/purchases/api-reception';
+    BaseTransactionDetailComponent, Transaction, TransactionLinesService
+} from "@ss/logistics/api-transaction";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { UntypedFormBuilder } from '@angular/forms';
@@ -11,6 +10,8 @@ import { LoginService } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { Lookup } from '@ss/common/api-lookup';
 import { filter } from 'rxjs';
+import { ImportReceptionService } from '../services/import-reception.service';
+import { ExtraCostService } from '../../../../extra-costs/src/lib/services/extra-cost.service';
 
 @Component({
     selector: 'ss-import-reception-detail',
@@ -20,10 +21,11 @@ import { filter } from 'rxjs';
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private URLs = ['./lines-list', './costs-list'];
+    private costSrv = inject(ExtraCostService);
     selectedIndex = 0;
 
     constructor(
-        public receptionService: ReceptionService,
+        public receptionService: ImportReceptionService,
         public override shellSrv: ShellService,
         public override detailSrv: TransactionLinesService,
         public override snackBarSrv: SnackBarService,
@@ -44,7 +46,6 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         return true;
     }
 
-
     override ngOnInit() {
         super.ngOnInit();
         this.currencySrv.load().subscribe();
@@ -58,6 +59,11 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         });
         this.subscriptions.push(sub);
         this.disableControls(this.router.url);
+    }
+
+    override finishLoading(e: Transaction) {
+        this.costSrv.setParentId(e?.id);
+        super.finishLoading(e);
     }
 
     private disableControls(url: string) {

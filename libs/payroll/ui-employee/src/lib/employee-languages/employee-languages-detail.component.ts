@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
     languages: Language[] = [];
     languageLevels: Language[] = [];
 
-    parentId: number = 0;
+    parentId = 0;
 
     constructor(
         public employeeLanguagesSrv: EmployeeLanguagesService,
@@ -57,7 +57,7 @@ export class EmployeeLanguagesDetailComponent extends BaseEntityDetailComponent<
         });
     }
 
-   override preload(): Observable<any> {
+    override preload(): Observable<any> {
         return this.lookupsSrv.getLanguages()
             .pipe(
                 tap(languages => this.languages = languages),

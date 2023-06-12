@@ -15,12 +15,12 @@ import {PayMethodService} from '@ss/logistics/api-logistics-common';
 import {UserListService} from '@ss/common/api-users';
 import {MatDialog} from '@angular/material/dialog';
 import {SalesContractService} from '@ss/logistics/contracts';
-import { PurchaseOrderLinesService } from "./purchase-order-lines.service";
+import { PurchaseOrderLinesService } from "../purchase-order-lines.service";
 
 @Component({
     selector: 'ss-ui-order-detail',
     templateUrl: './purchase-order-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent {
 

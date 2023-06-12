@@ -1,0 +1,16 @@
+.button_div {
+    width: 90%;
+    margin: auto;
+    max-width: 900px;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+}
+
+mat-card {
+    width: 96%;
+    max-width: 900px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
+}

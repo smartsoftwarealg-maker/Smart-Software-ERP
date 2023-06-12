@@ -49,7 +49,6 @@
     "AGENT_PRICE": "Agent price",
     "EDIT_AGENT_PRICE": "Edit agent price",
     "DESCRIPTION_AR": "Description ar",
-    "DESCRIPTION": "Description",
     "COST_CENTER": "Cost center",
     "EDIT_COST_CENTER": "Edit Cost center",
     "GROUP": "Group",
@@ -106,7 +105,6 @@
     "PURCHASE_ORDER": "Purchase order",
     "ADD_TO_CART": "Add",
     "SHOPPING_CART": "Shopping cart",
-    "AMOUNT_EXCEEDED": "Allowed amount exceeded",
     "SHOPPING": "Shopping",
     "AMOUNT": "Amount",
     "REMOVE_ONE_FROM_CART": "Remove one",
@@ -154,5 +152,14 @@
     "SEND_MESSAGE":     "Send a message",
     "QTY":              "Quantity",
     "CHECK_PRICES":     "Check prices",
-    "EXTRA_COSTS":      "Diverse costs"
+    "EXTRA_COSTS":      "Diverse costs",
+    "FOREIGN_CURRENCY": "Foreign currency",
+    "FREIGHT":          "Freight",
+    "INSURANCE":        "Insurance",
+    "CAF":              "C.A.F",
+    "CUSTOMS":          "Customs",
+    "TRANSIT":          "Transit",
+    "PRICE_DISCOUNT":   "Price discount",
+    "COST_TYPE":        "Cost type",
+    "VALUE_TYPE":       "Value type"
 }
