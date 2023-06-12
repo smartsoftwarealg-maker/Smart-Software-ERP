@@ -41,9 +41,9 @@ import {
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {
     ReceptionCancellationDetailComponent,
-    ReceptionCancellationLinesDetailComponent,
+    ReceptionCancellationLinesDetailComponent, ReceptionCancellationLinesListComponent,
     ReceptionCancellationListComponent
-} from '@ss/purchases/reception-cancellation';
+} from "@ss/purchases/reception-cancellation";
 import {loginGuard} from '../erp-guards';
 import {
     ImportReceptionDetailComponent,
@@ -229,21 +229,25 @@ export const routes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: ReceptionCancellationLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: ReceptionCancellationDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ReceptionCancellationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ReceptionCancellationLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {
