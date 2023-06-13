@@ -46,13 +46,16 @@ import {
 import { AccountDetailComponent, AccountListComponent } from '@ss/logistics/ui-account';
 import { CostCenterDetailComponent, CostCenterListComponent } from '@ss/logistics/ui-cost-center';
 import { InventoryEntryDetailComponent, InventoryEntryListComponent } from '@ss/stock/ui-inventory-entry';
-import { InventoryEntryLinesDetailComponent } from '@ss/stock/ui-inventory-entry-lines';
+import {
+    InventoryEntryLinesDetailComponent,
+    InventoryEntryLinesListComponent
+} from "@ss/stock/ui-inventory-entry-lines";
 import { InventoryExitDetailComponent, InventoryExitListComponent } from '@ss/stock/ui-inventory-exit';
 import { InventoryExitLinesDetailComponent } from '@ss/stock/ui-inventory-exit-lines';
 import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/ui-consumption';
 import { ConsumptionLinesDetailComponent } from '@ss/stock/ui-consumption-lines';
 import {InventoryDetailComponent, InventoryListComponent, PriceRecalculationComponent} from '@ss/stock/ui-inventory';
-import { InventoryLinesDetailComponent } from '@ss/stock/ui-inventory-lines';
+import { InventoryLinesDetailComponent, InventoryLinesListComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {ArticleStoreAssignmentComponent} from '@ss/stock/ui-article-store-assignment';
 import {InventoryAnomaliesComponent} from '@ss/stock/ui-inventory-anomalies';
@@ -72,6 +75,9 @@ import {
 } from '@ss/accounting/accounting-accounts';
 import {loginGuard} from '../erp-guards';
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import {
+    PurchaseOrderDetailComponent
+} from '@ss/purchases/ui-purchase-order';
 
 export const mainRoutes: Routes = [
     {
@@ -161,21 +167,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: InventoryLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: InventoryDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: InventoryLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: InventoryLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
@@ -188,21 +198,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: InventoryEntryLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: InventoryEntryDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: InventoryEntryLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: InventoryEntryLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
