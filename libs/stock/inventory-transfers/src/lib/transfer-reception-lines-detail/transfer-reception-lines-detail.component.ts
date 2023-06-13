@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_TRANSFER_RECEPTION
+    BaseTransactionLinesDetailComponent, BaseTransactionLinesDetailComponent2, DOC_TRANSFER_RECEPTION
 } from "@ss/logistics/api-transaction";
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -15,28 +15,8 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
     templateUrl: './transfer-reception-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class TransferReceptionLinesDetailComponent  extends BaseTransactionLinesDetailComponent {
-    constructor(
-        public inventoryLinesService: TransactionLinesService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override articleSrv: ArticleService,
-        public override lotSrv: LotsService,
-        public override lookupsSrv: LookupsService) {
-        super(inventoryLinesService,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            articleSrv,
-            lotSrv,
-            lookupsSrv,
-            'STOCK_TRANSFER_RECEPTION',
-            DOC_TRANSFER_RECEPTION
-        );
+export class TransferReceptionLinesDetailComponent  extends BaseTransactionLinesDetailComponent2 {
+    constructor(public inventoryLinesService: TransactionLinesService) {
+        super(inventoryLinesService, DOC_TRANSFER_RECEPTION);
     }
 }

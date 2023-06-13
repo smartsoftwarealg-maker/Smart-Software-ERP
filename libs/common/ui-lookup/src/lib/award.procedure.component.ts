@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Lookup, ProjectMotiveService} from '@ss/common/api-lookup';
+import { AwardProcedureService, Lookup } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -7,11 +7,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AwardProcedureService} from '../../../api-lookup/src/lib/award-procedure.service';
 
 
 @Component({
-    selector: 'ss-project-type-list',
+    selector: 'ss-award-procedure-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -43,7 +42,7 @@ export class AwardProcedureListComponent extends BaseEntityListComponent<Lookup>
 
 
 @Component({
-    selector: 'ss-company-type-detail',
+    selector: 'ss-award-procedure-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

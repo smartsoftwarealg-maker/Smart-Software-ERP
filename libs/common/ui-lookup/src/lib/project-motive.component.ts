@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
-    selector: 'ss-project-type-list',
+    selector: 'ss-project-motive-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -34,7 +34,7 @@ export class ProjectMotiveListComponent extends BaseEntityListComponent<Lookup> 
 
 
 @Component({
-    selector: 'ss-company-type-detail',
+    selector: 'ss-project-motive-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

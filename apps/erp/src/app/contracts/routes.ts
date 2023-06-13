@@ -5,7 +5,7 @@ import {
     CONTRACTS_PROJECT_MOTIVE_URL,
     CONTRACTS_AWARD_PROCEDURE_URL
 } from '../common';
-import {CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
     AwardProcedureDetailComponent,
     AwardProcedureListComponent,

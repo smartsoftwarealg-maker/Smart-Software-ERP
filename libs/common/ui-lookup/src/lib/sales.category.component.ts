@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Activity, ActivityService, Category, SalesCategoryService} from '@ss/common/api-lookup';
+import {Activity, Category, SalesCategoryService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
-    selector: 'ss-activity-list',
+    selector: 'ss-sales-category-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -33,7 +33,7 @@ export class SalesCategoryListComponent extends BaseEntityListComponent<Category
 
 
 @Component({
-    selector: 'ss-activity-detail',
+    selector: 'ss-sales-category-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

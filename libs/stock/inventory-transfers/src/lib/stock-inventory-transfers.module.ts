@@ -17,20 +17,22 @@ import { TransferReceptionListComponent } from './transfer-reception-list/transf
 import { TransferReceptionDetailComponent } from './transfer-reception-detail/transfer-reception-detail.component';
 import { TransferReceptionLinesListComponent } from './transfer-reception-lines-list/transfer-reception-lines-list.component';
 import { TransferReceptionLinesDetailComponent } from './transfer-reception-lines-detail/transfer-reception-lines-detail.component';
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule,
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiDatepickerModule,
+    CommonUiAutoCompleteModule,
+    LogisticsUiDocInfoModule,
+    LogisticsUiStockInfoModule,
+    RouterOutlet
+  ],
     declarations: [
         InventoryTransferListComponent,
         InventoryTransferDetailComponent,

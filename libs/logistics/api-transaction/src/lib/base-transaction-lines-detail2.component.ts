@@ -25,9 +25,11 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 
+
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
     public shellSrv = inject(ShellService);
+    public showStock = true;
 
     selectedRow: TransactionLine = null;
     agentId = 0;
@@ -146,6 +148,7 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
                 error: err => this.form.controls['price'].setValue(0.0)
             });
     }
+
     onStore(s: Store) {
         this.articleSrv
             .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
@@ -158,6 +161,15 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
+
+        if (b.reference && b.store) {
+            this.articleSrv
+                .getPPrice(b.reference, b.store, b.transacId, b.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: () => this.form.controls['price'].setValue(0.0)
+                });
+        }
 
         return this.formBuilder.group({
             id: [b.id],

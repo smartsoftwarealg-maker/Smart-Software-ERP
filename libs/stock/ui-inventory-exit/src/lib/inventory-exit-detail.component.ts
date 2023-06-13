@@ -35,22 +35,6 @@ export class InventoryExitDetailComponent extends BaseTransactionDetailComponent
     }
 
 
-    // public override setupForm(b: Transaction) {
-    //     // Make sure to update the template if you edit the configuration here
-    //     return this.formBuilder.group({
-    //         id: [b.id],
-    //         document: [0],
-    //         centerId: [0 || this.loginSrv.appCtx.center],
-    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-    //         number: [b.number || 0],
-    //         reference: [b.reference],
-    //         referenceDocDate: [b.referenceDocDate],
-    //         header: [b.header],
-    //         footer: [b.footer],
-    //         dealer: [ { value: b.dealer || this.loginSrv.appCtx.id, disabled: !this.loginSrv.appCtx.manager} , Validators.required]
-    //     });
-    // }
-
     protected importedDocuments(): Lookup[] {
         return [];
     }

@@ -85,16 +85,4 @@
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
 
-    <div class="doc-info">
-        <ss-doc-info
-            *ngIf="selectedId"
-            [displayedGroups]="['article', 'document']"
-            [params]="{
-            documentId: selectedRow?.transacId,
-            documentURL:'/consumption',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
-        }">
-        </ss-doc-info>
-    </div>
 </div>

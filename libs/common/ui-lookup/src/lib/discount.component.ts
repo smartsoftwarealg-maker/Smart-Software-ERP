@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Activity, ActivityService, DiscountService, Lookup} from '@ss/common/api-lookup';
+import {Activity, DiscountService, Lookup} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
-    selector: 'ss-activity-list',
+    selector: 'ss-discount-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -35,7 +35,7 @@ export class DiscountListComponent extends BaseEntityListComponent<Lookup> {
 
 
 @Component({
-    selector: 'ss-activity-detail',
+    selector: 'ss-discount-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

@@ -86,4 +86,5 @@
         </form>
     </mat-card-content>
 </mat-card>
-<ss-inventory-transfer-lines-list class="detail-list" *ngIf="formId" [isEditable]="isEditable"></ss-inventory-transfer-lines-list>
+<!--<ss-inventory-transfer-lines-list class="detail-list" *ngIf="formId" [isEditable]="isEditable"></ss-inventory-transfer-lines-list>-->
+<router-outlet *ngIf="formId"></router-outlet>
