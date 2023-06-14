@@ -161,7 +161,8 @@ export interface Subclass {
 
 export interface Store {
     id: number;
-    centerId: number;
+    center: number;
+    storeId?: number;
     description: string;
     descriptionAr?: string;
     expires: boolean;

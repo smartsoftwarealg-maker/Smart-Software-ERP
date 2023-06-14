@@ -42,10 +42,4 @@ export class QuotationLinesListComponent extends BaseTransactionLinesListCompone
             storeNamesSrv,
             confirmationSrv);
     }
-
-    override showDetail(id: number) {
-        this.router.navigate(
-            ['../lines-detail', id || 0],
-            { relativeTo: this.route}).then();
-    }
 }

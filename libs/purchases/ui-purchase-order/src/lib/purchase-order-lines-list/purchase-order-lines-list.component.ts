@@ -34,10 +34,4 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
     }
-
-    override showDetail(id: number) {
-        this.router.navigate(
-            ['../lines-detail', id || 0],
-            { relativeTo: this.route}).then();
-    }
 }

@@ -125,13 +125,4 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             ['lines-detail', id || 0],
             { relativeTo: this.route.parent}).then();
     }
-    // showDetail(id: number) {
-    //     const params = {
-    //         parent: this.parentId
-    //     };
-    //     this.router.navigate(
-    //         ['./' + LINES_DETAIL_URL + '/' + id],
-    //         {relativeTo: this.route.parent, queryParams: params}
-    //     ).then();
-    // }
 }
