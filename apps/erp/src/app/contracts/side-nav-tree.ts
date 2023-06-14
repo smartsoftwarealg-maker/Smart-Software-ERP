@@ -8,7 +8,7 @@ import {
 } from '../common';
 
 export const contractsNavTree: SideNavNode = {
-    name: 'CONTRACTS',
+    name: 'COMMON_PROJECTS',
     icon: 'fas fa-coins',
     accessRights: 'Project',
     children: [
@@ -16,25 +16,25 @@ export const contractsNavTree: SideNavNode = {
             name: 'LOGISTICS_PROJECT_TYPES',
             icon: 'fa-solid fa-message-text',
             route: ABS_CONTRACTS_PROJECT_TYPE,
-            accessRights: "ProjectType"
+            accessRights: 'ProjectType'
         },
         {
             name: 'LOGISTICS_AWARD_PROCEDURES',
             icon: 'fa-solid fa-award',
             route: ABS_CONTRACTS_AWARD_PROCEDURE,
-            accessRights: "AwardProcedure"
+            accessRights: 'AwardProcedure'
         },
         {
             name: 'COMMON_MOTIVES',
             icon: 'fa-solid fa-goal-net',
             route: ABS_CONTRACTS_PROJECT_MOTIVE,
-            accessRights: "ProjectMotive"
+            accessRights: 'ProjectMotive'
         },
         {
-            name: 'CONTRACTS',
+            name: 'COMMON_PROJECTS',
             icon: 'fa-solid fa-file-signature',
             route: ABS_CONTRACTS_PROJECT_URL,
             accessRights: 'Project'
         },
     ]
-}
+};

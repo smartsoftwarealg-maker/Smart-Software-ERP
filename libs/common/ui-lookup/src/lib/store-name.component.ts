@@ -10,7 +10,6 @@ import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {OptionService} from '@ss/logistics/ui-options';
 import {Observable, tap} from 'rxjs';
 
-
 @Component({
     selector: 'ss-store-name-list',
     templateUrl: './base-templates/list-template.html',
@@ -31,7 +30,6 @@ export class StoreNameListComponent extends BaseEntityListComponent<Store> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(storeNameSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_STORE_NAMES');
     }
-
 }
 
 
@@ -64,12 +62,12 @@ export class StoreNameDetailComponent extends BaseEntityDetailComponent<Store> {
 
     public override setupForm(e: Store): UntypedFormGroup {
         return this.formBuilder.group({
-            id: e.id,
-            description: [e.description, Validators.required],
+            id:            [e.id],
+            description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
-            centerId: [e.centerId || this.loginSrv.appCtx.center],
-            expires: [e.expires],
-            storeId: [1]
+            centerId:      [e.center || this.loginSrv.appCtx.center],
+            expires:       [e.expires|| false],
+            storeId:       [e.storeId || 0]
         });
     }
 
