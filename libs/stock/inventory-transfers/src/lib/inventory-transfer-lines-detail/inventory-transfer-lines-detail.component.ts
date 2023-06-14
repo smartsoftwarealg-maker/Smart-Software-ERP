@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent2, DOC_TRANSFER
+    BaseTransactionLinesDetailComponent, DOC_TRANSFER
 } from "@ss/logistics/api-transaction";
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 
@@ -9,7 +9,7 @@ import {TransactionLinesService} from '@ss/logistics/api-transaction';
     templateUrl: './inventory-transfer-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class InventoryTransferLinesDetailComponent extends BaseTransactionLinesDetailComponent2 {
+export class InventoryTransferLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(public inventoryLinesService: TransactionLinesService) {
         super(inventoryLinesService, DOC_TRANSFER);
     }

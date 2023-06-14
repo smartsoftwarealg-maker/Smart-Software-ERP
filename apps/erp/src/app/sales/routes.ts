@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { DeliveryDetailComponent, DeliveryListComponent } from '@ss/sales/ui-delivery';
 import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
-import { DeliveryLinesDetailComponent } from '@ss/sales/ui-delivery-lines';
+import { DeliveryLinesDetailComponent, DeliveryLinesListComponent } from "@ss/sales/ui-delivery-lines";
 import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
@@ -10,22 +10,27 @@ import {
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
-import { OrderLinesDetailComponent } from '@ss/sales/ui-order-lines';
-import { InvoiceListComponent } from '@ss/sales/ui-invoice';
+import { OrderLinesDetailComponent, OrderLinesListComponent } from "@ss/sales/ui-order-lines";
+import { InvoiceLinesListComponent, InvoiceListComponent } from "@ss/sales/ui-invoice";
 import { InvoiceLinesDetailComponent } from '@ss/sales/ui-invoice';
 import { InvoiceDetailComponent } from '@ss/sales/ui-invoice';
 import {
     InvoiceCancellationDetailComponent,
-    InvoiceCancellationLinesDetailComponent,
+    InvoiceCancellationLinesDetailComponent, InvoiceCancellationLinesListComponent,
     InvoiceCancellationListComponent
-} from '@ss/sales/ui-invoice-cancellation';
+} from "@ss/sales/ui-invoice-cancellation";
 import {
     DeliveryCancellationDetailComponent,
-    DeliveryCancellationLinesDetailComponent,
+    DeliveryCancellationLinesDetailComponent, DeliveryCancellationLinesListComponent,
     DeliveryCancellationListComponent
 } from '@ss/sales/ui-delivery-cancellation';
 
-import {ProformaDetailComponent, ProformaLinesDetailComponent, ProformaListComponent} from '@ss/sales/ui-proforma';
+import {
+    ProformaDetailComponent,
+    ProformaLinesDetailComponent,
+    ProformaLinesListComponent,
+    ProformaListComponent
+} from "@ss/sales/ui-proforma";
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {SalesAdsDetailComponent, SalesAdsListComponent} from '@ss/sales/ecommerce';
@@ -44,21 +49,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: DeliveryCancellationLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: DeliveryCancellationDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: DeliveryCancellationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: DeliveryCancellationLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {
@@ -71,20 +80,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: InvoiceCancellationLinesDetailComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: InvoiceCancellationDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: InvoiceCancellationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: DeliveryCancellationLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {
@@ -97,21 +111,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: InvoiceLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: InvoiceDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: InvoiceLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: InvoiceLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {
@@ -124,21 +142,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: DeliveryLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: DeliveryDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: DeliveryLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: DeliveryLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {
@@ -151,21 +173,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: OrderLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: OrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: OrderLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: OrderLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {
@@ -178,21 +204,25 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes
             },
             {
-                path: LINES_DETAIL_URL + '/:id',
-                component: ProformaLinesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
-            },
-            {
                 path: ':id',
                 component: ProformaDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: docInfoRoutes
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ProformaLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ProformaLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL }
         ]
     },
     {

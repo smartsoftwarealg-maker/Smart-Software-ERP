@@ -1,4 +1,5 @@
-<div class="main-container" *ngIf="parentId">
+<div class="main-container">
+
     <div class="add-button">
         <mat-form-field>
             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -19,7 +20,7 @@
         </button>
     </div>
 
-    <div class="container_div">
+    <div class="main-table">
         <mat-table mat-table [dataSource]="data" class="main-table">
 
             <ng-container matColumnDef="position">
@@ -102,10 +103,11 @@
 
     <div class="doc-info">
         <ss-doc-info
-            [displayedGroups]="['document', 'article']"
+            *ngIf="selectedId"
+            [displayedGroups]="['article', 'document']"
             [params]="{
             documentId: selectedRow?.transacId,
-            documentURL:'/sales-order',
+            documentURL:'/inventory',
             articleReference: selectedRow?.reference,
             articleStoreId: selectedRow?.store
         }">

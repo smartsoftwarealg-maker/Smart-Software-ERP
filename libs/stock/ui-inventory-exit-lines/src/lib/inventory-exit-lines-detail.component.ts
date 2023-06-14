@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent2, DOC_CORRECTION_OUT,
+    BaseTransactionLinesDetailComponent, DOC_CORRECTION_OUT,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 
@@ -9,7 +9,7 @@ import {
     templateUrl: './inventory-exit-lines-detail.component.html',
     styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
-export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent2 implements OnInit, OnDestroy {
+export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
         public inventoryLinesSrv: TransactionLinesService) {
         super(inventoryLinesSrv, DOC_CORRECTION_OUT);

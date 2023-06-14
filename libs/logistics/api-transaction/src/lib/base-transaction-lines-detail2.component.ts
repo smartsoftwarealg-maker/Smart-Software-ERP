@@ -15,7 +15,7 @@ import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
-export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntityComponent<TransactionLine> implements OnInit {
+export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
     private formBuilder = inject(UntypedFormBuilder);
@@ -140,29 +140,33 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     }
 
     onArticle(a: Article | string) {
-        this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
-        this.articleSrv
-            .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
-            .subscribe({
-                next: res => this.updateStockAndValue(res),
-                error: err => this.form.controls['price'].setValue(0.0)
-            });
+        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+            this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
+            this.articleSrv
+                .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                });
+        }
     }
 
     onStore(s: Store) {
-        this.articleSrv
-            .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
-            .subscribe({
-                next: res => this.updateStockAndValue(res),
-                error: () => this.form.controls['price'].setValue(0.0)
-            });
+        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+            this.articleSrv
+                .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: () => this.form.controls['price'].setValue(0.0)
+                });
+        }
     }
 
     public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
 
-        if (b.reference && b.store) {
+        if (b.reference && b.store && (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800)) {
             this.articleSrv
                 .getPPrice(b.reference, b.store, b.transacId, b.id)
                 .subscribe({

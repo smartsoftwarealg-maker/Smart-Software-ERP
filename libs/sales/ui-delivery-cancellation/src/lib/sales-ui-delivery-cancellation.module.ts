@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DeliveryCancellationListComponent } from './delivery-cancellation-list.component';
-import { DeliveryCancellationDetailComponent } from './delivery-cancellation-detail.component';
-import { DeliveryCancellationLinesDetailComponent } from './delivery-cancellation-lines-detail.component';
-import { DeliveryCancellationLinesListComponent } from './delivery-cancellation-lines-list.component';
+import { DeliveryCancellationListComponent } from './delivery-cancellation-list/delivery-cancellation-list.component';
+import { DeliveryCancellationDetailComponent } from './delivery-cancellation-detail/delivery-cancellation-detail.component';
+import { DeliveryCancellationLinesDetailComponent } from './delivery-cancellation-line-detail/delivery-cancellation-lines-detail.component';
+import { DeliveryCancellationLinesListComponent } from './delivery-cancellation-line-list/delivery-cancellation-lines-list.component';
 import {MaterialModule} from "@ss/common/api-common";
 import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
