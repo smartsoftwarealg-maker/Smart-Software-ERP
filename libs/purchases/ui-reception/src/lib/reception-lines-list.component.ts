@@ -1,4 +1,4 @@
-import {Component, Input, OnInit,} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -35,5 +35,11 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['lines-detail', id || 0],
+            { relativeTo: this.route.parent}).then();
     }
 }

@@ -16,10 +16,10 @@ import {
     InvoiceLinesListComponent,
     InvoiceListComponent
 } from "@ss/sales/ui-invoice";
-import {InvoiceCancellationListComponent} from "./invoice-cancellation-list.component";
-import {InvoiceCancellationDetailComponent} from "./invoice-cancellation-detail.component";
-import {InvoiceCancellationLinesDetailComponent} from "./invoice-cancellation-lines-detail.component";
-import {InvoiceCancellationLinesListComponent} from "./invoice-cancellation-lines-list.component";
+import {InvoiceCancellationListComponent} from "./invoice-cancellation-list/invoice-cancellation-list.component";
+import {InvoiceCancellationDetailComponent} from "./invoice-cancellation-detail/invoice-cancellation-detail.component";
+import {InvoiceCancellationLinesDetailComponent} from "./invoice-cancellation-lines-detail/invoice-cancellation-lines-detail.component";
+import {InvoiceCancellationLinesListComponent} from "./invoice-cancellation-lines-list/invoice-cancellation-lines-list.component";
 
 @NgModule({
     imports: [

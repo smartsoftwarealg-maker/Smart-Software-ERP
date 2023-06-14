@@ -1,17 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {ArticleService} from '@ss/stock/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
-import {OfferLinesService} from '@ss/logistics/api-transaction';
-import { PurchaseOrderLinesService } from "../purchase-order-lines.service";
+import { PurchaseOrderLinesService } from '../purchase-order-lines.service';
 
 @Component({
-  selector: 'ss-order-lines-list',
-  templateUrl: './purchase-order-lines-list.component.html',
-  styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    selector: 'ss-order-lines-list',
+    templateUrl: './purchase-order-lines-list.component.html',
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [
@@ -34,5 +33,11 @@ export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListCo
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['../lines-detail', id || 0],
+            { relativeTo: this.route}).then();
     }
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import {APP_ARCHIVE_DOCUMENTS_URL, Mark, MARKS_URL} from './lookups-api';
+import {APP_ARCHIVE_DOCUMENTS_URL} from './lookups-api';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Observable} from 'rxjs';
 import {Lookup} from '@ss/common/api-lookup';
 
 @Injectable({

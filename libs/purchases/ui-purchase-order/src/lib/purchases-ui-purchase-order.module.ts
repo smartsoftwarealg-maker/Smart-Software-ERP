@@ -13,19 +13,20 @@ import {PurchaseOrderListComponent} from "./purchase-order-list/purchase-order-l
 import {PurchaseOrderDetailComponent} from "./purchase-order-detail/purchase-order-detail.component";
 import {PurchaseOrderLinesListComponent} from "./purchase-order-lines-list/purchase-order-lines-list.component";
 import {PurchaseOrderLinesDetailComponent} from "./purchase-order-lines-detail/purchase-order-lines-detail.component";
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-    imports: [CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule
-    ],
+  imports: [CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiDatepickerModule,
+    CommonUiAutoCompleteModule,
+    LogisticsUiDocInfoModule,
+    LogisticsUiStockInfoModule, RouterOutlet
+  ],
     declarations: [
         PurchaseOrderListComponent,
         PurchaseOrderDetailComponent,

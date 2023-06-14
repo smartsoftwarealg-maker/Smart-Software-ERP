@@ -35,7 +35,6 @@ export class ImportReceptionLinesListComponent extends BaseTransactionLinesListC
     }
 
     override showDetail(id: number) {
-
         this.router.navigate(
             ['lines-detail', id || 0],
             { relativeTo: this.route.parent}).then();

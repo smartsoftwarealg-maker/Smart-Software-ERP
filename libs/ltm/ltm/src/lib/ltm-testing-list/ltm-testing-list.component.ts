@@ -6,10 +6,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {LtmTestingService} from '../ltm-testing.service';
+import {LtmTestingService} from '../services/ltm-testing.service';
 import {map, Observable} from 'rxjs';
-import {LtmLineService} from '../ltm-line.service';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
+import {LtmLineService} from '../services/ltm-line.service';
+import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LtmInjectionComponent} from '../ltm-injection/ltm-injection.component';
 

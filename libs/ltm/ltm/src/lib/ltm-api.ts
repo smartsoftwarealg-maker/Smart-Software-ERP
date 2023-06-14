@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {LtmLineGuard} from './ltm-line-guard';
+import {LtmLineGuard} from './services/ltm-line-guard';
 import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot} from '@angular/router';
 
 export const LTM_TESTINGS_URL    = '/ltm/testings';

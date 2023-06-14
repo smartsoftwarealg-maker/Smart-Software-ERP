@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
+import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
 
 @Component({
     selector: 'ss-ltm-periodicities-list',

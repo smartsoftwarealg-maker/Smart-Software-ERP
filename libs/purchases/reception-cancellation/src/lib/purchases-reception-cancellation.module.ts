@@ -13,20 +13,22 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { ReceptionCancellationLinesDetailComponent } from './reception-cancellation-lines-detail/reception-cancellation-lines-detail.component';
 import { ReceptionCancellationLinesListComponent } from './reception-cancellation-lines-list/reception-cancellation-lines-list.component';
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule,
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiDatepickerModule,
+    CommonUiAutoCompleteModule,
+    LogisticsUiDocInfoModule,
+    LogisticsUiStockInfoModule,
+    RouterOutlet
+  ],
     declarations: [
         ReceptionCancellationListComponent,
         ReceptionCancellationDetailComponent,

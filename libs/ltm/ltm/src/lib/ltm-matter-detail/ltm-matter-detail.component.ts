@@ -5,8 +5,8 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmMatterService} from '../ltm-matter.service';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
+import {LtmMatterService} from '../services/ltm-matter.service';
+import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {filter, Observable} from 'rxjs';
 
 @Component({

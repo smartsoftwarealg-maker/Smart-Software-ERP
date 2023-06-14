@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Division, DivisionService, Lookup, PunishmentTypeService} from '@ss/common/api-lookup';
+import {Lookup, PunishmentTypeService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
-    selector: 'ss-division-list',
+    selector: 'ss-punishment-type-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -41,7 +41,7 @@ export class PunishmentTypeListComponent extends BaseEntityListComponent<Lookup>
 
 
 @Component({
-    selector: 'ss-division-detail',
+    selector: 'ss-punishment-type-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

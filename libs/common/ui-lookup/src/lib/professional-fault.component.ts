@@ -10,7 +10,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 
 
 @Component({
-    selector: 'ss-division-list',
+    selector: 'ss-fault-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -41,7 +41,7 @@ export class ProfessionalFaultListComponent extends BaseEntityListComponent<Look
 
 
 @Component({
-    selector: 'ss-division-detail',
+    selector: 'ss-faults-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })

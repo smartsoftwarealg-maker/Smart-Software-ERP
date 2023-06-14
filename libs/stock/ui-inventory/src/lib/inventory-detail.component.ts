@@ -1,17 +1,15 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
-import {LoginService, User} from '@ss/common/api-common';
-import {UserListService} from '@ss/common/api-users';
+import {LoginService} from '@ss/common/api-common';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
-import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
+import { InventoryLinesService } from '@ss/stock/api-inventory-lines';
 
 @Component({
     selector: 'ss-inventory-detail',

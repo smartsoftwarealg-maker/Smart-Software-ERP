@@ -3,13 +3,10 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryLinesService} from '@ss/stock/api-inventory-entry-lines';
-import {Observable, Subscription} from 'rxjs';
 //import {PaginationModel} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {LotsService, Store} from '@ss/common/api-lookup';
-import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
-import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/api-transaction';
-import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-entry-lines-list',
@@ -37,5 +34,11 @@ export class InventoryEntryLinesListComponent extends BaseTransactionLinesListCo
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['lines-detail', id || 0],
+            { relativeTo: this.route.parent}).then();
     }
 }

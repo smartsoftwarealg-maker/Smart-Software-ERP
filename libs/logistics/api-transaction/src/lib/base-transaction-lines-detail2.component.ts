@@ -10,12 +10,12 @@ import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import { TransactionLinesService } from './transaction-lines.service';
 import { DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
+import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
-export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntityComponent<TransactionLine> implements OnInit {
+export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
     private loginSrv  =  inject(LoginService);
     private optionSrv =  inject(OptionService);
     private formBuilder = inject(UntypedFormBuilder);
@@ -25,9 +25,11 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 
+
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
     public shellSrv = inject(ShellService);
+    public showStock = true;
 
     selectedRow: TransactionLine = null;
     agentId = 0;
@@ -40,7 +42,7 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     articleAutoCompleteModel: ArticleAutoCompleteModel = null;
     storeAutoCompleteModel: LotAutoCompleteModel = null;
 
-    protected constructor(public entitySrv: TransactionLinesService, protected document: number) {
+    protected constructor(public entitySrv: TransactionLinesClass, protected document: number) {
         super(entitySrv);
         this.articleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
         this.storeAutoCompleteModel   = new LotAutoCompleteModel(this.lotSrv);
@@ -138,26 +140,40 @@ export abstract class BaseTransactionLinesDetailComponent2 extends AbstractEntit
     }
 
     onArticle(a: Article | string) {
-        this.selectedReference = typeof a === 'string'? a : a.reference? a.reference : null;
-        this.articleSrv
-            .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
-            .subscribe({
-                next: res => this.updateStockAndValue(res),
-                error: err => this.form.controls['price'].setValue(0.0)
-            });
+        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+            this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
+            this.articleSrv
+                .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: err => this.form.controls['price'].setValue(0.0)
+                });
+        }
     }
+
     onStore(s: Store) {
-        this.articleSrv
-            .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
-            .subscribe({
-                next: res => this.updateStockAndValue(res),
-                error: () => this.form.controls['price'].setValue(0.0)
-            });
+        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+            this.articleSrv
+                .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: () => this.form.controls['price'].setValue(0.0)
+                });
+        }
     }
 
     public setupForm(b: TransactionLine): UntypedFormGroup {
         this.selectedRow = b;
         this.selectedReference = b?.reference;
+
+        if (b.reference && b.store && (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800)) {
+            this.articleSrv
+                .getPPrice(b.reference, b.store, b.transacId, b.id)
+                .subscribe({
+                    next: res => this.updateStockAndValue(res),
+                    error: () => this.form.controls['price'].setValue(0.0)
+                });
+        }
 
         return this.formBuilder.group({
             id: [b.id],

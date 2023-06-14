@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
+import {Component, OnInit} from '@angular/core';
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ArticleService} from '@ss/stock/api-article';
@@ -31,5 +31,11 @@ export class PurchaseRequestLinesListComponent extends  BaseTransactionLinesList
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['../lines-detail', id || 0],
+            { relativeTo: this.route}).then();
     }
 }

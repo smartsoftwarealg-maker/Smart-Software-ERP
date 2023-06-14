@@ -5,9 +5,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {of, switchMap} from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
+import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {Sort} from '@angular/material/sort';
-import { LtmMatterService } from "../ltm-matter.service";
+import { LtmMatterService } from "../services/ltm-matter.service";
 
 @Component({
     selector: 'ss-ltm-matter-test-list',

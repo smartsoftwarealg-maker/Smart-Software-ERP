@@ -1,21 +1,16 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FormGroup, UntypedFormBuilder } from '@angular/forms';
-import {CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LoginService, User} from '@ss/common/api-common';
-import {Agent, SupplierService} from '@ss/logistics/api-agent';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {LoginService} from '@ss/common/api-common';
 import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import {UserListService} from '@ss/common/api-users';
 import {MatDialog} from '@angular/material/dialog';
-import {SalesContractService} from '@ss/logistics/contracts';
-import { PurchaseOrderLinesService } from "../purchase-order-lines.service";
+import { PurchaseOrderLinesService } from '../purchase-order-lines.service';
 
 @Component({
     selector: 'ss-ui-order-detail',

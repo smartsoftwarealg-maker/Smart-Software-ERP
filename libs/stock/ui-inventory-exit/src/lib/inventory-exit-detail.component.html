@@ -50,4 +50,5 @@
     </mat-card-content>
 </mat-card>
 
-<ss-inventory-exit-lines-list *ngIf="formId" [isEditable]="isEditable"></ss-inventory-exit-lines-list>
+<!--<ss-inventory-exit-lines-list *ngIf="formId" [isEditable]="isEditable"></ss-inventory-exit-lines-list>-->
+<router-outlet *ngIf="formId"></router-outlet>

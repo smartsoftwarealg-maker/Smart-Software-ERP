@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {LtmTestService} from '../ltm-test.service';
+import {LtmTestService} from '../services/ltm-test.service';
 
 @Component({
     selector: 'ss-ltm-test-detail',

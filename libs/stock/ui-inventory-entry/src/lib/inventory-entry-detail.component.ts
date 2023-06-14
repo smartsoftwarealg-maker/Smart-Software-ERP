@@ -1,18 +1,16 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder} from '@angular/forms';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryEntryService} from '@ss/stock/api-inventory-entry';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {LanguageService, LoginService, User} from '@ss/common/api-common';
-import {UserListService} from '@ss/common/api-users';
-import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
+import {LoginService} from '@ss/common/api-common';
+import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import {InventoryLinesListComponent} from '@ss/stock/ui-inventory-lines';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
-import { InventoryEntryLinesService } from "@ss/stock/api-inventory-entry-lines";
+import { InventoryEntryLinesService } from '@ss/stock/api-inventory-entry-lines';
 
 
 @Component({

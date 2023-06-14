@@ -3,13 +3,9 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryLinesService} from '@ss/stock/api-inventory-lines';
-import {Observable} from 'rxjs';
-import {map, switchMap, tap} from 'rxjs/operators';
-import {PaginationModel} from '@ss/common/api-common';
-import {LINES_DETAIL_URL} from '@ss/common/api-common';
-import {Article, ArticleService} from '@ss/stock/api-article';
-import {Store, LotsService} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent, TransactionLine} from '@ss/logistics/api-transaction';
+import {ArticleService} from '@ss/stock/api-article';
+import {LotsService} from '@ss/common/api-lookup';
+import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-inventory-lines-list',
@@ -37,5 +33,11 @@ export class InventoryLinesListComponent extends BaseTransactionLinesListCompone
         public override storeNamesSrv: LotsService,
         public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+    }
+
+    override showDetail(id: number) {
+        this.router.navigate(
+            ['lines-detail', id || 0],
+            { relativeTo: this.route.parent}).then();
     }
 }

@@ -7,9 +7,9 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {LTMMatterTest} from '../ltm-api';
-import {LtmTestService} from '../ltm-test.service';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
+import {LtmTestService} from '../services/ltm-test.service';
+import {LtmMatterTestService} from '../services/ltm-matter-test.service';
+import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
 
 @Component({
     selector: 'ss-ltm-matter-test-detail',

@@ -13,20 +13,22 @@ import { LogisticsUiDocInfoModule } from '@ss/logistics/ui-doc-info';
 import { LogisticsUiStockInfoModule } from '@ss/logistics/ui-stock-info';
 import { PurchaseRequestLinesDetailComponent } from './purchase-request-lines-detail/purchase-request-lines-detail.component';
 import { PurchaseRequestLinesListComponent } from './purchase-request-lines-list/purchase-request-lines-list.component';
+import { RouterOutlet } from "@angular/router";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        UiPaginationModule,
-        ReactiveFormsModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiDatepickerModule,
-        CommonUiAutoCompleteModule,
-        LogisticsUiDocInfoModule,
-        LogisticsUiStockInfoModule,
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    UiPaginationModule,
+    ReactiveFormsModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiDatepickerModule,
+    CommonUiAutoCompleteModule,
+    LogisticsUiDocInfoModule,
+    LogisticsUiStockInfoModule,
+    RouterOutlet
+  ],
     declarations: [
         PurchaseRequestListComponent,
         PurchaseRequestDetailComponent,

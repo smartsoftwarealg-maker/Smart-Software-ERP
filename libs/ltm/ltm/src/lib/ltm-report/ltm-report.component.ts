@@ -4,12 +4,12 @@ import {ActivatedRoute} from '@angular/router';
 import { filter, map, Observable, of, Subscription } from "rxjs";
 import {Data, LTMLineMatter} from '../ltm-api';
 import {FormControl} from '@angular/forms';
-import {LtmLineService} from '../ltm-line.service';
-import {LtmLineMatterService} from '../ltm-line-matter.service';
+import {LtmLineService} from '../services/ltm-line.service';
+import {LtmLineMatterService} from '../services/ltm-line-matter.service';
 import {Chart, ChartItem, registerables} from 'chart.js';
-import {LtmTestingService} from '../ltm-testing.service';
+import {LtmTestingService} from '../services/ltm-testing.service';
 import {ChartConfiguration} from 'chart.js/dist/types';
-import {LtmMatterTestService} from '../ltm-matter-test.service';
+import {LtmMatterTestService} from '../services/ltm-matter-test.service';
 import {LanguageService} from '@ss/common/api-common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 

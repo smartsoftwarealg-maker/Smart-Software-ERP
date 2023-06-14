@@ -4,12 +4,6 @@ import {
     DOC_RECEPTION_CANCELLATION,
     TransactionLinesService
 } from "@ss/logistics/api-transaction";
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/stock/api-article';
-import {LookupsService, LotsService} from '@ss/common/api-lookup';
 
 @Component({
     selector: 'ss-reception-cancellation-lines-detail',
@@ -18,28 +12,8 @@ import {LookupsService, LotsService} from '@ss/common/api-lookup';
 })
 export class ReceptionCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(
-        public receptionLinesSrv: TransactionLinesService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override articleSrv: ArticleService,
-        public override lotSrv: LotsService,
-        public override lookupsSrv: LookupsService) {
-        super(receptionLinesSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            articleSrv,
-            lotSrv,
-            lookupsSrv,
-            'STOCK_RECEPTION_CANCELLATION_LINES',
-            DOC_RECEPTION_CANCELLATION
-        );
-        this.articleSrv.setParentURL(null);
+        public receptionLinesSrv: TransactionLinesService) {
+        super(receptionLinesSrv, DOC_RECEPTION_CANCELLATION);
     }
 }
 

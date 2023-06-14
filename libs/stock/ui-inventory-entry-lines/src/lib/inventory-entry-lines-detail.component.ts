@@ -1,10 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {UntypedFormBuilder} from '@angular/forms';
-import {LookupsService, LotsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/stock/api-article';
 import {
     BaseTransactionLinesDetailComponent, DOC_CORRECTION_IN,
     TransactionLinesService
@@ -17,27 +11,7 @@ import {
     templateUrl: './inventory-entry-lines-detail.component.html'
 })
 export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
-    constructor(
-        public override detailSrv: TransactionLinesService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override articleSrv: ArticleService,
-        public override lotSrv: LotsService,
-        public override lookupsSrv: LookupsService) {
-        super(detailSrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            formBuilder,
-            confirmationSrv,
-            articleSrv,
-            lotSrv,
-            lookupsSrv,
-            'STOCK_EDIT_INVENTORY_LINES_ENTRY',
-            DOC_CORRECTION_IN
-        );
+    constructor(public detailSrv: TransactionLinesService) {
+        super(detailSrv, DOC_CORRECTION_IN);
     }
 }

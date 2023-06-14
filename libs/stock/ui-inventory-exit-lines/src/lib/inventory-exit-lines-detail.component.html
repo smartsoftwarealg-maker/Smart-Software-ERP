@@ -1,3 +1,14 @@
+<div class="button_div">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn" *ngIf="isEditable">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
 <mat-card>
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
@@ -69,15 +80,3 @@
         </form>
     </mat-card-content>
 </mat-card>
-<div class="doc-info">
-    <ss-doc-info *ngIf="selectedRow?.transacId"
-                 [displayedGroups]="['document', 'article']"
-                 [params]="{
-                    articleReference: selectedRow?.reference || '',
-                    articleStoreId: selectedRow?.store || 0,
-                    agentId: agentId,
-                    documentId: parentId,
-                    documentURL:'/proforma'
-             }">
-    </ss-doc-info>
-</div>

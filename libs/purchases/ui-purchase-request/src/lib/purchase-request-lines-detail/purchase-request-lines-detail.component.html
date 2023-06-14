@@ -1,30 +1,35 @@
-<div class="main-container">
-    <mat-card>
+<div class="button_div">
+
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn" *ngIf="isEditable">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card>
         <mat-card-content>
             <form *ngIf="form !== null" novalidate [formGroup]="form">
 
-                <mat-form-field id="position" class="default-25 sm-50">
+                <mat-form-field id="position" class="default-50">
                     <mat-label translate>LOGISTICS_POSITION</mat-label>
                     <input matInput formControlName="position" type="number">
                 </mat-form-field>
 
-                <span class="default-25"></span>
+                <mat-form-field id="qtyOrdered" class="default-50">
+                    <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
+                    <input matInput formControlName="qtyOrdered" type="number" step=".01" required>
+                    <mat-error
+                        *ngIf="form.controls['qtyOrdered'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
 
 
-<!--                <mat-form-field class="default-50 sm-100">-->
-<!--                    <mat-label translate>STOCK_STORE</mat-label>-->
-<!--                    <ss-auto-complete matInput-->
-<!--                                      [model]="storeAutoCompleteModel"-->
-<!--                                      formControlName="store"></ss-auto-complete>-->
-<!--                    <mat-error-->
-<!--                        *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-<!--                    </mat-error>-->
-<!--                    <mat-error-->
-<!--                        *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-<!--                    </mat-error>-->
-<!--                </mat-form-field>-->
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-100">
                     <mat-label translate>LOGISTICS_ARTICLE</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
@@ -40,15 +45,6 @@
                 </mat-form-field>
 
 
-                <mat-form-field id="qtyOrdered" class="default-25 sm-50">
-                    <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
-                    <input matInput formControlName="qtyOrdered" type="number" step=".01" required>
-                    <mat-error
-                        *ngIf="form.controls['qtyOrdered'].hasError('required')" translate>COMMON_FIELD_REQUIRED
-                    </mat-error>
-                </mat-form-field>
-
-                <span class="default-25 sm-50"></span>
 <!--                <mat-form-field id="price" class="default-50 sm-100">-->
 <!--                    <mat-label translate>LOGISTICS_PRICE</mat-label>-->
 <!--                    <input matInput formControlName="price" type="number" step=".01" required>-->
@@ -79,15 +75,14 @@
             </form>
         </mat-card-content>
     </mat-card>
-    <div class="doc-info">
-        <ss-doc-info *ngIf="selectedReference"
-                     [displayedGroups]="['document', 'agent', 'article']"
-                     [params]="{
-            articleReference: selectedReference,
-            agentId: agentId,
-            documentId: parentId,
-            documentURL:'/inventory'
-        }">
-        </ss-doc-info>
-    </div>
-</div>
+<!--    <div class="doc-info">-->
+<!--        <ss-doc-info *ngIf="selectedReference"-->
+<!--                     [displayedGroups]="['document', 'agent', 'article']"-->
+<!--                     [params]="{-->
+<!--            articleReference: selectedReference,-->
+<!--            agentId: agentId,-->
+<!--            documentId: parentId,-->
+<!--            documentURL:'/inventory'-->
+<!--        }">-->
+<!--        </ss-doc-info>-->
+<!--    </div>-->

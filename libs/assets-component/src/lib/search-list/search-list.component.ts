@@ -26,6 +26,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 export class SearchListComponent extends BaseEntityListComponent<Asset> implements OnDestroy {
     private fb =  inject(UntypedFormBuilder);
     private supplierSrv  = inject(SupplierService);
+    private beneficiarySrv = inject(ConsumerService);
     private assetSrv  = inject(AssetsService);
     private isParamSrv  = inject(IsParamService);
     private locationSrv  = inject(AssetLocationService);
@@ -96,7 +97,6 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
                 public override defReportSrv: DefaultReportService,
                 public override confirmationSrv: ConfirmationDialogService,
                 public override pagPersistSrv: PaginatorPersistenceService,
-                private beneficiarySrv: ConsumerService,
                 private dialog: MatDialog) {
         super(listSrv,
             shellSrv,

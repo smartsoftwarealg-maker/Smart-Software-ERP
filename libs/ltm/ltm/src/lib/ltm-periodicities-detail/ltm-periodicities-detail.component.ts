@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {LtmPeriodicityService} from '../ltm-periodicity.service';
+import {LtmPeriodicityService} from '../services/ltm-periodicity.service';
 
 @Component({
     selector: 'ss-ltm-periodicities-detail',

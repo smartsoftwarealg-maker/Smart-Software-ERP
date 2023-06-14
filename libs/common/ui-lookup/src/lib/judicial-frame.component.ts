@@ -7,11 +7,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {DairaService} from '../../../api-lookup/src/lib/dira.service';
 import {JudicialFrameService} from '@ss/payroll/api-employee';
 
 @Component({
-    selector: 'ss-mark-list',
+    selector: 'ss-judicial-frame-list',
     templateUrl: './base-templates/list-template.html',
     styleUrls: ['./base-templates/list-template.scss']
 })
@@ -41,7 +40,7 @@ export class JudicialFrameListComponent extends BaseEntityListComponent<Lookup> 
 }
 
 @Component({
-    selector: 'ss-mark-detail',
+    selector: 'ss-judicial-frames-detail',
     templateUrl: './base-templates/detail-template.html',
     styleUrls: ['./base-templates/detail-template.scss']
 })
