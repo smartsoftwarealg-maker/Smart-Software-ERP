@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -16,6 +16,7 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./sales-schedule-list.component.scss'],
 })
 export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule> {
+    private customerSrv = inject(CustomerService);
     agentFC = new FormControl<number>(0);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     displayedColumns = [
@@ -37,8 +38,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private customerSrv: CustomerService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,

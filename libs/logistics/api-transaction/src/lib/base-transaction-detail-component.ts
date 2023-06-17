@@ -3,10 +3,10 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {
     ActivatedRoute, NavigationEnd,
     Router, RouterEvent
-} from "@angular/router";
+} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { filter, Observable, of, switchMap } from "rxjs";
+import { filter, Observable, of, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BaseEntityExtendedService, BaseEntityService } from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
@@ -14,7 +14,7 @@ import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit } from "@angular/core";
+import { Directive, inject, OnInit } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';

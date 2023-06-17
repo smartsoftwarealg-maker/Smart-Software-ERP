@@ -40,6 +40,15 @@
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_WILAYA</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="wilayaLookup"
+                                  formControlName="wilaya">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['wilaya'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_TYPE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="typeLookup"

@@ -36,6 +36,8 @@ export interface Project {
     execMonths?: number;
     execDays?: number;
     customerName?: string;
+    wilaya?: number;
+    wilayaName?: string;
 }
 
 export interface ProjectArticle {

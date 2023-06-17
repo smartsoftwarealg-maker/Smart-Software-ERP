@@ -9,47 +9,54 @@
     </mat-form-field>
 </div>
 <div class="container_div">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="contractNo">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.contractNo}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.description}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="fromDate">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_FROM</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FROM</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.fromDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="toDate">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_TO</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TO</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.toDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="customerName">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.customerName}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="projDate">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.projDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="wilaya">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_WILAYA</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.wilayaName }}
             </mat-cell>
         </ng-container>
 

@@ -43,5 +43,6 @@
     "CLOSED_FILE":                   "The accounting file is closed. No further modification is allowed",
     "INVALID_LEAVE_RANGE":           "Invalid leave period. Please, verify the acquired leave dates",
     "POST_FINAL_MSG":                "This message cannot be sent until the document is validated.",
-    "INVALID_AGENT_CENTERS":         "This agent is not authorized in this center."
+    "INVALID_AGENT_CENTERS":         "This agent is not authorized in this center.",
+    "INVALID_CREDENTIALS":           "Invalid credentials"
 }

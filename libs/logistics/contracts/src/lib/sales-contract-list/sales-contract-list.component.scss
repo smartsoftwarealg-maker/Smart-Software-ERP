@@ -14,7 +14,7 @@ mat-form-field {
 
 .content-div {
     width: 100%;
-    min-width: 900px;
+    min-width: 1000px;
 }
 
 .mat-column-description,
@@ -22,7 +22,8 @@ mat-form-field {
     flex: 2 1 250px;
 }
 
-.mat-column-contractNo {
+.mat-column-contractNo,
+.mat-column-wilaya {
     flex: 1 1 100px;
 }
 .mat-column-contractNo,
