@@ -17,6 +17,9 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./budget-commitment-detail.component.scss'],
 })
 export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<BudgetCommitment> {
+    private activatedRoute = inject(ActivatedRoute);
+    private langSrv = inject(LanguageService);
+    private router = inject(Router);
     private supplierSrv  = inject(SupplierService);
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);
     private planningInfo: PlanningInfo = null;
@@ -29,10 +32,7 @@ export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<B
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private activatedRoute: ActivatedRoute,
-        private langSrv: LanguageService,
-        private router: Router) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'BUD_COMMITMENTS');
     }
 

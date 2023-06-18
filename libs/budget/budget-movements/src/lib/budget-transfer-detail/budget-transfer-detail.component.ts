@@ -20,6 +20,12 @@ import {filter} from 'rxjs';
     styleUrls: ['./budget-transfer-detail.component.scss'],
 })
 export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<BudgetTransfer> {
+    private activatedRoute = inject(ActivatedRoute);
+    private langSrv = inject(LanguageService);
+    private router = inject(Router);
+    private planningSrv = inject(BudgetPlanningService);
+    private budgetSrv = inject(BudgetService);
+    private loginSrv = inject(LoginService);
     private numberPipe: DecimalPipe = new DecimalPipe(this.langSrv.defaultLanguage);
     private planningInfo: PlanningInfo = null;
     private supplierSrv = inject(SupplierService);
@@ -32,13 +38,7 @@ export class BudgetTransferDetailComponent extends BaseEntityDetailComponent<Bud
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private activatedRoute: ActivatedRoute,
-        private langSrv: LanguageService,
-        private router: Router,
-        private planningSrv: BudgetPlanningService,
-        private budgetSrv: BudgetService,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'BUD_TRANSFERS');
     }
 

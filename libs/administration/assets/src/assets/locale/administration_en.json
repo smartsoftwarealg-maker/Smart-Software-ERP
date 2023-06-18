@@ -75,7 +75,7 @@
     "WORKFLOW_MESSAGES":   "Workflow messages",
     "LEVEL":               "Level",
     "FINAL":               "Final?",
-    "USER_MESSAGES":       "User messages",
+    "USER_MESSAGES":       "Sent messages",
     "USER_DOCUMENTS":      "User documents",
     "WORKFLOW_INBOX":      "Inbox",
     "USER_RECEIVED_MESSAGES": "Received messages",

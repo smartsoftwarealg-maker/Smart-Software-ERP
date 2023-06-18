@@ -19,6 +19,15 @@ import {BudgetTransferDetailService} from '../budget-transfer-detail.service';
     styleUrls: ['./budget-transfer-line-detail.component.scss'],
 })
 export class BudgetTransferLineDetailComponent implements OnInit {
+    private entitySrv = inject(BudgetTransferService);
+    private detailSrv = inject(BudgetTransferDetailService);
+    private shellSrv = inject(ShellService);
+    private snackBarSrv = inject(SnackBarService);
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
+    private formBuilder = inject(UntypedFormBuilder);
+    private budgetSrv = inject(BudgetService);
+    private confirmationSrv = inject(ConfirmationDialogService);
     destinations$: Observable<Budget[]> = null;
     private planningSrv = inject(BudgetPlanningService);
     planningLookup = new DefaultAutoCompleteModel(this.planningSrv);
@@ -29,18 +38,6 @@ export class BudgetTransferLineDetailComponent implements OnInit {
         amount:      [0,    Validators.required],
         description: [null],
     });
-
-    constructor(
-        private entitySrv: BudgetTransferService,
-        private detailSrv: BudgetTransferDetailService,
-        private shellSrv: ShellService,
-        private snackBarSrv: SnackBarService,
-        private route: ActivatedRoute,
-        private router: Router,
-        private formBuilder: UntypedFormBuilder,
-        private budgetSrv: BudgetService,
-        private confirmationSrv: ConfirmationDialogService) {
-    }
 
 
     ngOnInit(): void {
