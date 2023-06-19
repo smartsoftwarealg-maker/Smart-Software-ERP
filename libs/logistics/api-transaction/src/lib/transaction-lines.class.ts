@@ -6,6 +6,7 @@ import {Transaction} from './transaction';
 import {HttpParams} from '@angular/common/http';
 
 export class TransactionLinesClass extends BaseEntityExtendedService<TransactionLine> {
+    private _editable = true;
 
     constructor(protected override httpSrv: HttpService, baseUrl: string, parentUrl: string) {
         super(httpSrv,  baseUrl, parentUrl);
@@ -17,5 +18,13 @@ export class TransactionLinesClass extends BaseEntityExtendedService<Transaction
 
     override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number; body: TransactionLine[] }> {
         return super.getList(page, pageSize, filter, sortBy, extraPrams);
+    }
+
+    get editable() {
+        return this._editable;
+    }
+
+    set editable(v: boolean) {
+        this._editable = v;
     }
 }

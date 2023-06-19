@@ -37,6 +37,7 @@ import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
+import { parkNavTree } from '../app/park/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -52,6 +53,7 @@ export const navBar = [
     financeNavTree,
     hrLookupNavTree,
     hrNavTree,
+    parkNavTree,
     payrollNavTree,
     missionsNavTree,
     webArchNavTree,
@@ -63,6 +65,7 @@ export const navBar = [
     dashboardNavTree,
     workflowNavTree,
     aaNavTree,
+    parkNavTree
 ];
 
 export const langAssets = [

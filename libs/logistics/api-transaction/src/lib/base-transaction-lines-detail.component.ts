@@ -85,7 +85,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 tap(_ => {
                     const rights = this.shellSrv.getCurrentNodeRights();
                     this.saveDisabled &&= rights.edit;
-                    this.isEditable = rights.edit;
+                    this.isEditable = rights.edit && this.entitySrv.editable;
                 }),
                 switchMap(_ => this.route.params),
                 tap(p => {
@@ -140,7 +140,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onArticle(a: Article | string) {
-        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+        if (this.document > DOC_SEPARATOR_200 || this.document < DOC_SEPARATOR_800) {
             this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
             this.articleSrv
                 .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
@@ -152,9 +152,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onStore(s: Store) {
-        if (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800) {
+        if (this.document > DOC_SEPARATOR_200 || this.document < DOC_SEPARATOR_800) {
             this.articleSrv
-                .getPPrice(this.selectedReference, s?.id || 0, this.parentId, this.id)
+                .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
                 .subscribe({
                     next: res => this.updateStockAndValue(res),
                     error: () => this.form.controls['price'].setValue(0.0)

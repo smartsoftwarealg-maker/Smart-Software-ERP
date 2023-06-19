@@ -15,17 +15,15 @@ import {
     HR_PUNISHMENT_TYPE_URL,
     HR_SERVICES_URL,
     HR_SUSPENSION_REASON_URL,
-    LOOKUPS_URL,
     HR_PERSON_LIST_URL,
     DASHBOARD_URL,
     HR_JUDICIAL_FRAMES_URL,
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
     HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL
-} from "../common";
+} from '../common';
 import {
     ABS_INDEX_URL,
-    CanActivateService,
     CanDeactivateService,
     LIST_URL,
     RedirectToParentComponent

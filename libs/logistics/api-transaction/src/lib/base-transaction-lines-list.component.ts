@@ -5,11 +5,12 @@ import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, Subscription } from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
-import {LINES_DETAIL_URL, PaginationModel} from '@ss/common/api-common';
+import {PaginationModel} from '@ss/common/api-common';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
 import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
+import { TransactionLinesClass } from "./transaction-lines.class";
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
@@ -26,7 +27,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     readonly pagination = PaginationModel.newInstance();
 
     constructor(
-        public detailSrv: BaseEntityExtendedService<TransactionLine>,
+        public detailSrv: TransactionLinesClass,
         public shellSrv: ShellService,
         public snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.parentId = this.detailSrv.getParentId();
+        this._isEditable_ = this.detailSrv.editable;
         this.loadDetailLines().subscribe(_ => this.shellSrv.setLoading(false));
 
         this.subscription = this.searchText

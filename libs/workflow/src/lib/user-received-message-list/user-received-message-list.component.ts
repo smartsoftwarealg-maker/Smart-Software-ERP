@@ -23,7 +23,6 @@ export class UserReceivedMessageListComponent  extends BaseEntityListComponent<U
     userAutoComplete = new UserLookup(this.usersSrv);
     displayedColumns = [
         'messageDescription',
-        'amount',
     ];
 
     constructor(
