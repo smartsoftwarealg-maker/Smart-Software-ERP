@@ -15,6 +15,13 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 })
 export class DepreciationGenerationComponent implements OnInit {
     private fb = inject(UntypedFormBuilder);
+    private loginSrv = inject(LoginService);
+    private deprecSrv = inject(DepreciationGenerationService);
+    private route = inject(ActivatedRoute);
+    private shellSrv = inject(ShellService);
+    private snackBarSrv = inject(SnackBarService);
+    private journalSrv = inject(AccJournalsService);
+
     minDate: Date = new Date();
     maxDate: Date = new Date();
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
@@ -24,12 +31,6 @@ export class DepreciationGenerationComponent implements OnInit {
     displayedColumns = ['acc', 'description', 'cCenter', 'debit', 'credit'];
     processing = false;
 
-    constructor(private loginSrv: LoginService,
-                private deprecSrv: DepreciationGenerationService,
-                private route: ActivatedRoute,
-                private shellSrv: ShellService,
-                private snackBarSrv: SnackBarService,
-                private journalSrv: AccJournalsService) {}
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);

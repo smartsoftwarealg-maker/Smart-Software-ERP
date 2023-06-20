@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
@@ -18,6 +18,12 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./child-attributes.component.scss']
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {
+    private attribSrv  = inject(AttributesService);
+    private attribLookupSrv  = inject(AttributeLookupService);
+    private childAttribSrv  = inject(ChildAttributesService);
+    private confirmationSrv  = inject(ConfirmationDialogService);
+    private snackBarSrv  = inject(SnackBarService);
+
     private langSrv = inject(LanguageService);
     private datePipe = new DatePipe(this.langSrv.defaultLanguage);
     private _parentId: 1 | 2 | 3 | 4 = 2;
@@ -33,12 +39,6 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     $childAttributes: AttribTempl[] = [];
     attributeLookup = new DefaultAutoCompleteModel(this.attribLookupSrv);
 
-    constructor(private attribSrv: AttributesService,
-                private attribLookupSrv: AttributeLookupService,
-                private childAttribSrv: ChildAttributesService,
-                private confirmationSrv: ConfirmationDialogService,
-                private snackBarSrv: SnackBarService) {
-    }
 
     @Input()
     set parentId(pId: 1 | 2 | 3 | 4) {

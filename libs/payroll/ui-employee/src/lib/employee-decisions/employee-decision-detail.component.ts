@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { Observable, of } from 'rxjs';
-import { tap, switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService, LoginService } from '@ss/common/api-common';
-import {EmployeeDecisionService, Decision, MotiveService, DecisionMotiveService} from '@ss/payroll/api-employee';
+import {EmployeeDecisionService, Decision, DecisionMotiveService} from '@ss/payroll/api-employee';
 import { LookupsService } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 
@@ -17,6 +17,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./employee-decision-detail.component.scss']
 })
 export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<Decision> implements OnInit, OnDestroy {
+    private motiveSrv = inject(DecisionMotiveService);
     decisionLookup = new DefaultAutoCompleteModel(this.motiveSrv);
 
     entity: Decision;
@@ -32,8 +33,7 @@ export class EmployeeDecisionDetailComponent extends BaseEntityDetailComponent<D
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
         public loginSrv: LoginService,
-        public lookupsSrv: LookupsService,
-        private motiveSrv: DecisionMotiveService) {
+        public lookupsSrv: LookupsService) {
         super(employeeDecisionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_DECISIONS');
     }
 

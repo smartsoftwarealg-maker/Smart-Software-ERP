@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {Bank, BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -19,6 +18,13 @@ import {WorkMasterService, SectorService} from '@ss/common/api-lookup';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {
+    private customerSrv  = inject( CustomerService);
+    private activitySrv  = inject( ActivityService);
+    private sectorSrv  = inject( SectorService);
+    private wilayaSrv  = inject( WilayaService);
+    private workMasterSrv  = inject( WorkMasterService);
+    private loginSrv  = inject( LoginService);
+
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     public activityLookup = new DefaultAutoCompleteModel<Activity>(this.activitySrv)
     public sectorLookup = new DefaultAutoCompleteModel<Activity>(this.sectorSrv)
@@ -32,13 +38,7 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private customerSrv: CustomerService,
-        private activitySrv: ActivityService,
-        private sectorSrv: SectorService,
-        private wilayaSrv: WilayaService,
-        private workMasterSrv: WorkMasterService,
-        private loginSrv: LoginService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
     }
 

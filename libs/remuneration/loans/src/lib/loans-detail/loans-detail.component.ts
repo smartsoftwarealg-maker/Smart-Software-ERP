@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Loan} from '../loans-class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -23,6 +23,9 @@ type Period = {
   styleUrls: ['./loans-detail.component.scss']
 })
 export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
+    private employeeSrv  = inject(EmployeeService);
+    private loginSrv  = inject(LoginService);
+    private elementTypeSrv  = inject(ElementTypesService);
     employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     loansAutoCompleteModel = new DefaultAutoCompleteModel(this.elementTypeSrv);
 
@@ -32,10 +35,7 @@ export class LoansDetailComponent extends BaseEntityDetailComponent<Loan> {
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        private employeeSrv: EmployeeService,
-        public override confirmationSrv: ConfirmationDialogService,
-        private loginSrv: LoginService,
-        private elementTypeSrv: ElementTypesService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv,
             shellSrv,
             snackBarSrv,

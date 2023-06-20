@@ -11,16 +11,26 @@ import {BudgetGroupTree} from '../budget-groups-api';
 export class BudgetGroupsAddDlgComponent {
     private fb = inject(FormBuilder);
     form = this.fb.group({
-        id:          [this.data.id],
-        parentId:    [this.data.parentId],
-        accountType: [this.data.accountType],
-        disabled:    [this.data.disabled],
-        description: [this.data.description, [Validators.required, Validators.minLength(4), Validators.maxLength (45)]],
-        code:        [this.data.code, [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+        id:          [0],
+        parentId:    [0],
+        accountType: [0],
+        disabled:    [false],
+        description: [''],
+        code:        [''],
     });
 
     constructor(private dialogRef: MatDialogRef<BudgetGroupsAddDlgComponent>,
-                @Inject(MAT_DIALOG_DATA) private data: BudgetGroupTree) {}
+                @Inject(MAT_DIALOG_DATA) private data: BudgetGroupTree) {
+        this.form = this.fb.group({
+            id:          [this.data.id],
+            parentId:    [this.data.parentId],
+            accountType: [this.data.accountType],
+            disabled:    [this.data.disabled],
+            description: [this.data.description, [Validators.required, Validators.minLength(4), Validators.maxLength (45)]],
+            code:        [this.data.code, [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+        });
+
+    }
 
 
     save() {

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PeriodSelectorService, PeriodSummary, ReopenInfo} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -15,6 +15,9 @@ import {UntypedFormControl, Validators} from '@angular/forms';
   styleUrls: ['./accounting-reopen.component.scss']
 })
 export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSummary> {
+    private loginSrv  = inject(LoginService);
+    private langSrv  = inject(LanguageService);
+
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
     private label = `${this.langSrv.translate('ACC_REOPENING')} ${this.loginSrv.appCtx.accYear}`;
     generating = false;
@@ -33,9 +36,7 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private loginSrv: LoginService,
-        private langSrv: LanguageService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Amendment} from '../payroll-amendment.class';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
@@ -18,6 +18,10 @@ import {PayrollUtil, PersonAutocompleteClass} from '@ss/payroll-common';
   styleUrls: ['./payroll-amendment-detail.component.scss']
 })
 export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<Amendment> {
+    private httpSrv  = inject(HttpService);
+    private employeeSrv  = inject(EmployeeService);
+    private loginSrv  = inject(LoginService);
+
     infoLookupModel = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
     employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
 
@@ -27,10 +31,7 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private httpSrv: HttpService,
-        private employeeSrv: EmployeeService,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_AMENDMENTS');
     }
 

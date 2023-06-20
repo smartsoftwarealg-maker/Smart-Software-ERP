@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Quota, SSArticleService, SSQuotaService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -16,6 +16,10 @@ import {LoginService} from '@ss/common/api-common';
     styleUrls: ['./sales-quota-detail.component.scss'],
 })
 export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> {
+    private customerSrv = inject(CustomerService);
+    private articleSrv = inject(SSArticleService);
+    private loginSrv = inject(LoginService);
+    private discountSrv = inject(DiscountService);
     customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     articleLookup  = new DefaultAutoCompleteModel(this.articleSrv, 'id', 'description2');
     discountLookup = new DefaultAutoCompleteModel(this.discountSrv);
@@ -27,11 +31,7 @@ export class SalesQuotaDetailComponent extends BaseEntityDetailComponent<Quota> 
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private customerSrv: CustomerService,
-        private articleSrv: SSArticleService,
-        private loginSrv: LoginService,
-        private discountSrv: DiscountService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_QUOTAS');
     }
 

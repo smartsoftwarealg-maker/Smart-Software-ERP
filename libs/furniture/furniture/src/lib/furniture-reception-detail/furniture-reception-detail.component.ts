@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterEvent} from '@angular/router';
@@ -17,6 +17,10 @@ import {filter} from 'rxjs';
     styleUrls: ['./furniture-reception-detail.component.scss'],
 })
 export class FurnitureReceptionDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
+    private router  = inject(Router);
+    private supplierSrv  = inject(SupplierService);
+    private loginSrv  = inject(LoginService);
+
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
 
     constructor(
@@ -25,10 +29,7 @@ export class FurnitureReceptionDetailComponent extends BaseEntityDetailComponent
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router,
-        private supplierSrv: SupplierService,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 

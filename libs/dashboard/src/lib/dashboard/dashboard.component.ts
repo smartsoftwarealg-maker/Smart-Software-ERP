@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {DashboardService} from '../dashboard.service';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
@@ -6,12 +6,10 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
-import {Observable, of, switchMap, tap} from 'rxjs';
+import {LookupsService} from '@ss/common/api-lookup';
+import {of, switchMap, tap} from 'rxjs';
 import {
-    APP_ASSET,
-    APP_DASHBOARD, APP_HR, APP_PAYROLL,
-    APP_PURCHASE, APP_SALES, APP_STOCK, getApplicationId,
+    getApplicationId,
     LanguageService,
     PaginationModel,
     PaginatorPersistenceService
@@ -26,6 +24,9 @@ import {Id} from '@ss/common/ui-auto-complete';
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
+    private agentSrv = inject(AgentService);
+    private langSrv = inject(LanguageService);
+
     private jsonButton: ToolbarButton = {
         icon:  'fa-solid fa-coffee-bean',
         label: 'COMMON_JSON_EXPORT',
@@ -53,8 +54,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 public override confirmationSrv: ConfirmationDialogService,
                 public override defReportSrv: DefaultReportService,
                 public lookupsSrv: LookupsService,
-                private agentSrv: AgentService,
-                private langSrv: LanguageService,
                 public override pagPersistSrv: PaginatorPersistenceService) {
         super(dashboardSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_DASHBOARD_QUERIES');
         this.detailPagination.onChange = () => this.updatePage();

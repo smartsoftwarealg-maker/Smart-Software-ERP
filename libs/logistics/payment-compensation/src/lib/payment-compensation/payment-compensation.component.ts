@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
 import {UntypedFormControl} from "@angular/forms";
@@ -33,6 +33,12 @@ interface PaymentTree {
     styleUrls: ['./payment-compensation.component.scss']
 })
 export class PaymentCompensationComponent implements OnInit {
+    private shellSrv  = inject( ShellService);
+    private agentSrv  = inject( AgentService);
+    private snackBarSrv  = inject( SnackBarService);
+    private route  = inject( ActivatedRoute);
+    private langSrv  = inject( LanguageService);
+
     private AGENT    = 'COMMON_AGENT';
     private CUSTOMER = 'LOGISTICS_CUSTOMER';
     private SUPPLIER = 'LOGISTICS_SUPPLIER';
@@ -67,11 +73,7 @@ export class PaymentCompensationComponent implements OnInit {
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     hasChild = (_: number, node: FlatPaymentNode) => node.expandable;
 
-    constructor(private shellSrv: ShellService,
-                private agentSrv: AgentService,
-                private snackBarSrv: SnackBarService,
-                private route: ActivatedRoute,
-                private langSrv: LanguageService) {
+    constructor() {
         this.agentAutoCompleteModel.onValueChanged = value => this.onAgentChange(value);
     }
 

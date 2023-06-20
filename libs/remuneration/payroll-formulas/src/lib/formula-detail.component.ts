@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Formula} from './payroll-formulas-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
@@ -16,6 +16,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./formula-detail.component.scss']
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
+    private elementSrv = inject(ElementsInfoService);
     elementLookup = new DefaultAutoCompleteModel(this.elementSrv, 'field', 'description');
 
     constructor(
@@ -25,8 +26,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private elementSrv: ElementsInfoService) {
+        public lookupsSrv: LookupsService) {
         super(detailSrv,
               shellSrv,
               snackBarSrv,

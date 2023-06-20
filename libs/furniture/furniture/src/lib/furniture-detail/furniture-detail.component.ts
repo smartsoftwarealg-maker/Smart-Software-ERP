@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Furniture} from '../furniture-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,6 +22,17 @@ import {tap} from 'rxjs/operators';
     styleUrls: ['./furniture-detail.component.scss'],
 })
 export class FurnitureDetailComponent extends BaseEntityDetailComponent<Furniture> {
+    private loginSrv  = inject(LoginService);
+    private receiverSrv  = inject(FurnitureReceiverService);
+    private supplierSrv  = inject(SupplierService);
+    private markSrv  = inject(MarkService);
+    private accountSrv  = inject(AccountService);
+    private statusSrv  = inject(FurnitureStatusService);
+    private osSrv  = inject(OSService);
+    private officeSrv  = inject(FurnitureReceiverService);
+    private typeSrv  = inject(ArticleTypeService);
+    private isParamSrv  = inject(IsParamService);
+
     isCACO = false;
     receiverLookup = new DefaultAutoCompleteModel(this.receiverSrv);
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
@@ -38,17 +49,7 @@ export class FurnitureDetailComponent extends BaseEntityDetailComponent<Furnitur
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private loginSrv: LoginService,
-        private receiverSrv: FurnitureReceiverService,
-        private supplierSrv: SupplierService,
-        private markSrv: MarkService,
-        private accountSrv: AccountService,
-        private statusSrv: FurnitureStatusService,
-        private osSrv: OSService,
-        private officeSrv: FurnitureReceiverService,
-        private typeSrv: ArticleTypeService,
-        private isParamSrv: IsParamService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_FURNITURE');
     }
 

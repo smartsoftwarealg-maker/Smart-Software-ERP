@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {FurnitureTransaction} from '../furniture-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -17,6 +17,10 @@ import {FurnitureAssignmentsService} from '../furniture-assignments.service';
     styleUrls: ['./furniture-assignment-detail.component.scss'],
 })
 export class FurnitureAssignmentDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
+    private router = inject(Router);
+    private supplierSrv = inject(SupplierService);
+    private loginSrv = inject(LoginService);
+
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
 
     constructor(
@@ -25,10 +29,7 @@ export class FurnitureAssignmentDetailComponent extends BaseEntityDetailComponen
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router,
-        private supplierSrv: SupplierService,
-        private loginSrv: LoginService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_APPOINTMENTS');
     }
 

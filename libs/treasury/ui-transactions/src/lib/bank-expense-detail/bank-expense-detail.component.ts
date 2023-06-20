@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TreasuryBankExpenseService, TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -18,6 +18,11 @@ import {Observable, of} from 'rxjs';
     styleUrls: ['./../transaction-detail/transaction-detail.component.scss'],
 })
 export class BankExpenseDetailComponent extends BaseEntityDetailComponent<TTransaction> {
+    private agentSrv =  inject(AgentService);
+    private loginSrv =  inject(LoginService);
+    private groupSrv =  inject(TreasuryGroupService);
+    private router =  inject(Router);
+
     groupLookup = new DefaultAutoCompleteModel(this.groupSrv);
     agentLookup = new AgentLookupModel(this.agentSrv);
 
@@ -27,11 +32,7 @@ export class BankExpenseDetailComponent extends BaseEntityDetailComponent<TTrans
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private agentSrv: AgentService,
-        private loginSrv: LoginService,
-        private groupSrv: TreasuryGroupService,
-        private router: Router) {
+        public override confirmationSrv: ConfirmationDialogService) {
             super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_BANK_EXPENSES');
     }
 
