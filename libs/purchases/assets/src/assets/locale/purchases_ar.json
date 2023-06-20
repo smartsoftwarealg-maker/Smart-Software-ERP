@@ -4,5 +4,7 @@
     "EDIT_ORDER_LINES": "تحديث أسطر الطلب",
     "QUOTATION": "عرض أسعار المورد",
     "PURCHASE_REQUEST": "طلب شراء",
-    "IMPORT_PURCHASE_ORDER": "استقبال الاستيراد"
+    "IMPORT_PURCHASE_ORDER": "استقبال الاستيراد",
+    "RD":                    "مكس 1",
+    "DD":                    "مكس 2"
 }

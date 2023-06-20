@@ -17,4 +17,8 @@ export interface TransactionLine {
     storeName?: string;
     refDescription?: string;
     document: number;
+    charge: number,
+    charge2: number,
+    charge3: number,
+    charge4: number
 }

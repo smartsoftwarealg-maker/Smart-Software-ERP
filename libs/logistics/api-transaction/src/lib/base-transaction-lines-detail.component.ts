@@ -10,7 +10,7 @@ import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import { DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
+import { DOC_CONSUMPTION, DOC_CORRECTION_OUT, DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 
@@ -24,7 +24,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     private lookupsSrv = inject(LookupsService);
     private route = inject(ActivatedRoute);
     private router = inject(Router);
-
 
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
@@ -140,7 +139,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onArticle(a: Article | string) {
-        if (this.document > DOC_SEPARATOR_200 || this.document < DOC_SEPARATOR_800) {
+        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
             this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
             this.articleSrv
                 .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
@@ -152,7 +151,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onStore(s: Store) {
-        if (this.document > DOC_SEPARATOR_200 || this.document < DOC_SEPARATOR_800) {
+        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
             this.articleSrv
                 .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
                 .subscribe({
@@ -176,20 +175,24 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         }
 
         return this.formBuilder.group({
-            id: [b.id],
-            transacId: [this.parentId],
-            reference: [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
-            sourceDoc: [b.sourceDoc],
-            store: [b.store],
-            qtyOrdered: [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
+            id:           [b.id],
+            transacId:    [this.parentId],
+            reference:    [ { value: b.reference, disabled:  b.qtySatisfied > 0.0001 }],
+            sourceDoc:    [b.sourceDoc],
+            store:        [b.store],
+            qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
-            qtyInvoiced: [b.qtyInvoiced ||0, Validators.required],
-            qtyReturned: [b.qtyReturned ||0, Validators.required],
-            price: [b.price || 0, Validators.required],
-            vat: [b.vat || 0, Validators.required],
-            observation: [b.observation],
-            footerMemo: [b.footerMemo],
-            position: [{ value: b.position || 0, disabled: true }],
+            qtyInvoiced:  [b.qtyInvoiced ||0, Validators.required],
+            qtyReturned:  [b.qtyReturned ||0, Validators.required],
+            price:        [b.price || 0, Validators.required],
+            vat:          [b.vat || 0, Validators.required],
+            observation:  [b.observation],
+            footerMemo:   [b.footerMemo],
+            position:     [{ value: b.position || 0, disabled: true }],
+            charge:       [b.charge  || 0],
+            charge2:      [b.charge2 || 0],
+            charge3:      [b.charge3 || 0],
+            charge4:      [b.charge4 || 0],
         });
     }
     public get id() {

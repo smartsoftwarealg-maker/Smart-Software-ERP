@@ -34,5 +34,6 @@
     "INVALID_AMOUNT":               "",
     "ACCESS_DENIED":                "",
     "CONSUMED_REFERENCE":           "",
-    "USAGE_INVALID_DATE":           ""
+    "USAGE_INVALID_DATE":           "",
+    "LOCAL_CURRENCY":               ""
 }
