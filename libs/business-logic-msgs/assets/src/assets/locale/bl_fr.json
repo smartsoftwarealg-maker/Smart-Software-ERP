@@ -43,5 +43,7 @@
     "CLOSED_FILE":                        "Le dossier comptable est clos. Aucune autre modification n'est autorisée",
     "INVALID_LEAVE_RANGE":                "Période de congé invalide. Veuillez vérifier les dates de congé acquises",
     "POST_FINAL_MSG":                     "Ce message ne peut pas être envoyé tant que le document n'est pas validé.",
-    "INVALID_AGENT_CENTERS":              "Cet agent n'est pas autorisé dans ce centre."
+    "INVALID_AGENT_CENTERS":              "Cet agent n'est pas autorisé dans ce centre.",
+    "INVALID_CREDENTIALS":                "les informations d'identification invalides",
+    "LOCAL_CURRENCY":                     "La monnaie locale n'est pas autorisée ici"
 }

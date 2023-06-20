@@ -9,8 +9,8 @@
                 <input matInput placeholder="{{ 'ADMINISTRATION_EMAIL' | translate}}" formControlName="email"
                        type="text" required>
             </mat-form-field>
-            <p *ngIf="codeSent && !verified" translate>COMMON_CODE_SENT</p>
-            <p *ngIf="verified" translate>COMMON_CODE_VERIFIED</p>
+            <p *ngIf="codeSent && !verified" translate>ADMINISTRATION_CODE_SENT</p>
+            <p *ngIf="verified" translate>ADMINISTRATION_CODE_VERIFIED</p>
             <mat-form-field appearance="fill" class="default-100" *ngIf="codeSent">
                 <mat-label translate>ADMINISTRATION_CODE</mat-label>
                 <input matInput placeholder="{{ 'ADMINISTRATION_CODE' | translate}}" formControlName="code" type="text">

@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserMessageService} from '../user-message.service';
 import {LoginService} from '@ss/common/api-common';
-import {map, Observable, tap} from 'rxjs';
+import { map, Observable, of, switchMap, tap } from "rxjs";
 import {MailBox, UserMessage} from '../workflow-api';
 import {MailBoxService} from '../mail-box.service';
 import {FormControl} from '@angular/forms';
@@ -66,7 +66,8 @@ export class WorkflowDialogComponent implements OnInit {
         this.mailboxSrv.setParentId(this.loginSrv.appCtx.id || 1);
         this.mailboxSrv
             .save(ent)
-            .pipe(tap(_ => this.dialogRef.close({ message: this.selectedId })))
+            .pipe(tap(_ => this.dialogRef.close({ message: this.selectedId })),
+                switchMap(id => id>0? this.mailboxSrv.broadcast(id) : of(0)))
             .subscribe({
                 next: res => this.dialogRef.close({ message: this.selectedId }),
                 error: err => {
@@ -82,5 +83,9 @@ export class WorkflowDialogComponent implements OnInit {
 
     selectId(id: number) {
         this.selectedId = id;
+    }
+
+    broadcast(id: number) {
+        this.mailboxSrv.broadcast(id);
     }
 }

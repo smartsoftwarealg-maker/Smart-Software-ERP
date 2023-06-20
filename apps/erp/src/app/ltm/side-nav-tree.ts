@@ -65,6 +65,7 @@ export const ltmNavTree: SideNavNode = {
             name: 'COMMON_DASHBOARD',
             icon: 'fa-solid fa-gauge-min',
             route: ABS_LTM_DASHBOARD_URL,
+            accessRights: 'Dashboard'
         },
         {
             name: 'COMMON_REPORTS',

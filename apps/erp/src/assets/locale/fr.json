@@ -48,5 +48,6 @@
     "FOOD":            "Food",
     "WORKFLOW":        "Workflow",
     "BUDGET-APP":      "Budget",
-    "ATTENDANCE":      "Pointage"
+    "ATTENDANCE":      "Pointage",
+    "PARK":            "Parc auto"
 }

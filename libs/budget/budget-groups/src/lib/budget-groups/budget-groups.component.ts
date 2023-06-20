@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import {BudgetGroupsService} from '../budget-groups.service';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -23,7 +23,18 @@ import {LanguageService} from '@ss/common/api-common';
     styleUrls: ['./budget-groups.component.scss'],
 })
 export class BudgetGroupsComponent implements OnInit, OnDestroy {
+    private entitySrv  = inject(BudgetGroupsService);
+    private accountSrv  = inject(AccountService);
+    private budgetAccountSrv  = inject(BudgetAccountService);
+    private shellSrv  = inject(ShellService);
+    private dialog  = inject(MatDialog);
+    private confirmationSrv  = inject(ConfirmationDialogService);
+    private snackBarSrv  = inject(SnackBarService);
+    private langSrv  = inject(LanguageService);
+    private route  = inject(ActivatedRoute);
+
     private subscription: Subscription = null;
+
     private currentType = 1;
     private INCOME: BudgetGroupTree = {
         id: 0,
@@ -74,15 +85,7 @@ export class BudgetGroupsComponent implements OnInit, OnDestroy {
     accountData: Account[] = [];
     budgetAccountData: BudgetAccount[] = [];
 
-    constructor(private entitySrv: BudgetGroupsService,
-                private accountSrv: AccountService,
-                private budgetAccountSrv: BudgetAccountService,
-                private shellSrv: ShellService,
-                private dialog: MatDialog,
-                private confirmationSrv: ConfirmationDialogService,
-                private snackBarSrv: SnackBarService,
-                private langSrv: LanguageService,
-                private route: ActivatedRoute) {}
+    constructor() {}
 
     ngOnDestroy(): void {
         this.subscription?.unsubscribe();

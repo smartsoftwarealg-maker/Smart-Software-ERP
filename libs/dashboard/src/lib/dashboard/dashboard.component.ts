@@ -62,9 +62,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     override ngOnInit() {
-        if (!this.dashboardSrv.getParentId()) {
-            this.dashboardSrv.setParentId(1);
-        }
+        this.dashboardSrv.setParentId(getApplicationId(this.router));
         this.editButton.visible = false;
         this.addButton.visible = false;
         this.deleteButton.visible = false;
@@ -73,7 +71,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     override select(id: number) {
-        super.select(id);
+        debugger;
+        super.select(id || getApplicationId(this.router));
         this.headers = [];
         this.dashboardData = [];
         const from = this.langSrv.formatDate(this.fromDate.value);
@@ -127,10 +126,10 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             });
     }
 
-    override preload(): Observable<any> {
-        this.dashboardSrv.setParentId(getApplicationId(this.router));
-        return super.preload();
-    }
+    // override preload(): Observable<any> {
+    //     this.dashboardSrv.setParentId(getApplicationId(this.router));
+    //     return super.preload();
+    // }
 
     override excel() {
         const from = this.langSrv.formatDate(this.fromDate.value);

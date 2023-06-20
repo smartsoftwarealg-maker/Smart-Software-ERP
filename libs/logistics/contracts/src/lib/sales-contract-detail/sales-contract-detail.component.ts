@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AwardProcedureService, LookupsService, ProjectMotiveService} from '@ss/common/api-lookup';
+import { AwardProcedureService, LookupsService, ProjectMotiveService, WilayaService } from "@ss/common/api-lookup";
 import {SalesContractService} from '../sales-contract.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AgentService} from '@ss/logistics/api-agent';
@@ -21,6 +21,7 @@ import {Article, ArticleService} from '@ss/stock/api-article';
     styleUrls: ['./sales-contract-detail.component.scss'],
 })
 export class SalesContractDetailComponent extends BaseEntityDetailComponent<Project> {
+    private wilayaSrv = inject(WilayaService);
     private loginSrv = inject(LoginService);
     private customerSrv = inject(AgentService);
     private typeSrv = inject(ProjectTypeService);
@@ -32,6 +33,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
     awardLookup   = new DefaultAutoCompleteModel(this.awardSrv);
+    wilayaLookup   = new DefaultAutoCompleteModel(this.wilayaSrv);
     articles: Article[] = [];
 
     constructor(
@@ -65,6 +67,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             projType:       [b.projType],
             awardProcedure: [b.awardProcedure],
             projMotive:     [b.projMotive],
+            wilaya:         [b.wilaya]
         });
     }
 

@@ -3,25 +3,25 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {
     ActivatedRoute, NavigationEnd,
     Router, RouterEvent
-} from "@angular/router";
+} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { filter, Observable, of, switchMap } from "rxjs";
+import { filter, Observable, of, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { BaseEntityExtendedService, BaseEntityService } from '@ss/common/api-base-entity';
+import { BaseEntityService } from '@ss/common/api-base-entity';
 import {Transaction} from './transaction';
 import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit } from "@angular/core";
+import { Directive, inject, OnInit } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { SalesContractService } from '@ss/logistics/contracts';
-import { TransactionLine } from './transaction-line';
+import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
@@ -71,7 +71,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected constructor(
         public entitySrv: BaseEntityService<Transaction>,
-        public detailSrv: BaseEntityExtendedService<TransactionLine>,
+        public detailSrv: TransactionLinesClass,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -186,6 +186,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
         this.importBtn.visible = b.id > 0 && !b.isValidated;
         this.importBtn.disabled = this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined);
+        this.detailSrv.editable = this.isEditable;
         this.transaction = b;
         return this.formBuilder.group({
             id: [b.id],

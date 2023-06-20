@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {ABS_INDEX_URL, CanActivateService, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
+import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
     ADMIN_USER_DOCUMENTS_URL,
     ADMIN_USER_MESSAGES_URL, ADMIN_USER_RECEIVED_MESSAGES_URL,
@@ -15,7 +15,7 @@ import {
     UserReceivedMessageDetailComponent,
     UserReceivedMessageListComponent,
     WorkflowInboxListComponent
-} from "@ss/workflow";
+} from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
 
 export const workflowRoutes: Routes = [

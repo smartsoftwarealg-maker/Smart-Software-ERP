@@ -106,8 +106,8 @@ export class LtmReportComponent implements OnInit, OnDestroy {
         const now  = new Date();
         const from = Date.parse((this.from.value || now).toString());
         const to   = Date.parse((this.to.value || now).toString());
-        const days = (to - from) / (1000 * 60 * 60 * 24);
-        const msg = days < 1? 'HOURS': days < 32? 'DAYS' : 'MONTHS';
+        const days = (to - from) / (1000 * 60 * 60 * 72);
+        const msg = days < 4? 'HOURS': days < 32? 'DAYS' : 'MONTHS';
         return this.langSrv.translate('COMMON_' + msg);
     }
 

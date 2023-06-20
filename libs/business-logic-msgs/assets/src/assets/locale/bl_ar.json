@@ -4,7 +4,6 @@
     "MISSING_COMMISSION":           "الرصيد السلبي",
     "RECORD_NOT_FOUND":             "مبلغ العمولة مفقود",
     "MISSING_TRANSFER_INFO":        "لم يتم العثور على السجل",
-    "MISSING_COMMISSION":           "معلومات التحويل مفقودة" ,
     "SAME_CURRENCY_TRANSFER":       "تحويل العملة نفسها. من فضلك ، عملات مختلفة" ,
     "MISSING_AGENT_ACCOUNTNO":      "رقم الحساب مفقود" ,
     "CUSTOMER_NOT_FOUND":           "العميل غير موجود" ,
@@ -44,5 +43,7 @@
     "CLOSED_FILE":                  "ملف المحاسبة مغلق. لا يسمح بأي تعديل آخر",
     "INVALID_LEAVE_RANGE":          "فترة إجازة غير صالحة. من فضلك ، تحقق من تواريخ الإجازة المكتسبة",
     "POST_FINAL_MSG":               "لا يمكن إرسال هذه الرسالة حتى يتم التحقق من صحة الوثيقة.",
-    "INVALID_AGENT_CENTERS":        "هذا الوكيل غير مصرح به في هذا المركز."
+    "INVALID_AGENT_CENTERS":        "هذا الوكيل غير مصرح به في هذا المركز.",
+    "INVALID_CREDENTIALS":          "بيانات الاعتماد غير صالحة",
+    "LOCAL_CURRENCY":               "العملة المحلية غير مسموح بها هنا"
 }

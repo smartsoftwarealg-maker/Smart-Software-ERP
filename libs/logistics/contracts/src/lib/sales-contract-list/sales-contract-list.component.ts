@@ -26,7 +26,8 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
         'description',
         'customerName',
         'fromDate',
-        'toDate'
+        'toDate',
+        'wilaya'
     ];
     constructor(
         public override entitySrv: SalesContractService,
