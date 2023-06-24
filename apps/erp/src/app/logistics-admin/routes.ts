@@ -9,7 +9,7 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL, docInfoRoutes,
+    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -40,6 +40,7 @@ import {
     DocumentNumberingListComponent
 } from '@ss/logistics/document-numbering';
 import {loginGuard} from '../erp-guards';
+import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
 
 export const mainRoutes: Routes = [
     {
@@ -92,6 +93,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: PayMethodDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: LOGISTICS_ARTICLES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleListComponent
+            },
+            {
+                path: ':id',
+                component: ArticleDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

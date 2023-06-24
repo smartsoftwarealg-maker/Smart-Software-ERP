@@ -51,7 +51,7 @@ import {
     InventoryEntryLinesListComponent
 } from '@ss/stock/ui-inventory-entry-lines';
 import { InventoryExitDetailComponent, InventoryExitListComponent } from '@ss/stock/ui-inventory-exit';
-import { InventoryExitLinesDetailComponent, InventoryExitLinesListComponent } from "@ss/stock/ui-inventory-exit-lines";
+import { InventoryExitLinesDetailComponent, InventoryExitLinesListComponent } from '@ss/stock/ui-inventory-exit-lines';
 import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/ui-consumption';
 import { ConsumptionLinesDetailComponent, ConsumptionLinesListComponent } from '@ss/stock/ui-consumption-lines';
 import {InventoryDetailComponent, InventoryListComponent, PriceRecalculationComponent} from '@ss/stock/ui-inventory';

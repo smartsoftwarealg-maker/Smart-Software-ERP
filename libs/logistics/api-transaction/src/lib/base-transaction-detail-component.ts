@@ -2,8 +2,8 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {
     ActivatedRoute, NavigationEnd,
-    Router, RouterEvent
-} from '@angular/router';
+    Router, RouterEvent, RouterOutlet
+} from "@angular/router";
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
@@ -14,7 +14,7 @@ import {WorkflowDialogComponent} from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DocImportComponent, DocImportService} from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit } from '@angular/core';
+import { Directive, inject, OnInit, ViewChild } from '@angular/core';
 import { Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import { Agent, AgentService, ConsumerService, SupplierService } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
@@ -22,9 +22,11 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { SalesContractService } from '@ss/logistics/contracts';
 import { TransactionLinesClass } from './transaction-lines.class';
+import { BaseTransactionLinesListComponent } from "./base-transaction-lines-list.component";
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    @ViewChild(RouterOutlet) outlet;
     private agentService = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
@@ -37,7 +39,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected currencySrv =  inject(CurrencyService);
     protected projectSrv = inject(SalesContractService);
-
 
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -150,8 +151,11 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.transaction.id)
+                        .pipe(switchMap(() => this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                            this.outlet?.component.loadDetailLines() :
+                            of(0)))
                         .subscribe({
-                            next: res => {
+                            next: () => {
                                 this.executionRef++;
                                 this.snackBarSrv.showMessage('COMMON_SUCCESS');
                             },

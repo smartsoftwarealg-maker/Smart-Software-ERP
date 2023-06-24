@@ -25,7 +25,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     private snackBarSrv  = inject(SnackBarService);
 
     private langSrv = inject(LanguageService);
-    private datePipe = new DatePipe(this.langSrv.defaultLanguage);
+    private datePipe = new DatePipe('en');
     private _parentId: 1 | 2 | 3 | 4 = 2;
     private subscriptions: Subscription[] = [];
 

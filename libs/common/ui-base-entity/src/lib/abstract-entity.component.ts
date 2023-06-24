@@ -81,7 +81,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     public readForm(): T {
-        return this.form.value;
+        return this.form.getRawValue();
     }
 
     ngOnInit() {

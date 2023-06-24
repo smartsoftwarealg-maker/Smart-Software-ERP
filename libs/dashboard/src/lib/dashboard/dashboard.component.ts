@@ -70,7 +70,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     override select(id: number) {
-        debugger;
         super.select(id || getApplicationId(this.router));
         this.headers = [];
         this.dashboardData = [];

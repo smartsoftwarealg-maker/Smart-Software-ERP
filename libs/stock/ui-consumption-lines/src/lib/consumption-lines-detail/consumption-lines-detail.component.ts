@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
 import {
-    BaseTransactionLinesDetailComponent,
+    BaseTransactionLinesDetailComponent, DOC_CONSUMPTION,
     DOC_CORRECTION_IN
-} from '@ss/logistics/api-transaction';
+} from "@ss/logistics/api-transaction";
 
 
 @Component({
@@ -14,6 +14,6 @@ import {
 export class ConsumptionLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(
         public detailSrv: ConsumptionLinesService) {
-        super(detailSrv,  DOC_CORRECTION_IN);
+        super(detailSrv,  DOC_CONSUMPTION);
     }
 }

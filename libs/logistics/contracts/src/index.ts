@@ -5,3 +5,4 @@ export * from './lib/sales-contract.service';
 export * from './lib/contract-article-main/contract-article-main.component';
 export * from './lib/contract-article-detail/contract-article-detail.component';
 export * from './lib/contract-article-list/contract-article-list.component';
+export * from './lib/contract-api.class';

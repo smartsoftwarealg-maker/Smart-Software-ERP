@@ -32,16 +32,16 @@ export const purchasesNavTree: SideNavNode = {
             accessRights: 'Agent'
         },
         {
-            name: 'PURCHASES_QUOTATION',
-            icon: 'fas fa-quote-left',
-            route: ABS_PURCHASE_QUOTATION_URL,
-            accessRights: 'SOffer'
-        },
-        {
             name: 'PURCHASES_PURCHASE_REQUEST',
             icon: 'fa-solid fa-basket-shopping-simple',
             route: ABS_PURCHASE_REQUEST_URL,
             accessRights: 'PRequest'
+        },
+        {
+            name: 'PURCHASES_QUOTATION',
+            icon: 'fas fa-quote-left',
+            route: ABS_PURCHASE_QUOTATION_URL,
+            accessRights: 'SOffer'
         },
         {
             name: 'PURCHASES_PURCHASE_ORDER',

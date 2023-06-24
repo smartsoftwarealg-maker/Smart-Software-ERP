@@ -37,12 +37,13 @@ export class VacationPlanningDetailDetailComponent extends BaseEntityDetailCompo
 
     setupForm(e: VacationPlanningDetail): UntypedFormGroup {
         return this.formBuilder.group({
-            from_date: [e.from_date, Validators.required],
-            to_date:   [e.to_date, Validators.required],
-            address:   [e.address],
-            reference: [e.reference],
+            id:          [e.id | 0],
+            fromDate:    [e.fromDate, Validators.required],
+            toDate:      [e.toDate, Validators.required],
+            address:     [e.address],
+            reference:   [e.reference],
             planning_id: [e.planning_id || this.planningSrv.getParentId()],
-            vac_type:  [e.vac_type, Validators.required]
+            vac_type:    [e.vac_type, Validators.required]
         })
     }
 

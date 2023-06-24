@@ -4,14 +4,14 @@
         <ng-container matColumnDef="fromDate">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_FROM</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.from_date | date: 'dd-MM-yyyy'}}
+                {{e.fromDate | date: 'dd-MM-yyyy'}}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="toDate">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_TO</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.to_date | date: 'dd-MM-yyyy'}}
+                {{e.toDate | date: 'dd-MM-yyyy'}}
             </mat-cell>
         </ng-container>
 

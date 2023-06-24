@@ -37,6 +37,18 @@ export class QuotationListComponent  extends BaseTransactionListComponent {
         public override defReportSrv: DefaultReportService,
         public override payMethodSrv: PayMethodService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(quotationSrv, shellSrv, snackBarSrv, route, router, userSrv, agentSrv, langServ, confirmationSrv, defReportSrv, payMethodSrv, pagPersistSrv, 'PURCHASES_QUOTATION');
+        super(quotationSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            userSrv,
+            agentSrv,
+            langServ,
+            confirmationSrv,
+            defReportSrv,
+            payMethodSrv,
+            pagPersistSrv,
+            "PURCHASES_QUOTATION");
     }
 }

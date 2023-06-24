@@ -13,8 +13,8 @@ export class VacationPlanning {
 
 export class VacationPlanningDetail {
     id: number;
-    from_date?: Date;
-    to_date?: Date;
+    fromDate?: Date;
+    toDate?: Date;
     address?: string;
     vac_type?: number;
     reference?: number;
