@@ -26,6 +26,7 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
     styleUrls: ['./transaction-lines-detail.component.scss']
 })
 export class TransactionLinesDetailComponent implements OnInit {
+    private ccSrv = inject(CostCenterService);
     private router = inject(Router);
     private fileSrv = inject(AccFileService);
     private customerSrv = inject(AgentService);
@@ -85,8 +86,7 @@ export class TransactionLinesDetailComponent implements OnInit {
         public route: ActivatedRoute,
         public formBuilder: UntypedFormBuilder,
         public confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private ccSrv: CostCenterService) {
+        public lookupsSrv: LookupsService) {
         this.accountLookupModel.onObjectSelected = (obj) => this.accountSelected(obj);
     }
 

@@ -67,7 +67,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     private updateStockAndValue(res: QtyPrice) {
-        this.form.controls['price'].setValue(res.price);
+        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
+            this.form.controls['price'].setValue(res.price);
+        }
         this.articleStock = res.qty;
     }
 
@@ -132,6 +134,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         });
         this.subscriptions.push(subs2);
         this.shellSrv.setLoading(false);
+        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', expires: false });
     }
 
     readForm(): TransactionLine {
@@ -139,26 +142,22 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     onArticle(a: Article | string) {
-        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
-            this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
-            this.articleSrv
-                .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
-                .subscribe({
-                    next: res => this.updateStockAndValue(res),
-                    error: err => this.form.controls['price'].setValue(0.0)
-                });
-        }
+        this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
+        this.articleSrv
+            .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
+            .subscribe({
+                next: res => this.updateStockAndValue(res),
+                error: err => this.form.controls['price'].setValue(0.0)
+            });
     }
 
     onStore(s: Store) {
-        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
-            this.articleSrv
-                .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
-                .subscribe({
-                    next: res => this.updateStockAndValue(res),
-                    error: () => this.form.controls['price'].setValue(0.0)
-                });
-        }
+        this.articleSrv
+            .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
+            .subscribe({
+                next: res => this.updateStockAndValue(res),
+                error: () => this.form.controls['price'].setValue(0.0)
+            });
     }
 
     public setupForm(b: TransactionLine): UntypedFormGroup {

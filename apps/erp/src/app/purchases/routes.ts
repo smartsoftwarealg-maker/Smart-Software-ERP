@@ -1,7 +1,6 @@
 import {Routes} from '@angular/router';
 import {
     ABS_INDEX_URL,
-    LINES_DETAIL_URL,
     LIST_URL,
     CanDeactivateService
 } from '@ss/common/api-common';
@@ -13,10 +12,13 @@ import {
     PURCHASE_REQUEST_URL,
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
-    PURCHASE_RECEPTION_CANCELLATION_URL, IMPORT_PURCHASE_RECEPTION_URL
+    PURCHASE_RECEPTION_CANCELLATION_URL,
+    IMPORT_PURCHASE_RECEPTION_URL
 } from '../common';
 import {
-    PurchaseOrderDetailComponent, PurchaseOrderLinesDetailComponent, PurchaseOrderLinesListComponent,
+    PurchaseOrderDetailComponent,
+    PurchaseOrderLinesDetailComponent,
+    PurchaseOrderLinesListComponent,
     PurchaseOrderListComponent
 } from '@ss/purchases/ui-purchase-order';
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
@@ -41,13 +43,15 @@ import {
 import {ArticleDetailComponent, ArticleListComponent} from '@ss/stock/ui-article';
 import {
     ReceptionCancellationDetailComponent,
-    ReceptionCancellationLinesDetailComponent, ReceptionCancellationLinesListComponent,
+    ReceptionCancellationLinesDetailComponent,
+    ReceptionCancellationLinesListComponent,
     ReceptionCancellationListComponent
-} from "@ss/purchases/reception-cancellation";
+} from '@ss/purchases/reception-cancellation';
 import {loginGuard} from '../erp-guards';
 import {
     ImportReceptionDetailComponent,
-    ImportReceptionLinesDetailComponent, ImportReceptionLinesListComponent,
+    ImportReceptionLinesDetailComponent,
+    ImportReceptionLinesListComponent,
     ImportReceptionListComponent
 } from '@ss/purchases/imported-purchases';
 import { ExtraCostDetailComponent, ExtraCostListComponent } from '@ss/purchases/extra-costs';

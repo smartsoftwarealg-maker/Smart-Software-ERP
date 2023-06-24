@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -19,6 +19,11 @@ import {EmployeeLookupService} from '../employee-lookup.service';
   styleUrls: ['./special-payroll-detail.component.scss']
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {
+    private loginSrv  = inject(LoginService);
+    private entrySrv  = inject(ElementsEntryService);
+    private selectorSrv  = inject(PayrollMonthService);
+    private employeeSrv  = inject(EmployeeLookupService);
+
     employeeLookup = new FormControl<number>(0);
 
     processing = false;
@@ -35,11 +40,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         override snackBarSrv: SnackBarService,
         override route: ActivatedRoute,
         override formBuilder: UntypedFormBuilder,
-        override confirmationSrv: ConfirmationDialogService,
-        private loginSrv: LoginService,
-        private entrySrv: ElementsEntryService,
-        private selectorSrv: PayrollMonthService,
-        private employeeSrv: EmployeeLookupService) {
+        override confirmationSrv: ConfirmationDialogService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_SPECIAL_PAYROLLS');
         this.pagingModel.onChange = () => this.refresh();
     }

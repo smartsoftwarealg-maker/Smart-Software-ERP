@@ -9,17 +9,11 @@ import {EmailData} from '../FormData';
     styleUrls: ['./email-sender.component.scss']
 })
 export class EmailSenderComponent implements OnInit {
-    form: UntypedFormGroup = new UntypedFormGroup({
-        from: new UntypedFormControl(this.data['from'], Validators.required),
-        to: new UntypedFormControl(this.data['to'], Validators.required),
-        password: new UntypedFormControl('', Validators.required),
-        subject: new UntypedFormControl(''),
-        message: new UntypedFormControl('')
-    });
+    form: UntypedFormGroup = null;
 
     constructor(private dialogRef: MatDialogRef<EmailSenderComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: EmailData) {
-        new UntypedFormGroup({
+        this.form = new UntypedFormGroup({
             from: new UntypedFormControl(this.data['from'], Validators.required),
             to: new UntypedFormControl(this.data['to'], Validators.required),
             password: new UntypedFormControl('', Validators.required),

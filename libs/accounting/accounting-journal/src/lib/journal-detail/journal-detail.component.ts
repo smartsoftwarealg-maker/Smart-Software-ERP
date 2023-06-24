@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -26,6 +26,13 @@ import {BankService} from '@ss/administration/api-bank';
     styleUrls: ['./journal-detail.component.scss']
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
+    private centerSrv  = inject(CenterService);
+    private loginSrv  = inject(LoginService);
+    private journalTypeSrv  = inject(JournalTypeService);
+    private journalUserSrv  = inject(JournalUserService);
+    private bankSrv  = inject(BankService);
+    private usersSrv  = inject(UserListService);
+
     centerLookup = new DefaultAutoCompleteModel(this.centerSrv);
     typeLookup = new DefaultAutoCompleteModel(this.journalTypeSrv);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
@@ -44,15 +51,9 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private centerSrv: CenterService,
-        private loginSrv: LoginService,
-        private journalTypeSrv: JournalTypeService,
-        private journalUserSrv: JournalUserService,
-        private bankSrv: BankService,
-        private usersSrv: UserListService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_JOURNALS');
-        this.centerSrv.setParentId(loginSrv.appCtx.company);
+        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
     }
 
     public override setupForm(e: Journal): UntypedFormGroup {

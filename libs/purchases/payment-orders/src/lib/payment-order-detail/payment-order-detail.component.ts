@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {PaymentOrder} from '../payment-order';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,8 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./payment-order-detail.component.scss']
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
+    private supplierSrv  = inject(SupplierService);
+    private loginSrv  = inject(LoginService);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
 
     constructor(
@@ -26,9 +28,7 @@ export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<Payme
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private supplierSrv: SupplierService,
-        private loginSrv: LoginService) {
+        public lookupsSrv: LookupsService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'LOGISTICS_PAYMENT_ORDERS');
     }
 

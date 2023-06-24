@@ -14,7 +14,7 @@
     </mat-form-field>
 
     <mat-card class="payments">
-        <div mat-subheader class="b-primary" translate> {{ 'COMMON_PAYMENTS' }} </div>
+        <div mat-subheader class="b-primary label" translate> {{ 'COMMON_PAYMENTS' }} </div>
         <mat-tree [dataSource]="dataSource"
                   [treeControl]="treeControl"
                   id="payments">
@@ -52,7 +52,7 @@
     </mat-card>
 
     <mat-card class="debts">
-        <div mat-subheader class="b-primary" translate> {{ 'LOGISTICS_AGENT_DEBTS' }} </div>
+        <div mat-subheader class="b-primary label" translate> {{ 'LOGISTICS_AGENT_DEBTS' }} </div>
         <mat-list role="list"
                   draggable="true"
                   (dragover)="onOver($event)"

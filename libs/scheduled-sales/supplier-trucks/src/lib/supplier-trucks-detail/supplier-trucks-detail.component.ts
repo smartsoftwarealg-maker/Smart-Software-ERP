@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {BankService} from '@ss/administration/api-bank';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -16,6 +15,7 @@ import {SupplierService} from '@ss/logistics/api-agent';
     styleUrls: ['./supplier-trucks-detail.component.scss'],
 })
 export class SupplierTrucksDetailComponent extends BaseEntityDetailComponent<SupplierTruck> {
+    private supplierSrv = inject(SupplierService);
     customerLookupModel = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
 
     constructor(
@@ -25,8 +25,7 @@ export class SupplierTrucksDetailComponent extends BaseEntityDetailComponent<Sup
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private supplierSrv: SupplierService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_SUPPLIER_TRUCKS');
     }
 

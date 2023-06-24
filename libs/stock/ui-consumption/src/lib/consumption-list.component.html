@@ -62,13 +62,13 @@
 
 <div class="doc-info">
     <ss-doc-info
-        *ngIf="selected"
+        *ngIf="selectedRow"
         [displayedGroups]="['document']"
         [params]="{
             id: selectedRow?.id,
             documentId: selectedRow?.id,
             documentURL:'/consumption',
-            agentId : selectedRow.agent,
+            agentId : selectedRow?.agent,
             editable: editable
         }">
     </ss-doc-info>

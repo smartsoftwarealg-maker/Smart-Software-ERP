@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost, AssetRevaluation} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -21,6 +21,7 @@ import {AssetRevaluationLookupService} from '../asset-revaluation-lookup.service
   styleUrls: ['./asset-revaluation-detail.component.scss']
 })
 export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<AssetRevaluation> implements OnInit {
+    private revaluationLookupSrv = inject(AssetRevaluationLookupService);
     private parentId = 0;
     revaluationLookup = new DefaultAutoCompleteModel(this.revaluationLookupSrv);
 
@@ -32,8 +33,7 @@ export class AssetRevaluationDetailComponent extends  BaseEntityDetailComponent<
         public override formBuilder: UntypedFormBuilder,
         public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private revaluationLookupSrv: AssetRevaluationLookupService) {
+        public lookupsSrv: LookupsService) {
         super(assetRevaluationSrv,
             shellSrv,
             snackBarSrv,

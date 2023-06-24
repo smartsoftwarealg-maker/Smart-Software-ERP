@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement} from './elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,6 +24,12 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./elements-entry-list.component.scss', './common-css.scss']
 })
 export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> implements OnInit {
+    private employeeSrv  = inject(EmployeeService);
+    private httpSrv  = inject(HttpService);
+    private monthSelectorSrv  = inject(PayrollMonthService);
+    private formBuilder  = inject(UntypedFormBuilder);
+    private commonFieldSrv  = inject(CommonElementsService);
+
     private readonly JOURNAL_IDX = 3;
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
@@ -50,12 +56,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private employeeSrv: EmployeeService,
-        private httpSrv: HttpService,
-        private monthSelectorSrv: PayrollMonthService,
-        private formBuilder: UntypedFormBuilder,
-        private commonFieldSrv: CommonElementsService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
         this.pagination.pageSize = 10;
         this.form = this.formBuilder.group( {

@@ -96,7 +96,8 @@
                                     <ng-container *ngFor="let mt of b.menuItems">
                                         <button *ngIf="mt.visible" mat-menu-item (click)="mt.click()"
                                                 [disabled]="mt.disabled">
-                                            <i [class]="mt.icon"></i>
+                                                [disabled]="mt.disabled">
+                                            <i [class]="mt.icon" ></i>
 
                                             {{mt.label | translate}}
                                         </button>
@@ -107,7 +108,14 @@
                                 <button mat-icon-button matTooltip="{{b.label | translate}}" *ngIf="b.visible"
                                         (click)="b.click()" [disabled]="b.disabled" class="hidden-during-search"
                                         [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                                    <i [class]="b.icon"></i>
+                                    <i [class]="b.icon" *ngIf="b.badgeCount > 0; else regular"
+                                       matBadge="{{b.badgeCount}}"
+                                       matBadgeColor="warn"
+                                       matBadgeSize="small">
+                                    </i>
+                                    <ng-template #regular>
+                                        <i [class]="b.icon"></i>
+                                    </ng-template>
                                 </button>
                             </ng-template>
                         </ng-container>

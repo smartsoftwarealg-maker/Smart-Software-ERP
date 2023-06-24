@@ -10,10 +10,10 @@
     max-width: 1000px;
     margin: 0 auto;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 60px 1fr 64px;
+    grid-template-rows: 70px 1fr 64px;
     grid-template-areas: "customer date"
                          "payments debts"
-                         "cancel    make";
+                         "cancel   make";
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
         grid-template-rows: 60px 60px 1fr 1fr 64px 64px;
@@ -26,7 +26,13 @@
 
     }
 }
-
+.label {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    font-weight: bold;
+}
 .date {
     grid-area: date;
     max-width: 220px;

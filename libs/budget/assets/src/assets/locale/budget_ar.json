@@ -15,5 +15,6 @@
     "COMMITMENTS":      "إلتزامات",
     "TRANSFERS":        "التحويلات",
     "DESTINATION":      "الميزانية المستقبلة",
-    "PLANNINGS":        "إعدادات"
+    "PLANNINGS":        "إعدادات",
+    "SELECTOR":         "اختيار الميزانية"
 }

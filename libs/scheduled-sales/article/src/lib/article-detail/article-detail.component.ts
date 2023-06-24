@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -33,6 +33,11 @@ import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales
   styleUrls: ['./article-detail.component.scss']
 })
 export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> implements OnInit {
+    private classSrv  = inject(ClassService);
+    private typeSrv  = inject(TypeService);
+    private vatSrv  = inject(VatService);
+    private unitSrv  = inject(UnitService);
+
     imageModel: ImageModel;
     aid = 0;
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
@@ -60,10 +65,6 @@ export class ArticleDetailComponent  extends BaseEntityDetailComponent<Article> 
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
-        private classSrv: ClassService,
-        private typeSrv: TypeService,
-        private vatSrv: VatService,
-        private unitSrv: UnitService,
         public httpSrv: HttpService,
         public router: Router) {
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');

@@ -14,6 +14,12 @@ import {SnackBarService} from '@ss/common/ui-shell';
     styleUrls: ['./shift-timing-detail.component.scss'],
 })
 export class ShiftTimingDetailComponent implements OnInit {
+    private entitySrv = inject(ShiftTimingService);
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
+    private snackBarSrv = inject(SnackBarService);
+    private activatedRoute = inject(ActivatedRoute);
+    private confirmationSrv = inject(ConfirmationDialogService);
     private fb = inject(FormBuilder);
     form = this.fb.group({
         id:        [0],
@@ -24,12 +30,7 @@ export class ShiftTimingDetailComponent implements OnInit {
         breakTo:   [new Date()],
     });
 
-    constructor(private entitySrv: ShiftTimingService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private snackBarSrv: SnackBarService,
-                private activatedRoute: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService) {
+    constructor() {
     }
 
     ngOnInit(): void {

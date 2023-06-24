@@ -14,7 +14,7 @@ import {TransportService} from '../zone.service';
 import {ZoneService} from '../transport.service';
 import {TrajectoryService} from '../trajectory.service';
 import {LoginService} from '@ss/common/api-common';
-import {Component} from '@angular/core';
+import { Component, inject } from "@angular/core";
 
 @Component({
     selector: 'ss-mission-preparation-detail',
@@ -22,6 +22,12 @@ import {Component} from '@angular/core';
     styleUrls: ['./mission-preparation-detail.component.scss']
 })
 export class MissionPreparationDetailComponent extends BaseEntityDetailComponent<Mission> {
+    // private lookupsSrv  = inject(LookupsService);
+    private employeeSrv  = inject(EmployeeService);
+    private transportSrv  = inject(TransportService);
+    private trajectorySrv  = inject(TrajectoryService);
+    private zoneSrv  = inject(ZoneService);
+    private loginSrv  = inject(LoginService);
     employeeAutoCompleteModel = new PersonAutocompleteClass(this.employeeSrv);
     zoneLookup = new DefaultAutoCompleteModel(this.zoneSrv);
     transportLookup = new DefaultAutoCompleteModel(this.transportSrv);
@@ -34,13 +40,7 @@ export class MissionPreparationDetailComponent extends BaseEntityDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public usersSrv: UserListService,
-        private lookupsSrv: LookupsService,
-        private employeeSrv: EmployeeService,
-        private transportSrv: TransportService,
-        private trajectorySrv: TrajectoryService,
-        private zoneSrv: ZoneService,
-        private loginSrv: LoginService) {
+        public usersSrv: UserListService) {
         super(detailSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'MISSION_PREPARATION');
     }
 

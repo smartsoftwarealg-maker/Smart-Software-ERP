@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {HttpService, LoginService} from '@ss/common/api-common';
@@ -15,12 +15,13 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
     styleUrls: ['./processed-check-detail.component.scss'],
 })
 export class ProcessedCheckDetailComponent extends BaseEntityDetailComponent<ProcessedCheck> implements OnInit {
+    private loginSrv  = inject(LoginService);
+    private bankSrv  = inject( BankService);
+
     aid = 0;
     bankLookUp = new DefaultAutoCompleteModel(this.bankSrv);
 
     constructor(
-        private loginSrv: LoginService,
-        private bankSrv:  BankService,
         public checkSrv: ProcessedCheckService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,

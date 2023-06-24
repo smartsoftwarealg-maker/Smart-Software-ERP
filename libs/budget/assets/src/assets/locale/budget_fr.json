@@ -15,5 +15,6 @@
     "COMMITMENTS":      "Engagements",
     "TRANSFERS":        "Transferts",
     "DESTINATION":      "Budget de réception",
-    "PLANNINGS":        "Plannings"
+    "PLANNINGS":        "Plannings",
+    "SELECTOR":         "Sélection budget"
 }

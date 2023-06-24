@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Article, Quota, Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {DatePipe} from '@angular/common';
@@ -20,6 +20,8 @@ import {MatSelectChange} from '@angular/material/select';
     styleUrls: ['./partner-schedule-detail.component.scss'],
 })
 export class PartnerScheduleDetailComponent extends BaseEntityDetailComponent<Schedule> {
+    private loginSrv  = inject(LoginService);
+    private customerSrv  = inject(CustomerService);
     private datePipe = new DatePipe('en');
     userLogin = false;
     public dateFilter = (d: Date | null): boolean => d != null && this.quotas.find(q => this.t(q?.salesDate) === this.t(d)) !== undefined;
@@ -40,9 +42,7 @@ export class PartnerScheduleDetailComponent extends BaseEntityDetailComponent<Sc
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private loginSrv: LoginService,
-        private customerSrv: CustomerService) {
+        public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'SCH_PARTNER_SCHEDULES');
         this.customerLookup.onObjectSelected = a => this.onCustomer(a?.id || 0);
     }

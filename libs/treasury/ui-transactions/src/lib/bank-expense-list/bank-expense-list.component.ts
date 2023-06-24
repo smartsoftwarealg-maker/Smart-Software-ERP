@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import {FormControl} from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
@@ -21,6 +21,7 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
     styleUrls: ['../transaction-list/transaction-list.component.scss'],
 })
 export class BankExpenseListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
+    private journalSrv = inject(UserJournalsService);
     private readonly CASH_COLS = [
         'description',
         'agentName',
@@ -43,9 +44,9 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         'groupName',
         'memo'];
 
-    dateFilter    = new FormControl<Date>(this.entitySrv.date);
-    journalFilter = new FormControl<number>(this.entitySrv.journalId);
-    journalLookup = new DefaultAutoCompleteModel(this.journalSrv);
+    dateFilter: FormControl<Date>    = null;
+    journalFilter: FormControl<number | null> = null;
+    journalLookup: DefaultAutoCompleteModel<Journal> = new DefaultAutoCompleteModel(this.journalSrv);
     summary$: Observable<Summary[]> = null;
 
     displayedColumns = this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS;
@@ -58,8 +59,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private journalSrv: UserJournalsService) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
             shellSrv,
             snackBarSrv,
@@ -70,6 +70,8 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
             pagPersistSrv,
             'TRS_BANK_EXPENSES');
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
+        this.dateFilter  = new FormControl<Date>(this.entitySrv.date);
+        this.journalFilter = new FormControl<number>(this.entitySrv.journalId);
     }
 
     override ngOnInit() {

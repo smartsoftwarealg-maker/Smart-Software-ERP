@@ -14,6 +14,9 @@ import { BankService } from '@ss/administration/api-bank';
     styleUrls: ['./processed-check-injection-dialog.component.scss']
 })
 export class ProcessedCheckInjectionDialogComponent {
+    private bankSrv = inject(BankService);
+    private injectSrv = inject(ProcessedCheckService);
+    private storeNameSrv = inject(LotsService);
     private fb = inject(FormBuilder);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -37,10 +40,7 @@ export class ProcessedCheckInjectionDialogComponent {
         amount: ['', Validators.required]
     });
 
-    constructor(private dialogRef: MatDialogRef<ProcessedCheckInjectionDialogComponent>,
-        private bankSrv: BankService,
-        private injectSrv: ProcessedCheckService,
-        private storeNameSrv: LotsService) {
+    constructor(private dialogRef: MatDialogRef<ProcessedCheckInjectionDialogComponent>) {
     }
 
 

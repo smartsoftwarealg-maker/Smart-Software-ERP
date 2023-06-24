@@ -5,7 +5,8 @@ import {
     ABS_LOGISTICS_PAY_METHOD,
     ABS_LOGISTICS_OPTIONS,
     ABS_LOGISTICS_AGENT_URL,
-    ABS_LOGISTICS_VAT_URL, ABS_LOGISTICS_ARTICLES_URL
+    ABS_LOGISTICS_VAT_URL,
+    ABS_LOGISTICS_ARTICLES_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -14,12 +15,6 @@ export const logisticsAdminNavTree: SideNavNode = {
     icon: 'fas fa-users-cog',
     accessRights: 'LOGISTICS-ADMINISTRATION',
     children: [
-        // {
-        //     name: 'COMMON_UNITS',
-        //     icon: 'fas fa-balance-scale-right',
-        //     route: ABS_STOCK_UNITS_URL,
-        //     accessRights: 'Unit'
-        // },
         {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
@@ -42,7 +37,7 @@ export const logisticsAdminNavTree: SideNavNode = {
             name: 'COMMON_COMPANY_TYPES',
             icon: 'fas fa-building',
             route: ABS_LOGISTICS_COMPANY_TYPE,
-            accessRights: "Company"
+            accessRights: 'Company'
         },
         {
             name: 'COMMON_ACTIVITIES',

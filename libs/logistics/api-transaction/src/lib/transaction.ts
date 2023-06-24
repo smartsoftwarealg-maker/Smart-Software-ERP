@@ -5,6 +5,7 @@ export const DOC_SEPARATOR_200 = 200;
 export const DOC_SEPARATOR_800 = 800;
 export const DOC_FREE_INVOICE = 1;
 export const DOC_PURCHASE_ORDER = 2;
+export const DOC_SUPPLIER_QUOTATION = 4;
 export const DOC_PRICE_INQUIRY = 5;
 export const DOC_QUOTATION = 6;
 export const DOC_PART_REQUEST = 8;

@@ -5,10 +5,8 @@ import {
     ABS_BUDGET_DASHBOARD_URL,
     ABS_BUDGET_GROUP_URL,
     ABS_BUDGET_PLANNING_URL,
-    ABS_BUDGET_REPORTS_URL,
-    ABS_BUDGET_TRANSFER_URL,
-    ABS_HR_REPORTS_URL,
-    ABS_STOCK_DASHBOARD_URL
+    ABS_BUDGET_REPORTS_URL, ABS_BUDGET_SELECTOR_URL,
+    ABS_BUDGET_TRANSFER_URL
 } from '../common';
 
 export const budgetNavTree: SideNavNode = {
@@ -20,6 +18,12 @@ export const budgetNavTree: SideNavNode = {
             name: 'BUD_BUDGETS',
             icon: 'fa-solid fa-laptop-file',
             route: ABS_BUDGET_BUDGET_URL,
+            accessRights: 'Budget'
+        },
+        {
+            name: 'BUD_SELECTOR',
+            icon: 'fa-solid fa-clipboard-check',
+            route: ABS_BUDGET_SELECTOR_URL,
             accessRights: 'Budget'
         },
         {

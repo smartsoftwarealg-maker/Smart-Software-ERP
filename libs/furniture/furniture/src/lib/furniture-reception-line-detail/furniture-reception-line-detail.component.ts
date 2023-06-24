@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import { Component, inject, OnInit } from '@angular/core';
+import {of} from 'rxjs';
 import {BudgetService} from '@ss/budget/budget';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
@@ -20,6 +20,18 @@ import {FurnitureTransactionLineService} from '../furniture-transaction-line.ser
     styleUrls: ['./furniture-reception-line-detail.component.scss'],
 })
 export class FurnitureReceptionLineDetailComponent implements OnInit {
+    private entitySrv  = inject(FurnitureReceptionService);
+    private detailSrv  = inject(FurnitureTransactionLineService);
+    private shellSrv  = inject(ShellService);
+    private snackBarSrv  = inject(SnackBarService);
+    private route  = inject(ActivatedRoute);
+    private router  = inject(Router);
+    private formBuilder  = inject(UntypedFormBuilder);
+    private budgetSrv  = inject(BudgetService);
+    private planningSrv  = inject(BudgetPlanningService);
+    private furnitureSrv  = inject(FurnitureService);
+    private confirmationSrv  = inject(ConfirmationDialogService);
+
     furnitureLookup = new DefaultAutoCompleteModel(this.furnitureSrv);
 
     form = this.formBuilder.group( {
@@ -30,19 +42,6 @@ export class FurnitureReceptionLineDetailComponent implements OnInit {
         price:       [0],
     })
 
-    constructor(
-        private entitySrv: FurnitureReceptionService,
-        private detailSrv: FurnitureTransactionLineService,
-        private shellSrv: ShellService,
-        private snackBarSrv: SnackBarService,
-        private route: ActivatedRoute,
-        private router: Router,
-        private formBuilder: UntypedFormBuilder,
-        private budgetSrv: BudgetService,
-        private planningSrv: BudgetPlanningService,
-        private furnitureSrv: FurnitureService,
-        private confirmationSrv: ConfirmationDialogService) {
-    }
 
     ngOnInit(): void {
         this.route

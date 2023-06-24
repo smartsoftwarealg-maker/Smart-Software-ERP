@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ElementsInfoService} from '@ss/remuneration/elementsinfo';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import {ElementType} from '@ss/payroll-common';
   styleUrls: ['./element-types-detail.component.scss']
 })
 export class ElementTypesDetailComponent extends BaseEntityDetailComponent<ElementType> {
+    private httpSrv = inject(HttpService);
     infoLookupModel = new ElementInfoLookupModel(new ElementsInfoService(this.httpSrv));
 
     constructor(
@@ -26,8 +27,7 @@ export class ElementTypesDetailComponent extends BaseEntityDetailComponent<Eleme
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        public lookupsSrv: LookupsService,
-        private httpSrv: HttpService) {
+        public lookupsSrv: LookupsService) {
         super(infoSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'REMUN_ELEMENT_TYPES');
     }
 

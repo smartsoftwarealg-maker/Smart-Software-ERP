@@ -6,11 +6,10 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, Subscription } from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
 import {Directive, Input, OnDestroy, OnInit} from '@angular/core';
-import { TransactionLinesClass } from "./transaction-lines.class";
+import { TransactionLinesClass } from './transaction-lines.class';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {

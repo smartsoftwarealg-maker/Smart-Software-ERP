@@ -19,7 +19,16 @@ import { MatSelectionList } from '@angular/material/list';
     styleUrls: ['./archive-detail.component.css']
 })
 export class ArchiveDetailComponent implements OnInit {
+    private service = inject( ArchiveService);
+    private router = inject( Router);
+    private route = inject( ActivatedRoute);
+    private serviceSrv = inject( ServiceService);
+    private agentSrv = inject( AgentService);
+    private loginSrv = inject( LoginService);
+    private trans = inject( LanguageService);
+    private shellSrv = inject( ShellService);
     private fb = inject(FormBuilder);
+    private snackBar = inject(MatSnackBar);
 
     @ViewChild('tags', { static: false }) selectionList: MatSelectionList;
     form: UntypedFormGroup = null;
@@ -36,15 +45,7 @@ export class ArchiveDetailComponent implements OnInit {
     curTags: Set<string> = new Set<string>();
 
 
-    constructor(private service: ArchiveService,
-        private router: Router,
-        private route: ActivatedRoute,
-        private serviceSrv: ServiceService,
-        private agentSrv: AgentService,
-        private loginSrv: LoginService,
-        private trans: LanguageService,
-        private shellSrv: ShellService,
-        public snackBar: MatSnackBar) {
+    constructor() {
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
