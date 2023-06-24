@@ -14,7 +14,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_LOGISTICS_ACTIVITY,
     ABS_LOGISTICS_VAT_URL
-} from "../common";
+} from '../common';
 
 export const scheduledSalesNavTree: SideNavNode = {
     name: 'SCHEDULED_SALES',

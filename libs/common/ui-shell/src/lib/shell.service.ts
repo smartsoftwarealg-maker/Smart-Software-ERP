@@ -16,8 +16,6 @@ import {
     UserRightsService,
     MainPageService
 } from '@ss/common/api-common';
-import { doc } from 'prettier';
-import debug = doc.debug;
 
 export enum KeepOnToolbar {
     ALWAYS = 1, // replaces true in old version
@@ -40,6 +38,7 @@ export interface ToolbarButton {
     visible: boolean;
     keepOnToolbar: KeepOnToolbar; // used to be boolean, true -> ALWAYS, false -> DYNAMIC
     menuItems?: MenuItem[];
+    badgeCount?: number;
 }
 
 export interface MenuItem {

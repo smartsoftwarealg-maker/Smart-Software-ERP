@@ -5,6 +5,7 @@ export const DOCUMENT_URL  = '/documents';
 export const MAILBOX_URL  = '/mailbox';
 export const USER_URL  = '/users';
 export const INBOX_URL  = '/workflow/inbox';
+export const INBOX_COUNT  = '/workflow/count';
 
 
 export interface DocStatus {
