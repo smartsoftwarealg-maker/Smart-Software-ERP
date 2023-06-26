@@ -50,7 +50,6 @@
     "ACTUAL_STOCK": "الكمية الحالية",
     "DIFFERENCE": "الفرق",
     "FIX": "تصحيح الفروق",
-    "PERCENTAGE":  "النسبة المئوية",
     "TRANSFERS": "التحويلات",
     "TRANSFER_RECEPTIONS": "استقبالات النقل",
     "USER_STORES": "مخازن المستعمل",
@@ -58,5 +57,6 @@
     "MIN_QTY":                "الحد الأدنى للكمية",
     "MAX_QTY":                "الكمية الأمنية",
     "RECALCULATE_PRICES":     "أعد حساب الأسعار",
-    "PRICE_RECALCULATION":    "حساب السعر"
+    "PRICE_RECALCULATION":    "حساب السعر",
+    "CONSUMPTION_CANCELLATION": "إلغاء الاستهلاك"
 }

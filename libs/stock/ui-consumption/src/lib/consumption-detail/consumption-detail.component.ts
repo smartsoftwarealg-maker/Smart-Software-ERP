@@ -8,7 +8,7 @@ import { ConsumptionService } from '@ss/stock/api-consumption';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginService } from '@ss/common/api-common';
-import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, DOC_CONSUMPTION } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
 
@@ -16,7 +16,7 @@ import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
 @Component({
     selector: 'ss-consumption-detail',
     templateUrl: './consumption-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss']
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     public groups: CCGroup[];
@@ -42,7 +42,7 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected importedDocuments(): Lookup[] {
-        return [];
+        return [{ id: DOC_CONSUMPTION, description: 'STOCK_CANCELLATION'}];
     }
 
     protected requireAgent(): boolean {
@@ -54,30 +54,6 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected showImportButton(): boolean {
-        return false;
+        return true;
     }
-
-    // public override setupForm(b: Transaction) {
-    //     // Make sure to update the template if you edit the configuration here
-    //     return this.formBuilder.group({
-    //         id: [b.id],
-    //         document: [0],
-    //         centerId: [0 || this.loginSrv.appCtx.center],
-    //         date: [b.date || this.langSrv.formatDate(new Date()), Validators.required],
-    //         number: [b.number || 0],
-    //         reference: [b.reference],
-    //         referenceDocDate: [b.referenceDocDate],
-    //         header: [b.header],
-    //         footer: [b.footer],
-    //         dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: this.loginSrv.appCtx.manager}, Validators.required],
-    //         agent: [b.agent, Validators.required],
-    //         userID: [this.loginSrv.appCtx.id]
-    //     });
-    // }
-    //
-    // override readForm(): Transaction {
-    //     const value = super.readForm();
-    //     value.dealer = value.dealer || this.loginSrv.appCtx.id;
-    //     return value;
-    // }
 }

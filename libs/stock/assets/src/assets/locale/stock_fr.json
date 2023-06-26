@@ -15,7 +15,6 @@
     "EDIT_INVENTORY": "Modifier l'inventaire",
     "EDIT_INVENTORY_LINES": "Modifier les lignes de l'inventaire",
     "EDIT_ARTICLE": "Modifier l'article",
-    "PERCENTAGE": "Pourcentage",
     "REFERENCE_DOC_DATE": "Date  référence",
     "NUMBER": "Numéro",
     "DEALER": "Utilisateur",
@@ -58,5 +57,6 @@
     "MIN_QTY":                "Quantité minimale",
     "MAX_QTY":                "Quantité de sécurité",
     "RECALCULATE_PRICES":     "Recalculer les prix",
-    "PRICE_RECALCULATION":    "Recalcul du prix"
+    "PRICE_RECALCULATION":    "Recalcul du prix",
+    "CONSUMPTION_CANCELLATION": "Annulation consommation"
 }

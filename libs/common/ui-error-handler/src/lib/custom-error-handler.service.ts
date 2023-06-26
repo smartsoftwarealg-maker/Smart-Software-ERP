@@ -30,20 +30,17 @@ export class CustomErrorHandlerService {
 
         // Business logic exception has this type: { code: string, params: string[] }
         if (err && err.error) {
-            this.message = isString(err.error.code) ? this.langSrv.translate('BL_' +  err.error.code) :
-                    isString(err.error) ? err.error : err.error.exception;
+            this.message = isString(err.error.code) ?
+                this.langSrv.translate('BL_' + err.error.code) :
+                isString(err.error) ? err.error : err.error.exception;
         }
         if (!this.message) {
-                this.message = err.message
-                    ? err.message
-                    : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
+            this.message = err.message
+                ? err.message
+                : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
         }
 
-        this.statusText =
-            err == null || err.status == null || err.statusText
-                || (err.status < 300 && 199 < err.status) == null
-                ? 'COMMON_ERROR'
-                : err.statusText;
+        this.statusText = err.error['params'] || '';
 
         this.errorSet = true;
 

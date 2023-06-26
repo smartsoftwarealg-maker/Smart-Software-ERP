@@ -11,10 +11,11 @@ export class DocImportService {
 
     constructor(private httpService: HttpService) { }
 
-    getList(document: number, agent: number): Observable<ImportInfo[]> {
+    getList(document: number, numb: number, agent: number): Observable<ImportInfo[]> {
         const params = new HttpParams()
-            .set('document', document + '')
-            .set('agent', agent + '');
+            .set('document', document)
+            .set('number', numb)
+            .set('agent', agent);
         return this.httpService.get('/imports', params);
     }
 

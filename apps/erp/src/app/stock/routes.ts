@@ -21,7 +21,7 @@ import {
     USER_STORES_URL,
     STOCK_ARTICLE_URL,
     GENERATION_ACCOUNT_URL,
-    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL
+    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL, STOCK_CONSUMPTION_CANCELLATION_URL
 } from '../common';
 import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -52,8 +52,17 @@ import {
 } from '@ss/stock/ui-inventory-entry-lines';
 import { InventoryExitDetailComponent, InventoryExitListComponent } from '@ss/stock/ui-inventory-exit';
 import { InventoryExitLinesDetailComponent, InventoryExitLinesListComponent } from '@ss/stock/ui-inventory-exit-lines';
-import { ConsumptionDetailComponent, ConsumptionListComponent } from '@ss/stock/ui-consumption';
-import { ConsumptionLinesDetailComponent, ConsumptionLinesListComponent } from '@ss/stock/ui-consumption-lines';
+import {
+    ConsumptionCancellationDetailComponent,
+    ConsumptionCancellationListComponent,
+    ConsumptionDetailComponent,
+    ConsumptionListComponent
+} from '@ss/stock/ui-consumption';
+import {
+    ConsumptionCancellationLinesDetailComponent, ConsumptionCancellationLinesListComponent,
+    ConsumptionLinesDetailComponent,
+    ConsumptionLinesListComponent
+} from '@ss/stock/ui-consumption-lines';
 import {InventoryDetailComponent, InventoryListComponent, PriceRecalculationComponent} from '@ss/stock/ui-inventory';
 import { InventoryLinesDetailComponent, InventoryLinesListComponent } from '@ss/stock/ui-inventory-lines';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
@@ -302,6 +311,37 @@ export const mainRoutes: Routes = [
                         path: 'lines-detail',
                         children: [
                             { path: ':id', component: ConsumptionLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
+        path: STOCK_CONSUMPTION_CANCELLATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ConsumptionCancellationListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ConsumptionCancellationDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ConsumptionCancellationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ConsumptionCancellationLinesDetailComponent },
                         ]
                     },
                     ...docInfoRoutes

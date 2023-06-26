@@ -4,6 +4,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Transaction} from '@ss/logistics/api-transaction';
 
 export const CONSUMPTION_URL = '/consumption';
+export const CONSUMPTION_CANCELLATION_URL = '/cconsumption';
 export const CONSUMPTION_LINES_URL = '/detail';
 
 @Injectable({
@@ -14,5 +15,4 @@ export class ConsumptionService extends BaseEntityService<Transaction> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CONSUMPTION_URL);
     }
-
 }

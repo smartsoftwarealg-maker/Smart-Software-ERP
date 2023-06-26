@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {ConsumptionLinesService} from '@ss/stock/api-consumption-lines';
 import {
-    BaseTransactionLinesDetailComponent, DOC_CONSUMPTION,
-    DOC_CORRECTION_IN
-} from "@ss/logistics/api-transaction";
+    BaseTransactionLinesDetailComponent, DOC_CONSUMPTION
+} from '@ss/logistics/api-transaction';
 
 
 @Component({

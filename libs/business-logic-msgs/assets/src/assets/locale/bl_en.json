@@ -45,5 +45,6 @@
     "POST_FINAL_MSG":                "This message cannot be sent until the document is validated.",
     "INVALID_AGENT_CENTERS":         "This agent is not authorized in this center.",
     "INVALID_CREDENTIALS":           "Invalid credentials",
-    "LOCAL_CURRENCY":                "Local currency is not allowed here"
+    "LOCAL_CURRENCY":                "Local currency is not allowed here",
+    "EMPTY_DOCUMENTS":               "The following documents are empty:"
 }

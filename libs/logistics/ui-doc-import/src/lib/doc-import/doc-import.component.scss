@@ -8,9 +8,17 @@
 }
 .list {
     flex-grow: 1;
+    overflow-y: auto;
 }
 
 .ctrl {
   display: flex;
   justify-content: space-between;
+}
+
+.crtl__div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 4px;
 }

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ConsumptionListComponent} from './consumption-list.component';
-import {ConsumptionDetailComponent} from './consumption-detail.component';
+import {ConsumptionListComponent} from './consumption-list/consumption-list.component';
+import {ConsumptionDetailComponent} from './consumption-detail/consumption-detail.component';
 import {MaterialModule} from '@ss/common/api-common';
 import {CommonUiLangModule} from '@ss/common/ui-lang';
 import {UiPaginationModule} from '@ss/common/ui-pagination';
@@ -13,6 +13,12 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {StockUiConsumptionLinesModule} from '@ss/stock/ui-consumption-lines';
 import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import {
+    ConsumptionCancellationDetailComponent
+} from "./consumption-cancellation-detail/consumption-cancellation-detail.component";
+import {
+    ConsumptionCancellationListComponent
+} from "./consumption-cancellation-list/consumption-cancellation-list.component";
 
 @NgModule({
     imports: [
@@ -32,10 +38,14 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
     declarations: [
         ConsumptionListComponent,
         ConsumptionDetailComponent,
+        ConsumptionCancellationDetailComponent,
+        ConsumptionCancellationListComponent
     ],
     exports: [
         ConsumptionListComponent,
-        ConsumptionDetailComponent
+        ConsumptionDetailComponent,
+        ConsumptionCancellationDetailComponent,
+        ConsumptionCancellationListComponent
     ]
 })
 export class StockUiConsumptionModule {
