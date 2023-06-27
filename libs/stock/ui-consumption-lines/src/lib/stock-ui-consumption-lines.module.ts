@@ -12,6 +12,12 @@ import {CommonUiAutoCompleteModule} from '@ss/common/ui-auto-complete';
 import {RouterModule} from '@angular/router';
 import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
+import {
+    ConsumptionCancellationLinesListComponent
+} from './consumption-cancellation-lines-list/consumption-cancellation-lines-list.component';
+import {
+    ConsumptionCancellationLinesDetailComponent
+} from './consumption-cancellation-lines-detail/consumption-cancellation-lines-detail.component';
 
 @NgModule({
     imports: [
@@ -30,6 +36,8 @@ import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
     declarations: [
         ConsumptionLinesListComponent,
         ConsumptionLinesDetailComponent,
+        ConsumptionCancellationLinesListComponent,
+        ConsumptionCancellationLinesDetailComponent
     ],
     exports: [
         ConsumptionLinesListComponent,

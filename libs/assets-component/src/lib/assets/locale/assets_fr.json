@@ -46,7 +46,7 @@
     "DUPLICATE_SELECTED": "Dupliquer l'actif sélectionné",
     "DUPLICATE":          "Dupliquer",
     "LINEAR":             "Linéaire",
-    "DECLINING":          "En déclin",
+    "DECLINING":          "Degressif",
     "ACTIVITY":           "Activité",
     "REQUEST_NUMBER":      "Numéro de D.A.",
     "REQUEST_DATE":        "Date de D.A.",

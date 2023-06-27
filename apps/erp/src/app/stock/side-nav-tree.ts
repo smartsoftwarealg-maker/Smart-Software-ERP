@@ -19,8 +19,8 @@ import {
     ABS_STOCK_CLASSES_URL,
     ABS_STOCK_GENERATION_ACCOUNT_URL,
     ABS_STOCK_STOCK_ACCOUNT_URL,
-    ABS_INVENTORY_PRICE_RECALCULATION_URL
-} from '../common';
+    ABS_INVENTORY_PRICE_RECALCULATION_URL, ABS_STOCK_CONSUMPTION_CANCELLATION_URL
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const stockNavTree: SideNavNode = {
@@ -116,6 +116,12 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_CONSUMPTION',
             icon: 'fas fa-gas-pump',
             route: ABS_STOCK_CONSUMPTION_URL,
+            accessRights: 'Consumption'
+        },
+        {
+            name: 'STOCK_CONSUMPTION_CANCELLATION',
+            icon: 'fa-solid fa-file-slash',
+            route: ABS_STOCK_CONSUMPTION_CANCELLATION_URL,
             accessRights: 'Consumption'
         },
         {

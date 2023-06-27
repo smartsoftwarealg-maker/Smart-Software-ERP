@@ -15,20 +15,20 @@ import {LogisticsUiDocInfoModule} from '@ss/logistics/ui-doc-info';
 import {LogisticsUiStockInfoModule} from '@ss/logistics/ui-stock-info';
 
 @NgModule({
-  imports: [CommonModule,
-            MaterialModule,
-            CommonUiLangModule,
-            UiPaginationModule,
-            ReactiveFormsModule,
-            CommonUiConfirmationDialogModule,
-            RouterModule,
-            CommonUiDatepickerModule,
-            CommonUiAutoCompleteModule,
-            LogisticsUiDocInfoModule,
-            SalesUiOrderLinesModule,
-            LogisticsUiStockInfoModule],
+    imports: [CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        ReactiveFormsModule,
+        CommonUiConfirmationDialogModule,
+        RouterModule,
+        CommonUiDatepickerModule,
+        CommonUiAutoCompleteModule,
+        LogisticsUiDocInfoModule,
+        SalesUiOrderLinesModule,
+        LogisticsUiStockInfoModule],
 
-  declarations: [OrderListComponent,
-                 OrderDetailComponent]
+    declarations: [OrderListComponent,
+        OrderDetailComponent]
 })
 export class SalesUiSalesOrderModule {}

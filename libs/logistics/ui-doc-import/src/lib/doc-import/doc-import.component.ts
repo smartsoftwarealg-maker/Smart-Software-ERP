@@ -3,8 +3,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
 import {DocImportService} from '../doc-import.service';
-import {UntypedFormControl} from '@angular/forms';
+import { FormControl, UntypedFormControl } from "@angular/forms";
 import {switchMap} from 'rxjs/operators';
+import { Subscription } from "rxjs";
 
 @Component({
     selector: 'ss-doc-import',
@@ -12,12 +13,14 @@ import {switchMap} from 'rxjs/operators';
     styleUrls: ['./doc-import.component.scss']
 })
 export class DocImportComponent implements OnInit {
+    private subscriptions: Subscription[] = [];
     private  agentId = 0;
     public   documentList: Lookup[];
     public   importList: ImportInfo[] = [];
     readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
 
-    public   document = new UntypedFormControl();
+    public   document = new FormControl<number>(0);
+    public   searchNumber = new FormControl<number>(0);
     public  importInfo: ImportInfo = null;
 
 
@@ -29,11 +32,16 @@ export class DocImportComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.document
-            .valueChanges
-            .pipe(switchMap(docCode => this.docImportService
-                .getList(docCode, this.agentId)))
-            .subscribe(res => this.importList = res);
+        this.subscriptions.push(
+            this.document
+                .valueChanges
+                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value, this.agentId)))
+                .subscribe(res => this.importList = res));
+        this.subscriptions.push(
+            this.searchNumber
+                .valueChanges
+                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, numb, this.agentId)))
+                .subscribe(res => this.importList = res));
     }
 
     public close() {

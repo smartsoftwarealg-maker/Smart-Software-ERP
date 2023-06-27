@@ -34,18 +34,18 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.69');
+        this.shellSrv.setApplicationTitle('Smart ERP. 0.1.71');
         this.httpSrv
             .init()
             .pipe(
                 switchMap(_ => this.loginSrv.loadContext()),
                 switchMap(_ => this.rightsSrv.load()),
                 switchMap(() => this.langSrv.init()),
-                switchMap(_ => this.langSrv.addSources(langAssets)),
-                switchMap(_ => this.httpSrv.get<any>('/ccenter')),
-                catchError(_ => of({ description: '' })),
+                switchMap(() => this.langSrv.addSources(langAssets)),
+                switchMap(() => this.httpSrv.get<any>('/ccenter')),
+                catchError(() => of({ description: '' })),
                 tap(res => this.shellSrv.setCompanyName(res['description'] || '')),
-                switchMap(() => this.workflowSrv.countInbox()),
+                switchMap(res => res['description']? this.workflowSrv.countInbox() : of({ count: 0 })),
                 tap(res => {
                     if (res.count > 0) {
                         this.badgeBtn.badgeCount = res.count;

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
-import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
 import {CONSUMPTION_LINES_URL, CONSUMPTION_URL} from '@ss/stock/api-consumption';
-import { TransactionLine, TransactionLinesClass } from "@ss/logistics/api-transaction";
+import { TransactionLinesClass } from '@ss/logistics/api-transaction';
 
 
 @Injectable({

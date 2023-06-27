@@ -1,10 +1,17 @@
 <div class="container">
-    <mat-form-field appearance="fill">
-        <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
-        <mat-select matNativeControl required [formControl]="document">
-            <mat-option *ngFor="let d of documentList" value="{{ d.id }}">{{ d.description | translate }}</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <div class="crtl__div">
+        <mat-form-field appearance="fill">
+            <mat-label translate>LOGISTICS_DOCUMENT</mat-label>
+            <mat-select matNativeControl required [formControl]="document">
+                <mat-option *ngFor="let d of documentList"
+                            value="{{ d.id }}">{{ d.description | translate }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label translate>COMMON_NUMBER</mat-label>
+            <input matInput type="number" step="1" [formControl]="searchNumber">
+        </mat-form-field>
+    </div>
     <div class="list">
         <mat-table mat-table [dataSource]="importList" class="content-div">
 
