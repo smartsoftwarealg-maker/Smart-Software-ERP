@@ -1,0 +1,32 @@
+<div class="div_table size">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="repeatMonths">
+            <mat-header-cell *matHeaderCellDef translate>CMMS_REPEAT_MONTHS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.repeatMonths}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="scheduleType">
+            <mat-header-cell *matHeaderCellDef translate>CMMS_SCHEDULE_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{TYPES[e.scheduleType || 0]}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

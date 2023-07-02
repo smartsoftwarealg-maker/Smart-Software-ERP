@@ -39,6 +39,7 @@ export const FURNITURE_APP_URL = 'furniture';
 export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+export const CMMS_APP_URL = 'cmms';
 
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
@@ -305,6 +306,16 @@ export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
 
+// CMMS
+export const CMMS_FAULTS_URL       = 'cmms-faults';
+export const CMMS_STATUS_URL       = 'cmms-status';
+export const CMMS_PRIORITY_URL       = 'cmms-priority';
+export const CMMS_FAULT_CAUSE_URL       = 'cmms-csuses';
+export const CMMS_ROOT_CAUSE_URL       = 'cmms-root-csuses';
+export const CMMS_TYPE_URL       = 'cmms-types';
+export const CMMS_ROUTING_URL       = 'cmms-routings';
+
+
 // assets
 export const FURNITURE_URL            = 'furniture';
 export const FURNITURE_RECEIVER_URL   = 'furniture-receivers';
@@ -551,6 +562,16 @@ export const ABS_LTM_REPORTS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, COMMON_REP
 export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_CHARTS_URL].join('/');
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
 export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
+
+
+// CMMS
+export const ABS_CMMS_FAULTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULTS_URL].join('/');
+export const ABS_CMMS_STATUS__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_STATUS_URL].join('/');
+export const ABS_CMMS_PRIORITY__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PRIORITY_URL].join('/');
+export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULT_CAUSE_URL].join('/');
+export const ABS_CMMS_ROOT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROOT_CAUSE_URL].join('/');
+export const ABS_CMMS_TYPE__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TYPE_URL].join('/');
+export const ABS_CMMS_ROUTING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROUTING_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

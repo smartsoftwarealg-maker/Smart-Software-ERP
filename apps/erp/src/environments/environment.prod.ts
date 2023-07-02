@@ -52,7 +52,8 @@ import {ltmNavTree} from '../app/ltm/side-nav-tree';
 import {furnitureNavTree} from '../app/furniture/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
-import { parkNavTree } from "../app/park/side-nav-tree";
+import { parkNavTree } from '../app/park/side-nav-tree';
+import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -84,6 +85,7 @@ export const navBar = [
     ltmNavTree,
     aaNavTree,
     parkNavTree,
+    cmmsNavTree,
     foodNavTree
 ];
 

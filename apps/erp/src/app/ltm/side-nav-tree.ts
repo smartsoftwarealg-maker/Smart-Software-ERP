@@ -1,6 +1,5 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_HR_REPORTS_URL,
     ABS_LTM_BATCH_TESTINGS_URL,
     ABS_LTM_CHARTS_URL, ABS_LTM_DASHBOARD_URL, ABS_LTM_LINES_URL,
     ABS_LTM_MATTERS_URL,

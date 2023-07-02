@@ -38,3 +38,4 @@ export * from './lib/depreciation-rate-list/depreciation-rate-list.component';
 export * from './lib/assets-transfer/assets-transfer.component';
 export * from './lib/inventory-import/inventory-import.component';
 export * from './lib/agent-assets-list/agent-assets-list.component';
+export * from './lib/assets-api';
