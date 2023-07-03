@@ -40,7 +40,7 @@ export class CustomErrorHandlerService {
                 : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
         }
 
-        this.statusText = err.error['params'] || '';
+        this.statusText = err.error? err.error['params'] || '' : '';
 
         this.errorSet = true;
 

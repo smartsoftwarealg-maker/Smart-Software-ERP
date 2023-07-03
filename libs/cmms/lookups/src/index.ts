@@ -14,3 +14,5 @@ export * from './lib/cmms-status-detail/cmms-status-detail.component';
 export * from './lib/cmms-status-list/cmms-status-list.component';
 export * from './lib/cmms-type-detail/c-m-m-s-type-detail.component';
 export * from './lib/cmms-type-list/cmms-type-list.component';
+export * from './lib/cmms-routing-line-list/cmms-routing-line-list.component';
+export * from './lib/cmms-routing-line-detail/cmms-routing-line-detail.component';

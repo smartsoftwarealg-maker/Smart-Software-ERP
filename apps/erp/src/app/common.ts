@@ -8,6 +8,7 @@ import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
+import { CMMS_PLANS_URL } from "../../../../libs/cmms/cmms-api/cmms-api";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -314,6 +315,7 @@ export const CMMS_FAULT_CAUSE_URL       = 'cmms-csuses';
 export const CMMS_ROOT_CAUSE_URL       = 'cmms-root-csuses';
 export const CMMS_TYPE_URL       = 'cmms-types';
 export const CMMS_ROUTING_URL       = 'cmms-routings';
+export const CMMS__PLANS__URL       = 'cmms-plans';
 
 
 // assets
@@ -572,6 +574,7 @@ export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS
 export const ABS_CMMS_ROOT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROOT_CAUSE_URL].join('/');
 export const ABS_CMMS_TYPE__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TYPE_URL].join('/');
 export const ABS_CMMS_ROUTING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROUTING_URL].join('/');
+export const ABS_CMMS_PLANS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS__PLANS__URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

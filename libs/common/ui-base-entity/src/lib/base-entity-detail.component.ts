@@ -10,6 +10,7 @@ import { AbstractEntityComponent } from './abstract-entity.component';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
+    public loaded = false;
 
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
@@ -64,7 +65,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     this.isEditable = rights.edit;
                 }),
                 switchMap(_ => this.getRouteParam()),
-                tap(p => this.queryId = +p['id']),
+                tap(p => this.queryId = +p['id'] || 0),
                 switchMap(() => this.loadEntity(this.queryId || 0)))
             .subscribe({
                 next: entity => {
@@ -73,6 +74,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     } else {
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
+                    this.loaded = true;
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());

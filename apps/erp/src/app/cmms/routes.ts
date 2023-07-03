@@ -3,10 +3,12 @@ import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL
 } from '@ss/common/api-common';
 import {
+    CMMS__PLANS__URL,
     CMMS_FAULT_CAUSE_URL,
     CMMS_FAULTS_URL,
     CMMS_PRIORITY_URL,
-    CMMS_ROOT_CAUSE_URL, CMMS_ROUTING_URL,
+    CMMS_ROOT_CAUSE_URL,
+    CMMS_ROUTING_URL,
     CMMS_STATUS_URL,
     CMMS_TYPE_URL
 } from '../common';
@@ -22,8 +24,9 @@ import {
     CMMSRoutingListComponent,
     CMMSTypeDetailComponent,
     CMMSTypeListComponent,
-    CMMSRootCauseListComponent
+    CMMSRootCauseListComponent, CMMSRoutingLineListComponent, CMMSRoutingLineDetailComponent
 } from '@ss/cmms/lookups';
+import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 
 export const cmmsRoutes: Routes = [
     {
@@ -130,6 +133,23 @@ export const cmmsRoutes: Routes = [
     },
 
     {
+        path: CMMS__PLANS__URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CMMSPlanListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSPlanDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
         path: CMMS_ROUTING_URL,
         children: [
             {
@@ -143,6 +163,16 @@ export const cmmsRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
+                    {   path: '',
+                        redirectTo: 'detail',
+                        pathMatch: 'full',
+                    },
+                    {   path: 'detail',
+                        children: [
+                            { path: '', component: CMMSRoutingLineListComponent, pathMatch: 'full'},
+                            { path: ':id', component: CMMSRoutingLineDetailComponent }
+                        ]
+                    }
                 ],
             },
         ]

@@ -2,11 +2,11 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_CMMS_FAULT_CAUSE_URL,
-    ABS_CMMS_FAULTS_URL,
+    ABS_CMMS_FAULTS_URL, ABS_CMMS_PLANS_URL,
     ABS_CMMS_PRIORITY__URL,
     ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL,
     ABS_CMMS_STATUS__URL, ABS_CMMS_TYPE__URL
-} from "../common";
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -47,6 +47,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-comment-text',
             route: ABS_CMMS_TYPE__URL,
             accessRights: 'CMMSType'
+        },
+        {
+            name: 'CMMS_PLANS',
+            icon: 'fa-solid fa-arrow-progress',
+            route: ABS_CMMS_PLANS_URL,
+            accessRights: 'CMMPlan'
         },
         {
             name: 'CMMS_ROUTINGS',

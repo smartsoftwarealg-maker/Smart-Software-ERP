@@ -27,7 +27,7 @@ export class CMMSPlanDetailComponent extends BaseEntityDetailComponent<CMMSPlan>
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ADMINISTRATION_EDIT_BANK');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_PLANS');
     }
 
     setupForm(e: CMMSPlan): FormGroup {

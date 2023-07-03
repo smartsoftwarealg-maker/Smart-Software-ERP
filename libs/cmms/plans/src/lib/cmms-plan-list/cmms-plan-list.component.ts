@@ -15,7 +15,7 @@ import { CMMSPlanService } from '../cmms-plan.service';
 })
 export class CMMSPlanListComponent extends BaseEntityListComponent<CMMSPlan> {
     readonly TYPES = ['CMMS_TIME', 'CMMS_READING', 'CMMS_EITHER'];
-    displayedColums = [
+    displayedColumns = [
         'description',
         'repeatMonths',
         'scheduleType'
@@ -37,7 +37,7 @@ export class CMMSPlanListComponent extends BaseEntityListComponent<CMMSPlan> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ADMINISTRATION_BANK');
+            'CMMS_PLANS');
         this.pagination.pageSize = 15;
     }
 }

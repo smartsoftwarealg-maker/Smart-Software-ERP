@@ -26,5 +26,4 @@ export class CMMSRootCauseListComponent extends BaseEntityListComponent<Lookup> 
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'CMMS_FAULT_CAUSE');
     }
-
 }

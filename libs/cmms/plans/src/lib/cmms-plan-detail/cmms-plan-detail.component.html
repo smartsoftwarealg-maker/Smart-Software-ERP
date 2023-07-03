@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="form">
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
             <mat-form-field id="description" class="default-100">
@@ -7,24 +7,20 @@
                 <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             </mat-form-field>
-        </form>
-
-        <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field id="repeatMonths" class="default-100">
+            <mat-form-field id="repeatMonths" class="default-50 sm-100">
                 <mat-label translate>CMMS_REPEAT_MONTHS</mat-label>
                 <input matInput formControlName="repeatMonths" type="number" required>
                 <mat-error *ngIf="form.controls['repeatMonths'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>CMMS_SCHEDULE_TYPE</mat-label>
+                <mat-select formControlName="scheduleType">
+                    <mat-option *ngFor="let t of TYPES" [value]="t.id">{{ t.description }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls['scheduleType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
         </form>
-
-        <mat-form-field class="default-50">
-            <mat-label translate>CMMS_SCHEDULE_TYPE</mat-label>
-            <mat-select formControlName="scheduleType">
-                <mat-option *ngFor="let t of TYPES" [value]="t.id">{{ t.description }}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.controls['scheduleType'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
-        </mat-form-field>
-
-
     </mat-card-content>
 </mat-card>

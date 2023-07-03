@@ -23,6 +23,9 @@ import { CMMSStatusListComponent } from './cmms-status-list/cmms-status-list.com
 import { CMMSStatusDetailComponent } from './cmms-status-detail/cmms-status-detail.component';
 import { CMMSTypeListComponent } from './cmms-type-list/cmms-type-list.component';
 import { CMMSTypeDetailComponent } from './cmms-type-detail/c-m-m-s-type-detail.component';
+import { CMMSRoutingLineListComponent } from './cmms-routing-line-list/cmms-routing-line-list.component';
+import { CMMSRoutingLineDetailComponent } from './cmms-routing-line-detail/cmms-routing-line-detail.component';
+import { RouterOutlet } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -35,7 +38,8 @@ import { CMMSTypeDetailComponent } from './cmms-type-detail/c-m-m-s-type-detail.
         MatFormFieldModule,
         MatInputModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterOutlet
     ],
     declarations: [
         CMMSFaultDetailComponent,
@@ -52,6 +56,8 @@ import { CMMSTypeDetailComponent } from './cmms-type-detail/c-m-m-s-type-detail.
         CMMSStatusDetailComponent,
         CMMSTypeListComponent,
         CMMSTypeDetailComponent,
+        CMMSRoutingLineListComponent,
+        CMMSRoutingLineDetailComponent,
     ],
 })
 export class CmmsLookupsModule {}

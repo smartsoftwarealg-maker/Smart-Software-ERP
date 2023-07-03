@@ -2,8 +2,8 @@ import {Component,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {Bank, BankService} from "@ss/administration/api-bank";
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {Bank, BankService} from '@ss/administration/api-bank';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 
@@ -29,13 +29,13 @@ export class BankListComponent extends BaseEntityListComponent<Bank> {
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'ADMINISTRATION_BANK');
         this.pagination.pageSize = 15;
     }
