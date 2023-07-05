@@ -33,6 +33,7 @@ import {
 } from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
+import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from "@ss/cmms/asset-readings";
 
 export const cmmsRoutes: Routes = [
     {
@@ -125,6 +126,22 @@ export const cmmsRoutes: Routes = [
                 path: ':id',
                 component: CMMSTypeDetailComponent,
                 canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_READING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetReadingListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AssetReadingDetailComponent,
+                canActivate: [loginGuard, readingDetailGuard],
                 canDeactivate: [CanDeactivateService],
             },
         ]

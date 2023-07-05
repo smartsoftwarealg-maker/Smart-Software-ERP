@@ -92,6 +92,9 @@
             "@ss/budget/budget-planning": [
                 "libs/budget/budget-planning/src/index.ts"
             ],
+            "@ss/cmms/asset-readings": [
+                "libs/cmms/asset-readings/src/index.ts"
+            ],
             "@ss/cmms/assets": ["libs/cmms/assets/src/index.ts"],
             "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
             "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],

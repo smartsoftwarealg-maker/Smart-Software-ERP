@@ -6,9 +6,8 @@ import {
     ABS_CMMS_FAULTS_URL, ABS_CMMS_METERS_URL, ABS_CMMS_PLANS_URL, ABS_CMMS_PM_URL,
     ABS_CMMS_PRIORITY__URL, ABS_CMMS_READING_URL,
     ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ABS_CMMS_STATUS__URL, ABS_CMMS_TYPE__URL
-} from "../common";
+    ABS_CMMS_STATUS__URL
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -57,16 +56,16 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'CMMeter'
         },
         {
-            name: 'CMMS_READINGS',
-            icon: 'fa-solid fa-gauge-low',
-            route: ABS_CMMS_READING_URL,
-            accessRights: 'CMReading'
-        },
-        {
             name: 'CMMS_PLANS',
             icon: 'fa-solid fa-arrow-progress',
             route: ABS_CMMS_PLANS_URL,
             accessRights: 'CMPlan'
+        },
+        {
+            name: 'CMMS_READINGS',
+            icon: 'fa-solid fa-gauge-low',
+            route: ABS_CMMS_READING_URL,
+            accessRights: 'CMReading'
         },
         {
             name: 'CMMS_ROUTINGS',

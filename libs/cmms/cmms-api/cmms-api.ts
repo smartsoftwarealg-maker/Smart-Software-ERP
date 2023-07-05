@@ -1,3 +1,4 @@
+export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
 export const CMMS_WORKS_URL = '/cmmsworks';
 export const CMMS_PM_URL = '/cmmspm';
@@ -20,6 +21,7 @@ export interface AssetReading {
     meterId: number;
     date: Date,
     amount?: number;
+    meterDescription?: string;
 }
 
 export interface AssetTrigger {
