@@ -6,8 +6,8 @@ import {
     ABS_LOGISTICS_OPTIONS,
     ABS_LOGISTICS_AGENT_URL,
     ABS_LOGISTICS_VAT_URL,
-    ABS_LOGISTICS_ARTICLES_URL
-} from '../common';
+    ABS_LOGISTICS_ARTICLES_URL, ABS_LOGISTICS_CATEGORY
+} from "../common";
 import {SideNavNode} from '@ss/common/api-common';
 
 export const logisticsAdminNavTree: SideNavNode = {
@@ -44,6 +44,12 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fab fa-app-store-ios',
             route: ABS_LOGISTICS_ACTIVITY,
             accessRights: 'Activity'
+        },
+        {
+            name: 'COMMON_CATEGORIES',
+            icon: 'fa-solid fa-people-group',
+            route: ABS_LOGISTICS_CATEGORY,
+            accessRights: 'SalesCategory'
         },
         {
             name: 'LOGISTICS_PAY_METHOD',
