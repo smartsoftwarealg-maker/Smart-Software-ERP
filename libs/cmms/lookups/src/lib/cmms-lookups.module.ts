@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CMMSFaultListComponent } from './cmms-fault-list/cmms-fault-list.component';
+import { CMMSFaultListComponent } from './cmms-fault/cmms-fault-list.component';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -10,22 +10,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CmmsFaultCauseDetailComponent } from './cmms-fault-cause-detail/cmms-fault-cause-detail.component';
-import { CMMSFaultCauseListComponent } from './cmms-fault-cause-list/cmms-fault-cause-list.component';
-import { CMMSPriorityListComponent } from './cmms-priority-list/cmms-priority-list.component';
-import { CMMSRootCauseDetailComponent } from './cmms-root-cause-detail/cmms-root-cause-detail.component';
-import { CMMSRootCauseListComponent } from './cmms-root-cause-list/cmms-root-cause-list.component';
-import { CMMSRoutingListComponent } from './cmms-routing-list/cmms-routing-list.component';
-import { CMMSFaultDetailComponent } from './cmms-fault-detail/cmms-fault-detail.component';
-import { CMMSRoutingDetailComponent } from './cmms-routing-detail/cmms-routing-detail.component';
-import { CMMSPriorityDetailComponent } from './cmms-priority-detail/cmms-priority-detail.component';
-import { CMMSStatusListComponent } from './cmms-status-list/cmms-status-list.component';
-import { CMMSStatusDetailComponent } from './cmms-status-detail/cmms-status-detail.component';
-import { CMMSTypeListComponent } from './cmms-type-list/cmms-type-list.component';
-import { CMMSTypeDetailComponent } from './cmms-type-detail/c-m-m-s-type-detail.component';
+import { CmmsFaultCauseDetailComponent } from './cmms-fault-cause/cmms-fault-cause-detail.component';
+import { CMMSFaultCauseListComponent } from './cmms-fault-cause/cmms-fault-cause-list.component';
+import { CMMSPriorityListComponent } from './cmms-priority/cmms-priority-list.component';
+import { CMMSRootCauseDetailComponent } from './cmms-root-cause/cmms-root-cause-detail.component';
+import { CMMSRootCauseListComponent } from './cmms-root-cause/cmms-root-cause-list.component';
+import { CMMSRoutingListComponent } from './cmms-routing/cmms-routing-list.component';
+import { CMMSFaultDetailComponent } from './cmms-fault/cmms-fault-detail.component';
+import { CMMSRoutingDetailComponent } from './cmms-routing/cmms-routing-detail.component';
+import { CMMSPriorityDetailComponent } from './cmms-priority/cmms-priority-detail.component';
+import { CMMSStatusListComponent } from './cmms-status/cmms-status-list.component';
+import { CMMSStatusDetailComponent } from './cmms-status/cmms-status-detail.component';
+import { CMMSTypeListComponent } from './cmms-type/cmms-type-list.component';
+import { CMMSTypeDetailComponent } from './cmms-type/c-m-m-s-type-detail.component';
 import { CMMSRoutingLineListComponent } from './cmms-routing-line-list/cmms-routing-line-list.component';
 import { CMMSRoutingLineDetailComponent } from './cmms-routing-line-detail/cmms-routing-line-detail.component';
 import { RouterOutlet } from '@angular/router';
+import { CMMSMeterListComponent } from './cmms-meter/cmms-meter-list.component';
+import { CMMSMeterDetailComponent } from './cmms-meter/cmms-type-detail.component';
 
 @NgModule({
     imports: [
@@ -58,6 +60,8 @@ import { RouterOutlet } from '@angular/router';
         CMMSTypeDetailComponent,
         CMMSRoutingLineListComponent,
         CMMSRoutingLineDetailComponent,
+        CMMSMeterListComponent,
+        CMMSMeterDetailComponent,
     ],
 })
 export class CmmsLookupsModule {}

@@ -4,8 +4,6 @@ import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from './assets-api';
 import {HttpService, LanguageService, PaginationModel} from '@ss/common/api-common';
 import {Observable, retry} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {LanguagesService} from '@ss/common/api-lookup';
 
 @Injectable({
     providedIn: 'root'

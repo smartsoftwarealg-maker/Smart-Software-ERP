@@ -3,10 +3,10 @@ import {
     ABS_INDEX_URL, CanDeactivateService, LIST_URL
 } from '@ss/common/api-common';
 import {
-    CMMS__PLANS__URL,
+    CMMS__PLANS__URL, CMMS__PM__URL, CMMS_ALERT_URL,
     CMMS_FAULT_CAUSE_URL,
-    CMMS_FAULTS_URL,
-    CMMS_PRIORITY_URL,
+    CMMS_FAULTS_URL, CMMS_METER_URL,
+    CMMS_PRIORITY_URL, CMMS_READING_URL,
     CMMS_ROOT_CAUSE_URL,
     CMMS_ROUTING_URL,
     CMMS_STATUS_URL,
@@ -20,13 +20,19 @@ import {
     CMMSFaultListComponent,
     CMMSPriorityDetailComponent,
     CMMSPriorityListComponent,
-    CMMSRootCauseDetailComponent, CMMSRoutingDetailComponent,
+    CMMSRootCauseDetailComponent,
+    CMMSRoutingDetailComponent,
     CMMSRoutingListComponent,
     CMMSTypeDetailComponent,
     CMMSTypeListComponent,
-    CMMSRootCauseListComponent, CMMSRoutingLineListComponent, CMMSRoutingLineDetailComponent
+    CMMSRootCauseListComponent,
+    CMMSRoutingLineListComponent,
+    CMMSRoutingLineDetailComponent,
+    CMMSMeterListComponent,
+    CMMSMeterDetailComponent,
 } from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
+import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 
 export const cmmsRoutes: Routes = [
     {
@@ -61,6 +67,32 @@ export const cmmsRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
+        ]
+    },
+    {
+        path: CMMS_METER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CMMSMeterListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSMeterDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_ALERT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CmmsAlertListComponent,
+                canActivate: [loginGuard]
+            }
         ]
     },
 
@@ -143,6 +175,23 @@ export const cmmsRoutes: Routes = [
             {
                 path: ':id',
                 component: CMMSPlanDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: CMMS__PM__URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PmListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: PMDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

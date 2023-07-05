@@ -1,1 +1,85 @@
-<p>pm-detail works!</p>
+<mat-card *ngIf="form">
+    <mat-card-content>
+        <form *ngIf="form" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required autofocus>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>CMMS_ASSET</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="assetLookup"
+                                  formControlName="parentId"
+                                  required="true">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>CMMS_PLAN</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="planLookup"
+                                  formControlName="planId"
+                                  required="true">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['planId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>CMMS_PRIORITY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="priorityLookup"
+                                  formControlName="priority"
+                                  required="true">
+                </ss-auto-complete>
+                <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>CMMS_ROUTING</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="routingLookup"
+                                  formControlName="routingId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>CMMS_FAULT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="faultLookup"
+                                  formControlName="fault"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>CMMS_CAUSE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="causeLookup"
+                                  formControlName="cause"
+                                  required="true">
+                </ss-auto-complete>
+            </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>CMMS_LAST_RELEASED</mat-label>
+                <ss-date-picker formControlName="lastReleased"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>CMMS_NEXT_DUE</mat-label>
+                <ss-date-picker formControlName="nextDue"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>CMMS_DAYS_AHEAD</mat-label>
+                <input matInput formControlName="daysAhead" type="number" required >
+            </mat-form-field>
+
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -14,7 +14,7 @@ mat-table {
     min-width: 600px;
 }
 .mat-column-description {
-    flex: 3 1 auto;
+    flex: 3 1 300px;
 }
 
 .mat-column-repeatMonths,

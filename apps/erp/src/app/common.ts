@@ -316,6 +316,10 @@ export const CMMS_ROOT_CAUSE_URL       = 'cmms-root-csuses';
 export const CMMS_TYPE_URL       = 'cmms-types';
 export const CMMS_ROUTING_URL       = 'cmms-routings';
 export const CMMS__PLANS__URL       = 'cmms-plans';
+export const CMMS__PM__URL       = 'cmms-pm';
+export const CMMS_ALERT_URL       = 'cmms-alerts';
+export const CMMS_METER_URL       = 'cmms-meters';
+export const CMMS_READING_URL       = 'cmms-readings';
 
 
 // assets
@@ -575,6 +579,10 @@ export const ABS_CMMS_ROOT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_
 export const ABS_CMMS_TYPE__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TYPE_URL].join('/');
 export const ABS_CMMS_ROUTING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROUTING_URL].join('/');
 export const ABS_CMMS_PLANS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS__PLANS__URL].join('/');
+export const ABS_CMMS_PM_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS__PM__URL].join('/');
+export const ABS_CMMS_ALERTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ALERT_URL].join('/');
+export const ABS_CMMS_METERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_METER_URL].join('/');
+export const ABS_CMMS_READING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_READING_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

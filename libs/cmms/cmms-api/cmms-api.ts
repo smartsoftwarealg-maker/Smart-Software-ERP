@@ -1,6 +1,7 @@
 export const CMMS_PLANS_URL = '/cmmsplans';
 export const CMMS_WORKS_URL = '/cmmsworks';
 export const CMMS_PM_URL = '/cmmspm';
+export const CMMS_ALERT_URL = '/cmmspm/alerts';
 export const CMMS_READINGS_URL = '/readings';
 export const CMMS_TRIGGERS_URL = '/triggers';
 export const CMMS_ROUTING_URL = '/routing';
@@ -30,15 +31,23 @@ export interface AssetTrigger {
 
 export interface PM {
     id: number;
+    centerId: number;
     parentId: number;
     planId: number;
     nextDue?: Date;
-    monthsAhead: number;
+    daysAhead: number;
     lastReleased?: Date;
     priority: number;
-    status: number;
+    status?: number;
+    routingId?: number;
+    description?: string;
+    fault?: number;
+    cause?: number;
     priorityDescription?: string;
     statusDescription?: string;
+    reference?: string;
+    assetDescription?: string;
+    planDescription?: string;
 }
 
 export interface RoutingDetail {
