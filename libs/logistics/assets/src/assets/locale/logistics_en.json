@@ -162,5 +162,6 @@
     "TRANSIT":          "Transit",
     "PRICE_DISCOUNT":   "Price discount",
     "COST_TYPE":        "Cost type",
-    "VALUE_TYPE":       "Value type"
+    "VALUE_TYPE":       "Value type",
+    "APPROVAL":         "Approval"
 }
