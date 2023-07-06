@@ -23,3 +23,5 @@ export * from './lib/services/cmms.fault.service';
 export * from './lib/cmms-meter/cmms-meter-list.component';
 export * from './lib/cmms-meter/cmms-type-detail.component';
 export * from './lib/services/cmms.meter.service';
+export * from './lib/services/cmms.root.cause.service';
+export * from './lib/services/cmms.solution.service';

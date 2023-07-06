@@ -1,1 +1,13 @@
-<p>work-request-detail works!</p>
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+            <mat-form-field id="description" class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text" required>
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED
+                </mat-error>
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+</mat-card>

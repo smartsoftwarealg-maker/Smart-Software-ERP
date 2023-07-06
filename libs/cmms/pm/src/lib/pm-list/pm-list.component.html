@@ -1,5 +1,5 @@
 <div class="div_table size">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="planDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_PLAN</mat-header-cell>
