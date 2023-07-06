@@ -8,7 +8,8 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSAlertService } from '../services/cmms-alert.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { of } from "rxjs";
 
 @Component({
     selector: 'ss-cmms-alert-list',
@@ -71,6 +72,26 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
                         this.refresh();
                     }
                 }));
+    }
 
+    generate() {
+        this.shellSrv.setLoading(true);
+        this.confirmationSrv
+            .confirm('CMMS_WORK_GENERATION', 'COMMON_GENERATE')
+            .pipe(switchMap(answer => answer? this.entitySrv
+                .generate(this.dateControl.value, this.shellSrv.getSearchText()): of({count: 0}))
+            ).subscribe({
+                next: res => {
+                    if (res?.count) {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.data = [];
+                    }
+                    this.shellSrv.setLoading(false);
+                },
+                error: err => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
     }
 }

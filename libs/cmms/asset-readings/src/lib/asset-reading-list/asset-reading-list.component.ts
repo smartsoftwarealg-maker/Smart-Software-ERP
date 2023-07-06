@@ -51,7 +51,7 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
 
     override select(id: number) {
         super.select(id);
-        this.addButton.visible = this.editButton.visible = id > 0;
+        this.editButton.visible = id > 0;
     }
 
     override ngOnInit() {
@@ -66,7 +66,7 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
                     .subscribe(value => {
                         this.entitySrv.setParentId(value || 0);
                         this.addButton.visible = value > 0;
-                        this.refresh();
+                        this.entitySrv.getPage(this.pagination).subscribe(res => this.data = res);
                     })
             );
     }

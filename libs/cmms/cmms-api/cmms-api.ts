@@ -29,6 +29,7 @@ export interface AssetTrigger {
     parentId: number; //assetId
     meterId: number;
     amount?: number;
+    description?: string;
 }
 
 export interface PM {

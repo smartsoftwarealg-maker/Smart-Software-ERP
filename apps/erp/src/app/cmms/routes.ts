@@ -9,7 +9,7 @@ import {
     CMMS_PRIORITY_URL, CMMS_READING_URL,
     CMMS_ROOT_CAUSE_URL,
     CMMS_ROUTING_URL,
-    CMMS_STATUS_URL,
+    CMMS_STATUS_URL, CMMS_TRIGGER_URL,
     CMMS_TYPE_URL
 } from '../common';
 import { loginGuard } from '../erp-guards';
@@ -33,7 +33,8 @@ import {
 } from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
-import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from "@ss/cmms/asset-readings";
+import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
+import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from "@ss/cmms/asset-triggers";
 
 export const cmmsRoutes: Routes = [
     {
@@ -142,6 +143,23 @@ export const cmmsRoutes: Routes = [
                 path: ':id',
                 component: AssetReadingDetailComponent,
                 canActivate: [loginGuard, readingDetailGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
+        path: CMMS_TRIGGER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AssetTriggerListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: AssetTriggerDetailComponent,
+                canActivate: [loginGuard, triggerDetailGuard],
                 canDeactivate: [CanDeactivateService],
             },
         ]

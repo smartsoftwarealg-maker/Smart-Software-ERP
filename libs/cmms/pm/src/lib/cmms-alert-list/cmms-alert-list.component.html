@@ -1,9 +1,15 @@
-<div class="size">
+<div class="size ctrl__div">
     <mat-form-field class="default-50" autofocus>
         <mat-label translate>COMMON_DATE</mat-label>
         <ss-date-picker [formControl]="dateControl" ></ss-date-picker>
     </mat-form-field>
 
+    <div *ngIf="data.length > 0"  >
+        <button mat-raised-button color="primary" type="button" (click)="generate()">
+            <i class="fa-solid fa-list-check"></i>
+            {{ 'COMMON_GENERATE' | translate }}
+        </button>
+    </div>
 </div>
 <div class="div_table size">
     <mat-table mat-table [dataSource]="data" class="main-table">
