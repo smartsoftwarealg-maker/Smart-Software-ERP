@@ -20,7 +20,7 @@ import {
     ABS_STOCK_GENERATION_ACCOUNT_URL,
     ABS_STOCK_STOCK_ACCOUNT_URL,
     ABS_INVENTORY_PRICE_RECALCULATION_URL, ABS_STOCK_CONSUMPTION_CANCELLATION_URL
-} from "../common";
+} from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
 export const stockNavTree: SideNavNode = {

@@ -9,7 +9,7 @@ import {
     LOGISTICS_CURRENCY_URL,
     LOGISTICS_VAT_URL,
     LOGISTICS_NUMBERING_URL,
-    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL
+    LOGISTICS_CATEGORY_URL, docInfoRoutes, LOGISTICS_ARTICLES_URL, STOCK_UNITS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -30,9 +30,9 @@ import {
     CurrencyDetailComponent,
     CurrencyListComponent,
     SalesCategoryDetailComponent,
-    SalesCategoryListComponent,
+    SalesCategoryListComponent, UnitDetailComponent, UnitListComponent,
     VatDetailComponent,
-    VatListComponent,
+    VatListComponent
 } from '@ss/common/ui-lookup';
 import {OptionsDetailComponent} from '@ss/logistics/ui-options';
 import {
@@ -221,6 +221,22 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DocumentNumberingDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: STOCK_UNITS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: UnitListComponent
+            },
+            {
+                path: ':id',
+                component: UnitDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

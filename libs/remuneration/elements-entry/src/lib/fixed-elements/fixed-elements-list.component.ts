@@ -6,12 +6,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {HttpService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {EmployeeService} from '@ss/payroll/api-employee';
 import {Observable, of} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {FixedElementsEntryService} from './fixed-elements-entry.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-fixed-elements-list',

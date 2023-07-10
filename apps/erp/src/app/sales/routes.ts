@@ -1,24 +1,24 @@
 import { Routes } from '@angular/router';
 import { DeliveryDetailComponent, DeliveryListComponent } from '@ss/sales/ui-delivery';
-import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
-import { DeliveryLinesDetailComponent, DeliveryLinesListComponent } from "@ss/sales/ui-delivery-lines";
+import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
+import { DeliveryLinesDetailComponent, DeliveryLinesListComponent } from '@ss/sales/ui-delivery-lines';
 import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
-    docInfoRoutes,
+    docInfoRoutes, LOGISTICS_AGENT_URL,
     SALES_AD_URL
-} from '../common';
+} from "../common";
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
-import { OrderLinesDetailComponent, OrderLinesListComponent } from "@ss/sales/ui-order-lines";
-import { InvoiceLinesListComponent, InvoiceListComponent } from "@ss/sales/ui-invoice";
+import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
+import { InvoiceLinesListComponent, InvoiceListComponent } from '@ss/sales/ui-invoice';
 import { InvoiceLinesDetailComponent } from '@ss/sales/ui-invoice';
 import { InvoiceDetailComponent } from '@ss/sales/ui-invoice';
 import {
     InvoiceCancellationDetailComponent,
-    InvoiceCancellationLinesDetailComponent, InvoiceCancellationLinesListComponent,
+    InvoiceCancellationLinesListComponent,
     InvoiceCancellationListComponent
-} from "@ss/sales/ui-invoice-cancellation";
+} from '@ss/sales/ui-invoice-cancellation';
 import {
     DeliveryCancellationDetailComponent,
     DeliveryCancellationLinesDetailComponent, DeliveryCancellationLinesListComponent,
@@ -30,11 +30,17 @@ import {
     ProformaLinesDetailComponent,
     ProformaLinesListComponent,
     ProformaListComponent
-} from "@ss/sales/ui-proforma";
+} from '@ss/sales/ui-proforma';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {SalesAdsDetailComponent, SalesAdsListComponent} from '@ss/sales/ecommerce';
 import {loginGuard} from '../erp-guards';
+import {
+    AgentDetailComponent,
+    AgentListComponent,
+    AppArchiveDetailComponent,
+    AppArchiveListComponent
+} from "@ss/logistics/ui-agent";
 
 export const lookupRoutes: Routes = [];
 
@@ -240,6 +246,42 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService]
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_AGENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true},
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: { sales: true },
+                        children: [
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full' },
+                                    {path: ':id', component: AppArchiveDetailComponent},
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
     {

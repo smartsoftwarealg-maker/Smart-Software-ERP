@@ -308,20 +308,21 @@ export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
 
 // CMMS
-export const CMMS_FAULTS_URL       = 'cmms-faults';
-export const CMMS_STATUS_URL       = 'cmms-status';
-export const CMMS_PRIORITY_URL       = 'cmms-priority';
-export const CMMS_FAULT_CAUSE_URL       = 'cmms-csuses';
-export const CMMS_ROOT_CAUSE_URL       = 'cmms-root-csuses';
-export const CMMS_TYPE_URL       = 'cmms-types';
+export const CMMS_FAULTS_URL        = 'cmms-faults';
+export const CMMS_STATUS_URL        = 'cmms-status';
+export const CMMS_PRIORITY_URL      = 'cmms-priority';
+export const CMMS_FAULT_CAUSE_URL   = 'cmms-csuses';
+export const CMMS_ROOT_CAUSE_URL    = 'cmms-root-csuses';
+export const CMMS_TYPE_URL          = 'cmms-types';
 export const CMMS_ROUTING_URL       = 'cmms-routings';
 export const CMMS__PLANS__URL       = 'cmms-plans';
-export const CMMS__PM__URL       = 'cmms-pm';
-export const CMMS_ALERT_URL       = 'cmms-alerts';
-export const CMMS_METER_URL       = 'cmms-meters';
+export const CMMS__PM__URL          = 'cmms-pm';
+export const CMMS_ALERT_URL         = 'cmms-alerts';
+export const CMMS_METER_URL         = 'cmms-meters';
 export const CMMS_READING_URL       = 'cmms-readings';
 export const CMMS_TRIGGER_URL       = 'cmms-triggers';
-export const CMMS_WORK_REQUEST_URL       = 'cmms-requests';
+export const CMMS_WORK_REQUEST_URL  = 'cmms-requests';
+export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 
 
 // assets
@@ -481,6 +482,7 @@ export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_UR
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
+export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
@@ -587,6 +589,7 @@ export const ABS_CMMS_METERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_METE
 export const ABS_CMMS_READING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_READING_URL].join('/');
 export const ABS_CMMS_TRIGGER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TRIGGER_URL].join('/');
 export const ABS_CMMS_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_REQUEST_URL].join('/');
+export const ABS_CMMS_SOLUTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SOLUTION_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
@@ -634,6 +637,7 @@ export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES
 export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_ADS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_AD_URL].join('/');
+export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AGENT_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');

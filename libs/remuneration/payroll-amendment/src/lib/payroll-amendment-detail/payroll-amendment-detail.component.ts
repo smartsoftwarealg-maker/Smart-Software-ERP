@@ -8,9 +8,9 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
 import {HttpService, LoginService} from '@ss/common/api-common';
-import {EmployeeService} from '@ss/payroll/api-employee';
 import {ElementInfoLookupModel} from '@ss/remuneration/element-types';
-import {PayrollUtil, PersonAutocompleteClass} from '@ss/payroll-common';
+import {PayrollUtil} from '@ss/payroll-common';
+import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 
 @Component({
   selector: 'ss-payroll-amendment-detail',

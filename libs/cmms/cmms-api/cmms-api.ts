@@ -1,4 +1,4 @@
-import { Lookup } from "../../common/api-lookup/src";
+import { Lookup } from '../../common/api-lookup/src';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
@@ -9,11 +9,19 @@ export const CMMS_READINGS_URL = '/readings';
 export const CMMS_TRIGGERS_URL = '/triggers';
 export const CMMS_ROUTING_URL = '/routing';
 export const CMMS_DETAIL_URL = '/detail';
+
 export const CMMS_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_TIME'},
     { id: 1, description: 'CMMS_READING'},
     { id: 1, description: 'CMMS_EITHER'}
-]
+];
+
+export const WORK_TYPES: Lookup[] = [
+    { id: 1, description: 'CMMS_PREVENTIVE'},
+    { id: 1, description: 'CMMS_CURATIVE'},
+    { id: 1, description: 'CMMS_INSPECTION'}
+];
+
 
 export interface CMMSPlan {
     id: number;
@@ -59,6 +67,14 @@ export interface PM {
     assetDescription?: string;
     planDescription?: string;
 }
+export interface RoutingPart {
+    id: number;
+    parentId: number;
+    partId: number;
+    qty: number;
+    reference?: string;
+    description?: string;
+}
 
 export interface RoutingDetail {
     id: number;
@@ -72,6 +88,7 @@ export interface RoutingDetail {
 
 export interface Work {
     id: number;
+    centerId: number;
     document: number;
     description: string;
     assetId: number;
@@ -82,6 +99,7 @@ export interface Work {
     actualStart?: Date;
     plannedDue?: Date;
     actualDue?: Date;
+    routingId: number;
     fault?: number;
     cause?: number;
     rootCause?: number;

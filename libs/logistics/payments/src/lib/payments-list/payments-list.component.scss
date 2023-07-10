@@ -1,5 +1,17 @@
+.size {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
- .mat-column-denomination {
+.table_div {
+    min-height: calc(100% - 72px);
+    overflow-x: auto;
+}
+
+ .mat-column-denomination,
+ .mat-column-description
+ {
     flex: 2 1 200px;
 }
 

@@ -1,7 +1,7 @@
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
     ABS_FINANCE_CCOMPENSATIONS,
-    ABS_FINANCE_CPAYMENTS, ABS_SALES_ADS,
+    ABS_FINANCE_CPAYMENTS, ABS_LOGISTICS_AGENT_URL, ABS_SALES_ADS, ABS_SALES_AGENT_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL,
@@ -17,6 +17,12 @@ export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
     children: [
+        {
+            name: 'COMMON_AGENT',
+            icon: 'fas fa-user',
+            route: ABS_SALES_AGENT_URL,
+            accessRights: 'Agent'
+        },
         {
             name: 'LOGISTICS_PROFORMA',
             icon: 'fas fa-quote-right',
@@ -90,5 +96,5 @@ export const salesNavTree: SideNavNode = {
             accessRights: 'Dashboard'
         },
     ],
-    accessRights: "SALES"
+    accessRights: 'SALES'
 };

@@ -8,9 +8,9 @@ import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService } from '@ss/common/api-common';
-import { EmployeeService } from '@ss/payroll/api-employee';
 import { Observable } from 'rxjs';
 import { FixedElementsEntryService } from './fixed-elements-entry.service';
+import { EmployeeService } from "@ss/employee-services/employee-services";
 
 type Employee = {
     id: number;

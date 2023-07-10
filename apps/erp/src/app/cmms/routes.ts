@@ -8,10 +8,10 @@ import {
     CMMS_FAULTS_URL, CMMS_METER_URL,
     CMMS_PRIORITY_URL, CMMS_READING_URL,
     CMMS_ROOT_CAUSE_URL,
-    CMMS_ROUTING_URL,
+    CMMS_ROUTING_URL, CMMS_SOLUTION_URL,
     CMMS_STATUS_URL, CMMS_TRIGGER_URL,
     CMMS_TYPE_URL, CMMS_WORK_REQUEST_URL
-} from '../common';
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -30,7 +30,9 @@ import {
     CMMSRoutingLineDetailComponent,
     CMMSMeterListComponent,
     CMMSMeterDetailComponent,
-} from '@ss/cmms/lookups';
+    CMMSSolutionListComponent,
+    CMMSSolutionDetailComponent, CMMSRoutingPartsListComponent, CMMSRoutingPartsDetailComponent
+} from "@ss/cmms/lookups";
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -184,6 +186,23 @@ export const cmmsRoutes: Routes = [
     },
 
     {
+        path: CMMS_SOLUTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CMMSSolutionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CMMSSolutionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+
+    {
         path: CMMS_WORK_REQUEST_URL,
         children: [
             {
@@ -273,6 +292,12 @@ export const cmmsRoutes: Routes = [
                         children: [
                             { path: '', component: CMMSRoutingLineListComponent, pathMatch: 'full'},
                             { path: ':id', component: CMMSRoutingLineDetailComponent }
+                        ]
+                    },
+                    {   path: 'parts',
+                        children: [
+                            { path: '', component: CMMSRoutingPartsListComponent, pathMatch: 'full' },
+                            { path: ':id', component: CMMSRoutingPartsDetailComponent }
                         ]
                     }
                 ],

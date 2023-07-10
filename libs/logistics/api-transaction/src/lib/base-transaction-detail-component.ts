@@ -3,7 +3,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {
     ActivatedRoute, NavigationEnd,
     Router, RouterEvent, RouterOutlet
-} from "@angular/router";
+} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
@@ -22,7 +22,7 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { SalesContractService } from '@ss/logistics/contracts';
 import { TransactionLinesClass } from './transaction-lines.class';
-import { BaseTransactionLinesListComponent } from "./base-transaction-lines-list.component";
+import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {

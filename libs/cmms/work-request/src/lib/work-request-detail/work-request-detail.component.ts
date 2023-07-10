@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Work } from '../../../../cmms-api/cmms-api';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
+import { RoutingDetail, Work, WORK_TYPES } from '../../../../cmms-api/cmms-api';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -11,12 +11,16 @@ import {
     CMMSFaultService,
     CMMSPriorityService,
     CMMSRootCauseService,
+    CMMSRoutingDetailService,
+    CMMSRoutingService,
     CMMSSolutionService
 } from '@ss/cmms/lookups';
 import { ServiceService } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
-import { AssetsService } from "@ss/assets-component";
-import { EmployeeService } from "@ss/payroll/api-employee";
+import { AssetsService } from '@ss/assets-component';
+import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { LoginService, PaginationModel } from '@ss/common/api-common';
+import { Observable, of } from 'rxjs';
 
 @Component({
     selector: 'ss-work-request-detail',
@@ -24,6 +28,9 @@ import { EmployeeService } from "@ss/payroll/api-employee";
     styleUrls: ['./work-request-detail.component.css'],
 })
 export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
+    private routingDetailSrv = inject(CMMSRoutingDetailService);
+    private loginSrv = inject(LoginService);
+    private routingSrv = inject(CMMSRoutingService);
     private solutionSrv = inject(CMMSSolutionService);
     private faultSrv = inject(CMMSFaultService);
     private causeSrv = inject(CMMSFaultCauseService);
@@ -31,7 +38,7 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
     private prioritySrv = inject(CMMSPriorityService);
     private serviceSrv = inject(ServiceService);
     private assetSrv = inject(AssetsService);
-    private personSrv = inject(EmployeeService)
+    private personSrv = inject(EmployeeService);
 
     solutionLookup = new DefaultAutoCompleteModel(this.solutionSrv);
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
@@ -40,6 +47,15 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
     priorityLookup = new DefaultAutoCompleteModel(this.prioritySrv);
     serviceLookup = new DefaultAutoCompleteModel(this.serviceSrv);
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
+    personLookup = new PersonAutocompleteClass(this.personSrv);
+    routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
+
+    routingPaginator = PaginationModel.newInstance();
+    cmmsTyes = WORK_TYPES;
+
+    data$: Observable<RoutingDetail[]> = of([]);
+    displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
+    selectedId = 0;
 
     constructor(
         public override entitySrv: CMMSWorkRequestService,
@@ -49,21 +65,25 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_WORK_REQUEST');
+        this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
     }
 
     setupForm(e: Work): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id],
+            id:           [e.id],
+            document:     [e.document || 12],
+            centerId:     [e.centerId || this.loginSrv.appCtx.center],
             description:  [e.description ],
             assetId:      [e.assetId, Validators.required],
             requester:    [e.requester   ],
-            wrType:       [e.wrType, Validators.required],
+            wrType:       [{ value: e.wrType || 2, disabled: true }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
             actualStart:  [e.actualStart ],
             plannedDue:   [e.plannedDue  ],
             actualDue:    [e.actualDue   ],
             fault:        [e.fault       ],
+            routingId:    [e.routingId   ],
             cause:        [e.cause       ],
             rootCause:    [e.rootCause   ],
             solution:     [e.solution    ],
@@ -72,10 +92,19 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
             materialCost: [e.materialCost],
             otherCost:    [e.otherCost   ],
             assignee:     [e.assignee    ],
-            teamSize:     [e.teamSize    ],
+            teamSize:     [e.teamSize || 1],
             memo:         [e.memo        ]
-
         });
     }
 
+
+    override finishLoading(e: Work) {
+        this.routingDetailSrv.setParentId(e?.routingId || 0);
+        this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
+        super.finishLoading(e);
+    }
+
+    select(id: number) {
+        this.selectedId = id;
+    }
 }

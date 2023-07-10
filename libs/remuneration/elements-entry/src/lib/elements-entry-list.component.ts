@@ -10,7 +10,7 @@ import {ElementsEntryService} from './elements-entry.service';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {MatSelectChange} from '@angular/material/select';
-import {EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';

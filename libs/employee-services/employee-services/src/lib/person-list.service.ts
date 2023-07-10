@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import {Employee, EMPLOYEE_PHOTO_URL, EMPLOYEES_URL, INACTIVE_EMPLOYEES_URL} from './employee-api';
 import { Observable } from 'rxjs';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { HttpService, Password } from '@ss/common/api-common';
+import { HttpService } from '@ss/common/api-common';
+import { EMPLOYEE_PHOTO_URL, EMPLOYEES_URL, PersonSummary } from '@ss/employee-services/employee-services';
 
 @Injectable({
     providedIn: 'root'
 })
-export class EmployeeService extends BaseEntityService<Employee> {
+export class PersonListService extends BaseEntityService<PersonSummary> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, EMPLOYEES_URL);
+        super(httpSrv, '/persons-list');
     }
 
     public loadPhoto(id: number): Observable<Blob> {
@@ -19,12 +19,5 @@ export class EmployeeService extends BaseEntityService<Employee> {
 
     public getPhotoUrl(id: number): string {
         return id != null && id > 0 ? (EMPLOYEES_URL + '/' + id + EMPLOYEE_PHOTO_URL) : null;
-    }
-
-    setMode(active: boolean) {
-        this.setURL(active? EMPLOYEES_URL : INACTIVE_EMPLOYEES_URL);
-    }
-    updatePassword(pwd: Password): Observable<any> {
-        return this.httpSrv.post('/password', pwd);
     }
 }

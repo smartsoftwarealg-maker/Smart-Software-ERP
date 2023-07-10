@@ -40,3 +40,5 @@ export * from './lib/inventory-import/inventory-import.component';
 export * from './lib/agent-assets-list/agent-assets-list.component';
 export * from './lib/assets-api';
 export * from './lib/assets.service';
+export * from './lib/assets-building.service';
+export * from './lib/asset-location.service';

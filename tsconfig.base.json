@@ -169,6 +169,9 @@
             ],
             "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
             "@ss/dashboard": ["libs/dashboard/src/index.ts"],
+            "@ss/employee-services/employee-services": [
+                "libs/employee-services/employee-services/src/index.ts"
+            ],
             "@ss/exchange/api-currency-deposit": [
                 "libs/exchange/api-currency-deposit/src/index.ts"
             ],

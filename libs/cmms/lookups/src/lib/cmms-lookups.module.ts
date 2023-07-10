@@ -28,6 +28,10 @@ import { CMMSRoutingLineDetailComponent } from './cmms-routing-line-detail/cmms-
 import { RouterOutlet } from '@angular/router';
 import { CMMSMeterListComponent } from './cmms-meter/cmms-meter-list.component';
 import { CMMSMeterDetailComponent } from './cmms-meter/cmms-type-detail.component';
+import { CMMSSolutionListComponent } from './cmms-solution/cmms-solution-list.component';
+import { CMMSSolutionDetailComponent } from './cmms-solution/c-m-m-s-solution-detail.component';
+import { CMMSRoutingPartsDetailComponent } from './cmms-routing-parts-detail/cmms-routing-parts-detail.component';
+import { CMMSRoutingPartsListComponent } from './cmms-routing-parts-list/cmms-routing-parts-list.component';
 
 @NgModule({
     imports: [
@@ -41,7 +45,7 @@ import { CMMSMeterDetailComponent } from './cmms-meter/cmms-type-detail.componen
         MatInputModule,
         MaterialModule,
         ReactiveFormsModule,
-        RouterOutlet
+        RouterOutlet,
     ],
     declarations: [
         CMMSFaultDetailComponent,
@@ -62,6 +66,10 @@ import { CMMSMeterDetailComponent } from './cmms-meter/cmms-type-detail.componen
         CMMSRoutingLineDetailComponent,
         CMMSMeterListComponent,
         CMMSMeterDetailComponent,
+        CMMSSolutionListComponent,
+        CMMSSolutionDetailComponent,
+        CMMSRoutingPartsListComponent,
+        CMMSRoutingPartsDetailComponent,
     ],
 })
 export class CmmsLookupsModule {}

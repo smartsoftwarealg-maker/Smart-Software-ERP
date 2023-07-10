@@ -9,7 +9,12 @@ import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import { InvoiceLinesService, InvoiceService } from '@ss/sales/api-invoice';
-import {BaseTransactionDetailComponent} from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionDetailComponent,
+    DOC_DELIVERY,
+    DOC_QUOTATION,
+    DOC_SALES_ORDER
+} from "@ss/logistics/api-transaction";
 
 
 @Component({
@@ -53,7 +58,11 @@ export class InvoiceDetailComponent extends BaseTransactionDetailComponent imple
     }
 
     protected importedDocuments(): Lookup[] {
-        return [{id: 6, description: 'LOGISTICS_PROFORMA'}, {id: 257, description: 'SALES_DELIVERY'}];
+        return [
+            {id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA'},
+            {id: DOC_SALES_ORDER, description: 'SALES_ORDER'},
+            {id: DOC_DELIVERY, description: 'SALES_DELIVERY'}
+        ];
     }
 
     // public override setupForm(b: Transaction) {

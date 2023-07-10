@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {REPORTS_CATALOG, ReportsCatalog} from "./report-catalog-api";
+import {REPORTS_CATALOG, ReportsCatalog} from './report-catalog-api';
 
 
 @Injectable({

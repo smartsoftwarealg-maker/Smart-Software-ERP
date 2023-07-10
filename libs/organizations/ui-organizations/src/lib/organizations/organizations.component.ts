@@ -7,12 +7,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { OrganizationsDetailComponent } from './organizations-detail.component';
 import { TreeNode } from 'angular13-organization-chart';
-import { EmployeeService, Employee } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { ActivatedRoute } from '@angular/router';
 import { DivisionService, DepartmentService, ServiceService, OfficeService, Division, Department, Service, Office } from '@ss/common/api-lookup';
 import { switchMap, tap } from 'rxjs/operators';
 import { Level } from './common';
+import { Employee } from '@ss/employee-services/employee-services';
 
 interface OrgTreeNode extends TreeNode {
     id: number;

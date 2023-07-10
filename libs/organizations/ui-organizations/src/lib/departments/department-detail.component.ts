@@ -6,9 +6,9 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { DepartmentService, Department } from '@ss/common/api-lookup';
-import { PersonAutocompleteClass } from '@ss/payroll-common';
-import { EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Observable } from "rxjs";
+import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 
 @Component({
     selector: 'ss-department-detail',

@@ -20,7 +20,7 @@ import { Payment, paymentsUrl, agentsUrl } from './payment-api';
 })
 export class PaymentListComponent extends AbstractEntityList<Payment, BackendDataSource<Payment>> implements OnInit, OnDestroy {
 
-    public displayedColumns = ['payMethod', 'amount', 'date', 'checkNumb', 'bank'];
+    public displayedColumns = ['payMethod', 'description', 'amount', 'date', 'checkNumb', 'bank'];
     public agentDisplayedColumns = ['code', 'denomination'];
 
     parentLoadingState = LoadingState.LOADING;

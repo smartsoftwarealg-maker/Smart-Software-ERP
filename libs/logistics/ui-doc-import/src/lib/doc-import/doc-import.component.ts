@@ -45,6 +45,7 @@ export class DocImportComponent implements OnInit {
     }
 
     public close() {
+        this.subscriptions.forEach(s => s.unsubscribe());
         this.dialogRef.close({ document: +this.document.value, number: this.importInfo.number });
     }
 

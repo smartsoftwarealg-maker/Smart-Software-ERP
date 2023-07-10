@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {DepartmentService, Department} from '@ss/common/api-lookup';
 import {Observable, of} from 'rxjs';
-import {EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-departments-list',

@@ -9,7 +9,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DivisionService, Division } from '@ss/common/api-lookup';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 
 
 @Component({

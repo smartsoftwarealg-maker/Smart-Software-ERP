@@ -6,11 +6,11 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PersonShiftService} from '../person-shift.service';
-import {EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {WorkshiftService} from '../workshift.service';
-import {PersonAutocompleteClass} from '@ss/payroll-common';
 import { Service, ServiceService } from "@ss/common/api-lookup";
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-person-shift-detail',

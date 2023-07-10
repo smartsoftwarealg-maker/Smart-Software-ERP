@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee, EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Observable, of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
@@ -10,6 +10,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { Employee } from '@ss/employee-services/employee-services';
 
 interface Lookup {
     id: number;
@@ -51,7 +52,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
         this.pagination.pageSize = 15;
         this.route.data.subscribe(data => {
-            this.activePersonnel = !!data['active']
+            this.activePersonnel = !!data['active'];
             this.employeeSrv.setMode(this.activePersonnel);
         });
     }

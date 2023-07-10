@@ -1,6 +1,6 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Lookup} from '@ss/remuneration/special-payroll-common';
-import {Employee, EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
+import { Employee } from '@ss/employee-services/employee-services';
 
 export class PersonAutocompleteClass extends DefaultAutoCompleteModel<Employee> {
     constructor(public employeeSrv: EmployeeService) {

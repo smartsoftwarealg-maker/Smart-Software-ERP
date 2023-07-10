@@ -6,7 +6,7 @@ import {LanguageService, PaginatorPersistenceService, User, UserService} from '@
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {AgentService} from '@ss/logistics/api-agent';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import { ServiceService, Service } from '@ss/common/api-lookup';
 import { Observable, of } from 'rxjs';
 

@@ -5,7 +5,7 @@ import {
     ABS_CMMS_FAULT_CAUSE_URL,
     ABS_CMMS_FAULTS_URL, ABS_CMMS_METERS_URL, ABS_CMMS_PLANS_URL, ABS_CMMS_PM_URL,
     ABS_CMMS_PRIORITY__URL, ABS_CMMS_READING_URL, ABS_CMMS_REQUEST_URL,
-    ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL,
+    ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL, ABS_CMMS_SOLUTION_URL,
     ABS_CMMS_STATUS__URL, ABS_CMMS_TRIGGER_URL
 } from "../common";
 
@@ -29,7 +29,13 @@ export const cmmsNavTree: SideNavNode = {
             name: 'CMMS_ROOT_CAUSE',
             icon: 'fa-solid fa-square-root',
             route: ABS_CMMS_ROOT_CAUSE_URL,
-            accessRights: 'CMrOOTCause'
+            accessRights: 'CMRootTCause'
+        },
+        {
+            name: 'CMMS_SOLUTIONS',
+            icon: 'fa-regular fa-memo-circle-check',
+            route: ABS_CMMS_SOLUTION_URL,
+            accessRights: 'CMSolution'
         },
         {
             name: 'CMMS_STATUS',
