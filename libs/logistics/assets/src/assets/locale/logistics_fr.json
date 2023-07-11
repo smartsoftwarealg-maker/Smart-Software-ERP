@@ -158,5 +158,7 @@
     "TRANSIT":          "Transit",
     "PRICE_DISCOUNT":   "Prix réduit",
     "COST_TYPE":        "Type de coût",
-    "VALUE_TYPE":       "Type de valeur"
+    "VALUE_TYPE":       "Type de valeur",
+    "APPROVAL":         "Agrément",
+    "APPROVAL":         "Agrément"
 }

@@ -17,8 +17,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     public form: UntypedFormGroup = null;
     public isEditable = true;
 
-    protected constructor(public entitySrv: BaseEntityService<T>) {
-    }
+    protected constructor(public entitySrv: BaseEntityService<T>) {}
 
     public save() {
         this.form.markAllAsTouched();
@@ -118,7 +117,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             };
             return of(a);
         }
-        this.queryId = id;
         return this.entitySrv.get(id);
     }
 

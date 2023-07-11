@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import { Mark, MARKS_URL } from './lookups-api';
+import { MARKS_URL } from './lookups-api';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Observable} from 'rxjs';
 import {Lookup} from './lookup.class';

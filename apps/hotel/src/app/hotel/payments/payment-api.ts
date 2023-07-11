@@ -16,7 +16,8 @@ export interface Payment {
     checkNumb?: string;
     bankId?: number;
     checkBank?: string;
-    checkDate?: string
+    checkDate?: string;
+    description?: string;
 }
 
 
@@ -46,7 +47,7 @@ export class AgentACModel extends AutoCompleteModel<Agent, number> {
     getById(id: number): Observable<Agent> {
         if (id) {
             return this.httpSrv.get<Agent>(agentsUrl + '/' + id);
-        } else {  
+        } else {
             return of(null);
         }
     }

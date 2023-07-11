@@ -8,7 +8,12 @@ import {Observable, of, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {fillObject, LoginService} from '@ss/common/api-common';
 import {SalesOrderService} from '@ss/sales/api-sales-order';
-import { BaseTransactionDetailComponent, Transaction, TransactionLinesService } from '@ss/logistics/api-transaction';
+import {
+    BaseTransactionDetailComponent, DOC_QUOTATION,
+    DOC_SALES_ORDER,
+    Transaction,
+    TransactionLinesService
+} from "@ss/logistics/api-transaction";
 import {MatDialog} from '@angular/material/dialog';
 import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
 
@@ -125,6 +130,6 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         return true;
     }
     protected importedDocuments(): Lookup[] {
-        return [{ id: 6, description: 'SALES_ORDER'}];
+        return [{ id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA'}];
     }
 }

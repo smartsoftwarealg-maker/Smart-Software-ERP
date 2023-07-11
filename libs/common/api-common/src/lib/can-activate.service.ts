@@ -1,8 +1,8 @@
-import {inject, Injectable} from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import {Injectable} from '@angular/core';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoginService } from './login.service';
-import { map, catchError, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { HttpService } from './http.service';
 import { PROFILE_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL } from './constants';
 import { UrlTree } from '@angular/router';

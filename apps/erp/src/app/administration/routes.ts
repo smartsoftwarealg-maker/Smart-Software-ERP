@@ -21,7 +21,7 @@ import {
     ADMIN_USER_MESSAGES_URL,
     ADMIN_USER_DOCUMENTS_URL,
     ADMIN_WORKFLOW_INBOX_URL, ADMIN_USER_RECEIVED_MESSAGES_URL
-} from "../common";
+} from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import { BankDetailComponent, BankListComponent } from '@ss/administration/ui-bank';
@@ -60,7 +60,7 @@ import {
     UserDocumentDetailComponent,
     WorkflowInboxListComponent,
     UserReceivedMessageListComponent, UserReceivedMessageDetailComponent
-} from "@ss/workflow";
+} from '@ss/workflow';
 import {loginGuard} from '../erp-guards';
 
 export const mainRoutes: Routes = [

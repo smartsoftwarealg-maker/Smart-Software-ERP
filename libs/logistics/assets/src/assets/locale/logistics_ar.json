@@ -158,5 +158,6 @@
     "TRANSIT":          "عبور",
     "PRICE_DISCOUNT":   "سعر الخصم",
     "COST_TYPE":        "نوع التكلفة",
-    "VALUE_TYPE":       "نوع القيمة"
+    "VALUE_TYPE":       "نوع القيمة",
+    "APPROVAL":         "موافقة"
 }

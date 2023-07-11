@@ -1,20 +1,15 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
-import { ShellService, SnackBarService, KeepOnToolbar } from '@ss/common/ui-shell';
-import {UntypedFormGroup, UntypedFormBuilder, Validators, FormControl} from '@angular/forms';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import {UntypedFormGroup, UntypedFormBuilder, Validators} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { EmployeeService } from '@ss/payroll/api-employee';
 import { Observable } from 'rxjs';
 import { OfficeService, Office } from '@ss/common/api-lookup';
-import { PersonAutocompleteClass } from '@ss/payroll-common';
-import {AssetLocationService} from '../../../../../assets-component/src/lib/asset-location.service';
-import {CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetBuilding, AssetLocation} from '../../../../../assets-component/src/lib/assets-api';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
-import {AssetsBuildingService} from '../../../../../assets-component/src/lib/assets-building.service';
-import {HttpParams} from '@angular/common/http';
+import {CodeDescriptionAutoCompleteModel} from '@ss/common/ui-auto-complete';
+import {map} from 'rxjs/operators';
+import { AssetBuilding, AssetLocation, AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
 
 @Component({
     selector: 'ss-office-detail',
@@ -24,6 +19,7 @@ import {HttpParams} from '@angular/common/http';
 export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> implements OnInit, OnDestroy {
     private buildingSrv = inject(AssetsBuildingService);
     private locationSrv = inject(AssetLocationService);
+
     locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
     buildingLookup = new BuildingLookup(this.buildingSrv);
 

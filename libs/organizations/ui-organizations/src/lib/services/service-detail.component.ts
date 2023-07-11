@@ -5,10 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Service, ServiceService } from '@ss/common/api-lookup';
-import { PersonAutocompleteClass } from '@ss/payroll-common';
-import { EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
+import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-service-detail',

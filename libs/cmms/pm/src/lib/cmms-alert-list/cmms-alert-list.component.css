@@ -1,0 +1,13 @@
+.div_table {
+    height: calc(100% - 148px);
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.ctrl__div button {
+    margin-top: 8px;
+}

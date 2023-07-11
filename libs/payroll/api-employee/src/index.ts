@@ -1,5 +1,4 @@
 export * from './lib/employee-api';
-export * from './lib/employee.service';
 export * from './lib/employee-activation.service';
 export * from './lib/constants';
 export * from './lib/employee-career.service';
@@ -16,7 +15,7 @@ export * from './lib/punishment-type.service';
 export * from './lib/employee-languages.service';
 export * from './lib/employee-old-career.service';
 export * from './lib/employee-decision.service';
-export * from './lib/person-list.service';
+export * from '../../../employee-services/employee-services/src/lib/person-list.service';
 export * from './lib/payment-info.service';
 export * from './lib/fund.service';
 export * from './lib/decision-motive.service';

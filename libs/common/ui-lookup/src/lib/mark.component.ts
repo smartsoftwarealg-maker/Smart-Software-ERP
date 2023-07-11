@@ -28,7 +28,6 @@ export class MarkListComponent extends BaseEntityListComponent<Mark> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(markSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_MARKS');
     }
-
 }
 
 @Component({

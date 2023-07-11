@@ -27,7 +27,7 @@ export class SalesCategoryListComponent extends BaseEntityListComponent<Category
         public override defReportSrv: DefaultReportService,
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_ACTIVITIES');
+        super(listSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CATEGORIES');
     }
 }
 
@@ -46,7 +46,7 @@ export class SalesCategoryDetailComponent extends BaseEntityDetailComponent<Acti
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
         public override formBuilder: UntypedFormBuilder) {
-        super(categorySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_ACTIVITY');
+        super(categorySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CATEGORIES');
     }
 
     public override setupForm(e: Activity): UntypedFormGroup {

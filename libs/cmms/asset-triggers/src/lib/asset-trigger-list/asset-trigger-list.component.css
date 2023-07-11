@@ -1,0 +1,23 @@
+.size {
+    width: 90%;
+    max-width: 1400px;
+    margin: 4px auto;
+}
+
+.table_div {
+    overflow-x: auto;
+    min-height: calc(100% - 150px);
+}
+
+mat-table {
+    width: 100%;
+    min-width: 700px;
+}
+
+.mat-column-meterDescription {
+    flex: 2 1 auto;
+}
+
+.mat-column-amount {
+    flex: 1 1 100px;
+}

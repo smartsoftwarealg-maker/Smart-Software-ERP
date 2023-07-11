@@ -67,6 +67,11 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_QTY_INVOICED</mat-label>
+                <input matInput formControlName="qtyInvoiced" type="number" step=".01" readonly>
+            </mat-form-field>
+
             <mat-form-field id="price" class="default-50 sm-100">
                 <mat-label translate>LOGISTICS_PRICE</mat-label>
                 <input matInput formControlName="price" type="number" step=".01" required>

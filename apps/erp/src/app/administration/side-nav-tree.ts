@@ -28,7 +28,7 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_COMPANIES',
             icon: 'fas fa-building',
             route: ABS_ADMINISTRATION_COMPANY_URL,
-            accessRights: 'Identitycard'
+            accessRights: 'Company'
         },
         {
             name: 'ADMINISTRATION_CENTERS',
@@ -106,7 +106,7 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_REPORT_CATALOG',
             icon: 'fas fa-books',
             route: ABS_ADMINISTRATION_REPORT_CATALOG,
-            accessRights: 'Report'
+            accessRights: 'ReportCatalog'
         },
         {
             name: 'COMMON_ACCESS_RIGHTS',
@@ -127,6 +127,5 @@ export const administrationNavTree: SideNavNode = {
             route: ABS_ADMINISTRATION_TRACEABILITY_URL,
             accessRights: 'Logging'
         },
-
     ]
 };

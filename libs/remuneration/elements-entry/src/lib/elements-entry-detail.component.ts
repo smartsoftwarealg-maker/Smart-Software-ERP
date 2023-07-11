@@ -10,7 +10,7 @@ import {ElementsEntryService} from './elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
 import {ImageModel} from '@ss/common/ui-image-input';
 import {HttpService} from '@ss/common/api-common';
-import {EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 
 type Employee = {
     id: number;

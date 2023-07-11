@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Employee, EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -13,6 +13,7 @@ import { tap } from 'rxjs/operators';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
+import { Employee } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-employee-detail',

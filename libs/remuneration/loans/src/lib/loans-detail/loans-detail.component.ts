@@ -6,11 +6,10 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoansService} from '../loans.service';
-import {EmployeeService} from '@ss/payroll/api-employee';
 import {LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {PersonAutocompleteClass} from '@ss/payroll-common';
 import {ElementTypesService} from '@ss/remuneration/element-types';
+import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 
 type Period = {
     year: number;

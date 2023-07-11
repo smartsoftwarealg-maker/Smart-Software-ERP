@@ -7,6 +7,7 @@ import { Transaction } from '@ss/logistics/api-transaction';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { InventoryService } from '@ss/stock/api-inventory';
+import { ReceptionService } from "@ss/purchases/api-reception";
 
 @Component({
     selector: 'ss-reception-list',
@@ -27,7 +28,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
     ];
 
     constructor(
-        public inventorySrv: InventoryService,
+        public inventorySrv: ReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

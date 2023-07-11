@@ -4,17 +4,16 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {MissionsService} from '../missions.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {EmployeeService} from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
 import {UserListService} from '@ss/common/api-users';
-import {PersonAutocompleteClass} from '@ss/payroll-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {TransportService} from '../zone.service';
 import {ZoneService} from '../transport.service';
 import {TrajectoryService} from '../trajectory.service';
 import {LoginService} from '@ss/common/api-common';
 import { Component, inject } from "@angular/core";
+import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
 
 @Component({
     selector: 'ss-mission-preparation-detail',

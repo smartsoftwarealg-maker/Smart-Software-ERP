@@ -112,6 +112,11 @@
                         "glob": "**/*",
                         "input": "libs/attendance/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/cmms/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],
@@ -207,6 +212,33 @@
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
                             "with": "apps/erp/src/environments/environment.assets.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "sodismac": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/sodismac.ts"
                         }
                     ],
                     "optimization": true,

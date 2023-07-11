@@ -3,7 +3,8 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angul
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { LoginService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
-import { Employee, EmployeeService } from '@ss/payroll/api-employee';
+import { EmployeeService } from '@ss/employee-services/employee-services';
+import { Employee } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-employee-profile',

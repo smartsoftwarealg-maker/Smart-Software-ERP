@@ -1,0 +1,34 @@
+.size {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto 0;
+}
+
+.div_table {
+    height: calc(100% - 72px);
+    overflow: auto;
+}
+
+.main-table {
+    width: 100%;
+}
+
+.mat-column-description {
+    flex: 1 1 150px;
+}
+.mat-column-assetDescription,
+.mat-column-planDescription,
+.mat-column-priorityDescription {
+    flex: 2 1 250px;
+}
+
+.mat-column-reference,
+.mat-column-nextDue,
+.mat-column-monthsAhead,
+.mat-column-lastReleased {
+    flex: 1 1 100px;
+}
+
+mat-table {
+    min-width: 1200px;
+}

@@ -8,12 +8,11 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService, Person} from '@ss/common/api-common';
 import {PersonShiftService} from '../person-shift.service';
 import {FormControl} from '@angular/forms';
-import {PersonAutocompleteClass} from '@ss/payroll-common';
-import {Employee, EmployeeService} from '@ss/payroll/api-employee';
-import {Lookup, Service, ServiceService} from '@ss/common/api-lookup';
+import { EmployeeService } from '@ss/employee-services/employee-services';
+import {Service, ServiceService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {of} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
+import { PersonAutocompleteClass } from "@ss/employee-services/employee-services";
+import { Employee } from '@ss/employee-services/employee-services';
 
 @Component({
     selector: 'ss-person-shift-list',

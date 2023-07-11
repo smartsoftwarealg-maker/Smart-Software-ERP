@@ -1,19 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {CCGroup, Lookup, LookupsService, PayMethod} from '@ss/common/api-lookup';
+import {UntypedFormBuilder} from '@angular/forms';
+import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {fillObject, LoginService, User} from '@ss/common/api-common';
-import {DatePipe} from '@angular/common';
-import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {PayMethodService} from '@ss/logistics/api-logistics-common';
-import { BaseTransactionDetailComponent, OfferLinesService, Transaction } from "@ss/logistics/api-transaction";
-import {UserListService} from '@ss/common/api-users';
+import {LoginService} from '@ss/common/api-common';
+import { BaseTransactionDetailComponent, OfferLinesService } from "@ss/logistics/api-transaction";
 import {SalesProformaService} from '../sales-proforma.service';
 import {MatDialog} from '@angular/material/dialog';
 

@@ -8,6 +8,7 @@ import { CardComponent } from '@ss/logistics/ui-card';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 import {AgentAssetsListComponent} from '@ss/assets-component';
+import { CMMS_PLANS_URL } from "../../../../libs/cmms/cmms-api/cmms-api";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -39,6 +40,7 @@ export const FURNITURE_APP_URL = 'furniture';
 export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
+export const CMMS_APP_URL = 'cmms';
 
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
@@ -305,6 +307,24 @@ export const LTM_TESTING_URL     = 'ltm-testings';
 export const LTM_CHARTS_URL      = 'ltm-reports';
 export const LTM_BATCH_URL       = 'ltm-batch';
 
+// CMMS
+export const CMMS_FAULTS_URL        = 'cmms-faults';
+export const CMMS_STATUS_URL        = 'cmms-status';
+export const CMMS_PRIORITY_URL      = 'cmms-priority';
+export const CMMS_FAULT_CAUSE_URL   = 'cmms-csuses';
+export const CMMS_ROOT_CAUSE_URL    = 'cmms-root-csuses';
+export const CMMS_TYPE_URL          = 'cmms-types';
+export const CMMS_ROUTING_URL       = 'cmms-routings';
+export const CMMS__PLANS__URL       = 'cmms-plans';
+export const CMMS__PM__URL          = 'cmms-pm';
+export const CMMS_ALERT_URL         = 'cmms-alerts';
+export const CMMS_METER_URL         = 'cmms-meters';
+export const CMMS_READING_URL       = 'cmms-readings';
+export const CMMS_TRIGGER_URL       = 'cmms-triggers';
+export const CMMS_WORK_REQUEST_URL  = 'cmms-requests';
+export const CMMS_SOLUTION_URL  = 'cmms-solutions';
+
+
 // assets
 export const FURNITURE_URL            = 'furniture';
 export const FURNITURE_RECEIVER_URL   = 'furniture-receivers';
@@ -462,6 +482,7 @@ export const ABS_LOGISTICS_COMPANY_TYPE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_UR
 export const ABS_LOGISTICS_ACTIVITY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ACTIVITY_URL].join('/');
 export const ABS_LOGISTICS_CURRENCY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CURRENCY_URL].join('/');
 export const ABS_LOGISTICS_CATEGORY = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_CATEGORY_URL].join('/');
+export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOCK_UNITS_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');
@@ -552,6 +573,24 @@ export const ABS_LTM_CHARTS_URL        = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_
 export const ABS_LTM_BATCH_TESTINGS_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_BATCH_URL].join('/');
 export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_URL, DASHBOARD_URL].join('/');
 
+
+// CMMS
+export const ABS_CMMS_FAULTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULTS_URL].join('/');
+export const ABS_CMMS_STATUS__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_STATUS_URL].join('/');
+export const ABS_CMMS_PRIORITY__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PRIORITY_URL].join('/');
+export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULT_CAUSE_URL].join('/');
+export const ABS_CMMS_ROOT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROOT_CAUSE_URL].join('/');
+export const ABS_CMMS_TYPE__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TYPE_URL].join('/');
+export const ABS_CMMS_ROUTING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ROUTING_URL].join('/');
+export const ABS_CMMS_PLANS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS__PLANS__URL].join('/');
+export const ABS_CMMS_PM_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS__PM__URL].join('/');
+export const ABS_CMMS_ALERTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ALERT_URL].join('/');
+export const ABS_CMMS_METERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_METER_URL].join('/');
+export const ABS_CMMS_READING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_READING_URL].join('/');
+export const ABS_CMMS_TRIGGER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TRIGGER_URL].join('/');
+export const ABS_CMMS_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_REQUEST_URL].join('/');
+export const ABS_CMMS_SOLUTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SOLUTION_URL].join('/');
+
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');
 export const ABS_FURNITURE_RECEIVERS_URL  = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_RECEIVER_URL].join('/');
@@ -598,6 +637,7 @@ export const ABS_SALES_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES
 export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_ADS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_AD_URL].join('/');
+export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AGENT_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');
