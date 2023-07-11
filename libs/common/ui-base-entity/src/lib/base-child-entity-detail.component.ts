@@ -14,7 +14,6 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     private router  = inject(Router);
     private snackBarSrv  = inject(SnackBarService);
     private confirmationSrv  = inject(ConfirmationDialogService);
-    private fb = inject(FormBuilder);
 
     id = 0;
     public form: UntypedFormGroup = null;

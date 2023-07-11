@@ -7,7 +7,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
     SALES_AD_URL
-} from "../common";
+} from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
@@ -40,7 +40,7 @@ import {
     AgentListComponent,
     AppArchiveDetailComponent,
     AppArchiveListComponent
-} from "@ss/logistics/ui-agent";
+} from '@ss/logistics/ui-agent';
 
 export const lookupRoutes: Routes = [];
 

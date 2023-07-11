@@ -3,9 +3,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
 import {DocImportService} from '../doc-import.service';
-import { FormControl, UntypedFormControl } from "@angular/forms";
+import { FormControl } from '@angular/forms';
 import {switchMap} from 'rxjs/operators';
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'ss-doc-import',
@@ -37,6 +37,7 @@ export class DocImportComponent implements OnInit {
                 .valueChanges
                 .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value, this.agentId)))
                 .subscribe(res => this.importList = res));
+
         this.subscriptions.push(
             this.searchNumber
                 .valueChanges

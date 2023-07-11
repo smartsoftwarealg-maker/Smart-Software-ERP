@@ -84,6 +84,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.projectSrv.setParentId(0);
+        this.agentAutoCompleteModel.onObjectSelected = e => this.projectSrv.setParentId(e?.id || 0);
     }
 
     public override canDeactivate(): Observable<boolean> {
@@ -151,9 +152,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     const number   = result['number'];
                     this.docImportService
                         .importDoc(document, number, this.transaction.id)
-                        .pipe(switchMap(() => this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                            this.outlet?.component.loadDetailLines() :
-                            of(0)))
+                        .pipe(
+                            switchMap(() => this.loadEntity(this.queryId)),
+                            tap(ent => this.form = this.setupForm(ent)),
+                            switchMap(() => this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                                this.outlet?.component.loadDetailLines() :
+                                of(0)))
                         .subscribe({
                             next: () => {
                                 this.executionRef++;
@@ -182,7 +186,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             }
         }
         this.detailSrv.setParentId(b.id || 0);
-        this.projectSrv.setParentId(b.agent);
+        this.projectSrv.setParentId(b.agent || 0);
         this._isManager = this.loginSrv.appCtx.manager;
         this.formId = b.id || 0;
 

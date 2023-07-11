@@ -106,7 +106,38 @@
 
             <mat-tab-group>
                 <mat-tab label="{{ 'CMMS_PARTS' | translate}}">
-                    <h1>Parts</h1>
+                    <div class="table_div size">
+                        <mat-table mat-table [dataSource]="partData$ | async" class="main-table">
+
+                            <ng-container matColumnDef="reference">
+                                    <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                                <mat-cell *matCellDef="let e">
+                                    {{e.reference}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="description">
+                                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                                <mat-cell *matCellDef="let e">
+                                    {{e.description}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="qty">
+                                <mat-header-cell *matHeaderCellDef translate>CMMS_QTY</mat-header-cell>
+                                <mat-cell *matCellDef="let e">
+                                    {{e.qty | number: '1.2-2' }}
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="partColumns; sticky: true"></mat-header-row>
+                            <mat-row class="selectable" [class.selected]="row.id == selectedPartId" (click)="selectPart(row.id)"
+                                     *matRowDef="let row; columns: partColumns;"></mat-row>
+                        </mat-table>
+                    </div>
+                    <div class="size b-b-background">
+                        <ss-pagination [paginationModel]="partPaginator"></ss-pagination>
+                    </div>
                 </mat-tab>
 
                 <mat-tab label="{{ 'CMMS_ROUTING' | translate}}">

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { RoutingDetail, Work, WORK_TYPES } from '../../../../cmms-api/cmms-api';
+import { RoutingDetail, RoutingPart, Work, WORK_TYPES } from '../../../../cmms-api/cmms-api';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import {
     CMMSFaultService,
     CMMSPriorityService,
     CMMSRootCauseService,
-    CMMSRoutingDetailService,
+    CMMSRoutingDetailService, CMMSRoutingPartService,
     CMMSRoutingService,
     CMMSSolutionService
 } from '@ss/cmms/lookups';
@@ -28,6 +28,7 @@ import { Observable, of } from 'rxjs';
     styleUrls: ['./work-request-detail.component.css'],
 })
 export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
+    private routingPartSrv = inject(CMMSRoutingPartService);
     private routingDetailSrv = inject(CMMSRoutingDetailService);
     private loginSrv = inject(LoginService);
     private routingSrv = inject(CMMSRoutingService);
@@ -51,11 +52,15 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
     routingLookup = new DefaultAutoCompleteModel(this.routingSrv);
 
     routingPaginator = PaginationModel.newInstance();
+    partPaginator = PaginationModel.newInstance();
     cmmsTyes = WORK_TYPES;
 
     data$: Observable<RoutingDetail[]> = of([]);
+    partData$: Observable<RoutingPart[]> = of([]);
     displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
+    partColumns = ['reference', 'description', 'qty'];
     selectedId = 0;
+    selectedPartId = 0;
 
     constructor(
         public override entitySrv: CMMSWorkRequestService,
@@ -66,6 +71,7 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_WORK_REQUEST');
         this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
+        this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.routingPaginator);
     }
 
     setupForm(e: Work): UntypedFormGroup {
@@ -92,7 +98,7 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
             materialCost: [e.materialCost],
             otherCost:    [e.otherCost   ],
             assignee:     [e.assignee    ],
-            teamSize:     [e.teamSize || 1],
+            teamSize:     [e.teamSize|| 1],
             memo:         [e.memo        ]
         });
     }
@@ -100,11 +106,16 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
 
     override finishLoading(e: Work) {
         this.routingDetailSrv.setParentId(e?.routingId || 0);
+        this.routingPartSrv.setParentId(e?.routingId || 0);
         this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
+        this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
         super.finishLoading(e);
     }
 
     select(id: number) {
+        this.selectedId = id;
+    }
+    selectPart(id: number) {
         this.selectedId = id;
     }
 }
