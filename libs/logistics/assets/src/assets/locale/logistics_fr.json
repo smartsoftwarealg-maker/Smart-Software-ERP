@@ -160,5 +160,6 @@
     "COST_TYPE":        "Type de coût",
     "VALUE_TYPE":       "Type de valeur",
     "APPROVAL":         "Agrément",
-    "APPROVAL":         "Agrément"
+    "APPROVAL":         "Agrément",
+    "PPRICE":           "Prix Stock"
 }

@@ -48,25 +48,25 @@ export class PaymentDetailComponent extends AbstractEntityView<Payment, BackendD
         const routeId = this.getIdFromRoute();
         if (entity == null || (entity.id + '') !== routeId) {
             if (routeId === '0') {
-                observable.subscribe(
-                    () => this.load({
-                        id: 0,
-                        amount: null,
-                        agent: this.getParentIdFromRoute(),
-                        center: this.userSrv.context.center,
-                        date: null,
-                        payMethod: null,
-                        bankId: null,
-                        checkBank: null,
-                        document: 0,
-                        checkDate: null,
-                        checkNumb: null
-                    }),
-                    err => {
+                observable.subscribe({
+                    next:  ()  => this.load({
+                                id: 0,
+                                amount: null,
+                                agent: this.getParentIdFromRoute(),
+                                center: this.userSrv.context.center,
+                                date: null,
+                                payMethod: null,
+                                bankId: null,
+                                checkBank: null,
+                                document: 0,
+                                checkDate: null,
+                                checkNumb: null
+                            }),
+                    error: err => {
                         this.loadingState = LoadingState.ERROR;
                         throw err;
                     }
-                );
+                });
             } else {
                 const i = this.getIdFromRoute();
                 observable.pipe(

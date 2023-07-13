@@ -10,22 +10,24 @@
 }
 
  .mat-column-denomination,
- .mat-column-description
- {
+ .mat-column-description {
     flex: 2 1 200px;
 }
 
 .mat-column-date,
 .mat-column-number {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
 }
 
 .mat-column-debit,
 .mat-column-credit {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
     justify-content: flex-end;
 }
-
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
 // Header cell center
 mat-header-cell {
     justify-content: center !important;

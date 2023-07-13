@@ -7,6 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { InventoryService } from '@ss/stock/api-inventory';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { InventoryExitService } from "@ss/stock/api-inventory-exit";
 
 @Component({
     selector: 'ss-inventory-exit-list',
@@ -25,7 +26,7 @@ export class InventoryExitListComponent extends BaseEntityListComponent<Transact
 
 
     constructor(
-        public inventorySrv: InventoryService,
+        public inventorySrv: InventoryExitService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

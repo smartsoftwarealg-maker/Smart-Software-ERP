@@ -104,15 +104,20 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ArticleListComponent
+                component: ArticleListComponent,
+                canActivate: [loginGuard],
+                data: { price: 'awp' },
+                children: docInfoRoutes
             },
             {
                 path: ':id',
                 component: ArticleDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
             },
-            {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
     {
