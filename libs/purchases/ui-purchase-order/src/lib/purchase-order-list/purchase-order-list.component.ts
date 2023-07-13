@@ -7,6 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { InventoryService } from '@ss/stock/api-inventory';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { PurchaseOrderService } from "@ss/purchases/api-purchase-order";
 
 @Component({
     selector: 'ss-ui-order',
@@ -25,7 +26,7 @@ export class PurchaseOrderListComponent extends BaseEntityListComponent<Transact
     ];
 
     constructor(
-        public inventorySrv: InventoryService,
+        public inventorySrv: PurchaseOrderService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

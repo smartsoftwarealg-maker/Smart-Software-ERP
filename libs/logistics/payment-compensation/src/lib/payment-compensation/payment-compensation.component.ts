@@ -152,7 +152,7 @@ export class PaymentCompensationComponent implements OnInit {
         if (this.selectedPayment && this.selectedDebt && this.selectedDebt.id) {
             const date = this.date.value || new Date();
             this.agentSrv
-                .makePayment(this.selectedPayment?.id, this.selectedDebt?.id, this.langSrv.formatDate(date), -this.selectedDebt.balance)
+                .makePayment(this.selectedPayment?.id, this.selectedDebt?.id, this.langSrv.formatDate(date), this.selectedDebt.balance)
                 .pipe(switchMap(res => {
                     if (res.id > 0) {
                         this.snackBarSrv.showSuccessMessage();
@@ -224,7 +224,9 @@ export class PaymentCompensationComponent implements OnInit {
     onOverChild(event: DragEvent, id: number) {
         this.selectedPayment = null;
         const pymnt = this.treeControl.dataNodes.find(n => n.id === id);
-        if (pymnt && pymnt.level === 0) {
+        const payAmount = pymnt?.amount || 0.0;
+        const debt = this.selectedDebt?.balance || 0.0;
+        if ((pymnt && pymnt.level === 0)) {
             event.preventDefault();
         }
     }

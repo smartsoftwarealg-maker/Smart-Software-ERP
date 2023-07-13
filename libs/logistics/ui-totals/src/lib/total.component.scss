@@ -13,14 +13,15 @@
 }
 
 
-.mat-column-document {
-    flex: 1 1 150px;
+.mat-column-description {
+    flex: 3 1 300px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-store {
+.mat-column-value {
     flex: 1 1 150px;
+    justify-content: flex-end;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }

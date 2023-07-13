@@ -146,7 +146,7 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_PRICE_RECALCULATION',
             icon: 'fa-solid fa-calculator',
             route: ABS_INVENTORY_PRICE_RECALCULATION_URL,
-            accessRights: 'Article'
+            accessRights: 'PriceCalc'
         },
         {
             name: 'COMMON_REPORTS',

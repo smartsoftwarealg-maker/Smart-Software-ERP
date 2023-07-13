@@ -7,6 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { InventoryService } from '@ss/stock/api-inventory';
+import { DELIVERY_CANCELLATION_URL, DeliveryCancellationService } from "@ss/sales/api-delivery-cancellation";
 
 @Component({
     selector: 'ss-delivery-cancellation-list',
@@ -25,7 +26,7 @@ export class DeliveryCancellationListComponent extends BaseEntityListComponent<T
 
 
     constructor(
-        public inventorySrv: InventoryService,
+        public inventorySrv: DeliveryCancellationService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
