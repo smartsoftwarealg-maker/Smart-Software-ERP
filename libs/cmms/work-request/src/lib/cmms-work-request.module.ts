@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WorkRequestListComponent } from './work-request-list/work-request-list.component';
-import { WorkRequestDetailComponent } from './work-request-detail/work-request-detail.component';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { MatTableModule } from '@angular/material/table';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
@@ -13,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
+import { WorkRequestListComponent } from './prev-work-order-list/work-request-list.component';
+import { WorkRequestDetailComponent } from "./prev-work-order-detail/work-request-detail.component";
 
 @NgModule({
     imports: [

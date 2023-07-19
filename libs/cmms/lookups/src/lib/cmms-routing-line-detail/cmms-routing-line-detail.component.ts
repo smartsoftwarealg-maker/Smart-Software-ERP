@@ -5,7 +5,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { of, switchMap, tap } from 'rxjs';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
-import { RoutingDetail } from '../../../../cmms-api/cmms-api';
+import { RoutingDetail } from '@ss/cmms/cmms-api';
 
 @Component({
     selector: 'ss-routing-line-detail',

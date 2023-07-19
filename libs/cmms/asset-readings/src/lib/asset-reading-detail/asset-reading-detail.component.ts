@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { AssetReading } from '../../../../cmms-api/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -8,6 +7,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { CMMSMeterService } from '@ss/cmms/lookups';
+import { AssetReading } from '@ss/cmms/cmms-api';
 
 @Component({
     selector: 'ss-asset-reading-detail',

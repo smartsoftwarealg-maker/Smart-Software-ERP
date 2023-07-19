@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { AssetReading } from '../../../../cmms-api/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -10,6 +9,7 @@ import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { AssetsService } from '@ss/assets-component';
 import { FormControl } from '@angular/forms';
+import { AssetReading } from "@ss/cmms/cmms-api";
 
 @Component({
     selector: 'ss-asset-reading-list',

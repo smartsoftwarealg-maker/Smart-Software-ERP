@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutingPart } from '../../../../cmms-api/cmms-api';
+import { RoutingPart } from '@ss/cmms/cmms-api';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSRoutingPartService } from '../services/cmms-routing-parts.service';
 

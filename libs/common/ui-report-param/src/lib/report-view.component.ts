@@ -238,7 +238,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                console.log(p);
                 return { name: p.name, value: this.form.controls[p.name].value || this.DEFAULT_TYPES.get(p.typeName)};
             });
     }

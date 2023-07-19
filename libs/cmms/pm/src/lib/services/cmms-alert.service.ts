@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { CMMS_ALERT_URL, PM } from '../../../../cmms-api/cmms-api';
+import { CMMS_ALERT_URL, PM } from '@ss/cmms/cmms-api';
 import { dateToDmyStr, HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';

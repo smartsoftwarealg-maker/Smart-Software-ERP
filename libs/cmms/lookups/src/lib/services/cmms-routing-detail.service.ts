@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { RoutingDetail } from '../../../../cmms-api/cmms-api';
+import { RoutingDetail } from '@ss/cmms/cmms-api';
 
 @Injectable({
     providedIn: 'root'

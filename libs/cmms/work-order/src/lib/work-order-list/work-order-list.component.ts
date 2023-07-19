@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { CMMS_TRIGGER_TYPES, Work, WORK_TYPES } from "../../../../cmms-api/cmms-api";
+import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -42,7 +42,7 @@ export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'CMMS_WORK_ORDER');
+            'CMMS_CUR_WORK_ORDER');
         this.pagination.pageSize = 15;
     }
 }

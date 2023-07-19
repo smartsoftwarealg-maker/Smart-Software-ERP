@@ -1,4 +1,4 @@
-import { Lookup } from '../../common/api-lookup/src';
+import { Lookup } from '@ss/common/api-lookup';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
@@ -123,4 +123,5 @@ export interface Work {
     creation_time: Date;
     status?: number;
     creatorId: number;
+    validated: boolean;
 }

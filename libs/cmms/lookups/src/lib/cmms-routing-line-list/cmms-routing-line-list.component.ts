@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { RoutingDetail } from '../../../../cmms-api/cmms-api';
+import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
 import { PaginationModel } from '@ss/common/api-common';
 import { map, Observable, of } from 'rxjs';
