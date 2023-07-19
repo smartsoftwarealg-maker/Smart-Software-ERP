@@ -3,7 +3,7 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_CMMS_ALERTS_URL,
     ABS_CMMS_FAULT_CAUSE_URL,
-    ABS_CMMS_FAULTS_URL, ABS_CMMS_METERS_URL, ABS_CMMS_PLANS_URL, ABS_CMMS_PM_URL,
+    ABS_CMMS_FAULTS_URL, ABS_CMMS_METERS_URL, ABS_CMMS_ORDER_URL, ABS_CMMS_PLANS_URL, ABS_CMMS_PM_URL,
     ABS_CMMS_PRIORITY__URL, ABS_CMMS_READING_URL, ABS_CMMS_REQUEST_URL,
     ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL, ABS_CMMS_SOLUTION_URL,
     ABS_CMMS_STATUS__URL, ABS_CMMS_TRIGGER_URL
@@ -95,14 +95,20 @@ export const cmmsNavTree: SideNavNode = {
             name: 'CMMS_ALERTS',
             icon: 'fa-solid fa-bells',
             route: ABS_CMMS_ALERTS_URL,
-            accessRights: 'PM'
+            accessRights: 'CMMSAlert'
         },
         {
             name: 'CMMS_REQUESTS',
             icon: 'fa-solid fa-hand-holding',
             route: ABS_CMMS_REQUEST_URL,
-            accessRights: 'PM'
+            accessRights: 'CMMSRequest'
+        },
+        {
+            name: 'CMMS_ORDERS',
+            icon: 'fa-solid fa-hammer-crash',
+            route: ABS_CMMS_ORDER_URL,
+            accessRights: 'CMMSOrder'
         },
     ],
-    accessRights: 'CM'
+    accessRights: 'CMMS'
 };

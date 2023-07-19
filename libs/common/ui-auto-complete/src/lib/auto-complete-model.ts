@@ -2,8 +2,6 @@ import {Observable, of} from 'rxjs';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {map} from 'rxjs/operators';
 import {Office} from '@ss/common/api-lookup';
-import {inject} from '@angular/core';
-import {SnackBarService} from '@ss/common/ui-shell';
 
 export type Id = number | string;
 
@@ -16,14 +14,13 @@ export interface AutoCompleteModel<T> {
     onValueChanged?: (a: Id) => void; // called when the value changes
     options: T[];
     cache: T;
-    addEntry: (entry: string) => void;
+    addEntry: (entry: string) => Observable<number>;
 
 
     isPerfectMatch(a: T, b: string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
 }
 
 export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
-    private snackBarSrv = inject(SnackBarService);
     public options: T[];
     public cache: T;
     public filterLoadedData = (x: T[]) => x.filter(e => e && e[this.descriptionField]);
@@ -49,13 +46,13 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
         this.options = [];
     }
 
-    addEntry(entry: string): void {
+    addEntry(entry: string): Observable<number> {
         if (this.descriptionField === 'description') {
             const entity = {};
             entity['id'] = 0;
             entity['description'] = entry;
-            this.entitySrv.save(entity as T).subscribe(res => this.snackBarSrv.showSuccessMessage());
-        }
+            return this.entitySrv.save(entity as T);
+        } else of(0);
     }
 }
 
@@ -63,13 +60,14 @@ export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
     options: number[] = [];
     cache: null;
 
-    valueOf = (t: number) => <Id>null;
-    toString = (t: Id) => <string>null;
-    getById = (t: Id) => of(<number>null);
-    filter = (a: string) => of(<number[]>[]);
+    valueOf = () => <Id>null;
+    toString = () => <string>null;
+    getById = () => of(<number>null);
+    filter = () => of(<number[]>[]);
     isPerfectMatch = (o: number, f: string) => false;
 
-    addEntry(entry: string): void {
+    addEntry(entry: string): Observable<number> {
+        return of(0);
     }
 }
 

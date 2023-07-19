@@ -2,7 +2,8 @@ import { Lookup } from '../../common/api-lookup/src';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
-export const CMMS_WORKS_URL = '/cmmsworks';
+export const CMMS_WORK_REQUEST_URL = '/cmmsrequets';
+export const CMMS_WORK_ORDER_URL = '/cmmsworks';
 export const CMMS_PM_URL = '/cmmspm';
 export const CMMS_ALERT_URL = '/cmmspm/alerts';
 export const CMMS_READINGS_URL = '/readings';
@@ -10,7 +11,7 @@ export const CMMS_TRIGGERS_URL = '/triggers';
 export const CMMS_ROUTING_URL = '/routing';
 export const CMMS_DETAIL_URL = '/detail';
 
-export const CMMS_TYPES: Lookup[] = [
+export const CMMS_TRIGGER_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_TIME'},
     { id: 1, description: 'CMMS_READING'},
     { id: 1, description: 'CMMS_EITHER'}
@@ -18,8 +19,8 @@ export const CMMS_TYPES: Lookup[] = [
 
 export const WORK_TYPES: Lookup[] = [
     { id: 1, description: 'CMMS_PREVENTIVE'},
-    { id: 1, description: 'CMMS_CURATIVE'},
-    { id: 1, description: 'CMMS_INSPECTION'}
+    { id: 2, description: 'CMMS_CURATIVE'},
+    { id: 3, description: 'CMMS_INSPECTION'}
 ];
 
 
@@ -90,6 +91,8 @@ export interface Work {
     id: number;
     centerId: number;
     document: number;
+    number: number;
+    date: Date;
     description: string;
     assetId: number;
     requester?: number;
@@ -116,5 +119,8 @@ export interface Work {
     typeDescription?: string;
     assetDescription?: string;
     faultDescription?: string;
+    statusDescription?: string;
     creation_time: Date;
+    status?: number;
+    creatorId: number;
 }

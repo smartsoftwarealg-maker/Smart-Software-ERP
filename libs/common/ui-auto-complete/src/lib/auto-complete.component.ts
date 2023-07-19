@@ -1,6 +1,17 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, DoCheck, ElementRef, HostBinding, Input, OnDestroy, OnInit, Optional, Self } from '@angular/core';
+import {
+    Component,
+    DoCheck,
+    ElementRef,
+    HostBinding,
+    inject,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Self
+} from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatFormFieldControl } from '@angular/material/form-field';
@@ -8,6 +19,7 @@ import { isString } from '@ss/common/api-common';
 import { of, Subject, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { AutoCompleteModel, Id } from './auto-complete-model';
+import { SnackBarService } from '@ss/common/ui-shell';
 
 @Component({
     selector: 'ss-auto-complete',
@@ -18,6 +30,7 @@ import { AutoCompleteModel, Id } from './auto-complete-model';
     ]
 })
 export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFieldControl<Id>, DoCheck, OnInit, OnDestroy {
+    private snackBarSrv = inject(SnackBarService);
     notFound = false;
     allowAdd = false;
 
@@ -72,7 +85,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     get required(): boolean {
         return this.isRequired;
-    };
+    }
 
     @Input()
     set required(b: boolean|string) {
@@ -112,7 +125,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
     //
     @Input()
-    model: AutoCompleteModel<any>;
+        model: AutoCompleteModel<any>;
     lastFilterValue: string;
 
     @Input('aria-describedby') userAriaDescribedBy: string;
@@ -320,7 +333,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     //    }
 
     displayFn = (x: any) => {
-        return this.model ? this.model.toString(x) : null
+        return this.model ? this.model.toString(x) : null;
     };
 
     optionSelected(event: MatAutocompleteSelectedEvent) {
@@ -343,7 +356,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     }
 
     addCurrentText() {
-        this.model.addEntry(this.autoControl.value.toString());
+        this.model.addEntry(this.autoControl.value.toString()).subscribe(numb => {
+            if (numb > 0) {
+                this.snackBarSrv.showSuccessMessage();
+            }
+        });
     }
 }
 

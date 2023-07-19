@@ -29,6 +29,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="statusDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMON_STATUS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.statusDescription }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="faultDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMON_FAULT</mat-header-cell>
             <mat-cell *matCellDef="let e">

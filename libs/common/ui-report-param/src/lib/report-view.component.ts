@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import {
+    ParamAutoCompleteModel,
     ParamValue,
     ReportNode,
-    ReportParam,
+    ReportParam, ReportParamLookupService,
     ReportParamsService,
     ReportTreeService,
     ReportViewData
@@ -32,6 +33,16 @@ import { FileOpener } from '@capacitor-community/file-opener';
     templateUrl: './report-view.component.html'
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
+    private paramLookupSrv = inject(ReportParamLookupService);
+    private DEFAULT_TYPES: Map<string, string> = new Map(
+        [
+            ['java.lang.Double', '0'],
+            ['java.lang.Integer', '0'],
+            ['java.lang.Float', '0'],
+            ['java.lang.Float', '0'],
+            ['java.lang.Boolean', 'false'],
+        ]);
+
     @ViewChild('tree', { static: false }) tree: MatTree<any>;
 
     private uuid = '';
@@ -128,6 +139,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
             this.data.forEach(e => {
                 cc[e.name] = new FormControl(e.valueString);
+                if (e.lookupTable) {
+                    e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
+                    e.description = e.description.substring(0, e.description.indexOf('//'));
+                }
             });
             cc['reportType'] = new FormControl('PDF');
             this.form = new FormGroup(cc);
@@ -223,7 +238,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return this.data
             .filter(p => this.form.controls[p.name])
             .map(p => {
-                return { name: p.name, value: '' + this.form.controls[p.name].value };
+                console.log(p);
+                return { name: p.name, value: this.form.controls[p.name].value || this.DEFAULT_TYPES.get(p.typeName)};
             });
     }
 

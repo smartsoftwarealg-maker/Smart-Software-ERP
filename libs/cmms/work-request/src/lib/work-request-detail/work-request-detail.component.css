@@ -1,6 +1,6 @@
 mat-card {
     width: 90%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 16px auto;
     padding: 16px;
     border-radius: 1.4em;
@@ -12,4 +12,5 @@ mat-card {
 
 .table_div {
     margin-top: 8px;
+    min-height: 320px;
 }

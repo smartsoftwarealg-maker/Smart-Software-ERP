@@ -17,7 +17,7 @@
                     <button mat-icon-button matTreeNodeToggle>
                         <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
                     </button>
-                    {{node.name}}
+                    {{ node.name }}
                     <mat-divider></mat-divider>
 
                     <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
@@ -27,7 +27,6 @@
                 <mat-divider></mat-divider>
             </mat-nested-tree-node>
         </mat-tree>
-
     </div>
     <div class="report-name"> {{ selectedReport?.name }}</div>
     <div class="param-container">
@@ -35,17 +34,24 @@
 
             <div *ngFor="let d of data">
 
-                <mat-form-field *ngIf="d.valueList != null">
-                    <mat-label translate>{{ d.description }}</mat-label>
-                    <mat-select formControlName="{{ d.name }}">
-                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">
-                            {{ s['description'] }}
-                        </mat-option>
-                    </mat-select>
+<!--                <mat-form-field *ngIf="d.valueList != null">-->
+<!--                    <mat-label translate>{{ d.description }}</mat-label>-->
+<!--                    <mat-select formControlName="{{ d.name }}">-->
+<!--                        <mat-option *ngFor="let s of d.valueList" [value]="s['id']">-->
+<!--                            {{ s['description'] }}-->
+<!--                        </mat-option>-->
+<!--                    </mat-select>-->
+<!--                </mat-form-field>-->
 
+                <mat-form-field *ngIf="d.lookupTable">
+                    <mat-label translate>{{ d.description }}</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="d.lookupModel"
+                                      formControlName="{{ d.name }}">
+                    </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field *ngIf="d.typeName == 'java.lang.Integer' && d.valueList == null">
+                <mat-form-field *ngIf="d.typeName == 'java.lang.Integer' && d.lookupTable == null">
                     <mat-label translate>{{ d.description }}</mat-label>
                     <input matInput formControlName="{{ d.name }}" type="number">
                     <mat-error *ngIf="form.controls[d.name].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
@@ -75,7 +81,7 @@
             </div>
             <div class="btn-div">
                 <mat-form-field>
-                    <mat-placeholder translate>COMMON_TYPE</mat-placeholder>
+                    <mat-label translate>COMMON_TYPE</mat-label>
                     <mat-select formControlName="reportType" #reportType>
                         <mat-option [value]="'HTML'"> HTML</mat-option>
                         <mat-option [value]="'PDF'"> PDF</mat-option>

@@ -98,6 +98,7 @@
         <mat-label translate>COMMON_MARK</mat-label>
         <ss-auto-complete matInput
                           [model]="markAutoCompleteModel"
+                          [canAdd] = "isAQS"
                           formControlName="mark">
         </ss-auto-complete>
     </mat-form-field>

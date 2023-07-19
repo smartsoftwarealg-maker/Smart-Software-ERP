@@ -1,7 +1,18 @@
 <mat-card>
     <mat-card-content>
         <form *ngIf="form !== null" novalidate [formGroup]="form">
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_NUMBER</mat-label>
+                <input matInput formControlName="number" type="number">
+            </mat-form-field>
+
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="date" required="true"></ss-date-picker>
+                <mat-error *ngIf="form.controls['date'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_ASSET</mat-label>
                 <ss-auto-complete matInput
                                   [model]="assetLookup"
@@ -9,6 +20,12 @@
                                   required="true">
                 </ss-auto-complete>
                 <mat-error *ngIf="form.controls['assetId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                <input matInput formControlName="description" type="text">
+                <mat-error *ngIf="form.controls['description'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
             <mat-form-field class="default-50">
@@ -59,14 +76,6 @@
                 <ss-auto-complete matInput
                                   [model]="rootCauseLookup"
                                   formControlName="rootCause">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field class="default-50">
-                <mat-label translate>CMMS_SOLUTION</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="solutionLookup"
-                                  formControlName="solution">
                 </ss-auto-complete>
             </mat-form-field>
 
@@ -214,17 +223,21 @@
                     <div class="default-100 separator"></div>
 
                     <mat-form-field class="default-50">
+                        <mat-label translate>CMMS_SOLUTION</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="solutionLookup"
+                                          formControlName="solution">
+                        </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
                         <mat-label translate>CMMS_ACTUAL_START</mat-label>
-                        <ss-date-picker formControlName="actualStart" required="true"></ss-date-picker>
-                        <mat-error *ngIf="form.controls['actualStart'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        <ss-date-picker formControlName="actualStart" ></ss-date-picker>
                     </mat-form-field>
 
                     <mat-form-field class="default-50">
                         <mat-label translate>CMMS_ACTUAL_DUE</mat-label>
-                        <ss-date-picker formControlName="actualDue" required="true"></ss-date-picker>
-                        <mat-error *ngIf="form.controls['actualDue'].invalid" translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        <ss-date-picker formControlName="actualDue" ></ss-date-picker>
                     </mat-form-field>
 
                     <mat-form-field id="memo" class="default-100">

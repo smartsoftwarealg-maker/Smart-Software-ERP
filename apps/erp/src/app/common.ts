@@ -322,6 +322,7 @@ export const CMMS_METER_URL         = 'cmms-meters';
 export const CMMS_READING_URL       = 'cmms-readings';
 export const CMMS_TRIGGER_URL       = 'cmms-triggers';
 export const CMMS_WORK_REQUEST_URL  = 'cmms-requests';
+export const CMMS_WORK_ORDER_URL  = 'cmms-orders';
 export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 
 
@@ -590,6 +591,7 @@ export const ABS_CMMS_READING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_REA
 export const ABS_CMMS_TRIGGER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TRIGGER_URL].join('/');
 export const ABS_CMMS_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_REQUEST_URL].join('/');
 export const ABS_CMMS_SOLUTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SOLUTION_URL].join('/');
+export const ABS_CMMS_ORDER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_ORDER_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

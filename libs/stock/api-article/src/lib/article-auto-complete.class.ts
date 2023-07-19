@@ -1,8 +1,8 @@
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Article, ArticleService} from '@ss/stock/api-article';
+import {Article} from '@ss/stock/api-article';
 import {EventEmitter} from '@angular/core';
 import {Store, LotsService} from '@ss/common/api-lookup';
-import { BaseEntityExtendedService } from "@ss/common/api-base-entity";
+import { BaseEntityExtendedService } from '@ss/common/api-base-entity';
 
 
 export class ArticleAutoCompleteModel extends DefaultAutoCompleteModel<Article> {

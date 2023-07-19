@@ -14,12 +14,16 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     private snackBarSrv  = inject(SnackBarService);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
-    constructor(protected detailSrv: BaseEntityService<T>) {}
-    paginator = PaginationModel.newInstance();
+    paginator = PaginationModel.newInstance( );
     selectedId = 0;
     data$: Observable<T[]> = of([]);
     displayedColumns = ['id'];
 
+
+    constructor(protected detailSrv: BaseEntityService<T>) {
+        this.paginator.onChange = () => this.refresh();
+        this.paginator.pageSize = 5;
+    }
 
     ngOnInit(): void {
         this.refresh();
@@ -65,7 +69,6 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     private refresh() {
         this.data$ = this.detailSrv.getPage(this.paginator);
-        // .subscribe(res => this.data = res);
     }
 
     select(id: number) {

@@ -10,8 +10,8 @@ import {
     CMMS_ROOT_CAUSE_URL,
     CMMS_ROUTING_URL, CMMS_SOLUTION_URL,
     CMMS_STATUS_URL, CMMS_TRIGGER_URL,
-    CMMS_TYPE_URL, CMMS_WORK_REQUEST_URL
-} from "../common";
+    CMMS_TYPE_URL, CMMS_WORK_ORDER_URL, CMMS_WORK_REQUEST_URL
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -32,12 +32,13 @@ import {
     CMMSMeterDetailComponent,
     CMMSSolutionListComponent,
     CMMSSolutionDetailComponent, CMMSRoutingPartsListComponent, CMMSRoutingPartsDetailComponent
-} from "@ss/cmms/lookups";
+} from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
 import { AssetTriggerDetailComponent, AssetTriggerListComponent, triggerDetailGuard } from '@ss/cmms/asset-triggers';
 import { WorkRequestDetailComponent, WorkRequestListComponent } from '@ss/cmms/work-request';
+import { WorkOrderDetailComponent, WorkOrderListComponent } from '@ss/cmms/work-order';
 
 export const cmmsRoutes: Routes = [
     {
@@ -213,6 +214,22 @@ export const cmmsRoutes: Routes = [
             {
                 path: ':id',
                 component: WorkRequestDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+        ]
+    },
+    {
+        path: CMMS_WORK_ORDER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WorkOrderListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: WorkOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

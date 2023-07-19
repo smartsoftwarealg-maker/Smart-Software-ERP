@@ -14,13 +14,17 @@ mat-table {
 }
 
 .mat-column-requesterDescription,
-.mat-column-assetDescription,
+.mat-column-assetDescription {
+    flex: 2 1 290px;
+}
+
 .mat-column-typeDescription,
 .mat-column-faultDescription,
 .mat-column-description {
     flex: 2 1 200px;
 }
 
+.mat-column-statusDescription,
 .mat-column-plannedStart,
 .mat-column-plannedDue {
     flex: 1 1 100px;

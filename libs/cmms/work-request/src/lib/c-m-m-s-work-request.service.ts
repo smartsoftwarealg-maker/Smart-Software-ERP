@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { CMMS_WORKS_URL, Work } from '../../../cmms-api/cmms-api';
+import { CMMS_WORK_REQUEST_URL, Work } from '../../../cmms-api/cmms-api';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({
@@ -9,6 +9,6 @@ import { HttpService } from '@ss/common/api-common';
 export class CMMSWorkRequestService extends BaseEntityService<Work> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, CMMS_WORKS_URL);
+        super(httpSrv, CMMS_WORK_REQUEST_URL);
     }
 }

@@ -55,6 +55,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private markSrv =  inject(MarkService);
     private receptionSrv =  inject(AssetReceptionService);
     private isANSEJ = false;
+    isAQS   = false;
 
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
@@ -68,7 +69,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     // Public
     minLength = 1;
-    isAQS   = false;
     depreciationTypes: Lookup[] = [
         { id: 1, description: 'ASSET_LINEAR' },
         { id: 2, description: 'ASSET_DECLINING' },
@@ -208,8 +208,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
 
     override preload(): Observable<any> {
-        return this.isParamSrv
-            .is('ANSEJ')
+        return this.isParamSrv.is('ANSEJ')
             .pipe(tap(res => this.isANSEJ = res),
                 switchMap(_ => this.isParamSrv.is('AQS')),
                 tap(res => this.isAQS = res),

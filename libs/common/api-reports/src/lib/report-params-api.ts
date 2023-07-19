@@ -1,3 +1,6 @@
+import { Lookup } from "@ss/common/api-lookup";
+import { ParamAutoCompleteModel } from "./param-auto-complete-model";
+
 export const REPORT_PARAMS_URL = '/reports/params';
 
 export interface ReportNode {
@@ -17,7 +20,9 @@ export interface ReportParam {
     typeName: string;
     description: string;
     valueString: boolean;
-    valueList: [];
+    valueList: Lookup[];
+    lookupTable?: string;
+    lookupModel?: ParamAutoCompleteModel;
 }
 
 export interface ReportViewData {

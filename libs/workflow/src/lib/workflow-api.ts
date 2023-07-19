@@ -28,6 +28,7 @@ export interface MailBox {
     assetRecepId?: number;
     assetAppointmentId?: number;
     holidayRequestId?: number;
+    cmmsWorkId?: number;
     senderName?: string;
     receiverName?: string;
     message?: string;

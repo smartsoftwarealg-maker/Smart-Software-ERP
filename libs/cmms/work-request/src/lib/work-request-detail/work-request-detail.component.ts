@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { RoutingDetail, RoutingPart, Work, WORK_TYPES } from '../../../../cmms-api/cmms-api';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSWorkRequestService } from '../c-m-m-s-work-request.service';
@@ -21,6 +21,8 @@ import { AssetsService } from '@ss/assets-component';
 import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
+import { WorkflowDialogComponent } from '@ss/workflow';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'ss-work-request-detail',
@@ -28,6 +30,7 @@ import { Observable, of } from 'rxjs';
     styleUrls: ['./work-request-detail.component.css'],
 })
 export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
+    private dialog = inject(MatDialog);
     private routingPartSrv = inject(CMMSRoutingPartService);
     private routingDetailSrv = inject(CMMSRoutingDetailService);
     private loginSrv = inject(LoginService);
@@ -40,6 +43,15 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
     private serviceSrv = inject(ServiceService);
     private assetSrv = inject(AssetsService);
     private personSrv = inject(EmployeeService);
+    private validated = false;
+    private sendBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-envelope',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_SEND_MESSAGE',
+        visible: true,
+        click: () => this.sendMessage(),
+    };
 
     solutionLookup = new DefaultAutoCompleteModel(this.solutionSrv);
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
@@ -71,18 +83,23 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
         public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'CMMS_WORK_REQUEST');
         this.routingPaginator.onChange = () => this.data$ = this.routingDetailSrv.getPage(this.routingPaginator);
-        this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.routingPaginator);
+        this.partPaginator.onChange = () => this.partData$ = this.routingPartSrv.getPage(this.partPaginator);
     }
 
     setupForm(e: Work): UntypedFormGroup {
+        if (e.id) {
+            this.shellSrv.addButton(this.sendBtn);
+        }
         return this.formBuilder.group({
             id:           [e.id],
             document:     [e.document || 12],
+            number:       [{ value: e.number || 0, disabled: true }],
+            date:         [e.date || new Date(), Validators.required],
             centerId:     [e.centerId || this.loginSrv.appCtx.center],
-            description:  [e.description ],
+            description:  [e.description, Validators.required],
             assetId:      [e.assetId, Validators.required],
             requester:    [e.requester   ],
-            wrType:       [{ value: e.wrType || 2, disabled: true }, Validators.required],
+            wrType:       [{ value: e.wrType || 1, disabled: true }, Validators.required],
             priority:     [e.priority, Validators.required],
             plannedStart: [e.plannedStart, Validators.required],
             actualStart:  [e.actualStart ],
@@ -99,7 +116,9 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
             otherCost:    [e.otherCost   ],
             assignee:     [e.assignee    ],
             teamSize:     [e.teamSize|| 1],
-            memo:         [e.memo        ]
+            memo:         [e.memo        ],
+            status:       [e.status      ],
+            userId:       [e.centerId    ]
         });
     }
 
@@ -117,5 +136,24 @@ export class WorkRequestDetailComponent extends BaseEntityDetailComponent<Work>{
     }
     selectPart(id: number) {
         this.selectedId = id;
+    }
+
+    private sendMessage() {
+        if (!this.sendBtn.disabled) {
+            const id = this.form.controls['id'].value;
+            const dialogRef = this.dialog.open(WorkflowDialogComponent, {
+                width: '350px',
+                height: '500px',
+                data: { cmmsWorkId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated }
+            });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result && result['message']) {
+                    this.snackBarSrv.showSuccessMessage();
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
+            });
+        }
     }
 }

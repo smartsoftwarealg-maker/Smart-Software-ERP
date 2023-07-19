@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { CMMS_TYPES, Work } from "../../../../cmms-api/cmms-api";
+import { Work, WORK_TYPES } from '../../../../cmms-api/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -14,7 +14,7 @@ import { CMMSWorkRequestService } from '../c-m-m-s-work-request.service';
     styleUrls: ['./work-request-list.component.css'],
 })
 export class WorkRequestListComponent extends BaseEntityListComponent<Work> {
-    public Types = CMMS_TYPES;
+    public Types = WORK_TYPES;
     displayedColumns = [
         'description',
         'assetDescription',
@@ -23,6 +23,7 @@ export class WorkRequestListComponent extends BaseEntityListComponent<Work> {
         'faultDescription',
         'plannedStart',
         'plannedDue',
+        'statusDescription'
     ];
 
     constructor(
