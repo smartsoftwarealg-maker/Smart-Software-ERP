@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { AssetReading, CMMS_ASSET5S_URL, CMMS_READINGS_URL } from '../../../cmms-api/cmms-api';
+import { AssetReading, CMMS_ASSET5S_URL, CMMS_READINGS_URL } from '@ss/cmms/cmms-api';
 import { HttpService } from '@ss/common/api-common';
 
 @Injectable({

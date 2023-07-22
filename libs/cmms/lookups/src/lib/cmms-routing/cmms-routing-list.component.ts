@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Lookup, MarkService } from '@ss/common/api-lookup';
+import { Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { AssetReading, AssetTrigger } from '../../../../cmms-api/cmms-api';
+import { AssetReading, AssetTrigger } from '@ss/cmms/cmms-api';
 import { CMMSMeterService } from '@ss/cmms/lookups';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';

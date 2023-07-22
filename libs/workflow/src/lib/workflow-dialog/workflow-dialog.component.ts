@@ -14,6 +14,7 @@ type MBData = {
     assetRecepId?: number;
     assetAppointmentId?: number;
     holidayRequestId?: number;
+    cmmsWorkId?: number;
     validated?: boolean;
 };
 
@@ -56,6 +57,7 @@ export class WorkflowDialogComponent implements OnInit {
             transacId: this.data.transacId,
             holidayRequestId: this.data.holidayRequestId,
             assetAppointmentId: this.data.assetAppointmentId,
+            cmmsWorkId: this.data.cmmsWorkId,
             messageId: this.selectedId,
             centerId: this.loginSrv.appCtx.center,
             timeStamp: new Date(),
@@ -63,6 +65,7 @@ export class WorkflowDialogComponent implements OnInit {
             canceled: this.canceled.value,
             receiverId: this.loginSrv.appCtx.id
         };
+
         this.mailboxSrv.setParentId(this.loginSrv.appCtx.id || 1);
         this.mailboxSrv
             .save(ent)

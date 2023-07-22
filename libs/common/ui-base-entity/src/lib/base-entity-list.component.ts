@@ -184,15 +184,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
-                next:
-                        data => {
+                next: data => {
                             this.finishLoading(data);
                             if (callback) {
                                 callback();
                             }
                         },
-                error:
-                        err => {
+                error: err => {
                             this.data = []; // clear everything;
                             this.shellSrv.setLoading(false); // stop the animation
                             throw err;

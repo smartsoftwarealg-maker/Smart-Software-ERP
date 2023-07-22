@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { RoutingPart } from '../../../../cmms-api/cmms-api';
+import { RoutingPart } from '@ss/cmms/cmms-api';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSRoutingPartService } from '../services/cmms-routing-parts.service';
 import { ArticleService } from '@ss/stock/api-article';

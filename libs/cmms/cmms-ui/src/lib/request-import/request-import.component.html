@@ -1,0 +1,83 @@
+<div class="ctrl">
+    <mat-form-field>
+        <mat-label translate>COMMON_FROM</mat-label>
+        <ss-date-picker [formControl]="dateControl"></ss-date-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput type="text" [formControl]="filter">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="button" (click)="refresh()">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        {{ 'COMMON_REFRESH' | translate }}
+    </button>
+
+
+</div>
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="workData" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="assetDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSETS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.assetDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="requesterDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_REQUESTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.requesterDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="typeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ Types[e.wrType - 1]?.description | translate }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="faultDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_FAULT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.faultDescription}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="plannedStart">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_PLANNED_START</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.plannedStart | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="plannedDue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_PLANNED_DUE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.plannedDue | date: 'dd/MM/yyyy'}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedItem?.id" (click)="select(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+
+<div class="ctrl">
+    <button mat-raised-button (click)="cancel()" translate>COMMON_CANCEL</button>
+    <button mat-raised-button color="primary" (click)="close()" [disabled]="selectedItem === null" translate>COMMON_IMPORT</button>
+</div>

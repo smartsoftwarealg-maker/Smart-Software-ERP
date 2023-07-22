@@ -24,9 +24,10 @@
 
 .mat-column-reference,
 .mat-column-nextDue,
-.mat-column-monthsAhead,
+.mat-column-daysAhead,
 .mat-column-lastReleased {
     flex: 1 1 100px;
+    justify-content: center;
 }
 
 mat-table {

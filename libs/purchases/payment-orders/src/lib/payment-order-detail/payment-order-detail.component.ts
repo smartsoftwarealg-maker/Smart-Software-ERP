@@ -17,7 +17,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
   styleUrls: ['./payment-order-detail.component.scss']
 })
 export class PaymentOrderDetailComponent extends BaseEntityDetailComponent<PaymentOrder> {
-    private supplierSrv  = inject(SupplierService);
+    private supplierSrv  = inject(AgentService);
     private loginSrv  = inject(LoginService);
     supplierAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination')
 

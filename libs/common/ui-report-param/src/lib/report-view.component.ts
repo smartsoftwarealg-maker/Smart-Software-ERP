@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import {
+    ParamAutoCompleteModel,
     ParamValue,
     ReportNode,
-    ReportParam,
+    ReportParam, ReportParamLookupService,
     ReportParamsService,
     ReportTreeService,
     ReportViewData
@@ -32,6 +33,8 @@ import { FileOpener } from '@capacitor-community/file-opener';
     templateUrl: './report-view.component.html'
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
+    private paramLookupSrv = inject(ReportParamLookupService);
+
     @ViewChild('tree', { static: false }) tree: MatTree<any>;
 
     private uuid = '';
@@ -128,6 +131,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
             this.data.forEach(e => {
                 cc[e.name] = new FormControl(e.valueString);
+                if (e.lookupTable) {
+                    e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
+                    e.description = e.description.substring(0, e.description.indexOf('//'));
+                }
             });
             cc['reportType'] = new FormControl('PDF');
             this.form = new FormGroup(cc);
@@ -221,12 +228,16 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     createList(): ParamValue[] {
         return this.data
-            .filter(p => this.form.controls[p.name])
+            .filter(p => this.form.controls[p.name] && this.form.controls[p.name].value !== null)
             .map(p => {
-                return { name: p.name, value: '' + this.form.controls[p.name].value };
+                return { name: p.name, value: this.defaultValue(p.name) };
             });
     }
 
+    private defaultValue(typeName: string): any {
+        const value = this.form.controls[typeName].value;
+        return value === false? 'false' : value === true? 'true' : value;
+    }
     private async writeThenOpenFile(fileBlob: any): Promise<void> {
         const str = await this.blobToBse64(fileBlob);
         const temp1 = await Filesystem.writeFile({

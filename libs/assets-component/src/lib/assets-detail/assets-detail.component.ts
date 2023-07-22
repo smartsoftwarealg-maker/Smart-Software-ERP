@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Asset, AssetReception, Depreciation, OfficeAutoComplete} from '../assets-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -38,6 +38,7 @@ import { ASSET_ARCHIVES } from '@ss/common/app-archive';
     styleUrls: ['./assets-detail.component.scss']
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
+    isCMMS: Boolean = false;
     // Private
     private router = inject(Router);
     private agentSrv = inject(AgentService);
@@ -55,6 +56,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private markSrv =  inject(MarkService);
     private receptionSrv =  inject(AssetReceptionService);
     private isANSEJ = false;
+    isAQS   = false;
 
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
@@ -68,7 +70,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
     // Public
     minLength = 1;
-    isAQS   = false;
     depreciationTypes: Lookup[] = [
         { id: 1, description: 'ASSET_LINEAR' },
         { id: 2, description: 'ASSET_DECLINING' },
@@ -208,13 +209,14 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
 
 
     override preload(): Observable<any> {
-        return this.isParamSrv
-            .is('ANSEJ')
+        return this.isParamSrv.is('ANSEJ')
             .pipe(tap(res => this.isANSEJ = res),
                 switchMap(_ => this.isParamSrv.is('AQS')),
                 tap(res => this.isAQS = res),
                 switchMap(_ => this.endSrv.getList(0, 50)),
-                tap(res => this.assetEnds = res.body));
+                tap(res => this.assetEnds = res.body),
+                switchMap(() => this.route.data),
+                tap(map => this.isCMMS = map['isCMMS'] === 'true'));
     }
 
     override ngOnInit() {
@@ -360,7 +362,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openReception() {
         const id = this.form.get('receptionId').value || 0;
         if (id > 0) {
-            this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route });
+            this.router.navigate(['../../asset-receptions', id], { relativeTo: this.route }).then();
         }
     }
 

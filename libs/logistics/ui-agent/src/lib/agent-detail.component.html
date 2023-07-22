@@ -79,6 +79,7 @@
                     <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="activity"
+                                      [canAdd] = "true"
                                       [model]="activityLookup">
                     </ss-auto-complete>
                 </mat-form-field>

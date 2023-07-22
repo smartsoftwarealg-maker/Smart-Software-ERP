@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { AssetTrigger } from '../../../../cmms-api/cmms-api';
+import { AssetTrigger } from '@ss/cmms/cmms-api';
 import { AssetsService } from '@ss/assets-component';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';

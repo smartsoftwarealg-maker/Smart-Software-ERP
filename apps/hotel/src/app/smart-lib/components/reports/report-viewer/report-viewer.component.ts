@@ -14,8 +14,7 @@ export class ReportViewerComponent implements OnDestroy {
     public selectedId;
     public pdfSrc;
 
-    constructor(public dialogRef: MatDialogRef<ReportViewerComponent>, private http: HttpService) {
-    }
+    constructor(public dialogRef: MatDialogRef<ReportViewerComponent>, private http: HttpService) {}
 
     getReport() {
         this.release();

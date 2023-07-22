@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { CMMSPlan } from '../../../../cmms-api/cmms-api';
+import { CMMSPlan } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';

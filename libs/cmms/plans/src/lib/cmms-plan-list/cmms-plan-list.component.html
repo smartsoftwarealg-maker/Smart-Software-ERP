@@ -11,7 +11,7 @@
         <ng-container matColumnDef="scheduleType">
             <mat-header-cell *matHeaderCellDef translate>CMMS_SCHEDULE_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{TYPES[e.scheduleType - 1|| 0]}}
+                {{TYPES[e.scheduleType - 1|| 0] | translate}}
             </mat-cell>
         </ng-container>
 

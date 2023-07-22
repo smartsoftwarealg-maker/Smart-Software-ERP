@@ -98,6 +98,7 @@
         <mat-label translate>COMMON_MARK</mat-label>
         <ss-auto-complete matInput
                           [model]="markAutoCompleteModel"
+                          [canAdd] = "isAQS"
                           formControlName="mark">
         </ss-auto-complete>
     </mat-form-field>
@@ -123,7 +124,7 @@
 
 
     <mat-accordion>
-        <mat-expansion-panel #depreciation expanded="false" [class]="depreciation.expanded? 'b-primary-expansion-panel' : ''">
+        <mat-expansion-panel *ngIf="!isCMMS" #depreciation expanded="false" [class]="depreciation.expanded? 'b-primary-expansion-panel' : ''">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION
@@ -322,7 +323,7 @@
 
         </mat-expansion-panel>
 
-        <mat-expansion-panel #depreciations expanded="false"
+        <mat-expansion-panel *ngIf="!isCMMS" #depreciations expanded="false"
                              [class]="getPanelHeaderClass('depreciations', depreciations)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
@@ -409,7 +410,7 @@
                 </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)">
+        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)" >
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_COSTS
@@ -418,7 +419,7 @@
             <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #revaluations expanded="false" [class]="getPanelHeaderClass('revaluations', revaluations)">
+        <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false" [class]="getPanelHeaderClass('revaluations', revaluations)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_REVALUATIONS
@@ -427,7 +428,7 @@
             <ss-asset-revaluation-list [assetId]="id" [editable]="isEditable"></ss-asset-revaluation-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #bockings expanded="false" [class]="getPanelHeaderClass('bockings', bockings)">
+        <mat-expansion-panel *ngIf="!isCMMS" #bockings expanded="false" [class]="getPanelHeaderClass('bockings', bockings)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_BLOCKINGS
@@ -436,7 +437,7 @@
             <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #appointments expanded="false" [class]="getPanelHeaderClass('appointments', appointments)">
+        <mat-expansion-panel *ngIf="!isCMMS" #appointments expanded="false" [class]="getPanelHeaderClass('appointments', appointments)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_APPOINTMENTS
@@ -456,7 +457,7 @@
                                  [editable]="isEditable"></ss-child-attributes>
         </mat-expansion-panel>
 
-        <mat-expansion-panel #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)">
+        <mat-expansion-panel *ngIf="!isCMMS" #rates expanded="false" [class]="getPanelHeaderClass('rates', rates)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION_RATES
