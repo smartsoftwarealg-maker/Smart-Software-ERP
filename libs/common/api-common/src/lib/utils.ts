@@ -313,6 +313,5 @@ export function getApplicationId(router: Router) {
         ['purchases', APP_PURCHASE],
         ['ltm', APP_LTM],
     ]);
-    console.log(app, MAP.get(app));
     return MAP.get(app) || 1;
 }
