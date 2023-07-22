@@ -26,7 +26,6 @@ import { DOC_WORK_REQUEST } from '@ss/logistics/api-transaction';
 
 @Directive()
 export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
-    private dialog = inject(MatDialog);
     private routingPartSrv = inject(CMMSRoutingPartService);
     private routingDetailSrv = inject(CMMSRoutingDetailService);
     private loginSrv = inject(LoginService);
@@ -49,6 +48,8 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         visible: true,
         click: () => this.sendMessage(),
     };
+
+    protected dialog = inject(MatDialog);
 
     solutionLookup = new DefaultAutoCompleteModel(this.solutionSrv);
     faultLookup = new DefaultAutoCompleteModel(this.faultSrv);
@@ -121,7 +122,8 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             teamSize:     [e.teamSize|| 1],
             memo:         [e.memo        ],
             status:       [e.status      ],
-            userId:       [e.centerId    ]
+            userId:       [e.centerId    ],
+            sourceId:     [e.sourceId    ]
         });
     }
 

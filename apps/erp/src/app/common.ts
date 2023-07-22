@@ -320,8 +320,9 @@ export const CMMS_ALERT_URL         = 'cmms-alerts';
 export const CMMS_METER_URL         = 'cmms-meters';
 export const CMMS_READING_URL       = 'cmms-readings';
 export const CMMS_TRIGGER_URL       = 'cmms-triggers';
-export const CMMS_WORK_REQUEST_URL  = 'cmms-requests';
-export const CMMS_WORK_ORDER_URL  = 'cmms-orders';
+export const CMMS_PREV_ORDER_URL  = 'prev-orders';
+export const CMMS_CUR_WORK_ORDER_URL  = 'cur-orders';
+export const CMMS_SERVICE_REQUEST_URL  = 'srv-requets';
 export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 
 
@@ -576,6 +577,7 @@ export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_UR
 
 // CMMS
 export const ABS_CMMS_FAULTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULTS_URL].join('/');
+export const ABS_CMMS_ASSETS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSETS_ASSET_URL].join('/');
 export const ABS_CMMS_STATUS__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_STATUS_URL].join('/');
 export const ABS_CMMS_PRIORITY__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PRIORITY_URL].join('/');
 export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULT_CAUSE_URL].join('/');
@@ -588,9 +590,15 @@ export const ABS_CMMS_ALERTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ALER
 export const ABS_CMMS_METERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_METER_URL].join('/');
 export const ABS_CMMS_READING_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_READING_URL].join('/');
 export const ABS_CMMS_TRIGGER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_TRIGGER_URL].join('/');
-export const ABS_PREV_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_REQUEST_URL].join('/');
+export const ABS_PREV_ORDERS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PREV_ORDER_URL].join('/');
 export const ABS_CMMS_SOLUTION_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SOLUTION_URL].join('/');
-export const ABS_CUR_ORDER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_WORK_ORDER_URL].join('/');
+export const ABS_CUR_ORDER_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_CUR_WORK_ORDER_URL].join('/');
+export const ABS_CMMS_END_TYPES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_END_TYPE_URL].join('/');
+export const ABS_CMMS_STATUS_TYPES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, FURNITURE_STATUS_URL].join('/');
+export const ABS_CMMS_CLASSES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_CLASS_URL].join('/');
+export const ABS_CMMS_BUILDINGS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_BUILDING_URL].join('/');
+export const ABS_CMMS_OFFICES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSETS_OFFICES_URL].join('/');
+export const ABS_SERVICE_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SERVICE_REQUEST_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

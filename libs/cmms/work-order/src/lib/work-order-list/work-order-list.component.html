@@ -2,7 +2,7 @@
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="assetDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ASSETS</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ASSETS</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.assetDescription}}
             </mat-cell>
@@ -23,14 +23,14 @@
         </ng-container>
 
         <ng-container matColumnDef="typeDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMON_TYPE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ Types[e.wrType - 1]?.description | translate }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="faultDescription">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMON_FAULT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_FAULT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.faultDescription}}
             </mat-cell>

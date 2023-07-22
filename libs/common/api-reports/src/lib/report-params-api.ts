@@ -1,5 +1,5 @@
-import { Lookup } from "@ss/common/api-lookup";
-import { ParamAutoCompleteModel } from "./param-auto-complete-model";
+import { Lookup } from '@ss/common/api-lookup';
+import { ParamAutoCompleteModel } from './param-auto-complete-model';
 
 export const REPORT_PARAMS_URL = '/reports/params';
 

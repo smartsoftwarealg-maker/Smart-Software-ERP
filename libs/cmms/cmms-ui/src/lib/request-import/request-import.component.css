@@ -1,0 +1,29 @@
+.ctrl {
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px auto;
+}
+
+.table_div {
+    min-height: calc(100% - 148px);
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 700px;
+}
+
+.mat-column-description,
+.mat-column-assetDescription {
+    flex: 2 1 200px;
+}
+.mat-column-plannedStart,
+.mat-column-plannedDue {
+    flex: 2 1 100px;
+}
+
+.size {
+    width: 98%;
+    margin: 0 auto;
+}

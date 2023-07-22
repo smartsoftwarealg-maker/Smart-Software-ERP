@@ -34,14 +34,6 @@ import { FileOpener } from '@capacitor-community/file-opener';
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
     private paramLookupSrv = inject(ReportParamLookupService);
-    private DEFAULT_TYPES: Map<string, string> = new Map(
-        [
-            ['java.lang.Double', '0'],
-            ['java.lang.Integer', '0'],
-            ['java.lang.Float', '0'],
-            ['java.lang.Float', '0'],
-            ['java.lang.Boolean', 'false'],
-        ]);
 
     @ViewChild('tree', { static: false }) tree: MatTree<any>;
 
@@ -236,12 +228,16 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     createList(): ParamValue[] {
         return this.data
-            .filter(p => this.form.controls[p.name])
+            .filter(p => this.form.controls[p.name] && this.form.controls[p.name].value !== null)
             .map(p => {
-                return { name: p.name, value: this.form.controls[p.name].value || this.DEFAULT_TYPES.get(p.typeName)};
+                return { name: p.name, value: this.defaultValue(p.name) };
             });
     }
 
+    private defaultValue(typeName: string): any {
+        const value = this.form.controls[typeName].value;
+        return value === false? 'false' : value === true? 'true' : value;
+    }
     private async writeThenOpenFile(fileBlob: any): Promise<void> {
         const str = await this.blobToBse64(fileBlob);
         const temp1 = await Filesystem.writeFile({

@@ -2,8 +2,10 @@ import { Lookup } from '@ss/common/api-lookup';
 
 export const CMMS_ASSET5S_URL = '/assets';
 export const CMMS_PLANS_URL = '/cmmsplans';
-export const CMMS_WORK_REQUEST_URL = '/cmmsrequets';
-export const CMMS_WORK_ORDER_URL = '/cmmsworks';
+export const CMMS_PREV_WORK_ORDER_URL = '/prevorders';
+export const CMMS_CUR_WORK_ORDER_URL = '/curorders';
+export const CMMS_SERVICE_REQUEST_URL = '/srvrequests';
+export const CMMS_PENDING_SERVICE_REQUEST_URL = '/cmms/pending';
 export const CMMS_PM_URL = '/cmmspm';
 export const CMMS_ALERT_URL = '/cmmspm/alerts';
 export const CMMS_READINGS_URL = '/readings';
@@ -23,6 +25,9 @@ export const WORK_TYPES: Lookup[] = [
     { id: 3, description: 'CMMS_INSPECTION'}
 ];
 
+export const CMMS_SERVICE_REQUEST = 10;
+export const CMMS_PREVENTIVE_ORDER = 12;
+export const CMMS_CURATIVE_ORDER = 15;
 
 export interface CMMSPlan {
     id: number;
@@ -124,4 +129,5 @@ export interface Work {
     status?: number;
     creatorId: number;
     validated: boolean;
+    sourceId?: number;
 }

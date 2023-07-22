@@ -54,7 +54,7 @@
             </mat-form-field>
 
             <mat-form-field class="default-50">
-                <mat-label translate>CMMS_CAUSE</mat-label>
+                <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="causeLookup"
                                   formControlName="cause"
@@ -105,7 +105,7 @@
             </mat-form-field>
 
             <mat-tab-group>
-                <mat-tab label="{{ 'CMMS_PARTS' | translate}}">
+                <mat-tab label="{{ 'LOGISTICS_PARTS' | translate}}">
                     <div class="table_div size">
                         <mat-table mat-table [dataSource]="partData$ | async" class="main-table">
 
@@ -124,7 +124,7 @@
                             </ng-container>
 
                             <ng-container matColumnDef="qty">
-                                <mat-header-cell *matHeaderCellDef translate>CMMS_QTY</mat-header-cell>
+                                <mat-header-cell *matHeaderCellDef translate>COMMON_QTY</mat-header-cell>
                                 <mat-cell *matCellDef="let e">
                                     {{e.qty | number: '1.2-2' }}
                                 </mat-cell>

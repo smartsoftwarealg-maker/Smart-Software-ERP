@@ -3,16 +3,67 @@ import {SideNavNode} from '@ss/common/api-common';
 import {
     ABS_CMMS_ALERTS_URL,
     ABS_CMMS_FAULT_CAUSE_URL,
-    ABS_CMMS_FAULTS_URL, ABS_CMMS_METERS_URL, ABS_CUR_ORDER_URL, ABS_CMMS_PLANS_URL, ABS_CMMS_PM_URL,
-    ABS_CMMS_PRIORITY__URL, ABS_CMMS_READING_URL, ABS_PREV_REQUEST_URL,
-    ABS_CMMS_ROOT_CAUSE_URL, ABS_CMMS_ROUTING_URL, ABS_CMMS_SOLUTION_URL,
-    ABS_CMMS_STATUS__URL, ABS_CMMS_TRIGGER_URL
-} from "../common";
+    ABS_CMMS_FAULTS_URL,
+    ABS_CMMS_METERS_URL,
+    ABS_CUR_ORDER_URL,
+    ABS_CMMS_PLANS_URL,
+    ABS_CMMS_PM_URL,
+    ABS_CMMS_PRIORITY__URL,
+    ABS_CMMS_READING_URL,
+    ABS_PREV_ORDERS_URL,
+    ABS_CMMS_ROOT_CAUSE_URL,
+    ABS_CMMS_ROUTING_URL,
+    ABS_CMMS_SOLUTION_URL,
+    ABS_CMMS_STATUS__URL,
+    ABS_CMMS_ASSETS_URL,
+    ABS_CMMS_END_TYPES,
+    ABS_CMMS_STATUS_TYPES,
+    ABS_CMMS_CLASSES,
+    ABS_CMMS_BUILDINGS,
+    ABS_CMMS_OFFICES_URL,
+    ABS_SERVICE_REQUEST_URL
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
     icon: 'fa-solid fa-screwdriver-wrench',
     children: [
+        {
+            name: 'ASSET_END_TYPES',
+            icon: 'fa-solid fa-person-walking-dashed-line-arrow-right',
+            route: ABS_CMMS_END_TYPES,
+            accessRights: 'AssetCostType'
+        },
+        {
+            name: 'COMMON_FURNITURE_STATUS',
+            icon: 'fa-solid fa-battery-bolt',
+            route: ABS_CMMS_STATUS_TYPES,
+            accessRights: 'FurnitureStatus'
+        },
+        {
+            name: 'COMMON_CLASSES',
+            icon: 'fa-solid fa-rectangle-list',
+            route: ABS_CMMS_CLASSES,
+            accessRights: 'AssetClass'
+        },
+        {
+            name: 'ASSET_BUILDINGS',
+            icon: 'fa-solid fa-city',
+            route: ABS_CMMS_BUILDINGS,
+            accessRights: 'AssetBuilding'
+        },
+        {
+            name: 'ASSET_LOCATIONS',
+            icon: 'fa-solid fa-location-crosshairs',
+            route: ABS_CMMS_OFFICES_URL,
+            accessRights: 'Office'
+        },
+        {
+            name: 'ASSETS',
+            icon: 'fa-solid fa-car-building',
+            route: ABS_CMMS_ASSETS_URL,
+            accessRights: 'Asset'
+        },
         {
             name: 'CMMS_FAULTS',
             icon: 'fa-solid fa-circle-exclamation',
@@ -20,13 +71,13 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'CMFault'
         },
         {
-            name: 'CMMS_FAULT_CAUSE',
+            name: 'CMMS_FAULT_CAUSES',
             icon: 'fa-solid fa-arrow-right-from-arc',
             route: ABS_CMMS_FAULT_CAUSE_URL,
             accessRights: 'CMFaultCause'
         },
         {
-            name: 'CMMS_ROOT_CAUSE',
+            name: 'CMMS_ROOT_CAUSES',
             icon: 'fa-solid fa-square-root',
             route: ABS_CMMS_ROOT_CAUSE_URL,
             accessRights: 'CMRootTCause'
@@ -38,7 +89,7 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'CMSolution'
         },
         {
-            name: 'CMMS_STATUS',
+            name: 'COMMON_STATUS',
             icon: 'fa-solid fa-signal-bars',
             route: ABS_CMMS_STATUS__URL,
             accessRights: 'CMStatus'
@@ -67,12 +118,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_PLANS_URL,
             accessRights: 'CMPlan'
         },
-        {
-            name: 'CMMS_TRIGGERS',
-            icon: 'fa-solid fa-gun',
-            route: ABS_CMMS_TRIGGER_URL,
-            accessRights: 'CMTrigger'
-        },
+        // {
+        //     name: 'CMMS_TRIGGERS',
+        //     icon: 'fa-solid fa-gun',
+        //     route: ABS_CMMS_TRIGGER_URL,
+        //     accessRights: 'CMTrigger'
+        // },
         {
             name: 'CMMS_READINGS',
             icon: 'fa-solid fa-gauge-low',
@@ -98,16 +149,22 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'CMMSAlert'
         },
         {
-            name: 'CMMS_PREV_WORK_ORDER',
+            name: 'CMMS_SERVICE_REQUESTS',
             icon: 'fa-solid fa-hand-holding',
-            route: ABS_PREV_REQUEST_URL,
+            route: ABS_SERVICE_REQUEST_URL,
             accessRights: 'CMMSRequest'
+        },
+        {
+            name: 'CMMS_PREV_WORK_ORDER',
+            icon: 'fa-solid fa-washing-machine',
+            route: ABS_PREV_ORDERS_URL,
+            accessRights: 'PREVOrder'
         },
         {
             name: 'CMMS_CUR_WORK_ORDER',
             icon: 'fa-solid fa-hammer-crash',
             route: ABS_CUR_ORDER_URL,
-            accessRights: 'CMMSOrder'
+            accessRights: 'CUROrder'
         },
     ],
     accessRights: 'CMMS'
