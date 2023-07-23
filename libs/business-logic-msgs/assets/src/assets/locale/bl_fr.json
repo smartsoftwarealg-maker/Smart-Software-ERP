@@ -46,5 +46,6 @@
     "INVALID_AGENT_CENTERS":              "Cet agent n'est pas autorisé dans ce centre.",
     "INVALID_CREDENTIALS":                "les informations d'identification invalides",
     "LOCAL_CURRENCY":                     "La monnaie locale n'est pas autorisée ici",
-    "EMPTY_DOCUMENTS":                    "Les documents suivants sont vides:"
+    "EMPTY_DOCUMENTS":                    "Les documents suivants sont vides:",
+    "INVALID_CARD":                       "La fiche de cette reference n'est pas équilibrée"
 }

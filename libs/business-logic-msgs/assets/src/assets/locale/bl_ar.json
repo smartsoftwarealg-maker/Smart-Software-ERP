@@ -46,5 +46,6 @@
     "INVALID_AGENT_CENTERS":        "هذا الوكيل غير مصرح به في هذا المركز.",
     "INVALID_CREDENTIALS":          "بيانات الاعتماد غير صالحة",
     "LOCAL_CURRENCY":               "العملة المحلية غير مسموح بها هنا",
-    "EMPTY_DOCUMENTS":              "المستندات التالية فارغة:"
+    "EMPTY_DOCUMENTS":              "المستندات التالية فارغة:",
+    "INVALID_CARD":                 "بطاقة هذا الجزء غير متوازنة"
 }
