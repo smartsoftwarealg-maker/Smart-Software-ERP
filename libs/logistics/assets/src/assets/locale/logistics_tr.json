@@ -152,5 +152,6 @@
     "CAF":              "",
     "CUSTOMS":          "",
     "TRANSIT":          "",
-    "PRICE_DISCOUNT":   ""
+    "PRICE_DISCOUNT":   "",
+    "PASSING_CLIENT":   ""
 }

@@ -161,5 +161,6 @@
     "VALUE_TYPE":       "Type de valeur",
     "APPROVAL":         "Agrément",
     "APPROVAL":         "Agrément",
-    "PPRICE":           "Prix Stock"
+    "PPRICE":           "Prix Stock",
+    "PASSING_CLIENT":   "Client occasionnel"
 }

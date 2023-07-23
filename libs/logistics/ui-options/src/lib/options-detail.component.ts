@@ -1,21 +1,26 @@
-import { Component, inject, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
+import { Component, inject, OnInit } from "@angular/core";
+import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { ReactiveFormsModule, UntypedFormBuilder, Validators } from "@angular/forms";
+import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import {
     LookupsService,
     Store,
     LotsService,
     Currency,
     CurrencyService
-} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {Option} from './option.class';
-import {OptionService} from './option.service';
-import {LoginService} from '@ss/common/api-common';
+} from "@ss/common/api-lookup";
+import { CommonUiConfirmationDialogModule, ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { Option } from "./option.class";
+import { OptionService } from "./option.service";
+import { LoginService, MaterialModule } from "@ss/common/api-common";
+import { CommonModule } from "@angular/common";
+import { CommonUiLangModule } from "@ss/common/ui-lang";
+import { UiPaginationModule } from "@ss/common/ui-pagination";
+import { CommonUiDatepickerModule } from "@ss/common/ui-datepicker";
+import { CustomerService } from "@ss/logistics/api-agent";
 
 interface EvalPrice {
     id: any,
@@ -23,19 +28,32 @@ interface EvalPrice {
 }
 
 @Component({
-    selector: 'ss-account-detail',
-    styleUrls: ['./options-detail.component.scss'],
-    templateUrl: './options-detail.component.html'
+    selector: "ss-account-detail",
+    standalone: true,
+    imports: [
+        CommonModule,
+        MaterialModule,
+        CommonUiLangModule,
+        UiPaginationModule,
+        CommonUiAutoCompleteModule,
+        ReactiveFormsModule,
+        CommonUiDatepickerModule,
+        CommonUiConfirmationDialogModule
+    ],
+    styleUrls: ["./options-detail.component.scss"],
+    templateUrl: "./options-detail.component.html"
 })
 export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> implements OnInit {
+    private customerSrv = inject(CustomerService);
     private storeNameSrv = inject(LotsService);
     evalPriceOptions: EvalPrice[] = [
-        {id: 1, name: 'LOGISTICS_FIFO'},
-        {id: 2, name: 'LOGISTICS_AWP'}
+        { id: 1, name: "LOGISTICS_FIFO" },
+        { id: 2, name: "LOGISTICS_AWP" }
     ];
 
     currencies: Currency[] = [];
     storeAutoCompleteModel: DefaultAutoCompleteModel<Store> = new DefaultAutoCompleteModel<Store>(this.storeNameSrv);
+    customerLookup = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
 
     constructor(
         private loginSrv: LoginService,
@@ -47,18 +65,19 @@ export class OptionsDetailComponent extends BaseEntityDetailComponent<Option> im
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         private currencySrv: CurrencyService) {
-        super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OPTION');
+        super(optionSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, "COMMON_EDIT_OPTION");
     }
 
     public override setupForm(a: Option) {
         return this.formBuilder.group({
-            id:              [this.loginSrv.appCtx.center],
-            eval_price:      [a.eval_price || 1, Validators.required],
-            mainStore:       [a.mainStore],
-            generate_GL:     [a.generate_GL],
-            inventory_date:  [a.inventory_date, Validators.required],
+            id: [this.loginSrv.appCtx.center],
+            eval_price: [a.eval_price || 1, Validators.required],
+            mainStore: [a.mainStore],
+            generate_GL: [a.generate_GL],
+            inventory_date: [a.inventory_date, Validators.required],
             defaultCurrency: [a.defaultCurrency, Validators.required],
-            checkPrices:     [a.checkPrices || false, Validators.required]
+            checkPrices: [a.checkPrices || false, Validators.required],
+            passingClient: [a.passingClient]
         });
     }
 
