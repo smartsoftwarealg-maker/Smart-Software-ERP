@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form" *ngIf="form && form.value['appId'] > 0 && form.value['objId']> 0">
+<form novalidate [formGroup]="form" *ngIf="form && form.value['appId'] > 0">
     <div class="input__div">
         <mat-form-field class="default-50 sm-100">
             <mat-label translate>ADMINISTRATION_ARCHIVE_DOCUMENTS</mat-label>
@@ -9,36 +9,34 @@
             </ss-auto-complete>
         </mat-form-field>
 
-            <input type="file"
-                   #fileInput
-                   style="display: none"
-                   multiple
-                   (change)="uploadUtil.onFileSelected($event)">
+        <input type="file"
+               #fileInput
+               style="display: none"
+               multiple
+               (change)="uploadUtil.onFileSelected($event)">
 
-            <input type="hidden" name="MAX_FILE_SIZE" value="104857600"/>
+        <input type="hidden" name="MAX_FILE_SIZE" value="104857600" />
 
-            <div class="button__div" >
-                <button mat-mini-fab
-                        (click)="onSave()"
-                        color="primary"
-                        type="button"
-                        *ngIf="(uploadUtil.selectedFile && form.value.documentId) ">
-                    <i class="fas fa-save"></i>
-                </button>
-                <button mat-mini-fab (click)="onCancel()" color="accent" type="button">
-                    <i class="fas fa-undo"></i>
-                </button>
+        <div class="button__div">
+            <button mat-mini-fab
+                    (click)="onSave()"
+                    color="primary"
+                    type="button"
+                    *ngIf="uploadUtil.selectedFile && this.form.controls['documentId'].value > 0">
+                <i class="fas fa-save"></i>
+            </button>
+            <button mat-mini-fab (click)="onCancel()" color="accent" type="button">
+                <i class="fas fa-undo"></i>
+            </button>
 
-                <button mat-mini-fab (click)="fileInput.click()" color="warn" type="button">
-                    <i class="fas fa-upload"></i>
-                </button>
-            </div>
+            <button mat-mini-fab (click)="fileInput.click()" color="warn" type="button">
+                <i class="fas fa-upload"></i>
+            </button>
+        </div>
     </div>
     <div class="imj" *ngIf="form.value['appId']">
-        <img [src]="uploadUtil.imgSrc" [alt]="'image'"/>
+        <img [src]="uploadUtil.imgSrc" [alt]="'image'" />
     </div>
-<!--        <div>-->
-<!--            <pre>{{form?.value | json }}</pre>-->
-<!--        </div>-->
+<!--    <pre>{{form?.getRawValue() | json }}</pre>-->
 </form>
 

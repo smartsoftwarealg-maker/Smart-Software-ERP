@@ -23,7 +23,7 @@ import { FormValidators, IsParamService, LoginService, Role } from '@ss/common/a
 import {BankService} from '@ss/administration/api-bank';
 import { Lookup } from '@ss/logistics/ui-doc-import';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AGENT_ARCHIVES} from '@ss/common/app-archive';
+import { AGENT_ARCHIVES, AppArchiveService } from '@ss/common/app-archive';
 import { MatSelectionListChange } from '@angular/material/list';
 import { CenterService } from '@ss/administration/api-center';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,6 +36,7 @@ import { AgentImportComponent } from './agent-import/agent-import.component';
     templateUrl: './agent-detail.component.html'
 })
 export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    private archiveSrv = inject(AppArchiveService);
     private dialog  = inject(MatDialog);
     private router = inject(Router);
     private isParamSrv = inject(IsParamService);
@@ -271,6 +272,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     }
 
     override ngOnInit() {
+        this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
         const idx = this.router.url.indexOf('agents');
         const url = this.router.url.substring(0, idx) + 'agents';

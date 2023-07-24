@@ -73,7 +73,7 @@ export const navBar = [
     dashboardNavTree,
     // shoppingCartNavTree,
     workflowNavTree,
-    aaNavTree,
+    // aaNavTree,
 ];
 
 export const langAssets = [
@@ -94,9 +94,7 @@ export const langAssets = [
     ['assets/locale/assets_', 'ASSET_'],
     ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
-    ['assets/locale/ltm_', 'LTM_'],
-    ['assets/locale/att_', 'ATT_'],
-    ['assets/locale/budget_', 'BUD_']];
+];
 
 export const appRoutes: Routes =  [
     {
@@ -104,10 +102,10 @@ export const appRoutes: Routes =  [
         component: MainPageComponent,
         canActivate: [CanActivateService]
     },
-    {
-        path: ARCH_VIEWER_URL,
-        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
-    },
+    // {
+    //     path: ARCH_VIEWER_URL,
+    //     loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    // },
     {
         path: ORGANIZATIONS_APP_URL,
         loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)

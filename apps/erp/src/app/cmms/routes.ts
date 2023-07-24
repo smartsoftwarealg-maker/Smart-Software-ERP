@@ -48,8 +48,11 @@ import {
     CMMSMeterListComponent,
     CMMSMeterDetailComponent,
     CMMSSolutionListComponent,
-    CMMSSolutionDetailComponent, CMMSRoutingPartsListComponent, CMMSRoutingPartsDetailComponent
-} from '@ss/cmms/lookups';
+    CMMSSolutionDetailComponent,
+    CMMSRoutingPartsListComponent,
+    CMMSRoutingPartsDetailComponent,
+    CMMSRoutingArchiveComponent
+} from "@ss/cmms/lookups";
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -393,6 +396,13 @@ export const cmmsRoutes: Routes = [
                         children: [
                             { path: '', component: CMMSRoutingPartsListComponent, pathMatch: 'full' },
                             { path: ':id', component: CMMSRoutingPartsDetailComponent }
+                        ]
+                    },
+                    {   path: 'archive',
+                        component: CMMSRoutingArchiveComponent,
+                        children: [
+                            {path: '',    component: AppArchiveListComponent, pathMatch: 'full' },
+                            {path: ':id', component: AppArchiveDetailComponent},
                         ]
                     }
                 ],

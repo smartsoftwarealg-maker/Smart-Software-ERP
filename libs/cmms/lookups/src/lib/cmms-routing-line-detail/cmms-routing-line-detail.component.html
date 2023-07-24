@@ -11,7 +11,7 @@
 
 <mat-card *ngIf="form" class="size">
     <form [formGroup]="form">
-        <mat-form-field class="default-100">
+        <mat-form-field class="default-50">
             <mat-label translate>CMMS_ORDER</mat-label>
             <input matInput formControlName="order" type="number" autofocus required>
             <mat-error
@@ -27,7 +27,7 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="default-100">
+        <mat-form-field class="default-50">
             <mat-label translate>CMMS_TEAM_SIZE</mat-label>
             <input matInput formControlName="teamSize" type="number" required>
             <mat-error
@@ -35,12 +35,12 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="default-100">
-            <mat-label translate>CMMS_HOPURS</mat-label>
+        <mat-form-field class="default-50">
+            <mat-label translate>CMMS_HOURS</mat-label>
             <input matInput formControlName="hours" type="number">
         </mat-form-field>
 
-        <mat-form-field class="default-100">
+        <mat-form-field class="default-50">
             <mat-label translate>CMMS_COST</mat-label>
             <input matInput formControlName="cost" type="number">
         </mat-form-field>

@@ -46,5 +46,6 @@
     "INVALID_AGENT_CENTERS":         "This agent is not authorized in this center.",
     "INVALID_CREDENTIALS":           "Invalid credentials",
     "LOCAL_CURRENCY":                "Local currency is not allowed here",
-    "EMPTY_DOCUMENTS":               "The following documents are empty:"
+    "EMPTY_DOCUMENTS":               "The following documents are empty:",
+    "INVALID_CARD":                  "This part's card is not balanced"
 }

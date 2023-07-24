@@ -14,7 +14,7 @@ import {
     DOC_DELIVERY,
     DOC_QUOTATION,
     DOC_SALES_ORDER
-} from "@ss/logistics/api-transaction";
+} from '@ss/logistics/api-transaction';
 
 
 @Component({

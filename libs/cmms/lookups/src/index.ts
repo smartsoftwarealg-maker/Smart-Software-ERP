@@ -32,3 +32,4 @@ export * from './lib/services/cmms-routing-detail.service';
 export * from './lib/cmms-routing-parts-list/cmms-routing-parts-list.component';
 export * from './lib/cmms-routing-parts-detail/cmms-routing-parts-detail.component';
 export * from './lib/services/cmms-routing-parts.service';
+export * from './lib/routing-archive/cmms-routing-archive.component';

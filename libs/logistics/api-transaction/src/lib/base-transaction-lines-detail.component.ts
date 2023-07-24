@@ -141,8 +141,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         return this.form.getRawValue();
     }
 
-    onArticle(a: Article | string) {
-        this.selectedReference = typeof a === 'string' ? a : a.reference ? a.reference : null;
+    onArticle(a: Article) {
+        this.selectedReference = a?.reference;
+        this.form.controls['vat'].setValue(a?.vatValue || 0);
         this.articleSrv
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
             .subscribe({
