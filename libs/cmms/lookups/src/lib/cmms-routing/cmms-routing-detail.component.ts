@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -9,14 +9,16 @@ import { Lookup } from '@ss/common/api-lookup';
 import { CMMSRoutingDetailService } from '../services/cmms-routing-detail.service';
 import { filter, Observable } from 'rxjs';
 import { CMMSRoutingPartService } from '../services/cmms-routing-parts.service';
+import { AppArchiveService, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-cmms-routing-detail',
     templateUrl: './cmms-routing-detail.component.html',
     styleUrls: ['../detail-template/cmms-fault-detail.component.css'],
 })
-export class CMMSRoutingDetailComponent extends BaseLookupDetailClass {
-    private URLs = ['detail', 'parts'];
+export class CMMSRoutingDetailComponent extends BaseLookupDetailClass implements OnInit {
+    private archiveSrv = inject(AppArchiveService);
+    private URLs = ['detail', 'parts', 'archive'];
     private router = inject(Router);
 
     isOnEdit = false;
@@ -39,20 +41,21 @@ export class CMMSRoutingDetailComponent extends BaseLookupDetailClass {
             this.router.events.pipe(
                 filter((e: any): e is RouterEvent => e instanceof RouterEvent)
             ).subscribe((e: RouterEvent) => {
-                this.isOnEdit = e.url.indexOf('/detail/') > 1 || e.url.indexOf('/parts/') > 1;
+                this.isOnEdit = e.url.indexOf('/detail/') > 1 || e.url.indexOf('/parts/') > 1 ;
                 this.saveButton.visible = !this.isOnEdit;
                 this.shellSrv.setGoBackEnabled(this.saveButton.visible);
             }));
 
         this.detailSrv.setParentId(id);
         this.partSrv.setParentId(id);
+        this.archiveSrv.appId = CMMS_ROUTING_ARCHIVES;
         return super.loadEntity(id);
     }
 
     onTabChange(index: number) {
         const url = this.router.url;
-        const slashIndex = url.lastIndexOf('/') + 1;
-        const next = url.substring(0, slashIndex) + this.URLs[index];
+        const next = url.split('/').slice(0, 5).join('/') + '/' + this.URLs[index];
         this.router.navigate([next]).then();
     }
+
 }

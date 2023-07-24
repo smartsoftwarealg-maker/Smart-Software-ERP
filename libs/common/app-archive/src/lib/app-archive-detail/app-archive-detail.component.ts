@@ -30,15 +30,15 @@ export class AppArchiveDetailComponent implements OnInit {
                 private snackBarSrv: SnackBarService) {}
 
     ngOnInit(): void {
-        this.route.paramMap
-            .pipe(
-                switchMap(res => +res.get('id') > 0? this.service.get(+res.get('id')) : of(null as AppArchive)))
+        this.route
+            .paramMap
+            .pipe(switchMap(res => +res.get('id') > 0? this.service.get(+res.get('id')) : of(null as AppArchive)))
             .subscribe(res => {
                 this.form = this.fb.group({
                     id:         [res?.id || 0],
                     appId:      [res?.appId || this.service.appId],
                     documentId: [{ value: res?.documentId, disabled: !!res?.id}, Validators.required],
-                    objId:      [res?.objId || this.service.getParentId(), Validators.required]
+                    objId:      [res?.objId || this.service.id, Validators.required]
                 });
             });
     }

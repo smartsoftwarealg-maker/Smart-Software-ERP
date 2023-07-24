@@ -12,7 +12,7 @@ import { Lookup } from "@ss/common/api-lookup";
 export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
     private _appId: number;
     private _editable = false;
-    private _cb: (id: number) => void = null;
+    private _id = 0;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, APP_ARCHIVE_URL, APPLICATIONS_URL);
@@ -105,5 +105,14 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
 
     userDocuments(): Observable<Lookup[]> {
         return this.httpSrv.get<Lookup[]>('/archives/user-documents');
+    }
+
+    override setParentId(id: number) {
+        this._id = id;
+        super.setParentId(id * 100 + this._appId);
+    }
+
+    get id() {
+        return this._id;
     }
 }

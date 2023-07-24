@@ -10,10 +10,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 export class AppArchiveMainComponent implements OnInit {
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
-    constructor(
-        public archiveSrv: AppArchiveService,
-        private route: ActivatedRoute,
-        private router: Router) {
+    constructor(public archiveSrv: AppArchiveService, private route: ActivatedRoute) {
     }
 
     protected refresh() {

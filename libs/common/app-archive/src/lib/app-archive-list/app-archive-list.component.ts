@@ -8,7 +8,7 @@ import {AppArchive} from '../app-archive-api';
 import { of, switchMap, tap } from "rxjs";
 
 @Component({
-    selector: 'ss-agent-archive-list',
+    selector: 'ss-app-archive-list',
     templateUrl: './app-archive-list.component.html',
     styleUrls: ['./app-archive-list.component.scss']
 })
@@ -31,18 +31,18 @@ export class AppArchiveListComponent implements OnInit {
                 private confirmationSrv: ConfirmationDialogService) {
     }
 
-
-
     ngOnInit(): void {
-        this.route.queryParamMap.subscribe(param => {
-            const appId = +param.get('appId') || 0;
-            if (appId > 0) {
-                this.entitySrv.appId = appId;
-                const id = +param.get('documentId') || 0;
-                this.entitySrv.setParentId(id);
-                const editable = param.get('editable');
-                this.entitySrv.editable = editable && editable.toLowerCase() === 'true';
-            }
+        this.route
+            .queryParamMap
+            .subscribe(param => {
+                const appId = +param.get("appId") || 0;
+                if (appId > 0) {
+                    this.entitySrv.appId = appId;
+                    const id = +param.get("documentId") || 0;
+                    this.entitySrv.setParentId(id);
+                    const editable = param.get("editable");
+                    this.entitySrv.editable = editable && editable.toLowerCase() === "true";
+                }
 
             this.route
                 .parent

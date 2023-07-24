@@ -30,7 +30,7 @@ import {AssetClassService} from '../asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {AssetReceptionService} from '../asset-reception.service';
-import { ASSET_ARCHIVES } from '@ss/common/app-archive';
+import { AGENT_ARCHIVES, AppArchiveService, ASSET_ARCHIVES } from "@ss/common/app-archive";
 
 @Component({
     selector: 'ss-assets-detail',
@@ -38,8 +38,8 @@ import { ASSET_ARCHIVES } from '@ss/common/app-archive';
     styleUrls: ['./assets-detail.component.scss']
 })
 export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {
-    isCMMS: Boolean = false;
     // Private
+    private archiveSrv = inject(AppArchiveService);
     private router = inject(Router);
     private agentSrv = inject(AgentService);
     private customerSrv = inject(CustomerService);
@@ -56,7 +56,6 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     private markSrv =  inject(MarkService);
     private receptionSrv =  inject(AssetReceptionService);
     private isANSEJ = false;
-    isAQS   = false;
 
     private importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
@@ -75,6 +74,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         { id: 2, description: 'ASSET_DECLINING' },
         { id: 3, description: 'ASSET_ACTIVITY' },
     ];
+
+    isAQS   = false;
+    isCMMS: Boolean = false;
 
     markAutoCompleteModel      = new DefaultAutoCompleteModel(this.markSrv);
     classAutoCompleteModel     = new DefaultAutoCompleteModel(this.classSrv);
@@ -207,19 +209,22 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             return '';
     }
 
-
     override preload(): Observable<any> {
         return this.isParamSrv.is('ANSEJ')
-            .pipe(tap(res => this.isANSEJ = res),
-                switchMap(_ => this.isParamSrv.is('AQS')),
+            .pipe(tap(res => {
+                    this.isANSEJ = res;
+                    this.importBtn.visible = this.isANSEJ;
+                }),
+                switchMap(_ => this.isParamSrv.is("AQS")),
                 tap(res => this.isAQS = res),
                 switchMap(_ => this.endSrv.getList(0, 50)),
                 tap(res => this.assetEnds = res.body),
                 switchMap(() => this.route.data),
-                tap(map => this.isCMMS = map['isCMMS'] === 'true'));
+                tap(map => this.isCMMS = map["isCMMS"] === "true"));
     }
 
     override ngOnInit() {
+        this.archiveSrv.appId = AGENT_ARCHIVES;
         super.ngOnInit();
         this.shellSrv.addButton(this.importBtn);
     }
