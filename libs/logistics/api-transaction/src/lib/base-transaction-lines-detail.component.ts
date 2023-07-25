@@ -67,7 +67,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     }
 
     private updateStockAndValue(res: QtyPrice) {
-        if (this.document == DOC_CONSUMPTION || this.document == DOC_CORRECTION_OUT) {
+        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
             this.form.controls['price'].setValue(res.price);
         }
         this.articleStock = res.qty;
@@ -148,7 +148,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: err => this.form.controls['price'].setValue(0.0)
+                error: () => {
+                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+                        this.form.controls['price'].setValue(0.0);
+                    }
+                }
             });
     }
 
@@ -157,7 +161,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: () => this.form.controls['price'].setValue(0.0)
+                error: () => {
+                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+                        this.form.controls['price'].setValue(0.0);
+                    }
+                }
             });
     }
 
@@ -170,7 +178,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 .getPPrice(b.reference, b.store, b.transacId, b.id)
                 .subscribe({
                     next: res => this.updateStockAndValue(res),
-                    error: () => this.form.controls['price'].setValue(0.0)
+                    error: () => {
+                        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+                            this.form.controls['price'].setValue(0.0);
+                        }
+                    }
                 });
         }
 
@@ -184,7 +196,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: true} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
-            price:        [b.price || 0, Validators.required],
+            price:        [b.price, Validators.required],
             vat:          [b.vat || 0, Validators.required],
             observation:  [b.observation],
             footerMemo:   [b.footerMemo],
