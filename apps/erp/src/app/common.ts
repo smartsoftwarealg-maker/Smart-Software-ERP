@@ -110,6 +110,7 @@ export const STOCK_ARTICLES_STORE_URL = 'articlestores';
 export const USER_STORES_URL = 'user-stores';
 export const STOCK_ANOMALY_URL = 'anomalies';
 export const STOCK_INVENTORY_ENTRY_URL = 'inventory-entries';
+export const STOCK_PARTS_REUEST_URL = 'parts-requests';
 export const STOCK_INVENTORY_EXIT_URL = 'inventory-exits';
 export const STOCK_TRANSFER_URL       = 'transfers';
 export const STOCK_TRANSFER_RECEPTION_URL  = 'transfer-reception';
@@ -415,6 +416,7 @@ export const ABS_STOCK_INVENTORY_ENTRY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL
 export const ABS_STOCK_INVENTORY_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_URL].join('/');
 export const ABS_STOCK_INVENTORY_EXIT_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_INVENTORY_EXIT_URL].join('/');
 export const ABS_STOCK_CONSUMPTION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_CONSUMPTION_URL].join('/');
+export const ABS_STOCK_PARTS_REQUEST_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_PARTS_REUEST_URL].join('/');
 export const ABS_STOCK_CONSUMPTION_CANCELLATION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_CONSUMPTION_CANCELLATION_URL].join('/');
 export const ABS_STOCK_TRANSFER_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_TRANSFER_URL].join('/');
 export const ABS_STOCK_TRANSFER_RECEPTION_URL = '/' + [MAIN_PAGE_URL, STOCK_APP_URL, STOCK_TRANSFER_RECEPTION_URL].join('/');
@@ -599,6 +601,7 @@ export const ABS_CMMS_CLASSES = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_CLASS_
 export const ABS_CMMS_BUILDINGS = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSET_BUILDING_URL].join('/');
 export const ABS_CMMS_OFFICES_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSETS_OFFICES_URL].join('/');
 export const ABS_SERVICE_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_SERVICE_REQUEST_URL].join('/');
+export const ABS_CMMS_PARTS_REQUEST_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, STOCK_PARTS_REUEST_URL].join('/');
 
 // Furniture
 export const ABS_FURNITURE_URL            = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_URL].join('/');

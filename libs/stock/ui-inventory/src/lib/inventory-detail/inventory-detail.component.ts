@@ -13,7 +13,7 @@ import { InventoryLinesService } from '@ss/stock/api-inventory-lines';
 
 @Component({
     selector: 'ss-inventory-detail',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-detail.component.html'
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {

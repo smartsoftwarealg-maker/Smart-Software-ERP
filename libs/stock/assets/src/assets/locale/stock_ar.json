@@ -58,5 +58,6 @@
     "MAX_QTY":                "الكمية الأمنية",
     "RECALCULATE_PRICES":     "أعد حساب الأسعار",
     "PRICE_RECALCULATION":    "حساب السعر",
-    "CONSUMPTION_CANCELLATION": "إلغاء الاستهلاك"
+    "CONSUMPTION_CANCELLATION": "إلغاء الاستهلاك",
+    "PARTS_REQUEST":            "طلب قطع غيار"
 }

@@ -27,8 +27,8 @@ import {
     CMMS_PREV_ORDER_URL,
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
-    CMMS_SERVICE_REQUEST_URL
-} from '../common';
+    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -76,6 +76,11 @@ import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { OfficeDetailComponent, OfficesListComponent } from '@ss/organizations/ui-organizations';
 import { PrevWorkOrderDetailComponent, PrevWorkOrderListComponent } from '../../../../../libs/cmms/prev-work-order/src';
 import { ServiceRequestDetailComponent, ServiceRequestListComponent } from '@ss/cmms/service-request';
+import {
+    PartsRequestDetailComponent, PartsRequestLineDetailComponent,
+    PartsRequestLineListComponent,
+    PartsRequestListComponent
+} from "@ss/stock/ui-parts-request";
 
 export const cmmsRoutes: Routes = [
     {
@@ -406,6 +411,37 @@ export const cmmsRoutes: Routes = [
                         ]
                     }
                 ],
+            },
+        ]
+    },
+    {
+        path: STOCK_PARTS_REUEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PartsRequestListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PartsRequestDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PartsRequestLineListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PartsRequestLineDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
             },
         ]
     },

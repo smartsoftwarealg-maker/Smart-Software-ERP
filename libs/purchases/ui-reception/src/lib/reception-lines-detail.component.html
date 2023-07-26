@@ -57,8 +57,16 @@
                 <mat-form-field id="qtySatisfied" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
                     <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
-                    <mat-error
-                        *ngIf="form.controls['qtySatisfied'].hasError('required')" translate>COMMON_FIELD_REQUIRED
+                    <mat-error *ngIf="form.controls['qtySatisfied'].hasError('required')" translate>
+                        COMMON_FIELD_REQUIRED
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field id="qtyInvoiced" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_QTY_INVOICED</mat-label>
+                    <input matInput formControlName="qtyInvoiced" type="number" step=".01" required>
+                    <mat-error *ngIf="form.controls['qtyInvoiced'].hasError('required')" translate>
+                        COMMON_FIELD_REQUIRED
                     </mat-error>
                 </mat-form-field>
 

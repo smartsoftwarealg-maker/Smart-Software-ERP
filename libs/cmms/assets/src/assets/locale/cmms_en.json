@@ -47,5 +47,6 @@
     "LABOR_COST":       "Labor cost",
     "MATERIAL_COST":    "Material cost",
     "TRAVEL_COST":      "Travel cost",
-    "OTHER_COST":       "Other cost"
+    "OTHER_COST":       "Other cost",
+    "GENERATE_REQUEST": "Generate parts request"
 }

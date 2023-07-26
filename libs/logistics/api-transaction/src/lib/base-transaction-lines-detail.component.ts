@@ -10,7 +10,13 @@ import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import { DOC_CONSUMPTION, DOC_CORRECTION_OUT, DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
+import {
+    DOC_CONSUMPTION,
+    DOC_CORRECTION_OUT,
+    DOC_RECEPTION,
+    DOC_SEPARATOR_200,
+    DOC_SEPARATOR_800
+} from "./transaction";
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 
@@ -194,9 +200,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             store:        [b.store],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
-            qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: true} , Validators.required],
+            qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: this.document != DOC_RECEPTION} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
-            price:        [b.price, Validators.required],
+            price:        [b.price || 0, Validators.required],
             vat:          [b.vat || 0, Validators.required],
             observation:  [b.observation],
             footerMemo:   [b.footerMemo],

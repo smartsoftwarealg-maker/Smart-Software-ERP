@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CMMSWorkDetail, Work } from '@ss/cmms/cmms-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
 import { DOC_WORK_ORDER } from '@ss/logistics/api-transaction';
 import { RequestImportComponent } from '@ss/cmms/cmms-ui';
+import { of, switchMap } from 'rxjs';
 
 @Component({
     selector: 'ss-work-order-detail',
@@ -14,6 +15,7 @@ import { RequestImportComponent } from '@ss/cmms/cmms-ui';
     styleUrls: ['./work-order-detail.component.css'],
 })
 export class WorkOrderDetailComponent extends CMMSWorkDetail {
+    private router = inject(Router);
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -21,6 +23,15 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
         click: () => this.importDocument(),
+    };
+
+    private generateBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-regular fa-wind-turbine',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'CMMS_GENERATE_REQUEST',
+        visible: true,
+        click: () => this.generateRequest(),
     };
 
     constructor(
@@ -56,8 +67,23 @@ export class WorkOrderDetailComponent extends CMMSWorkDetail {
     override setupForm(e: Work): UntypedFormGroup {
         if (!e.id) {
             this.shellSrv.addButton(this.importBtn);
+        } else {
+            this.shellSrv.addButton(this.generateBtn);
         }
         return super.setupForm(e);
+    }
+
+    private generateRequest() {
+        this.confirmationSrv
+            .confirm('STOCK_PARTS_REQUEST', 'CMMS_GENERATE_REQUEST')
+            .pipe(switchMap(res => res && this.id > 0? this.entitySrv.generateRequest(this.id) : of({id: 0})))
+            .subscribe(res => {
+                if (res?.id > 0) {
+                    this.router.navigate(['/app/cmms/parts-requests']).then();
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
+            });
     }
 }
 

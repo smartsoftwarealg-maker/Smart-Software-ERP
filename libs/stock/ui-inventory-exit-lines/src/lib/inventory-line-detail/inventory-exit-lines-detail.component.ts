@@ -7,7 +7,7 @@ import {
 @Component({
     selector: 'ss-inventory-exit-lines-detail',
     templateUrl: './inventory-exit-lines-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

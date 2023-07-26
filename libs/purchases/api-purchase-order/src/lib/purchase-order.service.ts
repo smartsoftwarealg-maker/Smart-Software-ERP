@@ -6,7 +6,7 @@ import {Transaction} from '@ss/logistics/api-transaction';
 import {Observable} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PurchaseOrderService extends BaseEntityService<Transaction> {
 

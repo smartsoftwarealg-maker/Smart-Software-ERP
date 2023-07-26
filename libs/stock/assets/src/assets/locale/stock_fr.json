@@ -58,5 +58,6 @@
     "MAX_QTY":                "Quantité de sécurité",
     "RECALCULATE_PRICES":     "Recalculer les prix",
     "PRICE_RECALCULATION":    "Recalcul du prix",
-    "CONSUMPTION_CANCELLATION": "Annulation consommation"
+    "CONSUMPTION_CANCELLATION": "Annulation consommation",
+    "PARTS_REQUEST":            "Demande de pièces"
 }
