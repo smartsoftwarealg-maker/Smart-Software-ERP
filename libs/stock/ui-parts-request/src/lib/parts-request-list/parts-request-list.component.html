@@ -1,0 +1,85 @@
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+
+            <ng-container matColumnDef="number">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{e.number}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="payMethod">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PAY_METHOD</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.payMethodName }}
+                </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.date | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.reference }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="docStatus">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.docStatus }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="referenceDocDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.referenceDocDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="dealer">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_DEALER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.dealerName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="agent">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.agentName }}
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+
+    <div class="doc-info">
+        <ss-doc-info
+            *ngIf="selected"
+            [displayedGroups]="['document','agent']"
+            [params]="{
+            documentId: selectedRow?.id,
+            documentURL:'/reception',
+            agentId : selectedRow.agent,
+            appId: 5
+        }">
+        </ss-doc-info>
+    </div>
+</div>

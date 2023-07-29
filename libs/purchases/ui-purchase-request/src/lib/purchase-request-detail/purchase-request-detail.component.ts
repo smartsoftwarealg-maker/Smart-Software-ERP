@@ -56,8 +56,4 @@ export class PurchaseRequestDetailComponent extends BaseTransactionDetailCompone
         return [];
     }
 
-
-    override readForm(): Transaction {
-        return this.form.getRawValue();
-    }
 }

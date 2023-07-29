@@ -18,7 +18,7 @@
                 <mat-error *ngIf="form.controls['parentId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_PLAN</mat-label>
                 <ss-auto-complete matInput
                                   [model]="planLookup"
@@ -28,7 +28,7 @@
                 <mat-error *ngIf="form.controls['planId'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_PRIORITY</mat-label>
                 <ss-auto-complete matInput
                                   [model]="priorityLookup"
@@ -38,7 +38,7 @@
                 <mat-error *ngIf="form.controls['priority'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="default-100">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_ROUTING</mat-label>
                 <ss-auto-complete matInput
                                   [model]="routingLookup"
@@ -55,7 +55,7 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_FAULT_CAUSE</mat-label>
                 <ss-auto-complete matInput
                                   [model]="causeLookup"
@@ -78,6 +78,11 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CMMS_DAYS_AHEAD</mat-label>
                 <input matInput formControlName="daysAhead" type="number" required >
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_ORDER_NUMBER</mat-label>
+                <input matInput formControlName="orderNumber" type="number" required >
             </mat-form-field>
 
         </form>

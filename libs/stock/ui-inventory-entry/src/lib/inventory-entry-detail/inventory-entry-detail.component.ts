@@ -15,7 +15,7 @@ import { InventoryEntryLinesService } from '@ss/stock/api-inventory-entry-lines'
 
 @Component({
     selector: 'ss-inventory-entry-detail',
-    styleUrls: ['../../../../common/assets/src/assets/transac-detail.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-entry-detail.component.html'
 })
 export class InventoryEntryDetailComponent extends BaseTransactionDetailComponent {

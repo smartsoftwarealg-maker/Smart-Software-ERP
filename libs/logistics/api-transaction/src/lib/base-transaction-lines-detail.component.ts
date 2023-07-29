@@ -10,7 +10,13 @@ import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, inject, OnInit } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
-import { DOC_CONSUMPTION, DOC_CORRECTION_OUT, DOC_SEPARATOR_200, DOC_SEPARATOR_800 } from './transaction';
+import {
+    DOC_CONSUMPTION,
+    DOC_CORRECTION_OUT,
+    DOC_RECEPTION,
+    DOC_SEPARATOR_200,
+    DOC_SEPARATOR_800
+} from "./transaction";
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 
@@ -71,6 +77,12 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             this.form.controls['price'].setValue(res.price);
         }
         this.articleStock = res.qty;
+    }
+
+    private resetPrice() {
+        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+            this.form.controls['price'].setValue(0.0);
+        }
     }
 
     ngOnInit() {
@@ -148,11 +160,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: () => {
-                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                        this.form.controls['price'].setValue(0.0);
-                    }
-                }
+                error: () => this.resetPrice()
             });
     }
 
@@ -161,11 +169,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: () => {
-                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                        this.form.controls['price'].setValue(0.0);
-                    }
-                }
+                error: () => this.resetPrice()
             });
     }
 
@@ -178,11 +182,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 .getPPrice(b.reference, b.store, b.transacId, b.id)
                 .subscribe({
                     next: res => this.updateStockAndValue(res),
-                    error: () => {
-                        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                            this.form.controls['price'].setValue(0.0);
-                        }
-                    }
+                    error: () => this.resetPrice()
                 });
         }
 
@@ -194,9 +194,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             store:        [b.store],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 }, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800}, Validators.required],
-            qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: true} , Validators.required],
+            qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: this.document != DOC_RECEPTION} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
-            price:        [b.price, Validators.required],
+            price:        [b.price || 0, Validators.required],
             vat:          [b.vat || 0, Validators.required],
             observation:  [b.observation],
             footerMemo:   [b.footerMemo],

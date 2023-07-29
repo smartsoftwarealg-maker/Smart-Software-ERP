@@ -5,16 +5,16 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
-import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { InventoryService } from '@ss/stock/api-inventory';
-import { InventoryEntryService } from "@ss/stock/api-inventory-entry";
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { InventoryExitService } from "@ss/stock/api-inventory-exit";
 
 @Component({
-    selector: 'ss-inventory-entry-list',
-    templateUrl: './inventory-entry-list.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-list.scss'],
+    selector: 'ss-inventory-exit-list',
+    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    templateUrl: './inventory-exit-list.component.html'
 })
-export class InventoryEntryListComponent extends BaseEntityListComponent<Transaction> {
+export class InventoryExitListComponent extends BaseEntityListComponent<Transaction> {
     displayedColumns = [
         'number',
         'date',
@@ -26,7 +26,7 @@ export class InventoryEntryListComponent extends BaseEntityListComponent<Transac
 
 
     constructor(
-        public inventorySrv: InventoryEntryService,
+        public inventorySrv: InventoryExitService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -34,6 +34,6 @@ export class InventoryEntryListComponent extends BaseEntityListComponent<Transac
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_INVENTORY_ENTRY');
+        super(inventorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_INVENTORY_EXIT');
     }
 }

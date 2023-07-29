@@ -21,7 +21,7 @@ import {
     USER_STORES_URL,
     STOCK_ARTICLE_URL,
     GENERATION_ACCOUNT_URL,
-    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL, STOCK_CONSUMPTION_CANCELLATION_URL
+    STOCK_ACCOUNT_URL, STOCK_PRICE_RECALCULATION_URL, STOCK_CONSUMPTION_CANCELLATION_URL, STOCK_PARTS_REUEST_URL
 } from '../common';
 import { ABS_INDEX_URL, LINES_DETAIL_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { ArticleDetailComponent, ArticleListComponent } from '@ss/stock/ui-article';
@@ -84,6 +84,11 @@ import {
 } from '@ss/accounting/accounting-accounts';
 import {loginGuard} from '../erp-guards';
 import { AppArchiveMainComponent } from '@ss/common/app-archive';
+import {
+    PartsRequestDetailComponent, PartsRequestLineDetailComponent,
+    PartsRequestLineListComponent,
+    PartsRequestListComponent
+} from '@ss/stock/ui-parts-request';
 
 export const mainRoutes: Routes = [
     {
@@ -218,6 +223,37 @@ export const mainRoutes: Routes = [
                         path: 'lines-detail',
                         children: [
                             { path: ':id', component: InventoryEntryLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
+        path: STOCK_PARTS_REUEST_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PartsRequestListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: PartsRequestDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: PartsRequestLineListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: PartsRequestLineDetailComponent },
                         ]
                     },
                     ...docInfoRoutes

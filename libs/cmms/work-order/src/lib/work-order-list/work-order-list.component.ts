@@ -16,6 +16,8 @@ import { CMMSWorkOrderService } from '../c-m-m-s-work-order.service';
 export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
     public Types = WORK_TYPES;
     displayedColumns = [
+        'number',
+        'date',
         'description',
         'assetDescription',
         'requesterDescription',

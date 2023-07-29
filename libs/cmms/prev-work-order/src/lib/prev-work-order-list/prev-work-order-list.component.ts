@@ -16,6 +16,8 @@ import { CMMSPrevWorkOrderService } from '../c-m-m-s-prev-work-order.service';
 export class PrevWorkOrderListComponent extends BaseEntityListComponent<Work> {
     public Types = WORK_TYPES;
     displayedColumns = [
+        'number',
+        'date',
         'description',
         'assetDescription',
         'requesterDescription',

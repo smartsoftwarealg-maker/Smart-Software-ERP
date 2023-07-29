@@ -1,3 +1,3 @@
 export * from './lib/stock-ui-inventory-exit-lines.module';
-export * from './lib/inventory-exit-lines-list.component';
-export * from './lib/inventory-exit-lines-detail.component';
+export * from './lib/inventory-line-list/inventory-exit-lines-list.component';
+export * from './lib/inventory-line-detail/inventory-exit-lines-detail.component';

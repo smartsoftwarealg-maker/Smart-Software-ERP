@@ -72,7 +72,9 @@ export interface PM {
     reference?: string;
     assetDescription?: string;
     planDescription?: string;
+    orderNumber?: number;
 }
+
 export interface RoutingPart {
     id: number;
     parentId: number;
