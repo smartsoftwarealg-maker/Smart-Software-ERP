@@ -43,7 +43,6 @@ export class ContractArticleListComponent implements OnInit {
     }
 
     showDetail(id: number) {
-        console.log(this.router.url, id);
         this.router.navigate([this.router.url, id]).then();
     }
 
