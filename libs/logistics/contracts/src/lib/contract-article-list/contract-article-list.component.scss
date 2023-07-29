@@ -11,7 +11,7 @@ mat-toolbar {
 
 .content-div {
     width: 100%;
-    min-width: 500px;
+    min-width: 600px;
     min-height: 250px;
 }
 
@@ -23,6 +23,7 @@ mat-toolbar {
 }
 
 .mat-column-price,
+.mat-column-vat,
 .mat-column-qty {
     flex: 1 1 100px;
     justify-content: flex-end;

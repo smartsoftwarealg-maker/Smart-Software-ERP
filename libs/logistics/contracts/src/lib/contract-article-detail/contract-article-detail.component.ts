@@ -24,7 +24,10 @@ export class ContractArticleDetailComponent implements OnInit {
                 private entitySrv: ContractArticleService,
                 private snackBarSrv: SnackBarService,
                 private confirmSrv: ConfirmationDialogService) {
-        this.articleLookup.onObjectSelected = a => this.form.controls['reference'].setValue(a.reference);
+        this.articleLookup.onObjectSelected = a => {
+            this.form.controls['reference'].setValue(a.reference);
+            this.form.controls['vat'].setValue(a.vatValue);
+        }
     }
 
     ngOnInit(): void {

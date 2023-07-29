@@ -50,5 +50,6 @@
     "OTHER_COST":       "Other cost",
     "GENERATE_REQUEST": "Generate parts request",
     "ASSIGNEE":         "Assigned to",
-    "ROOT_CAUSE":       "Root cause"
+    "ROOT_CAUSE":       "Root cause",
+    "EQUIPMENT":        "Equipment"
 }

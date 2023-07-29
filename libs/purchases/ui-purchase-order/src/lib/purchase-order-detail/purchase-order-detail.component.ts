@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, UntypedFormBuilder } from '@angular/forms';
 import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable} from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {
-    BaseTransactionDetailComponent,
-    DOC_PURCHASE_REQUEST,
-    DOC_QUOTATION, DOC_SUPPLIER_QUOTATION,
+    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_SUPPLIER_QUOTATION,
     Transaction
-} from "@ss/logistics/api-transaction";
+} from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
 import {MatDialog} from '@angular/material/dialog';
 import { PurchaseOrderLinesService } from '../purchase-order-lines.service';
@@ -56,7 +54,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
             .pipe(tap(x => this.groups = x));
     }
 
-    override setupForm(b: Transaction): FormGroup<any> {
+    override setupForm(b: Transaction): FormGroup {
         this.projectSrv.setParentId(b?.agent || 0);
         return super.setupForm(b);
     }
@@ -71,7 +69,11 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
         if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
             this.orderService
                 .consumeContract(this.id)
-                .subscribe(_ => {
+                .pipe(switchMap(() =>
+                    this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                        this.outlet?.component.loadDetailLines() :
+                        of(0)))
+                .subscribe(() => {
                     this.executionRef++;
                     this.shellSrv.setLoading(false);
                     this.snackBarSrv.showSuccessMessage();
@@ -81,7 +83,6 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
 
     protected importedDocuments(): Lookup[] {
         return [
-            // { id: DOC_PURCHASE_REQUEST, description: 'PURCHASES_PURCHASE_REQUEST' },
             { id: DOC_SUPPLIER_QUOTATION, description: 'PURCHASES_QUOTATION'}
         ];
     }

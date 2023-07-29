@@ -24,13 +24,13 @@
     "ROUTING":          "التوجيه",
     "PM":               "وقائي",
     "ALERTS":           "تنبيهات",
-    "SERVICE_REQUESTS": "طلبات الخدمة" ,",
+    "SERVICE_REQUESTS": "طلبات الخدمة" ,
     "WORK_ORDER":       "أمر العمل" ,
-    "PREV_WORK_ORDER":  "الأمر الوقائي" ,",
+    "PREV_WORK_ORDER":  "الأمر الوقائي" ,
     "REPEAT_MONTHS":    "كرر الشهور",
     "SCHEDULE_TYPE":    "نوع الجدول",
     "TIME":             "وقت",
-    "EITHER":           "الوقت أو القراءة" ,,
+    "EITHER":           "الوقت أو القراءة" ,
     "LAST_RELEASED":    "آخر إصدار" ,
     "NEXT_DUE":         "المقبل بسبب",
     "DAYS_AHEAD":       "الأيام المقبلة",
@@ -39,7 +39,7 @@
     "HOURS":            "ساعات",
     "COST":             "يكلف",
     "COSTS":            "التكاليف",
-    "SERVICE_REQUEST":  "طلب خدمة",,
+    "SERVICE_REQUEST":  "طلب خدمة",
     "CURATIVE":         "علاجي",
     "PREVENTIVE":       "وقائي",
     "INSPECTION":       "تقتيش",
@@ -50,5 +50,6 @@
     "OTHER_COST":       "تكلفة أخرى",
     "GENERATE_REQUEST": "طلب توليد قطع الغيار",
     "ASSIGNEE":         "مخصص ل",
-    "ROOT_CAUSE":       "السبب الجذري"
+    "ROOT_CAUSE":       "السبب الجذري",
+    "EQUIPMENT":        "معدات"
 }
