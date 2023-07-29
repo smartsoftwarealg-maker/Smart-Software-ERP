@@ -26,7 +26,6 @@ import { BaseTransactionLinesListComponent } from './base-transaction-lines-list
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
-    @ViewChild(RouterOutlet) outlet;
     private agentService = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
@@ -39,6 +38,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected currencySrv =  inject(CurrencyService);
     protected projectSrv = inject(SalesContractService);
+
+    @ViewChild(RouterOutlet) outlet;
 
     private importBtn: ToolbarButton = {
         disabled: false,
@@ -155,9 +156,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                         .pipe(
                             switchMap(() => this.loadEntity(this.queryId)),
                             tap(ent => this.form = this.setupForm(ent)),
-                            switchMap(() => this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                                this.outlet?.component.loadDetailLines() :
-                                of(0)))
+                            switchMap(() =>
+                                this.outlet?.component instanceof BaseTransactionLinesListComponent?
+                                    this.outlet?.component.loadDetailLines() :
+                                    of(0)))
                         .subscribe({
                             next: () => {
                                 this.executionRef++;

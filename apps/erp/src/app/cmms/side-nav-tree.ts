@@ -14,15 +14,15 @@ import {
     ABS_CMMS_ROOT_CAUSE_URL,
     ABS_CMMS_ROUTING_URL,
     ABS_CMMS_SOLUTION_URL,
-    ABS_CMMS_STATUS__URL,
     ABS_CMMS_ASSETS_URL,
     ABS_CMMS_END_TYPES,
     ABS_CMMS_STATUS_TYPES,
     ABS_CMMS_CLASSES,
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
-    ABS_SERVICE_REQUEST_URL, ABS_STOCK_PARTS_REQUEST_URL, ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL
-} from "../common";
+    ABS_SERVICE_REQUEST_URL,
+    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -59,7 +59,7 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'Office'
         },
         {
-            name: 'ASSETS',
+            name: 'CMMS_EQUIPMENT',
             icon: 'fa-solid fa-car-building',
             route: ABS_CMMS_ASSETS_URL,
             accessRights: 'Asset'
@@ -88,12 +88,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_SOLUTION_URL,
             accessRights: 'CMSolution'
         },
-        {
-            name: 'COMMON_STATUS',
-            icon: 'fa-solid fa-signal-bars',
-            route: ABS_CMMS_STATUS__URL,
-            accessRights: 'CMStatus'
-        },
+        // {
+        //     name: 'COMMON_STATUS',
+        //     icon: 'fa-solid fa-signal-bars',
+        //     route: ABS_CMMS_STATUS__URL,
+        //     accessRights: 'CMStatus'
+        // },
         {
             name: 'CMMS_PRIORITY',
             icon: 'fa-regular fa-list-ol',

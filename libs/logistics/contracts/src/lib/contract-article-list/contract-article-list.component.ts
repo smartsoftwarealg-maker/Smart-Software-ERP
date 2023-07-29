@@ -16,7 +16,7 @@ export class ContractArticleListComponent implements OnInit {
     selected: ProjectArticle | null = null;
     articles: ProjectArticle[] = [];
     pagination = PaginationModel.newInstance();
-    displayedColumns = ['reference', 'description', 'qty', 'price'];
+    displayedColumns = ['reference', 'description', 'qty', 'price', 'vat'];
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -43,7 +43,6 @@ export class ContractArticleListComponent implements OnInit {
     }
 
     showDetail(id: number) {
-        console.log(this.router.url, id);
         this.router.navigate([this.router.url, id]).then();
     }
 
