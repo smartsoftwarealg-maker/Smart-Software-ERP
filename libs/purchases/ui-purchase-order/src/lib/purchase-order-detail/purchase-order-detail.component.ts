@@ -71,8 +71,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
                 .consumeContract(this.id)
                 .pipe(switchMap(() =>
                     this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                        this.outlet?.component.loadDetailLines() :
-                        of(0)))
+                        this.outlet?.component.loadDetailLines() : of(0)))
                 .subscribe(() => {
                     this.executionRef++;
                     this.shellSrv.setLoading(false);
