@@ -108,7 +108,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             plannedStart: [e.plannedStart, Validators.required],
             actualStart:  [e.actualStart ],
             plannedDue:   [e.plannedDue  ],
-            actualDue:    [{ value: e.actualDue, disabled: e.validated }],
+            actualDue:    [{ value: e.actualDue || null, disabled: e.validated && typeof e.actualDue != 'undefined' }],
             fault:        [e.fault       ],
             routingId:    [e.routingId   ],
             cause:        [e.cause       ],

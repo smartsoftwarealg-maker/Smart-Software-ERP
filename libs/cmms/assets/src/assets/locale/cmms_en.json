@@ -48,5 +48,7 @@
     "MATERIAL_COST":    "Material cost",
     "TRAVEL_COST":      "Travel cost",
     "OTHER_COST":       "Other cost",
-    "GENERATE_REQUEST": "Generate parts request"
+    "GENERATE_REQUEST": "Generate parts request",
+    "ASSIGNEE":         "Assigned to",
+    "ROOT_CAUSE":       "Root cause"
 }

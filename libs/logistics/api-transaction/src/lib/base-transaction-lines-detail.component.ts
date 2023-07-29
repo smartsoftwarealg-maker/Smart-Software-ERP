@@ -79,6 +79,12 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.articleStock = res.qty;
     }
 
+    private resetPrice() {
+        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
+            this.form.controls['price'].setValue(0.0);
+        }
+    }
+
     ngOnInit() {
         super.ngOnInit();
         this.load();
@@ -154,11 +160,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: () => {
-                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                        this.form.controls['price'].setValue(0.0);
-                    }
-                }
+                error: () => this.resetPrice()
             });
     }
 
@@ -167,11 +169,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
-                error: () => {
-                    if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                        this.form.controls['price'].setValue(0.0);
-                    }
-                }
+                error: () => this.resetPrice()
             });
     }
 
@@ -184,11 +182,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 .getPPrice(b.reference, b.store, b.transacId, b.id)
                 .subscribe({
                     next: res => this.updateStockAndValue(res),
-                    error: () => {
-                        if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT) {
-                            this.form.controls['price'].setValue(0.0);
-                        }
-                    }
+                    error: () => this.resetPrice()
                 });
         }
 

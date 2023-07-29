@@ -43,7 +43,7 @@ import {
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
     BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL
-} from "../app/common";
+} from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';

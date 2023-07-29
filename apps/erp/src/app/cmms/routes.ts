@@ -28,7 +28,7 @@ import {
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
     CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes
-} from "../common";
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -52,7 +52,7 @@ import {
     CMMSRoutingPartsListComponent,
     CMMSRoutingPartsDetailComponent,
     CMMSRoutingArchiveComponent
-} from "@ss/cmms/lookups";
+} from '@ss/cmms/lookups';
 import { CMMSPlanDetailComponent, CMMSPlanListComponent } from '@ss/cmms/plans';
 import { CmmsAlertListComponent, PMDetailComponent, PmListComponent } from '@ss/cmms/pm';
 import { AssetReadingDetailComponent, AssetReadingListComponent, readingDetailGuard } from '@ss/cmms/asset-readings';
@@ -80,7 +80,7 @@ import {
     PartsRequestDetailComponent, PartsRequestLineDetailComponent,
     PartsRequestLineListComponent,
     PartsRequestListComponent
-} from "@ss/stock/ui-parts-request";
+} from '@ss/stock/ui-parts-request';
 
 export const cmmsRoutes: Routes = [
     {

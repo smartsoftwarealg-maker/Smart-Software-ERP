@@ -45,7 +45,6 @@ export class PMDetailComponent extends BaseEntityDetailComponent<PM>{
 
 
     public override setupForm(b: PM) {
-        // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id:           [b.id],
             centerId:     [b.centerId || this.loginSrv.appCtx.center],
@@ -59,6 +58,7 @@ export class PMDetailComponent extends BaseEntityDetailComponent<PM>{
             nextDue:      [b.nextDue, Validators.required],
             fault:        [b.fault],
             cause:        [b.cause],
+            orderNumber:  [{ value: b.orderNumber, disabled: true }],
         });
     }
 

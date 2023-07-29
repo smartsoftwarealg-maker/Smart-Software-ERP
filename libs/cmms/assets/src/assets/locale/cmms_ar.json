@@ -48,5 +48,7 @@
     "MATERIAL_COST":    "تكلفة المادة",
     "TRAVEL_COST":      "تكاليف السفر",
     "OTHER_COST":       "تكلفة أخرى",
-    "GENERATE_REQUEST": "طلب توليد قطع الغيار"
+    "GENERATE_REQUEST": "طلب توليد قطع الغيار",
+    "ASSIGNEE":         "مخصص ل",
+    "ROOT_CAUSE":       "السبب الجذري"
 }

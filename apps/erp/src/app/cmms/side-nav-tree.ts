@@ -21,7 +21,7 @@ import {
     ABS_CMMS_CLASSES,
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
-    ABS_SERVICE_REQUEST_URL, ABS_STOCK_PARTS_REQUEST_URL, ABS_CMMS_PARTS_REQUEST_URL
+    ABS_SERVICE_REQUEST_URL, ABS_STOCK_PARTS_REQUEST_URL, ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL
 } from "../common";
 
 export const cmmsNavTree: SideNavNode = {
@@ -118,12 +118,12 @@ export const cmmsNavTree: SideNavNode = {
             route: ABS_CMMS_PLANS_URL,
             accessRights: 'CMPlan'
         },
-        // {
-        //     name: 'CMMS_TRIGGERS',
-        //     icon: 'fa-solid fa-gun',
-        //     route: ABS_CMMS_TRIGGER_URL,
-        //     accessRights: 'CMTrigger'
-        // },
+        {
+            name: 'CMMS_TRIGGERS',
+            icon: 'fa-solid fa-gun',
+            route: ABS_CMMS_TRIGGER_URL,
+            accessRights: 'CMTrigger'
+        },
         {
             name: 'CMMS_READINGS',
             icon: 'fa-solid fa-gauge-low',

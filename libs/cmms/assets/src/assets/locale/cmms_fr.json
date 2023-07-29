@@ -48,6 +48,8 @@
     "MATERIAL_COST":    "Coût matériel",
     "TRAVEL_COST":      "Frais de voyage",
     "OTHER_COST":       "Autre coût",
-    "GENERATE_REQUEST": "Générer une demande de pièces"
+    "GENERATE_REQUEST": "Générer une demande de pièces",
+    "ASSIGNEE":         "Assigné à",
+    "ROOT_CAUSE":       "Cause première"
 }
 
