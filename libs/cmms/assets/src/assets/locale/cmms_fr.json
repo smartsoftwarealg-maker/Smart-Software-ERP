@@ -51,6 +51,8 @@
     "GENERATE_REQUEST": "Générer bon de pièces",
     "ASSIGNEE":         "Assigné à",
     "ROOT_CAUSE":       "Cause première",
-    "EQUIPMENT":        "Equipments"
+    "EQUIPMENT":        "Equipments",
+    "PRE_DUE":          "En avance",
+    "PAST_DUE":         "Post dû"
 }
 

@@ -51,5 +51,7 @@
     "GENERATE_REQUEST": "طلب توليد قطع الغيار",
     "ASSIGNEE":         "مخصص ل",
     "ROOT_CAUSE":       "السبب الجذري",
-    "EQUIPMENT":        "معدات"
+    "EQUIPMENT":        "معدات",
+    "PRE_DUE":          "قبل موعد الاستحقاق",
+    "PAST_DUE":         "بعد موعد التسليم"
 }

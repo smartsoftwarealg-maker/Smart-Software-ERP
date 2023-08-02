@@ -294,5 +294,7 @@
     "GOTO_DETAIL":                "Ouvrir la page de détail",
     "COST_CENTERS":               "Centres de coûts",
     "ADDRESS_AR":                 "Adresse ar",
-    "POSTAL_CODE":                "Code Postal"
+    "POSTAL_CODE":                "Code Postal",
+    "OPEN":                       "Ouvert",
+    "PENDING":                    "En attente"
 }

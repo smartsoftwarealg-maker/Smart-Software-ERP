@@ -51,5 +51,7 @@
     "GENERATE_REQUEST": "Generate parts request",
     "ASSIGNEE":         "Assigned to",
     "ROOT_CAUSE":       "Root cause",
-    "EQUIPMENT":        "Equipment"
+    "EQUIPMENT":        "Equipment",
+    "PRE_DUE":          "Pre due",
+    "PAST_DUE":         "Past due"
 }

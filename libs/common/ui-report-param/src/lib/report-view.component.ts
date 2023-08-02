@@ -281,6 +281,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 this.reportTree.data = this.parseTree(res.list, '');
                 super.refresh(callback);
             });
-
+    }
+    protected canShowProcessingStatus(): boolean {
+        return false;
     }
 }

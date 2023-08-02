@@ -1,0 +1,52 @@
+<h1 class="size"> {{ 'COMMON_DASHBOARD' | translate }}</h1>
+<div class="container size">
+    <mat-card>
+        <mat-card-title ><div translate>CMMS_WORK_ORDER</div></mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'past-due'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title ><div translate>CMMS_SERVICE_REQUEST</div></mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'pending'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title ><div translate>CMMS_EQUIPMENT</div></mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'assets-priority'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title ><div translate>CMMS_SERVICE_REQUEST</div></mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'sr-priority'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-title ><div translate>CMMS_WORK_ORDER</div></mat-card-title>
+        <mat-card-content>
+            <div class="chart_div">
+                <canvas [id]="'wo-priority'" class="chart"
+                        [ngStyle]="processing? {display: 'none'} : {display: 'block'}"></canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

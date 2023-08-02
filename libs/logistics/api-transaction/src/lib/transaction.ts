@@ -79,6 +79,7 @@ export interface Transaction {
     currencyRate: number;
     dirty: boolean;
     dealerName?: string;
+    altAgent?: string;
     agentName?: string;
     payMethodName?: string;
     project?: number;

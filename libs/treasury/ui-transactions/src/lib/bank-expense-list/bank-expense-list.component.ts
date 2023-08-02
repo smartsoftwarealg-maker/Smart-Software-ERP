@@ -22,15 +22,17 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 })
 export class BankExpenseListComponent extends BaseEntityListComponent<TTransaction> implements OnInit {
     private journalSrv = inject(UserJournalsService);
-    private readonly CASH_COLS = [
-        'description',
-        'agentName',
-        'groupName',
-        'income',
-        'expenses',
-        'pieceno',
-        'groupName',
-        'memo'];
+    private readonly CASH_COLS =
+        [
+            "description",
+            "agentName",
+            "groupName",
+            "income",
+            "expenses",
+            "pieceno",
+            "groupName",
+            "memo"
+        ];
 
     private readonly BANK_COLS = [
         'reference',
@@ -42,7 +44,8 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
         'expenses',
         'pieceno',
         'groupName',
-        'memo'];
+        'memo'
+    ];
 
     dateFilter: FormControl<Date>    = null;
     journalFilter: FormControl<number | null> = null;

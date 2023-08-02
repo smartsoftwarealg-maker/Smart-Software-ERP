@@ -1,0 +1,15 @@
+.size {
+    width: 80%;
+    max-width: 700px;
+    margin: 4px auto;
+}
+
+.button__div {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+.mat-column-fullNme {
+    flex: 2 1 120px;
+}

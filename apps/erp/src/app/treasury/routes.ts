@@ -25,7 +25,12 @@ import {
     ProcessedCheckDetailComponent, CheckMatchingListComponent
 } from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
-import { JournalListComponent, JournalDetailComponent } from '@ss/treasury/ui-journal';
+import {
+    JournalListComponent,
+    JournalDetailComponent,
+    JournalUserListComponent,
+    JournalUserDetailComponent
+} from '@ss/treasury/ui-journal';
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {
@@ -138,7 +143,17 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: JournalDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '',     redirectTo: 'list', pathMatch: 'full' },
+                    {
+                        path: 'list',
+                        children: [
+                            { path: '', component: JournalUserListComponent, pathMatch: 'full' },
+                            { path: ':id',  component: JournalUserDetailComponent }
+                        ]
+                    }
+                ]
             },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]

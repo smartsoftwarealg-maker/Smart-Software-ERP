@@ -216,6 +216,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
             dealer: [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
             agent: [b.agent, this.requireAgent()? Validators.required : null],
+            altAgent: [b.altAgent],
             project: [b.project],
             locked: [b.locked || false, Validators.required],
             dirty: [!b.dirty || false, Validators.required]

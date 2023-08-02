@@ -47,5 +47,6 @@
     "INVALID_CREDENTIALS":           "Invalid credentials",
     "LOCAL_CURRENCY":                "Local currency is not allowed here",
     "EMPTY_DOCUMENTS":               "The following documents are empty:",
-    "INVALID_CARD":                  "This part's card is not balanced"
+    "INVALID_CARD":                  "This part's card is not balanced",
+    "IS_LOCAL_CURRENCY":             "Import reception cannot be in local currency."
 }

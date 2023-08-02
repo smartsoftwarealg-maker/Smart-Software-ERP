@@ -1,50 +1,42 @@
-$table_width: 800px;
 
 .table-container {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     height: calc(100% - 64px);
     display: block;
-    margin: auto;
-    max-width: $table_width;
-    overflow: auto;
+    margin: 0 auto;
+    overflow-x: auto;
     padding-top: 8px;
 }
+
 .pagination-container {
     max-width: 800px;
     margin: 0 auto;
 }
-.content-div {
-    width: $table_width;
-    min-height: 320px;
-}
 
 mat-table {
     height: 100%;
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
+    width: 100%;
+    min-width: 700px;
 }
 
 .mat-column-description {
-    flex: 0 0 160px;
+    flex: 2 1 200px;
     padding-left: 4px !important;
 }
 
 .mat-column-jType {
-    flex: 0 0 160px;
+    flex: 1 1 160px;
     padding-left: 4px !important;
 }
 
 .mat-column-bankId {
-    flex: 0 0 150px;
+    flex: 1 1 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-bankAccount {
-    flex: 0 0 180px;
+    flex: 1 1 180px;
     padding-left: 4px !important;
 }

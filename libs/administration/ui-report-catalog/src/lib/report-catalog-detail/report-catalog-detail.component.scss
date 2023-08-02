@@ -1,10 +1,9 @@
-:host {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    width: 600px;
-    min-width: 320px;
-    padding-top: 24px;
+mat-card {
+    width: 90%;
+    max-width: 900px;
+    margin: 16px auto;
+    padding: 16px;
+    border-radius: 1.4em;
 }
 
 mat-expansion-panel {
@@ -20,5 +19,4 @@ mat-expansion-panel {
         border-style: dotted;
         margin-bottom: 20px;
     }
-
 }

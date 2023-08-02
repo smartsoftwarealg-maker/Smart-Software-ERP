@@ -290,5 +290,7 @@
     "GOTO_DETAIL":                "افتح صفحة التفاصيل",
     "COST_CENTERS":               "مراكز التكلفة",
     "ADDRESS_AR":                 "العنوان بالعربية",
-    "POSTAL_CODE":                "رمز بريدي"
+    "POSTAL_CODE":                "رمز بريدي",
+    "OPEN":                       "مفتوح",
+    "PENDING":                    "قيد الانتظار"
 }
