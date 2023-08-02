@@ -7,9 +7,9 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
-import { JournalListComponent } from './journal-list.component';
+import { JournalListComponent } from './journal-list/journal-list.component';
 import { LookupModule } from '@ss/common/api-lookup';
-import { JournalDetailComponent } from './journal-detail.component';
+import { JournalDetailComponent } from './journal-detail/journal-detail.component';
 
 @NgModule({
     imports: [

@@ -27,8 +27,8 @@ import {
     CMMS_PREV_ORDER_URL,
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
-    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes
-} from '../common';
+    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes, CMMS_CHARTS_URL
+} from "../common";
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -81,6 +81,7 @@ import {
     PartsRequestLineListComponent,
     PartsRequestListComponent
 } from '@ss/stock/ui-parts-request';
+import { CMMSChartsComponent } from '@ss/cmms/cmms-charts';
 
 export const cmmsRoutes: Routes = [
     {
@@ -555,6 +556,10 @@ export const cmmsRoutes: Routes = [
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
+    },
+
+    {
+        path: CMMS_CHARTS_URL, component: CMMSChartsComponent
     },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

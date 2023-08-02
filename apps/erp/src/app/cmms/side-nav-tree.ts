@@ -21,8 +21,8 @@ import {
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
     ABS_SERVICE_REQUEST_URL,
-    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL
-} from '../common';
+    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL
+} from "../common";
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -171,6 +171,12 @@ export const cmmsNavTree: SideNavNode = {
             icon: 'fa-solid fa-car-battery',
             route: ABS_CMMS_PARTS_REQUEST_URL,
             accessRights: 'PartsRequest'
+        },
+        {
+            name: 'COMMON_CHARTS',
+            icon: 'fa-duotone fa-chart-simple',
+            route: ABS_CMMS_CHARTS_URL,
+            accessRights: 'Chart'
         },
     ],
     accessRights: 'CMMS'

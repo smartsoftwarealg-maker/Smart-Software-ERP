@@ -28,7 +28,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     ];
 
     constructor(
-        public reportCatalogService: ReportCatalogService,
+        public override entitySrv: ReportCatalogService,
         public reportService: ReportAppsService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -37,7 +37,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(reportCatalogService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_REPORT_CATALOG');
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ADMINISTRATION_REPORT_CATALOG');
         this.pagination.pageSize = 10;
     }
 
@@ -57,16 +57,9 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
         return super.processLoadedData(data);
     }
 
-    // readAppFromQueryParam() {
-    //     this.route.queryParams.subscribe(x => {
-    //         if (x && x.app) {
-    //             this.appForm.updateValueAndValidity();
-    //         }
-    //     });
-    // }
-
 
     override getPage(): Observable<ReportsCatalog[]> {
+        this.reportService.base = this.applicationsCtrl.value;
         const params = new HttpParams().set('base', this.applicationsCtrl.value);
         return this.entitySrv
             .getPage(this.pagination, this.filter, this.sortBy, params);

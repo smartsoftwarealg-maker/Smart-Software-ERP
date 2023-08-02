@@ -86,4 +86,4 @@ export const treasuryNavTree: SideNavNode = {
             accessRights: 'Report'
         },
     ]
-}
+};

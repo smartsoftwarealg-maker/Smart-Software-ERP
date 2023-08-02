@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from "@angular/core";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { JournalService, Journal } from '@ss/treasury/api-journal';
+import { JournalService, Journal, UserJournalsService, JournalUserService } from "@ss/treasury/api-journal";
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -16,6 +16,7 @@ import { tap } from 'rxjs/operators';
     templateUrl: './journal-detail.component.html'
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {
+    private journalUserSrv = inject(JournalUserService);
     banks: Bank[];
     journalTypes = [
         {id: 1, description: 'CASH'},
@@ -39,6 +40,12 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> i
     public override preload(): Observable<any> {
         return this.lookupsSrv.getBanks()
             .pipe(tap(x => { this.banks = x }));
+    }
+
+    override loadEntity(id: number): Observable<Journal> {
+        this.journalUserSrv.setParentId(id);
+        console.log('_________________________________________________', id);
+        return super.loadEntity(id);
     }
 
     public override setupForm(a: Journal) {

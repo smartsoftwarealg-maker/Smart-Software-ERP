@@ -121,6 +121,9 @@
       "@ss/cmms/cmms-api": [
         "libs/cmms/cmms-api/src/index.ts"
       ],
+      "@ss/cmms/cmms-charts": [
+        "libs/cmms/cmms-charts/src/index.ts"
+      ],
       "@ss/cmms/cmms-ui": [
         "libs/cmms/cmms-ui/src/index.ts"
       ],
