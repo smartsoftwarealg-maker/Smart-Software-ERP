@@ -148,5 +148,6 @@
     "WIFE_AR":           "Conjoint (Ar)",
     "POST_AR":           "Poste (Ar)",
     "PERSONAL_INFO":     "Informations personnelles",
-    "ARCHIVE_VIEWER":    "Visualisation archives"
+    "ARCHIVE_VIEWER":    "Visualisation archives",
+    "IS_DRIVER":         "Conductrice"
 }

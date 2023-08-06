@@ -1,16 +1,14 @@
-$table_width: 592px;
+$table_width: 700px;
 
-:host {
-    display: inline-block;
-    width: 100%;
+.size {
+    width: 90%;
+    max-width: 800px;
+    margin: 4px auto;
 }
 
 .table-container {
-    width: 100%;
-    display: block;
-    margin: auto;
-    max-width: $table_width;
-    overflow: auto;
+    min-height: calc(100% - 56px);
+    overflow-x: auto;
 }
 
 .content-div {
@@ -27,27 +25,22 @@ $table_width: 592px;
 
 
 .mat-column-bank {
-    flex: 0 0 184px;
+    flex: 2 1 250px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
 .mat-column-bookYear {
-    flex: 0 0 84px;
+    flex: 1 1 84px;
+    justify-content: center;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
 
-.mat-column-fromNumber {
-    flex: 0 0 114px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
-}
-
+.mat-column-fromNumber,
 .mat-column-toNumber {
-    flex: 0 0 114px;
+    flex: 1 1 114px;
+    justify-content: center;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
-
-

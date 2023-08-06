@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { JournalService, Journal, UserJournalsService, JournalUserService } from "@ss/treasury/api-journal";
+import { JournalService, Journal, JournalUserService } from "@ss/treasury/api-journal";
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';

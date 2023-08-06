@@ -149,5 +149,6 @@
     "WIFE_AR":           "Spouse (Ar)",
     "POST_AR":           "Post (Ar)",
     "PERSONAL_INFO":     "Personal information",
-    "ARCHIVE_VIEWER":    "Archive viewer"
+    "ARCHIVE_VIEWER":    "Archive viewer",
+    "IS_DRIVER":         "Driver"
 }

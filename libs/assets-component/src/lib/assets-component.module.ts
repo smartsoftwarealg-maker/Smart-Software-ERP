@@ -50,21 +50,23 @@ import { AssetsTransferComponent } from './assets-transfer/assets-transfer.compo
 import { InventoryImportComponent } from './inventory-import/inventory-import.component';
 import { AssetAppointmentListComponent } from './asset-appointment-list/asset-appointment-list.component';
 import {AgentAssetsListComponent} from './agent-assets-list/agent-assets-list.component';
+import { QRCodeModule } from "angularx-qrcode";
 
 @NgModule({
-    imports: [
-        CommonModule,
-        MaterialModule,
-        CommonUiLangModule,
-        CommonUiImageInputModule,
-        UiPaginationModule,
-        CommonUiConfirmationDialogModule,
-        CommonUiAutoCompleteModule,
-        CommonUiDatepickerModule,
-        RouterModule,
-        CustomAttributesModule,
-        AppArchiveModule,
-    ],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    CommonUiLangModule,
+    CommonUiImageInputModule,
+    UiPaginationModule,
+    CommonUiConfirmationDialogModule,
+    CommonUiAutoCompleteModule,
+    CommonUiDatepickerModule,
+    RouterModule,
+    CustomAttributesModule,
+    AppArchiveModule,
+    QRCodeModule
+  ],
     declarations: [
         AssetsDetailComponent,
         AssetsListComponent,

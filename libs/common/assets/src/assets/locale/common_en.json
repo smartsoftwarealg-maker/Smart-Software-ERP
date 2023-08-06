@@ -292,5 +292,6 @@
     "ADDRESS_AR":                "Address ar",
     "POSTAL_CODE":               "Postal code",
     "OPEN":                      "Open",
-    "PENDING":                   "Pending"
+    "PENDING":                   "Pending",
+    "CONTRACTS":                 "Contracts"
 }

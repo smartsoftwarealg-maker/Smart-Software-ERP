@@ -388,6 +388,9 @@
       "@ss/organizations/ui-organizations": [
         "libs/organizations/ui-organizations/src/index.ts"
       ],
+      "@ss/park/driver-lib": [
+        "libs/park/driver-lib/src/index.ts"
+      ],
       "@ss/patients/api-patient": [
         "libs/patients/api-patient/src/index.ts"
       ],

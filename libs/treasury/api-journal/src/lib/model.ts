@@ -1,3 +1,4 @@
+export const JOURNAL_TREASURY_USERS_URL = '/users';
 export const JOURNAL_USERS_URL = '/users';
 export const JOURNALS_URL      = '/treasury/journals';
 

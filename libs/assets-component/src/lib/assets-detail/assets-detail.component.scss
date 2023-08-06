@@ -53,3 +53,18 @@ $color: hsl(100, 60%, 50%, .7);
 mat-expansion-panel-header {
     margin-bottom: 8px;
 }
+
+.qr {
+    display: flex;
+    align-content: center;
+    gap: 1em;
+    justify-content: space-between;
+}
+.qr span {
+    display: flex;
+    align-items: center;
+}
+.count_div {
+    max-width: 200px;
+}
+
