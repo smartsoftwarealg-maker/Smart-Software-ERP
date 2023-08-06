@@ -12,6 +12,7 @@
     <mat-form-field id="reference2" class="default-25 sm-50">
         <mat-label>
             <spna translate>COMMON_REFERENCE</spna>
+            2
         </mat-label>
         <input matInput formControlName="reference2" type="text" maxlength="20">
         <mat-error *ngIf="form.controls['reference2'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
@@ -29,11 +30,11 @@
         <mat-error *ngIf="form.controls['serial_no'].invalid" translate>COMMON_FIELD_MAX_LENGTH</mat-error>
     </mat-form-field>
 
-<!--        <mat-form-field id="accountno" class="default-50 sm-100">-->
-<!--            <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
-<!--            <input matInput formControlName="accountno" type="text" required>-->
-<!--            <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
-<!--        </mat-form-field>-->
+    <!--        <mat-form-field id="accountno" class="default-50 sm-100">-->
+    <!--            <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>-->
+    <!--            <input matInput formControlName="accountno" type="text" required>-->
+    <!--            <mat-error *ngIf="form.controls['accountno'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>-->
+    <!--        </mat-form-field>-->
 
     <mat-form-field class="default-50 sm-100">
         <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
@@ -98,7 +99,7 @@
         <mat-label translate>COMMON_MARK</mat-label>
         <ss-auto-complete matInput
                           [model]="markAutoCompleteModel"
-                          [canAdd] = "isAQS"
+                          [canAdd]="isAQS"
                           formControlName="mark">
         </ss-auto-complete>
     </mat-form-field>
@@ -117,14 +118,21 @@
     </mat-form-field>
 
 
-    <mat-form-field class="default-50 sm-50" *ngIf="!isAQS">
-        <mat-label translate>ASSET_ITEM_COUNT</mat-label>
-        <input matInput formControlName="itemCount" type="number">
-    </mat-form-field>
-
-
+    <div class="default-50 sm-100 qr">
+        <mat-form-field *ngIf="!isAQS" class="count_div">
+            <mat-label translate>ASSET_ITEM_COUNT</mat-label>
+            <input matInput formControlName="itemCount" type="number">
+        </mat-form-field>
+        <div class="qr">
+            <span translate>ASSET_BAR_CODE</span>
+            <qrcode [qrdata]="form.controls['reference'].value" [width]="64"
+                    [errorCorrectionLevel]="'M'" [title]="'ASSET_BAR_CODE'|translate">
+            </qrcode>
+        </div>
+    </div>
     <mat-accordion>
-        <mat-expansion-panel *ngIf="!isCMMS" #depreciation expanded="false" [class]="depreciation.expanded? 'b-primary-expansion-panel' : ''">
+        <mat-expansion-panel *ngIf="!isCMMS" #depreciation expanded="false"
+                             [class]="depreciation.expanded? 'b-primary-expansion-panel' : ''">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_DEPRECIATION
@@ -148,7 +156,7 @@
 
             <mat-form-field class="default-25 sm-50">
                 <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
-                <input matInput formControlName="historicValue" type="number" >
+                <input matInput formControlName="historicValue" type="number">
                 <mat-error *ngIf="form.controls['historicValue'].invalid" translate>COMMON_FIELD_REQUIRED</mat-error>
             </mat-form-field>
 
@@ -410,7 +418,7 @@
                 </div>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)" >
+        <mat-expansion-panel *ngIf="!isCMMS" #costs expanded="false" [class]="getPanelHeaderClass('costs', costs)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_COSTS
@@ -419,7 +427,8 @@
             <ss-asset-costs-list [assetId]="id" [editable]="isEditable"></ss-asset-costs-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false" [class]="getPanelHeaderClass('revaluations', revaluations)">
+        <mat-expansion-panel *ngIf="!isCMMS" #revaluations expanded="false"
+                             [class]="getPanelHeaderClass('revaluations', revaluations)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_REVALUATIONS
@@ -428,7 +437,8 @@
             <ss-asset-revaluation-list [assetId]="id" [editable]="isEditable"></ss-asset-revaluation-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!isCMMS" #bockings expanded="false" [class]="getPanelHeaderClass('bockings', bockings)">
+        <mat-expansion-panel *ngIf="!isCMMS" #bockings expanded="false"
+                             [class]="getPanelHeaderClass('bockings', bockings)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_BLOCKINGS
@@ -437,7 +447,8 @@
             <ss-asset-blocking-list [assetId]="id" [editable]="isEditable"></ss-asset-blocking-list>
         </mat-expansion-panel>
 
-        <mat-expansion-panel *ngIf="!isCMMS" #appointments expanded="false" [class]="getPanelHeaderClass('appointments', appointments)">
+        <mat-expansion-panel *ngIf="!isCMMS" #appointments expanded="false"
+                             [class]="getPanelHeaderClass('appointments', appointments)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
                     ASSET_APPOINTMENTS

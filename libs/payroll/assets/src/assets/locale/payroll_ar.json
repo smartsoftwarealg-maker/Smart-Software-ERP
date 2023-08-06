@@ -149,5 +149,6 @@
     "WIFE_AR":           "الزوج (باللغة العربية)" ,
     "POST_AR":           "Post (Ar)",
     "PERSONAL_INFO":     "معلومات شخصية",
-    "ARCHIVE_VIEWER":    "استعراض الأرشيف"
+    "ARCHIVE_VIEWER":    "استعراض الأرشيف",
+    "IS_DRIVER":         "سائق"
 }

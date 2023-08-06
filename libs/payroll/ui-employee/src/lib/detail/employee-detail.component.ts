@@ -14,6 +14,7 @@ import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Employee } from '@ss/employee-services/employee-services';
+import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 
 @Component({
     selector: 'ss-employee-detail',
@@ -23,6 +24,7 @@ import { Employee } from '@ss/employee-services/employee-services';
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
+    private archiveSrv = inject(AppArchiveService);
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
     readonly PAYROLL_RANK = 3;
@@ -42,13 +44,13 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         { id: 4, description: 'PAYROLL_POST' },
     ];
     constructor(
-        public employeeSrv: EmployeeService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public httpSrv: HttpService,
         public override confirmationSrv: ConfirmationDialogService,
+        public employeeSrv: EmployeeService,
+        public httpSrv: HttpService,
         public infoSrv: FixedElementsEntryService,
         private lookupsSrv: LookupsService,
         private router: Router) {
@@ -69,6 +71,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     public override setupForm(p: Employee) {
+        this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
         this.infoSrv.load()
             .pipe(switchMap(_ => this.infoSrv.get(p.id)))
             .subscribe(res => {
@@ -86,36 +89,33 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             p.sex = 1;
         }
 
-        const form = this.formBuilder.group({
+        return this.formBuilder.group({
             // birth info
-            id: p.id,
-            firstName: [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            lastName: [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            sex: [p.sex, Validators.required],
-            birthDate: [p.birthDate, Validators.required],
-            birthPlace: [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
-            father: [p.father, Validators.maxLength(64)],
-            mother: [p.mother, Validators.maxLength(64)],
-            nationality: [p.nationality],
-            // social info
-            address1: [p.address1, Validators.maxLength(128)],
-            email: [p.email, Validators.maxLength(64)],
-            phone: [p.phone, Validators.maxLength(32)],
-            mobile: [p.mobile, Validators.maxLength(32)],
-            ss_Number: [p.ss_Number],
-            maritalStatus: p.maritalStatus,
+            id:            [p.id],
+            firstName:     [p.firstName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            lastName:      [p.lastName, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            sex:           [p.sex, Validators.required],
+            birthDate:     [p.birthDate, Validators.required],
+            birthPlace:    [p.birthPlace, Validators.compose([Validators.required, Validators.maxLength(64)])],
+            father:        [p.father, Validators.maxLength(64)],
+            mother:        [p.mother, Validators.maxLength(64)],
+            nationality:   [p.nationality],
+            // social inf  o
+            address1:      [p.address1, Validators.maxLength(128)],
+            email:         [p.email, Validators.maxLength(64)],
+            phone:         [p.phone, Validators.maxLength(32)],
+            mobile:        [p.mobile, Validators.maxLength(32)],
+            ss_Number:     [p.ss_Number],
+            maritalStatus: [p.maritalStatus],
             // arabic info
-            firstNameAr: [p.firstNameAr, Validators.maxLength(64)],
-            lastNameAr: [p.lastNameAr, Validators.maxLength(64)],
-            birthPlaceAr: [p.birthPlaceAr, Validators.maxLength(64)],
-            fatherAr: [p.fatherAr, Validators.maxLength(64)],
-            motherAr: [p.motherAr, Validators.maxLength(64)],
-            birthCity:[p.birthCity]
+            firstNameAr:   [p.firstNameAr, Validators.maxLength(64)],
+            lastNameAr:    [p.lastNameAr, Validators.maxLength(64)],
+            birthPlaceAr:  [p.birthPlaceAr, Validators.maxLength(64)],
+            fatherAr:      [p.fatherAr, Validators.maxLength(64)],
+            motherAr:      [p.motherAr, Validators.maxLength(64)],
+            birthCity:     [p.birthCity],
+            is_driver:     [p.is_driver]
         });
-        // if (!this.isEditable) {
-        //     form.disable();
-        // }
-        return form;
     }
 
     public isControlValid(c: AbstractControl): boolean {

@@ -31,7 +31,7 @@ export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBoo
         public override confirmationSrv: ConfirmationDialogService,
         public httpSrv: HttpService,
         public router: Router) {
-        super(checkBookSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_EDIT_CHECKBOOKS');
+        super(checkBookSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_CHECKBOOKS');
     }
 
     public override preload(): Observable<any> {

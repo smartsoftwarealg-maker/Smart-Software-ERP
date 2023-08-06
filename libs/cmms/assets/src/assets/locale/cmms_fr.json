@@ -53,6 +53,7 @@
     "ROOT_CAUSE":       "Cause première",
     "EQUIPMENT":        "Equipments",
     "PRE_DUE":          "En avance",
-    "PAST_DUE":         "Post dû"
+    "PAST_DUE":         "Post dû",
+    "READING_DATE":     "Date de lecture"
 }
 

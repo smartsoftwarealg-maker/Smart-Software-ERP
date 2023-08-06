@@ -7,8 +7,8 @@ import { MaterialModule } from '@ss/common/api-common';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
 import { BankDescriptionPipe } from '@ss/administration/api-bank';
-import { CheckBookDetailComponent } from './check-book-detail.component';
-import { CheckBookListComponent } from './check-book-list.component';
+import { CheckBookDetailComponent } from './check-book-detail/check-book-detail.component';
+import { CheckBookListComponent } from './check-book-list/check-book-list.component';
 
 @NgModule({
     imports: [
