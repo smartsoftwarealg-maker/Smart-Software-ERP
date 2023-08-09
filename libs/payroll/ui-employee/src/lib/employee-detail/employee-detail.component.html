@@ -1,5 +1,3 @@
-<div style="height: 16px"></div>
-
 <form *ngIf="form" novalidate [formGroup]="form" style="min-height: 100%; display: unset">
 
     <div style="height: 16px"></div>
@@ -96,6 +94,25 @@
                 </mat-error>
             </mat-form-field>
 
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
+                <mat-select formControlName="maritalStatus">
+                    <mat-option [value]="null"></mat-option>
+                    <mat-option *ngFor="let v of maritalStatuses" [value]="v.id">
+                        {{v.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field id="ss_Number" class="default-50 sm-100">
+                <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
+                <input matInput formControlName="ss_Number" type="text" maxlength="32">
+                <mat-error *ngIf="form.controls['ss_Number'].hasError('maxlength')" [translate]="{maxLen: 32}">
+                    COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            </mat-form-field>
+
+            <mat-checkbox formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
         </div>
     </div>
 
@@ -112,10 +129,10 @@
 
         </mat-expansion-panel-->
 
-        <mat-expansion-panel #socailInfoPanel [class]="getPanelHeaderClass('socialInfo', socailInfoPanel)">
+        <mat-expansion-panel #socialInfoPanel [class]="getPanelHeaderClass('socialInfo', socialInfoPanel)">
             <mat-expansion-panel-header>
                 <mat-panel-title translate>
-                    PAYROLL_SOCIAL_INFO
+                    ADMINISTRATION_CONTACT
                 </mat-panel-title>
             </mat-expansion-panel-header>
 
@@ -153,25 +170,6 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field id="ss_Number" class="default-50 sm-100">
-                <mat-label translate>PAYROLL_SS_NUMBER</mat-label>
-                <input matInput formControlName="ss_Number" type="text" maxlength="32">
-                <mat-error *ngIf="form.controls['ss_Number'].hasError('maxlength')" [translate]="{maxLen: 32}">
-                    COMMON_FIELD_MAX_LENGTH
-                </mat-error>
-            </mat-form-field>
-
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
-                <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
-                <mat-select formControlName="maritalStatus">
-                    <mat-option [value]="null"></mat-option>
-                    <mat-option *ngFor="let v of maritalStatuses" [value]="v.id">
-                        {{v.description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-checkbox formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
         </mat-expansion-panel>
 
         <mat-expansion-panel #arabicInfoPanel [class]="getPanelHeaderClass('arabicInfo', arabicInfoPanel)">

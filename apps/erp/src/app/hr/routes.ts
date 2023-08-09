@@ -95,7 +95,7 @@ import {
 } from '@ss/payroll/api-employee';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import {DashboardComponent} from '@ss/dashboard';
-import {AppArchiveDetailComponent, AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-archive';
+import {AppArchiveDetailComponent, AppArchiveListComponent} from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
 import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
 

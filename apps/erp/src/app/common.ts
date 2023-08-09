@@ -40,7 +40,7 @@ export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 export const CMMS_APP_URL = 'cmms';
-
+export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
@@ -358,6 +358,8 @@ export const ACC_FILES_URL            = 'acc-files';
 export const ACC_PROJECTS_URL         = 'acc-projects';
 export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
 
+// park
+export const PARK_DRIVER_URL = 'driver';
 // #############
 // # FULL URLS #
 // #############
@@ -612,6 +614,9 @@ export const ABS_FURNITURE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_U
 export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_ASSIGNMENT_URL].join('/');
 export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
 export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
+
+// Park
+export const ABS_PARK_DRIVER_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DRIVER_URL].join('/');
 
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');

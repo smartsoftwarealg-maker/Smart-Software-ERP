@@ -1,0 +1,175 @@
+.size {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+mat-tab-group {
+    min-height: calc(100% - 64px);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.employee-card {
+    padding: 5px;
+    overflow: hidden;
+    margin-top: 16px;
+    border-radius: 8px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 300px;
+    height: 120px;
+    gap: 5px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    .person-photo {
+        flex: 0 0 120px;
+        height: 120px;
+        position: relative;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .fa-spin {
+            font-size: 200%;
+        }
+
+        .gender-icon {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            font-size: 200%;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .employee-details {
+        flex: 0 1 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        div {
+            width: 100%;
+        }
+    }
+}
+
+.main-table-scroll {
+    overflow: auto;
+    margin: 0 auto;
+    width: 90%;
+    min-height: 100%;
+}
+
+
+.content-div {
+    width: 100%;
+    min-width: 1000px;
+    height: 100%;
+    min-height: calc(100% - 64px);
+}
+
+// keep the material design specs
+//.mat-row, .mat-header-row {
+//    padding-right: 16px;
+//    padding-left: 16px;
+//}
+
+.person-photo {
+    margin: 3px;
+    width: 64px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .fa-spin {
+        font-size: 200%;
+    }
+
+    .gender-icon {
+        position: absolute;
+        bottom: 0;
+        font-size: 200%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.mat-column-photo {
+    flex: 0 0 96px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-id {
+    flex: 0 0 80px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-fullname,
+.mat-column-post {
+    flex: 1 1 200px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-birth {
+    flex: 1 1 150px;
+}
+
+.mat-column-address {
+    flex: 1 1 240px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.mat-column-msDescription {
+    flex: 0 0 90px;
+}
+
+
+.pagination-container {
+    flex-grow: 0;
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+

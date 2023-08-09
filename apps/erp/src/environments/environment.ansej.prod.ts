@@ -30,8 +30,8 @@ import {
     TREASURY_APP_URL,
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
-    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, ARCH_VIEWER_URL
-} from '../app/common';
+    CONTRACTS_APP_URL, WORK_FLOW_APP_URL, BUDGET_BUDGET_URL, ARCH_VIEWER_URL, PARK_APP_URL
+} from "../app/common";
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {MainPageComponent} from '../../../../libs/common/ui-main-page/src';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -168,6 +168,10 @@ export const appRoutes: Routes =  [
     {
         path: CONTRACTS_APP_URL,
         loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+    },
+    {
+        path: PARK_APP_URL,
+        loadChildren: () => import('../app/park/park.module').then(m => m.ParkModule)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

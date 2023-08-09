@@ -22,7 +22,7 @@ import {
     ABS_CMMS_OFFICES_URL,
     ABS_SERVICE_REQUEST_URL,
     ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL
-} from "../common";
+} from '../common';
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',

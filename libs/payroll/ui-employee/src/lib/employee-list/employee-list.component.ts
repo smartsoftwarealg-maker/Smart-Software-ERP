@@ -4,7 +4,6 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import { Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -12,10 +11,6 @@ import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/c
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Employee } from '@ss/employee-services/employee-services';
 
-interface Lookup {
-    id: number;
-    description: string;
-}
 
 @Component({
     selector: 'ss-employee-list',
@@ -29,13 +24,9 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         'fullname',
         'birth',
         'address',
-        'maritalStatus',
+        'msDescription',
         'post'
     ];
-
-    maritalStatus: { [id: number]: string; };
-    nationalities: { [id: number]: string; };
-    militaryServiceStates: { [id: number]: string; };
 
     constructor(
         public employeeSrv: EmployeeService,
@@ -67,35 +58,6 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         this.shellSrv.setGoBackPath('..', this.route);
     }
 
-    public override select(id: number): void {
-        const disableControls = id == null || id < 1;
-        super.select(id);
-    }
-
-    override preload(): Observable<any> {
-        return this.lookupsSrv.getMaritalStatuses()
-            .pipe(
-                tap(x => {
-                    this.maritalStatus = this.onLookupLoaded(x);
-                }),
-
-                switchMap(() => this.lookupsSrv.getNationalities()),
-                tap(x => {
-                    this.nationalities = this.onLookupLoaded(x);
-                }),
-
-                switchMap(() => this.lookupsSrv.getMilitaryServiceStates()),
-                tap(x => {
-                    this.militaryServiceStates = this.onLookupLoaded(x);
-                })
-            );
-    }
-
-    onLookupLoaded(data: Lookup[]): { [id: number]: string; } {
-        const map: { [id: number]: string; } = {};
-        data.forEach(m => map[m.id] = m.description);
-        return map;
-    }
 
     public override processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(data.map(p => {

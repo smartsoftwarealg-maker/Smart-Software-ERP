@@ -1,7 +1,7 @@
 {
-  "name": "park-driver-lib",
+  "name": "park-driver",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/park/driver-lib/src",
+  "sourceRoot": "libs/park/driver/src",
   "prefix": "ss",
   "tags": [],
   "projectType": "library",
@@ -12,7 +12,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/park/driver-lib/jest.config.ts",
+        "jestConfig": "libs/park/driver/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -29,8 +29,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/park/driver-lib/**/*.ts",
-          "libs/park/driver-lib/**/*.html"
+          "libs/park/driver/**/*.ts",
+          "libs/park/driver/**/*.html"
         ]
       }
     }

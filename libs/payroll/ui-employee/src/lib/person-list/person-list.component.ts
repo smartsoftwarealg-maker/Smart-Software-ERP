@@ -78,16 +78,12 @@ export class PersonListComponent extends BaseEntityListComponent<IPersonSummary>
         this.addButton.visible = false;
     }
 
-    public override select(id: number): void {
-        //const disableControls = id == null || id < 1;
-        super.select(id);
-    }
-
-    onLookupLoaded(data: Lookup[]): { [id: number]: string; } {
-        const map: { [id: number]: string; } = {};
-        data.forEach(m => map[m.id] = m.description);
-        return map;
-    }
+    //
+    // onLookupLoaded(data: Lookup[]): { [id: number]: string; } {
+    //     const map: { [id: number]: string; } = {};
+    //     data.forEach(m => map[m.id] = m.description);
+    //     return map;
+    // }
 
     public override processLoadedData(data: PersonSummary[]): Observable<PersonSummary[]> {
         return of(data.map(p => {

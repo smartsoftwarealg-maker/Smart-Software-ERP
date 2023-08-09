@@ -34,7 +34,6 @@ mat-tab-group {
     justify-content: flex-start;
 
     .person-photo {
-//        width: 120px;
         flex: 0 0 120px;
         height: 120px;
         position: relative;
@@ -146,7 +145,7 @@ mat-tab-group {
 }
 
 .mat-column-birth {
-    flex: 1 1 120px;
+    flex: 1 1 150px;
 }
 
 .mat-column-address {
@@ -155,10 +154,8 @@ mat-tab-group {
     padding-left: 4px;
 }
 
-.mat-column-maritalStatus {
+.mat-column-msDescription {
     flex: 0 0 90px;
-    padding-right: 4px;
-    padding-left: 4px;
 }
 
 

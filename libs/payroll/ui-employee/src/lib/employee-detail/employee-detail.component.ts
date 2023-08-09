@@ -133,7 +133,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             this.isControlValid(this.form.controls['nationality']);
     }
 
-    public isSocialInfoPanelValid(): boolean {
+    public issocialInfoPanelValid(): boolean {
         return this.isControlValid(this.form.controls['address1']) &&
             this.isControlValid(this.form.controls['email']) &&
             this.isControlValid(this.form.controls['phone']) &&
@@ -160,7 +160,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         case 'birthinfo':
             return this.isBirthInfoValid();
         case 'socialInfo':
-            return this.isSocialInfoPanelValid();
+            return this.issocialInfoPanelValid();
         case 'arabicInfo':
             return this.isArabicInfoPanelValid();
         case 'fixedElemnts':

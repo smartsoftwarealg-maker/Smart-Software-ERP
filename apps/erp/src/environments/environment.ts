@@ -42,8 +42,8 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL
-} from '../app/common';
+    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL, PARK_APP_URL
+} from "../app/common";
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -128,6 +128,10 @@ export const appRoutes: Routes =  [
     {
         path: LTM_APP_URL,
         loadChildren: () => import('../app/ltm/l-t-m.module').then(m => m.LTMModule)
+    },
+    {
+        path: PARK_APP_URL,
+        loadChildren: () => import('../app/park/park.module').then(m => m.ParkModule)
     },
     {
         path: CMMS_APP_URL,

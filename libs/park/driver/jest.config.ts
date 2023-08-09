@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'park-driver-lib',
+  displayName: 'park-driver',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/libs/park/driver-lib',
+  coverageDirectory: '../../../coverage/libs/park/driver',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
