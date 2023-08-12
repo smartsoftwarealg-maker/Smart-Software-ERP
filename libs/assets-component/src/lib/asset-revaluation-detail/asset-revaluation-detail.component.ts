@@ -2,18 +2,18 @@ import { Component, inject, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {AssetCost, AssetRevaluation} from '../assets-api';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetCostsService} from '../asset-costs.service';
+import {AssetCostsService} from '../services/asset-costs.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetCostsTypeService} from '../asset-costs-type.service';
+import {AssetCostsTypeService} from '../services/asset-costs-type.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {AssetRevaluationService} from '../asset-revaluation.service';
-import {AssetRevaluationLookupService} from '../asset-revaluation-lookup.service';
+import {AssetRevaluationService} from '../services/asset-revaluation.service';
+import {AssetRevaluationLookupService} from '../services/asset-revaluation-lookup.service';
 
 @Component({
   selector: 'ss-asset-revaluation-detail',

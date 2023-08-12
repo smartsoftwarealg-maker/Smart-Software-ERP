@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {UntypedFormControl, Validators} from '@angular/forms';
 
 @Component({

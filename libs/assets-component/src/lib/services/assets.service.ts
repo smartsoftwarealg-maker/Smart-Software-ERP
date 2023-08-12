@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from './assets-api';
+import {Asset, ASSETS_URL, Depreciation, SearchCriteria} from '../assets-api';
 import {HttpService, LanguageService, PaginationModel} from '@ss/common/api-common';
 import {Observable, retry} from 'rxjs';
 import {HttpParams} from '@angular/common/http';

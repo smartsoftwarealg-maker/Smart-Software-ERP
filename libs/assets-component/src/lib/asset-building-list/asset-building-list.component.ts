@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AssetBuilding} from '../assets-api';
-import {AssetsBuildingService} from '../assets-building.service';
+import {AssetsBuildingService} from '../services/assets-building.service';
 
 @Component({
   selector: 'ss-asset-building-list',

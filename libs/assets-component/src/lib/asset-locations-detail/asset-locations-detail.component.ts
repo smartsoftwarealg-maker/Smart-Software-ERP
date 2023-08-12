@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetLocationService} from '../asset-location.service';
+import {AssetLocationService} from '../services/asset-location.service';
 import {LoginService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 

@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetRevaluationTypeService} from '../asset-revaluation-type.service';
+import {AssetRevaluationTypeService} from '../services/asset-revaluation-type.service';
 
 @Component({
   selector: 'ss-asset-revaluation-type-list',

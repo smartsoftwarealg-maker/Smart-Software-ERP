@@ -6,7 +6,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import {Asset, AssetReception} from '../assets-api';
-import {AssetReceptionService} from '../asset-reception.service';
+import {AssetReceptionService} from '../services/asset-reception.service';
 import {tap} from 'rxjs/operators';
 
 @Component({

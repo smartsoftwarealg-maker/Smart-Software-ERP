@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
-import {AssetAppointmentDocService} from '../asset-appointment-doc.service';
+import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {
@@ -18,9 +18,9 @@ import {
 import {switchMap} from 'rxjs/operators';
 import {tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {AssetAppointmentLineService} from '../asset-appointment-line.service';
+import {AssetAppointmentLineService} from '../services/asset-appointment-line.service';
 import {AssetLookupModel} from '../asset-lookup-model';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {Agent, ConsumerService} from '@ss/logistics/api-agent';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';

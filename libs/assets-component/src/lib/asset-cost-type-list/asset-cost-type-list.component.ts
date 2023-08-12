@@ -6,7 +6,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {Lookup} from '@ss/common/api-lookup';
-import {AssetCostTypeService} from '../asset-cost-type.service';
+import {AssetCostTypeService} from '../services/asset-cost-type.service';
 
 @Component({
   selector: 'ss-asset-cost-type-list',

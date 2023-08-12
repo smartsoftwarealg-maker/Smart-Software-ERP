@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AssetEndTypeService} from '../asset-end-type.service';
+import {AssetEndTypeService} from '../services/asset-end-type.service';
 
 @Component({
   selector: 'ss-end-types-detail',

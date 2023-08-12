@@ -5,7 +5,7 @@ import {HttpEventType} from '@angular/common/http';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {LotsService, Store} from '@ss/common/api-lookup';
-import {AssetInventoryService} from '../asset-inventory.service';
+import {AssetInventoryService} from '../services/asset-inventory.service';
 
 @Component({
     selector: 'ss-inventory-import',

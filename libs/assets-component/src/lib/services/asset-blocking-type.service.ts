@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
 import {HttpService} from '@ss/common/api-common';
-import {ASSET_DEPRECIATION_RATES, ASSETS_URL, COST_TYPE_URL, DepreciationRate} from './assets-api';
+import {BLOCKING_TYPE_URL, COST_TYPE_URL} from '../assets-api';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DepreciationRateService extends BaseEntityService<DepreciationRate> {
+export class AssetBlockingTypeService extends BaseEntityService<Lookup> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, ASSET_DEPRECIATION_RATES, ASSETS_URL);
+        super(httpSrv, BLOCKING_TYPE_URL);
     }
 }

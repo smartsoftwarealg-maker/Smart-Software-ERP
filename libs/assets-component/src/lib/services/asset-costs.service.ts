@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Lookup} from '@ss/common/api-lookup';
+import {AssetCost, ASSETS_URL, COST_URL} from '../assets-api';
 import {HttpService} from '@ss/common/api-common';
-import {COST_TYPE_URL} from './assets-api';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AssetCostsTypeService extends BaseEntityService<Lookup>{
+export class AssetCostsService extends BaseEntityService<AssetCost> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, COST_TYPE_URL);
+        super(httpSrv, COST_URL, ASSETS_URL);
     }
 }

@@ -21,7 +21,7 @@ import {
     ABS_ASSET_STATUS_TYPES,
     ABS_ASSETS_AGENT_URL,
     ABS_ASSET_MARKS_URL,
-    ABS_ASSET_DASHBOARD_URL, ABS_ASSET_TRANSFER_URL
+    ABS_ASSET_DASHBOARD_URL, ABS_ASSET_TRANSFER_URL, ABS_ASSETS_TREE_URL
 } from '../common';
 
 export const assetsNavTree: SideNavNode = {
@@ -123,6 +123,12 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSETS',
             icon: 'fa-solid fa-car-building',
             route: ABS_ASSETS_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'ASSET_ASSET_TREE',
+            icon: 'fa-solid fa-tree',
+            route: ABS_ASSETS_TREE_URL,
             accessRights: 'Asset'
         },
         {

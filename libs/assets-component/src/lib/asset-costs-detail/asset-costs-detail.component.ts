@@ -7,11 +7,11 @@ import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {HttpService} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetCostsService} from '../asset-costs.service';
+import {AssetCostsService} from '../services/asset-costs.service';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetCostsTypeService} from '../asset-costs-type.service';
+import {AssetCostsTypeService} from '../services/asset-costs-type.service';
 
 @Component({
     selector: 'ss-asset-costs-detail',

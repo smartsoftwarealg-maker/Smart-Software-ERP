@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AssetClass} from '../assets-api';
-import {AssetClassService} from '../asset-class.service';
+import {AssetClassService} from '../services/asset-class.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';

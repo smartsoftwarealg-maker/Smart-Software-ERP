@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {of, switchMap} from 'rxjs';
-import {DepreciationRateService} from '../depreciation-rate.service';
+import {DepreciationRateService} from '../services/depreciation-rate.service';
 
 @Component({
   selector: 'ss-depreciation-rate-list',

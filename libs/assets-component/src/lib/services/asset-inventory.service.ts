@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
-import {ASSET_INVENTORY_URL, ASSET_YEARS_URL, AssetInventory} from './assets-api';
+import {ASSET_INVENTORY_URL, ASSET_YEARS_URL, AssetInventory} from '../assets-api';
 import {Observable} from 'rxjs';
 
 @Injectable({

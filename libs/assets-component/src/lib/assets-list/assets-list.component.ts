@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {IsParamService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';

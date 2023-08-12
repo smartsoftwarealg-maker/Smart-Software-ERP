@@ -11,10 +11,8 @@
     "ACQUISITION_DATE":  "Acquisition date",
     "HISTORIC_VALUE":    "Historic value",
     "OLD_DEPRECIATION":  "Old depreciation",
-    "ORDER_DATE":        "Order date",
     "RECEPTION_DATE":    "Reception date",
     "RECEPTION_NUMBER":  "Reception number",
-    "INVOICE_NUMBER":    "Invoice number",
     "ORIGINAL_SUPPLIER": "Original supplier",
     "EXIT":              "Exit",
     "DATE_OUT":          "Exit date",
@@ -65,5 +63,8 @@
     "RECEIVER":            "Receiver",
     "RECEIVERS":           "Receivers",
     "ASSIGNED_ASSETS":     "Assigned assets",
-    "START_YEAR":          "Start year"
+    "START_YEAR":          "Start year",
+    "ASSET_TREE":          "Asset tree",
+    "ADD":                 "Add",
+    "REMOVE":              "Remove"
 }

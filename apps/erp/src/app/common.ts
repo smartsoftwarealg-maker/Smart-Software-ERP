@@ -326,6 +326,7 @@ export const CMMS_CUR_WORK_ORDER_URL  = 'cur-orders';
 export const CMMS_SERVICE_REQUEST_URL  = 'srv-requets';
 export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 export const CMMS_CHARTS_URL           = 'charts';
+export const CMMS_ASSET_TREE           = 'cmms-asset-tree';
 
 
 // assets
@@ -583,6 +584,7 @@ export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_UR
 // CMMS
 export const ABS_CMMS_FAULTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULTS_URL].join('/');
 export const ABS_CMMS_ASSETS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSETS_ASSET_URL].join('/');
+export const ABS_CMMS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ASSET_TREE].join('/');
 export const ABS_CMMS_STATUS__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_STATUS_URL].join('/');
 export const ABS_CMMS_PRIORITY__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PRIORITY_URL].join('/');
 export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULT_CAUSE_URL].join('/');
@@ -645,6 +647,7 @@ export const ABS_ASSET_ACCOUNT_URL   = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASS
 export const ABS_ASSET_MARKS_URL     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_MARKS_URL].join('/');
 export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
 export const ABS_ASSET_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, CMMS_ASSET_TREE].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

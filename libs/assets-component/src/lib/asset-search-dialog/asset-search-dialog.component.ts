@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Asset} from '../assets-api';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {UntypedFormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {PaginationModel} from '@ss/common/api-common';

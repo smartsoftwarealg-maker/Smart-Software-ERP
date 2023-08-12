@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {DepreciationRateService} from '../depreciation-rate.service';
+import {DepreciationRateService} from '../services/depreciation-rate.service';
 
 @Component({
   selector: 'ss-depreciation-rate-detail',

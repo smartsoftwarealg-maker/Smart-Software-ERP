@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AssetCost, AssetRevaluation} from '../assets-api';
 import {LanguageService, PaginationModel} from '@ss/common/api-common';
-import {AssetCostsService} from '../asset-costs.service';
+import {AssetCostsService} from '../services/asset-costs.service';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {of, switchMap} from 'rxjs';
-import {AssetRevaluationService} from '../asset-revaluation.service';
+import {AssetRevaluationService} from '../services/asset-revaluation.service';
 
 @Component({
   selector: 'ss-asset-revaluation-list',

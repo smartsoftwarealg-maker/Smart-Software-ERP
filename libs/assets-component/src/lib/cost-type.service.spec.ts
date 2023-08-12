@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CostTypeService } from './cost-type.service';
+import { CostTypeService } from './services/cost-type.service';
 
 describe('CostTypeService', () => {
   let service: CostTypeService;

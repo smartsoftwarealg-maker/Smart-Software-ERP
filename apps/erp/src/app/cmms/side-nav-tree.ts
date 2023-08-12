@@ -21,7 +21,7 @@ import {
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
     ABS_SERVICE_REQUEST_URL,
-    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL
+    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL, ABS_CMMS_ASSETS_TREE_URL
 } from '../common';
 
 export const cmmsNavTree: SideNavNode = {
@@ -62,6 +62,12 @@ export const cmmsNavTree: SideNavNode = {
             name: 'CMMS_EQUIPMENT',
             icon: 'fa-solid fa-car-building',
             route: ABS_CMMS_ASSETS_URL,
+            accessRights: 'Asset'
+        },
+        {
+            name: 'ASSET_ASSET_TREE',
+            icon: 'fa-solid fa-tree',
+            route: ABS_CMMS_ASSETS_TREE_URL,
             accessRights: 'Asset'
         },
         {

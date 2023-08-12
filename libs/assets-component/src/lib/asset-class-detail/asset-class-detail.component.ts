@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
-import {AssetClassService} from '../asset-class.service';
+import {AssetClassService} from '../services/asset-class.service';
 
 @Component({
   selector: 'ss-asset-class-detail',

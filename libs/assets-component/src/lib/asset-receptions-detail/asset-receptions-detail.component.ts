@@ -4,7 +4,7 @@ import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/c
 import {AssetReception} from '../assets-api';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {AssetReceptionService} from '../asset-reception.service';
+import {AssetReceptionService} from '../services/asset-reception.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {LoginService} from '@ss/common/api-common';

@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LoginService, PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetInventoryService} from '../asset-inventory.service';
+import {AssetInventoryService} from '../services/asset-inventory.service';
 import {AccPoliciesService} from '@ss/accounting/accounting-api';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';

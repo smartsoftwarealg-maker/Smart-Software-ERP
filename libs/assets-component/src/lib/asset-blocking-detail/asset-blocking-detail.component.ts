@@ -10,8 +10,8 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
-import {AssetBlockingService} from '../asset-blocking.service';
-import {AssetBlockingTypeService} from '../asset-blocking-type.service';
+import {AssetBlockingService} from '../services/asset-blocking.service';
+import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
 
 @Component({
     selector: 'ss-asset-blocking-detail',

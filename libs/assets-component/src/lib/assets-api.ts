@@ -274,3 +274,16 @@ export class OfficeAutoComplete extends DefaultAutoCompleteModel<Office> {
 
     override toString = (x:Office) => x ? `${x.description.substring(0, 50)} ${x.code? '(' + x.code + ')' : ''}`  : null;
 }
+
+export interface TAsset {
+    id: number;
+    centerId: number;
+    parentId?: number;
+    reference: string;
+    description: string;
+}
+
+export interface ASSTree {
+    ent: TAsset;
+    children: ASSTree[];
+}

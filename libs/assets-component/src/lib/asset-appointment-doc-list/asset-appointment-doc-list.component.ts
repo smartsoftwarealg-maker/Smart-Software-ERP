@@ -5,9 +5,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetAppointmentDocService} from '../asset-appointment-doc.service';
+import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
 import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
-import {AssetAppointmentLineService} from '../asset-appointment-line.service';
+import {AssetAppointmentLineService} from '../services/asset-appointment-line.service';
 
 @Component({
   selector: 'ss-asset-appointment-doc-list',

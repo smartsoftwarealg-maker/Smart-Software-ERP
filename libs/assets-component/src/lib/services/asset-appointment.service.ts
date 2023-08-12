@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {APPOINTMENT_URL, ASSAppointment, ASSETS_URL} from './assets-api';
+import {APPOINTMENT_URL, ASSAppointment, ASSETS_URL} from '../assets-api';
 import {HttpService} from '@ss/common/api-common';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 

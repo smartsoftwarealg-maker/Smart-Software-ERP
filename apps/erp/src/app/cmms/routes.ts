@@ -27,8 +27,8 @@ import {
     CMMS_PREV_ORDER_URL,
     COMMON_REPORTS_URL,
     FURNITURE_STATUS_URL,
-    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes, CMMS_CHARTS_URL
-} from "../common";
+    CMMS_SERVICE_REQUEST_URL, STOCK_PARTS_REUEST_URL, docInfoRoutes, CMMS_CHARTS_URL, CMMS_ASSET_TREE
+} from '../common';
 import { loginGuard } from '../erp-guards';
 import {
     CmmsFaultCauseDetailComponent,
@@ -66,7 +66,7 @@ import {
     AssetLocationsDetailComponent,
     AssetLocationsListComponent,
     AssetsDetailComponent,
-    AssetsListComponent,
+    AssetsListComponent, AssetTreeComponent,
     EndTypesDetailComponent,
     EndTypesListComponent
 } from '@ss/assets-component';
@@ -560,6 +560,9 @@ export const cmmsRoutes: Routes = [
 
     {
         path: CMMS_CHARTS_URL, component: CMMSChartsComponent
+    },
+    {
+        path: CMMS_ASSET_TREE, component: AssetTreeComponent
     },
 
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

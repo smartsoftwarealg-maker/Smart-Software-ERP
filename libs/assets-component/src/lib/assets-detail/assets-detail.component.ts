@@ -13,7 +13,7 @@ import {
     Office,
     OfficeService
 } from '@ss/common/api-lookup';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {IsParamService, LoginService} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { Agent, AgentService, ConsumerService, CustomerService, SupplierService } from "@ss/logistics/api-agent";
@@ -21,15 +21,15 @@ import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {AssetLocationService} from '../asset-location.service';
+import {AssetLocationService} from '../services/asset-location.service';
 import {AssetEndsService} from '@ss/accounting/accounting-api';
 import {MatDialog} from '@angular/material/dialog';
 import {AssetSearchDialogComponent} from '../asset-search-dialog/asset-search-dialog.component';
 import {CostCenterService} from '@ss/logistics/api-cost-center';
-import {AssetClassService} from '../asset-class.service';
+import {AssetClassService} from '../services/asset-class.service';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
-import {AssetReceptionService} from '../asset-reception.service';
+import {AssetReceptionService} from '../services/asset-reception.service';
 import { AGENT_ARCHIVES, AppArchiveService, ASSET_ARCHIVES } from "@ss/common/app-archive";
 
 @Component({

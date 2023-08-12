@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetAppointmentService} from '../asset-appointment.service';
+import {AssetAppointmentService} from '../services/asset-appointment.service';
 import {of, switchMap} from 'rxjs';
 import {ASSAppointment} from '../assets-api';
 

@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {of, switchMap} from 'rxjs';
-import {AssetBlockingService} from '../asset-blocking.service';
+import {AssetBlockingService} from '../services/asset-blocking.service';
 
 @Component({
   selector: 'ss-asset-blocking-list',

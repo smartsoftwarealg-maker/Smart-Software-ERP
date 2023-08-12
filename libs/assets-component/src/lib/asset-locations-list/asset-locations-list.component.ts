@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetLocationService} from '../asset-location.service';
+import {AssetLocationService} from '../services/asset-location.service';
 
 @Component({
   selector: 'ss-asset-locations-list',
