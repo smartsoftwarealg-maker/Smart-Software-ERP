@@ -70,4 +70,5 @@ export interface Employee {
     birthCity?: number;
     password?: string;
     is_driver: boolean;
+    msDescription?: string;
 }

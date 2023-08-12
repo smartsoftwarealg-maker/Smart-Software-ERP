@@ -7,10 +7,10 @@ import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {AssetBuilding} from '../assets-api';
-import {AssetsBuildingService} from '../assets-building.service';
+import {AssetsBuildingService} from '../services/assets-building.service';
 import {LoginService} from '@ss/common/api-common';
 import {CodeDescriptionAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {AssetLocationService} from '../asset-location.service';
+import {AssetLocationService} from '../services/asset-location.service';
 
 @Component({
   selector: 'ss-asset-building-detail',

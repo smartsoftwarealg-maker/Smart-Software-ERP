@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
-import {AssetBlockingTypeService} from '../asset-blocking-type.service';
+import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetEndTypeService} from '../asset-end-type.service';
+import {AssetEndTypeService} from '../services/asset-end-type.service';
 
 @Component({
   selector: 'ss-end-types-list',

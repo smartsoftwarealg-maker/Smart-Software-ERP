@@ -5,7 +5,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AssetBlockingTypeService} from '../asset-blocking-type.service';
+import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
 
 @Component({
   selector: 'ss-asset-cost-types-detail',

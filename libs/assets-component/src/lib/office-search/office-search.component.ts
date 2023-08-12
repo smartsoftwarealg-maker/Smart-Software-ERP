@@ -1,7 +1,7 @@
 import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup, Office, OfficeService} from '@ss/common/api-lookup';
-import {AssetLocationService} from '../asset-location.service';
+import {AssetLocationService} from '../services/asset-location.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import {Subscription} from 'rxjs';

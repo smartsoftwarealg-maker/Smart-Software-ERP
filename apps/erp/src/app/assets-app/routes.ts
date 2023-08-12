@@ -16,7 +16,6 @@ import {
     ADMINISTRATION_REPORT_CATALOG_URL,
     ASSETS_OFFICES_URL,
     ASSET_CLASS_URL,
-    ASSETS_APPOINTMENTS_URL,
     ASSET_OPTIONS_URL,
     ASSET_RECEPTIONS_URL,
     ASSETS_APPOINTMENTS_DOC_URL,
@@ -31,8 +30,8 @@ import {
     ASSETS_SEARCH_URL,
     ASSETS_INJECTION_URL,
     ASSETS_DEPRECIATION_URL,
-    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL
-} from '../common';
+    COMMON_MARKS_URL, docInfoRoutes, DASHBOARD_URL, ASSET_TRANSFER_URL, CMMS_ASSET_TREE
+} from "../common";
 import {
     AssetCostsDetailComponent,
     AssetCostsListComponent,
@@ -67,8 +66,8 @@ import {
     AssetExcelInjectionComponent,
     DepreciationRateListComponent,
     DepreciationRateDetailComponent,
-    AssetsTransferComponent
-} from '@ss/assets-component';
+    AssetsTransferComponent, AssetTreeComponent
+} from "@ss/assets-component";
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {ReportCatalogListComponent, ReportCatalogDetailComponent} from '@ss/administration/ui-report-catalog';
 import {OfficeDetailComponent, OfficesListComponent} from '@ss/organizations/ui-organizations';
@@ -536,6 +535,9 @@ export const mainRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: CMMS_ASSET_TREE, component: AssetTreeComponent
     },
     {
         path: DASHBOARD_URL,

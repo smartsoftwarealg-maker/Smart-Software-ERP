@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
-import {AssetCostTypeService} from '../asset-cost-type.service';
+import {AssetCostTypeService} from '../services/asset-cost-type.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {AssetRevaluationTypeService} from '../asset-revaluation-type.service';
+import {AssetRevaluationTypeService} from '../services/asset-revaluation-type.service';
 
 @Component({
   selector: 'ss-asset-revaluation-type-detail',

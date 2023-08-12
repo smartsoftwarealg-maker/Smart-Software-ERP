@@ -219,7 +219,7 @@
     "PROJECT":             "Project",
     "PROJECTS":            "Projects",
     "COUNT":               "Count",
-    "FURNITURE_STATUS":    "Furniture status",
+    "FURNITURE_STATUS":    "Status",
     "QTY":                 "Qty",
     "EXCEL_INJECTION":     "Excel injection",
     "RATE":                "Rate",
@@ -293,5 +293,6 @@
     "POSTAL_CODE":               "Postal code",
     "OPEN":                      "Open",
     "PENDING":                   "Pending",
-    "CONTRACTS":                 "Contracts"
+    "CONTRACTS":                 "Contracts",
+    "CMMS":                      "CMMS"
 }

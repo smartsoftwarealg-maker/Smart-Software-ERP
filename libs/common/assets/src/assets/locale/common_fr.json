@@ -221,7 +221,7 @@
     "PROJECT":            "Projet",
     "PROJECTS":           "Projets",
     "COUNT":              "number",
-    "FURNITURE_STATUS":   "Statut du mobilier",
+    "FURNITURE_STATUS":   "Statut",
     "QTY":                "Qté",
     "EXCEL_INJECTION":     "Injection d'Excel",
     "RATE":               "Taux",
@@ -296,5 +296,6 @@
     "ADDRESS_AR":                 "Adresse ar",
     "POSTAL_CODE":                "Code Postal",
     "OPEN":                       "Ouvert",
-    "PENDING":                    "En attente"
+    "PENDING":                    "En attente",
+    "CMMS":                       "Maintenance"
 }

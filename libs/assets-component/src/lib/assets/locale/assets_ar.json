@@ -51,10 +51,8 @@
     "REQUEST_NUMBER":      "رقم طلب الشراء" ,
     "REQUEST_DATE":        "تاريخ طلب الشراء" ,
     "ORDER_NUMBER":        "رقم طلب الشراء",
-    "ORDER_DATE":          "تاريخ طلب الشراء" ,
     "DELIVERY_NUMBER":     "رقم الشحنه",
     "DELIVERY_DATE":       "تاريخ التسليم او الوصول",
-    "INVOICE_NUMBER":      "رقم الفاتورة",
     "INVOICE_DATE":        "تاريخ الفاتورة",
     "SITE":                "الموقع",
     "TRANSFER":            "تحويلات",
@@ -65,5 +63,8 @@
     "RECEIVER":            "المتلقي",
     "RECEIVERS":           "المتلقين",
     "ASSIGNED_ASSETS":     "الأصول المخصصة",
-    "START_YEAR":          "سنة البدء"
+    "START_YEAR":          "سنة البدء",
+    "ASSET_TREE":          "شجرة الأصول",
+    "ADD":                 "يضيف",
+    "REMOVE":              "يزيل"
 }

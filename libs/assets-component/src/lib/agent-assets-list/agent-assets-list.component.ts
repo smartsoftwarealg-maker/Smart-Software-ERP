@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Asset} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {Sort} from '@angular/material/sort';
 
 @Component({

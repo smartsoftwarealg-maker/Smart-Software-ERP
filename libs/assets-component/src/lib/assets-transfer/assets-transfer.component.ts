@@ -6,7 +6,7 @@ import {OfficeAutoComplete} from '../assets-api';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {MatDialog} from '@angular/material/dialog';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AssetsTransferService} from '../assets-transfer.service';
+import {AssetsTransferService} from '../services/assets-transfer.service';
 import {IsParamService, UserRightsService} from '@ss/common/api-common';
 
 @Component({

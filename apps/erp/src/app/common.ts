@@ -40,7 +40,7 @@ export const ARCH_VIEWER_APP_URL = 'arch-viewer';
 export const ORGANIZATIONS_APP_URL = 'organizations';
 export const LTM_APP_URL = 'ltm';
 export const CMMS_APP_URL = 'cmms';
-
+export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
@@ -326,6 +326,7 @@ export const CMMS_CUR_WORK_ORDER_URL  = 'cur-orders';
 export const CMMS_SERVICE_REQUEST_URL  = 'srv-requets';
 export const CMMS_SOLUTION_URL  = 'cmms-solutions';
 export const CMMS_CHARTS_URL           = 'charts';
+export const CMMS_ASSET_TREE           = 'cmms-asset-tree';
 
 
 // assets
@@ -358,6 +359,8 @@ export const ACC_FILES_URL            = 'acc-files';
 export const ACC_PROJECTS_URL         = 'acc-projects';
 export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
 
+// park
+export const PARK_DRIVER_URL = 'driver';
 // #############
 // # FULL URLS #
 // #############
@@ -581,6 +584,7 @@ export const ABS_LTM_DASHBOARD_URL            = '/' + [MAIN_PAGE_URL, LTM_APP_UR
 // CMMS
 export const ABS_CMMS_FAULTS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULTS_URL].join('/');
 export const ABS_CMMS_ASSETS_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, ASSETS_ASSET_URL].join('/');
+export const ABS_CMMS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_ASSET_TREE].join('/');
 export const ABS_CMMS_STATUS__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_STATUS_URL].join('/');
 export const ABS_CMMS_PRIORITY__URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_PRIORITY_URL].join('/');
 export const ABS_CMMS_FAULT_CAUSE_URL = '/' + [MAIN_PAGE_URL, CMMS_APP_URL, CMMS_FAULT_CAUSE_URL].join('/');
@@ -613,6 +617,9 @@ export const ABS_FURNITURE_ASSIGNMENT_URL = '/' + [MAIN_PAGE_URL, FURNITURE_APP_
 export const ABS_FURNITURE_SALES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_SALES_URL].join('/');
 export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_URL, FURNITURE_TYPES_URL].join('/');
 
+// Park
+export const ABS_PARK_DRIVER_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DRIVER_URL].join('/');
+
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');
 export const ABS_ARCHIVE_RIGHTS_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_RIGHTS].join('/');
@@ -640,6 +647,7 @@ export const ABS_ASSET_ACCOUNT_URL   = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASS
 export const ABS_ASSET_MARKS_URL     = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, COMMON_MARKS_URL].join('/');
 export const ABS_ASSET_STATUS_TYPES  = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, FURNITURE_STATUS_URL].join('/');
 export const ABS_ASSET_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_ASSETS_TREE_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, CMMS_ASSET_TREE].join('/');
 
 // sales
 export const ABS_SALES_DELIVERY_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DELIVERY_URL].join('/');

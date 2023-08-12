@@ -6,14 +6,14 @@ import {ActivatedRoute} from '@angular/router';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {FurnitureStatusService, LookupsService, OfficeService} from '@ss/common/api-lookup';
-import {AssetInventoryService} from '../asset-inventory.service';
+import {AssetInventoryService} from '../services/asset-inventory.service';
 import {LoginService} from '@ss/common/api-common';
 import {AccPoliciesService, ACCPolicy} from '@ss/accounting/accounting-api';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {AssetLookupModel} from '../asset-lookup-model';
-import {AssetsService} from '../assets.service';
+import {AssetsService} from '../services/assets.service';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
 

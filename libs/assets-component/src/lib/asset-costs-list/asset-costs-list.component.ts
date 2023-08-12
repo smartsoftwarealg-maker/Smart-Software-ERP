@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LanguageService, PaginationModel} from '@ss/common/api-common';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {AssetCostsService} from '../asset-costs.service';
+import {AssetCostsService} from '../services/asset-costs.service';
 import {AssetCost} from '../assets-api';
 import {of, switchMap} from 'rxjs';
 

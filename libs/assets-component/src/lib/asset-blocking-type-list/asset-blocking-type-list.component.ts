@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {AssetBlockingTypeService} from '../asset-blocking-type.service';
+import {AssetBlockingTypeService} from '../services/asset-blocking-type.service';
 
 @Component({
   selector: 'ss-asset-cost-types-list',
