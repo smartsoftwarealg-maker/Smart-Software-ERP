@@ -2,6 +2,7 @@ import { ImageModel } from '@ss/common/ui-image-input';
 
 export const DRIVERS = '/drivers';
 export const LICENSES = '/licenses';
+export const VEHICLES = '/vehicles';
 
 export interface Driver {
     id: number;
@@ -46,4 +47,35 @@ export interface DriverLicense {
     licenseType: string;
     from: Date;
     to: Date;
+}
+
+export interface VehicleAssignment {
+    id: number;
+    parentId: number;
+    personId: number;
+    date?: Date;
+    workPlace?: string;
+    description: string;
+    plateNo?: string;
+}
+
+export interface DriverVehicle {
+    id: number;
+    parentId: number;
+    vehicleId: number;
+    date?: Date;
+    workPlace?: string;
+    description: string;
+    plateNo?: string;
+}
+
+export interface Vehicle {
+    id: number;
+    centerId: number;
+    description?: string;
+    acquisitionDate?: Date;
+    plateNumber?: string;
+    odoMeter?: number;
+    vType?: number;
+    typeDescription?: string;
 }

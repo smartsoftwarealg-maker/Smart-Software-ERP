@@ -112,7 +112,15 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-checkbox formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
+            <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-label translate>COMMON_BLOOD_GROUPS</mat-label>
+                <mat-select formControlName="blood_group">
+                    <mat-option *ngFor="let v of bloodGroups$ | async" [value]="v.id">
+                        {{v.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
         </div>
     </div>
 
@@ -169,6 +177,8 @@
                     COMMON_FIELD_MAX_LENGTH
                 </mat-error>
             </mat-form-field>
+
+            <mat-checkbox class="default-25 sm-50"  formControlName="is_driver" translate>PAYROLL_IS_DRIVER</mat-checkbox>
 
         </mat-expansion-panel>
 

@@ -19,7 +19,7 @@ export const STOCK_ACCOUNT_URL      = 'stock-accounts';
 export const CASHFLOW_ACCOUNTS_URL  = 'cashflow-accounts';
 export const COMMON_MARKS_URL = 'marks';
 export const COMMON_REPORTS_URL = 'reports';
-
+export const COMMON_BLOOD_GROUPS_URL = 'blood-groups';
 
 // apps
 export const ADMINISTRATION_APP_URL = 'administration';
@@ -360,7 +360,9 @@ export const ACC_PROJECTS_URL         = 'acc-projects';
 export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
 
 // park
-export const PARK_DRIVER_URL = 'driver';
+export const PARK_DRIVER_URL = 'drivers';
+export const PARK_VEHICLE_URL = 'vehicles';
+export const PARK_VEHICLE_TYPES_URL = 'vehicle-types';
 // #############
 // # FULL URLS #
 // #############
@@ -543,6 +545,7 @@ export const ABS_HR_PERSON_LIST_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_PERSO
 export const ABS_HR_HOLIDAY_REQUEST_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_HOLIDAY_REQUEST_URL].join('/');
 export const ABS_HR_REPORTS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_HR_DASHBOARD_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, DASHBOARD_URL].join('/');
+export const ABS_HR_BLOOD_GROUP_URL    = '/' + [MAIN_PAGE_URL, HR_APP_URL, COMMON_BLOOD_GROUPS_URL].join('/');
 
 
 // payroll
@@ -619,6 +622,8 @@ export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_
 
 // Park
 export const ABS_PARK_DRIVER_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DRIVER_URL].join('/');
+export const ABS_PARK_VEHICLE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_VEHICLE_URL].join('/');
+export const ABS_PARK_VEHICLE_TYPE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_VEHICLE_TYPES_URL].join('/');
 
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');

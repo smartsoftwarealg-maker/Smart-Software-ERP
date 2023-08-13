@@ -85,6 +85,7 @@ export interface Asset {
     appointmentNumber?: number;
     isFinal?: number;
     reserviceDate?: Date;
+    isVehicle: Boolean;
 }
 
 export interface Depreciation {

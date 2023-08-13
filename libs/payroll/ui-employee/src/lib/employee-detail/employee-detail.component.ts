@@ -4,12 +4,19 @@ import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup
 import {ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageModel } from '@ss/common/ui-image-input';
-import {City, CityService, LookupsService, MaritalStatus, NationalityService} from '@ss/common/api-lookup';
+import {
+    BloodGroupService,
+    City,
+    CityService,
+    LookupsService,
+    MaritalStatus,
+    NationalityService
+} from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { Observable, of, switchMap } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from "rxjs/operators";
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import { ELine, FixedElementsEntryService } from '@ss/remuneration/elements-entry';
@@ -22,6 +29,7 @@ import { AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
     templateUrl: './employee-detail.component.html'
 })
 export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee> {
+    private bloodGroupSrv = inject(BloodGroupService);
     private citySrv = inject(CityService);
     private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
@@ -43,6 +51,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         { id: 3, description: 'PAYROLL_RANK' },
         { id: 4, description: 'PAYROLL_POST' },
     ];
+    bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
     constructor(
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -114,7 +123,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             fatherAr:      [p.fatherAr, Validators.maxLength(64)],
             motherAr:      [p.motherAr, Validators.maxLength(64)],
             birthCity:     [p.birthCity],
-            is_driver:     [p.is_driver]
+            is_driver:     [p.is_driver],
+            blood_group:   [p.blood_group]
         });
     }
 

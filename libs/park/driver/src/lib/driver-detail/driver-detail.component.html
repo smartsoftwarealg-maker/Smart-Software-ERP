@@ -92,11 +92,20 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field floatLabel="always" class="default-50 sm-100">
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
                 <mat-label translate>COMMON_MARITAL_STATUS</mat-label>
                 <mat-select formControlName="maritalStatus">
                     <mat-option [value]="null"></mat-option>
                     <mat-option *ngFor="let v of maritalStatuses" [value]="v.id">
+                        {{v.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="default-25 sm-100">
+                <mat-label translate>COMMON_BLOOD_GROUPS</mat-label>
+                <mat-select formControlName="blood_group">
+                    <mat-option *ngFor="let v of bloodGroups$ | async" [value]="v.id">
                         {{v.description}}
                     </mat-option>
                 </mat-select>
@@ -231,6 +240,17 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ss-driver-license-main [id]="id" *ngIf="detailPanel === LICENSE_PANEL"></ss-driver-license-main>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel #vehiclePanel
+                             (afterExpand)="showVehicles()"
+                             [class]="getPanelHeaderClass('vehicles', vehiclePanel)">
+            <mat-expansion-panel-header>
+                <mat-panel-title translate>
+                    PARK_DRIVER_VEHICLES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ss-driver-license-main [id]="id" *ngIf="detailPanel === VEHICLE_PANEL"></ss-driver-license-main>
         </mat-expansion-panel>
 
     </mat-accordion>

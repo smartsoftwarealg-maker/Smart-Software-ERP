@@ -391,6 +391,9 @@
       "@ss/park/driver": [
         "libs/park/driver/src/index.ts"
       ],
+      "@ss/park/vehicles": [
+        "libs/park/vehicles/src/index.ts"
+      ],
       "@ss/patients/api-patient": [
         "libs/patients/api-patient/src/index.ts"
       ],

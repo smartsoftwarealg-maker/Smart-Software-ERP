@@ -2,7 +2,9 @@ export const VATS_URL = '/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const LOOKUPS_APPLICATIONS_URL = '/lookups/erp_applications';
 export const WILAYAS_URL = '/lookups/wilayas';
+export const BLOOD_GROUP_URL = '/lookups/blood_groups';
 export const NATIONALITIES_URL = '/lookups/nationalities';
+export const VEHICLE_TYPES = '/lookups/vehicle_types';
 
 export const EDUCATION_LEVEL_URL = '/lookups/educationlevels';
 export const DIPLOMAS_URL = '/lookups/diplomas';

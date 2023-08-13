@@ -1,7 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { City, CityService, LookupsService, MaritalStatus, NationalityService } from '@ss/common/api-lookup';
+import {
+    BloodGroupService,
+    City,
+    CityService,
+    LookupsService,
+    MaritalStatus
+} from '@ss/common/api-lookup';
 import { AppArchiveModule, AppArchiveService, EMPLOYEE_ARCHIVES } from '@ss/common/app-archive';
 import { CommonUiImageInputModule, ImageModel } from '@ss/common/ui-image-input';
 import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -18,7 +24,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { HttpService } from '@ss/common/api-common';
 import { FixedElementsEntryService } from '@ss/remuneration/elements-entry';
 import { Observable, switchMap } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MatExpansionModule, MatExpansionPanel } from '@angular/material/expansion';
 import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
@@ -33,6 +39,7 @@ import { Driver } from '../driver-api';
 import { DriverService } from '../services/driver.service';
 import { DriverLicenseMainComponent } from '../driver-license-main/driver-license-main.component';
 import { DriverLicenseService } from '../services/driver-license.service';
+import { DriverVehicleService } from '../services/driver-vehicle.service';
 
 @Component({
     selector: 'ss-driver-detail',
@@ -60,11 +67,12 @@ import { DriverLicenseService } from '../services/driver-license.service';
     styleUrls: ['./driver-detail.component.css']
 })
 export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
+    private bloodGroupSrv = inject(BloodGroupService);
+    private driverVehiclesSrv = inject(DriverVehicleService);
     private driverLicenseSrv = inject(DriverLicenseService);
     private router = inject(Router);
     private lookupsSrv = inject(LookupsService);
     private citySrv = inject(CityService);
-    private nationalitySrv = inject(NationalityService);
     private archiveSrv = inject(AppArchiveService);
 
     cityLookup = new CityLookup(this.citySrv);
@@ -72,12 +80,15 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
     readonly PAYROLL_POST = 4;
     readonly ARCHIVE_PANEL = 1;
     readonly LICENSE_PANEL = 2;
+    readonly VEHICLE_PANEL = 3;
     detailPanel = 0;
 
     activePersonnel = false;
     imageModel: ImageModel;
     public maritalStatuses: MaritalStatus[];
     public elementsForm: UntypedFormGroup = null;
+    bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
+
     constructor(
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
@@ -90,6 +101,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
         super(driverSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PAYROLL_EDIT_EMPLOYEE');
         this.imageModel = new ImageModel(this.httpSrv);
         this.driverLicenseSrv.setParentId(0);
+        this.driverVehiclesSrv.setParentId(0);
         this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
     }
 
@@ -103,6 +115,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
 
     override loadEntity(id: number): Observable<Driver> {
         this.driverLicenseSrv.setParentId(id);
+        this.driverVehiclesSrv.setParentId(id);
         return super.loadEntity(id);
     }
 
@@ -149,7 +162,8 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
             fatherAr:      [p.fatherAr, Validators.maxLength(64)],
             motherAr:      [p.motherAr, Validators.maxLength(64)],
             birthCity:     [p.birthCity],
-            is_driver:     [true]
+            is_driver:     [true],
+            blood_group:   [p.blood_group]
         });
     }
 
@@ -241,6 +255,14 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
         const LICENSES = 'licenses';
         if (this.router.url.indexOf(LICENSES) <0) {
             this.router.navigate([LICENSES], { relativeTo: this.route }).then();
+        }
+    }
+
+    showVehicles() {
+        this.detailPanel = this.VEHICLE_PANEL;
+        const VEHICLES = 'vehicles';
+        if (this.router.url.indexOf(VEHICLES) <0) {
+            this.router.navigate([VEHICLES], { relativeTo: this.route }).then();
         }
     }
 }

@@ -67,5 +67,5 @@
     "ASSET_TREE":          "Arborescence",
     "ADD":                 "Ajouter",
     "REMOVE":              "Retirer",
-
+    "IS_VEHICLE":          "Vehicule?"
 }

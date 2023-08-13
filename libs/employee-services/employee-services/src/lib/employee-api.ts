@@ -58,8 +58,6 @@ export interface Employee {
     customCode: string;
     maritalStatus: number;
 
-    // things that may have changed
-    //    wilaya: number; // was removed??
     mservice: number;
     educationalLevel: number;
     diploma: number;
@@ -71,4 +69,5 @@ export interface Employee {
     password?: string;
     is_driver: boolean;
     msDescription?: string;
+    blood_group?: number;
 }

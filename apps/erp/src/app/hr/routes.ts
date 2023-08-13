@@ -20,8 +20,8 @@ import {
     HR_JUDICIAL_FRAMES_URL,
     HR_DECISION_MOTIVE_URL,
     HR_MOTIVE_URL,
-    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL
-} from '../common';
+    HR_CONTRACT_MOTIVE_URL, HR_HOLIDAY_REQUEST_URL, COMMON_BLOOD_GROUPS_URL
+} from "../common";
 import {
     ABS_INDEX_URL,
     CanDeactivateService,
@@ -30,6 +30,8 @@ import {
 } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
 import {
+    BloodGroupDetailComponent,
+    BloodGroupListComponent,
     CategoryDetailComponent,
     CategoryListComponent, ContractMotiveDetailComponent,
     ContractMotiveListComponent,
@@ -63,7 +65,7 @@ import {
     ServiceListComponent,
     SuspensionReasonDetailComponent,
     SuspensionReasonListComponent
-} from '@ss/common/ui-lookup';
+} from "@ss/common/ui-lookup";
 import {
     EmployeeActivationDetailComponent,
     EmployeeCareerDetailComponent,
@@ -100,6 +102,23 @@ import {loginGuard} from '../erp-guards';
 import { HolidayRequestDetailComponent, HolidayRequestListComponent } from '@ss/attendance';
 
 export const hrRoutes: Routes = [
+    {
+        path: COMMON_BLOOD_GROUPS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: BloodGroupListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: BloodGroupDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: HR_MOTIVE_URL,
         children: [

@@ -21,7 +21,14 @@ import { UiPaginationModule } from '@ss/common/ui-pagination';
 @Component({
     selector: 'ss-driver-list',
     standalone: true,
-    imports: [CommonModule, CommonUiImageInputModule, CommonUiLangModule, MatSortModule, MatTableModule, MatTabsModule, UiPaginationModule],
+    imports: [
+        CommonModule,
+        CommonUiImageInputModule,
+        CommonUiLangModule,
+        MatSortModule,
+        MatTableModule,
+        MatTabsModule,
+        UiPaginationModule],
     templateUrl: './driver-list.component.html',
     styleUrls: ['./driver-list.component.scss']
 })
@@ -47,7 +54,7 @@ export class DriverListComponent extends BaseEntityListComponent<Driver> {
         public override defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(driverSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PARK_DRIVER_LIST');
+        super(driverSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PARK_DRIVERS');
         this.pagination.pageSize = 15;
     }
 
