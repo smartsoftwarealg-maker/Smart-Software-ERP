@@ -27,14 +27,14 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private agentSrv = inject(AgentService);
     private langSrv = inject(LanguageService);
 
-    private jsonButton: ToolbarButton = {
-        icon:  'fa-solid fa-coffee-bean',
-        label: 'COMMON_JSON_EXPORT',
-        disabled: false,
-        visible: true,
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.json()
-    };
+    // private jsonButton: ToolbarButton = {
+    //     icon:  'fa-solid fa-coffee-bean',
+    //     label: 'COMMON_JSON_EXPORT',
+    //     disabled: false,
+    //     visible: true,
+    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+    //     click: () => this.json()
+    // };
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     detailPagination = PaginationModel.newInstance();
@@ -66,7 +66,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
-        this.shellSrv.addButton(this.jsonButton);
+        // this.shellSrv.addButton(this.jsonButton);
     }
 
     override select(id: number) {

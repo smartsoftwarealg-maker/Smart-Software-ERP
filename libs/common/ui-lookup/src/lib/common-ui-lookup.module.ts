@@ -7,57 +7,63 @@ import { RouterModule } from '@angular/router';
 import { CommonUiLangModule } from '@ss/common/ui-lang';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { CommonUiConfirmationDialogModule } from '@ss/common/ui-confirmation-dialog';
-import { PostListComponent, PostDetailComponent } from './post.component';
-import { MaritalStatusListComponent, MaritalStatusDetailComponent } from './marital-status.component';
-import { SubclassListComponent, SubclassDetailComponent } from './subclass.component';
-import { StoreNameListComponent, StoreNameDetailComponent } from './store-name.component';
-import { WilayaListComponent, WilayaDetailComponent } from './wilaya.component';
-import { ServiceListComponent, ServiceDetailComponent } from './service.component';
-import { DiplomaListComponent, DiplomaDetailComponent } from './diploma.component';
-import { CategoryListComponent, CategoryDetailComponent } from './category.component';
-import { NationalityListComponent, NationalityDetailComponent } from './nationality.component';
-import { ClassListComponent, ClassDetailComponent } from './class-list.component';
-import { UnitListComponent, UnitDetailComponent } from './unit.component';
-import { MarkListComponent, MarkDetailComponent } from './mark.component';
-import { EducationLevelListComponent, EducationLevelDetailComponent } from './education-level.component';
-import { AgentTypeDetailComponent, AgentTypeListComponent } from './agent-type.component';
-import { CompanyTypeListComponent, CompanyTypeDetailComponent } from './company-type.component';
-import { PayModeDetailComponent, PayModeListComponent } from './pay-modes.component';
-import { CityListComponent, CityDetailComponent } from './city.component';
-import { CountryListComponent, CountryDetailComponent } from './country.component';
-import { CurrencyListComponent, CurrencyDetailComponent } from './currency.component';
-import { ActivityDetailComponent, ActivityListComponent } from './activity.component';
-import { RoleDetailComponent, RoleListComponent } from './role.component';
-import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './employment-type.component';
-import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './suspension-reason.component';
+import { PostListComponent, PostDetailComponent } from './components/post.component';
+import { MaritalStatusListComponent, MaritalStatusDetailComponent } from './components/marital-status.component';
+import { SubclassListComponent, SubclassDetailComponent } from './components/subclass.component';
+import { StoreNameListComponent, StoreNameDetailComponent } from './components/store-name.component';
+import { WilayaListComponent, WilayaDetailComponent } from './components/wilaya.component';
+import { ServiceListComponent, ServiceDetailComponent } from './components/service.component';
+import { DiplomaListComponent, DiplomaDetailComponent } from './components/diploma.component';
+import { CategoryListComponent, CategoryDetailComponent } from './components/category.component';
+import { NationalityListComponent, NationalityDetailComponent } from './components/nationality.component';
+import { ClassListComponent, ClassDetailComponent } from './components/class-list.component';
+import { UnitListComponent, UnitDetailComponent } from './components/unit.component';
+import { MarkListComponent, MarkDetailComponent } from './components/mark.component';
+import { EducationLevelListComponent, EducationLevelDetailComponent } from './components/education-level.component';
+import { AgentTypeDetailComponent, AgentTypeListComponent } from './components/agent-type.component';
+import { CompanyTypeListComponent, CompanyTypeDetailComponent } from './components/company-type.component';
+import { PayModeDetailComponent, PayModeListComponent } from './components/pay-modes.component';
+import { CityListComponent, CityDetailComponent } from './components/city.component';
+import { CountryListComponent, CountryDetailComponent } from './components/country.component';
+import { CurrencyListComponent, CurrencyDetailComponent } from './components/currency.component';
+import { ActivityDetailComponent, ActivityListComponent } from './components/activity.component';
+import { RoleDetailComponent, RoleListComponent } from './components/role.component';
+import { EmploymentTypeListComponent, EmploymentTypeDetailComponent } from './components/employment-type.component';
+import { SuspensionReasonListComponent, SuspensionReasonDetailComponent } from './components/suspension-reason.component';
 import { CommonUiAutoCompleteModule } from '@ss/common/ui-auto-complete';
-import {DivisionDetailComponent, DivisionListComponent} from './division.component';
-import { DepartmentDetailComponent, DepartmentListComponent } from './department.component';
-import {SalesCategoryDetailComponent, SalesCategoryListComponent} from "./sales.category.component";
+import {DivisionDetailComponent, DivisionListComponent} from './components/division.component';
+import { DepartmentDetailComponent, DepartmentListComponent } from './components/department.component';
+import {SalesCategoryDetailComponent, SalesCategoryListComponent} from './components/sales.category.component';
 import {
     ProfessionalFaultDetailComponent,
     ProfessionalFaultListComponent
-} from './professional-fault.component';
-import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './punishment-type.component';
-import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './app-archive-docs.component';
-import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './furniture-status.component';
-import {DiscountDetailComponent, DiscountListComponent} from './discount.component';
-import {DairaDetailComponent, DairaListComponent} from './daira.component';
-import {JudicialFrameDetailComponent, JudicialFrameListComponent} from './judicial-frame.component';
-import {DecisionMotiveDetailComponent, DecisionMotiveListComponent} from './decision-motive.component';
-import {MotiveDetailComponent, MotiveListComponent} from './motive.component';
-import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './contract-motive.component';
-import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './project-type.component';
-import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './project-motive.component';
-import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './award.procedure.component';
-import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './treasury-group.component';
-import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './article-type.component';
+} from './components/professional-fault.component';
+import {PunishmentTypeDetailComponent, PunishmentTypeListComponent} from './components/punishment-type.component';
+import {AppArchiveDocumentDetailComponent, AppArchiveDocumentListComponent} from './components/app-archive-docs.component';
+import {FurnitureStatusDetailComponent, FurnitureStatusListComponent} from './components/furniture-status.component';
+import {DiscountDetailComponent, DiscountListComponent} from './components/discount.component';
+import {DairaDetailComponent, DairaListComponent} from './components/daira.component';
+import {JudicialFrameDetailComponent, JudicialFrameListComponent} from './components/judicial-frame.component';
+import {DecisionMotiveDetailComponent, DecisionMotiveListComponent} from './components/decision-motive.component';
+import {MotiveDetailComponent, MotiveListComponent} from './components/motive.component';
+import {ContractMotiveDetailComponent, ContractMotiveListComponent} from './components/contract-motive.component';
+import {ProjectTypeDetailComponent, ProjectTypeListComponent} from './components/project-type.component';
+import {ProjectMotiveDetailComponent, ProjectMotiveListComponent} from './components/project-motive.component';
+import {AwardProcedureDetailComponent, AwardProcedureListComponent} from './components/award.procedure.component';
+import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './components/treasury-group.component';
+import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './components/article-type.component';
+import { BloodGroupDetailComponent, BloodGroupListComponent } from './components/blood-group-list.component';
+import { VehicleTypeDetailComponent, VehicleTypeListComponent } from './components/vehicle-type.component';
+import { FuelTypeDetailComponent, FuelTypeListComponent } from './components/fuel-type.component';
+import { InsurancePolicyDetailComponent, InsurancePolicyListComponent } from './components/insurance-policy.component';
+import { InsuranceAgencyDetailComponent, InsuranceAgencyListComponent } from './components/insurance-agency.component';
 
 @NgModule({
     imports: [
         CommonModule,
         MaterialModule,
         RouterModule,
+        MaterialModule,
         CommonUiLangModule,
         UiPaginationModule,
         CommonUiAutoCompleteModule,
@@ -156,7 +162,17 @@ import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './article-ty
         TreasuryGroupListComponent,
         TreasuryGroupDetailComponent,
         ArticleTypeListComponent,
-        ArticleTypeDetailComponent
+        ArticleTypeDetailComponent,
+        BloodGroupListComponent,
+        BloodGroupDetailComponent,
+        VehicleTypeListComponent,
+        VehicleTypeDetailComponent,
+        FuelTypeListComponent,
+        FuelTypeDetailComponent,
+        InsurancePolicyListComponent,
+        InsurancePolicyDetailComponent,
+        InsuranceAgencyListComponent,
+        InsuranceAgencyDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -249,7 +265,17 @@ import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './article-ty
         CommonUiAutoCompleteModule,
         CommonUiConfirmationDialogModule,
         ArticleTypeListComponent,
-        ArticleTypeDetailComponent
+        ArticleTypeDetailComponent,
+        BloodGroupListComponent,
+        BloodGroupDetailComponent,
+        VehicleTypeListComponent,
+        VehicleTypeDetailComponent,
+        FuelTypeListComponent,
+        FuelTypeDetailComponent,
+        InsurancePolicyListComponent,
+        InsurancePolicyDetailComponent,
+        InsuranceAgencyListComponent,
+        InsuranceAgencyDetailComponent
     ]
 })
 export class CommonUiLookupModule { }

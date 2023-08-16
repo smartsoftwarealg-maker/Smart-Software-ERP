@@ -161,9 +161,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             startYear:   [b.startYear || 0],
             assetClass:  [{ value: b.assetClass, disabled: !!b.isFinal}, Validators.required],
             status:      [b.status],
-            receptionId: [{ value: b.receptionId, disabled: !!b.isFinal}],
-            orderNumber: [{ value: b.orderNumber, disabled: true }],
-            orderDate: [{ value: b.orderDate, disabled: true }],
+            receptionId:    [{ value: b.receptionId, disabled: !!b.isFinal}],
+            orderNumber:    [{ value: b.orderNumber, disabled: true }],
+            orderDate:      [{ value: b.orderDate, disabled: true }],
             requestNumber:  [b.requestNumber],
             requestDate:    [b.requestDate],
             requester:      [b.requester],
@@ -174,6 +174,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             invoiceDate:    [{ value: b.invoiceDate, disabled: true }],
             site:           [{ value: b.site, disabled: true }],
             building:       [{ value: b.building, disabled: true }],
+            isVehicle:      [b.isVehicle]
         });
         if (!this.isAQS) {
             form.controls['assetClass'].clearValidators();
@@ -305,6 +306,8 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 asset.deliveryNumber     =  asset.deliveryNumber   || null;
                 asset.deliveryDate       =  asset.deliveryDate     || null;
                 asset.invoiceDate        =  asset.invoiceDate      || null;
+                asset.isVehicle          =  asset.isVehicle        || false;
+                asset.reserviceDate      =  asset.reserviceDate    || null;
 
                 this.form.setValue(asset, { onlySelf: false, emitEvent: true });
             }

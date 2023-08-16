@@ -28,7 +28,7 @@ import {
 import {
     ArticleTypeDetailComponent,
     ArticleTypeListComponent
-} from '../../../../../libs/common/ui-lookup/src/lib/article-type.component';
+} from '../../../../../libs/common/ui-lookup/src/lib/components/article-type.component';
 
 export const furnitureRoutes: Routes = [
     {

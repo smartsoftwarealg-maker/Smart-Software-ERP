@@ -1,0 +1,58 @@
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { FuelConsumption } from '../vehicle-api';
+import { VehicleFuelConsumptionService } from '../services/vehicle-fuel-consumption.service';
+import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import { EmployeeService, PersonAutocompleteClass } from '@ss/employee-services/employee-services';
+import { FuelTypeService } from '@ss/common/api-lookup';
+import { CommonUiAutoCompleteModule, DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
+import { CommonUiDatepickerModule } from '@ss/common/ui-datepicker';
+import { CommonUiLangModule } from '@ss/common/ui-lang';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MaterialModule } from '@ss/common/api-common';
+
+@Component({
+    selector: 'ss-vehicle-fuel-consumption-detail',
+    standalone: true,
+    imports: [
+        CommonModule,
+        CommonUiAutoCompleteModule,
+        CommonUiDatepickerModule,
+        CommonUiLangModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MaterialModule,
+        ReactiveFormsModule],
+    templateUrl: './vehicle-fuel-consumption-detail.component.html',
+    styleUrls: ['./vehicle-fuel-consumption-detail.component.css']
+})
+export class VehicleFuelConsumptionDetailComponent extends BaseChildEntityDetailComponent<FuelConsumption> {
+    private personSrv = inject(EmployeeService);
+    private fuelSrv = inject(FuelTypeService);
+    private fb = inject(FormBuilder);
+
+    personLookup = new PersonAutocompleteClass(this.personSrv);
+    fuelLookup = new DefaultAutoCompleteModel(this.fuelSrv);
+
+    constructor(protected override entitySrv: VehicleFuelConsumptionService) {
+        super(entitySrv);
+    }
+
+    setupForm(e: FuelConsumption): UntypedFormGroup {
+        return this.fb.group( {
+            id:        [e.id],
+            parentId:  [e.parentId || this.entitySrv.getParentId()],
+            date:      [e.date, Validators.required],
+            driver:    [e.driver],
+            odoMeter:  [e.odoMeter],
+            orderNo:   [e.orderNo],
+            fuelType:  [e.fuelType],
+        });
+    }
+}

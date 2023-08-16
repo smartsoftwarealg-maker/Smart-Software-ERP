@@ -1,6 +1,7 @@
 import {SideNavNode} from '@ss/common/api-common';
 
 import {
+    ABS_HR_BLOOD_GROUP_URL,
     ABS_HR_CATEGORIES_URL, ABS_HR_CONTRACT_MOTIVES_URL, ABS_HR_DECISION_MOTIVES_URL,
     ABS_HR_DEPARTMENTS_URL, ABS_HR_DIPLOMAS_URL,
     ABS_HR_DIVISIONS_URL, ABS_HR_EDUCATION_LEVELS_URL,
@@ -9,13 +10,19 @@ import {
     ABS_HR_NATIONALITIES_URL,
     ABS_HR_POSTS_URL,
     ABS_HR_SERVICES_URL,
-    ABS_HR_SUSPENSION_REASON_URL, ABS_PROFESSIONAL_FAULTS_URL, ABS_PUNISHMENT_TYPE_URL,
+    ABS_HR_SUSPENSION_REASON_URL, ABS_PROFESSIONAL_FAULTS_URL, ABS_PUNISHMENT_TYPE_URL
 } from '../common';
 
 export const hrLookupNavTree: SideNavNode = {
     name: 'PAYROLL_LOOKUPS',
     icon: 'fas fa-coins',
     children: [
+        {
+            name: 'COMMON_BLOOD_GROUPS',
+            icon: 'fa-solid fa-people-group',
+            route: ABS_HR_BLOOD_GROUP_URL,
+            accessRights: 'BloodGroup'
+        },
         {
             name: 'COMMON_EMPLOYMENT_TYPES',
             icon: 'fas fa-business-time',

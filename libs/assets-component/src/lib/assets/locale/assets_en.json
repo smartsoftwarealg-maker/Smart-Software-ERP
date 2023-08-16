@@ -66,5 +66,6 @@
     "START_YEAR":          "Start year",
     "ASSET_TREE":          "Asset tree",
     "ADD":                 "Add",
-    "REMOVE":              "Remove"
+    "REMOVE":              "Remove",
+    "IS_VEHICLE":          "Vehicle?"
 }

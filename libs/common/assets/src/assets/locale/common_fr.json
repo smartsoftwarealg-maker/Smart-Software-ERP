@@ -297,5 +297,7 @@
     "POSTAL_CODE":                "Code Postal",
     "OPEN":                       "Ouvert",
     "PENDING":                    "En attente",
-    "CMMS":                       "Maintenance"
+    "CMMS":                       "Maintenance",
+    "BLOOD_GROUPS":               "Groupes sanguins",
+    "MAINTENANCE":                "Maintenance"
 }

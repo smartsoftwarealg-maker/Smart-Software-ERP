@@ -1,0 +1,62 @@
+<div class="size button__div">
+    <!--    <mat-form-field>-->
+    <!--        <mat-label translate>COMMON_SEARCH</mat-label>-->
+    <!--        <input matInput [formControl]="searchText" type="text">-->
+    <!--    </mat-form-field>-->
+
+    <button mat-mini-fab color="primary" (click)="showDetail(0)">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data$ | async" class="main-table">
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.date | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nextDate">
+            <mat-header-cell *matHeaderCellDef translate>PARK_NEXT_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.nextDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="odometer">
+            <mat-header-cell *matHeaderCellDef translate>PARK_ODOMETER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.odometer}}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="nextOdometer">
+            <mat-header-cell *matHeaderCellDef translate>PARK_NEXT_ODOMETER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.nextOdometer}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>

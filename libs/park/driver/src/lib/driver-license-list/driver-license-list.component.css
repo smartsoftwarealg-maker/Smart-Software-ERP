@@ -1,3 +1,18 @@
+.size {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.button__div {
+    width: 100%;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+    flex: 1 1 40%;
+    padding: 4px 0;
+}
+
 .mat-column-from,
 .mat-column-to {
     flex: 1 1 150px;

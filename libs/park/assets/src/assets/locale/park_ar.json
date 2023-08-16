@@ -1,0 +1,19 @@
+{
+    "FUEL_CONSUMPTION":   "استهلاك الوقود",
+    "OIL_CHANGE":         "تغيير زيت",
+    "INSURANCE":          "تأمين",
+    "DAMAGES":            "الأضرار",
+    "ODOMETER":           "عداد المسافات",
+    "NEXT_DATE":          "التاريخ القادم",
+    "NEXT_ODOMETER":      "عداد المسافات التالي",
+    "POLICY":             "بوليصة التأمين",
+    "AGENCY":             "وكالة تامين",
+    "DRIVER":             "السائق",
+    "FUEL":               "الوقود",
+    "VEHICLE_TYPES":      "الأصناف" ,
+    "AGENCIES":           "الوكالات" ,
+    "POLICIES":           "سياسات",
+    "FUEL_TYPES":         "الوقود",
+    "DRIVERS":            "السائقين",
+    "VEHICLES":           "مركبات"
+}

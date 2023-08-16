@@ -129,7 +129,7 @@ export const assetsNavTree: SideNavNode = {
             name: 'ASSET_ASSET_TREE',
             icon: 'fa-solid fa-tree',
             route: ABS_ASSETS_TREE_URL,
-            accessRights: 'Asset'
+            accessRights: 'ASSTree'
         },
         {
             name: 'COMMON_SEARCH',

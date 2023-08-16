@@ -65,6 +65,7 @@
     "ASSIGNED_ASSETS":     "الأصول المخصصة",
     "START_YEAR":          "سنة البدء",
     "ASSET_TREE":          "شجرة الأصول",
-    "ADD":                 "يضيف",
-    "REMOVE":              "يزيل"
+    "ADD":                 "إضافة",
+    "REMOVE":              "إزالة",
+    "IS_VEHICLE":          "مركبة؟"
 }

@@ -48,5 +48,6 @@
     "LOCAL_CURRENCY":                     "La monnaie locale n'est pas autorisée ici",
     "EMPTY_DOCUMENTS":                    "Les documents suivants sont vides:",
     "INVALID_CARD":                       "La fiche de cette reference n'est pas équilibrée",
-    "IS_LOCAL_CURRENCY":                  "La réception des importations ne peut pas être en devise locale."
+    "IS_LOCAL_CURRENCY":                  "La réception des importations ne peut pas être en devise locale.",
+    "RECURSIVE_ASSEMBLY":                 "La composition récursive n'est pas autorisée."
 }
