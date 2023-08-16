@@ -117,6 +117,11 @@
                         "glob": "**/*",
                         "input": "libs/cmms/assets/src/assets",
                         "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "libs/park/assets/src/assets",
+                        "output": "assets"
                     }
                 ],
                 "styles": ["apps/erp/src/styles.scss"],

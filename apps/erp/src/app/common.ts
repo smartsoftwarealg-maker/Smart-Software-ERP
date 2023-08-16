@@ -363,6 +363,9 @@ export const ACC_BALANCE_QUERIES_URL  = 'balance-queries';
 export const PARK_DRIVER_URL = 'drivers';
 export const PARK_VEHICLE_URL = 'vehicles';
 export const PARK_VEHICLE_TYPES_URL = 'vehicle-types';
+export const PARK_FUEL_TYPES_URL = 'fuel-types';
+export const PARK_INSURANCE_POLICIES_URL = 'insurance-policies';
+export const PARK_INSURANCE_AGENCIES_URL = 'insurance-agencies';
 // #############
 // # FULL URLS #
 // #############
@@ -624,6 +627,9 @@ export const ABS_FURNITURE_TYPES_URL      = '/' + [MAIN_PAGE_URL, FURNITURE_APP_
 export const ABS_PARK_DRIVER_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_DRIVER_URL].join('/');
 export const ABS_PARK_VEHICLE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_VEHICLE_URL].join('/');
 export const ABS_PARK_VEHICLE_TYPE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_VEHICLE_TYPES_URL].join('/');
+export const ABS_PARK_FUEL_TYPE_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_FUEL_TYPES_URL].join('/');
+export const ABS_PARK_INSURANCE_AGENCY_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_INSURANCE_AGENCIES_URL].join('/');
+export const ABS_PARK_INSURANCE_POLICY_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK_INSURANCE_POLICIES_URL].join('/');
 
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');

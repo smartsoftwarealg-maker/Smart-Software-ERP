@@ -1,0 +1,19 @@
+{
+    "FUEL_CONSUMPTION":   "Consommation de carburant",
+    "OIL_CHANGE":         "Vidange",
+    "INSURANCE":          "Assurance",
+    "DAMAGES":            "Dégâts",
+    "ODOMETER":           "Odomètre",
+    "NEXT_DATE":          "Prochain rendez-vous",
+    "NEXT_ODOMETER":      "Prochain compteur kilométrique",
+    "POLICY":             "Police d'assurance",
+    "AGENCY":             "Agence d'assurance",
+    "DRIVER":             "Consommation de carburant",
+    "FUEL":               "Affectations de véhicules",
+    "VEHICLE_TYPES":      "Marques",
+    "AGENCIES":           "Agences",
+    "POLICIES":           "Stratégies",
+    "FUEL_TYPES":         "Carburants",
+    "DRIVERS":            "Conducteurs",
+    "VEHICLES":           "Véhicules"
+}

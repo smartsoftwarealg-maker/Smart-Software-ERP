@@ -1,0 +1,34 @@
+.size {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.button__div {
+    width: 100%;
+    display: flex;
+    gap: 2em;
+    justify-content: flex-end;
+    flex: 1 1 40%;
+    padding: 4px 0;
+}
+
+.mat-column-date,
+.mat-column-orderNo,
+.mat-column-odoMeter {
+    flex: 1 1 110px;
+}
+
+.mat-column-driverName,
+.mat-column-fuelDescription {
+    flex: 2 1 250px;
+}
+
+.table_div {
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 700px;
+    width: 100%;
+}

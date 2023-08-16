@@ -7,8 +7,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { UiPaginationModule } from '@ss/common/ui-pagination';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { Driver } from '../../../../driver/src/lib/driver-api';
-import { DriverService } from '../../../../driver/src/lib/services/driver.service';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LookupsService } from '@ss/common/api-lookup';
@@ -16,7 +14,7 @@ import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/c
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Vehicle } from '../vehicle-api';
-import { VehicleService } from '../vehicle.service';
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
     selector: 'ss-vehicle-list',

@@ -298,5 +298,6 @@
     "OPEN":                       "Ouvert",
     "PENDING":                    "En attente",
     "CMMS":                       "Maintenance",
-    "BLOOD_GROUPS":               "Groupes sanguins"
+    "BLOOD_GROUPS":               "Groupes sanguins",
+    "MAINTENANCE":                "Maintenance"
 }

@@ -11,7 +11,7 @@ import { BloodGroupService } from '@ss/common/api-lookup';
 
 
 @Component({
-    selector: 'ss-wilaya-list',
+    selector: 'ss-blood-group-list',
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss']
 })
@@ -30,13 +30,12 @@ export class BloodGroupListComponent extends BaseEntityListComponent<Lookup> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(wilayaSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_BLOOD_GROUPS');
     }
-
 }
 
 
 
 @Component({
-    selector: 'ss-wilaya-detail',
+    selector: 'ss-blood-group-detail',
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss']
 })

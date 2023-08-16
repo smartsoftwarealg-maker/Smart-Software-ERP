@@ -1,8 +1,10 @@
+.size {
+    width: 90%;
+    max-width: 1000px;
+    margin: 8px auto;
+}
 
 mat-card {
-    width: 90%;
-    max-width: 900px;
-    margin: 8px auto;
     padding: 16px;
     border-radius: 1.4em;
 }

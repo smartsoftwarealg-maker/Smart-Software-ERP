@@ -2,7 +2,7 @@
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="plateNumber">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PLATE_NUMBER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PLATE_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.plateNumber}}
             </mat-cell>
@@ -23,7 +23,7 @@
         </ng-container>
 
         <ng-container matColumnDef="acquisitionDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DATE</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.acquisitionDate | date: 'dd/MM/yyyy' }}
             </mat-cell>

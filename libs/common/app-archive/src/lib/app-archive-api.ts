@@ -8,6 +8,7 @@ export const DOCUMENT_ARCHIVES         = 5;
 export const CONTRACT_ARCHIVES         = 6;
 export const ACC_TRANSACTION_ARCHIVES  = 7;
 export const CMMS_ROUTING_ARCHIVES     = 8;
+export const PARK_ARCHIVES             = 9;
 
 export const APP_ARCHIVE_URL = '/archives';
 

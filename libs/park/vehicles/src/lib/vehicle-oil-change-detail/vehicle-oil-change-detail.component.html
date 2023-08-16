@@ -1,0 +1,40 @@
+<div class="button_div size" *ngIf="form">
+    <button mat-mini-fab (click)="save()"
+            color="accent" *ngIf="isEditable">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab (click)="cancel()"
+            color="warn" >
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+<mat-card class="size">
+    <mat-card-content>
+        <form *ngIf="form !== null" novalidate [formGroup]="form">
+
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="date"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100" autofocus>
+                <mat-label translate>COMMON_NEXT_DATE</mat-label>
+                <ss-date-picker formControlName="nextDate"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_ODOMETER</mat-label>
+                <input matInput formControlName="odometer" type="number" required>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>PARK_NEXT_ODOMETER</mat-label>
+                <input matInput formControlName="nextOdometer" type="number" required>
+            </mat-form-field>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>
+

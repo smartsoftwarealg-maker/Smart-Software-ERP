@@ -5,6 +5,9 @@ export const WILAYAS_URL = '/lookups/wilayas';
 export const BLOOD_GROUP_URL = '/lookups/blood_groups';
 export const NATIONALITIES_URL = '/lookups/nationalities';
 export const VEHICLE_TYPES = '/lookups/vehicle_types';
+export const FUEL_TYPES = '/lookups/fuel_types';
+export const INSURANCE_POLICIES = '/lookups/park_insurance_policies';
+export const INSURANCE_AGENCIES = '/lookups/park_insurance_agencies';
 
 export const EDUCATION_LEVEL_URL = '/lookups/educationlevels';
 export const DIPLOMAS_URL = '/lookups/diplomas';

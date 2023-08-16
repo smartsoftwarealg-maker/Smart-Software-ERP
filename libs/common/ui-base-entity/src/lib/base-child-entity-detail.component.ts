@@ -16,7 +16,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     private confirmationSrv  = inject(ConfirmationDialogService);
 
     id = 0;
-    public form: UntypedFormGroup = null;
+    public form: UntypedFormGroup | null = null;
     isEditable = true;
 
 

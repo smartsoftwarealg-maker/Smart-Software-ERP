@@ -121,10 +121,10 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
 
     public override setupForm(p: Driver) {
         this.infoSrv.load()
-            .pipe(switchMap(_ => this.infoSrv.get(p.id)))
+            .pipe(switchMap(() => this.infoSrv.get(p.id)))
             .subscribe(res => {
                 const elements = res.elements.length === 0 ?
-                    this.infoSrv.loadDataCols().map(_ => 0.0) :
+                    this.infoSrv.loadDataCols().map(() => 0.0) :
                     res.elements;
 
                 this.elementsForm = this.formBuilder.group({

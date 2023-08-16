@@ -54,6 +54,9 @@ import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from './compon
 import {ArticleTypeDetailComponent, ArticleTypeListComponent} from './components/article-type.component';
 import { BloodGroupDetailComponent, BloodGroupListComponent } from './components/blood-group-list.component';
 import { VehicleTypeDetailComponent, VehicleTypeListComponent } from './components/vehicle-type.component';
+import { FuelTypeDetailComponent, FuelTypeListComponent } from './components/fuel-type.component';
+import { InsurancePolicyDetailComponent, InsurancePolicyListComponent } from './components/insurance-policy.component';
+import { InsuranceAgencyDetailComponent, InsuranceAgencyListComponent } from './components/insurance-agency.component';
 
 @NgModule({
     imports: [
@@ -163,7 +166,13 @@ import { VehicleTypeDetailComponent, VehicleTypeListComponent } from './componen
         BloodGroupListComponent,
         BloodGroupDetailComponent,
         VehicleTypeListComponent,
-        VehicleTypeDetailComponent
+        VehicleTypeDetailComponent,
+        FuelTypeListComponent,
+        FuelTypeDetailComponent,
+        InsurancePolicyListComponent,
+        InsurancePolicyDetailComponent,
+        InsuranceAgencyListComponent,
+        InsuranceAgencyDetailComponent
     ],
     exports: [
         VatListComponent,
@@ -260,7 +269,13 @@ import { VehicleTypeDetailComponent, VehicleTypeListComponent } from './componen
         BloodGroupListComponent,
         BloodGroupDetailComponent,
         VehicleTypeListComponent,
-        VehicleTypeDetailComponent
+        VehicleTypeDetailComponent,
+        FuelTypeListComponent,
+        FuelTypeDetailComponent,
+        InsurancePolicyListComponent,
+        InsurancePolicyDetailComponent,
+        InsuranceAgencyListComponent,
+        InsuranceAgencyDetailComponent
     ]
 })
 export class CommonUiLookupModule { }

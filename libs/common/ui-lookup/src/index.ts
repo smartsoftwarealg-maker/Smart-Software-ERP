@@ -7,7 +7,7 @@ export * from './lib/components/marital-status.component';
 export * from './lib/components/education-level.component';
 export * from './lib/components/diploma.component';
 export * from './lib/components/category.component';
-export * from './lib/components/nationality.component'
+export * from './lib/components/nationality.component';
 export * from './lib/components/service.component';
 export * from './lib/components/unit.component';
 export * from './lib/components/mark.component';
@@ -42,3 +42,7 @@ export * from './lib/components/project-motive.component';
 export * from './lib/components/award.procedure.component';
 export * from './lib/components/treasury-group.component';
 export * from './lib/components/blood-group-list.component';
+export * from './lib/components/vehicle-type.component';
+export * from './lib/components/fuel-type.component';
+export * from './lib/components/insurance-policy.component';
+export * from './lib/components/insurance-agency.component';

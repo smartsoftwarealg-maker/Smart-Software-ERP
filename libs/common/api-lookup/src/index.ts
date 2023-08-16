@@ -55,3 +55,6 @@ export * from './lib/app-archive-document.service';
 export * from './lib/dira.service';
 export * from './lib/blood-group.service';
 export * from './lib/vehicle-type.service';
+export * from './lib/fuel-type.service';
+export * from './lib/insurance-agency.service';
+export * from './lib/insurance-policy.service';

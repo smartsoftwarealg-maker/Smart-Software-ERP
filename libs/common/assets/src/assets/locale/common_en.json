@@ -295,5 +295,6 @@
     "PENDING":                   "Pending",
     "CONTRACTS":                 "Contracts",
     "CMMS":                      "CMMS",
-    "BLOOD_GROUPS":              "Blood groups"
+    "BLOOD_GROUPS":              "Blood groups",
+    "MAINTENANCE":               "Maintenance"
 }

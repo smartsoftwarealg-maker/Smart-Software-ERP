@@ -112,6 +112,7 @@ export const langAssets = [
     ['assets/locale/ltm_', 'LTM_'],
     ['assets/locale/att_', 'ATT_'],
     ['assets/locale/cmms_', 'CMMS_'],
+    ['assets/locale/park_', 'PARK_'],
     ['assets/locale/budget_', 'BUD_']
 ];
 

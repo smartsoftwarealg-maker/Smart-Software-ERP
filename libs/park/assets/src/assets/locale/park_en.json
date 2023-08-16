@@ -1,0 +1,20 @@
+{
+    "FUEL_CONSUMPTION":   "Fuel consumption",
+    "OIL_CHANGE":         "Oil change",
+    "INSURANCE":          "Insurance",
+    "DAMAGES":            "Damages",
+    "ODOMETER":           "Odometer",
+    "NEXT_DATE":          "Next date",
+    "NEXT_ODOMETER":      "Next odometer",
+    "POLICY":             "Insurance policy",
+    "AGENCY":             "Insurance agency",
+    "FUEL":               "Fuel consumption",
+    "DRIVER_VEHICLES":    "Vehicle assignments",
+    "VEHICLE_TYPES":      "Vehicle makes",
+    "AGENCIES":           "Agencies",
+    "POLICIES":           "Policies",
+    "FUEL_TYPES":         "Fuels",
+    "DRIVERS":            "Drivers",
+    "DRIVER":             "Driver",
+    "VEHICLES":           "Vehicles"
+}
