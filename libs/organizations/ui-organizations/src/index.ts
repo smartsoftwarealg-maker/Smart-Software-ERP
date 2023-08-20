@@ -6,5 +6,5 @@ export * from './lib/departments/department-detail.component';
 export * from './lib/departments/departments-list.component';
 export * from './lib/services/service-detail.component';
 export * from './lib/services/services-list.component';
-export * from './lib/offices/office-detail.component';
-export * from './lib/offices/offices-list.component';
+export * from './lib/offices/detail/office-detail.component';
+export * from './lib/offices/list/offices-list.component';

@@ -16,8 +16,8 @@ import { DepartmentDetailComponent } from './departments/department-detail.compo
 import { DepartmentsListComponent } from './departments/departments-list.component';
 import { ServiceDetailComponent } from './services/service-detail.component';
 import { ServicesListComponent } from './services/services-list.component';
-import { OfficeDetailComponent } from './offices/office-detail.component';
-import { OfficesListComponent } from './offices/offices-list.component';
+import { OfficeDetailComponent } from './offices/detail/office-detail.component';
+import { OfficesListComponent } from './offices/list/offices-list.component';
 
 @NgModule({
     declarations: [

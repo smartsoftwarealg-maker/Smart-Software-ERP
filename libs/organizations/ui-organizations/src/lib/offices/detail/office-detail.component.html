@@ -25,13 +25,13 @@
         </mat-form-field>
 
         <mat-form-field class="default-100">
-            <mat-label translate>ASSET_BLOCK_NO</mat-label>
+            <mat-label translate>ASSET_BLOCK</mat-label>
             <ss-auto-complete matInput
                               [model]="buildingLookup"
                               formControlName="buildingId"></ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-100">
+        <mat-form-field class="default-100" *ngIf="!isCMMS">
             <mat-label translate>ASSET_FLOOR_NO</mat-label>
             <input matInput formControlName="floorNo" type="number" max="20">
         </mat-form-field>

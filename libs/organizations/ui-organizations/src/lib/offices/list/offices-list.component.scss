@@ -4,7 +4,7 @@ mat-table {
 }
 .size {
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
     margin: 4px auto 0;
 }
 .table-container {
@@ -15,19 +15,9 @@ mat-table {
 
 
 
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
-
-.mat-column-locationDescription {
-    flex: 1 1 200px;
-}
+.mat-column-locationDescription,
 .mat-column-description {
     flex: 2 1 250px;
-    padding-left: 8px !important;
 }
 
 .mat-column-floorNo,
