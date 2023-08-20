@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -38,5 +38,6 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             defReportSrv,
             pagPersistSrv,
             'ASSET_BUILDINGS');
+        this.title = this.route.snapshot?.data['title'] || this.title;
     }
 }

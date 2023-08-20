@@ -30,6 +30,7 @@ export class AssetBuildingDetailComponent extends BaseEntityDetailComponent<Asse
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_BUILDINGS');
+        this.title = this.route.snapshot?.data['title'] || this.title;
     }
 
 

@@ -1,0 +1,102 @@
+
+import {SideNavNode} from '@ss/common/api-common';
+import {
+    ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+    ABS_FINANCE_CCOMPENSATIONS,
+    ABS_FINANCE_CPAYMENTS,
+    ABS_SALES_AGENT_URL,
+    ABS_SALES_DASHBOARD_URL,
+    ABS_SALES_INVOICE_CANCEL_URL,
+    ABS_SALES_INVOICE_URL,
+    ABS_SALES_PROFORMA_URL,
+    ABS_SALES_REPORTS_URL,
+    ABS_SALES_SERVICE_URL, ABS_SERVICE_INVOICE_CANCEL_URL, ABS_SERVICE_INVOICE_URL,
+    ABS_SERVICE_ORDER_URL,
+    ABS_SERVICE_PROFORMA_URL
+} from "../common";
+
+export const ssalesNavTree: SideNavNode = {
+    name: 'COMMON_SERVICES',
+    icon: 'fa-solid fa-handshake',
+    children: [
+        {
+            name: 'COMMON_AGENT',
+            icon: 'fas fa-user',
+            route: ABS_SALES_AGENT_URL,
+            accessRights: 'Agent'
+        },
+        {
+            name: 'COMMON_SERVICES',
+            icon: 'fa-duotone fa-handshake-simple',
+            route: ABS_SALES_SERVICE_URL,
+            accessRights: 'SService'
+        },
+        {
+            name: 'LOGISTICS_PROFORMA',
+            icon: 'fas fa-quote-right',
+            route: ABS_SERVICE_PROFORMA_URL,
+            accessRights: 'Proforma'
+        },
+        {
+            name: 'SALES_ORDER',
+            icon: 'fas fa-cart-plus',
+            route: ABS_SERVICE_ORDER_URL,
+            accessRights: 'SOrder'
+        },
+        // {
+        //     name: 'SALES_DELIVERY',
+        //     icon: 'fas fa-file',
+        //     route: ABS_SALES_DELIVERY_URL,
+        //     accessRights: 'Delivery'
+        // },
+        {
+            name: 'SALES_INVOICE',
+            icon: 'fas fa-file-invoice',
+            route: ABS_SERVICE_INVOICE_URL,
+            accessRights: 'Invoice'
+        },
+        {
+            name: 'SALES_INVOICE_CANCELLATION',
+            icon: 'fas fa-phone-slash',
+            route: ABS_SERVICE_INVOICE_CANCEL_URL,
+            accessRights: 'CInvoice'
+        },
+        {
+            name: 'COMMON_PAYMENTS',
+            icon: 'fas fa-coins',
+            route: ABS_FINANCE_CPAYMENTS,
+            accessRights: 'SPayment'
+        },
+        {
+            name: 'LOGISTICS_PAYMENT_COMPENSATION',
+            icon: 'fas fa-coins',
+            route: ABS_FINANCE_CCOMPENSATIONS,
+            accessRights: 'Accounting'
+        },
+        // {
+        //     name: 'SALES_ADS',
+        //     icon: 'fa-solid fa-eggplant',
+        //     route: ABS_SALES_ADS,
+        //     accessRights: 'ADS'
+        // },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_SALES_REPORTS_URL,
+            accessRights: 'Report'
+        },
+        {
+            name: 'ADMINISTRATION_WORKFLOW_INBOX',
+            icon: 'fa-solid fa-envelope',
+            route: ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
+            accessRights: 'MailBox'
+        },
+        {
+            name: 'COMMON_DASHBOARD',
+            icon: 'fa-solid fa-gauge-min',
+            route: ABS_SALES_DASHBOARD_URL,
+            accessRights: 'Dashboard'
+        },
+    ],
+    accessRights: 'SERVICE'
+};

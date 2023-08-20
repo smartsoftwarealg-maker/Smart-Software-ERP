@@ -31,6 +31,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(officeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_OFFICES');
         this.pagination.pageSize = 10;
+        this.title = this.route.snapshot?.data['title'] || this.title;
     }
 
     override ngOnInit(): void {

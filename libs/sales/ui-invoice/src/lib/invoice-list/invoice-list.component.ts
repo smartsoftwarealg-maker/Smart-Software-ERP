@@ -9,7 +9,7 @@ import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
 @Component({
-    selector: 'ss-delivery-list',
+    selector: 'ss-INVOICE-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './invoice-list.component.html'
 })

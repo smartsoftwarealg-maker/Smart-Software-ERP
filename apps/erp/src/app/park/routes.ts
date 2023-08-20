@@ -30,7 +30,7 @@ import {
     VehicleMaintenanceListComponent,
     VehicleOilChangeDetailComponent,
     VehicleOilChangeListComponent
-} from "@ss/park/vehicles";
+} from '@ss/park/vehicles';
 import {
     FuelTypeDetailComponent,
     FuelTypeListComponent, InsurancePolicyDetailComponent, InsurancePolicyListComponent,
@@ -43,10 +43,10 @@ import {
 } from '@ss/common/ui-lookup';
 import {
     VehicleDriverListComponent
-} from "../../../../../libs/park/vehicles/src/lib/vehicle-driver-list/vehicles-driver-list.component";
+} from '@ss/park/vehicles';
 import {
     VehiclesDriverDetailComponent
-} from "../../../../../libs/park/vehicles/src/lib/vehicle-driver-detail/vehicles-driver-detail.component";
+} from '@ss/park/vehicles';
 
 export const parkRoutes: Routes = [
     {

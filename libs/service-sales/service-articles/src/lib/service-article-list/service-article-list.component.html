@@ -1,0 +1,87 @@
+<div class="table-container size">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="image">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <div class="person-photo">
+                    <ss-image-input
+                        width="60px"
+                        height="76px"
+                        [imageModel]="e.imageModel"
+                        style="display: inline-block;">
+                    </ss-image-input>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.reference}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vatValue">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VAT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.vatValue | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header  translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.description2}}
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="vat">
+            <mat-header-cell *matHeaderCellDef translate>STOCK_VAT</mat-header-cell>
+            <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+                {{ e.vatValue | number: '1.2-2' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="markName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_MARK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.markName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="klassName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_CLASS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.klassName}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="unit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_UNIT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.unitDescrip}}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
+
+<div class="size">
+    <ss-doc-info
+        *ngIf="selected" [displayedGroups]="['article']"
+        [params]="{ articleId: selectedRow?.id,
+                    articleUseStoreSearch : true,
+                    articleReference: selectedRow?.reference
+                  }">
+    </ss-doc-info>
+</div>

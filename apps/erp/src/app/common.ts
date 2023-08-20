@@ -42,6 +42,7 @@ export const LTM_APP_URL = 'ltm';
 export const CMMS_APP_URL = 'cmms';
 export const PARK_APP_URL = 'park';
 export const ARCH_VIEWER_URL = 'arch-viewer';
+export const SERVICE_SALES = 'service-sales';
 export const SCHEDULED_SALES_APP_URL = 'scheduled-sales';
 export const MISSIONS_APP_URL = 'missions';
 export const CONTRACTS_APP_URL = 'contracts';
@@ -50,6 +51,7 @@ export const FOOD_CART_APP_URL = 'food';
 export const WORK_FLOW_APP_URL = 'workflow';
 export const BUDGET_APP_URL = 'budget';
 export const ATTENDANCE_APP_URL = 'attendance';
+export const SERVICE_APP_URL = 'service-sales';
 
 // treasury
 export const TREASURY_AGENT_URL = 'agents';
@@ -189,6 +191,10 @@ export const SALES_DELIVERY_CANCEL_URL = 'cdelivery';
 export const SALES_ORDER_URL = 'order';
 export const SALES_PROFORMA_URL = 'proforma';
 export const SALES_AD_URL = 'sales-ads';
+export const SALES_SERVICE_ARTICLE_URL = 'service-articles';
+export const SERVICE_INVOICE_URL = 'service-invoice';
+export const SERVICE_INVOICE_CANCELLATION_URL = 'service-cinvoice';
+
 // HR
 export const HR_CATEGORIES_URL = 'categories';
 export const HR_SERVICES_URL = 'services';
@@ -268,7 +274,7 @@ export const SS_SCHEDULE_URL             = 'schedules';
 export const SS_PARTNER_SCHEDULE_URL     = 'partner-schedules';
 export const SS_SALES_MODE_URL           = 'sales-modes';
 export const SS_TRUCKS_URL               = 'supplier-trucks';
-
+export const SERVICE_ORDER_URL = 'service-order';
 // Missions
 export const MISSION_PREPARATION_URL = 'missions';
 export const MISSION_TRAJECTORIES = 'trajectories';
@@ -671,6 +677,13 @@ export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON
 export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_ADS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_AD_URL].join('/');
 export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AGENT_URL].join('/');
+export const ABS_SALES_SERVICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SERVICE_ARTICLE_URL].join('/');
+
+//services
+export const ABS_SERVICE_ORDER_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_ORDER_URL].join('/');
+export const ABS_SERVICE_PROFORMA_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SALES_PROFORMA_URL].join('/');
+export const ABS_SERVICE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_INVOICE_URL].join('/');
+export const ABS_SERVICE_INVOICE_CANCEL_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_INVOICE_CANCELLATION_URL].join('/');
 
 // Purchace
 export const ABS_PURCHASE_RECEPTION_URL = '/' + [MAIN_PAGE_URL, PURCHASES_APP_URL, PURCHASE_RECEPTION_URL].join('/');

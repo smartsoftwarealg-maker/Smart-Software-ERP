@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/stock/api-article';
 import {Mark, Unit} from '@ss/common/api-lookup';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Observable, of, tap, zip} from 'rxjs';
+import {Observable, of, zip} from 'rxjs';
 import {LookupsService, Vat} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -50,7 +50,7 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
             p.markDescrip = this.marks?.find(m => m.id === p.mark)?.description;
             p.unitDescrip = this.units?.find(u => u.id === p.salesUnit)?.description;
             p.vatValue = this.vats.find(u => u.id === p.vat)?.value;
-        })
+        });
         return of(data);
     }
 
@@ -73,8 +73,8 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
                     debounceTime(300),
                     distinctUntilChanged()
                 ).subscribe(id => {
-                this.articleSrv.setParentId(id);
-                this.refresh();
-            }));
+                    this.articleSrv.setParentId(id);
+                    this.refresh();
+                }));
     }
 }

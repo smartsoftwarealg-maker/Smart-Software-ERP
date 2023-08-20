@@ -36,6 +36,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.locationLookup.onObjectSelected = e => this.locationSelected(e);
         // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
+        this.title = this.route.snapshot?.data['title'] || this.title;
     }
 
     protected override getRouteParam(): Observable<any> {
