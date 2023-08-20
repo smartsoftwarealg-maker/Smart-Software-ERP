@@ -24,6 +24,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
     buildingLookup = new BuildingLookup(this.buildingSrv);
 
     public saving = false;
+    public isCMMS = false;
 
     constructor(
         public officeSrv: OfficeService,
@@ -36,6 +37,8 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
         super(officeSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_EDIT_OFFICE');
         this.locationLookup.onObjectSelected = e => this.locationSelected(e);
         // this.buildingLookup.onObjectSelected = e => this.buildingSelected(e);
+        this.title = this.route.snapshot?.data['title'] || this.title;
+        this.isCMMS = this.route.snapshot?.data['title'] != null;
     }
 
     protected override getRouteParam(): Observable<any> {
@@ -48,7 +51,7 @@ export class OfficeDetailComponent extends BaseEntityDetailComponent<Office> imp
             description: [a.description, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
             code:        [a.code, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(4)])],
             buildingId:  [a.buildingId, Validators.required],
-            floorNo:     [a.floorNo, [Validators.min(0), Validators.max(20)]],
+            floorNo:     [a.floorNo || 0, [Validators.min(0), Validators.max(20)]],
             location:    [a.location],
             id:          [a.id]
         });

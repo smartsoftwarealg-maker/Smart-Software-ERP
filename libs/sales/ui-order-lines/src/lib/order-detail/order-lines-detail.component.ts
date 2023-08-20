@@ -6,7 +6,7 @@ import {
 @Component({
     selector: 'ss-order-lines-detail',
     templateUrl: './order-lines-detail.component.html',
-    styleUrls: ['../../../../common/assets/src/assets/transac-lines-detail.scss'],
+    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
 })
 export class OrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public inventoryLinesService: OfferLinesService) {

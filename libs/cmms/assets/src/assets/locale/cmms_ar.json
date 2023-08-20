@@ -54,5 +54,7 @@
     "EQUIPMENT":        "معدات",
     "PRE_DUE":          "قبل موعد الاستحقاق",
     "PAST_DUE":         "بعد موعد التسليم",
-    "READING_DATE":     "تاريخ القراءة"
+    "READING_DATE":     "تاريخ القراءة",
+    "ZONES":            "المناطق",
+    "WORKSHOPS":        "ورشات "
 }

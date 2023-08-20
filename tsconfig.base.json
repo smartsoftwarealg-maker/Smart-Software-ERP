@@ -586,6 +586,21 @@
       "@ss/scheduled-sales/supplier-trucks": [
         "libs/scheduled-sales/supplier-trucks/src/index.ts"
       ],
+      "@ss/service-sales/service-articles": [
+        "libs/service-sales/service-articles/src/index.ts"
+      ],
+      "@ss/service-sales/service-invoice": [
+        "libs/service-sales/service-invoice/src/index.ts"
+      ],
+      "@ss/service-sales/service-invoice-cancellation": [
+        "libs/service-sales/service-invoice-cancellation/src/index.ts"
+      ],
+      "@ss/service-sales/service-order": [
+        "libs/service-sales/service-order/src/index.ts"
+      ],
+      "@ss/service-sales/service-proforma": [
+        "libs/service-sales/service-proforma/src/index.ts"
+      ],
       "@ss/stock/api-article": [
         "libs/stock/api-article/src/index.ts"
       ],

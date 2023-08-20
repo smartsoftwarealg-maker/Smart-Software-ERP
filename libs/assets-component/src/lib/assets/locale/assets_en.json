@@ -67,5 +67,6 @@
     "ASSET_TREE":          "Asset tree",
     "ADD":                 "Add",
     "REMOVE":              "Remove",
-    "IS_VEHICLE":          "Vehicle?"
+    "IS_VEHICLE":          "Vehicle?",
+    "BLOCK":               "Block"
 }

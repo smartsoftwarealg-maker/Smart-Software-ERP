@@ -21,8 +21,8 @@ import {
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
     ABS_SERVICE_REQUEST_URL,
-    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL, ABS_CMMS_ASSETS_TREE_URL
-} from '../common';
+    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL, ABS_CMMS_ASSETS_TREE_URL, ABS_ASSET_LOCATIONS
+} from "../common";
 
 export const cmmsNavTree: SideNavNode = {
     name: 'CMMS',
@@ -47,14 +47,20 @@ export const cmmsNavTree: SideNavNode = {
             accessRights: 'AssetClass'
         },
         {
-            name: 'ASSET_BUILDINGS',
+            name: 'ASSET_SITES',
+            icon: 'fa-solid fa-earth-africa',
+            route: ABS_ASSET_LOCATIONS,
+            accessRights: 'ASSLocation'
+        },
+        {
+            name: 'CMMS_ZONES',
             icon: 'fa-solid fa-city',
             route: ABS_CMMS_BUILDINGS,
             accessRights: 'AssetBuilding'
         },
         {
-            name: 'ASSET_LOCATIONS',
-            icon: 'fa-solid fa-location-crosshairs',
+            name: 'CMMS_WORKSHOPS',
+            icon: 'fa-solid fa-person-digging',
             route: ABS_CMMS_OFFICES_URL,
             accessRights: 'Office'
         },

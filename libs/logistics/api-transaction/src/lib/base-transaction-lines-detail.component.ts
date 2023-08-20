@@ -16,7 +16,7 @@ import {
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
     DOC_SEPARATOR_800
-} from "./transaction";
+} from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
 

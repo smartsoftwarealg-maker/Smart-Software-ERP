@@ -42,8 +42,15 @@ import {
     SHOPPING_CART_APP_URL,
     FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
-    BUDGET_APP_URL, LTM_APP_URL, FURNITURE_APP_URL, ATTENDANCE_APP_URL, ARCH_VIEWER_URL, CMMS_APP_URL, PARK_APP_URL
-} from "../app/common";
+    BUDGET_APP_URL,
+    LTM_APP_URL,
+    FURNITURE_APP_URL,
+    ATTENDANCE_APP_URL,
+    ARCH_VIEWER_URL,
+    CMMS_APP_URL,
+    PARK_APP_URL,
+    SERVICE_SALES
+} from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
@@ -55,6 +62,7 @@ import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { parkNavTree } from '../app/park/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
+import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 
 export const environment = {
     production: false,
@@ -68,6 +76,7 @@ export const navBar = [
     stockNavTree,
     contractsNavTree,
     salesNavTree,
+    ssalesNavTree,
     financeNavTree,
     hrLookupNavTree,
     hrNavTree,
@@ -125,6 +134,10 @@ export const appRoutes: Routes =  [
     {
         path: ARCH_VIEWER_URL,
         loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+    },
+    {
+        path: SERVICE_SALES,
+        loadChildren: () => import('../app/service-sales/service-sales.module').then(m => m.ServiceSalesModule)
     },
     {
         path: LTM_APP_URL,

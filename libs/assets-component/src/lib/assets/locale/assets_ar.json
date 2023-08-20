@@ -67,5 +67,6 @@
     "ASSET_TREE":          "شجرة الأصول",
     "ADD":                 "إضافة",
     "REMOVE":              "إزالة",
-    "IS_VEHICLE":          "مركبة؟"
+    "IS_VEHICLE":          "مركبة؟",
+    "BLOCK":               "مربع"
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderLinesDetailComponent } from './order-lines-detail.component';
+import { OrderLinesDetailComponent } from './order-detail/order-lines-detail.component';
 import {MaterialModule} from "@ss/common/api-common";
 import {CommonUiLangModule} from "@ss/common/ui-lang";
 import {UiPaginationModule} from "@ss/common/ui-pagination";
@@ -9,7 +9,7 @@ import {CommonUiConfirmationDialogModule} from "@ss/common/ui-confirmation-dialo
 import {CommonUiDatepickerModule} from "@ss/common/ui-datepicker";
 import {CommonUiAutoCompleteModule} from "@ss/common/ui-auto-complete";
 import {LogisticsUiDocInfoModule} from "@ss/logistics/ui-doc-info";
-import { OrderLinesListComponent } from './order-lines-list.component';
+import { OrderLinesListComponent } from './order-lines/order-lines-list.component';
 import {LogisticsUiStockInfoModule} from "@ss/logistics/ui-stock-info";
 
 @NgModule({

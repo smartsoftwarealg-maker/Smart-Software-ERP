@@ -11,3 +11,5 @@ export * from './lib/vehicle-insurance-detail/vehicle-insurance-detail.component
 export * from './lib/vehicle-insurance-list/vehicle-insurance-list.component';
 export * from './lib/vehicle-damage-detail/vehicle-damage-detail.component';
 export * from './lib/vehicle-damage-list/vehicle-damage-list.component';
+export * from './lib/vehicle-driver-list/vehicles-driver-list.component';
+export * from './lib/vehicle-driver-detail/vehicles-driver-detail.component';

@@ -6,8 +6,8 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL,
-    SALES_AD_URL
-} from '../common';
+    SALES_AD_URL, SALES_SERVICE_ARTICLE_URL
+} from "../common";
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
 import { OrderLinesDetailComponent, OrderLinesListComponent } from '@ss/sales/ui-order-lines';
@@ -41,6 +41,7 @@ import {
     AppArchiveDetailComponent,
     AppArchiveListComponent
 } from '@ss/logistics/ui-agent';
+import { ServiceArticleDetailComponent, ServiceArticleListComponent } from "@ss/service-sales/service-articles";
 
 export const lookupRoutes: Routes = [];
 
@@ -294,6 +295,24 @@ export const mainRoutes: Routes = [
         data: { reportBase: 'sales' },
         component: ReportViewComponent,
         canActivate: [loginGuard]
+    },
+    {
+        path: SALES_SERVICE_ARTICLE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ServiceArticleListComponent,
+                canActivate: [loginGuard],
+                // children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ServiceArticleDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                // children: docInfoRoutes
+            },
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

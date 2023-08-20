@@ -452,13 +452,15 @@ export const cmmsRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: AssetBuildingListComponent
+                component: AssetBuildingListComponent,
+                data: { title: 'CMMS_ZONES'}
             },
             {
                 path: ':id',
                 component: AssetBuildingDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
+                data: { title: 'CMMS_ZONES'}
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
@@ -546,13 +548,15 @@ export const cmmsRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: OfficesListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
+                data: { title: 'CMMS_WORKSHOPS'}
             },
             {
                 path: ':id',
                 component: OfficeDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                data: { title: 'CMMS_WORKSHOPS'}
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
         ]
