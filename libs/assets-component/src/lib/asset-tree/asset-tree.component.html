@@ -14,7 +14,7 @@
                             [attr.aria-label]="'Toggle ' + node.ent.description">
                         <i class="fa-solid fa-leaf"></i>
                     </button>
-                    {{node.ent.description}}
+                    {{node.ent.reference}} {{node.ent.description}}
                 </mat-tree-node>
                 <!-- This is the tree node template for expandable nodes -->
                 <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild"
@@ -27,7 +27,7 @@
                             <i class="fa-solid fa-circle-plus" *ngIf="!treeControl.isExpanded(node)"></i>
                             <i class="fa-solid fa-circle-minus" *ngIf="treeControl.isExpanded(node)"></i>
                         </button>
-                        {{node.ent.description}}
+                        {{node.ent.reference}} {{node.ent.description}}
                     </div>
                     <!-- There is inline padding applied to this div using styles.
                         This padding value depends on the mat-icon-button width.  -->
