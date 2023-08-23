@@ -21,7 +21,12 @@ import {
     ABS_CMMS_BUILDINGS,
     ABS_CMMS_OFFICES_URL,
     ABS_SERVICE_REQUEST_URL,
-    ABS_CMMS_PARTS_REQUEST_URL, ABS_CMMS_TRIGGER_URL, ABS_CMMS_CHARTS_URL, ABS_CMMS_ASSETS_TREE_URL, ABS_ASSET_LOCATIONS
+    ABS_CMMS_PARTS_REQUEST_URL,
+    ABS_CMMS_TRIGGER_URL,
+    ABS_CMMS_CHARTS_URL,
+    ABS_CMMS_ASSETS_TREE_URL,
+    ABS_ASSET_LOCATIONS,
+    ABS_CMMS_LOCATIONS
 } from "../common";
 
 export const cmmsNavTree: SideNavNode = {
@@ -49,7 +54,7 @@ export const cmmsNavTree: SideNavNode = {
         {
             name: 'ASSET_SITES',
             icon: 'fa-solid fa-earth-africa',
-            route: ABS_ASSET_LOCATIONS,
+            route: ABS_CMMS_LOCATIONS,
             accessRights: 'ASSLocation'
         },
         {

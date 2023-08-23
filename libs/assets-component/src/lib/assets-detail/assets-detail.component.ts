@@ -317,7 +317,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
-                data: {id: 0, description: null}
+                data: {id: 0, description: null, cmms: this.isCMMS}
             });
         dialogRef
             .afterClosed()

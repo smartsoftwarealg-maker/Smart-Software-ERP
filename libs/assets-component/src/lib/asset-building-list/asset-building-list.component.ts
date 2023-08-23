@@ -1,12 +1,15 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {AssetBuilding} from '../assets-api';
+import { AssetBuilding, AssetLocation } from "../assets-api";
 import {AssetsBuildingService} from '../services/assets-building.service';
+import { AssetLocationService } from "../services/asset-location.service";
+import { FormControl } from '@angular/forms';
+import { DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
 
 @Component({
   selector: 'ss-asset-building-list',
@@ -14,8 +17,13 @@ import {AssetsBuildingService} from '../services/assets-building.service';
   styleUrls: ['./asset-building-list.component.scss']
 })
 export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBuilding> {
+    private locationSrv = inject(AssetLocationService);
+
+    locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
+    locationCtrl = new FormControl<number>(0);
+
     displayedColumns = [
-        'location',
+        // 'location',
         'code',
         'description',
     ];
@@ -39,5 +47,19 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             pagPersistSrv,
             'ASSET_BUILDINGS');
         this.title = this.route.snapshot?.data['title'] || this.title;
+        if (!this.entitySrv.getParentId()) {
+            this.entitySrv.setParentId(0);
+        }
+        this.locationLookup.onObjectSelected = e => this.onLocation(e);
+    }
+
+    onLocation(location: AssetLocation) {
+        this.entitySrv.setParentId(location?.id);
+        this.refresh();
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.locationCtrl.setValue(this.entitySrv.getParentId());
     }
 }

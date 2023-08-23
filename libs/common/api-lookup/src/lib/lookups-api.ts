@@ -1,3 +1,5 @@
+export const BUILDINGS = '/buildings';
+export const OFFICES = '/offices';
 export const VATS_URL = '/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const LOOKUPS_APPLICATIONS_URL = '/lookups/erp_applications';
@@ -111,11 +113,6 @@ export class Category {
     descriptionAr?: string;
 }
 
-export class Service {
-    id: number;
-    description: string;
-    descriptionAr?: string;
-}
 
 export class MilitaryServiceState {
     id: number;
@@ -309,6 +306,7 @@ export interface Office {
     locationCode?: string;
     buildingCode?: string;
     buildingDescription?: string;
+    cmms?: boolean;
 }
 
 export interface JournalType {

@@ -1,4 +1,4 @@
-<mat-form-field class="default-100">
+<mat-form-field class="default-100 top_field">
     <mat-label translate>ASSET_SITE</mat-label>
     <ss-auto-complete matInput
                       [model]="locationLookup"
@@ -14,7 +14,7 @@
 </mat-form-field>
 
 
-<mat-form-field class="default-100">
+<mat-form-field class="default-100" *ngIf="!isCMMS">
     <mat-label translate>ASSET_FLOOR_NO</mat-label>
     <mat-select [formControl]="floorFF">
         <mat-option *ngFor="let f of floors" [value]="f.id">{{ f.description }}</mat-option>

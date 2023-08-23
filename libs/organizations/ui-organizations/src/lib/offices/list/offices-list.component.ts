@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import { Component, inject } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -6,6 +6,9 @@ import {PaginatorPersistenceService, User, UserService} from '@ss/common/api-com
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { OfficeService, Office } from '@ss/common/api-lookup';
+import { AssetBuilding, AssetLocation, AssetLocationService, AssetsBuildingService } from "@ss/assets-component";
+import { CodeDescriptionAutoCompleteModel, DefaultAutoCompleteModel } from "@ss/common/ui-auto-complete";
+import { FormControl } from "@angular/forms";
 
 @Component({
     selector: 'ss-offices-list',
@@ -13,10 +16,18 @@ import { OfficeService, Office } from '@ss/common/api-lookup';
     styleUrls: ['./offices-list.component.scss'],
 })
 export class OfficesListComponent extends BaseEntityListComponent<Office> {
+    private locationSrv = inject(AssetLocationService);
+    private buildingSrv = inject(AssetsBuildingService);
+
+    locationLookup = new CodeDescriptionAutoCompleteModel(this.locationSrv);
+    buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
+
+    locationCtrl = new FormControl<number>(this.buildingSrv.getParentId() || 0);
+    buildingCtrl = new FormControl<number>(0);
+
     displayedColumns = [
         'code',
         'description',
-        'locationDescription',
         'floorNo'
     ];
 
@@ -34,12 +45,27 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         const title = this.route.snapshot?.data['title'];
         if (title) {
             this.title = title;
-            this.displayedColumns = this.displayedColumns.slice(0, 3);
+            this.displayedColumns = this.displayedColumns.slice(0, 2);
         }
+        this.locationLookup.onObjectSelected = e => this.onLocation(e);
+        this.buildingLookup.onObjectSelected = b => this.onBuilding(b);
+        if (!this.entitySrv.getParentId()) {
+            this.entitySrv.setParentId(0);
+        }
+        this.buildingCtrl.setValue(this.entitySrv.getParentId() || 0);
     }
 
     override ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         super.ngOnInit();
+    }
+
+    onLocation(l: AssetLocation) {
+        this.buildingSrv.setParentId(l?.id || 0);
+    }
+
+    onBuilding(b: AssetBuilding) {
+        this.entitySrv.setParentId(b?.id);
+        this.refresh();
     }
 }

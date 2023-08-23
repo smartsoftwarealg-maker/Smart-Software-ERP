@@ -1,12 +1,12 @@
 .table_div {
-    min-height: calc(100% - 118px);
+    min-height: calc(100% - 130px);
 }
 
 .container,
 .pagination-container {
     width: 90%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 4px auto 0;
 }
 
 mat-table {

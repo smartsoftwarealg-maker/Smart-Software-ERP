@@ -15,6 +15,7 @@ import {AssetLocationService} from '../services/asset-location.service';
   styleUrls: ['./asset-locations-list.component.scss']
 })
 export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLocation> {
+
     displayedColumns = [
         'description',
         'code'
@@ -39,6 +40,8 @@ export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLo
             pagPersistSrv,
             'ASSET_LOCATIONS');
         this.pagination.pageSize = 10;
+        this.title = this.route.snapshot?.data['title'] || this.title;
+        console.log(this.route.snapshot?.data);
     }
 
 }

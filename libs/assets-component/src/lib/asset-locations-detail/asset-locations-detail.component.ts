@@ -34,12 +34,12 @@ export class AssetLocationsDetailComponent extends BaseEntityDetailComponent<Ass
               formBuilder,
               confirmationSrv,
               'ASSET_LOCATIONS');
+        this.title = this.route.snapshot?.data['title'] || this.title;
     }
 
 
     override preload(): Observable<any> {
-        return this.loginSrv
-            .loadContext();
+        return this.loginSrv.loadContext();
     }
 
     public override setupForm(b: AssetLocation) {

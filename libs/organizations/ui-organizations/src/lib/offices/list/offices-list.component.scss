@@ -17,13 +17,12 @@ mat-table {
 
 .mat-column-locationDescription,
 .mat-column-description {
-    flex: 2 1 250px;
+    flex: 3 1 300px;
 }
 
 .mat-column-floorNo,
 .mat-column-code {
-    flex: 0 1 100px;
-    padding-left: 8px !important;
+    flex: 1 1 120px;
 }
 
 .pagination-container {

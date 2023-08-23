@@ -75,7 +75,7 @@
                                class="selectable"
                                (click)="selectAsset(i)"
                                [class.selected]="selectedAsset?.id == i.id">
-                    {{ i.description }}
+                    {{ i.reference }} {{ i.description }}
                 </mat-list-item>
             </mat-list>
         </div>
