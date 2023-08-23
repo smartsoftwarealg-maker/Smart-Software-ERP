@@ -233,7 +233,7 @@ export interface AssetInventory {
 
 export interface AssetBuilding {
     id: number;
-    locationId: number;
+    parentId: number;
     code: string;
     description: string;
     location?: string;

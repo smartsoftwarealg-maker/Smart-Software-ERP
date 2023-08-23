@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
-import {OFFICES_URL, Office, BUILDINGS_URL, FLOORS_URL} from './lookups-api';
+import { OFFICES_URL, Office, BUILDINGS_URL, FLOORS_URL, BUILDINGS, OFFICES } from './lookups-api';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import {HttpParams} from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Lookup} from './lookup.class';
-import {tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -13,14 +12,14 @@ import {tap} from 'rxjs/operators';
 export class OfficeService extends BaseEntityService<Office> {
 
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, OFFICES_URL);
+        super(httpSrv, OFFICES, BUILDINGS);
     }
 
     search(location: number, building: number, floor: number): Observable<Office[]> {
         const params = new HttpParams()
-            .set("location", location)
-            .set("building", building)
-            .set("floor", floor);
+            .set('location', location)
+            .set('building', building)
+            .set('floor', floor);
         return this.httpSrv.get<Office[]>(OFFICES_URL, params);
     }
 
@@ -37,5 +36,4 @@ export class OfficeService extends BaseEntityService<Office> {
         return this.httpSrv
             .get<Lookup[]>(FLOORS_URL, params);
     }
-
 }

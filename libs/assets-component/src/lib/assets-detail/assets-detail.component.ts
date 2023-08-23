@@ -127,7 +127,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             reference: [{value: b.reference, disabled: !!b.isFinal}, [Validators.minLength(this.minLength),  Validators.required]],
             reference2: [{value: b.reference2 || this.maxReference, disabled: !!b.isFinal}, ref2Validators],
             description: [{value: b.description, disabled: !!b.isFinal}, Validators.required],
-            acquisitionDate: [b.acquisitionDate, Validators.required],
+            acquisitionDate: [b.acquisitionDate],
             serviceDate: [b.serviceDate],
             reserviceDate: [b.reserviceDate],
             acquisitionValue: [b.acquisitionValue || 0, Validators.required],
@@ -317,7 +317,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
     openSearchDlg() {
         const dialogRef = this.dialog.open(OfficeSearchComponent,
             {
-                data: {id: 0, description: null}
+                data: {id: 0, description: null, cmms: this.isCMMS}
             });
         dialogRef
             .afterClosed()

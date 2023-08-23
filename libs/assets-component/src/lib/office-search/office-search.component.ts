@@ -1,7 +1,7 @@
 import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup, Office, OfficeService} from '@ss/common/api-lookup';
-import {AssetLocationService} from '../services/asset-location.service';
+import {AssetLocationService} from "@ss/assets-component";
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl } from '@angular/forms';
 import {Subscription} from 'rxjs';
@@ -16,6 +16,8 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     private officeSrv = inject(OfficeService);
     private locationSrv = inject(AssetLocationService);
 
+    isCMMS = false;
+
     subscriptions: Subscription[] = [];
     selectedOffice: Office | null = null;
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
@@ -29,6 +31,7 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
 
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: Office) {
+        this.isCMMS = data?.cmms;
     }
 
     close() {
@@ -55,7 +58,12 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
                         debounceTime(300),
                         distinctUntilChanged()
                     )
-                    .subscribe(_ => this.findFloors()),
+                    .subscribe(_ => {
+                        this.findFloors();
+                        if (this.isCMMS) {
+                            this.findOffices();
+                        }
+                    }),
                 this.floorFF
                     .valueChanges
                     .pipe(
@@ -77,6 +85,7 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     }
 
     private findFloors() {
+        console.log(this.isCMMS);
         this.officeSrv
             .floors(this.locationFF.value || 0, this.buildingFF.value || 0)
             .subscribe(res => {

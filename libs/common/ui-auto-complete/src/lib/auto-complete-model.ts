@@ -76,5 +76,7 @@ export class CodeDescriptionAutoCompleteModel<T> extends DefaultAutoCompleteMode
         super(entitySrv, 'id', 'description');
     }
 
-    override toString = (x: Office) => x ? `${x.description.substring(0, 50)} (${x.code})` : null;
+    override toString = (x: Office) => x ?
+        `${x.description.substring(0, 50)} ` + (x.code? `(${x.code})` : '') :
+        null;
 }

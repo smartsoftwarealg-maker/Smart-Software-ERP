@@ -523,12 +523,14 @@ export const cmmsRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetLocationsListComponent,
+                data: { title: 'ASSET_SITES'},
                 canActivate: [loginGuard]
             },
             {
                 path: ':id',
                 component: AssetLocationsDetailComponent,
                 canActivate: [loginGuard],
+                data: { title: 'ASSET_SITES'},
                 canDeactivate: [CanDeactivateService]
             },
             {path: '**', redirectTo: LIST_URL, pathMatch: 'full'}
